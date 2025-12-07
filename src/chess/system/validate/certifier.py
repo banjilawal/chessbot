@@ -14,7 +14,7 @@ from chess.system import (
 )
 
 
-class CertifyValidator:
+class ValidatorCertifier:
     """
     # ROLE: Validation
 

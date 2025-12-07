@@ -9,11 +9,13 @@ version: 1.0.0
 
 from typing import Any, cast
 
+from chess.system import (
+    BuilderValidator, EntityService, LoggingLevelRouter, ValidationResult, Validator,
+    ValidatorCertifier
+)
 
-from chess.system import LoggingLevelRouter, Service, ValidationResult, Validator
 
-
-class ServiceValidator(Validator[Service]):
+class ServiceValidator(Validator[EntityService]):
     """
     # ROLE: Validation
 
@@ -31,27 +33,31 @@ class ServiceValidator(Validator[Service]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, *args, **kwargs) -> ValidationResult[Service]:
+    def validate(
+            cls,
+            candidate: Any,
+            builder_validator: BuilderValidator = BuilderValidator(),
+            validator_certifier: ValidatorCertifier = ValidatorCertifier(),
+    ) -> ValidationResult[EntityService]:
         """
         # Action:
-            1.  Confirm the candidate is not null and an Service instance.
-            2.  Certify it has a not null Builder
-            3.  Certify it has a not null Validator
-            4.  Certify it has a not null Finder
+            1.  Confirm the candidate is not null and a Service instance.
+            2.  Certify the builder with builder_validator.
+            3.  certify the validator with validator_certifier.
+            4.  If no checks pass return the exception otherwise, return the certified service
+                in a ValidationResult's payload.
 
         # Parameters:
             *   candidate (Any)
 
         # Returns:
-          BuildResult[Service] containing either:
-                - On success: Service in the payload.
+          ValidationResult[EntityService] containing either:
+                - On success: EntityService in the payload.
                 - On failure: Exception.
 
         # Raises:
             *   TypeError
             *   NullServiceException
-            *   MissingBuilderException
-            *   MissingValidatorException
             *   InvalidServiceException
         """
         method = "ServiceValidator.validate"
@@ -69,22 +75,16 @@ class ServiceValidator(Validator[Service]):
             
             # Once the two existence checks are passed cast candidate to an Service
             # For additional processing.
-            service = cast(Service, candidate)
+            service = cast(EntityService, candidate)
             
             # Only need to make sure builder is a not-null Builder instance.
-            if service.entitt is None or not isinstance(service.builder, Factory):
-                return ValidationResult.failure(
-                    MissingBuilderException(
-                        f"{method}: {MissingBuilderException.DEFAULT_MESSAGE}"
-                    )
-                )
-            # Make sure validator is a not-null Validator instance.
-            if service.validator is None or not isinstance(service.validator, Validator):
-                return ValidationResult.failure(
-                    MissingValidatorException(
-                        f"{method}: {MissingValidatorException.DEFAULT_MESSAGE}"
-                    )
-                )
+            builder_certification = builder_validator.validate(service.entity_builder)
+            if builder_certification.is_failure():
+                return ValidationResult.failure(builder_certification.exception)
+            
+            validator_certification = validator_certifier.certify(service.entity_validator)
+            if validator_certification.is_failure():
+                return ValidationResult.failure(validator_certification.exception)
 
             # If all checks pass return the Service.
             return ValidationResult.success(service)
