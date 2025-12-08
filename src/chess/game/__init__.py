@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .builder import *
+from .service import *
 
 # Modules
 from .exception import *

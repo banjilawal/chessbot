@@ -8,18 +8,20 @@ version: 1.0.0
 """
 
 from chess.board import BoardService
-from chess.agent import UniqueAgentDataService
+from chess.agent import Agent, UniqueAgentDataService
 
 
 class Game:
     _id: int
     _board: BoardService
-    _players: UniqueAgentDataService
+    _white_player: Agent
+    _black_player: Agent
     
-    def __init__(self, id: int, board: BoardService, players: UniqueAgentDataService):
+    def __init__(self, id: int, white_player: Agent, black_player: Agent, board: BoardService = BoardService()):
         self._id = id
         self._board = board
-        self._players = players
+        self._white_player = white_player
+        self._black_player = black_player
         
         
     @property
@@ -31,6 +33,10 @@ class Game:
         return self._board
     
     @property
-    def players(self) -> UniqueAgentDataService:
-        return self._players
+    def white_player(self) -> Agent:
+        return self._white_player
+    
+    @property
+    def black_player(self) -> Agent:
+        return self._black_player
         

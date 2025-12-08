@@ -10,16 +10,33 @@ version: 1.0.0
 from chess.game import GameException
 from chess.system import BuildFailedException
 
-__all__ =  [
+__all__ = [
     # ======================# GAME BUILD EXCEPTIONS #======================#
     "GameBuildFailedException",
 ]
 
+
 # ======================# GAME BUILD EXCEPTIONS #======================#
 class GameBuildFailedException(GameException, BuildFailedException):
     """
-    Catchall/wrapper exception for when a condition not handled directly by GameBuilder
-    prevents successful Game creation.
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised during Game build process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an GameBuilder method.
+
+    # PARENT
+        *   GameException
+        *   BuildFailedException
+
+    # PROVIDES:
+    GameBuildFailedException
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
-    ERROR_CODE = "GAME_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Game build failed."
+    ERROR_CODE = "GAME_BUILD_ERROR"
+    DEFAULT_ERROR_CODE = "Game build failed."

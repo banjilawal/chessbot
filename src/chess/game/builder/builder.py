@@ -40,7 +40,6 @@ class GameBuilder(Builder[Game]):
                     white_player: Agent,
                     black_player: Agent,
                     board: BoardService = BoardService(),
-                    players: UniqueAgentDataService = UniqueAgentDataService(),
                 ) -> BuildResult[Game]:
         For ease of use and cleaner code dependencies are given default values.
     
@@ -56,8 +55,8 @@ class GameBuilder(Builder[Game]):
             black_player: Agent,
             id: int = id_emitter.service_id,
             board: BoardService = BoardService(),
-            idservice: IdentityService = IdentityService(),
-            agent_data: UniqueAgentDataService = UniqueAgentDataService(),
+            identity_service: IdentityService = IdentityService(),
+            agent_service: AgentService = AgentService(),
     ) -> BuildResult[Game]:
         """
         # ACTION:
@@ -89,24 +88,26 @@ class GameBuilder(Builder[Game]):
         
         try:
             # Start the error detection process.
-            id_validation = idservice.validate_id(id)
+            id_validation = identity_service.validate_id(id)
             if id_validation.is_failure():
                 return BuildResult.failure(id_validation.exception)
             
-            white_player_validation = agent_data.service.item_validator.validate(white_player)
+            white_player_validation = agent_service.validator.validate(white_player)
             if white_player_validation.is_failure():
                 return BuildResult.failure(white_player_validation.exception)
-            
-            team = white_player.team_assignments.team_data_service.s
-            
-            black_player_validation = agent_data.service.item_validator.validate(black_player)
+                
+            black_player_validation = agent_service.validator.validate(black_player)
             if black_player_validation.is_failure():
                 return BuildResult.failure(black_player_validation.exception)
             
-            if not agent_data.size != 0:
-                return BuildResult.failure(
-                    GameAlreadyHasPlayersException(f"{method}: {GameAlreadyHasPlayersException.DEFAULT_MESSAGE}")
-                )
+            game = Game(
+                id=id,
+                white_player=white_player,
+                black_player=black_player,
+                board=board
+            )
+            
+            
             
             insertion_result = agent_data.push_unique_item(white_player_validation.payload)
             if insertion_result.is_failure():
