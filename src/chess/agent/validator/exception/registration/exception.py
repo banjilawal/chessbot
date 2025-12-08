@@ -22,15 +22,15 @@ class AgentRegistrationException(InvalidAgentException, RegistrationException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate if an item has its owner set correctly but the item does not exist in the Owner's collection.
-    2.  Indicate a bidirectional relationship is broken on the owning side
-    3.  Raised when Entity.owner == owner but the Owner does not find the item in its dataset.
+    1.  Catchall Exception for when an Agent has set its owner correctly but the owner does not
+        have the agent in its collection.
 
     # PARENT:
-        *   ChessException
+        *   InvalidAgentException
+        *   RegistrationException
 
     # PROVIDES:
-    BiDirectionalException
+    AgentRegistrationException
 
     # LOCAL ATTRIBUTES:
     None
