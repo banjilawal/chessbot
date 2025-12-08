@@ -20,10 +20,10 @@ __all__ = [
 # ========================= AGENT_CONTEXT FLAG EXCEPTIONS =========================#
 class NoAgentContextFlagException(InvalidAgentContextException, ContextFlagCountException):
     """
-    # ROLE: ContextFlagException, AgentContextException
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if no AgentContext flag is provided with a searcher value.
+    1.  Indicate no AgentContext flag is provided with a searcher value.
     
     # PARENT
         *   InvalidAgentContextException

@@ -18,11 +18,15 @@ __all__ = [
 # ======================# AGENT_CONTEXT NULL EXCEPTIONS #======================#
 class NullAgentContextException(InvalidAgentContextException, NullException):
     """
-    # ROLE: Exception
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
     1.  Raised if an AgentContext validation candidate is null.
     2.  Raised if an entity, method or operation requires an AgentContext but receives null instead.
+    
+    # PARENT:
+        *   InvalidAgentContextException
+        *   NullAgentContextException
 
     # PROVIDES:
     NullAgentContextException

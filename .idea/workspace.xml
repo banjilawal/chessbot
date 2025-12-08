@@ -6,14 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service/data/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/service/data/unique/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service/data/unique/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service/data/unique/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/validator/exception/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/validator/exception/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/validator/exception/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/validator/exception/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/validator/exception/null/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/validator/exception/null/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/context/validator/exception/flag/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/validator/exception/flag/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/context/validator/exception/null/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/validator/exception/null/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/agent/validator/exception/registration/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/validator/exception/registration/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/bidirectional.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/bidirectional.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/err/registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/registration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -805,7 +800,7 @@
       <workItem from="1765072138213" duration="190000" />
       <workItem from="1765072341689" duration="38874000" />
       <workItem from="1765120886239" duration="16382000" />
-      <workItem from="1765145272408" duration="20558000" />
+      <workItem from="1765145272408" duration="21566000" />
     </task>
     <servers />
   </component>
