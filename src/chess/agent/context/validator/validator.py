@@ -29,13 +29,17 @@ class AgentContextValidator(Validator[AgentContext]):
         *   Validator
 
     # PROVIDES:
-      ValidationResult[AgentContext] containing either:
-            - On success: AgentContext in the payload.
-            - On failure: Exception.
+    ValidationResult[AgentContext] containing either:
+        - On success: AgentContext in the payload.
+        - On failure: Exception.
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(

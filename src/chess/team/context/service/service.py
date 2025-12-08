@@ -6,70 +6,73 @@ Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
+
 from typing import cast
 
-from chess.system import EntityService, id_emitter
+from chess.system import ContextService, EntityService, id_emitter
 from chess.team import TeamContext, TeamContextBuilder, TeamContextValidator, TeamFinder
 
 
-class TeamContextService(EntityService[TeamContext]):
+class TeamContextService(ContextService[TeamContext]):
     """
-    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing API.
-    2.  Protects TeamContext instance's internal state.
-    3.  Masks implementation details and business logic making features easier to use.
-    4.  Single entry point for managing TeamContext lifecycles with TeamContextBuilder and TeamContextValidator.
+    1.  Public facing Team search microservice.
+    2.  Encapsulates query building and searching functions into a single extendable module that easy to use.
+
+    # PARENT
+        *   ContextService
 
     # PROVIDES:
+        *   TeamFinder
         *   TeamContextBuilder
         *   TeamContextValidator
 
-    # ATTRIBUTES:
-        *   id (int)
-        *   name (str)
-        *   builder (TeamContextBuilder)
-        *   validator (TeamContextValidator)
-     
-     # CONSTRUCTOR:
-        *   __init__(
-                id: int = id_emmit=service_id,
-                name: Optional[str] = DEFAULT_SERVICE_NAME,
-                builder: TeamContextBuilder = TeamContextBuilder(),
-                validator: TeamContextValidator = TeamContextValidator(),
-            ):
-        For ease of use and cleaner code dependencies are given default values.
-
-    # CLASS METHODS:
+    # LOCAL ATTRIBUTES:
     None
-    
-    # INSTANCE METHODS:
-    See super class.
+
+    # INHERITED ATTRIBUTES:
+    See ContextService for inherited attributes.
     """
-    DEFAULT_SERVICE_NAME = "TeamContextService"
-    _search: TeamFinder
+    DEFAULT_NAME = "TeamContextService"
     
     def __init__(
             self,
+            name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            name: str = DEFAULT_SERVICE_NAME,
+            finder: TeamFinder = TeamFinder(),
             builder: TeamContextBuilder = TeamContextBuilder(),
             validator: TeamContextValidator = TeamContextValidator(),
-            search: TeamFinder = TeamFinder(),
     ):
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._search = search
-        
-    @property
-    def item_builder(self) -> TeamContextBuilder:
-        return cast(TeamContextBuilder, self.item_builder)
+        """
+        # Action:
+        Constructor
+
+        # Parameters:
+            *   name (str): Default value - DEFAULT_NAME
+            *   id (int): Default value - id_emitter.service_id
+            *   finder (TeamFinder): Default value - TeamFinder()
+            *   builder (TeamContextBuilder): Default value - TeamContextBuilder()
+            *   validator (TeamContextValidator): Default value - TeamContextValidator()
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
+        method = "TeamContextService.__init__"
+        super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property
-    def item_validator(self) ->TeamContextValidator:
-        return cast(TeamContextValidator, self.item_validator)
-        
+    def finder(self) -> TeamFinder:
+        return cast(TeamFinder, self.entity_finder)
+    
     @property
-    def search(self) -> TeamFinder:
-        return self._search
-        
+    def builder(self) -> TeamContextBuilder:
+        return cast(TeamContextBuilder, self.entity_builder)
+    
+    @property
+    def validator(self) -> TeamContextValidator:
+        return cast(TeamContextValidator, self.entity_validator)

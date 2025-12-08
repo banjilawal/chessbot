@@ -18,9 +18,8 @@ class AgentContextService(ContextService[AgentContext]):
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing API for querying Agent datasets.
-    2.  Encapsulates Search and search filter validation in one extendable module.
-    3.  Manage AgentContext integrity lifecycle.
+    1.  Public facing Agent search microservice.
+    2.  Encapsulates query building and searching functions into a single extendable module that easy to use.
 
     # PARENT
         *   ContextService
@@ -30,11 +29,13 @@ class AgentContextService(ContextService[AgentContext]):
         *   AgentContextBuilder
         *   AgentContextValidator
 
-    # ATTRIBUTES:
-    See super class for inherited attributes.
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+    See ContextService for inherited attributes.
     """
     DEFAULT_NAME = "AgentContextService"
-    _finder: AgentFinder
     
     def __init__(
             self,
@@ -46,7 +47,7 @@ class AgentContextService(ContextService[AgentContext]):
     ):
         """
         # Action:
-            1.  Constructor
+        Constructor
 
         # Parameters:
             *   name (str): Default value - DEFAULT_NAME

@@ -1,4 +1,4 @@
-# src/chess/agent/model/variety.variety.py
+# src/chess/agent/model/variety/variety.py
 
 """
 Module: chess.agent.model.variety.variety
@@ -23,7 +23,10 @@ class AgentVariety(Enum):
     # PROVIDES:
     AgentVariety
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     HUMAN_AGENT = auto(),

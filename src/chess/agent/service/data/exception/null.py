@@ -32,7 +32,10 @@ class NullAgentDataServiceException(InvalidAgentDataServiceException, NullExcept
     # PROVIDES:
     NullAgentDataServiceException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "NULL_AGENT_DATA_SERVICE_ERROR"

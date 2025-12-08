@@ -1,7 +1,7 @@
 # src/chess/rank/model/rook/service.py
 
 """
-Module: chess.rank.model.rook.entity_service
+Module: chess.rank.model.rook.service
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

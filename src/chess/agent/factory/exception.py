@@ -30,11 +30,12 @@ class AgentBuildFailedException(AgentException, BuildFailedException):
         *   BuildFailedException
 
     # PROVIDES:
-    BuildResult[Agent] containing either:
-            - On success: Agent in the payload.
-            - On failure: Exception.
+    AgentBuildFailedException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_BUILD_ERROR"

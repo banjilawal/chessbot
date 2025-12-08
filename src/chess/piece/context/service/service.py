@@ -12,7 +12,7 @@ from chess.piece import PieceContext, PieceContextBuilder, PieceContextValidator
 
 class PieceContextService(EntityService[PieceContext]):
     """
-    # ROLE: EntityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single entry point for PieceContextBuilder and PieceContextValidator objects.

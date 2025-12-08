@@ -29,11 +29,13 @@ class AgentContext(Context[Agent]):
     # PROVIDES:
     AgentContext
 
-    # ATTRIBUTES:
-        *   id (int)
-        *   name (string)
-        *   games (UniqueGameDataService)
-        *   team_assignment (UniqueTeamDataService)
+    # LOCAL ATTRIBUTES:
+        *   team (Optional[Team])
+        *   game (Optional[Game])
+        *   variety (Optional[AgentVariety])
+        
+    # INHERITED ATTRIBUTES:
+    See Context class for inherited attributes.
     """
     _team: Optional[Team]
     _game: Optional[Game]

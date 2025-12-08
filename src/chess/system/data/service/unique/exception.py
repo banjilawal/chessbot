@@ -30,7 +30,7 @@ class UniqueDataServiceException(DataServiceException):
         *   DataServiceException
 
     # PROVIDES:
-        *   UniqueDataServiceException
+    UniqueDataServiceException
 
     # ATTRIBUTES:
     None

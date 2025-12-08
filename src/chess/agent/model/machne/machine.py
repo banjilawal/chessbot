@@ -26,8 +26,11 @@ class MachineAgent(Agent):
     # PROVIDES:
     MachineAgent
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
         *   engine_service (EngineService)
+    
+    # INHERITED ATTRIBUTES:
+    See Agent class for inherited attributes.
     """
     _engine_service: EngineService
     
@@ -39,6 +42,23 @@ class MachineAgent(Agent):
             team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
             engine_service: EngineService = EngineService(),
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (nt)
+            *   name (str)
+            *   games (UniqueGameDataService)
+            *   team_assignments (UniqueTeamDataService)
+            *   engine_service (EngineService)
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(id=id, name=name, games=games, team_assignments=team_assignments)
         self._engine_service = engine_service
     

@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import ValidationException
+from chess.system import ValidationFailedException
 from chess.agent import AgentContextServiceException
 
 
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# AGENT_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
-class InvalidAgentContextServiceException(AgentContextServiceException, ValidationException):
+class InvalidAgentContextServiceException(AgentContextServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -33,7 +33,10 @@ class InvalidAgentContextServiceException(AgentContextServiceException, Validati
     # PROVIDES:
     InvalidAgentContextServiceException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_CONTEXT_SERVICE_VALIDATION_ERROR"

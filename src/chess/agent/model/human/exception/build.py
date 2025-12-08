@@ -29,11 +29,12 @@ class HumanAgentBuildFailedException(HumanAgent, AgentBuildFailedException):
         *   AgentBuildFailedException
 
     # PROVIDES:
-    BuildResult[HumanAgent] containing either:
-            - On success: HumanAgent in the payload.
-            - On failure: Exception.
+    HumanAgentBuildFailedException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "HUMAN_AGENT_BUILD_ERROR"

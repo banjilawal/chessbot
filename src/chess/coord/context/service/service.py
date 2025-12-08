@@ -13,7 +13,7 @@ from chess.coord import CoordContext, CoordContextBuilder, CoordContextValidator
 
 class CoordContextService(EntityService[CoordContext]):
     """
-    # ROLE: EntityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single entry point for CoordContextBuilder and CoordContextValidator objects.

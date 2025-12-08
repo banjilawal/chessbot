@@ -1,7 +1,7 @@
 # src/chess/system/data/service.py
 
 """
-Module: chess.system.data.entity_service
+Module: chess.system.data.service
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -22,11 +22,11 @@ C = TypeVar("C", bound=Context)
 
 class DataService(ABC, Generic[D]):
     """
-    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Scales Builder and Validator operations for collection of objects.
-    2.  Provides context aware Finder.
+    2.  Provides context aware search.
     3.  Safe and reliable CRUD operations.
     4.  Public facing API.
     
@@ -121,7 +121,7 @@ class DataService(ABC, Generic[D]):
                 DataServiceException(ex=ex, message=f"{method}: {DataServiceException.DEFAULT_MESSAGE}")
             )
     
-    @abstractmethod
+    @LoggingLevelRouter.monitor
     def search(self, context: C) -> SearchResult[List[D]]:
         """"""
         method = "DataService.search"

@@ -1,7 +1,7 @@
 # src/chess/team/service.py
 
 """
-Module: chess.team.entity_service
+Module: chess.team.service
 Author: Banji Lawal
 Created: 2025-10-31
 version: 1.0.0
@@ -12,7 +12,7 @@ from chess.team import Team, TeamBuilder, TeamSchema, TeamSchemaValidator, TeamV
 
 class TeamService(EntityService[Team]):
     """
-    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

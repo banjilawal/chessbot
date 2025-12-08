@@ -30,7 +30,10 @@ class HumanAgentException(AgentException):
     # PROVIDES:
     HumanAgentException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "HUMAN_AGENT_ERROR"

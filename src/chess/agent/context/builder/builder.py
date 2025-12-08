@@ -32,11 +32,14 @@ class AgentContextBuilder(Builder[AgentContext]):
         *   Builder
 
     # PROVIDES:
-      BuildResult[AgentContext] containing either:
-            - On success: AgentContext in the payload.
-            - On failure: Exception.
+    BuildResult[AgentContext] containing either:
+        - On success: AgentContext in the payload.
+        - On failure: Exception.
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     

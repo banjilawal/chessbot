@@ -26,8 +26,11 @@ class HumanAgent(Agent):
     # PROVIDES:
     HumanAgent
 
-    # ATTRIBUTES:
-    See super class.
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+    See Agent class for inherited attributes.
     """
     
     def __init__(
@@ -37,6 +40,22 @@ class HumanAgent(Agent):
             games: UniqueGameDataService = UniqueGameDataService(),
             team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (nt)
+            *   name (str)
+            *   games (UniqueGameDataService)
+            *   team_assignments (UniqueTeamDataService)
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(id=id, name=name, games=games, team_assignments=team_assignments)
     
     def __eq__(self, other):

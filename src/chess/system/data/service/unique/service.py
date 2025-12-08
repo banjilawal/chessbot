@@ -1,7 +1,7 @@
 # src/chess/system/data/service/stack/service.py
 
 """
-Module: chess.system.data.service.unique.entity_service
+Module: chess.system.data.service.unique.service
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -21,7 +21,7 @@ T = TypeVar("T")
 
 class UniqueDataService(ABC, Generic[T]):
     """
-    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Assures DataService only stores unique data with no duplicates.
@@ -77,7 +77,7 @@ class UniqueDataService(ABC, Generic[T]):
     def push_unique_item(self, item: T) -> InsertionResult[T]:
         method = "UniqueAgentDataService.push_unique"
         try:
-            validation = self.data_service.entity_service.entity_validator.validate(item)
+            validation = self.data_service.service.entity_validator.validate(item)
             if validation.is_failure():
                 return InsertionResult.failure(validation.exception)
 

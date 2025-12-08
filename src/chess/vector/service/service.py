@@ -1,7 +1,7 @@
 # src/chess/vector/service.py
 
 """
-Module: chess.vector.entity_service
+Module: chess.vector.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
@@ -15,7 +15,7 @@ from chess.vector import Vector, VectorBuildFailedException, VectorBuilder, Vect
 
 class VectorService(EntityService[Vector]):
     """
-    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

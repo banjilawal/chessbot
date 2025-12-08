@@ -32,7 +32,10 @@ class InvalidHumanAgentException(HumanAgentException, ValidationException):
     # PROVIDES:
     InvalidHumanAgentException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "HUMAN_AGENT_VALIDATION_ERROR"

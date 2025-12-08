@@ -31,7 +31,10 @@ class NullAgentContextServiceException(InvalidAgentContextServiceException, Null
     # PROVIDES:
     NullAgentContextServiceException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "NULL_AGENT_CONTEXT_SERVICE_ERROR"

@@ -1,7 +1,7 @@
 # src/chess/square/service/data/service.py
 
 """
-Module: chess.square.service.data.entity_service
+Module: chess.square.service.data.service
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -30,7 +30,7 @@ class SquareDataService(DataService[Square]):
         
     @LoggingLevelRouter.monitor
     def entity_service(self) -> SquareService:
-        return cast(SquareService, self.entity_service)
+        return cast(SquareService, self.service)
     
     @LoggingLevelRouter.monitor
     def push_item(self, item: Square) -> InsertionResult[Square]:

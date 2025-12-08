@@ -34,7 +34,10 @@ class AgentFinder(Finder[Agent]):
     # PROVIDES:
     AgentFinder:
   
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     

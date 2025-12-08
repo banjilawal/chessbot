@@ -1,7 +1,7 @@
 # src/chess/checkmate/post/service.py
 
 """
-Module: chess.checkmate.post.entity_service
+Module: chess.checkmate.post.service
 Author: Banji Lawal
 Created: 2025-10-24
 version: 1.0.0

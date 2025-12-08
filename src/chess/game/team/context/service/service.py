@@ -13,7 +13,7 @@ from chess.team import TeamContext, TeamContextBuilder, TeamContextValidator
 
 class TeamContextService(EntityService[TeamContext]):
     """
-    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

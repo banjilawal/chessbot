@@ -15,7 +15,7 @@ from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordFin
 
 class CoordDataService(DataService[Coord]):
     """
-    # ROLE: EntityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for Square, VectoValidator and SquareBuilder objects.
@@ -36,13 +36,13 @@ class CoordDataService(DataService[Coord]):
         *   idservice (IdentityService)
     """
     """
-    # ROLE: EntityService, Data Protraction
+    # ROLE: Service, Data Protraction
 
     # RESPONSIBILITIES:
     1.  Manages integrity lifecycle of Coord objects.
     2.  Vector addition and scalar multiplication of Coord objects.
     3.  Calculate distance between two Coords.
-    # ROLE: EntityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Provide a single interface/entry point for CoordStackValidator and CoordStackBuilder.

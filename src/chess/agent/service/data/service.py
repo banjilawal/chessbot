@@ -1,7 +1,7 @@
 # src/chess/agent/service/data/service.py
 
 """
-Module: chess.agent.service.data.entity_service
+Module: chess.agent.service.data.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -9,25 +9,63 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.system import DataService, DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult
-from chess.agent import (
-    Agent, AgentContext, AgentContextService, AgentFactory, AgentService, AgentFinder, AgentDataServiceException,
-    AgentValidator
-)
-from chess.system.data.service.service import D
+
+from chess.system import DataService, id_emitter
+from chess.agent import Agent, AgentContextService, AgentService
 
 
 class AgentDataService(DataService[Agent]):
+    """
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Public facing API.
+    2.  Stack data structure for Agent objects with no guarantee of uniqueness.
+    3.  Implements search, insert, delete, and update operations on Agent objects.
+    4.
+    5.  Including a AgentCertifier instance creates a microservice for clients.
+
+    # PARENT
+        *   DataService
+
+    # PROVIDES:
+        *   AgentService
+        *   AgentContextService
+        *   AgentStack
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    See DataService class for inherited attributes.
+    """
     DEFAULT_NAME = "AgentDataService"
     
     def __init__(
             self,
-            id: int,
             name: str = DEFAULT_NAME,
+            id: int = id_emitter.service_id,
             items: List[Agent] = List[Agent],
             service: AgentService = AgentService(),
             context_service: AgentContextService = AgentContextService(),
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (int): = id_emitter.service_id
+            *   name (str): = DEFAULT_NAME
+            *   items (List[Agent]): = List[Agent]
+            *   service (AgentService): = AgentService()
+            *   context_service (AgentContextService): = AgentContextService()
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(
             id=id,
             name=name,
@@ -44,6 +82,7 @@ class AgentDataService(DataService[Agent]):
     def agent_context_service(self) -> AgentContextService:
         return cast(AgentContextService, self.context_service)
     
+
     # @property
     # def data(self) -> AgentService:
     #     return cast(AgentService, self.data)

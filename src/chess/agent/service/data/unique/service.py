@@ -1,22 +1,36 @@
 # src/chess/agent/service/data/unique/service_.py
 
 """
-Module: chess.agent.service.data.unique.entity_service
+Module: chess.agent.service.data.unique.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
-from typing import Optional, cast
 
-from chess.team import Team
-from chess.system import DeletionResult, InsertionResult, UniqueDataService
-from chess.agent import Agent, AgentContextService, AgentDataService, AgentService
 
+from typing import List, cast
+
+from chess.system import DeletionResult, InsertionResult, SearchResult, UniqueDataService
+from chess.agent import Agent, AgentContext, AgentContextService, AgentDataService, AgentService
 
 
 class UniqueAgentDataService(UniqueDataService[Agent]):
+    """
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Adds uniqueness feature to AgentDataService. Ensures all agents in the dataset are unique.
+
+    # PROVIDES:
+        *   TeamDataService
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    See UniqueDataService class for inherited attributes.
+    """
     DEFAULT_NAME = "UniqueAgentDataService"
-    _data_service = AgentDataService
     
     def __init__(
             self,
@@ -42,16 +56,15 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
     def is_empty(self) -> bool:
         return self.data_service.is_empty
     
-    @property
-    def current_team(self) -> Optional[Team]:
-        return cast(Team, self.data_service.current_item)
-    
     def add_agent(self, agent: Agent) -> InsertionResult[Agent]:
         return self.push_unique_item(agent)
     
     def undo_add_agent(self) -> DeletionResult[Agent]:
         return self.data_service.undo_item_push()
     
+    def find_agent(self, context: AgentContext) -> SearchResult[List[Agent]]:
+        return self.data_service.search(context)
+ 
     # @LoggingLevelRouter.monitor
     # def push_unique_item(self, item: Agent) -> InsertionResult[Agent]:
     #     method = "UniqueAgentDataService.push_unique"

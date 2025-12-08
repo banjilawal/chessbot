@@ -1,7 +1,7 @@
 # src/chess/piece/service/data/unique/service.py
 
 """
-Module: chess.piece.service.data.unique.entity_service
+Module: chess.piece.service.data.unique.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

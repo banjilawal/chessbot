@@ -28,11 +28,12 @@ class MachineAgentBuildFailedException(MachineAgent, AgentBuildFailedException):
         *   AgentBuildFailedException
 
     # PROVIDES:
-    BuildResult[MachineAgent] containing either:
-            - On success: MachineAgent in the payload.
-            - On failure: Exception.
+    MachineAgentBuildFailedException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "MACHINE_AGENT_BUILD_ERROR"

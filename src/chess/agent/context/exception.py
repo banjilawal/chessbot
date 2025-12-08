@@ -34,7 +34,10 @@ class AgentContextException(ContextException):
     # PROVIDES:
     AgentContextException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_CONTEXT_ERROR"

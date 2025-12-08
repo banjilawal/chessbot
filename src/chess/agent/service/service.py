@@ -15,23 +15,26 @@ from chess.agent import Agent, AgentFactory, AgentValidator
 
 class AgentService(EntityService[Agent]):
     """
-    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
     2.  Protects Agent instance's internal state.
-    3.  Masks implementation details and business logic making features easier to use.
-    4.  Single entry point for managing Agent lifecycles with AgentBuilder and AgentValidator.
+    3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    4.  Single entry point Agent integrity lifecycle management with AgentBuilder and AgentValidator.
 
+    # PARENT
+        *   Entity
+    
     # PROVIDES:
         *   AgentBuilder
         *   AgentValidator
 
-    # ATTRIBUTES:
-        *   id (int)
-        *   name (str)
-        *   builder (AgentBuilder)
-        *   validator (AgentValidator)
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+    See EntityService class for inherited attributes.
     """
     DEFAULT_NAME = "AgentService"
     
@@ -49,8 +52,8 @@ class AgentService(EntityService[Agent]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (Team)
-            *   validator (Game)
+            *   builder (AgentFactory)
+            *   validator (AgentValidator)
 
         # Returns:
         None
@@ -62,10 +65,12 @@ class AgentService(EntityService[Agent]):
         
     @property
     def builder(self) -> AgentFactory:
+        """get AgentBuilder"""
         return cast(AgentFactory, self.entity_builder)
     
     @property
     def validator(self) -> AgentValidator:
+        """get AgentValidator"""
         return cast(AgentValidator, self.entity_validator)
     
     

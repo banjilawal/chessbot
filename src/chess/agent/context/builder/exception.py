@@ -31,11 +31,12 @@ class AgentContextBuildFailedException(AgentContextException, BuildFailedExcepti
         *   BuildFailedException
 
     # PROVIDES:
-    BuildResult[AgentContext] containing either:
-            - On success: AgentContext in the payload.
-            - On failure: Exception.
+    AgentContextBuildFailedException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_CONTEXT_BUILD_ERROR"

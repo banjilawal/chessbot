@@ -1,7 +1,7 @@
 # src/chess/rank/model/knight/service.py
 
 """
-Module: chess.rank.model.knight.entity_service
+Module: chess.rank.model.knight.service
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

@@ -30,9 +30,12 @@ class AgentContextServiceException(ServiceException):
         *   ServiceException
 
     # PROVIDES:
-    AgentContextException
+    AgentContextServiceException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_CONTEXT_SERVICE_ERROR"

@@ -22,7 +22,7 @@ class AgentDataServiceException(DataServiceException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised when an AgentDataService's organic fields or methods run into a
-        conditioncthat leads to an operation failing.
+        condition that leads to an operation failing.
     2.  Parent of exceptions raised by classes that highly cohere with AgentDataService objects.
     3.  Catchall for AgentDataService failure states that are not covered by a lower level
         AgentDataService exception.
@@ -33,7 +33,10 @@ class AgentDataServiceException(DataServiceException):
     # PROVIDES:
     AgentDataServiceException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_DATA_SERVICE_ERROR"

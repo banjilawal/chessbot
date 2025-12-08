@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.agent import MachineAgentException
-from chess.system import ValidationException
+from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# AGENT_CONTEXT VALIDATION SUPER CLASS #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# AGENT_CONTEXT VALIDATION SUPER CLASS #======================#
-class InvalidMachineAgentException(MachineAgentException, ValidationException):
+class InvalidMachineAgentException(MachineAgentException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -32,7 +32,10 @@ class InvalidMachineAgentException(MachineAgentException, ValidationException):
     # PROVIDES:
     InvalidMachineAgentException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "MACHINE_AGENT_VALIDATION_ERROR"

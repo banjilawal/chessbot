@@ -1,7 +1,7 @@
 # src/chess/neighbor/service.py
 
 """
-Module: chess.neighbor.entity_service
+Module: chess.neighbor.service
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0

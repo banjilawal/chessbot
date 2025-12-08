@@ -14,7 +14,7 @@ from chess.square import Square, SquareBuilder, SquareValidator
 
 class SquareService(EntityService[Square]):
     """
-    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

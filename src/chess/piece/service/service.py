@@ -12,7 +12,7 @@ from chess.piece import Piece, PieceFactory, PieceValidator
 
 class PieceService(EntityService[Piece]):
     """
-    # ROLE: EntityService, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

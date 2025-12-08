@@ -29,11 +29,14 @@ class Agent(ABC):
     # PROVIDES:
     Agent
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
         *   id (int)
         *   name (string)
         *   games (UniqueGameDataService)
         *   team_assignment (UniqueTeamDataService)
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     _id: int
     _name: str
@@ -49,7 +52,7 @@ class Agent(ABC):
     ):
         """
         # Action:
-            1.  Constructor
+        Constructor
 
         # Parameters:
             *   id (int)

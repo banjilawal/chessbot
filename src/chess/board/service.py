@@ -1,7 +1,7 @@
 # src/chess/board/service.py
 
 """
-Module: chess.board.entity_service
+Module: chess.board.service
 Author: Banji Lawal
 Created: 2025-11-21
 version: 1.0.0

@@ -1,7 +1,7 @@
 # src/chess/rank/model/queen/service.py
 
 """
-Module: chess.rank.model.queen.entity_service
+Module: chess.rank.model.queen.service
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

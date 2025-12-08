@@ -1,7 +1,7 @@
 # src/chess/system/identity/service.py
 
 """
-Module: chess.system.identity.entity_service
+Module: chess.system.identity.service
 Author: Banji Lawal
 Created: 2025-11-13
 version: 1.0.0
@@ -16,7 +16,7 @@ from chess.system import (
 
 class IdentityService:
     """
-    # ROLE: EntityService, Validation, Data Integrity, ID Generation
+    # ROLE: Service, Validation, Data Integrity, ID Generation
 
     # RESPONSIBILITIES:
     1.  Issue IDs to new objects.

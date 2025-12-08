@@ -28,7 +28,7 @@ class CoordService(EntityService[Coord]):
         *   validator (type[SquareValidator]):
     """
     """
-    # ROLE: EntityService, Encapsulation, API layer.
+    # ROLE: Service, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  An API for managing the integrity lifecycle of Coord objects through CoordBuilder and CoordValidator.

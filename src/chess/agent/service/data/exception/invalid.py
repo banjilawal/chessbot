@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import ValidationException
+from chess.system import ValidationFailedException
 from chess.agent import AgentDataServiceException
 
 
@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# AGENT_DATA_SERVICE VALIDATION EXCEPTIONS #======================#
-class InvalidAgentDataServiceException(AgentDataServiceException, ValidationException):
+class InvalidAgentDataServiceException(AgentDataServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -32,7 +32,10 @@ class InvalidAgentDataServiceException(AgentDataServiceException, ValidationExce
     # PROVIDES:
     InvalidAgentDataServiceException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_DATA_SERVICE_VALIDATION_ERROR"

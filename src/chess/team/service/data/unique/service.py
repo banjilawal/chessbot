@@ -1,7 +1,7 @@
 # src/chess/team/service/data/unique/service.py
 
 """
-Module: chess.team.service.data.unique.entity_service
+Module: chess.team.service.data.unique.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -33,15 +33,6 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         *   id (int)
         *   name (str)
         *   data_service (TeamDataService)
-        
-    # CONSTRUCTOR:
-        *   __init__(id: int, name: str, data_service: TeamDataService)
-    
-    # CLASS METHODS:
-    None
-    
-    # INSTANCE METHODS:
-        *   push_unique(item: Team) -> InsertionResult[Team]
     """
     DEFAULT_NAME = "UniqueTeamDataService"
     

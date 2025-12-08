@@ -14,4 +14,4 @@ from .data import *
 
 # Modules
 from .exception import *
-from .service import TeamCertifier
+from .service import TeamService
