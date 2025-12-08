@@ -23,7 +23,6 @@ class Game:
         self._white_player = white_player
         self._black_player = black_player
         
-        
     @property
     def id(self) -> int:
         return self._id
