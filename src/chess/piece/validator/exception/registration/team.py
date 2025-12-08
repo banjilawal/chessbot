@@ -1,21 +1,21 @@
-# src/chess/piece/validator/exception/registration/base.py
+# src/chess/piece/validator/exception/registration/team.py
 
 """
-Module: chess.piece.validator.exception.registration.base_
+Module: chess.piece.validator.exception.registration.team
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
 """
 
-from chess.piece import InvalidPieceException
+from chess.piece import InvalidPieceException, PieceRegistrationException
 from chess.system import RegistrationException
 
 __all__ = [
-    # ======================# PIECE_NOT_REGISTERED_WITH_ROSTER EXCEPTION #======================#
+    # ======================# PIECE_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
     "PieceNotRegisteredWithTeamException"
 ]
 
-# ======================# PIECE_NOT_REGISTERED_WITH_ROSTER EXCEPTION #======================#
+# ======================# PIECE_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
 class PieceNotRegisteredWithTeamException(PieceRegistrationException):
     """
     # ROLE: Error Tracing, Debugging

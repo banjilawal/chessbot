@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/board.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/square.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/team.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/validator/exception/registration/agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/validator/exception/registration/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/validator/exception/registration/game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/validator/exception/registration/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/validator/exception/registration/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/validator/exception/registration/team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/exception/registration/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/exception/registration/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/exception/registration/exception.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +269,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/piece/validator/exception/registration",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/team/validator/exception/registration",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -294,11 +296,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/team/validator/exception/registration" />
       <recent name="$PROJECT_DIR$/src/chess/piece/validator/exception/registration" />
       <recent name="$PROJECT_DIR$/src/chess/system/validate" />
       <recent name="$PROJECT_DIR$/src/chess/system/build/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/build" />
-      <recent name="$PROJECT_DIR$/src/chess/piece/service/validator" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/system/build/exception" />
@@ -803,7 +805,7 @@
       <workItem from="1765072138213" duration="190000" />
       <workItem from="1765072341689" duration="38874000" />
       <workItem from="1765120886239" duration="16382000" />
-      <workItem from="1765145272408" duration="23395000" />
+      <workItem from="1765145272408" duration="25008000" />
     </task>
     <servers />
   </component>

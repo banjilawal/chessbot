@@ -1,14 +1,14 @@
-# src/chess/piece/validator/exception/registration/base.py
+# src/chess/piece/validator/exception/registration/board.py
 
 """
-Module: chess.piece.validator.exception.registration.base_
+Module: chess.piece.validator.exception.registration.board
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
 """
 
-from chess.piece import InvalidPieceException
-from chess.system import RegistrationException
+from chess.piece import  PieceRegistrationException
+
 
 __all__ = [
     # ======================# PIECE_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#

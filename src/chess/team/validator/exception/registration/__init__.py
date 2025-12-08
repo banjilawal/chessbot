@@ -12,4 +12,6 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .exception import *
+from .agent import TeamNotRegisteredWithAgentException
+from .base import TeamRegistrationException
+from .game import TeamNotRegisteredWithGameException

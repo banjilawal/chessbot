@@ -1,7 +1,7 @@
 # src/chess/piece/validator/exception/registration/base.py
 
 """
-Module: chess.piece.validator.exception.registration.base_
+Module: chess.piece.validator.exception.registration.base
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -11,7 +11,7 @@ from chess.piece import InvalidPieceException
 from chess.system import RegistrationException
 
 __all__ = [
-    # ======================# PIECE REGISTRATION EXCEPTION SUPER CLASS #======================#
+    # ======================# PIECE_REGISTRATION EXCEPTION SUPER CLASS #======================#
     "PieceRegistrationException"
 ]
 
