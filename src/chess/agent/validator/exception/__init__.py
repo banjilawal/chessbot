@@ -14,4 +14,4 @@ from .null import *
 from .registration import *
 
 # Modules
-from .exception import *
+from .invalid import InvalidAgentException
