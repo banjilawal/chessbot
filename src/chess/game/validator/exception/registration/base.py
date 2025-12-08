@@ -1,36 +1,36 @@
-# src/chess/agent/validator/exception/registration/base.py
+# src/chess/game/validator/exception/registration/base.py
 
 """
-Module: chess.agent.validator.exception.registration.base
+Module: chess.game.validator.exception.registration.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import InvalidAgentException
+from chess.game import InvalidGameException
 from chess.system import RegistrationException
 
 __all__ = [
-    # ======================# AGENT REGISTRATION EXCEPTION SUPER CLASS #======================#
-    "AgentRegistrationException",
+    # ======================# GAME REGISTRATION EXCEPTION SUPER CLASS #======================#
+    "GameRegistrationException",
 ]
 
 
-# ======================# AGENT_REGISTRATION EXCEPTION SUPER CLASS #======================#
-class AgentRegistrationException(InvalidAgentException, RegistrationException):
+# ======================# GAME_REGISTRATION EXCEPTION SUPER CLASS #======================#
+class GameRegistrationException(InvalidGameException, RegistrationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall Exception for when an Agent has set its owner correctly but the owner does not
-        have the agent in its collection.
+    1.  Catchall Exception for when an Game has set its owner correctly but the owner does not
+        have the game in its collection.
 
     # PARENT:
-        *   InvalidAgentException
+        *   InvalidGameException
         *   RegistrationException
 
     # PROVIDES:
-    AgentRegistrationException
+    GameRegistrationException
 
     # LOCAL ATTRIBUTES:
     None
@@ -38,5 +38,5 @@ class AgentRegistrationException(InvalidAgentException, RegistrationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_REGISTRATION_ERROR"
-    DEFAULT_MESSAGE = "Agent not registered with parent."
+    ERROR_CODE = "GAME_REGISTRATION_ERROR"
+    DEFAULT_MESSAGE = "Game not registered with parent."

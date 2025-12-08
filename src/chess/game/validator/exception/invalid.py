@@ -1,41 +1,41 @@
-# src/chess/agent/validator/exception/exception.py
+# src/chess/game/validator/exception/exception.py
 
 """
-Module: chess.agent.validator.exception.exception
+Module: chess.game.validator.exception.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import AgentException
+from chess.game import GameException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# AGENT VALIDATION EXCEPTION SUPER CLASS #======================#
-    "InvalidAgentException",
+    # ======================# GAME VALIDATION EXCEPTION SUPER CLASS #======================#
+    "InvalidGameException",
 ]
 
 
-# ======================# AGENT VALIDATION EXCEPTION SUPER CLASS #======================#
-class InvalidAgentException(AgentException, ValidationFailedException):
+# ======================# GAME VALIDATION EXCEPTION SUPER CLASS #======================#
+class InvalidGameException(GameException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during an Agent verification process.
-    2.  Catchall Exception for AgentValidator when a candidate fails a sanity check.
-    3.  Wraps unhandled exceptions that hit the try-finally block of an AgentValidator method.
+    1.  Parent of exceptions raised during an Game verification process.
+    2.  Catchall Exception for GameValidator when a candidate fails a sanity check.
+    3.  Wraps unhandled exceptions that hit the try-finally block of an GameValidator method.
 
     # PARENT
-        *   AgentException
+        *   GameException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidAgentException
+    InvalidGameException
 
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Agent validation failed."
+    ERROR_CODE = "GAME_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Game validation failed."
 

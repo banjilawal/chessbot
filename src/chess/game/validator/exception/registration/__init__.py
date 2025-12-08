@@ -1,17 +1,17 @@
-# src/chess/agent/validator/exception/registration/__init__.py
+# src/chess/game/validator/exception/registration/__init__.py
 
 """
-Module: chess.agent.validator.exception.registration.__init__
+Module: chess.game.validator.exception.registration.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== AGENT.VALIDATOR.EXCEPTION.REGISTRATION PACKAGE CONTENTS ===========#
+# =========== GAME.VALIDATOR.EXCEPTION.REGISTRATION PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .base import AgentRegistrationException
-from .game import AgentNotRegisteredWithGameException
+from .base import GameRegistrationException
+from .game import GameNotRegisteredWithGameException

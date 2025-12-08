@@ -10,12 +10,10 @@ version: 1.0.0
 from typing import Optional
 
 
-from chess.game import Game, GameService
 from chess.agent import Agent, AgentService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.game import (
-    GameVariety, GameContext, GameContextBuildFailedException, NoGameContextFlagException,
-    TooManyGameContextFlagsException
+    GameContext, GameContextBuildFailedException, NoGameContextFlagException, TooManyGameContextFlagsException
 )
 
 
