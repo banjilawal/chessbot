@@ -42,9 +42,9 @@ class RankSpecValidator(Validator[RankSpec]):
     # CLASS METHODS:
         *   validate(candidate: Any) -> ValidationResult[RankSpec]:
         
-        *   verify_id_in_spec(candidate: Any, idservice: IdentityService) -> ValidationResult[int]:
+        *   verify_id_in_spec(candidate: Any, identity_service: IdentityService) -> ValidationResult[int]:
         
-        *   verify_name_in_spec(candidate: Any, idservice: IdentityService) -> ValidationResult[str]:
+        *   verify_name_in_spec(candidate: Any, identity_service: IdentityService) -> ValidationResult[str]:
         
         *   verify_designation_in_spec(candidate: Any, text_validator: TextValidator) -> ValidationResult[str]:
         
@@ -112,13 +112,13 @@ class RankSpecValidator(Validator[RankSpec]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe id using idservice. If safe get the id. Else return failure.
+        1.  Verify candidate is a safe id using identity_service. If safe get the id. Else return failure.
         2.  If number not in RankSpec.allowed_ransoms return a failed validation result.
         3.  If all checks pass the number in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -160,13 +160,13 @@ class RankSpecValidator(Validator[RankSpec]):
     ) -> ValidationResult[str]:
         """
         # ACTION:
-        1.  Verify candidate is a safe id using idservice. If so convert to id. Else return failure.
+        1.  Verify candidate is a safe id using identity_service. If so convert to id. Else return failure.
         2.  If id not in RankSpec.allowed_ids return a failed validation result.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[str] containing either:

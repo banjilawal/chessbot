@@ -42,7 +42,7 @@ class TeamContextValidator(Validator[TeamContext]):
                         candidate: Any,
                         schema: TeamSchema = TeamSchema,
                         agent_certifier: AgentService = AgentService(),
-                        idservice: IdentityService = IdentityService(),
+                        identity_service: IdentityService = IdentityService(),
                 ) -> ValidationResult[TeamContext]:
                 
     # INSTANCE METHODS:
@@ -71,7 +71,7 @@ class TeamContextValidator(Validator[TeamContext]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   idservice (IdentityService):
+            *   identity_service (IdentityService):
             *   agent_certifier (PlayerAgentService):
             *   schema (TeamSchema)
 

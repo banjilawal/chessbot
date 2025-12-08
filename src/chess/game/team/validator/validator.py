@@ -38,7 +38,7 @@ class TeamValidator(Validator[Team]):
     
     # CLASS METHODS:
            validate(
-                candidate: Any, agent_certifier: AgentService, idservice: IdentityService
+                candidate: Any, agent_certifier: AgentService, identity_service: IdentityService
                 team_schema_validator: TeamSchemaValidator
             ) -> ValidationResult[Team]:
             
@@ -78,7 +78,7 @@ class TeamValidator(Validator[Team]):
             *   candidate (Any)
             *   schema (TeamSchema)
             *   agent_certifier (PlayerAgentService)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[Team] containing either:

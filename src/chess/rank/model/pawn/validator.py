@@ -128,14 +128,14 @@ class PawnValidator(Validator[Pawn]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe id using idservice. If so convert to id. Else return failure.
+        1.  Verify candidate is a safe id using identity_service. If so convert to id. Else return failure.
         2.  Check if id != RankSpec.PAWN.id. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (RankSpec)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -178,14 +178,14 @@ class PawnValidator(Validator[Pawn]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe name using idservice. If so convert to name. Else return failure.
+        1.  Verify candidate is a safe name using identity_service. If so convert to name. Else return failure.
         2.  Check if name != RankSpec.PAWN.name. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (RankSpec)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[str] containing either:

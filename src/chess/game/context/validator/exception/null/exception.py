@@ -1,41 +1,41 @@
-# src/chess/agent/context/validator/exception/null/exception.py
+# src/chess/game/context/validator/exception/null/exception.py
 
 """
-Module: chess.agent.context.validator.exception.null.exception
+Module: chess.game.context.validator.exception.null.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.agent import InvalidAgentContextException
+from chess.game import InvalidGameContextException
 
 __all__ = [
-    # ======================# AGENT_CONTEXT NULL EXCEPTIONS #======================#
-    "NullAgentContextException",
+    # ======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
+    "NullGameContextException",
 ]
 
-# ======================# AGENT_CONTEXT NULL EXCEPTIONS #======================#
-class NullAgentContextException(InvalidAgentContextException, NullException):
+# ======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
+class NullGameContextException(InvalidGameContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an AgentContext validation candidate is null.
-    2.  Raised if an entity, method or operation requires an AgentContext but receives null instead.
+    1.  Raised if an GameContext validation candidate is null.
+    2.  Raised if an entity, method or operation requires an GameContext but receives null instead.
     
     # PARENT:
-        *   InvalidAgentContextException
-        *   NullAgentContextException
+        *   InvalidGameContextException
+        *   NullGameContextException
 
     # PROVIDES:
-    NullAgentContextException
+    NullGameContextException
 
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_AGENT_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "AgentContext cannot be null."
+    ERROR_CODE = "NULL_GAME_CONTEXT_ERROR"
+    DEFAULT_MESSAGE = "GameContext cannot be null."
     
     
     

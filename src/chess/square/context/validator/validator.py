@@ -43,7 +43,7 @@ class SquareContextValidator(Validator[SquareContext]):
                         candidate: Any,
                         board_service: BoardService = BoardService(),
                         coord_service: CoordService = CoordService(),
-                        idservice: IdentityService = IdentityService(),
+                        identity_service: IdentityService = IdentityService(),
                 ) -> ValidationResult[SquareContext]:
 
     # INSTANCE METHODS:
@@ -72,7 +72,7 @@ class SquareContextValidator(Validator[SquareContext]):
             *   candidate (Any)
             *   board_service (BoardService)
             *   coord_service (CoordService)
-            *   idservice (IdentityService):
+            *   identity_service (IdentityService):
 
         # Returns:
         ValidationResult[SquareContext] containing either:

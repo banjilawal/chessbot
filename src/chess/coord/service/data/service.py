@@ -33,7 +33,7 @@ class CoordDataService(DataService[Coord]):
         *   builder (type[SquareBuilder]):
         *   validator (type[SquareValidator]):
         *   coord_service (CoordService)
-        *   idservice (IdentityService)
+        *   identity_service (IdentityService)
     """
     """
     # ROLE: Service, Data Protraction

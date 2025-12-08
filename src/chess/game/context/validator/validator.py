@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/validator.py
+# src/chess/game/context/validator/validator.py
 
 """
-Module: chess.agent.context.validator.validator
+Module: chess.game.context.validator.validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -10,27 +10,27 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.game import GameService
-from chess.team import TeamService
+from chess.agent import AgentService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
-from chess.agent import (
-    AgentContext, AgentVariety, InvalidAgentContextException, NoAgentContextFlagException, NullAgentContextException,
-    TooManyAgentContextFlagsException
+from chess.game import (
+    GameContext, GameVariety, InvalidGameContextException, NoGameContextFlagException, NullGameContextException,
+    TooManyGameContextFlagsException
 )
 
 
-class AgentContextValidator(Validator[AgentContext]):
+class GameContextValidator(Validator[GameContext]):
     """
     # ROLE: Validation
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is an AgentContext object's safety before a client uses it.
+    1. Verify a candidate is an GameContext object's safety before a client uses it.
 
     # PARENT
         *   Validator
 
     # PROVIDES:
-    ValidationResult[AgentContext] containing either:
-        - On success: AgentContext in the payload.
+    ValidationResult[GameContext] containing either:
+        - On success: GameContext in the payload.
         - On failure: Exception.
 
     # LOCAL ATTRIBUTES:
@@ -45,106 +45,87 @@ class AgentContextValidator(Validator[AgentContext]):
     def validate(
             cls,
             candidate: Any,
-            team_service: TeamService = TeamService(),
-            game_service: GameService = GameService(),
-            idservice: IdentityService = IdentityService(),
-    ) -> ValidationResult[AgentContext]:
+            agent_service: AgentService = AgentService(),
+            identity_service: IdentityService = IdentityService(),
+    ) -> ValidationResult[GameContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, name, team, game, agent_variety) tuple is not null.
+            1.  Confirm that only one in the (id, name, agent, game, game_variety) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an AgentContext are return in a BuildResult.
+            4.  On success Build an GameContext are return in a BuildResult.
 
         # Parameters:
         Only one these must be provided:
             *   id (Optional[int])
             *   name (Optional[str])
-            *   team (Optional[Team])
+            *   agent (Optional[Agent])
             *   game (Optional[Game])
-            *   agent_variety (Optional[AgentVariety])
+            *   game_variety (Optional[GameVariety])
 
         These Parameters must be provided:
-            *   team_service (TeamService)
+            *   agent_service (AgentService)
             *   game_service (GameService)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
 
         # Returns:
-          BuildResult[AgentContext] containing either:
-                - On success: AgentContext in the payload.
+          BuildResult[GameContext] containing either:
+                - On success: GameContext in the payload.
                 - On failure: Exception.
 
         # Raises:
             *   TypeError
-            *   NullAgentContextException
-            *   NoAgentContextFlagException
-            *   TooManyAgentContextFlagsException
-            *   InvalidAgentContextException
+            *   NullGameContextException
+            *   NoGameContextFlagException
+            *   TooManyGameContextFlagsException
+            *   InvalidGameContextException
         """
-        method = "AgentContextValidator.validate"
+        method = "GameContextValidator.validate"
         try:
             # If the candidate is null no other checks are needed.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullAgentContextException(f"{method}: {NullAgentContextException.DEFAULT_MESSAGE}")
+                    NullGameContextException(f"{method}: {NullGameContextException.DEFAULT_MESSAGE}")
                 )
-            # If the candidate is not an AgentContext validation has failed.
-            if not isinstance(candidate, AgentContext):
+            # If the candidate is not an GameContext validation has failed.
+            if not isinstance(candidate, GameContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected AgentContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected GameContext, got {type(candidate).__name__} instead.")
                 )
-            # Once the two existence checks are passed candidate can be cast to an AgentContext
+            # Once the two existence checks are passed candidate can be cast to an GameContext
             # For additional checks.
-            context = cast(AgentContext, candidate)
+            context = cast(GameContext, candidate)
             
-            # Perform the two checks ensuring only one Agent attribute value will be used in the searcher.
+            # Perform the two checks ensuring only one Game attribute value will be used in the searcher.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
+                    NoGameContextFlagException(f"{method}: {NoGameContextFlagException.DEFAULT_MESSAGE}")
                 )
             
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyAgentContextFlagsException(
-                        f"{method}: {TooManyAgentContextFlagsException.DEFAULT_MESSAGE}"
+                    TooManyGameContextFlagsException(
+                        f"{method}: {TooManyGameContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # Which ever attribute value is not null should be certified safe by the appropriate validator.
             if context.id is not None:
-                validation = idservice.validate_id(candidate=context.id)
+                validation = identity_service.validate_id(candidate=context.id)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
-            if context.name is not None:
-                validation = idservice.validate_name(candidate=context.name)
+            if context.agent is not None:
+                validation = agent_service.item_validator.validate(candidate=context.agent)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
-            if context.team is not None:
-                validation = team_service.item_validator.validate(candidate=context.team)
-                if validation.is_failure():
-                    return ValidationResult.failure(validation.exception)
-                return ValidationResult.success(context)
-            
-            if context.game is not None:
-                validation = game_service.item_validator.validate(candidate=context.game)
-                if validation.is_failure():
-                    return ValidationResult.failure(validation.exception)
-                return ValidationResult.success(context)
-            
-            if context.variety is not None:
-                if context.variety not in [AgentVariety.HUMAN_AGENT, AgentVariety.MACHINE_AGENT]:
-                    return ValidationResult.failure(
-                        TypeError(f"{method}: Expected AgentType, got {type(candidate).__name__} instead.")
-                    )
-                return ValidationResult.success(context)
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidAgentContextException. Then send exception chain a ValidationResult.failure.
+        # an InvalidGameContextException. Then send exception chain a ValidationResult.failure.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidAgentContextException(
-                    ex=ex, message=f"{method}: {InvalidAgentContextException.DEFAULT_MESSAGE}"
+                InvalidGameContextException(
+                    ex=ex, message=f"{method}: {InvalidGameContextException.DEFAULT_MESSAGE}"
                 )
             )

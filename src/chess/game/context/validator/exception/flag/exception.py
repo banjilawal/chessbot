@@ -1,62 +1,62 @@
-# src/chess/agent/context/validator/exception/flag/exception.py
+# src/chess/game/context/validator/exception/flag/exception.py
 
 """
-Module: chess.agent.context.validator.exception.flag.exception
+Module: chess.game.context.validator.exception.flag.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.agent import InvalidAgentContextException
+from chess.game import InvalidGameContextException
 
 __all__ = [
-    # ========================= NO_AGENT_CONTEXT_FLAG EXCEPTION =========================#
-    "NoAgentContextFlagException",
-    # ========================= TOO_MANY_AGENT_CONTEXT_FLAGS EXCEPTION =========================#
-    "TooManyAgentContextFlagsException"
+    # ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
+    "NoGameContextFlagException",
+    # ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+    "TooManyGameContextFlagsException"
 ]
 
 
-# ========================= NO_AGENT_CONTEXT_FLAG EXCEPTION =========================#
-class NoAgentContextFlagException(InvalidAgentContextException, ContextFlagCountException):
+# ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
+class NoGameContextFlagException(InvalidGameContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no AgentContext flag is provided with a searcher value.
+    1.  Indicate no GameContext flag is provided with a searcher value.
     
     # PARENT
-        *   InvalidAgentContextException
+        *   InvalidGameContextException
         *   ContextFlagCountException
 
     # PROVIDES:
-    NoAgentContextFlagException
+    NoGameContextFlagException
 
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_AGENT_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "No AgentContext flag was selected. A context flag must be turned on with a target value."
+    ERROR_CODE = "NO_GAME_CONTEXT_FLAG_ERROR"
+    DEFAULT_MESSAGE = "No GameContext flag was selected. A context flag must be turned on with a target value."
 
 
-# ========================= TOO_MANY_AGENT_CONTEXT_FLAGS EXCEPTION =========================#
-class TooManyAgentContextFlagsException(InvalidAgentContextException, ContextFlagCountException):
+# ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+class TooManyGameContextFlagsException(InvalidGameContextException, ContextFlagCountException):
     """
-    # ROLE: ContextFlagException, AgentContextException
+    # ROLE: ContextFlagException, GameContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one Agent attribute is going to be used in an AgentFinder.
+    1.  Indicate if more than one Game attribute is going to be used in an GameFinder.
     
     # PARENT
-        *   InvalidAgentContextException
+        *   InvalidGameContextException
         *   ContextFlagCountException
 
     # PROVIDES:
-    TooManyAgentContextFlagsException
+    TooManyGameContextFlagsException
 
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOO_MANY_AGENT_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "More than one AgentContext flag was selected. Only one context flag is allowed."
+    ERROR_CODE = "TOO_MANY_GAME_CONTEXT_FLAGS_ERROR"
+    DEFAULT_MESSAGE = "More than one GameContext flag was selected. Only one context flag is allowed."

@@ -39,7 +39,7 @@ class TeamBuilder(Builder[Team]):
                     agent: Agent,
                     schema: TeamSchema,
                     agent_certifier: AgentService = AgentService(),
-                    idservice: IdentityService = IdentityService(),
+                    identity_service: IdentityService = IdentityService(),
                     roster: UniquePieceDataService = UniquePieceDataService(),
                     hostages: UniquePieceDataService = UniquePieceDataService(),
                     schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
@@ -78,7 +78,7 @@ class TeamBuilder(Builder[Team]):
             *   id (int)
             *   agent (Agent)
             *   schema (TeamSchema)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
             *   agent_certifier (AgentService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.

@@ -71,7 +71,7 @@ class GameBuilder(Builder[Game]):
             *   id (int)
             *   white_player (Agent)
             *   black_player (GameSchema)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
             *   agent_certifier (AgentService)
             *   schema_validator (GameSchemaValidator)
         All Services have default values to ensure they are never null.

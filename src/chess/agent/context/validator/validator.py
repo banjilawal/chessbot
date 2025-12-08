@@ -67,7 +67,7 @@ class AgentContextValidator(Validator[AgentContext]):
         These Parameters must be provided:
             *   team_service (TeamService)
             *   game_service (GameService)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
 
         # Returns:
           BuildResult[AgentContext] containing either:

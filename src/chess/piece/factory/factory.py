@@ -49,7 +49,7 @@ class PieceFactory(Builder[Piece]):
                     rank_certifier: RankCertifier = RankCertifier(),
                     team_certifier: TeamCertifier = TeamCertifier(),
                     positions: CoordDataService = CoordDataService(),
-                    idservice: IdentityService = IdentityService(),
+                    identity_service: IdentityService = IdentityService(),
         ) -> BuildResult[Piece]:
         
         For ease of use and cleaner code dependencies are given default values. All flags must
@@ -73,7 +73,7 @@ class PieceFactory(Builder[Piece]):
             # rank_integrity: RankCertifier = RankCertifier(),
             # team_integrity: TeamCertifier = TeamCertifier(),
             # positions: CoordDataService = CoordDataService(),
-            # idservice: IdentityService = IdentityService(),
+            # identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Piece]:
         """
         # ACTION:
@@ -88,7 +88,7 @@ class PieceFactory(Builder[Piece]):
             *   rank_certifier (RankCertifier)
             *   team_certifier (TeamCertifier)
             *   positions (CoordDataService)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
     
         # Returns:
         BuildResult[Position] containing either:

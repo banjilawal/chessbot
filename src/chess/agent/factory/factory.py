@@ -113,7 +113,7 @@ class AgentFactory(Builder[Agent]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[HumanAgent] containing either:
@@ -159,14 +159,14 @@ class AgentFactory(Builder[Agent]):
     ) -> BuildResult[MachineAgent]:
         """
         # ACTION:
-        1.  Certifying the id and name and name are safe with idservice.
+        1.  Certifying the id and name and name are safe with identity_service.
         2.  Use engine_service_validator to ensure the engine_service has all the required components.
 
         # PARAMETERS:
             *   id (int)
             *   name (str)
             *   engine_service (EngineService)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
             *   engine_service_validator (EngineServiceValidator)
 
         # Returns:

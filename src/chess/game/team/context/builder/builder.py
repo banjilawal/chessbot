@@ -49,7 +49,7 @@ class TeamContextBuilder(Builder[TeamContext]):
 
                         agent_certifier: AgentService = AgentService(),
                         team_validator: TeamValidator = TeamValidator(),
-                        idservice: IdentityService = IdentityService(),
+                        identity_service: IdentityService = IdentityService(),
                         schema_validator: Optional[TeamSchemaValidator] = TeamSchemaValidator(),
                ) -> BuildResult[TeamContext]:
         For ease of use and cleaner code dependencies are given default values. All flags must
@@ -90,7 +90,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         These Parameters must be provided:
             *   game_service (GameService)
             *   agent_certifier (AgentService)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
             *   schema_validator (TeamSchemaValidator)
 
         # Returns:

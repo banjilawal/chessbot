@@ -40,7 +40,7 @@ class SquareValidator(Validator[Square]):
     # CLASS METHODS:
            validate(
                 candidate: Any, board_service: BoardService, coord_service: CoordService,
-                idservice: IdentityService
+                identity_service: IdentityService
             ) -> ValidationResult[Square]:
             
            verify_agent_has_registered_team(
@@ -69,7 +69,7 @@ class SquareValidator(Validator[Square]):
         # ACTION:
         1.  Check candidate is not validation.
         2.  Check if candidate is a Square.
-        3.  Run id and name integrity checks with idservice
+        3.  Run id and name integrity checks with identity_service
         4.  Run target integrity checks with coord_service.
         5  If any check fails, return the exception inside a ValidationResult.
         3.  When all checks pass cast candidate to a Square instance, then return inside a ValidationResult.
@@ -77,8 +77,8 @@ class SquareValidator(Validator[Square]):
         # PARAMETERS:
             *   candidate (Any): Object to validate.
             *   coord_service (CoordService)
-            *   idservice: (IdentityService)
-        coord_service and idservice have default values.
+            *   identity_service: (IdentityService)
+        coord_service and identity_service have default values.
 
         # Returns:
         ValidationResult[Coord] containing either:

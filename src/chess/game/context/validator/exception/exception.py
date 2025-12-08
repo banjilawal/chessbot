@@ -1,38 +1,38 @@
-# src/chess/agent/context/validator/exception/exception.py
+# src/chess/game/context/validator/exception/exception.py
 
 """
-Module: chess.agent.context.validator.exception.exception
+Module: chess.game.context.validator.exception.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import ValidationFailedException
-from chess.agent import AgentContextException
+from chess.game import GameContextException
 
 __all__ = [
-    # ======================# AGENT_CONTEXT VALIDATION SUPER CLASS #======================#
-    "InvalidAgentContextException",
+    # ======================# GAME_CONTEXT VALIDATION SUPER CLASS #======================#
+    "InvalidGameContextException",
 ]
 
-# ======================# AGENT_CONTEXT VALIDATION SUPER CLASS #======================#
-class InvalidAgentContextException(AgentContextException, ValidationFailedException):
+# ======================# GAME_CONTEXT VALIDATION SUPER CLASS #======================#
+class InvalidGameContextException(GameContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised AgentContext validation.
-    2.  Wraps unhandled exceptions that hit the finally-block in AgentContextValidator methods.
+    1.  Parent of exceptions raised GameContext validation.
+    2.  Wraps unhandled exceptions that hit the finally-block in GameContextValidator methods.
     
     # PARENT
-        *   AgentContextException
+        *   GameContextException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidAgentContextException
+    InvalidGameContextException
 
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "AgentContext validation failed."
+    ERROR_CODE = "GAME_CONTEXT_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "GameContext validation failed."

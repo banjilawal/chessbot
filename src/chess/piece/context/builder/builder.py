@@ -70,7 +70,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             *   team_certifier (TeamCertifier)
             *   rank_certifier (RankCertifier)
             *   coord_service (CoordService)
-            *   idservice (IdentityService)
+            *   identity_service (IdentityService)
 
         # Returns:
           BuildResult[CoordContext] containing either:
