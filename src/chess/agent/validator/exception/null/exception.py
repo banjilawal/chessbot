@@ -8,22 +8,30 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.agent import InvalidAgentException, AgentTypeException
+from chess.agent import InvalidAgentException
 
 __all__ = [
     # ======================# AGENT NULL EXCEPTIONS #======================#
     "NullAgentException",
-    "NullAgentTypeException",
 ]
 
 # ======================# AGENT_CONTEXT NULL EXCEPTIONS #======================#
 class NullAgentException(InvalidAgentException, NullException):
-    """Raised if an entity, method, or operation requires an Agent but gets null instead."""
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate if an entity, method or operation required an Agent  but got null instead.
+
+    # PARENT
+        *   InvalidAgentException
+        *   NullException
+
+    # PROVIDES:
+    NullAgentCException
+
+    # ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "NULL_AGENT_ERROR"
     DEFAULT_MESSAGE = "Agent cannot be null."
-
-
-class NullAgentTypeException(AgentTypeException, NullException):
-    """Raised if an entity, method, or operation requires an AgentVariety but gets null instead."""
-    ERROR_CODE = "NULL_AGENT_TYPE_ERROR"
-    DEFAULT_MESSAGE = "AgentVariety cannot be null."

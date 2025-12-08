@@ -19,12 +19,14 @@ class AgentDataService(DataService[Agent]):
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing API.
-    2.  Stack data structure for Agent objects with no guarantee of uniqueness.
-    3.  Implements search, insert, delete, and update operations on Agent objects.
-    4.
-    5.  Including a AgentCertifier instance creates a microservice for clients.
-
+    1.  Microservice API for managing and searching Agent collections.
+    2.  Assures collection is always reliable.
+    3.  Assure only valid Agents are put in the collection.
+    4.  Assure updates do not break the integrity individual items in the collection or
+        the collection itself.
+    5.  Provide Agent stack data structure with no guarantee of uniqueness.
+    6.  Search utility.
+    
     # PARENT
         *   DataService
 

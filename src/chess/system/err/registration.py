@@ -8,7 +8,8 @@ version: 1.0.0
 """
 
 
-from chess.system.err import ChessException
+from chess.system import BiDirectionalException
+
 
 
 __all__ = [
@@ -18,7 +19,26 @@ __all__ = [
 
 
 # ======================# REGISTRATION EXCEPTION SUPER CLASS #======================#
-class RegistrationException(ChessException):
-    """Raised when Entity.owner == owner but the Owner does not find the item in its dataset."""
+class RegistrationException(BiDirectionalException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate if an item has its owner set correctly but the item does not exist in the Owner's collection.
+    2.  Indicate a bidirectional relationship is broken on the owning side
+    3.  Raised when Entity.owner == owner but the Owner does not find the item in its dataset.
+
+    # PARENT:
+        *   ChessException
+
+    # PROVIDES:
+    BiDirectionalException
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "NO_DATA_SET_REGISTRATION_ERROR"
     DEFAULT_MESSAGE = "The item is not found in its owner's dataset."

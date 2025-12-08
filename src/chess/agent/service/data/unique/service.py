@@ -19,10 +19,12 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Adds uniqueness feature to AgentDataService. Ensures all agents in the dataset are unique.
+    1.  Ensure all items in managed by AgentDataService are unique.
+    2.  Guarantee consistency of records in AgentDataService.
 
     # PROVIDES:
-        *   TeamDataService
+        *   AgentDataService
+        *   No duplicates
 
     # LOCAL ATTRIBUTES:
     None
@@ -38,6 +40,21 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
             name: str = DEFAULT_NAME,
             data_service: AgentDataService = AgentDataService()
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (int): = id_emitter.service_id
+            *   name (str): = DEFAULT_NAME
+            *   data_service (AgentDataService): = AgentDataService()
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(id=id, name=name, data_service=data_service)
         
     @property
