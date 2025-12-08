@@ -7,16 +7,18 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import ValidationException
 from chess.agent import AgentVarietyException
+from chess.system import ValidationFailedException
+
 
 __all__ = [
     # ======================# AGENT_VARIETY EXCEPTION #======================#
     "InvalidAgentVarietyException",
 ]
 
+
 # ======================# AGENT_VARIETY VALIDATION EXCEPTION  #======================#
-class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
+class InvalidAgentVarietyException(AgentVarietyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -36,5 +38,3 @@ class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
     """
     ERROR_CODE = "AGENT_VARIETY_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Failed AgentVariety validation."
-
-

@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .human import *
-from .machne import *
+from .machine import *
 from .variety import *
 
 # Modules

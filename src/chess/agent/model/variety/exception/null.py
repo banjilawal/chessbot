@@ -10,6 +10,7 @@ version: 1.0.0
 from chess.system import NullException
 from chess.agent import InvalidAgentVarietyException
 
+
 __all__ = [
     # ======================# AGENT_VARIETY NULL EXCEPTION #======================#
     "AgentVarietyNullException",
