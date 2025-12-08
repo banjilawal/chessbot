@@ -1,17 +1,17 @@
-# src/chess/agent/context/service/__init__.py
+# src/chess/game/context/service/__init__.py
 
 """
-Module: chess.agent.context.service.__init__
+Module: chess.game.context.service.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== AGENT.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
+# =========== GAME.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
 from.exception import *
 
 # Modules
-from .service import AgentContextService
-from .validator import AgentContextServiceValidator
+from .service import GameContextService
+from .validator import GameContextServiceValidator

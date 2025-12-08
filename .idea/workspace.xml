@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/game/finder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/game/finder/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/game/finder/finder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/game/context/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/context/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/builder/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/service/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/service/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/service/exception/invalid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/service/exception/invalid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/game.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -799,7 +807,7 @@
       <workItem from="1765072138213" duration="190000" />
       <workItem from="1765072341689" duration="38874000" />
       <workItem from="1765120886239" duration="16382000" />
-      <workItem from="1765145272408" duration="32220000" />
+      <workItem from="1765145272408" duration="33474000" />
     </task>
     <servers />
   </component>

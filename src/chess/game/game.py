@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
+from typing import List
 
 from chess.board import BoardService
 from chess.agent import Agent, UniqueAgentDataService
@@ -38,4 +39,8 @@ class Game:
     @property
     def black_player(self) -> Agent:
         return self._black_player
+    
+    @property
+    def players(self) -> List[Agent]:
+        return [self._white_player, self._black_player]
         

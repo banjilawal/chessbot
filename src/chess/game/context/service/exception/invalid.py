@@ -1,37 +1,37 @@
-# src/chess/agent/context/service/exception/invalid.py
+# src/chess/game/context/service/exception/invalid.py
 
 """
-Module: chess.agent.context.service.exception.invalid
+Module: chess.game.context.service.exception.invalid
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import ValidationFailedException
-from chess.agent import AgentContextServiceException
+from chess.game import GameContextServiceException
 
 
 __all__ = [
-    # ======================# AGENT_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
-    "InvalidAgentContextServiceException",
+    # ======================# GAME_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
+    "InvalidGameContextServiceException",
 ]
 
 
-# ======================# AGENT_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
-class InvalidAgentContextServiceException(AgentContextServiceException, ValidationFailedException):
+# ======================# GAME_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
+class InvalidGameContextServiceException(GameContextServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during AgentContextService verification process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentContextServiceValidator method.
+    1.  Parent of exceptions raised during GameContextService verification process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an GameContextServiceValidator method.
     
     # PARENT
-        *   AgentContextServiceException
+        *   GameContextServiceException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidAgentContextServiceException
+    InvalidGameContextServiceException
 
     # LOCAL ATTRIBUTES:
     None
@@ -39,5 +39,5 @@ class InvalidAgentContextServiceException(AgentContextServiceException, Validati
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_CONTEXT_SERVICE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "AgentContextService validation failed."
+    ERROR_CODE = "GAME_CONTEXT_SERVICE_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "GameContextService validation failed."

@@ -1,37 +1,37 @@
-# src/chess/agent/context/builder/exception.py
+# src/chess/game/context/builder/exception.py
 
 """
-Module: chess.agent.context.builder.exception
+Module: chess.game.context.builder.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import BuildFailedException
-from chess.agent import AgentContextException
+from chess.game import GameContextException
 
 
 __all__ = [
-    # ======================# AGENT_CONTEXT BUILD EXCEPTIONS #======================#
-    "AgentContextBuildFailedException",
+    # ======================# GAME_CONTEXT BUILD EXCEPTIONS #======================#
+    "GameContextBuildFailedException",
 ]
 
 
-# ======================# AGENT_CONTEXT BUILD EXCEPTIONS #======================#
-class AgentContextBuildFailedException(AgentContextException, BuildFailedException):
+# ======================# GAME_CONTEXT BUILD EXCEPTIONS #======================#
+class GameContextBuildFailedException(GameContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during AgentContext build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentContextBuilder method.
+    1.  Parent of exceptions raised during GameContext build process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an GameContextBuilder method.
     
     # PARENT
-        *   AgentContextException
+        *   GameContextException
         *   BuildFailedException
 
     # PROVIDES:
-    AgentContextBuildFailedException
+    GameContextBuildFailedException
 
     # LOCAL ATTRIBUTES:
     None
@@ -39,5 +39,5 @@ class AgentContextBuildFailedException(AgentContextException, BuildFailedExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_CONTEXT_BUILD_ERROR"
-    DEFAULT_MESSAGE = "Agent build failed."
+    ERROR_CODE = "GAME_CONTEXT_BUILD_ERROR"
+    DEFAULT_MESSAGE = "Game build failed."

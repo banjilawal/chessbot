@@ -1,7 +1,7 @@
-# src/chess/agent/context/service/service.py
+# src/chess/game/context/service/service.py
 
 """
-Module: chess.agent.context.service.service
+Module: chess.game.context.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -10,24 +10,24 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import ContextService, id_emitter
-from chess.agent import AgentContext, AgentContextBuilder, AgentContextValidator, AgentFinder
+from chess.game import GameContext, GameContextBuilder, GameContextValidator, GameFinder
 
 
-class AgentContextService(ContextService[AgentContext]):
+class GameContextService(ContextService[GameContext]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Agent search microservice.
+    1.  Public facing Game search microservice.
     2.  Encapsulates query building and searching functions into a single extendable module that easy to use.
 
     # PARENT
         *   ContextService
 
     # PROVIDES:
-        *   AgentFinder
-        *   AgentContextBuilder
-        *   AgentContextValidator
+        *   GameFinder
+        *   GameContextBuilder
+        *   GameContextValidator
 
     # LOCAL ATTRIBUTES:
     None
@@ -35,15 +35,15 @@ class AgentContextService(ContextService[AgentContext]):
     # INHERITED ATTRIBUTES:
     See ContextService for inherited attributes.
     """
-    DEFAULT_NAME = "AgentContextService"
+    DEFAULT_NAME = "GameContextService"
     
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            finder:AgentFinder = AgentFinder(),
-            builder: AgentContextBuilder = AgentContextBuilder(),
-            validator: AgentContextValidator = AgentContextValidator(),
+            finder:GameFinder = GameFinder(),
+            builder: GameContextBuilder = GameContextBuilder(),
+            validator: GameContextValidator = GameContextValidator(),
     ):
         """
         # Action:
@@ -52,9 +52,9 @@ class AgentContextService(ContextService[AgentContext]):
         # Parameters:
             *   name (str): Default value - DEFAULT_NAME
             *   id (int): Default value - id_emitter.service_id
-            *   finder (AgentFinder): Default value - AgentFinder()
-            *   builder (AgentContextBuilder): Default value - AgentContextBuilder()
-            *   validator (AgentContextValidator): Default value - AgentContextValidator()
+            *   finder (GameFinder): Default value - GameFinder()
+            *   builder (GameContextBuilder): Default value - GameContextBuilder()
+            *   validator (GameContextValidator): Default value - GameContextValidator()
 
         # Returns:
         None
@@ -62,17 +62,17 @@ class AgentContextService(ContextService[AgentContext]):
         # Raises:
         None
         """
-        method = "AgentContextService.__init__"
+        method = "GameContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
         
     @property
-    def finder(self) -> AgentFinder:
-        return cast(AgentFinder, self.entity_finder)
+    def finder(self) -> GameFinder:
+        return cast(GameFinder, self.entity_finder)
     
     @property
-    def builder(self) -> AgentContextBuilder:
-        return cast(AgentContextBuilder, self.entity_builder)
+    def builder(self) -> GameContextBuilder:
+        return cast(GameContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> AgentContextValidator:
-        return cast(AgentContextValidator, self.entity_validator)
+    def validator(self) -> GameContextValidator:
+        return cast(GameContextValidator, self.entity_validator)
