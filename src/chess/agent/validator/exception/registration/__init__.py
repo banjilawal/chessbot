@@ -13,4 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .exception import *
+from .base import AgentRegistrationException
+from .game import AgentNotRegisteredWithGameException
