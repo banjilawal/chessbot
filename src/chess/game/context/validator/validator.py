@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.game import GameService
+
 from chess.agent import AgentService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.game import (
-    GameContext, GameVariety, InvalidGameContextException, NoGameContextFlagException, NullGameContextException,
+    GameContext, InvalidGameContextException, NoGameContextFlagException, NullGameContextException,
     TooManyGameContextFlagsException
 )
 
@@ -50,22 +50,18 @@ class GameContextValidator(Validator[GameContext]):
     ) -> ValidationResult[GameContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, name, agent, game, game_variety) tuple is not null.
+            1.  Confirm that only one in the (id, agent) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an GameContext are return in a BuildResult.
+            4.  On success send the verified GameContext in a ValidationResult.
 
         # Parameters:
         Only one these must be provided:
             *   id (Optional[int])
-            *   name (Optional[str])
             *   agent (Optional[Agent])
-            *   game (Optional[Game])
-            *   game_variety (Optional[GameVariety])
 
         These Parameters must be provided:
             *   agent_service (AgentService)
-            *   game_service (GameService)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -116,7 +112,7 @@ class GameContextValidator(Validator[GameContext]):
                 return ValidationResult.success(context)
             
             if context.agent is not None:
-                validation = agent_service.item_validator.validate(candidate=context.agent)
+                validation = agent_service.validator.validate(candidate=context.agent)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)

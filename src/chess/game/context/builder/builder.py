@@ -1,7 +1,7 @@
-# src/chess/agent/context/builder/builder.py
+# src/chess/game/context/builder/builder.py
 
 """
-Module: chess.agent.context.builder.builder
+Module: chess.game.context.builder.builder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,29 +11,29 @@ from typing import Optional
 
 
 from chess.game import Game, GameService
-from chess.team import Team, TeamService
+from chess.agent import Agent, AgentService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
-from chess.agent import (
-    AgentVariety, AgentContext, AgentContextBuildFailedException, NoAgentContextFlagException,
-    TooManyAgentContextFlagsException
+from chess.game import (
+    GameVariety, GameContext, GameContextBuildFailedException, NoGameContextFlagException,
+    TooManyGameContextFlagsException
 )
 
 
 
-class AgentContextBuilder(Builder[AgentContext]):
+class GameContextBuilder(Builder[GameContext]):
     """
     # ROLE: Builder
 
     # RESPONSIBILITIES:
-        Produce AgentContext instances whose integrity is always guaranteed. If any attributes do not pass
-        their integrity checks, send an exception instead of an unsafe AgentContext.
+        Produce GameContext instances whose integrity is always guaranteed. If any attributes do not pass
+        their integrity checks, send an exception instead of an unsafe GameContext.
 
     # PARENT
         *   Builder
 
     # PROVIDES:
-    BuildResult[AgentContext] containing either:
-        - On success: AgentContext in the payload.
+    BuildResult[GameContext] containing either:
+        - On success: GameContext in the payload.
         - On failure: Exception.
 
     # LOCAL ATTRIBUTES:
@@ -48,98 +48,72 @@ class AgentContextBuilder(Builder[AgentContext]):
     def build(
             cls,
             id: Optional[int] = None,
-            name: Optional[str] = None,
-            team: Optional[Team] = None,
-            game: Optional[Game] = None,
-            variety: Optional[AgentVariety] = None,
-            team_service: TeamService = TeamService(),
-            game_service: GameService = GameService(),
-            idservice: IdentityService = IdentityService(),
-    ) -> BuildResult[AgentContext]:
+            agent: Optional[Agent] = None,
+            agent_service: AgentService = AgentService(),
+            identity_service: IdentityService = IdentityService(),
+    ) -> BuildResult[GameContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, name, team, game, agent_variety) tuple is not null.
+            1.  Confirm that only one in the (id, agent) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an AgentContext are return in a BuildResult.
+            4.  On success Build an GameContext are return in a BuildResult.
 
         # Parameters:
         Only one these must be provided:
             *   id (Optional[int])
-            *   name (Optional[str])
-            *   team (Optional[Team])
-            *   game (Optional[Game])
-            *   agent_variety (Optional[AgentVariety])
+            *   agent (Optional[Agent])
 
         These Parameters must be provided:
-            *   team_service (TeamService)
-            *   game_service (GameService)
+            *   agent_service (AgentService)
             *   identity_service (IdentityService)
 
         # Returns:
-          BuildResult[AgentContext] containing either:
-                - On success: AgentContext in the payload.
+          BuildResult[GameContext] containing either:
+                - On success: GameContext in the payload.
                 - On failure: Exception.
 
         # Raises:
-            *   AgentContextBuildFailedException
-            *   NoAgentContextFlagException
-            *   TooManyAgentContextFlagsException
+            *   GameContextBuildFailedException
+            *   NoGameContextFlagException
+            *   TooManyGameContextFlagsException
         """
-        method = "AgentSearchContextBuilder.builder"
+        method = "GameSearchContextBuilder.builder"
         try:
             # Get how many optional parameters are not null. One param is expected to have
             # a value.
-            params = [id, name, team, game, variety,]
+            params = [id, agent,]
             param_count = sum(bool(p) for p in params)
-            # Cannot searcher for an Agent object if no attribute value is provided for a hit.
+            # Cannot searcher for an Game object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
+                    NoGameContextFlagException(f"{method}: {NoGameContextFlagException.DEFAULT_MESSAGE}")
                 )
             # Only one param can be used for a searcher. If you need to searcher by multiple params
-            # Filter the previous set of matches in a new AgentFinder with a new context.
+            # Filter the previous set of matches in a new GameFinder with a new context.
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyAgentContextFlagsException(f"{method}: {TooManyAgentContextFlagsException}")
+                    TooManyGameContextFlagsException(f"{method}: {TooManyGameContextFlagsException}")
                 )
             # After verifying the correct number of switches is turned on validate the target value
-            # with the appropriate Validator. On pass create an AgentContext.
+            # with the appropriate Validator. On pass create an GameContext.
             if id is not None:
-                validation = idservice.validate_id(id)
+                validation = identity_service.validate_id(id)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                return BuildResult.success(AgentContext(id=id))
-            
-            if name is not None:
-                validation = idservice.validate_name(name)
-                if validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                return BuildResult.success(AgentContext(name=name))
+                return BuildResult.success(GameContext(id=id))
                 
-            if team is not None:
-                validation = team_service.item_validator.validate(candidate=team)
+            if agent is not None:
+                validation = agent_service.validator.validate(candidate=agent)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                return BuildResult.success(AgentContext(team=team))
-            
-            if game is not None:
-                validation = game_service.validate_name(name)
-                if validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                return BuildResult.success(AgentContext(game=game))
-                
-            if variety is not None:
-                if not isinstance(variety, AgentVariety):
-                    return BuildResult.failure(
-                        TypeError(f"{method}: Expected AgentVariety, got {type(variety).__name__} instead.")
-                    )
-                return BuildResult.success(AgentContext(variety=variety))
+                return BuildResult.success(GameContext(agent=agent))
+
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an AgentContextBuildFailedException and send the exception chain a BuildResult.failure.
+        # an GameContextBuildFailedException and send the exception chain a BuildResult.failure.
         except Exception as ex:
             return BuildResult.failure(
-                AgentContextBuildFailedException(
-                    ex=ex, message=f"{method}: {AgentContextBuildFailedException.DEFAULT_MESSAGE}"
+                GameContextBuildFailedException(
+                    ex=ex, message=f"{method}: {GameContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

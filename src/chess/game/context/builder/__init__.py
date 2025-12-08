@@ -1,17 +1,17 @@
-# src/chess/agent/context/builder/__init__.py
+# src/chess/game/context/builder/__init__.py
 
 """
-Module: chess.agent.context.builder.__init__
+Module: chess.game.context.builder.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== AGENT.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+# =========== GAME.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
 from .exception import *
-from .builder import AgentContextBuilder
+from .builder import GameContextBuilder
