@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import AgentBuildFailedException, HumanAgent
+from chess.agent import AgentBuildFailedException, HumanAgent, HumanAgentException
 
 __all__ = [
     # ======================# HUMAN_AGENT EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# HUMAN_AGENT BUILD EXCEPTIONS #======================#
-class HumanAgentBuildFailedException(HumanAgent, AgentBuildFailedException):
+class HumanAgentBuildFailedException(HumanAgentException, AgentBuildFailedException):
     """
     # ROLE:
 

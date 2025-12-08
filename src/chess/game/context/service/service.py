@@ -9,8 +9,9 @@ version: 1.0.0
 
 from typing import cast
 
+from chess.game.finder import GameFinder
 from chess.system import ContextService, id_emitter
-from chess.game import GameContext, GameContextBuilder, GameContextValidator, GameFinder
+from chess.game import GameContext, GameContextBuilder, GameContextValidator
 
 
 class GameContextService(ContextService[GameContext]):
@@ -41,7 +42,7 @@ class GameContextService(ContextService[GameContext]):
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            finder:GameFinder = GameFinder(),
+            finder: GameFinder = GameFinder(),
             builder: GameContextBuilder = GameContextBuilder(),
             validator: GameContextValidator = GameContextValidator(),
     ):

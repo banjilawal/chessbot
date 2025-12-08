@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import AgentBuildFailedException, MachineAgent
+from chess.agent import AgentBuildFailedException, MachineAgentException
 
 __all__ = [
     # ======================# MACHINE_AGENT EXCEPTION #======================#
@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 # ======================# MACHINE_AGENT BUILD EXCEPTIONS #======================#
-class MachineAgentBuildFailedException(MachineAgent, AgentBuildFailedException):
+class MachineAgentBuildFailedException(MachineAgentException, AgentBuildFailedException):
     """
     # ROLE:
 

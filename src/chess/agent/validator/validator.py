@@ -117,11 +117,12 @@ class AgentValidator(Validator[Agent]):
         try:
             engine_validation = engine_service.validate_engine(engine_candidate)
             if engine_validation.is_failure():
+                return ValidationResult.failure(engine_validation.exception)
             
         except Exception as ex:
-        return ValidationResult.failure(
-            InvalidAgentException(ex=ex, message=f"{method}: {InvalidAgentException.DEFAULT_MESSAGE}")
-        )
+            return ValidationResult.failure(
+                InvalidAgentException(ex=ex, message=f"{method}: {InvalidAgentException.DEFAULT_MESSAGE}")
+            )
     
     # @classmethod
     # @LoggingLevelRouter.monitor
