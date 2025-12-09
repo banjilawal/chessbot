@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/game/result/stack.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/build/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/exception/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/result/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/result/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/result/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/state.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -799,7 +802,7 @@
       <workItem from="1765072341689" duration="38874000" />
       <workItem from="1765120886239" duration="16382000" />
       <workItem from="1765145272408" duration="60949000" />
-      <workItem from="1765245937973" duration="36998000" />
+      <workItem from="1765245937973" duration="40517000" />
     </task>
     <servers />
   </component>

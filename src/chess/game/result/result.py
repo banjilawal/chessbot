@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-from typing import Optional
+from typing import Optional, reveal_type
 
 from chess.agent import Agent
 from chess.arena.arena import Arena
@@ -17,6 +17,30 @@ from chess.game import GameState, GameResult
 
 
 class GameResult(Result):
+    """
+    # ROLE:  Persistence, Messanger, Data Transport Object, Error Transport Object,
+
+    # RESPONSIBILITIES:
+    1.  Capture a snapshot of the Game by recording Game.arena state after a Board transaction or a Team
+        changes state.
+    2.  Recording the Game winner if the game completed and there was no tie.
+    3.  Enforcing mutual exclusion. A GameResult can either carry payload or exception. Not both.
+
+    # PARENT
+        *   Result
+
+    # PROVIDES:
+    GameResult
+
+    # LOCAL ATTRIBUTES:
+        *   arena (Arena)
+        *   timestamp (int)
+        *   game_state (GameState)
+        *   winner (Optional[Agent])
+
+    # INHERITED ATTRIBUTES:
+        *   See Result class for inherited attributes.
+    """
     _arena: Arena
     _timestamp: int
     _game_state: GameState
@@ -63,14 +87,17 @@ class GameResult(Result):
     
     @property
     def is_won(self) -> bool:
+        """Return True if the game is won."""
         return self.exception is None and self._winner is not None and self._game_state == GameState.WON
     
     @property
     def is_tied(self) -> bool:
+        """Return True if the game is tied."""
         return self.exception is None and self.winner is None and self._game_state == GameState.TIED
     
     @property
     def is_failure(self) -> bool:
+        """Return True if the game raised an exception."""
         return (
                 self.exception is not None and
                 (self._game_state == GameState.FAILURE or self._game_state == GameState.ROLLED_BACK)
@@ -98,6 +125,7 @@ class GameResult(Result):
     
     @classmethod
     def empty(cls) -> Result:
+        """Should not be called."""
         method = "GameResult.empty"
         return Result(
             exception=NotImplementedException(
@@ -105,3 +133,14 @@ class GameResult(Result):
                 f"always have at least a payload and GameState."
             )
         )
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, GameResult):
+            return self._timestamp == other.timestamp
+        return False
+    
+    def __hash__(self):
+        return hash(self._timestamp)
+        

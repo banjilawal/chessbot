@@ -6,8 +6,8 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-from typing import List, Optional
 
+from typing import List, Optional
 
 from chess.agent import Agent
 from chess.game.result import GameResult
@@ -39,14 +39,14 @@ class Game:
     _arena: Arena
     _white_player: Agent
     _black_player: Agent
-    game_timeline: GameResultStack
+    _timeline: GameResultStack
     
     def __init__(self, id: int, white_player: Agent, black_player: Agent, arena: Arena):
         self._id = id
         self._arena = arena
         self._white_player = white_player
         self._black_player = black_player
-        self._game_timeline = GameResultStack()
+        self._timeline = GameResultStack()
         
     @property
     def id(self) -> int:
@@ -69,10 +69,10 @@ class Game:
         return [self._white_player, self._black_player]
     
     @property
-    def game_timeline(self) -> GameResultStack:
-        return self._game_timeline
+    def timeline(self) -> GameResultStack:
+        return self._timeline
     
     @property
-    def current_game_result(self) -> Optional[GameResult]:
-        return self._game_timeline.current_result
+    def current_result(self) -> Optional[GameResult]:
+        return self._timeline.current_result
         
