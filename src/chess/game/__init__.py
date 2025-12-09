@@ -7,12 +7,12 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-#=========== GAME ROOT PACKAGE CONTENTS ===========#
+#=========== GAME PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *
 from .context import *
-from .result import *
+from .snapshot import *
 from .service import *
 from .validator import *
 

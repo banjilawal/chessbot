@@ -21,7 +21,7 @@ class GameState(Enum):
         *   Enum
 
     # PROVIDES:
-    GameResult
+    GameSnapshot
 
     # LOCAL ATTRIBUTES:
     None

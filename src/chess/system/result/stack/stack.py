@@ -6,8 +6,9 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
+
 from abc import ABC
-from typing import List, Optional
+from typing import Generic, List, Optional, TypeVar
 
 from chess.system import (
     Context, DeletionResult, InsertionResult, LoggingLevelRouter, PoppingEmptyStackException,
@@ -64,12 +65,12 @@ class ResultStack(ABC, Generic[T]):
         return self._items
     
     @property
-    def current_result(self) -> Optional[T]:
+    def last_result(self) -> Optional[T]:
         return self._items[-1] if self._items else None
     
     
     @LoggingLevelRouter.monitor
-    def push_result(self, result: T) -> InsertionResult[T]:
+    def push_result(self, result: Result[T]) -> InsertionResult[T]:
         """"""
         method = "ResultStack.push_result"
         try:
@@ -77,7 +78,7 @@ class ResultStack(ABC, Generic[T]):
                 return InsertionResult.failure(
                     NullResultException(f"{method}: {NullResultException.DEFAULT_MESSAGE}")
                 )
-            if not isinstance(result, Result):
+            if not isinstance(result, Result[T]):
                 return InsertionResult.failure(
                     TypeError(f"{method}: Expected Result, got {type(result).__name__} instead.")
                 )
@@ -86,7 +87,7 @@ class ResultStack(ABC, Generic[T]):
                     AddingResultDataException(f"{method}: {AddingDuplicateResultException.DEFAULT_MESSAGE}")
                 )
             self.items.append(result)
-            return InsertionResult.success(payload=item)
+            return InsertionResult.success(payload=result)
         except Exception as ex:
             return InsertionResult.failure(
                 ResultStackException(ex=ex, message=f"{method}: {ResultStackException.DEFAULT_MESSAGE}")
@@ -94,7 +95,7 @@ class ResultStack(ABC, Generic[T]):
     
     @LoggingLevelRouter.monitor
     def undo_result_push(self) -> DeletionResult[T]:
-        method = "UniqueResultStack.undo_result_push"
+        method = "ResultStack.undo_result_push"
         try:
             if self._items == 0:
                 return DeletionResult.failure(
@@ -106,3 +107,12 @@ class ResultStack(ABC, Generic[T]):
             return DeletionResult.failure(
                 ResultStackException(ex=ex, message=f"{method}: {ResultStackException.DEFAULT_MESSAGE}")
             )
+        
+        
+    @LoggingLevelRouter.monitor
+    def errors(self) -> List[Exception]:
+        return [result for result in self.items if result.exception is not None]
+    
+    @LoggingLevelRouter.monitor
+    def payloads(self) -> List[T]:
+        return [result for result in self.items if result.payload is not None]

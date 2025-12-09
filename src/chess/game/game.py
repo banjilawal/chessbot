@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, Optional
 
 from chess.agent import Agent
-from chess.game.result import GameResult
+from chess.game.result import GameUpdate
 
 
 class Game:
@@ -73,6 +73,6 @@ class Game:
         return self._timeline
     
     @property
-    def current_result(self) -> Optional[GameResult]:
-        return self._timeline.current_result
+    def current_result(self) -> Optional[GameUpdate]:
+        return self._timeline.last_result
         
