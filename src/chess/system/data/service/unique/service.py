@@ -7,14 +7,11 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from abc import ABC, abstractmethod
-from typing import Generic, List, Optional, TypeVar
+from abc import ABC
+from typing import Generic, Optional, TypeVar
 
-from chess.agent import UniqueAgentDataServiceException
-from chess.piece import AddingDuplicatePieceException
 from chess.system import (
-    AddingDuplicateDataException, DataService, InsertionResult, LoggingLevelRouter, SearchResult,
-    EntityService, Context, UniqueDataServiceException
+    AddingDuplicateDataException, DataService, InsertionResult, LoggingLevelRouter, UniqueDataServiceException
 )
 
 T = TypeVar("T")
@@ -80,19 +77,19 @@ class UniqueDataService(ABC, Generic[T]):
     def push_unique_item(self, item: T) -> InsertionResult[T]:
         method = "UniqueAgentDataService.push_unique"
         try:
-            validation = self.data_service.service.entity_validator.validate(item)
-            if validation.is_failure():
+            validation = self.data_service.entity_service.entity_validator.validate(item)
+            if validation.is_failure:
                 return InsertionResult.failure(validation.exception)
 
             context_build = self._data_service.context_service.entity_builder.build(id=item.id)
-            if context_build.is_failure():
+            if context_build.is_failure:
                 return InsertionResult.failure(context_build.exception)
 
             query_result = self._data_service.search(context=context_build.payload)
-            if query_result.is_failure():
+            if query_result.is_failure:
                 return InsertionResult.failure(query_result.exception)
 
-            if query_result.is_success():
+            if query_result.is_success:
                 return InsertionResult.failure(
                     AddingDuplicateDataException(f"{method}: {AddingDuplicateDataException.DEFAULT_MESSAGE}")
                 )
@@ -100,8 +97,6 @@ class UniqueDataService(ABC, Generic[T]):
 
         except Exception as ex:
             return InsertionResult.failure(
-                UniqueDataServiceException(
-                    ex=ex, message=f"{method}: {UniqueAgentDataServiceException.DEFAULT_MESSAGE}"
-                )
+                UniqueDataServiceException(ex=ex, message=f"{method}: {UniqueDataServiceException.DEFAULT_MESSAGE}")
             )
         

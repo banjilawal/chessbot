@@ -5,18 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/system/data/service/exception/data/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/data/service/exception/operation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/data/service/exception/operation/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/data/service/exception/operation/pop.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/data/service/unique/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/data/service/unique/exception/duplication.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/data/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/result/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/data/result/calculation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/result/calculation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/data/result/deletion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/result/deletion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/data/result/insertion.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/result/insertion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/data/result/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/result/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/data/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/data/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/data/service/exception/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/service/exception/data/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/data/service/unique/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/service/unique/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/data/service/unique/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/service/unique/exception/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/data/service/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/service/unique/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/find/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/find/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/result/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/result/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/result/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/result/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -271,7 +272,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/data/exception",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/data/service/exception/operation",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -298,18 +299,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/data/service/exception/operation" />
+      <recent name="$PROJECT_DIR$/src/chess/system/data/service/exception/data" />
+      <recent name="$PROJECT_DIR$/src/chess/system/data/service/unique/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/data/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/transaction/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/arena" />
-      <recent name="$PROJECT_DIR$/src/chess/agent/service/data/unique/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/game" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/data/service/exception/operation" />
+      <recent name="$PROJECT_DIR$/src/chess/system/data/service/unique/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/data/service" />
       <recent name="$PROJECT_DIR$/src/chess/system/data/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/result/stack" />
-      <recent name="$PROJECT_DIR$/src/chess/game/result" />
-      <recent name="$PROJECT_DIR$/src/chess/system/transaction/exception" />
     </key>
   </component>
   <component name="RunManager" selected="Python.exception">
@@ -808,7 +809,7 @@
       <workItem from="1765072341689" duration="38874000" />
       <workItem from="1765120886239" duration="16382000" />
       <workItem from="1765145272408" duration="60949000" />
-      <workItem from="1765245937973" duration="26811000" />
+      <workItem from="1765245937973" duration="29606000" />
     </task>
     <servers />
   </component>
