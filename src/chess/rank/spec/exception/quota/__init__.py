@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== RANK.SPEC.EXCEPTION.QUOTA PACKAGE CONTENTS ===========#
+#=========== RANK.SPEC.EXCEPTION.QUOTA PACKAGE CONTENTS ===========#
 
 # Packages
 None

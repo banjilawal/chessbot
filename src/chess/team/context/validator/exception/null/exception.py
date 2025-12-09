@@ -11,11 +11,11 @@ from chess.system import NullException
 from chess.team import InvalidTeamContextException
 
 __all__ = [
-    # ========================= NULL TEAM_CONTEXT EXCEPTIONS =========================#
+    #========================= NULL TEAM_CONTEXT EXCEPTIONS =========================#
     "NullTeamContextException"
 ]
 
-# ========================= NULL TEAM_CONTEXT EXCEPTIONS =========================#
+#========================= NULL TEAM_CONTEXT EXCEPTIONS =========================#
 class NullTeamContextException(InvalidTeamContextException, NullException):
     """Raised if an entity, method, or operation requires TeamContext but gets null instead."""
     ERROR_CODE = "NULL_TEAM_CONTEXT_ERROR"

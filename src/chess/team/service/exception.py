@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.system import ServiceException
 
 __all__ = [
-    # ======================# TEAM_SERVICE EXCEPTIONS #======================#
+    #======================# TEAM_SERVICE EXCEPTIONS #======================#
     "TeamServiceException",
 ]
 
-# ======================# TEAM_SERVICE EXCEPTIONS #======================#
+#======================# TEAM_SERVICE EXCEPTIONS #======================#
 class TeamServiceException(ServiceException):
     """wrapper for exceptions which hit a TeamCertifier method's finally block."""
     ERROR_CODE = "TEAM_SERVICE_ERROR"

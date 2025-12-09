@@ -11,12 +11,12 @@ from chess.system import NullException
 from chess.agent import InvalidAgentContextServiceException
 
 __all__ = [
-    # ======================# NULL AGENT_CONTEXT_SERVICE EXCEPTIONS #======================#
+    #======================# NULL AGENT_CONTEXT_SERVICE EXCEPTIONS #======================#
     "NullAgentContextServiceException",
 ]
 
 
-# ======================# NULL AGENT_CONTEXT_SERVICE EXCEPTION #======================#
+#======================# NULL AGENT_CONTEXT_SERVICE EXCEPTION #======================#
 class NullAgentContextServiceException(InvalidAgentContextServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging

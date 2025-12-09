@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== SYSTEM.BUILD.EXCEPTION PACKAGE CONTENTS ===========#
+#=========== SYSTEM.BUILD.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

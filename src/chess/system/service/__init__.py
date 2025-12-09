@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-18
 """
 
-# =========== SYSTEM.SERVICE PACKAGE CONTENTS ===========#
+#=========== SYSTEM.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
 from .validator import *

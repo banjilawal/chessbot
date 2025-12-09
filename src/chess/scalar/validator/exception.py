@@ -15,13 +15,13 @@ from chess.scalar.exception import ScalarException
 __all__ = [
     "InvalidScalarException",
     
-    # ======================# SCALAR BOUNDS EXCEPTIONS #======================#
+    #======================# SCALAR BOUNDS EXCEPTIONS #======================#
     "ScalarBelowBoundsException",
     "ScalarAboveBoundsException",
 ]
 
 
-# ======================# SCALAR VALIDATION EXCEPTIONS #======================#
+#======================# SCALAR VALIDATION EXCEPTIONS #======================#
 class InvalidScalarException(ScalarException, ValidationException):
     """Catchall Exception for ScalarValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "SCALAR_VALIDATION_ERROR"
@@ -29,7 +29,7 @@ class InvalidScalarException(ScalarException, ValidationException):
 
 
 
-# ======================# SCALAR BOUNDS EXCEPTIONS #======================#
+#======================# SCALAR BOUNDS EXCEPTIONS #======================#
 class ScalarBelowBoundsException(InvalidScalarException):
     """Raised if scalar is below its < -LONGEST_KNIGHT_LEG_SIZE"""
     ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"

@@ -4,11 +4,11 @@
 Module: chess.system.result.result
 Author: Banji Lawal
 Created: 2025-09-28
-Updated: 2025-10-10
 version: 1.0.0
 """
 
 from typing import Optional, TypeVar, Generic
+
 from chess.system import Result
 
 T = TypeVar("T")
@@ -45,12 +45,15 @@ class Result(Generic[T]):
     def exception(self) -> Optional[Exception]:
         return self._exception
     
+    @property
     def is_success(self) -> bool:
         return self._exception is None and self._payload is not None
     
+    @property
     def is_failure(self) -> bool:
         return self._exception is not None
     
+    @property
     def is_empty(self) -> bool:
         return self._payload is None and self._exception is None
     

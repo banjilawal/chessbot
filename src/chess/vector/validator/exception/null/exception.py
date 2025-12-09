@@ -19,14 +19,14 @@ __all__ = [
     "NullYComponentException",
 ]
 
-# ======================# NULL VECTOR EXCEPTION #======================#
+#======================# NULL VECTOR EXCEPTION #======================#
 class NullInvalidVectorException(InvalidVectorException, NullException):
     """Raised if an entity, method, or operation requires Vector but gets null instead."""
     ERROR_CODE = "NULL_VECTOR_ERROR"
     DEFAULT_MESSAGE = "Vector cannot be null."
 
 
-# ======================# NULL COMPONENT EXCEPTIONS #======================#  
+#======================# NULL COMPONENT EXCEPTIONS #======================#  
 class NullXComponentException(InvalidVectorException, NullException):
     """Raised if Vector's x dimension is validation."""
     ERROR_CODE = "VECTOR_NULL_X_DIMENSION_ERROR"

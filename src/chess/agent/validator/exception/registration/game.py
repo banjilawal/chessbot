@@ -11,14 +11,14 @@ from chess.agent import AgentRegistrationException
 
 
 __all__ = [
-    # ======================# AGENT REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# AGENT REGISTRATION EXCEPTION SUPER CLASS #======================#
     "AgentNotRegisteredWithGameException",
 ]
 
 
 
 
-# ======================# AGENT_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
+#======================# AGENT_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
 class AgentNotRegisteredWithGameException(AgentRegistrationException):
     """
     # ROLE: Error Tracing, Debugging

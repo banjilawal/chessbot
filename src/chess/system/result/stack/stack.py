@@ -1,11 +1,12 @@
-# src/chess/system/result/stack.py
+# src/chess/system/result/stack/stack.py
 
 """
-Module: chess.system.result.stack
+Module: chess.system.result.stack.stack
 Author: Banji Lawal
-Created: 2025-12-08
+Created: 2025-10-03
 version: 1.0.0
 """
+
 from typing import List, Optional
 
 from chess.system import (

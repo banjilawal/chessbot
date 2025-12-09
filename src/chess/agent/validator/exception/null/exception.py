@@ -11,11 +11,11 @@ from chess.system import NullException
 from chess.agent import InvalidAgentException
 
 __all__ = [
-    # ======================# AGENT NULL EXCEPTIONS #======================#
+    #======================# AGENT NULL EXCEPTIONS #======================#
     "NullAgentException",
 ]
 
-# ======================# AGENT_CONTEXT NULL EXCEPTIONS #======================#
+#======================# AGENT_CONTEXT NULL EXCEPTIONS #======================#
 class NullAgentException(InvalidAgentException, NullException):
     """
     # ROLE: Error Tracing, Debugging

@@ -37,7 +37,7 @@ class GameValidator(Validator[Game]):
           - valid visitor_id
           - valid visitor_name
           - Game.team_history meets coord_stack_validator requirements
-        Any failed requirement raise an rollback_exception wrapped in team_name InvalidCommanderException
+        Any failed requirement raise an exception wrapped in team_name InvalidCommanderException
         
         Args
           candidate (Game): game to validate

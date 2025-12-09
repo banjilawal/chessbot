@@ -9,12 +9,12 @@ version: 1.0.0
 from typing import List
 
 from chess.board import BoardService
-from chess.agent import Agent, UniqueAgentDataService
+from chess.agent import Agent
 
 
 class Game:
     _id: int
-    _board: BoardService
+    _arena: Arena
     _white_player: Agent
     _black_player: Agent
     

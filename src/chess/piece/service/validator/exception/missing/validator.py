@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.agent import InvalidAgentServiceException
 
 __all__ = [
-    # ======================# AGENT_SERVICE EXCEPTIONS #======================#
+    #======================# AGENT_SERVICE EXCEPTIONS #======================#
     "MissingAgentValidatorException",
 ]
 

@@ -12,12 +12,12 @@ from chess.board import BoardException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# BOARD BUILD EXCEPTIONS #======================#
+    #======================# BOARD BUILD EXCEPTIONS #======================#
     "BoardBuildFailedException",
 ]
 
 
-# ======================# BOARD BUILD EXCEPTIONS #======================#
+#======================# BOARD BUILD EXCEPTIONS #======================#
 class BoardBuildFailedException(BoardException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by BoardBuilder

@@ -11,12 +11,12 @@ from chess.piece import KingPieceException
 
 
 __all__ = [
-    # ======================# CHECKMATED KING EXCEPTIONS #======================#
+    #======================# CHECKMATED KING EXCEPTIONS #======================#
     "CheckmatedKingException",
 ]
 
 
-# ======================# CHECKMATED KING EXCEPTIONS #======================#
+#======================# CHECKMATED KING EXCEPTIONS #======================#
 class CheckmatedKingException(KingPieceException):
     """Catchall for when a Checkmated king tries to do something."""
     ERROR_CODE = "CHECKMATED_KING_ERROR"

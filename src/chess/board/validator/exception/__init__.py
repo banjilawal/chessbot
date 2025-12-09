@@ -7,7 +7,7 @@ Created: 2025-11-21
 version: 1.0.0
 """
 
-# =========== CHESS.BOARD.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+#=========== BOARD.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .bounds import *

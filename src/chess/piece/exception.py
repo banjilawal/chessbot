@@ -12,15 +12,15 @@ from chess.system import ChessException
 __all__ = [
     "PieceException",
     
-# ======================# PIECE NULL EXCEPTIONS #======================#
+#======================# PIECE NULL EXCEPTIONS #======================#
 
     
-# ======================# PIECE VALIDATION EXCEPTIONS #======================#
+#======================# PIECE VALIDATION EXCEPTIONS #======================#
     "ActivePieceMissingFromTeamRoster",
     "CapturedPieceException",
     "PieceRequiresInitialPlacementException",
 
-# ======================# PIECE BUILD EXCEPTIONS #======================#
+#======================# PIECE BUILD EXCEPTIONS #======================#
 
 ]
 

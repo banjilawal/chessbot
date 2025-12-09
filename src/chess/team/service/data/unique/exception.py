@@ -11,12 +11,12 @@ version: 1.0.0
 from chess.system import UniqueDataServiceException
 
 __all__ = [
-    # ======================# UNIQUE_TEAM_DATA_SERVICE EXCEPTIONS #======================#
+    #======================# UNIQUE_TEAM_DATA_SERVICE EXCEPTIONS #======================#
     "UniqueTeamDataServiceException",
 ]
 
 
-# ======================# UNIQUE_TEAM_DATA_SERVICE EXCEPTIONS #======================#
+#======================# UNIQUE_TEAM_DATA_SERVICE EXCEPTIONS #======================#
 class UniqueTeamDataServiceException(UniqueDataServiceException):
     """
     Raised when internal components are null or raise system errors. Not appropriate

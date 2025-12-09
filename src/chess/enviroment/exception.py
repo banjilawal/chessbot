@@ -15,21 +15,21 @@ from chess.system import (
 __all__ = [
   "TurnSceneException",
 
-# ====================== TURN_SCENE GENERAL VALIDATION EXCEPTIONS #======================#
+#====================== TURN_SCENE GENERAL VALIDATION EXCEPTIONS #======================#
   "NullTurnSceneException",
   "InvalidTurnSceneException",
 
-# ====================== TURN_SCENE ACTOR VALIDATION EXCEPTIONS #======================#
+#====================== TURN_SCENE ACTOR VALIDATION EXCEPTIONS #======================#
   "DisabledHostagePieceException",
   "PieceWithNoStartingPlacementException",
   "DisabledUnRosteredPieceCannotActException",
   "PieceNotOnBoardCannotActException",
   "CheckmatedKingCannotActException",
 
-# ====================== TURN_SCENE BUILD EXCEPTIONS #======================#
+#====================== TURN_SCENE BUILD EXCEPTIONS #======================#
   "TurnSceneBuildFailedException",
 
-# ====================== TURN_SCENE SQUARE CONSISTENCY EXCEPTIONS #======================#
+#====================== TURN_SCENE SQUARE CONSISTENCY EXCEPTIONS #======================#
   "TurnSceneSquareNotFoundException",
   "PieceDoesNotOwnCurrentSquareException",
   "ActorAndScenePropCoordMismatchException",
@@ -54,21 +54,21 @@ class InvalidTurnSceneException(TurnSceneException, ValidationException):
   DEFAULT_MESSAGE = "TurnScene validation failed."
 
 
-# ====================== TURN_SCENE ACTOR VALIDATION EXCEPTIONS #======================#
+#====================== TURN_SCENE ACTOR VALIDATION EXCEPTIONS #======================#
 
   
 
 
 
 
-# ====================== TURN_SCENE BUILD EXCEPTIONS #======================#
+#====================== TURN_SCENE BUILD EXCEPTIONS #======================#
 class TurnSceneBuildFailedException(TurnSceneException, BuildFailedException):
   """"""
   ERROR_CODE = "TURN_SCENE_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "TurnScene build failed."
   
 
-# ====================== TURN_SCENE SQUARE CONSISTENCY EXCEPTIONS #======================#
+#====================== TURN_SCENE SQUARE CONSISTENCY EXCEPTIONS #======================#
 class TurnSceneSquareNotFoundException(TurnSceneException, InconsistencyException):
   """"""
   ERROR_CODE = "TURN_SCENE_SQUARE_NOT_FOUND_ERROR"

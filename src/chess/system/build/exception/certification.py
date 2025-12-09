@@ -10,14 +10,14 @@ version: 1.0.0
 from chess.system import BuilderException, NullException
 
 __all__ = [
-    # ======================# UNRELIABLE_BUILDER_EXCEPTION #======================#
+    #======================# UNRELIABLE_BUILDER_EXCEPTION #======================#
     "UnreliableBuilderException",
-    # ======================# NULL_BUILDER_EXCEPTION #======================#
+    #======================# NULL_BUILDER_EXCEPTION #======================#
     "NullBuilderException",
 ]
 
 
-# ======================# UNRELIABLE_BUILDER_EXCEPTION #======================#
+#======================# UNRELIABLE_BUILDER_EXCEPTION #======================#
 class UnreliableBuilderException(BuilderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -40,7 +40,7 @@ class UnreliableBuilderException(BuilderException):
     DEFAULT_MESSAGE = "Builder certification failed. Do not rely on this builder."
 
 
-# ======================# NULL_BUILDER_EXCEPTION #======================#
+#======================# NULL_BUILDER_EXCEPTION #======================#
 class NullBuilderException(UnreliableBuilderException, NullException):
     """
     # ROLE: Error Tracing, Debugging

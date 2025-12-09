@@ -27,7 +27,7 @@ class KingOccupationEventException(TravelEventException):
   fine-grained messages and error codes better for debugging and logging.
   """
   DEFAULT_CODE = "KING_OCCUPATION_EVENT_ERROR"
-  DEFAULT_MESSAGE = "An KingOccupationEvent raised an rollback_exception."
+  DEFAULT_MESSAGE = "An KingOccupationEvent raised an exception."
 
 
 #====================== KING_OCCUPATION_EVENT VALIDATION EXCEPTIONS #======================#
@@ -108,4 +108,4 @@ class PositionUpdateRollbackException(AttackEventException, RollbackException):
   DEFAULT_MESSAGE = "Failed to update actor_candidate's position history after move; rollback executed."
 
 
-# ======================# ATTACKING PIECE EXCEPTIONS #======================#
+#======================# ATTACKING PIECE EXCEPTIONS #======================#

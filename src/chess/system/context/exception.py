@@ -10,13 +10,13 @@ version: 1.0.0
 from chess.system import ChessException, BoundsException
 
 __all__ = [
-    # ======================# CONTEXT EXCEPTIONS #======================#
+    #======================# CONTEXT EXCEPTIONS #======================#
     "ContextException",
     "ContextFlagCountException",
 ]
 
 
-# ======================# CONTEXT EXCEPTIONS #======================#
+#======================# CONTEXT EXCEPTIONS #======================#
 class ContextException(ChessException):
     """
     # ROLE: Parent Exception

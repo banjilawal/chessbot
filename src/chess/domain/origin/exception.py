@@ -21,7 +21,7 @@ __all__ = [
 #====================== DOMAIN_ORIGIN VALIDATION EXCEPTIONS #======================#
     "InvalidDomainOriginException",
     
-    # ====================== DOMAIN_ORIGIN BUILD EXCEPTIONS #======================#
+    #====================== DOMAIN_ORIGIN BUILD EXCEPTIONS #======================#
     "DomainOriginBuildFailedException",
 ]
 
@@ -35,21 +35,21 @@ class DomainOriginException(ChessException):
     DEFAULT_MESSAGE = "An rollback_exception was raised by a DomainOrigin."
 
 
-# ====================== NULL DOMAIN_ORIGIN EXCEPTIONS #======================#
+#====================== NULL DOMAIN_ORIGIN EXCEPTIONS #======================#
 class NullDomainOriginException(DomainOriginException, NullException):
     """Raised if an entity, method, or operation requires DomainOrigin but gets null instead."""
     ERROR_CODE = "NULL_DOMAIN_ORIGIN_ERROR"
     DEFAULT_MESSAGE = "A DomainOrigin cannot be null."
 
 
-# ====================== DOMAIN_ORIGIN VALIDATION EXCEPTIONS #======================#
+#====================== DOMAIN_ORIGIN VALIDATION EXCEPTIONS #======================#
 class InvalidDomainOriginException(DomainOriginException, ValidationException):
     """Catchall Exception for DomainOriginValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "DOMAIN_ORIGIN_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "DomainOrigin validation failed."
 
 
-# ====================== DOMAIN_ORIGIN BUILD EXCEPTIONS #======================#
+#====================== DOMAIN_ORIGIN BUILD EXCEPTIONS #======================#
 class DomainOriginBuildFailedException(DomainOriginException, BuildFailedException):
     """Catchall Exception for DomainOriginBuilder when it stops because of an error."""
     ERROR_CODE = "DOMAIN_ORIGIN_BUILD_FAILED_ERROR"

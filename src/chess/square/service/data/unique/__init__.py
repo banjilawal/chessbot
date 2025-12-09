@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== CHESS.SQUARE.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
+#=========== SQUARE.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
 
 # Packages
 None

@@ -7,7 +7,7 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-# =========== GAME.FINDER PACKAGE CONTENTS ===========#
+#=========== GAME.FINDER PACKAGE CONTENTS ===========#
 
 # Packages
 None

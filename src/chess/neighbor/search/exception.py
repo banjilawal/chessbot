@@ -33,7 +33,7 @@ class VisitationSearchException(ChessException):
   exceptions.
   """
   DEFAULT_CODE = "SEARCH_ERROR"
-  DEFAULT_MESSAGE = "Finder raised an rollback_exception."
+  DEFAULT_MESSAGE = "Finder raised an exception."
 
 
 #======================# SEARCH_COLLISION EXCEPTIONS #======================#

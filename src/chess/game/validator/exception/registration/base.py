@@ -11,12 +11,12 @@ from chess.game import InvalidGameException
 from chess.system import RegistrationException
 
 __all__ = [
-    # ======================# GAME REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# GAME REGISTRATION EXCEPTION SUPER CLASS #======================#
     "GameRegistrationException",
 ]
 
 
-# ======================# GAME_REGISTRATION EXCEPTION SUPER CLASS #======================#
+#======================# GAME_REGISTRATION EXCEPTION SUPER CLASS #======================#
 class GameRegistrationException(InvalidGameException, RegistrationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

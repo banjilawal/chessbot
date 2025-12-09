@@ -1,36 +1,36 @@
-# src/chess/agent/factory/exception.py
+# src/chess/arena/factory/exception.py
 
 """
-Module: chess.agent.factory.exception
+Module: chess.arena.factory.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import AgentException
+from chess.arena import ArenaException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# AGENT BUILD EXCEPTIONS #======================#
-    "AgentBuildFailedException",
+    #======================# ARENA BUILD EXCEPTIONS #======================#
+    "ArenaBuildFailedException",
 ]
 
 
-# ======================# AGENT BUILD EXCEPTIONS #======================#
-class AgentBuildFailedException(AgentException, BuildFailedException):
+#======================# ARENA BUILD EXCEPTIONS #======================#
+class ArenaBuildFailedException(ArenaException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during Agent build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentBuilder method.
+    1.  Parent of exceptions raised during Arena build process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an ArenaBuilder method.
 
     # PARENT
-        *   AgentException
+        *   ArenaException
         *   BuildFailedException
 
     # PROVIDES:
-    AgentBuildFailedException
+    ArenaBuildFailedException
 
     # LOCAL ATTRIBUTES:
     None
@@ -38,5 +38,5 @@ class AgentBuildFailedException(AgentException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_BUILD_ERROR"
-    DEFAULT_ERROR_CODE = "Agent build failed."
+    ERROR_CODE = "ARENA_BUILD_ERROR"
+    DEFAULT_ERROR_CODE = "Arena build failed."

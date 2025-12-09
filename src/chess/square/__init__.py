@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== CHESS.SQUARE PACKAGE CONTENTS ===========#
+#=========== SQUARE PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *

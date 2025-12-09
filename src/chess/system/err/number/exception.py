@@ -10,23 +10,23 @@ version: 1.0.0
 from chess.system import ChessException, NullException, ValidationException
 
 __all__ = [
-    # ======================# NUMBER EXCEPTION SUPER CLASS #======================#
+    #======================# NUMBER EXCEPTION SUPER CLASS #======================#
     "NumberException",
-    # ======================# NUMBER VALIDATION EXCEPTIONS #======================#
+    #======================# NUMBER VALIDATION EXCEPTIONS #======================#
     "InvalidNumberException",
-    # ======================# NULL NUMBER EXCEPTIONS #======================#
+    #======================# NULL NUMBER EXCEPTIONS #======================#
     "NullNumberException",
 ]
 
 
-# ======================# NUMBER EXCEPTION SUPER CLASS #======================#
+#======================# NUMBER EXCEPTION SUPER CLASS #======================#
 class NumberException(ChessException):
     """Super class of number related exceptions."""
     ERROR_CODE = "NUMBER_ERROR"
     DEFAULT_MESSAGE = "Number raised an exception."
 
 
-# ======================# NUMBER VALIDATION EXCEPTION #======================#
+#======================# NUMBER VALIDATION EXCEPTION #======================#
 class InvalidNumberException(NumberException, ValidationException):
     """
     Raised if an entity, method, or operation requires a string with content but gets
@@ -36,7 +36,7 @@ class InvalidNumberException(NumberException, ValidationException):
     DEFAULT_MESSAGE = "Failed number validation."
 
 
-# ======================# NULL/EMPTY STRING EXCEPTIONS #======================#
+#======================# NULL/EMPTY STRING EXCEPTIONS #======================#
 class NullNumberException(NumberException, NullException):
     """Raised if an entity, method, or operation requires number but gets null instead."""
     ERROR_CODE = "NULL_NUMBER_ERROR"

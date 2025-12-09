@@ -7,10 +7,10 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== CHESS.SYSTEM.RESULT PACKAGE CONTENTS ===========#
+#=========== SYSTEM.RESULT PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .stack import *
 
 # Modules
 from .example import *

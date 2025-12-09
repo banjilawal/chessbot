@@ -1,37 +1,40 @@
-# src/chess/system/transaction/collision.py
+# src/chess/system/transaction/exception/base.py
 
 """
-Module: chess.system.transaction.exception
+Module: chess.system.transaction.exception.base
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import ChessException, RollbackException
+from chess.system import ChessException
 
 __all__ = [
-  'TransactionException',
-  'RolledBackTransactionException',
+    #====================== TRANSACTION EXCEPTION #======================#
+    'TransactionException',
 ]
 
 
+#====================== TRANSACTION EXCEPTION #======================#
 class TransactionException(ChessException):
-  """
-  Super class of all exceptions `Transaction` object raises. Do not use directly. Subclasses give
-  details useful for debugging. This class exists primarily to allow catching all `Transaction`
-  exceptions.
-  """
-  ERROR_CODE = "TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "Transaction raised an rollback_exception."
-
-
-class RolledBackTransactionException(TransactionException, RollbackException):
-  """
-  Super class of all exceptions `Transaction` object raises. Do not use directly. Subclasses give
-  details useful for debugging. This class exists primarily to allow catching all `Transaction`
-  exceptions.
-  """
-  ERROR_CODE = "TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "Transaction raised an rollback_exception."
-
-
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+  
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised by Transaction objects
+    2.  Catchall for Transaction failure states that are not covered by a lower level Transaction exception.
+  
+    # PARENT
+        *   ChessException
+  
+    # PROVIDES:
+    TransactionException
+  
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "TRANSACTION_ERROR"
+    DEFAULT_MESSAGE = "Transaction raised an exception."

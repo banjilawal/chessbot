@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== GAME.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+#=========== GAME.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
 None

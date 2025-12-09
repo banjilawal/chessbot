@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== CHESS.RANK.MODEL.KNIGHT PACKAGE CONTENTS ===========#
+#=========== RANK.MODEL.KNIGHT PACKAGE CONTENTS ===========#
 
 # Packages
 None

@@ -10,13 +10,13 @@ version: 1.0.0
 from chess.system import DataException, NullException
 
 __all__ = [
-# ======================# TEAM_INSERTION_FAILED EXCEPTIONS #======================#
+#======================# TEAM_INSERTION_FAILED EXCEPTIONS #======================#
     "TeamInsertionFailedException",
     "AddingDuplicateTeamException",
     "CannotAddNullTeamException",
 ]
 
-# ======================# TEAM_INSERTION_FAILED EXCEPTIONS #======================#
+#======================# TEAM_INSERTION_FAILED EXCEPTIONS #======================#
 class TeamInsertionFailedException(TeamDataException):
     ERROR_CODE = "TEAM_INSERTION_ERROR"
     DEFAULT_MESSAGE = "Team insertion failed."

@@ -12,8 +12,8 @@ from chess.system import BoundsException
 from chess.team import InvalidTeamException
 
 __all__ = [
-    # ======================# TEAM BOUNDS EXCEPTIONS #======================#
+    #======================# TEAM BOUNDS EXCEPTIONS #======================#
 ]
 
 
-# ======================# TEAM BOUNDS EXCEPTIONS #======================#
+#======================# TEAM BOUNDS EXCEPTIONS #======================#

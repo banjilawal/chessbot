@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-  # ======================# BUILDER EXCEPTION SUPER CLASS #======================#
+  #======================# BUILDER EXCEPTION SUPER CLASS #======================#
   "BuilderException",
 ]
 
 
-# ======================# BUILDER EXCEPTION SUPER CLASS #======================#
+#======================# BUILDER EXCEPTION SUPER CLASS #======================#
 class BuilderException(ChessException):
   """
   # ROLE: Exception Wrapper, Catchall Exception

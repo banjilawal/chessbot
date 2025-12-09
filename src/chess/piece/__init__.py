@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== CHESS.PIECE PACKAGE CONTENTS ===========#
+#=========== PIECE PACKAGE CONTENTS ===========#
 
 # Packages
 from .context import *

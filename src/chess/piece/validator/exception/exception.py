@@ -11,12 +11,12 @@ from chess.piece import PieceException
 from chess.system import  ValidationException
 
 __all__ = [
-    # ======================# PIECE VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# PIECE VALIDATION EXCEPTION SUPER CLASS #======================#
     "InvalidPieceException",
 ]
 
 
-# ======================# PIECE VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# PIECE VALIDATION EXCEPTION SUPER CLASS #======================#
 class InvalidPieceException(PieceException, ValidationException):
     """
     Catchall Exception for PieceValidator when a candidate fails a sanity check."""

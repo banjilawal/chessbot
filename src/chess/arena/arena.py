@@ -1,77 +1,41 @@
 # src/chess/arena/arena.py
 
 """
-Module: `chess.arena.arena`
+Module: chess.arena.arena
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-08-05
 version: 1.0.0
-
- Provides: <SENTENCE_ABOUT_RESPONSIBILITIES>
-Contains:
- - `Arena`
 """
 
-from chess.system import auto_id
-from chess.board import Board
-from chess.agent import Agent
 
 
-@auto_id
+from chess.team import Team
+from chess.board import BoardService
+
 class Arena:
-  """
-  <WHAT_CLASS_DOES>.
-
-  Attributes:
-    `_attribute` (`data_type`): <sentence_if_necessary>
-  """
-
-  _id: int
-  _white_owner: Agent
-  _black_owner: Agent
-  _chess_board: Board
-
-  def __init__(self, white_owner: Agent, black_owner: Agent, chess_board: Board):
-    """
-    <METHOD_ACTION>
-
-    Args:
-      `param` (`DataType`): <sentence_if_necessary>
-
-    Returns:
-
-    Raise:
-    <`ClassException` wraps any exceptions raised. These are:
-      * `ExceptionName`: If <condition_raising>
-    """
-    method = "method_name"
-
-    self._white_owner = white_owner
-    self._black_owner = black_owner
-    self._chess_board = chess_board
-
-  @property
-  def white_owner(self) -> Agent:
-    return self._white_owner
-
-
-  @property
-  def black_owner(self) -> Agent:
-    return self._black_owner
-
-
-  @property
-  def chess_board(self) -> Board:
-    return self._chess_board
-
-
-  def execute_move(self, move: Move):
-    self._board.capture_square(move.team_member, move.destination)
-
-
-  def survey_board(self, cybernaut: CyberneticCommander):
-    cybernaut.engine._scout_master.send_scouts(cybernaut, self._chess_board)
-
-
-
-
-
+    _id: int
+    _white_team: Team
+    _black_team: Team
+    _board: BoardService
+    
+    def __init__(self, id: int, white_team: Team, black_team: Team, board: BoardService):
+        self._id = id
+        self._white_team = white_team
+        self._black_team = black_team
+        self._board = board
+    
+    @property
+    def id(self) -> int:
+        return self._id
+    
+    @property
+    def white_team(self) -> Team:
+        return self._white_team
+    
+    @property
+    def black_team(self) -> Team:
+        return self._black_team
+    
+    @property
+    def board(self) -> BoardService:
+        return self._board

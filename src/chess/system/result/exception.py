@@ -27,7 +27,7 @@ class ResultException(ChessException):
   exceptions.
   """
   ERROR_CODE = "RESULT_ERROR"
-  DEFAULT_MESSAGE = "Result raised an rollback_exception."
+  DEFAULT_MESSAGE = "Result raised an exception."
 
 
 class ResultConstructorException(ResultException):
@@ -39,7 +39,7 @@ class ResultConstructorException(ResultException):
     Both params
   """
   ERROR_CODE = "RESULT_CONSTRUCTOR_ERROR"
-  DEFAULT_MESSAGE = "Invalid constructor params raised an rollback_exception."
+  DEFAULT_MESSAGE = "Invalid constructor params raised an exception."
 
 
 class EmptyResultConstructorException(ResultConstructorException):

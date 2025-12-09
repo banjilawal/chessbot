@@ -11,26 +11,26 @@ from chess.piece import PieceException
 from chess.system import BuildFailedException, NullException, ValidationException
 
 __all__ = [
-    # ======================# KING_PIECE EXCEPTION SUPER CLASS #======================#
+    #======================# KING_PIECE EXCEPTION SUPER CLASS #======================#
     "KingPieceException",
     
-    # ======================# KING_PIECE VALIDATION EXCEPTIONS #======================#
+    #======================# KING_PIECE VALIDATION EXCEPTIONS #======================#
     "InvalidKingPieceException",
     "NullKingException",
     
-    # ======================# KING_PIECE BUILD EXCEPTIONS #======================#
+    #======================# KING_PIECE BUILD EXCEPTIONS #======================#
     "KingPieceBuildFailedException",
 ]
 
 
-# ======================# KING_PIECE EXCEPTION SUPER CLASS #======================#
+#======================# KING_PIECE EXCEPTION SUPER CLASS #======================#
 class KingPieceException(PieceException):
     """Super class for KingPiece exceptions."""
     ERROR_CODE = "KING_PIECE_ERROR"
     DEFAULT_MESSAGE = "KingPiece raised an exception."
 
 
-# ======================# KING_PIECE VALIDATION EXCEPTIONS #======================#
+#======================# KING_PIECE VALIDATION EXCEPTIONS #======================#
 class InvalidKingPieceException(KingPieceException, ValidationException):
     """Raised by PieceValidator when a king candidate fails a sanity check."""
     ERROR_CODE = "KING_PIECE_VALIDATION_ERROR"
@@ -43,7 +43,7 @@ class NullKingException(KingPieceException, NullException):
     DEFAULT_MESSAGE = "KingPiece cannot be null."
 
 
-# ======================# KING_PIECE BUILD EXCEPTIONS #======================#
+#======================# KING_PIECE BUILD EXCEPTIONS #======================#
 class KingPieceBuildFailedException(KingPieceException, BuildFailedException):
     ERROR_CODE = "KING_PIECE_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "KingPiece build failed."

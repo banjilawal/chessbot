@@ -20,7 +20,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
@@ -68,7 +68,7 @@ class ArenaException(ChessException):
   exceptions.
   """
   ERROR_CODE = "ARENA_ERROR"
-  DEFAULT_MESSAGE = "Arena raised an rollback_exception."
+  DEFAULT_MESSAGE = "Arena raised an exception."
 
 
 #======================# ARENA VALIDATION EXCEPTIONS #======================#  

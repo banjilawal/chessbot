@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== GAME.SERVICE.EXCEPTION.MISSING PACKAGE CONTENTS ===========#
+#=========== GAME.SERVICE.EXCEPTION.MISSING PACKAGE CONTENTS ===========#
 
 # Packages
 None

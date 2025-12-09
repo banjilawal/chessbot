@@ -11,12 +11,12 @@ from chess.system import ContextException
 
 
 __all__ = [
-    # ======================# AGENT_CONTEXT EXCEPTION SUPER CLASS #======================#
+    #======================# AGENT_CONTEXT EXCEPTION SUPER CLASS #======================#
     "AgentContextException",
 ]
 
 
-# ======================# AGENT_CONTEXT EXCEPTION SUPER CLASS #======================#
+#======================# AGENT_CONTEXT EXCEPTION SUPER CLASS #======================#
 class AgentContextException(ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

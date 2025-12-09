@@ -12,13 +12,13 @@ from chess.system import SearchContextException, NullException, BuildFailedExcep
 __all__ = [
     "VisitorSearchContextException",
 
-    # ======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
     "NullVisitorSearchContextException",
     "InvalidVisitorSearchContextException",
     "NoVisitorSearchParamException",
     "TooManyVisitorSearchParamsException",
 
-    # ======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
     "VisitorSearchContextBuildFailedException",
 ]
 

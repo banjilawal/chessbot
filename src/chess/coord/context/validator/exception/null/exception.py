@@ -12,11 +12,11 @@ from chess.coord import InvalidCoordContextException
 
 
 __all__ = [
-    # ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
+    #========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
     "NullCoordContextException"
 ]
 
-# ========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
+#========================= NULL COORD_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullCoordContextException(InvalidCoordContextException, NullException):
     """Raised if an entity, method, or operation requires CoordContext but gets null instead."""
     ERROR_CODE = "NULL_COORD_CONTEXT_ERROR"

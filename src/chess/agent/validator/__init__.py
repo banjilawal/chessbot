@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== CHESS.AGENT.VALIDATOR PACKAGE CONTENTS ===========#
+#=========== AGENT.VALIDATOR PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

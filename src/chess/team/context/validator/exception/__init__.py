@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== TEAM.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+#=========== TEAM.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .flag import *

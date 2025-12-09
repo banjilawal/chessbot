@@ -11,12 +11,12 @@ from chess.team import TeamContextException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# TEAM_CONTEXT BUILD EXCEPTIONS #======================#
+    #======================# TEAM_CONTEXT BUILD EXCEPTIONS #======================#
     "TeamContextBuildFailedException",
 ]
 
 
-# ======================# TEAM_CONTEXT BUILD EXCEPTIONS #======================#
+#======================# TEAM_CONTEXT BUILD EXCEPTIONS #======================#
 class TeamContextBuildFailedException(TeamContextException, BuildFailedException):
     """
     Catchall exception for when TeamContextBuilder encounters an error building a new TeamContext instance.

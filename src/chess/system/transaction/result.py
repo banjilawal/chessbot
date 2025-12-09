@@ -1,7 +1,7 @@
 # src/chess/system/transaction/result.py
 
 """
-Module: `chess.system.transaction.result`
+Module: chess.system.transaction.result
 Author: Banji Lawal
 Created: 2025-09-28
 version: 1.0.0
@@ -16,7 +16,7 @@ from chess.system import (
 
 class TransactionResult(Result[Event]):
     """"""
-    _event_update: Event
+    _checkpoint: Event
     _transaction_state: TransactionState
     _exception: Optional[Exception]
     
@@ -32,19 +32,21 @@ class TransactionResult(Result[Event]):
         self._transaction_state = transaction_state
     
     @property
-    def event_update(self) -> Event:
+    def checkpoint(self) -> Event:
         return cast(Event, self.payload)
     
     @property
     def transaction_state(self) -> Optional[TransactionState]:
         return self._transaction_state
     
+    @property
     def is_success(self) -> bool:
         return (
                 self.exception is None and self.payload is not None and
                 self._transaction_state == TransactionState.SUCCESS
         )
     
+    @property
     def is_failure(self) -> bool:
         return (
                 self.exception is not None and
@@ -52,9 +54,11 @@ class TransactionResult(Result[Event]):
                 self._transaction_state == TransactionState.ROLLED_BACK
         )
     
+    @property
     def is_rolled_back(self) -> bool:
         return self.exception is not None and self._transaction_state == TransactionState.ROLLED_BACK
     
+    @property
     def is_timed_out(self) -> bool:
         return self.exception is not None and self._transaction_state == TransactionState.TIMED_OUT
     

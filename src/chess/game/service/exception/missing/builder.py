@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.game import InvalidGameServiceException
 
 __all__ = [
-    # ======================# GAME_SERVICE EXCEPTIONS #======================#
+    #======================# GAME_SERVICE EXCEPTIONS #======================#
     "MissingGameBuilderException",
 ]
 
 
-# ======================# GAME_SERVICE EXCEPTIONS #======================#
+#======================# GAME_SERVICE EXCEPTIONS #======================#
 class MissingGameBuilderException(InvalidGameServiceException):
     """
     # ROLE: Error Tracing, Debugging

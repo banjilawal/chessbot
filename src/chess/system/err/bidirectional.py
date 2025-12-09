@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ChessException
 
 ___all__ = [
-# ======================# BOUNDS EXCEPTION SUPER CLASS #======================#
+#======================# BOUNDS EXCEPTION SUPER CLASS #======================#
     "BiDirectionalException",
 ]
 
 
-# ======================# BI_DIRECTIONAL RELATIONSHIP EXCEPTION SUPER CLASS #======================#
+#======================# BI_DIRECTIONAL RELATIONSHIP EXCEPTION SUPER CLASS #======================#
 class BiDirectionalException(ChessException):
     """
     # INTRODUCTION:

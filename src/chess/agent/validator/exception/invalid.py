@@ -11,12 +11,12 @@ from chess.agent import AgentException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# AGENT VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# AGENT VALIDATION EXCEPTION SUPER CLASS #======================#
     "InvalidAgentException",
 ]
 
 
-# ======================# AGENT VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# AGENT VALIDATION EXCEPTION SUPER CLASS #======================#
 class InvalidAgentException(AgentException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

@@ -123,9 +123,9 @@ The major theme influencing the modules design are
   2. Performance does not degrade under high old_search loads.
 
 # 6 Feature Delivery Mechanism:
-  1. The module implements logic for carrying either an rollback_exception or notification of a successful old_search. in the same
+  1. The module implements logic for carrying either an exception or notification of a successful old_search. in the same
       container. This improves square.
-  2. Delivering an rollback_exception in the return instead of raising gives application higher reliability, uptimes and
+  2. Delivering an exception in the return instead of raising gives application higher reliability, uptimes and
       survivability.
 
 # SECTION 7 - Dependencies:

@@ -12,12 +12,12 @@ from chess.system import BuildFailedException
 
 
 __all__ = [
-    # ======================# SCALAR BUILD EXCEPTIONS #======================#
+    #======================# SCALAR BUILD EXCEPTIONS #======================#
     "ScalarBuildFailedException",
 ]
 
 
-# ======================# SCALAR BUILD EXCEPTIONS #======================#
+#======================# SCALAR BUILD EXCEPTIONS #======================#
 class ScalarBuildFailedException(ScalarException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by ScalarBuilder 

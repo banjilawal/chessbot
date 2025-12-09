@@ -25,7 +25,7 @@ __all__ = [
 =============================================================================================================#
 """
 
-# ======================# ROLLED BACK ATTACK TRANSACTION EXCEPTIONS #======================#
+#======================# ROLLED BACK ATTACK TRANSACTION EXCEPTIONS #======================#
 class AttackTransactionException(AttackEventException, RollbackException):
   """
   RollBackCapture exceptions should be raised in ACID transactions where team_name capture can

@@ -26,7 +26,7 @@ class SquareException(ChessException):
     DEFAULT_MESSAGE = "Square raised an exception."
 
 
-# # ======================# RELATIONAL SQUARE EXCEPTIONS #======================#
+# #======================# RELATIONAL SQUARE EXCEPTIONS #======================#
 # class InvalidPieceSquareRelationException(SquareException, PieceException, InconsistencyException):
 #     """Catchall Exception for when SquareValidator fails candidates on a Piece-Square relationship test."""
 #     ERROR_CODE = "PIECE_RELATES_TO_SQUARE_ERROR"

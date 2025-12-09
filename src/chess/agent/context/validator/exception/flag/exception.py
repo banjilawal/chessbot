@@ -11,14 +11,14 @@ from chess.system import ContextFlagCountException
 from chess.agent import InvalidAgentContextException
 
 __all__ = [
-    # ========================= NO_AGENT_CONTEXT_FLAG EXCEPTION =========================#
+    #========================= NO_AGENT_CONTEXT_FLAG EXCEPTION =========================#
     "NoAgentContextFlagException",
-    # ========================= TOO_MANY_AGENT_CONTEXT_FLAGS EXCEPTION =========================#
+    #========================= TOO_MANY_AGENT_CONTEXT_FLAGS EXCEPTION =========================#
     "TooManyAgentContextFlagsException"
 ]
 
 
-# ========================= NO_AGENT_CONTEXT_FLAG EXCEPTION =========================#
+#========================= NO_AGENT_CONTEXT_FLAG EXCEPTION =========================#
 class NoAgentContextFlagException(InvalidAgentContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
@@ -40,7 +40,7 @@ class NoAgentContextFlagException(InvalidAgentContextException, ContextFlagCount
     DEFAULT_MESSAGE = "No AgentContext flag was selected. A context flag must be turned on with a target value."
 
 
-# ========================= TOO_MANY_AGENT_CONTEXT_FLAGS EXCEPTION =========================#
+#========================= TOO_MANY_AGENT_CONTEXT_FLAGS EXCEPTION =========================#
 class TooManyAgentContextFlagsException(InvalidAgentContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, AgentContextException

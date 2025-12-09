@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# BOARD BUILD EXCEPTIONS #======================#
+    #======================# BOARD BUILD EXCEPTIONS #======================#
     "InvalidBoardException",
     "NullBoardException",
 ]
@@ -17,7 +17,7 @@ from chess.board import BoardException
 from chess.system import NullException, ValidationException
 
 
-# ======================# INVALID BOARD EXCEPTIONS #======================#
+#======================# INVALID BOARD EXCEPTIONS #======================#
 class InvalidBoardException(BoardException, ValidationException):
     """Catchall Exception for BoardValidator when a candidate fails a sanity check."""
     ERROR_CODE = "BOARD_VALIDATION_ERROR"

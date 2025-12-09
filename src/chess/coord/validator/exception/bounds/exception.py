@@ -19,7 +19,7 @@ __all__ = [
     "ColumnAboveBoundsException",
 ]
 
-# ====================== COORD_ROW BOUNDS EXCEPTIONS #======================#
+#====================== COORD_ROW BOUNDS EXCEPTIONS #======================#
 class RowBelowBoundsException(InvalidCoordException, BoundsException):
     """Raised if trying to access row.index < 0."""
     ERROR_CODE = "COORD_ROW_INDEX_BELOW_BOUNDS_ERROR"
@@ -32,7 +32,7 @@ class RowAboveBoundsException(InvalidCoordException, BoundsException):
     DEFAULT_MESSAGE = "Coord.row > (ROW_SIZE-1). This outside the dimension of the board."
 
 
-# ====================== COORD_COLUMN BOUNDS EXCEPTIONS #======================#
+#====================== COORD_COLUMN BOUNDS EXCEPTIONS #======================#
 class ColumnBelowBoundsException(InvalidCoordException, BoundsException):
     """Raised if trying to access column.index < 0."""
     ERROR_CODE = "COORD_COLUMN_INDEX_BELOW_BOUNDS_ERROR"

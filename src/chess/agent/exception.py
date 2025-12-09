@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    # ======================# AGENT EXCEPTION SUPER CLASS #======================#
+    #======================# AGENT EXCEPTION SUPER CLASS #======================#
     "AgentException",
 ]
 
 
-# ======================# AGENT EXCEPTION SUPER CLASS #======================#
+#======================# AGENT EXCEPTION SUPER CLASS #======================#
 class AgentException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

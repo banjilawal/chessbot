@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== CHESS.rank.model.bishop PACKAGE CONTENTS ===========#
+#=========== rank.model.bishop PACKAGE CONTENTS ===========#
 
 # Packages
 None

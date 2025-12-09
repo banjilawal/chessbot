@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== CHESS.PIECE.FACTORY PACKAGE CONTENTS ===========#
+#=========== PIECE.FACTORY PACKAGE CONTENTS ===========#
 
 # Packages
 None

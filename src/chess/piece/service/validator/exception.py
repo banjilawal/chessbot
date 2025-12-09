@@ -17,14 +17,14 @@ __all__ = [
 ]
 
 
-# ======================# PIECE_SERVICE VALIDATION EXCEPTIONS #======================#
+#======================# PIECE_SERVICE VALIDATION EXCEPTIONS #======================#
 class InvalidPieceServiceException(PieceServiceException, ValidationFailedException):
     """Catchall Exception for PieceServiceValidator when a candidate fails a sanity check."""
     ERROR_CODE = "PIECE_SERVICE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "PieceService validation failed."
 
 
-# ======================# NULL PIECE_SERVICE EXCEPTIONS #======================#
+#======================# NULL PIECE_SERVICE EXCEPTIONS #======================#
 class NullPieceServiceException(PieceServiceException, NullException):
     """Raised if an entity, method, or operation requires PieceService but gets null instead."""
     ERROR_CODE = "NULL_PIECE_SERVICE_ERROR"

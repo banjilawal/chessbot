@@ -29,7 +29,7 @@ class AttackEventException(ChessException):
   all owner exceptions
   """
   ERROR_CODE = "ATTACK_ERROR"
-  DEFAULT_MESSAGE = "An attack raised an rollback_exception."
+  DEFAULT_MESSAGE = "An attack raised an exception."
 
 
 #======================# ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
@@ -91,7 +91,7 @@ class AttackEventBuildFailedException(AttackEventException, BuildFailedException
   DEFAULT_MESSAGE = "KingCheckEvent build failed."
 
 
-# ======================# PIECE CAPTURE EXCEPTIONS #======================#
+#======================# PIECE CAPTURE EXCEPTIONS #======================#
 class CapturePieceException(PieceException):
   """
   Several exceptions can be raised during capture rollback. This class is the parent of
@@ -134,7 +134,7 @@ class PieceCapturingItSelfException(CapturePieceException):
   DEFAULT_MESSAGE = "Piece cannot capture itself."
 
 
-# ======================# PIECE CAPTURE EXCEPTIONS WITH ROLLBACK #======================#
+#======================# PIECE CAPTURE EXCEPTIONS WITH ROLLBACK #======================#
 class CaptureRollbackException(CapturePieceException, RollbackException):
   """
   RollBackCapture exceptions should be raised in ACID transactions where team_name capture can
@@ -188,7 +188,7 @@ class CapturingItSelfRolledBackException(CapturePieceException):
   DEFAULT_MESSAGE = "Piece attempted to capture itself during the notification. The notification was rolled back."
 
 
-# ======================# PIECE CAPTURE EXCEPTIONS #======================#
+#======================# PIECE CAPTURE EXCEPTIONS #======================#
 
 
 

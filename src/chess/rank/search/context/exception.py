@@ -16,15 +16,15 @@ from chess.system import (
 __all__ = [
     "RankSearchContextException",
     
-# ========================= NULL RANK_SEARCH_CONTEXT EXCEPTIONS =========================#
+#========================= NULL RANK_SEARCH_CONTEXT EXCEPTIONS =========================#
     "NullRankSearchContextException",
     
-# ========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+#========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
     "InvalidRankSearchContextException",
     "NoRankSearchOptionSelectedException",
     "MoreThanOneRankSearchOptionPickedException",
     
-# ========================= RANK_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
+#========================= RANK_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
     "RankSearchContextBuildFailedException",
 ]
 

@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 
-# ======================# VECTOR BOUNDS EXCEPTIONS #======================#  
+#======================# VECTOR BOUNDS EXCEPTIONS #======================#
 class VectorAboveBoundsException(InvalidVectorException, BoundsException):
     """
     A Vector with a component whose magnitude > 7 will cause an ArrayIndexOutOfBounds error when the Vector is

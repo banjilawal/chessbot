@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== GAME.SERVICE.DATA PACKAGE CONTENTS ===========#
+#=========== GAME.SERVICE.DATA PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

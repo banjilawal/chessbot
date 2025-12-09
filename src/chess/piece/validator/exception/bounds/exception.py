@@ -11,14 +11,14 @@ from chess.system import BoundsException
 from chess.piece import InvalidPieceException
 
 __all__ = [
-    # ======================# PIECE BOUNDS EXCEPTIONS #======================#
+    #======================# PIECE BOUNDS EXCEPTIONS #======================#
     "PieceAttributeBoundsException",
     "RosterNumberOutOfBoundsException",
     "PieceRankOutOfBoundsException",
     "PieceNameOutOfBoundsException",
 ]
 
-# ======================# PIECE BOUNDS EXCEPTIONS #======================#
+#======================# PIECE BOUNDS EXCEPTIONS #======================#
 class PieceAttributeBoundsException(InvalidPieceException, BoundsException):
     """Raised if a Piece attribute is outside its Layout or Rank settings."""
     ERROR_CODE = "PIECE_ATTRIBUTE_BOUNDS_ERROR"

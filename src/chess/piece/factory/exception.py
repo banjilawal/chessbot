@@ -12,14 +12,14 @@ from chess.piece import PieceException
 from chess.system import BuilderException, BuildFailedException, NullException
 
 __all__ = [
-    # ======================# PIECE BUILD FAILURE EXCEPTION #======================#
+    #======================# PIECE BUILD FAILURE EXCEPTION #======================#
     "PieceBuildFailedException",
-    # ======================# PIECE_FACTORY NULL EXCEPTION #======================#
+    #======================# PIECE_FACTORY NULL EXCEPTION #======================#
     "NullPieceFactoryException",
 ]
 
 
-# ======================# PIECE BUILD EXCEPTIONS #======================#
+#======================# PIECE BUILD EXCEPTIONS #======================#
 class PieceBuildFailedException(PieceException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by PieceBuilder 
@@ -29,7 +29,7 @@ class PieceBuildFailedException(PieceException, BuildFailedException):
     DEFAULT_MESSAGE = "Piece build failed."
 
 
-# ======================# PIECE_FACTORY NULL EXCEPTION #======================#
+#======================# PIECE_FACTORY NULL EXCEPTION #======================#
 class NullPieceFactoryException(BuilderException, NullException):
     """Raised when an entity, method, or operation requires a PieceFactory but gets null instead."""
     ERROR_CODE = "NULL_PIECE_FACTORY_ERROR"

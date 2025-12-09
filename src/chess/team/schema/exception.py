@@ -11,20 +11,20 @@ from chess.team import TeamException
 from chess.system import BoundsException, NullException, ValidationException
 
 __all__ = [
-    # ======================# TEAM_SCHEMA EXCEPTION SUPER CLASS #======================#
+    #======================# TEAM_SCHEMA EXCEPTION SUPER CLASS #======================#
     "TeamSchemaException",
     
-    # ======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
+    #======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
     "InvalidTeamSchemaException",
     "NullTeamSchemaException",
     
-    # ======================# TEAM_SCHEMA BOUNDS EXCEPTIONS #======================#
+    #======================# TEAM_SCHEMA BOUNDS EXCEPTIONS #======================#
     "TeamNameBoundsException",
     "TeamColorBoundsException",
 ]
 
 
-# ======================# TEAM_SCHEMA EXCEPTION SUPER CLASS #======================#
+#======================# TEAM_SCHEMA EXCEPTION SUPER CLASS #======================#
 class TeamSchemaException(TeamException):
     """
     Super class of all exceptions TeamSchema object raises. Do not use directly. Subclasses give
@@ -34,7 +34,7 @@ class TeamSchemaException(TeamException):
     DEFAULT_MESSAGE = "TeamSchema raised an rexception."
 
 
-# ======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
+#======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
 class InvalidTeamSchemaException(TeamSchemaException, ValidationException):
     """
     Raised by TeamSchemaValidator if an object fails sanity checks. Exists primarily to catch all
@@ -50,7 +50,7 @@ class NullTeamSchemaException(TeamSchemaException, NullException):
     DEFAULT_MESSAGE = "TeamSchema cannot be null."
 
 
-# ======================# TEAM_SCHEMA BOUNDS EXCEPTIONS #======================#
+#======================# TEAM_SCHEMA BOUNDS EXCEPTIONS #======================#
 class TeamNameBoundsException(TeamSchemaException, BoundsException):
     """Raised if a name is not in a TeamSchema names"""
     ERROR_CODE = "TEAM_NAME_BOUNDS_ERROR"

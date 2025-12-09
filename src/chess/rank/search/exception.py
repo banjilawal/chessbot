@@ -22,10 +22,10 @@ from chess.rank import RankException
 __all__ = [
     "RankFinderException",
     
-    # ========================= NULL RANK_SEARCH_CONTEXT EXCEPTIONS =========================#
+    #========================= NULL RANK_SEARCH_CONTEXT EXCEPTIONS =========================#
     "NullRankSearchException",
     
-    # ========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+    #========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
     "InvalidRankSearchException",
 ]
 
@@ -39,14 +39,14 @@ class RankFinderException(RankException, FinderException):
     DEFAULT_MESSAGE = "RankSearchContext raised an exception."
 
 
-# ========================= NULL RANK_SEARCH_CONTEXT EXCEPTIONS =========================#
+#========================= NULL RANK_SEARCH_CONTEXT EXCEPTIONS =========================#
 class NullRankSearchException(RankFinderException, NullException):
     """Raised if an entity, method, or operation requires Rank but gets null instead."""
     ERROR_CODE = "NULL_RANK_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "RankSearchContext cannot be validation"
 
 
-# ========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+#========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
 class InvalidRankSearchException(RankFinderException, ValidationException):
     """Catchall Exception for RankSearchContextValidator when a candidate fails a sanity check."""
     ERROR_CODE = "RANK_SEARCH_CONTEXT_VALIDATION_ERROR"

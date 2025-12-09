@@ -12,11 +12,11 @@ from chess.game import GameServiceException
 
 
 __all__ = [
-    # ======================# GAME_SERVICE VALIDATION EXCEPTIONS #======================#
+    #======================# GAME_SERVICE VALIDATION EXCEPTIONS #======================#
     "InvalidGameServiceException",
 ]
 
-# ======================# GAME_SERVICE VALIDATION EXCEPTIONS #======================#
+#======================# GAME_SERVICE VALIDATION EXCEPTIONS #======================#
 class InvalidGameServiceException(GameServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

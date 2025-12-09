@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import BuilderException
 
 __all__ = [
-    # ======================# FAILED ENTITY BUILD OPERATION EXCEPTION #======================#
+    #======================# FAILED ENTITY BUILD OPERATION EXCEPTION #======================#
     "BuildFailedException",
 ]
 
 
-# ======================# FAILED ENTITY BUILD OPERATION EXCEPTION #======================#
+#======================# FAILED ENTITY BUILD OPERATION EXCEPTION #======================#
 class BuildFailedException(BuilderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

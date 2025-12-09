@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== GAME.CONTEXT.VALIDATOR.EXCEPTION.FLAG PACKAGE CONTENTS ===========#
+#=========== GAME.CONTEXT.VALIDATOR.EXCEPTION.FLAG PACKAGE CONTENTS ===========#
 
 # Packages
 None

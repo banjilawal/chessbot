@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== SYSTEM.FIND PACKAGE CONTENTS ===========#
+#=========== SYSTEM.FIND PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

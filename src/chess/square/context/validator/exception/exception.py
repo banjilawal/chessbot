@@ -12,7 +12,7 @@ from chess.square import SquareContextException
 
 
 
-# ========================= SQUARE_CONTEXT VALIDATION EXCEPTIONS =========================#
+#========================= SQUARE_CONTEXT VALIDATION EXCEPTIONS =========================#
 class InvalidSquareContextException(
     SquareContextException,
     ValidationException

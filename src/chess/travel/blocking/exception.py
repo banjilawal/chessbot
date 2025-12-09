@@ -53,7 +53,7 @@ from chess.system import ChessException, NullException, BuildFailedException, Va
 __all__ = [
   'BlockingEventException',
 
-# ======================# BLOCKING_EVENT VALIDATION EXCEPTIONS #======================#
+#======================# BLOCKING_EVENT VALIDATION EXCEPTIONS #======================#
   'NullBlockingEventException',
   'ActorBlockingOwnSquareException',
   'ActorSameAsBlockerException',
@@ -65,13 +65,13 @@ __all__ = [
 class BlockingEventException(TravelEventException):
   """"""
   ERROR_CODE = "BLOCKING_EVENT_ERROR"
-  DEFAULT_MESSAGE = "BlockingEvent raised an rollback_exception."
+  DEFAULT_MESSAGE = "BlockingEvent raised an exception."
 
 #======================# BLOCKING_EVENT VALIDATION EXCEPTIONS #======================#
 class InvalidBlockingEventException(TravelEventException, ValidationException):
   """"""
   ERROR_CODE = "BLOCKING_EVENT_ERROR"
-  DEFAULT_MESSAGE = "BlockingEvent raised an rollback_exception."
+  DEFAULT_MESSAGE = "BlockingEvent raised an exception."
   
 class NullBlockingEventException(BlockingEventException, NullException):
   """"""
@@ -172,12 +172,12 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # __all__ = [
 #   'TravelActorException',
 #
-#   # ====================== TravelEvent actor_candidate VALIDATION EXCEPTIONS #======================#
+#   #====================== TravelEvent actor_candidate VALIDATION EXCEPTIONS #======================#
 #   'InvalidTravelActorException',
 #   'NullTravelActorException',
 #   'TravelActorNotFoundException',
 #
-#   # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
+#   #====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
 #   'TravelActorMovingException',
 #   'NoInitialPlacementException',
 #   'ActorAlreadyAtDestinationException',
@@ -185,7 +185,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   'BoardPieceRemovedCannotActException',
 #   'CapturedActorCannotMoveException',
 #
-#   # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
+#   #====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
 #   'PieceSquareNotFoundException',
 #   'SquareMisMatchesPieceException'
 # ]
@@ -193,10 +193,10 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 # class TravelActorException(TravelEventException):
 #   ERROR_CODE = "TRAVEL_ACTOR_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate actor_candidate raised an rollback_exception."
+#   DEFAULT_MESSAGE = "TravelEvent actor_candidate actor_candidate raised an exception."
 #
 #
-# # ====================== TRAVEL ACTOR VALIDATION EXCEPTIONS #======================#
+# #====================== TRAVEL ACTOR VALIDATION EXCEPTIONS #======================#
 # class NullTravelActorException(TravelActorException, NullException):
 #   ERROR_CODE = "NULL_TRAVEL_ACTOR_ERROR"
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate cannot be null."
@@ -214,7 +214,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   )
 #
 #
-# # ====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
+# #====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
 # class TravelActorMovingException(TravelActorException):
 #   ERROR_CODE = "TRAVEL_ACTOR_MOVE_ERROR"
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate raised a moving violation. Candidate cannot travel."
@@ -267,7 +267,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   )
 #
 #
-# # ====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
+# #====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
 # class PieceSquareNotFoundException(TravelActorException, InconsistencyException):
 #   """"""
 #   ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"

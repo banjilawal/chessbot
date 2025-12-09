@@ -11,12 +11,12 @@ from chess.agent import AgentException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# AGENT BUILD EXCEPTIONS #======================#
+    #======================# AGENT BUILD EXCEPTIONS #======================#
     "AgentBuildFailedException",
 ]
 
 
-# ======================# AGENT BUILD EXCEPTIONS #======================#
+#======================# AGENT BUILD EXCEPTIONS #======================#
 class AgentBuildFailedException(AgentException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== CHESS.RANK.SPEC PACKAGE CONTENTS ===========#
+#=========== RANK.SPEC PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

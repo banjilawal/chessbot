@@ -11,11 +11,11 @@ from chess.piece import  PieceRegistrationException
 
 
 __all__ = [
-    # ======================# PIECE_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
+    #======================# PIECE_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
     "PieceNotRegisteredWithBoardException"
 ]
 
-# ======================# PIECE_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
+#======================# PIECE_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
 class PieceNotRegisteredWithBoardException(PieceRegistrationException):
     """
     # ROLE: Error Tracing, Debugging

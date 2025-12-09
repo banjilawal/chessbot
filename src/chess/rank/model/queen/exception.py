@@ -15,27 +15,27 @@ from chess.rank import (
 )
 
 __all__ = [
-    # ======================# QUEEN EXCEPTION SUPER CLASS #======================#
+    #======================# QUEEN EXCEPTION SUPER CLASS #======================#
     "QueenException",
-    # ======================# QUEEN VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# QUEEN VALIDATION EXCEPTION SUPER CLASS #======================#
     "InvalidQueenException",
     "NullQueenException",
-    # ======================# RANK_DESIGNATION #======================#
+    #======================# RANK_DESIGNATION #======================#
     "NotQueenDesignationException",
-    # ======================# RANK_ID EXCEPTION #======================#
+    #======================# RANK_ID EXCEPTION #======================#
     "NotQueenIdException",
-    # ======================# RANK_NAME EXCEPTION #======================#
+    #======================# RANK_NAME EXCEPTION #======================#
     "NotQueenNameException",
-    # ======================# RANK_QUOTA EXCEPTION #======================#
+    #======================# RANK_QUOTA EXCEPTION #======================#
     "NotQueenQuotaException",
-    # ======================# RANK_RANSOM EXCEPTION #======================#
+    #======================# RANK_RANSOM EXCEPTION #======================#
     "NotQueenRansomException",
-    # ======================# IMPROPER_MOVE EXCEPTION #======================#
+    #======================# IMPROPER_MOVE EXCEPTION #======================#
     "ImproperQueenMoveException",
 ]
 
 
-# ======================# QUEEN EXCEPTION SUPER CLASS #======================#
+#======================# QUEEN EXCEPTION SUPER CLASS #======================#
 class QueenException(RankException):
     """
     Catchall for exceptions organic to Queen properties and its atomic operations."""
@@ -43,7 +43,7 @@ class QueenException(RankException):
     DEFAULT_MESSAGE = "Queen raised an exception."
 
 
-# ======================# QUEEN VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# QUEEN VALIDATION EXCEPTION SUPER CLASS #======================#
 class InvalidQueenException(QueenException, ValidationException):
     """Catchall Exception for QueenValidator when a candidate fails a sanity check."""
     ERROR_CODE = "QUEEN_VALIDATION_ERROR"
@@ -56,42 +56,42 @@ class NullQueenException(QueenException, ValidationException):
     DEFAULT_MESSAGE = "Queen cannot be null."
 
 
-# ======================# RANK_DESIGNATION #======================#
+#======================# RANK_DESIGNATION #======================#
 class NotQueenDesignationException(QueenException, RankDesignationException):
     """Raised when a tested designation is not a Queen's."""
     ERROR_CODE = "QUEEN_DESIGNATION_ERROR"
     DEFAULT_MESSAGE = "Not the correct Queen designation."
 
 
-# ======================# RANK_ID EXCEPTION #======================#
+#======================# RANK_ID EXCEPTION #======================#
 class NotQueenIdException(QueenException, RankIdException):
     """Raised when a tested designation is not a Queen's."""
     ERROR_CODE = "QUEEN_ID_ERROR"
     DEFAULT_MESSAGE = "Not the correct Queen id."
 
 
-# ======================# RANK_NAME EXCEPTION #======================#
+#======================# RANK_NAME EXCEPTION #======================#
 class NotQueenNameException(QueenException, RankNameException):
     """Raised when a tested name is not a Queen's."""
     ERROR_CODE = "QUEEN_NAME_ERROR"
     DEFAULT_MESSAGE = "Not the correct Queen name."
 
 
-# ======================# RANK_QUOTA EXCEPTION #======================#
+#======================# RANK_QUOTA EXCEPTION #======================#
 class NotQueenQuotaException(QueenException, TeamQuotaException):
     """Raised when a tested quota is not a Queen's."""
     ERROR_CODE = "QUEEN_QUOTA_ERROR"
     DEFAULT_MESSAGE = "Not the correct Queen quota for a team."
 
 
-# ======================# RANK_RANSOM EXCEPTION #======================#
+#======================# RANK_RANSOM EXCEPTION #======================#
 class NotQueenRansomException(QueenException, RankRansomException):
     """Raised when a tested ransom is not a Queen's."""
     ERROR_CODE = "QUEEN_RANSOM_ERROR"
     DEFAULT_MESSAGE = "Not the correct Queen ransom."
 
 
-# ======================# IMPROPER_MOVE EXCEPTION #======================#
+#======================# IMPROPER_MOVE EXCEPTION #======================#
 class ImproperQueenMoveException(QueenException, ImproperMoveException):
     """Raised when a Queen's traveling rules prevent it from getting to a position."""
     ERROR_CODE = "IMPROPER_QUEEN_MOVE_ERROR"

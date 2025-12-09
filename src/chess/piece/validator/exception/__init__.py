@@ -7,7 +7,7 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-# =========== CHESS.PIECE.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+#=========== PIECE.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .active import *

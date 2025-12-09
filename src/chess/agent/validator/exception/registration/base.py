@@ -11,12 +11,12 @@ from chess.agent import InvalidAgentException
 from chess.system import RegistrationException
 
 __all__ = [
-    # ======================# AGENT REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# AGENT REGISTRATION EXCEPTION SUPER CLASS #======================#
     "AgentRegistrationException",
 ]
 
 
-# ======================# AGENT_REGISTRATION EXCEPTION SUPER CLASS #======================#
+#======================# AGENT_REGISTRATION EXCEPTION SUPER CLASS #======================#
 class AgentRegistrationException(InvalidAgentException, RegistrationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

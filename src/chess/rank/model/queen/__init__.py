@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== CHESS.RANK.MODEL.QUEEN PACKAGE CONTENTS ===========#
+#=========== RANK.MODEL.QUEEN PACKAGE CONTENTS ===========#
 
 # Packages
 None

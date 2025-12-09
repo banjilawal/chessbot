@@ -11,12 +11,12 @@ version: 1.0.0
 from chess.system import ContextException
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT EXCEPTIONS #======================#
+    #======================# SQUARE_CONTEXT EXCEPTIONS #======================#
     "SquareContextException",
 ]
 
 
-# ======================# SQUARE_CONTEXT EXCEPTIONS #======================#
+#======================# SQUARE_CONTEXT EXCEPTIONS #======================#
 class SquareContextException(ContextException):
     ERROR_CODE = "SQUARE_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "SquareContext raised an exception."

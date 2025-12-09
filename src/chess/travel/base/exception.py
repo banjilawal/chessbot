@@ -54,7 +54,7 @@ __all__ = [
 
 class TravelEventException(EventException):
   ERROR_CODE = "TRAVEL_EXECUTION_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent raised an rollback_exception."
+  DEFAULT_MESSAGE = "TravelEvent raised an exception."
   
 class TravelTransactionException(TransactionException):
   ERROR_CODE = "TRAVEL_TRANSACTION_ERROR"

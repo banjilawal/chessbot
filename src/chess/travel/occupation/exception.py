@@ -27,7 +27,7 @@ class OccupationEventException(TravelEventException):
   fine-grained messages and error codes better for debugging and logging.
   """
   DEFAULT_CODE = "OCCUPATION_EVENT_ERROR"
-  DEFAULT_MESSAGE = "An OccupationEvent raised an rollback_exception."
+  DEFAULT_MESSAGE = "An OccupationEvent raised an exception."
 
 
 #====================== OCCUPATION_EVENT VALIDATION EXCEPTIONS #======================#
@@ -108,7 +108,7 @@ class PositionUpdateRollbackException(AttackEventException, RollbackException):
   DEFAULT_MESSAGE = "Failed to update actor_candidate's position history after move; rollback executed."
 
 
-# ======================# ATTACKING PIECE EXCEPTIONS #======================#
+#======================# ATTACKING PIECE EXCEPTIONS #======================#
 class HostageActivityException(PieceException):
   """
   Several exceptions can be raised during capture rollback. This class is the parent of

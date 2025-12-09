@@ -10,15 +10,15 @@ version: 1.0.0
 from typing import Optional
 
 __all__ = [
-# ======================#  BASE APPLICATION EXCEPTION CLASS #======================#
+#======================#  BASE APPLICATION EXCEPTION CLASS #======================#
     "ChessException",
-# ======================# IMPLEMENTATION EXCEPTIONS #======================#
+#======================# IMPLEMENTATION EXCEPTIONS #======================#
     "NotImplementedException",
-# ======================# STARVATION EXCEPTIONS #======================#
+#======================# STARVATION EXCEPTIONS #======================#
     "ResourceException",
 ]
 
-# ======================# BASE APPLICATION EXCEPTION CLASS #======================#
+#======================# BASE APPLICATION EXCEPTION CLASS #======================#
 class ChessException(Exception):
     """Super class for application exceptions. do not use directly."""
     ERROR_CODE = "CHESS_ERROR"
@@ -62,13 +62,13 @@ class ChessException(Exception):
     # will use this.
 
 
-# ======================# IMPLEMENTATION EXCEPTIONS #======================#
+#======================# IMPLEMENTATION EXCEPTIONS #======================#
 class NotImplementedException(ChessException):
     ERROR_CODE = "NOT_IMPLEMENTED_WARNING"
     DEFAULT_MESSAGE = "Not implemented."
 
 
-# ======================# STARVATION EXCEPTIONS #======================#
+#======================# STARVATION EXCEPTIONS #======================#
 class ResourceException(ChessException):
     ERROR_CODE = "RESOURCE_ERROR"
     DEFAULT_MESSAGE = "Resource raised an exception."

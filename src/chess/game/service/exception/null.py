@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 
-# ======================# NULL GAME_SERVICE EXCEPTION #======================#
+#======================# NULL GAME_SERVICE EXCEPTION #======================#
 class NullGameServiceException(InvalidGameServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging

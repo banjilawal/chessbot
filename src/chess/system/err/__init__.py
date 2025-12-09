@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR PACKAGE CONTENTS ===========#
+#=========== SYSTEM.ERR PACKAGE CONTENTS ===========#
 
 # Packages
 from .number import *

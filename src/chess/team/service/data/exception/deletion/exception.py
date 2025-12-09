@@ -11,12 +11,12 @@ from chess.system import NullException
 from chess.team import TeamDataException
 
 __all__ = [
-# ======================# TEAM_DELETION_FAILED EXCEPTIONS #======================#
+#======================# TEAM_DELETION_FAILED EXCEPTIONS #======================#
     "TeamDeletionFailedException",
     "CannotRemoveNullTEamException",
 ]
 
-# ======================# TEAM_DELETION_FAILED EXCEPTIONS #======================#
+#======================# TEAM_DELETION_FAILED EXCEPTIONS #======================#
 class TeamDeletionFailedException(TeamDataException):
     ERROR_CODE = "TEAM_DELETION_ERROR"
     DEFAULT_MESSAGE = "Team deletion failed."

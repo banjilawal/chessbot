@@ -27,7 +27,7 @@ class HostageValidator(Validator):
       - The captor consistency is not validation
       - The hostage is not on its team_name roster
       - The hostage is not its enemy's list of prisoners
-    Any failed requirement raise an rollback_exception wrapped in team_name HostageValidationException
+    Any failed requirement raise an exception wrapped in team_name HostageValidationException
 
     Args
       candidate (CombatantPiece): point to validate

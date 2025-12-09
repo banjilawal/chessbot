@@ -11,14 +11,14 @@ from chess.game import GameRegistrationException
 
 
 __all__ = [
-    # ======================# GAME REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# GAME REGISTRATION EXCEPTION SUPER CLASS #======================#
     "GameNotRegisteredWithGameException",
 ]
 
 
 
 
-# ======================# GAME_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
+#======================# GAME_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
 class GameNotRegisteredWithGameException(GameRegistrationException):
     """
     # ROLE: Error Tracing, Debugging

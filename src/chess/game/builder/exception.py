@@ -11,12 +11,12 @@ from chess.game import GameException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# GAME BUILD EXCEPTIONS #======================#
+    #======================# GAME BUILD EXCEPTIONS #======================#
     "GameBuildFailedException",
 ]
 
 
-# ======================# GAME BUILD EXCEPTIONS #======================#
+#======================# GAME BUILD EXCEPTIONS #======================#
 class GameBuildFailedException(GameException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

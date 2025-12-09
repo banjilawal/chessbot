@@ -11,12 +11,12 @@ from chess.game import GameException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# GAME VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# GAME VALIDATION EXCEPTION SUPER CLASS #======================#
     "InvalidGameException",
 ]
 
 
-# ======================# GAME VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# GAME VALIDATION EXCEPTION SUPER CLASS #======================#
 class InvalidGameException(GameException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

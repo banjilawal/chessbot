@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== TEAM.VALIDATOR.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+#=========== TEAM.VALIDATOR.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

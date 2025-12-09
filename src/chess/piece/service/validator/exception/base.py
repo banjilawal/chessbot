@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ServiceException
 
 __all__ = [
-    # ======================# AGENT_SERVICE EXCEPTIONS #======================#
+    #======================# AGENT_SERVICE EXCEPTIONS #======================#
     "AgentServiceException",
 ]
 
 
-# ======================# AGENT_SERVICE EXCEPTIONS #======================#
+#======================# AGENT_SERVICE EXCEPTIONS #======================#
 class AgentServiceException(ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

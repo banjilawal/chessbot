@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.TEXT PACKAGE CONTENTS ===========#
+#=========== SYSTEM.ERR.TEXT PACKAGE CONTENTS ===========#
 
 # Packages
 

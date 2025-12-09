@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.piece import PieceRegistrationException
 
 __all__ = [
-    # ======================# PIECE_NOT_REGISTERED_WITH_SQUARE EXCEPTION #======================#
+    #======================# PIECE_NOT_REGISTERED_WITH_SQUARE EXCEPTION #======================#
     "PieceNotRegisteredWithSquareException"
 ]
 
-# ======================# PIECE_NOT_REGISTERED_WITH_SQUARE EXCEPTION #======================#
+#======================# PIECE_NOT_REGISTERED_WITH_SQUARE EXCEPTION #======================#
 class PieceNotRegisteredWithSquareException(PieceRegistrationException):
     """
     # ROLE: Error Tracing, Debugging

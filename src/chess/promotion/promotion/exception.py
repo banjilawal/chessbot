@@ -61,7 +61,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
@@ -112,7 +112,7 @@ class PromotionEventException(ChessException):
   exceptions.
   """
   ERROR_CODE = "PROMOTION_EVENT_ERROR"
-  DEFAULT_MESSAGE = "PromotionEvent raised an rollback_exception."
+  DEFAULT_MESSAGE = "PromotionEvent raised an exception."
 
 
 #======================# PROMOTION_EVENT VALIDATION EXCEPTIONS #======================#  
@@ -142,7 +142,7 @@ class DoublePromotionException(PromotionEventException):
   DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again."
 
 
-# ======================# PIECE PROMOTION EXCEPTIONS #======================#
+#======================# PIECE PROMOTION EXCEPTIONS #======================#
 
 
 
@@ -159,7 +159,7 @@ class DoublePromotionRolledBackException(RollBackException):
   )
 
 
-# ======================# PIECE PROMOTION EXCEPTIONS #======================#
+#======================# PIECE PROMOTION EXCEPTIONS #======================#
 class DoublePromotionException(PieceException):
   """
   Raised when attempting promoting team_name owner already elevated to Queen bounds.
@@ -198,12 +198,12 @@ class PromotionTransactionException(TransactionException):
   Wraps any errors raised during the promotion's lifecycle.
   """
   ERROR_CODE = "PROMOTION_TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "PromotionTransaction raised an rollback_exception."
+  DEFAULT_MESSAGE = "PromotionTransaction raised an exception."
 
 class NullPromotionTransactionException(TransactionException):
   """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets null instead."""
   ERROR_CODE = "PROMOTION_TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "PromotionTransaction raised an rollback_exception."
+  DEFAULT_MESSAGE = "PromotionTransaction raised an exception."
 
 
 # src/chess.point.rollback_exception.py
@@ -256,18 +256,18 @@ __all__ = [
   'ActorException',
   'ActorRollBackException',
   
-  # ======================# ACTOR VALIDATION EXCEPTIONS #======================#
+  #======================# ACTOR VALIDATION EXCEPTIONS #======================#
   'InvalidActorException',
   'ActorNotOnBoardException',
   'ActorPlacementRequiredException',
   
-  # ======================# ACTOR ACTIVITY EXCEPTIONS #======================#
+  #======================# ACTOR ACTIVITY EXCEPTIONS #======================#
   'CapturedPieceCannotActException',
   'CapturedActorCannotAttackException',
   'CapturedActorCannotMoveException',
 
   
-  # ======================# SUBJECT ACTIVITY EXCEPTIONS #======================#
+  #======================# SUBJECT ACTIVITY EXCEPTIONS #======================#
   'SubjectException',
   'InvalidSubjectException',
   'SubjectNotOnBoardException',
@@ -297,7 +297,7 @@ class ActorRollBackException(ActorException, RollbackException):
   DEFAULT_MESSAGE = "Actor raised an rollback_exception. Transaction rolled back"
 
 
-# ======================# ACTOR VALIDATION EXCEPTIONS #======================#
+#======================# ACTOR VALIDATION EXCEPTIONS #======================#
 class InvalidActorException(ActorException, InvalidAttackException):
   """
   Raised by ActorValidator if owner fails any conditions for acting on the board_validator.
@@ -323,7 +323,7 @@ class ActorPlacementRequiredException(ActorException):
   )
 
 
-# ======================# ACTOR ACTIVITY EXCEPTIONS #======================#
+#======================# ACTOR ACTIVITY EXCEPTIONS #======================#
 class CapturedPieceCannotActException(ActorException):
   """
   A captured owner cannot actt.
@@ -359,14 +359,14 @@ class CapturedActorCannotScanException(ActorException):
 
 
 
-# ======================# SUBJECT EXCEPTIONS #======================#
+#======================# SUBJECT EXCEPTIONS #======================#
 class SubjectException(AttackException):
   """
   SubjectException classes are raised on team_name owner acted upon. They are raised on the same errors as ActorException,
   Using SubjectException makes tracing which side of the interaction is raising an error easier.
   """
   ERROR_CODE = "SUBJECT_ERROR"
-  DEFAULT_MESSAGE = "A potential enemy owner raised an rollback_exception."
+  DEFAULT_MESSAGE = "A potential enemy owner raised an exception."
 
 
 class InvalidSubjectException(SubjectException, InvalidAttackException):

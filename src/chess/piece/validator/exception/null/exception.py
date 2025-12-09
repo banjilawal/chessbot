@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 
-# ======================# PIECE NULL EXCEPTIONS #======================#
+#======================# PIECE NULL EXCEPTIONS #======================#
 class NullPieceException(InvalidPieceException, NullException):
     """Raised if an entity, method, or operation expects a Piece but gets null instead."""
     ERROR_CODE = "NULL_PIECE_ERROR"

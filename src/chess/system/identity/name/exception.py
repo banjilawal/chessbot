@@ -11,20 +11,20 @@ from chess.system import BlankTextException, NullException, TextException, Valid
 
 
 __all__ = [
- # ======================# NAME EXCEPTION SUPER CLASS #======================#
+ #======================# NAME EXCEPTION SUPER CLASS #======================#
     "NameException",
-# ======================# NAME VALIDATION EXCEPTIONS #======================#
+#======================# NAME VALIDATION EXCEPTIONS #======================#
     "InvalidNameException",
-# ======================# NAME NULL/BLANK EXCEPTIONS #======================#
+#======================# NAME NULL/BLANK EXCEPTIONS #======================#
     "NullNameException",
     "WhiteSpaceNameException",
-# ======================# NAME LENGTH EXCEPTIONS #======================#
+#======================# NAME LENGTH EXCEPTIONS #======================#
     "ShortNameException",
     "LongNameException",
 ]
 
 
-# ======================# NAME EXCEPTION SUPER CLASS #======================#
+#======================# NAME EXCEPTION SUPER CLASS #======================#
 class NameException(TextException, ValidationException):
     """
     Super class of name exceptions. Subclasses give precise, fine-grained information which make
@@ -34,7 +34,7 @@ class NameException(TextException, ValidationException):
     DEFAULT_MESSAGE = "Name raised an exception"
 
 
-# ======================# NAME VALIDATION EXCEPTIONS #======================#
+#======================# NAME VALIDATION EXCEPTIONS #======================#
 class InvalidNameException(NameException):
     """
     Super class of name exceptions. Subclasses give precise, fine-grained information which make
@@ -44,7 +44,7 @@ class InvalidNameException(NameException):
     DEFAULT_MESSAGE = "Name validation failed"
 
 
-# ======================# NAME NULL/BLANK EXCEPTIONS #======================#
+#======================# NAME NULL/BLANK EXCEPTIONS #======================#
 class NullNameException(InvalidNameException, NullException):
     """Raised if an entity, method, or operation requires Name but gets null instead."""
     ERROR_CODE = "NULL_NAME_ERROR"
@@ -57,7 +57,7 @@ class WhiteSpaceNameException(InvalidNameException, BlankTextException):
     DEFAULT_MESSAGE = "Name cannot be white space only"
 
 
-# ======================# NAME LENGTH EXCEPTIONS #======================#
+#======================# NAME LENGTH EXCEPTIONS #======================#
 class ShortNameException(InvalidNameException):
     """Raised if name is below MIN_NAME_LENGTH."""
     ERROR_CODE = "SHORT_NAME_ERROR"

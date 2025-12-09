@@ -16,7 +16,7 @@ __all__ = [
 #====================== NULL VECTOR EXCEPTIONS #======================#
   "NullVectorException",
   
-# ====================== VECTOR VALIDATION EXCEPTIONS #======================#
+#====================== VECTOR VALIDATION EXCEPTIONS #======================#
   "InvalidVectorException",
 
 #====================== VECTOR BUILD EXCEPTIONS #======================#  
@@ -41,7 +41,7 @@ class VectorException(ChessException):
 
 
 
-# ====================== NULL VECTOR EXCEPTIONS #======================#
+#====================== NULL VECTOR EXCEPTIONS #======================#
 
 
 

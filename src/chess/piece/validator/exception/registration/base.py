@@ -11,12 +11,12 @@ from chess.piece import InvalidPieceException
 from chess.system import RegistrationException
 
 __all__ = [
-    # ======================# PIECE_REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# PIECE_REGISTRATION EXCEPTION SUPER CLASS #======================#
     "PieceRegistrationException"
 ]
 
 
-# ======================# PIECE_REGISTRATION EXCEPTION SUPER CLASS #======================#
+#======================# PIECE_REGISTRATION EXCEPTION SUPER CLASS #======================#
 class PieceRegistrationException(InvalidPieceException, RegistrationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

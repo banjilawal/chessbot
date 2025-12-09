@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import FinderException
 
 __all__ = [
-    # ======================# AGENT_FINDER EXCEPTIONS #======================#
+    #======================# AGENT_FINDER EXCEPTIONS #======================#
     "AgentFinderException",
 ]
 
 
-# ======================# AGENT_FINDER EXCEPTIONS #======================#
+#======================# AGENT_FINDER EXCEPTIONS #======================#
 class AgentFinderException(FinderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

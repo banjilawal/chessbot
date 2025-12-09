@@ -11,14 +11,14 @@ from chess.system import ContextFlagCountException
 from chess.game import InvalidGameContextException
 
 __all__ = [
-    # ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
+    #========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
     "NoGameContextFlagException",
-    # ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+    #========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
     "TooManyGameContextFlagsException"
 ]
 
 
-# ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
+#========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
 class NoGameContextFlagException(InvalidGameContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
@@ -40,7 +40,7 @@ class NoGameContextFlagException(InvalidGameContextException, ContextFlagCountEx
     DEFAULT_MESSAGE = "No GameContext flag was selected. A context flag must be turned on with a target value."
 
 
-# ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+#========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
 class TooManyGameContextFlagsException(InvalidGameContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, GameContextException

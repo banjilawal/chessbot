@@ -12,15 +12,15 @@ from chess.system import ChessException, NullException, ValidationException, Bui
 __all__ = [
     'GraphException',
     
-    # ======================# GRAPH VALIDATION EXCEPTIONS #======================#
+    #======================# GRAPH VALIDATION EXCEPTIONS #======================#
     'InvalidGraphException',
 
     
-    # ======================# NULL GRAPH EXCEPTIONS #======================#
+    #======================# NULL GRAPH EXCEPTIONS #======================#
     'NullGraphException',
 
     
-    # ======================# GRAPH BUILD EXCEPTIONS #======================#  
+    #======================# GRAPH BUILD EXCEPTIONS #======================#  
     'GraphBuildFailedException',
 ]
 
@@ -36,7 +36,7 @@ class GraphException(ChessException):
     DEFAULT_MESSAGE = "Graph raised an exception."
 
 
-# ======================# GRAPH VALIDATION EXCEPTIONS #======================#
+#======================# GRAPH VALIDATION EXCEPTIONS #======================#
 class InvalidGraphException(GraphException, ValidationException):
     """Raised by GraphValidators if client fails coord_stack_validator."""
     ERROR_CODE = "GRAPH_VALIDATION_ERROR"
@@ -44,7 +44,7 @@ class InvalidGraphException(GraphException, ValidationException):
 
 
 
-# ======================# NULL GRAPH EXCEPTIONS #======================#
+#======================# NULL GRAPH EXCEPTIONS #======================#
 class NullGraphException(GraphException, NullException):
     """
     Raised if an entity, method, or operation requires team_name graph but gets validation instead.
@@ -56,7 +56,7 @@ class NullGraphException(GraphException, NullException):
     DEFAULT_MESSAGE = "Graph cannot be null."
 
 
-# ======================# GRAPH BUILD EXCEPTIONS #======================#  
+#======================# GRAPH BUILD EXCEPTIONS #======================#  
 class GraphBuildFailedException(GraphException, BuildFailedException):
     """
     Indicates Coord could not be built. Wraps and re-raises errors that occurred

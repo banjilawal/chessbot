@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import FinderException
 
 __all__ = [
-    # ======================# PIECE_SEARCH EXCEPTIONS #======================#
+    #======================# PIECE_SEARCH EXCEPTIONS #======================#
     "PieceFinderException",
 ]
 
 
-# ======================# PIECE_SEARCH EXCEPTIONS #======================#
+#======================# PIECE_SEARCH EXCEPTIONS #======================#
 class PieceFinderException(FinderException):
     """
     Super class of exceptions raised by PieceFinder objects. Do not use directly. Subclasses give

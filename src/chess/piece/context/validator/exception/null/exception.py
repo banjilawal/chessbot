@@ -12,12 +12,12 @@ from chess.system import NullException
 from chess.piece import InvalidPieceContextException
 
 __all__ = [
-    # ========================= NULL PIECE_CONTEXT EXCEPTIONS =========================#
+    #========================= NULL PIECE_CONTEXT EXCEPTIONS =========================#
     "NullPieceContextException"
 ]
 
 
-# ========================= NULL PIECE_CONTEXT EXCEPTIONS =========================#
+#========================= NULL PIECE_CONTEXT EXCEPTIONS =========================#
 class NullPieceContextException(InvalidPieceContextException, NullException):
     """Raised if an entity, method, or operation requires PieceContext but gets null instead."""
     ERROR_CODE = "NULL_PIECE_CONTEXT_ERROR"

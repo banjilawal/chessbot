@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-# =========== CHESS.TEAM.ORDER PACKAGE CONTENTS ===========#
+#=========== TEAM.ORDER PACKAGE CONTENTS ===========#
 
 # Packages
 None

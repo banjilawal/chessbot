@@ -7,12 +7,12 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-# =========== AGENT.FINDER PACKAGE CONTENTS ===========#
+#=========== AGENT.FINDER PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .exception import *
 from .finder import AgentFinder
+from .exception import AgentFinderException
 

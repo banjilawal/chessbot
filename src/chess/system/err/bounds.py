@@ -11,30 +11,30 @@ from chess.system import ChessException
 
 
 ___all__ = [
-# ======================# BOUNDS EXCEPTION SUPER CLASS #======================#
+#======================# BOUNDS EXCEPTION SUPER CLASS #======================#
     "BoundsException",
-# ======================# ABOVE BOUNDS EXCEPTION #======================#
+#======================# ABOVE BOUNDS EXCEPTION #======================#
     "AboveBoundsException",
-# ======================# BELOW BOUNDS EXCEPTION #======================#
+#======================# BELOW BOUNDS EXCEPTION #======================#
     "BelowBoundsException"
 ]
 
 
-# ======================# BOUNDS EXCEPTION SUPER CLASS #======================#
+#======================# BOUNDS EXCEPTION SUPER CLASS #======================#
 class BoundsException(ChessException):
     """Base class for out of Bounds errors."""
     DEFAULT_CODE = "OUT_OF__BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Out of bounds."
 
 
-# ======================# ABOVE BOUNDS EXCEPTION #======================#
+#======================# ABOVE BOUNDS EXCEPTION #======================#
 class AboveBoundsException(BoundsException):
     """Base class for above bounds exceptions."""
     DEFAULT_CODE = "ABOVE_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Above bounds."
 
 
-# ======================# BELOW BOUNDS EXCEPTION #======================#
+#======================# BELOW BOUNDS EXCEPTION #======================#
 class BelowBoundsException(BoundsException):
     """Base class for above bounds exceptions."""
     DEFAULT_CODE = "BELOW_BOUNDS_RROR"

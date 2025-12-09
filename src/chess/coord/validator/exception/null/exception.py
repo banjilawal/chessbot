@@ -16,20 +16,20 @@ __all__ = [
     "NullColumnException",
 ]
 
-# ====================== NULL COORD EXCEPTIONS #======================#
+#====================== NULL COORD EXCEPTIONS #======================#
 class NullCoordException(InvalidCoordException, NullException):
     """Raised if an entity, method, or operation requires Coord but gets null instead."""
     ERROR_CODE = "NULL_COORD_ERROR"
     DEFAULT_MESSAGE = "Coord cannot be validation"
 
-# ====================== NULL COORD_ROW VALIDATION EXCEPTIONS #======================#
+#====================== NULL COORD_ROW VALIDATION EXCEPTIONS #======================#
 class NullRowException(InvalidCoordException, NullException):
     """Raised if Coord.row is validation."""
     ERROR_CODE = "NULL_COORD_ROW_ERROR"
     DEFAULT_MESSAGE = "Coord.row property cannot be null."
 
 
-# ====================== NULL COORD_COLUMN VALIDATION EXCEPTIONS #======================#
+#====================== NULL COORD_COLUMN VALIDATION EXCEPTIONS #======================#
 class NullColumnException(InvalidCoordException, NullException):
     """Raised if Coord.row is validation."""
     ERROR_CODE = "NULL_COORD_COLUMN_INDEX_ERROR"

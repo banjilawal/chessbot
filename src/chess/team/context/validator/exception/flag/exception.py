@@ -11,13 +11,13 @@ from chess.system import BoundsException
 from chess.team import InvalidTeamContextException
 
 __all__ = [
-    # ========================= TEAM_CONTEXT FLAG EXCEPTIONS =========================#
+    #========================= TEAM_CONTEXT FLAG EXCEPTIONS =========================#
     "NoTeamContextFlagsException",
     "TooManyTeamContextFlagsException"
 ]
 
 
-# ========================= TEAM_CONTEXT FLAG EXCEPTIONS =========================#
+#========================= TEAM_CONTEXT FLAG EXCEPTIONS =========================#
 class NoTeamContextFlagsException(InvalidTeamContextException, BoundsException):
     """Raised if no TeamContext was selected."""
     ERROR_CODE = "NO_TEAM_CONTEXT_FLAG_SET_ERROR"

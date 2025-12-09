@@ -25,7 +25,7 @@ class Square:
     Square
   
     # ATTRIBUTES:
-        *   _id (int)
+        *   timestamp (int)
         *   _name (str)
         *   _board (Board)
         *   _coord (Coord)

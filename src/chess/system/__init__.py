@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== CHESS.SYSTEM PACKAGE CONTENTS ===========#
+#=========== SYSTEM PACKAGE CONTENTS ===========#
 
 # Packages
 from .build import *
@@ -25,7 +25,6 @@ from .mouse import *
 from .notification import *
 from .result import *
 from .resolution import *
-
 from .service import *
 from .transaction import *
 from .utils import *

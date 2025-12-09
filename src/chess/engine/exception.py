@@ -20,7 +20,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
@@ -63,7 +63,7 @@ class EngineException(ChessException):
   exceptions.
   """
   ERROR_CODE = "ENGINE_ERROR"
-  DEFAULT_MESSAGE = "Engine raised an rollback_exception."
+  DEFAULT_MESSAGE = "Engine raised an exception."
 
 class NullEngineException(EngineException, NullException):
   """Raised if an entity, method, or operation requires an `Engine` but gets null instead."""

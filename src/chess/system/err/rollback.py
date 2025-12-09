@@ -16,14 +16,14 @@ __all__ = [
 ]
 
 
-# ======================# ROLL_BACK_EXCEPTION SUPER CLASS #======================#
+#======================# ROLL_BACK_EXCEPTION SUPER CLASS #======================#
 class RollbackException(ChessException):
     """Base class for rollback-related errors."""
     DEFAULT_CODE = "ROLLBACK_ERROR"
     DEFAULT_MESSAGE = "Rollback exception raised."
 
 
-# ======================# FAILED_OPERATION ROLLED_BACK EXCEPTION #======================#
+#======================# FAILED_OPERATION ROLLED_BACK EXCEPTION #======================#
 class FailedOperationRolledBackException(RollbackException):
     """
     Raised when an operation fails. The changes are rolled back. Then the exception
@@ -36,14 +36,14 @@ class FailedOperationRolledBackException(RollbackException):
     )
 
 
-# ======================# ROLL_BACK_EXCEPTION SUPER CLASS #======================#
+#======================# ROLL_BACK_EXCEPTION SUPER CLASS #======================#
 class RollbackException(ChessException):
     """Base class for rollback-related errors."""
     DEFAULT_CODE = "ROLLBACK_ERROR"
     DEFAULT_MESSAGE = "Rollback exception raised."
 
 
-# ======================# FAILED_OPERATION ROLLED_BACK EXCEPTION #======================#
+#======================# FAILED_OPERATION ROLLED_BACK EXCEPTION #======================#
 class FailedOperationRolledBackException(RollbackException):
     """
     Raised when an operation fails. The changes are rolled back. Then the exception

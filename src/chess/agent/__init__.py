@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-# =========== CHESS.AGENT ROOT PACKAGE CONTENTS ===========#
+#=========== AGENT ROOT PACKAGE CONTENTS ===========#
 
 # Packages
 from .context import *

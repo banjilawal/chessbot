@@ -282,7 +282,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each consistency and behavior in the `Team` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Team` class has an exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:

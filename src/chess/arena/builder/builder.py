@@ -1,7 +1,7 @@
-# src/chess/agent/builder.py
+# src/chess/arena/builder.py
 
 """
-Module: chess.agent.builder
+Module: chess.arena.builder
 Author: Banji Lawal
 Created: 2025-09-11
 version: 1.0.0
@@ -9,31 +9,36 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.engine import EngineService
+from chess.agent import Agent, AgentService
+from chess.board import BoardService
 from chess.game import UniqueGameDataService
-from chess.team import UniqueTeamDataService
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
-
-from chess.agent import (
-    Agent, AgentBuildFailedException, AgentVariety, AgentValidator, HumanAgent, HumanAgentBuildFailedException,
-    MachineAgent, MachineAgentBuildFailedException
+from chess.team import Team, TeamService, UniqueTeamDataService
+from chess.system import (
+    Builder, BuildResult, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult,
+    id_emitter
 )
 
+from chess.arena import (
+    Arena, ArenaBuildFailedException, ArenaVariety, ArenaValidator, HumanArena, HumanArenaBuildFailedException,
+    MachineArena, MachineArenaBuildFailedException
+)
+from chess.team.schema import TeamSchema
 
-class AgentFactory(Builder[Agent]):
+
+class ArenaBuilder(Builder[Arena]):
     """
     # ROLE: Builder, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-    Produce Agent instances whose integrity is always guaranteed. If any attributes do not pass
-    their integrity checks, send an exception instead of an unsafe Agent.
+    Produce Arena instances whose integrity is always guaranteed. If any attributes do not pass
+    their integrity checks, send an exception instead of an unsafe Arena.
     
     # PARENT
         *   Builder
 
     # PROVIDES:
-    BuildResult[Agent] containing either:
-        - On success: Agent in the payload.
+    BuildResult[Arena] containing either:
+        - On success: Arena in the payload.
         - On failure: Exception.
 
     # LOCAL ATTRIBUTES:
@@ -46,164 +51,88 @@ class AgentFactory(Builder[Agent]):
     @classmethod
     def build(
             cls,
-            name: str,
-            id: id_emitter.agent_id,
-            agent_variety: AgentVariety,
-            engine_service: Optional[EngineService] = None,
-            agent_validator: AgentValidator = AgentValidator(),
-    ) -> BuildResult[Agent]:
+            white_agent: Agent,
+            black_agent: Agent,
+            id: int = id_emitter.arena_id,
+            team_service: TeamService = TeamService(),
+            agent_service: AgentService = AgentService(),
+            board_service: BoardService = BoardService(),
+            service_validator: ServiceValidator = ServiceValidator(),
+            identity_service: IdentityService = IdentityService(),
+    ) -> BuildResult[Arena]:
         """
         # ACTION:
-        1.  verify agent_variety is a not-null AgentVariety object.
-        2.  Use agent_variety to pick which factory method will create the concrete Agent object.
+        1.  verify arena_variety is a not-null ArenaVariety object.
+        2.  Use arena_variety to pick which builder method will create the concrete Arena object.
 
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   agent_variety (AgentVariety)
+            *   arena_variety (ArenaVariety)
             *   engine_service (Optional[EngineService])
 
         # Returns:
-        ValidationResult[Agent] containing either:
-            - On success: Agent in the payload.
+        ValidationResult[Arena] containing either:
+            - On success: Arena in the payload.
             - On failure: Exception.
 
         # Raises:
-            *   AgentBuildFailedException
+            *   ArenaBuildFailedException
         """
-        method = "AgentBuilder.build"
+        method = "ArenaBuilder.build"
         try:
-            # Ensure the agent_variety is the correct type and not null.
-            variety_validation = agent_validator.certify_agent_variety(candidate=agent_variety)
-            if variety_validation.failure():
-                return BuildResult.failure(variety_validation.exception)
-            # Use agent_variety to decide which factory method to call.
+            # Ensure the id is safe to use.
+            id_validation = identity_service.validate_id(candidate=id)
+            if id_validation.failure():
+                return BuildResult.failure(id_validation.exception)
             
-            if isinstance(agent_variety, HumanAgent):
-                return cls.build_human_agent(id=id, name=name, )
+            # Run safety checks on the agents
+            for agent in (white_agent, black_agent):
+                validation = agent_service.validator.validate(candidate=agent)
+                if validation.failure():
+                    return BuildResult.failure(validation.exception)
+            # Handle the case the agents are the same.
+            if white_agent == black_agent:
+                return BuildResult.failure(
+                    ArenaBuildFailedException(f"{method}: The players cannot be the same.")
+                )
             
-            # Machine agent requires an engine_service.
-            if isinstance(agent_variety, MachineAgent):
-                return cls.build_machine_agent(id=id, name=name, engine_service=engine_service)
-        
-        # The flow should only get here if the logic did not route all the types of concrete Agents.
-        # In that case wrap the unhandled exception inside an AgentBuildFailedException then, return
+            white_team_build_result = team_service.builder.build(white_agent, TeamSchema.WHITE)
+            if white_team_build_result.failure():
+                return BuildResult.failure(white_team_build_result.exception)
+            
+            white_team = white_team_build_result.payload
+            if white_team != white_agent.current_team:
+                white_agent.team_assignments.push_unique_item(white_team)
+                
+            black_team_build_result = team_service.builder.build(black_agent, TeamSchema.BLACK)
+            if black_team_build_result.failure():
+                return BuildResult.failure(black_team_build_result.exception)
+            
+            black_team = black_team_build_result.payload
+            if black_team != black_agent.current_team:
+                black_agent.team_assignments.push_unique_item(black_team)
+                
+            board_certification = service_validator.validate(board_service)
+            if board_certification.failure():
+                return BuildResult.failure(board_certification.exception)
+    
+            return BuildResult.success(
+                payload=Arena(
+                    id=id,
+                    white_team=white_team,
+                    black_team=black_team,
+                    board=board_service,
+                )
+            )
+      
+        # The flow should only get here if the logic did not route all the types of concrete Arenas.
+        # In that case wrap the unhandled exception inside an ArenaBuildFailedException then, return
         # the exception chain inside a ValidationResult.
         # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                AgentBuildFailedException(
-                    ex=ex, message=f"{method}: {AgentBuildFailedException.DEFAULT_MESSAGE}"
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def build_human_agent(
-            cls,
-            id: int,
-            name: str,
-            idservice: IdentityService = IdentityService(),
-    ) -> BuildResult[HumanAgent]:
-        """
-        # ACTION:
-        1.  On successfully certifying the id and name create HumanAgent and return in BuildResult's
-            payload. Otherwise, return a BuildResult containing an exception.
-
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   identity_service (IdentityService)
-
-        # Returns:
-        ValidationResult[HumanAgent] containing either:
-            - On success: HumanAgent in the payload.
-            - On failure: Exception.
-
-        # Raises:
-            *   HumanAgentBuildFailedException
-        """
-        method = "AgentBuilder.build_human_agent"
-        try:
-            # Only need to certify the name and id are correct.
-            validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
-            if validation.is_failure():
-                return BuildResult.failure(validation.exception)
-            # On success return the HumanAgent in a BuildResult payload.
-            return BuildResult.success(
-                payload=HumanAgent(
-                    id=id,
-                    name=name,
-                    games=UniqueGameDataService(),
-                    team_assignments=UniqueTeamDataService(),
-                )
-            )
-        
-        # Finally, if some exception unrelated to identity verification is raised wrap it inside a
-        # HumanAgentBuildFailedException then, send the exception chain inside a BuildResult.
-        except Exception as ex:
-            return BuildResult.failure(
-                HumanAgentBuildFailedException(
-                    ex=ex, message=f"{method}: {HumanAgentBuildFailedException.DEFAULT_MESSAGE}"
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def build_machine_agent(
-            cls,
-            name: str,
-            id: int = id_emitter.service_id,
-            engine_service: EngineService = EngineService(),
-            idservice: IdentityService = IdentityService(),
-    ) -> BuildResult[MachineAgent]:
-        """
-        # ACTION:
-        1.  Certifying the id and name and name are safe with identity_service.
-        2.  Use engine_service_validator to ensure the engine_service has all the required components.
-
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   engine_service (EngineService)
-            *   identity_service (IdentityService)
-            *   engine_service_validator (EngineServiceValidator)
-
-        # Returns:
-        ValidationResult[MachineAgent] containing either:
-            - On success: MachineAgent in the payload.
-            - On failure: Exception.
-
-        # Raises:
-            *   MachineAgentBuildFailedException
-        """
-        method = "AgentBuilder.build_machine_agent"
-        try:
-            # Certify the id and name are safe.
-            identity_validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
-            if identity_validation.is_failure():
-                return BuildResult.failure(identity_validation.exception)
-            
-            # Certify the engine_service has all the required components
-            engine_service_validation = engine_service.validator.validate(candidate=engine_service)
-            if engine_service_validation.is_failure():
-                return BuildResult.failure(engine_service_validation.exception)
-            # When all checks pass send a MachineAgent back.
-            return BuildResult.success(
-                MachineAgent(
-                    id=id,
-                    name=name,
-                    engine_service=engine_service,
-                    games=UniqueGameDataService(),
-                    team_assignments=UniqueTeamDataService(),
-                )
-            )
-        
-        # Finally, if some exception unrelated to identity verification is raised wrap it inside a
-        # MachineAgentBuildFailedException then, send the exception chain inside a BuildResult.
-        except Exception as ex:
-            return BuildResult.failure(
-                MachineAgentBuildFailedException(
-                    ex=ex, message=f"{method}: {MachineAgentBuildFailedException.DEFAULT_MESSAGE}"
+                ArenaBuildFailedException(
+                    ex=ex, message=f"{method}: {ArenaBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

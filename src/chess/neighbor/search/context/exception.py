@@ -12,7 +12,7 @@ from chess.system import ContextException, NullException, BuildFailedException, 
 __all__ = [
     'VisitationSearchContextException',
 
-    # ======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
     'NullVisitationSearchContextException',
     'InvalidVisitationSearchContextException',
     'ZeroVisitationSearchParamsException',
@@ -20,7 +20,7 @@ __all__ = [
     'VisitationRansomParamBoundsException',
     'VisitationInvalidRankNameParamException',
 
-    # ======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
     'VisitationSearchContextBuildFailedException',
 ]
 

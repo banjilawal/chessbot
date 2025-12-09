@@ -37,14 +37,14 @@ class DomainException(ChessException):
     DEFAULT_MESSAGE = "Domain raised an exception."
 
 
-# ======================# NULL DOMAIN EXCEPTIONS #======================#
+#======================# NULL DOMAIN EXCEPTIONS #======================#
 class NullDomainException(DomainException, NullException):
     """Raised if an entity, method, or operation requires Domain but gets null instead."""
     ERROR_CODE = "NULL_DOMAIN_ERROR"
     DEFAULT_MESSAGE = "Domain cannot be null."
 
 
-# ======================# DOMAIN VALIDATION EXCEPTIONS #======================#
+#======================# DOMAIN VALIDATION EXCEPTIONS #======================#
 class InvalidDomainException(DomainException, ValidationException):
     """Catchall Exception for SquareValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "DOMAIN_VALIDATION_ERROR"
@@ -69,7 +69,7 @@ class DomainNullFriendsDictException(DomainException, InconsistencyException):
     DEFAULT_MESSAGE = "The Domain.friends dict is validation. There may be a entity_service failure or data inconsistency."
 
 
-# ======================# DOMAIN BUILD EXCEPTIONS #======================#
+#======================# DOMAIN BUILD EXCEPTIONS #======================#
 class DomainBuildFailedException(DomainException, BuilderException):
     """Catchall Exception for DomainBuilder when it stops because of an error."""
     ERROR_CODE = "DOMAIN_BUILD_FAILED_ERROR"

@@ -7,7 +7,7 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-# =========== CHESS.RANK.FACTORY PACKAGE CONTENTS ===========#
+#=========== RANK.FACTORY PACKAGE CONTENTS ===========#
 
 # Packages
 None

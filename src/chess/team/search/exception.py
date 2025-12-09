@@ -10,13 +10,13 @@ version: 1.0.0
 from chess.system import FinderException
 
 __all__ = [
-    # ======================# TEAM_SEARCH EXCEPTIONS #======================#
+    #======================# TEAM_SEARCH EXCEPTIONS #======================#
     "TeamFinderException",
     "TeamSearchFailedException",
 ]
 
 
-# ======================# TEAM_SEARCH EXCEPTIONS #======================#
+#======================# TEAM_SEARCH EXCEPTIONS #======================#
 class TeamFinderException(FinderException):
     """
     Super class of exceptions raised by TeamFinder objects. Do not use directly. Subclasses give

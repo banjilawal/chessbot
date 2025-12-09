@@ -15,7 +15,7 @@ from chess.agent import AgentContext, AgentContextBuilder, AgentContextValidator
 
 class AgentContextService(ContextService[AgentContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search Service, Integrity Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Agent search microservice.
@@ -67,12 +67,15 @@ class AgentContextService(ContextService[AgentContext]):
         
     @property
     def finder(self) -> AgentFinder:
+        """Get AgentFinder"""
         return cast(AgentFinder, self.entity_finder)
     
     @property
     def builder(self) -> AgentContextBuilder:
+        """Get AgentContextBuilder"""
         return cast(AgentContextBuilder, self.entity_builder)
     
     @property
     def validator(self) -> AgentContextValidator:
+        """Get AgentContextValidator"""
         return cast(AgentContextValidator, self.entity_validator)

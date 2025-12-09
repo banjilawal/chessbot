@@ -13,7 +13,7 @@ __all__ = [
     "TeamContextException",
 ]
 
-# ======================# TEAM_CONTEXT EXCEPTIONS #======================#
+#======================# TEAM_CONTEXT EXCEPTIONS #======================#
 class TeamContextException(ContextException):
     """Catchall Exception for TeamContextBuilder when it encounters an error building a Team."""
     ERROR_CODE = "TEAM_CONTEXT_ERROR"

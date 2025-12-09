@@ -11,7 +11,7 @@ from chess.system import NullException
 from chess.square import InvalidSquareContextException
 
 
-# ========================= NULL SQUARE_CONTEXT EXCEPTIONS =========================#
+#========================= NULL SQUARE_CONTEXT EXCEPTIONS =========================#
 class NullSquareContextException(
     InvalidSquareContextException,
     NullException

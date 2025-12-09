@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ServiceException
 
 __all__ = [
-    # ========================= TEAM_CONTEXT_SERVICE EXCEPTIONS =========================#
+    #========================= TEAM_CONTEXT_SERVICE EXCEPTIONS =========================#
     "TeamContextServiceException",
 ]
 
 
-# ========================= TEAM_CONTEXT_SERVICE EXCEPTIONS =========================#
+#========================= TEAM_CONTEXT_SERVICE EXCEPTIONS =========================#
 class TeamContextServiceException(ServiceException):
     """wrapper for exceptions which hit a TeamContextService method's finally block."""
     ERROR_CODE = "TEAM_CONTEXT_SERVICE_ERROR"

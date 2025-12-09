@@ -1,7 +1,7 @@
-# src/chess/game/__init__.py
+# src/chess/game/result/result.py
 
 """
-Module: chess.game
+Module: chess.game.result.result
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

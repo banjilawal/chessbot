@@ -11,11 +11,11 @@ from chess.system import NullException
 from chess.game import InvalidGameContextException
 
 __all__ = [
-    # ======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
+    #======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
     "NullGameContextException",
 ]
 
-# ======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
+#======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
 class NullGameContextException(InvalidGameContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging

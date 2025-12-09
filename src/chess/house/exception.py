@@ -14,13 +14,13 @@ from chess.system import (
 __all__ = [
     "HouseException",
     
-# ====================== HOUSE VALIDATION EXCEPTIONS #======================#
+#====================== HOUSE VALIDATION EXCEPTIONS #======================#
     "NullHouseException",
     "InvalidHouseException",
     "TurnSceneActorSquareIsNullException",
     "NullHouseResidentException",
     
-    # ====================== TURN_SCENE BUILD EXCEPTIONS #======================#
+    #====================== TURN_SCENE BUILD EXCEPTIONS #======================#
     "HouseBuildFailedException",
 ]
 
@@ -30,7 +30,7 @@ class HouseException(ChessException):
     DEFAULT_MESSAGE = "A House raised an exception"
 
 
-# ====================== HOUSE GENERAL VALIDATION EXCEPTIONS #======================#
+#====================== HOUSE GENERAL VALIDATION EXCEPTIONS #======================#
 class NullHouseException(HouseException, NullException):
     """"""
     ERROR_CODE = "NULL_HOUSE_ERROR"
@@ -55,7 +55,7 @@ class NullHouseResidentException(HouseException):
     DEFAULT_MESSAGE = "A House instance cannot have a validation occupant."
 
 
-# ====================== HOUSE BUILD EXCEPTIONS #======================#
+#====================== HOUSE BUILD EXCEPTIONS #======================#
 class HouseBuildFailedException(HouseException, BuildFailedException):
     """"""
     ERROR_CODE = "HOUSE_BUILD_FAILED_ERROR"

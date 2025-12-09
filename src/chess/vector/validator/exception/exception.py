@@ -15,7 +15,7 @@ __all__ = [
     "InvalidVectorException",
 ]
 
-# ======================# VECTOR VALIDATION EXCEPTIONS #======================#
+#======================# VECTOR VALIDATION EXCEPTIONS #======================#
 
 class InvalidVectorException(VectorException, ValidationException):
     """Catchall Exception for VectorValidator when a candidate fails a sanity check.""""""

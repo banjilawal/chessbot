@@ -11,11 +11,11 @@ from chess.team import  TeamRegistrationException
 
 
 __all__ = [
-    # ======================# TEAM_NOT_REGISTERED_WITH_AGENT EXCEPTION #======================#
+    #======================# TEAM_NOT_REGISTERED_WITH_AGENT EXCEPTION #======================#
     "TeamNotRegisteredWithAgentException"
 ]
 
-# ======================# TEAM_NOT_REGISTERED_WITH_AGENT EXCEPTION #======================#
+#======================# TEAM_NOT_REGISTERED_WITH_AGENT EXCEPTION #======================#
 class TeamNotRegisteredWithAgentException(TeamRegistrationException):
     """
     # ROLE: Error Tracing, Debugging

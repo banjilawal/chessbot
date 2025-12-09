@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import FinderException
 
 __all__ = [
-    # ======================# GAME_FINDER EXCEPTIONS #======================#
+    #======================# GAME_FINDER EXCEPTIONS #======================#
     "GameFinderException",
 ]
 
 
-# ======================# GAME_FINDER EXCEPTIONS #======================#
+#======================# GAME_FINDER EXCEPTIONS #======================#
 class GameFinderException(FinderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

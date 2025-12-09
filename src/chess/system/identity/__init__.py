@@ -7,7 +7,7 @@ Created: 2025-09-17
 version: 1.0.0
 """
 
-# =========== SYSTEM.IDENTITY PACKAGE CONTENTS ===========#
+#=========== SYSTEM.IDENTITY PACKAGE CONTENTS ===========#
 
 # Packages
 from .id import *

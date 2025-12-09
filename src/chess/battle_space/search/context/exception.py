@@ -45,13 +45,13 @@ from chess.system import ContextException, NullException, BuildFailedException, 
 __all__ = [
     'ProjectionSearchContextException',
 
-    # ======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
     'NullProjectionSearchContextException',
     'InvalidProjectionSearchContextException',
     # 'ProjectionSearchContextZeroParamCountException',
     # 'ProjectionSearchContextMaxParamCountException',
 
-    # ======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
     'ProjectionSearchContextBuildFailedException',
     'RansomOutOfBoundsException'
 ]
@@ -121,6 +121,6 @@ class RansomOutOfBoundsException(ProjectionSearchContextException):
       f"The `TeamSearchContext.ransom` is out of bounds. Ransoms are "
       f"between {RankSpec.KING.ransom} and {RankSpec.QUEEN.ransom} inclusive."
   )
-# =========================================================================#
-# ======================= FILTER_CONTEXT EXCEPTIONS =======================#
-# =========================================================================#
+#=========================================================================#
+#======================= FILTER_CONTEXT EXCEPTIONS =======================#
+#=========================================================================#

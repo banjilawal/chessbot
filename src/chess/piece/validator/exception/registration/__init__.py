@@ -7,7 +7,7 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-# =========== PIECE.VALIDATOR.EXCEPTION.REGISTRATION PACKAGE CONTENTS ===========#
+#=========== PIECE.VALIDATOR.EXCEPTION.REGISTRATION PACKAGE CONTENTS ===========#
 
 # Packages
 None

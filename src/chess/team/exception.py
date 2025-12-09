@@ -9,7 +9,7 @@ __all__ = [
 
 #======================# TEAM VALIDATION EXCEPTIONS #======================#
 
-# ======================# TEAM PARAMETER EXCEPTIONS #======================#
+#======================# TEAM PARAMETER EXCEPTIONS #======================#
   "TeamNameException",
   "TeamColorException",
   
@@ -96,7 +96,7 @@ class TeamCommanderInconsistencyException(TeamException):
 class TeamRosterException(TeamException):
   """Raised for errors on team_name's roster"""
   ERROR_CODE = "TEAM_ROSTER_ERROR"
-  DEFAULT_MESSAGE = "Team roster raised an rollback_exception."
+  DEFAULT_MESSAGE = "Team roster raised an exception."
 
 class AddTeamMemberException(TeamRosterException):
   """Raised if owner could not be added to the team_name's roster"""
@@ -180,7 +180,7 @@ class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
 class TeamHostageListException(TeamException):
   """Raised on errors with team_name's hostage list"""
   ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR"
-  DEFAULT_MESSAGE = "Team hostage list raised an rollback_exception."
+  DEFAULT_MESSAGE = "Team hostage list raised an exception."
 
 
 class InconsistentHostageEntry(TeamHostageListException):

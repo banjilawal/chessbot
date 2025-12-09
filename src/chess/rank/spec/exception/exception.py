@@ -11,16 +11,16 @@ from chess.rank import RankException
 from chess.system import NullException, ValidationException
 
 __all__ = [
-    # ======================# RANK_SPEC EXCEPTION SUPER CLASS #======================#
+    #======================# RANK_SPEC EXCEPTION SUPER CLASS #======================#
     "RankSpecException",
     
-    # ======================# RANK_SPEC VALIDATION EXCEPTIONS #======================#
+    #======================# RANK_SPEC VALIDATION EXCEPTIONS #======================#
     "InvalidRankSpecException",
     "NullRankSpecException",
 ]
 
 
-# ======================# RANK_SPEC EXCEPTION SUPER CLASS #======================#
+#======================# RANK_SPEC EXCEPTION SUPER CLASS #======================#
 class RankSpecException(RankException):
     """
     Super class of all exceptions RankSpec object raises. Do not use directly. Subclasses give
@@ -30,7 +30,7 @@ class RankSpecException(RankException):
     DEFAULT_MESSAGE = "RankSpec raised an exception."
 
 
-# ======================# RANK_SPEC VALIDATION EXCEPTIONS #======================#
+#======================# RANK_SPEC VALIDATION EXCEPTIONS #======================#
 class InvalidRankSpecException(RankSpecException, ValidationException):
     """
     Raised by RankSpecValidator if an object fails sanity checks. Exists primarily to catch all

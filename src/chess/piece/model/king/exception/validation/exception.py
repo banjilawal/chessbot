@@ -11,19 +11,19 @@ from chess.system import NullException
 from chess.piece import InvalidPieceException, KingPieceException
 
 __all__ = [
-    # ======================# NULL KING EXCEPTIONS #======================#
+    #======================# NULL KING EXCEPTIONS #======================#
     "InvalidKingPieceException",
     "NullKingException",
 ]
 
 
-# ======================# INVALID KING EXCEPTIONS #======================#
+#======================# INVALID KING EXCEPTIONS #======================#
 class InvalidKingPieceException(KingPieceException, InvalidPieceException):
     ERROR_CODE = "KING_PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "KingPiece validation failed."
     
 
-# ======================# NULL KING EXCEPTIONS #======================#
+#======================# NULL KING EXCEPTIONS #======================#
 class NullKingException(InvalidKingPieceException, NullException):
     """Raised if an entity, method, or operation expects a KingPiece but gets null instead."""
     ERROR_CODE = "NULL_KING_PIECE_ERROR"

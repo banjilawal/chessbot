@@ -11,12 +11,12 @@ from chess.team import InvalidTeamException
 from chess.system import RegistrationException
 
 __all__ = [
-    # ======================# TEAM_REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# TEAM_REGISTRATION EXCEPTION SUPER CLASS #======================#
     "TeamRegistrationException"
 ]
 
 
-# ======================# TEAM_REGISTRATION EXCEPTION SUPER CLASS #======================#
+#======================# TEAM_REGISTRATION EXCEPTION SUPER CLASS #======================#
 class TeamRegistrationException(InvalidTeamException, RegistrationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

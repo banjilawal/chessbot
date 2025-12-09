@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.team import TeamRegistrationException
 
 __all__ = [
-    # ======================# TEAM_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
+    #======================# TEAM_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
     "TeamNotRegisteredWithGameException"
 ]
 
-# ======================# TEAM_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
+#======================# TEAM_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
 class TeamNotRegisteredWithGameException(TeamRegistrationException):
     """
     # ROLE: Error Tracing, Debugging

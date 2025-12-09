@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== CHESS.SQUARE.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+#=========== SQUARE.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .flag import *

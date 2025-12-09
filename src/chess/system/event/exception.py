@@ -23,4 +23,4 @@ class EventException(ChessException):
   exceptions.
   """
   ERROR_CODE = "EVENT_ERROR"
-  DEFAULT_MESSAGE = "Event raised an rollback_exception."
+  DEFAULT_MESSAGE = "Event raised an exception."

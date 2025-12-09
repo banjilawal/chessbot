@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-# =========== TEAM.SERVICE.DATA.EXCEPTION.RELATIONSHIP PACKAGE CONTENTS ===========#
+#=========== TEAM.SERVICE.DATA.EXCEPTION.RELATIONSHIP PACKAGE CONTENTS ===========#
 
 # Packages
 None

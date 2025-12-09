@@ -12,12 +12,12 @@ from chess.system import BuildFailedException, ServiceException
 __all__ = [
     "PieceServiceException",
     
-# ====================== PIECE_SERVICE BUILD EXCEPTIONS #======================#
+#====================== PIECE_SERVICE BUILD EXCEPTIONS #======================#
     "PieceServiceBuildFailedException",
 ]
 
 
-# ====================== PIECE_SERVICE EXCEPTION SUPER CLASS #======================#
+#====================== PIECE_SERVICE EXCEPTION SUPER CLASS #======================#
 class PieceServiceException(ServiceException):
     """
     Super class for exceptions raised by PieceService objects. DO NOT USE DIRECTLY. Subclasses
@@ -30,7 +30,7 @@ class PieceServiceException(ServiceException):
 
 
 
-# ====================== PIECE_SERVICE BUILD EXCEPTIONS #======================#
+#====================== PIECE_SERVICE BUILD EXCEPTIONS #======================#
 class PieceServiceBuildFailedException(PieceServiceException, BuildFailedException):
     """Catchall Exception for PieceServiceBuilder when it stops because of an error."""
     ERROR_CODE = "PIECE_SERVICE_BUILD_FAILED"

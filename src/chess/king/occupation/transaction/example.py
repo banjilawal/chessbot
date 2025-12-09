@@ -171,7 +171,7 @@ Example:
 #   # RETURNS:
 #   `ValidationResult[str]`: A `ValidationResult` containing either:
 #       `'payload'` (`it`) - A `str` meeting the `ChessBot` standard for IDs.
-#       `rollback_exception` (`Exception`) - An rollback_exception detailing which naming rule was broken.
+#       `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
 #
 #   # RAISES:
 #   `InvalidIdException`: Wraps any specification violations including:
@@ -451,7 +451,7 @@ THEME:
 * Wrapping exceptions
 
 **Design Concepts**:
-  1. Each consistency and behavior in the `Vector` class has an rollback_exception specific to its possible
+  1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
       state, outcome, or behavior.
 
 PURPOSE:
@@ -519,7 +519,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #   the blocking's lifecycle.
 #   """
 #   ERROR_CODE = "SCAN_TRANSACTION_ERROR"
-#   DEFAULT_MESSAGE = "OccupationTransaction raised an rollback_exception."
+#   DEFAULT_MESSAGE = "OccupationTransaction raised an exception."
 #
 #
 #

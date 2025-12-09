@@ -14,7 +14,7 @@ from chess.system import (
 __all__ = [
     'VisitationEventException',
     
-    # ======================# VISITATION VALIDATION EXCEPTIONS #======================#
+    #======================# VISITATION VALIDATION EXCEPTIONS #======================#
     'InvalidVisitationEventException',
     'VisitationTeamFieldIsNullException',
     'VisitationMissingCoordStackException',
@@ -23,12 +23,12 @@ __all__ = [
     'VisitationRankOutOfBoundsException',
     'VisitationMissingDiscoveriesException',
     
-    # ======================# NULL VISITATION EXCEPTIONS #======================#
+    #======================# NULL VISITATION EXCEPTIONS #======================#
     'NullVisitationEventException',
     'NullKingException',
     'NullCombatantException',
     
-    # ======================# VISITATION BUILD EXCEPTIONS #======================#  
+    #======================# VISITATION BUILD EXCEPTIONS #======================#
     'VisitationBuildFailedException',
 ]
 
@@ -40,10 +40,10 @@ class VisitationEventException(ChessException):
     all visitationation exceptions
     """
     ERROR_CODE = "VISITATION_ERROR"
-    DEFAULT_MESSAGE = "Visitationation raised an rollback_exception."
+    DEFAULT_MESSAGE = "Visitationation raised an exception."
 
 
-# ======================# VISITATION VALIDATION EXCEPTIONS #======================#
+#======================# VISITATION VALIDATION EXCEPTIONS #======================#
 class InvalidVisitationEventException(VisitationEventException, ValidationException):
     """Raised by VisitationValidators if client fails coord_stack_validator."""
     ERROR_CODE = "VISITATION_VALIDATION_ERROR"
@@ -100,7 +100,7 @@ class VisitationRankOutOfBoundsException(VisitationEventException, NullException
     DEFAULT_MESSAGE = "A `Visitationation` does not have a recognized chess bounds."
 
 
-# ======================# NULL VISITATION EXCEPTIONS #======================#
+#======================# NULL VISITATION EXCEPTIONS #======================#
 class NullVisitationEventException(VisitationEventException, NullException):
     """
     Raised if an entity, method, or operation requires team_name visitationation but gets validation instead.
@@ -128,7 +128,7 @@ class NullCombatantException(NullVisitationEventException):
     DEFAULT_MESSAGE = "CombatantVisitation cannot be null."
 
 
-# ======================# VISITATION BUILD EXCEPTIONS #======================#  
+#======================# VISITATION BUILD EXCEPTIONS #======================#
 class VisitationBuildFailedException(VisitationEventException, BuilderException):
     """
     Indicates Coord could not be built. Wraps and re-raises errors that occurred

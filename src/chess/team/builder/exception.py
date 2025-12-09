@@ -12,12 +12,12 @@ from chess.system import BuildFailedException
 
 
 __all__ = [
-    # ======================# TEAM BUILD EXCEPTIONS #======================#
+    #======================# TEAM BUILD EXCEPTIONS #======================#
     "TeamBuildFailedException",
 ]
 
 
-# ======================# TEAM BUILD EXCEPTIONS #======================#
+#======================# TEAM BUILD EXCEPTIONS #======================#
 class TeamBuildFailedException(TeamException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by TeamBuilder 

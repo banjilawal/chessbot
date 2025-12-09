@@ -11,13 +11,13 @@ from chess.board import InvalidBoardException
 from chess.system import RegistrationException
 
 __all__ = [
-    # ======================# BOARD_REGISTRATION EXCEPTIONS #======================#
+    #======================# BOARD_REGISTRATION EXCEPTIONS #======================#
     "BoardRegistrationException",
     "BoardNotRegisteredWithGameException",
 ]
 
 
-# ======================# BOARD_REGISTRATION EXCEPTIONS #======================#
+#======================# BOARD_REGISTRATION EXCEPTIONS #======================#
 class BoardRegistrationException(InvalidBoardException, RegistrationException):
     """
     Catchall for when a Board does not have a relationship with another entity.

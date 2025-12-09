@@ -20,7 +20,7 @@ from chess.system.resolution  import ResolutionException
 __all__ = [
 
     
-    # ======================# SEARCH_COLLISION EXCEPTIONS #======================#
+    #======================# SEARCH_COLLISION EXCEPTIONS #======================#
     'ResolutionFailedException',
     'ResolvingIDConflictFailedException',
     'SearchNameCollisionException',

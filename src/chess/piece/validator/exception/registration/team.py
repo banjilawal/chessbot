@@ -11,11 +11,11 @@ from chess.piece import InvalidPieceException, PieceRegistrationException
 from chess.system import RegistrationException
 
 __all__ = [
-    # ======================# PIECE_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
+    #======================# PIECE_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
     "PieceNotRegisteredWithTeamException"
 ]
 
-# ======================# PIECE_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
+#======================# PIECE_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
 class PieceNotRegisteredWithTeamException(PieceRegistrationException):
     """
     # ROLE: Error Tracing, Debugging

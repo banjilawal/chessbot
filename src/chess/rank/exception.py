@@ -10,18 +10,18 @@ version: 1.0.0
 from chess.system import ChessException, BuildFailedException, NullException
 
 __all__ = [
-    # ======================# RANK EXCEPTION SUPER CLASS #======================#
+    #======================# RANK EXCEPTION SUPER CLASS #======================#
     "RankException",
-    # ======================# RANK VALIDATION EXCEPTION #======================#
+    #======================# RANK VALIDATION EXCEPTION #======================#
     "NullRankException",
-    # ======================# RANK BUILD EXCEPTIONS #======================#
+    #======================# RANK BUILD EXCEPTIONS #======================#
     "RankBuildFailedException",
-    # ======================# RANK MOVING EXCEPTIONS #======================#
+    #======================# RANK MOVING EXCEPTIONS #======================#
     "ImproperMoveException",
 ]
 
 
-# ======================# RANK EXCEPTION SUPER CLASS #======================#
+#======================# RANK EXCEPTION SUPER CLASS #======================#
 class RankException(ChessException):
     """
     Super class of exceptions raised by Rank objects. Do not use directly.
@@ -41,7 +41,7 @@ class RankBuildFailedException(RankException, BuildFailedException):
     DEFAULT_MESSAGE = "Rank build failed."
 
 
-# ======================# RANK MOVING EXCEPTIONS #======================#
+#======================# RANK MOVING EXCEPTIONS #======================#
 class ImproperMoveException(RankException):
     """Raised when a Rank's moving rules prevent a Piece from getting to a position."""
     ERROR_CODE = "IMPROPER_MOVE_ERROR"

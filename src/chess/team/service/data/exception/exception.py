@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.system import DataException
 
 __all__ = [
-# ======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
+#======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
     "TeamDataException",
 ]
 
-# ======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
+#======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
 class TeamDataException(DataException):
     """
     Catchall for TeamData exceptions. Use as a last resort if TeamInsertionFailed or

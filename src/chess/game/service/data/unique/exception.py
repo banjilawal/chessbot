@@ -10,13 +10,13 @@ version: 1.0.0
 from chess.system import DataServiceException
 
 __all__ = [
-    # ======================# UNIQUE_GAME_DATA_SERVICE EXCEPTIONS #======================#
+    #======================# UNIQUE_GAME_DATA_SERVICE EXCEPTIONS #======================#
     "UniqueGameDataServiceException",
     "AddingDuplicateGameException",
 ]
 
 
-# ======================# UNIQUE_GAME_DATA_SERVICE EXCEPTIONS #======================#
+#======================# UNIQUE_GAME_DATA_SERVICE EXCEPTIONS #======================#
 class UniqueGameDataServiceException(DataServiceException):
     """
     Super class of exceptions raised by UniqueGameDataService objects. Do not use directly. Subclasses give

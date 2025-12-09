@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== GAME.VALIDATOR.EXCEPTION.REGISTRATION PACKAGE CONTENTS ===========#
+#=========== GAME.VALIDATOR.EXCEPTION.REGISTRATION PACKAGE CONTENTS ===========#
 
 # Packages
 None

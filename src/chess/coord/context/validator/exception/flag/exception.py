@@ -13,13 +13,13 @@ from chess.coord import InvalidCoordContextException
 
 
 __all__ = [
-    # ========================= COORD_CONTEXT FLAG EXCEPTIONS =========================#
+    #========================= COORD_CONTEXT FLAG EXCEPTIONS =========================#
     "NoCoordContextFlagSetException",
     "TooManyCoordContextFlagsSetException"
 ]
 
 
-# ========================= COORD_CONTEXT FLAG EXCEPTIONS =========================#
+#========================= COORD_CONTEXT FLAG EXCEPTIONS =========================#
 class NoCoordContextFlagSetException(
     InvalidCoordContextException,
     BoundsException

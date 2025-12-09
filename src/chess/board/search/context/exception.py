@@ -16,15 +16,15 @@ from chess.system import (
 __all__ = [
     "BoardSearchContextException",
     
-# ========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#
+#========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#
     "NullBoardSearchContextException",
     
-# ========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+#========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
     "InvalidBoardSearchContextException",
     "NoBoardSearchOptionSelectedException",
     "MoreThanOneBoardSearchOptionPickedException",
     
-# ========================= BOARD_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
+#========================= BOARD_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
     "BoardSearchContextBuildFailedException",
 ]
 

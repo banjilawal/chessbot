@@ -19,31 +19,17 @@ class GameBuilder(Builder[Game]):
     # ROLE: Builder, Data Integrity Guarantor
   
     # RESPONSIBILITIES:
-    Produce Game instances whose integrity is always guaranteed. If any attributes
-    do not pass their integrity checks, send an exception instead.
-  
+    Produce Game instances whose integrity is always guaranteed.
+    
     # PROVIDES:
     BuildResult[Game] containing either:
         - On success: Game in the payload.
         - On failure: Exception.
   
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
     None
     
-    # CONSTRUCTOR:
-    None
-    
-    # CLASS METHODS:
-        ## build signature
-              build(
-                    id: int.
-                    white_player: Agent,
-                    black_player: Agent,
-                    board: BoardService = BoardService(),
-                ) -> BuildResult[Game]:
-        For ease of use and cleaner code dependencies are given default values.
-    
-    # INSTANCE METHODS:
+    # INHERITED ATTRIBUTES:
     None
     """
     
@@ -60,20 +46,21 @@ class GameBuilder(Builder[Game]):
     ) -> BuildResult[Game]:
         """
         # ACTION:
-        1.  Check ID safety with IdentityService.validate_id.
-        2.  Check schema correctness with GameSchemaValidator.validate.
-        3.  Check agent safety with PlayAgentService.validate_player.
+        1.  Use identity_service to confirm the id is safe.
+        2.  Use agent_service to validate the white and black players. are safe.
+        3.  Certify the BoardService with the BoardServiceCertifier
         4.  If any check fails, return the exception inside a BuildResult.
-        5.  When all checks create a new Game object.
-        6.  If the game is not in actor's game_assignments use their game_stack to add it.
+        5.  When all checks pass create the new Game object.
+        6.  Register the game with the white and black player by pushing onto their respective game stacks.
+        7.  Return the Game inside a BuildResult.
     
         # PARAMETERS:
             *   id (int)
-            *   white_player (Agent)
-            *   black_player (GameSchema)
+            *   white_agent (Agent)
+            *   black_agent (GameSchema)
             *   identity_service (IdentityService)
-            *   agent_certifier (AgentService)
-            *   schema_validator (GameSchemaValidator)
+            *   agent_service (AgentService)
+            *   board_certifier (BoardCertifier)
         All Services have default values to ensure they are never null.
         
         # Returns:

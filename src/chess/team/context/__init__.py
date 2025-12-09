@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-# =========== TEAM.CONTEXT PACKAGE CONTENTS ===========#
+#=========== TEAM.CONTEXT PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *

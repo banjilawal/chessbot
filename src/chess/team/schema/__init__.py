@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== TEAM.SCHEMA PACKAGE CONTENTS ===========#
+#=========== TEAM.SCHEMA PACKAGE CONTENTS ===========#
 
 # Packages
 None

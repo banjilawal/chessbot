@@ -74,7 +74,7 @@ class AgentFactory(Builder[Agent]):
         method = "AgentBuilder.build"
         try:
             # Ensure the agent_variety is the correct type and not null.
-            variety_validation = agent_validator.certify_variety(candidate=agent_variety)
+            variety_validation = agent_validator.certify_agent_variety(candidate=agent_variety)
             if variety_validation.failure():
                 return BuildResult.failure(variety_validation.exception)
             # Use agent_variety to decide which factory method to call.

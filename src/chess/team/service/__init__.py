@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-# =========== TEAM.SERVICE PACKAGE CONTENTS ===========#
+#=========== TEAM.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
 from .data import *

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-# =========== SYSTEM.IDENTITY.NAME PACKAGE CONTENTS ===========#
+#=========== SYSTEM.IDENTITY.NAME PACKAGE CONTENTS ===========#
 
 # Packages
 None

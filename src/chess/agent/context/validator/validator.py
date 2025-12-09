@@ -13,17 +13,17 @@ from chess.game import GameService
 from chess.team import TeamService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.agent import (
-    AgentContext, AgentVariety, InvalidAgentContextException, NoAgentContextFlagException, NullAgentContextException,
-    TooManyAgentContextFlagsException
+    AgentContext, AgentVariety, InvalidAgentContextException, NoAgentContextFlagException,
+    NullAgentContextException, TooManyAgentContextFlagsException
 )
 
 
 class AgentContextValidator(Validator[AgentContext]):
     """
-    # ROLE: Validation
+    # ROLE: Validation, Data Integrity Guarantor.
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is an AgentContext object's safety before a client uses it.
+    Verifies a candidate is an instance of AgentContext that is safe to use.
 
     # PARENT
         *   Validator
@@ -51,10 +51,10 @@ class AgentContextValidator(Validator[AgentContext]):
     ) -> ValidationResult[AgentContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, name, team, game, agent_variety) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
-            3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an AgentContext are return in a BuildResult.
+        1.  Confirm that only one in the (id, name, team, game, agent_variety) tuple is not null.
+        2.  Certify the not-null attribute is safe using the appropriate service's validator.
+        3.  If any check fais return a ValidationResult containing the exception raised by the failure.
+        4.  On success Build an AgentContext are return in a ValidationResult.
 
         # Parameters:
         Only one these must be provided:
@@ -64,13 +64,13 @@ class AgentContextValidator(Validator[AgentContext]):
             *   game (Optional[Game])
             *   agent_variety (Optional[AgentVariety])
 
-        These Parameters must be provided:
+        These Parameters must be provided. By default, they are automatically set:
             *   team_service (TeamService)
             *   game_service (GameService)
             *   identity_service (IdentityService)
 
         # Returns:
-          BuildResult[AgentContext] containing either:
+          ValidationResult[AgentContext] containing either:
                 - On success: AgentContext in the payload.
                 - On failure: Exception.
 
@@ -98,11 +98,12 @@ class AgentContextValidator(Validator[AgentContext]):
             context = cast(AgentContext, candidate)
             
             # Perform the two checks ensuring only one Agent attribute value will be used in the searcher.
+            # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
                 )
-            
+            # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
                     TooManyAgentContextFlagsException(
@@ -123,13 +124,13 @@ class AgentContextValidator(Validator[AgentContext]):
                 return ValidationResult.success(context)
             
             if context.team is not None:
-                validation = team_service.item_validator.validate(candidate=context.team)
+                validation = team_service.validator.validate(candidate=context.team)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.game is not None:
-                validation = game_service.item_validator.validate(candidate=context.game)
+                validation = game_service.validator.validate(candidate=context.game)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
@@ -140,6 +141,7 @@ class AgentContextValidator(Validator[AgentContext]):
                         TypeError(f"{method}: Expected AgentType, got {type(candidate).__name__} instead.")
                     )
                 return ValidationResult.success(context)
+            
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
         # an InvalidAgentContextException. Then send exception chain a ValidationResult.failure.
         except Exception as ex:

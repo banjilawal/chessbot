@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.agent import InvalidAgentContextServiceException
 
 __all__ = [
-    # ======================# AGENT_CONTEXT SERVICE EXCEPTIONS #======================#
+    #======================# AGENT_CONTEXT SERVICE EXCEPTIONS #======================#
     "MissingAgentFinderException",
 ]
 
 
-# ======================# AGENT_CONTEXT SERVICE EXCEPTIONS #======================#
+#======================# AGENT_CONTEXT SERVICE EXCEPTIONS #======================#
 class MissingAgentFinderException(InvalidAgentContextServiceException):
     """
     # ROLE: Error Tracing, Debugging

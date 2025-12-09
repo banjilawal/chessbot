@@ -11,13 +11,13 @@ from chess.system import BoundsException
 from chess.piece import InvalidPieceContextException
 
 __all__ = [
-    # ========================= PIECE_CONTEXT FLAG EXCEPTIONS =========================#
+    #========================= PIECE_CONTEXT FLAG EXCEPTIONS =========================#
     "NoPieceContextFlagSetException",
     "TooManyPieceContextFlagsSetException"
 ]
 
 
-# ========================= PIECE_CONTEXT FLAG EXCEPTIONS =========================#
+#========================= PIECE_CONTEXT FLAG EXCEPTIONS =========================#
 class NoPieceContextFlagSetException(InvalidPieceContextException, BoundsException):
     """Raised if no PieceContext was selected."""
     ERROR_CODE = "NO_PIECE_CONTEXT_FLAG_SET_ERROR"

@@ -10,14 +10,14 @@ version: 1.0.0
 from chess.system import ValidatorException, NullException
 
 __all__ = [
-    # ======================# UNRELIABLE_VALIDATOR_EXCEPTION #======================#
+    #======================# UNRELIABLE_VALIDATOR_EXCEPTION #======================#
     "UnreliableValidatorException",
-    # ======================# NULL_VALIDATOR_EXCEPTION #======================#
+    #======================# NULL_VALIDATOR_EXCEPTION #======================#
     "NullValidatorException",
 ]
 
 
-# ======================# UNRELIABLE_VALIDATOR_EXCEPTION #======================#
+#======================# UNRELIABLE_VALIDATOR_EXCEPTION #======================#
 class UnreliableValidatorException(ValidatorException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -32,14 +32,17 @@ class UnreliableValidatorException(ValidatorException):
     # PROVIDES:
     UnreliableValidatorException
   
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "VALIDATOR_CERTIFICATION_ERROR"
     DEFAULT_MESSAGE = "Validator certification failed. Do not rely on this validator."
 
 
-# ======================# NULL_VALIDATOR_EXCEPTION #======================#
+#======================# NULL_VALIDATOR_EXCEPTION #======================#
 class NullValidatorException(UnreliableValidatorException, NullException):
     """
     # ROLE: Error Tracing, Debugging
