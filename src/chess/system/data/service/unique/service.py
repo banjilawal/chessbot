@@ -34,11 +34,14 @@ class UniqueDataService(ABC, Generic[T]):
         *   EntityService
         *   DataService
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
     None
         *   id (int):
         *   name (str):
         *   data_service (DataService[D]):
+        
+    # INHERITED ATTRIBUTES:
+    None
     """
     _id: int
     _name: str

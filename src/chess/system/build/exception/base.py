@@ -30,8 +30,11 @@ class BuilderException(ChessException):
   # PROVIDES:
   BuilderException
 
-  # ATTRIBUTES:
-  None
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+    None
   """
   ERROR_CODE = "BUILDER_ERROR"
   DEFAULT_MESSAGE = "Builder raised an exception."

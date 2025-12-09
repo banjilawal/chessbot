@@ -40,8 +40,7 @@ class DataService(ABC, Generic[D]):
         *   Insertion
         *   Deletion
 
-    # ATTRIBUTES:
-    None
+    # LOCAL ATTRIBUTES:
         *   id (int):
         *   name (str):
         *   items (List[D]):
@@ -49,7 +48,10 @@ class DataService(ABC, Generic[D]):
         *   entity_service (EntityService[D]):
         *   context_service (ContextService);
         *   current_item (D):
-        *   size (int):
+        *   size (int)
+    
+    # INHERITED ATTRIBUTES:
+    None
     """
     _id: int
     _name: str

@@ -31,7 +31,10 @@ class NullGameContextException(InvalidGameContextException, NullException):
     # PROVIDES:
     NullGameContextException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "NULL_GAME_CONTEXT_ERROR"

@@ -29,9 +29,12 @@ class Result(Generic[T]):
     # PROVIDES:
     Result[T]
 
-    # Attributes:
+    # LOCAL ATTRIBUTES:
         *   payload (T)
         *   exception (Exception)
+        
+    INHERITED ATTRIBUTES:
+    None
     """
     _payload: Optional[T]
     _exception: Optional[Exception]

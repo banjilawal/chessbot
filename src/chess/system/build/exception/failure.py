@@ -30,7 +30,10 @@ class BuildFailedException(BuilderException):
     # PROVIDES:
     BuildFailedException
   
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "BUILD_FAILED_ERROR"

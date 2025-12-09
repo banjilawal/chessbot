@@ -29,7 +29,10 @@ class AddingDuplicateDataException(UniqueDataServiceException):
     # PROVIDES:
     AddingDuplicateDataException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "ADDING_DUPLICATE_DATA_ERROR"

@@ -6,12 +6,12 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-
+from abc import ABC
 from typing import List, Optional
 
 from chess.system import (
     Context, DeletionResult, InsertionResult, LoggingLevelRouter, PoppingEmptyStackException,
-    SearchResult
+    Result, SearchResult
 )
 
 T = TypeVar("T", bound=Result)
@@ -34,12 +34,14 @@ class ResultStack(ABC, Generic[T]):
     # PROVIDES:
         *   ResultStack
 
-    # ATTRIBUTES:
-    None
+    # LOCAL ATTRIBUTES:
         *   size (int)
         *   is_empty (bool)
         *   items (List[T])
         *   current_result (T)
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     _items: List[T]
     

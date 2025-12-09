@@ -10,33 +10,54 @@ version: 1.0.0
 from typing import Optional
 
 __all__ = [
-#======================#  BASE APPLICATION EXCEPTION CLASS #======================#
+    # ======================#  BASE APPLICATION EXCEPTION CLASS #======================#
     "ChessException",
-#======================# IMPLEMENTATION EXCEPTIONS #======================#
+    # ======================# IMPLEMENTATION EXCEPTIONS #======================#
     "NotImplementedException",
-#======================# STARVATION EXCEPTIONS #======================#
+    # ======================# STARVATION EXCEPTIONS #======================#
     "ResourceException",
 ]
 
-#======================# BASE APPLICATION EXCEPTION CLASS #======================#
+
+# ======================# BASE APPLICATION EXCEPTION CLASS #======================#
 class ChessException(Exception):
-    """Super class for application exceptions. do not use directly."""
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions by the application
+
+    # PARENT
+        *   Exception
+
+    # PROVIDES:
+    ChessException
+
+    # LOCAL ATTRIBUTES:
+        Static Class Fields:
+            *   ERROR_CODE (str): Static class field
+            *   DEFAULT_MESSAGE (str): Static class field
+            
+        Instance Fields:
+            *   ex (Optional[Exception])
+            *   error_code (str)
+            *   message (str)
+    
+    # INHERITED ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "CHESS_ERROR"
     DEFAULT_MESSAGE = "Chess error occurred."
-    _ex: Optional[Exception]
-    _error_code: str
-    _message: str
     
-    def __init__(
-            self,
-            message: str = DEFAULT_MESSAGE,
-            error_code: str = ERROR_CODE,
-            ex: Optional[Exception] = None,
-    ):
-        self._ex = ex
-        self._error_code = error_code
-        self._message = message
+    _message: str
+    _error_code: str
+    _ex: Optional[Exception]
+    
+    def __init__(self, message: str = DEFAULT_MESSAGE, error_code: str = ERROR_CODE, ex: Optional[Exception] = None):
         super().__init__(message)
+        self._ex = ex
+        self._message = message
+        self._error_code = error_code
     
     @property
     def ex(self) -> Exception:
@@ -62,13 +83,51 @@ class ChessException(Exception):
     # will use this.
 
 
-#======================# IMPLEMENTATION EXCEPTIONS #======================#
+# ======================# IMPLEMENTATION EXCEPTIONS #======================#
 class NotImplementedException(ChessException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Indicates a desired abstract method or feature has not been implemented in the lower level class,
+    2.  Catchall for missing implementation errors that are not covered by lower level NotImplementedExceptions.
+
+    # PARENT
+        *   ChessException
+
+    # PROVIDES:
+    NotImplementedException
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See ChessException class for inherited attributes.
+    """
     ERROR_CODE = "NOT_IMPLEMENTED_WARNING"
     DEFAULT_MESSAGE = "Not implemented."
 
 
-#======================# STARVATION EXCEPTIONS #======================#
+# ======================# STARVATION EXCEPTIONS #======================#
 class ResourceException(ChessException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  super class of exceptions related to resource acquisition, release or utilization failures.
+    2.  Catchall for resource problems that are not covered by lower level ResourceException subclasses.
+
+    # PARENT
+        *   ChessException
+
+    # PROVIDES:
+    ResourceException
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See ChessException class for inherited attributes.
+    """
     ERROR_CODE = "RESOURCE_ERROR"
     DEFAULT_MESSAGE = "Resource raised an exception."

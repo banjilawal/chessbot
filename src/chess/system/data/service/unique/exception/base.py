@@ -30,7 +30,10 @@ class UniqueDataServiceException(DataServiceException):
     # PROVIDES:
     UniqueDataServiceException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "UNIQUE_DATA_SERVICE_ERROR"
