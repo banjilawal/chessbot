@@ -16,16 +16,19 @@ T = TypeVar("T")
 
 class Result(Generic[T]):
     """
-    # ROLE: Message passing, Data Transfer Object
+    # ROLE: Messanger  Data Transport Object, Error Transport Object.
   
     # RESPONSIBILITIES:
-    1. Carry the outcome of a entity_service access or entity_service generation operation to the caller.
-    2. Transporting errors from the entity_service source to the requester for handling that preserves
-        reliability and availability.
+    1.  Send the outcome a request to the client.
+    2.  If the request was satisfied send the success-data in the payload.
+    3.  If request was not fulfilled send an exception.
+    
+    # PARENT:
+    None
   
     # PROVIDES:
-    1.
-  
+    Result[T]
+
     # Attributes:
         *   payload (T)
         *   exception (Exception)

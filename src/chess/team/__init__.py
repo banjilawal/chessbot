@@ -7,7 +7,7 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-#=========== TEAM ROOT PACKAGE CONTENTS ===========#
+#=========== TEAM PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *

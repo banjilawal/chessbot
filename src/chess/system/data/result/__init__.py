@@ -13,11 +13,9 @@ Version: 1.0.0
 None
 
 # Modules
-
-from .exception import *
-
+from .base import DataResult
 from .calculation import CalculationResult
 from .deletion import DeletionResult
 from .insertion import InsertionResult
 
-from .result import DataResult
+from .exception import  EmptyDataResultException

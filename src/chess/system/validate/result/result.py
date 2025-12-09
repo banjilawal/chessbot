@@ -15,17 +15,23 @@ T = TypeVar("T")
 
 class ValidationResult(Result[Generic[T]]):
     """
-    # ROLE: Message passing, Data Transfer Object
+    # ROLE: Messanger  Data Transport Object, Error Transport Object.
   
     # RESPONSIBILITIES:
-    1. Carry the outcome a coord_stack_validator operation to originating client.
-    2. Enforcing mutual exclusion. A ValidationResult can either carry _payload or _exception. Not both.
+    1. Send the outcome of a validation request to the client.
+    2. Enforcing mutual exclusion. A ValidationResult can either carry payload or exception. Not both.
+    
+    # PARENT:
+        *   Result
   
     # PROVIDES:
-    1. A correctness verification or denial for the Validation entity_service provider.
+    ValidationResult
   
-    # ATTRIBUTES:
-      * See Result superclass for attributes.
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    See Result class for inherited attributes.
     """
     
     def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):

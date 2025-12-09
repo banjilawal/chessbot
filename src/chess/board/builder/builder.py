@@ -23,6 +23,11 @@ class BoardBuilder(Builder[Board]):
   
     # RESPONSIBILITIES:
     Create new Board objects safely.
+    
+    
+    # PARENT
+        * Builder
+
   
     # PROVIDES:
       BuildResult[Board] containing either:

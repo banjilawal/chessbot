@@ -17,21 +17,28 @@ T = TypeVar("T")
 
 class SearchResult(Result[List[Generic[T]]]):
     """
-    # ROLE: Message passing, Data Transfer Object
+    # ROLE: Messanger  Data Transport Object, Error Transport Object.
   
     # RESPONSIBILITIES:
-    1.  Carry results to the query requestor.
+    1.  Send the outcome of a search request to the client.
+    2.  Possible outcomes are:
+        *   Payload containing List[T] of matches to the client's query.
+        *   An exception if an error prevented the search from running.
+        *   Neither an exception nor a payload indicating no matches were found.
+    
+    # PARENT:
+        *   Result
   
     # PROVIDES:
-    Answer from the Finder containing either:
-        *   Payload containing List[T] of matches to the client's query.
-        *   An exception indicating a error occurred during the search.
-        *   Neither an exception nor a payload indicating no matches were found.
+    SearchResult
   
-    # ATTRIBUTES:
-      * See Result superclass for attributes.
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See Result class for inherited attributes.
     """
-    
+
     def __init__(self, payload: Optional[List[T]] = None, exception: Optional[Exception] = None):
         super().__init__(payload, exception)
     
