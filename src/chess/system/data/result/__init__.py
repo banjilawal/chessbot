@@ -7,6 +7,13 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
+# =========== SYSTEM.DATA.RESULT PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
+
 from .exception import *
 
 from .calculation import CalculationResult

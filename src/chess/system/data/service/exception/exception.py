@@ -46,7 +46,7 @@ class DataServiceException(ServiceException):
 
 
 # ====================== REMOVING_NULL_DATA EXCEPTION #======================#
-class RemovingNullDataException(DataServiceException, NullException):
+class RemovingNullDataException(DataServiceException, DataException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -55,6 +55,7 @@ class RemovingNullDataException(DataServiceException, NullException):
 
     # PARENT
         *   DataServiceException
+        *   DataException
         *   NullException
 
     # PROVIDES:

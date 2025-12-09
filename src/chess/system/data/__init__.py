@@ -7,7 +7,13 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from .exception import *
+# =========== SYSTEM.DATA PACKAGE CONTENTS ===========#
+
+# Packages
 from .result import *
 from .service import *
+
+# Modules
+from .exception import DataException
+
 
