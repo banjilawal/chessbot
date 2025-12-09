@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== AGENT.MODEL PACKAGE CONTENTS ===========#
+#=========== AGENT.MODEL PACKAGE CONTENTS ===========#
 
 # Packages
 from .human import *

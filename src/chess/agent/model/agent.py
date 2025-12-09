@@ -116,7 +116,7 @@ class Agent(ABC):
     #     current_side = "" if self._current_team is None else \
     #         f" curren_team:[{self._current_team.id}, {self._current_team.schema.color}"
     #     return (
-    #         f"Owner[id:{self._id}"
+    #         f"Owner[id:{self.timestamp}"
     #         f" name:{self._name}"
     #         f"{current_side}"
     #         f"{total_games_str}"

@@ -12,12 +12,12 @@ from chess.system import ValidationFailedException
 
 
 __all__ = [
-    # ======================# AGENT_VARIETY EXCEPTION #======================#
+    #======================# AGENT_VARIETY EXCEPTION #======================#
     "InvalidAgentVarietyException",
 ]
 
 
-# ======================# AGENT_VARIETY VALIDATION EXCEPTION  #======================#
+#======================# AGENT_VARIETY VALIDATION EXCEPTION  #======================#
 class InvalidAgentVarietyException(AgentVarietyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.agent import AgentBuildFailedException, HumanAgent, HumanAgentException
 
 __all__ = [
-    # ======================# HUMAN_AGENT EXCEPTION #======================#
+    #======================# HUMAN_AGENT EXCEPTION #======================#
     "HumanAgentBuildFailedException",
 ]
 
 
-# ======================# HUMAN_AGENT BUILD EXCEPTIONS #======================#
+#======================# HUMAN_AGENT BUILD EXCEPTIONS #======================#
 class HumanAgentBuildFailedException(HumanAgentException, AgentBuildFailedException):
     """
     # ROLE:

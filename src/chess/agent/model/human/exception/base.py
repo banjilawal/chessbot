@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.agent import AgentException
 
 __all__ = [
-    # ======================# HUMAN_AGENT EXCEPTION #======================#
+    #======================# HUMAN_AGENT EXCEPTION #======================#
     "HumanAgentException",
 ]
 
-# ======================# HUMAN_AGENT EXCEPTION #======================#
+#======================# HUMAN_AGENT EXCEPTION #======================#
 class HumanAgentException(AgentException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

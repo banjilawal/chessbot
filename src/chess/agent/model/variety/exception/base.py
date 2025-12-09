@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system.err import ChessException
 
 __all__ = [
-    # ======================# AGENT_VARIETY EXCEPTION #======================#
+    #======================# AGENT_VARIETY EXCEPTION #======================#
     "AgentVarietyException",
 ]
 
 
-# ======================# AGENT_VARIETY EXCEPTION  #======================#
+#======================# AGENT_VARIETY EXCEPTION  #======================#
 class AgentVarietyException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

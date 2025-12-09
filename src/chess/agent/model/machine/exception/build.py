@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.agent import AgentBuildFailedException, MachineAgentException
 
 __all__ = [
-    # ======================# MACHINE_AGENT EXCEPTION #======================#
+    #======================# MACHINE_AGENT EXCEPTION #======================#
     "MachineAgentBuildFailedException",
 ]
 
-# ======================# MACHINE_AGENT BUILD EXCEPTIONS #======================#
+#======================# MACHINE_AGENT BUILD EXCEPTIONS #======================#
 class MachineAgentBuildFailedException(MachineAgentException, AgentBuildFailedException):
     """
     # ROLE:

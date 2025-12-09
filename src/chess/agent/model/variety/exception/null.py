@@ -12,11 +12,11 @@ from chess.agent import InvalidAgentVarietyException
 
 
 __all__ = [
-    # ======================# AGENT_VARIETY NULL EXCEPTION #======================#
+    #======================# AGENT_VARIETY NULL EXCEPTION #======================#
     "AgentVarietyNullException",
 ]
 
-# ======================# NULL AGENT_VARIETY EXCEPTION  #======================#
+#======================# NULL AGENT_VARIETY EXCEPTION  #======================#
 class AgentVarietyNullException(InvalidAgentVarietyException, NullException):
     """
     # ROLE: Error Tracing, Debugging

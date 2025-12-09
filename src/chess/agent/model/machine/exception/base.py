@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.agent import AgentException
 
 __all__ = [
-    # ======================# MACHINE_AGENT EXCEPTION #======================#
+    #======================# MACHINE_AGENT EXCEPTION #======================#
     "MachineAgentException",
 ]
 
-# ======================# MACHINE_AGENT EXCEPTION #======================#
+#======================# MACHINE_AGENT EXCEPTION #======================#
 class MachineAgentException(AgentException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
