@@ -35,8 +35,6 @@ class GameContext(Context[Game]):
         *   agent (Optional[Agent])
         *   board (Optional[Board])
         
-
-
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
     """
@@ -71,7 +69,6 @@ class GameContext(Context[Game]):
         self._team = team
         self._agent = agent
         self._board = board
-        
         
     @property
     def team(self) -> Optional[Team]:
