@@ -1,14 +1,14 @@
-# src/chess/team/schema/exception.py
+# src/chess/team/schema/exception/exception.py
 
 """
-Module: chess.team.schema.exception
+Module: chess.team.schema.exception.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
 from chess.team import TeamException
-from chess.system import BoundsException, NullException, ValidationException
+from chess.system import BoundsException, NullException, ValidationFailedException
 
 __all__ = [
     #======================# TEAM_SCHEMA EXCEPTION SUPER CLASS #======================#
@@ -35,7 +35,7 @@ class TeamSchemaException(TeamException):
 
 
 #======================# TEAM_SCHEMA VALIDATION EXCEPTIONS #======================#
-class InvalidTeamSchemaException(TeamSchemaException, ValidationException):
+class InvalidTeamSchemaException(TeamSchemaException, ValidationFailedException):
     """
     Raised by TeamSchemaValidator if an object fails sanity checks. Exists primarily to catch all
     exceptions raised validating an existingTeamSchema.

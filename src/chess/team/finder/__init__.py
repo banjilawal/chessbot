@@ -1,7 +1,7 @@
-# src/chess/team/searcher/__init__.py
+# src/chess/team/finder/__init__.py
 
 """
-Module: chess.team.searcher
+Module: chess.team.finder.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -14,6 +14,6 @@ None
 
 # Modules
 from .exception import *
-from .search import TeamFinder
+from .finder import TeamFinder
 
 

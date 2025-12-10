@@ -1,7 +1,7 @@
-# src/chess/team/searcher/finder.py
+# src/chess/team/finder/finder.py
 
 """
-Module: chess.team.searcher.searcher
+Module: chess.team.finder.searcher
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -11,7 +11,7 @@ from typing import List
 
 from chess.agent import Agent
 from chess.system import GameColor, LoggingLevelRouter, Finder, SearchResult
-from chess.team import Team, TeamContext, TeamContextValidator, TeamSearchFailedException
+from chess.team import Team, TeamContext, TeamContextValidator, TeamFinderException
 
 
 class TeamFinder(Finder[Team]):
@@ -56,7 +56,7 @@ class TeamFinder(Finder[Team]):
         method = "TeamFinder.find"
         try:
             result = context_validator.validate(candidate=context)
-            if result.is_failure():
+            if result.is_failure:
                 return SearchResult.failure(result.exception)
             
             if context.id is not None:
@@ -77,7 +77,7 @@ class TeamFinder(Finder[Team]):
         # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamSearchFailedException(ex=ex, message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}")
+                TeamFinderException(ex=ex, message=f"{method}: {TeamFinderFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod

@@ -14,7 +14,7 @@ from .builder import *
 from .context import *
 from .order import *
 from .schema import *
-from .search import *
+from .finder import *
 from .service import *
 from .validator import *
 

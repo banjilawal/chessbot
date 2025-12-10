@@ -11,10 +11,9 @@ from enum import Enum
 from typing import List
 
 from chess.scalar import Scalar
-from chess.team import BlackBattleOrder, TeamSchema
 from chess.geometry import Quadrant
 from chess.system import GameColor, ROW_SIZE
-from chess.team.order import WhiteBattleOrder
+from chess.team import BlackBattleOrder, TeamSchema
 
 
 class TeamSchema(Enum):

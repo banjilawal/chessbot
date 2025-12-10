@@ -12,7 +12,6 @@ from chess.system import FinderException
 __all__ = [
     #======================# TEAM_SEARCH EXCEPTIONS #======================#
     "TeamFinderException",
-    "TeamSearchFailedException",
 ]
 
 
@@ -24,9 +23,3 @@ class TeamFinderException(FinderException):
     """
     ERROR_CODE = "TEAM_SEARCH_ERROR"
     DEFAULT_MESSAGE = "TeamFinder raised an exception."
-
-
-class TeamSearchFailedException(TeamFinderException):
-    """"""
-    ERROR_CODE = "TEAM_SEARCH_FAILED_ERROR"
-    DEFAULT_MESSAGE = "TeamFinder failed."
