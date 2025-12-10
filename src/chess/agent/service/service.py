@@ -92,9 +92,9 @@ class AgentService(EntityService[Agent]):
             if arena_validation.is_failure:
                 return BuildResult.failure(arena_validation.exception)
             
-            team_build_result = team_service.builder.build(
-                are
-            )
+            
+            team_build_result = team_service.builder.build(agent=agent, arena=arena, team_schema=team_schema)
+            if team
         except Exception as ex:
             return BuildResult.failure(
                 AgentServiceBuildingTeamException(
