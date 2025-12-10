@@ -90,6 +90,7 @@ class ArenaBuilder(Builder[Arena]):
                 validation = agent_service.validator.validate(candidate=agent)
                 if validation.failure():
                     return BuildResult.failure(validation.exception)
+                
             # Handle the case the agents are the same.
             if white_agent == black_agent:
                 return BuildResult.failure(
