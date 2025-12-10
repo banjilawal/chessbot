@@ -35,7 +35,6 @@ class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(

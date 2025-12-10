@@ -75,15 +75,12 @@ class TeamSchemaContextBuilder(Builder[TeamSchemaContext]):
                 return BuildResult.failure(
                     NoTeamSchemaContextFlagException(f"{method}: {NoTeamSchemaContextFlagException.DEFAULT_MESSAGE}")
                 )
-            
             # Only one property-value pair is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
                     TooManyTeamSchemaContextFlagsException(f"{method}: {TooManyTeamSchemaContextFlagsException}")
                 )
-            
-            # After verifying the correct number of flags has been enabled, follow the appropriate
-            # TeamSchemaContext build flow.
+            # After the verifying the correct number of flags are set follow the appropriate TeamSchema build flow.
             
             # name flag enabled, build flow.
             if name is not None:
@@ -100,7 +97,6 @@ class TeamSchemaContextBuilder(Builder[TeamSchemaContext]):
                     return BuildResult.failure(validation.exception)
                 # On validation success return an GameColor_TeamSchema_context in the BuildResult.
                 return BuildResult.success(TeamSchemaContext(color=color))
-        
         # Finally, if none of the execution paths matches the state wrap the unhandled exception in a
         # TeamSchemaContextBuildFailedException then, send the exception chain a BuildResult.failure.
         except Exception as ex:
