@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.agent import Agent, AgentService
-from chess.game import Game
+from chess.arena import Arena
 from chess.piece import PieceFactory, UniquePieceDataService
 from chess.system import Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
@@ -40,16 +40,16 @@ class TeamBuilder(Builder[Team]):
     @LoggingLevelRouter.monitor()
     def build(
             cls,
-            id: int,
-            game: Game,
             agent: Agent,
+            arena: Arena,
             schema: TeamSchema,
-            idservice: IdentityService = IdentityService(),
+            id: int = id_emitter.team_id,
             # roster: UniquePieceDataService = UniquePieceDataService(),
             # hostages: UniquePieceDataService = UniquePieceDataService(),
-            game_certifier: GameService = GameService(),
+            arena_service: ArenaService = ArenaService(),
+            agent_service: AgentService = AgentService(),
+            idservice: IdentityService = IdentityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
-            agent_certifier: AgentService = AgentService(),
     ) -> BuildResult[Team]:
         """
         # ACTION:
@@ -65,7 +65,7 @@ class TeamBuilder(Builder[Team]):
             *   agent (Agent)
             *   schema (TeamSchema)
             *   identity_service (IdentityService)
-            *   agent_certifier (AgentService)
+            *   agent_service (AgentService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.
         
@@ -88,17 +88,17 @@ class TeamBuilder(Builder[Team]):
             if team_schema_validation.is_failure():
                 return BuildResult.failure(team_schema_validation.exception)
             
-            agent_certification = agent_certifier.item_validator.validate(agent)
+            agent_certification = agent_service.item_validator.validate(agent)
             if agent_certification.is_failure():
                 return BuildResult.failure(agent_certification.exception)
             
-            game_certification = game_certifier.item_validator.validate(game)
-            if game_certification.is_failure():
-                return BuildResult.failure(game_certification.exception)
+            arena_certification = arena_service.item_validator.validate(arena)
+            if arena_certification.is_failure():
+                return BuildResult.failure(arena_certification.exception)
             # If no errors are detected build the Team object.
             team = Team(
                 id=id,
-                game=game,
+                arena=arena,
                 agent=agent,
                 schema=schema,
                 roster=UniquePieceDataService(),

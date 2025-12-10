@@ -9,8 +9,10 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.system import EntityService, id_emitter
+from chess.arena import Arena
+from chess.system import BuildResult, EntityService, id_emitter
 from chess.agent import Agent, AgentFactory, AgentValidator
+from chess.team import Team, TeamSchema, TeamService
 
 
 class AgentService(EntityService[Agent]):
@@ -72,6 +74,33 @@ class AgentService(EntityService[Agent]):
     def validator(self) -> AgentValidator:
         """get AgentValidator"""
         return cast(AgentValidator, self.entity_validator)
+    
+    def build_new_team(
+            self,
+            agent: Agent,
+            arena: Arena,
+            team_schema: TeamSchema,
+            team_service: TeamService = TeamService(),
+            arena_service: ArenaService = ArenaService()
+    ) -> BuildResult[Team]:
+        method = "AgentService.build_new_team"
+        try:
+            agent_validation = self.validator.validate(candidate=agent)
+            if agent_validation.is_failure:
+                return BuildResult.failure(agent_validation.exception)
+            arena_validation = arena_service.validator.validate(candidate=arena)
+            if arena_validation.is_failure:
+                return BuildResult.failure(arena_validation.exception)
+            
+            team_build_result = team_service.builder.build(
+                are
+            )
+        except Exception as ex:
+            return BuildResult.failure(
+                AgentServiceBuildingTeamException(
+                    ex=ex, message="{method}: {AgentServiceBuildingTeamException.DEFAULT_MESSAGE}"
+                )
+            )
     
     
     
