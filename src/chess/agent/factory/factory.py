@@ -22,19 +22,19 @@ from chess.agent import (
 
 class AgentFactory(Builder[Agent]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
+    # ROLE: Factory, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-    Produce Agent instances whose integrity is always guaranteed. If any attributes do not pass
-    their integrity checks, send an exception instead of an unsafe Agent.
+    1.  Produce Agent instances whose integrity is always guaranteed.
+    2.  Manage construction of Agent instances that can be used safely by the client.
+    3.  Ensure params for Agent creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
     # PARENT
         *   Builder
 
     # PROVIDES:
-    BuildResult[Agent] containing either:
-        - On success: Agent in the payload.
-        - On failure: Exception.
+        *   AgentFactory
 
     # LOCAL ATTRIBUTES:
     None

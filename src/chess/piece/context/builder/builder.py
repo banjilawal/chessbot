@@ -21,20 +21,26 @@ from chess.team import Team, TeamCertifier
 
 class PieceContextBuilder(Builder[PieceContext]):
     """
-    # ROLE: Builder
+     # ROLE: Builder, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
-        1. Produce only PieceContext instances that are safe and reliable.
-        2. Ensure params for PieceContext have correctness.
+     # RESPONSIBILITIES:
+     1.  Produce PieceContext instances whose integrity is always guaranteed.
+     2.  Manage construction of PieceContext instances that can be used safely by the client.
+     3.  Ensure params for PieceContext creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PROVIDES:
-      BuildResult[PieceContext] containing either:
-            - On success: PieceContext in the payload.
-            - On failure: Exception.
+     # PARENT
+         * Builder
 
-    # ATTRIBUTES:
-    None
-    """
+     # PROVIDES:
+         *   PieceContextBuilder
+
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -73,8 +79,8 @@ class PieceContextBuilder(Builder[PieceContext]):
             *   identity_service (IdentityService)
 
         # Returns:
-          BuildResult[CoordContext] containing either:
-                - On success: CoordContext in the payload.
+          BuildResult[PieceContext] containing either:
+                - On success: PieceContext in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -82,7 +88,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             *   NoPieceContextFlagSetException
             *   TooManyPieceContextFlagsSetException
         """
-        method = "PieceSearchContextBuilder.builder"
+        method = "PieceContextBuilder.builder"
         
         try:
             params = [id, name, team, rank, ransom, coord]

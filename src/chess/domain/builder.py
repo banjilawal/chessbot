@@ -15,19 +15,26 @@ from chess.system import Builder, BuildResult, LoggingLevelRouter
 
 class DomainBuilder(Builder[Domain]):
     """
-    # ROLE: Build
+     # ROLE: Builder, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
-    Create new Domain objects safely.
+     # RESPONSIBILITIES:
+     1.  Produce Domain instances whose integrity is always guaranteed.
+     2.  Manage construction of Domain instances that can be used safely by the client.
+     3.  Ensure params for Domain creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PROVIDES:
-      BuildResult[Domain] containing either:
-            - On success: Domain in the payload.
-            - On failure: Exception.
+     # PARENT
+         * Builder
 
-    # ATTRIBUTES:
-    None
-    """
+     # PROVIDES:
+         *   DomainBuilder
+
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor

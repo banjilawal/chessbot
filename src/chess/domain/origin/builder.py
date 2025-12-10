@@ -15,20 +15,26 @@ from chess.system import Builder, BuildResult, LoggingLevelRouter
 
 class DomainOriginBuilder(Builder[DomainOrigin]):
     """
-    # ROLE:
-        Build, Validation
-        
-    # RESPONSIBILITIES:
-        1. Perform sanity checks on resources for creating a new DomainOrigin object.
-        2. Report any errors preventing a successful builder.
-        3. Provide a DomainOrigin object that meets minimal requirements for usage in the system.
-        
-    # PROVIDES:
-        BuildResult
-    
-    # ATTRIBUTES:
-        None.
-    """
+     # ROLE: Builder, Data Integrity Guarantor
+
+     # RESPONSIBILITIES:
+     1.  Produce DomainOrigin instances whose integrity is always guaranteed.
+     2.  Manage construction of DomainOrigin instances that can be used safely by the client.
+     3.  Ensure params for DomainOrigin creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+
+     # PARENT
+         * Builder
+
+     # PROVIDES:
+         *   DomainOriginBuilder
+
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor

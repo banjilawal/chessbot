@@ -18,7 +18,7 @@ from chess.neighbor import (
 
 class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
     """iece
-    # ROLE: Builder implementation
+    # ROLE: Builder, Data Integrity Guarantor implementation
 
     # RESPONSIBILITIES:
     1. Process and validate parameters for creating `VisitationSearchContext` instances.

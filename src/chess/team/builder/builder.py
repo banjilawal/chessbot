@@ -15,40 +15,26 @@ from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaVal
 
 class TeamBuilder(Builder[Team]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
-  
-    # RESPONSIBILITIES:
-    Produce Team instances whose integrity is always guaranteed. If any attributes do not pass
-    their integrity checks, send an exception instead.
-  
-    # PROVIDES:
-    BuildResult[Team] containing either:
-        - On success: Team in the payload.
-        - On failure: Exception.
-  
-    # ATTRIBUTES:
-    None
-    
-    # CONSTRUCTOR:
-    None
-    
-    # CLASS METHODS:
-        ## build signature
-              build(
-                    id: int.
-                    agent: Agent,
-                    schema: TeamSchema,
-                    agent_certifier: AgentService = AgentService(),
-                    identity_service: IdentityService = IdentityService(),
-                    roster: UniquePieceDataService = UniquePieceDataService(),
-                    hostages: UniquePieceDataService = UniquePieceDataService(),
-                    schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
-                ) -> BuildResult[Team]:
-        For ease of use and cleaner code dependencies are given default values.
-    
-    # INSTANCE METHODS:
-    None
-    """
+     # ROLE: Builder, Data Integrity Guarantor
+
+     # RESPONSIBILITIES:
+     1.  Produce CoordContext instances whose integrity is always guaranteed.
+     2.  Manage construction of CoordContext instances that can be used safely by the client.
+     3.  Ensure params for CoordContext creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+
+     # PARENT
+         * Builder
+
+     # PROVIDES:
+         *   CoordContextBuilder
+
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor()

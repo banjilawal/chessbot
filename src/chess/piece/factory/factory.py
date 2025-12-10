@@ -23,39 +23,24 @@ from chess.system import (
 
 class PieceFactory(Builder[Piece]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
-  
+    # ROLE: Factory, Data Integrity Guarantor
+
     # RESPONSIBILITIES:
-    Produce Piece instances whose integrity is always guaranteed. If any attributes do not pass
-    their integrity checks, send an exception instead.
-  
+    1.  Produce Piece instances whose integrity is always guaranteed.
+    2.  Manage construction of Piece instances that can be used safely by the client.
+    3.  Ensure params for Piece creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+
+    # PARENT
+        *   Builder
+
     # PROVIDES:
-    BuildResult[Piece] containing either:
-        - On success: Piece in the payload.
-        - On failure: Exception.
-  
-    # ATTRIBUTES:
-    None
-    
-    # CONSTRUCTOR:
+        *   PieceFactory
+
+    # LOCAL ATTRIBUTES:
     None
 
-    # CLASS METHODS:
-        *   build(
-                    name: str,
-                    rank: Rank,
-                    team: Team,
-                    id: int = id_emitter.piece_id,
-                    rank_certifier: RankCertifier = RankCertifier(),
-                    team_certifier: TeamCertifier = TeamCertifier(),
-                    positions: CoordDataService = CoordDataService(),
-                    identity_service: IdentityService = IdentityService(),
-        ) -> BuildResult[Piece]:
-        
-        For ease of use and cleaner code dependencies are given default values. All flags must
-        be turned set to null byy default. Only activated flags should have a not-null value.
-        
-    # INSTANCE METHODS:
+    # INHERITED ATTRIBUTES:
     None
     """
     

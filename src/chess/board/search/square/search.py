@@ -68,7 +68,7 @@ from chess.system import (
 
 class BoardSquareFinder(Finder[Board, Square]):
     """
-    # ROLE: Builder implementation
+    # ROLE: Builder, Data Integrity Guarantor implementation
   
     # RESPONSIBILITIES:
     1. Process and validate parameters for creating `Board` instances.

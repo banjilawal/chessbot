@@ -17,7 +17,7 @@ T = TypeVar("T")
 
 class Builder(ABC, Generic[T]):
     """
-    # ROLE: Builder, Data Integrity and Reliability Guarantor.
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity and Reliability Guarantor.
   
     # RESPONSIBILITIES:
     1.  Produce V instances whose integrity is always guaranteed.

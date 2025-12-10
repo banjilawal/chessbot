@@ -20,26 +20,26 @@ from chess.game import (
 
 class GameContextBuilder(Builder[GameContext]):
     """
-    # ROLE: Builder
+     # ROLE: Builder, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
-        Produce GameContext instances whose integrity is always guaranteed. If any attributes do not pass
-        their integrity checks, send an exception instead of an unsafe GameContext.
+     # RESPONSIBILITIES:
+     1.  Produce GameContext instances whose integrity is always guaranteed.
+     2.  Manage construction of GameContext instances that can be used safely by the client.
+     3.  Ensure params for GameContext creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT
-        *   Builder
+     # PARENT
+         * Builder
 
-    # PROVIDES:
-    BuildResult[GameContext] containing either:
-        - On success: GameContext in the payload.
-        - On failure: Exception.
+     # PROVIDES:
+         *   GameContextBuilder
 
-    # LOCAL ATTRIBUTES:
-    None
-    
-    # INHERITED ATTRIBUTES:
-    None
-    """
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor

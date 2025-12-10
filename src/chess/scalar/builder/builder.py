@@ -14,21 +14,26 @@ from chess.scalar import Scalar, ScalarBuildFailedException, ScalarValidator
 
 class ScalarBuilder(Builder[Scalar]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
-  
-    # RESPONSIBILITIES:
-        1. Manage construction of Scalar instances that can be used safely by the client.
-        2. Ensure params for Scalar creation have met the application's safety contract.
+     # ROLE: Builder, Data Integrity Guarantor
 
-    # PROVIDES:
-      ValidationResult[Scalar] containing either:
-            - On success: Scalar in the payload.
-            - On failure: Exception.
-  
-    # ATTRIBUTES:
-        *   _value (int)
-        *   _scalar_validator (ScalarValidator)
-    """
+     # RESPONSIBILITIES:
+     1.  Produce Scalar instances whose integrity is always guaranteed.
+     2.  Manage construction of Scalar instances that can be used safely by the client.
+     3.  Ensure params for Scalar creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+
+     # PARENT
+         * Builder
+
+     # PROVIDES:
+         *   ScalarBuilder
+
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
 
 
     @LoggingLevelRouter.monitor

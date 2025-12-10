@@ -14,20 +14,26 @@ from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRout
 
 class SquareBuilder(Builder[Square]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
+     # ROLE: Builder, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
-    Produce Square instances whose integrity is always guaranteed. If any
-    attributes do not pass their integrity checks, send an exception instead.
+     # RESPONSIBILITIES:
+     1.  Produce Square instances whose integrity is always guaranteed.
+     2.  Manage construction of Square instances that can be used safely by the client.
+     3.  Ensure params for Square creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PROVIDES:
-    BuildResult[Square] containing either:
-        - On success: Coord in the payload.
-        - On failure: Exception.
+     # PARENT
+         * Builder
 
-    # ATTRIBUTES:
-    None
-    """
+     # PROVIDES:
+         *   SquareBuilder
+
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor()

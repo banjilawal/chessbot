@@ -15,20 +15,26 @@ from chess.coord import Coord, CoordValidator,  CoordBuildFailedException
 
 class CoordBuilder(Builder[Coord]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
+     # ROLE: Builder, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
-    Produce Coord instances whose integrity is always guaranteed. If any attributes do
-    not pass their integrity checks, send an exception instead.
+     # RESPONSIBILITIES:
+     1.  Produce Coord instances whose integrity is always guaranteed.
+     2.  Manage construction of Coord instances that can be used safely by the client.
+     3.  Ensure params for Coord creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PROVIDES:
-    BuildResult[Coord] containing either:
-        - On success: Coord in the payload.
-        - On failure: Exception.
+     # PARENT
+         * Builder
 
-    # ATTRIBUTES:
-    None
-    """
+     # PROVIDES:
+         *   CoordBuilder
+
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor

@@ -17,20 +17,26 @@ from chess.coord import (
 
 class CoordContextBuilder(Builder[CoordContext]):
     """
-    # ROLE: Builder
+     # ROLE: Builder, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
-        1. Produce only CoordContext instances that are safe and reliable.
-        2. Ensure params for CoordContext have correctness.
+     # RESPONSIBILITIES:
+     1.  Produce CoordContext instances whose integrity is always guaranteed.
+     2.  Manage construction of CoordContext instances that can be used safely by the client.
+     3.  Ensure params for CoordContext creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PROVIDES:
-      BuildResult[CoordContext] containing either:
-            - On success: CoordContext in the payload.
-            - On failure: Exception.
+     # PARENT
+         * Builder
 
-    # ATTRIBUTES:
-    None
-    """
+     # PROVIDES:
+         *   CoordContextBuilder
+
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor

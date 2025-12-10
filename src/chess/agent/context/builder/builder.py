@@ -22,19 +22,19 @@ from chess.agent import (
 
 class AgentContextBuilder(Builder[AgentContext]):
     """
-    # ROLE: Builder
+    # ROLE: Builder, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-        Produce AgentContext instances whose integrity is always guaranteed. If any attributes do not pass
-        their integrity checks, send an exception instead of an unsafe AgentContext.
+    1.  Produce AgentContext instances whose integrity is always guaranteed.
+    2.  Manage construction of AgentContext instances that can be used safely by the client.
+    3.  Ensure params for AgentContext creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     # PARENT
         *   Builder
 
     # PROVIDES:
-    BuildResult[AgentContext] containing either:
-        - On success: AgentContext in the payload.
-        - On failure: Exception.
+        *   AgentContextBuilder
 
     # LOCAL ATTRIBUTES:
     None

@@ -20,26 +20,26 @@ from chess.game import (
 
 class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
     """
-    # ROLE: Builder
+     # ROLE: Builder, Data Integrity Guarantor
 
-    # RESPONSIBILITIES:
-        Produce GameSnapshotContext instances whose integrity is always guaranteed. If any attributes do not pass
-        their integrity checks, send an exception instead of an unsafe GameSnapshotContext.
+     # RESPONSIBILITIES:
+     1.  Produce GameSnapshotContext instances whose integrity is always guaranteed.
+     2.  Manage construction of GameSnapshotContext instances that can be used safely by the client.
+     3.  Ensure params for GameSnapshotContext creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT
-        *   Builder
+     # PARENT
+         * Builder
 
-    # PROVIDES:
-    BuildResult[GameSnapshotContext] containing either:
-        - On success: GameSnapshotContext in the payload.
-        - On failure: Exception.
+     # PROVIDES:
+         *   GameSnapshotContextBuilder
 
-    # LOCAL ATTRIBUTES:
-    None
+     # LOCAL ATTRIBUTES:
+     None
 
-    # INHERITED ATTRIBUTES:
-    None
-    """
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor

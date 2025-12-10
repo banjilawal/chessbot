@@ -19,22 +19,24 @@ from chess.system import BOARD_DIMENSION, Builder, BuildResult, IdentityService
 
 class BoardBuilder(Builder[Board]):
     """
-    # ROLE: Build
+    # ROLE: Builder, Data Integrity Guarantor
   
     # RESPONSIBILITIES:
-    Create new Board objects safely.
-    
+    1.  Produce Board instances whose integrity is always guaranteed.
+    2.  Manage construction of Board instances that can be used safely by the client.
+    3.  Ensure params for Board creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
     # PARENT
         * Builder
-
   
     # PROVIDES:
-      BuildResult[Board] containing either:
-            - On success: Board in the payload.
-            - On failure: Exception.
+        *   BoardBuilder
   
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     

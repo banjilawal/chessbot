@@ -20,18 +20,21 @@ class RankFactory(Builder[Rank]):
     # ROLE: Factory, Data Integrity Guarantor
   
     # RESPONSIBILITIES:
-        1. Manage construction of Rank instances that can be used safely by the client.
-        2. Ensure params for Rank creation have met the application's safety contract.
+    1.  Produce Rank instances whose integrity is always guaranteed.
+    2.  Manage construction of Rank instances that can be used safely by the client.
+    3.  Ensure params for Rank creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
         
     # PARENT
         *   Builder
 
     # PROVIDES:
-      ValidationResult[Rank] containing either:
-            - On success: Rank in the payload.
-            - On failure: Exception.
+        *   RankFactory
   
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     

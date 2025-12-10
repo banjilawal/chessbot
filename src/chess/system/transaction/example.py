@@ -85,7 +85,7 @@ The major theme influencing the modules design are
 1. `SearchResult`
 """
 """
- # ROLE: Builder implementation
+ # ROLE: Builder, Data Integrity Guarantor implementation
 
  # RESPONSIBILITIES:
  1. Process and validate parameters for creating `Team` instances.
