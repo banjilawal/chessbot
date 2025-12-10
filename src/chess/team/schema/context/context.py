@@ -1,30 +1,32 @@
-# src/chess/name/schema/context/context.py
+# src/chess/team/schema/context/context.py
 
 """
-Module: chess.name.schema.context
+Module: chess.team.schema.context.context
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
+
 from typing import Optional
 
+
+from chess.team import TeamSchema
 from chess.system import Context, GameColor
-from chess.name.schema import NameSchema
 
 
-class NameSchemaContext(Context[NameSchema]):
+class TeamSchemaContext(Context[TeamSchema]):
     """
     # ROLE: Finder Filter
 
     # RESPONSIBILITIES:
-    Provide an NameSchemaFinder with an attribute value to find NameSchemas with a matching value in
+    Provide an TeamSchemaFinder with an attribute value to find TeamSchemas with a matching value in
     their version of the attribute.
 
     # PARENT
         *   Context
 
     # PROVIDES:
-        *   NameSchemaContext
+        *   TeamSchemaContext
 
     # LOCAL ATTRIBUTES:
         *   color (Optional[ColorColor])
@@ -63,7 +65,7 @@ class NameSchemaContext(Context[NameSchema]):
     
     def to_dict(self) -> dict:
         """
-        # Convert the NameSchemaContext object to a dictionary.
+        # Convert the TeamSchemaContext object to a dictionary.
 
         # PARAMETERS:
         None
@@ -75,7 +77,7 @@ class NameSchemaContext(Context[NameSchema]):
         None
         """
         return {
-            "id": self.id,
+
             "name": self.name,
             "color": self._color,
         }
