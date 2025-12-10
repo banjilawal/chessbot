@@ -19,7 +19,7 @@ from chess.board import (
 
 class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Manage construction of BoardSearch instances that can be used safely by the client.

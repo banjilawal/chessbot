@@ -44,7 +44,7 @@ From `chess.square`:
 1. `SquareBuilder`
 """
 """
-# ROLE: Builder, Data Integrity Guarantor
+# ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
 # RESPONSIBILITIES:
 1. Process and validate parameters for creating `Square` instances.

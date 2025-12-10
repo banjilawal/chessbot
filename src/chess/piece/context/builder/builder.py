@@ -21,7 +21,7 @@ from chess.team import Team, TeamCertifier
 
 class PieceContextBuilder(Builder[PieceContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor
+     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
      1.  Produce PieceContext instances whose integrity is always guaranteed.

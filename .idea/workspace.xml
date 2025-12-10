@@ -7,7 +7,6 @@
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/agent/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/factory/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/factory/factory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/arena/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/builder/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/board/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/builder/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/board/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/search/context/builder.py" afterDir="false" />
@@ -17,14 +16,13 @@
       <change beforePath="$PROJECT_DIR$/src/chess/coord/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/builder/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/domain/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/domain/origin/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/origin/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/builder/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/game/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/builder/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/game/snapshot/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/builder/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/neighbor/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/neighbor/search/context/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/neighbor/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/neighbor/search/context/context.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/neighbor/search/context/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/neighbor/search/context/example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/piece/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/factory/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/factory/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/factory/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/factory/factory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/rank/search/context/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/context/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/scalar/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/builder/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/square/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/builder/builder.py" afterDir="false" />
@@ -34,7 +32,9 @@
       <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/example.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/state.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/example.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/builder/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -826,7 +826,7 @@
       <workItem from="1765072341689" duration="38874000" />
       <workItem from="1765120886239" duration="16382000" />
       <workItem from="1765145272408" duration="60949000" />
-      <workItem from="1765245937973" duration="74431000" />
+      <workItem from="1765245937973" duration="75434000" />
     </task>
     <servers />
   </component>

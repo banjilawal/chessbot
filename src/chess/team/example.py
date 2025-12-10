@@ -226,7 +226,7 @@ ATTRIBUTES:
   * `_hostages` (`List[Piece]`): List of captured enemy pieces.
 """
 """
-# ROLE: Builder, Data Integrity Guarantor implementation
+# ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor implementation
 
 # RESPONSIBILITIES:
 1. Process and validate parameters for creating `Team` instances.

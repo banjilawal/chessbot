@@ -19,7 +19,7 @@ from chess.rank import (
 
 class RankSearchContextBuilder(Builder[RankSearchContext]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
         1. Manage conintuction of RankSearch instances that can be used safely by the client.

@@ -21,7 +21,7 @@ from chess.square import (
 
 class SquareContextBuilder(Builder[SquareContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor
+     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
      1.  Produce SquareContext instances whose integrity is always guaranteed.

@@ -17,7 +17,7 @@ from chess.coord import (
 
 class CoordContextBuilder(Builder[CoordContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor
+     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
      1.  Produce CoordContext instances whose integrity is always guaranteed.

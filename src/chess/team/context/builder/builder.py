@@ -22,42 +22,26 @@ from chess.team import (
 
 class TeamContextBuilder(Builder[TeamContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor
+     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
-     Produce TeamContext instances whose integrity is always guaranteed. If any attributes do not pass
-     their integrity checks, send an exception instead.
+     1.  Produce TeamContext instances whose integrity is always guaranteed.
+     2.  Manage construction of TeamContext instances that can be used safely by the client.
+     3.  Ensure params for TeamContext creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+
+     # PARENT
+         * Builder
 
      # PROVIDES:
-     BuildResult[TeamContext] containing either:
-         - On success: TeamContext in the payload.
-         - On failure: Exception.
+         *   TeamContextBuilder
 
-     # ATTRIBUTES:
+     # LOCAL ATTRIBUTES:
      None
-     
-     # CONSTRUCTOR:
-    None
 
-    # CLASS METHODS:
-        ## build signature:
-               build(
-                        id: Optional[int] = None,
-                        name: Optional[str] = None,
-                        agent: Optional[Agent] = None,
-                        color: Optional[GameColor] = None,
-
-                        agent_certifier: AgentService = AgentService(),
-                        team_validator: TeamValidator = TeamValidator(),
-                        identity_service: IdentityService = IdentityService(),
-                        schema_validator: Optional[TeamSchemaValidator] = TeamSchemaValidator(),
-               ) -> BuildResult[TeamContext]:
-        For ease of use and cleaner code dependencies are given default values. All flags must
-        be turned set to null byy default. Only activated flags should have a not-null value.
-        
-    # INSTANCE METHODS:
-    None
-    """
+     # INHERITED ATTRIBUTES:
+     None
+     """
     
     @classmethod
     @LoggingLevelRouter.monitor

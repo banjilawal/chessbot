@@ -22,7 +22,7 @@ from chess.agent import (
 
 class AgentContextBuilder(Builder[AgentContext]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Produce AgentContext instances whose integrity is always guaranteed.

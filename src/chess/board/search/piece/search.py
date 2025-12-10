@@ -20,7 +20,7 @@ from chess.system import (
 
 class BoardPieceFinder(Finder[Board, Piece]):
     """
-    # ROLE: Builder, Data Integrity Guarantor implementation
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor implementation
   
     # RESPONSIBILITIES:
     1. Process and validate parameters for creating `Board` instances.

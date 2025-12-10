@@ -15,7 +15,7 @@ from chess.system import Builder, BuildResult, LoggingLevelRouter
 
 class DomainBuilder(Builder[Domain]):
     """
-     # ROLE: Builder, Data Integrity Guarantor
+     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
      1.  Produce Domain instances whose integrity is always guaranteed.

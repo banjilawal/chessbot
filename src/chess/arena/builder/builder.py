@@ -26,7 +26,7 @@ from chess.team.schema import TeamSchema
 
 class ArenaBuilder(Builder[Arena]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Produce Arena instances whose integrity is always guaranteed.

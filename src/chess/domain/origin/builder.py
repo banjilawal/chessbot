@@ -15,7 +15,7 @@ from chess.system import Builder, BuildResult, LoggingLevelRouter
 
 class DomainOriginBuilder(Builder[DomainOrigin]):
     """
-     # ROLE: Builder, Data Integrity Guarantor
+     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
      1.  Produce DomainOrigin instances whose integrity is always guaranteed.

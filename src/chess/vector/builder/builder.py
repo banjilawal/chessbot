@@ -15,20 +15,27 @@ from chess.vector import Vector, VectorBuildFailedException,VectorValidator
 
 class VectorBuilder(Builder[Vector]):
     """
-    # ROLE: Builder, Data Integrity Guarantor
+     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
-    # RESPONSIBILITIES:
-    Produce Vector instances whose integrity is always guaranteed. If any attributes do not pass their integrity checks,
-    send an exception instead.
+     # RESPONSIBILITIES:
+     1.  Produce Vector instances whose integrity is always guaranteed.
+     2.  Manage construction of Vector instances that can be used safely by the client.
+     3.  Ensure params for Vector creation have met the application's safety contract.
+     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PROVIDES:
-    BuildResult[Vector] containing either:
-        - On success: Vector in the payload.
-        - On failure: Exception.
+     # PARENT
+         * Builder
 
-    # ATTRIBUTES:
-        * vector_validator (VectorValidator)
-    """
+     # PROVIDES:
+         *   VectorBuilder
+
+     # LOCAL ATTRIBUTES:
+     None
+
+     # INHERITED ATTRIBUTES:
+     None
+     """
+    
     _vector_validator: VectorValidator
     
     def __init__(self, vector_validator: VectorValidator = VectorValidator()) -> None:

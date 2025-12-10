@@ -17,26 +17,30 @@ T = TypeVar("T")
 
 class Builder(ABC, Generic[T]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity and Reliability Guarantor.
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor, Data Integrity and Reliability Guarantor
   
     # RESPONSIBILITIES:
-    1.  Produce V instances whose integrity is always guaranteed.
-    1.  Uses Validator instances to verify builder resources do not break safety contracts.
-    2.  Wraps ValidatorExceptions inside BuildResult before returning to caller.
-    3.  Performs any additional checks not covered by Validators to assure safety and integrity of new objects.
-  
-  
+    1.  Produce objects whose integrity is always guaranteed.
+    2.  Manage construction of objects that can be used safely by the client.
+    3.  Ensure resources for building a object have met the application's safety contracts.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+
+    # PARENT:
+    None
+    
     # PROVIDES:
-    BuildResult[T] containing either:
-        - On success: T in the payload.
-        - On failure: Exception.
-        
-    # ATTRIBUTES:
+        *   Builder
+    
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
+    
     def __init__(self):
         pass
-
+    
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
