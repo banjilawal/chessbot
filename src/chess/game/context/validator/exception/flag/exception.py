@@ -46,7 +46,7 @@ class TooManyGameContextFlagsException(InvalidGameContextException, ContextFlagC
     # ROLE: ContextFlagException, GameContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one Game attribute is going to be used in an GameFinder.
+    1.  Indicate if more than one Game attribute is going to be used in an GameSnapshotFinder.
     
     # PARENT
         *   InvalidGameContextException

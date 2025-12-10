@@ -14,5 +14,5 @@ None
 
 # Modules
 from .exception import GameFinderException
-from .finder import GameFinder
+from .finder import GameSnapshotFinder
 

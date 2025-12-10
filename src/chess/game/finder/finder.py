@@ -10,29 +10,30 @@ version: 1.0.0
 
 from typing import List
 
-from chess.game import Game
+
+from chess.agent import Agent
+from chess.game.finder import GameFinderException
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.game import (
-    Game, GameContext, GameContextValidator, GameFinderException, GameVariety, HumanGame,
-    MachineGame, GameNullDataSetException
+    GameSnapshotContextt, GameSnapshotContexttValidator, GameSnapshot, GameTimeline, NullGameTimelineException
 )
-from chess.agent import Agent, AgentContext
 
 
-class GameFinder(Finder[Game]):
+
+class GameSnapshotFinder(Finder[GameSnapshot]):
     """
     # ROLE: Finder
   
     # RESPONSIBILITIES:
     1.  Search GameDataService or UniqueDataService objects for Games with an attribute that matches the
-        target inside an GameContext.
+        target inside an GameSnapshotContextt.
     2.  Safely forward any errors encountered during a search to the caller.
     
     # PARENT
         *   Finder
   
     # PROVIDES:
-    GameFinder:
+    GameSnapshotFinder:
   
     # LOCAL ATTRIBUTES:
     None
@@ -45,10 +46,10 @@ class GameFinder(Finder[Game]):
     @LoggingLevelRouter.monitor
     def find(
             cls,
-            data_set: List[Game],
-            context: GameContext,
-            context_validator: GameContextValidator = GameContextValidator()
-    ) -> SearchResult[List[Game]]:
+            data_set: GameTimeline,
+            context: GameSnapshotContextt,
+            context_validator: GameSnapshotContexttValidator = GameSnapshotContexttValidator()
+    ) -> SearchResult[List[GameSnapshot]]:
         """
         # Action:
         1.  Verify the data_set is not null and contains only Game objects,
@@ -57,26 +58,26 @@ class GameFinder(Finder[Game]):
         4.  If the logic does not account for an Game attribute drop to the try-finally block.
 
         # Parameters:
-            *   data_set (List[Game]):
-            *   context: GameContext
-            *   context_validator: GameContextValidator
+            *   data_set (List[GameSnapshot]):
+            *   context: GameSnapshotContextt
+            *   context_validator: GameSnapshotContexttValidator
 
         # Returns:
-        SearchResult[List[Game]] containing either:
-                - On success:   List[game] in the payload.
+        SearchResult[List[GameSnapshot]] containing either:
+                - On success:   List[gameSnapshot] in the payload.
                 - On failure:   Exception.
 
         # Raises:
             *   TypeError
-            *   GameNullDataSetException
+            *   NullGameTimelineException
             *   GameFinderException
         """
-        method = "GameFinder.find"
+        method = "GameSnapshotFinder.find"
         try:
             # Don't want to run a search if the data_Set is null.
             if data_set is None:
                 return SearchResult.failure(
-                    GameNullDataSetException(f"{method}: {GameNullDataSetException.DEFAULT_MESSAGE}")
+                    NullGameTimelineException(f"{method}: {NullGameTimelineException.DEFAULT_MESSAGE}")
                 )
             # certify the context is safe.
             validation_result = context_validator.validate(context)
@@ -100,7 +101,7 @@ class GameFinder(Finder[Game]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_id(cls, data_set: [Game], id: int) -> SearchResult[List[Game]]:
+    def _find_by_timestamp(cls, data_set: GameTimeline, timestamp: int) -> SearchResult[List[GameSnapshot]]:
         """
         # Action:
         1.  Get the games whose id matched the target.
@@ -109,20 +110,20 @@ class GameFinder(Finder[Game]):
         4.  If the finder returns multiple unique hits there is a problem.
 
         # Parameters:
-            *   id (int)
-            *   data_set (List[Game])
+            *   timestamp (int)
+            *   data_set (GameTimeline)
 
         # Returns:
-        SearchResult[List[Game]] containing either:
-                - On success:   List[game] in the payload.
+        SearchResult[List[GameSnapshot]] containing either:
+                - On success:   List[gameSnapshot] in the payload.
                 - On failure:   Exception.
 
         # Raises:
             *   GameFinderException
         """
-        method = "GameFinder._find_by_id"
+        method = "GameSnapshotFinder._find_by_timestamp"
         try:
-            matches = [game for game in data_set if game.id == id]
+            matches = [snapshot for snapshot in data_set.items if snapshot.timestamp == timestamp]
             # There should be either no Games with the id or one and only one Game will have that id.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -140,7 +141,7 @@ class GameFinder(Finder[Game]):
   
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_agent(cls, data_set: [Game], agent: Agent) -> SearchResult[List[Game]]:
+    def _find_by_agent(cls, data_set: GameTimeline, agent: Agent) -> SearchResult[List[GameSnapshot]]:
         """
         # Action:
         1.  Get the game whose agent is a match for the target.
@@ -150,27 +151,26 @@ class GameFinder(Finder[Game]):
 
         # Parameters:
             *   agent (Agent)
-            *   data_set (List[Game])
+            *   data_set (GameTimeline)
 
         # Returns:
-        SearchResult[List[Game]] containing either:
-                - On success:   List[game] in the payload.
+        SearchResult[List[GameSnapshot]] containing either:
+                - On success:   List[gameSnapshot] in the payload.
                 - On failure:   Exception.
 
         # Raises:
             *   GameFinderException
         """
-        method = "GameFinder._find_by_agent"
+        method = "GameSnapshotFinder._find_by_agent"
         try:
-            # Loop through the set and return the first game who ran the agent.
-            # If more than one Game is returned there might be a problem.
-            matches = []
-            for game in data_set:
-                if agent in game.players:
-                    matches.append(game)
+            matches = [snapshot for snapshot in data_set.items if agent in snapshot.arena.agents]
+            # There should be either no Games with the id or one and only one Game will have that id.
             if len(matches) == 0:
                 return SearchResult.empty()
-            return SearchResult.success(payload=matches)
+            # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
+            # inconsistency later.
+            if len(matches) >= 1:
+                return SearchResult.success(payload=matches)
         
         # Finally, if some exception is not handled by the checks wrap it inside an GameFinderException
         # then, return the exception chain inside a SearchResult.

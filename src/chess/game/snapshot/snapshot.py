@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from typing import Optional, reveal_type
+from typing import Optional, cast
 
 from chess.agent import Agent
 from chess.arena import Arena
@@ -58,6 +58,10 @@ class GameSnapshot(Result):
         self._winner = winner
         self._timestamp = timestamp
         self._game_state = game_state
+        
+    @property
+    def arena(self) -> Arena:
+        return cast(Arena, self.payload)
     
     @property
     def timestamp(self) -> int:

@@ -21,8 +21,8 @@ class GameFinderException(FinderException):
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when: data in an GameFinder's fields or unanticipated conditions
-        halt the normal flow of GameFinder operations.
+    1.  Parent of exceptions raised when: data in an GameSnapshotFinder's fields or unanticipated conditions
+        halt the normal flow of GameSnapshotFinder operations.
     2.  Wraps unhandled exceptions that hit the try-finally block of an GameFactory method.
   
     # PARENT
@@ -38,4 +38,4 @@ class GameFinderException(FinderException):
     None
     """
     ERROR_CODE = "GAME_FINDER_ERROR"
-    DEFAULT_MESSAGE = "GameFinder raised an exception."
+    DEFAULT_MESSAGE = "GameSnapshotFinder raised an exception."

@@ -15,7 +15,7 @@ from chess.system import Result
 T = TypeVar("T")
 
 
-class SearchResult(Result[List[Generic[T]]]):
+class SearchResult(Result[Generic[T]]):
     """
     # ROLE: Messanger  Data Transport Object, Error Transport Object.
   

@@ -88,7 +88,7 @@ class GameContextBuilder(Builder[GameContext]):
                     NoGameContextFlagException(f"{method}: {NoGameContextFlagException.DEFAULT_MESSAGE}")
                 )
             # Only one param can be used for a searcher. If you need to searcher by multiple params
-            # Filter the previous set of matches in a new GameFinder with a new context.
+            # Filter the previous set of matches in a new GameSnapshotFinder with a new context.
             if param_count > 1:
                 return BuildResult.failure(
                     TooManyGameContextFlagsException(f"{method}: {TooManyGameContextFlagsException}")
