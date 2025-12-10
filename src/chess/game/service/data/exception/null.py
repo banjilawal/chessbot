@@ -12,13 +12,13 @@ from chess.game import InvalidGameDataServiceException
 
 
 __all__ = [
-    "NullGameDataServiceException",
+    "GameDataServiceNullException",
     "GameNullDataSetException",
 ]
 
 
 #======================# NULL GAME_DATA_SERVICE EXCEPTION #======================#
-class NullGameDataServiceException(InvalidGameDataServiceException, NullException):
+class GameDataServiceNullException(InvalidGameDataServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -30,7 +30,7 @@ class NullGameDataServiceException(InvalidGameDataServiceException, NullExceptio
         *   NullException
 
     # PROVIDES:
-    NullGameDataServiceException
+    GameDataServiceNullException
 
     # LOCAL ATTRIBUTES:
     None
