@@ -9,27 +9,45 @@ version: 1.0.0
 
 from typing import Optional, cast
 
-from chess.game import GameSnapshot
+from chess.game import GameSnapshot, GameTimelineException
 from chess.system import DeletionResult, InsertionResult, ResultStack
 
 
-class GameTimeLine(ResultStack[GameSnapshot]):
+class GameTimeline(ResultStack[GameSnapshot]):
+    """
+    # ROLE: Persistence, Unique Result Stack CRUD Operations.
+
+    # RESPONSIBILITIES:
+    1.  Ensure all snapshots in managed by GameTimeline are unique.
+    2.  Guarantee consistency of records in GameTimeline.
+
+    # PROVIDES:
+        *   GameTimeline
+        *   No duplicates
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    See ResultStack class for inherited attributes.
+    """
+    
     def __init__(self):
         super().__init__()
         
-    def commit_player_move(self, update: GameSnapshot) -> InsertionResult[GameSnapshot]:
-        method = "GameTimeLine.commit_player_move"
+    def commit_player_move(self, snapshot: GameSnapshot) -> InsertionResult[GameSnapshot]:
+        method = "GameTimeline.commit_player_move"
         try:
-            if not isinstance(update, GameSnapshot):
-                raise TypeError(f"Expected GameResult, got {type(update).__name__} instead.")
-            return self.push_result(update)
+            if not isinstance(snapshot, GameSnapshot):
+                raise TypeError(f"Expected GameResult, got {type(snapshot).__name__} instead.")
+            return self.push_result(snapshot)
         except Exception as ex:
             return InsertionResult.failed(
-                GameTimeLineException(ex=ex, message=f"{method}: {GameTimeLineException.DEFAULT_MESSAGE}")
+                GameTimelineException(ex=ex, message=f"{method}: {GameTimelineException.DEFAULT_MESSAGE}")
             )
     
     def undo_last_turn(self) -> DeletionResult[GameSnapshot]:
-        method = "GameTimeLine.undo_last_turn"
+        method = "GameTimeline.undo_last_turn"
         try:
             result = self.undo_result_push()
             if result.is_failure:
@@ -37,7 +55,7 @@ class GameTimeLine(ResultStack[GameSnapshot]):
             return DeletionResult.success(cast(GameSnapshot, result.payload))
         except Exception as ex:
             return DeletionResult.failure(
-                GameTimeLineException(ex=ex, message=f"{method}: {GameTimeLineException.DEFAULT_MESSAGE}")
+                GameTimelineException(ex=ex, message=f"{method}: {GameTimelineException.DEFAULT_MESSAGE}")
             )
     
     def last_turn(self) -> Optional[GameSnapshot]:

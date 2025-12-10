@@ -5,33 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/builder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/builder/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/builder/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/service/service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/validator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/validator/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/validator/exception/flag/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/validator/exception/null/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/context/validator/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/finder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/finder/finder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/exception/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/timeline.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/exception/invalid.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/exception/null.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/snapshot/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/result/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/snapshot/snapshot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/result/stack.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/result/stack/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/result/stack/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/snapshot/timeline/timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -823,7 +803,7 @@
       <workItem from="1765072341689" duration="38874000" />
       <workItem from="1765120886239" duration="16382000" />
       <workItem from="1765145272408" duration="60949000" />
-      <workItem from="1765245937973" duration="49524000" />
+      <workItem from="1765245937973" duration="50594000" />
     </task>
     <servers />
   </component>
