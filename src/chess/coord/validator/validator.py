@@ -19,18 +19,22 @@ from chess.coord import (
 
 class CoordValidator(Validator[Coord]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Verify Data Integrity
-  
+     # ROLE: Validation, Data Integrity Guarantor, Security.
+
     # RESPONSIBILITIES:
-    Verifies a candidate is an instance of Coord, that meets integrity requirements, before
-    the candidate is used.
-  
+    1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
+
     # PROVIDES:
-    ValidationResult[Coord] containing either:
-        - On success: Coord in the payload.
-        - On failure: Exception.
-  
-    # ATTRIBUTES:
+        * CoordValidator
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     

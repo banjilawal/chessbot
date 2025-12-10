@@ -18,7 +18,25 @@ from chess.piece import (
 )
 
 class PieceValidator(Validator[Piece]):
-    # VALID_RANKS: tuple[Type, ...] = (King, Queen, Bishop, Knight, Rook, Pawn)
+    """
+     # ROLE: Validation, Data Integrity Guarantor, Security.
+
+    # RESPONSIBILITIES:
+    1.  Ensure a Piece instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
+
+    # PROVIDES:
+        * PieceValidator
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor

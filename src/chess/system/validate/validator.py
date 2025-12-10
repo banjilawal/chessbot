@@ -16,20 +16,23 @@ T = TypeVar("T")
 
 class Validator(ABC, Generic[T]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity assurance.
-  
+     # ROLE: Validation, Data Integrity Guarantor, Security.
+
     # RESPONSIBILITIES:
-    1.  Verifies a candidate is an instance of T, that meets integrity requirements, before the candidate is used.
-    2.  Returns any exceptions raised inside a ValidationResult
-    
-  
+    1.  Ensure an object is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+    None
+
     # PROVIDES:
-    ValidationResult[V] containing either:
-        - On success: T in the payload.
-        - On failure: Exception.
-  
-    # ATTRIBUTES:
-        *   candidate (Any): Object to validate.
+        * Validator
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     def __init__(self):
         pass

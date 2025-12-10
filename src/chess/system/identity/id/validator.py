@@ -28,7 +28,26 @@ class IdValidator(Validator[int]):
     # ATTRIBUTES:
     None
     """
-    
+    """
+     # ROLE: Validation, Data Integrity Guarantor, Security.
+
+    # RESPONSIBILITIES:
+    1.  Ensure a name is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+    3.  An Id is is required to be greater than zero.
+
+    # PARENT
+        *   Validator
+
+    # PROVIDES:
+        * IdeValidator
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(

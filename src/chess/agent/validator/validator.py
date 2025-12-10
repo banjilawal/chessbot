@@ -20,18 +20,17 @@ from chess.team import UniqueTeamDataService
 
 class AgentValidator(Validator[Agent]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity Guarantor.
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    Verifies a candidate is an instance of Agent that is safe to use.
+    1.  Ensure an Agent instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
     # PARENT
         *   Validator
 
     # PROVIDES:
-    ValidationResult[Agent] containing either:
-        - On success: Agent in the payload.
-        - On failure: Exception.
+        * AgentValidator
 
     # LOCAL ATTRIBUTES:
     None

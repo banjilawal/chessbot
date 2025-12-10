@@ -23,30 +23,19 @@ class SquareContextValidator(Validator[SquareContext]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    Verifies a candidate is an instance of SquareContext, that meets integrity requirements, before
-    the candidate is used.
+    1.  Ensure a Square instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
 
     # PROVIDES:
-    ValidationResult[SquareContext] containing either:
-        - On success: Square in the payload.
-        - On failure: Exception.
+        * SquareValidator
 
-    # ATTRIBUTES:
-    No attributes
+    # LOCAL ATTRIBUTES:
+    None
 
-    # CONSTRUCTOR:
-    Default Constructor
-
-    # CLASS METHODS:
-        ## Validate signature:
-                validate(
-                        candidate: Any,
-                        board_service: BoardService = BoardService(),
-                        coord_service: CoordService = CoordService(),
-                        identity_service: IdentityService = IdentityService(),
-                ) -> ValidationResult[SquareContext]:
-
-    # INSTANCE METHODS:
+    # INHERITED ATTRIBUTES:
     None
     """
     @classmethod

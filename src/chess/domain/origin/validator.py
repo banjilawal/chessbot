@@ -24,14 +24,19 @@ class DomainOriginValidator(Validator[DomainOrigin]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is a DomainOrigin instance that can be used safely in the system.
+    1.  Ensure a DomainOrigin instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
 
     # PROVIDES:
-      ValidationResult[DomainOrigin] containing either:
-            - On success: DomainOrigin in the payload.
-            - On failure: Exception.
+        * DomainOriginValidator
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     

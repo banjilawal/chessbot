@@ -19,17 +19,22 @@ from chess.scalar import (
 class ScalarValidator(Validator[Scalar]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
-  
+
     # RESPONSIBILITIES:
-    Prevents an object that does not meet the system's Scalar specifications from being used.
-  
+    1.  Ensure a Scalar instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
+
     # PROVIDES:
-      ValidationResult[Scalar] containing either:
-            - On success: Scalar in the payload.
-            - On failure: Exception.
-  
-    # ATTRIBUTES:
-        *   candidate (Any)
+        * ScalarValidator
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     
     def __init__(self, candidate: Any):

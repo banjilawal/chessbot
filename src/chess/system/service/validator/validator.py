@@ -20,15 +20,22 @@ class ServiceValidator(Validator[EntityService]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is a Service whose Builder, Validator.
+    1.  Ensure an EntityService is not null and the correct before use.
+    2.  Certify the EntityService's builder and validator are not null and the correct type.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
 
     # PROVIDES:
-      ValidationResult[Service] containing either:
-            - On success: Service in the payload.
-            - On failure: Exception.
+        * ServiceValidator
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
     None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     """
     
     @classmethod

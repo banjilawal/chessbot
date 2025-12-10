@@ -18,26 +18,30 @@ from chess.system import (
 
 class NameValidator(Validator[str]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Integrity
-  
+     # ROLE: Validation, Data Integrity Guarantor, Security.
+
     # RESPONSIBILITIES:
-    Verifies a candidate is
+    1.  Ensure a name is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+    3.  Names are required to be:
         *   Not validation.
         *   Is a STRING
         *   Not white space only (" ", tab, newline).
         *   Not empty. (".", ".\n", ".\t", ".\r").
         *   length between MIN_NAME_LENGTH and MAX_NAME_LENGTH inclusive.
-    If the conditions are met NameValidator authorizes using the candidate.
-  
+
+    # PARENT
+        *   Validator
+
     # PROVIDES:
-    ValidationResult[str] containing either:
-        - On success: str in the payload.
-        - On failure: Exception.
-        
-    # ATTRIBUTES:
+        * NameValidator
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(

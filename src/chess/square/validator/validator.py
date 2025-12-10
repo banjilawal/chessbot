@@ -20,39 +20,22 @@ from chess.system import IdentityService, Validator, ValidationResult, NameValid
 
 class SquareValidator(Validator[Square]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Verify Data Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Verifies a candidate is an instance of Square, that meets integrity requirements, before
-        the candidate is used.
-    2.  Verify an actionable Piece is bound to a Square before the Piece object is used.
+    1.  Ensure a Square instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
 
     # PROVIDES:
-    ValidationResult[Coord] containing either:
-        - On success: Coord in the payload.
-        - On failure: Exception.
+        * SquareValidator
 
-    # ATTRIBUTES:
-    
-    # CONSTRUCTOR:
-    Default Constructor
-    
-    # CLASS METHODS:
-           validate(
-                candidate: Any, board_service: BoardService, coord_service: CoordService,
-                identity_service: IdentityService
-            ) -> ValidationResult[Square]:
-            
-           verify_agent_has_registered_team(
-                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentService,
-                team_context_service: TeamContextService,
-            ) -> ValidationResult[(Team, Agent)]:
-            
-           verify_team_and_game_relationship(
-                team_candidate: Any, game_candidate: Any, game_service: GameService
-            ) -> ValidationResult[(Team, Game)]:
-    
-    # INSTANCE METHODS:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     

@@ -19,18 +19,23 @@ from chess.system import ValidationResult, Validator, LONGEST_KNIGHT_LEG_SIZE, L
 
 class VectorValidator(Validator[Vector]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity Guarantor.
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    Verifies a candidate is an instance of Vector, that meets integrity requirements, before 
-    the candidate is used.
+    1.  Ensure a Square instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
 
     # PROVIDES:
-    ValidationResult[Vector] containing either:
-        - On success: Vector in the payload.
-        - On failure: Exception.
+        * SquareValidator
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
 
 

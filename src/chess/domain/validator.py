@@ -23,14 +23,19 @@ class DomainValidator(Validator[Domain]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is a Domain instance that can be used safely in the system.
-    
-    # PROVIDES:
-      ValidationResult[Domain] containing either:
-            - On success: Domain in the payload.
-            - On failure: Exception.
+    1.  Ensure a Domain instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
-    # ATTRIBUTES:
+    # PARENT
+        *   Validator
+
+    # PROVIDES:
+        * DomainValidator
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     

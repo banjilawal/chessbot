@@ -17,14 +17,19 @@ class BoardValidator(Validator[Board]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is a Board object meeting the applications base safety requirements.
+    1.  Ensure a Board instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
 
     # PROVIDES:
-      ValidationResult[Board] containing either:
-            - On success: Board in the payload.
-            - On failure: Exception.
+        * BoardValidator
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     

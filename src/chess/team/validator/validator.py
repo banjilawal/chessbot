@@ -23,36 +23,19 @@ class TeamValidator(Validator[Team]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    Verifies a candidate is an instance of Team, that meets integrity requirements, before 
-    the candidate is used.
+    1.  Ensure a Team instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
 
     # PROVIDES:
-    ValidationResult[Team] containing either:
-        - On success: Team in the payload.
-        - On failure: Exception.
+        * TeamValidator
 
-    # ATTRIBUTES:
-    No attributes
-    
-    # CONSTRUCTOR:
-    Default Constructor
-    
-    # CLASS METHODS:
-           validate(
-                candidate: Any, agent_certifier: AgentService, identity_service: IdentityService
-                team_schema_validator: TeamSchemaValidator
-            ) -> ValidationResult[Team]:
-            
-           verify_agent_has_registered_team(
-                team_candidate: Any, agent_candidate: Any, agent_certifier: AgentService,
-                team_context_service: TeamContextService,
-            ) -> ValidationResult[(Team, Agent)]:
-            
-           verify_team_and_game_relationship(
-                team_candidate: Any, game_candidate: Any, game_service: GameService
-            ) -> ValidationResult[(Team, Game)]:
-    
-    # INSTANCE METHODS:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     

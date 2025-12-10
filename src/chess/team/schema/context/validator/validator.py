@@ -17,16 +17,17 @@ from chess.team import (
 
 class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
     """
-     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity Guarantor.
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    Verifies a candidate is an instance of TeamSchemaContext that is safe to use.
+    1.  Ensure a TeamSchema instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
     # PARENT
         *   Validator
 
     # PROVIDES:
-        *   TeamSchemaContextValidator
+        * TeamSchemaValidator
 
     # LOCAL ATTRIBUTES:
     None
