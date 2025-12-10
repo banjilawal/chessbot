@@ -10,9 +10,10 @@ version: 1.0.0
 from typing import Optional
 
 from chess.agent import Agent
+from chess.board import Board
 from chess.game import Game
 from chess.system import Context
-
+from chess.team import Team
 
 
 class GameContext(Context[Game]):
@@ -20,7 +21,7 @@ class GameContext(Context[Game]):
     # ROLE: Finder Filter
 
     # RESPONSIBILITIES:
-    Provide an GameSnapshotFinder with an attribute value to find Games with a matching value in
+    Provide an GameFinder with an attribute value to find Games with a matching value in
     their version of the attribute.
 
     # PARENT
@@ -30,18 +31,25 @@ class GameContext(Context[Game]):
     GameContext
 
     # LOCAL ATTRIBUTES:
+        *   team (Optional[Team])
         *   agent (Optional[Agent])
-
+        *   board (Optional[Board])
         
+
+
     # INHERITED ATTRIBUTES:
-    See Context class for inherited attributes.
+        *   See Context class for inherited attributes.
     """
+    _team: Optional[Team]
     _agent: Optional[Agent]
+    _board: Optional[Board]
     
     def __init__(
             self,
             id: Optional[id] = None,
+            team: Optional[Team] = None,
             agent: Optional[Agent] = None,
+            board: Optional[Board] = None,
     ):
         """
         # ACTION:
@@ -49,7 +57,9 @@ class GameContext(Context[Game]):
 
         # PARAMETERS:
             *   id (Optional[int])
+            *   team (Optional[Team])
             *   agent (Optional[Agent])
+            *   board (Optional[Board])
 
         # Returns:
         None
@@ -58,11 +68,22 @@ class GameContext(Context[Game]):
         None
         """
         super().__init__(id=id, name=None)
+        self._team = team
         self._agent = agent
+        self._board = board
         
+        
+    @property
+    def team(self) -> Optional[Team]:
+        return self._team
+    
     @property
     def agent(self) -> Optional[Agent]:
         return self._agent
+    
+    @property
+    def board(self) -> Optional[Board]:
+        return self._board
     
     def to_dict(self) -> dict:
         """
@@ -79,7 +100,7 @@ class GameContext(Context[Game]):
         """
         return {
             "id": self.id,
-            "name": self.name,
+            "team": self.team,
             "agent": self._agent,
+            "board": self._board,
         }
-    
