@@ -80,11 +80,10 @@ class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected TeamSchemaContext, got {type(candidate).__name__} instead.")
                 )
-            # Once the two existence checks are passed candidate can be cast to an TeamSchemaContext
-            # For additional checks.
+            
+            # Once existence and type checks are passed, cast the candidate to TeamSchema and run structure tests.
             context = cast(TeamSchemaContext, candidate)
             
-            # Perform the two checks ensuring only one TeamSchema attribute value will be used in the searcher.
             # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
@@ -97,21 +96,23 @@ class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
                         f"{method}: {TooManyTeamSchemaContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
-            # Which ever attribute value is not null should be certified safe by the appropriate validator.
+            # When structure tests are passed certify whichever search value was provided.
             
-            #
+            # Certification for the search-by-name target.
             if context.name is not None:
                 validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
+                # On certification success return the name_team_schema_context in a ValidationResult.
                 return ValidationResult.success(context)
             
+            # Certification for the search-by-name target.
             if context.color is not None:
-                validation = color_validator.validate(candidate=context.team)
+                validation = color_validator.validate(candidate=context.color)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
+                # On certification success return the color_team_schema_context in a ValidationResult.
                 return ValidationResult.success(context)
-        
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
         # an InvalidTeamSchemaContextException. Then send exception chain a ValidationResult.failure.
         except Exception as ex:
