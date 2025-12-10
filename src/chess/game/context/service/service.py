@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.game.finder import GameSnapshotFinder
+from chess.game.finder.finder import GameFinder
 from chess.system import ContextService, id_emitter
 from chess.game import GameContext, GameContextBuilder, GameContextValidator
 
@@ -42,7 +42,7 @@ class GameContextService(ContextService[GameContext]):
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            finder: GameSnapshotFinder = GameSnapshotFinder(),
+            finder: GameFinder = GameFinder(),
             builder: GameContextBuilder = GameContextBuilder(),
             validator: GameContextValidator = GameContextValidator(),
     ):
@@ -53,7 +53,7 @@ class GameContextService(ContextService[GameContext]):
         # Parameters:
             *   name (str): Default value - DEFAULT_NAME
             *   id (int): Default value - id_emitter.service_id
-            *   finder (GameSnapshotFinder): Default value - GameSnapshotFinder()
+            *   finder (GameFinder): Default value - GameFinder()
             *   builder (GameContextBuilder): Default value - GameContextBuilder()
             *   validator (GameContextValidator): Default value - GameContextValidator()
 
@@ -67,8 +67,8 @@ class GameContextService(ContextService[GameContext]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
         
     @property
-    def finder(self) -> GameSnapshotFinder:
-        return cast(GameSnapshotFinder, self.entity_finder)
+    def finder(self) -> GameFinder:
+        return cast(GameFinder, self.entity_finder)
     
     @property
     def builder(self) -> GameContextBuilder:
