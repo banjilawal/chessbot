@@ -15,7 +15,10 @@ from chess.agent import Agent
 from chess.game.finder import GameFinderException
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.game import (
-    GameSnapshotContextt, GameSnapshotContexttValidator, GameSnapshot, GameTimeline, NullGameTimelineException
+    Game, GameContext, GameContextValidator, GameSnapshotContextt, GameSnapshotContexttValidator, GameSnapshot,
+    GameTimeline,
+    NullGameTimelineException,
+    UniqueGameDataService
 )
 
 
@@ -46,10 +49,10 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
     @LoggingLevelRouter.monitor
     def find(
             cls,
-            data_set: GameTimeline,
-            context: GameSnapshotContextt,
-            context_validator: GameSnapshotContexttValidator = GameSnapshotContexttValidator()
-    ) -> SearchResult[List[GameSnapshot]]:
+            data_set: UniqueGameDataService,
+            context: GameContext,
+            context_validator: GameContextValidator = GameContextValidator()
+    ) -> SearchResult[List[Game]]:
         """
         # Action:
         1.  Verify the data_set is not null and contains only Game objects,
@@ -77,7 +80,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
             # Don't want to run a search if the data_Set is null.
             if data_set is None:
                 return SearchResult.failure(
-                    NullGameTimelineException(f"{method}: {NullGameTimelineException.DEFAULT_MESSAGE}")
+                    NullUniqueGameDataServiceException(f"{method}: {NullGameTimelineException.DEFAULT_MESSAGE}")
                 )
             # certify the context is safe.
             validation_result = context_validator.validate(context)

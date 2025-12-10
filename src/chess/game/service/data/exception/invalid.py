@@ -1,36 +1,37 @@
-# src/chess/agent/service/data/exception/invalid.py
+# src/chess/game/service/data/exception/invalid.py
 
 """
-Module: chess.agent.service.data.exception.invalid
+Module: chess.game.service.data.exception.invalid
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
+
+from chess.game import GameDataServiceException
 from chess.system import ValidationFailedException
-from chess.agent import AgentDataServiceException
 
 
 __all__ = [
-    #======================# AGENT_DATA_SERVICE VALIDATION EXCEPTIONS #======================#
-    "InvalidAgentDataServiceException",
+    #======================# GAME_DATA_SERVICE VALIDATION EXCEPTIONS #======================#
+    "InvalidGameDataServiceException",
 ]
 
-#======================# AGENT_DATA_SERVICE VALIDATION EXCEPTIONS #======================#
-class InvalidAgentDataServiceException(AgentDataServiceException, ValidationFailedException):
+#======================# GAME_DATA_SERVICE VALIDATION EXCEPTIONS #======================#
+class InvalidGameDataServiceException(GameDataServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during AgentDataService verification process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentDataServiceValidator method.
+    1.  Parent of exceptions raised during GameDataService verification process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an GameDataServiceValidator method.
 
     # PARENT
-        *   AgentDataServiceException
+        *   GameDataServiceException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidAgentDataServiceException
+    InvalidGameDataServiceException
 
     # LOCAL ATTRIBUTES:
     None
@@ -38,5 +39,5 @@ class InvalidAgentDataServiceException(AgentDataServiceException, ValidationFail
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_DATA_SERVICE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "AgentDataService validation failed."
+    ERROR_CODE = "GAME_DATA_SERVICE_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "GameDataService validation failed."

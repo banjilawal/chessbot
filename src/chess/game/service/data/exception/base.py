@@ -1,7 +1,7 @@
-# src/chess/agent/service/data/exception/exception.py
+# src/chess/game/service/data/exception/exception.py
 
 """
-Module: chess.agent.service.data.exception.base
+Module: chess.game.service.data.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -10,28 +10,27 @@ version: 1.0.0
 from chess.system import DataServiceException
 
 __all__ = [
-    #======================# AGENT_DATA_SERVICE EXCEPTIONS #======================#
-    "AgentDataServiceException",
+    #======================# GAME_DATA_SERVICE EXCEPTIONS #======================#
+    "GameDataServiceException",
 ]
 
 
-#======================# AGENT_DATA_SERVICE EXCEPTIONS #======================#
-class AgentDataServiceException(DataServiceException):
+#======================# GAME_DATA_SERVICE EXCEPTIONS #======================#
+class GameDataServiceException(DataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an AgentDataService's organic fields or methods run into a
-        condition that leads to an operation failing.
-    2.  Parent of exceptions raised by classes that highly cohere with AgentDataService objects.
-    3.  Catchall for AgentDataService failure states that are not covered by a lower level
-        AgentDataService exception.
+    1.  Parent of exceptions raised by GameDataService objects.
+    2.  Parent of exceptions raised by classes that highly cohere with GameDataService objects.
+    3.  Catchall for GameDataService failure states that are not covered by a lower level
+        GameDataService exception.
 
     # PARENT
         *   DataServiceException
 
     # PROVIDES:
-    AgentDataServiceException
+    GameDataServiceException
 
     # LOCAL ATTRIBUTES:
     None
@@ -39,5 +38,5 @@ class AgentDataServiceException(DataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_DATA_SERVICE_ERROR"
-    DEFAULT_ERROR_CODE = "AgentDataService raised an exception."
+    ERROR_CODE = "GAME_DATA_SERVICE_ERROR"
+    DEFAULT_ERROR_CODE = "GameDataService raised an exception."
