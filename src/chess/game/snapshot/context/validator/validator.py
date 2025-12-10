@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from chess.team import TeamService
 from chess.agent import AgentService
-from chess.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
+from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from chess.game import (
     GameSnapshotContext, InvalidGameSnapshotContextException, NoGameSnapshotContextFlagException,
     NullGameSnapshotContextException, TooManyGameSnapshotContextFlagsException
@@ -48,7 +48,6 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
             team_service: TeamService = TeamService(),
             agent_service: AgentService = AgentService(),
             number_validator: NumberValidator = NumberValidator(),
-            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[GameSnapshotContext]:
         """
         # Action:
@@ -111,7 +110,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
                 )
             # Certify the context if search is going to be by the snapshot's timestamp
             if context.timestamp is not None:
-                validation = number_validator.validate_id(candidate=context.timestamp)
+                validation = number_validator.validate(candidate=context.timestamp)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the search_by_game_id context.

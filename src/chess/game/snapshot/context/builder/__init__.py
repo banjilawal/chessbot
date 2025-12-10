@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import GameSnapShotContextBuilder
-from .exception import GameSnapShotContextBuilderException
+from .exception import GameSnapshotContextBuildFailedException

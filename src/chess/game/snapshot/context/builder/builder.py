@@ -6,37 +6,67 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
+from typing import Optional
 
-from chess.system import BuildResult, Builder
-from chess.game import GameSnapshotContext
+from chess.team import Team, TeamService
+from chess.agent import Agent, AgentService
+from chess.system import BuildResult, Builder, LoggingLevelRouter, NumberValidator
+from chess.game import (
+    GameSnapshotContext, GameSnapshotContextBuildFailedException, NoGameSnapshotContextFlagException,
+    TooManyGameSnapshotContextFlagsException
+)
+
 
 
 class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
+    """
+    # ROLE: Builder
+
+    # RESPONSIBILITIES:
+        Produce GameSnapshotContext instances whose integrity is always guaranteed. If any attributes do not pass
+        their integrity checks, send an exception instead of an unsafe GameSnapshotContext.
+
+    # PARENT
+        *   Builder
+
+    # PROVIDES:
+    BuildResult[GameSnapshotContext] containing either:
+        - On success: GameSnapshotContext in the payload.
+        - On failure: Exception.
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(
+    def build(
             cls,
-            candidate: Any,
+            team: Optional[Team] = None,
+            agent: Optional[Agent] = None,
+            timestamp: Optional[int] = None,
             team_service: TeamService = TeamService(),
             agent_service: AgentService = AgentService(),
-            number_validator: NumberValidator = NumberValidator(),
-            identity_service: IdentityService = IdentityService(),
+            number_validator: NumberValidator = NumberValidator()
     ) -> BuildResult[GameSnapshotContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, agent, team , arena) tuple is not null.
+            1.  Confirm that only one in the (team, agent, timestamp) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success send the verified GameSnapshotContext in a BuildResult.
+            4.  On success Build an GameSnapshotContext are return in a BuildResult.
 
         # Parameters:
         Only one these must be provided:
-            *   timestamp (Optional[int])
-            *   agent (Optional[Agent])
             *   team (Optional[Team])
+            *   agent (Optional[Agent])
+            *   timestamp (Optional[int])
 
         These Parameters must be provided:
+            *   team_service (TeamService)
             *   agent_service (AgentService)
             *   number_validator (NumberValidator)
 
@@ -46,71 +76,60 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
             - On failure: Exception.
 
         # Raises:
-            *   TypeError
-            *   NullGameSnapshotContextException
+            *   GameSnapshotContextBuildFailedException
             *   NoGameSnapshotContextFlagException
             *   TooManyGameSnapshotContextFlagsException
-            *   GameSnapshotBuildFailedException
         """
-        method = "GameSnapshotContextValidator.validate"
+        method = "GameSnapshotContextBuilder.build"
         try:
-            # If the candidate is null no other checks are needed.
-            if candidate is None:
-                return BuildResult.failure(
-                    NullGameSnapshotContextException(f"{method}: {NullGameSnapshotContextException.DEFAULT_MESSAGE}")
-                )
-            # If the candidate is not an GameSnapshotContext validation has failed.
-            if not isinstance(candidate, GameSnapshotContext):
-                return BuildResult.failure(
-                    TypeError(f"{method}: Expected GameSnapshotContext, got {type(candidate).__name__} instead.")
-                )
-            # Once the two existence checks are passed candidate can be cast to an GameSnapshotContext
-            # For additional checks.
-            context = cast(GameSnapshotContext, candidate)
+            # Get how many optional parameters are not null. One param needs to be not-null
+            params = [team, agent, timestamp]
+            param_count = sum(bool(p) for p in params)
             
-            # Perform the two checks ensuring only one Game attribute value will be used in the searcher.
-            if len(context.to_dict()) == 0:
+            # Cannot search for a Game object if no attribute value is provided for a hit.
+            if param_count == 0:
                 return BuildResult.failure(
-                    NoGameSnapshotContextFlagException(
-                        f"{method}: {NoGameSnapshotContextFlagException.DEFAULT_MESSAGE}"
-                    )
+                    NoGameSnapshotContextFlagException(f"{method}: {NoGameSnapshotContextFlagException.DEFAULT_MESSAGE}")
+                )
+            # Only one param can be used for a searcher. If you need to searcher by multiple params
+            # Filter the previous set of matches in a new GameSnapshotFinder with a new context.
+            if param_count > 1:
+                return BuildResult.failure(
+                    TooManyGameSnapshotContextFlagsException(f"{method}: {TooManyGameSnapshotContextFlagsException}")
                 )
             
-            if len(context.to_dict()) > 1:
-                return BuildResult.failure(
-                    TooManyGameSnapshotContextFlagsException(
-                        f"{method}: {TooManyGameSnapshotContextFlagsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            # Certify the context if search is going to be by the snapshot's timestamp
-            if context.timestamp is not None:
-                validation = number_validator.validate_id(candidate=context.timestamp)
+            # After verifying the correct number of flags has been enabled follow the appropriate
+            # GameSnapshotContext build flow.
+            
+            # Timestamp flag enabled, build flow.
+            if timestamp is not None:
+                validation = number_validator.validate(candidate=timestamp)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return the search_by_game_id context.
-                return BuildResult.success(context)
+                # On validation success return a timestamp_game_snapshot_context in the BuildResult.
+                return BuildResult.success(payload=GameSnapshotContext(timestamp=timestamp))
             
-            # Certify the context if search is going to be by the an arena team's player agent.
-            if context.agent is not None:
-                validation = agent_service.validator.validate(candidate=context.agent)
+            # Agent flag enabled, build flow.
+            if agent is not None:
+                validation = agent_service.validator.validate(candidate=agent)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return the search_by_arena_team_agent context.
-                return BuildResult.success(context)
+                # On validation success return an agent_game_snapshot_context in the BuildResult.
+                return BuildResult.success(payload=GameSnapshotContext(agent=agent))
             
-            # Certify the context if search is going to be by the snapshot's arena team
-            if context.team is not None:
-                validation = team_service.validator.validate(candidate=context.team)
+            # Team flag enabled, build flow.
+            if team is not None:
+                validation = team_service.validator.validate(candidate=team)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return the search_by_arena_team context.
-                return BuildResult.success(context)
+                # On validation success return an team_game_snapshot_context in the BuildResult.
+                return BuildResult.success(payload=GameSnapshotContext(team=team))
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an GameSnapshotBuildFailedException. Then send exception chain a BuildResult.failure.
+        # anGameSnapshotContextBuildFailedException. Then send exception chain a BuildResult.failure.
         except Exception as ex:
             return BuildResult.failure(
-                GameSnapshotBuildFailedException(
-                    ex=ex, message=f"{method}: {GameSnapshotBuildFailedException.DEFAULT_MESSAGE}"
+               GameSnapshotContextBuildFailedException(
+                    ex=ex, message=f"{method}: {GameSnapshotContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

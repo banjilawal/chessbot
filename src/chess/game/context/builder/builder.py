@@ -67,22 +67,22 @@ class GameContextBuilder(Builder[GameContext]):
             *   identity_service (IdentityService)
 
         # Returns:
-          BuildResult[GameContext] containing either:
-                - On success: GameContext in the payload.
-                - On failure: Exception.
+        BuildResult[GameContext] containing either:
+            - On success: GameContext in the payload.
+            - On failure: Exception.
 
         # Raises:
             *   GameContextBuildFailedException
             *   NoGameContextFlagException
             *   TooManyGameContextFlagsException
         """
-        method = "GameSearchContextBuilder.builder"
+        method = "GameSearchContextBuilder.build"
         try:
-            # Get how many optional parameters are not null. One param is expected to have
-            # a value.
+            # Get how many optional parameters are not null. One param needs to be not-null
             params = [id, agent,]
             param_count = sum(bool(p) for p in params)
-            # Cannot searcher for an Game object if no attribute value is provided for a hit.
+            
+            # Cannot search for a Game object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
                     NoGameContextFlagException(f"{method}: {NoGameContextFlagException.DEFAULT_MESSAGE}")
@@ -93,18 +93,24 @@ class GameContextBuilder(Builder[GameContext]):
                 return BuildResult.failure(
                     TooManyGameContextFlagsException(f"{method}: {TooManyGameContextFlagsException}")
                 )
-            # After verifying the correct number of switches is turned on validate the target value
-            # with the appropriate Validator. On pass create an GameContext.
+            
+            # After verifying the correct number of flags has been enabled follow the appropriate
+            # GameContext build flow.
+            
+            # id flag enabled, build flow.
             if id is not None:
                 validation = identity_service.validate_id(id)
-                if validation.is_failure():
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
+                # On validation success return an id_game_context in the BuildResult.
                 return BuildResult.success(GameContext(id=id))
-                
+            
+            # Agent flag enabled, build flow.
             if agent is not None:
                 validation = agent_service.validator.validate(candidate=agent)
-                if validation.is_failure():
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
+                # On validation success return an agent_game_context in the BuildResult.
                 return BuildResult.success(GameContext(agent=agent))
 
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside

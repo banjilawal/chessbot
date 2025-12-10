@@ -40,4 +40,4 @@ class GameContextBuildFailedException(GameContextException, BuildFailedException
     None
     """
     ERROR_CODE = "GAME_CONTEXT_BUILD_ERROR"
-    DEFAULT_MESSAGE = "Game build failed."
+    DEFAULT_MESSAGE = "GameContext build failed."
