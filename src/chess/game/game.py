@@ -10,7 +10,8 @@ version: 1.0.0
 from typing import List, Optional
 
 from chess.agent import Agent
-from chess.game.result import GameUpdate
+from chess.arena import Arena
+from chess.game import GameSnapshot, GameTimeline, GameTimelineException
 
 
 class Game:
@@ -39,14 +40,14 @@ class Game:
     _arena: Arena
     _white_player: Agent
     _black_player: Agent
-    _timeline: GameResultStack
+    _timeline: GameTimeline
     
     def __init__(self, id: int, white_player: Agent, black_player: Agent, arena: Arena):
         self._id = id
         self._arena = arena
         self._white_player = white_player
         self._black_player = black_player
-        self._timeline = GameResultStack()
+        self._timeline = GameTimeline()
         
     @property
     def id(self) -> int:
@@ -69,10 +70,10 @@ class Game:
         return [self._white_player, self._black_player]
     
     @property
-    def timeline(self) -> GameResultStack:
+    def timeline(self) -> GameTimeline:
         return self._timeline
     
     @property
-    def current_result(self) -> Optional[GameUpdate]:
-        return self._timeline.last_result
+    def previous_move(self) -> Optional[GameSnapshot]:
+        return self._timeline.previous_move()
         

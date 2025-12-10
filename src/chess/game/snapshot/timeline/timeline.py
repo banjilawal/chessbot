@@ -58,5 +58,5 @@ class GameTimeline(ResultStack[GameSnapshot]):
                 GameTimelineException(ex=ex, message=f"{method}: {GameTimelineException.DEFAULT_MESSAGE}")
             )
     
-    def last_turn(self) -> Optional[GameSnapshot]:
+    def previous_move(self) -> Optional[GameSnapshot]:
         return cast(GameSnapshot, self.last_result)
