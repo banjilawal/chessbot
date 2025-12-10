@@ -19,7 +19,7 @@ from chess.rank import (
 
 class RankSearchContextValidator(Validator[RankSearchContext]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is a RankSearchContext that meets the application's safety contract before the client

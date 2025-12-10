@@ -20,7 +20,7 @@ from chess.system import (
 
 class PawnValidator(Validator[Pawn]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of Pawn, that meets integrity requirements, before the candidate is used.

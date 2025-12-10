@@ -20,7 +20,7 @@ from chess.system import (
 
 class RankSpecValidator(Validator[RankSpec]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1.  Simplify Searches based on rank metadata.

@@ -16,7 +16,7 @@ from chess.system import (
 
 class ValidatorCertifier:
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is a not null and a Validator object

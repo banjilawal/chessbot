@@ -20,7 +20,7 @@ from chess.square import (
 
 class SquareContextValidator(Validator[SquareContext]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of SquareContext, that meets integrity requirements, before

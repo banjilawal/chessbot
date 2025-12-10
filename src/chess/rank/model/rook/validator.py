@@ -20,7 +20,7 @@ from chess.system import (
 
 class RookValidator(Validator[Rook]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of Rook, that meets integrity requirements, before the candidate is used.

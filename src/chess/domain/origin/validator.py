@@ -21,7 +21,7 @@ from chess.domain import DomainOrigin, InvalidDomainOriginException, NullDomainO
 
 class DomainOriginValidator(Validator[DomainOrigin]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is a DomainOrigin instance that can be used safely in the system.

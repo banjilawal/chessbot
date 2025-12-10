@@ -19,7 +19,7 @@ from chess.coord import (
 
 class CoordValidator(Validator[Coord]):
     """
-    # ROLE: Validation, Verify Data Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security., Verify Data Integrity
   
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of Coord, that meets integrity requirements, before

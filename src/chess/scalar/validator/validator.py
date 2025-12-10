@@ -18,7 +18,7 @@ from chess.scalar import (
 
 class ScalarValidator(Validator[Scalar]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
   
     # RESPONSIBILITIES:
     Prevents an object that does not meet the system's Scalar specifications from being used.

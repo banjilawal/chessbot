@@ -20,7 +20,7 @@ from chess.system import (
 
 class KnightValidator(Validator[Knight]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of Knight, that meets integrity requirements, before the candidate is used.

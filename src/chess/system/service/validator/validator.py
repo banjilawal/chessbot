@@ -17,7 +17,7 @@ from chess.system.service.exception import InvalidServiceException, NullServiceE
 
 class ServiceValidator(Validator[EntityService]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is a Service whose Builder, Validator.

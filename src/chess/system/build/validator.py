@@ -17,7 +17,7 @@ from chess.system import (
 
 class BuilderValidator(Validator[Builder]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is a not null and a Builder object

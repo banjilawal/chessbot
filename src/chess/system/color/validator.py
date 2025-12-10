@@ -16,7 +16,7 @@ from chess.system import (
 
 class GameColorValidator(Validator[GameColor]):
     """
-    # ROLE: Validation, Verify Data Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security., Verify Data Integrity
 
     # RESPONSIBILITIES:
     1.  Verifies a candidate is an instance of GameColor, that meets integrity requirements, before

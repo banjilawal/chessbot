@@ -19,7 +19,7 @@ from chess.team import (
 
 class TeamContextValidator(Validator[TeamContext]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of TeamContext, that meets integrity requirements, before

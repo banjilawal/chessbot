@@ -20,7 +20,7 @@ from chess.domain import (
 
 class DomainValidator(Validator[Domain]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is a Domain instance that can be used safely in the system.

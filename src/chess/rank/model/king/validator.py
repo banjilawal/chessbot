@@ -20,7 +20,7 @@ from chess.system import (
 
 class KingValidator(Validator[King]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of King, that meets integrity requirements, before the candidate is used.

@@ -16,7 +16,7 @@ from chess.system import (
 
 class TextValidator(Validator[str]):
     """
-    # ROLE: Validation, Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security., Integrity
 
     # RESPONSIBILITIES:
     Verifies a candidate is a string that is neither null, empty, nor white space only.

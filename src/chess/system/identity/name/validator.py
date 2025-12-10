@@ -18,7 +18,7 @@ from chess.system import (
 
 class NameValidator(Validator[str]):
     """
-    # ROLE: Validation, Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security., Integrity
   
     # RESPONSIBILITIES:
     Verifies a candidate is

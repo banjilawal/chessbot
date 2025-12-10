@@ -20,7 +20,7 @@ from chess.agent import (
 
 class AgentContextValidator(Validator[AgentContext]):
     """
-    # ROLE: Validation, Data Integrity Guarantor.
+     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity Guarantor.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of AgentContext that is safe to use.

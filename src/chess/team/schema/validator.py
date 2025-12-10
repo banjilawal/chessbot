@@ -21,41 +21,22 @@ from chess.team import (
 
 class TeamSchemaValidator(Validator[TeamSchema]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Verifies a candidate is not null and is an actual TeamSchema Enum.
-    2.  Only have to write the two verification checks for a TeamSchema once. This gives cleaner code.
-    3.  Verifies names and colors used in filtering and branching logic gets arguments in bounds.
+    1.  Ensure a TeamSchema instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
 
     # PROVIDES:
-    ValidationResult[TeamSchema] containing either:
-        - On success: TeamSchema in the payload.
-        - On failure: Exception.
+        * TeamSchemaValidator
 
-    # ATTRIBUTES:
-    No attributes
+    # LOCAL ATTRIBUTES:
+    None
 
-    # CONSTRUCTOR:
-    Default Constructor
-
-    # CLASS METHODS:
-        ## Validate signature:
-               validate(candidate: Any) -> ValidationResult[TeamSchema]:
-
-        ## verify_color_in_schema signature:
-               verify_color_in_schema(
-                        candidate: Any,
-                        team_schema_hedge: TeamSchema = TeamSchema(),
-                ) -> ValidationResult[GameColor]:
-
-        ## verify_name_in_schema signature:
-               verify_name_in_schema(
-                        candidate: Any,
-                        team_schema_hedge: TeamSchema = TeamSchema(),
-                ) -> ValidationResult[str]:
-
-    # INSTANCE METHODS:
+    # INHERITED ATTRIBUTES:
     None
     """
     

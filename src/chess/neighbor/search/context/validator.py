@@ -20,7 +20,7 @@ from chess.piece import (
 
 class DomainSearchContextValidator(Validator[DomainSearchContext]):
     """
-    # ROLE: Validation, Data Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity
   
     # RESPONSIBILITIES:
     1. Process and validate parameters for creating `DomainSearchContext` instances.

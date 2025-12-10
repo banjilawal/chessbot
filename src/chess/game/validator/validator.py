@@ -20,7 +20,25 @@ from chess.game import (
 
 
 class GameValidator(Validator[Game]):
-    
+    """
+     # ROLE: Validation, Data Integrity Guarantor, Security.
+
+    # RESPONSIBILITIES:
+    1.  Ensure a Game instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+
+    # PARENT
+        *   Validator
+
+    # PROVIDES:
+        * GameValidator
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -30,7 +48,6 @@ class GameValidator(Validator[Game]):
             agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Game]:
-        
         """
         Validates team_name game meets graph requirements:
           - Not validation

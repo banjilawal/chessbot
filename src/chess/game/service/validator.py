@@ -18,7 +18,7 @@ from chess.system import LoggingLevelRouter, ValidationResult, Validator
 
 class AgentServiceValidator(Validator[AgentService]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is an AgentService whose Builder, Validator and Searcher exist.

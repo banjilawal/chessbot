@@ -19,7 +19,7 @@ from chess.coord import (
 
 class CoordContextValidator(Validator):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is a CoordContext that meets the application's safety contract before the client

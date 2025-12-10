@@ -19,7 +19,7 @@ from chess.board import (
 
 class BoardSearchContextValidator(Validator):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1.  Verify a candidate is a TeamSearchContext that meets the application's safety contract before the client

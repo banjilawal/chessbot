@@ -20,7 +20,7 @@ from chess.system import IdentityService, Validator, ValidationResult, NameValid
 
 class SquareValidator(Validator[Square]):
     """
-    # ROLE: Validation, Verify Data Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security., Verify Data Integrity
 
     # RESPONSIBILITIES:
     1.  Verifies a candidate is an instance of Square, that meets integrity requirements, before

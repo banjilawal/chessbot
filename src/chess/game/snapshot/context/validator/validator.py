@@ -20,7 +20,7 @@ from chess.game import (
 
 class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is an GameSnapshotContext object's safety before a client uses it.

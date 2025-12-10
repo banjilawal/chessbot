@@ -18,7 +18,7 @@ from chess.neighbor import TooManyVisitationSearchParamsException, ZeroVisitatio
 
 class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
     """
-    # ROLE: Validation, Data Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity
   
     # RESPONSIBILITIES:
     1. Process and validate parameters for creating `GraphSearchContext` instances.

@@ -6,7 +6,7 @@ from chess.system.err.number.exception import InvalidNumberException, NullNumber
 
 class NumberValidator(Validator[int]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1.  Verifies a candidate is not null and is an int.

@@ -14,7 +14,7 @@ from chess.system import LoggingLevelRouter, Validator, ValidationResult
 
 class BoardValidator(Validator[Board]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1. Verify a candidate is a Board object meeting the applications base safety requirements.

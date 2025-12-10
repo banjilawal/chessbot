@@ -19,7 +19,7 @@ from chess.system import ValidationResult, Validator, LONGEST_KNIGHT_LEG_SIZE, L
 
 class VectorValidator(Validator[Vector]):
     """
-    # ROLE: Validation, Data Integrity Guarantor.
+     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity Guarantor.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of Vector, that meets integrity requirements, before 

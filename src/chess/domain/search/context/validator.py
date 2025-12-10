@@ -20,7 +20,7 @@ from chess.domain import (
 
 class ResidentFilterValidator(Validator[ResidentFilter]):
     """
-    # ROLE: Validation, Data Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security., Data Integrity
   
     # RESPONSIBILITIES:
     1. Process and validate parameters for creating `GraphSearchContext` instances.

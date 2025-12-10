@@ -18,7 +18,7 @@ from chess.system import LoggingLevelRouter, Validator, ValidationResult
 
 class RankValidatorFactory(Validator[Rank]):
     """
-    # ROLE: Validation, Verify Data Integrity
+    # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     1.  Verifies a candidate is a Rank instance that meets integrity requirements, before

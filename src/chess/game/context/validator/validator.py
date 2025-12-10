@@ -20,10 +20,11 @@ from chess.game import (
 
 class GameContextValidator(Validator[GameContext]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is an GameContext object's safety before a client uses it.
+    1.  Ensure a GameContext instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
     # PARENT
         *   Validator
@@ -63,9 +64,9 @@ class GameContextValidator(Validator[GameContext]):
             *   identity_service (IdentityService)
 
         # Returns:
-          BuildResult[GameContext] containing either:
-                - On success: GameContext in the payload.
-                - On failure: Exception.
+        BuildResult[GameContext] containing either:
+            - On success: GameContext in the payload.
+            - On failure: Exception.
 
         # Raises:
             *   TypeError

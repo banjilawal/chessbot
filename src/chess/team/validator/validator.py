@@ -20,7 +20,7 @@ from chess.team import (
 
 class TeamValidator(Validator[Team]):
     """
-    # ROLE: Validation
+     # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
     Verifies a candidate is an instance of Team, that meets integrity requirements, before 

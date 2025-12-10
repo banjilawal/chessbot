@@ -15,7 +15,7 @@ from chess.system import (
 
 class IdValidator(Validator[int]):
     """
-    # ROLE: Validation, Integrity
+     # ROLE: Validation, Data Integrity Guarantor, Security., Integrity
   
     # RESPONSIBILITIES:
     Verifies a candidate is an int greater than zero before its used an ID.
