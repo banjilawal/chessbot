@@ -26,16 +26,15 @@ class ContextService(EntityService[Context[T]]):
         *   EntityService
 
     # PROVIDES:
-        *   Finder[T]
-        *   Builder[Context]
-        *   Validator[Context]
+        *   ContextService
 
-    # ATTRIBUTES:
-    See super class for inherited attributes.
+    # LOCAL ATTRIBUTES:
         *   finder (Finder[T])
+        
+    # INHERITED ATTRIBUTES:
+        *   See EntityService for inherited attributes.
     """
     _finder: Finder[T]
-    
     def __init__(
             self,
             id: int,
@@ -62,6 +61,7 @@ class ContextService(EntityService[Context[T]]):
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        method="ContextService.__init__"
         self._finder = finder
     
     @property

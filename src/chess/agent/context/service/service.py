@@ -15,28 +15,28 @@ from chess.agent import AgentContext, AgentContextBuilder, AgentContextValidator
 
 class AgentContextService(ContextService[AgentContext]):
     """
-    # ROLE: Search Service, Integrity Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Agent search microservice.
-    2.  Encapsulates query building and searching functions into a single extendable module that easy to use.
+    1.  Public facing Agent search microservice API.
+    2.  Provides a context aware utility for searching Agent objects.
+    3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    4.  Create a single source of truth for Agent search results by having single entry and exit points for the
+        Agent search flow.
 
     # PARENT
         *   ContextService
 
     # PROVIDES:
-        *   AgentFinder
-        *   AgentContextBuilder
-        *   AgentContextValidator
+        *   AgentContextService
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
-    See ContextService for inherited attributes.
+        *   See ContextService for inherited attributes.
     """
     DEFAULT_NAME = "AgentContextService"
-    
     def __init__(
             self,
             name: str = DEFAULT_NAME,
@@ -67,15 +67,15 @@ class AgentContextService(ContextService[AgentContext]):
         
     @property
     def finder(self) -> AgentFinder:
-        """Get AgentFinder"""
+        """Get AgentFinder instance."""
         return cast(AgentFinder, self.entity_finder)
     
     @property
     def builder(self) -> AgentContextBuilder:
-        """Get AgentContextBuilder"""
+        """Get AgentContextBuilder instance."""
         return cast(AgentContextBuilder, self.entity_builder)
     
     @property
     def validator(self) -> AgentContextValidator:
-        """Get AgentContextValidator"""
+        """Get AgentContextValidator instance."""
         return cast(AgentContextValidator, self.entity_validator)

@@ -13,14 +13,14 @@ from chess.system import LoggingLevelRouter, SearchResult
 from chess.rank import RankSpec, RankFinderException
 
 
-class RankSearch:
+class RankFinder:
     """"""
 
     @classmethod
     @LoggingLevelRouter.monitor
     def by_id(cls, id: int) -> SearchResult[List[RankSpec]]:
         """"""
-        method = "RankSearch.by_id"
+        method = "RankFinder.by_id"
         matches = [spec for spec in RankSpec if spec.id == id]
         if len(matches) == 0:
             return SearchResult.empty()
@@ -35,7 +35,7 @@ class RankSearch:
     @LoggingLevelRouter.monitor
     def by_name(cls, name: str) -> SearchResult[List[RankSpec]]:
         """"""
-        method = "RankSearch.by_name"
+        method = "RankFinder.by_name"
         matches = [spec for spec in RankSpec if spec.name.upper() == name.upper()]
         if len(matches) == 0:
             return SearchResult.empty()
@@ -50,7 +50,7 @@ class RankSearch:
     @LoggingLevelRouter.monitor
     def by_ransom(cls, ransom: int) -> SearchResult[List[RankSpec]]:
         """"""
-        method = "RankSearch.by_ransom"
+        method = "RankFinder.by_ransom"
         matches = [spec for spec in RankSpec if spec.ransom == ransom]
         if len(matches) == 0:
             return SearchResult.empty()
@@ -60,7 +60,7 @@ class RankSearch:
     @LoggingLevelRouter.monitor
     def by_team_quota(cls, team_quota: int) -> SearchResult[List[RankSpec]]:
         """"""
-        method = "RankSearch.by_team_quota"
+        method = "RankFinder.by_team_quota"
         matches = [spec for spec in RankSpec if spec.team_quota == team_quota]
         if len(matches) == 0:
             return SearchResult.empty()
@@ -70,7 +70,7 @@ class RankSearch:
     @LoggingLevelRouter.monitor
     def by_designation(cls, designation: str) -> SearchResult[List[RankSpec]]:
         """"""
-        method = "RankSearch.by_designation"
+        method = "RankFinder.by_designation"
         matches = [spec for spec in RankSpec if spec.designation.upper() == designation.upper()]
         if len(matches) == 0:
             return SearchResult.empty()

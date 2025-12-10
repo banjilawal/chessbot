@@ -12,24 +12,24 @@ from typing import Optional
 
 from chess.system import BuildResult, Builder, LoggingLevelRouter
 from chess.rank import (
-    Rank, RankValidator, RankSearchContext, RankSearchContextBuildFailedException,
+    Rank, RankValidator, RankContext, RankContextBuildFailedException,
     NoRankSearchOptionSelectedException, MoreThanOneRankSearchOptionPickedException,
 )
 
 
-class RankSearchContextBuilder(Builder[RankSearchContext]):
+class RankContextBuilder(Builder[RankContext]):
     """
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-        1. Manage conintuction of RankSearch instances that can be used safely by the client.
-        2. Ensure params for RankSearch creation have met the application's safety contract.
-        3. Provide pluggable factories for creating different RankSearchContext products.
+        1. Manage conintuction of RankFinder instances that can be used safely by the client.
+        2. Ensure params for RankFinder creation have met the application's safety contract.
+        3. Provide pluggable factories for creating different RankContext products.
 
 
     # PROVIDES:
-      ValidationResult[RankSearchContext] containing either:
-            - On success: RankSearchContext in the payload.
+      ValidationResult[RankContext] containing either:
+            - On success: RankContext in the payload.
             - On failure: Exception.
 
     # ATTRIBUTES:
@@ -46,12 +46,12 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
             team_quota: Optional[int] = None,
             designation: Optional[str] = None,
             rank_validator: type[RankValidator] = RankValidator
-    ) -> BuildResult[RankSearchContext]:
+    ) -> BuildResult[RankContext]:
         """
         # Action:
             1. Use dependency injected validators to verify correctness of parameters required to
-                builder a RankSearchContext instance.
-            2. If the parameters are safe the RankSearchContext is built and returned.
+                builder a RankContext instance.
+            2. If the parameters are safe the RankContext is built and returned.
 
         # Parameters:
             *   id (Optional[int]):                     selected if searcher target is an id.
@@ -62,16 +62,16 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
             *   rank_validator (type[RankValidator]):   validates an id-searcher-target
 
         # Returns:
-          BuildResult[RankSearchContext] containing either:
-                - On success: RankSearchContext in the payload.
+          BuildResult[RankContext] containing either:
+                - On success: RankContext in the payload.
                 - On failure: Exception.
 
         # Raises:
-            * RankSearchContextBuildFailedException
+            * RankContextBuildFailedException
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
-        method = "RankSearchContextBuilder.builder"
+        method = "RankContextBuilder.builder"
         
         try:
             params = [id, name, ransom, team_quota, designation]
@@ -108,8 +108,8 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                RankSearchContextBuildFailedException(
-                    f"{method}: {RankSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                RankContextBuildFailedException(
+                    f"{method}: {RankContextBuildFailedException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -119,31 +119,31 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
             cls,
             id: int,
             rank_validator: type[RankValidator] = RankValidator
-    ) -> BuildResult[RankSearchContext]:
+    ) -> BuildResult[RankContext]:
         """
         # Action:
-        Build an id-RankSearchContext if RankValidator verifies searcher target is safe.
+        Build an id-RankContext if RankValidator verifies searcher target is safe.
 
         # Parameters:
           * row (int): target id
           * rank_validator (type[RankValidator]): validates target.
 
         # Returns:
-          ValidationResult[RankSearchContext] containing either:
-                - On success: RankSearchContext in the payload.
+          ValidationResult[RankContext] containing either:
+                - On success: RankContext in the payload.
                 - On failure: Exception.
 
         # Raises:
-            * InvalidRankSearchContextException
+            * InvalidRankContextException
         """
-        method = "RankSearchContextBuilder.build_id_search_context"
+        method = "RankContextBuilder.build_id_search_context"
         try:
             match = id in rank_validator.get_all_ids()
         
         except Exception as ex:
             return BuildResult.failure(
-                RankSearchContextBuildFailedException(
-                    f"{method}: {RankSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                RankContextBuildFailedException(
+                    f"{method}: {RankContextBuildFailedException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -153,36 +153,36 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
             cls,
             column: int,
             rank_validator: type[RankValidator] = RankValidator
-    ) -> BuildResult[RankSearchContext]:
+    ) -> BuildResult[RankContext]:
         """
         # Action:
-        Build a column-RankSearchContext if RankValidator verifies searcher target is safe.
+        Build a column-RankContext if RankValidator verifies searcher target is safe.
 
         # Parameters:
           * column (int): target column
           * rank_validator (type[RankValidator]): validates target.
 
         # Returns:
-          ValidationResult[RankSearchContext] containing either:
-                - On success: RankSearchContext in the payload.
+          ValidationResult[RankContext] containing either:
+                - On success: RankContext in the payload.
                 - On failure: Exception.
 
         # Raises:
-            * InvalidRankSearchContextException
+            * InvalidRankContextException
         """
-        method = "RankSearchContextBuilder.build_column_search_context"
+        method = "RankContextBuilder.build_column_search_context"
         
         try:
             column_validation = rank_validator(column)
             if column_validation.is_failure():
                 return BuildResult.failure(column_validation.exception)
             
-            return BuildResult.success(payload=RankSearchContext(column=column))
+            return BuildResult.success(payload=RankContext(column=column))
         
         except Exception as ex:
             return BuildResult.failure(
-                RankSearchContextBuildFailedException(
-                    f"{method}: {RankSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                RankContextBuildFailedException(
+                    f"{method}: {RankContextBuildFailedException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -192,35 +192,35 @@ class RankSearchContextBuilder(Builder[RankSearchContext]):
             cls,
             rank: Rank,
             rank_validator: type[RankValidator] = RankValidator
-    ) -> BuildResult[RankSearchContext]:
+    ) -> BuildResult[RankContext]:
         """
         # Action:
-        Build a rank-RankSearchContext if RankValidator verifies searcher target is safe.
+        Build a rank-RankContext if RankValidator verifies searcher target is safe.
 
         # Parameters:
           * rank (Rank): target Rank
           * rank_validator (type[RankValidator]): validates target.
 
         # Returns:
-          ValidationResult[RankSearchContext] containing either:
-                - On success: RankSearchContext in the payload.
+          ValidationResult[RankContext] containing either:
+                - On success: RankContext in the payload.
                 - On failure: Exception.
 
         # Raises:
-            * InvalidRankSearchContextException
+            * InvalidRankContextException
         """
-        method = "RankSearchContextBuilder.build_rank_search_context"
+        method = "RankContextBuilder.build_rank_search_context"
         
         try:
             rank_validation = rank_validator.validate(rank)
             if rank_validation.is_failure():
                 return BuildResult.failure(rank_validation.exception)
             
-            return BuildResult.success(payload=RankSearchContext(column=rank_validation.payload))
+            return BuildResult.success(payload=RankContext(column=rank_validation.payload))
         
         except Exception as e:
             return BuildResult.failure(
-                RankSearchContextBuildFailedException(
-                    f"{method}: {RankSearchContextBuildFailedException.DEFAULT_MESSAGE}"
+                RankContextBuildFailedException(
+                    f"{method}: {RankContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

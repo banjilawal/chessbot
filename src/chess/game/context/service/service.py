@@ -19,25 +19,25 @@ class GameContextService(ContextService[GameContext]):
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Game search microservice.
-    2.  Encapsulates query building and searching functions into a single extendable module that easy to use.
+    1.  Public facing Game search microservice API.
+    2.  Provides a context aware utility for searching Game objects.
+    3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    4.  Create a single source of truth for Game search results by having single entry and exit points for the
+        Game search flow.
 
     # PARENT
         *   ContextService
 
     # PROVIDES:
-        *   GameSnapshotFinder
-        *   GameContextBuilder
-        *   GameContextValidator
+        *   GameContextService
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
-    See ContextService for inherited attributes.
+        *   See ContextService for inherited attributes.
     """
     DEFAULT_NAME = "GameContextService"
-    
     def __init__(
             self,
             name: str = DEFAULT_NAME,
@@ -65,15 +65,18 @@ class GameContextService(ContextService[GameContext]):
         """
         method = "GameContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
-        
+    
     @property
     def finder(self) -> GameFinder:
+        """Get GameFinder instance."""
         return cast(GameFinder, self.entity_finder)
     
     @property
     def builder(self) -> GameContextBuilder:
+        """Get GameContextBuilder instance."""
         return cast(GameContextBuilder, self.entity_builder)
     
     @property
     def validator(self) -> GameContextValidator:
+        """Get GameContextValidator instance."""
         return cast(GameContextValidator, self.entity_validator)

@@ -19,7 +19,7 @@ class SquareFinder(Finder[Square]):
     @classmethod
     def find(
             cls,
-            data_set: List[T],
+            data_set: List[Square],
             context: SquareContext,
             validator: SquareContextValidator = SquareContextValidator()
     ) -> SearchResult[[Square]]:

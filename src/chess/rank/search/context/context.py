@@ -10,32 +10,34 @@ version: 1.0.0
 from typing import Optional
 
 from chess.rank import Rank
-from chess.system import SearchContext
+from chess.system import Context
 
 
-class RankSearchContext(SearchContext):
+class RankContext(Context[Rank]):
     """
-    # ROLE: Finder option filter
-  
+    # ROLE: Finder Filter
+
     # RESPONSIBILITIES:
-    Provides options for what type of key-value pair RankSearch implementations use to find matches.
-  
+    Provide an RankFinder with an attribute value to find Ranks with a matching value in
+    their version of the attribute.
+
+    # PARENT
+        *   Context
+
     # PROVIDES:
-    RankSearchContext.
-  
-    # ATTRIBUTES:
-        *   id (int):
-        *   name (str):
-        *   ransom (int):
-        *   team_quota (int):
-        *   designation (str):
+        *   RankContext
+
+    # LOCAL ATTRIBUTES:
+        *   ransom (Optional[int])
+        *   team_quota (Optional[int])
+        *   designation (Optional[str])
+        
+    # INHERITED ATTRIBUTES:
+        *   See Context class for inherited attributes.
     """
-    _id: Optional[int]
-    _nane: Optional[str]
     _ransom: Optional[int]
     _team_quota: Optional[int]
     _designation: Optional[str]
-
     
     def __init__(
             self,
@@ -45,19 +47,27 @@ class RankSearchContext(SearchContext):
             team_quota: Optional[int] = None,
             designation: Optional[str] = None,
     ):
-        self._id = id
-        self._name = name
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (Optional[int])
+            *   name (Optional[str])
+            *   team (Optional[Team])
+            *   game (Optional[Game])
+            *   variety (Optional[RankVariety])
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
+        super().__init__(id=id, name=name)
         self._ransom = ransom
         self._team_quota = team_quota
         self._designation = designation
-
-    @property
-    def id(self) -> Optional[int]:
-        return self._id
-    
-    @property
-    def name(self) -> Optional[str]:
-        return self._name
     
     @property
     def ransom(self) -> Optional[int]:
@@ -70,12 +80,28 @@ class RankSearchContext(SearchContext):
     @property
     def designation(self) -> Optional[str]:
         return self._designation
-
+    
     def to_dict(self) -> dict:
-        return {
-            "id": self._id,
-            "name": self._name,
-            "ransom": self._ransom,
-            "team_quota": self._team_quota,
-            "designation": self._designation,
-        }
+        """
+        # Convert the RankContext object to a dictionary.
+
+        # PARAMETERS:
+        None
+
+        # Returns:
+        dict
+
+        # Raises:
+        None
+        """
+        def to_dict(self) -> dict:
+            return {
+                "id": self._id,
+                "name": self._name,
+                "ransom": self._ransom,
+                "team_quota": self._team_quota,
+                "designation": self._designation,
+            }
+
+
+

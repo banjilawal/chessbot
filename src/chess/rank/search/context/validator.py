@@ -13,21 +13,21 @@ from typing import Any, cast
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
 from chess.rank import (
-    Rank, RankSearchContext, InvalidRankSearchContextException, NullRankSearchContextException,
+    Rank, RankContext, InvalidRankContextException, NullRankContextException,
     MoreThanOneRankSearchOptionPickedException, NoRankSearchOptionSelectedException,
 )
 
-class RankSearchContextValidator(Validator[RankSearchContext]):
+class RankContextValidator(Validator[RankContext]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is a RankSearchContext that meets the application's safety contract before the client
-        is allowed to use the RankSearchContext object.
+    1. Verify a candidate is a RankContext that meets the application's safety contract before the client
+        is allowed to use the RankContext object.
     2. Provide pluggable factories for validating different options separately.
     
     # PROVIDES:
-      ValidationResult[RankSearchContext] containing either:
+      ValidationResult[RankContext] containing either:
             - On success: Rank in the payload.
             - On failure: Exception.
 
@@ -40,12 +40,12 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
     def validate(
             cls,
             candidate: Any,
-    ) -> ValidationResult[RankSearchContext]:
+    ) -> ValidationResult[RankContext]:
         """
         # Action:
-        Verifies candidate is a RankSearchContext in two steps.
+        Verifies candidate is a RankContext in two steps.
             1. Test the candidate is a valid SearchRankContext with a single searcher option switched on.
-            2. Test the value passed to RankSearchContext passes its validation contract..
+            2. Test the value passed to RankContext passes its validation contract..
 
         # Parameters:
           * candidate (Any): Object to verify is a Rank.
@@ -53,31 +53,31 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
 
           
         # Returns:
-          ValidationResult[RankSearchContext] containing either:
-                - On success: RankSearchContext in the payload.
+          ValidationResult[RankContext] containing either:
+                - On success: RankContext in the payload.
                 - On failure: Exception.
 
         # Raises:
             * TypeError
-            * InvalidRankSearchContextException
-            * NullRankSearchContextException
+            * InvalidRankContextException
+            * NullRankContextException
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
-        method = "RankSearchContextValidator.validate"
+        method = "RankContextValidator.validate"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullRankSearchContextException(f"{method} {NullRankSearchContextException.DEFAULT_MESSAGE}")
+                    NullRankContextException(f"{method} {NullRankContextException.DEFAULT_MESSAGE}")
                 )
             
-            if not isinstance(candidate, RankSearchContext):
+            if not isinstance(candidate, RankContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected RankSearchContext, got {type(candidate).__column__} instead.")
+                    TypeError(f"{method}: Expected RankContext, got {type(candidate).__column__} instead.")
                 )
             
-            rank_search_context = cast(RankSearchContext, candidate)
+            rank_search_context = cast(RankContext, candidate)
             if len(rank_search_context.to_dict() == 0):
                 return ValidationResult.failure(
                     NoRankSearchOptionSelectedException(
@@ -97,8 +97,8 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
             
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidRankSearchContextException(
-                    f"{method}: {InvalidRankSearchContextException.DEFAULT_MESSAGE}", ex
+                InvalidRankContextException(
+                    f"{method}: {InvalidRankContextException.DEFAULT_MESSAGE}", ex
                 )
             )
     #
@@ -107,24 +107,24 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
     # def validate_row_search_option(
     #         cls,
     #         candidate: Any,
-    # ) -> ValidationResult[RankSearchContext]:
+    # ) -> ValidationResult[RankContext]:
     #     """
     #     # Action:
-    #     Verify a row_candidate meets application RankSearchContext safety requirements.
+    #     Verify a row_candidate meets application RankContext safety requirements.
     #
     #     # Parameters:
     #       * candidate (Any): Object to verify is a row.
     #       * rank_validator (type[RankValidator]): Checks if candidate complies with safety contract.
     #
     #     # Returns:
-    #       ValidationResult[RankSearchContext] containing either:
-    #             - On success: RankSearchContext in the payload.
+    #       ValidationResult[RankContext] containing either:
+    #             - On success: RankContext in the payload.
     #             - On failure: Exception.
     #
     #     # Raises:
-    #         * InvalidRankSearchContextException
+    #         * InvalidRankContextException
     #     """
-    #     method = "RankSearchContextValidator.validate_id_search_option"
+    #     method = "RankContextValidator.validate_id_search_option"
     #
     #     try:
     #         row_validation = rank_validator.validate_row(candidate)
@@ -133,11 +133,11 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
     #
     #         row = cast(int, row_validation.payload)
     #
-    #         return ValidationResult.success(payload=RankSearchContext(row=row))
+    #         return ValidationResult.success(payload=RankContext(row=row))
     #     except Exception as ex:
     #         return ValidationResult.failure(
-    #             InvalidRankSearchContextException(
-    #                 f"{method}: {InvalidRankSearchContextException.DEFAULT_MESSAGE}",
+    #             InvalidRankContextException(
+    #                 f"{method}: {InvalidRankContextException.DEFAULT_MESSAGE}",
     #                 ex
     #             )
     #         )
@@ -148,24 +148,24 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
     #         cls,
     #         candidate: Any,
     #         rank_validator: type[RankValidator] = RankValidator
-    # ) -> ValidationResult[RankSearchContext]:
+    # ) -> ValidationResult[RankContext]:
     #     """
     #     # Action:
-    #     Verify a column_candidate meets application RankSearchContext safety requirements.
+    #     Verify a column_candidate meets application RankContext safety requirements.
     #
     #     # Parameters:
     #       * candidate (Any): Object to verify is a column.
     #       * rank_validator (type[RankValidator]): Checks if candidate complies with safety contract.
     #
     #     # Returns:
-    #       ValidationResult[RankSearchContext] containing either:
-    #             - On success: RankSearchContext in the payload.
+    #       ValidationResult[RankContext] containing either:
+    #             - On success: RankContext in the payload.
     #             - On failure: Exception.
     #
     #     # Raises:
-    #         * InvalidRankSearchContextException
+    #         * InvalidRankContextException
     #     """
-    #     method = "RankSearchContextValidator.validate_column_search_option"
+    #     method = "RankContextValidator.validate_column_search_option"
     #
     #     try:
     #         column_validation = rank_validator.validate(candidate)
@@ -174,11 +174,11 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
     #
     #         column = cast(str, column_validation.payload)
     #
-    #         return ValidationResult.success(payload=RankSearchContext(column=column))
+    #         return ValidationResult.success(payload=RankContext(column=column))
     #     except Exception as ex:
     #         return ValidationResult.failure(
-    #             InvalidRankSearchContextException(
-    #                 f"{method}: {InvalidRankSearchContextException.DEFAULT_MESSAGE}",
+    #             InvalidRankContextException(
+    #                 f"{method}: {InvalidRankContextException.DEFAULT_MESSAGE}",
     #                 ex
     #             )
     #         )
@@ -189,24 +189,24 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
     #         cls,
     #         candidate: Any,
     #         rank_validator: type[RankValidator] = RankValidator
-    # ) -> ValidationResult[RankSearchContext]:
+    # ) -> ValidationResult[RankContext]:
     #     """
     #     # Action:
-    #     Verify a rank_candidate meets application RankSearchContext safety requirements.
+    #     Verify a rank_candidate meets application RankContext safety requirements.
     #
     #     # Parameters:
     #       * candidate (Any): Object to verify is a rank.
     #       * rank_validator (type[RankValidator]): Checks if candidate complies with safety contract.
     #
     #     # Returns:
-    #       ValidationResult[RankSearchContext] containing either:
-    #             - On success: RankSearchContext in the payload.
+    #       ValidationResult[RankContext] containing either:
+    #             - On success: RankContext in the payload.
     #             - On failure: Exception.
     #
     #     # Raises:
-    #         * InvalidRankSearchContextException
+    #         * InvalidRankContextException
     #     """
-    #     method = "RankSearchContextValidator.validate_rank_search_option"
+    #     method = "RankContextValidator.validate_rank_search_option"
     #
     #     try:
     #         rank_validation = rank_validator.validate(candidate)
@@ -215,11 +215,11 @@ class RankSearchContextValidator(Validator[RankSearchContext]):
     #
     #         rank = cast(Rank, rank_validation.payload)
     #
-    #         return ValidationResult.success(payload=RankSearchContext(rank=rank))
+    #         return ValidationResult.success(payload=RankContext(rank=rank))
     #     except Exception as ex:
     #         return ValidationResult.failure(
-    #             InvalidRankSearchContextException(
-    #                 f"{method}: {InvalidRankSearchContextException.DEFAULT_MESSAGE}",
+    #             InvalidRankContextException(
+    #                 f"{method}: {InvalidRankContextException.DEFAULT_MESSAGE}",
     #                 ex
     #             )
     #         )
