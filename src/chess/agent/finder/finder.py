@@ -10,11 +10,12 @@ version: 1.0.0
 
 from typing import List
 
+from chess.agent.service.data.exception.null import AgentNullDataSetException
 from chess.game import Game
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.agent import (
     Agent, AgentContext, AgentContextValidator, AgentFinderException, AgentVariety, HumanAgent,
-    MachineAgent, AgentNullDataSetException
+    MachineAgent
 )
 from chess.team import Team, TeamContext
 
@@ -80,7 +81,7 @@ class AgentFinder(Finder[Agent]):
                 )
             # certify the context is safe.
             validation_result = context_validator.validate(context)
-            if validation_result.is_failure():
+            if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
             
             # After checks are passed pick which finder method to call.
@@ -214,10 +215,10 @@ class AgentFinder(Finder[Agent]):
             # If more than one Agent is returned there might be a problem.
             for agent in data_set:
                 team_search = agent.team_assignments.search(context=TeamContext(id=team.id))
-                if team_search.is_failure():
+                if team_search.is_failure:
                     return SearchResult.failure(team_search.exception)
                 # Put the first agent that matches inside a List then send the array inside a SearchResult.
-                if team_search.is_success():
+                if team_search.is_success:
                     return SearchResult.success(payload=List[team_search.payload])
             return SearchResult.empty()
         
@@ -254,10 +255,10 @@ class AgentFinder(Finder[Agent]):
         try:
             matches = []
             for agent in data_set:
-                game_search = agent.games.search(context=GameContext(id=game.id))
-                if game_search.is_failure():
+                game_search = agent.games.search(context=AgentContext(id=game.id))
+                if game_search.is_failur:
                     return SearchResult.failure(game_search.exception)
-                if game_search.is_success():
+                if game_search.is_success:
                     matches.append(game_search.payload)
             # Process the different outcomes of the searching loop.
             if len(matches) == 0:

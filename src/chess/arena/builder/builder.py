@@ -19,8 +19,7 @@ from chess.system import (
 )
 
 from chess.arena import (
-    Arena, ArenaBuildFailedException, ArenaVariety, ArenaValidator, HumanArena, HumanArenaBuildFailedException,
-    MachineArena, MachineArenaBuildFailedException
+    Arena, ArenaBuildFailedException, ArenaValidator
 )
 from chess.team.schema import TeamSchema
 

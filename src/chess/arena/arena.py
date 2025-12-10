@@ -8,9 +8,9 @@ version: 1.0.0
 """
 from typing import List
 
-from chess.agent import Agent
-from chess.system import GameColor
+
 from chess.team import Team
+from chess.agent import Agent
 from chess.board import BoardService
 
 class Arena:
@@ -19,15 +19,19 @@ class Arena:
     _black_team: Team
     _board: BoardService
     
-    def __init__(self, id: int, white_team: Team, black_team: Team, board: BoardService):
+    def __init__(self, id: int, board: BoardService, white_team: Team, black_team: Team,):
         self._id = id
+        self._board = board
         self._white_team = white_team
         self._black_team = black_team
-        self._board = board
-    
+
     @property
     def id(self) -> int:
         return self._id
+    
+    @property
+    def board(self) -> BoardService:
+        return self._board
     
     @property
     def white_team(self) -> Team:
@@ -38,13 +42,17 @@ class Arena:
         return self._black_team
     
     @property
-    def board(self) -> BoardService:
-        return self._board
-    
-    @property
     def teams(self) -> List[Team]:
         return [self._white_team, self._black_team]
     
     @property
     def agent(self) -> List[Agent]:
         return [self._white_team.agent, self._black_team.agent]
+    
+    def __eq__(self, other: object) -> bool:
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, Arena):
+            return self.id == other.id
+        return False
+    

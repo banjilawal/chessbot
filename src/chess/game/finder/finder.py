@@ -12,9 +12,10 @@ version: 1.0.0
 from typing import List
 
 from chess.agent import Agent
+from chess.game.finder import GameFinderException
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.game import (
-    Game, GameContext, GameContextValidator, GameFinderException, GameNullDataSetException, GameDataServiceNullException
+    Game, GameContext, GameContextValidator, GameNullDataSetException, GameDataServiceNullException
 )
 
 

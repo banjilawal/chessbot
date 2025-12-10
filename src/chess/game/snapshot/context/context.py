@@ -50,7 +50,6 @@ class GameSnapshotContext(Context[GameSnapshot]):
             team: Optional[Team] = None,
             agent: Optional[Agent] = None,
             timestamp: Optional[int] = None,
-            color: Optional[GameColor] = None,
             exception: Optional[Exception] = None,
     ):
         """
@@ -73,7 +72,6 @@ class GameSnapshotContext(Context[GameSnapshot]):
         super().__init__(id=None, name=None)
         self._team = team
         self._agent = agent
-        self._color = color
         self._timestamp = timestamp
         self._exception = exception
     
@@ -84,10 +82,6 @@ class GameSnapshotContext(Context[GameSnapshot]):
     @property
     def agent(self) -> Optional[Agent]:
         return self._agent
-    
-    @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
     
     @property
     def timestamp(self) -> Optional[int]:
@@ -113,7 +107,6 @@ class GameSnapshotContext(Context[GameSnapshot]):
         return {
             "team": self._team,
             "agent": self._agent,
-            "color": self._color,
             "timestamp": self._timestamp,
             "exception": self._exception,
         }

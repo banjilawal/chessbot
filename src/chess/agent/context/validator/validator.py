@@ -70,9 +70,9 @@ class AgentContextValidator(Validator[AgentContext]):
             *   identity_service (IdentityService)
 
         # Returns:
-          ValidationResult[AgentContext] containing either:
-                - On success: AgentContext in the payload.
-                - On failure: Exception.
+        ValidationResult[AgentContext] containing either:
+            - On success: AgentContext in the payload.
+            - On failure: Exception.
 
         # Raises:
             *   TypeError

@@ -13,10 +13,10 @@ Contains:
 
 from typing import List
 
+from chess.agent import Agent
 from chess.arena import Arena
 from chess.system import Builder, BuildResult
 from chess.board import Board, BoardValidator
-from chess.agent import Agent, CommnderValidator
 
 
 

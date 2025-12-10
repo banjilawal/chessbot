@@ -31,7 +31,10 @@ class InvalidAgentContextException(AgentContextException, ValidationFailedExcept
     # PROVIDES:
     InvalidAgentContextException
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_CONTEXT_VALIDATION_ERROR"

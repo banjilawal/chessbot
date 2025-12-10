@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/context/validator/experience/__init__.py
+# src/chess/game/snapshot/context/validator/exception/__init__.py
 
 """
-Module: chess.game.snapshot.context.validator.experience.__init__
+Module: chess.game.snapshot.context.validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -14,4 +14,4 @@ from .flag import *
 from .null import *
 
 # Modules
-None
+from .exception import InvalidGameSnapshotContextException

@@ -22,11 +22,8 @@ class AgentContextException(ContextException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an AgentContext's organic fields or methods run into a condition that
-        leads to an operation failing.
-    2.  Parent of exceptions raised by AgentContext Builders and Validators or any other classes that highly
-        cohere with AgentContext objects.
-    3.  Catchall for AgentContext failure states that are not covered by a lower level AgentContext exception.
+    1.  Parent of exceptions raised by AgentContext objects.
+    2.  Catchall for conditions which are not covered by lower level AgentContext exceptions.
     
     # PARENT
         *   ContextException

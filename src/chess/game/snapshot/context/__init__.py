@@ -16,3 +16,4 @@ from .service import *
 
 # Modules
 from .context import GameSnapshotContext
+from .exception import  GameSnapshotContextException

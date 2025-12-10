@@ -43,9 +43,9 @@ class SearchResult(Result[Generic[T]]):
         super().__init__(payload, exception)
     
     def __str__(self):
-        if self.is_success():
+        if self.is_success:
             return f"Result(SUCCESS: {self._payload})"
-        elif self.is_empty():
+        elif self.is_empty:
             return "Result(NOT_FOUND)"
         else:
             return f"Result(FAILURE: {self._exception}"
