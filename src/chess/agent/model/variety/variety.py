@@ -8,6 +8,8 @@ version: 1.0.0
 """
 
 from enum import Enum, auto
+from chess.agent import AgentVariety, HumanAgent, MachineAgent
+
 
 class AgentVariety(Enum):
     """
@@ -31,3 +33,9 @@ class AgentVariety(Enum):
     """
     HUMAN_AGENT = auto(),
     MACHINE_AGENT = auto(),
+    
+    @classmethod
+    def subclass_from_variety(cls, variety: AgentVariety) -> [HumanAgent|MachineAgent]:
+        if variety == AgentVariety.HUMAN_AGENT:
+            return HumanAgent
+        return MachineAgent
