@@ -25,12 +25,12 @@ class InvalidHumanAgentException(HumanAgentException, ValidationFailedException)
     1.  Parent of exceptions raised HumanAgent validation.
     2.  Wraps unhandled exceptions that hit the finally-block in HumanAgentValidator methods.
 
-    # PARENT
+    # PARENT:
         *   HumanAgentException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidHumanAgentException
+    None
 
     # LOCAL ATTRIBUTES:
     None

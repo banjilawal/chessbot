@@ -25,7 +25,7 @@ class PieceValidator(Validator[Piece]):
     1.  Ensure a Piece instance is certified safe, reliable and consistent before use.
     2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
-    # PARENT
+    # PARENT:
         *   Validator
 
     # PROVIDES:

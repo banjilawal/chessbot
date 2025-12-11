@@ -25,7 +25,7 @@ class GameContextService(ContextService[GameContext]):
     4.  Create a single source of truth for Game search results by having single entry and exit points for the
         Game search flow.
 
-    # PARENT
+    # PARENT:
         *   ContextService
 
     # PROVIDES:

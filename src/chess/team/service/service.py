@@ -24,7 +24,7 @@ class TeamService(EntityService[Team]):
     3.  Is authoritative, single source of truth for Team state by providing single entry and exit points to Team
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:

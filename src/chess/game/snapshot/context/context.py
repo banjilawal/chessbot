@@ -23,11 +23,11 @@ class GameSnapshotContext(Context[GameSnapshot]):
     Provtimestampe a GameSnapshotFinder with a GameSnapshot or Arena attribute used to find snapshots which a matching
     attribute.
 
-    # PARENT
+    # PARENT:
         *   Context
 
     # PROVIDES:
-    GameSnapshotContext
+        *   GameSnapshotContext.to_dict
 
     # LOCAL ATTRIBUTES:
         *   team (Optional[Team])

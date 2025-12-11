@@ -23,7 +23,7 @@ class CoordContextService(ContextService[CoordContext]):
     4.  Create a single source of truth for Coord search results by having single entry and exit points for the
         Coord search flow.
 
-    # PARENT
+    # PARENT:
         *   ContextService
 
     # PROVIDES:

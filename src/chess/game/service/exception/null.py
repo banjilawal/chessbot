@@ -24,7 +24,7 @@ class NullGameServiceException(InvalidGameServiceException, NullException):
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required an GameService but got null instead.
 
-    # PARENT
+    # PARENT:
         *   InvalidGameServiceException
         *   NullException
 

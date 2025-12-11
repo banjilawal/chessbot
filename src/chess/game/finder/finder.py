@@ -27,7 +27,7 @@ class GameFinder(Finder[Game]):
     1.  Search Game collections for items which match the attribute target specified in the GameContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
-    # PARENT
+    # PARENT:
         *   Finder
 
     # PROVIDES:

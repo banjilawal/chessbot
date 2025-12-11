@@ -26,7 +26,7 @@ class UnreliableBuilderException(BuilderException):
     # RESPONSIBILITIES:
     Catchall for when Builder certification check hits the try-finally block with an unhandled exception.
     
-    # PARENT
+    # PARENT:
         *   BuilderException
         *   ValidationFailedException
   
@@ -48,7 +48,7 @@ class NullBuilderException(UnreliableBuilderException, NullException):
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required aBuilder but got null instead.
   
-    # PARENT
+    # PARENT:
         *   InvalidBuilderException
         *   NullException
   

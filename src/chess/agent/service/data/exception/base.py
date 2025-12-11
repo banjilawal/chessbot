@@ -25,7 +25,7 @@ class AgentDataServiceException(DataServiceException):
     2.  Catchall for AgentDataService failure states that are not covered by a lower level
         AgentDataService exception.
 
-    # PARENT
+    # PARENT:
         *   DataServiceException
 
     # PROVIDES:

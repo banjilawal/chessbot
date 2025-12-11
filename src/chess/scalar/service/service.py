@@ -22,7 +22,7 @@ class ScalarService(EntityService[Scalar]):
     3.  Is authoritative, single source of truth for Scalar state by providing single entry and exit points to Scalar
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:

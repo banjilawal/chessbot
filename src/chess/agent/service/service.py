@@ -6,12 +6,13 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
-
-from typing import cast
+from logging import Logger
+from typing import List, cast
 
 from chess.arena import Arena
-from chess.system import BuildResult, EntityService, id_emitter
-from chess.agent import Agent, AgentFactory, AgentValidator
+from chess.game import Game, GameContext, UniqueGameDataService, UniqueGameDataServiceException
+from chess.system import BuildResult, EntityService, LoggingLevelRouter, SearchResult, ServiceValidator, id_emitter
+from chess.agent import Agent, AgentFactory, AgentServiceException, AgentValidator
 from chess.team import Team, TeamSchema, TeamService
 
 
@@ -25,17 +26,19 @@ class AgentService(EntityService[Agent]):
     3.  Is authoritative, single source of truth for Agent state by providing single entry and exit points to Agent
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
     
     # PROVIDES:
-        *   AgentService
+        *   builder: -> AgentFactory
+        *   validator: -> AgentValidator
+        *   find_games_for_agent: -> SearchResult[List[Game]]
 
     # LOCAL ATTRIBUTES:
     None
     
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See EntityService class for inherited attributes.
     """
     DEFAULT_NAME = "AgentService"
     def __init__(
@@ -73,31 +76,25 @@ class AgentService(EntityService[Agent]):
         """get AgentValidator"""
         return cast(AgentValidator, self.entity_validator)
     
-    def build_new_team(
+    @LoggingLevelRouter.monitor
+    def find_games_for_agent(
             self,
             agent: Agent,
-            arena: Arena,
-            team_schema: TeamSchema,
-            team_service: TeamService = TeamService(),
-            arena_service: ArenaService = ArenaService()
-    ) -> BuildResult[Team]:
-        method = "AgentService.build_new_team"
+            unique_games_service: UniqueGameDataService,
+            service_validator: ServiceValidator = ServiceValidator(),
+    ) -> SearchResult[List[Game]]:
         try:
             agent_validation = self.validator.validate(candidate=agent)
             if agent_validation.is_failure:
-                return BuildResult.failure(agent_validation.exception)
-            arena_validation = arena_service.validator.validate(candidate=arena)
-            if arena_validation.is_failure:
-                return BuildResult.failure(arena_validation.exception)
+                return SearchResult.failure(agent_validation.exception)
+            service_validation = service_validator.validate(candidate=unique_games_service)
+            if service_validation.is_failure:
+                return SearchResult.failure(service_validation.exception)
             
-            
-            team_build_result = team_service.builder.build(agent=agent, arena=arena, team_schema=team_schema)
-            if team
+            return unique_games_service.search_games(context=GameContext(agent=agent))
         except Exception as ex:
-            return BuildResult.failure(
-                AgentServiceBuildingTeamException(
-                    ex=ex, message="{method}: {AgentServiceBuildingTeamException.DEFAULT_MESSAGE}"
-                )
+            return SearchResult.failure(
+                AgentServiceException(ex=ex, message="{method}: {AgentServiceException.DEFAULT_MESSAGE}")
             )
     
     

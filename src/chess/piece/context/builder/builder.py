@@ -29,11 +29,11 @@ class PieceContextBuilder(Builder[PieceContext]):
      3.  Ensure params for PieceContext creation have met the application's safety contract.
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT
+     # PARENT:
          * Builder
 
      # PROVIDES:
-         *   PieceContextBuilder
+         *  build: -> BuildResult[PieceContext]
 
      # LOCAL ATTRIBUTES:
      None

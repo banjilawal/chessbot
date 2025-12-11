@@ -27,7 +27,7 @@ class ChessException(Exception):
     # RESPONSIBILITIES:
     1.  Parent of exceptions by the application
 
-    # PARENT
+    # PARENT:
         *   Exception
 
     # PROVIDES:
@@ -92,7 +92,7 @@ class NotImplementedException(ChessException):
     1.  Indicates a desired abstract method or feature has not been implemented in the lower level class,
     2.  Catchall for missing implementation errors that are not covered by lower level NotImplementedExceptions.
 
-    # PARENT
+    # PARENT:
         *   ChessException
 
     # PROVIDES:
@@ -117,7 +117,7 @@ class ResourceException(ChessException):
     1.  super class of exceptions related to resource acquisition, release or utilization failures.
     2.  Catchall for resource problems that are not covered by lower level ResourceException subclasses.
 
-    # PARENT
+    # PARENT:
         *   ChessException
 
     # PROVIDES:

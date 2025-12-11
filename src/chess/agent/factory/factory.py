@@ -12,7 +12,7 @@ from typing import Optional
 from chess.engine import EngineService
 from chess.game import UniqueGameDataService
 from chess.team import UniqueTeamDataService
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter,ValidationResult, id_emitter
 
 from chess.agent import (
     Agent, AgentBuildFailedException, AgentVariety, AgentValidator, HumanAgent, HumanAgentBuildFailedException,
@@ -30,11 +30,11 @@ class AgentFactory(Builder[Agent]):
     3.  Ensure params for Agent creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
-    # PARENT
+    # PARENT:
         *   Builder
 
     # PROVIDES:
-        *   AgentFactory
+        *   build:  -> ValidationResult[HumanAgent|MachineAgent]
 
     # LOCAL ATTRIBUTES:
     None
@@ -51,7 +51,7 @@ class AgentFactory(Builder[Agent]):
             agent_variety: AgentVariety,
             engine_service: Optional[EngineService] = None,
             agent_validator: AgentValidator = AgentValidator(),
-    ) -> BuildResult[Agent]:
+    ) -> BuildResult[HumanAgent|MachineAgent]:
         """
         # ACTION:
         1.  verify agent_variety is a not-null AgentVariety object.

@@ -26,12 +26,12 @@ class AgentContextBuildFailedException(AgentContextException, BuildFailedExcepti
     1.  Parent of exceptions raised during AgentContext build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an AgentContextBuilder method.
     
-    # PARENT
+    # PARENT:
         *   AgentContextException
         *   BuildFailedException
 
     # PROVIDES:
-    AgentContextBuildFailedException
+    None
 
     # LOCAL ATTRIBUTES:
     None

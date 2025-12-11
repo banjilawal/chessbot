@@ -23,7 +23,7 @@ class NullGameTimelineException(InvalidGameTimelineException, NullException):
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required an GameTimeline but got null instead.
 
-    # PARENT
+    # PARENT:
         *   InvalidGameTimelineException
         *   NullException
 

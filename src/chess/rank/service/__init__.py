@@ -7,6 +7,11 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
+# =========== RANK.SERVICE PACKAGE CONTENTS ===========#
 
+# Packages
+None
+
+# Modules
 from .exception import *
-from .service import RankCertifier
+from .service import RankService

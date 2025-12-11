@@ -21,7 +21,7 @@ class Game:
     # RESPONSIBILITIES:
     Interface players use to change the Arena's state.
 
-    # PARENT
+    # PARENT:
     None
 
     # PROVIDES:

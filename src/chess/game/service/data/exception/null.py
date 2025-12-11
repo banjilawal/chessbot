@@ -25,12 +25,12 @@ class GameDataServiceNullException(InvalidGameDataServiceException, NullExceptio
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required an GameDataService but got null instead.
 
-    # PARENT
+    # PARENT:
         *   InvalidGameDataServiceException
         *   NullException
 
     # PROVIDES:
-    GameDataServiceNullException
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -50,7 +50,7 @@ class GameNullDataSetException(InvalidGameDataServiceException, NullException):
     # RESPONSIBILITIES:
     1.  Indicate that GameDataService.items does not exist.
 
-    # PARENT
+    # PARENT:
         *   InvalidGameDataServiceException
         *   NullException
 

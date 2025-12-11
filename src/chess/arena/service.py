@@ -8,7 +8,7 @@ class ArenaService(EntityService[Arena]):
     3.  Is authoritative, single source of truth for Arena state by providing single entry and exit points to Arena
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:

@@ -26,7 +26,7 @@ class DataResult(Result[Generic[T]]):
     1.  Send the outcome of a data transaction to the invoker.
     2.  Enforcing mutual exclusion. A DataResult can either carry payload or exception. Not both.
 
-    # PARENT
+    # PARENT:
         *   Result
 
     # PROVIDES:

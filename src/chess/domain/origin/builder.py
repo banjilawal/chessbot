@@ -23,7 +23,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
      3.  Ensure params for DomainOrigin creation have met the application's safety contract.
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT
+     # PARENT:
          * Builder
 
      # PROVIDES:

@@ -30,7 +30,7 @@ class NameValidator(Validator[str]):
         *   Not empty. (".", ".\n", ".\t", ".\r").
         *   length between MIN_NAME_LENGTH and MAX_NAME_LENGTH inclusive.
 
-    # PARENT
+    # PARENT:
         *   Validator
 
     # PROVIDES:

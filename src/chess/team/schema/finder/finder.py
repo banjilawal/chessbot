@@ -26,7 +26,7 @@ class TeamSchemaFinder(Finder[TeamSchema]):
     1.  Search TeamSchema collections for items which match the attribute target specified in the TeamSchemaContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
-    # PARENT
+    # PARENT:
         *   Finder
 
     # PROVIDES:

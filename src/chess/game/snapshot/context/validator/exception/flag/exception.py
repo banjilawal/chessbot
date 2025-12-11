@@ -26,7 +26,7 @@ class NoGameSnapshotContextFlagException(InvalidGameSnapshotContextException, Co
     # RESPONSIBILITIES:
     1.  Indicate no GameSnapshotContext flag is provided with a searcher value.
 
-    # PARENT
+    # PARENT:
         *   InvalidGameSnapshotContextException
         *   ContextFlagCountException
 
@@ -48,7 +48,7 @@ class TooManyGameSnapshotContextFlagsException(InvalidGameSnapshotContextExcepti
     # RESPONSIBILITIES:
     1.  Indicate if more than one Game attribute is going to be used in an GameSnapshotFinder.
 
-    # PARENT
+    # PARENT:
         *   InvalidGameSnapshotContextException
         *   ContextFlagCountException
 

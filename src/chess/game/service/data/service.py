@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import List, cast
 
 
-from chess.system import DataService, id_emitter
-from chess.game import Game, GameContextService, GameService
+from chess.system import DataService, LoggingLevelRouter, id_emitter
+from chess.game import Game, GameContext, GameContextService, GameService
 
 
 class GameDataService(DataService[Game]):
@@ -27,19 +27,17 @@ class GameDataService(DataService[Game]):
     5.  Provide Game stack data structure with no guarantee of uniqueness.
     6.  Search utility.
     
-    # PARENT
+    # PARENT:
         *   DataService
 
     # PROVIDES:
-        *   GameService
-        *   GameContextService
-        *   GameStack
+        *   GameDataService
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    See DataService class for inherited attributes.
+        *   See DataService class for inherited attributes.
     """
     DEFAULT_NAME = "GameDataService"
     
@@ -83,7 +81,6 @@ class GameDataService(DataService[Game]):
     @property
     def game_context_service(self) -> GameContextService:
         return cast(GameContextService, self.context_service)
-    
 
     # @property
     # def data(self) -> GameService:

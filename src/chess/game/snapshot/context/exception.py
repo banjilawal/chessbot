@@ -24,7 +24,7 @@ class GameSnapshotContextException(ContextException):
     1.  Parent of exceptions raised by GameSnapshotContext objects.
     2.  Catchall for conditions which are not covered by lower level GameSnapshotContext exceptions.
 
-    # PARENT
+    # PARENT:
         *   ContextException
 
     # PROVIDES:

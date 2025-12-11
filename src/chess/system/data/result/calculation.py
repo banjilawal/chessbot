@@ -22,7 +22,7 @@ class CalculationResult(DataResult[Generic[T]]):
     1.  Send the outcome of a calculation transaction to the caller.
     2.  Enforcing mutual exclusion. A CalculationResult can either carry payload or exception. Not both.
 
-    # PARENT
+    # PARENT:
         *   DataResult
 
     # PROVIDES:

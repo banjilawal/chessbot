@@ -17,7 +17,7 @@ class GameState(Enum):
     # RESPONSIBILITIES:
     1.  States in a Game's lifecycle.
 
-    # PARENT
+    # PARENT:
         *   Enum
 
     # PROVIDES:

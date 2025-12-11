@@ -24,7 +24,7 @@ class GameContext(Context[Game]):
     Provide an GameFinder with an attribute value to find Games with a matching value in
     their version of the attribute.
 
-    # PARENT
+    # PARENT:
         *   Context
 
     # PROVIDES:

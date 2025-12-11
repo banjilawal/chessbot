@@ -36,7 +36,7 @@ class IdValidator(Validator[int]):
     2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
     3.  An Id is is required to be greater than zero.
 
-    # PARENT
+    # PARENT:
         *   Validator
 
     # PROVIDES:

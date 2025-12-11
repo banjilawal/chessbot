@@ -25,12 +25,12 @@ class AgentBuildFailedException(AgentException, BuildFailedException):
     1.  Parent of exceptions raised during Agent build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an AgentBuilder method.
 
-    # PARENT
+    # PARENT:
         *   AgentException
         *   BuildFailedException
 
     # PROVIDES:
-    AgentBuildFailedException
+    None
 
     # LOCAL ATTRIBUTES:
     None

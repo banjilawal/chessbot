@@ -23,11 +23,11 @@ class AgentContext(Context[Agent]):
     Provide an AgentFinder with an attribute value to find Agents with a matching value in
     their version of the attribute.
 
-    # PARENT
+    # PARENT:
         *   Context
 
     # PROVIDES:
-    AgentContext
+        *   to_dict:    -> dict
 
     # LOCAL ATTRIBUTES:
         *   team (Optional[Team])
@@ -35,7 +35,7 @@ class AgentContext(Context[Agent]):
         *   variety (Optional[AgentVariety])
         
     # INHERITED ATTRIBUTES:
-    See Context class for inherited attributes.
+        *   See Context class for inherited attributes.
     """
     _team: Optional[Team]
     _game: Optional[Game]

@@ -25,7 +25,7 @@ class EntityService(ABC, Generic[T]):
     3.  Is authoritative, single source of truth for Square state by providing single entry and exit points to Square
         lifecycle.
 
-    # PARENT
+    # PARENT:
     None
 
     # PROVIDES:

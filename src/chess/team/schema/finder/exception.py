@@ -24,7 +24,7 @@ class TeamSchemaFinderException(FinderException):
     1.  Parent of exceptions raised by TeamSchemaFinder objects
     2.  Wraps unhandled exceptions that hit the try-finally block of an TeamSchemaFactory method.
 
-    # PARENT
+    # PARENT:
         *   FinderException
 
     # PROVIDES:

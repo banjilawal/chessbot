@@ -24,12 +24,12 @@ class AgentVarietyNullException(InvalidAgentVarietyException, NullException):
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required an AgentVariety  but got null instead.
 
-    # PARENT
+    # PARENT:
         *   InvalidAgentVarietyException
         *   NullException
 
     # PROVIDES:
-    NullAgentCVarietyException
+    None
 
     # ATTRIBUTES:
     None

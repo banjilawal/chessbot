@@ -19,7 +19,7 @@ class MissingGameValidatorException(InvalidGameServiceException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # PARENT
+    # PARENT:
         *   InvalidGameServiceException
 
     # RESPONSIBILITIES:

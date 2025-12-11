@@ -24,7 +24,7 @@ class SquareContextService(ContextService[SquareContext]):
     4.  Create a single source of truth for Square search results by having single entry and exit points for the
         Square search flow.
 
-    # PARENT
+    # PARENT:
         *   ContextService
 
     # PROVIDES:

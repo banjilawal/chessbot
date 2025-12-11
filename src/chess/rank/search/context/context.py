@@ -21,7 +21,7 @@ class RankContext(Context[Rank]):
     Provide an RankFinder with an attribute value to find Ranks with a matching value in
     their version of the attribute.
 
-    # PARENT
+    # PARENT:
         *   Context
 
     # PROVIDES:

@@ -25,12 +25,12 @@ class ArenaBuildFailedException(ArenaException, BuildFailedException):
     1.  Parent of exceptions raised during Arena build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an ArenaBuilder method.
 
-    # PARENT
+    # PARENT:
         *   ArenaException
         *   BuildFailedException
 
     # PROVIDES:
-    ArenaBuildFailedException
+        *   ArenaBuildFailedException
 
     # LOCAL ATTRIBUTES:
     None

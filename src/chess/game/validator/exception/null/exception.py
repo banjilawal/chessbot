@@ -23,7 +23,7 @@ class NullGameException(InvalidGameException, NullException):
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required an Game  but got null instead.
 
-    # PARENT
+    # PARENT:
         *   InvalidGameException
         *   NullException
 

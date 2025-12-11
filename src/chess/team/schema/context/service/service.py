@@ -24,7 +24,7 @@ class TeamSchemaContextService(ContextService[TeamSchemaContext]):
     4.  Create a single source of truth for TeamSchema search results by having single entry and exit points for the
         TeamSchema search flow.
 
-    # PARENT
+    # PARENT:
         *   ContextService
 
     # PROVIDES:

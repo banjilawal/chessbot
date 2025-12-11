@@ -25,12 +25,12 @@ class InvalidMachineAgentException(MachineAgentException, ValidationFailedExcept
     1.  Parent of exceptions raised MachineAgent validation.
     2.  Wraps unhandled exceptions that hit the finally-block in MachineAgentValidator methods.
 
-    # PARENT
+    # PARENT:
         *   MachineAgentException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidMachineAgentException
+    None
 
     # LOCAL ATTRIBUTES:
     None

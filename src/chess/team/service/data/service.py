@@ -24,7 +24,7 @@ class TeamDataService(DataService[Team]):
     4.  Ensure integrity of team data stack
     5.  Microservice for managing team objects and their lifecycles.
 
-    # PARENT
+    # PARENT:
         *   DataService
 
     # PROVIDES:

@@ -27,19 +27,18 @@ class AgentDataService(DataService[Agent]):
     5.  Provide Agent stack data structure with no guarantee of uniqueness.
     6.  Search utility.
     
-    # PARENT
+    # PARENT:
         *   DataService
 
     # PROVIDES:
-        *   AgentService
-        *   AgentContextService
-        *   AgentStack
+        *   agent_service:  -> AgentService
+        *   agent_context_service:  -> AgentContextService
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    See DataService class for inherited attributes.
+        *   See DataService class for inherited attributes.
     """
     DEFAULT_NAME = "AgentDataService"
     

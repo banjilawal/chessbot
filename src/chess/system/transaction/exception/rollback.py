@@ -23,7 +23,7 @@ class RolledBackTransactionException(TransactionException, RollbackException):
   # RESPONSIBILITIES:
   1.  Parent of exceptions raised when a Transaction is rolled back to its last checkpoint.
 
-  # PARENT
+  # PARENT:
       *   TransactionException
       *   RollbackException
 

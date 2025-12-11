@@ -25,7 +25,7 @@ class ValidatorException(ChessException):
     1.  Parent of exceptions raised by Validator objects
     2.  Catchall for Validator failure states that are not covered by a lower level Validator exception.
   
-    # PARENT
+    # PARENT:
         *   ChessException
   
     # PROVIDES:

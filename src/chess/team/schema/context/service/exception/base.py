@@ -26,7 +26,7 @@ class GameContextServiceException(ServiceException):
     2.  Raised when no specific exception exists for the error interrupting GameContextService's
         processes from their normal flows.
         
-    # PARENT
+    # PARENT:
         *   ServiceException
 
     # PROVIDES:

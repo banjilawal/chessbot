@@ -28,11 +28,11 @@ class AgentFinder(Finder[Agent]):
     1.  Search Agent collections for items which match the attribute target specified in the AgentContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
-    # PARENT
+    # PARENT:
         *   Finder
 
     # PROVIDES:
-        *   AgentFinder:
+        *   find:   -> SearchResult[List[Agent]]
 
     # LOCAL ATTRIBUTES:
     None

@@ -25,7 +25,7 @@ class DataServiceException(ServiceException):
     1.  Parent of exceptions raised by DataServices.
     2.  Wraps unhandled exceptions that hit the try-finally block of a DataService method.
 
-    # PARENT
+    # PARENT:
         *   ServiceException
 
     # PROVIDES:

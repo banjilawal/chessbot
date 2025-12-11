@@ -26,12 +26,12 @@ class InvalidGameDataServiceException(GameDataServiceException, ValidationFailed
     1.  Parent of exceptions raised during GameDataService verification process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an GameDataServiceValidator method.
 
-    # PARENT
+    # PARENT:
         *   GameDataServiceException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidGameDataServiceException
+    None
 
     # LOCAL ATTRIBUTES:
     None

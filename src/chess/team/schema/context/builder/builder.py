@@ -26,7 +26,7 @@ class TeamSchemaContextBuilder(Builder[TeamSchemaContext]):
      3.  Ensure params for TeamSchemaContext creation have met the application's safety contract.
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT
+     # PARENT:
          * Builder
 
      # PROVIDES:

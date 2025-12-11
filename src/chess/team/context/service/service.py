@@ -21,7 +21,7 @@ class TeamContextService(ContextService[TeamContext]):
     1.  Public facing Team search microservice.
     2.  Encapsulates query building and searching functions into a single extendable module that easy to use.
 
-    # PARENT
+    # PARENT:
         *   ContextService
 
     # PROVIDES:

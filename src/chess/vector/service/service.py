@@ -23,7 +23,7 @@ class VectorService(EntityService[Vector]):
     3.  Is authoritative, single source of truth for Vector state by providing single entry and exit points to Vector
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:

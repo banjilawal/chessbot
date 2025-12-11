@@ -26,14 +26,17 @@ class InvalidAgentException(AgentException, ValidationFailedException):
     2.  Catchall Exception for AgentValidator when a candidate fails a sanity check.
     3.  Wraps unhandled exceptions that hit the try-finally block of an AgentValidator method.
 
-    # PARENT
+    # PARENT:
         *   AgentException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidAgentException
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_VALIDATION_ERROR"

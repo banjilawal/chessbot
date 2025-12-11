@@ -21,16 +21,22 @@ class UniqueGameDataService(UniqueDataService[Game]):
     # RESPONSIBILITIES:
     1.  Ensure all items in managed by GameDataService are unique.
     2.  Guarantee consistency of records in GameDataService.
+    
+    # PARENT:
+        *   UniqueDataService
 
     # PROVIDES:
-        *   GameDataService
-        *   No duplicates
+        *   game_service: -> GameService
+        *   context_service: -> GameContextService
+        *   add_game: -> InsertionResult[Game]
+        *   undo_add_game: -> DeletionResult[Game]
+        *   search_games: -> SearchResult[List[Game]]
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    See UniqueDataService class for inherited attributes.
+        *   See UniqueDataService class for inherited attributes.
     """
     DEFAULT_NAME = "UniqueGameDataService"
     
@@ -79,7 +85,7 @@ class UniqueGameDataService(UniqueDataService[Game]):
     def undo_add_game(self) -> DeletionResult[Game]:
         return self.data_service.undo_item_push()
     
-    def find_game(self, context: GameContext) -> SearchResult[List[Game]]:
+    def search_games(self, context: GameContext) -> SearchResult[List[Game]]:
         return self.data_service.search(context)
  
     # @LoggingLevelRouter.monitor

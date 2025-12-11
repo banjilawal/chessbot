@@ -23,7 +23,7 @@ class PoppingEmptyStackException(DataServiceException):
     # RESPONSIBILITIES:
     Indicates an attempt to pop an empty stack.
 
-    # PARENT
+    # PARENT:
         *   DataServiceException
 
     # PROVIDES:

@@ -23,7 +23,7 @@ class MissingAgentContextValidatorException(InvalidAgentContextServiceException)
     Indicate an AgentContextService was constructed with either no AgentContextBuilder or the wrong
     type of object.
 
-    # PARENT
+    # PARENT:
         *   InvalidAgentContextServiceException
 
     # PROVIDES:

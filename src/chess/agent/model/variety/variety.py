@@ -19,11 +19,11 @@ class AgentVariety(Enum):
     1.  Used for picking an operation that on the basis of the Agent subclass.
     2.  Safer than using strings.
 
-    # PARENT
+    # PARENT:
         *   Enum
 
     # PROVIDES:
-    AgentVariety
+        *   subclass_from_variety:  -> [HumanAgent|MachineAgent]
 
     # LOCAL ATTRIBUTES:
     None

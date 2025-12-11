@@ -23,7 +23,7 @@ class AddingDuplicateDataException(UniqueDataServiceException):
     # RESPONSIBILITIES:
     Indicate an attempt was made to add a duplicate item o a collection that only allows uniques.
 
-    # PARENT
+    # PARENT:
         *   UniqueDataServiceException
 
     # PROVIDES:

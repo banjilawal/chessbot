@@ -23,11 +23,11 @@ class Agent(ABC):
     1.  Directs movement of pieces in a Team's roster on a Board.
     2.  Forwards requests from the user to a Game.
     
-    # PARENT
+    # PARENT:
     None
 
     # PROVIDES:
-    Agent
+        *   current_team: -> Optional[Team]
 
     # LOCAL ATTRIBUTES:
         *   id (int)
@@ -40,14 +40,12 @@ class Agent(ABC):
     """
     _id: int
     _name: str
-    _games: UniqueGameDataService
     _team_assignments: UniqueTeamDataService
     
     def __init__(
             self,
             id: int,
             name: str,
-            games: UniqueGameDataService = UniqueGameDataService(),
             team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
     ):
         """
@@ -57,7 +55,6 @@ class Agent(ABC):
         # Parameters:
             *   id (int)
             *   name (str)
-            *   games (UniqueGameDataService)
             *   team_assignments (UniqueTeamDataService)
 
         # Returns:
@@ -71,8 +68,6 @@ class Agent(ABC):
         self._name = name
         self._games = games
         self._team_assignments = team_assignments
-    
-        self._current_game = self._games.current_game
         self._current_team = self._team_assignments.current_team
     
     @property
@@ -94,10 +89,6 @@ class Agent(ABC):
     @property
     def current_team(self) -> Optional[Team]:
         return self._team_assignments.current_team
-    
-    @property
-    def current_game(self) -> Optional[Game]:
-        return self._games.current_game
     
     def __eq__(self, other):
         if other is self: return True

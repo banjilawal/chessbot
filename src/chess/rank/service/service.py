@@ -22,7 +22,7 @@ class RankService(EntityService[Rank]):
     3.  Is authoritative, single source of truth for Rank state by providing single entry and exit points to Rank
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:

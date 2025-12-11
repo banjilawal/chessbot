@@ -21,7 +21,7 @@ class RankContextService(ContextService[RankContext]):
     4.  Create a single source of truth for Rank search results by having single entry and exit points for the
         Rank search flow.
 
-    # PARENT
+    # PARENT:
         *   ContextService
 
     # PROVIDES:

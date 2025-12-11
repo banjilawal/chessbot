@@ -32,7 +32,7 @@ class AgentNotRegisteredWithGameException(AgentRegistrationException):
         *   AgentRegistrationException
 
     # PROVIDES:
-    AgentNotRegisteredWithGameException
+        *   AgentNotRegisteredWithGameException
 
     # LOCAL ATTRIBUTES:
     None

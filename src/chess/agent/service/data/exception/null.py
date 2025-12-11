@@ -25,7 +25,7 @@ class NullAgentDataServiceException(InvalidAgentDataServiceException, NullExcept
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required an AgentDataService but got null instead.
 
-    # PARENT
+    # PARENT:
         *   InvalidAgentDataServiceException
         *   NullException
 
@@ -50,12 +50,12 @@ class AgentNullDataSetException(InvalidAgentDataServiceException, NullException)
     # RESPONSIBILITIES:
     1.  Indicate that AgentDataService.items does not exist.
 
-    # PARENT
+    # PARENT:
         *   InvalidAgentDataServiceException
         *   NullException
 
     # PROVIDES:
-    AgentNullDataSetException
+    None
 
     # ATTRIBUTES:
     None

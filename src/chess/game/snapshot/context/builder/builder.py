@@ -28,11 +28,11 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
      3.  Ensure params for GameSnapshotContext creation have met the application's safety contract.
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT
+     # PARENT:
          * Builder
 
      # PROVIDES:
-         *   GameSnapshotContextBuilder
+         *   build: -> BuildResult[GameSnapshotContext]
 
      # LOCAL ATTRIBUTES:
      None

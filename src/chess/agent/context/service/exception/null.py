@@ -24,12 +24,12 @@ class NullAgentContextServiceException(InvalidAgentContextServiceException, Null
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required an AgentContextService but got null instead.
     
-    # PARENT
+    # PARENT:
         *   InvalidAgentContextServiceException
         *   NullException
 
     # PROVIDES:
-    NullAgentContextServiceException
+    None
 
     # LOCAL ATTRIBUTES:
     None

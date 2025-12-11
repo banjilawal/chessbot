@@ -28,7 +28,7 @@ class GameContextException(ContextException):
         cohere with GameContext objects.
     3.  Catchall for GameContext failure states that are not covered by a lower level GameContext exception.
     
-    # PARENT
+    # PARENT:
         *   ContextException
         
     # PROVIDES:

@@ -24,7 +24,7 @@ class BuilderException(ChessException):
     1.  Parent of exceptions raised by Builder objects
     3.  Catchall for Builder failure states that are not covered by a lower level Builder exception.
   
-    # PARENT
+    # PARENT:
         *   ChessException
   
     # PROVIDES:

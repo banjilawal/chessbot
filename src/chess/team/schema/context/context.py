@@ -22,7 +22,7 @@ class TeamSchemaContext(Context[TeamSchema]):
     Provide an TeamSchemaFinder with an attribute value to find TeamSchemas with a matching value in
     their version of the attribute.
 
-    # PARENT
+    # PARENT:
         *   Context
 
     # PROVIDES:

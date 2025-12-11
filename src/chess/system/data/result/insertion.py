@@ -23,7 +23,7 @@ class InsertionResult(DataResult[Generic[T]]):
     1.  Send the outcome of a insertion transaction to the caller.
     2.  Enforcing mutual exclusion. A InsertionResult can either carry payload or exception. Not both.
 
-    # PARENT
+    # PARENT:
         *   DataResult
 
     # PROVIDES:

@@ -27,7 +27,7 @@ class InvalidGameSnapshotContextException(GameSnapshotContextException, Validati
     1.  Parent of exceptions raised GameSnapshotContext validation.
     2.  Wraps unhandled exceptions that hit the finally-block in GameSnapshotContextValidator methods.
 
-    # PARENT
+    # PARENT:
         *   GameSnapshotContextException
         *   ValidationFailedException
 

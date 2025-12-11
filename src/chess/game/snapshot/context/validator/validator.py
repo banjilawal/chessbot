@@ -25,13 +25,11 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
     # RESPONSIBILITIES:
     1. Verify a candidate is an GameSnapshotContext object's safety before a client uses it.
 
-    # PARENT
+    # PARENT:
         *   Validator
 
     # PROVIDES:
-    ValidationResult[GameSnapshotContext] containing either:
-        - On success: GameSnapshotContext in the payload.
-        - On failure: Exception.
+        *   GameSnapshotContextValidator.validate -> ValidationResult[GameSnapshotContext]
 
     # LOCAL ATTRIBUTES:
     None

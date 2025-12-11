@@ -26,11 +26,11 @@ class AgentContextServiceException(ServiceException):
     2.  Raised when no specific exception exists for the error interrupting AgentContextService's
         processes from their normal flows.
         
-    # PARENT
+    # PARENT:
         *   ServiceException
 
     # PROVIDES:
-    AgentContextServiceException
+    None
 
     # LOCAL ATTRIBUTES:
     None

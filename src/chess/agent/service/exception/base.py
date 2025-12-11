@@ -27,11 +27,11 @@ class AgentServiceException(ServiceException):
     3.  Catchall for AgentService failure states that are not covered by a lower level
         AgentService exception.
 
-    # PARENT
+    # PARENT:
         *   ServiceException
 
     # PROVIDES:
-    AgentServiceException
+    None
 
     # ATTRIBUTES:
     None

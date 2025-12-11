@@ -22,7 +22,7 @@ class DeletionResult(DataResult[Generic[T]]):
     1.  Send the outcome of a deletion transaction to the caller.
     2.  Enforcing mutual exclusion. A DeletionResult can either carry payload or exception. Not both.
 
-    # PARENT
+    # PARENT:
         *   DataResult
 
     # PROVIDES:

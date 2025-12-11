@@ -24,11 +24,11 @@ class HumanAgentException(AgentException):
         caused a failure.
     2.  Wraps unhandled exceptions that hit the try-finally block of an Agent method.
 
-    # PARENT
+    # PARENT:
         *   AgentException
 
     # PROVIDES:
-    HumanAgentException
+    None
 
     # LOCAL ATTRIBUTES:
     None

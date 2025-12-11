@@ -26,12 +26,12 @@ class InvalidAgentContextServiceException(AgentContextServiceException, Validati
     1.  Parent of exceptions raised during AgentContextService verification process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an AgentContextServiceValidator method.
     
-    # PARENT
+    # PARENT:
         *   AgentContextServiceException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidAgentContextServiceException
+    None
 
     # LOCAL ATTRIBUTES:
     None

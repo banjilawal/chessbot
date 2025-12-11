@@ -24,11 +24,11 @@ class GameFinderException(FinderException):
     1.  Parent of exceptions raised by GameFinder objects.
     2.  Wraps unhandled exceptions that hit the try-finally block of an GameFinder method.
   
-    # PARENT
+    # PARENT:
         *   FinderException
   
     # PROVIDES:
-    GameFinderException
+        *   GameFinderException
   
     # LOCAL ATTRIBUTES:
     None

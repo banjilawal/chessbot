@@ -25,7 +25,7 @@ class UnreliableValidatorException(ValidatorException):
     # RESPONSIBILITIES:
     Catchall for when Validator certification check hits the try-finally block with an unhandled exception.
     
-    # PARENT
+    # PARENT:
         *   ValidatorException
         *   ValidationFailedException
   
@@ -50,7 +50,7 @@ class NullValidatorException(UnreliableValidatorException, NullException):
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required aValidator but got null instead.
   
-    # PARENT
+    # PARENT:
         *   InvalidValidatorException
         *   NullException
   

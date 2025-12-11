@@ -24,7 +24,7 @@ class GameSnapshot(Result):
     2.  Recording the Game winner if the game completed and there was no tie.
     3.  Enforcing mutual exclusion. A GameSnapshot can either carry payload or exception. Not both.
 
-    # PARENT
+    # PARENT:
         *   Result
 
     # PROVIDES:

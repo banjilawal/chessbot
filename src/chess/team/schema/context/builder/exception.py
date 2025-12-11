@@ -26,7 +26,7 @@ class TeamSchemaContextBuildFailedException(TeamSchemaContextException, BuildFai
     1.  Parent of exceptions raised during TeamSchemaContext build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an TeamSchemaContextBuilder method.
     
-    # PARENT
+    # PARENT:
         *   TeamSchemaContextException
         *   BuildFailedException
 

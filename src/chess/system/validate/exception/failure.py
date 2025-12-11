@@ -24,7 +24,7 @@ class ValidationFailedException(ValidatorException):
     1.  Parent of exceptions verifying correctness of candidate
     2.  Wraps unhandled exceptions that hit the try-finally block of a Validator method.
   
-    # PARENT
+    # PARENT:
         *   ValidatorException
   
     # PROVIDES:

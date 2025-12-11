@@ -25,11 +25,11 @@ class AgentContextException(ContextException):
     1.  Parent of exceptions raised by AgentContext objects.
     2.  Catchall for conditions which are not covered by lower level AgentContext exceptions.
     
-    # PARENT
+    # PARENT:
         *   ContextException
         
     # PROVIDES:
-    AgentContextException
+    None
 
     # LOCAL ATTRIBUTES:
     None

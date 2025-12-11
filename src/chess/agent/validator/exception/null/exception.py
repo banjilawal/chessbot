@@ -23,12 +23,12 @@ class NullAgentException(InvalidAgentException, NullException):
     # RESPONSIBILITIES:
     1.  Indicate if an entity, method or operation required an Agent  but got null instead.
 
-    # PARENT
+    # PARENT:
         *   InvalidAgentException
         *   NullException
 
     # PROVIDES:
-    NullAgentCException
+        *   NullAgentCException
 
     # ATTRIBUTES:
     None

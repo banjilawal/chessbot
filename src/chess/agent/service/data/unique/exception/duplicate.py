@@ -24,7 +24,7 @@ class AddingDuplicateAgentException(UniqueAgentDataServiceException):
     # RESPONSIBILITIES:
     Indicate an attempt was made to add an Agent that already exists in the dataset.
 
-    # PARENT
+    # PARENT:
         *   UniqueAgentDataServiceException
 
     # PROVIDES:

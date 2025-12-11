@@ -20,7 +20,7 @@ class MissingGameBuilderException(InvalidGameServiceException):
     """
     # ROLE: Error Tracing, Debugging
 
-    # PARENT
+    # PARENT:
         *   InvalidGameServiceException
 
     # RESPONSIBILITIES:

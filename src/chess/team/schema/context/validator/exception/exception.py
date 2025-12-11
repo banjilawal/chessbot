@@ -27,7 +27,7 @@ class InvalidTeamSchemaContextException(TeamSchemaContextException, ValidationFa
     1.  Parent of exceptions raised TeamSchemaContext validation.
     2.  Wraps unhandled exceptions that hit the finally-block in TeamSchemaContextValidator methods.
 
-    # PARENT
+    # PARENT:
         *   TeamSchemaContextException
         *   ValidationFailedException
 

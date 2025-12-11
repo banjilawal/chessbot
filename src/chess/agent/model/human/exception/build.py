@@ -24,12 +24,12 @@ class HumanAgentBuildFailedException(HumanAgentException, AgentBuildFailedExcept
     1.  Parent of exceptions raised during HumanAgent build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an HumanAgentBuilder method.
 
-    # PARENT
+    # PARENT:
         *   HumanAgentException
         *   AgentBuildFailedException
 
     # PROVIDES:
-    HumanAgentBuildFailedException
+    None
 
     # LOCAL ATTRIBUTES:
     None

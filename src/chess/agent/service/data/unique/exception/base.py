@@ -24,11 +24,11 @@ class UniqueAgentDataServiceException(UniqueDataServiceException):
     1.  Parent of exceptions raised by UniqueAgentDataService objects.
     2.  Wraps unhandled exceptions that hit the try-finally block of an UniqueDataAgent's method.
 
-    # PARENT
+    # PARENT:
         *   UniqueDataServiceException
 
     # PROVIDES:
-    UniqueAgentDataServiceException
+    None
 
     # LOCAL ATTRIBUTES:
     None

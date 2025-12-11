@@ -29,7 +29,7 @@ class NullAgentContextException(InvalidAgentContextException, NullException):
         *   NullAgentContextException
 
     # PROVIDES:
-    NullAgentContextException
+    None
 
     # ATTRIBUTES:
     None

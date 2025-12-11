@@ -25,11 +25,11 @@ class AgentVarietyException(ChessException):
     2.  Raised when no specific exception exists for the condition which brought the AgentVariety object into
         an error state.
 
-    # PARENT
+    # PARENT:
         *   ChessException
 
     # PROVIDES:
-    AgentVarietyException
+    None
 
     # ATTRIBUTES:
     None

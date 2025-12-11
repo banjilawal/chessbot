@@ -23,7 +23,7 @@ class GameTimelineException(ResultStackException):
     2.  Parent of exceptions raised by classes that highly cohere with GameTimeline objects.
     3.  Catchall for GameTimeline failure states that are not covered by a lower level GameTimeline exception.
 
-    # PARENT
+    # PARENT:
         *   ResultStackException
 
     # PROVIDES:

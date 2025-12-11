@@ -12,7 +12,7 @@ class DomainOriginService(EntityService[DomainOrigin]):
     3.  Is authoritative, single source of truth for DomainOrigin state by providing single entry and exit points to DomainOrigin
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:

@@ -20,17 +20,17 @@ class MachineAgent(Agent):
     # RESPONSIBILITIES:
     1.  Forward requests and commands from a Machine player to the Game model.
 
-    # PARENT
+    # PARENT:
         *   Agent
 
     # PROVIDES:
-    MachineAgent
+    None
 
     # LOCAL ATTRIBUTES:
         *   engine_service (EngineService)
     
     # INHERITED ATTRIBUTES:
-    See Agent class for inherited attributes.
+        *   See Agent class for inherited attributes.
     """
     _engine_service: EngineService
     
@@ -38,7 +38,6 @@ class MachineAgent(Agent):
             self,
             id: int,
             name: str,
-            games: UniqueGameDataService = UniqueGameDataService(),
             team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
             engine_service: EngineService = EngineService(),
     ):

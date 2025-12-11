@@ -24,7 +24,7 @@ class GameSnapshotFinderException(FinderException):
     1.  Parent of exceptions raised by GameFinder objects.
     2.  Wraps unhandled exceptions that hit the try-finally block of an GameSnapshotFinder method.
 
-    # PARENT
+    # PARENT:
         *   FinderException
 
     # PROVIDES:

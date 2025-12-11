@@ -30,11 +30,11 @@ class AgentContextBuilder(Builder[AgentContext]):
     3.  Ensure params for AgentContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT
+    # PARENT:
         *   Builder
 
     # PROVIDES:
-        *   AgentContextBuilder
+        *   build:  -> BuildResult[AgentContext]
 
     # LOCAL ATTRIBUTES:
     None

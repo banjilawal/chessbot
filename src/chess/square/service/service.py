@@ -23,7 +23,7 @@ class SquareService(EntityService[Square]):
     3.  Is authoritative, single source of truth for Square state by providing single entry and exit points to Square
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:

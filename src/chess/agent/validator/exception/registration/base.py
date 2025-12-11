@@ -30,7 +30,7 @@ class AgentRegistrationException(InvalidAgentException, RegistrationException):
         *   RegistrationException
 
     # PROVIDES:
-    AgentRegistrationException
+        *   gentRegistrationException
 
     # LOCAL ATTRIBUTES:
     None

@@ -22,7 +22,7 @@ class ContextService(EntityService[Context[T]]):
     2.  Encapsulates Search and search filter validation in one extendable module.
     3.  Manage Context integrity lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:

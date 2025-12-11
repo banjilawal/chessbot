@@ -26,11 +26,11 @@ class GameDataServiceException(DataServiceException):
     3.  Catchall for GameDataService failure states that are not covered by a lower level
         GameDataService exception.
 
-    # PARENT
+    # PARENT:
         *   DataServiceException
 
     # PROVIDES:
-    GameDataServiceException
+    None
 
     # LOCAL ATTRIBUTES:
     None

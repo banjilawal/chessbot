@@ -24,7 +24,7 @@ class MissingAgentFinderException(InvalidAgentContextServiceException):
     1.  Indicate an AgentContextService was constructed with either no AgentFinder or the wrong
         type of object.
     
-    # PARENT
+    # PARENT:
         *   InvalidAgentContextServiceException
 
     # PROVIDES:

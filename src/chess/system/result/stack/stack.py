@@ -29,7 +29,7 @@ class ResultStack(ABC, Generic[T]):
     3.  Safe and reliable CRUD operations.
     4.  Public facing API.
 
-    # PARENT
+    # PARENT:
     None
 
     # PROVIDES:

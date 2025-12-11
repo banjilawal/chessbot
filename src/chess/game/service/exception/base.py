@@ -27,7 +27,7 @@ class GameServiceException(ServiceException):
     3.  Catchall for GameService failure states that are not covered by a lower level
         GameService exception.
 
-    # PARENT
+    # PARENT:
         *   ServiceException
 
     # PROVIDES:

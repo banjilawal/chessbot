@@ -26,7 +26,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
         target inside an GameSnapshotContext.
     2.  Safely forward any errors encountered during a search to the caller.
 
-    # PARENT
+    # PARENT:
         *   Finder
 
     # PROVIDES:

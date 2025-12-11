@@ -24,11 +24,13 @@ class AgentContextService(ContextService[AgentContext]):
     4.  Create a single source of truth for Agent search results by having single entry and exit points for the
         Agent search flow.
 
-    # PARENT
+    # PARENT:
         *   ContextService
 
     # PROVIDES:
-        *   AgentContextService
+        *   builder:    -> AgentContextBuilder
+        *   validator:  -> AgentContextValidator
+        *   finder:     -> AgentFinder
 
     # LOCAL ATTRIBUTES:
     None

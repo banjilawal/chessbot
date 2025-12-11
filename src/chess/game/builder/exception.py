@@ -25,7 +25,7 @@ class GameBuildFailedException(GameException, BuildFailedException):
     1.  Parent of exceptions raised during Game build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an GameBuilder method.
 
-    # PARENT
+    # PARENT:
         *   GameException
         *   BuildFailedException
 

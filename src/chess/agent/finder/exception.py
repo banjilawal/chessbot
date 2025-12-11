@@ -25,11 +25,11 @@ class AgentFinderException(FinderException):
         halt the normal flow of AgentFinder operations.
     2.  Wraps unhandled exceptions that hit the try-finally block of an AgentFactory method.
   
-    # PARENT
+    # PARENT:
         *   FinderException
   
     # PROVIDES:
-    AgentFinderException
+    None
   
     # LOCAL ATTRIBUTES:
     None

@@ -24,7 +24,7 @@ class TransactionException(ChessException):
     1.  Parent of exceptions raised by Transaction objects
     2.  Catchall for Transaction failure states that are not covered by a lower level Transaction exception.
   
-    # PARENT
+    # PARENT:
         *   ChessException
   
     # PROVIDES:

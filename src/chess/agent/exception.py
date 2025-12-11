@@ -27,11 +27,11 @@ class AgentException(ChessException):
         cohere with Agent objects.
     3.  Catchall for Agent failure states that are not covered by a lower level Agent exception.
 
-    # PARENT
+    # PARENT:
         *   Chess
 
     # PROVIDES:
-    AgentException
+        *   AgentException
 
     # ATTRIBUTES:
     None

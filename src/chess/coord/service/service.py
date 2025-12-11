@@ -25,7 +25,7 @@ class CoordService(EntityService[Coord]):
     3.  Is authoritative, single source of truth for Coord state by providing single entry and exit points to Coord
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:

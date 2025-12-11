@@ -24,7 +24,7 @@ class ServiceValidator(Validator[EntityService]):
     2.  Certify the EntityService's builder and validator are not null and the correct type.
     2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
-    # PARENT
+    # PARENT:
         *   Validator
 
     # PROVIDES:

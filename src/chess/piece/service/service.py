@@ -22,11 +22,12 @@ class PieceService(EntityService[Piece]):
     3.  Is authoritative, single source of truth for Piece state by providing single entry and exit points to Piece
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:
-        *   PieceService
+        *   builder:    -> PieceFactory
+        *   validator:  -> PieceValidator
 
     # LOCAL ATTRIBUTES:
     None

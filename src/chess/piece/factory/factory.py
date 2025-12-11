@@ -9,8 +9,8 @@ version: 1.0.0
 
 from chess.coord import CoordDataService
 from chess.square import Square, SquareService
-from chess.team import Team, TeamCertifier
-from chess.rank import King, Pawn, Rank, RankCertifier
+from chess.team import Team, TeamService
+from chess.rank import King, Pawn, Rank, RankService
 from chess.piece import (
     CombatantPiece, CombatantPieceBuildFailedException, KingPiece, KingPieceBuildFailedException, PawnPiece,
     PawnPieceBuildFailedException, Piece, PieceBuildFailedException
@@ -31,11 +31,11 @@ class PieceFactory(Builder[Piece]):
     3.  Ensure params for Piece creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT
+    # PARENT:
         *   Builder
 
     # PROVIDES:
-        *   PieceFactory
+        *   build:  -> BuildResult[PawnPiece|KingPiece|CombatantPiece]
 
     # LOCAL ATTRIBUTES:
     None
@@ -54,12 +54,12 @@ class PieceFactory(Builder[Piece]):
             roster_number: int,
             opening_square: Square,
             id: int = id_emitter.piece_id,
-            # square_integrity: SquareService = SquareService(),
-            # rank_integrity: RankCertifier = RankCertifier(),
-            # team_integrity: TeamCertifier = TeamCertifier(),
-            # positions: CoordDataService = CoordDataService(),
-            # identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[Piece]:
+            square_integrity: SquareService = SquareService(),
+            rank_integrity: RankService = RankService(),
+            team_integrity: TeamService = TeamService(),
+            positions: CoordDataService = CoordDataService(),
+            identity_service: IdentityService = IdentityService(),
+    ) -> BuildResult[PawnPiece|KingPiece|CombatantPiece]:
         """
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
@@ -70,8 +70,8 @@ class PieceFactory(Builder[Piece]):
             *   name (str)
             *   rank (Rank)
             *   team (Team)
-            *   rank_certifier (RankCertifier)
-            *   team_certifier (TeamCertifier)
+            *   rank_service (RankService)
+            *   team_service (TeamService)
             *   positions (CoordDataService)
             *   identity_service (IdentityService)
     
@@ -315,10 +315,10 @@ class PieceFactory(Builder[Piece]):
             team: Team,
             roster_number: int,
             opening_square: Square,
-            rank_certifier: RankCertifier = RankCertifier(),
-            team_certifier: TeamCertifier = TeamCertifier(),
+            rank_service: RankService = RankService(),
+            team_service: TeamService = TeamService(),
             idservice: IdentityService = IdentityService(),
-            square_certifier: SquareService = SquareService(),
+            square_service: SquareService = SquareService(),
     ) -> ValidationResult[(int, str, Rank, Team, int, Square)]:
         """
         # ACTION
@@ -333,16 +333,16 @@ class PieceFactory(Builder[Piece]):
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
-            rank_validation = rank_certifier.item_validator.validate(candidate=rank)
+            rank_validation = rank_service.item_validator.validate(candidate=rank)
             if rank_validation.is_failure():
                 return BuildResult.failure(rank_validation.exception)
             
-            team_validation = team_certifier.item_validator.validate(candidate=team)
+            team_validation = team_service.item_validator.validate(candidate=team)
             if team_validation.is_failure():
                 return BuildResult.failure(team_validation.exception)
 
         
-            square_validation = square_certifier.item_validator.validate(candidate=opening_square)
+            square_validation = square_service.item_validator.validate(candidate=opening_square)
             if square_validation.is_failure():
                 return BuildResult.failure(square_validation.exception)
             

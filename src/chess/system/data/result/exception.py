@@ -24,7 +24,7 @@ class EmptyDataResultException(ResultException):
     put something into a collection, remove something from it, or generate a new value from the existing data.
     All these operations either succeed or fail.
 
-    # PARENT
+    # PARENT:
         *   ResultException
 
     # PROVIDES:

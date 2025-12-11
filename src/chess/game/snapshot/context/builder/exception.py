@@ -26,12 +26,12 @@ class GameSnapshotContextBuildFailedException(GameSnapshotContextException, Buil
     1.  Parent of exceptions raised during GameSnapshotContext build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an GameSnapshotContextBuilder method.
 
-    # PARENT
+    # PARENT:
         *   GameSnapshotContextException
         *   BuildFailedException
 
     # PROVIDES:
-    GameSnapshotContextBuildFailedException
+    None
 
     # LOCAL ATTRIBUTES:
     None

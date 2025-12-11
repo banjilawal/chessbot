@@ -27,7 +27,7 @@ class InvalidGameTimelineException(GameTimelineException, ValidationFailedExcept
     1.  Parent of exceptions raised during GameTimeline verification process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an GameTimelineValidator method.
 
-    # PARENT
+    # PARENT:
         *   GameTimelineException
         *   ValidationFailedException
 

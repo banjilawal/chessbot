@@ -25,7 +25,7 @@ class InvalidGameServiceException(GameServiceException, ValidationFailedExceptio
     1.  Parent of exceptions raised during GameService verification process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an GameServiceValidator method.
 
-    # PARENT
+    # PARENT:
         *   GameServiceException
         *   ValidationFailedException
 

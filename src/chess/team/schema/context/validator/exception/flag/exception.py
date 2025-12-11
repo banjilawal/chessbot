@@ -26,7 +26,7 @@ class NoTeamSchemaContextFlagException(InvalidTeamSchemaContextException, Contex
     # RESPONSIBILITIES:
     1.  Indicate no TeamSchemaContext flag is provided with a searcher value.
 
-    # PARENT
+    # PARENT:
         *   InvalidTeamSchemaContextException
         *   ContextFlagCountException
 
@@ -48,7 +48,7 @@ class TooManyTeamSchemaContextFlagsException(InvalidTeamSchemaContextException, 
     # RESPONSIBILITIES:
     1.  Indicate if more than one TeamSchema attribute is going to be used in an TeamSchemaFinder.
 
-    # PARENT
+    # PARENT:
         *   InvalidTeamSchemaContextException
         *   ContextFlagCountException
 

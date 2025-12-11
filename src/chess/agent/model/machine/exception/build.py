@@ -23,12 +23,12 @@ class MachineAgentBuildFailedException(MachineAgentException, AgentBuildFailedEx
     1.  Parent of exceptions raised during MachineAgent build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an MachineAgentBuilder method.
 
-    # PARENT
+    # PARENT:
         *   MachineAgentException
         *   AgentBuildFailedException
 
     # PROVIDES:
-    MachineAgentBuildFailedException
+    None
 
     # LOCAL ATTRIBUTES:
     None

@@ -26,7 +26,7 @@ class GameContextBuildFailedException(GameContextException, BuildFailedException
     1.  Parent of exceptions raised during GameContext build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an GameContextBuilder method.
     
-    # PARENT
+    # PARENT:
         *   GameContextException
         *   BuildFailedException
 

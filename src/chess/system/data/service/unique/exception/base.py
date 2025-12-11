@@ -24,7 +24,7 @@ class UniqueDataServiceException(DataServiceException):
     1.  Parent of exceptions raised by UniqueDataService objects.
     2.  Wraps unhandled exceptions that hit the try-finally block of an UniqueDataService object.
 
-    # PARENT
+    # PARENT:
         *   DataServiceException
 
     # PROVIDES:

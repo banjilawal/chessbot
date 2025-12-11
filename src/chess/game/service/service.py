@@ -23,11 +23,12 @@ class GameService(EntityService[Game]):
     3.  Is authoritative, single source of truth for Game state by providing single entry and exit points to Game
         lifecycle.
 
-    # PARENT
+    # PARENT:
         *   EntityService
 
     # PROVIDES:
-        *   GameService
+        *   builder: --> GameBuilder
+        *   validator: --> GameValidator
 
     # LOCAL ATTRIBUTES:
     None
@@ -60,6 +61,7 @@ class GameService(EntityService[Game]):
         # Raises:
         None
         """
+        method = "GameService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property

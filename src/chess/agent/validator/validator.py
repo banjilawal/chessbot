@@ -26,11 +26,11 @@ class AgentValidator(Validator[Agent]):
     1.  Ensure an Agent instance is certified safe, reliable and consistent before use.
     2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
-    # PARENT
+    # PARENT:
         *   Validator
 
     # PROVIDES:
-        * AgentValidator
+        *   validate: -> ValidationResult[Agent]
 
     # LOCAL ATTRIBUTES:
     None

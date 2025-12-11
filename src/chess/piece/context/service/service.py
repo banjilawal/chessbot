@@ -22,7 +22,7 @@ class PieceContextService(ContextService[PieceContext]):
     4.  Create a single source of truth forPiece search results by having single entry and exit points for the
        Piece search flow.
 
-    # PARENT
+    # PARENT:
         *   ContextService
 
     # PROVIDES:

@@ -21,16 +21,22 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
     # RESPONSIBILITIES:
     1.  Ensure all items in managed by AgentDataService are unique.
     2.  Guarantee consistency of records in AgentDataService.
+    
+    # PARENT:
+        *   UniqueDataService
 
     # PROVIDES:
-        *   AgentDataService
-        *   No duplicates
+        *   agent_service: -> AgentService
+        *   context_service: -> AgentContextService
+        *   add_agent: -> InsertionResult[Agent]
+        *   undo_add_agent: -> DeletionResult[Agent]
+        *   search_agents: -> SearchResult[List[Agent]]
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    See UniqueDataService class for inherited attributes.
+        *   See UniqueDataService class for inherited attributes.
     """
     DEFAULT_NAME = "UniqueAgentDataService"
     
@@ -79,7 +85,7 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
     def undo_add_agent(self) -> DeletionResult[Agent]:
         return self.data_service.undo_item_push()
     
-    def find_agent(self, context: AgentContext) -> SearchResult[List[Agent]]:
+    def search_agents(self, context: AgentContext) -> SearchResult[List[Agent]]:
         return self.data_service.search(context)
  
     # @LoggingLevelRouter.monitor
