@@ -24,14 +24,14 @@ class GameFinder(Finder[Game]):
     # ROLE: Finder
 
     # RESPONSIBILITIES:
-    1.  Search GameDataService or UniqueDataService objects for Games  with a matching attribute-target.
+    1.  Search Game collections for items which match the attribute target specified in the GameContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT
         *   Finder
 
     # PROVIDES:
-    GameFinder:
+        *   GameFinder:
 
     # LOCAL ATTRIBUTES:
     None
@@ -39,7 +39,6 @@ class GameFinder(Finder[Game]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def find(
@@ -52,8 +51,8 @@ class GameFinder(Finder[Game]):
         # Action:
         1.  Verify the data_set is not null and contains only Game objects,
         2.  Use context_validator to certify the provided context.
-        3.  Call the finder method which matches the attribute whose flag was raised.
-        4.  If the logic does not account for an Game attribute drop to the try-finally block.
+        3.  Context attribute routes the search. Attribute value is the search target.
+        4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # Parameters:
             *   data_set (List[Game]):
@@ -62,8 +61,8 @@ class GameFinder(Finder[Game]):
 
         # Returns:
         SearchResult[List[Game]] containing either:
-                - On success:   List[game] in the payload.
-                - On failure:   Exception.
+            - On success:   List[game] in the payload.
+            - On failure:   Exception.
 
         # Raises:
             *   TypeError
@@ -81,15 +80,14 @@ class GameFinder(Finder[Game]):
             validation_result = context_validator.validate(context)
             if validation_result.is_failure():
                 return SearchResult.failure(validation_result.exception)
+            # After context is verified select the search method based on the which flag is enabled.
             
-            # After checks are passed pick which finder method to call.
+            # Entry point into searching by game id.
             if context.id is not None:
                 return cls._find_by_id(data_set, context.id)
-            
-            # Find by agent
+            # Entry point into searching by game player.
             if context.agent is not None:
                 return cls._find_by_agent(data_set, context.agent)
-        
         # Finally, if some exception is not handled by the checks wrap it inside an GameFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -102,10 +100,10 @@ class GameFinder(Finder[Game]):
     def _find_by_id(cls, data_set: List[Game], id: int) -> SearchResult[List[Game]]:
         """
         # Action:
-        1.  Get the games whose id matched the target.
-        2.  If no matches are found return an empty SearchResult.
-        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If the finder returns multiple unique hits there is a problem.
+        1.  Get the Game with the matching id.
+        2.  If no match is found return an exception.
+        3.  An id search should produce either no hits or one hit only.
+        4.  Multiple unique agents in the result indicates a problem.
 
         # Parameters:
             *   id (int)
@@ -113,11 +111,11 @@ class GameFinder(Finder[Game]):
 
         # Returns:
         SearchResult[List[Game]] containing either:
-                - On success:   List[game] in the payload.
-                - On failure:   Exception.
+            - On success: List[Game] in the payload.
+            - On failure: Exception.
 
         # Raises:
-            *   GameFinderException
+            *   AgentFinderException
         """
         method = "GameFinder._find_by_id"
         try:
@@ -129,7 +127,6 @@ class GameFinder(Finder[Game]):
             # inconsistency later.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-        
         # Finally, if some exception is not handled by the checks wrap it inside an GameFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -142,35 +139,29 @@ class GameFinder(Finder[Game]):
     def _find_by_agent(cls, data_set: [Game], agent: Agent) -> SearchResult[List[Game]]:
         """
         # Action:
-        1.  Get the game whose agent is a match for the target.
-        2.  If no matches are found return an empty SearchResult.
-        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-        4.  If multiple games own the same target there is a problem.
+        1.  Get the Game with the matching player-agent.
+        2.  If no match is found return an exception.
+        3.  An id search should produce either no hits or one hit only.
 
         # Parameters:
             *   agent (Agent)
-            *   data_set (List[Game])
+            *   data_set (List[Agent])
 
         # Returns:
         SearchResult[List[Game]] containing either:
-                - On success:   List[game] in the payload.
-                - On failure:   Exception.
+            - On success: List[Game] in the payload.
+            - On failure: Exception.
 
         # Raises:
-            *   GameFinderException
+            *   AgentFinderException
         """
         method = "GameFinder._find_by_agent"
         try:
             matches = [game for game in data_set if agent in game.agents]
-            # There should be either no Games with the id or one and only one Game will have that id.
             if len(matches) == 0:
                 return SearchResult.empty()
-            # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
-            # inconsistency later.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-        
-        
         # Finally, if some exception is not handled by the checks wrap it inside an GameFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
