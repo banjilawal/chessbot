@@ -23,25 +23,23 @@ from chess.team import Team, TeamContext
 class AgentFinder(Finder[Agent]):
     """
     # ROLE: Finder
-  
+
     # RESPONSIBILITIES:
-    1.  Search AgentDataService or UniqueDataService objects for Agents with an attribute that matches the
-        target inside an AgentContext.
+    1.  Search Game collections for items which match the attribute target specified in the GameContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
-    
+
     # PARENT
         *   Finder
-  
+
     # PROVIDES:
-    AgentFinder:
-  
+        *   TeamFinder:
+
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def find(

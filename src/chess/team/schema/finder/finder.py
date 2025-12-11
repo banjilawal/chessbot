@@ -10,14 +10,11 @@ version: 1.0.0
 
 from typing import List
 
-from chess.system.find.finder import D
+
+from chess.system import Finder, GameColor, LoggingLevelRouter, SearchResult
 from chess.team import (
     NullTeamSchemaException, TeamColorBoundsException, TeamNameBoundsException, TeamSchema, TeamSchemaContext,
     TeamSchemaContextValidator, TeamSchemaFinderException
-)
-from chess.system import (
-    Context, Finder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter,
-    SearchResult, Validator
 )
 
 
@@ -26,7 +23,7 @@ class TeamSchemaFinder(Finder[TeamSchema]):
     # ROLE: Finder
 
     # RESPONSIBILITIES:
-    1.  Search Game collections for items which match the attribute target specified in the GameContext parameter.
+    1.  Search TeamSchema collections for items which match the attribute target specified in the TeamSchemaContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT
@@ -107,7 +104,7 @@ class TeamSchemaFinder(Finder[TeamSchema]):
         2.  If no match is found return an exception.
 
         # Parameters:
-            *   color (GameColor)
+            *   color (TeamSchemaColor)
 
         # Returns:
         SearchResult[List[TeamSchema]] containing either:
