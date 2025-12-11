@@ -24,8 +24,7 @@ class GameFinder(Finder[Game]):
     # ROLE: Finder
 
     # RESPONSIBILITIES:
-    1.  Search GameDataService or UniqueDataService objects for Games with an attribute that matches the
-        target inside an GameContext.
+    1.  Search GameDataService or UniqueDataService objects for Games  with a matching attribute-target.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT

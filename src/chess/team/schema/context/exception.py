@@ -11,13 +11,13 @@ from chess.system import ContextException
 
 
 __all__ = [
-    # ======================# AGENT_CONTEXT EXCEPTION SUPER CLASS #======================#
+    # ======================# TEAM_SCHEMA_CONTEXT EXCEPTION SUPER CLASS #======================#
     "TeamSchemaContextException",
 ]
 
 
 
-# ======================# AGENT_CONTEXT EXCEPTION SUPER CLASS #======================#
+# ======================# TEAM_SCHEMA_CONTEXT EXCEPTION SUPER CLASS #======================#
 class TeamSchemaContextException(ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -38,5 +38,5 @@ class TeamSchemaContextException(ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_CONTEXT_ERROR"
+    ERROR_CODE = "TEAM_SCHEMA_CONTEXT_ERROR"
     DEFAULT_ERROR_CODE = "TeamSchemaContext raised an exception."

@@ -6,74 +6,75 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
+from typing import cast
 
-from chess.system import BuildResult, EntityService, id_emitter
+
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
+from chess.system import BuildResult, EntityService, id_emitter
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
 
 
 class CoordService(EntityService[Coord]):
     """
-    # RESPONSIBILITIES:
-
-    # PROVIDES:
-        *   SquareBuilder
-        *   SquareValidator
-        *   Coord Data EntityService
-        *
-
-    # ATTRIBUTES:
-        *   builder (type[SquareBuilder]):
-        *   validator (type[SquareValidator]):
-    """
-    """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  An API for managing the integrity lifecycle of Coord objects through CoordBuilder and CoordValidator.
-    2.  Protects Coord instances from direct access to assure high reliability and consistency from a single
-        source of truth.Assure reliability and consistency by protecting Coord objects from direct access.direct access to Coord objects.
-    3.  Vector addition
-    4.  Scalar multiplication
-    5.  Converting Vectors to Coords and vice versa.
-    
-    # PROVIDES:
-        *   CoordBuilder
-        *   CoordValidator
-        *   VectorService
-        *   ScalarService
+    1.  Public facing Coord State Machine microservice API.
+    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Is authoritative, single source of truth for Coord state by providing single entry and exit points to Coord
+        lifecycle.
 
-    # ATTRIBUTES:
-        *   builder (type[CoordBuilder])
-        *   validator (type[CoordValidator])
-        *   scalar_service (type[ScalarService):
-        *   vector_service (type[VectorService])
+    # PARENT
+        *   EntityService
+
+    # PROVIDES:
+        *   CoordService
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See EntityService for inherited attributes.
     """
-    SERVICE_NAME = "CoordService"
-    
-    _id: int
-    _name: str
-    _item_builder: CoordBuilder
-    _item_validator: CoordValidator
-    _scalar_service: ScalarService
-    _vector_service: VectorService
+    DEFAULT_NAME = "CoordService"
     
     def __init__(
             self,
-            name: str = SERVICE_NAME,
+            name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             builder: CoordBuilder = CoordBuilder(),
             validator: CoordValidator = CoordValidator(),
-            scalar_service: ScalarService = ScalarService(),
-            vector_service: VectorService = VectorService(),
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (nt)
+            *   name (str)
+            *   builder (CoordFactory)
+            *   validator (CoordValidator)
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._scalar_service = scalar_service
-        self._vector_service = vector_service
-      
+
+    @property
+    def builder(self) -> CoordBuilder:
+        """get CoordBuilder"""
+        return cast(CoordBuilder, self.entity_builder)
     
-    def add_vector_to_coord(self, coord: Coord, vector: Vector) -> BuildResult[Coord]:
+    @property
+    def validator(self) -> CoordValidator:
+        """get CoordValidator"""
+        return cast(CoordValidator, self.entity_validator)
+    
+    def add_vector_to_coord(self, coord: Coord, vector: Vector, vector_service: VectorService = VectorService()) -> BuildResult[Coord]:
         """
         # Action:
         1.  validator runs integrity checks on the square param.
@@ -99,11 +100,11 @@ class CoordService(EntityService[Coord]):
         
         try:
             coord_validation = self._validator.validate(candidate=coord)
-            if coord_validation.is_failure():
+            if coord_validation.is_failure:
                 return BuildResult.failure(coord_validation.exception)
             
-            vector_validation = self._vector_service.item_validator.validate(candidate=vector)
-            if vector_validation.is_failure():
+            vector_validation = vector_service.validator.validate(candidate=vector)
+            if vector_validation.is_failure:
                 return BuildResult.failure(vector_validation.exception)
             
             return self._builder.build(
@@ -122,7 +123,7 @@ class CoordService(EntityService[Coord]):
                 )
             )
       
-    def multiply_coord_by_scalar(self, coord: Coord, scalar: Scalar) -> BuildResult[Coord]:
+    def multiply_coord_by_scalar(self, coord: Coord, scalar: Scalar, scalar_service: ScalarService = ScalarService()) -> BuildResult[Coord]:
         """
         # Action:
         1.  validator runs integrity checks on the square param.
@@ -148,11 +149,11 @@ class CoordService(EntityService[Coord]):
         
         try:
             coord_validation = self._validator.validate(candidate=coord)
-            if coord_validation.is_failure():
+            if coord_validation.is_failure:
                 return BuildResult.failure(coord_validation.exception)
             
-            scalar_validation = self._scalar_service.item_validator.validate(candidate=scalar)
-            if scalar_validation.is_failure():
+            scalar_validation = scalar_service.alidator.validate(candidate=scalar)
+            if scalar_validation.is_failure:
                 return BuildResult.failure(scalar_validation.exception)
             
             return self._builder.build(
@@ -172,7 +173,7 @@ class CoordService(EntityService[Coord]):
             )
         
         
-    def convert_vector_to_coord(self, vector: Vector) -> BuildResult[Coord]:
+    def convert_vector_to_coord(self, vector: Vector, vector_service: VectorService = VectorService()) -> BuildResult[Coord]:
         """
         # Action:
         1.  vector_service runs integrity checks on param.
@@ -194,8 +195,8 @@ class CoordService(EntityService[Coord]):
         method = "CoordService.convert_vector_to_coord"
         
         try:
-            vector_validation = self._vector_service.item_validator.validate(candidate=vector)
-            if vector_validation.is_failure():
+            vector_validation = vector_service.validator.validate(candidate=vector)
+            if vector_validation.is_failure:
                 return BuildResult.failure(vector_validation.exception)
             
             return self._builder.build(
@@ -214,7 +215,7 @@ class CoordService(EntityService[Coord]):
                 )
             )
     
-    def convert_coord_to_vector(self, coord: Coord) -> BuildResult[Vector]:
+    def convert_coord_to_vector(self, coord: Coord, vector_service: VectorService = VectorService()) -> BuildResult[Vector]:
         """
         # Action:
         1.  self._validator runs integrity checks on param.
@@ -240,10 +241,10 @@ class CoordService(EntityService[Coord]):
             if coord_validation.is_failure():
                 return BuildResult.failure(coord_validation.exception)
             
-            return self._vector_service.build(
-                x=coord.colum,
+            return vector_service.builder.build(
+                x=coord.column,
                 y=coord.row,
-                validator=self._vector_service.item_validator
+                validator=vector_service.validator
             )
         except Exception as ex:
             return BuildResult.failure(

@@ -1,3 +1,12 @@
+# src/chess/team/schema/context/builder/builder.py
+
+"""
+Module: chess.team.schema.builder.builder
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
 from typing import Optional
 
 from chess.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter

@@ -6,28 +6,74 @@ Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
 """
+from typing import cast
 
 from chess.system import EntityService, id_emitter
 from chess.rank import Rank, RankFactory, RankSpecValidator, RankValidatorFactory
 
 
-class RankCertifier(EntityService[Rank]):
-    DEFAULT_NAME = "RankCertifier"
-    _spec_validator: RankSpecValidator
+class RankService(EntityService[Rank]):
+    """
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Public facing Rank State Machine microservice API.
+    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Is authoritative, single source of truth for Rank state by providing single entry and exit points to Rank
+        lifecycle.
+
+    # PARENT
+        *   EntityService
+
+    # PROVIDES:
+        *   RankService
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See EntityService for inherited attributes.
+    """
+    DEFAULT_NAME = "RankService"
+    _spec_service: RankSpecService
     
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             builder: RankFactory = RankFactory(),
-            spec_validator: RankSpecValidator = RankSpecValidator(),
+            spec_service: RankSpecService = RankSpecService(),
             validator: RankValidatorFactory = RankValidatorFactory(),
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (nt)
+            *   name (str)
+            *   builder (RankFactory)
+            *   validator (RankValidator)
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._spec_validator = spec_validator
     
     @property
-    def spec_validator(self) -> RankSpecValidator:
-        return self._spec_validator
+    def builder(self) -> RankFactory:
+        """get RankBuilder."""
+        return cast(RankFactory, self.entity_builder)
     
-
+    @property
+    def validator(self) -> RankValidatorFactory:
+        """get RankValidator."""
+        return cast(RankValidatorFactory, self.entity_validator)
+    
+    @property
+    def spec_service(self) -> RankSpecService:
+        """get RankSpecService."""
+        return self._spec_service

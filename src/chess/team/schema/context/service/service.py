@@ -37,6 +37,7 @@ class TeamSchemaContextService(ContextService[TeamSchemaContext]):
         *   See ContextService for inherited attributes.
     """
     DEFAULT_NAME = "TeamSchemaContextService"
+    
     def __init__(
             self,
             name: str = DEFAULT_NAME,

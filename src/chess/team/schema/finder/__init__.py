@@ -14,3 +14,4 @@ None
 
 # Modules
 from .finder import TeamSchemaFinder
+from .exception import TeamSchemaFinderException

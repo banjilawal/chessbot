@@ -20,26 +20,24 @@ class AgentService(EntityService[Agent]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing API.
-    2.  Protects Agent instance's internal state.
-    3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    4.  Single entry point Agent integrity lifecycle management with AgentBuilder and AgentValidator.
+    1.  Public facing Agent State Machine microservice API.
+    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Is authoritative, single source of truth for Agent state by providing single entry and exit points to Agent
+        lifecycle.
 
     # PARENT
-        *   Entity
+        *   EntityService
     
     # PROVIDES:
-        *   AgentBuilder
-        *   AgentValidator
+        *   AgentService
 
     # LOCAL ATTRIBUTES:
     None
     
     # INHERITED ATTRIBUTES:
-    See EntityService class for inherited attributes.
+        *   See EntityService for inherited attributes.
     """
     DEFAULT_NAME = "AgentService"
-    
     def __init__(
             self,
             name: str = DEFAULT_NAME,

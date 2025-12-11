@@ -77,7 +77,6 @@ class TeamSchemaContext(Context[TeamSchema]):
         None
         """
         return {
-
             "name": self.name,
             "color": self._color,
         }

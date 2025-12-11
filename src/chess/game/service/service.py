@@ -18,23 +18,22 @@ class GameService(EntityService[Game]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing API.
-    2.  Protects Game instance's internal state.
-    3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    4.  Single entry point Game integrity lifecycle management with GameBuilder and GameValidator.
+    1.  Public facing Game State Machine microservice API.
+    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Is authoritative, single source of truth for Game state by providing single entry and exit points to Game
+        lifecycle.
 
     # PARENT
-        *   Entity
-    
+        *   EntityService
+
     # PROVIDES:
-        *   GameBuilder
-        *   GameValidator
+        *   GameService
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
-    See EntityService class for inherited attributes.
+        *   See EntityService for inherited attributes.
     """
     DEFAULT_NAME = "GameService"
     
@@ -52,7 +51,7 @@ class GameService(EntityService[Game]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (GameBuilder)
+            *   builder (GameFactory)
             *   validator (GameValidator)
 
         # Returns:
@@ -62,7 +61,7 @@ class GameService(EntityService[Game]):
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        
+    
     @property
     def builder(self) -> GameBuilder:
         """get GameBuilder"""

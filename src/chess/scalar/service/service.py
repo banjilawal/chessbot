@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
+from typing import cast
 
 from chess.system import BuildResult, EntityService
 from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
@@ -13,41 +14,59 @@ from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
 
 class ScalarService(EntityService[Scalar]):
     """
-    # ROLE: Service, Encapsulation, API layer.
-    
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for ScalarValidator and ScalarBuilder.
-    2.  Protects Scalar objects from direct manipulation.
-    3.  Extends behavior and functionality of Scalar objects.
-    4.  Public facing API for Scalar modules.
+    1.  Public facing Scalar State Machine microservice API.
+    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Is authoritative, single source of truth for Scalar state by providing single entry and exit points to Scalar
+        lifecycle.
+
+    # PARENT
+        *   EntityService
 
     # PROVIDES:
-        *   Scalar building
-        *   Scalar validation
+        *   ScalarService
 
-    # ATTRIBUTES:
-        *   builder (ScalarBuilder)
-        *   validator (ScalarValidator)
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See EntityService for inherited attributes.
     """
-    SERVICE_NAME = "ScalarService"
-    
-    _item_builder: ScalarBuilder
-    _item_validator: ScalarValidator
+    DEFAULT_NAME = "ScalarService"
     
     def __init__(
             self,
-            id: int,
-            name: str = SERVICE_NAME,
+            name: str = DEFAULT_NAME,
+            id: int = id_emitter.service_id,
             builder: ScalarBuilder = ScalarBuilder(),
-            validator: ScalarValidator = ScalarValidator()
+            validator: ScalarValidator = ScalarValidator(),
     ):
-        super().__init__(id=id, name=name)
-        self._builder = builder
-        self._validator = validator
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (nt)
+            *   name (str)
+            *   builder (ScalarFactory)
+            *   validator (ScalarValidator)
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
+        super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def item_validator(self) -> ScalarValidator:
-        return self._validator
+    def builder(self) -> ScalarBuilder:
+        """get ScalarBuilder"""
+        return cast(ScalarBuilder, self.entity_builder)
     
-    def build(self, value: int) -> BuildResult[Scalar]:
-        return self._builder.build(value, self._validator)
+    @property
+    def validator(self) -> ScalarValidator:
+        """get ScalarValidator"""
+        return cast(ScalarValidator, self.entity_validator)

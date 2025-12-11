@@ -6,51 +6,68 @@ Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
+from typing import cast
 
 from chess.system import EntityService, id_emitter
 from chess.piece import Piece, PieceFactory, PieceValidator
+
 
 class PieceService(EntityService[Piece]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing API.
-    2.  Protects Piece instance's internal state.
-    3.  Masks implementation details and business logic making features easier to use.
-    4.  Single entry point for managing Piece lifecycles with PieceBuilder and PieceValidator.
+    1.  Public facing Piece State Machine microservice API.
+    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Is authoritative, single source of truth for Piece state by providing single entry and exit points to Piece
+        lifecycle.
+
+    # PARENT
+        *   EntityService
 
     # PROVIDES:
-        *   PieceBuilder
-        *   PieceValidator
-        *   PieceSchema
+        *   PieceService
 
-    # ATTRIBUTES:
-        *   id (int)
-        *   name (str)
-        *   builder (PieceBuilder)
-        *   validator (PieceValidator)
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See EntityService for inherited attributes.
     """
-    SERVICE_NAME = "PieceService"
-    
-    _id: int
-    _name: str
-    _item_builder: PieceFactory
-    _item_validator: PieceValidator
+    DEFAULT_NAME = "PieceService"
     
     def __init__(
             self,
+            name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            name: str = SERVICE_NAME,
             builder: PieceFactory = PieceFactory(),
             validator: PieceValidator = PieceValidator(),
     ):
         """
-        # Action
-        1.  Use id_emitter to automatically generate a unique id for each PieceService instance.
-        2.  Automatic dependency injection by providing working default instances of each attribute.
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (nt)
+            *   name (str)
+            *   builder (PieceFactory)
+            *   validator (PieceValidator)
+
+        # Returns:
+        None
+
+        # Raises:
+        None
         """
-        method = "PieceService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
+    @property
+    def builder(self) -> PieceFactory:
+        """get PieceFactory"""
+        return cast(PieceFactory, self.entity_builder)
+    
+    @property
+    def validator(self) -> PieceValidator:
+        """get PieceValidator"""
+        return cast(PieceValidator, self.entity_validator)
     

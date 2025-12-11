@@ -17,28 +17,31 @@ T = TypeVar("T")
 
 class EntityService(ABC, Generic[T]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing API.
-    2.  Protects objects from direct, unprotected access.
-    3.  Encapsulates highly cohesive modules, and operations for easier extension, use and maintenance.
-    4.  Provide a single entry point managing an Entity's integrity lifecycle.
-    
+    1.  Public facing Square State Machine microservice API.
+    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Is authoritative, single source of truth for Square state by providing single entry and exit points to Square
+        lifecycle.
+
     # PARENT
     None
 
     # PROVIDES:
-        *   EntityBuilder
-        *   EntityValidator
+        *   EntityService
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+        *   id (int)
+        *   name (str)
+        *   builder (Builder[T])
+        *   validator (Validator[T])
+        
+    # INHERITED ATTRIBUTES:
     None
-        *   id (int):
-        *   name (str):
-        *   _builder (Builder[T]):
-        *   _validator (Validator[T]):
     """
+    _id: int
+    _name: str
     _builder: Builder[T]
     _validator: Validator[T]
     
@@ -50,11 +53,11 @@ class EntityService(ABC, Generic[T]):
             validator: Validator[T],
     ):
         """
-        # Action:
-            1.  Constructor
+        # ACTION:
+        Constructor
 
-        # Parameters:
-            *   id (int)
+        # PARAMETERS:
+            *   id (nt)
             *   name (str)
             *   builder (Builder[T])
             *   validator (Validator[T])
