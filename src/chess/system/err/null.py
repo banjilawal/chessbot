@@ -7,7 +7,7 @@ Created: 2025-11-21
 version: 1.0.0
 """
 
-from chess.system.err import ChessException
+from chess.system import ChessException
 
 __all__ = [
 #======================# NULL EXCEPTION SUPER CLASS #======================#

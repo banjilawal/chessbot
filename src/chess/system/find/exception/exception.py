@@ -1,7 +1,7 @@
-# src/chess/system/searcher/exception.py
+# src/chess/system/find/exception/exception.py
 
 """
-Module: chess.system.searcher.exception
+Module: chess.system.find.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -10,14 +10,31 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
+  # ======================# FINDER EXCEPTION #======================#
   "FinderException",
 ]
 
+
+# ======================# FINDER EXCEPTION #======================#
 class FinderException(ChessException):
   """
-  Super class of exceptions organic to `Finder` objects. DO NOT USE DIRECTLY. Subclasses give
-  details useful for debugging. `FinderException` exists primarily to allow catching all `Finder`
-  exceptions.
+  # ROLE: Exception Wrapper, Catchall Exception
+
+  # RESPONSIBILITIES:
+  1.  Parent of exceptions raised by Finder objects
+  3.  Catchall for Finder failure states that are not covered by a lower level Finder exception.
+
+  # PARENT:
+      *   ChessException
+
+  # PROVIDES:
+  FinderException
+
+  # LOCAL ATTRIBUTES:
+  None
+
+  # INHERITED ATTRIBUTES:
+  None
   """
   DEFAULT_CODE = "FINDER_ERROR"
   DEFAULT_MESSAGE = "Finder raised an exception."

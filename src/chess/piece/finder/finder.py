@@ -12,7 +12,8 @@ from typing import List
 from chess.team import Team
 from chess.rank import Rank
 from chess.system import LoggingLevelRouter, Finder, SearchResult
-from chess.piece import Piece, PieceContext, PieceContextValidator, PieceFinderException, PieceNullDataSetException
+from chess.piece import Piece, PieceContext, PieceContextValidator, PieceFinderException
+
 
 class PieceFinder(Finder[Piece]):
     """

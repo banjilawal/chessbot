@@ -16,3 +16,4 @@ None
 from .base import PieceServiceException
 from .invalid import InvalidPieceServiceException
 from .null import NullPieceServiceException
+from .operation import PieceServiceOperationFailedException

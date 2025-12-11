@@ -152,14 +152,14 @@ class PieceFactory(Builder[Piece]):
         try:
             # Verify the build resources.
             attribute_validation = cls._validate_build_attributes(id, name, Pawn(), team, roster_number, opening_square)
-            if attribute_validation.is_failure():
+            if attribute_validation.is_failure:
                 return BuildResult(exception=attribute_validation.exception)
             # If no errors are detected build the KingPiece object.
             piece = PawnPiece(id=id, name=name, rank=Pawn(), team=team)
             
             # If the Piece is not in team.roster register it.
             binding_result = cls._ensure_team_binding(piece=piece, team=team)
-            if binding_result.is_failure():
+            if binding_result.is_failure:
                 return BuildResult.failure(binding_result.exception)
             # Send the successfully built and registered PawnPiece inside a BuildResult.
             return BuildResult.success(piece)

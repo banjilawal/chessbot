@@ -20,6 +20,7 @@ from .bounds import *
 from .color import *
 from .inconsistency import *
 from .null import *
+from .operation import *
 from .registration import *
 from .rollback import *
 

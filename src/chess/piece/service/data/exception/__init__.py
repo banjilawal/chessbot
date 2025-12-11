@@ -15,4 +15,4 @@ None
 # Modules
 from .base import PieceDataServiceException
 from .invalid import InvalidPieceDataServiceException
-from .null import NullPieceDataServiceException
+from .null import NullPieceDataServiceException, PieceNullDataSetException
