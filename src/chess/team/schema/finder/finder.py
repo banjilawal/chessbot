@@ -30,7 +30,7 @@ class TeamSchemaFinder(Finder[TeamSchema]):
         *   Finder
 
     # PROVIDES:
-        *   TeamFinder:
+        *   TeamSchemaFinder:
 
     # LOCAL ATTRIBUTES:
     None
@@ -61,8 +61,8 @@ class TeamSchemaFinder(Finder[TeamSchema]):
 
         # Returns:
         SearchResult[List[TeamSchema]] containing either:
-                - On success: List[teamSchema] in the payload.
-                - On failure: Exception.
+            - On success: List[teamSchema] in the payload.
+            - On failure: Exception.
 
         # Raises:
             *   TypeError

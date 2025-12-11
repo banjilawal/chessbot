@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/finder/finder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/schema/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/schema/finder/finder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -803,7 +801,7 @@
       <workItem from="1765381329570" duration="3951000" />
       <workItem from="1765390140433" duration="14816000" />
       <workItem from="1765417769696" duration="247000" />
-      <workItem from="1765421010085" duration="4677000" />
+      <workItem from="1765421010085" duration="4802000" />
     </task>
     <servers />
   </component>
