@@ -33,7 +33,11 @@ class ResultStack(ABC, Generic[T]):
     None
 
     # PROVIDES:
-        *   ResultStack
+        *   errors():   --> List[Result[Exception]]
+        *   payloads():     --> List[Result[T]]
+        *   last_result():  --> Optional[Result[T]]
+        *   undo_result_push(): --> DeletionResult[T]
+        *   push_result(result: Result[T]): --> InsertionResult[T]
 
     # LOCAL ATTRIBUTES:
         *   size (int)

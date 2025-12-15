@@ -30,8 +30,10 @@ class Result(Generic[T]):
         *   is_success: --> bool
         *   is_failure: --> bool
         *   is_empty: --> bool
+        *   success(payload: T): --> Result[T]
+        *   failure(exception: Exception): --> Result[Exception]
+        *   empty(): --> Result[None]
         
-
     # LOCAL ATTRIBUTES:
         *   payload (T)
         *   exception (Exception)
