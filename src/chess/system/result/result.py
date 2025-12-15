@@ -27,7 +27,10 @@ class Result(Generic[T]):
     None
   
     # PROVIDES:
-    Result[T]
+        *   is_success: --> bool
+        *   is_failure: --> bool
+        *   is_empty: --> bool
+        
 
     # LOCAL ATTRIBUTES:
         *   payload (T)
@@ -65,12 +68,39 @@ class Result(Generic[T]):
     
     @classmethod
     def success(cls, payload: T) -> Result[T]:
+        """
+        Factory method for creating a successful Result.
+        # PARAM:
+            *   payload (T): The data to be sent to the client.
+        # RETURN:
+            *   Result[T]
+        # RAISES:
+        None
+        """
         return cls(payload=payload)
     
     @classmethod
     def failure(cls, exception: Exception) -> Result[T]:
+        """
+        Factory method for creating a failure.
+        # PARAM:
+            *   exception (Exception): cause of the failure.
+        # RETURN:
+            *   Result[Exception]
+        # RAISES:
+        None
+        """
         return cls(exception=exception)
     
     @classmethod
     def empty(cls) -> Result[None]:
+        """
+        Factory method for returning a null outcome.
+        # PARAM:
+        None
+        # RETURN:
+        Result[None]
+        # RAISES:
+        None
+        """
         return cls()

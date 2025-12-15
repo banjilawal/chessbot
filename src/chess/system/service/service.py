@@ -20,16 +20,18 @@ class EntityService(ABC, Generic[T]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Square State Machine microservice API.
+    1.  Public facing State Machine microservice API.
     2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    3.  Is authoritative, single source of truth for Square state by providing single entry and exit points to Square
-        lifecycle.
+    3.  Is authoritative, single-source-of-truth for an entity's state by providing single entry and exit points to
+        the entity's lifecycle.
+    4.  Bundles  operations that produce different Result subclasses.
 
     # PARENT:
     None
 
     # PROVIDES:
-        *   EntityService
+        *   entity_builder:  --> Builder[T]
+        *   entity_validator: --> Validator[T]
 
     # LOCAL ATTRIBUTES:
         *   id (int)
