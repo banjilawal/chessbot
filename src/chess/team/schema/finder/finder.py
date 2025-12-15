@@ -1,7 +1,7 @@
-# src/chess/team/schema/finder/finder.py
+# src/chess/team/team_schema/finder/finder.py
 
 """
-Module: chess.team.schema.finder.finder
+Module: chess.team.team_schema.finder.finder
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -119,7 +119,7 @@ class TeamSchemaFinder(Finder[TeamSchema]):
         try:
             if color in TeamSchema.color:
                 return SearchResult.success(List[TeamSchema.color])
-            # If a match is not found return an exception. Its important to know if no schema has that color.
+            # If a match is not found return an exception. Its important to know if no team_schema has that color.
             return SearchResult.failure(
                 TeamColorBoundsException(f"{method}: {TeamColorBoundsException.DEFAULT_MESSAGE}")
             )
@@ -154,7 +154,7 @@ class TeamSchemaFinder(Finder[TeamSchema]):
         try:
             if name.upper() in TeamSchema.name.upper():
                 return SearchResult.success(List[TeamSchema.name])
-            # If a match is not found return an exception. Its important to know if no schema has that name.
+            # If a match is not found return an exception. Its important to know if no team_schema has that name.
             return SearchResult.failure(
                 TeamColorBoundsException(f"{method}: {TeamNameBoundsException.DEFAULT_MESSAGE}")
             )

@@ -156,7 +156,7 @@ Raises:
   `NullDiscoverySearchContextException`: if `candidate` is validation
   `InvalidIdException`: if `visitor_id` fails validate checks
   `InvalidCommanderException`: if `agent` fails validate checks
-  `NullDiscoverySearchContextProfileException`: if `schema` is validation
+  `NullDiscoverySearchContextProfileException`: if `team_schema` is validation
   `InvalidCommanderAssignmentException`: if the assigned agent does not consistency the validated agent
   `RelationshipException`: if the bidirectional relationship between DiscoverySearchContext and Agent is broken
   `InvalidDiscoverySearchContextException`: Wraps any preceding exceptions

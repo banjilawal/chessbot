@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/service/exception/base
+# src/chess/team/team_schema/context/service/exception/base
 
 """
-Module: chess.team.schema.context.service.exception.base
+Module: chess.team.team_schema.context.service.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

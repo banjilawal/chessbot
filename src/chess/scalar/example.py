@@ -132,7 +132,7 @@ Args:
   `scalar_id`(`int`): The unique visitor_id for the scalar. Must pass `IdValidator` checks.
   `visitor_name`(`Name`): The human or cybernetic moving pieces in `Scalar.roster`. The visitor_name
     must not be None and must pass `NameValidator` checks.must pass `NameValidator` checks.
-  `schema`(`ScalarProfile`): The schema defining scalar attributes and behaviors. Must not be None and be
+  `team_schema`(`ScalarProfile`): The team_schema defining scalar attributes and behaviors. Must not be None and be
     an instance of `ScalarProfile`.
 
 Returns:

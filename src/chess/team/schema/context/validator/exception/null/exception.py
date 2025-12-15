@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/validator/exception/null/exception.py
+# src/chess/team/team_schema/context/validator/exception/null/exception.py
 
 """
-Module: chess.team.schema.validator.null.exception
+Module: chess.team.team_schema.validator.null.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/service/service.py
+# src/chess/team/team_schema/context/service/service.py
 
 """
-Module: chess.team.schema.context.service.service
+Module: chess.team.team_schema.context.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

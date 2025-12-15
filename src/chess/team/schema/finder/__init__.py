@@ -1,13 +1,13 @@
-# src/chess/team/schema/finder/__init__.py
+# src/chess/team/team_schema/finder/__init__.py
 
 """
-Module: chess.team.schema.finder.__init__
+Module: chess.team.team_schema.finder.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== TEAM.SCHEMA PACKAGE CONTENTS ===========#
+# =========== TEAM.SCHEMA.FINDER PACKAGE CONTENTS ===========#
 
 # Packages
 None

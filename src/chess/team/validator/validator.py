@@ -53,14 +53,14 @@ class TeamValidator(Validator[Team]):
         1.  Check candidate is not null .
         2.  Check if candidate is a Team. If so cast it.
         3.  Check id safety with IdentityService
-        4.  Verify schema's correctness with TeamSchemaValidator.
+        4.  Verify team_schema's correctness with TeamSchemaValidator.
         5.  Check agent safety with PlayerAgentService.
         6.  If any check fails, return the exception inside a ValidationResult.
         7.  If all pass return the Team object in a ValidationResult
 
         # PARAMETERS:
             *   candidate (Any)
-            *   schema (TeamSchema)
+            *   team_schema (TeamSchema)
             *   agent_certifier (PlayerAgentService)
             *   identity_service (IdentityService)
 
@@ -90,11 +90,11 @@ class TeamValidator(Validator[Team]):
             # Cast after the null and type checks are passed so Team attributes can be checked.
             team = cast(Team, candidate)
             
-            # check schema first
+            # check team_schema first
             schema_validation = schema_validator.validate(team.schema)
             if schema_validation.is_failure():
                 return ValidationResult.failure(schema_validation.exception)
-            # After schema checks out. Test name and id at the same time.
+            # After team_schema checks out. Test name and id at the same time.
             identity_validation = idservice.validate_identity(
                 id_candidate=team.id,
                 name_candidate=team.schema.name

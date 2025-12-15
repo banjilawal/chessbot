@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/service/exception/null.py
+# src/chess/team/team_schema/context/service/exception/null.py
 
 """
-Module: chess.team.schema.context.service.exception.null
+Module: chess.team.team_schema.context.service.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -59,7 +59,7 @@ class TeamContextBuilder(Builder[TeamContext]):
     ) -> BuildResult[TeamContext]:
         """
         # Action:
-            1. Confirm that only one in the tuple (id, name, agent, color, schema), is not null.
+            1. Confirm that only one in the tuple (id, name, agent, color, team_schema), is not null.
             2. Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3. If all checks pass build the PieceContext in a BuildResult.
 

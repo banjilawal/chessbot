@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-08-04
 version: 1.0.0
 """
-
+from chess.arena import Arena
 from chess.game import Game
 from chess.agent import Agent
 from chess.team import TeamSchema
@@ -30,7 +30,7 @@ class Team:
         *   roster (UniquePieceDataService):   Collection of Pieces the Agent can move on a Board instance.
         *   hostages (UniquePieceDataService):  Collection of captured enemy Pieces.
         *   agent (Agent):  Directs moves of Pieces in Team.roster.
-        *   schema (TeamSchema):    Defines the Team's
+        *   team_schema (TeamSchema):    Defines the Team's
                 *   name (str):                 Unique within the Game instance.
                 *   color (GameColor):          Color of the Team. (white/black)
                 *   rank_row (int):             Index or row containing the Team's ranked Pieces.
@@ -41,7 +41,7 @@ class Team:
     MAX_ROSTER_SIZE = 16
     
     _id: int
-    _game: Game
+    _arena: Arena
     _agent: Agent
     _schema: TeamSchema
     _roster: UniquePieceDataService
@@ -51,7 +51,7 @@ class Team:
             self,
             id: int,
             agent: Agent,
-            game: Game,
+            arena: Arena,
             schema: TeamSchema,
             roster: UniquePieceDataService,
             hostages: UniquePieceDataService,
@@ -63,7 +63,8 @@ class Team:
         # PARAMETERS:
             *   id (int)
             *   agent (Agent)
-            *   schema (TeamSchema)
+            *   arena (Arena)
+            *   team_schema (TeamSchema)
             *   roster (UniquePieceDataService)
             *   hostages (UniquePieceDataService)
 
@@ -76,7 +77,7 @@ class Team:
         method = "Team.__init__"
         self._id = id
         self._agent = agent
-        self._game = game
+        self._arena = arena
         self._schema = schema
         self._roster = roster
         self._hostages = hostages
@@ -90,8 +91,8 @@ class Team:
         return self._agent
     
     @property
-    def game(self) -> Game:
-        return self._game
+    def game(self) -> Arena:
+        return self._arena
     
     @property
     def schema(self) -> TeamSchema:

@@ -347,7 +347,7 @@ Example:
 # 
 # >>> from chess.team_name import Team, TeamSchema, TeamValidator
 # >>> # Create team_name new team_name and roster
-# >>> team_name = Team(visitor_team_id=1, agent=white_team_commander, schema=TeamSchema.WHITE)
+# >>> team_name = Team(visitor_team_id=1, agent=white_team_commander, team_schema=TeamSchema.WHITE)
 # >>> validate = TeamValidator.validate(team_name)
 # 
 # ## TEAM EXCEPTIONS

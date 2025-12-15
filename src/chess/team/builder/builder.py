@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 from chess.agent import Agent, AgentService
-from chess.arena import Arena
-from chess.piece import PieceFactory, UniquePieceDataService
+from chess.arena import Arena, ArenaService
+from chess.piece import PieceContext, PieceFactory, UniquePieceDataService
 from chess.system import Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
-from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaValidator
+from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaService
 
 class TeamBuilder(Builder[Team]):
     """
@@ -42,19 +42,17 @@ class TeamBuilder(Builder[Team]):
             cls,
             agent: Agent,
             arena: Arena,
-            schema: TeamSchema,
+            team_schema: TeamSchema,
             id: int = id_emitter.team_id,
-            # roster: UniquePieceDataService = UniquePieceDataService(),
-            # hostages: UniquePieceDataService = UniquePieceDataService(),
             arena_service: ArenaService = ArenaService(),
             agent_service: AgentService = AgentService(),
             idservice: IdentityService = IdentityService(),
-            schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
+            schema_service: TeamSchemaService = TeamSchemaService(),
     ) -> BuildResult[Team]:
         """
         # ACTION:
         1.  Check ID safety with IdentityService.validate_id.
-        2.  Check schema correctness with TeamSchemaValidator.validate.
+        2.  Check team_schema correctness with TeamSchemaValidator.validate.
         3.  Check agent safety with PlayAgentService.validate_player.
         4.  If any check fails, return the exception inside a BuildResult.
         5.  When all checks create a new Team object.
@@ -63,7 +61,7 @@ class TeamBuilder(Builder[Team]):
         # PARAMETERS:
             *   id (int)
             *   agent (Agent)
-            *   schema (TeamSchema)
+            *   team_schema (TeamSchema)
             *   identity_service (IdentityService)
             *   agent_service (AgentService)
             *   schema_validator (TeamSchemaValidator)
@@ -81,33 +79,32 @@ class TeamBuilder(Builder[Team]):
         try:
             # Certify the build resources are safe to use.
             id_validation = idservice.validate_id(id)
-            if id_validation.is_failure():
+            if id_validation.is_failure:
                 return BuildResult.failure(id_validation.exception)
             
-            team_schema_validation = schema_validator.validate(schema)
-            if team_schema_validation.is_failure():
-                return BuildResult.failure(team_schema_validation.exception)
+            schema_validation = schema_service.validator.validate(team_schema)
+            if schema_validation.is_failure:
+                return BuildResult.failure(schema_validation.exception)
             
-            agent_certification = agent_service.item_validator.validate(agent)
-            if agent_certification.is_failure():
-                return BuildResult.failure(agent_certification.exception)
+            agent_validation = agent_service.validator.validate(agent)
+            if agent_validation.is_failure:
+                return BuildResult.failure(agent_validation.exception)
             
-            arena_certification = arena_service.item_validator.validate(arena)
-            if arena_certification.is_failure():
-                return BuildResult.failure(arena_certification.exception)
+            arena_validation = arena_service.item_validator.validate(arena)
+            if arena_validation.is_failure():
+                return BuildResult.failure(arena_validation.exception)
+            
+            
             # If no errors are detected build the Team object.
             team = Team(
                 id=id,
                 arena=arena,
                 agent=agent,
-                schema=schema,
+                schema=team_schema,
                 roster=UniquePieceDataService(),
                 hostages=UniquePieceDataService(),
             )
-            # Add members to the roster to make the team ready for play.
-            fill_roster_result = cls._fill_roster(team, piece_factory=PieceFactory())
-            if fill_roster_result.is_failure():
-                return BuildResult.failure(fill_roster_result.exception)
+            
             # If the team is not in Agent.team_assignments register it.
             if team not in agent.team_assignments:
                 agent.team_assignments.push_unique_item(team)
@@ -142,7 +139,7 @@ class TeamBuilder(Builder[Team]):
                     rank=order.rank,
                     id_emitter=id_emitter.piece_id,
                     roster_number=order.roster_number,
-                    opening_square=order.opening_square,
+                    opening_square=order.opening_square_name,
                 )
                 if build_result.is_failure():
                     return InsertionResult.failure(build_result.exception)

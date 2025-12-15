@@ -60,12 +60,12 @@ Note:
 Example:
   ```python
   # Valid square creation
-  notification = SquareBuilder.builder(visitor_id=1, visitor_name=black-visitor_name, schema=black_square_profile)
+  notification = SquareBuilder.builder(visitor_id=1, visitor_name=black-visitor_name, team_schema=black_square_profile)
   if notification.is_success():
     square = cast(Square, notification.payload) # Guaranteed valid Square
 
   # Null visitor_name will fail gracefully
-  notification = SquareBuilder.builder(visitor_id=1, visitor_name=None, schema=black_square_profile)
+  notification = SquareBuilder.builder(visitor_id=1, visitor_name=None, team_schema=black_square_profile)
   if not notification.is_success():
     # Handle construction failure
     pass

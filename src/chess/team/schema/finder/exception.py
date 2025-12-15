@@ -1,7 +1,7 @@
-# src/chess/team/schema/finder/exception.py
+# src/chess/team/team_schema/finder/exception.py
 
 """
-Module: chess.team.schema.finder.exception
+Module: chess.team.team_schema.finder.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.system import FinderException
 
 __all__ = [
-    # ======================# TEAMSCHEMA_FINDER EXCEPTIONS #======================#
+    # ======================# TEAM_SCHEMA_FINDER EXCEPTIONS #======================#
     "TeamSchemaFinderException",
 ]
 

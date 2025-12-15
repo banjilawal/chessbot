@@ -1,19 +1,18 @@
-# src/chess/team/schema/schema.py
+# src/chess/team/team_schema/team_schema.py
 
 """
-Module: chess.team.schema.schema
+Module: chess.team.team_schema.team_schema
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
 from enum import Enum
-from typing import List
 
 from chess.scalar import Scalar
 from chess.geometry import Quadrant
 from chess.system import GameColor, ROW_SIZE
-from chess.team import BlackBattleOrder, TeamSchema
+from chess.team import BlackBattleOrder, TeamSchema, WhiteBattleOrder
 
 
 class TeamSchema(Enum):
@@ -90,31 +89,31 @@ class TeamSchema(Enum):
     def pawn_row(self) -> int:
         return self._rank_row + self._advancing_step.value
     
-    @property
-    def enemy_schema(self) -> TeamSchema:
-        return TeamSchema.BLACK if self == TeamSchema.WHITE else TeamSchema.WHITE
+    # @property
+    # def enemy_schema(self) -> TeamSchema:
+    #     return TeamSchema.BLACK if self == TeamSchema.WHITE else TeamSchema.WHITE
     
     @property
     def battle_order(self) -> [WhiteBattleOrder|BlackBattleOrder]:
         return self._battle_order
+    #
+    # @classmethod
+    # def find_by_color(cls, color: GameColor) -> TeamSchema:
+    #     if color in cls.__members__:
+    #         return cls.__members__[color]
+    #
+    # @classmethod
+    # def find_by_name(cls, name: str) -> TeamSchema:
+    #     if name in cls.__members__:
+    #         return cls.__members__[name]
     
-    @classmethod
-    def find_by_color(cls, color: GameColor) -> TeamSchema:
-        if color in cls.__members__:
-            return cls.__members__[color]
-    
-    @classmethod
-    def find_by_name(cls, name: str) -> TeamSchema:
-        if name in cls.__members__:
-            return cls.__members__[name]
-    
-    @classmethod
-    def allowed_colors(cls) -> List[GameColor]:
-        return [member.color for member in cls]
-    
-    @classmethod
-    def allowed_names(cls) -> List[str]:
-        return [member.name for member in cls]
+    # @classmethod
+    # def allowed_colors(cls) -> List[GameColor]:
+    #     return [member.color for member in cls]
+    #
+    # @classmethod
+    # def allowed_names(cls) -> List[str]:
+    #     return [member.name for member in cls]
     
     def __str__(self) -> str:
         return (

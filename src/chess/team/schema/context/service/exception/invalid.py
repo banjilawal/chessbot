@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/service/exception/invalid.py
+# src/chess/team/team_schema/context/service/exception/invalid.py
 
 """
-Module: chess.team.schema.context.service.exception.invalid
+Module: chess.team.team_schema.context.service.exception.invalid
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

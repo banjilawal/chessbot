@@ -105,7 +105,7 @@ class Agent(ABC):
     #     total_games_str = f"total games:{total_games}" if total_games > 0 else ""
     #
     #     current_side = "" if self._current_team is None else \
-    #         f" curren_team:[{self._current_team.id}, {self._current_team.schema.color}"
+    #         f" curren_team:[{self._current_team.id}, {self._current_team.team_schema.color}"
     #     return (
     #         f"Owner[id:{self.timestamp}"
     #         f" name:{self._name}"

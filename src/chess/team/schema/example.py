@@ -1,7 +1,7 @@
-# src/chess/team_name/schema/collision.py
+# src/chess/team_name/team_schema/collision.py
 
 """
-Module: chess.team_name.schema.exception
+Module: chess.team_name.team_schema.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -49,9 +49,9 @@ See the list of exceptions in the __all__ list following (e.g., TeamSchemaExcept
 NullTeamSchemaException, InvalidTeamSchemaException, ).
 """
 
-# src/chess/team_name/schema/schema.py
+# src/chess/team_name/team_schema/team_schema.py
 """
-Module: chess.team_name.schema.schema
+Module: chess.team_name.team_schema.team_schema
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
@@ -103,10 +103,10 @@ From `chess.owner`:
  * `Team`
 """
 
-# src/chess/team_name/schema/collision.py
+# src/chess/team_name/team_schema/collision.py
 
 """
-Module: chess.team_name.schema.exception
+Module: chess.team_name.team_schema.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -153,9 +153,9 @@ CONTAINS:
 See the list of exceptions in the __all__ list following (e.g., TeamSchemaException,
 NullTeamSchemaException, InvalidTeamSchemaException, ).
 """
-# src/chess/team_name/schema/schema.py
+# src/chess/team_name/team_schema/team_schema.py
 """
-Module: chess.team_name.schema.schema
+Module: chess.team_name.team_schema.team_schema
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0

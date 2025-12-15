@@ -9,46 +9,35 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.game import Game
 from chess.team import Team
 from chess.agent import Agent
+from chess.arena import Arena
 from chess.system import Context, GameColor
 
 
 class TeamContext(Context[Team]):
     """
-    # ROLE: Option Selection,
-  
+    # ROLE: Finder Filter
+
     # RESPONSIBILITIES:
-    1.  Selecting which Team attribute will be used for running TeamFinder.
-    2.  Extend Context super class' features.
-  
+    Provide an TeamFinder with an attribute value to find Teams with a matching value in
+    their version of the attribute.
+
+    # PARENT:
+        *   Context
+
     # PROVIDES:
-    1. TeamFinder filtering key-value pair.
-  
-    # ATTRIBUTES:
-        *   game (Optional[Game])
+    None
+
+    # LOCAL ATTRIBUTES:
         *   agent (Optional[Agent])
-        *   color (Optional[GameColor])
-        
-      # CONSTRUCTOR:
-        *   __init__(
-                  id: Optional[int] = None,
-                  name: Optional[sstr] = None,
-                  game: Optional[Game] = None,
-                  agent: Optional[Agent] = None,
-                  color: Optional[GameColor] = None,
-            )
-        All flags must be turned set to null byy default. Only activated flags should have a not-null
-        value.
-      
-      # CLASS METHODS:
-      None
-      
-      # INSTANCE METHODS:
-        *   to_dict() -> dict:
+        *   arena (Optional[Arena])
+        *   color (Optional[ColorColor])
+
+    # INHERITED ATTRIBUTES:
+        *   See Context class for inherited attributes.
     """
-    _game: Optional[Game] = None
+    _arena: Optional[Arena] = None
     _agent: Optional[Agent] = None
     _color: Optional[GameColor] = None
     
@@ -56,13 +45,13 @@ class TeamContext(Context[Team]):
             self,
             id: Optional[int] = None,
             name: Optional[str] = None,
-            game: Optional[Game] = None,
+            arena: Optional[Arena] = None,
             agent: Optional[Agent] = None,
             color: Optional[GameColor] = None,
     ):
         method = "TeamContext.__init__"
         super().__init__(id=id, name=name)
-        self._game = game
+        self._arena = arena
         self._agent = agent
         self._color = color
     
@@ -71,8 +60,8 @@ class TeamContext(Context[Team]):
         return self._agent
     
     @property
-    def game(self) -> Optional[Game]:
-        return self._game
+    def arena(self) -> Optional[Arena]:
+        return self._arena
     
     @property
     def color(self) -> Optional[GameColor]:
@@ -93,9 +82,9 @@ class TeamContext(Context[Team]):
         None
         """
         return {
-            "id": self.int,
+            "id": self.id,
             "name": self.name,
-            "game": self.game,
+            "arena": self._arena,
             "agent": self._agent,
             "color": self._color,
         }

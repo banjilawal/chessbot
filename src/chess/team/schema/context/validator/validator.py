@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/validator.py
+# src/chess/team/team_schema/context/validator.py
 
 """
-Module: chess.team.schema.validator
+Module: chess.team.team_schema.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

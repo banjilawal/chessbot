@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/builder/builder.py
+# src/chess/team/team_schema/context/builder/builder.py
 
 """
-Module: chess.team.schema.builder.builder
+Module: chess.team.team_schema.builder.builder
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

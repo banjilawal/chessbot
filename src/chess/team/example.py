@@ -22,7 +22,7 @@ meets all required specifications before construction completes
 Usage:
   ```python
   # Safe team_name creation with validate
-  build_result = TeamBuilder.builder(visitor_team_id=1, agent=black_commander, schema=TeamProfile.BLACK)
+  build_result = TeamBuilder.builder(visitor_team_id=1, agent=black_commander, team_schema=TeamProfile.BLACK)
 
   if build_result.is_success():
     team_name = build_result.payload
@@ -57,7 +57,7 @@ Args:
   `visitor_team_id`(`int`): The unique visitor_id for the team_name. Must pass `IdValidator` checks.
   `agent`(`Agent`): The human or cybernetic moving pieces in `Team.roster`. The agent must pass
     `PlayerAgentValidator` checks.must pass `PlayerAgentValidator` checks.
-  `schema`(`TeamProfile`): The schema defining team_name attributes and behaviors. Must not be None and be
+  `team_schema`(`TeamProfile`): The team_schema defining team_name attributes and behaviors. Must not be None and be
     an instance of `TeamProfile`.
 
 Returns:
@@ -70,8 +70,8 @@ Raises:
   This includes:
     * `InvalidIdException`: if `visitor_id` fails validate checks`
     * `InvalidCommanderException`: if `agent` fails validate checks
-    * `NullTeamProfileException`: if `schema` is None
-    * `TypeError`: if `schema` is not team_name `TeamProfile` instance
+    * `NullTeamProfileException`: if `team_schema` is None
+    * `TypeError`: if `team_schema` is not team_name `TeamProfile` instance
     * `RelationshipException`: if the bidirectional relationship between `Team` and `Agent` is broken
 
 Note:
@@ -83,12 +83,12 @@ Note:
 Example:
   ```python
   # Valid team_name creation
-  notification = TeamBuilder.builder(visitor_team_id=1, agent=black-agent, schema=black_team_profile)
+  notification = TeamBuilder.builder(visitor_team_id=1, agent=black-agent, team_schema=black_team_profile)
   if notification.is_success():
     team_name = cast(Team, notification.payload) # Guaranteed valid Team
 
   # Null agent will fail gracefully
-  notification = TeamBuilder.builder(visitor_team_id=1, agent=None, schema=black_team_profile)
+  notification = TeamBuilder.builder(visitor_team_id=1, agent=None, team_schema=black_team_profile)
   if not notification.is_success():
     # Handle construction failure
     pass
@@ -245,7 +245,7 @@ Create a `Team` object if the parameters have correctness.
 
 PARAMETERS:
     * `agent` (`Agent`): owner of `Team` object.
-    * `schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
+    * `team_schema` (`iTeamSchema`): Spec about the team_name's color, starting squares etc.
 
 RETURNS:
 `BuildResult[Team]`: A `BuildResult` containing either:

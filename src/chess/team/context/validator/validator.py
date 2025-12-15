@@ -40,7 +40,7 @@ class TeamContextValidator(Validator[TeamContext]):
         ## Validate signature:
                 validate(
                         candidate: Any,
-                        schema: TeamSchema = TeamSchema,
+                        team_schema: TeamSchema = TeamSchema,
                         agent_certifier: AgentService = AgentService(),
                         identity_service: IdentityService = IdentityService(),
                 ) -> ValidationResult[TeamContext]:
@@ -73,7 +73,7 @@ class TeamContextValidator(Validator[TeamContext]):
             *   candidate (Any)
             *   identity_service (IdentityService):
             *   agent_certifier (PlayerAgentService):
-            *   schema (TeamSchema)
+            *   team_schema (TeamSchema)
 
         # Returns:
         ValidationResult[TeamContext] containing either:

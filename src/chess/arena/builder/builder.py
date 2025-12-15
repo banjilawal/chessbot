@@ -7,7 +7,7 @@ Created: 2025-09-11
 version: 1.0.0
 """
 
-from typing import Optional
+from typing import List, Optional
 
 from chess.agent import Agent, AgentService
 from chess.board import BoardService
@@ -97,17 +97,8 @@ class ArenaBuilder(Builder[Arena]):
                     ArenaBuildFailedException(f"{method}: The players cannot be the same.")
                 )
             
-            white_team_build_result = team_service.builder.build(white_agent, TeamSchema.WHITE)
-            if white_team_build_result.failure():
-                return BuildResult.failure(white_team_build_result.exception)
-            
-            white_team = white_team_build_result.payload
-            if white_team != white_agent.current_team:
-                white_agent.team_assignments.push_unique_item(white_team)
-                
-            black_team_build_result = team_service.builder.build(black_agent, TeamSchema.BLACK)
-            if black_team_build_result.failure():
-                return BuildResult.failure(black_team_build_result.exception)
+            # build the teams
+            team_builds = cls._build_teams(build_params=[(white_agent, TeamSchema.WHITE), (black_agent, TeamSchema.BLACK)], arena=Arena(id=id))
             
             black_team = black_team_build_result.payload
             if black_team != black_agent.current_team:
@@ -136,3 +127,22 @@ class ArenaBuilder(Builder[Arena]):
                     ex=ex, message=f"{method}: {ArenaBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
+        
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _build_teams(
+            cls,
+            build_params: List[(Agent, TeamSchema)],
+            team_service: TeamService,
+            arena: Arena,
+    ) -> BuildResult[List[Team]]:
+        teams = []
+        for build_param in build_params:
+            agent, team_schema = build_param
+            build_result = team_service.builder.build(agent=agent, team_schema=team_schema, arena=arena)
+            if build_result.failure():
+                return BuildResult.failure(build_result.exception)
+            teams.append(build_result.payload)
+        return BuildResult.success(payload=teams)
+    
