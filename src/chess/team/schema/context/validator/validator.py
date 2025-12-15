@@ -28,7 +28,7 @@ class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
         *   Validator
 
     # PROVIDES:
-        * TeamSchemaValidator
+        * validate(candidate: Any): --> ValidationResult[TeamSchemaContext]
 
     # LOCAL ATTRIBUTES:
     None
