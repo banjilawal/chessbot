@@ -7,114 +7,95 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import Optional, cast
+from typing import List, cast
 
-from chess.game.team import TeamService
-from chess.team import (
-    AddingDuplicateTeamException, Team, TeamDataService, TeamInsertionFailedException,
-    UniqueTeamDataServiceException
+from chess.team import Team, TeamContext, TeamContextService, TeamDataService, TeamService
+from chess.system import (
+    DeletionResult, EntityService, GameColor, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService,
+    id_emitter
 )
-from chess.system import EntityService, InsertionResult, LoggingLevelRouter, UniqueDataService, id_emitter
 
 
 class UniqueTeamDataService(UniqueDataService[Team]):
     """
-    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing API.
-    2.  Wraps TeamDataService.
-    3.  Guarantees each item on the stack is unique.
+    1.  Ensure all items in managed by TeamDataService are unique.
+    2.  Guarantee consistency of records in TeamDataService.
+
+    # PARENT:
+        *   UniqueDataService
 
     # PROVIDES:
-        *   TeamDataService
+        *   team_service: -> TeamService
+        *   context_service: -> TeamContextService
+        *   add_team: -> InsertionResult[Team]
+        *   undo_add_team: -> DeletionResult[Team]
+        *   search_teams: -> SearchResult[List[Team]]
 
-    # ATTRIBUTES:
-        *   id (int)
-        *   name (str)
-        *   data_service (TeamDataService)
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See UniqueDataService class for inherited attributes.
     """
     DEFAULT_NAME = "UniqueTeamDataService"
     
     def __init__(
             self,
+            id: int,
             name: str = DEFAULT_NAME,
-            id: int = id_emitter.service_id, 
-            data_service: TeamDataService = TeamDataService(),
+            data_service: TeamDataService = TeamDataService()
     ):
         """
-        # Action
-        1.  Use id_emitter to automatically generate a unique id for each UniqueTeamDataService instance.
-        2.  Automatic dependency injection by providing working default instances name and TeamDataService instance.
-        """
-        super().__init__(id=id, name=name, data_service=data_service)
-        
-    
-    @property
-    def current_team(self) -> Optional[Team]:
-        return self.data_service.current_team
-    
-    @property
-    def service(self) -> TeamService:
-        return self.data_service.team_service
-        
-    @property
-    def data_service(self) -> TeamDataService:
-        return cast(TeamDataService, self._data_service)
-    
-    @LoggingLevelRouter.monitor
-    def push_unique_item(self, item: Team) -> InsertionResult[Team]:
-        """
         # ACTION:
-        1.  Use self.service.validator to verify the item is safe.
-        2.  There is no direct access to the internal list so use self.data_service.searcher to find item.
-        3.  If item already exists return an exception in an InsertionResult.
-        4.  Otherwise, push the item onto the stack and send the item.
-        5.  After the push send the item back to the caller indicating success.
+        Constructor
 
         # PARAMETERS:
-            *   item (Team)
+            *   id (int): = id_emitter.service_id
+            *   name (str): = DEFAULT_NAME
+            *   data_service (TeamDataService): = TeamDataService()
 
         # Returns:
-        InsertionResult[Team] containing either:
-            - On success: Team in the payload.
-            - On failure: Exception.
+        None
 
         # Raises:
-            *   AddingDuplicateTeamException
-            *   UniqueTeamDataServiceException
+        None
         """
-        method = "UniqueTeamDataService.push_unique"
-        
-        try:
-            # Start the error detection process.
-            validation = self.data.item_validator.validate(item)
-            if validation.is_failure():
-                return InsertionResult.failure(validation.exception)
-            
-            context_validation = self._data_service.context_service.item_builder.build(id=item.id)
-            if context_validation.is_failure():
-                return InsertionResult.failure(context_validation.exception)
-            
-            search_result = self._data_service.search(context=context_validation.payload)
-            if search_result.is_failure():
-                return InsertionResult.failure(search_result.exception)
-            
-            if search_result.is_success():
-                return InsertionResult.failure(
-                    AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
-                )
-            # After the error has been passed self._data_service returns the outcome of
-            # pushing the item on to the stack.
-            return self._data_service.push_item(item)
-        
-        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
-        # then return the exceptions inside a BuildResult.
-        except Exception as ex:
-            return InsertionResult.failure(
-                TeamInsertionFailedException(
-                    ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}"
-                )
-            )
+        super().__init__(id=id, name=name, data_service=data_service)
     
+    @property
+    def team_service(self) -> TeamService:
+        return cast(TeamDataService, self.data_service).team_service
     
+    @property
+    def context_service(self) -> TeamContextService:
+        return cast(TeamDataService, self.data_service).team_context_service
+    
+    @property
+    def size(self) -> int:
+        return self.data_service.size
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.data_service.is_empty
+    
+    @property
+    def white_teams(self) -> List[Team]:
+        result = self.data_service.search(context=TeamContext(color=GameColor.WHITE))
+        return result.payload if result.success else []
+    
+    @property
+    def black_teams(self) -> List[Team]:
+        result = self.data_service.search(context=TeamContext(color=GameColor.BLACK))
+        return result.payload if result.success else []
+    
+    def add_team(self, team: Team) -> InsertionResult[Team]:
+        return self.push_unique_item(team)
+    
+    def undo_add_team(self) -> DeletionResult[Team]:
+        return self.data_service.undo_item_push()
+    
+    def search_teams(self, context: TeamContext) -> SearchResult[List[Team]]:
+        return self.data_service.search(context)

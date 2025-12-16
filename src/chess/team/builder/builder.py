@@ -9,9 +9,13 @@ version: 1.0.0
 
 from chess.agent import Agent, AgentService
 from chess.arena import Arena, ArenaService
-from chess.piece import PieceContext, PieceFactory, UniquePieceDataService
+from chess.piece import UniquePieceDataService
+from chess.team import (
+    Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException, TeamSchema,
+    TeamSchemaService
+)
 from chess.system import Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
-from chess.team import Team, TeamBuildFailedException, TeamSchema, TeamSchemaService
+
 
 class TeamBuilder(Builder[Team]):
     """
@@ -27,7 +31,7 @@ class TeamBuilder(Builder[Team]):
          * Builder
 
      # PROVIDES:
-         *   TeamBuilder
+     None
 
      # LOCAL ATTRIBUTES:
      None
@@ -46,7 +50,7 @@ class TeamBuilder(Builder[Team]):
             id: int = id_emitter.team_id,
             arena_service: ArenaService = ArenaService(),
             agent_service: AgentService = AgentService(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
             schema_service: TeamSchemaService = TeamSchemaService(),
     ) -> BuildResult[Team]:
         """
@@ -78,7 +82,7 @@ class TeamBuilder(Builder[Team]):
         method = "TeamBuilder.builder"
         try:
             # Certify the build resources are safe to use.
-            id_validation = idservice.validate_id(id)
+            id_validation = identity_service.validate_id(id)
             if id_validation.is_failure:
                 return BuildResult.failure(id_validation.exception)
             
@@ -91,10 +95,9 @@ class TeamBuilder(Builder[Team]):
                 return BuildResult.failure(agent_validation.exception)
             
             arena_validation = arena_service.item_validator.validate(arena)
-            if arena_validation.is_failure():
+            if arena_validation.is_failure:
                 return BuildResult.failure(arena_validation.exception)
-            
-            
+        
             # If no errors are detected build the Team object.
             team = Team(
                 id=id,
@@ -104,10 +107,14 @@ class TeamBuilder(Builder[Team]):
                 roster=UniquePieceDataService(),
                 hostages=UniquePieceDataService(),
             )
+            insertion_result = cls._register_team_with_agent(agent=agent, team=team)
+            if insertion_result.is_failure:
+                return BuildResult.failure(insertion_result.exception)
             
-            # If the team is not in Agent.team_assignments register it.
-            if team not in agent.team_assignments:
-                agent.team_assignments.push_unique_item(team)
+
+            if team not in arena.teams:
+                arena.teams.append(team)
+                
             # Send the successfully built and registered Team object inside a BuildResult.
             return BuildResult.success(team)
         
@@ -118,37 +125,19 @@ class TeamBuilder(Builder[Team]):
                 TeamBuildFailedException(ex=ex, message=f"{method}: {TeamBuildFailedException.DEFAULT_MESSAGE}")
             )
         
-        
+    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _fill_roster(
-            cls,
-            team: Team,
-            piece_factory: PieceFactory = PieceFactory(),
-    ) -> InsertionResult[Team]:
-        method = "TeamBuilder.fill_roster"
+    def _register_team_with_agent(cls, agent: Agent, team: Team) -> InsertionResult[Team]:
+        """"""
+        method = "TeamBuilder._register_team_with_agent"
         try:
-            if not team.roster.is_empty:
-                return InsertionResult.failure(
-                    CannotOverRideRosterException(f"{method}: {CannotOverRideRosterException.DEFAULT_MESSAGE}")
-                )
-            for order in team.schema.battle_order:
-                build_result = piece_factory.build(
-                    team=team,
-                    name=order.name,
-                    rank=order.rank,
-                    id_emitter=id_emitter.piece_id,
-                    roster_number=order.roster_number,
-                    opening_square=order.opening_square_name,
-                )
-                if build_result.is_failure():
-                    return InsertionResult.failure(build_result.exception)
-                push_result = team.roster.push_unique_item(build_result.payload)
-                if push_result.is_failure():
-                    return InsertionResult.failure(push_result.exception)
+            search_result = agent.team_assignments.search_teams(context=TeamContext(id=team.id))
+            if search_result.is_failure:
+                return BuildResult.failure(search_result.exception)
+            if search_result.is_empty:
+                agent.team_assignments.add_team(team)
         except Exception as ex:
             return InsertionResult.failure(
-                FillingTeamRosterFailedException(
-                    ex=ex, message=f"{method}: {FillingTeamRosterFailedException.DEFAULT_MESSAGE}"
-                )
+                TeamInsertionFailedException(ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}")
             )

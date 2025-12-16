@@ -331,10 +331,10 @@ Example:
 # Created: 2025-10-03
 # version: 1.0.0
 # 
-# A package providing core classes and utilities for managing chess teams.
+# A package providing core classes and utilities for managing chess team_service.
 # 
 # ## PURPOSE
-# This package contains the foundational objects and logic for representing and managing chess teams. It defines the structure of team_name `Team`, maintains team_name roster of its `Piece` objects, and includes validate to ensure team_name correct configuration.
+# This package contains the foundational objects and logic for representing and managing chess team_service. It defines the structure of team_name `Team`, maintains team_name roster of its `Piece` objects, and includes validate to ensure team_name correct configuration.
 # 
 # ## CORE CLASSES
 # * `Team`: A class representing team_name chess team_name.

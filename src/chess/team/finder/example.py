@@ -25,7 +25,7 @@ Methods:
   - `by_name(visitor_name: str, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its visitor_name on the given `team_name`.
 
   - `by_roster_number(roster_number: int, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its roster number
-    on the given team_name. Roster numbers are unique within team_name team_name. Not unique across teams.
+    on the given team_name. Roster numbers are unique within team_name team_name. Not unique across team_service.
 
   - `hostage_by_idy(discovery_id: int, team_name: Team) -> SearchResult[CombatantPiece]`:
 
@@ -58,7 +58,7 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.coord_stack_validator],
+    Authenticating existing team_service -> See TeamValidator, module[chess.team_name.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:

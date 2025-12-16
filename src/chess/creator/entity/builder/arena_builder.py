@@ -29,9 +29,9 @@ def main():
     for p in c:
       print(p, " current point", p.positions.current_coord(), p.positions.size())
   #
-  # teams = TeamFactory.assemble()
-  # white_team_owner = teams[0].agent
-  # black_team_owner = teams[1].agent
+  # team_service = TeamFactory.assemble()
+  # white_team_owner = team_service[0].agent
+  # black_team_owner = team_service[1].agent
   #
   #
   # arena = Arena(

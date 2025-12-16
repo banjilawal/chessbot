@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/schema/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/schema/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/schema/context/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/schema/context/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/schema/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/schema/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/builder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/builder/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -808,7 +804,7 @@
       <workItem from="1765417769696" duration="247000" />
       <workItem from="1765421010085" duration="26100000" />
       <workItem from="1765806987610" duration="19396000" />
-      <workItem from="1765869093901" duration="2926000" />
+      <workItem from="1765869093901" duration="4227000" />
     </task>
     <servers />
   </component>

@@ -53,7 +53,6 @@ class ArenaBuilder(Builder[Arena]):
             white_agent: Agent,
             black_agent: Agent,
             id: int = id_emitter.arena_id,
-            team_service: TeamService = TeamService(),
             agent_service: AgentService = AgentService(),
             board_service: BoardService = BoardService(),
             service_validator: ServiceValidator = ServiceValidator(),
@@ -82,23 +81,31 @@ class ArenaBuilder(Builder[Arena]):
         try:
             # Ensure the id is safe to use.
             id_validation = identity_service.validate_id(candidate=id)
-            if id_validation.failure():
+            if id_validation.failure:
                 return BuildResult.failure(id_validation.exception)
             
             # Run safety checks on the agents
             for agent in (white_agent, black_agent):
                 validation = agent_service.validator.validate(candidate=agent)
-                if validation.failure():
+                if validation.failure:
                     return BuildResult.failure(validation.exception)
-                
             # Handle the case the agents are the same.
             if white_agent == black_agent:
-                return BuildResult.failure(
-                    ArenaBuildFailedException(f"{method}: The players cannot be the same.")
-                )
+                return BuildResult.failure(ArenaBuildFailedException(f"{method}: The players cannot be the same."))
             
-            # build the teams
-            team_builds = cls._build_teams(build_params=[(white_agent, TeamSchema.WHITE), (black_agent, TeamSchema.BLACK)], arena=Arena(id=id))
+            # Verify the board service.
+            service_validation = service_validator.validate(board_service)
+            if service_validation.failure:
+                return BuildResult.failure(service_validation.exception)
+            
+            # When the checks pass build the Arena object.
+            arena = Arena(id=id, team_service=List[Team], board=board_service)
+            
+            # build the team_service then
+            team_builds = cls._build_teams(
+                arena=arena,
+                build_params=[(white_agent, TeamSchema.WHITE), (black_agent, TeamSchema.BLACK)],
+            )
             
             black_team = black_team_build_result.payload
             if black_team != black_agent.current_team:
@@ -111,8 +118,6 @@ class ArenaBuilder(Builder[Arena]):
             return BuildResult.success(
                 payload=Arena(
                     id=id,
-                    white_team=white_team,
-                    black_team=black_team,
                     board=board_service,
                 )
             )
@@ -128,21 +133,28 @@ class ArenaBuilder(Builder[Arena]):
                 )
             )
         
-        
     @classmethod
     @LoggingLevelRouter.monitor
     def _build_teams(
             cls,
-            build_params: List[(Agent, TeamSchema)],
-            team_service: TeamService,
             arena: Arena,
+            build_params: List[(Agent, TeamSchema)],
     ) -> BuildResult[List[Team]]:
+        method = "ArenaBuilder._build_teams"
         teams = []
         for build_param in build_params:
             agent, team_schema = build_param
-            build_result = team_service.builder.build(agent=agent, team_schema=team_schema, arena=arena)
-            if build_result.failure():
+            build_result = agent.team_assignments.team_service.builder.build(
+                arena=arena,
+                agent=agent,
+                team_schema=team_schema
+            )
+            if build_result.failure:
                 return BuildResult.failure(build_result.exception)
             teams.append(build_result.payload)
+            
+            
+            
+            
         return BuildResult.success(payload=teams)
     

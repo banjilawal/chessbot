@@ -126,7 +126,7 @@ version: 1.0.0
     client requirements. Clients are responsible for ensuring a `TeamBuilder` product will not fail when used.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.coord_stack_validator],
+    Authenticating existing team_service -> See TeamValidator, module[chess.team_name.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -177,7 +177,7 @@ version: 1.0.0
     from `TeamBuilder` --should-- satisfy `TeamValidator` requirements.
 
 **Related Features**:
-    Authenticating existing teams -> See TeamValidator, module[chess.team_name.coord_stack_validator],
+    Authenticating existing team_service -> See TeamValidator, module[chess.team_name.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:
@@ -326,7 +326,7 @@ Created: 2025-09-11
     `Team` passes and additional checks before deployment.
 
 **Related Features**:
-    Building teams -> See TeamBuilder, module[chess.team_name.coord_stack_validator],
+    Building team_service -> See TeamBuilder, module[chess.team_name.coord_stack_validator],
     Handling process and rolling back failures --> See `Transaction`, module[chess.system]
 
 # THEME:

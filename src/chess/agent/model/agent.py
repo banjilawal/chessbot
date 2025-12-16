@@ -101,7 +101,7 @@ class Agent(ABC):
         return hash(self.id)
     
     # def __str__(self):
-    #     total_games = self.teams.size()
+    #     total_games = self.team_service.size()
     #     total_games_str = f"total games:{total_games}" if total_games > 0 else ""
     #
     #     current_side = "" if self._current_team is None else \

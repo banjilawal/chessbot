@@ -18,18 +18,18 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
 #     return arena
     # ArenaBuilder.place_teams(team_certifier, chess_board)
     # return Arena(team_certifier=team_certifier, chess_board=chess_board)
-    # teams: List[Team] = []
+    # team_service: List[Team] = []
     #
     # for team_config in TeamConfig:
     #   print(team_config)
     #   team_name = TeamBuilder.builder(team_config)
-    #   teams.append(team_name)
+    #   team_service.append(team_name)
     #
     # motion_controllers = RankFactory.assemble()
     # for validate in motion_controllers:
     #   print(validate)
     #
-    # for team_name in teams:
+    # for team_name in team_service:
     #   for validate in motion_controllers:
     #     for i in range(validate.number_per_team):
     #       captor = ChessPieceBuilder.builder(
@@ -39,7 +39,7 @@ from chess.creator.service.team_service_builder import TeamServiceBuilder
     #         team_name=team_name
     #       )
     #       # print(captor)
-    # return teams
+    # return team_service
   #
   # @staticmethod
   # def place_teams(team_certifier: TeamCertifier, chess_board: MapService):

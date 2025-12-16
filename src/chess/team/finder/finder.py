@@ -85,7 +85,7 @@ class TeamFinder(Finder[Team]):
     def _find_by_id(cls, data_set: List[Team], id: int) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the teams whose id matched the target.
+        1.  Get the team_service whose id matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
 
@@ -122,7 +122,7 @@ class TeamFinder(Finder[Team]):
     def _find_by_name(cls, data_set: List[Team], name: str) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the teams whose name matched the target.
+        1.  Get the team_service whose name matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
 
@@ -160,7 +160,7 @@ class TeamFinder(Finder[Team]):
     def _find_by_agent(cls, data_set: List[Team], agent: Agent) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the teams whose agent matched the target.
+        1.  Get the team_service whose agent matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
 
@@ -198,7 +198,7 @@ class TeamFinder(Finder[Team]):
     def _find_by_color(cls, data_set: List[Team], color: GameColor) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the teams whose color matched the target.
+        1.  Get the team_service whose color matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
 
@@ -235,7 +235,7 @@ class TeamFinder(Finder[Team]):
     def _find_by_game(cls, data_set: List[Team], game: GameColor) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the teams whose game matched the target.
+        1.  Get the team_service whose game matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
 

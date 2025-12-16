@@ -76,7 +76,7 @@ class TeamDataService(DataService[Team]):
     
     @property
     def team_service(self) -> TeamService:
-        return cast(TeamService, self.service)
+        return cast(TeamService, self.entity_service)
     
     @property
     def team_context_service(self) -> TeamContextService:

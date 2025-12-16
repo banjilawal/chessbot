@@ -66,7 +66,7 @@ class AgentException(ChessException):
 # class CannotRemoveOldTeamException(PlayerAgentHistoryException):
 #   """Raised if an attempt is made to remove an old team_name from TeamStack"""
 #   ERROR_CODE = "REMOVE_OLD_TEAM_ERROR"
-#   DEFAULT_MESSAGE = "Removing old teams from TeamStack is not allowed."
+#   DEFAULT_MESSAGE = "Removing old team_service from TeamStack is not allowed."
 #
 # class InvalidPlayerAgentAssignmentException(PlayerAgentHistoryException):
 #   """

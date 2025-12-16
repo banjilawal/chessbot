@@ -262,7 +262,7 @@ complexities of the builder process into team_name utility from the Piece constr
 PURPOSE:
 -------
 To execute validated TravelEvent directives by orchestrating the necessary
-state changes across the board_validator, pieces, and teams. It serves as the **engine
+state changes across the board_validator, pieces, and team_service. It serves as the **engine
 layer responsible for persistent state modification** based on accepted moves.
 
 DEPENDENCIES:
