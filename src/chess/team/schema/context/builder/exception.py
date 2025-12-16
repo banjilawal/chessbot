@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import BuildFailedException
-from chess.teamSchema import TeamSchemaContextException
+from chess.team import TeamSchemaContextException
 
 
 __all__ = [
@@ -31,7 +31,7 @@ class TeamSchemaContextBuildFailedException(TeamSchemaContextException, BuildFai
         *   BuildFailedException
 
     # PROVIDES:
-        *   TeamSchemaContextBuildFailedException
+    None
 
     # LOCAL ATTRIBUTES:
     None
