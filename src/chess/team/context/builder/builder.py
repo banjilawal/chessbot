@@ -11,13 +11,9 @@ from typing import Optional
 
 from chess.agent import Agent, AgentService
 from chess.arena import Arena, ArenaService
-from chess.arena import Arena
-from chess.arena.service import ArenaService
-from chess.system import Builder, BuildResult, ArenaColor, GameColorValidator, IdentityService, LoggingLevelRouter
+from chess.system import Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.team import (
-    NoTeamContextFlagsException, TeamContext, TeamContextBuildFailedException, TeamSchema, TeamSchemaValidator,
-    TeamValidator,
-    TooManyTeamContextFlagsException
+    NoTeamContextFlagsException, TeamContext, TeamContextBuildFailedException, TooManyTeamContextFlagsException
 )
 
 
@@ -52,7 +48,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             name: Optional[str] = None,
             arena: Optional[Arena] = None,
             agent: Optional[Agent] = None,
-            color: Optional[ArenaColor] = None,
+            color: Optional[GameColor] = None,
             arena_service: ArenaService = ArenaService(),
             agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
@@ -79,9 +75,9 @@ class TeamContextBuilder(Builder[TeamContext]):
             *   schema_validator (TeamSchemaValidator)
 
         # Returns:
-          BuildResult[TeamContext] containing either:
-                - On success: TeamContext in the payload.
-                - On failure: Exception.
+        BuildResult[TeamContext] containing either:
+            - On success: TeamContext in the payload.
+            - On failure: Exception.
 
         # Raises:
             *   TeamContextBuildFailedException
@@ -91,62 +87,61 @@ class TeamContextBuilder(Builder[TeamContext]):
         method = "PieceSearchContextBuilder.builder"
         
         try:
-            # Start the error detection process.
+            # Get how many optional parameters are not null. One param needs to be not-null
             params = [id, name, arena, agent, color]
             param_count = sum(bool(p) for p in params)
             
+            # Cannot search for a TeamSchema object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
                     NoTeamContextFlagsException(f"{method}:  {NoTeamContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            
+            # Only one property-value pair is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
                     TooManyTeamContextFlagsException(f"{method}: {TooManyTeamContextFlagsException}")
                 )
-            # If no errors are detected pick the flag whose value is not for processing.
+            # After the verifying the correct number of flags are set follow the appropriate TeamSchema build flow.
             
+            # id flag enabled, build flow.
             if id is not None:
                 validation = identity_service.validate_id(candidate=id)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # If id is correct create a id.TeamContext and return it.
+                # On validation success return an id.TeamContext in the BuildResult.
                 return BuildResult.success(payload=TeamContext(id=validation.payload))
             
-            if agent is not None:
-                validation = agent_service.validator.validate(candidate=agent)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # If agent is correct create a agent.TeamContext and return it.
-                return BuildResult.success(payload=TeamContext(agent=validation.payload))
-            
-            if arena is not None:
-                validation = arena_service.item_validator.validate(candidate=arena)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # If arena is correct create a agent.TeamContext and return it.
-                return BuildResult.success(payload=TeamContext(agent=validation.payload))
-            
+            # name flag enabled, build flow.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # If name is correct create a name.TeamContext and return it.
+                # On validation success return a name.TeamContext in the BuildResult.
                 return BuildResult.success(payload=TeamContext(name=validation.payload))
-
+            
+            # agent flag enabled, build flow.
+            if agent is not None:
+                validation = agent_service.validator.validate(candidate=agent)
+                if validation.is_failure:
+                    return BuildResult.failure(validation.exception)
+                # On validation success return a agent.TeamContext in the BuildResult.
+                return BuildResult.success(payload=TeamContext(agent=validation.payload))
+            
+            # arena flag enabled, build flow.
+            if arena is not None:
+                validation = arena_service.item_validator.validate(candidate=arena)
+                if validation.is_failure:
+                    return BuildResult.failure(validation.exception)
+                # On validation success return a arena.TeamContext in the BuildResult.
+                return BuildResult.success(payload=TeamContext(agent=validation.payload))
+            
+            # color flag enabled, build flow.
             if color is not None:
                 validation = color_validator.validate(candidate=color)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # If color is correct create a color.TeamContext and return it.
+                # On validation success return a color.TeamContext in the BuildResult.
                 return BuildResult.success(payload=TeamContext(color=validation.payload))
-            
-            if arena is not None:
-                validation = arena_service.validator.validate(candidate=color)
-                if validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                # If arena is correct create a arena.TeamContext and return it.
-                return BuildResult.success(payload=TeamContext(arena=validation.payload))
             
         # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
         # then return the exceptions inside a BuildResult.

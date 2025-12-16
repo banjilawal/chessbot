@@ -106,6 +106,7 @@ class TeamSchemaContextBuilder(Builder[TeamSchemaContext]):
                     return BuildResult.failure(validation.exception)
                 # On validation success return an GameColor_TeamSchema_context in the BuildResult.
                 return BuildResult.success(TeamSchemaContext(color=color))
+            
         # Finally, if none of the execution paths matches the state wrap the unhandled exception in a
         # TeamSchemaContextBuildFailedException then, send the exception chain a BuildResult.failure.
         except Exception as ex:

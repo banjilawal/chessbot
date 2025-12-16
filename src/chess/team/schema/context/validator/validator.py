@@ -106,7 +106,7 @@ class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
                 # On certification success return the name_team_schema_context in a ValidationResult.
                 return ValidationResult.success(context)
             
-            # Certification for the search-by-name target.
+            # Certification for the search-by-color target.
             if context.color is not None:
                 validation = color_validator.validate(candidate=context.color)
                 if validation.is_failure:

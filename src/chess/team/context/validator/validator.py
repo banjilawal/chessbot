@@ -10,10 +10,11 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.agent import AgentService
-from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from chess.arena import ArenaService
+from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
-    InvalidTeamContextException, NoTeamContextFlagsException, NullTeamContextException, TeamContext, TeamSchema,
-    TeamSchemaValidator, TooManyTeamContextFlagsException
+    InvalidTeamContextException, NoTeamContextFlagsException, NullTeamContextException, TeamContext, Team,
+    TeamValidator, TooManyTeamContextFlagsException
 )
 
 
@@ -40,7 +41,7 @@ class TeamContextValidator(Validator[TeamContext]):
         ## Validate signature:
                 validate(
                         candidate: Any,
-                        team_schema: TeamSchema = TeamSchema,
+                        team_schema: Team = Team,
                         agent_certifier: AgentService = AgentService(),
                         identity_service: IdentityService = IdentityService(),
                 ) -> ValidationResult[TeamContext]:
@@ -54,86 +55,107 @@ class TeamContextValidator(Validator[TeamContext]):
     def validate(
             cls,
             candidate: Any,
-            schema: TeamSchema = TeamSchema,
+            arena_service: ArenaService = ArenaService(),
             agent_service: AgentService = AgentService(),
-            idservice: IdentityService = IdentityService(),
-            schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
+            identity_service: IdentityService = IdentityService(),
+            color_validator: GameColorValidator = GameColorValidator(),
     ) -> ValidationResult[TeamContext]:
         """
-        # ACTION:
-        1.  Check candidate is not null.
-        2.  Check if candidate is a TeamContext. If so cast it.
-        3.  Verify only one flag is set.
-        4.  For whichever of the flag is set certify its correctness with either validators in:
-            AgentService or IdentityService.
-        5.  If any check fails, return the exception inside a ValidationResult.
-        7.  If all pass return the TeamContext object in a ValidationResult
+        # Action:
+        1.  Confirm that only one in the (id, name, agent, arena, color) tuple is not null.
+        2.  Certify the not-null attribute is safe using the appropriate service's validator.
+        3.  If any check fais return a ValidationResult containing the exception raised by the failure.
+        4.  On success Build an TeamContext are return in a ValidationResult.
 
-        # PARAMETERS:
+        # Parameters:
             *   candidate (Any)
-            *   identity_service (IdentityService):
-            *   agent_certifier (PlayerAgentService):
-            *   team_schema (TeamSchema)
+            *   color_validator (ColorValidator)
+            *   agent_service (AgentService)
+            *   arena_service (ArenaService)
+            *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[TeamContext] containing either:
-            - On success:   TeamContext in the payload.
-            - On failure:   Exception.
+            - On success: TeamContext in the payload.
+            - On failure: Exception.
 
-        # RAISES:
+        # Raises:
             *   TypeError
             *   NullTeamContextException
+            *   NoTeamContextFlagException
+            *   TooManyTeamContextFlagsException
             *   InvalidTeamContextException
         """
         method = "TeamContextValidator.validate"
         try:
-            # Start the error detection process.
+            # If the candidate is null no other checks are needed.
             if candidate is None:
                 return ValidationResult.failure(
                     NullTeamContextException(f"{method}: {NullTeamContextException.DEFAULT_MESSAGE}")
                 )
-            
+            # If the candidate is not an TeamContext validation has failed.
             if not isinstance(candidate, TeamContext):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
                 )
-            # After not-null and type checks have passed cast te TeamContext.
+            
+            # Once existence and type checks are passed, cast the candidate to Team and run structure tests.
             context = cast(TeamContext, candidate)
-            # Check if no flags were set.
+            
+            # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     NoTeamContextFlagsException(f"{method}: {NoTeamContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            # Check if more than one flag is set.
+            # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
                     TooManyTeamContextFlagsException(
                         f"{method}: {TooManyTeamContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
-            # If no errors are detected pick the flag whose value is not for processing.
+            # When structure tests are passed certify whichever search value was provided.
+            
+            # Certification for the search-by-id target.
             if context.id is not None:
-                validation = idservice.validate_id(candidate=context.id)
-                if validation.is_failure():
+                validation = identity_service.validate_id(candidate=context.id)
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
+                # On certification success return the team_id_context in a ValidationResult.
                 return ValidationResult.success(payload=context)
             
+            # Certification for the search-by-name target.
             if context.name is not None:
-                validation = idservice.validate_name(candidate=context.name)
-                if validation.is_failure():
+                validation = identity_service.validate_name(candidate=context.name)
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
+                # On certification success return the team_name_context in a ValidationResult.
                 return ValidationResult.success(payload=context)
             
+            # Certification for the search-by-agent target.
             if context.agent is not None:
-                validation = agent_service.item_validator.validate(candidate=context.agent)
-                if validation.is_failure():
+                validation = agent_service.validator.validate(candidate=context.agent)
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
+                # On certification success return the team_agent_context in a ValidationResult.
                 return ValidationResult.success(payload=context)
             
-            if context.color is not None:
-                validation = schema_validator.verify_color_in_schema(candidate=context.color)
-                if validation.is_failure():
+            # Certification for the search-by-arena target.
+            if context.arena is not None:
+                validation = arena_service.validator.validate(candidate=context.arena)
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
+                # On certification success return the team_arena_context in a ValidationResult.
+                return ValidationResult.success(payload=context)
+            
+            # Certification for the search-by-color target.
+            if context.arena is not None:
+                validation = color_validator.validate(candidate=context.color)
+                if validation.is_failure:
+                    return ValidationResult.failure(validation.exception)
+                # On certification success return the team_color_context in a ValidationResult.
+                return ValidationResult.success(payload=context)
+            
         # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
         # then return the exceptions inside a BuildResult.
         except Exception as ex:
