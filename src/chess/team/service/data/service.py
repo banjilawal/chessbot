@@ -149,5 +149,5 @@ class TeamDataService(DataService[Team]):
     #     method = "TeamDataService.searcher"
     #
     #     return self.search.find(
-    #         data_set=self.items, context=context, context_validator=self.context_service.item_validator
+    #         dataset=self.items, context=context, context_validator=self.context_service.item_validator
     #     )

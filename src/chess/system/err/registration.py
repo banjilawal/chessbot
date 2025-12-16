@@ -40,5 +40,5 @@ class RegistrationException(BiDirectionalException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_DATA_SET_REGISTRATION_ERROR"
+    ERROR_CODE = "NO_DATASET_REGISTRATION_ERROR"
     DEFAULT_MESSAGE = "The item is not found in its owner's dataset."

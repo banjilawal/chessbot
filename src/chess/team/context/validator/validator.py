@@ -70,7 +70,7 @@ class TeamContextValidator(Validator[TeamContext]):
         # Parameters:
             *   candidate (Any)
             *   color_validator (ColorValidator)
-            *   agent_service (PlayerAgentService)
+            *   player_agent_service (PlayerAgentService)
             *   arena_service (ArenaService)
             *   identity_service (IdentityService)
 
@@ -133,8 +133,8 @@ class TeamContextValidator(Validator[TeamContext]):
                 return ValidationResult.success(payload=context)
             
             # Certification for the search-by-player_agent target.
-            if context.agent is not None:
-                validation = agent_service.validator.validate(candidate=context.agent)
+            if context.player_agent is not None:
+                validation = agent_service.validator.validate(candidate=context.player_agent)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On certification success return the team_agent_context in a ValidationResult.
@@ -149,7 +149,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 return ValidationResult.success(payload=context)
             
             # Certification for the search-by-color target.
-            if context.arena is not None:
+            if context.color is not None:
                 validation = color_validator.validate(candidate=context.color)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)

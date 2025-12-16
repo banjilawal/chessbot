@@ -33,7 +33,7 @@ class InconsistencyException(ChessException):
 #======================# INCONSISTENT COLLECTION EXCEPTION #======================#
 class InconsistentCollectionException(InconsistencyException):
     """
-    Raised if a data_set's state is inconsistent or its entity_service corrupted
+    Raised if a dataset's state is inconsistent or its entity_service corrupted
     """
     ERROR_CODE = "INCONSISTENT_COLLECTION_ERROR"
     DEFAULT_MESSAGE = "Collection is an inconsistent state. Data might be corrupted."

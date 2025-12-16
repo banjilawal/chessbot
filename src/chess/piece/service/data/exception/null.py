@@ -42,7 +42,7 @@ class NullPieceDataServiceException(InvalidPieceDataServiceException, NullExcept
     DEFAULT_MESSAGE = "PieceDataService cannot be null."
 
 
-#======================# PIECE_NULL_DATA_SET EXCEPTION #======================#
+#======================# PIECE_NULL_DATASET EXCEPTION #======================#
 class PieceNullDataSetException(InvalidPieceDataServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -60,5 +60,5 @@ class PieceNullDataSetException(InvalidPieceDataServiceException, NullException)
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PIECE_NULL_DATA_SET_ERROR"
+    ERROR_CODE = "PIECE_NULL_DATASET_ERROR"
     DEFAULT_MESSAGE = "PieceDataService cannot have a null list of items."

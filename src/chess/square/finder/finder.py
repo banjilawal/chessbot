@@ -19,7 +19,7 @@ class SquareFinder(Finder[Square]):
     @classmethod
     def find(
             cls,
-            data_set: List[Square],
+            dataset: List[Square],
             context: SquareContext,
             validator: SquareContextValidator = SquareContextValidator()
     ) -> SearchResult[[Square]]:
@@ -31,13 +31,13 @@ class SquareFinder(Finder[Square]):
                 return SearchResult.failure(context_validation.exception)
             
             if context.id is not None:
-                return cls._find_by_id(id=context.id, data_set=data_set)
+                return cls._find_by_id(id=context.id, dataset=dataset)
             
             if context.name is not None:
-                return cls._find_by_name(name=context.name, data_set=data_set)
+                return cls._find_by_name(name=context.name, dataset=dataset)
             
             if context.coord:
-                return cls._find_coord(coord=context.coord, data_set=data_set)
+                return cls._find_coord(coord=context.coord, dataset=dataset)
         except Exception as ex:
             return SearchResult.failure(
                 SquareSearchServiceException(
@@ -54,12 +54,12 @@ class SquareFinder(Finder[Square]):
     def _find_by_id(
             cls,
             id: int,
-            data_set: List[Square],
+            dataset: List[Square],
     ) -> SearchResult[List[Square]]:
         """"""
         method = "CoordSearchService._find_by_id"
         try:
-            matches = [square for square in data_set if square.id == id]
+            matches = [square for square in dataset if square.id == id]
             
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -82,13 +82,13 @@ class SquareFinder(Finder[Square]):
     def _find_by_name(
             cls,
             name: str,
-            data_set: List[Square],
+            dataset: List[Square],
     ) -> SearchResult[List[Square]]:
         """"""
         method = "CoordSearchService._find_by_name"
         
         try:
-            matches = [square for square in data_set if square.name.upper() == name.upper()]
+            matches = [square for square in dataset if square.name.upper() == name.upper()]
             
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -110,13 +110,13 @@ class SquareFinder(Finder[Square]):
     def _find_by_coord(
             cls,
             coord: Coord,
-            data_set: List[Square],
+            dataset: List[Square],
     ) -> SearchResult[List[Square]]:
         """"""
         method = "CoordSearchService._find_by_coord"
         
         try:
-            matches = [square for square in data_set if square.coord == coord]
+            matches = [square for square in dataset if square.coord == coord]
             
             if len(matches) == 0:
                 return SearchResult.empty()

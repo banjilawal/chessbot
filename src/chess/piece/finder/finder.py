@@ -40,19 +40,19 @@ class PieceFinder(Finder[Piece]):
     @LoggingLevelRouter.monitor
     def find(
             cls,
-            data_set: List[Piece],
+            dataset: List[Piece],
             context: PieceContext,
             context_validator: PieceContextValidator = PieceContextValidator()
     ) -> SearchResult[List[Piece]]:
         """
         # Action:
-        1.  Verify the data_set is not null and contains only Piece objects,
+        1.  Verify the dataset is not null and contains only Piece objects,
         2.  Use context_validator to certify the provided context.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # Parameters:
-            *   data_set (List[Piece]):
+            *   dataset (List[Piece]):
             *   context: PieceContext
             *   context_validator: PieceContextValidator
 
@@ -68,8 +68,8 @@ class PieceFinder(Finder[Piece]):
         """
         method = "PieceFinder.find"
         try:
-            # Don't want to run a search if the data_Set is null.
-            if data_set is None:
+            # Don't want to run a search if the dataset is null.
+            if dataset is None:
                 return SearchResult.failure(
                     PieceNullDataSetException(f"{method}: {PieceNullDataSetException.DEFAULT_MESSAGE}")
                 )
@@ -81,19 +81,19 @@ class PieceFinder(Finder[Piece]):
             
             # Entry point into searching by piece.id.
             if context.id is not None:
-                return cls._find_by_id(data_set=data_set, id=context.id)
+                return cls._find_by_id(dataset=dataset, id=context.id)
             # Entry point into searching by piece.name.
             if context.name is not None:
-                return cls._find_by_name(data_set=data_set, name=context.name)
+                return cls._find_by_name(dataset=dataset, name=context.name)
             # Entry point into searching by piece.team.
             if context.team is not None:
-                return cls._find_by_team(data_set=data_set, team=context.team)
+                return cls._find_by_team(dataset=dataset, team=context.team)
             # Entry point into searching by piece.rank.
             if context.rank is not None:
-                return cls._find_by_rank(data_set=data_set, team=context.rank)
+                return cls._find_by_rank(dataset=dataset, team=context.rank)
             # Entry point into searching by piece's ransom.
             if context.ransom is not None:
-                return cls._find_by_ransom(data_set=data_set, ransom=context.ransom)
+                return cls._find_by_ransom(dataset=dataset, ransom=context.ransom)
         # Finally, if some exception is not handled by the checks wrap it inside an PieceFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -103,7 +103,7 @@ class PieceFinder(Finder[Piece]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_id(cls, data_set: List[Piece], id: int) -> SearchResult[List[Piece]]:
+    def _find_by_id(cls, dataset: List[Piece], id: int) -> SearchResult[List[Piece]]:
         """
         # Action:
         1.  Get the Piece with the desired id.
@@ -112,7 +112,7 @@ class PieceFinder(Finder[Piece]):
 
         # Parameters:
             *   id (int)
-            *   data_set (List[Piece])
+            *   dataset (List[Piece])
 
         # Returns:
         SearchResult[List[Piece]] containing either:
@@ -125,7 +125,7 @@ class PieceFinder(Finder[Piece]):
         method = "PieceFinder._find_by_id"
         try:
             # IDs are unique the search should either produce no result or one unique.
-            matches = [piece for piece in data_set if piece.id == id]
+            matches = [piece for piece in dataset if piece.id == id]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -140,7 +140,7 @@ class PieceFinder(Finder[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_name(cls, data_set: List[Piece], name: str) -> SearchResult[List[Piece]]:
+    def _find_by_name(cls, dataset: List[Piece], name: str) -> SearchResult[List[Piece]]:
         """
         # Action:
         1.  Get the Piece with the desired name.
@@ -149,7 +149,7 @@ class PieceFinder(Finder[Piece]):
 
         # Parameters:
             *   name (str)
-            *   data_set (List[Piece])
+            *   dataset (List[Piece])
 
         # Returns:
         SearchResult[List[Piece]] containing either:
@@ -162,7 +162,7 @@ class PieceFinder(Finder[Piece]):
         method = "PieceFinder._find_by_name"
         try:
             # Names are unique the search should either produce no result or one unique.
-            matches = [ piece for piece in data_set if piece.name.upper() == name.upper()]
+            matches = [ piece for piece in dataset if piece.name.upper() == name.upper()]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -177,14 +177,14 @@ class PieceFinder(Finder[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_team(cls, data_set: List[Piece], team: Team) -> SearchResult[List[Piece]]:
+    def _find_by_team(cls, dataset: List[Piece], team: Team) -> SearchResult[List[Piece]]:
         """
         # Action:
         1.  Get Pieces on the desired team.
 
         # Parameters:
             *   team (Team)
-            *   data_set (List[Piece])
+            *   dataset (List[Piece])
 
         # Returns:
         SearchResult[List[Piece]] containing either:
@@ -196,7 +196,7 @@ class PieceFinder(Finder[Piece]):
         """
         method = "PieceFinder._find_by_team"
         try:
-            matches = [piece for piece in data_set if piece.team == team]
+            matches = [piece for piece in dataset if piece.team == team]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -211,14 +211,14 @@ class PieceFinder(Finder[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_rank(cls, data_set: List[Piece], rank: Rank) -> SearchResult[List[Piece]]:
+    def _find_by_rank(cls, dataset: List[Piece], rank: Rank) -> SearchResult[List[Piece]]:
         """
         # Action:
         1.  Get Pieces of the desired rank.
 
         # Parameters:
             *   rank (Rank)
-            *   data_set (List[Piece])
+            *   dataset (List[Piece])
 
         # Returns:
         SearchResult[List[Piece]] containing either:
@@ -230,7 +230,7 @@ class PieceFinder(Finder[Piece]):
         """
         method = "PieceFinder._find_by_rank"
         try:
-            matches = [piece for piece in data_set if piece.rank == rank]
+            matches = [piece for piece in dataset if piece.rank == rank]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -245,14 +245,14 @@ class PieceFinder(Finder[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_ransom(cls, data_set: List[Piece], ransom: int) -> SearchResult[List[Piece]]:
+    def _find_by_ransom(cls, dataset: List[Piece], ransom: int) -> SearchResult[List[Piece]]:
         """
         # Action:
         1.  Get Pieces with the desired ransom.
 
         # Parameters:
             *   ransom (int)
-            *   data_set (List[Piece])
+            *   dataset (List[Piece])
 
         # Returns:
         SearchResult[List[Piece]] containing either:
@@ -264,7 +264,7 @@ class PieceFinder(Finder[Piece]):
         """
         method = "PieceFinder._find_by_rank"
         try:
-            matches = [piece for piece in data_set if piece.rank.ransom == ransom]
+            matches = [piece for piece in dataset if piece.rank.ransom == ransom]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()

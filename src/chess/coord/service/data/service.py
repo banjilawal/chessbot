@@ -111,7 +111,7 @@ class CoordDataService(DataService[Coord]):
     def search(self, context: CoordContext) -> SearchResult[[Coord]]:
         method = "CoordDataService.searcher"
         return self._search_service.find(
-            data_set=self.items,
+            dataset=self.items,
             context=context,
             context_validator=self.context_service.item_validator
         )

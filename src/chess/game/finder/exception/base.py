@@ -28,7 +28,7 @@ class GameFinderException(FinderException):
         *   FinderException
   
     # PROVIDES:
-        *   GameFinderException
+    None
   
     # LOCAL ATTRIBUTES:
     None

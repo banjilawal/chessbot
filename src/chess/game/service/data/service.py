@@ -119,7 +119,7 @@ class GameDataService(DataService[Game]):
     #     game_context_service = cast(GameContextService, self.context_service)
     #
     #     return self.context_service.finder.find(
-    #         data_set=self.items,
+    #         dataset=self.items,
     #         context=context,
     #         context_validator=self.context_service.item_validator
     #     )

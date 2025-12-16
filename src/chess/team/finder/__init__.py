@@ -7,13 +7,12 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-#=========== TEAM.SEARCH PACKAGE CONTENTS ===========#
+#=========== TEAM.FINDER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .exception import *
 from .finder import TeamFinder
 
 

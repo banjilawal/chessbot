@@ -1,7 +1,7 @@
 # src/chess/team/finder/finder.py
 
 """
-Module: chess.team.finder.searcher
+Module: chess.team.finder.finderer
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -10,37 +10,32 @@ version: 1.0.0
 from typing import List
 
 from chess.agent import PlayerAgent
+from chess.arena import Arena
 from chess.system import GameColor, LoggingLevelRouter, Finder, SearchResult
-from chess.team import Team, TeamContext, TeamContextValidator, TeamFinderException
+from chess.team import (
+    Team, TeamContext, TeamContextValidator, TeamFinderOperationFailedException,
+    TeamSearchDataSetNullException
+)
 
 
 class TeamFinder(Finder[Team]):
     """
     # ROLE: Finder
-  
+
     # RESPONSIBILITIES:
-    Find Team instances that match target attributes set in TeamContext
-  
+    1.  Finder Team collections for items which match the attribute target specified in the TeamContext parameter.
+    2.  Safely forward any errors encountered during a finder to the caller.
+
+    # PARENT:
+        *   Finder
+
     # PROVIDES:
-    SearchResult[List[Team]' containing either:
-        - On success: List[Team] in the payload.
-        - On failure: Exception.
-  
-    # ATTRIBUTES:
-    No attributes
-  
-    # CONSTRUCTOR:
-    Default Constructor
-  
-    # CLASS METHODS:
-        ## searcher signature:
-                def searcher(
-                        cls,
-                        data_set: List[Team],
-                        search_context: TeamSearchContext
-                ) -> SearchResult[List[Team]]:
-                
-    # INSTANCE METHODS:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     
@@ -48,154 +43,222 @@ class TeamFinder(Finder[Team]):
     @LoggingLevelRouter.monitor
     def find(
             cls,
-            data_set: List[Team],
+            dataset: List[Team],
             context: TeamContext,
             context_validator: TeamContextValidator = TeamContextValidator()
     ) -> SearchResult[List[Team]]:
-        """"""
+        """
+        # Action:
+        1.  Verify the dataset is not null and contains only Team objects,
+        2.  Use context_validator to certify the provided context.
+        3.  Context attribute routes the finder. Attribute value is the finder target.
+        4.  The outcome of the finder is sent back to the caller in a SearchResult object.
+
+        # Parameters:
+            *   dataset (List[Team]):
+            *   context: TeamContext
+            *   context_validator: TeamContextValidator
+
+        # Returns:
+        SearchResult[List[Team]] containing either:
+            - On success:   List[team] in the payload.
+            - On failure:   Exception.
+
+        # Raises:
+            *   TypeError
+            *   TeamNullDataSetException
+            *   TeamFinderOperationFailedException
+        """
         method = "TeamFinder.find"
         try:
-            result = context_validator.validate(candidate=context)
-            if result.is_failure:
-                return SearchResult.failure(result.exception)
+            # Don't want to run a finder if the dataset is null.
+            if dataset is None:
+                return SearchResult.failure(
+                    TeamSearchDataSetNullException(f"{method}: {TeamSearchDataSetNullException.DEFAULT_MESSAGE}")
+                )
+            # certify the context is safe.
+            validation_result = context_validator.validate(context)
+            if validation_result.is_failure:
+                return SearchResult.failure(validation_result.exception)
+            # After context is verified select the finder method based on the which flag is enabled.
             
+            # Entry point into findering by team's id.
             if context.id is not None:
-                return cls._find_by_id(data_set=data_set, id=context.id)
-            
+                return cls._find_by_id(dataset, context.id)
+            # Entry point into findering by team's name.
             if context.name is not None:
-                return cls._find_by_name(data_set=data_set, name=context.name)
-            
-            if context.agent is not None:
-                return cls._find_by_agent(data_set=data_set, team=context.agent)
-            
+                return cls._find_by_name(dataset=dataset, name=context.name)
+            # Entry point into findering by arena team is playing in.
+            if context.arena is not None:
+                return cls._find_by_arena(dataset=dataset, arena=context.arena)
+            # Entry point into findering by team's player_agent.
+            if context.player_agent is not None:
+                return cls._find_by_player_agent(dataset, context.player_agent)
+            # Entry point into findering by team's color.
             if context.color is not None:
-                return cls._find_by_color(data_set=data_set, team=context.color)
-            
-            if context.game is not None:
-                return cls._find_by_game(data_set=data_set, game=context.game)
-        # Finally, if there is an unhandled exception Wrap a TeamSearchFailedException exception around it
-        # then return the exceptions inside a BuildResult.
+                return cls._find_by_color(dataset=dataset, team=context.color)
+
+        # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
+        # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamFinderException(ex=ex, message=f"{method}: {TeamFinderFailedException.DEFAULT_MESSAGE}")
+                TeamFinderOperationFailedException(
+                    ex=ex, message="{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
+                )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_id(cls, data_set: List[Team], id: int) -> SearchResult[List[Team]]:
+    def _find_by_id(cls, dataset: List[Team], id: int) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the team_service whose id matched the target.
-        2.  If no matches are found return an empty SearchResult.
-        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
+        1.  Get the Team with the matching id if it exists
+        2.  Multiple, unique matches in the result indicates a problem.
 
         # Parameters:
-            *   data_set: (List[Team])
             *   id (int)
-
+            *   dataset (List[Team])
 
         # Returns:
         SearchResult[List[Team]] containing either:
-                - On success:   List[Team] in the payload.
-                - On failure:   Exception.
+            - On finding a match: List[Team] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
 
         # Raises:
-            *   TeamSearchFailedException
+            *   TeamFinderOperationFailedException
         """
         method = "TeamFinder._find_by_id"
         try:
-            matches = [team for team in data_set if team.id == id]
+            matches = [team for team in dataset if team.id == id]
+            # There should be either no Teams with the id or one and only one Team will have that id.
             if len(matches) == 0:
                 return SearchResult.empty()
-            
+            # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
+            # inconsistency later.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
+        # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
+        # then, return the exception chain inside a SearchResult.
         except Exception as ex:
-            # Finally, if there is an unhandled exception Wrap a TeamSearchFailedException exception around it
-            # then return the exceptions inside a BuildResult.
             return SearchResult.failure(
-                TeamSearchFailedException(ex=ex, message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}")
+                TeamFinderOperationFailedException(
+                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
+                )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_name(cls, data_set: List[Team], name: str) -> SearchResult[List[Team]]:
+    def _find_by_name(cls, dataset: List[Team], name: str) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the team_service whose name matched the target.
-        2.  If no matches are found return an empty SearchResult.
-        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-
+        1.  Get the Team with the matching name if it exists
+        2.  There's only two possible team names so multiple matches are possible.
+        
         # Parameters:
-            *   data_set: (List[Team])
+            *   dataset: (List[Team])
             *   name (str)
 
-
         # Returns:
         SearchResult[List[Team]] containing either:
-                - On success:   List[Team] in the payload.
-                - On failure:   Exception.
+            - On finding a match: List[Team] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
 
         # Raises:
-            *   TeamSearchFailedException
+            *   TeamFinderOperationFailedException
         """
         method = "TeamFinder._find_by_name"
-        
         try:
-            matches = [team for team in data_set if team.schema.name.upper() == name.upper()]
+            matches = [team for team in dataset if team.schema.name.upper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
-            
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         except Exception as ex:
-            # Finally, if there is an unhandled exception Wrap a TeamSearchFailedException exception around it
+            # Finally, if there is an unhandled exception Wrap a TeamFinderOperationFailedException exception around it
             # then return the exceptions inside a BuildResult.
             return SearchResult.failure(
-                TeamSearchFailedException(ex=ex, message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}")
+                TeamFinderOperationFailedException(
+                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
+                )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_agent(cls, data_set: List[Team], agent: PlayerAgent) -> SearchResult[List[Team]]:
+    def _find_by_arena(cls, dataset: [Team], arena: Arena) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the team_service whose player_agent matched the target.
-        2.  If no matches are found return an empty SearchResult.
-        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
+        1.  Get the Team with the matching arena if it exists.
 
         # Parameters:
-            *   data_set: (List[Team])
-            *   player_agent (PlayerAgent)
-
+            *   arena (Arena)
+            *   dataset (List[PlayerAgent])
 
         # Returns:
         SearchResult[List[Team]] containing either:
-                - On success:   List[Team] in the payload.
-                - On failure:   Exception.
+            - On finding a match: List[Team] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
 
         # Raises:
-            *   TeamSearchFailedException
+            *   TeamFinderOperationFailedException
         """
-        method = "TeamFinder._find_by_agent"
-        
+        method = "TeamFinder._find_by_arena"
         try:
-            matches = [team for team in data_set if team.player_agent == agent]
+            matches = [team for team in dataset if team.arena == arena]
             if len(matches) == 0:
                 return SearchResult.empty()
-            
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-        # Finally, if there is an unhandled exception Wrap a TeamSearchFailedException exception around it
-        # then return the exceptions inside a BuildResult.
+        # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
+        # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamSearchFailedException(ex=ex, message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}")
+                TeamFinderOperationFailedException(
+                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
+                )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_color(cls, data_set: List[Team], color: GameColor) -> SearchResult[List[Team]]:
+    def _find_by_player_agent(cls, dataset: [Team], player_agent: PlayerAgent) -> SearchResult[List[Team]]:
+        """
+        # Action:
+        1.  Get the Team with the matching agent if it exists
+
+        # Parameters:
+            *   player_agent (PlayerAgent)
+            *   dataset (List[PlayerAgent])
+
+        # Returns:
+        SearchResult[List[Team]] containing either:
+            - On finding a match: List[Team] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
+
+        # Raises:
+            *   TeamFinderOperationFailedException
+        """
+        method = "TeamFinder._find_by_player_agent"
+        try:
+            matches = [team for team in dataset if team.player_agent == player_agent]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            if len(matches) >= 1:
+                return SearchResult.success(payload=matches)
+        # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
+        # then, return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                TeamFinderOperationFailedException(
+                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_color(cls, dataset: List[Team], color: GameColor) -> SearchResult[List[Team]]:
         """
         # Action:
         1.  Get the team_service whose color matched the target.
@@ -203,66 +266,32 @@ class TeamFinder(Finder[Team]):
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
 
         # Parameters:
-            *   data_set: (List[Team])
-            *   color (GameColor)
+            *   dataset: (List[Team])
+            *   color (ArenaColor)
 
         # Returns:
         SearchResult[List[Team]] containing either:
-                - On success:   List[Team] in the payload.
-                - On failure:   Exception.
+            - On finding a match: List[Team] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
 
         # Raises:
-            *   TeamSearchFailedException
+            *   TeamFinderOperationFailedException
         """
         method = "TeamFinder._find_by_color"
         
         try:
-            matches = [team for team in data_set if team.schema.color == color]
+            matches = [team for team in dataset if team.schema.color == color]
             if len(matches) == 0:
                 return SearchResult.empty()
-            
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-        # Finally, if there is an unhandled exception Wrap a TeamSearchFailedException exception around it
+        # Finally, if there is an unhandled exception Wrap a TeamFinderOperationFailedException exception around it
         # then return the exceptions inside a BuildResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamSearchFailedException(ex=ex, message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}")
+                TeamFinderOperationFailedException(
+                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
+                )
             )
     
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_game(cls, data_set: List[Team], game: GameColor) -> SearchResult[List[Team]]:
-        """
-        # Action:
-        1.  Get the team_service whose game matched the target.
-        2.  If no matches are found return an empty SearchResult.
-        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-
-        # Parameters:
-            *   data_set: (List[Team])
-            *   game (Game)
-
-        # Returns:
-        SearchResult[List[Team]] containing either:
-                - On success:   List[Team] in the payload.
-                - On failure:   Exception.
-
-        # Raises:
-            *   TeamSearchFailedException
-        """
-        method = "TeamFinder._find_by_game"
-        
-        try:
-            matches = [team for team in data_set if team.arena == game]
-            if len(matches) == 0:
-                return SearchResult.empty()
-            
-            if len(matches) >= 1:
-                return SearchResult.success(payload=matches)
-        # Finally, if there is an unhandled exception Wrap a TeamSearchFailedException exception around it
-        # then return the exceptions inside a BuildResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                TeamSearchFailedException(ex=ex, message=f"{method}:{TeamSearchFailedException.DEFAULT_MESSAGE}")
-            )

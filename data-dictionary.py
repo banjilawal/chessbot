@@ -340,7 +340,7 @@ class Square(BaseModel):
 
 class ChessBoard(BaseModel):
   """
-  Manages the state of the chessboard as team_name data_set of Squares.
+  Manages the state of the chessboard as team_name dataset of Squares.
   """
   id: int = Field(..., gt=0)
   squares: List[List[Square]]

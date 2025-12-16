@@ -13,7 +13,6 @@ from chess.game import InvalidGameDataServiceException
 
 __all__ = [
     "GameDataServiceNullException",
-    "GameNullDataSetException",
 ]
 
 
@@ -40,25 +39,3 @@ class GameDataServiceNullException(InvalidGameDataServiceException, NullExceptio
     """
     ERROR_CODE = "NULL_GAME_DATA_SERVICE_ERROR"
     DEFAULT_MESSAGE = "GameDataService cannot be null."
-
-
-#======================# GAME_NULL_DATA_SET EXCEPTION #======================#
-class GameNullDataSetException(InvalidGameDataServiceException, NullException):
-    """
-    # ROLE: Error Tracing, Debugging
-
-    # RESPONSIBILITIES:
-    1.  Indicate that GameDataService.items does not exist.
-
-    # PARENT:
-        *   InvalidGameDataServiceException
-        *   NullException
-
-    # PROVIDES:
-    GameNullDataSetException
-
-    # ATTRIBUTES:
-    None
-    """
-    ERROR_CODE = "GAME_NULL_DATA_SET_ERROR"
-    DEFAULT_MESSAGE = "GameDataService cannot have a null list of items."

@@ -67,7 +67,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
 
         These Parameters must be provided:
             *   team_service (TeamService)
-            *   agent_service (PlayerAgentService)
+            *   player_agent_service (PlayerAgentService)
             *   number_validator (NumberValidator)
 
         # Returns:

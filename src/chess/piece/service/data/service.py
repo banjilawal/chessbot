@@ -129,5 +129,5 @@ class PieceDataService(DataService[Piece]):
         method = "PieceDataService.searcher"
         
         return self.search.find(
-            data_set=self.items, context=context, context_validator=self.context_service.item_validator
+            dataset=self.items, context=context, context_validator=self.context_service.item_validator
         )

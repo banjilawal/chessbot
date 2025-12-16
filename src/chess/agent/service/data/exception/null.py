@@ -42,7 +42,7 @@ class NullAgentDataServiceException(InvalidAgentDataServiceException, NullExcept
     DEFAULT_MESSAGE = "AgentDataService cannot be null."
 
 
-#======================# AGENT_NULL_DATA_SET EXCEPTION #======================#
+#======================# AGENT_NULL_DATASET EXCEPTION #======================#
 class AgentNullDataSetException(InvalidAgentDataServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -60,5 +60,5 @@ class AgentNullDataSetException(InvalidAgentDataServiceException, NullException)
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_NULL_DATA_SET_ERROR"
+    ERROR_CODE = "AGENT_NULL_DATASET_ERROR"
     DEFAULT_MESSAGE = "AgentDataService cannot have a null list of items."

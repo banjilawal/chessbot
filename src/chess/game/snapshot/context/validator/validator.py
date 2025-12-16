@@ -61,7 +61,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
             *   team (Optional[Team])
 
         These Parameters must be provided:
-            *   agent_service (PlayerAgentService)
+            *   player_agent_service (PlayerAgentService)
             *   number_validator (NumberValidator)
 
         # Returns:

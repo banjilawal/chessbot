@@ -31,7 +31,7 @@ class AgentDataService(DataService[PlayerAgent]):
         *   DataService
 
     # PROVIDES:
-        *   agent_service:  -> PlayerAgentService
+        *   player_agent_service:  -> PlayerAgentService
         *   agent_context_service:  -> AgentContextService
 
     # LOCAL ATTRIBUTES:
@@ -121,7 +121,7 @@ class AgentDataService(DataService[PlayerAgent]):
     #     agent_context_service = cast(AgentContextService, self.context_service)
     #
     #     return self.context_service.finder.find(
-    #         data_set=self.items,
+    #         dataset=self.items,
     #         context=context,
     #         context_validator=self.context_service.item_validator
     #     )

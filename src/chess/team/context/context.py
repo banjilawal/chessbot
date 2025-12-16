@@ -38,7 +38,7 @@ class TeamContext(Context[Team]):
         *   See Context class for inherited attributes.
     """
     _arena: Optional[Arena] = None
-    _agent: Optional[PlayerAgent] = None
+    _player_agent: Optional[PlayerAgent] = None
     _color: Optional[GameColor] = None
     
     def __init__(
@@ -46,18 +46,18 @@ class TeamContext(Context[Team]):
             id: Optional[int] = None,
             name: Optional[str] = None,
             arena: Optional[Arena] = None,
-            agent: Optional[PlayerAgent] = None,
+            player_agent: Optional[PlayerAgent] = None,
             color: Optional[GameColor] = None,
     ):
         method = "TeamContext.__init__"
         super().__init__(id=id, name=name)
         self._arena = arena
-        self._agent = agent
+        self._player_agent = player_agent
         self._color = color
     
     @property
-    def agent(self) -> Optional[PlayerAgent]:
-        return self._agent
+    def player_agent(self) -> Optional[PlayerAgent]:
+        return self._player_agent
     
     @property
     def arena(self) -> Optional[Arena]:
@@ -85,6 +85,6 @@ class TeamContext(Context[Team]):
             "id": self.id,
             "name": self.name,
             "arena": self._arena,
-            "player_agent": self._agent,
+            "player_agent": self._player_agent,
             "color": self._color,
         }

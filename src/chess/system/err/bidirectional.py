@@ -56,7 +56,7 @@ class BiDirectionalException(ChessException):
     ## WHAT IS A REGISTRATION RELATIONSHIP
     THere are two conditions.
         1.  many_side_entity.owner == owner
-        2.  many_side_entity in owner.many_items_data_set.
+        2.  many_side_entity in owner.many_items_dataset.
         
     # ROLE: Error Tracing, Debugging
     

@@ -60,7 +60,7 @@ class GameContextValidator(Validator[GameContext]):
             *   player_agent (Optional[PlayerAgent])
 
         These Parameters must be provided:
-            *   agent_service (PlayerAgentService)
+            *   player_agent_service (PlayerAgentService)
             *   identity_service (IdentityService)
 
         # Returns:

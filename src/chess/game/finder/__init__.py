@@ -10,9 +10,8 @@ version: 1.0.0
 #=========== GAME.FINDER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .exception import GameFinderException
-from .finder import GameSnapshotFinder
+from .finder import GameFinder
 

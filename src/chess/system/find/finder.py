@@ -33,7 +33,7 @@ class Finder(ABC, Generic[D]):
   """
   """
   implement by entities "owning" relationships for unified old_search
-  by data_set attributes with validated params.
+  by dataset attributes with validated params.
 
   Attributes:
     None Implementors declare their own
@@ -43,14 +43,14 @@ class Finder(ABC, Generic[D]):
   @abstractmethod
   def find(
           cls,
-          data_set: List[D],
+          dataset: List[D],
           context: Context[D],
           context_validator: Validator[Context[D]]
   ) -> SearchResult[List[D]]:
       """
       Action:
       Parameters:
-          * data_set (List[D])
+          * dataset (List[D])
           * context (Context[D)
           * context_validator (Validator[Context[D])
       Returns:

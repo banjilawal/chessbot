@@ -65,7 +65,7 @@ class TeamBuilder(Builder[Team]):
             *   player_agent (PlayerAgent)
             *   team_schema (TeamSchema)
             *   identity_service (IdentityService)
-            *   agent_service (PlayerAgentService)
+            *   player_agent_service (PlayerAgentService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.
         

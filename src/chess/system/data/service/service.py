@@ -128,7 +128,7 @@ class DataService(ABC, Generic[D]):
         """"""
         method = "DataService.search"
         return self._context_service.entity_finder.find(
-            data_set=self.items,
+            dataset=self.items,
             context=context,
             context_validator=self._context_service.entity_validator,
         )

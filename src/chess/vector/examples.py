@@ -262,7 +262,7 @@ Example:
 #
 #
 # ## EXCEPTION CLASSES
-# This package defines team_name data_set of specific exceptions for issues encountered when
+# This package defines team_name dataset of specific exceptions for issues encountered when
 # working with `Vector` instances. The primary goal is to provide team_name clean and
 # consistent way to handle system vector-related errors, such as validation values or
 # out-of-bounds components. This granular approach helps developers quickly

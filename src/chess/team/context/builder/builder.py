@@ -47,10 +47,10 @@ class TeamContextBuilder(Builder[TeamContext]):
             id: Optional[int] = None,
             name: Optional[str] = None,
             arena: Optional[Arena] = None,
-            agent: Optional[PlayerAgent] = None,
+            player_agent: Optional[PlayerAgent] = None,
             color: Optional[GameColor] = None,
             arena_service: ArenaService = ArenaService(),
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            player_agent_service: PlayerAgentService = PlayerAgentService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[TeamContext]:
@@ -88,7 +88,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         
         try:
             # Get how many optional parameters are not null. One param needs to be not-null
-            params = [id, name, arena, agent, color]
+            params = [id, name, arena, player_agent, color]
             param_count = sum(bool(p) for p in params)
             
             # Cannot search for a TeamSchema object if no attribute value is provided for a hit.
@@ -120,12 +120,12 @@ class TeamContextBuilder(Builder[TeamContext]):
                 return BuildResult.success(payload=TeamContext(name=validation.payload))
             
             # player_agent flag enabled, build flow.
-            if agent is not None:
-                validation = agent_service.validator.validate(candidate=agent)
+            if player_agent is not None:
+                validation = player_agent_service.validator.validate(candidate=player_agent)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a player_agent.TeamContext in the BuildResult.
-                return BuildResult.success(payload=TeamContext(agent=validation.payload))
+                return BuildResult.success(payload=TeamContext(player_agent=validation.payload))
             
             # arena flag enabled, build flow.
             if arena is not None:
@@ -133,7 +133,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a arena.TeamContext in the BuildResult.
-                return BuildResult.success(payload=TeamContext(agent=validation.payload))
+                return BuildResult.success(payload=TeamContext(player_agent=validation.payload))
             
             # color flag enabled, build flow.
             if color is not None:

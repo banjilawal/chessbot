@@ -44,18 +44,18 @@ class TeamSchemaFinder(Finder[TeamSchema]):
     def find(
             cls,
             context: TeamSchemaContext,
-            data_set: List[TeamSchema] = List[TeamSchema],
+            dataset: List[TeamSchema] = List[TeamSchema],
             context_validator: TeamSchemaContextValidator = TeamSchemaContextValidator()
     ) -> SearchResult[List[TeamSchema]]:
         """
         # Action:
-        1.  Verify the data_set is not null and contains only TeamSchema objects,
+        1.  Verify the dataset is not null and contains only TeamSchema objects,
         2.  Use context_validator to certify the provided context.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # Parameters:
-            *   data_set (List[TeamSchema]):
+            *   dataset (List[TeamSchema]):
             *   context: TeamSchemaContext
             *   context_validator: TeamSchemaContextValidator
 
@@ -71,8 +71,8 @@ class TeamSchemaFinder(Finder[TeamSchema]):
         """
         method = "TeamSchemaFinder.find"
         try:
-            # Don't want to run a search if the data_Set is null.
-            if data_set is None:
+            # Don't want to run a search if the dataset is null.
+            if dataset is None:
                 return SearchResult.failure(
                     NullTeamSchemaException(f"{method}: {NullTeamSchemaException.DEFAULT_MESSAGE}")
                 )

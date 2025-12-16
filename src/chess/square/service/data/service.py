@@ -54,5 +54,5 @@ class SquareDataService(DataService[Square]):
         """"""
         method = "SquareDataService.searcher"
         return self.context_service.search.find(
-            data_set=self.items, context=context, context_validator=self.context_service.validator
+            dataset=self.items, context=context, context_validator=self.context_service.validator
         )

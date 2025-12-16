@@ -44,19 +44,19 @@ class AgentFinder(Finder[PlayerAgent]):
     @LoggingLevelRouter.monitor
     def find(
             cls,
-            data_set: List[PlayerAgent],
+            dataset: List[PlayerAgent],
             context: AgentContext,
             context_validator: AgentContextValidator = AgentContextValidator()
     ) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
-        1.  Verify the data_set is not null and contains only PlayerAgent objects,
+        1.  Verify the dataset is not null and contains only PlayerAgent objects,
         2.  Use context_validator to certify the provided context.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # Parameters:
-            *   data_set (List[PlayerAgent]):
+            *   dataset (List[PlayerAgent]):
             *   context: AgentContext
             *   context_validator: AgentContextValidator
 
@@ -72,8 +72,8 @@ class AgentFinder(Finder[PlayerAgent]):
         """
         method = "AgentFinder.find"
         try:
-            # Don't want to run a search if the data_Set is null.
-            if data_set is None:
+            # Don't want to run a search if the dataset is null.
+            if dataset is None:
                 return SearchResult.failure(
                     AgentNullDataSetException(f"{method}: {AgentNullDataSetException.DEFAULT_MESSAGE}")
                 )
@@ -85,16 +85,16 @@ class AgentFinder(Finder[PlayerAgent]):
             
             # Entry point into searching by player_agent.id.
             if context.id is not None:
-                return cls._find_by_id(data_set, context.id)
+                return cls._find_by_id(dataset, context.id)
             # Entry point into searching by player_agent.name.
             if context.name is not None:
-                return cls._find_by_name(data_set, context.name)
+                return cls._find_by_name(dataset, context.name)
             # Entry point into searching by player_agent's team.
             if context.team is not None:
-                return cls._find_by_team(data_set, context.team)
+                return cls._find_by_team(dataset, context.team)
             # Entry point into searching by AgentVariety (Human or Machine)
             if context.variety is not None:
-                return cls._find_by_variety(data_set, context.variety)
+                return cls._find_by_variety(dataset, context.variety)
         # Finally, if some exception is not handled by the checks wrap it inside an AgentFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -104,7 +104,7 @@ class AgentFinder(Finder[PlayerAgent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_id(cls, data_set: [PlayerAgent], id: int) -> SearchResult[List[PlayerAgent]]:
+    def _find_by_id(cls, dataset: [PlayerAgent], id: int) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
         1.  Get the PlayerAgent with the matching id.
@@ -114,7 +114,7 @@ class AgentFinder(Finder[PlayerAgent]):
 
         # Parameters:
             *   id (int)
-            *   data_set (List[PlayerAgent])
+            *   dataset (List[PlayerAgent])
 
         # Returns:
         SearchResult[List[PlayerAgent]] containing either:
@@ -126,7 +126,7 @@ class AgentFinder(Finder[PlayerAgent]):
         """
         method = "AgentFinder._find_by_id"
         try:
-            matches = [agent for agent in data_set if agent.id == id]
+            matches = [agent for agent in dataset if agent.id == id]
             # There should be either no Agents with the id or one and only one PlayerAgent will have that id.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -143,7 +143,7 @@ class AgentFinder(Finder[PlayerAgent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_name(cls, data_set: [PlayerAgent], name: str) -> SearchResult[List[PlayerAgent]]:
+    def _find_by_name(cls, dataset: [PlayerAgent], name: str) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
         1.  Get the PlayerAgent with the matching name.
@@ -153,7 +153,7 @@ class AgentFinder(Finder[PlayerAgent]):
 
         # Parameters:
             *   name (str)
-            *   data_set (List[PlayerAgent])
+            *   dataset (List[PlayerAgent])
 
         # Returns:
         SearchResult[List[PlayerAgent]] containing either:
@@ -166,7 +166,7 @@ class AgentFinder(Finder[PlayerAgent]):
         method = "AgentFinder._find_by_name"
         try:
             # Names are unique the search should only produce one unique result.
-            matches = [agent for agent in data_set if agent.name.upper() == name.upper()]
+            matches = [agent for agent in dataset if agent.name.upper() == name.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
@@ -182,7 +182,7 @@ class AgentFinder(Finder[PlayerAgent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_team(cls, data_set: [PlayerAgent], team: Team) -> SearchResult[List[PlayerAgent]]:
+    def _find_by_team(cls, dataset: [PlayerAgent], team: Team) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
         1.  Get the PlayerAgent with the matching team.
@@ -192,7 +192,7 @@ class AgentFinder(Finder[PlayerAgent]):
 
         # Parameters:
             *   team (Team)
-            *   data_set (List[PlayerAgent])
+            *   dataset (List[PlayerAgent])
 
         # Returns:
         SearchResult[List[PlayerAgent]] containing either:
@@ -206,7 +206,7 @@ class AgentFinder(Finder[PlayerAgent]):
         try:
             # Loop through the set and return the first player_agent who ran the team.
             # If more than one PlayerAgent is returned there might be a problem.
-            for agent in data_set:
+            for agent in dataset:
                 team_search = agent.team_assignments.search(context=TeamContext(id=team.id))
                 if team_search.is_failure:
                     return SearchResult.failure(team_search.exception)
@@ -224,7 +224,7 @@ class AgentFinder(Finder[PlayerAgent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_variety(cls, data_set: [PlayerAgent], variety) -> SearchResult[[PlayerAgent]]:
+    def _find_by_variety(cls, dataset: [PlayerAgent], variety) -> SearchResult[[PlayerAgent]]:
         """
         # Action:
         1.  Get the Agents whose subclass matches the AgentVariety
@@ -234,7 +234,7 @@ class AgentFinder(Finder[PlayerAgent]):
 
         # Parameters:
             *   team (Team)
-            *   data_set (List[PlayerAgent])
+            *   dataset (List[PlayerAgent])
 
         # Returns:
         SearchResult[List[PlayerAgent]] containing either:
@@ -248,7 +248,7 @@ class AgentFinder(Finder[PlayerAgent]):
         try:
             matches = []
             # Use the variety to pick which concrete PlayerAgent type needs to be found.
-            matches = [agent for agent in data_set if isinstance(agent, AgentVariety.subclass_from_variety(variety))]
+            matches = [agent for agent in dataset if isinstance(agent, AgentVariety.subclass_from_variety(variety))]
             if len(matches) == 0:
                 return SearchResult.empty()
             if len(matches) >= 1:
