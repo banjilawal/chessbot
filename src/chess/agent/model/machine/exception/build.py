@@ -1,7 +1,7 @@
-# src/chess/agent/model/machine/exception/build.py
+# src/chess/player_agent/model/machine/exception/build.py
 
 """
-Module: chess.agent.model.machine.exception.build
+Module: chess.player_agent.model.machine.exception.build
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

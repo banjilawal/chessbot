@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.team import Team
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.arena import Arena
 from chess.system import Context, GameColor
 
@@ -30,7 +30,7 @@ class TeamContext(Context[Team]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   agent (Optional[Agent])
+        *   player_agent (Optional[PlayerAgent])
         *   arena (Optional[Arena])
         *   color (Optional[ColorColor])
 
@@ -38,7 +38,7 @@ class TeamContext(Context[Team]):
         *   See Context class for inherited attributes.
     """
     _arena: Optional[Arena] = None
-    _agent: Optional[Agent] = None
+    _agent: Optional[PlayerAgent] = None
     _color: Optional[GameColor] = None
     
     def __init__(
@@ -46,7 +46,7 @@ class TeamContext(Context[Team]):
             id: Optional[int] = None,
             name: Optional[str] = None,
             arena: Optional[Arena] = None,
-            agent: Optional[Agent] = None,
+            agent: Optional[PlayerAgent] = None,
             color: Optional[GameColor] = None,
     ):
         method = "TeamContext.__init__"
@@ -56,7 +56,7 @@ class TeamContext(Context[Team]):
         self._color = color
     
     @property
-    def agent(self) -> Optional[Agent]:
+    def agent(self) -> Optional[PlayerAgent]:
         return self._agent
     
     @property
@@ -85,6 +85,6 @@ class TeamContext(Context[Team]):
             "id": self.id,
             "name": self.name,
             "arena": self._arena,
-            "agent": self._agent,
+            "player_agent": self._agent,
             "color": self._color,
         }

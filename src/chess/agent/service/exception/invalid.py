@@ -1,7 +1,7 @@
-# src/chess/agent/service/exception/invalid.py
+# src/chess/player_agent/service/exception/invalid.py
 
 """
-Module: chess.agent.service.exception.invalid
+Module: chess.player_agent.service.exception.invalid
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -22,7 +22,7 @@ class InvalidAgentServiceException(AgentServiceException, ValidationFailedExcept
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during AgentService verification process.
+    1.  Parent of exceptions raised during PlayerAgentService verification process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an AgentServiceValidator method.
 
     # PARENT:
@@ -36,4 +36,4 @@ class InvalidAgentServiceException(AgentServiceException, ValidationFailedExcept
     None
     """
     ERROR_CODE = "AGENT_SERVICE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "AgentService validation failed."
+    DEFAULT_MESSAGE = "PlayerAgentService validation failed."

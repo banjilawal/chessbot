@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/registration/agent.py
+# src/chess/team/validator/exception/registration/player_agent.py
 
 """
-Module: chess.team.validator.exception.registration.agent
+Module: chess.team.validator.exception.registration.player_agent
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -21,10 +21,10 @@ class TeamNotRegisteredWithAgentException(TeamRegistrationException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that while the Team has assigned itself to an Agent instance, whe the Agent searches
+    1.  Indicate that while the Team has assigned itself to an PlayerAgent instance, whe the PlayerAgent searches
         its team_assignments no match is found.
     2.  This should really be used to see if the team is the current_team because we want to use it to play.
-    3.  That is team.agent == agent but agent.current_team != team.
+    3.  That is team.player_agent == player_agent but player_agent.current_team != team.
 
     # PARENT:
         *   TeamRegistrationException
@@ -40,5 +40,5 @@ class TeamNotRegisteredWithAgentException(TeamRegistrationException):
     """
     ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_AGENT_ERROR"
     DEFAULT_MESSAGE = (
-        "Team is not registered in Agent.team_assignments. Only the team-side of the relationship is set."
+        "Team is not registered in PlayerAgent.team_assignments. Only the team-side of the relationship is set."
     )

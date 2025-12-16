@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional, cast
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.arena import Arena
 from chess.game import GameState, GameSnapshot
 from chess.system import NotImplementedException, RollbackException, Result
@@ -20,7 +20,7 @@ class GameSnapshot(Result):
     # ROLE:  Persistence, Messanger, Data Transport Object, Error Transport Object,
 
     # RESPONSIBILITIES:
-    1.  Capture a snapshot of the Game by recording Game.arena state after an agent plays their turn.
+    1.  Capture a snapshot of the Game by recording Game.arena state after an player_agent plays their turn.
     2.  Recording the Game winner if the game completed and there was no tie.
     3.  Enforcing mutual exclusion. A GameSnapshot can either carry payload or exception. Not both.
 
@@ -34,7 +34,7 @@ class GameSnapshot(Result):
         *   arena (Arena)
         *   timestamp (int)
         *   game_state (GameState)
-        *   winner (Optional[Agent])
+        *   winner (Optional[PlayerAgent])
 
     # INHERITED ATTRIBUTES:
         *   See Result class for inherited attributes.
@@ -42,14 +42,14 @@ class GameSnapshot(Result):
     _arena: Arena
     _timestamp: int
     _game_state: GameState
-    _winner: Optional[Agent]
+    _winner: Optional[PlayerAgent]
     
     def __init__(
             self,
             arena: Arena,
             timestamp: int,
             game_state: GameState,
-            winner: Optional[Agent] = None,
+            winner: Optional[PlayerAgent] = None,
             exception: Optional[Exception] = None,
     ):
         super().__init__(payload=arena, exception=exception)
@@ -68,7 +68,7 @@ class GameSnapshot(Result):
         return self.timestamp
     
     @property
-    def winner(self) -> Optional[Agent]:
+    def winner(self) -> Optional[PlayerAgent]:
         return self._winner
     
     @property
@@ -106,7 +106,7 @@ class GameSnapshot(Result):
         )
     
     @classmethod
-    def won(cls, timestamp: int, arena: Arena, winner: Agent) -> GameSnapshot:
+    def won(cls, timestamp: int, arena: Arena, winner: PlayerAgent) -> GameSnapshot:
         return cls(timestamp=timestamp, arena=arena, winner=winner, game_state=GameState.WON)
     
     @classmethod

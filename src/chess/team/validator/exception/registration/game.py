@@ -21,7 +21,7 @@ class TeamNotRegisteredWithGameException(TeamRegistrationException):
 
     # RESPONSIBILITIES:
     1.  Indicate that while the Team has assigned itself to a Game instance but indirect checks
-        using the team.game == agent.current_game is false.
+        using the team.game == player_agent.current_game is false.
 
     # PARENT:
         *   TeamRegistrationException

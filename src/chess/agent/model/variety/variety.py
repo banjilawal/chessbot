@@ -1,7 +1,7 @@
-# src/chess/agent/model/variety/variety.py
+# src/chess/player_agent/model/variety/variety.py
 
 """
-Module: chess.agent.model.variety.variety
+Module: chess.player_agent.model.variety.variety
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -16,7 +16,7 @@ class AgentVariety(Enum):
     # ROLE: Selection
 
     # RESPONSIBILITIES:
-    1.  Used for picking an operation that on the basis of the Agent subclass.
+    1.  Used for picking an operation that on the basis of the PlayerAgent subclass.
     2.  Safer than using strings.
 
     # PARENT:

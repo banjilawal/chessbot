@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.team import TeamService
-from chess.agent import AgentService
+from chess.agent import PlayerAgentService
 from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from chess.game import (
     GameSnapshotContext, InvalidGameSnapshotContextException, NoGameSnapshotContextFlagException,
@@ -44,12 +44,12 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
             cls,
             candidate: Any,
             team_service: TeamService = TeamService(),
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             number_validator: NumberValidator = NumberValidator(),
     ) -> ValidationResult[GameSnapshotContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, agent, team , arena) tuple is not null.
+            1.  Confirm that only one in the (id, player_agent, team , arena) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a ValidationResult containing the exception raised by the failure.
             4.  On success send the verified GameSnapshotContext in a ValidationResult.
@@ -57,11 +57,11 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
         # Parameters:
         Only one these must be provided:
             *   timestamp (Optional[int])
-            *   agent (Optional[Agent])
+            *   player_agent (Optional[PlayerAgent])
             *   team (Optional[Team])
 
         These Parameters must be provided:
-            *   agent_service (AgentService)
+            *   agent_service (PlayerAgentService)
             *   number_validator (NumberValidator)
 
         # Returns:
@@ -114,7 +114,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
                 # On validation success return the search_by_game_id context.
                 return ValidationResult.success(context)
             
-            # Certify the context if search is going to be by the an arena team's player agent.
+            # Certify the context if search is going to be by the an arena team's player player_agent.
             if context.agent is not None:
                 validation = agent_service.validator.validate(candidate=context.agent)
                 if validation.is_failure:

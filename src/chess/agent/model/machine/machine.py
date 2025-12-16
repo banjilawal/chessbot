@@ -7,13 +7,13 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.engine import EngineService
 from chess.game import UniqueGameDataService
 from chess.team import UniqueTeamDataService
 
 
-class MachineAgent(Agent):
+class MachineAgent(PlayerAgent):
     """
     # ROLE: Controller
 
@@ -21,7 +21,7 @@ class MachineAgent(Agent):
     1.  Forward requests and commands from a Machine player to the Game model.
 
     # PARENT:
-        *   Agent
+        *   PlayerAgent
 
     # PROVIDES:
     None
@@ -30,7 +30,7 @@ class MachineAgent(Agent):
         *   engine_service (EngineService)
     
     # INHERITED ATTRIBUTES:
-        *   See Agent class for inherited attributes.
+        *   See PlayerAgent class for inherited attributes.
     """
     _engine_service: EngineService
     

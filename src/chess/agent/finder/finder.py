@@ -1,7 +1,7 @@
-# src/chess/agent/finder/finder
+# src/chess/player_agent/finder/finder
 
 """
-Module: chess.agent.finder.finder
+Module: chess.player_agent.finder.finder
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -14,25 +14,25 @@ from chess.agent.service.data.exception.null import AgentNullDataSetException
 from chess.game import Game
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.agent import (
-    Agent, AgentContext, AgentContextValidator, AgentFinderException, AgentVariety, HumanAgent,
+    PlayerAgent, AgentContext, AgentContextValidator, AgentFinderException, AgentVariety, HumanAgent,
     MachineAgent
 )
 from chess.team import Team, TeamContext
 
 
-class AgentFinder(Finder[Agent]):
+class AgentFinder(Finder[PlayerAgent]):
     """
     # ROLE: Finder
 
     # RESPONSIBILITIES:
-    1.  Search Agent collections for items which match the attribute target specified in the AgentContext parameter.
+    1.  Search PlayerAgent collections for items which match the attribute target specified in the AgentContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT:
         *   Finder
 
     # PROVIDES:
-        *   find:   -> SearchResult[List[Agent]]
+        *   find:   -> SearchResult[List[PlayerAgent]]
 
     # LOCAL ATTRIBUTES:
     None
@@ -44,25 +44,25 @@ class AgentFinder(Finder[Agent]):
     @LoggingLevelRouter.monitor
     def find(
             cls,
-            data_set: List[Agent],
+            data_set: List[PlayerAgent],
             context: AgentContext,
             context_validator: AgentContextValidator = AgentContextValidator()
-    ) -> SearchResult[List[Agent]]:
+    ) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
-        1.  Verify the data_set is not null and contains only Agent objects,
+        1.  Verify the data_set is not null and contains only PlayerAgent objects,
         2.  Use context_validator to certify the provided context.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # Parameters:
-            *   data_set (List[Agent]):
+            *   data_set (List[PlayerAgent]):
             *   context: AgentContext
             *   context_validator: AgentContextValidator
 
         # Returns:
-        SearchResult[List[Agent]] containing either:
-            - On success: List[agent] in the payload.
+        SearchResult[List[PlayerAgent]] containing either:
+            - On success: List[player_agent] in the payload.
             - On failure: Exception.
 
         # Raises:
@@ -83,13 +83,13 @@ class AgentFinder(Finder[Agent]):
                 return SearchResult.failure(validation_result.exception)
             # After context is verified select the search method based on the which flag is enabled.
             
-            # Entry point into searching by agent.id.
+            # Entry point into searching by player_agent.id.
             if context.id is not None:
                 return cls._find_by_id(data_set, context.id)
-            # Entry point into searching by agent.name.
+            # Entry point into searching by player_agent.name.
             if context.name is not None:
                 return cls._find_by_name(data_set, context.name)
-            # Entry point into searching by agent's team.
+            # Entry point into searching by player_agent's team.
             if context.team is not None:
                 return cls._find_by_team(data_set, context.team)
             # Entry point into searching by AgentVariety (Human or Machine)
@@ -104,21 +104,21 @@ class AgentFinder(Finder[Agent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_id(cls, data_set: [Agent], id: int) -> SearchResult[List[Agent]]:
+    def _find_by_id(cls, data_set: [PlayerAgent], id: int) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
-        1.  Get the Agent with the matching id.
+        1.  Get the PlayerAgent with the matching id.
         2.  If no match is found return an exception.
         3.  An id search should produce either no hits or one hit only.
         4.  Multiple unique agents in the result indicates a problem.
 
         # Parameters:
             *   id (int)
-            *   data_set (List[Agent])
+            *   data_set (List[PlayerAgent])
 
         # Returns:
-        SearchResult[List[Agent]] containing either:
-            - On success: List[agent] in the payload.
+        SearchResult[List[PlayerAgent]] containing either:
+            - On success: List[player_agent] in the payload.
             - On failure: Exception.
 
         # Raises:
@@ -127,7 +127,7 @@ class AgentFinder(Finder[Agent]):
         method = "AgentFinder._find_by_id"
         try:
             matches = [agent for agent in data_set if agent.id == id]
-            # There should be either no Agents with the id or one and only one Agent will have that id.
+            # There should be either no Agents with the id or one and only one PlayerAgent will have that id.
             if len(matches) == 0:
                 return SearchResult.empty()
             # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
@@ -143,21 +143,21 @@ class AgentFinder(Finder[Agent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_name(cls, data_set: [Agent], name: str) -> SearchResult[List[Agent]]:
+    def _find_by_name(cls, data_set: [PlayerAgent], name: str) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
-        1.  Get the Agent with the matching name.
+        1.  Get the PlayerAgent with the matching name.
         2.  If no match is found return an exception.
         3.  A name search should produce either no hits or one hit only.
         4.  Multiple unique agents in the result indicates a problem.
 
         # Parameters:
             *   name (str)
-            *   data_set (List[Agent])
+            *   data_set (List[PlayerAgent])
 
         # Returns:
-        SearchResult[List[Agent]] containing either:
-            - On success: List[agent] in the payload.
+        SearchResult[List[PlayerAgent]] containing either:
+            - On success: List[player_agent] in the payload.
             - On failure: Exception.
 
         # Raises:
@@ -182,21 +182,21 @@ class AgentFinder(Finder[Agent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_team(cls, data_set: [Agent], team: Team) -> SearchResult[List[Agent]]:
+    def _find_by_team(cls, data_set: [PlayerAgent], team: Team) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
-        1.  Get the Agent with the matching team.
+        1.  Get the PlayerAgent with the matching team.
         2.  If no match is found return an exception.
         3.  A team search should produce either no hits or one hit only.
         4.  Multiple unique agents in the result indicates a problem.
 
         # Parameters:
             *   team (Team)
-            *   data_set (List[Agent])
+            *   data_set (List[PlayerAgent])
 
         # Returns:
-        SearchResult[List[Agent]] containing either:
-            - On success: List[agent] in the payload.
+        SearchResult[List[PlayerAgent]] containing either:
+            - On success: List[player_agent] in the payload.
             - On failure: Exception.
 
         # Raises:
@@ -204,13 +204,13 @@ class AgentFinder(Finder[Agent]):
         """
         method = "AgentFinder._find_by_team"
         try:
-            # Loop through the set and return the first agent who ran the team.
-            # If more than one Agent is returned there might be a problem.
+            # Loop through the set and return the first player_agent who ran the team.
+            # If more than one PlayerAgent is returned there might be a problem.
             for agent in data_set:
                 team_search = agent.team_assignments.search(context=TeamContext(id=team.id))
                 if team_search.is_failure:
                     return SearchResult.failure(team_search.exception)
-                # Put the first agent that matches inside a List then send the array inside a SearchResult.
+                # Put the first player_agent that matches inside a List then send the array inside a SearchResult.
                 # The exhaustive search is just to make sure there are no duplicates.
                 if team_search.is_success:
                     return SearchResult.success(payload=List[team_search.payload])
@@ -224,7 +224,7 @@ class AgentFinder(Finder[Agent]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_variety(cls, data_set: [Agent], variety) -> SearchResult[[Agent]]:
+    def _find_by_variety(cls, data_set: [PlayerAgent], variety) -> SearchResult[[PlayerAgent]]:
         """
         # Action:
         1.  Get the Agents whose subclass matches the AgentVariety
@@ -234,11 +234,11 @@ class AgentFinder(Finder[Agent]):
 
         # Parameters:
             *   team (Team)
-            *   data_set (List[Agent])
+            *   data_set (List[PlayerAgent])
 
         # Returns:
-        SearchResult[List[Agent]] containing either:
-            - On success: List[agent] in the payload.
+        SearchResult[List[PlayerAgent]] containing either:
+            - On success: List[player_agent] in the payload.
             - On failure: Exception.
 
         # Raises:
@@ -247,7 +247,7 @@ class AgentFinder(Finder[Agent]):
         method = "AgentFinder._find_by_name"
         try:
             matches = []
-            # Use the variety to pick which concrete Agent type needs to be found.
+            # Use the variety to pick which concrete PlayerAgent type needs to be found.
             matches = [agent for agent in data_set if isinstance(agent, AgentVariety.subclass_from_variety(variety))]
             if len(matches) == 0:
                 return SearchResult.empty()

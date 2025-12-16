@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List, Optional
 
-from chess.agent import Agent, AgentService
+from chess.agent import PlayerAgent, PlayerAgentService
 from chess.board import BoardService
 from chess.game import UniqueGameDataService
 from chess.team import Team, TeamService, UniqueTeamDataService
@@ -50,10 +50,10 @@ class ArenaBuilder(Builder[Arena]):
     @classmethod
     def build(
             cls,
-            white_agent: Agent,
-            black_agent: Agent,
+            white_agent: PlayerAgent,
+            black_agent: PlayerAgent,
             id: int = id_emitter.arena_id,
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             board_service: BoardService = BoardService(),
             service_validator: ServiceValidator = ServiceValidator(),
             identity_service: IdentityService = IdentityService(),
@@ -99,12 +99,12 @@ class ArenaBuilder(Builder[Arena]):
                 return BuildResult.failure(service_validation.exception)
             
             # When the checks pass build the Arena object.
-            arena = Arena(id=id, team_service=List[Team], board=board_service)
+            arena = Arena(id=id, board=board_service, team_service=UniqueTeamDataService())
             
-            # build the team_service then
-            team_builds = cls._build_teams(
+            # Then build the teams
+            team_builds = cls._build_arena_teams(
                 arena=arena,
-                build_params=[(white_agent, TeamSchema.WHITE), (black_agent, TeamSchema.BLACK)],
+                team_param_tuples=[(white_agent, TeamSchema.WHITE), (black_agent, TeamSchema.BLACK)],
             )
             
             black_team = black_team_build_result.payload
@@ -135,23 +135,21 @@ class ArenaBuilder(Builder[Arena]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _build_teams(
+    def _build_arena_teams(
             cls,
             arena: Arena,
-            build_params: List[(Agent, TeamSchema)],
+            team_param_tuples: List[(PlayerAgent, TeamSchema)],
     ) -> BuildResult[List[Team]]:
         method = "ArenaBuilder._build_teams"
-        teams = []
-        for build_param in build_params:
-            agent, team_schema = build_param
+        for param_tuple in team_param_tuples:
+            agent, team_schema = param_tuple
             build_result = agent.team_assignments.team_service.builder.build(
                 arena=arena,
-                agent=agent,
+                player_agent=agent,
                 team_schema=team_schema
             )
             if build_result.failure:
                 return BuildResult.failure(build_result.exception)
-            teams.append(build_result.payload)
             
             
             

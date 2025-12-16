@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/validator.py
+# src/chess/player_agent/context/validator/validator.py
 
 """
-Module: chess.agent.context.validator.validator
+Module: chess.player_agent.context.validator.validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -96,7 +96,7 @@ class AgentContextValidator(Validator[AgentContext]):
             # For additional checks.
             context = cast(AgentContext, candidate)
             
-            # Perform the two checks ensuring only one Agent attribute value will be used in the searcher.
+            # Perform the two checks ensuring only one PlayerAgent attribute value will be used in the searcher.
             # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(

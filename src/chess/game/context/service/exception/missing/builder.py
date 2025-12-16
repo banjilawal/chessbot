@@ -1,7 +1,7 @@
-# src/chess/agent/context/service/exception/missing/builder.py
+# src/chess/player_agent/context/service/exception/missing/builder.py
 
 """
-Module: chess.agent.context.service.exception.missing.builder
+Module: chess.player_agent.context.service.exception.missing.builder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

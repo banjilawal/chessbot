@@ -8,7 +8,7 @@ version: 1.0.0
 """
 from typing import List
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.game.snapshot.finder.exception import GameSnapshotFinderException
 from chess.system import Finder, LoggingLevelRouter, SearchResult
 from chess.game import (
@@ -52,7 +52,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
         1.  Verify the data_set is not null and contains only GameSnapshot objects,
         2.  Use context_validator to certify the provided context.
         3.  Call the finder method which matches the attribute whose flag was raised.
-        4.  If the logic does not account for an Agent attribute drop to the try-finally block.
+        4.  If the logic does not account for an PlayerAgent attribute drop to the try-finally block.
 
         # Parameters:
             *   data_set (GameTimeline):
@@ -84,7 +84,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
             # After checks are passed pick which finder method to call.
             if context.timestamp is not None:
                 return cls._find_by_timestamp(data_set, context.timestamp)
-            # Find by agent
+            # Find by player_agent
             if context.agent is not None:
                 return cls._find_by_agent(data_set, context.agent)
             # Find by team
@@ -126,7 +126,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
         method = "GameSnapshotFinder._find_by_timestamp"
         try:
             matches = [snapshot for snapshot in data_set.items if snapshot.timestamp == timestamp]
-            # There should be either no Agents with the id or one and only one Agent will have that id.
+            # There should be either no Agents with the id or one and only one PlayerAgent will have that id.
             if len(matches) == 0:
                 return SearchResult.empty()
             # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
@@ -143,7 +143,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_agent(cls, data_set: GameTimeline, agent: Agent) -> SearchResult[List[GameSnapshot]]:
+    def _find_by_agent(cls, data_set: GameTimeline, agent: PlayerAgent) -> SearchResult[List[GameSnapshot]]:
         """
         # Action:
         1.  Get the agents whose agents are a case-insensitive. match for the target.
@@ -152,7 +152,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
         4.  If the finder returns multiple hits call _resolve_matching_ids.
 
         # Parameters:
-            *   agent (Agent)
+            *   player_agent (PlayerAgent)
             *   data_set (GameTimeline)
 
         # Returns:
@@ -186,7 +186,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
     def _find_by_team(cls, data_set: GameTimeline, team: Team) -> SearchResult[List[GameSnapshot]]:
         """
         # Action:
-        1.  Get the agent whose team is a match for the target.
+        1.  Get the player_agent whose team is a match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
         4.  If multiple agents own the same target there is a problem.
@@ -223,7 +223,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_exception(cls, data_set: GameTimeline, exception) -> SearchResult[[Agent]]:
+    def _find_by_exception(cls, data_set: GameTimeline, exception) -> SearchResult[[PlayerAgent]]:
         """
         # Action:
         1.  Get the agents whose agents are a agent_exception. match for the target.

@@ -41,8 +41,8 @@ From `chess.system`:
 From `chess.discovery`:
     `Checker`, `NullDiscovery`, `DiscoveryBuildFailedException`, `DiscoverySchema`
 
-From `chess.agent`:
-  `Agent`, `PlayerAgentValidator`,
+From `chess.player_agent`:
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`

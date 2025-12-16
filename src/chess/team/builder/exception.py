@@ -17,11 +17,27 @@ __all__ = [
 ]
 
 
-#======================# TEAM BUILD EXCEPTIONS #======================#
+# ======================# TEAM BUILD EXCEPTIONS #======================#
 class TeamBuildFailedException(TeamException, BuildFailedException):
     """
-    Catchall/wrapper exception for when a condition not handled directly by TeamBuilder 
-    prevents successful Team creation.
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised during TeamContext build process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an TeamContextBuilder method.
+
+    # PARENT:
+        *   TeamContextException
+        *   BuildFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
-    ERROR_CODE = "TEAM_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Team build failed."
+    ERROR_CODE = "TEAM_SCHEMA_CONTEXT_BUILD_ERROR"
+    DEFAULT_MESSAGE = "TeamContext build failed."

@@ -1,7 +1,7 @@
-# src/chess/agent/service/exception/exception.py
+# src/chess/player_agent/service/exception/exception.py
 
 """
-Module: chess.agent.service.exception.base
+Module: chess.player_agent.service.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -21,11 +21,11 @@ class AgentServiceException(ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an AgentService's organic fields or methods run into a
+    1.  Parent of exceptions raised when an PlayerAgentService's organic fields or methods run into a
         condition that leads to an operation failing.
-    2.  Parent of exceptions raised by classes that highly cohere with AgentService objects.
-    3.  Catchall for AgentService failure states that are not covered by a lower level
-        AgentService exception.
+    2.  Parent of exceptions raised by classes that highly cohere with PlayerAgentService objects.
+    3.  Catchall for PlayerAgentService failure states that are not covered by a lower level
+        PlayerAgentService exception.
 
     # PARENT:
         *   ServiceException
@@ -37,4 +37,4 @@ class AgentServiceException(ServiceException):
     None
     """
     ERROR_CODE = "AGENT_SERVICE_ERROR"
-    DEFAULT_ERROR_CODE = "AgentService raised an exception."
+    DEFAULT_ERROR_CODE = "PlayerAgentService raised an exception."

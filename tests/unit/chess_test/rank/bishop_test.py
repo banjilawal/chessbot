@@ -19,7 +19,7 @@ class BishopTest(unittest.TestCase):
   def test_valid_destination_passes(self):
     rank = Bishop("bishop", "b", 2, 1, [Quadrant.N])
     board = ChessBoardBuilder.build(1)
-    side = Side(1, Commander(1, "agent"), TeamProfile.BLACK)
+    side = Side(1, Commander(1, "player_agent"), TeamProfile.BLACK)
 
     piece = Piece(1, "BB-1", rank, side)
     piece.positions.push_coord(Coord(0, 0))

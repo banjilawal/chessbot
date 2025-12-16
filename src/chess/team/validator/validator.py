@@ -8,7 +8,7 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-from chess.agent import Agent, AgentService
+from chess.agent import PlayerAgent, PlayerAgentService
 from chess.game import Game
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
@@ -44,7 +44,7 @@ class TeamValidator(Validator[Team]):
     def validate(
             cls,
             candidate: Any,
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             idservice: IdentityService = IdentityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> ValidationResult[Team]:
@@ -54,7 +54,7 @@ class TeamValidator(Validator[Team]):
         2.  Check if candidate is a Team. If so cast it.
         3.  Check id safety with IdentityService
         4.  Verify team_schema's correctness with TeamSchemaValidator.
-        5.  Check agent safety with PlayerAgentService.
+        5.  Check player_agent safety with PlayerAgentService.
         6.  If any check fails, return the exception inside a ValidationResult.
         7.  If all pass return the Team object in a ValidationResult
 
@@ -102,15 +102,15 @@ class TeamValidator(Validator[Team]):
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
-            # Only baseline agent certification is necessary. An agent registering a team is not
+            # Only baseline player_agent certification is necessary. An player_agent registering a team is not
             # the main use case for team objects. Separating registration verification from team
             # validation avoids circular dependencies, separates concerns and is flexible.
-            agent_validation = agent_service.item_validator.validate(team.agent)
+            agent_validation = agent_service.item_validator.validate(team.player_agent)
             if agent_validation.is_failure():
                 return ValidationResult.failure(agent_validation.exception)
             
-            # Check if the Team is registered in agent's team_assignments.
-            search_result = team.agent.team_assignments.search(context=TeamContext(id=team.id))
+            # Check if the Team is registered in player_agent's team_assignments.
+            search_result = team.player_agent.team_assignments.search(context=TeamContext(id=team.id))
             if search_result.is_failure():
                 return ValidationResult.failure(search_result.exception)
             if search_result.is_empty():
@@ -123,7 +123,7 @@ class TeamValidator(Validator[Team]):
             # For basic verification we only need to prove team has a safe game attribute.
             # Testng for a team<-->game relationship is not necessary. The team<--> game
             # relationship only matters during searches so a deeper check is not necessary.
-            game_validation = game_service.item_validator.validate(team.game)
+            game_validation = game_service.item_validator.validate(team.arena)
             if game_validation.is_failure():
                 return ValidationResult.failure(game_validation.exception)
             
@@ -145,28 +145,28 @@ class TeamValidator(Validator[Team]):
             cls,
             team_candidate: Any,
             agent_candidate: Any,
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             team_context_service: TeamContextService = TeamContextService(),
-    ) -> ValidationResult[(Team, Agent)]:
+    ) -> ValidationResult[(Team, PlayerAgent)]:
         """
         # ACTION:
         1.  Use validate to certify team_candidate is a safe team. If so pull from validation_result payload.
-        2.  Use agent_certifier to certify agent_candidate is a safe agent. If so pull from validation_result payload.
-        3.  If team.agent != agent return an exception inside a ValidationResult.
+        2.  Use agent_certifier to certify agent_candidate is a safe player_agent. If so pull from validation_result payload.
+        3.  If team.player_agent != player_agent return an exception inside a ValidationResult.
         4.  Build a search_context for the team with team_context entity_service.
-        5.  Finder for the team inside agent.team_assignments.
+        5.  Finder for the team inside player_agent.team_assignments.
         6.  If the searcher generates an error or produces an no hits return an exception inside a ValidationResult.
-        7.  If all checks pass return the (team, agent) registration tuple.
+        7.  If all checks pass return the (team, player_agent) registration tuple.
 
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_certifier (AgentService)
+            *   agent_certifier (PlayerAgentService)
             *   team_context (TeamContextService)
 
         # Returns:
-        ValidationResult[(Team, Agent)] containing either:
-            - On success:   (Team,Agent) in the payload.
+        ValidationResult[(Team, PlayerAgent)] containing either:
+            - On success:   (Team,PlayerAgent) in the payload.
             - On failure:   Exception.
 
         # RAISES:
@@ -192,7 +192,7 @@ class TeamValidator(Validator[Team]):
                     TeamMismatchesAgentException(f"{method}: {TeamMismatchesAgentException.DEFAULT_MESSAGE}")
                 )
             
-            # When team.agent == agent Finder agent.team_assignments; build a searcher context
+            # When team.player_agent == player_agent Finder player_agent.team_assignments; build a searcher context
             search_context_build = team_context_service.item_builder.build(id=team.id)
             if search_context_build.is_failure():
                 return ValidationResult.failure(search_context_build.exception)
@@ -208,8 +208,8 @@ class TeamValidator(Validator[Team]):
                         f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}"
                     )
                 )
-            # If no errors are detected return the (team, agent) tuple indicating
-            # The agent has the team in its records.
+            # If no errors are detected return the (team, player_agent) tuple indicating
+            # The player_agent has the team in its records.
             return ValidationResult.success(payload=(team, agent))
         
         # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
@@ -232,19 +232,19 @@ class TeamValidator(Validator[Team]):
         """
         # ACTION:
         1.  Use validate to certify team_candidate is a safe team. If so pull from validation_result payload.
-        2.  Use agent_certifier to certify agent_candidate is a safe agent. If so pull from validation_result payload.
+        2.  Use agent_certifier to certify agent_candidate is a safe player_agent. If so pull from validation_result payload.
         3.  If team.game != game return an exception inside a ValidationResult.
         4.  If all checks pass return a ValidationResult containing the (team, game) relationship tuple.
 
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_certifier (AgentService)
+            *   agent_certifier (PlayerAgentService)
             *   team_context (TeamContextService)
 
         # Returns:
-        ValidationResult[(Team, Agent)] containing either:
-            - On success:   (Team,Agent) in the payload.
+        ValidationResult[(Team, PlayerAgent)] containing either:
+            - On success:   (Team,PlayerAgent) in the payload.
             - On failure:   Exception.
 
         # RAISES:
@@ -268,8 +268,8 @@ class TeamValidator(Validator[Team]):
                 return ValidationResult.failure(
                     NoTeamGameRelationshipException(f"{method}: {NoTeamGameRelationshipException.DEFAULT_MESSAGE}")
                 )
-            # If no errors are detected return the (team, agent) tuple indicating
-            # The agent has the team in its records.
+            # If no errors are detected return the (team, player_agent) tuple indicating
+            # The player_agent has the team in its records.
             return ValidationResult.success(payload=(team, game))
         
         # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it

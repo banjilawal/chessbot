@@ -28,6 +28,6 @@ class TeamRegistrationException(InvalidTeamException, RegistrationException):
 
 
 class TeamNotRegisteredWithAgentException(TeamRegistrationException):
-    """Team was not found in the Agent's team_assignments list."""
+    """Team was not found in the PlayerAgent's team_assignments list."""
     ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_AGENT_ERROR"
-    DEFAULT_MESSAGE = "Team not found in the Agent's team_assignments list."
+    DEFAULT_MESSAGE = "Team not found in the PlayerAgent's team_assignments list."

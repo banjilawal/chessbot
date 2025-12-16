@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 
-from chess.agent import AgentService
+from chess.agent import PlayerAgentService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.game import (
     GameContext, InvalidGameContextException, NoGameContextFlagException, NullGameContextException,
@@ -44,12 +44,12 @@ class GameContextValidator(Validator[GameContext]):
     def validate(
             cls,
             candidate: Any,
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[GameContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, agent) tuple is not null.
+            1.  Confirm that only one in the (id, player_agent) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success send the verified GameContext in a ValidationResult.
@@ -57,10 +57,10 @@ class GameContextValidator(Validator[GameContext]):
         # Parameters:
         Only one these must be provided:
             *   id (Optional[int])
-            *   agent (Optional[Agent])
+            *   player_agent (Optional[PlayerAgent])
 
         These Parameters must be provided:
-            *   agent_service (AgentService)
+            *   agent_service (PlayerAgentService)
             *   identity_service (IdentityService)
 
         # Returns:

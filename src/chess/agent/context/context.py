@@ -1,7 +1,7 @@
-# src/chess/agent/context/context.py
+# src/chess/player_agent/context/context.py
 
 """
-Module: chess.agent.context.context
+Module: chess.player_agent.context.context
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -12,10 +12,10 @@ from typing import Optional
 from chess.game import Game
 from chess.team import Team
 from chess.system import Context
-from chess.agent import Agent, AgentVariety
+from chess.agent import PlayerAgent, AgentVariety
 
 
-class AgentContext(Context[Agent]):
+class AgentContext(Context[PlayerAgent]):
     """
     # ROLE: Finder Filter
 

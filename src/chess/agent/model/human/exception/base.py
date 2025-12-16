@@ -1,7 +1,7 @@
-# src/chess/agent/model/human/exception/exception.py
+# src/chess/player_agent/model/human/exception/exception.py
 
 """
-Module: chess.agent.model.human.exception.base
+Module: chess.player_agent.model.human.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -22,7 +22,7 @@ class HumanAgentException(AgentException):
     # RESPONSIBILITIES:
     1.  Indicate an attribute, method, or operation organic to a HumanAgent encountered a condition which
         caused a failure.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an Agent method.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an PlayerAgent method.
 
     # PARENT:
         *   AgentException

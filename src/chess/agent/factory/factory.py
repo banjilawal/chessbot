@@ -1,7 +1,7 @@
-# src/chess/agent/builder.py
+# src/chess/player_agent/builder.py
 
 """
-Module: chess.agent.builder
+Module: chess.player_agent.builder
 Author: Banji Lawal
 Created: 2025-09-11
 version: 1.0.0
@@ -15,19 +15,19 @@ from chess.team import UniqueTeamDataService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter,ValidationResult, id_emitter
 
 from chess.agent import (
-    Agent, AgentBuildFailedException, AgentVariety, AgentValidator, HumanAgent, HumanAgentBuildFailedException,
+    PlayerAgent, AgentBuildFailedException, AgentVariety, AgentValidator, HumanAgent, HumanAgentBuildFailedException,
     MachineAgent, MachineAgentBuildFailedException
 )
 
 
-class AgentFactory(Builder[Agent]):
+class AgentFactory(Builder[PlayerAgent]):
     """
     # ROLE: Factory, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce Agent instances whose integrity is always guaranteed.
-    2.  Manage construction of Agent instances that can be used safely by the client.
-    3.  Ensure params for Agent creation have met the application's safety contract.
+    1.  Produce PlayerAgent instances whose integrity is always guaranteed.
+    2.  Manage construction of PlayerAgent instances that can be used safely by the client.
+    3.  Ensure params for PlayerAgent creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
     
     # PARENT:
@@ -55,7 +55,7 @@ class AgentFactory(Builder[Agent]):
         """
         # ACTION:
         1.  verify agent_variety is a not-null AgentVariety object.
-        2.  Use agent_variety to pick which factory method will create the concrete Agent object.
+        2.  Use agent_variety to pick which factory method will create the concrete PlayerAgent object.
 
         # PARAMETERS:
             *   id (int)
@@ -64,8 +64,8 @@ class AgentFactory(Builder[Agent]):
             *   engine_service (Optional[EngineService])
 
         # Returns:
-        ValidationResult[Agent] containing either:
-            - On success: Agent in the payload.
+        ValidationResult[PlayerAgent] containing either:
+            - On success: PlayerAgent in the payload.
             - On failure: Exception.
 
         # Raises:
@@ -82,7 +82,7 @@ class AgentFactory(Builder[Agent]):
             if isinstance(agent_variety, HumanAgent):
                 return cls.build_human_agent(id=id, name=name, )
             
-            # Machine agent requires an engine_service.
+            # Machine player_agent requires an engine_service.
             if isinstance(agent_variety, MachineAgent):
                 return cls.build_machine_agent(id=id, name=name, engine_service=engine_service)
         

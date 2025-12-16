@@ -1,7 +1,7 @@
-# src/chess/agent/service/service.py
+# src/chess/player_agent/service/service.py
 
 """
-Module: chess.agent.service.service
+Module: chess.player_agent.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -12,18 +12,18 @@ from typing import List, cast
 from chess.arena import Arena
 from chess.game import Game, GameContext, UniqueGameDataService, UniqueGameDataServiceException
 from chess.system import BuildResult, EntityService, LoggingLevelRouter, SearchResult, ServiceValidator, id_emitter
-from chess.agent import Agent, AgentFactory, AgentServiceException, AgentValidator
+from chess.agent import PlayerAgent, AgentFactory, AgentServiceException, AgentValidator
 from chess.team import Team, TeamSchema, TeamService
 
 
-class AgentService(EntityService[Agent]):
+class PlayerAgentService(EntityService[PlayerAgent]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Agent State Machine microservice API.
+    1.  Public facing PlayerAgent State Machine microservice API.
     2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    3.  Is authoritative, single source of truth for Agent state by providing single entry and exit points to Agent
+    3.  Is authoritative, single source of truth for PlayerAgent state by providing single entry and exit points to PlayerAgent
         lifecycle.
 
     # PARENT:
@@ -40,7 +40,7 @@ class AgentService(EntityService[Agent]):
     # INHERITED ATTRIBUTES:
         *   See EntityService class for inherited attributes.
     """
-    DEFAULT_NAME = "AgentService"
+    DEFAULT_NAME = "PlayerAgentService"
     def __init__(
             self,
             name: str = DEFAULT_NAME,
@@ -79,7 +79,7 @@ class AgentService(EntityService[Agent]):
     @LoggingLevelRouter.monitor
     def find_games_for_agent(
             self,
-            agent: Agent,
+            agent: PlayerAgent,
             unique_games_service: UniqueGameDataService,
             service_validator: ServiceValidator = ServiceValidator(),
     ) -> SearchResult[List[Game]]:

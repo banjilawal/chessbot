@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List, Optional
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.arena import Arena
 from chess.game import GameSnapshot, GameTimeline, GameTimelineException
 
@@ -30,19 +30,19 @@ class Game:
     # LOCAL ATTRIBUTES:
         *   id (int)
         *   arena (Arena)
-        *   white_player (Agent)
-        *   black_player (Agent)
+        *   white_player (PlayerAgent)
+        *   black_player (PlayerAgent)
 
     # INHERITED ATTRIBUTES:
     None
     """
     _id: int
     _arena: Arena
-    _white_player: Agent
-    _black_player: Agent
+    _white_player: PlayerAgent
+    _black_player: PlayerAgent
     _timeline: GameTimeline
     
-    def __init__(self, id: int, white_player: Agent, black_player: Agent, arena: Arena):
+    def __init__(self, id: int, white_player: PlayerAgent, black_player: PlayerAgent, arena: Arena):
         self._id = id
         self._arena = arena
         self._white_player = white_player
@@ -58,15 +58,15 @@ class Game:
         return self._arena
     
     @property
-    def white_player(self) -> Agent:
+    def white_player(self) -> PlayerAgent:
         return self._white_player
     
     @property
-    def black_player(self) -> Agent:
+    def black_player(self) -> PlayerAgent:
         return self._black_player
     
     @property
-    def players(self) -> List[Agent]:
+    def players(self) -> List[PlayerAgent]:
         return [self._white_player, self._black_player]
     
     @property

@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.agent import AgentService
+from chess.agent import PlayerAgentService
 from chess.arena import ArenaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
@@ -42,7 +42,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 validate(
                         candidate: Any,
                         team_schema: Team = Team,
-                        agent_certifier: AgentService = AgentService(),
+                        agent_certifier: PlayerAgentService = PlayerAgentService(),
                         identity_service: IdentityService = IdentityService(),
                 ) -> ValidationResult[TeamContext]:
                 
@@ -56,13 +56,13 @@ class TeamContextValidator(Validator[TeamContext]):
             cls,
             candidate: Any,
             arena_service: ArenaService = ArenaService(),
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> ValidationResult[TeamContext]:
         """
         # Action:
-        1.  Confirm that only one in the (id, name, agent, arena, color) tuple is not null.
+        1.  Confirm that only one in the (id, name, player_agent, arena, color) tuple is not null.
         2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an TeamContext are return in a ValidationResult.
@@ -70,7 +70,7 @@ class TeamContextValidator(Validator[TeamContext]):
         # Parameters:
             *   candidate (Any)
             *   color_validator (ColorValidator)
-            *   agent_service (AgentService)
+            *   agent_service (PlayerAgentService)
             *   arena_service (ArenaService)
             *   identity_service (IdentityService)
 
@@ -132,7 +132,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 # On certification success return the team_name_context in a ValidationResult.
                 return ValidationResult.success(payload=context)
             
-            # Certification for the search-by-agent target.
+            # Certification for the search-by-player_agent target.
             if context.agent is not None:
                 validation = agent_service.validator.validate(candidate=context.agent)
                 if validation.is_failure:

@@ -1,7 +1,7 @@
-# src/chess/agent/context/builder/builder.py
+# src/chess/player_agent/context/builder/builder.py
 
 """
-Module: chess.agent.context.builder.builder
+Module: chess.player_agent.context.builder.builder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -92,7 +92,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             # a value.
             params = [id, name, team, game, variety,]
             param_count = sum(bool(p) for p in params)
-            # Cannot searcher for an Agent object if no attribute value is provided for a hit.
+            # Cannot searcher for an PlayerAgent object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
                     NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")

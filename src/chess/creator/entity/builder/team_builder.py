@@ -27,18 +27,18 @@ class TeamBuilder:
 # def main():
 #   team_service: list[Team] = []
 #   for config in TeamConfig:
-#     agent = OwnerBuilder.builder(id_emitter.commander_id)
-#     team_name = TeamBuilder.builder(agent, config)
+#     player_agent = OwnerBuilder.builder(id_emitter.commander_id)
+#     team_name = TeamBuilder.builder(player_agent, config)
 #     print(team_name)
 #     if team_name not in team_service:
 #       team_service.append(team_name)
 #   print(len(team_service))
 #
-#   old_owwer = team_service[0].agent
-#   team_service[0].agent = None
+#   old_owwer = team_service[0].player_agent
+#   team_service[0].player_agent = None
 #   print(team_service[0])
 #
-#   team_service[0].agent = OwnerBuilder.builder(id_emitter.commander_id)
+#   team_service[0].player_agent = OwnerBuilder.builder(id_emitter.commander_id)
 #   print(team_service[0])
 #
 #   team_name = TeamBuilder.builder(old_owwer, TeamConfig.WHITE)

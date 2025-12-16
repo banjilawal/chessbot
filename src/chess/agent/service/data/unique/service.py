@@ -1,7 +1,7 @@
-# src/chess/agent/service/data/unique/service_.py
+# src/chess/player_agent/service/data/unique/service_.py
 
 """
-Module: chess.agent.service.data.unique.service
+Module: chess.player_agent.service.data.unique.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,10 +11,10 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.system import DeletionResult, InsertionResult, SearchResult, UniqueDataService
-from chess.agent import Agent, AgentContext, AgentContextService, AgentDataService, AgentService
+from chess.agent import PlayerAgent, AgentContext, AgentContextService, AgentDataService, PlayerAgentService
 
 
-class UniqueAgentDataService(UniqueDataService[Agent]):
+class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -26,11 +26,11 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
         *   UniqueDataService
 
     # PROVIDES:
-        *   agent_service: -> AgentService
+        *   agent_service: -> PlayerAgentService
         *   context_service: -> AgentContextService
-        *   add_agent: -> InsertionResult[Agent]
-        *   undo_add_agent: -> DeletionResult[Agent]
-        *   search_agents: -> SearchResult[List[Agent]]
+        *   add_agent: -> InsertionResult[PlayerAgent]
+        *   undo_add_agent: -> DeletionResult[PlayerAgent]
+        *   search_agents: -> SearchResult[List[PlayerAgent]]
 
     # LOCAL ATTRIBUTES:
     None
@@ -64,7 +64,7 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
         super().__init__(id=id, name=name, data_service=data_service)
         
     @property
-    def agent_service(self) -> AgentService:
+    def agent_service(self) -> PlayerAgentService:
         return cast(AgentDataService, self.data_service).agent_service
     
     @property
@@ -79,17 +79,17 @@ class UniqueAgentDataService(UniqueDataService[Agent]):
     def is_empty(self) -> bool:
         return self.data_service.is_empty
     
-    def add_agent(self, agent: Agent) -> InsertionResult[Agent]:
+    def add_agent(self, agent: PlayerAgent) -> InsertionResult[PlayerAgent]:
         return self.push_unique_item(agent)
     
-    def undo_add_agent(self) -> DeletionResult[Agent]:
+    def undo_add_agent(self) -> DeletionResult[PlayerAgent]:
         return self.data_service.undo_item_push()
     
-    def search_agents(self, context: AgentContext) -> SearchResult[List[Agent]]:
+    def search_agents(self, context: AgentContext) -> SearchResult[List[PlayerAgent]]:
         return self.data_service.search(context)
  
     # @LoggingLevelRouter.monitor
-    # def push_unique_item(self, item: Agent) -> InsertionResult[Agent]:
+    # def push_unique_item(self, item: PlayerAgent) -> InsertionResult[PlayerAgent]:
     #     method = "UniqueAgentDataService.push_unique"
     #     try:
     #         validation = self.data.item_validator.validate(item)

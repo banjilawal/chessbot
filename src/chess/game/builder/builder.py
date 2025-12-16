@@ -7,7 +7,7 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import Agent, AgentService, UniqueAgentDataService
+from chess.agent import PlayerAgent, PlayerAgentService, UniqueAgentDataService
 from chess.board import BoardService
 from chess.team import Team, UniqueTeamDataService
 from chess.game import Game, GameBuildFailedException
@@ -37,12 +37,12 @@ class GameBuilder(Builder[Game]):
     @LoggingLevelRouter.monitor()
     def build(
             cls,
-            white_player: Agent,
-            black_player: Agent,
+            white_player: PlayerAgent,
+            black_player: PlayerAgent,
             id: int = id_emitter.service_id,
             board: BoardService = BoardService(),
             identity_service: IdentityService = IdentityService(),
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
     ) -> BuildResult[Game]:
         """
         # ACTION:
@@ -56,10 +56,10 @@ class GameBuilder(Builder[Game]):
     
         # PARAMETERS:
             *   id (int)
-            *   white_agent (Agent)
+            *   white_agent (PlayerAgent)
             *   black_agent (GameSchema)
             *   identity_service (IdentityService)
-            *   agent_service (AgentService)
+            *   agent_service (PlayerAgentService)
             *   board_certifier (BoardCertifier)
         All Services have default values to ensure they are never null.
         
@@ -106,7 +106,7 @@ class GameBuilder(Builder[Game]):
             
             # If no errors are detected build the Game object.
             
-            # If the game is not in Agent.game_assignments register it.
+            # If the game is not in PlayerAgent.game_assignments register it.
             if game not in agent.games:
                 agent.game_assignments.push_unique_item(game)
             # Send the successfully built and registered Game object inside a BuildResult.

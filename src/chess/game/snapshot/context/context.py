@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.team import Team
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.game import GameSnapshot
 from chess.system import Context, GameColor
 
@@ -31,7 +31,7 @@ class GameSnapshotContext(Context[GameSnapshot]):
 
     # LOCAL ATTRIBUTES:
         *   team (Optional[Team])
-        *   agent (Optional[Agent])
+        *   player_agent (Optional[PlayerAgent])
         *   timestamp (Optional[int])
         *   color (Optional[GameColor])
         *   exception (Optional[Exception])
@@ -40,7 +40,7 @@ class GameSnapshotContext(Context[GameSnapshot]):
         *   See Context class for inherited attributes.
     """
     _team: Optional[Team]
-    _agent: Optional[Agent]
+    _agent: Optional[PlayerAgent]
     _timestamp: Optional[int]
     _color: Optional[GameColor]
     _exception: Optional[Exception]
@@ -48,7 +48,7 @@ class GameSnapshotContext(Context[GameSnapshot]):
     def __init__(
             self,
             team: Optional[Team] = None,
-            agent: Optional[Agent] = None,
+            agent: Optional[PlayerAgent] = None,
             timestamp: Optional[int] = None,
             exception: Optional[Exception] = None,
     ):
@@ -59,7 +59,7 @@ class GameSnapshotContext(Context[GameSnapshot]):
         # PARAMETERS:
             *   timestamp (Optional[int])
             *   team (Optional[Team])
-            *   agent (Optional[Agent])
+            *   player_agent (Optional[PlayerAgent])
             *   color (Optional[GameColor])
             *   exception (Optional[Exception])
 
@@ -80,7 +80,7 @@ class GameSnapshotContext(Context[GameSnapshot]):
         return self._team
     
     @property
-    def agent(self) -> Optional[Agent]:
+    def agent(self) -> Optional[PlayerAgent]:
         return self._agent
     
     @property
@@ -106,7 +106,7 @@ class GameSnapshotContext(Context[GameSnapshot]):
         """
         return {
             "team": self._team,
-            "agent": self._agent,
+            "player_agent": self._agent,
             "timestamp": self._timestamp,
             "exception": self._exception,
         }

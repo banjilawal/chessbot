@@ -38,6 +38,6 @@ class NoTeamGameRelationshipException(TeamRelationshipException):
 
 #======================# TEAM_MISMATCHES_AGENT EXCEPTION SUPER CLASS #======================#
 class TeamMismatchesAgentException(TeamRelationshipException):
-    """Raised when Team.agent != agent this is different"""
+    """Raised when Team.player_agent != player_agent this is different"""
     ERROR_CODE = "TEAM_MISMATCHES_AGENT_ERROR"
-    DEFAULT_MESSAGE = "Team has not assigned itself to the agent. Team.agent != agent."
+    DEFAULT_MESSAGE = "Team has not assigned itself to the player_agent. Team.player_agent != player_agent."

@@ -46,7 +46,9 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 `NullVectorException`, `InvalidVectorException`, ).
 """
 
-from chess.system import ChessException, NullException, BuildFailedException, ValidationException
+from chess.system import (
+  BoundsException, ChessException, NullException, BuildFailedException, ValidationFailedException
+)
 
 __all__ = [
   'ArenaException',
@@ -57,6 +59,7 @@ __all__ = [
 
 #====================== ARENA BUILD EXCEPTIONS #======================#  
   'ArenaBuildFailedException',
+  'PlayingFieldOverCapacityException',
 
 #====================== COLLECTION_ARENA EXCEPTIONS #======================#  
 ]
@@ -78,7 +81,7 @@ class NullArenaException(ArenaException, NullException):
   DEFAULT_MESSAGE = "Arena cannot be validation"
 
 
-class InvalidArenaException(ArenaException, ValidationException):
+class InvalidArenaException(ArenaException, ValidationFailedException):
   """
   Raised by ArenaValidator if arena fails sanity checks. Exists primarily to
   catch all exceptions raised validating an existing arena
@@ -95,3 +98,9 @@ class ArenaBuildFailedException(ArenaException, BuildFailedException):
   """
   ERROR_CODE = "ARENA_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Arena build failed."
+  
+  
+class PlayingFieldOverCapacityException(ArenaException, BoundsException):
+  """Raised when trying to have more than two teams in the arena."""
+  ERROR_CODE = "PLAYING_FIELD_OVER_CAPACITY_ERROR"
+  DEFAULT_MESSAGE = "Cannot have more than two teams in the arena."

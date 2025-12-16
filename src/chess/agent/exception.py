@@ -1,7 +1,7 @@
-# src/chess/agent/exception.py
+# src/chess/player_agent/exception.py
 
 """
-Module: chess.agent.exception
+Module: chess.player_agent.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -21,11 +21,11 @@ class AgentException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an Agent's organic fields or methods run into a condition that
+    1.  Parent of exceptions raised when an PlayerAgent's organic fields or methods run into a condition that
         leads to an operation failing.
-    2.  Parent of exceptions raised by Agent Builders and Validators or any other classes that highly
-        cohere with Agent objects.
-    3.  Catchall for Agent failure states that are not covered by a lower level Agent exception.
+    2.  Parent of exceptions raised by PlayerAgent Builders and Validators or any other classes that highly
+        cohere with PlayerAgent objects.
+    3.  Catchall for PlayerAgent failure states that are not covered by a lower level PlayerAgent exception.
 
     # PARENT:
         *   Chess
@@ -37,7 +37,7 @@ class AgentException(ChessException):
     None
     """
     ERROR_CODE = "AGENT_ERROR"
-    DEFAULT_MESSAGE = "Agent raised an exception."
+    DEFAULT_MESSAGE = "PlayerAgent raised an exception."
 
 
 #
@@ -70,11 +70,11 @@ class AgentException(ChessException):
 #
 # class InvalidPlayerAgentAssignmentException(PlayerAgentHistoryException):
 #   """
-#   If team_name team_name already attached to team_name agent (team_name.agent == not None) tries being assigned team_name
-#   different agent, `InvalidPlayerAgentAssignmentException` is raised.
+#   If team_name team_name already attached to team_name player_agent (team_name.player_agent == not None) tries being assigned team_name
+#   different player_agent, `InvalidPlayerAgentAssignmentException` is raised.
 #   """
 #   ERROR_CODE = "INVALID_PLAYERAGENT_ASSIGNMENT_ERROR"
-#   DEFAULT_MESSAGE = "Team is already assigned to team_name different agent."
+#   DEFAULT_MESSAGE = "Team is already assigned to team_name different player_agent."
 
 
 

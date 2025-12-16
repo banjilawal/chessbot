@@ -1,7 +1,7 @@
-# src/chess/agent/finder/exception
+# src/chess/player_agent/finder/exception
 
 """
-Module: chess.agent.finder.exception
+Module: chess.player_agent.finder.exception
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

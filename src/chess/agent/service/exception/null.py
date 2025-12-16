@@ -1,7 +1,7 @@
-# src/chess/agent/service//exception/null.py
+# src/chess/player_agent/service//exception/null.py
 
 """
-Module: chess.agent.service..exception.null
+Module: chess.player_agent.service..exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -22,7 +22,7 @@ class NullAgentServiceException(InvalidAgentServiceException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate if an entity, method or operation required an AgentService but got null instead.
+    1.  Indicate if an entity, method or operation required an PlayerAgentService but got null instead.
 
     # PARENT:
         *   InvalidAgentServiceException
@@ -35,4 +35,4 @@ class NullAgentServiceException(InvalidAgentServiceException, NullException):
     None
     """
     ERROR_CODE = "NULL_AGENT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "AgentService cannot be null."
+    DEFAULT_MESSAGE = "PlayerAgentService cannot be null."

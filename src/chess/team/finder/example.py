@@ -84,8 +84,8 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
 
-From `chess.agent`:
-  `Agent`, `PlayerAgentValidator`,
+From `chess.player_agent`:
+  `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Piece`

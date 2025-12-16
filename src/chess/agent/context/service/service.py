@@ -1,7 +1,7 @@
-# src/chess/agent/context/service/service.py
+# src/chess/player_agent/context/service/service.py
 
 """
-Module: chess.agent.context.service.service
+Module: chess.player_agent.context.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -18,11 +18,11 @@ class AgentContextService(ContextService[AgentContext]):
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Agent search microservice API.
-    2.  Provides a context aware utility for searching Agent objects.
+    1.  Public facing PlayerAgent search microservice API.
+    2.  Provides a context aware utility for searching PlayerAgent objects.
     3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    4.  Create a single source of truth for Agent search results by having single entry and exit points for the
-        Agent search flow.
+    4.  Create a single source of truth for PlayerAgent search results by having single entry and exit points for the
+        PlayerAgent search flow.
 
     # PARENT:
         *   ContextService

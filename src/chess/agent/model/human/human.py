@@ -7,12 +7,12 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.game import UniqueGameDataService
 from chess.team import UniqueTeamDataService
 
 
-class HumanAgent(Agent):
+class HumanAgent(PlayerAgent):
     """
     # ROLE: Controller
 
@@ -21,7 +21,7 @@ class HumanAgent(Agent):
     2.  Forward movement commands from the person playing to their pieces on the Board.
     
     # PARENT:
-        *   Agent
+        *   PlayerAgent
 
     # PROVIDES:
     None
@@ -30,7 +30,7 @@ class HumanAgent(Agent):
     None
     
     # INHERITED ATTRIBUTES:
-        *   See Agent class for inherited attributes.
+        *   See PlayerAgent class for inherited attributes.
     """
     
     def __init__(

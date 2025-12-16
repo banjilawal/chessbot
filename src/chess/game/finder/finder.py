@@ -11,7 +11,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.game.finder import GameFinderException
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.game import (
@@ -136,16 +136,16 @@ class GameFinder(Finder[Game]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_agent(cls, data_set: [Game], agent: Agent) -> SearchResult[List[Game]]:
+    def _find_by_agent(cls, data_set: [Game], agent: PlayerAgent) -> SearchResult[List[Game]]:
         """
         # Action:
-        1.  Get the Game with the matching player-agent.
+        1.  Get the Game with the matching player-player_agent.
         2.  If no match is found return an exception.
         3.  An id search should produce either no hits or one hit only.
 
         # Parameters:
-            *   agent (Agent)
-            *   data_set (List[Agent])
+            *   player_agent (PlayerAgent)
+            *   data_set (List[PlayerAgent])
 
         # Returns:
         SearchResult[List[Game]] containing either:

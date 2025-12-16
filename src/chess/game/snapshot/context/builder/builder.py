@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.team import Team, TeamService
-from chess.agent import Agent, AgentService
+from chess.agent import PlayerAgent, PlayerAgentService
 from chess.system import BuildResult, Builder, LoggingLevelRouter, NumberValidator
 from chess.game import (
     GameSnapshotContext, GameSnapshotContextBuildFailedException, NoGameSnapshotContextFlagException,
@@ -46,15 +46,15 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
     def build(
             cls,
             team: Optional[Team] = None,
-            agent: Optional[Agent] = None,
+            agent: Optional[PlayerAgent] = None,
             timestamp: Optional[int] = None,
             team_service: TeamService = TeamService(),
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             number_validator: NumberValidator = NumberValidator()
     ) -> BuildResult[GameSnapshotContext]:
         """
         # Action:
-            1.  Confirm that only one in the (team, agent, timestamp) tuple is not null.
+            1.  Confirm that only one in the (team, player_agent, timestamp) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success Build an GameSnapshotContext are return in a BuildResult.
@@ -62,12 +62,12 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
         # Parameters:
         Only one these must be provided:
             *   team (Optional[Team])
-            *   agent (Optional[Agent])
+            *   player_agent (Optional[PlayerAgent])
             *   timestamp (Optional[int])
 
         These Parameters must be provided:
             *   team_service (TeamService)
-            *   agent_service (AgentService)
+            *   agent_service (PlayerAgentService)
             *   number_validator (NumberValidator)
 
         # Returns:
@@ -109,7 +109,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
                 # On validation success return a timestamp_game_snapshot_context in the BuildResult.
                 return BuildResult.success(payload=GameSnapshotContext(timestamp=timestamp))
             
-            # Agent flag enabled, build flow.
+            # PlayerAgent flag enabled, build flow.
             if agent is not None:
                 validation = agent_service.validator.validate(candidate=agent)
                 if validation.is_failure:

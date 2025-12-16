@@ -13,7 +13,7 @@ Contains:
 
 from typing import List
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.arena import Arena
 from chess.system import Builder, BuildResult
 from chess.board import Board, BoardValidator
@@ -48,16 +48,16 @@ class ArenaBuilder(Builder[Arena]):
   @classmethod
   def build(
     cls,
-    white_commander: Agent,
-    black_commander: Agent,
+    white_commander: PlayerAgent,
+    black_commander: PlayerAgent,
     board: Board
   ) -> BuildResult[Arena]:
     """
     Constructs team_name new `Arena` that works correctly.
 
     Args:
-      - `white_commander`: White Agent
-      - `black_commander`: Black Agent
+      - `white_commander`: White PlayerAgent
+      - `black_commander`: Black PlayerAgent
       - `board_validator`: Board
 
     Returns:

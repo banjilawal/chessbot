@@ -1,7 +1,7 @@
-# src/chess/agent/model/human/__init__.py
+# src/chess/player_agent/model/human/__init__.py
 
 """
-Module: chess.agent.model.human.__init__
+Module: chess.player_agent.model.human.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/agent/context/builder/exception.py
+# src/chess/player_agent/context/builder/exception.py
 
 """
-Module: chess.agent.context.builder.exception
+Module: chess.player_agent.context.builder.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -40,4 +40,4 @@ class AgentContextBuildFailedException(AgentContextException, BuildFailedExcepti
     None
     """
     ERROR_CODE = "AGENT_CONTEXT_BUILD_ERROR"
-    DEFAULT_MESSAGE = "Agent build failed."
+    DEFAULT_MESSAGE = "PlayerAgent build failed."

@@ -1,7 +1,7 @@
-# src/chess/agent/model/human/exception/build.py
+# src/chess/player_agent/model/human/exception/build.py
 
 """
-Module: chess.agent.model.human.exception.build
+Module: chess.player_agent.model.human.exception.build
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

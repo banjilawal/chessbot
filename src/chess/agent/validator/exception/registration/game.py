@@ -1,7 +1,7 @@
-# src/chess/agent/validator/exception/registration/game.py
+# src/chess/player_agent/validator/exception/registration/game.py
 
 """
-Module: chess.agent.validator.exception.registration.game
+Module: chess.player_agent.validator.exception.registration.game
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -24,9 +24,9 @@ class AgentNotRegisteredWithGameException(AgentRegistrationException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that while the Agent has assigned itself to a Game instance, the Game has not
-        registered the Agent as one of its two participants.
-    2.  Raised if the agent.game == game but agent not in game.players
+    1.  Indicate that while the PlayerAgent has assigned itself to a Game instance, the Game has not
+        registered the PlayerAgent as one of its two participants.
+    2.  Raised if the player_agent.game == game but player_agent not in game.players
 
     # PARENT:
         *   AgentRegistrationException
@@ -42,6 +42,6 @@ class AgentNotRegisteredWithGameException(AgentRegistrationException):
     """
     ERROR_CODE = "AGENT_NOT_REGISTERED_WITH_GAME_ERROR"
     DEFAULT_MESSAGE = (
-        "Agent is not registered as one of the Game's participants. Only the Agent "
+        "PlayerAgent is not registered as one of the Game's participants. Only the PlayerAgent "
         "side of the relationship is set."
     )

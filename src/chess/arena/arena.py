@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.board import BoardService
 from chess.team import Team, UniqueTeamDataService
 
@@ -45,12 +45,12 @@ class Arena:
         return self._team_service.black_teams[0]
     
     @property
-    def teams(self) -> UniqueTeamDataService:
+    def team_service(self) -> UniqueTeamDataService:
         return self._team_service
     
     @property
-    def agents(self) -> List[Agent]:
-        return [self._white_team.agent, self._black_team.agent]
+    def agents(self) -> List[PlayerAgent]:
+        return [self._white_team.player_agent, self._black_team.player_agent]
                 
     def __eq__(self, other: object) -> bool:
         if other is self: return True

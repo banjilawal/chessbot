@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.system import GameColor, LoggingLevelRouter, Finder, SearchResult
 from chess.team import Team, TeamContext, TeamContextValidator, TeamFinderException
 
@@ -157,16 +157,16 @@ class TeamFinder(Finder[Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_agent(cls, data_set: List[Team], agent: Agent) -> SearchResult[List[Team]]:
+    def _find_by_agent(cls, data_set: List[Team], agent: PlayerAgent) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the team_service whose agent matched the target.
+        1.  Get the team_service whose player_agent matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
 
         # Parameters:
             *   data_set: (List[Team])
-            *   agent (Agent)
+            *   player_agent (PlayerAgent)
 
 
         # Returns:
@@ -180,7 +180,7 @@ class TeamFinder(Finder[Team]):
         method = "TeamFinder._find_by_agent"
         
         try:
-            matches = [team for team in data_set if team.agent == agent]
+            matches = [team for team in data_set if team.player_agent == agent]
             if len(matches) == 0:
                 return SearchResult.empty()
             
@@ -254,7 +254,7 @@ class TeamFinder(Finder[Team]):
         method = "TeamFinder._find_by_game"
         
         try:
-            matches = [team for team in data_set if team.game == game]
+            matches = [team for team in data_set if team.arena == game]
             if len(matches) == 0:
                 return SearchResult.empty()
             

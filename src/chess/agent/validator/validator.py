@@ -1,7 +1,7 @@
-# src/chess/agent/validator/validator.py
+# src/chess/player_agent/validator/validator.py
 
 """
-Module: chess.agent.validator.validator
+Module: chess.player_agent.validator.validator
 Author: Banji Lawal
 Created: 2025-08-31
 version: 1.0.0
@@ -12,25 +12,25 @@ from typing import Any, cast
 from chess.engine.service import EngineService
 from chess.system import IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
 from chess.agent import (
-    Agent, AgentVariety, AgentVarietyNullException, HumanAgent, InvalidAgentException, InvalidAgentVarietyException,
+    PlayerAgent, AgentVariety, AgentVarietyNullException, HumanAgent, InvalidAgentException, InvalidAgentVarietyException,
     InvalidMachineAgentException, MachineAgent, NullAgentException,
 )
 from chess.team import UniqueTeamDataService
 
 
-class AgentValidator(Validator[Agent]):
+class AgentValidator(Validator[PlayerAgent]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure an Agent instance is certified safe, reliable and consistent before use.
+    1.  Ensure an PlayerAgent instance is certified safe, reliable and consistent before use.
     2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
     # PARENT:
         *   Validator
 
     # PROVIDES:
-        *   validate: -> ValidationResult[Agent]
+        *   validate: -> ValidationResult[PlayerAgent]
 
     # LOCAL ATTRIBUTES:
     None
@@ -46,18 +46,18 @@ class AgentValidator(Validator[Agent]):
             candidate: Any,
             idservice: IdentityService = IdentityService(),
             service_validator: ServiceValidator = ServiceValidator(),
-    ) -> ValidationResult[Agent]:
+    ) -> ValidationResult[PlayerAgent]:
         """
         # ACTION:
         1.  Verify the candidate is not null.
-        2.  Verify the candidate is an Agent. If so cast it to an Agent instance.
-        3.  Use the identity service to verify the agent's name and id.
-        4.  If the agent is a MachineAgent, confirm agent.engine_service is not null and
+        2.  Verify the candidate is an PlayerAgent. If so cast it to an PlayerAgent instance.
+        3.  Use the identity service to verify the player_agent's name and id.
+        4.  If the player_agent is a MachineAgent, confirm player_agent.engine_service is not null and
             is an EngineService instance.
-        5.  Confirm agent.team_assignments is not null and is an UniqueTeamDataService instance.
-        6.  Confirm agent.games is not null and is an UniqueGameDataService instance.
+        5.  Confirm player_agent.team_assignments is not null and is an UniqueTeamDataService instance.
+        6.  Confirm player_agent.games is not null and is an UniqueGameDataService instance.
         7.  If any check fails, return the exception inside a ValidationResult.
-        8.  When all checks return the successfully validated Agent instance inside a ValidationResult.
+        8.  When all checks return the successfully validated PlayerAgent instance inside a ValidationResult.
         
         # PARAMETERS:
             *   candidate (Any)
@@ -65,8 +65,8 @@ class AgentValidator(Validator[Agent]):
             *   service_validator (ServiceValidator)
 
         # Returns:
-        ValidationResult[Agent] containing either:
-            - On success: Agent in the payload.
+        ValidationResult[PlayerAgent] containing either:
+            - On success: PlayerAgent in the payload.
             - On failure: Exception.
 
         # RAISES:
@@ -81,42 +81,42 @@ class AgentValidator(Validator[Agent]):
                 return ValidationResult.failure(
                     NullAgentException(f"{method}: {NullAgentException.DEFAULT_MESSAGE}")
                 )
-            # Handle the case, the candidate is not an Agent object.
-            if not isinstance(candidate, Agent):
+            # Handle the case, the candidate is not an PlayerAgent object.
+            if not isinstance(candidate, PlayerAgent):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected Agent, {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected PlayerAgent, {type(candidate).__name__} instead.")
                 )
-            # Cast to an Agent for additional processing.
-            agent = cast(Agent, candidate)
+            # Cast to an PlayerAgent for additional processing.
+            agent = cast(PlayerAgent, candidate)
             
             # Verify the id and name are safe.
             identity_validation = idservice.validate_identity(agent.id, agent.name)
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
-            # Certify the agent's TeamDataService is correct.
+            # Certify the player_agent's TeamDataService is correct.
             team_data_service_certification = service_validator.validate(candidate=agent.team_assignments)
             if team_data_service_certification.is_failure():
                 return ValidationResult.failure(team_data_service_certification.exception)
             
-            # Certify the agent's GameDataService is correct.
+            # Certify the player_agent's GameDataService is correct.
             game_data_service_certification = service_validator.validate(candidate=agent.games)
             if game_data_service_certification.is_failure():
                 return ValidationResult.failure(game_data_service_certification.exception)
             
-            # If the agent is a MachineAgent handoff control to certify_machine_agent_engine
+            # If the player_agent is a MachineAgent handoff control to certify_machine_agent_engine
             # for the final check.
             if isinstance(agent, MachineAgent):
                 return cls._certify_machine_agent_engine(machine=cast(MachineAgent, agent))
             
-            # If the agent is a HumanAgent all the checks have been passed. Return the
-            # agent in the ValidationResult payload.
+            # If the player_agent is a HumanAgent all the checks have been passed. Return the
+            # player_agent in the ValidationResult payload.
             if isinstance(agent, HumanAgent):
                 return ValidationResult.success(payload=cast(HumanAgent, agent))
             
             # Any unexpected boundary conditions are caught and wrapped in an InvalidAgentException then,
             # the exception chain is returned inside a ValidationResult. The flow should only get here if
-            # the logic does not handle each concrete Agent subclass.
+            # the logic does not handle each concrete PlayerAgent subclass.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidAgentException(ex=ex, message=f"{method}: {InvalidAgentException.DEFAULT_MESSAGE}")
@@ -179,7 +179,7 @@ class AgentValidator(Validator[Agent]):
             cls,
             machine_agent: MachineAgent,
             engine_service_validator: EngineService = EngineService(),
-    ) -> ValidationResult[Agent]:
+    ) -> ValidationResult[PlayerAgent]:
         """
         # ACTION:
         1.  If machine.engine_service passes certification, return the machine inside a ValidationResult.
@@ -190,8 +190,8 @@ class AgentValidator(Validator[Agent]):
             *   engine_service_validator (EngineService)
 
         # Returns:
-        ValidationResult[Agent] containing either:
-            - On success: Agent in the payload.
+        ValidationResult[PlayerAgent] containing either:
+            - On success: PlayerAgent in the payload.
             - On failure: Exception.
 
         # RAISES:

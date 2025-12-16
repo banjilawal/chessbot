@@ -7,12 +7,11 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import Agent, AgentService
-from chess.arena import Arena, ArenaService
+from chess.agent import PlayerAgent, PlayerAgentService
+from chess.arena import Arena, ArenaService, PlayingFieldOverCapacityException
 from chess.piece import UniquePieceDataService
 from chess.team import (
-    Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException, TeamSchema,
-    TeamSchemaService
+    Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException, TeamSchema, TeamSchemaService
 )
 from chess.system import Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 
@@ -39,35 +38,34 @@ class TeamBuilder(Builder[Team]):
      # INHERITED ATTRIBUTES:
      None
      """
-    
     @classmethod
     @LoggingLevelRouter.monitor()
     def build(
             cls,
-            agent: Agent,
             arena: Arena,
             team_schema: TeamSchema,
+            player_agent: PlayerAgent,
             id: int = id_emitter.team_id,
             arena_service: ArenaService = ArenaService(),
-            agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
             schema_service: TeamSchemaService = TeamSchemaService(),
+            player_agent_service: PlayerAgentService = PlayerAgentService(),
     ) -> BuildResult[Team]:
         """
         # ACTION:
         1.  Check ID safety with IdentityService.validate_id.
         2.  Check team_schema correctness with TeamSchemaValidator.validate.
-        3.  Check agent safety with PlayAgentService.validate_player.
+        3.  Check player_agent safety with PlayAgentService.validate_player.
         4.  If any check fails, return the exception inside a BuildResult.
         5.  When all checks create a new Team object.
         6.  If the team is not in actor's team_assignments use their team_stack to add it.
     
         # PARAMETERS:
             *   id (int)
-            *   agent (Agent)
+            *   player_agent (PlayerAgent)
             *   team_schema (TeamSchema)
             *   identity_service (IdentityService)
-            *   agent_service (AgentService)
+            *   agent_service (PlayerAgentService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.
         
@@ -90,30 +88,36 @@ class TeamBuilder(Builder[Team]):
             if schema_validation.is_failure:
                 return BuildResult.failure(schema_validation.exception)
             
-            agent_validation = agent_service.validator.validate(agent)
-            if agent_validation.is_failure:
-                return BuildResult.failure(agent_validation.exception)
+            player_agent_validation = player_agent_service.validator.validate(player_agent)
+            if player_agent_validation.is_failure:
+                return BuildResult.failure(player_agent_validation.exception)
             
             arena_validation = arena_service.item_validator.validate(arena)
             if arena_validation.is_failure:
                 return BuildResult.failure(arena_validation.exception)
+            # If there's already two teams in the arena you cannot build another one.
+            if arena.team_service.size > 1:
+                return BuildResult.failure(
+                    PlayingFieldOverCapacityException(f"{method}: {PlayingFieldOverCapacityException.DEFAULT_MESSAGE}")
+                )
         
             # If no errors are detected build the Team object.
             team = Team(
                 id=id,
                 arena=arena,
-                agent=agent,
+                player_agent=player_agent,
                 schema=team_schema,
                 roster=UniquePieceDataService(),
                 hostages=UniquePieceDataService(),
             )
-            insertion_result = cls._register_team_with_agent(agent=agent, team=team)
+            # Make sure the owning side of the team-player_agent relationship is set.
+            insertion_result = cls._register_team_with_agent(agent=player_agent, team=team)
             if insertion_result.is_failure:
                 return BuildResult.failure(insertion_result.exception)
-            
-
-            if team not in arena.teams:
-                arena.teams.append(team)
+            # Make sure the owning side of the tea-arena relationship is set.
+            insertion_result = cls._insert_team_in_arena(arena=arena, team=team)
+            if insertion_result.is_failure:
+                return BuildResult.failure(insertion_result.exception)
                 
             # Send the successfully built and registered Team object inside a BuildResult.
             return BuildResult.success(team)
@@ -125,10 +129,9 @@ class TeamBuilder(Builder[Team]):
                 TeamBuildFailedException(ex=ex, message=f"{method}: {TeamBuildFailedException.DEFAULT_MESSAGE}")
             )
         
-    
     @classmethod
     @LoggingLevelRouter.monitor
-    def _register_team_with_agent(cls, agent: Agent, team: Team) -> InsertionResult[Team]:
+    def _register_team_with_agent(cls, agent: PlayerAgent, team: Team) -> InsertionResult[Team]:
         """"""
         method = "TeamBuilder._register_team_with_agent"
         try:
@@ -137,6 +140,23 @@ class TeamBuilder(Builder[Team]):
                 return BuildResult.failure(search_result.exception)
             if search_result.is_empty:
                 agent.team_assignments.add_team(team)
+        except Exception as ex:
+            return InsertionResult.failure(
+                TeamInsertionFailedException(ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _insert_team_in_arena(cls, arena: Arena, team: Team) -> InsertionResult[Team]:
+        """"""
+        method = "TeamBuilder._insert_team_in_arena"
+        try:
+            # Search by color to ensure there's no team with the same color.
+            search_result = arena.team_service.search_teams(context=TeamContext(color=team.schema.color))
+            if search_result.is_failure:
+                return BuildResult.failure(search_result.exception)
+            if search_result.is_empty:
+                arena.team_service.add_team(team)
         except Exception as ex:
             return InsertionResult.failure(
                 TeamInsertionFailedException(ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}")

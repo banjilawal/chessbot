@@ -28,7 +28,7 @@ class TeamService(EntityService[Team]):
         *   EntityService
 
     # PROVIDES:
-        *   TeamService
+    None
 
     # LOCAL ATTRIBUTES:
     None

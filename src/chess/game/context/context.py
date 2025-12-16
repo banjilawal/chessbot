@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.board import Board
 from chess.game import Game
 from chess.system import Context
@@ -32,21 +32,21 @@ class GameContext(Context[Game]):
 
     # LOCAL ATTRIBUTES:
         *   team (Optional[Team])
-        *   agent (Optional[Agent])
+        *   player_agent (Optional[PlayerAgent])
         *   board (Optional[Board])
         
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
     """
     _team: Optional[Team]
-    _agent: Optional[Agent]
+    _agent: Optional[PlayerAgent]
     _board: Optional[Board]
     
     def __init__(
             self,
             id: Optional[id] = None,
             team: Optional[Team] = None,
-            agent: Optional[Agent] = None,
+            agent: Optional[PlayerAgent] = None,
             board: Optional[Board] = None,
     ):
         """
@@ -56,7 +56,7 @@ class GameContext(Context[Game]):
         # PARAMETERS:
             *   id (Optional[int])
             *   team (Optional[Team])
-            *   agent (Optional[Agent])
+            *   player_agent (Optional[PlayerAgent])
             *   board (Optional[Board])
 
         # Returns:
@@ -75,7 +75,7 @@ class GameContext(Context[Game]):
         return self._team
     
     @property
-    def agent(self) -> Optional[Agent]:
+    def agent(self) -> Optional[PlayerAgent]:
         return self._agent
     
     @property
@@ -98,6 +98,6 @@ class GameContext(Context[Game]):
         return {
             "id": self.id,
             "team": self.team,
-            "agent": self._agent,
+            "player_agent": self._agent,
             "board": self._board,
         }

@@ -1,7 +1,7 @@
-# src/chess/agent/service/__init__.py
+# src/chess/player_agent/service/__init__.py
 
 """
-Module: chess.agent.service.__init__
+Module: chess.player_agent.service.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -14,4 +14,4 @@ from .data import *
 from .exception import *
 
 # Modules
-from .service import AgentService
+from .service import PlayerAgentService

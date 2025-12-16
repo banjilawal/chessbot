@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/exception/exception.py
+# src/chess/player_agent/context/validator/exception/exception.py
 
 """
-Module: chess.agent.context.validator.exception.exception
+Module: chess.player_agent.context.validator.exception.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

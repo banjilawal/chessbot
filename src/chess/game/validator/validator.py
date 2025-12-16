@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.agent import AgentService
+from chess.agent import PlayerAgentService
 from chess.board import BoardService
 from chess.engine.service import EngineService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
@@ -45,7 +45,7 @@ class GameValidator(Validator[Game]):
             cls,
             candidate: Any,
             board_service: BoardService = BoardService(),
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Game]:
         """

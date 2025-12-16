@@ -1,7 +1,7 @@
-# src/chess/agent/service/data/service.py
+# src/chess/player_agent/service/data/service.py
 
 """
-Module: chess.agent.service.data.service
+Module: chess.player_agent.service.data.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,27 +11,27 @@ from typing import List, cast
 
 
 from chess.system import DataService, id_emitter
-from chess.agent import Agent, AgentContextService, AgentService
+from chess.agent import PlayerAgent, AgentContextService, PlayerAgentService
 
 
-class AgentDataService(DataService[Agent]):
+class AgentDataService(DataService[PlayerAgent]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Microservice API for managing and searching Agent collections.
+    1.  Microservice API for managing and searching PlayerAgent collections.
     2.  Assures collection is always reliable.
     3.  Assure only valid Agents are put in the collection.
     4.  Assure updates do not break the integrity individual items in the collection or
         the collection itself.
-    5.  Provide Agent stack data structure with no guarantee of uniqueness.
+    5.  Provide PlayerAgent stack data structure with no guarantee of uniqueness.
     6.  Search utility.
     
     # PARENT:
         *   DataService
 
     # PROVIDES:
-        *   agent_service:  -> AgentService
+        *   agent_service:  -> PlayerAgentService
         *   agent_context_service:  -> AgentContextService
 
     # LOCAL ATTRIBUTES:
@@ -46,8 +46,8 @@ class AgentDataService(DataService[Agent]):
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            items: List[Agent] = List[Agent],
-            service: AgentService = AgentService(),
+            items: List[PlayerAgent] = List[PlayerAgent],
+            service: PlayerAgentService = PlayerAgentService(),
             context_service: AgentContextService = AgentContextService(),
     ):
         """
@@ -57,8 +57,8 @@ class AgentDataService(DataService[Agent]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = DEFAULT_NAME
-            *   items (List[Agent]): = List[Agent]
-            *   service (AgentService): = AgentService()
+            *   items (List[PlayerAgent]): = List[PlayerAgent]
+            *   service (PlayerAgentService): = PlayerAgentService()
             *   context_service (AgentContextService): = AgentContextService()
 
         # Returns:
@@ -76,8 +76,8 @@ class AgentDataService(DataService[Agent]):
         )
         
     @property
-    def agent_service(self) -> AgentService:
-        return cast(AgentService, self.entity_service)
+    def agent_service(self) -> PlayerAgentService:
+        return cast(PlayerAgentService, self.entity_service)
     
     @property
     def agent_context_service(self) -> AgentContextService:
@@ -85,8 +85,8 @@ class AgentDataService(DataService[Agent]):
     
 
     # @property
-    # def data(self) -> AgentService:
-    #     return cast(AgentService, self.data)
+    # def data(self) -> PlayerAgentService:
+    #     return cast(PlayerAgentService, self.data)
     #
     # @property
     # def builder(self) -> AgentFactory:
@@ -101,7 +101,7 @@ class AgentDataService(DataService[Agent]):
     #     return cast(AgentContextService, self.context_service)
     #
     # @LoggingLevelRouter.monitor
-    # def push_item(self, item: Agent) -> InsertionResult[Agent]:
+    # def push_item(self, item: PlayerAgent) -> InsertionResult[PlayerAgent]:
     #     method = "AgentDataService.push"
     #     try:
     #         validation = self.data.item_validator.validate(item)
@@ -116,7 +116,7 @@ class AgentDataService(DataService[Agent]):
     #         )
     #
     # @LoggingLevelRouter.monitor
-    # def search(self, context: AgentContext) -> SearchResult[List[Agent]]:
+    # def search(self, context: AgentContext) -> SearchResult[List[PlayerAgent]]:
     #     method = "AgentDataService.finder"
     #     agent_context_service = cast(AgentContextService, self.context_service)
     #

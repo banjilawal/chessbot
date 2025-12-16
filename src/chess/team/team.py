@@ -6,9 +6,9 @@ Author: Banji Lawal
 Created: 2025-08-04
 version: 1.0.0
 """
+
 from chess.arena import Arena
-from chess.game import Game
-from chess.agent import Agent
+from chess.agent import PlayerAgent
 from chess.team import TeamSchema
 from chess.piece import UniquePieceDataService
 
@@ -18,31 +18,31 @@ class Team:
     # ROLE: Data-Holding
 
     # RESPONSIBILITY:
-    1.  Disposition of Pieces the Agent can move on a Board instance.
+    1.  Disposition of Pieces the PlayerAgent can move on a Board instance.
     2.  Holds the captured enemy Pieces.
-
+    
+    # PARENT:
+    None
+    
     # PROVIDES:
-    Team
+    None
 
-    # ATTRIBUTES:
-        *   MAX_ROSTER_SIZE (int):  Size of roster at full strength.
-        *   id (int):               Globally unique identifier for the team.
-        *   roster (UniquePieceDataService):   Collection of Pieces the Agent can move on a Board instance.
-        *   hostages (UniquePieceDataService):  Collection of captured enemy Pieces.
-        *   agent (Agent):  Directs moves of Pieces in Team.roster.
-        *   team_schema (TeamSchema):    Defines the Team's
-                *   name (str):                 Unique within the Game instance.
-                *   color (GameColor):          Color of the Team. (white/black)
-                *   rank_row (int):             Index or row containing the Team's ranked Pieces.
-                *   pawn_row (int):             Index or row containing the Team's pawn Pieces.
-                *   advancing_step (Vector):    Direction of the Team's roster member to get to the enemy's
-                                                Pieces.
+    # LOCAL ATTRIBUTES:
+        *   id (int)
+        *   arena (Arena)
+        *   player_agent (PlayerAgent)
+        *   team_schema (TeamSchema)
+        *   roster (UniquePieceDataService)
+        *   hostages (UniquePieceDataService)
+        
+    # INHERITED ATTRIBUTES:
+    None
     """
     MAX_ROSTER_SIZE = 16
     
     _id: int
     _arena: Arena
-    _agent: Agent
+    _player_agent: PlayerAgent
     _schema: TeamSchema
     _roster: UniquePieceDataService
     _hostages: UniquePieceDataService
@@ -50,11 +50,11 @@ class Team:
     def __init__(
             self,
             id: int,
-            agent: Agent,
             arena: Arena,
             schema: TeamSchema,
-            roster: UniquePieceDataService,
-            hostages: UniquePieceDataService,
+            player_agent: PlayerAgent,
+            roster: UniquePieceDataService = UniquePieceDataService(),
+            hostages: UniquePieceDataService = UniquePieceDataService(),
     ):
         """
         # ACTION:
@@ -62,7 +62,7 @@ class Team:
 
         # PARAMETERS:
             *   id (int)
-            *   agent (Agent)
+            *   player_agent (PlayerAgent)
             *   arena (Arena)
             *   team_schema (TeamSchema)
             *   roster (UniquePieceDataService)
@@ -76,22 +76,22 @@ class Team:
         """
         method = "Team.__init__"
         self._id = id
-        self._agent = agent
         self._arena = arena
         self._schema = schema
         self._roster = roster
         self._hostages = hostages
+        self._player_agent = player_agent
     
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def agent(self) -> Agent:
-        return self._agent
+    def player_agent(self) -> PlayerAgent:
+        return self._player_agent
     
     @property
-    def game(self) -> Arena:
+    def arena(self) -> Arena:
         return self._arena
     
     @property
@@ -117,4 +117,4 @@ class Team:
         return hash(self._id)
     
     def __str__(self) -> str:
-        return f"Team{{id:{self._id} {self._agent.name} {self._schema}}}"
+        return f"Team{{id:{self._id} {self._player_agent.name} {self._schema}}}"

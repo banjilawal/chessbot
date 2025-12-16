@@ -1,7 +1,7 @@
-# src/chess/agent/factory/exception.py
+# src/chess/player_agent/factory/exception.py
 
 """
-Module: chess.agent.factory.exception
+Module: chess.player_agent.factory.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -22,7 +22,7 @@ class AgentBuildFailedException(AgentException, BuildFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during Agent build process.
+    1.  Parent of exceptions raised during PlayerAgent build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an AgentBuilder method.
 
     # PARENT:
@@ -39,4 +39,4 @@ class AgentBuildFailedException(AgentException, BuildFailedException):
     None
     """
     ERROR_CODE = "AGENT_BUILD_ERROR"
-    DEFAULT_ERROR_CODE = "Agent build failed."
+    DEFAULT_ERROR_CODE = "PlayerAgent build failed."

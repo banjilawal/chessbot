@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.agent import Agent, AgentService
+from chess.agent import PlayerAgent, PlayerAgentService
 from chess.arena import Arena, ArenaService
 from chess.system import Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.team import (
@@ -47,16 +47,16 @@ class TeamContextBuilder(Builder[TeamContext]):
             id: Optional[int] = None,
             name: Optional[str] = None,
             arena: Optional[Arena] = None,
-            agent: Optional[Agent] = None,
+            agent: Optional[PlayerAgent] = None,
             color: Optional[GameColor] = None,
             arena_service: ArenaService = ArenaService(),
-            agent_service: AgentService = AgentService(),
+            agent_service: PlayerAgentService = PlayerAgentService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[TeamContext]:
         """
         # Action:
-            1. Confirm that only one in the tuple (id, name, agent, color, team_schema), is not null.
+            1. Confirm that only one in the tuple (id, name, player_agent, color, team_schema), is not null.
             2. Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3. If all checks pass build the PieceContext in a BuildResult.
 
@@ -65,12 +65,12 @@ class TeamContextBuilder(Builder[TeamContext]):
             *   id (Optional[int])
             *   name (Optional[int])
             8   arena (Optional[Arena])
-            *   agent (Optional[Agent])
+            *   player_agent (Optional[PlayerAgent])
             *   color (Optional[ArenaColor])
 
         These Parameters must be provided:
             *   arena_service (ArenaService)
-            *   agent_certifier (AgentService)
+            *   agent_certifier (PlayerAgentService)
             *   identity_service (IdentityService)
             *   schema_validator (TeamSchemaValidator)
 
@@ -119,12 +119,12 @@ class TeamContextBuilder(Builder[TeamContext]):
                 # On validation success return a name.TeamContext in the BuildResult.
                 return BuildResult.success(payload=TeamContext(name=validation.payload))
             
-            # agent flag enabled, build flow.
+            # player_agent flag enabled, build flow.
             if agent is not None:
                 validation = agent_service.validator.validate(candidate=agent)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a agent.TeamContext in the BuildResult.
+                # On validation success return a player_agent.TeamContext in the BuildResult.
                 return BuildResult.success(payload=TeamContext(agent=validation.payload))
             
             # arena flag enabled, build flow.

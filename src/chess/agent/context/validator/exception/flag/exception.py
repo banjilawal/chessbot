@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/exception/flag/exception.py
+# src/chess/player_agent/context/validator/exception/flag/exception.py
 
 """
-Module: chess.agent.context.validator.exception.flag.exception
+Module: chess.player_agent.context.validator.exception.flag.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -46,7 +46,7 @@ class TooManyAgentContextFlagsException(InvalidAgentContextException, ContextFla
     # ROLE: ContextFlagException, AgentContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one Agent attribute is going to be used in an AgentFinder.
+    1.  Indicate if more than one PlayerAgent attribute is going to be used in an AgentFinder.
     
     # PARENT:
         *   InvalidAgentContextException

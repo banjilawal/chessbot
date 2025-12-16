@@ -1,7 +1,7 @@
-# src/chess/agent/model/agent.py
+# src/chess/player_agent/model/player_agent.py
 
 """
-Module: chess.agent.model.agent
+Module: chess.player_agent.model.player_agent
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -15,7 +15,7 @@ from chess.game import Game, UniqueGameDataService
 from chess.team import Team, UniqueTeamDataService
 
 
-class Agent(ABC):
+class PlayerAgent(ABC):
     """
     # ROLE: Controller
 
@@ -93,7 +93,7 @@ class Agent(ABC):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, Agent):
+        if isinstance(other, PlayerAgent):
             return self._id == other.id
         return False
 
@@ -114,7 +114,7 @@ class Agent(ABC):
     #         f"]"
     #     )
     
-    # agent.order_move(
+    # player_agent.order_move(
     #   owner=TeamFinder.searcher(
     #     data_owner=self._team_name,
     #     search_category=SearchCategory.ROSTER,
@@ -131,7 +131,7 @@ class Agent(ABC):
     # # 5. Returns TransactionResult with rollback safety
     
     def move_piece(self, piece_name: str, destination: Coord):
-        method = "Agent.move_piece"
+        method = "PlayerAgent.move_piece"
         
         try:
             validation = NameValidator.validate(piece_name)

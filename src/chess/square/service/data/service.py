@@ -30,7 +30,7 @@ class SquareDataService(DataService[Square]):
         
     @LoggingLevelRouter.monitor
     def entity_service(self) -> SquareService:
-        return cast(SquareService, self.service)
+        return cast(SquareService, self.entity_service)
     
     @LoggingLevelRouter.monitor
     def push_item(self, item: Square) -> InsertionResult[Square]:
