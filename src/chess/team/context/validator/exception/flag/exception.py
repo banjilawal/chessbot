@@ -1,30 +1,62 @@
-# src/chess/team/context/validator/exception/flag/exception.py
+# src/chess/game/context/validator/exception/flag/exception.py
 
 """
-Module: chess.team.context.validator.exception.flag.exception
+Module: chess.game.context.validator.exception.flag.exception
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import BoundsException
-from chess.team import InvalidTeamContextException
+from chess.system import ContextFlagCountException
+from chess.game import InvalidGameContextException
 
 __all__ = [
-    #========================= TEAM_CONTEXT FLAG EXCEPTIONS =========================#
-    "NoTeamContextFlagsException",
-    "TooManyTeamContextFlagsException"
+    #========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
+    "NoGameContextFlagException",
+    #========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+    "TooManyGameContextFlagsException"
 ]
 
 
-#========================= TEAM_CONTEXT FLAG EXCEPTIONS =========================#
-class NoTeamContextFlagsException(InvalidTeamContextException, BoundsException):
-    """Raised if no TeamContext was selected."""
-    ERROR_CODE = "NO_TEAM_CONTEXT_FLAG_SET_ERROR"
-    DEFAULT_MESSAGE = "One and only one, TeamContext flag must be set."
+#========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
+class NoGameContextFlagException(InvalidGameContextException, ContextFlagCountException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate no GameContext flag is provided with a searcher value.
+    
+    # PARENT:
+        *   InvalidGameContextException
+        *   ContextFlagCountException
+
+    # PROVIDES:
+    NoGameContextFlagException
+
+    # ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "NO_GAME_CONTEXT_FLAG_ERROR"
+    DEFAULT_MESSAGE = "No GameContext flag was selected. A context flag must be turned on with a target value."
 
 
-class TooManyTeamContextFlagsException(InvalidTeamContextException, BoundsException):
-    """Raised if too many TeamContext flags were set."""
-    ERROR_CODE = "TEAM_CONTEXT_MAX_PARAM_ERROR"
-    DEFAULT_MESSAGE = "Only one TeamContext flag can be set."
+#========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+class TooManyGameContextFlagsException(InvalidGameContextException, ContextFlagCountException):
+    """
+    # ROLE: ContextFlagException, GameContextException
+
+    # RESPONSIBILITIES:
+    1.  Indicate if more than one Game attribute is going to be used in an GameSnapshotFinder.
+    
+    # PARENT:
+        *   InvalidGameContextException
+        *   ContextFlagCountException
+
+    # PROVIDES:
+    TooManyGameContextFlagsException
+
+    # ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "TOO_MANY_GAME_CONTEXT_FLAGS_ERROR"
+    DEFAULT_MESSAGE = "More than one GameContext flag was selected. Only one context flag is allowed."

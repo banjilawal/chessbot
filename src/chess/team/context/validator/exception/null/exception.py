@@ -1,22 +1,44 @@
-# src/chess/team/context/validator/exception/null/exception.py
+# src/chess/game/context/validator/exception/null/exception.py
 
 """
-Module: chess.team.context.validator.exception.null.exception
+Module: chess.game.context.validator.exception.null.exception
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.team import InvalidTeamContextException
+from chess.game import InvalidGameContextException
 
 __all__ = [
-    #========================= NULL TEAM_CONTEXT EXCEPTIONS =========================#
-    "NullTeamContextException"
+    #======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
+    "NullGameContextException",
 ]
 
-#========================= NULL TEAM_CONTEXT EXCEPTIONS =========================#
-class NullTeamContextException(InvalidTeamContextException, NullException):
-    """Raised if an entity, method, or operation requires TeamContext but gets null instead."""
-    ERROR_CODE = "NULL_TEAM_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TeamContext cannot be null."
+#======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
+class NullGameContextException(InvalidGameContextException, NullException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Raised if an GameContext validation candidate is null.
+    2.  Raised if an entity, method or operation requires an GameContext but receives null instead.
+    
+    # PARENT:
+        *   InvalidGameContextException
+        *   NullGameContextException
+
+    # PROVIDES:
+    NullGameContextException
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "NULL_GAME_CONTEXT_ERROR"
+    DEFAULT_MESSAGE = "GameContext cannot be null."
+    
+    
+    

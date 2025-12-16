@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import Optional
 
 from chess.team import Team
-from chess.agent import PlayerAgent
 from chess.arena import Arena
+from chess.agent import PlayerAgent
 from chess.system import Context, GameColor
 
 

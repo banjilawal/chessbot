@@ -32,7 +32,7 @@ class GameContextException(ContextException):
         *   ContextException
         
     # PROVIDES:
-    GameContextException
+    None
 
     # LOCAL ATTRIBUTES:
     None

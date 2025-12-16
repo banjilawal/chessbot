@@ -1,24 +1,38 @@
-# src/chess/team/context/validator/exception.py
+# src/chess/team/context/validator/exception/exception.py
 
 """
-Module: chess.team.context.validator.exception
+Module: chess.team.context.validator.exception.exception
 Author: Banji Lawal
-Created: 2025-11-24
+Created: 2025-09-16
 version: 1.0.0
 """
 
+from chess.system import ValidationFailedException
 from chess.team import TeamContextException
-from chess.system import ValidationException
-
 
 __all__ = [
-#========================= TEAM_CONTEXT VALIDATION EXCEPTION SUPER CLASS  =========================#
+    #======================# TEAM_CONTEXT VALIDATION SUPER CLASS #======================#
     "InvalidTeamContextException",
 ]
 
+#======================# TEAM_CONTEXT VALIDATION SUPER CLASS #======================#
+class InvalidTeamContextException(TeamContextException, ValidationFailedException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
 
-#========================= TEAM_CONTEXT VALIDATION EXCEPTION SUPER CLASS  =========================#
-class InvalidTeamContextException(TeamContextException, ValidationException):
-    """Catchall Exception for TeamContextValidator when a candidate fails a sanity check.""""""
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised TeamContext validation.
+    2.  Wraps unhandled exceptions that hit the finally-block in TeamContextValidator methods.
+    
+    # PARENT:
+        *   TeamContextException
+        *   ValidationFailedException
+
+    # PROVIDES:
+    InvalidTeamContextException
+
+    # ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "TEAM_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "TeamContext validation failed."

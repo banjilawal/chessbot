@@ -1,16 +1,16 @@
-# src/chess/team/context/validator/exception/flag/__init__.py
+# src/chess/game/context/validator/exception/flag/__init__.py
 
 """
-Module: chess.team.context.validator.exception.flag.__init__
+Module: chess.game.context.validator.exception.flag.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== TEAM.CONTEXT.VALIDATOR.EXCEPTION.FLAG PACKAGE CONTENTS ===========#
+#=========== GAME.CONTEXT.VALIDATOR.EXCEPTION.FLAG PACKAGE CONTENTS ===========#
 
 # Packages
-# None
+None
 
 # Modules
-from .exception import *
+from .exception import NoGameContextFlagException, TooManyGameContextFlagsException
