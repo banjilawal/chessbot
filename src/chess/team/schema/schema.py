@@ -8,12 +8,13 @@ version: 1.0.0
 """
 
 from enum import Enum
+from typing import List
 
+from chess.formation.lookup.service import BattleOrderService
 from chess.scalar import Scalar
 from chess.geometry import Quadrant
 from chess.system import GameColor, ROW_SIZE
-from chess.team import BlackBattleOrder, WhiteBattleOrder
-from chess.team.order.order import BattleOrder
+from chess.formation import BattleOrder
 
 
 class TeamSchema(Enum):
@@ -49,18 +50,16 @@ class TeamSchema(Enum):
             rank_row: int,
             advancing_step: Scalar,
             home_quadrant: Quadrant,
-            battle_order
     ):
         obj = object.__new__(cls)
         obj._color = color
         obj._rank_row = rank_row
         obj._advancing_step = advancing_step
         obj._home_quadrant = home_quadrant
-        obj._battle_order = battle_order
         return obj
     
-    WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N, BattleOrder.white_battle_orders)
-    BLACK = (GameColor.BLACK, (ROW_SIZE - 1), Scalar(-1), Quadrant.S, BattleOrder.black_battle_orders)
+    WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N,)
+    BLACK = (GameColor.BLACK, (ROW_SIZE - 1), Scalar(-1), Quadrant.S,)
     
     @property
     def letter(self) -> str:
@@ -91,8 +90,11 @@ class TeamSchema(Enum):
     #     return TeamSchema.BLACK if self == TeamSchema.WHITE else TeamSchema.WHITE
     
     @property
-    def battle_order(self) -> [WhiteBattleOrder|BlackBattleOrder]:
-        return self._battle_order
+    def battle_order(self) -> List[BattleOrder]:
+        if self.color == GameColor.WHITE:
+            return BattleOrderService().white_battle_orders
+        return BattleOrderService().black_battle_orders
+        
     #
     # @classmethod
     # def find_by_color(cls, color: GameColor) -> TeamSchema:

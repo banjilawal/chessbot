@@ -61,8 +61,9 @@ class GameFinder(Finder[Game]):
 
         # Returns:
         SearchResult[List[Game]] containing either:
-            - On success:   List[game] in the payload.
-            - On failure:   Exception.
+            - On finding a match: List[Game] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
 
         # Raises:
             *   TypeError

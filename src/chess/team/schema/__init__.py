@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .context import *
-from .service import *
+from .lookup import *
 from .validator import *
 
 # Modules
