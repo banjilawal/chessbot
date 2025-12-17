@@ -21,7 +21,7 @@ class LookupFailedException(ChessException, OperationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by MetadataLookup objects.
+    1.  Parent of exceptions raised by EnumLookup objects.
     2.  Wraps unhandled exceptions that hit the try-finally block of a Metadata method.
 
     # PARENT:

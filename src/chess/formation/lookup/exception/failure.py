@@ -38,5 +38,5 @@ class OrderLookupFailedException(InvalidBattleOrderException, LookupFailedExcept
     None
     """
     ERROR_CODE = "ORDER_LOOKUP_FAILED_ERROR"
-    DEFAULT_MESSAGE = "MetadataLookup failed failed because there is no configuration property includes that value."
+    DEFAULT_MESSAGE = "EnumLookup failed failed because there is no configuration property includes that value."
 

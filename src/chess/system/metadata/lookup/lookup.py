@@ -9,16 +9,17 @@ version: 1.0.0
 
 
 from abc import ABC, abstractmethod
-from typing import Generic
+from enum import Enum
+from typing import Generic, List
 from typing_extensions import TypeVar
 
-from chess.system import Builder, LoggingLevelRouter, Metadata, Context, SearchResult, Validator
+from chess.system import Builder, LoggingLevelRouter, Context, SearchResult, Validator, id_emitter
 
-M = TypeVar("M", bound=Metadata)
+M = TypeVar("M", bound=Enum)
 C = TypeVar("C", bound=Context)
 
 
-class MetadataLookup(ABC, Generic[Context[M]]):
+class EnumLookup(ABC, Generic[Context[Enum]]):
     """
     # ROLE: Table lookup, Finder
 
@@ -37,37 +38,44 @@ class MetadataLookup(ABC, Generic[Context[M]]):
     # INHERITED ATTRIBUTES:
     None
     """
-    _context_builder: Builder[Context[Metadata]]
-    _context_validator: Validator[Context[Metadata]]
-    _metadata_validator: Validator[Metadata]
+    _id: int
+    _enum_validator: Validator[Enum]
+    _context_builder: Builder[Context[Enum]]
+    _context_validator: Validator[Context[Enum]]
+
     
     def __init__(
             self,
-            context_builder: Builder[Context[Metadata]],
-            context_validator: Validator[Context[Metadata]],
-            metadata_validator: Validator[Metadata],
+            enum_validator: Validator[Enum],
+            context_builder: Builder[Context[Enum]],
+            context_validator: Validator[Context[Enum]],
+            id: int = id_emitter.service_id,
     ):
+        self._id = id
+        self._enum_validator = enum_validator
         self._context_builder = context_builder
         self._context_validator = context_validator
-        self._metadata_validator = metadata_validator
-    
+
+    @property
+    def id(self) -> int:
+        return self._id
     
     @property
-    def metadata_validator(self) -> Validator[Metadata]:
-        return self._metadata_validator
+    def enum_validator(self) -> Validator[Enum]:
+        return self._enum_validator
     
     @property
-    def context_builder(self) -> Builder[Context[Metadata]]:
+    def context_builder(self) -> Builder[Context[Enum]]:
         return self._context_builder
     
     @property
-    def context_validator(self) -> Validator[Context[Metadata]]:
+    def context_validator(self) -> Validator[Context[Enum]]:
         return self._context_validator
 
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def lookup(cls, context: Context[Metadata]) -> SearchResult[Metadata]:
+    def lookup(cls, context: Context[Enum]) -> SearchResult[List[Enum]]:
         pass
     
     

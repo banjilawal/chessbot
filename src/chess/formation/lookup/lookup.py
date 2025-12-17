@@ -14,12 +14,12 @@ from chess.formation import (
     BattleOrderValidator,
     BattleOrder, OrderLookupFailedException, OrderNameBoundsException, OrderSquareBoundsException
 )
-from chess.system import LookupService, GameColor, LoggingLevelRouter, Result, SearchResult, id_emitter
+from chess.system import EnumLookup, GameColor, LoggingLevelRouter, Result, SearchResult, id_emitter
 
 
-class BattleOrderLookup(LookupService[OrderContext]):
+class BattleOrderLookup(EnumLookup[OrderContext]):
     """
-    # ROLE: MetadataLookup, Utility
+    # ROLE: EnumLookup, Utility
 
     # RESPONSIBILITIES:
     1.  Public facing Order State Machine microlookup API.
@@ -81,19 +81,15 @@ class BattleOrderLookup(LookupService[OrderContext]):
         validation = self._order_validator.validate(order)
         if validation.is_failure:
             return Result.failure(validation.exception)
-        if order == BattleOrder.WHITE: return Result[BattleOrder.BLACK]
+        if order == BattleOrder.color.WHITE: return Result[BattleOrder.BLACK]
         return Result[BattleOrder.WHITE]
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def lookup_order(
-            cls,
-            context: OrderContext,
-            context_validator: OrderContextValidator = OrderContextValidator()
-    ) -> SearchResult[List[BattleOrder]]:
+    def lookup(cls, context: OrderContext) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  BattleOrder is an Enum to follow the MetadataLookup contract a default dataset of List[BattleOrder] has been set.
+        1.  BattleOrder is an Enum to follow the EnumLookup contract a default dataset of List[BattleOrder] has been set.
             It's not used anywhere. even if a dataset argument is passed.
         2.  Use context_validator to certify the provided context.
         3.  Context attribute routes the search. Attribute value is the search target.

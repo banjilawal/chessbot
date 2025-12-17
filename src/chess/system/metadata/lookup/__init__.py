@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .lookup import MetadataLookup
+from .lookup import EnumLookup
 from .exception import LookupFailedException
