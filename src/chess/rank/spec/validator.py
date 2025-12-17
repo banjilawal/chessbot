@@ -189,7 +189,7 @@ class RankSpecValidator(Validator[RankSpec]):
                 return ValidationResult.failure(
                     RankNameBoundsException(f"{method} {RankNameBoundsException.DEFAULT_MESSAGE}")
                 )
-            # If no errors are detected send the name inside a ValidationResult.
+            # If no errors are detected send the designation inside a ValidationResult.
             return ValidationResult.success(payload=name)
             
             # Finally, if there is an unhandled exception Wrap a InvalidRankNameException around it

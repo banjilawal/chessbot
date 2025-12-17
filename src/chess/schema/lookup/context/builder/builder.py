@@ -48,14 +48,14 @@ class SchemaContextBuilder(Builder[SchemaContext]):
     ) -> BuildResult[SchemaContext]:
         """
         # Action:
-            1.  Confirm that only one in the (name, color) tuple is not null.
+            1.  Confirm that only one in the (designation, color) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service or validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success Build an SchemaContext and return in a BuildResult.
 
         # Parameters:
         Only one these must be provided:
-            *   name (Optional[str])
+            *   designation (Optional[str])
             *   color (Optional[GameColor])
 
         These Parameters must be provided:
@@ -90,7 +90,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                 )
             # After the verifying the correct number of flags are set follow the appropriate TeamSchema build flow.
             
-            # name flag enabled, build flow.
+            # designation flag enabled, build flow.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:

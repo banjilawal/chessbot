@@ -72,7 +72,7 @@ class PieceContext(Context[Piece]):
     def to_dict(self) -> {}:
         return {
             "id": self.id,
-            "name": self.name,
+            "designation": self.name,
             "team": self._team,
             "rank": self._rank,
             "ransom": self._ransom,

@@ -55,7 +55,7 @@ class RankContextBuilder(Builder[RankContext]):
 
         # Parameters:
             *   id (Optional[int]):                     selected if searcher target is an id.
-            *   name (Optional[str]):                   selected if searcher target is a name.
+            *   designation (Optional[str]):                   selected if searcher target is a designation.
             *   ransom (Optional[int]):                 selected if searcher target is a ransom.
             *   team_quota (Optional[int]):             selected if searcher target is a team quota.
             *   designation (Optional[str]):            selected if searcher target is a designation.

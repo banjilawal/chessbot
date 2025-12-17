@@ -35,7 +35,7 @@ class EntityService(ABC, Generic[T]):
 
     # LOCAL ATTRIBUTES:
         *   id (int)
-        *   name (str)
+        *   designation (str)
         *   builder (Builder[T])
         *   validator (Validator[T])
         
@@ -60,7 +60,7 @@ class EntityService(ABC, Generic[T]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   designation (str)
             *   builder (Builder[T])
             *   validator (Validator[T])
 
@@ -82,7 +82,7 @@ class EntityService(ABC, Generic[T]):
     
     @property
     def name(self) -> str:
-        """get entity name"""
+        """get entity designation"""
         return self._name
     
     @property
@@ -106,6 +106,6 @@ class EntityService(ABC, Generic[T]):
         return hash(self._id)
     
     def __str__(self):
-        return f"id:{self._id}, name:{self._name}"
+        return f"id:{self._id}, designation:{self._name}"
     
     

@@ -39,19 +39,21 @@ class EnumLookup(ABC, Generic[Context[Enum]]):
     None
     """
     _id: int
+    _name: str
     _enum_validator: Validator[Enum]
     _context_builder: Builder[Context[Enum]]
     _context_validator: Validator[Context[Enum]]
-
     
     def __init__(
             self,
+            id: int,
+            name: str,
             enum_validator: Validator[Enum],
             context_builder: Builder[Context[Enum]],
             context_validator: Validator[Context[Enum]],
-            id: int = id_emitter.service_id,
     ):
         self._id = id
+        self._name = name
         self._enum_validator = enum_validator
         self._context_builder = context_builder
         self._context_validator = context_validator
@@ -59,6 +61,10 @@ class EnumLookup(ABC, Generic[Context[Enum]]):
     @property
     def id(self) -> int:
         return self._id
+    
+    @@property
+    def name(self) -> str:
+        return self._name
     
     @property
     def enum_validator(self) -> Validator[Enum]:
@@ -75,7 +81,7 @@ class EnumLookup(ABC, Generic[Context[Enum]]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def lookup(cls, context: Context[Enum]) -> SearchResult[List[Enum]]:
+    def lookup(cls, context: Context[Enum], context_validator: Validator[Context[Enum]]) -> SearchResult[List[Enum]]:
         pass
     
     

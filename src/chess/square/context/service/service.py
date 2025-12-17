@@ -50,7 +50,7 @@ class SquareContextService(ContextService[SquareContext]):
         Constructor
 
         # Parameters:
-            *   name (str): Default value - DEFAULT_NAME
+            *   designation (str): Default value - DEFAULT_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (SquareFinder): Default value - SquareFinder()
             *   builder (SquareContextBuilder): Default value - SquareContextBuilder()

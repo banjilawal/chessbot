@@ -38,6 +38,6 @@ class PieceRankOutOfBoundsException(PieceAttributeBoundsException):
 
 
 class PieceNameOutOfBoundsException(PieceAttributeBoundsException):
-    """Raised a Piece's name is out of bounds specified in LayoutSchema."""
+    """Raised a Piece's designation is out of bounds specified in LayoutSchema."""
     ERROR_CODE = "PIECE_NAME_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Piece.name is out of bounds."
+    DEFAULT_MESSAGE = "Piece.designation is out of bounds."

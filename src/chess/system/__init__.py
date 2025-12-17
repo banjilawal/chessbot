@@ -76,7 +76,7 @@ None
 # def package_info() -> dict:
 #   """Return basic package information."""
 #   return {
-#     "name": __package_name__,
+#     "designation": __package_name__,
 #     "version": __version__,
 #     "author": __author__,
 #     "exports": __all__

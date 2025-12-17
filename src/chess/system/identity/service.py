@@ -78,11 +78,11 @@ class IdentityService:
         4.  On success
                 *   cast name_candidate to a STRING.
                 *   cast id_candidate to an INT.
-                *   send the (id, name) tuple to the caller in a ValidationResult.
+                *   send the (id, designation) tuple to the caller in a ValidationResult.
 
         # PARAMETERS:
             * id_candidate (Any): object to certify is a legal ID.
-            * name_candidate (Any): object to certify is a legal name.
+            * name_candidate (Any): object to certify is a legal designation.
 
         # Returns:
         ValidationResult[tuple(int, str)] containing either:

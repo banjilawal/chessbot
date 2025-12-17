@@ -88,33 +88,3 @@ class BattleOrder(Enum):
     @property
     def roster_number(self) -> int:
         return self._roster_number
-    
-    @classmethod
-    def allowed_roster_numbers(cls) -> List[int]:
-        return [member.roster_number for member in cls]
-    
-    @classmethod
-    def allowed_designations(cls) -> List[str]:
-        return [member.designation.upper() for member in cls]
-    
-    @classmethod
-    def allowed_squares(cls) -> List[str]:
-        return [member.square.upper() for member in cls]
-    
-    @classmethod
-    def find_order_by_square(cls, square: Square) -> Optional[BlackBattleOrder]:
-        for member in cls:
-            if member.square.upper() == square.upper():
-                return member
-        return None
-    
-    @classmethod
-    def find_order_by_piece(cls, piece: Piece) -> Optional[BlackBattleOrder]:
-        """
-        Finding by piece_designation avoids getting a hit when searching for an opposite
-        piece by mistake.
-        """
-        for member in cls:
-            if member.designation.upper() == piece.name.upper():
-                return member
-        return None

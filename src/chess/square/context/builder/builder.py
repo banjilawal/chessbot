@@ -55,7 +55,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         """
         # ACTION:
         1.  Verify only one param is turned on.
-        2.  If either id or name is turned on verify them with identity_service.
+        2.  If either id or designation is turned on verify them with identity_service.
         2.  If the coord is turned on verify with coord_service.
         3.  Run board-integrity checks with board_service.
         4.  If any checks fail, send their exception to the caller in a BuildResult.
@@ -63,7 +63,7 @@ class SquareContextBuilder(Builder[SquareContext]):
 
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   cord (Coord)
             *   board (Board)
             *   board_service (BoardService)

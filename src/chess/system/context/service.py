@@ -48,7 +48,7 @@ class ContextService(EntityService[Context[T]]):
             1.  Constructor
 
         # Parameters:
-            *   name (str)
+            *   designation (str)
             *   id (int)
             *   finder (Finder[T])
             *   builder (Builder[Context[T]])

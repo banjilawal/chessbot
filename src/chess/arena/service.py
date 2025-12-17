@@ -35,7 +35,7 @@ class ArenaService(EntityService[Arena]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   designation (str)
             *   builder (ArenaFactory)
             *   validator (ArenaValidator)
 

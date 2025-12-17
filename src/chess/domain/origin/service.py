@@ -39,7 +39,7 @@ class DomainOriginService(EntityService[DomainOrigin]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   designation (str)
             *   builder (DomainOriginFactory)
             *   validator (DomainOriginValidator)
 

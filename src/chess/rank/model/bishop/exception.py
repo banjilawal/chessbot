@@ -70,9 +70,9 @@ class NotBishopIdException(BishopException, RankIdException):
 
 #======================# RANK_NAME EXCEPTION #======================#
 class NotBishopNameException(BishopException, RankNameException):
-    """Raised when a tested name is not a Bishop's."""
+    """Raised when a tested designation is not a Bishop's."""
     ERROR_CODE = "BISHOP_NAME_ERROR"
-    DEFAULT_MESSAGE = "Not the correct Bishop name."
+    DEFAULT_MESSAGE = "Not the correct Bishop designation."
 
 
 #======================# RANK_QUOTA EXCEPTION #======================#

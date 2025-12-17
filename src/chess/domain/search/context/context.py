@@ -78,7 +78,7 @@ class ResidentFilter(SearchContext):
     def to_dict(self):
         return {
             "id": self._id,
-            "name": self._name,
+            "designation": self._name,
             "ransom": self._ransom,
             "target": self._coord,
             "rank_name": self._rank_name,

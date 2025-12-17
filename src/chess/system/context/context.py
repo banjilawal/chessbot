@@ -29,7 +29,7 @@ class Context(ABC, Generic[T]):
   
     # ATTRIBUTES:
         *   id (Optional[int])
-        *   name (Optional[str])
+        *   designation (Optional[str])
     """
     _id: Optional[int]
     _name: Optional[str]

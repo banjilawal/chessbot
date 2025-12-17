@@ -94,7 +94,7 @@ class TeamValidator(Validator[Team]):
             schema_validation = schema_validator.validate(team.schema)
             if schema_validation.is_failure():
                 return ValidationResult.failure(schema_validation.exception)
-            # After team_schema checks out. Test name and id at the same time.
+            # After team_schema checks out. Test designation and id at the same time.
             identity_validation = idservice.validate_identity(
                 id_candidate=team.id,
                 name_candidate=team.schema.name

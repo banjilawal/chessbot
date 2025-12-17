@@ -52,7 +52,7 @@ class AgentContextService(ContextService[AgentContext]):
         Constructor
 
         # Parameters:
-            *   name (str): Default value - DEFAULT_NAME
+            *   designation (str): Default value - DEFAULT_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (AgentFinder): Default value - AgentFinder()
             *   builder (AgentContextBuilder): Default value - AgentContextBuilder()

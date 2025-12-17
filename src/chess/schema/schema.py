@@ -33,7 +33,7 @@ class TeamSchema(Enum):
     None
   
     # LOCAL ATTRIBUTES:
-        *   name (str)
+        *   designation (str)
         *   color (GameColor)
         *   rank_row (int)
         *   pawn_row (int)
@@ -101,9 +101,9 @@ class TeamSchema(Enum):
     #         return cls.__members__[color]
     #
     # @classmethod
-    # def find_by_name(cls, name: str) -> TeamSchema:
-    #     if name in cls.__members__:
-    #         return cls.__members__[name]
+    # def find_by_name(cls, designation: str) -> TeamSchema:
+    #     if designation in cls.__members__:
+    #         return cls.__members__[designation]
     
     # @classmethod
     # def allowed_colors(cls) -> List[GameColor]:
@@ -111,7 +111,7 @@ class TeamSchema(Enum):
     #
     # @classmethod
     # def allowed_names(cls) -> List[str]:
-    #     return [member.name for member in cls]
+    #     return [member.designation for member in cls]
     
     def __str__(self) -> str:
         return (

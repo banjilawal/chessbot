@@ -53,8 +53,8 @@ class BoardSearchContextValidator(Validator):
         # Parameters:
           * candidate (Any):                            Object to verify is a Board.
           * id_validator (type[IdValidator]):           Enforces safety requirements on id-searcher targets.
-          * name_validator (type[NameValidator]):       Enforces safety requirements on name-searcher targets.
-          * validator (type[CoordValidator]):     Enforces safety requirements on name-searcher targets.
+          * name_validator (type[NameValidator]):       Enforces safety requirements on designation-searcher targets.
+          * validator (type[CoordValidator]):     Enforces safety requirements on designation-searcher targets.
           
         # Returns:
           ValidationResult[TeamSearchContext] containing either:
@@ -173,7 +173,7 @@ class BoardSearchContextValidator(Validator):
         Verify a name_candidate meets application TeamSearchContext safety requirements.
 
         # Parameters:
-          * candidate (Any): Object to verify is a name.
+          * candidate (Any): Object to verify is a designation.
           * name_validator (type[NameValidator]): Checks if candidate complies with safety contract.
 
         # Returns:

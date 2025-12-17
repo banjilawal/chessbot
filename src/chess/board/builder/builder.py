@@ -92,7 +92,7 @@ class BoardBuilder(Builder[Board]):
    
                     square_build_result = square_data.builder.build(
                         id=idservice.id_emitter.square_id,
-                        name=name,
+                        designation=name,
                         coord=coord_build_result.payload
                     )
                     if square_build_result.is_failure():

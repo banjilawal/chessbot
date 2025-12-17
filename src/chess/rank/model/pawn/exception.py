@@ -72,9 +72,9 @@ class NotPawnIdException(PawnException, RankIdException):
 
 #======================# RANK_NAME EXCEPTION #======================#
 class NotPawnNameException(PawnException, RankNameException):
-    """Raised when a tested name is not a Pawn's."""
+    """Raised when a tested designation is not a Pawn's."""
     ERROR_CODE = "PAWN_NAME_ERROR"
-    DEFAULT_MESSAGE = "Not the correct Pawn name."
+    DEFAULT_MESSAGE = "Not the correct Pawn designation."
 
 
 #======================# RANK_QUOTA EXCEPTION #======================#

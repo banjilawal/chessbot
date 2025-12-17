@@ -68,10 +68,10 @@ class TeamRollBackException(TeamException):
 
 
 class TeamNameException(TeamException, NameException):
-  """Catchall for when a method dependent on a Team's name get an invalid argument."""
+  """Catchall for when a method dependent on a Team's designation get an invalid argument."""
   pass
   ERROR_CODE = "TEAM_NAME_ERROR"
-  DEFAULT_MESSAGE = "Team.name raised an exception."
+  DEFAULT_MESSAGE = "Team.designation raised an exception."
 
 
 class TeamColorException(TeamException, GameColorException):

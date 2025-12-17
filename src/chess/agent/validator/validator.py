@@ -51,7 +51,7 @@ class AgentValidator(Validator[PlayerAgent]):
         # ACTION:
         1.  Verify the candidate is not null.
         2.  Verify the candidate is an PlayerAgent. If so cast it to an PlayerAgent instance.
-        3.  Use the identity service to verify the player_agent's name and id.
+        3.  Use the identity service to verify the player_agent's designation and id.
         4.  If the player_agent is a MachineAgent, confirm player_agent.engine_service is not null and
             is an EngineService instance.
         5.  Confirm player_agent.team_assignments is not null and is an UniqueTeamDataService instance.
@@ -89,7 +89,7 @@ class AgentValidator(Validator[PlayerAgent]):
             # Cast to an PlayerAgent for additional processing.
             agent = cast(PlayerAgent, candidate)
             
-            # Verify the id and name are safe.
+            # Verify the id and designation are safe.
             identity_validation = idservice.validate_identity(agent.id, agent.name)
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)

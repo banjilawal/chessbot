@@ -33,6 +33,6 @@ class SquareContext(Context[Square]):
     def to_dict(self) -> dict:
         return {
             "id": self.id,
-            "name": self.name,
+            "designation": self.name,
             "coord": self._coord
         }

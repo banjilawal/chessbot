@@ -53,7 +53,7 @@ class RankContext(Context[Rank]):
 
         # PARAMETERS:
             *   id (Optional[int])
-            *   name (Optional[str])
+            *   designation (Optional[str])
             *   team (Optional[Team])
             *   game (Optional[Game])
             *   variety (Optional[RankVariety])
@@ -97,7 +97,7 @@ class RankContext(Context[Rank]):
         def to_dict(self) -> dict:
             return {
                 "id": self._id,
-                "name": self._name,
+                "designation": self._name,
                 "ransom": self._ransom,
                 "team_quota": self._team_quota,
                 "designation": self._designation,

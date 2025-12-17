@@ -1,7 +1,7 @@
-# src/chess/system/identity/name/__init__.py
+# src/chess/system/identity/designation/__init__.py
 
 """
-Module: chess.system.identity.name.__init__
+Module: chess.system.identity.designation.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

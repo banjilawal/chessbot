@@ -70,9 +70,9 @@ class NotKingIdException(KingException, RankIdException):
 
 #======================# RANK_NAME EXCEPTION #======================#
 class NotKingNameException(KingException, RankNameException):
-    """Raised when a tested name is not a King's."""
+    """Raised when a tested designation is not a King's."""
     ERROR_CODE = "KING_NAME_ERROR"
-    DEFAULT_MESSAGE = "Not the correct King name."
+    DEFAULT_MESSAGE = "Not the correct King designation."
 
 
 #======================# RANK_QUOTA EXCEPTION #======================#

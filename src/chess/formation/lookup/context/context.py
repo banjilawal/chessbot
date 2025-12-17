@@ -29,6 +29,7 @@ class OrderContext(Context[BattleOrder]):
 
     # LOCAL ATTRIBUTES:
         *   square (Optional[str])
+        *   designation (Optional[str])
         *   color (Optional[ColorColor])
 
     # INHERITED ATTRIBUTES:
@@ -39,8 +40,8 @@ class OrderContext(Context[BattleOrder]):
     
     def __init__(
             self,
-            name: Optional[str] = None,
             square: Optional[str] = None,
+            designation: Optional[str] = None,
             color: Optional[GameColor] = None,
     ):
         """
@@ -48,8 +49,8 @@ class OrderContext(Context[BattleOrder]):
         Constructor
 
         # PARAMETERS:
-            *   name (Optional[str])
             *   square (Optional[str])
+            *   designation (Optional[str])
             *   color (Optional[Color])
 
         # Returns:
@@ -58,9 +59,10 @@ class OrderContext(Context[BattleOrder]):
         # Raises:
         None
         """
-        super().__init__(id=None, name=name)
+        super().__init__(id=None, name=None)
         self._color = color
         self._square = square
+        self._designation = designation
     
     @property
     def color(self) -> Optional[GameColor]:
@@ -69,6 +71,10 @@ class OrderContext(Context[BattleOrder]):
     @property
     def square(self) -> Optional[str]:
         return self._square
+    
+    @property
+    def designation(self) -> Optional[str]:
+        return self._designation
     
     def to_dict(self) -> dict:
         """
@@ -84,7 +90,7 @@ class OrderContext(Context[BattleOrder]):
         None
         """
         return {
-            "name": self.name,
             "color": self._color,
             "square": self._square,
+            "designation": self.designation,
         }

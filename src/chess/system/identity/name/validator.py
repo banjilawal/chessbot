@@ -1,7 +1,7 @@
-# src/chess/system/identity/name/coord_stack_validator.py
+# src/chess/system/identity/designation/coord_stack_validator.py
 
 """
-Module: chess.system.identity.name.coord_stack_validator
+Module: chess.system.identity.designation.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-08-27
 version: 1.0.0
@@ -21,7 +21,7 @@ class NameValidator(Validator[str]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a name is certified safe, reliable and consistent before use.
+    1.  Ensure a designation is certified safe, reliable and consistent before use.
     2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
     3.  Names are required to be:
         *   Not validation.
@@ -60,7 +60,7 @@ class NameValidator(Validator[str]):
         3.  When all checks pass, cast the candidate to a STRING, then send to caller in a ValidationResult.
     
         # PARAMETERS:
-            *   candidate (Any): object to certify is a legal name.
+            *   candidate (Any): object to certify is a legal designation.
     
         # Returns:
         ValidationResult[str] containing either:

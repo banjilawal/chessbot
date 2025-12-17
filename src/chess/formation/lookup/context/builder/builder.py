@@ -42,23 +42,23 @@ class OrderContextBuilder(Builder[OrderContext]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            name: Optional[str] = None,
             square: Optional[str] = None,
             color: Optional[GameColor] = None,
+            designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[OrderContext]:
         """
         # Action:
-            1.  Confirm that only one in the (name, color) tuple is not null.
+            1.  Confirm that only one in the (designation, color) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service or validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success Build an OrderContext and return in a BuildResult.
 
         # Parameters:
         Only one these must be provided:
-            *   name (Optional[str])
             *   square (Optional[str])
+            *   designation (Optional[str])
             *   color (Optional[GameColor])
 
         These Parameters must be provided:
@@ -75,10 +75,10 @@ class OrderContextBuilder(Builder[OrderContext]):
             *   TooManyOrderContextFlagsException
             *   OrderContextBuildFailedException
         """
-        method = "BattleOrderSearchContextBuilder.build"
+        method = "OrderContextBuilder.build"
         try:
             # Get how many optional parameters are not null. One param needs to be not-null
-            params = [name, square, color]
+            params = [designation, square, color]
             param_count = sum(bool(p) for p in params)
             
             # Cannot search for a BattleOrder object if no attribute value is provided for a hit.
@@ -93,13 +93,13 @@ class OrderContextBuilder(Builder[OrderContext]):
                 )
             # After the verifying the correct number of flags are set follow the appropriate BattleOrder build flow.
             
-            # name flag enabled, build flow.
-            if name is not None:
-                validation = identity_service.validate_name(candidate=name)
+            # designation flag enabled, build flow.
+            if designation is not None:
+                validation = identity_service.validate_name(candidate=designation)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return an name_BattleOrder_context in the BuildResult.
-                return BuildResult.success(OrderContext(name=name))
+                return BuildResult.success(OrderContext(designation=designation))
             
             # square flag enabled, build flow.
             if square is not None:
@@ -107,7 +107,7 @@ class OrderContextBuilder(Builder[OrderContext]):
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return an name_BattleOrder_context in the BuildResult.
-                return BuildResult.success(OrderContext(square_name=square))
+                return BuildResult.success(OrderContext(square=square))
             
             # GameColor flag enabled, build flow.
             if color is not None:

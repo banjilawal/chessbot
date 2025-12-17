@@ -47,7 +47,7 @@ class RankContextService(ContextService[RankContext]):
         Constructor
 
         # Parameters:
-            *   name (str): Default value - DEFAULT_NAME
+            *   designation (str): Default value - DEFAULT_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (RankFinder): Default value - RankFinder()
             *   builder (RankContextBuilder): Default value - RankContextBuilder()

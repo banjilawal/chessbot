@@ -59,7 +59,7 @@ class AgentFactory(Builder[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   agent_variety (AgentVariety)
             *   engine_service (Optional[EngineService])
 
@@ -107,12 +107,12 @@ class AgentFactory(Builder[PlayerAgent]):
     ) -> BuildResult[HumanAgent]:
         """
         # ACTION:
-        1.  On successfully certifying the id and name create HumanAgent and return in BuildResult's
+        1.  On successfully certifying the id and designation create HumanAgent and return in BuildResult's
             payload. Otherwise, return a BuildResult containing an exception.
 
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -125,7 +125,7 @@ class AgentFactory(Builder[PlayerAgent]):
         """
         method = "AgentBuilder.build_human_agent"
         try:
-            # Only need to certify the name and id are correct.
+            # Only need to certify the designation and id are correct.
             validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
             if validation.is_failure():
                 return BuildResult.failure(validation.exception)
@@ -159,12 +159,12 @@ class AgentFactory(Builder[PlayerAgent]):
     ) -> BuildResult[MachineAgent]:
         """
         # ACTION:
-        1.  Certifying the id and name and name are safe with identity_service.
+        1.  Certifying the id and designation and designation are safe with identity_service.
         2.  Use engine_service_validator to ensure the engine_service has all the required components.
 
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   engine_service (EngineService)
             *   identity_service (IdentityService)
             *   engine_service_validator (EngineServiceValidator)
@@ -179,7 +179,7 @@ class AgentFactory(Builder[PlayerAgent]):
         """
         method = "AgentBuilder.build_machine_agent"
         try:
-            # Certify the id and name are safe.
+            # Certify the id and designation are safe.
             identity_validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)

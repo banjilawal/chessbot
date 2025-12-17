@@ -46,7 +46,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
     ) -> ValidationResult[SchemaContext]:
         """
         # Action:
-        1.  Confirm that only one in the (name, color) tuple is not null.
+        1.  Confirm that only one in the (designation, color) tuple is not null.
         2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an SchemaContext are return in a ValidationResult.
@@ -98,7 +98,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 )
             # When structure tests are passed certify whichever search value was provided.
             
-            # Certification for the search-by-name target.
+            # Certification for the search-by-designation target.
             if context.name is not None:
                 validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure:

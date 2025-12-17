@@ -67,7 +67,7 @@ class PieceFactory(Builder[Piece]):
     
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   rank (Rank)
             *   team (Team)
             *   rank_service (RankService)
@@ -136,7 +136,7 @@ class PieceFactory(Builder[Piece]):
 
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   team (Team)
 
         # Returns:
@@ -194,7 +194,7 @@ class PieceFactory(Builder[Piece]):
 
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   team (Team)
 
         # Returns:
@@ -252,7 +252,7 @@ class PieceFactory(Builder[Piece]):
 
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   team (Team)
 
         # Returns:
@@ -350,7 +350,7 @@ class PieceFactory(Builder[Piece]):
             if roster_number_validation.is_failure():
                 return BuildResult.failure(roster_number_validation.exception)
             
-            # If no errors are detected return the successfully validated (id, name, rank, team) tuple.
+            # If no errors are detected return the successfully validated (id, designation, rank, team) tuple.
             return ValidationResult.success((id, name, rank, team, roster_number, opening_square))
         
         # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it

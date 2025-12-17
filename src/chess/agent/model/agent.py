@@ -31,7 +31,7 @@ class PlayerAgent(ABC):
 
     # LOCAL ATTRIBUTES:
         *   id (int)
-        *   name (string)
+        *   designation (string)
         *   games (UniqueGameDataService)
         *   team_assignment (UniqueTeamDataService)
 
@@ -54,7 +54,7 @@ class PlayerAgent(ABC):
 
         # Parameters:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   team_assignments (UniqueTeamDataService)
 
         # Returns:
@@ -108,7 +108,7 @@ class PlayerAgent(ABC):
     #         f" curren_team:[{self._current_team.id}, {self._current_team.team_schema.color}"
     #     return (
     #         f"Owner[id:{self.timestamp}"
-    #         f" name:{self._name}"
+    #         f" designation:{self._name}"
     #         f"{current_side}"
     #         f"{total_games_str}"
     #         f"]"

@@ -32,7 +32,7 @@ class Rank(ABC):
 
     # ATTRIBUTES:
         *   id (int):       Identifier for the subclass.
-        *   name (str):     Common name of the rank.
+        *   designation (str):     Common designation of the rank.
         *   designation (str):   Chess designation
         *   ransom (int):   Value of ranks that can be captured.
         *   team_quota  (int):   Number of instances on a team.
@@ -432,7 +432,7 @@ class Rank(ABC):
         return (
             "bounds: {"
             f"id:{self._id}, "
-            f"name:{self._name}, "
+            f"designation:{self._name}, "
             f"designation:{self._designation}, "
             f"ransom:{self._ransom}, "
             f"team_quota:{self._team_quota}"

@@ -83,7 +83,7 @@ class TeamContext(Context[Team]):
         """
         return {
             "id": self.id,
-            "name": self.name,
+            "designation": self.name,
             "arena": self._arena,
             "player_agent": self._player_agent,
             "color": self._color,

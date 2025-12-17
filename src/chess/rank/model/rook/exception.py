@@ -73,9 +73,9 @@ class NotRookIdException(RookException, RankIdException):
 
 #======================# RANK_NAME EXCEPTION #======================#
 class NotRookNameException(RookException, RankNameException):
-    """Raised when a tested name is not a Rook's."""
+    """Raised when a tested designation is not a Rook's."""
     ERROR_CODE = "ROOK_NAME_ERROR"
-    DEFAULT_MESSAGE = "Not the correct Rook name."
+    DEFAULT_MESSAGE = "Not the correct Rook designation."
 
 
 #======================# RANK_QUOTA EXCEPTION #======================#

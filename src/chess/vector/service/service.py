@@ -50,7 +50,7 @@ class VectorService(EntityService[Vector]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   designation (str)
             *   builder (VectorBuilder)
             *   validator (VectorValidator)
 

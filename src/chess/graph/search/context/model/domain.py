@@ -107,7 +107,7 @@ class GraphDomainFilter(GraphSearchContext):
     def to_dict(self):
         return {
             "id": self._id,
-            "name": self._name,
+            "designation": self._name,
             "ransom": self._ransom,
             "rank_name": self._rank_name,
             "team_name": self._team_name,

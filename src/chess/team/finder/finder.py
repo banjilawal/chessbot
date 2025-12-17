@@ -86,7 +86,7 @@ class TeamFinder(Finder[Team]):
             # Entry point into findering by team's id.
             if context.id is not None:
                 return cls._find_by_id(dataset, context.id)
-            # Entry point into findering by team's name.
+            # Entry point into findering by team's designation.
             if context.name is not None:
                 return cls._find_by_name(dataset=dataset, name=context.name)
             # Entry point into findering by arena team is playing in.
@@ -153,12 +153,12 @@ class TeamFinder(Finder[Team]):
     def _find_by_name(cls, dataset: List[Team], name: str) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Get the Team with the matching name if it exists
+        1.  Get the Team with the matching designation if it exists
         2.  There's only two possible team names so multiple matches are possible.
         
         # Parameters:
             *   dataset: (List[Team])
-            *   name (str)
+            *   designation (str)
 
         # Returns:
         SearchResult[List[Team]] containing either:

@@ -47,7 +47,7 @@ class OrderContextValidator(Validator[OrderContext]):
     ) -> ValidationResult[OrderContext]:
         """
         # Action:
-        1.  Confirm that only one in the (name, square_name, color) tuple is not null.
+        1.  Confirm that only one in the (designation, square_designation, color) tuple is not null.
         2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fails return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an OrderContext are return in a ValidationResult.
@@ -79,7 +79,7 @@ class OrderContextValidator(Validator[OrderContext]):
             # If the candidate is not an OrderContext validation has failed.
             if not isinstance(candidate, OrderContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected OrderContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected OrderContext, got {type(candidate).__designation__} instead.")
                 )
             
             # Once existence and type checks are passed, cast the candidate to BattleOrder and run structure tests.
@@ -99,12 +99,12 @@ class OrderContextValidator(Validator[OrderContext]):
                 )
             # When structure tests are passed certify whichever search value was provided.
             
-            # Certification for the search-by-name target.
-            if context.name is not None:
-                validation = identity_service.validate_name(candidate=context.name)
+            # Certification for the search-by-designation target.
+            if context.designation is not None:
+                validation = identity_service.validate_name(candidate=context.designation)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_order.name context in a ValidationResult.
+                # On certification success return the battle_order.designation context in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-square target.

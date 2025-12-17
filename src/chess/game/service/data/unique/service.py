@@ -52,7 +52,7 @@ class UniqueGameDataService(UniqueDataService[Game]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   name (str): = DEFAULT_NAME
+            *   designation (str): = DEFAULT_NAME
             *   data_service (GameDataService): = GameDataService()
 
         # Returns:

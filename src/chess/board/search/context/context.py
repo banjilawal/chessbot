@@ -24,7 +24,7 @@ class BoardSearchContext(SearchContext):
   
     # ATTRIBUTES:
         *   id (int):       Find items whose id matches this value.
-        *   name (str):     Find items whose name matches this value.
+        *   designation (str):     Find items whose designation matches this value.
         *   target (Coord):  Find items whose target matches this value.
     """
     _id: Optional[int] = None
@@ -56,6 +56,6 @@ class BoardSearchContext(SearchContext):
     def to_dict(self) -> dict:
         return {
             "id": self._id,
-            "name": self._name,
+            "designation": self._name,
             "target": self._coord
         }

@@ -55,7 +55,7 @@ class AgentContext(Context[PlayerAgent]):
 
         # PARAMETERS:
             *   id (Optional[int])
-            *   name (Optional[str])
+            *   designation (Optional[str])
             *   team (Optional[Team])
             *   game (Optional[Game])
             *   variety (Optional[AgentVariety])
@@ -98,7 +98,7 @@ class AgentContext(Context[PlayerAgent]):
         """
         return {
             "id": self.id,
-            "name": self.name,
+            "designation": self.name,
             "team": self._team,
             "game": self._game,
             "variety": self._variety,

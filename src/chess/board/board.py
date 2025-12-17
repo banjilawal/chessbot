@@ -99,9 +99,9 @@ class Board:
     #         for square in row:
     #             if square.occupant is not None:
     #                 # Display the discover's visitor_name if the square is occupied.
-    #                 row_str_parts.append(f"[{square.occupant.name}]")
+    #                 row_str_parts.append(f"[{square.occupant.designation}]")
     #             else:
     #                 # Display the square's visitor_name in brackets if it's empty.
-    #                 row_str_parts.append(f"[{square.name}]")
+    #                 row_str_parts.append(f"[{square.designation}]")
     #         string += " ".join(row_str_parts) + "\n"
     #     return string.strip()

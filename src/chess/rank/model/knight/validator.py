@@ -50,7 +50,7 @@ class KnightValidator(Validator[Knight]):
         3.  Cast to candidate to its subclass.
         4.  Validate
                 *   id      ->  with id_validator
-                *   name    ->  with name_validator
+                *   designation    ->  with name_validator
                 *   designation  ->  with designation_validator
                 *   team_quota   ->  with quota_validator
                 *   ransom  ->  with ransom_validator
@@ -92,7 +92,7 @@ class KnightValidator(Validator[Knight]):
             id_validation = cls.verify_id(knight.id)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
-            # Verify the name
+            # Verify the designation
             name_validation = cls.verify_name(knight.name)
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)
@@ -178,8 +178,8 @@ class KnightValidator(Validator[Knight]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe name using identity_service. If so convert to name. Else return failure.
-        2.  Check if name != RankSpec.KNIGHT.name. If not, return failure.
+        1.  Verify candidate is a safe designation using identity_service. If so convert to designation. Else return failure.
+        2.  Check if designation != RankSpec.KNIGHT.designation. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
@@ -198,17 +198,17 @@ class KnightValidator(Validator[Knight]):
         """
         method = "KnightValidator.verify_name"
         try:
-            # Test if the candidate is a safe name.
+            # Test if the candidate is a safe designation.
             validation = idservice.validate_name(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)
-            # Next check if name is correct for a knight.
+            # Next check if designation is correct for a knight.
             name = validation.payload
             if name.upper() != rank_spec.KNIGHT.name.upper():
                 return ValidationResult.failure(
                     NotKnightNameException(f"{method}: {NotKnightNameException.DEFAULT_MESSAGE}")
                 )
-            # If no errors are detected send the verified knight.name inside a ValidationResult.
+            # If no errors are detected send the verified knight.designation inside a ValidationResult.
             return ValidationResult.success(name)
         # Finally, if there is an unhandled exception Wrap an InvalidKnightException around it
         # then return the exceptions inside a ValidationResult.
@@ -297,11 +297,11 @@ class KnightValidator(Validator[Knight]):
         """
         method = "KnightValidator.verify_designation"
         try:
-            # Test if the candidate is a safe name.
+            # Test if the candidate is a safe designation.
             validation = text_validator.validate(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)
-            # Next check if name is correct for a knight.
+            # Next check if designation is correct for a knight.
             designation = validation.payload
             if designation.upper() != rank_spec.KNIGHT.designation.upper():
                 return ValidationResult.failure(

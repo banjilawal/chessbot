@@ -123,7 +123,7 @@ class TeamSchemaLookup(EntityService[SchemaContext]):
             # Entry point into searching by color value.
             if context.color is not None:
                 return cls._lookup_by_color(color=context.color)
-            # Entry point into searching by name value.
+            # Entry point into searching by designation value.
             if context.name is not None:
                 return cls._lookup_by_name(name=context.name)
         
@@ -178,10 +178,10 @@ class TeamSchemaLookup(EntityService[SchemaContext]):
     def _lookup_by_name(cls, name: str) -> SearchResult[List[TeamSchema]]:
         """
         # Action:
-        1.  Get the TeamSchema which matches the target name.
+        1.  Get the TeamSchema which matches the target designation.
 
         # Parameters:
-            *   name (str)
+            *   designation (str)
 
         # Returns:
         SearchResult[List[TeamSchema]] containing either:
@@ -197,7 +197,7 @@ class TeamSchemaLookup(EntityService[SchemaContext]):
         try:
             if name.upper() in TeamSchema.name.upper():
                 return SearchResult.success(List[TeamSchema.name])
-            # If a match is not found return an exception. Its important to know if no schema has that name.
+            # If a match is not found return an exception. Its important to know if no schema has that designation.
             return SearchResult.failure(
                 TeamColorBoundsException(f"{method}: {TeamNameBoundsException.DEFAULT_MESSAGE}")
             )

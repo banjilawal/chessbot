@@ -31,7 +31,7 @@ class Piece(ABC):
   
     # ATTRIBUTES:
         *   id (int)
-        *   name (str)
+        *   designation (str)
         *   team (Team)
         *   rank (Rank)
         *   roster_number (int)
@@ -122,7 +122,7 @@ class Piece(ABC):
     def __str__(self) -> str:
         return (
             f"Piece[id:{self._id} "
-            f"name:{self._name} "
+            f"designation:{self._name} "
             f"rank:{self._rank.name} "
             f"team:{self._team.schema.name} "
             f"position:{self._positions.current_coord}"

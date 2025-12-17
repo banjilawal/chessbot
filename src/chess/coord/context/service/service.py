@@ -49,7 +49,7 @@ class CoordContextService(ContextService[CoordContext]):
         Constructor
 
         # Parameters:
-            *   name (str): Default value - DEFAULT_NAME
+            *   designation (str): Default value - DEFAULT_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (CoordFinder): Default value - CoordFinder()
             *   builder (CoordContextBuilder): Default value - CoordContextBuilder()

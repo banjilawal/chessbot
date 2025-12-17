@@ -72,9 +72,9 @@ class NotQueenIdException(QueenException, RankIdException):
 
 #======================# RANK_NAME EXCEPTION #======================#
 class NotQueenNameException(QueenException, RankNameException):
-    """Raised when a tested name is not a Queen's."""
+    """Raised when a tested designation is not a Queen's."""
     ERROR_CODE = "QUEEN_NAME_ERROR"
-    DEFAULT_MESSAGE = "Not the correct Queen name."
+    DEFAULT_MESSAGE = "Not the correct Queen designation."
 
 
 #======================# RANK_QUOTA EXCEPTION #======================#

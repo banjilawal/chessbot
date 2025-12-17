@@ -52,7 +52,7 @@ class SquareValidator(Validator[Square]):
         # ACTION:
         1.  Check candidate is not validation.
         2.  Check if candidate is a Square.
-        3.  Run id and name integrity checks with identity_service
+        3.  Run id and designation integrity checks with identity_service
         4.  Run target integrity checks with coord_service.
         5  If any check fails, return the exception inside a ValidationResult.
         3.  When all checks pass cast candidate to a Square instance, then return inside a ValidationResult.
@@ -87,7 +87,7 @@ class SquareValidator(Validator[Square]):
                 )
             square = cast(Square, candidate)
             
-            # Verify the Square.id and Square.name
+            # Verify the Square.id and Square.designation
             identity_validation = idservice.validate_identity(
                 id_candidate=square.id,
                 name_candidate=square.name

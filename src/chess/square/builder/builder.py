@@ -50,7 +50,7 @@ class SquareBuilder(Builder[Square]):
     ) -> BuildResult[Square]:
         """
         # ACTION:
-        1.  Run id and name checks with identity_service.
+        1.  Run id and designation checks with identity_service.
         2.  Run coord checks with coord_service.
         3.  Run Board checks with board_service.
         4.  If any checks fail, send their exception to the caller in a BuildResult.
@@ -58,7 +58,7 @@ class SquareBuilder(Builder[Square]):
     
         # PARAMETERS:
             *   id (int)
-            *   name (str)
+            *   designation (str)
             *   cord (Coord)
             *   board (Board)
             *   board_service (BoardService)

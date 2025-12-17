@@ -1,7 +1,7 @@
-# src/chess/rank/spec/exception/name/exception.py
+# src/chess/rank/spec/exception/designation/exception.py
 
 """
-Module: chess.rank.spec.exception.name.exception
+Module: chess.rank.spec.exception.designation.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -26,29 +26,29 @@ __all__ = [
 #======================# RANK_NAME EXCEPTION SUPER CLASS #======================#
 class RankNameException(RankSpecException):
     """
-    Super class of exceptions raised by Rank.name objects. Do not use directly. Subclasses give
+    Super class of exceptions raised by Rank.designation objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "RANK_NAME_ERROR"
-    DEFAULT_MESSAGE = "Rank.name raised an exception."
+    DEFAULT_MESSAGE = "Rank.designation raised an exception."
 
 
 #======================# RANK_NAME VALIDATION EXCEPTION #======================#
 class InvalidRankNameException(RankNameException, ValidationException):
     """Raised if a RankNameValidation candidate fails a check."""
     ERROR_CODE = "RANK_NAME_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Rank.name validation failed."
+    DEFAULT_MESSAGE = "Rank.designation validation failed."
 
 
 #======================# NULL RANK_NAME EXCEPTION #======================#
 class NullRankNameException(RankNameException, NullException):
-    """Raised if the Rank.name is null."""
+    """Raised if the Rank.designation is null."""
     ERROR_CODE = "NULL_RANK_NAME_ERROR"
-    DEFAULT_MESSAGE = "Rank.name cannot be null."
+    DEFAULT_MESSAGE = "Rank.designation cannot be null."
 
 
 #======================# RANK_NAME BOUNDS EXCEPTIONS #======================#
 class RankNameBoundsException(RankNameException, BoundsException):
-    """Raised if the name is not in RankSpec."""
+    """Raised if the designation is not in RankSpec."""
     ERROR_CODE = "RANK_NAME_OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "The name is not included in the RankSpec settings."
+    DEFAULT_MESSAGE = "The designation is not included in the RankSpec settings."

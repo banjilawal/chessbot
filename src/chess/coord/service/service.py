@@ -52,7 +52,7 @@ class CoordService(EntityService[Coord]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   designation (str)
             *   builder (CoordFactory)
             *   validator (CoordValidator)
 

@@ -56,14 +56,14 @@ class TeamContextBuilder(Builder[TeamContext]):
     ) -> BuildResult[TeamContext]:
         """
         # Action:
-            1. Confirm that only one in the tuple (id, name, player_agent, color, team_schema), is not null.
+            1. Confirm that only one in the tuple (id, designation, player_agent, color, team_schema), is not null.
             2. Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3. If all checks pass build the PieceContext in a BuildResult.
 
         # Parameters:
         Only one these must be provided:
             *   id (Optional[int])
-            *   name (Optional[int])
+            *   designation (Optional[int])
             8   arena (Optional[Arena])
             *   player_agent (Optional[PlayerAgent])
             *   color (Optional[ArenaColor])
@@ -111,12 +111,12 @@ class TeamContextBuilder(Builder[TeamContext]):
                 # On validation success return an id.TeamContext in the BuildResult.
                 return BuildResult.success(payload=TeamContext(id=validation.payload))
             
-            # name flag enabled, build flow.
+            # designation flag enabled, build flow.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a name.TeamContext in the BuildResult.
+                # On validation success return a designation.TeamContext in the BuildResult.
                 return BuildResult.success(payload=TeamContext(name=validation.payload))
             
             # player_agent flag enabled, build flow.

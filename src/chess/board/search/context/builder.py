@@ -55,10 +55,10 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
 
         # Parameters:
             *   id (Optional[int]):                     Selected if searcher target is an id.
-            *   name (Optional[str]):                   Selected if searcher target is a name.
+            *   designation (Optional[str]):                   Selected if searcher target is a designation.
             *   target (Optional[Coord]):                Selected if searcher target is a target.
             *   id_validator (type[IdValidator]):       Validates an id-searcher-target
-            *   name_validator (type[NameValidator]):   Validates a name-searcher-target
+            *   name_validator (type[NameValidator]):   Validates a designation-searcher-target
             *   builder (type[CoordBuilder]):     Validates a target-searcher-target
 
         # Returns:
@@ -154,10 +154,10 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     ) -> BuildResult[BoardSearchContext]:
         """
         # Action:
-        Build a name-TeamSearchContext if NameValidator verifies searcher target is safe.
+        Build a designation-TeamSearchContext if NameValidator verifies searcher target is safe.
 
         # Parameters:
-            *   name (str):                             target name
+            *   designation (str):                             target designation
             *   name_validator (type[NameValidator]):   validates target.
 
         # Returns:

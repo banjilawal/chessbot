@@ -51,7 +51,7 @@ class RankService(EntityService[Rank]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   designation (str)
             *   builder (RankFactory)
             *   validator (RankValidator)
 

@@ -32,7 +32,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
 
     # PROVIDES:
         *   allowed_colors() -> List[GameColor]:
-        *   allowed_names() -> List[str]:
+        *   allowed_designations() -> List[str]:
         *   enemy_order(order: BattleOrder) -> Result[BattleOrder]:
 
     # LOCAL ATTRIBUTES:
@@ -41,31 +41,36 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     # INHERITED ATTRIBUTES:
         *   See EntityLookup for inherited attributes.
     """
-    DEFAULT_NAME = "BattleOrderLookup"
+    DEFAULT_DESIGNATION = "BattleOrderLookup"
     _order_validator: BattleOrderValidator
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            designation: str = DEFAULT_DESIGNATION,
             id: int = id_emitter.lookup_id,
-            order_validator: BattleOrderValidator = BattleOrderValidator(),
             context_builder: OrderContextBuilder = OrderContextBuilder(),
+            order_validator: BattleOrderValidator = BattleOrderValidator(),
             context_validator: OrderContextValidator = OrderContextValidator(),
     ):
-        super().__init__(id=id, name=name, builder=context_builder, validator=context_validator)
-        self._order_validator = order_validator
+        super().__init__(
+            id=id, 
+            designation=designation, 
+            enum_validator=order_validator, 
+            context_builder=context_builder, 
+            context_validator=context_validator
+        )
     
     @property
     def order_validator(self) -> BattleOrderValidator:
-        return self._order_validator
+        return cast(BattleOrderValidator, self.enum_validator)
     
     @property
     def order_context_builder(self) -> OrderContextBuilder:
-        return cast(OrderContextBuilder, self.entity_builder)
+        return cast(OrderContextBuilder, self.context_builder)
     
     @property
     def order_context_validator(self) -> OrderContextValidator:
-        return cast(OrderContextValidator, self.entity_validator)
+        return cast(OrderContextValidator, self.context_validator)
     
     @property
     def allowed_colors(self) -> List[GameColor]:
@@ -73,20 +78,21 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
         return [member.color for member in BattleOrder]
     
     @property
-    def allowed_names(self) -> List[str]:
-        """Returns a list of all permissible order names in upper case."""
-        return [member.name.upper() for member in BattleOrder]
+    def allowed_designations(self) -> List[str]:
+        """Returns a list of all permissible order designations in upper case."""
+        return [member.designation.upper() for member in BattleOrder]
     
-    def enemy_order(self, order: BattleOrder) -> Result[BattleOrder]:
-        validation = self._order_validator.validate(order)
-        if validation.is_failure:
-            return Result.failure(validation.exception)
-        if order == BattleOrder.color.WHITE: return Result[BattleOrder.BLACK]
-        return Result[BattleOrder.WHITE]
+    @property
+    def allowed_squares(self) -> List[str]:
+        return [member.square.upper() for member in BattleOrder]
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def lookup(cls, context: OrderContext) -> SearchResult[List[BattleOrder]]:
+    def lookup(
+            cls, 
+            context: OrderContext, 
+            context_validator: OrderContextValidator = OrderContextValidator()
+    ) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
         1.  BattleOrder is an Enum to follow the EnumLookup contract a default dataset of List[BattleOrder] has been set.
@@ -117,37 +123,35 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
                 return SearchResult.failure(validation.exception)
             # After context is verified select the search method based on the which flag is enabled.
             
-            # Entry point into searching by name value.
-            if context.name is not None:
-                return cls._lookup_by_name(name=context.name)
+            # Entry point into searching by designation value.
+            if context.designation is not None:
+                return cls._lookup_by_designation(designation=context.designation)
             # Entry point into searching by square value.
             if context.square is not None:
-                return cls._lookup_by_square(name=context.square)
+                return cls._lookup_by_square(square=context.square)
             # Entry point into searching by color value.
             if context.color is not None:
                 return cls._lookup_by_color(color=context.color)
-            
+            # Failsafe if any context cases was missed
             return SearchResult.failure(
-                OrderLookupFailedException(ex=ex, message=f"{method}: {OrderLookupFailedException.DEFAULT_MESSAGE}")
+                OrderLookupFailedException(f"{method}: {OrderLookupFailedException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                BattleOrderLookupException(
-                    ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}"
-                )
+                BattleOrderLookupException(ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_name(cls, name: str) -> SearchResult[List[BattleOrder]]:
+    def _lookup_by_designation(cls, designation: str) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  Get the BattleOrder which matches the target name.
+        1.  Get the BattleOrder which matches the target designation.
 
         # Parameters:
-            *   name (str)
+            *   designation (str)
 
         # Returns:
         SearchResult[List[BattleOrder]] containing either:
@@ -156,17 +160,17 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   OrderNameBoundsException
+            *   OrderDesignationBoundsException
             *   BattleOrderLookupFailedException
         """
-        method = "BattleOrderLookup._find_by_name"
+        method = "BattleOrderLookup._find_by_designation"
         try:
-            matches = [order for order in BattleOrder if order.name.upper == name.upper()]
+            matches = [order for order in BattleOrder if order.designation.upper == designation.upper()]
             if len(matches) == 0:
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. Its important to know if no order has that name.
+            # If a match is not found return an exception. It's important to know if no order has that designation.
             return SearchResult.failure(
                 OrderColorBoundsException(f"{method}: {OrderNameBoundsException.DEFAULT_MESSAGE}")
             )
@@ -182,7 +186,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     def _lookup_by_square(cls, name: str) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  Get the BattleOrder which matches the target name.
+        1.  Get the BattleOrder which matches the target designation.
 
         # Parameters:
             *   name (str)
@@ -194,7 +198,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   OrderNameBoundsException
+            *   OrderDesignationBoundsException
             *   BattleOrderLookupFailedException
         """
         method = "BattleOrderLookup._find_by_square"
@@ -204,7 +208,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. Its important to know if no order has that name.
+            # If a match is not found return an exception. Its important to know if no order has that designation.
             return SearchResult.failure(
                 OrderSquareBoundsException(f"{method}: {OrderSquareBoundsException.DEFAULT_MESSAGE}")
             )
@@ -242,7 +246,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. Its important to know if no order has that name.
+            # If a match is not found return an exception. Its important to know if no order has that designation.
             return SearchResult.failure(
                 OrderColorBoundsException(f"{method}: {OrderColorBoundsException.DEFAULT_MESSAGE}")
             )

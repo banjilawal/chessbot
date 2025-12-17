@@ -25,11 +25,11 @@ class UniquePieceDataService(UniqueDataService[Piece]):
 
     # ATTRIBUTES:
         *   id (int):
-        *   name (str):
+        *   designation (str):
         *   data_service (PieceDataService):
         
     # CONSTRUCTOR:
-        *   __init__(id: int, name: str, data_service: TeamDataService)
+        *   __init__(id: int, designation: str, data_service: TeamDataService)
     
     # CLASS METHODS:
     None
@@ -48,7 +48,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
         """
         # Action
         1.  Use id_emitter to automatically generate a unique id for each UniquePieceDataService instance.
-        2.  Automatic dependency injection by providing working default instances name and PieceDataService instance.
+        2.  Automatic dependency injection by providing working default instances designation and PieceDataService instance.
         """
         super().__init__(id=id, name=name, data_service=data_service)
     

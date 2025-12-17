@@ -70,9 +70,9 @@ class NotKnightIdException(KnightException, RankIdException):
 
 #======================# RANK_NAME EXCEPTION #======================#
 class NotKnightNameException(KnightException, RankNameException):
-    """Raised when a tested name is not a Knight's."""
+    """Raised when a tested designation is not a Knight's."""
     ERROR_CODE = "KNIGHT_NAME_ERROR"
-    DEFAULT_MESSAGE = "Not the correct Knight name."
+    DEFAULT_MESSAGE = "Not the correct Knight designation."
 
 
 #======================# RANK_QUOTA EXCEPTION #======================#

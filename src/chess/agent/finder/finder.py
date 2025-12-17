@@ -86,7 +86,7 @@ class AgentFinder(Finder[PlayerAgent]):
             # Entry point into searching by player_agent.id.
             if context.id is not None:
                 return cls._find_by_id(dataset, context.id)
-            # Entry point into searching by player_agent.name.
+            # Entry point into searching by player_agent.designation.
             if context.name is not None:
                 return cls._find_by_name(dataset, context.name)
             # Entry point into searching by player_agent's team.
@@ -146,13 +146,13 @@ class AgentFinder(Finder[PlayerAgent]):
     def _find_by_name(cls, dataset: [PlayerAgent], name: str) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
-        1.  Get the PlayerAgent with the matching name.
+        1.  Get the PlayerAgent with the matching designation.
         2.  If no match is found return an exception.
-        3.  A name search should produce either no hits or one hit only.
+        3.  A designation search should produce either no hits or one hit only.
         4.  Multiple unique agents in the result indicates a problem.
 
         # Parameters:
-            *   name (str)
+            *   designation (str)
             *   dataset (List[PlayerAgent])
 
         # Returns:

@@ -82,7 +82,7 @@ class PieceFinder(Finder[Piece]):
             # Entry point into searching by piece.id.
             if context.id is not None:
                 return cls._find_by_id(dataset=dataset, id=context.id)
-            # Entry point into searching by piece.name.
+            # Entry point into searching by piece.designation.
             if context.name is not None:
                 return cls._find_by_name(dataset=dataset, name=context.name)
             # Entry point into searching by piece.team.
@@ -143,12 +143,12 @@ class PieceFinder(Finder[Piece]):
     def _find_by_name(cls, dataset: List[Piece], name: str) -> SearchResult[List[Piece]]:
         """
         # Action:
-        1.  Get the Piece with the desired name.
-        2.  A name search should produce either no hits or one hit only.
+        1.  Get the Piece with the desired designation.
+        2.  A designation search should produce either no hits or one hit only.
         3.  Multiple unique pieces in the result indicates a problem.
 
         # Parameters:
-            *   name (str)
+            *   designation (str)
             *   dataset (List[Piece])
 
         # Returns:

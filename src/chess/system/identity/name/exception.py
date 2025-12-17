@@ -1,7 +1,7 @@
-# src/chess/system/identity/name/exception.py
+# src/chess/system/identity/designation/exception.py
 
 """
-Module: chess.system.identity.name.exception
+Module: chess.system.identity.designation.exception
 Author: Banji Lawal
 Created: 2025-09-17
 version: 1.0.0
@@ -27,7 +27,7 @@ __all__ = [
 #======================# NAME EXCEPTION SUPER CLASS #======================#
 class NameException(TextException, ValidationException):
     """
-    Super class of name exceptions. Subclasses give precise, fine-grained information which make
+    Super class of designation exceptions. Subclasses give precise, fine-grained information which make
     debugging faster. Use this exception as a fallback.
     """
     ERROR_CODE = "NAME_ERROR"
@@ -37,7 +37,7 @@ class NameException(TextException, ValidationException):
 #======================# NAME VALIDATION EXCEPTIONS #======================#
 class InvalidNameException(NameException):
     """
-    Super class of name exceptions. Subclasses give precise, fine-grained information which make
+    Super class of designation exceptions. Subclasses give precise, fine-grained information which make
     debugging faster. Use this exception as a fallback.
     """
     ERROR_CODE = "NAME_VALIDATION_ERROR"
@@ -52,19 +52,19 @@ class NullNameException(InvalidNameException, NullException):
 
 
 class WhiteSpaceNameException(InvalidNameException, BlankTextException):
-    """Raised if a name is only white space (" ", "\t", "\n") or, is a blank/empty string ("")"""
+    """Raised if a designation is only white space (" ", "\t", "\n") or, is a blank/empty string ("")"""
     ERROR_CODE = "BLANK_NAME_ERROR"
     DEFAULT_MESSAGE = "Name cannot be white space only"
 
 
 #======================# NAME LENGTH EXCEPTIONS #======================#
 class ShortNameException(InvalidNameException):
-    """Raised if name is below MIN_NAME_LENGTH."""
+    """Raised if designation is below MIN_NAME_LENGTH."""
     ERROR_CODE = "SHORT_NAME_ERROR"
-    DEFAULT_MESSAGE = "The name's length is less MIN_NAME_LENGTH."
+    DEFAULT_MESSAGE = "The designation's length is less MIN_NAME_LENGTH."
 
 
 class LongNameException(InvalidNameException):
-    """Raised if name is above MIN_NAME_LENGTH."""
+    """Raised if designation is above MIN_NAME_LENGTH."""
     ERROR_CODE = "LONG_NAME_ERROR"
-    DEFAULT_MESSAGE = "The name's length is greater than MAX_NAME_LENGTH."
+    DEFAULT_MESSAGE = "The designation's length is greater than MAX_NAME_LENGTH."

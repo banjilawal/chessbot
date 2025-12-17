@@ -62,7 +62,7 @@ class TeamContextValidator(Validator[TeamContext]):
     ) -> ValidationResult[TeamContext]:
         """
         # Action:
-        1.  Confirm that only one in the (id, name, player_agent, arena, color) tuple is not null.
+        1.  Confirm that only one in the (id, designation, player_agent, arena, color) tuple is not null.
         2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an TeamContext are return in a ValidationResult.
@@ -124,7 +124,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 # On certification success return the team_id_context in a ValidationResult.
                 return ValidationResult.success(payload=context)
             
-            # Certification for the search-by-name target.
+            # Certification for the search-by-designation target.
             if context.name is not None:
                 validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure:

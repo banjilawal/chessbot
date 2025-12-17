@@ -46,7 +46,7 @@ class SchemaContext(Context[TeamSchema]):
         Constructor
 
         # PARAMETERS:
-            *   name (Optional[str])
+            *   designation (Optional[str])
             *   color (Optional[Color])
 
         # Returns:
@@ -76,6 +76,6 @@ class SchemaContext(Context[TeamSchema]):
         None
         """
         return {
-            "name": self.name,
+            "designation": self.name,
             "color": self._color,
         }

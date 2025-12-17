@@ -50,7 +50,7 @@ class PieceService(EntityService[Piece]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   designation (str)
             *   builder (PieceFactory)
             *   validator (PieceValidator)
 

@@ -54,7 +54,7 @@ class PlayerAgentService(EntityService[PlayerAgent]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   designation (str)
             *   builder (AgentFactory)
             *   validator (AgentValidator)
 

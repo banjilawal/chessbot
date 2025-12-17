@@ -53,7 +53,7 @@ class TeamService(EntityService[Team]):
 
         # PARAMETERS:
             *   id (nt)
-            *   name (str)
+            *   designation (str)
             *   builder (TeamBuilder)
             *   validator (TeamValidator)
             *   schema_service (TeamSchemaLookup)

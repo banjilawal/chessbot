@@ -51,7 +51,7 @@ class BiDirectionalException(ChessException):
             at least one collection member has.
         
         TYPICAL USE CASE: Filtering Team datasets by Game (shared attribute) and
-                        globally unique (id), or locally unique (name, color)
+                        globally unique (id), or locally unique (designation, color)
         
     ## WHAT IS A REGISTRATION RELATIONSHIP
     THere are two conditions.

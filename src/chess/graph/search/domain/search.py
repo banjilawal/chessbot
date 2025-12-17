@@ -245,7 +245,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
             # Pop the first one to compare to all the others.
             target = duplicates.pop()
             
-            # Each piece should have a different id, name, and current_position. Stripping all the misses from
+            # Each piece should have a different id, designation, and current_position. Stripping all the misses from
             # the target should only leave duplicates
             uniques = [
                 piece for piece in duplicates if piece.id == target.id and (

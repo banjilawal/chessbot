@@ -1,7 +1,7 @@
-# src/chess/system/resolution/exception/failure/name/exception.py
+# src/chess/system/resolution/exception/failure/designation/exception.py
 
 """
-Module: chess.system.resolution.exception.failure.name.exception
+Module: chess.system.resolution.exception.failure.designation.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -25,14 +25,14 @@ class ResolvingNameConflictFailedException(ResolutionFailedException):
 
 class ResolvingSquareNameConflictFailedException(ResolvingNameConflictFailedException):
     DEFAULT_CODE = "SQUARE_NAME_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Square.name conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the Square.designation conflict."
 
 
 class ResolvingPieceNameConflictFailedException(ResolvingNameConflictFailedException):
     DEFAULT_CODE = "PIECE_NAME_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Piece.name conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the Piece.designation conflict."
 
 
 class ResolvingAgentNameConflictFailedException(ResolvingNameConflictFailedException):
     DEFAULT_CODE = "AGENT_NAME_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the PlayerAgent.name conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the PlayerAgent.designation conflict."

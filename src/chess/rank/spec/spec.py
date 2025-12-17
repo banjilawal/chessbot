@@ -26,7 +26,7 @@ class RankSpec(Enum):
 
     # ATTRIBUTES:
         *   id (int):           Identifier for the subclass.
-        *   name (str):         Common name of the rank.
+        *   designation (str):         Common designation of the rank.
         *   designation (str):  Chess designation
         *   ransom (int):       Value of ranks that can be captured.
         *   team_quota  (int):  Number of instances on a team.
@@ -83,7 +83,7 @@ class RankSpec(Enum):
     
     @classmethod
     def get_spec_by_name(cls, name: str) -> RankSpec:
-        """Get a Spec that matches the given name."""
+        """Get a Spec that matches the given designation."""
         if name in cls.__members__:
             return cls.__members__[name]
     
@@ -155,10 +155,10 @@ class RankSpec(Enum):
     
     # @classmethod
     # def find_speck_by_rank(cls, rank: Rank) -> Optional[RankSpec]:
-    #     print(f"Looking for config with name:{rank.visitor_name}")
+    #     print(f"Looking for config with designation:{rank.visitor_name}")
     #
     #     for spec in RankSpec:
     #         print(f"Checking config:{spec.ransom}")
-    #         if spec.name.upper() == rank.visitor_name.upper():
+    #         if spec.designation.upper() == rank.visitor_name.upper():
     #             return spec
     #     return None

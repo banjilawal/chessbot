@@ -1,7 +1,7 @@
-# src/chess/formation/validator/exception/bounds/name.py
+# src/chess/formation/validator/exception/bounds/designation.py
 
 """
-Module: chess.formation.validator.exception.bounds.name
+Module: chess.formation.validator.exception.bounds.designation
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -22,7 +22,7 @@ class OrderNameBoundsException(InvalidBattleOrderException, BoundsException, Nam
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a name is outside the range of acceptable BattleOrder names.
+    1.  Indicate an error occurred because a designation is outside the range of acceptable BattleOrder names.
 
     # PARENT:
         *   InvalidBattleOrderException
