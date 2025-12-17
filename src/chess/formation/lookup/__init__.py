@@ -1,16 +1,17 @@
-# src/chess/team/team_schema/service/__init__.py
+# src/chess/formation/lookup/__init__.py
 
 """
-Module: chess.team.team_schema.service.__init__
+Module: chess.formation.lookup.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== TEAM.SCHEMA.SERVICE PACKAGE CONTENTS ===========#
+# =========== FORMATION.LOOKUP PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .context import *
+from .exception import *
 
 # Modules
-from .service import TeamSchemaService
+from .lookup import BattleOrderLookup

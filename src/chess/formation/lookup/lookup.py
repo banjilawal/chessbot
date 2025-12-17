@@ -1,0 +1,258 @@
+# src/chess/order/order/lookup/lookup.py
+
+"""
+Module: chess.order.order.lookup.lookup
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
+from typing import List, cast
+
+from chess.formation import (
+    OrderColorBoundsException, OrderContext, OrderContextBuilder, OrderContextValidator, BattleOrderLookupException,
+    BattleOrderValidator,
+    BattleOrder, OrderLookupFailedException, OrderNameBoundsException, OrderSquareBoundsException
+)
+from chess.system import LookupService, GameColor, LoggingLevelRouter, Result, SearchResult, id_emitter
+
+
+class BattleOrderLookup(LookupService[OrderContext]):
+    """
+    # ROLE: Lookup, Utility
+
+    # RESPONSIBILITIES:
+    1.  Public facing Order State Machine microlookup API.
+    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Is authoritative, single source of truth for Order state by providing single entry and exit points to Order
+        lifecycle.
+
+    # PARENT:
+        *   EntityLookup
+
+    # PROVIDES:
+        *   allowed_colors() -> List[GameColor]:
+        *   allowed_names() -> List[str]:
+        *   enemy_order(order: BattleOrder) -> Result[BattleOrder]:
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See EntityLookup for inherited attributes.
+    """
+    DEFAULT_NAME = "BattleOrderLookup"
+    _order_validator: BattleOrderValidator
+    
+    def __init__(
+            self,
+            name: str = DEFAULT_NAME,
+            id: int = id_emitter.lookup_id,
+            order_validator: BattleOrderValidator = BattleOrderValidator(),
+            context_builder: OrderContextBuilder = OrderContextBuilder(),
+            context_validator: OrderContextValidator = OrderContextValidator(),
+    ):
+        super().__init__(id=id, name=name, builder=context_builder, validator=context_validator)
+        self._order_validator = order_validator
+    
+    @property
+    def order_validator(self) -> BattleOrderValidator:
+        return self._order_validator
+    
+    @property
+    def order_context_builder(self) -> OrderContextBuilder:
+        return cast(OrderContextBuilder, self.entity_builder)
+    
+    @property
+    def order_context_validator(self) -> OrderContextValidator:
+        return cast(OrderContextValidator, self.entity_validator)
+    
+    @property
+    def allowed_colors(self) -> List[GameColor]:
+        """Returns a list of all permissible order colors."""
+        return [member.color for member in BattleOrder]
+    
+    @property
+    def allowed_names(self) -> List[str]:
+        """Returns a list of all permissible order names in upper case."""
+        return [member.name.upper() for member in BattleOrder]
+    
+    def enemy_order(self, order: BattleOrder) -> Result[BattleOrder]:
+        validation = self._order_validator.validate(order)
+        if validation.is_failure:
+            return Result.failure(validation.exception)
+        if order == BattleOrder.WHITE: return Result[BattleOrder.BLACK]
+        return Result[BattleOrder.WHITE]
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def lookup_order(
+            cls,
+            context: OrderContext,
+            context_validator: OrderContextValidator = OrderContextValidator()
+    ) -> SearchResult[List[BattleOrder]]:
+        """
+        # Action:
+        1.  BattleOrder is an Enum to follow the Lookup contract a default dataset of List[BattleOrder] has been set.
+            It's not used anywhere. even if a dataset argument is passed.
+        2.  Use context_validator to certify the provided context.
+        3.  Context attribute routes the search. Attribute value is the search target.
+        4.  The outcome of the search is sent back to the caller in a SearchResult object.
+
+        # Parameters:
+            *   dataset (List[BattleOrder]):
+            *   context: OrderContext
+            *   context_validator: OrderContextValidator
+
+        # Returns:
+        SearchResult[List[BattleOrder]] containing either:
+            - On finding a match: List[BattleOrder] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
+
+        # Raises:
+            *   BattleOrderLookupException
+        """
+        method = "BattleOrderLookup.find"
+        try:
+            # certify the context is safe.
+            validation = context_validator.validate(candidate=context)
+            if validation.is_failure:
+                return SearchResult.failure(validation.exception)
+            # After context is verified select the search method based on the which flag is enabled.
+            
+            # Entry point into searching by name value.
+            if context.name is not None:
+                return cls._lookup_by_name(name=context.name)
+            # Entry point into searching by square value.
+            if context.square is not None:
+                return cls._lookup_by_square(name=context.square)
+            # Entry point into searching by color value.
+            if context.color is not None:
+                return cls._lookup_by_color(color=context.color)
+            
+            return SearchResult.failure(
+                OrderLookupFailedException(ex=ex, message=f"{method}: {OrderLookupFailedException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
+        # return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                BattleOrderLookupException(
+                    ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}"
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _lookup_by_name(cls, name: str) -> SearchResult[List[BattleOrder]]:
+        """
+        # Action:
+        1.  Get the BattleOrder which matches the target name.
+
+        # Parameters:
+            *   name (str)
+
+        # Returns:
+        SearchResult[List[BattleOrder]] containing either:
+            - On finding a match: List[BattleOrder] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
+
+        # Raises:
+            *   OrderNameBoundsException
+            *   BattleOrderLookupFailedException
+        """
+        method = "BattleOrderLookup._find_by_name"
+        try:
+            matches = [order for order in BattleOrder if order.name.upper == name.upper()]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            if len(matches) >= 1:
+                return SearchResult.success(matches)
+            # If a match is not found return an exception. Its important to know if no order has that name.
+            return SearchResult.failure(
+                OrderColorBoundsException(f"{method}: {OrderNameBoundsException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
+        # return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                BattleOrderLookupException(ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _lookup_by_square(cls, name: str) -> SearchResult[List[BattleOrder]]:
+        """
+        # Action:
+        1.  Get the BattleOrder which matches the target name.
+
+        # Parameters:
+            *   name (str)
+
+        # Returns:
+        SearchResult[List[BattleOrder]] containing either:
+            - On finding a match: List[BattleOrder] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
+
+        # Raises:
+            *   OrderNameBoundsException
+            *   BattleOrderLookupFailedException
+        """
+        method = "BattleOrderLookup._find_by_square"
+        try:
+            matches = [order for order in BattleOrder if order.square.upper() == name.upper()]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            if len(matches) >= 1:
+                return SearchResult.success(matches)
+            # If a match is not found return an exception. Its important to know if no order has that name.
+            return SearchResult.failure(
+                OrderSquareBoundsException(f"{method}: {OrderSquareBoundsException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
+        # return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                BattleOrderLookupException(ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _lookup_by_color(cls, color: GameColor) -> SearchResult[List[BattleOrder]]:
+        """
+        # Action:
+        1.  Get the BattleOrder which matches the target color.
+
+        # Parameters:
+            *   color (BattleOrderColor)
+
+        # Returns:
+        SearchResult[List[BattleOrder]] containing either:
+            - On finding a match: List[BattleOrder] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
+
+        # Raises:
+            *   OrderColorBoundsException
+            *   BattleOrderLookupFailedException
+        """
+        method = "BattleOrderLookup._find_by_color"
+        try:
+            matches = [order for order in BattleOrder if order.color == color]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            if len(matches) >= 1:
+                return SearchResult.success(matches)
+            # If a match is not found return an exception. Its important to know if no order has that name.
+            return SearchResult.failure(
+                OrderColorBoundsException(f"{method}: {OrderColorBoundsException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
+        # return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                BattleOrderLookupException(ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}")
+            )

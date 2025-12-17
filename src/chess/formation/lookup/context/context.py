@@ -1,7 +1,7 @@
-# src/chess/formation/context/context.py
+# src/chess/formation/lookup/context/context.py
 
 """
-Module: chess.formation.context.context
+Module: chess.formation.lookup.context.context
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -13,8 +13,7 @@ from chess.formation import BattleOrder
 from chess.system import Context, GameColor
 
 
-
-class BattleOrderContext(Context[BattleOrder]):
+class OrderContext(Context[BattleOrder]):
     """
     # ROLE: Finder Filter
 
@@ -62,7 +61,7 @@ class BattleOrderContext(Context[BattleOrder]):
         super().__init__(id=None, name=name)
         self._color = color
         self._square = square
-
+    
     @property
     def color(self) -> Optional[GameColor]:
         return self._color
@@ -73,7 +72,7 @@ class BattleOrderContext(Context[BattleOrder]):
     
     def to_dict(self) -> dict:
         """
-        # Convert the BattleOrderContext object to a dictionary.
+        # Convert the OrderContext object to a dictionary.
 
         # PARAMETERS:
         None

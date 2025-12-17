@@ -1,0 +1,42 @@
+# src/chess/formation/lookup/context/builder/exception.py
+
+"""
+Module: chess.formation.lookup.context.builder.exception
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
+from chess.system import BuildFailedException
+from chess.formation import OrderContextException
+
+__all__ = [
+    # ======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
+    "OrderContextBuildFailedException",
+]
+
+
+# ======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
+class OrderContextBuildFailedException(OrderContextException, BuildFailedException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised during OrderContext build process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an OrderContextBuilder method.
+
+    # PARENT:
+        *   OrderContextException
+        *   BuildFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "TEAM_SCHEMA_CONTEXT_BUILD_ERROR"
+    DEFAULT_MESSAGE = "OrderContext build failed."

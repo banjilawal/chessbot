@@ -1,34 +1,34 @@
-# src/chess/team/schema/service/exception/base.py
+# src/chess/formation/lookup/exception/base.py
 
 """
-Module: chess.team.schema.service.exception.base
+Module: chess.formation.lookup.exception.base
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
 from chess.system import ServiceException
-from chess.team import TeamSchemaException
+from chess.formation import BattleOrderException
 
 
 __all__ = [
-    # ======================# TEAM_SCHEMA_SERVICE EXCEPTION #======================#
-    "TeamSchemaServiceException",
+    # ======================# TEAM_SCHEMA_LOOKUP EXCEPTION #======================#
+    "BattleOrderLookupException",
 ]
 
 
-# ======================# TEAM_SCHEMA_SERVICE EXCEPTION #======================#
-class TeamSchemaServiceException(TeamSchemaException, ServiceException):
+# ======================# TEAM_SCHEMA_LOOKUP EXCEPTION #======================#
+class BattleOrderLookupException(BattleOrderException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by TeamSchemaLookup objects.
-    2.  Raised when no specific exception exists for the error interrupting TeamSchemaLookup's
+    1.  Parent of exceptions raised by BattleOrderLookup objects.
+    2.  Raised when no specific exception exists for the error interrupting BattleOrderLookup's
         processes from their normal flows.
 
     # PARENT:
-        *   TeamSchemaException
+        *   BattleOrderException
         *   ServiceException
 
     # PROVIDES:
@@ -40,5 +40,5 @@ class TeamSchemaServiceException(TeamSchemaException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM__SERVICE_ERROR"
-    DEFAULT_MESSAGE = "TeamService raised an exception."
+    ERROR_CODE = "TEAM_LOOKUP_ERROR"
+    DEFAULT_MESSAGE = "TeamLookup raised an exception."

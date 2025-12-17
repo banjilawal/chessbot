@@ -75,7 +75,7 @@ class BattleOrder(Enum):
         return self._piece_name
     
     @property
-    def square_name(self) -> str:
+    def square(self) -> str:
         return self._square_name
     
     @property
@@ -100,12 +100,12 @@ class BattleOrder(Enum):
     
     @classmethod
     def upper_case_square_names(cls) -> List[str]:
-        return [member.square_name.upper() for member in cls]
+        return [member.square.upper() for member in cls]
     
     @classmethod
     def find_order_by_square(cls, square: Square) -> Optional[BlackBattleOrder]:
         for member in cls:
-            if member.square_name.upper() == square.name.upper():
+            if member.square.upper() == square.name.upper():
                 return member
         return None
     
