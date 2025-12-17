@@ -23,8 +23,8 @@ class TeamSchemaServiceException(TeamSchemaException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by TeamSchemaService objects.
-    2.  Raised when no specific exception exists for the error interrupting TeamSchemaService's
+    1.  Parent of exceptions raised by TeamSchemaLookup objects.
+    2.  Raised when no specific exception exists for the error interrupting TeamSchemaLookup's
         processes from their normal flows.
 
     # PARENT:

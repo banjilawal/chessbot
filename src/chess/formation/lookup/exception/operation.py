@@ -22,7 +22,7 @@ class TeamSchemaLookupFailedException(TeamSchemaServiceException, OperationFaile
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wraps unhandled exceptions that hit the try-finally block of a TeamSchemaService method.
+    1.  Wraps unhandled exceptions that hit the try-finally block of a TeamSchemaLookup method.
 
     # PARENT:
         *   FinderException
@@ -37,5 +37,5 @@ class TeamSchemaLookupFailedException(TeamSchemaServiceException, OperationFaile
     None
     """
     ERROR_CODE = "TEAM_SCHEMA_SERVICE_OPERATION_ERROR"
-    DEFAULT_MESSAGE = "TeamSchemaService operation failed."
+    DEFAULT_MESSAGE = "TeamSchemaLookup operation failed."
 

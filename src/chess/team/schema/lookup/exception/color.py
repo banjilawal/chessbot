@@ -1,7 +1,7 @@
-# src/chess/team/schema/service/exception/color.py
+# src/chess/team/schema/lookup/exception/color.py
 
 """
-Module: chess.team.schema.service.exception.color
+Module: chess.team.schema.lookup.exception.color
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

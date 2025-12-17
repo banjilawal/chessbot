@@ -11,7 +11,7 @@ from chess.agent import PlayerAgent, PlayerAgentService
 from chess.arena import Arena, ArenaService, PlayingFieldOverCapacityException
 from chess.piece import UniquePieceDataService
 from chess.team import (
-    Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException, TeamSchema, TeamSchemaService
+    Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException, TeamSchema, TeamSchemaLookup
 )
 from chess.system import Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 
@@ -48,7 +48,7 @@ class TeamBuilder(Builder[Team]):
             id: int = id_emitter.team_id,
             arena_service: ArenaService = ArenaService(),
             identity_service: IdentityService = IdentityService(),
-            schema_service: TeamSchemaService = TeamSchemaService(),
+            schema_service: TeamSchemaLookup = TeamSchemaLookup(),
             player_agent_service: PlayerAgentService = PlayerAgentService(),
     ) -> BuildResult[Team]:
         """

@@ -1,7 +1,7 @@
-# src/chess/team/schema/service/exception/name.py
+# src/chess/team/schema/lookup/exception/name.py
 
 """
-Module: chess.team.schema.service.exception.name
+Module: chess.team.schema.lookup.exception.name
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

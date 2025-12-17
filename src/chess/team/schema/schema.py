@@ -10,11 +10,11 @@ version: 1.0.0
 from enum import Enum
 from typing import List
 
-from chess.formation.lookup.service import BattleOrderService
+
 from chess.scalar import Scalar
 from chess.geometry import Quadrant
 from chess.system import GameColor, ROW_SIZE
-from chess.formation import BattleOrder
+from chess.formation import BattleOrder, BattleOrderService
 
 
 class TeamSchema(Enum):
@@ -43,7 +43,6 @@ class TeamSchema(Enum):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     def __new__(
             cls,
             color: GameColor,

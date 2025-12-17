@@ -56,7 +56,7 @@ class TeamService(EntityService[Team]):
             *   name (str)
             *   builder (TeamBuilder)
             *   validator (TeamValidator)
-            *   schema_service (TeamSchemaService)
+            *   schema_service (TeamSchemaLookup)
 
         # Returns:
         None
@@ -79,5 +79,5 @@ class TeamService(EntityService[Team]):
     
     @property
     def schema_service(self) -> TeamSchemaService:
-        """get TeamSchemaService."""
+        """get TeamSchemaLookup."""
         return self._schema_service

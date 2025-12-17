@@ -1,7 +1,7 @@
-# src/chess/team/schema/service/service.py
+# src/chess/team/schema/lookup/lookup.py
 
 """
-Module: chess.team.schema.service.service
+Module: chess.team.schema.lookup.lookup
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -11,23 +11,23 @@ from typing import List, cast
 
 from chess.team import (
     TeamColorBoundsException, TeamNameBoundsException, SchemaContext, SchemaContextBuilder,
-    SchemaContextValidator, TeamSchemaServiceException, TeamSchemaValidator, TeamSchema
+    SchemaContextValidator, TeamSchemaLookupException, TeamSchemaValidator, TeamSchema
 )
 from chess.system import EntityService, GameColor, LoggingLevelRouter, Result, SearchResult, id_emitter
 
 
-class TeamSchemaService(EntityService[SchemaContext]):
+class TeamSchemaLookup(EntityService[SchemaContext]):
     """
-    # ROLE: Service, Utility
+    # ROLE: Lookup, Utility
 
     # RESPONSIBILITIES:
-    1.  Public facing Team State Machine microservice API.
+    1.  Public facing Team State Machine microlookup API.
     2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
     3.  Is authoritative, single source of truth for Team state by providing single entry and exit points to Team
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   EntityLookup
 
     # PROVIDES:
         *   allowed_colors() -> List[GameColor]:
@@ -38,15 +38,15 @@ class TeamSchemaService(EntityService[SchemaContext]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See EntityLookup for inherited attributes.
     """
-    DEFAULT_NAME = "TeamSchemaService"
+    DEFAULT_NAME = "TeamSchemaLookup"
     _schema_validator: TeamSchemaValidator
     
     def __init__(
             self,
             name: str = DEFAULT_NAME,
-            id: int = id_emitter.service_id,
+            id: int = id_emitter.lookup_id,
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
             context_builder: SchemaContextBuilder = SchemaContextBuilder(),
             context_validator: SchemaContextValidator = SchemaContextValidator(),
@@ -110,7 +110,7 @@ class TeamSchemaService(EntityService[SchemaContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   TeamSchemaServiceException
+            *   TeamSchemaLookupException
         """
         method = "TeamSchemaFinder.find"
         try:
@@ -128,11 +128,11 @@ class TeamSchemaService(EntityService[SchemaContext]):
                 return cls._lookup_by_name(name=context.name)
         
         # Finally, if some exception is not handled by the checks wrap it inside a
-        # TeamSchemaServiceException then, return the exception chain inside a SearchResult.
+        # TeamSchemaLookupException then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamSchemaServiceException(
-                    ex=ex, message=f"{method}: {TeamSchemaServiceException.DEFAULT_MESSAGE}"
+                TeamSchemaLookupException(
+                    ex=ex, message=f"{method}: {TeamSchemaLookupException.DEFAULT_MESSAGE}"
                 )
             )
     
@@ -165,11 +165,11 @@ class TeamSchemaService(EntityService[SchemaContext]):
                 TeamColorBoundsException(f"{method}: {TeamColorBoundsException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a
-        # TeamSchemaServiceException then, return the exception chain inside a SearchResult.
+        # TeamSchemaLookupException then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamSchemaServiceException(
-                    ex=ex, message=f"{method}: {TeamSchemaServiceException.DEFAULT_MESSAGE}"
+                TeamSchemaLookupException(
+                    ex=ex, message=f"{method}: {TeamSchemaLookupException.DEFAULT_MESSAGE}"
                 )
             )
     
@@ -202,10 +202,10 @@ class TeamSchemaService(EntityService[SchemaContext]):
                 TeamColorBoundsException(f"{method}: {TeamNameBoundsException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a
-        # TeamSchemaServiceException then, return the exception chain inside a SearchResult.
+        # TeamSchemaLookupException then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamSchemaServiceException(
-                    ex=ex, message=f"{method}: {TeamSchemaServiceException.DEFAULT_MESSAGE}"
+                TeamSchemaLookupException(
+                    ex=ex, message=f"{method}: {TeamSchemaLookupException.DEFAULT_MESSAGE}"
                 )
             )
