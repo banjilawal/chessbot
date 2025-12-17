@@ -10,25 +10,25 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from chess.team import (
-    InvalidTeamSchemaContextException, NoTeamSchemaContextFlagException, NullTeamSchemaContextException,
-    TeamSchemaContext, TooManyTeamSchemaContextFlagsException
+from chess.formation import (
+    InvalidBattleOrderContextException, NoBattleOrderContextFlagException, NullBattleOrderContextException,
+    BattleOrderContext, TooManyBattleOrderContextFlagsException
 )
 
 
-class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
+class BattleOrderContextValidator(Validator[BattleOrderContext]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a TeamSchema instance is certified safe, reliable and consistent before use.
+    1.  Ensure a BattleOrder instance is certified safe, reliable and consistent before use.
     2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
     # PARENT:
         *   Validator
 
     # PROVIDES:
-        * validate(candidate: Any): --> ValidationResult[TeamSchemaContext]
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -43,13 +43,13 @@ class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
             candidate: Any,
             color_validator: GameColorValidator = GameColorValidator(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[TeamSchemaContext]:
+    ) -> ValidationResult[BattleOrderContext]:
         """
         # Action:
-        1.  Confirm that only one in the (name, color) tuple is not null.
+        1.  Confirm that only one in the (name, square_name, color) tuple is not null.
         2.  Certify the not-null attribute is safe using the appropriate service's validator.
-        3.  If any check fais return a ValidationResult containing the exception raised by the failure.
-        4.  On success Build an TeamSchemaContext are return in a ValidationResult.
+        3.  If any check fails return a ValidationResult containing the exception raised by the failure.
+        4.  On success Build an BattleOrderContext are return in a ValidationResult.
 
         # Parameters:
             *   candidate (Any)
@@ -57,43 +57,43 @@ class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
             *   identity_service (IdentityService)
 
         # Returns:
-        ValidationResult[TeamSchemaContext] containing either:
-            - On success: TeamSchemaContext in the payload.
+        ValidationResult[BattleOrderContext] containing either:
+            - On success: BattleOrderContext in the payload.
             - On failure: Exception.
 
         # Raises:
             *   TypeError
-            *   NullTeamSchemaContextException
-            *   NoTeamSchemaContextFlagException
-            *   TooManyTeamSchemaContextFlagsException
-            *   InvalidTeamSchemaContextException
+            *   NullBattleOrderContextException
+            *   NoBattleOrderContextFlagException
+            *   TooManyBattleOrderContextFlagsException
+            *   InvalidBattleOrderContextException
         """
-        method = "TeamSchemaContextValidator.validate"
+        method = "BattleOrderContextValidator.validate"
         try:
             # If the candidate is null no other checks are needed.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullTeamSchemaContextException(f"{method}: {NullTeamSchemaContextException.DEFAULT_MESSAGE}")
+                    NullBattleOrderContextException(f"{method}: {NullBattleOrderContextException.DEFAULT_MESSAGE}")
                 )
-            # If the candidate is not an TeamSchemaContext validation has failed.
-            if not isinstance(candidate, TeamSchemaContext):
+            # If the candidate is not an BattleOrderContext validation has failed.
+            if not isinstance(candidate, BattleOrderContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected TeamSchemaContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected BattleOrderContext, got {type(candidate).__name__} instead.")
                 )
             
-            # Once existence and type checks are passed, cast the candidate to TeamSchema and run structure tests.
-            context = cast(TeamSchemaContext, candidate)
+            # Once existence and type checks are passed, cast the candidate to BattleOrder and run structure tests.
+            context = cast(BattleOrderContext, candidate)
             
             # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoTeamSchemaContextFlagException(f"{method}: {NoTeamSchemaContextFlagException.DEFAULT_MESSAGE}")
+                    NoBattleOrderContextFlagException(f"{method}: {NoBattleOrderContextFlagException.DEFAULT_MESSAGE}")
                 )
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyTeamSchemaContextFlagsException(
-                        f"{method}: {TooManyTeamSchemaContextFlagsException.DEFAULT_MESSAGE}"
+                    TooManyBattleOrderContextFlagsException(
+                        f"{method}: {TooManyBattleOrderContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # When structure tests are passed certify whichever search value was provided.
@@ -103,7 +103,15 @@ class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
                 validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the name_team_schema_context in a ValidationResult.
+                # On certification success return the battle_order.name context in a ValidationResult.
+                return ValidationResult.success(context)
+            
+            # Certification for the search-by-square target.
+            if context.square is not None:
+                validation = identity_service.validate_name(candidate=context.square)
+                if validation.is_failure:
+                    return ValidationResult.failure(validation.exception)
+                # On certification success return the battle_order.square context in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-color target.
@@ -111,13 +119,14 @@ class TeamSchemaContextValidator(Validator[TeamSchemaContext]):
                 validation = color_validator.validate(candidate=context.color)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the color_team_schema_context in a ValidationResult.
+                # On certification success return the battle_order.color context in a ValidationResult.
                 return ValidationResult.success(context)
+            
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidTeamSchemaContextException. Then send exception chain a ValidationResult.failure.
+        # an InvalidBattleOrderContextException. Then send exception chain a ValidationResult.failure.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidTeamSchemaContextException(
-                    ex=ex, message=f"{method}: {InvalidTeamSchemaContextException.DEFAULT_MESSAGE}"
+                InvalidBattleOrderContextException(
+                    ex=ex, message=f"{method}: {InvalidBattleOrderContextException.DEFAULT_MESSAGE}"
                 )
             )

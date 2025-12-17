@@ -1,13 +1,13 @@
-# src/chess/team/team_schema/__init__.py
+# src/chess/formation/__init__.py
 
 """
-Module: chess.team.team_schema.__init__
+Module: chess.formation.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-#=========== TEAM.SCHEMA PACKAGE CONTENTS ===========#
+#=========== FORMATION PACKAGE CONTENTS ===========#
 
 # Packages
 from .context import *
@@ -16,6 +16,7 @@ from .finder import *
 from .service import *
 
 # Modules
+from .order import BattleOrder
 from .black import BlackBattleOrder
 from .white import WhiteBattleOrder
 from .validator import BattleOrderValidator

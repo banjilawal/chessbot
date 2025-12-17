@@ -13,6 +13,7 @@ from chess.scalar import Scalar
 from chess.geometry import Quadrant
 from chess.system import GameColor, ROW_SIZE
 from chess.team import BlackBattleOrder, WhiteBattleOrder
+from chess.team.order.order import BattleOrder
 
 
 class TeamSchema(Enum):
@@ -23,27 +24,23 @@ class TeamSchema(Enum):
     1.  Unify static metadata about a Team object.
     2.  Name and color details for turn synchronization.
     3.  Details about a Team's deployment and advance on a Board.
+    
+    # PARENT:
+        *   Enum
   
     # PROVIDES:
-    TeamSchema
+    None
   
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
         *   name (str)
         *   color (GameColor)
         *   rank_row (int)
         *   pawn_row (int)
         *   advancing_step (Scalar)
         *   home_quadrant (Quadrant)
-        *   allowed_colors (List[GameColor])
-        *   allowed_names (List[str])
-        
-    # CONSTRUCTOR:
-    Default Constructor
-            __new__(color: GameColor, rank_row: int, advancing_step: Scalar, home_quadrant: Quadrant))
-            
-    # CLASS METHODS:
-        *   get_by_color(cls, color: GameColor) -> TeamSchema
-        *   get_by_name(cls, name: str) -> TeamSchema
+    
+    # INHERITED ATTRIBUTES:
+    None
     """
     
     def __new__(
@@ -62,8 +59,8 @@ class TeamSchema(Enum):
         obj._battle_order = battle_order
         return obj
     
-    WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N, WhiteBattleOrder)
-    BLACK = (GameColor.BLACK, (ROW_SIZE - 1), Scalar(-1), Quadrant.S, BlackBattleOrder)
+    WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N, BattleOrder.white_battle_orders)
+    BLACK = (GameColor.BLACK, (ROW_SIZE - 1), Scalar(-1), Quadrant.S, BattleOrder.black_battle_orders)
     
     @property
     def letter(self) -> str:

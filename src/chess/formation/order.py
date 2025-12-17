@@ -86,6 +86,10 @@ class BattleOrder(Enum):
     def roster_number(self) -> int:
         return self._roster_number
     
+    @property
+    def color(self) -> GameColor:
+        return self._color
+    
     @classmethod
     def allowed_roster_numbers(cls) -> List[int]:
         return [member.roster_number for member in cls]
