@@ -17,7 +17,7 @@ M = TypeVar("M", bound=Metadata)
 C = TypeVar("C", bound=Context)
 
 
-class Lookup(ABC, Context[Metadata]):
+class MetadataLookup(ABC, Context[Metadata]):
     """
     # ROLE: Search.
 
@@ -54,7 +54,7 @@ class Lookup(ABC, Context[Metadata]):
     _context_validator: Validator[Context[Metadata]]
     _metadata_validator: Validator[Metadata]
     
-    def lookup(
+    def __init__(
             self,
             context_builder: Builder[Context[Metadata]],
             context_validator: Validator[Context[Metadata]],

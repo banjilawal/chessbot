@@ -19,7 +19,7 @@ from chess.system import LookupService, GameColor, LoggingLevelRouter, Result, S
 
 class BattleOrderLookup(LookupService[OrderContext]):
     """
-    # ROLE: Lookup, Utility
+    # ROLE: MetadataLookup, Utility
 
     # RESPONSIBILITIES:
     1.  Public facing Order State Machine microlookup API.
@@ -93,7 +93,7 @@ class BattleOrderLookup(LookupService[OrderContext]):
     ) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  BattleOrder is an Enum to follow the Lookup contract a default dataset of List[BattleOrder] has been set.
+        1.  BattleOrder is an Enum to follow the MetadataLookup contract a default dataset of List[BattleOrder] has been set.
             It's not used anywhere. even if a dataset argument is passed.
         2.  Use context_validator to certify the provided context.
         3.  Context attribute routes the search. Attribute value is the search target.

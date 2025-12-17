@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .lookup import Lookup
+from .lookup import MetadataLookup

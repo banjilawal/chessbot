@@ -18,7 +18,7 @@ from chess.system import EntityService, GameColor, LoggingLevelRouter, Result, S
 
 class TeamSchemaLookup(EntityService[SchemaContext]):
     """
-    # ROLE: Lookup, Utility
+    # ROLE: MetadataLookup, Utility
 
     # RESPONSIBILITIES:
     1.  Public facing Team State Machine microlookup API.
