@@ -9,6 +9,7 @@ version: 1.0.0
 
 
 from abc import ABC, abstractmethod
+from typing import Generic
 from typing_extensions import TypeVar
 
 from chess.system import Builder, LoggingLevelRouter, Metadata, Context, SearchResult, Validator
@@ -17,35 +18,21 @@ M = TypeVar("M", bound=Metadata)
 C = TypeVar("C", bound=Context)
 
 
-class MetadataLookup(ABC, Context[Metadata]):
+class MetadataLookup(ABC, Generic[Context[M]]):
     """
-    # ROLE: Search.
+    # ROLE: Table lookup, Finder
 
     # RESPONSIBILITIES:
-    1.  Scales Builder and Validator operations for collection of objects.
-    2.  Provides context aware search.
-    3.  Safe and reliable CRUD operations.
-    4.  Public facing API.
+    1.  Find metadata based on attribute values.
 
     # PARENT:
     None
 
     # PROVIDES:
-        *   Builder
-        *   Validator
-        *   Finder
-        *   Insertion
-        *   Deletion
+    None
 
     # LOCAL ATTRIBUTES:
-        *   id (int):
-        *   name (str):
-        *   items (List[D]):
-        *   searcher (Finder[D]):
-        *   entity_service (EntityService[D]):
-        *   context_service (ContextService);
-        *   current_item (D):
-        *   size (int)
+    None
 
     # INHERITED ATTRIBUTES:
     None

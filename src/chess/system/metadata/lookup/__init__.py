@@ -14,3 +14,4 @@ None
 
 # Modules
 from .lookup import MetadataLookup
+from .exception import LookupFailedException
