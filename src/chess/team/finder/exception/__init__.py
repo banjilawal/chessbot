@@ -14,5 +14,5 @@ None
 
 # Modules
 from .base import TeamFinderException
-from .dataset import TeamSearchDataSetNullException
+from .dataset import TeamSearchDatasetNullException
 from .operation import TeamFinderOperationFailedException

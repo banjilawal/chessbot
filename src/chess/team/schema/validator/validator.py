@@ -1,7 +1,7 @@
-# src/chess/team/team_schema/validator.py
+# src/chess/team/schema/validator/validator.py
 
 """
-Module: chess.team.team_schema.validator
+Module: chess.team.schema.validator.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -9,14 +9,8 @@ version: 1.0.0
 
 from typing import cast, Any
 
-from chess.system import (
-    GameColor, IdentityService, InvalidGameColorException, NullGameColorException, Validator, ValidationResult,
-    LoggingLevelRouter, NullStringException, TextException
-)
-from chess.team import (
-    InvalidTeamSchemaException, NullTeamSchemaException, TeamSchema, TeamColorBoundsException,
-    TeamNameBoundsException
-)
+from chess.system import Validator, ValidationResult, LoggingLevelRouter
+from chess.team import InvalidTeamSchemaException, NullTeamSchemaException, TeamSchema
 
 
 class TeamSchemaValidator(Validator[TeamSchema]):
@@ -64,7 +58,6 @@ class TeamSchemaValidator(Validator[TeamSchema]):
             *   InvalidTeamSchemaException
         """
         method = "TeamSchemaValidator.validate"
-        
         try:
             # Start the error detection process.
             if candidate is None:

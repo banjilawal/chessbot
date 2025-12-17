@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/context.py
+# src/chess/team/team_schema/context/context.py
 
 """
-Module: chess.team.schema.context.context
+Module: chess.team.team_schema.context.context
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -9,11 +9,12 @@ version: 1.0.0
 
 from typing import Optional
 
+
 from chess.team import TeamSchema
 from chess.system import Context, GameColor
 
 
-class TeamSchemaContext(Context[TeamSchema]):
+class OrderContext(Context[BattleOrder]):
     """
     # ROLE: Finder Filter
 

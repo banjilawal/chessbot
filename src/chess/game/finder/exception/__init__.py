@@ -14,5 +14,5 @@ None
 
 # Modules
 from .base import GameFinderException
-from .dataset import GameSearchDataSetNullException
+from .dataset import GameSearchDatasetNullException
 from .operation import GameFinderOperationFailedException

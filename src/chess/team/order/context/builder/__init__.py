@@ -1,13 +1,13 @@
-# src/chess/team/schema/context/builder/__init__.py
+# src/chess/team/team_schema/context/builder/__init__.py
 
 """
-Module: chess.team.schema.context.builder.__init__
+Module: chess.team.team_schema.builder.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== TEAM.SCHEMA.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+# =========== TEAM.SCHEMA.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
 None

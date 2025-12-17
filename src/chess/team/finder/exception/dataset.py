@@ -11,11 +11,11 @@ from chess.system import DataException, NullException
 
 
 __all__ = [
-    "TeamSearchDataSetNullException",
+    "TeamSearchDatasetNullException",
 ]
 
 #======================# TEAM_NULL_DATASET EXCEPTION #======================#
-class TeamSearchDataSetNullException(DataException, NullException):
+class TeamSearchDatasetNullException(DataException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

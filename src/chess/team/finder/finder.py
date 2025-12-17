@@ -14,7 +14,7 @@ from chess.arena import Arena
 from chess.system import GameColor, LoggingLevelRouter, Finder, SearchResult
 from chess.team import (
     Team, TeamContext, TeamContextValidator, TeamFinderOperationFailedException,
-    TeamSearchDataSetNullException
+    TeamSearchDatasetNullException
 )
 
 
@@ -61,8 +61,9 @@ class TeamFinder(Finder[Team]):
 
         # Returns:
         SearchResult[List[Team]] containing either:
-            - On success:   List[team] in the payload.
-            - On failure:   Exception.
+            - On finding a match: List[Team] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
 
         # Raises:
             *   TypeError
@@ -74,7 +75,7 @@ class TeamFinder(Finder[Team]):
             # Don't want to run a finder if the dataset is null.
             if dataset is None:
                 return SearchResult.failure(
-                    TeamSearchDataSetNullException(f"{method}: {TeamSearchDataSetNullException.DEFAULT_MESSAGE}")
+                    TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}")
                 )
             # certify the context is safe.
             validation_result = context_validator.validate(context)

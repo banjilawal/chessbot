@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/validator/exception/null/exception.py
+# src/chess/team/team_schema/context/validator/exception/null/exception.py
 
 """
-Module: chess.team.schema.context.validator.exception.null.exception
+Module: chess.team.team_schema.validator.null.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.system import NullException
 from chess.team import InvalidTeamSchemaContextException
 
 __all__ = [
-    # ======================# TEAM_SCHEMA_CONTEXT NULL EXCEPTIONS #======================#
+    # ======================# TEAMSCHEMA_CONTEXT NULL EXCEPTIONS #======================#
     "NullTeamSchemaContextException",
 ]
 
 
-# ======================# TEAM_SCHEMA_CONTEXT NULL EXCEPTIONS #======================#
+# ======================# TEAMSCHEMA_CONTEXT NULL EXCEPTIONS #======================#
 class NullTeamSchemaContextException(InvalidTeamSchemaContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -30,10 +30,10 @@ class NullTeamSchemaContextException(InvalidTeamSchemaContextException, NullExce
         *   NullTeamSchemaContextException
 
     # PROVIDES:
-    None
+        *   NullTeamSchemaContextException
 
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_TEAM_SCHEMA_CONTEXT_ERROR"
+    ERROR_CODE = "NULL_TEAMSCHEMA_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "TeamSchemaContext cannot be null."

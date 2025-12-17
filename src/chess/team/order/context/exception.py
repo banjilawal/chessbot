@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/exception.py
+# src/chess/team/team_schema/context/exception.py
 
 """
-Module: chess.team.schema.context.exception
+Module: chess.team.team_schema.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

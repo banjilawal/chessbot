@@ -1,17 +1,21 @@
-# src/chess/team/order/__init__.py
+# src/chess/team/team_schema/__init__.py
 
 """
-Module: chess.team.order.__init__
+Module: chess.team.team_schema.__init__
 Author: Banji Lawal
-Created: 2025-10-06
+Created: 2025-10-09
 version: 1.0.0
 """
 
-#=========== TEAM.ORDER PACKAGE CONTENTS ===========#
+#=========== TEAM.SCHEMA PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .context import *
+from .exception import *
+from .finder import *
+from .service import *
 
 # Modules
 from .black import BlackBattleOrder
 from .white import WhiteBattleOrder
+from .validator import BattleOrderValidator

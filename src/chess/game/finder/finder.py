@@ -15,7 +15,7 @@ from chess.agent import PlayerAgent
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.game import (
     Game, GameContext, GameContextValidator, GameDataServiceNullException,
-    GameFinderOperationFailedException, GameSearchDataSetNullException
+    GameFinderOperationFailedException, GameSearchDatasetNullException
 )
 
 
@@ -74,7 +74,7 @@ class GameFinder(Finder[Game]):
             # Don't want to run a search if the dataset is null.
             if dataset is None:
                 return SearchResult.failure(
-                    GameSearchDataSetNullException(f"{method}: {GameSearchDataSetNullException.DEFAULT_MESSAGE}")
+                    GameSearchDatasetNullException(f"{method}: {GameSearchDatasetNullException.DEFAULT_MESSAGE}")
                 )
             # certify the context is safe.
             validation_result = context_validator.validate(context)

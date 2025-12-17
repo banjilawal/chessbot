@@ -1,7 +1,7 @@
-# src/chess/team/schema/service/__init__.py
+# src/chess/team/team_schema/service/__init__.py
 
 """
-Module: chess.team.schema.service.__init__
+Module: chess.team.team_schema.service.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TEAM.SCHEMA.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .service import TeamSchemaService

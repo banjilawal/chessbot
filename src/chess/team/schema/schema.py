@@ -1,7 +1,7 @@
-# src/chess/team/team_schema/team_schema.py
+# src/chess/team/schema/schema.py
 
 """
-Module: chess.team.team_schema.team_schema
+Module: chess.team.schema.schema
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -12,7 +12,7 @@ from enum import Enum
 from chess.scalar import Scalar
 from chess.geometry import Quadrant
 from chess.system import GameColor, ROW_SIZE
-from chess.team import BlackBattleOrder, TeamSchema, WhiteBattleOrder
+from chess.team import BlackBattleOrder, WhiteBattleOrder
 
 
 class TeamSchema(Enum):
