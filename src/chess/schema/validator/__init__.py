@@ -1,16 +1,16 @@
-# src/chess/team/schema/validator/__init__.py
+# src/chess/schema/validator/__init__.py
 
 """
-Module: chess.team.schema.validator.__init__
+Module: chess.schema.validator.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== TEAM.SCHEMA.VALIDATOR.PACKAGE CONTENTS ===========#
+# =========== SCHEMA.VALIDATOR.PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
 
 # Modules
-from .validator import TeamSchemaValidator
+from .validator import SchemaValidator

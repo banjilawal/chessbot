@@ -151,7 +151,7 @@ From `chess.system`:
     `IdValidator`, `NameValidator`
 
 From `chess.team_name`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
+    `Team`, `NullTeam`, `TeamBuildFailedException`, `Schema`
 
 From `chess.player_agent`:
   `PlayerAgent`, `PlayerAgentValidator`,
@@ -201,7 +201,7 @@ From `chess.system`:
     `IdValidator`, `NameValidator`
 
 From `chess.team_name`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
+    `Team`, `NullTeam`, `TeamBuildFailedException`, `Schema`
 
 From `chess.player_agent`:
   `PlayerAgent`, `PlayerAgentValidator`,
@@ -221,7 +221,7 @@ From `chess.owner`:
 
 ATTRIBUTES:
   * `_player_agent` (`PlayerAgent`): Player who controls `Team`
-  * `_schema` (`TeamSchema`): Specs about `Team` eg color, starting squares, visitor_name.
+  * `_schema` (`Schema`): Specs about `Team` eg color, starting squares, visitor_name.
   * `_roster` (`List[Piece]`): List of chess pieces on the team_name.
   * `_hostages` (`List[Piece]`): List of captured enemy pieces.
 """

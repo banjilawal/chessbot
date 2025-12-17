@@ -345,9 +345,9 @@ Example:
 # ## USAGE
 # To use this package, import the desired classes and perform team_name-related rollback.
 # 
-# >>> from chess.team_name import Team, TeamSchema, TeamValidator
+# >>> from chess.team_name import Team, Schema, TeamValidator
 # >>> # Create team_name new team_name and roster
-# >>> team_name = Team(visitor_team_id=1, player_agent=white_team_commander, team_schema=TeamSchema.WHITE)
+# >>> team_name = Team(visitor_team_id=1, player_agent=white_team_commander, team_schema=Schema.WHITE)
 # >>> validate = TeamValidator.validate(team_name)
 # 
 # ## TEAM EXCEPTIONS

@@ -32,7 +32,7 @@ class TeamSchemaLookup(EntityService[SchemaContext]):
     # PROVIDES:
         *   allowed_colors() -> List[GameColor]:
         *   allowed_names() -> List[str]:
-        *   enemy_schema(schema: TeamSchema) -> Result[TeamSchema]:
+        *   enemy_schema(schema: Schema) -> Result[Schema]:
 
     # LOCAL ATTRIBUTES:
     None
@@ -92,20 +92,20 @@ class TeamSchemaLookup(EntityService[SchemaContext]):
     ) -> SearchResult[List[TeamSchema]]:
         """
         # Action:
-        1.  TeamSchema is an Enum to follow the Finder contract a default dataset of List[TeamSchema] has been set.
+        1.  Schema is an Enum to follow the Finder contract a default dataset of List[Schema] has been set.
             It's not used anywhere. even if a dataset argument is passed.
         2.  Use context_validator to certify the provided context.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # Parameters:
-            *   dataset (List[TeamSchema]):
+            *   dataset (List[Schema]):
             *   context: SchemaContext
             *   context_validator: SchemaContextValidator
 
         # Returns:
-        SearchResult[List[TeamSchema]] containing either:
-            - On finding a match: List[TeamSchema] in the payload.
+        SearchResult[List[Schema]] containing either:
+            - On finding a match: List[Schema] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
@@ -141,14 +141,14 @@ class TeamSchemaLookup(EntityService[SchemaContext]):
     def _lookup_by_color(cls, color: GameColor) -> SearchResult[List[TeamSchema]]:
         """
         # Action:
-        1.  Get the TeamSchema which matches the target color.
+        1.  Get the Schema which matches the target color.
 
         # Parameters:
             *   color (TeamSchemaColor)
 
         # Returns:
-        SearchResult[List[TeamSchema]] containing either:
-            - On finding a match: List[TeamSchema] in the payload.
+        SearchResult[List[Schema]] containing either:
+            - On finding a match: List[Schema] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
@@ -178,14 +178,14 @@ class TeamSchemaLookup(EntityService[SchemaContext]):
     def _lookup_by_name(cls, name: str) -> SearchResult[List[TeamSchema]]:
         """
         # Action:
-        1.  Get the TeamSchema which matches the target designation.
+        1.  Get the Schema which matches the target designation.
 
         # Parameters:
             *   designation (str)
 
         # Returns:
-        SearchResult[List[TeamSchema]] containing either:
-            - On finding a match: List[TeamSchema] in the payload.
+        SearchResult[List[Schema]] containing either:
+            - On finding a match: List[Schema] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 

@@ -1,7 +1,7 @@
-# src/chess/team/schema/validator/validator.py
+# src/chess//schema/validator/validator.py
 
 """
-Module: chess.team.schema.validator.validator
+Module: chess..schema.validator.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -10,15 +10,15 @@ version: 1.0.0
 from typing import cast, Any
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
-from chess.team import InvalidTeamSchemaException, NullTeamSchemaException, TeamSchema
+from chess.schema import Schema, InvalidSchemaException, NullSchemaException
 
 
-class TeamSchemaValidator(Validator[TeamSchema]):
+class SchemaValidator(Validator[Schema]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a TeamSchema instance is certified safe, reliable and consistent before use.
+    1.  Ensure a Schema instance is certified safe, reliable and consistent before use.
     2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
     # PARENT:
@@ -36,46 +36,44 @@ class TeamSchemaValidator(Validator[TeamSchema]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[TeamSchema]:
+    def validate(cls, candidate: Any) -> ValidationResult[Schema]:
         """
         # ACTION:
         1.  Check candidate is not null.
-        2.  Check the candidate is a TeamSchema enum
-        3.  If both checks pass cast the candidate to a TeamSchema and return in a
-            ValidationResult.
+        2.  Check the candidate is a Schema enum
+        3.  If both checks pass cast the candidate to a Schema and return in a ValidationResult.
 
         # PARAMETERS:
             *   candidate (Any)
 
         # Returns:
-        ValidationResult[TeamSchema] containing either:
-            - On success:   TeamSchema in the payload.
+        ValidationResult[Schema] containing either:
+            - On success:   Schema in the payload.
             - On failure:   Exception.
 
         # RAISES:
             *   TypeError
-            *   NullTeamSchemaException
-            *   InvalidTeamSchemaException
+            *   NullSchemaException
+            *   InvalidSchemaException
         """
-        method = "TeamSchemaValidator.validate"
+        method = "SchemaValidator.validate"
         try:
-            # Start the error detection process.
+            # Verify the candidate exists
             if candidate is None:
                 return ValidationResult.failure(
-                    NullTeamSchemaException(f"{method} {NullTeamSchemaException.DEFAULT_MESSAGE}")
+                    NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
                 )
-            
-            if not isinstance(candidate, TeamSchema):
+            # Verify the candidate is a Schema instance.
+            if not isinstance(candidate, Schema):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected TeamSchema, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method} Expected Schema, got {type(candidate).__name__} instead.")
                 )
-            # If no errors are detected cast the candidate to a TeamSchema object then return in
-            # a ValidationResult.
-            return ValidationResult.success(cast(TeamSchema, candidate))
+            # If both verifications are passed cast the candidate and return in ValidationResult.
+            return ValidationResult.success(cast(Schema, candidate))
         
-        # Finally, if there is an unhandled exception Wrap an InvalidPieceException around it
+        # Finally, if there is an unhandled exception Wrap an InvalidSchemaException around it
         # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidTeamSchemaException(ex=ex, message=f"{method} {InvalidTeamSchemaException.DEFAULT_MESSAGE}")
+                InvalidSchemaException(ex=ex, message=f"{method} {InvalidSchemaException.DEFAULT_MESSAGE}")
             )

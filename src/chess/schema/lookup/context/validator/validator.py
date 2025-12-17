@@ -1,7 +1,7 @@
-# src/chess/team/schema/lookup/context/validator/validator.py
+# src/chess/schema/lookup/context/validator/validator.py
 
 """
-Module: chess.team.schema.lookup.context.validator.validator
+Module: chess.schema.lookup.context.validator.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from chess.team import (
+from chess.schema import (
     InvalidSchemaContextException, NoSchemaContextFlagException, NullSchemaContextException, SchemaContext,
     TooManySchemaContextFlagsException
 )
@@ -21,7 +21,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a TeamSchema instance is certified safe, reliable and consistent before use.
+    1.  Ensure a Schema instance is certified safe, reliable and consistent before use.
     2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
     # PARENT:
@@ -46,7 +46,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
     ) -> ValidationResult[SchemaContext]:
         """
         # Action:
-        1.  Confirm that only one in the (designation, color) tuple is not null.
+        1.  Confirm that only one in the (name, color) tuple is not null.
         2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an SchemaContext are return in a ValidationResult.
@@ -81,7 +81,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                     TypeError(f"{method}: Expected SchemaContext, got {type(candidate).__name__} instead.")
                 )
             
-            # Once existence and type checks are passed, cast the candidate to TeamSchema and run structure tests.
+            # Once existence and type checks are passed, cast the candidate to Schema and run structure tests.
             context = cast(SchemaContext, candidate)
             
             # Handle the case of searching with no attribute-value.
@@ -98,7 +98,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 )
             # When structure tests are passed certify whichever search value was provided.
             
-            # Certification for the search-by-designation target.
+            # Certification for the search-by-name target.
             if context.name is not None:
                 validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure:
@@ -113,6 +113,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                     return ValidationResult.failure(validation.exception)
                 # On certification success return the color_team_schema_context in a ValidationResult.
                 return ValidationResult.success(context)
+            
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
         # an InvalidSchemaContextException. Then send exception chain a ValidationResult.failure.
         except Exception as ex:

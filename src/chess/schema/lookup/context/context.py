@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.team import TeamSchema
+from chess.schema import Schema
 from chess.system import Context, GameColor
 
 
-class SchemaContext(Context[TeamSchema]):
+class SchemaContext(Context[Schema]):
     """
     # ROLE: Finder Filter
 

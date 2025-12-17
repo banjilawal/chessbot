@@ -1,7 +1,7 @@
-# src/chess/team/schema/context/builder/builder.py
+# src/chess/schema/lookup/context/builder/builder.py
 
 """
-Module: chess.team.schema.builder.builder
+Module: chess.schema.lookup.context.builder.builder
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
-from chess.team import (
+from chess.schema import (
     NoSchemaContextFlagException, SchemaContext, TooManySchemaContextFlagsException, SchemaContextBuildFailedException
 )
 
@@ -72,13 +72,13 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             *   TooManySchemaContextFlagsException
             *   SchemaContextBuildFailedException
         """
-        method = "TeamSchemaSearchContextBuilder.build"
+        method = "SchemaSearchContextBuilder.build"
         try:
             # Get how many optional parameters are not null. One param needs to be not-null
-            params = [name, GameColor,]
+            params = [name, color,]
             param_count = sum(bool(p) for p in params)
             
-            # Cannot search for a TeamSchema object if no attribute value is provided for a hit.
+            # Cannot search for a Schema object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
                     NoSchemaContextFlagException(f"{method}: {NoSchemaContextFlagException.DEFAULT_MESSAGE}")
@@ -88,22 +88,22 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                 return BuildResult.failure(
                     TooManySchemaContextFlagsException(f"{method}: {TooManySchemaContextFlagsException}")
                 )
-            # After the verifying the correct number of flags are set follow the appropriate TeamSchema build flow.
+            # After the verifying the correct number of flags are set follow the appropriate Schema build flow.
             
             # designation flag enabled, build flow.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an name_TeamSchema_context in the BuildResult.
+                # On validation success return an name_Schema_context in the BuildResult.
                 return BuildResult.success(SchemaContext(name=name))
             
             # GameColor flag enabled, build flow.
             if color is not None:
-                validation = color_validator.validate(candidate=GameColor)
+                validation = color_validator.validate(candidate=color)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an GameColor_TeamSchema_context in the BuildResult.
+                # On validation success return an GameColor_Schema_context in the BuildResult.
                 return BuildResult.success(SchemaContext(color=color))
             
         # Finally, if none of the execution paths matches the state wrap the unhandled exception in a

@@ -1,13 +1,13 @@
-# src/chess/team/schema/lookup/context/validator/exception//__init__.py
+# src/chess/schema/lookup/context/validator/exception/base.py
 
 """
-Module: chess.team.schema.lookup.context.validator.exception.__init__
+Module: chess.schema.lookup.context.validator.exception.base
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.team import SchemaContextException
+from chess.schema import SchemaContextException
 from chess.system import ValidationFailedException
 
 __all__ = [

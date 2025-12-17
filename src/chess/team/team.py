@@ -31,7 +31,7 @@ class Team:
         *   id (int)
         *   arena (Arena)
         *   player_agent (PlayerAgent)
-        *   team_schema (TeamSchema)
+        *   team_schema (Schema)
         *   roster (UniquePieceDataService)
         *   hostages (UniquePieceDataService)
         
@@ -64,7 +64,7 @@ class Team:
             *   id (int)
             *   player_agent (PlayerAgent)
             *   arena (Arena)
-            *   team_schema (TeamSchema)
+            *   team_schema (Schema)
             *   roster (UniquePieceDataService)
             *   hostages (UniquePieceDataService)
 

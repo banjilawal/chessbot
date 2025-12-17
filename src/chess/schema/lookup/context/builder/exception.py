@@ -1,23 +1,24 @@
-# src/chess/team/schema/context/builder/exception.py
+# src/chess/schema/lookup/context/builder/exception.py
 
 """
-Module: chess.team.schema.context.builder.exception
+Module: chess.schema.lookup.context.builder.exception
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-09
 version: 1.0.0
 """
 
+from chess.schema import SchemaContextException
 from chess.system import BuildFailedException
-from chess.team import SchemaContextException
+
 
 
 __all__ = [
-    #======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
+    #======================# SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
     "SchemaContextBuildFailedException",
 ]
 
 
-#======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
+#======================# SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
 class SchemaContextBuildFailedException(SchemaContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -39,5 +40,5 @@ class SchemaContextBuildFailedException(SchemaContextException, BuildFailedExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SCHEMA_CONTEXT_BUILD_ERROR"
+    ERROR_CODE = "SCHEMA_CONTEXT_BUILD_ERROR"
     DEFAULT_MESSAGE = "SchemaContext build failed."

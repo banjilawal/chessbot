@@ -10,11 +10,10 @@ version: 1.0.0
 #=========== SCHEMA PACKAGE CONTENTS ===========#
 
 # Packages
-from .context import *
 from .lookup import *
 from .validator import *
 
 # Modules
-from .schema import TeamSchema
-from .exception import TeamSchemaException
+from .schema import Schema
+from .exception import SchemaException
 

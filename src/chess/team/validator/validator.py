@@ -60,7 +60,7 @@ class TeamValidator(Validator[Team]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   team_schema (TeamSchema)
+            *   team_schema (Schema)
             *   agent_certifier (PlayerAgentService)
             *   identity_service (IdentityService)
 

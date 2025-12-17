@@ -1,32 +1,31 @@
-# src/chess/team/schema/exception.py
+# src/chess/schema/exception.py
 
 """
-Module: chess.team.schema.exception
+Module: chess.schema.schema.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.team import TeamException
-
+from chess.system.err import ChessException
 
 __all__ = [
-    # ======================# TEAM_SCHEMA EXCEPTION #======================#
-    "TeamSchemaException",
+    # ======================# SCHEMA_SCHEMA EXCEPTION #======================#
+    "SchemaException",
 ]
 
 
-# ======================# TEAM_SCHEMA EXCEPTION #======================#
-class TeamSchemaException(TeamException):
+# ======================# SCHEMA EXCEPTION #======================#
+class SchemaException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by TeamSchema objects.
-    2.  Catchall for conditions which are not covered by lower level TeamSchema exceptions.
+    1.  Parent of exceptions raised by Schema objects.
+    2.  Catchall for conditions which are not covered by lower level Schema exceptions.
 
     # PARENT:
-        *   ContextException
+        *   ChessException
 
     # PROVIDES:
     None
@@ -37,5 +36,5 @@ class TeamSchemaException(TeamException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SCHEMA_ERROR"
-    DEFAULT_ERROR_CODE = "TeamSchema raised an exception."
+    ERROR_CODE = "SCHEMA_SCHEMA_ERROR"
+    DEFAULT_ERROR_CODE = "Schema raised an exception."

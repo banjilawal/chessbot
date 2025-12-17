@@ -1,31 +1,31 @@
-# src/chess/team/schema/validator/exception/null.py
+# src/chess/schema/validator/exception/null.py
 
 """
-Module: chess.team.schema.validator.exception.null
+Module: chess.schema.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.team import InvalidTeamSchemaException
+from chess.schema import InvalidSchemaException
 
 __all__ = [
-    #======================# TEAM_SCHEMA NULL EXCEPTIONS #======================#
-    "NullTeamSchemaException",
+    #======================# _SCHEMA NULL EXCEPTIONS #======================#
+    "NullSchemaException",
 ]
 
-#======================# TEAM_SCHEMA NULL EXCEPTIONS #======================#
-class NullTeamSchemaException(InvalidTeamSchemaException, NullException):
+#======================# SCHEMA NULL EXCEPTIONS #======================#
+class NullSchemaException(InvalidSchemaException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates an entity, method, or operation that required a TeamSchema got null instead.
+    1.  Indicates an entity, method, or operation that required a Schema got null instead.
     
     # PARENT:
-        *   InvalidTeamSchemaException
-        *   NullTeamSchemaException
+        *   InvalidSchemaException
+        *   NullSchemaException
 
     # PROVIDES:
     None
@@ -36,8 +36,8 @@ class NullTeamSchemaException(InvalidTeamSchemaException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_TEAM_SCHEMA_ERROR"
-    DEFAULT_MESSAGE = "TeamSchema cannot be null."
+    ERROR_CODE = "NULL__SCHEMA_ERROR"
+    DEFAULT_MESSAGE = "Schema cannot be null."
 
     
     

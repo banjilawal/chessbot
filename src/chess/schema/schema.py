@@ -13,11 +13,11 @@ from typing import List
 
 from chess.scalar import Scalar
 from chess.geometry import Quadrant
-from chess.system import GameColor, ROW_SIZE
-from chess.formation import BattleOrder, BattleOrderService
+from chess.system import GameColor, ROW_SIZE, SearchResult
+from chess.formation import BattleOrder, BattleOrderLookup, OrderContext
 
 
-class TeamSchema(Enum):
+class Schema(Enum):
     """
     # ROLE: Schema, Configuration Settings
   
@@ -85,33 +85,12 @@ class TeamSchema(Enum):
         return self._rank_row + self._advancing_step.value
     
     # @property
-    # def enemy_schema(self) -> TeamSchema:
-    #     return TeamSchema.BLACK if self == TeamSchema.WHITE else TeamSchema.WHITE
+    # def enemy_schema(self) -> Schema:
+    #     return Schema.BLACK if self == Schema.WHITE else Schema.WHITE
     
     @property
-    def battle_order(self) -> List[BattleOrder]:
-        if self.color == GameColor.WHITE:
-            return BattleOrderService().white_battle_orders
-        return BattleOrderService().black_battle_orders
-        
-    #
-    # @classmethod
-    # def find_by_color(cls, color: GameColor) -> TeamSchema:
-    #     if color in cls.__members__:
-    #         return cls.__members__[color]
-    #
-    # @classmethod
-    # def find_by_name(cls, designation: str) -> TeamSchema:
-    #     if designation in cls.__members__:
-    #         return cls.__members__[designation]
-    
-    # @classmethod
-    # def allowed_colors(cls) -> List[GameColor]:
-    #     return [member.color for member in cls]
-    #
-    # @classmethod
-    # def allowed_names(cls) -> List[str]:
-    #     return [member.designation for member in cls]
+    def battle_order(self) -> SearchResult[List[BattleOrder]]:
+            return BattleOrderLookup().lookup(context=OrderContext(color=self._color))
     
     def __str__(self) -> str:
         return (

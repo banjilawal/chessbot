@@ -82,7 +82,7 @@ From `chess.system`:
     `IdValidator`, `NameValidator`
 
 From `chess.team_name`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `TeamSchema`
+    `Team`, `NullTeam`, `TeamBuildFailedException`, `Schema`
 
 From `chess.player_agent`:
   `PlayerAgent`, `PlayerAgentValidator`,

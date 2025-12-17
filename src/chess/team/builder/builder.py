@@ -63,7 +63,7 @@ class TeamBuilder(Builder[Team]):
         # PARAMETERS:
             *   id (int)
             *   player_agent (PlayerAgent)
-            *   team_schema (TeamSchema)
+            *   team_schema (Schema)
             *   identity_service (IdentityService)
             *   player_agent_service (PlayerAgentService)
             *   schema_validator (TeamSchemaValidator)

@@ -1,14 +1,14 @@
-# src/chess/team/schema/lookup/context/validator/exception/flag.py
+# src/chess/schema/lookup/context/validator/exception/flag.py
 
 """
-Module: chess.team.schema.lookup.context.validator.exception.flag
+Module: chess.schema.lookup.context.validator.exception.flag
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.team import InvalidSchemaContextException
+from chess.schema import InvalidSchemaContextException
 
 __all__ = [
     # ========================= NO_SCHEMA_CONTEXT_FLAG EXCEPTION =========================#
@@ -24,7 +24,7 @@ class NoSchemaContextFlagException(InvalidSchemaContextException, ContextFlagCou
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no SchemaContext flag is provided for a TeamSchema lookup.
+    1.  Indicate no SchemaContext flag is provided for a Schema lookup.
 
     # PARENT:
         *   InvalidSchemaContextException
@@ -46,7 +46,7 @@ class TooManySchemaContextFlagsException(InvalidSchemaContextException, ContextF
     # ROLE: ContextFlagException, SchemaContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one TeamSchema attribute is going to be used in a TeamSchema lookup.
+    1.  Indicate if more than one Schema attribute is going to be used in a Schema lookup.
 
     # PARENT:
         *   InvalidSchemaContextException

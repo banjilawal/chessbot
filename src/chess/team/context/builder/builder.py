@@ -91,7 +91,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             params = [id, name, arena, player_agent, color]
             param_count = sum(bool(p) for p in params)
             
-            # Cannot search for a TeamSchema object if no attribute value is provided for a hit.
+            # Cannot search for a Schema object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
                     NoTeamContextFlagsException(f"{method}:  {NoTeamContextFlagsException.DEFAULT_MESSAGE}")
@@ -101,7 +101,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 return BuildResult.failure(
                     TooManyTeamContextFlagsException(f"{method}: {TooManyTeamContextFlagsException}")
                 )
-            # After the verifying the correct number of flags are set follow the appropriate TeamSchema build flow.
+            # After the verifying the correct number of flags are set follow the appropriate Schema build flow.
             
             # id flag enabled, build flow.
             if id is not None:
