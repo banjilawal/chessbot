@@ -21,6 +21,7 @@ from .event import *
 from .find import *
 from .identity import *
 from .logging import *
+from .metadata import *
 from .mouse import *
 from .notification import *
 from .result import *
