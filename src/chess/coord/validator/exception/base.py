@@ -1,7 +1,7 @@
-# src/chess/coord/validator/exception_.py
+# src/chess/coord/validator/exception/base.py
 
 """
-Module: chess.square.validator.exception
+Module: chess.coord.validator.exception.base
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -17,7 +17,7 @@ __all__ = [
 
 #====================== COORD VALIDATION EXCEPTIONS #======================#
 class InvalidCoordException(CoordException, ValidationException):
-    """Catchall Exception for CoordValidator when a candidate fails a sanity check.""""""
+    """Catchall Exception for CoordValidator when a candidate fails a sanity check."""
     ERROR_CODE = "COORD_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Coord validation failed."
 

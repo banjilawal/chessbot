@@ -7,5 +7,11 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from .exception import *
+# =========== COORD.BUILDER PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
 from .builder import CoordBuilder
+from .exception import CoordBuildFailedException

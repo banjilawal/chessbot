@@ -7,15 +7,15 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
+# =========== COORD PACKAGE CONTENTS ===========#
+
+# Packages
 from .builder import *
 from .context import *
-from .dto import *
-from .exception import *
-from .search import *
 from .service import *
 from .validator import *
 
-
-
+# Modules
 from .coord import Coord
+from .exception import CoordException
 
