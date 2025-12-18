@@ -13,7 +13,7 @@ from typing import List, cast
 from chess.catalog import (
     Catalog, CatalogContext, CatalogContextBuilder, CatalogContextValidator,
     CatalogDesignationBoundsException, CatalogLookupException, CatalogLookupFailedException,
-    CatalogQuotaBoundsException, CatalogRansomBoundsException, CatalogValidator
+    CatalogNameBoundsException, CatalogQuotaBoundsException, CatalogRansomBoundsException, CatalogValidator
 )
 from chess.system import EnumLookup, LoggingLevelRouter, SearchResult, id_emitter
 
@@ -126,6 +126,9 @@ class CatalogLookup(EnumLookup[CatalogContext]):
                 return SearchResult.failure(validation.exception)
             # After context is verified select the search method based on the which flag is enabled.
             
+            # Entry point into searching by name value.
+            if context.name is not None:
+                return cls._lookup_by_designation(designation=context.name)
             # Entry point into searching by designation value.
             if context.designation is not None:
                 return cls._lookup_by_designation(designation=context.designation)
@@ -139,6 +142,43 @@ class CatalogLookup(EnumLookup[CatalogContext]):
             # Failsafe if any context cases was missed
             return SearchResult.failure(
                 CatalogLookupFailedException(f"{method}: {CatalogLookupFailedException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if some exception is not handled by the checks wrap it inside a CatalogLookupException then,
+        # return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                CatalogLookupException(ex=ex, message=f"{method}: {CatalogLookupException.DEFAULT_MESSAGE}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _lookup_by_name(cls, name: str) -> SearchResult[List[Catalog]]:
+        """
+        # Action:
+        1.  Get any Catalog which matches the target name.
+
+        # Parameters:
+            *   name (str)
+
+        # Returns:
+        SearchResult[List[Catalog]] containing either:
+            - On finding a match: List[Catalog] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
+
+        # Raises:
+            *   CatalogDesignationBoundsException
+            *   CatalogLookupFailedException
+        """
+        method = "CatalogLookup._lookup_by_name"
+        try:
+            matches = [catalog for catalog in Catalog if catalog.name.upper() == name.upper()]
+            # This is the expected case.
+            if len(matches) >= 1:
+                return SearchResult.success(matches)
+            # If a match is not found return an exception. It's important to know if no catalog has that designation.
+            return SearchResult.failure(
+                CatalogNameBoundsException(f"{method}: {CatalogNameBoundsException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a CatalogLookupException then,
         # return the exception chain inside a SearchResult.
