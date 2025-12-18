@@ -16,4 +16,5 @@ None
 from .none import NoTeamsInArenaException
 from .many import ToManyTeamsInArenaException
 from .single import SingleTeamInArenaException
+from .color import TeamColorCollisionException
 from .duplicate import DuplicateTeamInArenaException
