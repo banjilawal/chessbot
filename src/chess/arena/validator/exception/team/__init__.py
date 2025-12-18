@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .duplicate import
-from .few import
-from .none import
-from .many import
+from .none import NoTeamsInArenaException
+from .many import ToManyTeamsInArenaException
+from .single import SingleTeamInArenaException
+from .duplicate import DuplicateTeamInArenaException
