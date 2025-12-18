@@ -9,11 +9,12 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.agent import PlayerAgent, PlayerAgentService
+
 from chess.arena import Arena, ArenaService
+from chess.agent import PlayerAgent, PlayerAgentService
 from chess.system import Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.team import (
-    NoTeamContextFlagsException, TeamContext, TeamContextBuildFailedException, TooManyTeamContextFlagsException
+    NoTeamContextFlagException, TeamContext, TeamContextBuildFailedException, TooManyTeamContextFlagsException
 )
 
 
@@ -94,7 +95,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             # Cannot search for a Schema object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoTeamContextFlagsException(f"{method}:  {NoTeamContextFlagsException.DEFAULT_MESSAGE}")
+                    NoTeamContextFlagException(f"{method}:  {NoTeamContextFlagException.DEFAULT_MESSAGE}")
                 )
             # Only one property-value pair is allowed in a search.
             if param_count > 1:
