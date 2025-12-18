@@ -11,7 +11,6 @@ from chess.schema import SchemaContextException
 from chess.system import BuildFailedException
 
 
-
 __all__ = [
     #======================# SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
     "SchemaContextBuildFailedException",

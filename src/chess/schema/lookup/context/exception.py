@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import ContextException
-from chess.team import TeamSchemaException
+from chess.schema import SchemaException
 
 __all__ = [
     # ======================# SCHEMA_CONTEXT EXCEPTION SUPER CLASS #======================#
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# SCHEMA_CONTEXT EXCEPTION SUPER CLASS #======================#
-class SchemaContextException(TeamSchemaException, ContextException):
+class SchemaContextException(SchemaException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

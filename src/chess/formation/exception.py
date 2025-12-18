@@ -17,20 +17,20 @@ __all__ = [
 class BattleOrderException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
-    
+
     # RESPONSIBILITIES:
-    1.  Super class af exceptions by BattleOrder objects.
-    2.  Parent class of BattleOrder build/validation exceptions.
+    1.  Parent of exceptions raised by BattleOrder objects.
+    2.  Catchall for conditions which are not covered by lower level BattleOrder exceptions.
 
     # PARENT:
         *   ChessException
-    
+
     # PROVIDES:
     None
-    
+
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """

@@ -31,7 +31,7 @@ class BattleOrder(Enum):
         *   color (GameColor)
         *   designation (str)
         *   roster_number (int)
-        *   rank_spec (RankSpec)
+        *   rank_spec (Catalog)
 
     # INHERITED ATTRIBUTES:
         * name (str) -->  Name give to each Enum entry.

@@ -129,12 +129,12 @@ class RookValidator(Validator[Rook]):
         """
         # ACTION:
         1.  Verify candidate is a safe id using identity_service. If so convert to id. Else return failure.
-        2.  Check if id != RankSpec.ROOK.id. If not, return failure.
+        2.  Check if id != Catalog.ROOK.id. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (RankSpec)
+            *   rank_spec (Catalog)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -179,12 +179,12 @@ class RookValidator(Validator[Rook]):
         """
         # ACTION:
         1.  Verify candidate is a safe designation using identity_service. If so convert to designation. Else return failure.
-        2.  Check if designation != RankSpec.ROOK.designation. If not, return failure.
+        2.  Check if designation != Catalog.ROOK.designation. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (RankSpec)
+            *   rank_spec (Catalog)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -228,12 +228,12 @@ class RookValidator(Validator[Rook]):
         """
         # ACTION:
         1.  Verify candidate is a safe number using number_validator. If so convert to number. Else return failure.
-        2.  Check if ransom != RankSpec.ROOK.ransom. If not, return failure.
+        2.  Check if ransom != Catalog.ROOK.ransom. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (RankSpec)
+            *   rank_spec (Catalog)
             *   number_validator (NumberValidator)
 
         # Returns:
@@ -278,12 +278,12 @@ class RookValidator(Validator[Rook]):
         """
         # ACTION:
         1.  Verify candidate is a safe string using text_validator. If so convert to string. Else return failure.
-        2.  Check if string != RankSpec.ROOK.designation. If not, return failure.
+        2.  Check if string != Catalog.ROOK.designation. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (RankSpec)
+            *   rank_spec (Catalog)
             *   text_validator (TextValidator)
 
         # Returns:
@@ -328,12 +328,12 @@ class RookValidator(Validator[Rook]):
         """
         # ACTION:
         1.  Verify candidate is a safe number using number_validator. If so convert to number. Else return failure.
-        2.  Check if ransom != RankSpec.ROOK.team_quota. If not, return failure.
+        2.  Check if ransom != Catalog.ROOK.team_quota. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (RankSpec)
+            *   rank_spec (Catalog)
             *   number_validator (NumberValidator)
 
         # Returns:

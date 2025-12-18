@@ -10,7 +10,11 @@ version: 1.0.0
 # =========== FORMATION.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .bounds import *
+None
 
 # Modules
 from .base import InvalidBattleOrderException
+from .color import OrderColorBoundsException
+from .name import OrderNameBoundsException
+from .square import OrderSquareBoundsException
+from .null import NullBattleOrderException

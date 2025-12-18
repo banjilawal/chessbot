@@ -48,10 +48,10 @@ class RankFactory(Builder[Rank]):
     ) -> BuildResult[Rank]:
         """
         # Action:
-        Given a RankSpec, return an appropriate Rank object.
+        Given a Catalog, return an appropriate Rank object.
 
         # Parameters:
-            * rank_spec (RankSpec)
+            * rank_spec (Catalog)
 
         # Returns:
           BuildResult[Rank] containing either:
