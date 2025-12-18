@@ -14,4 +14,3 @@ None
 
 # Modules
 from .duplicate import
-from .single import
