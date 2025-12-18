@@ -56,7 +56,7 @@ class TeamService(EntityService[Team]):
             *   designation (str)
             *   builder (TeamBuilder)
             *   validator (TeamValidator)
-            *   schema_service (TeamSchemaLookup)
+            *   schema_lookup (TeamSchemaLookup)
 
         # Returns:
         None

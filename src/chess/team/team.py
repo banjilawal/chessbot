@@ -8,8 +8,8 @@ version: 1.0.0
 """
 
 from chess.arena import Arena
+from chess.schema import Schema
 from chess.agent import PlayerAgent
-from chess.team import TeamSchema
 from chess.piece import UniquePieceDataService
 
 
@@ -29,9 +29,9 @@ class Team:
 
     # LOCAL ATTRIBUTES:
         *   id (int)
+        *   schema (Schema)
         *   arena (Arena)
         *   player_agent (PlayerAgent)
-        *   team_schema (Schema)
         *   roster (UniquePieceDataService)
         *   hostages (UniquePieceDataService)
         
@@ -42,8 +42,8 @@ class Team:
     
     _id: int
     _arena: Arena
+    _schema: Schema
     _player_agent: PlayerAgent
-    _schema: TeamSchema
     _roster: UniquePieceDataService
     _hostages: UniquePieceDataService
 
@@ -51,7 +51,7 @@ class Team:
             self,
             id: int,
             arena: Arena,
-            schema: TeamSchema,
+            schema: Schema,
             player_agent: PlayerAgent,
             roster: UniquePieceDataService = UniquePieceDataService(),
             hostages: UniquePieceDataService = UniquePieceDataService(),
