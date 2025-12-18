@@ -13,7 +13,7 @@ from chess.agent import PlayerAgentService
 from chess.arena import ArenaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
-    InvalidTeamContextException, NoTeamContextFlagsException, NullTeamContextException, TeamContext,
+    InvalidTeamContextException, NoTeamContextFlagException, NullTeamContextException, TeamContext,
     TooManyTeamContextFlagsException
 )
 
@@ -105,7 +105,7 @@ class TeamContextValidator(Validator[TeamContext]):
             # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoTeamContextFlagsException(f"{method}: {NoTeamContextFlagsException.DEFAULT_MESSAGE}")
+                    NoTeamContextFlagException(f"{method}: {NoTeamContextFlagException.DEFAULT_MESSAGE}")
                 )
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
