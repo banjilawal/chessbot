@@ -353,7 +353,7 @@ class PawnValidator(Validator[Pawn]):
                 return ValidationResult.failure(validation.exception)
             # Next check if team_quota is correct for a pawn.
             team_quota = validation.payload
-            if team_quota != rank_spec.PAWN.team_quota:
+            if team_quota != rank_spec.PAWN.quota:
                 return ValidationResult.failure(
                     NotPawnQuotaException(f"{method}: {NotPawnQuotaException.DEFAULT_MESSAGE}")
                 )

@@ -37,7 +37,7 @@ class Knight(Rank):
             id: int = RankSpec.KNIGHT.id,
             name: str = RankSpec.KNIGHT.name,
             ransom: int = RankSpec.KNIGHT.ransom,
-            team_quota: int = RankSpec.KNIGHT.team_quota,
+            team_quota: int = RankSpec.KNIGHT.quota,
             designation: str = RankSpec.KNIGHT.designation,
             quadrants: list[Quadrant] = RankSpec.KNIGHT.quadrants,
             coord_service: CoordService=CoordService()

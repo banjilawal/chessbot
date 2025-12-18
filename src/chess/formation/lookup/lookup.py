@@ -37,12 +37,11 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     # INHERITED ATTRIBUTES:
         *   See EnumLookup for inherited attributes.
     """
-    DEFAULT_NAME = "BattleOrderLookup"
-    _order_validator: BattleOrderValidator
+    SERVICE_NAME = "BattleOrderLookupService"
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.lookup_id,
             context_builder: OrderContextBuilder = OrderContextBuilder(),
             enum_validator: BattleOrderValidator = BattleOrderValidator(),

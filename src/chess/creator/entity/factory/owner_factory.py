@@ -25,7 +25,7 @@ class OwnerFactory:
     ranks = RankFactory.assemble()
     for team in [wt, bt]:
       for rank in ranks:
-        for i in range(rank.team_quota):
+        for i in range(rank.quota):
           chess_piece = ChessPieceBuilder.build(
             token_id=id_emitter.visitor_id,
             team_rank_member_id=(i + 1),

@@ -38,7 +38,7 @@ class Rook(Rank):
             name: str = RankSpec.ROOK.name,
             designation: str = RankSpec.ROOK.designation,
             ransom: int = RankSpec.ROOK.ransom,
-            team_quota: int = RankSpec.ROOK.team_quota,
+            team_quota: int = RankSpec.ROOK.quota,
             quadrants: list[Quadrant] = RankSpec.ROOK.quadrants,
             coord_service: CoordService = CoordService()
     ):

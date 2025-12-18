@@ -35,7 +35,7 @@ class Bishop(Rank):
             id: int = RankSpec.BISHOP.id,
             name: str = RankSpec.BISHOP.name,
             ransom: int = RankSpec.BISHOP.ransom,
-            team_quota: int = RankSpec.BISHOP.team_quota,
+            team_quota: int = RankSpec.BISHOP.quota,
             designation: str = RankSpec.BISHOP.designation,
             quadrants: list[Quadrant] = RankSpec.BISHOP.quadrants,
             coord_service: CoordService = CoordService(),

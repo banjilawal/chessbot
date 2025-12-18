@@ -61,7 +61,7 @@ class RankFinder:
     def by_team_quota(cls, team_quota: int) -> SearchResult[List[RankSpec]]:
         """"""
         method = "RankFinder.by_team_quota"
-        matches = [spec for spec in RankSpec if spec.team_quota == team_quota]
+        matches = [spec for spec in RankSpec if spec.quota == team_quota]
         if len(matches) == 0:
             return SearchResult.empty()
         return SearchResult.success(payload=matches)

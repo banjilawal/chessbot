@@ -353,7 +353,7 @@ class RookValidator(Validator[Rook]):
                 return ValidationResult.failure(validation.exception)
             # Next check if team_quota is correct for a rook.
             team_quota = validation.payload
-            if team_quota != rank_spec.ROOK.team_quota:
+            if team_quota != rank_spec.ROOK.quota:
                 return ValidationResult.failure(
                     NotRookQuotaException(f"{method}: {NotRookQuotaException.DEFAULT_MESSAGE}")
                 )

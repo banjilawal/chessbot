@@ -36,7 +36,7 @@ class King(Rank):
             id: int=RankSpec.KING.id,
             name: str=RankSpec.KING.name,
             ransom: int = RankSpec.KING.ransom,
-            team_quota: int = RankSpec.KING.team_quota,
+            team_quota: int = RankSpec.KING.quota,
             designation: str=RankSpec.KING.designation,
             quadrants: list[Quadrant]=RankSpec.KING.quadrants,
             coord_service: CoordService=CoordService(),

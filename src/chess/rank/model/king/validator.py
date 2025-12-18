@@ -353,7 +353,7 @@ class KingValidator(Validator[King]):
                 return ValidationResult.failure(validation.exception)
             # Next check if team_quota is correct for a king.
             team_quota = validation.payload
-            if team_quota != rank_spec.KING.team_quota:
+            if team_quota != rank_spec.KING.quota:
                 return ValidationResult.failure(
                     NotKingQuotaException(f"{method}: {NotKingQuotaException.DEFAULT_MESSAGE}")
                 )

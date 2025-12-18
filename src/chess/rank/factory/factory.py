@@ -111,7 +111,7 @@ class RankFactory(Builder[Rank]):
                 name=RankSpec.KING.name,
                 designation=RankSpec.KING.designation,
                 ransom=RankSpec.KING.ransom,
-                team_quota=RankSpec.KING.team_quota,
+                team_quota=RankSpec.KING.quota,
                 quadrants=RankSpec.KING.quadrants,
             )
         )
@@ -141,7 +141,7 @@ class RankFactory(Builder[Rank]):
                 name=RankSpec.PAWN.name,
                 designation=RankSpec.PAWN.designation,
                 ransom=RankSpec.PAWN.ransom,
-                team_quota=RankSpec.PAWN.team_quota,
+                team_quota=RankSpec.PAWN.quota,
                 quadrants=RankSpec.PAWN.quadrants,
             )
         )
@@ -171,7 +171,7 @@ class RankFactory(Builder[Rank]):
                 name=RankSpec.KNIGHT.name,
                 designation=RankSpec.KNIGHT.designation,
                 ransom=RankSpec.KNIGHT.ransom,
-                team_quota=RankSpec.KNIGHT.team_quota,
+                team_quota=RankSpec.KNIGHT.quota,
                 quadrants=RankSpec.KNIGHT.quadrants,
             )
         )
@@ -201,7 +201,7 @@ class RankFactory(Builder[Rank]):
                 name=RankSpec.BISHOP.name,
                 designation=RankSpec.BISHOP.designation,
                 ransom=RankSpec.BISHOP.ransom,
-                team_quota=RankSpec.BISHOP.team_quota,
+                team_quota=RankSpec.BISHOP.quota,
                 quadrants=RankSpec.BISHOP.quadrants,
             )
         )
@@ -231,7 +231,7 @@ class RankFactory(Builder[Rank]):
                 name=RankSpec.ROOK.name,
                 designation=RankSpec.ROOK.designation,
                 ransom=RankSpec.ROOK.ransom,
-                team_quota=RankSpec.ROOK.team_quota,
+                team_quota=RankSpec.ROOK.quota,
                 quadrants=RankSpec.ROOK.quadrants,
             )
         )
@@ -261,7 +261,7 @@ class RankFactory(Builder[Rank]):
                 name=RankSpec.QUEEN.name,
                 designation=RankSpec.QUEEN.designation,
                 ransom=RankSpec.QUEEN.ransom,
-                team_quota=RankSpec.QUEEN.team_quota,
+                team_quota=RankSpec.QUEEN.quota,
                 quadrants=RankSpec.QUEEN.quadrants,
             )
         )

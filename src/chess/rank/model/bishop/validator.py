@@ -353,7 +353,7 @@ class BishopValidator(Validator[Bishop]):
                 return ValidationResult.failure(validation.exception)
             # Next check if team_quota is correct for a bishop.
             team_quota = validation.payload
-            if team_quota != rank_spec.BISHOP.team_quota:
+            if team_quota != rank_spec.BISHOP.quota:
                 return ValidationResult.failure(
                     NotBishopQuotaException(f"{method}: {NotBishopQuotaException.DEFAULT_MESSAGE}")
                 )

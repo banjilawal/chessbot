@@ -60,7 +60,7 @@ class Catalog(Enum):
         return self._designation
     
     @property
-    def team_quota(self) -> int:
+    def quota(self) -> int:
         return self._team_quota
     
     @property
@@ -92,7 +92,7 @@ class Catalog(Enum):
     
     @classmethod
     def allowed_team_quotas(cls) -> List[int]:
-        return [member.team_quota for member in cls]
+        return [member.quota for member in cls]
     
     @classmethod
     def allowed_ransoms(cls) -> List[int]:

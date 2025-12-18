@@ -38,7 +38,7 @@ class Queen(Rank):
             id: int = RankSpec.QUEEN.id,
             name: str = RankSpec.QUEEN.name,
             ransom: int = RankSpec.QUEEN.ransom,
-            team_quota: int = RankSpec.QUEEN.team_quota,
+            team_quota: int = RankSpec.QUEEN.quota,
             designation: str = RankSpec.QUEEN.designation,
             quadrants: list[Quadrant] = RankSpec.QUEEN.quadrants,
             coord_service: CoordService = CoordService()

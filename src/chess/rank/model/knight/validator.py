@@ -353,7 +353,7 @@ class KnightValidator(Validator[Knight]):
                 return ValidationResult.failure(validation.exception)
             # Next check if team_quota is correct for a knight.
             team_quota = validation.payload
-            if team_quota != rank_spec.KNIGHT.team_quota:
+            if team_quota != rank_spec.KNIGHT.quota:
                 return ValidationResult.failure(
                     NotKnightQuotaException(f"{method}: {NotKnightQuotaException.DEFAULT_MESSAGE}")
                 )

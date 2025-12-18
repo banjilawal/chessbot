@@ -353,7 +353,7 @@ class QueenValidator(Validator[Queen]):
                 return ValidationResult.failure(validation.exception)
             # Next check if team_quota is correct for a queen.
             team_quota = validation.payload
-            if team_quota != rank_spec.QUEEN.team_quota:
+            if team_quota != rank_spec.QUEEN.quota:
                 return ValidationResult.failure(
                     NotQueenQuotaException(f"{method}: {NotQueenQuotaException.DEFAULT_MESSAGE}")
                 )

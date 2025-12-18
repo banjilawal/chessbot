@@ -36,7 +36,7 @@ class Pawn(Rank):
             id: int = RankSpec.PAWN.id,
             name: str = RankSpec.PAWN.name,
             ransom: int = RankSpec.PAWN.ransom,
-            team_quota: int = RankSpec.PAWN.team_quota,
+            team_quota: int = RankSpec.PAWN.quota,
             designation: str = RankSpec.PAWN.designation,
             quadrants: list[Quadrant] = RankSpec.PAWN.quadrants,
             coord_service: CoordService = CoordService()
