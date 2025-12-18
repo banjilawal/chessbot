@@ -6,3 +6,90 @@ Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
+from typing import Optional
+
+from chess.catalog import Catalog
+from chess.system import Context
+
+
+class CatalogContext(Context[Catalog]):
+    """
+    # ROLE: Finder Filter
+
+    # RESPONSIBILITIES:
+    Provide a Catalog lookup with an attribute value to find Catalog entries with a matching attribute values.
+
+    # PARENT:
+        *   Context
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   designation (str)
+        *   ransom (int)
+        *   quota  (int)
+
+    # INHERITED ATTRIBUTES:
+        *   See Context class for inherited attributes.
+    """
+    _ransom: Optional[int]
+    _quota: Optional[int]
+    _designation: Optional[str]
+    
+    def __init__(
+            self,
+            ransom: Optional[int] = None,
+            quota: Optional[int] = None,
+            designation: Optional[str] = None,
+    ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   square (Optional[str])
+            *   designation (Optional[str])
+            *   color (Optional[Color])
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
+        super().__init__(id=None, name=None)
+        self._ransom = ransom
+        self._quota = quota
+        self._designation = designation
+    
+    @property
+    def ransom(self) -> Optional[int]:
+        return self._ransom
+    
+    @property
+    def quota(self) -> Optional[int]:
+        return self._quota
+    
+    @property
+    def designation(self) -> Optional[str]:
+        return self._designation
+    
+    def to_dict(self) -> dict:
+        """
+        # Convert the OrderContext object to a dictionary.
+
+        # PARAMETERS:
+        None
+
+        # Returns:
+        dict
+
+        # Raises:
+        None
+        """
+        return {
+            "quota": self._quota,
+            "ransom": self._ransom,
+            "designation": self._designation,
+        }

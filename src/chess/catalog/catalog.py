@@ -25,20 +25,14 @@ class Catalog(Enum):
     Enum
 
     # ATTRIBUTES:
-        *   id (int):           Identifier for the subclass.
-        *   designation (str):         Common designation of the rank.
-        *   designation (str):  Chess designation
-        *   ransom (int):       Value of ranks that can be captured.
-        *   team_quota  (int):  Number of instances on a team.
-        *   quadrants (List[Quadrant]):
+
     """
     
-    def __new__(cls, id: int, designation: str, team_quota: int, ransom: int, quadrants: List[Quadrant]):
+    def __new__(cls, designation: str, team_quota: int, ransom: int, quadrants: List[Quadrant]):
         """
         Factory method for creating new instances of Catalog enum.
         """
         obj = object.__new__(cls)
-        obj._id = id
         obj._designation = designation
         obj._team_quota = team_quota
         obj._ransom = ransom
@@ -46,24 +40,20 @@ class Catalog(Enum):
         
         return obj
     
-    PAWN = (1, "P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
-    BISHOP = (2, "B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
-    ROOK = (3, "C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
-    KNIGHT = (4,"N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
+    PAWN = ("P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
+    BISHOP = ("B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
+    ROOK = ("C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
+    KNIGHT = ("N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
     
     KING = (
-        5, "K", 1, 0,
+        "K", 1, 0,
         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
     )
     
     QUEEN = (
-        6, "Q", 1, 9,
+        "Q", 1, 9,
         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
     )
-    
-    @property
-    def id(self) -> int:
-        return self._id
     
     @property
     def designation(self) -> str:
