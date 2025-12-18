@@ -7,21 +7,14 @@ Created: 2025-09-11
 version: 1.0.0
 """
 
-from typing import List, Optional
+from typing import List
 
-from chess.agent import PlayerAgent, PlayerAgentService
 from chess.board import BoardService
-from chess.game import UniqueGameDataService
-from chess.team import Team, TeamService, UniqueTeamDataService
-from chess.system import (
-    Builder, BuildResult, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult,
-    id_emitter
-)
-
-from chess.arena import (
-    Arena, ArenaBuildFailedException, ArenaValidator
-)
-from chess.team.schema import TeamSchema
+from chess.schema import Schema
+from chess.team import Team, UniqueTeamDataService
+from chess.agent import PlayerAgent, PlayerAgentService
+from chess.arena import Arena, ArenaBuildFailedException
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ServiceValidator, id_emitter
 
 
 class ArenaBuilder(Builder[Arena]):
@@ -110,18 +103,18 @@ class ArenaBuilder(Builder[Arena]):
             black_team = black_team_build_result.payload
             if black_team != black_agent.current_team:
                 black_agent.team_assignments.push_unique_item(black_team)
-                
+            
             board_certification = service_validator.validate(board_service)
             if board_certification.failure():
                 return BuildResult.failure(board_certification.exception)
-    
+            
             return BuildResult.success(
                 payload=Arena(
                     id=id,
                     board=board_service,
                 )
             )
-      
+        
         # The flow should only get here if the logic did not route all the types of concrete Arenas.
         # In that case wrap the unhandled exception inside an ArenaBuildFailedException then, return
         # the exception chain inside a ValidationResult.
@@ -138,7 +131,7 @@ class ArenaBuilder(Builder[Arena]):
     def _build_arena_teams(
             cls,
             arena: Arena,
-            team_param_tuples: List[(PlayerAgent, TeamSchema)],
+            team_param_tuples: List[(PlayerAgent, Schema)],
     ) -> BuildResult[List[Team]]:
         method = "ArenaBuilder._build_teams"
         for param_tuple in team_param_tuples:

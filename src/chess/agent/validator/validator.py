@@ -76,7 +76,7 @@ class AgentValidator(Validator[PlayerAgent]):
         """
         method = "AgentValidator.validate"
         try:
-            # If candidate is validation no point continuing
+            # If candidate does not exist no point continuing
             if candidate is None:
                 return ValidationResult.failure(
                     NullAgentException(f"{method}: {NullAgentException.DEFAULT_MESSAGE}")

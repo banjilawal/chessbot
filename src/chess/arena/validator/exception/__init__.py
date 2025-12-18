@@ -13,5 +13,6 @@ version: 1.0.0
 None
 
 # Modules
+from .null import NullArenaException
 from .base import InvalidArenaException
-from .capacity import PlayingFieldOverCapacityException
+from .capacity import TooManyTeamsInArenaException

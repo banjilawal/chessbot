@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.piece import UniquePieceDataService
 from chess.schema import Schema, SchemaLookup
 from chess.agent import PlayerAgent, PlayerAgentService
-from chess.arena import Arena, ArenaService, PlayingFieldOverCapacityException
+from chess.arena import Arena, ArenaService, TooManyTeamsInArenaException
 from chess.team import (
     AddingDuplicateTeamException, Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException
 )
@@ -99,7 +99,7 @@ class TeamBuilder(Builder[Team]):
             # If there's already two teams in the arena you cannot build another one.
             if arena.team_service.size > 1:
                 return BuildResult.failure(
-                    PlayingFieldOverCapacityException(f"{method}: {PlayingFieldOverCapacityException.DEFAULT_MESSAGE}")
+                    TooManyTeamsInArenaException(f"{method}: {TooManyTeamsInArenaException.DEFAULT_MESSAGE}")
                 )
         
             # If no errors are detected build the Team object.
@@ -210,8 +210,8 @@ class TeamBuilder(Builder[Team]):
             # If the search gives a hit the Arena is probably full. Send an error in the InsertionResult.
             if search.is_success:
                 return InsertionResult.failure(
-                    PlayingFieldOverCapacityException(
-                        f"{method}: {PlayingFieldOverCapacityException.DEFAULT_MESSAGE}"
+                    TooManyTeamsInArenaException(
+                        f"{method}: {TooManyTeamsInArenaException.DEFAULT_MESSAGE}"
                     )
                 )
             # An empty search result is the happy path where the push occurs.

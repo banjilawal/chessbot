@@ -1,7 +1,7 @@
-# src/chess/game/context/validator/exception/flag/exception.py
+# src/chess/game/context/validator/exception/flag.py
 
 """
-Module: chess.game.context.validator.exception.flag.exception
+Module: chess.game.context.validator.exception.flag
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

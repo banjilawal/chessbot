@@ -1,106 +1,40 @@
 # src/chess/arena/exception.py
 
 """
-Module: chess.arena.exception
+Module: chess.game.arena.exception
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-10-01
 version: 1.0.0
-
-SCOPE:
------
-This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
-creation, coord_stack_validator, and manipulation of `Vector` objects.
-
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
-`Vector`, `VectorBuilder`, and `VectorValidator`
-
-THEME:
------
-* Granular, targeted error reporting
-* Wrapping exceptions
-
-**Design Concepts**:
-  1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
-      state, outcome, or behavior.
-
-PURPOSE:
--------
-1. Centralized error dictionary for the `Vector` graph.
-2. Fast debugging using highly granular rollback_exception messages and naming to
-    find the source.
-3. Providing understandable, consistent information about failures originating from
-    the `Vector` graph.
-4. Providing a clear distinction between errors related to `Vector` instances and
-    errors from Python, the Operating System or elsewhere in the `ChessBot` application.
-
-DEPENDENCIES:
-------------
-Requires base rollback_exception classes and constants from the core system:
-From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
-        `BuildFailedException`.
-
-CONTAINS:
---------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
-`NullVectorException`, `InvalidVectorException`, ).
 """
 
-from chess.system import (
-  BoundsException, ChessException, NullException, BuildFailedException, ValidationFailedException
-)
+from chess.system import ChessException
 
 __all__ = [
+  # ====================== ARENA EXCEPTION #======================#
   'ArenaException',
-
-#====================== ARENA VALIDATION EXCEPTIONS #======================#  
-  'NullArenaException',
-  'InvalidArenaException',
-
-#====================== ARENA BUILD EXCEPTIONS #======================#  
-  'ArenaBuildFailedException',
-  'PlayingFieldOverCapacityException',
-
-#====================== COLLECTION_ARENA EXCEPTIONS #======================#  
 ]
 
+
+# ====================== ARENA EXCEPTION #======================#
 class ArenaException(ChessException):
   """
-  Super class exceptions Class object raises organically. Do not use directly. Subclasses give
-  details useful for debugging. ClassException exists primarily to allow catching all class
-  exceptions.
+  # ROLE: Exception Wrapper, Catchall Exception
+
+  # RESPONSIBILITIES:
+  1.  Parent of exceptions raised by Arena objects.
+  2.  Catchall for conditions which are not covered by lower level Arena exceptions.
+
+  # PARENT:
+      *   ChessException
+
+  # PROVIDES:
+  None
+
+  # LOCAL ATTRIBUTES:
+  None
+
+  # INHERITED ATTRIBUTES:
+  None
   """
   ERROR_CODE = "ARENA_ERROR"
   DEFAULT_MESSAGE = "Arena raised an exception."
-
-
-#======================# ARENA VALIDATION EXCEPTIONS #======================#  
-class NullArenaException(ArenaException, NullException):
-  """Raised if an entity, method, or operation requires an arena but gets null instead."""
-  ERROR_CODE = "NULL_ARENA_ERROR"
-  DEFAULT_MESSAGE = "Arena cannot be validation"
-
-
-class InvalidArenaException(ArenaException, ValidationFailedException):
-  """
-  Raised by ArenaValidator if arena fails sanity checks. Exists primarily to
-  catch all exceptions raised validating an existing arena
-  """
-  ERROR_CODE = "ARENA_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Arena validation failed."
-
-
-#======================# ARENA BUILD EXCEPTIONS #======================#  
-class ArenaBuildFailedException(ArenaException, BuildFailedException):
-  """
-  Raised when ArenaBuilder crashed while building team_name new arena. Exists
-  primarily to catch all exceptions raised creating arenas.
-  """
-  ERROR_CODE = "ARENA_BUILD_FAILED_ERROR"
-  DEFAULT_MESSAGE = "Arena build failed."
-  
-  
-class PlayingFieldOverCapacityException(ArenaException, BoundsException):
-  """Raised when trying to have more than two teams in the arena."""
-  ERROR_CODE = "PLAYING_FIELD_OVER_CAPACITY_ERROR"
-  DEFAULT_MESSAGE = "Cannot have more than two teams in the arena."

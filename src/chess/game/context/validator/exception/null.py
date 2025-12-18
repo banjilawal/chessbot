@@ -1,7 +1,7 @@
-# src/chess/game/context/validator/exception/null/exception.py
+# src/chess/game/context/validator/exception/null.py
 
 """
-Module: chess.game.context.validator.exception.null.exception
+Module: chess.game.context.validator.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -29,7 +29,7 @@ class NullGameContextException(InvalidGameContextException, NullException):
         *   NullGameContextException
 
     # PROVIDES:
-    NullGameContextException
+    None
 
     # LOCAL ATTRIBUTES:
     None
