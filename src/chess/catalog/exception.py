@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.system import ChessException
+from chess.system.err import ChessException
 
 __all__ = [
     "CatalogException",

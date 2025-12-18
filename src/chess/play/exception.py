@@ -1,7 +1,7 @@
-# src/chess/game/exception.py
+# src/chess/play/exception.py
 
 """
-Module: chess.game.exception
+Module: chess.play.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -10,17 +10,17 @@ version: 1.0.0
 from chess.system.err import ChessException
 
 __all__ = [
-    "GameException",
+    "PlayException",
 ]
 
 
-class GameException(ChessException):
+class PlayException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by Game objects.
-    2.  Catchall for conditions which are not covered by lower level Game exceptions.
+    1.  Parent of exceptions raised by Play objects.
+    2.  Catchall for conditions which are not covered by lower level Play exceptions.
 
     # PARENT:
         *   ChessException
@@ -34,5 +34,6 @@ class GameException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_ERROR"
-    DEFAULT_MESSAGE = "Game raised an exception."
+    ERROR_CODE = "PLAY_ERROR"
+    DEFAULT_MESSAGE = "Play raised an exception."
+
