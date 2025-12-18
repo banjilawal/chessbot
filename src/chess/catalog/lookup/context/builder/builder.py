@@ -7,15 +7,23 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
+from typing import Optional
 
-class OrderContextBuilder(Builder[OrderContext]):
+from chess.catalog import (
+    CatalogContext, CatalogContextBuildFailedException, NoCatalogContextFlagException,
+    TooManyCatalogContextFlagsException
+)
+from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter, NumberValidator
+
+
+class CatalogContextBuilder(Builder[CatalogContext]):
     """
      # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
-     1.  Produce OrderContext instances whose integrity is always guaranteed.
-     2.  Manage construction of OrderContext instances that can be used safely by the client.
-     3.  Ensure params for OrderContext creation have met the application's safety contract.
+     1.  Produce CatalogContext instances whose integrity is always guaranteed.
+     2.  Manage construction of CatalogContext instances that can be used safely by the client.
+     3.  Ensure params for CatalogContext creation have met the application's safety contract.
      4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      # PARENT:
@@ -35,86 +43,86 @@ class OrderContextBuilder(Builder[OrderContext]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            square: Optional[str] = None,
-            color: Optional[GameColor] = None,
+            quota: Optional[int] = None,
+            ransom: Optional[int] = None,
             designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
-            color_validator: GameColorValidator = GameColorValidator(),
-    ) -> BuildResult[OrderContext]:
+            number_validator: NumberValidator = NumberValidator(),
+    ) -> BuildResult[CatalogContext]:
         """
         # Action:
-            1.  Confirm that only one in the (designation, color) tuple is not null.
+            1.  Confirm that only one in the (designation, quota, ransom) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service or validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an OrderContext and return in a BuildResult.
+            4.  On success Build an CatalogContext and return in a BuildResult.
 
         # Parameters:
         Only one these must be provided:
-            *   square (Optional[str])
+            *   quota (Optional[str])
             *   designation (Optional[str])
-            *   color (Optional[GameColor])
+            *   ransom (Optional[GameRansom])
 
         These Parameters must be provided:
-            *   color_validator (GameColorValidator)
+            *   number_validator (NumberValidator)
             *   identity_service (IdentityService)
 
         # Returns:
-        BuildResult[OrderContext] containing either:
-            - On success: OrderContext in the payload.
+        BuildResult[CatalogContext] containing either:
+            - On success: CatalogContext in the payload.
             - On failure: Exception.
 
         # Raises:
-            *   NoOrderContextFlagException
-            *   TooManyOrderContextFlagsException
-            *   OrderContextBuildFailedException
+            *   NoCatalogContextFlagException
+            *   TooManyCatalogContextFlagsException
+            *   CatalogContextBuildFailedException
         """
-        method = "OrderContextBuilder.build"
+        method = "CatalogContextBuilder.build"
         try:
             # Get how many optional parameters are not null. One param needs to be not-null
-            params = [designation, square, color]
+            params = [designation, quota, ransom]
             param_count = sum(bool(p) for p in params)
             
-            # Cannot search for a BattleOrder object if no attribute value is provided for a hit.
+            # Cannot search for a BattleCatalog object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoOrderContextFlagException(f"{method}: {NoOrderContextFlagException.DEFAULT_MESSAGE}")
+                    NoCatalogContextFlagException(f"{method}: {NoCatalogContextFlagException.DEFAULT_MESSAGE}")
                 )
             # Only one property-value pair is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyOrderContextFlagsException(f"{method}: {TooManyOrderContextFlagsException}")
+                    TooManyCatalogContextFlagsException(f"{method}: {TooManyCatalogContextFlagsException}")
                 )
-            # After the verifying the correct number of flags are set follow the appropriate BattleOrder build flow.
+            # After the verifying the correct number of flags are set follow the appropriate BattleCatalog build flow.
             
             # designation flag enabled, build flow.
             if designation is not None:
                 validation = identity_service.validate_name(candidate=designation)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an name_BattleOrder_context in the BuildResult.
-                return BuildResult.success(OrderContext(designation=designation))
+                # On validation success return an name_BattleCatalog_context in the BuildResult.
+                return BuildResult.success(CatalogContext(designation=designation))
             
-            # square flag enabled, build flow.
-            if square is not None:
-                validation = identity_service.validate_name(candidate=square)
+            # quota flag enabled, build flow.
+            if quota is not None:
+                validation = number_validator.validate(candidate=quota)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an name_BattleOrder_context in the BuildResult.
-                return BuildResult.success(OrderContext(square=square))
+                # On validation success return an name_BattleCatalog_context in the BuildResult.
+                return BuildResult.success(CatalogContext(quota=quota))
             
-            # GameColor flag enabled, build flow.
-            if color is not None:
-                validation = color_validator.validate(candidate=GameColor)
+            # GameRansom flag enabled, build flow.
+            if ransom is not None:
+                validation = number_validator.validate(candidate=ransom)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an GameColor_BattleOrder_context in the BuildResult.
-                return BuildResult.success(OrderContext(color=color))
+                # On validation success return an GameRansom_BattleCatalog_context in the BuildResult.
+                return BuildResult.success(CatalogContext(ransom=ransom))
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception in a
-        # OrderContextBuildFailedException then, send the exception chain a BuildResult.failure.
+        # CatalogContextBuildFailedException then, send the exception chain a BuildResult.failure.
         except Exception as ex:
             return BuildResult.failure(
-                OrderContextBuildFailedException(
-                    ex=ex, message=f"{method}: {OrderContextBuildFailedException.DEFAULT_MESSAGE}"
+                CatalogContextBuildFailedException(
+                    ex=ex, message=f"{method}: {CatalogContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
