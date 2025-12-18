@@ -1,7 +1,7 @@
-# src/chess/team/finder/finder.py
+# src/chess/team/context/finder/finder.py
 
 """
-Module: chess.team.finder.finderer
+Module: chess.team.context.finder.finder
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -9,12 +9,11 @@ version: 1.0.0
 
 from typing import List
 
-from chess.agent import PlayerAgent
 from chess.arena import Arena
+from chess.agent import PlayerAgent
 from chess.system import GameColor, LoggingLevelRouter, Finder, SearchResult
 from chess.team import (
-    Team, TeamContext, TeamContextValidator, TeamFinderOperationFailedException,
-    TeamSearchDatasetNullException
+    Team, TeamContext, TeamContextValidator, TeamFinderOperationFailedException, TeamSearchDatasetNullException
 )
 
 
@@ -83,19 +82,19 @@ class TeamFinder(Finder[Team]):
                 return SearchResult.failure(validation_result.exception)
             # After context is verified select the finder method based on the which flag is enabled.
             
-            # Entry point into findering by team's id.
+            # Entry point into finding by team's id.
             if context.id is not None:
                 return cls._find_by_id(dataset, context.id)
-            # Entry point into findering by team's designation.
+            # Entry point into finding by team's designation.
             if context.name is not None:
                 return cls._find_by_name(dataset=dataset, name=context.name)
-            # Entry point into findering by arena team is playing in.
+            # Entry point into finding by arena team is playing in.
             if context.arena is not None:
                 return cls._find_by_arena(dataset=dataset, arena=context.arena)
-            # Entry point into findering by team's player_agent.
+            # Entry point into finding by team's player_agent.
             if context.player_agent is not None:
                 return cls._find_by_player_agent(dataset, context.player_agent)
-            # Entry point into findering by team's color.
+            # Entry point into finding by team's color.
             if context.color is not None:
                 return cls._find_by_color(dataset=dataset, team=context.color)
 
@@ -139,6 +138,7 @@ class TeamFinder(Finder[Team]):
             # inconsistency later.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
+            
         # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -176,6 +176,7 @@ class TeamFinder(Finder[Team]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
+            
         except Exception as ex:
             # Finally, if there is an unhandled exception Wrap a TeamFinderOperationFailedException exception around it
             # then return the exceptions inside a BuildResult.
@@ -212,6 +213,7 @@ class TeamFinder(Finder[Team]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
+            
         # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -248,6 +250,7 @@ class TeamFinder(Finder[Team]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
+            
         # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -287,6 +290,7 @@ class TeamFinder(Finder[Team]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
+
         # Finally, if there is an unhandled exception Wrap a TeamFinderOperationFailedException exception around it
         # then return the exceptions inside a BuildResult.
         except Exception as ex:

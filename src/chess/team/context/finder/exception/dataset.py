@@ -1,7 +1,7 @@
-# src/chess/team/finder/exception/dataset.py
+# src/chess/team/context/finder/exception/dataset.py
 
 """
-Module: chess.team.finder.exception.dataset
+Module: chess.team.context.finder.exception.dataset
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

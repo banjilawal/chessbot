@@ -28,9 +28,7 @@ class TeamContextService(ContextService[TeamContext]):
         *   ContextService
 
     # PROVIDES:
-        *   finder() -> TeamFinder
-        *   builder() -> TeamContextBuilder
-        *   validator() -> TeamContextValidator
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -38,11 +36,11 @@ class TeamContextService(ContextService[TeamContext]):
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.
     """
-    DEFAULT_NAME = "TeamContextService"
+    SERVICE_NAME = "TeamContextService"
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: TeamFinder = TeamFinder(),
             builder: TeamContextBuilder = TeamContextBuilder(),
@@ -53,7 +51,7 @@ class TeamContextService(ContextService[TeamContext]):
         Constructor
 
         # Parameters:
-            *   designation (str): Default value - SERVICE_NAME
+            *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (TeamFinder): Default value - TeamFinder()
             *   builder (TeamContextBuilder): Default value - TeamContextBuilder()
