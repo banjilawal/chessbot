@@ -10,9 +10,10 @@ version: 1.0.0
 # =========== ARENA.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .team import *
+from player import *
+
 
 # Modules
 from .null import NullArenaException
 from .base import InvalidArenaException
-from .capacity import TooManyTeamsInArenaException
