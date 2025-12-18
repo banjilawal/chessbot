@@ -1,9 +1,9 @@
-# src/chess/team/order/black.py
+# src/chess/formation/order.py
 
 """
-Module: chess.team.order.black
+Module: chess.formation.order
 Author: Banji Lawal
-Created: 2025-10-06
+Created: 2025-10-09
 version: 1.0.0
 """
 
@@ -15,7 +15,7 @@ from chess.system import GameColor
 
 class BattleOrder(Enum):
     """
-    # ROLE: Configuration Table, Metadata
+    # ROLE: Build Configuration Table, Schema, Metadata Set
 
     # RESPONSIBILITIES:
     1.  Provides table of metadata used for building Piece objects.
@@ -27,10 +27,14 @@ class BattleOrder(Enum):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   square (str)
+        *   color (GameColor)
+        *   designation (str)
+        *   roster_number (int)
+        *   rank_spec (RankSpec)
 
     # INHERITED ATTRIBUTES:
-    None
+        * name (str) -->  Name give to each Enum entry.
     """
     def __new__(
             cls,
@@ -86,20 +90,25 @@ class BattleOrder(Enum):
     
     @property
     def designation(self) -> str:
+        """Common chess name of the Piece."""
         return self._designation
     
     @property
     def color(self) -> GameColor:
+        """Matches the Team's color"""
         return self._color
     
     @property
     def square(self) -> str:
+        """Name of the Square a piece makes its opening move from."""
         return self._square
     
     @property
     def rank_spec(self) -> RankSpec:
+        """Configuration entry for the Piece's rank."""
         return self._rank_spec
     
     @property
     def roster_number(self) -> int:
+        """Number assigned to the Piece by its Team"""
         return self._roster_number

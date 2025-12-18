@@ -1,7 +1,7 @@
-# src/chess/team/schema/schema.py
+# src/chess/schema/schema.py
 
 """
-Module: chess.team.schema.schema
+Module: chess.schema.schema
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -19,13 +19,11 @@ from chess.formation import BattleOrder, BattleOrderLookup, OrderContext
 
 class Schema(Enum):
     """
-    # ROLE: Schema, Configuration Settings
-  
+    # ROLE: Build Configuration Table, Schema, Metadata Set
+
     # RESPONSIBILITIES:
-    1.  Unify static metadata about a Team object.
-    2.  Name and color details for turn synchronization.
-    3.  Details about a Team's deployment and advance on a Board.
-    
+    1.  Provides table of metadata used for building Team objects.
+
     # PARENT:
         *   Enum
   
@@ -33,15 +31,14 @@ class Schema(Enum):
     None
   
     # LOCAL ATTRIBUTES:
-        *   designation (str)
         *   color (GameColor)
         *   rank_row (int)
         *   pawn_row (int)
         *   advancing_step (Scalar)
         *   home_quadrant (Quadrant)
-    
+
     # INHERITED ATTRIBUTES:
-    None
+        * name (str) -->  Name give to each Enum entry.
     """
     def __new__(
             cls,
@@ -59,10 +56,6 @@ class Schema(Enum):
     
     WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N,)
     BLACK = (GameColor.BLACK, (ROW_SIZE - 1), Scalar(-1), Quadrant.S,)
-    
-    @property
-    def letter(self) -> str:
-        return self.name[0]
     
     @property
     def color(self) -> GameColor:
@@ -83,10 +76,6 @@ class Schema(Enum):
     @property
     def pawn_row(self) -> int:
         return self._rank_row + self._advancing_step.value
-    
-    # @property
-    # def enemy_schema(self) -> Schema:
-    #     return Schema.BLACK if self == Schema.WHITE else Schema.WHITE
     
     @property
     def battle_order(self) -> SearchResult[List[BattleOrder]]:

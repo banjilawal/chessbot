@@ -1,18 +1,18 @@
-# src/chess/schema/lookup/__init__.py
+# src/chess/schema/lookup/exception.__init__.py
 
 """
-Module: chess.schema.lookup.__init__
+Module: chess.schema.lookup.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.LOOKUP PACKAGE CONTENTS ===========#
+# =========== SCHEMA.LOOKUP.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .context import *
+None
 
 
 # Modules
-from .base import TeamSchemaLookupException
-from .operation import TeamSchemaLookupFailedException
+from .base import SchemaLookupException
+from .failure import SchemaLookupFailedException

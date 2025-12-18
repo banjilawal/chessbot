@@ -22,9 +22,8 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
 
     # RESPONSIBILITIES:
     1.  Lookup microservice API for mapping metadata values to BattleOrder configurations.
-    2.  Encapsulates integrity assurance logic for lookup contexts and metadata enums in an extendable, maintainable
-        module,
-    3.  Authoritative single source of truth for permissible BattleOrder configurations.
+    2.  Encapsulates integrity assurance logic for BattleOrder lookup operations.
+
 
     # PARENT:
         *   EntityLookup
@@ -73,6 +72,11 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
         return cast(OrderContextValidator, self.context_validator)
     
     @property
+    def allowed_names(self) -> List[str]:
+        """Returns a list of all permissible schema names in upper case."""
+        return [order.name.upper() for order in BattleOrder]
+    
+    @property
     def allowed_colors(self) -> List[GameColor]:
         """Returns a list of all permissible order colors."""
         return [member.color for member in BattleOrder]
@@ -96,14 +100,11 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     ) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  BattleOrder is an Enum to follow the EnumLookup contract a default dataset of List[BattleOrder] has been set.
-            It's not used anywhere. even if a dataset argument is passed.
-        2.  Use context_validator to certify the provided context.
-        3.  Context attribute routes the search. Attribute value is the search target.
-        4.  The outcome of the search is sent back to the caller in a SearchResult object.
+        1.  Certify the provided context with the class method's validator param.
+        2.  If the context validation fails return the exception in a validation result. Otherwise, return
+            the configuration entries which matched the context.
 
         # Parameters:
-            *   dataset (List[BattleOrder]):
             *   context: OrderContext
             *   context_validator: OrderContextValidator
 
@@ -114,6 +115,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
+            *   OrderLookupFailedException
             *   BattleOrderLookupException
         """
         method = "BattleOrderLookup.find"
@@ -150,7 +152,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     def _lookup_by_designation(cls, designation: str) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  Get the BattleOrder which matches the target designation.
+        1.  Get any BattleOrder which matches the target designation.
 
         # Parameters:
             *   designation (str)
@@ -187,7 +189,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     def _lookup_by_square(cls, name: str) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  Get the BattleOrder which matches the target designation.
+        1.  Get anyBattleOrder which matches the square's name.
 
         # Parameters:
             *   name (str)
@@ -199,7 +201,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   OrderDesignationBoundsException
+            *   OrderSquareBoundsException
             *   BattleOrderLookupFailedException
         """
         method = "BattleOrderLookup._find_by_square"
@@ -224,7 +226,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     def _lookup_by_color(cls, color: GameColor) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  Get the BattleOrder which matches the target color.
+        1.  Get any BattleOrder which matches the target color.
 
         # Parameters:
             *   color (BattleOrderColor)

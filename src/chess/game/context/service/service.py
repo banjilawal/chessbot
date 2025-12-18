@@ -51,7 +51,7 @@ class GameContextService(ContextService[GameContext]):
         Constructor
 
         # Parameters:
-            *   designation (str): Default value - DEFAULT_NAME
+            *   designation (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (GameFinder): Default value - GameFinder()
             *   builder (GameContextBuilder): Default value - GameContextBuilder()

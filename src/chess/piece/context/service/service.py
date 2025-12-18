@@ -48,7 +48,7 @@ class PieceContextService(ContextService[PieceContext]):
         Constructor
 
         # Parameters:
-            *   designation (str): Default value - DEFAULT_NAME
+            *   designation (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (PieceFinder): Default value -PieceFinder()
             *   builder (PieceContextBuilder): Default value -PieceContextBuilder()

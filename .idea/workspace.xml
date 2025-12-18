@@ -6,10 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service/data/unique/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/lookup/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/lookup/exception/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/formation/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/lookup/lookup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/formation/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/context/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/service/data/unique/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/context/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/context/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/exception/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/exception/failure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/lookup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -808,7 +825,7 @@
       <workItem from="1765421010085" duration="26100000" />
       <workItem from="1765806987610" duration="19396000" />
       <workItem from="1765869093901" duration="64033000" />
-      <workItem from="1765973857782" duration="39969000" />
+      <workItem from="1765973857782" duration="45891000" />
     </task>
     <servers />
   </component>

@@ -7,29 +7,27 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import ServiceException
+
 from chess.formation import BattleOrderException
 
 
 __all__ = [
-    # ======================# TEAM_SCHEMA_LOOKUP EXCEPTION #======================#
+    # ======================# BATTLE_ORDER_LOOKUP EXCEPTION #======================#
     "BattleOrderLookupException",
 ]
 
 
-# ======================# TEAM_SCHEMA_LOOKUP EXCEPTION #======================#
-class BattleOrderLookupException(BattleOrderException, ServiceException):
+# ======================# BATTLE_ORDER_LOOKUP EXCEPTION #======================#
+class BattleOrderLookupException(BattleOrderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by BattleOrderLookup objects.
-    2.  Raised when no specific exception exists for the error interrupting BattleOrderLookup's
-        processes from their normal flows.
+    2.  Wraps unhandled exceptions that hit the try-finally block of a BattleOrderLookup method.
 
     # PARENT:
         *   BattleOrderException
-        *   ServiceException
 
     # PROVIDES:
     None
@@ -40,5 +38,5 @@ class BattleOrderLookupException(BattleOrderException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_LOOKUP_ERROR"
-    DEFAULT_MESSAGE = "TeamLookup raised an exception."
+    ERROR_CODE = "BATTLE_ORDER_LOOKUP_ERROR"
+    DEFAULT_MESSAGE = "BattleOrderLookup raised an exception."

@@ -1,35 +1,32 @@
-# src/chess/team/schema/lookup/exception/base.py
+# src/chess/schema/lookup/exception.base.py
 
 """
-Module: chess.team.schema.lookup.exception.base
+Module: chess.schema.lookup.exception.base
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import ServiceException
-from chess.team import TeamSchemaException
 
+from chess.schema import SchemaException
 
 __all__ = [
-    # ======================# TEAM_SCHEMA_LOOKUP EXCEPTION #======================#
-    "TeamSchemaLookupException",
+    # ======================# SCHEMA_LOOKUP EXCEPTION #======================#
+    "SchemaLookupException",
 ]
 
 
-# ======================# TEAM_SCHEMA_LOOKUP EXCEPTION #======================#
-class TeamSchemaLookupException(TeamSchemaException, ServiceException):
+# ======================# SCHEMA_LOOKUP EXCEPTION #======================#
+class SchemaLookupException(SchemaException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by TeamSchemaLookup objects.
-    2.  Raised when no specific exception exists for the error interrupting TeamSchemaLookup's
-        processes from their normal flows.
+    1.  Parent of exceptions raised by SchemaLookup objects.
+    2.  Wraps unhandled exceptions that hit the try-finally block of a SchemaLookup method.
 
     # PARENT:
-        *   TeamSchemaException
-        *   ServiceException
+        *   SchemaException
 
     # PROVIDES:
     None
@@ -40,5 +37,5 @@ class TeamSchemaLookupException(TeamSchemaException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_LOOKUP_ERROR"
-    DEFAULT_MESSAGE = "TeamLookup raised an exception."
+    ERROR_CODE = "SCHEMA_LOOKUP_ERROR"
+    DEFAULT_MESSAGE = "SchemaLookup raised an exception."

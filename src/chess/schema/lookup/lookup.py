@@ -11,9 +11,9 @@ from typing import List, cast
 
 from chess.schema import (
     SchemaColorBoundsException, SchemaNameBoundsException, SchemaContext, SchemaContextBuilder,
-    SchemaContextValidator, SchemaLookupFailedException, SchemaValidator, Schema
+    SchemaContextValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
 )
-from chess.system import EnumLookup, GameColor, LoggingLevelRouter, Result, SearchResult, id_emitter
+from chess.system import EnumLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class SchemaLookup(EnumLookup[SchemaContext]):
@@ -21,30 +21,27 @@ class SchemaLookup(EnumLookup[SchemaContext]):
     # ROLE: EnumLookup, Utility
 
     # RESPONSIBILITIES:
-    1.  Public facing Schema State Machine microservice lookup API.
-    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    3.  Is authoritative, single source of truth for Schema state by providing single entry and exit points to Schema
-        lifecycle.
+    1.  Lookup microservice API for mapping metadata values to Schema configurations.
+    2.  Encapsulates integrity assurance logic for Schema lookup operations.
+
 
     # PARENT:
-        *   EntityLookup
+        *   EnumLookup
 
     # PROVIDES:
-        *   allowed_colors() -> List[GameColor]:
-        *   allowed_names() -> List[str]:
-        *   enemy_schema(schema: Schema) -> Result[Schema]:
+    None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityLookup for inherited attributes.
+        *   See EnumLookup for inherited attributes.
     """
-    DEFAULT_NAME = "SchemaLookup"
+    SERVICE_NAME = "SchemaLookup"
     
     def lookup(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.lookup_id,
             enum_validator: SchemaValidator = SchemaValidator(),
             context_builder: SchemaContextBuilder = SchemaContextBuilder(),
@@ -58,17 +55,19 @@ class SchemaLookup(EnumLookup[SchemaContext]):
             context_validator=context_validator
         )
 
-    
     @property
     def schema_validator(self) -> SchemaValidator:
+        """Return an SchemaValidator."""
         return cast(SchemaValidator, self.enum_validator)
     
     @property
     def context_builder(self) -> SchemaContextBuilder:
+        """Return an SchemaContextBuilder."""
         return cast(SchemaContextBuilder, self.context_builder)
     
     @property
     def context_validator(self) -> SchemaContextValidator:
+        """Return an SchemaContextValidator."""
         return cast(SchemaContextValidator, self.context_validator)
     
     @property
@@ -90,11 +89,9 @@ class SchemaLookup(EnumLookup[SchemaContext]):
     ) -> SearchResult[List[Schema]]:
         """
         # Action:
-        1.  Schema is an Enum to follow the Lookup contract a default dataset of List[Schema] has been set.
-            It's not used anywhere. even if a dataset argument is passed.
-        2.  Use context_validator to certify the provided context.
-        3.  Context attribute routes the search. Attribute value is the search target.
-        4.  The outcome of the search is sent back to the caller in a SearchResult object.
+        1.  Certify the provided context with the class method's validator param.
+        2.  If the context validation fails return the exception in a validation result. Otherwise, return
+            the configuration entries which matched the context.
 
         # Parameters:
             *   context: SchemaContext
@@ -123,12 +120,17 @@ class SchemaLookup(EnumLookup[SchemaContext]):
             # Entry point into searching by color value.
             if context.color is not None:
                 return cls._lookup_by_color(color=context.color)
+            
+            # Failsafe if any context cases was missed
+            return SearchResult.failure(
+                SchemaLookupFailedException(f"{method}: {SchemaLookupFailedException.DEFAULT_MESSAGE}")
+            )
 
-        # Finally, if some exception is not handled by the checks wrap it inside a
-        # SchemaLookupFailedException then, return the exception chain inside a SearchResult.
+        # Finally, if some exception is not handled by the checks wrap it inside a  SchemaLookupException then,
+        # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SchemaLookupFailedException(ex=ex, message=f"{method}: {SchemaLookupFailedException.DEFAULT_MESSAGE}")
+                SchemaLookupException(ex=ex, message=f"{method}: {SchemaLookupException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -136,7 +138,7 @@ class SchemaLookup(EnumLookup[SchemaContext]):
     def _lookup_by_name(cls, name: str) -> SearchResult[List[Schema]]:
         """
         # Action:
-        1.  Get the Schema which matches the target name.
+        1.  Get any Schema which matches the target name.
 
         # Parameters:
             *   name (str)
@@ -161,6 +163,7 @@ class SchemaLookup(EnumLookup[SchemaContext]):
             return SearchResult.failure(
                 SchemaColorBoundsException(f"{method}: {SchemaNameBoundsException.DEFAULT_MESSAGE}")
             )
+        
         # Finally, if some exception is not handled by the checks wrap it inside a
         # SchemaLookupFailedException then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -173,7 +176,7 @@ class SchemaLookup(EnumLookup[SchemaContext]):
     def _lookup_by_color(cls, color: GameColor) -> SearchResult[List[Schema]]:
         """
         # Action:
-        1.  Get the Schema which matches the target color.
+        1.  Get any Schema which matches the target color.
 
         # Parameters:
             *   color (GameColor)
@@ -198,6 +201,7 @@ class SchemaLookup(EnumLookup[SchemaContext]):
             return SearchResult.failure(
                 SchemaColorBoundsException(f"{method}: {SchemaNameBoundsException.DEFAULT_MESSAGE}")
             )
+        
         # Finally, if some exception is not handled by the checks wrap it inside a
         # SchemaLookupFailedException then, return the exception chain inside a SearchResult.
         except Exception as ex:
