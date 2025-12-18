@@ -8,15 +8,30 @@ version: 1.0.0
 """
 
 from enum import Enum
-from typing import List, Optional
 
-from chess.piece import Piece
 from chess.rank import RankSpec
-from chess.square import Square
 from chess.system import GameColor
 
 
 class BattleOrder(Enum):
+    """
+    # ROLE: Configuration Table, Metadata
+
+    # RESPONSIBILITIES:
+    1.  Provides table of metadata used for building Piece objects.
+
+    # PARENT:
+        *   Enum
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     def __new__(
             cls,
             square: str,

@@ -11,10 +11,9 @@ from typing import List, cast
 
 from chess.formation import (
     OrderColorBoundsException, OrderContext, OrderContextBuilder, OrderContextValidator, BattleOrderLookupException,
-    BattleOrderValidator,
-    BattleOrder, OrderLookupFailedException, OrderNameBoundsException, OrderSquareBoundsException
+    BattleOrderValidator, BattleOrder, OrderLookupFailedException, OrderNameBoundsException, OrderSquareBoundsException
 )
-from chess.system import EnumLookup, GameColor, LoggingLevelRouter, Result, SearchResult, id_emitter
+from chess.system import EnumLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class BattleOrderLookup(EnumLookup[OrderContext]):
@@ -22,54 +21,55 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     # ROLE: EnumLookup, Utility
 
     # RESPONSIBILITIES:
-    1.  Public facing Order State Machine microlookup API.
-    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    3.  Is authoritative, single source of truth for Order state by providing single entry and exit points to Order
-        lifecycle.
+    1.  Lookup microservice API for mapping metadata values to BattleOrder configurations.
+    2.  Encapsulates integrity assurance logic for lookup contexts and metadata enums in an extendable, maintainable
+        module,
+    3.  Authoritative single source of truth for permissible BattleOrder configurations.
 
     # PARENT:
         *   EntityLookup
 
     # PROVIDES:
-        *   allowed_colors() -> List[GameColor]:
-        *   allowed_designations() -> List[str]:
-        *   enemy_order(order: BattleOrder) -> Result[BattleOrder]:
+    None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityLookup for inherited attributes.
+        *   See EnumLookup for inherited attributes.
     """
-    DEFAULT_DESIGNATION = "BattleOrderLookup"
+    DEFAULT_NAME = "BattleOrderLookup"
     _order_validator: BattleOrderValidator
     
     def __init__(
             self,
-            designation: str = DEFAULT_DESIGNATION,
+            name: str = DEFAULT_NAME,
             id: int = id_emitter.lookup_id,
             context_builder: OrderContextBuilder = OrderContextBuilder(),
-            order_validator: BattleOrderValidator = BattleOrderValidator(),
+            enum_validator: BattleOrderValidator = BattleOrderValidator(),
             context_validator: OrderContextValidator = OrderContextValidator(),
     ):
         super().__init__(
             id=id, 
-            designation=designation, 
-            enum_validator=order_validator, 
+            name=name,
+            enum_validator=enum_validator,
             context_builder=context_builder, 
             context_validator=context_validator
         )
     
     @property
     def order_validator(self) -> BattleOrderValidator:
+        """Return an BattleOrderValidator."""
         return cast(BattleOrderValidator, self.enum_validator)
     
     @property
     def order_context_builder(self) -> OrderContextBuilder:
+        """Return an OrderContextBuilder."""
         return cast(OrderContextBuilder, self.context_builder)
     
     @property
     def order_context_validator(self) -> OrderContextValidator:
+        """Return an OrderContextValidator."""
         return cast(OrderContextValidator, self.context_validator)
     
     @property
@@ -84,6 +84,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     
     @property
     def allowed_squares(self) -> List[str]:
+        """Returns the names of squares Pieces make their opening move from."""
         return [member.square.upper() for member in BattleOrder]
     
     @classmethod
@@ -132,6 +133,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
             # Entry point into searching by color value.
             if context.color is not None:
                 return cls._lookup_by_color(color=context.color)
+        
             # Failsafe if any context cases was missed
             return SearchResult.failure(
                 OrderLookupFailedException(f"{method}: {OrderLookupFailedException.DEFAULT_MESSAGE}")
@@ -165,9 +167,8 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
         """
         method = "BattleOrderLookup._find_by_designation"
         try:
-            matches = [order for order in BattleOrder if order.designation.upper == designation.upper()]
-            if len(matches) == 0:
-                return SearchResult.empty()
+            matches = [order for order in BattleOrder if order.designation.upper() == designation.upper()]
+            # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
             # If a match is not found return an exception. It's important to know if no order has that designation.
@@ -204,13 +205,12 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
         method = "BattleOrderLookup._find_by_square"
         try:
             matches = [order for order in BattleOrder if order.square.upper() == name.upper()]
-            if len(matches) == 0:
-                return SearchResult.empty()
+            # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. Its important to know if no order has that designation.
+            # If a match is not found return an exception. It's important to know if no order has that square.
             return SearchResult.failure(
-                OrderSquareBoundsException(f"{method}: {OrderSquareBoundsException.DEFAULT_MESSAGE}")
+                OrderColorBoundsException(f"{method}: {OrderSquareBoundsException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
         # return the exception chain inside a SearchResult.
@@ -242,11 +242,10 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
         method = "BattleOrderLookup._find_by_color"
         try:
             matches = [order for order in BattleOrder if order.color == color]
-            if len(matches) == 0:
-                return SearchResult.empty()
+            # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. Its important to know if no order has that designation.
+            # If a match is not found return an exception. It's important to know if no order has that color.
             return SearchResult.failure(
                 OrderColorBoundsException(f"{method}: {OrderColorBoundsException.DEFAULT_MESSAGE}")
             )

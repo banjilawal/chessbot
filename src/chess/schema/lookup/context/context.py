@@ -25,10 +25,10 @@ class SchemaContext(Context[Schema]):
         *   Context
 
     # PROVIDES:
-        *   SchemaContext
+    None
 
     # LOCAL ATTRIBUTES:
-        *   color (Optional[ColorColor])
+        *   color (Optional[GameColor])
 
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
@@ -76,6 +76,6 @@ class SchemaContext(Context[Schema]):
         None
         """
         return {
-            "designation": self.name,
+            "name": self.name,
             "color": self._color,
         }
