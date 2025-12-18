@@ -1,7 +1,7 @@
-# src/chess/arena/validator/exception/team/many.py
+# src/chess/arena/validator/exception/team/single.py
 
 """
-Module: chess.game.arena.validator.exception.team.many
+Module: chess.game.arena.validator.exception.team.single
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -12,21 +12,21 @@ from chess.arena import InvalidArenaException
 
 __all__ = [
     # ======================# NULL ARENA EXCEPTION #======================#
-    "ToManyTeamsInArenaException",
+    "SingleTeamInArenaException",
 ]
 
 
 # ======================# NULL ARENA EXCEPTION #======================#
-class ToManyTeamsInArenaException(InvalidArenaException, BoundsException):
+class SingleTeamInArenaException(InvalidArenaException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an Arena's UniqueDataService instance contains more than two teams.
+    1.  Raised if an Arena's UniqueDataService instance contains only one team.
 
     # PARENT:
         *   InvalidArenaException
-        *   ToManyTeamsInArenaException
+        *   SingleTeamInArenaException
 
     # PROVIDES:
     None
@@ -37,8 +37,8 @@ class ToManyTeamsInArenaException(InvalidArenaException, BoundsException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TO_MANY_TEAMS_IN_ARENA_ERROR"
+    ERROR_CODE = "SINGLE_TEAM_IN_ARENA_ERROR"
     DEFAULT_MESSAGE = (
-        "Arena's UniqueTeamDataService contains more than two teams. Only two teams are "
-        "allowed in an arena. A game cannot be played with more than two teams."
+        "Arena's UniqueTeamDataService contains only one team. A game cannot be played without only "
+        "one team in the arena."
     )
