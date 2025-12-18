@@ -13,8 +13,8 @@ from chess.agent import PlayerAgentService
 from chess.arena import ArenaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
-    InvalidTeamContextException, NoTeamContextFlagsException, NullTeamContextException, TeamContext, Team,
-    TeamValidator, TooManyTeamContextFlagsException
+    InvalidTeamContextException, NoTeamContextFlagsException, NullTeamContextException, TeamContext,
+    TooManyTeamContextFlagsException
 )
 
 
