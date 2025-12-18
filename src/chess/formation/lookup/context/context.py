@@ -92,5 +92,5 @@ class OrderContext(Context[BattleOrder]):
         return {
             "color": self._color,
             "square": self._square,
-            "designation": self.designation,
+            "designation": self._designation,
         }
