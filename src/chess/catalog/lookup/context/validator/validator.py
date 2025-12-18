@@ -99,6 +99,14 @@ class CatalogContextValidator(Validator[CatalogContext]):
                 )
             # When structure tests are passed certify whichever search value was provided.
             
+            # Certification for the search-by-name target.
+            if context.name is not None:
+                validation = identity_service.validate_name(candidate=context.name)
+                if validation.is_failure:
+                    return ValidationResult.failure(validation.exception)
+                # On certification success return the battle_catalog.name context in a ValidationResult.
+                return ValidationResult.success(context)
+            
             # Certification for the search-by-designation target.
             if context.designation is not None:
                 validation = identity_service.validate_name(candidate=context.designation)

@@ -39,6 +39,7 @@ class CatalogContext(Context[Catalog]):
     
     def __init__(
             self,
+            name: Optional[str] = None,
             ransom: Optional[int] = None,
             quota: Optional[int] = None,
             designation: Optional[str] = None,
@@ -48,9 +49,10 @@ class CatalogContext(Context[Catalog]):
         Constructor
 
         # PARAMETERS:
-            *   square (Optional[str])
+            *   name (Optional[str])
+            *   ransom (Optional[int])
+            *   quota (Optional[int])
             *   designation (Optional[str])
-            *   color (Optional[Color])
 
         # Returns:
         None
@@ -58,7 +60,7 @@ class CatalogContext(Context[Catalog]):
         # Raises:
         None
         """
-        super().__init__(id=None, name=None)
+        super().__init__(id=None, name=name)
         self._ransom = ransom
         self._quota = quota
         self._designation = designation
@@ -89,6 +91,7 @@ class CatalogContext(Context[Catalog]):
         None
         """
         return {
+            "name":self.name,
             "quota": self._quota,
             "ransom": self._ransom,
             "designation": self._designation,

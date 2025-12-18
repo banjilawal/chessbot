@@ -43,6 +43,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
+            name: Optional[str] = None,
             quota: Optional[int] = None,
             ransom: Optional[int] = None,
             designation: Optional[str] = None,
@@ -51,7 +52,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
     ) -> BuildResult[CatalogContext]:
         """
         # Action:
-            1.  Confirm that only one in the (designation, quota, ransom) tuple is not null.
+            1.  Confirm that only one in the (name, designation, quota, ransom) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service or validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success Build an CatalogContext and return in a BuildResult.
@@ -79,7 +80,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
         method = "CatalogContextBuilder.build"
         try:
             # Get how many optional parameters are not null. One param needs to be not-null
-            params = [designation, quota, ransom]
+            params = [name, designation, quota, ransom]
             param_count = sum(bool(p) for p in params)
             
             # Cannot search for a BattleCatalog object if no attribute value is provided for a hit.
@@ -93,6 +94,14 @@ class CatalogContextBuilder(Builder[CatalogContext]):
                     TooManyCatalogContextFlagsException(f"{method}: {TooManyCatalogContextFlagsException}")
                 )
             # After the verifying the correct number of flags are set follow the appropriate BattleCatalog build flow.
+            
+            # name flag enabled, build flow.
+            if name is not None:
+                validation = identity_service.validate_name(candidate=name)
+                if validation.is_failure:
+                    return BuildResult.failure(validation.exception)
+                # On validation success return an name_BattleCatalog_context in the BuildResult.
+                return BuildResult.success(CatalogContext(name=name))
             
             # designation flag enabled, build flow.
             if designation is not None:
