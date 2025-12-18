@@ -8,13 +8,14 @@ version: 1.0.0
 """
 
 
-from typing import List, cast
+from typing import List, Optional, cast
 
 from chess.catalog import (
     Catalog, CatalogContext, CatalogContextBuilder, CatalogContextValidator,
     CatalogDesignationBoundsException, CatalogLookupException, CatalogLookupFailedException,
     CatalogNameBoundsException, CatalogQuotaBoundsException, CatalogRansomBoundsException, CatalogValidator
 )
+from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from chess.system import EnumLookup, LoggingLevelRouter, SearchResult, id_emitter
 
 
@@ -25,6 +26,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
     # RESPONSIBILITIES:
     1.  Lookup microservice API for mapping metadata values to Catalog configurations.
     2.  Encapsulates integrity assurance logic for Catalog lookup operations.
+    3.  Provide mapping between Catalogs and the Ranks.
 
     # PARENT:
         *   EntityLookup
@@ -90,6 +92,28 @@ class CatalogLookup(EnumLookup[CatalogContext]):
     def allowed_ransoms(self) -> List[int]:
         """Returns a list of all the unique ransoms in the catalog."""
         return [entry.ransom for entry in Catalog]
+    
+    @classmethod
+    def rank_from_catalog(cls, entry: Catalog) -> Optional[Rank]:
+        """Get the Rank which the catalog entry builds."""
+        if entry == Catalog.KING: return King()
+        if entry == Catalog.PAWN: return Pawn()
+        if entry == Catalog.KNIGHT: return Knight()
+        if entry == Catalog.BISHOP: return Bishop()
+        if entry == Catalog.ROOK: return Rook()
+        if entry == Catalog.QUEEN: return Queen()
+        return None
+    
+    @classmethod
+    def catalog_from_rank(cls, rank: Rank) -> Optional[Catalog]:
+        """Get the Catalog from its corresponding Rank."""
+        if isinstance(rank, King): return Catalog.KING
+        if isinstance(rank, Pawn): return Catalog.PAWN
+        if isinstance(rank, Knight): return Catalog.KNIGHT
+        if isinstance(rank, Bishop): return Catalog.BISHOP
+        if isinstance(rank, Rook): return Catalog.ROOK
+        if isinstance(rank, Queen): return Catalog.QUEEN
+        return None
     
     @classmethod
     @LoggingLevelRouter.monitor
