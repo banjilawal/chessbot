@@ -16,4 +16,5 @@ None
 from .base import NumberException
 from .null import NullNumberException
 from .invalid import InvalidNumberException
+from .bounds import NumberAboveBoundsException
 from .negative import NegativeNumberException

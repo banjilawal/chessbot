@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/team/service/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/team/service/exception/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/err/number/exception/bounds.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/err/number/validator/bounds.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/exception/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/service/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/service/exception/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/number/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/number/exception/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -977,7 +972,7 @@
       <workItem from="1765973857782" duration="68752000" />
       <workItem from="1766049378554" duration="5954000" />
       <workItem from="1766073381239" duration="3582000" />
-      <workItem from="1766082112936" duration="26107000" />
+      <workItem from="1766082112936" duration="28905000" />
     </task>
     <servers />
   </component>
