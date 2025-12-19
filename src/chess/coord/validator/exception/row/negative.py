@@ -22,7 +22,7 @@ class NegativeRowException(InvalidCoordException, BoundsException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates if a zeroth or negative value is being passed as a row value.
+    1.  Indicates if a negative value is being passed as a row value.
 
     # PARENT:
         *   InvalidCoordException
@@ -38,4 +38,4 @@ class NegativeRowException(InvalidCoordException, BoundsException):
     None
     """
     ERROR_CODE = "NEGATIVE_ROW_ERROR"
-    DEFAULT_MESSAGE = "A row index cannot be less than one."
+    DEFAULT_MESSAGE = "A row index cannot negative."

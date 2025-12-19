@@ -22,7 +22,7 @@ class NegativeColumnException(InvalidCoordException, BoundsException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates if a zeroth or negative value is being passed as a column value.
+    1.  Indicates if a negative value is being passed as a column value.
 
     # PARENT:
         *   InvalidCoordException
@@ -38,4 +38,4 @@ class NegativeColumnException(InvalidCoordException, BoundsException):
     None
     """
     ERROR_CODE = "NEGATIVE_COLUMN_ERROR"
-    DEFAULT_MESSAGE = "A column index cannot be less than one."
+    DEFAULT_MESSAGE = "A column index cannot negative."
