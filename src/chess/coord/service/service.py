@@ -30,7 +30,7 @@ class CoordService(EntityService[Coord]):
         *   EntityService
 
     # PROVIDES:
-        *   CoordService
+    None
 
     # LOCAL ATTRIBUTES:
     None

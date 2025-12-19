@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.system import DataServiceException, NullException
 
 __all__ = [
-#======================# TEAM_DATA_SERVICE EXCEPTION SUPER CLASS #======================#
+#======================# TEAM_DATA_SERVICE EXCEPTION #======================#
     "TeamDataServiceException",
     "TeamStackNullException",
     "TeamContextServiceNullException",
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 
-#======================# TEAM_DATA_SERVICE EXCEPTION SUPER CLASS #======================#
+#======================# TEAM_DATA_SERVICE EXCEPTION #======================#
 class TeamDataServiceException(DataServiceException):
     """
     Catchall for exceptions which aren't about inserting or deleting Teams. Wrapper for

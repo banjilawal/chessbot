@@ -30,9 +30,7 @@ class PlayerAgentService(EntityService[PlayerAgent]):
         *   EntityService
     
     # PROVIDES:
-        *   builder: -> AgentFactory
-        *   validator: -> AgentValidator
-        *   find_games_for_agent: -> SearchResult[List[Game]]
+    None
 
     # LOCAL ATTRIBUTES:
     None

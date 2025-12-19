@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-
+from chess.coord import CoordException
 from chess.system import ServiceException
 
 __all__ = [
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# COORD_SERVICE EXCEPTIONS #======================#
-class CoordServiceException(ServiceException):
+class CoordServiceException(CoordException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -27,6 +27,7 @@ class CoordServiceException(ServiceException):
     3.  Catchall for CoordService failures that are not covered by a lower level CoordService exceptions.
 
     # PARENT:
+        *   CoordException
         *   ServiceException
 
     # PROVIDES:

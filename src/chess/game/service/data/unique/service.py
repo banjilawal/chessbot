@@ -7,10 +7,11 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-
 from typing import List, cast
 
-from chess.system import DeletionResult, InsertionResult, SearchResult, UniqueDataService
+from chess.system import (
+    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
+)
 from chess.game import Game, GameContext, GameContextService, GameDataService, GameService
 
 
@@ -19,18 +20,14 @@ class UniqueGameDataService(UniqueDataService[Game]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by GameDataService are unique.
+    1.  Ensure all items managed by GameDataService are unique.
     2.  Guarantee consistency of records in GameDataService.
-    
+
     # PARENT:
         *   UniqueDataService
 
     # PROVIDES:
-        *   game_service: -> GameService
-        *   context_service: -> GameContextService
-        *   add_game: -> InsertionResult[Game]
-        *   undo_add_game: -> DeletionResult[Game]
-        *   search_games: -> SearchResult[List[Game]]
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -38,13 +35,13 @@ class UniqueGameDataService(UniqueDataService[Game]):
     # INHERITED ATTRIBUTES:
         *   See UniqueDataService class for inherited attributes.
     """
-    DEFAULT_NAME = "UniqueGameDataService"
+    SERVICE_NAME = "UniqueGameDataService"
     
     def __init__(
             self,
-            id: int,
-            name: str = DEFAULT_NAME,
-            data_service: GameDataService = GameDataService()
+            name: str = SERVICE_NAME,
+            id: int = id_emitter.service_id,
+            data_service: GameDataService = GameDataService(),
     ):
         """
         # ACTION:
@@ -62,7 +59,7 @@ class UniqueGameDataService(UniqueDataService[Game]):
         None
         """
         super().__init__(id=id, name=name, data_service=data_service)
-        
+    
     @property
     def game_service(self) -> GameService:
         return cast(GameDataService, self.data_service).game_service
@@ -79,15 +76,18 @@ class UniqueGameDataService(UniqueDataService[Game]):
     def is_empty(self) -> bool:
         return self.data_service.is_empty
     
+    @LoggingLevelRouter.monitor
     def add_game(self, game: Game) -> InsertionResult[Game]:
         return self.push_unique_item(game)
     
+    @LoggingLevelRouter.monitor
     def undo_add_game(self) -> DeletionResult[Game]:
         return self.data_service.undo_item_push()
     
+    @LoggingLevelRouter.monitor
     def search_games(self, context: GameContext) -> SearchResult[List[Game]]:
         return self.data_service.search(context)
- 
+    
     # @LoggingLevelRouter.monitor
     # def push_unique_item(self, item: Game) -> InsertionResult[Game]:
     #     method = "UniqueGameDataService.push_unique"

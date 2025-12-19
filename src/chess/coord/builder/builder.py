@@ -16,7 +16,7 @@ from chess.coord import Coord, CoordValidator,  CoordBuildFailedException
 class CoordBuilder(Builder[Coord]):
     """
      # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
-
+     
      # RESPONSIBILITIES:
      1.  Produce Coord instances whose integrity is always guaranteed.
      2.  Ensure params for Coord creation have met the application's safety contract.

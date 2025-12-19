@@ -31,8 +31,7 @@ class AgentDataService(DataService[PlayerAgent]):
         *   DataService
 
     # PROVIDES:
-        *   player_agent_service:  -> PlayerAgentService
-        *   agent_context_service:  -> AgentContextService
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -40,11 +39,11 @@ class AgentDataService(DataService[PlayerAgent]):
     # INHERITED ATTRIBUTES:
         *   See DataService class for inherited attributes.
     """
-    DEFAULT_NAME = "AgentDataService"
+    SERVICE_NAME = "AgentDataService"
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[PlayerAgent] = List[PlayerAgent],
             service: PlayerAgentService = PlayerAgentService(),

@@ -7,10 +7,10 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== GAME.SERVICE.DATA.UNIQUE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== GAME.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .base import GameDataServiceException
+from .base import UniqueGameDataServiceException

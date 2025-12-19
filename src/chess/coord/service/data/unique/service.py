@@ -7,50 +7,81 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, id_emitter
-from chess.coord import AddingDuplicateCoordException, Coord, CoordDataService, UniqueCoordDataServiceException
+from typing import List, cast
 
+from chess.system import (
+    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
+)
+from chess.coord import Coord, CoordContext, CoordContextService, CoordDataService, CoordService
 
 class UniqueCoordDataService(UniqueDataService[Coord]):
-    """"""
-    
-    DEFAULT_NAME = "UniqueSquareDataService"
-    _id: int
-    _data_service: CoordDataService
-    
+    """
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Ensure all items managed by CoordDataService are unique.
+    2.  Guarantee consistency of records in CoordDataService.
+
+    # PARENT:
+        *   UniqueDataService
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See UniqueDataService class for inherited attributes.
+    """
+    SERVICE_NAME = "UniqueCoordDataService"
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             data_service: CoordDataService = CoordDataService(),
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (int): = id_emitter.service_id
+            *   designation (str): = SERVICE_NAME
+            *   data_service (CoordDataService): = CoordDataService()
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(id=id, name=name, data_service=data_service)
     
+    @property
+    def coord_service(self) -> CoordService:
+        return cast(CoordDataService, self.data_service).coord_service
+    
+    @property
+    def context_service(self) -> CoordContextService:
+        return cast(CoordDataService, self.data_service).coord_context_service
+    
+    @property
+    def size(self) -> int:
+        return self.data_service.size
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.data_service.is_empty
+    
     @LoggingLevelRouter.monitor
-    def push_unique_item(self, item: Coord) -> InsertionResult[Coord]:
-        method = "UniqueSquareDataService.push"
-        try:
-            validation = self._data_service.validator.validate(item)
-            if validation.is_failure():
-                return InsertionResult.failure(validation.exception)
-            
-            if item in self._data_service.items:
-                return InsertionResult.failure(
-                    AddingDuplicateCoordException(
-                        f"{method}: "
-                        f"{AddingDuplicateCoordException.DEFAULT_MESSAGE}"
-                    )
-                )
-            self._data_service.items.append(item)
-            return InsertionResult.success(item)
-        
-        except Exception as ex:
-            return InsertionResult.failure(
-                UniqueCoordDataServiceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{UniqueCoordDataServiceException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
+    def add_coord(self, coord: Coord) -> InsertionResult[Coord]:
+        return self.push_unique_item(coord)
+    
+    @LoggingLevelRouter.monitor
+    def undo_add_coord(self) -> DeletionResult[Coord]:
+        return self.data_service.undo_item_push()
+    
+    @LoggingLevelRouter.monitor
+    def search_coords(self, context: CoordContext) -> SearchResult[List[Coord]]:
+        return self.data_service.search(context)

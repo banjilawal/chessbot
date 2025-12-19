@@ -1,117 +1,84 @@
-# src/chess/coord/service/data/__init__.py
+# src/chess/coord/service/data/service.py
 
 """
-Module: chess.coord.service.data.__init__
+Module: chess.coord.service.data.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, cast
 
-from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.coord import Coord, CoordContext, CoordDataServiceException, CoordFinder, CoordService, CoordContextService
+from chess.system import DataService, id_emitter
+from chess.coord import Coord, CoordService, CoordContextService
 
 
 class CoordDataService(DataService[Coord]):
     """
-    # ROLE: Service, Encapsulation, API layer.
+    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for Square, VectoValidator and SquareBuilder objects.
-    2.  Masks implementation details and business logic making features easier to use.
-    3.  Protects Square objects from direct, unprotected access.
-    4.  Public facing API.
+    1.  Microservice API for managing and searching Coord collections.
+    2.  Assures collection is always reliable.
+    3.  Assure only valid Coords are put in the collection.
+    4.  Assure updates do not break the integrity individual items in the collection or
+        the collection itself.
+    5.  Provide Coord stack data structure with no guarantee of uniqueness.
+    6.  Search utility.
+
+    # PARENT:
+        *   DataService
 
     # PROVIDES:
-        *   SquareBuilder
-        *   SquareValidator
-        *   Coord Data EntityService
-        *
+    None
 
-    # ATTRIBUTES:
-        *   builder (type[SquareBuilder]):
-        *   validator (type[SquareValidator]):
-        *   coord_service (CoordService)
-        *   identity_service (IdentityService)
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See DataService class for inherited attributes.
     """
-    """
-    # ROLE: Service, Data Protraction
-
-    # RESPONSIBILITIES:
-    1.  Manages integrity lifecycle of Coord objects.
-    2.  Vector addition and scalar multiplication of Coord objects.
-    3.  Calculate distance between two Coords.
-    # ROLE: Service, Encapsulation, API layer.
-
-    # RESPONSIBILITIES:
-    1.  Provide a single interface/entry point for CoordStackValidator and CoordStackBuilder.
-    2.  Protects CoordStack objects from direct manipulation.
-    3.  Extends behavior and functionality of CoordStack objects.
-    4.  Public facing API for CoordStack modules.
-    5.  Vector addition
-    6.  Scalar multiplication
-
-    # PROVIDES:
-        *   CoordBuilding
-        *   CoordValidation
-        *   Scalar multiplication
-        *   Vector addition
-
-
-    # ATTRIBUTES:
-        *   builder (type[CoordBuilder])
-        *   validator (type[CoordValidator])
-        *   scalar_service (type[ScalarService):
-        *   vector_service (type[VectorService])
-    """
-    SERVICE_NAME = "CoordService"
+    SERVICE_NAME = "CoordDataService"
     
-    def __init__(
+    def service(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Coord] = List[Coord],
-            search: CoordFinder = CoordFinder(),
             service: CoordService = CoordService(),
-            context_service: CoordContext = CoordContextService(),
+            context_service: CoordContextService = CoordContextService(),
     ):
+        """
+        # ACTION:
+        Constructor
+
+        # PARAMETERS:
+            *   id (int): = id_emitter.service_id
+            *   designation (str): = SERVICE_NAME
+            *   items (List[Coord]): = List[Coord]
+            *   service (CoordService): = CoordService()
+            *   context_service (CoordContextService): = CoordContextService()
+
+        # Returns:
+        None
+
+        # Raises:
+        None
+        """
         super().__init__(
-            self,
             id=id,
             name=name,
             items=items,
-            search=search,
             entity_service=service,
             context_service=context_service,
         )
     
-    @LoggingLevelRouter.monitor
-    def push_item(self, item: Coord) -> InsertionResult[Coord]:
-        method = "CoordDataService.push"
-        try:
-            validation = self.data.item_validator.validate(item)
-            if validation.is_failure():
-                return InsertionResult.failure(validation.exception)
-            self.items.append(item)
-            
-            return InsertionResult.success(payload=item)
-        except Exception as ex:
-            return InsertionResult.failure(
-                CoordDataServiceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{CoordDataServiceException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        
-    @LoggingLevelRouter.monitor
-    def search(self, context: CoordContext) -> SearchResult[[Coord]]:
-        method = "CoordDataService.searcher"
-        return self._search_service.find(
-            dataset=self.items,
-            context=context,
-            context_validator=self.context_service.item_validator
-        )
+    @property
+    def coord_service(self) -> CoordService:
+        """Get CoordService instance."""
+        return cast(CoordService, self.entity_service)
+    
+    @property
+    def coord_context_service(self) -> CoordContextService:
+        """Get CoordContextService."""
+        return cast(CoordContextService, self.context_service)
