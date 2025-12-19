@@ -12,9 +12,9 @@ from typing import Optional
 
 from chess.game import Game, GameService
 from chess.team import Team, TeamService
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
+from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter
 from chess.agent import (
-    AgentVariety, AgentContext, AgentContextBuildFailedException, NoAgentContextFlagException,
+    AgentVariety, AgentContext, AgentContextBuildFailedException, ZeroAgentFlagsException,
     ExcessiveAgentContextFlagsException
 )
 
@@ -83,29 +83,26 @@ class AgentContextBuilder(Builder[AgentContext]):
 
         # Raises:
             *   AgentContextBuildFailedException
-            *   NoAgentContextFlagException
+            *   ZeroAgentFlagsException
             *   ExcessiveAgentContextFlagsException
         """
         method = "AgentSearchContextBuilder.builder"
         try:
-            # Count how many optional parameters are not null.
+            # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, name, team, game, variety,]
             param_count = sum(bool(p) for p in params)
             
-            # Test if no params are set. Need an attribute-value pair to find PlayerAgents who match the target.
+            # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
+                    ZeroAgentFlagsException(f"{method}: {ZeroAgentFlagsException.DEFAULT_MESSAGE}")
                 )
-            # Test if more than one param is set. Searches are conducted with one targeted attribute-value
-            # tuple at a time.
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveAgentContextFlagsException(f"{method}: {ExcessiveAgentContextFlagsException}")
                 )
-            
-            # After verifying only one PlayerAgent attribute-value tuple is enabled, Certify it with the appropriate
-            # Validator.
+            # After verifying only one PlayerAgent attribute-value-tuple is enabled, validate it.
             
             # Build the id AgentContext if its flag is enabled.
             if id is not None:
@@ -148,8 +145,12 @@ class AgentContextBuilder(Builder[AgentContext]):
                 # On validation success return a variety_AgentContext in the BuildResult.
                 return BuildResult.success(AgentContext(variety=variety))
             
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an AgentContextBuildFailedException then, return the exception chain inside a BuildResult.failure
+            # As a failsafe send a buildResult failure if a context path was missed.
+            BuildResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if there is an unhandled exception Wrap an AgentContextBuildFailedException around it then
+        # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                 AgentContextBuildFailedException(

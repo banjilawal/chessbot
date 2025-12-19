@@ -12,14 +12,14 @@ from chess.game import InvalidGameSnapshotContextException
 
 __all__ = [
     # ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
-    "NoGameSnapshotContextFlagException",
+    "ZeroGameSnapshotContextFlagsException",
     # ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
     "ExcessiveGameSnapshotContextFlagsException"
 ]
 
 
 # ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
-class NoGameSnapshotContextFlagException(InvalidGameSnapshotContextException, ContextFlagCountException):
+class ZeroGameSnapshotContextFlagsException(InvalidGameSnapshotContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -31,7 +31,7 @@ class NoGameSnapshotContextFlagException(InvalidGameSnapshotContextException, Co
         *   ContextFlagCountException
 
     # PROVIDES:
-    NoGameSnapshotContextFlagException
+    ZeroGameSnapshotContextFlagsException
 
     # ATTRIBUTES:
     None

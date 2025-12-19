@@ -10,9 +10,9 @@ from typing import Optional
 
 from chess.team import Team, TeamService
 from chess.agent import PlayerAgent, PlayerAgentService
-from chess.system import BuildResult, Builder, LoggingLevelRouter, NumberValidator
+from chess.system import BuildResult, Builder, FailsafeBranchExitPointException, LoggingLevelRouter, NumberValidator
 from chess.game import (
-    GameSnapshotContext, GameSnapshotContextBuildFailedException, NoGameSnapshotContextFlagException,
+    GameSnapshotContext, GameSnapshotContextBuildFailedException, ZeroGameSnapshotContextFlagsException,
     ExcessiveGameSnapshotContextFlagsException
 )
 
@@ -32,7 +32,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
          * Builder
 
      # PROVIDES:
-         *   build: -> BuildResult[GameSnapshotContext]
+     None
 
      # LOCAL ATTRIBUTES:
      None
@@ -77,56 +77,60 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
 
         # Raises:
             *   GameSnapshotContextBuildFailedException
-            *   NoGameSnapshotContextFlagException
+            *   ZeroGameSnapshotContextFlagsException
             *   ExcessiveGameSnapshotContextFlagsException
         """
         method = "GameSnapshotContextBuilder.build"
         try:
-            # Get how many optional parameters are not null. One param needs to be not-null
+            # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [team, agent, timestamp]
             param_count = sum(bool(p) for p in params)
             
-            # Cannot search for a Game object if no attribute value is provided for a hit.
+            # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoGameSnapshotContextFlagException(f"{method}: {NoGameSnapshotContextFlagException.DEFAULT_MESSAGE}")
+                    ZeroGameSnapshotContextFlagsException(f"{method}: {ZeroGameSnapshotContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            # Only one param can be used for a searcher. If you need to searcher by multiple params
-            # Filter the previous set of matches in a new GameSnapshotFinder with a new context.
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveGameSnapshotContextFlagsException(f"{method}: {ExcessiveGameSnapshotContextFlagsException}")
                 )
+            # After verifying only one PlayerAgent attribute-value-tuple is enabled, validate it.
             
-            # After verifying the correct number of flags has been enabled follow the appropriate
-            # GameSnapshotContext build flow.
-            
-            # Timestamp flag enabled, build flow.
+
+            # Build the timestamp GameSnapshotContext if its flag is enabled.
             if timestamp is not None:
                 validation = number_validator.validate(candidate=timestamp)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a timestamp_game_snapshot_context in the BuildResult.
+                # On validation success return an timestamp_GameSnapshotContext in the BuildResult.
                 return BuildResult.success(payload=GameSnapshotContext(timestamp=timestamp))
             
             # PlayerAgent flag enabled, build flow.
+            # Build the agent GameSnapshotContext if its flag is enabled.
             if agent is not None:
                 validation = agent_service.validator.validate(candidate=agent)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an agent_game_snapshot_context in the BuildResult.
+                # On validation success return an agent_GameSnapshotContext in the BuildResult.
                 return BuildResult.success(payload=GameSnapshotContext(agent=agent))
             
-            # Team flag enabled, build flow.
+            # Build the team AgentContext if its flag is enabled.
             if team is not None:
                 validation = team_service.validator.validate(candidate=team)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an team_game_snapshot_context in the BuildResult.
+                # On validation success return a team_GameSnapshotContext in the BuildResult.
                 return BuildResult.success(payload=GameSnapshotContext(team=team))
+            
+            # As a failsafe send a buildResult failure if a context path was missed.
+            BuildResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
         
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # anGameSnapshotContextBuildFailedException. Then send the exception-chain in a BuildResult.failure.
+        # Finally, if there is an unhandled exception Wrap an GameSnapshotContextBuildFailedException around it then
+        # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                GameSnapshotContextBuildFailedException(

@@ -78,24 +78,21 @@ class GameContextBuilder(Builder[GameContext]):
         """
         method = "GameSearchContextBuilder.build"
         try:
-            # Get how many optional parameters are not null. One param needs to be not-null
+            # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, agent,]
             param_count = sum(bool(p) for p in params)
             
-            # Cannot search for a Game object if no attribute value is provided for a hit.
+            # Test if no params are set. Need an attribute-value pair to find which Games match the target.
             if param_count == 0:
                 return BuildResult.failure(
                     ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            # Only one param can be used for a searcher. If you need to searcher by multiple params
-            # Filter the previous set of matches in a new GameSnapshotFinder with a new context.
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException}")
                 )
-            
-            # After verifying the correct number of flags has been enabled follow the appropriate
-            # GameContext build flow.
+            # After verifying only one Board attribute-value-tuple is enabled, validate it.
             
             # id flag enabled, build flow.
             if id is not None:

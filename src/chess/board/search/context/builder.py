@@ -74,23 +74,22 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
         method = "BoardSearchContextBuilder.builder"
         
         try:
+            # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, name, coord]
             param_count = sum(bool(p) for p in params)
             
+            # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoBoardSearchOptionSelectedException(
-                        f"{method}: {NoBoardSearchOptionSelectedException.DEFAULT_MESSAGE}"
-                    )
+                    ZeroBoardFlagsException(f"{method}: {ZeroBoardFlagsException.DEFAULT_MESSAGE}")
                 )
-            
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    MoreThanOneBoardSearchOptionPickedException(
-                        f"{method}: {MoreThanOneBoardSearchOptionPickedException.DEFAULT_MESSAGE}"
-                    )
+                    ExcessiveBoardContextFlagsException(f"{method}: {ExcessiveBoardContextFlagsException}")
                 )
             
+            # Build the id BoardContext if its flag is enabled.
             if id is not None:
                 return cls.build_id_search_context(id=id, id_validator=id_validator)
             

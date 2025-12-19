@@ -13,8 +13,8 @@ from chess.game import GameService
 from chess.team import TeamService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.agent import (
-    AgentContext, AgentVariety, InvalidAgentContextException, NoAgentContextFlagException,
-    NullAgentContextException, ExcessiveAgentContextFlagsException
+    AgentContext, AgentVariety, ExcessiveAgentContextFlagsException, InvalidAgentContextException,
+    NullAgentContextException, ZeroAgentContextFlagsException
 )
 
 
@@ -100,7 +100,7 @@ class AgentContextValidator(Validator[AgentContext]):
             # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
+                    ZeroAgentContextFlagsException(f"{method}: {ZeroAgentContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
@@ -112,25 +112,25 @@ class AgentContextValidator(Validator[AgentContext]):
             # Which ever attribute value is not null should be certified safe by the appropriate validator.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
-                if validation.is_failure():
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.name is not None:
                 validation = identity_service.validate_name(candidate=context.name)
-                if validation.is_failure():
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.team is not None:
                 validation = team_service.validator.validate(candidate=context.team)
-                if validation.is_failure():
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.game is not None:
                 validation = game_service.validator.validate(candidate=context.game)
-                if validation.is_failure():
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             

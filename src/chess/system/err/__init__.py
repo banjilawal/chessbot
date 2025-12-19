@@ -18,6 +18,7 @@ from .base import *
 from .bidirectional import *
 from .bounds import *
 from .color import *
+from .failsafe import *
 from .inconsistency import *
 from .null import *
 from .operation import *

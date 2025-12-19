@@ -116,7 +116,7 @@ class GameContextValidator(Validator[GameContext]):
                     )
                 )
             
-            # Verify the id flag if its enabled.
+            # Build the id GameContext if its flag is enabled.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
                 if validation.is_failure:

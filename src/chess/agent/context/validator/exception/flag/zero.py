@@ -13,12 +13,12 @@ from chess.agent import InvalidAgentContextException
 
 __all__ = [
     # ========================= ZERO_AGENT_CONTEXT_FLAGS EXCEPTION =========================#
-    "ZeroAgentContextFlagsSetException"
+    "ZeroAgentContextFlagsException"
 ]
 
 
 # ========================= ZERO_AGENT_CONTEXT_FLAGS EXCEPTION =========================#
-class ZeroAgentContextFlagsSetException(InvalidAgentContextException, BoundsException):
+class ZeroAgentContextFlagsException(InvalidAgentContextException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 

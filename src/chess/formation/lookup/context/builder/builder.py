@@ -12,7 +12,10 @@ from typing import Optional
 from chess.formation import (
     OrderContext, OrderContextBuildFailedException, NoOrderContextFlagException, ExcessiveOrderContextFlagsException
 )
-from chess.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
+from chess.system import (
+    BuildResult, Builder, FailsafeBranchExitPointException, GameColor, GameColorValidator,
+    IdentityService, LoggingLevelRouter
+)
 
 
 class OrderContextBuilder(Builder[OrderContext]):
@@ -77,48 +80,52 @@ class OrderContextBuilder(Builder[OrderContext]):
         """
         method = "OrderContextBuilder.build"
         try:
-            # Get how many optional parameters are not null. One param needs to be not-null
+            # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [designation, square, color]
             param_count = sum(bool(p) for p in params)
             
-            # Cannot search for a BattleOrder object if no attribute value is provided for a hit.
+            # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
             if param_count == 0:
                 return BuildResult.failure(
                     NoOrderContextFlagException(f"{method}: {NoOrderContextFlagException.DEFAULT_MESSAGE}")
                 )
-            # Only one property-value pair is allowed in a search.
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveOrderContextFlagsException(f"{method}: {ExcessiveOrderContextFlagsException}")
                 )
-            # After the verifying the correct number of flags are set follow the appropriate BattleOrder build flow.
+            # After verifying only one BattleOrder attribute-value-tuple is enabled, validate it.
             
-            # designation flag enabled, build flow.
+            # Build the designation OrderContext if its flag is enabled.
             if designation is not None:
                 validation = identity_service.validate_name(candidate=designation)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an name_BattleOrder_context in the BuildResult.
+                # On validation success return a designation_OrderContext in the BuildResult.
                 return BuildResult.success(OrderContext(designation=designation))
             
-            # square flag enabled, build flow.
+            # Build the square OrderContext if its flag is enabled.
             if square is not None:
                 validation = identity_service.validate_name(candidate=square)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an name_BattleOrder_context in the BuildResult.
+                # On validation success return a square_OrderContext in the BuildResult.
                 return BuildResult.success(OrderContext(square=square))
             
-            # GameColor flag enabled, build flow.
+            # Build the color OrderContext if its flag is enabled.
             if color is not None:
                 validation = color_validator.validate(candidate=GameColor)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an GameColor_BattleOrder_context in the BuildResult.
+                # On validation success return a color_OrderContext in the BuildResult.
                 return BuildResult.success(OrderContext(color=color))
-        
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception in a
-        # OrderContextBuildFailedException then, send the exception chain a BuildResult.failure.
+            
+            # As a failsafe send a buildResult failure if a context path was missed.
+            BuildResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if there is an unhandled exception Wrap an OrderContextBuildFailedException around it then
+        # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                 OrderContextBuildFailedException(

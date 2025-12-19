@@ -13,7 +13,7 @@ from chess.team import TeamService
 from chess.agent import PlayerAgentService
 from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from chess.game import (
-    GameSnapshotContext, InvalidGameSnapshotContextException, NoGameSnapshotContextFlagException,
+    GameSnapshotContext, InvalidGameSnapshotContextException, ZeroGameSnapshotContextFlagsException,
     NullGameSnapshotContextException, ExcessiveGameSnapshotContextFlagsException
 )
 
@@ -72,7 +72,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
         # Raises:
             *   TypeError
             *   NullGameSnapshotContextException
-            *   NoGameSnapshotContextFlagException
+            *   ZeroGameSnapshotContextFlagsException
             *   ExcessiveGameSnapshotContextFlagsException
             *   InvalidGameSnapshotContextException
         """
@@ -95,8 +95,8 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
             # Perform the two checks ensuring only one Game attribute value will be used in the searcher.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoGameSnapshotContextFlagException(
-                        f"{method}: {NoGameSnapshotContextFlagException.DEFAULT_MESSAGE}"
+                    ZeroGameSnapshotContextFlagsException(
+                        f"{method}: {ZeroGameSnapshotContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             

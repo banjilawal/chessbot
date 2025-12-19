@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.system import BuildResult, Builder, LoggingLevelRouter
 from chess.coord import (
-    CoordContextValidator, CoordContext, CoordContextBuildFailedException, NoCoordContextFlagSetException
+    Coord, CoordContextValidator, CoordContext, CoordContextBuildFailedException, NoCoordContextFlagSetException
 )
 
 
@@ -72,17 +72,28 @@ class CoordContextBuilder(Builder[CoordContext]):
         method = "CoordContextBuilder.builder"
         
         try:
-            params = [row, column]
+            # Count how many optional parameters are not-null. One param needs to be not-null.
+            params = [row, column, Coord]
             param_count = sum(bool(p) for p in params)
             
+            # Test if no params are set. Need an attribute-value pair to find which Coords match the target.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoCoordContextFlagSetException(
-                        f"{method}: "
-                        f"{NoCoordContextFlagSetException.DEFAULT_MESSAGE}"
-                    )
+                    ZeroCoordFlagsException(f"{method}: {ZeroCoordFlagsException.DEFAULT_MESSAGE}")
                 )
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
+            if param_count > 1:
+                return BuildResult.failure(
+                    ExcessiveCoordContextFlagsException(f"{method}: {ExcessiveCoordContextFlagsException}")
+                )
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
+            if param_count > 1:
+                return BuildResult.failure(
+                    ExcessiveAgentContextFlagsException(f"{method}: {ExcessiveAgentContextFlagsException}")
+                )
+            # After verifying only one Coord attribute-value-tuple is enabled, validate it.
             
+            # Build the row AgentContext if its flag is enabled.
             if row is not None and column is not None:
                 validation = validator.validate_both(
                     row_candidate=row,
