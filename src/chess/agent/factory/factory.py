@@ -1,7 +1,7 @@
-# src/chess/player_agent/builder.py
+# src/chess/agent/builder.py
 
 """
-Module: chess.player_agent.builder
+Module: chess.agent.builder
 Author: Banji Lawal
 Created: 2025-09-11
 version: 1.0.0

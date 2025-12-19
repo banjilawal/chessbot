@@ -10,8 +10,9 @@ version: 1.0.0
 #=========== GAME.SERVICE.DATA PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
 from .unique import *
+from .exception import *
+
 
 # Modules
 from .service import GameDataService

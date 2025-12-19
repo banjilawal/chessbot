@@ -1,7 +1,7 @@
-# src/chess/player_agent/finder/finder
+# src/chess/agent/finder/finder
 
 """
-Module: chess.player_agent.finder.finder
+Module: chess.agent.finder.finder
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

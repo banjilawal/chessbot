@@ -1,7 +1,7 @@
-# src/chess/player_agent/service/data/unique/exception/base.py
+# src/chess/agent/service/data/unique/exception/base.py
 
 """
-Module: chess.player_agent.service.data.unique.exception.base
+Module: chess.agent.service.data.unique.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

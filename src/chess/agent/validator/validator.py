@@ -1,7 +1,7 @@
-# src/chess/player_agent/validator/validator.py
+# src/chess/agent/validator/validator.py
 
 """
-Module: chess.player_agent.validator.validator
+Module: chess.agent.validator.validator
 Author: Banji Lawal
 Created: 2025-08-31
 version: 1.0.0

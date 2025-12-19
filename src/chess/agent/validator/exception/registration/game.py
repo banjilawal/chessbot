@@ -1,7 +1,7 @@
-# src/chess/player_agent/validator/exception/registration/game.py
+# src/chess/agent/validator/exception/registration/game.py
 
 """
-Module: chess.player_agent.validator.exception.registration.game
+Module: chess.agent.validator.exception.registration.game
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

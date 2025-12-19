@@ -21,8 +21,7 @@ class ArenaContext(Context[Arena]):
     # ROLE: Finder Filter
 
     # RESPONSIBILITIES:
-    Provide an ArenaFinder with an attribute value to find Arenas with a matching value in
-    their version of the attribute.
+    Provide an ArenaFinder with an attribute-value which finds Arenas which match the targeted attribute-value.
 
     # PARENT:
         *   Context

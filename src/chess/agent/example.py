@@ -118,10 +118,10 @@ CONTAINS:
 See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """
-# src/chess/player_agent/machine.py
+# src/chess/agent/machine.py
 
 """
-Module: `chess.player_agent.bot`
+Module: `chess.agent.bot`
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

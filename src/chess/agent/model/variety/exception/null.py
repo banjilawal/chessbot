@@ -1,7 +1,7 @@
-# src/chess/player_agent/model/variety/exception/null.py
+# src/chess/agent/model/variety/exception/null.py
 
 """
-Module: chess.player_agent.model.variety.exception.null
+Module: chess.agent.model.variety.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

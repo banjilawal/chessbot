@@ -1,7 +1,7 @@
-# src/chess/player_agent/context/builder/builder.py
+# src/chess/agent/context/builder/builder.py
 
 """
-Module: chess.player_agent.context.builder.builder
+Module: chess.agent.context.builder.builder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -34,7 +34,7 @@ class AgentContextBuilder(Builder[AgentContext]):
         *   Builder
 
     # PROVIDES:
-        *   build:  -> BuildResult[AgentContext]
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -60,8 +60,8 @@ class AgentContextBuilder(Builder[AgentContext]):
         # Action:
             1.  Confirm that only one in the (id, designation, team, game, agent_variety) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
-            3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an AgentContext are return in a BuildResult.
+            3.  If any check fails return an exception inside the BuildResult. Otherwise, construct an AgentContext
+                object then send it inside the BuildResult.
 
         # Parameters:
         Only one these must be provided:
@@ -88,55 +88,68 @@ class AgentContextBuilder(Builder[AgentContext]):
         """
         method = "AgentSearchContextBuilder.builder"
         try:
-            # Get how many optional parameters are not null. One param is expected to have
-            # a value.
+            # Count how many optional parameters are not null.
             params = [id, name, team, game, variety,]
             param_count = sum(bool(p) for p in params)
-            # Cannot searcher for an PlayerAgent object if no attribute value is provided for a hit.
+            
+            # Test if no params are set. Need an attribute-value pair to find PlayerAgents who match the target.
             if param_count == 0:
                 return BuildResult.failure(
                     NoAgentContextFlagException(f"{method}: {NoAgentContextFlagException.DEFAULT_MESSAGE}")
                 )
-            # Only one param can be used for a searcher. If you need to searcher by multiple params
-            # Filter the previous set of matches in a new AgentFinder with a new context.
+            # Test if more than one param is set. Searches are conducted with one targeted attribute-value
+            # tuple at a time.
             if param_count > 1:
                 return BuildResult.failure(
                     TooManyAgentContextFlagsException(f"{method}: {TooManyAgentContextFlagsException}")
                 )
-            # After verifying the correct number of switches is turned on validate the target value
-            # with the appropriate Validator. On pass create an AgentContext.
+            
+            # After verifying only one PlayerAgent attribute-value tuple is enabled, Certify it with the appropriate
+            # Validator.
+            
+            # Build the id AgentContext if its flag is enabled.
             if id is not None:
                 validation = idservice.validate_id(id)
-                if validation.is_failure():
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
+                # On validation success return an id_AgentContext in the BuildResult.
                 return BuildResult.success(AgentContext(id=id))
             
+            # Build the name AgentContext if its flag is enabled.
             if name is not None:
                 validation = idservice.validate_name(name)
-                if validation.is_failure():
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
+                # On validation success return a name_AgentContext in the BuildResult.
                 return BuildResult.success(AgentContext(name=name))
-                
+            
+            # Build the team AgentContext if its flag is enabled.
             if team is not None:
-                validation = team_service.item_validator.validate(candidate=team)
-                if validation.is_failure():
+                validation = team_service.validator.validate(candidate=team)
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
+                # On validation success return a team_AgentContext in the BuildResult.
                 return BuildResult.success(AgentContext(team=team))
             
+            # Build the game AgentContext if its flag is enabled.
             if game is not None:
-                validation = game_service.validate_name(name)
-                if validation.is_failure():
+                validation = game_service.validator.validate(candidate=game)
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
+                # On validation success return a game_AgentContext in the BuildResult.
                 return BuildResult.success(AgentContext(game=game))
-                
+            
+            # Build the agent_variety AgentContext if its flag is enabled.
             if variety is not None:
                 if not isinstance(variety, AgentVariety):
                     return BuildResult.failure(
                         TypeError(f"{method}: Expected AgentVariety, got {type(variety).__name__} instead.")
                     )
+                # On validation success return a variety_AgentContext in the BuildResult.
                 return BuildResult.success(AgentContext(variety=variety))
+            
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an AgentContextBuildFailedException and send the exception chain a BuildResult.failure.
+        # an AgentContextBuildFailedException then, return the exception chain inside a BuildResult.failure
         except Exception as ex:
             return BuildResult.failure(
                 AgentContextBuildFailedException(

@@ -1,7 +1,7 @@
-# src/chess/player_agent/context/__init__.py
+# src/chess/agent/context/__init__.py
 
 """
-Module: chess.player_agent.context.__init__
+Module: chess.agent.context.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .builder import *
+from .finder import *
 from .service import *
 from .validator import *
 

@@ -1,12 +1,13 @@
-# src/chess/player_agent/finder/exception
+# src/chess/agent/context/finder/__init__.py
 
 """
-Module: chess.player_agent.finder.exception
+Module: chess.agent.cntext.finder.__init__
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
 """
 
+from chess.agent import AgentException
 from chess.system import FinderException
 
 __all__ = [
@@ -16,16 +17,16 @@ __all__ = [
 
 
 #======================# AGENT_FINDER EXCEPTIONS #======================#
-class AgentFinderException(FinderException):
+class AgentFinderException(AgentException, FinderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when: data in an AgentFinder's fields or unanticipated conditions
-        halt the normal flow of AgentFinder operations.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentFactory method.
+    1.  Parent of exceptions raised when AgentFinder objects.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentFinder method.
   
     # PARENT:
+        *   AgentException
         *   FinderException
   
     # PROVIDES:

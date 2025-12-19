@@ -9,10 +9,10 @@ version: 1.0.0
 
 from typing import List, cast
 
+from chess.game import Game, GameContext, GameContextService, GameDataService, GameService
 from chess.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
 )
-from chess.game import Game, GameContext, GameContextService, GameDataService, GameService
 
 
 class UniqueGameDataService(UniqueDataService[Game]):

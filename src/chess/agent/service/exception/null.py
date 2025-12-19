@@ -1,7 +1,7 @@
-# src/chess/player_agent/service//exception/null.py
+# src/chess/agent/service//exception/null.py
 
 """
-Module: chess.player_agent.service..exception.null
+Module: chess.agent.service..exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

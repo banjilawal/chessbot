@@ -110,7 +110,7 @@ class TeamValidator(Validator[Team]):
                 return ValidationResult.failure(agent_validation.exception)
             
             # Check if the Team is registered in player_agent's team_assignments.
-            search_result = team.player_agent.team_assignments.search(context=TeamContext(id=team.id))
+            search_result = team.agent.team_assignments.search(context=TeamContext(id=team.id))
             if search_result.is_failure():
                 return ValidationResult.failure(search_result.exception)
             if search_result.is_empty():

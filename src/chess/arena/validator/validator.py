@@ -129,7 +129,6 @@ class ArenaValidator(Validator[Arena]):
         # The flow should only get here if the logic did not route all the types of concrete Arenas.
         # In that case wrap the unhandled exception inside an ArenaValidationFailedException then, return
         # the exception chain inside a ValidationResult.
-        # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 ArenaValidationFailedException(

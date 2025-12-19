@@ -1,7 +1,7 @@
-# src/chess/player_agent/context/builder/exception.py
+# src/chess/agent/context/builder/exception.py
 
 """
-Module: chess.player_agent.context.builder.exception
+Module: chess.agent.context.builder.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

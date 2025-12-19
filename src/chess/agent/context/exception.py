@@ -1,12 +1,13 @@
-# src/chess/player_agent/context/exception.py
+# src/chess/agent/context/exception.py
 
 """
-Module: chess.player_agent.context.exception
+Module: chess.agent.context.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
+from chess.agent import AgentException
 from chess.system import ContextException
 
 
@@ -17,7 +18,7 @@ __all__ = [
 
 
 #======================# AGENT_CONTEXT EXCEPTION SUPER CLASS #======================#
-class AgentContextException(ContextException):
+class AgentContextException(AgentException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -26,6 +27,7 @@ class AgentContextException(ContextException):
     2.  Catchall for conditions which are not covered by lower level AgentContext exceptions.
     
     # PARENT:
+        *   AgentException
         *   ContextException
         
     # PROVIDES:

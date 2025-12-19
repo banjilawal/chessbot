@@ -1,13 +1,13 @@
-# src/chess/player_agent/finder/__init__.py
+# src/chess/agent/context/finder/__init__.py
 
 """
-Module: chess.player_agent.finder.__init__
+Module: chess.agent.cntext.finder.__init__
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
 """
 
-#=========== AGENT.FINDER PACKAGE CONTENTS ===========#
+#=========== AGENT.CONTEXT.FINDER PACKAGE CONTENTS ===========#
 
 # Packages
 None
