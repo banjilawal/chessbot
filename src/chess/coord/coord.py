@@ -10,18 +10,23 @@ version: 1.0.0
 
 class Coord:
     """
-    # ROLE: Data Object.
+    # ROLE: Addressing, Data Object
   
     # RESPONSIBILITY:
-    1.  Row-column for locating Pieces and Squares on a chess board.
-    2.  Primitive data type which binds items of different class hierarchies to the same location.
+    1.  Provide global, low-level addressing for referencing items on Board by row and column indexes.
+    
+    # PARENT:
+    None
   
     # PROVIDES:
-    Coord
+    None
   
-    # ATTRIBUTES:
-        *   row (int): Y-plane of the Board.
-        *   column (int):  X-plane of the Board.
+    # LOCAL ATTRIBUTES:
+        *   row (int)
+        *   column (int)
+    
+    INHERITED ATTRIBUTES:
+    None
     """
     _row: int
     _column: int
@@ -64,4 +69,4 @@ class Coord:
         return hash((self._row, self._column))
     
     def __str__(self):
-        return f"Coord(row:{self._row} column:{self._column})"
+        return f"Coord{{(row:{self._row}, column:{self._column}}})"
