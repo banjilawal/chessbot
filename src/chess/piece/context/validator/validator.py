@@ -13,7 +13,7 @@ from chess.coord import CoordService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.piece import (
     InvalidPieceContextException, NoPieceContextFlagSetException, NullPieceContextException, PieceContext,
-    TooManyPieceContextFlagsSetException
+    ExcessivePieceContextFlagsSetException
 )
 
 class PieceContextValidator(Validator[PieceContext]):
@@ -58,9 +58,9 @@ class PieceContextValidator(Validator[PieceContext]):
             
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyPieceContextFlagsSetException(
+                    ExcessivePieceContextFlagsSetException(
                         F"{method}: "
-                        F"{TooManyPieceContextFlagsSetException.DEFAULT_MESSAGE}"
+                        F"{ExcessivePieceContextFlagsSetException.DEFAULT_MESSAGE}"
                     )
                 )
             

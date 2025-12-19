@@ -12,7 +12,7 @@ from typing import Any, cast
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
     InvalidSchemaContextException, NoSchemaContextFlagException, NullSchemaContextException, SchemaContext,
-    TooManySchemaContextFlagsException
+    ExcessiveSchemaContextFlagsException
 )
 
 
@@ -65,7 +65,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
             *   TypeError
             *   NullSchemaContextException
             *   NoSchemaContextFlagException
-            *   TooManySchemaContextFlagsException
+            *   ExcessiveSchemaContextFlagsException
             *   InvalidSchemaContextException
         """
         method = "SchemaContextValidator.validate"
@@ -92,8 +92,8 @@ class SchemaContextValidator(Validator[SchemaContext]):
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManySchemaContextFlagsException(
-                        f"{method}: {TooManySchemaContextFlagsException.DEFAULT_MESSAGE}"
+                    ExcessiveSchemaContextFlagsException(
+                        f"{method}: {ExcessiveSchemaContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # When structure tests are passed certify whichever search value was provided.
@@ -115,7 +115,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.success(context)
             
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidSchemaContextException. Then send exception chain a ValidationResult.failure.
+        # an InvalidSchemaContextException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSchemaContextException(

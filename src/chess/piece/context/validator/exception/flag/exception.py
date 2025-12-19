@@ -13,7 +13,7 @@ from chess.piece import InvalidPieceContextException
 __all__ = [
     #========================= PIECE_CONTEXT FLAG EXCEPTIONS =========================#
     "NoPieceContextFlagSetException",
-    "TooManyPieceContextFlagsSetException"
+    "ExcessivePieceContextFlagsSetException"
 ]
 
 
@@ -24,7 +24,7 @@ class NoPieceContextFlagSetException(InvalidPieceContextException, BoundsExcepti
     DEFAULT_MESSAGE = "One and only one, PieceContext flag must be set."
 
 
-class TooManyPieceContextFlagsSetException(InvalidPieceContextException, BoundsException):
+class ExcessivePieceContextFlagsSetException(InvalidPieceContextException, BoundsException):
     """Raised if too many PieceContext flags were set."""
     ERROR_CODE = "PIECE_CONTEXT_MAX_PARAM_ERROR"
     DEFAULT_MESSAGE = "Only one PieceContext flag can be set."

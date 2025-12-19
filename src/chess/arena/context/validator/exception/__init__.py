@@ -15,4 +15,4 @@ None
 # Modules
 from .base import InvalidArenaContextException
 from .null import NullArenaContextException
-from .flag import NoArenaContextFlagException, TooManyArenaContextFlagsException
+from .flag import NoArenaContextFlagException, ExcessiveArenaContextFlagsException

@@ -14,7 +14,7 @@ __all__ = [
     # ========================= NO_CATALOG_CONTEXT_FLAG EXCEPTION =========================#
     "NoCatalogContextFlagException",
     # ========================= TOO_MANY_CATALOG_CONTEXT_FLAGS EXCEPTION =========================#
-    "TooManyCatalogContextFlagsException"
+    "ExcessiveCatalogContextFlagsException"
 ]
 
 
@@ -41,7 +41,7 @@ class NoCatalogContextFlagException(InvalidCatalogContextException, ContextFlagC
 
 
 # ========================= TOO_MANY_CATALOG_CONTEXT_FLAGS EXCEPTION =========================#
-class TooManyCatalogContextFlagsException(InvalidCatalogContextException, ContextFlagCountException):
+class ExcessiveCatalogContextFlagsException(InvalidCatalogContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, CatalogContextException
 

@@ -11,12 +11,12 @@ from chess.system import NullException
 from chess.arena import InvalidArenaContextException
 
 __all__ = [
-    # ======================# NULL ARENA_CONTEXT EXCEPTION #======================#
+    # ======================# NULL_ARENA_CONTEXT EXCEPTION #======================#
     "NullArenaContextException",
 ]
 
 
-# ======================# NULL ARENA_CONTEXT EXCEPTION #======================#
+# ======================# NULL_ARENA_CONTEXT EXCEPTION #======================#
 class NullArenaContextException(InvalidArenaContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -26,8 +26,8 @@ class NullArenaContextException(InvalidArenaContextException, NullException):
     2.  Raised if an entity, method or operation requires a ArenaContext but receives null instead.
 
     # PARENT:
-        *   InvalidArenaContextException
         *   NullArenaContextException
+        *   InvalidArenaContextException
 
     # PROVIDES:
     None

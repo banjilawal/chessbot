@@ -13,7 +13,7 @@ from typing import Optional
 from chess.agent import PlayerAgent, PlayerAgentService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.game import (
-    GameContext, GameContextBuildFailedException, NoGameContextFlagException, TooManyGameContextFlagsException
+    GameContext, GameContextBuildFailedException, ZeroGameContextFlagsException, ExcessiveGameContextFlagsException
 )
 
 
@@ -73,8 +73,8 @@ class GameContextBuilder(Builder[GameContext]):
 
         # Raises:
             *   GameContextBuildFailedException
-            *   NoGameContextFlagException
-            *   TooManyGameContextFlagsException
+            *   ZeroGameContextFlagsException
+            *   ExcessiveGameContextFlagsException
         """
         method = "GameSearchContextBuilder.build"
         try:
@@ -85,13 +85,13 @@ class GameContextBuilder(Builder[GameContext]):
             # Cannot search for a Game object if no attribute value is provided for a hit.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoGameContextFlagException(f"{method}: {NoGameContextFlagException.DEFAULT_MESSAGE}")
+                    ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Only one param can be used for a searcher. If you need to searcher by multiple params
             # Filter the previous set of matches in a new GameSnapshotFinder with a new context.
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyGameContextFlagsException(f"{method}: {TooManyGameContextFlagsException}")
+                    ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException}")
                 )
             
             # After verifying the correct number of flags has been enabled follow the appropriate

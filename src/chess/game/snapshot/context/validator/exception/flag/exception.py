@@ -14,7 +14,7 @@ __all__ = [
     # ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
     "NoGameSnapshotContextFlagException",
     # ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
-    "TooManyGameSnapshotContextFlagsException"
+    "ExcessiveGameSnapshotContextFlagsException"
 ]
 
 
@@ -41,7 +41,7 @@ class NoGameSnapshotContextFlagException(InvalidGameSnapshotContextException, Co
 
 
 # ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
-class TooManyGameSnapshotContextFlagsException(InvalidGameSnapshotContextException, ContextFlagCountException):
+class ExcessiveGameSnapshotContextFlagsException(InvalidGameSnapshotContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, GameSnapshotContextException
 
@@ -53,7 +53,7 @@ class TooManyGameSnapshotContextFlagsException(InvalidGameSnapshotContextExcepti
         *   ContextFlagCountException
 
     # PROVIDES:
-    TooManyGameSnapshotContextFlagsException
+    ExcessiveGameSnapshotContextFlagsException
 
     # ATTRIBUTES:
     None

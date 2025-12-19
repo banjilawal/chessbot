@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.schema import (
-    NoSchemaContextFlagException, SchemaContext, TooManySchemaContextFlagsException, SchemaContextBuildFailedException
+    NoSchemaContextFlagException, SchemaContext, ExcessiveSchemaContextFlagsException, SchemaContextBuildFailedException
 )
 
 
@@ -69,7 +69,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
 
         # Raises:
             *   NoSchemaContextFlagException
-            *   TooManySchemaContextFlagsException
+            *   ExcessiveSchemaContextFlagsException
             *   SchemaContextBuildFailedException
         """
         method = "SchemaSearchContextBuilder.build"
@@ -86,7 +86,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             # Only one property-value pair is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManySchemaContextFlagsException(f"{method}: {TooManySchemaContextFlagsException}")
+                    ExcessiveSchemaContextFlagsException(f"{method}: {ExcessiveSchemaContextFlagsException}")
                 )
             # After the verifying the correct number of flags are set follow the appropriate Schema build flow.
             

@@ -15,7 +15,7 @@ from chess.team import Team, TeamService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
 from chess.agent import (
     AgentVariety, AgentContext, AgentContextBuildFailedException, NoAgentContextFlagException,
-    TooManyAgentContextFlagsException
+    ExcessiveAgentContextFlagsException
 )
 
 
@@ -84,7 +84,7 @@ class AgentContextBuilder(Builder[AgentContext]):
         # Raises:
             *   AgentContextBuildFailedException
             *   NoAgentContextFlagException
-            *   TooManyAgentContextFlagsException
+            *   ExcessiveAgentContextFlagsException
         """
         method = "AgentSearchContextBuilder.builder"
         try:
@@ -101,7 +101,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             # tuple at a time.
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyAgentContextFlagsException(f"{method}: {TooManyAgentContextFlagsException}")
+                    ExcessiveAgentContextFlagsException(f"{method}: {ExcessiveAgentContextFlagsException}")
                 )
             
             # After verifying only one PlayerAgent attribute-value tuple is enabled, Certify it with the appropriate

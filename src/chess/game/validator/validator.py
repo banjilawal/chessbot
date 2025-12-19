@@ -78,33 +78,35 @@ class GameValidator(Validator[Game]):
         method = "GameValidator.validate"
         
         try:
-            # If candidate is validation no point continuing
+            # Handle the case that the candidate does not exist.
             if candidate is None:
                 return ValidationResult.failure(
                     NullGameException(f"{method}: {NullGameException.DEFAULT_MESSAGE}")
                 )
-            
+            # Handle the case that the candidate is not a Game.
             if not isinstance(candidate, Game):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Game, {type(candidate).__name__} instead.")
                 )
-            
+            # After existence and type checks cast the candidate for further processing.
             game = cast(Game, candidate)
             
             id_validation = identity_service.validate_id(candidate=game.id)
-            if id_validation.is_failure():
+            if id_validation.is_failure:
                 return ValidationResult.failure(id_validation.exception)
             
             board_validation = board_service.validator.validate(game.board)
-            if board_validation.is_failure():
+            if board_validation.is_failure:
                 return ValidationResult.failure(board_validation.exception)
             
             for player in game.players:
                 validation = agent_service.validator.validate(player)
-                if validation.is_failure():
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
             return ValidationResult.success(game)
         
+        # Finally, for unhandled exceptions, wrap it inside an InvalidGameException. Then send the  exception-chain
+        # in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidGameException(ex=ex, message=f"{method}: {InvalidGameException.DEFAULT_MESSAGE}")

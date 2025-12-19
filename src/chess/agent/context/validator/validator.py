@@ -14,7 +14,7 @@ from chess.team import TeamService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.agent import (
     AgentContext, AgentVariety, InvalidAgentContextException, NoAgentContextFlagException,
-    NullAgentContextException, TooManyAgentContextFlagsException
+    NullAgentContextException, ExcessiveAgentContextFlagsException
 )
 
 
@@ -77,7 +77,7 @@ class AgentContextValidator(Validator[AgentContext]):
             *   TypeError
             *   NullAgentContextException
             *   NoAgentContextFlagException
-            *   TooManyAgentContextFlagsException
+            *   ExcessiveAgentContextFlagsException
             *   InvalidAgentContextException
         """
         method = "AgentContextValidator.validate"
@@ -105,8 +105,8 @@ class AgentContextValidator(Validator[AgentContext]):
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyAgentContextFlagsException(
-                        f"{method}: {TooManyAgentContextFlagsException.DEFAULT_MESSAGE}"
+                    ExcessiveAgentContextFlagsException(
+                        f"{method}: {ExcessiveAgentContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # Which ever attribute value is not null should be certified safe by the appropriate validator.
@@ -142,7 +142,7 @@ class AgentContextValidator(Validator[AgentContext]):
                 return ValidationResult.success(context)
             
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidAgentContextException. Then send exception chain a ValidationResult.failure.
+        # an InvalidAgentContextException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidAgentContextException(

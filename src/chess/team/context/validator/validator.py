@@ -14,7 +14,7 @@ from chess.arena import ArenaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
     InvalidTeamContextException, NoTeamContextFlagException, NullTeamContextException, TeamContext,
-    TooManyTeamContextFlagsException
+    ExcessiveTeamContextFlagsException
 )
 
 
@@ -83,7 +83,7 @@ class TeamContextValidator(Validator[TeamContext]):
             *   TypeError
             *   NullTeamContextException
             *   NoTeamContextFlagException
-            *   TooManyTeamContextFlagsException
+            *   ExcessiveTeamContextFlagsException
             *   InvalidTeamContextException
         """
         method = "TeamContextValidator.validate"
@@ -110,8 +110,8 @@ class TeamContextValidator(Validator[TeamContext]):
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyTeamContextFlagsException(
-                        f"{method}: {TooManyTeamContextFlagsException.DEFAULT_MESSAGE}"
+                    ExcessiveTeamContextFlagsException(
+                        f"{method}: {ExcessiveTeamContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # When structure tests are passed certify whichever search value was provided.

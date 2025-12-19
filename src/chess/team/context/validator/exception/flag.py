@@ -14,7 +14,7 @@ __all__ = [
     #========================= NO_TEAM_CONTEXT_FLAG EXCEPTION =========================#
     "NoTeamContextFlagException",
     #========================= TOO_MANY_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
-    "TooManyTeamContextFlagsException"
+    "ExcessiveTeamContextFlagsException"
 ]
 
 
@@ -44,7 +44,7 @@ class NoTeamContextFlagException(InvalidTeamContextException, ContextFlagCountEx
 
 
 #========================= TOO_MANY_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
-class TooManyTeamContextFlagsException(InvalidTeamContextException, ContextFlagCountException):
+class ExcessiveTeamContextFlagsException(InvalidTeamContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, TeamContextException
 

@@ -15,4 +15,4 @@ None
 # Modules
 from .null import NullOrderContextException
 from .base import InvalidOrderContextException
-from .flag import NoOrderContextFlagException, TooManyOrderContextFlagsException
+from .flag import NoOrderContextFlagException, ExcessiveOrderContextFlagsException

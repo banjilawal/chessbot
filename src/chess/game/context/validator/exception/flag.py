@@ -12,14 +12,14 @@ from chess.game import InvalidGameContextException
 
 __all__ = [
     #========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
-    "NoGameContextFlagException",
+    "ZeroGameContextFlagsException",
     #========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
-    "TooManyGameContextFlagsException"
+    "ExcessiveGameContextFlagsException"
 ]
 
 
 #========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
-class NoGameContextFlagException(InvalidGameContextException, ContextFlagCountException):
+class ZeroGameContextFlagsException(InvalidGameContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -31,7 +31,7 @@ class NoGameContextFlagException(InvalidGameContextException, ContextFlagCountEx
         *   ContextFlagCountException
 
     # PROVIDES:
-    NoGameContextFlagException
+    ZeroGameContextFlagsException
 
     # ATTRIBUTES:
     None
@@ -41,7 +41,7 @@ class NoGameContextFlagException(InvalidGameContextException, ContextFlagCountEx
 
 
 #========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
-class TooManyGameContextFlagsException(InvalidGameContextException, ContextFlagCountException):
+class ExcessiveGameContextFlagsException(InvalidGameContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, GameContextException
 
@@ -53,7 +53,7 @@ class TooManyGameContextFlagsException(InvalidGameContextException, ContextFlagC
         *   ContextFlagCountException
 
     # PROVIDES:
-    TooManyGameContextFlagsException
+    ExcessiveGameContextFlagsException
 
     # ATTRIBUTES:
     None

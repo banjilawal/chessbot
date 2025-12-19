@@ -13,8 +13,8 @@ from typing import Any, cast
 from chess.agent import PlayerAgentService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.game import (
-    GameContext, InvalidGameContextException, NoGameContextFlagException, NullGameContextException,
-    TooManyGameContextFlagsException
+    GameContext, InvalidGameContextException, ZeroGameContextFlagsException, NullGameContextException,
+    ExcessiveGameContextFlagsException
 )
 
 
@@ -71,44 +71,55 @@ class GameContextValidator(Validator[GameContext]):
         # Raises:
             *   TypeError
             *   NullGameContextException
-            *   NoGameContextFlagException
-            *   TooManyGameContextFlagsException
+            *   ZeroGameContextFlagsException
+            *   ExcessiveGameContextFlagsException
             *   InvalidGameContextException
         """
         method = "GameContextValidator.validate"
         try:
-            # Null candidates are not allowed.
+            # Handle the case that the candidate does not exist.
             if candidate is None:
                 return ValidationResult.failure(
                     NullGameContextException(f"{method}: {NullGameContextException.DEFAULT_MESSAGE}")
                 )
-            # Ensure the candidate is a GameContext
+            # Handle the case that the candidate is not a GameContext.
             if not isinstance(candidate, GameContext):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected GameContext, got {type(candidate).__name__} instead.")
                 )
-            
             # After existence and type checks cast the candidate for further processing.
             context = cast(GameContext, candidate)
             
+            # Handle the case that no attribute-value tuple is enabled.
+            if len(context.to_dict()) == 0:
+                return ValidationResult.failure(
+                    ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.DEFAULT_MESSAGE}")
+                )
+            # Handle the case that more than one attribute-value tuple is enabled.
+            if len(context.to_dict()) == 0:
+                return ValidationResult.failure(
+                    ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException.DEFAULT_MESSAGE}")
+                )
+            
             # Make sure a search target exists in the context. Cannot perform a search without an
+            
             # property-value pair.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoGameContextFlagException(f"{method}: {NoGameContextFlagException.DEFAULT_MESSAGE}")
+                    ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Return an error if more than one property value pair exists in the context.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyGameContextFlagsException(
-                        f"{method}: {TooManyGameContextFlagsException.DEFAULT_MESSAGE}"
+                    ExcessiveGameContextFlagsException(
+                        f"{method}: {ExcessiveGameContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             
             # Verify the id flag if its enabled.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
-                if validation.is_failure():
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the id_game_context in a ValidationResult.
                 return ValidationResult.success(context)
@@ -116,13 +127,13 @@ class GameContextValidator(Validator[GameContext]):
             # Verify the id flag if its enabled.
             if context.agent is not None:
                 validation = agent_service.validator.validate(candidate=context.agent)
-                if validation.is_failure():
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the agent_game_context in a ValidationResult.
                 return ValidationResult.success(context)
             
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidGameContextException. Then send exception chain a ValidationResult.failure.
+        # Finally, for unhandled exceptions, wrap it inside an InvalidGameContextException. Then send the
+        # exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidGameContextException(

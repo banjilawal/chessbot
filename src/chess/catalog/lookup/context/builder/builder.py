@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.catalog import (
     CatalogContext, CatalogContextBuildFailedException, NoCatalogContextFlagException,
-    TooManyCatalogContextFlagsException
+    ExcessiveCatalogContextFlagsException
 )
 from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter, NumberValidator
 
@@ -74,7 +74,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
 
         # Raises:
             *   NoCatalogContextFlagException
-            *   TooManyCatalogContextFlagsException
+            *   ExcessiveCatalogContextFlagsException
             *   CatalogContextBuildFailedException
         """
         method = "CatalogContextBuilder.build"
@@ -91,7 +91,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
             # Only one property-value pair is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyCatalogContextFlagsException(f"{method}: {TooManyCatalogContextFlagsException}")
+                    ExcessiveCatalogContextFlagsException(f"{method}: {ExcessiveCatalogContextFlagsException}")
                 )
             # After the verifying the correct number of flags are set follow the appropriate BattleCatalog build flow.
             

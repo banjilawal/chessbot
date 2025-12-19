@@ -15,4 +15,4 @@ None
 # Modules
 from .null import NullCatalogContextException
 from .base import InvalidCatalogContextException
-from .flag import NoCatalogContextFlagException, TooManyCatalogContextFlagsException
+from .flag import NoCatalogContextFlagException, ExcessiveCatalogContextFlagsException

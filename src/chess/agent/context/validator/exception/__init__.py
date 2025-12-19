@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .flag import *
-from .null import *
 
 # Modules
-from .exception import InvalidAgentContextException
+from .null import NullAgentContextException
+from .base import InvalidAgentContextException

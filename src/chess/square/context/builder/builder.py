@@ -15,7 +15,7 @@ from chess.coord import Coord, CoordService
 from chess.system import Builder, BuildResult, IdentityService
 from chess.square import (
     NoSquareContextFlagSetException, SquareContext, SquareContextBuildFailedException,
-    TooManySquareContextFlagsSetException
+    ExcessiveSquareContextFlagsSetException
 )
 
 
@@ -91,8 +91,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManySquareContextFlagsSetException(
-                        f"{method}: {TooManySquareContextFlagsSetException.DEFAULT_MESSAGE}"
+                    ExcessiveSquareContextFlagsSetException(
+                        f"{method}: {ExcessiveSquareContextFlagsSetException.DEFAULT_MESSAGE}"
                     )
                 )
             

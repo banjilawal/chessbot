@@ -15,4 +15,4 @@ None
 # Modules
 from .base import InvalidTeamContextException
 from .null import NullTeamContextException
-from .flag import NoTeamContextFlagException, TooManyTeamContextFlagsException
+from .flag import NoTeamContextFlagException, ExcessiveTeamContextFlagsException

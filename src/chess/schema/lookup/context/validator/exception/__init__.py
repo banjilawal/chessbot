@@ -12,4 +12,4 @@ version: 1.0.0
 # Modules
 from .null import NullSchemaContextException
 from .base import InvalidSchemaContextException
-from .flag import NoSchemaContextFlagException, TooManySchemaContextFlagsException
+from .flag import NoSchemaContextFlagException, ExcessiveSchemaContextFlagsException

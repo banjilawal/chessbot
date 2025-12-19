@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.formation import (
-    OrderContext, OrderContextBuildFailedException, NoOrderContextFlagException, TooManyOrderContextFlagsException
+    OrderContext, OrderContextBuildFailedException, NoOrderContextFlagException, ExcessiveOrderContextFlagsException
 )
 from chess.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 
@@ -72,7 +72,7 @@ class OrderContextBuilder(Builder[OrderContext]):
 
         # Raises:
             *   NoOrderContextFlagException
-            *   TooManyOrderContextFlagsException
+            *   ExcessiveOrderContextFlagsException
             *   OrderContextBuildFailedException
         """
         method = "OrderContextBuilder.build"
@@ -89,7 +89,7 @@ class OrderContextBuilder(Builder[OrderContext]):
             # Only one property-value pair is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyOrderContextFlagsException(f"{method}: {TooManyOrderContextFlagsException}")
+                    ExcessiveOrderContextFlagsException(f"{method}: {ExcessiveOrderContextFlagsException}")
                 )
             # After the verifying the correct number of flags are set follow the appropriate BattleOrder build flow.
             

@@ -7,19 +7,38 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-
-
-from chess.system import ValidationException
 from chess.coord import CoordContextException
+from chess.system import ValidationFailedException
+
 
 
 __all__ = [
+    # ========================= COORD_CONTEXT VALIDATION EXCEPTION =========================#
     "InvalidCoordContextException"
 ]
 
 
-#========================= COORD_CONTEXT VALIDATION EXCEPTIONS =========================#
-class InvalidCoordContextException(CoordContextException, ValidationException):
-    """Catchall Exception for CoordContextValidator when a candidate fails a sanity check."""
+#========================= COORD_CONTEXT VALIDATION EXCEPTION =========================#
+class InvalidCoordContextException(CoordContextException, ValidationFailedException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions raised CoordContext validation.
+    2.  Wraps unhandled exceptions that hit the finally-block in CoordContextValidator methods.
+
+    # PARENT:
+        *   CoordContextException
+        *   ValidationFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "COORD_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "CoordContext validation failed."

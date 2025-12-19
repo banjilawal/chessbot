@@ -15,4 +15,4 @@ None
 # Modules
 from .base import InvalidGameContextException
 from .null import NullGameContextException
-from .flag import NoGameContextFlagException, TooManyGameContextFlagsException
+from .flag import ZeroGameContextFlagsException, ExcessiveGameContextFlagsException

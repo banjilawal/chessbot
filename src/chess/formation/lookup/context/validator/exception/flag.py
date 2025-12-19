@@ -14,7 +14,7 @@ __all__ = [
     # ========================= NO_ORDER_CONTEXT_FLAG EXCEPTION =========================#
     "NoOrderContextFlagException",
     # ========================= TOO_MANY_ORDER_CONTEXT_FLAGS EXCEPTION =========================#
-    "TooManyOrderContextFlagsException"
+    "ExcessiveOrderContextFlagsException"
 ]
 
 
@@ -41,7 +41,7 @@ class NoOrderContextFlagException(InvalidOrderContextException, ContextFlagCount
 
 
 # ========================= TOO_MANY_ORDER_CONTEXT_FLAGS EXCEPTION =========================#
-class TooManyOrderContextFlagsException(InvalidOrderContextException, ContextFlagCountException):
+class ExcessiveOrderContextFlagsException(InvalidOrderContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, OrderContextException
 

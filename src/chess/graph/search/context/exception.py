@@ -16,7 +16,7 @@ __all__ = [
     "NullVisitorSearchContextException",
     "InvalidVisitorSearchContextException",
     "NoVisitorSearchParamException",
-    "TooManyVisitorSearchParamsException",
+    "ExcessiveVisitorSearchParamsException",
 
     #======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
     "VisitorSearchContextBuildFailedException",
@@ -60,7 +60,7 @@ class NoVisitorSearchParamException(VisitorSearchContextException):
         "A VisitorSearchContext cannot have no params selected. Pick one param to run a searcher."
     )
 
-class TooManyVisitorSearchParamsException(VisitorSearchContextException):
+class ExcessiveVisitorSearchParamsException(VisitorSearchContextException):
     """
     Raised if more than one VisitorSearchContext param is set validation.
     """

@@ -14,7 +14,7 @@ from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankSpec, Rook
 from chess.system import IdValidator, LoggingLevelRouter, NameValidator, Validator, ValidationResult
 from chess.piece import (
     DomainSearchContext, InvalidDomainSearchContextException, NullDomainSearchContextException,
-    TooManyDomainSearchParamsException, ZeroDomainSearchParamsException, DomainInvalidRankNameParamException
+    ExcessiveDomainSearchParamsException, ZeroDomainSearchParamsException, DomainInvalidRankNameParamException
 )
 
 
@@ -62,7 +62,7 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
             
             if len(search_context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyDomainSearchParamsException(
+                    ExcessiveDomainSearchParamsException(
                         f"{method} {InvalidDomainSearchContextException.DEFAULT_MESSAGE}"
                         )
                 )

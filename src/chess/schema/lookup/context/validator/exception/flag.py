@@ -14,7 +14,7 @@ __all__ = [
     # ========================= NO_SCHEMA_CONTEXT_FLAG EXCEPTION =========================#
     "NoSchemaContextFlagException",
     # ========================= TOO_MANY_SCHEMA_CONTEXT_FLAGS EXCEPTION =========================#
-    "TooManySchemaContextFlagsException"
+    "ExcessiveSchemaContextFlagsException"
 ]
 
 
@@ -41,7 +41,7 @@ class NoSchemaContextFlagException(InvalidSchemaContextException, ContextFlagCou
 
 
 # ========================= TOO_MANY_TEAMS_CHEMA_CONTEXT_FLAGS EXCEPTION =========================#
-class TooManySchemaContextFlagsException(InvalidSchemaContextException, ContextFlagCountException):
+class ExcessiveSchemaContextFlagsException(InvalidSchemaContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, SchemaContextException
 

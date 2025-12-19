@@ -14,7 +14,7 @@ __all__ = [
     # ========================= NO_ARENA_CONTEXT_FLAG EXCEPTION =========================#
     "NoArenaContextFlagException",
     # ========================= TOO_MANY_ARENA_CONTEXT_FLAGS EXCEPTION =========================#
-    "TooManyArenaContextFlagsException"
+    "ExcessiveArenaContextFlagsException"
 ]
 
 
@@ -44,7 +44,7 @@ class NoArenaContextFlagException(InvalidArenaContextException, ContextFlagCount
 
 
 # ========================= TOO_MANY_ARENA_CONTEXT_FLAGS EXCEPTION =========================#
-class TooManyArenaContextFlagsException(InvalidArenaContextException, ContextFlagCountException):
+class ExcessiveArenaContextFlagsException(InvalidArenaContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, ArenaContextException
 

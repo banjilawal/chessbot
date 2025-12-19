@@ -12,7 +12,7 @@ from typing import Any, cast
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.formation import (
     InvalidOrderContextException, NoOrderContextFlagException, NullOrderContextException, OrderContext,
-    TooManyOrderContextFlagsException
+    ExcessiveOrderContextFlagsException
 )
 
 
@@ -66,7 +66,7 @@ class OrderContextValidator(Validator[OrderContext]):
             *   TypeError
             *   NullOrderContextException
             *   NoOrderContextFlagException
-            *   TooManyOrderContextFlagsException
+            *   ExcessiveOrderContextFlagsException
             *   InvalidOrderContextException
         """
         method = "OrderContextValidator.validate"
@@ -93,8 +93,8 @@ class OrderContextValidator(Validator[OrderContext]):
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyOrderContextFlagsException(
-                        f"{method}: {TooManyOrderContextFlagsException.DEFAULT_MESSAGE}"
+                    ExcessiveOrderContextFlagsException(
+                        f"{method}: {ExcessiveOrderContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # When structure tests are passed certify whichever search value was provided.
@@ -124,7 +124,7 @@ class OrderContextValidator(Validator[OrderContext]):
                 return ValidationResult.success(context)
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidOrderContextException. Then send exception chain a ValidationResult.failure.
+        # an InvalidOrderContextException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidOrderContextException(

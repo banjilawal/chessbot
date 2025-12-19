@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.piece import (
     NoPieceContextFlagSetException, PieceContext, PieceContextBuildFailedException,
-    TooManyPieceContextFlagsSetException
+    ExcessivePieceContextFlagsSetException
 )
 from chess.coord import Coord, CoordService
 from chess.rank import Rank, RankCertifier
@@ -86,7 +86,7 @@ class PieceContextBuilder(Builder[PieceContext]):
         # Raises:
             *   PieceContextBuildFailedException
             *   NoPieceContextFlagSetException
-            *   TooManyPieceContextFlagsSetException
+            *   ExcessivePieceContextFlagsSetException
         """
         method = "PieceContextBuilder.builder"
         
@@ -104,9 +104,9 @@ class PieceContextBuilder(Builder[PieceContext]):
             
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyPieceContextFlagsSetException(
+                    ExcessivePieceContextFlagsSetException(
                         f"{method}: "
-                        f"{TooManyPieceContextFlagsSetException}"
+                        f"{ExcessivePieceContextFlagsSetException}"
                     )
                 )
             

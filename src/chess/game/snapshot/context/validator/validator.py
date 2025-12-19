@@ -14,7 +14,7 @@ from chess.agent import PlayerAgentService
 from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from chess.game import (
     GameSnapshotContext, InvalidGameSnapshotContextException, NoGameSnapshotContextFlagException,
-    NullGameSnapshotContextException, TooManyGameSnapshotContextFlagsException
+    NullGameSnapshotContextException, ExcessiveGameSnapshotContextFlagsException
 )
 
 
@@ -73,7 +73,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
             *   TypeError
             *   NullGameSnapshotContextException
             *   NoGameSnapshotContextFlagException
-            *   TooManyGameSnapshotContextFlagsException
+            *   ExcessiveGameSnapshotContextFlagsException
             *   InvalidGameSnapshotContextException
         """
         method = "GameSnapshotContextValidator.validate"
@@ -102,8 +102,8 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
             
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyGameSnapshotContextFlagsException(
-                        f"{method}: {TooManyGameSnapshotContextFlagsException.DEFAULT_MESSAGE}"
+                    ExcessiveGameSnapshotContextFlagsException(
+                        f"{method}: {ExcessiveGameSnapshotContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # Certify the context if search is going to be by the snapshot's timestamp
@@ -131,7 +131,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
                 return ValidationResult.success(context)
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidGameSnapshotContextException. Then send exception chain a ValidationResult.failure.
+        # an InvalidGameSnapshotContextException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidGameSnapshotContextException(

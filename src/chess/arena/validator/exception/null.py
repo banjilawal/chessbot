@@ -12,12 +12,12 @@ from chess.system import NullException
 from chess.arena import InvalidArenaException
 
 __all__ = [
-    # ======================# NULL ARENA EXCEPTION #======================#
+    # ======================# NULL_ARENA EXCEPTION #======================#
     "NullArenaException",
 ]
 
 
-# ======================# NULL ARENA EXCEPTION #======================#
+# ======================# NULL_ARENA EXCEPTION #======================#
 class NullArenaException(InvalidArenaException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -27,8 +27,8 @@ class NullArenaException(InvalidArenaException, NullException):
     2.  Raised if an entity, method or operation requires a Arena but receives null instead.
 
     # PARENT:
-        *   InvalidArenaException
         *   NullArenaException
+        *   InvalidArenaException
 
     # PROVIDES:
     None

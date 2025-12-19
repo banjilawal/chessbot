@@ -14,7 +14,7 @@ from chess.arena import Arena, ArenaService
 from chess.agent import PlayerAgent, PlayerAgentService
 from chess.system import Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.team import (
-    NoTeamContextFlagException, TeamContext, TeamContextBuildFailedException, TooManyTeamContextFlagsException
+    NoTeamContextFlagException, TeamContext, TeamContextBuildFailedException, ExcessiveTeamContextFlagsException
 )
 
 
@@ -83,7 +83,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         # Raises:
             *   TeamContextBuildFailedException
             *   NoTeamContextFlagsException
-            *   TooManyTeamContextFlagsException
+            *   ExcessiveTeamContextFlagsException
         """
         method = "PieceSearchContextBuilder.builder"
         
@@ -100,7 +100,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             # Only one property-value pair is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyTeamContextFlagsException(f"{method}: {TooManyTeamContextFlagsException}")
+                    ExcessiveTeamContextFlagsException(f"{method}: {ExcessiveTeamContextFlagsException}")
                 )
             # After the verifying the correct number of flags are set follow the appropriate Schema build flow.
             

@@ -32,38 +32,39 @@ class AgentFinder(Finder[PlayerAgent]):
         *   Finder
 
     # PROVIDES:
-        *   find:   -> SearchResult[List[PlayerAgent]]
+    None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See Finder class for inherited attributes.
     """
     @classmethod
     @LoggingLevelRouter.monitor
     def find(
             cls,
-            dataset: List[PlayerAgent],
             context: AgentContext,
-            context_validator: AgentContextValidator = AgentContextValidator()
+            dataset: List[PlayerAgent],
+            context_validator: AgentContextValidator = AgentContextValidator(),
     ) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
         1.  Verify the dataset is not null and contains only PlayerAgent objects,
         2.  Use context_validator to certify the provided context.
-        3.  Context attribute routes the search. Attribute value is the search target.
-        4.  The outcome of the search is sent back to the caller in a SearchResult object.
+        3.  Route to the appropriate finder-helper based on the attribute-value tuple which is enabled.
+        4.  The finder-helper sends the SearchResult to the caller.
 
         # Parameters:
-            *   dataset (List[PlayerAgent]):
             *   context: AgentContext
+            *   dataset (List[PlayerAgent])
             *   context_validator: AgentContextValidator
 
         # Returns:
         SearchResult[List[PlayerAgent]] containing either:
-            - On success: List[player_agent] in the payload.
-            - On failure: Exception.
+            - On finding a match: List[PlayerAgent] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
 
         # Raises:
             *   TypeError
@@ -81,6 +82,7 @@ class AgentFinder(Finder[PlayerAgent]):
             validation_result = context_validator.validate(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
+            
             # After context is verified select the search method based on the which flag is enabled.
             
             # Entry point into searching by player_agent.id.
@@ -95,6 +97,7 @@ class AgentFinder(Finder[PlayerAgent]):
             # Entry point into searching by AgentVariety (Human or Machine)
             if context.variety is not None:
                 return cls._find_by_variety(dataset, context.variety)
+            
         # Finally, if some exception is not handled by the checks wrap it inside an AgentFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -107,10 +110,11 @@ class AgentFinder(Finder[PlayerAgent]):
     def _find_by_id(cls, dataset: [PlayerAgent], id: int) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
-        1.  Get the PlayerAgent with the matching id.
-        2.  If no match is found return an exception.
-        3.  An id search should produce either no hits or one hit only.
-        4.  Multiple unique agents in the result indicates a problem.
+        1.  Get the PlayerAgents with the matching id.
+        2.  If no hits are found an empty SearchResult is returned. For one or more unique hits a success
+            SearchResult is returned. Otherwise, a SearchResult failure containing an exception is sent.
+        3.  There really should only be one or none hits on a unique id but, the multiple hits error condition is
+            relaxed for testing.
 
         # Parameters:
             *   id (int)
@@ -118,22 +122,26 @@ class AgentFinder(Finder[PlayerAgent]):
 
         # Returns:
         SearchResult[List[PlayerAgent]] containing either:
-            - On success: List[player_agent] in the payload.
-            - On failure: Exception.
+            - On finding a match: List[PlayerAgent] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
 
         # Raises:
             *   AgentFinderException
         """
         method = "AgentFinder._find_by_id"
         try:
+            # Get the list of agents with the same id.
             matches = [agent for agent in dataset if agent.id == id]
-            # There should be either no Agents with the id or one and only one PlayerAgent will have that id.
+            
+            # An empty array means nothing was found.
             if len(matches) == 0:
                 return SearchResult.empty()
             # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
             # inconsistency later.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
+            
         # Finally, if some exception is not handled by the checks wrap it inside an AgentFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
@@ -146,10 +154,11 @@ class AgentFinder(Finder[PlayerAgent]):
     def _find_by_name(cls, dataset: [PlayerAgent], name: str) -> SearchResult[List[PlayerAgent]]:
         """
         # Action:
-        1.  Get the PlayerAgent with the matching designation.
-        2.  If no match is found return an exception.
-        3.  A designation search should produce either no hits or one hit only.
-        4.  Multiple unique agents in the result indicates a problem.
+        1.  Get the PlayerAgents with the matching upper class name.
+        2.  If no hits are found an empty SearchResult is returned. For one or more unique hits a success
+            SearchResult is returned. Otherwise, a SearchResult failure containing an exception is sent.
+        3.  There really should only be one or none hits on a unique id but, the multiple hits error condition is
+            relaxed for testing.
 
         # Parameters:
             *   designation (str)
@@ -157,22 +166,26 @@ class AgentFinder(Finder[PlayerAgent]):
 
         # Returns:
         SearchResult[List[PlayerAgent]] containing either:
-            - On success: List[player_agent] in the payload.
-            - On failure: Exception.
+            - On finding a match: List[PlayerAgent] in the payload.
+            - On error: Exception , payload null
+            - On no matches found: Exception null, payload null
 
         # Raises:
             *   AgentFinderException
         """
         method = "AgentFinder._find_by_name"
         try:
-            # Names are unique the search should only produce one unique result.
+            # Get the list of agents with the same name in upper case..
             matches = [agent for agent in dataset if agent.name.upper() == name.upper()]
+            
+            # An empty array means nothing was found.
             if len(matches) == 0:
                 return SearchResult.empty()
             # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
             # inconsistency later.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
+            
         # Finally, if some exception is not handled by the checks wrap it inside an AgentFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:

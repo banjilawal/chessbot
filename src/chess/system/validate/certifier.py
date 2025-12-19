@@ -67,7 +67,7 @@ class ValidatorCertifier:
             return ValidationResult.success(cast(Validator, candidate))
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an UnreliableValidatorException. Then send exception chain a ValidationResult.failure.
+        # an UnreliableValidatorException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             ValidationResult.failure(
                 UnreliableValidatorException(

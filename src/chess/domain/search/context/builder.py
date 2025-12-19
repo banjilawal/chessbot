@@ -13,7 +13,7 @@ from chess.rank import RankBoundsChecker
 from chess.coord import Coord, CoordValidator
 from chess.system import Builder, BuildResult, IdValidator, LoggingLevelRouter, NameValidator
 from chess.domain import (
-    ResidentFilter, TooManyResidentSearchParamsException, NoResidentSearchParamException
+    ResidentFilter, ExcessiveResidentSearchParamsException, NoResidentSearchParamException
 )
 
 
@@ -48,8 +48,8 @@ class ResidentFilterBuilder(Builder[ResidentFilter]):
             
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyResidentSearchParamsException(
-                        f"{method}: {TooManyResidentSearchParamsException.DEFAULT_MESSAGE}"
+                    ExcessiveResidentSearchParamsException(
+                        f"{method}: {ExcessiveResidentSearchParamsException.DEFAULT_MESSAGE}"
                     )
                 )
             

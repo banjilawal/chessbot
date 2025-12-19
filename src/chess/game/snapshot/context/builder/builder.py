@@ -13,7 +13,7 @@ from chess.agent import PlayerAgent, PlayerAgentService
 from chess.system import BuildResult, Builder, LoggingLevelRouter, NumberValidator
 from chess.game import (
     GameSnapshotContext, GameSnapshotContextBuildFailedException, NoGameSnapshotContextFlagException,
-    TooManyGameSnapshotContextFlagsException
+    ExcessiveGameSnapshotContextFlagsException
 )
 
 
@@ -78,7 +78,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
         # Raises:
             *   GameSnapshotContextBuildFailedException
             *   NoGameSnapshotContextFlagException
-            *   TooManyGameSnapshotContextFlagsException
+            *   ExcessiveGameSnapshotContextFlagsException
         """
         method = "GameSnapshotContextBuilder.build"
         try:
@@ -95,7 +95,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
             # Filter the previous set of matches in a new GameSnapshotFinder with a new context.
             if param_count > 1:
                 return BuildResult.failure(
-                    TooManyGameSnapshotContextFlagsException(f"{method}: {TooManyGameSnapshotContextFlagsException}")
+                    ExcessiveGameSnapshotContextFlagsException(f"{method}: {ExcessiveGameSnapshotContextFlagsException}")
                 )
             
             # After verifying the correct number of flags has been enabled follow the appropriate
@@ -126,7 +126,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
                 return BuildResult.success(payload=GameSnapshotContext(team=team))
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # anGameSnapshotContextBuildFailedException. Then send exception chain a BuildResult.failure.
+        # anGameSnapshotContextBuildFailedException. Then send the exception-chain in a BuildResult.failure.
         except Exception as ex:
             return BuildResult.failure(
                GameSnapshotContextBuildFailedException(

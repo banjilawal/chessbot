@@ -67,7 +67,7 @@ class BuilderValidator(Validator[Builder]):
             return ValidationResult.success(cast(Builder, candidate))
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an UnreliableBuilderException. Then send exception chain a ValidationResult.failure.
+        # an UnreliableBuilderException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             ValidationResult.failure(
                 UnreliableBuilderException(ex=ex, message=f"{method}: {UnreliableBuilderException.DEFAULT_MESSAGE}")

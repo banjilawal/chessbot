@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from chess.catalog import (
     CatalogContext, InvalidCatalogContextException, NoCatalogContextFlagException, NullCatalogContextException,
-    TooManyCatalogContextFlagsException
+    ExcessiveCatalogContextFlagsException
 )
 from chess.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 
@@ -66,7 +66,7 @@ class CatalogContextValidator(Validator[CatalogContext]):
             *   TypeError
             *   NullCatalogContextException
             *   NoCatalogContextFlagException
-            *   TooManyCatalogContextFlagsException
+            *   ExcessiveCatalogContextFlagsException
             *   InvalidCatalogContextException
         """
         method = "CatalogContextValidator.validate"
@@ -93,8 +93,8 @@ class CatalogContextValidator(Validator[CatalogContext]):
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    TooManyCatalogContextFlagsException(
-                        f"{method}: {TooManyCatalogContextFlagsException.DEFAULT_MESSAGE}"
+                    ExcessiveCatalogContextFlagsException(
+                        f"{method}: {ExcessiveCatalogContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # When structure tests are passed certify whichever search value was provided.
@@ -132,7 +132,7 @@ class CatalogContextValidator(Validator[CatalogContext]):
                 return ValidationResult.success(context)
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidCatalogContextException. Then send exception chain a ValidationResult.failure.
+        # an InvalidCatalogContextException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCatalogContextException(

@@ -12,7 +12,7 @@ from chess.square import InvalidSquareContextException
 
 __all__ = [
     "NoSquareContextFlagSetException",
-    "TooManySquareContextFlagsSetException"
+    "ExcessiveSquareContextFlagsSetException"
 ]
 
 class NoSquareContextFlagSetException(
@@ -24,7 +24,7 @@ class NoSquareContextFlagSetException(
     DEFAULT_MESSAGE = "One SquareContext flag must be set."
 
 
-class TooManySquareContextFlagsSetException(
+class ExcessiveSquareContextFlagsSetException(
     InvalidSquareContextException,
     BoundsException
 ):
