@@ -12,7 +12,7 @@ from typing import Optional
 
 from chess.board import Board
 from chess.coord import Coord, CoordService
-from chess.system import Builder, BuildResult, IdentityService
+from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService
 from chess.square import (
     NoSquareContextFlagSetException, SquareContext, SquareContextBuildFailedException,
     ExcessiveSquareContextFlagsSetException
@@ -103,22 +103,31 @@ class SquareContextBuilder(Builder[SquareContext]):
                 id_validation = idservice.validate_id(candidate=id)
                 if id_validation.is_failure:
                     return BuildResult.failure(id_validation.exception)
+                # On validation success return an id_SquareContext in the BuildResult.
                 return BuildResult.success(SquareContext(id=id))
             
+            # Build the name SquareContext if its flag is enabled.
             if name is not None:
                 name_validation = idservice.validate_name(candidate=name)
                 if name_validation.is_failure:
                     return BuildResult.failure(name_validation.exception)
+                # On validation success return a name_SquareContext in the BuildResult.
                 return BuildResult.success(SquareContext(name=name))
             
+            # Build the coord SquareContext if its flag is enabled.
             if coord is not None:
-                coord_validation = coord_service.item_validator.validate(coord)
+                coord_validation = coord_service.validator.validate(coord)
                 if coord_validation.is_failure:
                     return BuildResult.failure(coord_validation.exception)
+                # On validation success return a coord_SquareContext in the BuildResult.
                 return BuildResult.success(SquareContext(coord=coord))
             
-        # Finally, if there is an unhandled exception Wrap an SquareContextBuildFailedException around it
-        # then return the exceptions inside a ValidationResult.
+            # As a failsafe send a buildResult failure if a context path was missed.
+            BuildResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if there is an unhandled exception Wrap a SquareContextBuildFailedException around it then
+        # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                 SquareContextBuildFailedException(
