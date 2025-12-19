@@ -109,7 +109,7 @@ class CatalogValidator(Validator[Catalog]):
     def verify_in_ransom_spec(
             cls,
             candidate: Any,
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -133,7 +133,7 @@ class CatalogValidator(Validator[Catalog]):
         method = "CatalogValidator.verify_in_id_spec"
         try:
             # Start the error detection process.
-            id_validation = idservice.validate_id(candidate)
+            id_validation = identity_service.validate_id(candidate)
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
                 # Next check if id is allowed.
@@ -157,7 +157,7 @@ class CatalogValidator(Validator[Catalog]):
     def verify_name_in_spec(
             cls,
             candidate: Any,
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[str]:
         """
         # ACTION:
@@ -181,7 +181,7 @@ class CatalogValidator(Validator[Catalog]):
         method = "CatalogValidator.verify_name_in_spec"
         try:
             # Test if the candidate is safe text.
-            validation = idservice.validate_name(candidate)
+            validation = identity_service.validate_name(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)
             # Next check if designation is allowed.

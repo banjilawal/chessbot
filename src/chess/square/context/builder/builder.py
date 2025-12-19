@@ -50,7 +50,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             coord: Optional[Coord] = None,
             board: Optional[Board] = None,
             coord_service: CoordService = CoordService(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[SquareContext]:
         """
         # ACTION:
@@ -100,7 +100,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             
             # Build the id SquareContext if its flag is enabled.
             if id is not None:
-                id_validation = idservice.validate_id(candidate=id)
+                id_validation = identity_service.validate_id(candidate=id)
                 if id_validation.is_failure:
                     return BuildResult.failure(id_validation.exception)
                 # On validation success return an id_SquareContext in the BuildResult.
@@ -108,7 +108,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             
             # Build the name SquareContext if its flag is enabled.
             if name is not None:
-                name_validation = idservice.validate_name(candidate=name)
+                name_validation = identity_service.validate_name(candidate=name)
                 if name_validation.is_failure:
                     return BuildResult.failure(name_validation.exception)
                 # On validation success return a name_SquareContext in the BuildResult.

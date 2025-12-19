@@ -12,7 +12,7 @@ from chess.coord import Coord
 from chess.system import SearchContext
 
 
-class BoardSearchContext(SearchContext):
+class BoardContext(SearchContext):
     """
     # ROLE: Finder option filter
   

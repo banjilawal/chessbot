@@ -41,7 +41,7 @@ class KnightValidator(Validator[Knight]):
             candidate: Any,
             text_validator: TextValidator = TextValidator(),
             number_validator: NumberValidator = NumberValidator(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Knight]:
         """
         # ACTION:
@@ -124,7 +124,7 @@ class KnightValidator(Validator[Knight]):
             cls,
             candidate: Any,
             rank_spec: RankSpec = RankSpec(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -149,7 +149,7 @@ class KnightValidator(Validator[Knight]):
         method = "KnightValidator.verify_id"
         try:
             # Test if the candidate is a safe id.
-            validation = idservice.validate_id(candidate)
+            validation = identity_service.validate_id(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)
             # Next check if id is correct for a knight.
@@ -174,7 +174,7 @@ class KnightValidator(Validator[Knight]):
             cls,
             candidate: Any,
             rank_spec: RankSpec = RankSpec(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -199,7 +199,7 @@ class KnightValidator(Validator[Knight]):
         method = "KnightValidator.verify_name"
         try:
             # Test if the candidate is a safe designation.
-            validation = idservice.validate_name(candidate)
+            validation = identity_service.validate_name(candidate)
             if validation.is_failure():
                 return ValidationResult.failure(validation.exception)
             # Next check if designation is correct for a knight.

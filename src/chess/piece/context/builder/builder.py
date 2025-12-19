@@ -55,7 +55,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             team_service: TeamCertifier = TeamCertifier(),
             rank_service: RankCertifier = RankCertifier(),
             coord_service: CoordService = CoordService(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[PieceContext]:
         """
         # Action:
@@ -109,7 +109,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             
             # Build the id PieceContext if its flag is enabled.
             if id is not None:
-                validation = idservice.validate_id(id)
+                validation = identity_service.validate_id(id)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return an id_PieceContext in the BuildResult.
@@ -117,7 +117,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             
             # Build the name PieceContext if its flag is enabled.
             if name is not None:
-                validation = idservice.validate_name(name)
+                validation = identity_service.validate_name(name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a name_PieceContext in the BuildResult.

@@ -11,7 +11,7 @@ from typing import List
 
 from chess.coord import Coord
 from chess.piece import Piece
-from chess.board import Board, BoardSearchContext, BoardSearchContextValidator, BoardValidator
+from chess.board import Board, BoardContext, BoardSearchContextValidator, BoardValidator
 from chess.system import (
     Finder, SearchResult, LoggingLevelRouter, PieceSearchNameCollisionException, PieceSearchCoordCollisionException,
     PieceSearchIdCollisionException
@@ -36,7 +36,7 @@ class BoardPieceFinder(Finder[Board, Piece]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def search(cls, board: Board, search_context: BoardSearchContext) -> SearchResult[List[Piece]]:
+    def search(cls, board: Board, search_context: BoardContext) -> SearchResult[List[Piece]]:
         method = "BoardPieceFinder.old_search"
 
         board_validation = BoardValidator.validate(board)

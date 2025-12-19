@@ -45,7 +45,7 @@ class TeamValidator(Validator[Team]):
             cls,
             candidate: Any,
             agent_service: PlayerAgentService = PlayerAgentService(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> ValidationResult[Team]:
         """
@@ -95,7 +95,7 @@ class TeamValidator(Validator[Team]):
             if schema_validation.is_failure():
                 return ValidationResult.failure(schema_validation.exception)
             # After team_schema checks out. Test designation and id at the same time.
-            identity_validation = idservice.validate_identity(
+            identity_validation = identity_service.validate_identity(
                 id_candidate=team.id,
                 name_candidate=team.schema.name
             )

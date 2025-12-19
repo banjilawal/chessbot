@@ -317,7 +317,7 @@ class PieceFactory(Builder[Piece]):
             opening_square: Square,
             rank_service: RankService = RankService(),
             team_service: TeamService = TeamService(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
             square_service: SquareService = SquareService(),
     ) -> ValidationResult[(int, str, Rank, Team, int, Square)]:
         """
@@ -329,7 +329,7 @@ class PieceFactory(Builder[Piece]):
         method = "PieceFactory._validate_build_attributes"
         try:
             # Start the error detection process.
-            identity_validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
+            identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             
@@ -346,7 +346,7 @@ class PieceFactory(Builder[Piece]):
             if square_validation.is_failure():
                 return BuildResult.failure(square_validation.exception)
             
-            roster_number_validation = idservice.validate_id(candidate=roster_number)
+            roster_number_validation = identity_service.validate_id(candidate=roster_number)
             if roster_number_validation.is_failure():
                 return BuildResult.failure(roster_number_validation.exception)
             

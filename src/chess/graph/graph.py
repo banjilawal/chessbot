@@ -10,7 +10,7 @@ from re import search
 from typing import List, Optional, cast
 
 from chess.piece import OccupationEvent, OccupationEventValidator, Piece
-from chess.board import Board, BoardPieceFinder, BoardSearchContext
+from chess.board import Board, BoardPieceFinder, BoardContext
 from chess.domain import Domain
 from chess.system.transaction import TransactionResult
 from chess.neighbor import NeighborTuple, VisitationService

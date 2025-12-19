@@ -24,7 +24,7 @@ class PieceContextValidator(Validator[PieceContext]):
             cls,
             candidate: Any,
             coord_service: CoordService = CoordService(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[PieceContext]:
         """"""
         method = "PieceContextValidator.validate"
@@ -65,13 +65,13 @@ class PieceContextValidator(Validator[PieceContext]):
                 )
             
             if context.id is not None:
-                validation = idservice.validate_id(candidate=context.id)
+                validation = identity_service.validate_id(candidate=context.id)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.name is not None:
-                validation = idservice.validate_name(candidate=context.name)
+                validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)

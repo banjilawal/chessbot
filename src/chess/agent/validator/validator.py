@@ -44,7 +44,7 @@ class AgentValidator(Validator[PlayerAgent]):
     def validate(
             cls,
             candidate: Any,
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
             service_validator: ServiceValidator = ServiceValidator(),
     ) -> ValidationResult[PlayerAgent]:
         """
@@ -90,7 +90,7 @@ class AgentValidator(Validator[PlayerAgent]):
             agent = cast(PlayerAgent, candidate)
             
             # Verify the id and designation are safe.
-            identity_validation = idservice.validate_identity(agent.id, agent.name)
+            identity_validation = identity_service.validate_identity(agent.id, agent.name)
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             

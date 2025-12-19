@@ -10,7 +10,7 @@ from chess.system import ChessException, NullException, ValidationFailedExceptio
 
 __all__ = [
     "ServiceException",
-    "InvalidServiceException",
+    "Invalidentity_serviceException",
     "NullServiceException",
     "ServiceOperationFailedException",
 ]
@@ -26,13 +26,13 @@ class ServiceException(ChessException):
     DEFAULT_MESSAGE = "EntityService raised an exception."
 
 
-class InvalidServiceException(ServiceException, ValidationFailedException):
+class Invalidentity_serviceException(ServiceException, ValidationFailedException):
     """Raised when an EntityService fails a safety check."""
     ERROR_CODE = "SERVICE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "EntityService validation failed."
 
 
-class NullServiceException(InvalidServiceException, NullException):
+class NullServiceException(Invalidentity_serviceException, NullException):
     """Raised when a object, module or method is expecting an EntityService but gets null instead."""
     ERROR_CODE = "NULL_SERVICE_ERROR"
     DEFAULT_MESSAGE = "EntityService cannot be null."

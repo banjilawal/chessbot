@@ -58,7 +58,7 @@ from chess.battle_space import Projection, ProjectionSearchContext
 from chess.battle_space.service import ProjectionService
 from chess.coord import Coord
 from chess.piece import Piece
-from chess.board import Board, BoardSearchContext, BoardSearchContextValidator, BoardValidator
+from chess.board import Board, BoardContext, BoardSearchContextValidator, BoardValidator
 from chess.system import (
     Finder, SearchResult, LoggingLevelRouter, PieceSearchNameCollisionException, PieceSearchCoordCollisionException,
     PieceSearchIdCollisionException

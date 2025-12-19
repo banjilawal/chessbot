@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.board import BoardSearchContext, BoardSquareFinder
-from chess.board.search.context.builder import BoardSearchContextBuilder
+from chess.board import BoardContext, BoardSquareFinder
+from chess.board.search.context.builder import BoardContextBuilder
 from chess.pawn.promotion.event import PromotionEvent
 from chess.pawn.promotion.exception import DoublePromotionException
 from chess.rank import Bishop, Knight, Queen, Rook
@@ -89,10 +89,10 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
                     DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
                 )
             
-            context_build_result = BoardSearchContextBuilder.build(piece_id=event.actor.visitor_id)
+            context_build_result = BoardContextBuilder.build(piece_id=event.actor.visitor_id)
             if context_build_result.is_failure():
                 return ValidationResult.failure(context_build_result.exception)
-            context = cast(BoardSearchContext, context_build_result.payload)
+            context = cast(BoardContext, context_build_result.payload)
             
             square_search_result = BoardSquareFinder.search(board=event.execution_environment, context=context)
             if square_search_result.is_failure():

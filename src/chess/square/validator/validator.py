@@ -46,7 +46,7 @@ class SquareValidator(Validator[Square]):
             candidate: Any,
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Square]:
         """
         # ACTION:
@@ -88,7 +88,7 @@ class SquareValidator(Validator[Square]):
             square = cast(Square, candidate)
             
             # Verify the Square.id and Square.designation
-            identity_validation = idservice.validate_identity(
+            identity_validation = identity_service.validate_identity(
                 id_candidate=square.id,
                 name_candidate=square.name
             )

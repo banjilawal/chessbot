@@ -7,17 +7,12 @@ Created: 2025-10-08
 version: 1.0.0
 """
 
-from typing import Optional
-
-from chess.coord import Coord, CoordValidator
-from chess.system import BuildResult, Builder, IdValidator, NameValidator, LoggingLevelRouter
-from chess.board import (
-    BoardSearchContext, BoardSearchContextBuildFailedException, NoBoardSearchOptionSelectedException,
-    MoreThanOneBoardSearchOptionPickedException,
-)
+from chess.arena import Arena, ArenaService
+from chess.system import BuildResult, Builder, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter
+from chess.board import BoardContext, BoardContextBuildFailedException
 
 
-class BoardSearchContextBuilder(Builder[BoardSearchContext]):
+class BoardContextBuilder(Builder[BoardContext]):
     """
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
@@ -40,13 +35,11 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            id: Optional[int],
-            name: Optional[str],
-            coord: Optional[Coord],
-            id_validator: type[IdValidator] = IdValidator,
-            name_validator: type[NameValidator] = NameValidator,
-            coord_validator: type[CoordValidator] = CoordValidator
-    ) -> BuildResult[BoardSearchContext]:
+            id: int,
+            arena: Arena,
+            arena_service: ArenaService = ArenaService(),
+            identity_service: IdentityService = IdentityService(),
+    ) -> BuildResult[BoardContext]:
         """
         # Action:
             1.  Use dependency injected validators to verify correctness of parameters required to
@@ -67,18 +60,18 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
             - On failure:   Exception.
 
         # Raises:
-            *   BoardSearchContextBuildFailedException
+            *   BoardContextBuildFailedException
             *   NoBoardSearchOptionSelectedException
             *   MoreThanOneBoardSearchOptionPickedException
         """
-        method = "BoardSearchContextBuilder.builder"
+        method = "BoardContextBuilder.builder"
         
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
-            params = [id, name, coord]
+            params = [id, arena]
             param_count = sum(bool(p) for p in params)
             
-            # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
+            # Test if no params are set. Need an attribute-value pair to find which Boards match the target.
             if param_count == 0:
                 return BuildResult.failure(
                     ZeroBoardFlagsException(f"{method}: {ZeroBoardFlagsException.DEFAULT_MESSAGE}")
@@ -88,136 +81,31 @@ class BoardSearchContextBuilder(Builder[BoardSearchContext]):
                 return BuildResult.failure(
                     ExcessiveBoardContextFlagsException(f"{method}: {ExcessiveBoardContextFlagsException}")
                 )
+            # After verifying only one PlayerAgent attribute-value-tuple is enabled, validate it.
             
             # Build the id BoardContext if its flag is enabled.
             if id is not None:
-                return cls.build_id_search_context(id=id, id_validator=id_validator)
+                validation = identity_service.validate_id(id)
+                if validation.is_failure:
+                    return BuildResult.failure(validation.exception)
+                # On validation success return an id_BoardContext in the BuildResult.
+                return BuildResult.success(BoardContext(id=id))
             
-            if name is not None:
-                return cls.build_name_search_context(name=name, name_validator=name_validator)
+            # Build the arena BoardContext if its flag is enabled.
+            if arena is not None:
+                validation = arena_service.validate_id(id)
+                if validation.is_failure:
+                    return BuildResult.failure(validation.exception)
+                # On validation success return an id_BoardContext in the BuildResult.
+                return BuildResult.success(BoardContext(arena=arena))
             
-            if coord is not None:
-                return cls.build_coord_search_context(coord=coord, coord_validator=coord_validator)
-        
+            # As a failsafe send a buildResult failure if a context path was missed.
+            BuildResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if there is an unhandled exception Wrap an AgentContextBuildFailedException around it then
+        # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                BoardSearchContextBuildFailedException(
-                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def build_id_search_context(
-            cls,
-            id: int,
-            id_validator: type[IdValidator] = IdValidator
-    ) -> BuildResult[BoardSearchContext]:
-        """
-        # Action:
-        Build an id-TeamSearchContext if IdValidator verifies searcher target is safe.
-
-        # Parameters:
-          *     id (int):                           target id
-          *     id_validator (type[IdValidator]):   validates target.
-
-        # Returns:
-          ValidationResult[TeamSearchContext] containing either:
-                - On success:   TeamSearchContext in the payload.
-                - On failure:   Exception.
-
-        # Raises:
-            *   InvalidBoardSearchContextException
-        """
-        method = "BoardSearchContextBuilder.build_id_search_context"
-        try:
-            id_validation = id_validator.validate(id)
-            if id_validation.is_failure():
-                return BuildResult.failure(id_validation.exception)
-            
-            return BuildResult.success(payload=BoardSearchContext(id=id_validation.payload))
-        
-        except Exception as ex:
-            return BuildResult.failure(
-                BoardSearchContextBuildFailedException(
-                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def build_name_search_context(
-            cls,
-            name: str,
-            name_validator: type[NameValidator] = NameValidator
-    ) -> BuildResult[BoardSearchContext]:
-        """
-        # Action:
-        Build a designation-TeamSearchContext if NameValidator verifies searcher target is safe.
-
-        # Parameters:
-            *   designation (str):                             target designation
-            *   name_validator (type[NameValidator]):   validates target.
-
-        # Returns:
-          ValidationResult[TeamSearchContext] containing either:
-                - On success:   TeamSearchContext in the payload.
-                - On failure:   Exception.
-
-        # Raises:
-            *   InvalidBoardSearchContextException
-        """
-        method = "BoardSearchContextBuilder.build_name_search_context"
-        
-        try:
-            name_validation = name_validator.validate(name)
-            if name_validation.is_failure():
-                return BuildResult.failure(name_validation.exception)
-            
-            return BuildResult.success(payload=BoardSearchContext(name=name_validation.payload))
-        
-        except Exception as ex:
-            return BuildResult.failure(
-                BoardSearchContextBuildFailedException(
-                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}", ex
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def build_coord_search_context(
-            cls,
-            coord: Coord,
-            coord_validator: type[CoordValidator] = CoordValidator
-    ) -> BuildResult[BoardSearchContext]:
-        """
-        # Action:
-        Build a target-TeamSearchContext if CoordValidator verifies searcher target is safe.
-
-        # Parameters:
-          *     target (Coord):                              target Coord
-          *     validator (type[CoordValidator]):     validates target.
-
-        # Returns:
-        ValidationResult[TeamSearchContext] containing either:
-            - On success:   TeamSearchContext in the payload.
-            - On failure:   Exception.
-
-        # Raises:
-            *   InvalidBoardSearchContextException
-        """
-        method = "BoardSearchContextBuilder.build_coord_search_context"
-        
-        try:
-            coord_validation = coord_validator.validate(coord)
-            if coord_validation.is_failure():
-                return BuildResult.failure(coord_validation.exception)
-            
-            return BuildResult.success(payload=BoardSearchContext(name=coord_validation.payload))
-        
-        except Exception as e:
-            return BuildResult.failure(
-                BoardSearchContextBuildFailedException(
-                    f"{method}: {BoardSearchContextBuildFailedException.DEFAULT_MESSAGE}"
-                )
+                BoardContextBuildFailedException(f"{method}: {BoardContextBuildFailedException.DEFAULT_MESSAGE}")
             )

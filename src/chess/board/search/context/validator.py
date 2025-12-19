@@ -12,7 +12,7 @@ from typing import Any, cast
 from chess.coord import Coord, CoordValidator
 from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
 from chess.board import (
-    BoardSearchContext, InvalidBoardSearchContextException, NullBoardSearchContextException,
+    BoardContext, InvalidBoardSearchContextException, NullBoardSearchContextException,
     MoreThanOneBoardSearchOptionPickedException, NoBoardSearchOptionSelectedException
 )
 
@@ -43,7 +43,7 @@ class BoardSearchContextValidator(Validator):
             id_validator: type[IdValidator] = IdValidator,
             name_validator: type[NameValidator] = NameValidator,
             coord_validator: type[CoordValidator] = CoordValidator
-    ) -> ValidationResult[BoardSearchContext]:
+    ) -> ValidationResult[BoardContext]:
         """
         # Action:
         Verifies candidate is a TeamSearchContext in two steps.
@@ -76,12 +76,12 @@ class BoardSearchContextValidator(Validator):
                     NullBoardSearchContextException(f"{method} {NullBoardSearchContextException.DEFAULT_MESSAGE}")
                 )
             
-            if not isinstance(candidate, BoardSearchContext):
+            if not isinstance(candidate, BoardContext):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected TeamSearchContext, got {type(candidate).__name__} instead.")
                 )
             
-            board_search_context = cast(BoardSearchContext, candidate)
+            board_search_context = cast(BoardContext, candidate)
             if len(board_search_context.to_dict() == 0):
                 return ValidationResult.failure(
                     NoBoardSearchOptionSelectedException(
@@ -128,7 +128,7 @@ class BoardSearchContextValidator(Validator):
             cls,
             candidate: Any,
             id_validator: type[IdValidator] = IdValidator
-    ) -> ValidationResult[BoardSearchContext]:
+    ) -> ValidationResult[BoardContext]:
         """
         # Action:
         Verify an id_candidate meets application TeamSearchContext safety requirements.
@@ -152,7 +152,7 @@ class BoardSearchContextValidator(Validator):
             if id_validation.is_failure():
                 return ValidationResult.failure(id_validation.exception)
             
-            return ValidationResult.success(payload=BoardSearchContext(id=id_validation.payload))
+            return ValidationResult.success(payload=BoardContext(id=id_validation.payload))
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidBoardSearchContextException(
@@ -167,7 +167,7 @@ class BoardSearchContextValidator(Validator):
             cls,
             candidate: Any,
             name_validator: type[NameValidator] = NameValidator
-    ) -> ValidationResult[BoardSearchContext]:
+    ) -> ValidationResult[BoardContext]:
         """
         # Action:
         Verify a name_candidate meets application TeamSearchContext safety requirements.
@@ -191,7 +191,7 @@ class BoardSearchContextValidator(Validator):
             if name_validation.is_failure():
                 return ValidationResult.failure(name_validation.exception)
             
-            return ValidationResult.success(payload=BoardSearchContext(name=name_validation.payload))
+            return ValidationResult.success(payload=BoardContext(name=name_validation.payload))
         
         except Exception as ex:
             return ValidationResult.failure(
@@ -207,7 +207,7 @@ class BoardSearchContextValidator(Validator):
             cls,
             candidate: Any,
             coord_validator: type[CoordValidator] = CoordValidator
-    ) -> ValidationResult[BoardSearchContext]:
+    ) -> ValidationResult[BoardContext]:
         """
         # Action:
         Verify a coord_candidate meets application TeamSearchContext safety requirements.
@@ -231,7 +231,7 @@ class BoardSearchContextValidator(Validator):
             if coord_validation.is_failure():
                 return ValidationResult.failure(coord_validation.exception)
             
-            return ValidationResult.success(payload=BoardSearchContext(coord=coord_validation.payload))
+            return ValidationResult.success(payload=BoardContext(coord=coord_validation.payload))
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidBoardSearchContextException(

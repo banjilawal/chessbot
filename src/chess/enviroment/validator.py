@@ -9,10 +9,10 @@ Version: 1.0.1
 from typing import cast
 
 from chess.board import (
-    Board, BoardSearchContext, BoardSquareFinder, BoardValidator,
+    Board, BoardContext, BoardSquareFinder, BoardValidator,
     SquareInvariantBreachException
 )
-from chess.board.search.context.builder import BoardSearchContextBuilder
+from chess.board.search.context.builder import BoardContextBuilder
 from chess.enviroment import (
     PieceDoesNotOwnCurrentSquareException, PieceNotOnRosterCannotActException,
     NullTurnSceneException, TurnScene
@@ -92,10 +92,10 @@ class TurnSceneValidator(Validator[TurnScene]):
         method = "TurnScene._actor_square_validation_helper"
         
         try:
-            search_context_build = BoardSearchContextBuilder.build(coord=actor.current_position)
+            search_context_build = BoardContextBuilder.build(coord=actor.current_position)
             if search_context_build.is_failure():
                 return ValidationResult.failure(search_context_build.exception)
-            search_context = cast(BoardSearchContext, search_context_build.payload)
+            search_context = cast(BoardContext, search_context_build.payload)
             
             search_result = BoardSquareFinder.search(board=board, search_context=search_context)
             if search_result.is_failure():

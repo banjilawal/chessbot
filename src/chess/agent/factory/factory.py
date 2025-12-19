@@ -103,7 +103,7 @@ class AgentFactory(Builder[PlayerAgent]):
             cls,
             id: int,
             name: str,
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[HumanAgent]:
         """
         # ACTION:
@@ -126,7 +126,7 @@ class AgentFactory(Builder[PlayerAgent]):
         method = "AgentBuilder.build_human_agent"
         try:
             # Only need to certify the designation and id are correct.
-            validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
+            validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
             if validation.is_failure():
                 return BuildResult.failure(validation.exception)
             # On success return the HumanAgent in a BuildResult payload.
@@ -155,7 +155,7 @@ class AgentFactory(Builder[PlayerAgent]):
             name: str,
             id: int = id_emitter.service_id,
             engine_service: EngineService = EngineService(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[MachineAgent]:
         """
         # ACTION:
@@ -180,7 +180,7 @@ class AgentFactory(Builder[PlayerAgent]):
         method = "AgentBuilder.build_machine_agent"
         try:
             # Certify the id and designation are safe.
-            identity_validation = idservice.validate_identity(id_candidate=id, name_candidate=name)
+            identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
             if identity_validation.is_failure():
                 return BuildResult.failure(identity_validation.exception)
             

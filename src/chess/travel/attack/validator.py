@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.board import Board, BoardPieceFinder, BoardSearchContext
+from chess.board import Board, BoardPieceFinder, BoardContext
 from chess.piece import (
     KingPiece, AttackEvent, AttackingEnemyKingException, AttackingFriendException, CombatantPiece,
     DoublyAttackingPrisonerException, NullAttackEventException, PieceAttackingItSelfException, PieceValidator,
@@ -97,7 +97,7 @@ class AttackEventValidator(Validator[AttackEvent]):
             
             piece_search = BoardPieceFinder.search(
                 board=board,
-                search_context=BoardSearchContext(id=enemy_combatant.id)
+                search_context=BoardContext(id=enemy_combatant.id)
             )
             
             if piece_search.is_empty():

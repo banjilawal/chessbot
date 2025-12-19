@@ -12,7 +12,7 @@ from typing import Any, cast
 from chess.system import (
     BuilderValidator, EntityService, LoggingLevelRouter, ValidationResult, Validator, ValidatorCertifier
 )
-from chess.system.service.exception import InvalidServiceException, NullServiceException
+from chess.system.service.exception import Invalidentity_serviceException, NullServiceException
 
 
 class ServiceValidator(Validator[EntityService]):
@@ -65,7 +65,7 @@ class ServiceValidator(Validator[EntityService]):
         # Raises:
             *   TypeError
             *   NullServiceException
-            *   InvalidServiceException
+            *   Invalidentity_serviceException
         """
         method = "ServiceValidator.validate"
         try:
@@ -97,10 +97,10 @@ class ServiceValidator(Validator[EntityService]):
             return ValidationResult.success(service)
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidServiceException. Then send the exception-chain in a ValidationResult.
+        # an Invalidentity_serviceException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             ValidationResult.failure(
-                InvalidServiceException(
-                    ex=ex, message=f"{method}: {InvalidServiceException.DEFAULT_MESSAGE}"
+                Invalidentity_serviceException(
+                    ex=ex, message=f"{method}: {Invalidentity_serviceException.DEFAULT_MESSAGE}"
                 )
             )

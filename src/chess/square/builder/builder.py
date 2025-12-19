@@ -46,7 +46,7 @@ class SquareBuilder(Builder[Square]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             square_validator: SquareValidator = SquareValidator(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Square]:
         """
         # ACTION:
@@ -75,7 +75,7 @@ class SquareBuilder(Builder[Square]):
         """
         method = "SquareBuilder.builder"
         try:
-            identity_validation = idservice.validate_identity(
+            identity_validation = identity_service.validate_identity(
                 id_candidate=id,
                 name_candidate=name
             )

@@ -9,7 +9,7 @@ Version: 1.0.1
 
 from typing import cast, Tuple
 
-from chess.board import Board, BoardPieceFinder, BoardSearchContext, BoardValidator
+from chess.board import Board, BoardPieceFinder, BoardContext, BoardValidator
 
 
 from chess.king import KingPiece
@@ -104,7 +104,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       
       environment = cast(Board, environment_validation.payload)
       
-      search_result = BoardPieceFinder.search(board=environment, search_context=BoardSearchContext(id=actor.id))
+      search_result = BoardPieceFinder.search(board=environment, search_context=BoardContext(id=actor.id))
       if search_result.is_empty():
         return ValidationResult.failure(
           BoardPieceRemovedCannotActException(f"{method}: {BoardPieceRemovedCannotActException.DEFAULT_MESSAGE}")
