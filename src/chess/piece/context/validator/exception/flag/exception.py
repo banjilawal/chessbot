@@ -12,13 +12,13 @@ from chess.piece import InvalidPieceContextException
 
 __all__ = [
     #========================= PIECE_CONTEXT FLAG EXCEPTIONS =========================#
-    "NoPieceContextFlagSetException",
+    "ZeroPieceContextFlagsException",
     "ExcessivePieceContextFlagsSetException"
 ]
 
 
 #========================= PIECE_CONTEXT FLAG EXCEPTIONS =========================#
-class NoPieceContextFlagSetException(InvalidPieceContextException, BoundsException):
+class ZeroPieceContextFlagsException(InvalidPieceContextException, BoundsException):
     """Raised if no PieceContext was selected."""
     ERROR_CODE = "NO_PIECE_CONTEXT_FLAG_SET_ERROR"
     DEFAULT_MESSAGE = "One and only one, PieceContext flag must be set."

@@ -12,7 +12,7 @@ from typing import Any, cast
 from chess.coord import CoordService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.piece import (
-    InvalidPieceContextException, NoPieceContextFlagSetException, NullPieceContextException, PieceContext,
+    InvalidPieceContextException, ZeroPieceContextFlagsException, NullPieceContextException, PieceContext,
     ExcessivePieceContextFlagsSetException
 )
 
@@ -50,9 +50,9 @@ class PieceContextValidator(Validator[PieceContext]):
             
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoPieceContextFlagSetException(
+                    ZeroPieceContextFlagsException(
                         f"{method}: "
-                        f"{NoPieceContextFlagSetException.DEFAULT_MESSAGE}"
+                        f"{ZeroPieceContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             

@@ -9,7 +9,10 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
+from chess.system import (
+    BuildResult, Builder, FailsafeBranchExitPointException, GameColor, GameColorValidator,
+    IdentityService, LoggingLevelRouter
+)
 from chess.schema import (
     NoSchemaContextFlagException, SchemaContext, ExcessiveSchemaContextFlagsException, SchemaContextBuildFailedException
 )
@@ -74,40 +77,44 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         """
         method = "SchemaSearchContextBuilder.build"
         try:
-            # Get how many optional parameters are not null. One param needs to be not-null
+            # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [name, color,]
             param_count = sum(bool(p) for p in params)
             
-            # Cannot search for a Schema object if no attribute value is provided for a hit.
+            # Test if no params are set. Need an attribute-value pair to look up a team's schema.
             if param_count == 0:
                 return BuildResult.failure(
                     NoSchemaContextFlagException(f"{method}: {NoSchemaContextFlagException.DEFAULT_MESSAGE}")
                 )
-            # Only one property-value pair is allowed in a search.
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveSchemaContextFlagsException(f"{method}: {ExcessiveSchemaContextFlagsException}")
                 )
-            # After the verifying the correct number of flags are set follow the appropriate Schema build flow.
+            # After verifying only one Schema attribute-value-tuple is enabled, validate it.
             
-            # designation flag enabled, build flow.
+            # Build the name SchemaContext if its flag is enabled.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an name_Schema_context in the BuildResult.
+                # On validation success return a name_SchemaContext in the BuildResult.
                 return BuildResult.success(SchemaContext(name=name))
             
-            # GameColor flag enabled, build flow.
+            # Build the color SchemaContext if its flag is enabled.
             if color is not None:
                 validation = color_validator.validate(candidate=color)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an GameColor_Schema_context in the BuildResult.
+                # On validation success return a color_SchemaContext in the BuildResult.
                 return BuildResult.success(SchemaContext(color=color))
             
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception in a
-        # SchemaContextBuildFailedException then, send the exception chain a BuildResult.failure.
+            # As a failsafe send a buildResult failure if a context path was missed.
+            BuildResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if there is an unhandled exception Wrap an SchemaContextBuildFailedException around it then
+        # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                 SchemaContextBuildFailedException(

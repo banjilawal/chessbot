@@ -79,52 +79,52 @@ class CatalogContextBuilder(Builder[CatalogContext]):
         """
         method = "CatalogContextBuilder.build"
         try:
-            # Get how many optional parameters are not null. One param needs to be not-null
+            # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [name, designation, quota, ransom]
             param_count = sum(bool(p) for p in params)
             
-            # Cannot search for a BattleCatalog object if no attribute value is provided for a hit.
+            # Test if no params are set. Need an attribute-value pair to look up a rank's catalog_entry.
             if param_count == 0:
                 return BuildResult.failure(
                     NoCatalogContextFlagException(f"{method}: {NoCatalogContextFlagException.DEFAULT_MESSAGE}")
                 )
-            # Only one property-value pair is allowed in a search.
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveCatalogContextFlagsException(f"{method}: {ExcessiveCatalogContextFlagsException}")
                 )
-            # After the verifying the correct number of flags are set follow the appropriate BattleCatalog build flow.
+            # After verifying only one Schema attribute-value-tuple is enabled, validate it.
             
-            # name flag enabled, build flow.
+            # Build the name CatalogContext if its flag is enabled.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an name_BattleCatalog_context in the BuildResult.
+                # On validation success return a ransom_CatalogContext in the BuildResult.
                 return BuildResult.success(CatalogContext(name=name))
             
-            # designation flag enabled, build flow.
+            # Build the designation CatalogContext if its flag is enabled.
             if designation is not None:
                 validation = identity_service.validate_name(candidate=designation)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an name_BattleCatalog_context in the BuildResult.
+                # On validation success return a designation_CatalogContext in the BuildResult.
                 return BuildResult.success(CatalogContext(designation=designation))
             
-            # quota flag enabled, build flow.
+            # Build the quota CatalogContext if its flag is enabled.
             if quota is not None:
                 validation = number_validator.validate(candidate=quota)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an name_BattleCatalog_context in the BuildResult.
+                # On validation success return a quota_CatalogContext in the BuildResult.
                 return BuildResult.success(CatalogContext(quota=quota))
             
-            # GameRansom flag enabled, build flow.
+            # Build the ransom CatalogContext if its flag is enabled.
             if ransom is not None:
                 validation = number_validator.validate(candidate=ransom)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an GameRansom_BattleCatalog_context in the BuildResult.
+                # On validation success return a ransom_CatalogContext in the BuildResult.
                 return BuildResult.success(CatalogContext(ransom=ransom))
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception in a

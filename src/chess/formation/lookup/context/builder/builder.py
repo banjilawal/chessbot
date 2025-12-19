@@ -47,6 +47,7 @@ class OrderContextBuilder(Builder[OrderContext]):
             cls,
             square: Optional[str] = None,
             color: Optional[GameColor] = None,
+            name: Optiona[str] = None,
             designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
@@ -84,7 +85,7 @@ class OrderContextBuilder(Builder[OrderContext]):
             params = [designation, square, color]
             param_count = sum(bool(p) for p in params)
             
-            # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
+            # Test if no params are set. Need an attribute-value pair to look up a piece's battle_order.
             if param_count == 0:
                 return BuildResult.failure(
                     NoOrderContextFlagException(f"{method}: {NoOrderContextFlagException.DEFAULT_MESSAGE}")
@@ -95,6 +96,14 @@ class OrderContextBuilder(Builder[OrderContext]):
                     ExcessiveOrderContextFlagsException(f"{method}: {ExcessiveOrderContextFlagsException}")
                 )
             # After verifying only one BattleOrder attribute-value-tuple is enabled, validate it.
+            
+            # Build the name OrderContext if its flag is enabled.
+            if name is not None:
+                validation = identity_service.validate_name(candidate=name)
+                if validation.is_failure:
+                    return BuildResult.failure(validation.exception)
+                # On validation success return a designation_OrderContext in the BuildResult.
+                return BuildResult.success(OrderContext(name=name))
             
             # Build the designation OrderContext if its flag is enabled.
             if designation is not None:

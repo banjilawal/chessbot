@@ -10,12 +10,12 @@ version: 1.0.0
 from typing import Optional
 
 from chess.piece import (
-    NoPieceContextFlagSetException, PieceContext, PieceContextBuildFailedException,
+    ZeroPieceContextFlagsException, PieceContext, PieceContextBuildFailedException,
     ExcessivePieceContextFlagsSetException
 )
 from chess.coord import Coord, CoordService
 from chess.rank import Rank, RankCertifier
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter
+from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamCertifier
 
 
@@ -85,74 +85,85 @@ class PieceContextBuilder(Builder[PieceContext]):
 
         # Raises:
             *   PieceContextBuildFailedException
-            *   NoPieceContextFlagSetException
+            *   ZeroPieceContextFlagsException
             *   ExcessivePieceContextFlagsSetException
         """
         method = "PieceContextBuilder.builder"
         
         try:
+            # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, name, team, rank, ransom, coord]
             param_count = sum(bool(p) for p in params)
             
+            # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoPieceContextFlagSetException(
-                        f"{method}: "
-                        f"{NoPieceContextFlagSetException.DEFAULT_MESSAGE}"
-                    )
+                    ZeroPieceContextFlagsException(f"{method}: {ZeroPieceContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            
+            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessivePieceContextFlagsSetException(
-                        f"{method}: "
-                        f"{ExcessivePieceContextFlagsSetException}"
-                    )
+                    ExcessivePieceContextFlagsSetException(f"{method}: {ExcessivePieceContextFlagsSetException}")
                 )
+            # After verifying only one PlayerAgent attribute-value-tuple is enabled, validate it.
             
+            # Build the id PieceContext if its flag is enabled.
             if id is not None:
                 validation = idservice.validate_id(id)
-                if validation.is_failure():
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
+                # On validation success return an id_PieceContext in the BuildResult.
                 return BuildResult.success(PieceContext(id=id))
             
+            # Build the name PieceContext if its flag is enabled.
             if name is not None:
                 validation = idservice.validate_name(name)
-                if validation.is_failure():
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
+                # On validation success return a name_PieceContext in the BuildResult.
                 return BuildResult.success(PieceContext(name=name))
             
+            # Build the coord PieceContext if its flag is enabled.
             if coord is not None:
-                validation = coord_service.item_validator.validate(coord)
-                if validation.is_failure():
+                validation = coord_service.validator.validate(coord)
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
+                # On validation success return a coord_PieceContext in the BuildResult.
                 return BuildResult.success(PieceContext(coord=coord))
             
+            # Build the rank PieceContext if its flag is enabled.
             if rank is not None:
-                validation = rank_service.item_validator.validate(rank)
+                validation = rank_service.validator.validate(rank)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
+                # On validation success return a rank_PieceContext in the BuildResult.
                 return BuildResult.success(PieceContext(rank=rank))
             
+            # Build the team PieceContext if its flag is enabled.
             if team is not None:
-                validation = team_service.item_validator.validate(team)
+                validation = team_service.validator.validate(team)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
+                # On validation success return a team_PieceContext in the BuildResult.
                 return BuildResult.success(PieceContext(team=team))
             
+            # Build the ransom PieceContext if its flag is enabled.
             if ransom is not None:
-                validation = rank_service.item_validator.validate_ransom_in_bounds(ransom)
+                validation = rank_service.validator.validate_ransom_in_bounds(ransom)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
+                # On validation success return a ransom_PieceContext in the BuildResult.
                 return BuildResult.success(PieceContext(ransom=ransom))
-        
+            
+            # As a failsafe send a buildResult failure if a context path was missed.
+            BuildResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if there is an unhandled exception Wrap a PieceContextBuildFailedException around it then
+        # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                 PieceContextBuildFailedException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{PieceContextBuildFailedException.DEFAULT_MESSAGE}"
-                    )
+                    ex=ex, message=f"{method}: {PieceContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
