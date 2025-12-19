@@ -30,7 +30,7 @@ class AgentContextValidator(Validator[AgentContext]):
         *   Validator
 
     # PROVIDES:
-        *   validate:   -> ValidationResult[AgentContext]
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -46,7 +46,7 @@ class AgentContextValidator(Validator[AgentContext]):
             candidate: Any,
             team_service: TeamService = TeamService(),
             game_service: GameService = GameService(),
-            idservice: IdentityService = IdentityService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[AgentContext]:
         """
         # Action:
@@ -92,8 +92,8 @@ class AgentContextValidator(Validator[AgentContext]):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected AgentContext, got {type(candidate).__name__} instead.")
                 )
-            # Once the two existence checks are passed candidate can be cast to an AgentContext
-            # For additional checks.
+            
+            # Cast to an AgentContext for additional processing.
             context = cast(AgentContext, candidate)
             
             # Perform the two checks ensuring only one PlayerAgent attribute value will be used in the searcher.
@@ -111,13 +111,13 @@ class AgentContextValidator(Validator[AgentContext]):
                 )
             # Which ever attribute value is not null should be certified safe by the appropriate validator.
             if context.id is not None:
-                validation = idservice.validate_id(candidate=context.id)
+                validation = identity_service.validate_id(candidate=context.id)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             
             if context.name is not None:
-                validation = idservice.validate_name(candidate=context.name)
+                validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure():
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
