@@ -21,19 +21,20 @@ class GameServiceException(ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an GameService's organic fields or methods run into a
-        condition that leads to an operation failing.
-    2.  Parent of exceptions raised by classes that highly cohere with GameService objects.
-    3.  Catchall for GameService failure states that are not covered by a lower level
-        GameService exception.
+    1.  Parent of exceptions raised by GameService objects.
+    2.  Raised when an exception hits the try-finally block of a GameService method.
+    3.  Catchall for GameService failures that are not covered by a lower level GameService exceptions.
 
     # PARENT:
         *   ServiceException
 
     # PROVIDES:
-    GameServiceException
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "GAME_SERVICE_ERROR"
