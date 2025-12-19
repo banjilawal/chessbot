@@ -6,12 +6,13 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
+
 from typing import cast
 
 
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
-from chess.system import BuildResult, EntityService, id_emitter
+from chess.system import BuildResult, EntityService, NotNegativeNumberValidator, id_emitter
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
 
 
@@ -37,11 +38,11 @@ class CoordService(EntityService[Coord]):
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
     """
-    DEFAULT_NAME = "CoordService"
+    SERVICE_NAME = "CoordService"
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             builder: CoordBuilder = CoordBuilder(),
             validator: CoordValidator = CoordValidator(),
@@ -74,19 +75,25 @@ class CoordService(EntityService[Coord]):
         """get CoordValidator"""
         return cast(CoordValidator, self.entity_validator)
     
-    def add_vector_to_coord(self, coord: Coord, vector: Vector, vector_service: VectorService = VectorService()) -> BuildResult[Coord]:
+    def add_vector_to_coord(
+            self,
+            coord: Coord,
+            vector: Vector,
+            vector_service: VectorService = VectorService(),
+            number_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
+    ) -> BuildResult[Coord]:
         """
         # Action:
-        1.  validator runs integrity checks on the square param.
-        2.  vector_service runs integrity checks on the vector param.
-        3.  If any checks raise an exception return it in the BuildResult.
-        4.  If square and vector params are valid:
-                new_row, new_colum = square.row + vector.y, square.column + vector.x
-        5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
+        1.  Certify the vector argument with vector_service.
+        2.  Certify the coord argument with the service's validator.
+        3.  Get the new row and column using the expression
+                    new_row, new_colum = coord.row + vector.y, coord.column + vector.x
+        5.  Using the service's CoordBuilder instance create and return the new Coord.
 
         # Parameters:
-            *   square(Coord):
-            *   vector (Vector):
+            *   coord(Coord)
+            *   vector (Vector)
+            *   vector_service (VectorService)
 
         # Returns:
         BuildResult[Coord] containing either:
@@ -97,45 +104,46 @@ class CoordService(EntityService[Coord]):
             *   CoordServiceException
         """
         method = "CoordService.add_vector_to_coord"
-        
         try:
+            # Certify the coord param
             coord_validation = self._validator.validate(candidate=coord)
             if coord_validation.is_failure:
                 return BuildResult.failure(coord_validation.exception)
-            
+            # Certify the vector param.
             vector_validation = vector_service.validator.validate(candidate=vector)
             if vector_validation.is_failure:
                 return BuildResult.failure(vector_validation.exception)
             
-            return self._builder.build(
-                row=(coord.row + vector.y),
-                column=(coord.column + vector.x),
-                validator=self._validator
+            # when params are certified return the BuildResult.
+            return self.builder.build(
+                row=(coord.row + vector.y), column=(coord.column + vector.x), validator=self.validator
             )
+        # Finally, if there is an unhandled exception Wrap a CoordServiceException around it then return the
+        # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                CoordServiceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{CoordServiceException.DEFAULT_MESSAGE}"
-                    )
-                )
+                CoordServiceException(ex=ex, message= f"{method}: {CoordServiceException.DEFAULT_MESSAGE}")
             )
       
-    def multiply_coord_by_scalar(self, coord: Coord, scalar: Scalar, scalar_service: ScalarService = ScalarService()) -> BuildResult[Coord]:
+    def multiply_coord_by_scalar(
+            self,
+            coord: Coord,
+            scalar: Scalar,
+            scalar_service: ScalarService = ScalarService(),
+    ) -> BuildResult[Coord]:
         """
         # Action:
-        1.  validator runs integrity checks on the square param.
-        2.  scalar_service runs integrity checks on the scalar param.
-        3.  If any checks raise an exception return it in the BuildResult.
-        4.  If square and scalar params are valid:
-                new_row, new_colum = square.row * scalar.value, square.column * scalar.value
-        5.  Run build_coord(new_row, new_column) to ensure the computed values produce a safe Coord instance.
+        1.  Certify the vector argument with vector_service.
+        2.  Certify the coord argument with the service's validator.
+        3.  Get the new row and column using the expression
+                    new_row, new_colum = coord.row * scalar.value, coord.column + scalar.value
+        5.  Using the service's CoordBuilder instance create and return the new Coord.
 
         # Parameters:
-            *   square (Coord):
-            *   scalar (Scalar):
+            *   coord(Coord)
+            *   scalar (Scalar)
+            *   scalar_service (ScalarService)
+            *   number_validator (NotNegativeNumberValidator)
 
         # Returns:
         BuildResult[Coord] containing either:
@@ -146,34 +154,33 @@ class CoordService(EntityService[Coord]):
             *   CoordServiceException
         """
         method = "CoordService.multiply_coord_by_scalar"
-        
         try:
+            # Certify the coord param
             coord_validation = self._validator.validate(candidate=coord)
             if coord_validation.is_failure:
                 return BuildResult.failure(coord_validation.exception)
-            
-            scalar_validation = scalar_service.alidator.validate(candidate=scalar)
+            # Certify the scalar param
+            scalar_validation = scalar_service.validator.validate(candidate=scalar)
             if scalar_validation.is_failure:
                 return BuildResult.failure(scalar_validation.exception)
             
+            # when params are certified return the BuildResult.
             return self._builder.build(
-                row=(coord.y * scalar.value),
-                column=(coord.x * scalar.value),
-                validator=self._validator
+                row=(coord.y * scalar.value), column=(coord.x * scalar.value), validator=self.validator
             )
+            # Finally, if there is an unhandled exception Wrap a CoordServiceException around it then return the
+            # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                CoordServiceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{CoordServiceException.DEFAULT_MESSAGE}"
-                    )
-                )
+                CoordServiceException(ex=ex, message=f"{method}: {CoordServiceException.DEFAULT_MESSAGE}")
             )
         
         
-    def convert_vector_to_coord(self, vector: Vector, vector_service: VectorService = VectorService()) -> BuildResult[Coord]:
+    def convert_vector_to_coord(
+            self,
+            vector: Vector,
+            vector_service: VectorService = VectorService()
+    ) -> BuildResult[Coord]:
         """
         # Action:
         1.  vector_service runs integrity checks on param.
@@ -182,7 +189,8 @@ class CoordService(EntityService[Coord]):
             safe Coord instance.
 
         # Parameters:
-            *   vector (Vector):
+            *   vector (Vector)
+            *   vector_service (VectorService)
 
         # Returns:
         BuildResult[Coord] containing either:
@@ -193,66 +201,18 @@ class CoordService(EntityService[Coord]):
             *   CoordServiceException
         """
         method = "CoordService.convert_vector_to_coord"
-        
         try:
+            # Certify the vector param
             vector_validation = vector_service.validator.validate(candidate=vector)
             if vector_validation.is_failure:
                 return BuildResult.failure(vector_validation.exception)
-            
-            return self._builder.build(
-                row=vector.y,
-                column=vector.x,
-                validator=self._validator
-            )
+            # After the vector is certified return the BuildResult.
+            return self._builder.build(row=vector.y, column=vector.x, validator=self.validator
+                                       )
+            # Finally, if there is an unhandled exception Wrap a CoordServiceException around it then return the
+            # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                CoordServiceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{CoordServiceException.DEFAULT_MESSAGE}"
-                    )
-                )
+                CoordServiceException(ex=ex, message=f"{method}: {CoordServiceException.DEFAULT_MESSAGE}")
             )
     
-    def convert_coord_to_vector(self, coord: Coord, vector_service: VectorService = VectorService()) -> BuildResult[Vector]:
-        """
-        # Action:
-        1.  self._validator runs integrity checks on param.
-        2.  If any checks raise an exception return it in the BuildResult.
-        3.  Run vector_service.buil to ensure the computed values produce a
-            safe vector instance.
-
-        # Parameters:
-            *   coord (Coord):
-
-        # Returns:
-        BuildResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-
-        Raises:
-            *   CoordServiceException
-        """
-        method = "CoordService.convert_coord_to_vector"
-        
-        try:
-            coord_validation = self._validator.validate(candidate=coord)
-            if coord_validation.is_failure():
-                return BuildResult.failure(coord_validation.exception)
-            
-            return vector_service.builder.build(
-                x=coord.column,
-                y=coord.row,
-                validator=vector_service.validator
-            )
-        except Exception as ex:
-            return BuildResult.failure(
-                CoordServiceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{CoordServiceException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
