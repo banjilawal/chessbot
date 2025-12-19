@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import cast, Any
 
-
-from chess.system import NumberValidator, Validator, ValidationResult, LoggingLevelRouter, ROW_SIZE, COLUMN_SIZE
+from chess.system import (
+    NotNegativeNumberValidator, Validator, ValidationResult, LoggingLevelRouter, ROW_SIZE, COLUMN_SIZE
+)
 from chess.coord import (
-    Coord, NegativeRowException, NullCoordException, NullRowException, RowBelowBoundsException, RowAboveBoundsException,
-    NullColumnException, ColumnBelowBoundsException, ColumnAboveBoundsException, InvalidCoordException,
+    Coord, NullCoordException, RowAboveBoundsException, ColumnAboveBoundsException, InvalidCoordException,
 )
 
 
@@ -43,7 +43,7 @@ class CoordValidator(Validator[Coord]):
     def validate(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator()
+            number_validator: NotNegativeNumberValidator = NotNegativeNumberValidator()
     ) -> ValidationResult[Coord]:
         """
         # ACTION:
@@ -55,6 +55,7 @@ class CoordValidator(Validator[Coord]):
     
         # PARAMETERS:
             *   candidate (Any)
+            *   number_validator (NotNegativeNumberValidator)
     
         # Returns:
         ValidationResult[Coord] containing either:
@@ -69,28 +70,34 @@ class CoordValidator(Validator[Coord]):
         method = "CoordValidator.validate"
         
         try:
+            # Test the candidate exists.
             if candidate is None:
                 return ValidationResult.failure(
                     NullCoordException(f"{method}: {NullCoordException.DEFAULT_MESSAGE}")
                 )
-            
+            # Test the candidate is an int before proceeding.
             if not isinstance(candidate, Coord):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected a Coord, got {type(candidate).__name__} instead.")
                 )
             
+            # Cast candidate to an int after the existence and type checks pass.
             coord = cast(Coord, candidate)
             
+            # Run row integrity checks.
             row_validation = cls.validate_row(candidate=coord.row, number_validator=number_validator)
             if row_validation.is_failure:
                 return ValidationResult.failure(row_validation.exception)
             
+            # Run column integrity checks.
             column_validation = cls.validate_column(candidate=coord.column)
             if column_validation.is_failure:
                 return ValidationResult.failure(column_validation.exception)
             
+            # Return the number if integrity checks are passed.
             return ValidationResult.success(payload=coord)
-        
+        # Finally, if there is an unhandled exception Wrap an InvalidCoordEException around it then return the
+        # exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordException(ex=ex, message=f"{method}: {InvalidCoordException.DEFAULT_MESSAGE}")
@@ -98,10 +105,10 @@ class CoordValidator(Validator[Coord]):
         
         
     @classmethod
-    def validate(
+    def validate_row(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator()
+            number_validator: NotNegativeNumberValidator = NotNegativeNumberValidator()
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -121,32 +128,27 @@ class CoordValidator(Validator[Coord]):
             - On failure: Exception.
 
         # RAISES:
-            * NegativeRowException
             * RowAboveBoundsException
             * InvalidCoordException
         """
         method = "CoordValidator.validate_row"
         try:
-            # Run tests to an int.
-            number_validation = number_validator.validate(candidate=candidate)
+            # Verify candidate is an at-least-zero number.
+            number_validation =number_validator.validate(candidate=candidate)
             if number_validation.is_failure:
                 return ValidationResult.failure(number_validation.exception)
-            # Cast to doubly make sure the payload is an int if number validation i successful.
+            # Cast to doubly make sure the payload is an int if not-negative number verification succeeds.
             number = cast(int, number_validation.payload)
             
-            # Return an exception if the number is negative.
-            if number < 0:
-                return ValidationResult.failure(
-                    NegativeRowException(f"{method}: {NegativeRowException.DEFAULT_MESSAGE}")
-                )
-            
+            # Handle the case that the number is exceeds the row array's upper bound.
             if number > ROW_SIZE - 1:
                 return ValidationResult.failure(
                     RowAboveBoundsException(f"{method}: {RowAboveBoundsException.DEFAULT_MESSAGE}")
                 )
-
+            # Return the number if integrity checks are passed.
             return ValidationResult.success(payload=number)
-            
+        # Finally, if there is an unhandled exception Wrap an InvalidCoordEException around it then return the
+        # exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCoordException(ex=ex, message=f"{method}: {InvalidCoordException.DEFAULT_MESSAGE}")
@@ -156,72 +158,48 @@ class CoordValidator(Validator[Coord]):
     def validate_column(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator()
+            number_validator: NotNegativeNumberValidator = NotNegativeNumberValidator()
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Check candidate is not validation.
-        2.  Check if candidate is an INT
-        3.  Check if candidate is between 0 and COLUMN_SIZE - 1 inclusive.
-        4.  If any check fails, return the exception inside a ValidationResult.
-        3.  When all checks pass cast candidate to a int then return inside a ValidationResult.
+        1.  If number_validator confirms candidate is an int, cast the candidate to row.
+        2.  Test the number is not negative.
+        3.  Test the number is less than ROW_SIZE.
+        4.  If any check fails, return the exception inside a ValidationResult. Otherwise, send the number back in the
+            ValidationResult.
 
         # PARAMETERS:
-            *   candidate (Any): Object to validate is a legitimate row
+            *   candidate (Any)
+            *   number_validator (NotNegativeNumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:
-            - On success: Coord in the payload.
+            - On success: int in the payload.
             - On failure: Exception.
 
         # RAISES:
-            * TypeError
-            * NullColumnException
-            * ColumnBelowBoundsException
             * ColumnAboveBoundsException
             * InvalidCoordException
         """
         method = "CoordValidator.validate_column"
         try:
-            if candidate is None:
+            # Verify candidate is an at-least-zero number.
+            number_validation = number_validator.validate(candidate=candidate)
+            if number_validation.is_failure:
+                return ValidationResult.failure(number_validation.exception)
+            # Cast to doubly make sure the payload is an int if not-negative number verification succeeds.
+            number = cast(int, number_validation.payload)
+            
+            # Handle the case that the number is exceeds the column array's upper bound.
+            if number > COLUMN_SIZE - 1:
                 return ValidationResult.failure(
-                    NullColumnException(
-                        f"{method}: "
-                        f"{NullColumnException.DEFAULT_MESSAGE}")
+                    ColumnAboveBoundsException(f"{method}: {ColumnAboveBoundsException.DEFAULT_MESSAGE}")
                 )
-            
-            if not isinstance(candidate, int):
-                return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: "
-                        f"Expected int, got {type(candidate).__name__} instead.")
-                )
-            
-            number = cast(int, candidate)
-            
-            if number < 0:
-                return ValidationResult.failure(
-                    ColumnBelowBoundsException(
-                        f"{method}: "
-                        f"{ColumnBelowBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if number >= COLUMN_SIZE:
-                return ValidationResult.failure(
-                    ColumnAboveBoundsException(
-                        f"{method}: "
-                        f"{ColumnAboveBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
+            # Return the number if integrity checks are passed.
             return ValidationResult.success(payload=number)
-        
+        # Finally, if there is an unhandled exception Wrap an InvalidCoordEException around it then return the
+        # exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidCoordException(
-                    ex=ex,
-                    message=f"{method}: "
-                            f"{InvalidCoordException.DEFAULT_MESSAGE}",
-                )
+                InvalidCoordException(ex=ex, message=f"{method}: {InvalidCoordException.DEFAULT_MESSAGE}")
             )
