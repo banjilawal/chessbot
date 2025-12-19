@@ -73,7 +73,6 @@ class CoordValidator(Validator[Coord]):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected a Coord, got {type(candidate).__name__} instead.")
                 )
-            
             # Cast candidate to an int after the existence and type checks pass.
             coord = cast(Coord, candidate)
             
@@ -89,6 +88,7 @@ class CoordValidator(Validator[Coord]):
             
             # Return the Coord if integrity checks are passed.
             return ValidationResult.success(payload=coord)
+        
         # Finally, if there is an unhandled exception Wrap an InvalidCoordEException around it then return the
         # exception-chain inside the ValidationResult.
         except Exception as ex:

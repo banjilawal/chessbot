@@ -99,7 +99,7 @@ class CoordContextValidator(Validator):
                     row_candidate=context.row,
                     column_candidate=context.column
                 )
-                if validation.is_failure():
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 else:
                     ValidationResult.success(payload=validation.payload)

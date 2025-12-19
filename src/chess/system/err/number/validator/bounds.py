@@ -1,7 +1,7 @@
-# src/chess/system/err/number/validator/not_negative.py
+# src/chess/system/err/number/validator/bounds.py
 
 """
-Module: chess.system.err.number.validator.not_negative
+Module: chess.system.err.number.validator.bounds
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

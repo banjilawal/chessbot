@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.system import Builder, BuildResult,  LoggingLevelRouter
+from chess.system import Builder, BuildResult, LoggingLevelRouter, NumberInBoundsValidator
 from chess.coord import Coord, CoordValidator,  CoordBuildFailedException
 
 
@@ -19,15 +19,14 @@ class CoordBuilder(Builder[Coord]):
 
      # RESPONSIBILITIES:
      1.  Produce Coord instances whose integrity is always guaranteed.
-     2.  Manage construction of Coord instances that can be used safely by the client.
-     3.  Ensure params for Coord creation have met the application's safety contract.
-     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+     2.  Ensure params for Coord creation have met the application's safety contract.
+     3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
      # PARENT:
          * Builder
 
      # PROVIDES:
-         *   CoordBuilder
+     None
 
      # LOCAL ATTRIBUTES:
      None
@@ -35,26 +34,24 @@ class CoordBuilder(Builder[Coord]):
      # INHERITED ATTRIBUTES:
      None
      """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
             cls,
             row: int,
             column: int,
-            validator: CoordValidator = CoordValidator(),
+            number_bonds_validator: NumberInBoundsValidator = NumberInBoundsValidator(),
     ) -> BuildResult[Coord]:
         """
         # ACTION:
-        1.  Use the validator to certify the row is safe to use.
-        2.  Use the validator to certify the column is safe to use.
-        3.  If any check fails, return the exception inside a BuildResult.
-        4.  When all checks pass return a new Coord instance in a BuildResult.
+        1.  Use the validator to verify the row and column are within the bounds of the Board's 2D array.
+        3.  If any check fails snd the exception in the BuildResult. Else, Create a Coord object and send in the
+            BuildResult.
 
         # PARAMETERS:
             *   row (int)
             *   column (int)
-            *   validator (CoordValidator)
+            *   number_bonds_validator (NumberInBoundsValidator)
 
         # Returns:
         BuildResult[Coord] containing either:
@@ -65,22 +62,21 @@ class CoordBuilder(Builder[Coord]):
             *   CoordBuildFailedException
         """
         method = "CoordBuilder.builder"
-        
         try:
-            row_validation = validator.validate_row(row)
+            # Test the row parameter is between 0 and BOARD_DIMENSION - 1 inclusive.
+            row_validation = number_bonds_validator.validate(candidate=row)
             if row_validation.is_failure:
                 return BuildResult.failure(row_validation.exception)
-                
-            column_validation = validator.validate_column(column)
+            # Test the column parameter is between 0 and BOARD_DIMENSION - 1 inclusive.
+            column_validation = number_bonds_validator.validate(candidat=column)
             if column_validation.is_failure:
                 return BuildResult.failure(column_validation.exception)
-            
+            # If both checks are passed create a Coord and return in the BuildResult.
             return BuildResult.success(payload=Coord(row=row, column=column))
         
+        # Finally, if there is an unhandled exception Wrap an CoordBuildFailedException around it then return the
+        # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                CoordBuildFailedException(
-                    ex=ex,
-                    message=f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}"
-                )
+                CoordBuildFailedException(ex=ex, message=f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}")
             )
