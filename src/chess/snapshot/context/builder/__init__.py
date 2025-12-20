@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .builder import GameSnapShotContextBuilder
-from .exception import GameSnapshotContextBuildFailedException
+from .builder import SnapshotContextBuilder
+from .exception import SnapshotContextBuildFailedException

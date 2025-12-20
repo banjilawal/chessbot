@@ -21,7 +21,7 @@ class ExcessiveGameContextFlagsException(InvalidGameContextException, ContextFla
     # ROLE: ContextFlagException, GameContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one Game attribute is going to be used in an GameSnapshotFinder.
+    1.  Indicate if more than one Game attribute is going to be used in an SnapshotFinder.
     
     # PARENT:
         *   InvalidGameContextException

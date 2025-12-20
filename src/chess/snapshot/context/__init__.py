@@ -15,5 +15,5 @@ from .validator import *
 from .service import *
 
 # Modules
-from .context import GameSnapshotContext
-from .exception import  GameSnapshotContextException
+from .context import SnapshotContext
+from .exception import  SnapshotContextException

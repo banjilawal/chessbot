@@ -8,31 +8,31 @@ version: 1.0.0
 """
 
 
-from chess.game import GameSnapshotContextException
+from chess.game import SnapshotContextException
 from chess.system import ValidationFailedException
 
 
 __all__ = [
     # ======================# AGENT_CONTEXT VALIDATION SUPER CLASS #======================#
-    "InvalidGameSnapshotContextException",
+    "InvalidSnapshotContextException",
 ]
 
 
 # ======================# AGENT_CONTEXT VALIDATION SUPER CLASS #======================#
-class InvalidGameSnapshotContextException(GameSnapshotContextException, ValidationFailedException):
+class InvalidSnapshotContextException(SnapshotContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised GameSnapshotContext validation.
-    2.  Wraps unhandled exception that hit the finally-block in GameSnapshotContextValidator methods.
+    1.  Parent of exception raised SnapshotContext validation.
+    2.  Wraps unhandled exception that hit the finally-block in SnapshotContextValidator methods.
 
     # PARENT:
-        *   GameSnapshotContextException
+        *   SnapshotContextException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidGameSnapshotContextException
+    InvalidSnapshotContextException
 
     # LOCAL ATTRIBUTES:
     None
@@ -41,4 +41,4 @@ class InvalidGameSnapshotContextException(GameSnapshotContextException, Validati
     None
     """
     ERROR_CODE = "AGENT_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "GameSnapshotContext validation failed."
+    DEFAULT_MESSAGE = "SnapshotContext validation failed."

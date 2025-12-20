@@ -11,7 +11,7 @@ from typing import List, Optional
 
 from chess.agent import PlayerAgent
 from chess.arena import Arena
-from chess.game import GameSnapshot, GameTimeline, GameTimelineException
+from chess.game import Snapshot, GameTimeline, GameTimelineException
 
 
 class Game:
@@ -74,5 +74,5 @@ class Game:
         return self._timeline
     
     @property
-    def previous_move(self) -> Optional[GameSnapshot]:
+    def previous_move(self) -> Optional[Snapshot]:
         return self._timeline.previous_move()

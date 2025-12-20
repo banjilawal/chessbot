@@ -13,7 +13,7 @@ from chess.game import GameService
 from chess.team import TeamService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.agent import (
-    AgentContext, AgentVariety, ExcessiveAgentContextFlagsException, InvalidAgentContextException,
+    AgentContext,  ExcessiveAgentContextFlagsException, InvalidAgentContextException,
     NullAgentContextException, ZeroAgentContextFlagsException
 )
 
@@ -38,7 +38,6 @@ class AgentContextValidator(Validator[AgentContext]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -50,20 +49,16 @@ class AgentContextValidator(Validator[AgentContext]):
     ) -> ValidationResult[AgentContext]:
         """
         # Action:
-        1.  Confirm that only one in the (id, designation, team, game, agent_variety) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
-        3.  If any check fais return a ValidationResult containing the exception raised by the failure.
-        4.  On success Build an AgentContext are return in a ValidationResult.
+            1.  If the candidate passes existence and type checks cast into a AgentContext for
+                additional integrity tests. Else send an exception in the ValidationResult.
+            2.  If one-and-only-one AgentContext attribute-value-tuple is enabled goto the integrity
+                check. Else, send an exception in the ValidationResult.
+            3.  Route to the appropriate validation subflow with the attribute as the routing key.
+            4.  If the validation subflow certifies the context tuple return it in the validation result.
+                Else, send the exception in the ValidationResult.
 
         # Parameters:
-        Only one these must be provided:
-            *   id (Optional[int])
-            *   designation (Optional[str])
-            *   team (Optional[Team])
-            *   game (Optional[Game])
-            *   agent_variety (Optional[AgentVariety])
-
-        These Parameters must be provided. By default, they are automatically set:
+            *   candidate (Any)
             *   team_service (TeamService)
             *   game_service (GameService)
             *   identity_service (IdentityService)
@@ -82,33 +77,36 @@ class AgentContextValidator(Validator[AgentContext]):
         """
         method = "AgentContextValidator.validate"
         try:
-            # If the candidate is null no other checks are needed.
+            # Handle the nonexistence case.
             if candidate is None:
                 return ValidationResult.failure(
                     NullAgentContextException(f"{method}: {NullAgentContextException.DEFAULT_MESSAGE}")
                 )
-            # If the candidate is not an AgentContext validation has failed.
+            # Handle the wrong type case.
             if not isinstance(candidate, AgentContext):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected AgentContext, got {type(candidate).__name__} instead.")
                 )
             
-            # Cast to an AgentContext for additional processing.
+            # After existence and type checks are successful cast the candidate to an AgentContext
+            # for additional tests.
             context = cast(AgentContext, candidate)
             
-            # Perform the two checks ensuring only one PlayerAgent attribute value will be used in the searcher.
-            # Handle the case of searching with no attribute-value.
+            # Handle the no context flag enabled case.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     ZeroAgentContextFlagsException(f"{method}: {ZeroAgentContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            # Handle the case of too many attributes being used in a search.
+            # Handle the excessive context flags case.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessiveAgentContextFlagsException(
                         f"{method}: {ExcessiveAgentContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
+            
+            # Using the tuple's attribute as an address, route to appropriate validation subflow.
+            
             # Which ever attribute value is not null should be certified safe by the appropriate number_bounds_validator.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
@@ -140,9 +138,9 @@ class AgentContextValidator(Validator[AgentContext]):
                         TypeError(f"{method}: Expected AgentType, got {type(candidate).__name__} instead.")
                     )
                 return ValidationResult.success(context)
-            
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidAgentContextException. Then send the exception-chain in a ValidationResult.
+        
+        # Finally, if there is an unhandled exception Wrap an  InvalidAgentContextException around it then
+        # return the exception-chain inside the ValidationResult
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidAgentContextException(

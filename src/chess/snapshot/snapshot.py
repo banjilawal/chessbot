@@ -106,23 +106,23 @@ class Snapshot(Result):
         )
     
     @classmethod
-    def won(cls, timestamp: int, arena: Arena, winner: PlayerAgent) -> GameSnapshot:
+    def won(cls, timestamp: int, arena: Arena, winner: PlayerAgent) -> Snapshot:
         return cls(timestamp=timestamp, arena=arena, winner=winner, game_state=GameState.WON)
     
     @classmethod
-    def aborted(cls, timestamp: int, arena: Arena) -> GameSnapshot:
+    def aborted(cls, timestamp: int, arena: Arena) -> Snapshot:
         return cls(timestamp=timestamp, arena=arena, game_state=GameState.ABORTED)
     
     @classmethod
-    def tied(cls, timestamp: int, arena: Arena) -> GameSnapshot:
+    def tied(cls, timestamp: int, arena: Arena) -> Snapshot:
         return cls(timestamp=timestamp, arena=arena, game_state=GameState.TIED)
     
     @classmethod
-    def errored(cls, timestamp: int, arena: Arena, exception: Exception) -> GameSnapshot:
+    def errored(cls, timestamp: int, arena: Arena, exception: Exception) -> Snapshot:
         return cls(timestamp=timestamp, arena=arena, exception=exception, game_state=GameState.FAILURE)
     
     @classmethod
-    def rolled_back(cls, timestamp: int, arena: Arena, rollback_exception: RollbackException) -> GameSnapshot:
+    def rolled_back(cls, timestamp: int, arena: Arena, rollback_exception: RollbackException) -> Snapshot:
         return cls(timestamp=timestamp, arena=arena, exception=rollback_exception, game_state=GameState.ROLLED_BACK)
     
     @classmethod

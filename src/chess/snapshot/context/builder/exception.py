@@ -9,25 +9,25 @@ version: 1.0.0
 
 
 from chess.system import BuildFailedException
-from chess.game import GameSnapshotContextException
+from chess.game import SnapshotContextException
 
 __all__ = [
     # ======================# SNAPSHOT_CONTEXT BUILD EXCEPTION #======================#
-    "GameSnapshotContextBuildFailedException",
+    "SnapshotContextBuildFailedException",
 ]
 
 
 # ======================# SNAPSHOT_CONTEXT BUILD EXCEPTION #======================#
-class GameSnapshotContextBuildFailedException(GameSnapshotContextException, BuildFailedException):
+class SnapshotContextBuildFailedException(SnapshotContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised during GameSnapshotContext build process.
-    2.  Wraps unhandled exception that hit the try-finally block of an GameSnapshotContextBuilder method.
+    1.  Parent of exception raised during SnapshotContext build process.
+    2.  Wraps unhandled exception that hit the try-finally block of an SnapshotContextBuilder method.
 
     # PARENT:
-        *   GameSnapshotContextException
+        *   SnapshotContextException
         *   BuildFailedException
 
     # PROVIDES:
@@ -40,4 +40,4 @@ class GameSnapshotContextBuildFailedException(GameSnapshotContextException, Buil
     None
     """
     ERROR_CODE = "SNAPSHOT_CONTEXT_BUILD_ERROR"
-    DEFAULT_MESSAGE = "GameSnapshotContext build failed."
+    DEFAULT_MESSAGE = "SnapshotContext build failed."

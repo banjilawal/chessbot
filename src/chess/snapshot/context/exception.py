@@ -8,27 +8,30 @@ version: 1.0.0
 """
 
 from chess.system import ContextException
+from chess.snapshot import SnapshotException
+
 
 __all__ = [
-    # ======================# GAME_CONTEXT EXCEPTION #======================#
-    "GameSnapshotContextException",
+    # ======================# SNAPSHOT_CONTEXT EXCEPTION #======================#
+    "SnapshotContextException",
 ]
 
 
-# ======================# GAME_CONTEXT EXCEPTION #======================#
-class GameSnapshotContextException(ContextException):
+# ======================# SNAPSHOT_CONTEXT EXCEPTION #======================#
+class SnapshotContextException(SnapshotException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by GameSnapshotContext objects.
-    2.  Catchall for conditions which are not covered by lower level GameSnapshotContext exception.
+    1.  Parent of exception raised by SnapshotContext objects.
+    2.  Catchall for conditions which are not covered by lower level SnapshotContext exception.
 
     # PARENT:
         *   ContextException
+        *   SnapshotException
 
     # PROVIDES:
-    GameSnapshotContextException
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -36,5 +39,5 @@ class GameSnapshotContextException(ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_CONTEXT_ERROR"
-    DEFAULT_ERROR_CODE = "GameSnapshotContext raised an exception."
+    ERROR_CODE = "SNAPSHOT_CONTEXT_ERROR"
+    DEFAULT_ERROR_CODE = "SnapshotContext raised an exception."

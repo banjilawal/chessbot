@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import Optional, cast
 
-from chess.game import GameSnapshot, GameTimelineException
+from chess.game import Snapshot, GameTimelineException
 from chess.system import DeletionResult, InsertionResult, ResultStack
 
 
-class GameTimeline(ResultStack[GameSnapshot]):
+class GameTimeline(ResultStack[Snapshot]):
     """
     # ROLE: Persistence, Unique Result Stack CRUD Operations.
 
@@ -35,10 +35,10 @@ class GameTimeline(ResultStack[GameSnapshot]):
     def __init__(self):
         super().__init__()
         
-    def commit_player_move(self, snapshot: GameSnapshot) -> InsertionResult[GameSnapshot]:
+    def commit_player_move(self, snapshot: Snapshot) -> InsertionResult[Snapshot]:
         method = "GameTimeline.commit_player_move"
         try:
-            if not isinstance(snapshot, GameSnapshot):
+            if not isinstance(snapshot, Snapshot):
                 raise TypeError(f"Expected GameResult, got {type(snapshot).__name__} instead.")
             return self.push_result(snapshot)
         except Exception as ex:
@@ -46,17 +46,17 @@ class GameTimeline(ResultStack[GameSnapshot]):
                 GameTimelineException(ex=ex, message=f"{method}: {GameTimelineException.DEFAULT_MESSAGE}")
             )
     
-    def undo_last_turn(self) -> DeletionResult[GameSnapshot]:
+    def undo_last_turn(self) -> DeletionResult[Snapshot]:
         method = "GameTimeline.undo_last_turn"
         try:
             result = self.undo_result_push()
             if result.is_failure:
                 return DeletionResult.failure(result.exception)
-            return DeletionResult.success(cast(GameSnapshot, result.payload))
+            return DeletionResult.success(cast(Snapshot, result.payload))
         except Exception as ex:
             return DeletionResult.failure(
                 GameTimelineException(ex=ex, message=f"{method}: {GameTimelineException.DEFAULT_MESSAGE}")
             )
     
-    def previous_move(self) -> Optional[GameSnapshot]:
-        return cast(GameSnapshot, self.last_result)
+    def previous_move(self) -> Optional[Snapshot]:
+        return cast(Snapshot, self.last_result)

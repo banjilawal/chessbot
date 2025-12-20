@@ -1,7 +1,7 @@
 # src/chess/snapshot/context/validator/validator.py
 
 """
-Module: chess.snapshot.context.validator
+Module: chess.snapshot.context.validator.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -9,27 +9,34 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.team import TeamService
 from chess.agent import AgentService
-from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
-from chess.game import (
-    GameSnapshotContext, InvalidGameSnapshotContextException, ZeroGameSnapshotContextFlagsException,
-    NullGameSnapshotContextException, ExcessiveGameSnapshotContextFlagsException
+from chess.arena import ArenaService
+from chess.game import GameService
+from chess.snapshot import NullSnapshotContextException, SnapshotContext
+from chess.snapshot.context.validator.exception.base import InvalidSnapshotContextException
+from chess.snapshot.context.validator.exception.flag.excess import ExcessiveSnapshotContextFlagsException
+from chess.snapshot.context.validator.exception.flag.zero import ZeroSnapshotContextFlagsException
+from chess.team import TeamService
+from chess.system import (
+    IdentityService, LoggingLevelRouter, NullException, NumberInBoundsValidator, NumberValidator,
+    ValidationResult, Validator
 )
 
 
-class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
+
+class SnapshotContextValidator(Validator[SnapshotContext]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1. Verify a candidate is an GameSnapshotContext object's safety before a client uses it.
+    1.  Ensure an SnapshotContext instance is certified safe, reliable and consistent before use.
+    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
 
     # PARENT:
         *   Validator
 
     # PROVIDES:
-        *   GameSnapshotContextValidator.validate -> ValidationResult[GameSnapshotContext]
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -37,104 +44,133 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
+            game_service: GameService = GameService(),
             team_service: TeamService = TeamService(),
-            agent_service: AgentService = AgentService(),
-            number_validator: NumberValidator = NumberValidator(),
-    ) -> ValidationResult[GameSnapshotContext]:
+            arena_service: ArenaService = ArenaService(),
+            player_service: AgentService = AgentService(),
+            identity_service: IdentityService = IdentityService(),
+    ) -> ValidationResult[SnapshotContext]:
         """
         # Action:
-            1.  Confirm that only one in the (id, player_agent, team , arena) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and number_bounds_validator.
-            3.  If any check fais return a ValidationResult containing the exception raised by the failure.
-            4.  On success send the verified GameSnapshotContext in a ValidationResult.
+            1.  If the candidate passes existence and type checks cast into a SnapshotContext for
+                additional integrity tests. Else send an exception in the ValidationResult.
+            2.  If one-and-only-one SnapshotContext attribute-value-tuple is enabled goto the integrity
+                check. Else, send an exception in the ValidationResult.
+            3.  Route to the appropriate validation subflow with the attribute as the routing key.
+            4.  If the validation subflow certifies the context tuple return it in the validation result.
+                Else, send the exception in the ValidationResult.
 
         # Parameters:
-        Only one these must be provided:
-            *   timestamp (Optional[int])
-            *   player_agent (Optional[PlayerAgent])
-            *   team (Optional[Team])
-
-        These Parameters must be provided:
-            *   player_agent_service (AgentService)
-            *   not_negative_validator (NumberValidator)
+            *   candidate (Any)
+            *   game_service (GameService)
+            *   team_service (TeamService)
+            *   arena_service (ArenaService)
+            *   player_service (AgentService)
+            *   identity_service (IdentityService)
 
         # Returns:
-        ValidationResult[GameSnapshotContext] containing either:
-            - On success: GameSnapshotContext in the payload.
+        ValidationResult[SnapshotContext] containing either:
+            - On success: SnapshotContext in the payload.
             - On failure: Exception.
 
         # Raises:
             *   TypeError
-            *   NullGameSnapshotContextException
-            *   ZeroGameSnapshotContextFlagsException
-            *   ExcessiveGameSnapshotContextFlagsException
-            *   InvalidGameSnapshotContextException
+            *   NullSnapshotContextException
+            *   ZeroSnapshotContextFlagsException
+            *   ExcessiveSnapshotContextFlagsException
+            *   InvalidSnapshotContextException
         """
-        method = "GameSnapshotContextValidator.validate"
+        method = "SnapshotContextValidator.validate"
         try:
-            # If the candidate is null no other checks are needed.
+            # Handle the nonexistence case.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullGameSnapshotContextException(f"{method}: {NullGameSnapshotContextException.DEFAULT_MESSAGE}")
+                    NullSnapshotContextException(f"{method}: {NullSnapshotContextException.DEFAULT_MESSAGE}")
                 )
-            # If the candidate is not an GameSnapshotContext validation has failed.
-            if not isinstance(candidate, GameSnapshotContext):
+            # Handle the wrong type case.
+            if not isinstance(candidate, SnapshotContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected GameSnapshotContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected SnapshotContext, got {type(candidate).__name__} instead.")
                 )
-            # Once the two existence checks are passed candidate can be cast to an GameSnapshotContext
-            # For additional checks.
-            context = cast(GameSnapshotContext, candidate)
             
-            # Perform the two checks ensuring only one Game attribute value will be used in the searcher.
+            # After existence and type checks are successful cast the candidate to a SnapshotContext
+            # for additional tests.
+            context = cast(SnapshotContext, candidate)
+            
+            # Handle the no context flag enabled case.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroGameSnapshotContextFlagsException(
-                        f"{method}: {ZeroGameSnapshotContextFlagsException.DEFAULT_MESSAGE}"
+                    ZeroSnapshotContextFlagsException(
+                        f"{method}: {ZeroSnapshotContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
-            
+            # Handle the excessive context flags case.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    ExcessiveGameSnapshotContextFlagsException(
-                        f"{method}: {ExcessiveGameSnapshotContextFlagsException.DEFAULT_MESSAGE}"
+                    ExcessiveSnapshotContextFlagsException(
+                        f"{method}: {ExcessiveSnapshotContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
-            # Certify the context if search is going to be by the snapshot's timestamp
-            if context.timestamp is not None:
-                validation = number_validator.validate(candidate=context.timestamp)
+            
+            # Using the tuple's attribute as an address, route to appropriate validation subflow.
+            
+            # Validation subflow for game SnapshotContexts.
+            if context.game is not None:
+                validation = game_service.validator.validate(candidate=context.game)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On validation success return the search_by_game_id context.
+                # On validation success return the game_SnapshotContext in the validation Result.
                 return ValidationResult.success(context)
-            
-            # Certify the context if search is going to be by the an arena team's player player_agent.
-            if context.agent is not None:
-                validation = agent_service.validator.validate(candidate=context.agent)
-                if validation.is_failure:
-                    return ValidationResult.failure(validation.exception)
-                # On validation success return the search_by_arena_team_agent context.
-                return ValidationResult.success(context)
-            
-            # Certify the context if search is going to be by the snapshot's arena team
+
+            # Validation subflow for team SnapshotContexts.
             if context.team is not None:
                 validation = team_service.validator.validate(candidate=context.team)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On validation success return the search_by_arena_team context.
+                # On validation success return the team_SnapshotContext ValidationResult..
+                return ValidationResult.success(context)
+            
+            # Validation subflow for arena SnapshotContexts.
+            if context.arena is not None:
+                validation = arena_service.validator.validate(candidate=context.arena)
+                if validation.is_failure:
+                    return ValidationResult.failure(validation.exception)
+                # On validation success return the arena_SnapshotContext in the validation Result.
+                return ValidationResult.success(context)
+            
+            # Validation subflow for timestamp SnapshotContexts.
+            if context.timestamp is not None:
+                validation = identity_service.validate_id(candidate=context.timestamp)
+                if validation.is_failure:
+                    return ValidationResult.failure(validation.exception)
+                # On validation success return the timestamp_SnapshotContext in the ValidationResult.
+                return ValidationResult.success(context)
+            
+            # Validation subflow for exception SnapshotContexts.
+            if context.exception is not None:
+                if not isinstance(context.exception, Exception):
+                    return ValidationResult.failure(NullException(f"{method}: {NullException.DEFAULT_MESSAGE}"))
+                # On validation success return the exception_SnapshotContext in the ValidationResult.
+                return ValidationResult.success(context)
+
+            # Validation subflow for player SnapshotContexts.
+            if context.plyer is not None:
+                validation = player_service.validator.validate(candidate=context.player)
+                if validation.is_failure:
+                    return ValidationResult.failure(validation.exception)
+                # On validation success return the player_SnapshotContext in the ValidationResult
                 return ValidationResult.success(context)
         
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidGameSnapshotContextException. Then send the exception-chain in a ValidationResult.
+        # Finally, if there is an unhandled exception Wrap an InvalidSnapshotContextException around it then
+        # return the exception-chain inside the ValidationResult
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidGameSnapshotContextException(
-                    ex=ex, message=f"{method}: {InvalidGameSnapshotContextException.DEFAULT_MESSAGE}"
+                InvalidSnapshotContextException(
+                    ex=ex, message=f"{method}: {InvalidSnapshotContextException.DEFAULT_MESSAGE}"
                 )
             )

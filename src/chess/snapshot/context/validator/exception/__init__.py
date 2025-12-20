@@ -14,4 +14,4 @@ from .flag import *
 from .null import *
 
 # Modules
-from .exception import InvalidGameSnapshotContextException
+from .exception import InvalidSnapshotContextException

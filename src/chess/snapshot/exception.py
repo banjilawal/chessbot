@@ -11,12 +11,12 @@ from chess.system import ChessException
 
 __all__ = [
     # ======================# SNAPSHOT EXCEPTION #======================#
-    "GameSnapshotException",
+    "SnapshotException",
 ]
 
 
 # ======================# SNAPSHOT EXCEPTION #======================#
-class GameSnapshotException(ChessException):
+class SnapshotException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

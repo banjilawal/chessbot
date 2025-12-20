@@ -9,59 +9,67 @@ version: 1.0.0
 
 from typing import Optional
 
+from chess.arena import Arena
+from chess.game import Game
 from chess.team import Team
+from chess.snapshot import Snapshot
 from chess.agent import PlayerAgent
-from chess.game import GameSnapshot
 from chess.system import Context, GameColor
 
 
-class GameSnapshotContext(Context[GameSnapshot]):
+class SnapshotContext(Context[Snapshot]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    Provtimestampe a GameSnapshotFinder with a Snapshot or Arena attribute used to find snapshots which a matching
-    attribute.
+    1.  Provide an SchemaLookup with an attribute-value-tuple to perform forward Schema entry lookups.
+    # Provtimestampe a SnapshotFinder with a Snapshot or Arena attribute used to find snapshots which a matching
+    # attribute.
 
     # PARENT:
         *   Context
 
     # PROVIDES:
-        *   GameSnapshotContext.to_dict
+    None
 
     # LOCAL ATTRIBUTES:
+        *   game (Optional[Game])
         *   team (Optional[Team])
-        *   player_agent (Optional[PlayerAgent])
+        *   arena (Optional[Arena])
         *   timestamp (Optional[int])
-        *   color (Optional[GameColor])
         *   exception (Optional[Exception])
+        *   player (Optional[PlayerAgent])
 
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
     """
+    _game: Optional[Game]
     _team: Optional[Team]
-    _agent: Optional[PlayerAgent]
+    _arena: Optional[Arena]
     _timestamp: Optional[int]
-    _color: Optional[GameColor]
     _exception: Optional[Exception]
+    _player: Optional[PlayerAgent]
     
     def __init__(
             self,
-            team: Optional[Team] = None,
-            agent: Optional[PlayerAgent] = None,
-            timestamp: Optional[int] = None,
-            exception: Optional[Exception] = None,
+            game: Optional[Game],
+            team: Optional[Team],
+            arena: Optional[Arena],
+            timestamp: Optional[int],
+            player: Optional[PlayerAgent],
+            exception: Optional[Exception],
     ):
         """
         # ACTION:
         Constructor
 
         # PARAMETERS:
-            *   timestamp (Optional[int])
+            *   game (Optional[Game])
             *   team (Optional[Team])
-            *   player_agent (Optional[PlayerAgent])
-            *   color (Optional[GameColor])
+            *   arena (Optional[Arena])
+            *   timestamp (Optional[int])
             *   exception (Optional[Exception])
+            *   player (Optional[PlayerAgent])
 
         # Returns:
         None
@@ -70,18 +78,28 @@ class GameSnapshotContext(Context[GameSnapshot]):
         Non
         """
         super().__init__(id=None, name=None)
+        self._game = game
         self._team = team
-        self._agent = agent
+        self._arena = arena
+        self._player = player
         self._timestamp = timestamp
         self._exception = exception
+        
+    @property
+    def game(self) -> Optional[Game]:
+        return self._game
     
     @property
     def team(self) -> Optional[Team]:
         return self._team
     
     @property
-    def agent(self) -> Optional[PlayerAgent]:
-        return self._agent
+    def arena(self) -> Optional[Arena]:
+        return self._arena
+    
+    @property
+    def player(self) -> Optional[PlayerAgent]:
+        return self._player
     
     @property
     def timestamp(self) -> Optional[int]:
@@ -93,7 +111,7 @@ class GameSnapshotContext(Context[GameSnapshot]):
     
     def to_dict(self) -> dict:
         """
-        # Convert the GameSnapshotContext object to a dictionary.
+        # Convert the SnapshotContext object to a dictionary.
 
         # PARAMETERS:
         None
@@ -105,7 +123,9 @@ class GameSnapshotContext(Context[GameSnapshot]):
         None
         """
         return {
+            "game": self._game,
             "team": self._team,
+            "arena": self._arena,
             "player_agent": self._agent,
             "timestamp": self._timestamp,
             "exception": self._exception,

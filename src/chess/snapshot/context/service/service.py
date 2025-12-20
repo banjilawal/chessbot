@@ -8,8 +8,8 @@ version: 1.0.0
 """
 
 from chess.system import ContextService
-from chess.game import GameSnapshotContext
+from chess.game import SnapshotContext
 
 
-class GameSnapshotContextService(ContextService[GameSnapshotContext]):
+class SnapshotContextService(ContextService[SnapshotContext]):
     pass

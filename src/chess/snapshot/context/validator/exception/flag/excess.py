@@ -8,31 +8,31 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.game import InvalidGameSnapshotContextException
+from chess.game import InvalidSnapshotContextException
 
 __all__ = [
     # ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
-    "ExcessiveGameSnapshotContextFlagsException",
+    "ExcessiveSnapshotContextFlagsException",
 ]
 
 
 # ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
-class ExcessiveGameSnapshotContextFlagsException(InvalidGameSnapshotContextException, ContextFlagCountException):
+class ExcessiveSnapshotContextFlagsException(InvalidSnapshotContextException, ContextFlagCountException):
     """
-    # ROLE: ContextFlagException, GameSnapshotContextException
+    # ROLE: ContextFlagException, SnapshotContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one Game attribute is going to be used in an GameSnapshotFinder.
+    1.  Indicate if more than one Game attribute is going to be used in an SnapshotFinder.
 
     # PARENT:
-        *   InvalidGameSnapshotContextException
+        *   InvalidSnapshotContextException
         *   ContextFlagCountException
 
     # PROVIDES:
-    ExcessiveGameSnapshotContextFlagsException
+    ExcessiveSnapshotContextFlagsException
 
     # ATTRIBUTES:
     None
     """
     ERROR_CODE = "TOO_MANY_GAME_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "More than one GameSnapshotContext flag was selected. Only one context flag is allowed."
+    DEFAULT_MESSAGE = "More than one SnapshotContext flag was selected. Only one context flag is allowed."

@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .service import GameSnapshotContextService
+from .service import SnapshotContextService

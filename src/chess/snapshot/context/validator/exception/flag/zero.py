@@ -8,31 +8,31 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.game import InvalidGameSnapshotContextException
+from chess.game import InvalidSnapshotContextException
 
 __all__ = [
     # ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
-    "ZeroGameSnapshotContextFlagsException",
+    "ZeroSnapshotContextFlagsException",
 ]
 
 
 # ========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
-class ZeroGameSnapshotContextFlagsException(InvalidGameSnapshotContextException, ContextFlagCountException):
+class ZeroSnapshotContextFlagsException(InvalidSnapshotContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no GameSnapshotContext flag is provided with a searcher value.
+    1.  Indicate no SnapshotContext flag is provided with a searcher value.
 
     # PARENT:
-        *   InvalidGameSnapshotContextException
+        *   InvalidSnapshotContextException
         *   ContextFlagCountException
 
     # PROVIDES:
-    ZeroGameSnapshotContextFlagsException
+    ZeroSnapshotContextFlagsException
 
     # ATTRIBUTES:
     None
     """
     ERROR_CODE = "NO_GAME_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "No GameSnapshotContext flag was selected. A context flag must be turned on with a target value."
+    DEFAULT_MESSAGE = "No SnapshotContext flag was selected. A context flag must be turned on with a target value."

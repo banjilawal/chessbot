@@ -55,7 +55,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         # ACTION:
             1.  Confirm that only one in the (id, name, coord, board) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a GameSnapshotContext and send in a BuildResult. Else, send an exception
+            3.  If all checks pass build a SnapshotContext and send in a BuildResult. Else, send an exception
                 in the BuildResult.
 
 
@@ -77,9 +77,9 @@ class SquareContextBuilder(Builder[SquareContext]):
             - On failure: Exception.
 
         # Raises:
-            *   ZeroGameSnapshotContextFlagsException
-            *   GameSnapshotContextBuildFailedException
-            *   ExcessiveGameSnapshotContextFlagsException
+            *   ZeroSnapshotContextFlagsException
+            *   SnapshotContextBuildFailedException
+            *   ExcessiveSnapshotContextFlagsException
         """
         method = "SquareContextBuilder.build"
         try:

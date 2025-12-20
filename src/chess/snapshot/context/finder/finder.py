@@ -9,28 +9,28 @@ version: 1.0.0
 from typing import List
 
 from chess.agent import PlayerAgent
-from chess.snapshot.finder.exception import GameSnapshotFinderException
+from chess.snapshot.finder.exception import SnapshotFinderException
 from chess.system import Finder, LoggingLevelRouter, SearchResult
 from chess.game import (
-    GameSnapshotContext, GameSnapshotContextValidator, GameTimeline, GameSnapshot, NullGameTimelineException
+    SnapshotContext, SnapshotContextValidator, GameTimeline, Snapshot, NullGameTimelineException
 )
 from chess.team import Team
 
 
-class GameSnapshotFinder(Finder[GameSnapshot]):
+class SnapshotFinder(Finder[Snapshot]):
     """
     # ROLE: Finder
 
     # RESPONSIBILITIES:
     1.  Search AgentDataService or UniqueDataService objects for Agents with an attribute that matches the
-        target inside an GameSnapshotContext.
+        target inside an SnapshotContext.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT:
         *   Finder
 
     # PROVIDES:
-    GameSnapshotFinder:
+    SnapshotFinder:
 
     # LOCAL ATTRIBUTES:
     None
@@ -44,9 +44,9 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
     def find(
             cls,
             dataset: GameTimeline,
-            context: GameSnapshotContext,
-            context_validator: GameSnapshotContextValidator = GameSnapshotContextValidator()
-    ) -> SearchResult[List[GameSnapshot]]:
+            context: SnapshotContext,
+            context_validator: SnapshotContextValidator = SnapshotContextValidator()
+    ) -> SearchResult[List[Snapshot]]:
         """
         # Action:
         1.  Verify the dataset is not null and contains only Snapshot objects,
@@ -56,20 +56,20 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
 
         # Parameters:
             *   dataset (GameTimeline):
-            *   context: GameSnapshotContext
-            *   context_validator: GameSnapshotContextValidator
+            *   context: SnapshotContext
+            *   context_validator: SnapshotContextValidator
 
         # Returns:
         SearchResult[List[Snapshot]] containing either:
-                - On success:   List[gameSnapshot] in the payload.
+                - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
         # Raises:
             *   TypeError
             *   NullGameTimelineException
-            *   GameSnapshotFinderException
+            *   SnapshotFinderException
         """
-        method = "GameSnapshotFinder.find"
+        method = "SnapshotFinder.find"
         try:
             # Don't want to run a search if the dataset is null.
             if dataset is None:
@@ -94,16 +94,16 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
             if context.exception is not None:
                 return cls._find_by_exception(dataset, context.exception)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an GameSnapshotFinderException
+        # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                GameSnapshotFinderException(ex=ex, message="{method}: {GameSnapshotFinderException.DEFAULT_MESSAGE}")
+                SnapshotFinderException(ex=ex, message="{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_timestamp(cls, dataset: GameTimeline, timestamp: id) -> SearchResult[List[GameSnapshot]]:
+    def _find_by_timestamp(cls, dataset: GameTimeline, timestamp: id) -> SearchResult[List[Snapshot]]:
         """
         # Action:
         1.  Get the agents whose id matched the target.
@@ -117,13 +117,13 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
 
         # Returns:
         SearchResult[List[Snapshot]] containing either:
-                - On success:   List[gameSnapshot] in the payload.
+                - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
         # Raises:
-            *   GameSnapshotFinderException
+            *   SnapshotFinderException
         """
-        method = "GameSnapshotFinder._find_by_timestamp"
+        method = "SnapshotFinder._find_by_timestamp"
         try:
             matches = [snapshot for snapshot in dataset.items if snapshot.timestamp == timestamp]
             # There should be either no Agents with the id or one and only one PlayerAgent will have that id.
@@ -134,16 +134,16 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an GameSnapshotFinderException
+        # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                GameSnapshotFinderException(ex=ex, message=f"{method}: {GameSnapshotFinderException.DEFAULT_MESSAGE}")
+                SnapshotFinderException(ex=ex, message=f"{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_agent(cls, dataset: GameTimeline, agent: PlayerAgent) -> SearchResult[List[GameSnapshot]]:
+    def _find_by_agent(cls, dataset: GameTimeline, agent: PlayerAgent) -> SearchResult[List[Snapshot]]:
         """
         # Action:
         1.  Get the agents whose agents are a case-insensitive. match for the target.
@@ -157,13 +157,13 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
 
         # Returns:
         SearchResult[List[Snapshot]] containing either:
-                - On success:   List[gameSnapshot] in the payload.
+                - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
         # Raises:
-            *   GameSnapshotFinderException
+            *   SnapshotFinderException
         """
-        method = "GameSnapshotFinder._find_by_team"
+        method = "SnapshotFinder._find_by_team"
         try:
             # Agents are unique the search should only produce one unique result.
             matches = [snapshot for snapshot in dataset.items if agent in snapshot.arena.agents]
@@ -174,16 +174,16 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an GameSnapshotFinderException
+        # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                GameSnapshotFinderException(ex=ex, message=f"{method}: {GameSnapshotFinderException.DEFAULT_MESSAGE}")
+                SnapshotFinderException(ex=ex, message=f"{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_team(cls, dataset: GameTimeline, team: Team) -> SearchResult[List[GameSnapshot]]:
+    def _find_by_team(cls, dataset: GameTimeline, team: Team) -> SearchResult[List[Snapshot]]:
         """
         # Action:
         1.  Get the player_agent whose team is a match for the target.
@@ -197,13 +197,13 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
 
         # Returns:
         SearchResult[List[Snapshot]] containing either:
-                - On success:   List[gameSnapshot] in the payload.
+                - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
         # Raises:
-            *   GameSnapshotFinderException
+            *   SnapshotFinderException
         """
-        method = "GameSnapshotFinder._find_by_team"
+        method = "SnapshotFinder._find_by_team"
         try:
             # Agents are unique the search should only produce one unique result.
             matches = [snapshot for snapshot in dataset.items if team in snapshot.arena.team]
@@ -214,11 +214,11 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an GameSnapshotFinderException
+        # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                GameSnapshotFinderException(ex=ex, message=f"{method}: {GameSnapshotFinderException.DEFAULT_MESSAGE}")
+                SnapshotFinderException(ex=ex, message=f"{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -237,13 +237,13 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
 
         # Returns:
         SearchResult[List[Snapshot]] containing either:
-                - On success:   List[gameSnapshot] in the payload.
+                - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
         # Raises:
-            *   GameSnapshotFinderException
+            *   SnapshotFinderException
         """
-        method = "GameSnapshotFinder._find_by_agent"
+        method = "SnapshotFinder._find_by_agent"
         try:
             matches = []
             # Agents are unique the search should only produce one unique result.
@@ -255,9 +255,9 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-            # Finally, if some exception is not handled by the checks wrap it inside an GameSnapshotFinderException
+            # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                GameSnapshotFinderException(ex=ex, message=f"{method}: {GameSnapshotFinderException.DEFAULT_MESSAGE}")
+                SnapshotFinderException(ex=ex, message=f"{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
             )

@@ -17,7 +17,7 @@ class CatalogContext(Context[Catalog]):
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    Provide a Catalog lookup with an attribute value to find Catalog entries with a matching attribute values.
+    Provide an CatalogLookup with an attribute-value-tuple to perform forward Catalog entry lookups.
 
     # PARENT:
         *   Context
