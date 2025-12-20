@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.team import TeamService
-from chess.agent import PlayerAgentService
+from chess.agent import AgentService
 from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from chess.game import (
     GameSnapshotContext, InvalidGameSnapshotContextException, ZeroGameSnapshotContextFlagsException,
@@ -44,7 +44,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
             cls,
             candidate: Any,
             team_service: TeamService = TeamService(),
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            agent_service: AgentService = AgentService(),
             number_validator: NumberValidator = NumberValidator(),
     ) -> ValidationResult[GameSnapshotContext]:
         """
@@ -61,7 +61,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
             *   team (Optional[Team])
 
         These Parameters must be provided:
-            *   player_agent_service (PlayerAgentService)
+            *   player_agent_service (AgentService)
             *   not_negative_validator (NumberValidator)
 
         # Returns:

@@ -1,12 +1,13 @@
-# src/chess/agent/service/data/exception/exception.py
+# src/chess/agent/service/data/_exception.py
 
 """
-Module: chess.agent.service.data.exception.base
+Module: chess.agent.service.data._exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
+from chess.agent import AgentException
 from chess.system import DataServiceException
 
 __all__ = [
@@ -16,7 +17,7 @@ __all__ = [
 
 
 #======================# AGENT_DATA_SERVICE EXCEPTION #======================#
-class AgentDataServiceException(DataServiceException):
+class AgentDataServiceException(AgentException, DataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

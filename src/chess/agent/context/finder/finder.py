@@ -1,7 +1,7 @@
-# src/chess/agent/finder/finder
+# src/chess/agent/context/finder/finder.py
 
 """
-Module: chess.agent.finder.finder
+Module: chess.agent.cntext.finder.finder
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -11,7 +11,6 @@ version: 1.0.0
 from typing import List
 
 from chess.agent.service.data.exception.null import AgentNullDataSetException
-from chess.game import Game
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.agent import (
     PlayerAgent, AgentContext, AgentContextValidator, AgentFinderException, AgentVariety, HumanAgent,

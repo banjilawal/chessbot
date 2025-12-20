@@ -12,7 +12,7 @@ from typing import List
 from chess.board import BoardService
 from chess.schema import Schema
 from chess.team import Team, UniqueTeamDataService
-from chess.agent import PlayerAgent, PlayerAgentService
+from chess.agent import PlayerAgent, AgentService
 from chess.arena import Arena, ArenaBuildFailedException
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ServiceValidator, id_emitter
 
@@ -46,7 +46,7 @@ class ArenaBuilder(Builder[Arena]):
             white_agent: PlayerAgent,
             black_agent: PlayerAgent,
             id: int = id_emitter.arena_id,
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            agent_service: AgentService = AgentService(),
             board_service: BoardService = BoardService(),
             service_validator: ServiceValidator = ServiceValidator(),
             identity_service: IdentityService = IdentityService(),

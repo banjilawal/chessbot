@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 
-from chess.agent import PlayerAgentService
+from chess.agent import AgentService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.game import (
     GameContext, InvalidGameContextException, ZeroGameContextFlagsException, NullGameContextException,
@@ -44,7 +44,7 @@ class GameContextValidator(Validator[GameContext]):
     def validate(
             cls,
             candidate: Any,
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[GameContext]:
         """
@@ -60,7 +60,7 @@ class GameContextValidator(Validator[GameContext]):
             *   player_agent (Optional[PlayerAgent])
 
         These Parameters must be provided:
-            *   player_agent_service (PlayerAgentService)
+            *   player_agent_service (AgentService)
             *   identity_service (IdentityService)
 
         # Returns:

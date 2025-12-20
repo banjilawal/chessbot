@@ -10,7 +10,8 @@ version: 1.0.0
 #=========== AGENT.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .service import UniqueAgentDataService
+from .exception import UniqueAgentDataServiceException

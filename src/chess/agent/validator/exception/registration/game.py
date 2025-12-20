@@ -7,7 +7,9 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
+
 from chess.agent import InvalidAgentException
+from chess.system import RegistrationException
 
 
 __all__ = [
@@ -15,7 +17,7 @@ __all__ = [
     "AgentNotRegisteredWithGameException",
 ]
 
-from chess.system import RegistrationException
+
 
 
 #======================# AGENT_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#

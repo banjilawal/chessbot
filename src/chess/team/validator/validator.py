@@ -8,7 +8,7 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-from chess.agent import PlayerAgent, PlayerAgentService
+from chess.agent import PlayerAgent, AgentService
 from chess.game import Game
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
@@ -44,7 +44,7 @@ class TeamValidator(Validator[Team]):
     def validate(
             cls,
             candidate: Any,
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
             schema_validator: TeamSchemaValidator = TeamSchemaValidator(),
     ) -> ValidationResult[Team]:
@@ -54,14 +54,14 @@ class TeamValidator(Validator[Team]):
         2.  Check if candidate is a Team. If so cast it.
         3.  Check id safety with IdentityService
         4.  Verify team_schema's correctness with TeamSchemaValidator.
-        5.  Check player_agent safety with PlayerAgentService.
+        5.  Check player_agent safety with AgentService.
         6.  If any check fails, return the exception inside a ValidationResult.
         7.  If all pass return the Team object in a ValidationResult
 
         # PARAMETERS:
             *   candidate (Any)
             *   team_schema (Schema)
-            *   agent_certifier (PlayerAgentService)
+            *   agent_certifier (AgentService)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -145,7 +145,7 @@ class TeamValidator(Validator[Team]):
             cls,
             team_candidate: Any,
             agent_candidate: Any,
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            agent_service: AgentService = AgentService(),
             team_context_service: TeamContextService = TeamContextService(),
     ) -> ValidationResult[(Team, PlayerAgent)]:
         """
@@ -161,7 +161,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_certifier (PlayerAgentService)
+            *   agent_certifier (AgentService)
             *   team_context (TeamContextService)
 
         # Returns:
@@ -239,7 +239,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   team_candidate (Any)
             *   agent_candidate (Any)
-            *   agent_certifier (PlayerAgentService)
+            *   agent_certifier (AgentService)
             *   team_context (TeamContextService)
 
         # Returns:

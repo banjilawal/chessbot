@@ -1,12 +1,13 @@
-# src/chess/agent/service/data/unique/exception/base.py
+# src/chess/agent/service/data/unique/exception.py
 
 """
-Module: chess.agent.service.data.unique.exception.base
+Module: chess.agent.service.data.unique.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
+from chess.agent import AgentException
 from chess.system import UniqueDataServiceException
 
 __all__ = [
@@ -16,7 +17,7 @@ __all__ = [
 
 
 #======================# UNIQUE_AGENT_DATA_SERVICE EXCEPTION #======================#
-class UniqueAgentDataServiceException(UniqueDataServiceException):
+class UniqueAgentDataServiceException(AgentException, UniqueDataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

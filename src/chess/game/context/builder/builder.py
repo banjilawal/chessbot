@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 
-from chess.agent import PlayerAgent, PlayerAgentService
+from chess.agent import PlayerAgent, AgentService
 from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter
 from chess.game import (
     GameContext, GameContextBuildFailedException, ZeroGameContextFlagsException, ExcessiveGameContextFlagsException
@@ -46,7 +46,7 @@ class GameContextBuilder(Builder[GameContext]):
             cls,
             id: Optional[int] = None,
             agent: Optional[PlayerAgent] = None,
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[GameContext]:
         """
@@ -62,7 +62,7 @@ class GameContextBuilder(Builder[GameContext]):
                 *   player_agent (Optional[PlayerAgent])
     
             These Parameters must be provided:
-                *   player_agent_service (PlayerAgentService)
+                *   player_agent_service (AgentService)
                 *   identity_service (IdentityService)
 
         # Returns:

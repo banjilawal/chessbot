@@ -1,4 +1,4 @@
-# src/chess/agent/service/data/unique/service_.py
+# src/chess/agent/service/data/unique/service.py
 
 """
 Module: chess.agent.service.data.unique.service
@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.system import DeletionResult, InsertionResult, SearchResult, UniqueDataService
-from chess.agent import PlayerAgent, AgentContext, AgentContextService, AgentDataService, PlayerAgentService
+from chess.agent import PlayerAgent, AgentContext, AgentContextService, AgentDataService, AgentService
 
 
 class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
@@ -26,7 +26,7 @@ class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
         *   UniqueDataService
 
     # PROVIDES:
-        *   player_agent_service: -> PlayerAgentService
+        *   player_agent_service: -> AgentService
         *   context_service: -> AgentContextService
         *   add_agent: -> InsertionResult[PlayerAgent]
         *   undo_add_agent: -> DeletionResult[PlayerAgent]
@@ -40,7 +40,7 @@ class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
     """
     DEFAULT_NAME = "UniqueAgentDataService"
     
-    def __init__(
+    def service(
             self,
             id: int,
             name: str = DEFAULT_NAME,
@@ -61,10 +61,10 @@ class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
         # Raises:
         None
         """
-        super().__init__(id=id, name=name, data_service=data_service)
+        super().service(id=id, name=name, data_service=data_service)
         
     @property
-    def agent_service(self) -> PlayerAgentService:
+    def agent_service(self) -> AgentService:
         return cast(AgentDataService, self.data_service).agent_service
     
     @property

@@ -1,7 +1,7 @@
-# src/chess/agent/context/finder/__init__.py
+# src/chess/agent/context/finder/exception/base.py
 
 """
-Module: chess.agent.cntext.finder.__init__
+Module: chess.agent.cntext.finder.exception.base
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

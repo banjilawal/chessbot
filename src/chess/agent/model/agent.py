@@ -1,17 +1,16 @@
-# src/chess/agent/model/player_agent.py
+# src/chess/agent/model/agent.py
 
 """
-Module: chess.agent.model.player_agent
+Module: chess.agent.model.agent
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-
 from abc import ABC
 from typing import Optional
 
-from chess.game import Game, UniqueGameDataService
+
 from chess.team import Team, UniqueTeamDataService
 
 
@@ -42,7 +41,7 @@ class PlayerAgent(ABC):
     _name: str
     _team_assignments: UniqueTeamDataService
     
-    def __init__(
+    def agent(
             self,
             id: int,
             name: str,
@@ -63,7 +62,7 @@ class PlayerAgent(ABC):
         # Raises:
         None
         """
-        method = "AgentContextService.__init__"
+        method = "AgentContextService.agent"
         self._id = id
         self._name = name
         self._games = games
@@ -96,7 +95,7 @@ class PlayerAgent(ABC):
         if isinstance(other, PlayerAgent):
             return self._id == other.id
         return False
-
+    
     def __hash__(self):
         return hash(self.id)
     

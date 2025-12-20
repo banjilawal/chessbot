@@ -14,6 +14,6 @@ from .result import *
 from .service import *
 
 # Modules
-from .exception import DataException
+from .exception import *
 
 

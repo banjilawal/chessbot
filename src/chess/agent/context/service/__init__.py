@@ -10,7 +10,8 @@ version: 1.0.0
 #=========== AGENT.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from.exception import *
+None
 
 # Modules
 from .service import AgentContextService
+from .exception import AgentContextServiceException

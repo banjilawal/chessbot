@@ -1,7 +1,7 @@
-# src/chess/agent/validator/exception/null/exception.py
+# src/chess/agent/validator/exception/null.py
 
 """
-Module: chess.agent.validator.exception.null.exception
+Module: chess.agent.validator.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

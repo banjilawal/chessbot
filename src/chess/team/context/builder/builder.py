@@ -11,7 +11,7 @@ from typing import Optional
 
 
 from chess.arena import Arena, ArenaService
-from chess.agent import PlayerAgent, PlayerAgentService
+from chess.agent import PlayerAgent, AgentService
 from chess.system import (
     Builder, BuildResult, FailsafeBranchExitPointException, GameColor, GameColorValidator,
     IdentityService, LoggingLevelRouter
@@ -53,7 +53,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             player_agent: Optional[PlayerAgent] = None,
             color: Optional[GameColor] = None,
             arena_service: ArenaService = ArenaService(),
-            player_agent_service: PlayerAgentService = PlayerAgentService(),
+            player_agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[TeamContext]:
@@ -74,7 +74,7 @@ class TeamContextBuilder(Builder[TeamContext]):
     
             These Parameters must be provided:
                 *   arena_service (ArenaService)
-                *   agent_certifier (PlayerAgentService)
+                *   agent_certifier (AgentService)
                 *   identity_service (IdentityService)
                 *   schema_validator (TeamSchemaValidator)
 

@@ -10,9 +10,7 @@ version: 1.0.0
 #=========== AGENT.CONTEXT.FINDER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from exception import *
 
 # Modules
 from .finder import AgentFinder
-from .exception import AgentFinderException
-

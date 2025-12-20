@@ -10,7 +10,8 @@ version: 1.0.0
 #=========== AGENT.MODEL.MACHINE PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .machine import MachineAgent
+from .exception import MachineAgentException

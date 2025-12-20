@@ -12,7 +12,7 @@ version: 1.0.0
 # Packages
 from .human import *
 from .machine import *
-from .variety import *
 
 # Modules
 from .agent import PlayerAgent
+from .exception import AgentException

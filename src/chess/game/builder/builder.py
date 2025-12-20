@@ -7,7 +7,7 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.agent import PlayerAgent, PlayerAgentService, UniqueAgentDataService
+from chess.agent import PlayerAgent, AgentService, UniqueAgentDataService
 from chess.board import BoardService
 from chess.team import Team, UniqueTeamDataService
 from chess.game import Game, GameBuildFailedException
@@ -42,7 +42,7 @@ class GameBuilder(Builder[Game]):
             id: int = id_emitter.service_id,
             board: BoardService = BoardService(),
             identity_service: IdentityService = IdentityService(),
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            agent_service: AgentService = AgentService(),
     ) -> BuildResult[Game]:
         """
         # ACTION:
@@ -59,7 +59,7 @@ class GameBuilder(Builder[Game]):
             *   white_agent (PlayerAgent)
             *   black_agent (GameSchema)
             *   identity_service (IdentityService)
-            *   player_agent_service (PlayerAgentService)
+            *   player_agent_service (AgentService)
             *   board_certifier (BoardCertifier)
         All Services have default values to ensure they are never null.
         

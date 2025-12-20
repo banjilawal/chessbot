@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.agent import PlayerAgentService
+from chess.agent import AgentService
 from chess.arena import ArenaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
@@ -42,7 +42,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 validate(
                         candidate: Any,
                         team_schema: Team = Team,
-                        agent_certifier: PlayerAgentService = PlayerAgentService(),
+                        agent_certifier: AgentService = AgentService(),
                         identity_service: IdentityService = IdentityService(),
                 ) -> ValidationResult[TeamContext]:
                 
@@ -56,7 +56,7 @@ class TeamContextValidator(Validator[TeamContext]):
             cls,
             candidate: Any,
             arena_service: ArenaService = ArenaService(),
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            agent_service: AgentService = AgentService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> ValidationResult[TeamContext]:
@@ -70,7 +70,7 @@ class TeamContextValidator(Validator[TeamContext]):
         # Parameters:
             *   candidate (Any)
             *   color_validator (ColorValidator)
-            *   player_agent_service (PlayerAgentService)
+            *   player_agent_service (AgentService)
             *   arena_service (ArenaService)
             *   identity_service (IdentityService)
 

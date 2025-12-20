@@ -9,7 +9,7 @@ version: 1.0.0
 
 from chess.piece import UniquePieceDataService
 from chess.schema import Schema, SchemaLookup
-from chess.agent import PlayerAgent, PlayerAgentService
+from chess.agent import PlayerAgent, AgentService
 from chess.arena import Arena, ArenaService, ExcessiveTeamsInArenaException
 from chess.team import (
     AddingDuplicateTeamException, Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException
@@ -50,7 +50,7 @@ class TeamBuilder(Builder[Team]):
             schema_lookup: SchemaLookup = SchemaLookup(),
             arena_service: ArenaService = ArenaService(),
             identity_service: IdentityService = IdentityService(),
-            player_agent_service: PlayerAgentService = PlayerAgentService(),
+            player_agent_service: AgentService = AgentService(),
     ) -> BuildResult[Team]:
         """
         # ACTION:
@@ -66,7 +66,7 @@ class TeamBuilder(Builder[Team]):
             *   player_agent (PlayerAgent)
             *   team_schema (Schema)
             *   identity_service (IdentityService)
-            *   player_agent_service (PlayerAgentService)
+            *   player_agent_service (AgentService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.
         

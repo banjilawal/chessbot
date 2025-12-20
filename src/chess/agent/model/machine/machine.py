@@ -1,7 +1,7 @@
-## src/chess/model/machine/machine.py
+# src/chess/agent/model/machine/machine.py
 
 """
-Module: chess.model.machine.machine
+Module: chess.agent.model.machine.machine
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -9,7 +9,6 @@ version: 1.0.0
 
 from chess.agent import PlayerAgent
 from chess.engine import EngineService
-from chess.game import UniqueGameDataService
 from chess.team import UniqueTeamDataService
 
 
@@ -34,7 +33,7 @@ class MachineAgent(PlayerAgent):
     """
     _engine_service: EngineService
     
-    def __init__(
+    def machine(
             self,
             id: int,
             name: str,
@@ -58,7 +57,7 @@ class MachineAgent(PlayerAgent):
         # Raises:
         None
         """
-        super().__init__(id=id, name=name, games=games, team_assignments=team_assignments)
+        super().machine(id=id, name=name, games=games, team_assignments=team_assignments)
         self._engine_service = engine_service
     
     @property

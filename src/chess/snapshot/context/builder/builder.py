@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.team import Team, TeamService
-from chess.agent import PlayerAgent, PlayerAgentService
+from chess.agent import PlayerAgent, AgentService
 from chess.system import BuildResult, Builder, FailsafeBranchExitPointException, LoggingLevelRouter, NumberValidator
 from chess.game import (
     GameSnapshotContext, GameSnapshotContextBuildFailedException, ZeroGameSnapshotContextFlagsException,
@@ -48,7 +48,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
             agent: Optional[PlayerAgent] = None,
             timestamp: Optional[int] = None,
             team_service: TeamService = TeamService(),
-            agent_service: PlayerAgentService = PlayerAgentService(),
+            agent_service: AgentService = AgentService(),
             number_validator: NumberValidator = NumberValidator()
     ) -> BuildResult[GameSnapshotContext]:
         """
@@ -66,7 +66,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
     
             These Parameters must be provided:
                 *   team_service (TeamService)
-                *   player_agent_service (PlayerAgentService)
+                *   player_agent_service (AgentService)
                 *   not_negative_validator (NumberValidator)
 
         # Returns:

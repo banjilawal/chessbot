@@ -7,15 +7,20 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from chess.system import DataException, NullException
+
+from chess.game import GameException
+from chess.system import NullDataSetException
 
 
 __all__ = [
     "GameSearchDatasetNullException",
 ]
 
+
+
+
 #======================# GAME_NULL_DATASET EXCEPTION #======================#
-class GameSearchDatasetNullException(DataException, NullException):
+class GameSearchDatasetNullException(GameException, NullDataSetException):
     """
     # ROLE: Error Tracing, Debugging
 

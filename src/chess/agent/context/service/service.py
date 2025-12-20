@@ -39,7 +39,7 @@ class AgentContextService(ContextService[AgentContext]):
         *   See ContextService for inherited attributes.
     """
     DEFAULT_NAME = "AgentContextService"
-    def __init__(
+    def service(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
@@ -64,8 +64,8 @@ class AgentContextService(ContextService[AgentContext]):
         # Raises:
         None
         """
-        method = "AgentContextService.__init__"
-        super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
+        method = "AgentContextService.service"
+        super().service(id=id, name=name, builder=builder, validator=validator, finder=finder)
         
     @property
     def finder(self) -> AgentFinder:

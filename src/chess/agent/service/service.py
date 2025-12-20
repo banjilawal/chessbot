@@ -6,17 +6,15 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
-from logging import Logger
-from typing import List, cast
-
-from chess.arena import Arena
-from chess.game import Game, GameContext, UniqueGameDataService, UniqueGameDataServiceException
-from chess.system import BuildResult, EntityService, LoggingLevelRouter, SearchResult, ServiceValidator, id_emitter
-from chess.agent import PlayerAgent, AgentFactory, AgentServiceException, AgentValidator
-from chess.team import Team, TeamSchema, TeamService
 
 
-class PlayerAgentService(EntityService[PlayerAgent]):
+from typing import cast
+
+from chess.system import EntityService, id_emitter
+from chess.agent import PlayerAgent, AgentFactory, AgentValidator
+
+
+class AgentService(EntityService[PlayerAgent]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -38,7 +36,7 @@ class PlayerAgentService(EntityService[PlayerAgent]):
     # INHERITED ATTRIBUTES:
         *   See EntityService class for inherited attributes.
     """
-    DEFAULT_NAME = "PlayerAgentService"
+    DEFAULT_NAME = "AgentService"
     def __init__(
             self,
             name: str = DEFAULT_NAME,
@@ -73,27 +71,6 @@ class PlayerAgentService(EntityService[PlayerAgent]):
     def validator(self) -> AgentValidator:
         """get AgentValidator"""
         return cast(AgentValidator, self.entity_validator)
-    
-    @LoggingLevelRouter.monitor
-    def find_games_for_agent(
-            self,
-            agent: PlayerAgent,
-            unique_games_service: UniqueGameDataService,
-            service_validator: ServiceValidator = ServiceValidator(),
-    ) -> SearchResult[List[Game]]:
-        try:
-            agent_validation = self.validator.validate(candidate=agent)
-            if agent_validation.is_failure:
-                return SearchResult.failure(agent_validation.exception)
-            service_validation = service_validator.validate(candidate=unique_games_service)
-            if service_validation.is_failure:
-                return SearchResult.failure(service_validation.exception)
-            
-            return unique_games_service.search_games(context=GameContext(agent=agent))
-        except Exception as ex:
-            return SearchResult.failure(
-                AgentServiceException(ex=ex, message="{method}: {AgentServiceException.DEFAULT_MESSAGE}")
-            )
-    
+
     
     

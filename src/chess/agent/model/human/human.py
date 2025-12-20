@@ -8,7 +8,6 @@ version: 1.0.0
 """
 
 from chess.agent import PlayerAgent
-from chess.game import UniqueGameDataService
 from chess.team import UniqueTeamDataService
 
 

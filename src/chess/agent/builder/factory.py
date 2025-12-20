@@ -1,9 +1,9 @@
-# src/chess/agent/builder.py
+# src/chess/agent/builder/factory.py
 
 """
-Module: chess.agent.builder
+Module: chess.agent.builder.factory
 Author: Banji Lawal
-Created: 2025-09-11
+Created: 2025-09-16
 version: 1.0.0
 """
 

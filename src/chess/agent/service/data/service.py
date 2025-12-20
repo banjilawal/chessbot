@@ -11,7 +11,7 @@ from typing import List, cast
 
 
 from chess.system import DataService, id_emitter
-from chess.agent import PlayerAgent, AgentContextService, PlayerAgentService
+from chess.agent import PlayerAgent, AgentContextService, AgentService
 
 
 class AgentDataService(DataService[PlayerAgent]):
@@ -41,12 +41,12 @@ class AgentDataService(DataService[PlayerAgent]):
     """
     SERVICE_NAME = "AgentDataService"
     
-    def __init__(
+    def service(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[PlayerAgent] = List[PlayerAgent],
-            service: PlayerAgentService = PlayerAgentService(),
+            service: AgentService = AgentService(),
             context_service: AgentContextService = AgentContextService(),
     ):
         """
@@ -57,7 +57,7 @@ class AgentDataService(DataService[PlayerAgent]):
             *   id (int): = id_emitter.service_id
             *   designation (str): = SERVICE_NAME
             *   items (List[PlayerAgent]): = List[PlayerAgent]
-            *   service (PlayerAgentService): = PlayerAgentService()
+            *   service (AgentService): = AgentService()
             *   context_service (AgentContextService): = AgentContextService()
 
         # Returns:
@@ -66,7 +66,7 @@ class AgentDataService(DataService[PlayerAgent]):
         # Raises:
         None
         """
-        super().__init__(
+        super().service(
             id=id,
             name=name,
             items=items,
@@ -75,8 +75,8 @@ class AgentDataService(DataService[PlayerAgent]):
         )
         
     @property
-    def agent_service(self) -> PlayerAgentService:
-        return cast(PlayerAgentService, self.entity_service)
+    def agent_service(self) -> AgentService:
+        return cast(AgentService, self.entity_service)
     
     @property
     def agent_context_service(self) -> AgentContextService:
@@ -84,8 +84,8 @@ class AgentDataService(DataService[PlayerAgent]):
     
 
     # @property
-    # def data(self) -> PlayerAgentService:
-    #     return cast(PlayerAgentService, self.data)
+    # def data(self) -> AgentService:
+    #     return cast(AgentService, self.data)
     #
     # @property
     # def builder(self) -> AgentFactory:

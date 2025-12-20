@@ -10,7 +10,8 @@ version: 1.0.0
 #=========== AGENT.MODEL.HUMAN PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .human import HumanAgent
+from .exception import HumanAgentException
