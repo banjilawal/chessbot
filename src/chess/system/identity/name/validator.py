@@ -92,7 +92,7 @@ class NameValidator(Validator[str]):
             
             return ValidationResult.success(payload=name)
         # Finally, if there is an unhandled exception Wrap an InvalidNameException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidNameException(ex=ex, message=f"{method}: {InvalidNameException.DEFAULT_MESSAGE}")

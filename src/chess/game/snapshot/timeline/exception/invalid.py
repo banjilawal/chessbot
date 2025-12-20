@@ -11,21 +11,21 @@ from chess.game import GameTimelineException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# GAME_TIMELINE VALIDATION EXCEPTIONS #======================#
+    # ======================# GAME_TIMELINE VALIDATION EXCEPTION #======================#
     "InvalidGameTimelineException",
 ]
 
 
 
 
-# ======================# GAME_TIMELINE VALIDATION EXCEPTIONS #======================#
+# ======================# GAME_TIMELINE VALIDATION EXCEPTION #======================#
 class InvalidGameTimelineException(GameTimelineException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during GameTimeline verification process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an GameTimelineValidator method.
+    1.  Parent of exception raised during GameTimeline verification process.
+    2.  Wraps unhandled exception that hit the try-finally block of an GameTimelineValidator method.
 
     # PARENT:
         *   GameTimelineException

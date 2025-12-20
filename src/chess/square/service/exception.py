@@ -19,7 +19,7 @@ __all__ = [
 
 class SquareServiceException(ServiceException):
     """
-    Super class of exceptions raised by SquareService objects. Do not use directly. Subclasses give
+    Super class of exception raised by SquareService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SQUARE_SERVICE_ERROR"

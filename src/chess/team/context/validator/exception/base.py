@@ -1,7 +1,7 @@
-# src/chess/team/context/validator/exception/exception.py
+# src/chess/team/context/number_bounds_validator/exception/exception.py
 
 """
-Module: chess.team.context.validator.exception.exception
+Module: chess.team.context.number_bounds_validator.exception.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

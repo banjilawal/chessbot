@@ -124,7 +124,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
     ) -> SearchResult[List[Catalog]]:
         """
         # Action:
-        1.  Certify the provided context with the class method's validator param.
+        1.  Certify the provided context with the class method's number_bounds_validator param.
         2.  If the context validation fails return the exception in a validation result. Otherwise, return
             the configuration entries which matched the context.
 

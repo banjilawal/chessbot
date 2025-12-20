@@ -11,12 +11,12 @@ from chess.rank import RankException
 from chess.system import BuildFailedException
 
 __all__ = [
-    #======================# RANK BUILD EXCEPTIONS #======================#
+    #======================# RANK BUILD EXCEPTION #======================#
     "RankBuildFailedException",
 ]
 
 
-#======================# RANK BUILD EXCEPTIONS #======================#
+#======================# RANK BUILD EXCEPTION #======================#
 class RankBuildFailedException(RankException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by RankBuilder 

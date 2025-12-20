@@ -1,7 +1,7 @@
-# src/chess/game/validator/exception/null.py
+# src/chess/game/number_bounds_validator/exception/null.py
 
 """
-Module: chess.game.validator.exception.null
+Module: chess.game.number_bounds_validator.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,7 +11,7 @@ from chess.system import NullException
 from chess.game import InvalidGameException
 
 __all__ = [
-    # ======================# GAME_ NULL EXCEPTIONS #======================#
+    # ======================# GAME_ NULL EXCEPTION #======================#
     "NullGameException",
 ]
 

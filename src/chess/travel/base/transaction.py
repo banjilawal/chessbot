@@ -191,7 +191,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   """
   #   Transfers `Piece` occupying`actor_square` to `directive.blocked_square` leaving `actor_square` empty.
   #   `Traveltransaction.execute` is the single entry point to `_switch_squares`. Before `_switch_squares`
-  #   was called `execute_directive`: validated the parameters, handled exceptions, and confirmed
+  #   was called `execute_directive`: validated the parameters, handled exception, and confirmed
   #   `directive.blocked_square` contained either
   #     * A friendly owner blocking `actor_candidate` from `blocked_square`
   #     * An enemy occupation. Kings cannot be captured, only checked or checkmated.

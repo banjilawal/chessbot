@@ -1,4 +1,4 @@
-# src/chess/catalog/lookup/context/validator/__init__.py
+# src/chess/catalog/lookup/context/number_bounds_validator/__init__.py
 
 """
 Module: chess.catalog.lookup.context.__init__

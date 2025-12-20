@@ -1,4 +1,4 @@
-# src/chess/piece/validator/__init__.py
+# src/chess/piece/number_bounds_validator/__init__.py
 
 """
 Module: chess.piece.validator__init__

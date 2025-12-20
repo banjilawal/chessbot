@@ -11,7 +11,7 @@ from chess.system import NullException
 from chess.game import InvalidGameContextServiceException
 
 __all__ = [
-    #======================# NULL GAME_CONTEXT_SERVICE EXCEPTIONS #======================#
+    #======================# NULL GAME_CONTEXT_SERVICE EXCEPTION #======================#
     "NullGameContextServiceException",
 ]
 

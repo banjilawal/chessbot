@@ -21,8 +21,8 @@ class BuildFailedException(BuilderException, OperationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Parent of exceptions when an entity building process fails.
-    2.  Wraps unhandled exceptions that hit the try-finally block of a Builder method.
+    1.  Parent of exception when an entity building process fails.
+    2.  Wraps unhandled exception that hit the try-finally block of a Builder method.
   
     # PARENT:
         *   BuilderException

@@ -61,7 +61,7 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's effects and actions cover exceptions raised by `Result` instances.
+The module's effects and actions cover exception raised by `Result` instances.
 
 # SECTION 3: Limitations
   1. Does not provide granular, precise information pertinent to debugging. The module's
@@ -82,14 +82,14 @@ The major theme influencing the modules design are
   1. Verify existing entities meet minimum requirements for use in the system.
   2. A description of an error condition, boundary violation, experienced or caused by an entity in
       the coord_stack_validator graph.
-  3. The root of a scalable, modular hierarchy for coord_stack_validator related exceptions.
+  3. The root of a scalable, modular hierarchy for coord_stack_validator related exception.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ChessException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `ResultException`).
+See the list of exception in the `__all__` list following (e.g., `ResultException`).
 """
 
 # src/chess.context.rollback_exception.py
@@ -104,13 +104,13 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **Context objects**. It handles boundary checks (row/column)
-limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exception; that responsibility
 falls to the `ContextValidator` and `ContextBuilder`processes.
 
 THEME:
 -----
 **Comprehensive Domain Error Catalog.** The central theme is to provide team_name
-highly granular and hierarchical set of exceptions, ensuring that callers can
+highly granular and hierarchical set of exception, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `ContextException`). This enables precise error
 logging and handling throughout the system.
@@ -118,7 +118,7 @@ logging and handling throughout the system.
 PURPOSE:
 -------
 To serve as the **centralized error dictionary** for the `Context` graph.
-It abstracts underlying Python exceptions into graph-specific, custom error types
+It abstracts underlying Python exception into graph-specific, custom error types
 to improve code clarity and facilitate robust error handling within the chess engine.
 
 DEPENDENCIES:
@@ -126,11 +126,11 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `ContextException`,
+See the list of exception in the `__all__` list following (e.g., `ContextException`,
 `NullContextException`, `RowAboveBoundsException`).
 """

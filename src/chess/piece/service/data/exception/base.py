@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import DataServiceException
 
 __all__ = [
-    #======================# PIECE_DATA_SERVICE EXCEPTIONS #======================#
+    #======================# PIECE_DATA_SERVICE EXCEPTION #======================#
     "PieceDataServiceException",
 ]
 
 
-#======================# PIECE_DATA_SERVICE EXCEPTIONS #======================#
+#======================# PIECE_DATA_SERVICE EXCEPTION #======================#
 class PieceDataServiceException(DataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

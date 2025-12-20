@@ -14,34 +14,33 @@ from chess.board import Board
 from chess.coord import Coord, CoordService
 from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService
 from chess.square import (
-    NoSquareContextFlagSetException, SquareContext, SquareContextBuildFailedException,
+    ZeroSquareContextFlagsException, SquareContext, SquareContextBuildFailedException,
     ExcessiveSquareContextFlagsSetException
 )
 
 
 class SquareContextBuilder(Builder[SquareContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
-     1.  Produce SquareContext instances whose integrity is always guaranteed.
-     2.  Manage construction of SquareContext instances that can be used safely by the client.
-     3.  Ensure params for SquareContext creation have met the application's safety contract.
-     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    # RESPONSIBILITIES:
+    1.  Produce TeamContext instances whose integrity is always guaranteed.
+    2.  Manage construction of TeamContext instances that can be used safely by the client.
+    3.  Ensure params for TeamContext creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
-         * Builder
+    # PARENT:
+        *   Builder
 
-     # PROVIDES:
-         *   SquareContextBuilder
+    # PROVIDES:
+    None
 
-     # LOCAL ATTRIBUTES:
-     None
+    # LOCAL ATTRIBUTES:
+    None
 
-     # INHERITED ATTRIBUTES:
-     None
-     """
-    
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     def build(
             cls,
@@ -54,21 +53,23 @@ class SquareContextBuilder(Builder[SquareContext]):
     ) -> BuildResult[SquareContext]:
         """
         # ACTION:
-        1.  Verify only one param is turned on.
-        2.  If either id or designation is turned on verify them with identity_service.
-        2.  If the coord is turned on verify with coord_service.
-        3.  Run board-integrity checks with board_service.
-        4.  If any checks fail, send their exception to the caller in a BuildResult.
-        5.  When all checks pass, create a new Square object then send to the caller in a BuildResult.
+            1.  Confirm that only one in the (id, name, coord, board) tuple is not null.
+            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            3.  If all checks pass build a GameSnapshotContext and send in a BuildResult. Else, send an exception
+                in the BuildResult.
+
 
         # PARAMETERS:
-            *   id (int)
-            *   designation (str)
-            *   cord (Coord)
-            *   board (Board)
-            *   board_service (BoardService)
-            *   coord_service (CoordService)
-            *   identity_service (IdentityService)
+            Only one these must be provided:
+                *   id Optional[(int)]
+                *   null Optional[(str)]
+                *   cord Optional[(Coord)]
+                *   board Optional[(Board)]
+                
+            These Parameters must be provided:
+                *   board_service (BoardService)
+                *   coord_service (CoordService)
+                *   identity_service (IdentityService)
 
         # Returns:
         ValidationResult[Square] containing either:
@@ -76,7 +77,9 @@ class SquareContextBuilder(Builder[SquareContext]):
             - On failure: Exception.
 
         # Raises:
-            *   SquareBuildFailedException
+            *   ZeroGameSnapshotContextFlagsException
+            *   GameSnapshotContextBuildFailedException
+            *   ExcessiveGameSnapshotContextFlagsException
         """
         method = "SquareContextBuilder.build"
         try:
@@ -87,7 +90,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             # Test if no params are set. Need an attribute-value pair to find which Squares match the target.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoSquareContextFlagSetException(f"{method}: {NoSquareContextFlagSetException.DEFAULT_MESSAGE}")
+                    ZeroSquareContextFlagsException(f"{method}: {ZeroSquareContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:

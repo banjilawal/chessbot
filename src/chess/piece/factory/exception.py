@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 
-#======================# PIECE BUILD EXCEPTIONS #======================#
+#======================# PIECE BUILD EXCEPTION #======================#
 class PieceBuildFailedException(PieceException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by PieceBuilder 

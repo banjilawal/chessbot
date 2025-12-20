@@ -112,7 +112,7 @@ class GameBuilder(Builder[Game]):
             # Send the successfully built and registered Game object inside a BuildResult.
             return BuildResult.success(game)
         
-        # Finally return a BuildResult containing any unhandled exceptions insided an
+        # Finally return a BuildResult containing any unhandled exception insided an
         # GameBuildFailedException
         except Exception as ex:
             return BuildResult.failure(

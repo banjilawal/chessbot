@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/context/validator/validator.py
+# src/chess/game/snapshot/context/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.game.snapshot.context.validator.validator
+Module: chess.game.snapshot.context.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -50,7 +50,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
         """
         # Action:
             1.  Confirm that only one in the (id, player_agent, team , arena) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
+            2.  Certify the not-null attribute is safe using the appropriate entity_service and number_bounds_validator.
             3.  If any check fais return a ValidationResult containing the exception raised by the failure.
             4.  On success send the verified GameSnapshotContext in a ValidationResult.
 
@@ -62,7 +62,7 @@ class GameSnapshotContextValidator(Validator[GameSnapshotContext]):
 
         These Parameters must be provided:
             *   player_agent_service (PlayerAgentService)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
 
         # Returns:
         ValidationResult[GameSnapshotContext] containing either:

@@ -13,27 +13,27 @@ from chess.system import ChessException, NullException, ValidationException, Bui
 __all__ = [
   "VectorException",
 
-#====================== NULL VECTOR EXCEPTIONS #======================#
+#====================== NULL VECTOR EXCEPTION #======================#
   "NullVectorException",
   
-#====================== VECTOR VALIDATION EXCEPTIONS #======================#
+#====================== VECTOR VALIDATION EXCEPTION #======================#
   "InvalidVectorException",
 
-#====================== VECTOR BUILD EXCEPTIONS #======================#  
+#====================== VECTOR BUILD EXCEPTION #======================#
   "VectorBuildFailedException",
 
-#====================== NULL COMPONENT EXCEPTIONS #======================#  
+#====================== NULL COMPONENT EXCEPTION #======================#
   "VectorAboveBoundsException",
   "VectorBelowBoundsException",
 
-#====================== VECTOR BOUNDS EXCEPTIONS #======================#  
+#====================== VECTOR BOUNDS EXCEPTION #======================#
   "NullXComponentException",
   "NullYComponentException",
 ]
 
 class VectorException(ChessException):
   """
-  Super class of exceptions raised by Scalar objects. Do not use directly. Subclasses give
+  Super class of exception raised by Scalar objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
   ERROR_CODE = "VECTOR_ERROR"
@@ -41,7 +41,7 @@ class VectorException(ChessException):
 
 
 
-#====================== NULL VECTOR EXCEPTIONS #======================#
+#====================== NULL VECTOR EXCEPTION #======================#
 
 
 

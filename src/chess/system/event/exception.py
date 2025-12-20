@@ -18,9 +18,9 @@ __all__ = [
 
 class EventException(ChessException):
   """
-  Super class of all exceptions `Event` object raises. Do not use directly. Subclasses give
+  Super class of all exception `Event` object raises. Do not use directly. Subclasses give
   details useful for debugging. This class exists primarily to allow catching all `Event`
-  exceptions.
+  exception.
   """
   ERROR_CODE = "EVENT_ERROR"
   DEFAULT_MESSAGE = "Event raised an exception."

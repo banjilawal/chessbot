@@ -11,12 +11,12 @@ from chess.arena import ArenaException
 from chess.system import ContextException
 
 __all__ = [
-    # ======================# ARENA_CONTEXT EXCEPTION SUPER CLASS #======================#
+    # ======================# ARENA_CONTEXT EXCEPTION #======================#
     "ArenaContextException",
 ]
 
 
-# ======================# ARENA_CONTEXT EXCEPTION SUPER CLASS #======================#
+# ======================# ARENA_CONTEXT EXCEPTION #======================#
 class ArenaContextException(ArenaException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

@@ -52,7 +52,7 @@ class PieceContextService(ContextService[PieceContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (PieceFinder): Default value -PieceFinder()
             *   builder (PieceContextBuilder): Default value -PieceContextBuilder()
-            *   validator (PieceContextValidator): Default value -PieceContextValidator()
+            *   number_bounds_validator (PieceContextValidator): Default value -PieceContextValidator()
 
         # Returns:
         None

@@ -27,7 +27,7 @@ class PieceService(EntityService[Piece]):
 
     # PROVIDES:
         *   builder:    -> PieceFactory
-        *   validator:  -> PieceValidator
+        *   number_bounds_validator:  -> PieceValidator
 
     # LOCAL ATTRIBUTES:
     None
@@ -52,7 +52,7 @@ class PieceService(EntityService[Piece]):
             *   id (nt)
             *   designation (str)
             *   builder (PieceFactory)
-            *   validator (PieceValidator)
+            *   number_bounds_validator (PieceValidator)
 
         # Returns:
         None

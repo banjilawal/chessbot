@@ -55,7 +55,7 @@ class GameContextService(ContextService[GameContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (GameFinder): Default value - GameFinder()
             *   builder (GameContextBuilder): Default value - GameContextBuilder()
-            *   validator (GameContextValidator): Default value - GameContextValidator()
+            *   number_bounds_validator (GameContextValidator): Default value - GameContextValidator()
 
         # Returns:
         None

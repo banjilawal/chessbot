@@ -12,27 +12,27 @@ from chess.system import SearchContextException, NullException, BuildFailedExcep
 __all__ = [
     "ResidentSearchContextException",
 
-    #======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT VALIDATION EXCEPTION =======#
     "NullResidentSearchContextException",
     "InvalidResidentSearchContextException",
     "NoResidentSearchParamException",
     "ExcessiveResidentSearchParamsException",
 
-    #======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
     "ResidentSearchContextBuildFailedException",
 ]
 
 
 class ResidentSearchContextException(SearchContextException):
     """
-    Super class for exceptions raised by ResidentFilter objects. DO NOT
+    Super class for exception raised by ResidentFilter objects. DO NOT
     USE DIRECTLY. Subclasses give more useful debugging messages.
     """
     ERROR_CODE = "RESIDENT_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "ResidentFilter raised an exception"
 
 
-# #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
+# #======================#   SEARCH_CONTEXT VALIDATION EXCEPTION #======================#
 class NullResidentSearchContextException(ResidentSearchContextException, NullException):
     """
     Raised if an entity, method, or operation requires team_name residentSearchContext but
@@ -45,7 +45,7 @@ class NullResidentSearchContextException(ResidentSearchContextException, NullExc
 class InvalidResidentSearchContextException(ResidentSearchContextException, ValidationException):
     """
     Raised by residentSearchContextBValidator if residentSearchContext fails sanity checks. Exists primarily to
-    catch all exceptions raised validating an existing residentSearchContext
+    catch all exception raised validating an existing residentSearchContext
     """
     ERROR_CODE = "RESIDENT_SEARCH_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "ResidentFilter validation failed."
@@ -70,7 +70,7 @@ class ExcessiveResidentSearchParamsException(ResidentSearchContextException):
     )
 
 
-# #======================# RESIDENT_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
+# #======================# RESIDENT_SEARCH_CONTEXT BUILD EXCEPTION #======================#
 class ResidentSearchContextBuildFailedException(ResidentSearchContextException, BuildFailedException):
     """"""
     ERROR_CODE = "RESIDENT_SEARCH_CONTEXT_BUILD_FAILED_ERROR"

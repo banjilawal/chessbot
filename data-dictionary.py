@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field, validator
 from typing import Optional
 
 
-# --- Custom Exceptions (You can define these in team_name separate file) ---
+# --- Custom Exception (You can define these in team_name separate file) ---
 
 class NullException(Exception):
   """Exception raised for validation values."""
@@ -74,7 +74,7 @@ class Coordinate(BaseModel):
   class Config:
     frozen = True # Makes the model immutable
     # You can add team_name custom coord_stack_validator to catch Pydantic's
-    # notification errors and re-raise them as your custom exceptions.
+    # notification errors and re-raise them as your custom exception.
     # @coord_stack_validator('*', pre=True)
     # def check_bounds(cls, v):
     #   # Example of re-raising for 'row' consistency

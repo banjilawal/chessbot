@@ -13,7 +13,7 @@ from chess.system import ChessException, OrphanException
 __all__ = [
   'VisitationSearchException',
 
-#======================# SEARCH_COLLISION EXCEPTIONS #======================#
+#======================# SEARCH_COLLISION EXCEPTION #======================#
   'VisitationSearchCollisionException',
   'VisitationSearchIdCollisionException',
   'VisitationSearchNameCollisionException',
@@ -28,15 +28,15 @@ __all__ = [
 
 class VisitationSearchException(ChessException):
   """
-  Super class of exceptions organic to `Finder` objects. DO NOT USE DIRECTLY. Subclasses give
+  Super class of exception organic to `Finder` objects. DO NOT USE DIRECTLY. Subclasses give
   details useful for debugging. `FinderException` exists primarily to allow catching all `Finder`
-  exceptions.
+  exception.
   """
   DEFAULT_CODE = "SEARCH_ERROR"
   DEFAULT_MESSAGE = "Finder raised an exception."
 
 
-#======================# SEARCH_COLLISION EXCEPTIONS #======================#
+#======================# SEARCH_COLLISION EXCEPTION #======================#
 class VisitationSearchCollisionException(VisitationSearchException, OrphanException):
   DEFAULT_CODE = "VISITATION_SEARCH_COLLISION_ERROR"
   DEFAULT_MESSAGE = (

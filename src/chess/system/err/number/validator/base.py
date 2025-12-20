@@ -1,7 +1,7 @@
-# src/chess/system/err/number/validator/base.py
+# src/chess/system/err/number/number_bounds_validator/base.py
 
 """
-Module: chess.system.err.number.validator.base
+Module: chess.system.err.number.number_bounds_validator.base
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -73,7 +73,7 @@ class NumberValidator(Validator[int]):
             return ValidationResult.success(payload=cast(int, candidate))
         
         # Finally, if there is an unhandled exception Wrap an InvalidNumberException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidNumberException(ex=ex, message=f"{method}: {InvalidNumberException.DEFAULT_MESSAGE}")

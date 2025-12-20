@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/active/collision.py
+# src/chess/piece/number_bounds_validator/exception/active/collision.py
 
 """
-Module: chess.piece.validator.exception.active.exception
+Module: chess.piece.number_bounds_validator.exception.active.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -15,11 +15,11 @@ class ActivePieceException(InvalidPieceException):
     Raised when an active Piece cannot do something.
     
     
-    # RELATED EXCEPTIONS
+    # RELATED EXCEPTION
         *   BindingException
         *   InconsistencyException
         *   NullException
-        *   Related Exceptions
+        *   Related Exception
     """
 
 class ActivePieceMissingFromTeamRoster(PieceException):

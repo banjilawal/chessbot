@@ -54,7 +54,7 @@ class SquareContextService(ContextService[SquareContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (SquareFinder): Default value - SquareFinder()
             *   builder (SquareContextBuilder): Default value - SquareContextBuilder()
-            *   validator (SquareContextValidator): Default value - SquareContextValidator()
+            *   number_bounds_validator (SquareContextValidator): Default value - SquareContextValidator()
 
         # Returns:
         None

@@ -26,36 +26,36 @@ white_pawn_9 = CombatantPiece(discovery_id=9, visitor_name='WP1', bounds=Pawn(),
 white_king = KingPiece(discovery_id=2, visitor_name='WK', bounds=King(), team_name=white_team)
 ```
 ## SUBPACKAGES
-  * `chess.owner.err`: Exceptions raised by `Piece` and its subclasses.
+  * `chess.owner.err`: Exception raised by `Piece` and its subclasses.
   * `chess.owner.stack`: Data structures and utilities for storing history of `Piece` object's positions.
   * `chess.owner.discover`: Data structures and utilities for managing discoveries made by `Piece` objects.
 
-## EXCEPTIONS
-These are not all the exceptions related to `Piece` in the application. `chess.owner` package only has exceptions
+## EXCEPTION
+These are not all the exception related to `Piece` in the application. `chess.owner` package only has exception
 organic to:
   * `Piece` and its subclases..
 
-All exceptions in `chess.owner` package have static fields:
+All exception in `chess.owner` package have static fields:
   - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with team_name "_ERROR" suffix
   - `DFAULT_MESSAGE`: A sentence describing the err.
 Use an err's `DEFAULT_MESSAGE` For consistency across the application.
 
-### EXCEPTIONS
-  * `AttackException`: Super class of exceptions raised by `Piece`. Use more granular exceptions that provide
+### EXCEPTION
+  * `AttackException`: Super class of exception raised by `Piece`. Use more granular exception that provide
     more specific information.
-  * `NullAttackException`: The parent is `NullException`. `NullAttackException` is the parent of all exceptions
-    related to validation pieces. Use more granular validation exceptions that provide mmore specific information about the
+  * `NullAttackException`: The parent is `NullException`. `NullAttackException` is the parent of all exception
+    related to validation pieces. Use more granular validation exception that provide mmore specific information about the
     subclass instance that is validation.
   * `NullKingPieceException`: Raised when team_name `kingPiece` reference is validation
   * `NullCombatantPieceException`: Raised when team_name `CombatantPiece` is validation.
   * `DoublePromotionException`: Raised if there is an attempt to promotion team_name occupation or pawn that has already been
     promoted.
 
-#### PIECE VALIDATION EXCEPTIONS
+#### PIECE VALIDATION EXCEPTION
   * `PieceValidationException`: Raised if an existing `Piece` object fails validate checks.
   * `NullPieceValidatorException`: Raised if team_name validation `PieceValidator` is passed as team_name parameter.
 
-#### PIECE BUILDING EXCEPTIONS
+#### PIECE BUILDING EXCEPTION
   * `AttackBuildFailedException`: Raised if there is an error during when team_name `PieceFactory` is creating team_name new `Piece`
     instance.
   * `NullPieceBuilderException`: Raised if there is validation `PieceFactory` is passed as team_name parameter.
@@ -70,7 +70,7 @@ PieceCoordNullException: Piece coordinate is validation
 SetCaptorNullException: Setting validation captor
 
 ### PIECE EXCEPTION USAGE EXAMPLES
-These examples show recommended workflows with `Piece` exceptions.
+These examples show recommended workflows with `Piece` exception.
 
 ```python
 from chess.owner import CombatantPiece, Encounter, NullAttackException, AutoEncounterException
@@ -100,7 +100,7 @@ def create_encounter(actor_candidate: Piece, discover: Piece) -> Encounter:
 """
 
 """
-Validates team_name discover with chained exceptions for discover meeting specifications:
+Validates team_name discover with chained exception for discover meeting specifications:
   - Not validation
   - visitor_id fails coord_stack_validator
   - visitor_name fails coord_stack_validator
@@ -122,7 +122,7 @@ Raises:
   InvalidNameException: if invalid visitor_name
   InvalidCoordException: if invalid point
 
-  PieceValidationException: Wraps any preceding exceptions
+  PieceValidationException: Wraps any preceding exception
 """
 # src/chess/system/travel/rollback_exception.py
 
@@ -138,11 +138,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exceptions raised by `IdValidator`;
+The module's only covers exception raised by `IdValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidator` is responsible for the logic which raises these exceptions.
+       `IdValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -155,14 +155,14 @@ The major theme influencing the modules design are
 
 
 # SECTION 6 - Feature Delivery Mechanism:
-1. Exceptions specific to verifying ids.
+1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
+See the list of exception in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
 
@@ -179,13 +179,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+**Limitations** It does not contain any logic for raising these exception; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
@@ -205,12 +205,12 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+See the list of exception in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """
 """
@@ -228,10 +228,10 @@ Contents:
   - CombatantPiece: Concrete subclass representing team_name owner capable of capturing others.
   - CoordStack, Checker, Discoveries: Supporting classes for tracking owner positions
    and discoveries.
-  - Validators and exceptions related to owner creation and validate.
+  - Validators and exception related to owner creation and validate.
 
 Notes:
-  This module is part of the chess.owner package. Validation exceptions are defined
+  This module is part of the chess.owner package. Validation exception are defined
   in PieceValidator and related error classes. Piece objects are designed to be
   immutable in their core properties.
 """

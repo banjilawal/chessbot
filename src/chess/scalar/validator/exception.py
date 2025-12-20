@@ -1,7 +1,7 @@
-# src/chess/scalar/validator/exception_.py
+# src/chess/scalar/number_bounds_validator/exception_.py
 
 """
-Module: chess.scalar.validator.exception
+Module: chess.scalar.number_bounds_validator.exception
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -15,13 +15,13 @@ from chess.scalar.exception import ScalarException
 __all__ = [
     "InvalidScalarException",
     
-    #======================# SCALAR BOUNDS EXCEPTIONS #======================#
+    #======================# SCALAR BOUNDS EXCEPTION #======================#
     "ScalarBelowBoundsException",
     "ScalarAboveBoundsException",
 ]
 
 
-#======================# SCALAR VALIDATION EXCEPTIONS #======================#
+#======================# SCALAR VALIDATION EXCEPTION #======================#
 class InvalidScalarException(ScalarException, ValidationException):
     """Catchall Exception for ScalarValidator when a candidate fails a sanity check.""""""
     ERROR_CODE = "SCALAR_VALIDATION_ERROR"
@@ -29,7 +29,7 @@ class InvalidScalarException(ScalarException, ValidationException):
 
 
 
-#======================# SCALAR BOUNDS EXCEPTIONS #======================#
+#======================# SCALAR BOUNDS EXCEPTION #======================#
 class ScalarBelowBoundsException(InvalidScalarException):
     """Raised if scalar is below its < -LONGEST_KNIGHT_LEG_SIZE"""
     ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"

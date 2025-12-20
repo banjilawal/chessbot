@@ -1,7 +1,7 @@
-# src/chess/schema/lookup/context/validator/exception/flag.py
+# src/chess/schema/lookup/context/number_bounds_validator/exception/flag.py
 
 """
-Module: chess.schema.lookup.context.validator.exception.flag
+Module: chess.schema.lookup.context.number_bounds_validator.exception.flag
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -12,14 +12,14 @@ from chess.schema import InvalidSchemaContextException
 
 __all__ = [
     # ========================= NO_SCHEMA_CONTEXT_FLAG EXCEPTION =========================#
-    "NoSchemaContextFlagException",
+    "ZeroSchemaContextFlagsException",
     # ========================= TOO_MANY_SCHEMA_CONTEXT_FLAGS EXCEPTION =========================#
     "ExcessiveSchemaContextFlagsException"
 ]
 
 
 # ========================= NO_SCHEMA_CONTEXT_FLAG EXCEPTION =========================#
-class NoSchemaContextFlagException(InvalidSchemaContextException, ContextFlagCountException):
+class ZeroSchemaContextFlagsException(InvalidSchemaContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 

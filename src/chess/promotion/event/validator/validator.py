@@ -1,7 +1,7 @@
-# src/chess/promotion/event/validator/validator.py
+# src/chess/promotion/event/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.promotion.event.validator.validator
+Module: chess.promotion.event.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

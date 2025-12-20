@@ -1,7 +1,7 @@
-# src/chess/system/err/number/validator/not_negative.py
+# src/chess/system/err/number/number_bounds_validator/not_negative.py
 
 """
-Module: chess.system.err.number.validator.not_negative
+Module: chess.system.err.number.number_bounds_validator.not_negative
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -48,7 +48,7 @@ class NotNegativeNumberValidator(Validator[int]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
             
         # Returns:
         ValidationResult[int] containing either:
@@ -62,7 +62,7 @@ class NotNegativeNumberValidator(Validator[int]):
         method = "IdValidator.validate"
         
         try:
-            # Perform basic number integrity checks with number_validator.
+            # Perform basic number integrity checks with not_negative_validator.
             validation = number_validator.validate(candidate=candidate)
             if validation.is_failure:
                 return ValidationResult.failure(validation.exception)

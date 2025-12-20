@@ -55,7 +55,7 @@ class CoordContextService(ContextService[CoordContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (CoordFinder): Default value - CoordFinder()
             *   builder (CoordContextBuilder): Default value - CoordContextBuilder()
-            *   validator (CoordContextValidator): Default value - CoordContextValidator()
+            *   number_bounds_validator (CoordContextValidator): Default value - CoordContextValidator()
 
         # Returns:
         None

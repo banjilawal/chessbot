@@ -11,7 +11,7 @@ from chess.system import OperationFailedException
 from chess.game import GameContextServiceException
 
 __all__ = [
-    #======================# OPERATION GAME_CONTEXT_SERVICE EXCEPTIONS #======================#
+    #======================# OPERATION GAME_CONTEXT_SERVICE EXCEPTION #======================#
     "GameContextServiceOperationFailedException",
 ]
 

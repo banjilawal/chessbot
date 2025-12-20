@@ -1,7 +1,7 @@
 # src/chess/rank/model/rook/validator_.py
 
 """
-Module: chess.rank.model.rook.validator
+Module: chess.rank.model.rook.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -112,7 +112,7 @@ class RookValidator(Validator[Rook]):
             # If all the checks pass return the certified Rook.
             return ValidationResult.success(rook)
         # Finally, if there is an unhandled exception wap an InvalidRookException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -162,7 +162,7 @@ class RookValidator(Validator[Rook]):
             return ValidationResult.success(id)
         
         # Finally, if there is an unhandled exception wap an InvalidRookException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -211,7 +211,7 @@ class RookValidator(Validator[Rook]):
             # If no errors are detected send the verified rook.designation inside a ValidationResult.
             return ValidationResult.success(name)
         # Finally, if there is an unhandled exception Wrap an InvalidRookException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -227,14 +227,14 @@ class RookValidator(Validator[Rook]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe number using number_validator. If so convert to number. Else return failure.
+        1.  Verify candidate is a safe number using not_negative_validator. If so convert to number. Else return failure.
         2.  Check if ransom != Catalog.ROOK.ransom. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (Catalog)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -261,7 +261,7 @@ class RookValidator(Validator[Rook]):
             return ValidationResult.success(ransom)
         
         # Finally, if there is an unhandled exception wrap an InvalidRookException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -311,7 +311,7 @@ class RookValidator(Validator[Rook]):
             return ValidationResult.success(designation)
         
         # Finally, if there is an unhandled exception wrap an InvalidRookException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -327,14 +327,14 @@ class RookValidator(Validator[Rook]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe number using number_validator. If so convert to number. Else return failure.
+        1.  Verify candidate is a safe number using not_negative_validator. If so convert to number. Else return failure.
         2.  Check if ransom != Catalog.ROOK.team_quota. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (Catalog)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -361,7 +361,7 @@ class RookValidator(Validator[Rook]):
             return ValidationResult.success(team_quota)
         
         # Finally, if there is an unhandled exception wrap an InvalidRookException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")

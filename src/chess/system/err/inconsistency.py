@@ -11,7 +11,7 @@ from chess.system.err import ChessException
 
 
 __all__ = [
-    #======================# INCONSISTENCY EXCEPTION SUPER CLASS #======================#
+    #======================# INCONSISTENCY EXCEPTION #======================#
     "InconsistencyException",
     #======================# INCONSISTENT COLLECTION EXCEPTION #======================#
     "InconsistentCollectionException",
@@ -21,7 +21,7 @@ __all__ = [
 
 
 
-#======================# INCONSISTENCY EXCEPTION SUPER CLASS #======================#
+#======================# INCONSISTENCY EXCEPTION #======================#
 class InconsistencyException(ChessException):
     """
     Raised if entity_service inconsistency is detected

@@ -12,9 +12,9 @@ from typing import Optional
 __all__ = [
     # ======================#  BASE APPLICATION EXCEPTION CLASS #======================#
     "ChessException",
-    # ======================# IMPLEMENTATION EXCEPTIONS #======================#
+    # ======================# IMPLEMENTATION EXCEPTION #======================#
     "NotImplementedException",
-    # ======================# STARVATION EXCEPTIONS #======================#
+    # ======================# STARVATION EXCEPTION #======================#
     "ResourceException",
 ]
 
@@ -25,7 +25,7 @@ class ChessException(Exception):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions by the application
+    1.  Parent of exception by the application
 
     # PARENT:
         *   Exception
@@ -83,14 +83,14 @@ class ChessException(Exception):
     # will use this.
 
 
-# ======================# IMPLEMENTATION EXCEPTIONS #======================#
+# ======================# IMPLEMENTATION EXCEPTION #======================#
 class NotImplementedException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
     1.  Indicates a desired abstract method or feature has not been implemented in the lower level class,
-    2.  Catchall for missing implementation errors that are not covered by lower level NotImplementedExceptions.
+    2.  Catchall for missing implementation errors that are not covered by lower level NotImplementedException.
 
     # PARENT:
         *   ChessException
@@ -108,13 +108,13 @@ class NotImplementedException(ChessException):
     DEFAULT_MESSAGE = "Not implemented."
 
 
-# ======================# STARVATION EXCEPTIONS #======================#
+# ======================# STARVATION EXCEPTION #======================#
 class ResourceException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  super class of exceptions related to resource acquisition, release or utilization failures.
+    1.  super class of exception related to resource acquisition, release or utilization failures.
     2.  Catchall for resource problems that are not covered by lower level ResourceException subclasses.
 
     # PARENT:

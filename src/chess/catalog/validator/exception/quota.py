@@ -1,7 +1,7 @@
-# src/chess/catalog/validator/exception/quota.py
+# src/chess/catalog/number_bounds_validator/exception/quota.py
 
 """
-Module: chess.catalog.validator.exception.quota
+Module: chess.catalog.number_bounds_validator.exception.quota
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -12,12 +12,12 @@ from chess.catalog import InvalidCatalogException
 
 
 __all__ = [
-    # ======================# CATALOG QUOTA BOUNDS EXCEPTIONS #======================#
+    # ======================# CATALOG QUOTA BOUNDS EXCEPTION #======================#
     "CatalogQuotaBoundsException",
 ]
 
 
-# ======================# CATALOG QUOTA BOUNDS EXCEPTIONS #======================#
+# ======================# CATALOG QUOTA BOUNDS EXCEPTION #======================#
 class CatalogQuotaBoundsException(InvalidCatalogException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging

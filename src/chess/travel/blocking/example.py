@@ -21,9 +21,9 @@ from chess.travel.travel import BlockingEvent, OccupationTransaction
 ```
 ---
 
-## EXCEPTIONS:
+## EXCEPTION:
 Gives granular information about errors that occur during blocking rollback.
-  * `ScanEventException`: Superclass for all blocking travel exceptions. Subclasses give better debugging information
+  * `ScanEventException`: Superclass for all blocking travel exception. Subclasses give better debugging information
   * `InvalidScanEventException`: Raised by `ScanEventValidator`s if validate fails
   * `NullEncounterEventException`: Raised by methods, entities, and models that require team_name BlockingEvent but receive team_name validation
   * `OccupationOccupationScanSubjectException`: Raised if team_name enemy of team_name blocking is invalid.

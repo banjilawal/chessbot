@@ -8,7 +8,7 @@ __all__ = [
 
 class UniqueSquareDataServiceException(UniqueDataServiceException):
     """
-    Super class of exceptions raised by UniqueSquareDataService objects. Do not use directly. Subclasses give
+    Super class of exception raised by UniqueSquareDataService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "UNIQUE_SQUARE_DATA_SERVICE_ERROR"

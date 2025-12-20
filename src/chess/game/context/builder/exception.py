@@ -12,19 +12,19 @@ from chess.game import GameContextException
 
 
 __all__ = [
-    #======================# GAME_CONTEXT BUILD EXCEPTIONS #======================#
+    #======================# GAME_CONTEXT BUILD EXCEPTION #======================#
     "GameContextBuildFailedException",
 ]
 
 
-#======================# GAME_CONTEXT BUILD EXCEPTIONS #======================#
+#======================# GAME_CONTEXT BUILD EXCEPTION #======================#
 class GameContextBuildFailedException(GameContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during GameContext build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an GameContextBuilder method.
+    1.  Parent of exception raised during GameContext build process.
+    2.  Wraps unhandled exception that hit the try-finally block of an GameContextBuilder method.
     
     # PARENT:
         *   GameContextException

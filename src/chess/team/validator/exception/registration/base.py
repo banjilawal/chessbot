@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/registration/base.py
+# src/chess/team/number_bounds_validator/exception/registration/base.py
 
 """
-Module: chess.team.validator.exception.registration.base
+Module: chess.team.number_bounds_validator.exception.registration.base
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.team import InvalidTeamException
 from chess.system import RegistrationException
 
 __all__ = [
-    #======================# TEAM_REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# TEAM_REGISTRATION EXCEPTION #======================#
     "TeamRegistrationException"
 ]
 
 
-#======================# TEAM_REGISTRATION EXCEPTION SUPER CLASS #======================#
+#======================# TEAM_REGISTRATION EXCEPTION #======================#
 class TeamRegistrationException(InvalidTeamException, RegistrationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

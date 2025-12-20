@@ -55,7 +55,7 @@ class CoordService(EntityService[Coord]):
             *   id (nt)
             *   designation (str)
             *   builder (CoordFactory)
-            *   validator (CoordValidator)
+            *   number_bounds_validator (CoordValidator)
 
         # Returns:
         None
@@ -85,7 +85,7 @@ class CoordService(EntityService[Coord]):
         """
         # Action:
         1.  Certify the vector argument with vector_service.
-        2.  Certify the coord argument with the service's validator.
+        2.  Certify the coord argument with the service's number_bounds_validator.
         3.  Get the new row and column using the expression
                     new_row, new_colum = coord.row + vector.y, coord.column + vector.x
         5.  Using the service's CoordBuilder instance create and return the new Coord.
@@ -134,7 +134,7 @@ class CoordService(EntityService[Coord]):
         """
         # Action:
         1.  Certify the vector argument with vector_service.
-        2.  Certify the coord argument with the service's validator.
+        2.  Certify the coord argument with the service's number_bounds_validator.
         3.  Get the new row and column using the expression
                     new_row, new_colum = coord.row * scalar.value, coord.column + scalar.value
         5.  Using the service's CoordBuilder instance create and return the new Coord.
@@ -143,7 +143,7 @@ class CoordService(EntityService[Coord]):
             *   coord(Coord)
             *   scalar (Scalar)
             *   scalar_service (ScalarService)
-            *   number_validator (NotNegativeNumberValidator)
+            *   not_negative_validator (NotNegativeNumberValidator)
 
         # Returns:
         BuildResult[Coord] containing either:

@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/null/exception.py
+# src/chess/team/number_bounds_validator/exception/null/exception.py
 
 """
-Module: chess.team.validator.exception.null.exception
+Module: chess.team.number_bounds_validator.exception.null.exception
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 
-#======================# TEAM VALIDATION EXCEPTIONS #======================#
+#======================# TEAM VALIDATION EXCEPTION #======================#
 class NullTeamException(InvalidTeamException, NullException):
     """Raised if an entity, method, or operation requires Team but gets null instead."""
     ERROR_CODE = "NULL_TEAM_ERROR"

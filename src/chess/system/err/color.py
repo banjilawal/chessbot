@@ -10,21 +10,21 @@ version: 1.0.0
 from chess.system import ChessException, NullException, ValidationException
 
 __all__ = [
-#======================# GAME_COLOR EXCEPTIONS #======================#
+#======================# GAME_COLOR EXCEPTION #======================#
     "GameColorException",
     "InvalidGameColorException",
     "NullGameColorException",
 ]
 
 
-#======================# GAME_COLOR EXCEPTION SUPER CLASS #======================#
+#======================# GAME_COLOR EXCEPTION #======================#
 class GameColorException(ChessException):
     """"""
     ERROR_CODE = "GAME_COLOR_ERROR"
     DEFAULT_MESSAGE = "GameColor raised an exception failed."
 
 
-#======================# GAME_COLOR VALIDATION EXCEPTIONS #======================#
+#======================# GAME_COLOR VALIDATION EXCEPTION #======================#
 class InvalidGameColorException(GameColorException, ValidationException):
     """"""
     ERROR_CODE = "GAME_COLOR_VALIDATION_ERROR"

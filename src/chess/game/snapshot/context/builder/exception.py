@@ -12,19 +12,19 @@ from chess.system import BuildFailedException
 from chess.game import GameSnapshotContextException
 
 __all__ = [
-    # ======================# GAME_SNAPSHOT_CONTEXT BUILD EXCEPTIONS #======================#
+    # ======================# GAME_SNAPSHOT_CONTEXT BUILD EXCEPTION #======================#
     "GameSnapshotContextBuildFailedException",
 ]
 
 
-# ======================# GAME_SNAPSHOT_CONTEXT BUILD EXCEPTIONS #======================#
+# ======================# GAME_SNAPSHOT_CONTEXT BUILD EXCEPTION #======================#
 class GameSnapshotContextBuildFailedException(GameSnapshotContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during GameSnapshotContext build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an GameSnapshotContextBuilder method.
+    1.  Parent of exception raised during GameSnapshotContext build process.
+    2.  Wraps unhandled exception that hit the try-finally block of an GameSnapshotContextBuilder method.
 
     # PARENT:
         *   GameSnapshotContextException

@@ -1,7 +1,7 @@
-# src/chess/schema/lookup/context/validator/exception/base.py
+# src/chess/schema/lookup/context/number_bounds_validator/exception/base.py
 
 """
-Module: chess.schema.lookup.context.validator.exception.base
+Module: chess.schema.lookup.context.number_bounds_validator.exception.base
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -24,8 +24,8 @@ class InvalidSchemaContextException(SchemaContextException, ValidationFailedExce
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised SchemaContext validation.
-    2.  Wraps unhandled exceptions that hit the finally-block in SchemaContextValidator methods.
+    1.  Parent of exception raised SchemaContext validation.
+    2.  Wraps unhandled exception that hit the finally-block in SchemaContextValidator methods.
 
     # PARENT:
         *   SchemaContextException

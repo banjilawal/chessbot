@@ -11,26 +11,26 @@ from chess.piece import TravelEventException
 from chess.system import NullException, ValidationException
 
 __all__ = [
-#====================== KING_OCCUPATION_EVENT EXCEPTIONS #======================#
+#====================== KING_OCCUPATION_EVENT EXCEPTION #======================#
   'KingOccupationEventException',
   
-#====================== KING_OCCUPATION_EVENT VALIDATION EXCEPTIONS #======================#
+#====================== KING_OCCUPATION_EVENT VALIDATION EXCEPTION #======================#
   'NullKingOccupationEventException',
   'InvalidKingOccupationEventException',
   'OccupationDestinationNotEmptyException',
 ]
 
-#====================== KING_OCCUPATION_EVENT EXCEPTIONS #======================#
+#====================== KING_OCCUPATION_EVENT EXCEPTION #======================#
 class KingOccupationEventException(TravelEventException):
   """
-  A base class for all exceptions related to the KingOccupationEvent. Do not use directly. Subclasses provide
+  A base class for all exception related to the KingOccupationEvent. Do not use directly. Subclasses provide
   fine-grained messages and error codes better for debugging and logging.
   """
   DEFAULT_CODE = "KING_OCCUPATION_EVENT_ERROR"
   DEFAULT_MESSAGE = "An KingOccupationEvent raised an exception."
 
 
-#====================== KING_OCCUPATION_EVENT VALIDATION EXCEPTIONS #======================#
+#====================== KING_OCCUPATION_EVENT VALIDATION EXCEPTION #======================#
 class NullKingOccupationEventException(KingOccupationEventException, NullException):
   """Raised by methods, entities, and models that require KingOccupationEvent but receive validation instead."""
   ERROR_CODE = "NULL_KING_OCCUPATION_EVENT_ERROR"
@@ -48,7 +48,7 @@ class OccupationDestinationNotEmptyException(KingOccupationEventException):
   ERROR_CODE = "KING_OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_ERROR"
   DEFAULT_MESSAGE = "KingOccupationEvent destination square is not empty."
   
-#=== ATTACK_EVENT BUILD EXCEPTIONS #======================#
+#=== ATTACK_EVENT BUILD EXCEPTION #======================#
 class AttackEventBuilderException(AttackEventException, BuilderException):
   """
   Indicates Coord could not be built. Wraps and re-raises errors that occurred
@@ -58,7 +58,7 @@ class AttackEventBuilderException(AttackEventException, BuilderException):
   DEFAULT_MESSAGE = "AttackEventBuilder failed to create kingOccupationEvent"
 
 
-#=== ATTACK_EVENT BUILD EXCEPTIONS #======================#
+#=== ATTACK_EVENT BUILD EXCEPTION #======================#
 class UnexpectedNullEnemyException(AttackEventException):
   DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
   DEFAULT_MESSAGE = "Target actor_candidate is unexpectedly validation during capture; this should not happen."
@@ -108,4 +108,4 @@ class PositionUpdateRollbackException(AttackEventException, RollbackException):
   DEFAULT_MESSAGE = "Failed to update actor_candidate's position history after move; rollback executed."
 
 
-#======================# ATTACKING PIECE EXCEPTIONS #======================#
+#======================# ATTACKING PIECE EXCEPTION #======================#

@@ -1,7 +1,7 @@
-# src/chess/team/validator/validator.py
+# src/chess/team/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.team.validator.validator
+Module: chess.team.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-11
 """
@@ -132,7 +132,7 @@ class TeamValidator(Validator[Team]):
             return ValidationResult.success(team)
         
         # Finally, if there is an unhandled exception Wrap an InvalidTeamException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidTeamException(ex=ex, message=f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}")
@@ -213,7 +213,7 @@ class TeamValidator(Validator[Team]):
             return ValidationResult.success(payload=(team, agent))
         
         # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
-        # then return the exceptions inside a BuildResult.
+        # then return the exception inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(
                 TeamNotRegisteredWithAgentException(
@@ -273,7 +273,7 @@ class TeamValidator(Validator[Team]):
             return ValidationResult.success(payload=(team, game))
         
         # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
-        # then return the exceptions inside a BuildResult.
+        # then return the exception inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(
                 NoTeamGameRelationshipException(

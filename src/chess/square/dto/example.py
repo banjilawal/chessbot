@@ -69,5 +69,5 @@ Create a `Square` object if parameters meet system specifications.
 `BuildResult[Square]` containing: `Square` on success. `Exception` on failure.
 
 # Raises:
-No Exceptions are raised. Exceptions are returned to caller in `BuildResult[Square]`
+No Exception are raised. Exception are returned to caller in `BuildResult[Square]`
 """

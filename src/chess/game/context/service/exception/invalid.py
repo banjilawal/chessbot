@@ -12,19 +12,19 @@ from chess.game import GameContextServiceException
 
 
 __all__ = [
-    #======================# GAME_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
+    #======================# GAME_CONTEXT_SERVICE VALIDATION EXCEPTION #======================#
     "InvalidGameContextServiceException",
 ]
 
 
-#======================# GAME_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
+#======================# GAME_CONTEXT_SERVICE VALIDATION EXCEPTION #======================#
 class InvalidGameContextServiceException(GameContextServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during GameContextService verification process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an GameContextServiceValidator method.
+    1.  Parent of exception raised during GameContextService verification process.
+    2.  Wraps unhandled exception that hit the try-finally block of an GameContextServiceValidator method.
     
     # PARENT:
         *   GameContextServiceException

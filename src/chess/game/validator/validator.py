@@ -1,7 +1,7 @@
-# src/chess/game/validator/validator.py
+# src/chess/game/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.game.validator.validator
+Module: chess.game.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-08-31
 version: 1.0.0
@@ -105,7 +105,7 @@ class GameValidator(Validator[Game]):
                     return ValidationResult.failure(validation.exception)
             return ValidationResult.success(game)
         
-        # Finally, for unhandled exceptions, wrap it inside an InvalidGameException. Then send the  exception-chain
+        # Finally, for unhandled exception, wrap it inside an InvalidGameException. Then send the  exception-chain
         # in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

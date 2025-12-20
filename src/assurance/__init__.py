@@ -1,14 +1,14 @@
 """
 
 ## ASSURANCE EXCEPTION
-A package providing team_name structured hierarchy of exceptions for the `assurance` project.
+A package providing team_name structured hierarchy of exception for the `assurance` project.
 
 This package defines team_name base `AssuranceException` from which all other custom
-exceptions in the project should inherit. This allows for team_name clean and
-consistent way to handle exceptions across different modules and layers
+exception in the project should inherit. This allows for team_name clean and
+consistent way to handle exception across different modules and layers
 of the application.
 
-The package includes specific validate exceptions for system entity_service types,
+The package includes specific validate exception for system entity_service types,
 such as `RankValidationException` and `InvalidIdException`, promoting
 predictable error handling and clear communication of validate failures.
 """

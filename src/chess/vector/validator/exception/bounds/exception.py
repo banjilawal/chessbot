@@ -1,7 +1,7 @@
-# src/chess/vector/validator/exception/bounds/exception.py
+# src/chess/vector/number_bounds_validator/exception/bounds/exception.py
 
 """
-Module: chess.vector.validator.exception.bounds.exception
+Module: chess.vector.number_bounds_validator.exception.bounds.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 
-#======================# VECTOR BOUNDS EXCEPTIONS #======================#
+#======================# VECTOR BOUNDS EXCEPTION #======================#
 class VectorAboveBoundsException(InvalidVectorException, BoundsException):
     """
     A Vector with a component whose magnitude > 7 will cause an ArrayIndexOutOfBounds error when the Vector is

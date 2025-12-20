@@ -12,25 +12,25 @@ from chess.system import BuildFailedException, NullException, ValidationExceptio
 
 
 __all__ = [
-#======================# PAWN_PIECE EXCEPTION SUPER CLASS #======================#
+#======================# PAWN_PIECE EXCEPTION #======================#
     "PawnPieceException",
     
-#======================# PAWN_PIECE VALIDATION EXCEPTIONS #======================#
+#======================# PAWN_PIECE VALIDATION EXCEPTION #======================#
     "InvalidPawnPieceException",
     "NullPawnException",
     
-#======================# PAWN_PIECE BUILD EXCEPTIONS #======================#
+#======================# PAWN_PIECE BUILD EXCEPTION #======================#
     "PawnPieceBuildFailedException",
 ]
 
-#======================# PAWN_PIECE EXCEPTION SUPER CLASS #======================#
+#======================# PAWN_PIECE EXCEPTION #======================#
 class PawnPieceException(CombatantPieceException):
-    """Super class for PawnPiece exceptions."""
+    """Super class for PawnPiece exception."""
     ERROR_CODE = "PAWN_PIECE_ERROR"
     DEFAULT_MESSAGE = "PawnPiece raised an exception."
 
 
-#======================# PAWN_PIECE VALIDATION EXCEPTIONS #======================#
+#======================# PAWN_PIECE VALIDATION EXCEPTION #======================#
 class InvalidPawnPieceException(PawnPieceException, ValidationException):
     """Raised by PieceValidator when a pawn candidate fails a sanity check."""
     ERROR_CODE = "PAWN_PIECE_VALIDATION_ERROR"
@@ -43,7 +43,7 @@ class NullPawnException(PawnPieceException, NullException):
     DEFAULT_MESSAGE = "PawnPiece cannot be null."
 
 
-#======================# PAWN_PIECE BUILD EXCEPTIONS #======================#
+#======================# PAWN_PIECE BUILD EXCEPTION #======================#
 class PawnPieceBuildFailedException(PawnPieceException, BuildFailedException):
     ERROR_CODE = "PAWN_PIECE_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "PawnPiece build failed."

@@ -1,7 +1,7 @@
-# src/chess/coord/context/validator/exception/flag/zero.py
+# src/chess/coord/context/number_bounds_validator/exception/flag/zero.py
 
 """
-Module: chess.coord.context.validator.exception.flag.zero
+Module: chess.coord.context.number_bounds_validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

@@ -12,27 +12,27 @@ from chess.system import SearchContextException, NullException, BuildFailedExcep
 __all__ = [
     "VisitorSearchContextException",
 
-    #======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT VALIDATION EXCEPTION =======#
     "NullVisitorSearchContextException",
     "InvalidVisitorSearchContextException",
     "NoVisitorSearchParamException",
     "ExcessiveVisitorSearchParamsException",
 
-    #======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
     "VisitorSearchContextBuildFailedException",
 ]
 
 
 class VisitorSearchContextException(SearchContextException):
     """
-    Super class for exceptions raised by VisitorSearchContext objects. DO NOT
+    Super class for exception raised by VisitorSearchContext objects. DO NOT
     USE DIRECTLY. Subclasses give more useful debugging messages.
     """
     ERROR_CODE = "VISITOR_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "VisitorSearchContext raised an exception"
 
 
-# #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
+# #======================#   SEARCH_CONTEXT VALIDATION EXCEPTION #======================# 
 class NullVisitorSearchContextException(VisitorSearchContextException, NullException):
     """
     Raised if an entity, method, or operation requires team_name visitorSearchContext but
@@ -45,7 +45,7 @@ class NullVisitorSearchContextException(VisitorSearchContextException, NullExcep
 class InvalidVisitorSearchContextException(VisitorSearchContextException, ValidationException):
     """
     Raised by visitorSearchContextBValidator if visitorSearchContext fails sanity checks. Exists primarily to
-    catch all exceptions raised validating an existing visitorSearchContext
+    catch all exception raised validating an existing visitorSearchContext
     """
     ERROR_CODE = "VISITOR_SEARCH_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "VisitorSearchContext validation failed."
@@ -70,11 +70,11 @@ class ExcessiveVisitorSearchParamsException(VisitorSearchContextException):
     )
 
 
-# #======================# VISITOR_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
+# #======================# VISITOR_SEARCH_CONTEXT BUILD EXCEPTION #======================# 
 class VisitorSearchContextBuildFailedException(VisitorSearchContextException, BuildFailedException):
     """
     Raised when VisitorSearchContextBuilder encounters an error while building team_name team_name.
-    Exists primarily to catch all exceptions raised builder team_name new visitorSearchContext
+    Exists primarily to catch all exception raised builder team_name new visitorSearchContext
     """
     ERROR_CODE = "VISITOR_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "VisitorSearchContext build failed."

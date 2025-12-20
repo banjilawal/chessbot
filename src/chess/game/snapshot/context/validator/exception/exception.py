@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/context/validator/exception/exception.py
+# src/chess/game/snapshot/context/number_bounds_validator/exception/exception.py
 
 """
-Module: chess.game.snapshot.context.validator.exception.exception
+Module: chess.game.snapshot.context.number_bounds_validator.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -24,8 +24,8 @@ class InvalidGameSnapshotContextException(GameSnapshotContextException, Validati
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised GameSnapshotContext validation.
-    2.  Wraps unhandled exceptions that hit the finally-block in GameSnapshotContextValidator methods.
+    1.  Parent of exception raised GameSnapshotContext validation.
+    2.  Wraps unhandled exception that hit the finally-block in GameSnapshotContextValidator methods.
 
     # PARENT:
         *   GameSnapshotContextException

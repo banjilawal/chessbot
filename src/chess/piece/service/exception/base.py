@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ServiceException
 
 __all__ = [
-    #======================# PIECE_SERVICE EXCEPTIONS #======================#
+    #======================# PIECE_SERVICE EXCEPTION #======================#
     "PieceServiceException",
 ]
 
 
-#======================# PIECE_SERVICE EXCEPTIONS #======================#
+#======================# PIECE_SERVICE EXCEPTION #======================#
 class PieceServiceException(ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

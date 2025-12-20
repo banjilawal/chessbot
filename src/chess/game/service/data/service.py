@@ -91,7 +91,7 @@ class GameDataService(DataService[Game]):
     #     return cast(GameFactory, self.service.item_builder)
     #
     # @property
-    # def validator(self) -> GameValidator:
+    # def number_bounds_validator(self) -> GameValidator:
     #     return cast(GameValidator, self.service.item_validator)
     #
     # @property

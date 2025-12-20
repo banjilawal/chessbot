@@ -15,9 +15,9 @@ from chess.rank import (
 )
 
 __all__ = [
-    #======================# PAWN EXCEPTION SUPER CLASS #======================#
+    #======================# PAWN EXCEPTION #======================#
     "PawnException",
-    #======================# PAWN VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# PAWN VALIDATION EXCEPTION #======================#
     "InvalidPawnException",
     "NullPawnException",
     #======================# RANK_DESIGNATION #======================#
@@ -35,15 +35,15 @@ __all__ = [
 ]
 
 
-#======================# PAWN EXCEPTION SUPER CLASS #======================#
+#======================# PAWN EXCEPTION #======================#
 class PawnException(RankException):
     """
-    Catchall for exceptions organic to Pawn properties and its atomic operations."""
+    Catchall for exception organic to Pawn properties and its atomic operations."""
     ERROR_CODE = "PAWN ERROR"
     DEFAULT_MESSAGE = "Pawn raised an exception."
 
 
-#======================# PAWN VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# PAWN VALIDATION EXCEPTION #======================#
 class InvalidPawnException(PawnException, ValidationException):
     """Catchall Exception for PawnValidator when a candidate fails a sanity check."""
     ERROR_CODE = "PAWN_VALIDATION_ERROR"

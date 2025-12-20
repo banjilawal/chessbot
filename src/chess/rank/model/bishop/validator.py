@@ -1,7 +1,7 @@
 # src/chess/rank/model/bishop/validator_.py
 
 """
-Module: chess.rank.model.bishop.validator
+Module: chess.rank.model.bishop.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -112,7 +112,7 @@ class BishopValidator(Validator[Bishop]):
             # If all the checks pass return the certified Bishop.
             return ValidationResult.success(bishop)
         # Finally, if there is an unhandled exception wap an InvalidBishopException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidBishopException(ex=ex, message=f"{method}: {InvalidBishopException.DEFAULT_MESSAGE}")
@@ -162,7 +162,7 @@ class BishopValidator(Validator[Bishop]):
             return ValidationResult.success(id)
         
         # Finally, if there is an unhandled exception wap an InvalidBishopException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidBishopException(ex=ex, message=f"{method}: {InvalidBishopException.DEFAULT_MESSAGE}")
@@ -211,7 +211,7 @@ class BishopValidator(Validator[Bishop]):
             # If no errors are detected send the verified bishop.designation inside a ValidationResult.
             return ValidationResult.success(name)
         # Finally, if there is an unhandled exception Wrap an InvalidBishopException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidBishopException(ex=ex, message=f"{method}: {InvalidBishopException.DEFAULT_MESSAGE}")
@@ -227,14 +227,14 @@ class BishopValidator(Validator[Bishop]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe number using number_validator. If so convert to number. Else return failure.
+        1.  Verify candidate is a safe number using not_negative_validator. If so convert to number. Else return failure.
         2.  Check if ransom != Catalog.BISHOP.ransom. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (Catalog)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -261,7 +261,7 @@ class BishopValidator(Validator[Bishop]):
             return ValidationResult.success(ransom)
         
         # Finally, if there is an unhandled exception wrap an InvalidBishopException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidBishopException(ex=ex, message=f"{method}: {InvalidBishopException.DEFAULT_MESSAGE}")
@@ -311,7 +311,7 @@ class BishopValidator(Validator[Bishop]):
             return ValidationResult.success(designation)
         
         # Finally, if there is an unhandled exception wrap an InvalidBishopException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidBishopException(ex=ex, message=f"{method}: {InvalidBishopException.DEFAULT_MESSAGE}")
@@ -327,14 +327,14 @@ class BishopValidator(Validator[Bishop]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe number using number_validator. If so convert to number. Else return failure.
+        1.  Verify candidate is a safe number using not_negative_validator. If so convert to number. Else return failure.
         2.  Check if ransom != Catalog.BISHOP.team_quota. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (Catalog)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -361,7 +361,7 @@ class BishopValidator(Validator[Bishop]):
             return ValidationResult.success(team_quota)
         
         # Finally, if there is an unhandled exception wrap an InvalidBishopException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidBishopException(ex=ex, message=f"{method}: {InvalidBishopException.DEFAULT_MESSAGE}")

@@ -27,7 +27,7 @@ class CoordTest(unittest.TestCase):
 
 
   def test_row_in_bounds(self):
-    # Valid rows should construct team_name Coord without exceptions
+    # Valid rows should construct team_name Coord without exception
     for row in range(0, ROW_SIZE):
       coord = Coord(row=row, column=0)
       self.assertEqual(coord.row, row)
@@ -49,7 +49,7 @@ class CoordTest(unittest.TestCase):
 
 
   def test_column_in_bounds(self):
-    # Tests all columns within bounds construct team_name Coord without exceptions
+    # Tests all columns within bounds construct team_name Coord without exception
     for column in range(0, COLUMN_SIZE):
       coord = Coord(row=0, column=column)
       self.assertEqual(coord.column, column)

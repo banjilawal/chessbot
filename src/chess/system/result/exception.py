@@ -14,7 +14,7 @@ from chess.system import ChessException
 __all__ = [
   "ResultException",
 
-#====================== RESULT CONSTRUCTOR EXCEPTIONS #======================#  
+#====================== RESULT CONSTRUCTOR EXCEPTION #======================#
   "ResultConstructorException",
   "EmptyResultConstructorException",
   "ErrorContradictsPayloadException"
@@ -22,9 +22,9 @@ __all__ = [
 
 class ResultException(ChessException):
   """
-  Super class of exceptions organic to Result objects. DO NOT USE DIRECTLY. Subclasses give
+  Super class of exception organic to Result objects. DO NOT USE DIRECTLY. Subclasses give
   details useful for debugging. ResultException exists primarily to allow catching all Result
-  exceptions.
+  exception.
   """
   ERROR_CODE = "RESULT_ERROR"
   DEFAULT_MESSAGE = "Result raised an exception."
@@ -32,7 +32,7 @@ class ResultException(ChessException):
 
 class ResultConstructorException(ResultException):
   """
-  Base class for exceptions about Result constructors. A Result must
+  Base class for exception about Result constructors. A Result must
   have one-and-only-one parameter that is not validation. This is the super class
   for cases:
     No params

@@ -22,8 +22,8 @@ class DataServiceException(ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by DataServices.
-    2.  Wraps unhandled exceptions that hit the try-finally block of a DataService method.
+    1.  Parent of exception raised by DataServices.
+    2.  Wraps unhandled exception that hit the try-finally block of a DataService method.
 
     # PARENT:
         *   ServiceException

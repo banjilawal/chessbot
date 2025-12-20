@@ -1,7 +1,7 @@
-# src/chess/arena/context/validator/exception/flag/excess.py
+# src/chess/arena/context/number_bounds_validator/exception/flag/excess.py
 
 """
-Module: chess.arena.context.validator.exception.flag.excess
+Module: chess.arena.context.number_bounds_validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

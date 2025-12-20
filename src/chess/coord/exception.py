@@ -10,19 +10,19 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    #======================# COORD EXCEPTION SUPER CLASS #======================#
+    #======================# COORD EXCEPTION #======================#
     "CoordException",
 ]
 
 
-#======================# COORD EXCEPTION SUPER CLASS #======================#
+#======================# COORD EXCEPTION #======================#
 class CoordException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by Coord objects.
-    2.  Catchall for conditions which are not covered by lower level Coord exceptions.
+    1.  Parent of exception raised by Coord objects.
+    2.  Catchall for conditions which are not covered by lower level Coord exception.
 
     # PARENT:
         *   ChessException

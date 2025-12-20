@@ -21,7 +21,7 @@ class FinderException(ChessException):
   # ROLE: Exception Wrapper, Catchall Exception
 
   # RESPONSIBILITIES:
-  1.  Parent of exceptions raised by Finder objects
+  1.  Parent of exception raised by Finder objects
   3.  Catchall for Finder failure states that are not covered by a lower level Finder exception.
 
   # PARENT:

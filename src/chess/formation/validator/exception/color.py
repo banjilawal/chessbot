@@ -1,7 +1,7 @@
-# src/chess/formation/validator/exception/color.py
+# src/chess/formation/number_bounds_validator/exception/color.py
 
 """
-Module: chess.formation.validator.exception.color
+Module: chess.formation.number_bounds_validator.exception.color
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.formation import InvalidBattleOrderException
 from chess.system import BoundsException, GameColorException
 
 __all__ = [
-    # ======================# ORDER COLOR BOUNDS EXCEPTIONS #======================#
+    # ======================# ORDER COLOR BOUNDS EXCEPTION #======================#
     "OrderColorBoundsException",
 ]
 
 
-# ======================# ORDER COLOR BOUNDS EXCEPTIONS #======================#
+# ======================# ORDER COLOR BOUNDS EXCEPTION #======================#
 class OrderColorBoundsException(InvalidBattleOrderException, BoundsException, GameColorException):
     """
     # ROLE: Error Tracing, Debugging

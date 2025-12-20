@@ -11,19 +11,19 @@ from chess.arena import ArenaException
 from chess.system import BuildFailedException
 
 __all__ = [
-    #======================# ARENA BUILD EXCEPTIONS #======================#
+    #======================# ARENA BUILD EXCEPTION #======================#
     "ArenaBuildFailedException",
 ]
 
 
-#======================# ARENA BUILD EXCEPTIONS #======================#
+#======================# ARENA BUILD EXCEPTION #======================#
 class ArenaBuildFailedException(ArenaException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during Arena build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an ArenaBuilder method.
+    1.  Parent of exception raised during Arena build process.
+    2.  Wraps unhandled exception that hit the try-finally block of an ArenaBuilder method.
 
     # PARENT:
         *   ArenaException

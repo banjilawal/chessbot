@@ -55,7 +55,7 @@ class TeamContextService(ContextService[TeamContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (TeamFinder): Default value - TeamFinder()
             *   builder (TeamContextBuilder): Default value - TeamContextBuilder()
-            *   validator (TeamContextValidator): Default value - TeamContextValidator()
+            *   number_bounds_validator (TeamContextValidator): Default value - TeamContextValidator()
 
         # Returns:
         None

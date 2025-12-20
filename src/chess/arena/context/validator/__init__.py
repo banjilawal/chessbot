@@ -1,7 +1,7 @@
-# src/chess/arena/context/validator/__init__.py
+# src/chess/arena/context/number_bounds_validator/__init__.py
 
 """
-Module: chess.game.arena.context.validator.__init__
+Module: chess.game.arena.context.number_bounds_validator.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

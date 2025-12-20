@@ -11,13 +11,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+**Limitations** It does not contain any logic for raising these exception; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
@@ -37,20 +37,20 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+See the list of exception in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """
 
 __all__ = [
   'EngineException',
-#======================# ENGINE VALIDATION EXCEPTIONS #======================#  
+#======================# ENGINE VALIDATION EXCEPTION #======================#
   'NullEngineException',
-#======================# ENGINE BUILD EXCEPTIONS #======================#  
+#======================# ENGINE BUILD EXCEPTION #======================#
   'BuildFailedException'
 ]
 
@@ -58,9 +58,9 @@ from chess.system import ChessException, NullException, BuildFailedException
 
 class EngineException(ChessException):
   """
-  Super class of exceptions organic to `Engine` objects. DO NOT USE DIRECTLY. Subclasses give
+  Super class of exception organic to `Engine` objects. DO NOT USE DIRECTLY. Subclasses give
   details useful for debugging. `EngineException` exists primarily to allow catching all `Engine`
-  exceptions.
+  exception.
   """
   ERROR_CODE = "ENGINE_ERROR"
   DEFAULT_MESSAGE = "Engine raised an exception."
@@ -73,7 +73,7 @@ class NullEngineException(EngineException, NullException):
 class EngineBuildFailed(EngineException, BuildFailedException):
   """
   Raised when `EngineBuilder` crashed while building team_name new object. Exists
-  primarily to catch all exceptions raised creating engines.
+  primarily to catch all exception raised creating engines.
   """
   ERROR_CODE = "ENGINE_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "Engine build failed."

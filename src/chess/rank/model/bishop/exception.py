@@ -14,9 +14,9 @@ from chess.rank import (
 )
 
 __all__ = [
-    #======================# BISHOP EXCEPTION SUPER CLASS #======================#
+    #======================# BISHOP EXCEPTION #======================#
     "BishopException",
-    #======================# BISHOP VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# BISHOP VALIDATION EXCEPTION #======================#
     "InvalidBishopException",
     "NullBishopException",
     #======================# RANK_DESIGNATION #======================#
@@ -33,15 +33,15 @@ __all__ = [
     "ImproperBishopMoveException",
 ]
 
-#======================# BISHOP EXCEPTION SUPER CLASS #======================#
+#======================# BISHOP EXCEPTION #======================#
 class BishopException(RankException):
     """
-    Catchall for exceptions organic to Bishop properties and its atomic operations."""
+    Catchall for exception organic to Bishop properties and its atomic operations."""
     ERROR_CODE = "BISHOP ERROR"
     DEFAULT_MESSAGE = "Bishop raised an exception."
 
 
-#======================# BISHOP VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# BISHOP VALIDATION EXCEPTION #======================#
 class InvalidBishopException(BishopException, ValidationException):
     """Catchall Exception for BishopValidator when a candidate fails a sanity check."""
     ERROR_CODE = "BISHOP_VALIDATION_ERROR"

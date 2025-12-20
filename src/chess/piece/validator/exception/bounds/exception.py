@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/bounds/exception.py
+# src/chess/piece/number_bounds_validator/exception/bounds/exception.py
 
 """
-Module: chess.piece.validator.exception.bounds.exception
+Module: chess.piece.number_bounds_validator.exception.bounds.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -11,14 +11,14 @@ from chess.system import BoundsException
 from chess.piece import InvalidPieceException
 
 __all__ = [
-    #======================# PIECE BOUNDS EXCEPTIONS #======================#
+    #======================# PIECE BOUNDS EXCEPTION #======================#
     "PieceAttributeBoundsException",
     "RosterNumberOutOfBoundsException",
     "PieceRankOutOfBoundsException",
     "PieceNameOutOfBoundsException",
 ]
 
-#======================# PIECE BOUNDS EXCEPTIONS #======================#
+#======================# PIECE BOUNDS EXCEPTION #======================#
 class PieceAttributeBoundsException(InvalidPieceException, BoundsException):
     """Raised if a Piece attribute is outside its Layout or Rank settings."""
     ERROR_CODE = "PIECE_ATTRIBUTE_BOUNDS_ERROR"

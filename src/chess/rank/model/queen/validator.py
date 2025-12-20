@@ -1,7 +1,7 @@
 # src/chess/rank/model/queen/validator_.py
 
 """
-Module: chess.rank.model.queen.validator
+Module: chess.rank.model.queen.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -112,7 +112,7 @@ class QueenValidator(Validator[Queen]):
             # If all the checks pass return the certified Queen.
             return ValidationResult.success(queen)
         # Finally, if there is an unhandled exception wap an InvalidQueenException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -162,7 +162,7 @@ class QueenValidator(Validator[Queen]):
             return ValidationResult.success(id)
         
         # Finally, if there is an unhandled exception wap an InvalidQueenException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -211,7 +211,7 @@ class QueenValidator(Validator[Queen]):
             # If no errors are detected send the verified queen.designation inside a ValidationResult.
             return ValidationResult.success(name)
         # Finally, if there is an unhandled exception Wrap an InvalidQueenException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -227,14 +227,14 @@ class QueenValidator(Validator[Queen]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe number using number_validator. If so convert to number. Else return failure.
+        1.  Verify candidate is a safe number using not_negative_validator. If so convert to number. Else return failure.
         2.  Check if ransom != Catalog.QUEEN.ransom. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (Catalog)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -261,7 +261,7 @@ class QueenValidator(Validator[Queen]):
             return ValidationResult.success(ransom)
         
         # Finally, if there is an unhandled exception wrap an InvalidQueenException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -311,7 +311,7 @@ class QueenValidator(Validator[Queen]):
             return ValidationResult.success(designation)
         
         # Finally, if there is an unhandled exception wrap an InvalidQueenException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -327,14 +327,14 @@ class QueenValidator(Validator[Queen]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe number using number_validator. If so convert to number. Else return failure.
+        1.  Verify candidate is a safe number using not_negative_validator. If so convert to number. Else return failure.
         2.  Check if ransom != Catalog.QUEEN.team_quota. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (Catalog)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -361,7 +361,7 @@ class QueenValidator(Validator[Queen]):
             return ValidationResult.success(team_quota)
         
         # Finally, if there is an unhandled exception wrap an InvalidQueenException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")

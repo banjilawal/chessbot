@@ -20,54 +20,54 @@ from chess.system import (
 
 class OrderContextBuilder(Builder[OrderContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
-     1.  Produce OrderContext instances whose integrity is always guaranteed.
-     2.  Manage construction of OrderContext instances that can be used safely by the client.
-     3.  Ensure params for OrderContext creation have met the application's safety contract.
-     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    # RESPONSIBILITIES:
+    1.  Produce OrderContext instances whose integrity is always guaranteed.
+    2.  Manage construction of OrderContext instances that can be used safely by the client.
+    3.  Ensure params for OrderContext creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
-         * Builder
+    # PARENT:
+        *   Builder
 
-     # PROVIDES:
-     None
+    # PROVIDES:
+    None
 
-     # LOCAL ATTRIBUTES:
-     None
+    # LOCAL ATTRIBUTES:
+    None
 
-     # INHERITED ATTRIBUTES:
-     None
-     """
-    
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
             cls,
+            name: Optional[str] = None,
             square: Optional[str] = None,
             color: Optional[GameColor] = None,
-            name: Optiona[str] = None,
             designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[OrderContext]:
         """
         # Action:
-            1.  Confirm that only one in the (designation, color) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service or validator.
-            3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an OrderContext and return in a BuildResult.
+            1.  Confirm that only one in the (square, color, name, designation) tuple is not null.
+            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            3.  If all checks pass build a OrderContext and send in a BuildResult. Else, send an exception
+                in the BuildResult.
 
         # Parameters:
-        Only one these must be provided:
-            *   square (Optional[str])
-            *   designation (Optional[str])
-            *   color (Optional[GameColor])
-
-        These Parameters must be provided:
-            *   color_validator (GameColorValidator)
-            *   identity_service (IdentityService)
+            Only one these must be provided:
+                *   name (Optional[str])
+                *   square (Optional[str])
+                *   designation (Optional[str])
+                *   color (Optional[GameColor])
+    
+            These Parameters must be provided:
+                *   color_validator (GameColorValidator)
+                *   identity_service (IdentityService)
 
         # Returns:
         BuildResult[OrderContext] containing either:
@@ -75,9 +75,9 @@ class OrderContextBuilder(Builder[OrderContext]):
             - On failure: Exception.
 
         # Raises:
-            *   NoOrderContextFlagException
-            *   ExcessiveOrderContextFlagsException
+            *   ZeroOrderContextFlagsException
             *   OrderContextBuildFailedException
+            *   ExcessiveOrderContextFlagsException
         """
         method = "OrderContextBuilder.build"
         try:

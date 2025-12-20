@@ -11,12 +11,12 @@ from chess.system import BuildFailedException
 from chess.square import SquareContextException
 
 __all__ = [
-    #======================# SQUARECONTEXT BUILD EXCEPTIONS #======================#
+    #======================# SQUARECONTEXT BUILD EXCEPTION #======================#
     "SquareContextBuildFailedException",
 ]
 
 
-#======================# SQUARECONTEXT BUILD EXCEPTIONS #======================#
+#======================# SQUARECONTEXT BUILD EXCEPTION #======================#
 class SquareContextBuildFailedException(SquareContextException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by SquareContextBuilder 

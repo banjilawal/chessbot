@@ -11,12 +11,12 @@ from chess.system import BuildFailedException
 from chess.coord import CoordContextException
 
 __all__ = [
-    #======================# COORDCONTEXT BUILD EXCEPTIONS #======================#
+    #======================# COORDCONTEXT BUILD EXCEPTION #======================#
     "CoordContextBuildFailedException",
 ]
 
 
-#======================# COORDCONTEXT BUILD EXCEPTIONS #======================#
+#======================# COORDCONTEXT BUILD EXCEPTION #======================#
 class CoordContextBuildFailedException(CoordContextException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by CoordContextBuilder 

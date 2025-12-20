@@ -11,13 +11,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of Schema objects.
 
-***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
+***Limitations***: It does not contain any logic for raising these exception; that responsibility
     Schema, TeamSchemaBuilder, and TeamSchemaValidator
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the Schema class has an exception specific to its possible
@@ -38,14 +38,14 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 
 From chess.system:
-  * Exceptions: ValidationFailedException, NullException
+  * Exception: ValidationFailedException, NullException
 
 From chess.team_name:
   * TeamException:
 
 CONTAINS:
 --------
-See the list of exceptions in the __all__ list following (e.g., TeamSchemaException,
+See the list of exception in the __all__ list following (e.g., TeamSchemaException,
 NullTeamSchemaException, InvalidSchemaException, ).
 """
 
@@ -116,13 +116,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of Schema objects.
 
-***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
+***Limitations***: It does not contain any logic for raising these exception; that responsibility
     Schema, TeamSchemaBuilder, and TeamSchemaValidator
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the Schema class has an exception specific to its possible
@@ -143,14 +143,14 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 
 From chess.system:
-  * Exceptions: ValidationFailedException, NullException
+  * Exception: ValidationFailedException, NullException
 
 From chess.team_name:
   * TeamException:
 
 CONTAINS:
 --------
-See the list of exceptions in the __all__ list following (e.g., TeamSchemaException,
+See the list of exception in the __all__ list following (e.g., TeamSchemaException,
 NullTeamSchemaException, InvalidSchemaException, ).
 """
 # src/chess/team_name/team_schema/team_schema.py

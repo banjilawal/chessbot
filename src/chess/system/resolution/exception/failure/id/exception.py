@@ -27,7 +27,7 @@ class ResolvingIDConflictFailedException(ResolutionException):
     the resolution process shows the entity is a orphan
 
 
-    # RELATED EXCEPTIONS
+    # RELATED EXCEPTION
         *   AttackException
         *   CastlingException
         *   CheckmateException

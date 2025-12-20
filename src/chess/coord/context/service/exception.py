@@ -15,7 +15,7 @@ __all__ = ["CoordContextServiceException"]
 
 class CoordContextServiceException(ServiceException):
     """
-    Super class of exceptions raised by CoordContextService objects.
+    Super class of exception raised by CoordContextService objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
     ERROR_CODE = "COORD_CONTEXT_SERVICE_ERROR"

@@ -51,7 +51,7 @@ class ScalarService(EntityService[Scalar]):
             *   id (nt)
             *   designation (str)
             *   builder (ScalarFactory)
-            *   validator (ScalarValidator)
+            *   number_bounds_validator (ScalarValidator)
 
         # Returns:
         None

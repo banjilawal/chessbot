@@ -11,20 +11,20 @@ from chess.coord import CoordException
 from chess.system import ServiceException
 
 __all__ = [
-    # ======================# COORD_SERVICE EXCEPTIONS #======================#
+    # ======================# COORD_SERVICE EXCEPTION #======================#
     "CoordServiceException",
 ]
 
 
-# ======================# COORD_SERVICE EXCEPTIONS #======================#
+# ======================# COORD_SERVICE EXCEPTION #======================#
 class CoordServiceException(CoordException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by CoordService objects.
+    1.  Parent of exception raised by CoordService objects.
     2.  Raised when an exception hits the try-finally block of a CoordService method.
-    3.  Catchall for CoordService failures that are not covered by a lower level CoordService exceptions.
+    3.  Catchall for CoordService failures that are not covered by a lower level CoordService exception.
 
     # PARENT:
         *   CoordException

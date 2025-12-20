@@ -12,19 +12,19 @@ from chess.system import ContextException
 
 
 __all__ = [
-    #======================# AGENT_CONTEXT EXCEPTION SUPER CLASS #======================#
+    #======================# AGENT_CONTEXT EXCEPTION #======================#
     "AgentContextException",
 ]
 
 
-#======================# AGENT_CONTEXT EXCEPTION SUPER CLASS #======================#
+#======================# AGENT_CONTEXT EXCEPTION #======================#
 class AgentContextException(AgentException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by AgentContext objects.
-    2.  Catchall for conditions which are not covered by lower level AgentContext exceptions.
+    1.  Parent of exception raised by AgentContext objects.
+    2.  Catchall for conditions which are not covered by lower level AgentContext exception.
     
     # PARENT:
         *   AgentException

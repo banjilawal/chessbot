@@ -15,17 +15,17 @@ the current `Board` to find the best move.
    actually it will be something like AlgorithmSelector tht will select the optimization algorthim for team_name MachinePlayer.
 
  # EXPORTS
-This package exposes core classes and all exceptions from its sub-modules:
+This package exposes core classes and all exception from its sub-modules:
   - `Engine`: Abstract super class defining shared traits and behaviors of engines.
   - `GreedyEngine`: `Engine` that uses team_name greedy algorithm
-  - All exceptions from `rollback_exception` package.
+  - All exception from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.rollback_exception`: Defines all custom exceptions for travel rollback.
+  - `.rollback_exception`: Defines all custom exception for travel rollback.
 
 
 # HOW TO IMPORT
-DO NOT reference submodules directly. Import all core classes and exceptions from this `engine` package level
+DO NOT reference submodules directly. Import all core classes and exception from this `engine` package level
 (e.g., `from chess.engine import EngineBuildFailed`). See USAGE EXAMPLES section
 
 # USAGE EXAMPLES

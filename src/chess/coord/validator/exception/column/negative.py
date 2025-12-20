@@ -1,7 +1,7 @@
-# src/chess/coord/validator/exception/column/negative.py
+# src/chess/coord/number_bounds_validator/exception/column/negative.py
 
 """
-Module: chess.coord.validator.exception.column.negative
+Module: chess.coord.number_bounds_validator.exception.column.negative
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

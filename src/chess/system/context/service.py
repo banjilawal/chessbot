@@ -52,7 +52,7 @@ class ContextService(EntityService[Context[T]]):
             *   id (int)
             *   finder (Finder[T])
             *   builder (Builder[Context[T]])
-            *   validator (Validator[Context[T]])
+            *   number_bounds_validator (Validator[Context[T]])
 
         # Returns:
         None

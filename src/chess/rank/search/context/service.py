@@ -51,7 +51,7 @@ class RankContextService(ContextService[RankContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (RankFinder): Default value - RankFinder()
             *   builder (RankContextBuilder): Default value - RankContextBuilder()
-            *   validator (RankContextValidator): Default value - RankContextValidator()
+            *   number_bounds_validator (RankContextValidator): Default value - RankContextValidator()
 
         # Returns:
         None

@@ -11,12 +11,12 @@ from chess.system import ContextException
 from chess.catalog import CatalogException
 
 __all__ = [
-    # ======================# CATALOG_CONTEXT EXCEPTION SUPER CLASS #======================#
+    # ======================# CATALOG_CONTEXT EXCEPTION #======================#
     "CatalogContextException",
 ]
 
 
-# ======================# CATALOG_CONTEXT EXCEPTION SUPER CLASS #======================#
+# ======================# CATALOG_CONTEXT EXCEPTION #======================#
 class CatalogContextException(CatalogException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

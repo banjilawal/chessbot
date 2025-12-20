@@ -12,12 +12,12 @@ from chess.team import TeamContextServiceException
 
 
 __all__ = [
-    #======================# TEAM_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
+    #======================# TEAM_CONTEXT_SERVICE VALIDATION EXCEPTION #======================#
     "InvalidTeamContextServiceException",
 ]
 
 
-#======================# TEAM_CONTEXT_SERVICE VALIDATION EXCEPTIONS #======================#
+#======================# TEAM_CONTEXT_SERVICE VALIDATION EXCEPTION #======================#
 class InvalidTeamContextServiceException(TeamContextServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

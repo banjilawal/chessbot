@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/exception.py
+# src/chess/piece/number_bounds_validator/exception/exception.py
 
 """
-Module: chess.piece.validator.exception
+Module: chess.piece.number_bounds_validator.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.piece import PieceException
 from chess.system import  ValidationException
 
 __all__ = [
-    #======================# PIECE VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# PIECE VALIDATION EXCEPTION #======================#
     "InvalidPieceException",
 ]
 
 
-#======================# PIECE VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# PIECE VALIDATION EXCEPTION #======================#
 class InvalidPieceException(PieceException, ValidationException):
     """
     Catchall Exception for PieceValidator when a candidate fails a sanity check."""

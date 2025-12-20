@@ -12,7 +12,7 @@ from chess.system import RollbackException
 
 """
 =============================================================================================================#
-==============COMBATANT_OCCUPATION_TRANSACTION EXCEPTIONS ARE ALWAYS ROLL_BACK_EXCEPTION SUBCLASSES=================#
+==============COMBATANT_OCCUPATION_TRANSACTION EXCEPTION ARE ALWAYS ROLL_BACK_EXCEPTION SUBCLASSES=================#
 =============================================================================================================#
 """
 

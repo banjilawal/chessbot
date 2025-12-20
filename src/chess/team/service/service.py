@@ -55,7 +55,7 @@ class TeamService(EntityService[Team]):
             *   id (nt)
             *   designation (str)
             *   builder (TeamBuilder)
-            *   validator (TeamValidator)
+            *   number_bounds_validator (TeamValidator)
             *   schema_lookup (TeamSchemaLookup)
 
         # Returns:

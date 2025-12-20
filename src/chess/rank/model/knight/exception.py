@@ -13,9 +13,9 @@ from chess.rank import (
 )
 
 __all__ = [
-    #======================# KNIGHT EXCEPTION SUPER CLASS #======================#
+    #======================# KNIGHT EXCEPTION #======================#
     "KnightException",
-    #======================# KNIGHT VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# KNIGHT VALIDATION EXCEPTION #======================#
     "InvalidKnightException",
     "NullKnightException",
     #======================# RANK_DESIGNATION #======================#
@@ -33,15 +33,15 @@ __all__ = [
 ]
 
 
-#======================# KNIGHT EXCEPTION SUPER CLASS #======================#
+#======================# KNIGHT EXCEPTION #======================#
 class KnightException(RankException):
     """
-    Catchall for exceptions organic to Knight properties and its atomic operations."""
+    Catchall for exception organic to Knight properties and its atomic operations."""
     ERROR_CODE = "KNIGHT ERROR"
     DEFAULT_MESSAGE = "Knight raised an exception."
 
 
-#======================# KNIGHT VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# KNIGHT VALIDATION EXCEPTION #======================#
 class InvalidKnightException(KnightException, ValidationException):
     """Catchall Exception for KnightValidator when a candidate fails a sanity check."""
     ERROR_CODE = "KNIGHT_VALIDATION_ERROR"

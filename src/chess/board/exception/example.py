@@ -9,13 +9,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+**Limitations** It does not contain any logic for raising these exception; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
@@ -35,11 +35,11 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+See the list of exception in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """

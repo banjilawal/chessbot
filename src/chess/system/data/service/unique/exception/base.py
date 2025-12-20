@@ -10,19 +10,19 @@ Version: 1.0.0
 from chess.system import DataServiceException
 
 __all__ = [
-    #======================# UNIQUE_DATA_SERVICE EXCEPTION SUPER CLASS #======================#
+    #======================# UNIQUE_DATA_SERVICE EXCEPTION #======================#
     "UniqueDataServiceException",
 ]
 
 
-#======================# UNIQUE_DATA_SERVICE EXCEPTION SUPER CLASS #======================#
+#======================# UNIQUE_DATA_SERVICE EXCEPTION #======================#
 class UniqueDataServiceException(DataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by UniqueDataService objects.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an UniqueDataService object.
+    1.  Parent of exception raised by UniqueDataService objects.
+    2.  Wraps unhandled exception that hit the try-finally block of an UniqueDataService object.
 
     # PARENT:
         *   DataServiceException

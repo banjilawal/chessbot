@@ -12,12 +12,12 @@ from chess.system import BuildFailedException
 from chess.piece import PieceContextException
 
 __all__ = [
-    #======================# PIECECONTEXT BUILD EXCEPTIONS #======================#
+    #======================# PIECECONTEXT BUILD EXCEPTION #======================#
     "PieceContextBuildFailedException",
 ]
 
 
-#======================# PIECECONTEXT BUILD EXCEPTIONS #======================#
+#======================# PIECECONTEXT BUILD EXCEPTION #======================#
 class PieceContextBuildFailedException(PieceContextException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by PieceContextBuilder 

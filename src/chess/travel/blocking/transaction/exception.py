@@ -12,7 +12,7 @@ from chess.piece import TravelTransactionException
 
 """
 =============================================================================================================#
-==============LOG_ENCOUNTER_TRANSACTION EXCEPTIONS ARE ALWAYS ROLL_BACK_EXCEPTION SUBCLASSES=================#
+==============LOG_ENCOUNTER_TRANSACTION EXCEPTION ARE ALWAYS ROLL_BACK_EXCEPTION SUBCLASSES=================#
 =============================================================================================================#
 """
 

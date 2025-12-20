@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/context/validator/experience/null/exception.py
+# src/chess/game/snapshot/context/number_bounds_validator/experience/null/exception.py
 
 """
-Module: chess.game.snapshot.context.validator.experience.null.exception
+Module: chess.game.snapshot.context.number_bounds_validator.experience.null.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.system import NullException
 from chess.game import InvalidGameSnapshotContextException
 
 __all__ = [
-    # ======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
+    # ======================# GAME_CONTEXT NULL EXCEPTION #======================#
     "NullGameSnapshotContextException",
 ]
 
 
-# ======================# GAME_CONTEXT NULL EXCEPTIONS #======================#
+# ======================# GAME_CONTEXT NULL EXCEPTION #======================#
 class NullGameSnapshotContextException(InvalidGameSnapshotContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging

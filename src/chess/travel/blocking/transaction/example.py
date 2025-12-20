@@ -12,11 +12,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exceptions raised by `IdValidator`;
+The module's only covers exception raised by `IdValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidator` is responsible for the logic which raises these exceptions.
+       `IdValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -29,14 +29,14 @@ The major theme influencing the modules design are
 
 
 # SECTION 6 - Feature Delivery Mechanism:
-1. Exceptions specific to verifying ids.
+1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
+See the list of exception in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
 # src/chess/vector/rollback_exception.py
@@ -52,13 +52,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+**Limitations** It does not contain any logic for raising these exception; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
@@ -78,12 +78,12 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+See the list of exception in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """
 from chess.event import OccupationEventException

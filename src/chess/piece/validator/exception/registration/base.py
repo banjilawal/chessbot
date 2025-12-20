@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/registration/base.py
+# src/chess/piece/number_bounds_validator/exception/registration/base.py
 
 """
-Module: chess.piece.validator.exception.registration.base
+Module: chess.piece.number_bounds_validator.exception.registration.base
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.piece import InvalidPieceException
 from chess.system import RegistrationException
 
 __all__ = [
-    #======================# PIECE_REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# PIECE_REGISTRATION EXCEPTION #======================#
     "PieceRegistrationException"
 ]
 
 
-#======================# PIECE_REGISTRATION EXCEPTION SUPER CLASS #======================#
+#======================# PIECE_REGISTRATION EXCEPTION #======================#
 class PieceRegistrationException(InvalidPieceException, RegistrationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

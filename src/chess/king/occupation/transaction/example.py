@@ -85,7 +85,7 @@ Example:
 #   """
 #   Transfers `Piece` occupying`actor_square` to `travel.blocked_square` leaving `actor_square` empty.
 #   `OccupationExecutor.execute_event` is the single entry point to `_switch_squares`. Before `_switch_squares`
-#   was called `execute_event`: validated the parameters, handled exceptions, and confirmed
+#   was called `execute_event`: validated the parameters, handled exception, and confirmed
 #   `travel.blocked_square` contained either
 #     * A friendly owner blocking `actor_candidate` from `blocked_square`
 #     * An enemy occupation. Kings cannot be captured, only checked or checkmated.
@@ -402,11 +402,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exceptions raised by `IdValidator`;
+The module's only covers exception raised by `IdValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidator` is responsible for the logic which raises these exceptions.
+       `IdValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -419,14 +419,14 @@ The major theme influencing the modules design are
 
 
 # SECTION 6 - Feature Delivery Mechanism:
-1. Exceptions specific to verifying ids.
+1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
+See the list of exception in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
 # src/chess/vector/rollback_exception.py
@@ -442,13 +442,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+**Limitations** It does not contain any logic for raising these exception; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
@@ -468,12 +468,12 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+See the list of exception in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """
 
@@ -481,16 +481,16 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 # from chess.owner.travel import OccupationEventException
 #
 # __all__ = [
-#   #=== SCAN_TRANSACTION EXCEPTIONS #======================#
+#   #=== SCAN_TRANSACTION EXCEPTION #======================#
 #   'ScanTransactionException',
 #   'NullScanTransactionException',
 #
-#   #=== SCAN_EVENT EXCEPTIONS #======================#
+#   #=== SCAN_EVENT EXCEPTION #======================#
 #   'ScanEventException',
 #   'InvalidScanEventException',
 #   'NullEncounterEventException',
 #
-#   #=== SCAN_EVENT BUILD EXCEPTIONS #======================#
+#   #=== SCAN_EVENT BUILD EXCEPTION #======================#
 #   'ScanEventBuilderException',
 #   'ScanSubjectException',
 # ]
@@ -512,10 +512,10 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #   'PositionUpdateRollbackException',
 # ]
 #
-# #=== SCAN TRANSACTION EXCEPTIONS #======================#
+# #=== SCAN TRANSACTION EXCEPTION #======================#
 # class ScanTransactionException(TransactionException):
 #   """
-#   Wraps any ScanEventExceptions or other errors raised during
+#   Wraps any ScanEventException or other errors raised during
 #   the blocking's lifecycle.
 #   """
 #   ERROR_CODE = "SCAN_TRANSACTION_ERROR"
@@ -523,10 +523,10 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #
 #
 #
-# #=== SCAN_EVENT EXCEPTIONS #======================#
+# #=== SCAN_EVENT EXCEPTION #======================#
 # class AttackEventException(OccupationEventException):
 #   """
-#   Base class for exceptions raised during attack/capture rollback.
+#   Base class for exception raised during attack/capture rollback.
 #
 #   PURPOSE:
 #     Used when an error occurs in the course of an attack or capture
@@ -537,7 +537,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #
 #
 #
-# #=== ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
+# #=== ATTACK_EVENT VALIDATION EXCEPTION #======================#
 # class NullAttackEventException(AttackEventException, NullException):
 #   """Raised by methods, entities, and models that require team_name KingCheckEvent but receive team_name validation."""
 #   ERROR_CODE = "NULL_EVENT_ERROR"
@@ -549,7 +549,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #   DEFAULT_MESSAGE = "KingCheckEvent failed validate"
 #
 #
-# #=== ATTACK_EVENT BUILD EXCEPTIONS #======================#
+# #=== ATTACK_EVENT BUILD EXCEPTION #======================#
 # class AttackEventBuilderException(AttackEventException, BuilderException):
 #   """
 #   Indicates Coord could not be built. Wraps and re-raises errors that occurred
@@ -559,7 +559,7 @@ See the list of exceptions in the `__all__` list following (e.g., `VectorExcepti
 #   DEFAULT_MESSAGE = "AttackEventBuilder failed to create team_name KingCheckEvent"
 #
 #
-# #=== ATTACK_EVENT BUILD EXCEPTIONS #======================#
+# #=== ATTACK_EVENT BUILD EXCEPTION #======================#
 # class UnexpectedNullEnemyException(AttackEventException):
 #   DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
 #   DEFAULT_MESSAGE = "Target actor_candidate is unexpectedly validation during capture; this should not happen."

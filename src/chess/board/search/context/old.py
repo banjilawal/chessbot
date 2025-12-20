@@ -16,36 +16,36 @@ from chess.system import (
 __all__ = [
     "BoardSearchContextException",
     
-#========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#
+#========================= NULL BOARD_SEARCH_CONTEXT EXCEPTION =========================#
     "NullBoardSearchContextException",
     
-#========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+#========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTION =========================#
     "InvalidBoardSearchContextException",
     "NoBoardSearchOptionSelectedException",
     "MoreThanOneBoardSearchOptionPickedException",
     
-#========================= BOARD_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
+#========================= BOARD_SEARCH_CONTEXT BUILD EXCEPTION =========================#
     "BoardContextBuildFailedException",
 ]
 
 
 class BoardSearchContextException(ContextException):
     """
-    Super class of exceptions raised by TeamSearchContext objects.
+    Super class of exception raised by TeamSearchContext objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext raised an exception."
 
 
-#========================= NULL BOARD_SEARCH_CONTEXT EXCEPTIONS =========================#
+#========================= NULL BOARD_SEARCH_CONTEXT EXCEPTION =========================#
 class NullBoardSearchContextException(BoardSearchContextException, NullException):
     """Raised if an entity, method, or operation requires Board but gets null instead."""
     ERROR_CODE = "NULL_BOARD_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "TeamSearchContext cannot be validation"
 
 
-#========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+#========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTION =========================#
 class InvalidBoardSearchContextException(
     BoardSearchContextException,
     ValidationException

@@ -21,7 +21,7 @@ class AgentContextServiceException(ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
     
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an AgentContextService's normal operations are halted
+    1.  Parent of exception raised when an AgentContextService's normal operations are halted
         by an error condition.
     2.  Raised when no specific exception exists for the error interrupting AgentContextService's
         processes from their normal flows.

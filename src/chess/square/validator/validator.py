@@ -1,7 +1,7 @@
-# src/chess/square/validator/validator.py
+# src/chess/square/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.square.validator.validator
+Module: chess.square.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-11
 """
@@ -106,7 +106,7 @@ class SquareValidator(Validator[Square]):
             return ValidationResult.success(payload=square)
             
             # Finally, if there is an unhandled exception Wrap a InvalidSquareException around it
-            # then return the exceptions inside a ValidationResult.
+            # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSquareException(ex=ex, message=f"{method}: {InvalidSquareException.DEFAULT_MESSAGE}")

@@ -20,11 +20,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exceptions raised by `IdValidator`;
+The module's only covers exception raised by `IdValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidator` is responsible for the logic which raises these exceptions.
+       `IdValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -37,14 +37,14 @@ The major theme influencing the modules design are
 
 
 # SECTION 6 - Feature Delivery Mechanism:
-1. Exceptions specific to verifying ids.
+1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
+See the list of exception in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
 
@@ -53,7 +53,7 @@ from chess.system import ChessException, NullException, BuildFailedException, Va
 __all__ = [
   'BlockingEventException',
 
-#======================# BLOCKING_EVENT VALIDATION EXCEPTIONS #======================#
+#======================# BLOCKING_EVENT VALIDATION EXCEPTION #======================#
   'NullBlockingEventException',
   'ActorBlockingOwnSquareException',
   'ActorSameAsBlockerException',
@@ -67,7 +67,7 @@ class BlockingEventException(TravelEventException):
   ERROR_CODE = "BLOCKING_EVENT_ERROR"
   DEFAULT_MESSAGE = "BlockingEvent raised an exception."
 
-#======================# BLOCKING_EVENT VALIDATION EXCEPTIONS #======================#
+#======================# BLOCKING_EVENT VALIDATION EXCEPTION #======================#
 class InvalidBlockingEventException(TravelEventException, ValidationException):
   """"""
   ERROR_CODE = "BLOCKING_EVENT_ERROR"
@@ -113,7 +113,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   DEFAULT_MESSAGE = "BlockingEventException validation failed."
 #
 #
-# #======================# BLOCKING_EVENT BUILD EXCEPTIONS #======================#
+# #======================# BLOCKING_EVENT BUILD EXCEPTION #======================#
 # class BlockingEventExceptionBuildFailedException(BlockingEventException, BuildFailedException):
 #   """
 #   Indicates Coord could not be built. Wraps and re-raises errors that occurred
@@ -135,13 +135,13 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # -----
 # This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 # creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-# limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
+# limits and validation checks. It does not contain any logic for *raising* these exception; that responsibility
 # falls to the `CoordValidator` and `CoordBuilder`processes.
 #
 # THEME:
 # -----
 # **Comprehensive Domain Error Catalog.** The central theme is to provide team_name
-# highly granular and hierarchical set of exceptions, ensuring that callers can
+# highly granular and hierarchical set of exception, ensuring that callers can
 # catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 # and the **affected graph** (e.g., `CoordException`). This enables precise error
 # logging and handling throughout the system.
@@ -149,7 +149,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # PURPOSE:
 # -------
 # To serve as the **centralized error dictionary** for the `Coord` graph.
-# It abstracts underlying Python exceptions into graph-specific, custom error types
+# It abstracts underlying Python exception into graph-specific, custom error types
 # to improve code clarity and facilitate robust error handling within the chess engine.
 #
 # DEPENDENCIES:
@@ -157,12 +157,12 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # Requires base rollback_exception classes and constants from the core system:
 # From `chess.system`:
 #   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
-#   * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+#   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
 #         `BuildFailedException`.
 #
 # CONTAINS:
 # --------
-# See the list of exceptions in the `__all__` list following (e.g., `CoordException`,
+# See the list of exception in the `__all__` list following (e.g., `CoordException`,
 # `NullCoordException`, `RowAboveBoundsException`).
 # """
 #
@@ -172,12 +172,12 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # __all__ = [
 #   'TravelActorException',
 #
-#   #====================== TravelEvent actor_candidate VALIDATION EXCEPTIONS #======================#
+#   #====================== TravelEvent actor_candidate VALIDATION EXCEPTION #======================#
 #   'InvalidTravelActorException',
 #   'NullTravelActorException',
 #   'TravelActorNotFoundException',
 #
-#   #====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
+#   #====================== TRAVEL_ACTOR MOVE EXCEPTION #======================#
 #   'TravelActorMovingException',
 #   'NoInitialPlacementException',
 #   'ActorAlreadyAtDestinationException',
@@ -185,7 +185,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   'BoardPieceRemovedCannotActException',
 #   'CapturedActorCannotMoveException',
 #
-#   #====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
+#   #====================== TRAVEL_ACTOR SQUARE EXCEPTION #======================#
 #   'PieceSquareNotFoundException',
 #   'SquareMisMatchesPieceException'
 # ]
@@ -196,7 +196,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate actor_candidate raised an exception."
 #
 #
-# #====================== TRAVEL ACTOR VALIDATION EXCEPTIONS #======================#
+# #====================== TRAVEL ACTOR VALIDATION EXCEPTION #======================#
 # class NullTravelActorException(TravelActorException, NullException):
 #   ERROR_CODE = "NULL_TRAVEL_ACTOR_ERROR"
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate cannot be null."
@@ -214,7 +214,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   )
 #
 #
-# #====================== TRAVEL_ACTOR MOVE EXCEPTIONS #======================#
+# #====================== TRAVEL_ACTOR MOVE EXCEPTION #======================#
 # class TravelActorMovingException(TravelActorException):
 #   ERROR_CODE = "TRAVEL_ACTOR_MOVE_ERROR"
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate raised a moving violation. Candidate cannot travel."
@@ -267,7 +267,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   )
 #
 #
-# #====================== TRAVEL_ACTOR SQUARE EXCEPTIONS #======================#
+# #====================== TRAVEL_ACTOR SQUARE EXCEPTION #======================#
 # class PieceSquareNotFoundException(TravelActorException, InconsistencyException):
 #   """"""
 #   ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"

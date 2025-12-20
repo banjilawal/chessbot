@@ -1,7 +1,7 @@
-# src/chess/schema/lookup/context/validator/validator.py
+# src/chess/schema/lookup/context/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.schema.lookup.context.validator.validator
+Module: chess.schema.lookup.context.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    InvalidSchemaContextException, NoSchemaContextFlagException, NullSchemaContextException, SchemaContext,
+    InvalidSchemaContextException, ZeroSchemaContextFlagsException, NullSchemaContextException, SchemaContext,
     ExcessiveSchemaContextFlagsException
 )
 
@@ -47,7 +47,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         """
         # Action:
         1.  Confirm that only one in the (name, color) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's validator.
+        2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an SchemaContext are return in a ValidationResult.
 
@@ -64,7 +64,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         # Raises:
             *   TypeError
             *   NullSchemaContextException
-            *   NoSchemaContextFlagException
+            *   ZeroSchemaContextFlagsException
             *   ExcessiveSchemaContextFlagsException
             *   InvalidSchemaContextException
         """
@@ -87,7 +87,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
             # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoSchemaContextFlagException(f"{method}: {NoSchemaContextFlagException.DEFAULT_MESSAGE}")
+                    ZeroSchemaContextFlagsException(f"{method}: {ZeroSchemaContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:

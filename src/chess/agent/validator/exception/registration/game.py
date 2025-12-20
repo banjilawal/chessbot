@@ -1,7 +1,7 @@
-# src/chess/agent/validator/exception/registration/game.py
+# src/chess/agent/number_bounds_validator/exception/registration/game.py
 
 """
-Module: chess.agent.validator.exception.registration.game
+Module: chess.agent.number_bounds_validator.exception.registration.game
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,7 +11,7 @@ from chess.agent import AgentRegistrationException
 
 
 __all__ = [
-    #======================# AGENT REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# AGENT REGISTRATION EXCEPTION #======================#
     "AgentNotRegisteredWithGameException",
 ]
 

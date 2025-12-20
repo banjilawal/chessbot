@@ -13,26 +13,26 @@ from chess.system import BuildFailedException, NullException, ValidationExceptio
 
 
 __all__ = [
-    #======================# COMBATANT_PIECE EXCEPTION SUPER CLASS #======================#
+    #======================# COMBATANT_PIECE EXCEPTION #======================#
     "CombatantPieceException",
     
-    #======================# COMBATANT_PIECE VALIDATION EXCEPTIONS #======================#
+    #======================# COMBATANT_PIECE VALIDATION EXCEPTION #======================#
     "InvalidCombatantPieceException",
     "NullCombatantException",
     
-    #======================# COMBATANT_PIECE BUILD EXCEPTIONS #======================#
+    #======================# COMBATANT_PIECE BUILD EXCEPTION #======================#
     "CombatantPieceBuildFailedException",
 ]
 
 
-#======================# COMBATANT_PIECE EXCEPTION SUPER CLASS #======================#
+#======================# COMBATANT_PIECE EXCEPTION #======================#
 class CombatantPieceException(PieceException):
-    """Super class for CombatantPiece exceptions."""
+    """Super class for CombatantPiece exception."""
     ERROR_CODE = "COMBATANT_PIECE_ERROR"
     DEFAULT_MESSAGE = "CombatantPiece raised an exception."
 
 
-#======================# COMBATANT_PIECE VALIDATION EXCEPTIONS #======================#
+#======================# COMBATANT_PIECE VALIDATION EXCEPTION #======================#
 class InvalidCombatantPieceException(CombatantPieceException, ValidationException):
     """Raised by PieceValidator when a combatant candidate fails a sanity check."""
     ERROR_CODE = "COMBATANT_PIECE_VALIDATION_ERROR"
@@ -45,7 +45,7 @@ class NullCombatantException(CombatantPieceException, NullException):
     DEFAULT_MESSAGE = "CombatantPiece cannot be null."
 
 
-#======================# COMBATANT_PIECE BUILD EXCEPTIONS #======================#
+#======================# COMBATANT_PIECE BUILD EXCEPTION #======================#
 class CombatantPieceBuildFailedException(CombatantPieceException, BuildFailedException):
     ERROR_CODE = "COMBATANT_PIECE_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "CombatantPiece build failed."

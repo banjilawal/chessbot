@@ -12,20 +12,20 @@ Controls team_name `Team` instance by issuing movement commands to team_name `ow
  on the team_name.Commanders who play team_name team_name
 
  # EXPORTS
-This package exposes core classes and all exceptions from its sub-modules:
+This package exposes core classes and all exception from its sub-modules:
   - `PlayerAgent`: Abstract class.
   - `HumanPlayer`: Concrete `subclass` of `PlayerAgent` people use.
   - `MachinePlayer`: Concrete `subclass` of `PlayerAgent` that uses team_name `Engine`.
   - `PlayerAgentBuilder`: Builds new instances of `PlayerAgent`.
   - `PlayerAgentValidator`: Performs coord_stack_validator and sanity checks on existing
       `PlayerAgent` instances. before they are used.
-  - All exceptions from `rollback_exception` package.
+  - All exception from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.rollback_exception`: Defines all custom exceptions for travel rollback.
+  - `.rollback_exception`: Defines all custom exception for travel rollback.
 
 # HOW TO IMPORT
-DO NOT reference submodules directly. Import all core classes and exceptions from this
+DO NOT reference submodules directly. Import all core classes and exception from this
 `player_agent` package level. (e.g., `from chess.player_agent import PlayerAgentValidator`). See USAGE
 EXAMPLES section.
 
@@ -49,20 +49,20 @@ Controls team_name `Team` instance by issuing movement commands to team_name `ow
  on the team_name.Commanders who play team_name team_name
 
  # EXPORTS
-This package exposes core classes and all exceptions from its sub-modules:
+This package exposes core classes and all exception from its sub-modules:
   - `PlayerAgent`: Abstract class.
   - `HumanPlayer`: Concrete `subclass` of `PlayerAgent` people use.
   - `MachinePlayer`: Concrete `subclass` of `PlayerAgent` that uses team_name `Engine`.
   - `PlayerAgentBuilder`: Builds new instances of `PlayerAgent`.
   - `PlayerAgentValidator`: Performs coord_stack_validator and sanity checks on existing
       `PlayerAgent` instances. before they are used.
-  - All exceptions from `rollback_exception` package.
+  - All exception from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.rollback_exception`: Defines all custom exceptions for travel rollback.
+  - `.rollback_exception`: Defines all custom exception for travel rollback.
 
 # HOW TO IMPORT
-DO NOT reference submodules directly. Import all core classes and exceptions from this
+DO NOT reference submodules directly. Import all core classes and exception from this
 `player_agent` package level. (e.g., `from chess.player_agent import PlayerAgentValidator`). See USAGE
 EXAMPLES section.
 
@@ -84,13 +84,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+**Limitations** It does not contain any logic for raising these exception; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
@@ -110,12 +110,12 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+See the list of exception in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """
 # src/chess/agent/machine.py

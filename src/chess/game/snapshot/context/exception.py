@@ -10,19 +10,19 @@ version: 1.0.0
 from chess.system import ContextException
 
 __all__ = [
-    # ======================# GAME_CONTEXT EXCEPTION SUPER CLASS #======================#
+    # ======================# GAME_CONTEXT EXCEPTION #======================#
     "GameSnapshotContextException",
 ]
 
 
-# ======================# GAME_CONTEXT EXCEPTION SUPER CLASS #======================#
+# ======================# GAME_CONTEXT EXCEPTION #======================#
 class GameSnapshotContextException(ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by GameSnapshotContext objects.
-    2.  Catchall for conditions which are not covered by lower level GameSnapshotContext exceptions.
+    1.  Parent of exception raised by GameSnapshotContext objects.
+    2.  Catchall for conditions which are not covered by lower level GameSnapshotContext exception.
 
     # PARENT:
         *   ContextException

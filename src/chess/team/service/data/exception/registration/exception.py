@@ -12,13 +12,13 @@ from chess.team.validator import InvalidTeamException
 
 
 __all__ = [
-    #======================# TEAM_REGISTRATION EXCEPTIONS #======================#
+    #======================# TEAM_REGISTRATION EXCEPTION #======================#
     "TeamRegistrationException",
     "TeamNotRegisteredWithAgentException",
 ]
 
 
-#======================# TEAM_REGISTRATION EXCEPTIONS #======================#
+#======================# TEAM_REGISTRATION EXCEPTION #======================#
 class TeamRegistrationException(InvalidTeamException, RegistrationException):
     """
     Catchall for when a Team does not have a relationship with another entity.

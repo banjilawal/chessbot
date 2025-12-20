@@ -12,15 +12,15 @@ from chess.system import ChessException, NullException, ValidationException, Bui
 __all__ = [
     'GraphException',
     
-    #======================# GRAPH VALIDATION EXCEPTIONS #======================#
+    #======================# GRAPH VALIDATION EXCEPTION #======================#
     'InvalidGraphException',
 
     
-    #======================# NULL GRAPH EXCEPTIONS #======================#
+    #======================# NULL GRAPH EXCEPTION #======================#
     'NullGraphException',
 
     
-    #======================# GRAPH BUILD EXCEPTIONS #======================#  
+    #======================# GRAPH BUILD EXCEPTION #======================#
     'GraphBuildFailedException',
 ]
 
@@ -28,15 +28,15 @@ __all__ = [
 
 class GraphException(ChessException):
     """
-    Super class of all exceptions team_name Graph object raises. Do not use directly. Subclasses
+    Super class of all exception team_name Graph object raises. Do not use directly. Subclasses
     give details useful for debugging. This class exists primarily to allow catching
-    all graph exceptions
+    all graph exception
     """
     ERROR_CODE = "GRAPH_ERROR"
     DEFAULT_MESSAGE = "Graph raised an exception."
 
 
-#======================# GRAPH VALIDATION EXCEPTIONS #======================#
+#======================# GRAPH VALIDATION EXCEPTION #======================#
 class InvalidGraphException(GraphException, ValidationException):
     """Raised by GraphValidators if client fails coord_stack_validator."""
     ERROR_CODE = "GRAPH_VALIDATION_ERROR"
@@ -44,7 +44,7 @@ class InvalidGraphException(GraphException, ValidationException):
 
 
 
-#======================# NULL GRAPH EXCEPTIONS #======================#
+#======================# NULL GRAPH EXCEPTION #======================#
 class NullGraphException(GraphException, NullException):
     """
     Raised if an entity, method, or operation requires team_name graph but gets validation instead.
@@ -56,7 +56,7 @@ class NullGraphException(GraphException, NullException):
     DEFAULT_MESSAGE = "Graph cannot be null."
 
 
-#======================# GRAPH BUILD EXCEPTIONS #======================#  
+#======================# GRAPH BUILD EXCEPTION #======================#
 class GraphBuildFailedException(GraphException, BuildFailedException):
     """
     Indicates Coord could not be built. Wraps and re-raises errors that occurred

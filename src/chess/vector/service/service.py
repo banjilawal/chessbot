@@ -54,7 +54,7 @@ class VectorService(EntityService[Vector]):
             *   id (nt)
             *   designation (str)
             *   builder (VectorBuilder)
-            *   validator (VectorValidator)
+            *   number_bounds_validator (VectorValidator)
 
         # Returns:
         None
@@ -85,7 +85,7 @@ class VectorService(EntityService[Vector]):
         """
         # Action:
         1.  Certify the scalar argument with scalar_service.
-        2.  Certify the vector argument with the service's validator.
+        2.  Certify the vector argument with the service's number_bounds_validator.
         3.  Get the new x and y components using the expression
                     x, new_colum = vector.x * scalar.value, vector.y * scalar.value
         5.  Using the service's VectordBuilder instance create and return the new Vector.

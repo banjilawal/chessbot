@@ -1,7 +1,7 @@
-# src/chess/agent/validator/exception/registration/base.py
+# src/chess/agent/number_bounds_validator/exception/registration/base.py
 
 """
-Module: chess.agent.validator.exception.registration.base
+Module: chess.agent.number_bounds_validator.exception.registration.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.agent import InvalidAgentException
 from chess.system import RegistrationException
 
 __all__ = [
-    #======================# AGENT REGISTRATION EXCEPTION SUPER CLASS #======================#
+    #======================# AGENT REGISTRATION EXCEPTION #======================#
     "AgentRegistrationException",
 ]
 
 
-#======================# AGENT_REGISTRATION EXCEPTION SUPER CLASS #======================#
+#======================# AGENT_REGISTRATION EXCEPTION #======================#
 class AgentRegistrationException(InvalidAgentException, RegistrationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

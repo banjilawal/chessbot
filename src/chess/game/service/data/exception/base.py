@@ -22,9 +22,9 @@ class GameDataServiceException(GameException, DataServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by GameDataService objects.
+    1.  Parent of exception raised by GameDataService objects.
     2.  Raised when an exception hits the try-finally block of a GameDataService method.
-    3.  Catchall for GameDataService failures that are not covered by a lower level GameDataService exceptions.
+    3.  Catchall for GameDataService failures that are not covered by a lower level GameDataService exception.
 
     # PARENT:
         *   GameException

@@ -16,10 +16,10 @@ __all__ = [
 ]
 
 
-#======================# SERVICE EXCEPTIONS #======================#
+#======================# SERVICE EXCEPTION #======================#
 class ServiceException(ChessException):
     """
-    Super class of exceptions raised by EntityService objects. Do not use directly. Subclasses give
+    Super class of exception raised by EntityService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SERVICE_ERROR"

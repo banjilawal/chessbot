@@ -13,12 +13,12 @@ from chess.system import BiDirectionalException
 
 
 __all__ = [
-#======================# REGISTRATION EXCEPTION SUPER CLASS #======================#
+#======================# REGISTRATION EXCEPTION #======================#
     "RegistrationException",
 ]
 
 
-#======================# REGISTRATION EXCEPTION SUPER CLASS #======================#
+#======================# REGISTRATION EXCEPTION #======================#
 class RegistrationException(BiDirectionalException):
     """
     # ROLE: Error Tracing, Debugging

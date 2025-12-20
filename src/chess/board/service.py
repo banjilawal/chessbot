@@ -52,7 +52,7 @@ class BoardService(EntityService[Board]):
             *   id (nt)
             *   designation (str)
             *   builder (BoardFactory)
-            *   validator (BoardValidator)
+            *   number_bounds_validator (BoardValidator)
 
         # Returns:
         None

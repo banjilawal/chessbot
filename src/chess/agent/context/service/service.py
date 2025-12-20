@@ -29,7 +29,7 @@ class AgentContextService(ContextService[AgentContext]):
 
     # PROVIDES:
         *   builder:    -> AgentContextBuilder
-        *   validator:  -> AgentContextValidator
+        *   number_bounds_validator:  -> AgentContextValidator
         *   finder:     -> AgentFinder
 
     # LOCAL ATTRIBUTES:
@@ -56,7 +56,7 @@ class AgentContextService(ContextService[AgentContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (AgentFinder): Default value - AgentFinder()
             *   builder (AgentContextBuilder): Default value - AgentContextBuilder()
-            *   validator (AgentContextValidator): Default value - AgentContextValidator()
+            *   number_bounds_validator (AgentContextValidator): Default value - AgentContextValidator()
 
         # Returns:
         None

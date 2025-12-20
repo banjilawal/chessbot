@@ -11,12 +11,12 @@ from chess.system import BuildFailedException
 from chess.formation import OrderContextException
 
 __all__ = [
-    # ======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
+    # ======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTION #======================#
     "OrderContextBuildFailedException",
 ]
 
 
-# ======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
+# ======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTION #======================#
 class OrderContextBuildFailedException(OrderContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

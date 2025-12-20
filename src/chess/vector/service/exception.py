@@ -12,38 +12,38 @@ from chess.system import ServiceException, NullException, ValidationException, B
 __all__ = [
   "VectorServiceException",
   
-#======================# VECTOR_SERVICE VALIDATION EXCEPTIONS #======================#  
+#======================# VECTOR_SERVICE VALIDATION EXCEPTION #======================#
   "NullVectorServiceException",
   "InvalidVectorServiceException",
   
-#======================# VECTOR_SERVICE BUILD EXCEPTIONS #======================#  
+#======================# VECTOR_SERVICE BUILD EXCEPTION #======================#
   "VectorBuildFailedException",
 ]
 
 class VectorServiceException(ServiceException):
   """
-  Super class of exceptions raised by VectorService objects. Do not use directly. Subclasses give
+  Super class of exception raised by VectorService objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
   ERROR_CODE = "VECTOR_SERVICE_ERROR"
   DEFAULT_MESSAGE = "VectorService raised an exception."
   
 
-#======================# NULL VECTOR_SERVICE EXCEPTIONS #======================#
+#======================# NULL VECTOR_SERVICE EXCEPTION #======================#
 class NullVectorServiceException(VectorServiceException, NullException):
   """Raised if an entity, method, or operation requires VectorService but gets null instead."""
   ERROR_CODE = "NULL_VECTOR_SERVICE_ERROR"
   DEFAULT_MESSAGE = "VectorService cannot be null."
 
 
-#======================# VECTOR_SERVICE VALIDATION EXCEPTIONS #======================#
+#======================# VECTOR_SERVICE VALIDATION EXCEPTION #======================#
 class InvalidVectorServiceException(VectorServiceException, ValidationException):
   """Catchall Exception for VectorValidator when a candidate fails a sanity check.""""""
   ERROR_CODE = "VECTOR_SERVICE_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "VectorService validation failed."
 
 
-#======================# VECTOR_SERVICE BUILD EXCEPTIONS #======================#
+#======================# VECTOR_SERVICE BUILD EXCEPTION #======================#
 class VectorBuildFailedException(VectorServiceException, BuildFailedException):
   """Catchall Exception for VectorServiceBuilder when it encounters an error building a VectorService."""
   ERROR_CODE = "VECTOR_SERVICE_BUILD_FAILED_ERROR"

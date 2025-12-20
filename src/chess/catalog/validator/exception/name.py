@@ -1,7 +1,7 @@
-# src/chess/catalog/validator/exception/name.py
+# src/chess/catalog/number_bounds_validator/exception/name.py
 
 """
-Module: chess.catalog.validator.exception.name
+Module: chess.catalog.number_bounds_validator.exception.name
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.catalog import InvalidCatalogException
 from chess.system import BoundsException, NameException
 
 __all__ = [
-    # ======================# CATALOG NAME BOUNDS EXCEPTIONS #======================#
+    # ======================# CATALOG NAME BOUNDS EXCEPTION #======================#
     "CatalogNameBoundsException",
 ]
 
 
-# ======================# CATALOG NAME BOUNDS EXCEPTIONS #======================#
+# ======================# CATALOG NAME BOUNDS EXCEPTION #======================#
 class CatalogNameBoundsException(InvalidCatalogException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging

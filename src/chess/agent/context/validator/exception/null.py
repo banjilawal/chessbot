@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/exception/null/exception.py
+# src/chess/agent/context/number_bounds_validator/exception/null/exception.py
 
 """
-Module: chess.agent.context.validator.exception.null.exception
+Module: chess.agent.context.number_bounds_validator.exception.null.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,11 +11,11 @@ from chess.system import NullException
 from chess.agent import InvalidAgentContextException
 
 __all__ = [
-    #======================# AGENT_CONTEXT NULL EXCEPTIONS #======================#
+    #======================# AGENT_CONTEXT NULL EXCEPTION #======================#
     "NullAgentContextException",
 ]
 
-#======================# AGENT_CONTEXT NULL EXCEPTIONS #======================#
+#======================# AGENT_CONTEXT NULL EXCEPTION #======================#
 class NullAgentContextException(InvalidAgentContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging

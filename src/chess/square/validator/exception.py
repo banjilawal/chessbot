@@ -1,7 +1,7 @@
-# src/chess/square/validator/exception.py
+# src/chess/square/number_bounds_validator/exception.py
 
 """
-Module: chess.square.validator.exception
+Module: chess.square.number_bounds_validator.exception
 Author: Banji Lawal
 Created: 2025-09-11
 """

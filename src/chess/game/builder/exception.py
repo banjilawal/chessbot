@@ -11,19 +11,19 @@ from chess.game import GameException
 from chess.system import BuildFailedException
 
 __all__ = [
-    #======================# GAME BUILD EXCEPTIONS #======================#
+    #======================# GAME BUILD EXCEPTION #======================#
     "GameBuildFailedException",
 ]
 
 
-#======================# GAME BUILD EXCEPTIONS #======================#
+#======================# GAME BUILD EXCEPTION #======================#
 class GameBuildFailedException(GameException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during Game build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an GameBuilder method.
+    1.  Parent of exception raised during Game build process.
+    2.  Wraps unhandled exception that hit the try-finally block of an GameBuilder method.
 
     # PARENT:
         *   GameException

@@ -1,7 +1,7 @@
-# src/chess/square/context/validator/exception/exception.py
+# src/chess/square/context/number_bounds_validator/exception/exception.py
 
 """
-Module: chess.square.context.validator.exception.exception
+Module: chess.square.context.number_bounds_validator.exception.exception
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -12,7 +12,7 @@ from chess.square import SquareContextException
 
 
 
-#========================= SQUARE_CONTEXT VALIDATION EXCEPTIONS =========================#
+#========================= SQUARE_CONTEXT VALIDATION EXCEPTION =========================#
 class InvalidSquareContextException(
     SquareContextException,
     ValidationException

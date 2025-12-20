@@ -12,11 +12,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exceptions raised by `IdValidator`;
+The module's only covers exception raised by `IdValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidator` is responsible for the logic which raises these exceptions.
+       `IdValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -29,14 +29,14 @@ The major theme influencing the modules design are
 
 
 # SECTION 6 - Feature Delivery Mechanism:
-1. Exceptions specific to verifying ids.
+1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
+See the list of exception in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
 # src/chess/system/travel/old_transaction.py

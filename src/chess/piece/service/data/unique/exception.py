@@ -10,16 +10,16 @@ version: 1.0.0
 from chess.system import UniqueDataServiceException
 
 __all__ = [
-    #======================# UNIQUE_PIECE_DATA_SERVICE EXCEPTIONS #======================#
+    #======================# UNIQUE_PIECE_DATA_SERVICE EXCEPTION #======================#
     "UniquePieceDataServiceException",
     "AddingDuplicatePieceException",
 ]
 
 
-#======================# UNIQUE_PIECE_DATA_SERVICE EXCEPTIONS #======================#
+#======================# UNIQUE_PIECE_DATA_SERVICE EXCEPTION #======================#
 class UniquePieceDataServiceException(UniqueDataServiceException):
     """
-    Super class of exceptions raised by UniquePieceDataService objects. Do not use directly. Subclasses give
+    Super class of exception raised by UniquePieceDataService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "UNIQUE_PIECE_DATA_SERVICE_ERROR"

@@ -14,32 +14,32 @@ from chess.system import (
     IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
-    NoSchemaContextFlagException, SchemaContext, ExcessiveSchemaContextFlagsException, SchemaContextBuildFailedException
+    ZeroSchemaContextFlagsException, SchemaContext, ExcessiveSchemaContextFlagsException, SchemaContextBuildFailedException
 )
 
 
 class SchemaContextBuilder(Builder[SchemaContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
-     1.  Produce SchemaContext instances whose integrity is always guaranteed.
-     2.  Manage construction of SchemaContext instances that can be used safely by the client.
-     3.  Ensure params for SchemaContext creation have met the application's safety contract.
-     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    # RESPONSIBILITIES:
+    1.  Produce SchemaContext instances whose integrity is always guaranteed.
+    2.  Manage construction of SchemaContext instances that can be used safely by the client.
+    3.  Ensure params for SchemaContext creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
-         * Builder
+    # PARENT:
+        *   Builder
 
-     # PROVIDES:
-     None
+    # PROVIDES:
+    None
 
-     # LOCAL ATTRIBUTES:
-     None
+    # LOCAL ATTRIBUTES:
+    None
 
-     # INHERITED ATTRIBUTES:
-     None
-     """
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
@@ -52,18 +52,18 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         """
         # Action:
             1.  Confirm that only one in the (designation, color) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service or validator.
-            3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an SchemaContext and return in a BuildResult.
+            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            3.  If all checks pass build a SchemaContext and send in a BuildResult. Else, send an exception
+                in the BuildResult.
 
         # Parameters:
-        Only one these must be provided:
-            *   designation (Optional[str])
-            *   color (Optional[GameColor])
-
-        These Parameters must be provided:
-            *   color_validator (GameColorValidator)
-            *   identity_service (IdentityService)
+            Only one these must be provided:
+                *   designation (Optional[str])
+                *   color (Optional[GameColor])
+    
+            These Parameters must be provided:
+                *   color_validator (GameColorValidator)
+                *   identity_service (IdentityService)
 
         # Returns:
         BuildResult[SchemaContext] containing either:
@@ -71,11 +71,11 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             - On failure: Exception.
 
         # Raises:
-            *   NoSchemaContextFlagException
-            *   ExcessiveSchemaContextFlagsException
+            *   ZeroSchemaContextFlagsException
             *   SchemaContextBuildFailedException
+            *   ExcessiveSchemaContextFlagsException
         """
-        method = "SchemaSearchContextBuilder.build"
+        method = "SchemaContextBuilder.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [name, color,]
@@ -84,7 +84,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             # Test if no params are set. Need an attribute-value pair to look up a team's schema.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoSchemaContextFlagException(f"{method}: {NoSchemaContextFlagException.DEFAULT_MESSAGE}")
+                    ZeroSchemaContextFlagsException(f"{method}: {ZeroSchemaContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:

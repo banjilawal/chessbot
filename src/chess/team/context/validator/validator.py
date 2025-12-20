@@ -1,7 +1,7 @@
-# src/chess/team/context/validator/validator.py
+# src/chess/team/context/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.team.context.validator.validator
+Module: chess.team.context.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -63,7 +63,7 @@ class TeamContextValidator(Validator[TeamContext]):
         """
         # Action:
         1.  Confirm that only one in the (id, designation, player_agent, arena, color) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's validator.
+        2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an TeamContext are return in a ValidationResult.
 
@@ -157,7 +157,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 return ValidationResult.success(payload=context)
             
         # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
-        # then return the exceptions inside a BuildResult.
+        # then return the exception inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidTeamContextException(

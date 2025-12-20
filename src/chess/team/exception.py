@@ -7,29 +7,29 @@ __all__ = [
   "TeamException",
   "TeamRollBackException",
 
-#======================# TEAM VALIDATION EXCEPTIONS #======================#
+#======================# TEAM VALIDATION EXCEPTION #======================#
 
-#======================# TEAM PARAMETER EXCEPTIONS #======================#
+#======================# TEAM PARAMETER EXCEPTION #======================#
   "TeamNameException",
   "TeamColorException",
   
-#======================# TEAM BUILD EXCEPTIONS #======================#
+#======================# TEAM BUILD EXCEPTION #======================#
 
-#======================# TEAM MEMBER EXCEPTIONS #======================#  
+#======================# TEAM MEMBER EXCEPTION #======================#
   "TeamRosterException",
   "AddTeamMemberException",
   "AddEnemyToRosterException",
   "RemoveTeamMemberException",
   "FullRankQuotaException",
 
-#======================# TEAM MEMBER EXCEPTIONS WITH ROLLBACK #======================#  
+#======================# TEAM MEMBER EXCEPTION WITH ROLLBACK #======================#
   "TeamRosterRollBackException",
   "AddEnemyHostageRolledBackException",
   "AddTeamMemberRolledBackException",
   "FullRankQuotaRolledBackException",
   "ConflictingTeamAssignmentException",
 
-#======================# HOSTAGE EXCEPTIONS #======================#  
+#======================# HOSTAGE EXCEPTION #======================#
   "TeamHostageListException",
   "InconsistentHostageEntry",
   "InvalidFriendlyHostageException",
@@ -37,29 +37,29 @@ __all__ = [
   "AddEnemyKingHostageException",
   "HostageRemovalException",
 
-#======================# HOSTAGE EXCEPTIONS WITH ROLLBACK #======================#  
+#======================# HOSTAGE EXCEPTION WITH ROLLBACK #======================#
   "TeamHostageListRolledBackException",
   "InvalidFriendlyHostageRolledBackException",
   "AddEnemyToRosterRolledBackException",
   "EnemyKingHostageRolledBackException",
   "HostageRemovalRolledBackException",
 
-#======================# SEARCH EXCEPTIONS #======================#
+#======================# SEARCH EXCEPTION #======================#
   "TeamNotRegisteredWithAgentException",
 ]
 
 class TeamException(ChessException):
   """
-  Super class of all exceptions `Team` object raises. Do not use directly. Subclasses give
+  Super class of all exception `Team` object raises. Do not use directly. Subclasses give
   details useful for debugging. This class exists primarily to allow catching all `Team`
-  exceptions.
+  exception.
   """
   ERROR_CODE = "TEAM_ERROR"
   DEFAULT_MESSAGE = "Team raised an exception."
 
 class TeamRollBackException(TeamException):
   """
-  Super class for exceptions that require `Team` and related object be rolled back to maintain
+  Super class for exception that require `Team` and related object be rolled back to maintain
   integrity`.
   """
   pass
@@ -92,7 +92,7 @@ class TeamCommanderInconsistencyException(TeamException):
 
 
 
-#======================# TEAM MEMBER LIST EXCEPTIONS #======================#  
+#======================# TEAM MEMBER LIST EXCEPTION #======================#
 class TeamRosterException(TeamException):
   """Raised for errors on team_name's roster"""
   ERROR_CODE = "TEAM_ROSTER_ERROR"
@@ -127,7 +127,7 @@ class ConflictingTeamAssignmentException(TeamRosterException):
   DEFAULT_MESSAGE = "Piece is already assigned to team_name team_name."
 
 
-#======================# TEAM MEMBER LIST EXCEPTIONS WITH ROLLBACK #======================#  
+#======================# TEAM MEMBER LIST EXCEPTION WITH ROLLBACK #======================#
 class TeamRosterRollBackException(TeamRosterException, RollbackException):
   """Raised for errors on team_name's roster that are raised after rollback."""
   ERROR_CODE = "TEAM_ROSTER_ERROR_ROLLED_BACK"
@@ -176,7 +176,7 @@ class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
     "Piece is already assigned to team_name team_name. Transaction rollback performed."
   )
 
-#======================# HOSTAGE LIST EXCEPTIONS #======================#  
+#======================# HOSTAGE LIST EXCEPTION #======================#
 class TeamHostageListException(TeamException):
   """Raised on errors with team_name's hostage list"""
   ERROR_CODE = "TEAM_HOSTAGE_LIST_ERROR"
@@ -212,7 +212,7 @@ class HostageRemovalException(TeamHostageListException):
   DEFAULT_MESSAGE = "An enemy owner cannot be removed from the team_name's hostage list"
 
 
-#======================# HOSTAGE LIST EXCEPTIONS WITH ROLLBACK #======================#  
+#======================# HOSTAGE LIST EXCEPTION WITH ROLLBACK #======================#
 class TeamHostageListRolledBackException(TeamHostageListException, RollbackException):
   """
   Raised on transactions that raise hostage list errors. Exception is raised after
@@ -259,7 +259,7 @@ class HostageRemovalRolledBackException(TeamHostageListRolledBackException):
   ERROR_CODE = "HOSTAGE_REMOVAL_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "An enemy owner cannot be removed from the team_name's hostage list."
 
-#======================# SEARCH EXCEPTIONS #======================#  
+#======================# SEARCH EXCEPTION #======================#
 
 
 

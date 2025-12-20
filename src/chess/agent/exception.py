@@ -10,20 +10,20 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    #======================# AGENT EXCEPTION SUPER CLASS #======================#
+    #======================# AGENT EXCEPTION #======================#
     "AgentException",
 ]
 
 
-#======================# AGENT EXCEPTION SUPER CLASS #======================#
+#======================# AGENT EXCEPTION #======================#
 class AgentException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an PlayerAgent's organic fields or methods run into a condition that
+    1.  Parent of exception raised when an PlayerAgent's organic fields or methods run into a condition that
         leads to an operation failing.
-    2.  Parent of exceptions raised by PlayerAgent Builders and Validators or any other classes that highly
+    2.  Parent of exception raised by PlayerAgent Builders and Validators or any other classes that highly
         cohere with PlayerAgent objects.
     3.  Catchall for PlayerAgent failure states that are not covered by a lower level PlayerAgent exception.
 
@@ -41,7 +41,7 @@ class AgentException(ChessException):
 
 
 #
-# #======================# PLAYER_AGENT_HISTORY EXCEPTIONS #======================#
+# #======================# PLAYER_AGENT_HISTORY EXCEPTION #======================#
 # class PlayerAgentHistoryException(PlayerAgentException):
 #   """Team list specific errors."""
 #   ERROR_CODE = "PLAYERAGENT_HISTORY_ERROR"

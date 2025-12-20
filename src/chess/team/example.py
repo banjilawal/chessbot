@@ -273,13 +273,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of `Team` objects.
 
-***Limitations***: It does not contain any logic for raising these exceptions; that responsibility
+***Limitations***: It does not contain any logic for raising these exception; that responsibility
     `Team`, `TeamBuilder`, and `TeamValidator`
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the `Team` class has an exception specific to its possible
@@ -299,12 +299,12 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `TeamException`,
+See the list of exception in the `__all__` list following (e.g., `TeamException`,
 `NullTeamException`, `InvalidTeamException`, ).
 """
 

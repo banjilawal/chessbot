@@ -13,32 +13,34 @@ from chess.catalog import (
     CatalogContext, CatalogContextBuildFailedException, NoCatalogContextFlagException,
     ExcessiveCatalogContextFlagsException
 )
-from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter, NumberValidator
+from chess.system import (
+    BuildResult, Builder, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter,
+    NotNegativeNumberValidator,
+)
 
 
 class CatalogContextBuilder(Builder[CatalogContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
-     1.  Produce CatalogContext instances whose integrity is always guaranteed.
-     2.  Manage construction of CatalogContext instances that can be used safely by the client.
-     3.  Ensure params for CatalogContext creation have met the application's safety contract.
-     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    # RESPONSIBILITIES:
+        1.  Produce CatalogContext instances whose integrity is always guaranteed.
+        2.  Manage construction of CatalogContext instances that can be used safely by the client.
+        3.  Ensure params for CatalogContext creation have met the application's safety contract.
+        4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
-         * Builder
+    # PARENT:
+        *   Builder
 
-     # PROVIDES:
-     None
+    # PROVIDES:
+    None
 
-     # LOCAL ATTRIBUTES:
-     None
+    # LOCAL ATTRIBUTES:
+    None
 
-     # INHERITED ATTRIBUTES:
-     None
-     """
-    
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
@@ -48,24 +50,25 @@ class CatalogContextBuilder(Builder[CatalogContext]):
             ransom: Optional[int] = None,
             designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
-            number_validator: NumberValidator = NumberValidator(),
+            not_negative_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
     ) -> BuildResult[CatalogContext]:
         """
         # Action:
             1.  Confirm that only one in the (name, designation, quota, ransom) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service or validator.
-            3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an CatalogContext and return in a BuildResult.
+            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            3.  If all checks pass build a CatalogContext and send in a BuildResult. Else, send an exception
+                in the BuildResult.
 
         # Parameters:
-        Only one these must be provided:
-            *   quota (Optional[str])
-            *   designation (Optional[str])
-            *   ransom (Optional[GameRansom])
-
-        These Parameters must be provided:
-            *   number_validator (NumberValidator)
-            *   identity_service (IdentityService)
+            Only one these must be provided:
+                *   name (Optional[str])
+                *   quota (Optional[str])
+                *   designation (Optional[str])
+                *   ransom (Optional[GameRansom])
+    
+            These Parameters must be provided:
+                *   not_negative_validator (NumberValidator)
+                *   identity_service (IdentityService)
 
         # Returns:
         BuildResult[CatalogContext] containing either:
@@ -73,9 +76,9 @@ class CatalogContextBuilder(Builder[CatalogContext]):
             - On failure: Exception.
 
         # Raises:
-            *   NoCatalogContextFlagException
-            *   ExcessiveCatalogContextFlagsException
+            *   ZeroCatalogContextFlagsException
             *   CatalogContextBuildFailedException
+            *   ExcessiveCatalogContextFlagsException
         """
         method = "CatalogContextBuilder.build"
         try:
@@ -113,7 +116,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
             
             # Build the quota CatalogContext if its flag is enabled.
             if quota is not None:
-                validation = number_validator.validate(candidate=quota)
+                validation = not_negative_validator.validate(candidate=quota)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a quota_CatalogContext in the BuildResult.
@@ -121,14 +124,18 @@ class CatalogContextBuilder(Builder[CatalogContext]):
             
             # Build the ransom CatalogContext if its flag is enabled.
             if ransom is not None:
-                validation = number_validator.validate(candidate=ransom)
+                validation = not_negative_validator.validate(candidate=ransom)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a ransom_CatalogContext in the BuildResult.
                 return BuildResult.success(CatalogContext(ransom=ransom))
-        
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception in a
-        # CatalogContextBuildFailedException then, send the exception chain a BuildResult.failure.
+            
+            # As a failsafe send a buildResult failure if a context path was missed.
+            BuildResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+        # Finally, if there is an unhandled exception Wrap a CatalogContextBuildFailedException around it then
+        # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                 CatalogContextBuildFailedException(

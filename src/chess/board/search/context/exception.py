@@ -11,12 +11,12 @@ from chess.board import BoardException
 from chess.system import ContextException
 
 __all__ = [
-    # ======================# BOARD_CONTEXT EXCEPTION SUPER CLASS #======================#
+    # ======================# BOARD_CONTEXT EXCEPTION #======================#
     "BoardContextException",
 ]
 
 
-# ======================# BOARD_CONTEXT EXCEPTION SUPER CLASS #======================#
+# ======================# BOARD_CONTEXT EXCEPTION #======================#
 class BoardContextException(BoardException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

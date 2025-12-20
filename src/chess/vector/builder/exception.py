@@ -12,12 +12,12 @@ from chess.system import BuildFailedException
 
 
 __all__ = [
-    #======================# VECTOR BUILD EXCEPTIONS #======================#
+    #======================# VECTOR BUILD EXCEPTION #======================#
     "VectorBuildFailedException",
 ]
 
 
-#======================# VECTOR BUILD EXCEPTIONS #======================#
+#======================# VECTOR BUILD EXCEPTION #======================#
 class VectorBuildFailedException(VectorException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by VectorBuilder 

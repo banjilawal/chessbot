@@ -1,7 +1,7 @@
-# src/chess/vector/validator/exception/exception.py
+# src/chess/vector/number_bounds_validator/exception/exception.py
 
 """
-Module: chess.vector.validator.exception.exception
+Module: chess.vector.number_bounds_validator.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -15,7 +15,7 @@ __all__ = [
     "InvalidVectorException",
 ]
 
-#======================# VECTOR VALIDATION EXCEPTIONS #======================#
+#======================# VECTOR VALIDATION EXCEPTION #======================#
 
 class InvalidVectorException(VectorException, ValidationException):
     """Catchall Exception for VectorValidator when a candidate fails a sanity check.""""""

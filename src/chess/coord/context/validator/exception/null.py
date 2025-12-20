@@ -1,7 +1,7 @@
-# src/chess/coord/context/validator/exception/null/exception.py
+# src/chess/coord/context/number_bounds_validator/exception/null/exception.py
 
 """
-Module: chess.coord.context.validator.exception.null.exception
+Module: chess.coord.context.number_bounds_validator.exception.null.exception
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

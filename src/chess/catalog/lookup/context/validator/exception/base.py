@@ -1,4 +1,4 @@
-# src/chess/catalog/lookup/context/validator/exception/base.py
+# src/chess/catalog/lookup/context/number_bounds_validator/exception/base.py
 
 """
 Module: chess.catalog.lookup.context.exception.base

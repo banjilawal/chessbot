@@ -10,18 +10,18 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    # ======================# BUILDER EXCEPTION SUPER CLASS #======================#
+    # ======================# BUILDER EXCEPTION #======================#
     "BuilderException",
 ]
 
 
-# ======================# BUILDER EXCEPTION SUPER CLASS #======================#
+# ======================# BUILDER EXCEPTION #======================#
 class BuilderException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by Builder objects
+    1.  Parent of exception raised by Builder objects
     3.  Catchall for Builder failure states that are not covered by a lower level Builder exception.
   
     # PARENT:

@@ -1,7 +1,7 @@
-# src/chess/game/context/validator/validator.py
+# src/chess/game/context/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.game.context.validator.validator
+Module: chess.game.context.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -50,7 +50,7 @@ class GameContextValidator(Validator[GameContext]):
         """
         # Action:
             1.  Confirm that only one in the (id, player_agent) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
+            2.  Certify the not-null attribute is safe using the appropriate entity_service and number_bounds_validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success send the verified GameContext in a ValidationResult.
 
@@ -100,7 +100,6 @@ class GameContextValidator(Validator[GameContext]):
                 return ValidationResult.failure(
                     ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            
             # Make sure a search target exists in the context. Cannot perform a search without an
             
             # property-value pair.
@@ -132,7 +131,7 @@ class GameContextValidator(Validator[GameContext]):
                 # On validation success return the agent_game_context in a ValidationResult.
                 return ValidationResult.success(context)
             
-        # Finally, for unhandled exceptions, wrap it inside an InvalidGameContextException. Then send the
+        # Finally, for unhandled exception, wrap it inside an InvalidGameContextException. Then send the
         # exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

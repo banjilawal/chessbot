@@ -1,7 +1,7 @@
-# src/chess/catalog/validator/validator.py
+# src/chess/catalog/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.catalog.validator.validator
+Module: chess.catalog.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -49,9 +49,9 @@ class CatalogValidator(Validator[Catalog]):
         
         *   verify_designation_in_spec(candidate: Any, text_validator: TextValidator) -> ValidationResult[str]:
         
-        *   verify_ransom_in_spec(candidate: Any, number_validator: NumberValidator) -> ValidationResult[int]:
+        *   verify_ransom_in_spec(candidate: Any, not_negative_validator: NumberValidator) -> ValidationResult[int]:
         
-        *   verify_quota_in_spec(candidate: Any, number_validator: NumberValidator) -> ValidationResult[int]:
+        *   verify_quota_in_spec(candidate: Any, not_negative_validator: NumberValidator) -> ValidationResult[int]:
         
     # INSTANCE METHODS:
     None
@@ -98,7 +98,7 @@ class CatalogValidator(Validator[Catalog]):
             return ValidationResult.success(cast(Catalog, candidate))
         
         # Finally, if there is an unhandled exception Wrap an InvalidPieceException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCatalogException(ex=ex, message=f"{method} {InvalidCatalogException.DEFAULT_MESSAGE}")
@@ -146,7 +146,7 @@ class CatalogValidator(Validator[Catalog]):
             return ValidationResult.success(payload=id)
             
             # Finally, if there is an unhandled exception Wrap a InvalidRankIdException around it
-            # then return the exceptions inside a ValidationResult.
+            # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRankIdException(ex=ex, message=f"{method}: {InvalidRankIdException.DEFAULT_MESSAGE}")
@@ -194,7 +194,7 @@ class CatalogValidator(Validator[Catalog]):
             return ValidationResult.success(payload=name)
             
             # Finally, if there is an unhandled exception Wrap a InvalidRankNameException around it
-            # then return the exceptions inside a ValidationResult.
+            # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRankNameException(ex=ex, message=f"{method} {InvalidRankNameException.DEFAULT_MESSAGE}")
@@ -209,13 +209,13 @@ class CatalogValidator(Validator[Catalog]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe number using number_validator. If safe get the number. Else return failure.
+        1.  Verify candidate is a safe number using not_negative_validator. If safe get the number. Else return failure.
         2.  If number not in Catalog.allowed_ransoms return a failed validation result.
         3.  If all checks pass the number in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -242,7 +242,7 @@ class CatalogValidator(Validator[Catalog]):
             return ValidationResult.success(payload=ransom)
             
             # Finally, if there is an unhandled exception Wrap a InvalidRankRansomException around it
-            # then return the exceptions inside a ValidationResult.
+            # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRankRansomException(ex=ex, message=f"{method}: {InvalidRankRansomException.DEFAULT_MESSAGE}")
@@ -290,7 +290,7 @@ class CatalogValidator(Validator[Catalog]):
             return ValidationResult.success(payload=designation)
             
             # Finally, if there is an unhandled exception Wrap an InvalidRankDesignationException around it
-            # then return the exceptions inside a ValidationResult.
+            # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRankDesignationException(
@@ -307,13 +307,13 @@ class CatalogValidator(Validator[Catalog]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Verify candidate is a safe number using number_validator. If safe get the number. Else return failure.
+        1.  Verify candidate is a safe number using not_negative_validator. If safe get the number. Else return failure.
         2.  If number not in Catalog.allowed_quotas return a failed validation result.
         3.  If all checks pass the number in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:
@@ -340,7 +340,7 @@ class CatalogValidator(Validator[Catalog]):
             return ValidationResult.success(payload=team_quota)
             
             # Finally, if there is an unhandled exception Wrap an InvalidTeamQuotaException around it
-            # then return the exceptions inside a ValidationResult.
+            # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidTeamQuotaException(ex=ex, message=f"{method}: {InvalidTeamQuotaException.DEFAULT_MESSAGE}")

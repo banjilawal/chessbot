@@ -11,19 +11,19 @@ from chess.team import TeamContextException
 from chess.system import BuildFailedException
 
 __all__ = [
-    #======================# TEAM_CONTEXT BUILD EXCEPTIONS #======================#
+    #======================# TEAM_CONTEXT BUILD EXCEPTION #======================#
     "TeamContextBuildFailedException",
 ]
 
 
-# ======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
+# ======================# TEAM_SCHEMA_CONTEXT BUILD EXCEPTION #======================#
 class TeamContextBuildFailedException(TeamContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during TeamContext build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an TeamContextBuilder method.
+    1.  Parent of exception raised during TeamContext build process.
+    2.  Wraps unhandled exception that hit the try-finally block of an TeamContextBuilder method.
 
     # PARENT:
         *   TeamContextException

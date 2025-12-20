@@ -41,7 +41,7 @@ class DomainOriginService(EntityService[DomainOrigin]):
             *   id (nt)
             *   designation (str)
             *   builder (DomainOriginFactory)
-            *   validator (DomainOriginValidator)
+            *   number_bounds_validator (DomainOriginValidator)
 
         # Returns:
         None

@@ -1,7 +1,7 @@
-# src/chess/schema/validator/exception/base.py
+# src/chess/schema/number_bounds_validator/exception/base.py
 
 """
-Module: chess.schema.validator.exception.base
+Module: chess.schema.number_bounds_validator.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.schema import InvalidSchemaException
 from chess.system import BoundsException, GameColorException
 
 __all__ = [
-    # ======================# SCHEMA COLOR BOUNDS EXCEPTIONS #======================#
+    # ======================# SCHEMA COLOR BOUNDS EXCEPTION #======================#
     "SchemaColorBoundsException",
 ]
 
 
-# ======================# SCHEMA COLOR BOUNDS EXCEPTIONS #======================#
+# ======================# SCHEMA COLOR BOUNDS EXCEPTION #======================#
 class SchemaColorBoundsException(InvalidSchemaException, BoundsException, GameColorException):
     """
     # ROLE: Error Tracing, Debugging

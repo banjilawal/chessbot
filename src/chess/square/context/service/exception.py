@@ -16,7 +16,7 @@ __all__ = [
 
 class SquareContextServiceException(FinderException):
     """
-     Super class of exceptions raised by SquareContextService objects. Do not use directly. Subclasses give
+     Super class of exception raised by SquareContextService objects. Do not use directly. Subclasses give
      precise, fined-grained, debugging info.
      """
     ERROR_CODE = "SQUARE_CONTEXT_SERVICE_ERROR"

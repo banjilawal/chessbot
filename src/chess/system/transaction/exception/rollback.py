@@ -21,7 +21,7 @@ class RolledBackTransactionException(TransactionException, RollbackException):
   # ROLE: Exception Wrapper, Catchall Exception
 
   # RESPONSIBILITIES:
-  1.  Parent of exceptions raised when a Transaction is rolled back to its last checkpoint.
+  1.  Parent of exception raised when a Transaction is rolled back to its last checkpoint.
 
   # PARENT:
       *   TransactionException

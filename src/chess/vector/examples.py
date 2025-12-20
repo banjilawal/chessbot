@@ -262,13 +262,13 @@ Example:
 #
 #
 # ## EXCEPTION CLASSES
-# This package defines team_name dataset of specific exceptions for issues encountered when
+# This package defines team_name dataset of specific exception for issues encountered when
 # working with `Vector` instances. The primary goal is to provide team_name clean and
 # consistent way to handle system vector-related errors, such as validation values or
 # out-of-bounds components. This granular approach helps developers quickly
 # diagnose and resolve issues by pinpointing the exact nature of the problem.
 #
-# ### CORE EXCEPTIONS
+# ### CORE EXCEPTION
 # * `NullVectorException`
 # * `XComponentNullException`
 # * `NullYComponentException`
@@ -276,7 +276,7 @@ Example:
 # * `VectorAboveBoundsException`
 #
 # ## EXAMPLE EXCEPTION USAGE
-# These exceptions can be imported and raised within vector-related code to enforce
+# These exception can be imported and raised within vector-related code to enforce
 # entity_service integrity. They allow calling code to use specific `try...except` blocks
 # to handle different error conditions gracefully. For example:
 #
@@ -305,16 +305,16 @@ Example:
 # Finder
 #
 # # EXPORTS
-# This package exposes core classes and all exceptions from its sub-modules:
+# This package exposes core classes and all exception from its sub-modules:
 #   - `CLASS>ANE`: <LINE_ABOUT_CLASS_PURPOSE_HERE>.
-#   - All exceptions from `rollback_exception` package.
+#   - All exception from `rollback_exception` package.
 #
 # # SUB-PACKAGES
-#   - `.rollback_exception`: Defines all custom exceptions for occupation rollback.
+#   - `.rollback_exception`: Defines all custom exception for occupation rollback.
 #   - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 #
 # # HOW TO IMPORT
-# DO NOT reference submodules directly. Import all core classes and exceptions from this `board_validator` package level
+# DO NOT reference submodules directly. Import all core classes and exception from this `board_validator` package level
 # (e.g., `from chess.board_validator import InvalidBoardException`). See USAGE EXAMPLES section
 #
 # # USAGE EXAMPLES
@@ -350,13 +350,13 @@ Example:
 # >>> team_name = Team(visitor_team_id=1, player_agent=white_team_commander, team_schema=Schema.WHITE)
 # >>> validate = TeamValidator.validate(team_name)
 # 
-# ## TEAM EXCEPTIONS
-# This package defines specific exceptions for issues encountered when interacting with `Team` objects.
-# The exceptions are designed to pinpoint the exact nature of an err, such as team_name validation reference, team_name
+# ## TEAM EXCEPTION
+# This package defines specific exception for issues encountered when interacting with `Team` objects.
+# The exception are designed to pinpoint the exact nature of an err, such as team_name validation reference, team_name
 # failed notification, or an invalid configuration. This granular approach helps developers to quickly diagnose
 # and resolve team_name-related issues.
 # 
-# ### CORE EXCEPTIONS
+# ### CORE EXCEPTION
 # * `NullTeamException`: Raised when team_name `Team` reference is unexpectedly `None`.
 # * `AddTeamMemberException`: Raised when an attempt to add team_name discover to team_name team_name fails, for example, if the team_name is full.
 # * `InvalidTeamException`: Raised when team_name `Team` fails to meet its validate criteria.
@@ -364,7 +364,7 @@ Example:
 # * `InvalidTeamAssignmentException`: Raised when team_name `Team`'s properties conflict with another `Team`'s, such as having the same ID.
 # 
 # ### EXCEPTION USAGE EXAMPLES
-# These exceptions can be imported and raised from within the team_name-related code to enforce entity_service integrity.
+# These exception can be imported and raised from within the team_name-related code to enforce entity_service integrity.
 # 
 # >>> from chess.team_name import NullTeamException
 # >>>

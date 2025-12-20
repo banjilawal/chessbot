@@ -55,7 +55,7 @@ class TeamBuilder(Builder[Team]):
         """
         # ACTION:
         1.  Check ID safety with IdentityService.validate_id.
-        2.  Check schema correctness with SchemaLookup's validator.
+        2.  Check schema correctness with SchemaLookup's number_bounds_validator.
         3.  Check player_agent safety with PlayAgentService.validate_player.
         4.  If any check fails, return the exception inside a BuildResult.
         5.  When all checks create a new Team object.
@@ -125,7 +125,7 @@ class TeamBuilder(Builder[Team]):
             # Send the successfully built and registered Team object inside a BuildResult.
             return BuildResult.success(team)
         
-        # Finally return a BuildResult containing any unhandled exceptions insided an
+        # Finally return a BuildResult containing any unhandled exception insided an
         # TeamBuildFailedException
         except Exception as ex:
             return BuildResult.failure(
@@ -169,7 +169,7 @@ class TeamBuilder(Builder[Team]):
             if search.is_empty:
                 return agent.team_assignments.add_team(team)
         
-        # Finally return a InsertionResult containing any unhandled exceptions insided an
+        # Finally return a InsertionResult containing any unhandled exception insided an
         # TeamInsertionFailedException
         except Exception as ex:
             return InsertionResult.failure(
@@ -218,7 +218,7 @@ class TeamBuilder(Builder[Team]):
             if search.is_empty:
                 return arena.team_service.add_team(team)
             
-        # Finally return a InsertionResult containing any unhandled exceptions insided an
+        # Finally return a InsertionResult containing any unhandled exception insided an
         # TeamInsertionFailedException
         except Exception as ex:
             return InsertionResult.failure(

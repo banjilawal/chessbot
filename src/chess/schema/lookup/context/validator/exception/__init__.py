@@ -1,7 +1,7 @@
-# src/chess/schema/lookup/context/validator/exception/__init__.py
+# src/chess/schema/lookup/context/number_bounds_validator/exception/__init__.py
 
 """
-Module: chess.schema.lookup.context.validator.exception.__init__
+Module: chess.schema.lookup.context.number_bounds_validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -12,4 +12,4 @@ version: 1.0.0
 # Modules
 from .null import NullSchemaContextException
 from .base import InvalidSchemaContextException
-from .flag import NoSchemaContextFlagException, ExcessiveSchemaContextFlagsException
+from .flag import ZeroSchemaContextFlagsException, ExcessiveSchemaContextFlagsException

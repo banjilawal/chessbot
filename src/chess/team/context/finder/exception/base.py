@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import FinderException
 
 __all__ = [
-    #======================# TEAM_FINDER EXCEPTIONS #======================#
+    #======================# TEAM_FINDER EXCEPTION #======================#
     "TeamFinderException",
 ]
 
 
-#======================# TEAM_FINDER EXCEPTIONS #======================#
+#======================# TEAM_FINDER EXCEPTION #======================#
 class TeamFinderException(FinderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

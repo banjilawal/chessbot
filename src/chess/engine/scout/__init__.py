@@ -13,16 +13,16 @@ version: 1.0.0
 <WRITE_SINGLE_PARAGRAPH_HERE_IF_NECESSARY>
 
  # EXPORTS
-This package exposes core classes and all exceptions from its sub-modules:
+This package exposes core classes and all exception from its sub-modules:
   - `CLASS>ANE`: <LINE_ABOUT_CLASS_PURPOSE_HERE>.
-  - All exceptions from `rollback_exception` package.
+  - All exception from `rollback_exception` package.
 
 # SUB-PACKAGES
-  - `.rollback_exception`: Defines all custom exceptions for travel rollback.
+  - `.rollback_exception`: Defines all custom exception for travel rollback.
   - `.ADDITIONAL_SUB_PACKAGE`: Logic for capturing, promoting, castling, and moving pieces on `Board`.
 
 # HOW TO IMPORT
-DO NOT reference submodules directly. Import all core classes and exceptions from this `board_validator` package level
+DO NOT reference submodules directly. Import all core classes and exception from this `board_validator` package level
 (e.g., `from chess.board_validator import InvalidBoardException`). See USAGE EXAMPLES section
 
 # USAGE EXAMPLES

@@ -1,7 +1,7 @@
-# src/chess/coord/validator.py
+# src/chess/coord/number_bounds_validator.py
 
 """
-Module: chess.coord.validator
+Module: chess.coord.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-08-12
 version: 1.0.0

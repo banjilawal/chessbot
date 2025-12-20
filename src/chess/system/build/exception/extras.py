@@ -10,17 +10,17 @@ version: 1.0.0
 from chess.system import BuilderException, NullException
 
 __all__ = [
-#======================# MUTUAL EXCLUSION EXCEPTIONS #======================#
+#======================# MUTUAL EXCLUSION EXCEPTION #======================#
   "AllParamsSetNullException",
   "MutuallyExclusiveParamsException",
   
-#======================# BUILD_OPTIONS EXCEPTIONS #======================#
+#======================# BUILD_OPTIONS EXCEPTION #======================#
   "NoBuildOptionSelectedException",
   "BuildOptionSelectionTooLargeException",
 ]
 
 
-#======================# MUTUAL EXCLUSION EXCEPTIONS #======================#
+#======================# MUTUAL EXCLUSION EXCEPTION #======================#
 class AllParamsSetNullException(BuilderException, NullException):
   """
   Raised if all builder params cannot be validation.
@@ -36,7 +36,7 @@ class MutuallyExclusiveParamsException(BuilderException):
   DEFAULT_MESSAGE = "Cannot have more than one param set validation."
 
 
-#======================# BUILD_OPTIONS EXCEPTIONS #======================#
+#======================# BUILD_OPTIONS EXCEPTION #======================#
 class NoBuildOptionSelectedException(BuilderException):
   """
   Raised when none of the possible options required to builder an object are selected.

@@ -1,7 +1,7 @@
-# src/chess/board/validator/__init__.py
+# src/chess/board/number_bounds_validator/__init__.py
 
 """
-Module: chess.board.validator.__init__
+Module: chess.board.number_bounds_validator.__init__
 Author: Banji Lawal
 Created: 2025-11-21
 version: 1.0.0
@@ -47,8 +47,8 @@ class BoardValidator(Validator[Board]):
 
         # Parameters:
           * candidate (Any): Object to verify is a Domain.
-          * piece_validator (type[PieceValidator]): Injected into validator.
-          * validator (type[SquareValidator]): verifies the relationship between the
+          * piece_validator (type[PieceValidator]): Injected into number_bounds_validator.
+          * number_bounds_validator (type[SquareValidator]): verifies the relationship between the
                 Domain's owning Piece and Square.
 
         # Returns:

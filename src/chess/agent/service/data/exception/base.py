@@ -10,18 +10,18 @@ version: 1.0.0
 from chess.system import DataServiceException
 
 __all__ = [
-    #======================# AGENT_DATA_SERVICE EXCEPTIONS #======================#
+    #======================# AGENT_DATA_SERVICE EXCEPTION #======================#
     "AgentDataServiceException",
 ]
 
 
-#======================# AGENT_DATA_SERVICE EXCEPTIONS #======================#
+#======================# AGENT_DATA_SERVICE EXCEPTION #======================#
 class AgentDataServiceException(DataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by either AgentDataService objects.
+    1.  Parent of exception raised by either AgentDataService objects.
     2.  Catchall for AgentDataService failure states that are not covered by a lower level
         AgentDataService exception.
 

@@ -98,7 +98,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     `AutoOccupationException`: if target already occupies the square
 #     `KingAttackException`: if the target square is occupied by an enemy occupation
 #
-#     `InvalidAttackEventException`: Wraps any preceding exceptions
+#     `InvalidAttackEventException`: Wraps any preceding exception
 #   """
 #   method = "KingCheckEvent.validate"
 #
@@ -142,7 +142,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       f"{method}: {InvalidAttackEventException.DEFAULT_MESSAGE}"
 #     ) from e
 #
-#   # This block catches any unexpected exceptions
+#   # This block catches any unexpected exception
 #   # You might want to log the error here before re-raising
 #   except Exception as e:
 #     raise InvalidAttackEventException(f"An unexpected error occurred during validate: {e}") from e
@@ -323,7 +323,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #   """
 #   Transfers `Piece` occupying`actor_square` to `directive.blocked_square` leaving `actor_square` empty.
 #   `Traveltransaction.execute` is the single entry point to `_switch_squares`. Before `_switch_squares`
-#   was called `execute_directive`: validated the parameters, handled exceptions, and confirmed
+#   was called `execute_directive`: validated the parameters, handled exception, and confirmed
 #   `directive.blocked_square` contained either
 #     * A friendly owner blocking `actor_candidate` from `blocked_square`
 #     * An enemy occupation. Kings cannot be captured, only checked or checkmated.

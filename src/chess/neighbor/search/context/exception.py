@@ -12,7 +12,7 @@ from chess.system import ContextException, NullException, BuildFailedException, 
 __all__ = [
     'VisitationSearchContextException',
 
-    #======= SEARCH_CONTEXT VALIDATION EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT VALIDATION EXCEPTION =======#
     'NullVisitationSearchContextException',
     'InvalidVisitationSearchContextException',
     'ZeroVisitationSearchParamsException',
@@ -20,21 +20,21 @@ __all__ = [
     'VisitationRansomParamBoundsException',
     'VisitationInvalidRankNameParamException',
 
-    #======= SEARCH_CONTEXT BUILD EXCEPTIONS =======#
+    #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
     'VisitationSearchContextBuildFailedException',
 ]
 
 
 class VisitationSearchContextException(ContextException):
     """
-    Super class for exceptions raised by VisitationSearchContext objects. DO NOT
+    Super class for exception raised by VisitationSearchContext objects. DO NOT
     USE DIRECTLY. Subclasses give more useful debugging messages.
     """
     ERROR_CODE = "VISITATION_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "VisitationSearchContext raised an exception."
 
 
-# #======================#   SEARCH_CONTEXT VALIDATION EXCEPTIONS #======================# 
+# #======================#   SEARCH_CONTEXT VALIDATION EXCEPTION #======================#
 class NullVisitationSearchContextException(VisitationSearchContextException, NullException):
     """
     Raised if an entity, method, or operation requires team_name visitationSearchContext but
@@ -47,7 +47,7 @@ class NullVisitationSearchContextException(VisitationSearchContextException, Nul
 class InvalidVisitationSearchContextException(VisitationSearchContextException, ValidationException):
     """
     Raised by visitationSearchContextBValidator if visitationSearchContext fails sanity checks. Exists primarily to
-    catch all exceptions raised validating an existing visitationSearchContext
+    catch all exception raised validating an existing visitationSearchContext
     """
     ERROR_CODE = "VISITATION_SEARCH_CONTEXT_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "VisitationSearchContext validation failed."
@@ -90,11 +90,11 @@ class VisitationInvalidRankNameParamException(VisitationSearchContextException):
   DEFAULT_MESSAGE = "The bounds visitor_name is not recognized. It cannot be used in VisitationSearchContext."
 
 
-# #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTIONS #======================# 
+# #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTION #======================#
 class VisitationSearchContextBuildFailedException(VisitationSearchContextException, BuildFailedException):
     """
     Raised when VisitationSearchContextBuilder encounters an error while building team_name team_name.
-    Exists primarily to catch all exceptions raised builder team_name new visitationSearchContext
+    Exists primarily to catch all exception raised builder team_name new visitationSearchContext
     """
     ERROR_CODE = "VISITATION_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "VisitationSearchContext build failed."

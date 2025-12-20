@@ -159,7 +159,7 @@ Raises:
   `NullDiscoverySearchContextProfileException`: if `team_schema` is validation
   `InvalidCommanderAssignmentException`: if the assigned player_agent does not consistency the validated player_agent
   `RelationshipException`: if the bidirectional relationship between DiscoverySearchContext and PlayerAgent is broken
-  `InvalidDiscoverySearchContextException`: Wraps any preceding exceptions
+  `InvalidDiscoverySearchContextException`: Wraps any preceding exception
 """
 # src/chess/discoverySearchContext/discoverySearchContext.py
 """
@@ -286,13 +286,13 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **DiscoverySearchContext objects**. It handles boundary checks (row/column)
-limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exception; that responsibility
 falls to the `DiscoverySearchContextValidator` and `DiscoverySearchContextBuilder`processes.
 
 THEME:
 -----
 **Comprehensive Domain Error Catalog.** The central theme is to provide team_name
-highly granular and hierarchical set of exceptions, ensuring that callers can
+highly granular and hierarchical set of exception, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `DiscoverySearchContextException`). This enables precise error
 logging and handling throughout the system.
@@ -300,7 +300,7 @@ logging and handling throughout the system.
 PURPOSE:
 -------
 To serve as the **centralized error dictionary** for the `DiscoverySearchContext` graph.
-It abstracts underlying Python exceptions into graph-specific, custom error types
+It abstracts underlying Python exception into graph-specific, custom error types
 to improve code clarity and facilitate robust error handling within the chess engine.
 
 DEPENDENCIES:
@@ -308,11 +308,11 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `DiscoverySearchContextException`,
+See the list of exception in the `__all__` list following (e.g., `DiscoverySearchContextException`,
 `NullDiscoverySearchContextException`, `RowAboveBoundsException`).
 """

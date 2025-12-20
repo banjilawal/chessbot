@@ -10,14 +10,14 @@ version: 1.0.0
 from chess.system import InvalidTextException, NullException
 
 __all__ = [
-#======================# ID VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# ID VALIDATION EXCEPTION #======================#
     "InvalidIdException",
 #======================# ID VALIDATION SUB CLASSES #======================#
     "IdNullException",
     "NegativeIdException",
 ]
 
-#======================# ID VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# ID VALIDATION EXCEPTION #======================#
 class InvalidIdException(InvalidTextException):
     """Catchall Exception for IdValidator when a candidate fails a sanity check."""
     ERROR_CODE = "ID_VALIDATION_ERROR"

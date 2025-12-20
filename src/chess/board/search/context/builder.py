@@ -17,20 +17,23 @@ class BoardContextBuilder(Builder[BoardContext]):
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-    1.  Manage construction of BoardSearch instances that can be used safely by the client.
-    2.  Ensure params for BoardSearch creation have met the application's safety contract.
-    3.  Provide pluggable factories for creating different TeamSearchContext products.
+    1.  Produce BoardContext instances whose integrity is always guaranteed.
+    2.  Manage construction of BoardContext instances that can be used safely by the client.
+    3.  Ensure params for BoardContext creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
+    # PARENT:
+        *   Builder
 
     # PROVIDES:
-    ValidationResult[TeamSearchContext] containing either:
-        - On success:   TeamSearchContext in the payload.
-        - On failure:   Exception.
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
@@ -42,17 +45,20 @@ class BoardContextBuilder(Builder[BoardContext]):
     ) -> BuildResult[BoardContext]:
         """
         # Action:
-            1.  Use dependency injected validators to verify correctness of parameters required to
-                builder a TeamSearchContext instance.
-            2.  If the parameters are safe the TeamSearchContext is built and returned.
+            1.  Confirm that only one in the (id, arena) tuple is not null.
+            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            3.  If all checks pass build a BoardContext and send in a BuildResult. Else, send an exception
+                in the BuildResult.
 
         # Parameters:
-            *   id (Optional[int]):                     Selected if searcher target is an id.
-            *   designation (Optional[str]):                   Selected if searcher target is a designation.
-            *   target (Optional[Coord]):                Selected if searcher target is a target.
-            *   id_validator (type[IdValidator]):       Validates an id-searcher-target
-            *   name_validator (type[NameValidator]):   Validates a designation-searcher-target
-            *   builder (type[CoordBuilder]):     Validates a target-searcher-target
+            Only one these must be provided:
+                *   id (Optional[int])
+                *   designation (Optional[str])
+                *   target (Optional[Coord])
+            These Parameters must be provided:
+                *   id_validator (type[IdValidator])
+                *   name_validator (type[NameValidator])
+                *   builder (type[CoordBuilder])
 
         # Returns:
         BuildResult[TeamSearchContext] containing either:
@@ -60,9 +66,9 @@ class BoardContextBuilder(Builder[BoardContext]):
             - On failure:   Exception.
 
         # Raises:
+            *   ZeroBoardContextFlagsException
             *   BoardContextBuildFailedException
-            *   NoBoardSearchOptionSelectedException
-            *   MoreThanOneBoardSearchOptionPickedException
+            *   ExcessiveBoardContextFlagsException
         """
         method = "BoardContextBuilder.builder"
         
@@ -93,7 +99,7 @@ class BoardContextBuilder(Builder[BoardContext]):
             
             # Build the arena BoardContext if its flag is enabled.
             if arena is not None:
-                validation = arena_service.validate_id(id)
+                validation = arena_service.validate.validator(candidate=arena)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return an id_BoardContext in the BuildResult.

@@ -45,7 +45,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       `AutoOccupationException`: if target already occupies the square
       `KingAttackException`: if the target square is occupied by an enemy occupation
 
-      `InvalidAttackEventException`: Wraps any preceding exceptions
+      `InvalidAttackEventException`: Wraps any preceding exception
     """
     method = "KingCheckEvent.validate"
 
@@ -89,7 +89,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
         f"{method}: {InvalidAttackEventException.DEFAULT_MESSAGE}"
       ) from e
 
-    # This block catches any unexpected exceptions
+    # This block catches any unexpected exception
     # You might want to log the error here before re-raising
     except Exception as e:
       raise InvalidAttackEventException(f"An unexpected error occurred during validate: {e}") from e

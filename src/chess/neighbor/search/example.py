@@ -12,7 +12,7 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's effects and actions cover exceptions raised by implementors of the `Finder` interface.
+The module's effects and actions cover exception raised by implementors of the `Finder` interface.
 
 # SECTION 3: Limitations
   1. Does not provide granular, precise information pertinent to debugging. The module's
@@ -32,14 +32,14 @@ The major theme influencing the modules design are
   1. Verify existing entities meet minimum requirements for use in the system.
   2. A description of an error condition, boundary violation, experienced or caused by an entity in
       the coord_stack_validator graph.
-  3. The root of a scalable, modular hierarchy for coord_stack_validator related exceptions.
+  3. The root of a scalable, modular hierarchy for coord_stack_validator related exception.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ChessException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `FinderException`,
+See the list of exception in the `__all__` list following (e.g., `FinderException`,
 `SearchParamException`, `RowAboveBoundsException`).
   * `FinderException`
   * `SearchParamException`

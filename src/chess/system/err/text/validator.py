@@ -1,4 +1,4 @@
-# src/chess/system/err/text/validator.py
+# src/chess/system/err/text/number_bounds_validator.py
 
 """
 Module: chess.system.err.text.validator_
@@ -77,7 +77,7 @@ class TextValidator(Validator[str]):
             # If no errors are detected return the text in ValidationResult.
             return ValidationResult.success(payload=text)
         # Finally, if there is an unhandled exception Wrap an InvalidNameException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidTextException(ex=ex, message=f"{method}: {InvalidTextException.DEFAULT_MESSAGE}")

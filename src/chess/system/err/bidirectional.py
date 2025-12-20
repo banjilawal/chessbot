@@ -10,16 +10,16 @@ version: 1.0.0
 from chess.system import ChessException
 
 ___all__ = [
-#======================# BOUNDS EXCEPTION SUPER CLASS #======================#
+#======================# BOUNDS EXCEPTION #======================#
     "BiDirectionalException",
 ]
 
 
-#======================# BI_DIRECTIONAL RELATIONSHIP EXCEPTION SUPER CLASS #======================#
+#======================# BI_DIRECTIONAL RELATIONSHIP EXCEPTION #======================#
 class BiDirectionalException(ChessException):
     """
     # INTRODUCTION:
-    There is a subtle difference between bidirectional and registration exceptions.
+    There is a subtle difference between bidirectional and registration exception.
     
     ## WHAT IS A BIDIRECTIONAL RELATIONSHIP?
     This is simply a relationship between two entities that does not involve a data set.

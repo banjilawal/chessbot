@@ -12,11 +12,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exceptions raised by `IdValidator`;
+The module's only covers exception raised by `IdValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidator` is responsible for the logic which raises these exceptions.
+       `IdValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -29,14 +29,14 @@ The major theme influencing the modules design are
 
 
 # SECTION 6 - Feature Delivery Mechanism:
-1. Exceptions specific to verifying ids.
+1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
+See the list of exception in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 
 # src/chess/vector/rollback_exception.py
@@ -52,13 +52,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+**Limitations** It does not contain any logic for raising these exception; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
@@ -78,12 +78,12 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+See the list of exception in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """
 
@@ -93,29 +93,29 @@ from chess.system import ChessException, NullException, BuildFailedException, Va
 __all__ = [
   'PromotionEventException',
 
-#====================== PROMOTION_EVENT VALIDATION EXCEPTIONS #======================#  
+#====================== PROMOTION_EVENT VALIDATION EXCEPTION #======================#
   'NullPromotionEventException',
   'InvalidPromotionEventException',
 
-#====================== PROMOTION_EVENT BUILD EXCEPTIONS #======================#  
+#====================== PROMOTION_EVENT BUILD EXCEPTION #======================#
   'PromotionEventBuildFailed',
 
-#====================== PROMOTION_TRANSACTION EXCEPTIONS #======================#  
+#====================== PROMOTION_TRANSACTION EXCEPTION #======================#
   'PromotionTransactionException',
   'NullPromotionTransactionException',
 ]
 
 class PromotionEventException(ChessException):
   """
-  Super class of exceptions organic to `PromotionEven` objects. DO NOT USE DIRECTLY. Subclasses give
+  Super class of exception organic to `PromotionEven` objects. DO NOT USE DIRECTLY. Subclasses give
   details useful for debugging. `PromotionEventException` exists primarily to allow catching all `PromotionEven`
-  exceptions.
+  exception.
   """
   ERROR_CODE = "PROMOTION_EVENT_ERROR"
   DEFAULT_MESSAGE = "PromotionEvent raised an exception."
 
 
-#======================# PROMOTION_EVENT VALIDATION EXCEPTIONS #======================#  
+#======================# PROMOTION_EVENT VALIDATION EXCEPTION #======================#
 class NullPromotionEventException(PromotionEventException, NullException):
   """Raised if an entity, method, or operation requires team_name `PromotionEvent` but gets null instead."""
   pass
@@ -128,7 +128,7 @@ class PawnPromotionOnlyException(PromotionEventException):
 class InvalidPromotionEventException(PromotionEventException, ValidationException):
   """
   Raised by PromotionEventValidator if team_name client fails sanity checks. Exists to catch all
-  exceptions raised validating an existing `PromotionEvent` candidate.
+  exception raised validating an existing `PromotionEvent` candidate.
   """
   ERROR_CODE = "PROMOTION_EVENT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "PromotionEvent validation failed."
@@ -142,7 +142,7 @@ class DoublePromotionException(PromotionEventException):
   DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again."
 
 
-#======================# PIECE PROMOTION EXCEPTIONS #======================#
+#======================# PIECE PROMOTION EXCEPTION #======================#
 
 
 
@@ -159,7 +159,7 @@ class DoublePromotionRolledBackException(RollBackException):
   )
 
 
-#======================# PIECE PROMOTION EXCEPTIONS #======================#
+#======================# PIECE PROMOTION EXCEPTION #======================#
 class DoublePromotionException(PieceException):
   """
   Raised when attempting promoting team_name owner already elevated to Queen bounds.
@@ -182,17 +182,17 @@ class DoublePromotionRolledBackException(PieceRollBackException):
   )
 
 
-#======================# PROMOTION_EVENT BUILD EXCEPTIONS #======================#  
+#======================# PROMOTION_EVENT BUILD EXCEPTION #======================#
 class PromotionEventBuildFailed(PromotionEventException, BuildFailedException):
   """
   Raised when `PromotionEventBuilder` crashed while building team_name new `PromotionEven`. Exists
-  primarily to catch all exceptions raised creating `PromotionEvent` objects.
+  primarily to catch all exception raised creating `PromotionEvent` objects.
   """
   ERROR_CODE = "PROMOTION_EVENT_BUILD_FAILED_ERROR"
   DEFAULT_MESSAGE = "PromotionEvent build failed."
 
 
-#======================# PROMOTION_TRANSACTION EXCEPTIONS #======================#  
+#======================# PROMOTION_TRANSACTION EXCEPTION #======================#
 class PromotionTransactionException(TransactionException):
   """
   Wraps any errors raised during the promotion's lifecycle.
@@ -218,13 +218,13 @@ SCOPE:
 -----
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of **Coord objects**. It handles boundary checks (row/column)
-limits and validation checks. It does not contain any logic for *raising* these exceptions; that responsibility
+limits and validation checks. It does not contain any logic for *raising* these exception; that responsibility
 falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
 **Comprehensive Domain Error Catalog.** The central theme is to provide team_name
-highly granular and hierarchical set of exceptions, ensuring that callers can
+highly granular and hierarchical set of exception, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `CoordException`). This enables precise error
 logging and handling throughout the system.
@@ -232,7 +232,7 @@ logging and handling throughout the system.
 PURPOSE:
 -------
 To serve as the **centralized error dictionary** for the `Coord` graph.
-It abstracts underlying Python exceptions into graph-specific, custom error types
+It abstracts underlying Python exception into graph-specific, custom error types
 to improve code clarity and facilitate robust error handling within the chess engine.
 
 DEPENDENCIES:
@@ -240,12 +240,12 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `ROW_SIZE`, `COLUMN_SIZE`
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `CoordException`,
+See the list of exception in the `__all__` list following (e.g., `CoordException`,
 `NullCoordException`, `RowAboveBoundsException`).
 """
 
@@ -256,18 +256,18 @@ __all__ = [
   'ActorException',
   'ActorRollBackException',
   
-  #======================# ACTOR VALIDATION EXCEPTIONS #======================#
+  #======================# ACTOR VALIDATION EXCEPTION #======================#
   'InvalidActorException',
   'ActorNotOnBoardException',
   'ActorPlacementRequiredException',
   
-  #======================# ACTOR ACTIVITY EXCEPTIONS #======================#
+  #======================# ACTOR ACTIVITY EXCEPTION #======================#
   'CapturedPieceCannotActException',
   'CapturedActorCannotAttackException',
   'CapturedActorCannotMoveException',
 
   
-  #======================# SUBJECT ACTIVITY EXCEPTIONS #======================#
+  #======================# SUBJECT ACTIVITY EXCEPTION #======================#
   'SubjectException',
   'InvalidSubjectException',
   'SubjectNotOnBoardException',
@@ -277,9 +277,9 @@ __all__ = [
 
 class ActorException(AttackException):
   """
-  Super class of all exceptions an actor_candidate object can raise. Do not use directly. Subclasses
+  Super class of all exception an actor_candidate object can raise. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
-  all owner exceptions
+  all owner exception
   """
   ERROR_CODE = "ACTOR_ERROR"
   DEFAULT_MESSAGE = "Actor raised an rollback_exception. Piece cannot act."
@@ -290,18 +290,18 @@ class ActorRollBackException(ActorException, RollbackException):
   Any inconsistencies team_name owner introduces into team_name notification need to be rolled back.
   This is the super class of team_name owner mutator rollback, methods, or fields that raise
   errors. Do not use directly. Subclasses give details useful for debugging. This class
-  exists primarily to allow catching all Piece exceptions that happen when team_name failed
+  exists primarily to allow catching all Piece exception that happen when team_name failed
   notification must be rolled back.
   """
   ERROR_CODE = "ACTOR_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = "Actor raised an rollback_exception. Transaction rolled back"
 
 
-#======================# ACTOR VALIDATION EXCEPTIONS #======================#
+#======================# ACTOR VALIDATION EXCEPTION #======================#
 class InvalidActorException(ActorException, InvalidAttackException):
   """
   Raised by ActorValidator if owner fails any conditions for acting on the board_validator.
-  Exists primarily to catch all exceptions raised validating an existing owner
+  Exists primarily to catch all exception raised validating an existing owner
   """
   ERROR_CODE = "ACTOR_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "Piece did not meet condition to act in the game."
@@ -323,7 +323,7 @@ class ActorPlacementRequiredException(ActorException):
   )
 
 
-#======================# ACTOR ACTIVITY EXCEPTIONS #======================#
+#======================# ACTOR ACTIVITY EXCEPTION #======================#
 class CapturedPieceCannotActException(ActorException):
   """
   A captured owner cannot actt.
@@ -359,7 +359,7 @@ class CapturedActorCannotScanException(ActorException):
 
 
 
-#======================# SUBJECT EXCEPTIONS #======================#
+#======================# SUBJECT EXCEPTION #======================#
 class SubjectException(AttackException):
   """
   SubjectException classes are raised on team_name owner acted upon. They are raised on the same errors as ActorException,

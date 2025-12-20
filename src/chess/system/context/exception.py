@@ -10,19 +10,19 @@ version: 1.0.0
 from chess.system import ChessException, BoundsException
 
 __all__ = [
-    #======================# CONTEXT EXCEPTIONS #======================#
+    #======================# CONTEXT EXCEPTION #======================#
     "ContextException",
     "ContextFlagCountException",
 ]
 
 
-#======================# CONTEXT EXCEPTIONS #======================#
+#======================# CONTEXT EXCEPTION #======================#
 class ContextException(ChessException):
     """
     # ROLE: Parent Exception
   
     # RESPONSIBILITIES:
-    1.  Super class of exceptions when a condition halts the normal flow of a Context object's operations.
+    1.  Super class of exception when a condition halts the normal flow of a Context object's operations.
   
     # PROVIDES:
     ContextException

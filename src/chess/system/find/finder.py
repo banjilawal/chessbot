@@ -56,7 +56,7 @@ class Finder(ABC, Generic[D]):
       Returns:
           SearchResult[List[R]] or Void
       Raise:
-        No exceptions. Subclasses raise exceptions.
+        No exception. Subclasses raise exception.
       """
       pass
 

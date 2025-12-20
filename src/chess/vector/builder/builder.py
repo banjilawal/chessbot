@@ -52,15 +52,15 @@ class VectorBuilder(Builder[Vector]):
     ) -> BuildResult[Vector]:
         """
         # ACTION:
-        1.  Use validator to certify x is safe.
-        2.  Use validator to certify y is safe.
+        1.  Use number_bounds_validator to certify x is safe.
+        2.  Use number_bounds_validator to certify y is safe.
         3.  If either validation fails return their exception inside a BuildResult.
         4.  Otherwise, return a BuildResult containing a Vector.
 
         # PARAMETERS:
             *   x (int)
             *   y (int)
-            *   validator (VectorValidator)
+            *   number_bounds_validator (VectorValidator)
             
         # Returns:
         BuildResult[Vector] containing either:

@@ -10,15 +10,15 @@ version: 1.0.0
 from chess.system import DataException
 
 __all__ = [
-#======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
+#======================# TEAM_DATA EXCEPTION #======================#
     "TeamDataException",
 ]
 
-#======================# TEAM_DATA EXCEPTION SUPER CLASS #======================#
+#======================# TEAM_DATA EXCEPTION #======================#
 class TeamDataException(DataException):
     """
-    Catchall for TeamData exceptions. Use as a last resort if TeamInsertionFailed or
-    TeamDeletionFailedExceptions are not a good fit. Subclasses give better debugging info.
+    Catchall for TeamData exception. Use as a last resort if TeamInsertionFailed or
+    TeamDeletionFailedException are not a good fit. Subclasses give better debugging info.
     """
     ERROR_CODE = "TEAM_DATA_COLLECTION_OPERATION_ERROR"
     DEFAULT_MESSAGE = "A CRUD operation on the Team data set raised an exception."

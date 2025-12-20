@@ -19,14 +19,14 @@ __all__ = [
 
 class SquareException(ChessException):
     """
-    Super class of exceptions raised by Square objects. Do not use directly. Subclasses give
+    Super class of exception raised by Square objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SQUARE_ERROR"
     DEFAULT_MESSAGE = "Square raised an exception."
 
 
-# #======================# RELATIONAL SQUARE EXCEPTIONS #======================#
+# #======================# RELATIONAL SQUARE EXCEPTION #======================#
 # class InvalidPieceSquareRelationException(SquareException, PieceException, InconsistencyException):
 #     """Catchall Exception for when SquareValidator fails candidates on a Piece-Square relationship test."""
 #     ERROR_CODE = "PIECE_RELATES_TO_SQUARE_ERROR"

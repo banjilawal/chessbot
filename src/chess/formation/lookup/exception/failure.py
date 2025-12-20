@@ -11,12 +11,12 @@ from chess.formation import InvalidBattleOrderException
 from chess.system import LookupFailedException
 
 __all__ = [
-    # ======================# ORDER LOOKUP FAILED EXCEPTIONS #======================#
+    # ======================# ORDER LOOKUP FAILED EXCEPTION #======================#
     "OrderLookupFailedException",
 ]
 
 
-# ======================# ORDER LOOKUP FAILED EXCEPTIONS #======================#
+# ======================# ORDER LOOKUP FAILED EXCEPTION #======================#
 class OrderLookupFailedException(InvalidBattleOrderException, LookupFailedException):
     """
     # ROLE: Error Tracing, Debugging

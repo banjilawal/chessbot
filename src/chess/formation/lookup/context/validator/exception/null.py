@@ -1,7 +1,7 @@
-# src/chess/formation/lookup/context/validator/exception/null.py
+# src/chess/formation/lookup/context/number_bounds_validator/exception/null.py
 
 """
-Module: chess.formation.lookup.context.validator.exception.null
+Module: chess.formation.lookup.context.number_bounds_validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

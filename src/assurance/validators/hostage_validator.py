@@ -43,7 +43,7 @@ class HostageValidator(Validator):
       RosterRemovalException: if the captive is still on its team_name's roster
       HostageAdditionException: if the captive has not been added to its enemy's hostage list
       
-      HostageValidationException: Wraps any preceding exceptions   
+      HostageValidationException: Wraps any preceding exception
     """
 
     try:

@@ -31,7 +31,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
       `AutoOccupationException`: if target already occupies the square
       `KingAttackException`: if the target square is occupied by an enemy occupation
 
-      `InvalidOccupationEventException`: Wraps any preceding exceptions
+      `InvalidOccupationEventException`: Wraps any preceding exception
     """
     method = "TravelEvent.validate"
 
@@ -75,7 +75,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
         f"{method}: {InvalidOccupationEventException.DEFAULT_MESSAGE}"
       ) from e
 
-    # This block catches any unexpected exceptions
+    # This block catches any unexpected exception
     # You might want to log the error here before re-raising
     except Exception as e:
       raise InvalidOccupationEventException(f"An unexpected error occurred during validate: {e}") from e

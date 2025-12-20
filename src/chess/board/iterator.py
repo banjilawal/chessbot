@@ -62,7 +62,7 @@ class SquareIterator:
     Returns:
 
     Raise:
-    <`ClassException` wraps any exceptions raised. These are:
+    <`ClassException` wraps any exception raised. These are:
       * `ExceptionName`: If <condition_raising>
     """
     method = "SquareIterator._col_has_next"
@@ -87,7 +87,7 @@ class SquareIterator:
     Returns:
 
     Raise:
-    <`ClassException` wraps any exceptions raised. These are:
+    <`ClassException` wraps any exception raised. These are:
       * `ExceptionName`: If <condition_raising>
     """
     method = "SquareIterator._row_has_next"
@@ -117,7 +117,7 @@ class SquareIterator:
     Returns:
 
     Raise:
-    <`ClassException` wraps any exceptions raised. These are:
+    <`ClassException` wraps any exception raised. These are:
       * `ExceptionName`: If <condition_raising>
     """
     method = "SquareIterator.has_next"
@@ -142,7 +142,7 @@ class SquareIterator:
     Returns:
 
     Raise:
-    <`ClassException` wraps any exceptions raised. These are:
+    <`ClassException` wraps any exception raised. These are:
       * `ExceptionName`: If <condition_raising>
     """
     method = "SquareIterator.__next__"

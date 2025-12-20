@@ -12,22 +12,22 @@ from chess.system import ChessException
 __all__ = [
     "PieceException",
     
-#======================# PIECE NULL EXCEPTIONS #======================#
+#======================# PIECE NULL EXCEPTION #======================#
 
     
-#======================# PIECE VALIDATION EXCEPTIONS #======================#
+#======================# PIECE VALIDATION EXCEPTION #======================#
     "ActivePieceMissingFromTeamRoster",
     "CapturedPieceException",
     "PieceRequiresInitialPlacementException",
 
-#======================# PIECE BUILD EXCEPTIONS #======================#
+#======================# PIECE BUILD EXCEPTION #======================#
 
 ]
 
 
 class PieceException(ChessException):
     """
-    Super class of exceptions raised by Piece objects. Do not use directly. Subclasses give
+    Super class of exception raised by Piece objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "PIECE_ERROR"

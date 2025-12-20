@@ -21,7 +21,7 @@ class GameContextServiceException(ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
     
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an GameContextService's normal operations are halted
+    1.  Parent of exception raised when an GameContextService's normal operations are halted
         by an error condition.
     2.  Raised when no specific exception exists for the error interrupting GameContextService's
         processes from their normal flows.

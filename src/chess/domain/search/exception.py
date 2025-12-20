@@ -19,7 +19,7 @@ __all__ = [
 
 
 class DomainVisitorFinderException(DomainException, FinderException):
-    """Base class for all DomainResidentFinder exceptions"""
+    """Base class for all DomainResidentFinder exception"""
     ERROR_CODE = "DOMAIN_VISITOR_SEARCH_ERROR"
     DEFAULT_MESSAGE = "DomainResidentFinder raised an exception."
 

@@ -11,7 +11,7 @@ from chess.system import NullException
 from chess.team import InvalidTeamContextServiceException
 
 __all__ = [
-    #======================# NULL TEAM_CONTEXT_SERVICE EXCEPTIONS #======================#
+    #======================# NULL TEAM_CONTEXT_SERVICE EXCEPTION #======================#
     "NullTeamContextServiceException",
 ]
 

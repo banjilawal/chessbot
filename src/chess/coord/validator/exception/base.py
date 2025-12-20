@@ -1,7 +1,7 @@
-# src/chess/coord/validator/exception/base.py
+# src/chess/coord/number_bounds_validator/exception/base.py
 
 """
-Module: chess.coord.validator.exception.base
+Module: chess.coord.number_bounds_validator.exception.base
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -21,8 +21,8 @@ class InvalidCoordException(CoordException, ValidationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an existing object violates Coord integrity constraints..
-    2.  Wraps unhandled exceptions that hit the finally-block in CoordValidator methods.
+    1.  Parent of exception raised when an existing object violates Coord integrity constraints..
+    2.  Wraps unhandled exception that hit the finally-block in CoordValidator methods.
 
     # PARENT:
         *   CoordException

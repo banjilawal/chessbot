@@ -20,7 +20,7 @@ from chess.system.resolution  import ResolutionException
 __all__ = [
 
     
-    #======================# SEARCH_COLLISION EXCEPTIONS #======================#
+    #======================# SEARCH_COLLISION EXCEPTION #======================#
     'ResolutionFailedException',
     'ResolvingIDConflictFailedException',
     'SearchNameCollisionException',
@@ -41,7 +41,7 @@ class ResolutionFailedException(ResolutionException):
     the resolution process shows the entity is a orphan
 
 
-    # RELATED EXCEPTIONS
+    # RELATED EXCEPTION
         *   AttackException
         *   CastlingException
         *   CheckmateException

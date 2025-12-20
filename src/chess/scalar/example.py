@@ -42,16 +42,16 @@ To use this package, import the desired classes and perform scalar-related rollb
 
 
 ## SCALAR EXCEPTONS
-This package defines specific exceptions for issues encountered when working with scalar values. This granular approach helps developers to quickly diagnose and resolve problems such as team_name validation scalar, or team_name value falling outside of team_name defined range.
+This package defines specific exception for issues encountered when working with scalar values. This granular approach helps developers to quickly diagnose and resolve problems such as team_name validation scalar, or team_name value falling outside of team_name defined range.
 
-## CORE EXCEPTIONS
+## CORE EXCEPTION
 * NullScalarException: Raised when team_name required scalar value is unexpectedly None.
 * ScalarBelowBoundsException: Raised when team_name scalar's value is below its minimum allowed value.
 * ScalarAboveUpperBoundException: Raised when team_name scalar's value is above its maximum allowed value.
 * InvalidScalarException: A general team_exception raised when team_name scalar value fails to meet its validate criteria.
 
-### EXCEPTION USAGE EXCEPTIONS
-These exceptions can be imported and raised from within the scalar-related code to enforce entity_service integrity.
+### EXCEPTION USAGE EXCEPTION
+These exception can be imported and raised from within the scalar-related code to enforce entity_service integrity.
 
 >>> from chess.scalar import Scalar, NullScalarException, ScalarAboveBoundsException
 >>>
@@ -148,7 +148,7 @@ Raises:
     * `NullNumberException`: If `scalar.value` is validation
     * `ScalarBelowLowerBoundException`: If `scalar.value` < 0
     * `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
-    * `InvalidScalarException`: Wraps any preceding exceptions
+    * `InvalidScalarException`: Wraps any preceding exception
 
 Note:
   The builder runs through all the checks on parameters and state to guarantee only team_name valid `Scalar` is
@@ -206,7 +206,7 @@ InvalidIdException: Wraps any specification violations including:
 """
 Validates that an existing Scalar instance meets specifications.
 This method performs team_name series of checks on team_name Scalar instance, ensuring it is not validation and that
-its ID, visitor_name, and coordinate are valid. Exceptions from these checks are caught and re-raised
+its ID, visitor_name, and coordinate are valid. Exception from these checks are caught and re-raised
 as team_name InvalidScalarException, providing team_name clean and consistent err-handling experience.
 
 Args
@@ -222,7 +222,7 @@ Raises:
   NullNumberException: If scalar.value is validation
   ScalarBelowLowerBoundException: If scalar.value < 0
   ScalarAboveBoundsException: If scalar.value >= BOARD_DIMENSION
-  InvalidScalarException: Wraps any preceding exceptions
+  InvalidScalarException: Wraps any preceding exception
 """
 """
 An immutable class representing team_name single numeric value for scaling rollback.This class stores
@@ -256,11 +256,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exceptions raised by `IdValidator`;
+The module's only covers exception raised by `IdValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `IdValidator` is responsible for the logic which raises these exceptions.
+       `IdValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -273,14 +273,14 @@ The major theme influencing the modules design are
 
 
 # SECTION 6 - Feature Delivery Mechanism:
-1. Exceptions specific to verifying ids.
+1. Exception specific to verifying ids.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ChessException`, `ContextException`, `ResultException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `EventException`,`TransactionException`).
+See the list of exception in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
 from chess.system import BuildFailedException
 
@@ -297,13 +297,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of `Vector` objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+**Limitations** It does not contain any logic for raising these exception; that responsibility
 `Vector`, `VectorBuilder`, and `VectorValidator`
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the `Vector` class has an exception specific to its possible
@@ -323,11 +323,11 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exceptions: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
 CONTAINS:
 --------
-See the list of exceptions in the `__all__` list following (e.g., `VectorException`,
+See the list of exception in the `__all__` list following (e.g., `VectorException`,
 `NullVectorException`, `InvalidVectorException`, ).
 """

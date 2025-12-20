@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/context/validator/experience/null/__init__.py
+# src/chess/game/snapshot/context/number_bounds_validator/experience/null/__init__.py
 
 """
-Module: chess.game.snapshot.context.validator.experience.null.__init__
+Module: chess.game.snapshot.context.number_bounds_validator.experience.null.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

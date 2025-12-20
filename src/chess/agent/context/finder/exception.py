@@ -11,19 +11,19 @@ from chess.agent import AgentException
 from chess.system import FinderException
 
 __all__ = [
-    #======================# AGENT_FINDER EXCEPTIONS #======================#
+    #======================# AGENT_FINDER EXCEPTION #======================#
     "AgentFinderException",
 ]
 
 
-#======================# AGENT_FINDER EXCEPTIONS #======================#
+#======================# AGENT_FINDER EXCEPTION #======================#
 class AgentFinderException(AgentException, FinderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when AgentFinder objects.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentFinder method.
+    1.  Parent of exception raised when AgentFinder objects.
+    2.  Wraps unhandled exception that hit the try-finally block of an AgentFinder method.
   
     # PARENT:
         *   AgentException

@@ -12,7 +12,7 @@ from chess.system import ChessException, NullException, ValidationException
 __all__ = [
     "GameColorException",
     
-#======================# GAME_COLOR VALIDATION EXCEPTIONS #======================#
+#======================# GAME_COLOR VALIDATION EXCEPTION #======================#
     "NullGameColorException",
     "InvalidGameColorException",
 ]
@@ -20,14 +20,14 @@ __all__ = [
 
 class GameColorException(ChessException):
     """
-    Super class of exceptions raised by GameColor objects. Do not use directly. Subclasses give
+    Super class of exception raised by GameColor objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "GAME_COLOR_ERROR"
     DEFAULT_MESSAGE = "GameColor raised an exception."
 
 
-#======================# GAME_COLOR VALIDATION EXCEPTIONS #======================#
+#======================# GAME_COLOR VALIDATION EXCEPTION #======================#
 class NullGameColorException(GameColorException, NullException):
     """Raised if an entity, method, or operation requires GameColor but gets null instead."""
     ERROR_CODE = "NULL_GAME_COLOR_ERROR"

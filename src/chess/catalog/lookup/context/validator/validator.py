@@ -1,7 +1,7 @@
-# src/chess/catalog/lookup/context/validator/validator.py
+# src/chess/catalog/lookup/context/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.catalog.lookup.context.validator
+Module: chess.catalog.lookup.context.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -48,13 +48,13 @@ class CatalogContextValidator(Validator[CatalogContext]):
         """
         # Action:
         1.  Confirm that only one in the (designation, quota, ransom) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's validator.
+        2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
         3.  If any check fails return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an CatalogContext are return in a ValidationResult.
 
         # Parameters:
             *   candidate (Any)
-            *   number_validator (RansomValidator)
+            *   not_negative_validator (RansomValidator)
             *   identity_service (IdentityService)
 
         # Returns:

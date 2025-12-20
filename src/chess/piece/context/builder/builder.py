@@ -21,27 +21,26 @@ from chess.team import Team, TeamCertifier
 
 class PieceContextBuilder(Builder[PieceContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
-     1.  Produce PieceContext instances whose integrity is always guaranteed.
-     2.  Manage construction of PieceContext instances that can be used safely by the client.
-     3.  Ensure params for PieceContext creation have met the application's safety contract.
-     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    # RESPONSIBILITIES:
+    1.  Produce PieceContext instances whose integrity is always guaranteed.
+    2.  Manage construction of PieceContext instances that can be used safely by the client.
+    3.  Ensure params for PieceContext creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
-         * Builder
+    # PARENT:
+        *   Builder
 
-     # PROVIDES:
-         *  build: -> BuildResult[PieceContext]
+    # PROVIDES:
+    None
 
-     # LOCAL ATTRIBUTES:
-     None
+    # LOCAL ATTRIBUTES:
+    None
 
-     # INHERITED ATTRIBUTES:
-     None
-     """
-    
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
@@ -59,24 +58,25 @@ class PieceContextBuilder(Builder[PieceContext]):
     ) -> BuildResult[PieceContext]:
         """
         # Action:
-            1. Confirm that only one in the tuple (id, designation, coord), is not null.
-            2. Certify the not-null attribute is safe using the appropriate entity_service and validator.
-            3. If all checks pass build the PieceContext in a BuildResult.
+            1.  Confirm that only one in the (row, column, coord) tuple is not null.
+            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            3.  If all checks pass build a PieceContext and send in a BuildResult. Else, send an exception
+                in the BuildResult.
 
         # Parameters:
-        Only one these must be provided:
-            *   id (Optional[int])
-            *   designation (Optional[int])
-            *   team (Optional[Team])
-            *   rank (Optional[Rank])
-            *   ransom (Optional[int])
-            *   coord (Optional[Coord])
-            
-        These Parameters must be provided:
-            *   team_certifier (TeamCertifier)
-            *   rank_certifier (RankCertifier)
-            *   coord_service (CoordService)
-            *   identity_service (IdentityService)
+            Only one these must be provided:
+                *   id (Optional[int])
+                *   designation (Optional[int])
+                *   team (Optional[Team])
+                *   rank (Optional[Rank])
+                *   ransom (Optional[int])
+                *   coord (Optional[Coord])
+                
+            These Parameters must be provided:
+                *   team_certifier (TeamCertifier)
+                *   rank_certifier (RankCertifier)
+                *   coord_service (CoordService)
+                *   identity_service (IdentityService)
 
         # Returns:
           BuildResult[PieceContext] containing either:
@@ -84,9 +84,9 @@ class PieceContextBuilder(Builder[PieceContext]):
                 - On failure: Exception.
 
         # Raises:
-            *   PieceContextBuildFailedException
             *   ZeroPieceContextFlagsException
-            *   ExcessivePieceContextFlagsSetException
+            *   PieceContextBuildFailedException
+            *   ExcessivePieceContextFlagsException
         """
         method = "PieceContextBuilder.builder"
         

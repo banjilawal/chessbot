@@ -16,36 +16,36 @@ from chess.system import (
 __all__ = [
     "RankSearchContextException",
     
-#========================= NULL RANK_SEARCH_CONTEXT EXCEPTIONS =========================#
+#========================= NULL RANK_SEARCH_CONTEXT EXCEPTION =========================#
     "NullRankSearchContextException",
     
-#========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+#========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTION =========================#
     "InvalidRankSearchContextException",
     "NoRankSearchOptionSelectedException",
     "MoreThanOneRankSearchOptionPickedException",
     
-#========================= RANK_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
+#========================= RANK_SEARCH_CONTEXT BUILD EXCEPTION =========================#
     "RankSearchContextBuildFailedException",
 ]
 
 
 class RankSearchContextException(ContextException):
     """
-    Super class of exceptions raised by RankSearchContext objects.
+    Super class of exception raised by RankSearchContext objects.
     Do not use directly. Subclasses give precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "RankSearchContext raised an exception."
 
 
-#========================= NULL RANK_SEARCH_CONTEXT EXCEPTIONS =========================#
+#========================= NULL RANK_SEARCH_CONTEXT EXCEPTION =========================#
 class NullRankSearchContextException(RankSearchContextException, NullException):
     """Raised if an entity, method, or operation requires Rank but gets null instead."""
     ERROR_CODE = "NULL_RANK_SEARCH_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "RankSearchContext cannot be validation"
 
 
-#========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTIONS =========================#
+#========================= RANK_SEARCH_CONTEXT VALIDATION EXCEPTION =========================#
 class InvalidRankSearchContextException(RankSearchContextException, ValidationException):
     """Catchall Exception for RankSearchContextValidator when a candidate fails a sanity check."""
     ERROR_CODE = "RANK_SEARCH_CONTEXT_VALIDATION_ERROR"
@@ -67,7 +67,7 @@ class MoreThanOneRankSearchOptionPickedException(
     DEFAULT_MESSAGE = "Only one RankSearchContext option can be selected."
 
 
-#========================= RANK_SEARCH_CONTEXT BUILD EXCEPTIONS =========================#
+#========================= RANK_SEARCH_CONTEXT BUILD EXCEPTION =========================#
 class RankSearchContextBuildFailedException(RankSearchContextException, BuildFailedException):
     """
     Catchall Exception for RankSearchContextBuilder when it encounters an error building

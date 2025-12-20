@@ -21,7 +21,7 @@ class TransactionException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by Transaction objects
+    1.  Parent of exception raised by Transaction objects
     2.  Catchall for Transaction failure states that are not covered by a lower level Transaction exception.
   
     # PARENT:

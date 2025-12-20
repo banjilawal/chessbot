@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-#======================# NULL EXCEPTION SUPER CLASS #======================#
+#======================# NULL EXCEPTION #======================#
     "NullException",
 ]
 
 
-#======================# NULL EXCEPTION SUPER CLASS #======================#
+#======================# NULL EXCEPTION #======================#
 class NullException(ChessException):
     """Raised if an entity, method, or operation requires a resource but gets null instead."""
     ERROR_CODE = "NULL_ERROR"

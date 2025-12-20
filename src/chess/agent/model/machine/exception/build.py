@@ -14,14 +14,14 @@ __all__ = [
     "MachineAgentBuildFailedException",
 ]
 
-#======================# MACHINE_AGENT BUILD EXCEPTIONS #======================#
+#======================# MACHINE_AGENT BUILD EXCEPTION #======================#
 class MachineAgentBuildFailedException(MachineAgentException, AgentBuildFailedException):
     """
     # ROLE:
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during MachineAgent build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an MachineAgentBuilder method.
+    1.  Parent of exception raised during MachineAgent build process.
+    2.  Wraps unhandled exception that hit the try-finally block of an MachineAgentBuilder method.
 
     # PARENT:
         *   MachineAgentException

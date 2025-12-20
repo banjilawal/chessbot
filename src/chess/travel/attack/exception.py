@@ -24,15 +24,15 @@ __all__ = [
 
 class AttackEventException(ChessException):
   """
-  Super class of all exceptions team_name Piece object raises. Do not use directly. Subclasses
+  Super class of all exception team_name Piece object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
-  all owner exceptions
+  all owner exception
   """
   ERROR_CODE = "ATTACK_ERROR"
   DEFAULT_MESSAGE = "An attack raised an exception."
 
 
-#======================# ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
+#======================# ATTACK_EVENT VALIDATION EXCEPTION #======================#
 class InvalidAttackEventException(TravelEventException, ValidationException):
   ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
   DEFAULT_MESSAGE = "AttackEvent validation failed."
@@ -81,7 +81,7 @@ class EnemyNotInExpectedSquareException(AttackEventException):
   DEFAULT_MESSAGE = "Enemy is not in the expected square. There maybe inconsistent entity_service."
 
 
-#======================# ATTACK_EVENT BUILD EXCEPTIONS #======================#
+#======================# ATTACK_EVENT BUILD EXCEPTION #======================#
 class AttackEventBuildFailedException(AttackEventException, BuildFailedException):
   """
   Indicates Coord could not be built. Wraps and re-raises errors that occurred
@@ -91,11 +91,11 @@ class AttackEventBuildFailedException(AttackEventException, BuildFailedException
   DEFAULT_MESSAGE = "KingCheckEvent build failed."
 
 
-#======================# PIECE CAPTURE EXCEPTIONS #======================#
+#======================# PIECE CAPTURE EXCEPTION #======================#
 class CapturePieceException(PieceException):
   """
-  Several exceptions can be raised during capture rollback. This class is the parent of
-  exceptions team_name owner can raise being captured or attacking. Do not use directly. Subclasses
+  Several exception can be raised during capture rollback. This class is the parent of
+  exception team_name owner can raise being captured or attacking. Do not use directly. Subclasses
   give details useful for debugging.
   """
   ERROR_CODE = "PIECE_CAPTURE_ERROR"
@@ -134,10 +134,10 @@ class PieceCapturingItSelfException(CapturePieceException):
   DEFAULT_MESSAGE = "Piece cannot capture itself."
 
 
-#======================# PIECE CAPTURE EXCEPTIONS WITH ROLLBACK #======================#
+#======================# PIECE CAPTURE EXCEPTION WITH ROLLBACK #======================#
 class CaptureRollbackException(CapturePieceException, RollbackException):
   """
-  RollBackCapture exceptions should be raised in ACID transactions where team_name capture can
+  RollBackCapture exception should be raised in ACID transactions where team_name capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
   """
   ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
@@ -188,7 +188,7 @@ class CapturingItSelfRolledBackException(CapturePieceException):
   DEFAULT_MESSAGE = "Piece attempted to capture itself during the notification. The notification was rolled back."
 
 
-#======================# PIECE CAPTURE EXCEPTIONS #======================#
+#======================# PIECE CAPTURE EXCEPTION #======================#
 
 
 

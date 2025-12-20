@@ -1,7 +1,7 @@
-# src/chess/system/identity/id/validator.py
+# src/chess/system/identity/id/number_bounds_validator.py
 
 """
-Module: chess.system.identity.id.validator
+Module: chess.system.identity.id.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-08-12
 """
@@ -57,13 +57,13 @@ class IdValidator(Validator[int]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Test the candidate is not null and an int with number_validator.
+        1.  Test the candidate is not null and an int with not_negative_validator.
         2.  If the value is negative return an exception in the ValidationResult.
         3.  When all checks pass send the number in a ValidationResult's payload.
     
         # PARAMETERS:
             *   candidate (Any):
-            *   number_validator (NumberValidator)
+            *   not_negative_validator (NumberValidator)
     
         # Returns:
         ValidationResult[int] containing either:
@@ -92,7 +92,7 @@ class IdValidator(Validator[int]):
             return ValidationResult.success(payload=id)
         
         # Finally, if there is an unhandled exception Wrap an InvalidNIdException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidIdException(ex=ex, message=f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")

@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/validator.py
+# src/chess/agent/context/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.agent.context.validator.validator
+Module: chess.agent.context.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -51,7 +51,7 @@ class AgentContextValidator(Validator[AgentContext]):
         """
         # Action:
         1.  Confirm that only one in the (id, designation, team, game, agent_variety) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's validator.
+        2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an AgentContext are return in a ValidationResult.
 
@@ -109,7 +109,7 @@ class AgentContextValidator(Validator[AgentContext]):
                         f"{method}: {ExcessiveAgentContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
-            # Which ever attribute value is not null should be certified safe by the appropriate validator.
+            # Which ever attribute value is not null should be certified safe by the appropriate number_bounds_validator.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
                 if validation.is_failure:

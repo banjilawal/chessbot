@@ -8,19 +8,19 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# GAME_TIMELINE EXCEPTIONS #======================#
+    # ======================# GAME_TIMELINE EXCEPTION #======================#
     "GameTimelineException",
 ]
 
 
-# ======================# GAME_TIMELINE EXCEPTIONS #======================#
+# ======================# GAME_TIMELINE EXCEPTION #======================#
 class GameTimelineException(ResultStackException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by GameTimeline objects.
-    2.  Parent of exceptions raised by classes that highly cohere with GameTimeline objects.
+    1.  Parent of exception raised by GameTimeline objects.
+    2.  Parent of exception raised by classes that highly cohere with GameTimeline objects.
     3.  Catchall for GameTimeline failure states that are not covered by a lower level GameTimeline exception.
 
     # PARENT:

@@ -10,20 +10,20 @@ version: 1.0.0
 from chess.system import ContextException
 
 __all__ = [
-    # ======================# TEAM_CONTEXT EXCEPTION SUPER CLASS #======================#
+    # ======================# TEAM_CONTEXT EXCEPTION #======================#
     "TeamContextException",
 ]
 
 
-# ======================# TEAM_CONTEXT EXCEPTION SUPER CLASS #======================#
+# ======================# TEAM_CONTEXT EXCEPTION #======================#
 class TeamContextException(ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an TeamContext's organic fields or methods run into a condition that
+    1.  Parent of exception raised when an TeamContext's organic fields or methods run into a condition that
         leads to an operation failing.
-    2.  Parent of exceptions raised by TeamContext Builders and Validators or any other classes that highly
+    2.  Parent of exception raised by TeamContext Builders and Validators or any other classes that highly
         cohere with TeamContext objects.
     3.  Catchall for TeamContext failure states that are not covered by a lower level TeamContext exception.
 

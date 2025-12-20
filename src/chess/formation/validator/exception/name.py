@@ -1,7 +1,7 @@
-# src/chess/formation/validator/exception/name.py
+# src/chess/formation/number_bounds_validator/exception/name.py
 
 """
-Module: chess.formation.validator.exception.name
+Module: chess.formation.number_bounds_validator.exception.name
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.formation import InvalidBattleOrderException
 from chess.system import BoundsException, NameException
 
 __all__ = [
-    # ======================# ORDER NAME BOUNDS EXCEPTIONS #======================#
+    # ======================# ORDER NAME BOUNDS EXCEPTION #======================#
     "OrderNameBoundsException",
 ]
 
 
-# ======================# ORDER NAME BOUNDS EXCEPTIONS #======================#
+# ======================# ORDER NAME BOUNDS EXCEPTION #======================#
 class OrderNameBoundsException(InvalidBattleOrderException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging

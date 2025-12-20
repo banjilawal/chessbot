@@ -21,8 +21,8 @@ class ArenaException(ChessException):
   # ROLE: Exception Wrapper, Catchall Exception
 
   # RESPONSIBILITIES:
-  1.  Parent of exceptions raised by Arena objects.
-  2.  Catchall for conditions which are not covered by lower level Arena exceptions.
+  1.  Parent of exception raised by Arena objects.
+  2.  Catchall for conditions which are not covered by lower level Arena exception.
 
   # PARENT:
       *   ChessException

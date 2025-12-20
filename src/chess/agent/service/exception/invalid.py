@@ -12,18 +12,18 @@ from chess.agent import AgentServiceException
 
 
 __all__ = [
-    #======================# AGENT_SERVICE VALIDATION EXCEPTIONS #======================#
+    #======================# AGENT_SERVICE VALIDATION EXCEPTION #======================#
     "InvalidAgentServiceException",
 ]
 
-#======================# AGENT_SERVICE VALIDATION EXCEPTIONS #======================#
+#======================# AGENT_SERVICE VALIDATION EXCEPTION #======================#
 class InvalidAgentServiceException(AgentServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during PlayerAgentService verification process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentServiceValidator method.
+    1.  Parent of exception raised during PlayerAgentService verification process.
+    2.  Wraps unhandled exception that hit the try-finally block of an AgentServiceValidator method.
 
     # PARENT:
         *   AgentServiceException

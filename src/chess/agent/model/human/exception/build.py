@@ -15,14 +15,14 @@ __all__ = [
 ]
 
 
-#======================# HUMAN_AGENT BUILD EXCEPTIONS #======================#
+#======================# HUMAN_AGENT BUILD EXCEPTION #======================#
 class HumanAgentBuildFailedException(HumanAgentException, AgentBuildFailedException):
     """
     # ROLE:
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during HumanAgent build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an HumanAgentBuilder method.
+    1.  Parent of exception raised during HumanAgent build process.
+    2.  Wraps unhandled exception that hit the try-finally block of an HumanAgentBuilder method.
 
     # PARENT:
         *   HumanAgentException

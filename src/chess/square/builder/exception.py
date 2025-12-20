@@ -12,12 +12,12 @@ from chess.system import BuildFailedException
 
 
 __all__ = [
-    #======================# SQUARE BUILD EXCEPTIONS #======================#
+    #======================# SQUARE BUILD EXCEPTION #======================#
     "SquareBuildFailedException",
 ]
 
 
-#======================# SQUARE BUILD EXCEPTIONS #======================#
+#======================# SQUARE BUILD EXCEPTION #======================#
 class SquareBuildFailedException(SquareException, BuildFailedException):
     """
     Catchall/wrapper exception for when a condition not handled directly by SquareBuilder 

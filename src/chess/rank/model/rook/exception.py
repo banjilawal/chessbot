@@ -16,9 +16,9 @@ from chess.rank import (
 
 
 __all__ = [
-    #======================# ROOK EXCEPTION SUPER CLASS #======================#
+    #======================# ROOK EXCEPTION #======================#
     "RookException",
-    #======================# ROOK VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# ROOK VALIDATION EXCEPTION #======================#
     "InvalidRookException",
     "NullRookException",
     #======================# RANK_DESIGNATION #======================#
@@ -36,15 +36,15 @@ __all__ = [
 ]
 
 
-#======================# ROOK EXCEPTION SUPER CLASS #======================#
+#======================# ROOK EXCEPTION #======================#
 class RookException(RankException):
     """
-    Catchall for exceptions organic to Rook properties and its atomic operations."""
+    Catchall for exception organic to Rook properties and its atomic operations."""
     ERROR_CODE = "ROOK ERROR"
     DEFAULT_MESSAGE = "Rook raised an exception."
 
 
-#======================# ROOK VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# ROOK VALIDATION EXCEPTION #======================#
 class InvalidRookException(RookException, ValidationException):
     """Catchall Exception for RookValidator when a candidate fails a sanity check."""
     ERROR_CODE = "ROOK_VALIDATION_ERROR"

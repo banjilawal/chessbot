@@ -12,12 +12,12 @@ from chess.system import BuildFailedException
 
 
 __all__ = [
-    #======================# SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
+    #======================# SCHEMA_CONTEXT BUILD EXCEPTION #======================#
     "SchemaContextBuildFailedException",
 ]
 
 
-#======================# SCHEMA_CONTEXT BUILD EXCEPTIONS #======================#
+#======================# SCHEMA_CONTEXT BUILD EXCEPTION #======================#
 class SchemaContextBuildFailedException(SchemaContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

@@ -1,7 +1,7 @@
-# src/chess/formation/validator/exception/square.py
+# src/chess/formation/number_bounds_validator/exception/square.py
 
 """
-Module: chess.formation.validator.exception.square
+Module: chess.formation.number_bounds_validator.exception.square
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.formation import InvalidBattleOrderException
 from chess.system import BoundsException, NameException
 
 __all__ = [
-    # ======================# ORDER SQUARE BOUNDS EXCEPTIONS #======================#
+    # ======================# ORDER SQUARE BOUNDS EXCEPTION #======================#
     "OrderSquareBoundsException",
 ]
 
 
-# ======================# ORDER SQUARE BOUNDS EXCEPTIONS #======================#
+# ======================# ORDER SQUARE BOUNDS EXCEPTION #======================#
 class OrderSquareBoundsException(InvalidBattleOrderException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging

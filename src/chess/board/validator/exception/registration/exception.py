@@ -1,7 +1,7 @@
-# src/chess/board/validator/exception/registration/registration.py
+# src/chess/board/number_bounds_validator/exception/registration/registration.py
 
 """
-Module: chess.board.validator.exception.registration.registration
+Module: chess.board.number_bounds_validator.exception.registration.registration
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -11,13 +11,13 @@ from chess.board import InvalidBoardException
 from chess.system import RegistrationException
 
 __all__ = [
-    #======================# BOARD_REGISTRATION EXCEPTIONS #======================#
+    #======================# BOARD_REGISTRATION EXCEPTION #======================#
     "BoardRegistrationException",
     "BoardNotRegisteredWithGameException",
 ]
 
 
-#======================# BOARD_REGISTRATION EXCEPTIONS #======================#
+#======================# BOARD_REGISTRATION EXCEPTION #======================#
 class BoardRegistrationException(InvalidBoardException, RegistrationException):
     """
     Catchall for when a Board does not have a relationship with another entity.

@@ -23,7 +23,7 @@ class CheckEventException(TravelEventException):
   DEFAULT_MESSAGE = "A check event raised an exception."
 
 
-#======================# ATTACK_EVENT VALIDATION EXCEPTIONS #======================#
+#======================# ATTACK_EVENT VALIDATION EXCEPTION #======================#
 class NullCheckEventException(CheckEventException, NullException):
   """"""
   ERROR_CODE = "NULL_CHECK_EVENT_ERROR"

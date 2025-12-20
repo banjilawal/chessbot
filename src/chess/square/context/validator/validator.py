@@ -1,7 +1,7 @@
-# src/chess/square/context/validator/validator.py
+# src/chess/square/context/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess.square.context.validator.validator
+Module: chess.square.context.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -13,7 +13,7 @@ from chess.board import BoardService
 from chess.coord.service import CoordService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.square import (
-    InvalidSquareContextException, NoSquareContextFlagSetException, NullSquareContextException,
+    InvalidSquareContextException, ZeroSquareContextFlagsException, NullSquareContextException,
     SquareContext, ExcessiveSquareContextFlagsSetException
 )
 
@@ -92,8 +92,8 @@ class SquareContextValidator(Validator[SquareContext]):
             # Handle the cases with the wrong flag counts. 
             if flag_count == 0:
                 return ValidationResult.failure(
-                    NoSquareContextFlagSetException(
-                        f"{method}: {NoSquareContextFlagSetException.DEFAULT_MESSAGE}"
+                    ZeroSquareContextFlagsException(
+                        f"{method}: {ZeroSquareContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )     
             if flag_count > 1:
@@ -122,7 +122,7 @@ class SquareContextValidator(Validator[SquareContext]):
                 return ValidationResult.success(payload=context)
             
         # Finally, if there is an unhandled exception Wrap an InvalidSquareContextException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSquareContextException(

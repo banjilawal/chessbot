@@ -1,7 +1,7 @@
-# src/chess/system/err/number/validator/bounds.py
+# src/chess/system/err/number/number_bounds_validator/bounds.py
 
 """
-Module: chess.system.err.number.validator.bounds
+Module: chess.system.err.number.number_bounds_validator.bounds
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -45,13 +45,13 @@ class NumberInBoundsValidator(Validator[int]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  If number_validator certifies the candidate is at least zero then test its less than the array size.
+        1.  If not_negative_validator certifies the candidate is at least zero then test its less than the array size.
         2.  Return an exception if the candidate fails any test. Else pass the certified
             nuber in the ValidationResult.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   number_validator (NotNegativeNumberValidator)
+            *   not_negative_validator (NotNegativeNumberValidator)
 
         # Returns:
         ValidationResult[int] containing either:

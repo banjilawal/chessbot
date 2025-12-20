@@ -22,11 +22,11 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's only covers exceptions raised by `NameValidator`;
+The module's only covers exception raised by `NameValidator`;
 
 # SECTION 3: Limitations
   1. Does not provide logic for fixing the errors or causing the rollback_exception being raised.
-       `NameValidator` is responsible for the logic which raises these exceptions.
+       `NameValidator` is responsible for the logic which raises these exception.
 
 # SECTION 4 - Design Considerations and Themes:
 The major theme influencing the modules design are
@@ -39,14 +39,14 @@ The major theme influencing the modules design are
 
 
 # SECTION 6 - Feature Delivery Mechanism:
-1. Exceptions specific to verifying names.
+1. Exception specific to verifying names.
 
 # SECTION 7 - Dependencies:
 * From `chess.system`:
     `ValidationFailedException`, `BlankStringException`, `NullException`
 
 # SECTION 8 - Contains:
-See the list of exceptions in the `__all__` list following (e.g., `InvalidNameException`,`NullNameException`).
+See the list of exception in the `__all__` list following (e.g., `InvalidNameException`,`NullNameException`).
 """
 # src/chess/system/validate/old_occupation_validator.py
 

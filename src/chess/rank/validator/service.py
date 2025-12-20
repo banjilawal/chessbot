@@ -1,7 +1,7 @@
-# src/chess/rank/validator/service.py
+# src/chess/rank/number_bounds_validator/service.py
 
 """
-Module: chess.rank.validator.service
+Module: chess.rank.number_bounds_validator.service
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

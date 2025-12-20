@@ -11,19 +11,19 @@ from chess.agent import AgentException
 from chess.system import BuildFailedException
 
 __all__ = [
-    #======================# AGENT BUILD EXCEPTIONS #======================#
+    #======================# AGENT BUILD EXCEPTION #======================#
     "AgentBuildFailedException",
 ]
 
 
-#======================# AGENT BUILD EXCEPTIONS #======================#
+#======================# AGENT BUILD EXCEPTION #======================#
 class AgentBuildFailedException(AgentException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during PlayerAgent build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an AgentBuilder method.
+    1.  Parent of exception raised during PlayerAgent build process.
+    2.  Wraps unhandled exception that hit the try-finally block of an AgentBuilder method.
 
     # PARENT:
         *   AgentException

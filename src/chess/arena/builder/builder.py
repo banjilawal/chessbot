@@ -118,7 +118,7 @@ class ArenaBuilder(Builder[Arena]):
         # The flow should only get here if the logic did not route all the types of concrete Arenas.
         # In that case wrap the unhandled exception inside an ArenaBuildFailedException then, return
         # the exception chain inside a ValidationResult.
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                 ArenaBuildFailedException(

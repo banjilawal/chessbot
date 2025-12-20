@@ -1,14 +1,14 @@
-# src/chess/board/validator/exception.py
+# src/chess/board/number_bounds_validator/exception.py
 
 """
-Module: chess.board.validator.exception
+Module: chess.board.number_bounds_validator.exception
 Author: Banji Lawal
 Created: 2025-11-21
 version: 1.0.0
 """
 
 __all__ = [
-    #======================# BOARD BUILD EXCEPTIONS #======================#
+    #======================# BOARD BUILD EXCEPTION #======================#
     "InvalidBoardException",
     "NullBoardException",
 ]
@@ -17,7 +17,7 @@ from chess.board import BoardException
 from chess.system import NullException, ValidationException
 
 
-#======================# INVALID BOARD EXCEPTIONS #======================#
+#======================# INVALID BOARD EXCEPTION #======================#
 class InvalidBoardException(BoardException, ValidationException):
     """Catchall Exception for BoardValidator when a candidate fails a sanity check."""
     ERROR_CODE = "BOARD_VALIDATION_ERROR"

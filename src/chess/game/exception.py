@@ -19,8 +19,8 @@ class GameException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by Game objects.
-    2.  Catchall for conditions which are not covered by lower level Game exceptions.
+    1.  Parent of exception raised by Game objects.
+    2.  Catchall for conditions which are not covered by lower level Game exception.
 
     # PARENT:
         *   ChessException

@@ -13,9 +13,9 @@ from chess.rank import (
 )
 
 __all__ = [
-    #======================# KING EXCEPTION SUPER CLASS #======================#
+    #======================# KING EXCEPTION #======================#
     "KingException",
-    #======================# KING VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# KING VALIDATION EXCEPTION #======================#
     "InvalidKingException",
     "NullKingException",
     #======================# RANK_DESIGNATION #======================#
@@ -33,15 +33,15 @@ __all__ = [
 ]
 
 
-#======================# KING EXCEPTION SUPER CLASS #======================#
+#======================# KING EXCEPTION #======================#
 class KingException(RankException):
     """
-    Catchall for exceptions organic to King properties and its atomic operations."""
+    Catchall for exception organic to King properties and its atomic operations."""
     ERROR_CODE = "KING ERROR"
     DEFAULT_MESSAGE = "King raised an exception."
 
 
-#======================# KING VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# KING VALIDATION EXCEPTION #======================#
 class InvalidKingException(KingException, ValidationException):
     """Catchall Exception for KingValidator when a candidate fails a sanity check."""
     ERROR_CODE = "KING_VALIDATION_ERROR"

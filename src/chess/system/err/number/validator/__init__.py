@@ -1,7 +1,7 @@
-# src/chess/system/err/number/validator/__init__.py
+# src/chess/system/err/number/number_bounds_validator/__init__.py
 
 """
-Module: chess.system.err.number.validator.__init__
+Module: chess.system.err.number.number_bounds_validator.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

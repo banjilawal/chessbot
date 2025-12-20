@@ -1,7 +1,7 @@
-# src/chess/schema/validator/exception/name.py
+# src/chess/schema/number_bounds_validator/exception/name.py
 
 """
-Module: chess.schema.validator.exception.name
+Module: chess.schema.number_bounds_validator.exception.name
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.schema import InvalidSchemaException
 from chess.system import BoundsException, NameException
 
 __all__ = [
-    # ======================# SCHEMA NAME BOUNDS EXCEPTIONS #======================#
+    # ======================# SCHEMA NAME BOUNDS EXCEPTION #======================#
     "SchemaNameBoundsException",
 ]
 
 
-# ======================# SCHEMA NAME BOUNDS EXCEPTIONS #======================#
+# ======================# SCHEMA NAME BOUNDS EXCEPTION #======================#
 class SchemaNameBoundsException(InvalidSchemaException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging

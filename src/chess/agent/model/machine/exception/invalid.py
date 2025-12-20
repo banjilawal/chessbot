@@ -22,8 +22,8 @@ class InvalidMachineAgentException(MachineAgentException, ValidationFailedExcept
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised MachineAgent validation.
-    2.  Wraps unhandled exceptions that hit the finally-block in MachineAgentValidator methods.
+    1.  Parent of exception raised MachineAgent validation.
+    2.  Wraps unhandled exception that hit the finally-block in MachineAgentValidator methods.
 
     # PARENT:
         *   MachineAgentException

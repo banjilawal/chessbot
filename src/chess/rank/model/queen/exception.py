@@ -15,9 +15,9 @@ from chess.rank import (
 )
 
 __all__ = [
-    #======================# QUEEN EXCEPTION SUPER CLASS #======================#
+    #======================# QUEEN EXCEPTION #======================#
     "QueenException",
-    #======================# QUEEN VALIDATION EXCEPTION SUPER CLASS #======================#
+    #======================# QUEEN VALIDATION EXCEPTION #======================#
     "InvalidQueenException",
     "NullQueenException",
     #======================# RANK_DESIGNATION #======================#
@@ -35,15 +35,15 @@ __all__ = [
 ]
 
 
-#======================# QUEEN EXCEPTION SUPER CLASS #======================#
+#======================# QUEEN EXCEPTION #======================#
 class QueenException(RankException):
     """
-    Catchall for exceptions organic to Queen properties and its atomic operations."""
+    Catchall for exception organic to Queen properties and its atomic operations."""
     ERROR_CODE = "QUEEN ERROR"
     DEFAULT_MESSAGE = "Queen raised an exception."
 
 
-#======================# QUEEN VALIDATION EXCEPTION SUPER CLASS #======================#
+#======================# QUEEN VALIDATION EXCEPTION #======================#
 class InvalidQueenException(QueenException, ValidationException):
     """Catchall Exception for QueenValidator when a candidate fails a sanity check."""
     ERROR_CODE = "QUEEN_VALIDATION_ERROR"

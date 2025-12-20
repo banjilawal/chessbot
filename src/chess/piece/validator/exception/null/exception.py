@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/null/exception.py
+# src/chess/piece/number_bounds_validator/exception/null/exception.py
 
 """
-Module: chess.piece.validator.exception.null.exception
+Module: chess.piece.number_bounds_validator.exception.null.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 
-#======================# PIECE NULL EXCEPTIONS #======================#
+#======================# PIECE NULL EXCEPTION #======================#
 class NullPieceException(InvalidPieceException, NullException):
     """Raised if an entity, method, or operation expects a Piece but gets null instead."""
     ERROR_CODE = "NULL_PIECE_ERROR"

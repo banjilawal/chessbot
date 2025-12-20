@@ -1,7 +1,7 @@
-# src/chess//schema/validator/validator.py
+# src/chess//schema/number_bounds_validator/number_bounds_validator.py
 
 """
-Module: chess..schema.validator.validator
+Module: chess..schema.number_bounds_validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -72,7 +72,7 @@ class SchemaValidator(Validator[Schema]):
             return ValidationResult.success(cast(Schema, candidate))
         
         # Finally, if there is an unhandled exception Wrap an InvalidSchemaException around it
-        # then return the exceptions inside a ValidationResult.
+        # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSchemaException(ex=ex, message=f"{method} {InvalidSchemaException.DEFAULT_MESSAGE}")

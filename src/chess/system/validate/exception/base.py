@@ -10,19 +10,19 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    #======================# VALIDATOR EXCEPTION SUPER CLASS #======================#
+    #======================# VALIDATOR EXCEPTION #======================#
     "ValidatorException",
 
 ]
 
 
-#======================# VALIDATOR EXCEPTION SUPER CLASS #======================#
+#======================# VALIDATOR EXCEPTION #======================#
 class ValidatorException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by Validator objects
+    1.  Parent of exception raised by Validator objects
     2.  Catchall for Validator failure states that are not covered by a lower level Validator exception.
   
     # PARENT:

@@ -92,7 +92,7 @@ class AgentDataService(DataService[PlayerAgent]):
     #     return cast(AgentFactory, self.service.item_builder)
     #
     # @property
-    # def validator(self) -> AgentValidator:
+    # def number_bounds_validator(self) -> AgentValidator:
     #     return cast(AgentValidator, self.service.item_validator)
     #
     # @property

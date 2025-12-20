@@ -14,7 +14,7 @@ from chess.game import Game, GameService
 from chess.team import Team, TeamService
 from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter
 from chess.agent import (
-    AgentVariety, AgentContext, AgentContextBuildFailedException, ZeroAgentFlagsException,
+    AgentVariety, AgentContext, AgentContextBuildFailedException, ZeroAgentContextFlagsException,
     ExcessiveAgentContextFlagsException
 )
 
@@ -42,7 +42,6 @@ class AgentContextBuilder(Builder[AgentContext]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
@@ -59,22 +58,22 @@ class AgentContextBuilder(Builder[AgentContext]):
         """
         # Action:
             1.  Confirm that only one in the (id, designation, team, game, agent_variety) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
-            3.  If any check fails return an exception inside the BuildResult. Otherwise, construct an AgentContext
-                object then send it inside the BuildResult.
+            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            3.  If all checks pass build a AgentContext and send in a BuildResult. Else, send an exception
+                in the BuildResult.
 
         # Parameters:
-        Only one these must be provided:
-            *   id (Optional[int])
-            *   designation (Optional[str])
-            *   team (Optional[Team])
-            *   game (Optional[Game])
-            *   agent_variety (Optional[AgentVariety])
-
-        These Parameters must be provided:
-            *   team_service (TeamService)
-            *   game_service (GameService)
-            *   identity_service (IdentityService)
+            Only one these must be provided:
+                *   id (Optional[int])
+                *   designation (Optional[str])
+                *   team (Optional[Team])
+                *   game (Optional[Game])
+                *   agent_variety (Optional[AgentVariety])
+    
+            These Parameters must be provided:
+                *   team_service (TeamService)
+                *   game_service (GameService)
+                *   identity_service (IdentityService)
 
         # Returns:
           BuildResult[AgentContext] containing either:
@@ -82,8 +81,8 @@ class AgentContextBuilder(Builder[AgentContext]):
                 - On failure: Exception.
 
         # Raises:
+            *   ZeroAgentContextFlagsException
             *   AgentContextBuildFailedException
-            *   ZeroAgentFlagsException
             *   ExcessiveAgentContextFlagsException
         """
         method = "AgentSearchContextBuilder.builder"
@@ -95,7 +94,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
             if param_count == 0:
                 return BuildResult.failure(
-                    ZeroAgentFlagsException(f"{method}: {ZeroAgentFlagsException.DEFAULT_MESSAGE}")
+                    ZeroAgentContextFlagsException(f"{method}: {ZeroAgentContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:

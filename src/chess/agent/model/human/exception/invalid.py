@@ -22,8 +22,8 @@ class InvalidHumanAgentException(HumanAgentException, ValidationFailedException)
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised HumanAgent validation.
-    2.  Wraps unhandled exceptions that hit the finally-block in HumanAgentValidator methods.
+    1.  Parent of exception raised HumanAgent validation.
+    2.  Wraps unhandled exception that hit the finally-block in HumanAgentValidator methods.
 
     # PARENT:
         *   HumanAgentException

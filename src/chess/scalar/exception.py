@@ -12,20 +12,20 @@ from chess.system import ChessException, NullException
 __all__ = [
   "ScalarException",
   
-#======================# SCALAR VALIDATION EXCEPTIONS #======================#  
+#======================# SCALAR VALIDATION EXCEPTION #======================#  
   "NullScalarException",
 ]
 
 class ScalarException(ChessException):
   """
-  Super class of exceptions raised by Scalar objects. Do not use directly. Subclasses give
+  Super class of exception raised by Scalar objects. Do not use directly. Subclasses give
   precise, fined-grained, debugging info.
   """
   ERROR_CODE = "SCALAR_ERROR"
   DEFAULT_MESSAGE = "Scalar raised an exception."
   
 
-#======================# NULL SCALAR EXCEPTIONS #======================#
+#======================# NULL SCALAR EXCEPTION #======================#
 class NullScalarException(ScalarException, NullException):
   """Raised if an entity, method, or operation requires Scalar but gets null instead."""
   ERROR_CODE = "NULL_SCALAR_ERROR"

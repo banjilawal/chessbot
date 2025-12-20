@@ -1,4 +1,4 @@
-# src/chess/catalog/lookup/context/validator/exception/null.py
+# src/chess/catalog/lookup/context/number_bounds_validator/exception/null.py
 
 """
 Module: chess.catalog.lookup.context.exception.null
@@ -12,12 +12,12 @@ from chess.system import NullException
 from chess.catalog import InvalidCatalogContextException
 
 __all__ = [
-    # ======================# CATALOG_CONTEXT NULL EXCEPTIONS #======================#
+    # ======================# CATALOG_CONTEXT NULL EXCEPTION #======================#
     "NullCatalogContextException",
 ]
 
 
-# ======================# CATALOG_CONTEXT NULL EXCEPTIONS #======================#
+# ======================# CATALOG_CONTEXT NULL EXCEPTION #======================#
 class NullCatalogContextException(InvalidCatalogContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging

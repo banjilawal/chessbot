@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/exception/exception.py
+# src/chess/agent/context/number_bounds_validator/exception/exception.py
 
 """
-Module: chess.agent.context.validator.exception.exception
+Module: chess.agent.context.number_bounds_validator.exception.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -21,8 +21,8 @@ class InvalidAgentContextException(AgentContextException, ValidationFailedExcept
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised AgentContext validation.
-    2.  Wraps unhandled exceptions that hit the finally-block in AgentContextValidator methods.
+    1.  Parent of exception raised AgentContext validation.
+    2.  Wraps unhandled exception that hit the finally-block in AgentContextValidator methods.
     
     # PARENT:
         *   AgentContextException

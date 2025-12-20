@@ -17,7 +17,7 @@ __all__ = [
 
 class SquareDataServiceException(DataServiceException):
     """
-    Super class of exceptions raised by SquareDataService objects. Do not use directly. Subclasses give
+    Super class of exception raised by SquareDataService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "SQUARE_DATA_SERVICE_ERROR"

@@ -87,7 +87,7 @@ from its use or inability to use it.
   - [Validators](#validators) 
   - [Results](#results)
   - [Search](#search)
-  - [Exceptions](#exceptions) 
+  - [Exception](#exception) 
   - [Transactions](#transactions) 
   - [Events](#events) 
 7. [Core Entities](#core-entities) 
@@ -543,15 +543,15 @@ A package providing an immutable hierarchy for events and transactions manging e
  restored to their last good state.
 
 # Notes:
-  DO NOT USE THESE EXCEPTIONS DIRECTLY. Limited use in the finally statement of a try-except block.
+  DO NOT USE THESE EXCEPTION DIRECTLY. Limited use in the finally statement of a try-except block.
 
 
 ### Results
-Operations and methods that return data raise exceptions if inputs break business rules or 
-run into edge cases. Raising exceptions crashes the application which violates a core feature.
+Operations and methods that return data raise exception if inputs break business rules or 
+run into edge cases. Raising exception crashes the application which violates a core feature.
 
 #### Policy for Fulfilling Reliability Requirement
-Return exceptions to the caller for soft handling or rolling back.
+Return exception to the caller for soft handling or rolling back.
 
 #### Mechanism for Policy Enforcement
 `Result` Abstract Data Type that holds data returned from accessor method or exception it threw.
@@ -582,7 +582,7 @@ Do not import the terminal package. This will be messy and difficult to keep tra
  * Operations that return an object, but may fail due to business logic or other reasons.
  * Methods that may fail due to external factors (e.g., network issues, file I
 
-#### `Result` Exceptions 
+#### `Result` Exception 
 
 #### `Result` Subclasses
 1. `BuildResult`
@@ -598,11 +598,11 @@ Do not import the terminal package. This will be messy and difficult to keep tra
 ### Search
 #### Search Results
 
-### Exceptions
+### Exception
 Conditions which violate business logic, raise data inconsistencies or break operations raise an exception.
-Exceptions aid bug tracking and maintenance. Exceptions can only break the system in development. In production
+Exception aid bug tracking and maintenance. Exception can only break the system in development. In production
 an exception will display a notification and return to the last good state after the user makes a choice. All
-exceptions in the application are subclasses of `ChessException`. This distinguishes `ChessBot` exceptions from 
+exception in the application are subclasses of `ChessException`. This distinguishes `ChessBot` exception from 
 others.
 
 #### The `ChessException` Class
@@ -632,8 +632,8 @@ work. All subclasses must have an `ERROR_CODE` and `DEFAULT_MESSAGE`
 * `MovingException`
 * `AreanException`
 
-All the exceptions have the same static fields `ERROR_CODE` and `DEFAULT_MESSAGE`. Classes that carry results;
-`Result`, `BuildResult`, `ValidationResult`, `TransactionResult` and 'SearchResult` may only raise exceptions
+All the exception have the same static fields `ERROR_CODE` and `DEFAULT_MESSAGE`. Classes that carry results;
+`Result`, `BuildResult`, `ValidationResult`, `TransactionResult` and 'SearchResult` may only raise exception
 about mutual exclusion requirements in their fields.'
 
 
@@ -794,7 +794,7 @@ sequenceDiagram
 ---
 
 ## API Reference
-*(placeholder for Builders, Validators, Transactions, Events, Exceptions reference)*
+*(placeholder for Builders, Validators, Transactions, Events, Exception reference)*
 
 ---
 

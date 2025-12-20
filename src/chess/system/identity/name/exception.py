@@ -11,40 +11,40 @@ from chess.system import BlankTextException, NullException, TextException, Valid
 
 
 __all__ = [
- #======================# NAME EXCEPTION SUPER CLASS #======================#
+ #======================# NAME EXCEPTION #======================#
     "NameException",
-#======================# NAME VALIDATION EXCEPTIONS #======================#
+#======================# NAME VALIDATION EXCEPTION #======================#
     "InvalidNameException",
-#======================# NAME NULL/BLANK EXCEPTIONS #======================#
+#======================# NAME NULL/BLANK EXCEPTION #======================#
     "NullNameException",
     "WhiteSpaceNameException",
-#======================# NAME LENGTH EXCEPTIONS #======================#
+#======================# NAME LENGTH EXCEPTION #======================#
     "ShortNameException",
     "LongNameException",
 ]
 
 
-#======================# NAME EXCEPTION SUPER CLASS #======================#
+#======================# NAME EXCEPTION #======================#
 class NameException(TextException, ValidationException):
     """
-    Super class of designation exceptions. Subclasses give precise, fine-grained information which make
+    Super class of designation exception. Subclasses give precise, fine-grained information which make
     debugging faster. Use this exception as a fallback.
     """
     ERROR_CODE = "NAME_ERROR"
     DEFAULT_MESSAGE = "Name raised an exception"
 
 
-#======================# NAME VALIDATION EXCEPTIONS #======================#
+#======================# NAME VALIDATION EXCEPTION #======================#
 class InvalidNameException(NameException):
     """
-    Super class of designation exceptions. Subclasses give precise, fine-grained information which make
+    Super class of designation exception. Subclasses give precise, fine-grained information which make
     debugging faster. Use this exception as a fallback.
     """
     ERROR_CODE = "NAME_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Name validation failed"
 
 
-#======================# NAME NULL/BLANK EXCEPTIONS #======================#
+#======================# NAME NULL/BLANK EXCEPTION #======================#
 class NullNameException(InvalidNameException, NullException):
     """Raised if an entity, method, or operation requires Name but gets null instead."""
     ERROR_CODE = "NULL_NAME_ERROR"
@@ -57,7 +57,7 @@ class WhiteSpaceNameException(InvalidNameException, BlankTextException):
     DEFAULT_MESSAGE = "Name cannot be white space only"
 
 
-#======================# NAME LENGTH EXCEPTIONS #======================#
+#======================# NAME LENGTH EXCEPTION #======================#
 class ShortNameException(InvalidNameException):
     """Raised if designation is below MIN_NAME_LENGTH."""
     ERROR_CODE = "SHORT_NAME_ERROR"

@@ -11,7 +11,7 @@ from chess.system import OperationFailedException
 from chess.team import TeamContextServiceException
 
 __all__ = [
-    #======================# OPERATION TEAM_CONTEXT_SERVICE EXCEPTIONS #======================#
+    #======================# OPERATION TEAM_CONTEXT_SERVICE EXCEPTION #======================#
     "TeamContextServiceOperationFailedException",
 ]
 

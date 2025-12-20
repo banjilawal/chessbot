@@ -12,11 +12,11 @@ from chess.piece import PieceDataServiceException
 
 
 __all__ = [
-    #======================# PIECE_DATA_SERVICE VALIDATION EXCEPTIONS #======================#
+    #======================# PIECE_DATA_SERVICE VALIDATION EXCEPTION #======================#
     "InvalidPieceDataServiceException",
 ]
 
-#======================# PIECE_DATA_SERVICE VALIDATION EXCEPTIONS #======================#
+#======================# PIECE_DATA_SERVICE VALIDATION EXCEPTION #======================#
 class InvalidPieceDataServiceException(PieceDataServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

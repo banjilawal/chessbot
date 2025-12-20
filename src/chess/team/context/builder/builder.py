@@ -23,27 +23,26 @@ from chess.team import (
 
 class TeamContextBuilder(Builder[TeamContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
-     1.  Produce TeamContext instances whose integrity is always guaranteed.
-     2.  Manage construction of TeamContext instances that can be used safely by the client.
-     3.  Ensure params for TeamContext creation have met the application's safety contract.
-     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    # RESPONSIBILITIES:
+    1.  Produce TeamContext instances whose integrity is always guaranteed.
+    2.  Manage construction of TeamContext instances that can be used safely by the client.
+    3.  Ensure params for TeamContext creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
-         * Builder
+    # PARENT:
+        *   Builder
 
-     # PROVIDES:
-        *   build
+    # PROVIDES:
+    None
 
-     # LOCAL ATTRIBUTES:
-     None
+    # LOCAL ATTRIBUTES:
+    None
 
-     # INHERITED ATTRIBUTES:
-     None
-     """
-    
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
@@ -60,23 +59,24 @@ class TeamContextBuilder(Builder[TeamContext]):
     ) -> BuildResult[TeamContext]:
         """
         # Action:
-            1. Confirm that only one in the tuple (id, designation, player_agent, color, team_schema), is not null.
-            2. Certify the not-null attribute is safe using the appropriate entity_service and validator.
-            3. If all checks pass build the PieceContext in a BuildResult.
+            1.  Confirm that only one in the tuple (id, designation, player_agent, color, team_schema), is not null.
+            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            3.  If all checks pass build a TeamContext and send in a BuildResult. Else, send an exception
+                in the BuildResult.
 
         # Parameters:
-        Only one these must be provided:
-            *   id (Optional[int])
-            *   designation (Optional[int])
-            8   arena (Optional[Arena])
-            *   player_agent (Optional[PlayerAgent])
-            *   color (Optional[ArenaColor])
-
-        These Parameters must be provided:
-            *   arena_service (ArenaService)
-            *   agent_certifier (PlayerAgentService)
-            *   identity_service (IdentityService)
-            *   schema_validator (TeamSchemaValidator)
+            Only one these must be provided:
+                *   id (Optional[int])
+                *   designation (Optional[int])
+                8   arena (Optional[Arena])
+                *   player_agent (Optional[PlayerAgent])
+                *   color (Optional[ArenaColor])
+    
+            These Parameters must be provided:
+                *   arena_service (ArenaService)
+                *   agent_certifier (PlayerAgentService)
+                *   identity_service (IdentityService)
+                *   schema_validator (TeamSchemaValidator)
 
         # Returns:
         BuildResult[TeamContext] containing either:
@@ -84,8 +84,8 @@ class TeamContextBuilder(Builder[TeamContext]):
             - On failure: Exception.
 
         # Raises:
+            *   ZeroTeamContextFlagsException
             *   TeamContextBuildFailedException
-            *   NoTeamContextFlagsException
             *   ExcessiveTeamContextFlagsException
         """
         method = "PieceSearchContextBuilder.builder"

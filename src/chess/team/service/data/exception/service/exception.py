@@ -22,7 +22,7 @@ __all__ = [
 #======================# TEAM_DATA_SERVICE EXCEPTION #======================#
 class TeamDataServiceException(DataServiceException):
     """
-    Catchall for exceptions which aren't about inserting or deleting Teams. Wrapper for
+    Catchall for exception which aren't about inserting or deleting Teams. Wrapper for
     component entity_service reliability failures.
     """
     ERROR_CODE = "TEAM_DATA_SERVICE_ERROR"

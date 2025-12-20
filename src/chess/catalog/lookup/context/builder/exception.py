@@ -12,12 +12,12 @@ from chess.catalog import CatalogContextException
 
 
 __all__ = [
-    # ======================# CATALOG_CONTEXT BUILD EXCEPTIONS #======================#
+    # ======================# CATALOG_CONTEXT BUILD EXCEPTION #======================#
     "CatalogContextBuildFailedException",
 ]
 
 
-# ======================# CATALOG_CONTEXT BUILD EXCEPTIONS #======================#
+# ======================# CATALOG_CONTEXT BUILD EXCEPTION #======================#
 class CatalogContextBuildFailedException(CatalogContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

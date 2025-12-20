@@ -43,15 +43,15 @@ True
 ---
 
 ## PURPOSE
-This package defines specific exceptions for issues encountered during team_name discover's movement or promotion
+This package defines specific exception for issues encountered during team_name discover's movement or promotion
 validate. This granular approach helps to quickly diagnose and resolve problems by pinpointing the
 exact nature of the err, such as an invalid move for team_name specific discover type. Each team_exception acts as team_name
 wrapper for underlying errors, providing team_name clean and consistent API for handling movement-related failures.
 
-###CORE RANK EXCEPTIONS
+###CORE RANK EXCEPTION
 * `RankException`: The base team_exception for all bounds-related errors.
 
-#### Moving related Rank Exceptions
+#### Moving related Rank Exception
 * `BishopMovingException`
 * `KingMovingException`
 * `KnightMovingException`
@@ -59,7 +59,7 @@ wrapper for underlying errors, providing team_name clean and consistent API for 
 * `RookMovingException`
 * `QueenMovingException`
 
-#### Rank Validation Exceptions
+#### Rank Validation Exception
 * `InvalidBishopException`
 * `InvalidKingException`
 * `InvalidKnightException`
@@ -69,7 +69,7 @@ wrapper for underlying errors, providing team_name clean and consistent API for 
 
 
 ### EXAMPLE EXCEPTION USAGES
-These exceptions are typically raised within team_name `Rank` class's movement methods and can be caught to handle
+These exception are typically raised within team_name `Rank` class's movement methods and can be caught to handle
 invalid moves gracefully.
 
 # >>> from chess.bounds import PawnException

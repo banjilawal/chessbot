@@ -130,7 +130,7 @@ BuildResult[Coord]: A `BuildResult` containing either:
   - On failure: Error information and error details
 
 Raises:
-`CoordBuildFailedException`: Wraps any exceptions raised builder. These are:
+`CoordBuildFailedException`: Wraps any exception raised builder. These are:
   * `NullRowException`: if `row` is validation.
   * `NullColumnException`: if `column` is validation.
   * `RowBelowBoundsException`: if `row` < 0.
@@ -150,7 +150,7 @@ Raises:
 # -[CartesianDistance](  # cartesiandistance)
 # -[Usage Examples](  # usage-examples)
 # -[Basic Operations](  # basic-rollback)
-# -[Class Exceptions](  # class-exceptions)
+# -[Class Exception](  # class-exception)
 #
 # ## 📌 Purpose
 # Provides geometric primitives for chess board coordinates:
@@ -351,9 +351,9 @@ Raises:
 # distance = CartesianDistance(p, q)
 # ```
 #
-# ## Class Exceptions
-# Exceptions
-# for tracing source of exceptions with a `Coordinate`.
+# ## Class Exception
+# Exception
+# for tracing source of exception with a `Coordinate`.
 #
 # - `CoordinateException`: General
 # thrown
@@ -374,13 +374,13 @@ SCOPE:
 This module is exclusively for defining all custom **rollback_exception classes** that are specific to the
 creation, coord_stack_validator, and manipulation of Coord objects.
 
-**Limitations** It does not contain any logic for raising these exceptions; that responsibility
+**Limitations** It does not contain any logic for raising these exception; that responsibility
 Coord, CoordBuilder, and CoordValidator
 
 THEME:
 -----
 * Granular, targeted error reporting
-* Wrapping exceptions
+* Wrapping exception
 
 **Design Concepts**:
   1. Each consistency and behavior in the Coord class has an exception specific to its possible
@@ -400,11 +400,11 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From chess.system:
-  * Exceptions: ChessException, ValidationFailedException, NullException,
+  * Exception: ChessException, ValidationFailedException, NullException,
         BuildFailedException.
 
 CONTAINS:
 --------
-See the list of exceptions in the __all__ list following (e.g., CoordException,
+See the list of exception in the __all__ list following (e.g., CoordException,
 NullCoordException, InvalidCoordException, ).
 """

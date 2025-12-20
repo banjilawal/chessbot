@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/disabled/collision.py
+# src/chess/piece/number_bounds_validator/exception/disabled/collision.py
 
 """
-Module: chess.piece.validator.exception.disabled.exception
+Module: chess.piece.number_bounds_validator.exception.disabled.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -17,7 +17,7 @@ class DisabledPieceException(InvalidPieceException):
     Raised when a disabled Piece tries to do something.
 
 
-    # RELATED EXCEPTIONS
+    # RELATED EXCEPTION
         *   AttackException
         *   CastlingException
         *   CheckmateException
@@ -64,8 +64,8 @@ class PieceWithNoStartingPlacementException(TurnSceneException):
 
 class HostageActivityException(PieceException):
     """
-    Several exceptions can be raised during capture rollback. This class is the parent of
-    exceptions an attacking owner can raised. Do not use directly. Subclasses give details
+    Several exception can be raised during capture rollback. This class is the parent of
+    exception an attacking owner can raised. Do not use directly. Subclasses give details
     useful for debugging.
     """
     ERROR_CODE = "HOSTAGE_ACTIVITY_ERROR"

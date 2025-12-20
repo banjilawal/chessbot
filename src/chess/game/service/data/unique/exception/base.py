@@ -22,9 +22,9 @@ class UniqueGameDataServiceException(GameException, UniqueDataServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by UniqueGameDataService objects.
+    1.  Parent of exception raised by UniqueGameDataService objects.
     2.  Raised when an exception hits the try-finally block of a UniqueGameDataService method.
-    3.  Catchall for UniqueGameDataService failures that are not covered by a lower level UniqueGameDataService exceptions.
+    3.  Catchall for UniqueGameDataService failures that are not covered by a lower level UniqueGameDataService exception.
 
     # PARENT:
         *   GameException

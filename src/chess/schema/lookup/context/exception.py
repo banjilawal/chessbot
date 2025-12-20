@@ -11,20 +11,20 @@ from chess.system import ContextException
 from chess.schema import SchemaException
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT EXCEPTION SUPER CLASS #======================#
+    # ======================# SCHEMA_CONTEXT EXCEPTION #======================#
     "SchemaContextException",
 ]
 
 
 
-# ======================# SCHEMA_CONTEXT EXCEPTION SUPER CLASS #======================#
+# ======================# SCHEMA_CONTEXT EXCEPTION #======================#
 class SchemaContextException(SchemaException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by SchemaContext objects.
-    2.  Catchall for conditions which are not covered by lower level SchemaContext exceptions.
+    1.  Parent of exception raised by SchemaContext objects.
+    2.  Catchall for conditions which are not covered by lower level SchemaContext exception.
 
     # PARENT:
         *   SchemaException

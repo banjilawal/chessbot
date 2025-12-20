@@ -1,7 +1,7 @@
-# src/chess/formation/validator/exception/name.py
+# src/chess/formation/number_bounds_validator/exception/name.py
 
 """
-Module: chess.formation.validator.exception.name
+Module: chess.formation.number_bounds_validator.exception.name
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

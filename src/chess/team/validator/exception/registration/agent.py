@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/registration/player_agent.py
+# src/chess/team/number_bounds_validator/exception/registration/player_agent.py
 
 """
-Module: chess.team.validator.exception.registration.player_agent
+Module: chess.team.number_bounds_validator.exception.registration.player_agent
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

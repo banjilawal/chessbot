@@ -20,27 +20,26 @@ from chess.game import (
 
 class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
     """
-     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
-     # RESPONSIBILITIES:
-     1.  Produce GameSnapshotContext instances whose integrity is always guaranteed.
-     2.  Manage construction of GameSnapshotContext instances that can be used safely by the client.
-     3.  Ensure params for GameSnapshotContext creation have met the application's safety contract.
-     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    # RESPONSIBILITIES:
+    1.  Produce GameSnapshotContext instances whose integrity is always guaranteed.
+    2.  Manage construction of GameSnapshotContext instances that can be used safely by the client.
+    3.  Ensure params for GameSnapshotContext creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-     # PARENT:
-         * Builder
+    # PARENT:
+        *   Builder
 
-     # PROVIDES:
-     None
+    # PROVIDES:
+    None
 
-     # LOCAL ATTRIBUTES:
-     None
+    # LOCAL ATTRIBUTES:
+    None
 
-     # INHERITED ATTRIBUTES:
-     None
-     """
-    
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
@@ -55,20 +54,20 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
         """
         # Action:
             1.  Confirm that only one in the (team, player_agent, timestamp) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
-            3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success Build an GameSnapshotContext are return in a BuildResult.
+            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            3.  If all checks pass build a GameSnapshotContext and send in a BuildResult. Else, send an exception
+                in the BuildResult.
 
         # Parameters:
-        Only one these must be provided:
-            *   team (Optional[Team])
-            *   player_agent (Optional[PlayerAgent])
-            *   timestamp (Optional[int])
-
-        These Parameters must be provided:
-            *   team_service (TeamService)
-            *   player_agent_service (PlayerAgentService)
-            *   number_validator (NumberValidator)
+            Only one these must be provided:
+                *   team (Optional[Team])
+                *   player_agent (Optional[PlayerAgent])
+                *   timestamp (Optional[int])
+    
+            These Parameters must be provided:
+                *   team_service (TeamService)
+                *   player_agent_service (PlayerAgentService)
+                *   not_negative_validator (NumberValidator)
 
         # Returns:
         BuildResult[GameSnapshotContext] containing either:
@@ -76,8 +75,8 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
             - On failure: Exception.
 
         # Raises:
-            *   GameSnapshotContextBuildFailedException
             *   ZeroGameSnapshotContextFlagsException
+            *   GameSnapshotContextBuildFailedException
             *   ExcessiveGameSnapshotContextFlagsException
         """
         method = "GameSnapshotContextBuilder.build"
@@ -96,8 +95,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
                 return BuildResult.failure(
                     ExcessiveGameSnapshotContextFlagsException(f"{method}: {ExcessiveGameSnapshotContextFlagsException}")
                 )
-            # After verifying only one PlayerAgent attribute-value-tuple is enabled, validate it.
-            
+            # After verifying only one GameSnapshot attribute-value-tuple is enabled, validate it.
 
             # Build the timestamp GameSnapshotContext if its flag is enabled.
             if timestamp is not None:
@@ -107,7 +105,6 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
                 # On validation success return an timestamp_GameSnapshotContext in the BuildResult.
                 return BuildResult.success(payload=GameSnapshotContext(timestamp=timestamp))
             
-            # PlayerAgent flag enabled, build flow.
             # Build the agent GameSnapshotContext if its flag is enabled.
             if agent is not None:
                 validation = agent_service.validator.validate(candidate=agent)
@@ -116,7 +113,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
                 # On validation success return an agent_GameSnapshotContext in the BuildResult.
                 return BuildResult.success(payload=GameSnapshotContext(agent=agent))
             
-            # Build the team AgentContext if its flag is enabled.
+            # Build the team GameSnapshotContext if its flag is enabled.
             if team is not None:
                 validation = team_service.validator.validate(candidate=team)
                 if validation.is_failure:
@@ -128,7 +125,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
-        # Finally, if there is an unhandled exception Wrap an GameSnapshotContextBuildFailedException around it then
+        # Finally, if there is an unhandled exception Wrap a GameSnapshotContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(

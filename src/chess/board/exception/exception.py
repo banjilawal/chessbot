@@ -16,7 +16,7 @@ __all__ = [
 
 class BoardException(ChessException):
     """
-    Super class of exceptions raised by Board objects. Do not use directly. Subclasses give
+    Super class of exception raised by Board objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
     ERROR_CODE = "BOARD_ERROR"

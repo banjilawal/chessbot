@@ -1,7 +1,7 @@
-# src/chess/system/service/validator/__init__.py
+# src/chess/system/service/number_bounds_validator/__init__.py
 
 """
-Module: chess.system.service.validator.__init__
+Module: chess.system.service.number_bounds_validator.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 """

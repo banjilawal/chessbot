@@ -56,7 +56,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
     def push_unique_item(self, item: Piece) -> InsertionResult[Piece]:
         """
         # ACTION:
-        1.  Use TeamDataService.service.validator to certify item.
+        1.  Use TeamDataService.service.number_bounds_validator to certify item.
         2.  If certification fails return the exception inside an InsertionResult.
         3.  Otherwise, push item onto the stack.
         4.  Send the successfully pushed data back in an InsertionResult.
@@ -96,7 +96,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
             # pushing the item on to the stack.
             return self._data_service.push_item(item)
         
-        # Finally return an InsertionResult containing any unhandled exceptions insided an
+        # Finally return an InsertionResult containing any unhandled exception insided an
         # UniquePieceDataServiceException
         except Exception as ex:
             return InsertionResult.failure(
