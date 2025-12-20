@@ -56,8 +56,8 @@ class GameBuilder(Builder[Game]):
     
         # PARAMETERS:
             *   id (int)
-            *   white_agent (PlayerAgent)
-            *   black_agent (GameSchema)
+            *   white_player (PlayerAgent)
+            *   black_player (GameSchema)
             *   identity_service (IdentityService)
             *   player_agent_service (AgentService)
             *   board_certifier (BoardCertifier)

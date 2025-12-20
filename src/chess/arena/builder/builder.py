@@ -9,12 +9,14 @@ version: 1.0.0
 
 from typing import List
 
-from chess.board import BoardService
-from chess.schema import Schema
+from chess.board import Board, BoardService
 from chess.team import Team, UniqueTeamDataService
 from chess.agent import PlayerAgent, AgentService
-from chess.arena import Arena, ArenaBuildFailedException
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ServiceValidator, id_emitter
+from chess.arena import Arena, ArenaBuildFailedException, DuplicatePlayerInArenaException
+from chess.system import (
+    Builder, BuildResult, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult,
+    id_emitter
+)
 
 
 class ArenaBuilder(Builder[Arena]):
@@ -43,8 +45,9 @@ class ArenaBuilder(Builder[Arena]):
     @classmethod
     def build(
             cls,
-            white_agent: PlayerAgent,
-            black_agent: PlayerAgent,
+            board: Board,
+            white_player_tuple: SchemaAgentTuple,
+            black_player_tuple: SchemaAgentTuple,
             id: int = id_emitter.arena_id,
             agent_service: AgentService = AgentService(),
             board_service: BoardService = BoardService(),
@@ -74,22 +77,21 @@ class ArenaBuilder(Builder[Arena]):
         try:
             # Ensure the id is safe to use.
             id_validation = identity_service.validate_id(candidate=id)
-            if id_validation.failure:
+            if id_validation.is_failure:
                 return BuildResult.failure(id_validation.exception)
             
-            # Run safety checks on the agents
-            for agent in (white_agent, black_agent):
-                validation = agent_service.validator.validate(candidate=agent)
-                if validation.failure:
-                    return BuildResult.failure(validation.exception)
-            # Handle the case the agents are the same.
-            if white_agent == black_agent:
-                return BuildResult.failure(ArenaBuildFailedException(f"{method}: The players cannot be the same."))
+            # Verify the board.
+            board_validation = board_service.validator.validate(candidate=board)
+            if board_validation.is_failure:
+                return BuildResult.failure(board_validation.exception)
             
-            # Verify the board service.
-            service_validation = service_validator.validate(board_service)
-            if service_validation.failure:
-                return BuildResult.failure(service_validation.exception)
+            # Certify the player intergity and uniqueness.
+            player_certifications = cls._certify_players(players=[white_player, black_player])
+            if player_certifications.is_failure:
+                return BuildResult.failure(player_certifications.exception)
+            
+            
+            
             
             # When the checks pass build the Arena object.
             arena = Arena(id=id, board=board_service, team_service=UniqueTeamDataService())
@@ -97,12 +99,12 @@ class ArenaBuilder(Builder[Arena]):
             # Then build the teams
             team_builds = cls._build_arena_teams(
                 arena=arena,
-                team_param_tuples=[(white_agent, TeamSchema.WHITE), (black_agent, TeamSchema.BLACK)],
+                team_param_tuples=[(white_player, TeamSchema.WHITE), (black_player, TeamSchema.BLACK)],
             )
             
             black_team = black_team_build_result.payload
-            if black_team != black_agent.current_team:
-                black_agent.team_assignments.push_unique_item(black_team)
+            if black_team != black_player.current_team:
+                black_player.team_assignments.push_unique_item(black_team)
             
             board_certification = service_validator.validate(board_service)
             if board_certification.failure():
@@ -124,6 +126,36 @@ class ArenaBuilder(Builder[Arena]):
                 ArenaBuildFailedException(
                     ex=ex, message=f"{method}: {ArenaBuildFailedException.DEFAULT_MESSAGE}"
                 )
+            )
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _certify_players(
+            cls,
+            players: List[PlayerAgent],
+            player_service: AgentService = AgentService()
+    ) -> ValidationResult[List[PlayerAgent]]:
+        """"""
+        method = "ArenaBuilder._certify_players"
+        try:
+            # Perform the basic player_agent safety validation.
+            for player in players:
+                validation = player_service.validator.validate(candidate=player)
+                if validation.failure:
+                    return ValidationResult.failure(validation.exception)
+            # Handle the case the agents are the same.
+            if players[0] == players[1]:
+                return ValidationResult.failure(
+                    DuplicatePlayerInArenaException(f"{method}: {DuplicatePlayerInArenaException.DEFAULT_MESSAGE}")
+                )
+            # After individual piece integrity certifcation and uniqueness verification send a success result.
+            return ValidationResult.success(payload=players)
+        
+        # Finally, if there is an unhandled exception Wrap an ArenaBuildFailedException around it then
+        # return the exception-chain inside the ValidationResult.
+        except Exception as ex:
+            return ValidationResult.failure(
+                ArenaBuildFailedException(ex=ex, message=f"{method}: {ArenaBuildFailedException.DEFAULT_MESSAGE}")
             )
         
     @classmethod
