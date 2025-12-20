@@ -12,7 +12,7 @@ from chess.square import InvalidSquareContextException
 
 __all__ = [
     "ZeroSquareContextFlagsException",
-    "ExcessiveSquareContextFlagsSetException"
+    "ExcessiveSquareContextFlagsException"
 ]
 
 class ZeroSquareContextFlagsException(

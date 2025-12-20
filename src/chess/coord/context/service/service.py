@@ -29,7 +29,7 @@ class CoordContextService(ContextService[CoordContext]):
         *   ContextService
 
     # PROVIDES:
-        *   CoordContextService
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -51,11 +51,11 @@ class CoordContextService(ContextService[CoordContext]):
         Constructor
 
         # Parameters:
-            *   designation (str): Default value - SERVICE_NAME
-            *   id (int): Default value - id_emitter.service_id
-            *   finder (CoordFinder): Default value - CoordFinder()
-            *   builder (CoordContextBuilder): Default value - CoordContextBuilder()
-            *   number_bounds_validator (CoordContextValidator): Default value - CoordContextValidator()
+            *   id (int)
+            *   name (str)
+            *   finder (CoordFinder)
+            *   builder (CoordContextBuilder)
+            *   validator (CoordContextValidator)
 
         # Returns:
         None

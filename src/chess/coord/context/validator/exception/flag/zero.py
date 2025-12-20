@@ -8,17 +8,17 @@ version: 1.0.0
 """
 
 
-from chess.system import BoundsException
+from chess.system import ContextFlagCountException
 from chess.coord import InvalidCoordContextException
 
 __all__ = [
     # ========================= ZERO_COORD_CONTEXT_FLAGS EXCEPTION =========================#
-    "ZeroCoordContextFlagsSetException"
+    "ZeroCoordContextFlagsException"
 ]
 
 
 # ========================= ZERO_COORD_CONTEXT_FLAGS EXCEPTION =========================#
-class ZeroCoordContextFlagsSetException(InvalidCoordContextException, BoundsException):
+class ZeroCoordContextFlagsException(InvalidCoordContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class ZeroCoordContextFlagsSetException(InvalidCoordContextException, BoundsExce
         a search.
 
     # PARENT:
-        *   BoundsException
+        *   ContextFlagCountException
         *   InvalidCoordContextException
 
     # PROVIDES:

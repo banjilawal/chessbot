@@ -1,7 +1,7 @@
-# src/chess/catalog/lookup/lookup.py
+# src/chess/catalog/context/lookup/lookup.py
 
 """
-Module: chess.catalog.lookup.lookup
+Module: chess.catalog.context.lookup.lookup
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -12,11 +12,11 @@ from typing import List, Optional, cast
 
 from chess.catalog import (
     Catalog, CatalogContext, CatalogContextBuilder, CatalogContextValidator,
-    CatalogDesignationBoundsException, CatalogLookupException, CatalogLookupFailedException,
-    CatalogNameBoundsException, CatalogQuotaBoundsException, CatalogRansomBoundsException, CatalogValidator
+    CatalogDesignationBoundsException, CatalogLookupException, CatalogNameBoundsException,
+    CatalogQuotaBoundsException, CatalogRansomBoundsException, CatalogValidator
 )
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
-from chess.system import EnumLookup, LoggingLevelRouter, SearchResult, id_emitter
+from chess.system import EnumLookup, FailsafeBranchExitPointException, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class CatalogLookup(EnumLookup[CatalogContext]):
@@ -42,7 +42,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
     """
     SERVICE_NAME = "CatalogLookupService"
     
-    def __init__(
+    def lookup(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.lookup_id,
@@ -50,7 +50,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
             context_builder: CatalogContextBuilder = CatalogContextBuilder(),
             context_validator: CatalogContextValidator = CatalogContextValidator(),
     ):
-        super().__init__(
+        super().lookup(
             id=id,
             name=name,
             enum_validator=enum_validator,
@@ -139,7 +139,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   CatalogLookupFailedException
+            *   CatalogLookupException
             *   CatalogLookupException
         """
         method = "CatalogLookup.find"
@@ -165,7 +165,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
             
             # Failsafe if any context cases was missed
             return SearchResult.failure(
-                CatalogLookupFailedException(f"{method}: {CatalogLookupFailedException.DEFAULT_MESSAGE}")
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a CatalogLookupException then,
         # return the exception chain inside a SearchResult.
@@ -192,7 +192,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
 
         # Raises:
             *   CatalogDesignationBoundsException
-            *   CatalogLookupFailedException
+            *   CatalogLookupException
         """
         method = "CatalogLookup._lookup_by_name"
         try:
@@ -229,7 +229,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
 
         # Raises:
             *   CatalogDesignationBoundsException
-            *   CatalogLookupFailedException
+            *   CatalogLookupException
         """
         method = "CatalogLookup._lookup_by_designation"
         try:
@@ -266,7 +266,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
 
         # Raises:
             *   CatalogRansomBoundsException
-            *   CatalogLookupFailedException
+            *   CatalogLookupException
         """
         method = "CatalogLookup._lookup_by_quota"
         try:
@@ -303,7 +303,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
 
         # Raises:
             *   CatalogQuotaBoundsException
-            *   CatalogLookupFailedException
+            *   CatalogLookupException
         """
         method = "CatalogLookup._lookup_by_ransom"
         try:

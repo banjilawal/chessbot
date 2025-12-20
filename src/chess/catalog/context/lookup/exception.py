@@ -1,31 +1,30 @@
-# src/chess/catalog/lookup/exception/failure.py
+# src/chess/catalog/context/lookup/exception.py
 
 """
-Module: chess.catalog.lookup.exception.failure
+Module: chess.catalog.context.lookup.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException
-from chess.catalog import CatalogLookupException
+from chess.catalog import CatalogException
 
 __all__ = [
-    # ======================# CATALOG_LOOKUP_FAILED EXCEPTION #======================#
-    "CatalogLookupFailedException",
+    # ======================# CATALOG_LOOKUP EXCEPTION #======================#
+    "CatalogLookupException",
 ]
 
 
-# ======================# CATALOG_LOOKUP_FAILED EXCEPTION #======================#
-class CatalogLookupFailedException(CatalogLookupException, OperationFailedException):
+# ======================# CATALOG_LOOKUP EXCEPTION #======================#
+class CatalogLookupException(CatalogException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wraps unhandled exceptions that hit the try-finally block of a CatalogLookup.look method.
+    1.  Wraps unhandled exceptions that hit the try-finally block of a CatalogLookup method.
 
     # PARENT:
-        *   CatalogLookupException
+        *   CatalogException
 
     # PROVIDES:
     None

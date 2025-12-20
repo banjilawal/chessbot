@@ -1,7 +1,7 @@
-# src/chess/catalog/context/validator/exception/flag.py
+# src/chess/catalog/context/validator/exception/flag/zero.py
 
 """
-Module: chess.catalog.context.exception.flag
+Module: chess.catalog.context.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -11,52 +11,32 @@ from chess.system import ContextFlagCountException
 from chess.catalog import InvalidCatalogContextException
 
 __all__ = [
-    # ========================= NO_CATALOG_CONTEXT_FLAG EXCEPTION =========================#
-    "NoCatalogContextFlagException",
-    # ========================= TOO_MANY_CATALOG_CONTEXT_FLAGS EXCEPTION =========================#
-    "ExcessiveCatalogContextFlagsException"
+    # ========================= ZERO_CATALOG_CONTEXT_FLAGS EXCEPTION =========================#
+    "ZeroCatalogContextFlagsException"
 ]
 
 
-# ========================= NO_CATALOG_CONTEXT_FLAG EXCEPTION =========================#
-class NoCatalogContextFlagException(InvalidCatalogContextException, ContextFlagCountException):
+# ========================= ZERO_CATALOG_CONTEXT_FLAGS EXCEPTION =========================#
+class ZeroCatalogContextFlagsException(InvalidCatalogContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no CatalogContext flag is provided for a Catalog lookup.
+    1.  Indicates no CatalogContext flag was enabled. One and only one Catalog attribute-value tuple is required for
+        a search.
 
     # PARENT:
-        *   InvalidCatalogContextException
         *   ContextFlagCountException
+        *   InvalidCatalogContextException
 
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
-    None
-    """
-    ERROR_CODE = "NO_CATALOG_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "No CatalogContext flag was selected. A context flag must be turned on with a target value."
-
-
-# ========================= TOO_MANY_CATALOG_CONTEXT_FLAGS EXCEPTION =========================#
-class ExcessiveCatalogContextFlagsException(InvalidCatalogContextException, ContextFlagCountException):
-    """
-    # ROLE: ContextFlagException, CatalogContextException
-
-    # RESPONSIBILITIES:
-    1.  Indicate if more than one Catalog attribute is going to be used in a Catalog lookup.
-
-    # PARENT:
-        *   InvalidCatalogContextException
-        *   ContextFlagCountException
-
-    # PROVIDES:
+    # LOCAL ATTRIBUTES:
     None
 
-    # ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOO_MANY_CATALOG_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "More than one CatalogContext flag was selected. Only one context flag is allowed."
+    ERROR_CODE = "ZERO_CATALOG_CONTEXT_FLAGS_ERROR"
+    DEFAULT_MESSAGE = "Zero CatalogContext flags were set. One and only one context flag must be enabled,"

@@ -11,11 +11,11 @@ from chess.system import BoundsException
 from chess.square import InvalidSquareContextException
 
 __all__ = [
-    "ExcessiveSquareContextFlagsSetException"
+    "ExcessiveSquareContextFlagsException"
 ]
 
 
-class ExcessiveSquareContextFlagsSetException(
+class ExcessiveSquareContextFlagsException(
     InvalidSquareContextException,
     BoundsException
 ):

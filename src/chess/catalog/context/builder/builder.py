@@ -1,7 +1,7 @@
 # src/chess/catalog/context/builder/builder.py
 
 """
-Module: chess.catalog.context.builder
+Module: chess.catalog.context.builder.builder
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import Optional
 
 from chess.catalog import (
-    CatalogContext, CatalogContextBuildFailedException, NoCatalogContextFlagException,
-    ExcessiveCatalogContextFlagsException
+    CatalogContext, CatalogContextBuildFailedException,
+    ExcessiveCatalogContextFlagsException, ZeroCatalogContextFlagsException
 )
 from chess.system import (
     BuildResult, Builder, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter,
@@ -89,7 +89,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
             # Test if no params are set. Need an attribute-value pair to look up a rank's catalog_entry.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoCatalogContextFlagException(f"{method}: {NoCatalogContextFlagException.DEFAULT_MESSAGE}")
+                    ZeroCatalogContextFlagsException(f"{method}: {ZeroCatalogContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:

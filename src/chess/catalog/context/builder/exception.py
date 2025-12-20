@@ -1,7 +1,7 @@
 # src/chess/catalog/context/builder/exception.py
 
 """
-Module: chess.catalog.context.exception
+Module: chess.catalog.context.builder.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

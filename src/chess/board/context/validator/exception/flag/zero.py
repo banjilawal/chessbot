@@ -13,12 +13,12 @@ from chess.board import InvalidBoardContextException
 
 __all__ = [
     # ========================= ZERO_BOARD_CONTEXT_FLAGS EXCEPTION =========================#
-    "ZeroBoardContextFlagsSetException"
+    "ZeroBoardContextFlagsException"
 ]
 
 
 # ========================= ZERO_BOARD_CONTEXT_FLAGS EXCEPTION =========================#
-class ZeroBoardContextFlagsSetException(InvalidBoardContextException, BoundsException):
+class ZeroBoardContextFlagsException(InvalidBoardContextException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 

@@ -1,7 +1,7 @@
 # src/chess/catalog/context/validator/validator.py
 
 """
-Module: chess.catalog.context.number_bounds_validator
+Module: chess.catalog.context.validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.catalog import (
-    CatalogContext, InvalidCatalogContextException, NoCatalogContextFlagException, NullCatalogContextException,
-    ExcessiveCatalogContextFlagsException
+    CatalogContext, InvalidCatalogContextException, NullCatalogContextException,
+    ExcessiveCatalogContextFlagsException, ZeroCatalogContextFlagsException
 )
 from chess.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 
@@ -88,7 +88,7 @@ class CatalogContextValidator(Validator[CatalogContext]):
             # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoCatalogContextFlagException(f"{method}: {NoCatalogContextFlagException.DEFAULT_MESSAGE}")
+                    ZeroCatalogContextFlagsException(f"{method}: {ZeroCatalogContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:

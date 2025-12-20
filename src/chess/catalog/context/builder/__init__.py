@@ -1,7 +1,7 @@
 # src/chess/catalog/context/builder/__init__.py
 
 """
-Module: chess.catalog.context.__init__
+Module: chess.catalog.context.builder.__init__
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

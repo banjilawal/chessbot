@@ -1,7 +1,7 @@
 # src/chess/rank/model/pawn/validator_.py
 
 """
-Module: chess.rank.model.pawn.number_bounds_validator
+Module: chess.rank.model.pawn.validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

@@ -1,12 +1,13 @@
-# src/chess/agent/context/service/exception/base
+# src/chess/agent/context/service/exception/exception
 
 """
-Module: chess.agent.context.service.exception.base
+Module: chess.agent.context.service.exception.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
+from chess.agent import AgentContext
 from chess.system import ServiceException
 
 __all__ = [
@@ -16,7 +17,7 @@ __all__ = [
 
 
 #======================# AGENT_CONTEXT_SERVICE EXCEPTION #======================#
-class AgentContextServiceException(ServiceException):
+class AgentContextServiceException(AgentContext, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
     
@@ -27,6 +28,7 @@ class AgentContextServiceException(ServiceException):
         processes from their normal flows.
         
     # PARENT:
+        *   AgentContext
         *   ServiceException
 
     # PROVIDES:

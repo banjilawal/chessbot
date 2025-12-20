@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.piece import (
     ZeroPieceContextFlagsException, PieceContext, PieceContextBuildFailedException,
-    ExcessivePieceContextFlagsSetException
+    ExcessivePieceContextFlagsException
 )
 from chess.coord import Coord, CoordService
 from chess.rank import Rank, RankCertifier
@@ -103,7 +103,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessivePieceContextFlagsSetException(f"{method}: {ExcessivePieceContextFlagsSetException}")
+                    ExcessivePieceContextFlagsException(f"{method}: {ExcessivePieceContextFlagsException}")
                 )
             # After verifying only one PlayerAgent attribute-value-tuple is enabled, validate it.
             

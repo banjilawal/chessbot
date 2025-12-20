@@ -15,7 +15,7 @@ from chess.coord import Coord, CoordService
 from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService
 from chess.square import (
     ZeroSquareContextFlagsException, SquareContext, SquareContextBuildFailedException,
-    ExcessiveSquareContextFlagsSetException
+    ExcessiveSquareContextFlagsException
 )
 
 
@@ -95,8 +95,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveSquareContextFlagsSetException(
-                        f"{method}: {ExcessiveSquareContextFlagsSetException.DEFAULT_MESSAGE}"
+                    ExcessiveSquareContextFlagsException(
+                        f"{method}: {ExcessiveSquareContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # After verifying only one Square attribute-value-tuple is enabled, validate it.

@@ -1,7 +1,7 @@
 # src/chess/rank/model/rook/validator_.py
 
 """
-Module: chess.rank.model.rook.number_bounds_validator
+Module: chess.rank.model.rook.validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

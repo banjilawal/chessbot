@@ -14,5 +14,5 @@ version: 1.0.0
 None
 
 # Modules
-from .zero import ZeroCoordContextFlagsSetException
-from .excess import ExcessiveCoordContextFlagsSetException
+from .zero import ZeroCoordContextFlagsException
+from .excess import ExcessiveCoordContextFlagsException

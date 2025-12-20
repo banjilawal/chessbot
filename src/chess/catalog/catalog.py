@@ -8,10 +8,9 @@ version: 1.0.0
 """
 
 from enum import Enum
-from typing import List, Optional
+from typing import List
 
 from chess.geometry import Quadrant
-from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankSpec, Rook
 
 
 class Catalog(Enum):

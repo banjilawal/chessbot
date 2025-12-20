@@ -1,22 +1,44 @@
-# src/chess/coord/context/service/exception.py
+# src/chess/coord/context/service/exception/exception
 
 """
-Module: chess.coord.context.service.exception
+Module: chess.coord.context.service.exception.exception
 Author: Banji Lawal
-Created: 2025-11-16
+Created: 2025-09-16
 version: 1.0.0
 """
 
+from chess.coord import CoordContext
 from chess.system import ServiceException
 
+__all__ = [
+    # ======================# COORD_CONTEXT_SERVICE EXCEPTION #======================#
+    "CoordContextServiceException",
+]
 
-__all__ = ["CoordContextServiceException"]
 
-
-class CoordContextServiceException(ServiceException):
+# ======================# COORD_CONTEXT_SERVICE EXCEPTION #======================#
+class CoordContextServiceException(CoordContext, ServiceException):
     """
-    Super class of exception raised by CoordContextService objects.
-    Do not use directly. Subclasses give precise, fined-grained, debugging info.
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exception raised when an CoordContextService's normal operations are halted
+        by an error condition.
+    2.  Raised when no specific exception exists for the error interrupting CoordContextService's
+        processes from their normal flows.
+
+    # PARENT:
+        *   CoordContext
+        *   ServiceException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     ERROR_CODE = "COORD_CONTEXT_SERVICE_ERROR"
     DEFAULT_MESSAGE = "CoordContextService raised an exception."

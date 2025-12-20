@@ -14,7 +14,7 @@ from chess.coord.service import CoordService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.square import (
     InvalidSquareContextException, ZeroSquareContextFlagsException, NullSquareContextException,
-    SquareContext, ExcessiveSquareContextFlagsSetException
+    SquareContext, ExcessiveSquareContextFlagsException
 )
 
 
@@ -98,8 +98,8 @@ class SquareContextValidator(Validator[SquareContext]):
                 )     
             if flag_count > 1:
                 return ValidationResult.failure(
-                    ExcessiveSquareContextFlagsSetException(
-                        f"{method}: {ExcessiveSquareContextFlagsSetException.DEFAULT_MESSAGE}"
+                    ExcessiveSquareContextFlagsException(
+                        f"{method}: {ExcessiveSquareContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             # Pick the flag which was turned on 

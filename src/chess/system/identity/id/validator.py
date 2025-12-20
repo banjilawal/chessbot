@@ -1,7 +1,7 @@
 # src/chess/system/identity/id/validator.py
 
 """
-Module: chess.system.identity.id.number_bounds_validator
+Module: chess.system.identity.id.validator
 Author: Banji Lawal
 Created: 2025-08-12
 """

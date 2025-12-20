@@ -71,7 +71,7 @@ class PieceDataService(DataService[Piece]):
     def push_item(self, item: Piece) -> InsertionResult[Piece]:
         """
         # ACTION:
-        1.  Use PieceDataService.service.number_bounds_validator to certify item.
+        1.  Use PieceDataService.service.validator to certify item.
         2.  If certification fails return the exception inside an InsertionResult.
         3.  Otherwise, push item onto the stack.
         4.  Send the successfully pushed data back in an InsertionResult.
@@ -107,7 +107,7 @@ class PieceDataService(DataService[Piece]):
         """
         # ACTION:
         1.  Pass context argument to self.searcher.
-        2.  Pass self.items and self.context_service.number_bounds_validator to self.searcher's renaming params.
+        2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
         3.  The Finder object will return any exception if it fails, success otherwise.
         4.  Because Finder object does all the error using a try-catch is uneccesar
         

@@ -1,7 +1,7 @@
 # src/chess/team/order/validator.py
 
 """
-Module: chess.team.order.number_bounds_validator
+Module: chess.team.order.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

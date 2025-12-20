@@ -7,13 +7,15 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.system.err import ChessException
+from chess.system import ChessException
 
 __all__ = [
+    # ========================= CATALOG EXCEPTION =========================#
     "CatalogException",
 ]
 
 
+# ========================= CATALOG EXCEPTION =========================#
 class CatalogException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

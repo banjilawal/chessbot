@@ -1,7 +1,7 @@
 # src/chess/rank/model/queen/validator_.py
 
 """
-Module: chess.rank.model.queen.number_bounds_validator
+Module: chess.rank.model.queen.validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

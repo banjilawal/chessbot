@@ -1,7 +1,7 @@
 # src/chess/system/validate/validator.py
 
 """
-Module: chess.system.validate.number_bounds_validator
+Module: chess.system.validate.validator
 Author: Banji Lawal
 Created: 2025-09-28
 """
