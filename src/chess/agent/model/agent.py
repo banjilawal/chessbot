@@ -65,7 +65,6 @@ class PlayerAgent(ABC):
         method = "AgentContextService.agent"
         self._id = id
         self._name = name
-        self._games = games
         self._team_assignments = team_assignments
         self._current_team = self._team_assignments.current_team
     

@@ -30,7 +30,6 @@ class SchemaAgentPairService(EntityService[SchemaAgentPair]):
     def builder(self) -> SchemaAgentPairBuilder:
         return cast(SchemaAgentPairBuilder, self._builder)
     
-    
     @property
     def validator(self) -> SchemaAgentPairValidator:
         return cast(SchemaAgentPairValidator, self._validator)

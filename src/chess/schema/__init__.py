@@ -10,7 +10,7 @@ version: 1.0.0
 #=========== SCHEMA PACKAGE CONTENTS ===========#
 
 # Packages
-from .lookup import *
+from .context import *
 from .validator import *
 
 # Modules

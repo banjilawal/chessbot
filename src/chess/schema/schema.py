@@ -8,13 +8,10 @@ version: 1.0.0
 """
 
 from enum import Enum
-from typing import List
-
 
 from chess.scalar import Scalar
 from chess.geometry import Quadrant
-from chess.system import GameColor, ROW_SIZE, SearchResult
-from chess.formation import BattleOrder, BattleOrderLookup, OrderContext
+from chess.system import GameColor, ROW_SIZE
 
 
 class Schema(Enum):
@@ -76,10 +73,10 @@ class Schema(Enum):
     @property
     def pawn_row(self) -> int:
         return self._rank_row + self._advancing_step.value
-    
-    @property
-    def battle_order(self) -> SearchResult[List[BattleOrder]]:
-            return BattleOrderLookup().lookup(context=OrderContext(color=self._color))
+    #
+    # @property
+    # def battle_order(self) -> SearchResult[List[BattleOrder]]:
+    #         return BattleOrderLookup().lookup(context=OrderContext(color=self._color))
     
     def __str__(self) -> str:
         return (

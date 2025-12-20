@@ -46,12 +46,8 @@ class ArenaBuilder(Builder[Arena]):
     def build(
             cls,
             board: Board,
-            white_player_tuple: SchemaAgentTuple,
-            black_player_tuple: SchemaAgentTuple,
             id: int = id_emitter.arena_id,
-            agent_service: AgentService = AgentService(),
             board_service: BoardService = BoardService(),
-            service_validator: ServiceValidator = ServiceValidator(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Arena]:
         """
@@ -85,37 +81,7 @@ class ArenaBuilder(Builder[Arena]):
             if board_validation.is_failure:
                 return BuildResult.failure(board_validation.exception)
             
-            # Certify the player intergity and uniqueness.
-            player_certifications = cls._certify_players(players=[white_player, black_player])
-            if player_certifications.is_failure:
-                return BuildResult.failure(player_certifications.exception)
-            
-            
-            
-            
-            # When the checks pass build the Arena object.
-            arena = Arena(id=id, board=board_service, team_service=UniqueTeamDataService())
-            
-            # Then build the teams
-            team_builds = cls._build_arena_teams(
-                arena=arena,
-                team_param_tuples=[(white_player, TeamSchema.WHITE), (black_player, TeamSchema.BLACK)],
-            )
-            
-            black_team = black_team_build_result.payload
-            if black_team != black_player.current_team:
-                black_player.team_assignments.push_unique_item(black_team)
-            
-            board_certification = service_validator.validate(board_service)
-            if board_certification.failure():
-                return BuildResult.failure(board_certification.exception)
-            
-            return BuildResult.success(
-                payload=Arena(
-                    id=id,
-                    board=board_service,
-                )
-            )
+            return BuildResult.success(payload=Arena(id=id, board=board))
         
         # The flow should only get here if the logic did not route all the types of concrete Arenas.
         # In that case wrap the unhandled exception inside an ArenaBuildFailedException then, return
@@ -123,9 +89,7 @@ class ArenaBuilder(Builder[Arena]):
         # then return the exception inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                ArenaBuildFailedException(
-                    ex=ex, message=f"{method}: {ArenaBuildFailedException.DEFAULT_MESSAGE}"
-                )
+                ArenaBuildFailedException(ex=ex, message=f"{method}: {ArenaBuildFailedException.DEFAULT_MESSAGE}")
             )
         
     @classmethod

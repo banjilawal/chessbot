@@ -10,23 +10,25 @@ version: 1.0.0
 from typing import List
 
 from chess.agent import PlayerAgent
-from chess.board import BoardService
+from chess.board import Board, BoardService
+from chess.schema import Schema
+from chess.schema.context.lookup import SchemaLookup
+from chess.system import SearchResult
 from chess.team import Team, UniqueTeamDataService
 
 
 class Arena:
     _id: int
+    _board: Board
     _white_team: Team
     _black_team: Team
-    _board: BoardService
-    _team_service: UniqueTeamDataService
+
     
-    def __init__(self, id: int, board: BoardService, team_service: UniqueTeamDataService):
+    def __init__(self, id: int, board: Board, white_team: Team = None, black_team: Team = None):
         self._id = id
         self._board = board
-        self._team_service = team_service
-        self._white_team = self._team_service.white_teams[0]
-        self._black_team = self._team_service.black_teams[0]
+        self._white_team = self._white_team
+        self._black_team = self._black_team
 
     @property
     def id(self) -> int:
@@ -38,15 +40,38 @@ class Arena:
     
     @property
     def white_team(self) -> Team:
-        return self._team_service.white_teams[0]
+        return self._white_team
     
     @property
     def black_team(self) -> Team:
-        return self._team_service.black_teams[0]
+        return self._black_team
     
-    @property
-    def team_service(self) -> UniqueTeamDataService:
-        return self._team_service
+    @set.white_team
+    def white_team(self, team: Team):
+        self._white_team = team
+    
+    @set.black_team
+    def white_team(self, team: Team):
+        self._black_team = team
+        
+    def team_from_schema(
+            self,
+            schema: Schema,
+            schema_service: SchemaLookup = SchemaLookup()
+    ) -> SearchResult[Team]:
+        """"""
+        method = "Arena.team_from_schema"
+        try:
+            validation = schema_service.schema_validator.validate(schema)
+            if validation.is_failure:
+                return SearchResult.failure(validation.exception)
+            if self._white_team is not None and schema == self._white_team.schema:
+                return SearchResult.success(payload=[self._white_team])
+            if self._black_team is not None and schema == self._black_team.schema:
+                return SearchResult.success(payload=[self._black_team])
+            return SearchResult.empty()
+        except Exception as e:
+            return SearchResult.failure(e)
     
     @property
     def agents(self) -> List[PlayerAgent]:
@@ -58,4 +83,7 @@ class Arena:
         if isinstance(other, Arena):
             return self.id == other.id
         return False
+    
+    def __hash__(self) -> int:
+        return hash(self.id)
     

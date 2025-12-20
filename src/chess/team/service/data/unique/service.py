@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import List, cast
+from typing import List, Optional, cast
 
 from chess.team import Team, TeamContext, TeamContextService, TeamDataService, TeamService
 from chess.system import (
@@ -80,6 +80,10 @@ class UniqueTeamDataService(UniqueDataService[Team]):
     @property
     def is_empty(self) -> bool:
         return self.data_service.is_empty
+    
+    @property
+    def current_team(self) -> Optional[Team]:
+        return cast (Team, self.data_service.current_item)
     
     @property
     def white_teams(self) -> List[Team]:

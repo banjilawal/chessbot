@@ -5,24 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/builder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/builder/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/builder/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/pair.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/service/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/service/service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/validator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/validator/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/validator/exception/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/validator/exception/null.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/dyad/validator/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/model/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/model/agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/arena.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/arena.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/arena/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/builder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/dyad/pair.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/dyad/pair.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/dyad/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/dyad/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/schema.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -992,7 +984,7 @@
       <workItem from="1766082112936" duration="45807000" />
       <workItem from="1766165068921" duration="21820000" />
       <workItem from="1766190117520" duration="23649000" />
-      <workItem from="1766223152549" duration="6562000" />
+      <workItem from="1766223152549" duration="11291000" />
     </task>
     <servers />
   </component>
