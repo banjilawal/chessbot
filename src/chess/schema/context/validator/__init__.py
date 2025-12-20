@@ -9,7 +9,6 @@ version: 1.0.0
 
 # =========== SCHEMA.CONTEXT.VALIDATOR PACKAGE CONTENTS ===========#
 
-
 # Packages
 from .exception import *
 

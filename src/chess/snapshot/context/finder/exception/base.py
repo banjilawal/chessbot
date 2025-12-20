@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/finder/exception.py
+# src/chess/snapshot/finder/exception.py
 
 """
-Module: chess.game.snapshot.finder.exception
+Module: chess.snapshot.finder.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import FinderException
 
 __all__ = [
-    # ======================# GAME_SNAPSHOT_FINDER EXCEPTION #======================#
+    # ======================# SNAPSHOT_FINDER EXCEPTION #======================#
     "GameSnapshotFinderException",
 ]
 
 
-# ======================# GAME_SNAPSHOT_FINDER EXCEPTION #======================#
+# ======================# SNAPSHOT_FINDER EXCEPTION #======================#
 class GameSnapshotFinderException(FinderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -36,5 +36,5 @@ class GameSnapshotFinderException(FinderException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_SNAPSHOT_FINDER_ERROR"
+    ERROR_CODE = "SNAPSHOT_FINDER_ERROR"
     DEFAULT_MESSAGE = "GameSnapshotFinder raised an exception."

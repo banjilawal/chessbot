@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/finder/finder.py
+# src/chess/snapshot/finder/finder.py
 
 """
-Module: chess.game.snapshot.finder.finder
+Module: chess.snapshot.finder.finder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import List
 
 from chess.agent import PlayerAgent
-from chess.game.snapshot.finder.exception import GameSnapshotFinderException
+from chess.snapshot.finder.exception import GameSnapshotFinderException
 from chess.system import Finder, LoggingLevelRouter, SearchResult
 from chess.game import (
     GameSnapshotContext, GameSnapshotContextValidator, GameTimeline, GameSnapshot, NullGameTimelineException

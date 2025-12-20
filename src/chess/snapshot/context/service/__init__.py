@@ -1,13 +1,13 @@
-# src/chess/game/snapshot/context/service/__init__.py
+# src/chess/snapshot/context/service/__init__.py
 
 """
-Module: chess.game.snapshot.context.service.__init__
+Module: chess.snapshot.context.service.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== GAME.SNAPSHOT.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+# =========== SNAPSHOT.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
 None

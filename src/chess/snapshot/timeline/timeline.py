@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/timeline/timeline.py
+# src/chess/snapshot/timeline/timeline.py
 
 """
-Module: chess.game.snapshot.timeline.timeline
+Module: chess.snapshot.timeline.timeline
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

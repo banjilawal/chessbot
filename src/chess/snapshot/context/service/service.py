@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/context/service/service.py
+# src/chess/snapshot/context/service/service.py
 
 """
-Module: chess.game.snapshot.context.service.service
+Module: chess.snapshot.context.service.service
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

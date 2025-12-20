@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    # ======================# GAME_SNAPSHOT EXCEPTION #======================#
+    # ======================# SNAPSHOT EXCEPTION #======================#
     "GameSnapshotException",
 ]
 
 
-# ======================# GAME_SNAPSHOT EXCEPTION #======================#
+# ======================# SNAPSHOT EXCEPTION #======================#
 class GameSnapshotException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -36,5 +36,5 @@ class GameSnapshotException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_SNAPSHOT_ERROR"
+    ERROR_CODE = "SNAPSHOT_ERROR"
     DEFAULT_MESSAGE = "Snapshot raised an exception."

@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/context/builder/builder.py
+# src/chess/snapshot/context/builder/builder.py
 
 """
-Module: chess.game.snapshot.context.builder.builder
+Module: chess.snapshot.context.builder.builder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

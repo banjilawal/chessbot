@@ -1,7 +1,7 @@
-# src/chess/game/snapshot/context/validator/experience/flag/exception.py
+# src/chess/snapshot/context/validator/experience/flag/exception.py
 
 """
-Module: chess.game.snapshot.context.validator.experience.flag.exception
+Module: chess.snapshot.context.validator.experience.flag.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

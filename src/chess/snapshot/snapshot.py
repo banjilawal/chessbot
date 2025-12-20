@@ -11,7 +11,7 @@ from typing import Optional, cast
 
 from chess.agent import PlayerAgent
 from chess.arena import Arena
-from chess.game import GameState, GameSnapshot
+from chess.game import GameState
 from chess.system import NotImplementedException, RollbackException, Result
 
 
