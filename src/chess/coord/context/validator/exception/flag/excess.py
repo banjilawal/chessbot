@@ -1,7 +1,7 @@
-# src/chess/coord/context/number_bounds_validator/exception/flag/excess.py
+# src/chess/coord/context/validator/exception/flag/excess.py
 
 """
-Module: chess.coord.context.number_bounds_validator.exception.flag.excess
+Module: chess.coord.context.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

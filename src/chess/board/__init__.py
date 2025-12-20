@@ -7,15 +7,16 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-#=========== BOARD. PACKAGE CONTENTS ===========#
+#=========== BOARD PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *
+from .context import *
 from .exception import *
-from .search import *
 from .validator import *
+from .service import *
 
 # Modules
 from .board import Board
 from .iterator import SquareIterator
-from .service import BoardService
+from .exception import BoardException

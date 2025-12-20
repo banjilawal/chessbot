@@ -1,7 +1,7 @@
-# src/chess/catalog/number_bounds_validator/exception/name.py
+# src/chess/catalog/validator/exception/name.py
 
 """
-Module: chess.catalog.number_bounds_validator.exception.name
+Module: chess.catalog.validator.exception.name
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

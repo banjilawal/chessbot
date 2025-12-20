@@ -1,7 +1,7 @@
-# src/chess/game/number_bounds_validator/exception/registration/game.py
+# src/chess/game/validator/exception/registration/game.py
 
 """
-Module: chess.game.number_bounds_validator.exception.registration.game
+Module: chess.game.validator.exception.registration.game
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

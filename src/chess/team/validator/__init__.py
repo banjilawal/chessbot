@@ -1,7 +1,7 @@
-# src/chess/team/number_bounds_validator/__init__.py
+# src/chess/team/validator/__init__.py
 
 """
-Module: chess.team.number_bounds_validator.__init__
+Module: chess.team.validator.__init__
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

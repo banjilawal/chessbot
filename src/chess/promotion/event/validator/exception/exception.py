@@ -1,7 +1,7 @@
-# src/chess/promotion/event/number_bounds_validator/exception/exception.py
+# src/chess/promotion/event/validator/exception/exception.py
 
 """
-Module: chess.promotion.event.number_bounds_validator.exception.exception
+Module: chess.promotion.event.validator.exception.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

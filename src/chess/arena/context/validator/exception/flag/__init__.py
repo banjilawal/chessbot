@@ -1,7 +1,7 @@
-# src/chess/arena/context/number_bounds_validator/exception/flag/__init__.py
+# src/chess/arena/context/validator/exception/flag/__init__.py
 
 """
-Module: chess.game.arena.context.number_bounds_validator.exception.flag.__init__
+Module: chess.arena.context.validator.exception.flag.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -14,4 +14,4 @@ None
 
 # Modules
 from .zero import ZeroArenaContextFlagsException
-from .excess import ExcessiveArenaContextFlagsSetException
+from .excess import ExcessiveArenaContextFlagsException

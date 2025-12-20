@@ -1,7 +1,7 @@
-# src/chess/catalog/number_bounds_validator/exception/ransom.py
+# src/chess/catalog/validator/exception/ransom.py
 
 """
-Module: chess.catalog.number_bounds_validator.exception.ransom
+Module: chess.catalog.validator.exception.ransom
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

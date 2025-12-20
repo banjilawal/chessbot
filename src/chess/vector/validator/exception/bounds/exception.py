@@ -1,7 +1,7 @@
-# src/chess/vector/number_bounds_validator/exception/bounds/exception.py
+# src/chess/vector/validator/exception/bounds/exception.py
 
 """
-Module: chess.vector.number_bounds_validator.exception.bounds.exception
+Module: chess.vector.validator.exception.bounds.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

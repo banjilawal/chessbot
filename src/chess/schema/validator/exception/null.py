@@ -1,7 +1,7 @@
-# src/chess/schema/number_bounds_validator/exception/null.py
+# src/chess/schema/validator/exception/null.py
 
 """
-Module: chess.schema.number_bounds_validator.exception.null
+Module: chess.schema.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

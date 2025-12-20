@@ -1,7 +1,7 @@
-# src/chess/piece/number_bounds_validator/exception/registration/square
+# src/chess/piece/validator/exception/registration/square
 
 """
-Module: chess.piece.number_bounds_validator.exception.registration.square
+Module: chess.piece.validator.exception.registration.square
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

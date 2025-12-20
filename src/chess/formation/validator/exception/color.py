@@ -1,7 +1,7 @@
-# src/chess/formation/number_bounds_validator/exception/color.py
+# src/chess/formation/validator/exception/color.py
 
 """
-Module: chess.formation.number_bounds_validator.exception.color
+Module: chess.formation.validator.exception.color
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/scalar/number_bounds_validator/exception_.py
+# src/chess/scalar/validator/exception_.py
 
 """
-Module: chess.scalar.number_bounds_validator.exception
+Module: chess.scalar.validator.exception
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

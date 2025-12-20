@@ -10,29 +10,11 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    "PieceException",
-    
-#======================# PIECE NULL EXCEPTION #======================#
-
     
 #======================# PIECE VALIDATION EXCEPTION #======================#
     "ActivePieceMissingFromTeamRoster",
-    "CapturedPieceException",
-    "PieceRequiresInitialPlacementException",
-
-#======================# PIECE BUILD EXCEPTION #======================#
 
 ]
-
-
-class PieceException(ChessException):
-    """
-    Super class of exception raised by Piece objects. Do not use directly. Subclasses give
-    precise, fined-grained, debugging info.
-    """
-    ERROR_CODE = "PIECE_ERROR"
-    DEFAULT_MESSAGE = "Piece raised an exception."
-
 
 class ActivePieceMissingFromTeamRoster(PieceException):
     """Raised if an disabled Piece.team is set but Team.roster does not contain the Piece."""

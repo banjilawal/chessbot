@@ -1,7 +1,7 @@
-# src/chess/arena/number_bounds_validator/exception/player/duplicate.py
+# src/chess/arena/validator/exception/player/duplicate.py
 
 """
-Module: chess.game.arena.number_bounds_validator.exception.player.duplicate
+Module: chess.arena.validator.exception.player.duplicate
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL ARENA EXCEPTION #======================#
-class DuplicatePlayerInArenaException(InvalidArenaException, AddingDuplicateAgentException):
+class DuplicatePlayerInArenaException(InvalidArenaException, AddinDuplicateItemException):
     """
     # ROLE: Error Tracing, Debugging
 

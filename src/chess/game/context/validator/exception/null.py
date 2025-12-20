@@ -1,7 +1,7 @@
-# src/chess/game/context/number_bounds_validator/exception/null.py
+# src/chess/game/context/validator/exception/null.py
 
 """
-Module: chess.game.context.number_bounds_validator.exception.null
+Module: chess.game.context.validator.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

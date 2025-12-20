@@ -1,7 +1,7 @@
-# src/chess/game/context/number_bounds_validator/number_bounds_validator.py
+# src/chess/game/context/validator/number_bounds_validator.py
 
 """
-Module: chess.game.context.number_bounds_validator.number_bounds_validator
+Module: chess.game.context.validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

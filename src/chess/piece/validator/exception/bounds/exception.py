@@ -1,7 +1,7 @@
-# src/chess/piece/number_bounds_validator/exception/bounds/exception.py
+# src/chess/piece/validator/exception/bounds/exception.py
 
 """
-Module: chess.piece.number_bounds_validator.exception.bounds.exception
+Module: chess.piece.validator.exception.bounds.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/vector/number_bounds_validator/number_bounds_validator.py
+# src/chess/vector/validator/number_bounds_validator.py
 
 """
-Module: chess.vector.number_bounds_validator.number_bounds_validator
+Module: chess.vector.validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-08-26
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/arena/number_bounds_validator/exception/null.py
+# src/chess/arena/validator/exception/null.py
 
 """
-Module: chess.game.arena.number_bounds_validator.exception.null
+Module: chess.arena.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/arena/number_bounds_validator/exception/team/none.py
+# src/chess/arena/validator/exception/team/none.py
 
 """
-Module: chess.game.arena.number_bounds_validator.exception.team.none
+Module: chess.arena.validator.exception.team.none
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

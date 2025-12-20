@@ -1,7 +1,7 @@
-# src/chess/arena/number_bounds_validator/exception/team/color.py
+# src/chess/arena/validator/exception/team/color.py
 
 """
-Module: chess.game.arena.number_bounds_validator.exception.team.color
+Module: chess.arena.validator.exception.team.color
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

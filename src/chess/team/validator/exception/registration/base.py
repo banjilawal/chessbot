@@ -1,7 +1,7 @@
-# src/chess/team/number_bounds_validator/exception/registration/base.py
+# src/chess/team/validator/exception/registration/base.py
 
 """
-Module: chess.team.number_bounds_validator.exception.registration.base
+Module: chess.team.validator.exception.registration.base
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

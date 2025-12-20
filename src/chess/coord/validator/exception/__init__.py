@@ -1,7 +1,7 @@
-# src/chess/coord/number_bounds_validator/exception/__init__.py
+# src/chess/coord/validator/exception/__init__.py
 
 """
-Module: chess.coord.number_bounds_validator.exception.__init__
+Module: chess.coord.validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -10,9 +10,7 @@ version: 1.0.0
 # =========== COORD.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .bounds import *
-from .row import *
-from .column import *
+None
 
 # Modules
 from .null import NullCoordException

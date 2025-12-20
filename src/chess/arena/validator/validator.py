@@ -1,7 +1,7 @@
-# src/chess/arena/number_bounds_validator/number_bounds_validator.py
+# src/chess/arena/validator/number_bounds_validator.py
 
 """
-Module: chess.game.arena.number_bounds_validator.number_bounds_validator
+Module: chess.arena.validator.number_bounds_validator
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

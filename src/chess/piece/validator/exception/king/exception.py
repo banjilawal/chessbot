@@ -1,7 +1,7 @@
-# src/chess/piece/number_bounds_validator/exception/king/collision.py
+# src/chess/piece/validator/exception/king/collision.py
 
 """
-Module: chess.piece.number_bounds_validator.exception.king.exception
+Module: chess.piece.validator.exception.king.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

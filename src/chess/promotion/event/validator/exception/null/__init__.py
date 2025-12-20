@@ -1,7 +1,7 @@
-# src/chess/promotion/event/number_bounds_validator/exception/null/__init__.py
+# src/chess/promotion/event/validator/exception/null/__init__.py
 
 """
-Module: chess.promotion.event.number_bounds_validator.exception.null.__init__
+Module: chess.promotion.event.validator.exception.null.__init__
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

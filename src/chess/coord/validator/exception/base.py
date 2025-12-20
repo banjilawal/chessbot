@@ -1,7 +1,7 @@
-# src/chess/coord/number_bounds_validator/exception/base.py
+# src/chess/coord/validator/exception/base.py
 
 """
-Module: chess.coord.number_bounds_validator.exception.base
+Module: chess.coord.validator.exception.base
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

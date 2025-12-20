@@ -1,7 +1,7 @@
-# src/chess/arena/context/number_bounds_validator/exception/flag/zero.py
+# src/chess/arena/context/validator/exception/flag/zero.py
 
 """
-Module: chess.arena.context.number_bounds_validator.exception.flag.zero
+Module: chess.arena.context.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/arena/context/number_bounds_validator/exception/null.py
+# src/chess/arena/context/validator/exception/null.py
 
 """
-Module: chess.arenaContext.arena.context.number_bounds_validator.exception.null
+Module: chess.arenaContext.arena.context.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

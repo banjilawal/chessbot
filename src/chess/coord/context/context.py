@@ -92,6 +92,6 @@ class CoordContext(Context[Coord]):
         method = "CoordContext.to_dict"
         return {
             "row": self._row,
-            "coord:" self._coord,
+            "coord": self._coord,
             "column": self._column,
         }

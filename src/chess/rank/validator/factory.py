@@ -1,7 +1,7 @@
-# src/chess/rank/number_bounds_validator/factory.py
+# src/chess/rank/validator/factory.py
 
 """
-Module: chess.rank.number_bounds_validator.factory
+Module: chess.rank.validator.factory
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

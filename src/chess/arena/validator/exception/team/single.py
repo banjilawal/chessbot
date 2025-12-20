@@ -1,7 +1,7 @@
-# src/chess/arena/number_bounds_validator/exception/team/single.py
+# src/chess/arena/validator/exception/team/single.py
 
 """
-Module: chess.game.arena.number_bounds_validator.exception.team.single
+Module: chess.arena.validator.exception.team.single
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

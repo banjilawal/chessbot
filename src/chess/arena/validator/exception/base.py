@@ -1,7 +1,7 @@
-# src/chess/arena/number_bounds_validator/exception/base.py
+# src/chess/arena/validator/exception/base.py
 
 """
-Module: chess.game.arena.number_bounds_validator.exception.base
+Module: chess.arena.validator.exception.base
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -11,7 +11,7 @@ from chess.arena import ArenaException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# ARENA VALIDATION EXCEPTION #======================#
+    # ======================# INVALID_ARENA EXCEPTION #======================#
     "InvalidArenaException",
 ]
 
