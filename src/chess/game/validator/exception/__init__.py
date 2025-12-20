@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== GAME.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-
-from .registration import *
+None
 
 # Modules
 from .null import NullGameException

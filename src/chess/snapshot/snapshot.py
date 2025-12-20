@@ -1,7 +1,7 @@
-# src/chess/game/result/result.py
+# src/chess/snapshot.py
 
 """
-Module: chess.game.result.result
+Module: chess.snapshot
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

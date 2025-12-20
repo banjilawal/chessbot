@@ -1,7 +1,7 @@
-# src/chess/game/service/data/exception/base.py
+# src/chess/game/service/data/exception.py
 
 """
-Module: chess.game.service.data.exception.base
+Module: chess.game.service.data.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -28,7 +28,7 @@ class GameDataServiceException(GameException, DataServiceException):
 
     # PARENT:
         *   GameException
-        *   ServiceException
+        *   DataServiceException
 
     # PROVIDES:
     None

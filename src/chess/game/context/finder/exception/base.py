@@ -1,7 +1,7 @@
-# src/chess/game/finder/exception
+# src/chess/game/finder/exception/base.pb
 
 """
-Module: chess.game.finder.exception
+Module: chess.game.finder.exception.base
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

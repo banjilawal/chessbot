@@ -10,7 +10,8 @@ version: 1.0.0
 #=========== GAME.CONTEXT.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from.exception import *
+None
 
 # Modules
+from .exception import *
 from .service import GameContextService

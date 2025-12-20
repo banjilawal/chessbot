@@ -13,6 +13,7 @@ from chess.system import NullDataSetException
 
 
 __all__ = [
+    # ======================# GAME_NULL_DATASET EXCEPTION #======================#
     "GameSearchDatasetNullException",
 ]
 

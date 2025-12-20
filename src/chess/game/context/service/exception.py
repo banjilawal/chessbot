@@ -1,7 +1,7 @@
-# src/chess/game/context/service/exception/base
+# src/chess/game/context/service/exception.py
 
 """
-Module: chess.game.context.service.exception.base
+Module: chess.game.context.service.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

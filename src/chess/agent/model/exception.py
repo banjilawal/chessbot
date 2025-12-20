@@ -3,41 +3,41 @@
 """
 Module: chess.agent.model.exception
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-09-08
 version: 1.0.0
 """
 
 from chess.system import ChessException
 
 __all__ = [
-    #======================# AGENT EXCEPTION #======================#
+    # ======================# AGENT EXCEPTION #======================#
     "AgentException",
 ]
 
 
-#======================# AGENT EXCEPTION #======================#
+# ======================# AGENT EXCEPTION #======================#
 class AgentException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised when an PlayerAgent's organic fields or methods run into a condition that
+    1.  Parent of exception raised when a Agent's organic fields or methods run into a condition that
         leads to an operation failing.
-    2.  Parent of exception raised by PlayerAgent Builders and Validators or any other classes that highly
-        cohere with PlayerAgent objects.
-    3.  Catchall for PlayerAgent failure states that are not covered by a lower level PlayerAgent exception.
+    2.  Parent of exception raised by Agent Builders and Validators or any other classes that highly
+        cohere with Agent objects.
+    3.  Catchall for Agent failure states that are not covered by a lower level Agent exception.
 
     # PARENT:
-        *   Chess
+        *   ChessException
 
     # PROVIDES:
-        *   AgentException
+    None
 
     # ATTRIBUTES:
     None
     """
     ERROR_CODE = "AGENT_ERROR"
-    DEFAULT_MESSAGE = "PlayerAgent raised an exception."
+    DEFAULT_MESSAGE = "Agent raised an exception."
 
 
 #

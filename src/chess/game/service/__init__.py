@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .data import *
-from .exception import *
 
 # Modules
 from .service import GameService
+from .exception import GameServiceException

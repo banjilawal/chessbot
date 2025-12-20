@@ -48,7 +48,7 @@ class Game:
         self._white_player = white_player
         self._black_player = black_player
         self._timeline = GameTimeline()
-        
+    
     @property
     def id(self) -> int:
         return self._id
@@ -76,4 +76,3 @@ class Game:
     @property
     def previous_move(self) -> Optional[GameSnapshot]:
         return self._timeline.previous_move()
-        

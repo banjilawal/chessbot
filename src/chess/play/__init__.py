@@ -13,4 +13,5 @@ version: 1.0.0
 None
 
 # Modules
+from .order import PlayerTurnOrder
 from .exception import PlayException
