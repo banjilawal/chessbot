@@ -21,8 +21,8 @@ class GameSnapshotException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by GameSnapshot objects.
-    2.  Catchall for conditions which are not covered by lower level GameSnapshot exception.
+    1.  Parent of exception raised by Snapshot objects.
+    2.  Catchall for conditions which are not covered by lower level Snapshot exception.
 
     # PARENT:
         *   ChessException
@@ -37,4 +37,4 @@ class GameSnapshotException(ChessException):
     None
     """
     ERROR_CODE = "GAME_SNAPSHOT_ERROR"
-    DEFAULT_MESSAGE = "GameSnapshot raised an exception."
+    DEFAULT_MESSAGE = "Snapshot raised an exception."

@@ -15,20 +15,20 @@ from chess.game import GameState, GameSnapshot
 from chess.system import NotImplementedException, RollbackException, Result
 
 
-class GameSnapshot(Result):
+class Snapshot(Result):
     """
     # ROLE:  Persistence, Messanger, Data Transport Object, Error Transport Object,
 
     # RESPONSIBILITIES:
     1.  Capture a snapshot of the Game by recording Game.arena state after an player_agent plays their turn.
     2.  Recording the Game winner if the game completed and there was no tie.
-    3.  Enforcing mutual exclusion. A GameSnapshot can either carry payload or exception. Not both.
+    3.  Enforcing mutual exclusion. A Snapshot can either carry payload or exception. Not both.
 
     # PARENT:
         *   Result
 
     # PROVIDES:
-    GameSnapshot
+    Snapshot
 
     # LOCAL ATTRIBUTES:
         *   arena (Arena)
@@ -128,10 +128,10 @@ class GameSnapshot(Result):
     @classmethod
     def empty(cls) -> Result:
         """Should not be called."""
-        method = "GameSnapshot.empty"
+        method = "Snapshot.empty"
         return Result(
             exception=NotImplementedException(
-                f"{method}: {NotImplementedException.DEFAULT_MESSAGE}. GameSnapshot must "
+                f"{method}: {NotImplementedException.DEFAULT_MESSAGE}. Snapshot must "
                 f"always have at least a payload and GameState."
             )
         )
@@ -139,7 +139,7 @@ class GameSnapshot(Result):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, GameSnapshot):
+        if isinstance(other, Snapshot):
             return self._timestamp == other.timestamp
         return False
     

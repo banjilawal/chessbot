@@ -20,7 +20,7 @@ class GameSnapshotContext(Context[GameSnapshot]):
     # ROLE: Finder Filter
 
     # RESPONSIBILITIES:
-    Provtimestampe a GameSnapshotFinder with a GameSnapshot or Arena attribute used to find snapshots which a matching
+    Provtimestampe a GameSnapshotFinder with a Snapshot or Arena attribute used to find snapshots which a matching
     attribute.
 
     # PARENT:

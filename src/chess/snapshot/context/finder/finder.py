@@ -49,7 +49,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
     ) -> SearchResult[List[GameSnapshot]]:
         """
         # Action:
-        1.  Verify the dataset is not null and contains only GameSnapshot objects,
+        1.  Verify the dataset is not null and contains only Snapshot objects,
         2.  Use context_validator to certify the provided context.
         3.  Call the finder method which matches the attribute whose flag was raised.
         4.  If the logic does not account for an PlayerAgent attribute drop to the try-finally block.
@@ -60,7 +60,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
             *   context_validator: GameSnapshotContextValidator
 
         # Returns:
-        SearchResult[List[GameSnapshot]] containing either:
+        SearchResult[List[Snapshot]] containing either:
                 - On success:   List[gameSnapshot] in the payload.
                 - On failure:   Exception.
 
@@ -113,10 +113,10 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
 
         # Parameters:
             *   id (int)
-            *   dataset (List[GameSnapshot])
+            *   dataset (List[Snapshot])
 
         # Returns:
-        SearchResult[List[GameSnapshot]] containing either:
+        SearchResult[List[Snapshot]] containing either:
                 - On success:   List[gameSnapshot] in the payload.
                 - On failure:   Exception.
 
@@ -156,7 +156,7 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
             *   dataset (GameTimeline)
 
         # Returns:
-        SearchResult[List[GameSnapshot]] containing either:
+        SearchResult[List[Snapshot]] containing either:
                 - On success:   List[gameSnapshot] in the payload.
                 - On failure:   Exception.
 
@@ -193,10 +193,10 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
 
         # Parameters:
             *   team (Team)
-            *   dataset (List[GameSnapshot])
+            *   dataset (List[Snapshot])
 
         # Returns:
-        SearchResult[List[GameSnapshot]] containing either:
+        SearchResult[List[Snapshot]] containing either:
                 - On success:   List[gameSnapshot] in the payload.
                 - On failure:   Exception.
 
@@ -233,10 +233,10 @@ class GameSnapshotFinder(Finder[GameSnapshot]):
 
         # Parameters:
             *   agent_exception (AgentException)
-            *   dataset (List[GameSnapshot])
+            *   dataset (List[Snapshot])
 
         # Returns:
-        SearchResult[List[GameSnapshot]] containing either:
+        SearchResult[List[Snapshot]] containing either:
                 - On success:   List[gameSnapshot] in the payload.
                 - On failure:   Exception.
 

@@ -95,7 +95,7 @@ class GameSnapShotContextBuilder(Builder[GameSnapshotContext]):
                 return BuildResult.failure(
                     ExcessiveGameSnapshotContextFlagsException(f"{method}: {ExcessiveGameSnapshotContextFlagsException}")
                 )
-            # After verifying only one GameSnapshot attribute-value-tuple is enabled, validate it.
+            # After verifying only one Snapshot attribute-value-tuple is enabled, validate it.
 
             # Build the timestamp GameSnapshotContext if its flag is enabled.
             if timestamp is not None:

@@ -16,4 +16,4 @@ from .finder import *
 from .timeline import *
 
 # Modules
-from .snapshot import GameSnapshot
+from .snapshot import Snapshot
