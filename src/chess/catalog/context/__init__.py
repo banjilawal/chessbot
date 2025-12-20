@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== CATALOG.LOOKUP.CONTEXT PACKAGE CONTENTS ===========#
+# =========== CATALOG.CONTEXT PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *

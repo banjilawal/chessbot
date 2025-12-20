@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== FORMATION.LOOKUP.CONTEXT PACKAGE CONTENTS ===========#
+# =========== FORMATION.CONTEXT PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *

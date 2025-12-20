@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.LOOKUP.CONTEXT PACKAGE CONTENTS ===========#
+# =========== SCHEMA.CONTEXT PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *

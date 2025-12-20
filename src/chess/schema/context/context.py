@@ -18,7 +18,7 @@ class SchemaContext(Context[Schema]):
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    Provide an SchemaLookup with an attribute-value-tuple for any matching Schema members.
+    Provide an SchemaLookup with an attribute-value-tuple to perform forward Schema entry lookups.
 
     # PARENT:
         *   Context

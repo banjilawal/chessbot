@@ -7,14 +7,14 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import ContextException
 from chess.schema import SchemaException
+from chess.system import ContextException
+
 
 __all__ = [
     # ======================# SCHEMA_CONTEXT EXCEPTION #======================#
     "SchemaContextException",
 ]
-
 
 
 # ======================# SCHEMA_CONTEXT EXCEPTION #======================#
