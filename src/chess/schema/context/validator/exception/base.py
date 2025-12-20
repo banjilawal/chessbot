@@ -16,8 +16,6 @@ __all__ = [
 ]
 
 
-
-
 # ======================# SCHEMA_CONTEXT VALIDATION SUPER CLASS #======================#
 class InvalidSchemaContextException(SchemaContextException, ValidationFailedException):
     """

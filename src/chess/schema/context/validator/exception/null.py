@@ -26,8 +26,8 @@ class NullSchemaContextException(InvalidSchemaContextException, NullException):
     2.  Raised if an entity, method or operation requires an SchemaContext but receives null instead.
 
     # PARENT:
-        *   InvalidSchemaContextException
         *   NullException
+        *   InvalidSchemaContextException
 
     # PROVIDES:
     None

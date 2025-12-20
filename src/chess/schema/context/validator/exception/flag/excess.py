@@ -24,8 +24,8 @@ class ExcessiveSchemaContextFlagsException(InvalidSchemaContextException, Contex
     1.  Indicate more than one SchemaContext flag was provided for a Schema lookup.
 
     # PARENT:
-        *   InvalidSchemaContextException
         *   ContextFlagCountException
+        *   InvalidSchemaContextException
 
     # PROVIDES:
     None
