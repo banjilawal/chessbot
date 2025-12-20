@@ -1,7 +1,7 @@
-# src/chess/catalog/lookup/context/validator/exception/base.py
+# src/chess/catalog/context/validator/exception/base.py
 
 """
-Module: chess.catalog.lookup.context.exception.base
+Module: chess.catalog.context.exception.base
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

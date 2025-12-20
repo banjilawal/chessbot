@@ -1,7 +1,7 @@
-# src/chess/formation/lookup/context/context.py
+# src/chess/formation/context/context.py
 
 """
-Module: chess.formation.lookup.context.context
+Module: chess.formation.context.context
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -15,7 +15,7 @@ from chess.system import Context, GameColor
 
 class OrderContext(Context[BattleOrder]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
     Provide an BattleOrderFinder with an attribute value to find BattleOrders with a matching value in

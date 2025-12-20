@@ -17,7 +17,7 @@ from chess.system import Context, GameColor
 
 class GameSnapshotContext(Context[GameSnapshot]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
     Provtimestampe a GameSnapshotFinder with a Snapshot or Arena attribute used to find snapshots which a matching

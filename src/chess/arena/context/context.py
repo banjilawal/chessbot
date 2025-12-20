@@ -18,7 +18,7 @@ from chess.system import Context, GameColor
 
 class ArenaContext(Context[Arena]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
     Provide an ArenaFinder with an attribute-value which finds Arenas which match the targeted attribute-value.

@@ -1,13 +1,13 @@
-# src/chess/schema/lookup/context/validator/__init__.py
+# src/chess/schema/context/validator/__init__.py
 
 """
-Module: chess.schema.lookup.context.validator.__init__
+Module: chess.schema.context.validator.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.LOOKUP.CONTEXT.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== SCHEMA.CONTEXT.VALIDATOR PACKAGE CONTENTS ===========#
 
 
 # Packages

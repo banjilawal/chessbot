@@ -1,7 +1,7 @@
-# src/chess/scalar/validator/number_bounds_validator.py
+# src/chess/scalar/validator/validator.py
 
 """
-Module: chess.scalar.validator.number_bounds_validator
+Module: chess.scalar.validator
 Author: Banji Lawal
 Created: 2025-08-26
 version: 1.0.0

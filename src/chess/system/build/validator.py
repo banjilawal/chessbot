@@ -1,4 +1,4 @@
-# src/chess/builder/number_bounds_validator.py
+# src/chess/builder/validator.py
 
 """
 Module: chess.builder.number_bounds_validator

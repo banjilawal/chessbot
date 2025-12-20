@@ -1,7 +1,7 @@
-# src/chess/schema/lookup/context/builder/builder.py
+# src/chess/schema/context/builder/builder.py
 
 """
-Module: chess.schema.lookup.context.builder.builder
+Module: chess.schema.context.builder.builder
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

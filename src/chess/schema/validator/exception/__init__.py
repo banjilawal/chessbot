@@ -13,7 +13,8 @@ version: 1.0.0
 None
 
 # Modules
-from .base import InvalidSchemaException
-from .color import SchemaColorBoundsException
-from .name import SchemaNameBoundsException
 from .null import NullSchemaException
+from .base import InvalidSchemaException
+from .name import SchemaNameBoundsException
+from .color import SchemaColorBoundsException
+

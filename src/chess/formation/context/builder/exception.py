@@ -1,7 +1,7 @@
-# src/chess/formation/lookup/context/builder/exception.py
+# src/chess/formation/context/builder/exception.py
 
 """
-Module: chess.formation.lookup.context.builder.exception
+Module: chess.formation.context.builder.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

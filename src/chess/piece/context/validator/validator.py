@@ -1,7 +1,7 @@
-# src/chess/piece/context/validator/number_bounds_validator.py
+# src/chess/piece/context/validator/validator.py
 
 """
-Module: chess.piece.context.validator.number_bounds_validator
+Module: chess.piece.context.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

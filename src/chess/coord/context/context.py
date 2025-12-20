@@ -15,7 +15,7 @@ from chess.system import Context
 
 class CoordContext(Context[Coord]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
     Provide an CoordFinder with an attribute-value which finds Coords which match the targeted attribute-value.

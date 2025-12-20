@@ -12,11 +12,11 @@ from chess.system import ValidationFailedException
 
 
 __all__ = [
-    #======================# SCHEMA_CONTEXT VALIDATION EXCEPTION #======================#
+    # ======================# SCHEMA_VALIDATION EXCEPTION #======================#
     "InvalidSchemaException",
 ]
 
-#======================# SCHEMA VALIDATION EXCEPTION #======================#
+#======================# SCHEMA_VALIDATION EXCEPTION #======================#
 class InvalidSchemaException(SchemaException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -38,5 +38,5 @@ class InvalidSchemaException(SchemaException, ValidationFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "_SCHEMA_VALIDATION_ERROR"
+    ERROR_CODE = "SCHEMA_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Schema validation failed."

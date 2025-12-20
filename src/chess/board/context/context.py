@@ -15,7 +15,7 @@ from chess.system import Context
 
 class BoardContext(Context[Board]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
     Provide a BoardFinder with an attribute-value which finds Boards which match the targeted attribute-value.

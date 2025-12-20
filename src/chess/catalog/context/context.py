@@ -1,7 +1,7 @@
-# src/chess/catalog/lookup/context/context.py
+# src/chess/catalog/context/context.py
 
 """
-Module: chess.catalog.lookup.context.context
+Module: chess.catalog.context.context
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -14,7 +14,7 @@ from chess.system import Context
 
 class CatalogContext(Context[Catalog]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
     Provide a Catalog lookup with an attribute value to find Catalog entries with a matching attribute values.

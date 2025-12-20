@@ -11,11 +11,11 @@ from chess.system import NullException
 from chess.schema import InvalidSchemaException
 
 __all__ = [
-    #======================# _SCHEMA NULL EXCEPTION #======================#
+    # ======================# SCHEMA_NULL EXCEPTION #======================#
     "NullSchemaException",
 ]
 
-#======================# SCHEMA NULL EXCEPTION #======================#
+#======================# SCHEMA_NULL EXCEPTION #======================#
 class NullSchemaException(InvalidSchemaException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -24,8 +24,8 @@ class NullSchemaException(InvalidSchemaException, NullException):
     1.  Indicates an entity, method, or operation that required a Schema got null instead.
     
     # PARENT:
-        *   InvalidSchemaException
         *   NullSchemaException
+        *   InvalidSchemaException
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class NullSchemaException(InvalidSchemaException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL__SCHEMA_ERROR"
+    ERROR_CODE = "NULL_SCHEMA_ERROR"
     DEFAULT_MESSAGE = "Schema cannot be null."
 
     

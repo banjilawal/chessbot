@@ -1,7 +1,7 @@
-# src/chess/team/schema/lookup/context/context.py
+# src/chess/schema/context/context.py
 
 """
-Module: chess.team.schema.lookup.context.context
+Module: chess.schema.context.context
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -15,11 +15,10 @@ from chess.system import Context, GameColor
 
 class SchemaContext(Context[Schema]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    Provide an TeamSchemaFinder with an attribute value to find TeamSchemas with a matching value in
-    their version of the attribute.
+    Provide an SchemaLookup with an attribute-value-tuple for any matching Schema members.
 
     # PARENT:
         *   Context
@@ -46,7 +45,7 @@ class SchemaContext(Context[Schema]):
         Constructor
 
         # PARAMETERS:
-            *   designation (Optional[str])
+            *   name (Optional[str])
             *   color (Optional[Color])
 
         # Returns:

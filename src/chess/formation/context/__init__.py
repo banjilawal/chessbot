@@ -1,7 +1,7 @@
-# src/chess/formation/lookup/context/__init__.py
+# src/chess/formation/context/__init__.py
 
 """
-Module: chess.formation.lookup.context.__init__
+Module: chess.formation.context.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

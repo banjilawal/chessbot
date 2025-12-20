@@ -1,4 +1,4 @@
-# src/chess/team/order/number_bounds_validator.py
+# src/chess/team/order/validator.py
 
 """
 Module: chess.team.order.number_bounds_validator

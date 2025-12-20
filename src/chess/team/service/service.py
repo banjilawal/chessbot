@@ -11,7 +11,7 @@ from typing import cast
 
 from chess.system import EntityService, id_emitter
 from chess.team import Team, TeamBuilder, TeamSchemaValidator, TeamValidator
-from chess.team.schema.service.service import TeamSchemaService
+from chess.schema.service.service import TeamSchemaService
 
 
 class TeamService(EntityService[Team]):

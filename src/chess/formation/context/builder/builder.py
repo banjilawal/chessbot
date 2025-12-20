@@ -1,4 +1,4 @@
-# src/chess/formation/lookup/context/builder/builder.py
+# src/chess/formation/context/builder/builder.py
 
 """
 Module: chess.formation.lookup/context.builder.builder

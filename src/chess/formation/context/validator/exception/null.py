@@ -1,7 +1,7 @@
-# src/chess/formation/lookup/context/validator/exception/null.py
+# src/chess/formation/context/validator/exception/null.py
 
 """
-Module: chess.formation.lookup.context.validator.exception.null
+Module: chess.formation.context.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

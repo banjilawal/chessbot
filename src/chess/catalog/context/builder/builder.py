@@ -1,7 +1,7 @@
-# src/chess/catalog/lookup/context/builder/builder.py
+# src/chess/catalog/context/builder/builder.py
 
 """
-Module: chess.catalog.lookup.context.builder
+Module: chess.catalog.context.builder
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

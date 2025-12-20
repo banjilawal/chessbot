@@ -17,7 +17,7 @@ from chess.agent import PlayerAgent, AgentVariety
 
 class AgentContext(Context[PlayerAgent]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
     Provide an AgentFinder with an attribute value to find Agents with a matching value in

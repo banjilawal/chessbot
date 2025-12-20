@@ -1,7 +1,7 @@
-# src/chess/schema/lookup/context/validator/exception/base.py
+# src/chess/schema/context/validator/exception/base.py
 
 """
-Module: chess.schema.lookup.context.validator.exception.base
+Module: chess.schema.context.validator.exception.base
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

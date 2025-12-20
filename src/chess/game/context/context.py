@@ -18,7 +18,7 @@ from chess.team import Team
 
 class GameContext(Context[Game]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
     Provide an GameFinder with an attribute value to find Games with a matching value in

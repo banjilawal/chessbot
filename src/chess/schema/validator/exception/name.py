@@ -11,24 +11,24 @@ from chess.schema import InvalidSchemaException
 from chess.system import BoundsException, NameException
 
 __all__ = [
-    # ======================# SCHEMA NAME BOUNDS EXCEPTION #======================#
+    # ======================# SCHEMA_NAME_BOUNDS EXCEPTION #======================#
     "SchemaNameBoundsException",
 ]
 
 
-# ======================# SCHEMA NAME BOUNDS EXCEPTION #======================#
+# ======================# SCHEMA_NAME_BOUNDS EXCEPTION #======================#
 class SchemaNameBoundsException(InvalidSchemaException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a string is outside the range of acceptable Schema names.
+    1.  Indicate that no member in Schema enum has that name.
 
     # PARENT:
-        *   InvalidSchemaException
-        *   BoundsException
         *   NameException
-
+        *   BoundsException
+        *   InvalidSchemaException
+  
     # PROVIDES:
     None
 
@@ -38,5 +38,5 @@ class SchemaNameBoundsException(InvalidSchemaException, BoundsException, NameExc
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_NAME_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Name is not included in the set of permissible schema names."
+    ERROR_CODE = "SCHEMA_MEMBER_NAME_ERROR"
+    DEFAULT_MESSAGE = "None of the members in the Schema enum has that name. Pick an existing Schema member."

@@ -1,4 +1,4 @@
-# src/chess/system/identity/id/number_bounds_validator.py
+# src/chess/system/identity/id/validator.py
 
 """
 Module: chess.system.identity.id.number_bounds_validator

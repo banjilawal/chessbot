@@ -1,4 +1,4 @@
-# src/chess/system/err/text/number_bounds_validator.py
+# src/chess/system/err/text/validator.py
 
 """
 Module: chess.system.err.text.validator_

@@ -17,7 +17,7 @@ from chess.system import Context, GameColor
 
 class TeamContext(Context[Team]):
     """
-    # ROLE: Finder Filter
+    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
     Provide an TeamFinder with an attribute value to find Teams with a matching value in

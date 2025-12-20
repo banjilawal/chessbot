@@ -1,7 +1,7 @@
-# src/chess/catalog/lookup/context/validator/exception/flag.py
+# src/chess/catalog/context/validator/exception/flag.py
 
 """
-Module: chess.catalog.lookup.context.exception.flag
+Module: chess.catalog.context.exception.flag
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

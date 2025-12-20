@@ -1,7 +1,7 @@
-# src/chess/schema/lookup/context/__init__.py
+# src/chess/schema/context/__init__.py
 
 """
-Module: chess.schema.lookup.context.__init__
+Module: chess.schema.context.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -11,8 +11,9 @@ version: 1.0.0
 
 # Packages
 from .builder import *
+from .lookup import *
+from .service import *
 from .validator import *
-
 
 # Modules
 from .context import SchemaContext
