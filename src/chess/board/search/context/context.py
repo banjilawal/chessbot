@@ -8,54 +8,53 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.coord import Coord
-from chess.system import SearchContext
+from chess.board import Board
+from chess.arena import Arena
+from chess.system import Context
 
 
-class BoardContext(SearchContext):
+class BoardContext(Context[Board]):
     """
-    # ROLE: Finder option filter
-  
+    # ROLE: Finder Filter
+
     # RESPONSIBILITIES:
-    Provides options for what type of key-value pair BoardSearch implementations use to find matches.
+    Provide a BoardFinder with an attribute-value which finds Boards which match the targeted attribute-value.
+    
+    # PARENT:
+        *   Context
   
     # PROVIDES:
-    TeamSearchContext.
+    None
   
-    # ATTRIBUTES:
-        *   id (int):       Find items whose id matches this value.
-        *   designation (str):     Find items whose designation matches this value.
-        *   target (Coord):  Find items whose target matches this value.
+    # LOCAL ATTRIBUTES:
+        *   id (int)
+        *   arena (Arena)
+        
+    # INHERITED ATTRIBUTES:
+        *   See Context class for inherited attributes.
     """
     _id: Optional[int] = None
-    _name: Optional[str] = None
-    _coord: Optional[Coord] = None
+    _arena: Optional[Arena] = None
     
     def __init__(
             self,
             id: Optional[int] = None,
             name: Optional[str] = None,
-            coord: Optional[Coord] = None,
+            arena: Optional[Arena] = None,
     ):
-        self._id = id
-        self._name = name
-        self._coord = coord
+        super().__init__(id=id, name=None)
+        self._arena = arena
     
     @property
     def id(self) -> Optional[int]:
         return self._id
     
     @property
-    def name(self) -> Optional[str]:
-        return self._name
-    
-    @property
-    def coord(self) -> Optional[Coord]:
-        return self._coord
+    def arena(self) -> Optional[Arena]:
+        return self._arena
     
     def to_dict(self) -> dict:
         return {
-            "id": self._id,
-            "designation": self._name,
-            "target": self._coord
+            "id": self.id,
+            "arena": self._arena
         }
