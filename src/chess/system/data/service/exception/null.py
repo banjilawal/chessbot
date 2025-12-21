@@ -11,13 +11,13 @@ Version: 1.0.0
 from chess.system import DataServiceException, NullException
 
 __all__ = [
-    # ====================== REMOVING_NULL_DATA EXCEPTION #======================#
-    "RemovingNullDataException",
+    # ====================== REMOVING_NULL_DATA_SET EXCEPTION #======================#
+    "RemovingNullDataSetException",
 ]
 
 
-# ====================== REMOVING_NULL_DATA EXCEPTION #======================#
-class RemovingNullDataException(DataServiceException, NullException):
+# ====================== REMOVING_NULL_DATA_SET EXCEPTION #======================#
+class RemovingNullDataSetException(DataServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

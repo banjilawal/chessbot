@@ -7,17 +7,17 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from chess.system import DataException
+from chess.system import DataSetException
 
 __all__ = [
-#======================# TEAM_DATA EXCEPTION #======================#
-    "TeamDataException",
+#======================# TEAM_DATA_SET EXCEPTION #======================#
+    "TeamDataSetException",
 ]
 
-#======================# TEAM_DATA EXCEPTION #======================#
-class TeamDataException(DataException):
+#======================# TEAM_DATA_SET EXCEPTION #======================#
+class TeamDataSetException(DataSetException):
     """
-    Catchall for TeamData exception. Use as a last resort if TeamInsertionFailed or
+    Catchall for TeamData_set exception. Use as a last resort if TeamInsertionFailed or
     TeamDeletionFailedException are not a good fit. Subclasses give better debugging info.
     """
     ERROR_CODE = "TEAM_DATA_COLLECTION_OPERATION_ERROR"

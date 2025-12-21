@@ -7,13 +7,12 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Generic, List, Optional, TypeVar
 
 from chess.system import (
     Context, ContextService, DataServiceException, InsertionResult, LoggingLevelRouter, PoppingEmptyStackException,
-    SearchResult,
-    Finder, EntityService, DeletionResult
+    SearchResult, EntityService, DeletionResult
 )
 
 

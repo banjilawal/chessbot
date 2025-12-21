@@ -10,28 +10,32 @@ Version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    "DataException",
+    # ====================== DATA_SET EXCEPTION #======================#
+    "DatasetException",
 ]
 
-class DataException(ChessException):
+
+# ====================== DATA_SET EXCEPTION #======================#
+class DatasetException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
-
+    
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by Data owned by a DataService
-    3.  Catchall for errorss not covered by lower level DataException subclasses.
-
+    1.  Wrapper for data collection integrity problems.
+    2   Parent of exceptions raised by a collection of items a DataService owns.
+    3.  Catchall for errors not covered by lower level DatasetException subclasses.
+    
     # PARENT:
-        *   ChessException
-
+     *   ChessException
+    
     # PROVIDES:
     None
-
+    
     # LOCAL ATTRIBUTES:
     None
-
+    
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "DATA_ERROR"
-    DEFAULT_MESSAGE = "A piece of data managed by a DataService has encountered an error."
+    ERROR_CODE = "DATA_SET_ERROR"
+    DEFAULT_MESSAGE = "Dataset raised an exception."

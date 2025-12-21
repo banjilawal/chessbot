@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from chess.system import DataException, NullException
+from chess.system import DataSetException, NullException
 
 __all__ = [
 #======================# TEAM_INSERTION_FAILED EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 #======================# TEAM_INSERTION_FAILED EXCEPTION #======================#
-class TeamInsertionFailedException(TeamDataException):
+class TeamInsertionFailedException(TeamDataSetException):
     ERROR_CODE = "TEAM_INSERTION_ERROR"
     DEFAULT_MESSAGE = "Team insertion failed."
 

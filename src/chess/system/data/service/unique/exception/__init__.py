@@ -14,4 +14,4 @@ None
 
 # Modules
 from .base import UniqueDataServiceException
-from .duplication import AddingDuplicateDataException
+from .duplication import AddingDuplicateDataSetException

@@ -10,7 +10,8 @@ Version: 1.0.0
 # =========== SYSTEM.DATA.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .collection import *
+None
 
 # Modules
-from .base import DataException
+from .base import DatasetException
+from .null import  NullDatasetException
