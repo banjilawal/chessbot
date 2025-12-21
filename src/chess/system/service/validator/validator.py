@@ -13,6 +13,7 @@ from chess.system import (
     BuilderValidator, EntityService, LoggingLevelRouter, ValidationResult, Validator, ValidatorCertifier
 )
 from chess.system.service.exception import Invalidentity_serviceException, NullServiceException
+from chess.system.validate.validator import T
 
 
 class ServiceValidator(Validator[EntityService]):
@@ -36,27 +37,26 @@ class ServiceValidator(Validator[EntityService]):
     # INHERITED ATTRIBUTES:
     None
     """
-    """
+
     
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            builder_validator: BuilderValidator = BuilderValidator(),
-            validator_certifier: ValidatorCertifier = ValidatorCertifier(),
     ) -> ValidationResult[EntityService]:
         """
         # Action:
             1.  Confirm the candidate is not null and a Service instance.
             2.  Certify the builder with builder_validator.
             3.  certify the validator with validator_certifier.
-            4.  If no checks pass return the exception otherwise, return the certified service
-                in a ValidationResult's payload.
-
+            4.  If no checks
+            return the exception otherwise, return the certified service
+                        in a ValidationResult's payload.
+        
         # Parameters:
-            *   candidate (Any)
-
+                    *   candidate (Any)
+        
         # Returns:
           ValidationResult[EntityService] containing either:
                 - On success: EntityService in the payload.
@@ -65,7 +65,7 @@ class ServiceValidator(Validator[EntityService]):
         # Raises:
             *   TypeError
             *   NullServiceException
-            *   Invalidentity_serviceException
+            *   InvalidServiceException
         """
         method = "ServiceValidator.validate"
         try:
