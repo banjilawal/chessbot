@@ -21,7 +21,7 @@ class GameTimelineException(ResultStackException):
     # RESPONSIBILITIES:
     1.  Parent of exception raised by GameTimeline objects.
     2.  Parent of exception raised by classes that highly cohere with GameTimeline objects.
-    3.  Catchall for GameTimeline errors not coveredby lower level  GameTimeline exception.
+    3.  Catchall for GameTimeline errors not covered by lower level  GameTimeline exception.
 
     # PARENT:
         *   ResultStackException

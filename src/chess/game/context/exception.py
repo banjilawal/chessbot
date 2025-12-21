@@ -26,7 +26,7 @@ class GameContextException(ContextException):
         leads to an operation failing.
     2.  Parent of exception raised by GameContext Builders and Validators or any other classes that highly
         cohere with GameContext objects.
-    3.  Catchall for GameContext errors not coveredby lower level  GameContext exception.
+    3.  Catchall for GameContext errors not covered by lower level  GameContext exception.
     
     # PARENT:
         *   ContextException

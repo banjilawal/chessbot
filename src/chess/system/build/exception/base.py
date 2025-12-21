@@ -22,7 +22,7 @@ class BuilderException(ChessException):
   
     # RESPONSIBILITIES:
     1.  Parent of exception raised by Builder objects
-    3.  Catchall for Builder errors not coveredby lower level  Builder exception.
+    3.  Catchall for Builder errors not covered by lower level  Builder exception.
   
     # PARENT:
         *   ChessException

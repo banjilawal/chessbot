@@ -1,13 +1,13 @@
-# src/chess/system/lookup/exception.py
+# src/chess/system/lookup/exception/__init__.py
 
 """
-Module: chess.system.lookup.exception
+Module: chess.system.lookup.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+from chess.system import LookupException, OperationFailedException
 
 __all__ = [
     # ======================# LOOKUP_FAILED EXCEPTION #======================#
@@ -16,15 +16,16 @@ __all__ = [
 
 
 # ======================# LOOKUP_FAILED EXCEPTION #======================#
-class LookupFailedException(OperationFailedException):
+class LookupFailedException(LookupException, OperationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by Lookup operations.
-    3.  Catchall for Metadata errors not coveredby lower level LookupFailedExceptions.
+    3.  Catchall for Metadata errors not covered by lower level LookupFailedExceptions.
   
     # PARENT:
+        *   LookupException
         *   OperationFailedException
   
     # PROVIDES:

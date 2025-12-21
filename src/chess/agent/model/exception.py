@@ -25,7 +25,7 @@ class AgentException(ChessException):
         leads to an operation failing.
     2.  Parent of exception raised by Agent Builders and Validators or any other classes that highly
         cohere with Agent objects.
-    3.  Catchall for Agent errors not coveredby lower level  Agent exception.
+    3.  Catchall for Agent errors not covered by lower level  Agent exception.
 
     # PARENT:
         *   ChessException

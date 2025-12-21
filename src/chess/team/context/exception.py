@@ -25,7 +25,7 @@ class TeamContextException(ContextException):
         leads to an operation failing.
     2.  Parent of exception raised by TeamContext Builders and Validators or any other classes that highly
         cohere with TeamContext objects.
-    3.  Catchall for TeamContext errors not coveredby lower level  TeamContext exception.
+    3.  Catchall for TeamContext errors not covered by lower level  TeamContext exception.
 
     # PARENT:
         *   ContextException

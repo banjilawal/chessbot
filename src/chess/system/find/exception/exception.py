@@ -22,7 +22,7 @@ class FinderException(ChessException):
 
   # RESPONSIBILITIES:
   1.  Parent of exception raised by Finder objects
-  3.  Catchall for Finder errors not coveredby lower level  Finder exception.
+  3.  Catchall for Finder errors not covered by lower level  Finder exception.
 
   # PARENT:
       *   ChessException
