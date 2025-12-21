@@ -1,15 +1,15 @@
-# src/chess/system/context/example.py
+# src/chess/system/map/example.py
 
 """
-Module: chess.system.context.example
+Module: chess.system.map.example
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# src/chess/system/context/exception.py
+# src/chess/system/map/exception.py
 """
-Module: chess.system.context.context
+Module: chess.system.map.map
 Author: Banji Lawal
 Created: 2025-09-28
 
@@ -92,10 +92,10 @@ The major theme influencing the modules design are
 See the list of exception in the `__all__` list following (e.g., `ResultException`).
 """
 
-# src/chess.context.rollback_exception.py
+# src/chess.map.rollback_exception.py
 
 """
-Module: chess.context.rollback_exception
+Module: chess.map.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

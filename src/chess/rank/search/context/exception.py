@@ -1,7 +1,7 @@
-# src/rank/searcher/context/exception.py
+# src/rank/searcher/map/exception.py
 
 """
-Module: chess.rank.searcher.context.exception
+Module: chess.rank.searcher.map.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

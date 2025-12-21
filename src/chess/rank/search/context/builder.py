@@ -1,7 +1,7 @@
-# src/chess/rank/searcher/context/factory.py
+# src/chess/rank/searcher/map/factory.py
 
 """
-Module: chess.rank.searcher.context.builder
+Module: chess.rank.searcher.map.builder
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

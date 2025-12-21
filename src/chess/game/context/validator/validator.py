@@ -1,7 +1,7 @@
-# src/chess/game/context/validator/validator.py
+# src/chess/game/map/validator/validator.py
 
 """
-Module: chess.game.context.validator
+Module: chess.game.map.validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -50,7 +50,7 @@ class GameContextValidator(Validator[GameContext]):
         """
         # Action:
             1.  Confirm that only one in the (id, player_agent) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and number_bounds_validator.
+            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success send the verified GameContext in a ValidationResult.
 
@@ -100,14 +100,14 @@ class GameContextValidator(Validator[GameContext]):
                 return ValidationResult.failure(
                     ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            # Make sure a search target exists in the context. Cannot perform a search without an
+            # Make sure a search target exists in the map. Cannot perform a search without an
             
             # property-value pair.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            # Return an error if more than one property value pair exists in the context.
+            # Return an error if more than one property value pair exists in the map.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessiveGameContextFlagsException(

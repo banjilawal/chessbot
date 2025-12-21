@@ -99,12 +99,12 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     ) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  Certify the provided context with the class method's number_bounds_validator param.
-        2.  If the context validation fails return the exception in a validation result. Otherwise, return
-            the configuration entries which matched the context.
+        1.  Certify the provided map with the class method's validator param.
+        2.  If the map validation fails return the exception in a validation result. Otherwise, return
+            the configuration entries which matched the map.
 
         # Parameters:
-            *   context: OrderContext
+            *   map: OrderContext
             *   context_validator: OrderContextValidator
 
         # Returns:
@@ -119,11 +119,11 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
         """
         method = "BattleOrderLookup.find"
         try:
-            # certify the context is safe.
+            # certify the map is safe.
             validation = context_validator.validate(candidate=context)
             if validation.is_failure:
                 return SearchResult.failure(validation.exception)
-            # After context is verified select the search method based on the which flag is enabled.
+            # After map is verified select the search method based on the which flag is enabled.
             
             # Entry point into searching by designation value.
             if context.designation is not None:
@@ -135,7 +135,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
             if context.color is not None:
                 return cls._lookup_by_color(color=context.color)
         
-            # Failsafe if any context cases was missed
+            # Failsafe if any map cases was missed
             return SearchResult.failure(
                 OrderLookupFailedException(f"{method}: {OrderLookupFailedException.DEFAULT_MESSAGE}")
             )

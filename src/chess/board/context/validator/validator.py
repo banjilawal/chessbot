@@ -1,7 +1,7 @@
-# src/board/searcher/context/coord_stack_validator.py
+# src/board/searcher/map/coord_stack_validator.py
 
 """
-Module: chess.board.searcher.context.coord_stack_validator
+Module: chess.board.searcher.map.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -50,7 +50,7 @@ class BoardContextValidator(Validator[BoardContext]):
           * candidate (Any):                            Object to verify is a Board.
           * id_validator (type[IdValidator]):           Enforces safety requirements on id-searcher targets.
           * name_validator (type[NameValidator]):       Enforces safety requirements on designation-searcher targets.
-          * number_bounds_validator (type[CoordValidator]):     Enforces safety requirements on designation-searcher targets.
+          * validator (type[CoordValidator]):     Enforces safety requirements on designation-searcher targets.
           
         # Returns:
           ValidationResult[TeamSearchContext] containing either:

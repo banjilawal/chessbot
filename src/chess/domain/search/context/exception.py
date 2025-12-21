@@ -1,7 +1,7 @@
-# src/chess/domain/searcher/context/collision.py
+# src/chess/domain/searcher/map/collision.py
 
 """
-Module: chess.domain.searcher.context.exception
+Module: chess.domain.searcher.map.exception
 Author: Banji Lawal
 Created: 2025-10-31
 version: 1.0.0

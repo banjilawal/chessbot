@@ -16,7 +16,7 @@ class RankContextService(ContextService[RankContext]):
 
     # RESPONSIBILITIES:
     1.  Public facing Rank search microservice API.
-    2.  Provides a context aware utility for searching Rank objects.
+    2.  Provides a map aware utility for searching Rank objects.
     3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
     4.  Create a single source of truth for Rank search results by having single entry and exit points for the
         Rank search flow.
@@ -51,7 +51,7 @@ class RankContextService(ContextService[RankContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (RankFinder): Default value - RankFinder()
             *   builder (RankContextBuilder): Default value - RankContextBuilder()
-            *   number_bounds_validator (RankContextValidator): Default value - RankContextValidator()
+            *   validator (RankContextValidator): Default value - RankContextValidator()
 
         # Returns:
         None

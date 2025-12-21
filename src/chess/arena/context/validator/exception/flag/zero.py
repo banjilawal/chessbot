@@ -1,7 +1,7 @@
-# src/chess/arena/context/validator/exception/flag/zero.py
+# src/chess/arena/map/validator/exception/flag/zero.py
 
 """
-Module: chess.arena.context.validator.exception.flag.zero
+Module: chess.arena.map.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ZeroArenaContextFlagsException(InvalidArenaContextException, ContextFlagCo
     ERROR_CODE = "ZERO_ARENA_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
         "Zero ArenaContext flags were set. Cannot search for Arenas if one-and_oly-one "
-        "context flag is enabled."
+        "map flag is enabled."
     )

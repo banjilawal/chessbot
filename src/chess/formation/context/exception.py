@@ -1,7 +1,7 @@
-# src/chess/formation/context/exception.py
+# src/chess/formation/map/exception.py
 
 """
-Module: chess.formation.context.exception
+Module: chess.formation.map.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

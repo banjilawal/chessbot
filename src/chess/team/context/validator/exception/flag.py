@@ -1,7 +1,7 @@
-# src/chess/team/context/validator/exception/flag.py
+# src/chess/team/map/validator/exception/flag.py
 
 """
-Module: chess.team.context.validator.exception.flag
+Module: chess.team.map.validator.exception.flag
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -40,7 +40,7 @@ class NoTeamContextFlagException(InvalidTeamContextException, ContextFlagCountEx
     NONE
     """
     ERROR_CODE = "NO_TEAM_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "No TeamContext flag was selected. A context flag must be turned on with a target value."
+    DEFAULT_MESSAGE = "No TeamContext flag was selected. A map flag must be turned on with a target value."
 
 
 #========================= TOO_MANY_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
@@ -65,4 +65,4 @@ class ExcessiveTeamContextFlagsException(InvalidTeamContextException, ContextFla
     NONE
     """
     ERROR_CODE = "TOO_MANY_TEAM_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "More than one TeamContext flag was selected. Only one context flag is allowed."
+    DEFAULT_MESSAGE = "More than one TeamContext flag was selected. Only one map flag is allowed."

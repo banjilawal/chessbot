@@ -1,7 +1,7 @@
-# src/chess/system/context/__init__.py
+# src/chess/system/map/__init__.py
 
 """
-Module: chess.system.context
+Module: chess.system.map
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

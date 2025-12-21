@@ -47,13 +47,13 @@ class PieceFinder(Finder[Piece]):
         """
         # Action:
         1.  Verify the dataset is not null and contains only Piece objects,
-        2.  Use context_validator to certify the provided context.
+        2.  Use context_validator to certify the provided map.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # Parameters:
             *   dataset (List[Piece]):
-            *   context: PieceContext
+            *   map: PieceContext
             *   context_validator: PieceContextValidator
 
         # Returns:
@@ -73,11 +73,11 @@ class PieceFinder(Finder[Piece]):
                 return SearchResult.failure(
                     PieceNullDataSetException(f"{method}: {PieceNullDataSetException.DEFAULT_MESSAGE}")
                 )
-            # certify the context is safe.
+            # certify the map is safe.
             validation_result = context_validator.validate(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
-            # After context is verified select the search method based on the which flag is enabled.
+            # After map is verified select the search method based on the which flag is enabled.
             
             # Entry point into searching by piece.id.
             if context.id is not None:

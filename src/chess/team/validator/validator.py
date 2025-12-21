@@ -192,7 +192,7 @@ class TeamValidator(Validator[Team]):
                     TeamMismatchesAgentException(f"{method}: {TeamMismatchesAgentException.DEFAULT_MESSAGE}")
                 )
             
-            # When team.player_agent == player_agent Finder player_agent.team_assignments; build a searcher context
+            # When team.player_agent == player_agent Finder player_agent.team_assignments; build a searcher map
             search_context_build = team_context_service.item_builder.build(id=team.id)
             if search_context_build.is_failure():
                 return ValidationResult.failure(search_context_build.exception)

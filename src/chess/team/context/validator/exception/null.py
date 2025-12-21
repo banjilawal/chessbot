@@ -1,7 +1,7 @@
-# src/chess/team/context/validator/exception/flag.py
+# src/chess/team/map/validator/exception/flag.py
 
 """
-Module: chess.team.context.validator.exception.flag
+Module: chess.team.map.validator.exception.flag
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

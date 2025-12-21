@@ -1,7 +1,7 @@
-# src/chess/piece/context/validator/exception/flag/excess.py
+# src/chess/piece/map/validator/exception/flag/excess.py
 
 """
-Module: chess.piece.context.validator.exception.flag.excess
+Module: chess.piece.map.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ExcessivePieceContextFlagsException(InvalidPieceContextException, ContextF
     ERROR_CODE = "EXCESSIVE_PIECE_CONTEXT_FLAG_ERROR"
     DEFAULT_MESSAGE = (
         "Excessive PieceContext flags were set. an Piece search can only use one-and-only "
-        "context flag at a time."
+        "map flag at a time."
     )

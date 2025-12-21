@@ -1,7 +1,7 @@
-# src/chess/team/context/validator/validator.py
+# src/chess/team/map/validator/validator.py
 
 """
-Module: chess.team.context.validator
+Module: chess.team.map.validator
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -63,7 +63,7 @@ class TeamContextValidator(Validator[TeamContext]):
         """
         # Action:
         1.  Confirm that only one in the (id, designation, player_agent, arena, color) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
+        2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an TeamContext are return in a ValidationResult.
 

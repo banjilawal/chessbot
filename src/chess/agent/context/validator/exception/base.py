@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/exception/base.py
+# src/chess/agent/map/validator/exception/base.py
 
 """
-Module: chess.agent.context.validator.exception.base
+Module: chess.agent.map.validator.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/piece/context/builder/builder.py
+# src/chess/piece/map/builder/builder.py
 
 """
-Module: chess.piece.context.builder.builder
+Module: chess.piece.map.builder.builder
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -155,7 +155,7 @@ class PieceContextBuilder(Builder[PieceContext]):
                 # On validation success return a ransom_PieceContext in the BuildResult.
                 return BuildResult.success(PieceContext(ransom=ransom))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

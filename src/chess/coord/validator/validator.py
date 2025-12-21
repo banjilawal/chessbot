@@ -38,7 +38,7 @@ class CoordValidator(Validator[Coord]):
     def validate(
             cls,
             candidate: Any,
-            number_bounds_validator: NumberInBoundsValidator = NumberInBoundsValidator(),
+            validator: NumberInBoundsValidator = NumberInBoundsValidator(),
     ) -> ValidationResult[Coord]:
         """
         # ACTION:
@@ -48,7 +48,7 @@ class CoordValidator(Validator[Coord]):
     
         # PARAMETERS:
             *   candidate (Any)
-            *   number_bounds_validator (NNumberInBoundsValidato)
+            *   validator (NNumberInBoundsValidato)
     
         # Returns:
         ValidationResult[Coord] containing either:
@@ -77,12 +77,12 @@ class CoordValidator(Validator[Coord]):
             coord = cast(Coord, candidate)
             
             # Run row integrity checks.
-            row_validation = number_bounds_validator.validate(candidate=coord.row)
+            row_validation = validator.validate(candidate=coord.row)
             if row_validation.is_failure:
                 return ValidationResult.failure(row_validation.exception)
             
             # Run column integrity checks.
-            column_validation = number_bounds_validator.validate(candidate=coord.column)
+            column_validation = validator.validate(candidate=coord.column)
             if column_validation.is_failure:
                 return ValidationResult.failure(column_validation.exception)
             

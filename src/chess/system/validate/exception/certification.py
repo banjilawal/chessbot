@@ -39,7 +39,7 @@ class UnreliableValidatorException(ValidatorException):
     None
     """
     ERROR_CODE = "VALIDATOR_CERTIFICATION_ERROR"
-    DEFAULT_MESSAGE = "Validator certification failed. Do not rely on this number_bounds_validator."
+    DEFAULT_MESSAGE = "Validator certification failed. Do not rely on this validator."
 
 
 #======================# NULL_VALIDATOR_EXCEPTION #======================#

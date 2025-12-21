@@ -112,7 +112,7 @@ class ProjectionSearchContextBuildFailedException(ProjectionSearchContextExcepti
 
 class RansomOutOfBoundsException(ProjectionSearchContextException):
   """
-  If the old_search context is out of bounds there might be other problems.
+  If the old_search map is out of bounds there might be other problems.
   Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """

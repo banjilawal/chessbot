@@ -1,7 +1,7 @@
-# src/chess/square/context/exception.py
+# src/chess/square/map/exception.py
 
 """
-Module: chess.square.context.exception
+Module: chess.square.map.exception
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

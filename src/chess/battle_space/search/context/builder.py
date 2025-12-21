@@ -1,7 +1,7 @@
-# src/chess/battle_space/searcher/context/compute.py
+# src/chess/battle_space/searcher/map/compute.py
 
 """
-Module: chess.battle_space.searcher.context.builder
+Module: chess.battle_space.searcher.map.builder
 Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0

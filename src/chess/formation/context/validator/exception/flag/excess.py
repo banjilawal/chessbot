@@ -1,7 +1,7 @@
-# src/chess/formation/context/validator/exception/flag.py
+# src/chess/formation/map/validator/exception/flag.py
 
 """
-Module: chess.formation.context.validator.exception.flag
+Module: chess.formation.map.validator.exception.flag
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -36,4 +36,4 @@ class ExcessiveOrderContextFlagsException(InvalidOrderContextException, ContextF
     None
     """
     ERROR_CODE = "TOO_MANY_ORDER_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "More than one OrderContext flag was selected. Only one context flag is allowed."
+    DEFAULT_MESSAGE = "More than one OrderContext flag was selected. Only one map flag is allowed."

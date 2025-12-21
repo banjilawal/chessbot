@@ -1,7 +1,7 @@
-# src/chess/piece/context/service/service.py
+# src/chess/piece/map/service/service.py
 
 """
-Module: chess.piece.context.service.service
+Module: chess.piece.map.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -17,7 +17,7 @@ class PieceContextService(ContextService[PieceContext]):
 
     # RESPONSIBILITIES:
     1.  Public facingPiece search microservice API.
-    2.  Provides a context aware utility for searchingPiece objects.
+    2.  Provides a map aware utility for searchingPiece objects.
     3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
     4.  Create a single source of truth forPiece search results by having single entry and exit points for the
        Piece search flow.
@@ -52,7 +52,7 @@ class PieceContextService(ContextService[PieceContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (PieceFinder): Default value -PieceFinder()
             *   builder (PieceContextBuilder): Default value -PieceContextBuilder()
-            *   number_bounds_validator (PieceContextValidator): Default value -PieceContextValidator()
+            *   validator (PieceContextValidator): Default value -PieceContextValidator()
 
         # Returns:
         None

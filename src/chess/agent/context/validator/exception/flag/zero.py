@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/exception/flag/zero.py
+# src/chess/agent/map/validator/exception/flag/zero.py
 
 """
-Module: chess.agent.context.validator.exception.flag.zero
+Module: chess.agent.map.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -42,5 +42,5 @@ class ZeroAgentContextFlagsException(InvalidAgentContextException, ContextFlagCo
     ERROR_CODE = "ZERO_AGENT_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
         "Zero AgentContext flags were set. Cannot search for Agents if one-and_oly-one "
-        "context flag is enabled."
+        "map flag is enabled."
     )

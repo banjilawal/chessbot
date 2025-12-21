@@ -1,7 +1,7 @@
-# src/chess/arena/context/validator/validator.py
+# src/chess/arena/map/validator/validator.py
 
 """
-Module: chess.arena.context.validator
+Module: chess.arena.map.validator
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

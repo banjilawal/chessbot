@@ -47,8 +47,8 @@ class BoardValidator(Validator[Board]):
 
         # Parameters:
           * candidate (Any): Object to verify is a Domain.
-          * piece_validator (type[PieceValidator]): Injected into number_bounds_validator.
-          * number_bounds_validator (type[SquareValidator]): verifies the relationship between the
+          * piece_validator (type[PieceValidator]): Injected into validator.
+          * validator (type[SquareValidator]): verifies the relationship between the
                 Domain's owning Piece and Square.
 
         # Returns:

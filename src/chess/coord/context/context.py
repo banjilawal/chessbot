@@ -1,7 +1,7 @@
-# src/chess/coord/context/context
+# src/chess/coord/map/map
 
 """
-Module: chess.coord.context.context
+Module: chess.coord.map.map
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

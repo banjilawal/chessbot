@@ -1,7 +1,7 @@
-# src/chess/coord/context/builder/builder.py
+# src/chess/coord/map/builder/builder.py
 
 """
-Module: ches.coord.context.builder.builder
+Module: ches.coord.map.builder.builder
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -48,7 +48,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             column: Optional[int],
             coord: Optional[Coord] = None,
             coord_validator: CoordContextValidator = CoordContextValidator(),
-            number_bounds_validator: NumberInBoundsValidator = NumberInBoundsValidator(),
+            validator: NumberInBoundsValidator = NumberInBoundsValidator(),
     ) -> BuildResult[CoordContext]:
         """
         # Action:
@@ -65,7 +65,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 
             This parameter is Required:
                 *   coord_validator (CoordContextValidator)
-                *   number_bounds_validator (NumberInBoundsValidator)
+                *   validator (NumberInBoundsValidator)
 
         # Returns:
           BuildResult[CoordContext] containing either:
@@ -98,7 +98,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             
             # Build the row CoordContext if its flag is enabled.
             if row is not None:
-                validation = number_bounds_validator.validate(candidate=row)
+                validation = validator.validate(candidate=row)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a row_CoordContext in the BuildResult.
@@ -106,7 +106,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 
             # Build the column CoordContext if its flag is enabled.
             if column is not None:
-                validation = number_bounds_validator.validate(candidate=column)
+                validation = validator.validate(candidate=column)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a column_CoordContext in the BuildResult.
@@ -120,7 +120,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 # On validation success return a coord_CoordContext in the BuildResult.
                 return BuildResult.success(CoordContext(column=column))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

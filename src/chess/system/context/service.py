@@ -1,7 +1,7 @@
-# src/chess/system/context/service.py
+# src/chess/system/map/service.py
 
 """
-Module: chess.system.context.service
+Module: chess.system.map.service
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -52,7 +52,7 @@ class ContextService(EntityService[Context[T]]):
             *   id (int)
             *   finder (Finder[T])
             *   builder (Builder[Context[T]])
-            *   number_bounds_validator (Validator[Context[T]])
+            *   validator (Validator[Context[T]])
 
         # Returns:
         None

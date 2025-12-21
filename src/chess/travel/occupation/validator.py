@@ -71,7 +71,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
             return ValidationResult(exception=e)
 #
 # @staticmethod
-# def validate(t: TransferEvent, context: Event) -> Result[TransferEvent]:
+# def validate(t: TransferEvent, map: Event) -> Result[TransferEvent]:
 #   """
 #   Validates an KingCheckEvent meets specifications:
 #     - Not validation
@@ -194,9 +194,9 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       )
 #
 #     actor_square_search = BoardSearch.searcher(
-#       board=context.board,
+#       board=map.board,
 #       data_source=BoardDatasource.SQUARE,
-#       context=BoardSearchcontext(point=travel.traveler.current_position)
+#       map=BoardSearchcontext(point=travel.traveler.current_position)
 #     )
 #
 #     if not actor_square_search.is_success():
@@ -207,9 +207,9 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #       )
 #
 #     destination_search = BoardSearch.searcher(
-#       board=context.board,
+#       board=map.board,
 #       data_source=BoardDatasource.SQUARE,
-#       context=BoardSearchcontext(travel.enemy_square.visitor_id)
+#       map=BoardSearchcontext(travel.enemy_square.visitor_id)
 #     )
 #     if not destination_search.is_success():
 #       return TransactionResult(
@@ -259,7 +259,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #
 #   TravelTransactionsearch_result = BoardSearch.square_by_coord(
-#     point=travel.traveler.current_position, board=context.board
+#     point=travel.traveler.current_position, board=map.board
 #     )
 #   if search_result.rollback_exception is not None:
 #     return TransactionResult(op_result_id, travel, search_result.rollback_exception)
@@ -292,7 +292,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     )
 #
 #   attack_validation = AttackValidator.validate(
-#     CaptureContext(owner=travel.traveler, enemy=destination_occupant, board=context.board)
+#     CaptureContext(owner=travel.traveler, enemy=destination_occupant, board=map.board)
 #   )
 #   if not attack_validation.is_success():
 #     return TransactionResult(op_result_id, travel, attack_validation.rollback_exception)
@@ -301,7 +301,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #   return TravelTransaction._attack_enemy(
 #     op_result_id=op_result_id,
 #     directive=AttackDirective(
-#       board=context.board,
+#       board=map.board,
 #       traveler=travel.traveler,
 #       enemy=enemy_king,
 #       occupation_id=travel.visitor_id,

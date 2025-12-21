@@ -52,7 +52,7 @@ class AgentService(EntityService[PlayerAgent]):
             *   id (nt)
             *   designation (str)
             *   builder (AgentFactory)
-            *   number_bounds_validator (AgentValidator)
+            *   validator (AgentValidator)
 
         # Returns:
         None

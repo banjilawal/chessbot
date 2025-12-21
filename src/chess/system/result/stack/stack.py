@@ -25,7 +25,7 @@ class ResultStack(ABC, Generic[T]):
 
     # RESPONSIBILITIES:
     1.  Scales Builder and Validator operations for collection of objects.
-    2.  Provides context aware search.
+    2.  Provides map aware search.
     3.  Safe and reliable CRUD operations.
     4.  Public facing API.
 

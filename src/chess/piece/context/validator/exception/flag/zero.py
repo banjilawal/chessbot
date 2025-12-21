@@ -1,7 +1,7 @@
-# src/chess/piece/context/validator/exception/flag/zero.py
+# src/chess/piece/map/validator/exception/flag/zero.py
 
 """
-Module: chess.piece.context.validator.exception.flag.zero
+Module: chess.piece.map.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ZeroPieceContextFlagsException(InvalidPieceContextException, ContextFlagCo
     ERROR_CODE = "ZERO_PIECE_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
         "Zero PieceContext flags were set. Cannot search for Pieces if one-and_oly-one "
-        "context flag is enabled."
+        "map flag is enabled."
     )

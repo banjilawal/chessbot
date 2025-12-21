@@ -1,7 +1,7 @@
-# src/chess/arena/context/builder/builder.py
+# src/chess/arena/map/builder/builder.py
 
 """
-Module: chess.arena.context.builder.builder
+Module: chess.arena.map.builder.builder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -142,7 +142,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
                 # On validation success return a variety_ArenaContext in the BuildResult.
                 return BuildResult.success(ArenaContext(variety=variety))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

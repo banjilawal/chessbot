@@ -1,7 +1,7 @@
-# src/chess/game/context/validator/exception/flag/zero.py
+# src/chess/game/map/validator/exception/flag/zero.py
 
 """
-Module: chess.game.context.validator.exception.flag.zero
+Module: chess.game.map.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ZeroGameContextFlagsException(InvalidGameContextException, ContextFlagCoun
     ERROR_CODE = "ZERO_GAME_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
         "Zero GameContext flags were set. Cannot search for Games if one-and_oly-one "
-        "context flag is enabled."
+        "map flag is enabled."
     )

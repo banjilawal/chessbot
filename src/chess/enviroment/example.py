@@ -47,7 +47,7 @@
 # # or consistency problem.
 # square_search = BoardSquareFinder.searcher(
 #   board=board,
-#   context=TeamSearchContext(visitor_id=square.visitor_id
+#   map=TeamSearchContext(visitor_id=square.visitor_id
 # ))
 # if square_search.is_empty():
 #   return ValidationResult(rollback_exception=TravelResourceNotFoundException(
@@ -60,7 +60,7 @@
 # # Find the square associated with the square's last position.
 # square_search = BoardSquareFinder.searcher(
 #   board=board,
-#   context=TeamSearchContext(point=square.current_position)
+#   map=TeamSearchContext(point=square.current_position)
 # )
 #
 # if square_search.is_empty():

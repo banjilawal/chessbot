@@ -37,7 +37,7 @@ class EntityService(ABC, Generic[T]):
         *   id (int)
         *   designation (str)
         *   builder (Builder[T])
-        *   number_bounds_validator (Validator[T])
+        *   validator (Validator[T])
         
     # INHERITED ATTRIBUTES:
     None
@@ -62,7 +62,7 @@ class EntityService(ABC, Generic[T]):
             *   id (nt)
             *   designation (str)
             *   builder (Builder[T])
-            *   number_bounds_validator (Validator[T])
+            *   validator (Validator[T])
 
         # Returns:
         None
@@ -92,7 +92,7 @@ class EntityService(ABC, Generic[T]):
     
     @property
     def entity_validator(self) -> Validator[T]:
-        """get entity number_bounds_validator"""
+        """get entity validator"""
         return self._validator
     
     def __eq__(self, other):

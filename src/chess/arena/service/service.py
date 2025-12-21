@@ -53,7 +53,7 @@ class ArenaService(EntityService[Arena]):
             *   id (nt)
             *   designation (str)
             *   builder (ArenaFactory)
-            *   number_bounds_validator (ArenaValidator)
+            *   validator (ArenaValidator)
 
         # Returns:
         None

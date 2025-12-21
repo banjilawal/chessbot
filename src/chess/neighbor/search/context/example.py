@@ -269,16 +269,16 @@ From `chess.owner`:
  * `DiscoverySearchContext`
 """
 
-# src/chess/owner/searcher/context/collision.py
+# src/chess/owner/searcher/map/collision.py
 
 """
-Module: chess.owner.searcher.context.exception
+Module: chess.owner.searcher.map.exception
 Created: 2025-11-05
 version: 1.0.0
 """
 
 """
-Module: chess.owner.searcher.context.exception
+Module: chess.owner.searcher.map.exception
 Created: 2025-11-05
 version: 1.0.0
 

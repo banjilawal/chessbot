@@ -7,10 +7,10 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-# src/rank/searcher/context/collision.py
+# src/rank/searcher/map/collision.py
 
 """
-Module: chess.rank.searcher.context.exception
+Module: chess.rank.searcher.map.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

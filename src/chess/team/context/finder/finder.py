@@ -1,7 +1,7 @@
-# src/chess/team/context/finder/finder.py
+# src/chess/team/map/finder/finder.py
 
 """
-Module: chess.team.context.finder.finder
+Module: chess.team.map.finder.finder
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -49,13 +49,13 @@ class TeamFinder(Finder[Team]):
         """
         # Action:
         1.  Verify the dataset is not null and contains only Team objects,
-        2.  Use context_validator to certify the provided context.
+        2.  Use context_validator to certify the provided map.
         3.  Context attribute routes the finder. Attribute value is the finder target.
         4.  The outcome of the finder is sent back to the caller in a SearchResult object.
 
         # Parameters:
             *   dataset (List[Team]):
-            *   context: TeamContext
+            *   map: TeamContext
             *   context_validator: TeamContextValidator
 
         # Returns:
@@ -76,11 +76,11 @@ class TeamFinder(Finder[Team]):
                 return SearchResult.failure(
                     TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}")
                 )
-            # certify the context is safe.
+            # certify the map is safe.
             validation_result = context_validator.validate(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
-            # After context is verified select the finder method based on the which flag is enabled.
+            # After map is verified select the finder method based on the which flag is enabled.
             
             # Entry point into finding by team's id.
             if context.id is not None:

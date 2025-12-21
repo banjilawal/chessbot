@@ -1,7 +1,7 @@
-# src/chess/team/context/service/service.py
+# src/chess/team/map/service/service.py
 
 """
-Module: chess.team.context.service.service
+Module: chess.team.map.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -19,7 +19,7 @@ class TeamContextService(ContextService[TeamContext]):
 
     # RESPONSIBILITIES:
     1.  Public facing Team search microservice API.
-    2.  Provides a context aware utility for searching Team objects.
+    2.  Provides a map aware utility for searching Team objects.
     3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
     4.  Create a single source of truth for Team search results by having single entry and exit points for the
         Team search flow.
@@ -55,7 +55,7 @@ class TeamContextService(ContextService[TeamContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (TeamFinder): Default value - TeamFinder()
             *   builder (TeamContextBuilder): Default value - TeamContextBuilder()
-            *   number_bounds_validator (TeamContextValidator): Default value - TeamContextValidator()
+            *   validator (TeamContextValidator): Default value - TeamContextValidator()
 
         # Returns:
         None

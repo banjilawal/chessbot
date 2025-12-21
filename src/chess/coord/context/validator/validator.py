@@ -1,7 +1,7 @@
-# src/chess/coord/context/validator/validator.py
+# src/chess/coord/map/validator/validator.py
 
 """
-Module: chess.coord.context.validator
+Module: chess.coord.map.validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -50,7 +50,7 @@ class CoordContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a Coord.
-          * number_bounds_validator (type[CoordValidator]): Enforces safety requirements on row, column, square coords.
+          * validator (type[CoordValidator]): Enforces safety requirements on row, column, square coords.
 
           
         # Returns:
@@ -147,7 +147,7 @@ class CoordContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a row.
-          * number_bounds_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
+          * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
           ValidationResult[CoordContext] containing either:
@@ -188,7 +188,7 @@ class CoordContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a column.
-          * number_bounds_validator (type[CoordValidator]): Checks if candidate complies with safety contract.
+          * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
         # Returns:
           ValidationResult[CoordContext] containing either:

@@ -1,7 +1,7 @@
-# src/chess/square/context/service/service.py
+# src/chess/square/map/service/service.py
 
 """
-Module: chess.square.context.service.service
+Module: chess.square.map.service.service
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -19,7 +19,7 @@ class SquareContextService(ContextService[SquareContext]):
 
     # RESPONSIBILITIES:
     1.  Public facing Square search microservice API.
-    2.  Provides a context aware utility for searching Square objects.
+    2.  Provides a map aware utility for searching Square objects.
     3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
     4.  Create a single source of truth for Square search results by having single entry and exit points for the
         Square search flow.
@@ -54,7 +54,7 @@ class SquareContextService(ContextService[SquareContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (SquareFinder): Default value - SquareFinder()
             *   builder (SquareContextBuilder): Default value - SquareContextBuilder()
-            *   number_bounds_validator (SquareContextValidator): Default value - SquareContextValidator()
+            *   validator (SquareContextValidator): Default value - SquareContextValidator()
 
         # Returns:
         None

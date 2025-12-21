@@ -287,7 +287,7 @@ Example:
 #
 #
 #   return OccupationTransaction._switch_squares(op_result_id, travel, travel.actor_square)
-#   search_result = BoardSearch.square_by_coord(point=travel.traveler.current_position, board=context.board)
+#   search_result = BoardSearch.square_by_coord(point=travel.traveler.current_position, board=map.board)
 #   if search_result.rollback_exception is not None:
 #     return TransactionResult(op_result_id, travel, search_result.rollback_exception)
 #
@@ -308,7 +308,7 @@ Example:
 #
 #
 #   attack_validation = AttackValidator.validate(
-#     CaptureContext(owner=travel.traveler, enemy=destination_occupant, board=context.board)
+#     CaptureContext(owner=travel.traveler, enemy=destination_occupant, board=map.board)
 #   )
 #   if not attack_validation.is_success():
 #     return TransactionResult(op_result_id, travel, attack_validation.rollback_exception)
@@ -317,7 +317,7 @@ Example:
 #   return OccupationTransaction._attack_enemy(
 #     op_result_id=op_result_id,
 #     travel=AttackEvent(
-#       board=context.board,
+#       board=map.board,
 #       traveler=travel.traveler,
 #       enemy=enemy_king,
 #       occupation_id=travel.visitor_id,

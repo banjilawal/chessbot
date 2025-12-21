@@ -1,7 +1,7 @@
-# src/chess/snapshot/context/validator/validator.py
+# src/chess/snapshot/map/validator/validator.py
 
 """
-Module: chess.snapshot.context.validator.validator
+Module: chess.snapshot.map.validator.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -62,7 +62,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             2.  If one-and-only-one SnapshotContext attribute-value-tuple is enabled goto the integrity
                 check. Else, send an exception in the ValidationResult.
             3.  Route to the appropriate validation subflow with the attribute as the routing key.
-            4.  If the validation subflow certifies the context tuple return it in the validation result.
+            4.  If the validation subflow certifies the map tuple return it in the validation result.
                 Else, send the exception in the ValidationResult.
 
         # Parameters:
@@ -102,14 +102,14 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             # for additional tests.
             context = cast(SnapshotContext, candidate)
             
-            # Handle the no context flag enabled case.
+            # Handle the no map flag enabled case.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     ZeroSnapshotContextFlagsException(
                         f"{method}: {ZeroSnapshotContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
-            # Handle the excessive context flags case.
+            # Handle the excessive map flags case.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessiveSnapshotContextFlagsException(

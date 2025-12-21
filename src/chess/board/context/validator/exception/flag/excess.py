@@ -1,7 +1,7 @@
-# src/chess/board/context/validator/exception/flag/excess.py
+# src/chess/board/map/validator/exception/flag/excess.py
 
 """
-Module: chess.board.context.validator.exception.flag.excess
+Module: chess.board.map.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ExcessiveBoardContextFlagsException(InvalidBoardContextException, ContextF
     ERROR_CODE = "EXCESSIVE_BOARD_CONTEXT_FLAG_ERROR"
     DEFAULT_MESSAGE = (
         "Excessive BoardContext flags were set. an Board search can only use one-and-only "
-        "context flag at a time."
+        "map flag at a time."
     )

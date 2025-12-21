@@ -1,7 +1,7 @@
-# src/chess/agent/context/service/service.py
+# src/chess/agent/map/service/service.py
 
 """
-Module: chess.agent.context.service.service
+Module: chess.agent.map.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -19,7 +19,7 @@ class AgentContextService(ContextService[AgentContext]):
 
     # RESPONSIBILITIES:
     1.  Public facing PlayerAgent search microservice API.
-    2.  Provides a context aware utility for searching PlayerAgent objects.
+    2.  Provides a map aware utility for searching PlayerAgent objects.
     3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
     4.  Create a single source of truth for PlayerAgent search results by having single entry and exit points for the
         PlayerAgent search flow.
@@ -29,7 +29,7 @@ class AgentContextService(ContextService[AgentContext]):
 
     # PROVIDES:
         *   builder:    -> AgentContextBuilder
-        *   number_bounds_validator:  -> AgentContextValidator
+        *   validator:  -> AgentContextValidator
         *   finder:     -> AgentFinder
 
     # LOCAL ATTRIBUTES:
@@ -56,7 +56,7 @@ class AgentContextService(ContextService[AgentContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (AgentFinder): Default value - AgentFinder()
             *   builder (AgentContextBuilder): Default value - AgentContextBuilder()
-            *   number_bounds_validator (AgentContextValidator): Default value - AgentContextValidator()
+            *   validator (AgentContextValidator): Default value - AgentContextValidator()
 
         # Returns:
         None

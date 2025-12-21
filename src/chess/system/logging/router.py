@@ -42,8 +42,8 @@ class LoggingLevelRouter:
     for handling, wrapping.
     Ensures uniform logging without repetitive try/except.
     Arguments:
-      * `context`:
-      * `notification`: Anything `context` is returning on success.
+      * `map`:
+      * `notification`: Anything `map` is returning on success.
       * `rollback_exception`:
       * `exception_factory`:
     Returns:

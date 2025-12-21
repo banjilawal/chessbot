@@ -1,7 +1,7 @@
-# src/chess/square/context/validator/exception/flag/excess.py
+# src/chess/square/map/validator/exception/flag/excess.py
 
 """
-Module: chess.square.context.validator.exception.flag.excess
+Module: chess.square.map.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ExcessiveSquareContextFlagsException(InvalidSquareContextException, Contex
     ERROR_CODE = "EXCESSIVE_SQUARE_CONTEXT_FLAG_ERROR"
     DEFAULT_MESSAGE = (
         "Excessive SquareContext flags were set. an Square search can only use one-and-only "
-        "context flag at a time."
+        "map flag at a time."
     )

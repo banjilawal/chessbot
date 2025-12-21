@@ -1,7 +1,7 @@
-# src/chess/square/context/builder/builder.py
+# src/chess/square/map/builder/builder.py
 
 """
-Module: chess.square.context.builder.builder
+Module: chess.square.map.builder.builder
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -125,7 +125,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                 # On validation success return a coord_SquareContext in the BuildResult.
                 return BuildResult.success(SquareContext(coord=coord))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

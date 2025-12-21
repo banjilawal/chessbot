@@ -1,7 +1,7 @@
-# src/chess/team/context/context.py
+# src/chess/team/map/map.py
 
 """
-Module: chess.team.context.context
+Module: chess.team.map.map
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

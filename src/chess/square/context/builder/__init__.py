@@ -1,7 +1,7 @@
-# src/chess/square/context/builder/__init__.py
+# src/chess/square/map/builder/__init__.py
 
 """
-Module: chess.square.context.builder.__init__
+Module: chess.square.map.builder.__init__
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

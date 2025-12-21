@@ -1,7 +1,7 @@
-# src/chess/coord/context/service/service.py
+# src/chess/coord/map/service/service.py
 
 """
-Module: chess.coord.context.service.service
+Module: chess.coord.map.service.service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -20,7 +20,7 @@ class CoordContextService(ContextService[CoordContext]):
 
     # RESPONSIBILITIES:
     1.  Public facing Coord search microservice API.
-    2.  Provides a context aware utility for searching Coord objects.
+    2.  Provides a map aware utility for searching Coord objects.
     3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
     4.  Create a single source of truth for Coord search results by having single entry and exit points for the
         Coord search flow.

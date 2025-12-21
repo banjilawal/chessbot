@@ -26,7 +26,7 @@ class DataService(ABC, Generic[D]):
 
     # RESPONSIBILITIES:
     1.  Scales Builder and Validator operations for collection of objects.
-    2.  Provides context aware search.
+    2.  Provides map aware search.
     3.  Safe and reliable CRUD operations.
     4.  Public facing API.
     
@@ -133,7 +133,7 @@ class DataService(ABC, Generic[D]):
             context_validator=self._context_service.entity_validator,
         )
         # try:
-        #     validation = self._context_service.entity_validator.validate(context)
+        #     validation = self._context_service.entity_validator.validate(map)
         #     if validation.is_failure():
         #         return SearchResult.failure(validation.exception)
         #     return SearchResult.success(payload=validation.payload)

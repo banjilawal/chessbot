@@ -1,7 +1,7 @@
-# src/chess/board/context/service/exception/exception
+# src/chess/board/map/service/exception/exception
 
 """
-Module: chess.board.context.service.exception.exception
+Module: chess.board.map.service.exception.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

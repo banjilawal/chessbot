@@ -116,7 +116,7 @@ class PlayerAgent(ABC):
     #   owner=TeamFinder.searcher(
     #     data_owner=self._team_name,
     #     search_category=SearchCategory.ROSTER,
-    #     context=TeamSearchContext(visitor_name="BN1")
+    #     map=TeamSearchContext(visitor_name="BN1")
     #   ),
     #   square_name="C8"
     # )

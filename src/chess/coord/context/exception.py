@@ -1,7 +1,7 @@
-# src/coord/context/exception.py
+# src/coord/map/exception.py
 
 """
-Module: chess.coord.context.exception
+Module: chess.coord.map.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

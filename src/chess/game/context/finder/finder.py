@@ -50,13 +50,13 @@ class GameFinder(Finder[Game]):
         """
         # Action:
         1.  Verify the dataset is not null and contains only Game objects,
-        2.  Use context_validator to certify the provided context.
+        2.  Use context_validator to certify the provided map.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # Parameters:
             *   dataset (List[Game]):
-            *   context: GameContext
+            *   map: GameContext
             *   context_validator: GameContextValidator
 
         # Returns:
@@ -77,11 +77,11 @@ class GameFinder(Finder[Game]):
                 return SearchResult.failure(
                     GameSearchDatasetNullException(f"{method}: {GameSearchDatasetNullException.DEFAULT_MESSAGE}")
                 )
-            # certify the context is safe.
+            # certify the map is safe.
             validation_result = context_validator.validate(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
-            # After context is verified select the search method based on the which flag is enabled.
+            # After map is verified select the search method based on the which flag is enabled.
             
             # Entry point into searching by game id.
             if context.id is not None:

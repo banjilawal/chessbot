@@ -1,7 +1,7 @@
-# src/chess/formation/context/builder/__init__.py
+# src/chess/formation/map/builder/__init__.py
 
 """
-Module: chess.formation.context.builder.__init__
+Module: chess.formation.map.builder.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

@@ -76,7 +76,7 @@ class Schema(Enum):
     #
     # @property
     # def battle_order(self) -> SearchResult[List[BattleOrder]]:
-    #         return BattleOrderLookup().lookup(context=OrderContext(color=self._color))
+    #         return BattleOrderLookup().lookup(map=OrderContext(color=self._color))
     
     def __str__(self) -> str:
         return (

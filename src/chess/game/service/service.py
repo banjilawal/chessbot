@@ -28,7 +28,7 @@ class GameService(EntityService[Game]):
 
     # PROVIDES:
         *   builder: --> GameBuilder
-        *   number_bounds_validator: --> GameValidator
+        *   validator: --> GameValidator
 
     # LOCAL ATTRIBUTES:
     None
@@ -53,7 +53,7 @@ class GameService(EntityService[Game]):
             *   id (nt)
             *   designation (str)
             *   builder (GameFactory)
-            *   number_bounds_validator (GameValidator)
+            *   validator (GameValidator)
 
         # Returns:
         None

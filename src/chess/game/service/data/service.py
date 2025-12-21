@@ -91,7 +91,7 @@ class GameDataService(DataService[Game]):
     #     return cast(GameFactory, self.service.item_builder)
     #
     # @property
-    # def number_bounds_validator(self) -> GameValidator:
+    # def validator(self) -> GameValidator:
     #     return cast(GameValidator, self.service.item_validator)
     #
     # @property
@@ -114,12 +114,12 @@ class GameDataService(DataService[Game]):
     #         )
     #
     # @LoggingLevelRouter.monitor
-    # def search(self, context: GameContext) -> SearchResult[List[Game]]:
+    # def search(self, map: GameContext) -> SearchResult[List[Game]]:
     #     method = "GameDataService.finder"
     #     game_context_service = cast(GameContextService, self.context_service)
     #
     #     return self.context_service.finder.find(
     #         dataset=self.items,
-    #         context=context,
+    #         map=map,
     #         context_validator=self.context_service.item_validator
     #     )

@@ -1,7 +1,7 @@
-# src/chess/catalog/context/validator/exception/base.py
+# src/chess/catalog/map/validator/exception/base.py
 
 """
-Module: chess.catalog.context.exception.base
+Module: chess.catalog.map.exception.base
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

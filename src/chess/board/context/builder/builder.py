@@ -1,7 +1,7 @@
-# src/chess/board/searcher/context/builder
+# src/chess/board/searcher/map/builder
 
 """
-Module: chess.board.searcher.context.builder
+Module: chess.board.searcher.map.builder
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0
@@ -105,7 +105,7 @@ class BoardContextBuilder(Builder[BoardContext]):
                 # On validation success return an id_BoardContext in the BuildResult.
                 return BuildResult.success(BoardContext(arena=arena))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

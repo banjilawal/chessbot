@@ -1,7 +1,7 @@
-# src/chess/piece/context/validator/null/exception.py
+# src/chess/piece/map/validator/null/exception.py
 
 """
-Module: chess.piece.context.validator.null.exception
+Module: chess.piece.map.validator.null.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/validator.py
+# src/chess/agent/map/validator/validator.py
 
 """
-Module: chess.agent.context.validator.validator
+Module: chess.agent.map.validator.validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -54,7 +54,7 @@ class AgentContextValidator(Validator[AgentContext]):
             2.  If one-and-only-one AgentContext attribute-value-tuple is enabled goto the integrity
                 check. Else, send an exception in the ValidationResult.
             3.  Route to the appropriate validation subflow with the attribute as the routing key.
-            4.  If the validation subflow certifies the context tuple return it in the validation result.
+            4.  If the validation subflow certifies the map tuple return it in the validation result.
                 Else, send the exception in the ValidationResult.
 
         # Parameters:
@@ -92,12 +92,12 @@ class AgentContextValidator(Validator[AgentContext]):
             # for additional tests.
             context = cast(AgentContext, candidate)
             
-            # Handle the no context flag enabled case.
+            # Handle the no map flag enabled case.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     ZeroAgentContextFlagsException(f"{method}: {ZeroAgentContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            # Handle the excessive context flags case.
+            # Handle the excessive map flags case.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessiveAgentContextFlagsException(
@@ -107,7 +107,7 @@ class AgentContextValidator(Validator[AgentContext]):
             
             # Using the tuple's attribute as an address, route to appropriate validation subflow.
             
-            # Which ever attribute value is not null should be certified safe by the appropriate number_bounds_validator.
+            # Which ever attribute value is not null should be certified safe by the appropriate validator.
             if context.id is not None:
                 validation = identity_service.validate_id(candidate=context.id)
                 if validation.is_failure:

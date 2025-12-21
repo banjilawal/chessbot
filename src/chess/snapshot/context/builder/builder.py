@@ -1,7 +1,7 @@
-# src/chess/snapshot/context/builder/builder.py
+# src/chess/snapshot/map/builder/builder.py
 
 """
-Module: chess.snapshot.context.builder.builder
+Module: chess.snapshot.map.builder.builder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -130,7 +130,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
                 # On validation success return a team_SnapshotContext in the BuildResult.
                 return BuildResult.success(payload=SnapshotContext(team=team))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

@@ -1,7 +1,7 @@
-# src/chess/agent/context/builder/builder.py
+# src/chess/agent/map/builder/builder.py
 
 """
-Module: chess.agent.context.builder.builder
+Module: chess.agent.map.builder.builder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -144,7 +144,7 @@ class AgentContextBuilder(Builder[AgentContext]):
                 # On validation success return a variety_AgentContext in the BuildResult.
                 return BuildResult.success(AgentContext(variety=variety))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

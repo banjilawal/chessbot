@@ -1,7 +1,7 @@
-# src/chess/formation/context/validator/exception/flag.py
+# src/chess/formation/map/validator/exception/flag.py
 
 """
-Module: chess.formation.context.validator.exception.flag
+Module: chess.formation.map.validator.exception.flag
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -37,4 +37,4 @@ class ZeroOrderContextFlagsException(InvalidOrderContextException, BoundsExcepti
     None
     """
     ERROR_CODE = "NO_ORDER_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "No OrderContext flag was selected. A context flag must be turned on with a target value."
+    DEFAULT_MESSAGE = "No OrderContext flag was selected. A map flag must be turned on with a target value."

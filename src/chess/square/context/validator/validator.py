@@ -1,7 +1,7 @@
-# src/chess/square/context/validator/validator.py
+# src/chess/square/map/validator/validator.py
 
 """
-Module: chess.square.context.validator
+Module: chess.square.map.validator
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

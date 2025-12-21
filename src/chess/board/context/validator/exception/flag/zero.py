@@ -1,7 +1,7 @@
-# src/chess/board/context/validator/exception/flag/zero.py
+# src/chess/board/map/validator/exception/flag/zero.py
 
 """
-Module: chess.board.context.validator.exception.flag.zero
+Module: chess.board.map.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ZeroBoardContextFlagsException(InvalidBoardContextException, ContextFlagCo
     ERROR_CODE = "ZERO_BOARD_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
         "Zero BoardContext flags were set. Cannot search for Boards if one-and_oly-one "
-        "context flag is enabled."
+        "map flag is enabled."
     )

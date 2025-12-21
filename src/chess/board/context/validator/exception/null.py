@@ -1,7 +1,7 @@
-# src/board/searcher/context/exception.py
+# src/board/searcher/map/exception.py
 
 """
-Module: chess.board.searcher.context.exception
+Module: chess.board.searcher.map.exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

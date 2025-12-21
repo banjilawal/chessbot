@@ -1,7 +1,7 @@
-# src/chess/catalog/context/lookup/lookup.py
+# src/chess/catalog/map/lookup/lookup.py
 
 """
-Module: chess.catalog.context.lookup.lookup
+Module: chess.catalog.map.lookup.lookup
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -124,12 +124,12 @@ class CatalogLookup(EnumLookup[CatalogContext]):
     ) -> SearchResult[List[Catalog]]:
         """
         # Action:
-        1.  Certify the provided context with the class method's number_bounds_validator param.
-        2.  If the context validation fails return the exception in a validation result. Otherwise, return
-            the configuration entries which matched the context.
+        1.  Certify the provided map with the class method's validator param.
+        2.  If the map validation fails return the exception in a validation result. Otherwise, return
+            the configuration entries which matched the map.
 
         # Parameters:
-            *   context: CatalogContext
+            *   map: CatalogContext
             *   context_validator: CatalogContextValidator
 
         # Returns:
@@ -144,11 +144,11 @@ class CatalogLookup(EnumLookup[CatalogContext]):
         """
         method = "CatalogLookup.find"
         try:
-            # certify the context is safe.
+            # certify the map is safe.
             validation = context_validator.validate(candidate=context)
             if validation.is_failure:
                 return SearchResult.failure(validation.exception)
-            # After context is verified select the search method based on the which flag is enabled.
+            # After map is verified select the search method based on the which flag is enabled.
             
             # Entry point into searching by name value.
             if context.name is not None:
@@ -163,7 +163,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
             if context.quota is not None:
                 return cls._lookup_by_quota(quota=context.quota)
             
-            # Failsafe if any context cases was missed
+            # Failsafe if any map cases was missed
             return SearchResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

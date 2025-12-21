@@ -1,7 +1,7 @@
-# src/chess/formation/context/validator/validator.py
+# src/chess/formation/map/validator/validator.py
 
 """
-Module: chess.formation.context.validator
+Module: chess.formation.map.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -48,7 +48,7 @@ class OrderContextValidator(Validator[OrderContext]):
         """
         # Action:
         1.  Confirm that only one in the (designation, square_designation, color) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
+        2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fails return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an OrderContext are return in a ValidationResult.
 
@@ -104,7 +104,7 @@ class OrderContextValidator(Validator[OrderContext]):
                 validation = identity_service.validate_name(candidate=context.designation)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_order.designation context in a ValidationResult.
+                # On certification success return the battle_order.designation map in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-square target.
@@ -112,7 +112,7 @@ class OrderContextValidator(Validator[OrderContext]):
                 validation = identity_service.validate_name(candidate=context.square)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_order.square context in a ValidationResult.
+                # On certification success return the battle_order.square map in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-color target.
@@ -120,7 +120,7 @@ class OrderContextValidator(Validator[OrderContext]):
                 validation = color_validator.validate(candidate=context.color)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_order.color context in a ValidationResult.
+                # On certification success return the battle_order.color map in a ValidationResult.
                 return ValidationResult.success(context)
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside

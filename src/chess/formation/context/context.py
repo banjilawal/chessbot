@@ -1,7 +1,7 @@
-# src/chess/formation/context/context.py
+# src/chess/formation/map/map.py
 
 """
-Module: chess.formation.context.context
+Module: chess.formation.map.map
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

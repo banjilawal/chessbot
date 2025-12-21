@@ -1,7 +1,7 @@
-# src/chess/piece/context/context.py
+# src/chess/piece/map/map.py
 
 """
-Module: chess.piece.context.context
+Module: chess.piece.map.map
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

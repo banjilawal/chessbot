@@ -61,7 +61,7 @@ class RankValidatorFactory(Validator[Rank]):
         1.  Check if the candidate is null. If so return an exception in a ValidationResult.
         2.  If the candidate is not a Rank instance send an exception in a ValidationResult.
         3.  Find the candidate's matching concrete rank and hand off its validation to the
-            subclass number_bounds_validator.
+            subclass validator.
 
         # PARAMETERS:
             *   candidate (Any)
@@ -95,7 +95,7 @@ class RankValidatorFactory(Validator[Rank]):
                     TypeError(f"{method}: Expected a Rank got {type(candidate).__name__} instead.")
                 )
             rank = cast(Rank, candidate)
-            # Pick which number_bounds_validator to run.
+            # Pick which validator to run.
             if isinstance(candidate, King):
                 return king_validator.validate(rank)
             if isinstance(candidate, Queen):

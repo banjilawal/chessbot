@@ -1,7 +1,7 @@
-# src/chess/neighbor/searcher/context/collision.py
+# src/chess/neighbor/searcher/map/collision.py
 
 """
-Module: chess.neighbor.searcher.context.exception
+Module: chess.neighbor.searcher.map.exception
 Created: 2025-11-05
 version: 1.0.0
 """
@@ -73,7 +73,7 @@ class ExcessiveVisitationSearchParamsException(VisitationSearchContextException)
 
 class VisitationRansomParamBoundsException(VisitationSearchContextException):
   """
-  If the old_search context is out of bounds there might be other problems.
+  If the old_search map is out of bounds there might be other problems.
   Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """
@@ -82,7 +82,7 @@ class VisitationRansomParamBoundsException(VisitationSearchContextException):
 
 class VisitationInvalidRankNameParamException(VisitationSearchContextException):
   """
-  If the old_search context is out of bounds there might be other problems.
+  If the old_search map is out of bounds there might be other problems.
   Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """

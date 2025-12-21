@@ -44,7 +44,7 @@ class CoordBuilder(Builder[Coord]):
     ) -> BuildResult[Coord]:
         """
         # ACTION:
-        1.  Use the number_bounds_validator to verify the row and column are within the bounds of the Board's 2D array.
+        1.  Use the validator to verify the row and column are within the bounds of the Board's 2D array.
         3.  If any check fails snd the exception in the BuildResult. Else, Create a Coord object and send in the
             BuildResult.
 

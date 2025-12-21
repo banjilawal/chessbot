@@ -1,7 +1,7 @@
-# src/chess/arena/context/context.py
+# src/chess/arena/map/map.py
 
 """
-Module: chess.arena.arena.context.context
+Module: chess.arena.arena.map.map
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

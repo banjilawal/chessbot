@@ -1,7 +1,7 @@
-# src/chess/team/context/builder/builder.py
+# src/chess/team/map/builder/builder.py
 
 """
-Module: chess.team.context.builder.builder
+Module: chess.team.map.builder.builder
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -147,7 +147,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 # On validation success return a color_GameContext in the BuildResult.
                 return BuildResult.success(payload=TeamContext(color=validation.payload))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

@@ -1,4 +1,4 @@
-# src/chess/agent/context/finder/finder.py
+# src/chess/agent/map/finder/finder.py
 
 """
 Module: chess.agent.cntext.finder.finder
@@ -50,12 +50,12 @@ class AgentFinder(Finder[PlayerAgent]):
         """
         # Action:
         1.  Verify the dataset is not null and contains only PlayerAgent objects,
-        2.  Use context_validator to certify the provided context.
+        2.  Use context_validator to certify the provided map.
         3.  Route to the appropriate finder-helper based on the attribute-value tuple which is enabled.
         4.  The finder-helper sends the SearchResult to the caller.
 
         # Parameters:
-            *   context: AgentContext
+            *   map: AgentContext
             *   dataset (List[PlayerAgent])
             *   context_validator: AgentContextValidator
 
@@ -77,12 +77,12 @@ class AgentFinder(Finder[PlayerAgent]):
                 return SearchResult.failure(
                     AgentNullDataSetException(f"{method}: {AgentNullDataSetException.DEFAULT_MESSAGE}")
                 )
-            # certify the context is safe.
+            # certify the map is safe.
             validation_result = context_validator.validate(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
             
-            # After context is verified select the search method based on the which flag is enabled.
+            # After map is verified select the search method based on the which flag is enabled.
             
             # Entry point into searching by player_agent.id.
             if context.id is not None:

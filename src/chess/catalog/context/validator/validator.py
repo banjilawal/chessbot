@@ -1,7 +1,7 @@
-# src/chess/catalog/context/validator/validator.py
+# src/chess/catalog/map/validator/validator.py
 
 """
-Module: chess.catalog.context.validator
+Module: chess.catalog.map.validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -48,7 +48,7 @@ class CatalogContextValidator(Validator[CatalogContext]):
         """
         # Action:
         1.  Confirm that only one in the (designation, quota, ransom) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
+        2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fails return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an CatalogContext are return in a ValidationResult.
 
@@ -104,7 +104,7 @@ class CatalogContextValidator(Validator[CatalogContext]):
                 validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_catalog.name context in a ValidationResult.
+                # On certification success return the battle_catalog.name map in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-designation target.
@@ -112,7 +112,7 @@ class CatalogContextValidator(Validator[CatalogContext]):
                 validation = identity_service.validate_name(candidate=context.designation)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_catalog.designation context in a ValidationResult.
+                # On certification success return the battle_catalog.designation map in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-quota target.
@@ -120,7 +120,7 @@ class CatalogContextValidator(Validator[CatalogContext]):
                 validation = number_validator.validate(candidate=context.quota)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_catalog.quota context in a ValidationResult.
+                # On certification success return the battle_catalog.quota map in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-ransom target.
@@ -128,7 +128,7 @@ class CatalogContextValidator(Validator[CatalogContext]):
                 validation = number_validator.validate(candidate=context.ransom)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_catalog.ransom context in a ValidationResult.
+                # On certification success return the battle_catalog.ransom map in a ValidationResult.
                 return ValidationResult.success(context)
         
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside

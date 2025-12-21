@@ -52,7 +52,7 @@ class SquareService(EntityService[Square]):
             *   id (nt)
             *   designation (str)
             *   builder (SquareFactory)
-            *   number_bounds_validator (SquareValidator)
+            *   validator (SquareValidator)
 
         # Returns:
         None

@@ -50,13 +50,13 @@ class SnapshotFinder(Finder[Snapshot]):
         """
         # Action:
         1.  Verify the dataset is not null and contains only Snapshot objects,
-        2.  Use context_validator to certify the provided context.
+        2.  Use context_validator to certify the provided map.
         3.  Call the finder method which matches the attribute whose flag was raised.
         4.  If the logic does not account for an PlayerAgent attribute drop to the try-finally block.
 
         # Parameters:
             *   dataset (GameTimeline):
-            *   context: SnapshotContext
+            *   map: SnapshotContext
             *   context_validator: SnapshotContextValidator
 
         # Returns:
@@ -76,7 +76,7 @@ class SnapshotFinder(Finder[Snapshot]):
                 return SearchResult.failure(
                     NullGameTimelineException(f"{method}: {NullGameTimelineException.DEFAULT_MESSAGE}")
                 )
-            # certify the context is safe.
+            # certify the map is safe.
             validation_result = context_validator.validate(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)

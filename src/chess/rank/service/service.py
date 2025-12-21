@@ -53,7 +53,7 @@ class RankService(EntityService[Rank]):
             *   id (nt)
             *   designation (str)
             *   builder (RankFactory)
-            *   number_bounds_validator (RankValidator)
+            *   validator (RankValidator)
 
         # Returns:
         None

@@ -92,7 +92,7 @@ class AgentDataService(DataService[PlayerAgent]):
     #     return cast(AgentFactory, self.service.item_builder)
     #
     # @property
-    # def number_bounds_validator(self) -> AgentValidator:
+    # def validator(self) -> AgentValidator:
     #     return cast(AgentValidator, self.service.item_validator)
     #
     # @property
@@ -115,12 +115,12 @@ class AgentDataService(DataService[PlayerAgent]):
     #         )
     #
     # @LoggingLevelRouter.monitor
-    # def search(self, context: AgentContext) -> SearchResult[List[PlayerAgent]]:
+    # def search(self, map: AgentContext) -> SearchResult[List[PlayerAgent]]:
     #     method = "AgentDataService.finder"
     #     agent_context_service = cast(AgentContextService, self.context_service)
     #
     #     return self.context_service.finder.find(
     #         dataset=self.items,
-    #         context=context,
+    #         map=map,
     #         context_validator=self.context_service.item_validator
     #     )

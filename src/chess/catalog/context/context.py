@@ -1,7 +1,7 @@
-# src/chess/catalog/context/validator/exception/flag/zero.py
+# src/chess/catalog/map/validator/exception/flag/zero.py
 
 """
-Module: chess.catalog.context.validator.exception.flag.zero
+Module: chess.catalog.map.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

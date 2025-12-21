@@ -1,7 +1,7 @@
-# src/chess/coord/context/validator/exception/flag/zero.py
+# src/chess/coord/map/validator/exception/flag/zero.py
 
 """
-Module: chess.coord.context.validator.exception.flag.zero
+Module: chess.coord.map.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ZeroCoordContextFlagsException(InvalidCoordContextException, ContextFlagCo
     ERROR_CODE = "ZERO_COORD_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
         "Zero CoordContext flags were set. Cannot search for Coords if one-and_oly-one "
-        "context flag is enabled."
+        "map flag is enabled."
     )

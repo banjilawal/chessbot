@@ -1,7 +1,7 @@
-# src/chess/formation/context/builder/builder.py
+# src/chess/formation/map/builder/builder.py
 
 """
-Module: chess.formation.lookup/context.builder.builder
+Module: chess.formation.lookup/map.builder.builder
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -129,7 +129,7 @@ class OrderContextBuilder(Builder[OrderContext]):
                 # On validation success return a color_OrderContext in the BuildResult.
                 return BuildResult.success(OrderContext(color=color))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

@@ -1,7 +1,7 @@
-# src/chess/domain/searcher/context/exception.py
+# src/chess/domain/searcher/map/exception.py
 
 """
-Module: chess.domain.searcher.context.context
+Module: chess.domain.searcher.map.map
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

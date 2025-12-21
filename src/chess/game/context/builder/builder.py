@@ -1,7 +1,7 @@
-# src/chess/game/context/builder/builder.py
+# src/chess/game/map/builder/builder.py
 
 """
-Module: chess.game.context.builder.builder
+Module: chess.game.map.builder.builder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -110,7 +110,7 @@ class GameContextBuilder(Builder[GameContext]):
                 # On validation success return a player_agent_GameContext in the BuildResult.
                 return BuildResult.success(GameContext(agent=agent))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

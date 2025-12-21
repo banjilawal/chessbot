@@ -1,7 +1,7 @@
-# src/chess/arena/context/finder/finder.py
+# src/chess/arena/map/finder/finder.py
 
 """
-Module: chess.arena.context.finder.finder
+Module: chess.arena.map.finder.finder
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

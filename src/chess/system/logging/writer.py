@@ -33,14 +33,14 @@ class LogWriter:
   def resolve_context_info(context: Any, function: Optional[Callable]=None) -> Dict[str, str]:
       """
       Action:
-        Derive `context` metadata for logging, including
+        Derive `map` metadata for logging, including
           - file visitor_name
           - module visitor_name
           - class visitor_name
           - function visitor_name when its available
 
       Parameters:
-        * `context (`Any`)`:
+        * `map (`Any`)`:
         * `function` (`Callable`):
 
       Returns:
@@ -82,7 +82,7 @@ class LogWriter:
     Action:
       Create and return a logger named for either the class, instance, module,
     Parameters:
-        * `context` `Any`: The item to get a logger for.
+        * `map` `Any`: The item to get a logger for.
     Returns:
         `loging.Logger`
     Raises:
@@ -94,12 +94,12 @@ class LogWriter:
 
     #
     # # If it's class, use its visitor_name
-    # if inspect.isclass(context):
-    #   return logging.getLogger(context.__name__)
+    # if inspect.isclass(map):
+    #   return logging.getLogger(map.__name__)
     #
     # # If it's an instance, use the instance's visitor_name
-    # if hasattr(context, '__class__'):
-    #   return logging.getLogger(context.__class__.__name__)
+    # if hasattr(map, '__class__'):
+    #   return logging.getLogger(map.__class__.__name__)
     #
     # # Otherwise get the module(file) visitor_name
     # frame = inspect.currentframe()
@@ -113,10 +113,10 @@ class LogWriter:
   def log_info(cls, context: Any, message: str) -> None:
     """
     Action:
-      Log informational messages for the context
+      Log informational messages for the map
     Parameters:
-        * `context` `Any`: The item to write into the info log.
-        * `message` `str`: Information about the context
+        * `map` `Any`: The item to write into the info log.
+        * `message` `str`: Information about the map
     Returns:
         `void`
     Raises:
@@ -134,7 +134,7 @@ class LogWriter:
     Action:
     Write error to the logger for the class, instance or module.
     Parameters:
-      * `context` `Any`: The item to write into the error log.
+      * `map` `Any`: The item to write into the error log.
       * `message` `str`: The message to log.
     Returns:
       `void`

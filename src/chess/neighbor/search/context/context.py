@@ -1,7 +1,7 @@
-# src/chess/neighbor/searcher/context/exception.py
+# src/chess/neighbor/searcher/map/exception.py
 
 """
-Module: chess.neighbor.searcher.context.context
+Module: chess.neighbor.searcher.map.map
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0

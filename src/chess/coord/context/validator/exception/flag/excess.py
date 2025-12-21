@@ -1,7 +1,7 @@
-# src/chess/coord/context/validator/exception/flag/excess.py
+# src/chess/coord/map/validator/exception/flag/excess.py
 
 """
-Module: chess.coord.context.validator.exception.flag.excess
+Module: chess.coord.map.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ExcessiveCoordContextFlagsException(InvalidCoordContextException, ContextF
     ERROR_CODE = "EXCESSIVE_COORD_CONTEXT_FLAG_ERROR"
     DEFAULT_MESSAGE = (
         "Excessive CoordContext flags were set. an Coord search can only use one-and-only "
-        "context flag at a time."
+        "map flag at a time."
     )

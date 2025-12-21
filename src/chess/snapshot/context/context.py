@@ -1,7 +1,7 @@
-# src/chess/snapshot/context/context.py
+# src/chess/snapshot/map/map.py
 
 """
-Module: chess.snapshot.context.context
+Module: chess.snapshot.map.map
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

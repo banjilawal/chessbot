@@ -106,7 +106,7 @@ class PieceDataService(DataService[Piece]):
     def search(self, context: PieceContext) -> SearchResult[List[Piece]]:
         """
         # ACTION:
-        1.  Pass context argument to self.searcher.
+        1.  Pass map argument to self.searcher.
         2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
         3.  The Finder object will return any exception if it fails, success otherwise.
         4.  Because Finder object does all the error using a try-catch is uneccesar

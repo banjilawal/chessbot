@@ -1,7 +1,7 @@
-# src/chess/snapshot/context/validator/experience/flag/exception.py
+# src/chess/snapshot/map/validator/experience/flag/exception.py
 
 """
-Module: chess.snapshot.context.validator.experience.flag.exception
+Module: chess.snapshot.map.validator.experience.flag.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -36,4 +36,4 @@ class ExcessiveSnapshotContextFlagsException(InvalidSnapshotContextException, Co
     None
     """
     ERROR_CODE = "TOO_MANY_GAME_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "More than one SnapshotContext flag was selected. Only one context flag is allowed."
+    DEFAULT_MESSAGE = "More than one SnapshotContext flag was selected. Only one map flag is allowed."

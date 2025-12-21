@@ -1,7 +1,7 @@
-# src/chess/target/searcher/context/__init__.py
+# src/chess/target/searcher/map/__init__.py
 
 """
-Module: chess.target.searcher.context.__init__
+Module: chess.target.searcher.map.__init__
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

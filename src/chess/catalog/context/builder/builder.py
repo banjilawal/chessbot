@@ -1,7 +1,7 @@
-# src/chess/catalog/context/builder/builder.py
+# src/chess/catalog/map/builder/builder.py
 
 """
-Module: chess.catalog.context.builder.builder
+Module: chess.catalog.map.builder.builder
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -130,7 +130,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
                 # On validation success return a ransom_CatalogContext in the BuildResult.
                 return BuildResult.success(CatalogContext(ransom=ransom))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

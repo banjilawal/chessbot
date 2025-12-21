@@ -13,7 +13,10 @@ from chess.schema import (
     SchemaColorBoundsException, SchemaNameBoundsException, SchemaMap, SchemaMapBuilder,
     SchemaMapValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
 )
-from chess.system import EnumLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
+from chess.system import (
+    EnumLookup, FailsafeBranchExitPointException, GameColor, LoggingLevelRouter, SearchResult,
+    id_emitter
+)
 
 
 class SchemaLookup(EnumLookup[SchemaMap]):
@@ -84,23 +87,23 @@ class SchemaLookup(EnumLookup[SchemaMap]):
     @LoggingLevelRouter.monitor
     def lookup(
             cls,
-            context: SchemaMap,
+            map: SchemaMap,
             map_validator: SchemaMapValidator = SchemaMapValidator()
     ) -> SearchResult[List[Schema]]:
         """
         # Action:
-        1.  Certify the provided context with the class method's number_bounds_validator param.
-        2.  If the context validation fails return the exception in a validation result. Otherwise, return
-            the configuration entries which matched the context.
-
+        1.  Certify the provided map with the validator.
+        2.  If the map validation fails return the exception in a validation result. Otherwise, return
+            the schema entries with the targeted key-values.
+            
         # Parameters:
-            *   context: SchemaMap
+            *   map: SchemaMap
             *   map_validator: SchemaMapValidator
 
         # Returns:
         SearchResult[List[Schema]] containing either:
-            - On finding a match: List[Schema] in the payload.
             - On error: Exception , payload null
+            - On finding a match: List[Schema] in the payload.
             - On no matches found: Exception null, payload null
 
         # Raises:
@@ -108,29 +111,31 @@ class SchemaLookup(EnumLookup[SchemaMap]):
         """
         method = "SchemaLookup.lookup"
         try:
-            # certify the context is safe.
-            validation = map_validator.validate(candidate=context)
+            # certify the map is safe.
+            validation = map_validator.validate(candidate=map)
             if validation.is_failure:
                 return SearchResult.failure(validation.exception)
-            # After context is verified select the search method based on the which flag is enabled.
+            # After verification use the hash key to route to the appropriate lookup method.
             
-            # Entry point into searching by name value.
-            if context.name is not None:
-                return cls._lookup_by_name(name=context.name)
-            # Entry point into searching by color value.
-            if context.color is not None:
-                return cls._lookup_by_color(color=context.color)
+            # Entry point into forward lookups by name.
+            if map.name is not None:
+                return cls._lookup_by_name(name=map.name)
+            # Entry point into forward lookups by name.
+            if map.color is not None:
+                return cls._lookup_by_color(color=map.color)
             
-            # Failsafe if any context cases was missed
+            # Failsafe if any map cases was missed
             return SearchResult.failure(
-                SchemaLookupFailedException(f"{method}: {SchemaLookupFailedException.DEFAULT_MESSAGE}")
+                FailsafeBranchExitPointException(
+                    f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}"
+                )
             )
 
-        # Finally, if some exception is not handled by the checks wrap it inside a  SchemaLookupException then,
-        # return the exception chain inside a SearchResult.
+        # Finally, if some exception is not handled by the checks wrap it inside a SchemaLookupFailedException
+        # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SchemaLookupException(ex=ex, message=f"{method}: {SchemaLookupException.DEFAULT_MESSAGE}")
+                SchemaLookupFailedException(ex=ex, message=f"{method}: {SchemaLookupFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -138,15 +143,15 @@ class SchemaLookup(EnumLookup[SchemaMap]):
     def _lookup_by_name(cls, name: str) -> SearchResult[List[Schema]]:
         """
         # Action:
-        1.  Get any Schema which matches the target name.
+        1.  Get any Schema entry which matches the targeted name-value key.
 
         # Parameters:
             *   name (str)
 
         # Returns:
         SearchResult[List[Schema]] containing either:
-            - On finding a match: List[Schema] in the payload.
             - On error: Exception , payload null
+            - On finding a match: List[Schema] in the payload.
             - On no matches found: Exception null, payload null
 
         # Raises:
@@ -159,7 +164,10 @@ class SchemaLookup(EnumLookup[SchemaMap]):
             # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no schema has that name.
+            
+            # If no Schema entry has the targeted key-value return an exception because no hits in the hash table
+            # indicates there is either no subclass whose different behavior is implemented with a strategy or,
+            # class objects of the same type, same behavior but different metadata.
             return SearchResult.failure(
                 SchemaColorBoundsException(f"{method}: {SchemaNameBoundsException.DEFAULT_MESSAGE}")
             )
@@ -176,15 +184,15 @@ class SchemaLookup(EnumLookup[SchemaMap]):
     def _lookup_by_color(cls, color: GameColor) -> SearchResult[List[Schema]]:
         """
         # Action:
-        1.  Get any Schema which matches the target color.
+        1.  Get any Schema entry which matches the targeted color-value key.
 
         # Parameters:
             *   color (GameColor)
 
         # Returns:
         SearchResult[List[Schema]] containing either:
-            - On finding a match: List[Schema] in the payload.
             - On error: Exception , payload null
+            - On finding a match: List[Schema] in the payload.
             - On no matches found: Exception null, payload null
 
         # Raises:
@@ -197,7 +205,10 @@ class SchemaLookup(EnumLookup[SchemaMap]):
             # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no schema has that color.
+            
+            # If no Schema entry has the targeted key-value return an exception because no hits in the hash table
+            # indicates there is either no subclass whose different behavior is implemented with a strategy or,
+            # class objects of the same type, same behavior but different metadata.
             return SearchResult.failure(
                 SchemaColorBoundsException(f"{method}: {SchemaNameBoundsException.DEFAULT_MESSAGE}")
             )

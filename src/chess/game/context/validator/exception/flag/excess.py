@@ -1,7 +1,7 @@
-# src/chess/game/context/validator/exception/flag/excess.py
+# src/chess/game/map/validator/exception/flag/excess.py
 
 """
-Module: chess.game.context.validator.exception.flag.excess
+Module: chess.game.map.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ExcessiveGameContextFlagsException(InvalidGameContextException, ContextFla
     ERROR_CODE = "EXCESSIVE_GAME_CONTEXT_FLAG_ERROR"
     DEFAULT_MESSAGE = (
         "Excessive GameContext flags were set. an Game search can only use one-and-only "
-        "context flag at a time."
+        "map flag at a time."
     )

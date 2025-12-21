@@ -1,7 +1,7 @@
-# src/chess/agent/context/validator/exception/flag/excess.py
+# src/chess/agent/map/validator/exception/flag/excess.py
 
 """
-Module: chess.agent.context.validator.exception.flag.excess
+Module: chess.agent.map.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ExcessiveAgentContextFlagsException(InvalidAgentContextException, ContextF
     ERROR_CODE = "EXCESSIVE_AGENT_CONTEXT_FLAG_ERROR"
     DEFAULT_MESSAGE = (
         "Excessive AgentContext flags were set. an Agent search can only use one-and-only "
-        "context flag at a time."
+        "map flag at a time."
     )

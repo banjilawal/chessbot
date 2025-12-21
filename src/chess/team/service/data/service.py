@@ -123,10 +123,10 @@ class TeamDataService(DataService[Team]):
     #         )
     #
     # @LoggingLevelRouter.monitor
-    # def search(self, context: TeamContext) -> SearchResult[List[Team]]:
+    # def search(self, map: TeamContext) -> SearchResult[List[Team]]:
     #     """
     #     # ACTION:
-    #     1.  Pass context argument to self.searcher.
+    #     1.  Pass map argument to self.searcher.
     #     2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
     #     3.  The Finder object will return any exception if it fails, success otherwise.
     #     4.  Because Finder object does all the error using a try-catch is uneccesar
@@ -149,5 +149,5 @@ class TeamDataService(DataService[Team]):
     #     method = "TeamDataService.searcher"
     #
     #     return self.search.find(
-    #         dataset=self.items, context=context, context_validator=self.context_service.item_validator
+    #         dataset=self.items, map=map, context_validator=self.context_service.item_validator
     #     )

@@ -1,7 +1,7 @@
-# src/chess/battle_space/searcher/context/factory.py
+# src/chess/battle_space/searcher/map/factory.py
 
 """
-Module: chess.battle_space.searcher.context.coord_stack_validator
+Module: chess.battle_space.searcher.map.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0

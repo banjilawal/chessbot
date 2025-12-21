@@ -1,7 +1,7 @@
-# src/chess/team/context/validator/exception/flag/zero.py
+# src/chess/team/map/validator/exception/flag/zero.py
 
 """
-Module: chess.team.context.validator.exception.flag.zero
+Module: chess.team.map.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -41,5 +41,5 @@ class ZeroTeamContextFlagsException(InvalidTeamContextException, ContextFlagCoun
     ERROR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
         "Zero TeamContext flags were set. Cannot search for Teams if one-and_oly-one "
-        "context flag is enabled."
+        "map flag is enabled."
     )

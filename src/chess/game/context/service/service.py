@@ -1,7 +1,7 @@
-# src/chess/game/context/service/service.py
+# src/chess/game/map/service/service.py
 
 """
-Module: chess.game.context.service.service
+Module: chess.game.map.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -20,7 +20,7 @@ class GameContextService(ContextService[GameContext]):
 
     # RESPONSIBILITIES:
     1.  Public facing Game search microservice API.
-    2.  Provides a context aware utility for searching Game objects.
+    2.  Provides a map aware utility for searching Game objects.
     3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
     4.  Create a single source of truth for Game search results by having single entry and exit points for the
         Game search flow.
@@ -55,7 +55,7 @@ class GameContextService(ContextService[GameContext]):
             *   id (int): Default value - id_emitter.service_id
             *   finder (GameFinder): Default value - GameFinder()
             *   builder (GameContextBuilder): Default value - GameContextBuilder()
-            *   number_bounds_validator (GameContextValidator): Default value - GameContextValidator()
+            *   validator (GameContextValidator): Default value - GameContextValidator()
 
         # Returns:
         None

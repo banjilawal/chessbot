@@ -18,7 +18,7 @@ class CatalogService(EntityService[CatalogContext]):
 
     # RESPONSIBILITIES:
     1.  Public facing Catalog search microservice API.
-    2.  Provides a context aware utility for searching Catalog objects.
+    2.  Provides a map aware utility for searching Catalog objects.
     3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
     4.  Create a single source of truth for Catalog search results by having single entry and exit points for the
         Catalog search flow.
