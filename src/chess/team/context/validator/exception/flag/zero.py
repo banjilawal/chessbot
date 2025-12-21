@@ -12,7 +12,7 @@ from chess.team import InvalidTeamContextException
 
 __all__ = [
     # ========================= ZERO_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
-    "ZeroTeamContextFlagsException",
+    "ZeroTeamContextFlagsException"
 ]
 
 
@@ -22,7 +22,8 @@ class ZeroTeamContextFlagsException(InvalidTeamContextException, ContextFlagCoun
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no TeamContext flag is provided with a searcher value.
+    1.  Indicates no TeamContext flag was enabled. One and only one Team attribute-value-tuple is required for
+        a search.
 
     # PARENT:
         *   ContextFlagCountException
@@ -35,7 +36,10 @@ class ZeroTeamContextFlagsException(InvalidTeamContextException, ContextFlagCoun
     None
 
     # INHERITED ATTRIBUTES:
-    NONE
+    None
     """
     ERROR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "No TeamContext flag was selected. A context flag must be turned on with a target value."
+    DEFAULT_MESSAGE = (
+        "Zero TeamContext flags were set. Cannot search for Teams if one-and_oly-one "
+        "context flag is enabled."
+    )
