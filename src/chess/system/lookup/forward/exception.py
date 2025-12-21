@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.system import LookupFailedException
 
 __all__ = [
-    # ======================# FAILED METADATA LOOKUP OPERATION EXCEPTION #======================#
+    # ======================# FORWARD_LOOKUP_FAILED EXCEPTION #======================#
     "ForwardLookupFailedException",
 ]
 
@@ -22,7 +22,7 @@ class ForwardLookupFailedException(LookupFailedException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by ForwardLookup objects.
-    2.  Wraps unhandled exceptions that hit the try-finally block of a Metadata method.
+    2.  Wraps unhandled exceptions that hit the try-finally block of a ForwardLookup method.
 
     # PARENT:
         *   LookupException

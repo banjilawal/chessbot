@@ -5,24 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/system/lookup/reverse/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/lookup/reverse/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/lookup/reverse/reverse.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/model/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/context/lookup/exception/failure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/context/lookup/exception/failure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/timeline/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/timeline/exception/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/build/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/exception/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/find/exception/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/find/exception/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/metadata/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/metadata/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/metadata/lookup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/forward/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/metadata/lookup/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/forward/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/metadata/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/forward/forward.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/metadata/metadata.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/metadata.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/exception/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/exception/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/lookup/forward/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/forward/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/lookup/forward/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/forward/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/lookup/forward/forward.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/forward/forward.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -993,7 +982,7 @@
       <workItem from="1766165068921" duration="21820000" />
       <workItem from="1766190117520" duration="23649000" />
       <workItem from="1766223152549" duration="26989000" />
-      <workItem from="1766255712700" duration="52683000" />
+      <workItem from="1766255712700" duration="53244000" />
     </task>
     <servers />
   </component>

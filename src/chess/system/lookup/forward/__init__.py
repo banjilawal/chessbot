@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .lookup import ForwardLookup
+from .forward import ForwardLookup
 from .exception import ForwardLookupFailedException
