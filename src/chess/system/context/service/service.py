@@ -26,7 +26,7 @@ class ContextService(EntityService[Context[T]]):
         *   EntityService
 
     # PROVIDES:
-        *   ContextService
+    None
 
     # LOCAL ATTRIBUTES:
         *   finder (Finder[T])
@@ -48,7 +48,7 @@ class ContextService(EntityService[Context[T]]):
             1.  Constructor
 
         # Parameters:
-            *   designation (str)
+            *   name (str)
             *   id (int)
             *   finder (Finder[T])
             *   builder (Builder[Context[T]])

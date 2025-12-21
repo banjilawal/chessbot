@@ -34,11 +34,7 @@ class DataService(ABC, Generic[D]):
     None
 
     # PROVIDES:
-        *   Builder
-        *   Validator
-        *   Finder
-        *   Insertion
-        *   Deletion
+    None
 
     # LOCAL ATTRIBUTES:
         *   id (int):

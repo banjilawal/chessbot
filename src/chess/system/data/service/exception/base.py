@@ -1,23 +1,23 @@
-# src/chess/system/data/service/exception/operation/base.py
+# src/chess/system/data/service/exception/base.py
 
 """
-Module: chess.system.data.service.exception.operation.base
+Module: chess.system.data.service.exception.base
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
 
-from chess.system import ServiceException
+from chess.system import DataException, ServiceException
 
 __all__ = [
-    # ====================== DATA_SERVICE_EXCEPTION #======================#
+    # ====================== DATA_SERVICE EXCEPTION #======================#
     "DataServiceException",
 ]
 
 
-# ====================== DATA_SERVICE_EXCEPTION #======================#
-class DataServiceException(ServiceException):
+# ====================== DATA_SERVICE EXCEPTION #======================#
+class DataServiceException(DataException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -26,10 +26,11 @@ class DataServiceException(ServiceException):
     2.  Wraps unhandled exception that hit the try-finally block of a DataService method.
 
     # PARENT:
+        *   DataException
         *   ServiceException
 
     # PROVIDES:
-    DataServiceException
+    None
 
     # LOCAL ATTRIBUTES:
     None

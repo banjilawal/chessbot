@@ -31,8 +31,7 @@ class UniqueDataService(ABC, Generic[T]):
     None
 
     # PROVIDES:
-        *   EntityService
-        *   DataService
+    None
 
     # LOCAL ATTRIBUTES:
     None

@@ -14,4 +14,6 @@ from .data import *
 from .operation import *
 
 # Modules
-None
+from .base import DataServiceException
+from .pop import PoppingEmptyStackException
+from .null import RemovingNullDataException

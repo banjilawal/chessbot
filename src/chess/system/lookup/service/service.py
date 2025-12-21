@@ -15,6 +15,49 @@ from chess.system.lookup.reverse import ReverseLookup
 
 
 class LookupService(ContextService[Context[Enum]]):
+    """
+     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+
+     # RESPONSIBILITIES:
+     1.  Public facing State Machine microservice API.
+     2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+     3.  Is authoritative, single-source-of-truth for an entity's state by providing single entry and exit points to
+         the entity's lifecycle.
+     4.  Bundles  operations that produce different Result subclasses.
+
+     # PARENT:
+         *  ContextService
+
+     # PROVIDES:
+     None
+
+     # LOCAL ATTRIBUTES:
+        *   forward_lookup (ForwardLookup)
+        *   reverse_lookup (ReverseLookup)
+
+     # INHERITED ATTRIBUTES:
+         *  See ContextService for inherited attributes.
+     """
+    """
+    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Public facing API for querying datasets of T objects.
+    2.  Encapsulates Search and search filter validation in one extendable module.
+    3.  Manage Context integrity lifecycle.
+
+    # PARENT:
+        *   EntityService
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   finder (Finder[T])
+
+    # INHERITED ATTRIBUTES:
+        *   See EntityService for inherited attributes.
+    """
     _forward_lookup: ForwardLookup
     _reverse_lookup: ReverseLookup
     
@@ -27,7 +70,7 @@ class LookupService(ContextService[Context[Enum]]):
             forward_lookup: ForwardLookup,
             reverse_lookup: ReverseLookup
     ):
-        super().service(id=id, name=name, builder=builder, validator=validator)
+        super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._forward_lookup = forward_lookup
         self._reverse_lookup = reverse_lookup
         

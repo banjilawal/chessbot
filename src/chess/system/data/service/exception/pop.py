@@ -1,7 +1,7 @@
-# src/chess/system/data/service/exception/operation/pop.py
+# src/chess/system/data/service/exception/pop.py
 
 """
-Module: chess.system.data.service.exception.operation.pop
+Module: chess.system.data.service.exception.pop
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -27,7 +27,7 @@ class PoppingEmptyStackException(DataServiceException):
         *   DataServiceException
 
     # PROVIDES:
-    PoppingEmptyStackException
+    None
 
     # LOCAL ATTRIBUTES:
     None

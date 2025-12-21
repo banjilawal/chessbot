@@ -7,43 +7,34 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ChessException, BoundsException
+from chess.system import ChessException
 
 __all__ = [
-    #======================# CONTEXT EXCEPTION #======================#
+    # ======================# CONTEXT EXCEPTION #======================#
     "ContextException",
-    "ContextFlagCountException",
 ]
 
 
-#======================# CONTEXT EXCEPTION #======================#
+# ======================# CONTEXT EXCEPTION #======================#
 class ContextException(ChessException):
     """
-    # ROLE: Parent Exception
-  
+    # ROLE: Exception Wrapper, Catchall Exception
+
     # RESPONSIBILITIES:
-    1.  Super class of exception when a condition halts the normal flow of a Context object's operations.
-  
+    1.  Parent of exception raised by CONTEXT objects
+    3.  Catchall for CONTEXT errors not covered by lower level CONTEXT exception.
+
+    # PARENT:
+        *   ChessException
+
     # PROVIDES:
-    ContextException
-    
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "Context raised an exception."
-
-
-class ContextFlagCountException(ContextException, BoundsException):
-    """
-    # ROLE: ContextException, BoundsException
-  
-    # RESPONSIBILITIES:
-    1.  Raised when the number a Context instance has either no flags switched on or, too many.
-  
-    # PROVIDES:
-    ContextException
-  
-    None
-    """
-    ERROR_CODE = "CONTEXT_FLAG_COUNT_ERROR"
-    DEFAULT_MESSAGE = "The number of Context switches turned on is out of bounds."
+    DEFAULT_MESSAGE = "CONTEXT raised an exception."

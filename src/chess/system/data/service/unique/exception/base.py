@@ -1,7 +1,7 @@
-# src/chess/system/data/service/unique/exception.py
+# src/chess/system/data/service/unique/exception.base.py
 
 """
-Module: chess.system.data.service.unique.exception
+Module: chess.system.data.service.unique.exception.base
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -28,7 +28,7 @@ class UniqueDataServiceException(DataServiceException):
         *   DataServiceException
 
     # PROVIDES:
-    UniqueDataServiceException
+    None
 
     # LOCAL ATTRIBUTES:
     None

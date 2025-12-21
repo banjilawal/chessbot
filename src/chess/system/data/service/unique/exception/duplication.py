@@ -1,7 +1,7 @@
-# src/chess/system/data/service/unique/exception.py
+# src/chess/system/data/service/unique/exception.duplicate.py
 
 """
-Module: chess.system.data.service.unique.exception
+Module: chess.system.data.service.unique.exception.duplicate
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -27,7 +27,7 @@ class AddingDuplicateDataException(UniqueDataServiceException):
         *   UniqueDataServiceException
 
     # PROVIDES:
-    AddingDuplicateDataException
+    None
 
     # LOCAL ATTRIBUTES:
     None

@@ -1,14 +1,14 @@
-# src/chess/system/data/service/exception/data/null.py
+# src/chess/system/data/service/exception/null.py
 
 """
-Module: chess.system.data.service.exception.data.null
+Module: chess.system.data.service.exception.null
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
 
-from chess.system import DataException, DataServiceException, NullException
+from chess.system import DataServiceException, NullException
 
 __all__ = [
     # ====================== REMOVING_NULL_DATA EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ====================== REMOVING_NULL_DATA EXCEPTION #======================#
-class RemovingNullDataException(DataServiceException, DataException, NullException):
+class RemovingNullDataException(DataServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,12 +25,12 @@ class RemovingNullDataException(DataServiceException, DataException, NullExcepti
     Indicate someone is trying to remove an item that does not exist in a collection.
 
     # PARENT:
-        *   DataServiceException
-        *   DataException
         *   NullException
+        *   DataServiceException
+
 
     # PROVIDES:
-    RemovingNullDataException
+    None
 
     # LOCAL ATTRIBUTES:
     None

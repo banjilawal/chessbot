@@ -1,7 +1,7 @@
-# src/chess/system/data/exception.py
+# src/chess/system/data/exception/base.py
 
 """
-Module: chess.system.data.exception.__init__
+Module: chess.system.data..exception.base
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

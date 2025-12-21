@@ -7,43 +7,35 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ChessException, BoundsException
+from chess.system import BoundsException, ContextException
 
 __all__ = [
-    #======================# CONTEXT EXCEPTION #======================#
-    "ContextException",
+    # ======================# CONTEXT_FLAG_COUNT EXCEPTION #======================#
     "ContextFlagCountException",
 ]
 
 
-#======================# CONTEXT EXCEPTION #======================#
-class ContextException(ChessException):
-    """
-    # ROLE: Parent Exception
-  
-    # RESPONSIBILITIES:
-    1.  Super class of exception when a condition halts the normal flow of a Context object's operations.
-  
-    # PROVIDES:
-    ContextException
-    
-    None
-    """
-    ERROR_CODE = "CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "Context raised an exception."
-
-
+# ======================# CONTEXT_FLAG_COUNT EXCEPTION #======================#
 class ContextFlagCountException(ContextException, BoundsException):
     """
-    # ROLE: ContextException, BoundsException
+    # ROLE: Exception Wrapper, Catchall Exception,
   
     # RESPONSIBILITIES:
-    1.  Raised when the number a Context instance has either no flags switched on or, too many.
+    1.  Parent of exceptions which indicate the attributee-value flags enabled in a Context is out of bounds.
+    2.  Catchall for ContextFlagCount errors not covered by lower level ContextFlagEception exceptions.
   
-    # PROVIDES:
-    ContextException
-  
-    None
-    """
+      # PARENT
+        *   BoundsException
+        *   ContextException
+
+      # PROVIDES:
+      None
+
+      # LOCAL ATTRIBUTES:
+      None
+
+      # INHERITED ATTRIBUTES:
+      None
+      """
     ERROR_CODE = "CONTEXT_FLAG_COUNT_ERROR"
-    DEFAULT_MESSAGE = "The number of Context switches turned on is out of bounds."
+    DEFAULT_MESSAGE = "The number of Context attribute-value flags enabled is out of bounds."

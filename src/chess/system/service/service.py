@@ -30,8 +30,7 @@ class EntityService(ABC, Generic[T]):
     None
 
     # PROVIDES:
-        *   entity_builder:  --> Builder[T]
-        *   entity_validator: --> Validator[T]
+    None
 
     # LOCAL ATTRIBUTES:
         *   id (int)

@@ -12,8 +12,9 @@ Version: 1.0.0
 # Packages
 from .result import *
 from .service import *
+from .exception import *
 
 # Modules
-from .exception import *
+None
 
 

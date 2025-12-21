@@ -28,7 +28,7 @@ class LookupException(ChessException):
         *   ChessException
 
     # PROVIDES:
-    LookupException
+    None
 
     # LOCAL ATTRIBUTES:
     None

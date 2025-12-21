@@ -15,8 +15,6 @@ __all__ = [
 ]
 
 
-
-
 # ======================# CONTEXT_SERVICE EXCEPTION #======================#
 class ContextServiceException(ContextException, ServiceException):
     """
