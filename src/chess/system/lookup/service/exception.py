@@ -13,6 +13,8 @@ __all__ = [
     "LookupServiceException",
 ]
 
+from chess.system import LookupException
+
 
 # ======================# LOOKUP_SERVICE EXCEPTION #======================#
 class LookupServiceException(LookupException, ContextServiceException):

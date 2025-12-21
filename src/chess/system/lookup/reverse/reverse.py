@@ -23,7 +23,6 @@ class ReverseLookup(ABC, Generic[Context[Enum]]):
         *   StrategyContractorHashMap{StrategyTitle: {ContractorBuildMetadata}
         *   CategoryHashMap{Name: Tuple}
 
-
     # PARENT:
     None
 
@@ -39,6 +38,6 @@ class ReverseLookup(ABC, Generic[Context[Enum]]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def reverse_lookup(cls, member: Enum, enum_validator: Validator[Enum]) -> SearchResult[List[Any]]:
+    def reverse_lookup(cls, member: Enum, enum_validator: Validator[Enum],) -> SearchResult[List[Any]]:
         """"""
         pass

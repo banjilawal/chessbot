@@ -1,7 +1,7 @@
-# src/chess/system/map/service.py
+# src/chess/system/context/service/service.py
 
 """
-Module: chess.system.map.service
+Module: chess.system.context.service.service
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
