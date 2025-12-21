@@ -11,18 +11,17 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    InvalidSchemaSuperKeyException, ZeroSchemaMapKeysException, NullSchemaMapException, SchemaSuperKey,
+    InvalidSchemaSuperKeyException, ZeroSchemaMapKeysException, NNullSchemaSuperKeyException, SchemaSuperKey,
     ExcessiveSchemaMapKeysException
 )
 
-
-class SchemaMapValidator(Validator[SchemaSuperKey]):
+class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a Schema instance is certified safe, reliable and consistent before use.
-    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+    1.  Ensure a SchemaSuperKey instance is certified safe, reliable and consistent before use.
+    2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
         *   Validator
@@ -30,10 +29,10 @@ class SchemaMapValidator(Validator[SchemaSuperKey]):
     # PROVIDES:
     None
 
-    # LOCAL KEY-VALUES:
+    # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED KEY-VALUES:
+    # INHERITED ATTRIBUTES:
     None
     """
     @classmethod
@@ -41,12 +40,13 @@ class SchemaMapValidator(Validator[SchemaSuperKey]):
     def validate(
             cls,
             candidate: Any,
-            color_validator: GameColorValidator = GameColorValidator(),
             identity_service: IdentityService = IdentityService(),
+            color_validator: GameColorValidator = GameColorValidator(),
     ) -> ValidationResult[SchemaSuperKey]:
         """
         # Action:
-        1.  Confirm that only one in the (name, color) hash is not null.
+        1.
+        1.  Confirm that only one in the (name, color) tuple is not null.
         2.  Certify the not-null key-value is safe using the appropriate services and validators.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an SchemaSuperKey are return in a ValidationResult.
@@ -63,17 +63,17 @@ class SchemaMapValidator(Validator[SchemaSuperKey]):
 
         # Raises:
             *   TypeError
-            *   NullSchemaMapException
+            *   NNullSchemaSuperKeyException
             *   ZeroSchemaMapKeysException
             *   ExcessiveSchemaMapKeysException
             *   InvalidSchemaSuperKeyException
         """
-        method = "SchemaMapValidator.validate"
+        method = "SchemaSuperKeyValidator.validate"
         try:
             # Handle the nonexistence case.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullSchemaMapException(f"{method}: {NullSchemaMapException.DEFAULT_MESSAGE}")
+                    NNullSchemaSuperKeyException(f"{method}: {NNullSchemaSuperKeyException.DEFAULT_MESSAGE}")
                 )
             # Handle the wrong type case.
             if not isinstance(candidate, SchemaSuperKey):

@@ -11,7 +11,7 @@ from typing import List, cast
 
 from chess.schema import (
     SchemaColorBoundsException, SchemaNameBoundsException, SchemaSuperKey, SchemaMapBuilder,
-    SchemaMapValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
+    SchemaSuperKeyValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
 )
 from chess.system import (
     ForwardLookup, FailsafeBranchExitPointException, GameColor, LoggingLevelRouter, SearchResult,
@@ -47,7 +47,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
             id: int = id_emitter.lookup_id,
             enum_validator: SchemaValidator = SchemaValidator(),
             map_builder: SchemaMapBuilder = SchemaMapBuilder(),
-            map_validator: SchemaMapValidator = SchemaMapValidator(),
+            map_validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator(),
     ):
         super().lookup(
             id=id,
@@ -68,9 +68,9 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         return cast(SchemaMapBuilder, self.map_builder)
     
     @property
-    def map_validator(self) -> SchemaMapValidator:
-        """Return an SchemaMapValidator."""
-        return cast(SchemaMapValidator, self.map_validator)
+    def map_validator(self) -> SchemaSuperKeyValidator:
+        """Return an SchemaSuperKeyValidator."""
+        return cast(SchemaSuperKeyValidator, self.map_validator)
     
     @property
     def allowed_colors(self) -> List[GameColor]:
@@ -87,7 +87,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     def lookup(
             cls,
             map: SchemaSuperKey,
-            map_validator: SchemaMapValidator = SchemaMapValidator()
+            map_validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator()
     ) -> SearchResult[List[Schema]]:
         """
         # Action:
@@ -97,7 +97,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
             
         # Parameters:
             *   map: SchemaSuperKey
-            *   map_validator: SchemaMapValidator
+            *   map_validator: SchemaSuperKeyValidator
 
         # Returns:
         SearchResult[List[Schema]] containing either:

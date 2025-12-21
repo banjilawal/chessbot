@@ -13,5 +13,5 @@ version: 1.0.0
 from .flag import *
 
 # Modules
-from .null import NullSchemaMapException
+from .null import NNullSchemaSuperKeyException
 from .base import InvalidSchemaSuperKeyException

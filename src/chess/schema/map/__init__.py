@@ -16,5 +16,5 @@ from .service import *
 from .validator import *
 
 # Modules
-from .map import SchemaSuperKey
+from .key import SchemaSuperKey
 from .exception import SchemaSuperKeyException

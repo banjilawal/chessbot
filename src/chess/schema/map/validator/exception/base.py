@@ -23,7 +23,7 @@ class InvalidSchemaSuperKeyException(SchemaSuperKeyException, ValidationFailedEx
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised SchemaSuperKey validation.
-    2.  Wraps unhandled exception that hit the finally-block in SchemaMapValidator methods.
+    2.  Wraps unhandled exception that hit the finally-block in SchemaSuperKeyValidator methods.
 
     # PARENT:
         *   SchemaSuperKeyException

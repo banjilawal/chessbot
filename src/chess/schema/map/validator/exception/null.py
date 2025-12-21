@@ -12,12 +12,12 @@ from chess.schema.map import InvalidSchemaSuperKeyException
 
 __all__ = [
     # ======================# NULL_SCHEMA_SUPER_KEY EXCEPTION #======================#
-    "NullSchemaMapException",
+    "NNullSchemaSuperKeyException",
 ]
 
 
 # ======================# NULL_SCHEMA_SUPER_KEY EXCEPTION #======================#
-class NullSchemaMapException(InvalidSchemaSuperKeyException, NullException):
+class NNullSchemaSuperKeyException(InvalidSchemaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
