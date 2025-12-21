@@ -82,7 +82,7 @@ class TeamContextValidator(Validator[TeamContext]):
         # Raises:
             *   TypeError
             *   NullTeamContextException
-            *   NoTeamContextFlagException
+            *   ZeroTeamContextFlagsException
             *   ExcessiveTeamContextFlagsException
             *   InvalidTeamContextException
         """

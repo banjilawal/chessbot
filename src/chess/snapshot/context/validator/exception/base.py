@@ -1,7 +1,7 @@
-# src/chess/snapshot/context/validator/exception/exception.py
+# src/chess/snapshot/context/validator/exception/base.py
 
 """
-Module: chess.snapshot.context.validator.exception.exception
+Module: chess.snapshot.context.validator.exception.base
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

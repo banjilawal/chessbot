@@ -13,4 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .exception import ZeroSnapshotContextFlagsException, ExcessiveSnapshotContextFlagsException
+from .zero import ZeroSnapshotContextFlagsException
+from .excess import ExcessiveSnapshotContextFlagsException

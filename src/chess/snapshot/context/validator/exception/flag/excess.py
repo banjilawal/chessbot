@@ -8,15 +8,16 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.game import InvalidSnapshotContextException
+from chess.snapshot import InvalidSnapshotContextException
+
 
 __all__ = [
-    # ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+    # ========================= EXCESSIVE_SNAPSHOT_CONTEXT_FLAGS EXCEPTION =========================#
     "ExcessiveSnapshotContextFlagsException",
 ]
 
 
-# ========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+# ========================= EXCESSIVE_SNAPSHOT_CONTEXT_FLAGS EXCEPTION =========================#
 class ExcessiveSnapshotContextFlagsException(InvalidSnapshotContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, SnapshotContextException

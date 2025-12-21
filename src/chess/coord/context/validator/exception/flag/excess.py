@@ -3,19 +3,18 @@
 """
 Module: chess.coord.context.validator.exception.flag.excess
 Author: Banji Lawal
-Created: 2025-11-16
+Created: 2025-09-16
 version: 1.0.0
 """
 
-
 from chess.system import ContextFlagCountException
 from chess.coord import InvalidCoordContextException
-
 
 __all__ = [
     # ========================= EXCESSIVE_COORD_CONTEXT_FLAG EXCEPTION =========================#
     "ExcessiveCoordContextFlagsException"
 ]
+
 
 # ========================= EXCESSIVE_COORD_CONTEXT_FLAG EXCEPTION =========================#
 class ExcessiveCoordContextFlagsException(InvalidCoordContextException, ContextFlagCountException):
@@ -23,7 +22,7 @@ class ExcessiveCoordContextFlagsException(InvalidCoordContextException, ContextF
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one CoordContext flag was enabled. Only one Coord attribute-value tuple can be used in
+    1.  Indicates more than one CoordContext flag was enabled. Only one Coord attribute-value-tuple can be used in
         a search.
 
     # PARENT:
@@ -40,4 +39,7 @@ class ExcessiveCoordContextFlagsException(InvalidCoordContextException, ContextF
     None
     """
     ERROR_CODE = "EXCESSIVE_COORD_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "Excessive CoordContext flags were set. Only one CoordContext flag is allowed."
+    DEFAULT_MESSAGE = (
+        "Excessive CoordContext flags were set. an Coord search can only use one-and-only "
+        "context flag at a time."
+    )

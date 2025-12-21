@@ -10,9 +10,8 @@ version: 1.0.0
 #=========== TEAM.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from flag import *
 
 # Modules
-from .base import InvalidTeamContextException
 from .null import NullTeamContextException
-from .flag import NoTeamContextFlagException, ExcessiveTeamContextFlagsException
+from .base import InvalidTeamContextException

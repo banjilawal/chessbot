@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .flag import *
-from .null import *
 
 # Modules
-from .exception import InvalidSnapshotContextException
+from .null import NullSnapshotContextException
+from .base import InvalidSnapshotContextException

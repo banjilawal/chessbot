@@ -1,7 +1,7 @@
-# src/chess/square/context/validator/exception/flag/__init__.py
+# src/chess/square/context/validator/exception/flag/zero.py
 
 """
-Module: chess.square.context.validator.exception.flag.__init__
+Module: chess.square.context.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
