@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== SYSTEM.ERR PACKAGE CONTENTS ===========#
 
 # Packages
-from .number import *
-from .text import *
+None
 
 # Modules
 from .base import *
