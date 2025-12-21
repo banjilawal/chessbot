@@ -3,7 +3,7 @@
 """
 Module: chess.piece.context.validator.exception.flag.excess
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -11,13 +11,35 @@ from chess.system import ContextFlagCountException
 from chess.piece import InvalidPieceContextException
 
 __all__ = [
-    #========================= PIECE_CONTEXT FLAG EXCEPTION =========================#
+    # ========================= EXCESSIVE_PIECE_CONTEXT_FLAG EXCEPTION =========================#
     "ExcessivePieceContextFlagsException"
 ]
 
 
-#========================= PIECE_CONTEXT FLAG EXCEPTION =========================#
+# ========================= EXCESSIVE_PIECE_CONTEXT_FLAG EXCEPTION =========================#
 class ExcessivePieceContextFlagsException(InvalidPieceContextException, ContextFlagCountException):
-    """Raised if too many PieceContext flags were set."""
-    ERROR_CODE = "PIECE_CONTEXT_MAX_PARAM_ERROR"
-    DEFAULT_MESSAGE = "Only one PieceContext flag can be set."
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicates more than one PieceContext flag was enabled. Only one Piece attribute-value-tuple can be used in
+        a search.
+
+    # PARENT:
+        *   ContextFlagCountException
+        *   InvalidPieceContextException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "EXCESSIVE_PIECE_CONTEXT_FLAG_ERROR"
+    DEFAULT_MESSAGE = (
+        "Excessive PieceContext flags were set. an Piece search can only use one-and-only "
+        "context flag at a time."
+    )
