@@ -3,12 +3,11 @@
 """
 Module: chess.board.context.validator.exception.flag.zero
 Author: Banji Lawal
-Created: 2025-11-16
+Created: 2025-09-16
 version: 1.0.0
 """
 
-
-from chess.system import BoundsException
+from chess.system import ContextFlagCountException
 from chess.board import InvalidBoardContextException
 
 __all__ = [
@@ -18,16 +17,16 @@ __all__ = [
 
 
 # ========================= ZERO_BOARD_CONTEXT_FLAGS EXCEPTION =========================#
-class ZeroBoardContextFlagsException(InvalidBoardContextException, BoundsException):
+class ZeroBoardContextFlagsException(InvalidBoardContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates no BoardContext flag was enabled. One and only one Board attribute-value tuple is required for
+    1.  Indicates no BoardContext flag was enabled. One and only one Board attribute-value-tuple is required for
         a search.
 
     # PARENT:
-        *   BoundsException
+        *   ContextFlagCountException
         *   InvalidBoardContextException
 
     # PROVIDES:
@@ -40,4 +39,7 @@ class ZeroBoardContextFlagsException(InvalidBoardContextException, BoundsExcepti
     None
     """
     ERROR_CODE = "ZERO_BOARD_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "Zero BoardContext flags were set. One and only one context flag must be enabled,"
+    DEFAULT_MESSAGE = (
+        "Zero BoardContext flags were set. Cannot search for Boards if one-and_oly-one "
+        "context flag is enabled."
+    )
