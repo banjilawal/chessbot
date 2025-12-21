@@ -1,7 +1,7 @@
-# src/chess/schema/context/builder/builder.py
+# src/chess/schema/map/builder/builder.py
 
 """
-Module: chess.schema.context.builder.builder
+Module: chess.schema.map.builder.builder
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -14,18 +14,18 @@ from chess.system import (
     IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
-    ZeroSchemaContextFlagsException, SchemaContext, ExcessiveSchemaMapKeysException, SchemaContextBuildFailedException
+    ZeroSchemaMapFlagsException, SchemaMap, ExcessiveSchemaMapKeysException, SchemaMapBuildFailedException
 )
 
 
-class SchemaContextBuilder(Builder[SchemaContext]):
+class SchemaMapBuilder(Builder[SchemaMap]):
     """
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce SchemaContext instances whose integrity is always guaranteed.
-    2.  Manage construction of SchemaContext instances that can be used safely by the client.
-    3.  Ensure params for SchemaContext creation have met the application's safety contract.
+    1.  Produce SchemaMap instances whose integrity is always guaranteed.
+    2.  Manage construction of SchemaMap instances that can be used safely by the client.
+    3.  Ensure params for SchemaMap creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     # PARENT:
@@ -48,12 +48,12 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             color: Optional[GameColor] = None,
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
-    ) -> BuildResult[SchemaContext]:
+    ) -> BuildResult[SchemaMap]:
         """
         # Action:
             1.  Confirm that only one in the (designation, color) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a SchemaContext and send in a BuildResult. Else, send an exception
+            3.  If all checks pass build a SchemaMap and send in a BuildResult. Else, send an exception
                 in the BuildResult.
 
         # Parameters:
@@ -66,16 +66,16 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                 *   identity_service (IdentityService)
 
         # Returns:
-        BuildResult[SchemaContext] containing either:
-            - On success: SchemaContext in the payload.
+        BuildResult[SchemaMap] containing either:
+            - On success: SchemaMap in the payload.
             - On failure: Exception.
 
         # Raises:
-            *   ZeroSchemaContextFlagsException
-            *   SchemaContextBuildFailedException
+            *   ZeroSchemaMapFlagsException
+            *   SchemaMapBuildFailedException
             *   ExcessiveSchemaMapKeysException
         """
-        method = "SchemaContextBuilder.build"
+        method = "SchemaMapBuilder.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [name, color,]
@@ -84,7 +84,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             # Test if no params are set. Need an attribute-value pair to look up a team's schema.
             if param_count == 0:
                 return BuildResult.failure(
-                    ZeroSchemaContextFlagsException(f"{method}: {ZeroSchemaContextFlagsException.DEFAULT_MESSAGE}")
+                    ZeroSchemaMapFlagsException(f"{method}: {ZeroSchemaMapFlagsException.DEFAULT_MESSAGE}")
                 )
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
@@ -93,31 +93,31 @@ class SchemaContextBuilder(Builder[SchemaContext]):
                 )
             # After verifying only one Schema attribute-value-tuple is enabled, validate it.
             
-            # Build the name SchemaContext if its flag is enabled.
+            # Build the name SchemaMap if its flag is enabled.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a name_SchemaContext in the BuildResult.
-                return BuildResult.success(SchemaContext(name=name))
+                # On validation success return a name_SchemaMap in the BuildResult.
+                return BuildResult.success(SchemaMap(name=name))
             
-            # Build the color SchemaContext if its flag is enabled.
+            # Build the color SchemaMap if its flag is enabled.
             if color is not None:
                 validation = color_validator.validate(candidate=color)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a color_SchemaContext in the BuildResult.
-                return BuildResult.success(SchemaContext(color=color))
+                # On validation success return a color_SchemaMap in the BuildResult.
+                return BuildResult.success(SchemaMap(color=color))
             
             # As a failsafe send a buildResult failure if a context path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
-        # Finally, if there is an unhandled exception Wrap an SchemaContextBuildFailedException around it then
+        # Finally, if there is an unhandled exception Wrap an SchemaMapBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                SchemaContextBuildFailedException(
-                    ex=ex, message=f"{method}: {SchemaContextBuildFailedException.DEFAULT_MESSAGE}"
+                SchemaMapBuildFailedException(
+                    ex=ex, message=f"{method}: {SchemaMapBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

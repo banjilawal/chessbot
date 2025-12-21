@@ -1,7 +1,7 @@
-# src/chess/schema/context/context.py
+# src/chess/schema/map/map.py
 
 """
-Module: chess.schema.context.context
+Module: chess.schema.map.map
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -13,12 +13,12 @@ from chess.schema import Schema
 from chess.system import Context, GameColor
 
 
-class SchemaContext(Context[Schema]):
+class SchemaMap(Context[Schema]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    1.  Provide an SchemaLookup with an attribute-value-tuple to perform forward Schema entry lookups.
+    1.  Provide an SchemaLookup with a hash key-value to use in forward Schema entry lookups.
 
     # PARENT:
         *   Context
@@ -63,7 +63,7 @@ class SchemaContext(Context[Schema]):
     
     def to_dict(self) -> dict:
         """
-        # Convert the SchemaContext object to a dictionary.
+        # Convert the SchemaMap object to a dictionary.
 
         # PARAMETERS:
         None

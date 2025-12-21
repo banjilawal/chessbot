@@ -1,7 +1,7 @@
-# src/chess/schema/context/__init__.py
+# src/chess/schema/map/__init__.py
 
 """
-Module: chess.schema.context.__init__
+Module: chess.schema.map.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -16,5 +16,5 @@ from .service import *
 from .validator import *
 
 # Modules
-from .context import SchemaContext
-from .exception import SchemaContextException
+from .context import SchemaMap
+from .exception import SchemaMapException

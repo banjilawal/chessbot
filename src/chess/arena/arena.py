@@ -12,7 +12,7 @@ from typing import List
 from chess.agent import PlayerAgent
 from chess.board import Board, BoardService
 from chess.schema import Schema
-from chess.schema.context.lookup import SchemaLookup
+from chess.schema.map.lookup import SchemaLookup
 from chess.system import SearchResult
 from chess.team import Team, UniqueTeamDataService
 

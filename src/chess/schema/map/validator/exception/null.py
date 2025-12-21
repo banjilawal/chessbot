@@ -1,7 +1,7 @@
-# src/chess/schema/context/validator/exception/null.py
+# src/chess/schema/map/validator/exception/null.py
 
 """
-Module: chess.schema.context.validator.exception.null
+Module: chess.schema.map.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -12,18 +12,18 @@ from chess.schema import InvalidSchemaMapException
 
 __all__ = [
     # ======================# SCHEMA_CONTEXT NULL EXCEPTION #======================#
-    "NullSchemaContextException",
+    "NullSchemaMapException",
 ]
 
 
 # ======================# SCHEMA_CONTEXT NULL EXCEPTION #======================#
-class NullSchemaContextException(InvalidSchemaMapException, NullException):
+class NullSchemaMapException(InvalidSchemaMapException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an SchemaContext validation candidate is null.
-    2.  Raised if an entity, method or operation requires an SchemaContext but receives null instead.
+    1.  Raised if an SchemaMap validation candidate is null.
+    2.  Raised if an entity, method or operation requires an SchemaMap but receives null instead.
 
     # PARENT:
         *   NullException
@@ -36,4 +36,4 @@ class NullSchemaContextException(InvalidSchemaMapException, NullException):
     None
     """
     ERROR_CODE = "NULL_SCHEMA_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "SchemaContext cannot be null."
+    DEFAULT_MESSAGE = "SchemaMap cannot be null."

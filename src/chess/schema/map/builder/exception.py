@@ -1,33 +1,33 @@
-# src/chess/schema/context/builder/exception.py
+# src/chess/schema/map/builder/exception.py
 
 """
-Module: chess.schema.context.builder.exception
+Module: chess.schema.map.builder.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.schema import SchemaContextException
+from chess.schema import SchemaMapException
 from chess.system import BuildFailedException
 
 
 __all__ = [
     #======================# SCHEMA_CONTEXT BUILD EXCEPTION #======================#
-    "SchemaContextBuildFailedException",
+    "SchemaMapBuildFailedException",
 ]
 
 
 #======================# SCHEMA_CONTEXT BUILD EXCEPTION #======================#
-class SchemaContextBuildFailedException(SchemaContextException, BuildFailedException):
+class SchemaMapBuildFailedException(SchemaMapException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during SchemaContext build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an SchemaContextBuilder method.
+    1.  Parent of exceptions raised during SchemaMap build process.
+    2.  Wraps unhandled exceptions that hit the try-finally block of an SchemaMapBuilder method.
     
     # PARENT:
-        *   SchemaContextException
+        *   SchemaMapException
         *   BuildFailedException
 
     # PROVIDES:
@@ -40,4 +40,4 @@ class SchemaContextBuildFailedException(SchemaContextException, BuildFailedExcep
     None
     """
     ERROR_CODE = "SCHEMA_CONTEXT_BUILD_ERROR"
-    DEFAULT_MESSAGE = "SchemaContext build failed."
+    DEFAULT_MESSAGE = "SchemaMap build failed."

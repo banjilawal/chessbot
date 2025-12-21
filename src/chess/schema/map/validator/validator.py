@@ -1,7 +1,7 @@
-# src/chess/schema/context/validator/validator.py
+# src/chess/schema/map/validator/validator.py
 
 """
-Module: chess.schema.context.validator
+Module: chess.schema.map.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -11,12 +11,12 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    InvalidSchemaMapException, ZeroSchemaContextFlagsException, NullSchemaContextException, SchemaContext,
+    InvalidSchemaMapException, ZeroSchemaMapFlagsException, NullSchemaMapException, SchemaMap,
     ExcessiveSchemaMapKeysException
 )
 
 
-class SchemaContextValidator(Validator[SchemaContext]):
+class SchemaMapValidator(Validator[SchemaMap]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -28,7 +28,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         *   Validator
 
     # PROVIDES:
-        * validate(candidate: Any): --> ValidationResult[SchemaContext]
+        * validate(candidate: Any): --> ValidationResult[SchemaMap]
 
     # LOCAL ATTRIBUTES:
     None
@@ -43,13 +43,13 @@ class SchemaContextValidator(Validator[SchemaContext]):
             candidate: Any,
             color_validator: GameColorValidator = GameColorValidator(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[SchemaContext]:
+    ) -> ValidationResult[SchemaMap]:
         """
         # Action:
         1.  Confirm that only one in the (name, color) tuple is not null.
         2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
-        4.  On success Build an SchemaContext are return in a ValidationResult.
+        4.  On success Build an SchemaMap are return in a ValidationResult.
 
         # Parameters:
             *   candidate (Any)
@@ -57,37 +57,37 @@ class SchemaContextValidator(Validator[SchemaContext]):
             *   identity_service (IdentityService)
 
         # Returns:
-        ValidationResult[SchemaContext] containing either:
-            - On success: SchemaContext in the payload.
+        ValidationResult[SchemaMap] containing either:
+            - On success: SchemaMap in the payload.
             - On failure: Exception.
 
         # Raises:
             *   TypeError
-            *   NullSchemaContextException
-            *   ZeroSchemaContextFlagsException
+            *   NullSchemaMapException
+            *   ZeroSchemaMapFlagsException
             *   ExcessiveSchemaMapKeysException
             *   InvalidSchemaMapException
         """
-        method = "SchemaContextValidator.validate"
+        method = "SchemaMapValidator.validate"
         try:
             # If the candidate is null no other checks are needed.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullSchemaContextException(f"{method}: {NullSchemaContextException.DEFAULT_MESSAGE}")
+                    NullSchemaMapException(f"{method}: {NullSchemaMapException.DEFAULT_MESSAGE}")
                 )
-            # If the candidate is not an SchemaContext validation has failed.
-            if not isinstance(candidate, SchemaContext):
+            # If the candidate is not an SchemaMap validation has failed.
+            if not isinstance(candidate, SchemaMap):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected SchemaContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected SchemaMap, got {type(candidate).__name__} instead.")
                 )
             
             # Once existence and type checks are passed, cast the candidate to Schema and run structure tests.
-            context = cast(SchemaContext, candidate)
+            context = cast(SchemaMap, candidate)
             
             # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroSchemaContextFlagsException(f"{method}: {ZeroSchemaContextFlagsException.DEFAULT_MESSAGE}")
+                    ZeroSchemaMapFlagsException(f"{method}: {ZeroSchemaMapFlagsException.DEFAULT_MESSAGE}")
                 )
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:

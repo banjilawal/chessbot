@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.schema import (
-    SchemaColorBoundsException, SchemaNameBoundsException, SchemaContext, SchemaContextBuilder,
-    SchemaContextValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
+    SchemaColorBoundsException, SchemaNameBoundsException, SchemaMap, SchemaMapBuilder,
+    SchemaMapValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
 )
 from chess.system import EnumLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
 
 
-class SchemaLookup(EnumLookup[SchemaContext]):
+class SchemaLookup(EnumLookup[SchemaMap]):
     """
     # ROLE: EnumLookup, Utility
 
@@ -44,8 +44,8 @@ class SchemaLookup(EnumLookup[SchemaContext]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.lookup_id,
             enum_validator: SchemaValidator = SchemaValidator(),
-            context_builder: SchemaContextBuilder = SchemaContextBuilder(),
-            context_validator: SchemaContextValidator = SchemaContextValidator(),
+            context_builder: SchemaMapBuilder = SchemaMapBuilder(),
+            context_validator: SchemaMapValidator = SchemaMapValidator(),
     ):
         super().lookup(
             id=id,
@@ -61,14 +61,14 @@ class SchemaLookup(EnumLookup[SchemaContext]):
         return cast(SchemaValidator, self.enum_validator)
     
     @property
-    def context_builder(self) -> SchemaContextBuilder:
-        """Return an SchemaContextBuilder."""
-        return cast(SchemaContextBuilder, self.context_builder)
+    def context_builder(self) -> SchemaMapBuilder:
+        """Return an SchemaMapBuilder."""
+        return cast(SchemaMapBuilder, self.context_builder)
     
     @property
-    def context_validator(self) -> SchemaContextValidator:
-        """Return an SchemaContextValidator."""
-        return cast(SchemaContextValidator, self.context_validator)
+    def context_validator(self) -> SchemaMapValidator:
+        """Return an SchemaMapValidator."""
+        return cast(SchemaMapValidator, self.context_validator)
     
     @property
     def allowed_colors(self) -> List[GameColor]:
@@ -84,8 +84,8 @@ class SchemaLookup(EnumLookup[SchemaContext]):
     @LoggingLevelRouter.monitor
     def lookup(
             cls,
-            context: SchemaContext,
-            context_validator: SchemaContextValidator = SchemaContextValidator()
+            context: SchemaMap,
+            context_validator: SchemaMapValidator = SchemaMapValidator()
     ) -> SearchResult[List[Schema]]:
         """
         # Action:
@@ -94,8 +94,8 @@ class SchemaLookup(EnumLookup[SchemaContext]):
             the configuration entries which matched the context.
 
         # Parameters:
-            *   context: SchemaContext
-            *   context_validator: SchemaContextValidator
+            *   context: SchemaMap
+            *   context_validator: SchemaMapValidator
 
         # Returns:
         SearchResult[List[Schema]] containing either:

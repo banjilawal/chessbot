@@ -1,7 +1,7 @@
-# src/chess/schema/context/validator/exception/flag/excess.py
+# src/chess/schema/map/validator/exception/flag/excess.py
 
 """
-Module: chess.schema.context.validator.exception.flag.excess
+Module: chess.schema.map.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -18,7 +18,7 @@ __all__ = [
 # ========================= EXCESS_SCHEMA_MAP_KEYS EXCEPTION =========================#
 class ExcessiveSchemaMapKeysException(InvalidSchemaMapException, ContextFlagCountException):
     """
-    # ROLE: ContextFlagException, SchemaContextException
+    # ROLE: ContextFlagException, SchemaMapException
 
     # RESPONSIBILITIES:
     1.  Indicate more than one SchemaMap key-value was provided for a Schema entry lookup.
