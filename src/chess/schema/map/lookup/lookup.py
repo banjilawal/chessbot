@@ -21,7 +21,7 @@ from chess.system import (
 
 class SchemaLookup(EnumLookup[SchemaMap]):
     """
-    # ROLE: EnumLookup, Utility
+    # ROLE: Forward Lookups, Mapping 
 
     # RESPONSIBILITIES:
     1.  Lookup microservice API for mapping metadata values to Schema configurations.

@@ -21,7 +21,7 @@ from chess.system import EnumLookup, FailsafeBranchExitPointException, LoggingLe
 
 class CatalogLookup(EnumLookup[CatalogContext]):
     """
-    # ROLE: EnumLookup, Utility
+    # ROLE: Forward Lookups, Mapping 
 
     # RESPONSIBILITIES:
     1.  Lookup microservice API for mapping metadata values to Catalog configurations.

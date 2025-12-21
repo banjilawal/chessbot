@@ -18,7 +18,7 @@ from chess.system import EnumLookup, GameColor, LoggingLevelRouter, SearchResult
 
 class BattleOrderLookup(EnumLookup[OrderContext]):
     """
-    # ROLE: EnumLookup, Utility
+    # ROLE: Forward Lookups, Mapping 
 
     # RESPONSIBILITIES:
     1.  Lookup microservice API for mapping metadata values to BattleOrder configurations.
