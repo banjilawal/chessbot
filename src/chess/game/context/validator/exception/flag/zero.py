@@ -11,28 +11,35 @@ from chess.system import ContextFlagCountException
 from chess.game import InvalidGameContextException
 
 __all__ = [
-    #========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
-    "ZeroGameContextFlagsException",
+    # ========================= ZERO_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+    "ZeroGameContextFlagsException"
 ]
 
 
-#========================= NO_GAME_CONTEXT_FLAG EXCEPTION =========================#
+# ========================= ZERO_GAME_CONTEXT_FLAGS EXCEPTION =========================#
 class ZeroGameContextFlagsException(InvalidGameContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no GameContext flag is provided with a searcher value.
-    
+    1.  Indicates no GameContext flag was enabled. One and only one Game attribute-value-tuple is required for
+        a search.
+
     # PARENT:
-        *   InvalidGameContextException
         *   ContextFlagCountException
+        *   InvalidGameContextException
 
     # PROVIDES:
-    ZeroGameContextFlagsException
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_GAME_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "No GameContext flag was selected. A context flag must be turned on with a target value."
+    ERROR_CODE = "ZERO_GAME_CONTEXT_FLAGS_ERROR"
+    DEFAULT_MESSAGE = (
+        "Zero GameContext flags were set. Cannot search for Games if one-and_oly-one "
+        "context flag is enabled."
+    )
