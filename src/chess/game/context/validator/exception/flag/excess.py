@@ -11,27 +11,35 @@ from chess.system import ContextFlagCountException
 from chess.game import InvalidGameContextException
 
 __all__ = [
-    #========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+    # ========================= EXCESSIVE_GAME_CONTEXT_FLAG EXCEPTION =========================#
     "ExcessiveGameContextFlagsException"
 ]
 
-#========================= TOO_MANY_GAME_CONTEXT_FLAGS EXCEPTION =========================#
+
+# ========================= EXCESSIVE_GAME_CONTEXT_FLAG EXCEPTION =========================#
 class ExcessiveGameContextFlagsException(InvalidGameContextException, ContextFlagCountException):
     """
-    # ROLE: ContextFlagException, GameContextException
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one Game attribute is going to be used in an SnapshotFinder.
-    
+    1.  Indicates more than one GameContext flag was enabled. Only one Game attribute-value-tuple can be used in
+        a search.
+
     # PARENT:
-        *   InvalidGameContextException
         *   ContextFlagCountException
+        *   InvalidGameContextException
 
     # PROVIDES:
-    ExcessiveGameContextFlagsException
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOO_MANY_GAME_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "More than one GameContext flag was selected. Only one context flag is allowed."
+    ERROR_CODE = "EXCESSIVE_GAME_CONTEXT_FLAG_ERROR"
+    DEFAULT_MESSAGE = (
+        "Excessive GameContext flags were set. an Game search can only use one-and-only "
+        "context flag at a time."
+    )
