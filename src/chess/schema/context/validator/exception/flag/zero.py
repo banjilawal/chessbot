@@ -22,7 +22,7 @@ class ZeroSchemaContextFlagsException(InvalidSchemaContextException, ContextFlag
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no SchemaContext flag is provided for a Schema lookup.
+    1.  Indicate no SchemaContext flag is provided for a forward Schema lookup.
 
     # PARENT:
         *   ContextFlagCountException
@@ -36,6 +36,6 @@ class ZeroSchemaContextFlagsException(InvalidSchemaContextException, ContextFlag
     """
     ERROR_CODE = "ZERO_SCHEMA_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
-        "No SchemaContext flag was selected. A SchemaContext must be enabled with an attribute-value-tuple is "
-        "required for a forward schema_entry lookup."
+        "No SchemaContext flag was selected. A SchemaContext must be enabled with an attribute-value-tuple"
+        " to perform a forward Schema entry lookup."
     )
