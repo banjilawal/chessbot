@@ -15,21 +15,20 @@ T = TypeVar("T")
 
 class Context(ABC, Generic[T]):
     """
-    # ROLE: Filtering Options,
+    # ROLE: Filtering Options, Data Transfer
   
     # RESPONSIBILITIES:
-    1.  Provides a series of optional attributes that can be turned on by providing them a value.
-        value.
-    2.  Provide a single entry point into different logic flows in an easy, scalable manner.
-    3.  Utility for factories.
+    1.  Provide a set of attribute-value pairs. Used in searches or forward lookups.
+    2.  For a search the attribute routes to search-by-attribute method and the value is the search target.
+    3.  In a forward hashmap lookup The context represents a SuperKey for a SuperKeyHash{SuperKey: {str: [attribute-value-set]}
   
   
     # PROVIDES:
-    1. Finder options.
+    None
   
     # ATTRIBUTES:
         *   id (Optional[int])
-        *   designation (Optional[str])
+        *   name (Optional[str])
     """
     _id: Optional[int]
     _name: Optional[str]
