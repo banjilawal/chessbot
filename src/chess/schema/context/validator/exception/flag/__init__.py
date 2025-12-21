@@ -14,4 +14,4 @@ None
 
 # Modules
 from .zero import ZeroSchemaContextFlagsException
-from .excess import ExcessiveSchemaContextFlagsException
+from .excess import ExcessiveSchemaMapKeysException

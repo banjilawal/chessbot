@@ -12,12 +12,12 @@ from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# SCHEMA_CONTEXT VALIDATION SUPER CLASS #======================#
-    "InvalidSchemaContextException",
+    "InvalidSchemaMapException",
 ]
 
 
 # ======================# SCHEMA_CONTEXT VALIDATION SUPER CLASS #======================#
-class InvalidSchemaContextException(SchemaContextException, ValidationFailedException):
+class InvalidSchemaMapException(SchemaContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

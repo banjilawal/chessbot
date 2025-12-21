@@ -8,24 +8,24 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.schema import InvalidSchemaContextException
+from chess.schema import InvalidSchemaMapException
 
 __all__ = [
-    # ========================= TOO_MANY_SCHEMA_CONTEXT_FLAGS EXCEPTION =========================#
-    "ExcessiveSchemaContextFlagsException",
+    # ========================= EXCESS_SCHEMA_MAP_KEYS EXCEPTION =========================#
+    "ExcessiveSchemaMapKeysException",
 ]
 
-# ========================= EXCESS_SCHEMA_CONTEXT_FLAGS EXCEPTION =========================#
-class ExcessiveSchemaContextFlagsException(InvalidSchemaContextException, ContextFlagCountException):
+# ========================= EXCESS_SCHEMA_MAP_KEYS EXCEPTION =========================#
+class ExcessiveSchemaMapKeysException(InvalidSchemaMapException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, SchemaContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate more than one SchemaContext flag was provided for a Schema lookup.
+    1.  Indicate more than one SchemaMap key-value was provided for a Schema entry lookup.
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidSchemaContextException
+        *   InvalidSchemaMapException
 
     # PROVIDES:
     None
@@ -33,8 +33,8 @@ class ExcessiveSchemaContextFlagsException(InvalidSchemaContextException, Contex
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESS_SCHEMA_CONTEXT_FLAGS_ERROR"
+    ERROR_CODE = "EXCESS_SCHEMA_MAP_KEYS_ERROR"
     DEFAULT_MESSAGE = (
-        "More than one SchemaContext flag was enabled. A forward schema_entry lookup can only be performed with "
+        "More than one SchemaMap flag was enabled. A forward schema_entry lookup can only be performed with "
         "one and only one attribute-value-tuple."
     )

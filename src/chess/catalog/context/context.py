@@ -1,98 +1,109 @@
-# src/chess/catalog/context/context.py
+# src/chess/catalog/context/validator/exception/flag/zero.py
 
 """
-Module: chess.catalog.context.context
+Module: chess.catalog.context.validator.exception.flag.zero
 Author: Banji Lawal
-Created: 2025-09-08
+Created: 2025-10-09
 version: 1.0.0
 """
-from typing import Optional
 
-from chess.catalog import Catalog
-from chess.system import Context
+from chess.system import ContextFlagCountException
+from chess.catalog import InvalidCatalogContextException
+
+"""
+# INTRODUCTION:
+The application has two types of searchable objects.
+    1.  DataServices -- contain a data stack.
+    2.  Metadata Tables -- static read-only hash table represented as an enum.
+Both searchables uses contexts to create a search attribute-value pair to find matches. DatasServices are
+intuitive with their CRUD operations. This introduction section gives an overview of Metadata Tables, their
+behavior and functionality. The closing section talks about how the Context flag exceptions are named for the
+Metadata tables.
+
+## WHAT TYPES OF CLASSES USE METADATA TABLES:
+Have Classes with preset readonly instance fields with common values in a subclass exhibit different behavior per
+subclass. These classes are:
+    *   Built using factories.
+    *   Implement strategy patterns.
+    *   Use an Enum table to get properties for different categories of data holding collections which act as
+        controllers.
+
+### USE CASES FOR THE ENUM METADATA TABLE:
+    *   Build configuration.
+    *   Writing search filters.
+Because these are tables forward and reverse lookups are done instead of searches.
+
+    FORWARD LOOKUP: object.field_value --> Enum.MEMBER
+    REVERSE LOOKUP: Enum.MEMBER --> Class
+
+## ARCHITECTURE FOR ENTITY DATA SERVICE:
+    *   ContextService{
+            EntityContext
+            EntityContextBuilder,
+            EntityContextValidator,
+            EntityFinder(EntityList, EntityContext, EntityValidator) -> SearchResult[Entity]
+
+            EntityContextExceptions {
+                ZeroEntityContextsFlagsException
+                ExcessiveEntityContextsFlagsException
+            }
+        }
+    *   EntityService{
+            EntityBuilder,
+            EntityValidator
+        }
+    *   EntityList
 
 
-class CatalogContext(Context[Catalog]):
+    ## ARCHITECTURE FOR ENTITY METADATA HASH TABLE SERVICE:
+    *   HashContextService{
+            HashContext
+            HashContextBuilder,
+            HashContextValidator,
+            HashLookup(HashContext, HashContextValidator) -> SearchResult[HashMember]
+
+            HashContextExceptions {
+                ZeroHashContextsEnuTuplesException
+                ExcessiveHashContextsEnumTuplesException
+        }
+
+    *   Hash{Category: MetadataSet}
+    *   HashService{
+            HashValidator,
+            HashMember_EntityMapper
+            ReverseHashLookup(
+                EntityDataSet,
+                HashLookup(EntityDataSet, entity.attribute, HashContextService.validator),
+            ) --> SearchResult[List[Entity]]
+        }
+   """
+
+__all__ = [
+    # ========================= ZERO_CATALOG_CONTEXT_ENUM_TUPLES EXCEPTION =========================#
+    "ZeroCatalogContextEnumTuplesException",
+]
+
+
+# ========================= ZERO_CATALOG_CONTEXT_ENUM_TUPLES EXCEPTION =========================#
+class ZeroCatalogContextEnumTuplesException(InvalidCatalogContextException, ContextFlagCountException):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    Provide an CatalogLookup with an attribute-value-tuple to perform forward Catalog entry lookups.
+    1.  Indicate no CatalogContext flag is provided for a forward Catalog lookup.
 
     # PARENT:
-        *   Context
+        *   ContextFlagCountException
+        *   InvalidCatalogContextException
 
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-        *   designation (str)
-        *   ransom (int)
-        *   quota  (int)
-
-    # INHERITED ATTRIBUTES:
-        *   See Context class for inherited attributes.
+    # ATTRIBUTES:
+    None
     """
-    _ransom: Optional[int]
-    _quota: Optional[int]
-    _designation: Optional[str]
-    
-    def __init__(
-            self,
-            name: Optional[str] = None,
-            ransom: Optional[int] = None,
-            quota: Optional[int] = None,
-            designation: Optional[str] = None,
-    ):
-        """
-        # ACTION:
-        Constructor
-
-        # PARAMETERS:
-            *   name (Optional[str])
-            *   ransom (Optional[int])
-            *   quota (Optional[int])
-            *   designation (Optional[str])
-
-        # Returns:
-        None
-
-        # Raises:
-        None
-        """
-        super().__init__(id=None, name=name)
-        self._ransom = ransom
-        self._quota = quota
-        self._designation = designation
-    
-    @property
-    def ransom(self) -> Optional[int]:
-        return self._ransom
-    
-    @property
-    def quota(self) -> Optional[int]:
-        return self._quota
-    
-    @property
-    def designation(self) -> Optional[str]:
-        return self._designation
-    
-    def to_dict(self) -> dict:
-        """
-        # Convert the OrderContext object to a dictionary.
-
-        # PARAMETERS:
-        None
-
-        # Returns:
-        dict
-
-        # Raises:
-        None
-        """
-        return {
-            "name":self.name,
-            "quota": self._quota,
-            "ransom": self._ransom,
-            "designation": self._designation,
-        }
+    ERROR_CODE = "ZERO_CATALOG_CONTEXT_ENUM_TUPLES_ERROR"
+    DEFAULT_MESSAGE = (
+        "No CatalogContext flag was selected. A CatalogContext must be enabled with an attribute-value-tuple"
+        " to perform a forward Catalog entry lookup."
+    )

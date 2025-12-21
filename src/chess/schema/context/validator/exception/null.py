@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.schema import InvalidSchemaContextException
+from chess.schema import InvalidSchemaMapException
 
 __all__ = [
     # ======================# SCHEMA_CONTEXT NULL EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# SCHEMA_CONTEXT NULL EXCEPTION #======================#
-class NullSchemaContextException(InvalidSchemaContextException, NullException):
+class NullSchemaContextException(InvalidSchemaMapException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class NullSchemaContextException(InvalidSchemaContextException, NullException):
 
     # PARENT:
         *   NullException
-        *   InvalidSchemaContextException
+        *   InvalidSchemaMapException
 
     # PROVIDES:
     None

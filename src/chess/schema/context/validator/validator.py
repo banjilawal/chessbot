@@ -11,8 +11,8 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    InvalidSchemaContextException, ZeroSchemaContextFlagsException, NullSchemaContextException, SchemaContext,
-    ExcessiveSchemaContextFlagsException
+    InvalidSchemaMapException, ZeroSchemaContextFlagsException, NullSchemaContextException, SchemaContext,
+    ExcessiveSchemaMapKeysException
 )
 
 
@@ -65,8 +65,8 @@ class SchemaContextValidator(Validator[SchemaContext]):
             *   TypeError
             *   NullSchemaContextException
             *   ZeroSchemaContextFlagsException
-            *   ExcessiveSchemaContextFlagsException
-            *   InvalidSchemaContextException
+            *   ExcessiveSchemaMapKeysException
+            *   InvalidSchemaMapException
         """
         method = "SchemaContextValidator.validate"
         try:
@@ -92,8 +92,8 @@ class SchemaContextValidator(Validator[SchemaContext]):
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    ExcessiveSchemaContextFlagsException(
-                        f"{method}: {ExcessiveSchemaContextFlagsException.DEFAULT_MESSAGE}"
+                    ExcessiveSchemaMapKeysException(
+                        f"{method}: {ExcessiveSchemaMapKeysException.DEFAULT_MESSAGE}"
                     )
                 )
             # When structure tests are passed certify whichever search value was provided.
@@ -115,10 +115,10 @@ class SchemaContextValidator(Validator[SchemaContext]):
                 return ValidationResult.success(context)
             
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidSchemaContextException. Then send the exception-chain in a ValidationResult.
+        # an InvalidSchemaMapException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidSchemaContextException(
-                    ex=ex, message=f"{method}: {InvalidSchemaContextException.DEFAULT_MESSAGE}"
+                InvalidSchemaMapException(
+                    ex=ex, message=f"{method}: {InvalidSchemaMapException.DEFAULT_MESSAGE}"
                 )
             )

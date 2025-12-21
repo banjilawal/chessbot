@@ -14,7 +14,7 @@ from chess.system import (
     IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
-    ZeroSchemaContextFlagsException, SchemaContext, ExcessiveSchemaContextFlagsException, SchemaContextBuildFailedException
+    ZeroSchemaContextFlagsException, SchemaContext, ExcessiveSchemaMapKeysException, SchemaContextBuildFailedException
 )
 
 
@@ -73,7 +73,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
         # Raises:
             *   ZeroSchemaContextFlagsException
             *   SchemaContextBuildFailedException
-            *   ExcessiveSchemaContextFlagsException
+            *   ExcessiveSchemaMapKeysException
         """
         method = "SchemaContextBuilder.build"
         try:
@@ -89,7 +89,7 @@ class SchemaContextBuilder(Builder[SchemaContext]):
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveSchemaContextFlagsException(f"{method}: {ExcessiveSchemaContextFlagsException}")
+                    ExcessiveSchemaMapKeysException(f"{method}: {ExcessiveSchemaMapKeysException}")
                 )
             # After verifying only one Schema attribute-value-tuple is enabled, validate it.
             
