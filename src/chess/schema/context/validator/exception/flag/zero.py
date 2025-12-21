@@ -24,7 +24,7 @@ class ZeroSchemaContextEnumTuplesException(InvalidSchemaContextException, Contex
     # INTRODUCTION:
     The application has two types of searchable objects.
         1.  DataServices -- contain a data stack.
-        2.  Metadata Tables -- static hash table represented as an enum.
+        2.  Metadata Tables -- static read-only hash table represented as an enum.
     Both searchables uses contexts to create a search attribute-value pair to find matches. DatasServices are
     intuitive with their CRUD operations. This introduction section gives an overview of Metadata Tables, their
     behavior and functionality. The closing section talks about how the Context flag exceptions are named for the
@@ -46,9 +46,49 @@ class ZeroSchemaContextEnumTuplesException(InvalidSchemaContextException, Contex
         FORWARD LOOKUP: object.field_value --> Enum.MEMBER
         REVERSE LOOKUP: Enum.MEMBER --> Class
 
+    ## ARCHITECTURE FOR ENTITY DATA SERVICE:
+        *   ContextService{
+                EntityContext
+                EntityContextBuilder,
+                EntityContextValidator,
+                EntityFinder(EntityList, EntityContext, EntityValidator) -> SearchResult[Entity]
+                
+                EntityContextExceptions {
+                    ZeroEntityContextsFlagsException
+                    ExcessiveEntityContextsFlagsException
+                }
+            }
+        *   EntityService{
+                EntityBuilder,
+                EntityValidator
+            }
+        *   EntityList
         
-    ## SEARCHABLE OBJECTS IN THE APPLICATION:
-    So in this application there are two types of searchable object.
+        
+        ## ARCHITECTURE FOR ENTITY METADATA HASH TABLE SERVICE:
+        *   HashContextService{
+                HashContext
+                HashContextBuilder,
+                HashContextValidator,
+                HashLookup(HashContext, HashContextValidator) -> SearchResult[HashMember]
+                
+                HashContextExceptions {
+                    ZeroHashContextsEnuTuplesException
+                    ExcessiveHashContextsEnumTuplesException
+            }
+
+        *   Hash{Category: MetadataSet}
+        *   HashService{
+                HashValidator,
+                HashMember_EntityMapper
+                ReverseHashLookup(
+                    EntityDataSet,
+                    HashLookup(EntityDataSet, entity.attribute, HashContextService.validator),
+                ) --> SearchResult[List[Entity]]
+            }
+        
+        
+        
 
         
     
