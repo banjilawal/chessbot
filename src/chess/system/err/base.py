@@ -31,7 +31,7 @@ class ChessException(Exception):
         *   Exception
 
     # PROVIDES:
-    ChessException
+    NONE
 
     # LOCAL ATTRIBUTES:
         Static Class Fields:

@@ -27,7 +27,7 @@ class InsertionResult(DataResult[Generic[T]]):
         *   DataResult
 
     # PROVIDES:
-    InsertionResult
+    None
 
     # LOCAL ATTRIBUTES:
     None

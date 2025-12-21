@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import (
-    BlankTextException, MIN_NAME_LENGTH, MAX_NAME_LENGTH, NullStringException, TextValidator, Validator, ValidationResult,
+    BlankTextException, MIN_NAME_LENGTH, MAX_NAME_LENGTH, NullEmptyString, StringValidator, Validator, ValidationResult,
     LongNameException,
     ShortNameException, WhiteSpaceNameException, NullNameException, LoggingLevelRouter, InvalidNameException
 )
@@ -47,7 +47,7 @@ class NameValidator(Validator[str]):
     def validate(
             cls,
             candidate: str,
-            text_validator: TextValidator = TextValidator()
+            text_validator: StringValidator = StringValidator()
     ) -> ValidationResult[str]:
         """
         # ACTION:

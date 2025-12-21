@@ -14,6 +14,4 @@ from .service import *
 from .exception import *
 
 # Modules
-from .exception import *
 from .context import Context
-from .service import ContextService

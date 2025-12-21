@@ -1,7 +1,7 @@
-# src/chess/system/builder/exception/exception.py
+# src/chess/system/build/exception/exception.py
 
 """
-Module: chess.system.builder.exception.base
+Module: chess.system.build.exception.base
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

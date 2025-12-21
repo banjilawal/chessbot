@@ -27,6 +27,7 @@ from .notification import *
 from .result import *
 from .resolution import *
 from .service import *
+from .text import *
 from .transaction import *
 from .utils import *
 from .validate import *

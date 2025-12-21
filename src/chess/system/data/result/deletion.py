@@ -26,7 +26,7 @@ class DeletionResult(DataResult[Generic[T]]):
         *   DataResult
 
     # PROVIDES:
-    DeletionResult
+    None
 
     # LOCAL ATTRIBUTES:
     None

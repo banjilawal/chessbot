@@ -1,20 +1,20 @@
-# src/chess/system/err/text/validator.py
+# src/chess/system/text/validator.py
 
 """
-Module: chess.system.err.text.validator_
+Module: chess.system.text.validator
 Author: Banji Lawal
-Created: 2025-11-29
+Created: 2025-10-03
 version: 1.0.0
 """
 
 from typing import cast
 
 from chess.system import (
-    BlankTextException, InvalidTextException, LoggingLevelRouter, NullStringException, ValidationResult, Validator
+    BlankTextException, InvalidStringException, LoggingLevelRouter, NullEmptyString, ValidationResult, Validator
 )
 
 
-class TextValidator(Validator[str]):
+class StringValidator(Validator[str]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security., Integrity
 
@@ -41,7 +41,7 @@ class TextValidator(Validator[str]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   text_validator (TextValidator)
+            *   text_validator (StringValidator)
 
         # Returns:
         ValidationResult[str] containing either:
@@ -53,13 +53,13 @@ class TextValidator(Validator[str]):
             *   TypeError
             *   BlankTextError
         """
-        method = "TextValidator.validate"
+        method = "StringValidator.validate"
         
         try:
             # Verify the candidate is not null and an int.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullStringException(f"{method}: {NullStringException.DEFAULT_MESSAGE}")
+                    NullEmptyString(f"{method}: {NullEmptyString.DEFAULT_MESSAGE}")
                 )
                 # Raise an error if its not a str.
             if not isinstance(candidate, str):
@@ -69,6 +69,7 @@ class TextValidator(Validator[str]):
             
             # Cast the candidate to a string and strip of all the white space.
             text = cast(str, candidate).strip()
+            
             # Check if the string is empty after stripping of the white space.
             if len(text.strip()) == 0:
                 return ValidationResult.failure(
@@ -80,5 +81,5 @@ class TextValidator(Validator[str]):
         # then return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidTextException(ex=ex, message=f"{method}: {InvalidTextException.DEFAULT_MESSAGE}")
+                InvalidStringException(ex=ex, message=f"{method}: {InvalidStringException.DEFAULT_MESSAGE}")
             )

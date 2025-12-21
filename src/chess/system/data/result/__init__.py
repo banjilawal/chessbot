@@ -14,8 +14,7 @@ None
 
 # Modules
 from .base import DataResult
-from .calculation import CalculationResult
 from .deletion import DeletionResult
 from .insertion import InsertionResult
-
-from .exception import  EmptyDataResultException
+from .calculation import CalculationResult
+from .empty import  EmptyDataResultException

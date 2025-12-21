@@ -26,7 +26,7 @@ class CalculationResult(DataResult[Generic[T]]):
         *   DataResult
 
     # PROVIDES:
-    CalculationResult
+    None
 
     # LOCAL ATTRIBUTES:
     None

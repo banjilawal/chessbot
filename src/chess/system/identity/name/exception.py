@@ -7,7 +7,7 @@ Created: 2025-09-17
 version: 1.0.0
 """
 
-from chess.system import BlankTextException, NullException, TextException, ValidationException
+from chess.system import BlankTextException, NullException, StringException, ValidationException
 
 
 __all__ = [
@@ -25,7 +25,7 @@ __all__ = [
 
 
 #======================# NAME EXCEPTION #======================#
-class NameException(TextException, ValidationException):
+class NameException(StringException, ValidationException):
     """
     Super class of designation exception. Subclasses give precise, fine-grained information which make
     debugging faster. Use this exception as a fallback.

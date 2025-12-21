@@ -7,7 +7,7 @@ Created: 2025-09-17
 version: 1.0.0
 """
 
-from chess.system import InvalidTextException, NullException
+from chess.system import InvalidStringException, NullException
 
 __all__ = [
 #======================# ID VALIDATION EXCEPTION #======================#
@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 #======================# ID VALIDATION EXCEPTION #======================#
-class InvalidIdException(InvalidTextException):
+class InvalidIdException(InvalidStringException):
     """Catchall Exception for IdValidator when a candidate fails a sanity check."""
     ERROR_CODE = "ID_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "Id Validation failed."

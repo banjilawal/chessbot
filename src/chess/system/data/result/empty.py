@@ -28,13 +28,13 @@ class EmptyDataResultException(ResultException):
         *   ResultException
 
     # PROVIDES:
-    EmptyDataResultException
+    None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See DataResult class for inherited attributes.
     """
     ERROR_CODE = "EMPTY_DATA_RESULT_ERROR"
     DEFAULT_MESSAGE = "DataResult must contain either a payload or an exception. It cannot be empty."

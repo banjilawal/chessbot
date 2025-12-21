@@ -14,7 +14,7 @@ from chess.rank import (
     InvalidKingException, NotKingDesignationException, NotKingNameException, NotKingQuotaException,
 )
 from chess.system import (
-    IdentityService, LoggingLevelRouter, NumberValidator, TextValidator, ValidationResult, Validator
+    IdentityService, LoggingLevelRouter, NumberValidator, StringValidator, ValidationResult, Validator
 )
 
 
@@ -39,7 +39,7 @@ class KingValidator(Validator[King]):
     def validate(
             cls,
             candidate: Any,
-            text_validator: TextValidator = TextValidator(),
+            text_validator: StringValidator = StringValidator(),
             number_validator: NumberValidator = NumberValidator(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[King]:
@@ -273,7 +273,7 @@ class KingValidator(Validator[King]):
             cls,
             candidate: Any,
             rank_spec: RankSpec = RankSpec(),
-            text_validator: TextValidator = TextValidator(),
+            text_validator: StringValidator = StringValidator(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -284,7 +284,7 @@ class KingValidator(Validator[King]):
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (Catalog)
-            *   text_validator (TextValidator)
+            *   text_validator (StringValidator)
 
         # Returns:
         ValidationResult[str] containing either:

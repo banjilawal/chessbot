@@ -37,7 +37,7 @@ class MutuallyExclusiveParamsException(BuildException):
 
 
 #======================# BUILD_OPTIONS EXCEPTION #======================#
-class NoBuildOptionSelectedException(BuilderException):
+class NoBuildOptionSelectedException(BuildException):
   """
   Raised when none of the possible options required to builder an object are selected.
   Mainly used by Context classes

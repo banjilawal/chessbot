@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .base import BuildException
 from .extras import *
+from .base import BuildException
 from .failure import BuildFailedException
 

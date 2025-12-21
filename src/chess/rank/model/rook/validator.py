@@ -14,7 +14,7 @@ from chess.rank import (
     InvalidRookException, NotRookDesignationException, NotRookNameException, NotRookQuotaException,
 )
 from chess.system import (
-    IdentityService, LoggingLevelRouter, NumberValidator, TextValidator, ValidationResult, Validator
+    IdentityService, LoggingLevelRouter, NumberValidator, StringValidator, ValidationResult, Validator
 )
 
 
@@ -39,7 +39,7 @@ class RookValidator(Validator[Rook]):
     def validate(
             cls,
             candidate: Any,
-            text_validator: TextValidator = TextValidator(),
+            text_validator: StringValidator = StringValidator(),
             number_validator: NumberValidator = NumberValidator(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Rook]:
@@ -273,7 +273,7 @@ class RookValidator(Validator[Rook]):
             cls,
             candidate: Any,
             rank_spec: RankSpec = RankSpec(),
-            text_validator: TextValidator = TextValidator(),
+            text_validator: StringValidator = StringValidator(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -284,7 +284,7 @@ class RookValidator(Validator[Rook]):
         # PARAMETERS:
             *   candidate (Any)
             *   rank_spec (Catalog)
-            *   text_validator (TextValidator)
+            *   text_validator (StringValidator)
 
         # Returns:
         ValidationResult[str] containing either:

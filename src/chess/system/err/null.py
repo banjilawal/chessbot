@@ -17,7 +17,26 @@ __all__ = [
 
 #======================# NULL EXCEPTION #======================#
 class NullException(ChessException):
-    """Raised if an entity, method, or operation requires a resource but gets null instead."""
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exception that indicate an entity, method, or operation requires an object
+        or resource but  got null instead.
+    3.  Catchall for null errors not covered by lower level NullException subclasses.
+
+    # PARENT:
+        *   ChessException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "NULL_ERROR"
     DEFAULT_MESSAGE = "cannot be null."
     
