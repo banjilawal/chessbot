@@ -28,12 +28,12 @@ class SchemaMapValidator(Validator[SchemaMap]):
         *   Validator
 
     # PROVIDES:
-        * validate(candidate: Any): --> ValidationResult[SchemaMap]
-
-    # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED ATTRIBUTES:
+    # LOCAL KEY-VALUES:
+    None
+
+    # INHERITED KEY-VALUES:
     None
     """
     @classmethod
@@ -46,8 +46,8 @@ class SchemaMapValidator(Validator[SchemaMap]):
     ) -> ValidationResult[SchemaMap]:
         """
         # Action:
-        1.  Confirm that only one in the (name, color) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's number_bounds_validator.
+        1.  Confirm that only one in the (name, color) hash is not null.
+        2.  Certify the not-null key-value is safe using the appropriate services and validators.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an SchemaMap are return in a ValidationResult.
 
@@ -70,49 +70,51 @@ class SchemaMapValidator(Validator[SchemaMap]):
         """
         method = "SchemaMapValidator.validate"
         try:
-            # If the candidate is null no other checks are needed.
+            # Handle the nonexistence case.
             if candidate is None:
                 return ValidationResult.failure(
                     NullSchemaMapException(f"{method}: {NullSchemaMapException.DEFAULT_MESSAGE}")
                 )
-            # If the candidate is not an SchemaMap validation has failed.
+            # Handle the wrong type case.
             if not isinstance(candidate, SchemaMap):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected SchemaMap, got {type(candidate).__name__} instead.")
                 )
             
-            # Once existence and type checks are passed, cast the candidate to Schema and run structure tests.
-            context = cast(SchemaMap, candidate)
+            # After existence and type checks are successful cast the candidate to a SchemaMap
+            # for additional tests.
+            map = cast(SchemaMap, candidate)
             
-            # Handle the case of searching with no attribute-value.
-            if len(context.to_dict()) == 0:
+            # Handle the case of searching with no key-value is set.
+            if len(map.to_dict()) == 0:
                 return ValidationResult.failure(
                     ZeroSchemaMapKeysException(f"{method}: {ZeroSchemaMapKeysException.DEFAULT_MESSAGE}")
                 )
-            # Handle the case of too many attributes being used in a search.
-            if len(context.to_dict()) > 1:
+            # Handle the case of more than one key-value is set.
+            if len(map.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessiveSchemaMapKeysException(
                         f"{method}: {ExcessiveSchemaMapKeysException.DEFAULT_MESSAGE}"
                     )
                 )
-            # When structure tests are passed certify whichever search value was provided.
             
-            # Certification for the search-by-name target.
-            if context.name is not None:
-                validation = identity_service.validate_name(candidate=context.name)
+            # Using the hash's key-value as an address, route to appropriate validation subflow.
+            
+            # Certification for the forward lookup-by-name value.
+            if map.name is not None:
+                validation = identity_service.validate_name(candidate=map.name)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the name_team_schema_map in a ValidationResult.
-                return ValidationResult.success(context)
+                # On certification success return the SchemaMap_name in a ValidationResult.
+                return ValidationResult.success(payload=map)
             
-            # Certification for the search-by-color target.
-            if context.color is not None:
-                validation = color_validator.validate(candidate=context.color)
+            # Certification for the forward lookup-by-color value.
+            if map.color is not None:
+                validation = color_validator.validate(candidate=map.color)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On certification success return the color_team_schema_map in a ValidationResult.
-                return ValidationResult.success(context)
+                return ValidationResult.success(payload=map)
             
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
         # an InvalidSchemaMapException. Then send the exception-chain in a ValidationResult.

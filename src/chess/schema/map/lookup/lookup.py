@@ -44,15 +44,15 @@ class SchemaLookup(EnumLookup[SchemaMap]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.lookup_id,
             enum_validator: SchemaValidator = SchemaValidator(),
-            context_builder: SchemaMapBuilder = SchemaMapBuilder(),
-            context_validator: SchemaMapValidator = SchemaMapValidator(),
+            map_builder: SchemaMapBuilder = SchemaMapBuilder(),
+            map_validator: SchemaMapValidator = SchemaMapValidator(),
     ):
         super().lookup(
             id=id,
             name=name,
             enum_validator=enum_validator,
-            context_builder=context_builder,
-            context_validator=context_validator
+            map_builder=map_builder,
+            map_validator=map_validator
         )
 
     @property
@@ -61,14 +61,14 @@ class SchemaLookup(EnumLookup[SchemaMap]):
         return cast(SchemaValidator, self.enum_validator)
     
     @property
-    def context_builder(self) -> SchemaMapBuilder:
+    def map_builder(self) -> SchemaMapBuilder:
         """Return an SchemaMapBuilder."""
-        return cast(SchemaMapBuilder, self.context_builder)
+        return cast(SchemaMapBuilder, self.map_builder)
     
     @property
-    def context_validator(self) -> SchemaMapValidator:
+    def map_validator(self) -> SchemaMapValidator:
         """Return an SchemaMapValidator."""
-        return cast(SchemaMapValidator, self.context_validator)
+        return cast(SchemaMapValidator, self.map_validator)
     
     @property
     def allowed_colors(self) -> List[GameColor]:
@@ -85,7 +85,7 @@ class SchemaLookup(EnumLookup[SchemaMap]):
     def lookup(
             cls,
             context: SchemaMap,
-            context_validator: SchemaMapValidator = SchemaMapValidator()
+            map_validator: SchemaMapValidator = SchemaMapValidator()
     ) -> SearchResult[List[Schema]]:
         """
         # Action:
@@ -95,7 +95,7 @@ class SchemaLookup(EnumLookup[SchemaMap]):
 
         # Parameters:
             *   context: SchemaMap
-            *   context_validator: SchemaMapValidator
+            *   map_validator: SchemaMapValidator
 
         # Returns:
         SearchResult[List[Schema]] containing either:
@@ -109,7 +109,7 @@ class SchemaLookup(EnumLookup[SchemaMap]):
         method = "SchemaLookup.lookup"
         try:
             # certify the context is safe.
-            validation = context_validator.validate(candidate=context)
+            validation = map_validator.validate(candidate=context)
             if validation.is_failure:
                 return SearchResult.failure(validation.exception)
             # After context is verified select the search method based on the which flag is enabled.
