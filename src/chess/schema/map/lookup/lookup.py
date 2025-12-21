@@ -14,22 +14,22 @@ from chess.schema import (
     SchemaMapValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
 )
 from chess.system import (
-    EnumLookup, FailsafeBranchExitPointException, GameColor, LoggingLevelRouter, SearchResult,
+    ForwardLookup, FailsafeBranchExitPointException, GameColor, LoggingLevelRouter, SearchResult,
     id_emitter
 )
 
 
-class SchemaLookup(EnumLookup[SchemaMap]):
+class SchemaLookup(ForwardLookup[SchemaMap]):
     """
     # ROLE: Forward Lookups, Mapping 
 
     # RESPONSIBILITIES:
-    1.  Lookup microservice API for mapping metadata values to Schema configurations.
-    2.  Encapsulates integrity assurance logic for Schema lookup operations.
-
+    1.  Run forward lookups on the Schema hashtable to find a Team's play_directive_metadata for a game.
+    2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
+    3.  Verifies correctness of key-value map before running the forward lookup.
 
     # PARENT:
-        *   EnumLookup
+        *   ForwardLookup
 
     # PROVIDES:
     None
@@ -38,10 +38,9 @@ class SchemaLookup(EnumLookup[SchemaMap]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EnumLookup for inherited attributes.
+        *   See ForwardLookup for inherited attributes.
     """
     SERVICE_NAME = "SchemaLookup"
-    
     def lookup(
             self,
             name: str = SERVICE_NAME,

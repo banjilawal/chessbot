@@ -19,7 +19,7 @@ M = TypeVar("M", bound=Enum)
 C = TypeVar("C", bound=Context)
 
 
-class EnumLookup(ABC, Generic[Context[Enum]]):
+class ForwardLookup(ABC, Generic[Context[Enum]]):
     """
     # ROLE: Table lookup, Finder
 

@@ -16,10 +16,10 @@ from chess.catalog import (
     CatalogQuotaBoundsException, CatalogRansomBoundsException, CatalogValidator
 )
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
-from chess.system import EnumLookup, FailsafeBranchExitPointException, LoggingLevelRouter, SearchResult, id_emitter
+from chess.system import ForwardLookup, FailsafeBranchExitPointException, LoggingLevelRouter, SearchResult, id_emitter
 
 
-class CatalogLookup(EnumLookup[CatalogContext]):
+class CatalogLookup(ForwardLookup[CatalogContext]):
     """
     # ROLE: Forward Lookups, Mapping 
 
@@ -38,7 +38,7 @@ class CatalogLookup(EnumLookup[CatalogContext]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EnumLookup for inherited attributes.
+        *   See ForwardLookup for inherited attributes.
     """
     SERVICE_NAME = "CatalogLookupService"
     

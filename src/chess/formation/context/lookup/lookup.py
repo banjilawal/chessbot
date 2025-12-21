@@ -13,10 +13,10 @@ from chess.formation import (
     OrderColorBoundsException, OrderContext, OrderContextBuilder, OrderContextValidator, BattleOrderLookupException,
     BattleOrderValidator, BattleOrder, OrderLookupFailedException, OrderNameBoundsException, OrderSquareBoundsException
 )
-from chess.system import EnumLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
+from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
 
 
-class BattleOrderLookup(EnumLookup[OrderContext]):
+class BattleOrderLookup(ForwardLookup[OrderContext]):
     """
     # ROLE: Forward Lookups, Mapping 
 
@@ -35,7 +35,7 @@ class BattleOrderLookup(EnumLookup[OrderContext]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EnumLookup for inherited attributes.
+        *   See ForwardLookup for inherited attributes.
     """
     SERVICE_NAME = "BattleOrderLookupService"
     
