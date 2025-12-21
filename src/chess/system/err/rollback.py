@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 
-#======================# ROLL_BACK_EXCEPTION SUPER CLASS #======================#
+#======================# ROLL_BACK_EXCEPTION EXCEPTION #======================#
 class RollbackException(ChessException):
     """Base class for rollback-related errors."""
     DEFAULT_CODE = "ROLLBACK_ERROR"
@@ -36,7 +36,7 @@ class FailedOperationRolledBackException(RollbackException):
     )
 
 
-#======================# ROLL_BACK_EXCEPTION SUPER CLASS #======================#
+#======================# ROLL_BACK_EXCEPTION EXCEPTION #======================#
 class RollbackException(ChessException):
     """Base class for rollback-related errors."""
     DEFAULT_CODE = "ROLLBACK_ERROR"

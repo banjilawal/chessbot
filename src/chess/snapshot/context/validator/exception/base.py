@@ -13,12 +13,12 @@ from chess.system import ValidationFailedException
 
 
 __all__ = [
-    # ======================# AGENT_CONTEXT VALIDATION SUPER CLASS #======================#
+    # ======================# AGENT_CONTEXT VALIDATION EXCEPTION #======================#
     "InvalidSnapshotContextException",
 ]
 
 
-# ======================# AGENT_CONTEXT VALIDATION SUPER CLASS #======================#
+# ======================# AGENT_CONTEXT VALIDATION EXCEPTION #======================#
 class InvalidSnapshotContextException(SnapshotContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

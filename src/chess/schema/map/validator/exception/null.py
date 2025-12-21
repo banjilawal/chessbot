@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.schema import InvalidSchemaMapException
+from chess.schema.map import InvalidSchemaMapException
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT NULL EXCEPTION #======================#
+    # ======================# NULL_SCHEMA_MAP EXCEPTION #======================#
     "NullSchemaMapException",
 ]
 
 
-# ======================# SCHEMA_CONTEXT NULL EXCEPTION #======================#
+# ======================# NULL_SCHEMA_MAP EXCEPTION #======================#
 class NullSchemaMapException(InvalidSchemaMapException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -35,5 +35,5 @@ class NullSchemaMapException(InvalidSchemaMapException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SCHEMA_CONTEXT_ERROR"
+    ERROR_CODE = "NULL_SCHEMA_MAP_ERROR"
     DEFAULT_MESSAGE = "SchemaMap cannot be null."

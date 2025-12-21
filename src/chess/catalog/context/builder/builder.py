@@ -96,7 +96,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
                 return BuildResult.failure(
                     ExcessiveCatalogContextFlagsException(f"{method}: {ExcessiveCatalogContextFlagsException}")
                 )
-            # After verifying only one Schema attribute-value-tuple is enabled, validate it.
+            # After verifying only one Schema hash key-value is set, validate it.
             
             # Build the name CatalogContext if its flag is enabled.
             if name is not None:

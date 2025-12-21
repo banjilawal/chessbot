@@ -11,11 +11,11 @@ from chess.system import ValidationFailedException
 from chess.board import BoardContextException
 
 __all__ = [
-    #======================# BOARD_CONTEXT VALIDATION SUPER CLASS #======================#
+    #======================# BOARD_CONTEXT VALIDATION EXCEPTION #======================#
     "InvalidBoardContextException",
 ]
 
-#======================# BOARD_CONTEXT VALIDATION SUPER CLASS #======================#
+#======================# BOARD_CONTEXT VALIDATION EXCEPTION #======================#
 class InvalidBoardContextException(BoardContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

@@ -12,12 +12,12 @@ from chess.system import BuildFailedException
 
 
 __all__ = [
-    #======================# SCHEMA_CONTEXT BUILD EXCEPTION #======================#
+    #======================# SCHEMA_MAP BUILD EXCEPTION #======================#
     "SchemaMapBuildFailedException",
 ]
 
 
-#======================# SCHEMA_CONTEXT BUILD EXCEPTION #======================#
+#======================# SCHEMA_MAP BUILD EXCEPTION #======================#
 class SchemaMapBuildFailedException(SchemaMapException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -39,5 +39,5 @@ class SchemaMapBuildFailedException(SchemaMapException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_CONTEXT_BUILD_ERROR"
+    ERROR_CODE = "SCHEMA_MAP_BUILD_ERROR"
     DEFAULT_MESSAGE = "SchemaMap build failed."

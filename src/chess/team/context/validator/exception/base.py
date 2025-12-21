@@ -11,11 +11,11 @@ from chess.system import ValidationFailedException
 from chess.team import TeamContextException
 
 __all__ = [
-    #======================# TEAM_CONTEXT VALIDATION SUPER CLASS #======================#
+    #======================# TEAM_CONTEXT VALIDATION EXCEPTION #======================#
     "InvalidTeamContextException",
 ]
 
-#======================# TEAM_CONTEXT VALIDATION SUPER CLASS #======================#
+#======================# TEAM_CONTEXT VALIDATION EXCEPTION #======================#
 class InvalidTeamContextException(TeamContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

@@ -11,12 +11,12 @@ from chess.catalog import CatalogContextException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# CATALOG_CONTEXT VALIDATION SUPER CLASS #======================#
+    # ======================# CATALOG_CONTEXT VALIDATION EXCEPTION #======================#
     "InvalidCatalogContextException",
 ]
 
 
-# ======================# CATALOG_CONTEXT VALIDATION SUPER CLASS #======================#
+# ======================# CATALOG_CONTEXT VALIDATION EXCEPTION #======================#
 class InvalidCatalogContextException(CatalogContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

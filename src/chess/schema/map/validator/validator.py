@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    InvalidSchemaMapException, ZeroSchemaMapFlagsException, NullSchemaMapException, SchemaMap,
+    InvalidSchemaMapException, ZeroSchemaMapKeysException, NullSchemaMapException, SchemaMap,
     ExcessiveSchemaMapKeysException
 )
 
@@ -64,7 +64,7 @@ class SchemaMapValidator(Validator[SchemaMap]):
         # Raises:
             *   TypeError
             *   NullSchemaMapException
-            *   ZeroSchemaMapFlagsException
+            *   ZeroSchemaMapKeysException
             *   ExcessiveSchemaMapKeysException
             *   InvalidSchemaMapException
         """
@@ -87,7 +87,7 @@ class SchemaMapValidator(Validator[SchemaMap]):
             # Handle the case of searching with no attribute-value.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroSchemaMapFlagsException(f"{method}: {ZeroSchemaMapFlagsException.DEFAULT_MESSAGE}")
+                    ZeroSchemaMapKeysException(f"{method}: {ZeroSchemaMapKeysException.DEFAULT_MESSAGE}")
                 )
             # Handle the case of too many attributes being used in a search.
             if len(context.to_dict()) > 1:
@@ -103,7 +103,7 @@ class SchemaMapValidator(Validator[SchemaMap]):
                 validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the name_team_schema_context in a ValidationResult.
+                # On certification success return the name_team_schema_map in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-color target.
@@ -111,7 +111,7 @@ class SchemaMapValidator(Validator[SchemaMap]):
                 validation = color_validator.validate(candidate=context.color)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the color_team_schema_context in a ValidationResult.
+                # On certification success return the color_team_schema_map in a ValidationResult.
                 return ValidationResult.success(context)
             
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside

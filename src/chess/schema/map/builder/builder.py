@@ -14,7 +14,7 @@ from chess.system import (
     IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
-    ZeroSchemaMapFlagsException, SchemaMap, ExcessiveSchemaMapKeysException, SchemaMapBuildFailedException
+    ZeroSchemaMapKeysException, SchemaMap, ExcessiveSchemaMapKeysException, SchemaMapBuildFailedException
 )
 
 
@@ -34,10 +34,10 @@ class SchemaMapBuilder(Builder[SchemaMap]):
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
+    # LOCAL KEY-VALUES:
     None
 
-    # INHERITED ATTRIBUTES:
+    # INHERITED KEY-VALUES:
     None
     """
     @classmethod
@@ -51,8 +51,8 @@ class SchemaMapBuilder(Builder[SchemaMap]):
     ) -> BuildResult[SchemaMap]:
         """
         # Action:
-            1.  Confirm that only one in the (designation, color) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate validating service.
+            1.  Confirm that only one in the (designation, color) hash is not null.
+            2.  Certify the not-null key-value is safe using the appropriate validating service.
             3.  If all checks pass build a SchemaMap and send in a BuildResult. Else, send an exception
                 in the BuildResult.
 
@@ -71,7 +71,7 @@ class SchemaMapBuilder(Builder[SchemaMap]):
             - On failure: Exception.
 
         # Raises:
-            *   ZeroSchemaMapFlagsException
+            *   ZeroSchemaMapKeysException
             *   SchemaMapBuildFailedException
             *   ExcessiveSchemaMapKeysException
         """
@@ -81,35 +81,35 @@ class SchemaMapBuilder(Builder[SchemaMap]):
             params = [name, color,]
             param_count = sum(bool(p) for p in params)
             
-            # Test if no params are set. Need an attribute-value pair to look up a team's schema.
+            # Test if no params are set. Need a key-value to look up a team's schema.
             if param_count == 0:
                 return BuildResult.failure(
-                    ZeroSchemaMapFlagsException(f"{method}: {ZeroSchemaMapFlagsException.DEFAULT_MESSAGE}")
+                    ZeroSchemaMapKeysException(f"{method}: {ZeroSchemaMapKeysException.DEFAULT_MESSAGE}")
                 )
-            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
+            # Test if more than one param is set. Only one hash key-value is allowed in a lookup.
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveSchemaMapKeysException(f"{method}: {ExcessiveSchemaMapKeysException}")
                 )
-            # After verifying only one Schema attribute-value-tuple is enabled, validate it.
+            # After verifying only one Schema hash key-value is set, validate it.
             
-            # Build the name SchemaMap if its flag is enabled.
+            # Build the name_key SchemaMap if its value is set.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a name_SchemaMap in the BuildResult.
+                # On validation success return a SchemaMap_name in the BuildResult.
                 return BuildResult.success(SchemaMap(name=name))
             
-            # Build the color SchemaMap if its flag is enabled.
+            # Build the color_key SchemaMap if its value is set.
             if color is not None:
                 validation = color_validator.validate(candidate=color)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a color_SchemaMap in the BuildResult.
+                # On validation success return a SchemaMap_color in the BuildResult.
                 return BuildResult.success(SchemaMap(color=color))
             
-            # As a failsafe send a buildResult failure if a context path was missed.
+            # As a failsafe send a buildResult failure if a mapping path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

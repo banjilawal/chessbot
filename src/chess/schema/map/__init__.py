@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.CONTEXT PACKAGE CONTENTS ===========#
+# =========== SCHEMA.MAP PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *
@@ -16,5 +16,5 @@ from .service import *
 from .validator import *
 
 # Modules
-from .context import SchemaMap
+from .map import SchemaMap
 from .exception import SchemaMapException

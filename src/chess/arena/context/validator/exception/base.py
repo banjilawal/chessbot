@@ -12,12 +12,12 @@ from chess.system import ValidationFailedException
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT VALIDATION SUPER CLASS #======================#
+    # ======================# ARENA_CONTEXT VALIDATION EXCEPTION #======================#
     "InvalidArenaContextException",
 ]
 
 
-# ======================# ARENA_CONTEXT VALIDATION SUPER CLASS #======================#
+# ======================# ARENA_CONTEXT VALIDATION EXCEPTION #======================#
 class InvalidArenaContextException(ArenaContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

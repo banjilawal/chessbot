@@ -39,5 +39,5 @@ class TeamBuildFailedException(TeamException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SCHEMA_CONTEXT_BUILD_ERROR"
+    ERROR_CODE = "TEAM_SCHEMA_MAP_BUILD_ERROR"
     DEFAULT_MESSAGE = "TeamContext build failed."

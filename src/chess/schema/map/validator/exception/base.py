@@ -7,16 +7,16 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.schema import SchemaMapException
+from chess.schema.map import SchemaMapException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT VALIDATION SUPER CLASS #======================#
+    # ======================# INVALID_SCHEMA_MAP EXCEPTION #======================#
     "InvalidSchemaMapException",
 ]
 
 
-# ======================# SCHEMA_CONTEXT VALIDATION SUPER CLASS #======================#
+# ======================# INVALID_SCHEMA_MAP EXCEPTION #======================#
 class InvalidSchemaMapException(SchemaMapException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -38,5 +38,5 @@ class InvalidSchemaMapException(SchemaMapException, ValidationFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_CONTEXT_VALIDATION_ERROR"
+    ERROR_CODE = "SCHEMA_MAP_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "SchemaMap validation failed."
