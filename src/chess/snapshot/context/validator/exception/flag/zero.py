@@ -29,7 +29,7 @@ class ZeroSnapshotContextFlagsException(InvalidSnapshotContextException, Context
         *   ContextFlagCountException
 
     # PROVIDES:
-    ZeroSnapshotContextFlagsException
+    None
 
     # ATTRIBUTES:
     None

@@ -30,7 +30,7 @@ class NullSnapshotContextException(InvalidSnapshotContextException, NullExceptio
         *   NullSnapshotContextException
 
     # PROVIDES:
-    NullSnapshotContextException
+    None
 
     # LOCAL ATTRIBUTES:
     None

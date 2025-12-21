@@ -8,7 +8,7 @@ Version: 1.0.0
 """
 
 
-from chess.system import DataSetException, ServiceException
+from chess.system import DatasetException, ServiceException
 
 __all__ = [
     # ====================== DATA_SERVICE EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ====================== DATA_SERVICE EXCEPTION #======================#
-class DataServiceException(DataSetException, ServiceException):
+class DataServiceException(DatasetException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -26,7 +26,7 @@ class DataServiceException(DataSetException, ServiceException):
     2.  Wraps unhandled exception that hit the try-finally block of a DataService method.
 
     # PARENT:
-        *   DataSetException
+        *   DatasetException
         *   ServiceException
 
     # PROVIDES:

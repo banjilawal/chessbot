@@ -7,7 +7,7 @@ Created: 2025-11-17
 version: 1.0.0
 """
 
-from chess.system import DataSetException, NullException
+from chess.system import DatasetException, NullException
 
 
 __all__ = [
@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 #======================# TEAM_NULL_DATASET EXCEPTION #======================#
-class TeamSearchDatasetNullException(DataSetException, NullException):
+class TeamSearchDatasetNullException(DatasetException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -23,7 +23,7 @@ class TeamSearchDatasetNullException(DataSetException, NullException):
     1.  Indicates TeamFinder received null instead of a List[Team] collection.
 
     # PARENT:
-        *   DataSetException
+        *   DatasetException
         *   NullException
 
     # PROVIDES:

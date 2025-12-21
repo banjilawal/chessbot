@@ -30,7 +30,7 @@ class ExcessiveSnapshotContextFlagsException(InvalidSnapshotContextException, Co
         *   ContextFlagCountException
 
     # PROVIDES:
-    ExcessiveSnapshotContextFlagsException
+    None
 
     # ATTRIBUTES:
     None

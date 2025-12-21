@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.team import TeamDataSetException
+from chess.team import TeamDatasetException
 
 __all__ = [
 #======================# TEAM_DELETION_FAILED EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 #======================# TEAM_DELETION_FAILED EXCEPTION #======================#
-class TeamDeletionFailedException(TeamDataSetException):
+class TeamDeletionFailedException(TeamDatasetException):
     ERROR_CODE = "TEAM_DELETION_ERROR"
     DEFAULT_MESSAGE = "Team deletion failed."
 

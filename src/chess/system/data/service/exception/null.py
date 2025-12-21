@@ -12,12 +12,12 @@ from chess.system import DataServiceException, NullException
 
 __all__ = [
     # ====================== REMOVING_NULL_DATA_SET EXCEPTION #======================#
-    "RemovingNullDataSetException",
+    "RemovingNullDatasetException",
 ]
 
 
 # ====================== REMOVING_NULL_DATA_SET EXCEPTION #======================#
-class RemovingNullDataSetException(DataServiceException, NullException):
+class RemovingNullDatasetException(DataServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

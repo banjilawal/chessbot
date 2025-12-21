@@ -63,7 +63,7 @@ class PieceFinder(Finder[Piece]):
 
         # Raises:
             *   TypeError
-            *   PieceNullDataSetException
+            *   PieceNullDatasetException
             *   PieceFinderException
         """
         method = "PieceFinder.find"
@@ -71,7 +71,7 @@ class PieceFinder(Finder[Piece]):
             # Don't want to run a search if the dataset is null.
             if dataset is None:
                 return SearchResult.failure(
-                    PieceNullDataSetException(f"{method}: {PieceNullDataSetException.DEFAULT_MESSAGE}")
+                    PieceNullDatasetException(f"{method}: {PieceNullDatasetException.DEFAULT_MESSAGE}")
                 )
             # certify the map is safe.
             validation_result = context_validator.validate(context)

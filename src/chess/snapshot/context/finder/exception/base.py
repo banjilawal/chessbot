@@ -28,7 +28,7 @@ class SnapshotFinderException(FinderException):
         *   FinderException
 
     # PROVIDES:
-    SnapshotFinderException
+    None
 
     # LOCAL ATTRIBUTES:
     None

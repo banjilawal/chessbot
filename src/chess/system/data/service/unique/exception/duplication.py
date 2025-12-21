@@ -11,12 +11,12 @@ from chess.system import UniqueDataServiceException
 
 __all__ = [
     #======================# ADDING_DUPLICATE_DATA_EXCEPTION  #======================#
-    "AddingDuplicateDataSetException",
+    "AddingDuplicateDatasetException",
 ]
 
 
 #======================# ADDING_DUPLICATE_DATA_EXCEPTION  #======================#
-class AddingDuplicateDataSetException(UniqueDataServiceException):
+class AddingDuplicateDatasetException(UniqueDataServiceException):
     """
     # ROLE: Error Tracing, Debugging
 

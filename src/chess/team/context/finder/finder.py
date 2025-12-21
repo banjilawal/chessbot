@@ -66,7 +66,7 @@ class TeamFinder(Finder[Team]):
 
         # Raises:
             *   TypeError
-            *   TeamNullDataSetException
+            *   TeamNullDatasetException
             *   TeamFinderOperationFailedException
         """
         method = "TeamFinder.find"

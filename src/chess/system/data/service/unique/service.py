@@ -11,7 +11,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from chess.system import (
-    AddingDuplicateDataSetException, DataService, InsertionResult, LoggingLevelRouter, UniqueDataServiceException
+    AddingDuplicateDatasetException, DataService, InsertionResult, LoggingLevelRouter, UniqueDataServiceException
 )
 
 T = TypeVar("T")
@@ -93,7 +93,7 @@ class UniqueDataService(ABC, Generic[T]):
 
             if query_result.is_success:
                 return InsertionResult.failure(
-                    AddingDuplicateDataSetException(f"{method}: {AddingDuplicateDataSetException.DEFAULT_MESSAGE}")
+                    AddingDuplicateDatasetException(f"{method}: {AddingDuplicateDatasetException.DEFAULT_MESSAGE}")
                 )
             return self._data_service.push_item(item)
 

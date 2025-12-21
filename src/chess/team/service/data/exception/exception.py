@@ -7,15 +7,15 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from chess.system import DataSetException
+from chess.system import DatasetException
 
 __all__ = [
 #======================# TEAM_DATA_SET EXCEPTION #======================#
-    "TeamDataSetException",
+    "TeamDatasetException",
 ]
 
 #======================# TEAM_DATA_SET EXCEPTION #======================#
-class TeamDataSetException(DataSetException):
+class TeamDatasetException(DatasetException):
     """
     Catchall for TeamData_set exception. Use as a last resort if TeamInsertionFailed or
     TeamDeletionFailedException are not a good fit. Subclasses give better debugging info.

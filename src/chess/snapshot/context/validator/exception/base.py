@@ -32,7 +32,7 @@ class InvalidSnapshotContextException(SnapshotContextException, ValidationFailed
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidSnapshotContextException
+    None
 
     # LOCAL ATTRIBUTES:
     None

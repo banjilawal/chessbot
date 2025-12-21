@@ -88,7 +88,7 @@ class ResultStack(ABC, Generic[T]):
                 )
             if result in self.items:
                 return InsertionResult.failure(
-                    AddingResultDataSetException(f"{method}: {AddingDuplicateResultException.DEFAULT_MESSAGE}")
+                    AddingResultDatasetException(f"{method}: {AddingDuplicateResultException.DEFAULT_MESSAGE}")
                 )
             self.items.append(result)
             return InsertionResult.success(payload=result)

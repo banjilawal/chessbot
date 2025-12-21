@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.game import GameException
-from chess.system import NullDataSetException
+from chess.system import NullDatasetException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 
 
 #======================# GAME_NULL_DATASET EXCEPTION #======================#
-class GameSearchDatasetNullException(GameException, NullDataSetException):
+class GameSearchDatasetNullException(GameException, NullDatasetException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -29,7 +29,7 @@ class GameSearchDatasetNullException(GameException, NullDataSetException):
     1.  Indicates GameFinder received null instead of a List[Game] collection.
 
     # PARENT:
-        *   DataSetException
+        *   DatasetException
         *   NullException
 
     # PROVIDES:

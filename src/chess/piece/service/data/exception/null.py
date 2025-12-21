@@ -13,7 +13,7 @@ from chess.piece import InvalidPieceDataServiceException
 
 __all__ = [
     "NullPieceDataServiceException",
-    "PieceNullDataSetException",
+    "PieceNullDatasetException",
 ]
 
 
@@ -43,7 +43,7 @@ class NullPieceDataServiceException(InvalidPieceDataServiceException, NullExcept
 
 
 #======================# PIECE_NULL_DATASET EXCEPTION #======================#
-class PieceNullDataSetException(InvalidPieceDataServiceException, NullException):
+class PieceNullDatasetException(InvalidPieceDataServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -55,7 +55,7 @@ class PieceNullDataSetException(InvalidPieceDataServiceException, NullException)
         *   NullException
 
     # PROVIDES:
-    PieceNullDataSetException
+    PieceNullDatasetException
 
     # ATTRIBUTES:
     None

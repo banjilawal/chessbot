@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.agent.service.data.exception.null import AgentNullDataSetException
+from chess.agent.service.data.exception.null import AgentNullDatasetException
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.agent import (
     PlayerAgent, AgentContext, AgentContextValidator, AgentFinderException, AgentVariety, HumanAgent,
@@ -67,7 +67,7 @@ class AgentFinder(Finder[PlayerAgent]):
 
         # Raises:
             *   TypeError
-            *   AgentNullDataSetException
+            *   AgentNullDatasetException
             *   AgentFinderException
         """
         method = "AgentFinder.find"
@@ -75,7 +75,7 @@ class AgentFinder(Finder[PlayerAgent]):
             # Don't want to run a search if the dataset is null.
             if dataset is None:
                 return SearchResult.failure(
-                    AgentNullDataSetException(f"{method}: {AgentNullDataSetException.DEFAULT_MESSAGE}")
+                    AgentNullDatasetException(f"{method}: {AgentNullDatasetException.DEFAULT_MESSAGE}")
                 )
             # certify the map is safe.
             validation_result = context_validator.validate(context)

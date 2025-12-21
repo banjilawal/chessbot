@@ -67,7 +67,7 @@ class GameFinder(Finder[Game]):
 
         # Raises:
             *   TypeError
-            *   GameNullDataSetException
+            *   GameNullDatasetException
             *   GameFinderOperationFailedException
         """
         method = "GameFinder.find"

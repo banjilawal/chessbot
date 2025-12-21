@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.agent import AgentException
-from chess.system import NullDataSetException
+from chess.system import NullDatasetException
 
 __all__ = [
     "AgentSearchDatasetNullException",
@@ -19,7 +19,7 @@ __all__ = [
 
 
 # ======================# AGENT_NULL_DATASET EXCEPTION #======================#
-class AgentSearchDatasetNullException(AgentException, NullDataSetException):
+class AgentSearchDatasetNullException(AgentException, NullDatasetException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class AgentSearchDatasetNullException(AgentException, NullDataSetException):
     1.  Indicates AgentFinder received null instead of a List[Agent] collection.
 
     # PARENT:
-        *   DataSetException
+        *   DatasetException
         *   NullException
 
     # PROVIDES:

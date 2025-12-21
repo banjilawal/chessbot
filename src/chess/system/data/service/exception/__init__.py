@@ -15,4 +15,4 @@ None
 # Modules
 from .base import DataServiceException
 from .pop import PoppingEmptyStackException
-from .null import RemovingNullDataSetException
+from .null import RemovingNullDatasetException
