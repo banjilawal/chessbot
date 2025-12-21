@@ -1,24 +1,45 @@
-# src/chess/square/context/validator/exception/flag/__init__.py
+# src/chess/square/context/validator/exception/flag/excess.py
 
 """
-Module: chess.square.context.validator.exception.flag.__init__
+Module: chess.square.context.validator.exception.flag.excess
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import BoundsException
+from chess.system import ContextFlagCountException
 from chess.square import InvalidSquareContextException
 
 __all__ = [
+    # ========================= EXCESSIVE_SQUARE_CONTEXT_FLAG EXCEPTION =========================#
     "ExcessiveSquareContextFlagsException"
 ]
 
 
-class ExcessiveSquareContextFlagsException(
-    InvalidSquareContextException,
-    BoundsException
-):
-    """Raised if too many CoordContext flags were set."""
-    ERROR_CODE = "SQUARE_CONTEXT_MAX_PARAM_ERROR"
-    DEFAULT_MESSAGE = "Only one SquareContext flag can be set."
+# ========================= EXCESSIVE_SQUARE_CONTEXT_FLAG EXCEPTION =========================#
+class ExcessiveSquareContextFlagsException(InvalidSquareContextException, ContextFlagCountException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicates more than one SquareContext flag was enabled. Only one Square attribute-value-tuple can be used in
+        a search.
+
+    # PARENT:
+        *   ContextFlagCountException
+        *   InvalidSquareContextException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "EXCESSIVE_SQUARE_CONTEXT_FLAG_ERROR"
+    DEFAULT_MESSAGE = (
+        "Excessive SquareContext flags were set. an Square search can only use one-and-only "
+        "context flag at a time."
+    )
