@@ -11,17 +11,19 @@ from chess.system import ContextFlagCountException
 from chess.team import InvalidTeamContextException
 
 __all__ = [
-    # ========================= EXCESSIVE_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
+    # ========================= EXCESSIVE_TEAM_CONTEXT_FLAG EXCEPTION =========================#
     "ExcessiveTeamContextFlagsException"
 ]
 
-# ========================= EXCESSIVE_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
+
+# ========================= EXCESSIVE_TEAM_CONTEXT_FLAG EXCEPTION =========================#
 class ExcessiveTeamContextFlagsException(InvalidTeamContextException, ContextFlagCountException):
     """
-    # ROLE: ContextFlagException, TeamContextException
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one Team attribute is going to be used in an TeamFinder.
+    1.  Indicates more than one TeamContext flag was enabled. Only one Team attribute-value-tuple can be used in
+        a search.
 
     # PARENT:
         *   ContextFlagCountException
@@ -34,7 +36,10 @@ class ExcessiveTeamContextFlagsException(InvalidTeamContextException, ContextFla
     None
 
     # INHERITED ATTRIBUTES:
-    NONE
+    None
     """
-    ERROR_CODE = "EXCESSIVE_TEAM_CONTEXT_FLAGS"
-    DEFAULT_MESSAGE = "More than one TeamContext flag was selected. Only one context flag is allowed."
+    ERROR_CODE = "EXCESSIVE_TEAM_CONTEXT_FLAG_ERROR"
+    DEFAULT_MESSAGE = (
+        "Excessive TeamContext flags were set. an Team search can only use one-and-only "
+        "context flag at a time."
+    )
