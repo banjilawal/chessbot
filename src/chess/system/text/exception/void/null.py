@@ -16,6 +16,25 @@ __all__ = [
 
 #======================# NULL_STRING EXCEPTION #======================#
 class NullStringException(VoidStringException, NullException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicates a value being passed a Coord or Vector component is larger than the Board's dimension.
+
+    # PARENT:
+        *   InvalidNumberException
+        *   BoundsException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     """Raised if an entity, method, or operation requires a String but gets either whitespace, null, or an empty string instead.her null or an empty string"""
     ERROR_CODE = "NULL_STRING_ERROR"
     DEFAULT_MESSAGE = (

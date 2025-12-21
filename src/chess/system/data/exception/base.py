@@ -14,5 +14,24 @@ __all__ = [
 ]
 
 class DataException(ChessException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exception raised by Data owned by a DataService
+    3.  Catchall for errorss not covered by lower level DataException subclasses.
+
+    # PARENT:
+        *   ChessException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "DATA_ERROR"
-    DEFAULT_MESSAGE = "Data exception was raised."
+    DEFAULT_MESSAGE = "A piece of data managed by a DataService has encountered an error."
