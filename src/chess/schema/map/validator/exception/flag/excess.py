@@ -11,17 +11,17 @@ from chess.system import ContextFlagCountException
 from chess.schema import InvalidSchemaSuperKeyException
 
 __all__ = [
-    # ========================= EXCESS_SCHEMA_SUPER_KEY_KEYS EXCEPTION =========================#
-    "ExcessiveSchemaMapKeysException",
+    # ========================= EXCESS_SCHEMA_SUPER_KEYS EXCEPTION =========================#
+    "ExcessiveSchemaSuperKeysException",
 ]
 
-# ========================= EXCESS_SCHEMA_SUPER_KEY_KEYS EXCEPTION =========================#
-class ExcessiveSchemaMapKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
+# ========================= EXCESS_SCHEMA_SUPER_KEYS EXCEPTION =========================#
+class ExcessiveSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, SchemaSuperKeyException
 
     # RESPONSIBILITIES:
-    1.  Indicate more than one SchemaSuperKey key-value was provided for a Schema entry lookup.
+    1.  Indicate more than one SchemaSuperKey was provided to process a forward Schema lookup.
 
     # PARENT:
         *   ContextFlagCountException
@@ -33,8 +33,8 @@ class ExcessiveSchemaMapKeysException(InvalidSchemaSuperKeyException, ContextFla
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESS_SCHEMA_SUPER_KEY_KEYS_ERROR"
+    ERROR_CODE = "EXCESS_SCHEMA_SUPER_KEYS_ERROR"
     DEFAULT_MESSAGE = (
-        "More than one SchemaSuperKey flag was enabled. A forward schema_entry lookup can only be performed with "
-        "one and only one attribute-value-tuple."
+        "More than one SchemaSuperKey was set. A forward schema_entry lookup can only be performed with "
+        "one and only one SuperKey."
     )

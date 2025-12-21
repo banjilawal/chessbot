@@ -13,20 +13,20 @@ from chess.schema import InvalidSchemaSuperKeyException
 
 
 __all__ = [
-    # ========================= ZERO_SCHEMA_SUPER_KEY_KEYS EXCEPTION =========================#
-    "ZeroSchemaMapKeysException",
+    # ========================= ZERO_SCHEMA_SUPER_KEYS EXCEPTION =========================#
+    "ZeroSchemaSuperKeysException",
 ]
 
 
 
-# ========================= ZERO_SCHEMA_SUPER_KEY_KEYS EXCEPTION =========================#
-class ZeroSchemaMapKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
+# ========================= ZERO_SCHEMA_SUPER_KEYS EXCEPTION =========================#
+class ZeroSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no SchemaSuperKey key-value was provided to run a forward Schema lookup.
-    1.  Indicate more than one SchemaSuperKey key-value was provided for a Schema entry lookup.
+    1.  Indicate no SchemaSuperKey was provided to process a forward Schema lookup.
+    
     # PARENT:
         *   ContextFlagCountException
         *   InvalidSchemaSuperKeyException
@@ -37,8 +37,7 @@ class ZeroSchemaMapKeysException(InvalidSchemaSuperKeyException, ContextFlagCoun
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_SCHEMA_SUPER_KEY_KEYS_ERROR"
+    ERROR_CODE = "ZERO_SCHEMA_SUPER_KEYS_ERROR"
     DEFAULT_MESSAGE = (
-        "No SchemaSuperKey key-value was provided. A single key-value pair must be provided to run a forward Schema "
-        "entry lookup."
+        "No SchemaSuperKey was provided. A SuperKey is necessary to run a forward Schema lookup."
     )

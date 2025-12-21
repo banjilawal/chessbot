@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .zero import ZeroSchemaMapKeysException
-from .excess import ExcessiveSchemaMapKeysException
+from .zero import ZeroSchemaSuperKeysException
+from .excess import ExcessiveSchemaSuperKeysException

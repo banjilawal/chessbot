@@ -11,8 +11,8 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    InvalidSchemaSuperKeyException, ZeroSchemaMapKeysException, NNullSchemaSuperKeyException, SchemaSuperKey,
-    ExcessiveSchemaMapKeysException
+    InvalidSchemaSuperKeyException, ZeroSchemaSuperKeysException, NNullSchemaSuperKeyException, SchemaSuperKey,
+    ExcessiveSchemaSuperKeysException
 )
 
 class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
@@ -64,8 +64,8 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
         # Raises:
             *   TypeError
             *   NNullSchemaSuperKeyException
-            *   ZeroSchemaMapKeysException
-            *   ExcessiveSchemaMapKeysException
+            *   ZeroSchemaSuperKeysException
+            *   ExcessiveSchemaSuperKeysException
             *   InvalidSchemaSuperKeyException
         """
         method = "SchemaSuperKeyValidator.validate"
@@ -88,13 +88,13 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             # Handle the case of searching with no key-value is set.
             if len(map.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroSchemaMapKeysException(f"{method}: {ZeroSchemaMapKeysException.DEFAULT_MESSAGE}")
+                    ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
                 )
             # Handle the case of more than one key-value is set.
             if len(map.to_dict()) > 1:
                 return ValidationResult.failure(
-                    ExcessiveSchemaMapKeysException(
-                        f"{method}: {ExcessiveSchemaMapKeysException.DEFAULT_MESSAGE}"
+                    ExcessiveSchemaSuperKeysException(
+                        f"{method}: {ExcessiveSchemaSuperKeysException.DEFAULT_MESSAGE}"
                     )
                 )
             

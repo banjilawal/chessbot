@@ -14,7 +14,7 @@ from chess.system import (
     IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
-    ZeroSchemaMapKeysException, SchemaSuperKey, ExcessiveSchemaMapKeysException, SchemaSuperKeyBuildFailedException
+    ZeroSchemaSuperKeysException, SchemaSuperKey, ExcessiveSchemaSuperKeysException, SchemaSuperKeyBuildFailedException
 )
 
 
@@ -71,9 +71,9 @@ class SchemaMapBuilder(Builder[SchemaSuperKey]):
             - On failure: Exception.
 
         # Raises:
-            *   ZeroSchemaMapKeysException
+            *   ZeroSchemaSuperKeysException
             *   SchemaSuperKeyBuildFailedException
-            *   ExcessiveSchemaMapKeysException
+            *   ExcessiveSchemaSuperKeysException
         """
         method = "SchemaMapBuilder.build"
         try:
@@ -84,12 +84,12 @@ class SchemaMapBuilder(Builder[SchemaSuperKey]):
             # Test if no params are set. Need a key-value to look up a team's schema.
             if param_count == 0:
                 return BuildResult.failure(
-                    ZeroSchemaMapKeysException(f"{method}: {ZeroSchemaMapKeysException.DEFAULT_MESSAGE}")
+                    ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
                 )
             # Test if more than one param is set. Only one hash key-value is allowed in a lookup.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveSchemaMapKeysException(f"{method}: {ExcessiveSchemaMapKeysException}")
+                    ExcessiveSchemaSuperKeysException(f"{method}: {ExcessiveSchemaSuperKeysException}")
                 )
             # After verifying only one Schema hash key-value is set, validate it.
             
