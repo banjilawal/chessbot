@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import BoundsException
+from chess.system import ContextFlagCountException
 from chess.arena import InvalidArenaContextException
 
 __all__ = [
@@ -17,16 +17,16 @@ __all__ = [
 
 
 # ========================= EXCESSIVE_ARENA_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveArenaContextFlagsException(InvalidArenaContextException, BoundsException):
+class ExcessiveArenaContextFlagsException(InvalidArenaContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one ArenaContext flag was enabled. Only one Arena attribute-value tuple can be used in
+    1.  Indicates more than one ArenaContext flag was enabled. Only one Arena attribute-value-tuple can be used in
         a search.
 
     # PARENT:
-        *   BoundsException
+        *   ContextFlagCountException
         *   InvalidArenaContextException
 
     # PROVIDES:
@@ -39,4 +39,7 @@ class ExcessiveArenaContextFlagsException(InvalidArenaContextException, BoundsEx
     None
     """
     ERROR_CODE = "EXCESSIVE_ARENA_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "Excessive ArenaContext flags were set. Only one ArenaContext flag is allowed."
+    DEFAULT_MESSAGE = (
+        "Excessive ArenaContext flags were set. an Arena search can only use one-and-only "
+        "context flag at a time."
+    )
