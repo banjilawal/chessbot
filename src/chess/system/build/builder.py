@@ -17,7 +17,7 @@ T = TypeVar("T")
 
 class Builder(ABC, Generic[T]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor, Data Integrity and Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor,
   
     # RESPONSIBILITIES:
     1.  Produce objects whose integrity is always guaranteed.
@@ -29,7 +29,7 @@ class Builder(ABC, Generic[T]):
     None
     
     # PROVIDES:
-        *   Builder
+    None
     
     # LOCAL ATTRIBUTES:
     None
@@ -37,7 +37,6 @@ class Builder(ABC, Generic[T]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     def __init__(self):
         pass
     

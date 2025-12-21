@@ -18,10 +18,13 @@ from chess.system import LoggingLevelRouter, Context, SearchResult, Validator
 
 class ForwardLookup(ABC, Generic[Context[Enum]]):
     """
-    # ROLE: Table lookup, Finder
+    # ROLE: Forward Lookups,
 
     # RESPONSIBILITIES:
-    1.  Find metadata based on attribute values.
+    1.  Use SuperKey (metadata_attribute: value) to find entries in
+            StrategyContractorHashMap{StrategyTitle: {ContractorBuildMetadata}
+    2.  Use SuperKey to find entries in CategoryHashMap{Name: Tuple}
+    3.  Indicate the HashMap does have an entry for the SuperKey with an exception in the SearchResult.
 
     # PARENT:
     None
@@ -35,8 +38,6 @@ class ForwardLookup(ABC, Generic[Context[Enum]]):
     # INHERITED ATTRIBUTES:
     None
     """
- 
-
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -21,7 +21,7 @@ from chess.system import (
 
 class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     """
-    # ROLE: Forward Lookups, Mapping 
+    # ROLE: Forward Lookups
 
     # RESPONSIBILITIES:
     1.  Run forward lookups on the Schema hashtable to find a Team's play_directive_metadata for a game.
@@ -38,7 +38,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ForwardLookup for inherited attributes.
+    None
     """
     # SERVICE_NAME = "SchemaLookup"
     # def lookup(
