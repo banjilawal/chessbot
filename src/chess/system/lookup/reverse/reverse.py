@@ -1,29 +1,28 @@
-# src/chess/system/lookup/forward/lookup.py
+# src/chess/system/lookup/reverse/lookup.py
 
 """
-Module: chess.system.lookup.forward.lookup
+Module: chess.system.lookup.reverse.lookup
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-from abc import ABC, abstractmethod
 from enum import Enum
-from typing import Generic, List
-from typing_extensions import TypeVar
+from typing import Any, Generic, List
+from abc import ABC, abstractmethod
 
-from chess.system import Builder, LoggingLevelRouter, Context, SearchResult, Validator, id_emitter
-
-M = TypeVar("M", bound=Enum)
-C = TypeVar("C", bound=Context)
+from chess.system import LoggingLevelRouter, Context, SearchResult, Validator
 
 
-class ForwardLookup(ABC, Generic[Context[Enum]]):
+class ReverseLookup(ABC, Generic[Context[Enum]]):
     """
-    # ROLE: Table lookup, Finder
+    # ROLE: Reverse Lookups,
 
     # RESPONSIBILITIES:
-    1.  Find metadata based on attribute values.
+    1.  Find a class from an Enum that implements either
+        *   StrategyContractorHashMap{StrategyTitle: {ContractorBuildMetadata}
+        *   CategoryHashMap{Name: Tuple}
+
 
     # PARENT:
     None
@@ -37,10 +36,9 @@ class ForwardLookup(ABC, Generic[Context[Enum]]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def lookup(cls, context: Context[Enum], context_validator: Validator[Context[Enum]]) -> SearchResult[List[Enum]]:
+    def reverse_lookup(cls, member: Enum, enum_validator: Validator[Enum]) -> SearchResult[List[Any]]:
         """"""
         pass

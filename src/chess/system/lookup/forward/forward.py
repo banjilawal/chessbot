@@ -9,7 +9,6 @@ version: 1.0.0
 
 from enum import Enum
 from typing import Generic, List
-from typing_extensions import TypeVar
 from abc import ABC, abstractmethod
 
 
@@ -41,7 +40,11 @@ class ForwardLookup(ABC, Generic[Context[Enum]]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def lookup(cls, super_key: Context[Enum], super_key_validator: Validator[Context[Enum]]) -> SearchResult[List[Enum]]:
+    def forward_lookup(
+            cls,
+            super_key: Context[Enum],
+            super_key_validator: Validator[Context[Enum]],
+    ) -> SearchResult[List[Enum]]:
         """"""
         pass
     

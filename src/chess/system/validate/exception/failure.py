@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ValidatorException
 
 __all__ = [
-    #======================# ENTITY VALIDATION FAILURE EXCEPTION #======================#
+    # ======================# VALIDATION_FAILED EXCEPTION #======================#
     "ValidationFailedException",
 ]
 
 
-#======================# ENTITY VALIDATION FAILURE EXCEPTION #======================#
+#======================# VALIDATION_FAILED EXCEPTION #======================#
 class ValidationFailedException(ValidatorException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -28,7 +28,7 @@ class ValidationFailedException(ValidatorException):
         *   ValidatorException
   
     # PROVIDES:
-    ValidationFailedException
+    None
   
     # LOCAL ATTRIBUTES:
     None
@@ -36,5 +36,5 @@ class ValidationFailedException(ValidatorException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FAILED_VALIDATION_ERROR"
+    ERROR_CODE = "VALIDATION_FAILED_ERROR"
     DEFAULT_MESSAGE = "Validation failed."
