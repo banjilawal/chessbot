@@ -1,7 +1,7 @@
-# src/chess/system/metadata/lookup/lookup.py
+# src/chess/system/lookup/lookup/lookup.py
 
 """
-Module: chess.system.metadata.lookup.lookup
+Module: chess.system.lookup.lookup.lookup
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

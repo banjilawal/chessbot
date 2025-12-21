@@ -23,7 +23,7 @@ class ValidatorException(ChessException):
   
     # RESPONSIBILITIES:
     1.  Parent of exception raised by Validator objects
-    2.  Catchall for Validator failure states that are not covered by a lower level Validator exception.
+    2.  Catchall for Validator errors not coveredby lower level  Validator exception.
   
     # PARENT:
         *   ChessException

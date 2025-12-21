@@ -22,7 +22,7 @@ class TransactionException(ChessException):
   
     # RESPONSIBILITIES:
     1.  Parent of exception raised by Transaction objects
-    2.  Catchall for Transaction failure states that are not covered by a lower level Transaction exception.
+    2.  Catchall for Transaction errors not coveredby lower level  Transaction exception.
   
     # PARENT:
         *   ChessException

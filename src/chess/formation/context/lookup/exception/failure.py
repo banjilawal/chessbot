@@ -26,7 +26,7 @@ class OrderLookupFailedException(InvalidBattleOrderException, LookupFailedExcept
 
     # PARENT:
         *   InvalidBattleOrderException
-        *   LookupFailedException
+        *   ForwardLookupFailedException
 
     # PROVIDES:
     None

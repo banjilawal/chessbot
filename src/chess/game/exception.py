@@ -25,7 +25,7 @@ class GameException(ChessException):
         leads to an operation failing.
     2.  Parent of exception raised by Game Builders and Validators or any other classes that highly
         cohere with Game objects.
-    3.  Catchall for Game failure states that are not covered by a lower level Game exception.
+    3.  Catchall for Game errors not coveredby lower level  Game exception.
 
     # PARENT:
         *   ChessException
