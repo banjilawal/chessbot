@@ -1,7 +1,7 @@
-# src/chess/system/builder/exception/__init__.py
+# src/chess/system/build/exception/__init__.py
 
 """
-Module: chess.system.builder.exception.__init__
+Module: chess.system.build.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .base import *
-from .certification import *
+from .base import BuildException
 from .extras import *
-from .failure import *
+from .failure import BuildFailedException
+

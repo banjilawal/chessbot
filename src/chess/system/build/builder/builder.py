@@ -1,7 +1,7 @@
-# src/chess/system/builder/builder.py
+# src/chess/system/build/builder/builder.py
 
 """
-Module: chess.system.builder.builder
+Module: chess.system.build.builder.builder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -18,7 +18,7 @@ T = TypeVar("T")
 class Builder(ABC, Generic[T]):
     """
     # ROLE: Builder, Data Integrity And Reliability Guarantor,
-  
+
     # RESPONSIBILITIES:
     1.  Produce objects whose integrity is always guaranteed.
     2.  Manage construction of objects that can be used safely by the client.
@@ -27,17 +27,18 @@ class Builder(ABC, Generic[T]):
 
     # PARENT:
     None
-    
+
     # PROVIDES:
     None
-    
+
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
-    def __init__(self):
+    
+    def builder(self):
         pass
     
     @classmethod
@@ -49,15 +50,15 @@ class Builder(ABC, Generic[T]):
         1. Run integrity checks on each parameter required for constructing V.
         2. If any check fails it raises an exception that is returned inside a BuildResult.
         3. When all checks pass, construct V then return it inside a BuildResult.
-        
+
         # PARAMETERS:
             * args: Parameters for constructing V.
-        
+
         # Returns:
         BuildResult[V] containing either:
             - On success: V in the payload.
             - On failure: Exception.
-        
+
         # RAISES:
           * BuildFailedException
         """

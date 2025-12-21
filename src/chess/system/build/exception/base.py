@@ -10,25 +10,25 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    # ======================# BUILDER EXCEPTION #======================#
-    "BuilderException",
+    # ======================# BUILD EXCEPTION #======================#
+    "BuildException",
 ]
 
 
-# ======================# BUILDER EXCEPTION #======================#
-class BuilderException(ChessException):
+# ======================# BUILD EXCEPTION #======================#
+class BuildException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by Builder objects
+    1.  Parent of exception raised by Build operations and BUilders.
     3.  Catchall for Builder errors not covered by lower level  Builder exception.
   
     # PARENT:
         *   ChessException
   
     # PROVIDES:
-    BuilderException
+    None
   
     # LOCAL ATTRIBUTES:
     None
@@ -36,5 +36,5 @@ class BuilderException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BUILDER_ERROR"
-    DEFAULT_MESSAGE = "Builder raised an exception."
+    ERROR_CODE = "BUILD_ERROR"
+    DEFAULT_MESSAGE = "A build related exception was raised exception."

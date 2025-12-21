@@ -1,15 +1,14 @@
-# src/chess/system/builder/result/result.py
+# src/chess/system/build/result/result.py
 
 """
-Module: chess.system.builder.result.result
+Module: chess.system.build.result.result
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-
 from typing import Optional, TypeVar, Generic
-from chess.system import EmptyBuildResultException, Result, NotImplementedException
+from chess.system import Result, NotImplementedException
 
 T = TypeVar('V')
 
@@ -17,8 +16,8 @@ T = TypeVar('V')
 class BuildResult(Result[Generic[T]]):
     """"""
     
-    def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
-        super().__init__(payload=payload, exception=exception)
+    def result(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
+        super().result(payload=payload, exception=exception)
         
     @classmethod
     def empty(cls) -> Result:

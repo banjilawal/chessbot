@@ -1,7 +1,7 @@
-# src/chess/system/context/exception.py
+# src/chess/system/context/exception/base.py
 
 """
-Module: chess.system.context.exception
+Module: chess.system.context.exception.base
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

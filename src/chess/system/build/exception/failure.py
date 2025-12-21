@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import BuilderException, OperationFailedException
+from chess.system import BuildException, OperationFailedException
 
 __all__ = [
     #======================# FAILED ENTITY BUILD OPERATION EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 #======================# FAILED ENTITY BUILD OPERATION EXCEPTION #======================#
-class BuildFailedException(BuilderException, OperationFailedException):
+class BuildFailedException(BuildException, OperationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   
@@ -25,7 +25,7 @@ class BuildFailedException(BuilderException, OperationFailedException):
     2.  Wraps unhandled exception that hit the try-finally block of a Builder method.
   
     # PARENT:
-        *   BuilderException
+        *   BuildException
         *   OperationFailedException
   
     # PROVIDES:

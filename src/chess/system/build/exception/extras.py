@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import BuilderException, NullException
+from chess.system import BuildException, NullException
 
 __all__ = [
 #======================# MUTUAL EXCLUSION EXCEPTION #======================#
@@ -21,14 +21,14 @@ __all__ = [
 
 
 #======================# MUTUAL EXCLUSION EXCEPTION #======================#
-class AllParamsSetNullException(BuilderException, NullException):
+class AllParamsSetNullException(BuildException, NullException):
   """
   Raised if all builder params cannot be validation.
   """
   ERROR_CODE = "ALL_PARAMS_SET_NULL_ERROR"
   DEFAULT_MESSAGE = "Cannot have all params set validation."
 
-class MutuallyExclusiveParamsException(BuilderException):
+class MutuallyExclusiveParamsException(BuildException):
   """
   Raised if only one param cannot be validation.
   """
