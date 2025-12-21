@@ -40,47 +40,47 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     # INHERITED ATTRIBUTES:
         *   See ForwardLookup for inherited attributes.
     """
-    SERVICE_NAME = "SchemaLookup"
-    def lookup(
-            self,
-            name: str = SERVICE_NAME,
-            id: int = id_emitter.lookup_id,
-            enum_validator: SchemaValidator = SchemaValidator(),
-            map_builder: SchemaMapBuilder = SchemaMapBuilder(),
-            map_validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator(),
-    ):
-        super().lookup(
-            id=id,
-            name=name,
-            enum_validator=enum_validator,
-            map_builder=map_builder,
-            map_validator=map_validator
-        )
-
-    @property
-    def schema_validator(self) -> SchemaValidator:
-        """Return an SchemaValidator."""
-        return cast(SchemaValidator, self.enum_validator)
-    
-    @property
-    def map_builder(self) -> SchemaMapBuilder:
-        """Return an SchemaMapBuilder."""
-        return cast(SchemaMapBuilder, self.map_builder)
-    
-    @property
-    def map_validator(self) -> SchemaSuperKeyValidator:
-        """Return an SchemaSuperKeyValidator."""
-        return cast(SchemaSuperKeyValidator, self.map_validator)
-    
-    @property
-    def allowed_colors(self) -> List[GameColor]:
-        """Returns a list of all permissible schema colors."""
-        return [member.color for member in Schema]
-    
-    @property
-    def allowed_names(self) -> List[str]:
-        """Returns a list of all permissible schema names in upper case."""
-        return [member.name.upper() for member in Schema]
+    # SERVICE_NAME = "SchemaLookup"
+    # def lookup(
+    #         self,
+    #         name: str = SERVICE_NAME,
+    #         id: int = id_emitter.lookup_id,
+    #         enum_validator: SchemaValidator = SchemaValidator(),
+    #         map_builder: SchemaMapBuilder = SchemaMapBuilder(),
+    #         map_validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator(),
+    # ):
+    #     super().lookup(
+    #         id=id,
+    #         name=name,
+    #         enum_validator=enum_validator,
+    #         map_builder=map_builder,
+    #         map_validator=map_validator
+    #     )
+    #
+    # @property
+    # def schema_validator(self) -> SchemaValidator:
+    #     """Return an SchemaValidator."""
+    #     return cast(SchemaValidator, self.enum_validator)
+    #
+    # @property
+    # def map_builder(self) -> SchemaMapBuilder:
+    #     """Return an SchemaMapBuilder."""
+    #     return cast(SchemaMapBuilder, self.map_builder)
+    #
+    # @property
+    # def map_validator(self) -> SchemaSuperKeyValidator:
+    #     """Return an SchemaSuperKeyValidator."""
+    #     return cast(SchemaSuperKeyValidator, self.map_validator)
+    #
+    # @property
+    # def allowed_colors(self) -> List[GameColor]:
+    #     """Returns a list of all permissible schema colors."""
+    #     return [member.color for member in Schema]
+    #
+    # @property
+    # def allowed_names(self) -> List[str]:
+    #     """Returns a list of all permissible schema names in upper case."""
+    #     return [member.name.upper() for member in Schema]
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -218,3 +218,43 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
             return SearchResult.failure(
                 SchemaLookupFailedException(ex=ex, message=f"{method}: {SchemaLookupFailedException.DEFAULT_MESSAGE}")
             )
+    
+    # _id: int
+    # _name: str
+    # _enum_validator: Validator[Enum]
+    # _context_builder: Builder[Context[Enum]]
+    # _context_validator: Validator[Context[Enum]]
+    #
+    # def __init__(
+    #         self,
+    #         id: int,
+    #         name: str,
+    #         enum_validator: Validator[Enum],
+    #         context_builder: Builder[Context[Enum]],
+    #         context_validator: Validator[Context[Enum]],
+    # ):
+    #     self._id = id
+    #     self._name = name
+    #     self._enum_validator = enum_validator
+    #     self._context_builder = context_builder
+    #     self._context_validator = context_validator
+    #
+    # @property
+    # def id(self) -> int:
+    #     return self._id
+    #
+    # @@property
+    # def name(self) -> str:
+    #     return self._name
+    #
+    # @property
+    # def enum_validator(self) -> Validator[Enum]:
+    #     return self._enum_validator
+    #
+    # @property
+    # def context_builder(self) -> Builder[Context[Enum]]:
+    #     return self._context_builder
+    #
+    # @property
+    # def context_validator(self) -> Validator[Context[Enum]]:
+    #     return self._context_validator
