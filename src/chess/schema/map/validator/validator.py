@@ -11,12 +11,12 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    InvalidSchemaMapException, ZeroSchemaMapKeysException, NullSchemaMapException, SchemaMap,
+    InvalidSchemaSuperKeyException, ZeroSchemaMapKeysException, NullSchemaMapException, SchemaSuperKey,
     ExcessiveSchemaMapKeysException
 )
 
 
-class SchemaMapValidator(Validator[SchemaMap]):
+class SchemaMapValidator(Validator[SchemaSuperKey]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -43,13 +43,13 @@ class SchemaMapValidator(Validator[SchemaMap]):
             candidate: Any,
             color_validator: GameColorValidator = GameColorValidator(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[SchemaMap]:
+    ) -> ValidationResult[SchemaSuperKey]:
         """
         # Action:
         1.  Confirm that only one in the (name, color) hash is not null.
         2.  Certify the not-null key-value is safe using the appropriate services and validators.
         3.  If any check fais return a ValidationResult containing the exception raised by the failure.
-        4.  On success Build an SchemaMap are return in a ValidationResult.
+        4.  On success Build an SchemaSuperKey are return in a ValidationResult.
 
         # Parameters:
             *   candidate (Any)
@@ -57,8 +57,8 @@ class SchemaMapValidator(Validator[SchemaMap]):
             *   identity_service (IdentityService)
 
         # Returns:
-        ValidationResult[SchemaMap] containing either:
-            - On success: SchemaMap in the payload.
+        ValidationResult[SchemaSuperKey] containing either:
+            - On success: SchemaSuperKey in the payload.
             - On failure: Exception.
 
         # Raises:
@@ -66,7 +66,7 @@ class SchemaMapValidator(Validator[SchemaMap]):
             *   NullSchemaMapException
             *   ZeroSchemaMapKeysException
             *   ExcessiveSchemaMapKeysException
-            *   InvalidSchemaMapException
+            *   InvalidSchemaSuperKeyException
         """
         method = "SchemaMapValidator.validate"
         try:
@@ -76,14 +76,14 @@ class SchemaMapValidator(Validator[SchemaMap]):
                     NullSchemaMapException(f"{method}: {NullSchemaMapException.DEFAULT_MESSAGE}")
                 )
             # Handle the wrong type case.
-            if not isinstance(candidate, SchemaMap):
+            if not isinstance(candidate, SchemaSuperKey):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected SchemaMap, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected SchemaSuperKey, got {type(candidate).__name__} instead.")
                 )
             
-            # After existence and type checks are successful cast the candidate to a SchemaMap
+            # After existence and type checks are successful cast the candidate to a SchemaSuperKey
             # for additional tests.
-            map = cast(SchemaMap, candidate)
+            map = cast(SchemaSuperKey, candidate)
             
             # Handle the case of searching with no key-value is set.
             if len(map.to_dict()) == 0:
@@ -113,14 +113,14 @@ class SchemaMapValidator(Validator[SchemaMap]):
                 validation = color_validator.validate(candidate=map.color)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the color_team_schema_map in a ValidationResult.
+                # On certification success return the color_team_schema_super_key in a ValidationResult.
                 return ValidationResult.success(payload=map)
             
         # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidSchemaMapException. Then send the exception-chain in a ValidationResult.
+        # an InvalidSchemaSuperKeyException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidSchemaMapException(
-                    ex=ex, message=f"{method}: {InvalidSchemaMapException.DEFAULT_MESSAGE}"
+                InvalidSchemaSuperKeyException(
+                    ex=ex, message=f"{method}: {InvalidSchemaSuperKeyException.DEFAULT_MESSAGE}"
                 )
             )

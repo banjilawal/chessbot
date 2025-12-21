@@ -13,12 +13,16 @@ from chess.schema import Schema
 from chess.system import Context, GameColor
 
 
-class SchemaMap(Context[Schema]):
+class SchemaSuperKey(Context[Schema]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
+    1.  Define a SuperKey from a attribute-value pair. The Super
     1.  Provide an SchemaLookup with a hash key-value to use in forward Schema entry lookups.
+        1.  Run forward lookups on the Schema hashtable to find a Team's play_directive_metadata for a game.
+    2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
+    3.  Verifies correctness of key-value map before running the forward lookup.
 
     # PARENT:
         *   Context
@@ -63,7 +67,7 @@ class SchemaMap(Context[Schema]):
     
     def to_dict(self) -> dict:
         """
-        # Convert the SchemaMap object to a dictionary.
+        # Convert the SchemaSuperKey object to a dictionary.
 
         # PARAMETERS:
         None

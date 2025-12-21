@@ -7,26 +7,26 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.schema.map import SchemaMapException
+from chess.schema.map import SchemaSuperKeyException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# INVALID_SCHEMA_MAP EXCEPTION #======================#
-    "InvalidSchemaMapException",
+    # ======================# INVALID_SCHEMA_SUPER_KEY EXCEPTION #======================#
+    "InvalidSchemaSuperKeyException",
 ]
 
 
-# ======================# INVALID_SCHEMA_MAP EXCEPTION #======================#
-class InvalidSchemaMapException(SchemaMapException, ValidationFailedException):
+# ======================# INVALID_SCHEMA_SUPER_KEY EXCEPTION #======================#
+class InvalidSchemaSuperKeyException(SchemaSuperKeyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised SchemaMap validation.
+    1.  Parent of exception raised SchemaSuperKey validation.
     2.  Wraps unhandled exception that hit the finally-block in SchemaMapValidator methods.
 
     # PARENT:
-        *   SchemaMapException
+        *   SchemaSuperKeyException
         *   ValidationFailedException
 
     # PROVIDES:
@@ -38,5 +38,5 @@ class InvalidSchemaMapException(SchemaMapException, ValidationFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_MAP_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "SchemaMap validation failed."
+    ERROR_CODE = "SCHEMA_SUPER_KEY_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "SchemaSuperKey validation failed."

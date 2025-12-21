@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.schema import SchemaMapException
+from chess.schema import SchemaSuperKeyException
 from chess.system import OperationFailedException
 
 

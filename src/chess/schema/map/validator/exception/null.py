@@ -8,26 +8,26 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.schema.map import InvalidSchemaMapException
+from chess.schema.map import InvalidSchemaSuperKeyException
 
 __all__ = [
-    # ======================# NULL_SCHEMA_MAP EXCEPTION #======================#
+    # ======================# NULL_SCHEMA_SUPER_KEY EXCEPTION #======================#
     "NullSchemaMapException",
 ]
 
 
-# ======================# NULL_SCHEMA_MAP EXCEPTION #======================#
-class NullSchemaMapException(InvalidSchemaMapException, NullException):
+# ======================# NULL_SCHEMA_SUPER_KEY EXCEPTION #======================#
+class NullSchemaMapException(InvalidSchemaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an SchemaMap validation candidate is null.
-    2.  Raised if an entity, method or operation requires an SchemaMap but receives null instead.
+    1.  Raised if an SchemaSuperKey validation candidate is null.
+    2.  Raised if an entity, method or operation requires an SchemaSuperKey but receives null instead.
 
     # PARENT:
         *   NullException
-        *   InvalidSchemaMapException
+        *   InvalidSchemaSuperKeyException
 
     # PROVIDES:
     None
@@ -35,5 +35,5 @@ class NullSchemaMapException(InvalidSchemaMapException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SCHEMA_MAP_ERROR"
-    DEFAULT_MESSAGE = "SchemaMap cannot be null."
+    ERROR_CODE = "NULL_SCHEMA_SUPER_KEY_ERROR"
+    DEFAULT_MESSAGE = "SchemaSuperKey cannot be null."

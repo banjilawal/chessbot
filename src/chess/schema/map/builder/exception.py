@@ -7,27 +7,27 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.schema import SchemaMapException
+from chess.schema import SchemaSuperKeyException
 from chess.system import BuildFailedException
 
 
 __all__ = [
-    #======================# SCHEMA_MAP BUILD EXCEPTION #======================#
-    "SchemaMapBuildFailedException",
+    #======================# SCHEMA_SUPER_KEY BUILD EXCEPTION #======================#
+    "SchemaSuperKeyBuildFailedException",
 ]
 
 
-#======================# SCHEMA_MAP BUILD EXCEPTION #======================#
-class SchemaMapBuildFailedException(SchemaMapException, BuildFailedException):
+#======================# SCHEMA_SUPER_KEY BUILD EXCEPTION #======================#
+class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during SchemaMap build process.
+    1.  Parent of exceptions raised during SchemaSuperKey build process.
     2.  Wraps unhandled exceptions that hit the try-finally block of an SchemaMapBuilder method.
     
     # PARENT:
-        *   SchemaMapException
+        *   SchemaSuperKeyException
         *   BuildFailedException
 
     # PROVIDES:
@@ -39,5 +39,5 @@ class SchemaMapBuildFailedException(SchemaMapException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_MAP_BUILD_ERROR"
-    DEFAULT_MESSAGE = "SchemaMap build failed."
+    ERROR_CODE = "SCHEMA_SUPER_KEY_BUILD_ERROR"
+    DEFAULT_MESSAGE = "SchemaSuperKey build failed."

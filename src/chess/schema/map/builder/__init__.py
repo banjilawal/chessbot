@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import SchemaMapBuilder
-from .exception import SchemaMapBuildFailedException
+from .exception import SchemaSuperKeyBuildFailedException

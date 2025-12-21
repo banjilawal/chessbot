@@ -14,18 +14,18 @@ from chess.system import (
     IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
-    ZeroSchemaMapKeysException, SchemaMap, ExcessiveSchemaMapKeysException, SchemaMapBuildFailedException
+    ZeroSchemaMapKeysException, SchemaSuperKey, ExcessiveSchemaMapKeysException, SchemaSuperKeyBuildFailedException
 )
 
 
-class SchemaMapBuilder(Builder[SchemaMap]):
+class SchemaMapBuilder(Builder[SchemaSuperKey]):
     """
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce SchemaMap instances whose integrity is always guaranteed.
-    2.  Manage construction of SchemaMap instances that can be used safely by the client.
-    3.  Ensure params for SchemaMap creation have met the application's safety contract.
+    1.  Produce SchemaSuperKey instances whose integrity is always guaranteed.
+    2.  Manage construction of SchemaSuperKey instances that can be used safely by the client.
+    3.  Ensure params for SchemaSuperKey creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     # PARENT:
@@ -48,12 +48,12 @@ class SchemaMapBuilder(Builder[SchemaMap]):
             color: Optional[GameColor] = None,
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
-    ) -> BuildResult[SchemaMap]:
+    ) -> BuildResult[SchemaSuperKey]:
         """
         # Action:
             1.  Confirm that only one in the (designation, color) hash is not null.
             2.  Certify the not-null key-value is safe using the appropriate validating service.
-            3.  If all checks pass build a SchemaMap and send in a BuildResult. Else, send an exception
+            3.  If all checks pass build a SchemaSuperKey and send in a BuildResult. Else, send an exception
                 in the BuildResult.
 
         # Parameters:
@@ -66,13 +66,13 @@ class SchemaMapBuilder(Builder[SchemaMap]):
                 *   identity_service (IdentityService)
 
         # Returns:
-        BuildResult[SchemaMap] containing either:
-            - On success: SchemaMap in the payload.
+        BuildResult[SchemaSuperKey] containing either:
+            - On success: SchemaSuperKey in the payload.
             - On failure: Exception.
 
         # Raises:
             *   ZeroSchemaMapKeysException
-            *   SchemaMapBuildFailedException
+            *   SchemaSuperKeyBuildFailedException
             *   ExcessiveSchemaMapKeysException
         """
         method = "SchemaMapBuilder.build"
@@ -93,31 +93,31 @@ class SchemaMapBuilder(Builder[SchemaMap]):
                 )
             # After verifying only one Schema hash key-value is set, validate it.
             
-            # Build the name_key SchemaMap if its value is set.
+            # Build the name_key SchemaSuperKey if its value is set.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a SchemaMap_name in the BuildResult.
-                return BuildResult.success(SchemaMap(name=name))
+                return BuildResult.success(SchemaSuperKey(name=name))
             
-            # Build the color_key SchemaMap if its value is set.
+            # Build the color_key SchemaSuperKey if its value is set.
             if color is not None:
                 validation = color_validator.validate(candidate=color)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a SchemaMap_color in the BuildResult.
-                return BuildResult.success(SchemaMap(color=color))
+                return BuildResult.success(SchemaSuperKey(color=color))
             
             # As a failsafe send a buildResult failure if a mapping path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
-        # Finally, if there is an unhandled exception Wrap an SchemaMapBuildFailedException around it then
+        # Finally, if there is an unhandled exception Wrap an SchemaSuperKeyBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                SchemaMapBuildFailedException(
-                    ex=ex, message=f"{method}: {SchemaMapBuildFailedException.DEFAULT_MESSAGE}"
+                SchemaSuperKeyBuildFailedException(
+                    ex=ex, message=f"{method}: {SchemaSuperKeyBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

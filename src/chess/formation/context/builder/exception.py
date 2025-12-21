@@ -11,12 +11,12 @@ from chess.system import BuildFailedException
 from chess.formation import OrderContextException
 
 __all__ = [
-    # ======================# TEAM_SCHEMA_MAP BUILD EXCEPTION #======================#
+    # ======================# TEAM_SCHEMA_SUPER_KEY BUILD EXCEPTION #======================#
     "OrderContextBuildFailedException",
 ]
 
 
-# ======================# TEAM_SCHEMA_MAP BUILD EXCEPTION #======================#
+# ======================# TEAM_SCHEMA_SUPER_KEY BUILD EXCEPTION #======================#
 class OrderContextBuildFailedException(OrderContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -38,5 +38,5 @@ class OrderContextBuildFailedException(OrderContextException, BuildFailedExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SCHEMA_MAP_BUILD_ERROR"
+    ERROR_CODE = "TEAM_SCHEMA_SUPER_KEY_BUILD_ERROR"
     DEFAULT_MESSAGE = "OrderContext build failed."

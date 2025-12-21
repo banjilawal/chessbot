@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 
-# ======================# TEAM_SCHEMA_MAP BUILD EXCEPTION #======================#
+# ======================# TEAM_SCHEMA_SUPER_KEY BUILD EXCEPTION #======================#
 class TeamContextBuildFailedException(TeamContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -38,5 +38,5 @@ class TeamContextBuildFailedException(TeamContextException, BuildFailedException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SCHEMA_MAP_BUILD_ERROR"
+    ERROR_CODE = "TEAM_SCHEMA_SUPER_KEY_BUILD_ERROR"
     DEFAULT_MESSAGE = "TeamContext build failed."

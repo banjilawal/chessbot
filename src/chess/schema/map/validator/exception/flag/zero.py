@@ -8,28 +8,28 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.schema import InvalidSchemaMapException
+from chess.schema import InvalidSchemaSuperKeyException
 
 
 
 __all__ = [
-    # ========================= ZERO_SCHEMA_MAP_KEYS EXCEPTION =========================#
+    # ========================= ZERO_SCHEMA_SUPER_KEY_KEYS EXCEPTION =========================#
     "ZeroSchemaMapKeysException",
 ]
 
 
 
-# ========================= ZERO_SCHEMA_MAP_KEYS EXCEPTION =========================#
-class ZeroSchemaMapKeysException(InvalidSchemaMapException, ContextFlagCountException):
+# ========================= ZERO_SCHEMA_SUPER_KEY_KEYS EXCEPTION =========================#
+class ZeroSchemaMapKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no SchemaMap key-value was provided to run a forward Schema lookup.
-    1.  Indicate more than one SchemaMap key-value was provided for a Schema entry lookup.
+    1.  Indicate no SchemaSuperKey key-value was provided to run a forward Schema lookup.
+    1.  Indicate more than one SchemaSuperKey key-value was provided for a Schema entry lookup.
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidSchemaMapException
+        *   InvalidSchemaSuperKeyException
 
     # PROVIDES:
     None
@@ -37,8 +37,8 @@ class ZeroSchemaMapKeysException(InvalidSchemaMapException, ContextFlagCountExce
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_SCHEMA_MAP_KEYS_ERROR"
+    ERROR_CODE = "ZERO_SCHEMA_SUPER_KEY_KEYS_ERROR"
     DEFAULT_MESSAGE = (
-        "No SchemaMap key-value was provided. A single key-value pair must be provided to run a forward Schema "
+        "No SchemaSuperKey key-value was provided. A single key-value pair must be provided to run a forward Schema "
         "entry lookup."
     )

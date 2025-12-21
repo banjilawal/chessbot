@@ -14,4 +14,4 @@ from .flag import *
 
 # Modules
 from .null import NullSchemaMapException
-from .base import InvalidSchemaMapException
+from .base import InvalidSchemaSuperKeyException

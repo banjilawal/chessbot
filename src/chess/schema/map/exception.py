@@ -12,19 +12,19 @@ from chess.system import ContextException
 
 
 __all__ = [
-    # ======================# SCHEMA_MAP EXCEPTION #======================#
-    "SchemaMapException",
+    # ======================# SCHEMA_SUPER_KEY EXCEPTION #======================#
+    "SchemaSuperKeyException",
 ]
 
 
-# ======================# SCHEMA_MAP EXCEPTION #======================#
-class SchemaMapException(SchemaException, ContextException):
+# ======================# SCHEMA_SUPER_KEY EXCEPTION #======================#
+class SchemaSuperKeyException(SchemaException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by SchemaMap objects.
-    2.  Catchall for conditions which are not covered by lower level SchemaMap exception.
+    1.  Parent of exception raised by SchemaSuperKey objects.
+    2.  Catchall for conditions which are not covered by lower level SchemaSuperKey exception.
 
     # PARENT:
         *   SchemaException
@@ -39,5 +39,5 @@ class SchemaMapException(SchemaException, ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_MAP_ERROR"
-    DEFAULT_ERROR_CODE = "SchemaMap raised an exception."
+    ERROR_CODE = "SCHEMA_SUPER_KEY_ERROR"
+    DEFAULT_ERROR_CODE = "SchemaSuperKey raised an exception."

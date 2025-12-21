@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.schema import (
-    SchemaColorBoundsException, SchemaNameBoundsException, SchemaMap, SchemaMapBuilder,
+    SchemaColorBoundsException, SchemaNameBoundsException, SchemaSuperKey, SchemaMapBuilder,
     SchemaMapValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
 )
 from chess.system import (
@@ -19,7 +19,7 @@ from chess.system import (
 )
 
 
-class SchemaLookup(ForwardLookup[SchemaMap]):
+class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     """
     # ROLE: Forward Lookups, Mapping 
 
@@ -86,7 +86,7 @@ class SchemaLookup(ForwardLookup[SchemaMap]):
     @LoggingLevelRouter.monitor
     def lookup(
             cls,
-            map: SchemaMap,
+            map: SchemaSuperKey,
             map_validator: SchemaMapValidator = SchemaMapValidator()
     ) -> SearchResult[List[Schema]]:
         """
@@ -96,7 +96,7 @@ class SchemaLookup(ForwardLookup[SchemaMap]):
             the schema entries with the targeted key-values.
             
         # Parameters:
-            *   map: SchemaMap
+            *   map: SchemaSuperKey
             *   map_validator: SchemaMapValidator
 
         # Returns:
