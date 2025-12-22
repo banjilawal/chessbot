@@ -20,7 +20,7 @@ __all__ = [
 # ========================= TOO_MANY_ORDER_CONTEXT_FLAGS EXCEPTION =========================#
 class ExcessiveOrderContextFlagsException(InvalidOrderContextException, ContextFlagCountException):
     """
-    # ROLE: ContextFlagException, OrderContextException
+    # ROLE: ContextFlagException, FormationSuperKeyException
 
     # RESPONSIBILITIES:
     1.  Indicate if more than one TeamOrder attribute is going to be used in a Formation lookup.

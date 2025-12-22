@@ -28,7 +28,7 @@ class InvalidOrderContextException(OrderContextException, ValidationFailedExcept
     2.  Wrap an exception that hits the try-finally-block in OrderContextValidator methods.
 
     # PARENT:
-        *   OrderContextException
+        *   FormationSuperKeyException
         *   ValidationFailedException
 
     # PROVIDES:

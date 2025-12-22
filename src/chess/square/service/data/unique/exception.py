@@ -1,21 +1,35 @@
 from chess.system import UniqueDataServiceException
 
-__all__ = [
-    "UniqueDataServiceException",
-    "AddingDuplicateSquareException",
+___all__ = [
+    # ======================# AGENT_DATA_SERVICE EXCEPTION #======================#
+    "UniqueSquareDataServiceException",
 ]
 
+from chess.square import SquareException
+from chess.system import ServiceException
 
-class UniqueSquareDataServiceException(UniqueDataServiceException):
+
+# ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
+class UniqueSquareDataServiceException(SquaretException, ServiceException):
     """
-    Super class of exception raised by UniqueSquareDataService objects. Do not use directly. Subclasses give
-    precise, fined-grained, debugging info.
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an UniqueSquareDataService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a UniqueSquareDataService method.
+
+    # PARENT:
+        *   ServiceException
+        *   SquareException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
-    ERROR_CODE = "UNIQUE_SQUARE_DATA_SERVICE_ERROR"
+    ERROR_CODE = "UNIQUE_DATA_SERVICE_ERROR"
     DEFAULT_MESSAGE = "UniqueSquareDataService raised an exception."
-
-
-class AddingDuplicateSquareException(UniqueSquareDataServiceException):
-    """Raised when trying to add a duplicate Square to a list of Squares."""
-    ERROR_CODE = "DUPLICATE_SQUARE_ADDITION_ERROR"
-    DEFAULT_MESSAGE = "SquareDataService cannot add duplicate Squares to the list."

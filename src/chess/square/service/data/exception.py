@@ -7,24 +7,36 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.system import DataServiceException, NullException
-
-__all__ = [
+___all__ = [
+    # ======================# SQUARE_DATA_SERVICE EXCEPTION #======================#
     "SquareDataServiceException",
-    "RemovingNonExistentSquareException",
 ]
 
+from chess.square import SquareException
+from chess.system import ServiceException
 
-class SquareDataServiceException(DataServiceException):
+
+# ======================# SQUARE_DATA_SERVICE EXCEPTION #======================#
+class SquareDataServiceException(SquareException, ServiceException):
     """
-    Super class of exception raised by SquareDataService objects. Do not use directly. Subclasses give
-    precise, fined-grained, debugging info.
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an SquareDataService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a SquareDataService method.
+
+    # PARENT:
+        *   ServiceException
+        *   SquareException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     ERROR_CODE = "SQUARE_DATA_SERVICE_ERROR"
     DEFAULT_MESSAGE = "SquareDataService raised an exception."
-
-
-class RemovingNonExistentSquareException(SquareDataServiceException, NullException):
-    """Raised when trying  to remove a Square not in the list."""
-    ERROR_CODE = "REMOVING_NON_EXISTENT_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "SquareDataService cannot remove a Square not in the list."

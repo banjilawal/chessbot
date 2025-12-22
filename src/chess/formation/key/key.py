@@ -10,10 +10,11 @@ version: 1.0.0
 from typing import Optional
 
 from chess.formation import BattleOrder
+from chess.formation.formation import Formation
 from chess.system import Context, GameColor
 
 
-class OrderContext(Context[BattleOrder]):
+class FormationSuperKey(Context[Formation]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 

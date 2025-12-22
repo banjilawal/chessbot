@@ -26,7 +26,7 @@ class OrderContextBuildFailedException(OrderContextException, BuildFailedExcepti
     2.  Wrap an exception that hits the try-finally block of an OrderContextBuilder method.
 
     # PARENT:
-        *   OrderContextException
+        *   FormationSuperKeyException
         *   BuildFailedException
 
     # PROVIDES:
