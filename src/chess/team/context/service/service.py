@@ -20,7 +20,7 @@ class TeamContextService(ContextService[TeamContext]):
     # RESPONSIBILITIES:
     1.  Public facing Team search microservice API.
     2.  Provides a map aware utility for searching Team objects.
-    3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Encapsulate integrity assurance logic in one extendable module.
     4.  Create a single source of truth for Team search results by having single entry and exit points for the
         Team search flow.
 

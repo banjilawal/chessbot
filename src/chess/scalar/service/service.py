@@ -17,9 +17,9 @@ class ScalarService(EntityService[Scalar]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Scalar State Machine microservice API.
-    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    3.  Is authoritative, single source of truth for Scalar state by providing single entry and exit points to Scalar
+    1.  Public facing Scalar microservice API.
+    2.  Encapsulate integrity assurance logic in one extendable module.
+    3.  Authoritative, single source of truth for Scalar state by providing single entry and exit points to Scalar
         lifecycle.
 
     # PARENT:

@@ -18,7 +18,7 @@ class PieceContextService(ContextService[PieceContext]):
     # RESPONSIBILITIES:
     1.  Public facingPiece search microservice API.
     2.  Provides a map aware utility for searchingPiece objects.
-    3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Encapsulate integrity assurance logic in one extendable module.
     4.  Create a single source of truth forPiece search results by having single entry and exit points for the
        Piece search flow.
 

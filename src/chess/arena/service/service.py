@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.arena import Arena, ArenaBuilder
+from chess.arena import Arena, ArenaBuilder, ArenaValidator
 from chess.system import EntityService, id_emitter
 
 
@@ -19,10 +19,10 @@ class ArenaService(EntityService[Arena]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Arena State Machine microservice API.
-    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    3.  Is authoritative, single source of truth for Arena state by providing single entry and exit points to Arena
-        lifecycle.
+    1.  Public facing Arena microservice API.
+    2.  Encapsulate integrity assurance logic in one extendable module.
+    3.  Authoritative, single source of truth for Arena state.
+    4.  Single entry and entry points to Arena lifecycle.
 
     # PARENT:
         *   EntityService
@@ -51,7 +51,7 @@ class ArenaService(EntityService[Arena]):
 
         # PARAMETERS:
             *   id (nt)
-            *   designation (str)
+            *   name (str)
             *   builder (ArenaFactory)
             *   validator (ArenaValidator)
 

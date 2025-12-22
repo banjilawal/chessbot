@@ -6,34 +6,32 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/finder/finder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/context/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/catalog/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/catalog/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/finder/finder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/finder/finder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/context/finder/finder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/forward/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/forward/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/finder/finder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/result/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/result/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/text/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/text/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/finder/finder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/catalog/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/catalog/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/domain/origin/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/origin/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/context/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/context/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/lookup/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/service/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -987,7 +985,7 @@
       <workItem from="1766223152549" duration="26989000" />
       <workItem from="1766255712700" duration="60521000" />
       <workItem from="1766341551279" duration="31466000" />
-      <workItem from="1766392718604" duration="18938000" />
+      <workItem from="1766392718604" duration="20942000" />
     </task>
     <servers />
   </component>

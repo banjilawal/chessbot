@@ -21,7 +21,7 @@ class CoordContextService(ContextService[CoordContext]):
     # RESPONSIBILITIES:
     1.  Public facing Coord search microservice API.
     2.  Provides a map aware utility for searching Coord objects.
-    3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Encapsulate integrity assurance logic in one extendable module.
     4.  Create a single source of truth for Coord search results by having single entry and exit points for the
         Coord search flow.
 

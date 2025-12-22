@@ -18,9 +18,9 @@ class SquareService(EntityService[Square]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Square State Machine microservice API.
-    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    3.  Is authoritative, single source of truth for Square state by providing single entry and exit points to Square
+    1.  Public facing Square microservice API.
+    2.  Encapsulate integrity assurance logic in one extendable module.
+    3.  Authoritative, single source of truth for Square state by providing single entry and exit points to Square
         lifecycle.
 
     # PARENT:

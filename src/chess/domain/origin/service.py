@@ -7,9 +7,9 @@ class DomainOriginService(EntityService[DomainOrigin]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing DomainOrigin State Machine microservice API.
-    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    3.  Is authoritative, single source of truth for DomainOrigin state by providing single entry and exit points to DomainOrigin
+    1.  Public facing DomainOrigin microservice API.
+    2.  Encapsulate integrity assurance logic in one extendable module.
+    3.  Authoritative, single source of truth for DomainOrigin state by providing single entry and exit points to DomainOrigin
         lifecycle.
 
     # PARENT:

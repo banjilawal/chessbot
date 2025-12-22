@@ -21,7 +21,7 @@ class GameContextService(ContextService[GameContext]):
     # RESPONSIBILITIES:
     1.  Public facing Game search microservice API.
     2.  Provides a map aware utility for searching Game objects.
-    3.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
+    3.  Encapsulate integrity assurance logic in one extendable module.
     4.  Create a single source of truth for Game search results by having single entry and exit points for the
         Game search flow.
 

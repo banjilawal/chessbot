@@ -19,9 +19,9 @@ class AgentService(EntityService[PlayerAgent]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing PlayerAgent State Machine microservice API.
-    2.  Encapsulates integrity assurance logic in one extendable module that's easy to maintain.
-    3.  Is authoritative, single source of truth for PlayerAgent state by providing single entry and exit points to PlayerAgent
+    1.  Public facing PlayerAgent microservice API.
+    2.  Encapsulate integrity assurance logic in one extendable module.
+    3.  Authoritative, single source of truth for PlayerAgent state by providing single entry and exit points to PlayerAgent
         lifecycle.
 
     # PARENT:
