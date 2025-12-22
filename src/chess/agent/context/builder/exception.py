@@ -24,7 +24,7 @@ class AgentContextBuildFailedException(AgentContextException, BuildFailedExcepti
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during AgentContext build process.
-    2.  Wraps unhandled exception that hit the try-finally block of an AgentContextBuilder method.
+    2.  Wraps an exception that hits the try-finally block of an AgentContextBuilder method.
     
     # PARENT:
         *   AgentContextException

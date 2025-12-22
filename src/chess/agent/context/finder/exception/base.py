@@ -23,7 +23,7 @@ class AgentFinderException(AgentException, FinderException):
   
     # RESPONSIBILITIES:
     1.  Parent of exception raised when AgentFinder objects.
-    2.  Wraps unhandled exception that hit the try-finally block of an AgentFinder method.
+    2.  Wraps an exception that hits the try-finally block of an AgentFinder method.
   
     # PARENT:
         *   AgentException

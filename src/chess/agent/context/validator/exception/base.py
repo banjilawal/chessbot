@@ -23,7 +23,7 @@ class InvalidAgentContextException(AgentContextException, ValidationFailedExcept
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised AgentContext validation.
-    2.  Wraps unhandled exception that hit the finally-block in AgentContextValidator methods.
+    2.  Wraps an exception that hits the try-finally-block in AgentContextValidator methods.
     
     # PARENT:
         *   AgentContextException

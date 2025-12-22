@@ -22,7 +22,7 @@ class InvalidGameContextException(GameContextException, ValidationFailedExceptio
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised GameContext validation.
-    2.  Wraps unhandled exception that hit the finally-block in GameContextValidator methods.
+    2.  Wraps an exception that hits the try-finally-block in GameContextValidator methods.
     
     # PARENT:
         *   GameContextException

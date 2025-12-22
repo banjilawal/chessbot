@@ -23,7 +23,7 @@ class UniqueAgentDataServiceException(AgentException, UniqueDataServiceException
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by UniqueAgentDataService objects.
-    2.  Wraps unhandled exception that hit the try-finally block of an UniqueDataAgent's method.
+    2.  Wraps an exception that hits the try-finally block of an UniqueDataAgent's method.
 
     # PARENT:
         *   UniqueDataServiceException

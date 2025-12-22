@@ -23,7 +23,7 @@ class ArenaContextBuildFailedException(ArenaContextException, BuildFailedExcepti
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during ArenaContext build process.
-    2.  Wraps unhandled exception that hit the try-finally block of an ArenaContextBuilder method.
+    2.  Wraps an exception that hits the try-finally block of an ArenaContextBuilder method.
 
     # PARENT:
         *   ArenaContextException

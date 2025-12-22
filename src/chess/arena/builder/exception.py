@@ -23,7 +23,7 @@ class ArenaBuildFailedException(ArenaException, BuildFailedException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during Arena build process.
-    2.  Wraps unhandled exception that hit the try-finally block of an ArenaBuilder method.
+    2.  Wraps an exception that hits the try-finally block of an ArenaBuilder method.
 
     # PARENT:
         *   ArenaException

@@ -18,10 +18,10 @@ __all__ = [
 # ========================= EXCESS_SCHEMA_SUPER_KEYS EXCEPTION =========================#
 class ExcessiveSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
     """
-    # ROLE: ContextFlagException, SchemaSuperKeyException
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate more than one SchemaSuperKey was provided to process a forward Schema lookup.
+    1.  Indicates a forward Schema lookup failed because more than one SchemaSuperKey attribute was not null.
 
     # PARENT:
         *   ContextFlagCountException
@@ -35,6 +35,6 @@ class ExcessiveSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextF
     """
     ERROR_CODE = "EXCESS_SCHEMA_SUPER_KEYS_ERROR"
     DEFAULT_MESSAGE = (
-        "More than one SchemaSuperKey was set. A forward schema_entry lookup can only be performed with "
-        "one and only one SuperKey."
+        "More than one SchemaSuperKey field is not null. A forward Schema lookup can only be performed with "
+        "one and only one SuperKey attribute set."
     )

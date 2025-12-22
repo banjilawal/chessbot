@@ -25,7 +25,7 @@ class InvalidSnapshotContextException(SnapshotContextException, ValidationFailed
 
     # RESPONSIBILITIES:
     1.  Indicates a candidate failed SnapshotContext validation checks.
-    2.  Wraps unhandled exception that hit the try-finally block of a SnapShotContextValidator method.
+    2.  Wraps an exception that hits the try-finally block of a SnapShotContextValidator method.
     3.  Catchall for validation errors not handled by InvalidSnapshotContextException subclasses.
 
     # PARENT:

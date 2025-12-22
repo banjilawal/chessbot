@@ -22,7 +22,7 @@ class MachineAgentException(AgentException):
     # RESPONSIBILITIES:
     1.  Indicate an attribute, method, or operation organic to a MachineAgent encountered a condition which
         caused a failure.
-    2.  Wraps unhandled exception that hit the try-finally block of an PlayerAgent method.
+    2.  Wraps an exception that hits the try-finally block of an PlayerAgent method.
 
     # PARENT:
         *   AgentException

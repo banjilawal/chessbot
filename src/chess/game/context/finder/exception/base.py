@@ -22,7 +22,7 @@ class GameFinderException(FinderException):
   
     # RESPONSIBILITIES:
     1.  Parent of exception raised by GameFinder objects.
-    2.  Wraps unhandled exception that hit the try-finally block of an GameFinder method.
+    2.  Wraps an exception that hits the try-finally block of an GameFinder method.
   
     # PARENT:
         *   FinderException

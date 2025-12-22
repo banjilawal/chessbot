@@ -11,12 +11,10 @@ from chess.system import ContextFlagCountException
 from chess.schema import InvalidSchemaSuperKeyException
 
 
-
 __all__ = [
     # ========================= ZERO_SCHEMA_SUPER_KEYS EXCEPTION =========================#
     "ZeroSchemaSuperKeysException",
 ]
-
 
 
 # ========================= ZERO_SCHEMA_SUPER_KEYS EXCEPTION =========================#
@@ -25,8 +23,8 @@ class ZeroSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no SchemaSuperKey was provided to process a forward Schema lookup.
-    
+    1.  Indicates a forward Schema lookup failed because all the SchemaSuperKey attributes were null.
+
     # PARENT:
         *   ContextFlagCountException
         *   InvalidSchemaSuperKeyException
@@ -39,5 +37,6 @@ class ZeroSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCo
     """
     ERROR_CODE = "ZERO_SCHEMA_SUPER_KEYS_ERROR"
     DEFAULT_MESSAGE = (
-        "No SchemaSuperKey was provided. A SuperKey is necessary to run a forward Schema lookup."
+        "All SchemaSuperKey fields are null. One-and-only-one SchemaSuperKey attribute must be set to "
+        "run a forward Schema lookup."
     )

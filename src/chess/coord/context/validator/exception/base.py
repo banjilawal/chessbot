@@ -25,7 +25,7 @@ class InvalidCoordContextException(CoordContextException, ValidationFailedExcept
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised CoordContext validation.
-    2.  Wraps unhandled exception that hit the finally-block in CoordContextValidator methods.
+    2.  Wraps an exception that hits the try-finally-block in CoordContextValidator methods.
 
     # PARENT:
         *   CoordContextException

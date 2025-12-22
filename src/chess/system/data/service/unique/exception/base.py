@@ -22,7 +22,7 @@ class UniqueDataServiceException(DataServiceException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by UniqueDataService objects.
-    2.  Wraps unhandled exception that hit the try-finally block of an UniqueDataService object.
+    2.  Wraps an exception that hits the try-finally block of an UniqueDataService object.
 
     # PARENT:
         *   DataServiceException

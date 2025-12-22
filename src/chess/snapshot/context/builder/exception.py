@@ -24,7 +24,7 @@ class SnapshotContextBuildFailedException(SnapshotContextException, BuildFailedE
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during SnapshotContext build process.
-    2.  Wraps unhandled exception that hit the try-finally block of an SnapshotContextBuilder method.
+    2.  Wraps an exception that hits the try-finally block of an SnapshotContextBuilder method.
 
     # PARENT:
         *   SnapshotContextException

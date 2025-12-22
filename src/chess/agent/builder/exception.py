@@ -24,7 +24,7 @@ class AgentBuildFailedException(AgentException, BuildFailedException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during PlayerAgent build process.
-    2.  Wraps unhandled exception that hit the try-finally block of an AgentBuilder method.
+    2.  Wraps an exception that hits the try-finally block of an AgentBuilder method.
 
     # PARENT:
         *   AgentException

@@ -20,7 +20,7 @@ class InvalidServiceException(ServiceException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  Indicates a candidate failed validation checks for a Service (not null and correct type)
-    2.  Wraps unhandled exception that hit the try-finally block of a Validator method.
+    2.  Wraps an exception that hits the try-finally block of a Validator method.
 
     # PARENT:
         *   ServiceException

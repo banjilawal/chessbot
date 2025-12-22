@@ -23,7 +23,7 @@ class DataServiceException(DatasetException, ServiceException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by DataServices.
-    2.  Wraps unhandled exception that hit the try-finally block of a DataService method.
+    2.  Wraps an exception that hits the try-finally block of a DataService method.
 
     # PARENT:
         *   DatasetException

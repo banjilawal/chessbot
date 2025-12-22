@@ -23,7 +23,7 @@ class ArenaFinderException(ArenaException, FinderException):
   
     # RESPONSIBILITIES:
     1.  Parent of exception raised when ArenaFinder objects.
-    2.  Wraps unhandled exception that hit the try-finally block of an ArenaFinder method.
+    2.  Wraps an exception that hits the try-finally block of an ArenaFinder method.
   
     # PARENT:
         *   ArenaException

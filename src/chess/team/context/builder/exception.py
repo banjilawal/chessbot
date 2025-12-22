@@ -23,7 +23,7 @@ class TeamContextBuildFailedException(TeamContextException, BuildFailedException
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during TeamContext build process.
-    2.  Wraps unhandled exception that hit the try-finally block of an TeamContextBuilder method.
+    2.  Wraps an exception that hits the try-finally block of an TeamContextBuilder method.
 
     # PARENT:
         *   TeamContextException

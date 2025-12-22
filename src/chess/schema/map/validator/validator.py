@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    InvalidSchemaSuperKeyException, ZeroSchemaSuperKeysException, NNullSchemaSuperKeyException, SchemaSuperKey,
+    InvalidSchemaSuperKeyException, ZeroSchemaSuperKeysException, NullSchemaSuperKeyException, SchemaSuperKey,
     ExcessiveSchemaSuperKeysException
 )
 
@@ -74,7 +74,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             # Handle the nonexistence case.
             if candidate is None:
                 return ValidationResult.failure(
-                    NNullSchemaSuperKeyException(f"{method}: {NNullSchemaSuperKeyException.DEFAULT_MESSAGE}")
+                    NullSchemaSuperKeyException(f"{method}: {NullSchemaSuperKeyException.DEFAULT_MESSAGE}")
                 )
             # Handle the wrong type case.
             if not isinstance(candidate, SchemaSuperKey):

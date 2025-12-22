@@ -24,7 +24,7 @@ class InvalidAgentException(AgentException, ValidationFailedException):
     # RESPONSIBILITIES:
     1.  Parent of exception raised during an PlayerAgent verification process.
     2.  Catchall Exception for AgentValidator when a candidate fails a sanity check.
-    3.  Wraps unhandled exception that hit the try-finally block of an AgentValidator method.
+    3.  Wraps an exception that hits the try-finally block of an AgentValidator method.
 
     # PARENT:
         *   AgentException

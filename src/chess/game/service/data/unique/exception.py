@@ -23,7 +23,7 @@ class UniqueGameDataServiceException(GameException, UniqueDataServiceException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by UniqueGameDataService objects.
-    2.  Wraps unhandled exception that hit the try-finally block of an UniqueDataGame's method.
+    2.  Wraps an exception that hits the try-finally block of an UniqueDataGame's method.
 
     # PARENT:
         *   GameException

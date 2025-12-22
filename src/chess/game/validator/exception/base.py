@@ -24,7 +24,7 @@ class InvalidGameException(GameException, ValidationFailedException):
     # RESPONSIBILITIES:
     1.  Parent of exception raised during an Game verification process.
     2.  Catchall Exception for GameValidator when a candidate fails a sanity check.
-    3.  Wraps unhandled exception that hit the try-finally block of an GameValidator method.
+    3.  Wraps an exception that hits the try-finally block of an GameValidator method.
 
     # PARENT:
         *   GameException

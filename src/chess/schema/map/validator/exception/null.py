@@ -12,18 +12,17 @@ from chess.schema.map import InvalidSchemaSuperKeyException
 
 __all__ = [
     # ======================# NULL_SCHEMA_SUPER_KEY EXCEPTION #======================#
-    "NNullSchemaSuperKeyException",
+    "NullSchemaSuperKeyException",
 ]
 
 
 # ======================# NULL_SCHEMA_SUPER_KEY EXCEPTION #======================#
-class NNullSchemaSuperKeyException(InvalidSchemaSuperKeyException, NullException):
+class NullSchemaSuperKeyException(InvalidSchemaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an SchemaSuperKey validation candidate is null.
-    2.  Raised if an entity, method or operation requires an SchemaSuperKey but receives null instead.
+    1.  Indicates an entity, method or operation received null instead of a SchemaSuperKey.
 
     # PARENT:
         *   NullException

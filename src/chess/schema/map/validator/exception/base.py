@@ -22,8 +22,7 @@ class InvalidSchemaSuperKeyException(SchemaSuperKeyException, ValidationFailedEx
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised SchemaSuperKey validation.
-    2.  Wraps unhandled exception that hit the finally-block in SchemaSuperKeyValidator methods.
+    1.  Wraps an exception that hits the try-finally-block in SchemaSuperKeyValidator methods.
 
     # PARENT:
         *   SchemaSuperKeyException

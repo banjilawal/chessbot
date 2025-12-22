@@ -24,7 +24,7 @@ class InvalidAgentVarietyException(AgentVarietyException, ValidationFailedExcept
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during AgentVariety verification process.
-    2.  Wraps unhandled exception that hit the try-finally block of an AgentVariety certifying method.
+    2.  Wraps an exception that hits the try-finally block of an AgentVariety certifying method.
 
     # PARENT:
         *   AgentVarietyException

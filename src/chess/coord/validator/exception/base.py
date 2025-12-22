@@ -22,7 +22,7 @@ class InvalidCoordException(CoordException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised when an existing object violates Coord integrity constraints..
-    2.  Wraps unhandled exception that hit the finally-block in CoordValidator methods.
+    2.  Wraps an exception that hits the try-finally-block in CoordValidator methods.
 
     # PARENT:
         *   CoordException

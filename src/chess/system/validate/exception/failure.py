@@ -22,7 +22,7 @@ class ValidationFailedException(ValidatorException):
   
     # RESPONSIBILITIES:
     1.  Parent of exception verifying correctness of candidate
-    2.  Wraps unhandled exception that hit the try-finally block of a Validator method.
+    2.  Wraps an exception that hits the try-finally block of a Validator method.
   
     # PARENT:
         *   ValidatorException

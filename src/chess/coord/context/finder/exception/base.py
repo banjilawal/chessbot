@@ -24,7 +24,7 @@ class CoordFinderException(CoordException, FinderException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised when CoordFinder objects.
-    2.  Wraps unhandled exception that hit the try-finally block of an CoordFinder method.
+    2.  Wraps an exception that hits the try-finally block of an CoordFinder method.
 
     # PARENT:
         *   CoordException
