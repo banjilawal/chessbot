@@ -23,7 +23,7 @@ class ArenaValidator(Validator[Arena]):
     # ROLE: Validationer, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce Arena instances whose integrity is always guaranteed.
+    1.  Produce Arena instances whose integrity is guaranteed at creation.
     2.  Manage construction of Arena instances that can be used safely by the client.
     3.  Ensure params for Arena creation have met the application's safety contract.
     4.  Return an exception to the client if a Validation resource does not satisfy integrity requirements.

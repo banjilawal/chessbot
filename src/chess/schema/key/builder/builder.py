@@ -23,10 +23,8 @@ class SchemaMapBuilder(Builder[SchemaSuperKey]):
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce SchemaSuperKey instances whose integrity is always guaranteed.
-    2.  Manage construction of SchemaSuperKey instances that can be used safely by the client.
-    3.  Ensure params for SchemaSuperKey creation have met the application's safety contract.
-    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    1.  Produce SchemaSuperKey instances whose integrity is always guaranteed at creation.
+    2.  If the build fails indicate the reason in an exception returned to the caller.
 
     # PARENT:
         *   Builder

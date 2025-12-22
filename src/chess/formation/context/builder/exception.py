@@ -23,7 +23,7 @@ class OrderContextBuildFailedException(OrderContextException, BuildFailedExcepti
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised during OrderContext build process.
-    2.  Wrap an exception that hit the try-finally block of an OrderContextBuilder method.
+    2.  Wrap an exception that hits the try-finally block of an OrderContextBuilder method.
 
     # PARENT:
         *   OrderContextException

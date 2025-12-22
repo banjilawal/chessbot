@@ -23,7 +23,7 @@ class InvalidPieceDataServiceException(PieceDataServiceException, ValidationFail
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised during PieceDataService verification process.
-    2.  Wrap an exception that hit the try-finally block of an PieceDataServiceValidator method.
+    2.  Wrap an exception that hits the try-finally block of an PieceDataServiceValidator method.
 
     # PARENT:
         *   PieceDataServiceException

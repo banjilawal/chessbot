@@ -21,7 +21,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
 
     # RESPONSIBILITIES:
     1.  Ensure a SchemaSuperKey instance is certified safe, reliable and consistent before use.
-    2.  If verification fails indicate the reason in an exception, returned to the caller.
+    2.  If verification fails indicate the reason in an exception returned to the caller.
 
     # PARENT:
         *   Validator

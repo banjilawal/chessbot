@@ -22,7 +22,7 @@ class InvalidBoardContextException(BoardContextException, ValidationFailedExcept
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised BoardContext validation.
-    2.  Wrap an exception that hit the try-finally-block in BoardContextValidator methods.
+    2.  Wrap an exception that hits the try-finally-block in BoardContextValidator methods.
     
     # PARENT:
         *   BoardContextException

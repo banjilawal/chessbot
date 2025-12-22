@@ -24,7 +24,7 @@ class CatalogContextBuildFailedException(CatalogContextException, BuildFailedExc
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised during CatalogContext build process.
-    2.  Wrap an exception that hit the try-finally block of an CatalogContextBuilder method.
+    2.  Wrap an exception that hits the try-finally block of an CatalogContextBuilder method.
 
     # PARENT:
         *   CatalogContextException

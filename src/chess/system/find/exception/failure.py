@@ -22,7 +22,7 @@ class SearchFailedException(SearchException, OperationFailedException):
   
     # RESPONSIBILITIES:
     1.  Indicate that an exception prevented a search operation from completing successfully.
-    2.  Wrap an exception that hit the try-finally block of a Search method.
+    2.  Wrap an exception that hits the try-finally block of a Search method.
   
     # PARENT:
         *   SearchException

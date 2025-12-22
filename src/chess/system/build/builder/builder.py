@@ -20,7 +20,7 @@ class Builder(ABC, Generic[T]):
     # ROLE: Builder, Data Integrity And Reliability Guarantor,
 
     # RESPONSIBILITIES:
-    1.  Produce objects whose integrity is always guaranteed.
+    1.  Produce objects whose integrity is guaranteed at creation.
     2.  Manage construction of objects that can be used safely by the client.
     3.  Ensure resources for building a object have met the application's safety contracts.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.

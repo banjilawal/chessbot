@@ -19,7 +19,7 @@ class GameBuilder(Builder[Game]):
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
   
     # RESPONSIBILITIES:
-    Produce Game instances whose integrity is always guaranteed.
+    Produce Game instances whose integrity is guaranteed at creation.
     
     # PROVIDES:
     BuildResult[Game] containing either:

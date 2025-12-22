@@ -21,7 +21,7 @@ class ExcessiveSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextF
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  a forward Schema lookup failed because more than one SchemaSuperKey attribute was not null.
+    1.  Indicate that a forward Schema lookup failed because more than one SchemaSuperKey attribute was not null.
 
     # PARENT:
         *   ContextFlagCountException
@@ -35,6 +35,6 @@ class ExcessiveSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextF
     """
     ERROR_CODE = "EXCESS_SCHEMA_SUPER_KEYS_ERROR"
     DEFAULT_MESSAGE = (
-        "More than one SchemaSuperKey field is not null. A forward Schema lookup can only be performed with "
-        "one and only one SuperKey attribute set."
+        "More than one SchemaSuperKey field is not null. A forward Schema lookup can only run if "
+        "one-and-only-one SchemaSuperKey attribute has a value."
     )

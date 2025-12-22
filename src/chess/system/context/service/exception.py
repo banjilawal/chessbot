@@ -22,7 +22,7 @@ class ContextServiceException(ContextException, ServiceException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by ServiceContext objects.
-    2.  Wrap an exception that hit the try-finally block of a ServiceContext method.
+    2.  Wrap an exception that hits the try-finally block of a ServiceContext method.
 
     # PARENT:
         *   ContextException

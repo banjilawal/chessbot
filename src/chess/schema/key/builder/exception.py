@@ -25,12 +25,11 @@ class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedExc
 
     # RESPONSIBILITIES:
     1.  Indicate that an error prevented the SchemaSuperKey build from completing successfully.
-    2.  Wrap an exception that hit the try-finally block of a SchemSuperKeyBuilder method.
+    2.  Wrap an exception that hits the try-finally block of a SchemSuperKeyBuilder method.
     
     # PARENT:
         *   BuildFailedException
         *   SchemaSuperKeyException
-
 
     # PROVIDES:
     None

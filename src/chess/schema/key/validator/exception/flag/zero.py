@@ -23,7 +23,7 @@ class ZeroSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  a forward Schema lookup failed because all the SchemaSuperKey attributes were null.
+    1.  Indicate that forward Schema lookup failed because all the SchemaSuperKey attributes were null.
 
     # PARENT:
         *   ContextFlagCountException
@@ -37,6 +37,6 @@ class ZeroSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCo
     """
     ERROR_CODE = "ZERO_SCHEMA_SUPER_KEYS_ERROR"
     DEFAULT_MESSAGE = (
-        "All SchemaSuperKey fields are null. One-and-only-one SchemaSuperKey attribute must be set to "
-        "run a forward Schema lookup."
+        "All SchemaSuperKey fields are null. One-and-only-one SchemaSuperKey attribute must have a value "
+        "before a forward Schema lookup can run."
     )

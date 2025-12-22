@@ -22,7 +22,7 @@ class BuildFailedException(BuildException, OperationFailedException):
 
     # RESPONSIBILITIES:
     1.  Indicate that an exception prevented a build operation from completing successfully.
-    2.  Wrap an exception that hit the try-finally block of a Build method.
+    2.  Wrap an exception that hits the try-finally block of a Build method.
 
     # PARENT:
         *   BuildException

@@ -23,7 +23,7 @@ class InvalidArenaException(ArenaException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised Arena validation.
-    2.  Wrap an exception that hit the try-finally-block in ArenaValidator methods.
+    2.  Wrap an exception that hits the try-finally-block in ArenaValidator methods.
 
     # PARENT:
         *   ArenaException
