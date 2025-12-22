@@ -257,7 +257,7 @@ class SnapshotFinder(Finder[Snapshot]):
             
             # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
             # then, return the exception chain inside a SearchResult.
-            except Exception as ex:
+        except Exception as ex:
             return SearchResult.failure(
                 SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
             )
