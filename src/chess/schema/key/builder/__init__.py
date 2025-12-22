@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .builder import SchemaMapBuilder
+from .builder import SchemaSuperKeyBuilder
 from .exception import SchemaSuperKeyBuildFailedException

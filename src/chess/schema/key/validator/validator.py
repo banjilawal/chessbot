@@ -46,10 +46,10 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
         """
         # Action:
             1.  If the candidate passes existence and type checks cast into a SchemaSuperKey instance, super_key.
-                Else, send an exception in the ValidationResult.
-            2.  If one-and-only-one super_key field is not null send an exception in the ValidationResult.
+                Else, return an exception in the ValidationResult.
+            2.  If one-and-only-one super_key field is not null return an exception in the ValidationResult.
             3.  Use super_key.attribute to route to the appropriate validation subflow.
-            4.  If no Schema.VARIANT.attribute == super_key.attribute send an exception in the ValidationResult.
+            4.  If no Schema.VARIANT.attribute == super_key.attribute return an exception in the ValidationResult.
             5.  All tests are passed. Send super_key in the ValidationResult.
 
         # Parameters:
@@ -76,7 +76,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
                 return ValidationResult.failure(
                     NullSchemaSuperKeyException(f"{method}: {NullSchemaSuperKeyException.DEFAULT_MESSAGE}")
                 )
-            # Handle the wrong type case.
+            # Handle the wrong class case.
             if not isinstance(candidate, SchemaSuperKey):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected SchemaSuperKey, got {type(candidate).__name__} instead.")

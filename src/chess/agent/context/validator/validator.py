@@ -50,9 +50,9 @@ class AgentContextValidator(Validator[AgentContext]):
         """
         # Action:
             1.  If the candidate passes existence and type checks cast into a AgentContext for
-                additional integrity tests. Else send an exception in the ValidationResult.
+                additional integrity tests. Else return an exception in the ValidationResult.
             2.  If one-and-only-one AgentContext attribute-value-tuple is enabled goto the integrity
-                check. Else, send an exception in the ValidationResult.
+                check. Else, return an exception in the ValidationResult.
             3.  Route to the appropriate validation subflow with the attribute as the routing key.
             4.  If the validation subflow certifies the map tuple return it in the validation result.
                 Else, send the exception in the ValidationResult.
@@ -82,7 +82,7 @@ class AgentContextValidator(Validator[AgentContext]):
                 return ValidationResult.failure(
                     NullAgentContextException(f"{method}: {NullAgentContextException.DEFAULT_MESSAGE}")
                 )
-            # Handle the wrong type case.
+            # Handle the wrong class case.
             if not isinstance(candidate, AgentContext):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected AgentContext, got {type(candidate).__name__} instead.")

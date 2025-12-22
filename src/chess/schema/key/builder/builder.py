@@ -18,7 +18,7 @@ from chess.schema import (
 )
 
 
-class SchemaMapBuilder(Builder[SchemaSuperKey]):
+class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
     """
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
@@ -32,10 +32,10 @@ class SchemaMapBuilder(Builder[SchemaSuperKey]):
     # PROVIDES:
     None
 
-    # LOCAL KEY-VALUES:
+    # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED KEY-VALUES:
+    # INHERITED ATTRIBUTES:
     None
     """
     @classmethod
@@ -49,14 +49,14 @@ class SchemaMapBuilder(Builder[SchemaSuperKey]):
     ) -> BuildResult[SchemaSuperKey]:
         """
         # Action:
-            1.  Confirm that only one in the (designation, color) hash is not null.
-            2.  Certify the not-null key-value is safe using the appropriate validating service.
-            3.  If all checks pass build a SchemaSuperKey and send in a BuildResult. Else, send an exception
-                in the BuildResult.
+            1.  If more than one optional param is not-null return an exception in the BuildResult.
+            2.  If the enabled param is not certified by the appropriate validating service return an exception in
+                the BuildResult.
+            3.  After the active param is validated create the SchemaSuperKey object and return in the BuildResult.
 
         # Parameters:
             Only one these must be provided:
-                *   designation (Optional[str])
+                *   name (Optional[str])
                 *   color (Optional[GameColor])
     
             These Parameters must be provided:
@@ -65,38 +65,39 @@ class SchemaMapBuilder(Builder[SchemaSuperKey]):
 
         # Returns:
         BuildResult[SchemaSuperKey] containing either:
-            - On success: SchemaSuperKey in the payload.
             - On failure: Exception.
+            - On success: SchemaSuperKey in the payload.
 
         # Raises:
             *   ZeroSchemaSuperKeysException
             *   SchemaSuperKeyBuildFailedException
             *   ExcessiveSchemaSuperKeysException
         """
-        method = "SchemaMapBuilder.build"
+        method = "SchemaSuperKeyBuilder.build"
         try:
-            # Count how many optional parameters are not-null. One param needs to be not-null.
+            # Count how many optional parameters are not-null.
             params = [name, color,]
             param_count = sum(bool(p) for p in params)
             
-            # Test if no params are set. Need a key-value to look up a team's schema.
+            # Handle the case that all the optional params are null.
             if param_count == 0:
                 return BuildResult.failure(
                     ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
                 )
-            # Test if more than one param is set. Only one hash key-value is allowed in a lookup.
+            # Handle the case that more than one optional param is not-null.
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveSchemaSuperKeysException(f"{method}: {ExcessiveSchemaSuperKeysException}")
                 )
-            # After verifying only one Schema hash key-value is set, validate it.
             
-            # Build the name_key SchemaSuperKey if its value is set.
+            # Route to the appropriate validation branch.
+            
+            # Build the name SchemaSuperKey if its value is set.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a SchemaMap_name in the BuildResult.
+                # On validation success return a SchemaKey_name in the BuildResult.
                 return BuildResult.success(SchemaSuperKey(name=name))
             
             # Build the color_key SchemaSuperKey if its value is set.
@@ -104,15 +105,17 @@ class SchemaMapBuilder(Builder[SchemaSuperKey]):
                 validation = color_validator.validate(candidate=color)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a SchemaMap_color in the BuildResult.
+                # On validation success return a SchemaKey_color in the BuildResult.
                 return BuildResult.success(SchemaSuperKey(color=color))
             
-            # As a failsafe send a buildResult failure if a mapping path was missed.
+            # Else, if there are no exceptions raised and an outcome is not covered by an if block
+            # return a FailsafeBranchExitPointException in the BuildResult. I don't like using if-elif-else blocks.
+            # They are harder to read :-)
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception, wrap an SchemaSuperKeyBuildFailedException around it then
-        # return the exception-chain inside the ValidationResult.
+        # Finally, catch any missed exception, wrap an SchemaSuperKeyBuildFailedException around it, return the
+        # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
                 SchemaSuperKeyBuildFailedException(

@@ -58,9 +58,9 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
         """
         # Action:
             1.  If the candidate passes existence and type checks cast into a SnapshotContext for
-                additional integrity tests. Else send an exception in the ValidationResult.
+                additional integrity tests. Else return an exception in the ValidationResult.
             2.  If one-and-only-one SnapshotContext attribute-value-tuple is enabled goto the integrity
-                check. Else, send an exception in the ValidationResult.
+                check. Else, return an exception in the ValidationResult.
             3.  Route to the appropriate validation subflow with the attribute as the routing key.
             4.  If the validation subflow certifies the map tuple return it in the validation result.
                 Else, send the exception in the ValidationResult.
@@ -92,7 +92,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
                 return ValidationResult.failure(
                     NullSnapshotContextException(f"{method}: {NullSnapshotContextException.DEFAULT_MESSAGE}")
                 )
-            # Handle the wrong type case.
+            # Handle the wrong class case.
             if not isinstance(candidate, SnapshotContext):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected SnapshotContext, got {type(candidate).__name__} instead.")

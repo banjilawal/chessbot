@@ -60,7 +60,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
         # Action:
             1.  Confirm that only one in the (team, player_agent, timestamp) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a SnapshotContext and send in a BuildResult. Else, send an exception
+            3.  If all checks pass build a SnapshotContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
         # Parameters:
@@ -131,7 +131,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
                 # On validation success return a team_SnapshotContext in the BuildResult.
                 return BuildResult.success(payload=SnapshotContext(team=team))
             
-            # As a failsafe send a buildResult failure if a map path was missed.
+            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

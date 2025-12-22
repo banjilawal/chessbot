@@ -57,7 +57,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
         # Action:
             1.  Confirm that only one in the (id, designation, team, game, arena_variety) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a ArenaContext and send in a BuildResult. Else, send an exception
+            3.  If all checks pass build a ArenaContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
         # Parameters:
@@ -142,7 +142,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
                 # On validation success return a variety_ArenaContext in the BuildResult.
                 return BuildResult.success(ArenaContext(variety=variety))
             
-            # As a failsafe send a buildResult failure if a map path was missed.
+            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

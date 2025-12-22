@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.schema import (
-    SchemaColorBoundsException, SchemaNameBoundsException, SchemaSuperKey, SchemaMapBuilder,
+    SchemaColorBoundsException, SchemaNameBoundsException, SchemaSuperKey, SchemaSuperKeyBuilder,
     SchemaSuperKeyValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
 )
 from chess.system import (
@@ -46,7 +46,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     #         name: str = SERVICE_NAME,
     #         id: int = id_emitter.lookup_id,
     #         enum_validator: SchemaValidator = SchemaValidator(),
-    #         map_builder: SchemaMapBuilder = SchemaMapBuilder(),
+    #         map_builder: SchemaSuperKeyBuilder = SchemaSuperKeyBuilder(),
     #         map_validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator(),
     # ):
     #     super().lookup(
@@ -63,9 +63,9 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     #     return cast(SchemaValidator, self.enum_validator)
     #
     # @property
-    # def map_builder(self) -> SchemaMapBuilder:
-    #     """Return an SchemaMapBuilder."""
-    #     return cast(SchemaMapBuilder, self.map_builder)
+    # def map_builder(self) -> SchemaSuperKeyBuilder:
+    #     """Return an SchemaSuperKeyBuilder."""
+    #     return cast(SchemaSuperKeyBuilder, self.map_builder)
     #
     # @property
     # def map_validator(self) -> SchemaSuperKeyValidator:

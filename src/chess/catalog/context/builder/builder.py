@@ -56,7 +56,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
         # Action:
             1.  Confirm that only one in the (name, designation, quota, ransom) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a CatalogContext and send in a BuildResult. Else, send an exception
+            3.  If all checks pass build a CatalogContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
         # Parameters:
@@ -130,7 +130,7 @@ class CatalogContextBuilder(Builder[CatalogContext]):
                 # On validation success return a ransom_CatalogContext in the BuildResult.
                 return BuildResult.success(CatalogContext(ransom=ransom))
             
-            # As a failsafe send a buildResult failure if a map path was missed.
+            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

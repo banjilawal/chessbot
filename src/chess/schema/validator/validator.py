@@ -40,7 +40,7 @@ class SchemaValidator(Validator[Schema]):
         """
         # ACTION:.
             1.  If the candidate passes existence and type checks cast into a Schema instance and return
-                in the ValidationResult. Else send an exception in the ValidationResult.
+                in the ValidationResult. Else return an exception in the ValidationResult.
 
         # PARAMETERS:
             *   candidate (Any)
@@ -62,7 +62,7 @@ class SchemaValidator(Validator[Schema]):
                 return ValidationResult.failure(
                     NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
                 )
-            # Handle the wrong type case.
+            # Handle the wrong class case.
             if not isinstance(candidate, Schema):
                 return ValidationResult.failure(
                     TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")

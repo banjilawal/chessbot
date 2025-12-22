@@ -21,7 +21,7 @@ class Result(Generic[T]):
     # RESPONSIBILITIES:
     1.  Send the outcome of a request to the client.
     2.  If the request was satisfied send the success-data in the payload.
-    3.  If request was not fulfilled send an exception.
+    3.  If request was not fulfilled return an exception.
     
     # PARENT:
     None

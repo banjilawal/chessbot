@@ -44,7 +44,7 @@ class CoordValidator(Validator[Coord]):
         # ACTION:
         1.  Confirm the candidate exists and is a Coord object. On meeting both conditions cast the candidate to a coord.
         2.  Confirm Coord.row and Coord.column are within the bounds or the 2D Board array.
-        4.  Send an exception in the VAlidationResult if any check fails otherwise, send the certified Coord.
+        4.  Return an exception in the VAlidationResult if any check fails otherwise, send the certified Coord.
     
         # PARAMETERS:
             *   candidate (Any)

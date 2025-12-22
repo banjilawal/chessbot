@@ -87,7 +87,7 @@ class GameFinder(Finder[Game]):
             # Entry point into searching by game player.
             if context.agent is not None:
                 return cls._find_by_agent(dataset, context.agent)
-            # As a failsafe send a buildResult failure if a map path was missed.
+            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             SearchResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
