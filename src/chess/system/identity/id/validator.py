@@ -91,7 +91,7 @@ class IdValidator(Validator[int]):
             # If all checks pass return the validated id in a ValidationResult.
             return ValidationResult.success(payload=id)
         
-        # Finally, catch any missed exception and wrap An InvalidNIdException around it
+        # Finally, catch any missed exception, wrap an InvalidNIdException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

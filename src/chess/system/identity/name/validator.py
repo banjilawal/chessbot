@@ -91,7 +91,7 @@ class NameValidator(Validator[str]):
                 )
             
             return ValidationResult.success(payload=name)
-        # Finally, catch any missed exception and wrap An InvalidNameException around it
+        # Finally, catch any missed exception, wrap an InvalidNameException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

@@ -74,7 +74,7 @@ class CoordBuilder(Builder[Coord]):
             # If both checks are passed create a Coord and return in the BuildResult.
             return BuildResult.success(payload=Coord(row=row, column=column))
         
-        # Finally, catch any missed exception and wrap An CoordBuildFailedException around it then return the
+        # Finally, catch any missed exception, wrap an CoordBuildFailedException around it then return the
         # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(

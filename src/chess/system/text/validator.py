@@ -81,7 +81,7 @@ class StringValidator(Validator[str]):
             # Handle the success case by sending the text in a ValidationResult.
             return ValidationResult.success(payload=text)
         
-        # Finally, catch any missed exception and wrap An InvalidStringException around it then
+        # Finally, catch any missed exception, wrap an InvalidStringException around it then
         # return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

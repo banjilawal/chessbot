@@ -151,7 +151,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception and wrap An TeamContextBuildFailedException around it then
+        # Finally, catch any missed exception, wrap an TeamContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(

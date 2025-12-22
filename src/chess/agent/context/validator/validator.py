@@ -139,7 +139,7 @@ class AgentContextValidator(Validator[AgentContext]):
                     )
                 return ValidationResult.success(context)
         
-        # Finally, catch any missed exception and wrap an InvalidAgentContextException around it then, return
+        # Finally, catch any missed exception, wrap an InvalidAgentContextException around it then, return
         # the exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

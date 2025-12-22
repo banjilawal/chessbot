@@ -70,7 +70,7 @@ class SchemaValidator(Validator[Schema]):
             # On certification success return the schema instance in a ValidationResult.
             return ValidationResult.success(payload=cast(Schema, candidate))
         
-        # Finally, catch any missed exception and wrap an InvalidSchemaException around it then, return the
+        # Finally, catch any missed exception, wrap an InvalidSchemaException around it then, return the
         # exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

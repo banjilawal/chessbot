@@ -210,7 +210,7 @@ class QueenValidator(Validator[Queen]):
                 )
             # If no errors are detected send the verified queen.designation inside a ValidationResult.
             return ValidationResult.success(name)
-        # Finally, catch any missed exception and wrap An InvalidQueenException around it
+        # Finally, catch any missed exception, wrap an InvalidQueenException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
@@ -260,7 +260,7 @@ class QueenValidator(Validator[Queen]):
             # If no errors are detected send the verified queen.ransom inside a ValidationResult.
             return ValidationResult.success(ransom)
         
-        # Finally, catch any missed exception and wrap an InvalidQueenException around it
+        # Finally, catch any missed exception, wrap an InvalidQueenException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
@@ -310,7 +310,7 @@ class QueenValidator(Validator[Queen]):
             # If no errors are detected send the verified queen.designation inside a ValidationResult.
             return ValidationResult.success(designation)
         
-        # Finally, catch any missed exception and wrap an InvalidQueenException around it
+        # Finally, catch any missed exception, wrap an InvalidQueenException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
@@ -360,7 +360,7 @@ class QueenValidator(Validator[Queen]):
             # If no errors are detected send the verified queen.team_quota inside a ValidationResult.
             return ValidationResult.success(team_quota)
         
-        # Finally, catch any missed exception and wrap an InvalidQueenException around it
+        # Finally, catch any missed exception, wrap an InvalidQueenException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

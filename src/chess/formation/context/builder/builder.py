@@ -133,7 +133,7 @@ class OrderContextBuilder(Builder[OrderContext]):
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception and wrap An OrderContextBuildFailedException around it then
+        # Finally, catch any missed exception, wrap an OrderContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(

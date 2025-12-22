@@ -21,8 +21,7 @@ class SchemaException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by Schema objects.
-    2.  Catchall for conditions which are not covered by lower level SchemaExceptions subclasses.
+    1.  Catchall for conditions which are not covered by SchemaException subclasses.
 
     # PARENT:
         *   ChessException

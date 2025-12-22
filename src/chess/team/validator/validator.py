@@ -131,7 +131,7 @@ class TeamValidator(Validator[Team]):
             # If no errors are detected return the successfully validated Team instance.
             return ValidationResult.success(team)
         
-        # Finally, catch any missed exception and wrap An InvalidTeamException around it
+        # Finally, catch any missed exception, wrap an InvalidTeamException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

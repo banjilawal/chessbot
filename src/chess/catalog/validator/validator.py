@@ -74,7 +74,7 @@ class CatalogValidator(Validator[Catalog]):
             # a ValidationResult.
             return ValidationResult.success(cast(Catalog, candidate))
         
-        # Finally, catch any missed exception and wrap An InvalidPieceException around it
+        # Finally, catch any missed exception, wrap an InvalidPieceException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

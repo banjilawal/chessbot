@@ -45,21 +45,22 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
     ) -> ValidationResult[SchemaSuperKey]:
         """
         # Action:
-        1.
-        1.  Confirm that only one in the (name, color) tuple is not null.
-        2.  Certify the not-null key-value is safe using the appropriate services and validators.
-        3.  If any check fais return a ValidationResult containing the exception raised by the failure.
-        4.  On success Build an SchemaSuperKey are return in a ValidationResult.
+            1.  If the candidate passes existence and type checks cast into a SchemaSuperKey instance, super_key.
+                Else, send an exception in the ValidationResult.
+            2.  If one-and-only-one super_key field is not null send an exception in the ValidationResult.
+            3.  Use super_key.attribute to route to the appropriate validation subflow.
+            4.  If no Schema.VARIANT.attribute == super_key.attribute send an exception in the ValidationResult.
+            5.  All tests are passed. Send super_key in the ValidationResult.
 
         # Parameters:
             *   candidate (Any)
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
 
-        # Returns:
+        # Returns:Confirm
         ValidationResult[SchemaSuperKey] containing either:
-            - On success: SchemaSuperKey in the payload.
-            - On failure: Exception.
+                - On failure: Exception.
+                - On success: SchemaSuperKey in the payload.
 
         # Raises:
             *   TypeError
@@ -81,42 +82,43 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
                     TypeError(f"{method}: Expected SchemaSuperKey, got {type(candidate).__name__} instead.")
                 )
             
-            # After existence and type checks are successful cast the candidate to a SchemaSuperKey
-            # for additional tests.
-            map = cast(SchemaSuperKey, candidate)
+            # After existence and type checks cast the candidate to a SchemaSuperKey for additional tests.
+            super_key = cast(SchemaSuperKey, candidate)
             
             # Handle the case of searching with no key-value is set.
-            if len(map.to_dict()) == 0:
+            size = len(super_key.to_dict())
+            if size  == 0:
                 return ValidationResult.failure(
                     ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
                 )
             # Handle the case of more than one key-value is set.
-            if len(map.to_dict()) > 1:
+            if size > 1:
                 return ValidationResult.failure(
                     ExcessiveSchemaSuperKeysException(
                         f"{method}: {ExcessiveSchemaSuperKeysException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            # Using the hash's key-value as an address, route to appropriate validation subflow.
+            # Route to the appropriate validation branch.
             
             # Certification for the forward lookup-by-name value.
-            if map.name is not None:
-                validation = identity_service.validate_name(candidate=map.name)
+            if super_key.name is not None:
+                validation = identity_service.validate_name(candidate=super_key.name)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On certification success return the SchemaMap_name in a ValidationResult.
-                return ValidationResult.success(payload=map)
+                return ValidationResult.success(payload=super_key)
             
             # Certification for the forward lookup-by-color value.
-            if map.color is not None:
-                validation = color_validator.validate(candidate=map.color)
+            if super_key.color is not None:
+                validation = color_validator.validate(candidate=super_key.color)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the color_team_schema_super_key in a ValidationResult.
-                return ValidationResult.success(payload=map)
+                # On certification success return the SchemaMap_color in a ValidationResult.
+                return ValidationResult.success(payload=super_key)
             
-        # Finally, catch any missed exception and wrap an InvalidSchemaSuperKeyException. Then send the exception-chain in a ValidationResult.
+        # Finally, catch any missed exception, wrap an InvalidSchemaSuperKeyException it. Then send the exception-chain
+        # in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSchemaSuperKeyException(

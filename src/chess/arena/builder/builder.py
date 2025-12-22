@@ -115,7 +115,7 @@ class ArenaBuilder(Builder[Arena]):
             # After individual piece integrity certifcation and uniqueness verification send a success result.
             return ValidationResult.success(payload=players)
         
-        # Finally, catch any missed exception and wrap An ArenaBuildFailedException around it then
+        # Finally, catch any missed exception, wrap an ArenaBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

@@ -123,7 +123,7 @@ class OrderContextValidator(Validator[OrderContext]):
                 # On certification success return the battle_order.color map in a ValidationResult.
                 return ValidationResult.success(context)
         
-        # Finally, catch any missed exception and wrap an InvalidOrderContextException. Then send the exception-chain in a ValidationResult.
+        # Finally, catch any missed exception, wrap an InvalidOrderContextException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidOrderContextException(

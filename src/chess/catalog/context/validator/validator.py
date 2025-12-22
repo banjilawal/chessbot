@@ -131,7 +131,7 @@ class CatalogContextValidator(Validator[CatalogContext]):
                 # On certification success return the battle_catalog.ransom map in a ValidationResult.
                 return ValidationResult.success(context)
         
-        # Finally, catch any missed exception and wrap an InvalidCatalogContextException. Then send the exception-chain in a ValidationResult.
+        # Finally, catch any missed exception, wrap an InvalidCatalogContextException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidCatalogContextException(

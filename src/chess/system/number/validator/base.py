@@ -72,7 +72,7 @@ class NumberValidator(Validator[int]):
             # On passing both tests cast the candidate to an int, wrap in a ValidationResult and send back.
             return ValidationResult.success(payload=cast(int, candidate))
         
-        # Finally, catch any missed exception and wrap An InvalidNumberException around it
+        # Finally, catch any missed exception, wrap an InvalidNumberException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
