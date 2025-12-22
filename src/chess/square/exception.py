@@ -1,49 +1,41 @@
-# src/chess/square/collision.py
+# src/chess/square/exception.py
 
 """
 Module: chess.square.exception
 Author: Banji Lawal
-Created: 2025-09-08
+Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.piece import PieceException
-from chess.system import (
-    ChessException, NullException, ValidationException, BuildFailedException, InconsistencyException
-)
 
 __all__ = [
+    # ======================# SQUARE EXCEPTION #======================#
     "SquareException",
 ]
 
+from chess.system.err import ChessException
 
+
+# ======================# SQUARE EXCEPTION #======================#
 class SquareException(ChessException):
     """
-    Super class of exception raised by Square objects. Do not use directly. Subclasses give
-    precise, fined-grained, debugging info.
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exception raised by Square objects.
+    2.  Catchall for conditions which are not covered by lower level Square exception.
+
+    # PARENT:
+        *   ChessException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     ERROR_CODE = "SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square raised an exception."
-
-
-# #======================# RELATIONAL SQUARE EXCEPTION #======================#
-# class InvalidPieceSquareRelationException(SquareException, PieceException, InconsistencyException):
-#     """Catchall Exception for when SquareValidator fails candidates on a Piece-Square relationship test."""
-#     ERROR_CODE = "PIECE_RELATES_TO_SQUARE_ERROR"
-#     DEFAULT_MESSAGE = "Validation of Piece-Square relationship failed."
-#
-# class SquareAndPieceMismatchedCoordException(SquareException, PieceException):
-#     """Raised if a Piece needs to occupy a Square before they are used together."""
-#     ERROR_CODE = "SQUARE_AND_PIECE_COORD_MISMATCH_ERROR"
-#     DEFAULT_MESSAGE = "Square and Piece do not share a target. They do not have a relationship."
-#
-#
-# class PieceInconsistentSquareOccupationException(SquareException, PieceException, InconsistencyException):
-#     """Raised if a Piece with the same Coord as a Square is not set as the Square's occupant"""
-#     ERROR_CODE = "PIECE_INCONSISTENT_SQUARE_OCCUPATION_ERROR"
-#     DEFAULT_MESSAGE = (
-#         "A Piece sharing a Coord with a Square is not marked as the Square's occupant. There may be "
-#         "entity_service or data inconsistency."
-#     )
-
-
+    DEFAULT_ERROR_CODE = "Square raised an exception."

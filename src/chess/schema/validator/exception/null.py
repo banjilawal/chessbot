@@ -11,11 +11,11 @@ from chess.system import NullException
 from chess.schema import InvalidSchemaException
 
 __all__ = [
-    # ======================# SCHEMA_NULL EXCEPTION #======================#
+    # ======================# NULL_SCHEMA EXCEPTION #======================#
     "NullSchemaException",
 ]
 
-#======================# SCHEMA_NULL EXCEPTION #======================#
+#======================# NULL_SCHEMA EXCEPTION #======================#
 class NullSchemaException(InvalidSchemaException, NullException):
     """
     # ROLE: Error Tracing, Debugging

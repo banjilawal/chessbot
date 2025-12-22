@@ -6,5 +6,10 @@ Author: Banji Lawal
 Created: 2025-11-19
 """
 
-from .exception import *
+# =========== SQUARE.VALIDATOR PACKAGE CONTENTS ===========#
+
+# Packages
+from.exception import *
+
+# Modules
 from .validator import SquareValidator

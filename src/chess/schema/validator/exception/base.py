@@ -10,21 +10,21 @@ version: 1.0.0
 from chess.schema import SchemaException
 from chess.system import ValidationFailedException
 
-
 __all__ = [
-    # ======================# SCHEMA_VALIDATION EXCEPTION #======================#
+    # ======================# SCHEMA_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidSchemaException",
 ]
 
-#======================# SCHEMA_VALIDATION EXCEPTION #======================#
+
+# ======================# SCHEMA_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidSchemaException(SchemaException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by SchemaValidation objects.
+    1.  Indicates a Schema validation candidate failed a verification test.
     2.  Wraps unhandled exceptions that hit the finally-block in SchemaValidator methods.
-    
+
     # PARENT:
         *   SchemaException
         *   ValidationFailedException
@@ -34,9 +34,9 @@ class InvalidSchemaException(SchemaException, ValidationFailedException):
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_VALIDATION_ERROR"
+    ERROR_CODE = "SCHEMA_VALIDATION_FAILURE_ERROR"
     DEFAULT_MESSAGE = "Schema validation failed."

@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/finder/finder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/finder/finder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/dto/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/dto/builder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/dto/dto.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/dto/example.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/square/validator/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/square/validator/exception/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/square/validator/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/validator/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/validator/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/examples.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/validator/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/validator/exception.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -960,7 +965,7 @@
       <workItem from="1766190117520" duration="23649000" />
       <workItem from="1766223152549" duration="26989000" />
       <workItem from="1766255712700" duration="60521000" />
-      <workItem from="1766341551279" duration="23618000" />
+      <workItem from="1766341551279" duration="24991000" />
     </task>
     <servers />
   </component>
