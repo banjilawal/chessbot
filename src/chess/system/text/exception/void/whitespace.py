@@ -23,11 +23,11 @@ class WhiteSpaceStringException(VoidStringException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates a value being passed a Coord or Vector component is larger than the Board's dimension.
+    1.  Indicate an entity, method, or operation required a String with some characters but got one that
+        only had whitespace.
 
     # PARENT:
-        *   InvalidNumberException
-        *   BoundsException
+        *   VoidStringException
 
     # PROVIDES:
     None
@@ -38,8 +38,7 @@ class WhiteSpaceStringException(VoidStringException):
     # INHERITED ATTRIBUTES:
     None
     """
-    """Raised if an entity, method, or operation requires a String but gets either whitespace, null, or an empty string instead.her null or an empty string"""
     ERROR_CODE = "WHITE_SPACE_STRING_ERROR"
     DEFAULT_MESSAGE = (
-        "Got a String that was either whitespace, null, or an empty string. A String must be non-null and non-empty."
+        "Got a String that only had whitespace. A String must have some characters."
     )

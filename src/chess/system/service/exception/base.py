@@ -21,7 +21,7 @@ class ServiceException(ChessException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by Service objects
-    3.  Catchall for Service errors not covered by lower level Service exception.
+    2.  Catchall for Service errors not covered by lower level Service exception.
 
     # PARENT:
         *   ChessException

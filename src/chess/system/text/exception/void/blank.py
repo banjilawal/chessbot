@@ -7,6 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from chess.system import VoidStringException
 
 __all__ = [
     # ======================# BLANK_EMPTY_STRING EXCEPTION #======================#
@@ -14,10 +15,32 @@ __all__ = [
 ]
 
 
+
+
 #======================# BLANK_EMPTY_STRING EXCEPTION #======================#
 class BlankEmptyStringException(VoidStringException):
-    """Raised if an entity, method, or operation requires a String but gets either whitespace, null, or an empty string instead.her null or an empty string"""
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Parent of exceptions which indicate an entity, method, or operation got a String with no characters and no
+        whitespace.
+    2.  Catchall for errors not covered by BlankEmptyString subclasses.
+
+    # PARENT:
+        *   VoidStringException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "BLANK_EMPTY_STRING_ERROR"
     DEFAULT_MESSAGE = (
-        "Got a String that was either whitespace, null, or an empty string. A String must be non-null and non-empty."
+        "Got a blank String that had no characters nor whites space. The String cannot be empty it must have "
+        "some characters."
     )

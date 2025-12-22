@@ -13,18 +13,22 @@ __all__ = [
     "VoidStringException",
 ]
 
+from chess.system import InvalidStringException, NullException
+
 
 #======================# NULL_VOID_STRING EXCEPTION #======================#
-class VoidStringException(InvalidStringException, NullException):
+class VoidStringException(InvalidStringException):
     """
     # ROLE: Error Tracing, Debugging
-
+    # ROLE: Exception Wrapper, Catchall Exception
+    
     # RESPONSIBILITIES:
-    1.  Indicates a value being passed a Coord or Vector component is larger than the Board's dimension.
+    1.  Parent of exceptions which indicate an entity, method, or operation requires a String but gets either
+        whitespace, null, or an empty string instead.
+    2.  Catchall for VoidString errors not covered by VoidString subclasses.
 
     # PARENT:
-        *   InvalidNumberException
-        *   BoundsException
+        *   InvalidStringException
 
     # PROVIDES:
     None
@@ -35,8 +39,7 @@ class VoidStringException(InvalidStringException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    """Raised if an entity, method, or operation requires a String but gets either whitespace, null, or an empty string instead.her null or an empty string"""
     ERROR_CODE = "NULL_VOID_STRING_ERROR"
     DEFAULT_MESSAGE = (
-        "Got a String that was either whitespace, null, or an empty string. A String must be non-null and non-empty."
+        "Got a String that was either whitespace, null, or an empty string. A String must be contain some characters."
     )
