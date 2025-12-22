@@ -24,7 +24,7 @@ class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedExc
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised during SchemaSuperKey build process.
-    2.  Wraps unhandled exceptions that hit the try-finally block of an SchemaMapBuilder method.
+    2.  Wraps exceptions that hit the try-finally block of an SchemaMapBuilder method.
     
     # PARENT:
         *   SchemaSuperKeyException

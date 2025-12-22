@@ -25,7 +25,7 @@ class InvalidOrderContextException(OrderContextException, ValidationFailedExcept
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised OrderContext validation.
-    2.  Wraps unhandled exceptions that hit the finally-block in OrderContextValidator methods.
+    2.  Wraps exceptions that hit the try-finally-block in OrderContextValidator methods.
 
     # PARENT:
         *   OrderContextException

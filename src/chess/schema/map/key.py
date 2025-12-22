@@ -1,7 +1,7 @@
-# src/chess/schema/map/map.py
+# src/chess/schema/map/key.py
 
 """
-Module: chess.schema.map.map
+Module: chess.schema.map.key
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -18,11 +18,8 @@ class SchemaSuperKey(Context[Schema]):
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    1.  Define a SuperKey from a attribute-value pair. The Super
-    1.  Provide an SchemaLookup with a hash key-value to use in forward Schema entry lookups.
-        1.  Run forward lookups on the Schema hashtable to find a Team's play_directive_metadata for a game.
-    2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
-    3.  Verifies correctness of key-value map before running the forward lookup.
+    1.  Define a SuperKey from an attribute-value pair. The attribute must exist in the schema.
+    2.  A forward lookup for a Schema variant requires a SchemaSuperKey.
 
     # PARENT:
         *   Context

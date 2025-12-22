@@ -21,7 +21,7 @@ class NullSquareException(InvalidSquareException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates an entity, method, or operation that required a Square got null instead.
+    1.  Indicates an entity, method, or operation that required a Square but got null instead.
 
     # PARENT:
         *   NullSquareException

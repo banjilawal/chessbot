@@ -22,7 +22,7 @@ class SchemaNameBoundsException(InvalidSchemaException, BoundsException, NameExc
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that no member in Schema enum has that name.
+    1.  Indicate that no variant of Schema has that name.
 
     # PARENT:
         *   NameException
@@ -38,5 +38,5 @@ class SchemaNameBoundsException(InvalidSchemaException, BoundsException, NameExc
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_MEMBER_NAME_ERROR"
-    DEFAULT_MESSAGE = "None of the members in the Schema enum has that name. Pick an existing Schema member."
+    ERROR_CODE = "SCHEMA_NAME_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "There is no Schema variant with that name."

@@ -23,7 +23,7 @@ class InvalidCatalogContextException(CatalogContextException, ValidationFailedEx
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised CatalogContext validation.
-    2.  Wraps unhandled exceptions that hit the finally-block in CatalogContextValidator methods.
+    2.  Wraps exceptions that hit the try-finally-block in CatalogContextValidator methods.
 
     # PARENT:
         *   CatalogContextException

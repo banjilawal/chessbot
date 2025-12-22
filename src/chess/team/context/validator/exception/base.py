@@ -22,7 +22,7 @@ class InvalidTeamContextException(TeamContextException, ValidationFailedExceptio
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised TeamContext validation.
-    2.  Wraps unhandled exceptions that hit the finally-block in TeamContextValidator methods.
+    2.  Wraps exceptions that hit the try-finally-block in TeamContextValidator methods.
     
     # PARENT:
         *   TeamContextException

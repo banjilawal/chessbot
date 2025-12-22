@@ -23,7 +23,7 @@ class SchemaLookupFailedException(SchemaLookupException, OperationFailedExceptio
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wraps unhandled exceptions that hit the try-finally block of a SchemaLookup method.
+    1.  Wraps exceptions that hit the try-finally block of a SchemaLookup method.
 
     # PARENT:
         *   SchemaLookupException

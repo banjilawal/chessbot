@@ -23,7 +23,7 @@ class InvalidCatalogException(CatalogException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by CatalogValidation objects.
-    2.  Wraps unhandled exceptions that hit the finally-block in CatalogValidator methods.
+    2.  Wraps exceptions that hit the try-finally-block in CatalogValidator methods.
 
     # PARENT:
         *   CatalogException

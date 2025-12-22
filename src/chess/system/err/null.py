@@ -22,7 +22,7 @@ class NullException(ChessException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception that indicate an entity, method, or operation requires an object
-        or resource but  got null instead.
+        or resource but  but got null instead.
     3.  Catchall for null errors not covered by lower level NullException subclasses.
 
     # PARENT:

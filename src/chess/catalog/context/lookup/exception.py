@@ -21,7 +21,7 @@ class CatalogLookupException(CatalogException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wraps unhandled exceptions that hit the try-finally block of a CatalogLookup method.
+    1.  Wraps exceptions that hit the try-finally block of a CatalogLookup method.
 
     # PARENT:
         *   CatalogException

@@ -23,7 +23,7 @@ class LookupServiceException(LookupException, ContextServiceException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by ServiceLookup objects.
-    2.  Wraps unhandled exceptions that hit the try-finally block of a ServiceLookup method.
+    2.  Wraps exceptions that hit the try-finally block of a ServiceLookup method.
 
     # PARENT:
         *   LookupException

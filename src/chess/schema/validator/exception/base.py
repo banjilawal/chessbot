@@ -22,8 +22,8 @@ class InvalidSchemaException(SchemaException, ValidationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicates a Schema validation candidate failed a verification test.
-    2.  Wraps unhandled exceptions that hit the finally-block in SchemaValidator methods.
+    1.  Indicate a candidate failed a Schema validation test.
+    2.  Wraps exceptions that hit the try-finally-block in SchemaValidator methods.
 
     # PARENT:
         *   SchemaException

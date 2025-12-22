@@ -25,7 +25,7 @@ class InvalidBattleOrderException(BattleOrderException, ValidationFailedExceptio
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised during an BattleOrder verification process.
     2.  Catchall Exception for BattleOrderValidator when a candidate fails a sanity check.
-    3.  Wraps unhandled exceptions that hit the try-finally block of an BattleOrderValidator method.
+    3.  Wraps exceptions that hit the try-finally block of an BattleOrderValidator method.
 
     # PARENT:
         *   BattleOrderException

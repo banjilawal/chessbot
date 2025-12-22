@@ -22,8 +22,8 @@ class SchemaColorBoundsException(InvalidSchemaException, BoundsException, GameCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate a color is not in the set of acceptable Schema colors.
-
+    1.  Indicate that no variant of Schema with that color.
+    
     # PARENT:
         *   BoundsException
         *   GameColorException
@@ -39,8 +39,5 @@ class SchemaColorBoundsException(InvalidSchemaException, BoundsException, GameCo
     None
     """
     ERROR_CODE = "COLOR_OUT_OF_SCHEMA_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = (
-        "The color is not in the set of permissible schema colors. There is no schema "
-        "entry associated with this color."
-    )
+    DEFAULT_MESSAGE = "There is no Schema variant with that color."
     

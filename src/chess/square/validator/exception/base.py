@@ -22,7 +22,7 @@ class InvalidSquareException(SquareException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  Indicates a Square validation candidate failed a verification test.
-    2.  Wraps unhandled exceptions that hit the finally-block in SquareValidator methods.
+    2.  Wraps exceptions that hit the try-finally-block in SquareValidator methods.
 
     # PARENT:
         *   SquareException
