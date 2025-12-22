@@ -156,8 +156,8 @@ class TeamContextValidator(Validator[TeamContext]):
                 # On certification success return the team_color_context in a ValidationResult.
                 return ValidationResult.success(payload=context)
             
-        # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
-        # then return the exception inside a BuildResult.
+        # Finally, catch any missed exception and wrap A TeamBuildFailed exception around it
+        # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidTeamContextException(

@@ -118,7 +118,7 @@ class CoordService(EntityService[Coord]):
             return self.builder.build(
                 row=(coord.row + vector.y), column=(coord.column + vector.x), validator=self.validator
             )
-        # Finally, if there is an unhandled exception Wrap a CoordServiceException around it then return the
+        # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
         # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
@@ -168,7 +168,7 @@ class CoordService(EntityService[Coord]):
             return self._builder.build(
                 row=(coord.y * scalar.value), column=(coord.x * scalar.value), validator=self.validator
             )
-            # Finally, if there is an unhandled exception Wrap a CoordServiceException around it then return the
+            # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
             # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
@@ -209,7 +209,7 @@ class CoordService(EntityService[Coord]):
             # After the vector is certified return the BuildResult.
             return self._builder.build(row=vector.y, column=vector.x, validator=self.validator
                                        )
-            # Finally, if there is an unhandled exception Wrap a CoordServiceException around it then return the
+            # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
             # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(

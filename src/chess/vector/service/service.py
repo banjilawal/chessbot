@@ -118,7 +118,7 @@ class VectorService(EntityService[Vector]):
             return self.builder.build(
                 x=(vector.x * scalar.value), y=(vector.y * scalar.value), validator=self.validator
             )
-            # Finally, if there is an unhandled exception Wrap a VectorServiceException around it then return the
+            # Finally, catch any missed exception and wrap A VectorServiceException around it then return the
             # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
@@ -159,7 +159,7 @@ class VectorService(EntityService[Vector]):
             # After the coord is certified return the BuildResult.
             return self.builder.build(x=coord.column, y=coord.row)
             
-            # Finally, if there is an unhandled exception Wrap a VectorServiceException around it then return the
+            # Finally, catch any missed exception and wrap A VectorServiceException around it then return the
             # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(

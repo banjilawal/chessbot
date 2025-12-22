@@ -109,8 +109,8 @@ class PieceFactory(Builder[Piece]):
             
             return cls.build_combatant_piece(id=id, name=name, rank=rank, team=team)
         
-        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
-        # then return the exception inside a BuildResult.
+        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             raise BuildResult.failure(
                 PieceBuildFailedException(ex=ex, message=f"{method}: {BuildFailedException.DEFAULT_MESSAGE}")
@@ -164,8 +164,8 @@ class PieceFactory(Builder[Piece]):
             # Send the successfully built and registered PawnPiece inside a BuildResult.
             return BuildResult.success(piece)
         
-        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
-        # then return the exception inside a BuildResult.
+        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
                 PawnPieceBuildFailedException(
@@ -222,8 +222,8 @@ class PieceFactory(Builder[Piece]):
             # Send the successfully built and registered CombatantPiece inside a BuildResult.
             return BuildResult.success(piece)
         
-        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
-        # then return the exception inside a BuildResult.
+        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
                 KingPieceBuildFailedException(
@@ -279,8 +279,8 @@ class PieceFactory(Builder[Piece]):
             # Send the successfully built and registered CombatantPiece inside a BuildResult.
             return BuildResult.success(piece)
         
-        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
-        # then return the exception inside a BuildResult.
+        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
                 CombatantPieceBuildFailedException(
@@ -298,8 +298,8 @@ class PieceFactory(Builder[Piece]):
                 team.roster.items.append(piece)
                 
             return BuildResult.success((piece, team))
-        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
-        # then return the exception inside a BuildResult.
+        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
                 PieceBuildFailedException(ex=ex, message=f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}")
@@ -353,8 +353,8 @@ class PieceFactory(Builder[Piece]):
             # If no errors are detected return the successfully validated (id, designation, rank, team) tuple.
             return ValidationResult.success((id, name, rank, team, roster_number, opening_square))
         
-        # Finally, if there is an unhandled exception Wrap a PieceBuildFailed exception around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 PieceBuildFailedException(ex=ex, message=f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}")

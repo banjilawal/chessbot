@@ -166,7 +166,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
                 # On validation success return the player_SnapshotContext in the ValidationResult
                 return ValidationResult.success(context)
         
-        # Finally, if there is an unhandled exception Wrap an InvalidSnapshotContextException around it then
+        # Finally, catch any missed exception and wrap An InvalidSnapshotContextException around it then
         # return the exception-chain inside the ValidationResult
         except Exception as ex:
             return ValidationResult.failure(

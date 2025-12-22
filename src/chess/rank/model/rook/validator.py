@@ -112,7 +112,7 @@ class RookValidator(Validator[Rook]):
             # If all the checks pass return the certified Rook.
             return ValidationResult.success(rook)
         # Finally, if there is an unhandled exception wap an InvalidRookException around it
-        # then return the exception inside a ValidationResult.
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -162,7 +162,7 @@ class RookValidator(Validator[Rook]):
             return ValidationResult.success(id)
         
         # Finally, if there is an unhandled exception wap an InvalidRookException around it
-        # then return the exception inside a ValidationResult.
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -210,8 +210,8 @@ class RookValidator(Validator[Rook]):
                 )
             # If no errors are detected send the verified rook.designation inside a ValidationResult.
             return ValidationResult.success(name)
-        # Finally, if there is an unhandled exception Wrap an InvalidRookException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap An InvalidRookException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -260,8 +260,8 @@ class RookValidator(Validator[Rook]):
             # If no errors are detected send the verified rook.ransom inside a ValidationResult.
             return ValidationResult.success(ransom)
         
-        # Finally, if there is an unhandled exception wrap an InvalidRookException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidRookException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -310,8 +310,8 @@ class RookValidator(Validator[Rook]):
             # If no errors are detected send the verified rook.designation inside a ValidationResult.
             return ValidationResult.success(designation)
         
-        # Finally, if there is an unhandled exception wrap an InvalidRookException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidRookException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")
@@ -360,8 +360,8 @@ class RookValidator(Validator[Rook]):
             # If no errors are detected send the verified rook.team_quota inside a ValidationResult.
             return ValidationResult.success(team_quota)
         
-        # Finally, if there is an unhandled exception wrap an InvalidRookException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidRookException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRookException(ex=ex, message=f"{method}: {InvalidRookException.DEFAULT_MESSAGE}")

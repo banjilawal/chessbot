@@ -38,18 +38,17 @@ class SchemaValidator(Validator[Schema]):
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[Schema]:
         """
-        # ACTION:
-        1.  Check candidate is not null.
-        2.  Check the candidate is a Schema enum
-        3.  If both checks pass cast the candidate to a Schema and return in a ValidationResult.
+        # ACTION:.
+            1.  If the candidate passes existence and type checks cast into a Schema instance and return
+                in the ValidationResult. Else send an exception in the ValidationResult.
 
         # PARAMETERS:
             *   candidate (Any)
 
         # Returns:
         ValidationResult[Schema] containing either:
-            - On success:   Schema in the payload.
-            - On failure:   Exception.
+            - On failure: Exception.
+            - On success: Schema in the payload.
 
         # RAISES:
             *   TypeError
@@ -58,21 +57,21 @@ class SchemaValidator(Validator[Schema]):
         """
         method = "SchemaValidator.validate"
         try:
-            # Verify the candidate exists
+            # Handle the nonexistence case.
             if candidate is None:
                 return ValidationResult.failure(
                     NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
                 )
-            # Verify the candidate is a Schema instance.
+            # Handle the wrong type case.
             if not isinstance(candidate, Schema):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected Schema, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
                 )
-            # If both verifications are passed cast the candidate and return in ValidationResult.
-            return ValidationResult.success(cast(Schema, candidate))
+            # On certification success return the schema instance in a ValidationResult.
+            return ValidationResult.success(payload=cast(Schema, candidate))
         
-        # Finally, if there is an unhandled exception Wrap an InvalidSchemaException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidSchemaException around it then, return the
+        # exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSchemaException(ex=ex, message=f"{method} {InvalidSchemaException.DEFAULT_MESSAGE}")

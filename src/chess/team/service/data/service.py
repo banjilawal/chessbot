@@ -113,7 +113,7 @@ class TeamDataService(DataService[Team]):
     #         # back to the caller.
     #         return InsertionResult.success(payload=item)
     #
-    #     # Finally, if there is an unhandled exception Wrap a TeamInsertionFailedException around it
+    #     # Finally, catch any missed exception and wrap A TeamInsertionFailedException around it
     #     # then return exception chain inside an InsertionResult.
     #     except Exception as ex:
     #         return InsertionResult.failure(

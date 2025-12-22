@@ -72,8 +72,8 @@ class NumberValidator(Validator[int]):
             # On passing both tests cast the candidate to an int, wrap in a ValidationResult and send back.
             return ValidationResult.success(payload=cast(int, candidate))
         
-        # Finally, if there is an unhandled exception Wrap an InvalidNumberException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap An InvalidNumberException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidNumberException(ex=ex, message=f"{method}: {InvalidNumberException.DEFAULT_MESSAGE}")

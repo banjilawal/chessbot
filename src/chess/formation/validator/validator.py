@@ -74,7 +74,7 @@ class BattleOrderValidator(Validator[BattleOrder]):
             # a ValidationResult.
             return ValidationResult.success(cast(BattleOrder, candidate))
         
-        # Finally, if there is an unhandled exception Wrap an InvalidPieceException around it
+        # Finally, catch any missed exception and wrap An InvalidPieceException around it
         # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

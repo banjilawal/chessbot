@@ -139,8 +139,8 @@ class AgentContextValidator(Validator[AgentContext]):
                     )
                 return ValidationResult.success(context)
         
-        # Finally, if there is an unhandled exception Wrap an  InvalidAgentContextException around it then
-        # return the exception-chain inside the ValidationResult
+        # Finally, catch any missed exception and wrap an InvalidAgentContextException around it then, return
+        # the exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidAgentContextException(

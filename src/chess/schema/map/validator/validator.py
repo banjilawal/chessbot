@@ -116,8 +116,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
                 # On certification success return the color_team_schema_super_key in a ValidationResult.
                 return ValidationResult.success(payload=map)
             
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an InvalidSchemaSuperKeyException. Then send the exception-chain in a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidSchemaSuperKeyException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSchemaSuperKeyException(

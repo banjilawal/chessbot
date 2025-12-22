@@ -96,8 +96,7 @@ class ServiceValidator(Validator[EntityService]):
             # If all checks pass return the Service.
             return ValidationResult.success(service)
         
-        # Finally, if none of the execution paths matches the state wrap the unhandled exception inside
-        # an Invalidentity_serviceException. Then send the exception-chain in a ValidationResult.
+        # Finally, catch any missed exception and wrap an Invalidentity_serviceException. Then send the exception-chain in a ValidationResult.
         except Exception as ex:
             ValidationResult.failure(
                 Invalidentity_serviceException(

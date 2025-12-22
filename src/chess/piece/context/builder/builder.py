@@ -159,7 +159,7 @@ class PieceContextBuilder(Builder[PieceContext]):
             BuildResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
-        # Finally, if there is an unhandled exception Wrap a PieceContextBuildFailedException around it then
+        # Finally, catch any missed exception and wrap A PieceContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(

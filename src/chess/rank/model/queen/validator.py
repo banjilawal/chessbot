@@ -112,7 +112,7 @@ class QueenValidator(Validator[Queen]):
             # If all the checks pass return the certified Queen.
             return ValidationResult.success(queen)
         # Finally, if there is an unhandled exception wap an InvalidQueenException around it
-        # then return the exception inside a ValidationResult.
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -162,7 +162,7 @@ class QueenValidator(Validator[Queen]):
             return ValidationResult.success(id)
         
         # Finally, if there is an unhandled exception wap an InvalidQueenException around it
-        # then return the exception inside a ValidationResult.
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -210,8 +210,8 @@ class QueenValidator(Validator[Queen]):
                 )
             # If no errors are detected send the verified queen.designation inside a ValidationResult.
             return ValidationResult.success(name)
-        # Finally, if there is an unhandled exception Wrap an InvalidQueenException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap An InvalidQueenException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -260,8 +260,8 @@ class QueenValidator(Validator[Queen]):
             # If no errors are detected send the verified queen.ransom inside a ValidationResult.
             return ValidationResult.success(ransom)
         
-        # Finally, if there is an unhandled exception wrap an InvalidQueenException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidQueenException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -310,8 +310,8 @@ class QueenValidator(Validator[Queen]):
             # If no errors are detected send the verified queen.designation inside a ValidationResult.
             return ValidationResult.success(designation)
         
-        # Finally, if there is an unhandled exception wrap an InvalidQueenException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidQueenException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")
@@ -360,8 +360,8 @@ class QueenValidator(Validator[Queen]):
             # If no errors are detected send the verified queen.team_quota inside a ValidationResult.
             return ValidationResult.success(team_quota)
         
-        # Finally, if there is an unhandled exception wrap an InvalidQueenException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidQueenException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidQueenException(ex=ex, message=f"{method}: {InvalidQueenException.DEFAULT_MESSAGE}")

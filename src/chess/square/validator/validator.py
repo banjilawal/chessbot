@@ -105,8 +105,8 @@ class SquareValidator(Validator[Square]):
             # If no errors are detected return the successfully validated Square instance.
             return ValidationResult.success(payload=square)
             
-            # Finally, if there is an unhandled exception Wrap a InvalidSquareException around it
-            # then return the exception inside a ValidationResult.
+            # Finally, catch any missed exception and wrap A InvalidSquareException around it
+            # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSquareException(ex=ex, message=f"{method}: {InvalidSquareException.DEFAULT_MESSAGE}")

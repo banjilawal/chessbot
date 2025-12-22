@@ -131,8 +131,8 @@ class TeamValidator(Validator[Team]):
             # If no errors are detected return the successfully validated Team instance.
             return ValidationResult.success(team)
         
-        # Finally, if there is an unhandled exception Wrap an InvalidTeamException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap An InvalidTeamException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidTeamException(ex=ex, message=f"{method}: {InvalidTeamException.DEFAULT_MESSAGE}")
@@ -212,8 +212,8 @@ class TeamValidator(Validator[Team]):
             # The player_agent has the team in its records.
             return ValidationResult.success(payload=(team, agent))
         
-        # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
-        # then return the exception inside a BuildResult.
+        # Finally, catch any missed exception and wrap A TeamBuildFailed exception around it
+        # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(
                 TeamNotRegisteredWithAgentException(
@@ -272,8 +272,8 @@ class TeamValidator(Validator[Team]):
             # The player_agent has the team in its records.
             return ValidationResult.success(payload=(team, game))
         
-        # Finally, if there is an unhandled exception Wrap a TeamBuildFailed exception around it
-        # then return the exception inside a BuildResult.
+        # Finally, catch any missed exception and wrap A TeamBuildFailed exception around it
+        # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return ValidationResult.failure(
                 NoTeamGameRelationshipException(

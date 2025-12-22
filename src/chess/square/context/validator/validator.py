@@ -121,8 +121,8 @@ class SquareContextValidator(Validator[SquareContext]):
                     return ValidationResult.failure(coord_validation.exception)
                 return ValidationResult.success(payload=context)
             
-        # Finally, if there is an unhandled exception Wrap an InvalidSquareContextException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap An InvalidSquareContextException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSquareContextException(

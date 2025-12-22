@@ -89,7 +89,7 @@ class CoordValidator(Validator[Coord]):
             # Return the Coord if integrity checks are passed.
             return ValidationResult.success(payload=coord)
         
-        # Finally, if there is an unhandled exception Wrap an InvalidCoordEException around it then return the
+        # Finally, catch any missed exception and wrap An InvalidCoordEException around it then return the
         # exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

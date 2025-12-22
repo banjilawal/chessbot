@@ -112,7 +112,7 @@ class PawnValidator(Validator[Pawn]):
             # If all the checks pass return the certified Pawn.
             return ValidationResult.success(pawn)
         # Finally, if there is an unhandled exception wap an InvalidPawnException around it
-        # then return the exception inside a ValidationResult.
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidPawnException(ex=ex, message=f"{method}: {InvalidPawnException.DEFAULT_MESSAGE}")
@@ -162,7 +162,7 @@ class PawnValidator(Validator[Pawn]):
             return ValidationResult.success(id)
         
         # Finally, if there is an unhandled exception wap an InvalidPawnException around it
-        # then return the exception inside a ValidationResult.
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidPawnException(ex=ex, message=f"{method}: {InvalidPawnException.DEFAULT_MESSAGE}")
@@ -210,8 +210,8 @@ class PawnValidator(Validator[Pawn]):
                 )
             # If no errors are detected send the verified pawn.designation inside a ValidationResult.
             return ValidationResult.success(name)
-        # Finally, if there is an unhandled exception Wrap an InvalidPawnException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap An InvalidPawnException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidPawnException(ex=ex, message=f"{method}: {InvalidPawnException.DEFAULT_MESSAGE}")
@@ -260,8 +260,8 @@ class PawnValidator(Validator[Pawn]):
             # If no errors are detected send the verified pawn.ransom inside a ValidationResult.
             return ValidationResult.success(ransom)
         
-        # Finally, if there is an unhandled exception wrap an InvalidPawnException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidPawnException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidPawnException(ex=ex, message=f"{method}: {InvalidPawnException.DEFAULT_MESSAGE}")
@@ -310,8 +310,8 @@ class PawnValidator(Validator[Pawn]):
             # If no errors are detected send the verified pawn.designation inside a ValidationResult.
             return ValidationResult.success(designation)
         
-        # Finally, if there is an unhandled exception wrap an InvalidPawnException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidPawnException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidPawnException(ex=ex, message=f"{method}: {InvalidPawnException.DEFAULT_MESSAGE}")
@@ -360,8 +360,8 @@ class PawnValidator(Validator[Pawn]):
             # If no errors are detected send the verified pawn.team_quota inside a ValidationResult.
             return ValidationResult.success(team_quota)
         
-        # Finally, if there is an unhandled exception wrap an InvalidPawnException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidPawnException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidPawnException(ex=ex, message=f"{method}: {InvalidPawnException.DEFAULT_MESSAGE}")

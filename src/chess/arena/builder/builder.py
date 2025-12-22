@@ -86,7 +86,7 @@ class ArenaBuilder(Builder[Arena]):
         # The flow should only get here if the logic did not route all the types of concrete Arenas.
         # In that case wrap the unhandled exception inside an ArenaBuildFailedException then, return
         # the exception chain inside a ValidationResult.
-        # then return the exception inside a ValidationResult.
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                 ArenaBuildFailedException(ex=ex, message=f"{method}: {ArenaBuildFailedException.DEFAULT_MESSAGE}")
@@ -115,7 +115,7 @@ class ArenaBuilder(Builder[Arena]):
             # After individual piece integrity certifcation and uniqueness verification send a success result.
             return ValidationResult.success(payload=players)
         
-        # Finally, if there is an unhandled exception Wrap an ArenaBuildFailedException around it then
+        # Finally, catch any missed exception and wrap An ArenaBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

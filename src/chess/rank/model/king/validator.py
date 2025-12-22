@@ -112,7 +112,7 @@ class KingValidator(Validator[King]):
             # If all the checks pass return the certified King.
             return ValidationResult.success(king)
         # Finally, if there is an unhandled exception wap an InvalidKingException around it
-        # then return the exception inside a ValidationResult.
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidKingException(ex=ex, message=f"{method}: {InvalidKingException.DEFAULT_MESSAGE}")
@@ -162,7 +162,7 @@ class KingValidator(Validator[King]):
             return ValidationResult.success(id)
         
         # Finally, if there is an unhandled exception wap an InvalidKingException around it
-        # then return the exception inside a ValidationResult.
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidKingException(ex=ex, message=f"{method}: {InvalidKingException.DEFAULT_MESSAGE}")
@@ -210,8 +210,8 @@ class KingValidator(Validator[King]):
                 )
             # If no errors are detected send the verified king.designation inside a ValidationResult.
             return ValidationResult.success(name)
-        # Finally, if there is an unhandled exception Wrap an InvalidKingException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap An InvalidKingException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidKingException(ex=ex, message=f"{method}: {InvalidKingException.DEFAULT_MESSAGE}")
@@ -260,8 +260,8 @@ class KingValidator(Validator[King]):
             # If no errors are detected send the verified king.ransom inside a ValidationResult.
             return ValidationResult.success(ransom)
         
-        # Finally, if there is an unhandled exception wrap an InvalidKingException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidKingException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidKingException(ex=ex, message=f"{method}: {InvalidKingException.DEFAULT_MESSAGE}")
@@ -310,8 +310,8 @@ class KingValidator(Validator[King]):
             # If no errors are detected send the verified king.designation inside a ValidationResult.
             return ValidationResult.success(designation)
         
-        # Finally, if there is an unhandled exception wrap an InvalidKingException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidKingException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidKingException(ex=ex, message=f"{method}: {InvalidKingException.DEFAULT_MESSAGE}")
@@ -360,8 +360,8 @@ class KingValidator(Validator[King]):
             # If no errors are detected send the verified king.team_quota inside a ValidationResult.
             return ValidationResult.success(team_quota)
         
-        # Finally, if there is an unhandled exception wrap an InvalidKingException around it
-        # then return the exception inside a ValidationResult.
+        # Finally, catch any missed exception and wrap an InvalidKingException around it
+        # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidKingException(ex=ex, message=f"{method}: {InvalidKingException.DEFAULT_MESSAGE}")
