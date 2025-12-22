@@ -18,6 +18,24 @@ __all__ = [
 
 #======================# STRING EXCEPTION #======================#
 class StringException(ChessException):
-    """Super class of text related exception."""
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Parent of exception raised by String objects
+    2.  Catchall for String errors not covered by String subclasses.
+
+    # PARENT:
+        *   ChessException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "STRING_ERROR"
     DEFAULT_MESSAGE = "String raised an exception."
