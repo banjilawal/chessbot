@@ -7,35 +7,35 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import BuildException, OperationFailedException
+from chess.system import OperationFailedException, BuildException
 
 __all__ = [
-    #======================# FAILED ENTITY BUILD OPERATION EXCEPTION #======================#
+    # ======================# BUILD_FAILED EXCEPTION #======================#
     "BuildFailedException",
 ]
 
 
-#======================# FAILED ENTITY BUILD OPERATION EXCEPTION #======================#
+# ======================# BUILD_FAILED EXCEPTION #======================#
 class BuildFailedException(BuildException, OperationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
-  
+
     # RESPONSIBILITIES:
-    1.  Parent of exception when an entity building process fails.
-    2.  Wraps unhandled exception that hit the try-finally block of a Builder method.
-  
+    1.  Indicates an exception prevented a build operation from completing successfully.
+    2.  Wraps unhandled exceptions that hit the try-finally block of a Build method.
+
     # PARENT:
         *   BuildException
         *   OperationFailedException
-  
+
     # PROVIDES:
     None
-  
+
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "build failed."
+    DEFAULT_MESSAGE = "build failed. An exception prevented the build from completing."

@@ -5,9 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/snapshot/buider/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/snapshot/buider/exceotion.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/find/exception/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/find/exception/failure.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/find/finder/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/buider/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/buider/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/finder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/finder/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/finder/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/finder/finder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/validator/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/validator/exception/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/text/exception/invalid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/text/exception/invalid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/build/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/builder/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/build/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/build/exception/failure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/exception/failure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/find/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/find/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/find/example.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/find/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/find/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/find/exception/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/find/finder/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/find/exception/operation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/find/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/find/finder/finder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/find/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/find/result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,7 +286,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/text/exception/void",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/find",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -294,18 +313,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/find" />
       <recent name="$PROJECT_DIR$/src/chess/system/text/exception/void" />
       <recent name="$PROJECT_DIR$/src/chess/system/text/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/service/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/service/validator" />
-      <recent name="$PROJECT_DIR$/src/chess/system/build/builder" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/find/find" />
+      <recent name="$PROJECT_DIR$/src/chess/system/find/finder" />
       <recent name="$PROJECT_DIR$/src/chess/system" />
       <recent name="$PROJECT_DIR$/src/chess/system/data/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/text/exception/void" />
-      <recent name="$PROJECT_DIR$/src/chess/system/text/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/system/err/number/exception" />
     </key>
   </component>
   <component name="RunManager" selected="Python.base">
@@ -957,7 +976,7 @@
       <workItem from="1766190117520" duration="23649000" />
       <workItem from="1766223152549" duration="26989000" />
       <workItem from="1766255712700" duration="60521000" />
-      <workItem from="1766341551279" duration="20008000" />
+      <workItem from="1766341551279" duration="23079000" />
     </task>
     <servers />
   </component>

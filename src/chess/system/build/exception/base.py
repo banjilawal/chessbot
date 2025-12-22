@@ -21,7 +21,7 @@ class BuildException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by Build operations and BUilders.
+    1.  Parent of exception raised by Build operations and Builders.
     3.  Catchall for Builder errors not covered by lower level  Builder exception.
   
     # PARENT:

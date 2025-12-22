@@ -1,13 +1,13 @@
-# src/chess/snapshot/finder/exception.py
+# src/chess/snapshot/finder/exception/base.py
 
 """
-Module: chess.snapshot.finder.exception
+Module: chess.snapshot.finder.exception.base
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import FinderException
+from chess.system import FinderException, OperationFailedException
 
 __all__ = [
     # ======================# SNAPSHOT_FINDER EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# SNAPSHOT_FINDER EXCEPTION #======================#
-class SnapshotFinderException(FinderException):
+class SnapshotFinderException(FinderException, OperationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -25,6 +25,7 @@ class SnapshotFinderException(FinderException):
     2.  Wraps unhandled exception that hit the try-finally block of an SnapshotFinder method.
 
     # PARENT:
+        *   SnapshotException
         *   FinderException
 
     # PROVIDES:

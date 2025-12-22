@@ -4,7 +4,6 @@
 Module: chess.system.find.result
 Author: Banji Lawal
 Created: 2025-10-04
-Updated: 2025-10-10
 version: 1.0.0
 """
 

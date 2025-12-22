@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.game import SnapshotContextException
+
 from chess.system import ValidationFailedException
 
 

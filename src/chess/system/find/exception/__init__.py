@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .exception import FinderException
-from .operation import SearchOperationFailedException
+from .base import SearchException
+from .failure import SearchFailedException

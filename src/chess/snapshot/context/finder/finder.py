@@ -10,7 +10,7 @@ from typing import List
 
 from chess.agent import PlayerAgent
 from chess.snapshot.finder.exception import SnapshotFinderException
-from chess.system import Finder, LoggingLevelRouter, SearchResult
+from chess.system import Finder, LoggingLevelRouter, SearchFailedException, SearchResult
 from chess.game import (
     SnapshotContext, SnapshotContextValidator, GameTimeline, Snapshot, NullGameTimelineException
 )
@@ -94,11 +94,11 @@ class SnapshotFinder(Finder[Snapshot]):
             if context.exception is not None:
                 return cls._find_by_exception(dataset, context.exception)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SnapshotFinderException(ex=ex, message="{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -134,11 +134,11 @@ class SnapshotFinder(Finder[Snapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SnapshotFinderException(ex=ex, message=f"{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -174,11 +174,11 @@ class SnapshotFinder(Finder[Snapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SnapshotFinderException(ex=ex, message=f"{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -214,11 +214,11 @@ class SnapshotFinder(Finder[Snapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SnapshotFinderException(ex=ex, message=f"{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -255,9 +255,9 @@ class SnapshotFinder(Finder[Snapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-            # Finally, if some exception is not handled by the checks wrap it inside an SnapshotFinderException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
             # then, return the exception chain inside a SearchResult.
-        except Exception as ex:
+            except Exception as ex:
             return SearchResult.failure(
-                SnapshotFinderException(ex=ex, message=f"{method}: {SnapshotFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
             )
