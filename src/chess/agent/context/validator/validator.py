@@ -24,8 +24,8 @@ class AgentContextValidator(Validator[AgentContext]):
 
     # RESPONSIBILITIES:
     1.  Ensure an AgentContext instance is certified safe, reliable and consistent before use.
-    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
-
+    2.  If a candidate fails a safety test, the validator sends an exception in a ValidationResult.
+    
     # PARENT:
         *   Validator
 
