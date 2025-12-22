@@ -7,8 +7,9 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import AgentContext
+
 from chess.system import ServiceException
+from chess.agent import AgentContextException
 
 __all__ = [
     #======================# AGENT_CONTEXT_SERVICE EXCEPTION #======================#
@@ -17,7 +18,7 @@ __all__ = [
 
 
 #======================# AGENT_CONTEXT_SERVICE EXCEPTION #======================#
-class AgentContextServiceException(AgentContext, ServiceException):
+class AgentContextServiceException(AgentContextException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
     
@@ -26,8 +27,8 @@ class AgentContextServiceException(AgentContext, ServiceException):
     2.  Wrap an exception that hits the try-finally block of an AgentContextService method.
         
     # PARENT:
-        *   AgentException
         *   ServiceException
+        *   AgentContextExceptio
 
     # PROVIDES:
     None

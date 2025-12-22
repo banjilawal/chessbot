@@ -9,6 +9,8 @@ version: 1.0.0
 
 from chess.board import BoardContext
 from chess.system import ServiceException
+from chess.system import ServiceException
+from chess.board import BoardContextException
 
 __all__ = [
     # ======================# BOARD_CONTEXT_SERVICE EXCEPTION #======================#
@@ -17,19 +19,17 @@ __all__ = [
 
 
 # ======================# BOARD_CONTEXT_SERVICE EXCEPTION #======================#
-class BoardContextServiceException(BoardContext, ServiceException):
+class BoardContextServiceException(BoardContextException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised when an BoardContextService's normal operations are halted
-        by an error condition.
-    2.  Raised when no specific exception exists for the error interrupting BoardContextService's
-        processes from their normal flows.
+    1.  Indicate that an BoardContextService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of an BoardContextService method.
 
     # PARENT:
-        *   BoardContext
         *   ServiceException
+        *   BoardContextException
 
     # PROVIDES:
     None

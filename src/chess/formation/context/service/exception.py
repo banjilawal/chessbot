@@ -1,13 +1,3 @@
-# src/chess/arena/map/service/exception/exception
-
-"""
-Module: chess.arena.map.service.exception.exception
-Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
-"""
-
-
 from chess.system import ServiceException
 from chess.arena import ArenaContextException
 

@@ -8,33 +8,33 @@ version: 1.0.0
 """
 
 from chess.system import ServiceException
+from chess.team import TeamContextException
 
 __all__ = [
-    #======================# TEAM_CONTEXT_SERVICE EXCEPTION #======================#
+    # ======================# TEAM_CONTEXT_SERVICE EXCEPTION #======================#
     "TeamContextServiceException",
 ]
 
 
-#======================# TEAM_CONTEXT_SERVICE EXCEPTION #======================#
-class TeamContextServiceException(ServiceException):
+# ======================# TEAM_CONTEXT_SERVICE EXCEPTION #======================#
+class TeamContextServiceException(TeamContextException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
-    
+
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an TeamContextService's normal operations are halted
-        by an error condition.
-    2.  Raised when no specific exception exists for the error interrupting TeamContextService's
-        processes from their normal flows.
-        
+    1.  Indicate that an TeamContextService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of an TeamContextService method.
+
     # PARENT:
         *   ServiceException
+        *   TeamContextException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """

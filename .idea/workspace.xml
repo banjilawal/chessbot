@@ -5,7 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/formation/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/agent/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/piece/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/service/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -959,7 +969,7 @@
       <workItem from="1766223152549" duration="26989000" />
       <workItem from="1766255712700" duration="60521000" />
       <workItem from="1766341551279" duration="31466000" />
-      <workItem from="1766392718604" duration="21485000" />
+      <workItem from="1766392718604" duration="22641000" />
     </task>
     <servers />
   </component>

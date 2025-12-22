@@ -8,18 +8,35 @@ version: 1.0.0
 """
 
 from chess.system import ServiceException
+from chess.piece import PieceContextException
 
 __all__ = [
-    #======================# PIECE_CONTEXT_SERVICE EXCEPTION #======================#
-    "PieceContextServiceException"
+    # ======================# PIECE_CONTEXT_SERVICE EXCEPTION #======================#
+    "PieceContextServiceException",
 ]
 
 
-#======================# PIECE_CONTEXT_SERVICE EXCEPTION #======================#
-class PieceContextServiceException(ServiceException):
+# ======================# PIECE_CONTEXT_SERVICE EXCEPTION #======================#
+class PieceContextServiceException(PieceContextException, ServiceException):
     """
-    Super class of exception raised by PieceContextService objects.
-    Do not use directly. Subclasses give precise, fined-grained, debugging info.
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an PieceContextService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of an PieceContextService method.
+
+    # PARENT:
+        *   ServiceException
+        *   PieceContextException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     ERROR_CODE = "PIECE_CONTEXT_SERVICE_ERROR"
     DEFAULT_MESSAGE = "PieceContextService raised an exception."
