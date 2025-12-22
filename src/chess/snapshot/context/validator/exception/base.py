@@ -13,19 +13,20 @@ from chess.system import ValidationFailedException
 
 
 __all__ = [
-    # ======================# AGENT_CONTEXT VALIDATION EXCEPTION #======================#
+    # ======================# SNAPSHOT_CONTEX_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidSnapshotContextException",
 ]
 
 
-# ======================# AGENT_CONTEXT VALIDATION EXCEPTION #======================#
+# ======================# SNAPSHOT_CONTEX_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidSnapshotContextException(SnapshotContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised SnapshotContext validation.
-    2.  Wraps unhandled exception that hit the finally-block in SnapshotContextValidator methods.
+    1.  Indicates a candidate failed SnapshotContext validation checks.
+    2.  Wraps unhandled exception that hit the try-finally block of a SnapShotContextValidator method.
+    3.  Catchall for validation errors not handled by InvalidSnapshotContextException subclasses.
 
     # PARENT:
         *   SnapshotContextException
@@ -40,5 +41,5 @@ class InvalidSnapshotContextException(SnapshotContextException, ValidationFailed
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_CONTEXT_VALIDATION_ERROR"
+    ERROR_CODE = "SNAPSHOT_CONTEX_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "SnapshotContext validation failed."

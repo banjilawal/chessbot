@@ -18,6 +18,25 @@ __all__ = [
 
 # ======================# STRING_VALIDATION_FAILED EXCEPTION #======================#
 class InvalidStringException(StringException, ValidationFailedException):
-    """Raised if StringValidator candidate fails a check."""
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Indicates a candidate failed String validation checks.
+    2.  Wraps unhandled exception that hit the try-finally block of a StringValidator method.
+
+    # PARENT:
+        *   StringException
+        *   ValidationFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     ERROR_CODE = "STRING_VALIDATION_FAILED_ERROR"
     DEFAULT_MESSAGE = "String validation failed."
