@@ -1,7 +1,7 @@
-# src/chess/snapshot/map/validator/exception/base.py
+# src/chess/snapshot/validator/exception/base.py
 
 """
-Module: chess.snapshot.map.validator.exception.base
+Module: chess.snapshot.validator.exception.base
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

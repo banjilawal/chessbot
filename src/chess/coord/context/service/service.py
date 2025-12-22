@@ -1,7 +1,7 @@
-# src/chess/coord/map/service/service.py
+# src/chess/coord/service/service.py
 
 """
-Module: chess.coord.map.service.service
+Module: chess.coord.service.service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

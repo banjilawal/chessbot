@@ -7,8 +7,8 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-
 from chess.system import ServiceException
+from chess.team import TeamException
 
 __all__ = [
     # ======================# TEAM_SERVICE EXCEPTION #======================#
@@ -17,17 +17,17 @@ __all__ = [
 
 
 # ======================# TEAM_SERVICE EXCEPTION #======================#
-class TeamServiceException(ServiceException):
+class TeamServiceException(TeamException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by TeamService objects.
-    2.  Raised when an exception hits the try-finally block of a TeamService method.
-    3.  Catchall for TeamService failures that are not covered by a lower level TeamService exception.
+    1.  Indicate that an TeamService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a TeamService method.
 
     # PARENT:
         *   ServiceException
+        *   TeamException
 
     # PROVIDES:
     None
@@ -39,4 +39,4 @@ class TeamServiceException(ServiceException):
     None
     """
     ERROR_CODE = "TEAM_SERVICE_ERROR"
-    DEFAULT_ERROR_CODE = "TeamService raised an exception."
+    DEFAULT_MESSAGE = "TeamService raised an exception."

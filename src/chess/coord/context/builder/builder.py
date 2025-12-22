@@ -1,7 +1,7 @@
-# src/chess/coord/map/builder/builder.py
+# src/chess/coord/builder/builder.py
 
 """
-Module: ches.coord.map.builder.builder
+Module: ches.coord.builder.builder
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

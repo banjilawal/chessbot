@@ -1,7 +1,7 @@
-# src/chess/arena/map/map.py
+# src/chess/arena/map.py
 
 """
-Module: chess.arena.arena.map.map
+Module: chess.arena.arena.map
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/coord/map/validator/exception/null/exception.py
+# src/chess/coord/validator/exception/null/exception.py
 
 """
-Module: chess.coord.map.validator.exception.null.exception
+Module: chess.coord.validator.exception.null.exception
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

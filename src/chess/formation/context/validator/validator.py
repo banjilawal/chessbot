@@ -1,7 +1,7 @@
-# src/chess/formation/map/validator/validator.py
+# src/chess/formation/validator/validator.py
 
 """
-Module: chess.formation.map.validator
+Module: chess.formation.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -21,7 +21,7 @@ class OrderContextValidator(Validator[OrderContext]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a BattleOrder instance is certified safe, reliable and consistent before use.
+    1.  Ensure a Formation instance is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
@@ -82,7 +82,7 @@ class OrderContextValidator(Validator[OrderContext]):
                     TypeError(f"{method}: Expected OrderContext, got {type(candidate).__designation__} instead.")
                 )
             
-            # Once existence and type checks are passed, cast the candidate to BattleOrder and run structure tests.
+            # Once existence and type checks are passed, cast the candidate to Formation and run structure tests.
             context = cast(OrderContext, candidate)
             
             # Handle the case of searching with no attribute-value.

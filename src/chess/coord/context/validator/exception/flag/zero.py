@@ -1,7 +1,7 @@
-# src/chess/coord/map/validator/exception/flag/zero.py
+# src/chess/coord/validator/exception/flag/zero.py
 
 """
-Module: chess.coord.map.validator.exception.flag.zero
+Module: chess.coord.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

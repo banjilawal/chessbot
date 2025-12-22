@@ -1,7 +1,7 @@
-# src/chess/domain/searcher/map/factory.py
+# src/chess/domain/searcher/factory.py
 
 """
-Module: chess.domain.searcher.map.coord_stack_validator
+Module: chess.domain.searcher.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/piece/map/map.py
+# src/chess/piece/map.py
 
 """
-Module: chess.piece.map.map
+Module: chess.piece.map
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

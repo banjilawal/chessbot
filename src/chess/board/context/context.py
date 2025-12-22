@@ -1,6 +1,6 @@
-# src/chess/board/searcher/map/map
+# src/chess/board/searcher/map
 """
-Module: chess.board.searcher.map.map
+Module: chess.board.searcher.map
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0

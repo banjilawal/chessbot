@@ -1,4 +1,4 @@
-# src/chess/formation/map/builder/builder.py
+# src/chess/formation/builder/builder.py
 
 """
 Module: chess.formation.lookup/map.builder.builder
@@ -95,7 +95,7 @@ class OrderContextBuilder(Builder[OrderContext]):
                 return BuildResult.failure(
                     ExcessiveOrderContextFlagsException(f"{method}: {ExcessiveOrderContextFlagsException}")
                 )
-            # After verifying only one BattleOrder attribute-value-tuple is enabled, validate it.
+            # After verifying only one Formation attribute-value-tuple is enabled, validate it.
             
             # Build the name OrderContext if its flag is enabled.
             if name is not None:

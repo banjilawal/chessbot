@@ -1,7 +1,7 @@
-# src/chess/snapshot/map/builder/exception.py
+# src/chess/snapshot/builder/exception.py
 
 """
-Module: chess.snapshot.map.builder.exception
+Module: chess.snapshot.builder.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

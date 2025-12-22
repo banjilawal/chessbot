@@ -1,7 +1,7 @@
-# src/chess/piece/map/service/service.py
+# src/chess/piece/service/service.py
 
 """
-Module: chess.piece.map.service.service
+Module: chess.piece.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/team/map/finder/exception/base.py
+# src/chess/team/finder/exception/base.py
 
 """
-Module: chess.team.map.finder.exception.base
+Module: chess.team.finder.exception.base
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

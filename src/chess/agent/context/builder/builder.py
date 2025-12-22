@@ -1,7 +1,7 @@
-# src/chess/agent/map/builder/builder.py
+# src/chess/agent/builder/builder.py
 
 """
-Module: chess.agent.map.builder.builder
+Module: chess.agent.builder.builder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

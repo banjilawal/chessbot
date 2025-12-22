@@ -1,7 +1,7 @@
-# src/chess/arena/map/validator/exception/base.py
+# src/chess/arena/validator/exception/base.py
 
 """
-Module: chess.arena.arena.map.validator.exception.base
+Module: chess.arena.arena.validator.exception.base
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

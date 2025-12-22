@@ -7,13 +7,13 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.coord import CoordException
-from chess.system import ServiceException
-
 __all__ = [
     # ======================# COORD_SERVICE EXCEPTION #======================#
     "CoordServiceException",
 ]
+
+from chess.coord import CoordException
+from chess.system import ServiceException
 
 
 # ======================# COORD_SERVICE EXCEPTION #======================#
@@ -22,13 +22,12 @@ class CoordServiceException(CoordException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by CoordService objects.
-    2.  Raised when an exception hits the try-finally block of a CoordService method.
-    3.  Catchall for CoordService failures that are not covered by a lower level CoordService exception.
+    1.  Indicate that an CoordService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a CoordService method.
 
     # PARENT:
-        *   CoordException
         *   ServiceException
+        *   CoordException
 
     # PROVIDES:
     None
@@ -40,4 +39,4 @@ class CoordServiceException(CoordException, ServiceException):
     None
     """
     ERROR_CODE = "COORD_SERVICE_ERROR"
-    DEFAULT_ERROR_CODE = "CoordService raised an exception."
+    DEFAULT_MESSAGE = "CoordService raised an exception."

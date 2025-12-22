@@ -22,7 +22,7 @@ class OrderSquareBoundsException(InvalidBattleOrderException, BoundsException, N
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a square is outside the range of acceptable BattleOrder squares.
+    1.  Indicate an error occurred because a square is outside the range of acceptable Formation squares.
 
     # PARENT:
         *   InvalidBattleOrderException

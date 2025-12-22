@@ -1,7 +1,7 @@
-# src/chess/formation/map/validator/exception/flag.py
+# src/chess/formation/validator/exception/flag.py
 
 """
-Module: chess.formation.map.validator.exception.flag
+Module: chess.formation.validator.exception.flag
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -23,7 +23,7 @@ class ExcessiveOrderContextFlagsException(InvalidOrderContextException, ContextF
     # ROLE: ContextFlagException, OrderContextException
 
     # RESPONSIBILITIES:
-    1.  Indicate if more than one TeamOrder attribute is going to be used in a BattleOrder lookup.
+    1.  Indicate if more than one TeamOrder attribute is going to be used in a Formation lookup.
 
     # PARENT:
         *   InvalidOrderContextException

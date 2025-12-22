@@ -1,7 +1,7 @@
-# src/chess/arena/map/builder/builder.py
+# src/chess/arena/builder/builder.py
 
 """
-Module: chess.arena.map.builder.builder
+Module: chess.arena.builder.builder
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

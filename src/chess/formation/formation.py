@@ -13,7 +13,7 @@ from chess.rank import RankSpec
 from chess.system import GameColor
 
 
-class BattleOrder(Enum):
+class Formation(Enum):
     """
     # ROLE: Build Configuration Table, Schema, Metadata Set
 

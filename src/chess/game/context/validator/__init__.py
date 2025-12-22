@@ -1,7 +1,7 @@
-# src/chess/game/map/validator/__init__.py
+# src/chess/game/validator/__init__.py
 
 """
-Module: chess.game.map.validator.__init__
+Module: chess.game.validator.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

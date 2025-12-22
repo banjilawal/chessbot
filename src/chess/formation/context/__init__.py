@@ -1,7 +1,7 @@
-# src/chess/formation/map/__init__.py
+# src/chess/formation/__init__.py
 
 """
-Module: chess.formation.map.__init__
+Module: chess.formation.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

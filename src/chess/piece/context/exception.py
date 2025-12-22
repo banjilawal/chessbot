@@ -1,7 +1,7 @@
-# src/chess/piece/map/exception.py
+# src/chess/piece/exception.py
 
 """
-Module: chess.piece.map.exception
+Module: chess.piece.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

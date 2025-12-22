@@ -1,7 +1,7 @@
-# src/chess/piece/map/validator/exception/flag/zero.py
+# src/chess/piece/validator/exception/flag/zero.py
 
 """
-Module: chess.piece.map.validator.exception.flag.zero
+Module: chess.piece.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

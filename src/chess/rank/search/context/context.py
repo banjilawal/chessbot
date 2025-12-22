@@ -1,7 +1,7 @@
-# src/chess/rank/searcher/map/map
+# src/chess/rank/searcher/map
 
 """
-Module: chess.rank.searcher.map.map
+Module: chess.rank.searcher.map
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

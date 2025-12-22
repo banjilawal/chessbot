@@ -1,7 +1,7 @@
-# src/chess/arena/map/validator/exception/flag/zero.py
+# src/chess/arena/validator/exception/flag/zero.py
 
 """
-Module: chess.arena.map.validator.exception.flag.zero
+Module: chess.arena.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/catalog/map/validator/__init__.py
+# src/chess/catalog/validator/__init__.py
 
 """
-Module: chess.catalog.map.__init__
+Module: chess.catalog.__init__
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

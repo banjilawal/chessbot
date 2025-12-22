@@ -1,7 +1,7 @@
-# src/chess/piece/map/validator/exception/__init__.py
+# src/chess/piece/validator/exception/__init__.py
 
 """
-Module: chess.piece.map.validator.exception.__init__
+Module: chess.piece.validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

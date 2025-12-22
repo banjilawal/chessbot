@@ -1,7 +1,7 @@
-# src/chess/arena/map/validator/exception/null.py
+# src/chess/arena/validator/exception/null.py
 
 """
-Module: chess.arenaContext.arena.map.validator.exception.null
+Module: chess.arenaContext.arena.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

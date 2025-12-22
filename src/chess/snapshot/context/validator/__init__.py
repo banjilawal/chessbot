@@ -1,7 +1,7 @@
-# src/chess/snapshot/map/validator/__init__.py
+# src/chess/snapshot/validator/__init__.py
 
 """
-Module: chess.snapshot.map.validator.__init__
+Module: chess.snapshot.validator.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

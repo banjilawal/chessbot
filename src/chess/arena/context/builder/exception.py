@@ -1,7 +1,7 @@
-# src/chess/arena/map/builder/exception.py
+# src/chess/arena/builder/exception.py
 
 """
-Module: chess.arena.map.builder.exception
+Module: chess.arena.builder.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/team/map/exception.py
+# src/chess/team/exception.py
 
 """
-Module: chess.team.map.exception
+Module: chess.team.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

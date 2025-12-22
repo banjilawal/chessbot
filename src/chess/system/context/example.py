@@ -92,10 +92,10 @@ The major theme influencing the modules design are
 See the list of exception in the `__all__` list following (e.g., `ResultException`).
 """
 
-# src/chess.map.rollback_exception.py
+# src/chess.rollback_exception.py
 
 """
-Module: chess.map.rollback_exception
+Module: chess.rollback_exception
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

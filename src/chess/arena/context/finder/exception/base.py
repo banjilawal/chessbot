@@ -1,4 +1,4 @@
-# src/chess/arena/map/finder/exception.py
+# src/chess/arena/finder/exception.py
 
 """
 Module: chess.arena.cntext.finder.exception

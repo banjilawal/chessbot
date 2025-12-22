@@ -1,7 +1,7 @@
-# src/chess/agent/map/service/__init__.py
+# src/chess/agent/service/__init__.py
 
 """
-Module: chess.agent.map.service.__init__
+Module: chess.agent.service.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

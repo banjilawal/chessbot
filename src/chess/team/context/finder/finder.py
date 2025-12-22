@@ -1,7 +1,7 @@
-# src/chess/team/map/finder/finder.py
+# src/chess/team/finder/finder.py
 
 """
-Module: chess.team.map.finder.finder
+Module: chess.team.finder.finder
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

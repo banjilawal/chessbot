@@ -1,7 +1,7 @@
-# src/chess/agent/map/exception.py
+# src/chess/agent/exception.py
 
 """
-Module: chess.agent.map.exception
+Module: chess.agent.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

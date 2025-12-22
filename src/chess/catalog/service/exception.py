@@ -7,29 +7,27 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.catalog import Catalog
-from chess.system import ServiceException
-
 __all__ = [
     # ======================# CATALOG_SERVICE EXCEPTION #======================#
     "CatalogServiceException",
 ]
 
+from chess.catalog import CatalogException
+from chess.system import ServiceException
+
 
 # ======================# CATALOG_SERVICE EXCEPTION #======================#
-class CatalogServiceException(Catalog, ServiceException):
+class CatalogServiceException(CatalogException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised when an CatalogService's normal operations are halted
-        by an error condition.
-    2.  Raised when no specific exception exists for the error interrupting CatalogService's
-        processes from their normal flows.
+    1.  Indicate that an CatalogService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a CatalogService method.
 
     # PARENT:
-        *   Catalog
         *   ServiceException
+        *   CatalogException
 
     # PROVIDES:
     None
@@ -42,4 +40,3 @@ class CatalogServiceException(Catalog, ServiceException):
     """
     ERROR_CODE = "CATALOG_SERVICE_ERROR"
     DEFAULT_MESSAGE = "CatalogService raised an exception."
-

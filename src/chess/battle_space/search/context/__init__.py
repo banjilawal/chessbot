@@ -1,4 +1,4 @@
-# src/chess/battle_space/searcher/map/__init__.py
+# src/chess/battle_space/searcher/__init__.py
 
 """
 Module: chess.battle_space.searcher.map

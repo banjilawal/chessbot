@@ -22,7 +22,7 @@ class OrderColorBoundsException(InvalidBattleOrderException, BoundsException, Ga
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a color is outside the range of acceptable BattleOrder colors.
+    1.  Indicate an error occurred because a color is outside the range of acceptable Formation colors.
 
     # PARENT:
         *   InvalidBattleOrderException

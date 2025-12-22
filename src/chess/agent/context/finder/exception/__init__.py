@@ -1,4 +1,4 @@
-# src/chess/agent/map/finder/exception/__init__.py
+# src/chess/agent/finder/exception/__init__.py
 
 """
 Module: chess.agent.cntext.finder.exception.__init__

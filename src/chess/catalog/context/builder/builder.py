@@ -1,7 +1,7 @@
-# src/chess/catalog/map/builder/builder.py
+# src/chess/catalog/builder/builder.py
 
 """
-Module: chess.catalog.map.builder.builder
+Module: chess.catalog.builder.builder
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/team/map/service/service.py
+# src/chess/team/service/service.py
 
 """
-Module: chess.team.map.service.service
+Module: chess.team.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

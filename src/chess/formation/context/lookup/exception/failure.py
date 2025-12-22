@@ -22,7 +22,7 @@ class OrderLookupFailedException(InvalidBattleOrderException, LookupFailedExcept
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a lookup is outside the range of acceptable BattleOrder lookups.
+    1.  Indicate an error occurred because a lookup is outside the range of acceptable Formation lookups.
 
     # PARENT:
         *   InvalidBattleOrderException

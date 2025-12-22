@@ -1,7 +1,7 @@
-# src/chess/snapshot/map/map.py
+# src/chess/snapshot/map.py
 
 """
-Module: chess.snapshot.map.map
+Module: chess.snapshot.map
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

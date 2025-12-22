@@ -8,19 +8,38 @@ version: 1.0.0
 """
 
 
-from chess.system import ServiceException, ValidationException, NullException
+from chess.system import ServiceException
+from chess.square import SquareException
 
 __all__ = [
+    # ======================# SQUARE_SERVICE EXCEPTION #======================#
     "SquareServiceException",
     "AddingDuplicateSquareException",
     "RemovingNonExistentSquareException",
 ]
 
 
-class SquareServiceException(ServiceException):
+# ======================# SQUARE_SERVICE EXCEPTION #======================#
+class SquareServiceException(SquareException, ServiceException):
     """
-    Super class of exception raised by SquareService objects. Do not use directly. Subclasses give
-    precise, fined-grained, debugging info.
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an SquareService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a SquareService method.
+
+    # PARENT:
+        *   ServiceException
+        *   SquareException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     ERROR_CODE = "SQUARE_SERVICE_ERROR"
     DEFAULT_MESSAGE = "SquareService raised an exception."

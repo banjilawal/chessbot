@@ -1,7 +1,7 @@
-# src/chess/catalog/map/validator/exception/null.py
+# src/chess/catalog/validator/exception/null.py
 
 """
-Module: chess.catalog.map.exception.null
+Module: chess.catalog.exception.null
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

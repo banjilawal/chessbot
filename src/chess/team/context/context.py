@@ -1,7 +1,7 @@
-# src/chess/team/map/map.py
+# src/chess/team/map.py
 
 """
-Module: chess.team.map.map
+Module: chess.team.map
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

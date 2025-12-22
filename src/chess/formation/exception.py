@@ -19,8 +19,8 @@ class BattleOrderException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by BattleOrder objects.
-    2.  Catchall for conditions which are not covered by lower level BattleOrder exceptions.
+    1.  Parent of exceptions raised by Formation objects.
+    2.  Catchall for conditions which are not covered by lower level Formation exceptions.
 
     # PARENT:
         *   ChessException
@@ -35,4 +35,4 @@ class BattleOrderException(ChessException):
     None
     """
     ERROR_CODE = "BATTLE_ORDER_ERROR"
-    DEFAULT_MESSAGE = "BattleOrder raised an exception."
+    DEFAULT_MESSAGE = "Formation raised an exception."

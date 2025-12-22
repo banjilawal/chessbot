@@ -1,4 +1,4 @@
-# src/chess/agent/map/finder/finder.py
+# src/chess/agent/finder/finder.py
 
 """
 Module: chess.agent.cntext.finder.finder

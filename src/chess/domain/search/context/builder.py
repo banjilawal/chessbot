@@ -1,7 +1,7 @@
-# src/chess/domain/searcher/map/factory.py
+# src/chess/domain/searcher/factory.py
 
 """
-Module: chess.domain.searcher.map.builder
+Module: chess.domain.searcher.builder
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

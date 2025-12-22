@@ -1,7 +1,7 @@
-# src/chess/formation/map/validator/exception/base.py
+# src/chess/formation/validator/exception/base.py
 
 """
-Module: chess.formation.map.validator.exception.base
+Module: chess.formation.validator.exception.base
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

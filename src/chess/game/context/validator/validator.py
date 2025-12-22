@@ -1,7 +1,7 @@
-# src/chess/game/map/validator/validator.py
+# src/chess/game/validator/validator.py
 
 """
-Module: chess.game.map.validator
+Module: chess.game.validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

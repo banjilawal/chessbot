@@ -23,7 +23,7 @@ class InvalidBattleOrderException(BattleOrderException, ValidationFailedExceptio
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during an BattleOrder verification process.
+    1.  Parent of exceptions raised during an Formation verification process.
     2.  Catchall Exception for BattleOrderValidator when a candidate fails a sanity check.
     3.  Wrap an exception that hits the try-finally block of an BattleOrderValidator method.
 
@@ -38,4 +38,4 @@ class InvalidBattleOrderException(BattleOrderException, ValidationFailedExceptio
     None
     """
     ERROR_CODE = "BATTLEORDER_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "BattleOrder validation failed."
+    DEFAULT_MESSAGE = "Formation validation failed."

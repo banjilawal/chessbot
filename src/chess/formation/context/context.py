@@ -1,7 +1,7 @@
-# src/chess/formation/map/map.py
+# src/chess/formation/map.py
 
 """
-Module: chess.formation.map.map
+Module: chess.formation.map
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

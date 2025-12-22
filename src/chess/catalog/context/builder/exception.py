@@ -1,7 +1,7 @@
-# src/chess/catalog/map/builder/exception.py
+# src/chess/catalog/builder/exception.py
 
 """
-Module: chess.catalog.map.builder.exception
+Module: chess.catalog.builder.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

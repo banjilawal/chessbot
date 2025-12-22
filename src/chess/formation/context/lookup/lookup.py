@@ -21,8 +21,8 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
     # ROLE: Forward Lookups, Mapping 
 
     # RESPONSIBILITIES:
-    1.  Lookup microservice API for mapping metadata values to BattleOrder configurations.
-    2.  Encapsulates integrity assurance logic for BattleOrder lookup operations.
+    1.  Lookup microservice API for mapping metadata values to Formation configurations.
+    2.  Encapsulates integrity assurance logic for Formation lookup operations.
 
 
     # PARENT:
@@ -108,8 +108,8 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             *   context_validator: OrderContextValidator
 
         # Returns:
-        SearchResult[List[BattleOrder]] containing either:
-            - On finding a match: List[BattleOrder] in the payload.
+        SearchResult[List[Formation]] containing either:
+            - On finding a match: List[Formation] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
@@ -151,14 +151,14 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
     def _lookup_by_designation(cls, designation: str) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  Get any BattleOrder which matches the target designation.
+        1.  Get any Formation which matches the target designation.
 
         # Parameters:
             *   designation (str)
 
         # Returns:
-        SearchResult[List[BattleOrder]] containing either:
-            - On finding a match: List[BattleOrder] in the payload.
+        SearchResult[List[Formation]] containing either:
+            - On finding a match: List[Formation] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
@@ -194,8 +194,8 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             *   name (str)
 
         # Returns:
-        SearchResult[List[BattleOrder]] containing either:
-            - On finding a match: List[BattleOrder] in the payload.
+        SearchResult[List[Formation]] containing either:
+            - On finding a match: List[Formation] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
@@ -225,14 +225,14 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
     def _lookup_by_color(cls, color: GameColor) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  Get any BattleOrder which matches the target color.
+        1.  Get any Formation which matches the target color.
 
         # Parameters:
             *   color (BattleOrderColor)
 
         # Returns:
-        SearchResult[List[BattleOrder]] containing either:
-            - On finding a match: List[BattleOrder] in the payload.
+        SearchResult[List[Formation]] containing either:
+            - On finding a match: List[Formation] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 

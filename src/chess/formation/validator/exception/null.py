@@ -22,8 +22,8 @@ class NullBattleOrderException(InvalidBattleOrderException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an BattleOrder validation candidate is null.
-    2.  Raised if an entity, method or operation requires an BattleOrder but receives null instead.
+    1.  Raised if an Formation validation candidate is null.
+    2.  Raised if an entity, method or operation requires an Formation but receives null instead.
 
     # PARENT:
         *   InvalidBattleOrderException
@@ -36,4 +36,4 @@ class NullBattleOrderException(InvalidBattleOrderException, NullException):
     None
     """
     ERROR_CODE = "NULL_ORDER_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "BattleOrder cannot be null."
+    DEFAULT_MESSAGE = "Formation cannot be null."

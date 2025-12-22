@@ -1,7 +1,7 @@
-# src/board/searcher/map/coord_stack_validator.py
+# src/board/searcher/coord_stack_validator.py
 
 """
-Module: chess.board.searcher.map.coord_stack_validator
+Module: chess.board.searcher.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0

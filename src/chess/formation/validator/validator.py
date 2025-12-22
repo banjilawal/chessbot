@@ -18,7 +18,7 @@ class BattleOrderValidator(Validator[BattleOrder]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a BattleOrder instance is certified safe, reliable and consistent before use.
+    1.  Ensure a Formation instance is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
@@ -40,16 +40,16 @@ class BattleOrderValidator(Validator[BattleOrder]):
         """
         # ACTION:
         1.  Check candidate is not null.
-        2.  Check the candidate is a BattleOrder enum
-        3.  If both checks pass cast the candidate to a BattleOrder and return in a
+        2.  Check the candidate is a Formation enum
+        3.  If both checks pass cast the candidate to a Formation and return in a
             ValidationResult.
 
         # PARAMETERS:
             *   candidate (Any)
 
         # Returns:
-        ValidationResult[BattleOrder] containing either:
-            - On success:   BattleOrder in the payload.
+        ValidationResult[Formation] containing either:
+            - On success:   Formation in the payload.
             - On failure:   Exception.
 
         # RAISES:
@@ -68,9 +68,9 @@ class BattleOrderValidator(Validator[BattleOrder]):
             
             if not isinstance(candidate, BattleOrder):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected BattleOrder, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method} Expected Formation, got {type(candidate).__name__} instead.")
                 )
-            # If no errors are detected cast the candidate to a BattleOrder object then return in
+            # If no errors are detected cast the candidate to a Formation object then return in
             # a ValidationResult.
             return ValidationResult.success(cast(BattleOrder, candidate))
         

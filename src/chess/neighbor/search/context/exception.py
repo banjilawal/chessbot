@@ -1,7 +1,7 @@
-# src/chess/neighbor/searcher/map/collision.py
+# src/chess/neighbor/searcher/collision.py
 
 """
-Module: chess.neighbor.searcher.map.exception
+Module: chess.neighbor.searcher.exception
 Created: 2025-11-05
 version: 1.0.0
 """

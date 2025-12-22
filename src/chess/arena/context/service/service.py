@@ -1,7 +1,7 @@
-# src/chess/agent/map/service/service.py
+# src/chess/agent/service/service.py
 
 """
-Module: chess.agent.map.service.service
+Module: chess.agent.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -75,7 +75,7 @@ class Schema(Enum):
         return self._rank_row + self._advancing_step.value
     #
     # @property
-    # def battle_order(self) -> SearchResult[List[BattleOrder]]:
+    # def battle_order(self) -> SearchResult[List[Formation]]:
     #         return BattleOrderLookup().lookup(map=OrderContext(color=self._color))
     
     def __str__(self) -> str:

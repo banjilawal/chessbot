@@ -1,7 +1,7 @@
-# src/chess/square/map/builder/exception.py
+# src/chess/square/builder/exception.py
 
 """
-Module: chess.square.map.builder.exception
+Module: chess.square.builder.exception
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

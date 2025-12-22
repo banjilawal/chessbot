@@ -22,7 +22,7 @@ class OrderNameBoundsException(InvalidBattleOrderException, BoundsException, Nam
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a designation is outside the range of acceptable BattleOrder names.
+    1.  Indicate an error occurred because a designation is outside the range of acceptable Formation names.
 
     # PARENT:
         *   InvalidBattleOrderException

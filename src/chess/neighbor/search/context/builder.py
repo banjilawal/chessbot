@@ -1,7 +1,7 @@
-# src/chess/neighbor/searcher/map/factory.py
+# src/chess/neighbor/searcher/factory.py
 
 """
-Module: chess.neighbor.searcher.map.builder
+Module: chess.neighbor.searcher.builder
 Author: Banji Lawal
 Created: 2025-11-05
 version: 1.0.0

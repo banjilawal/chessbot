@@ -1,7 +1,7 @@
-# src/chess/coord/map/validator/validator.py
+# src/chess/coord/validator/validator.py
 
 """
-Module: chess.coord.map.validator
+Module: chess.coord.validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

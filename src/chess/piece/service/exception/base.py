@@ -8,36 +8,35 @@ version: 1.0.0
 """
 
 from chess.system import ServiceException
+from chess.piece import PieceException
 
 __all__ = [
-    #======================# PIECE_SERVICE EXCEPTION #======================#
+    # ======================# PIECE_SERVICE EXCEPTION #======================#
     "PieceServiceException",
 ]
 
 
-#======================# PIECE_SERVICE EXCEPTION #======================#
-class PieceServiceException(ServiceException):
+# ======================# PIECE_SERVICE EXCEPTION #======================#
+class PieceServiceException(PieceException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an PieceService's organic fields or methods run into a
-        condition that leads to an operation failing.
-    2.  Parent of exceptions raised by classes that highly cohere with PieceService objects.
-    3.  Catchall for PieceService failure states that are not covered by a lower level
-        PieceService exception.
+    1.  Indicate that an PieceService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a PieceService method.
 
     # PARENT:
         *   ServiceException
+        *   PieceException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
-    
-    INHERITED ATTRIBUTES:
+
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "PIECE_SERVICE_ERROR"
-    DEFAULT_ERROR_CODE = "PieceService raised an exception."
+    DEFAULT_MESSAGE = "PieceService raised an exception."

@@ -1,7 +1,7 @@
-# src/chess/snapshot/map/service/service.py
+# src/chess/snapshot/service/service.py
 
 """
-Module: chess.snapshot.map.service.service
+Module: chess.snapshot.service.service
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

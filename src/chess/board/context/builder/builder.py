@@ -1,7 +1,7 @@
-# src/chess/board/searcher/map/builder
+# src/chess/board/searcher/builder
 
 """
-Module: chess.board.searcher.map.builder
+Module: chess.board.searcher.builder
 Author: Banji Lawal
 Created: 2025-10-08
 version: 1.0.0

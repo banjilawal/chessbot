@@ -1,7 +1,7 @@
-# src/chess/catalog/map/lookup/lookup.py
+# src/chess/catalog/lookup/lookup.py
 
 """
-Module: chess.catalog.map.lookup.lookup
+Module: chess.catalog.lookup.lookup
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/coord/map/service/exception/exception
+# src/chess/coord/service/exception/exception
 
 """
-Module: chess.coord.map.service.exception.exception
+Module: chess.coord.service.exception.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

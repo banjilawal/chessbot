@@ -1,7 +1,7 @@
-# src/chess/team/map/builder/__init__.py
+# src/chess/team/builder/__init__.py
 
 """
-Module: chess.team.map.builder.__init__
+Module: chess.team.builder.__init__
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/piece/map/builder/builder.py
+# src/chess/piece/builder/builder.py
 
 """
-Module: chess.piece.map.builder.builder
+Module: chess.piece.builder.builder
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

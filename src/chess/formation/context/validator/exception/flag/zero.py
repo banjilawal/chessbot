@@ -1,7 +1,7 @@
-# src/chess/formation/map/validator/exception/flag.py
+# src/chess/formation/validator/exception/flag.py
 
 """
-Module: chess.formation.map.validator.exception.flag
+Module: chess.formation.validator.exception.flag
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -24,7 +24,7 @@ class ZeroOrderContextFlagsException(InvalidOrderContextException, BoundsExcepti
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no OrderContext flag is provided for a BattleOrder lookup.
+    1.  Indicate no OrderContext flag is provided for a Formation lookup.
 
     # PARENT:
         *   BoundsException

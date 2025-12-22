@@ -8,34 +8,35 @@ version: 1.0.0
 """
 
 from chess.system import ServiceException
+from chess.game import GameException
 
 __all__ = [
-    #======================# GAME_SERVICE EXCEPTION #======================#
+    # ======================# GAME_SERVICE EXCEPTION #======================#
     "GameServiceException",
 ]
 
 
-#======================# GAME_SERVICE EXCEPTION #======================#
-class GameServiceException(ServiceException):
+# ======================# GAME_SERVICE EXCEPTION #======================#
+class GameServiceException(GameException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by GameService objects.
-    2.  Raised when an exception hits the try-finally block of a GameService method.
-    3.  Catchall for GameService failures that are not covered by a lower level GameService exception.
+    1.  Indicate that an GameService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a GameService method.
 
     # PARENT:
         *   ServiceException
+        *   GameException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "GAME_SERVICE_ERROR"
-    DEFAULT_ERROR_CODE = "GameService raised an exception."
+    DEFAULT_MESSAGE = "GameService raised an exception."
