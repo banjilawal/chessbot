@@ -22,7 +22,7 @@ class SchemaException(ChessException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by Schema objects.
-    2.  Catchall for conditions which are not covered by lower level Schema exceptions.
+    2.  Catchall for conditions which are not covered by lower level SchemaExceptions subclasses.
 
     # PARENT:
         *   ChessException
@@ -36,5 +36,5 @@ class SchemaException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_SCHEMA_ERROR"
+    ERROR_CODE = "SCHEMA_ERROR"
     DEFAULT_ERROR_CODE = "Schema raised an exception."

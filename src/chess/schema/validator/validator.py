@@ -18,8 +18,8 @@ class SchemaValidator(Validator[Schema]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a Schema instance is certified safe, reliable and consistent before use.
-    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+    1.  Ensure a candidate is not null and the correct type before its used as a Schema.
+    2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
         *   Validator

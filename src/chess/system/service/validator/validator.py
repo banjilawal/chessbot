@@ -23,7 +23,7 @@ class ServiceValidator(Validator[EntityService]):
     # RESPONSIBILITIES:
     1.  Ensure an EntityService is not null and the correct before use.
     2.  Certify the EntityService's builder and validator are not null and the correct type.
-    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+    2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
         *   Validator

@@ -20,7 +20,7 @@ class Validator(ABC, Generic[T]):
 
     # RESPONSIBILITIES:
     1.  Ensure an object is certified safe, reliable and consistent before use.
-    2.  Provide the verification customer an exception detailing the contract violation if integrity assurance fails.
+    2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
     None
