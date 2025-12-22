@@ -37,7 +37,6 @@ class Square:
     _coord: Coord
     _occupant: Optional[Piece]
     
-    
     def __init__(self, id: int, name: str, coord: Coord, board: Board):
         """
         # ACTION:

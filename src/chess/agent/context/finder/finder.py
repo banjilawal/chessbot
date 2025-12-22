@@ -97,11 +97,15 @@ class AgentFinder(Finder[PlayerAgent]):
             if context.variety is not None:
                 return cls._find_by_variety(dataset, context.variety)
             
-        # Finally, if some exception is not handled by the checks wrap it inside an AgentFinderException
-        # then, return the exception chain inside a SearchResult.
+            # As a failsafe send a buildResult failure if a map path was missed.
+            SearchResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                AgentFinderException(ex=ex, message="{method}: {AgentFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -141,11 +145,11 @@ class AgentFinder(Finder[PlayerAgent]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-        # Finally, if some exception is not handled by the checks wrap it inside an AgentFinderException
-        # then, return the exception chain inside a SearchResult.
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                AgentFinderException(ex=ex, message=f"{method}: {AgentFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -185,11 +189,11 @@ class AgentFinder(Finder[PlayerAgent]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-        # Finally, if some exception is not handled by the checks wrap it inside an AgentFinderException
-        # then, return the exception chain inside a SearchResult.
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                AgentFinderException(ex=ex, message=f"{method}: {AgentFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -227,11 +231,12 @@ class AgentFinder(Finder[PlayerAgent]):
                 if team_search.is_success:
                     return SearchResult.success(payload=List[team_search.payload])
             return SearchResult.empty()
-        # Finally, if some exception is not handled by the checks wrap it inside an AgentFinderException
-        # then, return the exception chain inside a SearchResult.
+            
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                AgentFinderException(ex=ex, message=f"{method}: {AgentFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -265,9 +270,10 @@ class AgentFinder(Finder[PlayerAgent]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-            # Finally, if some exception is not handled by the checks wrap it inside an AgentFinderException
+                
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                AgentFinderException(ex=ex, message=f"{method}: {AgentFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )

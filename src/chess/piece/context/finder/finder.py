@@ -11,7 +11,7 @@ from typing import List
 
 from chess.team import Team
 from chess.rank import Rank
-from chess.system import LoggingLevelRouter, Finder, SearchResult
+from chess.system import LoggingLevelRouter, Finder, SearchFailedException, SearchResult
 from chess.piece import Piece, PieceContext, PieceContextValidator, PieceFinderException
 
 
@@ -94,11 +94,17 @@ class PieceFinder(Finder[Piece]):
             # Entry point into searching by piece's ransom.
             if context.ransom is not None:
                 return cls._find_by_ransom(dataset=dataset, ransom=context.ransom)
-        # Finally, if some exception is not handled by the checks wrap it inside an PieceFinderException
+            
+            # As a failsafe send a buildResult failure if a map path was missed.
+            SearchResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+        
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                PieceFinderException(ex=ex, message= f"{method}: {PieceFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
 
     @classmethod
@@ -132,10 +138,12 @@ class PieceFinder(Finder[Piece]):
             # Handle the case with successful hits. The restriction that: if match_count > 1 ==> Error is relaxed.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-            # The finally block handles the case of an error during the search process.
+            
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                PieceFinderException(ex=ex, message=f"{method}: {PieceFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -169,10 +177,12 @@ class PieceFinder(Finder[Piece]):
             # Handle the case with successful hits. The restriction that: if match_count > 1 ==> Error is relaxed.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-            # The finally block handles the case of an error during the search process.
+                
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                PieceFinderException(ex=ex, message=f"{method}: {PieceFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -203,10 +213,12 @@ class PieceFinder(Finder[Piece]):
             # Handle the case with successful hits
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-            # The finally block handles the case of an error during the search process.
+            
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                PieceFinderException(ex=ex, message=f"{method}: {PieceFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -237,12 +249,12 @@ class PieceFinder(Finder[Piece]):
             # Handle the case with successful hits.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-            # The finally block handles the case of an error during the search process.
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                PieceFinderException(ex=ex, message=f"{method}: {PieceFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def _find_by_ransom(cls, dataset: List[Piece], ransom: int) -> SearchResult[List[Piece]]:
@@ -271,8 +283,9 @@ class PieceFinder(Finder[Piece]):
             # Handle the case with successful hits.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-            # The finally block handles the case of an error during the search process.
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                PieceFinderException(ex=ex, message=f"{method}: {PieceFinderException.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )

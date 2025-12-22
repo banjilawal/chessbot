@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.system import LoggingLevelRouter, Finder, SearchResult
+from chess.system import LoggingLevelRouter, Finder, SearchFailedException, SearchResult
 from chess.coord import Coord, CoordContext, CoordContextValidator, CoordFinderException
 
 
@@ -27,7 +27,7 @@ class CoordFinder(Finder[Coord]):
         method = "CoordFinder.find"
         try:
             context_validation = context_validator.validate(context)
-            if context_validation.is_failure():
+            if context_validation.is_failure(\:
                 return SearchResult.failure(context_validation.exception)
             
             if context.row is not None and context.column is None:
@@ -48,16 +48,17 @@ class CoordFinder(Finder[Coord]):
                     row=context.row,
                     column=context.column
                 )
-        
+            
+            # As a failsafe send a buildResult failure if a map path was missed.
+            SearchResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+            
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                CoordFinderException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{CoordFinderException.DEFAULT_MESSAGE}"
-                    )
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -77,21 +78,17 @@ class CoordFinder(Finder[Coord]):
             
             if len(matches) == 0:
                 return SearchResult.empty()
-            elif len(matches) >= 1:
+            if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-        
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                CoordFinderException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{CoordFinderException.DEFAULT_MESSAGE}"
-                    )
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
-    
-    @classmethod
+
+
+@classmethod
     @LoggingLevelRouter.monitor
     def _find_by_column(
             cls,
@@ -107,18 +104,13 @@ class CoordFinder(Finder[Coord]):
             
             if len(matches) == 0:
                 return SearchResult.empty()
-            elif len(matches) >= 1:
+            if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-        
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                CoordFinderException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{CoordFinderException.DEFAULT_MESSAGE}"
-                    )
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -139,13 +131,11 @@ class CoordFinder(Finder[Coord]):
             
             if len(matches) == 0:
                 return SearchResult.empty()
-            elif len(matches) >= 1:
-                
+            if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                CoordFinderException(
-                    ex=ex,
-                    message=f"{method}: {CoordFinderException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )

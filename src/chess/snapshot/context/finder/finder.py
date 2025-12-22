@@ -93,6 +93,11 @@ class SnapshotFinder(Finder[Snapshot]):
             # Find by exception
             if context.exception is not None:
                 return cls._find_by_exception(dataset, context.exception)
+            
+            # As a failsafe send a buildResult failure if a map path was missed.
+            SearchResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
         
         # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
         # then, return the exception chain inside a SearchResult.

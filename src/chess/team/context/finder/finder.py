@@ -97,14 +97,17 @@ class TeamFinder(Finder[Team]):
             # Entry point into finding by team's color.
             if context.color is not None:
                 return cls._find_by_color(dataset=dataset, team=context.color)
-
-        # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
-        # then, return the exception chain inside a SearchResult.
+                
+                # As a failsafe send a buildResult failure if a map path was missed.
+            SearchResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+            
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamFinderOperationFailedException(
-                    ex=ex, message="{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -139,13 +142,11 @@ class TeamFinder(Finder[Team]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-        # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
-        # then, return the exception chain inside a SearchResult.
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamFinderOperationFailedException(
-                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -177,13 +178,11 @@ class TeamFinder(Finder[Team]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
-            # Finally, if there is an unhandled exception Wrap a TeamFinderOperationFailedException exception around it
-            # then return the exceptions inside a BuildResult.
             return SearchResult.failure(
-                TeamFinderOperationFailedException(
-                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -214,13 +213,11 @@ class TeamFinder(Finder[Team]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-        # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
-        # then, return the exception chain inside a SearchResult.
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamFinderOperationFailedException(
-                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -251,13 +248,11 @@ class TeamFinder(Finder[Team]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-        # Finally, if some exception is not handled by the checks wrap it inside an TeamFinderOperationFailedException
-        # then, return the exception chain inside a SearchResult.
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamFinderOperationFailedException(
-                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -290,13 +285,11 @@ class TeamFinder(Finder[Team]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-
-        # Finally, if there is an unhandled exception Wrap a TeamFinderOperationFailedException exception around it
-        # then return the exceptions inside a BuildResult.
+            
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                TeamFinderOperationFailedException(
-                    ex=ex, message=f"{method}: {TeamFinderOperationFailedException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     

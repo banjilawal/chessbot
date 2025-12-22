@@ -12,12 +12,10 @@ version: 1.0.0
 from typing import List
 
 from chess.agent import PlayerAgent
-from chess.system import LoggingLevelRouter, Finder, SearchResult
-from chess.game import (
-    Game, GameContext, GameContextValidator, GameDataServiceNullException,
-    GameFinderOperationFailedException, GameSearchDatasetNullException
+from chess.game import Game, GameContext, GameContextValidator
+from chess.system import (
+    FailsafeBranchExitPointException, LoggingLevelRouter, Finder, SearchFailedException, SearchResult
 )
-
 
 class GameFinder(Finder[Game]):
     """
@@ -89,13 +87,15 @@ class GameFinder(Finder[Game]):
             # Entry point into searching by game player.
             if context.agent is not None:
                 return cls._find_by_agent(dataset, context.agent)
-        # Finally, if some exception is not handled by the checks wrap it inside an GameFinderOperationFailedException
-        # then, return the exception chain inside a SearchResult.
+            # As a failsafe send a buildResult failure if a map path was missed.
+            SearchResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            )
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                GameFinderOperationFailedException(
-                    ex=ex, message="{method}: {GameFinderOperationFailedException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -131,13 +131,11 @@ class GameFinder(Finder[Game]):
             # inconsistency later.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-        # Finally, if some exception is not handled by the checks wrap it inside an GameFinderOperationFailedException
-        # then, return the exception chain inside a SearchResult.
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                GameFinderOperationFailedException(
-                    ex=ex, message=f"{method}: {GameFinderOperationFailedException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -169,11 +167,9 @@ class GameFinder(Finder[Game]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-        # Finally, if some exception is not handled by the checks wrap it inside an GameFinderOperationFailedException
-        # then, return the exception chain inside a SearchResult.
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                GameFinderOperationFailedException(
-                    ex=ex, message=f"{method}: {GameFinderOperationFailedException.DEFAULT_MESSAGE}"
-                )
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
