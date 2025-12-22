@@ -8,17 +8,17 @@ version: 1.0.0
 """
 
 
-from chess.formation import BattleOrderException
+from chess.formation import FormationException
 
 
 __all__ = [
     # ======================# BATTLE_ORDER_LOOKUP EXCEPTION #======================#
-    "BattleOrderLookupException",
+    "FormationLookupException",
 ]
 
 
 # ======================# BATTLE_ORDER_LOOKUP EXCEPTION #======================#
-class BattleOrderLookupException(BattleOrderException):
+class FormationLookupException(FormationException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -27,7 +27,7 @@ class BattleOrderLookupException(BattleOrderException):
     2.  Wrap an exception that hits the try-finally block of a BattleOrderLookup method.
 
     # PARENT:
-        *   BattleOrderException
+        *   FormationException
 
     # PROVIDES:
     None

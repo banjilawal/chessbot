@@ -115,7 +115,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
 
         # Raises:
             *   OrderLookupFailedException
-            *   BattleOrderLookupException
+            *   FormationLookupException
         """
         method = "BattleOrderLookup.find"
         try:
@@ -139,7 +139,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             return SearchResult.failure(
                 OrderLookupFailedException(f"{method}: {OrderLookupFailedException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
+        # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
@@ -176,7 +176,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             return SearchResult.failure(
                 OrderColorBoundsException(f"{method}: {OrderNameBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
+        # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
@@ -213,7 +213,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             return SearchResult.failure(
                 OrderColorBoundsException(f"{method}: {OrderSquareBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
+        # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
@@ -250,7 +250,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             return SearchResult.failure(
                 OrderColorBoundsException(f"{method}: {OrderColorBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a BattleOrderLookupException then,
+        # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(

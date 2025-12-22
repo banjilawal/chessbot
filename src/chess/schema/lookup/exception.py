@@ -13,8 +13,8 @@ class SchemaLookupException(SchemaLookupException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an SchemaLookup encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a SchemaLookup method.
+    1.  Indicate that an SchemaForwardLookup encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a SchemaForwardLookup method.
 
     # PARENT:
         *   ServiceException
@@ -30,4 +30,4 @@ class SchemaLookupException(SchemaLookupException, ServiceException):
     None
     """
     ERROR_CODE = "SCHEMA_LOOKUP_ERROR"
-    DEFAULT_MESSAGE = "SchemaLookup raised an exception."
+    DEFAULT_MESSAGE = "SchemaForwardLookup raised an exception."

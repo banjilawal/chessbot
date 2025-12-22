@@ -19,7 +19,7 @@ from chess.system import (
 )
 
 
-class SchemaLookup(ForwardLookup[SchemaSuperKey]):
+class SchemaForwardLookup(ForwardLookup[SchemaSuperKey]):
     """
     # ROLE: Forward Lookups
 
@@ -40,7 +40,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     # INHERITED ATTRIBUTES:
     None
     """
-    # SERVICE_NAME = "SchemaLookup"
+    # SERVICE_NAME = "SchemaForwardLookup"
     # def lookup(
     #         self,
     #         name: str = SERVICE_NAME,
@@ -108,7 +108,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         # Raises:
             *   SchemaLookupFailedException
         """
-        method = "SchemaLookup.lookup"
+        method = "SchemaForwardLookup.lookup"
         try:
             # certify the map is safe.
             validation = map_validator.validate(candidate=map)
@@ -157,7 +157,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
             *   SchemaNameBoundsException
             *   SchemaLookupFailedException
         """
-        method = "SchemaLookup._find_by_name"
+        method = "SchemaForwardLookup._find_by_name"
         try:
             matches = [entry for entry in Schema if entry.name.upper() == name.upper()]
             # This is the expected case.
@@ -198,7 +198,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
             *   SchemaColorBoundsException
             *   SchemaLookupFailedException
         """
-        method = "SchemaLookup._find_by_color"
+        method = "SchemaForwardLookup._find_by_color"
         try:
             matches = [entry for entry in Schema if entry.color == color]
             # This is the expected case.

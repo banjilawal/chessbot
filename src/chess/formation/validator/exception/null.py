@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.formation import InvalidBattleOrderException
+from chess.formation import InvalidFormationException
 
 __all__ = [
     # ======================# ORDER_CONTEXT NULL EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# ORDER_CONTEXT NULL EXCEPTION #======================#
-class NullBattleOrderException(InvalidBattleOrderException, NullException):
+class NullBattleOrderException(InvalidFormationException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -26,7 +26,7 @@ class NullBattleOrderException(InvalidBattleOrderException, NullException):
     2.  Raised if an entity, method or operation requires an Formation but receives null instead.
 
     # PARENT:
-        *   InvalidBattleOrderException
+        *   InvalidFormationException
         *   NullException
 
     # PROVIDES:

@@ -10,11 +10,11 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    "BattleOrderException",
+    "FormationException",
 ]
 
 
-class BattleOrderException(ChessException):
+class FormationException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

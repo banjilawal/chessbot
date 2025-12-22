@@ -8,7 +8,7 @@ from chess.system import ServiceException
 
 
 # ======================# FORMATION_SUPER_KEY_SERVICE EXCEPTION #======================#
-class FormationSuperKeyServiceException(AgentException, ServiceException):
+class FormationSuperKeyServiceException(FormationSuperKeyException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

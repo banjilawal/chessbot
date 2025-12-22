@@ -55,7 +55,7 @@ class BattleOrderValidator(Validator[BattleOrder]):
         # RAISES:
             *   TypeError
             *   NullBattleOrderException
-            *   InvalidBattleOrderException
+            *   InvalidFormationException
         """
         method = "BattleOrderValidator.validate"
         

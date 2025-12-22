@@ -23,7 +23,7 @@ class SchemaLookupFailedException(SchemaLookupException, OperationFailedExceptio
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap an exception that hits the try-finally block of a SchemaLookup method.
+    1.  Wrap an exception that hits the try-finally block of a SchemaForwardLookup method.
 
     # PARENT:
         *   SchemaLookupException
@@ -39,5 +39,5 @@ class SchemaLookupFailedException(SchemaLookupException, OperationFailedExceptio
     None
     """
     ERROR_CODE = "_SCHEMA_LOOKUP_OPERATION_ERROR"
-    DEFAULT_MESSAGE = "SchemaLookup operation failed."
+    DEFAULT_MESSAGE = "SchemaForwardLookup operation failed."
 

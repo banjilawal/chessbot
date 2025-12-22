@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.formation import InvalidBattleOrderException
+from chess.formation import InvalidFormationException
 from chess.system import BoundsException, NameException
 
 __all__ = [
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# ORDER SQUARE BOUNDS EXCEPTION #======================#
-class OrderSquareBoundsException(InvalidBattleOrderException, BoundsException, NameException):
+class OrderSquareBoundsException(InvalidFormationException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class OrderSquareBoundsException(InvalidBattleOrderException, BoundsException, N
     1.  Indicate an error occurred because a square is outside the range of acceptable Formation squares.
 
     # PARENT:
-        *   InvalidBattleOrderException
+        *   InvalidFormationException
         *   BoundsException
         *   NameException
 

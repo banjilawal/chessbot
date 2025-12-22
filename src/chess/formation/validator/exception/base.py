@@ -8,17 +8,17 @@ version: 1.0.0
 """
 
 
-from chess.formation import BattleOrderException
+from chess.formation import FormationException
 from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# BATTLEORDER VALIDATION EXCEPTION #======================#
-    "InvalidBattleOrderException",
+    "InvalidFormationException",
 ]
 
 
 # ======================# BATTLE_ORDER VALIDATION EXCEPTION #======================#
-class InvalidBattleOrderException(BattleOrderException, ValidationFailedException):
+class InvalidFormationException(FormationException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -28,11 +28,11 @@ class InvalidBattleOrderException(BattleOrderException, ValidationFailedExceptio
     3.  Wrap an exception that hits the try-finally block of an BattleOrderValidator method.
 
     # PARENT:
-        *   BattleOrderException
+        *   FormationException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidBattleOrderException
+    InvalidFormationException
 
     # ATTRIBUTES:
     None

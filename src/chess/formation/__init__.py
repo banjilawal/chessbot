@@ -17,4 +17,4 @@ from .validator import *
 from .order import BattleOrder
 from .black import BlackBattleOrder
 from .white import WhiteBattleOrder
-from .exception import BattleOrderException
+from .exception import FormationException

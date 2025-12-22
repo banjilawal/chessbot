@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.formation import InvalidBattleOrderException
+from chess.formation import InvalidFormationException
 from chess.system import BoundsException, GameColorException
 
 __all__ = [
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# ORDER COLOR BOUNDS EXCEPTION #======================#
-class OrderColorBoundsException(InvalidBattleOrderException, BoundsException, GameColorException):
+class OrderColorBoundsException(InvalidFormationException, BoundsException, GameColorException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class OrderColorBoundsException(InvalidBattleOrderException, BoundsException, Ga
     1.  Indicate an error occurred because a color is outside the range of acceptable Formation colors.
 
     # PARENT:
-        *   InvalidBattleOrderException
+        *   InvalidFormationException
         *   BoundsException
         *   GameColorException
 

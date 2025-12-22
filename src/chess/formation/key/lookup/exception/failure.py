@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.formation import InvalidBattleOrderException
+from chess.formation import InvalidFormationException
 from chess.system import LookupFailedException
 
 __all__ = [
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# ORDER LOOKUP FAILED EXCEPTION #======================#
-class OrderLookupFailedException(InvalidBattleOrderException, LookupFailedException):
+class OrderLookupFailedException(InvalidFormationException, LookupFailedException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class OrderLookupFailedException(InvalidBattleOrderException, LookupFailedExcept
     1.  Indicate an error occurred because a lookup is outside the range of acceptable Formation lookups.
 
     # PARENT:
-        *   InvalidBattleOrderException
+        *   InvalidFormationException
         *   LookupServiceException
 
     # PROVIDES:

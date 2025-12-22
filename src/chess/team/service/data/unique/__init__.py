@@ -13,5 +13,5 @@ version: 1.0.0
 # None
 
 # Modules
-from .exception import *
 from .service import UniqueTeamDataService
+from .exception import UniqueTeamDataServiceException

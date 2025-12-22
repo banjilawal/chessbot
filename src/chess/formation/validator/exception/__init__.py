@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .base import InvalidBattleOrderException
+from .base import InvalidFormationException
 from .color import OrderColorBoundsException
 from .name import OrderNameBoundsException
 from .square import OrderSquareBoundsException

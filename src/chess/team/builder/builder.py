@@ -55,7 +55,7 @@ class TeamBuilder(Builder[Team]):
         """
         # ACTION:
         1.  Check ID safety with IdentityService.validate_id.
-        2.  Check schema correctness with SchemaLookup's validator.
+        2.  Check schema correctness with SchemaForwardLookup's validator.
         3.  Check player_agent safety with PlayAgentService.validate_player.
         4.  If any check fails, return the exception inside a BuildResult.
         5.  When all checks create a new Team object.

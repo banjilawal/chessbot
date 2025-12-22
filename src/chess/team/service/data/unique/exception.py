@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-_
+
 ___all__ = [
     # ======================# TEAM_DATA_SERVICE EXCEPTION #======================#
     "UniqueTeamDataServiceException",
@@ -39,5 +39,5 @@ class UniqueTeamDataServiceException(TeamException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = UNIQUE_"TEAM_DATA_SERVICE_ERROR"
+    ERROR_CODE = "UNIQUE_TEAM_DATA_SERVICE_ERROR"
     DEFAULT_MESSAGE = "UniqueTeamDataService raised an exception."

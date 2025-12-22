@@ -8,7 +8,7 @@ from chess.system import ServiceException
 
 
 # ======================# FORMATION_LOOKUP_SERVICE EXCEPTION #======================#
-class FormationLookupServiceException(FormationException, ServiceException):
+class FormationLookupServiceException(FormationLookupException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
