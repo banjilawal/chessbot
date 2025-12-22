@@ -6,15 +6,15 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
+
 from typing import List
 
-from chess.agent import PlayerAgent
-from chess.snapshot.finder.exception import SnapshotFinderException
-from chess.system import Finder, LoggingLevelRouter, SearchFailedException, SearchResult
-from chess.game import (
-    SnapshotContext, SnapshotContextValidator, GameTimeline, Snapshot, NullGameTimelineException
-)
 from chess.team import Team
+from chess.agent import PlayerAgent
+from chess.system import Finder, LoggingLevelRouter, SearchFailedException, SearchResult
+from chess.snapshot import GameTimeline, NullGameTimelineException, Snapshot, SnapshotContext, SnapshotContextValidator
+
+
 
 
 class SnapshotFinder(Finder[Snapshot]):
@@ -98,7 +98,7 @@ class SnapshotFinder(Finder[Snapshot]):
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -138,7 +138,7 @@ class SnapshotFinder(Finder[Snapshot]):
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -178,7 +178,7 @@ class SnapshotFinder(Finder[Snapshot]):
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -218,7 +218,7 @@ class SnapshotFinder(Finder[Snapshot]):
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -226,7 +226,7 @@ class SnapshotFinder(Finder[Snapshot]):
     def _find_by_exception(cls, dataset: GameTimeline, exception) -> SearchResult[[PlayerAgent]]:
         """
         # Action:
-        1.  Get the agents whose agents are a agent_exception. match for the target.
+        1.  Get the agents whose agents are an agent_exception. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
         4.  If the finder returns multiple hits call _resolve_matching_ids.
@@ -259,5 +259,5 @@ class SnapshotFinder(Finder[Snapshot]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchResult}.DEFAULT_MESSAGE}")
+                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
             )
