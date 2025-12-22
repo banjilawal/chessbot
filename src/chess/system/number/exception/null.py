@@ -1,7 +1,7 @@
-# src/chess/system/err/number/exception/null.py
+# src/chess/system/number/exception/null.py
 
 """
-Module: chess.system.err.number.exception.null
+Module: chess.system.number.exception.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

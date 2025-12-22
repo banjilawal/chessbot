@@ -1,7 +1,7 @@
-# src/chess/system/err/number/exception/negative.py
+# src/chess/system/number/exception/negative.py
 
 """
-Module: chess.system.err.number.exception.negative
+Module: chess.system.number.exception.negative
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

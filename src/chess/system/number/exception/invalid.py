@@ -1,7 +1,7 @@
-# src/chess/system/err/number/exception/invalid.py
+# src/chess/system/number/exception/invalid.py
 
 """
-Module: chess.system.err.number.exception.invalid
+Module: chess.system.number.exception.invalid
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/system/err/number/exception/bounds.py
+# src/chess/system/number/exception/bounds.py
 
 """
-Module: chess.system.err.number.exception.bounds
+Module: chess.system.number.exception.bounds
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/system/err/number/validator/base.py
+# src/chess/system/number/validator/base.py
 
 """
-Module: chess.system.err.number.validator.base
+Module: chess.system.number.validator.base
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
