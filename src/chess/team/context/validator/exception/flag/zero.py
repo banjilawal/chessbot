@@ -22,7 +22,7 @@ class ZeroTeamContextFlagsException(InvalidTeamContextException, ContextFlagCoun
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates no TeamContext flag was enabled. One and only one Team attribute-value-tuple is required for
+    1.  Indicate That  no TeamContext flag was enabled. One and only one Team attribute-value-tuple is required for
         a search.
 
     # PARENT:

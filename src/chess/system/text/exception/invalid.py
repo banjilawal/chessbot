@@ -22,7 +22,7 @@ class InvalidStringException(StringException, ValidationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicates a candidate failed String validation checks.
+    1.  Indicate That  a candidate failed String validation checks.
     2.  Wraps an exception that hits the try-finally block of a StringValidator method.
 
     # PARENT:

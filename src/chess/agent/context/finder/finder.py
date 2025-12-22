@@ -204,7 +204,7 @@ class AgentFinder(Finder[PlayerAgent]):
         1.  Get the PlayerAgent with the matching team.
         2.  If no match is found return an exception.
         3.  A team search should produce either no hits or one hit only.
-        4.  Multiple unique agents in the result indicates a problem.
+        4.  Multiple unique agents in the result indicate that  a problem.
 
         # Parameters:
             *   team (Team)
@@ -247,7 +247,7 @@ class AgentFinder(Finder[PlayerAgent]):
         1.  Get the Agents whose subclass matches the AgentVariety
         2.  If no match is found return an exception.
         3.  A team search should produce either no hits or one hit only.
-        4.  Multiple unique agents in the result indicates a problem.
+        4.  Multiple unique agents in the result indicate that  a problem.
 
         # Parameters:
             *   team (Team)

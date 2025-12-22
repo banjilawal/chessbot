@@ -22,7 +22,7 @@ class ExcessiveBoardContextFlagsException(InvalidBoardContextException, ContextF
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one BoardContext flag was enabled. Only one Board attribute-value-tuple can be used in
+    1.  Indicate That  more than one BoardContext flag was enabled. Only one Board attribute-value-tuple can be used in
         a search.
 
     # PARENT:

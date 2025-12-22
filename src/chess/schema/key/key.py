@@ -1,7 +1,7 @@
-# src/chess/schema/map/key.py
+# src/chess/schema/key/key.py
 
 """
-Module: chess.schema.map.key
+Module: chess.schema.key.key
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

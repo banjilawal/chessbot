@@ -106,7 +106,7 @@ class GameFinder(Finder[Game]):
         1.  Get the Game with the matching id.
         2.  If no match is found return an exception.
         3.  An id search should produce either no hits or one hit only.
-        4.  Multiple unique agents in the result indicates a problem.
+        4.  Multiple unique agents in the result indicate that  a problem.
 
         # Parameters:
             *   id (int)

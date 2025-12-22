@@ -1,34 +1,36 @@
-# src/chess/schema/map/builder/exception.py
+# src/chess/schema/key/builder/exception.py
 
 """
-Module: chess.schema.map.builder.exception
+Module: chess.schema.key.builder.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.schema import SchemaSuperKeyException
 from chess.system import BuildFailedException
+from chess.schema import SchemaSuperKeyException
+
 
 
 __all__ = [
-    #======================# SCHEMA_SUPER_KEY BUILD EXCEPTION #======================#
+    # ======================# SCHEMA_SUPER_KEY_BUILD_FAILED EXCEPTION #======================#
     "SchemaSuperKeyBuildFailedException",
 ]
 
 
-#======================# SCHEMA_SUPER_KEY BUILD EXCEPTION #======================#
+#======================# SCHEMA_SUPER_KEY_BUILD_FAILED EXCEPTION #======================#
 class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during SchemaSuperKey build process.
-    2.  Wraps exceptions that hit the try-finally block of an SchemaMapBuilder method.
+    1.  Indicate that an error prevented the SchemaSuperKey build from completing successfully.
+    2.  Wrap an exception that hit the try-finally block of a SchemSuperKeyBuilder method.
     
     # PARENT:
-        *   SchemaSuperKeyException
         *   BuildFailedException
+        *   SchemaSuperKeyException
+
 
     # PROVIDES:
     None

@@ -22,7 +22,7 @@ class ForwardLookupFailedException(LookupFailedException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by ForwardLookup objects.
-    2.  Wraps exceptions that hit the try-finally block of a ForwardLookup method.
+    2.  Wrap an exception that hit the try-finally block of a ForwardLookup method.
 
     # PARENT:
         *   LookupException

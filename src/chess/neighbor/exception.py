@@ -131,7 +131,7 @@ class NullCombatantException(NullVisitationEventException):
 #======================# VISITATION BUILD EXCEPTION #======================#
 class VisitationBuildFailedException(VisitationEventException, BuilderException):
     """
-    Indicates Coord could not be built. Wraps and re-raises errors that occurred
+    Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
     during builder.
     """
     ERROR_CODE = "VISITATION_BUILD_FAILED_ERROR"

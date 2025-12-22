@@ -24,7 +24,7 @@ class InvalidSnapshotContextException(SnapshotContextException, ValidationFailed
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicates a candidate failed SnapshotContext validation checks.
+    1.  Indicate That  a candidate failed SnapshotContext validation checks.
     2.  Wraps an exception that hits the try-finally block of a SnapShotContextValidator method.
     3.  Catchall for validation errors not handled by InvalidSnapshotContextException subclasses.
 

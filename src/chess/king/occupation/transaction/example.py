@@ -552,7 +552,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 # #=== ATTACK_EVENT BUILD EXCEPTION #======================#
 # class AttackEventBuilderException(AttackEventException, BuildException):
 #   """
-#   Indicates Coord could not be built. Wraps and re-raises errors that occurred
+#   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
 #   during builder.
 #   """
 #   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"

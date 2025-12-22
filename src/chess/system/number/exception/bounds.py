@@ -21,7 +21,7 @@ class NumberAboveBoundsException(InvalidNumberException, BoundsException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates a value being passed a Coord or Vector component is larger than the Board's dimension.
+    1.  Indicate That  a value being passed a Coord or Vector component is larger than the Board's dimension.
 
     # PARENT:
         *   InvalidNumberException

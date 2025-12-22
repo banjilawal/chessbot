@@ -71,7 +71,7 @@ class NullTravelEventException(TravelEventException, NullException):
 #====================== TravelEvent BUILD EXCEPTION #======================#
 class TravelEventBuildFailedException(TravelEventException, BuildFailedException):
   """
-  Indicates TravelEvent could not be built. Wraps and re-raises errors that occurred
+  Indicate That  TravelEvent could not be built. Wraps and re-raises errors that occurred
   during builder.
   """
   ERROR_CODE = "TRAVEL_EVENT_BUILD_FAILED_ERROR"
@@ -79,7 +79,7 @@ class TravelEventBuildFailedException(TravelEventException, BuildFailedException
 
 class OccupationEventBuildFailedException(TravelEventBuildFailedException):
   """
-  Indicates OldOccupationEventValidator could not be built. Wraps and re-raises errors that occurred
+  Indicate That  OldOccupationEventValidator could not be built. Wraps and re-raises errors that occurred
   during builder.
   """
   ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"

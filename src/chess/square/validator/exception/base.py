@@ -21,8 +21,8 @@ class InvalidSquareException(SquareException, ValidationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicates a Square validation candidate failed a verification test.
-    2.  Wraps exceptions that hit the try-finally-block in SquareValidator methods.
+    1.  Indicate That  a Square validation candidate failed a verification test.
+    2.  Wrap an exception that hit the try-finally-block in SquareValidator methods.
 
     # PARENT:
         *   SquareException

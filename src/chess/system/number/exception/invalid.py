@@ -22,7 +22,7 @@ class InvalidNumberException(NumberException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised when an existing object violates Number integrity constraints.
-    2.  Wraps exceptions that hit the try-finally-block in number validating methods.
+    2.  Wrap an exception that hit the try-finally-block in number validating methods.
 
     # PARENT:
         *   NumberException

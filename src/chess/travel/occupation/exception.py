@@ -51,7 +51,7 @@ class OccupationDestinationNotEmptyException(OccupationEventException):
 #=== ATTACK_EVENT BUILD EXCEPTION #======================#
 class AttackEventBuilderException(AttackEventException, BuilderException):
   """
-  Indicates Coord could not be built. Wraps and re-raises errors that occurred
+  Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
   during builder.
   """
   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"

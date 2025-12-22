@@ -23,7 +23,7 @@ class InvalidBoardException(BoardException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised Board validation.
-    2.  Wraps exceptions that hit the try-finally-block in BoardValidator methods.
+    2.  Wrap an exception that hit the try-finally-block in BoardValidator methods.
 
     # PARENT:
         *   BoardException

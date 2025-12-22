@@ -21,8 +21,8 @@ class SearchFailedException(SearchException, OperationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Indicates an exception prevented a search operation from completing successfully.
-    2.  Wraps exceptions that hit the try-finally block of a Search method.
+    1.  Indicate that an exception prevented a search operation from completing successfully.
+    2.  Wrap an exception that hit the try-finally block of a Search method.
   
     # PARENT:
         *   SearchException

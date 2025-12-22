@@ -20,7 +20,7 @@ class TeamSearchDatasetNullException(DatasetException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates TeamFinder received null instead of a List[Team] collection.
+    1.  Indicate That  TeamFinder received null instead of a List[Team] collection.
 
     # PARENT:
         *   DatasetException

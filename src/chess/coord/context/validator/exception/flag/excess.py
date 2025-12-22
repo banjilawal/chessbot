@@ -22,7 +22,7 @@ class ExcessiveCoordContextFlagsException(InvalidCoordContextException, ContextF
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one CoordContext flag was enabled. Only one Coord attribute-value-tuple can be used in
+    1.  Indicate That  more than one CoordContext flag was enabled. Only one Coord attribute-value-tuple can be used in
         a search.
 
     # PARENT:

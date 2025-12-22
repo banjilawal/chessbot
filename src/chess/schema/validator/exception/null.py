@@ -22,7 +22,7 @@ class NullSchemaException(InvalidSchemaException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates an entity, method, or operation that required a Schema but got null instead.
+    1.  Indicate that an entity, method, or operation that required a Schema but got null instead.
     
     # PARENT:
         *   NullSchemaException

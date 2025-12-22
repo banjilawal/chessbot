@@ -23,7 +23,7 @@ class InvalidSchemaException(SchemaException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  Indicate a candidate failed a Schema validation test.
-    2.  Wraps exceptions that hit the try-finally-block in SchemaValidator methods.
+    2.  Wrap an exception that hit the try-finally-block in SchemaValidator methods.
 
     # PARENT:
         *   SchemaException

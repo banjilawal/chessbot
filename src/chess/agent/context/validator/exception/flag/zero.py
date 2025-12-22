@@ -23,7 +23,7 @@ class ZeroAgentContextFlagsException(InvalidAgentContextException, ContextFlagCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates no AgentContext flag was enabled. One and only one Agent attribute-value-tuple is required for
+    1.  Indicate That  no AgentContext flag was enabled. One and only one Agent attribute-value-tuple is required for
         a search.
 
     # PARENT:

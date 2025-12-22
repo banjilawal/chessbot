@@ -1,7 +1,7 @@
-# src/chess/schema/map/validator/exception/null.py
+# src/chess/schema/key/validator/exception/null.py
 
 """
-Module: chess.schema.map.validator.exception.null
+Module: chess.schema.key.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -22,7 +22,7 @@ class NullSchemaSuperKeyException(InvalidSchemaSuperKeyException, NullException)
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates an entity, method or operation received null instead of a SchemaSuperKey.
+    1.  Indicate that an entity, method or operation received null instead of a SchemaSuperKey.
 
     # PARENT:
         *   NullException

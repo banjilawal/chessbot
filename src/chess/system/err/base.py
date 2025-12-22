@@ -89,7 +89,7 @@ class NotImplementedException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicates a desired abstract method or feature has not been implemented in the lower level class,
+    1.  Indicate That  a desired abstract method or feature has not been implemented in the lower level class,
     2.  Catchall for missing implementation errors that are not covered by lower level NotImplementedException.
 
     # PARENT:

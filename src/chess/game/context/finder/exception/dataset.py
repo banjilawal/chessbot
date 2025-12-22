@@ -26,7 +26,7 @@ class GameSearchDatasetNullException(GameException, NullDatasetException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates GameFinder received null instead of a List[Game] collection.
+    1.  Indicate That  GameFinder received null instead of a List[Game] collection.
 
     # PARENT:
         *   DatasetException

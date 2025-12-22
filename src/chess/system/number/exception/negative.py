@@ -21,7 +21,7 @@ class NegativeNumberException(InvalidNumberException, BoundsException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates a negative number was passed when a value zero or greater is required.
+    1.  Indicate That  a negative number was passed when a value zero or greater is required.
 
     # PARENT:
         *   InvalidNumberException

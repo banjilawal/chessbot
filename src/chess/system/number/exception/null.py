@@ -23,7 +23,7 @@ class NullNumberException(InvalidNumberException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates a method, object or operation that required a number received null instead.
+    1.  Indicate That  a method, object or operation that required a number received null instead.
 
     # PARENT:
         *   InvalidNumberException

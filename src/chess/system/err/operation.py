@@ -23,7 +23,7 @@ class OperationFailedException(ChessException):
     # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicates a method that returns a Result object caught an unhandled exception in its try-catch-finally block.
+    1.  Indicate That  a method that returns a Result object caught an unhandled exception in its try-catch-finally block.
 
     # PARENT:
         *   ChessException

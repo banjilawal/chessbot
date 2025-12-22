@@ -1,7 +1,7 @@
-# src/chess/schema/map/builder/builder.py
+# src/chess/schema/key/builder/builder.py
 
 """
-Module: chess.schema.map.builder.builder
+Module: chess.schema.key.builder.builder
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

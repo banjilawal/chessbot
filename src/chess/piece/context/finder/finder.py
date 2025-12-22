@@ -114,7 +114,7 @@ class PieceFinder(Finder[Piece]):
         # Action:
         1.  Get the Piece with the desired id.
         2.  An id search should produce either no hits or one hit only.
-        3.  Multiple unique pieces in the result indicates a problem.
+        3.  Multiple unique pieces in the result indicate that  a problem.
 
         # Parameters:
             *   id (int)
@@ -153,7 +153,7 @@ class PieceFinder(Finder[Piece]):
         # Action:
         1.  Get the Piece with the desired designation.
         2.  A designation search should produce either no hits or one hit only.
-        3.  Multiple unique pieces in the result indicates a problem.
+        3.  Multiple unique pieces in the result indicate that  a problem.
 
         # Parameters:
             *   designation (str)

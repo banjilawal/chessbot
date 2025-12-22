@@ -22,7 +22,7 @@ class ZeroArenaContextFlagsException(InvalidArenaContextException, ContextFlagCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates no ArenaContext flag was enabled. One and only one Arena attribute-value-tuple is required for
+    1.  Indicate That  no ArenaContext flag was enabled. One and only one Arena attribute-value-tuple is required for
         a search.
 
     # PARENT:

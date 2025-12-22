@@ -165,7 +165,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
                 return SearchResult.success(matches)
             
             # If no Schema entry has the targeted key-value return an exception because no hits in the hash table
-            # indicates there is either no subclass whose different behavior is implemented with a strategy or,
+            # indicate that  there is either no subclass whose different behavior is implemented with a strategy or,
             # class objects of the same type, same behavior but different metadata.
             return SearchResult.failure(
                 SchemaColorBoundsException(f"{method}: {SchemaNameBoundsException.DEFAULT_MESSAGE}")
@@ -206,7 +206,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
                 return SearchResult.success(matches)
             
             # If no Schema entry has the targeted key-value return an exception because no hits in the hash table
-            # indicates there is either no subclass whose different behavior is implemented with a strategy or,
+            # indicate that  there is either no subclass whose different behavior is implemented with a strategy or,
             # class objects of the same type, same behavior but different metadata.
             return SearchResult.failure(
                 SchemaColorBoundsException(f"{method}: {SchemaNameBoundsException.DEFAULT_MESSAGE}")

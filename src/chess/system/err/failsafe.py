@@ -21,7 +21,7 @@ class FailsafeBranchExitPointException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicates one or more terminating execution routes was not handled in branching conditions.
+    1.  Indicate That  one or more terminating execution routes was not handled in branching conditions.
 
     # PARENT:
         *   ChessException

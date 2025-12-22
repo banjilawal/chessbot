@@ -19,7 +19,7 @@ class InvalidServiceException(ServiceException, ValidationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicates a candidate failed validation checks for a Service (not null and correct type)
+    1.  Indicate That  a candidate failed validation checks for a Service (not null and correct type)
     2.  Wraps an exception that hits the try-finally block of a Validator method.
 
     # PARENT:

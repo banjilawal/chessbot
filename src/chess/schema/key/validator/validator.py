@@ -1,7 +1,7 @@
-# src/chess/schema/map/validator/validator.py
+# src/chess/schema/key/validator/validator.py
 
 """
-Module: chess.schema.map.validator
+Module: chess.schema.key.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

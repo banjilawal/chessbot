@@ -116,7 +116,7 @@ class TeamFinder(Finder[Team]):
         """
         # Action:
         1.  Get the Team with the matching id if it exists
-        2.  Multiple, unique matches in the result indicates a problem.
+        2.  Multiple, unique matches in the result indicate that  a problem.
 
         # Parameters:
             *   id (int)

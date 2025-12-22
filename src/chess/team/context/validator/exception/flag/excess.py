@@ -22,7 +22,7 @@ class ExcessiveTeamContextFlagsException(InvalidTeamContextException, ContextFla
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one TeamContext flag was enabled. Only one Team attribute-value-tuple can be used in
+    1.  Indicate That  more than one TeamContext flag was enabled. Only one Team attribute-value-tuple can be used in
         a search.
 
     # PARENT:

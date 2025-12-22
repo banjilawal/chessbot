@@ -22,7 +22,7 @@ class ZeroGameContextFlagsException(InvalidGameContextException, ContextFlagCoun
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates no GameContext flag was enabled. One and only one Game attribute-value-tuple is required for
+    1.  Indicate That  no GameContext flag was enabled. One and only one Game attribute-value-tuple is required for
         a search.
 
     # PARENT:

@@ -1,7 +1,7 @@
-# src/chess/schema/map/validator/exception/flag/excess.py
+# src/chess/schema/key/validator/exception/flag/excess.py
 
 """
-Module: chess.schema.map.validator.exception.flag.excess
+Module: chess.schema.key.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -21,7 +21,7 @@ class ExcessiveSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextF
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates a forward Schema lookup failed because more than one SchemaSuperKey attribute was not null.
+    1.  Indicate That  a forward Schema lookup failed because more than one SchemaSuperKey attribute was not null.
 
     # PARENT:
         *   ContextFlagCountException

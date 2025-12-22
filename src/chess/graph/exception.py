@@ -59,7 +59,7 @@ class NullGraphException(GraphException, NullException):
 #======================# GRAPH BUILD EXCEPTION #======================#
 class GraphBuildFailedException(GraphException, BuildFailedException):
     """
-    Indicates Coord could not be built. Wraps and re-raises errors that occurred
+    Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
     during builder.
     """
     ERROR_CODE = "GRAPH_BUILD_FAILED_ERROR"

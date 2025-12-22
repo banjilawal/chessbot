@@ -22,7 +22,7 @@ class ExcessiveAgentContextFlagsException(InvalidAgentContextException, ContextF
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one AgentContext flag was enabled. Only one Agent attribute-value-tuple can be used in
+    1.  Indicate That  more than one AgentContext flag was enabled. Only one Agent attribute-value-tuple can be used in
         a search.
 
     # PARENT:

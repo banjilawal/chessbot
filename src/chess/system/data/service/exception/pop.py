@@ -21,7 +21,7 @@ class PoppingEmptyStackException(DataServiceException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    Indicates an attempt to pop an empty stack.
+    Indicate there was an attempt to pop an empty stack.
 
     # PARENT:
         *   DataServiceException

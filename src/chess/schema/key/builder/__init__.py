@@ -1,13 +1,13 @@
-# src/chess/schema/map/builder/__init__.py
+# src/chess/schema/key/builder/__init__.py
 
 """
-Module: chess.schema.map.builder.__init__
+Module: chess.schema.key.builder.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.MAP.BUILDER PACKAGE CONTENTS ===========#
+# =========== SCHEMA.KEY.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
 None

@@ -22,7 +22,7 @@ class ExcessiveCatalogContextFlagsException(InvalidCatalogContextException, Cont
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one CatalogContext flag was enabled. Only one Catalog attribute-value tuple can be used in
+    1.  Indicate That  more than one CatalogContext flag was enabled. Only one Catalog attribute-value tuple can be used in
         a search.
 
     # PARENT:

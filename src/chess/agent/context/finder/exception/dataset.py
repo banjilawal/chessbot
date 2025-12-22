@@ -24,7 +24,7 @@ class AgentSearchDatasetNullException(AgentException, NullDatasetException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates AgentFinder received null instead of a List[Agent] collection.
+    1.  Indicate That  AgentFinder received null instead of a List[Agent] collection.
 
     # PARENT:
         *   DatasetException

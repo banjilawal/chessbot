@@ -22,7 +22,7 @@ class ZeroBoardContextFlagsException(InvalidBoardContextException, ContextFlagCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates no BoardContext flag was enabled. One and only one Board attribute-value-tuple is required for
+    1.  Indicate That  no BoardContext flag was enabled. One and only one Board attribute-value-tuple is required for
         a search.
 
     # PARENT:

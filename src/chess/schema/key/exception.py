@@ -1,7 +1,7 @@
-# src/chess/schema/map/exception.py
+# src/chess/schema/key/exception.py
 
 """
-Module: chess.schema.map.exception
+Module: chess.schema.key.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

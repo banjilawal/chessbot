@@ -1,7 +1,7 @@
-# src/chess/schema/map/validator/exception/flag/zero.py
+# src/chess/schema/key/validator/exception/flag/zero.py
 
 """
-Module: chess.schema.map.validator.exception.flag.zero
+Module: chess.schema.key.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -23,7 +23,7 @@ class ZeroSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates a forward Schema lookup failed because all the SchemaSuperKey attributes were null.
+    1.  Indicate That  a forward Schema lookup failed because all the SchemaSuperKey attributes were null.
 
     # PARENT:
         *   ContextFlagCountException

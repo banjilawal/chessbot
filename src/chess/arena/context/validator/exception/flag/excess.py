@@ -22,7 +22,7 @@ class ExcessiveArenaContextFlagsException(InvalidArenaContextException, ContextF
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one ArenaContext flag was enabled. Only one Arena attribute-value-tuple can be used in
+    1.  Indicate That  more than one ArenaContext flag was enabled. Only one Arena attribute-value-tuple can be used in
         a search.
 
     # PARENT:

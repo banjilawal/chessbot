@@ -22,7 +22,7 @@ class ExcessiveSquareContextFlagsException(InvalidSquareContextException, Contex
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one SquareContext flag was enabled. Only one Square attribute-value-tuple can be used in
+    1.  Indicate That  more than one SquareContext flag was enabled. Only one Square attribute-value-tuple can be used in
         a search.
 
     # PARENT:

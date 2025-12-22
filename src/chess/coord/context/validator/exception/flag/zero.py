@@ -22,7 +22,7 @@ class ZeroCoordContextFlagsException(InvalidCoordContextException, ContextFlagCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates no CoordContext flag was enabled. One and only one Coord attribute-value-tuple is required for
+    1.  Indicate That  no CoordContext flag was enabled. One and only one Coord attribute-value-tuple is required for
         a search.
 
     # PARENT:

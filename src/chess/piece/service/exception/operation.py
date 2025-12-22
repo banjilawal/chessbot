@@ -22,7 +22,7 @@ class PieceServiceOperationFailedException(PieceServiceException, ServiceOperati
     # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicates a PieceService's method caught an unhandled exception in its try-catch-finally block.
+    1.  Indicate That  a PieceService's method caught an unhandled exception in its try-catch-finally block.
 
     # PARENT:
         *   PieceServiceException

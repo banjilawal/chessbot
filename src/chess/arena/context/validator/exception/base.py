@@ -24,7 +24,7 @@ class InvalidArenaContextException(ArenaContextException, ValidationFailedExcept
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised ArenaContext validation.
-    2.  Wraps exceptions that hit the try-finally-block in ArenaContextValidator methods.
+    2.  Wrap an exception that hit the try-finally-block in ArenaContextValidator methods.
 
     # PARENT:
         *   ArenaContextException

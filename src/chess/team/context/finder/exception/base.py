@@ -22,7 +22,7 @@ class TeamFinderException(FinderException):
   
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by TeamFinder objects.
-    2.  Wraps exceptions that hit the try-finally block of an TeamFinder method.
+    2.  Wrap an exception that hit the try-finally block of an TeamFinder method.
   
     # PARENT:
         *   FinderException

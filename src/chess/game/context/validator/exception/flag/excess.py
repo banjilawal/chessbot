@@ -22,7 +22,7 @@ class ExcessiveGameContextFlagsException(InvalidGameContextException, ContextFla
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicates more than one GameContext flag was enabled. Only one Game attribute-value-tuple can be used in
+    1.  Indicate That  more than one GameContext flag was enabled. Only one Game attribute-value-tuple can be used in
         a search.
 
     # PARENT:
