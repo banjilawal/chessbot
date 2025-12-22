@@ -11,17 +11,19 @@ from chess.system import ContextFlagCountException
 from chess.schema import InvalidSchemaSuperKeyException
 
 __all__ = [
-    # ========================= EXCESS_SCHEMA_SUPER_KEYS EXCEPTION =========================#
+    # ========================= EXCESS_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
     "ExcessiveSchemaSuperKeysException",
 ]
 
-# ========================= EXCESS_SCHEMA_SUPER_KEYS EXCEPTION =========================#
+# ========================= EXCESS_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
 class ExcessiveSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a forward Schema lookup failed because more than one SchemaSuperKey attribute was not null.
+    1.  Indicate that a SchemaSuperKey failed its safety certification because more than one attribute was enabled
+        with a value.
+    # a forward Schema lookup failed because more than one SchemaSuperKey attribute was not null.
 
     # PARENT:
         *   ContextFlagCountException
@@ -33,8 +35,8 @@ class ExcessiveSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextF
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESS_SCHEMA_SUPER_KEYS_ERROR"
+    ERROR_CODE = "EXCESS_SCHEMA_SUPER_KEYS_VALIDATION_ERROR"
     DEFAULT_MESSAGE = (
-        "More than one SchemaSuperKey field is not null. A forward Schema lookup can only run if "
-        "one-and-only-one SchemaSuperKey attribute has a value."
+        "SchemaSuperKey validation failed: More than one attribute is not-null. A SchemaSuperKey can only have a "
+        "single attribute enabled by a value."
     )

@@ -11,18 +11,18 @@ from chess.system import NullException
 from chess.schema import InvalidSchemaException
 
 __all__ = [
-    # ======================# NULL_SCHEMA EXCEPTION #======================#
+    # ======================# NULL_SCHEMA_VALIDATION EXCEPTION #======================#
     "NullSchemaException",
 ]
 
 
-# ======================# NULL_SCHEMA EXCEPTION #======================#
+# ======================# NULL_SCHEMA_VALIDATION EXCEPTION #======================#
 class NullSchemaException(InvalidSchemaException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an entity, method, or operation that required a Schema but got null instead.
+    1.  Indicate that a candidate failed its Schema safety certification because it was null.
     
     # PARENT:
         *   NullSchemaException
@@ -37,5 +37,5 @@ class NullSchemaException(InvalidSchemaException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SCHEMA_ERROR"
-    DEFAULT_MESSAGE = "Schema cannot be null."
+    ERROR_CODE = "NULL_SCHEMA_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Schema validation failed: A Schema cannot be null."

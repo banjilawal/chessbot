@@ -8,21 +8,21 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.schema.map import InvalidSchemaSuperKeyException
+from chess.schema import InvalidSchemaSuperKeyException
 
 __all__ = [
-    # ======================# NULL_SCHEMA_SUPER_KEY EXCEPTION #======================#
+    # ======================# NULL_SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
     "NullSchemaSuperKeyException",
 ]
 
 
-# ======================# NULL_SCHEMA_SUPER_KEY EXCEPTION #======================#
+# ======================# NULL_SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
 class NullSchemaSuperKeyException(InvalidSchemaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an entity, method or operation received null instead of a SchemaSuperKey.
+    1.  Indicate that a candidate failed its SchemaSuperKey safety certification because it was null.
 
     # PARENT:
         *   NullException
@@ -34,5 +34,5 @@ class NullSchemaSuperKeyException(InvalidSchemaSuperKeyException, NullException)
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SCHEMA_SUPER_KEY_ERROR"
-    DEFAULT_MESSAGE = "SchemaSuperKey cannot be null."
+    ERROR_CODE = "NULL_SCHEMA_SUPER_KEY_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "SchemaSuperKey validation failed: A SchemaSuperKey cannot be null."

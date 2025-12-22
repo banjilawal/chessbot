@@ -7,16 +7,16 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.schema.map import SchemaSuperKeyException
+from chess.schema import SchemaSuperKeyException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# INVALID_SCHEMA_SUPER_KEY EXCEPTION #======================#
+    # ======================# SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
     "InvalidSchemaSuperKeyException",
 ]
 
 
-# ======================# INVALID_SCHEMA_SUPER_KEY EXCEPTION #======================#
+# ======================# SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
 class InvalidSchemaSuperKeyException(SchemaSuperKeyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

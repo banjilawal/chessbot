@@ -12,18 +12,19 @@ from chess.schema import InvalidSchemaSuperKeyException
 
 
 __all__ = [
-    # ========================= ZERO_SCHEMA_SUPER_KEYS EXCEPTION =========================#
+    # ========================= ZERO_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
     "ZeroSchemaSuperKeysException",
 ]
 
 
-# ========================= ZERO_SCHEMA_SUPER_KEYS EXCEPTION =========================#
+# ========================= ZERO_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
 class ZeroSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that forward Schema lookup failed because all the SchemaSuperKey attributes were null.
+    1.  Indicate that a SchemaSuperKey failed its safety certification because no attribute was enabled with a value.
+    # 1.  Indicate that forward Schema lookup failed because all the SchemaSuperKey attributes were null.
 
     # PARENT:
         *   ContextFlagCountException
@@ -35,8 +36,8 @@ class ZeroSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCo
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_SCHEMA_SUPER_KEYS_ERROR"
+    ERROR_CODE = "ZERO_SCHEMA_SUPER_KEYS_VALIDATION_ERROR"
     DEFAULT_MESSAGE = (
-        "All SchemaSuperKey fields are null. One-and-only-one SchemaSuperKey attribute must have a value "
-        "before a forward Schema lookup can run."
+        "SchemaSuperKey validation failed: All attributes are null. A SchemaSuperKey must have a "
+        "single attribute enabled by a value."
     )

@@ -21,11 +21,13 @@ __all__ = [
 #======================# SCHEMA_SUPER_KEY_BUILD_FAILED EXCEPTION #======================#
 class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper, Messaging, Data Transport.
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error prevented the SchemaSuperKey build from completing successfully.
-    2.  Wrap an exception that hits the try-finally block of a SchemSuperKeyBuilder method.
+    1.  If an error occurs during the SchemaSuperKey build process it raises an exception. The exception is
+        encapsulated in a SchemaSuperKeyBuildFailedException.
+    2.  The SchemaSuperKeyBuildFailed is sent to the caller in a BuildResult providing the caller an exception
+        chain for tracing the failure to its ultimate source.
     
     # PARENT:
         *   BuildFailedException
@@ -40,5 +42,5 @@ class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_SUPER_KEY_BUILD_ERROR"
-    DEFAULT_MESSAGE = "SchemaSuperKey build failed."
+    ERROR_CODE = "SCHEMA_SUPER_KEY_BUILD_FAILED"
+    DEFAULT_MESSAGE = "SchemaSuperKey build failed:"
