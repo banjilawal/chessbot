@@ -29,7 +29,7 @@ class RegistrationException(BiDirectionalException):
     3.  Raised when Entity.owner == owner but the Owner does not find the item in its dataset.
 
     # PARENT:
-        *   BiDirectionalException
+        *   NoBidirectionalRelationshipException
 
     # PROVIDES:
     RegistrationException

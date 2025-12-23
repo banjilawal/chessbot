@@ -11,12 +11,12 @@ from chess.system import ChessException
 
 ___all__ = [
 #======================# BOUNDS EXCEPTION #======================#
-    "BiDirectionalException",
+    "NoBidirectionalRelationshipException",
 ]
 
 
 #======================# BI_DIRECTIONAL RELATIONSHIP EXCEPTION #======================#
-class BiDirectionalException(ChessException):
+class NoBidirectionalRelationshipException(ChessException):
     """
     # ROLE: Error Tracing, Debugging
     
@@ -27,7 +27,7 @@ class BiDirectionalException(ChessException):
         *   ChessException
         
     # PROVIDES:
-    BiDirectionalException
+    None
     
     # LOCAL ATTRIBUTES:
     None

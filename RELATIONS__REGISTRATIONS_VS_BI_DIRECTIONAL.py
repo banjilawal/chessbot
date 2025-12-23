@@ -80,7 +80,7 @@ THere are two conditions.
     
 ### REGISTRATION_EXCEPTION SUPER CLASS:
 ........................................
-    PARENT: BiDirectionalException
+    PARENT: NoBidirectionalRelationshipException
     ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
     
     PURPOSE:

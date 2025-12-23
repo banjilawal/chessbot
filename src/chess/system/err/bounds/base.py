@@ -18,6 +18,24 @@ ___all__ = [
 
 #======================# BOUNDS EXCEPTION #======================#
 class BoundsException(ChessException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that a value is out of bounds.
+
+    # PARENT:
+        *   ChessException
+
+    # PROVIDES:
+    
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     """Base class for out of Bounds errors."""
     DEFAULT_CODE = "OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Out of bounds:"
