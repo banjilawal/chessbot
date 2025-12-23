@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -302,11 +300,11 @@
       <recent name="$PROJECT_DIR$/src/chess/system/err/relational" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/schema/key" />
       <recent name="$PROJECT_DIR$/src/chess/system/find" />
       <recent name="$PROJECT_DIR$/src/chess/system/data" />
       <recent name="$PROJECT_DIR$/src/chess/system/finder" />
       <recent name="$PROJECT_DIR$/src/chess/system/service/entity" />
-      <recent name="$PROJECT_DIR$/src/chess/system/service/base" />
     </key>
   </component>
   <component name="RunManager" selected="Python.finder (2)">
@@ -962,7 +960,7 @@
       <workItem from="1766392718604" duration="52121000" />
       <workItem from="1766452807543" duration="19167000" />
       <workItem from="1766483423840" duration="7733000" />
-      <workItem from="1766498674162" duration="15508000" />
+      <workItem from="1766498674162" duration="17384000" />
     </task>
     <servers />
   </component>
