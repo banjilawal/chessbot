@@ -59,14 +59,23 @@ class SchemaValidator(Validator[Schema]):
         try:
             # Handle the nonexistence case.
             if candidate is None:
+                # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
+                    InvalidSchemaException(
+                        message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
+                        ex=NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
+                    )
                 )
             # Handle the wrong class case.
             if not isinstance(candidate, Schema):
+                # Return the exception chain on failure
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
+                    InvalidSchemaException(
+                        message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
+                        ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
+                    )
                 )
+            
             # On certification success return the schema instance in a ValidationResult.
             return ValidationResult.success(payload=cast(Schema, candidate))
         
