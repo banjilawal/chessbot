@@ -13,9 +13,10 @@ from abc import ABC, abstractmethod
 
 
 from chess.system import Finder, LoggingLevelRouter, Context, SearchResult, Validator
+from chess.system.lookup.lookup import Lookup
 
 
-class ForwardLookup(Finder[Context[Enum]]):
+class ForwardLookup(Lookup[Enum]):
     """
     # ROLE: Forward Lookups,
 

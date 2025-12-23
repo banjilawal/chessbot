@@ -8,13 +8,15 @@ version: 1.0.0
 """
 
 from enum import Enum
-from typing import Any, Generic, List
-from abc import ABC, abstractmethod
+from typing import Generic, List, TypeVar
+from abc import abstractmethod
 
-from chess.system import LoggingLevelRouter, Context, SearchResult, Validator
+from chess.system import LoggingLevelRouter, SearchResult, Validator
+from chess.system.lookup.lookup import Lookup
 
+T = TypeVar("T")
 
-class ReverseLookup(ABC, Generic[Context[Enum]]):
+class ReverseLookup(Lookup[Generic[T]]):
     """
     # ROLE: Reverse Lookups,
 
@@ -38,6 +40,6 @@ class ReverseLookup(ABC, Generic[Context[Enum]]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def reverse_lookup(cls, member: Enum, enum_validator: Validator[Enum],) -> SearchResult[List[Any]]:
+    def reverse_lookup(cls, member: Enum, enum_validator: Validator[Enum],) -> SearchResult[List[T]]:
         """"""
         pass

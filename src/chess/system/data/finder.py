@@ -7,15 +7,15 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from abc import ABC, abstractmethod
-from typing import TypeVar, Generic, List
+from abc import abstractmethod
+from typing import TypeVar, List
 
 from chess.system import Context, Finder, Validator, SearchResult
 
-D = TypeVar("D")
+T = TypeVar("T")
 
 
-class DataFinder(Finder[ABC, Generic[D]]):
+class DataFinder(Finder[T]):
     """
     ROLE:
     ----
@@ -43,10 +43,10 @@ class DataFinder(Finder[ABC, Generic[D]]):
     @abstractmethod
     def find(
             cls,
-            dataset: List[D],
-            context: Context[D],
-            context_validator: Validator[Context[D]]
-    ) -> SearchResult[List[D]]:
+            dataset: List[T],
+            context: Context[T],
+            context_validator: Validator[Context[T]]
+    ) -> SearchResult[List[T]]:
         """
         Action:
         Parameters:
