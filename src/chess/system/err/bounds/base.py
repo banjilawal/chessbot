@@ -19,8 +19,8 @@ ___all__ = [
 #======================# BOUNDS EXCEPTION #======================#
 class BoundsException(ChessException):
     """
-    # ROLE: Catchall
-
+    # ROLE: Error Tracing, Debugging, Catchall Exception
+    
     # RESPONSIBILITIES:
     1.  Indicate that a value is out of bounds.
     2.  Catchall for conditions which are not covered by BoundsException subclasses.

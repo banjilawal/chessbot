@@ -17,7 +17,7 @@ __all__ = [
 #======================# GAME_COLOR_VALIDATION EXCEPTION #======================#
 class InvalidGameColorException(GameColorException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate a candidate failed a GameColor validation test.

@@ -14,11 +14,11 @@ __all__ = [
     "NoRegistrationException",
 ]
 
-from chess.system import RelationshipException
+from chess.system import NoRelationshipException
 
 
 # ======================# NO_REGISTRATION EXCEPTION #======================#
-class NoRegistrationException(RelationshipException):
+class NoRegistrationException(NoRelationshipException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -28,7 +28,7 @@ class NoRegistrationException(RelationshipException):
         with the owner. Raised when Entity.owner == owner but the Owner does not find the item in its dataset.
 
     # PARENT:
-        *   RelationshipException
+        *   NoRelationshipException
 
     # PROVIDES:
     None

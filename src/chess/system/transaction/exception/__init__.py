@@ -15,4 +15,5 @@ None
 # Modules
 from .base import TransactionException
 from .rollback import RollbackException
-from .timeout import
+from .timeout import TransactionTimeoutException
+from .failure import OperationFailedException

@@ -1,13 +1,13 @@
-# src/chess/system/validate/exception/failure.py
+# src/chess/system/validate/exception.py
 
 """
-Module: chess.system.validate.exception.failure
+Module: chess.system.validate.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ValidatorException
+from chess.system import ChessException
 
 __all__ = [
     # ======================# VALIDATION_FAILED EXCEPTION #======================#
@@ -16,16 +16,16 @@ __all__ = [
 
 
 #======================# VALIDATION_FAILED EXCEPTION #======================#
-class ValidationFailedException(ValidatorException):
+class ValidationFailedException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
   
     # RESPONSIBILITIES:
     1.  Parent of exception verifying correctness of candidate
     2.  Wraps an exception that hits the try-finally block of a Validator method.
   
     # PARENT:
-        *   ValidatorException
+        *   ChessException
   
     # PROVIDES:
     None

@@ -18,7 +18,7 @@ from chess.system import ChessException
 # ======================# NOT_IMPLEMENTED EXCEPTION #======================#
 class NotImplementedException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Catchall Exception
 
     # RESPONSIBILITIES:
     1.  Indicate that a call was made to an abstract method that the subclass does not implement.

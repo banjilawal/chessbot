@@ -1,7 +1,7 @@
-# src/chess/system/err/operation.py
+# src/chess/system/transaction/failure.py
 
 """
-Module: chess.system.err.operation
+Module: chess.system.transaction.failure
 Author: Banji Lawal
 Created: 2025-11-21
 version: 1.0.0
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# OPERATION EXCEPTION #======================#
-class OperationFailedException(ChessException):
+class OperationFailedException(TransactionException):
     """
     # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception
 

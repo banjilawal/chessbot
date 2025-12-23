@@ -7,28 +7,29 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import ChessException
+from chess.system import ChessException, TransactionException
 
 __all__ = [
     # ====================== TRANSACTION_TIMEOUT EXCEPTION #======================#
     'TransactionTimeoutException',
 ]
 
+from chess.system import ResourceUnavailableException
+
 
 # ====================== TRANSACTION_TIMEOUT EXCEPTION #======================#
-class TransactionTimeoutException(TransactionException):
+class TransactionTimeoutException(TransactionException, ResourceUnavailableException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by Transaction objects
-    2.  Catchall for Transaction errors not covered by lower level  Transaction exception.
+    1.  Indicate that a transaction was not completed because it timed out waiting for a resource.
 
     # PARENT:
         *   ChessException
 
     # PROVIDES:
-    TransactionException
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -36,5 +37,5 @@ class TransactionTimeoutException(TransactionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "Transaction raised an exception."
+    ERROR_CODE = "TRANSACTION_TIMEOUT_ERROR"
+    DEFAULT_MESSAGE = "The transaction was cancelled. It timed out waiting for a resource."

@@ -18,7 +18,7 @@ __all__ = [
 #======================# NULL EXCEPTION #======================#
 class NullException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Catchall Exception
 
     # RESPONSIBILITIES:
     1.  Parent of exception that indicate an entity, method, or operation requires an object

@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import RelationshipException
+from chess.system import NoRelationshipException
 
 ___all__ = [
 # ======================# NO_BIDIRECTIONAL_RELATIONSHIP EXCEPTION #======================#
@@ -17,7 +17,7 @@ ___all__ = [
 
 
 #======================# NO_BIDIRECTIONAL_RELATIONSHIP EXCEPTION #======================#
-class NoBidirectionalRelationException(RelationshipException):
+class NoBidirectionalRelationException(NoRelationshipException):
     """
     # ROLE: Error Tracing, Debugging
     
@@ -25,7 +25,7 @@ class NoBidirectionalRelationException(RelationshipException):
     1.  Indicate that a required bidirectional relationship between two entities does not exist.
     
     # PARENT:
-        *   RelationshipException
+        *   NoRelationshipException
         
     # PROVIDES:
     None

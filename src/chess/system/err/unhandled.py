@@ -18,7 +18,7 @@ __all__ = [
 # ======================# NUMBER EXCEPTION #======================#
 class UnhandledRouteException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Catchall Exception
 
     # RESPONSIBILITIES:
     1.  Indicate That  one or more terminating execution routes was not handled in branching conditions.

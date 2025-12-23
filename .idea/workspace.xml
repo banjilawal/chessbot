@@ -5,11 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/system/err/resource/unavailable.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/consistency/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/consistency/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/rollback.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/rollback.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/color/invalid.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/color/invalid.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/implementation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/implementation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/exception/failure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/bidirectional.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/relational/bidirectional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/relational/registration.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/resource/unavailable.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/resource/unavailable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/rollback.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/unhandled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/unhandled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/exception/rollback.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/exception/rollback.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/exception/timeout.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/exception/timeout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/certifier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/exception/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/exception/failure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,11 +320,11 @@
       <recent name="$PROJECT_DIR$/src/chess/system/text/exception/void" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/transaction/exception" />
+      <recent name="$PROJECT_DIR$/src/chess/system/transaction/failure" />
+      <recent name="$PROJECT_DIR$/src/chess/system/validate" />
       <recent name="$PROJECT_DIR$/src/chess/system/err" />
       <recent name="$PROJECT_DIR$/src/chess/system/err/color" />
-      <recent name="$PROJECT_DIR$/src/chess/system/err/consistency" />
-      <recent name="$PROJECT_DIR$/src/chess/system/err/relational" />
-      <recent name="$PROJECT_DIR$/src/chess/system/err/bounds" />
     </key>
   </component>
   <component name="RunManager" selected="Python.finder (2)">
@@ -964,7 +978,7 @@
       <workItem from="1766255712700" duration="60521000" />
       <workItem from="1766341551279" duration="31466000" />
       <workItem from="1766392718604" duration="52121000" />
-      <workItem from="1766452807543" duration="4898000" />
+      <workItem from="1766452807543" duration="7201000" />
     </task>
     <servers />
   </component>

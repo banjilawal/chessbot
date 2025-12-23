@@ -18,7 +18,7 @@ __all__ = [
 #====================== ROLLBACK EXCEPTION #======================#
 class RollbackException(TransactionException):
   """
-  # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Error Tracing, Debugging
 
   # RESPONSIBILITIES:
   1.  Parent of exception raised when a Transaction is rolled back to its last checkpoint.

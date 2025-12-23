@@ -11,7 +11,7 @@ version: 1.0.0
 # ======================# RESOURCE_UNAVAILABLE EXCEPTION #======================#
 class ResourceUnavailableException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Catchall Exception
 
     # RESPONSIBILITIES:
     1.  Indicate that a resource a client needs is unavailable.
