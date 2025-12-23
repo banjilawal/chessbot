@@ -12,10 +12,6 @@ from typing import Optional
 __all__ = [
     # ======================#  BASE APPLICATION EXCEPTION CLASS #======================#
     "ChessException",
-    # ======================# IMPLEMENTATION EXCEPTION #======================#
-    "NotImplementedException",
-    # ======================# STARVATION EXCEPTION #======================#
-    "ResourceException",
 ]
 
 

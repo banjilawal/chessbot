@@ -1,3 +1,13 @@
+# src/chess/system/err/resource/unavailable.py
+
+"""
+Module: chess.system.err.resource.unavailable
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+
 # ======================# RESOURCE_UNAVAILABLE EXCEPTION #======================#
 class ResourceUnavailableException(ChessException):
     """

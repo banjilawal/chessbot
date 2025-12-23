@@ -7,16 +7,16 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import RollbackException, TransactionException
+from chess.system import TransactionException
 
 __all__ = [
   #====================== ROLLED_BACK_TRANSACTION EXCEPTION #======================#
-  'RolledBackTransactionException',
+  'RollbackException',
 ]
 
 
-#====================== ROLLED_BACK_TRANSACTION EXCEPTION #======================#
-class RolledBackTransactionException(TransactionException, RollbackException):
+#====================== ROLLBACK EXCEPTION #======================#
+class RollbackException(TransactionException):
   """
   # ROLE: Exception Wrapper, Catchall Exception
 
@@ -28,7 +28,7 @@ class RolledBackTransactionException(TransactionException, RollbackException):
       *   RollbackException
 
   # PROVIDES:
-  RolledBackTransactionException
+  RollbackException
 
   # LOCAL ATTRIBUTES:
   None
