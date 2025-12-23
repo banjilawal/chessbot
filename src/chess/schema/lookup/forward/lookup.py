@@ -14,7 +14,7 @@ from chess.schema import (
     SchemaSuperKeyValidator, SchemaLookupFailedException, SchemaValidator, Schema, SchemaLookupException
 )
 from chess.system import (
-    ForwardLookup, FailsafeBranchExitPointException, GameColor, LoggingLevelRouter, SearchResult,
+    ForwardLookup, UnhandledRouteException, GameColor, LoggingLevelRouter, SearchResult,
     id_emitter
 )
 
@@ -125,8 +125,8 @@ class SchemaForwardLookup(ForwardLookup[SchemaSuperKey]):
             
             # Failsafe if any map cases was missed
             return SearchResult.failure(
-                FailsafeBranchExitPointException(
-                    f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}"
+                UnhandledRouteException(
+                    f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}"
                 )
             )
 

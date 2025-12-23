@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.game import Game, GameService
 from chess.team import Team, TeamService
-from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter
+from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService, LoggingLevelRouter
 from chess.arena import (
     ArenaContext, ArenaContextBuildFailedException, ExcessiveArenaContextFlagsException, ZeroArenaContextFlagsException,
 )
@@ -144,7 +144,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
         # Finally, catch any missed exception, wrap an ArenaContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.

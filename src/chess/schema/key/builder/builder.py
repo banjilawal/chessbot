@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.system import (
-    BuildResult, Builder, FailsafeBranchExitPointException, GameColor, GameColorValidator,
+    BuildResult, Builder, UnhandledRouteException, GameColor, GameColorValidator,
     IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
@@ -132,7 +132,7 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             return BuildResult.failure(
                 SchemaSuperKeyBuildFailedException(
                     message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
-                    ex=FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                    ex=UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
                 )
             )
 

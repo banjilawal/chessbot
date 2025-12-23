@@ -16,7 +16,7 @@ from chess.catalog import (
     CatalogQuotaBoundsException, CatalogRansomBoundsException, CatalogValidator
 )
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
-from chess.system import ForwardLookup, FailsafeBranchExitPointException, LoggingLevelRouter, SearchResult, id_emitter
+from chess.system import ForwardLookup, UnhandledRouteException, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class CatalogLookup(ForwardLookup[CatalogContext]):
@@ -165,7 +165,7 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             
             # Failsafe if any map cases was missed
             return SearchResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a CatalogLookupException then,
         # return the exception chain inside a SearchResult.

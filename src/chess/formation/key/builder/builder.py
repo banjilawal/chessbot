@@ -13,7 +13,7 @@ from chess.formation import (
     OrderContext, OrderContextBuildFailedException, NoOrderContextFlagException, ExcessiveOrderContextFlagsException
 )
 from chess.system import (
-    BuildResult, Builder, FailsafeBranchExitPointException, GameColor, GameColorValidator,
+    BuildResult, Builder, UnhandledRouteException, GameColor, GameColorValidator,
     IdentityService, LoggingLevelRouter
 )
 
@@ -131,7 +131,7 @@ class OrderContextBuilder(Builder[OrderContext]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
         # Finally, catch any missed exception, wrap an OrderContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.

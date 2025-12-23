@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.system import (
-    BuildResult, Builder, FailsafeBranchExitPointException, LoggingLevelRouter,
+    BuildResult, Builder, UnhandledRouteException, LoggingLevelRouter,
     NumberInBoundsValidator
 )
 from chess.coord import (
@@ -122,7 +122,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
         # Finally, catch any missed exception and wrap A CoordContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.

@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== SCHEMA.KEY.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .builder import SchemaSuperKeyBuilder
-from .exception import SchemaSuperKeyBuildFailedException

@@ -11,7 +11,7 @@ from typing import Optional
 
 
 from chess.agent import PlayerAgent, AgentService
-from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter
+from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService, LoggingLevelRouter
 from chess.game import (
     GameContext, GameContextBuildFailedException, ZeroGameContextFlagsException, ExcessiveGameContextFlagsException
 )
@@ -112,7 +112,7 @@ class GameContextBuilder(Builder[GameContext]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
         # Finally, catch any missed exception and wrap A GameContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.

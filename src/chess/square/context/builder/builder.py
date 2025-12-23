@@ -12,7 +12,7 @@ from typing import Optional
 
 from chess.board import Board
 from chess.coord import Coord, CoordService
-from chess.system import Builder, BuildResult, FailsafeBranchExitPointException, IdentityService
+from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService
 from chess.square import (
     ZeroSquareContextFlagsException, SquareContext, SquareContextBuildFailedException,
     ExcessiveSquareContextFlagsException
@@ -127,7 +127,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
         # Finally, catch any missed exception and wrap A SquareContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.

@@ -13,7 +13,7 @@ from typing import Optional
 from chess.arena import Arena, ArenaService
 from chess.agent import PlayerAgent, AgentService
 from chess.system import (
-    Builder, BuildResult, FailsafeBranchExitPointException, GameColor, GameColorValidator,
+    Builder, BuildResult, UnhandledRouteException, GameColor, GameColorValidator,
     IdentityService, LoggingLevelRouter
 )
 from chess.team import (
@@ -149,7 +149,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
         # Finally, catch any missed exception, wrap an TeamContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.

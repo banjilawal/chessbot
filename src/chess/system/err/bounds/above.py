@@ -1,41 +1,22 @@
-# src/chess/system/err/bounds.py
+# src/chess/system/err/bounds/above.py
 
 """
-Module: chess.system.err.bounds
+Module: chess.system.err.bounds.above
 Author: Banji Lawal
-Created: 2025-11-21
+Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ChessException
+from chess.system import BoundsException
 
 
 ___all__ = [
-#======================# BOUNDS EXCEPTION #======================#
-    "BoundsException",
-#======================# ABOVE BOUNDS EXCEPTION #======================#
+#======================# ABOVE_BOUNDS EXCEPTION #======================#
     "AboveBoundsException",
-#======================# BELOW BOUNDS EXCEPTION #======================#
-    "BelowBoundsException"
 ]
 
-
-#======================# BOUNDS EXCEPTION #======================#
-class BoundsException(ChessException):
-    """Base class for out of Bounds errors."""
-    DEFAULT_CODE = "OUT_OF__BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Out of bounds."
-
-
-#======================# ABOVE BOUNDS EXCEPTION #======================#
+#======================# ABOVE_BOUNDS EXCEPTION #======================#
 class AboveBoundsException(BoundsException):
     """Base class for above bounds exception."""
     DEFAULT_CODE = "ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Above bounds."
-
-
-#======================# BELOW BOUNDS EXCEPTION #======================#
-class BelowBoundsException(BoundsException):
-    """Base class for above bounds exception."""
-    DEFAULT_CODE = "BELOW_BOUNDS_RROR"
-    DEFAULT_MESSAGE = "Below bounds."
+    DEFAULT_MESSAGE = "Above bounds:"

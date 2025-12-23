@@ -10,14 +10,14 @@ version: 1.0.0
 #=========== SYSTEM.ERR PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .bounds import *
 
 # Modules
 from .base import *
 from .bidirectional import *
 from .bounds import *
 from .color import *
-from .failsafe import *
+from .unhandled import *
 from .inconsistency import *
 from .null import *
 from .operation import *

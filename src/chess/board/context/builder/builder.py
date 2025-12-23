@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.arena import Arena, ArenaService
-from chess.system import BuildResult, Builder, FailsafeBranchExitPointException, IdentityService, LoggingLevelRouter
+from chess.system import BuildResult, Builder, UnhandledRouteException, IdentityService, LoggingLevelRouter
 from chess.board import BoardContext, BoardContextBuildFailedException
 
 
@@ -107,7 +107,7 @@ class BoardContextBuilder(Builder[BoardContext]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
         # Finally, catch any missed exception, wrap an AgentContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
