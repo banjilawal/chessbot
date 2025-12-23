@@ -32,7 +32,7 @@ class RegistrationException(BiDirectionalException):
         *   NoBidirectionalRelationshipException
 
     # PROVIDES:
-    RegistrationException
+    None
 
     # LOCAL ATTRIBUTES:
     None

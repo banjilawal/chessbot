@@ -17,6 +17,23 @@ ___all__ = [
 
 #======================# ABOVE_BOUNDS EXCEPTION #======================#
 class AboveBoundsException(BoundsException):
-    """Base class for above bounds exception."""
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that a value is above bounds.
+
+    # PARENT:
+        *   ChessException
+
+    # PROVIDES:
+
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     DEFAULT_CODE = "ABOVE_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Above bounds:"

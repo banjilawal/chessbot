@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/RELATIONS__REGISTRATIONS_VS_BI_DIRECTIONAL.py" beforeDir="false" afterPath="$PROJECT_DIR$/RELATIONS__REGISTRATIONS_VS_BI_DIRECTIONAL.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/bidirectional.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/relational/bidirectional.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/relational/registration.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -962,7 +959,7 @@
       <workItem from="1766223152549" duration="26989000" />
       <workItem from="1766255712700" duration="60521000" />
       <workItem from="1766341551279" duration="31466000" />
-      <workItem from="1766392718604" duration="49548000" />
+      <workItem from="1766392718604" duration="49699000" />
     </task>
     <servers />
   </component>

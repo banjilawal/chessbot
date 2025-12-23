@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.system import ChessException
 
 ___all__ = [
-#======================# BOUNDS EXCEPTION #======================#
+    # ======================# BI_DIRECTIONAL RELATIONSHIP EXCEPTION #======================#
     "NoBidirectionalRelationshipException",
 ]
 
@@ -21,7 +21,7 @@ class NoBidirectionalRelationshipException(ChessException):
     # ROLE: Error Tracing, Debugging
     
     # RESPONSIBILITIES:
-    1.  Indicate if a required bidirectional relationship does not exist
+    1.  Indicate that a required bidirectional relationship does not exist.
     
     # PARENT:
         *   ChessException
@@ -35,5 +35,5 @@ class NoBidirectionalRelationshipException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    DEFAULT_CODE = "NO_BI_DIRECTIONAL_RELATIONSHIP_ERROR"
+    DEFAULT_CODE = "MISSING_BIDIRECTIONAL_RELATIONSHIP_ERROR"
     DEFAULT_MESSAGE = "There is no bidirectional relationship nor any connection between the entities."

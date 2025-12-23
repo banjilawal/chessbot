@@ -36,6 +36,5 @@ class BoundsException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    """Base class for out of Bounds errors."""
     DEFAULT_CODE = "OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Out of bounds:"

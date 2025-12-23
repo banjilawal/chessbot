@@ -18,6 +18,23 @@ ___all__ = [
 
 #======================# BELOW_BOUNDS EXCEPTION #======================#
 class BelowBoundsException(BoundsException):
-    """Base class for above bounds exception."""
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that a value is below bounds.
+
+    # PARENT:
+        *   ChessException
+
+    # PROVIDES:
+
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     DEFAULT_CODE = "BELOW_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Below bounds:"
