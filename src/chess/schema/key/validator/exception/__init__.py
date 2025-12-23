@@ -14,4 +14,5 @@ from .flag import *
 
 # Modules
 from .null import NullSchemaSuperKeyException
-from .base import InvalidSchemaSuperKeyException
+from .wrapper import InvalidSchemaSuperKeyException
+from .route import SchemSuperKeyValidationRouteException

@@ -1,7 +1,7 @@
-# src/chess/schema/key/validator/exception/base.py
+# src/chess/schema/key/validator/exception/wrapper.py
 
 """
-Module: chess.schema.key.validator.exception.base
+Module: chess.schema.key.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

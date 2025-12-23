@@ -73,13 +73,21 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
         try:
             # Handle the nonexistence case.
             if candidate is None:
+                # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    NullSchemaSuperKeyException(f"{method}: {NullSchemaSuperKeyException.DEFAULT_MESSAGE}")
+                    InvalidSchemaSuperKeyException(
+                        message=f"{method}: {InvalidSchemaSuperKeyException.ERROR_CODE}",
+                        ex=NullSchemaSuperKeyException(f"{method}: {NullSchemaSuperKeyException.DEFAULT_MESSAGE}")
+                    )
                 )
             # Handle the wrong class case.
             if not isinstance(candidate, SchemaSuperKey):
+                # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected SchemaSuperKey, got {type(candidate).__name__} instead.")
+                    InvalidSchemaSuperKeyException(
+                        message=f"{method}: {InvalidSchemaSuperKeyException.ERROR_CODE}",
+                        ex=TypeError(f"{method}: Expected SchemaSuperKey, got {type(candidate).__name__} instead.")
+                    )
                 )
             
             # After existence and type checks cast the candidate to a SchemaSuperKey for additional tests.
@@ -88,14 +96,22 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             # Handle the case of searching with no key-value is set.
             size = len(super_key.to_dict())
             if size  == 0:
+                # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
+                    InvalidSchemaSuperKeyException(
+                        message=f"{method}: {InvalidSchemaSuperKeyException.ERROR_CODE}",
+                        ex=ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
+                    )
                 )
             # Handle the case of more than one key-value is set.
             if size > 1:
+                # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    ExcessiveSchemaSuperKeysException(
-                        f"{method}: {ExcessiveSchemaSuperKeysException.DEFAULT_MESSAGE}"
+                    InvalidSchemaSuperKeyException(
+                        message=f"{method}: {InvalidSchemaSuperKeyException.ERROR_CODE}",
+                        ex=ExcessiveSchemaSuperKeysException(
+                            f"{method}: {ExcessiveSchemaSuperKeysException.DEFAULT_MESSAGE}"
+                        )
                     )
                 )
             
@@ -104,8 +120,14 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             # Certification for the forward lookup-by-name value.
             if super_key.name is not None:
                 validation = identity_service.validate_name(candidate=super_key.name)
+                # Return the exception chain on failure.
                 if validation.is_failure:
-                    return ValidationResult.failure(validation.exception)
+                    return ValidationResult.failure(
+                        InvalidSchemaSuperKeyException(
+                            message=f"{method}: {InvalidSchemaSuperKeyException.ERROR_CODE}",
+                            ex=validation.exception
+                        )
+                    )
                 # On certification success return the SchemaMap_name in a ValidationResult.
                 return ValidationResult.success(payload=super_key)
             
@@ -113,9 +135,25 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             if super_key.color is not None:
                 validation = color_validator.validate(candidate=super_key.color)
                 if validation.is_failure:
-                    return ValidationResult.failure(validation.exception)
+                    # Return the exception chain on failure.
+                    return ValidationResult.failure(
+                        InvalidSchemaSuperKeyException(
+                            message=f"{method}: {InvalidSchemaSuperKeyException.ERROR_CODE}",
+                            ex=validation.exception
+                        )
+                    )
                 # On certification success return the SchemaMap_color in a ValidationResult.
                 return ValidationResult.success(payload=super_key)
+            
+            # Handle the default case where no exception is raised and SchemaSuperKey was not covered with an if-block
+            return ValidationResult.failure(
+                InvalidSchemaSuperKeyException(
+                    message=f"{method}: {InvalidSchemaSuperKeyException.ERROR_CODE} - ",
+                    ex=SchemaSuperKeyValidationRouteException(
+                        f"{method}: {SchemaSuperKeyBuildRouteException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
             
         # Finally, catch any missed exception, wrap an InvalidSchemaSuperKeyException it. Then send the exception-chain
         # in a ValidationResult.

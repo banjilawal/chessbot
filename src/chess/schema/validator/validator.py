@@ -75,7 +75,6 @@ class SchemaValidator(Validator[Schema]):
                         ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
                     )
                 )
-            
             # On certification success return the schema instance in a ValidationResult.
             return ValidationResult.success(payload=cast(Schema, candidate))
         
