@@ -81,13 +81,21 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             
             # Handle the case that all the optional params are null.
             if param_count == 0:
+                # Return the exception chain on failure.
                 return BuildResult.failure(
-                    ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
+                    SchemaSuperKeyBuildFailedException(
+                        message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
+                        ex=ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
+                    )
                 )
             # Handle the case that more than one optional param is not-null.
             if param_count > 1:
+                # Return the exception chain on failure.
                 return BuildResult.failure(
-                    ExcessiveSchemaSuperKeysException(f"{method}: {ExcessiveSchemaSuperKeysException}")
+                    SchemaSuperKeyBuildFailedException(
+                        message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
+                        ex=ExcessiveSchemaSuperKeysException(f"{method}: {ExcessiveSchemaSuperKeysException}")
+                    )
                 )
             
             # Route to the appropriate validation branch.
@@ -96,7 +104,13 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
+                    # Return the exception chain on failure.
+                    return BuildResult.failure(
+                        SchemaSuperKeyBuildFailedException(
+                            message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
+                            ex=validation.exception
+                        )
+                    )
                 # On validation success return a SchemaKey_name in the BuildResult.
                 return BuildResult.success(SchemaSuperKey(name=name))
             
@@ -104,18 +118,26 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             if color is not None:
                 validation = color_validator.validate(candidate=color)
                 if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
+                    # Return the exception chain on failure.
+                    return BuildResult.failure(
+                        SchemaSuperKeyBuildFailedException(
+                            message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
+                            ex=validation.exception
+                        )
+                    )
                 # On validation success return a SchemaKey_color in the BuildResult.
                 return BuildResult.success(SchemaSuperKey(color=color))
             
-            # Else, if there are no exceptions raised and an outcome is not covered by an if block
-            # return a FailsafeBranchExitPointException in the BuildResult. I don't like using if-elif-else blocks.
-            # They are harder to read :-)
-            BuildResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+            # Handle the default case where no exception is raised and SchemaSuperKey was not covered with an if-block
+            return BuildResult.failure(
+                SchemaSuperKeyBuildFailedException(
+                    message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
+                    ex=FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                )
             )
-        # Finally, catch any missed exception, wrap an SchemaSuperKeyBuildFailedException around it, return the
-        # exception-chain inside the BuildResult.
+
+        # Finally, wrap a SchemaSuperKeyBuildFailedException any missed exception then return the exception-chain
+        # in the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
                 SchemaSuperKeyBuildFailedException(

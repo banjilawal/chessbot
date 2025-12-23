@@ -11,12 +11,12 @@ from chess.system import ChessException
 
 __all__ = [
     # ======================# NUMBER EXCEPTION #======================#
-    "FailsafeBranchExitPointException",
+    "UnhandledRouteException",
 ]
 
 
 # ======================# NUMBER EXCEPTION #======================#
-class FailsafeBranchExitPointException(ChessException):
+class UnhandledRouteException(ChessException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -40,3 +40,4 @@ class FailsafeBranchExitPointException(ChessException):
         "One or more result generating routes was not handled with an if-block. Check the possible outcomes "
         "and see if there is a missing execution flow."
     )
+    
