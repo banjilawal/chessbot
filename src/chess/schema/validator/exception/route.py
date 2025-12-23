@@ -38,8 +38,9 @@ class UnhandledSchemValidationRouteException(InvalidSchemaException, UnhandledRo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SCHEMA_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "UNHANDLED_SCHEMA_VALIDATION_ROUTE"
     DEFAULT_MESSAGE = (
-        "The SchemaBuilder encountered a condition without an appropriate execution route. "
-        "Ensure all possible logic branches are covered in the build process."
+        "The SchemaValidator did not handle a parameter or condition that needs it own execution route. "
+        "The validation process was not exhaustive. Ensure all possible branches are covered in the "
+        "verification procss."
     )

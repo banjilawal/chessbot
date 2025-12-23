@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import Optional
 
 from chess.system import (
-    BuildResult, Builder, UnhandledRouteException, GameColor, GameColorValidator,
-    IdentityService, LoggingLevelRouter
+    BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
-    ZeroSchemaSuperKeysException, SchemaSuperKey, ExcessiveSchemaSuperKeysException, SchemaSuperKeyBuildFailedException
+    SchemaSuperKeyBuildRouteException, ZeroSchemaSuperKeysException, SchemaSuperKey, ExcessiveSchemaSuperKeysException,
+    SchemaSuperKeyBuildFailedException
 )
 
 
@@ -132,7 +132,9 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             return BuildResult.failure(
                 SchemaSuperKeyBuildFailedException(
                     message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
-                    ex=UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
+                    ex=SchemaSuperKeyBuildRouteException(
+                        f"{method}: {SchemaSuperKeyBuildRouteException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
 
@@ -141,6 +143,6 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
         except Exception as ex:
             return BuildResult.failure(
                 SchemaSuperKeyBuildFailedException(
-                    ex=ex, message=f"{method}: {SchemaSuperKeyBuildFailedException.DEFAULT_MESSAGE}"
+                    ex=ex, message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE}"
                 )
             )

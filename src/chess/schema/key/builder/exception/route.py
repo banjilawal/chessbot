@@ -1,13 +1,13 @@
-# src/chess/schema/key/exception.route.py
+# src/chess/schema/key/builder/exception/route.py
 
 """
-Module: chess.schema.key.exception.route
+Module: chess.schema.key.builder.exception.route
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.schema import InvalidSchemaException, SchemaSuperKeyException
+from chess.schema import SchemaSuperKeyException
 from chess.system import UnhandledRouteException
 
 
@@ -23,7 +23,7 @@ class SchemaSuperKeyBuildRouteException(SchemaSuperKeyException, UnhandledRouteE
     # ROLE: Fallback Result
     
     # RESPONSIBILITIES:
-    1. Indicate that Raised when SchemaSuperKeyBuilder encounters unhandled execution flow during a build
+    1. Indicate that SchemaSuperKeyBuilder did not handle a build option or parameter with its own execution route.
     
     # PARENT:
         *   SchemaSuperKeyException

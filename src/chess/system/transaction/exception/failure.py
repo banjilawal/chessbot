@@ -6,8 +6,8 @@ Author: Banji Lawal
 Created: 2025-11-21
 version: 1.0.0
 """
+from chess.system import TransactionException
 
-from chess.system.err import ChessException
 
 __all__ = [
     # ======================# OPERATION EXCEPTION #======================#

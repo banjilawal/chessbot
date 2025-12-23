@@ -14,3 +14,4 @@ None
 
 # Modules
 from wrapper import SchemaSuperKeyBuildFailedException
+from .route import SchemaSuperKeyBuildRouteException
