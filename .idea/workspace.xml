@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/schema/lookup/forward/route.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/builder/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/builder/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/builder/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/forward/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/forward/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/forward/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/forward/wrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/forward/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/forward/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/reverse/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/reverse/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/lookup/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/lookup/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/context.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/lookup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/lookup/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/lookup/exception/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/lookup/exception/failure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/lookup/forward/forward.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/lookup/forward/forward.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/builder/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -981,7 +962,7 @@
       <workItem from="1766341551279" duration="31466000" />
       <workItem from="1766392718604" duration="52121000" />
       <workItem from="1766452807543" duration="19167000" />
-      <workItem from="1766483423840" duration="4463000" />
+      <workItem from="1766483423840" duration="5640000" />
     </task>
     <servers />
   </component>

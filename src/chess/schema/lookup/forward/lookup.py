@@ -41,69 +41,7 @@ class ForwardSchemaLookup(ForwardLookup[SchemaSuperKey]):
     # INHERITED ATTRIBUTES:
     None
     """
-    method = "SchemaSuperKeyBuilder.build"
-    try:
-        # Count how many optional parameters are not-null.
-        params = [name, color, ]
-        param_count = sum(bool(p) for p in params)
-        
 
-        if param_count == 0:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                SchemaSuperKeyBuildFailedException(
-                    message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
-                    ex=ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
-                )
-            )
-        # Handle the case that more than one optional param is not-null.
-        if param_count > 1:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                SchemaSuperKeyBuildFailedException(
-                    message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
-                    ex=ExcessiveSchemaSuperKeysException(f"{method}: {ExcessiveSchemaSuperKeysException}")
-                )
-            )
-        
-        # Route to the appropriate validation branch.
-        
-        # Build the name SchemaSuperKey if its value is set.
-        if name is not None:
-            validation = identity_service.validate_name(candidate=name)
-            if validation.is_failure:
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    SchemaSuperKeyBuildFailedException(
-                        message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
-                        ex=validation.exception
-                    )
-                )
-            # On validation success return a SchemaKey_name in the BuildResult.
-            return BuildResult.success(SchemaSuperKey(name=name))
-        
-        # Build the color_key SchemaSuperKey if its value is set.
-        if color is not None:
-            validation = color_validator.validate(candidate=color)
-            if validation.is_failure:
-
-                return BuildResult.failure(
-                    SchemaSuperKeyBuildFailedException(
-                        message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
-                        ex=validation.exception
-                    )
-                )
-            # On validation success return a SchemaKey_color in the BuildResult.
-            return BuildResult.success(SchemaSuperKey(color=color))
-        
-
-
-    except Exception as ex:
-        return BuildResult.failure(
-            SchemaSuperKeyBuildFailedException(
-                ex=ex, message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE}"
-            )
-        )
     
     @classmethod
     def lookup(
@@ -146,7 +84,7 @@ class ForwardSchemaLookup(ForwardLookup[SchemaSuperKey]):
             # Entry point into forward lookups by name.
             if super_key.name is not None:
                 return cls._lookup_by_name(name=super_key.name)
-            # Entry point into forward lookups by name.
+            # Entry point into forward lookups by color.
             if super_key.color is not None:
                 return cls._lookup_by_color(color=super_key.color)
             
@@ -166,60 +104,16 @@ class ForwardSchemaLookup(ForwardLookup[SchemaSuperKey]):
                     ex=ex, message=f"{method}: {ForwardSchemaFailedException.ERROR_CODE}"
                 )
             )
-        
-    
-    # SERVICE_NAME = "ForwardSchemaLookuo"
-    # def lookup(
-    #         self,
-    #         name: str = SERVICE_NAME,
-    #         id: int = id_emitter.lookup_id,
-    #         enum_validator: SchemaValidator = SchemaValidator(),
-    #         key_builder: SchemaSuperKeyBuilder = SchemaSuperKeyBuilder(),
-    #         key_validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator(),
-    # ):
-    #     super().lookup(
-    #         id=id,
-    #         name=name,
-    #         enum_validator=enum_validator,
-    #         key_builder=key_builder,
-    #         key_validator=key_validator
-    #     )
-    #
-    # @property
-    # def schema_validator(self) -> SchemaValidator:
-    #     """Return an SchemaValidator."""
-    #     return cast(SchemaValidator, self.enum_validator)
-    #
-    # @property
-    # def key_builder(self) -> SchemaSuperKeyBuilder:
-    #     """Return an SchemaSuperKeyBuilder."""
-    #     return cast(SchemaSuperKeyBuilder, self.key_builder)
-    #
-    # @property
-    # def key_validator(self) -> SchemaSuperKeyValidator:
-    #     """Return an SchemaSuperKeyValidator."""
-    #     return cast(SchemaSuperKeyValidator, self.key_validator)
-    #
-    # @property
-    # def allowed_colors(self) -> List[GameColor]:
-    #     """Returns a list of all permissible schema colors."""
-    #     return [member.color for member in Schema]
-    #
-    # @property
-    # def allowed_names(self) -> List[str]:
-    #     """Returns a list of all permissible schema names in upper case."""
-    #     return [member.name.upper() for member in Schema]
-    
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_name(cls, name: str) -> SearchResult[List[Schema]]:
+    def _lookup_by_name(cls, target: str) -> SearchResult[List[Schema]]:
         """
         # Action:
-        1.  Get any Schema entry which matches the targeted name-value key.
+        1.  Get any Schema entry whose name matches the target value.
 
         # Parameters:
-            *   name (str)
+            *   target (str)
 
         # Returns:
         SearchResult[List[Schema]] containing either:
@@ -233,11 +127,12 @@ class ForwardSchemaLookup(ForwardLookup[SchemaSuperKey]):
         """
         method = "ForwardSchemaLookup._lookup_by_name"
         try:
-            matches = [entry for entry in Schema if entry.name.upper() == name.upper()]
-            # This is the expected case.
+            matches = [entry for entry in Schema if entry.name.upper() == target.upper()]
+            # On finding a match return it in the SearchResult.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
             
+            # The default case covers is there is no entry with the target.
             # If no Schema entry has the targeted key-value return an exception because no hits in the hash table
             # indicate that  there is either no subclass whose different behavior is implemented with a strategy or,
             # class objects of the same type, same behavior but different metadata.
