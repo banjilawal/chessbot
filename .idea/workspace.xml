@@ -264,7 +264,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ToolWindow.Python Packages.ShowToolbar": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "exceptionless",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/service/entity",
     "node.js.detected.package.tslint": "true",
@@ -960,7 +960,7 @@
       <workItem from="1766392718604" duration="52121000" />
       <workItem from="1766452807543" duration="19167000" />
       <workItem from="1766483423840" duration="7733000" />
-      <workItem from="1766498674162" duration="17384000" />
+      <workItem from="1766498674162" duration="18301000" />
     </task>
     <servers />
   </component>
