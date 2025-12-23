@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .lookup import ForwardSchemaLookup
-from .route import ForwardSchemaRouteException
-from .wrapper import ForwardSchemaLookupFailedException
+from .lookup import SchemaLookup
+from .route import UnhandledSchemaLookupRouteException
+from .wrapper import SchemaLookupFailedException

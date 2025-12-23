@@ -10,7 +10,7 @@ from typing import cast
 
 
 from chess.system import ContextService, id_emitter
-from chess.schema import ForwardSchemaLookup, SchemaSuperKey, SchemaSuperKeyBuilder, SchemaSuperKeyValidator
+from chess.schema import SchemaLookup, SchemaSuperKey, SchemaSuperKeyBuilder, SchemaSuperKeyValidator
 
 
 class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
@@ -40,7 +40,7 @@ class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            lookup: ForwardSchemaLookup = ForwardSchemaLookup(),
+            lookup: SchemaLookup = SchemaLookup(),
             builder: SchemaSuperKeyBuilder = SchemaSuperKeyBuilder(),
             validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator(),
     ):
@@ -73,5 +73,5 @@ class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
         return cast(SchemaSuperKeyValidator, self.entity_validator)
     
     @property
-    def lookup(self) -> ForwardSchemaLookup:
-        return cast(ForwardSchemaLookup, self.entity_finder)
+    def lookup(self) -> SchemaLookup:
+        return cast(SchemaLookup, self.entity_finder)

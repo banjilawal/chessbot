@@ -12,12 +12,12 @@ from chess.system import UnhandledRouteException
 
 __all__ = [
     # ======================# UNHANDLED_FORWARD_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
-    "ForwardSchemaRouteException",
+    "UnhandledSchemaLookupRouteException",
 ]
 
 
 # ======================# UNHANDLED_FORWARD_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
-class ForwardSchemaRouteException(ForwardSchemaFailedException, UnhandledRouteException):
+class UnhandledSchemaLookupRouteException(ForwardSchemaFailedException, UnhandledRouteException):
     """
     # ROLE: Fallback Result
     
@@ -26,7 +26,7 @@ class ForwardSchemaRouteException(ForwardSchemaFailedException, UnhandledRouteEx
     
     # PARENT:
         *   UnhandledRouteException
-        *   ForwardSchemaLookupFailedException
+        *   SchemaLookupFailedException
         
     # PROVIDES
     None
@@ -39,8 +39,8 @@ class ForwardSchemaRouteException(ForwardSchemaFailedException, UnhandledRouteEx
     """
     ERROR_CODE = "UNHANDLED_FORWARD_SCHEMA_LOOKUP_ROUTE"
     DEFAULT_MESSAGE = (
-        "The ForwardSchemaLookup did not handle a parameter or condition that needs it own execution route. "
-        "The build process was not exhaustive. Conditions necessary for ForwardSchemaLookup integrity were skipped. "
+        "The SchemaLookup did not handle a parameter or condition that needs it own execution route. "
+        "The build process was not exhaustive. Conditions necessary for SchemaLookup integrity were skipped. "
         "Ensure all possible branches are covered in the verification process."
     )
  

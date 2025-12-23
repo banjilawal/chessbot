@@ -13,7 +13,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# FORWARD_SCHEMA_LOOKUP_FAILED EXCEPTION #======================#
-    "ForwardSchemaLookupFailedException",
+    "SchemaLookupFailedException",
 ]
 
 from chess.schema import SchemaException
@@ -21,7 +21,7 @@ from chess.system import ForwardLookupFailedException
 
 
 # ======================# FORWARD_SCHEMA_LOOKUP_FAILED EXCEPTION #======================#
-class ForwardSchemaLookupFailedException(SchemaException, ForwardLookupFailedException):
+class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -42,5 +42,5 @@ class ForwardSchemaLookupFailedException(SchemaException, ForwardLookupFailedExc
     None
     """
     ERROR_CODE = "FORWARD_SCHEMA_LOOKUP_FAILED"
-    DEFAULT_MESSAGE = "ForwardSchemaLookup operation failed."
+    DEFAULT_MESSAGE = "SchemaLookup operation failed."
 
