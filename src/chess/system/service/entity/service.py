@@ -1,10 +1,9 @@
-# src/chess/system/service/service.py
+# src/chess/system/service/entity/service.py
 
 """
-Module: chess.system.service.service
+Module: chess.system.service.entity.service
 Author: Banji Lawal
 Created: 2025-11-18
-Version: 1.0.0
 """
 
 from abc import ABC
@@ -33,10 +32,7 @@ class EntityService(ABC, Service[Generic[T]]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   id (int)
-        *   name (str)
         *   builder (Builder[T])
-        *   validator (Validator[T])
         
     # INHERITED ATTRIBUTES:
         *   See Service class for inherited attributes.
@@ -69,20 +65,19 @@ class EntityService(ABC, Service[Generic[T]]):
         # Raises:
         None
         """
-        self._id = id
-        self._name = name
+        super().__init__(id=id, name=name, certifier=validator)
         self._builder = builder
-        self._validator = validator
-        
-    @property
-    def id(self) -> int:
-        """get entity id"""
-        return self._id
     
-    @property
-    def name(self) -> str:
-        """get entity designation"""
-        return self._name
+    #
+    # @property
+    # def id(self) -> int:
+    #     """get entity id"""
+    #     return self._id
+    #
+    # @property
+    # def name(self) -> str:
+    #     """get entity designation"""
+    #     return self._name
     
     @property
     def entity_builder(self) -> Builder[T]:
@@ -92,19 +87,18 @@ class EntityService(ABC, Service[Generic[T]]):
     @property
     def entity_validator(self) -> Validator[T]:
         """get entity validator"""
-        return self._validator
+        return self.validator
     
     def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, EntityService):
-            return self._id == other.id
+        if super().__eq__(other):
+            if isinstance(other, EntityService):
+                return True
         return False
-    
-    def __hash__(self):
-        return hash(self._id)
-    
-    def __str__(self):
-        return f"id:{self._id}, designation:{self._name}"
-    
-    
+
+
+def __hash__(self):
+    return hash(self._id)
+
+
+def __str__(self):
+    return f"id:{self._id}, designation:{self._name}"

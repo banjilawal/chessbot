@@ -1,10 +1,9 @@
-# src/chess/system/service/service.py
+# src/chess/system/service/base/service.py
 
 """
-Module: chess.system.service.service
+Module: chess.system.service.base.service
 Author: Banji Lawal
 Created: 2025-11-18
-Version: 1.0.0
 """
 
 from abc import ABC
@@ -21,7 +20,6 @@ class Service(ABC, Generic[T]):
 
     # RESPONSIBILITIES:
     
-
     # PARENT:
     None
 
@@ -40,7 +38,7 @@ class Service(ABC, Generic[T]):
     _name: str
     _certifier: Validator[T]
     
-    def __init__(self, id: int, name: str, certifier: Validator[T],):
+    def __init__(self, id: int, name: str, certifier: Validator[T], ):
         """
         # ACTION:
         Constructor

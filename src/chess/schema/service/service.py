@@ -81,5 +81,5 @@ class SchemaService:
     def lookup_schema(self, super_key: SchemaSuperKey) -> SearchResult[List[Schema]]:
         return self._lookup.lookup(
             super_key=super_key,
-            super_key_validator=self._super_key_service.
+            super_key_validator=self._super_key_service.validator
         )

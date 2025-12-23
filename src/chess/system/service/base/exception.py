@@ -1,7 +1,7 @@
-# src/chess/system/service/exception/base.py
+# src/chess/system/service/base/exception.py
 
 """
-Module: chess.system.service.exception.base
+Module: chess.system.service.base.exception
 Author: Banji Lawal
 Created: 2025-11-18
 """
@@ -20,8 +20,7 @@ class ServiceException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by Service objects
-    2.  Catchall for Service errors not covered by lower level Service exception.
+    1.  Basic, Service Primitive
 
     # PARENT:
         *   ChessException
