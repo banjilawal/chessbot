@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/bidirectional.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/relational/bidirectional.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/err/color/invalid.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/err/color/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/bounds/above.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/bounds/above.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/bounds/below.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/bounds/below.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/color/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/color/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/color/color.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/color/base.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +275,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/err/bounds",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/err/color",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -295,11 +302,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/err/color" />
       <recent name="$PROJECT_DIR$/src/chess/system/err/bounds" />
       <recent name="$PROJECT_DIR$/src/chess/system/find" />
       <recent name="$PROJECT_DIR$/src/chess/system/text/exception/void" />
       <recent name="$PROJECT_DIR$/src/chess/system/text/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/system/service/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/system/err/color" />
@@ -959,7 +966,7 @@
       <workItem from="1766223152549" duration="26989000" />
       <workItem from="1766255712700" duration="60521000" />
       <workItem from="1766341551279" duration="31466000" />
-      <workItem from="1766392718604" duration="49699000" />
+      <workItem from="1766392718604" duration="51084000" />
     </task>
     <servers />
   </component>

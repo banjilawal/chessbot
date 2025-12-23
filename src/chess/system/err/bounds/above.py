@@ -24,7 +24,7 @@ class AboveBoundsException(BoundsException):
     1.  Indicate that a value is above bounds.
 
     # PARENT:
-        *   ChessException
+        *   BoundsException
 
     # PROVIDES:
 

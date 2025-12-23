@@ -1,7 +1,7 @@
-# src/chess/system/err/bounds.py
+# src/chess/system/err/bounds/below.py
 
 """
-Module: chess.system.err.bounds
+Module: chess.system.err.bounds.below
 Author: Banji Lawal
 Created: 2025-11-21
 version: 1.0.0
@@ -25,7 +25,7 @@ class BelowBoundsException(BoundsException):
     1.  Indicate that a value is below bounds.
 
     # PARENT:
-        *   ChessException
+        *   BoundsException
 
     # PROVIDES:
 

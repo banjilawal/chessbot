@@ -1,7 +1,7 @@
 # src/chess/system/err/bounds/base.py
 
 """
-Module: chess.system.err.boundsbase
+Module: chess.system.err.bounds.base
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -19,10 +19,11 @@ ___all__ = [
 #======================# BOUNDS EXCEPTION #======================#
 class BoundsException(ChessException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Catchall
 
     # RESPONSIBILITIES:
     1.  Indicate that a value is out of bounds.
+    2.  Catchall for conditions which are not covered by BoundsException subclasses.
 
     # PARENT:
         *   ChessException
