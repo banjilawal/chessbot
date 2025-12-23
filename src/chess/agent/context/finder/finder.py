@@ -16,10 +16,11 @@ from chess.agent import (
     PlayerAgent, AgentContext, AgentContextValidator, AgentFinderException, AgentVariety, HumanAgent,
     MachineAgent
 )
+from chess.system.find.finder.data import DataFinder
 from chess.team import Team, TeamContext
 
 
-class AgentFinder(Finder[PlayerAgent]):
+class AgentFinder(DataFinder[PlayerAgent]):
     """
     # ROLE: Finder
 

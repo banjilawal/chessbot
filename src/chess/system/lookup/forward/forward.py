@@ -12,10 +12,10 @@ from typing import Generic, List
 from abc import ABC, abstractmethod
 
 
-from chess.system import LoggingLevelRouter, Context, SearchResult, Validator
+from chess.system import Finder, LoggingLevelRouter, Context, SearchResult, Validator
 
 
-class ForwardLookup(ABC, Generic[Context[Enum]]):
+class ForwardLookup(Finder[Context[Enum]]):
     """
     # ROLE: Forward Lookups,
 

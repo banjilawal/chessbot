@@ -6,7 +6,6 @@ Author: Banji Lawal
 Created: 2025-11-18
 """
 
-from chess.system import ChessException
 
 __all__ = [
     # ======================# ENTITY_SERVICE EXCEPTION #======================#
@@ -20,6 +19,8 @@ from chess.system import ServiceException
 class EntityServiceException(ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
+    
+    # A Service bundles methods that return different classes of Result.
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by Service objects

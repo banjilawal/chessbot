@@ -12,9 +12,10 @@ from typing import List
 from chess.coord import Coord
 from chess.system import LoggingLevelRouter, Finder, SearchFailedException, SearchResult
 from chess.square import Square, SquareContext, SquareContextValidator
+from chess.system.find.finder.data import DataFinder
 
 
-class SquareFinder(Finder[Square]):
+class SquareFinder(DataFinder[Square]):
     
     @classmethod
     def find(

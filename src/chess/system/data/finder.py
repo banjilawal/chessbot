@@ -10,12 +10,12 @@ version: 1.0.0
 from abc import ABC, abstractmethod
 from typing import TypeVar, Generic, List
 
-from chess.system import Context, Validator, SearchResult
+from chess.system import Context, Finder, Validator, SearchResult
 
 D = TypeVar("D")
 
 
-class Finder(ABC, Generic[D]):
+class DataFinder(Finder[ABC, Generic[D]]):
     """
     ROLE:
     ----
@@ -34,7 +34,7 @@ class Finder(ABC, Generic[D]):
     """
     implement by entities "owning" relationships for unified old_search
     by dataset attributes with validated params.
-  
+
     Attributes:
       None Implementors declare their own
     """

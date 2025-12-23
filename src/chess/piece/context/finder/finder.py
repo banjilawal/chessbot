@@ -9,13 +9,14 @@ version: 1.0.0
 
 from typing import List
 
+from chess.system.find.finder.data import DataFinder
 from chess.team import Team
 from chess.rank import Rank
 from chess.system import LoggingLevelRouter, Finder, SearchFailedException, SearchResult
 from chess.piece import Piece, PieceContext, PieceContextValidator, PieceFinderException
 
 
-class PieceFinder(Finder[Piece]):
+class PieceFinder(DataFinder[Piece]):
     """
     # ROLE: Finder
 

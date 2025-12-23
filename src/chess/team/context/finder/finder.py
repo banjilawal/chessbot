@@ -12,12 +12,13 @@ from typing import List
 from chess.arena import Arena
 from chess.agent import PlayerAgent
 from chess.system import GameColor, LoggingLevelRouter, Finder, SearchResult
+from chess.system.find.finder.data import DataFinder
 from chess.team import (
     Team, TeamContext, TeamContextValidator, TeamFinderOperationFailedException, TeamSearchDatasetNullException
 )
 
 
-class TeamFinder(Finder[Team]):
+class TeamFinder(DataFinder[Team]):
     """
     # ROLE: Finder
 

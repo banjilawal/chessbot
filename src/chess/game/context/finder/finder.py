@@ -16,8 +16,10 @@ from chess.game import Game, GameContext, GameContextValidator
 from chess.system import (
     UnhandledRouteException, LoggingLevelRouter, Finder, SearchFailedException, SearchResult
 )
+from chess.system.find.finder.data import DataFinder
 
-class GameFinder(Finder[Game]):
+
+class GameFinder(DataFinder[Game]):
     """
     # ROLE: Finder
 

@@ -8,11 +8,11 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.system import EntityService, id_emitter
+from chess.system import ContextService, id_emitter
 from chess.schema import SchemaSuperKey, SchemaSuperKeyBuilder, SchemaSuperKeyValidator
 
 
-class SchemaSuperKeyService(EntityService[SchemaSuperKey]):
+class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -58,7 +58,7 @@ class SchemaSuperKeyService(EntityService[SchemaSuperKey]):
         # Raises:
         None
         """
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        super().__init__(id=id, name=name, builder=builder, validator=validator, finder=None)
         
     @property
     def builder(self) -> SchemaSuperKeyBuilder:
