@@ -85,26 +85,3 @@ class ChessException(Exception):
 
 
 
-# ======================# STARVATION EXCEPTION #======================#
-class ResourceException(ChessException):
-    """
-    # ROLE: Exception Wrapper, Catchall Exception
-
-    # RESPONSIBILITIES:
-    1.  super class of exception related to resource acquisition, release or utilization failures.
-    2.  Catchall for resource problems that are not covered by lower level ResourceException subclasses.
-
-    # PARENT:
-        *   ChessException
-
-    # PROVIDES:
-    ResourceException
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
-        *   See ChessException class for inherited attributes.
-    """
-    ERROR_CODE = "RESOURCE_ERROR"
-    DEFAULT_MESSAGE = "Resource raised an exception."
