@@ -11,16 +11,14 @@ version: 1.0.0
 
 # Packages
 from .bounds import *
+from .color import *
+from .relational import *
+from .consistency import *
 
 # Modules
 from .base import *
-from .bidirectional import *
-from .bounds import *
-from .color import *
 from .unhandled import *
-from .inconsistency import *
 from .null import *
 from .operation import *
-from .registration import *
 from .rollback import *
 

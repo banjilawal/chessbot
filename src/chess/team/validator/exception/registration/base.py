@@ -27,7 +27,7 @@ class TeamRegistrationException(InvalidTeamException, RegistrationException):
 
     # PARENT:
         *   InvalidTeamException
-        *   RegistrationException
+        *   NoRegistrationException
 
     # PROVIDES:
     TeamRegistrationException

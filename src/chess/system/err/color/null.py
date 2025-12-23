@@ -1,7 +1,7 @@
-# src/chess/system/err/color.py
+# src/chess/system/err/color/null.py
 
 """
-Module: chess.system.err.color
+Module: chess.system.err.color.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,35 +1,34 @@
-# src/chess/system/err/registration.py
+# src/chess/system/err/relational/registration.py
 
 """
-Module: chess.system.err.registration
+Module: chess.system.err.relational.registration
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
 
-from chess.system import BiDirectionalException
-
-
 
 __all__ = [
-#======================# REGISTRATION EXCEPTION #======================#
-    "RegistrationException",
+#======================# NO_REGISTRATION EXCEPTION #======================#
+    "NoRegistrationException",
 ]
 
+from chess.system import RelationshipException
 
-#======================# REGISTRATION EXCEPTION #======================#
-class RegistrationException(BiDirectionalException):
+
+# ======================# NO_REGISTRATION EXCEPTION #======================#
+class NoRegistrationException(RelationshipException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate if an item has its owner set correctly but the item does not exist in the Owner's collection.
-    2.  Indicate a bidirectional relationship is broken on the owning side
-    3.  Raised when Entity.owner == owner but the Owner does not find the item in its dataset.
+    1.  Indicate that the owning side of a one-to-many is broken. The many side knows its owner from its owner
+        attribute. If the owner does not find the many_instance in its collection there item is not registered
+        with the owner. Raised when Entity.owner == owner but the Owner does not find the item in its dataset.
 
     # PARENT:
-        *   NoBidirectionalRelationshipException
+        *   RelationshipException
 
     # PROVIDES:
     None
@@ -40,5 +39,5 @@ class RegistrationException(BiDirectionalException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_DATASET_REGISTRATION_ERROR"
-    DEFAULT_MESSAGE = "The item is not found in its owner's dataset."
+    ERROR_CODE = "NO_REGISTRATION EXCEPTION_ERROR"
+    DEFAULT_MESSAGE = "The item is not registered in the owner's dataset."

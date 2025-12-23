@@ -27,7 +27,7 @@ class PieceRegistrationException(InvalidPieceException, RegistrationException):
 
     # PARENT:
         *   InvalidPieceException
-        *   RegistrationException
+        *   NoRegistrationException
 
     # PROVIDES:
     PieceRegistrationException

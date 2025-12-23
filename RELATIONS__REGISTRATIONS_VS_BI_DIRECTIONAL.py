@@ -14,7 +14,7 @@ This document focuses on the types of binary relations.
 
 The differences mainly manifest in the
     **  TYPE OF SEARCHABLE: DataSet vs EntityMetadataHash
-    **  EXCEPTION SUBCLASS: RegistrationException vs RelationExceptions.
+    **  EXCEPTION SUBCLASS: NoRegistrationException vs RelationExceptions.
     
 There is a subtle difference between bidirectional and registration exception.
 
@@ -80,7 +80,7 @@ THere are two conditions.
     
 ### REGISTRATION_EXCEPTION SUPER CLASS:
 ........................................
-    PARENT: NoBidirectionalRelationshipException
+    PARENT: NoBidirectionalRelationException
     ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
     
     PURPOSE:
