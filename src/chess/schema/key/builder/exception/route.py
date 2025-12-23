@@ -40,6 +40,8 @@ class SchemaSuperKeyBuildRouteException(SchemaSuperKeyException, UnhandledRouteE
     """
     ERROR_CODE = "UNHANDLED_SCHEMA_SUPER_KEY_BUILD_ROUTE"
     DEFAULT_MESSAGE = (
-        "At least one build option or parameter was not handled with its own execution route. Ensure all possible "
-        "logic branches are covered in the build process."
+        "The SchemaSuperKeyBuilder did not handle a parameter or condition that needs it own execution route. "
+        "The build process was not exhaustive. Conditions necessary for SchemaSuperKey integrity were skipped. "
+        "Ensure all possible branches are covered in the verification process."
     )
+ 

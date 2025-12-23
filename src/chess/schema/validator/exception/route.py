@@ -1,7 +1,7 @@
-# src/chess/schema/key/exception.route.py
+# src/chess/schema/validator/exception/route.py
 
 """
-Module: chess.schema.key.exception.route
+Module: chess.schema.validator.exception.route
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -42,5 +42,5 @@ class UnhandledSchemValidationRouteException(InvalidSchemaException, UnhandledRo
     DEFAULT_MESSAGE = (
         "The SchemaValidator did not handle a parameter or condition that needs it own execution route. "
         "The validation process was not exhaustive. Ensure all possible branches are covered in the "
-        "verification procss."
+        "verification process."
     )

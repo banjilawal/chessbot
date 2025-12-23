@@ -17,4 +17,5 @@ from .null import NullSchemaException
 from .wrapper import InvalidSchemaException
 from .name import SchemaNameBoundsException
 from .color import SchemaColorBoundsException
+from .route import UnhandledSchemValidationRouteException
 
