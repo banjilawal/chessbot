@@ -13,7 +13,7 @@ version: 1.0.0
 from .key import *
 from .lookup import *
 from .validator import *
-from .exception import *
+from .service import *
 
 # Modules
 from .schema import Schema

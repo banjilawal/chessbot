@@ -1,7 +1,7 @@
-# src/chess/schema/key/builder/exception/wrapper.py
+# src/chess/schema/key/builder/wrapper.py
 
 """
-Module: chess.schema.key.builder.exception.wrapper
+Module: chess.schema.key.builder.wrapper
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

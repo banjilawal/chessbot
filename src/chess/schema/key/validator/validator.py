@@ -11,7 +11,8 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    InvalidSchemaSuperKeyException, ZeroSchemaSuperKeysException, NullSchemaSuperKeyException, SchemaSuperKey,
+    InvalidSchemaSuperKeyException, SchemSuperKeyValidationRouteException, ZeroSchemaSuperKeysException,
+    NullSchemaSuperKeyException, SchemaSuperKey,
     ExcessiveSchemaSuperKeysException
 )
 
@@ -149,14 +150,14 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             return ValidationResult.failure(
                 InvalidSchemaSuperKeyException(
                     message=f"{method}: {InvalidSchemaSuperKeyException.ERROR_CODE} - ",
-                    ex=SchemaSuperKeyValidationRouteException(
-                        f"{method}: {SchemaSuperKeyBuildRouteException.DEFAULT_MESSAGE}"
+                    ex=SchemSuperKeyValidationRouteException(
+                        f"{method}: {SchemSuperKeyValidationRouteException.ERROR_CODE}"
                     )
                 )
             )
             
-        # Finally, catch any missed exception, wrap an InvalidSchemaSuperKeyException it. Then send the exception-chain
-        # in a ValidationResult.
+        # Finally, catch any missed exception, wrap an InvalidSchemaSuperKeyException it. Then send the
+        # exception-chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidSchemaSuperKeyException(

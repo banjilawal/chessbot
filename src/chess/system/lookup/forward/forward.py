@@ -40,7 +40,7 @@ class ForwardLookup(ABC, Generic[Context[Enum]]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def forward_lookup(
+    def lookup(
             cls,
             super_key: Context[Enum],
             super_key_validator: Validator[Context[Enum]],

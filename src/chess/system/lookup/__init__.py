@@ -13,7 +13,6 @@ version: 1.0.0
 from .service import *
 from .reverse import *
 from .forward import *
-from .exception import *
 
 # Modules
-None
+from .exception import LookupFailedException
