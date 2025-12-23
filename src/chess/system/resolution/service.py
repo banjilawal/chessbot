@@ -16,7 +16,7 @@ from chess.system.service import EntityService
 T = TypeVar("T")
 
 
-class ResolutionService(EntityService[ABC, Generic[T]]):
+class CollisionResolutionService(EntityService[ABC, Generic[T]]):
     """"""""
     pass
 

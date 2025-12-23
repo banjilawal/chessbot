@@ -18,7 +18,7 @@ __all__ = [
 
 class ResolutionServiceException(ServiceException):
     ERROR_CODE = "RESOLUTION_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "ResolutionService raised an exception."
+    DEFAULT_MESSAGE = "CollisionResolutionService raised an exception."
 
 
 class ResolutionException(ChessException):
