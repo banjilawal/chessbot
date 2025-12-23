@@ -13,12 +13,13 @@ version: 1.0.0
 from .bounds import *
 from .color import *
 from .relational import *
+from .resource import *
 from .consistency import *
 
 # Modules
-from .base import *
-from .unhandled import *
-from .null import *
-from .operation import *
-from .rollback import *
+from .base import ChessException
+from .null import NullException
+from .unhandled import UnhandledRouteException
+from .implementation import NotImplementedException
+
 

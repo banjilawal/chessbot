@@ -7,14 +7,13 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import ChessException, TransactionException
 
 __all__ = [
     # ====================== TRANSACTION_TIMEOUT EXCEPTION #======================#
     'TransactionTimeoutException',
 ]
 
-from chess.system import ResourceUnavailableException
+from chess.system import ResourceUnavailableException, TransactionException
 
 
 # ====================== TRANSACTION_TIMEOUT EXCEPTION #======================#

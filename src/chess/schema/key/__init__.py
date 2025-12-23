@@ -13,7 +13,7 @@ version: 1.0.0
 from .builder import *
 from .service import *
 from .validator import *
+from .exception import *
 
 # Modules
 from .key import SchemaSuperKey
-from .exception import SchemaSuperKeyException

@@ -14,7 +14,7 @@ None
 
 # Modules
 from .null import NullSchemaException
-from .base import InvalidSchemaException
+from .wrapper import InvalidSchemaException
 from .name import SchemaNameBoundsException
 from .color import SchemaColorBoundsException
 
