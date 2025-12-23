@@ -51,7 +51,7 @@ class GameService(EntityService[Game]):
 
         # PARAMETERS:
             *   id (nt)
-            *   designation (str)
+            *   name (str)
             *   builder (GameFactory)
             *   validator (GameValidator)
 

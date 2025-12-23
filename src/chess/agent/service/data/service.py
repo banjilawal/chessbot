@@ -55,7 +55,7 @@ class AgentDataService(DataService[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   designation (str): = SERVICE_NAME
+            *   name (str): = SERVICE_NAME
             *   items (List[PlayerAgent]): = List[PlayerAgent]
             *   service (AgentService): = AgentService()
             *   context_service (AgentContextService): = AgentContextService()

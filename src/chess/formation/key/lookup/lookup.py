@@ -154,7 +154,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
         1.  Get any Formation which matches the target designation.
 
         # Parameters:
-            *   designation (str)
+            *   name (str)
 
         # Returns:
         SearchResult[List[Formation]] containing either:

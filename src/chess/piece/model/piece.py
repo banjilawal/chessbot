@@ -31,7 +31,7 @@ class Piece(ABC):
   
     # ATTRIBUTES:
         *   id (int)
-        *   designation (str)
+        *   name (str)
         *   team (Team)
         *   rank (Rank)
         *   roster_number (int)

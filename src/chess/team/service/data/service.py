@@ -54,7 +54,7 @@ class TeamDataService(DataService[Team]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   designation (str): = SERVICE_NAME
+            *   name (str): = SERVICE_NAME
             *   items (List[Team]): = List[Team]
             *   service (TeamService): = TeamService()
             *   context_service (TeamContextService): = TeamContextService()

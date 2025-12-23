@@ -67,7 +67,7 @@ class PieceFactory(Builder[Piece]):
     
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   rank (Rank)
             *   team (Team)
             *   rank_service (RankService)
@@ -136,7 +136,7 @@ class PieceFactory(Builder[Piece]):
 
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   team (Team)
 
         # Returns:
@@ -194,7 +194,7 @@ class PieceFactory(Builder[Piece]):
 
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   team (Team)
 
         # Returns:
@@ -252,7 +252,7 @@ class PieceFactory(Builder[Piece]):
 
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   team (Team)
 
         # Returns:

@@ -25,7 +25,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
 
     # ATTRIBUTES:
         *   id (int):
-        *   designation (str):
+        *   name (str):
         *   data_service (PieceDataService):
         
     # CONSTRUCTOR:

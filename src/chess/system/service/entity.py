@@ -10,12 +10,12 @@ Version: 1.0.0
 from abc import ABC
 from typing import Generic, TypeVar
 
-from chess.system import Builder, Validator
+from chess.system import Builder, Service, Validator
 
 T = TypeVar("T")
 
 
-class EntityService(ABC, Generic[T]):
+class EntityService(ABC, Service[Generic[T]]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -27,19 +27,19 @@ class EntityService(ABC, Generic[T]):
     4.  Bundles  operations that produce different Result subclasses.
 
     # PARENT:
-    None
+    Service
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
         *   id (int)
-        *   designation (str)
+        *   name (str)
         *   builder (Builder[T])
         *   validator (Validator[T])
         
     # INHERITED ATTRIBUTES:
-    None
+        *   See Service class for inherited attributes.
     """
     _id: int
     _name: str
@@ -59,7 +59,7 @@ class EntityService(ABC, Generic[T]):
 
         # PARAMETERS:
             *   id (nt)
-            *   designation (str)
+            *   name (str)
             *   builder (Builder[T])
             *   validator (Validator[T])
 

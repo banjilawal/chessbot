@@ -54,7 +54,7 @@ class CoordDataService(DataService[Coord]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   designation (str): = SERVICE_NAME
+            *   name (str): = SERVICE_NAME
             *   items (List[Coord]): = List[Coord]
             *   service (CoordService): = CoordService()
             *   context_service (CoordContextService): = CoordContextService()

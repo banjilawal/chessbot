@@ -59,7 +59,7 @@ class AgentFactory(Builder[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   agent_variety (AgentVariety)
             *   engine_service (Optional[EngineService])
 
@@ -112,7 +112,7 @@ class AgentFactory(Builder[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -164,7 +164,7 @@ class AgentFactory(Builder[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   engine_service (EngineService)
             *   identity_service (IdentityService)
             *   engine_service_validator (EngineServiceValidator)

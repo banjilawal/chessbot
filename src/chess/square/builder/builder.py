@@ -58,7 +58,7 @@ class SquareBuilder(Builder[Square]):
     
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   cord (Coord)
             *   board (Board)
             *   board_service (BoardService)

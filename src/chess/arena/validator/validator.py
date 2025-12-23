@@ -56,7 +56,7 @@ class ArenaValidator(Validator[Arena]):
 
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   arena_variety (ArenaVariety)
             *   engine_service (Optional[EngineService])
 

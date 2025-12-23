@@ -55,7 +55,7 @@ class GameDataService(DataService[Game]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   designation (str): = SERVICE_NAME
+            *   name (str): = SERVICE_NAME
             *   items (List[Game]): = List[Game]
             *   service (GameService): = GameService()
             *   context_service (GameContextService): = GameContextService()

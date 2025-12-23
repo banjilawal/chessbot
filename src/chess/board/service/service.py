@@ -50,7 +50,7 @@ class BoardService(EntityService[Board]):
 
         # PARAMETERS:
             *   id (nt)
-            *   designation (str)
+            *   name (str)
             *   builder (BoardFactory)
             *   validator (BoardValidator)
 

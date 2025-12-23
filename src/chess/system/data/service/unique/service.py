@@ -36,7 +36,7 @@ class UniqueDataService(ABC, Generic[T]):
     # LOCAL ATTRIBUTES:
     None
         *   id (int):
-        *   designation (str):
+        *   name (str):
         *   data_service (DataService[D]):
         
     # INHERITED ATTRIBUTES:

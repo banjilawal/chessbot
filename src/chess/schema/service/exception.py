@@ -1,3 +1,12 @@
+# src/chess/schema/service/exception.py
+
+"""
+Module: chess.schema.service.exception
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
 from chess.system import ServiceException
 from chess.schema import SchemaException
 

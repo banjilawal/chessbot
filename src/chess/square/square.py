@@ -44,7 +44,7 @@ class Square:
         
         # PARAMETERS:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   target (Coord)
         
         # Returns:

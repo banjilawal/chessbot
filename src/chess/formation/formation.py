@@ -29,7 +29,7 @@ class Formation(Enum):
     # LOCAL ATTRIBUTES:
         *   square (str)
         *   color (GameColor)
-        *   designation (str)
+        *   name (str)
         *   roster_number (int)
         *   rank_spec (Catalog)
 

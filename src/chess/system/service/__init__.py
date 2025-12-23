@@ -13,6 +13,7 @@ from .validator import *
 
 # Modules
 from .exception import *
-from .service import EntityService
+from .base import Service
+from .entity import EntityService
 
 

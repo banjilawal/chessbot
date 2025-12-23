@@ -52,7 +52,7 @@ class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
 
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
-            *   designation (str): = SERVICE_NAME
+            *   name (str): = SERVICE_NAME
             *   data_service (AgentDataService): = AgentDataService()
 
         # Returns:

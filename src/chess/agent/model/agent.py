@@ -53,7 +53,7 @@ class PlayerAgent(ABC):
 
         # Parameters:
             *   id (int)
-            *   designation (str)
+            *   name (str)
             *   team_assignments (UniqueTeamDataService)
 
         # Returns:

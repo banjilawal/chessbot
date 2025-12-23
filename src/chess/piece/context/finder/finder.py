@@ -156,7 +156,7 @@ class PieceFinder(Finder[Piece]):
         3.  Multiple unique pieces in the result indicate that  a problem.
 
         # Parameters:
-            *   designation (str)
+            *   name (str)
             *   dataset (List[Piece])
 
         # Returns:

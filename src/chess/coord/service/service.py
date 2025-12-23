@@ -53,7 +53,7 @@ class CoordService(EntityService[Coord]):
 
         # PARAMETERS:
             *   id (nt)
-            *   designation (str)
+            *   name (str)
             *   builder (CoordFactory)
             *   validator (CoordValidator)
 

@@ -164,7 +164,7 @@ class AgentFinder(Finder[PlayerAgent]):
             relaxed for testing.
 
         # Parameters:
-            *   designation (str)
+            *   name (str)
             *   dataset (List[PlayerAgent])
 
         # Returns:

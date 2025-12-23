@@ -37,7 +37,7 @@ class DataService(ABC, Generic[D]):
 
     # LOCAL ATTRIBUTES:
         *   id (int):
-        *   designation (str):
+        *   name (str):
         *   items (List[D]):
         *   searcher (Finder[D]):
         *   entity_service (EntityService[D]):

@@ -50,7 +50,7 @@ class SquareService(EntityService[Square]):
 
         # PARAMETERS:
             *   id (nt)
-            *   designation (str)
+            *   name (str)
             *   builder (SquareFactory)
             *   validator (SquareValidator)
 

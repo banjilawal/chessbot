@@ -219,7 +219,7 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
         1.  Get any Catalog which matches the target designation.
 
         # Parameters:
-            *   designation (str)
+            *   name (str)
 
         # Returns:
         SearchResult[List[Catalog]] containing either:

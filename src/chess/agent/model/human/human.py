@@ -44,7 +44,7 @@ class HumanAgent(PlayerAgent):
 
         # PARAMETERS:
             *   id (nt)
-            *   designation (str)
+            *   name (str)
             *   games (UniqueGameDataService)
             *   team_assignments (UniqueTeamDataService)
 

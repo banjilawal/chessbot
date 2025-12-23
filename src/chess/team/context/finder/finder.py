@@ -159,7 +159,7 @@ class TeamFinder(Finder[Team]):
         
         # Parameters:
             *   dataset: (List[Team])
-            *   designation (str)
+            *   name (str)
 
         # Returns:
         SearchResult[List[Team]] containing either:

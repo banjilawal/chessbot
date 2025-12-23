@@ -33,7 +33,7 @@ class PieceDataService(DataService[Piece]):
     # ATTRIBUTES:
     None
         *   id (int):
-        *   designation (str):
+        *   name (str):
         *   items (List[Piece]):
         *   searcher (Finder[Piece]):
         *   entity_service (EntityService[Piece]):

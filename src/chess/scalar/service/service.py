@@ -49,7 +49,7 @@ class ScalarService(EntityService[Scalar]):
 
         # PARAMETERS:
             *   id (nt)
-            *   designation (str)
+            *   name (str)
             *   builder (ScalarFactory)
             *   validator (ScalarValidator)
 

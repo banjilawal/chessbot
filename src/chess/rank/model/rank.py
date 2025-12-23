@@ -32,8 +32,8 @@ class Rank(ABC):
 
     # ATTRIBUTES:
         *   id (int):       Identifier for the subclass.
-        *   designation (str):     Common designation of the rank.
-        *   designation (str):   Chess designation
+        *   name (str):     Common designation of the rank.
+        *   name (str):   Chess designation
         *   ransom (int):   Value of ranks that can be captured.
         *   team_quota  (int):   Number of instances on a team.
         *   quadrants (List[Quadrant]):
