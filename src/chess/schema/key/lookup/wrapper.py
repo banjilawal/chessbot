@@ -1,7 +1,7 @@
-# src/chess/schema/lookup/exception/failure.py
+# src/chess/schema/key/lookup/wrapper.py
 
 """
-Module: chess.schema.lookup.exception.failure
+Module: chess.schema.key.lookup.wrapper
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -13,7 +13,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# FORWARD_SCHEMA_LOOKUP_FAILED EXCEPTION #======================#
-    "ForwardSchemaFailedException",
+    "ForwardSchemaLookupFailedException",
 ]
 
 from chess.schema import SchemaException
@@ -21,7 +21,7 @@ from chess.system import ForwardLookupFailedException
 
 
 # ======================# FORWARD_SCHEMA_LOOKUP_FAILED EXCEPTION #======================#
-class ForwardSchemaFailedException(SchemaException, ForwardLookupFailedException):
+class ForwardSchemaLookupFailedException(SchemaException, ForwardLookupFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

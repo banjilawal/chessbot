@@ -8,8 +8,9 @@ version: 1.0.0
 """
 from typing import cast
 
+
 from chess.system import ContextService, id_emitter
-from chess.schema import SchemaSuperKey, SchemaSuperKeyBuilder, SchemaSuperKeyValidator
+from chess.schema import ForwardSchemaLookup, SchemaSuperKey, SchemaSuperKeyBuilder, SchemaSuperKeyValidator
 
 
 class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
@@ -39,6 +40,7 @@ class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
+            lookup: ForwardSchemaLookup = ForwardSchemaLookup(),
             builder: SchemaSuperKeyBuilder = SchemaSuperKeyBuilder(),
             validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator(),
     ):
@@ -58,7 +60,7 @@ class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
         # Raises:
         None
         """
-        super().__init__(id=id, name=name, builder=builder, validator=validator, finder=None)
+        super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
         
     @property
     def builder(self) -> SchemaSuperKeyBuilder:
@@ -69,3 +71,7 @@ class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
     def validator(self) -> SchemaSuperKeyValidator:
         """get SchemaSuperKeyValidator"""
         return cast(SchemaSuperKeyValidator, self.entity_validator)
+    
+    @property
+    def lookup(self) -> ForwardSchemaLookup:
+        return cast(ForwardSchemaLookup, self.entity_finder)

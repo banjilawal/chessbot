@@ -14,7 +14,7 @@ from chess.system import ContextService, ForwardLookup, Service, Validator
 
 class HashService(Service[Enum]):
     _hash_super_key_service: ContextService[Enum]
-    _hash_forward_lookup: ForwardLookup[Enum]
+
     
     def __init__(
             self,

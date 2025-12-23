@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .builder import *
+from .lookup import *
 from .service import *
 from .validator import *
 from .exception import *

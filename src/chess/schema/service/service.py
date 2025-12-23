@@ -10,16 +10,13 @@ from typing import List
 
 from chess.schema import Schema, SchemaSuperKey, SchemaSuperKeyService, SchemaValidator
 from chess.schema.lookup.forward.lookup import ForwardSchemaLookup
-from chess.system import CalculationResult, GameColor, SearchResult, id_emitter
+from chess.system import CalculationResult, GameColor, HashService, SearchResult, id_emitter
 
 
-class SchemaService:
+class SchemaService(HashService[Schema]):
     SERVICE_NAME = "SchemaService"
-    _id: int
-    _name: str
     _super_key_service: SchemaSuperKeyService
     _validator: SchemaValidator
-    _lookup: ForwardSchemaLookup
     
     def __init__(
             self,

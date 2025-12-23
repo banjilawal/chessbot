@@ -1,7 +1,7 @@
-# src/chess/schema/lookup/lookup.py
+# src/chess/schema/key/lookup/lookup.py
 
 """
-Module: chess.schema.lookup.lookup
+Module: chess.schema.key.lookup.lookup
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -96,7 +96,7 @@ class ForwardSchemaLookup(ForwardLookup[SchemaSuperKey]):
                 )
             )
         
-        # Finally, wrap a ForwardSchemaFailedException around any missed exception then return the exception-chain
+        # Finally, wrap a ForwardSchemaLookupFailedException around any missed exception then return the exception-chain
         # in the SearchResult.
         except Exception as ex:
             return SearchResult.failure(

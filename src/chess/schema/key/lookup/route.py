@@ -1,7 +1,7 @@
-# src/chess/schema/key/builder/route.py
+# src/chess/schema/key/lookup/route.py
 
 """
-Module: chess.schema.key.builder.route
+Module: chess.schema.key.lookup.route
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -26,7 +26,7 @@ class ForwardSchemaRouteException(ForwardSchemaFailedException, UnhandledRouteEx
     
     # PARENT:
         *   UnhandledRouteException
-        *   ForwardSchemaFailedException
+        *   ForwardSchemaLookupFailedException
         
     # PROVIDES
     None
