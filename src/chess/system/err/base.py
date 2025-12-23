@@ -83,29 +83,6 @@ class ChessException(Exception):
     # will use this.
 
 
-# ======================# IMPLEMENTATION EXCEPTION #======================#
-class NotImplementedException(ChessException):
-    """
-    # ROLE: Exception Wrapper, Catchall Exception
-
-    # RESPONSIBILITIES:
-    1.  Indicate That  a desired abstract method or feature has not been implemented in the lower level class,
-    2.  Catchall for missing implementation errors that are not covered by lower level NotImplementedException.
-
-    # PARENT:
-        *   ChessException
-
-    # PROVIDES:
-    NotImplementedException
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
-        *   See ChessException class for inherited attributes.
-    """
-    ERROR_CODE = "NOT_IMPLEMENTED_WARNING"
-    DEFAULT_MESSAGE = "Not implemented."
 
 
 # ======================# STARVATION EXCEPTION #======================#
