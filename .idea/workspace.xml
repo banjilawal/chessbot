@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/square.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/builder/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/lookup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/formation/validator/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/validator/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/validator/exception/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/validator/exception/designation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/validator/exception/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/validator/exception/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/validator/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/validator/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/validator/exception/color.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/color.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/validator/exception/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/designation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/validator/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/validator/exception/square.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,11 +311,11 @@
       <recent name="$PROJECT_DIR$/src/chess/schema/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/formation/key/lookup" />
       <recent name="$PROJECT_DIR$/src/chess/schema/key" />
       <recent name="$PROJECT_DIR$/src/chess/system/find" />
       <recent name="$PROJECT_DIR$/src/chess/system/data" />
       <recent name="$PROJECT_DIR$/src/chess/system/finder" />
-      <recent name="$PROJECT_DIR$/src/chess/system/service/entity" />
     </key>
   </component>
   <component name="RunManager" selected="Python.finder (2)">
@@ -968,7 +973,7 @@
       <workItem from="1766483423840" duration="7733000" />
       <workItem from="1766498674162" duration="23046000" />
       <workItem from="1766535382763" duration="2627000" />
-      <workItem from="1766539524132" duration="22423000" />
+      <workItem from="1766539524132" duration="25907000" />
     </task>
     <servers />
   </component>

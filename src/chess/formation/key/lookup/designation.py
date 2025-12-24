@@ -11,13 +11,13 @@ from chess.formation import InvalidFormationException
 from chess.system import BoundsException, NameException
 
 __all__ = [
-    # ======================# FORMATION_LOOKUP_BY_DESIGNATION_FAILURE EXCEPTION #======================#
-    "DesignationFormationLookupException",
+    # ======================# FORMATION_LOOKUP_BY_DESIGNATION EXCEPTION #======================#
+    "FormationLookupByDesignationException",
 ]
 
 
-# ======================# FORMATION_LOOKUP_BY_DESIGNATION_FAILURE EXCEPTION #======================#
-class DesignationFormationLookupException(InvalidFormationException, BoundsException, NameException):
+# ======================# FORMATION_LOOKUP_BY_DESIGNATION EXCEPTION #======================#
+class FormationLookupByDesignationException(InvalidFormationException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging
 

@@ -11,13 +11,13 @@ from chess.formation import InvalidFormationException
 from chess.system import BoundsException, GameColorException
 
 __all__ = [
-    # ======================# ORDER COLOR BOUNDS EXCEPTION #======================#
-    "FormationColorBoundsException",
+    # ======================# FORMATION_LOOKUP_BY_COLOR EXCEPTION #======================#
+    "FormationLookupByColorException",
 ]
 
 
-# ======================# ORDER COLOR BOUNDS EXCEPTION #======================#
-class FormationColorBoundsException(InvalidFormationException, BoundsException, GameColorException):
+# ======================# FORMATION_LOOKUP_BY_COLOR EXCEPTION #======================#
+class FormationLookupByColorException(InvalidFormationException, BoundsException, GameColorException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -38,6 +38,6 @@ class FormationColorBoundsException(InvalidFormationException, BoundsException, 
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ORDER_COLOR_BOUNDS_ERROR"
+    ERROR_CODE = "FORMATION_LOOKUP_BY_COLOR_ERROR"
     DEFAULT_MESSAGE = "Color is not included in the set of permissible order colors."
 

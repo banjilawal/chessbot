@@ -12,12 +12,12 @@ from chess.formation import FormationException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# BATTLEORDER VALIDATION EXCEPTION #======================#
+    # ======================# FORMATION_VALIDATION EXCEPTION #======================#
     "InvalidFormationException",
 ]
 
 
-# ======================# BATTLE_ORDER VALIDATION EXCEPTION #======================#
+# ======================# FORMATION_VALIDATION EXCEPTION #======================#
 class InvalidFormationException(FormationException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -37,5 +37,5 @@ class InvalidFormationException(FormationException, ValidationFailedException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BATTLEORDER_VALIDATION_ERROR"
+    ERROR_CODE = "FORMATION_VALIDATION"
     DEFAULT_MESSAGE = "Formation validation failed."
