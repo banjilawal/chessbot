@@ -1,7 +1,7 @@
-# src/chess/catalog/validator/exception/flag/zero.py
+# src/chess/persona/key/validator/exception/flag/zero.py
 
 """
-Module: chess.catalog.exception.flag.zero
+Module: chess.persona.key.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

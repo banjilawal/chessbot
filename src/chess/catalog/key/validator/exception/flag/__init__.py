@@ -1,13 +1,13 @@
-# src/chess/catalog/validator/exception/flag/__init__.py
+# src/chess/persona/key/validator/exception/flag/__init__.py
 
 """
-Module: chess.catalog.exception.flag.__init__
+Module: chess.persona.key.validator.exception.flag.__init__
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== CATALOG.CONTEXT.VALIDATOR.EXCEPTION.FLAG PACKAGE CONTENTS ===========#
+# =========== PERSONA.KEY.VALIDATOR.EXCEPTION.FLAG PACKAGE CONTENTS ===========#
 
 # Packages
 None

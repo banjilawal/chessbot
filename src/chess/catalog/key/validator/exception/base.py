@@ -1,7 +1,7 @@
-# src/chess/catalog/validator/exception/base.py
+# src/chess/persona/key/validator/exception/base.py
 
 """
-Module: chess.catalog.exception.base
+Module: chess.persona.key.validator.exception.base
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

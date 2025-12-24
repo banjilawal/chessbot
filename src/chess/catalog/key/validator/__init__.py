@@ -1,13 +1,14 @@
-# src/chess/persona/validator/__init__.py
+# src/chess/persona/key/validator/__init__.py
 
 """
-Module: chess.persona.__init__
+Module: chess.persona.key.validator.__init__
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== PERSONA.CONTEXT.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== PERSONA.KEY.VALIDATOR PACKAGE CONTENTS ===========#
+
 
 # Packages
 from .exception import *

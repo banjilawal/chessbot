@@ -1,7 +1,7 @@
-# src/chess/catalog/validator/exception/flag/excess.py
+# src/chess/persona/key/validator/exception/flag/excess.py
 
 """
-Module: chess.catalog.exception.flag.excess
+Module: chess.persona.key.validator.exception.flag.excess
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/persona/validator/validator.py
+# src/chess/persona/key/validator/validator.py
 
 """
-Module: chess.persona.validator
+Module: chess.persona.key.validator.validator
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
