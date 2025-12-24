@@ -41,20 +41,17 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     def query(cls, super_key: SchemaSuperKey, super_key_validator: SchemaSuperKeyValidator) -> SearchResult[List[Schema]]:
         """
         # Action:
-        1.  Certify the provided key with the validator.
-        2.  If the key validation fails return the exception in a validation result. Otherwise, return
-            the schema entries with the targeted key-values.
-
+            1.  Certify the provided key with the validator.
+            2.  If the key validation fails return the exception in a validation result. Otherwise, return
+                the schema entries with the targeted key-values.
         # Parameters:
             *   key: SchemaSuperKey
             *   key_validator: SchemaSuperKeyValidator
-
         # Returns:
-        SearchResult[List[Schema]] containing either:
-            - On error: Exception , payload null
-            - On finding a match: List[Schema] in the payload.
-            - On no matches found: Exception null, payload null
-
+            *   SearchResult[List[Schema]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Schema] in the payload.
+                    - On no matches found: Exception null, payload null
         # Raises:
             *   SchemaLookupFailedException
         """
@@ -82,8 +79,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         return SearchResult.failure(
             SchemaLookupFailedException(
                 message=f"{method}: {SchemaLookupFailedException.ERROR_CODE} -> ",
-                ex=SchemaLookupRouteException(f"{method}: {SchemaLookupRouteException.DEFAULT_MESSAGE}"
-                                              )
+                ex=SchemaLookupRouteException(f"{method}: {SchemaLookupRouteException.DEFAULT_MESSAGE}")
             )
         )
     
@@ -92,17 +88,14 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     def _lookup_by_name(cls, target: str) -> SearchResult[List[Schema]]:
         """
         # Action:
-        1.  Get any Schema entry whose name matches the target value.
-
+            1.  Get any Schema entry whose name matches the target value.
         # Parameters:
             *   target (str)
-
         # Returns:
-        SearchResult[List[Schema]] containing either:
-            - On error: Exception
-            - On finding a match: List[Schema] in the payload.
-            - On no matches found: Exception null, payload null
-
+            *   SearchResult[List[Schema]] containing either:
+                    - On error: Exception
+                    - On finding a match: List[Schema] in the payload.
+                    - On no matches found: Exception null, payload null
         # Raises:
             *   SchemaNameBoundsException
             *   SchemaLookupFailedException

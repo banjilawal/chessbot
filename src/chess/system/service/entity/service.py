@@ -44,19 +44,19 @@ class EntityService(ABC, Service[Generic[T]]):
     def __init__(self, id: int, name: str, builder: Builder[T], validator: Validator[T]):
         """
         # ACTION:
-        Constructor
-
+            Constructor
+        --
         # PARAMETERS:
             *   id (nt)
             *   name (str)
             *   builder (Builder[T])
             *   validator (Validator[T])
-
+        --
         # Returns:
-        None
-
+            None
+        --
         # Raises:
-        None
+            None
         """
         super().__init__(id=id, name=name, certifier=validator)
         self._builder = builder
@@ -88,10 +88,8 @@ class EntityService(ABC, Service[Generic[T]]):
                 return True
         return False
 
-
-def __hash__(self):
-    return hash(self._id)
-
-
-def __str__(self):
-    return f"id:{self._id}, designation:{self._name}"
+    def __hash__(self):
+        return hash(self._id)
+    
+    def __str__(self):
+        return f"id:{self._id}, designation:{self._name}"

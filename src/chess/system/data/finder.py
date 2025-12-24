@@ -16,28 +16,7 @@ T = TypeVar("T")
 
 
 class DataFinder(Finder[T]):
-    """
-    ROLE:
-    ----
-    RESPONSIBILITIES:
-    ----------------
-    PROVIDES:
-    --------
-    ATTRIBUTES:
-    ----------
-    [
-      <No attributes. Implementors declare their own.>
-    OR
-      * _attribute (data_type): <sentence_if_necessary>
-    ]
-    """
-    """
-    implement by entities "owning" relationships for unified old_search
-    by dataset attributes with validated params.
-
-    Attributes:
-      None Implementors declare their own
-    """
+    """"""
     
     @classmethod
     @abstractmethod

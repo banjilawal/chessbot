@@ -46,19 +46,16 @@ class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (nt)
             *   name (str)
             *   builder (SchemaSuperKeyBuilder)
             *   validator (SchemaSuperKeyValidator)
-
         # Returns:
-        None
-
+            None
         # Raises:
-        None
+            None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)
         

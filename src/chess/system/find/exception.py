@@ -7,16 +7,16 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException, SearchException
+from chess.system import OperationFailedException
 
 __all__ = [
-    # ======================# SEARCH_FAILED #======================#
+    # ======================# SEARCH_FAILED EXCEPTION #======================#
     "SearchFailedException",
 ]
 
 
-#======================# SEARCH_FAILED #======================#
-class SearchFailedException(SearchException, OperationFailedException):
+#======================# SEARCH_FAILED EXCEPTION #======================#
+class SearchFailedException(OperationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   

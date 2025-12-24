@@ -14,9 +14,9 @@ from typing import List
 from chess.agent import PlayerAgent
 from chess.game import Game, GameContext, GameContextValidator
 from chess.system import (
-    UnhandledRouteException, LoggingLevelRouter, Finder, SearchFailedException, SearchResult
+    DataFinder, UnhandledRouteException, LoggingLevelRouter, SearchFailedException, SearchResult
 )
-from chess.system.find.finder.data import DataFinder
+
 
 
 class GameFinder(DataFinder[Game]):

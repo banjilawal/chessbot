@@ -6,10 +6,11 @@ Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
+
 from typing import List, cast
 
 from chess.schema import (
-    Schema, SchemaLookup, SchemaServiceException, SchemaSuperKey, SchemaSuperKeyService,
+    Schema, SchemaServiceException, SchemaSuperKey, SchemaSuperKeyService,
     SchemaValidator
 )
 from chess.system import CalculationResult, GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
@@ -24,6 +25,19 @@ class SchemaService(HashService[Schema]):
             validator: SchemaValidator = SchemaValidator(),
             super_key_service: SchemaSuperKeyService = SchemaSuperKeyService(),
     ):
+        """
+        # ACTION:
+            Constructor
+        # PARAMETERS:
+            *   id (int)
+            *   name (str)
+            *   validator (SchemaValidator)
+            *   super_key_service (SchemaSuperKeyService)
+        # Returns:
+            None
+        # Raises:
+            None
+        """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
         
     @property
@@ -37,12 +51,12 @@ class SchemaService(HashService[Schema]):
         return cast(SchemaValidator, self.hash_validator)
     
     @classmethod
-    def schema_colors(cls) -> list[GameColor]:
+    def schema_colors(cls) -> List[GameColor]:
         """The values of the color attribute."""
         return [entry.color for entry in Schema]
     
     @classmethod
-    def schema_names(cls) -> list[str]:
+    def schema_names(cls) -> List[str]:
         """A Schema name is the key to a metadata dictionary."""
         return [entry.name for entry in Schema]
     
@@ -99,7 +113,27 @@ class SchemaService(HashService[Schema]):
             return SearchResult.success(List[Schema.BLACK])
         return SearchResult.success(List[Schema.WHITE])
     
+    @LoggingLevelRouter.monitor
     def lookup_schema(self, super_key: SchemaSuperKey) -> SearchResult[List[Schema]]:
-        """"""
+        """
+        # ACTION:
+            Using lookup_schema is simpler and more extendable than building searches manually from self.key_service.
+            1.  If the self.key_service.lookup does not produce a payload send a SchemaServiceException chain in the
+                SearchResult. Otherwise, return the payload.
+        # PARAMETERS:
+            *   super_key (SchemaSuperKey)
+        # RETURNS:
+            *   SearchResult[List[Schema]] containing a list if a match is found else an exception chain.
+        # RAISES:
+            None
+        """
         method = "SchemaService.lookup_schema"
-        return self.key_service.lookup.query(super_key=super_key, super_key_validator=self.key_service.validator)
+        result = self.key_service.lookup.query(super_key=super_key, super_key_validator=self.key_service.validator)
+        
+        # Handle the case search failed by raising an exception.
+        if result.is_failure:
+            return SearchResult.failure(
+                SchemaServiceException(ex=result.exception, message=f"{method}: {SchemaServiceException.ERROR_CODE}")
+            )
+        # On search success send the result to the caller.
+        return result

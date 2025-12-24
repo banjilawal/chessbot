@@ -12,22 +12,23 @@ from chess.system import BuildFailedException
 
 
 __all__ = [
-    #======================# TEAM BUILD EXCEPTION #======================#
+    # ======================# TEAM_BUILD_FAILED EXCEPTION #======================#
     "TeamBuildFailedException",
 ]
 
 
-# ======================# TEAM BUILD EXCEPTION #======================#
+# ======================# TEAM_BUILD_FAILED EXCEPTION #======================#
 class TeamBuildFailedException(TeamException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised during TeamContext build process.
-    2.  Wraps an exception that hits the try-finally block of an TeamContextBuilder method.
+    1.  Any failed check during the TeamContext build creates an exception. Failed check exceptions are encapsulated
+        in an TeamContextBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The TeamContextBuildFailedException provides a trace for debugging and application recovery.tion recovery.
 
     # PARENT:
-        *   TeamContextException
+        *   TeamException
         *   BuildFailedException
 
     # PROVIDES:
@@ -39,5 +40,5 @@ class TeamBuildFailedException(TeamException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SCHEMA_SUPER_KEY_BUILD_ERROR"
-    DEFAULT_MESSAGE = "TeamContext build failed."
+    ERROR_CODE = "TEAM_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Team build failed."
