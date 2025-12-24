@@ -18,8 +18,8 @@ class Square:
     # ROLE: Data-Holding
   
     # RESPONSIBILITIES:
-    1.  A Piece occupies a Square.
-    2.  Provides reference to a Piece.
+    1.  A Token occupies a Square.
+    2.  Provides reference to a Token.
     
     # PROVIDES:
     Square
@@ -29,7 +29,7 @@ class Square:
         *   _name (str)
         *   _board (Board)
         *   _coord (Coord)
-        *   _occupant (Optional[Piece])
+        *   _occupant (Optional[Token])
     """
     _id: int
     _name: str
@@ -40,7 +40,7 @@ class Square:
     def __init__(self, id: int, name: str, coord: Coord, board: Board):
         """
         # ACTION:
-        Construct a Piece instance.
+        Construct a Token instance.
         
         # PARAMETERS:
             *   id (int)

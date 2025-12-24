@@ -10,9 +10,9 @@ version: 1.0.0
 from chess.system import ContextException
 
 __all__ = [
-    "PieceContextException",
+    "TokenContextException",
 ]
 
-class PieceContextException(ContextException):
+class TokenContextException(ContextException):
     ERROR_CODE = "PIECE_CONTEXT_ERROR"
     DEFAULT_MESSAGE = "PieceContext raised an exception."

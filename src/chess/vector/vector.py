@@ -14,7 +14,7 @@ class Vector:
   
     # RESPONSIBILITY:
     Consider,
-        1.  A Piece travels on the X,Y plane. delta_x and delta_y might be different. Iterating through Coords
+        1.  A Token travels on the X,Y plane. delta_x and delta_y might be different. Iterating through Coords
             to the next Coord.
         2.  Let the series of Coords = C(x0, y0), C(x1, y1), .., C(x_n-1, y_n-1), C(xn, yn)
         3.  Let

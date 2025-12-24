@@ -60,7 +60,7 @@ class Rook(Rank):
             in the Rook's range.
 
         # PARAMETERS:
-            *   piece (Piece): Single-source-of-truth for the basis of the span.
+            *   piece (Token): Single-source-of-truth for the basis of the span.
 
         # Returns:
         List[Coord]

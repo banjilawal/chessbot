@@ -29,7 +29,7 @@ The parties will have may have either
     1.  ONE-TO-ONE RELATIONSHIP:
     ...........................
         -   One side is a storage resource with permanent single slots, i.e Square, Arena.
-        -   Other side is resource client that occupies and leaves the storage slot i.e Piece, Team
+        -   Other side is resource client that occupies and leaves the storage slot i.e Token, Team
     
     2.  MANY-TO-ONE POINTER RELATIONSHIP:
     .....................................
@@ -54,7 +54,7 @@ The parties will have may have either
         to launch a transaction from the hosting
         entity.
     
-        EXAMPLE: -->    Verifying a Piece is active if it is occupying a Square.
+        EXAMPLE: -->    Verifying a Token is active if it is occupying a Square.
 
     FINDER FILTERING:
     .................

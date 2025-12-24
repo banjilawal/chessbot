@@ -139,7 +139,7 @@ class DoublePromotionException(PromotionEventException):
   Only pieces with Pawn or King bounds can be promoted.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
-  DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again."
+  DEFAULT_MESSAGE = "Token is already promoted to Queen. It cannot be promoted again."
 
 
 #======================# PIECE PROMOTION EXCEPTION #======================#
@@ -154,7 +154,7 @@ class DoublePromotionRolledBackException(RollBackException):
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Piece is already promoted to Queen. It cannot be promoted again. Transaction "
+    "Token is already promoted to Queen. It cannot be promoted again. Transaction "
     "rollback performed."
   )
 
@@ -166,7 +166,7 @@ class DoublePromotionException(PieceException):
   Only pieces with Pawn or King bounds can be promoted.
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR"
-  DEFAULT_MESSAGE = "Piece is already promoted to Queen. It cannot be promoted again."
+  DEFAULT_MESSAGE = "Token is already promoted to Queen. It cannot be promoted again."
 
 
 class DoublePromotionRolledBackException(PieceRollBackException):
@@ -177,7 +177,7 @@ class DoublePromotionRolledBackException(PieceRollBackException):
   """
   ERROR_CODE = "DOUBLE_PROMOTION_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Piece is already promoted to Queen. It cannot be promoted again. Transaction "
+    "Token is already promoted to Queen. It cannot be promoted again. Transaction "
     "rollback performed."
   )
 
@@ -282,7 +282,7 @@ class ActorException(AttackException):
   all owner exception
   """
   ERROR_CODE = "ACTOR_ERROR"
-  DEFAULT_MESSAGE = "Actor raised an rollback_exception. Piece cannot act."
+  DEFAULT_MESSAGE = "Actor raised an rollback_exception. Token cannot act."
 
 
 class ActorRollBackException(ActorException, RollbackException):
@@ -290,7 +290,7 @@ class ActorRollBackException(ActorException, RollbackException):
   Any inconsistencies team_name owner introduces into team_name notification need to be rolled back.
   This is the super class of team_name owner mutator rollback, methods, or fields that raise
   errors. Do not use directly. Subclasses give details useful for debugging. This class
-  exists primarily to allow catching all Piece exception that happen when team_name failed
+  exists primarily to allow catching all Token exception that happen when team_name failed
   notification must be rolled back.
   """
   ERROR_CODE = "ACTOR_ERROR_ROLLED_BACK"
@@ -304,7 +304,7 @@ class InvalidActorException(ActorException, InvalidAttackException):
   Exists primarily to catch all exception raised validating an existing owner
   """
   ERROR_CODE = "ACTOR_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "Piece did not meet condition to act in the game."
+  DEFAULT_MESSAGE = "Token did not meet condition to act in the game."
 
 
 class ActorNotOnBoardException(ActorException):
@@ -312,7 +312,7 @@ class ActorNotOnBoardException(ActorException):
   A owner that has not been placed on the board_validator cannot move, blocking, capture or be captured
   """
   ERROR_CODE = "ACTOR_NOT_ON_BOARD_ERROR"
-  DEFAULT_MESSAGE = "Actor is not on the board_validator. Piece cannot act"
+  DEFAULT_MESSAGE = "Actor is not on the board_validator. Token cannot act"
 
 
 class ActorPlacementRequiredException(ActorException):

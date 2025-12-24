@@ -22,7 +22,7 @@ class PieceValidator(Validator[Piece]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a Piece instance is certified safe, reliable and consistent before use.
+    1.  Ensure a Token instance is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
@@ -49,10 +49,10 @@ class PieceValidator(Validator[Piece]):
             identity_service: IdentityService = IdentityService()
     ) -> ValidationResult[Piece]:
         """"""
-        method = "Piece.validate"
+        method = "Token.validate"
         
         try:
-            # Prevents a validation `Piece` being accepted as method argument.
+            # Prevents a validation `Token` being accepted as method argument.
             if candidate is None:
                 return ValidationResult.failure(
                     NullPieceException(
@@ -65,7 +65,7 @@ class PieceValidator(Validator[Piece]):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: "
-                        f"Expected Piece, got {type(candidate).__name__} instead."
+                        f"Expected Token, got {type(candidate).__name__} instead."
                     )
                 )
             

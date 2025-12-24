@@ -122,7 +122,7 @@ class PlayerAgent(ABC):
     # )
     #
     # # Which internally uses your transactional system:
-    # # 1. Finder returns Result[Piece]
+    # # 1. Finder returns Result[Token]
     # # 2. Validates inputs
     # # 3. Creates MoveEvent
     # # 4. Executes via TravelTransaction

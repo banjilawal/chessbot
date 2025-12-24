@@ -16,20 +16,20 @@ ensure safe rollback. Returns SearchResult objects encapsulating either the foun
 Usage:
 ```python
   from chess.team_name import Team, BoardSearch
-  from chess.owner import Piece
+  from chess.owner import Token
  ```
 
 Methods:
-  - `by_id(discovery_id: int, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its visitor_id on the given `team_name`.
+  - `by_id(discovery_id: int, team_name: Team) -> SearchResult[Token]`: Find team_name owner by its visitor_id on the given `team_name`.
 
-  - `by_name(visitor_name: str, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its visitor_name on the given `team_name`.
+  - `by_name(visitor_name: str, team_name: Team) -> SearchResult[Token]`: Find team_name owner by its visitor_name on the given `team_name`.
 
-  - `by_roster_number(roster_number: int, team_name: Team) -> SearchResult[Piece]`: Find team_name owner by its roster number
+  - `by_roster_number(roster_number: int, team_name: Team) -> SearchResult[Token]`: Find team_name owner by its roster number
     on the given team_name. Roster numbers are unique within team_name team_name. Not unique across team_service.
 
   - `hostage_by_idy(discovery_id: int, team_name: Team) -> SearchResult[CombatantPiece]`:
 
-  - `by_rank(bounds: Rank, team_name: Team) -> SearchResult[list[Piece]]`: A list of all members with `bounds` on
+  - `by_rank(bounds: Rank, team_name: Team) -> SearchResult[list[Token]]`: A list of all members with `bounds` on
     given team_name. of team_name specific bounds within team_name team_name.
 
 Note:
@@ -37,7 +37,7 @@ Note:
 
 See Also:
   `Team`: The team_name being searched
-  `Piece`: The owner being searched for
+  `Token`: The owner being searched for
   `SearchResult`: The return type for all old_search rollback
 """
 
@@ -88,7 +88,7 @@ From `chess.player_agent`:
   `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
-  `Piece`
+  `Token`
 
 # CONTAINS:
 ----------

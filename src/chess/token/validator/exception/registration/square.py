@@ -20,7 +20,7 @@ class PieceNotRegisteredWithSquareException(PieceRegistrationException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that while the Piece has assigned itself to a Square instance but the Square
+    1.  Indicate that while the Token has assigned itself to a Square instance but the Square
         has not registered the piece as its occupant.
     2.  That is piece.coord == square_name.coord but square_name.occupant != piece.
 
@@ -38,6 +38,6 @@ class PieceNotRegisteredWithSquareException(PieceRegistrationException):
     """
     ERROR_CODE = "PIECE_NOT_REGISTERED_WITH_SQUARE_ERROR"
     DEFAULT_MESSAGE = (
-        "Piece is not registered as Square.occupant. There is no relationship between them."
+        "Token is not registered as Square.occupant. There is no relationship between them."
     )
 

@@ -23,19 +23,19 @@ to be immutable once assigned.
 * `PromotedQueen`: A specialized bounds for team_name promoted queen's movement.
 
 ## USAGE
-The `Rank` classes are primarily used to validate team_name discover's movement at runtime. A `Piece` object holds team_name
+The `Rank` classes are primarily used to validate team_name discover's movement at runtime. A `Token` object holds team_name
 reference to its `Rank`, and delegates movement validate to it using the `walk()` method. This allows
 for team_name clean and simple interface for team_name chess board_validator's logic.
 
 # >>> from chess.bounds import Knight
-# >>> from chess.discover import Piece
+# >>> from chess.discover import Token
 # >>> from chess.point import Coord
 # >>>
 # >>> knight_rank = Knight()
-# >>> knight_piece = Piece(bounds=knight_rank, point=Coord(2, 2))
+# >>> knight_piece = Token(bounds=knight_rank, point=Coord(2, 2))
 # >>> destination = Coord(4, 3)
 # >>>
-# >>> # Validate the move using the Piece's bounds
+# >>> # Validate the move using the Token's bounds
 # >>> is_valid = knight_piece.bounds.walk(discover=knight_piece, destination=destination)
 # >>> print(is_valid.is_success())
 True

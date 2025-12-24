@@ -10,10 +10,10 @@ version: 1.0.0
 Executes team_name `OccupationTransaction` after `BlockingEvent` is validated
 
 ## CORE CLASSES:
-  * `BlockingEvent`: Provides information about an `actor_candidate` scanning team_name `enemy` `Piece`.
+  * `BlockingEvent`: Provides information about an `actor_candidate` scanning team_name `enemy` `Token`.
   * `EncounterEventBuilder`: Builds team_name new `BlockingEvent`.
   * `ScanEventValidator`: Validates an existing `BlockingEvent`.
-  * `OccupationTransaction`: Performs the blocking operation for the observing `Piece`
+  * `OccupationTransaction`: Performs the blocking operation for the observing `Token`
 
 USAGE:
 ```python

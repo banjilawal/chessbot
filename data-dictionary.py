@@ -151,7 +151,7 @@ class ScoutReport(BaseModel):
 
   Attributes:
     id (UUID): A unique identifier for the report.
-    scout (Piece): The chess discovery that performed the survey.
+    scout (Token): The chess discovery that performed the survey.
     locations (List[Coordinate]): A list of coordinates representing the discovery's legal moves.
   """
   id: UUID = Field(default_factory=uuid4)
@@ -168,7 +168,7 @@ class Scout(BaseModel):
 
   Attributes:
     id (int): A unique identifier for the scout instance.
-    chess_piece (Piece): The chess discovery the scout is observing.
+    chess_piece (Token): The chess discovery the scout is observing.
   """
   id: int = Field(..., gt=0)
   chess_piece: ChessPiece
@@ -313,11 +313,11 @@ class ChessPiece(BaseModel):
   rank: Rank
   color: Literal['white', 'black'] = Field(...)
   coordinate_stack: CoordinateStack
-  captor: Optional['Piece'] = None
+  captor: Optional['Token'] = None
   move_count: int = Field(..., ge=0)
   has_moved: bool = Field(...)
   is_captured: bool = Field(...)
-  obstructions: List['Piece'] = Field(default_factory=list)
+  obstructions: List['Token'] = Field(default_factory=list)
   valid_moves: List[Coordinate] = Field(default_factory=list)
 
   class Config:

@@ -45,7 +45,7 @@ From `chess.player_agent`:
   `PlayerAgent`, `PlayerAgentValidator`,
 
 From `chess.owner`:
-  `Piece`
+  `Token`
 
 # CONTAINS:
 ----------

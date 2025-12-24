@@ -30,7 +30,7 @@ class Schema(Enum):
 
     ## WHO USES THE SCHEMA TABLE:
         *   TeamBuilder uses a Schema.ELEMENT/ENTRY to create a Team object.
-        *   Team uses its schema attribute to direct Piece objects in its roster the direction of their advance.
+        *   Team uses its schema attribute to direct Token objects in its roster the direction of their advance.
         *   TeamFinder can use the hashtable key to find Teams which match either the GameColor
         *   Other EntityFinder classes can use the Team.schema attribute to filter by their entity.team.schema attribute.
 

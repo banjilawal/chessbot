@@ -22,7 +22,7 @@ class ZeroPieceContextFlagsException(InvalidPieceContextException, ContextFlagCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  no PieceContext flag was enabled. One and only one Piece attribute-value-tuple is required for
+    1.  Indicate That  no PieceContext flag was enabled. One and only one Token attribute-value-tuple is required for
         a search.
 
     # PARENT:

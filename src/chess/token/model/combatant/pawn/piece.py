@@ -1,4 +1,4 @@
-# src/chess/piece/combatant/pawn/piece.py
+# src/chess/piece/combatant/pawn/token.py
 
 """
 Module: chess.piece.combatant.pawn.piece

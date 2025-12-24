@@ -127,12 +127,12 @@ class SquareValidator(Validator[Square]):
 
         # Parameters:
             * square_candidate (Any): The object to verify is a Square instance.
-            * piece_candidate (Any): The object to verify is an disabled Piece instance.
+            * piece_candidate (Any): The object to verify is an disabled Token instance.
             * piece_service (type[PieceValidator])=PieceService
 
         # Returns:
-          ValidationResult[(Square, Piece)] containing either:
-                - On success: Tuple(Square, Piece) in the payload.
+          ValidationResult[(Square, Token)] containing either:
+                - On success: Tuple(Square, Token) in the payload.
                 - On failure: Exception.
 
         # Raises:
@@ -150,12 +150,12 @@ class SquareValidator(Validator[Square]):
 
         # PARAMETERS:
             *   candidate_square (Any): Object to validate as a Square.
-            *   candidate_piece (Any): object to validate as an disabled Piece
+            *   candidate_piece (Any): object to validate as an disabled Token
             *   piece_service (ype[PieceService])
 
         # Returns:
-        ValidationResult[(Square, Piece)] containing either:
-            - On success: tuple(Square, Piece) in the payload.
+        ValidationResult[(Square, Token)] containing either:
+            - On success: tuple(Square, Token) in the payload.
             - On failure: Exception.
 
         # RAISES:

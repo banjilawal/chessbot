@@ -1,27 +1,44 @@
-# src/chess/piece/validator/exception/exception.py
+# src/chess/token/validator/exception/exception.py
 
 """
-Module: chess.piece.validator.exception
+Module: chess.token.validator.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
 """
 
-from chess.piece import PieceException
-from chess.system import  ValidationException
+from chess.token import TokenException
+from chess.system import ValidationFailedException
 
 __all__ = [
-    #======================# PIECE VALIDATION EXCEPTION #======================#
-    "InvalidPieceException",
+    # ======================# TOKEN_VALIDATION_FAILURE EXCEPTION #======================#
+    "InvalidTokenException",
 ]
 
 
-#======================# PIECE VALIDATION EXCEPTION #======================#
-class InvalidPieceException(PieceException, ValidationException):
+# ======================# TOKEN_VALIDATION_FAILURE EXCEPTION #======================#
+class InvalidTokenException(TokenException, ValidationFailedException):
     """
-    Catchall Exception for PieceValidator when a candidate fails a sanity check."""
-    ERROR_CODE = "PIECE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Piece validation failed."
+    # ROLE: Exception Wrapper, Catchall Exception
 
+    # RESPONSIBILITIES:
+    1.  A debug exception is created when a Token candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidTokenException creating an exception chain. which is sent tot he caller in a
+        ValidationResult.
+    2.  The InvalidTokenException chain is useful for tracing a  failure to its source.
 
+    # PARENT:
+        *   TokenException
+        *   ValidationFailedException
 
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "TOKEN_VALIDATION_FAILURE_ERROR"
+    DEFAULT_MESSAGE = "Token validation failed."

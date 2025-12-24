@@ -56,8 +56,8 @@ class CheckEventBuilder(Enum):
 
     Args:
       `event_id`(`int`): The unique visitor_id for the attackEvent. Must pass `IdValidator` checks.
-      `actor_candidate`(`Piece`): Initiates attack after successful validate`.
-      `enemy`(`Piece`): The `Piece` attackned by `actor_candidate`.
+      `actor_candidate`(`Token`): Initiates attack after successful validate`.
+      `enemy`(`Token`): The `Token` attackned by `actor_candidate`.
       `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
 
     Returns:

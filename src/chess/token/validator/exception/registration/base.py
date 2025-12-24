@@ -22,11 +22,11 @@ class PieceRegistrationException(InvalidPieceException, RegistrationException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall Exception for when an Piece has set its owner correctly but the owner does not
+    1.  Catchall Exception for when an Token has set its owner correctly but the owner does not
         have the piece in its collection.
 
     # PARENT:
-        *   InvalidPieceException
+        *   InvalidTokenException
         *   NoRegistrationException
 
     # PROVIDES:
@@ -39,4 +39,4 @@ class PieceRegistrationException(InvalidPieceException, RegistrationException):
     None
     """
     ERROR_CODE = "PIECE_REGISTRATION_ERROR"
-    DEFAULT_MESSAGE = "Piece not registered with parent."
+    DEFAULT_MESSAGE = "Token not registered with parent."

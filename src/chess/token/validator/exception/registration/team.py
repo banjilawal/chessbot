@@ -21,7 +21,7 @@ class PieceNotRegisteredWithTeamException(PieceRegistrationException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that while the Piece has assigned itself to a Team but the piece is not included in the
+    1.  Indicate that while the Token has assigned itself to a Team but the piece is not included in the
         Team's roster.
     2.  That is piece.team = team but piece not in team.roster.
 
@@ -39,5 +39,5 @@ class PieceNotRegisteredWithTeamException(PieceRegistrationException):
     """
     ERROR_CODE = "PIECE_NOT_REGISTERED_WITH_TEAM_ERROR"
     DEFAULT_MESSAGE = (
-        "Piece is not registered in Team.roster. Only the piece-side of the relationship is set."
+        "Token is not registered in Team.roster. Only the piece-side of the relationship is set."
     )

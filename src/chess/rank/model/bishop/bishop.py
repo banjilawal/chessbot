@@ -58,7 +58,7 @@ class Bishop(Rank):
 
 
         # PARAMETERS:
-            *   piece (Piece): Single-source-of-truth for the basis of the span.
+            *   piece (Token): Single-source-of-truth for the basis of the span.
 
         # Returns:
         List[Coord]

@@ -27,7 +27,7 @@ and how it advances. The color assigned to the Team is the Schema table's key.
 
 ## WHO USES THE SCHEMA TABLE:
     *   TeamBuilder uses a Schema.ELEMENT/ENTRY to create a Team object.
-    *   Team uses its schema attribute to direct Piece objects in its roster the direction of their advance.
+    *   Team uses its schema attribute to direct Token objects in its roster the direction of their advance.
     *   TeamFinder can use the hashtable key to find Teams which match either the GameColor
     *   Other EntityFinder classes can use the Team.schema attribute to filter by their entity.team.schema attribute.
 
@@ -56,7 +56,7 @@ class Formation(Enum):
     # ROLE: Build Configuration Table, Schema, Metadata Set
 
     # RESPONSIBILITIES:
-    1.  Supply parameters to Piece builders and factories.
+    1.  Supply parameters to Token builders and factories.
 
     # PARENT:
         *   Enum
@@ -128,7 +128,7 @@ class Formation(Enum):
     
     @property
     def designation(self) -> str:
-        """Common chess name of the Piece."""
+        """Common chess name of the Token."""
         return self._designation
     
     @property
@@ -143,10 +143,10 @@ class Formation(Enum):
     
     @property
     def persona(self) -> Persona:
-        """Configuration entry for the Piece's rank."""
+        """Configuration entry for the Token's rank."""
         return self._persona
     
     @property
     def roster_number(self) -> int:
-        """Number assigned to the Piece by its Team"""
+        """Number assigned to the Token by its Team"""
         return self._roster_number

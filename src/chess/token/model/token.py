@@ -1,4 +1,4 @@
-# src/chess/piece/model/piece.py
+# src/chess/piece/model/token.py
 
 """
 Module: chess.piece.model.piece
@@ -16,18 +16,18 @@ from chess.rank import Rank
 from chess.piece import Piece
 from chess.coord import Coord, CoordDataService
 
-class Piece(ABC):
+class Token(ABC):
     """
     # ROLE: Data-Holding, Abstract Data Type
   
     # RESPONSIBILITIES:
     1.  Travels to attack or avoid enemies on the Board.
-    2.  Capture any Piece except KingPiece.
+    2.  Capture any Token except KingPiece.
     2.  Keep immutable record of Coords occupied.
     3.  Superclass of CombatantPiece, KingPiece, and PawnPiece.
   
     # PROVIDES:
-    Piece
+    Token
   
     # ATTRIBUTES:
         *   id (int)
@@ -57,7 +57,7 @@ class Piece(ABC):
             opening_square: Square,
             positions: CoordDataService = CoordDataService()
     ):
-        method = "Piece.__init__"
+        method = "Token.__init__"
 
         self._id = id
         self._name = name
@@ -112,7 +112,7 @@ class Piece(ABC):
     def __eq__(self, other: object) -> bool:
         if other is self: return True
         if other in None: return False
-        if isinstance(other, Piece):
+        if isinstance(other, Token):
             return self._id == other.id
         return False
     
@@ -121,7 +121,7 @@ class Piece(ABC):
     
     def __str__(self) -> str:
         return (
-            f"Piece[id:{self._id} "
+            f"Token[id:{self._id} "
             f"designation:{self._name} "
             f"rank:{self._rank.name} "
             f"team:{self._team.schema.name} "

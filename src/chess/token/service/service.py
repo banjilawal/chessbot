@@ -17,9 +17,9 @@ class PieceService(EntityService[Piece]):
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Piece microservice API.
+    1.  Public facing Token microservice API.
     2.  Encapsulate integrity assurance logic in one extendable module.
-    3.  Authoritative, single source of truth for Piece state by providing single entry and exit points to Piece
+    3.  Authoritative, single source of truth for Token state by providing single entry and exit points to Token
         lifecycle.
 
     # PARENT:

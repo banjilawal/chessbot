@@ -27,7 +27,7 @@ class PieceContextServiceException(PieceContextException, ServiceException):
 
     # PARENT:
         *   ServiceException
-        *   PieceContextException
+        *   TokenContextException
 
     # PROVIDES:
     None

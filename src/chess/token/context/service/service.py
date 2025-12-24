@@ -20,7 +20,7 @@ class PieceContextService(ContextService[PieceContext]):
     2.  Provides a map aware utility for searchingPiece objects.
     3.  Encapsulate integrity assurance logic in one extendable module.
     4.  Create a single source of truth forPiece search results by having single entry and exit points for the
-       Piece search flow.
+       Token search flow.
 
     # PARENT:
         *   ContextService

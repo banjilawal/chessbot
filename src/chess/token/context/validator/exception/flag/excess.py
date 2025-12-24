@@ -22,7 +22,7 @@ class ExcessivePieceContextFlagsException(InvalidPieceContextException, ContextF
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  more than one PieceContext flag was enabled. Only one Piece attribute-value-tuple can be used in
+    1.  Indicate That  more than one PieceContext flag was enabled. Only one Token attribute-value-tuple can be used in
         a search.
 
     # PARENT:
@@ -40,6 +40,6 @@ class ExcessivePieceContextFlagsException(InvalidPieceContextException, ContextF
     """
     ERROR_CODE = "EXCESSIVE_PIECE_CONTEXT_FLAG_ERROR"
     DEFAULT_MESSAGE = (
-        "Excessive PieceContext flags were set. an Piece search can only use one-and-only "
+        "Excessive PieceContext flags were set. an Token search can only use one-and-only "
         "map flag at a time."
     )

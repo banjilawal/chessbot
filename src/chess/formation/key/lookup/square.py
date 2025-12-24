@@ -23,7 +23,7 @@ class FormationLookupBySquareException(InvalidFormationException, BoundsExceptio
 
     # RESPONSIBILITIES:
     1.  Indicate that no opening formation is made from the square.
-    1.  Indicate that searching Formations by a Square  Formation forward lookup by forward lookup on the Formation table by a designation came up empty. No Piece is assigned that
+    1.  Indicate that searching Formations by a Square  Formation forward lookup by forward lookup on the Formation table by a designation came up empty. No Token is assigned that
         designation.
     # PARENT:
         *   InvalidFormationException
@@ -41,7 +41,7 @@ class FormationLookupBySquareException(InvalidFormationException, BoundsExceptio
     """
     ERROR_CODE = "FORMATION_SQUARE_BOUNDS_ERROR"
     DEFAULT_MESSAGE = (
-        "No Formation is associated with the Square. No Piece makes its opening move from the Square."
+        "No Formation is associated with the Square. No Token makes its opening move from the Square."
     )
 
 
@@ -51,7 +51,7 @@ class DesignationFormationLookupException(InvalidFormationException, BoundsExcep
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a forward lookup on the Formation table by a designation came up empty. No Piece is assigned that
+    1.  Indicate that a forward lookup on the Formation table by a designation came up empty. No Token is assigned that
         designation.
 
     # PARENT:
@@ -69,4 +69,4 @@ class DesignationFormationLookupException(InvalidFormationException, BoundsExcep
     None
     """
     ERROR_CODE = "FORMATION_LOOKUP_BY_DESIGNATION_FAILURE"
-    DEFAULT_MESSAGE = "No Formation assigns that designation to a Piece. The designation is not valid."
+    DEFAULT_MESSAGE = "No Formation assigns that designation to a Token. The designation is not valid."

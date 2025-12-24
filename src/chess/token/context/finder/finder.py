@@ -21,14 +21,14 @@ class PieceFinder(DataFinder[Piece]):
     # ROLE: Finder
 
     # RESPONSIBILITIES:
-    1.  Search Piece collections for items which match the attribute target specified in the PieceContext parameter.
+    1.  Search Token collections for items which match the attribute target specified in the PieceContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT
         *   Finder
 
     # PROVIDES:
-        *   find: -> SearchResult[List[Piece]]
+        *   find: -> SearchResult[List[Token]]
 
     # LOCAL ATTRIBUTES:
     None
@@ -47,18 +47,18 @@ class PieceFinder(DataFinder[Piece]):
     ) -> SearchResult[List[Piece]]:
         """
         # Action:
-        1.  Verify the dataset is not null and contains only Piece objects,
+        1.  Verify the dataset is not null and contains only Token objects,
         2.  Use context_validator to certify the provided map.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
         # Parameters:
-            *   dataset (List[Piece]):
+            *   dataset (List[Token]):
             *   map: PieceContext
             *   context_validator: PieceContextValidator
 
         # Returns:
-        SearchResult[List[Piece]] containing either:
+        SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
@@ -113,16 +113,16 @@ class PieceFinder(DataFinder[Piece]):
     def _find_by_id(cls, dataset: List[Piece], id: int) -> SearchResult[List[Piece]]:
         """
         # Action:
-        1.  Get the Piece with the desired id.
+        1.  Get the Token with the desired id.
         2.  An id search should produce either no hits or one hit only.
         3.  Multiple unique pieces in the result indicate that  a problem.
 
         # Parameters:
             *   id (int)
-            *   dataset (List[Piece])
+            *   dataset (List[Token])
 
         # Returns:
-        SearchResult[List[Piece]] containing either:
+        SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
@@ -152,16 +152,16 @@ class PieceFinder(DataFinder[Piece]):
     def _find_by_name(cls, dataset: List[Piece], name: str) -> SearchResult[List[Piece]]:
         """
         # Action:
-        1.  Get the Piece with the desired designation.
+        1.  Get the Token with the desired designation.
         2.  A designation search should produce either no hits or one hit only.
         3.  Multiple unique pieces in the result indicate that  a problem.
 
         # Parameters:
             *   name (str)
-            *   dataset (List[Piece])
+            *   dataset (List[Token])
 
         # Returns:
-        SearchResult[List[Piece]] containing either:
+        SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
@@ -195,10 +195,10 @@ class PieceFinder(DataFinder[Piece]):
 
         # Parameters:
             *   team (Team)
-            *   dataset (List[Piece])
+            *   dataset (List[Token])
 
         # Returns:
-        SearchResult[List[Piece]] containing either:
+        SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
@@ -231,10 +231,10 @@ class PieceFinder(DataFinder[Piece]):
 
         # Parameters:
             *   rank (Rank)
-            *   dataset (List[Piece])
+            *   dataset (List[Token])
 
         # Returns:
-        SearchResult[List[Piece]] containing either:
+        SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
@@ -265,10 +265,10 @@ class PieceFinder(DataFinder[Piece]):
 
         # Parameters:
             *   ransom (int)
-            *   dataset (List[Piece])
+            *   dataset (List[Token])
 
         # Returns:
-        SearchResult[List[Piece]] containing either:
+        SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 

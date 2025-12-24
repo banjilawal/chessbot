@@ -49,7 +49,7 @@ class DomainBuilder(Builder[Domain]):
         Construct a new Domain object after verifying its inputs will not cause an error.
         
         # Parameters:
-          * piece (Piece): The domain owner
+          * piece (Token): The domain owner
           * board (Board): Provides the Square of the Domain owner.
           * domain_origin_builder (DomainOriginBuilder): Creates the DomainOwner object.
 

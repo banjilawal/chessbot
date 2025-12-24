@@ -42,7 +42,7 @@ class NullRankServiceException(RankServiceException, NullException):
 
 #======================# RANK_SERVICE VALIDATION EXCEPTION #======================#
 class InvalidRankServiceException(RankServiceException, ValidationException):
-    """Catchall Exception for when RankServiceValidator fails candidates on a Piece-RankCertifier relationship test."""
+    """Catchall Exception for when RankServiceValidator fails candidates on a Token-RankCertifier relationship test."""
     ERROR_CODE = "INVALID_RANK_SERVICE_ERROR"
     DEFAULT_MESSAGE = "RankCertifier validation failed."
 

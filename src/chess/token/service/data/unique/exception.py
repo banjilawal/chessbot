@@ -27,6 +27,6 @@ class UniquePieceDataServiceException(UniqueDataServiceException):
 
 
 class AddingDuplicatePieceException(UniquePieceDataServiceException):
-    """Raised when trying to add a duplicate Piece to a list of Pieces."""
+    """Raised when trying to add a duplicate Token to a list of Pieces."""
     ERROR_CODE = "DUPLICATE_PIECE_ADDITION_ERROR"
     DEFAULT_MESSAGE = "UniquePieceDataService cannot add duplicate Pieces to the list."

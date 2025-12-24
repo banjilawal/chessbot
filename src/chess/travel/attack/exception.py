@@ -24,7 +24,7 @@ __all__ = [
 
 class AttackEventException(ChessException):
   """
-  Super class of all exception team_name Piece object raises. Do not use directly. Subclasses
+  Super class of all exception team_name Token object raises. Do not use directly. Subclasses
   give details useful for debugging. This class exists primarily to allow catching
   all owner exception
   """
@@ -41,7 +41,7 @@ class InvalidAttackEventException(TravelEventException, ValidationException):
 class NullAttackEventException(AttackEventException, NullException):
   """
   Raised if an entity, method, or operation requires team_name owner but gets validation instead.
-  Piece is an abstract method. KingPiece and CombatantPiece are its subclasses.
+  Token is an abstract method. KingPiece and CombatantPiece are its subclasses.
   Do not throw NullAttackException. Raise NullKingPiece or NullCombatantPiece instead.
   they are more descriptive and better suited for debugging.
   """
@@ -52,7 +52,7 @@ class NullAttackEventException(AttackEventException, NullException):
 class PieceAttackingItSelfException(AttackEventException):
   """"""
   ERROR_CODE = "PIECE_ATTACKING_ITSELF_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack itself."
+  DEFAULT_MESSAGE = "Token cannot attack itself."
 
 class AttackingFriendException(AttackEventException):
   """"""
@@ -99,7 +99,7 @@ class CapturePieceException(PieceException):
   give details useful for debugging.
   """
   ERROR_CODE = "PIECE_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Piece capture attempt raised and err"
+  DEFAULT_MESSAGE = "Token capture attempt raised and err"
 
 
 class CaptureFriendException(CapturePieceException):
@@ -131,7 +131,7 @@ class UnsetCaptureException(CapturePieceException):
 class PieceCapturingItSelfException(CapturePieceException):
   """"""
   ERROR_CODE = "PIECE_CAPTURING_IT_SELF_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot capture itself."
+  DEFAULT_MESSAGE = "Token cannot capture itself."
 
 
 #======================# PIECE CAPTURE EXCEPTION WITH ROLLBACK #======================#
@@ -185,7 +185,7 @@ class CapturingItSelfRolledBackException(CapturePieceException):
   rolled back before raising this err.
   """
   ERROR_CODE = "PIECE_CAPTURING_IT_SELF_ROLLED_BACK_ERROR"
-  DEFAULT_MESSAGE = "Piece attempted to capture itself during the notification. The notification was rolled back."
+  DEFAULT_MESSAGE = "Token attempted to capture itself during the notification. The notification was rolled back."
 
 
 #======================# PIECE CAPTURE EXCEPTION #======================#
@@ -195,25 +195,25 @@ class CapturingItSelfRolledBackException(CapturePieceException):
 class PieceAttackingFriendException(AttackEventException):
   """"""
   ERROR_CODE = "PIECE_ATTACKING_FRIEND_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack a friend."
+  DEFAULT_MESSAGE = "Token cannot attack a friend."
 
 
 class PieceAttackingKingException(AttackEventException):
   """"""
   ERROR_CODE = "PIECE_ATTACKING_KING_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack a occupation."
+  DEFAULT_MESSAGE = "Token cannot attack a occupation."
 
 
 class PieceAttackingHostageException(AttackEventException):
   """"""
   ERROR_CODE = "PIECE_ATTACKING_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack a hostage."
+  DEFAULT_MESSAGE = "Token cannot attack a hostage."
 
 
 class AttackingNullException(AttackEventException, NullException):
   """"""
   ERROR_CODE = "PIECE_ATTACKING_NULL_ERROR"
-  DEFAULT_MESSAGE = "Piece cannot attack something validation."
+  DEFAULT_MESSAGE = "Token cannot attack something validation."
 
 
 class HostageCannotAttackException(AttackEventException):

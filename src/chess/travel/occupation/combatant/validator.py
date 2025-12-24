@@ -321,7 +321,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #
 # def _switch_squares(op_result_id: int, directive: TravelEvent, actor_square: Square) -> TransactionResult:
 #   """
-#   Transfers `Piece` occupying`actor_square` to `directive.blocked_square` leaving `actor_square` empty.
+#   Transfers `Token` occupying`actor_square` to `directive.blocked_square` leaving `actor_square` empty.
 #   `Traveltransaction.execute` is the single entry point to `_switch_squares`. Before `_switch_squares`
 #   was called `execute_directive`: validated the parameters, handled exception, and confirmed
 #   `directive.blocked_square` contained either

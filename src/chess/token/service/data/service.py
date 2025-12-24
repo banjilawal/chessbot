@@ -19,8 +19,8 @@ class PieceDataService(DataService[Piece]):
 
     # RESPONSIBILITIES:
     1.  Public facing API.
-    2.  Stack data structure for Piece objects with no guarantee of uniqueness.
-    3.  Implements searcher, insert, delete, and update operations on Piece objects.
+    2.  Stack data structure for Token objects with no guarantee of uniqueness.
+    3.  Implements searcher, insert, delete, and update operations on Token objects.
     4.  ContextService for building selecting different searcher attributes.
     5.  Including a PieceService instance creates a microservice for clients.
 
@@ -34,11 +34,11 @@ class PieceDataService(DataService[Piece]):
     None
         *   id (int):
         *   name (str):
-        *   items (List[Piece]):
-        *   searcher (Finder[Piece]):
-        *   entity_service (EntityService[Piece]):
+        *   items (List[Token]):
+        *   searcher (Finder[Token]):
+        *   entity_service (EntityService[Token]):
         *   context_service (EntityService[PieceContext]);
-        *   current_item (Piece):
+        *   current_item (Token):
         *   size (int):
     """
     DEFAULT_NAME = "PieceDataService"
@@ -77,11 +77,11 @@ class PieceDataService(DataService[Piece]):
         4.  Send the successfully pushed data back in an InsertionResult.
 
         # PARAMETERS:
-            *   item (Piece)
+            *   item (Token)
 
         # Returns:
         InsertionResult[TPiece] containing either:
-            - On success: Piece in the payload.
+            - On success: Token in the payload.
             - On failure: Exception.
 
         # Raises:
@@ -116,11 +116,11 @@ class PieceDataService(DataService[Piece]):
         4.  Send the successfully pushed data back in an InsertionResult.
 
         # PARAMETERS:
-            *   item (Piece)
+            *   item (Token)
 
         # Returns:
-        SearchResult[List[Piece]] containing either:
-            - On success: List[Piece] in the payload.
+        SearchResult[List[Token]] containing either:
+            - On success: List[Token] in the payload.
             - On failure: Exception.
 
         # Raises:

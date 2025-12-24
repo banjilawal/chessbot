@@ -124,7 +124,7 @@ class ConflictingTeamAssignmentException(TeamRosterException):
   another InvalidTeamAssignmentException is raised.
   """
   ERROR_CODE = "CONFLICTING_TEAM_ASSIGNMENT_ERROR"
-  DEFAULT_MESSAGE = "Piece is already assigned to team_name team_name."
+  DEFAULT_MESSAGE = "Token is already assigned to team_name team_name."
 
 
 #======================# TEAM MEMBER LIST EXCEPTION WITH ROLLBACK #======================#
@@ -173,7 +173,7 @@ class ConflictingTeamAssignmentRolledBackException(TeamRosterRollBackException):
   """
   ERROR_CODE = "CONFLICTING_TEAM_ASSIGNMENT_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Piece is already assigned to team_name team_name. Transaction rollback performed."
+    "Token is already assigned to team_name team_name. Transaction rollback performed."
   )
 
 #======================# HOSTAGE LIST EXCEPTION #======================#

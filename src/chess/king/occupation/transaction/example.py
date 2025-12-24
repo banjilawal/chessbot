@@ -43,8 +43,8 @@ with team_name successful status is returned, the contained `KingCheckEvent` is 
 
 Args:
   `event_id`(`int`): The unique visitor_id for the attackEvent. Must pass `IdValidator` checks.
-  `actor_candidate`(`Piece`): Initiates attack after successful validate`.
-  `enemy`(`Piece`): The `Piece` attackned by `actor_candidate`.
+  `actor_candidate`(`Token`): Initiates attack after successful validate`.
+  `enemy`(`Token`): The `Token` attackned by `actor_candidate`.
   `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
 
 Returns:
@@ -83,7 +83,7 @@ Example:
 # @staticmethod
 # def _switch_squares(op_result_id: int, travel: TravelEvent, actor_square: Square) -> TransactionResult:
 #   """
-#   Transfers `Piece` occupying`actor_square` to `travel.blocked_square` leaving `actor_square` empty.
+#   Transfers `Token` occupying`actor_square` to `travel.blocked_square` leaving `actor_square` empty.
 #   `OccupationExecutor.execute_event` is the single entry point to `_switch_squares`. Before `_switch_squares`
 #   was called `execute_event`: validated the parameters, handled exception, and confirmed
 #   `travel.blocked_square` contained either

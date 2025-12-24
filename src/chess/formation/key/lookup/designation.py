@@ -22,7 +22,7 @@ class FormationLookupByDesignationException(InvalidFormationException, BoundsExc
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a forward lookup on the Formation table by a designation came up empty. No Piece is assigned that
+    1.  Indicate that a forward lookup on the Formation table by a designation came up empty. No Token is assigned that
         designation.
 
     # PARENT:
@@ -40,4 +40,4 @@ class FormationLookupByDesignationException(InvalidFormationException, BoundsExc
     None
     """
     ERROR_CODE = "FORMATION_LOOKUP_BY_DESIGNATION_FAILURE"
-    DEFAULT_MESSAGE = "No Formation assigns that designation to a Piece. The designation is not valid."
+    DEFAULT_MESSAGE = "No Formation assigns that designation to a Token. The designation is not valid."

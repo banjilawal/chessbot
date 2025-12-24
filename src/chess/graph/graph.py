@@ -80,7 +80,7 @@ class Graph:
    #
    #
    #
-   # def find_domain(self, piece: Piece) -> Optional[Domain]:
+   # def find_domain(self, piece: Token) -> Optional[Domain]:
    #     hit = next((domain for domain in self._domains if domain.owner == piece), None)
    #     if hit is not None:
    #         return hit

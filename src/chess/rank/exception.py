@@ -43,6 +43,6 @@ class RankBuildFailedException(RankException, BuildFailedException):
 
 #======================# RANK MOVING EXCEPTION #======================#
 class ImproperMoveException(RankException):
-    """Raised when a Rank's moving rules prevent a Piece from getting to a position."""
+    """Raised when a Rank's moving rules prevent a Token from getting to a position."""
     ERROR_CODE = "IMPROPER_MOVE_ERROR"
     DEFAULT_MESSAGE = "Improper move."

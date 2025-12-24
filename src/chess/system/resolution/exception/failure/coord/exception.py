@@ -34,4 +34,4 @@ class ResolvingSquareCoordConflictFailedException(ResolvingCoordConflictFailedEx
 
 class ResolvingPieceCoordConflictFailedException(ResolvingCoordConflictFailedException):
     DEFAULT_CODE = "PIECE_COORD_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Piece.square_name conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the Token.square_name conflict."

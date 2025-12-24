@@ -26,9 +26,9 @@ class PieceFactory(Builder[Piece]):
     # ROLE: Factory, Data Integrity Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce Piece instances whose integrity is guaranteed at creation.
-    2.  Manage construction of Piece instances that can be used safely by the client.
-    3.  Ensure params for Piece creation have met the application's safety contract.
+    1.  Produce Token instances whose integrity is guaranteed at creation.
+    2.  Manage construction of Token instances that can be used safely by the client.
+    3.  Ensure params for Token creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     # PARENT:
@@ -77,7 +77,7 @@ class PieceFactory(Builder[Piece]):
     
         # Returns:
         BuildResult[Position] containing either:
-            - On success: Piece in the payload.
+            - On success: Token in the payload.
             - On failure: Exception.
     
         # Raises:
@@ -157,7 +157,7 @@ class PieceFactory(Builder[Piece]):
             # If no errors are detected build the KingPiece object.
             piece = PawnPiece(id=id, name=name, rank=Pawn(), team=team)
             
-            # If the Piece is not in team.roster register it.
+            # If the Token is not in team.roster register it.
             binding_result = cls._ensure_team_binding(piece=piece, team=team)
             if binding_result.is_failure:
                 return BuildResult.failure(binding_result.exception)
@@ -215,7 +215,7 @@ class PieceFactory(Builder[Piece]):
             # If no errors are detected build the KingPiece object.
             piece = KingPiece(id=id, name=name, rank=King(), team=team)
             
-            # If the Piece is not in team.roster register it.
+            # If the Token is not in team.roster register it.
             binding_result = cls._ensure_team_binding(piece=piece, team=team)
             if binding_result.is_failure():
                 return BuildResult.failure(binding_result.exception)
@@ -272,7 +272,7 @@ class PieceFactory(Builder[Piece]):
             # If no errors are detected build the CombatantPiece object.
             piece = CombatantPiece(id=id, name=name, rank=rank, team=team)
             
-            # If the Piece is not in team.roster register it.
+            # If the Token is not in team.roster register it.
             binding_result = cls._ensure_team_binding(piece=piece, team=team)
             if binding_result.is_failure():
                 return BuildResult.failure(binding_result.exception)
@@ -293,7 +293,7 @@ class PieceFactory(Builder[Piece]):
     def _ensure_team_binding(cls, piece: Piece, team: Team) -> BuildResult[(Piece, Team)]:
         method = "PieceFactory._verify_team_building"
         try:
-            # If the Piece is not in team.roster register it.
+            # If the Token is not in team.roster register it.
             if piece not in team.roster.items:
                 team.roster.items.append(piece)
                 

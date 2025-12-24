@@ -27,7 +27,7 @@ class TurnScene(Scene[Piece, Board, Square]):
 
     # ATTRIBUTES:
         `id` (`int`)
-        `actor` (`Piece`): Moves, attacks, gets captured, or checkmated.
+        `actor` (`Token`): Moves, attacks, gets captured, or checkmated.
         `stage`: (`Board`): Environment where `actor` operates.
         `prop`: (`Square`): Space `actor` occupies on `Stage`
     """
@@ -39,7 +39,7 @@ class TurnScene(Scene[Piece, Board, Square]):
 
         # PARAMETERS:
             * `id` (`int`):
-            * `actor` (`Piece`): Moves, attacks, gets captured, or checkmated  on `Board`.
+            * `actor` (`Token`): Moves, attacks, gets captured, or checkmated  on `Board`.
             * `board` (`Board`): Where `actor` performs operation.
             * `actor_square` (`Square`):
 

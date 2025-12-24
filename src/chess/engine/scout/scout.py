@@ -27,7 +27,7 @@ class Scout:
   returns survey in team_name `ScoutReport`.
 
   Attributes: [
-    * `_scout` (`Piece`):
+    * `_scout` (`Token`):
   """
   _scout: Piece
 

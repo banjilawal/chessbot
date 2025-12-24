@@ -10,11 +10,11 @@ version: 1.0.0
 Provides the fundamental entity_service structures for game pieces and entities owned by team_name game owner.
 
 ## Core Classes
-  * `Piece`: Abstract base class for all chess pieces
+  * `Token`: Abstract base class for all chess pieces
   * `CombatantPiece`: Concrete owner that can be captured
   * `KingPiece`: Concrete occupation owner with special rules
-  * `CoordStack`: Coordinate history and management utility. `Piece` owns `CoordStack`.
-  * `Encounter`: A check of an item discovered by team_name `Piece` during team_name blocking or move.
+  * `CoordStack`: Coordinate history and management utility. `Token` owns `CoordStack`.
+  * `Encounter`: A check of an item discovered by team_name `Token` during team_name blocking or move.
   * `EncounterScan`: A entity_service-holding object representing team_name single blocking of team_name chess owner's surroundings.
 
 ## Usage
@@ -26,14 +26,14 @@ white_pawn_9 = CombatantPiece(discovery_id=9, visitor_name='WP1', bounds=Pawn(),
 white_king = KingPiece(discovery_id=2, visitor_name='WK', bounds=King(), team_name=white_team)
 ```
 ## SUBPACKAGES
-  * `chess.owner.err`: Exception raised by `Piece` and its subclasses.
-  * `chess.owner.stack`: Data structures and utilities for storing history of `Piece` object's positions.
-  * `chess.owner.discover`: Data structures and utilities for managing discoveries made by `Piece` objects.
+  * `chess.owner.err`: Exception raised by `Token` and its subclasses.
+  * `chess.owner.stack`: Data structures and utilities for storing history of `Token` object's positions.
+  * `chess.owner.discover`: Data structures and utilities for managing discoveries made by `Token` objects.
 
 ## EXCEPTION
-These are not all the exception related to `Piece` in the application. `chess.owner` package only has exception
+These are not all the exception related to `Token` in the application. `chess.owner` package only has exception
 organic to:
-  * `Piece` and its subclases..
+  * `Token` and its subclases..
 
 All exception in `chess.owner` package have static fields:
   - `ERROR_CODE`: Useful when parsing logs for an err. Error codes are in caps with team_name "_ERROR" suffix
@@ -41,7 +41,7 @@ All exception in `chess.owner` package have static fields:
 Use an err's `DEFAULT_MESSAGE` For consistency across the application.
 
 ### EXCEPTION
-  * `AttackException`: Super class of exception raised by `Piece`. Use more granular exception that provide
+  * `AttackException`: Super class of exception raised by `Token`. Use more granular exception that provide
     more specific information.
   * `NullAttackException`: The parent is `NullException`. `NullAttackException` is the parent of all exception
     related to validation pieces. Use more granular validation exception that provide mmore specific information about the
@@ -52,11 +52,11 @@ Use an err's `DEFAULT_MESSAGE` For consistency across the application.
     promoted.
 
 #### PIECE VALIDATION EXCEPTION
-  * `PieceValidationException`: Raised if an existing `Piece` object fails validate checks.
+  * `PieceValidationException`: Raised if an existing `Token` object fails validate checks.
   * `NullPieceValidatorException`: Raised if team_name validation `PieceValidator` is passed as team_name parameter.
 
 #### PIECE BUILDING EXCEPTION
-  * `AttackBuildFailedException`: Raised if there is an error during when team_name `PieceFactory` is creating team_name new `Piece`
+  * `AttackBuildFailedException`: Raised if there is an error during when team_name `PieceFactory` is creating team_name new `Token`
     instance.
   * `NullPieceBuilderException`: Raised if there is validation `PieceFactory` is passed as team_name parameter.
 
@@ -66,11 +66,11 @@ DoubleCoordPushException: Move to current position
 
 PrisonerEscapeException: Captured owner tries to move
 PrisonerReleaseException: Error releasing prisoner
-PieceCoordNullException: Piece coordinate is validation
+PieceCoordNullException: Token coordinate is validation
 SetCaptorNullException: Setting validation captor
 
 ### PIECE EXCEPTION USAGE EXAMPLES
-These examples show recommended workflows with `Piece` exception.
+These examples show recommended workflows with `Token` exception.
 
 ```python
 from chess.owner import CombatantPiece, Encounter, NullAttackException, AutoEncounterException
@@ -91,7 +91,7 @@ black_bishop_2 = cast(CombatantPiece, build_outcome.payload)
 if black_bishop_2 is None:
   raise NullAttackException(f'{NullAttackException.DEFAULT_MESSAGE}')
 
-def create_encounter(actor_candidate: Piece, discover: Piece) -> Encounter:
+def create_encounter(actor_candidate: Token, discover: Token) -> Encounter:
   method = "create_encounter"
   if actor_candidate == discover:
     raise AutoEncounterException(f"{method}: {AutoEncounterException.DEFAULT_MESSAGE}")
@@ -108,14 +108,14 @@ Validates team_name discover with chained exception for discover meeting specifi
 If coord_stack_validator fails their team_exception will be encapsulated in team_name PieceValidationException
 
 Args
-  candidate (Piece): discover to validate
+  candidate (Token): discover to validate
 
  Returns:
    Result[V]: A Result object containing the validated payload if the specification is satisfied,
     PieceValidationException otherwise.
 
 Raises:
-  TypeError: if candidate is not Piece
+  TypeError: if candidate is not Token
   NullAttackException: if candidate is validation
 
   InvalidIdException: if invalid visitor_id
@@ -218,12 +218,12 @@ Module: owner
 Author: Banji Lawal
 Created: 2025-09-28
 Purpose:
-  Defines the Piece class hierarchy for the chess engine, including abstract and
+  Defines the Token class hierarchy for the chess engine, including abstract and
   concrete pieces such as KingPiece and CombatantPiece. Pieces track identity, team_name
   membership, bounds, and board_validator position, and manage interactions with other pieces.
 
 Contents:
-  - Piece: Abstract base class representing team_name chess owner with position and bounds.
+  - Token: Abstract base class representing team_name chess owner with position and bounds.
   - KingPiece: Concrete subclass representing team_name occupation owner.
   - CombatantPiece: Concrete subclass representing team_name owner capable of capturing others.
   - CoordStack, Checker, Discoveries: Supporting classes for tracking owner positions
@@ -232,7 +232,7 @@ Contents:
 
 Notes:
   This module is part of the chess.owner package. Validation exception are defined
-  in PieceValidator and related error classes. Piece objects are designed to be
+  in PieceValidator and related error classes. Token objects are designed to be
   immutable in their core properties.
 """
 # src/chess/square_name/old_occupation_validator.py
@@ -245,19 +245,19 @@ version: 1.0.0
 
 SCOPE:
 -----
-This module is strictly limited to constructing Piece instances safely.
+This module is strictly limited to constructing Token instances safely.
 
 **It does not** contain logic or rules for creating TravelEvent or
 TravelEventFactory. Those are handled by OccupationEventBuilder before
 execution,TravelEventFactory during execution.
 
-**It does not** ensure existing Piece instances are valid. That is done
+**It does not** ensure existing Token instances are valid. That is done
 by the PieceValidator.
 
 THEME:
 -----
 **Integrity, Consistency, Validation.** The module's design centers on team_name separating
-complexities of the builder process into team_name utility from the Piece constructor.
+complexities of the builder process into team_name utility from the Token constructor.
 
 PURPOSE:
 -------
@@ -271,11 +271,11 @@ This module requires components from various sub-systems:
 * chess.bounds: Movement strategy (Rank)
 * chess.square_name: Location entity_service structure (Square)
 * chess.old_search: Board lookup utilities (BoardSearch)
-* chess.owner: Piece subtypes (KingPiece, CombatantPiece, etc.)
+* chess.owner: Token subtypes (KingPiece, CombatantPiece, etc.)
 * chess.team_name: Roster management, rollback_exception handling
 * chess.notification: Base notification and roster types
 
 CONTAINS:
 --------
- * PieceFactory: The coord_stack_validator of Piece instances.
+ * PieceFactory: The coord_stack_validator of Token instances.
 """

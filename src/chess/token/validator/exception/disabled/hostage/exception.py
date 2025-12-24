@@ -17,4 +17,4 @@ __all__ = []
 class CapturedPieceException(PieceException):
     """Raised when trying to use a piece captured by the enemy"""
     ERROR_CODE = "CAPTURED_PIECE_ERROR"
-    DEFAULT_MESSAGE = "Piece has been captured by the enemy."
+    DEFAULT_MESSAGE = "Token has been captured by the enemy."

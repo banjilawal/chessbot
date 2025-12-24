@@ -19,8 +19,8 @@ __all__ = [
 
 
 class PieceLayoutNotActivatedException(PieceException, LayoutException):
-    """Raised when a Piece has not been activated to be placed on the board."""
+    """Raised when a Token has not been activated to be placed on the board."""
     ERROR_CODE = "PIECE_LAYOUT_NOT_ACTIVATED_ERROR"
     DEFAULT_MESSAGE = (
-        "Piece.layout has not been activated. The piece has not been placed on the board."
+        "Token.layout has not been activated. The piece has not been placed on the board."
     )

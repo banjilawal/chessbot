@@ -21,7 +21,7 @@ class PieceNotRegisteredWithBoardException(PieceRegistrationException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that while the Piece has assigned itself to a Board instance, the Board does not
+    1.  Indicate that while the Token has assigned itself to a Board instance, the Board does not
         find the item in board.pieces.
 
     # PARENT:
@@ -38,5 +38,5 @@ class PieceNotRegisteredWithBoardException(PieceRegistrationException):
     """
     ERROR_CODE = "PIECE_NOT_REGISTERED_WITH_BOARD_ERROR"
     DEFAULT_MESSAGE = (
-        "Piece is not registered in Board.pieces collection. Only the piece-side of the relationship is set."
+        "Token is not registered in Board.pieces collection. Only the piece-side of the relationship is set."
     )

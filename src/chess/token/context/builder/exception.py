@@ -28,7 +28,7 @@ class PieceContextBuildFailedException(PieceContextException, BuildFailedExcepti
     2.  The PieceContextBuildFailedException provides a trace for debugging and application recovery.
 
     # PARENT:
-        *   PieceContextException
+        *   TokenContextException
         *   BuildFailedException
 
     # PROVIDES:

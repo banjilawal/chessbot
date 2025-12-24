@@ -57,7 +57,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
           * candidate (Any): Object to verify is a Domain.
           * piece_validator (type[PieceValidator]): Injected into validator.
           * validator (type[SquareValidator]): verifies the relationship between the
-                Domain's owning Piece and Square.
+                Domain's owning Token and Square.
 
         # Returns:
           ValidationResult[DomainOrigin] containing either:

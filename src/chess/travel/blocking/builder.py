@@ -54,8 +54,8 @@
 
   Args:
     `event_id`(`int`): The unique visitor_id for the scanEvent. Must pass `IdValidator` checks.
-    `actor_candidate`(`Piece`): Initiates blocking after successful validate`.
-    `enemy`(`Piece`): The `Piece` scanned by `actor_candidate`.
+    `actor_candidate`(`Token`): Initiates blocking after successful validate`.
+    `enemy`(`Token`): The `Token` scanned by `actor_candidate`.
     `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
 
   Returns:

@@ -30,7 +30,7 @@ class ResolvingSquareNameConflictFailedException(ResolvingNameConflictFailedExce
 
 class ResolvingPieceNameConflictFailedException(ResolvingNameConflictFailedException):
     DEFAULT_CODE = "PIECE_NAME_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Piece.designation conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the Token.designation conflict."
 
 
 class ResolvingAgentNameConflictFailedException(ResolvingNameConflictFailedException):

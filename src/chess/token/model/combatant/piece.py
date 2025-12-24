@@ -1,4 +1,4 @@
-# src/chess/piece/model/combatant/piece.py
+# src/chess/piece/model/combatant/token.py
 
 """
 Module: chess.piece.model.combatant.piece
@@ -19,14 +19,14 @@ class CombatantPiece(Piece):
     # ROLE: Data-Holding, C
   
     # RESPONSIBILITIES:
-    1.  Concrete subclass of Piece
+    1.  Concrete subclass of Token
     2.  Indicate the Combatant should be removed from the board by setting its captor attribute.
   
     # PROVIDES:
     CombatantPiece
   
     # ATTRIBUTES:
-        *   captor (Optional[Piece]): Enemy who captured the combatant.
+        *   captor (Optional[Token]): Enemy who captured the combatant.
     """
     _captor: Optional[Piece]
     

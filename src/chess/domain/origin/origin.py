@@ -21,7 +21,7 @@ class DomainOrigin:
         Domain
 
     # ATTRIBUTES:
-        owner (Piece): Owner of a Domain.
+        owner (Token): Owner of a Domain.
         owner_square (Square):
     """
     _owner: Piece

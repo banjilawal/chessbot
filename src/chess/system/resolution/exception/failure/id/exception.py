@@ -48,7 +48,7 @@ class ResolvingSquareIDConflictFailedException(ResolvingIDConflictFailedExceptio
 
 class ResolvingPieceIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "PIECE_ID_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Piece.id conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the Token.id conflict."
 
 
 class ResolvingTeamIDConflictFailedException(ResolvingIDConflictFailedException):

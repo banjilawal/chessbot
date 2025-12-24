@@ -20,33 +20,33 @@ __all__ = [
 
 #======================# PIECE NULL EXCEPTION #======================#
 class NullPieceException(InvalidPieceException, NullException):
-    """Raised if an entity, method, or operation expects a Piece but gets null instead."""
+    """Raised if an entity, method, or operation expects a Token but gets null instead."""
     ERROR_CODE = "NULL_PIECE_ERROR"
-    DEFAULT_MESSAGE = "Piece cannot be null."
+    DEFAULT_MESSAGE = "Token cannot be null."
 
 
 class PieceTeamFieldIsNullException(NullPieceException):
     """
-    Raised if Piece.team does not exist. This field is set during the build and
+    Raised if Token.team does not exist. This field is set during the build and
     should never be null. A null team attribute indicate that  there amy be a fatal application error.
     """
     ERROR_CODE = "PIECE_TEAM_FIELD_NULL_ERROR"
-    DEFAULT_MESSAGE = "Piece.team field cannot be null. There may be a fatal application error."
+    DEFAULT_MESSAGE = "Token.team field cannot be null. There may be a fatal application error."
     
 
 class PieceNullCoordStackException(NullPieceException):
     """
-    Raised if Piece.positions does not exist. This field is set during the build and
+    Raised if Token.positions does not exist. This field is set during the build and
     should never be null. A null positions attribute indicate that  there amy be a fatal application error.
     """
     ERROR_CODE = "PIECE_COORD_STACK_MISSING_ERROR"
-    DEFAULT_MESSAGE = "Piece.positions cannot be null. There may be a fatal application error."
+    DEFAULT_MESSAGE = "Token.positions cannot be null. There may be a fatal application error."
 
 
 class PieceRosterNumberIsNullException(NullPieceException):
     """
-    Raised if a Piece.roster_number attribute is null. This field is set during the build and
+    Raised if a Token.roster_number attribute is null. This field is set during the build and
     should never be null. A null positions attribute indicate that  there amy be a fatal application error.
     """
     ERROR_CODE = "PIECE_NULL_ROSTER_NUMBER_ERROR"
-    DEFAULT_MESSAGE = "Piece.roster_number cannot be null. There may be a fatal application error."
+    DEFAULT_MESSAGE = "Token.roster_number cannot be null. There may be a fatal application error."

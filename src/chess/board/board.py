@@ -27,7 +27,7 @@ class Board:
   
     # ATTRIBUTES:
         * id (int): Unique identifier.
-        * pieces ([Piece]): Array pieces in Board object
+        * pieces ([Token]): Array pieces in Board object
         * squares ([[Square]]): A 2D array of squares in Board object.
     """
     

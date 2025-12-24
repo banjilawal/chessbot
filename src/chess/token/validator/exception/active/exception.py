@@ -12,7 +12,7 @@ from chess.piece import InvalidPieceException
 class ActivePieceException(InvalidPieceException):
     """
     # RESPONSIBILITY
-    Raised when an active Piece cannot do something.
+    Raised when an active Token cannot do something.
     
     
     # RELATED EXCEPTION
@@ -23,8 +23,8 @@ class ActivePieceException(InvalidPieceException):
     """
 
 class ActivePieceMissingFromTeamRoster(PieceException):
-    """Raised if an disabled Piece.team is set but Team.roster does not contain the Piece."""
+    """Raised if an disabled Token.team is set but Team.roster does not contain the Token."""
     ERROR_CODE = "ACTIVE_PIECE_MISSING_FROM_TEAM_ROSTER_ERROR"
     DEFAULT_MESSAGE = (
-        "Piece on the board, with Piece.team attribute set is not on it's team's roster."
+        "Token on the board, with Token.team attribute set is not on it's team's roster."
     )

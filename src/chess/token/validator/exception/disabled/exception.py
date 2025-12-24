@@ -14,7 +14,7 @@ from chess.piece import InvalidPieceException
 class DisabledPieceException(InvalidPieceException):
     """
     # RESPONSIBILITY
-    Raised when a disabled Piece tries to do something.
+    Raised when a disabled Token tries to do something.
 
 
     # RELATED EXCEPTION
@@ -29,17 +29,17 @@ class DisabledPieceException(InvalidPieceException):
     """
 
 class ActivePieceMissingFromTeamRoster(PieceException):
-    """Raised if an disabled Piece.team is set but Team.roster does not contain the Piece."""
+    """Raised if an disabled Token.team is set but Team.roster does not contain the Token."""
     ERROR_CODE = "ACTIVE_PIECE_MISSING_FROM_TEAM_ROSTER_ERROR"
     DEFAULT_MESSAGE = (
-        "Piece on the board, with Piece.team attribute set is not on it's team's roster."
+        "Token on the board, with Token.team attribute set is not on it's team's roster."
     )
 
 
 class PieceRequiresInitialPlacementException(PieceException):
     """Raised when team_name potential actor_candidate has not been placed on the board_validator."""
     ERROR_CODE = "PIECE_WITH_NO_INITIAL_PLACEMENT_ERROR"
-    DEFAULT_MESSAGE = "Piece has not received its initial placement on the board."
+    DEFAULT_MESSAGE = "Token has not received its initial placement on the board."
 
 
 class DisabledHostagePieceException(DisabledPieceException):
@@ -53,7 +53,7 @@ class PieceWithNoStartingPlacementException(TurnSceneException):
     """Raised when team_name potential actor_candidate has not been placed on the board_validator."""
     ERROR_CODE = "PIECE_WITH_NO_INITIAL_PLACEMENT_ERROR"
     DEFAULT_MESSAGE = (
-        "A Piece never placed at its starting position cannot act in a scene. A piece never placed "
+        "A Token never placed at its starting position cannot act in a scene. A piece never placed "
         "on an initial square_name cannot act."
     )
 

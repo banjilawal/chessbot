@@ -63,7 +63,7 @@ class Knight(Rank):
         2.  Return the list.
 
         # PARAMETERS:
-            *   piece (Piece): Single-source-of-truth for the basis of the span.
+            *   piece (Token): Single-source-of-truth for the basis of the span.
 
         # Returns:
         List[Coord]

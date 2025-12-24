@@ -17,10 +17,10 @@ __all__ = [
 ]
 
 class ActivePieceMissingFromTeamRoster(PieceException):
-    """Raised if an disabled Piece.team is set but Team.roster does not contain the Piece."""
+    """Raised if an disabled Token.team is set but Team.roster does not contain the Token."""
     ERROR_CODE = "ACTIVE_PIECE_MISSING_FROM_TEAM_ROSTER_ERROR"
     DEFAULT_MESSAGE = (
-        "Piece on the board, with Piece.team attribute set is not on it's team's roster."
+        "Token on the board, with Token.team attribute set is not on it's team's roster."
     )
 
 
