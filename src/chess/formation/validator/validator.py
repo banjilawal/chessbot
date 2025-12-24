@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import cast, Any
 
-from chess.formation import Formation, InvalidFormationException, NullFormationException
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
+from chess.formation import Formation, InvalidFormationException, NullFormationException
 
 
 class FormationValidator(Validator[Formation]):
@@ -24,7 +24,6 @@ class FormationValidator(Validator[Formation]):
     # PARENT:
         *   Validator
 
-
     # PROVIDES:
     None
 
@@ -34,6 +33,7 @@ class FormationValidator(Validator[Formation]):
     # INHERITED ATTRIBUTES:
     None
     """
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[Formation]:
@@ -68,8 +68,8 @@ class FormationValidator(Validator[Formation]):
             return ValidationResult.failure(
                 InvalidFormationException(
                     message=f"{method}: {InvalidFormationException.ERROR_CODE}",
-                    ex=TypeError(f"{method} Expected Formation, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method} Expected a Formation, got {type(candidate).__name__} instead.")
                 )
             )
-        # On certification success return the schema instance in a ValidationResult.
-        return ValidationResult.success(cast(Formation, candidate))
+        # On certification success return the formation instance in a ValidationResult.
+        return ValidationResult.success(payload=cast(Formation, candidate))
