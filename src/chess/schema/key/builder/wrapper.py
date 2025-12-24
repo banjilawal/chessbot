@@ -21,13 +21,12 @@ __all__ = [
 #======================# SCHEMA_SUPER_KEY_BUILD_FAILED EXCEPTION #======================#
 class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedException):
     """
-    # ROLE: Exception Wrapper, Messaging, Data Transport.
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  If an error occurs during the SchemaSuperKey build process it raises an exception. The exception is
-        encapsulated in a SchemaSuperKeyBuildFailedException.
-    2.  The SchemaSuperKeyBuildFailed is sent to the caller in a BuildResult providing the caller an exception
-        chain for tracing the failure to its ultimate source.
+    1.  Any failed check during the SchemaSuperKey build creates an exception. Failed check exceptions are encapsulated
+        in an SchemaSuperKeyBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The SchemaSuperKeyBuildFailedException provides a trace for debugging and application recovery.
     
     # PARENT:
         *   BuildFailedException

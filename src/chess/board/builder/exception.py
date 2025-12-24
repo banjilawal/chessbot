@@ -25,7 +25,7 @@ class BoardBuildFailedException(BoardException, BuildFailedException):
     # RESPONSIBILITIES:
     1.  Any failed check during the Board build creates an exception. Failed check exceptions are encapsulated
         in an BoardBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The BoardBuildFailedException provides a trace for debugging and application recovery.tion recovery.
+    2.  The BoardBuildFailedException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   BoardException

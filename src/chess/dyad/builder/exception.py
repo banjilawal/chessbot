@@ -25,7 +25,7 @@ class SchemaAgentPairBuildFailedException(SchemaAgentPairException, BuildFailedE
     # RESPONSIBILITIES:
     1.  Any failed check during the SchemaAgentPair build creates an exception. Failed check exceptions are encapsulated
         in an SchemaAgentPairBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The SchemaAgentPairBuildFailedException provides a trace for debugging and application recovery.tion recovery.
+    2.  The SchemaAgentPairBuildFailedException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   SchemaAgentPairException

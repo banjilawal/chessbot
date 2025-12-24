@@ -24,7 +24,7 @@ class CoordBuildFailedException(CoordException, BuildFailedException):
     # RESPONSIBILITIES:
     1.  Any failed check during the Coord build creates an exception. Failed check exceptions are encapsulated
         in an CoordBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The CoordBuildFailedException provides a trace for debugging and application recovery.tion recovery.
+    2.  The CoordBuildFailedException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   CoordException

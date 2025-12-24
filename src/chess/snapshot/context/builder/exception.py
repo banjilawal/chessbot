@@ -24,7 +24,7 @@ class SnapshotContextBuildFailedException(SnapshotContextException, BuildFailedE
     # RESPONSIBILITIES:
     1.  Any failed check during the SnapshotContext build creates an exception. Failed check exceptions are encapsulated
         in an SnapshotContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The SnapshotContextBuildFailedException provides a trace for debugging and application recovery.tion recovery.
+    2.  The SnapshotContextBuildFailedException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   SnapshotContextException

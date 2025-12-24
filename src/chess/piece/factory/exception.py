@@ -25,7 +25,7 @@ class PieceBuildFailedException(PieceException, BuildFailedException):
     # RESPONSIBILITIES:
     1.  Any failed check during the Piece build creates an exception. Failed check exceptions are encapsulated
         in an PieceBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The PieceBuildFailedException provides a trace for debugging and application recovery.tion recovery.
+    2.  The PieceBuildFailedException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   PieceException

@@ -12,7 +12,7 @@ class RankContextBuildFailedException(RankContextException, BuildFailedException
     # RESPONSIBILITIES:
     1.  Any failed check during the RankContext build creates an exception. Failed check exceptions are encapsulated
         in an RankContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The RankContextBuildFailedException provides a trace for debugging and application recovery.tion recovery.
+    2.  The RankContextBuildFailedException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   RankContextException
