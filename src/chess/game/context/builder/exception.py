@@ -10,34 +10,34 @@ version: 1.0.0
 from chess.system import BuildFailedException
 from chess.game import GameContextException
 
-
 __all__ = [
-    #======================# GAME_CONTEXT BUILD EXCEPTION #======================#
+    # ======================# GAME_CONTEXT_BUILD_FAILED EXCEPTION #======================#
     "GameContextBuildFailedException",
 ]
 
 
-#======================# GAME_CONTEXT BUILD EXCEPTION #======================#
+# ======================# GAME_CONTEXT_BUILD_FAILED EXCEPTION #======================#
 class GameContextBuildFailedException(GameContextException, BuildFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised during GameContext build process.
-    2.  Wraps an exception that hits the try-finally block of an GameContextBuilder method.
-    
+    1.  Any failed check during the GameContext build creates an exception. Failed check exceptions are encapsulated
+        in an GameContextBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The GameContextBuildFailedException provides a trace for debugging and application recovery.tion recovery.
+
     # PARENT:
         *   GameContextException
         *   BuildFailedException
 
     # PROVIDES:
-    GameContextBuildFailedException
+    None
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_CONTEXT_BUILD_ERROR"
+    ERROR_CODE = "GAME_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "GameContext build failed."
