@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.formation import BattleOrder
+
 from chess.formation.formation import Formation
 from chess.system import Context, GameColor
 

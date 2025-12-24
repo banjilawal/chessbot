@@ -21,8 +21,7 @@ class PersonaException(ChessException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by Persona objects.
-    2.  Catchall for conditions which are not covered by lower level Persona exceptions.
+    1.  Catchall for conditions which are not covered by Persona subclasses.
 
     # PARENT:
         *   ChessException

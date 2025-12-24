@@ -51,7 +51,7 @@ class RankFactory(Builder[Rank]):
         Given a Persona, return an appropriate Rank object.
 
         # Parameters:
-            * rank_spec (Persona)
+            * persona (Persona)
 
         # Returns:
           BuildResult[Rank] containing either:

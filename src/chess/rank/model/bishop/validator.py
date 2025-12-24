@@ -134,7 +134,7 @@ class BishopValidator(Validator[Bishop]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Persona)
+            *   persona (Persona)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -184,7 +184,7 @@ class BishopValidator(Validator[Bishop]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Persona)
+            *   persona (Persona)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -233,7 +233,7 @@ class BishopValidator(Validator[Bishop]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Persona)
+            *   persona (Persona)
             *   not_negative_validator (NumberValidator)
 
         # Returns:
@@ -283,7 +283,7 @@ class BishopValidator(Validator[Bishop]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Persona)
+            *   persona (Persona)
             *   text_validator (StringValidator)
 
         # Returns:
@@ -333,7 +333,7 @@ class BishopValidator(Validator[Bishop]):
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Persona)
+            *   persona (Persona)
             *   not_negative_validator (NumberValidator)
 
         # Returns:

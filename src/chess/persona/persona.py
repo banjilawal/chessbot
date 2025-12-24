@@ -15,28 +15,47 @@ from chess.geometry import Quadrant
 
 class Persona(Enum):
     """
-    # ROLE: Configuration
+    # ROLE: Build Configuration Table, Persona, Metadata Set
+
+    # ABOUT THE PERSONA:
+    The Persona implements a hashtable of attributes assigned to concrete Rank classes. The Rank's title is the hash
+    key.
+
+    ## STRUCTURE OF THE PERSONA HASHTABLE:
+        *   Key (str)
+        *   Value   (List{str: Any})
+
+    ### Persona Value: List[{str: Any}] each tuple in the list represents {Persona.Entry.attribute: attribute_value}
+
+    ## WHO USES THE PERSONA TABLE:
+        *   RankBuilder uses a Persona.ELEMENT/ENTRY to create a Rank object.
 
     # RESPONSIBILITIES:
-    1.  Persona of settings for each concrete Rank
+    1.  Supply build parameters to RankFactory methods.
+
+    # PARENT:
+        *   Enum
 
     # PROVIDES:
-    Enum
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+        *   color (GameColor)
+        *   rank_row (int)
+        *   pawn_row (int)
+        *   advancing_step (Scalar)
+        *   home_quadrant (Quadrant)
 
+    # INHERITED ATTRIBUTES:
+        * name (str) -->  Name give to each Enum entry.
     """
     
-    def __new__(cls, designation: str, team_quota: int, ransom: int, quadrants: List[Quadrant]):
-        """
-        Factory method for creating new instances of Persona enum.
-        """
+    def __new__(cls, designation: str, rank_quota: int, ransom: int, quadrants: List[Quadrant]):
         obj = object.__new__(cls)
         obj._designation = designation
-        obj._team_quota = team_quota
+        obj._rank_quota = rank_quota
         obj._ransom = ransom
         obj._quadrants = quadrants
-        
         return obj
     
     PAWN = ("P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
@@ -60,7 +79,7 @@ class Persona(Enum):
     
     @property
     def quota(self) -> int:
-        return self._team_quota
+        return self._rank_quota
     
     @property
     def ransom(self) -> int:
@@ -79,7 +98,7 @@ class Persona(Enum):
             f"Rank["
             f"{self._id} "
             f"{self._designation} "
-            f"per_team:{self._team_quota} "
+            f"per_rank:{self._rank_quota} "
             f"value:{self._ransom} "
             f"quadrants:({len(self.quadrants_str())})"
             f"] "
