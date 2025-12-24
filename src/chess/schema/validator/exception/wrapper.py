@@ -22,9 +22,11 @@ class InvalidSchemaException(SchemaException, ValidationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate a candidate failed a Schema validation test.
-    2.  Wrap an exception that hits the try-finally-block in SchemaValidator methods.
-
+    1.  A debug exception is created when a Schema candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidSchemaException creating an exception chain. which is sent tot he caller in a
+        ValidationResult.
+    2.  The InvalidSchemaException chain is useful for tracing a  failure to its source.
+    
     # PARENT:
         *   SchemaException
         *   ValidationFailedException

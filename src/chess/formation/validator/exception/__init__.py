@@ -14,7 +14,4 @@ None
 
 # Modules
 from .base import InvalidFormationException
-from .color import FormationLookupByColorException
-from .name import DesignationBoundsException
-from .square import FormationLookupBySquareException
 from .null import NullFormationException

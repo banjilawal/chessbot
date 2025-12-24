@@ -34,5 +34,5 @@ class FormationException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BATTLE_ORDER_ERROR"
+    ERROR_CODE = "FORMATION_ERROR"
     DEFAULT_MESSAGE = "Formation raised an exception."
