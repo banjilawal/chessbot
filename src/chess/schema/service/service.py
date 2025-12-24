@@ -28,44 +28,76 @@ class SchemaService(HashService[Schema]):
         
     @property
     def key_service(self) -> SchemaSuperKeyService:
+        """"""
         return cast(SchemaSuperKeyService, self.hash_super_key_service)
     
     @property
     def schema_validator(self) -> SchemaValidator:
+        """"""
         return cast(SchemaValidator, self.hash_validator)
     
     @classmethod
     def schema_colors(cls) -> list[GameColor]:
+        """The values of the color attribute."""
         return [entry.color for entry in Schema]
     
     @classmethod
     def schema_names(cls) -> list[str]:
+        """A Schema name is the key to a metadata dictionary."""
         return [entry.name for entry in Schema]
     
     @LoggingLevelRouter.monitor
     def pawn_row(self, schema: Schema) -> CalculationResult[int]:
-        """"""
+        """
+        # ACTION:
+            1.  If the schema fails verification send SchemaServiceException chain in the CalculationResult.
+                Else, send the computed pawn_row in the CalculationResult.
+        # PARAMETERS:
+            *   schema (Schema)
+        # RETURNS:
+            *   CalculationResult[int]
+                    On failure --> Exception in the CalculationResult.
+                    On success --> int in the CalculationResult payload.
+        # RAISES:
+        None
+        """
         method = "SchemaService.pawn_row"
         validation = self.schema_validator.validate(schema)
+        
+        # Handle the validation failure branch.
         if validation.is_failure:
-            # Handle the invalid case
             return CalculationResult.failure(
                 SchemaServiceException(ex=validation.exception, message=f"{method}: {SchemaServiceException.ERROR_CODE}")
             )
-        #
+        # On validation success compute the pawn_row and return in the CalculationResult.
         pawn_row = schema.rank_row + schema.advancing_step.value
         return CalculationResult.success(pawn_row)
     
     @LoggingLevelRouter.monitor
     def enemy_schema(self, schema: Schema) -> SearchResult[List[Schema]]:
-        """"""
+        """
+        # ACTION:
+            1.  If the schema fails verification send SchemaServiceException chain in the CalculationResult.
+                Else, following the convention put opposite Schema in an array then send in the SearchResult.
+        # PARAMETERS:
+            *   schema (Schema)
+        # RETURNS:
+            *   Schema
+        # RAISES:
+            None
+        """
         method = "SchemaService.enemy_schema"
-        validation = self._validator.validate(schema)
+        validation = self.schema_validator.validate(schema)
+        
+        # Handle the validation failure branch.
         if validation.is_failure:
-            return SearchResult.failure(validation.exception)
+            return SearchResult.failure(
+                SchemaServiceException(ex=validation.exception, message=f"{method}: {SchemaServiceException.ERROR_CODE}")
+            )
+        # On validation success send the opposite Schema entry in the SearchResult.
         if schema.color == GameColor.WHITE:
-            return SearchResult.success(Schema.BLACK)
-        return SearchResult.success(Schema.WHITE)
+            return SearchResult.success(List[Schema.BLACK])
+        return SearchResult.success(List[Schema.WHITE])
     
     def lookup_schema(self, super_key: SchemaSuperKey) -> SearchResult[List[Schema]]:
         """"""

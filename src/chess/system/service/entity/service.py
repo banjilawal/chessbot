@@ -40,7 +40,6 @@ class EntityService(ABC, Service[Generic[T]]):
     _id: int
     _name: str
     _builder: Builder[T]
-    _validator: Validator[T]
     
     def __init__(self, id: int, name: str, builder: Builder[T], validator: Validator[T]):
         """

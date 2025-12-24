@@ -16,9 +16,10 @@ T = TypeVar("T")
 
 class Service(ABC, Generic[T]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Service
 
     # RESPONSIBILITIES:
+    1.  Primitive for building services. A validator is required because entities have to be certified safe before use.
     
     # PARENT:
     None
@@ -41,18 +42,15 @@ class Service(ABC, Generic[T]):
     def __init__(self, id: int, name: str, certifier: Validator[T], ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (nt)
             *   name (str)
             *   certifier (Validator[T])
-
         # Returns:
-        None
-
+            None
         # Raises:
-        None
+            None
         """
         self._id = id
         self._name = name
@@ -71,8 +69,10 @@ class Service(ABC, Generic[T]):
         return self._certifier
     
     def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
+        if other is self:
+            return True
+        if other is None:
+            return False
         if isinstance(other, Service):
             return self._id == other.id
         return False

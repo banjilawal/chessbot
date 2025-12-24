@@ -6,9 +6,10 @@ Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
-from chess.schema.lookup.forward.wrapper import ForwardSchemaFailedException
-from chess.system import UnhandledRouteException
 
+
+from chess.system import UnhandledRouteException
+from chess.schema import SchemaLookupFailedException
 
 __all__ = [
     # ======================# UNHANDLED_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
@@ -17,7 +18,7 @@ __all__ = [
 
 
 # ======================# UNHANDLED_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
-class SchemaLookupRouteException(ForwardSchemaFailedException, UnhandledRouteException):
+class SchemaLookupRouteException(SchemaLookupFailedException, UnhandledRouteException):
     """
     # ROLE: Fallback Result
     
