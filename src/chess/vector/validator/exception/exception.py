@@ -8,16 +8,38 @@ version: 1.0.0
 """
 
 from chess.vector import VectorException
-from chess.system import ValidationException
+from chess.system import ValidationFailedException
 
-
+_
 __all__ = [
+    # ======================# VECTOR_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidVectorException",
 ]
 
-#======================# VECTOR VALIDATION EXCEPTION #======================#
 
-class InvalidVectorException(VectorException, ValidationException):
-    """Catchall Exception for VectorValidator when a candidate fails a sanity check.""""""
-    ERROR_CODE = "VECTOR_VALIDATION_ERROR"
+# ======================# VECTOR_VALIDATION_FAILURE EXCEPTION #======================#
+class InvalidVectorException(VectorException, ValidationFailedException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  A debug exception is created when a Vector candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidVectorException creating an exception chain. which is sent tot he caller in a
+        ValidationResult.
+    2.  The InvalidVectorException chain is useful for tracing a  failure to its source.
+    
+    # PARENT:
+        *   VectorException
+        *   ValidationFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "VECTOR_VALIDATION_FAILURE_ERROR"
     DEFAULT_MESSAGE = "Vector validation failed."
