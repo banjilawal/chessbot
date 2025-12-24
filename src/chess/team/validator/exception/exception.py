@@ -8,16 +8,37 @@ version: 1.0.0
 """
 
 from chess.team import TeamException
-from chess.system import ValidationException
+from chess.system import ValidationFailedException
 
 __all__ = [
-    #======================# TEAM VALIDATION EXCEPTION #======================#
+    # ======================# TEAM_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidTeamException",
 ]
 
 
-#======================# TEAM VALIDATION EXCEPTION #======================#
-class InvalidTeamException(TeamException, ValidationException):
-    """Catchall Exception for TeamValidator when a candidate fails a sanity check."""
-    ERROR_CODE = "TEAM_VALIDATION_ERROR"
+# ======================# TEAM_VALIDATION_FAILURE EXCEPTION #======================#
+class InvalidTeamException(TeamException, ValidationFailedException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  A debug exception is created when a Team candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidTeamException creating an exception chain. which is sent tot he caller in a
+        ValidationResult.
+    2.  The InvalidTeamException chain is useful for tracing a  failure to its source.
+
+    # PARENT:
+        *   TeamException
+        *   ValidationFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "TEAM_VALIDATION_FAILURE_ERROR"
     DEFAULT_MESSAGE = "Team validation failed."
