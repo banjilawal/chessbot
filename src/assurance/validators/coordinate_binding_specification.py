@@ -14,8 +14,8 @@ class CoordinateSBindingValidator(Validator):
 
     """
     Validates team_name CoordinateBinding meets specifications:
-      - square.occupant == chess_piece
-      - chess_piece.coordinate_stack.current_coordinate() == square.point
+      - square_name.occupant == chess_piece
+      - chess_piece.coordinate_stack.current_coordinate() == square_name.point
       - chess_piece_previous_square.occupant == validation
       
     If any notification fails their team_exception will be encapsulated in team_name CoordinateBindingValidationException

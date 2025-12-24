@@ -40,15 +40,12 @@ class SchemaValidator(Validator[Schema]):
         # ACTION:.
             1.  If the candidate passes existence and type checks cast into a Schema instance and return
                 in the ValidationResult. Else return an exception in the ValidationResult.
-
         # PARAMETERS:
             *   candidate (Any)
-
-        # Returns:
-        ValidationResult[Schema] containing either:
-            - On failure: Exception.
-            - On success: Schema in the payload.
-
+        # RETURNS:
+            *   ValidationResult[Schema] containing either:
+                    - On failure: Exception.
+                    - On success: Schema in the payload.
         # RAISES:
             *   TypeError
             *   NullSchemaException

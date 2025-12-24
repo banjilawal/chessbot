@@ -27,7 +27,7 @@ class CatalogServiceException(CatalogException, ServiceException):
 
     # PARENT:
         *   ServiceException
-        *   CatalogException
+        *   PersonaException
 
     # PROVIDES:
     None

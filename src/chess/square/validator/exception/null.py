@@ -1,7 +1,7 @@
-# src/chess/square/validator/exception/null.py
+# src/chess/square_name/validator/exception/null.py
 
 """
-Module: chess.square.validator.exception.null
+Module: chess.square_name.validator.exception.null
 Author: Banji Lawal
 Created: 2025-11-19
 """

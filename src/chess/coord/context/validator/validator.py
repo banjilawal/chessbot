@@ -50,7 +50,7 @@ class CoordContextValidator(Validator):
 
         # Parameters:
           * candidate (Any): Object to verify is a Coord.
-          * validator (type[CoordValidator]): Enforces safety requirements on row, column, square coords.
+          * validator (type[CoordValidator]): Enforces safety requirements on row, column, square_name coords.
 
           
         # Returns:

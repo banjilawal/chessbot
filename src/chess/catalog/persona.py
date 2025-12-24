@@ -13,12 +13,12 @@ from typing import List
 from chess.geometry import Quadrant
 
 
-class Catalog(Enum):
+class Persona(Enum):
     """
     # ROLE: Configuration
 
     # RESPONSIBILITIES:
-    1.  Catalog of settings for each concrete Rank
+    1.  Persona of settings for each concrete Rank
 
     # PROVIDES:
     Enum
@@ -29,7 +29,7 @@ class Catalog(Enum):
     
     def __new__(cls, designation: str, team_quota: int, ransom: int, quadrants: List[Quadrant]):
         """
-        Factory method for creating new instances of Catalog enum.
+        Factory method for creating new instances of Persona enum.
         """
         obj = object.__new__(cls)
         obj._designation = designation
@@ -89,10 +89,10 @@ class Catalog(Enum):
         return " ".join(q.name for q in self._quadrants)
 
     # @classmethod
-    # def find_speck_by_rank(cls, rank: Rank) -> Optional[Catalog]:
+    # def find_speck_by_rank(cls, rank: Rank) -> Optional[Persona]:
     #     print(f"Looking for config with designation:{rank.visitor_name}")
     #
-    #     for spec in Catalog:
+    #     for spec in Persona:
     #         print(f"Checking config:{spec.ransom}")
     #         if spec.designation.upper() == rank.visitor_name.upper():
     #             return spec

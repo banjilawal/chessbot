@@ -1,7 +1,7 @@
-# src/chess/formation/validator/exception/square.py
+# src/chess/formation/validator/exception/square_name.py
 
 """
-Module: chess.formation.validator.exception.square
+Module: chess.formation.validator.exception.square_name
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -22,7 +22,7 @@ class OrderSquareBoundsException(InvalidFormationException, BoundsException, Nam
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a square is outside the range of acceptable Formation squares.
+    1.  Indicate an error occurred because a square_name is outside the range of acceptable Formation squares.
 
     # PARENT:
         *   InvalidFormationException

@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import Optional
 
 from chess.catalog import (
-    CatalogContext, CatalogContextBuildFailedException,
-    ExcessiveCatalogContextFlagsException, ZeroCatalogContextFlagsException
+    PersonaSuperKey, PersonaSuperKeyBuildFailedException,
+    ExcessivePersonaSuperKeyFlagsException, ZeroPersonaSuperKeyFlagsException
 )
 from chess.system import (
     BuildResult, Builder, UnhandledRouteException, IdentityService, LoggingLevelRouter,
@@ -19,14 +19,14 @@ from chess.system import (
 )
 
 
-class CatalogContextBuilder(Builder[CatalogContext]):
+class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
     """
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-        1.  Produce CatalogContext instances whose integrity is guaranteed at creation.
-        2.  Manage construction of CatalogContext instances that can be used safely by the client.
-        3.  Ensure params for CatalogContext creation have met the application's safety contract.
+        1.  Produce PersonaSuperKey instances whose integrity is guaranteed at creation.
+        2.  Manage construction of PersonaSuperKey instances that can be used safely by the client.
+        3.  Ensure params for PersonaSuperKey creation have met the application's safety contract.
         4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     # PARENT:
@@ -51,12 +51,12 @@ class CatalogContextBuilder(Builder[CatalogContext]):
             designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
             not_negative_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
-    ) -> BuildResult[CatalogContext]:
+    ) -> BuildResult[PersonaSuperKey]:
         """
         # Action:
             1.  Confirm that only one in the (name, designation, quota, ransom) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a CatalogContext and send in a BuildResult. Else, return an exception
+            3.  If all checks pass build a PersonaSuperKey and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
         # Parameters:
@@ -71,16 +71,16 @@ class CatalogContextBuilder(Builder[CatalogContext]):
                 *   identity_service (IdentityService)
 
         # Returns:
-        BuildResult[CatalogContext] containing either:
-            - On success: CatalogContext in the payload.
+        BuildResult[PersonaSuperKey] containing either:
+            - On success: PersonaSuperKey in the payload.
             - On failure: Exception.
 
         # Raises:
-            *   ZeroCatalogContextFlagsException
-            *   CatalogContextBuildFailedException
-            *   ExcessiveCatalogContextFlagsException
+            *   ZeroPersonaSuperKeyFlagsException
+            *   PersonaSuperKeyBuildFailedException
+            *   ExcessivePersonaSuperKeyFlagsException
         """
-        method = "CatalogContextBuilder.build"
+        method = "PersonaSuperKeyBuilder.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [name, designation, quota, ransom]
@@ -89,56 +89,56 @@ class CatalogContextBuilder(Builder[CatalogContext]):
             # Test if no params are set. Need an attribute-value pair to look up a rank's catalog_entry.
             if param_count == 0:
                 return BuildResult.failure(
-                    ZeroCatalogContextFlagsException(f"{method}: {ZeroCatalogContextFlagsException.DEFAULT_MESSAGE}")
+                    ZeroPersonaSuperKeyFlagsException(f"{method}: {ZeroPersonaSuperKeyFlagsException.DEFAULT_MESSAGE}")
                 )
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveCatalogContextFlagsException(f"{method}: {ExcessiveCatalogContextFlagsException}")
+                    ExcessivePersonaSuperKeyFlagsException(f"{method}: {ExcessivePersonaSuperKeyFlagsException}")
                 )
             # After verifying only one Schema hash key-value is set, validate it.
             
-            # Build the name CatalogContext if its flag is enabled.
+            # Build the name PersonaSuperKey if its flag is enabled.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a ransom_CatalogContext in the BuildResult.
-                return BuildResult.success(CatalogContext(name=name))
+                # On validation success return a ransom_PersonaSuperKey in the BuildResult.
+                return BuildResult.success(PersonaSuperKey(name=name))
             
-            # Build the designation CatalogContext if its flag is enabled.
+            # Build the designation PersonaSuperKey if its flag is enabled.
             if designation is not None:
                 validation = identity_service.validate_name(candidate=designation)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a designation_CatalogContext in the BuildResult.
-                return BuildResult.success(CatalogContext(designation=designation))
+                # On validation success return a designation_PersonaSuperKey in the BuildResult.
+                return BuildResult.success(PersonaSuperKey(designation=designation))
             
-            # Build the quota CatalogContext if its flag is enabled.
+            # Build the quota PersonaSuperKey if its flag is enabled.
             if quota is not None:
                 validation = not_negative_validator.validate(candidate=quota)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a quota_CatalogContext in the BuildResult.
-                return BuildResult.success(CatalogContext(quota=quota))
+                # On validation success return a quota_PersonaSuperKey in the BuildResult.
+                return BuildResult.success(PersonaSuperKey(quota=quota))
             
-            # Build the ransom CatalogContext if its flag is enabled.
+            # Build the ransom PersonaSuperKey if its flag is enabled.
             if ransom is not None:
                 validation = not_negative_validator.validate(candidate=ransom)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a ransom_CatalogContext in the BuildResult.
-                return BuildResult.success(CatalogContext(ransom=ransom))
+                # On validation success return a ransom_PersonaSuperKey in the BuildResult.
+                return BuildResult.success(PersonaSuperKey(ransom=ransom))
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
                 UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception and wrap A CatalogContextBuildFailedException around it then
+        # Finally, catch any missed exception and wrap A PersonaSuperKeyBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                CatalogContextBuildFailedException(
-                    ex=ex, message=f"{method}: {CatalogContextBuildFailedException.DEFAULT_MESSAGE}"
+                PersonaSuperKeyBuildFailedException(
+                    ex=ex, message=f"{method}: {PersonaSuperKeyBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

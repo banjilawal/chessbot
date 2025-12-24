@@ -48,27 +48,26 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[SchemaSuperKey]:
         """
-        # Action:
+        # ACTION:
             1.  If more than one optional param is not-null return an exception in the BuildResult.
             2.  If the enabled param is not certified by the appropriate validating service return an exception in
                 the BuildResult.
             3.  After the active param is validated create the SchemaSuperKey object and return in the BuildResult.
 
-        # Parameters:
-            Only one these must be provided:
-                *   name (Optional[str])
-                *   color (Optional[GameColor])
+        # PARAMETERS:
+            *   Only one these must be provided:
+                    *   name (Optional[str])
+                    *   color (Optional[GameColor])
     
-            These Parameters must be provided:
-                *   color_validator (GameColorValidator)
-                *   identity_service (IdentityService)
+            *   These Parameters must be provided:
+                    *   color_validator (GameColorValidator)
+                    *   identity_service (IdentityService)
+        # RETURNS:
+            *   BuildResult[SchemaSuperKey] containing either:
+                    - On failure: Exception.
+                    - On success: SchemaSuperKey in the payload.
 
-        # Returns:
-        BuildResult[SchemaSuperKey] containing either:
-            - On failure: Exception.
-            - On success: SchemaSuperKey in the payload.
-
-        # Raises:
+        # RAISES:
             *   ZeroSchemaSuperKeysException
             *   SchemaSuperKeyBuildFailedException
             *   ExcessiveSchemaSuperKeysException

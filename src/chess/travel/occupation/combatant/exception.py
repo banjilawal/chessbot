@@ -46,7 +46,7 @@ class InvalidCombatantOccupationEventException(CombatantOccupationEventException
 class OccupationDestinationNotEmptyException(CombatantOccupationEventException):
   """Raised by CombatantOccupationEventValidators if a candidate fails coord_stack_validator."""
   ERROR_CODE = "OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_ERROR"
-  DEFAULT_MESSAGE = "CombatantOccupationEvent destination square is not empty."
+  DEFAULT_MESSAGE = "CombatantOccupationEvent destination square_name is not empty."
   
 #=== ATTACK_EVENT BUILD EXCEPTION #======================#
 class AttackEventBuilderException(AttackEventException, BuilderException):
@@ -95,12 +95,12 @@ class BoardPieceRemovalRollbackException(AttackEventException, RollbackException
 
 class SquareOccupationRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "SQUARE_OCCUPATION_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to occupation target square after capture; rollback executed."
+  DEFAULT_MESSAGE = "Failed to occupation target square_name after capture; rollback executed."
 
 
 class SourceSquareRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "SOURCE_SQUARE_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to clear attacker's source square; rollback executed."
+  DEFAULT_MESSAGE = "Failed to clear attacker's source square_name; rollback executed."
 
 
 class PositionUpdateRollbackException(AttackEventException, RollbackException):
@@ -137,7 +137,7 @@ class HostageCannotMoveException(HostageActivityException):
 
 class HostageCannotScanException(HostageActivityException):
   """
-  Raised if team_name captured owner tries to blocking team_name square.
+  Raised if team_name captured owner tries to blocking team_name square_name.
   """
   ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
   DEFAULT_MESSAGE = "Captured owner cannot blocking team_name sqaure."

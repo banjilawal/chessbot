@@ -16,7 +16,7 @@ log = logging.getLogger("chessbot")
 # from .assets import *
 # from .board import *
 # from .checkmate import *
-# from .square import CoordService
+# from .square_name import CoordService
 # from .domain import DomainService
 # from .driver import *
 # from .engine import *
@@ -35,7 +35,7 @@ log = logging.getLogger("chessbot")
 # from .randomize import *
 # from .rank import *
 # from .scalar import ScalarService
-# from .square import SquareService
+# from .square_name import SquareService
 # from .system import *
 # from .team import TeamCertifier, PieceSearchService
 # from .travel import *

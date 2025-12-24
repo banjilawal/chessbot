@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .zero import ZeroCatalogContextFlagsException
-from .excess import ExcessiveCatalogContextFlagsException
+from .zero import ZeroPersonaSuperKeyFlagsException
+from .excess import ExcessivePersonaSuperKeyFlagsException

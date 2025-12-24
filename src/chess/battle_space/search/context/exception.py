@@ -13,7 +13,7 @@ falls to the `BoardSearchContextValidator` and `ProjectionSearchContextBuilder`p
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
+**Comprehensive Domain Error Persona.** The central theme is to provide team_name
 highly granular and hierarchical set of exception, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `ProjectionSearchContextException`). This enables precise error

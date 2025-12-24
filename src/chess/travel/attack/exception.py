@@ -78,7 +78,7 @@ class AttackingPieceMissingFromBoardException(AttackEventException):
 class EnemyNotInExpectedSquareException(AttackEventException):
   """"""
   ERROR_CODE = "ENEMY_NOT_IN_EXPECTED_SQUARE_ERROR"
-  DEFAULT_MESSAGE = "Enemy is not in the expected square. There maybe inconsistent entity_service."
+  DEFAULT_MESSAGE = "Enemy is not in the expected square_name. There maybe inconsistent entity_service."
 
 
 #======================# ATTACK_EVENT BUILD EXCEPTION #======================#

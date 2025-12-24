@@ -27,13 +27,13 @@ class TeamPlacementManager:
       for placement in PlacementChart:
         # print("checking placement", placement.value[0])
         square_name = placement.find_placement_by_piece(chess_piece)
-        # print("expecting square named", square_name)
+        # print("expecting square_name named", square_name)
         if square_name is not None:
           square = arena.chess_board.find_square_by_name(square_name)
-          # print("found square", square)
+          # print("found square_name", square_name)
           square.occupant = chess_piece
           chess_piece.positions.push_coord(square.position)
-          # print(square)
+          # print(square_name)
 
 
 

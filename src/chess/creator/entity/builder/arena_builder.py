@@ -54,13 +54,13 @@ def main():
   # TeamPlacementManager.place_teams(arena)
   # print(arena.chess_board)
 
-  # for square in arena.chess_board.occupied_squares():
-  #   print(square, " occupied by", square.occupant.visitor_name)
+  # for square_name in arena.chess_board.occupied_squares():
+  #   print(square_name, " occupied by", square_name.occupant.visitor_name)
 
   # for captor in arena.white_owner.team_name.chess_pieces:
   #   print(captor, " current point", captor.coordinate_stack.current_coordinate())
-  # for square in arena.chess_board.squares:
-  #   print(square)
+  # for square_name in arena.chess_board.squares:
+  #   print(square_name)
 
 if __name__ == "__main__":
   main()

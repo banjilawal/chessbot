@@ -1,33 +1,33 @@
-# src/chess/catalog/validator/exception/null.py
+# src/chess/persona/validator/exception/null.py
 
 """
-Module: chess.catalog.validator.exception.null
+Module: chess.persona.validator.exception.null
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.catalog import InvalidCatalogException
+from chess.persona import InvalidPersonaException
 
 
 __all__ = [
-    # ======================# NULL CATALOG EXCEPTION #======================#
-    "NullCatalogException",
+    # ======================# NULL PERSONA EXCEPTION #======================#
+    "NullPersonaException",
 ]
 
 
-# ======================# NULL CATALOG EXCEPTION #======================#
-class NullCatalogException(InvalidCatalogException, NullException):
+# ======================# NULL PERSONA EXCEPTION #======================#
+class NullPersonaException(InvalidPersonaException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an Catalog validation candidate is null.
-    2.  Raised if an entity, method or operation requires an Catalog but receives null instead.
+    1.  Raised if an Persona validation candidate is null.
+    2.  Raised if an entity, method or operation requires an Persona but receives null instead.
 
     # PARENT:
-        *   InvalidCatalogException
+        *   InvalidPersonaException
         *   NullException
 
     # PROVIDES:
@@ -37,4 +37,4 @@ class NullCatalogException(InvalidCatalogException, NullException):
     None
     """
     ERROR_CODE = "NULL_ORDER_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "Catalog cannot be null."
+    DEFAULT_MESSAGE = "Persona cannot be null."

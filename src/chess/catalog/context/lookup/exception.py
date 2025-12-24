@@ -24,7 +24,7 @@ class CatalogLookupException(CatalogException):
     1.  Wrap an exception that hits the try-finally block of a CatalogLookup method.
 
     # PARENT:
-        *   CatalogException
+        *   PersonaException
 
     # PROVIDES:
     None
@@ -36,4 +36,4 @@ class CatalogLookupException(CatalogException):
     None
     """
     ERROR_CODE = "CATALOG_LOOKUP_ERROR"
-    DEFAULT_MESSAGE = "Catalog lookup failed."
+    DEFAULT_MESSAGE = "Persona lookup failed."

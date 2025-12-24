@@ -42,7 +42,7 @@ class RankValidatorFactory(Validator[Rank]):
         ) -> ValidationResult[Rank]: ValidationResult[(Team, Game)]:
 
     # INSTANCE METHODS:
-        *   rank_spec_validator: CatalogValidator
+        *   rank_spec_validator: PersonaValidator
     """
     @classmethod
     @LoggingLevelRouter.monitor

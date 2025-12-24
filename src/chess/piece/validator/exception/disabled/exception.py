@@ -54,7 +54,7 @@ class PieceWithNoStartingPlacementException(TurnSceneException):
     ERROR_CODE = "PIECE_WITH_NO_INITIAL_PLACEMENT_ERROR"
     DEFAULT_MESSAGE = (
         "A Piece never placed at its starting position cannot act in a scene. A piece never placed "
-        "on an initial square cannot act."
+        "on an initial square_name cannot act."
     )
 
 
@@ -90,7 +90,7 @@ class HostageCannotMoveException(HostageActivityException):
 
 class HostageCannotScanException(HostageActivityException):
     """
-    Raised if team_name captured owner tries to blocking team_name square.
+    Raised if team_name captured owner tries to blocking team_name square_name.
     """
     ERROR_CODE = "HOSTAGE_CANNOT_SCAN_ERROR"
     DEFAULT_MESSAGE = "Captured owner cannot blocking team_name sqaure."

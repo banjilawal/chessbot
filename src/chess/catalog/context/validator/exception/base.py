@@ -7,26 +7,26 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.catalog import CatalogContextException
+from chess.catalog import PersonaSuperKeyException
 from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# CATALOG_CONTEXT VALIDATION EXCEPTION #======================#
-    "InvalidCatalogContextException",
+    "InvalidPersonaSuperKeyException",
 ]
 
 
 # ======================# CATALOG_CONTEXT VALIDATION EXCEPTION #======================#
-class InvalidCatalogContextException(CatalogContextException, ValidationFailedException):
+class InvalidPersonaSuperKeyException(PersonaSuperKeyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised CatalogContext validation.
-    2.  Wrap an exception that hits the try-finally-block in CatalogContextValidator methods.
+    1.  Parent of exceptions raised PersonaSuperKey validation.
+    2.  Wrap an exception that hits the try-finally-block in PersonaSuperKeyValidator methods.
 
     # PARENT:
-        *   CatalogContextException
+        *   PersonaSuperKeyException
         *   ValidationFailedException
 
     # PROVIDES:
@@ -39,4 +39,4 @@ class InvalidCatalogContextException(CatalogContextException, ValidationFailedEx
     None
     """
     ERROR_CODE = "CATALOG_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "CatalogContext validation failed."
+    DEFAULT_MESSAGE = "PersonaSuperKey validation failed."

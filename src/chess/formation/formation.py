@@ -12,6 +12,44 @@ from enum import Enum
 from chess.rank import RankSpec
 from chess.system import GameColor
 
+"""
+# ROLE: Build Configuration Table, Schema, Metadata Set
+
+# ABOUT THE SCHEMA:
+The Schema implements a hashtable which a Team gets metadata about its initial deployment on the Board
+and how it advances. The color assigned to the Team is the Schema table's key.
+
+## STRUCTURE OF THE SCHEMA HASHTABLE:
+    *   Key (str)
+    *   Value   (List{str: Any})
+
+### Schema Vale: List[{str: Any}] each tuple in the list represents {Schema.Entry.attribute: attribute_value}
+
+## WHO USES THE SCHEMA TABLE:
+    *   TeamBuilder uses a Schema.ELEMENT/ENTRY to create a Team object.
+    *   Team uses its schema attribute to direct Piece objects in its roster the direction of their advance.
+    *   TeamFinder can use the hashtable key to find Teams which match either the GameColor
+    *   Other EntityFinder classes can use the Team.schema attribute to filter by their entity.team.schema attribute.
+
+# RESPONSIBILITIES:
+1.  Provides table of metadata used for building Team objects.
+
+# PARENT:
+    *   Enum
+
+# PROVIDES:
+None
+
+# LOCAL ATTRIBUTES:
+    *   color (GameColor)
+    *   rank_row (int)
+    *   pawn_row (int)
+    *   advancing_step (Scalar)
+    *   home_quadrant (Quadrant)
+
+# INHERITED ATTRIBUTES:
+    * name (str) -->  Name give to each Enum entry.
+"""
 
 class Formation(Enum):
     """
@@ -27,25 +65,25 @@ class Formation(Enum):
     None
 
     # LOCAL ATTRIBUTES:
-        *   square (str)
+        *   square_name (str)
         *   color (GameColor)
         *   name (str)
         *   roster_number (int)
-        *   rank_spec (Catalog)
+        *   rank_spec (Persona)
 
     # INHERITED ATTRIBUTES:
         * name (str) -->  Name give to each Enum entry.
     """
     def __new__(
             cls,
-            square: str,
+            square_name: str,
             color: GameColor,
             designation: str,
             roster_number: int,
             rank_spec: RankSpec,
     ):
         obj = object.__new__(cls)
-        obj._square = square
+        obj._square_name = square_name
         obj._color = color
         obj._designation = designation
         obj._roster_number = roster_number
@@ -101,7 +139,7 @@ class Formation(Enum):
     @property
     def square(self) -> str:
         """Name of the Square a piece makes its opening move from."""
-        return self._square
+        return self._square_name
     
     @property
     def rank_spec(self) -> RankSpec:

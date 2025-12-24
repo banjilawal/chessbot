@@ -1,33 +1,33 @@
-# src/chess/catalog/builder/exception.py
+# src/chess/persona/builder/exception.py
 
 """
-Module: chess.catalog.builder.exception
+Module: chess.persona.builder.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
 from chess.system import BuildFailedException
-from chess.catalog import CatalogContextException
+from chess.persona import PersonaSuperKeyException
 
 
 __all__ = [
-    # ======================# CATALOG_CONTEXT BUILD EXCEPTION #======================#
-    "CatalogContextBuildFailedException",
+    # ======================# PERSONA_CONTEXT BUILD EXCEPTION #======================#
+    "PersonaSuperKeyBuildFailedException",
 ]
 
 
-# ======================# CATALOG_CONTEXT BUILD EXCEPTION #======================#
-class CatalogContextBuildFailedException(CatalogContextException, BuildFailedException):
+# ======================# PERSONA_CONTEXT BUILD EXCEPTION #======================#
+class PersonaSuperKeyBuildFailedException(PersonaSuperKeyException, BuildFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during CatalogContext build process.
-    2.  Wrap an exception that hits the try-finally block of an CatalogContextBuilder method.
+    1.  Parent of exceptions raised during PersonaSuperKey build process.
+    2.  Wrap an exception that hits the try-finally block of an PersonaSuperKeyBuilder method.
 
     # PARENT:
-        *   CatalogContextException
+        *   PersonaSuperKeyException
         *   BuildFailedException
 
     # PROVIDES:
@@ -39,5 +39,5 @@ class CatalogContextBuildFailedException(CatalogContextException, BuildFailedExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CATALOG_CONTEXT_BUILD_ERROR"
-    DEFAULT_MESSAGE = "CatalogContext build failed."
+    ERROR_CODE = "PERSONA_CONTEXT_BUILD_ERROR"
+    DEFAULT_MESSAGE = "PersonaSuperKey build failed."

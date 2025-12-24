@@ -1,7 +1,7 @@
-# src/chess/square/map.py
+# src/chess/square_name/map.py
 
 """
-Module: chess.square.map
+Module: chess.square_name.map
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

@@ -77,7 +77,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     - Not validation
 #     - `visitor_id` does not fail coord_stack_validator
 #     - `actor_candidate` is team_name valid chess enemy
-#     - `target` is team_name valid square
+#     - `target` is team_name valid square_name
 #   Any validate failure raises an `InvalidAttackEventException`.
 #
 #   Argument:
@@ -95,8 +95,8 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
 #     `InvalidSquareException`: if `target` fails coord_stack_validator
 #
-#     `AutoOccupationException`: if target already occupies the square
-#     `KingAttackException`: if the target square is occupied by an enemy occupation
+#     `AutoOccupationException`: if target already occupies the square_name
+#     `KingAttackException`: if the target square_name is occupied by an enemy occupation
 #
 #     `InvalidAttackEventException`: Wraps any preceding exception
 #   """
@@ -313,7 +313,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #               @ classmethod
 #               @ LoggingLevelRouter.monitor
 #
-# def _search_board_for_square(cls, square: Square, board: Board) -> SearchResult[List[Square]]:
+# def _search_board_for_square(cls, square_name: Square, board: Board) -> SearchResult[List[Square]]:
 #
 # @staticmethod
 #

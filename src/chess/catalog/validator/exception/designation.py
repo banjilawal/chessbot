@@ -1,32 +1,32 @@
-# src/chess/catalog/validator/exception/designation.py
+# src/chess/persona/validator/exception/designation.py
 
 """
-Module: chess.catalog.validator.exception.designation
+Module: chess.persona.validator.exception.designation
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.catalog import InvalidCatalogException
+from chess.persona import InvalidPersonaException
 from chess.system import BoundsException, NameException
 
 
 __all__ = [
-    # ======================# CATALOG DESIGNATION BOUNDS EXCEPTION #======================#
-    "CatalogDesignationBoundsException",
+    # ======================# PERSONA DESIGNATION BOUNDS EXCEPTION #======================#
+    "PersonaDesignationBoundsException",
 ]
 
 
-# ======================# CATALOG DESIGNATION BOUNDS EXCEPTION #======================#
-class CatalogDesignationBoundsException(InvalidCatalogException, BoundsException, NameException):
+# ======================# PERSONA DESIGNATION BOUNDS EXCEPTION #======================#
+class PersonaDesignationBoundsException(InvalidPersonaException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a designation is outside the range of acceptable Catalog designations.
+    1.  Indicate an error occurred because a designation is outside the range of acceptable Persona designations.
 
     # PARENT:
-        *   InvalidCatalogException
+        *   InvalidPersonaException
         *   BoundsException
         *   NameException
 
@@ -39,5 +39,5 @@ class CatalogDesignationBoundsException(InvalidCatalogException, BoundsException
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CATALOG_DESIGNATION_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Designation is not included in the set of permissible catalog designations."
+    ERROR_CODE = "PERSONA_DESIGNATION_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "Designation is not included in the set of permissible persona designations."

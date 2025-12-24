@@ -46,7 +46,7 @@ class InvalidHouseException(HouseException, ValidationException):
 class TurnSceneActorSquareIsNullException(HouseException):
     """"""
     ERROR_CODE = "HOUSE_SQUARE_IS_NULL_ERROR"
-    DEFAULT_MESSAGE = "A House object cannot have a validation square."
+    DEFAULT_MESSAGE = "A House object cannot have a validation square_name."
 
 
 class NullHouseResidentException(HouseException):

@@ -81,7 +81,7 @@ class NullBlockingEventException(BlockingEventException, NullException):
 class ActorBlockingOwnSquareException(BlockingEventException):
   """"""
   ERROR_CODE = "ACTOR_BLOCKING_OWN_SQUARE_ERROR"
-  DEFAULT_MESSAGE = "Actor cannot block itself from its own square"
+  DEFAULT_MESSAGE = "Actor cannot block itself from its own square_name"
 
 class ActorSameAsBlockerException(BlockingEventException):
   """"""
@@ -140,7 +140,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 # THEME:
 # -----
-# **Comprehensive Domain Error Catalog.** The central theme is to provide team_name
+# **Comprehensive Domain Error Persona.** The central theme is to provide team_name
 # highly granular and hierarchical set of exception, ensuring that callers can
 # catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 # and the **affected graph** (e.g., `CoordException`). This enables precise error
@@ -232,7 +232,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # class ActorAlreadyAtDestinationException(TravelActorMovingException):
 #   """"""
 #   ERROR_CODE = "ACTOR_ALREADY_AT_DESTINATION_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate is already at the destination square. There is nn need to travel."
+#   DEFAULT_MESSAGE = "TravelEvent actor_candidate is already at the destination square_name. There is nn need to travel."
 #
 #
 # class DisabledUnRosteredPieceCannotActException(TravelActorMovingException):
@@ -272,7 +272,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   """"""
 #   ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"
 #   DEFAULT_MESSAGE = (
-#     "BoardSearch did not find a square associated with the actor_candidate's point. There may be a entity_service "
+#     "BoardSearch did not find a square_name associated with the actor_candidate's point. There may be a entity_service "
 #     "inconsistency."
 #   )
 #
@@ -280,7 +280,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # class SquareMisMatchesPieceException(TravelActorException, InconsistencyException):
 #   """"""
 #   ERROR_CODE = "SQUARE_MISMATCHES_TRAVEL_ACTOR_ERROR"
-#   DEFAULT_MESSAGE = "The square does not contain the actor_candidate. There may be a entity_service inconsistency."
+#   DEFAULT_MESSAGE = "The square_name does not contain the actor_candidate. There may be a entity_service inconsistency."
 #
 #
 #

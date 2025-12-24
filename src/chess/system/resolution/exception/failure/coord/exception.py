@@ -1,7 +1,7 @@
-# src/chess/system/resolution/exception/failure/square/exception.py
+# src/chess/system/resolution/exception/failure/square_name/exception.py
 
 """
-Module: chess.system.resolution.exception.failure.square.exception
+Module: chess.system.resolution.exception.failure.square_name.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -25,13 +25,13 @@ class ResolvingCoordConflictFailedException(ResolutionFailedException):
 
 
 class ResolvingSquareCoordConflictFailedException(ResolvingCoordConflictFailedException):
-    """Each square has a fixed unique square. Searching squares by their unique square attribute
+    """Each square_name has a fixed unique square_name. Searching squares by their unique square_name attribute
      should return a single hit. Raise this exception if SquareResolver leaves orphan squares that
       cannot be linked ot a game or a board. returned multiple hits."""
     DEFAULT_CODE = "SQUARE_COORD_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Square.square conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the Square.square_name conflict."
 
 
 class ResolvingPieceCoordConflictFailedException(ResolvingCoordConflictFailedException):
     DEFAULT_CODE = "PIECE_COORD_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Piece.square conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the Piece.square_name conflict."

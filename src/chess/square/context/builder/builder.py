@@ -1,7 +1,7 @@
-# src/chess/square/builder/builder.py
+# src/chess/square_name/builder/builder.py
 
 """
-Module: chess.square.builder.builder
+Module: chess.square_name.builder.builder
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

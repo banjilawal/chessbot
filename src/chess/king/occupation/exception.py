@@ -46,7 +46,7 @@ class InvalidKingOccupationEventException(KingOccupationEventException, Validati
 class OccupationDestinationNotEmptyException(KingOccupationEventException):
   """Raised by KingOccupationEventValidators if a candidate fails coord_stack_validator."""
   ERROR_CODE = "KING_OCCUPATION_EVENT_DESTINATION_NOT_EMPTY_ERROR"
-  DEFAULT_MESSAGE = "KingOccupationEvent destination square is not empty."
+  DEFAULT_MESSAGE = "KingOccupationEvent destination square_name is not empty."
   
 #=== ATTACK_EVENT BUILD EXCEPTION #======================#
 class AttackEventBuilderException(AttackEventException, BuilderException):
@@ -95,12 +95,12 @@ class BoardPieceRemovalRollbackException(AttackEventException, RollbackException
 
 class SquareOccupationRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "SQUARE_OCCUPATION_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to occupation target square after capture; rollback executed."
+  DEFAULT_MESSAGE = "Failed to occupation target square_name after capture; rollback executed."
 
 
 class SourceSquareRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "SOURCE_SQUARE_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to clear attacker's source square; rollback executed."
+  DEFAULT_MESSAGE = "Failed to clear attacker's source square_name; rollback executed."
 
 
 class PositionUpdateRollbackException(AttackEventException, RollbackException):

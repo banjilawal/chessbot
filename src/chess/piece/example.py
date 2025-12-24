@@ -235,10 +235,10 @@ Notes:
   in PieceValidator and related error classes. Piece objects are designed to be
   immutable in their core properties.
 """
-# src/chess/square/old_occupation_validator.py
+# src/chess/square_name/old_occupation_validator.py
 
 """
-Module: chess.square.coord_stack_validator
+Module: chess.square_name.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -269,7 +269,7 @@ DEPENDENCIES:
 ------------
 This module requires components from various sub-systems:
 * chess.bounds: Movement strategy (Rank)
-* chess.square: Location entity_service structure (Square)
+* chess.square_name: Location entity_service structure (Square)
 * chess.old_search: Board lookup utilities (BoardSearch)
 * chess.owner: Piece subtypes (KingPiece, CombatantPiece, etc.)
 * chess.team_name: Roster management, rollback_exception handling

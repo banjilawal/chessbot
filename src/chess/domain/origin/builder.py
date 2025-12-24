@@ -43,7 +43,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         # ACTION:
         Create a new DomainOrigin object that can be safely used in the system if and only if:
             1. turn_scene parameter has passed validation checks.
-            2. turn_scene parameter has verified owner and their square have the same Coord.
+            2. turn_scene parameter has verified owner and their square_name have the same Coord.
 
         # PARAMETERS:
             * candidate (int): the visitor_id.

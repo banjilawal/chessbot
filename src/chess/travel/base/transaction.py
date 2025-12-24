@@ -183,7 +183,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #
   # @classmethod
   # @LoggingLevelRouter.monitor
-  # def _search_board_for_square(cls, square: Square, board: Board) -> SearchResult[List[Square]]:
+  # def _search_board_for_square(cls, square_name: Square, board: Board) -> SearchResult[List[Square]]:
   #
   #
   # @staticmethod)

@@ -13,5 +13,5 @@ version: 1.0.0
 from .flag import *
 
 # Modules
-from .null import NullCatalogContextException
-from .base import InvalidCatalogContextException
+from .null import NullPersonaSuperKeyException
+from .base import InvalidPersonaSuperKeyException

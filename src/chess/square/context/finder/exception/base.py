@@ -1,7 +1,7 @@
-# src/chess/square/searcher/exception.py
+# src/chess/square_name/searcher/exception.py
 
 """
-Module: chess.square.searcher.exception
+Module: chess.square_name.searcher.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -54,12 +54,12 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
                     )
                 )
             
-            # Step 3: Remove the traveler from their old square.
+            # Step 3: Remove the traveler from their old square_name.
             self.event.actor_square.occupant = None
             
             """
             #Step 3.1
-            Cannot guarantee that traveler's previous square is empty. So the success condition is:
+            Cannot guarantee that traveler's previous square_name is empty. So the success condition is:
                 actor_previous_square.occupant != traveler.
             If the condition is not met then rollback the rollback and return the rollback_exception.
             """

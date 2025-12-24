@@ -1,32 +1,32 @@
-# src/chess/catalog/validator/exception/base.py
+# src/chess/persona/validator/exception/base.py
 
 """
-Module: chess.catalog.validator.exception.base
+Module: chess.persona.validator.exception.base
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.catalog import CatalogException
+from chess.persona import PersonaException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# CATALOG_CONTEXT VALIDATION EXCEPTION #======================#
-    "InvalidCatalogException",
+    # ======================# PERSONA_CONTEXT VALIDATION EXCEPTION #======================#
+    "InvalidPersonaException",
 ]
 
 
-# ======================# CATALOG VALIDATION EXCEPTION #======================#
-class InvalidCatalogException(CatalogException, ValidationFailedException):
+# ======================# PERSONA VALIDATION EXCEPTION #======================#
+class InvalidPersonaException(PersonaException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by CatalogValidation objects.
-    2.  Wrap an exception that hits the try-finally-block in CatalogValidator methods.
+    1.  Parent of exceptions raised by PersonaValidation objects.
+    2.  Wrap an exception that hits the try-finally-block in PersonaValidator methods.
 
     # PARENT:
-        *   CatalogException
+        *   PersonaException
         *   ValidationFailedException
 
     # PROVIDES:
@@ -38,5 +38,5 @@ class InvalidCatalogException(CatalogException, ValidationFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "_CATALOG_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Catalog validation failed."
+    ERROR_CODE = "_PERSONA_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "Persona validation failed."

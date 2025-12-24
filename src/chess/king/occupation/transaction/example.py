@@ -596,12 +596,12 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #
 # class SquareOccupationRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "SQUARE_OCCUPATION_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to occupation target square after capture; rollback executed."
+#   DEFAULT_MESSAGE = "Failed to occupation target square_name after capture; rollback executed."
 #
 #
 # class SourceSquareRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "SOURCE_SQUARE_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to clear attacker's source square; rollback executed."
+#   DEFAULT_MESSAGE = "Failed to clear attacker's source square_name; rollback executed."
 #
 #
 # class PositionUpdateRollbackException(AttackEventException, RollbackException):

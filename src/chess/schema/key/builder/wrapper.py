@@ -25,9 +25,10 @@ class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedExc
 
     # RESPONSIBILITIES:
     1.  Any failed check during the SchemaSuperKey build creates an exception. Failed check exceptions are encapsulated
-        in an SchemaSuperKeyBuildFailedException which is sent to the caller in a BuildResult.
+        in a SchemaSuperKeyBuildFailedException which is sent to the caller in a BuildResult.
     2.  The SchemaSuperKeyBuildFailedException provides a trace for debugging and application recovery.
-    
+        # RESPONSIBILITIES:
+
     # PARENT:
         *   BuildFailedException
         *   SchemaSuperKeyException

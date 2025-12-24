@@ -80,8 +80,8 @@ def _compute_developed_span(self, origin: Coord) -> [Coord]:
     """
     # BACKGROUND:
     Any opening moves develop by
-        *   Advancing one square forward.
-        *   Attacking one square forward then one diagonal square.
+        *   Advancing one square_name forward.
+        *   Attacking one square_name forward then one diagonal square_name.
 
     # Action
     1.  Call  by adding a vector of (0,1) to the origin.
@@ -113,7 +113,7 @@ def _compute_opening_span(self, origin: Coord) -> [Coord]:
     # BACKGROUND:
     Any opening moves develop by
         *   Advancing either one or two squares forward.
-        *   Attacking either one or two squares forward then one diagonal square.
+        *   Attacking either one or two squares forward then one diagonal square_name.
 
     # Action
     1.  Get the opening forward position by adding a vector of (0,2) to the origin.

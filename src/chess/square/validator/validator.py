@@ -1,7 +1,7 @@
-# src/chess/square/validator/validator.py
+# src/chess/square_name/validator/validator.py
 
 """
-Module: chess.square.validator
+Module: chess.square_name.validator
 Author: Banji Lawal
 Created: 2025-09-11
 """
@@ -122,7 +122,7 @@ class SquareValidator(Validator[Square]):
     ) -> ValidationResult[Square, Piece]:
         """
         # Action:
-        Verify there is a relationship between an actionable piece and a square before, they
+        Verify there is a relationship between an actionable piece and a square_name before, they
         are used in conjunction in the system.
 
         # Parameters:
@@ -143,10 +143,10 @@ class SquareValidator(Validator[Square]):
         # ACTION:
         1.  SquareValidator.validate runs integrity checks on square_candidate.
         2.  piece_service verifies piece_candidate is an disabled piece on the board.
-        3.  After casting the candidates into square and piece test square.target == piece.current_position.
-        4.  Test square.occupant == piece.
+        3.  After casting the candidates into square_name and piece test square_name.target == piece.current_position.
+        4.  Test square_name.occupant == piece.
         5   If any check fails, return the exception inside a ValidationResult.
-        6.  When all pass tuple(square, piece) to sender in a ValidationResult.
+        6.  When all pass tuple(square_name, piece) to sender in a ValidationResult.
 
         # PARAMETERS:
             *   candidate_square (Any): Object to validate as a Square.

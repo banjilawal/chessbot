@@ -128,7 +128,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             # Entry point into searching by designation value.
             if context.designation is not None:
                 return cls._lookup_by_designation(designation=context.designation)
-            # Entry point into searching by square value.
+            # Entry point into searching by square_name value.
             if context.square is not None:
                 return cls._lookup_by_square(square=context.square)
             # Entry point into searching by color value.
@@ -188,7 +188,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
     def _lookup_by_square(cls, name: str) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
-        1.  Get anyBattleOrder which matches the square's name.
+        1.  Get anyBattleOrder which matches the square_name's name.
 
         # Parameters:
             *   name (str)
@@ -209,7 +209,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no order has that square.
+            # If a match is not found return an exception. It's important to know if no order has that square_name.
             return SearchResult.failure(
                 OrderColorBoundsException(f"{method}: {OrderSquareBoundsException.DEFAULT_MESSAGE}")
             )

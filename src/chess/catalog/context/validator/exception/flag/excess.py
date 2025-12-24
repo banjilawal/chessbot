@@ -8,26 +8,26 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.catalog import InvalidCatalogContextException
+from chess.catalog import InvalidPersonaSuperKeyException
 
 __all__ = [
     # ========================= EXCESSIVE_CATALOG_CONTEXT_FLAG EXCEPTION =========================#
-    "ExcessiveCatalogContextFlagsException"
+    "ExcessivePersonaSuperKeyFlagsException"
 ]
 
 
 # ========================= EXCESSIVE_CATALOG_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveCatalogContextFlagsException(InvalidCatalogContextException, ContextFlagCountException):
+class ExcessivePersonaSuperKeyFlagsException(InvalidPersonaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  more than one CatalogContext flag was enabled. Only one Catalog attribute-value tuple can be used in
+    1.  Indicate That  more than one CatalogContext flag was enabled. Only one Persona attribute-value tuple can be used in
         a search.
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidCatalogContextException
+        *   InvalidPersonaSuperKeyException
 
     # PROVIDES:
     None

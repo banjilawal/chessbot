@@ -129,12 +129,12 @@ class BishopValidator(Validator[Bishop]):
         """
         # ACTION:
         1.  Verify candidate is a safe id using identity_service. If so convert to id. Else return failure.
-        2.  Check if id != Catalog.BISHOP.id. If not, return failure.
+        2.  Check if id != Persona.BISHOP.id. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Catalog)
+            *   rank_spec (Persona)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -179,12 +179,12 @@ class BishopValidator(Validator[Bishop]):
         """
         # ACTION:
         1.  Verify candidate is a safe designation using identity_service. If so convert to designation. Else return failure.
-        2.  Check if designation != Catalog.BISHOP.designation. If not, return failure.
+        2.  Check if designation != Persona.BISHOP.designation. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Catalog)
+            *   rank_spec (Persona)
             *   identity_service (IdentityService)
 
         # Returns:
@@ -228,12 +228,12 @@ class BishopValidator(Validator[Bishop]):
         """
         # ACTION:
         1.  Verify candidate is a safe number using not_negative_validator. If so convert to number. Else return failure.
-        2.  Check if ransom != Catalog.BISHOP.ransom. If not, return failure.
+        2.  Check if ransom != Persona.BISHOP.ransom. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Catalog)
+            *   rank_spec (Persona)
             *   not_negative_validator (NumberValidator)
 
         # Returns:
@@ -278,12 +278,12 @@ class BishopValidator(Validator[Bishop]):
         """
         # ACTION:
         1.  Verify candidate is a safe string using text_validator. If so convert to string. Else return failure.
-        2.  Check if string != Catalog.BISHOP.designation. If not, return failure.
+        2.  Check if string != Persona.BISHOP.designation. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Catalog)
+            *   rank_spec (Persona)
             *   text_validator (StringValidator)
 
         # Returns:
@@ -328,12 +328,12 @@ class BishopValidator(Validator[Bishop]):
         """
         # ACTION:
         1.  Verify candidate is a safe number using not_negative_validator. If so convert to number. Else return failure.
-        2.  Check if ransom != Catalog.BISHOP.team_quota. If not, return failure.
+        2.  Check if ransom != Persona.BISHOP.team_quota. If not, return failure.
         3.  If all checks pass the id in a success validation result.
 
         # PARAMETERS:
             *   candidate (Any)
-            *   rank_spec (Catalog)
+            *   rank_spec (Persona)
             *   not_negative_validator (NumberValidator)
 
         # Returns:

@@ -8,26 +8,26 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.catalog import InvalidCatalogContextException
+from chess.catalog import InvalidPersonaSuperKeyException
 
 
 __all__ = [
     # ========================= ZERO_CATALOG_CONTEXT_ENUM_TUPLES EXCEPTION =========================#
-    "ZeroCatalogContextEnumTuplesException",
+    "ZeroPersonaSuperKeyEnumTuplesException",
 ]
 
 
 # ========================= ZERO_CATALOG_CONTEXT_ENUM_TUPLES EXCEPTION =========================#
-class ZeroCatalogContextEnumTuplesException(InvalidCatalogContextException, ContextFlagCountException):
+class ZeroPersonaSuperKeyEnumTuplesException(InvalidPersonaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no CatalogContext flag is provided for a forward Catalog lookup.
+    1.  Indicate no CatalogContext flag is provided for a forward Persona lookup.
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidCatalogContextException
+        *   InvalidPersonaSuperKeyException
 
     # PROVIDES:
     None
@@ -38,5 +38,5 @@ class ZeroCatalogContextEnumTuplesException(InvalidCatalogContextException, Cont
     ERROR_CODE = "ZERO_CATALOG_CONTEXT_ENUM_TUPLES_ERROR"
     DEFAULT_MESSAGE = (
         "No CatalogContext flag was selected. A CatalogContext must be enabled with an attribute-value-tuple"
-        " to perform a forward Catalog entry lookup."
+        " to perform a forward Persona entry lookup."
     )

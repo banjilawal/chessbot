@@ -53,7 +53,7 @@ class FormationContextBuilder(Builder[FormationContext]):
     ) -> BuildResult[FormationContext]:
         """
         # Action:
-            1.  Confirm that only one in the (square, color, name, designation) tuple is not null.
+            1.  Confirm that only one in the (square_name, color, name, designation) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a FormationContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
@@ -61,7 +61,7 @@ class FormationContextBuilder(Builder[FormationContext]):
         # Parameters:
             Only one these must be provided:
                 *   name (Optional[str])
-                *   square (Optional[str])
+                *   square_name (Optional[str])
                 *   designation (Optional[str])
                 *   color (Optional[GameColor])
     
@@ -80,6 +80,21 @@ class FormationContextBuilder(Builder[FormationContext]):
             *   ExcessiveFormationContextFlagsException
         """
         method = "FormationContextBuilder.build"
+        """
+        # ACTION:.
+            1.  If the candidate passes existence and type checks cast into a Schema instance and return
+                in the ValidationResult. Else return an exception in the ValidationResult.
+        # PARAMETERS:
+            *   candidate (Any)
+        # RETURNS:
+            *   ValidationResult[Schema] containing either:
+                    - On failure: Exception.
+                    - On success: Schema in the payload.
+        # RAISES:
+            *   TypeError
+            *   NullSchemaException
+            *   InvalidSchemaException
+        """
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [designation, square, color]
@@ -113,7 +128,7 @@ class FormationContextBuilder(Builder[FormationContext]):
                 # On validation success return a designation_FormationContext in the BuildResult.
                 return BuildResult.success(FormationContext(designation=designation))
             
-            # Build the square FormationContext if its flag is enabled.
+            # Build the square_name FormationContext if its flag is enabled.
             if square is not None:
                 validation = identity_service.validate_name(candidate=square)
                 if validation.is_failure:
@@ -141,3 +156,43 @@ class FormationContextBuilder(Builder[FormationContext]):
                     ex=ex, message=f"{method}: {FormationContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(cls, candidate: Any) -> ValidationResult[Schema]:
+        """
+        # ACTION:.
+            1.  If the candidate passes existence and type checks cast into a Schema instance and return
+                in the ValidationResult. Else return an exception in the ValidationResult.
+        # PARAMETERS:
+            *   candidate (Any)
+        # RETURNS:
+            *   ValidationResult[Schema] containing either:
+                    - On failure: Exception.
+                    - On success: Schema in the payload.
+        # RAISES:
+            *   TypeError
+            *   NullSchemaException
+            *   InvalidSchemaException
+        """
+        method = "SchemaValidator.validate"
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                InvalidSchemaException(
+                    message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
+                    ex=NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, Schema):
+            # Return the exception chain on failure
+            return ValidationResult.failure(
+                InvalidSchemaException(
+                    message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
+                    ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
+                )
+            )
+        # On certification success return the schema instance in a ValidationResult.
+        return ValidationResult.success(payload=cast(Schema, candidate))

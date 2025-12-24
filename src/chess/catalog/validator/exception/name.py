@@ -22,7 +22,7 @@ class CatalogNameBoundsException(InvalidCatalogException, BoundsException, NameE
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a name is outside the range of acceptable Catalog names.
+    1.  Indicate an error occurred because a name is outside the range of acceptable Persona names.
 
     # PARENT:
         *   InvalidCatalogException

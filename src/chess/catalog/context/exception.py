@@ -1,32 +1,32 @@
-# src/chess/catalog/exception.py
+# src/chess/persona/exception.py
 
 """
-Module: chess.catalog.exception
+Module: chess.persona.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
 from chess.system import ContextException
-from chess.catalog import CatalogException
+from chess.persona import PersonaException
 
 __all__ = [
-    # ======================# CATALOG_CONTEXT EXCEPTION #======================#
-    "CatalogContextException",
+    # ======================# PERSONA_CONTEXT EXCEPTION #======================#
+    "PersonaSuperKeyException",
 ]
 
 
-# ======================# CATALOG_CONTEXT EXCEPTION #======================#
-class CatalogContextException(CatalogException, ContextException):
+# ======================# PERSONA_CONTEXT EXCEPTION #======================#
+class PersonaSuperKeyException(ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by CatalogContext objects.
-    2.  Catchall for conditions which are not covered by lower level CatalogContext exceptions.
+    1.  Parent of exceptions raised by PersonaContext objects.
+    2.  Catchall for conditions which are not covered by lower level PersonaContext exceptions.
 
     # PARENT:
-        *   CatalogException
+        *   PersonaException
         *   ContextException
 
     # PROVIDES:
@@ -38,5 +38,5 @@ class CatalogContextException(CatalogException, ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CATALOG_CONTEXT_ERROR"
-    DEFAULT_ERROR_CODE = "CatalogContext raised an exception."
+    ERROR_CODE = "PERSONA_CONTEXT_ERROR"
+    DEFAULT_ERROR_CODE = "PersonaContext raised an exception."

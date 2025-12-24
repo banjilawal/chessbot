@@ -223,7 +223,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
+**Comprehensive Domain Error Persona.** The central theme is to provide team_name
 highly granular and hierarchical set of exception, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `CoordException`). This enables precise error
@@ -345,7 +345,7 @@ class CapturedActorCannotMoveException(ActorException):
   A captured owner cannot move.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_MOVE_ERROR"
-  DEFAULT_MESSAGE = "A captured actor_candidate cannot move to team_name square."
+  DEFAULT_MESSAGE = "A captured actor_candidate cannot move to team_name square_name."
 
 
 class CapturedActorCannotScanException(ActorException):
@@ -353,7 +353,7 @@ class CapturedActorCannotScanException(ActorException):
   A captured owner cannot blocking.
   """
   ERROR_CODE = "CAPTURED_ACTOR_CANNOT_SCAN_ERROR"
-  DEFAULT_MESSAGE = "A captured actor_candidate cannot blocking team_name square."
+  DEFAULT_MESSAGE = "A captured actor_candidate cannot blocking team_name square_name."
 
 
 

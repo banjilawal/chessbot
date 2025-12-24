@@ -83,16 +83,14 @@ class SchemaSuperKey(Context[Schema]):
     
     def to_dict(self) -> dict:
         """
-        # Convert the SchemaSuperKey object to a dictionary.
-
+        # ACTION
+            1.  Convert the SchemaSuperKey object to a dictionary.
         # PARAMETERS:
-        None
-
-        # Returns:
-        dict
-
-        # Raises:
-        None
+            *   None
+        # RETURNS:
+            *   dict
+        # RAISES:
+            *   None
         """
         return {
             "name": self.name,

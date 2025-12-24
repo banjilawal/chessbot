@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/registration/square
+# src/chess/piece/validator/exception/registration/square_name
 
 """
-Module: chess.piece.validator.exception.registration.square
+Module: chess.piece.validator.exception.registration.square_name
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -22,7 +22,7 @@ class PieceNotRegisteredWithSquareException(PieceRegistrationException):
     # RESPONSIBILITIES:
     1.  Indicate that while the Piece has assigned itself to a Square instance but the Square
         has not registered the piece as its occupant.
-    2.  That is piece.coord == square.coord but square.occupant != piece.
+    2.  That is piece.coord == square_name.coord but square_name.occupant != piece.
 
     # PARENT:
         *   PieceRegistrationException

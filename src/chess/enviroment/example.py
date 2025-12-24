@@ -6,31 +6,31 @@
 # if resource_validation.is_failure():
 #   return ValidationResult(rollback_exception=resource_validation.rollback_exception)
 #
-# square = cast(Square, resource_validation.payload)
+# square_name = cast(Square, resource_validation.payload)
 #
-# # If the square has no position history its not on the board and cannot square.
-# if square.current_position is None or square.positions.is_empty():
+# # If the square_name has no position history its not on the board and cannot square_name.
+# if square_name.current_position is None or square_name.positions.is_empty():
 #   return ValidationResult(rollback_exception=NoInitialPlacementException(
 #     f"{method}: {NoInitialPlacementException.DEFAULT_MESSAGE}"
 #   ))
 #
-# # If the square is not on its team_name roster it cannot be a TravelEvent resource_candidate. This might have been
+# # If the square_name is not on its team_name roster it cannot be a TravelEvent resource_candidate. This might have been
 # # checked by the SquareValidator
-# team_name = square.team_name
-# if square not in team_name.roster:
+# team_name = square_name.team_name
+# if square_name not in team_name.roster:
 #   return ValidationResult(rollback_exception=ResourceNotOnRosterCannotMoveException(
 #     f"{method}: {ResourceNotOnRosterCannotMoveException.DEFAULT_MESSAGE}"
 #   ))
 #
 # # A captured combatant cannot be a TravelEvent resource_candidate. No need for validating a checkmated
 # # occupation as an resource_candidate because the game ends when a occupation is in checkmate.
-# if isinstance(square, CombatantSquare) and square.captor is not None:
+# if isinstance(square_name, CombatantSquare) and square_name.captor is not None:
 #   return ValidationResult(rollback_exception=CapturedResourceCannotMoveException(
 #     f"{method}: {CapturedResourceCannotMoveException.DEFAULT_MESSAGE}"
 #   ))
 #
-# if isinstance(square, KingSquare):
-#   king_square = cast(KingSquare, square)
+# if isinstance(square_name, KingSquare):
+#   king_square = cast(KingSquare, square_name)
 #   if king_square.is_checkmated:
 #     return ValidationResult(rollback_exception=CheckmatedKingCannotActException(
 #       f"{method}: {CheckmatedKingCannotActException.DEFAULT_MESSAGE}"
@@ -42,12 +42,12 @@
 #
 # board = cast(Board, environment_validation.payload)
 #
-# # Check if the square is on the board. If there is going to be a problem finding the square on
+# # Check if the square_name is on the board. If there is going to be a problem finding the square_name on
 # # the board an earlier check was likely to fail. If this fails there is probably a entity_service integrity
 # # or consistency problem.
 # square_search = BoardSquareFinder.searcher(
 #   board=board,
-#   map=TeamSearchContext(visitor_id=square.visitor_id
+#   map=TeamSearchContext(visitor_id=square_name.visitor_id
 # ))
 # if square_search.is_empty():
 #   return ValidationResult(rollback_exception=TravelResourceNotFoundException(
@@ -57,10 +57,10 @@
 # if square_search.is_failure():
 #   return ValidationResult(rollback_exception=square_search.rollback_exception)
 #
-# # Find the square associated with the square's last position.
+# # Find the square_name associated with the square_name's last position.
 # square_search = BoardSquareFinder.searcher(
 #   board=board,
-#   map=TeamSearchContext(point=square.current_position)
+#   map=TeamSearchContext(point=square_name.current_position)
 # )
 #
 # if square_search.is_empty():
@@ -71,12 +71,12 @@
 # if square_search.is_failure():
 #   return ValidationResult(rollback_exception=square_search.rollback_exception)
 #
-# # Just for safety cast the found square
-# square = cast(Square, square_search.payload[0])
+# # Just for safety cast the found square_name
+# square_name = cast(Square, square_search.payload[0])
 #
-# # If the square is not the square's occupant it cannot be a TravelEvent's resource_candidate. Data inconsistency
+# # If the square_name is not the square_name's occupant it cannot be a TravelEvent's resource_candidate. Data inconsistency
 # # or some other integrity problem is likely.
-# if square.occupant is not square:
+# if square_name.occupant is not square_name:
 #   return ValidationResult(rollback_exception=SquareMisMatchesTravelResourceException(
 #     f"{method}: {SquareMisMatchesTravelResourceException.DEFAULT_MESSAGE}"
 #   ))
@@ -98,7 +98,7 @@ falls to the `CoordValidator` and `CoordBuilder`processes.
 
 THEME:
 -----
-**Comprehensive Domain Error Catalog.** The central theme is to provide team_name
+**Comprehensive Domain Error Persona.** The central theme is to provide team_name
 highly granular and hierarchical set of exception, ensuring that callers can
 catch and handle errors based on both the **type of failure** (e.g., `NullException`)
 and the **affected graph** (e.g., `CoordException`). This enables precise error

@@ -9,16 +9,16 @@ version: 1.0.0
 
 
 from chess.system import NullException
-from chess.catalog import InvalidCatalogContextException
+from chess.catalog import InvalidPersonaSuperKeyException
 
 __all__ = [
     # ======================# CATALOG_CONTEXT NULL EXCEPTION #======================#
-    "NullCatalogContextException",
+    "NullPersonaSuperKeyException",
 ]
 
 
 # ======================# CATALOG_CONTEXT NULL EXCEPTION #======================#
-class NullCatalogContextException(InvalidCatalogContextException, NullException):
+class NullPersonaSuperKeyException(InvalidPersonaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class NullCatalogContextException(InvalidCatalogContextException, NullException)
     2.  Raised if an entity, method or operation requires an CatalogContext but receives null instead.
 
     # PARENT:
-        *   InvalidCatalogContextException
+        *   InvalidPersonaSuperKeyException
         *   NullException
 
     # PROVIDES:

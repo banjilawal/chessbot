@@ -56,7 +56,7 @@ class FailedEnemyRemovalFromSquareRolledBackException(RolledBackAttackTransactio
   """"""
   ERROR_CODE = "FAILED_PRISONER_REMOVAL_FROM_SQUARE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Removing a captured enemy from its square failed during an attack transaction. The transaction was "
+    "Removing a captured enemy from its square_name failed during an attack transaction. The transaction was "
     "rolled back before raising this exception."
   )
 

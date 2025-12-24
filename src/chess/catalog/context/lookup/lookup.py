@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import List, Optional, cast
 
 from chess.catalog import (
-    Catalog, CatalogContext, CatalogContextBuilder, CatalogContextValidator,
+    Catalog, CatalogContext, CatalogContextBuilder, PersonaSuperKeyValidator,
     CatalogDesignationBoundsException, CatalogLookupException, CatalogNameBoundsException,
     CatalogQuotaBoundsException, CatalogRansomBoundsException, CatalogValidator
 )
@@ -24,8 +24,8 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
     # ROLE: Forward Lookups, Mapping 
 
     # RESPONSIBILITIES:
-    1.  Lookup microservice API for mapping metadata values to Catalog configurations.
-    2.  Encapsulates integrity assurance logic for Catalog lookup operations.
+    1.  Lookup microservice API for mapping metadata values to Persona configurations.
+    2.  Encapsulates integrity assurance logic for Persona lookup operations.
     3.  Provide mapping between Catalogs and the Ranks.
 
     # PARENT:
@@ -48,7 +48,7 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             id: int = id_emitter.lookup_id,
             enum_validator: CatalogValidator = CatalogValidator(),
             context_builder: CatalogContextBuilder = CatalogContextBuilder(),
-            context_validator: CatalogContextValidator = CatalogContextValidator(),
+            context_validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator(),
     ):
         super().lookup(
             id=id,
@@ -60,7 +60,7 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
     
     @property
     def catalog_validator(self) -> CatalogValidator:
-        """Return an CatalogValidator."""
+        """Return an PersonaValidator."""
         return cast(CatalogValidator, self.enum_validator)
     
     @property
@@ -69,9 +69,9 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
         return cast(CatalogContextBuilder, self.context_builder)
     
     @property
-    def catalog_context_validator(self) -> CatalogContextValidator:
-        """Return an CatalogContextValidator."""
-        return cast(CatalogContextValidator, self.context_validator)
+    def catalog_context_validator(self) -> PersonaSuperKeyValidator:
+        """Return an PersonaSuperKeyValidator."""
+        return cast(PersonaSuperKeyValidator, self.context_validator)
     
     @property
     def allowed_names(self) -> List[str]:
@@ -106,7 +106,7 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
     
     @classmethod
     def catalog_from_rank(cls, rank: Rank) -> Optional[Catalog]:
-        """Get the Catalog from its corresponding Rank."""
+        """Get the Persona from its corresponding Rank."""
         if isinstance(rank, King): return Catalog.KING
         if isinstance(rank, Pawn): return Catalog.PAWN
         if isinstance(rank, Knight): return Catalog.KNIGHT
@@ -120,7 +120,7 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
     def lookup(
             cls,
             context: CatalogContext,
-            context_validator: CatalogContextValidator = CatalogContextValidator()
+            context_validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator()
     ) -> SearchResult[List[Catalog]]:
         """
         # Action:
@@ -130,11 +130,11 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
 
         # Parameters:
             *   map: CatalogContext
-            *   context_validator: CatalogContextValidator
+            *   context_validator: PersonaSuperKeyValidator
 
         # Returns:
-        SearchResult[List[Catalog]] containing either:
-            - On finding a match: List[Catalog] in the payload.
+        SearchResult[List[Persona]] containing either:
+            - On finding a match: List[Persona] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
@@ -179,14 +179,14 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
     def _lookup_by_name(cls, name: str) -> SearchResult[List[Catalog]]:
         """
         # Action:
-        1.  Get any Catalog which matches the target name.
+        1.  Get any Persona which matches the target name.
 
         # Parameters:
             *   name (str)
 
         # Returns:
-        SearchResult[List[Catalog]] containing either:
-            - On finding a match: List[Catalog] in the payload.
+        SearchResult[List[Persona]] containing either:
+            - On finding a match: List[Persona] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
@@ -216,14 +216,14 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
     def _lookup_by_designation(cls, designation: str) -> SearchResult[List[Catalog]]:
         """
         # Action:
-        1.  Get any Catalog which matches the target designation.
+        1.  Get any Persona which matches the target designation.
 
         # Parameters:
             *   name (str)
 
         # Returns:
-        SearchResult[List[Catalog]] containing either:
-            - On finding a match: List[Catalog] in the payload.
+        SearchResult[List[Persona]] containing either:
+            - On finding a match: List[Persona] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
@@ -259,8 +259,8 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             *   quota (int)
 
         # Returns:
-        SearchResult[List[Catalog]] containing either:
-            - On finding a match: List[Catalog] in the payload.
+        SearchResult[List[Persona]] containing either:
+            - On finding a match: List[Persona] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
@@ -290,14 +290,14 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
     def _lookup_by_ransom(cls, ransom: int) -> SearchResult[List[Catalog]]:
         """
         # Action:
-        1.  Get any Catalog which matches the target quota.
+        1.  Get any Persona which matches the target quota.
 
         # Parameters:
             *   ransom (int)
 
         # Returns:
-        SearchResult[List[Catalog]] containing either:
-            - On finding a match: List[Catalog] in the payload.
+        SearchResult[List[Persona]] containing either:
+            - On finding a match: List[Persona] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 

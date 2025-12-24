@@ -96,12 +96,12 @@ class Board:
     #     # Iterate from the top row (row 7) down to the bottom (row 0)
     #     for row in reversed(self._squares):
     #         row_str_parts = []
-    #         for square in row:
-    #             if square.occupant is not None:
-    #                 # Display the discover's visitor_name if the square is occupied.
-    #                 row_str_parts.append(f"[{square.occupant.designation}]")
+    #         for square_name in row:
+    #             if square_name.occupant is not None:
+    #                 # Display the discover's visitor_name if the square_name is occupied.
+    #                 row_str_parts.append(f"[{square_name.occupant.designation}]")
     #             else:
-    #                 # Display the square's visitor_name in brackets if it's empty.
-    #                 row_str_parts.append(f"[{square.designation}]")
+    #                 # Display the square_name's visitor_name in brackets if it's empty.
+    #                 row_str_parts.append(f"[{square_name.designation}]")
     #         string += " ".join(row_str_parts) + "\n"
     #     return string.strip()

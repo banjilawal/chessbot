@@ -1,32 +1,32 @@
-# src/chess/catalog/validator/exception/quota.py
+# src/chess/persona/validator/exception/quota.py
 
 """
-Module: chess.catalog.validator.exception.quota
+Module: chess.persona.validator.exception.quota
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
 from chess.system import BoundsException
-from chess.catalog import InvalidCatalogException
+from chess.persona import InvalidPersonaException
 
 
 __all__ = [
-    # ======================# CATALOG QUOTA BOUNDS EXCEPTION #======================#
-    "CatalogQuotaBoundsException",
+    # ======================# PERSONA QUOTA BOUNDS EXCEPTION #======================#
+    "PersonaQuotaBoundsException",
 ]
 
 
-# ======================# CATALOG QUOTA BOUNDS EXCEPTION #======================#
-class CatalogQuotaBoundsException(InvalidCatalogException, BoundsException):
+# ======================# PERSONA QUOTA BOUNDS EXCEPTION #======================#
+class PersonaQuotaBoundsException(InvalidPersonaException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a designation is outside the range of acceptable Catalog quotas.
+    1.  Indicate an error occurred because a designation is outside the range of acceptable Persona quotas.
 
     # PARENT:
-        *   InvalidCatalogException
+        *   InvalidPersonaException
         *   BoundsException
 
     # PROVIDES:
@@ -38,5 +38,5 @@ class CatalogQuotaBoundsException(InvalidCatalogException, BoundsException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CATALOG_QUOTA_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Quota is not included in the set of permissible catalog quotas."
+    ERROR_CODE = "PERSONA_QUOTA_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "Quota is not included in the set of permissible persona quotas."

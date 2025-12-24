@@ -107,12 +107,12 @@ class OrderContextValidator(Validator[OrderContext]):
                 # On certification success return the battle_order.designation map in a ValidationResult.
                 return ValidationResult.success(context)
             
-            # Certification for the search-by-square target.
+            # Certification for the search-by-square_name target.
             if context.square is not None:
                 validation = identity_service.validate_name(candidate=context.square)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_order.square map in a ValidationResult.
+                # On certification success return the battle_order.square_name map in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-color target.

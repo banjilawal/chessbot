@@ -57,7 +57,7 @@ class King(Rank):
     def compute_span(self, piece: Piece) -> [Coord]:
         """
         # BACKGROUND:
-        Kings move in a radius of one square.
+        Kings move in a radius of one square_name.
         # Action
         1.  Get the points in a unit circle around the origin.
         2.  Return the list.

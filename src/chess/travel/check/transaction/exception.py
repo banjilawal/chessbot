@@ -46,7 +46,7 @@ class FailedPrisonerRemovalFromSquareRolledBackException(AttackTransactionExcept
   """"""
   ERROR_CODE = "FAILED_PRISONER_REMOVAL_FROM_SQUARE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Removing a captured owner from the square it was occupying failed during a notification. The notification "
+    "Removing a captured owner from the square_name it was occupying failed during a notification. The notification "
     "was rolled back before this rollback_exception was raised."
   )
 

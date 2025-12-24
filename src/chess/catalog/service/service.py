@@ -10,18 +10,18 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import EntityService, id_emitter
-from chess.catalog import CatalogContext, CatalogContextBuilder, CatalogContextValidator, CatalogLookup
+from chess.catalog import CatalogContext, CatalogContextBuilder, PersonaSuperKeyValidator, CatalogLookup
 
 class CatalogService(EntityService[CatalogContext]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Catalog search microservice API.
-    2.  Provides a map aware utility for searching Catalog objects.
+    1.  Public facing Persona search microservice API.
+    2.  Provides a map aware utility for searching Persona objects.
     3.  Encapsulate integrity assurance logic in one extendable module.
-    4.  Create a single source of truth for Catalog search results by having single entry and exit points for the
-        Catalog search flow.
+    4.  Create a single source of truth for Persona search results by having single entry and exit points for the
+        Persona search flow.
 
     # PARENT:
         *   ContextService
@@ -44,7 +44,7 @@ class CatalogService(EntityService[CatalogContext]):
             id: int = id_emitter.service_id,
             lookup: CatalogLookup = CatalogLookup(),
             builder: CatalogContextBuilder = CatalogContextBuilder(),
-            validator: CatalogContextValidator = CatalogContextValidator(),
+            validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator(),
     ):
         """
         # Action:
@@ -55,7 +55,7 @@ class CatalogService(EntityService[CatalogContext]):
             *   name (str)
             *   lookup (CatalogLookup)
             *   builder (CatalogContextBuilder)
-            *   validator (CatalogContextValidator))
+            *   validator (PersonaSuperKeyValidator))
 
         # Returns:
         None
@@ -77,6 +77,6 @@ class CatalogService(EntityService[CatalogContext]):
         return cast(CatalogContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> CatalogContextValidator:
-        """Gets CatalogContextValidator instance."""
-        return cast(CatalogContextValidator, self.entity_validator)
+    def validator(self) -> PersonaSuperKeyValidator:
+        """Gets PersonaSuperKeyValidator instance."""
+        return cast(PersonaSuperKeyValidator, self.entity_validator)

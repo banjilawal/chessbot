@@ -1,7 +1,7 @@
-# src/chess/square/builder/exception.py
+# src/chess/square_name/builder/exception.py
 
 """
-Module: chess.square.builder.exception
+Module: chess.square_name.builder.exception
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
