@@ -12,16 +12,33 @@ from chess.system import BuildFailedException
 from chess.piece import PieceContextException
 
 __all__ = [
-    #======================# PIECECONTEXT BUILD EXCEPTION #======================#
+    # ======================# PIECE_CONTEXT_BUILD_FAILED EXCEPTION #======================#
     "PieceContextBuildFailedException",
 ]
 
 
-#======================# PIECECONTEXT BUILD EXCEPTION #======================#
+# ======================# PIECE_CONTEXT_BUILD_FAILED EXCEPTION #======================#
 class PieceContextBuildFailedException(PieceContextException, BuildFailedException):
     """
-    Catchall/wrapper exception for when a condition not handled directly by PieceContextBuilder 
-    prevents successful PieceContext creation.
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Any failed check during the PieceContext build creates an exception. Failed check exceptions are encapsulated
+        in an PieceContextBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The PieceContextBuildFailedException provides a trace for debugging and application recovery.tion recovery.
+
+    # PARENT:
+        *   PieceContextException
+        *   BuildFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     ERROR_CODE = "PIECE_CONTEXT_BUILD_FAILED_ERROR"
     DEFAULT_MESSAGE = "PieceContext build failed."
