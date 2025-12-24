@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 
-# ======================# Board_BUILD_FAILED EXCEPTION #======================#
+# ======================# BOARD_BUILD_FAILED EXCEPTION #======================#
 class BoardBuildFailedException(BoardException, BuildFailedException):
     """
     # ROLE: Exception Wrapper
