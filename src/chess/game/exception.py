@@ -18,14 +18,10 @@ __all__ = [
 # ======================# GAME EXCEPTION #======================#
 class GameException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised when a Game's organic fields or methods run into a condition that
-        leads to an operation failing.
-    2.  Parent of exception raised by Game Builders and Validators or any other classes that highly
-        cohere with Game objects.
-    3.  Catchall for Game errors not covered by lower level  Game exception.
+    1.  Catchall for Game errors not covered by GameException subclasses.
 
     # PARENT:
         *   ChessException

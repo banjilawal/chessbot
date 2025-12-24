@@ -18,14 +18,10 @@ __all__ = [
 # ======================# AGENT EXCEPTION #======================#
 class AgentException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised when a Agent's organic fields or methods run into a condition that
-        leads to an operation failing.
-    2.  Parent of exception raised by Agent Builders and Validators or any other classes that highly
-        cohere with Agent objects.
-    3.  Catchall for Agent errors not covered by lower level  Agent exception.
+    1.  Catchall for Agent errors not covered by AgentException subclasses.
 
     # PARENT:
         *   ChessException
@@ -38,8 +34,6 @@ class AgentException(ChessException):
     """
     ERROR_CODE = "AGENT_ERROR"
     DEFAULT_MESSAGE = "Agent raised an exception."
-
-
 #
 # #======================# PLAYER_AGENT_HISTORY EXCEPTION #======================#
 # class PlayerAgentHistoryException(PlayerAgentException):

@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.system.err import ChessException
 
 __all__ = [
-    # ======================# SCHEMA_SCHEMA EXCEPTION #======================#
+    # ======================# SCHEMA EXCEPTION #======================#
     "SchemaException",
 ]
 
@@ -18,10 +18,10 @@ __all__ = [
 # ======================# SCHEMA EXCEPTION #======================#
 class SchemaException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for conditions which are not covered by SchemaException subclasses.
+    1.  Catchall for Schema errors not covered by SchemaException subclasses.
 
     # PARENT:
         *   ChessException
@@ -29,11 +29,8 @@ class SchemaException(ChessException):
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
+    # ATTRIBUTES:
     None
     """
     ERROR_CODE = "SCHEMA_ERROR"
-    DEFAULT_ERROR_CODE = "Schema raised an exception."
+    DEFAULT_MESSAGE = "Schema raised an exception."

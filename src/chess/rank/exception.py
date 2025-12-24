@@ -9,40 +9,28 @@ version: 1.0.0
 
 from chess.system import ChessException, BuildFailedException, NullException
 
-__all__ = [
-    #======================# RANK EXCEPTION #======================#
+___all__ = [
+    # ======================# RANK EXCEPTION #======================#
     "RankException",
-    #======================# RANK VALIDATION EXCEPTION #======================#
-    "NullRankException",
-    #======================# RANK BUILD EXCEPTION #======================#
-    "RankBuildFailedException",
-    #======================# RANK MOVING EXCEPTION #======================#
-    "ImproperMoveException",
 ]
 
 
-#======================# RANK EXCEPTION #======================#
+# ======================# RANK EXCEPTION #======================#
 class RankException(ChessException):
     """
-    Super class of exception raised by Rank objects. Do not use directly.
-    Subclasses give precise, fined-grained, debugging info.
+    # ROLE: Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Catchall for Rank errors not covered by RankException subclasses.
+
+    # PARENT:
+        *   ChessException
+
+    # PROVIDES:
+    None
+
+    # ATTRIBUTES:
+    None
     """
     ERROR_CODE = "RANK_ERROR"
     DEFAULT_MESSAGE = "Rank raised an exception."
-
-class NullRankException(RankException, NullException):
-    ERROR_CODE = "NULL_RANK_ERROR"
-    DEFAULT_MESSAGE = "Rank cannot be null."
-
-
-class RankBuildFailedException(RankException, BuildFailedException):
-    """Catchall exception for when RankFactory encounters an error during a Rank build."""
-    ERROR_CODE = "RANK_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Rank build failed."
-
-
-#======================# RANK MOVING EXCEPTION #======================#
-class ImproperMoveException(RankException):
-    """Raised when a Rank's moving rules prevent a Token from getting to a position."""
-    ERROR_CODE = "IMPROPER_MOVE_ERROR"
-    DEFAULT_MESSAGE = "Improper move."

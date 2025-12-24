@@ -10,18 +10,18 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    # ========================= PERSONA EXCEPTION =========================#
+    # ======================# PERSONA EXCEPTION #======================#
     "PersonaException",
 ]
 
 
-# ========================= PERSONA EXCEPTION =========================#
+# ======================# PERSONA EXCEPTION #======================#
 class PersonaException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for conditions which are not covered by Persona subclasses.
+    1.  Catchall for Persona errors not covered by PersonaException subclasses.
 
     # PARENT:
         *   ChessException
@@ -29,10 +29,7 @@ class PersonaException(ChessException):
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
+    # ATTRIBUTES:
     None
     """
     ERROR_CODE = "PERSONA_ERROR"

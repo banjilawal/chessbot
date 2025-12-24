@@ -10,7 +10,7 @@ from chess.system import ServiceException
 # ======================# FORMATION_SUPER_KEY_SERVICE EXCEPTION #======================#
 class FormationSuperKeyServiceException(FormationSuperKeyException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an FormationSuperKeyService encountered an error which prevented the service from completing a task.

@@ -7,42 +7,33 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
-from chess.system import ChessException, NullException, ValidationException, BuildFailedException
-
+from chess.system import ChessException
 
 __all__ = [
+  # ======================# VECTOR EXCEPTION #======================#
   "VectorException",
-
-#====================== NULL VECTOR EXCEPTION #======================#
-  "NullVectorException",
-  
-#====================== VECTOR VALIDATION EXCEPTION #======================#
-  "InvalidVectorException",
-
-#====================== VECTOR BUILD EXCEPTION #======================#
-  "VectorBuildFailedException",
-
-#====================== NULL COMPONENT EXCEPTION #======================#
-  "VectorAboveBoundsException",
-  "VectorBelowBoundsException",
-
-#====================== VECTOR BOUNDS EXCEPTION #======================#
-  "NullXComponentException",
-  "NullYComponentException",
 ]
 
+
+# ======================# VECTOR EXCEPTION #======================#
 class VectorException(ChessException):
   """
-  Super class of exception raised by Scalar objects. Do not use directly. Subclasses give
-  precise, fined-grained, debugging info.
+  # ROLE: Catchall Exception
+
+  # RESPONSIBILITIES:
+  1.  Catchall for Vector errors not covered by VectorException subclasses.
+
+  # PARENT:
+      *   ChessException
+
+  # PROVIDES:
+  None
+
+  # ATTRIBUTES:
+  None
   """
   ERROR_CODE = "VECTOR_ERROR"
   DEFAULT_MESSAGE = "Vector raised an exception."
-
-
-
-#====================== NULL VECTOR EXCEPTION #======================#
-
 
 
 

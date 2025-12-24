@@ -14,10 +14,7 @@ None
 
 # Modules
 from .null import NullPersonaException
-from .base import InvalidPersonaException
-from .name import PersonaNameBoundsException
-from .quota import PersonaQuotaBoundsException
-from .ransom import PersonaRansomBoundsException
-from .designation import PersonaDesignationBoundsException
+from .wrapper import InvalidPersonaException
+from .route import PersonValidationRouteException
 
 

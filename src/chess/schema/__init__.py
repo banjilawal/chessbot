@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 from .key import *
-from .lookup import *
 from .validator import *
 from .service import *
 

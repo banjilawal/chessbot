@@ -10,19 +10,18 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-  # ====================== ARENA EXCEPTION #======================#
-  'ArenaException',
+  # ======================# ARENA EXCEPTION #======================#
+  "ArenaException",
 ]
 
 
-# ====================== ARENA EXCEPTION #======================#
+# ======================# ARENA EXCEPTION #======================#
 class ArenaException(ChessException):
   """
-  # ROLE: Exception Wrapper, Catchall Exception
+  # ROLE: Catchall Exception
 
   # RESPONSIBILITIES:
-  1.  Parent of exception raised by Arena objects.
-  2.  Catchall for conditions which are not covered by lower level Arena exception.
+  1.  Catchall for Arena errors not covered by ArenaException subclasses.
 
   # PARENT:
       *   ChessException
@@ -30,10 +29,7 @@ class ArenaException(ChessException):
   # PROVIDES:
   None
 
-  # LOCAL ATTRIBUTES:
-  None
-
-  # INHERITED ATTRIBUTES:
+  # ATTRIBUTES:
   None
   """
   ERROR_CODE = "ARENA_ERROR"

@@ -10,19 +10,18 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-  # ====================== BOARD EXCEPTION #======================#
-  'BoardException',
+  # ======================# BOARD EXCEPTION #======================#
+  "BoardException",
 ]
 
 
-# ====================== BOARD EXCEPTION #======================#
+# ======================# BOARD EXCEPTION #======================#
 class BoardException(ChessException):
   """
-  # ROLE: Exception Wrapper, Catchall Exception
+  # ROLE: Catchall Exception
 
   # RESPONSIBILITIES:
-  1.  Parent of exception raised by Board objects.
-  2.  Catchall for conditions which are not covered by lower level Board exception.
+  1.  Catchall for Board errors not covered by BoardException subclasses.
 
   # PARENT:
       *   ChessException
@@ -30,10 +29,7 @@ class BoardException(ChessException):
   # PROVIDES:
   None
 
-  # LOCAL ATTRIBUTES:
-  None
-
-  # INHERITED ATTRIBUTES:
+  # ATTRIBUTES:
   None
   """
   ERROR_CODE = "BOARD_ERROR"

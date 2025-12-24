@@ -15,7 +15,5 @@ None
 # Modules
 from .null import NullSchemaException
 from .wrapper import InvalidSchemaException
-from .name import SchemaNameBoundsException
-from .color import SchemaColorBoundsException
-from .route import SchemValidationRouteException
+from .route import SchemValidationUnhandledRouteException
 

@@ -7,23 +7,19 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-
 __all__ = [
     # ======================# SQUARE EXCEPTION #======================#
     "SquareException",
 ]
 
-from chess.system.err import ChessException
-
 
 # ======================# SQUARE EXCEPTION #======================#
 class SquareException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by Square objects.
-    2.  Catchall for conditions which are not covered by lower level Square exception.
+    1.  Catchall for Square errors not covered by SquareException subclasses.
 
     # PARENT:
         *   ChessException
@@ -31,11 +27,8 @@ class SquareException(ChessException):
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
+    # ATTRIBUTES:
     None
     """
     ERROR_CODE = "SQUARE_ERROR"
-    DEFAULT_ERROR_CODE = "Square raised an exception."
+    DEFAULT_MESSAGE = "Square raised an exception."

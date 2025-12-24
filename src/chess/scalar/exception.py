@@ -10,23 +10,27 @@ version: 1.0.0
 from chess.system import ChessException, NullException
 
 __all__ = [
+  # ======================# SCALAR EXCEPTION #======================#
   "ScalarException",
-  
-#======================# SCALAR VALIDATION EXCEPTION #======================#  
-  "NullScalarException",
 ]
 
+
+# ======================# SCALAR EXCEPTION #======================#
 class ScalarException(ChessException):
   """
-  Super class of exception raised by Scalar objects. Do not use directly. Subclasses give
-  precise, fined-grained, debugging info.
+  # ROLE: Catchall Exception
+
+  # RESPONSIBILITIES:
+  1.  Catchall for Scalar errors not covered by ScalarException subclasses.
+
+  # PARENT:
+      *   ChessException
+
+  # PROVIDES:
+  None
+
+  # ATTRIBUTES:
+  None
   """
   ERROR_CODE = "SCALAR_ERROR"
   DEFAULT_MESSAGE = "Scalar raised an exception."
-  
-
-#======================# NULL SCALAR EXCEPTION #======================#
-class NullScalarException(ScalarException, NullException):
-  """Raised if an entity, method, or operation requires Scalar but gets null instead."""
-  ERROR_CODE = "NULL_SCALAR_ERROR"
-  DEFAULT_MESSAGE = "Scalar cannot be null."

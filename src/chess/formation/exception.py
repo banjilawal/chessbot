@@ -10,17 +10,18 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
+    # ======================# FORMATION EXCEPTION #======================#
     "FormationException",
 ]
 
 
+# ======================# FORMATION EXCEPTION #======================#
 class FormationException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by Formation objects.
-    2.  Catchall for conditions which are not covered by lower level Formation exceptions.
+    1.  Catchall for Formation errors not covered by FormationException subclasses.
 
     # PARENT:
         *   ChessException
@@ -28,10 +29,7 @@ class FormationException(ChessException):
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
+    # ATTRIBUTES:
     None
     """
     ERROR_CODE = "FORMATION_ERROR"
