@@ -11,22 +11,23 @@ from chess.system import BuildFailedException
 from chess.formation import OrderContextException
 
 __all__ = [
-    # ======================# TEAM_SCHEMA_SUPER_KEY BUILD EXCEPTION #======================#
-    "OrderContextBuildFailedException",
+    # ======================# FORMATION_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+    "FormationContextBuildFailedException",
 ]
 
 
-# ======================# TEAM_SCHEMA_SUPER_KEY BUILD EXCEPTION #======================#
-class OrderContextBuildFailedException(OrderContextException, BuildFailedException):
+# ======================# FORMATION_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+class FormationContextBuildFailedException(FormationContextException, BuildFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during OrderContext build process.
-    2.  Wrap an exception that hits the try-finally block of an OrderContextBuilder method.
+    1.  Any failed check during the FormationContext build creates an exception. Failed check exceptions are encapsulated
+        in an FormationContextBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The FormationContextBuildFailedException provides a trace for debugging and application recovery.tion recovery.
 
     # PARENT:
-        *   FormationSuperKeyException
+        *   FormationContextException
         *   BuildFailedException
 
     # PROVIDES:
@@ -38,5 +39,5 @@ class OrderContextBuildFailedException(OrderContextException, BuildFailedExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SCHEMA_SUPER_KEY_BUILD_ERROR"
-    DEFAULT_MESSAGE = "OrderContext build failed."
+    ERROR_CODE = "FORMATION_CONTEXT_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "FormationContext build failed."
