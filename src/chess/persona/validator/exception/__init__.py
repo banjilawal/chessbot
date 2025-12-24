@@ -15,6 +15,5 @@ None
 # Modules
 from .null import NullPersonaException
 from .wrapper import InvalidPersonaException
-from .route import PersonValidationRouteException
 
 

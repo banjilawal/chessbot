@@ -7,13 +7,13 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.catalog import PersonaSuperKeyException
-from chess.system import ValidationFailedException
-
 __all__ = [
     # ======================# PERSONA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidPersonaSuperKeyException",
 ]
+
+from chess.persona import PersonaSuperKeyException
+from chess.system import ValidationFailedException
 
 
 # ======================# PERSONA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
