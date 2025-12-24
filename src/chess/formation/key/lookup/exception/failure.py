@@ -7,22 +7,25 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.formation import InvalidFormationException
+from chess.formation import FormationException
 from chess.system import LookupFailedException
 
 __all__ = [
-    # ======================# ORDER LOOKUP FAILED EXCEPTION #======================#
-    "OrderLookupFailedException",
+    # ======================# FORMATION_LOOKUP_FAILURE EXCEPTION #======================#
+    "FormationLookupFailedException",
 ]
 
 
-# ======================# ORDER LOOKUP FAILED EXCEPTION #======================#
-class OrderLookupFailedException(InvalidFormationException, LookupFailedException):
+# ======================# FORMATION_LOOKUP_FAILURE EXCEPTION #======================#
+class FormationLookupFailedException(FormationException, LookupFailedException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: ExceptionWrapper, Encapsulation
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a lookup is outside the range of acceptable Formation lookups.
+    1.  If a Formation lookup runs into an error a debug exception is created and encapsulated in a
+        FormationLookupFailedException creating an exception chain which is sent to the caller in a
+        SearchResult.
+    2.  The FormationLookupFailedException chain is useful for tracing a failure to its source.
 
     # PARENT:
         *   InvalidFormationException
@@ -37,6 +40,6 @@ class OrderLookupFailedException(InvalidFormationException, LookupFailedExceptio
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ORDER_LOOKUP_FAILED_ERROR"
-    DEFAULT_MESSAGE = "ForwardLookup failed failed because there is no configuration property includes that value."
+    ERROR_CODE = "FORMATION_LOOKUP_FAILURE"
+    DEFAULT_MESSAGE = "Formation lookup failed."
 

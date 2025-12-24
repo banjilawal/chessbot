@@ -114,7 +114,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   OrderLookupFailedException
+            *   FormationLookupFailedException
             *   FormationLookupException
         """
         method = "BattleOrderLookup.find"

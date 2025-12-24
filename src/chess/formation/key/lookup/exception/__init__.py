@@ -17,4 +17,4 @@ from .base import FormationLookupException
 from .color import OrderColorBoundsException
 from .name import OrderNameBoundsException
 from .square import OrderSquareBoundsException
-from .failure import OrderLookupFailedException
+from .failure import FormationLookupFailedException
