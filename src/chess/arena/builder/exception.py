@@ -19,11 +19,12 @@ __all__ = [
 #======================# ARENA_BUILD_FAILED EXCEPTION #======================#
 class ArenaBuildFailedException(ArenaException, BuildFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised during Arena build process.
-    2.  Wraps an exception that hits the try-finally block of an ArenaBuilder method.
+    1.  Any failed check during the Arena build creates an exception. Failed check exceptions are encapsulated
+        in an ArenaBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The ArenaBuildFailedException provides a trace for debugging and application recovery.tion recovery.
 
     # PARENT:
         *   ArenaException
@@ -34,9 +35,9 @@ class ArenaBuildFailedException(ArenaException, BuildFailedException):
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_BUILD_ERROR"
-    DEFAULT_ERROR_CODE = "Arena build failed."
+    ERROR_CODE = "Arena_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "Arena build failed."

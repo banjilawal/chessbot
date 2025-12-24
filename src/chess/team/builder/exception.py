@@ -20,12 +20,12 @@ __all__ = [
 # ======================# TEAM_BUILD_FAILED EXCEPTION #======================#
 class TeamBuildFailedException(TeamException, BuildFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the TeamContext build creates an exception. Failed check exceptions are encapsulated
-        in an TeamContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The TeamContextBuildFailedException provides a trace for debugging and application recovery.tion recovery.
+    1.  Any failed check during the Team build creates an exception. Failed check exceptions are encapsulated
+        in an TeamBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The TeamBuildFailedException provides a trace for debugging and application recovery.tion recovery.
 
     # PARENT:
         *   TeamException
