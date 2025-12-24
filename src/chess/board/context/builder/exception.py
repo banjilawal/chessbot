@@ -12,72 +12,34 @@ from chess.system import (
     BuildFailedException, ValidationException,
 )
 
-__all__ = [
-    "BoardSearchContextException",
-    
-#========================= NULL BOARD_SEARCH_CONTEXT EXCEPTION =========================#
-    "NullBoardContextException",
-    
-#========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTION =========================#
-    "InvalidBoardSearchContextException",
-    "NoBoardSearchOptionSelectedException",
-    "MoreThanOneBoardSearchOptionPickedException",
-    
-#========================= BOARD_SEARCH_CONTEXT BUILD EXCEPTION =========================#
+___all__ = [
+    # ======================# BOARD_CONTEXT_BUILD_FAILED EXCEPTION #======================#
     "BoardContextBuildFailedException",
 ]
 
 
-class BoardSearchContextException(ContextException):
+# ======================# BOARD_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+class BoardContextBuildFailedException(BoardContextException, BuildFailedException):
     """
-    Super class of exception raised by TeamSearchContext objects.
-    Do not use directly. Subclasses give precise, fined-grained, debugging info.
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Any failed check during the BoardContext build creates an exception. Failed check exceptions are encapsulated
+        in an BoardContextBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The BoardContextBuildFailedException provides a trace for debugging and application recovery.
+
+    # PARENT:
+        *   BoardContextException
+        *   BuildFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
-    ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext raised an exception."
-
-
-#========================= NULL_BOARD_CONTEXT EXCEPTION =========================#
-class NullBoardContextException(BoardContextException, NullException):
-    """Raised if an entity, method, or operation requires Board but gets null instead."""
-    ERROR_CODE = "NULL_BOARD_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext cannot be validation"
-
-
-#========================= BOARD_SEARCH_CONTEXT VALIDATION EXCEPTION =========================#
-class InvalidBoardSearchContextException(
-    BoardSearchContextException,
-    ValidationException
-):
-    """Catchall Exception for BoardSearchContextValidator when a candidate fails a sanity check.""""""
-    ERROR_CODE = "BOARD_SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext validation failed."
-
-
-class NoBoardSearchOptionSelectedException(
-    BoardSearchContextException,
-    NoBuildOptionSelectedException
-):
-    """"""
-    ERROR_CODE = "NO_BOARD_SEARCH_OPTION_SELECTED_ERROR"
-    DEFAULT_MESSAGE = "None of the TeamSearchContext options wre selected. An option must be picked."
-
-
-class MoreThanOneBoardSearchOptionPickedException(
-    BoardSearchContextException,
-    BuildOptionSelectionTooLargeException
-):
-    """
-    ERROR_CODE = "TOO_MANY_BOARD_SEARCH_OPTIONS_ERROR"
-    DEFAULT_MESSAGE = "Only one TeamSearchContext option can be selected."
-
-
-#========================= BOARD_CONTEXT_BUILD EXCEPTION =========================#
-class BoardContextBuildFailedException(BoardSearchContextException, BuildFailedException):
-    """
-    Catchall Exception for BoardSearchContextBuilder when it encounters an error building
-    a TeamSearchContext.
-    """
-    ERROR_CODE = "BOARD_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext build failed."
-
+    ERROR_CODE = "BOARD_CONTEXT_BUILD_FAILED_ERROR"
+    DEFAULT_MESSAGE = "BoardContext build failed."
