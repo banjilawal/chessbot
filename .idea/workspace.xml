@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/board/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/builder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/builder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/builder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/builder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/piece/factory/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/piece/factory/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/buider/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/buider/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/buider/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/buider/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -967,7 +965,7 @@
       <workItem from="1766483423840" duration="7733000" />
       <workItem from="1766498674162" duration="23046000" />
       <workItem from="1766535382763" duration="2627000" />
-      <workItem from="1766539524132" duration="9410000" />
+      <workItem from="1766539524132" duration="10362000" />
     </task>
     <servers />
   </component>
