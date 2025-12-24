@@ -43,4 +43,3 @@ class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException)
     """
     ERROR_CODE = "FORWARD_SCHEMA_LOOKUP_FAILED"
     DEFAULT_MESSAGE = "SchemaLookup operation failed."
-
