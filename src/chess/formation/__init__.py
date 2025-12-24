@@ -10,11 +10,11 @@ version: 1.0.0
 #=========== FORMATION PACKAGE CONTENTS ===========#
 
 # Packages
-from .context import *
+from .key import *
+from .lookup import *
+from .service import *
 from .validator import *
 
 # Modules
-from .order import BattleOrder
-from .black import BlackBattleOrder
-from .white import WhiteBattleOrder
+from .formation import Formation
 from .exception import FormationException

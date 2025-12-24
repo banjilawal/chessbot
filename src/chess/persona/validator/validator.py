@@ -13,7 +13,6 @@ from chess.system import LoggingLevelRouter, ValidationResult, Validator
 from chess.persona import Persona, InvalidPersonaException, NullPersonaException
 
 
-
 class PersonaValidator(Validator[Persona]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
@@ -34,7 +33,7 @@ class PersonaValidator(Validator[Persona]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any,) -> ValidationResult[Persona]:
+    def validate(cls, candidate: Any, ) -> ValidationResult[Persona]:
         """
         # ACTION:.
             1.  If the candidate passes existence and type checks cast into a Persona instance and return
@@ -51,23 +50,23 @@ class PersonaValidator(Validator[Persona]):
             *   InvalidPersonaException
         """
         method = "PersonaValidator.validate"
-            # Handle the nonexistence case.
-            if candidate is None:
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    InvalidPersonaException(
-                        message=f"{method}: {InvalidPersonaException.ERROR_CODE}",
-                        ex=NullPersonaException(f"{method} {NullPersonaException.DEFAULT_MESSAGE}")
-                    )
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                InvalidPersonaException(
+                    message=f"{method}: {InvalidPersonaException.ERROR_CODE}",
+                    ex=NullPersonaException(f"{method} {NullPersonaException.DEFAULT_MESSAGE}")
                 )
-            # Handle the wrong class case.
-            if not isinstance(candidate, Persona):
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    InvalidPersonaException(
-                        message=f"{method}: {InvalidPersonaException.ERROR_CODE}",
-                        ex=TypeError(f"{method} Expected Persona, got {type(candidate).__name__} instead.")
-                    )
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, Persona):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                InvalidPersonaException(
+                    message=f"{method}: {InvalidPersonaException.ERROR_CODE}",
+                    ex=TypeError(f"{method} Expected Persona, got {type(candidate).__name__} instead.")
                 )
-            # On certification success return the schema instance in a ValidationResult.
-            return ValidationResult.success(cast(Persona, candidate))
+            )
+        # On certification success return the schema instance in a ValidationResult.
+        return ValidationResult.success(cast(Persona, candidate))
