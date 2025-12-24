@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/key.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/key.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/schema/key/lookup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/lookup/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/schema/key/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/lookup/lookup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/schema/key/lookup/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/lookup/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/lookup/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/lookup/wrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/schema/key/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/hash/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/hash/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/entity/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/entity/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -272,7 +277,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "exceptionless",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/service/entity",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/schema/service",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -299,11 +304,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/schema/service" />
       <recent name="$PROJECT_DIR$/src/chess/system/service/entity" />
       <recent name="$PROJECT_DIR$/src/chess/schema/lookup/forward" />
       <recent name="$PROJECT_DIR$/src/chess/schema/key/builder/exception" />
       <recent name="$PROJECT_DIR$/src/chess/schema/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/system/err/relational" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/schema/key" />
@@ -966,7 +971,8 @@
       <workItem from="1766392718604" duration="52121000" />
       <workItem from="1766452807543" duration="19167000" />
       <workItem from="1766483423840" duration="7733000" />
-      <workItem from="1766498674162" duration="19662000" />
+      <workItem from="1766498674162" duration="23046000" />
+      <workItem from="1766535382763" duration="2627000" />
     </task>
     <servers />
   </component>

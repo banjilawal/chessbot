@@ -33,7 +33,6 @@ class SchemaValidator(Validator[Schema]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(cls, candidate: Any) -> ValidationResult[Schema]:
@@ -56,31 +55,23 @@ class SchemaValidator(Validator[Schema]):
             *   InvalidSchemaException
         """
         method = "SchemaValidator.validate"
-        try:
-            # Handle the nonexistence case.
-            if candidate is None:
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    InvalidSchemaException(
-                        message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
-                        ex=NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
-                    )
-                )
-            # Handle the wrong class case.
-            if not isinstance(candidate, Schema):
-                # Return the exception chain on failure
-                return ValidationResult.failure(
-                    InvalidSchemaException(
-                        message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
-                        ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
-                    )
-                )
-            # On certification success return the schema instance in a ValidationResult.
-            return ValidationResult.success(payload=cast(Schema, candidate))
-        
-        # Finally, catch any missed exception, wrap an InvalidSchemaException around it then, return the
-        # exception-chain inside a ValidationResult.
-        except Exception as ex:
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidSchemaException(ex=ex, message=f"{method} {InvalidSchemaException.DEFAULT_MESSAGE}")
+                InvalidSchemaException(
+                    message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
+                    ex=NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
+                )
             )
+        # Handle the wrong class case.
+        if not isinstance(candidate, Schema):
+            # Return the exception chain on failure
+            return ValidationResult.failure(
+                InvalidSchemaException(
+                    message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
+                    ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
+                )
+            )
+        # On certification success return the schema instance in a ValidationResult.
+        return ValidationResult.success(payload=cast(Schema, candidate))

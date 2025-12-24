@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.schema import (
-    SchemaLookupFailedException, UnhandledSchemaLookupRouteException, SchemaColorBoundsException,
+    SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException,
     SchemaNameBoundsException, SchemaSuperKey, SchemaSuperKeyValidator, Schema,
 )
 from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult
@@ -38,7 +38,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     None
     """
     @classmethod
-    def lookup(cls, super_key: SchemaSuperKey, super_key_validator: SchemaSuperKeyValidator) -> SearchResult[List[Schema]]:
+    def query(cls, super_key: SchemaSuperKey, super_key_validator: SchemaSuperKeyValidator) -> SearchResult[List[Schema]]:
         """
         # Action:
         1.  Certify the provided key with the validator.
@@ -82,8 +82,8 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         return SearchResult.failure(
             SchemaLookupFailedException(
                 message=f"{method}: {SchemaLookupFailedException.ERROR_CODE} -> ",
-                ex=UnhandledSchemaLookupRouteException(f"{method}: {UnhandledSchemaLookupRouteException.DEFAULT_MESSAGE}"
-                )
+                ex=SchemaLookupRouteException(f"{method}: {SchemaLookupRouteException.DEFAULT_MESSAGE}"
+                                              )
             )
         )
     

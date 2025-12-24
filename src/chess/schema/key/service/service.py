@@ -24,7 +24,7 @@ class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
     4.  Single entry and entry points to SchemaSuperKey lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   ContextService
 
     # PROVIDES:
     None
@@ -33,7 +33,7 @@ class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See ContextService for inherited attributes.
     """
     SERVICE_NAME = "SchemaSuperKeyService"
     def __init__(

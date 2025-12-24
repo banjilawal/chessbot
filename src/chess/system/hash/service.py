@@ -9,7 +9,7 @@ version: 1.0.0
 
 from enum import Enum
 
-from chess.system import ContextService, ForwardLookup, Service, Validator
+from chess.system import ContextService, Service, Validator
 
 
 class HashService(Service[Enum]):
@@ -21,17 +21,16 @@ class HashService(Service[Enum]):
             id: int,
             name: str,
             validator: Validator[Enum],
-            super_key_service: ContextService[Enum], forward_lookup: ForwardLookup[Enum],
+            super_key_service: ContextService[Enum],
     ):
         super().__init__(id=id, name=name, certifier=validator)
         self._hash_super_key_service = super_key_service
-        self._hash_forward_lookup = forward_lookup
         
     @property
     def hash_super_key_service(self) -> ContextService[Enum]:
         return self._hash_super_key_service
     
     @property
-    def hash_forward_lookup(self) -> ForwardLookup[Enum]:
-        return self._hash_forward_lookup
+    def hash_validator(self) -> Validator[Enum]:
+        return self.certifier
     

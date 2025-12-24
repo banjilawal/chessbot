@@ -14,5 +14,5 @@ None
 
 # Modules
 from .lookup import SchemaLookup
-from .route import UnhandledSchemaLookupRouteException
+from .route import SchemaLookupRouteException
 from .wrapper import SchemaLookupFailedException

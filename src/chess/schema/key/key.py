@@ -17,10 +17,6 @@ class SchemaSuperKey(Context[Schema]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
-
-    
-
-        
     Lookups are performed on the Schema table.
         
     ## FORWARD LOOKUPS:
@@ -37,7 +33,6 @@ class SchemaSuperKey(Context[Schema]):
     Teams do not need reverse lookups. Searches by a team schema property do not need a reverse lookup. A use case
     might be looking up formations of openings for a set of pieces. Assuring the Arena tuples of PlayerAgent-Team
     are unique.
-        
     
     # RESPONSIBILITIES:
     The for A SchemaSuperKey is used tForward Schema lookups use a SchemaSuperKet ro

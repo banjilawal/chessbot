@@ -42,13 +42,7 @@ class EntityService(ABC, Service[Generic[T]]):
     _builder: Builder[T]
     _validator: Validator[T]
     
-    def __init__(
-            self,
-            id: int,
-            name: str,
-            builder: Builder[T],
-            validator: Validator[T],
-    ):
+    def __init__(self, id: int, name: str, builder: Builder[T], validator: Validator[T]):
         """
         # ACTION:
         Constructor
@@ -87,7 +81,7 @@ class EntityService(ABC, Service[Generic[T]]):
     @property
     def entity_validator(self) -> Validator[T]:
         """get entity validator"""
-        return self.validator
+        return self.certifier
     
     def __eq__(self, other):
         if super().__eq__(other):
