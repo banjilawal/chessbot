@@ -38,6 +38,8 @@ class FormationSquareBoundsException(InvalidFormationException, BoundsException,
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ORDER_SQUARE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Square is not included in the set of permissible order squares."
+    ERROR_CODE = "FORMATION_SQUARE_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = (
+        "No Formation is associated with the Square. No Piece makes its opening move from the Square."
+    )
 

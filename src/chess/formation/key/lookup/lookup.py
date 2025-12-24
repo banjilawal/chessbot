@@ -11,7 +11,7 @@ from typing import List, cast
 
 from chess.formation import (
     FormationColorBoundsException, OrderContext, OrderContextBuilder, OrderContextValidator, BattleOrderLookupException,
-    BattleOrderValidator, BattleOrder, OrderLookupFailedException, OrderNameBoundsException, FormationSquareBoundsException
+    BattleOrderValidator, BattleOrder, OrderLookupFailedException, DesignationBoundsException, FormationSquareBoundsException
 )
 from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
 
@@ -174,7 +174,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
                 return SearchResult.success(matches)
             # If a match is not found return an exception. It's important to know if no order has that designation.
             return SearchResult.failure(
-                FormationColorBoundsException(f"{method}: {OrderNameBoundsException.DEFAULT_MESSAGE}")
+                FormationColorBoundsException(f"{method}: {DesignationBoundsException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
         # return the exception chain inside a SearchResult.

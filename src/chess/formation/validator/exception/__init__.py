@@ -15,6 +15,6 @@ None
 # Modules
 from .base import InvalidFormationException
 from .color import FormationColorBoundsException
-from .name import OrderNameBoundsException
+from .name import DesignationBoundsException
 from .square import FormationSquareBoundsException
 from .null import NullFormationException
