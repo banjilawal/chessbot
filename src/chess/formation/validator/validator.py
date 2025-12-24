@@ -1,7 +1,7 @@
-# src/chess/team/order/validator.py
+# src/chess/formation/validator/validator.py
 
 """
-Module: chess.team.order.validator
+Module: chess.formation.validator.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -10,10 +10,10 @@ version: 1.0.0
 from typing import cast, Any
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
-from chess.team import InvalidBattleOrderException, NullBattleOrderException, BattleOrder
+from chess.team import InvalidFormationException, NullFormationException, Formation
 
 
-class BattleOrderValidator(Validator[BattleOrder]):
+class FormationValidator(Validator[Formation]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -36,7 +36,7 @@ class BattleOrderValidator(Validator[BattleOrder]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[BattleOrder]:
+    def validate(cls, candidate: Any) -> ValidationResult[Formation]:
         """
         # ACTION:
         1.  Check candidate is not null.
@@ -54,29 +54,29 @@ class BattleOrderValidator(Validator[BattleOrder]):
 
         # RAISES:
             *   TypeError
-            *   NullBattleOrderException
+            *   NullFormationException
             *   InvalidFormationException
         """
-        method = "BattleOrderValidator.validate"
+        method = "FormationValidator.validate"
         
         try:
             # Start the error detection process.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullBattleOrderException(f"{method} {NullBattleOrderException.DEFAULT_MESSAGE}")
+                    NullFormationException(f"{method} {NullFormationException.DEFAULT_MESSAGE}")
                 )
             
-            if not isinstance(candidate, BattleOrder):
+            if not isinstance(candidate, Formation):
                 return ValidationResult.failure(
                     TypeError(f"{method} Expected Formation, got {type(candidate).__name__} instead.")
                 )
             # If no errors are detected cast the candidate to a Formation object then return in
             # a ValidationResult.
-            return ValidationResult.success(cast(BattleOrder, candidate))
+            return ValidationResult.success(cast(Formation, candidate))
         
         # Finally, catch any missed exception, wrap an InvalidPieceException around it
         # then return the exceptions inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidBattleOrderException(ex=ex, message=f"{method} {InvalidBattleOrderException.DEFAULT_MESSAGE}")
+                InvalidFormationException(ex=ex, message=f"{method} {InvalidFormationException.DEFAULT_MESSAGE}")
             )

@@ -14,7 +14,7 @@ None
 
 # Modules
 from .base import InvalidFormationException
-from .color import OrderColorBoundsException
+from .color import FormationColorBoundsException
 from .name import OrderNameBoundsException
-from .square import OrderSquareBoundsException
-from .null import NullBattleOrderException
+from .square import FormationSquareBoundsException
+from .null import NullFormationException

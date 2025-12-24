@@ -12,12 +12,12 @@ from chess.system import BoundsException, GameColorException
 
 __all__ = [
     # ======================# ORDER COLOR BOUNDS EXCEPTION #======================#
-    "OrderColorBoundsException",
+    "FormationColorBoundsException",
 ]
 
 
 # ======================# ORDER COLOR BOUNDS EXCEPTION #======================#
-class OrderColorBoundsException(InvalidFormationException, BoundsException, GameColorException):
+class FormationColorBoundsException(InvalidFormationException, BoundsException, GameColorException):
     """
     # ROLE: Error Tracing, Debugging
 

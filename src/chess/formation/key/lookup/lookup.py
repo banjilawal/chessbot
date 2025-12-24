@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.formation import (
-    OrderColorBoundsException, OrderContext, OrderContextBuilder, OrderContextValidator, BattleOrderLookupException,
-    BattleOrderValidator, BattleOrder, OrderLookupFailedException, OrderNameBoundsException, OrderSquareBoundsException
+    FormationColorBoundsException, OrderContext, OrderContextBuilder, OrderContextValidator, BattleOrderLookupException,
+    BattleOrderValidator, BattleOrder, OrderLookupFailedException, OrderNameBoundsException, FormationSquareBoundsException
 )
 from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
 
@@ -174,7 +174,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
                 return SearchResult.success(matches)
             # If a match is not found return an exception. It's important to know if no order has that designation.
             return SearchResult.failure(
-                OrderColorBoundsException(f"{method}: {OrderNameBoundsException.DEFAULT_MESSAGE}")
+                FormationColorBoundsException(f"{method}: {OrderNameBoundsException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
         # return the exception chain inside a SearchResult.
@@ -200,7 +200,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   OrderSquareBoundsException
+            *   FormationSquareBoundsException
             *   BattleOrderLookupFailedException
         """
         method = "BattleOrderLookup._find_by_square"
@@ -211,7 +211,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
                 return SearchResult.success(matches)
             # If a match is not found return an exception. It's important to know if no order has that square_name.
             return SearchResult.failure(
-                OrderColorBoundsException(f"{method}: {OrderSquareBoundsException.DEFAULT_MESSAGE}")
+                FormationColorBoundsException(f"{method}: {FormationSquareBoundsException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
         # return the exception chain inside a SearchResult.
@@ -237,7 +237,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   OrderColorBoundsException
+            *   FormationColorBoundsException
             *   BattleOrderLookupFailedException
         """
         method = "BattleOrderLookup._find_by_color"
@@ -248,7 +248,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
                 return SearchResult.success(matches)
             # If a match is not found return an exception. It's important to know if no order has that color.
             return SearchResult.failure(
-                OrderColorBoundsException(f"{method}: {OrderColorBoundsException.DEFAULT_MESSAGE}")
+                FormationColorBoundsException(f"{method}: {FormationColorBoundsException.DEFAULT_MESSAGE}")
             )
         # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
         # return the exception chain inside a SearchResult.

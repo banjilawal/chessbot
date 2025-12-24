@@ -1,7 +1,7 @@
-# src/chess/formation/builder/builder.py
+# src/chess/formation/key/builder/builder.py
 
 """
-Module: chess.formation.lookup/map.builder.builder
+Module: chess.formation.key.builder.builder
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.formation import (
-    FormationContext, FormationContextBuildFailedException, NoFormationContextFlagException, ExcessiveFormationContextFlagsException
+    FormationSuperKey, FormationSuperKeyBuildFailedException, NoFormationSuperKeyFlagException, ExcessiveFormationSuperKeyFlagsException
 )
 from chess.system import (
     BuildResult, Builder, UnhandledRouteException, GameColor, GameColorValidator,
@@ -18,14 +18,14 @@ from chess.system import (
 )
 
 
-class FormationContextBuilder(Builder[FormationContext]):
+class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
     """
     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce FormationContext instances whose integrity is guaranteed at creation.
-    2.  Manage construction of FormationContext instances that can be used safely by the client.
-    3.  Ensure params for FormationContext creation have met the application's safety contract.
+    1.  Produce FormationSuperKey instances whose integrity is guaranteed at creation.
+    2.  Manage construction of FormationSuperKey instances that can be used safely by the client.
+    3.  Ensure params for FormationSuperKey creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     # PARENT:
@@ -50,12 +50,12 @@ class FormationContextBuilder(Builder[FormationContext]):
             designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
-    ) -> BuildResult[FormationContext]:
+    ) -> BuildResult[FormationSuperKey]:
         """
         # Action:
             1.  Confirm that only one in the (square_name, color, name, designation) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a FormationContext and send in a BuildResult. Else, return an exception
+            3.  If all checks pass build a FormationSuperKey and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
         # Parameters:
@@ -70,16 +70,16 @@ class FormationContextBuilder(Builder[FormationContext]):
                 *   identity_service (IdentityService)
 
         # Returns:
-        BuildResult[FormationContext] containing either:
-            - On success: FormationContext in the payload.
+        BuildResult[FormationSuperKey] containing either:
+            - On success: FormationSuperKey in the payload.
             - On failure: Exception.
 
         # Raises:
-            *   ZeroFormationContextFlagsException
-            *   FormationContextBuildFailedException
-            *   ExcessiveFormationContextFlagsException
+            *   ZeroFormationSuperKeyFlagsException
+            *   FormationSuperKeyBuildFailedException
+            *   ExcessiveFormationSuperKeyFlagsException
         """
-        method = "FormationContextBuilder.build"
+        method = "FormationSuperKeyBuilder.build"
         """
         # ACTION:.
             1.  If the candidate passes existence and type checks cast into a Schema instance and return
@@ -103,57 +103,57 @@ class FormationContextBuilder(Builder[FormationContext]):
             # Test if no params are set. Need an attribute-value pair to look up a piece's battle_order.
             if param_count == 0:
                 return BuildResult.failure(
-                    NoFormationContextFlagException(f"{method}: {NoFormationContextFlagException.DEFAULT_MESSAGE}")
+                    NoFormationSuperKeyFlagException(f"{method}: {NoFormationSuperKeyFlagException.DEFAULT_MESSAGE}")
                 )
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveFormationContextFlagsException(f"{method}: {ExcessiveFormationContextFlagsException}")
+                    ExcessiveFormationSuperKeyFlagsException(f"{method}: {ExcessiveFormationSuperKeyFlagsException}")
                 )
             # After verifying only one Formation attribute-value-tuple is enabled, validate it.
             
-            # Build the name FormationContext if its flag is enabled.
+            # Build the name FormationSuperKey if its flag is enabled.
             if name is not None:
                 validation = identity_service.validate_name(candidate=name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a designation_FormationContext in the BuildResult.
-                return BuildResult.success(FormationContext(name=name))
+                # On validation success return a designation_FormationSuperKey in the BuildResult.
+                return BuildResult.success(FormationSuperKey(name=name))
             
-            # Build the designation FormationContext if its flag is enabled.
+            # Build the designation FormationSuperKey if its flag is enabled.
             if designation is not None:
                 validation = identity_service.validate_name(candidate=designation)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a designation_FormationContext in the BuildResult.
-                return BuildResult.success(FormationContext(designation=designation))
+                # On validation success return a designation_FormationSuperKey in the BuildResult.
+                return BuildResult.success(FormationSuperKey(designation=designation))
             
-            # Build the square_name FormationContext if its flag is enabled.
+            # Build the square_name FormationSuperKey if its flag is enabled.
             if square is not None:
                 validation = identity_service.validate_name(candidate=square)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a square_FormationContext in the BuildResult.
-                return BuildResult.success(FormationContext(square=square))
+                # On validation success return a square_FormationSuperKey in the BuildResult.
+                return BuildResult.success(FormationSuperKey(square=square))
             
-            # Build the color FormationContext if its flag is enabled.
+            # Build the color FormationSuperKey if its flag is enabled.
             if color is not None:
                 validation = color_validator.validate(candidate=GameColor)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a color_FormationContext in the BuildResult.
-                return BuildResult.success(FormationContext(color=color))
+                # On validation success return a color_FormationSuperKey in the BuildResult.
+                return BuildResult.success(FormationSuperKey(color=color))
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
                 UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception, wrap an FormationContextBuildFailedException around it then
+        # Finally, catch any missed exception, wrap an FormationSuperKeyBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                FormationContextBuildFailedException(
-                    ex=ex, message=f"{method}: {FormationContextBuildFailedException.DEFAULT_MESSAGE}"
+                FormationSuperKeyBuildFailedException(
+                    ex=ex, message=f"{method}: {FormationSuperKeyBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
     

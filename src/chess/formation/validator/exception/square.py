@@ -12,12 +12,12 @@ from chess.system import BoundsException, NameException
 
 __all__ = [
     # ======================# ORDER SQUARE BOUNDS EXCEPTION #======================#
-    "OrderSquareBoundsException",
+    "FormationSquareBoundsException",
 ]
 
 
 # ======================# ORDER SQUARE BOUNDS EXCEPTION #======================#
-class OrderSquareBoundsException(InvalidFormationException, BoundsException, NameException):
+class FormationSquareBoundsException(InvalidFormationException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging
 

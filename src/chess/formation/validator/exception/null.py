@@ -12,12 +12,12 @@ from chess.formation import InvalidFormationException
 
 __all__ = [
     # ======================# ORDER_CONTEXT NULL EXCEPTION #======================#
-    "NullBattleOrderException",
+    "NullFormationException",
 ]
 
 
 # ======================# ORDER_CONTEXT NULL EXCEPTION #======================#
-class NullBattleOrderException(InvalidFormationException, NullException):
+class NullFormationException(InvalidFormationException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

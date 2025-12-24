@@ -11,12 +11,12 @@ from chess.catalog import PersonaSuperKeyException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# CATALOG_CONTEXT VALIDATION EXCEPTION #======================#
+    # ======================# PERSONA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidPersonaSuperKeyException",
 ]
 
 
-# ======================# CATALOG_CONTEXT VALIDATION EXCEPTION #======================#
+# ======================# PERSONA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidPersonaSuperKeyException(PersonaSuperKeyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -38,5 +38,5 @@ class InvalidPersonaSuperKeyException(PersonaSuperKeyException, ValidationFailed
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CATALOG_CONTEXT_VALIDATION_ERROR"
+    ERROR_CODE = "PERSONA_SUPER_KEY_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "PersonaSuperKey validation failed."
