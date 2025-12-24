@@ -15,5 +15,5 @@ from .flag import *
 
 # Modules
 from .null import NullPieceContextException
-from .base import InvalidPieceContextException
+from .base import InvalidTokenContextException
 

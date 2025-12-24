@@ -546,7 +546,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
 #   during builder.
 #   """
-#   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED_ERROR"
+#   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED"
 #   DEFAULT_MESSAGE = "AttackEventBuilder failed to create team_name KingCheckEvent"
 #
 #

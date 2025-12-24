@@ -74,7 +74,7 @@ class TravelEventBuildFailedException(TravelEventException, BuildFailedException
   Indicate That  TravelEvent could not be built. Wraps and re-raises errors that occurred
   during builder.
   """
-  ERROR_CODE = "TRAVEL_EVENT_BUILD_FAILED_ERROR"
+  ERROR_CODE = "TRAVEL_EVENT_BUILD_FAILED"
   DEFAULT_MESSAGE = "TravelEvent build failed."
 
 class OccupationEventBuildFailedException(TravelEventBuildFailedException):
@@ -82,5 +82,5 @@ class OccupationEventBuildFailedException(TravelEventBuildFailedException):
   Indicate That  OldOccupationEventValidator could not be built. Wraps and re-raises errors that occurred
   during builder.
   """
-  ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED_ERROR"
+  ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED"
 

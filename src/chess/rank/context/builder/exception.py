@@ -27,5 +27,5 @@ class RankContextBuildFailedException(RankContextException, BuildFailedException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RANK_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "RANK_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "RankContext build failed."

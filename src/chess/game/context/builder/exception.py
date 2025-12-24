@@ -39,5 +39,5 @@ class GameContextBuildFailedException(GameContextException, BuildFailedException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "GAME_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "GameContext build failed."

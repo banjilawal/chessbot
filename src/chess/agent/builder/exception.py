@@ -40,5 +40,5 @@ class AgentBuildFailedException(AgentException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "AGENT_BUILD_FAILED"
     DEFAULT_ERROR_CODE = "PlayerAgent build failed."

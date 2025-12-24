@@ -11,31 +11,34 @@ from chess.system import ValidationFailedException
 from chess.board import BoardContextException
 
 __all__ = [
-    #======================# BOARD_CONTEXT VALIDATION EXCEPTION #======================#
+    # ======================# BOARD_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidBoardContextException",
 ]
 
-#======================# BOARD_CONTEXT VALIDATION EXCEPTION #======================#
+
+# ======================# BOARD_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidBoardContextException(BoardContextException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised BoardContext validation.
-    2.  Wrap an exception that hits the try-finally-block in BoardContextValidator methods.
-    
+    1.  A debug exception is created when a BoardContext candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidBoardContextException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidBoardContextException chain is useful for tracing a  failure to its source.
+
     # PARENT:
         *   BoardContextException
         *   ValidationFailedException
 
     # PROVIDES:
-   None
+    None
 
     # LOCAL ATTRIBUTES:
     None
-    
-    # INHERITED ATTRIBUTES:
+
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_CONTEXT_VALIDATION_ERROR"
+    ERROR_CODE = "BOARD_CONTEXT_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "BoardContext validation failed."

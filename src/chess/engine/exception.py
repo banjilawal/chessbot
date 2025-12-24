@@ -75,5 +75,5 @@ class EngineBuildFailed(EngineException, BuildFailedException):
   Raised when `EngineBuilder` crashed while building team_name new object. Exists
   primarily to catch all exception raised creating engines.
   """
-  ERROR_CODE = "ENGINE_BUILD_FAILED_ERROR"
+  ERROR_CODE = "ENGINE_BUILD_FAILED"
   DEFAULT_MESSAGE = "Engine build failed."

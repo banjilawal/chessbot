@@ -10,22 +10,22 @@ version: 1.0.0
 from chess.coord import CoordContextException
 from chess.system import ValidationFailedException
 
-
-
 __all__ = [
-    # ========================= COORD_CONTEXT VALIDATION EXCEPTION =========================#
-    "InvalidCoordContextException"
+    # ======================# COORD_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    "InvalidCoordContextException",
 ]
 
 
-#========================= COORD_CONTEXT VALIDATION EXCEPTION =========================#
+# ======================# COORD_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidCoordContextException(CoordContextException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised CoordContext validation.
-    2.  Wraps an exception that hits the try-finally-block in CoordContextValidator methods.
+    1.  A debug exception is created when a CoordContext candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidCoordContextException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidCoordContextException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   CoordContextException
@@ -37,8 +37,8 @@ class InvalidCoordContextException(CoordContextException, ValidationFailedExcept
     # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED ATTRIBUTES:
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_CONTEXT_VALIDATION_ERROR"
+    ERROR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "CoordContext validation failed."

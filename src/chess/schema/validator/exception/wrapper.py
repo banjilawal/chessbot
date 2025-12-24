@@ -19,11 +19,11 @@ __all__ = [
 # ======================# SCHEMA_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidSchemaException(SchemaException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a Schema candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidSchemaException creating an exception chain. which is sent tot he caller in a
+        encapsulated inside an InvalidSchemaException creating an exception chain. which is sent to the caller in a
         ValidationResult.
     2.  The InvalidSchemaException chain is useful for tracing a  failure to its source.
     
@@ -40,5 +40,5 @@ class InvalidSchemaException(SchemaException, ValidationFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_VALIDATION_FAILURE_ERROR"
+    ERROR_CODE = "SCHEMA_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Schema validation failed."

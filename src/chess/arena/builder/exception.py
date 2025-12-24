@@ -39,5 +39,5 @@ class ArenaBuildFailedException(ArenaException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "Arena_BUILD_FAILED_ERROR"
+    ERROR_CODE = "Arena_BUILD_FAILED"
     DEFAULT_MESSAGE = "Arena build failed."

@@ -96,5 +96,5 @@ class VisitationSearchContextBuildFailedException(VisitationSearchContextExcepti
     Raised when VisitationSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new visitationSearchContext
     """
-    ERROR_CODE = "VISITATION_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "VISITATION_SEARCH_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "VisitationSearchContext build failed."

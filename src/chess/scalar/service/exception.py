@@ -46,5 +46,5 @@ class InvalidScalarServiceException(ScalarServiceException, ValidationException)
 #======================# SCALARSERVICE BUILD EXCEPTION #======================#
 class ScalarBuildFailedException(ScalarServiceException, BuildFailedException):
   """Catchall Exception for ScalarServiceBuilder when it encounters an error building a ScalarService."""
-  ERROR_CODE = "SCALAR_SERVICE_BUILD_FAILED_ERROR"
+  ERROR_CODE = "SCALAR_SERVICE_BUILD_FAILED"
   DEFAULT_MESSAGE = "ScalarService build failed."

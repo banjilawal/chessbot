@@ -45,6 +45,6 @@ class NullPawnException(PawnPieceException, NullException):
 
 #======================# PAWN_PIECE BUILD EXCEPTION #======================#
 class PawnPieceBuildFailedException(PawnPieceException, BuildFailedException):
-    ERROR_CODE = "PAWN_PIECE_BUILD_FAILED_ERROR"
+    ERROR_CODE = "PAWN_PIECE_BUILD_FAILED"
     DEFAULT_MESSAGE = "PawnPiece build failed."
     

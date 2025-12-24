@@ -1,7 +1,7 @@
-# src/chess/square_name/builder/exception.py
+# src/chess/square/builder/exception.py
 
 """
-Module: chess.square_name.builder.exception
+Module: chess.square.builder.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -39,5 +39,5 @@ class SquareBuildFailedException(SquareException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_BUILD_FAILED_ERROR"
+    ERROR_CODE = "SQUARE_BUILD_FAILED"
     DEFAULT_MESSAGE = "Square build failed."

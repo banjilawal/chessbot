@@ -40,5 +40,5 @@ class PieceBuildFailedException(PieceException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PIECE_BUILD_FAILED_ERROR"
+    ERROR_CODE = "PIECE_BUILD_FAILED"
     DEFAULT_MESSAGE = "Token build failed."

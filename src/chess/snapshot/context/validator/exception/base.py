@@ -11,22 +11,22 @@ version: 1.0.0
 
 from chess.system import ValidationFailedException
 
-
 __all__ = [
-    # ======================# SNAPSHOT_CONTEX_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidSnapshotContextException",
 ]
 
 
-# ======================# SNAPSHOT_CONTEX_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidSnapshotContextException(SnapshotContextException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate That  a candidate failed SnapshotContext validation checks.
-    2.  Wraps an exception that hits the try-finally block of a SnapShotContextValidator method.
-    3.  Catchall for validation errors not handled by InvalidSnapshotContextException subclasses.
+    1.  A debug exception is created when a SnapshotContext candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidSnapshotContextException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidSnapshotContextException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   SnapshotContextException
@@ -37,9 +37,9 @@ class InvalidSnapshotContextException(SnapshotContextException, ValidationFailed
 
     # LOCAL ATTRIBUTES:
     None
-    
-    # INHERITED ATTRIBUTES:
+
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SNAPSHOT_CONTEX_VALIDATION_FAILURE"
+    ERROR_CODE = "SNAPSHOT_CONTEXT_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "SnapshotContext validation failed."

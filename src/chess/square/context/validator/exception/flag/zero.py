@@ -1,7 +1,7 @@
-# src/chess/square_name/validator/exception/flag/zero.py
+# src/chess/square/validator/exception/flag/zero.py
 
 """
-Module: chess.square_name.validator.exception.flag.zero
+Module: chess.square.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -39,5 +39,5 @@ class RankBuildFailedException(RankException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RANK_BUILD_FAILED_ERROR"
+    ERROR_CODE = "RANK_BUILD_FAILED"
     DEFAULT_MESSAGE = "Rank build failed."

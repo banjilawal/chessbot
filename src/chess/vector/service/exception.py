@@ -46,5 +46,5 @@ class InvalidVectorServiceException(VectorServiceException, ValidationException)
 #======================# VECTOR_SERVICE BUILD EXCEPTION #======================#
 class VectorBuildFailedException(VectorServiceException, BuildFailedException):
   """Catchall Exception for VectorServiceBuilder when it encounters an error building a VectorService."""
-  ERROR_CODE = "VECTOR_SERVICE_BUILD_FAILED_ERROR"
+  ERROR_CODE = "VECTOR_SERVICE_BUILD_FAILED"
   DEFAULT_MESSAGE = "VectorService build failed."

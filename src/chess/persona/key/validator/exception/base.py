@@ -19,11 +19,13 @@ __all__ = [
 # ======================# PERSONA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidPersonaSuperKeyException(PersonaSuperKeyException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised PersonaSuperKey validation.
-    2.  Wrap an exception that hits the try-finally-block in PersonaSuperKeyValidator methods.
+    1.  A debug exception is created when a PersonaSuperKey candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidPersonaSuperKeyException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidPersonaSuperKeyException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   PersonaSuperKeyException
@@ -35,7 +37,7 @@ class InvalidPersonaSuperKeyException(PersonaSuperKeyException, ValidationFailed
     # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED ATTRIBUTES:
+    INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "PERSONA_SUPER_KEY_VALIDATION_FAILURE"

@@ -40,5 +40,5 @@ class TeamBuildFailedException(TeamException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_BUILD_FAILED_ERROR"
+    ERROR_CODE = "TEAM_BUILD_FAILED"
     DEFAULT_MESSAGE = "Team build failed."

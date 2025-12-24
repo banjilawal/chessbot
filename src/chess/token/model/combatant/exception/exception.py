@@ -47,5 +47,5 @@ class NullCombatantException(CombatantPieceException, NullException):
 
 #======================# COMBATANT_PIECE BUILD EXCEPTION #======================#
 class CombatantPieceBuildFailedException(CombatantPieceException, BuildFailedException):
-    ERROR_CODE = "COMBATANT_PIECE_BUILD_FAILED_ERROR"
+    ERROR_CODE = "COMBATANT_PIECE_BUILD_FAILED"
     DEFAULT_MESSAGE = "CombatantPiece build failed."

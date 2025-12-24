@@ -11,28 +11,34 @@ from chess.system import ValidationFailedException
 from chess.game import GameContextException
 
 __all__ = [
-    #======================# GAME_CONTEXT VALIDATION EXCEPTION #======================#
+    # ======================# GAME_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidGameContextException",
 ]
 
-#======================# GAME_CONTEXT VALIDATION EXCEPTION #======================#
+
+# ======================# GAME_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidGameContextException(GameContextException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised GameContext validation.
-    2.  Wraps an exception that hits the try-finally-block in GameContextValidator methods.
-    
+    1.  A debug exception is created when a GameContext candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidGameContextException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidGameContextException chain is useful for tracing a  failure to its source.
+
     # PARENT:
         *   GameContextException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidGameContextException
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_CONTEXT_VALIDATION_ERROR"
+    ERROR_CODE = "GAME_CONTEXT_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "GameContext validation failed."

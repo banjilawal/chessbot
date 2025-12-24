@@ -27,7 +27,7 @@ class ExcessivePieceContextFlagsException(InvalidPieceContextException, ContextF
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidPieceContextException
+        *   InvalidTokenContextException
 
     # PROVIDES:
     None

@@ -58,5 +58,5 @@ class NullHouseResidentException(HouseException):
 #====================== HOUSE BUILD EXCEPTION #======================#
 class HouseBuildFailedException(HouseException, BuildFailedException):
     """"""
-    ERROR_CODE = "HOUSE_BUILD_FAILED_ERROR"
+    ERROR_CODE = "HOUSE_BUILD_FAILED"
     DEFAULT_MESSAGE = "House build failed."

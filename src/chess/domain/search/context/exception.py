@@ -73,5 +73,5 @@ class ExcessiveResidentSearchParamsException(ResidentSearchContextException):
 # #======================# RESIDENT_SEARCH_CONTEXT BUILD EXCEPTION #======================#
 class ResidentSearchContextBuildFailedException(ResidentSearchContextException, BuildFailedException):
     """"""
-    ERROR_CODE = "RESIDENT_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "RESIDENT_SEARCH_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "ResidentFilter build failed."

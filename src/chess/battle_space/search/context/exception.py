@@ -107,7 +107,7 @@ class ProjectionSearchContextBuildFailedException(ProjectionSearchContextExcepti
     Raised when ProjectionSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new projectionSearchContext
     """
-    ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "TeamSearchContext build failed."
 
 class RansomOutOfBoundsException(ProjectionSearchContextException):

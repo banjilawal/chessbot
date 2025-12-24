@@ -41,5 +41,5 @@ class BoardContextBuildFailedException(BoardContextException, BuildFailedExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "BOARD_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "BoardContext build failed."

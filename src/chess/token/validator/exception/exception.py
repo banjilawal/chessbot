@@ -23,7 +23,7 @@ class InvalidTokenException(TokenException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a Token candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidTokenException creating an exception chain. which is sent tot he caller in a
+        encapsulated inside an InvalidTokenException creating an exception chain. which is sent to the caller in a
         ValidationResult.
     2.  The InvalidTokenException chain is useful for tracing a  failure to its source.
 
@@ -40,5 +40,5 @@ class InvalidTokenException(TokenException, ValidationFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_VALIDATION_FAILURE_ERROR"
+    ERROR_CODE = "TOKEN_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Token validation failed."

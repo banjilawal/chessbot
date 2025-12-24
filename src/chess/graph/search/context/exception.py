@@ -76,5 +76,5 @@ class VisitorSearchContextBuildFailedException(VisitorSearchContextException, Bu
     Raised when VisitorSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new visitorSearchContext
     """
-    ERROR_CODE = "VISITOR_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "VISITOR_SEARCH_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "VisitorSearchContext build failed."

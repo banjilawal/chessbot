@@ -72,5 +72,5 @@ class DomainNullFriendsDictException(DomainException, InconsistencyException):
 #======================# DOMAIN BUILD EXCEPTION #======================#
 class DomainBuildFailedException(DomainException, BuilderException):
     """Catchall Exception for DomainBuilder when it stops because of an error."""
-    ERROR_CODE = "DOMAIN_BUILD_FAILED_ERROR"
+    ERROR_CODE = "DOMAIN_BUILD_FAILED"
     DEFAULT_MESSAGE = "Domain build failed."

@@ -64,7 +64,7 @@ class InvalidTurnSceneException(TurnSceneException, ValidationException):
 #====================== TURN_SCENE BUILD EXCEPTION #======================#
 class TurnSceneBuildFailedException(TurnSceneException, BuildFailedException):
   """"""
-  ERROR_CODE = "TURN_SCENE_BUILD_FAILED_ERROR"
+  ERROR_CODE = "TURN_SCENE_BUILD_FAILED"
   DEFAULT_MESSAGE = "TurnScene build failed."
   
 

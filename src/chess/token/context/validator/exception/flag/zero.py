@@ -27,7 +27,7 @@ class ZeroPieceContextFlagsException(InvalidPieceContextException, ContextFlagCo
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidPieceContextException
+        *   InvalidTokenContextException
 
     # PROVIDES:
     None

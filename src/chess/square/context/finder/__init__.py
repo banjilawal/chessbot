@@ -1,7 +1,7 @@
-# src/chess/square_name/searcher/__init__.py
+# src/chess/square/searcher/__init__.py
 
 """
-Module: chess.square_name.searcher.__init__
+Module: chess.square.searcher.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

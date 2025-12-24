@@ -11,20 +11,22 @@ from chess.schema import SchemaSuperKeyException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
+    # ======================# SCHEMA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidSchemaSuperKeyException",
 ]
 
 
-# ======================# SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
+# ======================# SCHEMA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidSchemaSuperKeyException(SchemaSuperKeyException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate a candidate failed a SchemaSuperKey validation test.
-    2.  Wrap an exception that hits the try-finally block of a SchemSuperKeyValidator method.
-    
+    1.  A debug exception is created when a SchemaSuperKey candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidSchemaSuperKeyException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidSchemaSuperKeyException chain is useful for tracing a  failure to its source.
+
     # PARENT:
         *   SchemaSuperKeyException
         *   ValidationFailedException
@@ -35,8 +37,8 @@ class InvalidSchemaSuperKeyException(SchemaSuperKeyException, ValidationFailedEx
     # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED ATTRIBUTES:
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_SUPER_KEY_VALIDATION_ERROR"
+    ERROR_CODE = "SCHEMA_SUPER_KEY_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "SchemaSuperKey validation failed."

@@ -36,5 +36,5 @@ class BuildFailedException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BUILD_FAILED_ERROR"
+    ERROR_CODE = "BUILD_FAILED"
     DEFAULT_MESSAGE = "build failed. An exception prevented the build from completing."

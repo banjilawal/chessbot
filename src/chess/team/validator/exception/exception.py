@@ -19,11 +19,11 @@ __all__ = [
 # ======================# TEAM_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidTeamException(TeamException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a Team candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidTeamException creating an exception chain. which is sent tot he caller in a
+        encapsulated inside an InvalidTeamException creating an exception chain. which is sent to the caller in a
         ValidationResult.
     2.  The InvalidTeamException chain is useful for tracing a  failure to its source.
 
@@ -40,5 +40,5 @@ class InvalidTeamException(TeamException, ValidationFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_VALIDATION_FAILURE_ERROR"
+    ERROR_CODE = "TEAM_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Team validation failed."

@@ -76,7 +76,7 @@ class ClassFailedBuildException(ClassName, FailedBuildException):
   Raised when ArenaBuilder crashed while building a new arena. Exists
   primarily to catch all exception raised creating arenas.
   """
-  ERROR_CODE = "BUILD_FAILED_ERROR"
+  ERROR_CODE = "BUILD_FAILED"
   DEFAULT_MESSAGE = " build failed."
 
 

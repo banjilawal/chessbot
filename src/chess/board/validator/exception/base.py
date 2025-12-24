@@ -11,19 +11,21 @@ from chess.board import BoardException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# BOARD VALIDATION EXCEPTION #======================#
+    # ======================# BOARD_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidBoardException",
 ]
 
 
-# ======================# INVALID_BOARD EXCEPTION #======================#
+# ======================# BOARD_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidBoardException(BoardException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised Board validation.
-    2.  Wrap an exception that hits the try-finally-block in BoardValidator methods.
+    1.  A debug exception is created when a Board candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidBoardException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidBoardException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   BoardException
@@ -35,8 +37,8 @@ class InvalidBoardException(BoardException, ValidationFailedException):
     # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED ATTRIBUTES:
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD__VALIDATION_ERROR"
+    ERROR_CODE = "BOARD_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Board validation failed."

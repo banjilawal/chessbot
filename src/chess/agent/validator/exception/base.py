@@ -19,7 +19,7 @@ __all__ = [
 #======================# INVALID_AGENT EXCEPTION #======================#
 class InvalidAgentException(AgentException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during an PlayerAgent verification process.

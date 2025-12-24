@@ -24,7 +24,7 @@ class InvalidVectorException(VectorException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a Vector candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidVectorException creating an exception chain. which is sent tot he caller in a
+        encapsulated inside an InvalidVectorException creating an exception chain. which is sent to the caller in a
         ValidationResult.
     2.  The InvalidVectorException chain is useful for tracing a  failure to its source.
     
@@ -41,5 +41,5 @@ class InvalidVectorException(VectorException, ValidationFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VECTOR_VALIDATION_FAILURE_ERROR"
+    ERROR_CODE = "VECTOR_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Vector validation failed."

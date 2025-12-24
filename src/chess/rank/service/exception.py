@@ -50,5 +50,5 @@ class InvalidRankServiceException(RankServiceException, ValidationException):
 #======================# RANK_SERVICE BUILD EXCEPTION #======================#
 class RankServiceBuildFailedException(RankServiceException, BuildFailedException):
     """Catchall Exception for RankServiceBuilder when it encounters an error building a Rank."""
-    ERROR_CODE = "RANK_SERVICE_BUILD_FAILED_ERROR"
+    ERROR_CODE = "RANK_SERVICE_BUILD_FAILED"
     DEFAULT_MESSAGE = "RankCertifier build failed."

@@ -10,21 +10,24 @@ version: 1.0.0
 from chess.persona import PersonaException
 from chess.system import ValidationFailedException
 
+_
 __all__ = [
-    # ======================# PERSONA_CONTEXT VALIDATION EXCEPTION #======================#
+    # ======================# PERSONA_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidPersonaException",
 ]
 
 
-# ======================# PERSONA VALIDATION EXCEPTION #======================#
+# ======================# PERSONA_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidPersonaException(PersonaException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by PersonaValidation objects.
-    2.  Wrap an exception that hits the try-finally-block in PersonaValidator methods.
-
+    1.  A debug exception is created when a Persona candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidPersonaException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidPersonaException chain is useful for tracing a  failure to its source.
+    
     # PARENT:
         *   PersonaException
         *   ValidationFailedException
@@ -38,5 +41,5 @@ class InvalidPersonaException(PersonaException, ValidationFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "_PERSONA_VALIDATION_ERROR"
+    ERROR_CODE = "PERSONA_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Persona validation failed."

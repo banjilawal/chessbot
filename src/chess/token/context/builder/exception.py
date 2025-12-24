@@ -40,5 +40,5 @@ class PieceContextBuildFailedException(PieceContextException, BuildFailedExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PIECE_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "PIECE_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "PieceContext build failed."

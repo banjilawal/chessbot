@@ -62,5 +62,5 @@ class GraphBuildFailedException(GraphException, BuildFailedException):
     Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
     during builder.
     """
-    ERROR_CODE = "GRAPH_BUILD_FAILED_ERROR"
+    ERROR_CODE = "GRAPH_BUILD_FAILED"
     DEFAULT_MESSAGE = "Graph build failed.."

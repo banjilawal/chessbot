@@ -11,28 +11,34 @@ from chess.system import ValidationFailedException
 from chess.team import TeamContextException
 
 __all__ = [
-    #======================# TEAM_CONTEXT VALIDATION EXCEPTION #======================#
+    # ======================# TEAM_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidTeamContextException",
 ]
 
-#======================# TEAM_CONTEXT VALIDATION EXCEPTION #======================#
+
+# ======================# TEAM_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidTeamContextException(TeamContextException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised TeamContext validation.
-    2.  Wrap an exception that hits the try-finally-block in TeamContextValidator methods.
-    
+    1.  A debug exception is created when a TeamContext candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidTeamContextException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidTeamContextException chain is useful for tracing a  failure to its source.
+
     # PARENT:
         *   TeamContextException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidTeamContextException
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_CONTEXT_VALIDATION_ERROR"
+    ERROR_CODE = "TEAM_CONTEXT_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "TeamContext validation failed."

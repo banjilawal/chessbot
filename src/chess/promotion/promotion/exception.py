@@ -188,7 +188,7 @@ class PromotionEventBuildFailed(PromotionEventException, BuildFailedException):
   Raised when `PromotionEventBuilder` crashed while building team_name new `PromotionEven`. Exists
   primarily to catch all exception raised creating `PromotionEvent` objects.
   """
-  ERROR_CODE = "PROMOTION_EVENT_BUILD_FAILED_ERROR"
+  ERROR_CODE = "PROMOTION_EVENT_BUILD_FAILED"
   DEFAULT_MESSAGE = "PromotionEvent build failed."
 
 

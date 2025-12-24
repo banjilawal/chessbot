@@ -39,5 +39,5 @@ class ScalarBuildFailedException(ScalarException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCALAR_BUILD_FAILED_ERROR"
+    ERROR_CODE = "SCALAR_BUILD_FAILED"
     DEFAULT_MESSAGE = "Scalar build failed."

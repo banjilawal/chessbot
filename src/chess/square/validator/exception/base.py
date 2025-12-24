@@ -1,7 +1,7 @@
-# src/chess/square_name/validator/exception/base_.py
+# src/chess/square/validator/exception/base.py
 
 """
-Module: chess.square_name.validator.exception.base_
+Module: chess.square.validator.exception.base
 Author: Banji Lawal
 Created: 2025-11-19
 """
@@ -18,11 +18,13 @@ __all__ = [
 # ======================# SQUARE_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidSquareException(SquareException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate That  a Square validation candidate failed a verification test.
-    2.  Wrap an exception that hits the try-finally-block in SquareValidator methods.
+    1.  A debug exception is created when a Square candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidSquareException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidSquareException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   SquareException

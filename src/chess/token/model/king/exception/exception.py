@@ -45,5 +45,5 @@ class NullKingException(KingPieceException, NullException):
 
 #======================# KING_PIECE BUILD EXCEPTION #======================#
 class KingPieceBuildFailedException(KingPieceException, BuildFailedException):
-    ERROR_CODE = "KING_PIECE_BUILD_FAILED_ERROR"
+    ERROR_CODE = "KING_PIECE_BUILD_FAILED"
     DEFAULT_MESSAGE = "KingPiece build failed."

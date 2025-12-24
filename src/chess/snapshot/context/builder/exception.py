@@ -39,5 +39,5 @@ class SnapshotContextBuildFailedException(SnapshotContextException, BuildFailedE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SNAPSHOT_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "SNAPSHOT_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "SnapshotContext build failed."

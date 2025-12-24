@@ -11,31 +11,34 @@ from chess.game import GameException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    #======================# GAME VALIDATION EXCEPTION #======================#
+    # ======================# GAME_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidGameException",
 ]
 
 
-#======================# GAME VALIDATION EXCEPTION #======================#
+# ======================# GAME_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidGameException(GameException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised during an Game verification process.
-    2.  Catchall Exception for GameValidator when a candidate fails a sanity check.
-    3.  Wraps an exception that hits the try-finally block of an GameValidator method.
+    1.  A debug exception is created when a Game candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidGameException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidGameException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   GameException
         *   ValidationFailedException
 
     # PROVIDES:
-    InvalidGameException
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_VALIDATION_ERROR"
+    ERROR_CODE = "GAME_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Game validation failed."
-

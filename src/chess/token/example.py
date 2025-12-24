@@ -235,10 +235,10 @@ Notes:
   in PieceValidator and related error classes. Token objects are designed to be
   immutable in their core properties.
 """
-# src/chess/square_name/old_occupation_validator.py
+# src/chess/square/old_occupation_validator.py
 
 """
-Module: chess.square_name.coord_stack_validator
+Module: chess.square.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -73,5 +73,5 @@ class RankSearchContextBuildFailedException(RankSearchContextException, BuildFai
     Catchall Exception for RankSearchContextBuilder when it encounters an error building
     a RankSearchContext.
     """
-    ERROR_CODE = "RANK_SEARCH_CONTEXT_BUILD_FAILED_ERROR"
+    ERROR_CODE = "RANK_SEARCH_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "RankSearchContext build failed."

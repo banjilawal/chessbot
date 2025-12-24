@@ -37,7 +37,7 @@ class NullRankException(RankException, NullException):
 
 class RankBuildFailedException(RankException, BuildFailedException):
     """Catchall exception for when RankFactory encounters an error during a Rank build."""
-    ERROR_CODE = "RANK_BUILD_FAILED_ERROR"
+    ERROR_CODE = "RANK_BUILD_FAILED"
     DEFAULT_MESSAGE = "Rank build failed."
 
 

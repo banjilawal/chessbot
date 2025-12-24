@@ -39,5 +39,5 @@ class VectorBuildFailedException(VectorException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VECTOR_BUILD_FAILED_ERROR"
+    ERROR_CODE = "VECTOR_BUILD_FAILED"
     DEFAULT_MESSAGE = "Vector build failed."

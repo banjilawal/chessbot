@@ -40,5 +40,5 @@ class BoardBuildFailedException(BoardException, BuildFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "Board_BUILD_FAILED_ERROR"
+    ERROR_CODE = "Board_BUILD_FAILED"
     DEFAULT_MESSAGE = "Board build failed."

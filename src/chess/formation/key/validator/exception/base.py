@@ -7,25 +7,25 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.formation import OrderContextException
+from chess.formation import FormationSuperKeyException, OrderContextException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# ORDER_CONTEXT VALIDATION EXCEPTION #======================#
-    "InvalidOrderContextException",
+    # ======================# FORMATION_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+    "InvalidFormationSuperKeyException",
 ]
 
 
-
-
-# ======================# ORDER_CONTEXT VALIDATION EXCEPTION #======================#
-class InvalidOrderContextException(OrderContextException, ValidationFailedException):
+# ======================# FORMATION_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+class InvalidFormationSuperKeyException(FormationSuperKeyException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised OrderContext validation.
-    2.  Wrap an exception that hits the try-finally-block in OrderContextValidator methods.
+    1.  A debug exception is created when a FormationSuperKey candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an InvalidFormationSuperKeyException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The InvalidFormationSuperKeyException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   FormationSuperKeyException
@@ -37,8 +37,8 @@ class InvalidOrderContextException(OrderContextException, ValidationFailedExcept
     # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED ATTRIBUTES:
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ORDER_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "OrderContext validation failed."
+    ERROR_CODE = "FORMATION_SUPER_KEY_VALIDATION_FAILURE"
+    DEFAULT_MESSAGE = "FormationSuperKey validation failed."

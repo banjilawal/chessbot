@@ -1,7 +1,7 @@
-# src/chess/square_name/validator/exception/__init__.py
+# src/chess/square/validator/exception/__init__.py
 
 """
-Module: chess.square_name.validator.exception.__init__
+Module: chess.square.validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 """

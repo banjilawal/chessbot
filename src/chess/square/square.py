@@ -1,7 +1,7 @@
-# src/chess/square_name/square_name.py
+# src/chess/square/square_name.py
 
 """
-Module: chess.square_name.square_name
+Module: chess.square.square_name
 Author: Banji Lawal
 Created: 2025-07-26
 """

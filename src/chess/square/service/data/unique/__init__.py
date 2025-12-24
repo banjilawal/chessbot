@@ -1,7 +1,7 @@
-# src/chess/square_name/service/data/unique/__init__.py
+# src/chess/square/service/data/unique/__init__.py
 
 """
-Module: chess.square_name.service.data.unique.__init__
+Module: chess.square.service.data.unique.__init__
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
