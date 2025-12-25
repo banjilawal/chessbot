@@ -1,7 +1,7 @@
-# src/chess/system/number/exception/null.py
+# src/chess/system/number/exception/debug/null.py
 
 """
-Module: chess.system.number.exception.null
+Module: chess.system.number.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -15,15 +15,13 @@ __all__ = [
 ]
 
 
-
-
 # ======================# NULL NUMBER EXCEPTION #======================#
 class NullNumberException(InvalidNumberException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  a method, object or operation that required a number received null instead.
+    1.  Indicate that number validation failed because the candidate was null.
 
     # PARENT:
         *   InvalidNumberException
@@ -39,4 +37,4 @@ class NullNumberException(InvalidNumberException, NullException):
     None
     """
     ERROR_CODE = "NULL_NUMBER_ERROR"
-    DEFAULT_MESSAGE = "Number cannot be null."
+    DEFAULT_MESSAGE = "Number validation failed: The candidate was null."

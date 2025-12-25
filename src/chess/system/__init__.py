@@ -24,6 +24,7 @@ from .logging import *
 from .lookup import *
 from .mouse import *
 from .notification import *
+from .number import *
 from .result import *
 from .resolution import *
 from .service import *

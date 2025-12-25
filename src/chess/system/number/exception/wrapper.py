@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.system import NumberException, ValidationFailedException
+from chess.system import  ValidationFailedException
 
 __all__ = [
     "InvalidNumberException",

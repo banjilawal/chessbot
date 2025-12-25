@@ -9,12 +9,8 @@ version: 1.0.0
 
 from typing import Any, cast
 
-
-from chess.vector import (
-  Vector, NullVectorException, NullXComponentException, NullYComponentException,
-  VectorBelowBoundsException, VectorAboveBoundsException, InvalidVectorException
-)
-from chess.system import ValidationResult, Validator, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter
+from chess.system import LoggingLevelRouter, NumberInBoundsValidator, ValidationResult, Validator
+from chess.vector import InvalidVectorException, NullVectorException, Vector
 
 
 class VectorValidator(Validator[Vector]):
@@ -22,14 +18,14 @@ class VectorValidator(Validator[Vector]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a Square instance is certified safe, reliable and consistent before use.
+    1.  Run tests verifying a candidate can safely be used as a Square.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
         *   Validator
 
     # PROVIDES:
-        * SquareValidator
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -37,189 +33,74 @@ class VectorValidator(Validator[Vector]):
     # INHERITED ATTRIBUTES:
     None
     """
-
-
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[Vector]:
+    def validate(
+            cls,
+            candidate: Any,
+            number_in_bounds_validator: NumberInBoundsValidator = NumberInBoundsValidator()
+    ) -> ValidationResult[Vector]:
         """
         # ACTION:
-        1.  Check candidate is not validation.
-        2.  Check if candidate is a Vector.
-        3.  Check candidate.x is:
-                *   an INT
-                *   between -LONGEST_KNIGHT_LEG_SIZE and -LONGEST_KNIGHT_LEG_SIZE exclusive.
-        4.  Check candidate.y is:
-                *   an INT
-                *   between -LONGEST_KNIGHT_LEG_SIZE and -LONGEST_KNIGHT_LEG_SIZE exclusive.
-        5.  If any check fails, return the exception inside a ValidationResult.
-        6.  When all checks pass cast candidate to a Vector instance then return inside a ValidationResult.
-
+            1.  If the candidate fails existence and type checks return the ValidationResult containing an
+                exception. Else cast into Vector instance vector.
+            2.  If vector.x fails either existence, type of bounds checks return the ValidationResult containing
+                an exception.
+            3.  If vector.y fails either existence, type of bounds checks return the ValidationResult containing
+                an exception.
+            4.  All tests are passed return the ValidationResult containing vector in the payload.
         # PARAMETERS:
-            *   candidate (Any): Object to validate.
-
+            *   candidate (Any)
+            *   number_in_bounds_validator (NumberInBoundsValidator)
         # Returns:
-        ValidationResult[Vector] containing either:
-            - On success: Vector in the payload.
-            - On failure: Exception.
-
+            *   ValidationResult[Vector] containing either:
+                    - On failure: Exception.
+                    - On success: Vector in the payload.
         # RAISES:
             *   TypeError
             *   NullVectorException
             *   InvalidVectorException
         """
         method = "VectorValidator.validate"
-
-        try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullVectorException(f"{method}: {NullVectorException.DEFAULT_MESSAGE}")
-                )
-
-
-            if not isinstance(candidate, Vector):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Vector, got {type(candidate).__name__} instead.")
-                )
-
-            vector = cast(Vector, candidate)
-
-            x_component_validation = cls.validate_x_component(x=vector.x)
-            if x_component_validation.is_failure():
-                return ValidationResult.failure(x_component_validation.exception)
-            
-            y_component_validation = cls.validate_y_component(y=vector.y)
-            if y_component_validation.is_failure():
-                return ValidationResult.failure(y_component_validation.exception)
-            
-            return ValidationResult.success(payload=vector)
-
-        except Exception as ex:
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 InvalidVectorException(
-                    ex=ex,
-                    message=f"{method}: {InvalidVectorException.DEFAULT_MESSAGE}"
+                    message=f"{method}: {InvalidVectorException.ERROR_CODE}",
+                    ex=NullVectorException(f"{method}: {NullVectorException.DEFAULT_MESSAGE}")
                 )
             )
-        
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_x_component(cls, x_candidate: Any) -> ValidationResult[int]:
-        """
-        # ACTION:
-        Check if the x component is a number within the bounds of the vector.
-
-        # PARAMETERS:
-            *   x_candidate (Any): The object to validate.
-
-        # Returns:
-        ValidationResult[int] containing either:
-            - On success: int in the payload.
-            - On failure: Exception.
-
-        # RAISES:
-            *   TypeError
-            *   NullXComponentException
-            *   VectorBelowBoundsException
-            *   VectorAboveBoundsException
-            *   InvalidVectorException
-        """
-        method = "VectorValidator.validate_x_component"
-        
-        try:
-            if x_candidate is None:
-                return ValidationResult.failure(
-                    NullXComponentException(f"{method}: {NullXComponentException.DEFAULT_MESSAGE}")
-                )
-            
-            if not isinstance(x_candidate, int):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected an int, got {type(x_candidate).__name__} instead.")
-                )
-            x = cast(int, x_candidate)
-            
-            if x < -LONGEST_KNIGHT_LEG_SIZE:
-                return ValidationResult.failure(
-                    VectorBelowBoundsException(f"{method}: {VectorBelowBoundsException.DEFAULT_MESSAGE}")
-                )
-            
-            if x >= LONGEST_KNIGHT_LEG_SIZE:
-                return ValidationResult.failure(
-                    VectorAboveBoundsException(f"{method}: {VectorAboveBoundsException.DEFAULT_MESSAGE}")
-                )
-            
-            return ValidationResult.success(payload=x)
-
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidVectorException(f"{method}: {InvalidVectorException.DEFAULT_MESSAGE}", ex)
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_y_component(cls, y_candidate: Any) -> ValidationResult[int]:
-        """
-        # ACTION:
-        Check if the y component is a number within the bounds of the vector.
-
-        # PARAMETERS:
-            *   y_candidate (Any): The object to validate.
-
-        # Returns:
-        ValidationResult[int] containing either:
-            - On success: int in the payload.
-            - On failure: Exception.
-
-        # RAISES:
-            *   TypeError
-            *   NullYComponentException
-            *   VectorBelowBoundsException
-            *   VectorAboveBoundsException
-            *   InvalidVectorException
-        """
-        method = "VectorValidator._validate_y_component"
-        
-        try:
-            if y_candidate is None:
-                return ValidationResult.failure(
-                    NullYComponentException(
-                        f"{method}: "
-                        f"{NullYComponentException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if not isinstance(y_candidate, int):
-                return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: "
-                        f"Expected an int, got {type(x).__name__} instead."
-                    )
-                )
-            y = cast(int, y_candidate)
-            
-            if y < -LONGEST_KNIGHT_LEG_SIZE:
-                return ValidationResult.failure(
-                    VectorBelowBoundsException(
-                        f"{method}: "
-                        f"{VectorBelowBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if y >= LONGEST_KNIGHT_LEG_SIZE:
-                return ValidationResult.failure(
-                    VectorAboveBoundsException(
-                        f"{method}:"
-                        f" {VectorAboveBoundsException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            return ValidationResult.success(payload=y)
-        
-        except Exception as ex:
+        # Handle the wrong class case.
+        if not isinstance(candidate, Vector):
             return ValidationResult.failure(
                 InvalidVectorException(
-                    ex=ex,
-                    message=f"{method}: "
-                            f"{InvalidVectorException.DEFAULT_MESSAGE}"
+                    message=f"{method}: {InvalidVectorException.ERROR_CODE}",
+                    ex=TypeError(f"{method}: Expected a Vector, got {type(candidate).__name__} instead.")
                 )
             )
+        # After existence and type checks cast the candidate to a Vector for additional tests.
+        vector = cast(Vector, candidate)
+        
+        # Validate the vector.x field
+        x_axis_validation = number_in_bounds_validator.validate(candidate=vector.x)
+        if x_axis_validation.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                InvalidVectorException(
+                    message=f"{method}: {InvalidVectorException.ERROR_CODE}",
+                    ex=x_axis_validation.exception
+                )
+            )
+        # Validate the vector.y field
+        y_axis_validation = number_in_bounds_validator.validate(candidate=vector.y)
+        if y_axis_validation.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                InvalidVectorException(
+                    message=f"{method}: {InvalidVectorException.ERROR_CODE}",
+                    ex=y_axis_validation.exception
+                )
+            )
+        # On certification success return the vector instance in the ValidationResult.
+        return ValidationResult.success(payload=vector)

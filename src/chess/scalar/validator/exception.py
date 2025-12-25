@@ -8,7 +8,6 @@ version: 1.0.0
 """
 
 
-from chess.system import ValidationException
 from chess.scalar.exception import ScalarException
 
 

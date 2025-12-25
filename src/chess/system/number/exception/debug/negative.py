@@ -1,7 +1,7 @@
-# src/chess/system/number/exception/negative.py
+# src/chess/system/number/exception/debug/negative.py
 
 """
-Module: chess.system.number.exception.negative
+Module: chess.system.number.exception.debug.negative
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -10,18 +10,18 @@ version: 1.0.0
 from chess.system import BoundsException, InvalidNumberException
 
 __all__ = [
-    # ======================# NEGATIVE NUMBER EXCEPTION #======================#
+    # ======================# NEGATIVE_NUMBER EXCEPTION #======================#
     "NegativeNumberException",
 ]
 
 
-# ======================# NEGATIVE NUMBER EXCEPTION #======================#
+# ======================# NEGATIVE_NUMBER EXCEPTION #======================#
 class NegativeNumberException(InvalidNumberException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  a negative number was passed when a value zero or greater is required.
+    1.  Indicate that number validation failed because the candidate was negative.
 
     # PARENT:
         *   InvalidNumberException
@@ -37,7 +37,4 @@ class NegativeNumberException(InvalidNumberException, BoundsException):
     None
     """
     ERROR_CODE = "NEGATIVE_NUMBER_ERROR"
-    DEFAULT_MESSAGE = (
-        "Number cannot be negative. A number less than zero was received when the value "
-        "must be zero or greater."
-    )
+    DEFAULT_MESSAGE = "Number validation failed: The candidate was negative."
