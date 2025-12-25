@@ -1,7 +1,7 @@
-# src/chess/coord/validator/exception/null/exception.py
+# src/chess/coord/context/validator/exception/debug/null
 
 """
-Module: chess.coord.validator.exception.null.exception
+Module: chess.coord.context.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -22,8 +22,7 @@ class NullCoordContextException(InvalidCoordContextException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if a CoordContext validation candidate is null.
-    2.  Raised if an entity, method or operation requires a CoordContext but receives null instead.
+    1.  Indicate that CoordContext validation failed because the candidate was null.
 
     # PARENT:
         *   NullCoordContextException
@@ -38,5 +37,5 @@ class NullCoordContextException(InvalidCoordContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_COORD_CONTEXT__ERROR"
-    DEFAULT_MESSAGE = "CoordContext cannot be null."
+    ERROR_CODE = "NULL_COORD_CONTEXT_ERROR"
+    DEFAULT_MESSAGE = "CoordContext validation failed: The candidate was null."
