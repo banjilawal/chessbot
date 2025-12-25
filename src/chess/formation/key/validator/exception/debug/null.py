@@ -8,26 +8,25 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.formation import InvalidOrderContextException
+from chess.formation import InvalidFormationSuperKeyException
 
 __all__ = [
-    # ======================# ORDER_CONTEXT NULL EXCEPTION #======================#
-    "NullOrderContextException",
+    # ======================# NULL_FORMATION_SUPER_KEY EXCEPTION #======================#
+    "NullFormationSuperKeyException",
 ]
 
 
-# ======================# ORDER_CONTEXT NULL EXCEPTION #======================#
-class NullOrderContextException(InvalidOrderContextException, NullException):
+# ======================# NULL_FORMATION_SUPER_KEY EXCEPTION #======================#
+class NullFormationSuperKeyException(InvalidFormationSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
     1.  Raised if an OrderContext validation candidate is null.
-    2.  Raised if an entity, method or operation requires an OrderContext but receives null instead.
 
     # PARENT:
-        *   InvalidOrderContextException
         *   NullException
+        *   InvalidFormationSuperKeyException
 
     # PROVIDES:
     None
@@ -35,5 +34,5 @@ class NullOrderContextException(InvalidOrderContextException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_ORDER_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "OrderContext cannot be null."
+    ERROR_CODE = "NULL_FORMATION_SUPER_KEY_ERROR"
+    DEFAULT_MESSAGE = "FormationSuperKey cannot be null."

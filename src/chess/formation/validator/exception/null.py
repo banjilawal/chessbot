@@ -22,7 +22,7 @@ class NullFormationException(InvalidFormationException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an Formation validation candidate is null.
+    1.  Raised if a Formation validation candidate is null.
     2.  Raised if an entity, method or operation requires an Formation but receives null instead.
 
     # PARENT:

@@ -1,7 +1,7 @@
-# src/chess/order/order/lookup/lookup.py
+# src/chess/formation/key/lookup/forward.py
 
 """
-Module: chess.order.order.lookup.lookup
+Module: chess.formation.key.lookup.forward
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -9,14 +9,11 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.formation import (
-    FormationLookupByColorException, OrderContext, OrderContextBuilder, OrderContextValidator, BattleOrderLookupException,
-    BattleOrderValidator, BattleOrder, OrderLookupFailedException, DesignationBoundsException, FormationLookupBySquareException
-)
+from chess.formation import Formation
 from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
 
 
-class BattleOrderLookup(ForwardLookup[OrderContext]):
+class FormationLookup(ForwardLookup[Formation]):
     """
     # ROLE: Forward Lookups, Mapping 
 
@@ -37,17 +34,17 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
     # INHERITED ATTRIBUTES:
         *   See ForwardLookup for inherited attributes.
     """
-    SERVICE_NAME = "BattleOrderLookupService"
+    SERVICE_NAME = "FormationLookupService"
     
-    def __init__(
+    def forward(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.lookup_id,
-            context_builder: OrderContextBuilder = OrderContextBuilder(),
+            context_builder: FormationBuilder = FormationBuilder(),
             enum_validator: BattleOrderValidator = BattleOrderValidator(),
-            context_validator: OrderContextValidator = OrderContextValidator(),
+            context_validator: FormationValidator = FormationValidator(),
     ):
-        super().__init__(
+        super().forward(
             id=id, 
             name=name,
             enum_validator=enum_validator,
@@ -61,14 +58,14 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
         return cast(BattleOrderValidator, self.enum_validator)
     
     @property
-    def order_context_builder(self) -> OrderContextBuilder:
-        """Return an OrderContextBuilder."""
-        return cast(OrderContextBuilder, self.context_builder)
+    def order_context_builder(self) -> FormationBuilder:
+        """Return an FormationBuilder."""
+        return cast(FormationBuilder, self.context_builder)
     
     @property
-    def order_context_validator(self) -> OrderContextValidator:
-        """Return an OrderContextValidator."""
-        return cast(OrderContextValidator, self.context_validator)
+    def order_context_validator(self) -> FormationValidator:
+        """Return an FormationValidator."""
+        return cast(FormationValidator, self.context_validator)
     
     @property
     def allowed_names(self) -> List[str]:
@@ -94,8 +91,8 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
     @LoggingLevelRouter.monitor
     def lookup(
             cls, 
-            context: OrderContext, 
-            context_validator: OrderContextValidator = OrderContextValidator()
+            context: Formation, 
+            context_validator: FormationValidator = FormationValidator()
     ) -> SearchResult[List[BattleOrder]]:
         """
         # Action:
@@ -104,8 +101,8 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             the configuration entries which matched the map.
 
         # Parameters:
-            *   map: OrderContext
-            *   context_validator: OrderContextValidator
+            *   map: Formation
+            *   context_validator: FormationValidator
 
         # Returns:
         SearchResult[List[Formation]] containing either:
@@ -117,7 +114,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
             *   FormationLookupFailedException
             *   FormationLookupException
         """
-        method = "BattleOrderLookup.find"
+        method = "FormationLookup.find"
         try:
             # certify the map is safe.
             validation = context_validator.validate(candidate=context)
@@ -143,7 +140,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                BattleOrderLookupException(ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}")
+                FormationLookupException(ex=ex, message=f"{method}: {FormationLookupException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -164,9 +161,9 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
 
         # Raises:
             *   OrderDesignationBoundsException
-            *   BattleOrderLookupFailedException
+            *   FormationLookupFailedException
         """
-        method = "BattleOrderLookup._find_by_designation"
+        method = "FormationLookup._find_by_designation"
         try:
             matches = [order for order in BattleOrder if order.designation.upper() == designation.upper()]
             # This is the expected case.
@@ -180,7 +177,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                BattleOrderLookupException(ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}")
+                FormationLookupException(ex=ex, message=f"{method}: {FormationLookupException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -201,9 +198,9 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
 
         # Raises:
             *   FormationLookupBySquareException
-            *   BattleOrderLookupFailedException
+            *   FormationLookupFailedException
         """
-        method = "BattleOrderLookup._find_by_square"
+        method = "FormationLookup._find_by_square"
         try:
             matches = [order for order in BattleOrder if order.square.upper() == name.upper()]
             # This is the expected case.
@@ -217,7 +214,7 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                BattleOrderLookupException(ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}")
+                FormationLookupException(ex=ex, message=f"{method}: {FormationLookupException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -238,9 +235,9 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
 
         # Raises:
             *   FormationLookupByColorException
-            *   BattleOrderLookupFailedException
+            *   FormationLookupFailedException
         """
-        method = "BattleOrderLookup._find_by_color"
+        method = "FormationLookup._find_by_color"
         try:
             matches = [order for order in BattleOrder if order.color == color]
             # This is the expected case.
@@ -254,5 +251,5 @@ class BattleOrderLookup(ForwardLookup[OrderContext]):
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                BattleOrderLookupException(ex=ex, message=f"{method}: {BattleOrderLookupException.DEFAULT_MESSAGE}")
+                FormationLookupException(ex=ex, message=f"{method}: {FormationLookupException.DEFAULT_MESSAGE}")
             )

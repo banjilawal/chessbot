@@ -11,6 +11,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
+from chess.formation import FormationSuperKey
 from chess.system import Validator
 
 

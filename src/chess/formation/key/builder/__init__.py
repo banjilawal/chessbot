@@ -1,17 +1,16 @@
-# src/chess/formation/builder/__init__.py
+# src/chess/formation/key/builder/__init__.py
 
 """
-Module: chess.formation.builder.__init__
+Module: chess.formation.key.builder.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== FORMATION.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+# =========== FORMATION.KEY.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .builder import OrderContextBuilder
-from .exception import OrderContextBuildFailedException
+from .builder import FormationSuperKeyBuilder

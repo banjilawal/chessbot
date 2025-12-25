@@ -10,20 +10,20 @@ version: 1.0.0
 from chess.system import ContextFlagCountException
 from chess.catalog import InvalidPersonaSuperKeyException
 
-
 __all__ = [
-    # ========================= ZERO_CATALOG_CONTEXT_ENUM_TUPLES EXCEPTION =========================#
-    "ZeroPersonaSuperKeyEnumTuplesException",
+    # ========================= ZERO_PERSONA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
+    "ZeroPersonaSuperKeysException",
 ]
 
 
-# ========================= ZERO_CATALOG_CONTEXT_ENUM_TUPLES EXCEPTION =========================#
-class ZeroPersonaSuperKeyEnumTuplesException(InvalidPersonaSuperKeyException, ContextFlagCountException):
+# ========================= ZERO_PERSONA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
+class ZeroPersonaSuperKeysException(InvalidPersonaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no CatalogContext flag is provided for a forward Persona lookup.
+    1.  Indicate that a PersonaSuperKey failed its safety certification because no attribute was enabled with a value.
+    # 1.  Indicate that forward Persona lookup failed because all the PersonaSuperKey attributes were null.
 
     # PARENT:
         *   ContextFlagCountException
@@ -35,8 +35,8 @@ class ZeroPersonaSuperKeyEnumTuplesException(InvalidPersonaSuperKeyException, Co
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_CATALOG_CONTEXT_ENUM_TUPLES_ERROR"
+    ERROR_CODE = "ZERO_PERSONA_SUPER_KEYS_VALIDATION_ERROR"
     DEFAULT_MESSAGE = (
-        "No CatalogContext flag was selected. A CatalogContext must be enabled with an attribute-value-tuple"
-        " to perform a forward Persona entry lookup."
+        "PersonaSuperKey validation failed: All attributes are null. A PersonaSuperKey must have a "
+        "single attribute enabled by a value."
     )
