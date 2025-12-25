@@ -34,11 +34,11 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
         
         try:
             if not isinstance(actor, PawnPiece):
-                return BuildResult.failure(TypeError(f"Expected a PawnPiece, got {type(actor).__name__}"))
+                return BuildResult.failure(TypeError(f"Expected a PawnPiece instance, got {type(actor).__name__}"))
             
             if not isinstance(new_rank, (Knight, Bishop, Rook, Queen)):
                 return BuildResult.failure(TypeError(
-                    f"Expected a PromotableRank(knight, bishop, queen ,or rook, got {type(new_rank).__name__}")
+                    f"Expected a PromotableRank(knight, bishop, queen ,or rook instance, got {type(new_rank).__name__}")
                 )
             
             actor_validator = BoardActorValidator.validate(actor, execution_environment)
@@ -49,7 +49,7 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
             
             if not isinstance(actor_candidate, PromotablePiece):
                 return BuildResult.failure(
-                    TypeError(f"Expected an PromotablePiece, got {type(actor_candidate).__name__}")
+                    TypeError(f"Expected an PromotablePiece instance, got {type(actor_candidate).__name__}")
                 )
             
             actor = cast(PawnPiece, actor_candidate)

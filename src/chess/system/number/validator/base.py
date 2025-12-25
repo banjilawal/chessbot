@@ -69,7 +69,7 @@ class NumberValidator(Validator[int]):
             return ValidationResult.failure(
                 InvalidNumberException(
                     message=f"{method}: {InvalidNumberException.ERROR_CODE}",
-                    ex=TypeError(f"{method}: Expected an integer, got {type(candidate).__name__} instead."),
+                    ex=TypeError(f"{method}: Expected an integer instance, got {type(candidate).__name__} instead."),
                 )
             )
         # On certification success cast the candidate to an int and return in the ValidationResult.

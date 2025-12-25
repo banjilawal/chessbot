@@ -87,7 +87,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
                 return ValidationResult.failure(
                     InvalidSchemaSuperKeyException(
                         message=f"{method}: {InvalidSchemaSuperKeyException.ERROR_CODE}",
-                        ex=TypeError(f"{method}: Expected SchemaSuperKey, got {type(candidate).__name__} instead.")
+                        ex=TypeError(f"{method}: Expected SchemaSuperKey instance, got {type(candidate).__name__} instead.")
                     )
                 )
             

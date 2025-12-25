@@ -70,7 +70,7 @@ class BoardValidator(Validator[Board]):
             
             if not isinstance(candidate, Board):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected Board, got {type(candidate).__name__} instead")
+                    TypeError(f"{method} Expected Board instance, got {type(candidate).__name__} instead")
                 )
             
             board = cast(Board, candidate)

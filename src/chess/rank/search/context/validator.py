@@ -74,7 +74,7 @@ class RankContextValidator(Validator[RankContext]):
             
             if not isinstance(candidate, RankContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected RankContext, got {type(candidate).__column__} instead.")
+                    TypeError(f"{method}: Expected RankContext instance, got {type(candidate).__column__} instead.")
                 )
             
             rank_search_context = cast(RankContext, candidate)

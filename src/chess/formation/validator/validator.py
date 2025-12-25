@@ -68,7 +68,7 @@ class FormationValidator(Validator[Formation]):
             return ValidationResult.failure(
                 InvalidFormationException(
                     message=f"{method}: {InvalidFormationException.ERROR_CODE}",
-                    ex=TypeError(f"{method} Expected a Formation, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method} Expected a Formation instance, got {type(candidate).__name__} instead.")
                 )
             )
         # On certification success return the formation instance in a ValidationResult.

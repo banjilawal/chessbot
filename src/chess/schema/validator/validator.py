@@ -67,7 +67,7 @@ class SchemaValidator(Validator[Schema]):
             return ValidationResult.failure(
                 InvalidSchemaException(
                     message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
-                    ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method} Expected a Schema instance, got {type(candidate).__name__} instead.")
                 )
             )
         # On certification success return the schema instance in a ValidationResult.

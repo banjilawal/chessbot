@@ -1,6 +1,19 @@
+# src/chess/system/service/validator/validator.py
+
+"""
+Module: chess.system.service.validator.validator
+Author: Banji Lawal
+Created: 2025-11-18
+"""
+
 from typing import Any, cast
 
-from chess.system import LoggingLevelRouter, Service, ValidationResult, Validator
+from chess.system import (
+    Builder, EntityService, LoggingLevelRouter, NullServiceException, Service, ServiceValidationFailedException,
+    ValidationResult, Validator
+)
+from chess.system.service.validator.exception.null.builder import ServiceNullBuilderException
+from chess.system.service.validator.exception.null.validator import ServiceNullValidatorException
 
 
 class ServiceValidator(Validator[Service]):
@@ -26,7 +39,7 @@ class ServiceValidator(Validator[Service]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any, expected_service: Service = Service) -> ValidationResult[Service]:
+    def validate(cls, candidate: Any, expected_service: EntityService = type[EntityService]) -> ValidationResult[Service]:
         """
         # ACTION:.
             1.  If the candidate passes existence and type checks cast into a Service instance and return
@@ -53,21 +66,54 @@ class ServiceValidator(Validator[Service]):
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, expected_class):
+        if not isinstance(candidate, expected_service):
             # Return the exception chain on failure
             return ValidationResult.failure(
                 ServiceValidationFailedException(
                     message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
-                    ex=TypeError(f"{method} Expected a {type(expected_service).__name__}, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method} Expected a {type(expected_service).__name__} instance, got {type(candidate).__name__} instead.")
                 )
             )
+        
+        service = cast(EntityService, candidate)
+        builder_validation = cls._validate_builder(service.entity_builder)
         # On certification success return the service instance in a ValidationResult.
         return ValidationResult.success(payload=cast(expected_service, candidate))
     
     @classmethod
     def _validate_builder(cls, candidate: Any):
-        pass
+        method = "ServiceValidator._validate_builder"
+        if candidate is None:
+            return ValidationResult(
+                ServiceValidationFailedException(
+                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                    ex=ServiceNullBuilderException(f"{method}: {ServiceNullBuilderException.DEFAULT_MESSAGE}")
+                )
+            )
+        if not isinstance(candidate, Builder):
+            return ValidationResult(
+                ServiceValidationFailedException(
+                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                    ex=TypeError(f"{method}: Expected Builder instance, got {type(candidate).__name__} instead.")
+                )
+            )
+        return ValidationResult.success(payload=(cast(Builder, candidate)))
     
     @classmethod
     def _validate_validator(cls, candidate: Any):
-        pass
+        method = "ServiceValidator._validate_validator"
+        if candidate is None:
+            return ValidationResult(
+                ServiceValidationFailedException(
+                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                    ex=ServiceNullValidatorException(f"{method}: {ServiceNullValidatorException.DEFAULT_MESSAGE}")
+                )
+            )
+        if not isinstance(candidate, Validator):
+            return ValidationResult(
+                ServiceValidationFailedException(
+                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                    ex=TypeError(f"{method}: Expected Builder instance, got {type(candidate).__name__} instead.")
+                )
+            )
+        return ValidationResult.success(payload=(cast(Validator, candidate)))

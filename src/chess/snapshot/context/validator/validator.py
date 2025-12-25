@@ -95,7 +95,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             # Handle the wrong class case.
             if not isinstance(candidate, SnapshotContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected SnapshotContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected SnapshotContext instance, got {type(candidate).__name__} instead.")
                 )
             
             # After existence and type checks are successful cast the candidate to a SnapshotContext

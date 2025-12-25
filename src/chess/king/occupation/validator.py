@@ -33,7 +33,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
             
             if not isinstance (candidate, KingOccupationEvent):
                 return ValidationResult(exception=TypeError(
-                    f"Expected an OperationEvent, got {type(candidate).__name__}"
+                    f"Expected an OperationEvent instance, got {type(candidate).__name__}"
                     )
                 )
             event = cast(KingOccupationEvent, candidate)
@@ -109,7 +109,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #       )
 #
 #     if not isinstance(t, AttackEvent):
-#       raise TypeError(f"{method} Expected an KingCheckEvent, got {type(t).__name__}")
+#       raise TypeError(f"{method} Expected an KingCheckEvent instance, got {type(t).__name__}")
 #
 #     travel = cast(AttackEvent, t)
 #

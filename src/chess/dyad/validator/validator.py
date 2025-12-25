@@ -35,7 +35,7 @@ class SchemaAgentPairValidator(Validator[SchemaAgentPair]):
                 )
             if not isinstance(candidate, SchemaAgentPair):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected SchemaAgentTuple, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected SchemaAgentTuple instance, got {type(candidate).__name__} instead.")
                 )
             pair = cast(SchemaAgentPair, candidate)
             agent_validation = agent_service.validator.validate(pair.agent)

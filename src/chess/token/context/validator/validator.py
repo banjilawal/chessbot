@@ -42,7 +42,7 @@ class PieceContextValidator(Validator[PieceContext]):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: "
-                        f"Expected PieceContext, got {type(candidate).__name__} instead."
+                        f"Expected PieceContext instance, got {type(candidate).__name__} instead."
                     )
                 )
             

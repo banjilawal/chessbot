@@ -79,7 +79,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
             # If the candidate is not an PersonaSuperKey validation has failed.
             if not isinstance(candidate, PersonaSuperKey):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected PersonaSuperKey, got {type(candidate).__designation__} instead.")
+                    TypeError(f"{method}: Expected PersonaSuperKey instance, got {type(candidate).__designation__} instead.")
                 )
             
             # Once existence and type checks are passed, cast the candidate to BattlePersona and run structure tests.

@@ -78,7 +78,7 @@ class DomainValidator(Validator[Domain]):
             
             if not isinstance(candidate, Domain):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Was expecting type {Domain}, got {type(candidate)} instead")
+                    TypeError(f"{method}: Was expecting type {Domain} instance, got {type(candidate)} instead")
                 )
             
             domain = cast(Domain, candidate)

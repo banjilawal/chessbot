@@ -49,7 +49,7 @@ class GraphValidator(Validator[Graph]):
                 
                 if not isinstance(candidate, Graph):
                     return ValidationResult.failure(
-                        TypeError(f"{method} Expected Graph, got {type(candidate).__name__} instead.")
+                        TypeError(f"{method} Expected Graph instance, got {type(candidate).__name__} instead.")
                     )
                 
                 graph = dast(Graph, candidate)

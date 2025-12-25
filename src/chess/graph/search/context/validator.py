@@ -46,7 +46,7 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
             
             if not isinstance(candidate, VisitorSearchContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected VisitorSearchContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method} Expected VisitorSearchContext instance, got {type(candidate).__name__} instead.")
                 )
             
             search_context = cast(VisitorSearchContext, candidate)

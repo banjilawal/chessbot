@@ -49,7 +49,7 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
             if not isinstance(candidate, DomainSearchContext):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method} Expected domainSearchContext DomainSearchContext, got {type(candidate).__name__}"
+                        f"{method} Expected domainSearchContext DomainSearchContext instance, got {type(candidate).__name__}"
                         )
                 )
             

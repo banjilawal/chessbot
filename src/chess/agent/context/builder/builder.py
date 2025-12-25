@@ -139,7 +139,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             if variety is not None:
                 if not isinstance(variety, AgentVariety):
                     return BuildResult.failure(
-                        TypeError(f"{method}: Expected AgentVariety, got {type(variety).__name__} instead.")
+                        TypeError(f"{method}: Expected AgentVariety instance, got {type(variety).__name__} instead.")
                     )
                 # On validation success return a variety_AgentContext in the BuildResult.
                 return BuildResult.success(AgentContext(variety=variety))

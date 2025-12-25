@@ -31,7 +31,7 @@ class Team:
         *   id (int)
         *   schema (Schema)
         *   arena (Arena)
-        *   player_agent (PlayerAgent)
+        *   owner (PlayerAgent)
         *   roster (UniquePieceDataService)
         *   hostages (UniquePieceDataService)
         
@@ -43,7 +43,7 @@ class Team:
     _id: int
     _arena: Arena
     _schema: Schema
-    _player_agent: PlayerAgent
+    _owner: PlayerAgent
     _roster: UniquePieceDataService
     _hostages: UniquePieceDataService
 
@@ -52,7 +52,7 @@ class Team:
             id: int,
             arena: Arena,
             schema: Schema,
-            player_agent: PlayerAgent,
+            owner: PlayerAgent,
             roster: UniquePieceDataService = UniquePieceDataService(),
             hostages: UniquePieceDataService = UniquePieceDataService(),
     ):
@@ -62,7 +62,7 @@ class Team:
 
         # PARAMETERS:
             *   id (int)
-            *   player_agent (PlayerAgent)
+            *   owner (PlayerAgent)
             *   arena (Arena)
             *   team_schema (Schema)
             *   roster (UniquePieceDataService)
@@ -80,15 +80,15 @@ class Team:
         self._schema = schema
         self._roster = roster
         self._hostages = hostages
-        self._player_agent = player_agent
+        self._owner = owner
     
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def player_agent(self) -> PlayerAgent:
-        return self._player_agent
+    def owner(self) -> PlayerAgent:
+        return self._owner
     
     @property
     def arena(self) -> Arena:
@@ -117,4 +117,4 @@ class Team:
         return hash(self._id)
     
     def __str__(self) -> str:
-        return f"Team{{id:{self._id} {self._player_agent.name} {self._schema}}}"
+        return f"Team{{id:{self._id} {self._owner.name} {self._schema}}}"

@@ -66,7 +66,7 @@ class StringValidator(Validator[str]):
             # Handle the wrong class case.
             if not isinstance(candidate, str):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected an str, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method} Expected an str instance, got {type(candidate).__name__} instead.")
                 )
             
             # After existence and type checks are successful cast the candidate to a str, trim all white

@@ -80,7 +80,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             
             if not isinstance(candidate, DomainOrigin):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected DomainOrigin, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method} Expected DomainOrigin instance, got {type(candidate).__name__} instead.")
                 )
             
             domain_origin = cast(DomainOrigin, candidate)

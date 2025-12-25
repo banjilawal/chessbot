@@ -39,7 +39,7 @@ class GameTimeline(ResultStack[Snapshot]):
         method = "GameTimeline.commit_player_move"
         try:
             if not isinstance(snapshot, Snapshot):
-                raise TypeError(f"Expected GameResult, got {type(snapshot).__name__} instead.")
+                raise TypeError(f"Expected GameResult instance, got {type(snapshot).__name__} instead.")
             return self.push_result(snapshot)
         except Exception as ex:
             return InsertionResult.failed(

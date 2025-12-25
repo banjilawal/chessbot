@@ -137,7 +137,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
             if variety is not None:
                 if not isinstance(variety, ArenaVariety):
                     return BuildResult.failure(
-                        TypeError(f"{method}: Expected ArenaVariety, got {type(variety).__name__} instead.")
+                        TypeError(f"{method}: Expected ArenaVariety instance, got {type(variety).__name__} instead.")
                     )
                 # On validation success return a variety_ArenaContext in the BuildResult.
                 return BuildResult.success(ArenaContext(variety=variety))

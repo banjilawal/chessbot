@@ -1,4 +1,4 @@
-# src/chess/system/service/validator/exception.__init__.py
+# src/chess/system/service/validator/exception/__init__.py
 
 """
 Module: chess.system.service.validator.exception.__init__

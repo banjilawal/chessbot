@@ -79,7 +79,7 @@ class VectorValidator(Validator[Vector]):
             return ValidationResult.failure(
                 InvalidVectorException(
                     message=f"{method}: {InvalidVectorException.ERROR_CODE}",
-                    ex=TypeError(f"{method}: Expected a Vector, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method}: Expected a Vector instance, got {type(candidate).__name__} instead.")
                 )
             )
         # After existence and type checks cast the candidate to a Vector for additional tests.

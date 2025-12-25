@@ -5,19 +5,18 @@ Module: chess.team.validator
 Author: Banji Lawal
 Created: 2025-09-11
 """
-from math import floor
+
 from typing import cast, Any
 
-from chess.agent import PlayerAgent, AgentService
-from chess.arena import ArenaService
-from chess.game import Game
+
+from chess.arena import Arena, ArenaService
 from chess.schema import SchemaService
+from chess.agent import PlayerAgent, AgentService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
-    TeamValidationFailedException, NoTeamGameRelationshipException, NullTeamException, Team, TeamContext, TeamContextService,
-    TeamMismatchesAgentException, TeamNotInsideArenaException, TeamNotRegisteredWithAgentException, TeamSchemaValidator
+    TeamContext, TeamNotRegisteredWithOwnerException, TeamValidationFailedException, NullTeamException, Team,
+    TeamNotInsideArenaException,
 )
-
 
 
 class TeamValidator(Validator[Team]):
@@ -40,7 +39,6 @@ class TeamValidator(Validator[Team]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -53,308 +51,180 @@ class TeamValidator(Validator[Team]):
     ) -> ValidationResult[Team]:
         """
         # ACTION:
-        1.  Check candidate is not null .
-        2.  Check if candidate is a Team. If so cast it.
-        3.  Check id safety with IdentityService
-        4.  Verify team_schema's correctness with TeamSchemaValidator.
-        5.  Check player_agent safety with AgentService.
-        6.  If any check fails, return the exception inside a ValidationResult.
-        7.  If all pass return the Team object in a ValidationResult
-
+            1.  If the candidate fails existence or type checks return the exception in the ValidationResult.
+                Else, cast Team into team.
+            2.  If the team.id is not certified by identity_service return the exception in the ValidationResult.
+            3.  If the team.schema is not certified by schema_service then return the exception in the
+                ValidationResult.
+            4.  If team.owner is not validated by player_service or team is not registered by its owner return
+                the exception.
+            5.  The tests passed. Send team in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
             *   team_schema (Schema)
             *   agent_certifier (AgentService)
             *   identity_service (IdentityService)
-
         # Returns:
         ValidationResult[Team] containing either:
             - On success:   Team in the payload.
             - On failure:   Exception.
-
         # RAISES:
             *   TypeError
             *   NullTeamException
             *   TeamValidationFailedException
-            *   TeamNotRegisteredWithAgentException
         """
         method = "TeamValidator.validate"
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain.
+            return ValidationResult.failure(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                    ex=NullTeamException(f"{method}: {NullTeamException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, Team):
+            return ValidationResult.failure(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                    ex=TypeError(f"{method}: Expected Team instance, got {type(candidate).__name__} instead.")
+                )
+            )
+        # After the existence and type checks cast the candidate to Team for aditional tests.
+        team = cast(Team, candidate)
         
-        try:
-            # Handle the nonexistence case.
-            if candidate is None:
-                # Return the exception chain.
-                return ValidationResult.failure(
-                    TeamValidationFailedException(
-                        message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                        ex=NullTeamException(f"{method}: {NullTeamException.DEFAULT_MESSAGE}")
-                    )
+        # Handle the case team.id certification fails.
+        id_validation = identity_service.validate_id(candidate=team.id)
+        if id_validation.is_failure:
+            # Return the exception chain.
+            return ValidationResult(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                    ex=id_validation.exception
                 )
-            # Handle the wrong class case.
-            if not isinstance(candidate, Team):
-                return ValidationResult.failure(
-                    TeamValidationFailedException(
-                        message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                        ex=TypeError(f"{method}: Expected Team, got {type(candidate).__name__} instead.")
-                    )
-                )
-            # After the existence and type checks cast the candidate to Team for aditional tests.
-            team = cast(Team, candidate)
-            
-            # Handle the case team.id certification fails.
-            id_validation = identity_service.validate_id(candidate=team.id)
+            )
+        # Handle the case team.schema certification fails.
+        schema_validation = schema_service.schema_validator.validate(team.schema)
+        if schema_validation.is_failure:
             if id_validation.is_failure:
                 # Return the exception chain.
                 return ValidationResult(
                     TeamValidationFailedException(
                         message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                        ex=id_validation.exception
+                        ex=schema_validation.exception
                     )
                 )
-            # Handle the case team.schema certification fails.
-            schema_validation = schema_service.schema_validator.validate(team.schema)
-            if schema_validation.is_failure:
-                if id_validation.is_failure:
-                    # Return the exception chain.
-                    return ValidationResult(
-                        TeamValidationFailedException(
-                            message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                            ex=schema_validation.exception
-                        )
-                    )
-            # Handle the case that team.agent certification fails.
-            agent_validation = player_service.validator.validate(candidate=team.player_agent)
-            if agent_validation.is_failure:
-                # Return the exception chain.
-                return ValidationResult(
-                    TeamValidationFailedException(
-                        message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                        ex=id_validation.exception
-                    )
+        # Handle the case team.owner certification fails.
+        owner_verification = cls._validate_owner(team=team, player_service=player_service)
+        if owner_verification.is_failure:
+            # Return the exception chain.
+            return ValidationResult(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                    ex=owner_verification.exception
                 )
-            # Handle the case that team is not registered with the agent.
-            agent = team.player_agent
-            search_result = agent.team_assignments.search_teams(context=TeamContext(id=team.id))
-            if search_result.is_failure:
-                # Return the exception chain.
-                return ValidationResult(
-                    TeamValidationFailedException(
-                        message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                        ex=search_result.exception
-                    )
-                )
-            # Return an exception chain if the team is not registered with the player_agent
-            if search_result.is_empty:
-                return ValidationResult(
-                    TeamValidationFailedException(
-                        message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                        ex=TeamNotRegisteredWithAgentException(f"{method}: {TeamNotRegisteredWithAgentException}")
-                    )
-                )
-            
-            # Handle the case that arena is not certified
-            arena_validation = arena_service.validator.validate(candidate=team.arena)
-            if arena_validation.is_failure:
-                # Return the exception chain.
-                return ValidationResult(
-                    TeamValidationFailedException(
-                        message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                        ex=arena_validation.exception
-                    )
-                )
-            
-            # Handle the case that the team is not in the arena
-            arena = team.arena
-            if team not in [arena.white_team, arena.black_team]:
-                # Return the exception chain.
-                return ValidationResult(
-                    TeamValidationFailedException(
-                        message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                        ex=TeamNotInsideArenaException(f"{method}: {TeamNotInsideArenaException.DEFAULT_MESSAGE}")
-                    )
-                )
-            
-            #
-            
-            
-            
-            # Only baseline player_agent certification is necessary. An player_agent registering a team is not
-            # the main use case for team objects. Separating registration verification from team
-            # validation avoids circular dependencies, separates concerns and is flexible.
-            agent_validation = player_service.item_validator.validate(team.player_agent)
-            if agent_validation.is_failure():
-                return ValidationResult.failure(agent_validation.exception)
-            
-            
-            
-            # Check if the Team is registered in player_agent's team_assignments.
-            search_result = team.agent.team_assignments.search(context=TeamContext(id=team.id))
-            if search_result.is_failure():
-                return ValidationResult.failure(search_result.exception)
-            if search_result.is_empty():
-                return ValidationResult.failure(
-                    TeamNotRegisteredWithAgentException(
-                        f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}")
-                )
-            
-
-            # For basic verification we only need to prove team has a safe game attribute.
-            # Testng for a team<-->game relationship is not necessary. The team<--> game
-            # relationship only matters during searches so a deeper check is not necessary.
-            game_validation = game_service.item_validator.validate(team.arena)
-            if game_validation.is_failure():
-                return ValidationResult.failure(game_validation.exception)
-            
-            
-            # If no errors are detected return the successfully validated Team instance.
-            return ValidationResult.success(team)
-        
-        # Finally, catch any missed exception, wrap an TeamValidationFailedException around it
-        # then return the exception-chain inside a ValidationResult.
-        except Exception as ex:
-            return ValidationResult.failure(
-                TeamValidationFailedException(ex=ex, message=f"{method}: {TeamValidationFailedException.DEFAULT_MESSAGE}")
             )
- 
+        # Handle the case the team.arena certification fails.
+        arena_verification = cls._validate_arena(team=team, arena_service=arena_service)
+        if arena_verification.is_failure:
+            # Return the exception chain.
+            return ValidationResult(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                    ex=arena_verification.exception
+                )
+            )
+        # On certification successes send the team instance in the ValidationResult.
+        return ValidationResult.success(payload=team)
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def verify_agent_has_registered_team(
-            cls,
-            team_candidate: Any,
-            agent_candidate: Any,
-            agent_service: AgentService = AgentService(),
-            team_context_service: TeamContextService = TeamContextService(),
-    ) -> ValidationResult[(Team, PlayerAgent)]:
+    def _validate_owner(cls, team: Team, player_service: AgentService = AgentService()) -> ValidationResult[PlayerAgent]:
         """
         # ACTION:
-        1.  Use validate to certify team_candidate is a safe team. If so pull from validation_result payload.
-        2.  Use agent_certifier to certify agent_candidate is a safe player_agent. If so pull from validation_result payload.
-        3.  If team.player_agent != player_agent return an exception inside a ValidationResult.
-        4.  Build a search_context for the team with team_context entity_service.
-        5.  Finder for the team inside player_agent.team_assignments.
-        6.  If the searcher generates an error or produces an no hits return an exception inside a ValidationResult.
-        7.  If all checks pass return the (team, player_agent) registration tuple.
-
+            1.  If team.owner is not validated by player_service return validation exception.
+            2.  If the team is not owner.team_assignments return an exception in the ValidationResult.
+            3.  The tests passed. Send team.owner in the ValidationResult.
         # PARAMETERS:
-            *   team_candidate (Any)
-            *   agent_candidate (Any)
-            *   agent_certifier (AgentService)
-            *   team_context (TeamContextService)
-
+            *   team (Team)
+            *   player_service (AgentService)
         # Returns:
-        ValidationResult[(Team, PlayerAgent)] containing either:
-            - On success:   (Team,PlayerAgent) in the payload.
-            - On failure:   Exception.
-
+        ValidationResult[PlayerAgent] containing either:
+            - On failure: Exception.
+            - On success: PlayerAgent in the payload.
         # RAISES:
-            *   TeamMismatchesAgentException
-            *   TeamNotRegisteredWithAgentException
+            *   TeamValidationFailedException
         """
-        method = "TeamValidator.verify_agent_has_registered_team"
-        
-        try:
-            # Start the error detection process.
-            team_validation = cls.validate(team_candidate)
-            if team_validation.is_failure():
-                return ValidationResult.failure(team_validation.exception)
-            team = team_validation.payload
-            
-            agent_validation = agent_service.item_validator.validate(agent_candidate)
-            if agent_validation.is_failure():
-                return ValidationResult.failure(agent_validation.exception)
-            agent = agent_validation.payload
-            
-            if team.agent != agent:
-                return ValidationResult.failure(
-                    TeamMismatchesAgentException(f"{method}: {TeamMismatchesAgentException.DEFAULT_MESSAGE}")
-                )
-            
-            # When team.player_agent == player_agent Finder player_agent.team_assignments; build a searcher map
-            search_context_build = team_context_service.item_builder.build(id=team.id)
-            if search_context_build.is_failure():
-                return ValidationResult.failure(search_context_build.exception)
-            # Run a searcher for the target.
-            search_result = agent.team_assignments.searcher(search_context=search_context_build.payload)
-            if search_result.is_failure():
-                return ValidationResult.failure(search_result.exception)
-            
-            # An empty searcher result means there is no registration.
-            if search_result.is_empty():
-                return ValidationResult.failure(
-                    TeamNotRegisteredWithAgentException(
-                        f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}"
-                    )
-                )
-            # If no errors are detected return the (team, player_agent) tuple indicating
-            # The player_agent has the team in its records.
-            return ValidationResult.success(payload=(team, agent))
-        
-        # Finally, catch any missed exception and wrap A TeamBuildFailed exception around it
-        # then return the exception-chain inside a BuildResult.
-        except Exception as ex:
-            return ValidationResult.failure(
-                TeamNotRegisteredWithAgentException(
-                    ex=ex, message=f"{method}: {TeamNotRegisteredWithAgentException.DEFAULT_MESSAGE}"
+        method = "TeamValidator._validate_owner"
+        # Handle the case that team.agent certification fails.
+        agent_validation = player_service.validator.validate(candidate=team.owner)
+        if agent_validation.is_failure:
+            # Return the exception chain.
+            return ValidationResult(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}", ex=agent_validation.exception
                 )
             )
-    
+        # Handle the case that team is not registered with the agent.
+        agent = team.owner
+        search_result = agent.team_assignments.search_teams(context=TeamContext(id=team.id))
+        if search_result.is_failure:
+            # Return the exception chain.
+            return ValidationResult(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}", ex=search_result.exception
+                )
+            )
+        # Return an exception chain if the team is not registered with the player_agent
+        if search_result.is_empty:
+            return ValidationResult(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                    ex=TeamNotRegisteredWithOwnerException(f"{method}: {TeamNotRegisteredWithOwnerException}")
+                )
+            )
+        # On certification successes send the owner back to the validator.
+        return ValidationResult.success(payload=team.owner)
+        
     @classmethod
     @LoggingLevelRouter.monitor
-    def verify_team_and_game_relationship(
-            cls,
-            team_candidate: Any,
-            game_candidate: Any,
-            game_service: GameService = GameService(),
-    ) -> ValidationResult[(Team, Game)]:
+    def _validate_arena(cls, team: Team, arena_service: ArenaService = ArenaService()) -> ValidationResult[Arena]:
         """
         # ACTION:
-        1.  Use validate to certify team_candidate is a safe team. If so pull from validation_result payload.
-        2.  Use agent_certifier to certify agent_candidate is a safe player_agent. If so pull from validation_result payload.
-        3.  If team.game != game return an exception inside a ValidationResult.
-        4.  If all checks pass return a ValidationResult containing the (team, game) relationship tuple.
-
+            1.  If team.arena is not validated by player_service return validation exception.
+            2.  If the team is not one of the two teams in the arena return the exception.
+            3.  The tests are passed. Send team.arena in the ValidationResult.
         # PARAMETERS:
-            *   team_candidate (Any)
-            *   agent_candidate (Any)
-            *   agent_certifier (AgentService)
-            *   team_context (TeamContextService)
-
+            *   team (Team)
+            *  arena_service (ArenaService)
         # Returns:
-        ValidationResult[(Team, PlayerAgent)] containing either:
-            - On success:   (Team,PlayerAgent) in the payload.
-            - On failure:   Exception.
-
+        ValidationResult[Arena] containing either:
+            - On failure: Exception.
+            - On success: PlayerAgent in the payload.
         # RAISES:
-            *   NoTeamGameRelationshipException
+            *   TeamValidationFailedException
         """
-        method = "TeamValidator.verify_team_and_game_relationship"
-        
-        try:
-            # Start the error detection process.
-            team_validation = cls.validate(team_candidate)
-            if team_validation.is_failure():
-                return ValidationResult.failure(team_validation.exception)
-            team = team_validation.payload
-            
-            game_validation = game_service.item_validator.validate(game_candidate)
-            if game_validation.is_failure():
-                return ValidationResult.failure(game_validation.exception)
-            game = game_validation.payload
-            
-            if team.game != game:
-                return ValidationResult.failure(
-                    NoTeamGameRelationshipException(f"{method}: {NoTeamGameRelationshipException.DEFAULT_MESSAGE}")
-                )
-            # If no errors are detected return the (team, player_agent) tuple indicating
-            # The player_agent has the team in its records.
-            return ValidationResult.success(payload=(team, game))
-        
-        # Finally, catch any missed exception and wrap A TeamBuildFailed exception around it
-        # then return the exception-chain inside a BuildResult.
-        except Exception as ex:
-            return ValidationResult.failure(
-                NoTeamGameRelationshipException(
-                    ex=ex, message=f"{method}: {NoTeamGameRelationshipException.DEFAULT_MESSAGE}"
+        method = "TeamValidator._validate_arena"
+        # Handle the case that arena is not certified
+        arena_validation = arena_service.validator.validate(candidate=team.arena)
+        if arena_validation.is_failure:
+            # Return the exception chain.
+            return ValidationResult(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                    ex=arena_validation.exception
                 )
             )
+        # Handle the case that the team is not in the arena
+        arena = team.arena
+        if team not in [arena.white_team, arena.black_team]:
+            # Return the exception chain.
+            return ValidationResult(
+                TeamValidationFailedException(
+                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                    ex=TeamNotInsideArenaException(f"{method}: {TeamNotInsideArenaException.DEFAULT_MESSAGE}")
+                )
+            )
+        # On certification successes send the arena back to the validator.
+        return ValidationResult.success(payload=team.arena)

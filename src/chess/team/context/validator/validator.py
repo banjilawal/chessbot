@@ -96,7 +96,7 @@ class TeamContextValidator(Validator[TeamContext]):
             # If the candidate is not an TeamContext validation has failed.
             if not isinstance(candidate, TeamContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected TeamContext instance, got {type(candidate).__name__} instead.")
                 )
             
             # Once existence and type checks are passed, cast the candidate to Team and run structure tests.

@@ -78,7 +78,7 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             # If the candidate is not an FormationSuperKey validation has failed.
             if not isinstance(candidate, FormationSuperKey):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected FormationSuperKey, got {type(candidate).__designation__} instead.")
+                    TypeError(f"{method}: Expected FormationSuperKey instance, got {type(candidate).__designation__} instead.")
                 )
 
             # Once existence and type checks are passed, cast the candidate to FormationSuperKey and run structure tests.

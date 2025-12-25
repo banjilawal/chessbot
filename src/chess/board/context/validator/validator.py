@@ -74,7 +74,7 @@ class BoardContextValidator(Validator[BoardContext]):
             
             if not isinstance(candidate, BoardContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected TeamSearchContext, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected TeamSearchContext instance, got {type(candidate).__name__} instead.")
                 )
             
             board_search_context = cast(BoardContext, candidate)
