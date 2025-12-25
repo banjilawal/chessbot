@@ -82,8 +82,8 @@ class VectorValidator(Validator[Vector]):
         # After existence and type checks cast the candidate to a Vector for additional tests.
         vector = cast(Vector, candidate)
         
-        # Validate the vector.x field
-        x_axis_validation = number_in_bounds_validator.validate(candidate=vector.x)
+        # Validate the vector.x field. Use the absolute value because vectors can have negative components.
+        x_axis_validation = number_in_bounds_validator.validate(candidate=abs(vector.x))
         if x_axis_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -92,8 +92,8 @@ class VectorValidator(Validator[Vector]):
                     ex=x_axis_validation.exception
                 )
             )
-        # Validate the vector.y field
-        y_axis_validation = number_in_bounds_validator.validate(candidate=vector.y)
+        # Validate the vector.y field. Use the absolute value because vectors can have negative components.
+        y_axis_validation = number_in_bounds_validator.validate(candidate=abs(vector.y))
         if y_axis_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

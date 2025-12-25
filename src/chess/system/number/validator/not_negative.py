@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import LoggingLevelRouter, NegativeNumberException, NumberValidator, ValidationResult, Validator
-from chess.system import InvalidNumberException, NullNumberException
+from chess.system import InvalidNumberException
 
 
 class NotNegativeNumberValidator(Validator[int]):
@@ -42,43 +42,43 @@ class NotNegativeNumberValidator(Validator[int]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Test the candidate exists and is an int. If both tests pass cast to an int.
-        2.  Test the number is at least zero.
-        3.  Send an  exception in the ValidationResult for any failed tests. Otherwise, send the non-negative number.
-
+            1.  If number_validator returns an exception wrap it and forward in the ValidationResult.
+                Else, get the number from the validation payload.
+            2.  If the number is less than zero return the ValidationResult containing the exception.
+            4.  All tests are passed return the ValidationResult containing the number in the payload.
         # PARAMETERS:
             *   candidate (Any)
-            *   not_negative_validator (NumberValidator)
-            
-        # Returns:
-        ValidationResult[int] containing either:
-            - On success: int in the payload.
-            - On failure: Exception.
+            *   not_negative_validator (NotNegativeNumberValidator)
 
-        # Raises:
-          *     NegativeNumberException
+        # RETURNS:
+            *   ValidationResult[int] containing either:
+                    - On failure: Exception.
+                    - On success: int in the payload.
+        # RAISES:
           *     InvalidNumberException
         """
-        method = "IdValidator.validate"
-        
-        try:
-            # Perform basic number integrity checks with not_negative_validator.
-            validation = number_validator.validate(candidate=candidate)
-            if validation.is_failure:
-                return ValidationResult.failure(validation.exception)
-            
-            # Cast the payload to an int.
-            number = cast(int, validation.payload)
-            # Handle negative number case.
-            if number < 0:
-                return ValidationResult.failure(NegativeNumberException(f"{method}: {NegativeNumberException}"))
-            
-            # On passing both tests cast the candidate to an int, wrap in a ValidationResult and send back.
-            return ValidationResult.success(payload=cast(int, candidate))
-        
-        # Finally, catch any missed exception, wrap an InvalidNumberException then return the
-        # exception chain inside a ValidationResult.
-        except Exception as ex:
+        method = "NotNegativeNumberValidator.validate"
+        # Handle the existence and type checks.
+        validation = number_validator.validate(candidate=candidate)
+        if validation.is_failure:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidNumberException(ex=ex, message=f"{method}: {InvalidNumberException.DEFAULT_MESSAGE}")
+                InvalidNumberException(
+                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                    ex=validation.exception,
+                )
             )
+        # As a triple check cast the payload to an int for additional testing.
+        number = cast(int, validation.payload)
+
+        # Handle negative number case.
+        if number < 0:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                InvalidNumberException(
+                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                    ex=NegativeNumberException(f"{method}: {NegativeNumberException}"),
+                )
+            )
+        # On certification success return the number in the ValidationResult
+        return ValidationResult.success(payload=number)
