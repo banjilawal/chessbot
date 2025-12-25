@@ -40,41 +40,37 @@ class NumberValidator(Validator[int]):
     def validate(cls, candidate: Any) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Test the candidate exists and is an int. If either test fails return an appropriate exception
-            in the ValidationResult. Otherwise, send the  certified number in the ValidationResult.
-
+            1.  If the candidate is null or not an int return the ValidationResult containing an exception.
+                Otherwise, cast the candidate to an int and return in the ValidationResult.
         # PARAMETERS:
-            *   candidate (Any) object to certify is an int.
-
-        # Returns:
-        ValidationResult[int] containing either:
-            - On success: int in the payload.
-            - On failure: Exception.
-
+            *   candidate (Any)
+        # RETURNS:
+            *   ValidationResult[int] containing either:
+                    - On failure: Exception.
+                    - On success: int in the payload.
         # Raises:
           *     TypeError
           *     NullNumberException
           *     InvalidNumberException
         """
-        method = "IdValidator.validate"
-        
-        try:
-            # Handle the case, the candidate does not exist.
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}")
-                )
-            # Raise an error if the candidate is not an int.
-            if not isinstance(candidate, int):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected an integer, got {type(candidate).__name__} instead.")
-                )
-            # On passing both tests cast the candidate to an int, wrap in a ValidationResult and send back.
-            return ValidationResult.success(payload=cast(int, candidate))
-        
-        # Finally, catch any missed exception, wrap an InvalidNumberException around it
-        # then return the exception-chain inside a ValidationResult.
-        except Exception as ex:
+        method = "NumberValidator.validate"
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain.
             return ValidationResult.failure(
-                InvalidNumberException(ex=ex, message=f"{method}: {InvalidNumberException.DEFAULT_MESSAGE}")
+                InvalidNumberException(
+                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                    ex=NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}"),
+                )
             )
+        # Handle the wrong class case.
+        if not isinstance(candidate, int):
+            # Return the exception chain.
+            return ValidationResult.failure(
+                InvalidNumberException(
+                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                    ex=TypeError(f"{method}: Expected an integer, got {type(candidate).__name__} instead."),
+                )
+            )
+        # On certification success cast the candidate to an int and return in the ValidationResult.
+        return ValidationResult.success(payload=cast(int, candidate))

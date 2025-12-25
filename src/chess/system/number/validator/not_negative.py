@@ -32,7 +32,6 @@ class NotNegativeNumberValidator(Validator[int]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -49,7 +48,6 @@ class NotNegativeNumberValidator(Validator[int]):
         # PARAMETERS:
             *   candidate (Any)
             *   not_negative_validator (NotNegativeNumberValidator)
-
         # RETURNS:
             *   ValidationResult[int] containing either:
                     - On failure: Exception.
