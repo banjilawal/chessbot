@@ -5,16 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/game/validator/exception/debug/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/validator/debug/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/validator/debug/null.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/token/validator/exception/debug/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/token/validator/exception/debug/null.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/x/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/x/null.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/y/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/y/null.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/agent/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/flag/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/flag/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/persona.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/persona.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/validator/exception/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/validator/exception/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/validator/exception/null/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/null.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,11 +322,11 @@
       <recent name="$PROJECT_DIR$/src/chess/schema/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/vector/validator/exception/debug" />
+      <recent name="$PROJECT_DIR$/src/chess/game/validator/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/agent/builder/exception" />
       <recent name="$PROJECT_DIR$/src/chess/token/factory/exception" />
       <recent name="$PROJECT_DIR$/src/chess/token/context/validator/exception/debug" />
-      <recent name="$PROJECT_DIR$/src/chess/token/context/builder/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug" />
     </key>
   </component>
   <component name="RunManager" selected="Python.finder (2)">
@@ -974,7 +985,7 @@
       <workItem from="1766498674162" duration="23046000" />
       <workItem from="1766535382763" duration="2627000" />
       <workItem from="1766539524132" duration="27377000" />
-      <workItem from="1766573510463" duration="41040000" />
+      <workItem from="1766573510463" duration="45895000" />
     </task>
     <servers />
   </component>

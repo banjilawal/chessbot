@@ -7,28 +7,27 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import BoundsException
-from chess.formation import InvalidOrderContextException
-
 __all__ = [
-    # ========================= NO_ORDER_CONTEXT_FLAG EXCEPTION =========================#
-    "ZeroOrderContextFlagsException",
-    # ========================= TOO_MANY_ORDER_CONTEXT_FLAGS EXCEPTION =========================#
-    "ExcessiveOrderContextFlagsException"
+    # ========================= ZERO_FORMATION_SUPER_KEYS_VALIDATION EXCEPTION =========================#
+    "ZeroFormationSuperKeysException",
 ]
 
+from chess.formation.key.validator.exception.wrapper import InvalidFormationSuperKeyException
+from chess.system import ContextFlagCountException
 
-# ========================= ZERO_ORDER_CONTEXT_FLAFS EXCEPTION =========================#
-class ZeroOrderContextFlagsException(InvalidOrderContextException, BoundsException):
+
+# ========================= ZERO_FORMATION_SUPER_KEYS_VALIDATION EXCEPTION =========================#
+class ZeroFormationSuperKeysException(InvalidFormationSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate no OrderContext flag is provided for a Formation lookup.
+    1.  Indicate that a FormationSuperKey failed its safety certification because no attribute was enabled with a value.
+    # 1.  Indicate that forward Formation lookup failed because all the FormationSuperKey attributes were null.
 
     # PARENT:
-        *   BoundsException
-        *   InvalidOrderContextException
+        *   ContextFlagCountException
+        *   InvalidFormationSuperKeyException
 
     # PROVIDES:
     None
@@ -36,5 +35,8 @@ class ZeroOrderContextFlagsException(InvalidOrderContextException, BoundsExcepti
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_ORDER_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "No OrderContext flag was selected. A map flag must be turned on with a target value."
+    ERROR_CODE = "ZERO_FORMATION_SUPER_KEYS_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = (
+        "FormationSuperKey validation failed: All attributes are null. A FormationSuperKey must have a "
+        "single attribute enabled by a value."
+    )

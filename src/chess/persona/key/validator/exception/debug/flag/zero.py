@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.catalog import InvalidPersonaSuperKeyException
+from chess.persona import InvalidPersonaSuperKeyException
 
 __all__ = [
-    # ========================= ZERO_CATALOG_CONTEXT_FLAGS EXCEPTION =========================#
-    "ZeroPersonaSuperKeyFlagsException"
+    # ========================= ZERO_PERSONA_SUPER_KEYS EXCEPTION =========================#
+    "ZeroPersonaSuperKeysException"
 ]
 
 
-# ========================= ZERO_CATALOG_CONTEXT_FLAGS EXCEPTION =========================#
-class ZeroPersonaSuperKeyFlagsException(InvalidPersonaSuperKeyException, ContextFlagCountException):
+# ========================= ZERO_PERSONA_SUPER_KEYS EXCEPTION =========================#
+class ZeroPersonaSuperKeysException(InvalidPersonaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 

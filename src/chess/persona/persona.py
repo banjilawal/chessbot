@@ -1,7 +1,7 @@
-# src/chess/catalog/catalog.py
+# src/chess/persona/persona.py
 
 """
-Module: chess.catalog.catalog
+Module: chess.persona.persona
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

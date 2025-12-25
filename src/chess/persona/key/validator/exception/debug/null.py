@@ -8,25 +8,25 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.formation import InvalidFormationSuperKeyException
+from chess.persona import InvalidPersonaSuperKeyException
 
 __all__ = [
-    # ======================# NULL_FORMATION_SUPER_KEY EXCEPTION #======================#
-    "NullFormationSuperKeyException",
+    # ======================# NULL_PERSON_SUPER_KEY EXCEPTION #======================#
+    "NullPersonaSuperKeyException",
 ]
 
 
-# ======================# NULL_FORMATION_SUPER_KEY EXCEPTION #======================#
-class NullFormationSuperKeyException(InvalidFormationSuperKeyException, NullException):
+# ======================# NULL_PERSON_SUPER_KEY EXCEPTION #======================#
+class NullPersonaSuperKeyException(InvalidPersonaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that FormationSuperKey validation failed because the candidate was null.
+    1.  Indicate that PersonSuperKey validation failed because the candidate was null.
 
     # PARENT:
         *   NullException
-        *   InvalidFormationSuperKeyException
+        *   InvalidPersonSuperKeyException
 
     # PROVIDES:
     None
@@ -34,5 +34,5 @@ class NullFormationSuperKeyException(InvalidFormationSuperKeyException, NullExce
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_FORMATION_SUPER_KEY_ERROR"
-    DEFAULT_MESSAGE = "FormationSuperKey validation failed: The candidate was null."
+    ERROR_CODE = "NULL_PERSON_SUPER_KEY_ERROR"
+    DEFAULT_MESSAGE = "PersonSuperKey validation failed: The candidate was null."
