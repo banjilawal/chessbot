@@ -22,7 +22,7 @@ class NullFormationSuperKeyException(InvalidFormationSuperKeyException, NullExce
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an OrderContext validation candidate is null.
+    1.  Indicate that FormationSuperKey validation failed because the candidate was null.
 
     # PARENT:
         *   NullException
@@ -35,4 +35,4 @@ class NullFormationSuperKeyException(InvalidFormationSuperKeyException, NullExce
     None
     """
     ERROR_CODE = "NULL_FORMATION_SUPER_KEY_ERROR"
-    DEFAULT_MESSAGE = "FormationSuperKey cannot be null."
+    DEFAULT_MESSAGE = "FormationSuperKey validation failed: The candidate was null."
