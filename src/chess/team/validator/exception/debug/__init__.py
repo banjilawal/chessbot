@@ -10,7 +10,9 @@ version: 1.0.0
 # =========== TEAM.VALIDATOR.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-from .registration import *
+None
 
 # Modules
 from .null import NullTeamException
+from .arena import TeamNotInsideArenaException
+from .owner import TeamNotRegisteredWithOwnerException

@@ -14,6 +14,6 @@ None
 
 # Modules
 from .base import NoRelationshipException
-from .registration import NoRegistrationException
+from .registered import NotRegisteredException
 from .bidirectional import NoBidirectionalRelationException
 

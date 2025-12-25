@@ -13,26 +13,29 @@ __all__ = [
 ]
 
 from chess.system import NullException
-from chess.team import InvalidTeamException
+from chess.team import TeamException
 
 
 # ======================# NULL_TEAM EXCEPTION #======================#
-class NullTeamException(InvalidTeamException, NullException):
+class NullTeamException(TeamException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that Team validation failed because the candidate was null.
-
+    1.  Indicate that the candidate was not granted Team certification because it was null.
+    
     # PARENT:
         *   NullException
-        *   InvalidTeamException
+        *   TeamException
 
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_TEAM EXCEPTION_ERROR"
+    ERROR_CODE = "NULL_TEAM_ERROR"
     DEFAULT_MESSAGE = "Team validation failed: The candidate was null."

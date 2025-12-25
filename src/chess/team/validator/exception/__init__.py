@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== TEAM.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .bounds import *
 from .debug import *
 
 # Modules
-from .exception import *
+from .wrapper import TeamValidationFailedException

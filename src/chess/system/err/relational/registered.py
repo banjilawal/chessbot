@@ -10,15 +10,15 @@ version: 1.0.0
 
 
 __all__ = [
-#======================# NO_REGISTRATION EXCEPTION #======================#
-    "NoRegistrationException",
+    # ======================# NOT_REGISTERED EXCEPTION #======================#
+    "NotRegisteredException",
 ]
 
 from chess.system import NoRelationshipException
 
 
-# ======================# NO_REGISTRATION EXCEPTION #======================#
-class NoRegistrationException(NoRelationshipException):
+# ======================# NOT_REGISTERED EXCEPTION #======================#
+class NotRegisteredException(NoRelationshipException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -39,5 +39,5 @@ class NoRegistrationException(NoRelationshipException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_REGISTRATION EXCEPTION_ERROR"
+    ERROR_CODE = "NOT_REGISTERED_ERROR"
     DEFAULT_MESSAGE = "The item is not registered in the owner's dataset."
