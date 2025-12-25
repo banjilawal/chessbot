@@ -40,24 +40,22 @@ class VectorBuilder(Builder[Vector]):
             self,
             x: int,
             y: int,
-            bound_number_validator : NumberInBoundsValidator = NumberInBoundsValidator(),
+            bound_number_validator: NumberInBoundsValidator = NumberInBoundsValidator(),
     ) -> BuildResult[Vector]:
         """
         # ACTION:
-        1.  Use validator to certify x is safe.
-        2.  Use validator to certify y is safe.
-        3.  If either validation fails return their exception inside a BuildResult.
-        4.  Otherwise, return a BuildResult containing a Vector.
+        1.  If x or y fail vaildation return the exception in the BuildResult. Otherwise created a Vector
+            then return in the BuildResult.
 
         # PARAMETERS:
             *   x (int)
             *   y (int)
-            *   validator (VectorValidator)
+            *   bound_number_validator (NumberInBoundsValidator)
             
         # Returns:
         BuildResult[Vector] containing either:
-            - On success: V in the payload.
             - On failure: Exception.
+            - On success: Vector in the payload.
 
         RAISES:
             *   VectorBuildFailedException
