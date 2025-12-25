@@ -12,7 +12,8 @@ __all__ = [
     "NullVectorException",
 ]
 
-from chess.vector.validator.exception.wrapper import InvalidVectorException
+from chess.system import NullException
+from chess.vector import InvalidVectorException
 
 
 # ======================# NULL_VECTOR EXCEPTION #======================#

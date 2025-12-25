@@ -1,19 +1,28 @@
+# src/chess/vector/validator/exception/debug/y/null.py
+
+"""
+Module: chess.vector.validator.exception.debug.y.null
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
 __all__ = [
-    # ======================# NULL_VECTOR_Y_AXIS EXCEPTION #======================#
-    "VectorNullXAxisException",
+    # ======================# VECTOR_NULL_Y_AXIS EXCEPTION #======================#
+    "VectorNullYException",
 ]
 
 from chess.system import NullException
-from chess.vector.validator.exception.wrapper import InvalidVectorException
+from chess.vector import InvalidVectorException
 
 
-# ======================# NULL_VECTOR_Y_AXIS EXCEPTION #======================#
-class VectorNullYAxisException(InvalidVectorException, NullException):
+# ======================# VECTOR_NULL_Y_AXIS EXCEPTION #======================#
+class VectorNullYException(InvalidVectorException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that Vector validation failed because the y_ax was null.
+    1.  Indicate that Vector validation failed because the y_axis was null.
 
     # PARENT:
         *   NullException
@@ -25,5 +34,5 @@ class VectorNullYAxisException(InvalidVectorException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_VECTOR_Y_AXIS_ERROR"
-    DEFAULT_MESSAGE = "Vector validation failed: The y axis was null."
+    ERROR_CODE = "VECTOR_NULL_Y_AXIS_ERROR"
+    DEFAULT_MESSAGE = "Vector validation failed: The y_axis was null."

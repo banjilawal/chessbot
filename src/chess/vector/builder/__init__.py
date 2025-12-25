@@ -7,6 +7,10 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+# =========== VECTOR.BUILDER PACKAGE CONTENTS ===========#
 
-from .builder import VectorBuilder
+# Packages
 from .exception import *
+
+# Modules
+from .builder import VectorBuilder

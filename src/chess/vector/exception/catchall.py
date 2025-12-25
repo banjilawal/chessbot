@@ -1,9 +1,9 @@
-# src/chess/vector/collision.py
+# src/chess/vector/exception/catchall.py
 
 """
-Module: chess.vector.exception
+Module: chess.vector.exception.catchall
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-10-03
 version: 1.0.0
 """
 

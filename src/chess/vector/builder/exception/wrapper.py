@@ -1,7 +1,7 @@
-# src/chess/vector/builder/exception.py
+# src/chess/vector/builder/exception/wrapper.py
 
 """
-Module: chess.vector.builder.exception
+Module: chess.vector.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
