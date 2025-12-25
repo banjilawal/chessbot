@@ -17,8 +17,11 @@ from .resource import *
 from .consistency import *
 
 # Modules
-from .base import ChessException
 from .null import NullException
+from .base import ChessException
+from .debug import DebugException
+from .wrapper import ExceptionWrapper
+from .catchall import CatchallException
 from .unhandled import UnhandledRouteException
 from .implementation import NotImplementedException
 

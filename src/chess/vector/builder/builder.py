@@ -35,14 +35,6 @@ class VectorBuilder(Builder[Vector]):
      # INHERITED ATTRIBUTES:
      None
      """
-    
-    _vector_validator: VectorValidator
-    
-    def __init__(self, vector_validator: VectorValidator = VectorValidator()) -> None:
-        super().__init__()
-        self._vector_validator = VectorValidator()
-    
-
     @LoggingLevelRouter.monitor
     def build(
             self,

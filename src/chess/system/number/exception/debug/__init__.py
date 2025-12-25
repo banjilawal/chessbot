@@ -14,5 +14,6 @@ None
 
 # Modules
 from .null import NullNumberException
-from .above import NumberAboveBoundsException
+from .floor import NumberBelowCeilingException
+
 from .negative import NegativeNumberException

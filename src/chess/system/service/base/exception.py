@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-18
 """
 
-from chess.system import ChessException
+from chess.system import ExceptionWrapper
 
 __all__ = [
     # ======================# SERVICE EXCEPTION #======================#
@@ -15,7 +15,7 @@ __all__ = [
 
 
 # ======================# SERVICE EXCEPTION #======================#
-class ServiceException(ChessException):
+class ServiceException(ExceptionWrapper):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

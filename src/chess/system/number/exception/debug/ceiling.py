@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# NUMBER_ABOVE_BOUNDS EXCEPTION #======================#
-    "NumberAboveBoundsException",
+    # ======================# NUMBER_ABOVE_CEILING EXCEPTION #======================#
+    "NumberAboveCeilingException",
 ]
 
 from chess.system import BoundsException, InvalidNumberException
 
 
-# ======================# NUMBER_ABOVE_BOUNDS EXCEPTION #======================#
-class NumberAboveBoundsException(InvalidNumberException, BoundsException):
+# ======================# NUMBER_ABOVE_CEILING EXCEPTION #======================#
+class NumberAboveCeilingException(InvalidNumberException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -36,5 +36,5 @@ class NumberAboveBoundsException(InvalidNumberException, BoundsException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NUMBER_ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Number validation failed: The candidate was larger than the BOARD.DIMENSION."
+    ERROR_CODE = "NUMBER_ABOVE_CEILING_ERROR"
+    DEFAULT_MESSAGE = "Number validation failed: The candidate was above the ceiling."

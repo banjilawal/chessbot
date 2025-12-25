@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ChessException
+from chess.system import ExceptionWrapper
 
 __all__ = [
     # ======================# VALIDATION_FAILED EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 #======================# VALIDATION_FAILED EXCEPTION #======================#
-class ValidationFailedException(ChessException):
+class ValidationFailedException(ExceptionWrapper):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
   

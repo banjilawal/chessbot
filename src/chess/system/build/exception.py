@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ChessException
+from chess.system import ExceptionWrapper
 
 __all__ = [
     # ======================# BUILD_FAILED EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# BUILD_FAILED EXCEPTION #======================#
-class BuildFailedException(ChessException):
+class BuildFailedException(ExceptionWrapper):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

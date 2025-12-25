@@ -10,7 +10,8 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import (
-    BOARD_DIMENSION, InvalidNumberException, LoggingLevelRouter,  NotNegativeNumberValidator, ValidationResult,
+    BOARD_DIMENSION, InvalidNumberException, LoggingLevelRouter, NotNegativeNumberValidator, NumberValidator,
+    ValidationResult,
     Validator, NumberAboveBoundsException
 )
 
@@ -40,7 +41,9 @@ class NumberInBoundsValidator(Validator[int]):
     def validate(
             cls,
             candidate: Any,
-            not_negative_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
+            floor: int = 0,
+            ceiling: int = BOARD_DIMENSION,
+            number_validator: NumberValidator = NotNegativeNumberValidator(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -61,8 +64,8 @@ class NumberInBoundsValidator(Validator[int]):
           *     InvalidNumberException
         """
         method = "NumberInBoundsValidator.validate"
-        # Handle the below bounds case.
-        validation = not_negative_validator.validate(candidate=candidate)
+        # Handle the existence and type checks.
+        validation = number_validator.validate(candidate=candidate)
         if validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -74,8 +77,8 @@ class NumberInBoundsValidator(Validator[int]):
         # As a triple check cast the payload to an int for additional testing.
         number = cast(int, validation.payload)
         
-        # Handle case that the number is outside the Board array's dimension.
-        if number > BOARD_DIMENSION - 1:
+        # Handle case that the number is below the floor
+        if number > floor:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 InvalidNumberException(

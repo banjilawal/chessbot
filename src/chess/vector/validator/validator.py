@@ -9,7 +9,10 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.system import LoggingLevelRouter, NumberInBoundsValidator, ValidationResult, Validator
+from chess.system import (
+    LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberInBoundsValidator, ValidationResult,
+    Validator
+)
 from chess.vector import InvalidVectorException, NullVectorException, Vector
 
 
@@ -83,7 +86,11 @@ class VectorValidator(Validator[Vector]):
         vector = cast(Vector, candidate)
         
         # Validate the vector.x field. Use the absolute value because vectors can have negative components.
-        x_axis_validation = number_in_bounds_validator.validate(candidate=abs(vector.x))
+        x_axis_validation = number_in_bounds_validator.validate(
+            floor=0,
+            ceiling=LONGEST_KNIGHT_LEG_SIZE,
+            candidate=abs(vector.x),
+        )
         if x_axis_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -93,7 +100,11 @@ class VectorValidator(Validator[Vector]):
                 )
             )
         # Validate the vector.y field. Use the absolute value because vectors can have negative components.
-        y_axis_validation = number_in_bounds_validator.validate(candidate=abs(vector.y))
+        y_axis_validation = number_in_bounds_validator.validate(
+            floor=0,
+            ceiling=LONGEST_KNIGHT_LEG_SIZE,
+            candidate=abs(vector.y),
+        )
         if y_axis_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/system/err/debug.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/err/wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/number/exception/debug/floor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/build/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/number/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/number/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/number/exception/debug/above.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/number/exception/debug/ceiling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/number/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/number/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/number/validator/bounds.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/number/validator/bounds.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/base/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/base/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/validator/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +281,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "exceptionless",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/system/number/exception/debug",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -296,11 +308,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/number/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/system" />
       <recent name="$PROJECT_DIR$/src/chess/schema/service" />
       <recent name="$PROJECT_DIR$/src/chess/system/service/entity" />
       <recent name="$PROJECT_DIR$/src/chess/schema/lookup/forward" />
-      <recent name="$PROJECT_DIR$/src/chess/schema/key/builder/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess/system/number/exception/debug" />
@@ -966,7 +978,7 @@
       <workItem from="1766498674162" duration="23046000" />
       <workItem from="1766535382763" duration="2627000" />
       <workItem from="1766539524132" duration="27377000" />
-      <workItem from="1766573510463" duration="57808000" />
+      <workItem from="1766573510463" duration="61055000" />
     </task>
     <servers />
   </component>

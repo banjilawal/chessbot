@@ -7,8 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ChessException
-
+from chess.system import DebugException
 
 ___all__ = [
 #======================# OUT_OF_BOUNDS EXCEPTION #======================#
@@ -17,7 +16,7 @@ ___all__ = [
 
 
 #======================# BOUNDS EXCEPTION #======================#
-class BoundsException(ChessException):
+class BoundsException(DebugException):
     """
     # ROLE: Error Tracing, Debugging, Catchall Exception
     
