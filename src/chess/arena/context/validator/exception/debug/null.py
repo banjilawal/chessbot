@@ -7,13 +7,13 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from chess.system import NullException
-from chess.arena import InvalidArenaContextException
-
 __all__ = [
     # ======================# NULL_ARENA_CONTEXT EXCEPTION #======================#
     "NullArenaContextException",
 ]
+
+from chess.system import NullException
+from chess.arena import InvalidArenaContextException
 
 
 # ======================# NULL_ARENA_CONTEXT EXCEPTION #======================#
@@ -22,8 +22,7 @@ class NullArenaContextException(InvalidArenaContextException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if a ArenaContext validation candidate is null.
-    2.  Raised if an entity, method or operation requires a ArenaContext but receives null instead.
+    1.  Indicate that ArenaContext validation failed because the candidate was null.
 
     # PARENT:
         *   NullArenaContextException
@@ -38,5 +37,5 @@ class NullArenaContextException(InvalidArenaContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_ARENA_CONTEXT__ERROR"
-    DEFAULT_MESSAGE = "ArenaContext cannot be null."
+    ERROR_CODE = "NULL_ARENA_CONTEXT_ERROR"
+    DEFAULT_MESSAGE = "ArenaContext validation failed: The candidate was null."

@@ -7,26 +7,26 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import NullException
-from chess.game import InvalidGameContextException
-
 __all__ = [
-    #======================# GAME_CONTEXT NULL EXCEPTION #======================#
+    # ======================# NULL_GAME_CONTEXT EXCEPTION #======================#
     "NullGameContextException",
 ]
 
-#======================# GAME_CONTEXT NULL EXCEPTION #======================#
+from chess.system import NullException
+from chess.game import InvalidGameContextException
+
+
+# ======================# NULL_GAME_CONTEXT EXCEPTION #======================#
 class NullGameContextException(InvalidGameContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an GameContext validation candidate is null.
-    2.  Raised if an entity, method or operation requires an GameContext but receives null instead.
-    
+    1.  Indicate that GameContext validation failed because the candidate was null.
+
     # PARENT:
-        *   InvalidGameContextException
         *   NullGameContextException
+        *   InvalidGameContextException
 
     # PROVIDES:
     None
@@ -38,7 +38,4 @@ class NullGameContextException(InvalidGameContextException, NullException):
     None
     """
     ERROR_CODE = "NULL_GAME_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "GameContext cannot be null."
-    
-    
-    
+    DEFAULT_MESSAGE = "GameContext validation failed: The candidate was null."

@@ -6,7 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/context/validator/exception/debug/null.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -966,7 +974,7 @@
       <workItem from="1766498674162" duration="23046000" />
       <workItem from="1766535382763" duration="2627000" />
       <workItem from="1766539524132" duration="27377000" />
-      <workItem from="1766573510463" duration="40004000" />
+      <workItem from="1766573510463" duration="41040000" />
     </task>
     <servers />
   </component>

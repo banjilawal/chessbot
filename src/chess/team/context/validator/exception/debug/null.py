@@ -7,29 +7,30 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import NullException
-from chess.team import InvalidTeamContextException
 
 __all__ = [
-    #======================# TEAM_CONTEXT NULL EXCEPTION #======================#
+    # ======================# NULL_TEAM_CONTEXT EXCEPTION #======================#
     "NullTeamContextException",
 ]
 
-#======================# TEAM_CONTEXT NULL EXCEPTION #======================#
+from chess.system import NullException
+from chess.team import InvalidTeamContextException
+
+
+# ======================# NULL_TEAM_CONTEXT EXCEPTION #======================#
 class NullTeamContextException(InvalidTeamContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an TeamContext validation candidate is null.
-    2.  Raised if an entity, method or operation requires an TeamContext but receives null instead.
-    
+    1.  Indicate that TeamContext validation failed because the candidate was null.
+
     # PARENT:
-        *   InvalidTeamContextException
         *   NullTeamContextException
+        *   InvalidTeamContextException
 
     # PROVIDES:
-    NullTeamContextException
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -38,7 +39,4 @@ class NullTeamContextException(InvalidTeamContextException, NullException):
     None
     """
     ERROR_CODE = "NULL_TEAM_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TeamContext cannot be null."
-    
-    
-    
+    DEFAULT_MESSAGE = "TeamContext validation failed: The candidate was null."

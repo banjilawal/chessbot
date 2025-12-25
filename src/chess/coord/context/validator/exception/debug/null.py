@@ -7,14 +7,13 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-from chess.system import NullException
-from chess.coord import InvalidCoordContextException
-
 __all__ = [
     # ======================# NULL_COORD_CONTEXT EXCEPTION #======================#
     "NullCoordContextException",
 ]
 
+from chess.system import NullException
+from chess.coord import InvalidCoordContextException
 
 # ======================# NULL_COORD_CONTEXT EXCEPTION #======================#
 class NullCoordContextException(InvalidCoordContextException, NullException):

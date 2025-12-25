@@ -7,18 +7,35 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-
-from chess.system import NullException
-from chess.piece import InvalidPieceContextException
-
 __all__ = [
-    #========================= NULL PIECE_CONTEXT EXCEPTION =========================#
-    "NullPieceContextException"
+    # ======================# NULL_TOKEN_CONTEXT EXCEPTION #======================#
+    "NullTokenContextException",
 ]
 
+from chess.system import NullException
+from chess.token import InvalidTokenContextException
 
-#========================= NULL PIECE_CONTEXT EXCEPTION =========================#
-class NullPieceContextException(InvalidPieceContextException, NullException):
-    """Raised if an entity, method, or operation requires PieceContext but gets null instead."""
-    ERROR_CODE = "NULL_PIECE_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "PieceContext cannot be null."
+
+# ======================# NULL_TOKEN_CONTEXT EXCEPTION #======================#
+class NullTokenContextException(InvalidTokenContextException, NullException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that TokenContext validation failed because the candidate was null.
+
+    # PARENT:
+        *   NullTokenContextException
+        *   InvalidTokenContextException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "NULL_TOKEN_CONTEXT_ERROR"
+    DEFAULT_MESSAGE = "TokenContext validation failed: The candidate was null."

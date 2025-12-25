@@ -7,35 +7,35 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import NullException
-from chess.agent import InvalidAgentContextException
-
 __all__ = [
-    #======================# AGENT_CONTEXT NULL EXCEPTION #======================#
+    # ======================# NULL_AGENT_CONTEXT EXCEPTION #======================#
     "NullAgentContextException",
 ]
 
-#======================# AGENT_CONTEXT NULL EXCEPTION #======================#
+from chess.system import NullException
+from chess.agent import InvalidAgentContextException
+
+
+# ======================# NULL_AGENT_CONTEXT EXCEPTION #======================#
 class NullAgentContextException(InvalidAgentContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an AgentContext validation candidate is null.
-    2.  Raised if an entity, method or operation requires an AgentContext but receives null instead.
-    
+    1.  Indicate that AgentContext validation failed because the candidate was null.
+
     # PARENT:
-        *   InvalidAgentContextException
         *   NullAgentContextException
+        *   InvalidAgentContextException
 
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "NULL_AGENT_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "AgentContext cannot be null."
-    
-    
-    
+    DEFAULT_MESSAGE = "AgentContext validation failed: The candidate was null."

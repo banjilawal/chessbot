@@ -7,27 +7,26 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import NullException
-from chess.game import InvalidSnapshotContextException
-
 __all__ = [
-    # ======================# GAME_CONTEXT NULL EXCEPTION #======================#
+    # ======================# NULL_SNAPSHOT_CONTEXT EXCEPTION #======================#
     "NullSnapshotContextException",
 ]
 
+from chess.system import NullException
+from chess.snapshot import InvalidSnapshotContextException
 
-# ======================# GAME_CONTEXT NULL EXCEPTION #======================#
+
+# ======================# NULL_SNAPSHOT_CONTEXT EXCEPTION #======================#
 class NullSnapshotContextException(InvalidSnapshotContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an SnapshotContext validation candidate is null.
-    2.  Raised if an entity, method or operation requires an SnapshotContext but receives null instead.
+    1.  Indicate that SnapshotContext validation failed because the candidate was null.
 
     # PARENT:
-        *   InvalidSnapshotContextException
         *   NullSnapshotContextException
+        *   InvalidSnapshotContextException
 
     # PROVIDES:
     None
@@ -38,7 +37,5 @@ class NullSnapshotContextException(InvalidSnapshotContextException, NullExceptio
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_GAME_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "SnapshotContext cannot be null."
-
-
+    ERROR_CODE = "NULL_SNAPSHOT_CONTEXT_ERROR"
+    DEFAULT_MESSAGE = "SnapshotContext validation failed: The candidate was null."
