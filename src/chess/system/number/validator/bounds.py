@@ -35,19 +35,19 @@ class NumberInBoundsValidator(Validator[int]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            number_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
+            not_negative_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  If not_negative_validator certifies the candidate is at least zero then test its less than the array size.
-        2.  Return an exception if the candidate fails any test. Else pass the certified
-            nuber in the ValidationResult.
+            1.  If candidate fails not-negative validation return the validation result containing the exception.
+                Else get the number from the validation payload.
+            2.  If number > BOARD.DIMENSION -1 return the ValidationResult containing the exception.
+            3.  The tests have been passed. Return the ValidationResult with the number in the payload.
 
         # PARAMETERS:
             *   candidate (Any)
@@ -55,35 +55,33 @@ class NumberInBoundsValidator(Validator[int]):
 
         # Returns:
         ValidationResult[int] containing either:
-            - On success: int in the payload.
             - On failure: Exception.
-
+            - On success: int in the payload.
         # Raises:
-          *     NegativeNumberException
           *     InvalidNumberException
         """
-        method = "NumberInBoundsVAlidator.validate"
-        
-        try:
-            # Certify the candidate is not a negative number.
-            validation = number_validator.validate(candidate=candidate)
-            if validation.is_failure:
-                return ValidationResult.failure(validation.exception)
-            
-            # Cast the payload to an int.
-            number = cast(int, validation.payload)
-            
-            # Handle case that the number is outside the Board array's dimension.
-            if number > BOARD_DIMENSION - 1:
-                return ValidationResult.failure(
-                    NumberAboveBoundsException(f"{method}: {NumberAboveBoundsException.DEFAULT_MESSAGE}")
-                )
-            # On passing both tests cast the candidate to an int, wrap in a ValidationResult and send back.
-            return ValidationResult.success(payload=cast(int, candidate))
-        
-        # Finally, catch any missed exception, wrap an InvalidNumberException then return the
-        # exception chain inside a ValidationResult.
-        except Exception as ex:
+        method = "NumberInBoundsValidator.validate"
+        # Handle the below bounds case.
+        validation = not_negative_validator.validate(candidate=candidate)
+        if validation.is_failure:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidNumberException(ex=ex, message=f"{method}: {InvalidNumberException.DEFAULT_MESSAGE}")
+                InvalidNumberException(
+                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                    ex=validation.exception,
+                )
             )
+        # As a triple check cast the payload to an int for additional testing.
+        number = cast(int, validation.payload)
+        
+        # Handle case that the number is outside the Board array's dimension.
+        if number > BOARD_DIMENSION - 1:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                InvalidNumberException(
+                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                    ex=NumberAboveBoundsException(f"{method}: {NumberAboveBoundsException.DEFAULT_MESSAGE}")
+                )
+            )
+        # On certification success return the number in the ValidationResult
+        return ValidationResult.success(payload=number)
