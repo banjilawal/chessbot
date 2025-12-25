@@ -10,9 +10,8 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import (
-    BOARD_DIMENSION, InvalidNumberException, LoggingLevelRouter, NotNegativeNumberValidator, NumberValidator,
-    ValidationResult,
-    Validator, NumberAboveBoundsException
+    BOARD_DIMENSION, InvalidNumberException, LoggingLevelRouter, NotNegativeNumberValidator,
+    NumberAboveCeilingException, NumberBelowFloorException, NumberValidator, ValidationResult, Validator,
 )
 
 
@@ -78,12 +77,21 @@ class NumberInBoundsValidator(Validator[int]):
         number = cast(int, validation.payload)
         
         # Handle case that the number is below the floor
-        if number > floor:
+        if number < floor:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 InvalidNumberException(
                     message=f"{method}: {InvalidNumberException.ERROR_CODE}",
-                    ex=NumberAboveBoundsException(f"{method}: {NumberAboveBoundsException.DEFAULT_MESSAGE}")
+                    ex=NumberBelowFloorException(f"{method}: {NumberBelowFloorException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle case that the number is above the floor
+        if number < floor:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                InvalidNumberException(
+                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                    ex=NumberAboveCeilingException(f"{method}: {NumberAboveCeilingException.DEFAULT_MESSAGE}")
                 )
             )
         # On certification success return the number in the ValidationResult

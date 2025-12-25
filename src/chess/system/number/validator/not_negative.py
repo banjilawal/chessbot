@@ -37,7 +37,7 @@ class NotNegativeNumberValidator(Validator[int]):
     def validate(
             cls,
             candidate: Any,
-            number_validator: NumberValidator = NumberValidator()
+            number_validator: NumberValidator = NumberValidator(),
     ) -> ValidationResult[int]:
         """
         # ACTION:

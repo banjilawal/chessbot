@@ -7,14 +7,14 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import InvalidGameColorException, NullException
+from chess.system import GameColorException, NullException
 
 __all__ = [
     # ======================# NULL_GAME_COLOR_VALIDATION EXCEPTION #======================#
     "NullGameColorException",
 ]
 # ======================# NULL_GAME_COLOR_VALIDATION EXCEPTION #======================#
-class NullGameColorException(InvalidGameColorException, NullException):
+class NullGameColorException(GameColorException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

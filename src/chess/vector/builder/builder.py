@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.system import Builder, BuildResult, LoggingLevelRouter
+from chess.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberInBoundsValidator
 from chess.vector import Vector, VectorBuildFailedException,VectorValidator
 
 
@@ -40,7 +40,7 @@ class VectorBuilder(Builder[Vector]):
             self,
             x: int,
             y: int,
-            validator: VectorValidator = VectorValidator(),
+            bound_number_validator : NumberInBoundsValidator = NumberInBoundsValidator(),
     ) -> BuildResult[Vector]:
         """
         # ACTION:
@@ -63,25 +63,25 @@ class VectorBuilder(Builder[Vector]):
             *   VectorBuildFailedException
         """
         method = "VectorBuilder.builder"
-        
-        try:
-            x_component_validation = validator.validate_x_component(x)
-            if x_component_validation.is_failure():
-                return BuildResult.failure(x_component_validation.exception)
-            
-            y_component_validation = validator.validate_y_component(y)
-            if y_component_validation.is_failure():
-                return BuildResult.failure(y_component_validation.exception)
-            
-            x = cast(int, x_component_validation.payload)
-            y = cast(int, y_component_validation.payload)
-            
-            return BuildResult.success(payload=Vector(x=x, y=y))
-        
-        except Exception as ex:
+        # Handle the x component
+        x_validation = bound_number_validator.validate(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(x))
+        if x_validation.is_failure:
+            # Return the exception chain on failure.
             return BuildResult.failure(
                 VectorBuildFailedException(
-                    ex=ex,
-                    message=f"{method}: {VectorBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=x_validation.exception,
+                    message=f"{method}: {VectorBuildFailedException.ERROR_CODE}"
                 )
             )
+        # Handle the y component
+        y_validation = bound_number_validator.validate(floor=0, ceiling=LONGEST_KNIGHT_LEG_SIZE, candidate=abs(y))
+        if y_validation.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                VectorBuildFailedException(
+                    ex=y_validation.exception,
+                    message=f"{method}: {VectorBuildFailedException.ERROR_CODE}"
+                )
+            )
+        # After the components are certified return the Vector in the BuildResult.
+        return BuildResult.success(payload=Vector(x=x, y=y))
