@@ -12,10 +12,10 @@ class DebugException(ChessException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Contains a description of the condition that caused a failure.
-    Leaf node in an exception chain.
-    2.  Are the desired exception type in a Result.
-
+    1.  Leaf node of an exception which contains a description of the condition that caused a transaction or
+        operation failure.
+    2.  Should be encapsulated inside a WrapperException or CatchallException
+    .
     # PARENT:
         *   ChessException
 
@@ -28,5 +28,5 @@ class DebugException(ChessException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "DEBUG_EXCEPTION"
-    DEFAULT_MESSAGE = "DebugException"
+    ERROR_CODE = "DEBUG_ERROR"
+    DEFAULT_MESSAGE = "An error occurred."

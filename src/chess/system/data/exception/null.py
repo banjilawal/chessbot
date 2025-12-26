@@ -18,10 +18,12 @@ __all__ = [
 # ====================== NULL_DATA_SET EXCEPTION #======================#
 class NullDatasetException(DatasetException, NullException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions indicating an entity, method or operation requires a dataset but got null instead.
+    1.  A debug exception is created when a Team candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an TeamValidationFailedException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
     3.  Catchall for errors not covered by lower level NullDatasetException subclasses.
 
     # PARENT:

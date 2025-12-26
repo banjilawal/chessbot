@@ -5,16 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/err/consistency/collision.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/err/consistency/invariant.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/context/finder/exception/debug/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/context/finder/exception/debug/id.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/context/finder/exception/route.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/context/finder/finder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/team/service/data/exception/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/finder/example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/finder/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/finder/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/finder/searcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/data/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/consistency/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/consistency/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/consistency/inconsistency.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/consistency/inconsistency.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/implementation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/implementation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/finder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/finder/exception/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/finder/exception/debug/dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/finder/searcher.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/catchall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/catchall.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,14 +328,14 @@
       <recent name="$PROJECT_DIR$/src/chess/schema/lookup/forward" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/team/context/finder/exception/debug" />
+      <recent name="$PROJECT_DIR$/src/chess/team/service/data/exception" />
       <recent name="$PROJECT_DIR$/src/chess/team/service/data/unique/exception" />
       <recent name="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/team/validator/exception/debug" />
-      <recent name="$PROJECT_DIR$/src/chess/team/validator/exception/debug/null" />
-      <recent name="$PROJECT_DIR$/src/chess/system/number/exception/debug" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.searcher">
+  <component name="RunManager" selected="Python.finder">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -641,53 +658,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pawn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/rank" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/rank/pawn/pawn.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pawn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="chessbot" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/rank" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/rank/pawn/pawn.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="searcher" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="finder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="chessbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -701,7 +672,53 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/team/context/finder/searcher.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/team/context/finder/finder.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pawn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/rank" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/rank/pawn/pawn.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pawn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/chess/rank" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/chess/rank/pawn/pawn.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -758,7 +775,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.searcher" />
+        <item itemvalue="Python.finder" />
         <item itemvalue="Python.finder (1)" />
         <item itemvalue="Python.finder" />
         <item itemvalue="Python.base" />
@@ -975,7 +992,7 @@
       <workItem from="1766535382763" duration="2627000" />
       <workItem from="1766539524132" duration="27377000" />
       <workItem from="1766573510463" duration="91318000" />
-      <workItem from="1766722086205" duration="22443000" />
+      <workItem from="1766722086205" duration="33467000" />
     </task>
     <servers />
   </component>

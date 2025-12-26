@@ -53,12 +53,10 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             2.  If the enabled param is not certified by the appropriate validating service return an exception in
                 the BuildResult.
             3.  After the active param is validated create the SchemaSuperKey object and return in the BuildResult.
-
         # PARAMETERS:
             *   Only one these must be provided:
                     *   name (Optional[str])
                     *   color (Optional[GameColor])
-    
             *   These Parameters must be provided:
                     *   color_validator (GameColorValidator)
                     *   identity_service (IdentityService)
@@ -66,7 +64,6 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             *   BuildResult[SchemaSuperKey] containing either:
                     - On failure: Exception.
                     - On success: SchemaSuperKey in the payload.
-
         # RAISES:
             *   ZeroSchemaSuperKeysException
             *   SchemaSuperKeyBuildFailedException

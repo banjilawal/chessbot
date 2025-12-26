@@ -11,12 +11,10 @@ from typing import List, Optional, cast
 
 from chess.schema import Schema
 from chess.team import (
-    Team, TeamContext, TeamContextService, TeamDataService, TeamService,
-    UniqueTeamDataServiceException
+    Team, TeamContext, TeamContextService, TeamDataService, TeamService, UniqueTeamDataServiceException
 )
 from chess.system import (
-    DeletionResult, GameColor, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService,
-    id_emitter
+    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
 )
 
 
@@ -93,7 +91,8 @@ class UniqueTeamDataService(UniqueDataService[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
                 UniqueTeamDataServiceException(
-                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                    ex=result.exception
                 )
             )
         # On a successful search directly return the result.
@@ -110,7 +109,8 @@ class UniqueTeamDataService(UniqueDataService[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
                 UniqueTeamDataServiceException(
-                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                    ex=result.exception
                 )
             )
         # On a successful search directly return the result.
@@ -124,7 +124,8 @@ class UniqueTeamDataService(UniqueDataService[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the InsertionResult.
             return SearchResult.failure(
                 UniqueTeamDataServiceException(
-                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                    ex=result.exception
                 )
             )
         # On a successful search directly return the result.
@@ -138,7 +139,8 @@ class UniqueTeamDataService(UniqueDataService[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the DeletionResult.
             return SearchResult.failure(
                 UniqueTeamDataServiceException(
-                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                    ex=result.exception
                 )
             )
         # On a successful search directly return the result.
@@ -152,7 +154,8 @@ class UniqueTeamDataService(UniqueDataService[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
                 UniqueTeamDataServiceException(
-                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                    ex=result.exception
                 )
             )
         # On a successful search directly return the result.

@@ -15,4 +15,4 @@ from .data import *
 
 # Modules
 from .service import TeamService
-from .exception import TeamServiceException
+from .catchall import TeamServiceException

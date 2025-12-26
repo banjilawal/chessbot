@@ -1,24 +1,24 @@
-# src/chess/team/finder/exception/base.py
+# src/chess/team/finder/exception/wrapper.py
 
 """
-Module: chess.team.finder.exception.base
+Module: chess.team.finder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
 """
 
-from chess.system import FinderException
 
 __all__ = [
     #======================# TEAM_SEARCH_FAILURE EXCEPTION #======================#
     "TeamSearchFailedException",
 ]
 
+from chess.system import SearchFailedException
 from chess.team import TeamException
 
 
 #======================# TEAM_SEARCH_FAILURE EXCEPTION #======================#
-class TeamSearchFailedException(TeamException, FinderException):
+class TeamSearchFailedException(TeamException, SearchFailedException):
     """
     # ROLE: Exception Wrapper
   

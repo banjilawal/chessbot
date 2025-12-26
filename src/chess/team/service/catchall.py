@@ -1,7 +1,7 @@
-# src/chess/team/service/exception/base.py
+# src/chess/team/service/exception/catchall.py
 
 """
-Module: chess.team.service.exception.base
+Module: chess.team.service.exception.catchall
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -22,8 +22,7 @@ class TeamServiceException(TeamException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an TeamService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a TeamService method.
+    1.  Encapsulate TeamService method outputs when there is a failure.
 
     # PARENT:
         *   ServiceException

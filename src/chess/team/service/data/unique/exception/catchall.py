@@ -22,9 +22,8 @@ class UniqueTeamDataServiceException(TeamException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an UniqueTeamDataService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a UniqueTeamDataService method.
-
+    1.  Encapsulate UniqueTeamDataService method outputs when there is a failure.
+    
     # PARENT:
         *   ServiceException
         *   TeamException

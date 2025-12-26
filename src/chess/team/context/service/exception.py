@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import ServiceException
+from chess.system import CatchallException, ServiceException
 from chess.team import TeamContextException
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 # ======================# TEAM_CONTEXT_SERVICE EXCEPTION #======================#
 class TeamContextServiceException(TeamContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
     1.  Indicate that an TeamContextService encountered an error which prevented the service from completing a task.
