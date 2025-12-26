@@ -1,7 +1,7 @@
-# src/chess/team/builder/exception.py
+# src/chess/team/context/builder/exception/wrapper.py
 
 """
-Module: chess.team.builder.exception
+Module: chess.team.context.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

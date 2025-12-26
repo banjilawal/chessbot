@@ -52,12 +52,10 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             3.  Use super_key.attribute to route to the appropriate validation subflow.
             4.  If no Schema.VARIANT.attribute == super_key.attribute return an exception in the ValidationResult.
             5.  All tests are passed. Send super_key in the ValidationResult.
-
         # Parameters:
             *   candidate (Any)
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
-
         # Returns:Confirm
         ValidationResult[SchemaSuperKey] containing either:
                 - On failure: Exception.

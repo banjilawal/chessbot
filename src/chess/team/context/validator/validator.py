@@ -13,7 +13,7 @@ from chess.agent import AgentService
 from chess.arena import ArenaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
-    InvalidTeamContextException, NoTeamContextFlagException, NullTeamContextException, TeamContext,
+    TeamContextValidationFailedException, NoTeamContextFlagException, NullTeamContextException, TeamContext,
     ExcessiveTeamContextFlagsException
 )
 from chess.team.context.validator.exception.route import TeamContextValidationRouteException
@@ -52,29 +52,29 @@ class TeamContextValidator(Validator[TeamContext]):
     ) -> ValidationResult[TeamContext]:
         """
         # Action:
-        1.  Confirm that only one in the (id, designation, player_agent, arena, color) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's validator.
-        3.  If any check fais return a ValidationResult containing the exception raised by the failure.
-        4.  On success Build an TeamContext are return in a ValidationResult.
-
+            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
+                Else, cast to TeamContext instance context.
+            2.  If one-and-only-one context attribute is not null return an exception in the ValidationResult.
+            3.  If there is no certification route for the attribute return an exception in the ValidationResult.
+            4.  If the certification route exists use the appropriate service or validator to send either an exception
+                chain the ValidationResult or the context.
         # Parameters:
             *   candidate (Any)
             *   color_validator (ColorValidator)
             *   player_agent_service (AgentService)
             *   arena_service (ArenaService)
             *   identity_service (IdentityService)
-
         # Returns:
-        ValidationResult[TeamContext] containing either:
-            - On success: TeamContext in the payload.
-            - On failure: Exception.
-
+            *   ValidationResult[TeamContext] containing either:
+                    - On failure: Exception.
+                    - On success: TeamContext in the payload.
         # Raises:
             *   TypeError
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException
             *   ExcessiveTeamContextFlagsException
-            *   InvalidTeamContextException
+            *   TeamContextValidationFailedException
+            *   TeamContextValidationRouteException
         """
         method = "TeamContextValidator.validate"
         # Handle the nonexistence case.

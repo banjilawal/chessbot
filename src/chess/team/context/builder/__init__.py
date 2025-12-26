@@ -1,7 +1,7 @@
-# src/chess/team/builder/__init__.py
+# src/chess/team/context/builder/__init__.py
 
 """
-Module: chess.team.builder.__init__
+Module: chess.team.context.builder.__init__
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== TEAM.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
-# None
+from .exception import *
 
 # Modules
 from .builder import TeamContextBuilder
-from .exception import TeamContextBuildFailedException

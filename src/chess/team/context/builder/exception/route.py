@@ -1,3 +1,12 @@
+# src/chess/team/context/builder/exception/route.py
+
+"""
+Module: chess.team.context.builder.exception.route
+Author: Banji Lawal
+Created: 2025-11-24
+version: 1.0.0
+"""
+
 from chess.system import ResultException, UnhandledRouteException
 
 __all__ = [

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.team import InvalidTeamContextException
+from chess.team import TeamContextException
 
 __all__ = [
     # ========================= ZERO_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
@@ -17,17 +17,17 @@ __all__ = [
 
 
 # ========================= ZERO_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
-class ZeroTeamContextFlagsException(InvalidTeamContextException, ContextFlagCountException):
+class ZeroTeamContextFlagsException(TeamContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  no TeamContext flag was enabled. One and only one Team attribute-value-tuple is required for
-        a search.
+    1.  Indicate that the candidate was not granted TeamContext certification because no TeamContext flag
+        was enabled.
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidTeamContextException
+        *   TeamContextException
 
     # PROVIDES:
     None
@@ -40,6 +40,6 @@ class ZeroTeamContextFlagsException(InvalidTeamContextException, ContextFlagCoun
     """
     ERROR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
-        "Zero TeamContext flags were set. Cannot search for Teams if one-and_oly-one "
-        "map flag is enabled."
+        "TeamContext validation failed: The candidate had more than one attribute set. Cannot search for teams if "
+        "without one and only attribute-value tuple enabled."
     )

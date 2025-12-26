@@ -10,8 +10,8 @@ version: 1.0.0
 #=========== TEAM.CONTEXT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from flag import *
+from debug import *
 
 # Modules
-from .null import NullTeamContextException
-from .base import InvalidTeamContextException
+from .route import TeamContextValidationRouteException
+from .wrapper import TeamContextValidationFailedException
