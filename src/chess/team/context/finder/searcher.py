@@ -49,22 +49,19 @@ class TeamFinder(DataFinder[Team]):
     ) -> SearchResult[List[Team]]:
         """
         # Action:
-        1.  Verify the dataset is not null and contains only Team objects,
-        2.  Use context_validator to certify the provided map.
-        3.  Context attribute routes the finder. Attribute value is the finder target.
-        4.  The outcome of the finder is sent back to the caller in a SearchResult object.
-
+            1.  Verify the dataset is not null and contains only Team objects,
+            2.  Use context_validator to certify the provided context.
+            3.  Context attribute routes the finder. Attribute value is the finder target.
+            4.  The outcome of the finder is sent back to the caller in a SearchResult object.
         # Parameters:
-            *   dataset (List[Team]):
-            *   map: TeamContext
-            *   context_validator: TeamContextValidator
-
+            *   dataset (List[Team])
+            *   context (TeamContext)
+            *   context_validator (TeamContextValidator)
         # Returns:
-        SearchResult[List[Team]] containing either:
-            - On finding a match: List[Team] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
+            *   SearchResult[List[Team]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Team] in the payload.
+                    - On no matches found: Exception null, payload null
         # Raises:
             *   TypeError
             *   TeamNullDatasetException
@@ -77,11 +74,11 @@ class TeamFinder(DataFinder[Team]):
                 return SearchResult.failure(
                     TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}")
                 )
-            # certify the map is safe.
+            # certify the context is safe.
             validation_result = context_validator.validate(context)
             if validation_result.is_failure:
                 return SearchResult.failure(validation_result.exception)
-            # After map is verified select the finder method based on the which flag is enabled.
+            # After context is verified select the finder method based on the which flag is enabled.
             
             # Entry point into finding by team's id.
             if context.id is not None:
@@ -99,7 +96,7 @@ class TeamFinder(DataFinder[Team]):
             if context.color is not None:
                 return cls._find_by_color(dataset=dataset, team=context.color)
                 
-                # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
+                # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a context path was missed.
             SearchResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )

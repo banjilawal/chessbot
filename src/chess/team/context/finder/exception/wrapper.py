@@ -10,15 +10,17 @@ version: 1.0.0
 from chess.system import FinderException
 
 __all__ = [
-    #======================# TEAM_FINDER EXCEPTION #======================#
-    "TeamFinderException",
+    #======================# TEAM_SEARCH_FAILURE EXCEPTION #======================#
+    "TeamSearchFailedException",
 ]
 
+from chess.team import TeamException
 
-#======================# TEAM_FINDER EXCEPTION #======================#
-class TeamFinderException(FinderException):
+
+#======================# TEAM_SEARCH_FAILURE EXCEPTION #======================#
+class TeamSearchFailedException(TeamException, FinderException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
   
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by TeamFinder objects.
@@ -36,5 +38,5 @@ class TeamFinderException(FinderException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_FINDER_ERROR"
-    DEFAULT_MESSAGE = "TeamFinder raised an exception."
+    ERROR_CODE = "TEAM_SEARCH_FAILURE_ERROR"
+    DEFAULT_MESSAGE = "TeamSearch failed."

@@ -1,12 +1,11 @@
-# src/chess/team/service/data/unique/exception.py
+# src/chess/team/service/data/unique/exception/catchall.py
 
 """
-Module: chess.team.service.data.unique.exception
+Module: chess.team.service.data.unique.exception.catchall
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
-
 
 ___all__ = [
     # ======================# TEAM_DATA_SERVICE EXCEPTION #======================#

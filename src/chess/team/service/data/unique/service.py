@@ -9,9 +9,13 @@ version: 1.0.0
 
 from typing import List, Optional, cast
 
-from chess.team import Team, TeamContext, TeamContextService, TeamDataService, TeamService
+from chess.schema import Schema
+from chess.team import (
+    Team, TeamContext, TeamContextService, TeamDataService, TeamService,
+    UniqueTeamDataServiceException
+)
 from chess.system import (
-    DeletionResult, EntityService, GameColor, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService,
+    DeletionResult, GameColor, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService,
     id_emitter
 )
 
@@ -28,11 +32,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         *   UniqueDataService
 
     # PROVIDES:
-        *   team_service: -> TeamService
-        *   context_service: -> TeamContextService
-        *   add_team: -> InsertionResult[Team]
-        *   undo_add_team: -> DeletionResult[Team]
-        *   search_teams: -> SearchResult[List[Team]]
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -40,31 +40,28 @@ class UniqueTeamDataService(UniqueDataService[Team]):
     # INHERITED ATTRIBUTES:
         *   See UniqueDataService class for inherited attributes.
     """
-    DEFAULT_NAME = "UniqueTeamDataService"
+    SERVICE_NAME = "UniqueTeamDataService"
     
     def __init__(
             self,
-            id: int,
-            name: str = DEFAULT_NAME,
-            data_service: TeamDataService = TeamDataService()
+            name: str = SERVICE_NAME,
+            id: int = id_emitter.service_id,
+            data_service: TeamDataService = TeamDataService(),
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
             *   data_service (TeamDataService): = TeamDataService()
-
-        # Returns:
-        None
-
-        # Raises:
-        None
+        # RETURNS:
+            None
+        # RAISES:
+            None
         """
         super().__init__(id=id, name=name, data_service=data_service)
-    
+
     @property
     def team_service(self) -> TeamService:
         return cast(TeamDataService, self.data_service).team_service
@@ -86,20 +83,77 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         return cast (Team, self.data_service.current_item)
     
     @property
-    def white_teams(self) -> List[Team]:
-        result = self.data_service.search(context=TeamContext(color=GameColor.WHITE))
-        return result.payload if result.success else []
+    @LoggingLevelRouter.monitor
+    def white_teams(self) -> SearchResult[List[Team]]:
+        """Convenience method which turns a common search into a dynamic property"""
+        method = "UniqueTeamDataService.white_teams"
+        # Use color from the schema incase team color is changed from GameColor.BLACK
+        result = self.data_service.search(context=TeamContext(color=Schema.WHITE.color))
+        if result.is_failure:
+            # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
+            return SearchResult.failure(
+                UniqueTeamDataServiceException(
+                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                )
+            )
+        # On a successful search directly return the result.
+        return result
     
     @property
-    def black_teams(self) -> List[Team]:
-        result = self.data_service.search(context=TeamContext(color=GameColor.BLACK))
-        return result.payload if result.success else []
+    @LoggingLevelRouter.monitor
+    def black_teams(self) -> SearchResult[List[Team]]:
+        """Convenience method which turns a common search into a dynamic property"""
+        method = "UniqueTeamDataService.black_teams"
+        # Use color from the schema incase team color is changed from GameColor.BLACK
+        result = self.data_service.search(context=TeamContext(color=Schema.BLACK.color))
+        if result.is_failure:
+            # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
+            return SearchResult.failure(
+                UniqueTeamDataServiceException(
+                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                )
+            )
+        # On a successful search directly return the result.
+        return result
     
+    @LoggingLevelRouter.monitor
     def add_team(self, team: Team) -> InsertionResult[Team]:
-        return self.push_unique_item(team)
+        method = "UniqueTeamDataService.add_team"
+        result = self.push_unique_item(team)
+        if result.is_failure:
+            # Handle the failure case by wrapping the debugging exception then sending in the InsertionResult.
+            return SearchResult.failure(
+                UniqueTeamDataServiceException(
+                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                )
+            )
+        # On a successful search directly return the result.
+        return result
     
+    @LoggingLevelRouter.monitor
     def undo_add_team(self) -> DeletionResult[Team]:
-        return self.data_service.undo_item_push()
+        method = "UniqueTeamDataService.undo_add_team"
+        result = self.data_service.undo_item_push()
+        if result.is_failure:
+            # Handle the failure case by wrapping the debugging exception then sending in the DeletionResult.
+            return SearchResult.failure(
+                UniqueTeamDataServiceException(
+                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                )
+            )
+        # On a successful search directly return the result.
+        return result
     
+    @LoggingLevelRouter.monitor
     def search_teams(self, context: TeamContext) -> SearchResult[List[Team]]:
-        return self.data_service.search(context)
+        method = "UniqueTeamDataService.search_teams"
+        result = self.data_service.search(context)
+        if result.is_failure:
+            # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
+            return SearchResult.failure(
+                UniqueTeamDataServiceException(
+                    message=f"{method}: {UniqueTeamDataServiceException.ERROR_CODE}", ex=result.exception
+                )
+            )
+        # On a successful search directly return the result.
+        return result

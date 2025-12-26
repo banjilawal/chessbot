@@ -9,16 +9,12 @@ version: 1.0.0
 
 from typing import Optional
 
-
 from chess.arena import Arena, ArenaService
 from chess.agent import PlayerAgent, AgentService
-from chess.system import (
-    Builder, BuildResult,  GameColor, GameColorValidator,
-    IdentityService, LoggingLevelRouter
-)
+from chess.system import Builder, BuildResult,  GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.team import (
-    TeamContext, TeamContextBuildFailedException, ExcessiveTeamContextFlagsException,
-    TeamContextBuildRouteException, ZeroTeamContextFlagsException
+    TeamContext, TeamContextBuildFailedException, ExcessiveTeamContextFlagsException, TeamContextBuildRouteException,
+    ZeroTeamContextFlagsException
 )
 
 

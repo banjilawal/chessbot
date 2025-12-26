@@ -10,8 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import EntityService, id_emitter
-from chess.team import Team, TeamBuilder, TeamSchemaValidator, TeamValidator
-from chess.schema.service.service import TeamSchemaService
+from chess.team import Team, TeamBuilder, TeamValidator
 
 
 class TeamService(EntityService[Team]):
@@ -36,36 +35,29 @@ class TeamService(EntityService[Team]):
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
     """
-    DEFAULT_NAME = "TeamService"
-    _schema_service: TeamSchemaService
+    SERVICE_NAME = "TeamService"
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             builder: TeamBuilder = TeamBuilder(),
             validator: TeamValidator = TeamValidator(),
-            schema_service: TeamSchemaService = TeamSchemaService(),
     ):
         """
         # ACTION:
-        Constructor
-
+             Constructor
         # PARAMETERS:
             *   id (nt)
             *   name (str)
             *   builder (TeamBuilder)
             *   validator (TeamValidator)
-            *   schema_lookup (TeamSchemaLookup)
-
-        # Returns:
-        None
-
-        # Raises:
-        None
+        # RETURNS:
+                None
+        # RAISES:
+            None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._schema_service = schema_service
     
     @property
     def builder(self) -> TeamBuilder:
@@ -76,8 +68,3 @@ class TeamService(EntityService[Team]):
     def validator(self) -> TeamValidator:
         """get TeamValidator."""
         return cast(TeamValidator, self.entity_validator)
-    
-    @property
-    def schema_service(self) -> TeamSchemaService:
-        """get TeamSchemaLookup."""
-        return self._schema_service

@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== TEAM.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
 
 # Packages
-# None
+from .exception import *
 
 # Modules
 from .service import UniqueTeamDataService
-from .exception import UniqueTeamDataServiceException
