@@ -12,6 +12,6 @@ Created: 2025-11-18
 None
 
 # Modules
-from .service import NullServiceException
-from .builder import NullBuilderException
-from .validator import NullValidatorException
+from .service import NullEntityServiceException
+from .builder import EntityServiceNullBuilderException
+from .validator import EntityServiceNullValidatorException

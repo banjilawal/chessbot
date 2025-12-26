@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import (
-    BOARD_DIMENSION, InvalidNumberException, LoggingLevelRouter, NotNegativeNumberValidator,
+    BOARD_DIMENSION, NumberValidationFailedException, LoggingLevelRouter, NotNegativeNumberValidator,
     NumberAboveCeilingException, NumberBelowFloorException, NumberValidator, ValidationResult, Validator,
 )
 
@@ -50,17 +50,17 @@ class NumberInBoundsValidator(Validator[int]):
                 Else get the number from the validation payload.
             2.  If number > BOARD.DIMENSION -1 return the ValidationResult containing the exception.
             3.  The tests have been passed. Return the ValidationResult with the number in the payload.
-
         # PARAMETERS:
             *   candidate (Any)
             *   not_negative_validator (NotNegativeNumberValidator)
-
-        # Returns:
-        ValidationResult[int] containing either:
-            - On failure: Exception.
-            - On success: int in the payload.
+        # RETURNS:
+            *   ValidationResult[int] containing either:
+                    - On failure: Exception.
+                    - On success: int in the payload.
         # Raises:
-          *     InvalidNumberException
+              *     NumberValidationFailedException
+              *     NumberBelowFloorException
+              *     NumberAboveCeilingException
         """
         method = "NumberInBoundsValidator.validate"
         # Handle the existence and type checks.
@@ -68,9 +68,8 @@ class NumberInBoundsValidator(Validator[int]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidNumberException(
-                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
-                    ex=validation.exception,
+                NumberValidationFailedException(
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}", ex=validation.exception,
                 )
             )
         # As a triple check cast the payload to an int for additional testing.
@@ -80,8 +79,8 @@ class NumberInBoundsValidator(Validator[int]):
         if number < floor:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidNumberException(
-                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                NumberValidationFailedException(
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
                     ex=NumberBelowFloorException(f"{method}: {NumberBelowFloorException.DEFAULT_MESSAGE}")
                 )
             )
@@ -89,8 +88,8 @@ class NumberInBoundsValidator(Validator[int]):
         if number < floor:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidNumberException(
-                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                NumberValidationFailedException(
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
                     ex=NumberAboveCeilingException(f"{method}: {NumberAboveCeilingException.DEFAULT_MESSAGE}")
                 )
             )

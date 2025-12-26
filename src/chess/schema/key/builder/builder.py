@@ -73,7 +73,6 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             *   ExcessiveSchemaSuperKeysException
         """
         method = "SchemaSuperKeyBuilder.build"
-        
         # Count how many optional parameters are not-null.
         params = [name, color,]
         param_count = sum(bool(p) for p in params)

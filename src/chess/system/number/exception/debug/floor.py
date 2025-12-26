@@ -12,11 +12,11 @@ __all__ = [
     "NumberBelowFloorException",
 ]
 
-from chess.system import BoundsException, InvalidNumberException
+from chess.system import BoundsException, NumberException
 
 
 # ======================# NUMBER_BELOW_FLOOR EXCEPTION #======================#
-class NumberBelowFloorException(InvalidNumberException, BoundsException):
+class NumberBelowFloorException(NumberException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class NumberBelowFloorException(InvalidNumberException, BoundsException):
     1.  Indicate that number validation failed because the candidate was smaller than the floor.
 
     # PARENT:
-        *   InvalidNumberException
+        *   NumberException
         *   BoundsException
 
     # PROVIDES:

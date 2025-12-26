@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
-from chess.system import InvalidNumberException, NullNumberException
+from chess.system import NumberValidationFailedException, NullNumberException
 
 
 class NumberValidator(Validator[int]):
@@ -51,15 +51,15 @@ class NumberValidator(Validator[int]):
         # Raises:
           *     TypeError
           *     NullNumberException
-          *     InvalidNumberException
+          *     NumberValidationFailedException
         """
         method = "NumberValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain.
             return ValidationResult.failure(
-                InvalidNumberException(
-                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                NumberValidationFailedException(
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
                     ex=NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}"),
                 )
             )
@@ -67,8 +67,8 @@ class NumberValidator(Validator[int]):
         if not isinstance(candidate, int):
             # Return the exception chain.
             return ValidationResult.failure(
-                InvalidNumberException(
-                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                NumberValidationFailedException(
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected an integer instance, got {type(candidate).__name__} instead."),
                 )
             )

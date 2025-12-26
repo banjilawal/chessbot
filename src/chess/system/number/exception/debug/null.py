@@ -7,16 +7,16 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import InvalidNumberException, NullException
+from chess.system import NumberException, NullException
 
 __all__ = [
-    # ======================# NULL NUMBER EXCEPTION #======================#
+    # ======================# NULL_NUMBER EXCEPTION #======================#
     "NullNumberException",
 ]
 
 
-# ======================# NULL NUMBER EXCEPTION #======================#
-class NullNumberException(InvalidNumberException, NullException):
+# ======================# NULL_NUMBER EXCEPTION #======================#
+class NullNumberException(NumberException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class NullNumberException(InvalidNumberException, NullException):
     1.  Indicate that number validation failed because the candidate was null.
 
     # PARENT:
-        *   InvalidNumberException
+        *   NumberException
         *   NullNumberException
 
     # PROVIDES:

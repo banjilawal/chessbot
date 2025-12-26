@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import LoggingLevelRouter, NegativeNumberException, NumberValidator, ValidationResult, Validator
-from chess.system import InvalidNumberException
+from chess.system import NumberValidationFailedException
 
 
 class NotNegativeNumberValidator(Validator[int]):
@@ -53,7 +53,7 @@ class NotNegativeNumberValidator(Validator[int]):
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
-          *     InvalidNumberException
+          *     NumberValidationFailedException
         """
         method = "NotNegativeNumberValidator.validate"
         # Handle the existence and type checks.
@@ -61,8 +61,8 @@ class NotNegativeNumberValidator(Validator[int]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidNumberException(
-                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                NumberValidationFailedException(
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
                     ex=validation.exception,
                 )
             )
@@ -73,8 +73,8 @@ class NotNegativeNumberValidator(Validator[int]):
         if number < 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidNumberException(
-                    message=f"{method}: {InvalidNumberException.ERROR_CODE}",
+                NumberValidationFailedException(
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
                     ex=NegativeNumberException(f"{method}: {NegativeNumberException}"),
                 )
             )

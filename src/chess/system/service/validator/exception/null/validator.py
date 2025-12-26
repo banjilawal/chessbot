@@ -7,15 +7,15 @@ Created: 2025-11-18
 """
 
 __all__ = [
-    # ======================# SERVICE_NULL_VALIDATOR EXCEPTION #======================#
-    "ServiceNullValidatorException",
+    # ======================# ENTITY_SERVICE_NULL_VALIDATOR EXCEPTION #======================#
+    "EntityServiceNullValidatorException",
 ]
 
 from chess.system import NullException, ServiceException
 
 
-# ======================# SERVICE_NULL_VALIDATOR EXCEPTION #======================#
-class ServiceNullValidatorException(ServiceException, NullException):
+# ======================# ENTITY_SERVICE_NULL_VALIDATOR EXCEPTION #======================#
+class EntityServiceNullValidatorException(ServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -35,5 +35,5 @@ class ServiceNullValidatorException(ServiceException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_NULL_VALIDATOR"
-    DEFAULT_MESSAGE = "Service validation failed: The candidate's validator was null."
+    ERROR_CODE = "ENTITY_SERVICE_NULL_VALIDATOR_ERROR"
+    DEFAULT_MESSAGE = "EntityService validation failed: The candidate's validator was null."

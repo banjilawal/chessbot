@@ -12,11 +12,11 @@ __all__ = [
     "NumberAboveCeilingException",
 ]
 
-from chess.system import BoundsException, InvalidNumberException
+from chess.system import BoundsException, NumberException
 
 
 # ======================# NUMBER_ABOVE_CEILING EXCEPTION #======================#
-class NumberAboveCeilingException(InvalidNumberException, BoundsException):
+class NumberAboveCeilingException(NumberException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class NumberAboveCeilingException(InvalidNumberException, BoundsException):
     1.  Indicate that number validation failed because the candidate was larger than the Board.DIMENSION.
 
     # PARENT:
-        *   InvalidNumberException
+        *   NumberException
         *   BoundsException
 
     # PROVIDES:

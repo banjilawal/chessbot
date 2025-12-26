@@ -7,22 +7,24 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+__all__ = [
+    # ======================# NUMBER_VALIDATION_FAILURE EXCEPTION #======================#
+    "NumberValidationFailedException",
+]
 
 from chess.system import NumberException, ValidationFailedException
 
-__all__ = [
-    "InvalidNumberException",
-]
 
-
-# ====================== NUMBER VALIDATION EXCEPTION #======================#
-class InvalidNumberException(NumberException, ValidationFailedException):
+# ======================# NUMBER_VALIDATION_FAILURE EXCEPTION #======================#
+class NumberValidationFailedException(NumberException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised when an existing object violates Number integrity constraints.
-    2.  Wrap an exception that hits the try-finally-block in number validating methods.
+    1.  A debug exception is created when a Number candidate fails a validation test. Validation debug exceptions are
+        encapsulated inside an NumberValidationFailedException creating an exception chain. which is sent to the caller in a
+        ValidationResult.
+    2.  The NumberValidationFailedException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   NumberException
@@ -34,8 +36,8 @@ class InvalidNumberException(NumberException, ValidationFailedException):
     # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED ATTRIBUTES:
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NUMBER_VALIDATION_ERROR"
+    ERROR_CODE = "NUMBER_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Number validation failed."

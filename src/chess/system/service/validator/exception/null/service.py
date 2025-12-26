@@ -7,15 +7,15 @@ Created: 2025-11-18
 """
 
 __all__ = [
-    # ======================# NULL_SERVICE EXCEPTION #======================#
-    "NullServiceException",
+    # ======================# NULL_ENTITY_SERVICE EXCEPTION #======================#
+    "NullEntityServiceException",
 ]
 
-from chess.system import NullException, ServiceException
+from chess.system import NullException, EntityServiceException
 
 
-# ======================# NULL_SERVICE EXCEPTION #======================#
-class NullServiceException(ServiceException, NullException):
+# ======================# NULL_ENTITY_SERVICE EXCEPTION #======================#
+class NullEntityServiceException(EntityServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class NullServiceException(ServiceException, NullException):
 
     # PARENT:
         *   NullException
-        *   ServiceException
+        *   EntityServiceException
 
     # PROVIDES:
     None
@@ -35,5 +35,5 @@ class NullServiceException(ServiceException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "Service validation failed: The candidate was null."
+    ERROR_CODE = "NULL_ENTITY_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "EntityService validation failed: The candidate was null."

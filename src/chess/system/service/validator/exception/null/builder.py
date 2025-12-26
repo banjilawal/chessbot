@@ -7,15 +7,15 @@ Created: 2025-11-18
 """
 
 __all__ = [
-    # ======================# SERVICE_NULL_BUILDER EXCEPTION #======================#
-    "ServiceNullBuilderException",
+    # ======================# ENTITY_SERVICE_NULL_BUILDER EXCEPTION #======================#
+    "EntityServiceNullBuilderException",
 ]
 
 from chess.system import NullException, ServiceException
 
 
-# ======================# SERVICE_NULL_BUILDER EXCEPTION #======================#
-class ServiceNullBuilderException(ServiceException, NullException):
+# ======================# ENTITY_SERVICE_NULL_BUILDER EXCEPTION #======================#
+class EntityServiceNullBuilderException(ServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -35,5 +35,5 @@ class ServiceNullBuilderException(ServiceException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_NULL_BUILDER"
-    DEFAULT_MESSAGE = "Service validation failed: The candidate's builder was null."
+    ERROR_CODE = "ENTITY_SERVICE_NULL_BUILDER_ERROR"
+    DEFAULT_MESSAGE = "EntityService validation failed: The candidate's builder was null."
