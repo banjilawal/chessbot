@@ -23,7 +23,7 @@ class NullTeamContextException(InvalidTeamContextException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that TeamContext validation failed because the candidate was null.
+    1.  Indicate that the candidate was not granted TeamContext certification because it was null.
 
     # PARENT:
         *   NullTeamContextException

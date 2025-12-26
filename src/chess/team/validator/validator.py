@@ -8,9 +8,8 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-
-from chess.arena import Arena, ArenaService
 from chess.schema import SchemaService
+from chess.arena import Arena, ArenaService
 from chess.agent import PlayerAgent, AgentService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (

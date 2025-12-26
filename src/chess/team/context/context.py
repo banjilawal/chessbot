@@ -44,20 +44,19 @@ class TeamContext(Context[Team]):
     def __init__(
             self,
             id: Optional[int] = None,
-            name: Optional[str] = None,
             arena: Optional[Arena] = None,
-            player_agent: Optional[PlayerAgent] = None,
+            owner: Optional[PlayerAgent] = None,
             color: Optional[GameColor] = None,
     ):
         method = "TeamContext.__init__"
-        super().__init__(id=id, name=name)
+        super().__init__(id=id, name=None)
         self._arena = arena
-        self._player_agent = player_agent
+        self._owner = owner
         self._color = color
     
     @property
-    def player_agent(self) -> Optional[PlayerAgent]:
-        return self._player_agent
+    def owner(self) -> Optional[PlayerAgent]:
+        return self._owner
     
     @property
     def arena(self) -> Optional[Arena]:
@@ -71,20 +70,16 @@ class TeamContext(Context[Team]):
         """
         # ACTION:
         Convert a TeamContext attributes into a dictionary.
-    
         # PARAMETERS:
         None
-    
         # Returns:
             dict
-    
         # RAISES:
         None
         """
         return {
             "id": self.id,
-            "name": self.name,
             "arena": self._arena,
-            "player_agent": self._player_agent,
+            "owner": self._owner,
             "color": self._color,
         }
