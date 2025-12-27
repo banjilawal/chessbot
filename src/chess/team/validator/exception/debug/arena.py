@@ -11,18 +11,18 @@ from chess.team import TeamException
 from chess.system import NotRegisteredException
 
 __all__ = [
-    # ======================# TEAM_NOT_INSIDE_ARENA EXCEPTION #======================#
-    "TeamNotInsideArenaException",
+    # ======================# TEAM_NOT_SUBMITTED_ARENA_REGISTRATION EXCEPTION #======================#
+    "TeamNotSubmittedArenaRegistrationException",
 ]
 
-#======================# TEAM_NOT_INSIDE_ARENA EXCEPTION #======================#
-class TeamNotInsideArenaException(TeamException, NotRegisteredException):
+#======================# TEAM_NOT_SUBMITTED_ARENA_REGISTRATION EXCEPTION #======================#
+class TeamNotSubmittedArenaRegistrationException(TeamException, NotRegisteredException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the candidate was not granted Team certification because it was not inside the arena
-        it assigned itself.
+    1.  Indicate that the candidate was not granted Team certification because it has not filled the open slot
+        available in the arena.
     
     # PARENT:
         *   TeamException
@@ -37,6 +37,6 @@ class TeamNotInsideArenaException(TeamException, NotRegisteredException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_NOT_INSIDE_ARENA_ERROR"
-    DEFAULT_MESSAGE = "Team validation failed: The candidate was not inside the arena it assigned itself."
+    ERROR_CODE = "TEAM_NOT_SUBMITTED_ARENA_REGISTRATION_ERROR"
+    DEFAULT_MESSAGE = "Team validation failed: The candidate has not registered to fill the open in its arena."
 

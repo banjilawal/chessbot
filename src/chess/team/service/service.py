@@ -12,7 +12,7 @@ from typing import cast
 from chess.agent import AgentService, PlayerAgent
 from chess.arena import Arena, ArenaService
 from chess.system import EntityService, LoggingLevelRouter, Result, id_emitter
-from chess.team import Team, TeamBuilder, TeamNotInsideArenaException, TeamServiceException, TeamValidator
+from chess.team import Team, TeamBuilder, TeamNotSubmittedArenaRegistrationException, TeamServiceException, TeamValidator
 
 
 class TeamService(EntityService[Team]):

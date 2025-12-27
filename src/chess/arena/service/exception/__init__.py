@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== ARENA.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .catchall import ArenaServiceException
-from .different import TeamInsideDifferentArenaException
+from .debug import *
 
 # Modules
+from .catchall import ArenaServiceException

@@ -14,7 +14,7 @@ from chess.agent import PlayerAgent, AgentService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
     TeamContext, TeamNotRegisteredWithOwnerException, TeamValidationFailedException, NullTeamException, Team,
-    TeamNotInsideArenaException,
+    TeamNotSubmittedArenaRegistrationException,
 )
 
 
@@ -222,7 +222,7 @@ class TeamValidator(Validator[Team]):
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=TeamNotInsideArenaException(f"{method}: {TeamNotInsideArenaException.DEFAULT_MESSAGE}")
+                    ex=TeamNotSubmittedArenaRegistrationException(f"{method}: {TeamNotSubmittedArenaRegistrationException.DEFAULT_MESSAGE}")
                 )
             )
         # On certification successes send the arena back to the validator.

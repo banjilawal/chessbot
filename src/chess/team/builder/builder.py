@@ -13,7 +13,10 @@ from chess.arena.service.exception.schema import ArenaDuplicateSchemaException
 from chess.dyad import SchemaAgentPair
 from chess.schema import Schema, SchemaLookup
 from chess.agent import PlayerAgent, AgentService
-from chess.arena import Arena, ArenaService, ExcessiveTeamsInArenaException
+from chess.arena import (
+    Arena, ArenaAlreadyContainsTemException, ArenaService, ArenaSlotAlreadyOccupiedException,
+    ExcessiveTeamsInArenaException
+)
 from chess.team import (
     AddingDuplicateTeamException, Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException
 )
@@ -105,37 +108,7 @@ class TeamBuilder(Builder[Team]):
                         message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=owner_validation.exception
                     )
                 )
-            # Handle the case arena certification fails.
-            arena_validation = arena_service.item_validator.validate(arena)
-            if arena_validation.is_failure:
-                return BuildResult.failure(
-                    TeamBuildFailedException(
-                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=arena_validation.exception
-                    )
-                )
-            # Handle the case that the Arena is full.
-            if len([arena.white_team, arena.black_team]) == 2:
-                return BuildResult.failure(
-                    TeamBuildFailedException(
-                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
-                        ex=ExcessiveTeamsInArenaException(f"{method} : {ExcessiveTeamsInArenaException.DEFAULT_MESSAGE}")
-                    )
-                )
-            search_result = arena.team_from_schema(schema_owner.schema)
-            if search_result.is_failure:
-                return BuildResult.failure(
-                    TeamBuildFailedException(
-                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=search_result.exception
-                    )
-                )
-            if search_result.is_success:
-                return BuildResult.failure(
-                    TeamBuildFailedException(
-                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
-                        ex=ArenaDuplicateSchemaException(f"{}: {ArenaDuplicateSchemaException.DEFAULT_MESSAGE}")
-                    )
-                )
-        
+
             # If no errors are detected build the Team object.
             team = Team(
                 id=id,
@@ -168,53 +141,86 @@ class TeamBuilder(Builder[Team]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _register_team_with_agent(cls, team: Team, agent: PlayerAgent,) -> InsertionResult[Team]:
-        """
-        # ACTION:
-        1.  After ensuring the team does not exist in the PlayerAgent's team_assignments push the Team onto the stack.
-
-        # PARAMETERS:
-            *   team (Team)
-            *   agent (PlayerAgent)
-
-        # Returns:
-        InsertionResult[Team] containing either:
-            - On success: Team in the payload.
-            - On failure: Exception.
-
-        RAISES:
-            *   AddingDuplicateTeamException
-            *   TeamInsertionFailedException
-        """
-        method = "TeamBuilder._register_team_with_agent"
-        try:
-            # See if the team is already in PlayerAgent's roster. It really shouldn't be.
-            search = agent.team_assignments.search_teams(context=TeamContext(id=team.id))
-            
-            # Handle the case the search raised an error.
-            if search.is_failure:
-                return InsertionResult.failure(search.exception)
-            # If the search gives a hit the Team has already been created. Send an error in the InsertionResult.
-            if search.is_success:
-                return InsertionResult.failure(
-                    AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
-                )
-            # An empty search result is the happy path where the push occurs.
-            if search.is_empty:
-                return agent.team_assignments.add_team(team)
-        
-        # Finally return a InsertionResult containing any unhandled exception insided an
-        # TeamInsertionFailedException
-        except Exception as ex:
-            return InsertionResult.failure(
-                TeamInsertionFailedException(
-                    ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}"
+    def _certify_arena(
+            cls,
+            arena: Arena,
+            schema: Schema,
+            arena_service: ArenaService = ArenaService()
+    ) -> ValidationResult[Arena]:
+        """"""
+        method = "TeamBuilder._certify_arena"
+        # Handle the case arena certification fails.
+        arena_validation = arena_service.item_validator.validate(arena)
+        if arena_validation.is_failure:
+            return ValidationResult.failure(
+                TeamBuildFailedException(
+                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=arena_validation.exception
                 )
             )
+        # Handle the case that the Arena is full.
+        if arena.arena_is_full:
+            return ValidationResult.failure(
+                TeamBuildFailedException(
+                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
+                    ex=ExcessiveTeamsInArenaException(f"{method} : {ExcessiveTeamsInArenaException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case that the color slot is already assigned.
+        if (
+                (schema == schema.WHITE and arena.white_team is not None) or
+                (schema == schema.BLACK and arena.black_team is not None)
+        ):
+            return ValidationResult.failure(
+                TeamBuildFailedException(
+                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
+                    ex=ArenaSlotAlreadyOccupiedException(f"{method} : {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}")
+                )
+            )
+        return ValidationResult.success(arena)
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _insert_team_in_arena(cls, arena: Arena, team: Team) -> InsertionResult[Team]:
+    def _register_team_with_owner(cls, team: Team, owner: PlayerAgent, ) -> InsertionResult[Team]:
+        """
+        # ACTION:
+            1.  If team does not exist in the owner's team_assignments return the push result. Else,
+                send an exception in the InsertionResult.
+        # PARAMETERS:
+            *   team (Team)
+            *   owner (PlayerAgent)
+        # Returns:
+            *   InsertionResult[Team] containing either:
+                    - On failure: Exception.
+                    - On success: Team in the payload.
+        RAISES:
+            *   AddingDuplicateTeamException
+        """
+        method = "TeamBuilder._register_team_with_agent"
+        # As a concurrency safety check need to handle the case that the team is already registered
+        # with the owner
+        search = owner.team_assignments.search_teams(context=TeamContext(id=team.id))
+        
+        # Handle the case the search raised an error.
+        if search.is_failure:
+            return InsertionResult.failure(
+                TeamBuildFailedException(
+                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=search.exception
+                )
+            )
+        # If the search gives a hit the Team has already been created. Send an error in the InsertionResult.
+        if search.is_success:
+            return InsertionResult.failure(
+                TeamBuildFailedException(
+                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
+                    ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Execute the insertion when the search came up empty.
+        return owner.team_assignments.add_team(team)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _insert_team_in_arena(cls, arena: Arena, team: Team, arena_service: ArenaService) -> InsertionResult[Team]:
         """
         # ACTION:
         1.  After ensuring the team does not exist in the PlayerAgent's team_assignments push the Team onto the stack.
@@ -233,34 +239,29 @@ class TeamBuilder(Builder[Team]):
             *   TeamInsertionFailedException
         """
         method = "TeamBuilder._insert_team_in_arena"
-        try:
-            # An Arena has only two teams with different colors. We need to make sure the colors are different
-            # The color search is the best fit for this process.
-            search = arena.team_service.search_teams(context=TeamContext(color=team.schema.color))
-            
-            # Handle the case the search raised an error.
-            if search.is_failure:
-                return InsertionResult.failure(search.exception)
-            # If the search gives a hit the Arena is probably full. Send an error in the InsertionResult.
-            if search.is_success:
-                return InsertionResult.failure(
-                    ExcessiveTeamsInArenaException(
-                        f"{method}: {ExcessiveTeamsInArenaException.DEFAULT_MESSAGE}"
-                    )
-                )
-            # An empty search result is the happy path where the push occurs.
-            if search.is_empty:
-                return arena.team_service.add_team(team)
-            
-        # Finally return a InsertionResult containing any unhandled exception insided an
-        # TeamInsertionFailedException
-        except Exception as ex:
+        # As a concurrency safety check need to handle the case that the team is already registered
+        # with the owner
+        if team in [arena.white_team, arena.black_team]:
             return InsertionResult.failure(
-                TeamInsertionFailedException(
-                    ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}"
+                TeamBuildFailedException(
+                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
+                    ex=ArenaAlreadyContainsTemException(f"{method}: {ArenaAlreadyContainsTemException.DEFAULT_MESSAGE}")
+                )
+            )
+        search_result = arena_service.team_from_schema(arena, team.schema)
+        if search_result.is_failure:
+            return InsertionResult.failure(
+                TeamBuildFailedException(
+                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
+                    ex=search_result.exception
+                )
+            )
+        if search_result.is_success and search_result.payload != team:
+            return InsertionResult.failure(
+                TeamBuildFailedException(
+                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
+                    ex=ArenaSlotAlreadyOccupiedException(f"{method}: {ArenaAlreadyContainsTemException.DEFAULT_MESSAGE}")
                 )
             )
         
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _run_owner_checks(cls, owner: PlayerAgent, owner_service: AgentService = AgentService()) -> ValidationResult[PlayerAgent]:
+        

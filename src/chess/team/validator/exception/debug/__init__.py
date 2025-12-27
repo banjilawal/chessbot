@@ -14,5 +14,5 @@ None
 
 # Modules
 from .null import NullTeamException
-from .arena import TeamNotInsideArenaException
+from .arena import TeamNotSubmittedArenaRegistrationException
 from .owner import TeamNotRegisteredWithOwnerException

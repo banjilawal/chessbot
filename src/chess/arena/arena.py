@@ -46,32 +46,33 @@ class Arena:
     def black_team(self) -> Team:
         return self._black_team
     
-    @set.white_team
+    @property
+    def arena_is_full(self) -> bool:
+        return self._white_team is not None and self._black_team is not None
+    
+    @property
+    def arena_is_empty(self) -> bool:
+        return self._white_team is None and self._black_team is None
+    
+    @property
+    def white_team_is_assigned(self) -> bool:
+        return self._white_team is not None
+    
+    @property
+    def black_team_is_assigned(self) -> bool:
+        return self._black_team is not None
+    
+    @white_team.setter
     def white_team(self, team: Team):
         self._white_team = team
     
-    @set.black_team
-    def white_team(self, team: Team):
+    @black_team.setter
+    def black_team(self, team: Team):
         self._black_team = team
         
-    def team_from_schema(
-            self,
-            schema: Schema,
-            schema_service: SchemaLookup = SchemaLookup()
-    ) -> SearchResult[Team]:
-        """"""
-        method = "Arena.team_from_schema"
-        try:
-            validation = schema_service.schema_validator.validate(schema)
-            if validation.is_failure:
-                return SearchResult.failure(validation.exception)
-            if self._white_team is not None and schema == self._white_team.schema:
-                return SearchResult.success(payload=[self._white_team])
-            if self._black_team is not None and schema == self._black_team.schema:
-                return SearchResult.success(payload=[self._black_team])
-            return SearchResult.empty()
-        except Exception as e:
-            return SearchResult.failure(e)
+    
+        
+
     
     @property
     def agents(self) -> List[PlayerAgent]:
