@@ -18,7 +18,8 @@ from chess.arena import (
     ExcessiveTeamsInArenaException
 )
 from chess.team import (
-    AddingDuplicateTeamException, Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException
+    AddingDuplicateTeamException, Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException,
+    TeamNotSubmittedArenaRegistrationException
 )
 from chess.system import (
     Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, ValidationResult,
@@ -144,7 +145,7 @@ class TeamBuilder(Builder[Team]):
     def _certify_arena(
             cls,
             arena: Arena,
-            schema: Schema,
+            team: Team,
             arena_service: ArenaService = ArenaService()
     ) -> ValidationResult[Arena]:
         """"""
@@ -165,6 +166,10 @@ class TeamBuilder(Builder[Team]):
                     ex=ExcessiveTeamsInArenaException(f"{method} : {ExcessiveTeamsInArenaException.DEFAULT_MESSAGE}")
                 )
             )
+        # Test if the team in not relatable to the arena.
+        relationship_certification = arena_service.certify_team_arena_relationship(team=team, arena=arena)
+        if relationship_certification.exception == TeamNotSubmittedArenaRegistrationException or
+            relationship_certification.exception = TeamNotSubmittedArenaRegistrationException
         # Handle the case that the color slot is already assigned.
         if (
                 (schema == schema.WHITE and arena.white_team is not None) or
