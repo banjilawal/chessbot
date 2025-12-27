@@ -10,8 +10,9 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.system import EntityService, id_emitter
-from chess.agent import PlayerAgent, AgentFactory, AgentValidator
+from chess.system import EntityService, LoggingLevelRouter, Result, id_emitter
+from chess.agent import AgentServiceException, PlayerAgent, AgentFactory, AgentValidator
+from chess.team import Team, TeamService
 
 
 class AgentService(EntityService[PlayerAgent]):
@@ -71,6 +72,48 @@ class AgentService(EntityService[PlayerAgent]):
     def validator(self) -> AgentValidator:
         """get AgentValidator"""
         return cast(AgentValidator, self.entity_validator)
+    
+    @LoggingLevelRouter.monitor
+    def team_is_registered_to_agent(
+            self,
+            team: Team,
+            agent: PlayerAgent,
+            team_service: TeamService = TeamService(),
+    ) -> Result[(Team, PlayerAgent)]:
+        method = "TeamService.team_is_registered_to_agent"
+        team_validation = team_service.validator.validate(team)
+        if team_validation.is_failure:
+            return Result.failure(
+                AgentServiceException(
+                    message=f"{method}: {AgentServiceException.ERROR_CODE}", ex=team_validation.exception
+                )
+            )
+        agent_validation = self.validator.validate(agent)
+        if agent_validation.is_failure:
+            return Result.failure(
+                AgentServiceException(
+                    message=f"{method}: {AgentServiceException.ERROR_CODE}", ex=agent_validation.exception
+                )
+            )
+        if team.owner != agent:
+            return Result.failure(
+                AgentServiceException(
+                    message=f"{method}: {AgentServiceException.ERROR_CODE}",
+                    ex=TeamBelongsToDifferentOwnerException(f"{method}")
+                )
+            )
+        search_result = agent.team_assignments.search_teams(team.id)
+        if search_result.is_failure:
+            return Result.failure(
+                AgentServiceException(
+                    message=f"{method}: {AgentServiceException.ERROR_CODE}",
+                    ex=search_result.exception
+                )
+            )
+        if search_result.is_empty:
+            return Result.empty()
+        if search_result.is_success:
+            return Result.success((team, agent))
 
     
     

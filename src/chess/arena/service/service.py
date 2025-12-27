@@ -10,8 +10,9 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.arena import Arena, ArenaBuilder, ArenaValidator
-from chess.system import EntityService, id_emitter
+from chess.arena import Arena, ArenaBuilder, ArenaServiceException, ArenaValidator
+from chess.system import EntityService, LoggingLevelRouter, Result, id_emitter
+from chess.team import Team, TeamNotInsideArenaException, TeamService, TeamServiceException
 
 
 class ArenaService(EntityService[Arena]):
@@ -72,3 +73,41 @@ class ArenaService(EntityService[Arena]):
     def validator(self) -> ArenaValidator:
         """get ArenaValidator"""
         return cast(ArenaValidator, self.entity_validator)
+    
+    @LoggingLevelRouter.monitor
+    def team_inside_arena(
+            self,
+            team: Team,
+            arena: Arena,
+            team_service: TeamService = TeamService(),
+    ) -> Result[(Team, Arena)]:
+        method = "ArenaService.team_inside_arena"
+        arena_validation = self.validator.validate(arena)
+        if arena_validation.is_failure:
+            return Result.failure(
+                ArenaServiceException(
+                    message=f"{method}: {ArenaServiceException.ERROR_CODE}", ex=arena_validation.exception
+                )
+            )
+        team_validation = team_service.validator.validate(team)
+        if team_validation.is_failure:
+            return Result.failure(
+                ArenaServiceException(
+                    message=f"{method}: {ArenaServiceException.ERROR_CODE}", ex=team_validation.exception
+                )
+            )
+        if team.arena != arena:
+            return Result.failure(
+                ArenaServiceException(
+                    message=f"{method}: {ArenaServiceException.ERROR_CODE}",
+                    ex=TeamInsideDifferentArenaException(f"{method}: {TeamInsideDifferentArenaException.ERROR_MESSAGE}")
+                )
+            )
+        if team not in [arena.white_team, arena.black_team]:
+            return Result.failure(
+                TeamServiceException(
+                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
+                    ex=TeamNotInsideArenaException(f"{method} {TeamNotInsideArenaException.DEFAULT_MESSAGE}")
+                )
+            )
+        return Result.success((team, arena))

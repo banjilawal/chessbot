@@ -1,7 +1,7 @@
-# src/chess/agent/service/exception.py
+# src/chess/agent/service/exception/catchall.py
 
 """
-Module: chess.agent.service.exception
+Module: chess.agent.service.exception.catchall
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

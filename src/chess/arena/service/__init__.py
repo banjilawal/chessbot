@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== ARENA.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
+from .data import *
 from .exception import *
 
 # Modules

@@ -8,13 +8,19 @@ version: 1.0.0
 """
 
 from chess.piece import UniquePieceDataService
+
+from chess.arena.service.exception.schema import ArenaDuplicateSchemaException
+from chess.dyad import SchemaAgentPair
 from chess.schema import Schema, SchemaLookup
 from chess.agent import PlayerAgent, AgentService
 from chess.arena import Arena, ArenaService, ExcessiveTeamsInArenaException
 from chess.team import (
     AddingDuplicateTeamException, Team, TeamBuildFailedException, TeamContext, TeamInsertionFailedException
 )
-from chess.system import Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.system import (
+    Builder, BuildResult, IdentityService, InsertionResult, LoggingLevelRouter, ValidationResult,
+    id_emitter
+)
 
 
 class TeamBuilder(Builder[Team]):
@@ -44,76 +50,104 @@ class TeamBuilder(Builder[Team]):
     def build(
             cls,
             arena: Arena,
-            schema: Schema,
-            player_agent: PlayerAgent,
+            schema_owner: SchemaAgentPair,
             id: int = id_emitter.team_id,
             schema_lookup: SchemaLookup = SchemaLookup(),
             arena_service: ArenaService = ArenaService(),
             identity_service: IdentityService = IdentityService(),
-            player_agent_service: AgentService = AgentService(),
+            owner_service: AgentService = AgentService(),
     ) -> BuildResult[Team]:
         """
         # ACTION:
-        1.  Check ID safety with IdentityService.validate_id.
-        2.  Check schema correctness with ForwardSchemaLookuo's validator.
-        3.  Check player_agent safety with PlayAgentService.validate_player.
-        4.  If any check fails, return the exception inside a BuildResult.
-        5.  When all checks create a new Team object.
-        6.  If the team is not in actor's team_assignments use their team_stack to add it.
-    
+            1.  If any parameters fail their integrity checks send the exception in the BuildResult..
+            2.  When all checks pass send create the Team instance and send in the BuildResult.
         # PARAMETERS:
             *   id (int)
-            *   player_agent (PlayerAgent)
+            *   owner (PlayerAgent)
             *   team_schema (Schema)
             *   identity_service (IdentityService)
-            *   player_agent_service (AgentService)
+            *   owner_service (AgentService)
             *   schema_validator (TeamSchemaValidator)
         All Services have default values to ensure they are never null.
-        
         # Returns:
-        BuildResult[Team] containing either:
-            - On success: Team in the payload.
-            - On failure: Exception.
-    
+            *BuildResult[Team] containing either:
+                - On failure: Exception.
+                - On success: Team in the payload.
         RAISES:
             *   TeamBuildFailedException
         """
         method = "TeamBuilder.builder"
         try:
-            # Certify the build resources are safe to use.
+            # Handle the case id certification fails
             id_validation = identity_service.validate_id(id)
+            # Return the exception chain on failure.
             if id_validation.is_failure:
-                return BuildResult.failure(id_validation.exception)
-            
-            schema_validation = schema_lookup.schema_validator.validate(schema)
+                return BuildResult.failure(
+                    TeamBuildFailedException(
+                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=id_validation.exception
+                    )
+                )
+            # Handle the case schema certification fails.
+            schema_validation = schema_lookup.schema_validator.validate(schema_owner.schema)
             if schema_validation.is_failure:
-                return BuildResult.failure(schema_validation.exception)
-            
-            player_agent_validation = player_agent_service.validator.validate(player_agent)
-            if player_agent_validation.is_failure:
-                return BuildResult.failure(player_agent_validation.exception)
-            
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    TeamBuildFailedException(
+                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=schema_validation.exception
+                    )
+                )
+            # Handle the case owner certification fails.
+            owner_validation = owner_service.validator.validate(schema_owner.agent)
+            if owner_validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    TeamBuildFailedException(
+                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=owner_validation.exception
+                    )
+                )
+            # Handle the case arena certification fails.
             arena_validation = arena_service.item_validator.validate(arena)
             if arena_validation.is_failure:
-                return BuildResult.failure(arena_validation.exception)
-            # If there's already two teams in the arena you cannot build another one.
-            if arena.team_service.size > 1:
                 return BuildResult.failure(
-                    ExcessiveTeamsInArenaException(f"{method}: {ExcessiveTeamsInArenaException.DEFAULT_MESSAGE}")
+                    TeamBuildFailedException(
+                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=arena_validation.exception
+                    )
+                )
+            # Handle the case that the Arena is full.
+            if len([arena.white_team, arena.black_team]) == 2:
+                return BuildResult.failure(
+                    TeamBuildFailedException(
+                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
+                        ex=ExcessiveTeamsInArenaException(f"{method} : {ExcessiveTeamsInArenaException.DEFAULT_MESSAGE}")
+                    )
+                )
+            search_result = arena.team_from_schema(schema_owner.schema)
+            if search_result.is_failure:
+                return BuildResult.failure(
+                    TeamBuildFailedException(
+                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=search_result.exception
+                    )
+                )
+            if search_result.is_success:
+                return BuildResult.failure(
+                    TeamBuildFailedException(
+                        message=f"{method}: {TeamBuildFailedException.ERROR_CODE}",
+                        ex=ArenaDuplicateSchemaException(f"{}: {ArenaDuplicateSchemaException.DEFAULT_MESSAGE}")
+                    )
                 )
         
             # If no errors are detected build the Team object.
             team = Team(
                 id=id,
                 arena=arena,
-                schema=schema,
-                player_agent=player_agent,
+                schema=schema_owner.schema,
+                owner=schema_owner.agent,
                 roster=UniquePieceDataService(),
                 hostages=UniquePieceDataService(),
             )
             
-            # Make sure the owning side of the team-player_agent relationship is set.
-            insertion_result = cls._register_team_with_agent(agent=player_agent, team=team)
+            # Make sure the owning side of the team-owner relationship is set.
+            insertion_result = cls._register_team_with_agent(agent=schema_owner.owner, team=team)
             if insertion_result.is_failure:
                 return BuildResult.failure(insertion_result.exception)
             
@@ -226,3 +260,7 @@ class TeamBuilder(Builder[Team]):
                     ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}"
                 )
             )
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _run_owner_checks(cls, owner: PlayerAgent, owner_service: AgentService = AgentService()) -> ValidationResult[PlayerAgent]:
