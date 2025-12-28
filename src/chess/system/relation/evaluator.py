@@ -7,8 +7,8 @@ D = TypeVar("D", bound=Dyad)
 
 
 
-class RelationEvaluator(ABC, Generic[D]):
+class RelationTester(ABC, Generic[D]):
     
     @classmethod
-    def evaluate(cls, dyad: D) -> RelationReport:
+    def test(cls, dyad: D) -> RelationReport:
         pass

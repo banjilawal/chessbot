@@ -8,6 +8,7 @@
       <change afterPath="$PROJECT_DIR$/src/chess/arena/relation/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/arena/relation/dyad.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/arena/relation/evaluator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/relation/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/system/relation/report.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/system/relation/status.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -17,7 +18,7 @@
       <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/bidirectional.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/bidirectional.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/registered.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/registered.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relaitonship/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relaitonship/__init__.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/relaitonship/dyad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/dyad.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/relaitonship/evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/evaluator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/relaitonship/result.py" beforeDir="false" />
@@ -989,7 +990,7 @@
       <workItem from="1766848581427" duration="4567000" />
       <workItem from="1766853714835" duration="9225000" />
       <workItem from="1766871256434" duration="6709000" />
-      <workItem from="1766913023316" duration="3466000" />
+      <workItem from="1766913023316" duration="5655000" />
     </task>
     <servers />
   </component>

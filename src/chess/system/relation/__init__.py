@@ -16,5 +16,5 @@ from .exception import *
 from .dyad import Dyad
 from .status import RelationStatus
 from .report import RelationReport
-from .evaluator import RelationEvaluator
+from .evaluator import RelationTester
 
