@@ -14,6 +14,7 @@ from .builder import *
 from .context import *
 from .service import *
 from .validator import *
+from .relation import *
 
 # Modules
 from arena import Arena

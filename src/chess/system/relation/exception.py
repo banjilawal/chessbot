@@ -21,7 +21,7 @@ class RelationTestFailedException(ExceptionWrapper):
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
     # RESPONSIBILITIES:
-    1.  Wrap any exception that kills the relation test process before the status has been evlauated.
+    1.  Wrap any exception that kills the relation test process before the status has been evaluated.
 
     # PARENT:
         *   ExceptionWrapper

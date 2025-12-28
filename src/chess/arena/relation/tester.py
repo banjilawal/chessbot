@@ -1,5 +1,5 @@
-from chess.arena.relation.dyad import TeamArenaDyad
-from chess.system.relaitonship.evaluator import RelationEvaluator
+from chess.arena import TeamArenaDyad
+from chess.system import LoggingLevelRouter, RelationTester
 
 
-class TeamArenaEvaluator(RelationEvaluator[TeamArenaDyad]):
+class TeamArenaEvaluator(RelationTester[TeamArenaDyad]):
