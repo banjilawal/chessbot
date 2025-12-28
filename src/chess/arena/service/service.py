@@ -11,13 +11,12 @@ version: 1.0.0
 from typing import cast
 
 from chess.arena import (
-    Arena, ArenaAlreadyContainsTemException, ArenaBuilder, ArenaIsFullException, ArenaServiceException,
-    ArenaSlotAlreadyOccupiedException, ArenaValidator,
-    TeamPlayingDifferentArenaException
+    Arena, ArenaAlreadyContainsTemException, ArenaBuilder, ArenaServiceException,
+    ArenaTeamRelationTester, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from chess.schema import Schema, SchemaService
 from chess.system import EntityService, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
-from chess.team import Team, TeamNotSubmittedArenaRegistrationException, TeamService, TeamServiceException
+from chess.team import Team, TeamService
 
 
 class ArenaService(EntityService[Arena]):
@@ -43,6 +42,7 @@ class ArenaService(EntityService[Arena]):
         *   See EntityService for inherited attributes.
     """
     DEFAULT_NAME = "ArenaService"
+    _team_relation_tester: ArenaTeamRelationTester
     
     def __init__(
             self,
@@ -50,24 +50,23 @@ class ArenaService(EntityService[Arena]):
             id: int = id_emitter.service_id,
             builder: ArenaBuilder = ArenaBuilder(),
             validator: ArenaValidator = ArenaValidator(),
+            team_relation_tester: ArenaTeamRelationTester = ArenaTeamRelationTester(),
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (nt)
             *   name (str)
             *   builder (ArenaFactory)
             *   validator (ArenaValidator)
-
         # Returns:
-        None
-
+            None
         # Raises:
-        None
+            None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._team_relation_tester = team_relation_tester
     
     @property
     def builder(self) -> ArenaBuilder:
@@ -79,41 +78,31 @@ class ArenaService(EntityService[Arena]):
         """get ArenaValidator"""
         return cast(ArenaValidator, self.entity_validator)
     
+    @property
+    def arena_team_relation_tester(self) -> ArenaTeamRelationTester:
+        return self._team_relation_tester
+    
     
     @LoggingLevelRouter.monitor
     def add_team(self, arena: Arena, team: Team, team_service: TeamService = ()) -> InsertionResult[Team]:
         method = "ArenaService.add_team"
-        # Handle the case that the arena is not safe.
-        arena_validation = self.validator.validate(arena)
-        if arena_validation.is_failure:
+        relation = self._team_relation_tester.test(
+            candidate_primary=arena,
+            candidate_satellite=team,
+            arena_validator=self.validator,
+            team_service=team_service,
+        )
+        # Handle the case that one of the parties fails validation.
+        if relation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 ArenaServiceException(
                     message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=arena_validation.exception
-                )
-            )
-        # Handle the case that the arena is full.
-        if arena.arena_is_full:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=ArenaIsFullException(f"{method}: {ArenaIsFullException.DEFAULT_MESSAGE}")
-                )
-            )
-        # Handle the case that the team is not safe.
-        team_validation = team_service.validator.validate(team)
-        if team_validation.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=team_validation.exception
+                    ex=relation.exception
                 )
             )
         # Handle the case that the team should be playing a different arena.
-        if arena != team.arena:
+        if relation.does_not_exist:
             # Return the exception chain.
             return InsertionResult.failure(
                 ArenaServiceException(
@@ -123,8 +112,7 @@ class ArenaService(EntityService[Arena]):
                     )
                 )
             )
-        # Handle the case that the team is already in the arena.
-        if team in [arena.white_team, arena.black_team]:
+        if relation.fully_exists:
             # Return the exception chain.
             return InsertionResult.failure(
                 ArenaServiceException(
@@ -134,58 +122,18 @@ class ArenaService(EntityService[Arena]):
                     )
                 )
             )
-        # Handle the case that the color slot was already assigned to a different team.
-        if (team.schema == Schema.WHITE and arena.white_team_is_assigned) or (
-                team.schema == Schema.BLACK and arena.black_team_is_assigned):
-            return InsertionResult.failure(
-                ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=TeamPlayingDifferentArenaException(
-                        f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # Handle the case of adding the team if its schema is black. Doing them separately avoids concurrency problems
-        if team.schema == Schema.BLACK:
-            if arena.black_team_is_assigned:
-                return InsertionResult.failure(
-                    ArenaServiceException(
-                        message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                        ex=TeamPlayingDifferentArenaException(
-                            f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}"
-                        )
-                    )
-                )
+        # Can add if the relation partially exists.
+        if team.schema.BLACK and not arena.black_team_is_assigned:
             arena.black_team = team
-            return InsertionResult.success(payload=team)
-        # Handle the case of adding the team if its schema is white.
-        if team.schema == Schema.WHITE:
-            if arena.white_team_is_assigned:
-                return InsertionResult.failure(
-                    ArenaServiceException(
-                        message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                        ex=TeamPlayingDifferentArenaException(
-                            f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}"
-                        )
-                    )
-                )
-            arena.white_team = team
-            return InsertionResult.success(payload=team)
-        
-        # Handle the case of adding the team if its schema is white. Doing them separately manages concurrency.
-        if team.schema == Schema.WHITE and arena.white_team_is_assigned:
-            return InsertionResult.failure(
-                ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=TeamPlayingDifferentArenaException(
-                        f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}"
-                    )
-                )
+            return InsertionResult.success(arena.black_team)
+        if team.schema.WHITE and not arena.white_team_is_assigned:
+            return InsertionResult.success(arena.white_team)
+        return InsertionResult.failure(
+            ArenaServiceException(
+                message=f"ServiceId:{self.id}, {method}: {ArenaServiceException.ERROR_CODE}",
+                ex=ChangingArenaTeamBlockedException(f"{method}: {ChangingArenaTeamBlockedException.DEFAULT_MESSAGE}")
             )
-        else:
-            arena.black_team = team
-            return InsertionResult.success(payload=team)
-        return
+        )
         
             
             
@@ -244,51 +192,7 @@ class ArenaService(EntityService[Arena]):
             *   TeamPlayingDifferentArenaException
             *   TeamNotSubmittedArenaRegistrationException
         """
-        method = "ArenaService.certify_team_arena_relationship"
-        # Handle the case that the arena is not safe.
-        arena_validation = self.validator.validate(arena)
-        if arena_validation.is_failure:
-            # Return the exception chain on failure.
-            return Result.failure(
-                ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=arena_validation.exception
-                )
-            )
-        # Handle the case that the team is not safe.
-        team_validation = team_service.validator.validate(team)
-        if team_validation.is_failure:
-            # Return the exception chain on failure.
-            return Result.failure(
-                ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=team_validation.exception
-                )
-            )
-        # Handle the case that the team should be playing a different arena.
-        if arena != team.arena:
-            # Return the exception chain.
-            return Result.failure(
-                ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=TeamPlayingDifferentArenaException(
-                        f"{method}: {TeamPlayingDifferentArenaException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # Handle the case that the team has not occupied its slot.
-        if team not in [arena.white_team, arena.black_team]:
-            # Return the exception chain.
-            return Result.failure(
-                ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=TeamNotSubmittedArenaRegistrationException(
-                        f"{method}: {TeamNotSubmittedArenaRegistrationException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # On certification success return the related items in the result.
-        return Result.success((team, arena))
+
     
 
     

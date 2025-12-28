@@ -6,7 +6,7 @@ from chess.system import Dyad
 from chess.team import Team
 
 
-class TeamArenaDyad(Dyad[Arena, Team]):
+class ArenaTeamDyad(Dyad[Arena, Team]):
     
     def __init__(self, primary: Arena, satellite: Team):
         super().__init__(primary=primary, satellite=satellite)
@@ -17,5 +17,5 @@ class TeamArenaDyad(Dyad[Arena, Team]):
         
     @property
     def satellite(self) -> Team:
-        return cast(Team, self._dyad_secondary)
+        return cast(Team, self.dyad_satellite)
     

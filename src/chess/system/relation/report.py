@@ -13,20 +13,20 @@ class RelationReport(Result):
     
     def __init__(
             self,
-            dyad: Optional[Dyad(P, S)],
+            primary: Optional[P],
             satellite: Optional[S],
             relation_status: Optional[RelationStatus],
             exception: Optional[Exception],
     ):
-        super().__init__(payload=dyad, exception=exception)
+        super().__init__(payload=primary, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "RelationReport.__init__"
         self._satellite = satellite
         self._relation_status = relation_status
     
     @property
-    def dyad(self) -> Optional[P]:
-        return cast(Dyad, self.payload)
+    def primary(self) -> Optional[P]:
+        return cast(P, self.payload)
     
     @property
     def satellite(self) -> Optional[S]:
@@ -37,29 +37,26 @@ class RelationReport(Result):
         return self._relation_status
     
     @property
-    def are_not_related(self) -> bool:
+    def does_not_exist(self) -> bool:
         return self.exception is None and self.payload is None and self._satellite is None
     
     @property
-    def registration_does_not_exist(self) -> bool:
+    def partially_exists(self) -> bool:
         return self.exception is None and self.payload is None and self._satellite is not None
     
     @property
-    def is_bidirectional(self) -> bool:
+    def fully_exists(self) -> bool:
         return self.exception is None and self.payload is not None and self._satellite is not None
     
     @classmethod
-    def no_relation(cls) -> RelationReport:
+    def not_related(cls) -> RelationReport:
         return cast(RelationReport, cls.empty())
     
     @classmethod
-    def registration_not_submitted(cls, satellite: S) -> RelationReport:
-        return RelationReport(satellite=satellite,dyad=None, exception=None)
+    def partial(cls, satellite: S) -> RelationReport:
+        return RelationReport(satellite=satellite, primary=None, exception=None)
     
     @classmethod
-    def bidirectional(cls, dyad: Dyad) -> RelationReport:
-        return RelationReport(dyad=dyad, satellite=None, exception=None)
+    def bidirectional(cls, primary: P, satellite: S) -> RelationReport:
+        return RelationReport(primary=primary, satellite=None, exception=None)
         
-        
-    
-    

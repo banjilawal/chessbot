@@ -13,9 +13,9 @@ class Dyad:
         self._satellite = satellite
         
     @property
-    def primary(self) -> P:
+    def dyad_primary(self) -> P:
         return self._primary
     
     @property
-    def satellite(self) -> S:
+    def dyad_satellite(self) -> S:
         return self._satellite

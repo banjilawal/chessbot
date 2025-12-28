@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .dyad import TeamArenaDyad
-from wrapper import RelationTestFailedException
+from .tester import ArenaTeamRelationTester
+from .wrapper import ArenaTeamRelationTestFailedException
