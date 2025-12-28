@@ -26,7 +26,7 @@ from .mouse import *
 from .notification import *
 from .number import *
 from .result import *
-from .relaitonship import *
+from .relation import *
 from .resolution import *
 from .service import *
 from .text import *

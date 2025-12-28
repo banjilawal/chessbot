@@ -1,9 +1,9 @@
-# src/chess/system/err/relational/base.py
+# src/chess/system/relation/exception/__init__.py
 
 """
-Module: chess.system.err.relational.base
+Module: chess.system.relation.exception.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-10-01
 version: 1.0.0
 """
 

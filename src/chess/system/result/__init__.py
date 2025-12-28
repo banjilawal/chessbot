@@ -13,6 +13,5 @@ version: 1.0.0
 from .stack import *
 
 # Modules
-from .example import *
 from .exception import *
 from .result import Result

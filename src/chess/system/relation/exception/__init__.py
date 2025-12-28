@@ -1,13 +1,13 @@
-# src/chess/system/err/relational/__init__.py
+# src/chess/system/relation/exception/__init__.py
 
 """
-Module: chess.system.err.relational.__init__
+Module: chess.system.relation.exception.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== SYSTEM.ERR.RELATIONAL PACKAGE CONTENTS ===========#
+# =========== SYSTEM.RELATION.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

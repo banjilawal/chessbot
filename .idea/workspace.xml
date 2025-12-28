@@ -5,28 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/collision/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/collision/color.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/deletion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/deletion/blocked.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/deletion/empty.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/insertion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/insertion/blocked.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/insertion/duplicate.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/arena/relation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/arena/relation/dyad.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/arena/relation/evaluator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/relation/report.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/relation/status.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/arena.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/arena.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/service/exception/different.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/collision/arena.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/service/exception/schema.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/validator/exception/team/duplicate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/validator/exception/team/many.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/debug/full.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/arena.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/arena.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/bidirectional.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/bidirectional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/relational/registered.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/registered.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relaitonship/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relaitonship/dyad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/dyad.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relaitonship/evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/evaluator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relaitonship/result.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/result/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/result/example.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,11 +319,11 @@
       <recent name="$PROJECT_DIR$/src/chess/system/service/entity" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/relation" />
       <recent name="$PROJECT_DIR$/src/chess/arena/service/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/arena/service/exception/debug/collision" />
       <recent name="$PROJECT_DIR$/src/chess/arena/service/exception/debug/deletion" />
       <recent name="$PROJECT_DIR$/src/chess/arena/service/exception/debug/insertion" />
-      <recent name="$PROJECT_DIR$/src/chess/arena/service/exception" />
     </key>
   </component>
   <component name="RunManager" selected="Python.finder">
@@ -991,7 +987,9 @@
       <workItem from="1766817501893" duration="2932000" />
       <workItem from="1766833932228" duration="8161000" />
       <workItem from="1766848581427" duration="4567000" />
-      <workItem from="1766853714835" duration="6681000" />
+      <workItem from="1766853714835" duration="9225000" />
+      <workItem from="1766871256434" duration="6709000" />
+      <workItem from="1766913023316" duration="3466000" />
     </task>
     <servers />
   </component>

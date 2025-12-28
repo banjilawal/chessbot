@@ -12,7 +12,6 @@ version: 1.0.0
 # Packages
 from .bounds import *
 from .color import *
-from .relational import *
 from .resource import *
 from .consistency import *
 
