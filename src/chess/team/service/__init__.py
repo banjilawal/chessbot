@@ -15,4 +15,5 @@ from .data import *
 
 # Modules
 from .service import TeamService
+from .location import TokenLocation
 from .catchall import TeamServiceException

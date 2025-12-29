@@ -51,5 +51,13 @@ class TeamMemberRelationTester(RelationTester[Team, Token]):
         member_search = team.roster.search(context=TokenContext(id=token.id))
         
         if member_search.is_failure:
-            return
+            return RelationReport(
+                TeamMemberRelationTestFailedException(
+                    message=f"{method}: {TeamMemberRelationTestFailedException.ERROR_CODE}",
+                    ex=member_search.exception,
+                )
+            )
+        if member_search.is_empty:
+            if
+            return RelationReport.partial(satellite=token)
         return RelationReport((candidate_primary), S(candidate_satellite), team_valiation)

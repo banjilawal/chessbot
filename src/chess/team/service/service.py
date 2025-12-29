@@ -7,12 +7,16 @@ Created: 2025-08-05
 version: 1.0.0
 """
 
-from typing import cast
+from typing import List, cast
 
-from chess.agent import AgentService, PlayerAgent
-from chess.arena import Arena, ArenaService
-from chess.system import EntityService, LoggingLevelRouter, Result, id_emitter
-from chess.team import Team, TeamBuilder, TeamNotSubmittedArenaRegistrationException, TeamServiceException, TeamValidator
+
+from chess.system import EntityService, LoggingLevelRouter, SearchResult, id_emitter
+from chess.team import (
+    Team, TeamBuilder,
+    TeamServiceException, TeamValidator, TokenLocation
+)
+from chess.token import Token, TokenService
+from chess.token.context.context import TokenContext
 
 
 class TeamService(EntityService[Team]):
@@ -70,6 +74,74 @@ class TeamService(EntityService[Team]):
     def validator(self) -> TeamValidator:
         """get TeamValidator."""
         return cast(TeamValidator, self.entity_validator)
+    
+    @LoggingLevelRouter.monitor
+    def search_team_for_token(
+            self,
+            team: Team,
+            piece: Token,
+            piece_service: TokenService = TokenService(),
+    ) -> SearchResult[List[(Token, TokenLocation)]]:
+        """"""
+        method = "TeamService.search_team_for_token"
+        
+        # Validate the team and handle the failure case.
+        team_validation = self.validator.validate(candidate=team)
+        if team_validation.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                TeamServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                    ex=team_validation.exception
+                )
+            )
+        # Validate the piece and handle the failure case.
+        piece_validation = piece_service.validator.validate(piece)
+        if piece_validation.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                TeamServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                    ex=piece_validation.exception
+                )
+            )
+        # create the container for storing all the search hits.
+        matches: List[(Token, TokenLocation)]
+        
+        # Process tokens on the roster first.
+        roster_search = team.roster.search(context=TokenContext(id=piece.id))
+        if roster_search.is_failure:
+            # If roster_search fails send the exception chain.
+            return SearchResult.failure(
+                TeamServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                    ex=roster_search.exception
+                )
+            )
+        # Go through the roster hits, tag their locations and append to matches.
+        if roster_search.is_success:
+            for token in roster_search.payload:
+                matches.append((token, TokenLocation.ROSTER))
+                
+        # Process the hostages
+        hostage_search = team.hostages.search(context=TokenContext(id=piece.id))
+        if hostage_search.is_failure:
+            # Send the exception chain on failure.
+            return SearchResult.failure(
+                TeamServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                    ex=hostage_search.exception
+                )
+            )
+        # Tag and append hits from the hostages list.
+        if hostage_search.is_success:
+            for token in hostage_search.payload:
+                matches.append((token, TokenLocation.HOSTAGES))
+        # Send the tagged matches.
+        return SearchResult.success(matches)
+        
+            
+        
 
     
 

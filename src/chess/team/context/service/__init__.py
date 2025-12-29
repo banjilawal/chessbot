@@ -13,5 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .location import  TokenLocation
 from .service import TeamContextService
