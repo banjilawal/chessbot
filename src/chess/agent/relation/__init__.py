@@ -14,4 +14,4 @@ None
 
 # Modules
 from .tester import AgentTeamRelationTester
-from .wrapper import OwnerTeamRelationTestFailedException
+from .wrapper import AgentTeamRelationTestFailedException

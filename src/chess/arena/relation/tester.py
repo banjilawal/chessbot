@@ -55,15 +55,15 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
             produced aa match send a bidirectional report. Else send a partial relation report.
 
         # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   arena_variety (ArenaVariety)
-            *   engine_service (Optional[EngineService])
+            *   candidate_primary (Arena)
+            *   candidate_satellite (Team)
+            *   arena_validator (ArenaValidator)
+            *   team_service (TeamService)
 
         # RETURN:
-        ValidationResult[Arena] containing either:
-            - On success: Arena in the payload.
-            - On failure: Exception.
+        RelationTest[Arena, Team] containing either
+            *   No relation:
+            *   On error: an Exception
 
         # RAISES:
             *   ArenaValidationFailedException
@@ -92,7 +92,6 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
                     ex=team_validation.exception
                 )
             )
-        # Just incase things aren't Liskovian on the candidate_satellite ue validation.payload for the cast.
         team = cast(Team, team_validation.payload)
         
         # If the team is assigned to a different arena it's not a satellite of the area. They are not related.

@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# AGENT_TEAM_RELATION_TEST_FAILURE EXCEPTION #======================#
-    "OwnerTeamRelationTestFailedException",
+    "AgentTeamRelationTestFailedException",
 ]
 
 from chess.system import RelationTestFailedException
 
 
 # ======================# AGENT_TEAM_RELATION_TEST_FAILURE EXCEPTION #======================#
-class OwnerTeamRelationTestFailedException(RelationTestFailedException):
+class AgentTeamRelationTestFailedException(RelationTestFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

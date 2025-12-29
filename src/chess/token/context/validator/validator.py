@@ -12,8 +12,6 @@ from typing import Any, cast
 from chess.coord import CoordService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.token import (
-    InvalidTokenContextException, ZeroTokenContextFlagsException, NullTokenContextException, TokenContext,
-    ExcessiveTokenContextFlagsException
 )
 
 class TokenContextValidator(Validator[TokenContext]):
@@ -72,7 +70,7 @@ class TokenContextValidator(Validator[TokenContext]):
             
             if context.name is not None:
                 validation = identity_service.validate_name(candidate=context.name)
-                if validation.is_failure():
+                if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 return ValidationResult.success(context)
             

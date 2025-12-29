@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/service/location.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/location.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/relation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/relation/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/relation/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/tester.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/relation/member/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/member/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/context/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/context/validator/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -983,7 +983,7 @@
       <workItem from="1766992280166" duration="12219000" />
       <workItem from="1767018422815" duration="1433000" />
       <workItem from="1767020094964" duration="3011000" />
-      <workItem from="1767024723147" duration="13518000" />
+      <workItem from="1767024723147" duration="18039000" />
     </task>
     <servers />
   </component>
