@@ -20,7 +20,7 @@ from chess.system import (
 
 class ArenaValidator(Validator[Arena]):
     """
-    # ROLE: Validationer, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Validation, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Produce Arena instances whose integrity is guaranteed at creation.
@@ -29,10 +29,10 @@ class ArenaValidator(Validator[Arena]):
     4.  Return an exception to the client if a Validation resource does not satisfy integrity requirements.
 
     # PARENT:
-        *   Validationer
+        *   Validation
 
     # PROVIDES:
-        *   ArenaValidator
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -40,7 +40,6 @@ class ArenaValidator(Validator[Arena]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     def validate(
             cls,
@@ -52,7 +51,7 @@ class ArenaValidator(Validator[Arena]):
         """
         # ACTION:
         1.  verify arena_variety is a not-null ArenaVariety object.
-        2.  Use arena_variety to pick which Validationer method will create the concrete Arena object.
+        2.  Use arena_variety to pick which Validation method will create the concrete Arena object.
 
         # PARAMETERS:
             *   id (int)
@@ -60,12 +59,12 @@ class ArenaValidator(Validator[Arena]):
             *   arena_variety (ArenaVariety)
             *   engine_service (Optional[EngineService])
 
-        # Returns:
+        # RETURN:
         ValidationResult[Arena] containing either:
             - On success: Arena in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   ArenaValidationFailedException
         """
         method = "ArenaValidator.validate"

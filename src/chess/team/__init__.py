@@ -13,9 +13,10 @@ version: 1.0.0
 from .builder import *
 from .context import *
 from .service import *
+from .relation import *
 from .validator import *
 
 # Modules
-from .exception import *
 from .team import Team
+from .exception import TeamException
 

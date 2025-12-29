@@ -1,7 +1,7 @@
-# src/chess/piece/validator/validator.py
+# src/chess/token/validator/validator.py
 
 """
-Module: chess.piece.validator
+Module: chess.token.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,12 +11,12 @@ from typing import Any, cast
 
 from chess.coord import CoordService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
-from chess.piece import (
-    InvalidPieceContextException, ZeroPieceContextFlagsException, NullPieceContextException, PieceContext,
-    ExcessivePieceContextFlagsException
+from chess.token import (
+    InvalidTokenContextException, ZeroTokenContextFlagsException, NullTokenContextException, TokenContext,
+    ExcessiveTokenContextFlagsException
 )
 
-class PieceContextValidator(Validator[PieceContext]):
+class TokenContextValidator(Validator[TokenContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -25,42 +25,42 @@ class PieceContextValidator(Validator[PieceContext]):
             candidate: Any,
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[PieceContext]:
+    ) -> ValidationResult[TokenContext]:
         """"""
-        method = "PieceContextValidator.validate"
+        method = "TokenContextValidator.validate"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullPieceContextException(
+                    NullTokenContextException(
                         f"{method}: "
-                        f"{NullPieceContextException.DEFAULT_MESSAGE}"
+                        f"{NullTokenContextException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if not isinstance(candidate, PieceContext):
+            if not isinstance(candidate, TokenContext):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: "
-                        f"Expected PieceContext instance, got {type(candidate).__name__} instead."
+                        f"Expected TokenContext instance, got {type(candidate).__name__} instead."
                     )
                 )
             
-            context = cast(PieceContext, candidate)
+            context = cast(TokenContext, candidate)
             
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroPieceContextFlagsException(
+                    ZeroTokenContextFlagsException(
                         f"{method}: "
-                        f"{ZeroPieceContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{ZeroTokenContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    ExcessivePieceContextFlagsException(
+                    ExcessiveTokenContextFlagsException(
                         F"{method}: "
-                        F"{ExcessivePieceContextFlagsException.DEFAULT_MESSAGE}"
+                        F"{ExcessiveTokenContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             
@@ -87,11 +87,11 @@ class PieceContextValidator(Validator[PieceContext]):
                 
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidPieceContextException(
+                InvalidTokenContextException(
                     ex=ex,
                     message=(
                         f"{method}: "
-                        f"{InvalidPieceContextException.DEFAULT_MESSAGE}"
+                        f"{InvalidTokenContextException.DEFAULT_MESSAGE}"
                     )
                 )
             )

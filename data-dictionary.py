@@ -96,7 +96,7 @@ class Coordinate(BaseModel):
 
     Raises:
       NullException: If the provided validation-pkg is validation.
-      ValidationError: If the new point is out of bounds.
+      Validationror: If the new point is out of bounds.
     """
     if delta is None:
       raise NullException("Delta cannot be null.")

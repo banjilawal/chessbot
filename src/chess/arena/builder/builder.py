@@ -9,19 +9,16 @@ version: 1.0.0
 
 from typing import List
 
-from chess.board import Board, BoardService
-from chess.team import Team, UniqueTeamDataService
+from chess.team import Team
+from chess.board import Board
 from chess.agent import PlayerAgent, AgentService
 from chess.arena import Arena, ArenaBuildFailedException, DuplicatePlayerInArenaException
-from chess.system import (
-    Builder, BuildResult, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult,
-    id_emitter
-)
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
 
 class ArenaBuilder(Builder[Arena]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Produce Arena instances whose integrity is guaranteed at creation.

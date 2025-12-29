@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
+
 from typing import cast
 
 from chess.team import Team, TeamService
@@ -17,7 +18,25 @@ from chess.arena import (
 
 
 class ArenaTeamRelationTester(RelationTester[Arena, Team]):
-    
+    """
+    # ROLE: Reporting, Test for Relationship
+
+    # RESPONSIBILITIES:
+    1.  Test if whether an arena-team tuple have either none, partial, or fully bidirectional relation between them.
+    2.  If the testing was not completed send an exception chain to the caller.
+
+    # PARENT:
+        *   RelationTester
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def test(
@@ -27,8 +46,30 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
             arena_validator: ArenaValidator = ArenaValidator(),
             team_service: TeamService = TeamService(),
     ) -> RelationReport[Arena, Team]:
+        """
+        # ACTION:
+        1.  If either candidate fails its safety certification send the exception chain in the RelationReport. Else,
+            cast the candidate_primary to arena instance; arena and candidate_satellite to Team instance; team.
+        2.  If the team.owner != owner they are not related. Else they are partially related.
+        3.  If searching owner's teams for the satellite produces an error send the exception chain. If the search
+            produced aa match send a bidirectional report. Else send a partial relation report.
+
+        # PARAMETERS:
+            *   id (int)
+            *   name (str)
+            *   arena_variety (ArenaVariety)
+            *   engine_service (Optional[EngineService])
+
+        # RETURN:
+        ValidationResult[Arena] containing either:
+            - On success: Arena in the payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   ArenaValidationFailedException
+        """
         method = "ArenaService.certify_team_arena_relationship"
-        # Handle the case that the arena is not safe.
+        # Process the possible arena_validation outcomes.
         arena_validation = arena_validator.validate(candidate_primary)
         if arena_validation.is_failure:
             # Return the exception chain on failure.
@@ -38,9 +79,10 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
                     ex=arena_validation.exception
                 )
             )
+        # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
         arena = cast(Arena, candidate_primary)
         
-        # Handle the case that the team is not safe.
+        # Process the possible team_validation outcomes.
         team_validation = team_service.validator.validate(candidate_satellite)
         if team_validation.is_failure:
             # Return the exception chain on failure.
@@ -50,18 +92,23 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
                     ex=team_validation.exception
                 )
             )
-        team = cast(Team, candidate_satellite)
+        # Just incase things aren't Liskovian on the candidate_satellite ue validation.payload for the cast.
+        team = cast(Team, team_validation.payload)
         
-        # Handle the case that the team should be playing a different arena.
+        # If the team is assigned to a different arena it's not a satellite of the area. They are not related.
         if arena != team.arena:
             return RelationReport.not_related()
         
-        # Find out which slot the team wants to occupy.
+        # The two paths left are: processing the black satellite or the white one.
+        
+        # When the black satellite has not registered with the arena the relation is partial.
         if team.schema.BLACK:
             if arena.black_team is None:
                 return RelationReport.partial(satellite=team)
+            # When the black satellite has occupied its slot the relation is bidirectional.
             if arena.black_team == team:
                 return RelationReport.bidirectional(primary=arena, satellite=team)
+            # If the black slot is occupied by some other team an error has occurred. Return the exception chain.
             return RelationReport.failure(
                 ArenaTeamRelationTestFailedException(
                     message=f"{method}: {ArenaTeamRelationTestFailedException.ERROR_CODE}",
@@ -70,11 +117,14 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
                     )
                 )
             )
-        # The default case is for the white team.
+        
+        # When the white team has not registered with the arena the relation is partial.
         if arena.white_team is None:
             return RelationReport.partial(satellite=team)
+        # When the white team has occupied its slot the relation is bidirectional.
         if arena.white_team == team:
             return RelationReport.bidirectional(primary=arena, satellite=team)
+        # If the white slot is occupied by some other team an error has occurred. Return the exception chain.
         return RelationReport.failure(
             ArenaTeamRelationTestFailedException(
                 message=f"{method}: {ArenaTeamRelationTestFailedException.ERROR_CODE}",

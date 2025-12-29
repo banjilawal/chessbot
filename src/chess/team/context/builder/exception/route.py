@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.system import UnhandledRouteException
-from chess.team import TeamContext
+from chess.team import TeamContextException
 
 
 # ======================# UNHANDLED_TEAM_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class TeamContextBuildRouteException(TeamContext, UnhandledRouteException):
+class TeamContextBuildRouteException(TeamContextException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

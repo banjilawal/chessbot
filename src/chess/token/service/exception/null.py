@@ -1,31 +1,31 @@
-# src/chess/piece/service//exception/null.py
+# src/chess/token/service/exception/null.py
 
 """
-Module: chess.piece.service..exception.null
+Module: chess.token.service.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.piece import InvalidPieceServiceException
+from chess.token import InvalidTokenServiceException
 
 
 __all__ = [
-    "NullPieceServiceException",
+    "NullTokenServiceException",
 ]
 
 
-#======================# NULL PIECE_SERVICE EXCEPTION #======================#
-class NullPieceServiceException(InvalidPieceServiceException, NullException):
+#======================# NULL TOKEN_SERVICE EXCEPTION #======================#
+class NullTokenServiceException(InvalidTokenServiceException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate if an entity, method or operation required an PieceService but got null instead.
+    1.  Indicate if an entity, method or operation required an TokenService but got null instead.
 
     # PARENT:
-        *   InvalidPieceServiceException
+        *   InvalidTokenServiceException
         *   NullException
 
     # PROVIDES:
@@ -37,5 +37,5 @@ class NullPieceServiceException(InvalidPieceServiceException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_PIECE_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "PieceService cannot be null."
+    ERROR_CODE = "NULL_TOKEN_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "TokenService cannot be null."

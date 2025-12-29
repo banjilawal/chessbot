@@ -19,7 +19,7 @@ from chess.system import BOARD_DIMENSION, Builder, BuildResult, IdentityService
 
 class BoardBuilder(Builder[Board]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
   
     # RESPONSIBILITIES:
     1.  Produce Board instances whose integrity is guaranteed at creation.

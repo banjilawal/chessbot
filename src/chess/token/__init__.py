@@ -1,13 +1,13 @@
-# src/chess/piece/__init__.py
+# src/chess/Token/__init__.py
 
 """
-Module: chess.piece.__init__
+Module: chess.Token.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-#=========== PIECE PACKAGE CONTENTS ===========#
+#=========== Token PACKAGE CONTENTS ===========#
 
 # Packages
 from .context import *

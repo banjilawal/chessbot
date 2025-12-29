@@ -1,7 +1,7 @@
-# src/chess/piece/service/data/service_.py
+# src/chess/token/service/data/service_.py
 
 """
-Module: chess.piece.service.data.service
+Module: chess.token.service.data.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -10,10 +10,10 @@ version: 1.0.0
 from typing import List
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.piece import Piece, PieceContext, PieceDataServiceException, PieceFinder, PieceService, PieceContextService
+from chess.token import Token, TokenContext, TokenDataServiceException, TokenFinder, TokenService, TokenContextService
 
 
-class PieceDataService(DataService[Piece]):
+class TokenDataService(DataService[Token]):
     """
     # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -22,13 +22,13 @@ class PieceDataService(DataService[Piece]):
     2.  Stack data structure for Token objects with no guarantee of uniqueness.
     3.  Implements searcher, insert, delete, and update operations on Token objects.
     4.  ContextService for building selecting different searcher attributes.
-    5.  Including a PieceService instance creates a microservice for clients.
+    5.  Including a TokenService instance creates a microservice for clients.
 
     # PROVIDES:
-        *   PieceService
+        *   TokenService
         *   ContextService
         *   Finder
-        *   PieceStack data structure
+        *   TokenStack data structure
 
     # ATTRIBUTES:
     None
@@ -37,27 +37,27 @@ class PieceDataService(DataService[Piece]):
         *   items (List[Token]):
         *   searcher (Finder[Token]):
         *   entity_service (EntityService[Token]):
-        *   context_service (EntityService[PieceContext]);
+        *   context_service (EntityService[TokenContext]);
         *   current_item (Token):
         *   size (int):
     """
-    DEFAULT_NAME = "PieceDataService"
+    DEFAULT_NAME = "TokenDataService"
     
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            items: List[Piece] = List[Piece],
-            search: PieceFinder = PieceFinder(),
-            service: PieceService = PieceService(),
-            context_service: PieceContextService = PieceContextService(),
+            items: List[Token] = List[Token],
+            search: TokenFinder = TokenFinder(),
+            service: TokenService = TokenService(),
+            context_service: TokenContextService = TokenContextService(),
     ):
         """
         # Action
-        1.  Use id_emitter to automatically generate a unique id for each PieceDataService instance.
+        1.  Use id_emitter to automatically generate a unique id for each TokenDataService instance.
         2.  Automatic dependency injection by providing working default instances of each attribute.
         """
-        method = "PieceService.__init__"
+        method = "TokenService.__init__"
         super().__init__(
             id=id,
             name=name,
@@ -68,10 +68,10 @@ class PieceDataService(DataService[Piece]):
         )
     
     @LoggingLevelRouter.monitor
-    def push_item(self, item: Piece) -> InsertionResult[Piece]:
+    def push_item(self, item: Token) -> InsertionResult[Token]:
         """
         # ACTION:
-        1.  Use PieceDataService.service.validator to certify item.
+        1.  Use TokenDataService.service.validator to certify item.
         2.  If certification fails return the exception inside an InsertionResult.
         3.  Otherwise, push item onto the stack.
         4.  Send the successfully pushed data back in an InsertionResult.
@@ -80,14 +80,14 @@ class PieceDataService(DataService[Piece]):
             *   item (Token)
 
         # Returns:
-        InsertionResult[TPiece] containing either:
+        InsertionResult[TToken] containing either:
             - On success: Token in the payload.
             - On failure: Exception.
 
         # Raises:
-            *   PieceDataServiceException
+            *   TokenDataServiceException
         """
-        method = "PieceDataService.push"
+        method = "TokenDataService.push"
         
         try:
             validation = self.data.item_validator.validate(item)
@@ -98,12 +98,12 @@ class PieceDataService(DataService[Piece]):
             return InsertionResult.success(payload=item)
         except Exception as ex:
             return InsertionResult.failure(
-                PieceDataServiceException(ex=ex, message=f"{method}: {PieceDataServiceException.DEFAULT_MESSAGE}")
+                TokenDataServiceException(ex=ex, message=f"{method}: {TokenDataServiceException.DEFAULT_MESSAGE}")
             )
 
 
     @LoggingLevelRouter.monitor
-    def search(self, context: PieceContext) -> SearchResult[List[Piece]]:
+    def search(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
         # ACTION:
         1.  Pass map argument to self.searcher.
@@ -126,7 +126,7 @@ class PieceDataService(DataService[Piece]):
         # Raises:
         None
         """
-        method = "PieceDataService.searcher"
+        method = "TokenDataService.searcher"
         
         return self.search.find(
             dataset=self.items, context=context, context_validator=self.context_service.item_validator

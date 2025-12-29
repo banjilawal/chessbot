@@ -1,32 +1,32 @@
-# src/chess/piece/service/exception/invalid.py
+# src/chess/token/service/exception/invalid.py
 
 """
-Module: chess.piece.service.exception.invalid
+Module: chess.token.service.exception.invalid
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import ValidationFailedException
-from chess.piece import PieceServiceException
+from chess.token import TokenServiceException
 
 
 __all__ = [
-    #======================# PIECE_SERVICE VALIDATION EXCEPTION #======================#
-    "InvalidPieceServiceException",
+    #======================# TOKEN_SERVICE VALIDATION EXCEPTION #======================#
+    "InvalidTokenServiceException",
 ]
 
-#======================# PIECE_SERVICE VALIDATION EXCEPTION #======================#
-class InvalidPieceServiceException(PieceServiceException, ValidationFailedException):
+#======================# TOKEN_SERVICE VALIDATION EXCEPTION #======================#
+class InvalidTokenServiceException(TokenServiceException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised during PieceService verification process.
-    2.  Wrap an exception that hits the try-finally block of an PieceServiceValidator method.
+    1.  Parent of exceptions raised during TokenService verification process.
+    2.  Wrap an exception that hits the try-finally block of an TokenServiceValidator method.
 
     # PARENT:
-        *   PieceServiceException
+        *   TokenServiceException
         *   ValidationFailedException
 
     # PROVIDES:
@@ -38,5 +38,5 @@ class InvalidPieceServiceException(PieceServiceException, ValidationFailedExcept
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PIECE_SERVICE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "PieceService validation failed."
+    ERROR_CODE = "TOKEN_SERVICE_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "TokenService validation failed."

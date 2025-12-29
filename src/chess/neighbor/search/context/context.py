@@ -16,7 +16,7 @@ from chess.system import SearchContext
 
 class VisitationSearchContext(SearchContext):
     """
-  # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor implementation
+  # ROLE: Builder, Data Integrity And Reliability Guarantor implementation
 
   # RESPONSIBILITIES:
   1. Process and validate parameters for creating `DiscoverySearchContext` instances.

@@ -1,31 +1,31 @@
-# src/chess/piece/service/exception/invalid.py
+# src/chess/token/service/exception/invalid.py
 
 """
-Module: chess.piece.service.exception.invalid
+Module: chess.token.service.exception.invalid
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import ServiceOperationFailedException
-from chess.piece import PieceServiceException
+from chess.token import TokenServiceException
 
 __all__ = [
-    # ======================# PIECE_SERVICE_OPERATION EXCEPTION #======================#
-    "PieceServiceOperationFailedException",
+    # ======================# TOKEN_SERVICE_OPERATION EXCEPTION #======================#
+    "TokenServiceOperationFailedException",
 ]
 
 
-# ======================# PIECE_SERVICE_OPERATION EXCEPTION #======================#
-class PieceServiceOperationFailedException(PieceServiceException, ServiceOperationFailedException):
+# ======================# TOKEN_SERVICE_OPERATION EXCEPTION #======================#
+class TokenServiceOperationFailedException(TokenServiceException, ServiceOperationFailedException):
     """
     # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate That  a PieceService's method caught an unhandled exception in its try-catch-finally block.
+    1.  Indicate That  a TokenService's method caught an unhandled exception in its try-catch-finally block.
 
     # PARENT:
-        *   PieceServiceException
+        *   TokenServiceException
         *   ServiceOperationFailedException
 
     # PROVIDES:
@@ -37,5 +37,5 @@ class PieceServiceOperationFailedException(PieceServiceException, ServiceOperati
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PIECE_SERVICE_OPERATION_ERROR"
-    DEFAULT_MESSAGE = "PieceService operation failed."
+    ERROR_CODE = "TOKEN_SERVICE_OPERATION_ERROR"
+    DEFAULT_MESSAGE = "TokenService operation failed."

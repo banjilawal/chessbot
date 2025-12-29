@@ -38,25 +38,40 @@ class RelationReport(Result):
     
     @property
     def does_not_exist(self) -> bool:
-        return self.exception is None and self.payload is None and self._satellite is None
+        return (
+                self.exception is None and
+                self.payload is None and
+                self._satellite is None and
+                self._relation_status == RelationStatus.NO_RELATION
+        )
     
     @property
     def partially_exists(self) -> bool:
-        return self.exception is None and self.payload is None and self._satellite is not None
+        return (
+                self.exception is None and
+                self.payload is None and
+                self._satellite is not None and
+                self._relation_status == RelationStatus.REGISTRATION_NOT_SUBMITTED
+        )
     
     @property
     def fully_exists(self) -> bool:
-        return self.exception is None and self.payload is not None and self._satellite is not None
+        return (
+                self.exception is None and
+                self.payload is not None and
+                self._satellite is not None and
+                self._relation_status == RelationStatus.BIDIRECTIONAL
+        )
     
     @classmethod
     def not_related(cls) -> RelationReport:
-        return cast(RelationReport, cls.empty())
+        return RelationReport(relation_status=RelationStatus.NO_RELATION)
     
     @classmethod
     def partial(cls, satellite: S) -> RelationReport:
-        return RelationReport(satellite=satellite, primary=None, exception=None)
+        return RelationReport(satellite=satellite, relation_status=RelationStatus.REGISTRATION_NOT_SUBMITTED)
     
     @classmethod
     def bidirectional(cls, primary: P, satellite: S) -> RelationReport:
-        return RelationReport(primary=primary, satellite=None, exception=None)
+        return RelationReport(primary=primary, satellite=None, relation_status=RelationStatus.BIDIRECTIONAL)
         

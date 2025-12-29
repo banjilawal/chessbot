@@ -1,7 +1,7 @@
-# src/chess/piece/validator/validator.py
+# src/chess/token/validator/validator.py
 
 """
-Module: chess.piece.validator
+Module: chess.token.validator
 Author: Banji Lawal
 Created: 2025-10-22
 Version: 1.0.0
@@ -13,11 +13,12 @@ from chess.rank import RankCertifier
 from chess.coord import CoordService
 from chess.team import RosterNumberOutOfBoundsException, Team, TeamCertifier
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from chess.piece import (
-    Piece, InvalidPieceException, NullPieceException, PieceNullCoordStackException, PieceRosterNumberIsNullException
+from chess.token import (
+    Token, TokenValidationFailedException, NullTokenException, TokenNullCoordStackException, TokenRosterNumberIsNullException
 )
 
-class PieceValidator(Validator[Piece]):
+
+class TokenValidator(Validator[Token]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -29,7 +30,7 @@ class PieceValidator(Validator[Piece]):
         *   Validator
 
     # PROVIDES:
-        * PieceValidator
+        * TokenValidator
 
     # LOCAL ATTRIBUTES:
     None
@@ -47,7 +48,7 @@ class PieceValidator(Validator[Piece]):
             rank_service: RankCertifier = RankCertifier(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService()
-    ) -> ValidationResult[Piece]:
+    ) -> ValidationResult[Token]:
         """"""
         method = "Token.validate"
         
@@ -55,49 +56,47 @@ class PieceValidator(Validator[Piece]):
             # Prevents a validation `Token` being accepted as method argument.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullPieceException(
+                    NullTokenException(
                         f"{method}:"
-                        f" {NullPieceException.DEFAULT_MESSAGE}"
+                        f" {NullTokenException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if not isinstance(candidate, Piece):
+            if not isinstance(candidate, Token):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: "
-                        f"Expected Token instance, got {type(candidate).__name__} instead."
+                        f"Expected Token, got {type(candidate).__name__} instead."
                     )
                 )
             
-            piece = cast(Piece, candidate)
+            token = cast(Token, candidate)
             identity_validation = identity_service.validate_identity(
-                id_candidate=piece.id,
-                name_candidate=piece.name
+                id_candidate=token.id,
+                name_candidate=token.name
             )
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
-            team_validation = team_service.item_validator.validate(piece.team)
+            team_validation = team_service.item_validator.validate(token.team)
             if team_validation.is_failure():
                 return ValidationResult.failure(team_validation.exception)
             
             roster_number_validation = team_service.item_validator
             
-            rank_validation = rank_service.item_validator.validate(piece.rank)
+            rank_validation = rank_service.item_validator.validate(token.rank)
             if rank_validation.is_failure():
                 return ValidationResult.failure(rank_validation.exception)
             
-            
-
-            if piece.roster_number is None:
+            if token.roster_number is None:
                 return ValidationResult.failure(
-                    PieceRosterNumberIsNullException(
+                    TokenRosterNumberIsNullException(
                         f"{method}: "
-                        f"{PieceRosterNumberIsNullException.DEFAULT_MESSAGE}"
+                        f"{TokenRosterNumberIsNullException.DEFAULT_MESSAGE}"
                     )
                 )
             
-            if piece.roster_number < 1 or piece.roster_number > Team.MAX_ROSTER_SIZE:
+            if token.roster_number < 1 or token.roster_number > Team.MAX_ROSTER_SIZE:
                 return ValidationResult.failure(
                     RosterNumberOutOfBoundsException(
                         f"{method}: "
@@ -105,148 +104,148 @@ class PieceValidator(Validator[Piece]):
                     )
                 )
             
-            if piece.positions is None:
+            if token.positions is None:
                 return ValidationResult.failure(
-                    PieceNullCoordStackException(
+                    TokenNullCoordStackException(
                         f"{method}: "
-                        f"{PieceNullCoordStackException.DEFAULT_MESSAGE}")
-                )
-            
-            return ValidationResult.success(piece)
-
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidPieceException(
-                    ex=ex,
-                    message=f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}"
-                )
-            )
-        
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def piece_is_disabled(cls, candidate: Any) -> ValidationResult[bool]:
-        """"""
-        method = "PieceValidator.piece_is_disabled"
-        try:
-            piece_validation = cls.validate(candidate)
-            if piece_validation.is_failure():
-                return ValidationResult.failure(piece_validation.exception)
-
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidPieceException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{InvalidPieceException.DEFAULT_MESSAGE}"
+                        f"{TokenNullCoordStackException.DEFAULT_MESSAGE}"
                     )
                 )
-            )
+            
+            return ValidationResult.success(token)
         
-        
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_piece_is_actionable(
-            cls, candidate: Any,
-            team_service: TeamCertifier = TeamCertifier(),
-            board_service: BoardService = BoardService(),
-    ) -> ValidationResult[Piece]:
-        """"""
-        method = "PieceValidator.verify_active_piece"
-        try:
-            piece_validation = cls.validate(candidate)
-            if piece_validation.is_failure():
-                return ValidationResult.failure(piece_validation.exception)
-            
-            piece = cast(Piece, piece_validation.payload)
-            
-            team = piece.team
-            if piece not in team.roster:
-                return ValidationResult.failure(
-                    ActivePieceMissingFromTeamRoster(f"{method} {ActivePieceMissingFromTeamRoster.DEFAULT_MESSAGE}")
-                )
-            
-            if isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated:
-                return ValidationResult.failure(
-                    CheckmatedKingException(f"{method} {CheckmatedKingException.DEFAULT_MESSAGE}")
-                )
-            
-            if isinstance(piece, CombatantPiece) and cast(CombatantPiece, piece).captor is not None:
-                return ValidationResult.failure(
-                    CapturedPieceException(f"{method}: {CapturedPieceException.DEFAULT_MESSAGE}")
-                )
-            
-            if piece.current_position is None or piece.postions.is_empty():
-                return ValidationResult.failure(
-                   PieceRequiresInitialPlacementException(
-                       f"{method}: {PieceRequiresInitialPlacementException.DEFAULT_MESSAGE}"
-                  )
-                )
-            
-            return ValidationResult.success(piece)
-        
-        except Exception as e:
+        except Exception as ex:
             return ValidationResult.failure(
-                InvalidPieceException(f"{method}: {InvalidPieceException.DEFAULT_MESSAGE}", e)
+                TokenValidationFailedException(
+                    ex=ex,
+                    message=f"{method}: {TokenValidationFailedException.DEFAULT_MESSAGE}"
+                )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def piece_bound_to_team_roster(
+    def token_is_disabled(cls, candidate: Any) -> ValidationResult[bool]:
+        """"""
+        method = "TokenValidator.token_is_disabled"
+        try:
+            token_validation = cls.validate(candidate)
+            if token_validation.is_failure():
+                return ValidationResult.failure(token_validation.exception)
+        
+        except Exception as ex:
+            return ValidationResult.failure(
+                TokenValidationFailedException(
+                    ex=ex,
+                    message=(
+                        f"{method}: "
+                        f"{TokenValidationFailedException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_token_is_actionable(
+            cls, candidate: Any,
+            team_service: TeamCertifier = TeamCertifier(),
+            board_service: BoardService = BoardService(),
+    ) -> ValidationResult[Token]:
+        """"""
+        method = "TokenValidator.verify_active_token"
+        try:
+            token_validation = cls.validate(candidate)
+            if token_validation.is_failure():
+                return ValidationResult.failure(token_validation.exception)
+            
+            token = cast(Token, token_validation.payload)
+            
+            team = token.team
+            if token not in team.roster:
+                return ValidationResult.failure(
+                    ActiveTokenMissingFromTeamRoster(f"{method} {ActiveTokenMissingFromTeamRoster.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(token, KingToken) and cast(KingToken, token).is_checkmated:
+                return ValidationResult.failure(
+                    CheckmatedKingException(f"{method} {CheckmatedKingException.DEFAULT_MESSAGE}")
+                )
+            
+            if isinstance(token, CombatantToken) and cast(CombatantToken, token).captor is not None:
+                return ValidationResult.failure(
+                    CapturedTokenException(f"{method}: {CapturedTokenException.DEFAULT_MESSAGE}")
+                )
+            
+            if token.current_position is None or token.postions.is_empty():
+                return ValidationResult.failure(
+                    TokenRequiresInitialPlacementException(
+                        f"{method}: {TokenRequiresInitialPlacementException.DEFAULT_MESSAGE}"
+                    )
+                )
+            
+            return ValidationResult.success(token)
+        
+        except Exception as e:
+            return ValidationResult.failure(
+                TokenValidationFailedException(f"{method}: {TokenValidationFailedException.DEFAULT_MESSAGE}", e)
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def token_bound_to_team_roster(
             cls,
             team: Team,
-            piece: Piece,
-            piece_validator: type[PieceValidator] = PieceValidator
-    ) -> ValidationResult[(Team, Piece)]:
+            token: Token,
+            token_validator: type[TokenValidator] = TokenValidator
+    ) -> ValidationResult[(Team, Token)]:
         try:
             team_validation = cls.validate(team)
             if team_validation.is_failure():
                 return ValidationResult.failure(team_validation.exception)
             
-            piece_validation = piece_validator.validate_piece_is_actionable(piece)
-            if piece_validation.is_failure():
-                return ValidationResult.failure(piece_validation.exception)
+            token_validation = token_validator.validate_token_is_actionable(token)
+            if token_validation.is_failure():
+                return ValidationResult.failure(token_validation.exception)
             
-            if piece.team != team:
+            if token.team != team:
                 return ValidationResult.failure()
             
             if (
-                    (isinstance(piece, CombatantPiece) and cast(CombatantPiece, piece).captor is not None) or
-                    isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated
+                    (isinstance(token, CombatantToken) and cast(CombatantToken, token).captor is not None) or
+                    isinstance(token, KingToken) and cast(KingToken, token).is_checkmated
             ):
                 return ValidationResult.failure()
             
-            if piece not in team.roster:
+            if token not in team.roster:
                 return ValidationResult.failure()
             
-            return ValidationResult.success((team, piece))
+            return ValidationResult.success((team, token))
         except Exception as ex:
             return ValidationResult.failure(ex)
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def piece_bound_to_team_hostages(
+    def token_bound_to_team_hostages(
             cls,
             team: Team,
-            piece: Piece,
-            piece_validator: type[PieceValidator] = PieceValidator
-    ) -> ValidationResult[(Team, Piece)]:
+            token: Token,
+            token_validator: type[TokenValidator] = TokenValidator
+    ) -> ValidationResult[(Team, Token)]:
         try:
             team_validation = cls.validate(team)
             if team_validation.is_failure():
                 return ValidationResult.failure(team_validation.exception)
             
-            piece_validation = piece_validator.validate_piece_is_actionable(piece)
-            if piece_validation.is_failure():
-                return ValidationResult.failure(piece_validation.exception)
+            token_validation = token_validator.validate_token_is_actionable(token)
+            if token_validation.is_failure():
+                return ValidationResult.failure(token_validation.exception)
             
-            if piece.team == team:
+            if token.team == team:
                 return ValidationResult.failure()
             
-            if piece not in team.hostages:
+            if token not in team.hostages:
                 return ValidationResult.failure()
             
-            return ValidationResult.success((team, piece))
+            return ValidationResult.success((team, token))
         except Exception as ex:
             return ValidationResult.failure(ex)
     
@@ -254,20 +253,20 @@ class PieceValidator(Validator[Piece]):
     
     LoggingLevelRouter.monitor
     
-    def validate_piece_registration(
+    def validate_token_registration(
             cls,
-            piece_candidate: Any,
+            token_candidate: Any,
             team_candidate: Any,
-            piece_validator: PieceValidator = PieceValidator(),
+            token_validator: TokenValidator = TokenValidator(),
             team_data_service: TeamDataService = TeamDataService(),
-    ) -> ValidationResult(Team, Piece):
-        method = "TeamValidator.validate_piece_registration"
+    ) -> ValidationResult(Team, Token):
+        method = "TeamValidator.validate_token_registration"
         try:
-            piece_validation = piece_validator.validate(piece_candidate)
-            if piece_validation.is_failure():
-                return ValidationResult.failure(piece_validation.exception)
+            token_validation = token_validator.validate(token_candidate)
+            if token_validation.is_failure():
+                return ValidationResult.failure(token_validation.exception)
             
-            piece = cast(Piece, piece_candidate)
+            token = cast(Token, token_candidate)
             
             team_validation = cls.validate(team_candidate)
             if team_validation.is_failure():

@@ -80,3 +80,5 @@ class TeamContextService(ContextService[TeamContext]):
     def validator(self) -> TeamContextValidator:
         """Get TeamContextValidator instance."""
         return cast(TeamContextValidator, self.entity_validator)
+    
+    

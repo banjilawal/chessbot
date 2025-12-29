@@ -1,7 +1,7 @@
-# src/chess/piece/service/data/unique/exception.py
+# src/chess/token/service/data/unique/exception.py
 
 """
-Module: chess.piece.service.data.unique.exception
+Module: chess.token.service.data.unique.exception
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -10,23 +10,23 @@ version: 1.0.0
 from chess.system import UniqueDataServiceException
 
 __all__ = [
-    #======================# UNIQUE_PIECE_DATA_SERVICE EXCEPTION #======================#
-    "UniquePieceDataServiceException",
-    "AddingDuplicatePieceException",
+    #======================# UNIQUE_TOKEN_DATA_SERVICE EXCEPTION #======================#
+    "UniqueTokenDataServiceException",
+    "AddingDuplicateTokenException",
 ]
 
 
-#======================# UNIQUE_PIECE_DATA_SERVICE EXCEPTION #======================#
-class UniquePieceDataServiceException(UniqueDataServiceException):
+#======================# UNIQUE_TOKEN_DATA_SERVICE EXCEPTION #======================#
+class UniqueTokenDataServiceException(UniqueDataServiceException):
     """
-    Super class of exception raised by UniquePieceDataService objects. Do not use directly. Subclasses give
+    Super class of exception raised by UniqueTokenDataService objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
-    ERROR_CODE = "UNIQUE_PIECE_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "UniquePieceDataService raised an exception."
+    ERROR_CODE = "UNIQUE_TOKEN_DATA_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "UniqueTokenDataService raised an exception."
 
 
-class AddingDuplicatePieceException(UniquePieceDataServiceException):
-    """Raised when trying to add a duplicate Token to a list of Pieces."""
-    ERROR_CODE = "DUPLICATE_PIECE_ADDITION_ERROR"
-    DEFAULT_MESSAGE = "UniquePieceDataService cannot add duplicate Pieces to the list."
+class AddingDuplicateTokenException(UniqueTokenDataServiceException):
+    """Raised when trying to add a duplicate Token to a list of Tokens."""
+    ERROR_CODE = "DUPLICATE_TOKEN_ADDITION_ERROR"
+    DEFAULT_MESSAGE = "UniqueTokenDataService cannot add duplicate Tokens to the list."

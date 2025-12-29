@@ -1,7 +1,7 @@
-# src/chess/piece/builder/exception.py
+# src/chess/token/builder/exception.py
 
 """
-Module: chess.piece.builder.exception
+Module: chess.token.builder.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -9,23 +9,23 @@ version: 1.0.0
 
 
 from chess.system import BuildFailedException
-from chess.piece import PieceContextException
+from chess.token import TokenContextException
 
 __all__ = [
-    # ======================# PIECE_CONTEXT_BUILD_FAILED EXCEPTION #======================#
-    "PieceContextBuildFailedException",
+    # ======================# TOKEN_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+    "TokenContextBuildFailedException",
 ]
 
 
-# ======================# PIECE_CONTEXT_BUILD_FAILED EXCEPTION #======================#
-class PieceContextBuildFailedException(PieceContextException, BuildFailedException):
+# ======================# TOKEN_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+class TokenContextBuildFailedException(TokenContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the PieceContext build creates an exception. Failed check exceptions are encapsulated
-        in an PieceContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The PieceContextBuildFailedException provides a trace for debugging and application recovery.
+    1.  Any failed check during the TokenContext build creates an exception. Failed check exceptions are encapsulated
+        in an TokenContextBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The TokenContextBuildFailedException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   TokenContextException
@@ -40,5 +40,5 @@ class PieceContextBuildFailedException(PieceContextException, BuildFailedExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PIECE_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "PieceContext build failed."
+    ERROR_CODE = "TOKEN_CONTEXT_BUILD_FAILED"
+    DEFAULT_MESSAGE = "TokenContext build failed."

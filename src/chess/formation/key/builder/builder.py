@@ -18,7 +18,7 @@ from chess.system import BuildResult, Builder, GameColor, GameColorValidator, Id
 
 class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Produce FormationSuperKey instances whose integrity is guaranteed at creation.

@@ -14,7 +14,7 @@ from chess.scalar import Scalar, ScalarBuildFailedException, ScalarValidator
 
 class ScalarBuilder(Builder[Scalar]):
     """
-     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
      1.  Produce Scalar instances whose integrity is guaranteed at creation.

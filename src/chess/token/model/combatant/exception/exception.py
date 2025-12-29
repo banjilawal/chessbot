@@ -1,51 +1,51 @@
-# src/chess/piece/combatant/exception/exception.py
+# src/chess/token/combatant/exception/exception.py
 
 """
-Module: chess.piece.combatant.exception.exception
+Module: chess.token.combatant.exception.exception
 Author: Banji Lawal
 Created: 2025-11-23
 version: 1.0.0
 """
 
 
-from chess.piece import PieceException
-from chess.system import BuildFailedException, NullException, ValidationException
+from chess.token import TokenException
+from chess.system import BuildFailedException, NullException,
 
 
 __all__ = [
-    #======================# COMBATANT_PIECE EXCEPTION #======================#
-    "CombatantPieceException",
+    #======================# COMBATANT_TOKEN EXCEPTION #======================#
+    "CombatantTokenException",
     
-    #======================# COMBATANT_PIECE VALIDATION EXCEPTION #======================#
-    "InvalidCombatantPieceException",
+    #======================# COMBATANT_TOKEN VALIDATION EXCEPTION #======================#
+    "InvalidCombatantTokenException",
     "NullCombatantException",
     
-    #======================# COMBATANT_PIECE BUILD EXCEPTION #======================#
-    "CombatantPieceBuildFailedException",
+    #======================# COMBATANT_TOKEN BUILD EXCEPTION #======================#
+    "CombatantTokenBuildFailedException",
 ]
 
 
-#======================# COMBATANT_PIECE EXCEPTION #======================#
-class CombatantPieceException(PieceException):
-    """Super class for CombatantPiece exception."""
-    ERROR_CODE = "COMBATANT_PIECE_ERROR"
-    DEFAULT_MESSAGE = "CombatantPiece raised an exception."
+#======================# COMBATANT_TOKEN EXCEPTION #======================#
+class CombatantTokenException(TokenException):
+    """Super class for CombatantToken exception."""
+    ERROR_CODE = "COMBATANT_TOKEN_ERROR"
+    DEFAULT_MESSAGE = "CombatantToken raised an exception."
 
 
-#======================# COMBATANT_PIECE VALIDATION EXCEPTION #======================#
-class InvalidCombatantPieceException(CombatantPieceException, ValidationException):
-    """Raised by PieceValidator when a combatant candidate fails a sanity check."""
-    ERROR_CODE = "COMBATANT_PIECE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "CombatantPiece validation failed."
+#======================# COMBATANT_TOKEN VALIDATION EXCEPTION #======================#
+class InvalidCombatantTokenException(CombatantTokenException, ValidationException):
+    """Raised by TokenValidator when a combatant candidate fails a sanity check."""
+    ERROR_CODE = "COMBATANT_TOKEN_VALIDATION_ERROR"
+    DEFAULT_MESSAGE = "CombatantToken validation failed."
 
 
-class NullCombatantException(CombatantPieceException, NullException):
-    """Raised if an entity, method, or operation expects a CombatantPiece but gets null instead."""
-    ERROR_CODE = "NULL_COMBATANT_PIECE_ERROR"
-    DEFAULT_MESSAGE = "CombatantPiece cannot be null."
+class NullCombatantException(CombatantTokenException, NullException):
+    """Raised if an entity, method, or operation expects a CombatantToken but gets null instead."""
+    ERROR_CODE = "NULL_COMBATANT_TOKEN_ERROR"
+    DEFAULT_MESSAGE = "CombatantToken cannot be null."
 
 
-#======================# COMBATANT_PIECE BUILD EXCEPTION #======================#
-class CombatantPieceBuildFailedException(CombatantPieceException, BuildFailedException):
-    ERROR_CODE = "COMBATANT_PIECE_BUILD_FAILED"
-    DEFAULT_MESSAGE = "CombatantPiece build failed."
+#======================# COMBATANT_TOKEN BUILD EXCEPTION #======================#
+class CombatantTokenBuildFailedException(CombatantTokenException, BuildFailedException):
+    ERROR_CODE = "COMBATANT_TOKEN_BUILD_FAILED"
+    DEFAULT_MESSAGE = "CombatantToken build failed."

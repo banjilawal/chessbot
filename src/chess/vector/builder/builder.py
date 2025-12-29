@@ -15,7 +15,7 @@ from chess.vector import Vector, VectorBuildFailedException,VectorValidator
 
 class VectorBuilder(Builder[Vector]):
     """
-     # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
      # RESPONSIBILITIES:
      1.  Produce Vector instances whose integrity is guaranteed at creation.

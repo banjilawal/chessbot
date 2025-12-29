@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.arena import (
-    Arena, ArenaAlreadyContainsTemException, ArenaBuilder, ArenaServiceException,
+    Arena, ArenaAlreadyContainsTeamException, ArenaBuilder, ArenaServiceException,
     ArenaTeamRelationTester, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from chess.schema import Schema, SchemaService
@@ -117,8 +117,8 @@ class ArenaService(EntityService[Arena]):
             return InsertionResult.failure(
                 ArenaServiceException(
                     message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
-                    ex=ArenaAlreadyContainsTemException(
-                        f"{method}: {ArenaAlreadyContainsTemException.DEFAULT_MESSAGE}"
+                    ex=ArenaAlreadyContainsTeamException(
+                        f"{method}: {ArenaAlreadyContainsTeamException.DEFAULT_MESSAGE}"
                     )
                 )
             )

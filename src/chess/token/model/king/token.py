@@ -1,7 +1,7 @@
-# src/chess/piece/king/king.py
+# src/chess/token/king/king.py
 
 """
-Module: chess.piece.king.king
+Module: chess.token.king.king
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -9,10 +9,10 @@ version: 1.0.0
 
 from chess.rank import Rank
 from chess.team import Team
-from chess.piece import Piece
+from chess.token import Token
 
 
-class KingPiece(Piece):
+class KingToken(Token):
     _is_checked: bool
     _is_checkmated: bool
     
@@ -42,7 +42,7 @@ class KingPiece(Piece):
     
     def __eq__(self, other):
         if super().__eq__(other):
-            if isinstance(other, KingPiece):
+            if isinstance(other, KingToken):
                 return True
         return False
     

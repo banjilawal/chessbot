@@ -1,43 +1,43 @@
-# src/chess/piece/validator/exception/bounds/exception.py
+# src/chess/token/validator/exception/bounds/exception.py
 
 """
-Module: chess.piece.validator.exception.bounds.exception
+Module: chess.token.validator.exception.bounds.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
 """
 
 from chess.system import BoundsException
-from chess.piece import InvalidPieceException
+from chess.token import TokenException
 
 __all__ = [
-    #======================# PIECE BOUNDS EXCEPTION #======================#
-    "PieceAttributeBoundsException",
+    #======================# TOKEN BOUNDS EXCEPTION #======================#
+    "TokenAttributeBoundsException",
     "RosterNumberOutOfBoundsException",
-    "PieceRankOutOfBoundsException",
-    "PieceNameOutOfBoundsException",
+    "TokenRankOutOfBoundsException",
+    "TokenNameOutOfBoundsException",
 ]
 
-#======================# PIECE BOUNDS EXCEPTION #======================#
-class PieceAttributeBoundsException(InvalidPieceException, BoundsException):
+#======================# TOKEN BOUNDS EXCEPTION #======================#
+class TokenAttributeBoundsException(TokenException, BoundsException):
     """Raised if a Token attribute is outside its Layout or Rank settings."""
-    ERROR_CODE = "PIECE_ATTRIBUTE_BOUNDS_ERROR"
+    ERROR_CODE = "TOKEN_ATTRIBUTE_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Token attribute is out of bounds."
 
 
-class RosterNumberOutOfBoundsException(PieceAttributeBoundsException):
+class RosterNumberOutOfBoundsException(TokenAttributeBoundsException):
     """Raised if a Token's roster number < 1 or > TEAM_SIZE."""
     ERROR_CODE = "ROSTER_NUMBER_OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Token.roster_number out of bounds."
 
 
-class PieceRankOutOfBoundsException(PieceAttributeBoundsException):
+class TokenRankOutOfBoundsException(TokenAttributeBoundsException):
     """Raised a Token's rank is out of bounds."""
-    ERROR_CODE = "PIECE_RANK_OUT_OF_BOUNDS_ERROR"
+    ERROR_CODE = "TOKEN_RANK_OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Token.rank is out of bounds."
 
 
-class PieceNameOutOfBoundsException(PieceAttributeBoundsException):
+class TokenNameOutOfBoundsException(TokenAttributeBoundsException):
     """Raised a Token's designation is out of bounds specified in LayoutSchema."""
-    ERROR_CODE = "PIECE_NAME_OUT_OF_BOUNDS_ERROR"
+    ERROR_CODE = "TOKEN_NAME_OUT_OF_BOUNDS_ERROR"
     DEFAULT_MESSAGE = "Token.designation is out of bounds."

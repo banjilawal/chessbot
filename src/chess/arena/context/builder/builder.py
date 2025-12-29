@@ -19,7 +19,7 @@ from chess.arena import (
 
 class ArenaContextBuilder(Builder[ArenaContext]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Produce ArenaContext instances whose integrity is guaranteed at creation.

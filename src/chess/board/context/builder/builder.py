@@ -14,7 +14,7 @@ from chess.board import BoardContext, BoardContextBuildFailedException
 
 class BoardContextBuilder(Builder[BoardContext]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Produce BoardContext instances whose integrity is guaranteed at creation.

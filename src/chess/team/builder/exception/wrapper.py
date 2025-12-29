@@ -1,9 +1,9 @@
-# src/chess/team/builder/exception.py
+# src/chess/team/builder/exception/wrapper.py
 
 """
-Module: chess.team.builder.exception
+Module: chess.team.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-09-04
+Created: 2025-10-06
 version: 1.0.0
 """
 

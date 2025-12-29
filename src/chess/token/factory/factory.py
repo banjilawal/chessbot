@@ -1,7 +1,7 @@
-# src/chess/piece/factory/factory.py
+# src/chess/token/factory/factory.py
 
 """
-Module: chess.piece.factory.factory
+Module: chess.token.factory.factory
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
@@ -11,9 +11,9 @@ from chess.coord import CoordDataService
 from chess.square import Square, SquareService
 from chess.team import Team, TeamService
 from chess.rank import King, Pawn, Rank, RankService
-from chess.piece import (
-    CombatantPiece, CombatantPieceBuildFailedException, KingPiece, KingPieceBuildFailedException, PawnPiece,
-    PawnPieceBuildFailedException, Piece, PieceBuildFailedException
+from chess.token import (
+    CombatantToken, CombatantTokenBuildFailedException, KingToken, KingTokenBuildFailedException, PawnToken,
+    PawnTokenBuildFailedException, Token, TokenBuildFailedException
 )
 from chess.system import (
     BuildFailedException, BuildResult, Builder, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
@@ -21,7 +21,7 @@ from chess.system import (
 
 
 
-class PieceFactory(Builder[Piece]):
+class TokenFactory(Builder[Token]):
     """
     # ROLE: Factory, Data Integrity Guarantor
 
@@ -35,7 +35,7 @@ class PieceFactory(Builder[Piece]):
         *   Builder
 
     # PROVIDES:
-        *   build:  -> BuildResult[PawnPiece|KingPiece|CombatantPiece]
+        *   build:  -> BuildResult[PawnToken|KingToken|CombatantToken]
 
     # LOCAL ATTRIBUTES:
     None
@@ -53,13 +53,13 @@ class PieceFactory(Builder[Piece]):
             team: Team,
             roster_number: int,
             opening_square: Square,
-            id: int = id_emitter.piece_id,
+            id: int = id_emitter.token_id,
             square_integrity: SquareService = SquareService(),
             rank_integrity: RankService = RankService(),
             team_integrity: TeamService = TeamService(),
             positions: CoordDataService = CoordDataService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[PawnPiece|KingPiece|CombatantPiece]:
+    ) -> BuildResult[PawnToken|KingToken|CombatantToken]:
         """
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
@@ -81,9 +81,9 @@ class PieceFactory(Builder[Piece]):
             - On failure: Exception.
     
         # Raises:
-            *   PieceBuildFailedException
+            *   TokenBuildFailedException
         """
-        method = "PieceFactory.builder"
+        method = "TokenFactory.builder"
         
         try:
             # First step in the error detection process is handing off resource certification to
@@ -102,37 +102,37 @@ class PieceFactory(Builder[Piece]):
                 return BuildResult(exception=attribute_validation.exception)
             
             if isinstance(rank, Pawn):
-                return cls.build_pawn_piece(id=id, name=name, team=team)
+                return cls.build_pawn_token(id=id, name=name, team=team)
             
             if isinstance(rank, King):
-                return cls.build_king_piece(id=id, name=name, team=team)
+                return cls.build_king_token(id=id, name=name, team=team)
             
-            return cls.build_combatant_piece(id=id, name=name, rank=rank, team=team)
+            return cls.build_combatant_token(id=id, name=name, rank=rank, team=team)
         
-        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # Finally, catch any missed exception and wrap A TokenBuildFailed exception around it
         # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             raise BuildResult.failure(
-                PieceBuildFailedException(ex=ex, message=f"{method}: {BuildFailedException.DEFAULT_MESSAGE}")
+                TokenBuildFailedException(ex=ex, message=f"{method}: {BuildFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_pawn_piece(
+    def build_pawn_token(
             cls,
             id: int,
             name: str,
             team: Team,
             roster_number: int,
             opening_square: Square,
-    ) -> BuildResult[PawnPiece]:
+    ) -> BuildResult[PawnToken]:
         """
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
         2.  If the _validate_build_params returns failure include the failure in a BuildResult.
-        3.  Otherwise, construct a PawnPiece.
-        4.  Register piece with its team if its not already in team.roster.
-        5.  Return the registered PawnPiece inside a BuildResult.
+        3.  Otherwise, construct a PawnToken.
+        4.  Register token with its team if its not already in team.roster.
+        5.  Return the registered PawnToken inside a BuildResult.
 
         # PARAMETERS:
             *   id (int)
@@ -140,57 +140,57 @@ class PieceFactory(Builder[Piece]):
             *   team (Team)
 
         # Returns:
-        BuildResult[PawnPiece] containing either:
-            - On success: PawnPiece in the payload.
+        BuildResult[PawnToken] containing either:
+            - On success: PawnToken in the payload.
             - On failure: Exception.
 
         # Raises:
-            *   PawnPieceBuildFailedException
+            *   PawnTokenBuildFailedException
         """
-        method = "PieceFactory.build_pawn_piece"
+        method = "TokenFactory.build_pawn_token"
         
         try:
             # Verify the build resources.
             attribute_validation = cls._validate_build_attributes(id, name, Pawn(), team, roster_number, opening_square)
             if attribute_validation.is_failure:
                 return BuildResult(exception=attribute_validation.exception)
-            # If no errors are detected build the KingPiece object.
-            piece = PawnPiece(id=id, name=name, rank=Pawn(), team=team)
+            # If no errors are detected build the KingToken object.
+            token = PawnToken(id=id, name=name, rank=Pawn(), team=team)
             
             # If the Token is not in team.roster register it.
-            binding_result = cls._ensure_team_binding(piece=piece, team=team)
+            binding_result = cls._ensure_team_binding(token=token, team=team)
             if binding_result.is_failure:
                 return BuildResult.failure(binding_result.exception)
-            # Send the successfully built and registered PawnPiece inside a BuildResult.
-            return BuildResult.success(piece)
+            # Send the successfully built and registered PawnToken inside a BuildResult.
+            return BuildResult.success(token)
         
-        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # Finally, catch any missed exception and wrap A TokenBuildFailed exception around it
         # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                PawnPieceBuildFailedException(
-                    ex=ex, message=f"{method}: {PawnPieceBuildFailedException.DEFAULT_MESSAGE}"
+                PawnTokenBuildFailedException(
+                    ex=ex, message=f"{method}: {PawnTokenBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
     
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_king_piece(
+    def build_king_token(
             cls,
             id: int,
             name: str,
             team: Team,
             roster_number: int,
             opening_square: Square,
-    ) -> BuildResult[KingPiece]:
+    ) -> BuildResult[KingToken]:
         """
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
         2.  If the _validate_build_params returns failure include the failure in a BuildResult.
-        3.  Otherwise, construct a KingPiece.
-        4.  Register piece with its team if its not already in team.roster.
-        5.  Return the registered KingPiece inside a BuildResult.
+        3.  Otherwise, construct a KingToken.
+        4.  Register token with its team if its not already in team.roster.
+        5.  Return the registered KingToken inside a BuildResult.
 
         # PARAMETERS:
             *   id (int)
@@ -198,42 +198,42 @@ class PieceFactory(Builder[Piece]):
             *   team (Team)
 
         # Returns:
-        BuildResult[KingPiece] containing either:
-            - On success: PawnPiece in the payload.
+        BuildResult[KingToken] containing either:
+            - On success: PawnToken in the payload.
             - On failure: Exception.
 
         # Raises:
-            *   KingPieceBuildFailedException
+            *   KingTokenBuildFailedException
         """
-        method = "PieceFactory.build_king_piece"
+        method = "TokenFactory.build_king_token"
         
         try:
             # Verify the build resources.
             attribute_validation = cls._validate_build_attributes(id, name, King(), team, roster_number, opening_square)
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
-            # If no errors are detected build the KingPiece object.
-            piece = KingPiece(id=id, name=name, rank=King(), team=team)
+            # If no errors are detected build the KingToken object.
+            token = KingToken(id=id, name=name, rank=King(), team=team)
             
             # If the Token is not in team.roster register it.
-            binding_result = cls._ensure_team_binding(piece=piece, team=team)
+            binding_result = cls._ensure_team_binding(token=token, team=team)
             if binding_result.is_failure():
                 return BuildResult.failure(binding_result.exception)
-            # Send the successfully built and registered CombatantPiece inside a BuildResult.
-            return BuildResult.success(piece)
+            # Send the successfully built and registered CombatantToken inside a BuildResult.
+            return BuildResult.success(token)
         
-        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # Finally, catch any missed exception and wrap A TokenBuildFailed exception around it
         # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                KingPieceBuildFailedException(
-                    ex=ex, message=f"{method}: {KingPieceBuildFailedException.DEFAULT_MESSAGE}"
+                KingTokenBuildFailedException(
+                    ex=ex, message=f"{method}: {KingTokenBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_combatant_piece(
+    def build_combatant_token(
             cls,
             id: int,
             name: str,
@@ -241,14 +241,14 @@ class PieceFactory(Builder[Piece]):
             team: Team,
             roster_number: int,
             opening_square: Square
-    ) -> BuildResult[CombatantPiece]:
+    ) -> BuildResult[CombatantToken]:
         """
         # ACTION:
         1.  Call _validate_build_params. to verify inputs are safe.
         2.  If the _validate_build_params returns failure include the failure in a BuildResult.
-        3.  Otherwise, construct a CombatantPiece.
-        4.  Register piece with its team if its not already in team.roster.
-        5.  Return the registered CombatantPiece inside a BuildResult.
+        3.  Otherwise, construct a CombatantToken.
+        4.  Register token with its team if its not already in team.roster.
+        5.  Return the registered CombatantToken inside a BuildResult.
 
         # PARAMETERS:
             *   id (int)
@@ -256,53 +256,53 @@ class PieceFactory(Builder[Piece]):
             *   team (Team)
 
         # Returns:
-        BuildResult[CombatantPiece] containing either:
-            - On success: CombatantPiece in the payload.
+        BuildResult[CombatantToken] containing either:
+            - On success: CombatantToken in the payload.
             - On failure: Exception.
 
         # Raises:
-            *   KingPieceBuildFailedException
+            *   KingTokenBuildFailedException
         """
-        method = "PieceFactory.build_combatant_piece"
+        method = "TokenFactory.build_combatant_token"
         try:
             # Verify the build resources.
             attribute_validation = cls._validate_build_attributes(id, name, rank, team, roster_number, opening_square)
             if attribute_validation.is_failure():
                 return BuildResult(exception=attribute_validation.exception)
-            # If no errors are detected build the CombatantPiece object.
-            piece = CombatantPiece(id=id, name=name, rank=rank, team=team)
+            # If no errors are detected build the CombatantToken object.
+            token = CombatantToken(id=id, name=name, rank=rank, team=team)
             
             # If the Token is not in team.roster register it.
-            binding_result = cls._ensure_team_binding(piece=piece, team=team)
+            binding_result = cls._ensure_team_binding(token=token, team=team)
             if binding_result.is_failure():
                 return BuildResult.failure(binding_result.exception)
-            # Send the successfully built and registered CombatantPiece inside a BuildResult.
-            return BuildResult.success(piece)
+            # Send the successfully built and registered CombatantToken inside a BuildResult.
+            return BuildResult.success(token)
         
-        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # Finally, catch any missed exception and wrap A TokenBuildFailed exception around it
         # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                CombatantPieceBuildFailedException(
-                    ex=ex, message=f"{method}: {CombatantPieceBuildFailedException.DEFAULT_MESSAGE}"
+                CombatantTokenBuildFailedException(
+                    ex=ex, message=f"{method}: {CombatantTokenBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _ensure_team_binding(cls, piece: Piece, team: Team) -> BuildResult[(Piece, Team)]:
-        method = "PieceFactory._verify_team_building"
+    def _ensure_team_binding(cls, token: Token, team: Team) -> BuildResult[(Token, Team)]:
+        method = "TokenFactory._verify_team_building"
         try:
             # If the Token is not in team.roster register it.
-            if piece not in team.roster.items:
-                team.roster.items.append(piece)
+            if token not in team.roster.items:
+                team.roster.items.append(token)
                 
-            return BuildResult.success((piece, team))
-        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+            return BuildResult.success((token, team))
+        # Finally, catch any missed exception and wrap A TokenBuildFailed exception around it
         # then return the exception-chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                PieceBuildFailedException(ex=ex, message=f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}")
+                TokenBuildFailedException(ex=ex, message=f"{method}: {TokenBuildFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -326,7 +326,7 @@ class PieceFactory(Builder[Piece]):
         each factory method can run independently and build can direct which product
         should be manufactured.
         """
-        method = "PieceFactory._validate_build_attributes"
+        method = "TokenFactory._validate_build_attributes"
         try:
             # Start the error detection process.
             identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=name)
@@ -353,9 +353,9 @@ class PieceFactory(Builder[Piece]):
             # If no errors are detected return the successfully validated (id, designation, rank, team) tuple.
             return ValidationResult.success((id, name, rank, team, roster_number, opening_square))
         
-        # Finally, catch any missed exception and wrap A PieceBuildFailed exception around it
+        # Finally, catch any missed exception and wrap A TokenBuildFailed exception around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                PieceBuildFailedException(ex=ex, message=f"{method}: {PieceBuildFailedException.DEFAULT_MESSAGE}")
+                TokenBuildFailedException(ex=ex, message=f"{method}: {TokenBuildFailedException.DEFAULT_MESSAGE}")
             )

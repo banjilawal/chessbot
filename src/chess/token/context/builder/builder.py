@@ -1,7 +1,7 @@
-# src/chess/piece/builder/builder.py
+# src/chess/token/builder/builder.py
 
 """
-Module: chess.piece.builder.builder
+Module: chess.token.builder.builder
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -9,9 +9,9 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.piece import (
-    ZeroPieceContextFlagsException, PieceContext, PieceContextBuildFailedException,
-    ExcessivePieceContextFlagsException
+from chess.token import (
+    ZeroTokenContextFlagsException, TokenContext, TokenContextBuildFailedException,
+    ExcessiveTokenContextFlagsException
 )
 from chess.coord import Coord, CoordService
 from chess.rank import Rank, RankCertifier
@@ -19,14 +19,14 @@ from chess.system import Builder, BuildResult, UnhandledRouteException, Identity
 from chess.team import Team, TeamCertifier
 
 
-class PieceContextBuilder(Builder[PieceContext]):
+class TokenContextBuilder(Builder[TokenContext]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce PieceContext instances whose integrity is guaranteed at creation.
-    2.  Manage construction of PieceContext instances that can be used safely by the client.
-    3.  Ensure params for PieceContext creation have met the application's safety contract.
+    1.  Produce TokenContext instances whose integrity is guaranteed at creation.
+    2.  Manage construction of TokenContext instances that can be used safely by the client.
+    3.  Ensure params for TokenContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     # PARENT:
@@ -55,12 +55,12 @@ class PieceContextBuilder(Builder[PieceContext]):
             rank_service: RankCertifier = RankCertifier(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[PieceContext]:
+    ) -> BuildResult[TokenContext]:
         """
         # Action:
             1.  Confirm that only one in the (row, column, coord) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a PieceContext and send in a BuildResult. Else, return an exception
+            3.  If all checks pass build a TokenContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
         # Parameters:
@@ -79,16 +79,16 @@ class PieceContextBuilder(Builder[PieceContext]):
                 *   identity_service (IdentityService)
 
         # Returns:
-          BuildResult[PieceContext] containing either:
-                - On success: PieceContext in the payload.
+          BuildResult[TokenContext] containing either:
+                - On success: TokenContext in the payload.
                 - On failure: Exception.
 
         # Raises:
-            *   ZeroPieceContextFlagsException
-            *   PieceContextBuildFailedException
-            *   ExcessivePieceContextFlagsException
+            *   ZeroTokenContextFlagsException
+            *   TokenContextBuildFailedException
+            *   ExcessiveTokenContextFlagsException
         """
-        method = "PieceContextBuilder.builder"
+        method = "TokenContextBuilder.builder"
         
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
@@ -98,72 +98,72 @@ class PieceContextBuilder(Builder[PieceContext]):
             # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
             if param_count == 0:
                 return BuildResult.failure(
-                    ZeroPieceContextFlagsException(f"{method}: {ZeroPieceContextFlagsException.DEFAULT_MESSAGE}")
+                    ZeroTokenContextFlagsException(f"{method}: {ZeroTokenContextFlagsException.DEFAULT_MESSAGE}")
                 )
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessivePieceContextFlagsException(f"{method}: {ExcessivePieceContextFlagsException}")
+                    ExcessiveTokenContextFlagsException(f"{method}: {ExcessiveTokenContextFlagsException}")
                 )
             # After verifying only one PlayerAgent attribute-value-tuple is enabled, validate it.
             
-            # Build the id PieceContext if its flag is enabled.
+            # Build the id TokenContext if its flag is enabled.
             if id is not None:
                 validation = identity_service.validate_id(id)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return an id_PieceContext in the BuildResult.
-                return BuildResult.success(PieceContext(id=id))
+                # On validation success return an id_TokenContext in the BuildResult.
+                return BuildResult.success(TokenContext(id=id))
             
-            # Build the name PieceContext if its flag is enabled.
+            # Build the name TokenContext if its flag is enabled.
             if name is not None:
                 validation = identity_service.validate_name(name)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a name_PieceContext in the BuildResult.
-                return BuildResult.success(PieceContext(name=name))
+                # On validation success return a name_TokenContext in the BuildResult.
+                return BuildResult.success(TokenContext(name=name))
             
-            # Build the coord PieceContext if its flag is enabled.
+            # Build the coord TokenContext if its flag is enabled.
             if coord is not None:
                 validation = coord_service.validator.validate(coord)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a coord_PieceContext in the BuildResult.
-                return BuildResult.success(PieceContext(coord=coord))
+                # On validation success return a coord_TokenContext in the BuildResult.
+                return BuildResult.success(TokenContext(coord=coord))
             
-            # Build the rank PieceContext if its flag is enabled.
+            # Build the rank TokenContext if its flag is enabled.
             if rank is not None:
                 validation = rank_service.validator.validate(rank)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                # On validation success return a rank_PieceContext in the BuildResult.
-                return BuildResult.success(PieceContext(rank=rank))
+                # On validation success return a rank_TokenContext in the BuildResult.
+                return BuildResult.success(TokenContext(rank=rank))
             
-            # Build the team PieceContext if its flag is enabled.
+            # Build the team TokenContext if its flag is enabled.
             if team is not None:
                 validation = team_service.validator.validate(team)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                # On validation success return a team_PieceContext in the BuildResult.
-                return BuildResult.success(PieceContext(team=team))
+                # On validation success return a team_TokenContext in the BuildResult.
+                return BuildResult.success(TokenContext(team=team))
             
-            # Build the ransom PieceContext if its flag is enabled.
+            # Build the ransom TokenContext if its flag is enabled.
             if ransom is not None:
                 validation = rank_service.validator.validate_ransom_in_bounds(ransom)
                 if validation.is_failure():
                     return BuildResult.failure(validation.exception)
-                # On validation success return a ransom_PieceContext in the BuildResult.
-                return BuildResult.success(PieceContext(ransom=ransom))
+                # On validation success return a ransom_TokenContext in the BuildResult.
+                return BuildResult.success(TokenContext(ransom=ransom))
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
                 UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception and wrap A PieceContextBuildFailedException around it then
+        # Finally, catch any missed exception and wrap A TokenContextBuildFailedException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                PieceContextBuildFailedException(
-                    ex=ex, message=f"{method}: {PieceContextBuildFailedException.DEFAULT_MESSAGE}"
+                TokenContextBuildFailedException(
+                    ex=ex, message=f"{method}: {TokenContextBuildFailedException.DEFAULT_MESSAGE}"
                 )
             )

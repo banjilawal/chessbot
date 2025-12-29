@@ -1,33 +1,33 @@
-# src/chess/piece/service/exception/exception.py
+# src/chess/token/service/exception/exception.py
 
 """
-Module: chess.piece.service.exception.base
+Module: chess.token.service.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import ServiceException
-from chess.piece import PieceException
+from chess.token import TokenException
 
 __all__ = [
-    # ======================# PIECE_SERVICE EXCEPTION #======================#
-    "PieceServiceException",
+    # ======================# TOKEN_SERVICE EXCEPTION #======================#
+    "TokenServiceException",
 ]
 
 
-# ======================# PIECE_SERVICE EXCEPTION #======================#
-class PieceServiceException(PieceException, ServiceException):
+# ======================# TOKEN_SERVICE EXCEPTION #======================#
+class TokenServiceException(TokenException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an PieceService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a PieceService method.
+    1.  Indicate that an TokenService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a TokenService method.
 
     # PARENT:
         *   ServiceException
-        *   PieceException
+        *   TokenException
 
     # PROVIDES:
     None
@@ -38,5 +38,5 @@ class PieceServiceException(PieceException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PIECE_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "PieceService raised an exception."
+    ERROR_CODE = "TOKEN_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "TokenService raised an exception."

@@ -10,11 +10,8 @@ version: 1.0.0
 from typing import List
 
 from chess.agent import PlayerAgent
-from chess.board import Board, BoardService
-from chess.schema import Schema
-from chess.schema.key.lookup import SchemaLookup
-from chess.system import SearchResult
-from chess.team import Team, UniqueTeamDataService
+from chess.board import Board
+from chess.team import Team
 
 
 class Arena:
@@ -35,7 +32,7 @@ class Arena:
         return self._id
     
     @property
-    def board(self) -> BoardService:
+    def board(self) -> Board:
         return self._board
     
     @property
@@ -69,14 +66,6 @@ class Arena:
     @black_team.setter
     def black_team(self, team: Team):
         self._black_team = team
-        
-    
-        
-
-    
-    @property
-    def agents(self) -> List[PlayerAgent]:
-        return [self._white_team.player_agent, self._black_team.player_agent]
                 
     def __eq__(self, other: object) -> bool:
         if other is self: return True

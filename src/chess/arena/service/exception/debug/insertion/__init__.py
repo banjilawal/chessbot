@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .duplicate import ArenaAlreadyContainsTemException
+from .duplicate import ArenaAlreadyContainsTeamException
 from .blocked import ChangingArenaTeamBlockedException

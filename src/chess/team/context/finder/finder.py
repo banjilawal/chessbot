@@ -11,11 +11,10 @@ from typing import List
 
 from chess.arena import Arena
 from chess.agent import PlayerAgent
-from chess.system import GameColor, LoggingLevelRouter, Finder, SearchResult
-from chess.system.find.finder.data import DataFinder
+from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from chess.team import (
     Team, TeamContext, TeamContextValidator, TeamSearchDatasetNullException,
-    TeamSearchRouteException, TeamSearchFailedException
+    TeamSearchIdCollisionException, TeamSearchRouteException, TeamSearchFailedException
 )
 
 
@@ -49,21 +48,21 @@ class TeamFinder(DataFinder[Team]):
             context_validator: TeamContextValidator = TeamContextValidator()
     ) -> SearchResult[List[Team]]:
         """
-        # Action:
+        # ACTION:
             1.  If the dataset is null send an exception in the SearchResult.
             2.  If the context is faulty send an exception in the SearchResult.
             3.  If there is no search route for the not-null context.attribute send an exception in the SearchResult.
             4.  Return the SearchResult from the attribute search route.
-        # Parameters:
+        # PARAMETERS:
             *   dataset (List[Team])
             *   context (TeamContext)
             *   context_validator (TeamContextValidator)
-        # Returns:
+        # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
                     - On finding a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
-        # Raises:
+        # RAISES:
             *   TypeError
             *   TeamNullDatasetException
             *   TeamFinderOperationFailedException
@@ -111,22 +110,19 @@ class TeamFinder(DataFinder[Team]):
     @LoggingLevelRouter.monitor
     def _find_by_id(cls, dataset: List[Team], id: int) -> SearchResult[List[Team]]:
         """
-        # Action:
-        1.  Get the Team with the matching id if it exists
-        2.  Multiple, unique matches in the result indicate that  a problem.
-
+        # ACTION:
+            1.  Get the Team with the matching id if it exists
+            2.  Multiple, unique matches in the result indicate that  a problem.
         # Parameters:
             *   id (int)
-            *   dataset (List[Team])
-
-        # Returns:
-        SearchResult[List[Team]] containing either:
-            - On finding a match: List[Team] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
-        # Raises:
-            *   TeamFinderOperationFailedException
+            *   dataset (List[PlayerAgent])
+        # RETURNS:
+            *   SearchResult[List[Team]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Team] in the payload.
+                    - On no matches found: Exception null, payload null
+        # RAISES:
+            *   TeamSearchFailedException
         """
         method = "TeamFinder._find_by_id"
         matches = [team for team in dataset if team.id == id]
@@ -135,29 +131,34 @@ class TeamFinder(DataFinder[Team]):
             return SearchResult.empty()
         # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
         # inconsistency later.
-        if len(matches) >= 1:
+        if len(matches) == 1:
             return SearchResult.success(payload=matches)
+        # If more than one team has the same id there is an error.
+        if len(matches) > 1:
+            return SearchResult.failure(
+                TeamSearchFailedException(
+                    message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
+                    ex=TeamSearchIdCollisionException(f"{method}: {TeamSearchIdCollisionException.DEFAULT_MESSAGE}")
+                )
+            )
         return SearchResult.failure(TeamSearchFailedException(f"{method}: {TeamSearchFailedException.ERROR_CODE}"))
     
     @classmethod
     @LoggingLevelRouter.monitor
     def _find_by_arena(cls, dataset: [Team], arena: Arena) -> SearchResult[List[Team]]:
         """
-        # Action:
-        1.  Get the Team with the matching arena if it exists.
-
-        # Parameters:
+        # ACTION:
+            1.  Get any teams which have entered the arena
+        # PARAMETERS:
             *   arena (Arena)
             *   dataset (List[PlayerAgent])
-
-        # Returns:
-        SearchResult[List[Team]] containing either:
-            - On finding a match: List[Team] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
-        # Raises:
-            *   TeamFinderOperationFailedException
+        # RETURNS:
+            *   SearchResult[List[Team]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Team] in the payload.
+                    - On no matches found: Exception null, payload null
+        # RAISES:
+            *   TeamSearchFailedException
         """
         method = "TeamFinder._find_by_arena"
         matches = [team for team in dataset if team.arena == arena]
@@ -169,26 +170,23 @@ class TeamFinder(DataFinder[Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_player_agent(cls, dataset: [Team], player_agent: PlayerAgent) -> SearchResult[List[Team]]:
+    def _find_by_owner(cls, dataset: [Team], owner: PlayerAgent) -> SearchResult[List[Team]]:
         """
-        # Action:
-        1.  Get the Team with the matching agent if it exists
-
-        # Parameters:
-            *   player_agent (PlayerAgent)
+        # ACTION:
+            1.  Get any teams which have been played by the owner,
+        # PARAMETERS:
+            *   arena (Arena)
             *   dataset (List[PlayerAgent])
-
-        # Returns:
-        SearchResult[List[Team]] containing either:
-            - On finding a match: List[Team] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
-        # Raises:
-            *   TeamFinderOperationFailedException
+        # RETURNS:
+            *   SearchResult[List[Team]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Team] in the payload.
+                    - On no matches found: Exception null, payload null
+        # RAISES:
+            *   TeamSearchFailedException
         """
-        method = "TeamFinder._find_by_player_agent"
-        matches = [team for team in dataset if team.player_agent == player_agent]
+        method = "TeamFinder._find_by_owner"
+        matches = [team for team in dataset if team.owner == owner]
         if len(matches) == 0:
             return SearchResult.empty()
         if len(matches) >= 1:
@@ -199,23 +197,18 @@ class TeamFinder(DataFinder[Team]):
     @LoggingLevelRouter.monitor
     def _find_by_color(cls, dataset: List[Team], color: GameColor) -> SearchResult[List[Team]]:
         """
-        # Action:
-        1.  Get the team_service whose color matched the target.
-        2.  If no matches are found return an empty SearchResult.
-        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
-
-        # Parameters:
-            *   dataset: (List[Team])
-            *   color (ArenaColor)
-
-        # Returns:
-        SearchResult[List[Team]] containing either:
-            - On finding a match: List[Team] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
-        # Raises:
-            *   TeamFinderOperationFailedException
+        # ACTION:
+            1.  Get any teams which have been assigned the targeted color
+        # PARAMETERS:
+            *   arena (Arena)
+            *   dataset (List[PlayerAgent])
+        # RETURNS:
+            *   SearchResult[List[Team]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Team] in the payload.
+                    - On no matches found: Exception null, payload null
+        # RAISES:
+            *   TeamSearchFailedException
         """
         method = "TeamFinder._find_by_color"
         matches = [team for team in dataset if team.schema.color == color]

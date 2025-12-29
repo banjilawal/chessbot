@@ -1,7 +1,7 @@
-# src/chess/piece/model/combatant/token.py
+# src/chess/token/model/combatant/token.py
 
 """
-Module: chess.piece.model.combatant.piece
+Module: chess.token.model.combatant.token
 Author: Banji Lawal
 Created: 2025-10-17
 version: 1.0.0
@@ -11,10 +11,10 @@ from typing import Optional
 
 from chess.team import Team
 from chess.rank import Rank
-from chess.piece import Piece
+from chess.token import Token
 
 
-class CombatantPiece(Piece):
+class CombatantToken(Token):
     """
     # ROLE: Data-Holding, C
   
@@ -23,28 +23,28 @@ class CombatantPiece(Piece):
     2.  Indicate the Combatant should be removed from the board by setting its captor attribute.
   
     # PROVIDES:
-    CombatantPiece
+    CombatantToken
   
     # ATTRIBUTES:
         *   captor (Optional[Token]): Enemy who captured the combatant.
     """
-    _captor: Optional[Piece]
+    _captor: Optional[Token]
     
     def __init__(self, id: int, name: str, rank: Rank, team: Team):
         super().__init__(id, name, rank, team)
         self._captor = None
     
     @property
-    def captor(self) -> Optional[Piece]:
+    def captor(self) -> Optional[Token]:
         return self._captor
     
     @captor.setter
-    def captor(self, captor: Piece):
+    def captor(self, captor: Token):
         self._captor = captor
     
     def __eq__(self, other):
         if super().__eq__(other):
-            if isinstance(other, CombatantPiece):
+            if isinstance(other, CombatantToken):
                 return True
         return False
     

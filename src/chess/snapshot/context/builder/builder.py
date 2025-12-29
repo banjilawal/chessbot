@@ -22,7 +22,7 @@ from chess.game import (
 
 class SnapshotContextBuilder(Builder[SnapshotContext]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Produce SnapshotContext instances whose integrity is guaranteed at creation.

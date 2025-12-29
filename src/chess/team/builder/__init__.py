@@ -10,9 +10,8 @@ version: 1.0.0
 #=========== TEAM.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
-# None
+from .exception import *
 
 # Modules
 from .builder import TeamBuilder
-from .exception import TeamBuildFailedException
 

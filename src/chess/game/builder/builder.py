@@ -16,7 +16,7 @@ from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRout
 
 class GameBuilder(Builder[Game]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
   
     # RESPONSIBILITIES:
     Produce Game instances whose integrity is guaranteed at creation.

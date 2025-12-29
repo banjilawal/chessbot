@@ -1,7 +1,7 @@
-# src/chess/piece/service/service.py
+# src/chess/Token/service/service.py
 
 """
-Module: chess.piece.service.service
+Module: chess.token.service.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -9,10 +9,10 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import EntityService, id_emitter
-from chess.piece import Piece, PieceFactory, PieceValidator
+from chess.token import Token, TokenFactory, TokenValidator
 
 
-class PieceService(EntityService[Piece]):
+class TokenService(EntityService[Token]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -26,8 +26,8 @@ class PieceService(EntityService[Piece]):
         *   EntityService
 
     # PROVIDES:
-        *   builder:    -> PieceFactory
-        *   validator:  -> PieceValidator
+        *   builder:    -> TokenFactory
+        *   validator:  -> TokenValidator
 
     # LOCAL ATTRIBUTES:
     None
@@ -35,14 +35,14 @@ class PieceService(EntityService[Piece]):
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
     """
-    DEFAULT_NAME = "PieceService"
+    DEFAULT_NAME = "TokenService"
     
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            builder: PieceFactory = PieceFactory(),
-            validator: PieceValidator = PieceValidator(),
+            builder: TokenFactory = TokenFactory(),
+            validator: TokenValidator = TokenValidator(),
     ):
         """
         # ACTION:
@@ -51,8 +51,8 @@ class PieceService(EntityService[Piece]):
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (PieceFactory)
-            *   validator (PieceValidator)
+            *   builder (TokenFactory)
+            *   validator (TokenValidator)
 
         # Returns:
         None
@@ -63,12 +63,12 @@ class PieceService(EntityService[Piece]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def builder(self) -> PieceFactory:
-        """get PieceFactory"""
-        return cast(PieceFactory, self.entity_builder)
+    def builder(self) -> TokenFactory:
+        """get TokenFactory"""
+        return cast(TokenFactory, self.entity_builder)
     
     @property
-    def validator(self) -> PieceValidator:
-        """get PieceValidator"""
-        return cast(PieceValidator, self.entity_validator)
+    def validator(self) -> TokenValidator:
+        """get TokenValidator"""
+        return cast(TokenValidator, self.entity_validator)
     

@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# ARENA_ALREADY_CONTAINS_TEAM EXCEPTION #======================#
-    "ArenaAlreadyContainsTemException",
+    "ArenaAlreadyContainsTeamException",
 ]
 
 from chess.arena import ArenaException
@@ -17,7 +17,7 @@ from chess.system import DebugException
 
 
 # ======================# ARENA_ALREADY_CONTAINS_TEAM EXCEPTION #======================#
-class ArenaAlreadyContainsTemException(ArenaException, DebugException):
+class ArenaAlreadyContainsTeamException(ArenaException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 

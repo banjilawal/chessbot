@@ -20,7 +20,7 @@ from chess.schema import (
 
 class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
     """
-    # ROLE: Builder, Data Integrity Guarantor, Data Integrity And Reliability Guarantor
+    # ROLE: Builder, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
     1.  Produce SchemaSuperKey instances whose integrity is always guaranteed at creation.

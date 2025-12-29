@@ -1,7 +1,7 @@
-# src/chess/piece/map.py
+# src/chess/token/map.py
 
 """
-Module: chess.piece.map
+Module: chess.token.map
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,20 +11,20 @@ from typing import Optional
 
 from chess.team import Team
 from chess.rank import Rank
-from chess.piece import Piece
+from chess.token import Token
 from chess.coord import Coord
 from chess.system import Context, LoggingLevelRouter
 
 
-class PieceContext(Context[Piece]):
+class TokenContext(Context[Token]):
     """
     # ROLE: Finder option filter
 
     # RESPONSIBILITIES:
-    Provides options for what type of key-value pair PieceFinder should use to find matches.
+    Provides options for what type of key-value pair TokenFinder should use to find matches.
 
     # PROVIDES:
-    PieceContext.
+    TokenContext.
 
     # ATTRIBUTES:
         *   team (Team)
