@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import LoggingLevelRouter, RelationReport, RelationTester
-from chess.team import Team, TeamMemberRelationTestFailedException, TeamValidator
+from chess.team import Team, RosterTokenRelationTestFailedException, TeamValidator
 from chess.token import Token, TokenService
 from chess.token.context.context import TokenContext
 
@@ -71,8 +71,8 @@ class RosterTokenRelationTester(RelationTester[Team, Token]):
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                TeamMemberRelationTestFailedException(
-                    message=f"{method}: {TeamMemberRelationTestFailedException.ERROR_CODE}",
+                RosterTokenRelationTestFailedException(
+                    message=f"{method}: {RosterTokenRelationTestFailedException.ERROR_CODE}",
                     ex=team_validation.exception,
                 )
             )
@@ -82,8 +82,8 @@ class RosterTokenRelationTester(RelationTester[Team, Token]):
         piece_validation = piece_service.validator.validate(candidate_satellite)
         if piece_validation.is_failure:
             return RelationReport(
-                TeamMemberRelationTestFailedException(
-                    message=f"{method}: {TeamMemberRelationTestFailedException.ERROR_CODE}",
+                RosterTokenRelationTestFailedException(
+                    message=f"{method}: {RosterTokenRelationTestFailedException.ERROR_CODE}",
                     ex=piece_validation.exception,
                 )
             )
@@ -98,8 +98,8 @@ class RosterTokenRelationTester(RelationTester[Team, Token]):
         if member_search.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                TeamMemberRelationTestFailedException(
-                    message=f"{method}: {TeamMemberRelationTestFailedException.ERROR_CODE}",
+                RosterTokenRelationTestFailedException(
+                    message=f"{method}: {RosterTokenRelationTestFailedException.ERROR_CODE}",
                     ex=member_search.exception,
                 )
             )

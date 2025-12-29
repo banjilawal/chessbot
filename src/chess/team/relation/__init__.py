@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== TEAM.RELATION PACKAGE CONTENTS ===========#
 
 # Packages
-from .member import *
+from .roster import *
 from  .hostage import *
 
 # Modules
