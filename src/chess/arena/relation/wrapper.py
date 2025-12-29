@@ -1,3 +1,12 @@
+# src/chess/arena/relation/wrapper.py
+
+"""
+Module: chess.arena.relation.wrapper
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
 __all__ = [
     # ======================# ARENA_TEAM_RELATION_TEST_FAILURE EXCEPTION #======================#
     "ArenaTeamRelationTestFailedException",

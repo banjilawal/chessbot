@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/agent/relation/tester.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/agent/relation/wrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/dyad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/dyad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/dyad.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/dyad.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/tester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/relation/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,11 +307,11 @@
       <recent name="$PROJECT_DIR$/src/chess/system/service/entity" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/arena/relation" />
+      <recent name="$PROJECT_DIR$/src/chess/arena/relation/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/relation" />
       <recent name="$PROJECT_DIR$/src/chess/arena/service/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/arena/service/exception/debug/collision" />
-      <recent name="$PROJECT_DIR$/src/chess/arena/service/exception/debug/deletion" />
-      <recent name="$PROJECT_DIR$/src/chess/arena/service/exception/debug/insertion" />
     </key>
   </component>
   <component name="RunManager" selected="Python.finder">
@@ -980,7 +978,8 @@
       <workItem from="1766853714835" duration="9225000" />
       <workItem from="1766871256434" duration="6709000" />
       <workItem from="1766913023316" duration="11178000" />
-      <workItem from="1766940787238" duration="6111000" />
+      <workItem from="1766940787238" duration="18962000" />
+      <workItem from="1766987593831" duration="935000" />
     </task>
     <servers />
   </component>

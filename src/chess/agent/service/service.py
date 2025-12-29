@@ -9,10 +9,16 @@ version: 1.0.0
 
 
 from typing import cast
+from unittest import removeResult
 
-from chess.system import EntityService, LoggingLevelRouter, Result, id_emitter
-from chess.agent import AgentServiceException, PlayerAgent, AgentFactory, AgentValidator
+from chess.agent.relation import AgentTeamRelationTester
+from chess.system import EntityService, InsertionResult, LoggingLevelRouter, Result, id_emitter
+from chess.agent import (
+    AgentServiceException, PlayerAgent, AgentFactory, AgentValidator,
+    TeamBelongsToDifferentOwnerException
+)
 from chess.team import Team, TeamService
+from chess.team.service.data.result import AddingDuplicateTeamException
 
 
 class AgentService(EntityService[PlayerAgent]):
@@ -38,12 +44,15 @@ class AgentService(EntityService[PlayerAgent]):
         *   See EntityService class for inherited attributes.
     """
     DEFAULT_NAME = "AgentService"
+    _team_relation_tester: AgentTeamRelationTester
+    
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             builder: AgentFactory = AgentFactory(),
             validator: AgentValidator = AgentValidator(),
+            team_relation_tester: AgentTeamRelationTester = AgentTeamRelationTester(),
     ):
         """
         # ACTION:
@@ -62,6 +71,7 @@ class AgentService(EntityService[PlayerAgent]):
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._team_relation_tester = team_relation_tester
         
     @property
     def builder(self) -> AgentFactory:
@@ -73,47 +83,47 @@ class AgentService(EntityService[PlayerAgent]):
         """get AgentValidator"""
         return cast(AgentValidator, self.entity_validator)
     
-    @LoggingLevelRouter.monitor
-    def team_is_registered_to_agent(
+    @property
+    def team_relation_tester(self) -> AgentTeamRelationTester:
+        return self._team_relation_tester
+    
+    def add_team(
             self,
-            team: Team,
             agent: PlayerAgent,
-            team_service: TeamService = TeamService(),
-    ) -> Result[(Team, PlayerAgent)]:
-        method = "TeamService.team_is_registered_to_agent"
-        team_validation = team_service.validator.validate(team)
-        if team_validation.is_failure:
-            return Result.failure(
+            team: Team,
+            team_service: TeamService = TeamService()
+    ) -> InsertionResult[Team]:
+        method = "AgentService.add_team"
+        relation = self.team_relation_tester.test(
+            candidate_primary=agent,
+            candidate_secondary=team,
+            owner_validator=self.validator,
+            team_service=team_service,
+        )
+        if relation.is_failure:
+            return InsertionResult.failure(
                 AgentServiceException(
-                    message=f"{method}: {AgentServiceException.ERROR_CODE}", ex=team_validation.exception
+                    message=f"ServiceId:{self.id}, {method}: {AgentServiceException.ERROR_CODE}",
+                    ex=relation.exception
                 )
             )
-        agent_validation = self.validator.validate(agent)
-        if agent_validation.is_failure:
-            return Result.failure(
+        if relation.does_not_exist:
+            return InsertionResult.failure(
                 AgentServiceException(
-                    message=f"{method}: {AgentServiceException.ERROR_CODE}", ex=agent_validation.exception
+                    message=f"ServiceId:{self.id}, {method}: {AgentServiceException.ERROR_CODE}",
+                    ex=TeamBelongsToDifferentOwnerException(
+                        f"{method}: {TeamBelongsToDifferentOwnerException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
-        if team.owner != agent:
-            return Result.failure(
+        if relation.is_success:
+            return InsertionResult.failure(
                 AgentServiceException(
-                    message=f"{method}: {AgentServiceException.ERROR_CODE}",
-                    ex=TeamBelongsToDifferentOwnerException(f"{method}")
+                    message=f"ServiceId:{self.id}, {method}: {AgentServiceException.ERROR_CODE}",
+                    ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
                 )
             )
-        search_result = agent.team_assignments.search_teams(team.id)
-        if search_result.is_failure:
-            return Result.failure(
-                AgentServiceException(
-                    message=f"{method}: {AgentServiceException.ERROR_CODE}",
-                    ex=search_result.exception
-                )
-            )
-        if search_result.is_empty:
-            return Result.empty()
-        if search_result.is_success:
-            return Result.success((team, agent))
+        return agent.team_assignments.add_team(team=team)
 
     
     
