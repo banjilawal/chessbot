@@ -16,5 +16,5 @@ None
 from .dyad import Dyad
 from .status import RelationStatus
 from .report import RelationReport
-from .tester import RelationTester
+from .analyzer import RelationAnalyzer
 from .exception import RelationTestFailedException

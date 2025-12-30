@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/schema/validator/exception/debug/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/forward.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/forward.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/lookup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/lookup/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/lookup/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/lookup/exception/debug/name.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/lookup/forward.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/lookup/forward.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/service/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/flag/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/flag/excess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/flag/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/flag/zero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/lookup/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/lookup/service/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/persona/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/validator/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/validator/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/validator/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/validator/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/validator/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -998,7 +981,7 @@
       <workItem from="1767018422815" duration="1433000" />
       <workItem from="1767020094964" duration="3011000" />
       <workItem from="1767024723147" duration="40015000" />
-      <workItem from="1767111633890" duration="2877000" />
+      <workItem from="1767111633890" duration="3758000" />
     </task>
     <servers />
   </component>

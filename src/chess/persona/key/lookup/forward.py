@@ -8,13 +8,13 @@ version: 1.0.0
 """
 
 
-from typing import List, Optional, cast
+from typing import List
 
 from chess.persona import (
     
-    PersonaSuperKey
+    Persona, PersonaSuperKey, PersonaSuperKeyValidator
 )
-from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
+
 from chess.system import ForwardLookup, LoggingLevelRouter, SearchResult, id_emitter
 
 
@@ -39,81 +39,8 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
     # INHERITED ATTRIBUTES:
         *   See ForwardLookup for inherited attributes.
     """
-    SERVICE_NAME = "PersonaLookupService"
     
-    def lookup(
-            self,
-            name: str = SERVICE_NAME,
-            id: int = id_emitter.lookup_id,
-            enum_validator: PersonaValidator = PersonaValidator(),
-            context_builder: PersonaSuperKeyBuilder = PersonaSuperKeyBuilder(),
-            context_validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator(),
-    ):
-        super().lookup(
-            id=id,
-            name=name,
-            enum_validator=enum_validator,
-            context_builder=context_builder,
-            context_validator=context_validator
-        )
-    
-    @property
-    def persona_validator(self) -> PersonaValidator:
-        """Return an PersonaValidator."""
-        return cast(PersonaValidator, self.enum_validator)
-    
-    @property
-    def persona_context_builder(self) -> PersonaSuperKeyBuilder:
-        """Return an PersonaSuperKeyBuilder."""
-        return cast(PersonaSuperKeyBuilder, self.context_builder)
-    
-    @property
-    def persona_context_validator(self) -> PersonaSuperKeyValidator:
-        """Return an PersonaSuperKeyValidator."""
-        return cast(PersonaSuperKeyValidator, self.context_validator)
-    
-    @property
-    def allowed_names(self) -> List[str]:
-        """Returns a list of all permissible schema names in upper case."""
-        return [persona.name.upper() for persona in Persona]
-    
-    @property
-    def allowed_designations(self) -> List[str]:
-        """Returns a list of all permissible persona designations in upper case."""
-        return [entry.designation.upper() for entry in Persona]
-    
-    @property
-    def allowed_quotas(self) -> List[int]:
-        """Returns a list of all the unique team_quotas in the persona."""
-        return [entry.quota for entry in Persona]
-    
-    @property
-    def allowed_ransoms(self) -> List[int]:
-        """Returns a list of all the unique ransoms in the persona."""
-        return [entry.ransom for entry in Persona]
-    
-    @classmethod
-    def rank_from_persona(cls, entry: Persona) -> Optional[Rank]:
-        """Get the Rank which the persona entry builds."""
-        if entry == Persona.KING: return King()
-        if entry == Persona.PAWN: return Pawn()
-        if entry == Persona.KNIGHT: return Knight()
-        if entry == Persona.BISHOP: return Bishop()
-        if entry == Persona.ROOK: return Rook()
-        if entry == Persona.QUEEN: return Queen()
-        return None
-    
-    @classmethod
-    def persona_from_rank(cls, rank: Rank) -> Optional[Persona]:
-        """Get the Persona from its corresponding Rank."""
-        if isinstance(rank, King): return Persona.KING
-        if isinstance(rank, Pawn): return Persona.PAWN
-        if isinstance(rank, Knight): return Persona.KNIGHT
-        if isinstance(rank, Bishop): return Persona.BISHOP
-        if isinstance(rank, Rook): return Persona.ROOK
-        if isinstance(rank, Queen): return Persona.QUEEN
-        return None
-    
+
     @classmethod
     @LoggingLevelRouter.monitor
     def lookup(

@@ -7,12 +7,16 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from typing import cast
+from typing import List, Optional, cast
 
-from chess.system import EntityService, id_emitter
-from chess.persona import PersonaSuperKey, PersonaSuperKeyBuilder, PersonaSuperKeyValidator, PersonaLookup
+from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
+from chess.system import HashService, id_emitter
+from chess.persona import (
+    Persona, PersonaValidator
+)
 
-class PersonaService(EntityService[PersonaSuperKey]):
+
+class PersonaService(HashService[Persona]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -36,47 +40,77 @@ class PersonaService(EntityService[PersonaSuperKey]):
         *   See ContextService for inherited attributes.
     """
     SERVICE_NAME = "PersonaService"
-    _lookup: PersonaLookup
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            lookup: PersonaLookup = PersonaLookup(),
-            builder: PersonaSuperKeyBuilder = PersonaSuperKeyBuilder(),
-            validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator(),
+            validator: PersonaValidator = PersonaValidator(),
+            super_key_service: PersonaSuperKeyService = PersonaSuperKeyService(),
     ):
         """
-        # Action:
-        Constructor
-
-        # Parameters:
+        # ACTION:
+            Constructor
+        # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   lookup (PersonaLookup)
-            *   builder (PersonaSuperKeyBuilder)
-            *   validator (PersonaSuperKeyValidator))
-
+            *   validator (PersonaValidator)
+            *   super_key_service (PersonaSuperKeyService)
         # Returns:
-        None
-
+            None
         # Raises:
-        None
+            None
         """
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._lookup = lookup
+        super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
         
-    @property
-    def lookup(self) -> PersonaLookup:
-        """Gets PersonaLookup instance."""
-        return self._lookup
-    
-    @property
-    def builder(self) -> PersonaSuperKeyBuilder:
-        """Gets PersonaSuperKeyBuilder instance."""
-        return cast(PersonaSuperKeyBuilder, self.entity_builder)
-    
-    @property
-    def validator(self) -> PersonaSuperKeyValidator:
-        """Gets PersonaSuperKeyValidator instance."""
-        return cast(PersonaSuperKeyValidator, self.entity_validator)
+        @property
+        def key_service(self) -> PersonaSuperKeyService:
+            """"""
+            return cast(PersonaSuperKeyService, self.hash_super_key_service)
+        
+        @property
+        def persona_validator(self) -> PersonaValidator:
+            """"""
+            return cast(PersonaValidator, self.hash_validator)
+        
+        @property
+        def names(self) -> List[str]:
+            """Returns a list of all permissible schema names in upper case."""
+            return [persona.name.upper() for persona in Persona]
+        
+        @property
+        def designations(self) -> List[str]:
+            """Returns a list of all permissible persona designations in upper case."""
+            return [entry.designation.upper() for entry in Persona]
+        
+        @property
+        def quotas(self) -> List[int]:
+            """Returns a list of all the unique team_quotas in the persona."""
+            return [entry.quota for entry in Persona]
+        
+        @property
+        def ransoms(self) -> List[int]:
+            """Returns a list of all the unique ransoms in the persona."""
+            return [entry.ransom for entry in Persona]
+        
+        @classmethod
+        def rank_from_persona(cls, entry: Persona) -> Optional[Rank]:
+            """Get the Rank which the persona entry builds."""
+            if entry == Persona.KING: return King()
+            if entry == Persona.PAWN: return Pawn()
+            if entry == Persona.KNIGHT: return Knight()
+            if entry == Persona.BISHOP: return Bishop()
+            if entry == Persona.ROOK: return Rook()
+            if entry == Persona.QUEEN: return Queen()
+            return None
+        
+        @classmethod
+        def persona_from_rank(cls, rank: Rank) -> Optional[Persona]:
+            """Get the Persona from its corresponding Rank."""
+            if isinstance(rank, King): return Persona.KING
+            if isinstance(rank, Pawn): return Persona.PAWN
+            if isinstance(rank, Knight): return Persona.KNIGHT
+            if isinstance(rank, Bishop): return Persona.BISHOP
+            if isinstance(rank, Rook): return Persona.ROOK
+            if isinstance(rank, Queen): return Persona.QUEEN
+            return None
