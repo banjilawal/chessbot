@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .roster import *
-from  .hostage import *
+from .hostage import *
 
 # Modules
 None

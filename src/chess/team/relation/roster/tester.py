@@ -1,17 +1,17 @@
-# src/chess/team/relation/tester.py
+# src/chess/team/relation/roster/tester.py
 
 """
-Module: chess.team.relation.tester
+Module: chess.team.relation.roster.tester
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
+
 from typing import cast
 
+from chess.token import Token, TokenService, TokenContext
 from chess.system import LoggingLevelRouter, RelationReport, RelationTester
 from chess.team import Team, RosterTokenRelationTestFailedException, TeamValidator
-from chess.token import Token, TokenService
-from chess.token.context.context import TokenContext
 
 
 class RosterTokenRelationTester(RelationTester[Team, Token]):
@@ -63,7 +63,7 @@ class RosterTokenRelationTester(RelationTester[Team, Token]):
                 - On bidirectional: Team and Token
                 - On not related: Neither team, token nor exception.
         # RAISES:
-            *   HostageTokenRelationTestFailedException
+            *   RosterTokenRelationTestFailedException
         """
         method = "RosterTokenRelationTester.test"
         

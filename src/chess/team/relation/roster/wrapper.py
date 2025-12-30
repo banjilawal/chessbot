@@ -1,7 +1,7 @@
-# src/chess/team/relation/member/wrapper.py
+# src/chess/team/relation/roster/wrapper.py
 
 """
-Module: chess.team.relation.member.wrapper
+Module: chess.team.relation.roster.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

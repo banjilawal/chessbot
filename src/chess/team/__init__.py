@@ -19,4 +19,3 @@ from .validator import *
 # Modules
 from .team import Team
 from .exception import TeamException
-

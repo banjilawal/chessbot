@@ -1,11 +1,12 @@
-# src/chess/team/relation/tester.py
+# src/chess/team/relation/hostage/tester.py
 
 """
-Module: chess.team.relation.tester
+Module: chess.team.relation.hostage.tester
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
 """
+
 from typing import cast
 
 from chess.system import LoggingLevelRouter, RelationReport, RelationTester
@@ -77,6 +78,7 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
                 )
             )
         team = cast(Team, team_validation.payload)
+        
         # Process the possible piece_validation outcomes.
         piece_validation = piece_service.validator.validate(candidate_satellite)
         if piece_validation.is_failure:

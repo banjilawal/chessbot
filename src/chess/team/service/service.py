@@ -9,14 +9,12 @@ version: 1.0.0
 
 from typing import List, cast
 
-
+from chess.token import Token, TokenContext, TokenService
 from chess.system import EntityService, LoggingLevelRouter, SearchResult, id_emitter
 from chess.team import (
-    Team, TeamBuilder,
-    TeamServiceException, TeamValidator, TokenLocation
+    HostageTokenRelationTester, RosterTokenRelationTester, Team, TeamBuilder, TeamServiceException, TeamValidator,
+    TokenLocation
 )
-from chess.token import Token, TokenService
-from chess.token.context.context import TokenContext
 
 
 class TeamService(EntityService[Team]):
@@ -42,6 +40,8 @@ class TeamService(EntityService[Team]):
         *   See EntityService for inherited attributes.
     """
     SERVICE_NAME = "TeamService"
+    _roster_token_relation_tester: RosterTokenRelationTester
+    _hostage_token_relation_tester: HostageTokenRelationTester
     
     def __init__(
             self,
@@ -49,6 +49,8 @@ class TeamService(EntityService[Team]):
             id: int = id_emitter.service_id,
             builder: TeamBuilder = TeamBuilder(),
             validator: TeamValidator = TeamValidator(),
+            roster_token_relation_tester: RosterTokenRelationTester = RosterTokenRelationTester(),
+            hostage_token_relation_tester: HostageTokenRelationTester = HostageTokenRelationTester(),
     ):
         """
         # ACTION:
@@ -64,6 +66,8 @@ class TeamService(EntityService[Team]):
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._roster_token_relation_tester = roster_token_relation_tester
+        self._hostage_token_relation_tester = hostage_token_relation_tester
     
     @property
     def builder(self) -> TeamBuilder:
@@ -75,6 +79,14 @@ class TeamService(EntityService[Team]):
         """get TeamValidator."""
         return cast(TeamValidator, self.entity_validator)
     
+    @property
+    def roster_token_relation_tester(self) -> RosterTokenRelationTester:
+        return self._roster_token_relation_tester
+    
+    @property
+    def hostage_token_relation_tester(self) -> HostageTokenRelationTester:
+        return self._hostage_token_relation_tester
+    
     @LoggingLevelRouter.monitor
     def search_team_for_token(
             self,
@@ -82,7 +94,10 @@ class TeamService(EntityService[Team]):
             piece: Token,
             piece_service: TokenService = TokenService(),
     ) -> SearchResult[List[(Token, TokenLocation)]]:
-        """"""
+        """
+        This is only going to be used in Arenas where it might be necessary to check if a captured piece has
+        been properly registered with the enemy. I probably won't need it.
+        """
         method = "TeamService.search_team_for_token"
         
         # Validate the team and handle the failure case.
