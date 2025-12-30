@@ -45,27 +45,28 @@ class RosterTokenRelationTester(RelationTester[Team, Token]):
     ) -> RelationReport[Team, Token]:
         """
         # ACTION:
-        1.  If either candidate fails its safety certification send the exception chain in the RelationReport. Else,
-            cast the candidate_primary to a Team instance; arena and candidate_satellite to Token instance; piece.
-        2.  If the piece.team != team they are not related. Else they are partially related.
-        3.  If searching team roster for the satellite produces an error send the exception chain. If the search
-            produced a match send a bidirectional report. Else send a partial relation report.
-
+            1.  If either candidate fails its safety certification send the exception chain in the RelationReport.
+                Else, cast the candidate_primary to a Team instance; arena and candidate_satellite to Token
+                instance; piece.
+            2.  If the piece.team != team they are not related. Else they are partially related.
+            3.  If searching team roster for the satellite produces an error send the exception chain. If the
+                search produced a match send a bidirectional report. Else send a partial relation report.
         # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   arena_variety (ArenaVariety)
-            *   engine_service (Optional[EngineService])
-
+            *   candidate_primary (Team)
+            *   candidate_satellite (Token)
+            *   piece_service (PieceService)
+            *   team_validator (TeamValidator)
         # RETURN:
-        ValidationResult[Arena] containing either:
-            - On success: Arena in the payload.
-            - On failure: Exception.
-
+            *   RelationReport[Team, Token] containing either:
+                - On failure: Exception
+                - On partial: Token only
+                - On bidirectional: Team and Token
+                - On not related: Neither team, token nor exception.
         # RAISES:
-            *   ArenaValidationFailedException
+            *   HostageTokenRelationTestFailedException
         """
         method = "RosterTokenRelationTester.test"
+        
         # Process the possible team_validation outcomes.
         team_validation = team_validator.validate(candidate_primary)
         if team_validation.is_failure:
@@ -103,8 +104,8 @@ class RosterTokenRelationTester(RelationTester[Team, Token]):
                     ex=member_search.exception,
                 )
             )
-        # Handle the case that the piece has not been added to the roster.
+        # On the empty search the token has not been added to the roster list.
         if member_search.is_empty:
             return RelationReport.partial(satellite=piece)
-        # Deal with the success case.
+        # All other paths in the test chain have been exhausted. The roster-token tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=team, satellite=piece)

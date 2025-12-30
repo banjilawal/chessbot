@@ -44,25 +44,23 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
     ) -> RelationReport[Team, Token]:
         """
         # ACTION:
-        1.  If either candidate fails its safety certification send the exception chain in the RelationReport. Else,
-            cast the candidate_primary to a Team instance; arena and candidate_satellite to Token instance; piece.
-        2.  If the piece == team they are not related. Else they are partially related.
-        3.  If searching team hostage for the satellite produces an error send the exception chain. If the search
-            produced a match send a bidirectional report. Else send a partial relation report.
-
+            1.  If either candidate fails its safety certification send the exception chain in the RelationReport.
+                Else, cast the candidate_primary to a Team instance; arena and candidate_satellite to Token
+                instance; piece.
+            2.  If the piece == team they are not related. Else they are partially related.
+            3.  If searching team hostage for the satellite produces an error send the exception chain. If the
+                search produced a match send a bidirectional report. Else send a partial relation report.
         # PARAMETERS:
             *   candidate_primary (Team)
-            *   candidate_satellite (CombatantToken)
+            *   candidate_satellite (Token)
             *   piece_service (PieceService)
             *   team_validator (TeamValidator)
-
         # RETURN:
             *   RelationReport[Team, Token] containing either:
                 - On failure: Exception
                 - On partial: Token only
                 - On bidirectional: Team and Token
                 - On not related: Neither team, token nor exception.
-
         # RAISES:
             *   HostageTokenRelationTestFailedException
         """
@@ -89,7 +87,7 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
                 )
             )
         piece = cast(Token, piece_validation.payload)
-        # Deal with the three cases that piece is not associated with the hostage list.
+        # Kings, tokens set to the team, and free enemies are not related to the hostage list.
         if (
                 isinstance(piece, KingToken) or
                 piece.team == team or
@@ -100,8 +98,6 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
         # At this point a piece can only be a captured combatant. The possible relations are unregistered
         # token or fully bidirectional. This can only be resolved with a search.
         hostage_search = team.hostages.search(context=TeamContext(id=piece.id))
-        
-        # On the failure case return the exception chain.
         if hostage_search.is_failure:
             # Return the exception chain on failure.
             return RelationReport(

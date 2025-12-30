@@ -101,7 +101,6 @@ class AgentTeamRelationTester(RelationTester[PlayerAgent, Team]):
             return RelationReport.not_related()
         
         # For complete coverage and certainty search the assignments not just the current_team.
-        
         search = owner.team_assignments.search_teams(context=TeamContext(id=team.id))
         if search.is_failure:
             # Return the exception chain on failure.
