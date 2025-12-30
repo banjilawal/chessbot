@@ -1,13 +1,13 @@
-# src/chess/persona/lookup/exception/debug/__init__.py
+# src/chess/persona/key/lookup/exception/debug/__init__.py
 
 """
-Module: chess.persona.lookup.exception.debug.__init__
+Module: chess.persona.key.lookup.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== PERSONA.CONTEXT.LOOKUP.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
+# =========== PERSONA.KEY.LOOKUP.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
 None

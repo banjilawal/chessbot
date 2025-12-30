@@ -1,7 +1,7 @@
-# src/chess/persona/lookup/exception/debug/designation.py
+# src/chess/persona/key/lookup/exception/debug/designation.py
 
 """
-Module: chess.persona.lookup.exception.debug.designation
+Module: chess.persona.key.lookup.exception.debug.designation
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/persona/lookup/exception/wrapper.py
+# src/chess/persona/key/lookup/exception/wrapper.py
 
 """
-Module: chess.persona.lookup.exception.wrapper
+Module: chess.persona.key.lookup.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

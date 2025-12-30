@@ -1,7 +1,7 @@
-# src/chess/persona/lookup/lookup.py
+# src/chess/persona/key/lookup/lookup.py
 
 """
-Module: chess.persona.lookup.lookup
+Module: chess.persona.key.lookup.lookup
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

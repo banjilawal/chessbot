@@ -1,13 +1,13 @@
-# src/chess/persona/lookup/__init__.py
+# src/chess/persona/key/lookup/__init__.py
 
 """
-Module: chess.persona.lookup.__init__
+Module: chess.persona.key.lookup.__init__
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-# =========== PERSONA.CONTEXT.LOOKUP PACKAGE CONTENTS ===========#
+# =========== PERSONA.KEY.LOOKUP PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
