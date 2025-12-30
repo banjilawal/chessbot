@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/key.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/key.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/persona/persona.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/persona.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/finder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/hostage/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/hostage/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/hostage/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/hostage/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/roster/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/roster/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/roster/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/roster/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/roster/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/roster/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/arena.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/arena.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/context/builder/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -41,7 +41,7 @@ class Persona(Enum):
 
     # LOCAL ATTRIBUTES:
         *   designation (str)
-        *   rank_quota (int)
+        *   quota (int)
         *   ransom (int)
         *   quadrants (List[Quadrant])
 
@@ -49,10 +49,10 @@ class Persona(Enum):
         * name (str) -->  Name give to each Enum entry.
     """
     
-    def __new__(cls, designation: str, rank_quota: int, ransom: int, quadrants: List[Quadrant]):
+    def __new__(cls, designation: str, quota: int, ransom: int, quadrants: List[Quadrant]):
         obj = object.__new__(cls)
         obj._designation = designation
-        obj._rank_quota = rank_quota
+        obj._quota = quota
         obj._ransom = ransom
         obj._quadrants = quadrants
         return obj
@@ -76,7 +76,7 @@ class Persona(Enum):
     
     @property
     def quota(self) -> int:
-        return self._rank_quota
+        return self._quota
     
     @property
     def ransom(self) -> int:
@@ -95,7 +95,7 @@ class Persona(Enum):
             f"Rank["
             f"{self._id} "
             f"{self._designation} "
-            f"per_rank:{self._rank_quota} "
+            f"per_rank:{self._quota} "
             f"value:{self._ransom} "
             f"quadrants:({len(self.quadrants_str())})"
             f"] "
