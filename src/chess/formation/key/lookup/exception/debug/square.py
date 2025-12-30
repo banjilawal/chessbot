@@ -1,34 +1,33 @@
-# src/chess/formation/validator/exception/square.py
+# src/chess/formation/key/lookup/exception/debug/square.py
 
 """
-Module: chess.formation.validator.exception.square
+Module: chess.formation.key.lookup.exception.debug.square
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.formation import InvalidFormationException
-from chess.system import BoundsException, NameException
+from chess.formation import FormationException
+from chess.system import BoundsException
 
 __all__ = [
-    # ======================# FORMATION_SQUARE_BOUNDS EXCEPTION #======================#
-    "FormationLookupBySquareException",
+    # ======================# FORMATION_SQUARE_NAME_BOUNDS EXCEPTION #======================#
+    "FormationSquareBoundsException",
 ]
 
 
-# ======================# FORMATION_SQUARE_BOUNDS EXCEPTION #======================#
-class FormationLookupBySquareException(InvalidFormationException, BoundsException, NameException):
+# ======================# FORMATION_SQUARE_NAME_BOUNDS EXCEPTION #======================#
+class FormationSquareBoundsException(FormationException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that no opening formation is made from the square.
-    1.  Indicate that searching Formations by a Square  Formation forward lookup by forward lookup on the Formation table by a designation came up empty. No Token is assigned that
-        designation.
+    1.  Indicate that a Formation lookup failed because the square value was not permitted for the Formation
+        attribute.
+
     # PARENT:
-        *   InvalidFormationException
+        *   FormationException
         *   BoundsException
-        *   NameException
 
     # PROVIDES:
     None
@@ -39,34 +38,5 @@ class FormationLookupBySquareException(InvalidFormationException, BoundsExceptio
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_SQUARE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = (
-        "No Formation is associated with the Square. No Token makes its opening move from the Square."
-    )
-
-
-# ======================# FORMATION_LOOKUP_BY_DESIGNATION_FAILURE EXCEPTION #======================#
-class DesignationFormationLookupException(InvalidFormationException, BoundsException, NameException):
-    """
-    # ROLE: Error Tracing, Debugging
-
-    # RESPONSIBILITIES:
-    1.  Indicate that a forward lookup on the Formation table by a designation came up empty. No Token is assigned that
-        designation.
-
-    # PARENT:
-        *   InvalidFormationException
-        *   BoundsException
-        *   NameException
-
-    # PROVIDES:
-    None
-
-    # LOCAL ATTRIBUTES:
-    None
-
-    INHERITED ATTRIBUTES:
-    None
-    """
-    ERROR_CODE = "FORMATION_LOOKUP_BY_DESIGNATION_FAILURE"
-    DEFAULT_MESSAGE = "No Formation assigns that designation to a Token. The designation is not valid."
+    ERROR_CODE = "FORMATION_SQUARE_NAME_BOUNDS"
+    DEFAULT_MESSAGE = "FormationLookup failed: Target was outside the set of possible Formation square names."

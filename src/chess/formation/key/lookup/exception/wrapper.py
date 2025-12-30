@@ -1,7 +1,7 @@
-# src/chess/formation/lookup/exception/failure.py
+# src/chess/formation/lookup/exception/wrapper.py
 
 """
-Module: chess.formation.lookup.exception.failure
+Module: chess.formation.lookup.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.formation import FormationException
 from chess.system import LookupFailedException
 
 __all__ = [
-    # ======================# FORMATION_LOOKUP_FAILURE EXCEPTION #======================#
+    # ======================# FORMATION_LOOKUP_WRAPPER EXCEPTION #======================#
     "FormationLookupFailedException",
 ]
 
 
-# ======================# FORMATION_LOOKUP_FAILURE EXCEPTION #======================#
+# ======================# FORMATION_LOOKUP_WRAPPER EXCEPTION #======================#
 class FormationLookupFailedException(FormationException, LookupFailedException):
     """
     # ROLE: ExceptionWrapper, Encapsulation
@@ -25,7 +25,7 @@ class FormationLookupFailedException(FormationException, LookupFailedException):
     1.  If a Formation lookup runs into an error a debug exception is created and encapsulated in a
         FormationLookupFailedException creating an exception chain which is sent to the caller in a
         SearchResult.
-    2.  The FormationLookupFailedException chain is useful for tracing a failure to its source.
+    2.  The FormationLookupFailedException chain is useful for tracing a wrapper to its source.
 
     # PARENT:
         *   InvalidFormationException
@@ -40,6 +40,6 @@ class FormationLookupFailedException(FormationException, LookupFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_LOOKUP_FAILURE"
+    ERROR_CODE = "FORMATION_LOOKUP_WRAPPER"
     DEFAULT_MESSAGE = "Formation lookup failed."
 

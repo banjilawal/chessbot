@@ -22,7 +22,7 @@ class PersonaLookupRouteException(PersonaException, UnhandledRouteException):
     # ROLE: Fallback Result
 
     # RESPONSIBILITIES:
-    1. Indicate that PersonaLookuper did not handle a build option or parameter with its own execution route.
+    1. Indicate that PersonaLookup did not handle a build option or parameter with its own execution route.
 
     # PARENT:
         *   PersonaException

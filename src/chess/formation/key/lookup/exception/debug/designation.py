@@ -1,34 +1,33 @@
-# src/chess/formation/validator/exception/name.py
+# src/chess/formation/key/lookup/exception/debug/designation.py
 
 """
-Module: chess.formation.validator.exception.name
+Module: chess.formation.key.lookup.exception.debug.designation
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.formation import InvalidFormationException
-from chess.system import BoundsException, NameException
+from chess.system import BoundsException
+from chess.formation import FormationException
 
 __all__ = [
-    # ======================# FORMATION_LOOKUP_BY_DESIGNATION EXCEPTION #======================#
-    "FormationLookupByDesignationException",
+    # ======================# FORMATION_DESIGNATION_BOUNDS EXCEPTION #======================#
+    "FormationDesignationBoundsException",
 ]
 
 
-# ======================# FORMATION_LOOKUP_BY_DESIGNATION EXCEPTION #======================#
-class FormationLookupByDesignationException(InvalidFormationException, BoundsException, NameException):
+# ======================# FORMATION_DESIGNATION_BOUNDS EXCEPTION #======================#
+class FormationDesignationBoundsException(FormationException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a forward lookup on the Formation table by a designation came up empty. No Token is assigned that
-        designation.
+    1.  Indicate that a Formation lookup failed because the designation value was not permitted for the Formation
+        attribute.
 
     # PARENT:
-        *   InvalidFormationException
+        *   FormationException
         *   BoundsException
-        *   NameException
 
     # PROVIDES:
     None
@@ -39,5 +38,5 @@ class FormationLookupByDesignationException(InvalidFormationException, BoundsExc
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_LOOKUP_BY_DESIGNATION_FAILURE"
-    DEFAULT_MESSAGE = "No Formation assigns that designation to a Token. The designation is not valid."
+    ERROR_CODE = "FORMATION_DESIGNATION_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "FormationLookup failed: Target was outside the set of possible Formation designations."

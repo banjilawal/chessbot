@@ -23,7 +23,7 @@ class SchemaLookupRouteException(SchemaException, UnhandledRouteException):
     # ROLE: Fallback Result
     
     # RESPONSIBILITIES:
-    1. Indicate that SchemaLookuper did not handle a build option or parameter with its own execution route.
+    1. Indicate that SchemaLookup did not handle a build option or parameter with its own execution route.
     
     # PARENT:
         *   SchemaException

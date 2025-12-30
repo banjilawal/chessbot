@@ -1,33 +1,33 @@
-# src/chess/formation/validator/exception/color.py
+# src/chess/formation/key/lookup/exception/debug/color.py
 
 """
-Module: chess.formation.validator.exception.color
+Module: chess.formation.key.lookup.exception.debug.color
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.formation import InvalidFormationException
-from chess.system import BoundsException, GameColorException
+from chess.system import BoundsException
+from chess.formation import FormationException
 
 __all__ = [
-    # ======================# FORMATION_LOOKUP_BY_COLOR EXCEPTION #======================#
-    "FormationLookupByColorException",
+    # ======================# FORMATION_COLOR_BOUNDS EXCEPTION #======================#
+    "FormationColorBoundsException",
 ]
 
 
-# ======================# FORMATION_LOOKUP_BY_COLOR EXCEPTION #======================#
-class FormationLookupByColorException(InvalidFormationException, BoundsException, GameColorException):
+# ======================# FORMATION_COLOR_BOUNDS EXCEPTION #======================#
+class FormationColorBoundsException(FormationException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a color is outside the range of acceptable Formation colors.
+    1.  Indicate that a Formation lookup failed because the color value was not permitted for the Formation
+        attribute.
 
     # PARENT:
-        *   InvalidFormationException
+        *   FormationException
         *   BoundsException
-        *   GameColorException
 
     # PROVIDES:
     None
@@ -38,6 +38,5 @@ class FormationLookupByColorException(InvalidFormationException, BoundsException
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_LOOKUP_BY_COLOR_ERROR"
-    DEFAULT_MESSAGE = "Color is not included in the set of permissible order colors."
-
+    ERROR_CODE = "FORMATION_COLOR_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "FormationLookup failed: Target was outside the set of possible Formation colors."
