@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import List
 
 from chess.schema import (
-    SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException,
-    SchemaNameBoundsException, SchemaSuperKey, SchemaSuperKeyValidator, Schema,
+    SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaSuperKey, Schema,
+    SchemaNameBoundsException, SchemaSuperKeyValidator,
 )
 from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult
 

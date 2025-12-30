@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .forward import Persona
+from .forward import PersonaLookup

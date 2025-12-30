@@ -1,34 +1,35 @@
-# src/chess/persona/validator/exception/designation.py
+# src/chess/persona/lookup/exception/debug/designation.py
 
 """
-Module: chess.persona.validator.exception.designation
+Module: chess.persona.lookup.exception.debug.designation
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.persona import InvalidPersonaException
-from chess.system import BoundsException, NameException
+from chess.system import BoundsException
+from chess.persona import PersonaException
+
 
 
 __all__ = [
-    # ======================# PERSONA DESIGNATION BOUNDS EXCEPTION #======================#
+    # ======================# PERSONA_DESIGNATION_BOUNDS EXCEPTION #======================#
     "PersonaDesignationBoundsException",
 ]
 
 
-# ======================# PERSONA DESIGNATION BOUNDS EXCEPTION #======================#
-class PersonaDesignationBoundsException(InvalidPersonaException, BoundsException, NameException):
+# ======================# PERSONA_DESIGNATION_BOUNDS EXCEPTION #======================#
+class PersonaDesignationBoundsException(PersonaException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a designation is outside the range of acceptable Persona designations.
+    1.  Indicate that a Persona lookup failed because the designation value was not permitted for the Persona
+        attribute.
 
     # PARENT:
-        *   InvalidPersonaException
+        *   PersonaException
         *   BoundsException
-        *   NameException
 
     # PROVIDES:
     None
@@ -40,4 +41,4 @@ class PersonaDesignationBoundsException(InvalidPersonaException, BoundsException
     None
     """
     ERROR_CODE = "PERSONA_DESIGNATION_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Designation is not included in the set of permissible persona designations."
+    DEFAULT_MESSAGE = "PersonaLookup failed: Target was outside the set of possible Persona designations."

@@ -8,24 +8,25 @@ version: 1.0.0
 """
 
 from chess.system import BoundsException
-from chess.persona import InvalidPersonaException
+from chess.persona import PersonaException
 
 __all__ = [
-    # ======================# PERSONA RANSOM BOUNDS EXCEPTION #======================#
+    # ======================# PERSONA_RANSOM_BOUNDS EXCEPTION #======================#
     "PersonaRansomBoundsException",
 ]
 
 
-# ======================# PERSONA RANSOM BOUNDS EXCEPTION #======================#
-class PersonaRansomBoundsException(InvalidPersonaException, BoundsException):
+# ======================# PERSONA_RANSOM_BOUNDS EXCEPTION #======================#
+class PersonaRansomBoundsException(PersonaException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a designation is outside the range of acceptable Persona ransoms.
+    1.  Indicate that a Persona lookup failed because the ransom value was not permitted for the Persona
+        attribute.
 
     # PARENT:
-        *   InvalidPersonaException
+        *   PersonaException
         *   BoundsException
 
     # PROVIDES:
@@ -38,4 +39,4 @@ class PersonaRansomBoundsException(InvalidPersonaException, BoundsException):
     None
     """
     ERROR_CODE = "PERSONA_RANSOM_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Ransom is not included in the set of permissible persona ransoms."
+    DEFAULT_MESSAGE = "PersonaLookup failed: Target was outside the set of possible Persona ransoms."

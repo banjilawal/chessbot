@@ -11,18 +11,18 @@ from chess.persona import InvalidPersonaException
 from chess.system import BoundsException, NameException
 
 __all__ = [
-    # ======================# PERSONA NAME BOUNDS EXCEPTION #======================#
+    # ======================# PERSONA_NAME_BOUNDS EXCEPTION #======================#
     "PersonaNameBoundsException",
 ]
 
 
-# ======================# PERSONA NAME BOUNDS EXCEPTION #======================#
+# ======================# PERSONA_NAME_BOUNDS EXCEPTION #======================#
 class PersonaNameBoundsException(InvalidPersonaException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a name is outside the range of acceptable Persona names.
+    1.  Indicate that a Persona lookup failed because the name was not a key to any Persona variant.
 
     # PARENT:
         *   InvalidPersonaException
@@ -39,4 +39,4 @@ class PersonaNameBoundsException(InvalidPersonaException, BoundsException, NameE
     None
     """
     ERROR_CODE = "PERSONA_NAME_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Name is not included in the set of permissible persona names."
+    DEFAULT_MESSAGE = "PersonaLookup failed: No Persona entries use the target as their key."

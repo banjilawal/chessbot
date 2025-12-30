@@ -8,25 +8,26 @@ version: 1.0.0
 """
 
 from chess.system import BoundsException
-from chess.persona import InvalidPersonaException
+from chess.persona import PersonaException
 
 
 __all__ = [
-    # ======================# PERSONA QUOTA BOUNDS EXCEPTION #======================#
+    # ======================# PERSONA_QUOTA_BOUNDS EXCEPTION #======================#
     "PersonaQuotaBoundsException",
 ]
 
 
-# ======================# PERSONA QUOTA BOUNDS EXCEPTION #======================#
-class PersonaQuotaBoundsException(InvalidPersonaException, BoundsException):
+# ======================# PERSONA_QUOTA_BOUNDS EXCEPTION #======================#
+class PersonaQuotaBoundsException(PersonaException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate an error occurred because a designation is outside the range of acceptable Persona quotas.
+    1.  Indicate that a Persona lookup failed because the quota value was not permitted for the Persona
+        attribute.
 
     # PARENT:
-        *   InvalidPersonaException
+        *   PersonaException
         *   BoundsException
 
     # PROVIDES:
@@ -39,4 +40,4 @@ class PersonaQuotaBoundsException(InvalidPersonaException, BoundsException):
     None
     """
     ERROR_CODE = "PERSONA_QUOTA_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Quota is not included in the set of permissible persona quotas."
+    DEFAULT_MESSAGE = "PersonaLookup failed: Target was outside the set of possible Persona quotas."

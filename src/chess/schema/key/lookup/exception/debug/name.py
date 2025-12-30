@@ -22,7 +22,7 @@ class SchemaNameBoundsException(SchemaException, BoundsException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that no variant of Schema has that name.
+    1.  Indicate that a Schema lookup failed because the name was not a key to any Schema variant.
 
     # PARENT:
         *   BoundsException

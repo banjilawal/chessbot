@@ -1,3 +1,12 @@
+# src/chess/persona/lookup/exception/wrapper.py
+
+"""
+Module: chess.persona.lookup.exception.wrapper
+Author: Banji Lawal
+Created: 2025-09-08
+version: 1.0.0
+"""
+
 from chess.persona import PersonaException
 from chess.system import LookupFailedException
 
@@ -19,8 +28,8 @@ class PersonaLookupFailedException(PersonaException, LookupFailedException):
     2.  The PersonaLookupFailedException chain is useful for tracing a failure to its source.
 
     # PARENT:
-        *   InvalidPersonaException
-        *   LookupServiceException
+        *   PersonaException
+        *   LookupFailedException
 
     # PROVIDES:
     None
@@ -32,5 +41,5 @@ class PersonaLookupFailedException(PersonaException, LookupFailedException):
     None
     """
     ERROR_CODE = "PERSONA_LOOKUP_FAILURE"
-    DEFAULT_MESSAGE = "Persona lookup failed."
+    DEFAULT_MESSAGE = "PersonaLookup failed."
 
