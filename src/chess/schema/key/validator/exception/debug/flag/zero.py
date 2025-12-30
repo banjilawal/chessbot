@@ -1,14 +1,14 @@
-# src/chess/schema/key/validator/exception/flag/zero.py
+# src/chess/schema/key/validator/exception/debug/flag/zero.py
 
 """
-Module: chess.schema.key.validator.exception.flag.zero
+Module: chess.schema.key.validator.exception.debug.flag.zero
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
+from chess.schema import SchemaSuperKeyException
 from chess.system import ContextFlagCountException
-from chess.schema import InvalidSchemaSuperKeyException
 
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ========================= ZERO_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
-class ZeroSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
+class ZeroSchemaSuperKeysException(SchemaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 

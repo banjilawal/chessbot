@@ -1,13 +1,23 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/schema/key/validator/exception/debug/route.py
+
+"""
+Module: chess.schema.key.validator.exception.debug.route
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
 
 __all__ = [
     # ======================# UNHANDLED_SCHEMA_SUPER_KEY_VALIDATION_ROUTE EXCEPTION #======================#
     "SchemaSuperKeyValidationRouteException",
 ]
 
+from chess.schema import SchemaSuperKeyException
+from chess.system import UnhandledRouteException
+
 
 # ======================# UNHANDLED_SCHEMA_SUPER_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class SchemaSuperKeyValidationRouteException(ResultException, UnhandledRouteException):
+class SchemaSuperKeyValidationRouteException(SchemaSuperKeyException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

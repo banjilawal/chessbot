@@ -12,20 +12,20 @@ from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# SCHEMA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
-    "InvalidSchemaSuperKeyException",
+    "SchemaSuperKeyValidationFailedException",
 ]
 
 
 # ======================# SCHEMA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidSchemaSuperKeyException(SchemaSuperKeyException, ValidationFailedException):
+class SchemaSuperKeyValidationFailedException(SchemaSuperKeyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a SchemaSuperKey candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidSchemaSuperKeyException creating an exception chain. which is sent to the caller in a
+        encapsulated inside an SchemaSuperKeyValidationFailedException creating an exception chain. which is sent to the caller in a
         ValidationResult.
-    2.  The InvalidSchemaSuperKeyException chain is useful for tracing a  failure to its source.
+    2.  The SchemaSuperKeyValidationFailedException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   SchemaSuperKeyException

@@ -1,14 +1,13 @@
-# src/chess/schema/key/validator/exception/flag/excess.py
+# src/chess/schema/key/validator/exception/debug/flag/excess.py
 
 """
-Module: chess.schema.key.validator.exception.flag.excess
+Module: chess.schema.key.validator.exception.debug.flag.excess
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
-
+from chess.schema import SchemaSuperKeyException
 from chess.system import ContextFlagCountException
-from chess.schema import InvalidSchemaSuperKeyException
 
 __all__ = [
     # ========================= EXCESS_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
@@ -16,7 +15,7 @@ __all__ = [
 ]
 
 # ========================= EXCESS_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
-class ExcessiveSchemaSuperKeysException(InvalidSchemaSuperKeyException, ContextFlagCountException):
+class ExcessiveSchemaSuperKeysException(SchemaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 

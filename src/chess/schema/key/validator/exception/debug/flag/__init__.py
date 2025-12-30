@@ -1,13 +1,13 @@
-# src/chess/schema/key/validator/exception/flag/__init__.py
+# src/chess/schema/key/validator/exception/debug/flag/__init__.py
 
 """
-Module: chess.schema.key.validator.exception.flag.__init__
+Module: chess.schema.key.validator.exception.debug.flag.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
-# =========== SCHEMA.KEY.VALIDATOR.EXCEPTION.FLAG PACKAGE CONTENTS ===========#
+# =========== SCHEMA.KEY.VALIDATOR.EXCEPTION.DEBUG.FLAG PACKAGE CONTENTS ===========#
 
 # Packages
 None

@@ -1,14 +1,14 @@
-# src/chess/schema/key/validator/exception/null.py
+# src/chess/schema/key/validator/exception/debug/null.py
 
 """
-Module: chess.schema.key.validator.exception.null
+Module: chess.schema.key.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.schema import InvalidSchemaSuperKeyException
+from chess.schema import SchemaSuperKeyException
 
 __all__ = [
     # ======================# NULL_SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL_SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
-class NullSchemaSuperKeyException(InvalidSchemaSuperKeyException, NullException):
+class NullSchemaSuperKeyException(SchemaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
