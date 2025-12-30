@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_MEMBER_RELATION_TEST_FAILURE EXCEPTION #======================#
-    "RosterTokenRelationTestFailedException",
+    # ======================# ROSTER_RELATION_TEST_FAILURE EXCEPTION #======================#
+    "RosterRelationTestFailedException",
 ]
 
 from chess.system import RelationTestFailedException
 
 
-# ======================# TEAM_MEMBER_RELATION_TEST_FAILURE EXCEPTION #======================#
-class RosterTokenRelationTestFailedException(RelationTestFailedException):
+# ======================# ROSTER_RELATION_TEST_FAILURE EXCEPTION #======================#
+class RosterRelationTestFailedException(RelationTestFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -36,5 +36,5 @@ class RosterTokenRelationTestFailedException(RelationTestFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_MEMBER_RELATION_TEST_FAILURE"
-    DEFAULT_MESSAGE = "TeamMemberRelationTest failed."
+    ERROR_CODE = "ROSTER_RELATION_TEST_FAILURE"
+    DEFAULT_MESSAGE = "RosterRelationTest failed."

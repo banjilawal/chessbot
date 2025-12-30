@@ -40,11 +40,10 @@ class Persona(Enum):
     None
 
     # LOCAL ATTRIBUTES:
-        *   color (GameColor)
-        *   rank_row (int)
-        *   pawn_row (int)
-        *   advancing_step (Scalar)
-        *   home_quadrant (Quadrant)
+        *   designation (str)
+        *   rank_quota (int)
+        *   ransom (int)
+        *   quadrants (List[Quadrant])
 
     # INHERITED ATTRIBUTES:
         * name (str) -->  Name give to each Enum entry.
@@ -62,12 +61,10 @@ class Persona(Enum):
     BISHOP = ("B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
     ROOK = ("C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
     KNIGHT = ("N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
-    
     KING = (
         "K", 1, 0,
         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
     )
-    
     QUEEN = (
         "Q", 1, 9,
         [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]

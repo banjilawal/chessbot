@@ -11,10 +11,10 @@ from typing import cast
 
 from chess.token import Token, TokenService, TokenContext
 from chess.system import LoggingLevelRouter, RelationReport, RelationTester
-from chess.team import Team, RosterTokenRelationTestFailedException, TeamValidator
+from chess.team import Team, RosterRelationTestFailedException, TeamValidator
 
 
-class RosterTokenRelationTester(RelationTester[Team, Token]):
+class RosterRelationTester(RelationTester[Team, Token]):
     """
     # ROLE: Reporting, Test for Relationship
 
@@ -63,17 +63,17 @@ class RosterTokenRelationTester(RelationTester[Team, Token]):
                 - On bidirectional: Team and Token
                 - On not related: Neither team, token nor exception.
         # RAISES:
-            *   RosterTokenRelationTestFailedException
+            *   RosterRelationTestFailedException
         """
-        method = "RosterTokenRelationTester.test"
+        method = "RosterRelationTester.test"
         
         # Process the possible team_validation outcomes.
         team_validation = team_validator.validate(candidate_primary)
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                RosterTokenRelationTestFailedException(
-                    message=f"{method}: {RosterTokenRelationTestFailedException.ERROR_CODE}",
+                RosterRelationTestFailedException(
+                    message=f"{method}: {RosterRelationTestFailedException.ERROR_CODE}",
                     ex=team_validation.exception,
                 )
             )
@@ -83,8 +83,8 @@ class RosterTokenRelationTester(RelationTester[Team, Token]):
         piece_validation = piece_service.validator.validate(candidate_satellite)
         if piece_validation.is_failure:
             return RelationReport(
-                RosterTokenRelationTestFailedException(
-                    message=f"{method}: {RosterTokenRelationTestFailedException.ERROR_CODE}",
+                RosterRelationTestFailedException(
+                    message=f"{method}: {RosterRelationTestFailedException.ERROR_CODE}",
                     ex=piece_validation.exception,
                 )
             )
@@ -99,8 +99,8 @@ class RosterTokenRelationTester(RelationTester[Team, Token]):
         if member_search.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                RosterTokenRelationTestFailedException(
-                    message=f"{method}: {RosterTokenRelationTestFailedException.ERROR_CODE}",
+                RosterRelationTestFailedException(
+                    message=f"{method}: {RosterRelationTestFailedException.ERROR_CODE}",
                     ex=member_search.exception,
                 )
             )

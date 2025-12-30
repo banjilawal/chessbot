@@ -12,7 +12,7 @@ from typing import List, cast
 from chess.token import Token, TokenContext, TokenService
 from chess.system import EntityService, LoggingLevelRouter, SearchResult, id_emitter
 from chess.team import (
-    HostageTokenRelationTester, RosterTokenRelationTester, Team, TeamBuilder, TeamServiceException, TeamValidator,
+    HostageRelationTester, RosterRelationTester, Team, TeamBuilder, TeamServiceException, TeamValidator,
     TokenLocation
 )
 
@@ -34,14 +34,15 @@ class TeamService(EntityService[Team]):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   roster_relation_tester (RosterRelationTester)
+        *   hostage_relation_tester (HostageRelationTester)
 
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
     """
     SERVICE_NAME = "TeamService"
-    _roster_token_relation_tester: RosterTokenRelationTester
-    _hostage_token_relation_tester: HostageTokenRelationTester
+    _roster_relation_tester: RosterRelationTester
+    _hostage_relation_tester: HostageRelationTester
     
     def __init__(
             self,
@@ -49,8 +50,8 @@ class TeamService(EntityService[Team]):
             id: int = id_emitter.service_id,
             builder: TeamBuilder = TeamBuilder(),
             validator: TeamValidator = TeamValidator(),
-            roster_token_relation_tester: RosterTokenRelationTester = RosterTokenRelationTester(),
-            hostage_token_relation_tester: HostageTokenRelationTester = HostageTokenRelationTester(),
+            roster_relation_tester: RosterRelationTester = RosterRelationTester(),
+            hostage_relation_tester: HostageRelationTester = HostageRelationTester(),
     ):
         """
         # ACTION:
@@ -60,14 +61,16 @@ class TeamService(EntityService[Team]):
             *   name (str)
             *   builder (TeamBuilder)
             *   validator (TeamValidator)
+            *   roster_relation_tester (RosterRelationTester)
+            *   hostage_relation_tester (HostageRelationTester)
         # RETURNS:
                 None
         # RAISES:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._roster_token_relation_tester = roster_token_relation_tester
-        self._hostage_token_relation_tester = hostage_token_relation_tester
+        self._roster_relation_tester = roster_relation_tester
+        self._hostage_relation_tester = hostage_relation_tester
     
     @property
     def builder(self) -> TeamBuilder:
@@ -80,12 +83,12 @@ class TeamService(EntityService[Team]):
         return cast(TeamValidator, self.entity_validator)
     
     @property
-    def roster_token_relation_tester(self) -> RosterTokenRelationTester:
-        return self._roster_token_relation_tester
+    def roster_relation_tester(self) -> RosterRelationTester:
+        return self._roster_relation_tester
     
     @property
-    def hostage_token_relation_tester(self) -> HostageTokenRelationTester:
-        return self._hostage_token_relation_tester
+    def hostage_relation_tester(self) -> HostageRelationTester:
+        return self._hostage_relation_tester
     
     @LoggingLevelRouter.monitor
     def search_team_for_token(

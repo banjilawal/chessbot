@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .tester import RosterTokenRelationTester
-from .wrapper import RosterTokenRelationTestFailedException
+from .tester import RosterRelationTester
+from .wrapper import RosterRelationTestFailedException

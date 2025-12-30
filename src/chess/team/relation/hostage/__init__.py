@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .tester import HostageTokenRelationTester
-from wrapper import HostageTokenRelationTestFailedException
+from .tester import HostageRelationTester
+from wrapper import HostageRelationTestFailedException
 
 

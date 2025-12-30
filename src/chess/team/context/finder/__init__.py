@@ -14,5 +14,3 @@ from .exception import *
 
 # Modules
 from .finder import TeamFinder
-
-

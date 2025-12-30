@@ -14,9 +14,9 @@ from chess.token import (
     ExcessiveTokenContextFlagsException
 )
 from chess.coord import Coord, CoordService
-from chess.rank import Rank, RankCertifier
+from chess.rank import Rank, RankValidator
 from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService, LoggingLevelRouter
-from chess.team import Team, TeamCertifier
+from chess.team import Team, TeamValidator
 
 
 class TokenContextBuilder(Builder[TokenContext]):
@@ -51,8 +51,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
             coord: Optional[Coord] = None,
-            team_service: TeamCertifier = TeamCertifier(),
-            rank_service: RankCertifier = RankCertifier(),
+            team_service: TeamValidator = TeamValidator(),
+            rank_service: RankValidator = RankValidator(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[TokenContext]:
@@ -73,8 +73,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                 *   coord (Optional[Coord])
                 
             These Parameters must be provided:
-                *   team_certifier (TeamCertifier)
-                *   rank_certifier (RankCertifier)
+                *   team_certifier (TeamValidator)
+                *   rank_certifier (RankValidator)
                 *   coord_service (CoordService)
                 *   identity_service (IdentityService)
 

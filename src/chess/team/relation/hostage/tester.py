@@ -11,10 +11,10 @@ from typing import cast
 
 from chess.system import LoggingLevelRouter, RelationReport, RelationTester
 from chess.token import Token, TokenService, TokenContext, CombatantToken, KingToken
-from chess.team import Team, HostageTokenRelationTestFailedException, TeamContext, TeamValidator
+from chess.team import Team, HostageRelationTestFailedException, TeamContext, TeamValidator
 
 
-class HostageTokenRelationTester(RelationTester[Team, Token]):
+class HostageRelationTester(RelationTester[Team, Token]):
     """
     # ROLE: Reporting, Test for Relationship
 
@@ -63,17 +63,17 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
                 - On bidirectional: Team and Token
                 - On not related: Neither team, token nor exception.
         # RAISES:
-            *   HostageTokenRelationTestFailedException
+            *   HostageRelationTestFailedException
         """
-        method = "HostageTokenRelationTester.test"
+        method = "HostageRelationTester.test"
         
         # Process the possible team_validation outcomes.
         team_validation = team_validator.validate(candidate_primary)
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                HostageTokenRelationTestFailedException(
-                    message=f"{method}: {HostageTokenRelationTestFailedException.ERROR_CODE}",
+                HostageRelationTestFailedException(
+                    message=f"{method}: {HostageRelationTestFailedException.ERROR_CODE}",
                     ex=team_validation.exception,
                 )
             )
@@ -83,8 +83,8 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
         piece_validation = piece_service.validator.validate(candidate_satellite)
         if piece_validation.is_failure:
             return RelationReport(
-                HostageTokenRelationTestFailedException(
-                    message=f"{method}: {HostageTokenRelationTestFailedException.ERROR_CODE}",
+                HostageRelationTestFailedException(
+                    message=f"{method}: {HostageRelationTestFailedException.ERROR_CODE}",
                     ex=piece_validation.exception,
                 )
             )
@@ -103,8 +103,8 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
         if hostage_search.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                HostageTokenRelationTestFailedException(
-                    message=f"{method}: {HostageTokenRelationTestFailedException.ERROR_CODE}",
+                HostageRelationTestFailedException(
+                    message=f"{method}: {HostageRelationTestFailedException.ERROR_CODE}",
                     ex=hostage_search.exception,
                     )
                 )

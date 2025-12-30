@@ -8,7 +8,6 @@ version: 1.0.0
 """
 
 from chess.team import TeamException
-from chess.system import NotRegisteredException
 
 __all__ = [
     # ======================# TEAM_NOT_SUBMITTED_ARENA_REGISTRATION EXCEPTION #======================#
@@ -16,7 +15,7 @@ __all__ = [
 ]
 
 #======================# TEAM_NOT_SUBMITTED_ARENA_REGISTRATION EXCEPTION #======================#
-class TeamNotSubmittedArenaRegistrationException(TeamException, NotRegisteredException):
+class TeamNotSubmittedArenaRegistrationException(TeamException):
     """
     # ROLE: Error Tracing, Debugging
 

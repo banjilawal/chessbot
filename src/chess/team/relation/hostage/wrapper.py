@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_HOSTAGE_RELATION_TEST_FAILURE EXCEPTION #======================#
-    "HostageTokenRelationTestFailedException",
+    # ======================# HOSTAGE_RELATION_TEST_FAILURE EXCEPTION #======================#
+    "HostageRelationTestFailedException",
 ]
 
 from chess.system import RelationTestFailedException
 
 
-# ======================# TEAM_HOSTAGE_RELATION_TEST_FAILURE EXCEPTION #======================#
-class HostageTokenRelationTestFailedException(RelationTestFailedException):
+# ======================# HOSTAGE_RELATION_TEST_FAILURE EXCEPTION #======================#
+class HostageRelationTestFailedException(RelationTestFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -36,5 +36,5 @@ class HostageTokenRelationTestFailedException(RelationTestFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_HOSTAGE_RELATION_TEST_FAILURE"
+    ERROR_CODE = "HOSTAGE_RELATION_TEST_FAILURE"
     DEFAULT_MESSAGE = "TeamHostageRelationTest failed."
