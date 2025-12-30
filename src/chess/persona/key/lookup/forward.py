@@ -1,7 +1,7 @@
-# src/chess/catalog/lookup/lookup.py
+# src/chess/persona/lookup/lookup.py
 
 """
-Module: chess.catalog.lookup.lookup
+Module: chess.persona.lookup.lookup
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -10,23 +10,22 @@ version: 1.0.0
 
 from typing import List, Optional, cast
 
-from chess.catalog import (
-    Catalog, CatalogContext, CatalogContextBuilder, PersonaSuperKeyValidator,
-    CatalogDesignationBoundsException, CatalogLookupException, CatalogNameBoundsException,
-    CatalogQuotaBoundsException, CatalogRansomBoundsException, CatalogValidator
+from chess.persona import (
+    
+    PersonaSuperKey
 )
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
-from chess.system import ForwardLookup, UnhandledRouteException, LoggingLevelRouter, SearchResult, id_emitter
+from chess.system import ForwardLookup, LoggingLevelRouter, SearchResult, id_emitter
 
 
-class CatalogLookup(ForwardLookup[CatalogContext]):
+class PersonaLookup(ForwardLookup[PersonaSuperKey]):
     """
     # ROLE: Forward Lookups, Mapping 
 
     # RESPONSIBILITIES:
     1.  Lookup microservice API for mapping metadata values to Persona configurations.
     2.  Encapsulates integrity assurance logic for Persona lookup operations.
-    3.  Provide mapping between Catalogs and the Ranks.
+    3.  Provide mapping between Personas and the Ranks.
 
     # PARENT:
         *   EntityLookup
@@ -40,14 +39,14 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
     # INHERITED ATTRIBUTES:
         *   See ForwardLookup for inherited attributes.
     """
-    SERVICE_NAME = "CatalogLookupService"
+    SERVICE_NAME = "PersonaLookupService"
     
     def lookup(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.lookup_id,
-            enum_validator: CatalogValidator = CatalogValidator(),
-            context_builder: CatalogContextBuilder = CatalogContextBuilder(),
+            enum_validator: PersonaValidator = PersonaValidator(),
+            context_builder: PersonaSuperKeyBuilder = PersonaSuperKeyBuilder(),
             context_validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator(),
     ):
         super().lookup(
@@ -59,69 +58,69 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
         )
     
     @property
-    def catalog_validator(self) -> CatalogValidator:
+    def persona_validator(self) -> PersonaValidator:
         """Return an PersonaValidator."""
-        return cast(CatalogValidator, self.enum_validator)
+        return cast(PersonaValidator, self.enum_validator)
     
     @property
-    def catalog_context_builder(self) -> CatalogContextBuilder:
-        """Return an CatalogContextBuilder."""
-        return cast(CatalogContextBuilder, self.context_builder)
+    def persona_context_builder(self) -> PersonaSuperKeyBuilder:
+        """Return an PersonaSuperKeyBuilder."""
+        return cast(PersonaSuperKeyBuilder, self.context_builder)
     
     @property
-    def catalog_context_validator(self) -> PersonaSuperKeyValidator:
+    def persona_context_validator(self) -> PersonaSuperKeyValidator:
         """Return an PersonaSuperKeyValidator."""
         return cast(PersonaSuperKeyValidator, self.context_validator)
     
     @property
     def allowed_names(self) -> List[str]:
         """Returns a list of all permissible schema names in upper case."""
-        return [catalog.name.upper() for catalog in Catalog]
+        return [persona.name.upper() for persona in Persona]
     
     @property
     def allowed_designations(self) -> List[str]:
-        """Returns a list of all permissible catalog designations in upper case."""
-        return [entry.designation.upper() for entry in Catalog]
+        """Returns a list of all permissible persona designations in upper case."""
+        return [entry.designation.upper() for entry in Persona]
     
     @property
     def allowed_quotas(self) -> List[int]:
-        """Returns a list of all the unique team_quotas in the catalog."""
-        return [entry.quota for entry in Catalog]
+        """Returns a list of all the unique team_quotas in the persona."""
+        return [entry.quota for entry in Persona]
     
     @property
     def allowed_ransoms(self) -> List[int]:
-        """Returns a list of all the unique ransoms in the catalog."""
-        return [entry.ransom for entry in Catalog]
+        """Returns a list of all the unique ransoms in the persona."""
+        return [entry.ransom for entry in Persona]
     
     @classmethod
-    def rank_from_catalog(cls, entry: Catalog) -> Optional[Rank]:
-        """Get the Rank which the catalog entry builds."""
-        if entry == Catalog.KING: return King()
-        if entry == Catalog.PAWN: return Pawn()
-        if entry == Catalog.KNIGHT: return Knight()
-        if entry == Catalog.BISHOP: return Bishop()
-        if entry == Catalog.ROOK: return Rook()
-        if entry == Catalog.QUEEN: return Queen()
+    def rank_from_persona(cls, entry: Persona) -> Optional[Rank]:
+        """Get the Rank which the persona entry builds."""
+        if entry == Persona.KING: return King()
+        if entry == Persona.PAWN: return Pawn()
+        if entry == Persona.KNIGHT: return Knight()
+        if entry == Persona.BISHOP: return Bishop()
+        if entry == Persona.ROOK: return Rook()
+        if entry == Persona.QUEEN: return Queen()
         return None
     
     @classmethod
-    def catalog_from_rank(cls, rank: Rank) -> Optional[Catalog]:
+    def persona_from_rank(cls, rank: Rank) -> Optional[Persona]:
         """Get the Persona from its corresponding Rank."""
-        if isinstance(rank, King): return Catalog.KING
-        if isinstance(rank, Pawn): return Catalog.PAWN
-        if isinstance(rank, Knight): return Catalog.KNIGHT
-        if isinstance(rank, Bishop): return Catalog.BISHOP
-        if isinstance(rank, Rook): return Catalog.ROOK
-        if isinstance(rank, Queen): return Catalog.QUEEN
+        if isinstance(rank, King): return Persona.KING
+        if isinstance(rank, Pawn): return Persona.PAWN
+        if isinstance(rank, Knight): return Persona.KNIGHT
+        if isinstance(rank, Bishop): return Persona.BISHOP
+        if isinstance(rank, Rook): return Persona.ROOK
+        if isinstance(rank, Queen): return Persona.QUEEN
         return None
     
     @classmethod
     @LoggingLevelRouter.monitor
     def lookup(
             cls,
-            context: CatalogContext,
+            context: PersonaSuperKey,
             context_validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator()
-    ) -> SearchResult[List[Catalog]]:
+    ) -> SearchResult[List[Persona]]:
         """
         # Action:
         1.  Certify the provided map with the class method's validator param.
@@ -129,7 +128,7 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             the configuration entries which matched the map.
 
         # Parameters:
-            *   map: CatalogContext
+            *   map: PersonaSuperKey
             *   context_validator: PersonaSuperKeyValidator
 
         # Returns:
@@ -139,10 +138,10 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   CatalogLookupException
-            *   CatalogLookupException
+            *   PersonaLookupException
+            *   PersonaLookupException
         """
-        method = "CatalogLookup.find"
+        method = "PersonaLookup.find"
         try:
             # certify the map is safe.
             validation = context_validator.validate(candidate=context)
@@ -167,16 +166,16 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             return SearchResult.failure(
                 UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a CatalogLookupException then,
+        # Finally, if some exception is not handled by the checks wrap it inside a PersonaLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                CatalogLookupException(ex=ex, message=f"{method}: {CatalogLookupException.DEFAULT_MESSAGE}")
+                PersonaLookupException(ex=ex, message=f"{method}: {PersonaLookupException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_name(cls, name: str) -> SearchResult[List[Catalog]]:
+    def _lookup_by_name(cls, name: str) -> SearchResult[List[Persona]]:
         """
         # Action:
         1.  Get any Persona which matches the target name.
@@ -191,29 +190,29 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   CatalogDesignationBoundsException
-            *   CatalogLookupException
+            *   PersonaDesignationBoundsException
+            *   PersonaLookupException
         """
-        method = "CatalogLookup._lookup_by_name"
+        method = "PersonaLookup._lookup_by_name"
         try:
-            matches = [catalog for catalog in Catalog if catalog.name.upper() == name.upper()]
+            matches = [persona for persona in Persona if persona.name.upper() == name.upper()]
             # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no catalog has that designation.
+            # If a match is not found return an exception. It's important to know if no persona has that designation.
             return SearchResult.failure(
-                CatalogNameBoundsException(f"{method}: {CatalogNameBoundsException.DEFAULT_MESSAGE}")
+                PersonaNameBoundsException(f"{method}: {PersonaNameBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a CatalogLookupException then,
+        # Finally, if some exception is not handled by the checks wrap it inside a PersonaLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                CatalogLookupException(ex=ex, message=f"{method}: {CatalogLookupException.DEFAULT_MESSAGE}")
+                PersonaLookupException(ex=ex, message=f"{method}: {PersonaLookupException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_designation(cls, designation: str) -> SearchResult[List[Catalog]]:
+    def _lookup_by_designation(cls, designation: str) -> SearchResult[List[Persona]]:
         """
         # Action:
         1.  Get any Persona which matches the target designation.
@@ -228,32 +227,32 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   CatalogDesignationBoundsException
-            *   CatalogLookupException
+            *   PersonaDesignationBoundsException
+            *   PersonaLookupException
         """
-        method = "CatalogLookup._lookup_by_designation"
+        method = "PersonaLookup._lookup_by_designation"
         try:
-            matches = [catalog for catalog in Catalog if catalog.designation.upper() == designation.upper()]
+            matches = [persona for persona in Persona if persona.designation.upper() == designation.upper()]
             # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no catalog has that designation.
+            # If a match is not found return an exception. It's important to know if no persona has that designation.
             return SearchResult.failure(
-                CatalogDesignationBoundsException(f"{method}: {CatalogDesignationBoundsException.DEFAULT_MESSAGE}")
+                PersonaDesignationBoundsException(f"{method}: {PersonaDesignationBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a CatalogLookupException then,
+        # Finally, if some exception is not handled by the checks wrap it inside a PersonaLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                CatalogLookupException(ex=ex, message=f"{method}: {CatalogLookupException.DEFAULT_MESSAGE}")
+                PersonaLookupException(ex=ex, message=f"{method}: {PersonaLookupException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_quota(cls, quota: int) -> SearchResult[List[Catalog]]:
+    def _lookup_by_quota(cls, quota: int) -> SearchResult[List[Persona]]:
         """
         # Action:
-        1.  Get anyCatalog which matches the ransom's name.
+        1.  Get anyPersona which matches the ransom's name.
 
         # Parameters:
             *   quota (int)
@@ -265,29 +264,29 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   CatalogRansomBoundsException
-            *   CatalogLookupException
+            *   PersonaRansomBoundsException
+            *   PersonaLookupException
         """
-        method = "CatalogLookup._lookup_by_quota"
+        method = "PersonaLookup._lookup_by_quota"
         try:
-            matches = [catalog for catalog in Catalog if catalog.quota == quota]
+            matches = [persona for persona in Persona if persona.quota == quota]
             # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no catalog has that ransom.
+            # If a match is not found return an exception. It's important to know if no persona has that ransom.
             return SearchResult.failure(
-                CatalogQuotaBoundsException(f"{method}: {CatalogQuotaBoundsException.DEFAULT_MESSAGE}")
+                PersonaQuotaBoundsException(f"{method}: {PersonaQuotaBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a CatalogLookupException then,
+        # Finally, if some exception is not handled by the checks wrap it inside a PersonaLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                CatalogLookupException(ex=ex, message=f"{method}: {CatalogLookupException.DEFAULT_MESSAGE}")
+                PersonaLookupException(ex=ex, message=f"{method}: {PersonaLookupException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_ransom(cls, ransom: int) -> SearchResult[List[Catalog]]:
+    def _lookup_by_ransom(cls, ransom: int) -> SearchResult[List[Persona]]:
         """
         # Action:
         1.  Get any Persona which matches the target quota.
@@ -302,22 +301,22 @@ class CatalogLookup(ForwardLookup[CatalogContext]):
             - On no matches found: Exception null, payload null
 
         # Raises:
-            *   CatalogQuotaBoundsException
-            *   CatalogLookupException
+            *   PersonaQuotaBoundsException
+            *   PersonaLookupException
         """
-        method = "CatalogLookup._lookup_by_ransom"
+        method = "PersonaLookup._lookup_by_ransom"
         try:
-            matches = [catalog for catalog in Catalog if catalog.ransom == ransom]
+            matches = [persona for persona in Persona if persona.ransom == ransom]
             # This is the expected case.
             if len(matches) >= 1:
                 return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no catalog has that quota.
+            # If a match is not found return an exception. It's important to know if no persona has that quota.
             return SearchResult.failure(
-                CatalogRansomBoundsException(f"{method}: {CatalogRansomBoundsException.DEFAULT_MESSAGE}")
+                PersonaRansomBoundsException(f"{method}: {PersonaRansomBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a CatalogLookupException then,
+        # Finally, if some exception is not handled by the checks wrap it inside a PersonaLookupException then,
         # return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                CatalogLookupException(ex=ex, message=f"{method}: {CatalogLookupException.DEFAULT_MESSAGE}")
+                PersonaLookupException(ex=ex, message=f"{method}: {PersonaLookupException.DEFAULT_MESSAGE}")
             )

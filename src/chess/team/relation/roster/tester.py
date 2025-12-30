@@ -23,7 +23,7 @@ class RosterRelationTester(RelationTester[Team, Token]):
         completely bidirectional.
 
     # PARENT:
-        *   RelationTester
+        *   RelationAnalyzer
 
     # PROVIDES:
     None

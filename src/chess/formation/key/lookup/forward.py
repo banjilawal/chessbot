@@ -16,27 +16,25 @@ from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchRes
 
 class FormationLookup(ForwardLookup[Formation]):
     """
-    # ROLE: Forward Lookups, Mapping 
+     # ROLE: Forward Lookups
 
-    # RESPONSIBILITIES:
-    1.  Lookup microservice API for mapping metadata values to Formation configurations.
-    2.  Encapsulates integrity assurance logic for Formation lookup operations.
+     # RESPONSIBILITIES:
+     1.  Run forward lookups on the Formation hashtable to find a Team's play_directive_metadata for a game.
+     2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
+     3.  Verifies correctness of key-value key before running the forward lookup.
 
+     # PARENT:
+         *   ForwardLookup
 
-    # PARENT:
-        *   EntityLookup
+     # PROVIDES:
+     None
 
-    # PROVIDES:
-    None
+     # LOCAL ATTRIBUTES:
+     None
 
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
-        *   See ForwardLookup for inherited attributes.
-    """
-    SERVICE_NAME = "FormationLookupService"
-    
+     # INHERITED ATTRIBUTES:
+     None
+     """
     def forward(
             self,
             name: str = SERVICE_NAME,
@@ -70,7 +68,7 @@ class FormationLookup(ForwardLookup[Formation]):
     
     @property
     def allowed_names(self) -> List[str]:
-        """Returns a list of all permissible schema names in upper case."""
+        """Returns a list of all permissible formation names in upper case."""
         return [order.name.upper() for order in Formation]
     
     @property
@@ -99,17 +97,17 @@ class FormationLookup(ForwardLookup[Formation]):
         # Action:
             1.  Certify the provided key with the validator.
             2.  If the key validation fails return the exception in a validation result. Otherwise, return
-                the schema entries with the targeted key-values.
+                the formation entries with the targeted key-values.
         # Parameters:
-            *   key: SchemaSuperKey
-            *   key_validator: SchemaSuperKeyValidator
+            *   key: FormationSuperKey
+            *   key_validator: FormationSuperKeyValidator
         # Returns:
-            *   SearchResult[List[Schema]] containing either:
+            *   SearchResult[List[Formation]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Schema] in the payload.
+                    - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
         # Raises:
-            *   SchemaLookupFailedException
+            *   FormationLookupFailedException
         """
         method = "FormationLookup.find"
 
@@ -137,9 +135,9 @@ class FormationLookup(ForwardLookup[Formation]):
         
         # For other entry points return the exception chain.
         return SearchResult.failure(
-            SchemaLookupFailedException(
-                message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",
-                ex=SchemaLookupRouteException(f"{method}: {SchemaLookupRouteException.DEFAULT_MESSAGE}")
+            FormationLookupFailedException(
+                message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
+                ex=FormationLookupRouteException(f"{method}: {FormationLookupRouteException.DEFAULT_MESSAGE}")
             )
         )
     
@@ -148,17 +146,17 @@ class FormationLookup(ForwardLookup[Formation]):
     def _by_designation(cls, designation: str) -> SearchResult[List[Formation]]:
         """
         # Action:
-            1.  Get any Schema entry whose designation matches the target value.
+            1.  Get any Formation entry whose designation matches the target value.
         # Parameters:
             *   designation (str)
         # Returns:
-            *   SearchResult[List[Schema]] containing either:
+            *   SearchResult[List[Formation]] containing either:
                     - On error: Exception
-                    - On finding a match: List[Schema] in the payload.
+                    - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
         # Raises:
-            *   SchemaDesignationBoundsException
-            *   SchemaLookupFailedException
+            *   FormationDesignationBoundsException
+            *   FormationLookupFailedException
         """
         method = "FormationLookup._find_by_designation"
         matches = [order for order in Formation if order.designation.upper() == designation.upper()]
@@ -178,17 +176,17 @@ class FormationLookup(ForwardLookup[Formation]):
     def _by_square_name(cls, square_name: str) -> SearchResult[List[Formation]]:
         """
         # Action:
-            1.  Get any Schema entry whose designation matches the target value.
+            1.  Get any Formation entry whose designation matches the target value.
         # Parameters:
             *   square_name (str)
         # Returns:
-            *   SearchResult[List[Schema]] containing either:
+            *   SearchResult[List[Formation]] containing either:
                     - On error: Exception
-                    - On finding a match: List[Schema] in the payload.
+                    - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
         # Raises:
-            *   SchemaSquareNameBoundsException
-            *   SchemaLookupFailedException
+            *   FormationSquareNameBoundsException
+            *   FormationLookupFailedException
         """
         method = "FormationLookup._query_b_square_name"
         matches = [order for order in Formation if order.square_name.upper() == square_name.upper()]
@@ -208,17 +206,17 @@ class FormationLookup(ForwardLookup[Formation]):
     def _by_color(cls, color: GameColor) -> SearchResult[List[Formation]]:
         """
         # Action:
-            1.  Get any Schema entry whose designation matches the target value.
+            1.  Get any Formation entry whose designation matches the target value.
         # Parameters:
             *   color (GameColor)
         # Returns:
-            *   SearchResult[List[Schema]] containing either:
+            *   SearchResult[List[Formation]] containing either:
                     - On error: Exception
-                    - On finding a match: List[Schema] in the payload.
+                    - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
         # Raises:
-            *   SchemaColorBoundsException
-            *   SchemaLookupFailedException
+            *   FormationColorBoundsException
+            *   FormationLookupFailedException
         """
         method = "FormationLookup._by_color"
         matches = [order for order in Formation if order.color == color]

@@ -1,29 +1,29 @@
-# src/chess/catalog/service/exception.py
+# src/chess/persona/service/exception.py
 
 """
-Module: chess.catalog.service.exception
+Module: chess.persona.service.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# CATALOG_SERVICE EXCEPTION #======================#
-    "CatalogServiceException",
+    # ======================# PERSONA_SERVICE EXCEPTION #======================#
+    "PersonaServiceException",
 ]
 
-from chess.catalog import CatalogException
+from chess.persona import PersonaException
 from chess.system import ServiceException
 
 
-# ======================# CATALOG_SERVICE EXCEPTION #======================#
-class CatalogServiceException(CatalogException, ServiceException):
+# ======================# PERSONA_SERVICE EXCEPTION #======================#
+class PersonaServiceException(PersonaException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an CatalogService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a CatalogService method.
+    1.  Indicate that an PersonaService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a PersonaService method.
 
     # PARENT:
         *   ServiceException
@@ -38,5 +38,5 @@ class CatalogServiceException(CatalogException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CATALOG_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CatalogService raised an exception."
+    ERROR_CODE = "PERSONA_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "PersonaService raised an exception."

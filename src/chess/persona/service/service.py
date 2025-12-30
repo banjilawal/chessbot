@@ -1,7 +1,7 @@
-# src/chess/catalog/service/service.py
+# src/chess/persona/service/service.py
 
 """
-Module: chess.catalog.service.service
+Module: chess.persona.service.service
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -10,9 +10,9 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import EntityService, id_emitter
-from chess.catalog import CatalogContext, CatalogContextBuilder, PersonaSuperKeyValidator, CatalogLookup
+from chess.persona import PersonaSuperKey, PersonaSuperKeyBuilder, PersonaSuperKeyValidator, PersonaLookup
 
-class CatalogService(EntityService[CatalogContext]):
+class PersonaService(EntityService[PersonaSuperKey]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -35,15 +35,15 @@ class CatalogService(EntityService[CatalogContext]):
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.
     """
-    SERVICE_NAME = "CatalogService"
-    _lookup: CatalogLookup
+    SERVICE_NAME = "PersonaService"
+    _lookup: PersonaLookup
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            lookup: CatalogLookup = CatalogLookup(),
-            builder: CatalogContextBuilder = CatalogContextBuilder(),
+            lookup: PersonaLookup = PersonaLookup(),
+            builder: PersonaSuperKeyBuilder = PersonaSuperKeyBuilder(),
             validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator(),
     ):
         """
@@ -53,8 +53,8 @@ class CatalogService(EntityService[CatalogContext]):
         # Parameters:
             *   id (int)
             *   name (str)
-            *   lookup (CatalogLookup)
-            *   builder (CatalogContextBuilder)
+            *   lookup (PersonaLookup)
+            *   builder (PersonaSuperKeyBuilder)
             *   validator (PersonaSuperKeyValidator))
 
         # Returns:
@@ -67,14 +67,14 @@ class CatalogService(EntityService[CatalogContext]):
         self._lookup = lookup
         
     @property
-    def lookup(self) -> CatalogLookup:
-        """Gets CatalogLookup instance."""
+    def lookup(self) -> PersonaLookup:
+        """Gets PersonaLookup instance."""
         return self._lookup
     
     @property
-    def builder(self) -> CatalogContextBuilder:
-        """Gets CatalogContextBuilder instance."""
-        return cast(CatalogContextBuilder, self.entity_builder)
+    def builder(self) -> PersonaSuperKeyBuilder:
+        """Gets PersonaSuperKeyBuilder instance."""
+        return cast(PersonaSuperKeyBuilder, self.entity_builder)
     
     @property
     def validator(self) -> PersonaSuperKeyValidator:

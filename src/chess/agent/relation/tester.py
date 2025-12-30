@@ -26,7 +26,7 @@ class AgentTeamRelationTester(RelationTester[PlayerAgent, Team]):
     2.  If the testing was not completed send an exception chain to the caller.
 
     # PARENT:
-        *   RelationTester
+        *   RelationAnalyzer
 
     # PROVIDES:
     None

@@ -1,24 +1,24 @@
 ___all__ = [
-    # ======================# CATALOG_LOOKUP_SERVICE EXCEPTION #======================#
-    "CatalogLookupServiceException",
+    # ======================# PERSONA_LOOKUP_SERVICE EXCEPTION #======================#
+    "PersonaLookupServiceException",
 ]
 
 from chess.agent import AgentException
 from chess.system import ServiceException
 
 
-# ======================# CATALOG_LOOKUP_SERVICE EXCEPTION #======================#
-class CatalogLookupServiceException(CatalogLookupException, ServiceException):
+# ======================# PERSONA_LOOKUP_SERVICE EXCEPTION #======================#
+class PersonaLookupServiceException(PersonaLookupException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an CatalogLookupService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a CatalogLookupService method.
+    1.  Indicate that an PersonaLookupService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a PersonaLookupService method.
 
     # PARENT:
         *   ServiceException
-        *   CatalogLookupException
+        *   PersonaLookupException
 
     # PROVIDES:
     None
@@ -29,5 +29,5 @@ class CatalogLookupServiceException(CatalogLookupException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CATALOG_LOOKUP_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CatalogLookupService raised an exception."
+    ERROR_CODE = "PERSONA_LOOKUP_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "PersonaLookupService raised an exception."

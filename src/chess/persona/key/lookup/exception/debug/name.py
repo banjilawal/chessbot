@@ -1,23 +1,23 @@
-# src/chess/catalog/validator/exception/name.py
+# src/chess/persona/validator/exception/name.py
 
 """
-Module: chess.catalog.validator.exception.name
+Module: chess.persona.validator.exception.name
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.catalog import InvalidCatalogException
+from chess.persona import InvalidPersonaException
 from chess.system import BoundsException, NameException
 
 __all__ = [
-    # ======================# CATALOG NAME BOUNDS EXCEPTION #======================#
-    "CatalogNameBoundsException",
+    # ======================# PERSONA NAME BOUNDS EXCEPTION #======================#
+    "PersonaNameBoundsException",
 ]
 
 
-# ======================# CATALOG NAME BOUNDS EXCEPTION #======================#
-class CatalogNameBoundsException(InvalidCatalogException, BoundsException, NameException):
+# ======================# PERSONA NAME BOUNDS EXCEPTION #======================#
+class PersonaNameBoundsException(InvalidPersonaException, BoundsException, NameException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class CatalogNameBoundsException(InvalidCatalogException, BoundsException, NameE
     1.  Indicate an error occurred because a name is outside the range of acceptable Persona names.
 
     # PARENT:
-        *   InvalidCatalogException
+        *   InvalidPersonaException
         *   BoundsException
         *   NameException
 
@@ -38,5 +38,5 @@ class CatalogNameBoundsException(InvalidCatalogException, BoundsException, NameE
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CATALOG_NAME_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Name is not included in the set of permissible catalog names."
+    ERROR_CODE = "PERSONA_NAME_BOUNDS_ERROR"
+    DEFAULT_MESSAGE = "Name is not included in the set of permissible persona names."

@@ -9,10 +9,10 @@ S = TypeVar("S")
 
 
 
-class RelationTester(ABC, Generic[P, S]):
+class RelationAnalyzer(ABC, Generic[P, S]):
     
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def test(cls, candidate_primary: P, candidate_satellite: S) -> RelationReport[P, S]:
+    def analyze(cls, candidate_primary: P, candidate_satellite: S) -> RelationReport[P, S]:
         pass

@@ -22,7 +22,7 @@ class ZeroPersonaSuperKeysException(InvalidPersonaSuperKeyException, ContextFlag
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  no CatalogContext flag was enabled. One and only one Persona attribute-value tuple is required for
+    1.  Indicate That  no PersonaSuperKey flag was enabled. One and only one Persona attribute-value tuple is required for
         a search.
 
     # PARENT:
@@ -38,5 +38,5 @@ class ZeroPersonaSuperKeysException(InvalidPersonaSuperKeyException, ContextFlag
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_CATALOG_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "Zero CatalogContext flags were set. One and only one map flag must be enabled,"
+    ERROR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_ERROR"
+    DEFAULT_MESSAGE = "Zero PersonaSuperKey flags were set. One and only one map flag must be enabled,"

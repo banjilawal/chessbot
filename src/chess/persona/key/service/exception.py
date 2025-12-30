@@ -1,5 +1,5 @@
 ___all__ = [
-    # ======================# CATALOG_SUPER_KEY_SERVICE EXCEPTION #======================#
+    # ======================# PERSONA_SUPER_KEY_SERVICE EXCEPTION #======================#
     "AgentDataServiceException",
 ]
 
@@ -7,7 +7,7 @@ from chess.agent import AgentException
 from chess.system import ServiceException
 
 
-# ======================# CATALOG_SUPER_KEY_SERVICE EXCEPTION #======================#
+# ======================# PERSONA_SUPER_KEY_SERVICE EXCEPTION #======================#
 class AgentDataServiceException(AgentException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -29,7 +29,7 @@ class AgentDataServiceException(AgentException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CATALOG_SUPER_KEY_SERVICE_ERROR"
+    ERROR_CODE = "PERSONA_SUPER_KEY_SERVICE_ERROR"
     DEFAULT_MESSAGE = "AgentDataService raised an exception."
 
 

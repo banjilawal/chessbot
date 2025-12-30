@@ -1,7 +1,7 @@
-# src/chess/catalog/builder/builder.py
+# src/chess/persona/builder/builder.py
 
 """
-Module: chess.catalog.builder.builder
+Module: chess.persona.builder.builder
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.catalog import (
+from chess.persona import (
     PersonaSuperKey, PersonaSuperKeyBuildFailedException,
     ExcessivePersonaSuperKeyFlagsException, ZeroPersonaSuperKeyFlagsException
 )
@@ -86,7 +86,7 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
             params = [name, designation, quota, ransom]
             param_count = sum(bool(p) for p in params)
             
-            # Test if no params are set. Need an attribute-value pair to look up a rank's catalog_entry.
+            # Test if no params are set. Need an attribute-value pair to look up a rank's persona_entry.
             if param_count == 0:
                 return BuildResult.failure(
                     ZeroPersonaSuperKeyFlagsException(f"{method}: {ZeroPersonaSuperKeyFlagsException.DEFAULT_MESSAGE}")
