@@ -56,7 +56,7 @@ class FormationSuperKey(Context[Formation]):
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    Provide an BattleOrderFinder with an attribute value to find BattleOrders with a matching value in
+    Provide an attribute-value to find Formations with a matching value in
     their version of the attribute.
 
     # PARENT:
@@ -73,33 +73,30 @@ class FormationSuperKey(Context[Formation]):
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
     """
-    _square: Optional[str]
+    _square_name: Optional[str]
     _color: Optional[GameColor]
     
     def __init__(
             self,
-            square: Optional[str] = None,
+            square_name: Optional[str] = None,
             designation: Optional[str] = None,
             color: Optional[GameColor] = None,
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   square_name (Optional[str])
             *   designation (Optional[str])
             *   color (Optional[Color])
-
-        # Returns:
-        None
-
-        # Raises:
-        None
+        # RETURNS:
+            None
+        # RAISES:
+            None
         """
         super().__init__(id=None, name=None)
         self._color = color
-        self._square = square
+        self._square_name = square_name
         self._designation = designation
     
     @property
@@ -107,8 +104,8 @@ class FormationSuperKey(Context[Formation]):
         return self._color
     
     @property
-    def square(self) -> Optional[str]:
-        return self._square
+    def square_name(self) -> Optional[str]:
+        return self._square_name
     
     @property
     def designation(self) -> Optional[str]:
@@ -127,6 +124,6 @@ class FormationSuperKey(Context[Formation]):
         """
         return {
             "color": self._color,
-            "square_name": self._square,
+            "square_name": self._square_name,
             "designation": self._designation,
         }

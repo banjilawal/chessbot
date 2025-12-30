@@ -38,7 +38,11 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     None
     """
     @classmethod
-    def query(cls, super_key: SchemaSuperKey, super_key_validator: SchemaSuperKeyValidator) -> SearchResult[List[Schema]]:
+    def query(
+            cls,
+            super_key: SchemaSuperKey,
+            super_key_validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator()
+    ) -> SearchResult[List[Schema]]:
         """
         # Action:
             1.  Certify the provided key with the validator.
@@ -75,10 +79,10 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         if super_key.color is not None:
             return cls._lookup_by_color(color=super_key.color)
         
-        # The default result path is failure.
+        # For other entry points return the exception chain.
         return SearchResult.failure(
             SchemaLookupFailedException(
-                message=f"{method}: {SchemaLookupFailedException.ERROR_CODE} -> ",
+                message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",
                 ex=SchemaLookupRouteException(f"{method}: {SchemaLookupRouteException.DEFAULT_MESSAGE}")
             )
         )

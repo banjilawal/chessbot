@@ -12,7 +12,10 @@ from typing import Optional
 from chess.formation import FormationSuperKey
 from chess.formation.key.builder.exception.route import FormationSuperKeyBuildRouteException
 from chess.formation.key.builder.exception.wrapper import FormationSuperKeyBuildFailedException
-from chess.formation.key.validator.exception.debug.excess import ZeroFormationSuperKeysException
+from chess.formation.key.validator.exception.debug.excess import (
+    ExcessiveFormationSuperKeysException,
+    ZeroFormationSuperKeysException
+)
 from chess.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 
 
@@ -42,7 +45,6 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            designation: Optional[str] = None,
             square: Optional[str] = None,
             color: Optional[GameColor] = None,
             designation: Optional[str] = None,
@@ -102,8 +104,8 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             return BuildResult.failure(
                 FormationSuperKeyBuildFailedException(
                     message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",
-                    ex=ZeroFormationSuperKeysExceptionn(
-                        f"{method}: {ZeroFormationSuperKeysExceptionn.DEFAULT_MESSAGE}"
+                    ex=ZeroFormationSuperKeysException(
+                        f"{method}: {ZeroFormationSuperKeysException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -112,7 +114,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             return BuildResult.failure(
                 FormationSuperKeyBuildFailedException(
                     message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",
-                    ExcessiveFormationSuperKeyFlagsException(f"{method}: {ExcessiveFormationSuperKeyFlagsException}")
+                    ex=ExcessiveFormationSuperKeysException(f"{method}: {ExcessiveFormationSuperKeysException}")
                 )
             )
         # After verifying only one Formation attribute-value-tuple is enabled, validate it.

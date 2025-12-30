@@ -9,7 +9,8 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.formation import Formation
+from chess.formation import Formation, FormationSuperKey, FormationSuperKeyValidator
+from chess.formation.key.lookup.exception.wrapper import FormationLookupFailedException
 from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
 
 
@@ -40,216 +41,194 @@ class FormationLookup(ForwardLookup[Formation]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.lookup_id,
-            context_builder: FormationBuilder = FormationBuilder(),
-            enum_validator: BattleOrderValidator = BattleOrderValidator(),
-            context_validator: FormationValidator = FormationValidator(),
+            super_key_builder: FormationBuilder = FormationBuilder(),
+            enum_validator: FormationValidator = FormationValidator(),
+            super_key_validator: FormationValidator = FormationValidator(),
     ):
         super().forward(
             id=id, 
             name=name,
             enum_validator=enum_validator,
-            context_builder=context_builder, 
-            context_validator=context_validator
+            super_key_builder=super_key_builder, 
+            super_key_validator=super_key_validator
         )
     
     @property
-    def order_validator(self) -> BattleOrderValidator:
-        """Return an BattleOrderValidator."""
-        return cast(BattleOrderValidator, self.enum_validator)
-    
-    @property
-    def order_context_builder(self) -> FormationBuilder:
-        """Return an FormationBuilder."""
-        return cast(FormationBuilder, self.context_builder)
-    
-    @property
-    def order_context_validator(self) -> FormationValidator:
+    def order_validator(self) -> FormationValidator:
         """Return an FormationValidator."""
-        return cast(FormationValidator, self.context_validator)
+        return cast(FormationValidator, self.enum_validator)
+    
+    @property
+    def order_super_key_builder(self) -> FormationBuilder:
+        """Return an FormationBuilder."""
+        return cast(FormationBuilder, self.super_key_builder)
+    
+    @property
+    def order_super_key_validator(self) -> FormationValidator:
+        """Return an FormationValidator."""
+        return cast(FormationValidator, self.super_key_validator)
     
     @property
     def allowed_names(self) -> List[str]:
         """Returns a list of all permissible schema names in upper case."""
-        return [order.name.upper() for order in BattleOrder]
+        return [order.name.upper() for order in Formation]
     
     @property
     def allowed_colors(self) -> List[GameColor]:
         """Returns a list of all permissible order colors."""
-        return [member.color for member in BattleOrder]
+        return [member.color for member in Formation]
     
     @property
     def allowed_designations(self) -> List[str]:
         """Returns a list of all permissible order designations in upper case."""
-        return [member.designation.upper() for member in BattleOrder]
+        return [member.designation.upper() for member in Formation]
     
     @property
     def allowed_squares(self) -> List[str]:
         """Returns the names of squares Pieces make their opening move from."""
-        return [member.square.upper() for member in BattleOrder]
+        return [member.square.upper() for member in Formation]
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def lookup(
+    def query(
             cls, 
-            context: Formation, 
-            context_validator: FormationValidator = FormationValidator()
-    ) -> SearchResult[List[BattleOrder]]:
+            super_key: FormationSuperKey, 
+            super_key_validator: FormationSuperKeyValidator = FormationSuperKeyValidator()
+    ) -> SearchResult[List[Formation]]:
         """
         # Action:
-        1.  Certify the provided map with the class method's validator param.
-        2.  If the map validation fails return the exception in a validation result. Otherwise, return
-            the configuration entries which matched the map.
-
+            1.  Certify the provided key with the validator.
+            2.  If the key validation fails return the exception in a validation result. Otherwise, return
+                the schema entries with the targeted key-values.
         # Parameters:
-            *   map: Formation
-            *   context_validator: FormationValidator
-
+            *   key: SchemaSuperKey
+            *   key_validator: SchemaSuperKeyValidator
         # Returns:
-        SearchResult[List[Formation]] containing either:
-            - On finding a match: List[Formation] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
+            *   SearchResult[List[Schema]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Schema] in the payload.
+                    - On no matches found: Exception null, payload null
         # Raises:
-            *   FormationLookupFailedException
-            *   FormationLookupException
+            *   SchemaLookupFailedException
         """
         method = "FormationLookup.find"
-        try:
-            # certify the map is safe.
-            validation = context_validator.validate(candidate=context)
-            if validation.is_failure:
-                return SearchResult.failure(validation.exception)
-            # After map is verified select the search method based on the which flag is enabled.
-            
-            # Entry point into searching by designation value.
-            if context.designation is not None:
-                return cls._lookup_by_designation(designation=context.designation)
-            # Entry point into searching by square_name value.
-            if context.square is not None:
-                return cls._lookup_by_square(square=context.square)
-            # Entry point into searching by color value.
-            if context.color is not None:
-                return cls._lookup_by_color(color=context.color)
+
+        # Handle the case that the SuperKey fails validation.
+        validation = super_key_validator.validate(candidate=super_key)
+        if validation.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                FormationLookupFailedException(
+                    message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
+                    ex=validation.exception
+                )
+            )
+        # After verification use the hash key to route to the appropriate lookup method.
         
-            # Failsafe if any map cases was missed
-            return SearchResult.failure(
-                OrderLookupFailedException(f"{method}: {OrderLookupFailedException.DEFAULT_MESSAGE}")
+        # Entry point into forward lookups by designation.
+        if super_key.designation is not None:
+            return cls._by_designation(designation=super_key.designation)
+        # Entry point into forward lookups by square_name.
+        if super_key.square_name is not None:
+            return cls._by_square_name(square=super_key.square_name)
+        # Entry point into forward lookups by scolor.
+        if super_key.color is not None:
+            return cls._by_color(color=super_key.color)
+        
+        # For other entry points return the exception chain.
+        return SearchResult.failure(
+            SchemaLookupFailedException(
+                message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",
+                ex=SchemaLookupRouteException(f"{method}: {SchemaLookupRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
-        # return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                FormationLookupException(ex=ex, message=f"{method}: {FormationLookupException.DEFAULT_MESSAGE}")
-            )
+        )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_designation(cls, designation: str) -> SearchResult[List[BattleOrder]]:
+    def _by_designation(cls, designation: str) -> SearchResult[List[Formation]]:
         """
         # Action:
-        1.  Get any Formation which matches the target designation.
-
+            1.  Get any Schema entry whose designation matches the target value.
         # Parameters:
-            *   name (str)
-
+            *   designation (str)
         # Returns:
-        SearchResult[List[Formation]] containing either:
-            - On finding a match: List[Formation] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
+            *   SearchResult[List[Schema]] containing either:
+                    - On error: Exception
+                    - On finding a match: List[Schema] in the payload.
+                    - On no matches found: Exception null, payload null
         # Raises:
-            *   OrderDesignationBoundsException
-            *   FormationLookupFailedException
+            *   SchemaDesignationBoundsException
+            *   SchemaLookupFailedException
         """
         method = "FormationLookup._find_by_designation"
-        try:
-            matches = [order for order in BattleOrder if order.designation.upper() == designation.upper()]
-            # This is the expected case.
-            if len(matches) >= 1:
-                return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no order has that designation.
-            return SearchResult.failure(
-                FormationLookupByColorException(f"{method}: {DesignationBoundsException.DEFAULT_MESSAGE}")
+        matches = [order for order in Formation if order.designation.upper() == designation.upper()]
+        # Finding at least one match is success.
+        if len(matches) >= 1:
+            return SearchResult.success(matches)
+        # Any other case is a failure.
+        return SearchResult.failure(
+            FormationLookupFailedException(
+                message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
+                ex=FormationDesignationBoundsException(f"{method}: {FormationDesignationBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
-        # return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                FormationLookupException(ex=ex, message=f"{method}: {FormationLookupException.DEFAULT_MESSAGE}")
-            )
+        )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_square(cls, name: str) -> SearchResult[List[BattleOrder]]:
+    def _by_square_name(cls, square_name: str) -> SearchResult[List[Formation]]:
         """
         # Action:
-        1.  Get anyBattleOrder which matches the square_name's name.
-
+            1.  Get any Schema entry whose designation matches the target value.
         # Parameters:
-            *   name (str)
-
+            *   square_name (str)
         # Returns:
-        SearchResult[List[Formation]] containing either:
-            - On finding a match: List[Formation] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
+            *   SearchResult[List[Schema]] containing either:
+                    - On error: Exception
+                    - On finding a match: List[Schema] in the payload.
+                    - On no matches found: Exception null, payload null
         # Raises:
-            *   FormationLookupBySquareException
-            *   FormationLookupFailedException
+            *   SchemaSquareNameBoundsException
+            *   SchemaLookupFailedException
         """
-        method = "FormationLookup._find_by_square"
-        try:
-            matches = [order for order in BattleOrder if order.square.upper() == name.upper()]
-            # This is the expected case.
-            if len(matches) >= 1:
-                return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no order has that square_name.
-            return SearchResult.failure(
-                FormationLookupByColorException(f"{method}: {FormationLookupBySquareException.DEFAULT_MESSAGE}")
+        method = "FormationLookup._query_b_square_name"
+        matches = [order for order in Formation if order.square_name.upper() == square_name.upper()]
+        # Finding at least one match is success.
+        if len(matches) >= 1:
+            return SearchResult.success(matches)
+            # Any other case is a failure.
+        return SearchResult.failure(
+            FormationLookupFailedException(
+                message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
+                ex=FormationSquareNameBoundsException(f"{method}: {FormationSquareNameBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
-        # return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                FormationLookupException(ex=ex, message=f"{method}: {FormationLookupException.DEFAULT_MESSAGE}")
-            )
+        )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_color(cls, color: GameColor) -> SearchResult[List[BattleOrder]]:
+    def _by_color(cls, color: GameColor) -> SearchResult[List[Formation]]:
         """
         # Action:
-        1.  Get any Formation which matches the target color.
-
+            1.  Get any Schema entry whose designation matches the target value.
         # Parameters:
-            *   color (BattleOrderColor)
-
+            *   color (GameColor)
         # Returns:
-        SearchResult[List[Formation]] containing either:
-            - On finding a match: List[Formation] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
+            *   SearchResult[List[Schema]] containing either:
+                    - On error: Exception
+                    - On finding a match: List[Schema] in the payload.
+                    - On no matches found: Exception null, payload null
         # Raises:
-            *   FormationLookupByColorException
-            *   FormationLookupFailedException
+            *   SchemaColorBoundsException
+            *   SchemaLookupFailedException
         """
-        method = "FormationLookup._find_by_color"
-        try:
-            matches = [order for order in BattleOrder if order.color == color]
-            # This is the expected case.
-            if len(matches) >= 1:
-                return SearchResult.success(matches)
-            # If a match is not found return an exception. It's important to know if no order has that color.
-            return SearchResult.failure(
-                FormationLookupByColorException(f"{method}: {FormationLookupByColorException.DEFAULT_MESSAGE}")
+        method = "FormationLookup._by_color"
+        matches = [order for order in Formation if order.color == color]
+        # Finding at least one match is success.
+        if len(matches) >= 1:
+            return SearchResult.success(matches)
+            # Any other case is a failure.
+        return SearchResult.failure(
+            FormationLookupFailedException(
+                message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
+                ex=FormationColorBoundsException(f"{method}: {FormationColorBoundsException.DEFAULT_MESSAGE}")
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a FormationLookupException then,
-        # return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                FormationLookupException(ex=ex, message=f"{method}: {FormationLookupException.DEFAULT_MESSAGE}")
-            )
+        )
