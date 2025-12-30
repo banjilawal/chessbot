@@ -9,12 +9,12 @@ version: 1.0.0
 
 from typing import Optional
 
+from chess.schema.key.builder.exception import SchemaSuperKeyBuildFailedException, SchemaSuperKeyBuildRouteException
 from chess.system import (
     BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
-    SchemaSuperKeyBuildRouteException, ZeroSchemaSuperKeysException, SchemaSuperKey, ExcessiveSchemaSuperKeysException,
-    SchemaSuperKeyBuildFailedException
+    ZeroSchemaSuperKeysException, SchemaSuperKey, ExcessiveSchemaSuperKeysException,
 )
 
 

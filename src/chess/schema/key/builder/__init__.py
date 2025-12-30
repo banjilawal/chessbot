@@ -14,5 +14,3 @@ None
 
 # Modules
 from .builder import SchemaSuperKeyBuilder
-from .route import SchemaSuperKeyBuildRouteException
-from .wrapper import SchemaSuperKeyBuildFailedException
