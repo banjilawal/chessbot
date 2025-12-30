@@ -50,21 +50,7 @@ class FormationLookup(ForwardLookup[Formation]):
             super_key_builder=super_key_builder, 
             super_key_validator=super_key_validator
         )
-    
-    @property
-    def order_validator(self) -> FormationValidator:
-        """Return an FormationValidator."""
-        return cast(FormationValidator, self.enum_validator)
-    
-    @property
-    def order_super_key_builder(self) -> FormationBuilder:
-        """Return an FormationBuilder."""
-        return cast(FormationBuilder, self.super_key_builder)
-    
-    @property
-    def order_super_key_validator(self) -> FormationValidator:
-        """Return an FormationValidator."""
-        return cast(FormationValidator, self.super_key_validator)
+
     
     @property
     def allowed_names(self) -> List[str]:
