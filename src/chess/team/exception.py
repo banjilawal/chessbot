@@ -1,12 +1,19 @@
+# src/chess/team/exception.py
 
-from chess.system import (
-  ChessException, TeamColorException, NameException, RollbackException
-)
+"""
+Module: chess.team.exception
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
 
 __all__ = [
   # ======================# TEAM EXCEPTION #======================#
   "TeamException",
 ]
+
+from chess.system import ChessException
 
 
 # ======================# TEAM EXCEPTION #======================#

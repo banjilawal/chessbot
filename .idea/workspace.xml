@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/key.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/key.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/persona.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/persona.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/formation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/formation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,11 +305,11 @@
       <recent name="$PROJECT_DIR$/src/chess/schema/service" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/schema/key/validator/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/team/service" />
       <recent name="$PROJECT_DIR$/src/chess/team/builder/exception" />
       <recent name="$PROJECT_DIR$/src/chess/arena/relation" />
       <recent name="$PROJECT_DIR$/src/chess/arena/relation/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/system/relation" />
     </key>
   </component>
   <component name="RunManager" selected="Python.finder">

@@ -1,13 +1,13 @@
-# src/chess/Token/service/exception.__init__.py
+# src/chess/token/service/exception.__init__.py
 
 """
-Module: chess.Token.service.exception.__init__
+Module: chess.token.service.exception.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== Token.SERVICE PACKAGE CONTENTS ===========#
+#=========== TOKEN.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
 None

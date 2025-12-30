@@ -1,4 +1,4 @@
-# src/chess/Token/service/service.py
+# src/chess/token/service/service.py
 
 """
 Module: chess.token.service.service

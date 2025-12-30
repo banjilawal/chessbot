@@ -1,13 +1,13 @@
-# src/chess/Token/validator/exception/__init__.py
+# src/chess/token/validator/exception/__init__.py
 
 """
-Module: chess.Token.validator.exception.__init__
+Module: chess.token.validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
 """
 
-#=========== Token.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+#=========== TOKEN.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .active import *

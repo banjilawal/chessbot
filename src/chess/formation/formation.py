@@ -12,45 +12,6 @@ from enum import Enum
 from chess.persona import Persona
 from chess.system import GameColor
 
-"""
-# ROLE: Build Configuration Table, Schema, Metadata Set
-
-# ABOUT THE SCHEMA:
-The Schema implements a hashtable which a Team gets metadata about its initial deployment on the Board
-and how it advances. The color assigned to the Team is the Schema table's key.
-
-## STRUCTURE OF THE SCHEMA HASHTABLE:
-    *   Key (str)
-    *   Value   (List{str: Any})
-
-### Schema Vale: List[{str: Any}] each tuple in the list represents {Schema.Entry.attribute: attribute_value}
-
-## WHO USES THE SCHEMA TABLE:
-    *   TeamBuilder uses a Schema.ELEMENT/ENTRY to create a Team object.
-    *   Team uses its schema attribute to direct Token objects in its roster the direction of their advance.
-    *   TeamFinder can use the hashtable key to find Teams which match either the GameColor
-    *   Other EntityFinder classes can use the Team.schema attribute to filter by their entity.team.schema attribute.
-
-# RESPONSIBILITIES:
-1.  Provides table of metadata used for building Team objects.
-
-# PARENT:
-    *   Enum
-
-# PROVIDES:
-None
-
-# LOCAL ATTRIBUTES:
-    *   color (GameColor)
-    *   rank_row (int)
-    *   pawn_row (int)
-    *   advancing_step (Scalar)
-    *   home_quadrant (Quadrant)
-
-# INHERITED ATTRIBUTES:
-    * name (str) -->  Name give to each Enum entry.
-"""
-
 class Formation(Enum):
     """
     # ROLE: Build Configuration Table, Schema, Metadata Set
