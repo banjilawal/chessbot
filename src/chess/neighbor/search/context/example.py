@@ -147,11 +147,11 @@ instances from external sources, deserialization, or after modifications.
 Args
   `candidate` (`DiscoverySearchContext`): `DiscoverySearchContext` instance to validate
 
- Returns:
+ RETURNS:
   `Result`[`DiscoverySearchContext`]: A `Resul`candidate object containing the validated payload if the specification is satisfied,
   `InvalidDiscoverySearchContextException` otherwise.
 
-Raises:
+RAISES:
   `TypeError`: if `candidate` is not discoverySearchContext DiscoverySearchContext` object
   `NullDiscoverySearchContextException`: if `candidate` is validation
   `InvalidIdException`: if `visitor_id` fails validate checks

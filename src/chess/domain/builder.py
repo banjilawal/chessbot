@@ -45,20 +45,20 @@ class DomainBuilder(Builder[Domain]):
             domain_origin_builder: DomainOriginBuilder
     ) -> BuildResult[Domain]:
         """
-        # Action:
+        # ACTION:
         Construct a new Domain object after verifying its inputs will not cause an error.
         
-        # Parameters:
+        # PARAMETERS:
           * piece (Token): The domain owner
           * board (Board): Provides the Square of the Domain owner.
           * domain_origin_builder (DomainOriginBuilder): Creates the DomainOwner object.
 
-        # Returns:
+        # RETURNS:
           BuildResult[Domain] containing either:
                 - On success: Square in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * TypeError
             * NullDomainException
             * DomainNullSquaresListException

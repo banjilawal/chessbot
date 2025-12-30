@@ -44,20 +44,20 @@ class ContextService(EntityService[Context[T]]):
             finder: Finder[T],
     ):
         """
-        # Action:
+        # ACTION:
             1.  Constructor
 
-        # Parameters:
+        # PARAMETERS:
             *   name (str)
             *   id (int)
             *   finder (Finder[T])
             *   builder (Builder[Context[T]])
             *   validator (Validator[Context[T]])
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

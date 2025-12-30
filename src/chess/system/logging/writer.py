@@ -32,21 +32,21 @@ class LogWriter:
   @staticmethod
   def resolve_context_info(context: Any, function: Optional[Callable]=None) -> Dict[str, str]:
       """
-      Action:
+      ACTION:
         Derive `map` metadata for logging, including
           - file visitor_name
           - module visitor_name
           - class visitor_name
           - function visitor_name when its available
 
-      Parameters:
+      PARAMETERS:
         * `map (`Any`)`:
         * `function` (`Callable`):
 
-      Returns:
+      RETURNS:
         Dict
 
-      Raises:
+      RAISES:
         None
       """
       method = "LogWriter.resolve_context_info"
@@ -79,13 +79,13 @@ class LogWriter:
   @classmethod
   def get_logger_for_context(cls, context: Any) -> logging.Logger:
     """
-    Action:
+    ACTION:
       Create and return a logger named for either the class, instance, module,
-    Parameters:
+    PARAMETERS:
         * `map` `Any`: The item to get a logger for.
-    Returns:
+    RETURNS:
         `loging.Logger`
-    Raises:
+    RAISES:
       No errors
     """
 
@@ -112,14 +112,14 @@ class LogWriter:
   @classmethod
   def log_info(cls, context: Any, message: str) -> None:
     """
-    Action:
+    ACTION:
       Log informational messages for the map
-    Parameters:
+    PARAMETERS:
         * `map` `Any`: The item to write into the info log.
         * `message` `str`: Information about the map
-    Returns:
+    RETURNS:
         `void`
-    Raises:
+    RAISES:
       No errors
     """
 
@@ -131,14 +131,14 @@ class LogWriter:
   @classmethod
   def log_error(cls, context: Any, exception: Exception,  function: Optional[Callable]=None) -> None:
     """
-    Action:
+    ACTION:
     Write error to the logger for the class, instance or module.
-    Parameters:
+    PARAMETERS:
       * `map` `Any`: The item to write into the error log.
       * `message` `str`: The message to log.
-    Returns:
+    RETURNS:
       `void`
-    Raises:
+    RAISES:
       No errors
     """
 

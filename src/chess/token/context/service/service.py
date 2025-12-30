@@ -44,20 +44,20 @@ class PieceContextService(ContextService[PieceContext]):
             validator:PieceContextValidator =PieceContextValidator(),
     ):
         """
-        # Action:
+        # ACTION:
         Constructor
 
-        # Parameters:
+        # PARAMETERS:
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (PieceFinder): Default value -PieceFinder()
             *   builder (PieceContextBuilder): Default value -PieceContextBuilder()
             *   validator (PieceContextValidator): Default value -PieceContextValidator()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "PieceContextService.__init__"

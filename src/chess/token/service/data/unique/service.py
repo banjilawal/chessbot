@@ -64,12 +64,12 @@ class UniquePieceDataService(UniqueDataService[Piece]):
         # PARAMETERS:
             *   item (Team)
 
-        # Returns:
+        # RETURNS:
         InsertionResult[TTeam] containing either:
             - On success: Team in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   TeamDataServiceException
         """
         method = "UniquePieceDataService.push_unique"

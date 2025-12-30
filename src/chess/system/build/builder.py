@@ -54,7 +54,7 @@ class Builder(ABC, Generic[T]):
         # PARAMETERS:
             * args: Parameters for constructing V.
 
-        # Returns:
+        # RETURNS:
         BuildResult[V] containing either:
             - On success: V in the payload.
             - On failure: Exception.

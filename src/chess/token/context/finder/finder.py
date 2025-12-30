@@ -46,23 +46,23 @@ class PieceFinder(DataFinder[Piece]):
             context_validator: PieceContextValidator = PieceContextValidator()
     ) -> SearchResult[List[Piece]]:
         """
-        # Action:
+        # ACTION:
         1.  Verify the dataset is not null and contains only Token objects,
         2.  Use context_validator to certify the provided map.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
-        # Parameters:
+        # PARAMETERS:
             *   dataset (List[Token]):
             *   map: PieceContext
             *   context_validator: PieceContextValidator
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   TypeError
             *   PieceNullDatasetException
             *   PieceFinderException
@@ -112,21 +112,21 @@ class PieceFinder(DataFinder[Piece]):
     @LoggingLevelRouter.monitor
     def _find_by_id(cls, dataset: List[Piece], id: int) -> SearchResult[List[Piece]]:
         """
-        # Action:
+        # ACTION:
         1.  Get the Token with the desired id.
         2.  An id search should produce either no hits or one hit only.
         3.  Multiple unique pieces in the result indicate that  a problem.
 
-        # Parameters:
+        # PARAMETERS:
             *   id (int)
             *   dataset (List[Token])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   PieceFinderException
         """
         method = "PieceFinder._find_by_id"
@@ -151,21 +151,21 @@ class PieceFinder(DataFinder[Piece]):
     @LoggingLevelRouter.monitor
     def _find_by_name(cls, dataset: List[Piece], name: str) -> SearchResult[List[Piece]]:
         """
-        # Action:
+        # ACTION:
         1.  Get the Token with the desired designation.
         2.  A designation search should produce either no hits or one hit only.
         3.  Multiple unique pieces in the result indicate that  a problem.
 
-        # Parameters:
+        # PARAMETERS:
             *   name (str)
             *   dataset (List[Token])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   PieceFinderException
         """
         method = "PieceFinder._find_by_name"
@@ -190,19 +190,19 @@ class PieceFinder(DataFinder[Piece]):
     @LoggingLevelRouter.monitor
     def _find_by_team(cls, dataset: List[Piece], team: Team) -> SearchResult[List[Piece]]:
         """
-        # Action:
+        # ACTION:
         1.  Get Pieces on the desired team.
 
-        # Parameters:
+        # PARAMETERS:
             *   team (Team)
             *   dataset (List[Token])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   PieceFinderException
         """
         method = "PieceFinder._find_by_team"
@@ -226,19 +226,19 @@ class PieceFinder(DataFinder[Piece]):
     @LoggingLevelRouter.monitor
     def _find_by_rank(cls, dataset: List[Piece], rank: Rank) -> SearchResult[List[Piece]]:
         """
-        # Action:
+        # ACTION:
         1.  Get Pieces of the desired rank.
 
-        # Parameters:
+        # PARAMETERS:
             *   rank (Rank)
             *   dataset (List[Token])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   PieceFinderException
         """
         method = "PieceFinder._find_by_rank"
@@ -260,19 +260,19 @@ class PieceFinder(DataFinder[Piece]):
     @LoggingLevelRouter.monitor
     def _find_by_ransom(cls, dataset: List[Piece], ransom: int) -> SearchResult[List[Piece]]:
         """
-        # Action:
+        # ACTION:
         1.  Get Pieces with the desired ransom.
 
-        # Parameters:
+        # PARAMETERS:
             *   ransom (int)
             *   dataset (List[Token])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Token]] containing either:
             - On success: List[piece] in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   PieceFinderException
         """
         method = "PieceFinder._find_by_rank"

@@ -27,12 +27,12 @@ class DataFinder(Finder[T]):
             context_validator: Validator[Context[T]]
     ) -> SearchResult[List[T]]:
         """
-        Action:
-        Parameters:
+        ACTION:
+        PARAMETERS:
             * dataset (List[D])
             * context (Context[D)
             * context_validator (Validator[Context[D])
-        Returns:
+        RETURNS:
             SearchResult[List[R]] or Void
         Raise:
           No exception. Subclasses raise exception.

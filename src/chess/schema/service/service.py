@@ -33,9 +33,9 @@ class SchemaService(HashService[Schema]):
             *   name (str)
             *   validator (SchemaValidator)
             *   super_key_service (SchemaSuperKeyService)
-        # Returns:
+        # RETURNS:
             None
-        # Raises:
+        # RAISES:
             None
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)

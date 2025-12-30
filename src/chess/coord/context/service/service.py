@@ -47,20 +47,20 @@ class CoordContextService(ContextService[CoordContext]):
             validator: CoordContextValidator = CoordContextValidator(),
     ):
         """
-        # Action:
+        # ACTION:
         Constructor
 
-        # Parameters:
+        # PARAMETERS:
             *   id (int)
             *   name (str)
             *   finder (CoordFinder)
             *   builder (CoordContextBuilder)
             *   validator (CoordContextValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "CoordContextService.__init__"

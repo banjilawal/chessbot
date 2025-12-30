@@ -41,23 +41,23 @@ class BoardContextValidator(Validator[BoardContext]):
             coord_validator: type[CoordValidator] = CoordValidator
     ) -> ValidationResult[BoardContext]:
         """
-        # Action:
+        # ACTION:
         Verifies candidate is a TeamSearchContext in two steps.
             1.  Test the candidate is a valid SearchBoardContext with a single searcher option switched on.
             2.  Test the value passed to TeamSearchContext passes its validation contract..
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any):                            Object to verify is a Board.
           * id_validator (type[IdValidator]):           Enforces safety requirements on id-searcher targets.
           * name_validator (type[NameValidator]):       Enforces safety requirements on designation-searcher targets.
           * validator (type[CoordValidator]):     Enforces safety requirements on designation-searcher targets.
           
-        # Returns:
+        # RETURNS:
           ValidationResult[TeamSearchContext] containing either:
                 - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
-        # Raises:
+        # RAISES:
             *   TypeError
             *   InvalidBoardSearchContextException
             *   NullBoardContextException
@@ -126,19 +126,19 @@ class BoardContextValidator(Validator[BoardContext]):
             id_validator: type[IdValidator] = IdValidator
     ) -> ValidationResult[BoardContext]:
         """
-        # Action:
+        # ACTION:
         Verify an id_candidate meets application TeamSearchContext safety requirements.
 
-        # Parameters:
+        # PARAMETERS:
             *   candidate (Any):                    Object to verify is an id.
             *   id_validator (type[IdValidator]):   Checks if candidate complies with safety contract.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[TeamSearchContext] containing either:
                 - On success:   TeamSearchContext in the payload.
                 - On failure:   Exception.
 
-        # Raises:
+        # RAISES:
             *   InvalidBoardSearchContextException
         """
         method = "BoardContextValidator.validate_id_search_option"
@@ -165,19 +165,19 @@ class BoardContextValidator(Validator[BoardContext]):
             name_validator: type[NameValidator] = NameValidator
     ) -> ValidationResult[BoardContext]:
         """
-        # Action:
+        # ACTION:
         Verify a name_candidate meets application TeamSearchContext safety requirements.
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is a designation.
           * name_validator (type[NameValidator]): Checks if candidate complies with safety contract.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[TeamSearchContext] containing either:
                 - On success: TeamSearchContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * InvalidBoardSearchContextException
         """
         method = "BoardContextValidator.validate_name_search_option"
@@ -205,19 +205,19 @@ class BoardContextValidator(Validator[BoardContext]):
             coord_validator: type[CoordValidator] = CoordValidator
     ) -> ValidationResult[BoardContext]:
         """
-        # Action:
+        # ACTION:
         Verify a coord_candidate meets application TeamSearchContext safety requirements.
 
-        # Parameters:
+        # PARAMETERS:
             *   candidate (Any):                        Object to verify is a target.
             *   name_validator (type[CoordValidator]):  Checks if candidate complies with safety contract.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[TeamSearchContext] containing either:
                 - On success:   TeamSearchContext in the payload.
                 - On failure:    Exception.
 
-        # Raises:
+        # RAISES:
             *   InvalidBoardSearchContextException
         """
         method = "BoardContextValidator.validate_coord_search_option"

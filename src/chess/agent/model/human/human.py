@@ -48,10 +48,10 @@ class HumanAgent(PlayerAgent):
             *   games (UniqueGameDataService)
             *   team_assignments (UniqueTeamDataService)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, games=games, team_assignments=team_assignments)

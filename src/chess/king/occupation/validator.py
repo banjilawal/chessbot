@@ -83,11 +83,11 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #   Argument:
 #     `candidate` (`KingCheckEvent`): `attackEvent `to validate
 #
-#    Returns:
+#    RETURNS:
 #      `Result[V]`: A `Result` object containing the validated payload if the specification is satisfied,
 #       `InvalidAttackEventException` otherwise.
 #
-#   Raises:
+#   RAISES:
 #     `TypeError`: if `candidate` is not OperationEvent
 #     `NullAttackEventException`: if `candidate` is validation
 #
@@ -333,13 +333,13 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     - `directive` (`OccupationDirective`): The `OccupationDirective` to be executed.
 #     - `actor_square` (`Square`): The `Square` occupied by `actor_candidate`.
 #
-#   Returns:
+#   RETURNS:
 #   `OccupationResult` containing:
 #     - On success: A new `OccupationDirective` with the updated squares and `owner`.
 #     - On failure: The original `OccupationDirective`or verifying any rollbacks succeeded and the err
 #       describing the failure.
 #
-#   Raises:
+#   RAISES:
 #   Errors raised will be about entity_service and state inconsistencies OccupationException: Wraps any errors including:
 #     -
 #

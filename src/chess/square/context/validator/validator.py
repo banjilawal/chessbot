@@ -63,7 +63,7 @@ class SquareContextValidator(Validator[SquareContext]):
             *   coord_service (CoordService)
             *   identity_service (IdentityService):
 
-        # Returns:
+        # RETURNS:
         ValidationResult[SquareContext] containing either:
             - On success:   SquareContext in the payload.
             - On failure:   Exception.

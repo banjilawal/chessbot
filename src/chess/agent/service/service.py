@@ -64,10 +64,10 @@ class AgentService(EntityService[PlayerAgent]):
             *   builder (AgentFactory)
             *   validator (AgentValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

@@ -68,10 +68,10 @@ class SchemaSuperKey(Context[Schema]):
             *   name (Optional[str])
             *   color (Optional[Color])
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=None, name=name)

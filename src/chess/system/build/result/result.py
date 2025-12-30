@@ -58,12 +58,12 @@ class BuildResult(Result[Generic[T]]):
         #
         
     """
-    Action:
-    Parameters:
+    ACTION:
+    PARAMETERS:
         * `param` (`DataType`):
-    Returns:
+    RETURNS:
         `DataType` or `Void`
-    Raises:
+    RAISES:
     MethodNameException wraps
         *
     """
@@ -72,7 +72,7 @@ class BuildResult(Result[Generic[T]]):
     Args:
       payload (Optional[V]): The payload of the notification, if successful.
       rollback_exception (Optional[Exception]): The error of the notification, if failed.
-    Raises:
+    RAISES:
       EmptyResultConstructorException: If neither payload nor error is provided.
       ResultPayloadConflictException: If both payload and error are provided.
     """

@@ -46,23 +46,23 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[PersonaSuperKey]:
         """
-        # Action:
+        # ACTION:
         1.  Confirm that only one in the (designation, quota, ransom) tuple is not null.
         2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fails return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an PersonaSuperKey are return in a ValidationResult.
 
-        # Parameters:
+        # PARAMETERS:
             *   candidate (Any)
             *   not_negative_validator (RansomValidator)
             *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[PersonaSuperKey] containing either:
             - On success: PersonaSuperKey in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   TypeError
             *   NullPersonaSuperKeyException
             *   ZeroPersonaFlagsException

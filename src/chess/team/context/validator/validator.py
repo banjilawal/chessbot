@@ -51,24 +51,24 @@ class TeamContextValidator(Validator[TeamContext]):
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> ValidationResult[TeamContext]:
         """
-        # Action:
+        # ACTION:
             1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to TeamContext instance context.
             2.  If one-and-only-one context attribute is not null return an exception in the ValidationResult.
             3.  If there is no certification route for the attribute return an exception in the ValidationResult.
             4.  If the certification route exists use the appropriate service or validator to send either an exception
                 chain the ValidationResult or the context.
-        # Parameters:
+        # PARAMETERS:
             *   candidate (Any)
             *   color_validator (ColorValidator)
             *   player_agent_service (AgentService)
             *   arena_service (ArenaService)
             *   identity_service (IdentityService)
-        # Returns:
+        # RETURNS:
             *   ValidationResult[TeamContext] containing either:
                     - On failure: Exception.
                     - On success: TeamContext in the payload.
-        # Raises:
+        # RAISES:
             *   TypeError
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException

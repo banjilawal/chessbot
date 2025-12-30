@@ -65,12 +65,12 @@ class IdValidator(Validator[int]):
             *   candidate (Any):
             *   not_negative_validator (NumberValidator)
     
-        # Returns:
+        # RETURNS:
         ValidationResult[int] containing either:
             - On success: int in the payload.
             - On failure: Exception.
     
-        # Raises:
+        # RAISES:
             *   NegativeIdException
             *   InvalidIdException
         """

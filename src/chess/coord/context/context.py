@@ -53,10 +53,10 @@ class CoordContext(Context[Coord]):
             *   coord (Optional[Coord])
             *   column (Optional[int])
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=None, name=None)
@@ -83,10 +83,10 @@ class CoordContext(Context[Coord]):
         # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
         dict
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "CoordContext.to_dict"

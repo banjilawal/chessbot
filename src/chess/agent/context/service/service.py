@@ -48,20 +48,20 @@ class AgentContextService(ContextService[AgentContext]):
             validator: AgentContextValidator = AgentContextValidator(),
     ):
         """
-        # Action:
+        # ACTION:
         Constructor
 
-        # Parameters:
+        # PARAMETERS:
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (AgentFinder): Default value - AgentFinder()
             *   builder (AgentContextBuilder): Default value - AgentContextBuilder()
             *   validator (AgentContextValidator): Default value - AgentContextValidator()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "AgentContextService.service"

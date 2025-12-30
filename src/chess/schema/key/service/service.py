@@ -52,9 +52,9 @@ class SchemaSuperKeyService(ContextService[SchemaSuperKey]):
             *   name (str)
             *   builder (SchemaSuperKeyBuilder)
             *   validator (SchemaSuperKeyValidator)
-        # Returns:
+        # RETURNS:
             None
-        # Raises:
+        # RAISES:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)

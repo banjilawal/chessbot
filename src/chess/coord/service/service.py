@@ -57,10 +57,10 @@ class CoordService(EntityService[Coord]):
             *   builder (CoordFactory)
             *   validator (CoordValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -83,24 +83,24 @@ class CoordService(EntityService[Coord]):
             number_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
     ) -> BuildResult[Coord]:
         """
-        # Action:
+        # ACTION:
         1.  Certify the vector argument with vector_service.
         2.  Certify the coord argument with the service's validator.
         3.  Get the new row and column using the expression
                     new_row, new_colum = coord.row + vector.y, coord.column + vector.x
         5.  Using the service's CoordBuilder instance create and return the new Coord.
 
-        # Parameters:
+        # PARAMETERS:
             *   coord(Coord)
             *   vector (Vector)
             *   vector_service (VectorService)
 
-        # Returns:
+        # RETURNS:
         BuildResult[Coord] containing either:
             - On success: Coord in the payload.
             - On failure: Exception.
 
-        Raises:
+        RAISES:
             *   CoordServiceException
         """
         method = "CoordService.add_vector_to_coord"
@@ -132,25 +132,25 @@ class CoordService(EntityService[Coord]):
             scalar_service: ScalarService = ScalarService(),
     ) -> BuildResult[Coord]:
         """
-        # Action:
+        # ACTION:
         1.  Certify the vector argument with vector_service.
         2.  Certify the coord argument with the service's validator.
         3.  Get the new row and column using the expression
                     new_row, new_colum = coord.row * scalar.value, coord.column + scalar.value
         5.  Using the service's CoordBuilder instance create and return the new Coord.
 
-        # Parameters:
+        # PARAMETERS:
             *   coord(Coord)
             *   scalar (Scalar)
             *   scalar_service (ScalarService)
             *   not_negative_validator (NotNegativeNumberValidator)
 
-        # Returns:
+        # RETURNS:
         BuildResult[Coord] containing either:
             - On success: Coord in the payload.
             - On failure: Exception.
 
-        Raises:
+        RAISES:
             *   CoordServiceException
         """
         method = "CoordService.multiply_coord_by_scalar"
@@ -182,22 +182,22 @@ class CoordService(EntityService[Coord]):
             vector_service: VectorService = VectorService()
     ) -> BuildResult[Coord]:
         """
-        # Action:
+        # ACTION:
         1.  vector_service runs integrity checks on param.
         2.  If any checks raise an exception return it in the BuildResult.
         3.  Run build_coord(row=y, column=y) to ensure the computed values produce a
             safe Coord instance.
 
-        # Parameters:
+        # PARAMETERS:
             *   vector (Vector)
             *   vector_service (VectorService)
 
-        # Returns:
+        # RETURNS:
         BuildResult[Coord] containing either:
             - On success: Coord in the payload.
             - On failure: Exception.
 
-        Raises:
+        RAISES:
             *   CoordServiceException
         """
         method = "CoordService.convert_vector_to_coord"

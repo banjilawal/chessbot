@@ -45,16 +45,16 @@ class Domain:
             origin: DomainOrigin,
     ):
         """
-        # Action:
+        # ACTION:
         Construct a Domain object.
 
-        # Parameters:
+        # PARAMETERS:
             * id (int)
             * origin (DomainOrigin)
-        # Returns:
+        # RETURNS:
         None
         
-        # Raises:
+        # RAISES:
         None
         """
         method = "Domain.__init__"

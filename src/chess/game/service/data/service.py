@@ -60,10 +60,10 @@ class GameDataService(DataService[Game]):
             *   service (GameService): = GameService()
             *   context_service (GameContextService): = GameContextService()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(

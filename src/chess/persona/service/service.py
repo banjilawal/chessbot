@@ -56,9 +56,9 @@ class PersonaService(HashService[Persona]):
             *   name (str)
             *   validator (PersonaValidator)
             *   super_key_service (PersonaSuperKeyService)
-        # Returns:
+        # RETURNS:
             None
-        # Raises:
+        # RAISES:
             None
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)

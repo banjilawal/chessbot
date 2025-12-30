@@ -25,16 +25,16 @@ class Scalar:
     
     def __init__(self, value: int):
         """
-        # Action:
+        # ACTION:
         Construct a Scalar
     
-        # Parameters:
+        # PARAMETERS:
             * value (int):
     
-        # Returns:
+        # RETURNS:
         None
     
-        # Raises:
+        # RAISES:
         None
         """
         method = "Scalar.__init__"

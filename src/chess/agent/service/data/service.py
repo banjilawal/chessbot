@@ -60,10 +60,10 @@ class AgentDataService(DataService[PlayerAgent]):
             *   service (AgentService): = AgentService()
             *   context_service (AgentContextService): = AgentContextService()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().service(

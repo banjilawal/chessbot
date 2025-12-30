@@ -56,10 +56,10 @@ class VectorService(EntityService[Vector]):
             *   builder (VectorBuilder)
             *   validator (VectorValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -83,24 +83,24 @@ class VectorService(EntityService[Vector]):
             scalar_service: ScalarService = ScalarService()
     ) -> BuildResult[Vector]:
         """
-        # Action:
+        # ACTION:
         1.  Certify the scalar argument with scalar_service.
         2.  Certify the vector argument with the service's validator.
         3.  Get the new x and y components using the expression
                     x, new_colum = vector.x * scalar.value, vector.y * scalar.value
         5.  Using the service's VectordBuilder instance create and return the new Vector.
 
-        # Parameters:
+        # PARAMETERS:
             *   vector(Vector)
             *   scalar (Scalar)
             *   scalar_service (ScalarService)
 
-        # Returns:
+        # RETURNS:
         BuildResult[Vector] containing either:
             - On success: Vector in the payload.
             - On failure: Exception.
 
-        Raises:
+        RAISES:
             *   VectorServiceException
         """
         method = "VectorService.multiply_vector_by_scalar"
@@ -132,22 +132,22 @@ class VectorService(EntityService[Vector]):
             coord_service: CoordService = CoordService(),
     ) -> BuildResult[Vector]:
         """
-        # Action:
+        # ACTION:
         1.  coord_service runs integrity checks on param.
         2.  If any checks raise an exception return it in the BuildResult.
         3.  Run build_coord(row=y, column=y) to ensure the computed values produce a
             safe Coord instance.
 
-        # Parameters:
+        # PARAMETERS:
             *   coord (Coord)
             *   coord_service (CoordService)
 
-        # Returns:
+        # RETURNS:
         BuildResult[Coord] containing either:
             - On success: Coord in the payload.
             - On failure: Exception.
 
-        Raises:
+        RAISES:
             *   VectorServiceException
         """
         method = "vectorService.convert_coord_to_vector"

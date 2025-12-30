@@ -48,23 +48,23 @@ class SnapshotFinder(Finder[Snapshot]):
             context_validator: SnapshotContextValidator = SnapshotContextValidator()
     ) -> SearchResult[List[Snapshot]]:
         """
-        # Action:
+        # ACTION:
         1.  Verify the dataset is not null and contains only Snapshot objects,
         2.  Use context_validator to certify the provided map.
         3.  Call the finder method which matches the attribute whose flag was raised.
         4.  If the logic does not account for an PlayerAgent attribute drop to the try-finally block.
 
-        # Parameters:
+        # PARAMETERS:
             *   dataset (GameTimeline):
             *   map: SnapshotContext
             *   context_validator: SnapshotContextValidator
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Snapshot]] containing either:
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # Raises:
+        # RAISES:
             *   TypeError
             *   NullGameTimelineException
             *   SnapshotFinderException
@@ -110,22 +110,22 @@ class SnapshotFinder(Finder[Snapshot]):
     @LoggingLevelRouter.monitor
     def _find_by_timestamp(cls, dataset: GameTimeline, timestamp: id) -> SearchResult[List[Snapshot]]:
         """
-        # Action:
+        # ACTION:
         1.  Get the agents whose id matched the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
         4.  If the finder returns multiple unique hits there is a problem.
 
-        # Parameters:
+        # PARAMETERS:
             *   id (int)
             *   dataset (List[Snapshot])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Snapshot]] containing either:
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # Raises:
+        # RAISES:
             *   SnapshotFinderException
         """
         method = "SnapshotFinder._find_by_timestamp"
@@ -150,22 +150,22 @@ class SnapshotFinder(Finder[Snapshot]):
     @LoggingLevelRouter.monitor
     def _find_by_agent(cls, dataset: GameTimeline, agent: PlayerAgent) -> SearchResult[List[Snapshot]]:
         """
-        # Action:
+        # ACTION:
         1.  Get the agents whose agents are a case-insensitive. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
         4.  If the finder returns multiple hits call _resolve_matching_ids.
 
-        # Parameters:
+        # PARAMETERS:
             *   player_agent (PlayerAgent)
             *   dataset (GameTimeline)
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Snapshot]] containing either:
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # Raises:
+        # RAISES:
             *   SnapshotFinderException
         """
         method = "SnapshotFinder._find_by_team"
@@ -190,22 +190,22 @@ class SnapshotFinder(Finder[Snapshot]):
     @LoggingLevelRouter.monitor
     def _find_by_team(cls, dataset: GameTimeline, team: Team) -> SearchResult[List[Snapshot]]:
         """
-        # Action:
+        # ACTION:
         1.  Get the player_agent whose team is a match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
         4.  If multiple agents own the same target there is a problem.
 
-        # Parameters:
+        # PARAMETERS:
             *   team (Team)
             *   dataset (List[Snapshot])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Snapshot]] containing either:
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # Raises:
+        # RAISES:
             *   SnapshotFinderException
         """
         method = "SnapshotFinder._find_by_team"
@@ -230,22 +230,22 @@ class SnapshotFinder(Finder[Snapshot]):
     @LoggingLevelRouter.monitor
     def _find_by_exception(cls, dataset: GameTimeline, exception) -> SearchResult[[PlayerAgent]]:
         """
-        # Action:
+        # ACTION:
         1.  Get the agents whose agents are an agent_exception. match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
         4.  If the finder returns multiple hits call _resolve_matching_ids.
 
-        # Parameters:
+        # PARAMETERS:
             *   agent_exception (AgentException)
             *   dataset (List[Snapshot])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Snapshot]] containing either:
                 - On success:   List[snapshot] in the payload.
                 - On failure:   Exception.
 
-        # Raises:
+        # RAISES:
             *   SnapshotFinderException
         """
         method = "SnapshotFinder._find_by_agent"

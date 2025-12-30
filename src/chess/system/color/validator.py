@@ -50,7 +50,7 @@ class GameColorValidator(Validator[GameColor]):
         # PARAMETERS:
             *   candidate (Any): Object to validate.
 
-        # Returns:
+        # RETURNS:
         ValidationResult[GameColor] containing either:
             - On success: GameColor in the payload.
             - On failure: Exception.

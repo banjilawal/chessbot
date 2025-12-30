@@ -47,7 +47,7 @@ class Square:
             *   name (str)
             *   target (Coord)
         
-        # Returns:
+        # RETURNS:
         None
         
         # RAISES:

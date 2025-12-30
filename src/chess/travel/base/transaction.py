@@ -201,13 +201,13 @@ class TravelTransaction(Transaction[TravelEvent]):
   #     - `directive` (`OccupationDirective`): The `OccupationDirective` to be executed.
   #     - `actor_square` (`Square`): The `Square` occupied by `actor_candidate`.
   #
-  #   Returns:
+  #   RETURNS:
   #   `OccupationResult` containing:
   #     - On success: A new `OccupationDirective` with the updated squares and `owner`.
   #     - On failure: The original `OccupationDirective`or verifying any rollbacks succeeded and the err
   #       describing the failure.
   #
-  #   Raises:
+  #   RAISES:
   #   Errors raised will be about entity_service and state inconsistencies OccupationException: Wraps any errors including:
   #     -
   #
@@ -276,14 +276,14 @@ class TravelTransaction(Transaction[TravelEvent]):
   #     - `op_result_id` (`int`): The `visitor_id` of the `OperationResult` passed to the caller.
   #     - `directive` (`ScanDirective`): The `ScanDirective` to execute.
   #
-  #   Returns:
+  #   RETURNS:
   #   `OccupationResult` containing:
   #     - On success: A new `ScanDirective` object that containing updated `actor_candidate`. Observer will have
   #       team_name new `Checker` instance inside `actor_candidate.discoveries`.
   #     - On failure: The original `ScanDirective` for verifying any rollbacks succeeded and the err
   #       describing the failure.
   #
-  #   Raises:
+  #   RAISES:
   #   Errors raised will be about entity_service and state inconsistencies OccupationException: Wraps any errors including:
   #     -
   #   Note:

@@ -41,12 +41,12 @@ instances from external sources, deserialization, or after modifications.
 Args:
 candidate (Generic[V]): The object to validate, expected to be team_name Coord instance.
 
-Returns:
+RETURNS:
 Result[Coord]: A Result containing either:
   - On success: The validated Coord instance in the payload
   - On failure: Error information and error details
 
-Raises:
+RAISES:
 InvalidCoordException: Wraps any specification violations including:
   - NullCoordException: if input is None
   - TypeError: if input is not team_name Coord instance
@@ -124,12 +124,12 @@ Args:
   `row` (`int`):.
   `column` (int):
 
-Returns:
+RETURNS:
 BuildResult[Coord]: A `BuildResult` containing either:
   - On success: A valid `Coord` instance in the payload
   - On failure: Error information and error details
 
-Raises:
+RAISES:
 `CoordBuildFailedException`: Wraps any exception raised builder. These are:
   * `NullRowException`: if `row` is validation.
   * `NullColumnException`: if `column` is validation.

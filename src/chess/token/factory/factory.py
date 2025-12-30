@@ -75,12 +75,12 @@ class TokenFactory(Builder[Token]):
             *   positions (CoordDataService)
             *   identity_service (IdentityService)
     
-        # Returns:
+        # RETURNS:
         BuildResult[Position] containing either:
             - On success: Token in the payload.
             - On failure: Exception.
     
-        # Raises:
+        # RAISES:
             *   TokenBuildFailedException
         """
         method = "TokenFactory.builder"
@@ -139,12 +139,12 @@ class TokenFactory(Builder[Token]):
             *   name (str)
             *   team (Team)
 
-        # Returns:
+        # RETURNS:
         BuildResult[PawnToken] containing either:
             - On success: PawnToken in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   PawnTokenBuildFailedException
         """
         method = "TokenFactory.build_pawn_token"
@@ -197,12 +197,12 @@ class TokenFactory(Builder[Token]):
             *   name (str)
             *   team (Team)
 
-        # Returns:
+        # RETURNS:
         BuildResult[KingToken] containing either:
             - On success: PawnToken in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   KingTokenBuildFailedException
         """
         method = "TokenFactory.build_king_token"
@@ -255,12 +255,12 @@ class TokenFactory(Builder[Token]):
             *   name (str)
             *   team (Team)
 
-        # Returns:
+        # RETURNS:
         BuildResult[CombatantToken] containing either:
             - On success: CombatantToken in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   KingTokenBuildFailedException
         """
         method = "TokenFactory.build_combatant_token"

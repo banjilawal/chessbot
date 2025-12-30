@@ -47,20 +47,20 @@ class DomainValidator(Validator[Domain]):
             domain_origin_validator: type[DomainOriginValidator] = DomainOriginValidator,
     ) -> ValidationResult[Domain]:
         """
-        # Action:
+        # ACTION:
         Run checks verifying a candidate is a valid Domain object meeting the minimum requirements
         for use in the system.
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is a Domain.
           * domain_origin_validator (type[DomainOriginValidator]): verifies the DomainOrigin.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[Domain] containing either:
                 - On success: Square in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * TypeError
             * NullDomainException
             * DomainNullSquaresListException

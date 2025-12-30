@@ -60,12 +60,12 @@ class CheckEventBuilder(Enum):
       `enemy`(`Token`): The `Token` attackned by `actor_candidate`.
       `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
 
-    Returns:
+    RETURNS:
       BuildResult[KingCheckEvent]: A `BuildResult` containing either:
         - On success: A valid `KingCheckEvent` instance in the payload
         - On failure: Error information and error details
 
-    Raises:
+    RAISES:
       AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
       This includes:
         * `InvalidIdException`: if `attackEvent_id` fails validate checks

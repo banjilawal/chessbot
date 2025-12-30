@@ -47,20 +47,20 @@ class TeamContextService(ContextService[TeamContext]):
             validator: TeamContextValidator = TeamContextValidator(),
     ):
         """
-        # Action:
+        # ACTION:
         Constructor
 
-        # Parameters:
+        # PARAMETERS:
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (TeamFinder): Default value - TeamFinder()
             *   builder (TeamContextBuilder): Default value - TeamContextBuilder()
             *   validator (TeamContextValidator): Default value - TeamContextValidator()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "TeamContextService.__init__"

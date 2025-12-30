@@ -59,7 +59,7 @@ class SquareIterator:
     Args:
       `param` (`DataType`): <sentence_if_necessary>
 
-    Returns:
+    RETURNS:
 
     Raise:
     <`ClassException` wraps any exception raised. These are:
@@ -84,7 +84,7 @@ class SquareIterator:
     Args:
       `param` (`DataType`): <sentence_if_necessary>
 
-    Returns:
+    RETURNS:
 
     Raise:
     <`ClassException` wraps any exception raised. These are:
@@ -114,7 +114,7 @@ class SquareIterator:
     Args:
       `param` (`DataType`): <sentence_if_necessary>
 
-    Returns:
+    RETURNS:
 
     Raise:
     <`ClassException` wraps any exception raised. These are:
@@ -139,7 +139,7 @@ class SquareIterator:
     Args:
       `param` (`DataType`): <sentence_if_necessary>
 
-    Returns:
+    RETURNS:
 
     Raise:
     <`ClassException` wraps any exception raised. These are:

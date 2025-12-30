@@ -63,7 +63,7 @@ class SquareValidator(Validator[Square]):
             *   identity_service: (IdentityService)
         coord_service and identity_service have default values.
 
-        # Returns:
+        # RETURNS:
         ValidationResult[Coord] containing either:
             - On success: Coord in the payload.
             - On failure: Exception.
@@ -121,21 +121,21 @@ class SquareValidator(Validator[Square]):
             piece_validator: type[PieceValidator] = PieceValidator
     ) -> ValidationResult[Square, Piece]:
         """
-        # Action:
+        # ACTION:
         Verify there is a relationship between an actionable piece and a square_name before, they
         are used in conjunction in the system.
 
-        # Parameters:
+        # PARAMETERS:
             * square_candidate (Any): The object to verify is a Square instance.
             * piece_candidate (Any): The object to verify is an disabled Token instance.
             * piece_service (type[PieceValidator])=PieceService
 
-        # Returns:
+        # RETURNS:
           ValidationResult[(Square, Token)] containing either:
                 - On success: Tuple(Square, Token) in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * SquareAndPieceMismatchedCoordException
             * PieceInconsistentSquareOccupationException
         """
@@ -153,7 +153,7 @@ class SquareValidator(Validator[Square]):
             *   candidate_piece (Any): object to validate as an disabled Token
             *   piece_service (ype[PieceService])
 
-        # Returns:
+        # RETURNS:
         ValidationResult[(Square, Token)] containing either:
             - On success: tuple(Square, Token) in the payload.
             - On failure: Exception.

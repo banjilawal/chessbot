@@ -43,20 +43,20 @@ class RankContextService(ContextService[RankContext]):
             validator: RankContextValidator = RankContextValidator(),
     ):
         """
-        # Action:
+        # ACTION:
         Constructor
 
-        # Parameters:
+        # PARAMETERS:
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (RankFinder): Default value - RankFinder()
             *   builder (RankContextBuilder): Default value - RankContextBuilder()
             *   validator (RankContextValidator): Default value - RankContextValidator()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "RankContextService.__init__"

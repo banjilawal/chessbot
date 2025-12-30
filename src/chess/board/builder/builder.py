@@ -53,10 +53,10 @@ class BoardBuilder(Builder[Board]):
             square_data: UniqueSquareDataService = UniqueSquareDataService(),
     ) -> BuildResult[Board]:
         """
-        # Action:
+        # ACTION:
         Construct a new Board object after verifying its inputs will not cause an error.
     
-        # Parameters:
+        # PARAMETERS:
           * id (int): unique identifier.
           * num_rows (int): number of rows in the 2D array of Squares
           * num_columns (int): number of columns in the 2D array of Squares
@@ -64,12 +64,12 @@ class BoardBuilder(Builder[Board]):
           * builder (type[CoordBuilder]): Responsible for building Coord objects in the board.
           * square_builder (type[SquareBuilder]): Responsible for building Square objects in the board.
     
-        # Returns:
+        # RETURNS:
           BuildResult[Board] containing either:
                 - On success: Square in the payload.
                 - On failure: Exception.
     
-        # Raises:
+        # RAISES:
             * BoardBuildFailedException:
         """
         method = "BoardBuilder.builder"

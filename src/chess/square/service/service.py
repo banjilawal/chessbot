@@ -54,10 +54,10 @@ class SquareService(EntityService[Square]):
             *   builder (SquareFactory)
             *   validator (SquareValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

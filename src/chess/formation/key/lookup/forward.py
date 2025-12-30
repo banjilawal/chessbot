@@ -94,19 +94,19 @@ class FormationLookup(ForwardLookup[Formation]):
             super_key_validator: FormationSuperKeyValidator = FormationSuperKeyValidator()
     ) -> SearchResult[List[Formation]]:
         """
-        # Action:
+        # ACTION:
             1.  Certify the provided key with the validator.
             2.  If the key validation fails return the exception in a validation result. Otherwise, return
                 the formation entries with the targeted key-values.
-        # Parameters:
+        # PARAMETERS:
             *   key: FormationSuperKey
             *   key_validator: FormationSuperKeyValidator
-        # Returns:
+        # RETURNS:
             *   SearchResult[List[Formation]] containing either:
                     - On error: Exception , payload null
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # Raises:
+        # RAISES:
             *   FormationLookupFailedException
         """
         method = "FormationLookup.find"
@@ -145,16 +145,16 @@ class FormationLookup(ForwardLookup[Formation]):
     @LoggingLevelRouter.monitor
     def _by_designation(cls, designation: str) -> SearchResult[List[Formation]]:
         """
-        # Action:
+        # ACTION:
             1.  Get any Formation entry whose designation matches the target value.
-        # Parameters:
+        # PARAMETERS:
             *   designation (str)
-        # Returns:
+        # RETURNS:
             *   SearchResult[List[Formation]] containing either:
                     - On error: Exception
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # Raises:
+        # RAISES:
             *   FormationDesignationBoundsException
             *   FormationLookupFailedException
         """
@@ -175,16 +175,16 @@ class FormationLookup(ForwardLookup[Formation]):
     @LoggingLevelRouter.monitor
     def _by_square_name(cls, square_name: str) -> SearchResult[List[Formation]]:
         """
-        # Action:
+        # ACTION:
             1.  Get any Formation entry whose designation matches the target value.
-        # Parameters:
+        # PARAMETERS:
             *   square_name (str)
-        # Returns:
+        # RETURNS:
             *   SearchResult[List[Formation]] containing either:
                     - On error: Exception
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # Raises:
+        # RAISES:
             *   FormationSquareNameBoundsException
             *   FormationLookupFailedException
         """
@@ -205,16 +205,16 @@ class FormationLookup(ForwardLookup[Formation]):
     @LoggingLevelRouter.monitor
     def _by_color(cls, color: GameColor) -> SearchResult[List[Formation]]:
         """
-        # Action:
+        # ACTION:
             1.  Get any Formation entry whose designation matches the target value.
-        # Parameters:
+        # PARAMETERS:
             *   color (GameColor)
-        # Returns:
+        # RETURNS:
             *   SearchResult[List[Formation]] containing either:
                     - On error: Exception
                     - On finding a match: List[Formation] in the payload.
                     - On no matches found: Exception null, payload null
-        # Raises:
+        # RAISES:
             *   FormationColorBoundsException
             *   FormationLookupFailedException
         """

@@ -84,12 +84,12 @@ class IdentityService:
             * id_candidate (Any): object to certify is a legal ID.
             * name_candidate (Any): object to certify is a legal designation.
 
-        # Returns:
+        # RETURNS:
         ValidationResult[tuple(int, str)] containing either:
             - On success: tuple(int, str) in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   InvalidIdentityException
         """
         method = "IdentityService.validate_identity"

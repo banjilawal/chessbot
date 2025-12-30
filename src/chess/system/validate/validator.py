@@ -52,7 +52,7 @@ class Validator(ABC, Generic[T]):
         # PARAMETERS:
             *   candidate (Any): Object to validate.
     
-        # Returns:
+        # RETURNS:
         ValidationResult[V] containing either:
             - On success: V in the payload.
             - On failure: Exception.

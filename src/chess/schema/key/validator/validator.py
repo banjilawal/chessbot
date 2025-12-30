@@ -47,23 +47,23 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> ValidationResult[SchemaSuperKey]:
         """
-        # Action:
+        # ACTION:
             1.  If the candidate passes existence and type checks cast into a SchemaSuperKey instance, super_key.
                 Else, return an exception in the ValidationResult.
             2.  If one-and-only-one super_key field is not null return an exception in the ValidationResult.
             3.  Use super_key.attribute to route to the appropriate validation subflow.
             4.  If no Schema.VARIANT.attribute == super_key.attribute return an exception in the ValidationResult.
             5.  All tests are passed. Send super_key in the ValidationResult.
-        # Parameters:
+        # PARAMETERS:
             *   candidate (Any)
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
-        # Returns:Confirm
+        # RETURNS:Confirm
         ValidationResult[SchemaSuperKey] containing either:
                 - On failure: Exception.
                 - On success: SchemaSuperKey in the payload.
 
-        # Raises:
+        # RAISES:
             *   TypeError
             *   NNullSchemaSuperKeyException
             *   ZeroSchemaSuperKeysException

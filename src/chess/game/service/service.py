@@ -55,10 +55,10 @@ class GameService(EntityService[Game]):
             *   builder (GameFactory)
             *   validator (GameValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "GameService.__init__"

@@ -72,7 +72,7 @@ class TeamContext(Context[Team]):
         Convert a TeamContext attributes into a dictionary.
         # PARAMETERS:
         None
-        # Returns:
+        # RETURNS:
             dict
         # RAISES:
         None

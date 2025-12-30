@@ -63,7 +63,7 @@ class TeamValidator(Validator[Team]):
             *   team_schema (Schema)
             *   agent_certifier (AgentService)
             *   identity_service (IdentityService)
-        # Returns:
+        # RETURNS:
         ValidationResult[Team] containing either:
             - On success:   Team in the payload.
             - On failure:   Exception.
@@ -148,7 +148,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   team (Team)
             *   player_service (AgentService)
-        # Returns:
+        # RETURNS:
         ValidationResult[PlayerAgent] containing either:
             - On failure: Exception.
             - On success: PlayerAgent in the payload.
@@ -197,7 +197,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   team (Team)
             *  arena_service (ArenaService)
-        # Returns:
+        # RETURNS:
         ValidationResult[Arena] containing either:
             - On failure: Exception.
             - On success: PlayerAgent in the payload.

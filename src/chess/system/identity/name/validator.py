@@ -62,12 +62,12 @@ class NameValidator(Validator[str]):
         # PARAMETERS:
             *   candidate (Any): object to certify is a legal designation.
     
-        # Returns:
+        # RETURNS:
         ValidationResult[str] containing either:
             - On success: str in the payload.
             - On failure: Exception.
     
-        # Raises:
+        # RAISES:
             *   ShortNameException
             *   LongNameException
             *   InvalidNameException

@@ -62,7 +62,7 @@ class Pawn(Rank):
         # PARAMETERS:
             *   piece (Token): Single-source-of-truth for the basis of the span.
     
-        # Returns:
+        # RETURNS:
         List[Coord]
     
         RAISES:
@@ -91,7 +91,7 @@ def _compute_developed_span(self, origin: Coord) -> [Coord]:
     # PARAMETERS:
         *   origin (Coord):
 
-    # Returns:
+    # RETURNS:
     List[Coord]
 
     RAISES:
@@ -124,7 +124,7 @@ def _compute_opening_span(self, origin: Coord) -> [Coord]:
     # PARAMETERS:
         *   origin (Coord):
 
-    # Returns:
+    # RETURNS:
     List[Coord]
 
     RAISES:

@@ -47,20 +47,20 @@ class GameContextService(ContextService[GameContext]):
             validator: GameContextValidator = GameContextValidator(),
     ):
         """
-        # Action:
+        # ACTION:
         Constructor
 
-        # Parameters:
+        # PARAMETERS:
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (GameFinder): Default value - GameFinder()
             *   builder (GameContextBuilder): Default value - GameContextBuilder()
             *   validator (GameContextValidator): Default value - GameContextValidator()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "GameContextService.__init__"

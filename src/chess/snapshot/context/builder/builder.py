@@ -57,13 +57,13 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             number_validator: NumberValidator = NumberValidator()
     ) -> BuildResult[SnapshotContext]:
         """
-        # Action:
+        # ACTION:
             1.  Confirm that only one in the (team, player_agent, timestamp) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a SnapshotContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
-        # Parameters:
+        # PARAMETERS:
             Only one these must be provided:
                 *   game (Optional[Game])
                 *   team (Optional[Team])
@@ -79,12 +79,12 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
                 *   player_service (AgentService)
                 *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         BuildResult[SnapshotContext] containing either:
             - On success: SnapshotContext in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   ZeroSnapshotContextFlagsException
             *   SnapshotContextBuildFailedException
             *   ExcessiveSnapshotContextFlagsException

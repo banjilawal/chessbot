@@ -65,12 +65,12 @@ class SquareBuilder(Builder[Square]):
             *   coord_service (CoordService)
             *   identity_service (IdentityService)
     
-        # Returns:
+        # RETURNS:
         ValidationResult[Square] containing either:
             - On success: Square in the payload.
             - On failure: Exception.
     
-        # Raises:
+        # RAISES:
             *   SquareBuildFailedException
         """
         method = "SquareBuilder.builder"

@@ -30,11 +30,11 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
     Argument:
       `candidate` (`KingCheckEvent`): `attackEvent `to validate
 
-     Returns:
+     RETURNS:
        `Result[V]`: A `Result` object containing the validated payload if the specification is satisfied,
         `InvalidAttackEventException` otherwise.
 
-    Raises:
+    RAISES:
       `TypeError`: if `candidate` is not OperationEvent
       `NullAttackEventException`: if `candidate` is validation
 

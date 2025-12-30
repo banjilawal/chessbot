@@ -48,12 +48,12 @@ class RankContextBuilder(Builder[RankContext]):
             rank_validator: type[RankValidator] = RankValidator
     ) -> BuildResult[RankContext]:
         """
-        # Action:
+        # ACTION:
             1. Use dependency injected validators to verify correctness of parameters required to
                 builder a RankContext instance.
             2. If the parameters are safe the RankContext is built and returned.
 
-        # Parameters:
+        # PARAMETERS:
             *   id (Optional[int]):                     selected if searcher target is an id.
             *   designation (Optional[str]):                   selected if searcher target is a designation.
             *   ransom (Optional[int]):                 selected if searcher target is a ransom.
@@ -61,12 +61,12 @@ class RankContextBuilder(Builder[RankContext]):
             *   designation (Optional[str]):            selected if searcher target is a designation.
             *   rank_validator (type[RankValidator]):   validates an id-searcher-target
 
-        # Returns:
+        # RETURNS:
           BuildResult[RankContext] containing either:
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * RankContextBuildFailedException
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
@@ -121,19 +121,19 @@ class RankContextBuilder(Builder[RankContext]):
             rank_validator: type[RankValidator] = RankValidator
     ) -> BuildResult[RankContext]:
         """
-        # Action:
+        # ACTION:
         Build an id-RankContext if RankValidator verifies searcher target is safe.
 
-        # Parameters:
+        # PARAMETERS:
           * row (int): target id
           * rank_validator (type[RankValidator]): validates target.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[RankContext] containing either:
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * InvalidRankContextException
         """
         method = "RankContextBuilder.build_id_search_context"
@@ -155,19 +155,19 @@ class RankContextBuilder(Builder[RankContext]):
             rank_validator: type[RankValidator] = RankValidator
     ) -> BuildResult[RankContext]:
         """
-        # Action:
+        # ACTION:
         Build a column-RankContext if RankValidator verifies searcher target is safe.
 
-        # Parameters:
+        # PARAMETERS:
           * column (int): target column
           * rank_validator (type[RankValidator]): validates target.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[RankContext] containing either:
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * InvalidRankContextException
         """
         method = "RankContextBuilder.build_column_search_context"
@@ -194,19 +194,19 @@ class RankContextBuilder(Builder[RankContext]):
             rank_validator: type[RankValidator] = RankValidator
     ) -> BuildResult[RankContext]:
         """
-        # Action:
+        # ACTION:
         Build a rank-RankContext if RankValidator verifies searcher target is safe.
 
-        # Parameters:
+        # PARAMETERS:
           * rank (Rank): target Rank
           * rank_validator (type[RankValidator]): validates target.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[RankContext] containing either:
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * InvalidRankContextException
         """
         method = "RankContextBuilder.build_rank_search_context"

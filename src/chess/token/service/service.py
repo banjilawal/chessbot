@@ -54,10 +54,10 @@ class TokenService(EntityService[Token]):
             *   builder (TokenFactory)
             *   validator (TokenValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

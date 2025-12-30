@@ -113,7 +113,7 @@ class TeamFinder(DataFinder[Team]):
         # ACTION:
             1.  Get the Team with the matching id if it exists
             2.  Multiple, unique matches in the result indicate that  a problem.
-        # Parameters:
+        # PARAMETERS:
             *   id (int)
             *   dataset (List[PlayerAgent])
         # RETURNS:

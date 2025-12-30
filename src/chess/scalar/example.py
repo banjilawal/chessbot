@@ -135,12 +135,12 @@ Args:
   `team_schema`(`ScalarProfile`): The team_schema defining scalar attributes and behaviors. Must not be None and be
     an instance of `ScalarProfile`.
 
-Returns:
+RETURNS:
   BuildResult[Scalar]: A `BuildResult` containing either:
     - On success: A valid `Scalar` instance in the payload
     - On failure: Error information and error details
 
-Raises:
+RAISES:
   `ScalarBuildFailedException`: Wraps any underlying validate failures that occur during the construction
   process. This includes:
     * `NullScalarException`: if `candidate` is validation
@@ -212,11 +212,11 @@ as team_name InvalidScalarException, providing team_name clean and consistent er
 Args
   candidate (Scalar): Scalar instance to validate
 
- Returns:
+ RETURNS:
   Result[Scalar]: A Resulcandidate object containing the validated payload if the specification is satisfied,
   InvalidScalarException otherwise.
 
-Raises:
+RAISES:
   NullScalarException: if candidate is validation
   TypeError: if candidate is not Scalar
   NullNumberException: If scalar.value is validation
@@ -237,7 +237,7 @@ Creates team_name Scalar instance. Should not be used directly. Use ScalarBuilde
 
 Args:
   value (int): The numeric value of the scalar.
-Raises:
+RAISES:
   NullNumberException: If the provided value is `None`.
   ScalarBelowBoundsException: If the value is below the lower boundary.
   ScalarAboveBoundsException: If the value is at or above the upper boundary.

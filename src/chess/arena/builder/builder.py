@@ -58,12 +58,12 @@ class ArenaBuilder(Builder[Arena]):
             *   arena_variety (ArenaVariety)
             *   engine_service (Optional[EngineService])
 
-        # Returns:
+        # RETURNS:
         ValidationResult[Arena] containing either:
             - On success: Arena in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   ArenaBuildFailedException
         """
         method = "ArenaBuilder.build"

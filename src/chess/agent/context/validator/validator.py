@@ -48,7 +48,7 @@ class AgentContextValidator(Validator[AgentContext]):
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[AgentContext]:
         """
-        # Action:
+        # ACTION:
             1.  If the candidate passes existence and type checks cast into a AgentContext for
                 additional integrity tests. Else return an exception in the ValidationResult.
             2.  If one-and-only-one AgentContext attribute-value-tuple is enabled goto the integrity
@@ -57,18 +57,18 @@ class AgentContextValidator(Validator[AgentContext]):
             4.  If the validation subflow certifies the map tuple return it in the validation result.
                 Else, send the exception in the ValidationResult.
 
-        # Parameters:
+        # PARAMETERS:
             *   candidate (Any)
             *   team_service (TeamService)
             *   game_service (GameService)
             *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[AgentContext] containing either:
             - On success: AgentContext in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   TypeError
             *   NullAgentContextException
             *   NoAgentContextFlagException

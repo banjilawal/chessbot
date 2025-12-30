@@ -60,10 +60,10 @@ class AgentContext(Context[PlayerAgent]):
             *   game (Optional[Game])
             *   variety (Optional[AgentVariety])
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name)
@@ -90,10 +90,10 @@ class AgentContext(Context[PlayerAgent]):
         # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
         dict
 
-        # Raises:
+        # RAISES:
         None
         """
         return {

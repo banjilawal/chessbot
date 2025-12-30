@@ -47,7 +47,7 @@ class Vector:
             *   x (int)
             *   y (int)
     
-        # Returns:
+        # RETURNS:
         None
     
         # RAISES:

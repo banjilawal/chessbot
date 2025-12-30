@@ -54,13 +54,13 @@ class ArenaContextBuilder(Builder[ArenaContext]):
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[ArenaContext]:
         """
-        # Action:
+        # ACTION:
             1.  Confirm that only one in the (id, designation, team, game, arena_variety) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a ArenaContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
-        # Parameters:
+        # PARAMETERS:
             Only one these must be provided:
                 *   id (Optional[int])
                 *   designation (Optional[str])
@@ -73,12 +73,12 @@ class ArenaContextBuilder(Builder[ArenaContext]):
                 *   game_service (GameService)
                 *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
           BuildResult[ArenaContext] containing either:
                 - On success: ArenaContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   ZeroArenaContextFlagsException
             *   ArenaContextBuildFailedException
             *   ExcessiveArenaContextFlagsException

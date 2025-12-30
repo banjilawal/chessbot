@@ -53,10 +53,10 @@ class ScalarService(EntityService[Scalar]):
             *   builder (ScalarFactory)
             *   validator (ScalarValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

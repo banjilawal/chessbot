@@ -58,12 +58,12 @@
     `enemy`(`Token`): The `Token` scanned by `actor_candidate`.
     `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
 
-  Returns:
+  RETURNS:
     BuildResult[BlockingEvent]: A `BuildResult` containing either:
       - On success: A valid `BlockingEvent` instance in the payload
       - On failure: Error information and error details
 
-  Raises:
+  RAISES:
     ScanEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
     This includes:
       * `InvalidIdException`: if `scanEvent_id` fails validate checks

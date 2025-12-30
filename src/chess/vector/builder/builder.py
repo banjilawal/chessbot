@@ -52,7 +52,7 @@ class VectorBuilder(Builder[Vector]):
             *   y (int)
             *   bound_number_validator (NumberInBoundsValidator)
             
-        # Returns:
+        # RETURNS:
         BuildResult[Vector] containing either:
             - On failure: Exception.
             - On success: Vector in the payload.

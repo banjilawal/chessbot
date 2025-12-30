@@ -31,6 +31,7 @@ class Persona(Enum):
         *   RankBuilder uses a Persona.ELEMENT/ENTRY to create a Rank object.
 
     # RESPONSIBILITIES:
+    1.  Metadata for each Rank.
     1.  Supply build parameters to RankFactory methods.
 
     # PARENT:

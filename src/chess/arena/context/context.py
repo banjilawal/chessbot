@@ -59,10 +59,10 @@ class ArenaContext(Context[Arena]):
             *   player_color (Optional[GameColor])
             *   board (Optional[Board])
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=None)
@@ -89,10 +89,10 @@ class ArenaContext(Context[Arena]):
         # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
         dict
 
-        # Raises:
+        # RAISES:
         None
         """
         return {

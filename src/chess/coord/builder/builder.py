@@ -53,7 +53,7 @@ class CoordBuilder(Builder[Coord]):
             *   column (int)
             *   number_bonds_validator (NumberInBoundsValidator)
 
-        # Returns:
+        # RETURNS:
         BuildResult[Coord] containing either:
             - On success: Coord in the payload.
             - On failure: Exception.

@@ -55,10 +55,10 @@ class RankService(EntityService[Rank]):
             *   builder (RankFactory)
             *   validator (RankValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

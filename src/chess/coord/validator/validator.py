@@ -50,7 +50,7 @@ class CoordValidator(Validator[Coord]):
             *   candidate (Any)
             *   validator (NNumberInBoundsValidato)
     
-        # Returns:
+        # RETURNS:
         ValidationResult[Coord] containing either:
             - On success: Coord in the payload.
             - On failure: Exception.

@@ -43,22 +43,22 @@ class CoordContextValidator(Validator):
             validator: CoordValidator=CoordValidator()
     ) -> ValidationResult[CoordContext]:
         """
-        # Action:
+        # ACTION:
         Verifies candidate is a CoordContext in two steps.
             1. Test the candidate is a valid SearchCoordContext with a single searcher option switched on.
             2. Test the value passed to CoordContext passes its validation contract..
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is a Coord.
           * validator (type[CoordValidator]): Enforces safety requirements on row, column, square_name coords.
 
           
-        # Returns:
+        # RETURNS:
           ValidationResult[CoordContext] containing either:
                 - On success: CoordContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * TypeError
             * NullCoordContextException
             * NullCoordSearchContextException
@@ -142,19 +142,19 @@ class CoordContextValidator(Validator):
             validator: CoordValidator=CoordValidator()
     ) -> ValidationResult[int]:
         """
-        # Action:
+        # ACTION:
         Verify a row_candidate meets application CoordContext safety requirements.
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is a row.
           * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[CoordContext] containing either:
                 - On success: CoordContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * InvalidCoordSearchContextException
         """
         method = "CoordSearchContextValidator.validate_id_search_option"
@@ -183,19 +183,19 @@ class CoordContextValidator(Validator):
             validator: CoordValidator = CoordValidator()
     ) -> ValidationResult[int]:
         """
-        # Action:
+        # ACTION:
         Verify a column_candidate meets application CoordContext safety requirements.
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is a column.
           * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[CoordContext] containing either:
                 - On success: CoordContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * InvalidCoordSearchContextException
         """
         method = "CoordSearchContextValidator.validate_column_context"

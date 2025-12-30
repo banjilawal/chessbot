@@ -56,7 +56,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[SnapshotContext]:
         """
-        # Action:
+        # ACTION:
             1.  If the candidate passes existence and type checks cast into a SnapshotContext for
                 additional integrity tests. Else return an exception in the ValidationResult.
             2.  If one-and-only-one SnapshotContext attribute-value-tuple is enabled goto the integrity
@@ -65,7 +65,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             4.  If the validation subflow certifies the map tuple return it in the validation result.
                 Else, send the exception in the ValidationResult.
 
-        # Parameters:
+        # PARAMETERS:
             *   candidate (Any)
             *   game_service (GameService)
             *   team_service (TeamService)
@@ -73,12 +73,12 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             *   player_service (AgentService)
             *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[SnapshotContext] containing either:
             - On success: SnapshotContext in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   TypeError
             *   NullSnapshotContextException
             *   ZeroSnapshotContextFlagsException

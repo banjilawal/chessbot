@@ -48,7 +48,7 @@ class NumberValidator(Validator[int]):
             *   ValidationResult[int] containing either:
                     - On failure: Exception.
                     - On success: int in the payload.
-        # Raises:
+        # RAISES:
           *     TypeError
           *     NullNumberException
           *     NumberValidationFailedException

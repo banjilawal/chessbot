@@ -42,22 +42,22 @@ class RankContextValidator(Validator[RankContext]):
             candidate: Any,
     ) -> ValidationResult[RankContext]:
         """
-        # Action:
+        # ACTION:
         Verifies candidate is a RankContext in two steps.
             1. Test the candidate is a valid SearchRankContext with a single searcher option switched on.
             2. Test the value passed to RankContext passes its validation contract..
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is a Rank.
           * rank_validator (type[RankValidator]): Enforces safety requirements on row, column, rank targets.
 
           
-        # Returns:
+        # RETURNS:
           ValidationResult[RankContext] containing either:
                 - On success: RankContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * TypeError
             * InvalidRankContextException
             * NullRankContextException
@@ -109,19 +109,19 @@ class RankContextValidator(Validator[RankContext]):
     #         candidate: Any,
     # ) -> ValidationResult[RankContext]:
     #     """
-    #     # Action:
+    #     # ACTION:
     #     Verify a row_candidate meets application RankContext safety requirements.
     #
-    #     # Parameters:
+    #     # PARAMETERS:
     #       * candidate (Any): Object to verify is a row.
     #       * rank_validator (type[RankValidator]): Checks if candidate complies with safety contract.
     #
-    #     # Returns:
+    #     # RETURNS:
     #       ValidationResult[RankContext] containing either:
     #             - On success: RankContext in the payload.
     #             - On failure: Exception.
     #
-    #     # Raises:
+    #     # RAISES:
     #         * InvalidRankContextException
     #     """
     #     method = "RankContextValidator.validate_id_search_option"
@@ -150,19 +150,19 @@ class RankContextValidator(Validator[RankContext]):
     #         rank_validator: type[RankValidator] = RankValidator
     # ) -> ValidationResult[RankContext]:
     #     """
-    #     # Action:
+    #     # ACTION:
     #     Verify a column_candidate meets application RankContext safety requirements.
     #
-    #     # Parameters:
+    #     # PARAMETERS:
     #       * candidate (Any): Object to verify is a column.
     #       * rank_validator (type[RankValidator]): Checks if candidate complies with safety contract.
     #
-    #     # Returns:
+    #     # RETURNS:
     #       ValidationResult[RankContext] containing either:
     #             - On success: RankContext in the payload.
     #             - On failure: Exception.
     #
-    #     # Raises:
+    #     # RAISES:
     #         * InvalidRankContextException
     #     """
     #     method = "RankContextValidator.validate_column_search_option"
@@ -191,19 +191,19 @@ class RankContextValidator(Validator[RankContext]):
     #         rank_validator: type[RankValidator] = RankValidator
     # ) -> ValidationResult[RankContext]:
     #     """
-    #     # Action:
+    #     # ACTION:
     #     Verify a rank_candidate meets application RankContext safety requirements.
     #
-    #     # Parameters:
+    #     # PARAMETERS:
     #       * candidate (Any): Object to verify is a rank.
     #       * rank_validator (type[RankValidator]): Checks if candidate complies with safety contract.
     #
-    #     # Returns:
+    #     # RETURNS:
     #       ValidationResult[RankContext] containing either:
     #             - On success: RankContext in the payload.
     #             - On failure: Exception.
     #
-    #     # Raises:
+    #     # RAISES:
     #         * InvalidRankContextException
     #     """
     #     method = "RankContextValidator.validate_rank_search_option"

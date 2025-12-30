@@ -55,10 +55,10 @@ class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
             *   name (str): = SERVICE_NAME
             *   data_service (AgentDataService): = AgentDataService()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().service(id=id, name=name, data_service=data_service)

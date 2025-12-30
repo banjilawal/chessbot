@@ -106,7 +106,7 @@ class Rank(ABC):
         # PARAMETERS:
             *   piece (Token): Single-source-of-truth for the basis of the span.
         
-        # Returns:
+        # RETURNS:
         List[Coord]
         
         RAISES:
@@ -213,7 +213,7 @@ class Rank(ABC):
             *   slope (int):            Slope of the diagonal. Used to find next y value.
             *   span (List[Coord]):     List to append Coords to if they are not already in the list.
 
-        # Returns:
+        # RETURNS:
         List[Coord]
 
         RAISES:
@@ -250,7 +250,7 @@ class Rank(ABC):
         # PARAMETERS:
             *   piece (Token): Single-source-of-truth for the basis of the span.
 
-        # Returns:
+        # RETURNS:
         List[Coord]
 
         RAISES:
@@ -367,7 +367,7 @@ class Rank(ABC):
             *   y_step (int):           Step size for y. In practice, the magnitude will be 1,
             *   span (List[Coord]):     List to append Coords to if they are not already in the list.
 
-        # Returns:
+        # RETURNS:
         List[Coord]
 
         RAISES:

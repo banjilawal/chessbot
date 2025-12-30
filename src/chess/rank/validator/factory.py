@@ -72,7 +72,7 @@ class RankValidatorFactory(Validator[Rank]):
             *   knight_validator (KnightValidator)
             *   bishop_validator (BishopValidator)
             
-        # Returns:
+        # RETURNS:
         ValidationResult[Rank] containing either:
             - On success: Rank in the payload.
             - On failure: Exception.

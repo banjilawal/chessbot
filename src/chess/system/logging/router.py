@@ -46,9 +46,9 @@ class LoggingLevelRouter:
       * `notification`: Anything `map` is returning on success.
       * `rollback_exception`:
       * `exception_factory`:
-    Returns:
+    RETURNS:
       `void`
-    Raises:
+    RAISES:
       None
     """
 

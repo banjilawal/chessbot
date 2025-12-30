@@ -41,22 +41,22 @@ class BoardValidator(Validator[Board]):
             square_validator: type[SquareValidator] = SquareValidator
     ) -> ValidationResult[Board]:
         """
-        # Action:
+        # ACTION:
         Use chained PieceValidator and SquareValidator to ensure a candidate is a valid DomainOrigin before
         the client can use it.
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is a Domain.
           * piece_validator (type[PieceValidator]): Injected into validator.
           * validator (type[SquareValidator]): verifies the relationship between the
                 Domain's owning Token and Square.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[DomainOrigin] containing either:
                 - On success: DomainOrigin in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * TypeError
             * InvalidDomainOriginException
         """
@@ -125,7 +125,7 @@ class BoardValidator(Validator[Board]):
             board_square_search: type[BoardSquareSearch] = BoardSquareSearch
     ) -> ValidationResult[(Board, Piece, Square)]:
         """
-        # Action:
+        # ACTION:
         """
         method = "BoardValidator.verify_piece_relates_to_board"
         

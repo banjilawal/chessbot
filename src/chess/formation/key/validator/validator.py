@@ -50,23 +50,23 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[FormationSuperKey]:
         """
-        # Action:
+        # ACTION:
         1.  Confirm that only one in the (designation, square_designation, color) tuple is not null.
         2.  Certify the not-null attribute is safe using the appropriate service's validator.
         3.  If any check fails return a ValidationResult containing the exception raised by the failure.
         4.  On success Build an FormationSuperKey are return in a ValidationResult.
 
-        # Parameters:
+        # PARAMETERS:
             *   candidate (Any)
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[FormationSuperKey] containing either:
             - On success: FormationSuperKey in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   TypeError
             *   NullFormationSuperKeyException
             *   ZeroFormationSuperKeyFlagsException

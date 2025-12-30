@@ -666,7 +666,7 @@ is used in searching the logs.
 ```mermaid
 %% Simple Transaction Flow
 sequenceDiagram
-  Player->>AttackTransaction: Execute AttackEvent
+  Player->>AttackTransACTION: Execute AttackEvent
   AttackTransaction->>Board: Remove enemy piece
   AttackTransaction->>Player: Add enemy to hostages
   AttackTransaction-->>Player: Return TransactionResult
@@ -745,7 +745,7 @@ sequenceDiagram
   Player->>Board: Attempt move
   Board->>Validator: Check legality
   Validator-->>Board: Valid / Invalid
-  Board->>Transaction: Commit or rollback
+  Board->>TransACTION: Commit or rollback
   Transaction-->>Player: Return result
 ```
 

@@ -59,11 +59,11 @@ class GameValidator(Validator[Game]):
         Args
           candidate (Game): game to validate
           
-         Returns:
+         RETURNS:
            Result[V]: A Result object containing the validated payload if all graph requirements
            are satisfied. InvalidCommanderException otherwise.
         
-        Raises:
+        RAISES:
           TypeError: if candidate is not Game
           NullCommanderException: if candidate is validation
     

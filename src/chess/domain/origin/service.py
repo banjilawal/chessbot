@@ -43,10 +43,10 @@ class DomainOriginService(EntityService[DomainOrigin]):
             *   builder (DomainOriginFactory)
             *   validator (DomainOriginValidator)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)

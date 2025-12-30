@@ -68,7 +68,7 @@ class Team:
             *   roster (UniquePieceDataService)
             *   hostages (UniquePieceDataService)
 
-        # Returns:
+        # RETURNS:
         None
 
         # RAISES:

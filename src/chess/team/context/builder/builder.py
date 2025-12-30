@@ -55,11 +55,11 @@ class TeamContextBuilder(Builder[TeamContext]):
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[TeamContext]:
         """
-        # Action:
+        # ACTION:
             1.  If more than one optional param is not-null return an exception in the BuildResult.
             2.  If the enabled param is not certified by the appropriate validating service return an exception in
                 the BuildResult. Else, create the TeamContext with attribute-value tuple to send in the BuildResult.
-        # Parameters:
+        # PARAMETERS:
             Only one these must be provided:
                 *   id (Optional[int])
                 *   designation (Optional[int])
@@ -71,11 +71,11 @@ class TeamContextBuilder(Builder[TeamContext]):
                 *   agent_certifier (AgentService)
                 *   identity_service (IdentityService)
                 *   schema_validator (TeamSchemaValidator)
-        # Returns:
+        # RETURNS:
         BuildResult[TeamContext] containing either:
             - On success: TeamContext in the payload.
             - On failure: Exception.
-        # Raises:
+        # RAISES:
             *   ZeroTeamContextFlagsException
             *   TeamContextBuildFailedException
             *   ExcessiveTeamContextFlagsException

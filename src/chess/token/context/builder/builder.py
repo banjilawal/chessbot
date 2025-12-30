@@ -57,13 +57,13 @@ class TokenContextBuilder(Builder[TokenContext]):
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[TokenContext]:
         """
-        # Action:
+        # ACTION:
             1.  Confirm that only one in the (row, column, coord) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a TokenContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
-        # Parameters:
+        # PARAMETERS:
             Only one these must be provided:
                 *   id (Optional[int])
                 *   designation (Optional[int])
@@ -78,12 +78,12 @@ class TokenContextBuilder(Builder[TokenContext]):
                 *   coord_service (CoordService)
                 *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
           BuildResult[TokenContext] containing either:
                 - On success: TokenContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   ZeroTokenContextFlagsException
             *   TokenContextBuildFailedException
             *   ExcessiveTokenContextFlagsException

@@ -51,10 +51,10 @@ class MachineAgent(PlayerAgent):
             *   team_assignments (UniqueTeamDataService)
             *   engine_service (EngineService)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().machine(id=id, name=name, games=games, team_assignments=team_assignments)

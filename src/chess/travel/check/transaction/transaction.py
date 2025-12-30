@@ -8,7 +8,7 @@ Purpose:
   Implements the `AttackTransaction` class, responsible for capturing an enemy `CombatantPiece`
 
 Contents:
-  - `AttackTransaction:` Class responsible for AttackTransaction lifecycle.
+  - `AttackTransACTION:` Class responsible for AttackTransaction lifecycle.
 
 Notes:
 """

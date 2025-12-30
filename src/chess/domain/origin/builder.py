@@ -48,7 +48,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         # PARAMETERS:
             * candidate (int): the visitor_id.
 
-        # Returns:
+        # RETURNS:
           BuildResult[DomainOrigin] containing either:
                 - On success: DomainOrigin in the payload.
                 - On failure: Exception.

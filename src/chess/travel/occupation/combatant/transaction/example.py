@@ -38,12 +38,12 @@ Args:
   `enemy`(`Token`): The `Token` attackned by `actor_candidate`.
   `roster`(`ExecutionContext`): `roster.board_validator` verifies `actor_candidate` and `enemy` are on the board_validator.
 
-Returns:
+RETURNS:
   BuildResult[KingCheckEvent]: A `BuildResult` containing either:
     - On success: A valid `KingCheckEvent` instance in the payload
     - On failure: Error information and error details
 
-Raises:
+RAISES:
   AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
   This includes:
     * `InvalidIdException`: if `attackEvent_id` fails validate checks
@@ -86,13 +86,13 @@ Example:
 #     - `travel` (`TravelEvent`): The `TravelEvent` to be executed.
 #     - `actor_square` (`Square`): The `Square` occupied by `actor_candidate`.
 #
-#   Returns:
+#   RETURNS:
 #   `OccupationResult` containing:
 #     - On success: A new `TravelEvent` with the updated squares and `owner`.
 #     - On failure: The original `TravelEvent`or verifying any rollbacks succeeded and the err
 #       describing the failure.
 #
-#   Raises:
+#   RAISES:
 #   Errors raised will be about entity_service and state inconsistencies OccupationException: Wraps any errors including:
 #     -
 #
@@ -333,14 +333,14 @@ Example:
 #     - `op_result_id` (`int`): The `visitor_id` of the `OperationResult` passed to the caller.
 #     - `travel` (`BlockingEvent`): The `BlockingEvent` to execute.
 #
-#   Returns:
+#   RETURNS:
 #   `OccupationResult` containing:
 #     - On success: A new `BlockingEvent` object that containing updated `actor_candidate`. Observer will have
 #       team_name new `Checker` instance inside `actor_candidate.discoveries`.
 #     - On failure: The original `BlockingEvent` for verifying any rollbacks succeeded and the err
 #       describing the failure.
 #
-#   Raises:
+#   RAISES:
 #   Errors raised will be about entity_service and state inconsistencies OccupationException: Wraps any errors including:
 #     -
 #   Note:

@@ -55,7 +55,7 @@ class VectorValidator(Validator[Vector]):
         # PARAMETERS:
             *   candidate (Any)
             *   number_in_bounds_validator (NumberInBoundsValidator)
-        # Returns:
+        # RETURNS:
             *   ValidationResult[Vector] containing either:
                     - On failure: Exception.
                     - On success: Vector in the payload.

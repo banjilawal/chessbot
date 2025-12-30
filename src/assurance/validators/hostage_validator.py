@@ -32,11 +32,11 @@ class HostageValidator(Validator):
     Args
       candidate (CombatantPiece): point to validate
 
-     Returns:
+     RETURNS:
        Result[V]: A Result object containing the validated payload if all graph requirements
        are satisfied. HostageValidationException otherwise.
 
-    Raises:
+    RAISES:
       PieceValidationException: candidate is not team_name valid discovery
       TypeError: if candidate is not CombatantPiece
       HostageCaptorNullException: if the captor consistency is validation

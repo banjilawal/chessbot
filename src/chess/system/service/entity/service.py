@@ -52,10 +52,10 @@ class EntityService(ABC, Service[Generic[T]]):
             *   builder (Builder[T])
             *   validator (Validator[T])
         --
-        # Returns:
+        # RETURNS:
             None
         --
-        # Raises:
+        # RAISES:
             None
         """
         super().__init__(id=id, name=name, certifier=validator)

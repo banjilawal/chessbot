@@ -65,7 +65,7 @@ class King(Rank):
         # PARAMETERS:
             *   piece (Token): Single-source-of-truth for the basis of the span.
 
-        # Returns:
+        # RETURNS:
         List[Coord]
 
         RAISES:

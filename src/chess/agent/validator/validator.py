@@ -64,7 +64,7 @@ class AgentValidator(Validator[PlayerAgent]):
             *   identity_service (IdentityService)
             *   service_validator (ServiceValidator)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[PlayerAgent] containing either:
             - On success: PlayerAgent in the payload.
             - On failure: Exception.
@@ -138,7 +138,7 @@ class AgentValidator(Validator[PlayerAgent]):
         # PARAMETERS:
             *   candidate (Any)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[AgentVariety] containing either:
             - On success: AgentVariety in the payload.
             - On failure: Exception.
@@ -189,7 +189,7 @@ class AgentValidator(Validator[PlayerAgent]):
             *   machine (MachineAgent)
             *   engine_service_validator (EngineService)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[PlayerAgent] containing either:
             - On success: PlayerAgent in the payload.
             - On failure: Exception.

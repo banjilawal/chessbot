@@ -56,13 +56,13 @@ class AgentContextBuilder(Builder[AgentContext]):
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[AgentContext]:
         """
-        # Action:
+        # ACTION:
             1.  Confirm that only one in the (id, designation, team, game, agent_variety) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a AgentContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
-        # Parameters:
+        # PARAMETERS:
             Only one these must be provided:
                 *   id (Optional[int])
                 *   designation (Optional[str])
@@ -75,12 +75,12 @@ class AgentContextBuilder(Builder[AgentContext]):
                 *   game_service (GameService)
                 *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
           BuildResult[AgentContext] containing either:
                 - On success: AgentContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   ZeroAgentContextFlagsException
             *   AgentContextBuildFailedException
             *   ExcessiveAgentContextFlagsException

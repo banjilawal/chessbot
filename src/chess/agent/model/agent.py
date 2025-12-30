@@ -48,18 +48,18 @@ class PlayerAgent(ABC):
             team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
     ):
         """
-        # Action:
+        # ACTION:
         Constructor
 
-        # Parameters:
+        # PARAMETERS:
             *   id (int)
             *   name (str)
             *   team_assignments (UniqueTeamDataService)
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "AgentContextService.agent"

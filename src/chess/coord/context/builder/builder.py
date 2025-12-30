@@ -51,13 +51,13 @@ class CoordContextBuilder(Builder[CoordContext]):
             validator: NumberInBoundsValidator = NumberInBoundsValidator(),
     ) -> BuildResult[CoordContext]:
         """
-        # Action:
+        # ACTION:
             1.  Confirm that only one in the (row, column, coord) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a CoordContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
-        # Parameters:
+        # PARAMETERS:
             At least one of these must be provided:
                 *   row (Optional[int])
                 *   coord (Optional[Coord])
@@ -67,12 +67,12 @@ class CoordContextBuilder(Builder[CoordContext]):
                 *   coord_validator (CoordContextValidator)
                 *   validator (NumberInBoundsValidator)
 
-        # Returns:
+        # RETURNS:
           BuildResult[CoordContext] containing either:
                 - On success: CoordContext in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   ZeroCoordContextFlagsException
             *   CoordContextBuildFailedException
             *   ExcessiveCoordContextFlagsException

@@ -79,12 +79,12 @@ class TokenDataService(DataService[Token]):
         # PARAMETERS:
             *   item (Token)
 
-        # Returns:
+        # RETURNS:
         InsertionResult[TToken] containing either:
             - On success: Token in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   TokenDataServiceException
         """
         method = "TokenDataService.push"
@@ -118,12 +118,12 @@ class TokenDataService(DataService[Token]):
         # PARAMETERS:
             *   item (Token)
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Token]] containing either:
             - On success: List[Token] in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "TokenDataService.searcher"

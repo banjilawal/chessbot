@@ -60,9 +60,9 @@ class ArenaService(EntityService[Arena]):
             *   name (str)
             *   builder (ArenaFactory)
             *   validator (ArenaValidator)
-        # Returns:
+        # RETURNS:
             None
-        # Raises:
+        # RAISES:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
@@ -183,7 +183,7 @@ class ArenaService(EntityService[Arena]):
             *   arena (Arena)
             *   team_service (TeamService)
         All Services have default values to ensure they are never null.
-        # Returns:
+        # RETURNS:
             *   Result[Team] containing either:
                     - On failure: Exception.
                     - On success: (Arena, Team) in the payload.

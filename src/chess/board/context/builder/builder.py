@@ -44,13 +44,13 @@ class BoardContextBuilder(Builder[BoardContext]):
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[BoardContext]:
         """
-        # Action:
+        # ACTION:
             1.  Confirm that only one in the (id, arena) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a BoardContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
-        # Parameters:
+        # PARAMETERS:
             Only one these must be provided:
                 *   id (Optional[int])
                 *   designation (Optional[str])
@@ -60,12 +60,12 @@ class BoardContextBuilder(Builder[BoardContext]):
                 *   name_validator (type[NameValidator])
                 *   builder (type[CoordBuilder])
 
-        # Returns:
+        # RETURNS:
         BuildResult[TeamSearchContext] containing either:
             - On success:   TeamSearchContext in the payload.
             - On failure:   Exception.
 
-        # Raises:
+        # RAISES:
             *   ZeroBoardContextFlagsException
             *   BoardContextBuildFailedException
             *   ExcessiveBoardContextFlagsException

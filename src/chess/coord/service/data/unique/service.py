@@ -50,10 +50,10 @@ class UniqueCoordDataService(UniqueDataService[Coord]):
             *   name (str): = SERVICE_NAME
             *   data_service (CoordDataService): = CoordDataService()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name, data_service=data_service)

@@ -44,20 +44,20 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
             super_key_validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator()
     ) -> SearchResult[List[Schema]]:
         """
-        # Action:
+        # ACTION:
             1.  If super_key fails validation send the exception chain in the SearchResult. Else, route to the
                 search method by the attribute portion of the SuperKey.
             2.  If the value portion of the SuperKey is not in the permitted attribute values send the exception
                 chain in the SearchResult. Else, send Personas whose targeted attribute values match.
-        # Parameters:
+        # PARAMETERS:
             *   key: SchemaSuperKey
             *   key_validator: SchemaSuperKeyValidator
-        # Returns:
+        # RETURNS:
             *   SearchResult[List[Schema]] containing either:
                     - On error: Exception , payload null
                     - On finding a match: List[Schema] in the payload.
                     - On no matches found: Exception null, payload null
-        # Raises:
+        # RAISES:
             *   SchemaLookupFailedException
         """
         method = "SchemaLookup.query"
@@ -75,7 +75,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         
         # Entry point into forward lookups by name.
         if super_key.name is not None:
-            return cls._lookup_by_name(name=super_key.name)
+            return cls._by_name(name=super_key.name)
         # Entry point into forward lookups by color.
         if super_key.color is not None:
             return cls._lookup_by_color(color=super_key.color)
@@ -90,31 +90,33 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_name(cls, target: str) -> SearchResult[List[Schema]]:
+    def _by_name(cls, name: str) -> SearchResult[List[Schema]]:
         """
-        # Action:
+        # ACTION:
             1.  Get any Schema entry whose name matches the target value.
-        # Parameters:
+        # PARAMETERS:
             *   target (str)
-        # Returns:
+        # RETURNS:
             *   SearchResult[List[Schema]] containing either:
                     - On error: Exception
                     - On finding a match: List[Schema] in the payload.
                     - On no matches found: Exception null, payload null
-        # Raises:
+        # RAISES:
             *   SchemaNameBoundsException
             *   SchemaLookupFailedException
         """
-        method = "SchemaLookup._lookup_by_name"
-        matches = [entry for entry in Schema if entry.name.upper() == target.upper()]
+        method = "SchemaLookup._by_name"
+        
+        matches = [entry for entry in Schema if entry.name.upper() == name.upper()]
         # Finding at least one match is success.
         if len(matches) >= 1:
             return SearchResult.success(matches)
+        
         # The default path is a failure.
         return SearchResult.failure(
             SchemaLookupFailedException(
-                message=f"{method}: {SchemaLookupFailedException.ERROR_CODE} -> ",
-                ex=SchemaColorBoundsException(f"{method}: {SchemaNameBoundsException.DEFAULT_MESSAGE}")
+                message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",
+                ex=SchemaNameBoundsException(f"{method}: {SchemaNameBoundsException.DEFAULT_MESSAGE}")
             )
         )
     
@@ -122,27 +124,29 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     @LoggingLevelRouter.monitor
     def _lookup_by_color(cls, color: GameColor) -> SearchResult[List[Schema]]:
         """
-        # Action:
+        # ACTION:
         1.  Get any Schema entry which matches the targeted color-value key.
 
-        # Parameters:
+        # PARAMETERS:
             *   color (GameColor)
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Schema]] containing either:
             - On error: Exception , payload null
             - On finding a match: List[Schema] in the payload.
             - On no matches found: Exception null, payload null
 
-        # Raises:
+        # RAISES:
             *   SchemaColorBoundsException
             *   SchemaLookupFailedException
         """
         method = "SchemaLookup._find_by_color"
+        
         matches = [entry for entry in Schema if entry.color == color]
         # Finding at least one match is success.
         if len(matches) >= 1:
             return SearchResult.success(matches)
+        
         # The default path is failure
         return SearchResult.failure(
             SchemaLookupFailedException(

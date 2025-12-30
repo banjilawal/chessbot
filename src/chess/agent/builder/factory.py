@@ -63,12 +63,12 @@ class AgentFactory(Builder[PlayerAgent]):
             *   agent_variety (AgentVariety)
             *   engine_service (Optional[EngineService])
 
-        # Returns:
+        # RETURNS:
         ValidationResult[PlayerAgent] containing either:
             - On success: PlayerAgent in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   AgentBuildFailedException
         """
         method = "AgentBuilder.build"
@@ -115,12 +115,12 @@ class AgentFactory(Builder[PlayerAgent]):
             *   name (str)
             *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[HumanAgent] containing either:
             - On success: HumanAgent in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   HumanAgentBuildFailedException
         """
         method = "AgentBuilder.build_human_agent"
@@ -169,12 +169,12 @@ class AgentFactory(Builder[PlayerAgent]):
             *   identity_service (IdentityService)
             *   engine_service_validator (EngineServiceValidator)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[MachineAgent] containing either:
             - On success: MachineAgent in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   MachineAgentBuildFailedException
         """
         method = "AgentBuilder.build_machine_agent"

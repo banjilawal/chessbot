@@ -45,10 +45,10 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
         position: Optional[Coord] = None,
     ) -> BuildResult[VisitationSearchContext]:
         """
-        Action:
-        Parameters:
-        Returns:
-        Raises:
+        ACTION:
+        PARAMETERS:
+        RETURNS:
+        RAISES:
         MethodNameException wraps
         """
         method = "VisitationSearchContextBuilder.builder"

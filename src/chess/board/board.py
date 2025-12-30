@@ -44,16 +44,16 @@ class Board:
             square_service: UniqueSquareDataService = UniqueSquareDataService(),
     ):
         """
-        # Action:
+        # ACTION:
         Constructs Board object
     
-        # Parameters:
+        # PARAMETERS:
           * id (int):
     
-        # Returns:
+        # RETURNS:
         None
     
-        # Raises:
+        # RAISES:
         None
         """
         method = "Board.__init__"

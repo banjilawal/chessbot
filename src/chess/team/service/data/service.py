@@ -59,10 +59,10 @@ class TeamDataService(DataService[Team]):
             *   service (TeamService): = TeamService()
             *   context_service (TeamContextService): = TeamContextService()
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "TeamDataService.__init__"
@@ -93,12 +93,12 @@ class TeamDataService(DataService[Team]):
     #     # PARAMETERS:
     #         *   item (Team)
     #
-    #     # Returns:
+    #     # RETURNS:
     #     InsertionResult[TTeam] containing either:
     #         - On success: Team in the payload.
     #         - On failure: Exception.
     #
-    #     # Raises:
+    #     # RAISES:
     #         *   TeamInsertionFailedException
     #     """
     #     method = "TeamDataService.push"
@@ -138,12 +138,12 @@ class TeamDataService(DataService[Team]):
     #     # PARAMETERS:
     #         *   item (Team)
     #
-    #     # Returns:
+    #     # RETURNS:
     #     SearchResult[List[Team]] containing either:
     #         - On success: List[Team] in the payload.
     #         - On failure: Exception.
     #
-    #     # Raises:
+    #     # RAISES:
     #     None
     #     """
     #     method = "TeamDataService.searcher"

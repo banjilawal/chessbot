@@ -91,10 +91,10 @@ class Coordinate(BaseModel):
     Args:
       delta (Delta): A validation-pkg for the shift.
 
-    Returns:
+    RETURNS:
       Coordinate: A new Coord instance.
 
-    Raises:
+    RAISES:
       NullException: If the provided validation-pkg is validation.
       Validationror: If the new point is out of bounds.
     """

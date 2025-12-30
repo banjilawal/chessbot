@@ -23,12 +23,12 @@ class CoordinateSBindingValidator(Validator):
     Args
       candidate (CoordinateBinding): coordinate_binding to validate
 
-    Returns:
+    RETURNS:
       bool: True if coordinate_binding satisfies the specifications. Otherwise throws an rollback_exception
         returning always true is not standard practice. It simplifies testing and eliminates 
         distractions. 
 
-    Raises:
+    RAISES:
 
       NullCoordException: if candidate is validation
 

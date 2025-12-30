@@ -53,13 +53,13 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
             not_negative_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
     ) -> BuildResult[PersonaSuperKey]:
         """
-        # Action:
+        # ACTION:
             1.  Confirm that only one in the (name, designation, quota, ransom) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a PersonaSuperKey and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
-        # Parameters:
+        # PARAMETERS:
             Only one these must be provided:
                 *   name (Optional[str])
                 *   quota (Optional[str])
@@ -70,12 +70,12 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
                 *   not_negative_validator (NumberValidator)
                 *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         BuildResult[PersonaSuperKey] containing either:
             - On success: PersonaSuperKey in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   ZeroPersonaSuperKeyFlagsException
             *   PersonaSuperKeyBuildFailedException
             *   ExcessivePersonaSuperKeyFlagsException

@@ -47,18 +47,18 @@ class RankFactory(Builder[Rank]):
             rank_spec_validator: RankSpecValidator = RankSpecValidator(),
     ) -> BuildResult[Rank]:
         """
-        # Action:
+        # ACTION:
         Given a Persona, return an appropriate Rank object.
 
-        # Parameters:
+        # PARAMETERS:
             * persona (Persona)
 
-        # Returns:
+        # RETURNS:
           BuildResult[Rank] containing either:
                 - On success: a concrete Rank in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * RankBuildFailedException
         """
         method = "RankFactory.builder"
@@ -90,18 +90,18 @@ class RankFactory(Builder[Rank]):
     @LoggingLevelRouter.monitor
     def build_king_rank(cls, id: int = id_emitter.king_id) -> BuildResult[King]:
         """
-        # Action:
+        # ACTION:
         Returns a BuildResult containing a King instance.
 
-        # Parameters:
+        # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
           BuildResult[King] containing either:
                 - On success: a King in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "RankFactory.build_king_rank"
@@ -120,18 +120,18 @@ class RankFactory(Builder[Rank]):
     @LoggingLevelRouter.monitor
     def build_pawn_rank(cls, id: int = id_emitter.pawn_id) -> BuildResult[Pawn]:
         """
-        # Action:
+        # ACTION:
         Returns a BuildResult containing a Pawn instance.
 
-        # Parameters:
+        # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
           BuildResult[Pawn] containing either:
                 - On success: a Pawn in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "RankFactory.build_pawn_rank"
@@ -150,18 +150,18 @@ class RankFactory(Builder[Rank]):
     @LoggingLevelRouter.monitor
     def build_knight_rank(cls, id: int = id_emitter.knight_id) -> BuildResult[Knight]:
         """
-        # Action:
+        # ACTION:
         Returns a BuildResult containing a Knight instance.
 
-        # Parameters:
+        # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
           BuildResult[Knight] containing either:
                 - On success: a Knight in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "RankFactory.build_knight_rank"
@@ -180,18 +180,18 @@ class RankFactory(Builder[Rank]):
     @LoggingLevelRouter.monitor
     def build_bishop_rank(cls, id: int = id_emitter.bishop_id) -> BuildResult[Bishop]:
         """
-        # Action:
+        # ACTION:
         Returns a BuildResult containing a Bishop instance.
 
-        # Parameters:
+        # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
           BuildResult[Bishop] containing either:
                 - On success: a Bishop in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "RankFactory.build_bishop_rank"
@@ -210,18 +210,18 @@ class RankFactory(Builder[Rank]):
     @LoggingLevelRouter.monitor
     def build_rook_rank(cls, i: int = id_emitter.rook_id) -> BuildResult[Rook]:
         """
-        # Action:
+        # ACTION:
         Returns a BuildResult containing a Rook instance.
 
-        # Parameters:
+        # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
           BuildResult[Rook] containing either:
                 - On success: a Rook in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "RankFactory.build_rook_rank"
@@ -240,18 +240,18 @@ class RankFactory(Builder[Rank]):
     @LoggingLevelRouter.monitor
     def build_queen_rank(cls, id: int = id_emitter.queen_id) -> BuildResult[Queen]:
         """
-        # Action:
+        # ACTION:
         Returns a BuildResult containing a Queen instance.
 
-        # Parameters:
+        # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
           BuildResult[Queen] containing either:
                 - On success: a Queen in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
         None
         """
         method = "RankFactory.build_queen_rank"

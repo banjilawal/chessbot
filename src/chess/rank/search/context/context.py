@@ -58,10 +58,10 @@ class RankContext(Context[Rank]):
             *   game (Optional[Game])
             *   variety (Optional[RankVariety])
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=name)
@@ -88,10 +88,10 @@ class RankContext(Context[Rank]):
         # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
         dict
 
-        # Raises:
+        # RAISES:
         None
         """
         def to_dict(self) -> dict:

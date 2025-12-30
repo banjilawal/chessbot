@@ -65,7 +65,7 @@ class QueenValidator(Validator[Queen]):
             *   quota_validator (type[RankQuotaValidator]=RankQuotaValidator)
             *   ransom_validator (type[RankRansomValidator]=RankRansomValidator)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[Rank] containing either:
             - On success: Rank in the payload.
             - On failure: Exception.
@@ -137,7 +137,7 @@ class QueenValidator(Validator[Queen]):
             *   persona (Persona)
             *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[int] containing either:
             - On success:   int in the payload.
             - On failure:   Exception.
@@ -187,7 +187,7 @@ class QueenValidator(Validator[Queen]):
             *   persona (Persona)
             *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[str] containing either:
             - On success:   str in the payload.
             - On failure:   Exception.
@@ -236,7 +236,7 @@ class QueenValidator(Validator[Queen]):
             *   persona (Persona)
             *   not_negative_validator (NumberValidator)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[int] containing either:
             - On success:   int in the payload.
             - On failure:   Exception.
@@ -286,7 +286,7 @@ class QueenValidator(Validator[Queen]):
             *   persona (Persona)
             *   text_validator (StringValidator)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[str] containing either:
             - On success:   str in the payload.
             - On failure:   Exception.
@@ -336,7 +336,7 @@ class QueenValidator(Validator[Queen]):
             *   persona (Persona)
             *   not_negative_validator (NumberValidator)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[int] containing either:
             - On success:   int in the payload.
             - On failure:   Exception.

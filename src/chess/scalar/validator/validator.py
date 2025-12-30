@@ -44,18 +44,18 @@ class ScalarValidator(Validator[Scalar]):
     @LoggingLevelRouter.monitor
     def validate(self) -> ValidationResult[Scalar]:
         """
-        # Action:
+        # ACTION:
         Verifies candidate is a Scalar whose absolute value is within BOARD_DIMENSION.
     
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is a Scalar.
     
-        # Returns:
+        # RETURNS:
           ValidationResult[Scalar] containing either:
                 - On success: Scalar in the payload.
                 - On failure: Exception.
     
-        # Raises:
+        # RAISES:
             * TypeError
             * NullScalarException
         """
@@ -115,18 +115,18 @@ class ScalarValidator(Validator[Scalar]):
     @LoggingLevelRouter.monitor
     def validate_value(self, candidate: Any) -> ValidationResult[int]:
         """
-        # Action:
+        # ACTION:
         Verifies candidate is a Scalar whose absolute value is within BOARD_DIMENSION.
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is an int within the dimensions of the board.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[Scalar] containing either:
                 - On success: Scalar in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * TypeError
             * NullNumberException
             * InvalidScalarException

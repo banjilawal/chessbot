@@ -63,7 +63,7 @@ class GameBuilder(Builder[Game]):
             *   board_certifier (BoardCertifier)
         All Services have default values to ensure they are never null.
         
-        # Returns:
+        # RETURNS:
         BuildResult[Game] containing either:
             - On success: Game in the payload.
             - On failure: Exception.

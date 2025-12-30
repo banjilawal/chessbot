@@ -43,20 +43,20 @@ class ScalarBuilder(Builder[Scalar]):
             scalar_validator: ScalarValidator = ScalarValidator()
     ) -> BuildResult[Scalar]:
         """
-        # Action:
+        # ACTION:
         If the absolute value of the param is within BOARD_DIMENSION return a new Scalar instance.
         Otherwise, return an exception.
     
-        # Parameters:
+        # PARAMETERS:
             *   value (int)
             *   scalar_validator (ScalarValidator)
     
-        # Returns:
+        # RETURNS:
           BuildResult[Scalar] containing either:
                 - On success: Scalar in the payload.
                 - On failure: Exception.
     
-        # Raises:
+        # RAISES:
             * ScalarBuildFailedException
         """
         method = "ScalarBuilder.builder"

@@ -16,11 +16,11 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
     Argument:
       `candidate` (`TravelEvent`): `occupationEvent `to validate
 
-     Returns:
+     RETURNS:
        `Result[V]`: A `Result` object containing the validated payload if the specification is satisfied,
         `InvalidOccupationEventException` otherwise.
 
-    Raises:
+    RAISES:
       `TypeError`: if `candidate` is not OperationEvent
       `NullOccupationEventException`: if `candidate` is validation
 

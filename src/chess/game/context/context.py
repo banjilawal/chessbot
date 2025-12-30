@@ -59,10 +59,10 @@ class GameContext(Context[Game]):
             *   player_agent (Optional[PlayerAgent])
             *   board (Optional[Board])
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         None
         """
         super().__init__(id=id, name=None)
@@ -89,10 +89,10 @@ class GameContext(Context[Game]):
         # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
         dict
 
-        # Raises:
+        # RAISES:
         None
         """
         return {

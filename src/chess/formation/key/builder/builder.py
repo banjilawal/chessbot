@@ -52,13 +52,13 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[FormationSuperKey]:
         """
-        # Action:
+        # ACTION:
             1.  Confirm that only one in the (square_designation, color, designation, designation) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a FormationSuperKey and send in a BuildResult. Else, return an exception
                 in the BuildResult.
 
-        # Parameters:
+        # PARAMETERS:
             Only one these must be provided:
                 *   designation (Optional[str])
                 *   square_designation (Optional[str])
@@ -69,12 +69,12 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
                 *   color_validator (GameColorValidator)
                 *   identity_service (IdentityService)
 
-        # Returns:
+        # RETURNS:
         BuildResult[FormationSuperKey] containing either:
             - On success: FormationSuperKey in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   ZeroFormationSuperKeyFlagsException
             *   FormationSuperKeyBuildFailedException
             *   ExcessiveFormationSuperKeyFlagsException

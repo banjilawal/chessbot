@@ -49,22 +49,22 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             square_validator: type[SquareValidator] = SquareValidator
     ) -> ValidationResult[DomainOrigin]:
         """
-        # Action:
+        # ACTION:
         Use chained PieceValidator and SquareValidator to ensure a candidate is a valid DomainOrigin before
         the client can use it.
 
-        # Parameters:
+        # PARAMETERS:
           * candidate (Any): Object to verify is a Domain.
           * piece_validator (type[PieceValidator]): Injected into validator.
           * validator (type[SquareValidator]): verifies the relationship between the
                 Domain's owning Token and Square.
 
-        # Returns:
+        # RETURNS:
           ValidationResult[DomainOrigin] containing either:
                 - On success: DomainOrigin in the payload.
                 - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             * TypeError
             * InvalidDomainOriginException
         """

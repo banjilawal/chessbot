@@ -42,14 +42,14 @@ class ClassName:
 
   def method_name(param: DataType):
     """
-    Action:
-    Parameters:
+    ACTION:
+    PARAMETERS:
         * `param` (`DataType`):
-    Returns:
+    RETURNS:
         `DataType` or `Void`
-    Raises:
+    RAISES:
         `DataType` or `Void`
-    Raises:
+    RAISES:
     MethodNameException wraps
         *
     """

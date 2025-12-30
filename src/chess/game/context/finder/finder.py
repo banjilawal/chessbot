@@ -48,24 +48,24 @@ class GameFinder(DataFinder[Game]):
             context_validator: GameContextValidator = GameContextValidator()
     ) -> SearchResult[List[Game]]:
         """
-        # Action:
+        # ACTION:
         1.  Verify the dataset is not null and contains only Game objects,
         2.  Use context_validator to certify the provided map.
         3.  Context attribute routes the search. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
 
-        # Parameters:
+        # PARAMETERS:
             *   dataset (List[Game]):
             *   map: GameContext
             *   context_validator: GameContextValidator
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Game]] containing either:
             - On finding a match: List[Game] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
-        # Raises:
+        # RAISES:
             *   TypeError
             *   GameNullDatasetException
             *   GameFinderOperationFailedException
@@ -104,23 +104,23 @@ class GameFinder(DataFinder[Game]):
     @LoggingLevelRouter.monitor
     def _find_by_id(cls, dataset: List[Game], id: int) -> SearchResult[List[Game]]:
         """
-        # Action:
+        # ACTION:
         1.  Get the Game with the matching id.
         2.  If no match is found return an exception.
         3.  An id search should produce either no hits or one hit only.
         4.  Multiple unique agents in the result indicate that  a problem.
 
-        # Parameters:
+        # PARAMETERS:
             *   id (int)
             *   dataset (List[Game])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Game]] containing either:
             - On finding a match: List[Game] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
-        # Raises:
+        # RAISES:
             *   GameFinderOperationFailedException
         """
         method = "GameFinder._find_by_id"
@@ -144,22 +144,22 @@ class GameFinder(DataFinder[Game]):
     @LoggingLevelRouter.monitor
     def _find_by_agent(cls, dataset: [Game], agent: PlayerAgent) -> SearchResult[List[Game]]:
         """
-        # Action:
+        # ACTION:
         1.  Get the Game with the matching player-player_agent.
         2.  If no match is found return an exception.
         3.  An id search should produce either no hits or one hit only.
 
-        # Parameters:
+        # PARAMETERS:
             *   player_agent (PlayerAgent)
             *   dataset (List[PlayerAgent])
 
-        # Returns:
+        # RETURNS:
         SearchResult[List[Game]] containing either:
             - On finding a match: List[Game] in the payload.
             - On error: Exception , payload null
             - On no matches found: Exception null, payload null
 
-        # Raises:
+        # RAISES:
             *   GameFinderOperationFailedException
         """
         method = "GameFinder._find_by_agent"

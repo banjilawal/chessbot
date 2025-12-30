@@ -52,9 +52,9 @@ class FormationSuperKeyService(ContextService[FormationSuperKey]):
             *   name (str)
             *   builder (FormationSuperKeyBuilder)
             *   validator (FormationSuperKeyValidator)
-        # Returns:
+        # RETURNS:
             None
-        # Raises:
+        # RAISES:
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=lookup)

@@ -66,7 +66,7 @@ class TeamBuilder(Builder[Team]):
             *   identity_service (IdentityService)
 
         All Services have default values to ensure they are never null.
-        # Returns:
+        # RETURNS:
             *BuildResult[Team] containing either:
                 - On failure: Exception.
                 - On success: Team in the payload.

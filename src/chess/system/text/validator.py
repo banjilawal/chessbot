@@ -47,12 +47,12 @@ class StringValidator(Validator[str]):
         # PARAMETERS:
             *   candidate (Any)
 
-        # Returns:
+        # RETURNS:
         ValidationResult[str] containing either:
             - On success: str in the payload.
             - On failure: Exception.
 
-        # Raises:
+        # RAISES:
             *   NullTextError
             *   TypeError
             *   BlankTextError

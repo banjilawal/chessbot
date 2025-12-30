@@ -71,10 +71,10 @@ class SnapshotContext(Context[Snapshot]):
             *   exception (Optional[Exception])
             *   player (Optional[PlayerAgent])
 
-        # Returns:
+        # RETURNS:
         None
 
-        # Raises:
+        # RAISES:
         Non
         """
         super().__init__(id=None, name=None)
@@ -116,10 +116,10 @@ class SnapshotContext(Context[Snapshot]):
         # PARAMETERS:
         None
 
-        # Returns:
+        # RETURNS:
         dict
 
-        # Raises:
+        # RAISES:
         None
         """
         return {
