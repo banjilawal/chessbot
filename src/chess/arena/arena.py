@@ -20,8 +20,7 @@ class Arena:
     _white_team: Team
     _black_team: Team
 
-    
-    def __init__(self, id: int, board: Board, white_team: Team = None, black_team: Team = None):
+    def __init__(self, id: int, board: Board, game: Game):
         self._id = id
         self._board = board
         self._white_team = self._white_team

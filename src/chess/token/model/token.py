@@ -13,7 +13,6 @@ from typing import Optional
 from chess.square import Square
 from chess.team import Team
 from chess.rank import Rank
-from chess.piece import Piece
 from chess.coord import Coord, CoordDataService
 
 class Token(ABC):
@@ -39,11 +38,10 @@ class Token(ABC):
         *   positions (CoordDataService):
     """
     _id: int
-    _name: str
     _team: Team
     _rank: Rank
     _roster_number: int
-    _opening_square: Square
+    _formation: Formation
     _current_position: Coord
     _positions: CoordDataService
 

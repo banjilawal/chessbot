@@ -1,7 +1,7 @@
-# src/chess/formation/validator/exception/flag.py
+# src/chess/formation/validator/exception/debug/zero.py
 
 """
-Module: chess.formation.validator.exception.flag
+Module: chess.formation.validator.exception.debug.zero
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/formation/validator/exception/null.py
+# src/chess/formation/validator/exception/debug/null.py
 
 """
-Module: chess.formation.validator.exception.null
+Module: chess.formation.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

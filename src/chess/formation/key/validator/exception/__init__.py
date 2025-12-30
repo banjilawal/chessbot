@@ -14,4 +14,3 @@ from .debug import *
 
 # Modules
 from .wrapper import InvalidFormationSuperKeyException
-from .route import FormationSuperKeyValidationRouteException

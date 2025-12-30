@@ -1,3 +1,12 @@
+# src/chess/formation/validator/exception/debug/route.py
+
+"""
+Module: chess.formation.validator.exception.debug.route
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
 from chess.system import ResultException, UnhandledRouteException
 
 __all__ = [
