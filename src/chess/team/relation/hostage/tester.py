@@ -9,11 +9,8 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import LoggingLevelRouter, RelationReport, RelationTester
+from chess.token import Token, TokenService, TokenContext, CombatantToken, KingToken
 from chess.team import Team, HostageTokenRelationTestFailedException, TeamContext, TeamValidator
-from chess.token import Token, TokenService
-from chess.token.context.context import TokenContext
-from chess.token.model.combatant.token import CombatantToken
-from chess.token.model.king.token import KingToken
 
 
 class HostageTokenRelationTester(RelationTester[Team, Token]):
@@ -70,6 +67,7 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
             *   HostageTokenRelationTestFailedException
         """
         method = "HostageTokenRelationTester.test"
+        
         # Process the possible team_validation outcomes.
         team_validation = team_validator.validate(candidate_primary)
         if team_validation.is_failure:
@@ -81,7 +79,6 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
                 )
             )
         team = cast(Team, team_validation.payload)
-        
         # Process the possible piece_validation outcomes.
         piece_validation = piece_service.validator.validate(candidate_satellite)
         if piece_validation.is_failure:
@@ -92,27 +89,29 @@ class HostageTokenRelationTester(RelationTester[Team, Token]):
                 )
             )
         piece = cast(Token, piece_validation.payload)
-        
-        # If the piece is assigned to it's not a satellite of the hostage list.
-        if piece.team == team:
+        # Deal with the three cases that piece is not associated with the hostage list.
+        if (
+                isinstance(piece, KingToken) or
+                piece.team == team or
+                (piece.team != team and cast(CombatantToken, piece).captor is None)
+        ):
             return RelationReport.not_related()
         
-        if piece.team != team:
-            if isinstance(piece, KingToken): return RelationReport.not_related()
-            if isinstance(piece, CombatantToken):
-                piece = cast(CombatantToken, piece)
-            if piece.captor is None:
-                return RelationReport.not_related()
-            hostage_search = team.hostages.search(context=TeamContext(id=piece.id))
-            if hostage_search.is_failure:
-                # Return the exception chain on failure.
-                return RelationReport(
-                    HostageTokenRelationTestFailedException(
-                        message=f"{method}: {HostageTokenRelationTestFailedException.ERROR_CODE}",
-                        ex=hostage_search.exception,
-                        )
+        # At this point a piece can only be a captured combatant. The possible relations are unregistered
+        # token or fully bidirectional. This can only be resolved with a search.
+        hostage_search = team.hostages.search(context=TeamContext(id=piece.id))
+        
+        # On the failure case return the exception chain.
+        if hostage_search.is_failure:
+            # Return the exception chain on failure.
+            return RelationReport(
+                HostageTokenRelationTestFailedException(
+                    message=f"{method}: {HostageTokenRelationTestFailedException.ERROR_CODE}",
+                    ex=hostage_search.exception,
                     )
-            if hostage_search.is_empty:
-                return RelationReport.not_related()
-        # Deal with the success case.
+                )
+        # On the empty search the token has not been added to the hostage list.
+        if hostage_search.is_empty:
+            return RelationReport.partial(satellite=piece)
+        # All other paths in the test chain have been exhausted. The team.hostages-token tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=team, satellite=piece)

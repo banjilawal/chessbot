@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/team/relation/roster/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/relation/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/relation/tester.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/relation/hostage/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/hostage/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/hostage/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/hostage/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/member/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/member/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/roster/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/member/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/roster/wrapper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -986,7 +980,7 @@
       <workItem from="1766992280166" duration="12219000" />
       <workItem from="1767018422815" duration="1433000" />
       <workItem from="1767020094964" duration="3011000" />
-      <workItem from="1767024723147" duration="24292000" />
+      <workItem from="1767024723147" duration="32806000" />
     </task>
     <servers />
   </component>

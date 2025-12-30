@@ -114,6 +114,5 @@ class AgentTeamRelationTester(RelationTester[PlayerAgent, Team]):
         # If the team was not found the bidirectional relationship has not been fully completed.
         if search.is_empty:
             return RelationReport.partial(satellite=team)
-        
-        # All the tests in the chain have been completed. The agent-team tuple is fully bidirectional..
+        # All other paths in the test chain have been exhausted. The agent-team tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=owner, satellite=team)
