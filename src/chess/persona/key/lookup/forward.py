@@ -14,21 +14,22 @@ from chess.persona import (
     
     Persona, PersonaSuperKey, PersonaSuperKeyValidator
 )
+from chess.persona.key.lookup.exception.wrapper import PersonaLookupFailedException
 
 from chess.system import ForwardLookup, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class PersonaLookup(ForwardLookup[PersonaSuperKey]):
     """
-    # ROLE: Forward Lookups, Mapping 
+    # ROLE: Forward Lookups
 
     # RESPONSIBILITIES:
-    1.  Lookup microservice API for mapping metadata values to Persona configurations.
-    2.  Encapsulates integrity assurance logic for Persona lookup operations.
-    3.  Provide mapping between Personas and the Ranks.
+    1.  Run forward lookups on the Persona hashtable to find a Team's play_directive_metadata for a game.
+    2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
+    3.  Verifies correctness of key-value key before running the forward lookup.
 
     # PARENT:
-        *   EntityLookup
+        *   ForwardLookup
 
     # PROVIDES:
     None
@@ -37,68 +38,66 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ForwardLookup for inherited attributes.
+    None
     """
-    
-
     @classmethod
-    @LoggingLevelRouter.monitor
-    def lookup(
+    def query(
             cls,
-            context: PersonaSuperKey,
-            context_validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator()
+            super_key: PersonaSuperKey,
+            super_key_validator: PersonaSuperKeyValidator = PersonaSuperKeyValidator()
     ) -> SearchResult[List[Persona]]:
         """
         # Action:
-        1.  Certify the provided map with the class method's validator param.
-        2.  If the map validation fails return the exception in a validation result. Otherwise, return
-            the configuration entries which matched the map.
-
+            1.  If super_key fails validation send the exception chain in the SearchResult. Else, route to the
+                search method by the attribute portion of the SuperKey.
+            2.  If the value portion of the SuperKey is not in the permitted attribute values send the exception
+                chain in the SearchResult. Else, send Personas whose targeted attribute values match.
         # Parameters:
-            *   map: PersonaSuperKey
-            *   context_validator: PersonaSuperKeyValidator
-
+            *   key: SchemaSuperKey
+            *   key_validator: SchemaSuperKeyValidator
         # Returns:
-        SearchResult[List[Persona]] containing either:
-            - On finding a match: List[Persona] in the payload.
-            - On error: Exception , payload null
-            - On no matches found: Exception null, payload null
-
+            *   SearchResult[List[Schema]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Schema] in the payload.
+                    - On no matches found: Exception null, payload null
         # Raises:
-            *   PersonaLookupException
-            *   PersonaLookupException
+            *   SchemaLookupFailedException
         """
-        method = "PersonaLookup.find"
-        try:
-            # certify the map is safe.
-            validation = context_validator.validate(candidate=context)
-            if validation.is_failure:
-                return SearchResult.failure(validation.exception)
-            # After map is verified select the search method based on the which flag is enabled.
-            
-            # Entry point into searching by name value.
-            if context.name is not None:
-                return cls._lookup_by_designation(designation=context.name)
-            # Entry point into searching by designation value.
-            if context.designation is not None:
-                return cls._lookup_by_designation(designation=context.designation)
-            # Entry point into searching by ransom value.
-            if context.ransom is not None:
-                return cls._lookup_by_ransom(ransom=context.ransom)
-            # Entry point into searching by quota value.
-            if context.quota is not None:
-                return cls._lookup_by_quota(quota=context.quota)
-            
-            # Failsafe if any map cases was missed
+        method = "SchemaLookup.query"
+        
+        # Handle the case that the SuperKey fails validation.
+        validation = super_key_validator.validate(candidate=super_key)
+        if validation.is_failure:
+            # Return the exception chain on failure.
             return SearchResult.failure(
-                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
+                PersonaLookupFailedException(
+                    message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
+                    ex=validation.exception
+                )
             )
-        # Finally, if some exception is not handled by the checks wrap it inside a PersonaLookupException then,
-        # return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                PersonaLookupException(ex=ex, message=f"{method}: {PersonaLookupException.DEFAULT_MESSAGE}")
+        # After verification use the hash key to route to the appropriate lookup method.
+        
+        # Entry point into forward lookups by name.
+        if super_key.name is not None:
+            return cls._by_name(designation=super_key.name)
+        # Entry point into forward lookups by designation.
+        if super_key.designation is not None:
+            return cls._by_designation(designation=super_key.designation)
+        # Entry point into forward lookups by ranson.
+        if super_key.ransom is not None:
+            return cls._by_ransom(ransom=super_key.ransom)
+        # Entry point into forward lookups by name.
+        if super_key.quota is not None:
+            return cls._by_quota(quota=super_key.quota)
+        
+        # For other entry points return the exception chain.
+        return SearchResult.failure(
+            PersonaLookupFailedException(
+                message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
+                ex=
             )
+        )
+
     
     @classmethod
     @LoggingLevelRouter.monitor

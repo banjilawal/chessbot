@@ -1,14 +1,15 @@
-# src/chess/schema/validator/exception/color.py
+# src/chess/schema/key/lookup/exception/debug/color.py
 
 """
-Module: chess.schema.validator.exception.color
+Module: chess.schema.key.lookup.exception.debug.color
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.schema import InvalidSchemaException
-from chess.system import BoundsException, GameColorException
+
+from chess.system import BoundsException
+from chess.schema import SchemaException
 
 __all__ = [
     # ======================# SCHEMA_COLOR_BOUNDS EXCEPTION #======================#
@@ -17,7 +18,7 @@ __all__ = [
 
 
 # ======================# SCHEMA_COLOR_BOUNDS EXCEPTION #======================#
-class SchemaColorBoundsException(InvalidSchemaException, BoundsException, GameColorException):
+class SchemaColorBoundsException(SchemaException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -26,8 +27,7 @@ class SchemaColorBoundsException(InvalidSchemaException, BoundsException, GameCo
     
     # PARENT:
         *   BoundsException
-        *   GameColorException
-        *   InvalidSchemaException
+        *   SchemaException
 
     # PROVIDES:
     None
@@ -39,5 +39,5 @@ class SchemaColorBoundsException(InvalidSchemaException, BoundsException, GameCo
     None
     """
     ERROR_CODE = "COLOR_OUT_OF_SCHEMA_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "There is no Schema variant with that color."
+    DEFAULT_MESSAGE = "SchemaLookup failed: target was outside the set of permissible schema colors."
     

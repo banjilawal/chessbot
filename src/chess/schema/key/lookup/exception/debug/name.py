@@ -1,23 +1,23 @@
-# src/chess/schema/validator/exception/name.py
+# src/chess/schema/key/lookup/exception/debug/name.py
 
 """
-Module: chess.schema.validator.exception.name
+Module: chess.schema.key.lookup.exception.debug.name
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-10-09
 version: 1.0.0
 """
-
-from chess.schema import InvalidSchemaException
-from chess.system import BoundsException, NameException
 
 __all__ = [
     # ======================# SCHEMA_NAME_BOUNDS EXCEPTION #======================#
     "SchemaNameBoundsException",
 ]
 
+from chess.schema import SchemaException
+from chess.system import BoundsException
+
 
 # ======================# SCHEMA_NAME_BOUNDS EXCEPTION #======================#
-class SchemaNameBoundsException(InvalidSchemaException, BoundsException, NameException):
+class SchemaNameBoundsException(SchemaException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,9 +25,8 @@ class SchemaNameBoundsException(InvalidSchemaException, BoundsException, NameExc
     1.  Indicate that no variant of Schema has that name.
 
     # PARENT:
-        *   NameException
         *   BoundsException
-        *   InvalidSchemaException
+        *   SchemaException
   
     # PROVIDES:
     None
@@ -39,4 +38,4 @@ class SchemaNameBoundsException(InvalidSchemaException, BoundsException, NameExc
     None
     """
     ERROR_CODE = "SCHEMA_NAME_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "There is no Schema variant with that name."
+    DEFAULT_MESSAGE = "SchemaLookup failed: No schema entries use the target as their key."

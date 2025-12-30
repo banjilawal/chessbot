@@ -1,7 +1,7 @@
-# src/chess/schema/key/lookup/wrapper.py
+# src/chess/schema/key/lookup/exception/wrapper.py
 
 """
-Module: chess.schema.key.lookup.wrapper
+Module: chess.schema.key.lookup.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -12,7 +12,7 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# FORWARD_SCHEMA_LOOKUP_FAILED EXCEPTION #======================#
+    # ======================# SCHEMA_LOOKUP_FAILED EXCEPTION #======================#
     "SchemaLookupFailedException",
 ]
 
@@ -20,13 +20,13 @@ from chess.schema import SchemaException
 from chess.system import ForwardLookupFailedException
 
 
-# ======================# FORWARD_SCHEMA_LOOKUP_FAILED EXCEPTION #======================#
+# ======================# SCHEMA_LOOKUP_FAILED EXCEPTION #======================#
 class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap an exception that hits the try-finally block of a ForwardSchemaLookuo method.
+    1.  Wrap an exception that hits the try-finally block of a SchemaLookup method.
 
     # PARENT:
         *   SchemaException
@@ -41,5 +41,5 @@ class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORWARD_SCHEMA_LOOKUP_FAILED"
-    DEFAULT_MESSAGE = "SchemaLookup operation failed."
+    ERROR_CODE = "SCHEMA_LOOKUP_FAILED"
+    DEFAULT_MESSAGE = "SchemaLookup failed."

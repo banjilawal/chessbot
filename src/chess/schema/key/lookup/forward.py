@@ -45,9 +45,10 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     ) -> SearchResult[List[Schema]]:
         """
         # Action:
-            1.  Certify the provided key with the validator.
-            2.  If the key validation fails return the exception in a validation result. Otherwise, return
-                the schema entries with the targeted key-values.
+            1.  If super_key fails validation send the exception chain in the SearchResult. Else, route to the
+                search method by the attribute portion of the SuperKey.
+            2.  If the value portion of the SuperKey is not in the permitted attribute values send the exception
+                chain in the SearchResult. Else, send Personas whose targeted attribute values match.
         # Parameters:
             *   key: SchemaSuperKey
             *   key_validator: SchemaSuperKeyValidator
@@ -59,7 +60,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         # Raises:
             *   SchemaLookupFailedException
         """
-        method = "SchemaLookup.lookup"
+        method = "SchemaLookup.query"
 
         # Handle the case that the SuperKey fails validation.
         validation = super_key_validator.validate(candidate=super_key)
