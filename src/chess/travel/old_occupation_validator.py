@@ -42,7 +42,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
         )
 
       if not isinstance(t, OccupationEvent):
-        raise TypeError(f"{method} Expected an TravelEvent instance, got {type(t).__name__}")
+        raise TypeError(f"{method} Expected an TravelEvent, got {type(t).__name__}")
 
       event = cast(OccupationEvent, t)
 

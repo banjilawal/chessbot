@@ -51,7 +51,7 @@ class CoordinateSBindingValidator(Validator):
         )
 
       if not isinstance(candidate, CoordinateBinding):
-        raise TypeError(f"{method} Expected team_name CoordinateBinding instance, got {type(candidate).__name__} instead.")
+        raise TypeError(f"{method} Expected team_name CoordinateBinding, got {type(candidate).__name__} instead.")
 
       coordinate_binding = cast(CoordinateBinding, candidate)
 

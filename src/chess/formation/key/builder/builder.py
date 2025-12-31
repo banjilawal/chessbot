@@ -203,7 +203,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             return ValidationResult.failure(
                 InvalidSchemaException(
                     message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
-                    ex=TypeError(f"{method} Expected a Schema instance, got {type(candidate).__designation__} instead.")
+                    ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__designation__} instead.")
                 )
             )
         # On certification success return the schema instance in a ValidationResult.

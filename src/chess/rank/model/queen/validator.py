@@ -84,7 +84,7 @@ class QueenValidator(Validator[Queen]):
                 )
             if not isinstance(candidate, Queen):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Queen got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a Queen, got {type(candidate).__name__} instead.")
                 )
             queen = cast(Queen, candidate)
             

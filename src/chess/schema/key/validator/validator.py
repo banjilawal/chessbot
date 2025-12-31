@@ -59,10 +59,9 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
         # RETURNS:Confirm
-        ValidationResult[SchemaSuperKey] containing either:
-                - On failure: Exception.
-                - On success: SchemaSuperKey in the payload.
-
+            *   ValidationResult[SchemaSuperKey] containing either:
+                    - On failure: Exception.
+                    - On success: SchemaSuperKey in the payload.
         # RAISES:
             *   TypeError
             *   NNullSchemaSuperKeyException
@@ -86,7 +85,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             return ValidationResult.failure(
                 SchemaSuperKeyValidationFailedException(
                     message=f"{method}: {SchemaSuperKeyValidationFailedException.ERROR_CODE}",
-                    ex=TypeError(f"{method}: Expected SchemaSuperKey instance, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method}: Expected SchemaSuperKey, got {type(candidate).__name__} instead.")
                 )
             )
         
@@ -117,7 +116,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
         
         # Route to the appropriate validation branch.
         
-        # Certification for the forward lookup-by-name value.
+        # Certification for lookup-by-name value.
         if super_key.name is not None:
             validation = identity_service.validate_name(candidate=super_key.name)
             # Return the exception chain on failure.
@@ -131,7 +130,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             # On certification success return the SchemaMap_name in a ValidationResult.
             return ValidationResult.success(payload=super_key)
         
-        # Certification for the forward lookup-by-color value.
+        # Certification for lookup-by-color value.
         if super_key.color is not None:
             validation = color_validator.validate(candidate=super_key.color)
             if validation.is_failure:
@@ -145,7 +144,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             # On certification success return the SchemaMap_color in a ValidationResult.
             return ValidationResult.success(payload=super_key)
         
-        # Handle the default case where no exception is raised and SchemaSuperKey was not covered with an if-block
+        # The default returns failure.
         return ValidationResult.failure(
             SchemaSuperKeyValidationFailedException(
                 message=f"{method}: {SchemaSuperKeyValidationFailedException.ERROR_CODE} - ",

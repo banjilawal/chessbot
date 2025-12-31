@@ -33,7 +33,7 @@ class ProjectionSearchContextValidator(Validator[ProjectionSearchContext]):
             if not isinstance(candidate, ProjectionSearchContext):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected ProjectionSearchContext instance, got {type(candidate).__name__}"
+                        f"{method}: Expected ProjectionSearchContext, got {type(candidate).__name__}"
                     )
                 )
             

@@ -40,7 +40,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
             
             if not isinstance (candidate, PromotionEvent):
                 return ValidationResult.failure(
-                    TypeError(f"Expected an PromotionEvent instance, got {type(candidate).__name__} instead.")
+                    TypeError(f"Expected an PromotionEvent, got {type(candidate).__name__} instead.")
                 )
             
             event = cast(PromotionEvent, candidate)
@@ -55,13 +55,13 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
             
             if not isinstance(event.actor, PawnPiece):
                 return ValidationResult.failure(
-                    TypeError(f"Expected a PawnPiece instance, got {type(event.actor).__name__}")
+                    TypeError(f"Expected a PawnPiece, got {type(event.actor).__name__}")
                 )
             
             if not isinstance(event.new_rank, (Knight, Bishop, Rook, Queen)):
                 return ValidationResult.failure(
                     TypeError(
-                        f"Expected a PromotableRank(knight, bishop, queen ,or rook instance, got {type(event.new_rank).__name__}")
+                        f"Expected a PromotableRank(knight, bishop, queen ,or rook, got {type(event.new_rank).__name__}")
                 )
                 
             
@@ -72,7 +72,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
             
             if not isinstance(event.actor, PromotablePiece):
                 return ValidationResult.failure(
-                    TypeError(f"Expected an PromotablePiece instance, got {type(candidate).__name__} instead.")
+                    TypeError(f"Expected an PromotablePiece, got {type(candidate).__name__} instead.")
                 )
             piece = cast(PromotablePiece, event.actor)
             

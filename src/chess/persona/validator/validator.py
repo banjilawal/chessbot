@@ -65,7 +65,7 @@ class PersonaValidator(Validator[Persona]):
             return ValidationResult.failure(
                 InvalidPersonaException(
                     message=f"{method}: {InvalidPersonaException.ERROR_CODE}",
-                    ex=TypeError(f"{method} Expected Persona instance, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method} Expected Persona, got {type(candidate).__name__} instead.")
                 )
             )
         # On certification success return the schema instance in a ValidationResult.

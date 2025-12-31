@@ -40,7 +40,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: "
-                        f"Expected TokenContext instance, got {type(candidate).__name__} instead."
+                        f"Expected TokenContext, got {type(candidate).__name__} instead."
                     )
                 )
             

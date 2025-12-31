@@ -71,7 +71,7 @@ class ServiceValidator(Validator[Service]):
             return ValidationResult.failure(
                 ServiceValidationFailedException(
                     message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
-                    ex=TypeError(f"{method} Expected a {type(expected_service).__name__} instance, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method} Expected a {type(expected_service).__name__}, got {type(candidate).__name__} instead.")
                 )
             )
         
@@ -94,7 +94,7 @@ class ServiceValidator(Validator[Service]):
             return ValidationResult(
                 ServiceValidationFailedException(
                     message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
-                    ex=TypeError(f"{method}: Expected Builder instance, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method}: Expected Builder, got {type(candidate).__name__} instead.")
                 )
             )
         return ValidationResult.success(payload=(cast(Builder, candidate)))
@@ -113,7 +113,7 @@ class ServiceValidator(Validator[Service]):
             return ValidationResult(
                 ServiceValidationFailedException(
                     message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
-                    ex=TypeError(f"{method}: Expected Builder instance, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method}: Expected Builder, got {type(candidate).__name__} instead.")
                 )
             )
         return ValidationResult.success(payload=(cast(Validator, candidate)))

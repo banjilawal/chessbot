@@ -83,7 +83,7 @@ class SquareValidator(Validator[Square]):
             # Verify candidate is a Square instance
             if not isinstance(candidate, Square):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected Square, but got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected Square, but, got {type(candidate).__name__} instead.")
                 )
             square = cast(Square, candidate)
             

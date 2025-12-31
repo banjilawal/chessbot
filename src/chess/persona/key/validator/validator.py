@@ -79,7 +79,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
             # If the candidate is not an PersonaSuperKey validation has failed.
             if not isinstance(candidate, PersonaSuperKey):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected PersonaSuperKey instance, got {type(candidate).__designation__} instead.")
+                    TypeError(f"{method}: Expected PersonaSuperKey, got {type(candidate).__designation__} instead.")
                 )
             
             # Once existence and type checks are passed, cast the candidate to BattlePersona and run structure tests.
@@ -104,7 +104,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
                 validation = identity_service.validate_name(candidate=context.name)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_persona.name map in a ValidationResult.
+                # On certification success return the battle_persona.name in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-designation target.
@@ -112,7 +112,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
                 validation = identity_service.validate_name(candidate=context.designation)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_persona.designation map in a ValidationResult.
+                # On certification success return the battle_persona.designation in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-quota target.
@@ -120,7 +120,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
                 validation = number_validator.validate(candidate=context.quota)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_persona.quota map in a ValidationResult.
+                # On certification success return the battle_persona.quota in a ValidationResult.
                 return ValidationResult.success(context)
             
             # Certification for the search-by-ransom target.
@@ -128,7 +128,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
                 validation = number_validator.validate(candidate=context.ransom)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
-                # On certification success return the battle_persona.ransom map in a ValidationResult.
+                # On certification success return the battle_persona.ransom in a ValidationResult.
                 return ValidationResult.success(context)
         
         # Finally, catch any missed exception, wrap an InvalidPersonaSuperKeyException. Then send the exception-chain in a ValidationResult.

@@ -84,7 +84,7 @@ class RookValidator(Validator[Rook]):
                 )
             if not isinstance(candidate, Rook):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Rook got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a Rook, got {type(candidate).__name__} instead.")
                 )
             rook = cast(Rook, candidate)
             

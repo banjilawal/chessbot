@@ -48,7 +48,7 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
             
             if not isinstance(candidate, ResidentFilter):
                 return ValidationResult.failure(
-                    TypeError(f"{method} Expected ResidentSearchContext instance, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method} Expected ResidentSearchContext, got {type(candidate).__name__} instead.")
                 )
             
             search_context = cast(ResidentFilter, candidate)

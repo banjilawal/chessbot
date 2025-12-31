@@ -92,7 +92,7 @@ class TeamContextValidator(Validator[TeamContext]):
             return ValidationResult.failure(
                 TeamContextValidationFailedException(
                     message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
-                    ex=TypeError(f"{method}: Expected TeamContext instance, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
                 )
             )
         # After existence and type checks cast the candidate to a TeamContext for additional tests.

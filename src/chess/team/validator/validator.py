@@ -87,7 +87,7 @@ class TeamValidator(Validator[Team]):
             return ValidationResult.failure(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=TypeError(f"{method}: Expected Team instance, got {type(candidate).__name__} instead.")
+                    ex=TypeError(f"{method}: Expected Team, got {type(candidate).__name__} instead.")
                 )
             )
         # After the existence and type checks cast the candidate to Team for aditional tests.

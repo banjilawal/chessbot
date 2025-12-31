@@ -70,7 +70,7 @@ class GameColorValidator(Validator[GameColor]):
             
             if not isinstance(candidate, GameColor):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected GameColor, but got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected GameColor, but, got {type(candidate).__name__} instead.")
                 )
             
             color = cast(GameColor, candidate)

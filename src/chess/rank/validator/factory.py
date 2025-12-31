@@ -92,7 +92,7 @@ class RankValidatorFactory(Validator[Rank]):
             # Verify candidate is a Rank instance. Cast to a Rank if so.
             if not isinstance(candidate, Rank):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Rank got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a Rank, got {type(candidate).__name__} instead.")
                 )
             rank = cast(Rank, candidate)
             # Pick which validator to run.

@@ -40,73 +40,75 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
     # INHERITED ATTRIBUTES:
     None
     """
-
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            color_validator: GameColorValidator = GameColorValidator(),
             identity_service: IdentityService = IdentityService(),
+            color_validator: GameColorValidator = GameColorValidator(),
     ) -> ValidationResult[FormationSuperKey]:
         """
         # ACTION:
-        1.  Confirm that only one in the (designation, square_designation, color) tuple is not null.
-        2.  Certify the not-null attribute is safe using the appropriate service's validator.
-        3.  If any check fails return a ValidationResult containing the exception raised by the failure.
-        4.  On success Build an FormationSuperKey are return in a ValidationResult.
-
+            1.  If the candidate passes existence and type checks cast into a FormationSuperKey instance, super_key.
+                Else, return an exception in the ValidationResult.
+            2.  If one-and-only-one super_key field is not null return an exception in the ValidationResult.
+            3.  Use super_key.attribute to route to the appropriate validation subflow.
+            4.  If no Formation.VARIANT.attribute == super_key.attribute return an exception in the ValidationResult.
+            5.  All tests are passed. Send super_key in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
-
-        # RETURNS:
-        ValidationResult[FormationSuperKey] containing either:
-            - On success: FormationSuperKey in the payload.
-            - On failure: Exception.
-
+        # RETURNS:Confirm
+            *   ValidationResult[FormationSuperKey] containing either:
+                    - On failure: Exception.
+                    - On success: FormationSuperKey in the payload.
         # RAISES:
             *   TypeError
-            *   NullFormationSuperKeyException
-            *   ZeroFormationSuperKeyFlagsException
-            *   ExcessiveFormationSuperKeyFlagsException
-            *   InvalidFormationSuperKeyException
+            *   NNullFormationSuperKeyException
+            *   ZeroFormationSuperKeysException
+            *   ExcessiveFormationSuperKeysException
+            *   FormationSuperKeyValidationFailedException
         """
         method = "FormationSuperKeyValidator.validate"
-        # If the candidate is null no other checks are needed.
+        
+        # Handle the nonexistence case.
         if candidate is None:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 FormationSuperKeyValidationFailedException(
                     message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
                     ex=NullFormationSuperKeyException(f"{method}: {NullFormationSuperKeyException.DEFAULT_MESSAGE}")
                 )
             )
-        # If the candidate is not an FormationSuperKey validation has failed.
+        # Handle the wrong class case.
         if not isinstance(candidate, FormationSuperKey):
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 FormationSuperKeyValidationFailedException(
                     message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
                     ex=TypeError(
-                        f"{method}: Expected FormationSuperKey instance,"
-                        f" got {type(candidate).__designation__} instead."
+                        f"{method}: Expected FormationSuperKey, got {type(candidate).__designation__} instead."
                     )
                 )
             )
-
-        # Once existence and type checks are passed, cast the candidate to FormationSuperKey and run structure tests.
-        context = cast(FormationSuperKey, candidate)
-
-        # Handle the case of searching with no attribute-value.
-        if len(context.to_dict()) == 0:
+        
+        # After existence and type checks cast the candidate to a FormationSuperKey for additional tests.
+        super_key = cast(FormationSuperKey, candidate)
+        
+        # Handle the case of searching with no key-value is set.
+        if len(super_key.to_dict()) == 0:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 FormationSuperKeyValidationFailedException(
                     message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
                     ex=ZeroFormationSuperKeysException(f"{method}: {ZeroFormationSuperKeysException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case of too many attributes being used in a search.
-        if len(context.to_dict()) > 1:
+        # Handle the case of more than one key-value is set.
+        if len(super_key.to_dict()) > 1:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 FormationSuperKeyValidationFailedException(
                     message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
@@ -115,37 +117,54 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
                     )
                 )
             )
-        # When structure tests are passed certify whichever search value was provided.
-
-        # Certification for the search-by-designation target.
-        if context.designation is not None:
-            validation = identity_service.validate_name(candidate=context.designation)
+        
+        # Route to the appropriate validation branch.
+        
+        # Certification for lookup-by-name value.
+        if super_key.name is not None:
+            validation = identity_service.validate_name(candidate=super_key.name)
             if validation.is_failure:
+                # Return the exception chain on failure.
                 return ValidationResult.failure(
                     FormationSuperKeyValidationFailedException(
                         message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
-            # On certification success return the battle_order.designation map in a ValidationResult.
-            return ValidationResult.success(context)
+            # On certification success return the formationMap_name in a ValidationResult.
+            return ValidationResult.success(super_key)
+
+        # Certification for lookup-by-designation value.
+        if super_key.designation is not None:
+            validation = identity_service.validate_name(candidate=super_key.designation)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    FormationSuperKeyValidationFailedException(
+                        message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the formationMap_designation in a ValidationResult.
+            return ValidationResult.success(super_key)
 
         # Certification for the search-by-square_name target.
-        if context.square is not None:
-            validation = identity_service.validate_name(candidate=context.square)
+        if super_key.square_name is not None:
+            validation = identity_service.validate_name(candidate=super_key.square_name)
             if validation.is_failure:
+                # Return the exception chain on failure.
                 return ValidationResult.failure(
                     FormationSuperKeyValidationFailedException(
                         message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
-            # On certification success return the battle_order.square_name map in a ValidationResult.
-            return ValidationResult.success(context)
+            # On certification success return the formationMap_square_name in a ValidationResult.
+            return ValidationResult.success(super_key)
 
         # Certification for the search-by-color target.
-        if context.color is not None:
-            validation = color_validator.validate(candidate=context.color)
+        if super_key.color is not None:
+            validation = color_validator.validate(candidate=super_key.color)
             if validation.is_failure:
                 return ValidationResult.failure(
                     FormationSuperKeyValidationFailedException(
@@ -153,9 +172,10 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
                         ex=validation.exception
                     )
                 )
-            # On certification success return the battle_order.color map in a ValidationResult.
-            return ValidationResult.success(context)
+            # On certification success return the formationMap_color in a ValidationResult.
+            return ValidationResult.success(super_key)
         
+        # The default path returns failure
         return ValidationResult.failure(
             FormationSuperKeyValidationFailedException(
                 message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",

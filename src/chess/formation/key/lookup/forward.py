@@ -9,9 +9,11 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.formation import Formation, FormationSuperKey, FormationSuperKeyValidator
-from chess.formation.key.lookup.exception.wrapper import FormationLookupFailedException
-from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult, id_emitter
+from chess.formation import (
+    Formation, FormationColorBoundsException, FormationDesignationBoundsException, FormationLookupFailedException,
+    FormationLookupRouteException, FormationSquareBoundsException, FormationSuperKey, FormationSuperKeyValidator
+)
+from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult
 
 
 class FormationLookup(ForwardLookup[Formation]):
@@ -21,7 +23,7 @@ class FormationLookup(ForwardLookup[Formation]):
      # RESPONSIBILITIES:
      1.  Run forward lookups on the Formation hashtable to find a Team's play_directive_metadata for a game.
      2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
-     3.  Verifies correctness of key-value key before running the forward lookup.
+     3.  Verifies correctness of key-value key before running lookup.
 
      # PARENT:
          *   ForwardLookup
@@ -146,7 +148,7 @@ class FormationLookup(ForwardLookup[Formation]):
         return SearchResult.failure(
             FormationLookupFailedException(
                 message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
-                ex=FormationSquareNameBoundsException(f"{method}: {FormationSquareNameBoundsException.DEFAULT_MESSAGE}")
+                ex=FormationSquareBoundsException(f"{method}: {FormationSquareBoundsException.DEFAULT_MESSAGE}")
             )
         )
     

@@ -84,7 +84,7 @@ class PawnValidator(Validator[Pawn]):
                 )
             if not isinstance(candidate, Pawn):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Pawn got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a Pawn, got {type(candidate).__name__} instead.")
                 )
             pawn = cast(Pawn, candidate)
             

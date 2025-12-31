@@ -30,7 +30,7 @@ class VisitationEventValidator(Validator[VisitationEvent]):
             
             if not isinstance(candidate, VisitationEvent):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected Visit instance, got {type(candidate)} instead")
+                    TypeError(f"{method}: Expected Visit, got {type(candidate)} instead")
                 )
             event = cast(VisitationEvent, candidate)
             

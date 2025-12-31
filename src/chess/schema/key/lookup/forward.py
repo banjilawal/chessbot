@@ -23,7 +23,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     # RESPONSIBILITIES:
     1.  Run forward lookups on the Schema hashtable to find a Team's play_directive_metadata for a game.
     2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
-    3.  Verifies correctness of key-value key before running the forward lookup.
+    3.  Verifies correctness of key-value key before running lookup.
 
     # PARENT:
         *   ForwardLookup
@@ -112,7 +112,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         if len(matches) >= 1:
             return SearchResult.success(matches)
         
-        # The default path is a failure.
+        # The default path returns failure
         return SearchResult.failure(
             SchemaLookupFailedException(
                 message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",

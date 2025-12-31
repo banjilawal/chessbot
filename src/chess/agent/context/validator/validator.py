@@ -85,7 +85,7 @@ class AgentContextValidator(Validator[AgentContext]):
             # Handle the wrong class case.
             if not isinstance(candidate, AgentContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected AgentContext instance, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected AgentContext, got {type(candidate).__name__} instead.")
                 )
             
             # After existence and type checks are successful cast the candidate to an AgentContext
@@ -135,7 +135,7 @@ class AgentContextValidator(Validator[AgentContext]):
             if context.variety is not None:
                 if context.variety not in [AgentVariety.HUMAN_AGENT, AgentVariety.MACHINE_AGENT]:
                     return ValidationResult.failure(
-                        TypeError(f"{method}: Expected AgentType instance, got {type(candidate).__name__} instead.")
+                        TypeError(f"{method}: Expected AgentType, got {type(candidate).__name__} instead.")
                     )
                 return ValidationResult.success(context)
         

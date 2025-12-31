@@ -27,7 +27,7 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
     # RESPONSIBILITIES:
     1.  Run forward lookups on the Persona hashtable to find a Rank's metadata.
     2.  Indicate there is no metadata for a given key-value pair by returning an exception to the caller.
-    3.  Verifies correctness of key-value key before running the forward lookup.
+    3.  Verifies correctness of key-value key before running lookup.
 
     # PARENT:
         *   ForwardLookup
@@ -124,7 +124,7 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
         if len(matches) >= 1:
             return SearchResult.success(matches)
         
-        # The default path is a failure.
+        # The default path returns failure
         return SearchResult.failure(
            PersonaLookupFailedException(
                 message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
@@ -156,7 +156,7 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
         if len(matches) >= 1:
             return SearchResult.success(matches)
         
-        # The default path is a failure.
+        # The default path returns failure
         return SearchResult.failure(
             PersonaLookupFailedException(
                 message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
@@ -188,7 +188,7 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
         if len(matches) >= 1:
             return SearchResult.success(matches)
         
-        # The default path is a failure.
+        # The default path returns failure
         return SearchResult.failure(
             PersonaLookupFailedException(
                 message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
@@ -220,7 +220,7 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
         if len(matches) >= 1:
             return SearchResult.success(matches)
         
-        # The default path is a failure.
+        # The default path returns failure
         return SearchResult.failure(
             PersonaLookupFailedException(
                 message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",

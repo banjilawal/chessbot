@@ -85,7 +85,7 @@ class GameContextValidator(Validator[GameContext]):
             # Handle the case that the candidate is not a GameContext.
             if not isinstance(candidate, GameContext):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected GameContext instance, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected GameContext, got {type(candidate).__name__} instead.")
                 )
             # After existence and type checks cast the candidate for further processing.
             context = cast(GameContext, candidate)

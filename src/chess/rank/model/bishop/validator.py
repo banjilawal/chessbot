@@ -84,7 +84,7 @@ class BishopValidator(Validator[Bishop]):
                 )
             if not isinstance(candidate, Bishop):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Bishop got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a Bishop, got {type(candidate).__name__} instead.")
                 )
             bishop = cast(Bishop, candidate)
             

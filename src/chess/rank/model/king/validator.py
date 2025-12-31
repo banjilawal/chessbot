@@ -84,7 +84,7 @@ class KingValidator(Validator[King]):
                 )
             if not isinstance(candidate, King):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a King got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a King, got {type(candidate).__name__} instead.")
                 )
             king = cast(King, candidate)
             

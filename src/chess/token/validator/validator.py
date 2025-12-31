@@ -66,7 +66,7 @@ class TokenValidator(Validator[Token]):
                 return ValidationResult.failure(
                     TypeError(
                         f"{method}: "
-                        f"Expected Token, got {type(candidate).__name__} instead."
+                        f"Expected Token,, got {type(candidate).__name__} instead."
                     )
                 )
             

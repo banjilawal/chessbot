@@ -71,7 +71,7 @@ class CoordValidator(Validator[Coord]):
             # Test the candidate is an int before proceeding.
             if not isinstance(candidate, Coord):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Coord instance, got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a Coord, got {type(candidate).__name__} instead.")
                 )
             # Cast candidate to an int after the existence and type checks pass.
             coord = cast(Coord, candidate)

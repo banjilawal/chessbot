@@ -84,7 +84,7 @@ class ResultStack(ABC, Generic[T]):
                 )
             if not isinstance(result, Result[T]):
                 return InsertionResult.failure(
-                    TypeError(f"{method}: Expected Result instance, got {type(result).__name__} instead.")
+                    TypeError(f"{method}: Expected Result, got {type(result).__name__} instead.")
                 )
             if result in self.items:
                 return InsertionResult.failure(

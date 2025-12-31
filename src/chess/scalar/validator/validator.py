@@ -72,7 +72,7 @@ class ScalarValidator(Validator[Scalar]):
             if not isinstance(self.candidate, Scalar):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected a Scaler got {type(self.candidate)} instead."
+                        f"{method}: Expected a Scaler, got {type(self.candidate)} instead."
                     )
                 )
             
@@ -146,7 +146,7 @@ class ScalarValidator(Validator[Scalar]):
             if not isinstance(self.candidate, int):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected an int got {type(self.candidate)} instead."
+                        f"{method}: Expected an int, got {type(self.candidate)} instead."
                     )
                 )
             

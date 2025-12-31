@@ -34,7 +34,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             
             if not isinstance(candidate, BlockingEvent):
                 return ValidationResult.failure(
-                    exception=TypeError(f"{method} Expected an BlockingEvent instance, got {type(candidate).__name__} instead.")
+                    exception=TypeError(f"{method} Expected an BlockingEvent, got {type(candidate).__name__} instead.")
                 )
             
             event = cast(BlockingEvent, candidate)

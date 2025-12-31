@@ -56,7 +56,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
         )
 
       if not isinstance(t, AttackEvent):
-        raise TypeError(f"{method} Expected an KingCheckEvent instance, got {type(t).__name__}")
+        raise TypeError(f"{method} Expected an KingCheckEvent, got {type(t).__name__}")
 
       event = cast(AttackEvent, t)
 

@@ -84,7 +84,7 @@ class KnightValidator(Validator[Knight]):
                 )
             if not isinstance(candidate, Knight):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Knight got {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected a Knight, got {type(candidate).__name__} instead.")
                 )
             knight = cast(Knight, candidate)
             
