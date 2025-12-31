@@ -9,6 +9,7 @@ version: 1.0.0
 
 from typing import List, Optional, cast
 
+from chess.persona.key.service.service import PersonaSuperKeyService
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from chess.system import HashService, id_emitter
 from chess.persona import (
