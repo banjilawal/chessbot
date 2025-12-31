@@ -1,13 +1,23 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/token/_context/builder/exception/route.py
+
+"""
+Module: chess.token.context.builder.exception.route
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
 
 __all__ = [
     # ======================# UNHANDLED_TOKEN_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "TokenContextBuildRouteException",
 ]
 
+from chess.system import UnhandledRouteException
+from chess.token import TokenContextException
+
 
 # ======================# UNHANDLED_TOKEN_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class TokenContextBuildRouteException(ResultException, UnhandledRouteException):
+class TokenContextBuildRouteException(TokenContextException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -19,7 +29,7 @@ class TokenContextBuildRouteException(ResultException, UnhandledRouteException):
         BuildResult containing a TokenContextBuildRouteException.
 
     # PARENT:
-        *   ResultException
+        *   TokenContextException
         *   UnhandledRouteException
 
     # PROVIDES

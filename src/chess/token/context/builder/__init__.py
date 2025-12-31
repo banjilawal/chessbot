@@ -1,11 +1,16 @@
-# src/chess/piece/builder/__init__.py
+# src/chess/token/_context/builder.__init__.py
 
 """
-Module: chess.piece.builder.__init__
+Module: chess.token.context.builder.__init__
 Author: Banji Lawal
-Created: 2025-11-24
+Created: 2025-10-03
 version: 1.0.0
 """
 
+# =========== TOKEN.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+
+# Packages
 from .exception import *
-from .builder import PieceContextBuilder
+
+# Modules
+from .builder import TokenContextBuilder

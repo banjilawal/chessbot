@@ -22,8 +22,8 @@ class PieceContextServiceException(PieceContextException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an PieceContextService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of an PieceContextService method.
+    1.  Indicate that an TokenContextService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of an TokenContextService method.
 
     # PARENT:
         *   ServiceException
@@ -39,4 +39,4 @@ class PieceContextServiceException(PieceContextException, ServiceException):
     None
     """
     ERROR_CODE = "PIECE_CONTEXT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "PieceContextService raised an exception."
+    DEFAULT_MESSAGE = "TokenContextService raised an exception."

@@ -10,9 +10,10 @@ from typing import cast
 
 from chess.schema import SchemaService
 from chess.system import ContextService,  id_emitter
-from chess.piece import PieceContext, PieceContextBuilder, PieceContextValidator, PieceFinder
+from chess.token import TokenContext
 
-class PieceContextService(ContextService[PieceContext]):
+
+class TokenContextService(ContextService[TokenContext]):
     """
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -27,7 +28,7 @@ class PieceContextService(ContextService[PieceContext]):
         *   ContextService
 
     # PROVIDES:
-        *  PieceContextService
+        *  TokenContextService
 
     # LOCAL ATTRIBUTES:
     None
@@ -35,15 +36,15 @@ class PieceContextService(ContextService[PieceContext]):
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.
     """
-    DEFAULT_NAME = "PieceContextService"
+    DEFAULT_NAME = "TokenContextService"
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             finder:PieceFinder =PieceFinder(),
             schema_service: SchemaService = SchemaService(),
-            builder:PieceContextBuilder =PieceContextBuilder(),
-            validator:PieceContextValidator =PieceContextValidator(),
+            builder:TokenContextBuilder =TokenContextBuilder(),
+            validator:TokenContextValidator =TokenContextValidator(),
     ):
         """
         # ACTION:
@@ -53,8 +54,8 @@ class PieceContextService(ContextService[PieceContext]):
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (PieceFinder): Default value -PieceFinder()
-            *   builder (PieceContextBuilder): Default value -PieceContextBuilder()
-            *   validator (PieceContextValidator): Default value -PieceContextValidator()
+            *   builder (TokenContextBuilder): Default value -TokenContextBuilder()
+            *   validator (TokenContextValidator): Default value -TokenContextValidator()
 
         # RETURNS:
         None
@@ -62,7 +63,7 @@ class PieceContextService(ContextService[PieceContext]):
         # RAISES:
         None
         """
-        method = "PieceContextService.__init__"
+        method = "TokenContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property
@@ -71,13 +72,13 @@ class PieceContextService(ContextService[PieceContext]):
         return cast(PieceFinder, self.entity_finder)
     
     @property
-    def builder(self) ->PieceContextBuilder:
-        """GetPieceContextBuilder instance."""
-        return cast(PieceContextBuilder, self.entity_builder)
+    def builder(self) ->TokenContextBuilder:
+        """GetTokenContextBuilder instance."""
+        return cast(TokenContextBuilder, self.entity_builder)
     
     @property
-    def validator(self) ->PieceContextValidator:
-        """GetPieceContextValidator instance."""
-        return cast(PieceContextValidator, self.entity_validator)
+    def validator(self) ->TokenContextValidator:
+        """GetTokenContextValidator instance."""
+        return cast(TokenContextValidator, self.entity_validator)
     
     
