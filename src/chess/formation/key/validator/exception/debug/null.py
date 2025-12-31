@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.formation import InvalidFormationSuperKeyException
+from chess.formation import FormationSuperKeyException
 
 __all__ = [
     # ======================# NULL_FORMATION_SUPER_KEY EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL_FORMATION_SUPER_KEY EXCEPTION #======================#
-class NullFormationSuperKeyException(InvalidFormationSuperKeyException, NullException):
+class NullFormationSuperKeyException(FormationSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -26,7 +26,7 @@ class NullFormationSuperKeyException(InvalidFormationSuperKeyException, NullExce
 
     # PARENT:
         *   NullException
-        *   InvalidFormationSuperKeyException
+        *   FormationSuperKeyException
 
     # PROVIDES:
     None

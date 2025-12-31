@@ -22,9 +22,7 @@ class ExcessiveFormationSuperKeysException(FormationSuperKeyException, ContextFl
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a FormationSuperKey failed its safety certification because more than one attribute was enabled
-        with a value.
-    # a forward Formation lookup failed because more than one FormationSuperKey attribute was not null.
+    1.  Indicate that a candidate failed FormationSuperKey validation because more than one attribute was enabled.
 
     # PARENT:
         *   ContextFlagCountException
@@ -38,6 +36,5 @@ class ExcessiveFormationSuperKeysException(FormationSuperKeyException, ContextFl
     """
     ERROR_CODE = "EXCESS_FORMATION_SUPER_KEYS_VALIDATION_ERROR"
     DEFAULT_MESSAGE = (
-        "FormationSuperKey validation failed: More than one attribute is not-null. A FormationSuperKey can only have a "
-        "single attribute enabled by a value."
+        "FormationSuperKey validation failed: More than one attribute is not-null.Only ond attribute should be enabled."
     )

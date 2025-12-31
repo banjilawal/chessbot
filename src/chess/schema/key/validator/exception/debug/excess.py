@@ -21,9 +21,7 @@ class ExcessiveSchemaSuperKeysException(SchemaSuperKeyException, ContextFlagCoun
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a SchemaSuperKey failed its safety certification because more than one attribute was enabled
-        with a value.
-    # a forward Schema lookup failed because more than one SchemaSuperKey attribute was not null.
+    1.  Indicate that a candidate failed SchemaSuperKey validation because more than one attribute was enabled.
 
     # PARENT:
         *   ContextFlagCountException
@@ -37,6 +35,5 @@ class ExcessiveSchemaSuperKeysException(SchemaSuperKeyException, ContextFlagCoun
     """
     ERROR_CODE = "EXCESS_SCHEMA_SUPER_KEYS_VALIDATION_ERROR"
     DEFAULT_MESSAGE = (
-        "SchemaSuperKey validation failed: More than one attribute is not-null. A SchemaSuperKey can only have a "
-        "single attribute enabled by a value."
+        "SchemaSuperKey validation failed: More than one attribute is not-null.Only ond attribute should be enabled."
     )

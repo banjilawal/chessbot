@@ -12,11 +12,9 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.formation import (
-    ExcessiveFormationSuperKeysException, FormationSuperKey,
-    FormationSuperKeyValidationFailedException, FormationSuperKeyValidationRouteException,
-    ZeroFormationSuperKeysException
+    ExcessiveFormationSuperKeysException, FormationSuperKey, FormationSuperKeyValidationFailedException,
+    FormationSuperKeyValidationRouteException, NullFormationSuperKeyException, ZeroFormationSuperKeysException
 )
-from chess.formation.key.validator.exception.debug.null import NullFormationSuperKeyException
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 

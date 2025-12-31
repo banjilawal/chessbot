@@ -1,14 +1,14 @@
-# src/chess/persona/key/validator/exception/null.py
+# src/chess/persona/key/validator/exception/debug/null.py
 
 """
-Module: chess.persona.key.validator.exception.null
+Module: chess.persona.key.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.persona import InvalidPersonaSuperKeyException
+from chess.persona import PersonaSuperKeyException
 
 __all__ = [
     # ======================# NULL_PERSON_SUPER_KEY EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL_PERSON_SUPER_KEY EXCEPTION #======================#
-class NullPersonaSuperKeyException(InvalidPersonaSuperKeyException, NullException):
+class NullPersonaSuperKeyException(PersonaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -26,7 +26,7 @@ class NullPersonaSuperKeyException(InvalidPersonaSuperKeyException, NullExceptio
 
     # PARENT:
         *   NullException
-        *   InvalidPersonSuperKeyException
+        *   PersonaSuperKeyException
 
     # PROVIDES:
     None

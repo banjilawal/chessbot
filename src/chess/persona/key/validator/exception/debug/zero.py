@@ -1,14 +1,14 @@
-# src/chess/persona/key/validator/exception/flag/zero.py
+# src/chess/persona/key/validator/exception/debug/zero.py
 
 """
-Module: chess.persona.key.validator.exception.flag.zero
+Module: chess.persona.key.validator.exception.debug.zero
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.persona import InvalidPersonaSuperKeyException
+from chess.persona import PersonaSuperKeyException
 
 __all__ = [
     # ========================= ZERO_PERSONA_SUPER_KEYS EXCEPTION =========================#
@@ -17,17 +17,16 @@ __all__ = [
 
 
 # ========================= ZERO_PERSONA_SUPER_KEYS EXCEPTION =========================#
-class ZeroPersonaSuperKeysException(InvalidPersonaSuperKeyException, ContextFlagCountException):
+class ZeroPersonaSuperKeysException(PersonaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  no PersonaSuperKey flag was enabled. One and only one Persona attribute-value tuple is required for
-        a search.
+    1.  Indicate that a candidate failed PersonaSuperKey validation because no attribute was enabled.
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidPersonaSuperKeyException
+        *   PersonaSuperKeyException
 
     # PROVIDES:
     None
@@ -39,4 +38,6 @@ class ZeroPersonaSuperKeysException(InvalidPersonaSuperKeyException, ContextFlag
     None
     """
     ERROR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "Zero PersonaSuperKey flags were set. One and only one map flag must be enabled,"
+    DEFAULT_MESSAGE = (
+        "PersonaSuperKey validation failed: No attribute is not-null. One attribute should be enabled."
+    )

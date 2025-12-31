@@ -78,7 +78,7 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
         # RAISES:
             *   ZeroPersonaSuperKeyFlagsException
             *   PersonaSuperKeyBuildFailedException
-            *   ExcessivePersonaSuperKeyFlagsException
+            *   ExcessivePersonaSuperKeysException
         """
         method = "PersonaSuperKeyBuilder.build"
         try:

@@ -70,6 +70,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
             *   SchemaSuperKeyValidationFailedException
         """
         method = "SchemaSuperKeyValidator.validate"
+        
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
