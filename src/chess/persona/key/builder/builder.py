@@ -9,14 +9,10 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.persona import (
-    PersonaSuperKey, PersonaSuperKeyBuildFailedException,
-    ExcessivePersonaSuperKeyFlagsException, ZeroPersonaSuperKeyFlagsException
-)
-from chess.system import (
-    BuildResult, Builder, UnhandledRouteException, IdentityService, LoggingLevelRouter,
-    NotNegativeNumberValidator,
-)
+from chess.persona import ExcessivePersonaSuperKeysException, PersonaSuperKey, ZeroPersonaSuperKeysException
+from chess.persona.key.builder.exception.route import PersonaSuperKeyBuildRouteException
+from chess.persona.key.builder.exception.wrapper import PersonaSuperKeyBuildFailedException
+from chess.system import BoundNumberValidator, BuildResult, Builder, IdentityService, LoggingLevelRouter
 
 
 class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
@@ -50,95 +46,124 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
             ransom: Optional[int] = None,
             designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService(),
-            not_negative_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
+            number_validator: BoundNumberValidator = BoundNumberValidator(),
     ) -> BuildResult[PersonaSuperKey]:
         """
         # ACTION:
-            1.  Confirm that only one in the (name, designation, quota, ransom) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a PersonaSuperKey and send in a BuildResult. Else, return an exception
-                in the BuildResult.
-
+            1.  If more than one optional param is not-null return an exception in the BuildResult.
+            2.  If the enabled param is not certified by the appropriate validating service return an exception in
+                the BuildResult.
+            3.  After the active param is validated create the SchemaSuperKey object and return in the BuildResult.
         # PARAMETERS:
-            Only one these must be provided:
-                *   name (Optional[str])
-                *   quota (Optional[str])
-                *   designation (Optional[str])
-                *   ransom (Optional[GameRansom])
-    
-            These Parameters must be provided:
-                *   not_negative_validator (NumberValidator)
-                *   identity_service (IdentityService)
+            *   Only one these must be provided:
+                    *   name (Optional[str])
+                    *   quota (Optional[int])
+                    *   ransom (Optional[int])
+                    *   designation (Optional[str])
+            *   These Parameters must be provided:
+                    *   color_validator (GameColorValidator)
+                    *   identity_service (IdentityService)
+                    *   number_validator (BoundNUmberValidator)
 
         # RETURNS:
-        BuildResult[PersonaSuperKey] containing either:
-            - On success: PersonaSuperKey in the payload.
-            - On failure: Exception.
-
+            *   BuildResult[SchemaSuperKey] containing either:
+                    - On failure: Exception.
+                    - On success: SchemaSuperKey in the payload.
         # RAISES:
-            *   ZeroPersonaSuperKeyFlagsException
-            *   PersonaSuperKeyBuildFailedException
-            *   ExcessivePersonaSuperKeysException
+            *   ZeroSchemaSuperKeysException
+            *   SchemaSuperKeyBuildFailedException
+            *   ExcessiveSchemaSuperKeysException
         """
         method = "PersonaSuperKeyBuilder.build"
-        try:
-            # Count how many optional parameters are not-null. One param needs to be not-null.
-            params = [name, designation, quota, ransom]
-            param_count = sum(bool(p) for p in params)
-            
-            # Test if no params are set. Need an attribute-value pair to look up a rank's persona_entry.
-            if param_count == 0:
-                return BuildResult.failure(
-                    ZeroPersonaSuperKeyFlagsException(f"{method}: {ZeroPersonaSuperKeyFlagsException.DEFAULT_MESSAGE}")
-                )
-            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
-            if param_count > 1:
-                return BuildResult.failure(
-                    ExcessivePersonaSuperKeyFlagsException(f"{method}: {ExcessivePersonaSuperKeyFlagsException}")
-                )
-            # After verifying only one Schema hash key-value is set, validate it.
-            
-            # Build the name PersonaSuperKey if its flag is enabled.
-            if name is not None:
-                validation = identity_service.validate_name(candidate=name)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a ransom_PersonaSuperKey in the BuildResult.
-                return BuildResult.success(PersonaSuperKey(name=name))
-            
-            # Build the designation PersonaSuperKey if its flag is enabled.
-            if designation is not None:
-                validation = identity_service.validate_name(candidate=designation)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a designation_PersonaSuperKey in the BuildResult.
-                return BuildResult.success(PersonaSuperKey(designation=designation))
-            
-            # Build the quota PersonaSuperKey if its flag is enabled.
-            if quota is not None:
-                validation = not_negative_validator.validate(candidate=quota)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a quota_PersonaSuperKey in the BuildResult.
-                return BuildResult.success(PersonaSuperKey(quota=quota))
-            
-            # Build the ransom PersonaSuperKey if its flag is enabled.
-            if ransom is not None:
-                validation = not_negative_validator.validate(candidate=ransom)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a ransom_PersonaSuperKey in the BuildResult.
-                return BuildResult.success(PersonaSuperKey(ransom=ransom))
-            
-            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
-            BuildResult.failure(
-                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
-            )
-        # Finally, catch any missed exception and wrap A PersonaSuperKeyBuildFailedException around it then
-        # return the exception-chain inside the ValidationResult.
-        except Exception as ex:
+        
+        # Count how many optional parameters are not-null. One param needs to be not-null.
+        params = [name, designation, quota, ransom]
+        param_count = sum(bool(p) for p in params)
+        
+        # Test if no params are set. Need an attribute-value pair to look up a rank's persona_entry.
+        if param_count == 0:
+            # Return the exception chain on failure.
             return BuildResult.failure(
                 PersonaSuperKeyBuildFailedException(
-                    ex=ex, message=f"{method}: {PersonaSuperKeyBuildFailedException.DEFAULT_MESSAGE}"
+                    message=f"{method}: {PersonaSuperKeyBuildFailedException.ERROR_CODE}",
+                    ex=ZeroPersonaSuperKeysException(f"{method}: {ZeroPersonaSuperKeysException.DEFAULT_MESSAGE}")
                 )
             )
+        # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
+        if param_count > 1:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                PersonaSuperKeyBuildFailedException(
+                    message=f"{method}: {PersonaSuperKeyBuildFailedException.ERROR_CODE}",
+                    ex=ExcessivePersonaSuperKeysException(f"{method}: {ExcessivePersonaSuperKeysException}")
+                )
+            )
+        # After verifying only one Schema hash key-value is set, validate it.
+        
+        # Build the name PersonaSuperKey if its flag is enabled.
+        if name is not None:
+            validation = identity_service.validate_name(candidate=name)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    PersonaSuperKeyBuildFailedException(
+                        message=f"{method}: {PersonaSuperKeyBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a ransom_PersonaSuperKey in the BuildResult.
+            return BuildResult.success(PersonaSuperKey(name=name))
+        
+        # Build the designation PersonaSuperKey if its flag is enabled.
+        if designation is not None:
+            validation = identity_service.validate_name(candidate=designation)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    PersonaSuperKeyBuildFailedException(
+                        message=f"{method}: {PersonaSuperKeyBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a designation_PersonaSuperKey in the BuildResult.
+            return BuildResult.success(PersonaSuperKey(designation=designation))
+        
+        # Build the quota PersonaSuperKey if its flag is enabled.
+        if quota is not None:
+            # Quotas have to be between king_count=1 and pawn_count=8
+            validation = number_validator.validate(floor=1, ceiling=9)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    PersonaSuperKeyBuildFailedException(
+                        message=f"{method}: {PersonaSuperKeyBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a quota_PersonaSuperKey in the BuildResult.
+            return BuildResult.success(PersonaSuperKey(quota=quota))
+        
+        # Build the ransom PersonaSuperKey if its flag is enabled.
+        if ransom is not None:
+            # Ransoms have to be between king_ransom=0 and 20
+            validation = number_validator.validate(floor=0, ceiling=20)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    PersonaSuperKeyBuildFailedException(
+                        message=f"{method}: {PersonaSuperKeyBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a ransom_PersonaSuperKey in the BuildResult.
+            return BuildResult.success(PersonaSuperKey(ransom=ransom))
+        
+        # The default path returns failure
+        BuildResult.failure(
+            PersonaSuperKeyBuildFailedException(
+                message=f"{method}: {PersonaSuperKeyBuildFailedException.ERROR_CODE}",
+                ex=PersonaSuperKeyBuildRouteException(
+                    f"{method}: {PersonaSuperKeyBuildRouteException.DEFAULT_MESSAGE}"
+                )
+            )
+        )

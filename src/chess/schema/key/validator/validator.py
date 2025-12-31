@@ -148,7 +148,7 @@ class SchemaSuperKeyValidator(Validator[SchemaSuperKey]):
         # The default returns failure.
         return ValidationResult.failure(
             SchemaSuperKeyValidationFailedException(
-                message=f"{method}: {SchemaSuperKeyValidationFailedException.ERROR_CODE} - ",
+                message=f"{method}: {SchemaSuperKeyValidationFailedException.ERROR_CODE}",
                 ex=SchemaSuperKeyValidationRouteException(
                     f"{method}: {SchemaSuperKeyValidationRouteException.ERROR_CODE}"
                 )

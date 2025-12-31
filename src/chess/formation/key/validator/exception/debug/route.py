@@ -7,8 +7,9 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.formation import FormationSuperKey
 from chess.system import UnhandledRouteException
+from chess.formation import FormationSuperKeyException
+
 
 
 __all__ = [
@@ -18,7 +19,7 @@ __all__ = [
 
 
 # ======================# UNHANDLED_FORMATION_SUPER_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class FormationSuperKeyValidationRouteException(FormationSuperKey, UnhandledRouteException):
+class FormationSuperKeyValidationRouteException(FormationSuperKeyException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,8 +27,8 @@ class FormationSuperKeyValidationRouteException(FormationSuperKey, UnhandledRout
     1.  Indicate that the candidate failed FormationSuperKey validation because no validation route for its attribute.
 
     # PARENT:
-        *   FormationSuperKey
         *   UnhandledRouteException
+        *   FormationSuperKeyException
 
     # PROVIDES
     None

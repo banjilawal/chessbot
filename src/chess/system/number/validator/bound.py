@@ -15,7 +15,7 @@ from chess.system import (
 )
 
 
-class NumberInBoundsValidator(Validator[int]):
+class BoundNumberValidator(Validator[int]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -62,7 +62,7 @@ class NumberInBoundsValidator(Validator[int]):
               *     NumberBelowFloorException
               *     NumberAboveCeilingException
         """
-        method = "NumberInBoundsValidator.validate"
+        method = "BoundNumberValidator.validate"
         # Handle the existence and type checks.
         validation = number_validator.validate(candidate=candidate)
         if validation.is_failure:

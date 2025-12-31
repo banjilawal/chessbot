@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.system import Builder, BuildResult, LoggingLevelRouter, NumberInBoundsValidator
+from chess.system import Builder, BuildResult, LoggingLevelRouter, BoundNumberValidator
 from chess.coord import Coord, CoordValidator,  CoordBuildFailedException
 
 
@@ -40,7 +40,7 @@ class CoordBuilder(Builder[Coord]):
             cls,
             row: int,
             column: int,
-            number_bonds_validator: NumberInBoundsValidator = NumberInBoundsValidator(),
+            number_bonds_validator: BoundNumberValidator = BoundNumberValidator(),
     ) -> BuildResult[Coord]:
         """
         # ACTION:
@@ -51,7 +51,7 @@ class CoordBuilder(Builder[Coord]):
         # PARAMETERS:
             *   row (int)
             *   column (int)
-            *   number_bonds_validator (NumberInBoundsValidator)
+            *   number_bonds_validator (BoundNumberValidator)
 
         # RETURNS:
         BuildResult[Coord] containing either:

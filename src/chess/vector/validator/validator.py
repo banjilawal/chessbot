@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import (
-    LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberInBoundsValidator, ValidationResult,
+    LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, BoundNumberValidator, ValidationResult,
     Validator
 )
 from chess.vector import InvalidVectorException, NullVectorException, Vector
@@ -41,7 +41,7 @@ class VectorValidator(Validator[Vector]):
     def validate(
             cls,
             candidate: Any,
-            number_in_bounds_validator: NumberInBoundsValidator = NumberInBoundsValidator()
+            number_in_bounds_validator: BoundNumberValidator = BoundNumberValidator()
     ) -> ValidationResult[Vector]:
         """
         # ACTION:
@@ -54,7 +54,7 @@ class VectorValidator(Validator[Vector]):
             4.  All tests are passed return the ValidationResult containing vector in the payload.
         # PARAMETERS:
             *   candidate (Any)
-            *   number_in_bounds_validator (NumberInBoundsValidator)
+            *   number_in_bounds_validator (BoundNumberValidator)
         # RETURNS:
             *   ValidationResult[Vector] containing either:
                     - On failure: Exception.

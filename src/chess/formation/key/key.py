@@ -11,6 +11,7 @@ from typing import Optional
 
 
 from chess.formation.formation import Formation
+from chess.persona import Persona
 from chess.system import Context, GameColor
 
 """
@@ -73,11 +74,15 @@ class FormationSuperKey(Context[Formation]):
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
     """
+    _persona: Optional[Persona]
     _square_name: Optional[str]
     _color: Optional[GameColor]
+    _designation: Optional[str]
+
     
     def __init__(
             self,
+            persona: Optional[Persona] = None,
             square_name: Optional[str] = None,
             designation: Optional[str] = None,
             color: Optional[GameColor] = None,
@@ -96,8 +101,13 @@ class FormationSuperKey(Context[Formation]):
         """
         super().__init__(id=None, name=None)
         self._color = color
+        self._persona = persona
         self._square_name = square_name
         self._designation = designation
+    
+    @property
+    def persona(self) -> Optional[Persona]:
+        return self._persona
     
     @property
     def color(self) -> Optional[GameColor]:
@@ -124,6 +134,7 @@ class FormationSuperKey(Context[Formation]):
         """
         return {
             "color": self._color,
+            "persona": self._persona,
             "square_name": self._square_name,
             "designation": self._designation,
         }

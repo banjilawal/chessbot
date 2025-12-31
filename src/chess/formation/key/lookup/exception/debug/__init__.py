@@ -16,4 +16,5 @@ None
 from .color import FormationColorBoundsException
 from .route import FormationLookupRouteException
 from .square import FormationSquareBoundsException
+from .persona import FormationPersonaBoundsException
 from .designation import FormationDesignationBoundsException

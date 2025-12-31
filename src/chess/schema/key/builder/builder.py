@@ -80,7 +80,7 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SchemaSuperKeyBuildFailedException(
-                    message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
+                    message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE}",
                     ex=ZeroSchemaSuperKeysException(f"{method}: {ZeroSchemaSuperKeysException.DEFAULT_MESSAGE}")
                 )
             )
@@ -89,7 +89,7 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SchemaSuperKeyBuildFailedException(
-                    message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
+                    message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE}",
                     ex=ExcessiveSchemaSuperKeysException(f"{method}: {ExcessiveSchemaSuperKeysException}")
                 )
             )
@@ -102,11 +102,11 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SchemaSuperKeyBuildFailedException(
-                        message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
+                        message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return a SchemaKey_name in the BuildResult.
+            # On validation success return a name_SchemaKey in the BuildResult.
             return BuildResult.success(SchemaSuperKey(name=name))
         
         # Build the color_key SchemaSuperKey if its value is set.
@@ -116,19 +116,17 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SchemaSuperKeyBuildFailedException(
-                        message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
+                        message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return a SchemaKey_color in the BuildResult.
+            # On validation success return a color_SchemaKey in the BuildResult.
             return BuildResult.success(SchemaSuperKey(color=color))
         
-        # Handle the default case where no exception is raised and SchemaSuperKey was not covered with an if-block
+        # The default path returns failure
         return BuildResult.failure(
             SchemaSuperKeyBuildFailedException(
-                message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE} - ",
-                ex=SchemaSuperKeyBuildRouteException(
-                    f"{method}: {SchemaSuperKeyBuildRouteException.DEFAULT_MESSAGE}"
-                )
+                message=f"{method}: {SchemaSuperKeyBuildFailedException.ERROR_CODE}",
+                ex=SchemaSuperKeyBuildRouteException(f"{method}: {SchemaSuperKeyBuildRouteException.DEFAULT_MESSAGE}")
             )
         )

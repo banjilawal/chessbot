@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.system import (
     BuildResult, Builder, UnhandledRouteException, LoggingLevelRouter,
-    NumberInBoundsValidator
+    BoundNumberValidator
 )
 from chess.coord import (
     Coord, CoordContextValidator, CoordContext, CoordContextBuildFailedException
@@ -48,7 +48,7 @@ class CoordContextBuilder(Builder[CoordContext]):
             column: Optional[int],
             coord: Optional[Coord] = None,
             coord_validator: CoordContextValidator = CoordContextValidator(),
-            validator: NumberInBoundsValidator = NumberInBoundsValidator(),
+            validator: BoundNumberValidator = BoundNumberValidator(),
     ) -> BuildResult[CoordContext]:
         """
         # ACTION:
@@ -65,7 +65,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 
             This parameter is Required:
                 *   coord_validator (CoordContextValidator)
-                *   validator (NumberInBoundsValidator)
+                *   validator (BoundNumberValidator)
 
         # RETURNS:
           BuildResult[CoordContext] containing either:

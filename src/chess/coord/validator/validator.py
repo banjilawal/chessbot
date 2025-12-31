@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast, Any
 
 from chess.coord import Coord, NullCoordException, InvalidCoordException
-from chess.system import Validator, ValidationResult, LoggingLevelRouter, NumberInBoundsValidator
+from chess.system import Validator, ValidationResult, LoggingLevelRouter, BoundNumberValidator
 
 class CoordValidator(Validator[Coord]):
     """
@@ -38,7 +38,7 @@ class CoordValidator(Validator[Coord]):
     def validate(
             cls,
             candidate: Any,
-            validator: NumberInBoundsValidator = NumberInBoundsValidator(),
+            validator: BoundNumberValidator = BoundNumberValidator(),
     ) -> ValidationResult[Coord]:
         """
         # ACTION:

@@ -13,6 +13,7 @@ from chess.formation import (
     ExcessiveFormationSuperKeysException, FormationSuperKey, FormationSuperKeyBuildFailedException,
     FormationSuperKeyBuildRouteException, ZeroFormationSuperKeysException
 )
+from chess.persona import Persona, PersonaService
 from chess.square import Square, SquareService
 from chess.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 
@@ -44,9 +45,11 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
     def build(
             cls,
             square: Optional[Square] = None,
+            persona: Optional[Persona] = None,
             color: Optional[GameColor] = None,
             designation: Optional[str] = None,
             square_service: SquareService = SquareService(),
+            persona_service: PersonaService = PersonaService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[FormationSuperKey]:
@@ -58,7 +61,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             3.  After the active param is validated create the FormationSuperKey object and return in the BuildResult.
         # PARAMETERS:
             *   Only one these must be provided:
-                    *   name (Optional[str])
+                    *   persona (Optional[Persona])
                     *   square (Optional[Square])
                     *   color (Optional[GameColor])
             *   These Parameters must be provided:
@@ -78,7 +81,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
         method = "FormationSuperKeyBuilder.build"
         
         # Count how many optional parameters are not-null.
-        params = [designation, square, color]
+        params = [designation, square, color, persona]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that all the optional params are null.
@@ -145,6 +148,20 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
                 )
             # On validation success return a color_FormationSuperKey in the BuildResult.
             return BuildResult.success(FormationSuperKey(color=color))
+        
+        # Build the persona_key FormationSuperKey if its value is set.
+        if persona is not None:
+            validation = persona_service.validator.validate(candidate=persona)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    FormationSuperKeyBuildFailedException(
+                        message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception,
+                    )
+                )
+            # On validation success return a color_FormationSuperKey in the BuildResult.
+            return BuildResult.success(FormationSuperKey(persona=persona))
         
         # The default path returns failure
         BuildResult.failure(

@@ -15,6 +15,7 @@ from chess.formation import (
     ExcessiveFormationSuperKeysException, FormationSuperKey, FormationSuperKeyValidationFailedException,
     FormationSuperKeyValidationRouteException, NullFormationSuperKeyException, ZeroFormationSuperKeysException
 )
+from chess.persona import PersonaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
@@ -43,6 +44,7 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
     def validate(
             cls,
             candidate: Any,
+            persona_service: PersonaService = PersonaService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> ValidationResult[FormationSuperKey]:
@@ -56,6 +58,7 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             5.  All tests are passed. Send super_key in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
+            *   persona_service (PersonaService)
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
         # RETURNS:Confirm
@@ -146,7 +149,7 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             # On certification success return the formationMap_designation in a ValidationResult.
             return ValidationResult.success(super_key)
 
-        # Certification for the search-by-square_name target.
+        # Certification for the lookup-by-square_name target.
         if super_key.square_name is not None:
             validation = identity_service.validate_name(candidate=super_key.square_name)
             if validation.is_failure:
@@ -160,7 +163,7 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             # On certification success return the formationMap_square_name in a ValidationResult.
             return ValidationResult.success(super_key)
 
-        # Certification for the search-by-color target.
+        # Certification for the lookup-by-color target.
         if super_key.color is not None:
             validation = color_validator.validate(candidate=super_key.color)
             if validation.is_failure:
@@ -171,6 +174,19 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
                     )
                 )
             # On certification success return the formationMap_color in a ValidationResult.
+            return ValidationResult.success(super_key)
+        
+        # Certification for the lookup-by-persona target.
+        if super_key.persona is not None:
+            validation = persona_service.validator.validate(candidate=super_key.persona)
+            if validation.is_failure:
+                return ValidationResult.failure(
+                    FormationSuperKeyValidationFailedException(
+                        message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the formationMap_persona in a ValidationResult.
             return ValidationResult.success(super_key)
         
         # The default path returns failure
