@@ -84,7 +84,8 @@ class TeamFinder(DataFinder[Team]):
                     message=f"{method}: {TeamSearchFailedException.ERROR_CODE}", ex=validation_result.exception
                 )
             )
-        # After context is verified select the finder method based on the which flag is enabled.
+        
+        # --- Route to the appropriate search method by the context flag. ---#
         
         # Entry point into finding by team's id.
         if context.id is not None:

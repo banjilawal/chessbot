@@ -11,8 +11,8 @@ from typing import List
 
 from chess.system import DataFinder, LoggingLevelRouter, SearchResult
 from chess.token import (
-    Token, TokenContext, TokenContextValidator, TokenSearchDatasetNullException,
-    TokenSearchFailedException, TokenSearchRouteException
+    Token, TokenContext, TokenContextValidator, TokenSearchDatasetNullException, TokenSearchFailedException,
+    TokenSearchRouteException
 )
 
 
@@ -68,45 +68,55 @@ class TokenFinder(DataFinder[Token]):
             *   TokenFinderException
         """
         method = "TokenFinder.find"
-        try:
-            # Don't want to run a search if the dataset is null.
-            if dataset is None:
-                return SearchResult.failure(
-                    TokenSearchDatasetNullException(f"{method}: {TokenSearchDatasetNullException.DEFAULT_MESSAGE}")
-                )
-            # certify the map is safe.
-            validation_result = context_validator.validate(context)
-            if validation_result.is_failure:
-                return SearchResult.failure(validation_result.exception)
-            # After map is verified select the search method based on the which flag is enabled.
-            
-            # Entry point into searching by token.id.
-            if context.id is not None:
-                return cls._find_by_id(dataset=dataset, id=context.id)
-            # Entry point into searching by token.designation.
-            if context.name is not None:
-                return cls._find_by_name(dataset=dataset, name=context.name)
-            # Entry point into searching by token.team.
-            if context.team is not None:
-                return cls._find_by_team(dataset=dataset, team=context.team)
-            # Entry point into searching by token.rank.
-            if context.rank is not None:
-                return cls._find_by_rank(dataset=dataset, team=context.rank)
-            # Entry point into searching by token's ransom.
-            if context.ransom is not None:
-                return cls._find_by_ransom(dataset=dataset, ransom=context.ransom)
-            
-            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
-            SearchResult.failure(
-                TokenSearchRouteException(f"{method}: {TokenSearchRouteException.DEFAULT_MESSAGE}")
-            )
         
-        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
-        # then, return the exception chain inside a SearchResult.
-        except Exception as ex:
+        # Handle the case that the dataset is null.
+        if dataset is None:
+            # Return the exception chain on failure.
             return SearchResult.failure(
-                TokenSearchFailedException(ex=ex, message=f"{method}: {TokenSearchFailedException.DEFAULT_MESSAGE}")
+                TokenSearchFailedException(
+                    message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
+                    ex=TokenSearchDatasetNullException(
+                        f"{method}: {TokenSearchDatasetNullException.DEFAULT_MESSAGE}"
+                    )
+                )
             )
+        # Handle the case that the context fails validation.
+        validation_result = context_validator.validate(context)
+        if validation_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                TokenSearchFailedException(
+                    message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
+                    ex=validation_result.exception
+                )
+            )
+    
+    # --- Route to the appropriate search method by the context flag. ---#
+        
+        # Entry point into finding by token's id.
+        if context.id is not None:
+            return cls._find_by_id(dataset=dataset, id=context.id)
+        # Entry point into finding by token's designation.
+        if context.name is not None:
+            return cls._find_by_designation(dataset=dataset, name=context.designation)
+        # Entry point into fiding by token's team.
+        if context.team is not None:
+            return cls._find_by_team(dataset=dataset, team=context.team)
+        # Entry point into searching by toke's rank.
+        if context.rank is not None:
+            return cls._find_by_rank(dataset=dataset, team=context.rank)
+        # Entry point into searching by token's ransom.
+        if context.ransom is not None:
+            return cls._find_by_ransom(dataset=dataset, ransom=context.ransom)
+        # Entry point into searching by token's color.
+        if context.ransom is not None:
+            return cls._find_by_color(dataset=dataset, ransom=context.color)
+    
+        
+        # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
+        SearchResult.failure(
+            TokenSearchRouteException(f"{method}: {TokenSearchRouteException.DEFAULT_MESSAGE}")
+        )
 
     @classmethod
     @LoggingLevelRouter.monitor

@@ -105,7 +105,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
                 )
             )
         
-        # Route to the appropriate validation/build branch.
+        # --- Route to the appropriate validation/build branch. ---#
         
         # Build the square_name_key FormationSuperKey if its value is set.
         if square is not None:

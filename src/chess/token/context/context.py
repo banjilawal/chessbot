@@ -8,12 +8,13 @@ version: 1.0.0
 """
 
 from typing import Optional
+from zipimport import cp437_table
 
 from chess.team import Team
 from chess.rank import Rank
 from chess.token import Token
 from chess.coord import Coord
-from chess.system import Context, LoggingLevelRouter
+from chess.system import Context, GameColor, LoggingLevelRouter
 
 
 class TokenContext(Context[Token]):
@@ -36,22 +37,27 @@ class TokenContext(Context[Token]):
     _team: Optional[Team]
     _ransom: Optional[int]
     _coord: Optional[Coord]
+    _color: Optional[GameColor]
+    _designation: Optional[str]
     
     @LoggingLevelRouter.monitor
     def __init__(
             self,
             id: Optional[int] = None,
-            name: Optional[str] = None,
             team: Optional[Team] = None,
             rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
             coord: Optional[Coord] = None,
+            designation: Optional[str] = None,
+            color: Optional[GameColor] = None,
     ):
-        super().__init__(id=id, name=name)
+        super().__init__(id=id, name=None)
         self._coord = coord
         self._rank = rank
         self._team = team
         self._ransom = ransom
+        self._color = color
+        self._designation = designation
 
     @property
     def team(self) -> Optional[Team]:
@@ -69,12 +75,21 @@ class TokenContext(Context[Token]):
     def coord(self) -> Optional[Coord]:
         return self._coord
     
+    @property
+    def color(self) -> Optional[GameColor]:
+        return self._color
+    
+    @property
+    def designation(self) -> Optional[str]:
+        return self._designation
+    
     def to_dict(self) -> {}:
         return {
             "id": self.id,
-            "designation": self.name,
             "team": self._team,
             "rank": self._rank,
-            "ransom": self._ransom,
+            "color": self._color,
             "coord": self._coord,
+            "ransom": self._ransom,
+            "designation": self.designation,
         }
