@@ -6,7 +6,7 @@ from assurance.exception.invalid_id import IdValidationException
 from assurance.exception.invalid_name import NameValidationException
 from chess.square import Square
 from chess.coord import Coord
-from chess.piece.piece import Piece
+from chess.token.piece import Piece
 from unit.chess_test.geometry.coord_test import CoordTest
 
 

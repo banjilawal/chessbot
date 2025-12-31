@@ -1,12 +1,16 @@
-# src/chess/piece/validator/__init__.py
+# src/chess/token/context/validator/__init__.py
 
 """
-Module: chess.piece.validator.__init__
+Module: chess.token.context.validator.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
+# =========== TOKEN.CONTEXT.VALIDATOR PACKAGE CONTENTS ===========#
 
+# Packages
 from .exception import *
-from .validator import PieceContextValidator
+
+# Modules
+from .validator import TokenContextValidator

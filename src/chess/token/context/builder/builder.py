@@ -9,17 +9,11 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.token import (
-    TokenContextBuildRouteException, ZeroTokenContextFlagsException, TokenContext, TokenContextBuildFailedException,
-    ExcessiveTokenContextFlagsException
-)
+
 from chess.coord import Coord, CoordService
 from chess.rank import Rank, RankService
-from chess.system import (
-    BoundNumberValidator, Builder, BuildResult, UnhandledRouteException, IdentityService,
-    LoggingLevelRouter
-)
-from chess.team import Team, TeamValidator
+from chess.system import  BoundNumberValidator, Builder, BuildResult, IdentityService, LoggingLevelRouter
+from chess.team import TeamService
 
 
 class TokenContextBuilder(Builder[TokenContext]):
@@ -54,9 +48,9 @@ class TokenContextBuilder(Builder[TokenContext]):
             rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
             coord: Optional[Coord] = None,
+            team_service: TeamService = TeamService(),
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
-            team_service: TeamValidator = TeamValidator(),
             identity_service: IdentityService = IdentityService(),
             bound_number_validator: BoundNumberValidator = BoundNumberValidator(),
     ) -> BuildResult[TokenContext]:

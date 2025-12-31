@@ -11,7 +11,7 @@ version: 1.0.0
 from chess.game import Game
 from chess.piece import UniquePieceDataService
 from chess.square import UniqueSquareDataService
-from chess.piece.service import UniquePieceDataServiceException
+from chess.token.service import UniquePieceDataServiceException
 
 
 

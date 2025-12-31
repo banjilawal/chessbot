@@ -1,7 +1,7 @@
-# src/chess/piece/model/combatant/pawn/exception/exception.py
+# src/chess/token/model/combatant/pawn/exception/exception.py
 
 """
-Module: chess.piece.model.combatant.pawn.exception.exception
+Module: chess.token.model.combatant.pawn.exception.exception
 Author: Banji Lawal
 Created: 2025-11-23
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/team/finder/exception/__init__.py
+# src/chess/team/context/finder/exception/__init__.py
 
 """
-Module: chess.team.finder.exception.__init__
+Module: chess.team.context.finder.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -13,5 +13,4 @@ version: 1.0.0
 from .debug import *
 
 # Modules
-from .route import TeamSearchRouteException
 from .wrapper import TeamSearchFailedException

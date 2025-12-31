@@ -1,7 +1,7 @@
-# src/chess/piece/model/token.py
+# src/chess/token/model/token.py
 
 """
-Module: chess.piece.model.piece
+Module: chess.token.model.piece
 Author: Banji Lawal
 Created: 2025-07-22
 version: 1.0.0

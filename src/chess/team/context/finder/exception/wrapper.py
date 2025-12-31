@@ -1,7 +1,7 @@
-# src/chess/team/finder/exception/wrapper.py
+# src/chess/team/context/finder/exception/wrapper.py
 
 """
-Module: chess.team.finder.exception.wrapper
+Module: chess.team.context.finder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

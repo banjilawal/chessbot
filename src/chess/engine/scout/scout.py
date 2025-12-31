@@ -17,7 +17,7 @@ from typing import List
 from chess.board.board import Board
 from chess.square import Square
 from chess.system.identity.id import id_emitter
-from chess.piece.piece import Piece
+from chess.token.piece import Piece
 from chess.engine.scout.report import ScoutReport
 
 

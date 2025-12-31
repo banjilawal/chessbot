@@ -1,7 +1,7 @@
-# src/chess/piece/model/king/exception/checkmate/exception.py
+# src/chess/token/model/king/exception/checkmate/exception.py
 
 """
-Module: chess.piece.model.king.exception.checkmate.exception
+Module: chess.token.model.king.exception.checkmate.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

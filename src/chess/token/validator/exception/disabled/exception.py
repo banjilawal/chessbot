@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/disabled/collision.py
+# src/chess/token/validator/exception/disabled/collision.py
 
 """
-Module: chess.piece.validator.exception.disabled.exception
+Module: chess.token.validator.exception.disabled.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

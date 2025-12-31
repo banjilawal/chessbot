@@ -1,7 +1,7 @@
-# src/chess/piece/validator/null/exception.py
+# src/chess/token/validator/null/exception.py
 
 """
-Module: chess.piece.validator.null.exception
+Module: chess.token.validator.null.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.system import NullException
-from chess.token import InvalidTokenContextException
+from chess.token import TokenContextException
 
 
 # ======================# NULL_TOKEN_CONTEXT EXCEPTION #======================#
-class NullTokenContextException(InvalidTokenContextException, NullException):
+class NullTokenContextException(TokenContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

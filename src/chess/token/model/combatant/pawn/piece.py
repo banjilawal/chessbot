@@ -1,7 +1,7 @@
-# src/chess/piece/combatant/pawn/token.py
+# src/chess/token/combatant/pawn/token.py
 
 """
-Module: chess.piece.combatant.pawn.piece
+Module: chess.token.combatant.pawn.piece
 Author: Banji Lawal
 Created: 2025-11-23
 version: 1.0.0

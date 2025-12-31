@@ -1,7 +1,7 @@
-# src/chess/team/finder/finder.py
+# src/chess/team/context/finder/finder.py
 
 """
-Module: chess.team.finder.finder
+Module: chess.team.context.finder.finder
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

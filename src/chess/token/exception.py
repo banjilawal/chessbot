@@ -1,7 +1,7 @@
-# src/chess/piece/exception.py
+# src/chess/token/exception.py
 
 """
-Module: chess.piece.exception
+Module: chess.token.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

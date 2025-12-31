@@ -17,9 +17,9 @@ from chess.board import FailedRemovalFromBoardRolledBackException
 from chess.piece import KingCheckEvent, OldTravelTransaction, TravelTransaction
 from chess.system import LoggingLevelRouter, Transaction, TransactionResult, id_emitter
 from chess.event import AttackEvent, OccupationTransaction, TransferEvent, AttackEventValidator
-from chess.piece.event.attack.event.exception import SetCaptorRolledBackException, \
+from chess.token.event.attack.event.exception import SetCaptorRolledBackException, \
   EmptyDestinationSquareRolledBackException
-from chess.piece.event.occupation.transaction import OccupationTransaction
+from chess.token.event.occupation.transaction import OccupationTransaction
 from chess.team import AddEnemyHostageRolledBackException, RemoveTeamMemberRolledBackException
 
 

@@ -4,10 +4,10 @@ from assurance import ThrowHelper
 from chess.board import BoardSearch
 from chess.system import IdValidator, BuildResult, InvalidIdException
 from chess.event import TargetSquareMismatchException, AttackEvent
-from chess.piece.event.attack.event.exception import AttackEventBuilderException
-from chess.piece.event.travel_exception import TravelEventResourceNotFoundException
+from chess.token.event.attack.event.exception import AttackEventBuilderException
+from chess.token.event.travel_exception import TravelEventResourceNotFoundException
 from chess.piece import PieceValidator, InvalidAttackException, CombatantPiece
-from chess.piece.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
+from chess.token.exception import PieceCapturingItSelfException, CaptureFriendException, KingCaptureException
 
 
 class CheckEventBuilder(Enum):

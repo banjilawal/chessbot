@@ -1,27 +1,27 @@
-# src/chess/piece/finder/finder.py
+# src/chess/token/context/finder/finder.py
 
 """
-Module: chess.piece.finder.finder
+Module: chess.token.context.finder.finder
 Author: Banji Lawal
-Created: 2025-10-18
+Created: 2025-10-06
 version: 1.0.0
 """
 
 from typing import List
 
-from chess.system.find.finder.data import DataFinder
-from chess.team import Team
-from chess.rank import Rank
-from chess.system import LoggingLevelRouter, Finder, SearchFailedException, SearchResult
-from chess.piece import Piece, PieceContext, PieceContextValidator, PieceFinderException
+from chess.system import DataFinder, LoggingLevelRouter, SearchResult
+from chess.token import (
+    Token, TokenContext, TokenContextValidator, TokenSearchDatasetNullException,
+    TokenSearchFailedException, TokenSearchRouteException
+)
 
 
-class PieceFinder(DataFinder[Piece]):
+class TokenFinder(DataFinder[Token]):
     """
     # ROLE: Finder
 
     # RESPONSIBILITIES:
-    1.  Search Token collections for items which match the attribute target specified in the PieceContext parameter.
+    1.  Search Token collections for items which match the attribute target specified in the TokenContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT
@@ -41,10 +41,10 @@ class PieceFinder(DataFinder[Piece]):
     @LoggingLevelRouter.monitor
     def find(
             cls,
-            dataset: List[Piece],
-            context: PieceContext,
-            context_validator: PieceContextValidator = PieceContextValidator()
-    ) -> SearchResult[List[Piece]]:
+            dataset: List[Token],
+            context: TokenContext,
+            context_validator: TokenContextValidator = TokenContextValidator()
+    ) -> SearchResult[List[Token]]:
         """
         # ACTION:
         1.  Verify the dataset is not null and contains only Token objects,
@@ -54,25 +54,25 @@ class PieceFinder(DataFinder[Piece]):
 
         # PARAMETERS:
             *   dataset (List[Token]):
-            *   map: PieceContext
-            *   context_validator: PieceContextValidator
+            *   map: TokenContext
+            *   context_validator: TokenContextValidator
 
         # RETURNS:
         SearchResult[List[Token]] containing either:
-            - On success: List[piece] in the payload.
+            - On success: List[token] in the payload.
             - On failure: Exception.
 
         # RAISES:
             *   TypeError
-            *   PieceNullDatasetException
-            *   PieceFinderException
+            *   TokenNullDatasetException
+            *   TokenFinderException
         """
-        method = "PieceFinder.find"
+        method = "TokenFinder.find"
         try:
             # Don't want to run a search if the dataset is null.
             if dataset is None:
                 return SearchResult.failure(
-                    PieceNullDatasetException(f"{method}: {PieceNullDatasetException.DEFAULT_MESSAGE}")
+                    TokenSearchDatasetNullException(f"{method}: {TokenSearchDatasetNullException.DEFAULT_MESSAGE}")
                 )
             # certify the map is safe.
             validation_result = context_validator.validate(context)
@@ -80,42 +80,42 @@ class PieceFinder(DataFinder[Piece]):
                 return SearchResult.failure(validation_result.exception)
             # After map is verified select the search method based on the which flag is enabled.
             
-            # Entry point into searching by piece.id.
+            # Entry point into searching by token.id.
             if context.id is not None:
                 return cls._find_by_id(dataset=dataset, id=context.id)
-            # Entry point into searching by piece.designation.
+            # Entry point into searching by token.designation.
             if context.name is not None:
                 return cls._find_by_name(dataset=dataset, name=context.name)
-            # Entry point into searching by piece.team.
+            # Entry point into searching by token.team.
             if context.team is not None:
                 return cls._find_by_team(dataset=dataset, team=context.team)
-            # Entry point into searching by piece.rank.
+            # Entry point into searching by token.rank.
             if context.rank is not None:
                 return cls._find_by_rank(dataset=dataset, team=context.rank)
-            # Entry point into searching by piece's ransom.
+            # Entry point into searching by token's ransom.
             if context.ransom is not None:
                 return cls._find_by_ransom(dataset=dataset, ransom=context.ransom)
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             SearchResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                TokenSearchRouteException(f"{method}: {TokenSearchRouteException.DEFAULT_MESSAGE}")
             )
         
         # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                TokenSearchFailedException(ex=ex, message=f"{method}: {TokenSearchFailedException.DEFAULT_MESSAGE}")
             )
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_id(cls, dataset: List[Piece], id: int) -> SearchResult[List[Piece]]:
+    def _find_by_id(cls, dataset: List[Token], id: int) -> SearchResult[List[Token]]:
         """
         # ACTION:
         1.  Get the Token with the desired id.
         2.  An id search should produce either no hits or one hit only.
-        3.  Multiple unique pieces in the result indicate that  a problem.
+        3.  Multiple unique tokens in the result indicate that  a problem.
 
         # PARAMETERS:
             *   id (int)
@@ -123,16 +123,16 @@ class PieceFinder(DataFinder[Piece]):
 
         # RETURNS:
         SearchResult[List[Token]] containing either:
-            - On success: List[piece] in the payload.
+            - On success: List[token] in the payload.
             - On failure: Exception.
 
         # RAISES:
-            *   PieceFinderException
+            *   TokenFinderException
         """
-        method = "PieceFinder._find_by_id"
+        method = "TokenFinder._find_by_id"
         try:
             # IDs are unique the search should either produce no result or one unique.
-            matches = [piece for piece in dataset if piece.id == id]
+            matches = [token for token in dataset if token.id == id]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -149,12 +149,12 @@ class PieceFinder(DataFinder[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_name(cls, dataset: List[Piece], name: str) -> SearchResult[List[Piece]]:
+    def _find_by_name(cls, dataset: List[Token], name: str) -> SearchResult[List[Token]]:
         """
         # ACTION:
         1.  Get the Token with the desired designation.
         2.  A designation search should produce either no hits or one hit only.
-        3.  Multiple unique pieces in the result indicate that  a problem.
+        3.  Multiple unique tokens in the result indicate that  a problem.
 
         # PARAMETERS:
             *   name (str)
@@ -162,16 +162,16 @@ class PieceFinder(DataFinder[Piece]):
 
         # RETURNS:
         SearchResult[List[Token]] containing either:
-            - On success: List[piece] in the payload.
+            - On success: List[token] in the payload.
             - On failure: Exception.
 
         # RAISES:
-            *   PieceFinderException
+            *   TokenFinderException
         """
-        method = "PieceFinder._find_by_name"
+        method = "TokenFinder._find_by_name"
         try:
             # Names are unique the search should either produce no result or one unique.
-            matches = [ piece for piece in dataset if piece.name.upper() == name.upper()]
+            matches = [ token for token in dataset if token.name.upper() == name.upper()]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -188,10 +188,10 @@ class PieceFinder(DataFinder[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_team(cls, dataset: List[Piece], team: Team) -> SearchResult[List[Piece]]:
+    def _find_by_team(cls, dataset: List[Token], team: Team) -> SearchResult[List[Token]]:
         """
         # ACTION:
-        1.  Get Pieces on the desired team.
+        1.  Get Tokens on the desired team.
 
         # PARAMETERS:
             *   team (Team)
@@ -199,15 +199,15 @@ class PieceFinder(DataFinder[Piece]):
 
         # RETURNS:
         SearchResult[List[Token]] containing either:
-            - On success: List[piece] in the payload.
+            - On success: List[token] in the payload.
             - On failure: Exception.
 
         # RAISES:
-            *   PieceFinderException
+            *   TokenFinderException
         """
-        method = "PieceFinder._find_by_team"
+        method = "TokenFinder._find_by_team"
         try:
-            matches = [piece for piece in dataset if piece.team == team]
+            matches = [token for token in dataset if token.team == team]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -224,10 +224,10 @@ class PieceFinder(DataFinder[Piece]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_rank(cls, dataset: List[Piece], rank: Rank) -> SearchResult[List[Piece]]:
+    def _find_by_rank(cls, dataset: List[Token], rank: Rank) -> SearchResult[List[Token]]:
         """
         # ACTION:
-        1.  Get Pieces of the desired rank.
+        1.  Get Tokens of the desired rank.
 
         # PARAMETERS:
             *   rank (Rank)
@@ -235,15 +235,15 @@ class PieceFinder(DataFinder[Piece]):
 
         # RETURNS:
         SearchResult[List[Token]] containing either:
-            - On success: List[piece] in the payload.
+            - On success: List[token] in the payload.
             - On failure: Exception.
 
         # RAISES:
-            *   PieceFinderException
+            *   TokenFinderException
         """
-        method = "PieceFinder._find_by_rank"
+        method = "TokenFinder._find_by_rank"
         try:
-            matches = [piece for piece in dataset if piece.rank == rank]
+            matches = [token for token in dataset if token.rank == rank]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -258,10 +258,10 @@ class PieceFinder(DataFinder[Piece]):
             )
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_ransom(cls, dataset: List[Piece], ransom: int) -> SearchResult[List[Piece]]:
+    def _find_by_ransom(cls, dataset: List[Token], ransom: int) -> SearchResult[List[Token]]:
         """
         # ACTION:
-        1.  Get Pieces with the desired ransom.
+        1.  Get Tokens with the desired ransom.
 
         # PARAMETERS:
             *   ransom (int)
@@ -269,15 +269,15 @@ class PieceFinder(DataFinder[Piece]):
 
         # RETURNS:
         SearchResult[List[Token]] containing either:
-            - On success: List[piece] in the payload.
+            - On success: List[token] in the payload.
             - On failure: Exception.
 
         # RAISES:
-            *   PieceFinderException
+            *   TokenFinderException
         """
-        method = "PieceFinder._find_by_rank"
+        method = "TokenFinder._find_by_rank"
         try:
-            matches = [piece for piece in dataset if piece.rank.ransom == ransom]
+            matches = [token for token in dataset if token.rank.ransom == ransom]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()

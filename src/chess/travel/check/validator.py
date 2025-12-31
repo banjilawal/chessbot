@@ -5,7 +5,7 @@ from chess.event import EventValidator
 from chess.piece import KingCheckEvent, PieceValidator, InvalidAttackException
 from chess.square import SquareValidator, InvalidSqaureException
 from chess.system import LoggingLevelRouter, Result, IdValidator, InvalidIdException, ValidationResult, Validator
-from chess.piece.event import (
+from chess.token.event import (
   AttackEvent,
   NullAttackEventException,
   CircularOccupationException,

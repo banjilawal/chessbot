@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/registration/base.py
+# src/chess/token/validator/exception/registration/base.py
 
 """
-Module: chess.piece.validator.exception.registration.base
+Module: chess.token.validator.exception.registration.base
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

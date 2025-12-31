@@ -1,7 +1,7 @@
-# src/chess/piece/service/service.py
+# src/chess/token/service/service.py
 
 """
-Module: chess.piece.service.service
+Module: chess.token.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

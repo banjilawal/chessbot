@@ -1,7 +1,7 @@
-# src/chess/piece/model/king/exception/validation/exception.py
+# src/chess/token/model/king/exception/validation/exception.py
 
 """
-Module: chess.piece.model.king.exception.validation.exception
+Module: chess.token.model.king.exception.validation.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

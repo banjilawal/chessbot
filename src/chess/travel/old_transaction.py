@@ -28,7 +28,7 @@ from chess.team.exception import RemoveTeamMemberRolledBackException
 
 
 from chess.transaction import AttackValidator
-from chess.piece.event import (
+from chess.token.event import (
   OldOccupationEventValidator,
   OccupationSearchEventException,
   TravelEvent,

@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/debug/__init__.py
+# src/chess/team/context/validator/exception/debug/__init__.py
 
 """
-Module: chess.team.validator.exception.debug.__init__
+Module: chess.team.context.validator.exception.debug.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -15,4 +15,5 @@ None
 # Modules
 from .null import NullTeamContextException
 from .zero import ZeroTeamContextFlagsException
+from .route import TeamContextValidationRouteException
 from .excess import ExcessiveTeamContextFlagsException

@@ -1,7 +1,7 @@
-# src/chess/piece/model/king/exception/exception.py
+# src/chess/token/model/king/exception/exception.py
 
 """
-Module: chess.piece.model.king.exception.exception
+Module: chess.token.model.king.exception.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

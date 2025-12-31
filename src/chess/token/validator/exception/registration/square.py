@@ -1,7 +1,7 @@
-# src/chess/piece/validator/exception/registration/square_name
+# src/chess/token/validator/exception/registration/square_name
 
 """
-Module: chess.piece.validator.exception.registration.square_name
+Module: chess.token.validator.exception.registration.square_name
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

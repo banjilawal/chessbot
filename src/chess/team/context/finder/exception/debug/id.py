@@ -1,7 +1,7 @@
-# src/chess/team/finder/exception/debug/id.py
+# src/chess/team/context/finder/exception/debug/id.py
 
 """
-Module: chess.team.finder.exception.debug.id
+Module: chess.team.context.finder.exception.debug.id
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
