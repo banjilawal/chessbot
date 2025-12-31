@@ -9,13 +9,11 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.formation import FormationSuperKey
-from chess.formation.key.builder.exception.route import FormationSuperKeyBuildRouteException
-from chess.formation.key.builder.exception.wrapper import FormationSuperKeyBuildFailedException
-from chess.formation.key.validator.exception.debug.excess import (
-    ExcessiveFormationSuperKeysException,
-    ZeroFormationSuperKeysException
+from chess.formation import (
+    ExcessiveFormationSuperKeysException, FormationSuperKey, FormationSuperKeyBuildFailedException,
+    FormationSuperKeyBuildRouteException, ZeroFormationSuperKeysException
 )
+from chess.square import Square, SquareService
 from chess.system import BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 
 
@@ -45,62 +43,47 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            square: Optional[str] = None,
+            square: Optional[Square] = None,
             color: Optional[GameColor] = None,
             designation: Optional[str] = None,
+            square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[FormationSuperKey]:
         """
         # ACTION:
-            1.  Confirm that only one in the (square_designation, color, designation, designation) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a FormationSuperKey and send in a BuildResult. Else, return an exception
-                in the BuildResult.
-
+            1.  If more than one optional param is not-null return an exception in the BuildResult.
+            2.  If the enabled param is not certified by the appropriate validating service return an exception in
+                the BuildResult.
+            3.  After the active param is validated create the FormationSuperKey object and return in the BuildResult.
         # PARAMETERS:
-            Only one these must be provided:
-                *   designation (Optional[str])
-                *   square_designation (Optional[str])
-                *   designation (Optional[str])
-                *   color (Optional[GameColor])
-    
-            These Parameters must be provided:
-                *   color_validator (GameColorValidator)
-                *   identity_service (IdentityService)
-
+            *   Only one these must be provided:
+                    *   name (Optional[str])
+                    *   square (Optional[Square])
+                    *   color (Optional[GameColor])
+            *   These Parameters must be provided:
+                    *   square_service (SquareService)
+                    *   identity_service (IdentityService)
+                    *   color_validator (GameColorValidator)
         # RETURNS:
-        BuildResult[FormationSuperKey] containing either:
-            - On success: FormationSuperKey in the payload.
-            - On failure: Exception.
-
+            *   BuildResult[FormationSuperKey] containing either:
+                    - On failure: Exception.
+                    - On success: FormationSuperKey in the payload.
         # RAISES:
-            *   ZeroFormationSuperKeyFlagsException
+            *   ZeroFormationSuperKeysException
             *   FormationSuperKeyBuildFailedException
-            *   ExcessiveFormationSuperKeyFlagsException
+            *   ExcessiveFormationSuperKeysException
+            *   FormationSuperKeyBuildFailedException
         """
         method = "FormationSuperKeyBuilder.build"
-        """
-        # ACTION:.
-            1.  If the candidate passes existence and type checks cast into a Schema instance and return
-                in the ValidationResult. Else return an exception in the ValidationResult.
-        # PARAMETERS:
-            *   candidate (Any)
-        # RETURNS:
-            *   ValidationResult[Schema] containing either:
-                    - On failure: Exception.
-                    - On success: Schema in the payload.
-        # RAISES:
-            *   TypeError
-            *   NullSchemaException
-            *   InvalidSchemaException
-        """
-        # Count how many optional parameters are not-null. One param needs to be not-null.
+        
+        # Count how many optional parameters are not-null.
         params = [designation, square, color]
         param_count = sum(bool(p) for p in params)
         
-        # Test if no params are set. Need an attribute-value pair to look up a piece's battle_order.
+        # Handle the case that all the optional params are null.
         if param_count == 0:
+            # Return the exception chain on failure.
             return BuildResult.failure(
                 FormationSuperKeyBuildFailedException(
                     message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",
@@ -109,56 +92,61 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
                     )
                 )
             )
-        # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
+        # Handle the case that more than one optional param is not-null.
         if param_count > 1:
+            # Return the exception chain on failure.
             return BuildResult.failure(
                 FormationSuperKeyBuildFailedException(
                     message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",
                     ex=ExcessiveFormationSuperKeysException(f"{method}: {ExcessiveFormationSuperKeysException}")
                 )
             )
-        # After verifying only one Formation attribute-value-tuple is enabled, validate it.
         
-        # Build the designation FormationSuperKey if its flag is enabled.
+        # Route to the appropriate validation/build branch.
+        
+        # Build the square_name_key FormationSuperKey if its value is set.
+        if square is not None:
+            validation = square_service.validator.validate(square)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    FormationSuperKeyBuildFailedException(
+                        message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception,
+                    )
+                )
+            # On validation success return a square_name_FormationSuperKey in the BuildResult.
+            return BuildResult.success(FormationSuperKey(square_name=square.name))
+        
+        # Build the designation_key FormationSuperKey if its value is set.
         if designation is not None:
             validation = identity_service.validate_name(candidate=designation)
             if validation.is_failure:
+                # Return the exception chain on failure.
                 return BuildResult.failure(
                     FormationSuperKeyBuildFailedException(
+                        message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",
                         ex=validation.exception,
-                        message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}"
                     )
                 )
             # On validation success return a designation_FormationSuperKey in the BuildResult.
             return BuildResult.success(FormationSuperKey(designation=designation))
         
-        # Build the square_designation FormationSuperKey if its flag is enabled.
-        if square is not None:
-            validation = identity_service.validate_name(candidate=square)
-            if validation.is_failure:
-                return BuildResult.failure(
-                    FormationSuperKeyBuildFailedException(
-                        ex=validation.exception,
-                        message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}"
-                    )
-                )
-            # On validation success return a square_FormationSuperKey in the BuildResult.
-            return BuildResult.success(FormationSuperKey(square=square))
-        
-        # Build the color FormationSuperKey if its flag is enabled.
+        # Build the color_key FormationSuperKey if its value is set.
         if color is not None:
-            validation = color_validator.validate(candidate=GameColor)
+            validation = color_validator.validate(candidate=color)
             if validation.is_failure:
+                # Return the exception chain on failure.
                 return BuildResult.failure(
                     FormationSuperKeyBuildFailedException(
+                        message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",
                         ex=validation.exception,
-                        message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}"
                     )
                 )
             # On validation success return a color_FormationSuperKey in the BuildResult.
             return BuildResult.success(FormationSuperKey(color=color))
         
-        # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
+        # The default path returns failure
         BuildResult.failure(
             FormationSuperKeyBuildFailedException(
                 message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",
@@ -167,44 +155,3 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
                 )
             )
         )
-  
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[Schema]:
-        """
-        # ACTION:.
-            1.  If the candidate passes existence and type checks cast into a Schema instance and return
-                in the ValidationResult. Else return an exception in the ValidationResult.
-        # PARAMETERS:
-            *   candidate (Any)
-        # RETURNS:
-            *   ValidationResult[Schema] containing either:
-                    - On failure: Exception.
-                    - On success: Schema in the payload.
-        # RAISES:
-            *   TypeError
-            *   NullSchemaException
-            *   InvalidSchemaException
-        """
-        method = "SchemaValidator.validate"
-        # Handle the nonexistence case.
-        if candidate is None:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                InvalidSchemaException(
-                    message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
-                    ex=NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
-                )
-            )
-        # Handle the wrong class case.
-        if not isinstance(candidate, Schema):
-            # Return the exception chain on failure
-            return ValidationResult.failure(
-                InvalidSchemaException(
-                    message=f"{method}: {InvalidSchemaException.ERROR_CODE}",
-                    ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__designation__} instead.")
-                )
-            )
-        # On certification success return the schema instance in a ValidationResult.
-        return ValidationResult.success(payload=cast(Schema, candidate))

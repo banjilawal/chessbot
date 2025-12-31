@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/excess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/validator/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/flag/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/flag/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/excess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/flag/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/zero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/validator/exception/debug/excess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/validator/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/validator/validator.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -998,7 +979,7 @@
       <workItem from="1767024723147" duration="40015000" />
       <workItem from="1767111633890" duration="19691000" />
       <workItem from="1767147935716" duration="5059000" />
-      <workItem from="1767153050210" duration="4032000" />
+      <workItem from="1767153050210" duration="4478000" />
     </task>
     <servers />
   </component>

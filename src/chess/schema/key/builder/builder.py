@@ -70,6 +70,7 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
             *   ExcessiveSchemaSuperKeysException
         """
         method = "SchemaSuperKeyBuilder.build"
+        
         # Count how many optional parameters are not-null.
         params = [name, color,]
         param_count = sum(bool(p) for p in params)
@@ -92,7 +93,7 @@ class SchemaSuperKeyBuilder(Builder[SchemaSuperKey]):
                     ex=ExcessiveSchemaSuperKeysException(f"{method}: {ExcessiveSchemaSuperKeysException}")
                 )
             )
-        # Route to the appropriate validation branch.
+        # Route to the appropriate validation/build branch.
         
         # Build the name SchemaSuperKey if its value is set.
         if name is not None:
