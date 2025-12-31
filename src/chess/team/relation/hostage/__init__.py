@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .tester import HostageRelationTester
+from .analyzer import HostageRelationAnalyzer
 from wrapper import HostageRelationTestFailedException
 
 

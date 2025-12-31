@@ -8,6 +8,7 @@ version: 1.0.0
 """
 from typing import cast
 
+from chess.persona import PersonaService
 from chess.system import EntityService, id_emitter
 from chess.rank import Rank, RankFactory, RankSpecValidator, RankValidatorFactory
 
@@ -35,14 +36,14 @@ class RankService(EntityService[Rank]):
         *   See EntityService for inherited attributes.
     """
     DEFAULT_NAME = "RankService"
-    _spec_service: RankSpecService
+    _persona_service: PersonaService
     
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             builder: RankFactory = RankFactory(),
-            spec_service: RankSpecService = RankSpecService(),
+            persona_service: PersonaService = PersonaService(),
             validator: RankValidatorFactory = RankValidatorFactory(),
     ):
         """
@@ -62,6 +63,7 @@ class RankService(EntityService[Rank]):
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._persona_service = persona_service
     
     @property
     def builder(self) -> RankFactory:
@@ -74,6 +76,5 @@ class RankService(EntityService[Rank]):
         return cast(RankValidatorFactory, self.entity_validator)
     
     @property
-    def spec_service(self) -> RankSpecService:
-        """get RankSpecService."""
-        return self._spec_service
+    def persona_service(self) -> PersonaService:
+        return self._persona_service

@@ -9,10 +9,10 @@ version: 1.0.0
 
 from typing import List, Optional, cast
 
-from chess.persona import Persona, PersonaServiceException, PersonaSuperKey, PersonaSuperKeyService, PersonaValidator
+
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from chess.system import HashService, LoggingLevelRouter, SearchResult, id_emitter
-
+from chess.persona import Persona, PersonaServiceException, PersonaSuperKey, PersonaSuperKeyService, PersonaValidator
 
 class PersonaService(HashService[Persona]):
     """

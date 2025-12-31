@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .tester import RosterRelationTester
+from .analyzer import RosterRelationAnalyzer
 from .wrapper import RosterRelationTestFailedException

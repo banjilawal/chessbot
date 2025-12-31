@@ -8,6 +8,7 @@ version: 1.0.0
 """
 from typing import cast
 
+from chess.schema import SchemaService
 from chess.system import ContextService,  id_emitter
 from chess.piece import PieceContext, PieceContextBuilder, PieceContextValidator, PieceFinder
 
@@ -40,6 +41,7 @@ class PieceContextService(ContextService[PieceContext]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             finder:PieceFinder =PieceFinder(),
+            schema_service: SchemaService = SchemaService(),
             builder:PieceContextBuilder =PieceContextBuilder(),
             validator:PieceContextValidator =PieceContextValidator(),
     ):
@@ -77,3 +79,5 @@ class PieceContextService(ContextService[PieceContext]):
     def validator(self) ->PieceContextValidator:
         """GetPieceContextValidator instance."""
         return cast(PieceContextValidator, self.entity_validator)
+    
+    

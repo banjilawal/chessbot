@@ -14,7 +14,7 @@ from chess.token import (
     ExcessiveTokenContextFlagsException
 )
 from chess.coord import Coord, CoordService
-from chess.rank import Rank, RankValidator
+from chess.rank import Rank, RankService
 from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService, LoggingLevelRouter
 from chess.team import Team, TeamValidator
 
@@ -51,9 +51,9 @@ class TokenContextBuilder(Builder[TokenContext]):
             rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
             coord: Optional[Coord] = None,
-            team_service: TeamValidator = TeamValidator(),
-            rank_service: RankValidator = RankValidator(),
+            rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
+            team_service: TeamValidator = TeamValidator(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[TokenContext]:
         """
@@ -134,7 +134,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             # Build the rank TokenContext if its flag is enabled.
             if rank is not None:
                 validation = rank_service.validator.validate(rank)
-                if validation.is_failure():
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a rank_TokenContext in the BuildResult.
                 return BuildResult.success(TokenContext(rank=rank))
@@ -142,7 +142,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             # Build the team TokenContext if its flag is enabled.
             if team is not None:
                 validation = team_service.validator.validate(team)
-                if validation.is_failure():
+                if validation.is_failure:
                     return BuildResult.failure(validation.exception)
                 # On validation success return a team_TokenContext in the BuildResult.
                 return BuildResult.success(TokenContext(team=team))

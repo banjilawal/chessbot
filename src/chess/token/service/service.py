@@ -8,6 +8,7 @@ version: 1.0.0
 """
 from typing import cast
 
+from chess.formation import FormationService
 from chess.system import EntityService, id_emitter
 from chess.token import Token, TokenFactory, TokenValidator
 
@@ -35,7 +36,9 @@ class TokenService(EntityService[Token]):
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
     """
+    
     DEFAULT_NAME = "TokenService"
+    _formation_service: FormationService
     
     def __init__(
             self,
@@ -72,3 +75,6 @@ class TokenService(EntityService[Token]):
         """get TokenValidator"""
         return cast(TokenValidator, self.entity_validator)
     
+    @property
+    def formation_service(self) -> FormationService:
+        return self._formation_service
