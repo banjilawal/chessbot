@@ -22,7 +22,7 @@ class PersonaSuperKeyBuildRouteException(PersonaSuperKeyException, UnhandledRout
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the PersonaSuperK build failed because there was no build route for the Persona attribute.
+    1.  Indicate that the PersonaSuperKey build failed because there was no build route for the Persona attribute.
 
     # PARENT:
         *   PersonaSuperKeyException

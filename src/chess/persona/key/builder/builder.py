@@ -51,7 +51,7 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
     ) -> BuildResult[PersonaSuperKey]:
         """
         # ACTION:
-            1.  If more than one optional param is not-null return an exception in the BuildResult.
+            1.  If only one optional param is not-null return an exception in the BuildResult. Else
             2.  If the enabled param is not certified by the appropriate validating service return an exception in
                 the BuildResult.
             3.  After the active param is validated create the PersonaSuperKey object and return in the BuildResult.

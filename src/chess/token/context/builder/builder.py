@@ -10,12 +10,15 @@ version: 1.0.0
 from typing import Optional
 
 from chess.token import (
-    ZeroTokenContextFlagsException, TokenContext, TokenContextBuildFailedException,
+    TokenContextBuildRouteException, ZeroTokenContextFlagsException, TokenContext, TokenContextBuildFailedException,
     ExcessiveTokenContextFlagsException
 )
 from chess.coord import Coord, CoordService
 from chess.rank import Rank, RankService
-from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService, LoggingLevelRouter
+from chess.system import (
+    BoundNumberValidator, Builder, BuildResult, UnhandledRouteException, IdentityService,
+    LoggingLevelRouter
+)
 from chess.team import Team, TeamValidator
 
 
@@ -55,14 +58,15 @@ class TokenContextBuilder(Builder[TokenContext]):
             coord_service: CoordService = CoordService(),
             team_service: TeamValidator = TeamValidator(),
             identity_service: IdentityService = IdentityService(),
+            bound_number_validator: BoundNumberValidator = BoundNumberValidator(),
     ) -> BuildResult[TokenContext]:
         """
         # ACTION:
-            1.  Confirm that only one in the (row, column, coord) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a TokenContext and send in a BuildResult. Else, return an exception
-                in the BuildResult.
-
+            1.  If only one, optional param is not null send an exception in the BuildResult.
+            2.  If there is no build path for the TokenContext key send and exception in the BuildResult. Else,
+                route to the appropriate build route.
+            3.  If the key's value fails validation send the exception in the BuildResult. Else, build the TeamContext
+                in the BuildResult's payload.
         # PARAMETERS:
             Only one these must be provided:
                 *   id (Optional[int])
@@ -71,99 +75,141 @@ class TokenContextBuilder(Builder[TokenContext]):
                 *   rank (Optional[Rank])
                 *   ransom (Optional[int])
                 *   coord (Optional[Coord])
-                
             These Parameters must be provided:
-                *   team_certifier (TeamValidator)
-                *   rank_certifier (RankValidator)
+                *   team_service (TeamService)
+                *   rank_service (RankService)
                 *   coord_service (CoordService)
                 *   identity_service (IdentityService)
-
         # RETURNS:
-          BuildResult[TokenContext] containing either:
-                - On success: TokenContext in the payload.
-                - On failure: Exception.
-
+          *     BuildResult[TokenContext] containing either:
+                    - On failure: Exception.
+                    - On success: TokenContext in the payload.
         # RAISES:
             *   ZeroTokenContextFlagsException
             *   TokenContextBuildFailedException
             *   ExcessiveTokenContextFlagsException
+            *   TokenContextBuildFailedException
+            *   TokenContextBuildRouteException
         """
         method = "TokenContextBuilder.builder"
         
-        try:
-            # Count how many optional parameters are not-null. One param needs to be not-null.
-            params = [id, name, team, rank, ransom, coord]
-            param_count = sum(bool(p) for p in params)
-            
-            # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
-            if param_count == 0:
-                return BuildResult.failure(
-                    ZeroTokenContextFlagsException(f"{method}: {ZeroTokenContextFlagsException.DEFAULT_MESSAGE}")
-                )
-            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
-            if param_count > 1:
-                return BuildResult.failure(
-                    ExcessiveTokenContextFlagsException(f"{method}: {ExcessiveTokenContextFlagsException}")
-                )
-            # After verifying only one PlayerAgent attribute-value-tuple is enabled, validate it.
-            
-            # Build the id TokenContext if its flag is enabled.
-            if id is not None:
-                validation = identity_service.validate_id(id)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return an id_TokenContext in the BuildResult.
-                return BuildResult.success(TokenContext(id=id))
-            
-            # Build the name TokenContext if its flag is enabled.
-            if name is not None:
-                validation = identity_service.validate_name(name)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a name_TokenContext in the BuildResult.
-                return BuildResult.success(TokenContext(name=name))
-            
-            # Build the coord TokenContext if its flag is enabled.
-            if coord is not None:
-                validation = coord_service.validator.validate(coord)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a coord_TokenContext in the BuildResult.
-                return BuildResult.success(TokenContext(coord=coord))
-            
-            # Build the rank TokenContext if its flag is enabled.
-            if rank is not None:
-                validation = rank_service.validator.validate(rank)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a rank_TokenContext in the BuildResult.
-                return BuildResult.success(TokenContext(rank=rank))
-            
-            # Build the team TokenContext if its flag is enabled.
-            if team is not None:
-                validation = team_service.validator.validate(team)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a team_TokenContext in the BuildResult.
-                return BuildResult.success(TokenContext(team=team))
-            
-            # Build the ransom TokenContext if its flag is enabled.
-            if ransom is not None:
-                validation = rank_service.validator.validate_ransom_in_bounds(ransom)
-                if validation.is_failure():
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a ransom_TokenContext in the BuildResult.
-                return BuildResult.success(TokenContext(ransom=ransom))
-            
-            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
-            BuildResult.failure(
-                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
-            )
-        # Finally, catch any missed exception and wrap A TokenContextBuildFailedException around it then
-        # return the exception-chain inside the ValidationResult.
-        except Exception as ex:
+        # Count how many optional parameters are not-null. One param needs to be not-null.
+        params = [id, name, team, rank, ransom, coord]
+        param_count = sum(bool(p) for p in params)
+        
+        # Handle the case that all the optional params are null.
+        if param_count == 0:
+            # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenContextBuildFailedException(
-                    ex=ex, message=f"{method}: {TokenContextBuildFailedException.DEFAULT_MESSAGE}"
+                    message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    ex=ZeroTokenContextFlagsException(f"{method}: {ZeroTokenContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
+        # Handle the case that more than one optional param is not-null.
+        if param_count > 1:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                TokenContextBuildFailedException(
+                    message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    ex=ExcessiveTokenContextFlagsException(f"{method}: {ExcessiveTokenContextFlagsException}")
+                )
+            )
+        
+        #--- Route to the appropriate validation/build branch. ---#
+        
+        # Build the id TokenContext if its flag is enabled.
+        if id is not None:
+            validation = identity_service.validate_id(id)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    TokenContextBuildFailedException(
+                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return an id_TokenContext in the BuildResult.
+            return BuildResult.success(TokenContext(id=id))
+        
+        # Build the name TokenContext if its flag is enabled.
+        if name is not None:
+            validation = identity_service.validate_name(name)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    TokenContextBuildFailedException(
+                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a name_TokenContext in the BuildResult.
+            return BuildResult.success(TokenContext(name=name))
+        
+        # Build the coord TokenContext if its flag is enabled.
+        if coord is not None:
+            validation = coord_service.validator.validate(coord)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    TokenContextBuildFailedException(
+                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a coord_TokenContext in the BuildResult.
+            return BuildResult.success(TokenContext(coord=coord))
+        
+        # Build the rank TokenContext if its flag is enabled.
+        if rank is not None:
+            validation = rank_service.validator.validate(rank)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    TokenContextBuildFailedException(
+                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a rank_TokenContext in the BuildResult.
+            return BuildResult.success(TokenContext(rank=rank))
+        
+        # Build the team TokenContext if its flag is enabled.
+        if team is not None:
+            validation = team_service.validator.validate(team)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    TokenContextBuildFailedException(
+                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a team_TokenContext in the BuildResult.
+            return BuildResult.success(TokenContext(team=team))
+        
+        # Build the ransom TokenContext if its flag is enabled.
+        if ransom is not None:
+            validation = bound_number_validator.validate(
+                candidate=ransom,
+                floor=rank_service.persona_service.min_ransom,
+                ceiling=rank_service.persona_service.max_ransom
+            )
+            # Return the exception chain on failure.
+            if validation.is_failure:
+                return BuildResult.failure(
+                    TokenContextBuildFailedException(
+                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a ransom_TokenContext in the BuildResult.
+            return BuildResult.success(TokenContext(ransom=ransom))
+        
+        # The default path returns failure
+        return BuildResult.failure(
+            TokenContextBuildFailedException(
+                message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                ex=TokenContextBuildRouteException(f"{method}: {TokenContextBuildRouteException.DEFAULT_MESSAGE}")
+            )
+        )

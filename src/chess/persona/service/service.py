@@ -90,6 +90,22 @@ class PersonaService(HashService[Persona]):
         """Returns a list of all the unique ransoms in the persona."""
         return [entry.ransom for entry in Persona]
     
+    @property
+    def min_ransom(self) -> int:
+        minimum = 100
+        for ransom in self.ransoms:
+            if ransom < minimum:
+                minimum = ransom
+        return minimum
+    
+    @property
+    def max_ransom(self) -> int:
+        maximum = -100
+        for ransom in self.ransoms:
+            if ransom > maximum:
+                maximum = ransom
+        return maximum
+    
     @classmethod
     def rank_from_persona(cls, entry: Persona) -> Optional[Rank]:
         """Get the Rank which the persona entry builds."""
