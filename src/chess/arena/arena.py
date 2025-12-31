@@ -7,9 +7,7 @@ Created: 2025-08-05
 version: 1.0.0
 """
 
-from typing import List
 
-from chess.agent import PlayerAgent
 from chess.board import Board
 from chess.team import Team
 
@@ -20,7 +18,7 @@ class Arena:
     _white_team: Team
     _black_team: Team
 
-    def __init__(self, id: int, board: Board, game: Game):
+    def __init__(self, id: int, board: Board):
         self._id = id
         self._board = board
         self._white_team = self._white_team

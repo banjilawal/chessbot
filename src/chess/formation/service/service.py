@@ -1,7 +1,7 @@
 from typing import List, cast
 
-from chess.formation import Formation, FormationValidator, FormationSuperKeyService
-from chess.system import GameColor, HashService, id_emitter
+from chess.formation import Formation, FormationSuperKey, FormationSuperKeyService, FormationValidator, FormationServiceException
+from chess.system import GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class FormationService(HashService[Formation]):
@@ -35,13 +35,13 @@ class FormationService(HashService[Formation]):
         return cast(FormationSuperKeyService, self.hash_super_key_service)
     
     @property
-    def formation_validator(self) -> FormationValidator:
+    def validator(self) -> FormationValidator:
         """"""
         return cast(FormationValidator, self.hash_validator)
     
     @classmethod
     def formation_colors(cls) -> List[GameColor]:
-        """Colord of the piece assigned the formation."""
+        """Color of the piece assigned the formation."""
         return [entry.color for entry in Formation]
     
     @classmethod
@@ -54,10 +54,36 @@ class FormationService(HashService[Formation]):
         """Name of the square a piece makes its opening from."""
         return [entry.name for entry in Formation]
 
-    
     @property
     def formation_names(self) -> List[str]:
         """Full name of the formation made up of color, rank, and number."""
         return [order.name.upper() for order in Formation]
-
+    
+    @LoggingLevelRouter.monitor
+    def lookup_formation(self, super_key: FormationSuperKey) -> SearchResult[List[Formation]]:
+        """
+        # ACTION:
+            Using lookup_formation is simpler and more extendable than building searches manually from self.key_service.
+            1.  If the self.key_service.lookup does not produce a payload send a FormationServiceException chain in the
+                SearchResult. Otherwise, return the payload.
+        # PARAMETERS:
+            *   super_key (FormationSuperKey)
+        # RETURNS:
+            *   SearchResult[List[Formation]] containing a list if a match is found else an exception chain.
+        # RAISES:
+            None
+        """
+        method = "FormationService.lookup_formation"
+        result = self.key_service.lookup.query(super_key=super_key, super_key_validator=self.key_service.validator)
+        
+        # Handle the case search failed by raising an exception.
+        if result.is_failure:
+            return SearchResult.failure(
+                FormationServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {FormationServiceException.ERROR_CODE}",
+                    ex=result.exception,
+                )
+            )
+        # On search success send the result to the caller.
+        return result
 

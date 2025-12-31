@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/arena.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/arena.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/service/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/service/exception/router.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/service/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/lookup/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/lookup/service/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/lookup/service/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/exception/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/exception/route.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,11 +318,11 @@
       <recent name="$PROJECT_DIR$/src/chess/system/number/exception/debug" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/formation/key/service" />
+      <recent name="$PROJECT_DIR$/src/chess/schema/key" />
       <recent name="$PROJECT_DIR$/src/chess/persona/key/validator/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/schema/key/lookup/exception/debug" />
-      <recent name="$PROJECT_DIR$/src/chess/schema/validator/exception/debug" />
-      <recent name="$PROJECT_DIR$/src/chess/schema/key/validator/exception/debug" />
     </key>
   </component>
   <component name="RunManager" selected="Python.finder">
@@ -982,7 +997,7 @@
       <workItem from="1767024723147" duration="40015000" />
       <workItem from="1767111633890" duration="19691000" />
       <workItem from="1767147935716" duration="5059000" />
-      <workItem from="1767153050210" duration="13410000" />
+      <workItem from="1767153050210" duration="15953000" />
     </task>
     <servers />
   </component>

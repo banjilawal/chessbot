@@ -9,10 +9,8 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.schema import (
-    Schema, SchemaServiceException, SchemaSuperKey, SchemaSuperKeyService,
-    SchemaValidator
-)
+from chess.formation import Formation, FormationService, FormationSuperKey
+from chess.schema import Schema, SchemaServiceException, SchemaSuperKey, SchemaSuperKeyService, SchemaValidator
 from chess.system import CalculationResult, GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
 
 
@@ -59,6 +57,24 @@ class SchemaService(HashService[Schema]):
     def schema_names(cls) -> List[str]:
         """A Schema name is the key to a metadata dictionary."""
         return [entry.name for entry in Schema]
+    
+    @LoggingLevelRouter
+    def formations_for_schema(
+            self,
+            schema: Schema,
+            formation_service: FormationService = FormationService()
+    ) -> SearchResult[List[Formation]]:
+        method = "SchemaService.formations_for_schema"
+        schema_validation = self.schema_validator.validate(candidate=schema)
+        if schema_validation.is_failure:
+            # On failure return the exception chain.
+            return SearchResult.failure(
+                SchemaServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SchemaServiceException.ERROR_CODE}",
+                    ex=schema_validation.exception
+                )
+            )
+        return formation_service.lookup_formation(supker_key=FormationSuperKey(color=schema.color))
     
     @LoggingLevelRouter.monitor
     def pawn_row(self, schema: Schema) -> CalculationResult[int]:
