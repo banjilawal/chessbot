@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/color.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/color.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/designation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/debug/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/lookup/exception/wrapper.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -986,7 +977,7 @@
       <workItem from="1767018422815" duration="1433000" />
       <workItem from="1767020094964" duration="3011000" />
       <workItem from="1767024723147" duration="40015000" />
-      <workItem from="1767111633890" duration="18775000" />
+      <workItem from="1767111633890" duration="19691000" />
     </task>
     <servers />
   </component>

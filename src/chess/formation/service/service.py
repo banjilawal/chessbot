@@ -41,15 +41,23 @@ class FormationService(HashService[Formation]):
     
     @classmethod
     def formation_colors(cls) -> List[GameColor]:
-        """The values of the color attribute."""
+        """Colord of the piece assigned the formation."""
         return [entry.color for entry in Formation]
     
     @classmethod
     def formation_designations(cls) -> List[str]:
-        """A Formation name is the key to a metadata dictionary."""
+        """Chess designation of the piece assigned the formation."""
         return [entry.name for entry in Formation]
     
     @classmethod
     def formation_square_names(cls) -> List[str]:
-        """A Formation name is the key to a metadata dictionary."""
+        """Name of the square a piece makes its opening from."""
         return [entry.name for entry in Formation]
+
+    
+    @property
+    def formation_names(self) -> List[str]:
+        """Full name of the formation made up of color, rank, and number."""
+        return [order.name.upper() for order in Formation]
+
+

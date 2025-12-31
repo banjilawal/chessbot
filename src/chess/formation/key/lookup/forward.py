@@ -35,43 +35,6 @@ class FormationLookup(ForwardLookup[Formation]):
      # INHERITED ATTRIBUTES:
      None
      """
-    def forward(
-            self,
-            name: str = SERVICE_NAME,
-            id: int = id_emitter.lookup_id,
-            super_key_builder: FormationBuilder = FormationBuilder(),
-            enum_validator: FormationValidator = FormationValidator(),
-            super_key_validator: FormationValidator = FormationValidator(),
-    ):
-        super().forward(
-            id=id, 
-            name=name,
-            enum_validator=enum_validator,
-            super_key_builder=super_key_builder, 
-            super_key_validator=super_key_validator
-        )
-
-    
-    @property
-    def allowed_names(self) -> List[str]:
-        """Returns a list of all permissible formation names in upper case."""
-        return [order.name.upper() for order in Formation]
-    
-    @property
-    def allowed_colors(self) -> List[GameColor]:
-        """Returns a list of all permissible order colors."""
-        return [member.color for member in Formation]
-    
-    @property
-    def allowed_designations(self) -> List[str]:
-        """Returns a list of all permissible order designations in upper case."""
-        return [member.designation.upper() for member in Formation]
-    
-    @property
-    def allowed_squares(self) -> List[str]:
-        """Returns the names of squares Pieces make their opening move from."""
-        return [member.square.upper() for member in Formation]
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def query(
