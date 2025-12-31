@@ -1,4 +1,14 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/persona/builder/exception/route.py
+
+"""
+Module: chess.persona.builder.exception.route
+Author: Banji Lawal
+Created: 2025-09-08
+version: 1.0.0
+"""
+
+from chess.persona import PersonaSuperKeyException
+from chess.system import UnhandledRouteException
 
 __all__ = [
     # ======================# UNHANDLED_PERSONA_SUPER_KEY_BUILD_ROUTE EXCEPTION #======================#
@@ -7,19 +17,15 @@ __all__ = [
 
 
 # ======================# UNHANDLED_PERSONA_SUPER_KEY_BUILD_ROUTE EXCEPTION #======================#
-class PersonaSuperKeyBuildRouteException(ResultException, UnhandledRouteException):
+class PersonaSuperKeyBuildRouteException(PersonaSuperKeyException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that PersonaSuperKeyBuilder did not handle one of the paths necessary to assure a candidate is a
-        safe to use PersonaSuperKey. There are different configurations of PersonaSuperKey that are correct. Each
-        configuration must have a build route to guarantee all PersonaSuperKey products are safe. If a
-        PersonaSuperKey configuration does not have a build route the last step in the logic will return a
-        BuildResult containing a PersonaSuperKeyBuildRouteException.
+    1.  Indicate that the PersonaSuperK build failed because there was no build route for the Persona attribute.
 
     # PARENT:
-        *   ResultException
+        *   PersonaSuperKeyException
         *   UnhandledRouteException
 
     # PROVIDES
@@ -32,8 +38,4 @@ class PersonaSuperKeyBuildRouteException(ResultException, UnhandledRouteExceptio
     None
     """
     ERROR_CODE = "UNHANDLED_PERSONA_SUPER_KEY_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
-        "The PersonaSuperKeyBuilder did not handle one of the paths necessary to guarantee PersonaSuperKeys are "
-        "safe products. Ensure all possible build branches are covered to ensure the execution flow does not "
-        "hit the default failure result outside the if-blocks."
-    )
+    DEFAULT_MESSAGE = "PersonaSuperKey build failed: No build path existed for the Persona attribute."

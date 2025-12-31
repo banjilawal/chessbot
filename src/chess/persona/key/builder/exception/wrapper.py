@@ -1,7 +1,7 @@
-# src/chess/persona/builder/exception.py
+# src/chess/persona/builder/wrapper.py
 
 """
-Module: chess.persona.builder.exception
+Module: chess.persona.builder.wrapper
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

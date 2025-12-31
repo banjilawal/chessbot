@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== PERSONA.KEY.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .builder import PersonaBuilder
-from .exception import PersonaSuperKeyBuildFailedException
+from .builder import PersonaSuperKeyBuilder

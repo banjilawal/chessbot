@@ -9,9 +9,10 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.persona import ExcessivePersonaSuperKeysException, PersonaSuperKey, ZeroPersonaSuperKeysException
-from chess.persona.key.builder.exception.route import PersonaSuperKeyBuildRouteException
-from chess.persona.key.builder.exception.wrapper import PersonaSuperKeyBuildFailedException
+from chess.persona import (
+    ExcessivePersonaSuperKeysException, PersonaSuperKey, PersonaSuperKeyBuildFailedException,
+    PersonaSuperKeyBuildRouteException, ZeroPersonaSuperKeysException
+)
 from chess.system import BoundNumberValidator, BuildResult, Builder, IdentityService, LoggingLevelRouter
 
 
@@ -53,7 +54,7 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
             1.  If more than one optional param is not-null return an exception in the BuildResult.
             2.  If the enabled param is not certified by the appropriate validating service return an exception in
                 the BuildResult.
-            3.  After the active param is validated create the SchemaSuperKey object and return in the BuildResult.
+            3.  After the active param is validated create the PersonaSuperKey object and return in the BuildResult.
         # PARAMETERS:
             *   Only one these must be provided:
                     *   name (Optional[str])
@@ -66,13 +67,14 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
                     *   number_validator (BoundNUmberValidator)
 
         # RETURNS:
-            *   BuildResult[SchemaSuperKey] containing either:
+            *   BuildResult[PersonaSuperKey] containing either:
                     - On failure: Exception.
-                    - On success: SchemaSuperKey in the payload.
+                    - On success: PersonaSuperKey in the payload.
         # RAISES:
-            *   ZeroSchemaSuperKeysException
-            *   SchemaSuperKeyBuildFailedException
-            *   ExcessiveSchemaSuperKeysException
+            *   ZeroPersonaSuperKeysException
+            *   PersonaSuperKeyBuildFailedException
+            *   ExcessivePersonaSuperKeysException
+            *   PersonaSuperKeyBuildRouteException
         """
         method = "PersonaSuperKeyBuilder.build"
         
@@ -98,7 +100,7 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
                     ex=ExcessivePersonaSuperKeysException(f"{method}: {ExcessivePersonaSuperKeysException}")
                 )
             )
-        # After verifying only one Schema hash key-value is set, validate it.
+        # After verifying only one Persona hash key-value is set, validate it.
         
         # Build the name PersonaSuperKey if its flag is enabled.
         if name is not None:
