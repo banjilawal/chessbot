@@ -1,7 +1,7 @@
-# src/chess/formation/key/lookup/forward.py
+# src/chess/formation/key/lookup/lookup.py
 
 """
-Module: chess.formation.key.lookup.forward
+Module: chess.formation.key.lookup.lookup
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -74,7 +74,8 @@ class FormationLookup(HashLookup[Formation]):
                     ex=validation.exception
                 )
             )
-        # After verification use the hash key to route to the appropriate lookup method.
+        
+        # --- Route to the lookup method which matches the super_key attribute. ---#
         
         # Entry point into forward lookups by designation.
         if super_key.designation is not None:
@@ -89,7 +90,8 @@ class FormationLookup(HashLookup[Formation]):
         if super_key.persona is not None:
             return cls._by_persona(persona=super_key.persona)
         
-        # For other entry points return the exception chain.
+        # The default path is only reached when a super_key.attribute does not have a lookup route. Return
+        # the exception chain.
         return SearchResult.failure(
             FormationLookupFailedException(
                 message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",

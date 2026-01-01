@@ -107,7 +107,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
         
         # --- Route to the appropriate validation/build branch. ---#
         
-        # Build the square_name_key FormationSuperKey if its value is set.
+        # Build the square_name FormationSuperKey if its value is set.
         if square is not None:
             validation = square_service.validator.validate(square)
             if validation.is_failure:
@@ -121,7 +121,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             # On validation success return a square_name_FormationSuperKey in the BuildResult.
             return BuildResult.success(FormationSuperKey(square_name=square.name))
         
-        # Build the designation_key FormationSuperKey if its value is set.
+        # Build the designation FormationSuperKey if its value is set.
         if designation is not None:
             validation = identity_service.validate_name(candidate=designation)
             if validation.is_failure:
@@ -135,7 +135,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             # On validation success return a designation_FormationSuperKey in the BuildResult.
             return BuildResult.success(FormationSuperKey(designation=designation))
         
-        # Build the color_key FormationSuperKey if its value is set.
+        # Build the color FormationSuperKey if its value is set.
         if color is not None:
             validation = color_validator.validate(candidate=color)
             if validation.is_failure:
@@ -149,7 +149,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             # On validation success return a color_FormationSuperKey in the BuildResult.
             return BuildResult.success(FormationSuperKey(color=color))
         
-        # Build the persona_key FormationSuperKey if its value is set.
+        # Build the persona FormationSuperKey if its value is set.
         if persona is not None:
             validation = persona_service.validator.validate(candidate=persona)
             if validation.is_failure:
@@ -163,7 +163,8 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             # On validation success return a color_FormationSuperKey in the BuildResult.
             return BuildResult.success(FormationSuperKey(persona=persona))
         
-        # The default path returns failure
+        # The default path is only reached when a super_key attribute does not have a build route. Return
+        # the exception chain.
         BuildResult.failure(
             FormationSuperKeyBuildFailedException(
                 message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",

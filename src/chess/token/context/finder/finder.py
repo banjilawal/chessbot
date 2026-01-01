@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import List
 
 from chess.rank import Rank
-from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from chess.team import Team
+from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from chess.token import (
     Token, TokenContext, TokenContextValidator, TokenSearchDatasetNullException, TokenSearchFailedException,
     TokenSearchRouteException
@@ -23,14 +23,17 @@ class TokenFinder(DataFinder[Token]):
     # ROLE: Finder
 
     # RESPONSIBILITIES:
-    1.  Search Token collections for items which match the attribute target specified in the TokenContext parameter.
-    2.  Safely forward any errors encountered during a search to the caller.
+    1.  Send items in a TokenList whose attribute value match the context.key value to the caller.
+    2.  If a search does not complete forward the exception chain to the caller for debugging.
+    
+    # LIMITATIONS:
+    1.  TokenFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
         *   Finder
 
     # PROVIDES:
-        *   find: -> SearchResult[List[Token]]
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -38,7 +41,6 @@ class TokenFinder(DataFinder[Token]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def find(
@@ -49,25 +51,24 @@ class TokenFinder(DataFinder[Token]):
     ) -> SearchResult[List[Token]]:
         """
         # ACTION:
-        1.  Verify the dataset is not null and contains only Token objects,
-        2.  Use context_validator to certify the provided map.
-        3.  Context attribute routes the search. Attribute value is the search target.
-        4.  The outcome of the search is sent back to the caller in a SearchResult object.
-
-        # PARAMETERS:
+        1.  If the dataset is null or the wrong type send the exception in the SearchResult.
+        2.  If the context fails validation send the exception in the SearchResult. Else, route to the 
+            search method which matches the context key.
+        3.  The search method returns either an empty result or a list of tokens. Any exceptions were caught earlier
+            by the search router.
+       # PARAMETERS:
             *   dataset (List[Token]):
-            *   map: TokenContext
+            *   context: TokenContext
             *   context_validator: TokenContextValidator
-
         # RETURNS:
-        SearchResult[List[Token]] containing either:
-            - On success: List[token] in the payload.
-            - On failure: Exception.
-
+            *   SearchResult[List[Token]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Tokem] in the payload.
+                    - On no matches found: Exception null, payload null
         # RAISES:
             *   TypeError
             *   TokenNullDatasetException
-            *   TokenFinderException
+            *   TokenSearchFailedException
         """
         method = "TokenFinder.find"
         
@@ -82,6 +83,15 @@ class TokenFinder(DataFinder[Token]):
                     )
                 )
             )
+        # Handle the case that dataset is the wrong type
+        if not isinstance(dataset, List):
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                TokenSearchFailedException(
+                    message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
+                    ex=TypeError(f"{method}: Expected List[Token], got {type(dataset).__name__} instead.")
+                )
+            )
         # Handle the case that the context fails validation.
         validation_result = context_validator.validate(context)
         if validation_result.is_failure:
@@ -93,7 +103,7 @@ class TokenFinder(DataFinder[Token]):
                 )
             )
     
-    # --- Route to the appropriate search method by the context flag. ---#
+    # --- Route to the search method which matches the context key. ---#
         
         # Entry point into finding by token's id.
         if context.id is not None:
@@ -113,8 +123,9 @@ class TokenFinder(DataFinder[Token]):
         # Entry point into searching by token's color.
         if context.ransom is not None:
             return cls._find_by_color(dataset=dataset, ransom=context.color)
-            
-        # The default path returns failure
+        
+        # The default path is only reached when a context.key does not have a search route. Return
+        # the exception chain.
         return SearchResult.failure(
             TokenSearchFailedException(
                 message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
@@ -133,8 +144,9 @@ class TokenFinder(DataFinder[Token]):
             *   dataset (List[Token])
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
-                    - On failure: Exception.
-                    - On success: List[token] in the payload.
+                    - On error: Exception , payload null
+                    - On finding a match: List[Tokem] in the payload.
+                    - On no matches found: Exception null, payload null
         # RAISES:
             None
         """
@@ -158,8 +170,9 @@ class TokenFinder(DataFinder[Token]):
             *   dataset (List[Token])
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
-                    - On failure: Exception.
-                    - On success: List[token] in the payload.
+                    - On error: Exception , payload null
+                    - On finding a match: List[Tokem] in the payload.
+                    - On no matches found: Exception null, payload null
         # RAISES:
             None
         """
@@ -182,8 +195,9 @@ class TokenFinder(DataFinder[Token]):
             *   dataset (List[Token])
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
-                    - On failure: Exception.
-                    - On success: List[token] in the payload.
+                    - On error: Exception , payload null
+                    - On finding a match: List[Tokem] in the payload.
+                    - On no matches found: Exception null, payload null
         # RAISES:
             None
         """
@@ -206,8 +220,9 @@ class TokenFinder(DataFinder[Token]):
             *   dataset (List[Token])
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
-                    - On failure: Exception.
-                    - On success: List[token] in the payload.
+                    - On error: Exception , payload null
+                    - On finding a match: List[Tokem] in the payload.
+                    - On no matches found: Exception null, payload null
         # RAISES:
             None
         """
@@ -230,13 +245,14 @@ class TokenFinder(DataFinder[Token]):
             *   dataset (List[Token])
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
-                    - On failure: Exception.
-                    - On success: List[token] in the payload.
+                    - On error: Exception , payload null
+                    - On finding a match: List[Tokem] in the payload.
+                    - On no matches found: Exception null, payload null
         # RAISES:
             None
         """
         method = "TokenFinder._find_by_ransom"
-        matches = [token for token in dataset if token.rank.persona.ransom == ransom]
+        matches = [token for token in dataset if token.rank.ransom == ransom]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
@@ -250,12 +266,13 @@ class TokenFinder(DataFinder[Token]):
         # ACTION:
             1.  Get the Tokens which match the color.
         # PARAMETERS:
-            *   ransom (int)
+            *   color (int)
             *   dataset (List[Token])
         # RETURNS:
             *   SearchResult[List[Token]] containing either:
-                    - On failure: Exception.
-                    - On success: List[token] in the payload.
+                    - On error: Exception , payload null
+                    - On finding a match: List[Tokem] in the payload.
+                    - On no matches found: Exception null, payload null
         # RAISES:
             None
         """

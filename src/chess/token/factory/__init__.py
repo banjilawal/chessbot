@@ -10,8 +10,7 @@ version: 1.0.0
 #=========== TOKEN.FACTORY PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .exception import *
 from .factory import TokenFactory

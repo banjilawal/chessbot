@@ -1,7 +1,7 @@
-# src/chess/token/service/service.py
+# src/chess/token/context/service/service.py
 
 """
-Module: chess.token.service.service
+Module: chess.token.context.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -41,7 +41,7 @@ class TokenContextService(ContextService[TokenContext]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            finder: TokenFinder =TokenFinder(),
+            finder: TokenFinder = TokenFinder(),
             builder: TokenContextBuilder =TokenContextBuilder(),
             validator: TokenContextValidator =TokenContextValidator(),
     ):

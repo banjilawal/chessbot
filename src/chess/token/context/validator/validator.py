@@ -124,7 +124,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 )
             )
         
-        # --- Route to the appropriate validation/build branch. ---#
+        # --- Route to the appropriate validation branch. ---#
         
         # Certification for the search-by-id target.
         if context.id is not None:
@@ -224,7 +224,8 @@ class TokenContextValidator(Validator[TokenContext]):
             # On certification success return the ransom_TokenContext in the ValidationResult.
             return ValidationResult.success(context)
         
-        # Default exit point
+        # The default path is only reached when a context.key does not have a validation route. Return
+        # the exception chain.
         return ValidationResult.failure(
             TokenContextValidationFailedException(
                 message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",

@@ -13,8 +13,8 @@ from chess.arena import Arena
 from chess.agent import PlayerAgent
 from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from chess.team import (
-    Team, TeamContext, TeamContextValidator, TeamSearchDatasetNullException,
-    TeamSearchIdCollisionException, TeamSearchRouteException, TeamSearchFailedException
+    Team, TeamContext, TeamContextValidator, TeamSearchDatasetNullException, TeamSearchRouteException,
+    TeamSearchFailedException
 )
 
 
@@ -23,10 +23,13 @@ class TeamFinder(DataFinder[Team]):
     # ROLE: Finder
 
     # RESPONSIBILITIES:
-    1.  Finder Team collections for items which match the attribute target specified in the TeamContext parameter.
-    2.  Safely forward any errors encountered during a finder to the caller.
+    1.  Send items in a TeamList whose attribute value match the context.key value to the caller.
+    2.  If a search does not complete forward the exception chain to the caller for debugging.
 
-    # PARENT:
+    # LIMITATIONS:
+    1.  TeamFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
+
+    # PARENT
         *   Finder
 
     # PROVIDES:
@@ -38,7 +41,6 @@ class TeamFinder(DataFinder[Team]):
     # INHERITED ATTRIBUTES:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def find(
@@ -49,43 +51,49 @@ class TeamFinder(DataFinder[Team]):
     ) -> SearchResult[List[Team]]:
         """
         # ACTION:
-            1.  If the dataset is null send an exception in the SearchResult.
-            2.  If the context is faulty send an exception in the SearchResult.
-            3.  If there is no search route for the not-null context.attribute send an exception in the SearchResult.
-            4.  Return the SearchResult from the attribute search route.
-        # PARAMETERS:
-            *   dataset (List[Team])
-            *   context (TeamContext)
-            *   context_validator (TeamContextValidator)
+        1.  If the dataset is null or the wrong type send the exception in the SearchResult.
+        2.  If the context fails validation send the exception in the SearchResult. Else, route to the
+            search method which matches the context key.
+        3.  The search method returns either an empty result or a list of teams. Any exceptions were caught earlier
+            by the search router.
+       # PARAMETERS:
+            *   dataset (List[Team]):
+            *   context: TeamContext
+            *   context_validator: TeamContextValidator
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
-                    - On searching a match: List[Team] in the payload.
+                    - On finding a match: List[Tokem] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             *   TypeError
             *   TeamNullDatasetException
-            *   TeamFinderOperationFailedException
+            *   TeamSearchFailedException
         """
         method = "TeamFinder.find"
-        # Don't want to run a finder if the dataset is null.
+        
+        # Handle the case that the dataset is null.
         if dataset is None:
+            # Return the exception chain on failure.
             return SearchResult.failure(
                 TeamSearchFailedException(
                     message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
-                    ex=TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}")
+                    ex=TeamSearchDatasetNullException(
+                        f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
-        # certify the context is safe.
-        validation_result = context_validator.validate(context)
-        if validation_result.is_failure:
+        # Handle the case that dataset is the wrong type
+        if not isinstance(dataset, List):
+            # Return the exception chain on failure.
             return SearchResult.failure(
                 TeamSearchFailedException(
-                    message=f"{method}: {TeamSearchFailedException.ERROR_CODE}", ex=validation_result.exception
+                    message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
+                    ex=TypeError(f"{method}: Expected List[Team], got {type(dataset).__name__} instead.")
                 )
             )
         
-        # --- Route to the appropriate search method by the context flag. ---#
+        # --- Route to the search method which matches the context key. ---#
         
         # Entry point into searching by team's id.
         if context.id is not None:
@@ -100,7 +108,8 @@ class TeamFinder(DataFinder[Team]):
         if context.color is not None:
             return cls._find_by_color(dataset=dataset, team=context.color)
         
-        # The default path returns failure.
+        # The default path is only reached when a context.key does not have a search route. Return
+        # the exception chain.
         return SearchResult.failure(
             TeamSearchFailedException(
                 message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
@@ -128,22 +137,11 @@ class TeamFinder(DataFinder[Team]):
         """
         method = "TeamFinder._find_by_id"
         matches = [team for team in dataset if team.id == id]
-        # There should be either no Teams with the id or one and only one Team will have that id.
+        # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
-        # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
-        # inconsistency later.
-        if len(matches) == 1:
-            return SearchResult.success(payload=matches)
-        # If more than one team has the same id there is an error.
-        if len(matches) > 1:
-            return SearchResult.failure(
-                TeamSearchFailedException(
-                    message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
-                    ex=TeamSearchIdCollisionException(f"{method}: {TeamSearchIdCollisionException.DEFAULT_MESSAGE}")
-                )
-            )
-        return SearchResult.failure(TeamSearchFailedException(f"{method}: {TeamSearchFailedException.ERROR_CODE}"))
+        # Only other case
+        return SearchResult.success(payload=matches)
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -164,11 +162,11 @@ class TeamFinder(DataFinder[Team]):
         """
         method = "TeamFinder._find_by_arena"
         matches = [team for team in dataset if team.arena == arena]
+        # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
-        if len(matches) >= 1:
-            return SearchResult.success(payload=matches)
-        return SearchResult.failure(TeamSearchFailedException(f"{method}: {TeamSearchFailedException.ERROR_CODE}"))
+        # Only other case
+        return SearchResult.success(payload=matches)
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -189,11 +187,11 @@ class TeamFinder(DataFinder[Team]):
         """
         method = "TeamFinder._find_by_owner"
         matches = [team for team in dataset if team.owner == owner]
+        # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
-        if len(matches) >= 1:
-            return SearchResult.success(payload=matches)
-        return SearchResult.failure(TeamSearchFailedException(f"{method}: {TeamSearchFailedException.ERROR_CODE}"))
+        # Only other case
+        return SearchResult.success(payload=matches)
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -214,9 +212,9 @@ class TeamFinder(DataFinder[Team]):
         """
         method = "TeamFinder._find_by_color"
         matches = [team for team in dataset if team.schema.color == color]
+        # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
-        if len(matches) >= 1:
-            return SearchResult.success(payload=matches)
-        return SearchResult.failure(TeamSearchFailedException(f"{method}: {TeamSearchFailedException.ERROR_CODE}"))
+        # Only other case
+        return SearchResult.success(payload=matches)
     
