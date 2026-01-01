@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/flag/zero.py
+# src/chess/team/context/validator/exception/flag/zero.py
 
 """
-Module: chess.team.validator.exception.flag.zero
+Module: chess.team.context.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -40,6 +40,5 @@ class ZeroTeamContextFlagsException(TeamContextException, ContextFlagCountExcept
     """
     ERROR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
-        "TeamContext validation failed: The candidate had more than one attribute set. Cannot search for teams if "
-        "without one and only attribute-value tuple enabled."
+        "TeamContext validation failed: No attributes were set. One attribute-value should be enabled."
     )

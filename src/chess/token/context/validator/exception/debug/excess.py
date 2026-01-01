@@ -22,8 +22,8 @@ class ExcessiveTokenContextFlagsException(TokenContextException, ContextFlagCoun
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  more than one TokenContext flag was enabled. Only one Token attribute-value-tuple can be used in
-        a search.
+    1.  Indicate that the candidate was not granted TokenContext certification because more than one TokenContext
+        flag was enabled.
 
     # PARENT:
         *   ContextFlagCountException
@@ -40,6 +40,5 @@ class ExcessiveTokenContextFlagsException(TokenContextException, ContextFlagCoun
     """
     ERROR_CODE = "EXCESSIVE_TOKEN_CONTEXT_FLAG_ERROR"
     DEFAULT_MESSAGE = (
-        "Excessive TokenContext flags were set. an Token search can only use one-and-only "
-        "map flag at a time."
+        "TokenContext validation failed: More than one attribute was set. Only one attribute-value should be enabled."
     )

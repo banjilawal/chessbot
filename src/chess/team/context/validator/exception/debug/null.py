@@ -14,11 +14,11 @@ __all__ = [
 ]
 
 from chess.system import NullException
-from chess.team import InvalidTeamContextException
+from chess.team import TeamContextException
 
 
 # ======================# NULL_TEAM_CONTEXT EXCEPTION #======================#
-class NullTeamContextException(InvalidTeamContextException, NullException):
+class NullTeamContextException(TeamContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class NullTeamContextException(InvalidTeamContextException, NullException):
 
     # PARENT:
         *   NullTeamContextException
-        *   InvalidTeamContextException
+        *   TeamContextException
 
     # PROVIDES:
     None

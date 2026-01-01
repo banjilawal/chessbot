@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.token import  TokenContextException
+from chess.token import TokenContextException
 
 __all__ = [
     # ========================= ZERO_TOKEN_CONTEXT_FLAGS EXCEPTION =========================#
@@ -22,12 +22,12 @@ class ZeroTokenContextFlagsException(TokenContextException, ContextFlagCountExce
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  no TokenContext flag was enabled. One and only one Token attribute-value-tuple is required for
-        a search.
+    1.  Indicate that the candidate was not granted TokenContext certification because no TokenContext flag
+        was enabled.
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidTokenContextException
+        *   TokenContextException
 
     # PROVIDES:
     None
@@ -40,6 +40,5 @@ class ZeroTokenContextFlagsException(TokenContextException, ContextFlagCountExce
     """
     ERROR_CODE = "ZERO_TOKEN_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
-        "Zero TokenContext flags were set. Cannot search for Tokens if one-and_oly-one "
-        "map flag is enabled."
+        "TokenContext validation failed: No attributes were set. One attribute-value should be enabled."
     )

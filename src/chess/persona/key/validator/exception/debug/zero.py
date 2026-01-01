@@ -39,5 +39,5 @@ class ZeroPersonaSuperKeysException(PersonaSuperKeyException, ContextFlagCountEx
     """
     ERROR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
-        "PersonaSuperKey validation failed: No attribute is not-null. One attribute should be enabled."
+        "PersonaSuperKey validation failed: All attributes were null. One attribute should be enabled."
     )
