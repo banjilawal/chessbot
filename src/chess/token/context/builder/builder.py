@@ -9,11 +9,16 @@ version: 1.0.0
 
 from typing import Optional
 
-
-from chess.coord import Coord, CoordService
 from chess.rank import Rank, RankService
-from chess.system import  BoundNumberValidator, Builder, BuildResult, IdentityService, LoggingLevelRouter
-from chess.team import TeamService
+from chess.team import Team, TeamService
+from chess.coord import Coord, CoordService
+from chess.system import (
+    BoundNumberValidator, Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
+)
+from chess.token import (
+    ExcessiveTokenContextFlagsException, TokenContext, TokenContextBuildFailedException,
+    TokenContextBuildRouteException, ZeroTokenContextFlagsException
+)
 
 
 class TokenContextBuilder(Builder[TokenContext]):
@@ -43,15 +48,17 @@ class TokenContextBuilder(Builder[TokenContext]):
     def build(
             cls,
             id: Optional[int] = None,
-            name: Optional[str] = None,
             team: Optional[Team] = None,
             rank: Optional[Rank] = None,
             ransom: Optional[int] = None,
             coord: Optional[Coord] = None,
+            color: Optional[GameColor] = None,
+            designation: Optional[str] = None,
             team_service: TeamService = TeamService(),
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
+            color_validator: GameColorValidator = GameColorValidator(),
             bound_number_validator: BoundNumberValidator = BoundNumberValidator(),
     ) -> BuildResult[TokenContext]:
         """
@@ -69,10 +76,12 @@ class TokenContextBuilder(Builder[TokenContext]):
                 *   rank (Optional[Rank])
                 *   ransom (Optional[int])
                 *   coord (Optional[Coord])
+                *   color (Optional[GameColor])
             These Parameters must be provided:
                 *   team_service (TeamService)
                 *   rank_service (RankService)
                 *   coord_service (CoordService)
+                *   color_validator (GameColorValidator)
                 *   identity_service (IdentityService)
         # RETURNS:
           *     BuildResult[TokenContext] containing either:
@@ -88,7 +97,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         method = "TokenContextBuilder.builder"
         
         # Count how many optional parameters are not-null. One param needs to be not-null.
-        params = [id, name, team, rank, ransom, coord]
+        params = [id, designation, team, rank, ransom, coord, color]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that all the optional params are null.
@@ -126,9 +135,9 @@ class TokenContextBuilder(Builder[TokenContext]):
             # On validation success return an id_TokenContext in the BuildResult.
             return BuildResult.success(TokenContext(id=id))
         
-        # Build the name TokenContext if its flag is enabled.
-        if name is not None:
-            validation = identity_service.validate_name(name)
+        # Build the designation TokenContext if its flag is enabled.
+        if designation is not None:
+            validation = identity_service.validate_name(designation)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -137,8 +146,8 @@ class TokenContextBuilder(Builder[TokenContext]):
                         ex=validation.exception
                     )
                 )
-            # On validation success return a name_TokenContext in the BuildResult.
-            return BuildResult.success(TokenContext(name=name))
+            # On validation success return a designation_TokenContext in the BuildResult.
+            return BuildResult.success(TokenContext(designation=designation))
         
         # Build the coord TokenContext if its flag is enabled.
         if coord is not None:
@@ -181,6 +190,20 @@ class TokenContextBuilder(Builder[TokenContext]):
                 )
             # On validation success return a team_TokenContext in the BuildResult.
             return BuildResult.success(TokenContext(team=team))
+        
+        # Build the color TokenContext if its flag is enabled.
+        if color is not None:
+            validation = color_validator.validate(color)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    TokenContextBuildFailedException(
+                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a team_TokenContext in the BuildResult.
+            return BuildResult.success(TokenContext(color=color))
         
         # Build the ransom TokenContext if its flag is enabled.
         if ransom is not None:

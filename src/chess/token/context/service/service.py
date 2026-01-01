@@ -6,11 +6,11 @@ Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
+
 from typing import cast
 
-from chess.schema import SchemaService
-from chess.system import ContextService,  id_emitter
-from chess.token import TokenContext
+from chess.system import ContextService, id_emitter
+from chess.token import TokenContext, TokenContextBuilder, TokenContextValidator, TokenFinder
 
 
 class TokenContextService(ContextService[TokenContext]):
@@ -18,10 +18,10 @@ class TokenContextService(ContextService[TokenContext]):
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facingPiece search microservice API.
-    2.  Provides a map aware utility for searchingPiece objects.
+    1.  Public facingToken search microservice API.
+    2.  Provides a map aware utility for searchingToken objects.
     3.  Encapsulate integrity assurance logic in one extendable module.
-    4.  Create a single source of truth forPiece search results by having single entry and exit points for the
+    4.  Create a single source of truth forToken search results by having single entry and exit points for the
        Token search flow.
 
     # PARENT:
@@ -36,40 +36,36 @@ class TokenContextService(ContextService[TokenContext]):
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.
     """
-    DEFAULT_NAME = "TokenContextService"
+    SERVICE_NAME = "TokenContextService"
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            finder:PieceFinder =PieceFinder(),
-            schema_service: SchemaService = SchemaService(),
-            builder:TokenContextBuilder =TokenContextBuilder(),
-            validator:TokenContextValidator =TokenContextValidator(),
+            finder: TokenFinder =TokenFinder(),
+            builder: TokenContextBuilder =TokenContextBuilder(),
+            validator: TokenContextValidator =TokenContextValidator(),
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
-            *   name (str): Default value - SERVICE_NAME
-            *   id (int): Default value - id_emitter.service_id
-            *   finder (PieceFinder): Default value -PieceFinder()
-            *   builder (TokenContextBuilder): Default value -TokenContextBuilder()
-            *   validator (TokenContextValidator): Default value -TokenContextValidator()
-
+            *   id (int)
+            *   name (str)
+            *   finder (TokenFinder)
+            *   builder (TokenContextBuilder)
+            *   validator (TokenContextValidator)
         # RETURNS:
-        None
-
+            None
         # RAISES:
-        None
+            None
         """
         method = "TokenContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property
-    def finder(self) ->PieceFinder:
-        """GetPieceFinder instance."""
-        return cast(PieceFinder, self.entity_finder)
+    def finder(self) ->TokenFinder:
+        """GetTokenFinder instance."""
+        return cast(TokenFinder, self.entity_finder)
     
     @property
     def builder(self) ->TokenContextBuilder:

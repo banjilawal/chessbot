@@ -118,7 +118,8 @@ class TeamContextValidator(Validator[TeamContext]):
                     )
                 )
             )
-            # Route to the appropriate validation branch.
+
+        # --- Route to the appropriate validation branch. ---#
         
         # Certification for the search-by-id target.
         if context.id is not None:
