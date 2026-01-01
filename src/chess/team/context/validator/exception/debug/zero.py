@@ -40,5 +40,5 @@ class ZeroTeamContextFlagsException(TeamContextException, ContextFlagCountExcept
     """
     ERROR_CODE = "ZERO_TEAM_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
-        "TeamContext validation failed: No attributes were set. One attribute-value should be enabled."
+        "TeamContext validation failed: All attributes were null. One attribute should have a value."
     )

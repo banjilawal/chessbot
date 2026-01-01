@@ -40,29 +40,28 @@ class Token(ABC):
     _id: int
     _team: Team
     _rank: Rank
+    _designation: str
     _roster_number: int
-    _formation: Formation
     _current_position: Coord
     _positions: CoordDataService
 
     def __init__(
             self,
             id: int,
-            name: str,
             rank: Rank,
             team: Team,
+            designation: str,
             roster_number: int,
             opening_square: Square,
             positions: CoordDataService = CoordDataService()
     ):
         method = "Token.__init__"
-
         self._id = id
-        self._name = name
         self._team = team
         self._rank = rank
         self._positions = positions
-        self.roster_number = roster_number
+        self._designation = designation
+        self._roster_number = roster_number
         self._opening_square = opening_square
         self._current_position = self._positions.current_item
         
@@ -74,8 +73,8 @@ class Token(ABC):
         return self._id
     
     @property
-    def name(self) -> str:
-        return self._name
+    def designation(self) -> str:
+        return self._designation
     
     @property
     def roster_number(self) -> int:
@@ -104,8 +103,8 @@ class Token(ABC):
     def _set_rank(self, rank: Rank) -> None:
         self._rank = rank
     
-    def is_enemy(self, piece: Piece) -> bool:
-        return self._team != piece.team
+    def is_enemy(self, token: Token) -> bool:
+        return self._team != token.team
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True
@@ -120,8 +119,8 @@ class Token(ABC):
     def __str__(self) -> str:
         return (
             f"Token[id:{self._id} "
-            f"designation:{self._name} "
+            f"designation:{self._designation} "
             f"rank:{self._rank.name} "
             f"team:{self._team.schema.name} "
-            f"position:{self._positions.current_coord}"
+            f"position:{self.current_position}"
         )

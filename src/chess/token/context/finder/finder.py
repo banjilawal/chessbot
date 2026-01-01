@@ -9,7 +9,9 @@ version: 1.0.0
 
 from typing import List
 
-from chess.system import DataFinder, LoggingLevelRouter, SearchResult
+from chess.rank import Rank
+from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
+from chess.team import Team
 from chess.token import (
     Token, TokenContext, TokenContextValidator, TokenSearchDatasetNullException, TokenSearchFailedException,
     TokenSearchRouteException
@@ -111,192 +113,156 @@ class TokenFinder(DataFinder[Token]):
         # Entry point into searching by token's color.
         if context.ransom is not None:
             return cls._find_by_color(dataset=dataset, ransom=context.color)
-    
-        
-        # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
-        SearchResult.failure(
-            TokenSearchRouteException(f"{method}: {TokenSearchRouteException.DEFAULT_MESSAGE}")
+            
+        # The default path returns failure
+        return SearchResult.failure(
+            TokenSearchFailedException(
+                message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
+                ex=TokenSearchRouteException(f"{method}: {TokenSearchRouteException.DEFAULT_MESSAGE}")
+            )
         )
-
+        
     @classmethod
     @LoggingLevelRouter.monitor
     def _find_by_id(cls, dataset: List[Token], id: int) -> SearchResult[List[Token]]:
         """
         # ACTION:
-        1.  Get the Token with the desired id.
-        2.  An id search should produce either no hits or one hit only.
-        3.  Multiple unique tokens in the result indicate that  a problem.
-
+            1.  Get the Tokens with the desired id.
         # PARAMETERS:
             *   id (int)
             *   dataset (List[Token])
-
         # RETURNS:
-        SearchResult[List[Token]] containing either:
-            - On success: List[token] in the payload.
-            - On failure: Exception.
-
+            *   SearchResult[List[Token]] containing either:
+                    - On failure: Exception.
+                    - On success: List[token] in the payload.
         # RAISES:
-            *   TokenFinderException
+            None
         """
         method = "TokenFinder._find_by_id"
-        try:
-            # IDs are unique the search should either produce no result or one unique.
-            matches = [token for token in dataset if token.id == id]
-            # Handle the nothing found case.
-            if len(matches) == 0:
-                return SearchResult.empty()
-            # Handle the case with successful hits. The restriction that: if match_count > 1 ==> Error is relaxed.
-            if len(matches) >= 1:
-                return SearchResult.success(payload=matches)
-            
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
-            # then, return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
-            )
+        matches = [token for token in dataset if token.id == id]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
+
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_name(cls, dataset: List[Token], name: str) -> SearchResult[List[Token]]:
+    def _find_by_designation(cls, dataset: List[Token], designation: str) -> SearchResult[List[Token]]:
         """
         # ACTION:
-        1.  Get the Token with the desired designation.
-        2.  A designation search should produce either no hits or one hit only.
-        3.  Multiple unique tokens in the result indicate that  a problem.
-
+            1.  Get the Tokens which match the designation.
         # PARAMETERS:
-            *   name (str)
+            *   designation (str)
             *   dataset (List[Token])
-
         # RETURNS:
-        SearchResult[List[Token]] containing either:
-            - On success: List[token] in the payload.
-            - On failure: Exception.
-
+            *   SearchResult[List[Token]] containing either:
+                    - On failure: Exception.
+                    - On success: List[token] in the payload.
         # RAISES:
-            *   TokenFinderException
+            None
         """
-        method = "TokenFinder._find_by_name"
-        try:
-            # Names are unique the search should either produce no result or one unique.
-            matches = [ token for token in dataset if token.name.upper() == name.upper()]
-            # Handle the nothing found case.
-            if len(matches) == 0:
-                return SearchResult.empty()
-            # Handle the case with successful hits. The restriction that: if match_count > 1 ==> Error is relaxed.
-            if len(matches) >= 1:
-                return SearchResult.success(payload=matches)
-                
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
-            # then, return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
-            )
+        method = "TokenFinder._find_by_designation"
+        matches = [token for token in dataset if token.designation.upper() == designation.upper()]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
     
     @classmethod
     @LoggingLevelRouter.monitor
     def _find_by_team(cls, dataset: List[Token], team: Team) -> SearchResult[List[Token]]:
         """
         # ACTION:
-        1.  Get Tokens on the desired team.
-
+            1.  Get the Tokens which match the designation.
         # PARAMETERS:
             *   team (Team)
             *   dataset (List[Token])
-
         # RETURNS:
-        SearchResult[List[Token]] containing either:
-            - On success: List[token] in the payload.
-            - On failure: Exception.
-
+            *   SearchResult[List[Token]] containing either:
+                    - On failure: Exception.
+                    - On success: List[token] in the payload.
         # RAISES:
-            *   TokenFinderException
+            None
         """
         method = "TokenFinder._find_by_team"
-        try:
-            matches = [token for token in dataset if token.team == team]
-            # Handle the nothing found case.
-            if len(matches) == 0:
-                return SearchResult.empty()
-            # Handle the case with successful hits
-            if len(matches) >= 1:
-                return SearchResult.success(payload=matches)
-            
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
-            # then, return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
-            )
+        matches = [token for token in dataset if token.team == team]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
     
     @classmethod
     @LoggingLevelRouter.monitor
     def _find_by_rank(cls, dataset: List[Token], rank: Rank) -> SearchResult[List[Token]]:
         """
         # ACTION:
-        1.  Get Tokens of the desired rank.
-
+            1.  Get the Tokens which match the rank.
         # PARAMETERS:
             *   rank (Rank)
             *   dataset (List[Token])
-
         # RETURNS:
-        SearchResult[List[Token]] containing either:
-            - On success: List[token] in the payload.
-            - On failure: Exception.
-
+            *   SearchResult[List[Token]] containing either:
+                    - On failure: Exception.
+                    - On success: List[token] in the payload.
         # RAISES:
-            *   TokenFinderException
+            None
         """
         method = "TokenFinder._find_by_rank"
-        try:
-            matches = [token for token in dataset if token.rank == rank]
-            # Handle the nothing found case.
-            if len(matches) == 0:
-                return SearchResult.empty()
-            # Handle the case with successful hits.
-            if len(matches) >= 1:
-                return SearchResult.success(payload=matches)
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
-            # then, return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
-            )
+        matches = [token for token in dataset if token.rank == rank]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
+    
     @classmethod
     @LoggingLevelRouter.monitor
     def _find_by_ransom(cls, dataset: List[Token], ransom: int) -> SearchResult[List[Token]]:
         """
         # ACTION:
-        1.  Get Tokens with the desired ransom.
-
+            1.  Get the Tokens which match the rank.
         # PARAMETERS:
             *   ransom (int)
             *   dataset (List[Token])
-
         # RETURNS:
-        SearchResult[List[Token]] containing either:
-            - On success: List[token] in the payload.
-            - On failure: Exception.
-
+            *   SearchResult[List[Token]] containing either:
+                    - On failure: Exception.
+                    - On success: List[token] in the payload.
         # RAISES:
-            *   TokenFinderException
+            None
         """
-        method = "TokenFinder._find_by_rank"
-        try:
-            matches = [token for token in dataset if token.rank.ransom == ransom]
-            # Handle the nothing found case.
-            if len(matches) == 0:
-                return SearchResult.empty()
-            # Handle the case with successful hits.
-            if len(matches) >= 1:
-                return SearchResult.success(payload=matches)
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
-            # then, return the exception chain inside a SearchResult.
-        except Exception as ex:
-            return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
-            )
+        method = "TokenFinder._find_by_ransom"
+        matches = [token for token in dataset if token.rank.persona.ransom == ransom]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_color(cls, dataset: List[Token], color: GameColor) -> SearchResult[List[Token]]:
+        """
+        # ACTION:
+            1.  Get the Tokens which match the color.
+        # PARAMETERS:
+            *   ransom (int)
+            *   dataset (List[Token])
+        # RETURNS:
+            *   SearchResult[List[Token]] containing either:
+                    - On failure: Exception.
+                    - On success: List[token] in the payload.
+        # RAISES:
+            None
+        """
+        method = "TokenFinder._find_by_color"
+        matches = [token for token in dataset if token.team.schema.color == color]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)

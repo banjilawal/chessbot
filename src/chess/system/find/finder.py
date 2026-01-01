@@ -1,7 +1,7 @@
-# src/chess/system/find/finder/finder.py
+# src/chess/system/find/finder.py
 
 """
-Module: chess.system.find.finder.finder
+Module: chess.system.find.finder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
