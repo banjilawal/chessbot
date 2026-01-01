@@ -60,7 +60,7 @@ class TeamFinder(DataFinder[Team]):
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Team] in the payload.
+                    - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             *   TypeError
@@ -87,19 +87,20 @@ class TeamFinder(DataFinder[Team]):
         
         # --- Route to the appropriate search method by the context flag. ---#
         
-        # Entry point into finding by team's id.
+        # Entry point into searching by team's id.
         if context.id is not None:
             return cls._find_by_id(dataset, context.id)
-        # Entry point into finding by arena team is playing in.
+        # Entry point into searching by arena team is playing in.
         if context.arena is not None:
             return cls._find_by_arena(dataset=dataset, arena=context.arena)
-        # Entry point into finding by team's owner.
+        # Entry point into searching by team's owner.
         if context.owner is not None:
             return cls._find_by_player_agent(dataset, context.owner)
-        # Entry point into finding by team's color.
+        # Entry point into searching by team's color.
         if context.color is not None:
             return cls._find_by_color(dataset=dataset, team=context.color)
-        #
+        
+        # The default path returns failure.
         return SearchResult.failure(
             TeamSearchFailedException(
                 message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
@@ -120,7 +121,7 @@ class TeamFinder(DataFinder[Team]):
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Team] in the payload.
+                    - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             *   TeamSearchFailedException
@@ -156,7 +157,7 @@ class TeamFinder(DataFinder[Team]):
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Team] in the payload.
+                    - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             *   TeamSearchFailedException
@@ -181,7 +182,7 @@ class TeamFinder(DataFinder[Team]):
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Team] in the payload.
+                    - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             *   TeamSearchFailedException
@@ -206,7 +207,7 @@ class TeamFinder(DataFinder[Team]):
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Team] in the payload.
+                    - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             *   TeamSearchFailedException

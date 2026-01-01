@@ -13,10 +13,10 @@ from chess.schema import (
     SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaSuperKey, Schema,
     SchemaNameBoundsException, SchemaSuperKeyValidator,
 )
-from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult
+from chess.system import ForwardLookup, GameColor, HashLookup, LoggingLevelRouter, SearchResult
 
 
-class SchemaLookup(ForwardLookup[SchemaSuperKey]):
+class SchemaLookup(HashLookup[Schema]):
     """
     # ROLE: Forward Lookups
 
@@ -75,12 +75,12 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         
         # Entry point into forward lookups by name.
         if super_key.name is not None:
-            return cls._by_name(name=super_key.name)
+            return cls._query_by_name(name=super_key.name)
         # Entry point into forward lookups by color.
         if super_key.color is not None:
-            return cls._lookup_by_color(color=super_key.color)
+            return cls._query_by_color(color=super_key.color)
         
-        # For other entry points return the exception chain.
+        # The default path is failure.
         return SearchResult.failure(
             SchemaLookupFailedException(
                 message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",
@@ -90,7 +90,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _by_name(cls, name: str) -> SearchResult[List[Schema]]:
+    def _query_by_name(cls, name: str) -> SearchResult[List[Schema]]:
         """
         # ACTION:
             1.  Get any Schema entry whose name matches the target value.
@@ -122,7 +122,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _lookup_by_color(cls, color: GameColor) -> SearchResult[List[Schema]]:
+    def _query_by_color(cls, color: GameColor) -> SearchResult[List[Schema]]:
         """
         # ACTION:
         1.  Get any Schema entry which matches the targeted color-value key.
@@ -147,7 +147,7 @@ class SchemaLookup(ForwardLookup[SchemaSuperKey]):
         if len(matches) >= 1:
             return SearchResult.success(matches)
         
-        # The default path is failure
+        # The default path is failure.
         return SearchResult.failure(
             SchemaLookupFailedException(
                 message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",

@@ -11,16 +11,14 @@ version: 1.0.0
 from typing import List
 
 from chess.persona import (
-    
-    Persona, PersonaDesignationBoundsException, PersonaLookupRouteException, PersonaNameBoundsException,
-    PersonaQuotaBoundsException, PersonaRansomBoundsException, PersonaSuperKey, PersonaSuperKeyValidator
+    Persona, PersonaDesignationBoundsException, PersonaLookupFailedException, PersonaLookupRouteException,
+    PersonaNameBoundsException,PersonaQuotaBoundsException, PersonaRansomBoundsException, PersonaSuperKey,
+    PersonaSuperKeyValidator
 )
-from chess.persona.key.lookup.exception.wrapper import PersonaLookupFailedException
-
-from chess.system import ForwardLookup, LoggingLevelRouter, SearchResult, id_emitter
+from chess.system import HashLookup, LoggingLevelRouter, SearchResult
 
 
-class PersonaLookup(ForwardLookup[PersonaSuperKey]):
+class PersonaLookup(HashLookup[Persona]):
     """
     # ROLE: Forward Lookups
 
@@ -80,16 +78,16 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
         
         # Entry point into forward lookups by name.
         if super_key.name is not None:
-            return cls._by_name(designation=super_key.name)
+            return cls._query_by_name(designation=super_key.name)
         # Entry point into forward lookups by designation.
         if super_key.designation is not None:
-            return cls._by_designation(designation=super_key.designation)
+            return cls._query_by_designation(designation=super_key.designation)
         # Entry point into forward lookups by ransom.
         if super_key.ransom is not None:
-            return cls._by_ransom(ransom=super_key.ransom)
+            return cls._query_by_ransom(ransom=super_key.ransom)
         # Entry point into forward lookups by name.
         if super_key.quota is not None:
-            return cls._by_quota(quota=super_key.quota)
+            return cls._query_by_quota(quota=super_key.quota)
         
         # For other entry points return the exception chain.
         return SearchResult.failure(
@@ -102,7 +100,7 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _by_name(cls, name: str) -> SearchResult[List[Persona]]:
+    def _query_by_name(cls, name: str) -> SearchResult[List[Persona]]:
         """
         # ACTION:
             1.  Get any Persona entry whose name matches the target value.
@@ -134,7 +132,7 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _by_designation(cls, designation: str) -> SearchResult[List[Persona]]:
+    def _query_by_designation(cls, designation: str) -> SearchResult[List[Persona]]:
         """
         # ACTION:
             1.  Get any Persona entry whose name matches the target value.
@@ -165,7 +163,7 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _by_quota(cls, quota: int) -> SearchResult[List[Persona]]:
+    def _query_by_quota(cls, quota: int) -> SearchResult[List[Persona]]:
         """
         # ACTION:
             1.  Get any Persona entry whose name matches the target value.
@@ -196,7 +194,7 @@ class PersonaLookup(ForwardLookup[PersonaSuperKey]):
   
     @classmethod
     @LoggingLevelRouter.monitor
-    def _by_ransom(cls, ransom: int) -> SearchResult[List[Persona]]:
+    def _query_by_ransom(cls, ransom: int) -> SearchResult[List[Persona]]:
         """
         # ACTION:
             1.  Get any Persona entry whose name matches the target value.

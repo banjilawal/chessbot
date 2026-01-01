@@ -13,5 +13,6 @@ version: 1.0.0
 from .meta import *
 
 # Modules
+from .lookup import HashLookup
 from .service import HashService
 from .exception import HashServiceException

@@ -20,12 +20,7 @@ class DataFinder(Finder[T]):
     
     @classmethod
     @abstractmethod
-    def find(
-            cls,
-            dataset: List[T],
-            context: Context[T],
-            context_validator: Validator[Context[T]]
-    ) -> SearchResult[List[T]]:
+    def find(cls, dataset: List[T], context: Context[T], context_validator: Validator[Context[T]]) -> SearchResult[List[T]]:
         """
         ACTION:
         PARAMETERS:
@@ -35,6 +30,6 @@ class DataFinder(Finder[T]):
         RETURNS:
             SearchResult[List[R]] or Void
         Raise:
-          No exception. Subclasses raise exception.
+            No exception. Subclasses raise exception.
         """
         pass

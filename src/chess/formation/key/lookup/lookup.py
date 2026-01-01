@@ -15,10 +15,10 @@ from chess.formation import (
     FormationSuperKeyValidator
 )
 from chess.persona import Persona
-from chess.system import ForwardLookup, GameColor, LoggingLevelRouter, SearchResult
+from chess.system import GameColor, HashLookup, LoggingLevelRouter, SearchResult
 
 
-class FormationLookup(ForwardLookup[Formation]):
+class FormationLookup(HashLookup[Formation]):
     """
      # ROLE: Forward Lookups
 

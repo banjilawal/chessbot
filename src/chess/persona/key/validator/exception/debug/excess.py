@@ -39,5 +39,5 @@ class ExcessivePersonaSuperKeysException(PersonaSuperKeyException, ContextFlagCo
     """
     ERROR_CODE = "EXCESSIVE_PERSONA_SUPER_KEY_ERROR"
     DEFAULT_MESSAGE = (
-        "PersonaSuperKey validation failed: More than one attribute is not-null.Only ond attribute should be enabled."
+        "PersonaSuperKey validation failed: More than one attribute is not-null. Only one attribute should be enabled."
     )

@@ -6,11 +6,12 @@ Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
 """
+
 from typing import cast
 
 from chess.persona import PersonaService
 from chess.system import EntityService, id_emitter
-from chess.rank import Rank, RankFactory, RankSpecValidator, RankValidatorFactory
+from chess.rank import Rank, RankFactory, RankValidatorFactory
 
 
 class RankService(EntityService[Rank]):

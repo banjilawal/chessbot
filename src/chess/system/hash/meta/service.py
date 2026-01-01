@@ -6,22 +6,21 @@ from chess.system import ContextService, ForwardLookup, HashService, ReverseLook
 
 
 class MetaHashService(HashService[Enum]):
-    __hash_reverse_lookup: ReverseLookup[Enum]
+    _lookup: ReverseLookup[Enum]
     
     def __init__(
             self,
             id: int,
             name: str,
             validator: Validator[Enum],
-            forward_lookup: ForwardLookup[Enum],
-            reverse_lookup: ReverseLookup[Enum],
+            lookup: Lookup[Enum],
             super_key_service: ContextService[Enum],
     ):
         super().__init__(
             id=id,
             name=name,
             validator=validator,
-            forward_lookup=forward_lookup,
+            lookup=lookup,
             super_key_service=super_key_service
         )
         self.__hash_reverse_lookup = reverse_lookup
