@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from typing import List, cast
+from typing import List, Optional, cast
 
 from chess.system import DataService, DeletionResult, InsertionResult, id_emitter
 from chess.coord import (
@@ -42,6 +42,7 @@ class CoordDataService(DataService[Coord]):
         *   See DataService class for inherited attributes.
     """
     SERVICE_NAME = "CoordDataService"
+    _previous_top_coord: Optional[Coord]
     
     def service(
             self,
@@ -75,6 +76,7 @@ class CoordDataService(DataService[Coord]):
             entity_service=service,
             context_service=context_service,
         )
+        self._previous_top_coord = None
     
     @property
     def coord_service(self) -> CoordService:
@@ -85,6 +87,10 @@ class CoordDataService(DataService[Coord]):
     def coord_context_service(self) -> CoordContextService:
         """Get CoordContextService."""
         return cast(CoordContextService, self.context_service)
+    
+    @property
+    def previous_top_coord(self) -> Optional[Coord]:
+        return self._previous_top_coord
     
     def add_coord(self, coord: Coord) -> InsertionResult[Coord]:
         """
@@ -113,6 +119,8 @@ class CoordDataService(DataService[Coord]):
                     ex=validation.exception
                 )
             )
+        
+        previous_coord_holder = cast(Coord, self.current_item)
         # Handle the case that super class push fails.
         insertion_result = self.push_item(item=coord)
         if insertion_result.is_failure:
@@ -122,7 +130,9 @@ class CoordDataService(DataService[Coord]):
                     ex=insertion_result.exception
                 )
             )
-        # Otherwise the insertion_result is a success which can be forwarded to the caller.
+        # If the super class insertion succeeds Set the previous_address from the holder then
+        # forward insertion_result to the caller.
+        self._previous_coord = previous_coord_holder
         return insertion_result
     
     def pop_coord(self) -> DeletionResult[Coord]:

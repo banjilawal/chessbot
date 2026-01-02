@@ -10,9 +10,10 @@ version: 1.0.0
 from abc import ABC
 from typing import Optional
 
-from chess.square import Square
-from chess.team import Team
 from chess.rank import Rank
+from chess.team import Team
+from chess.token import Token
+from chess.square import Square
 from chess.coord import Coord, CoordDataService
 
 class Token(ABC):
@@ -42,7 +43,8 @@ class Token(ABC):
     _rank: Rank
     _designation: str
     _roster_number: int
-    _current_position: Coord
+    _current_position: Optional[Coord]
+    _previous_address: Optional[Coord]
     _positions: CoordDataService
 
     def __init__(
@@ -64,6 +66,7 @@ class Token(ABC):
         self._roster_number = roster_number
         self._opening_square = opening_square
         self._current_position = self._positions.current_item
+        self.previous_address = self._positions.previous_item
         
         if self not in team.roster:
             team.roster.append(self)
@@ -99,6 +102,10 @@ class Token(ABC):
     @property
     def current_position(self) -> Optional[Coord]:
         return self._positions.current_item
+    
+    @property
+    def previous_address(self) -> Optional[Coord]:
+        return self._previous_address
     
     def _set_rank(self, rank: Rank) -> None:
         self._rank = rank

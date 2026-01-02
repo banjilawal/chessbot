@@ -8,10 +8,13 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.coord import Coord, CoordAlreadyToppingStackException, CoordService
+from chess.coord import Coord, CoordAlreadyToppingStackException, CoordService, PoppingEmtpyCoordDataServiceException
 from chess.formation import FormationService
-from chess.system import EntityService, InsertionResult, id_emitter
-from chess.token import Token, TokenDataServiceException, TokenFactory, TokenValidator
+from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.token import (
+    OverMoveUndoLimitException, Token, TokenDataServiceException, TokenFactory,
+    TokenOpeningSquareNullException, TokenValidator
+)
 from chess.token.service.exception.catchall import TokenServiceException
 
 
@@ -79,13 +82,106 @@ class TokenService(EntityService[Token]):
     def formation_service(self) -> FormationService:
         return self._formation_service
     
-    def push_position(
+    @LoggingLevelRouter.monitor
+    def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
+        """
+        # ACTION:
+            1.  If the token fails validation return the exception in the DeletionResult.
+            2.  If the token has not been activated with an opening square return the exception in the DeletionResult.
+            3.  If the token has an empty coord stack return the exception in the DeletionResult.
+            4.  If a new coord has not been pushed since the last undo send and exception in the DeletionResult.
+                Else, forward the results of token.positions.pop_coord() to the caller.
+        # PARAMETERS:
+            *   token (Token)
+        # RETURN:
+            *   DeletionResult[Coord] containing either:
+                    - On failure: Exception
+                    - On success: Coord in the payload.
+        # RAISES:
+            *   TokenServiceException
+            *   OverMoveUndoLimitException
+            *   TokenOpeningSquareNullException
+            *   PoppingEmtpyCoordDataServiceException
+        """
+        method = "TokenService.pop_coord_from_token"
+        validation = self.validator.validate(token)
+        if validation.is_failure:
+            # Return the exception chain.
+            return DeletionResult(
+                TokenServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
+                    ex=validation.exception
+                )
+            )
+        # Handle the case that the opening square is null which implies there are no moves to undo.
+        if token.opening_square is None:
+            # Return the exception chain.
+            return DeletionResult(
+                TokenServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
+                    ex=TokenOpeningSquareNullException(f"{method}: {TokenOpeningSquareNullException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case that the token has no positions that can be removed.
+        if token.positions.is_empty:
+            # Return the exception chain.
+            return DeletionResult(
+                TokenServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
+                    ex=PoppingEmtpyCoordDataServiceException(
+                        f"{method}: {PoppingEmtpyCoordDataServiceException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that an attempt is made to undo more than one turn.
+        if token.previous_address == token.current_address:
+            # Return the exception chain.
+            return DeletionResult(
+                TokenServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
+                    ex=OverMoveUndoLimitException(f"{method}: {OverMoveUndoLimitException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case that the coord stack pop operation fails.
+        pop_result = token.positions.pop_coord()
+        if token.previous_address == token.current_address:
+            # Return the exception chain.
+            return DeletionResult(
+                TokenServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
+                    ex=pop_result
+                )
+            )
+        # Otherwise return the successful pop operation's data to the caller in the DeletionResult.
+        return pop_result
+    
+    
+    @LoggingLevelRouter.monitor
+    def push_coord_to_token(
             self,
             token: Token,
             position: Coord,
             coord_service: CoordService = CoordService()
     ) -> InsertionResult[Coord]:
-        method = "TokenService.push_position"
+        """
+        # ACTION:
+            1.  If the token or coord fail their validations return the exception in the InsertionResult.
+            2.  If the position is already the current position return the exception in the InsertionResult.
+            3.  If the pushing the position to the token's coord stack fails encapsulate the exception then
+                send the exception chain in the InsertionResult.'
+        # PARAMETERS:
+            *   token (Token)
+            *   coord (Coord)
+            *   coord_service (CoordService)
+        # RETURN:
+            *   InsertionResult[Coord] containing either:
+                    - On failure: Exception
+                    - On success: Coord in the payload.
+        # RAISES:
+            *   TokenServiceException
+            *   CoordAlreadyToppingStackException
+        """
+        method = "TokenService.push_coord_to_token"
         # Handle the case that the token is not certified safe.
         token_validation = self.validator.validate(token)
         if token_validation.is_failure:
@@ -119,7 +215,16 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        insertion_result = token.postions.
-        
-        
-        return InsertionResult.success(position)
+        # Handle the case that adding the coord to the token's position history fails.
+        insertion_result = token.positions.add_coord(coord=position)
+        if insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenServiceException(
+                    message=f"{method}: {TokenServiceException.ERROR_CODE}",
+                    ex=insertion_result.exception
+                )
+            )
+        # Otherwise the coord was successfully pushed onto the token's coord stack. Forward the
+        # success to the caller.
+        return insertion_result
