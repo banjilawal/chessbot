@@ -14,5 +14,5 @@ None
 
 # Modules
 from .catchall import CoordDataServiceException
-from .current import DuplicateCoordStackPushException
+from .current import CoordAlreadyToppingStackException
 from .pop import PoppingEmtpyCoordDataServiceException

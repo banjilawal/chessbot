@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, cast
 
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
 from chess.token import Token, TokenContext, TokenDataServiceException, TokenFinder, TokenService, TokenContextService
@@ -48,7 +48,6 @@ class TokenDataService(DataService[Token]):
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
             items: List[Token] = List[Token],
-            search: TokenFinder = TokenFinder(),
             service: TokenService = TokenService(),
             context_service: TokenContextService = TokenContextService(),
     ):
@@ -62,72 +61,79 @@ class TokenDataService(DataService[Token]):
             id=id,
             name=name,
             items=items,
-            search=search,
             entity_service=service,
             context_service=context_service,
         )
+        
+    @property
+    def coord_service(self) -> TokenService:
+        return cast(TokenService, self.entity_service)
     
-    @LoggingLevelRouter.monitor
-    def push_item(self, item: Token) -> InsertionResult[Token]:
-        """
-        # ACTION:
-        1.  Use TokenDataService.service.validator to certify item.
-        2.  If certification fails return the exception inside an InsertionResult.
-        3.  Otherwise, push item onto the stack.
-        4.  Send the successfully pushed data back in an InsertionResult.
-
-        # PARAMETERS:
-            *   item (Token)
-
-        # RETURNS:
-        InsertionResult[TToken] containing either:
-            - On success: Token in the payload.
-            - On failure: Exception.
-
-        # RAISES:
-            *   TokenDataServiceException
-        """
-        method = "TokenDataService.push"
-        
-        try:
-            validation = self.data.item_validator.validate(item)
-            if validation.is_failure():
-                return InsertionResult.failure(validation.exception)
-            self.items.append(item)
-            
-            return InsertionResult.success(payload=item)
-        except Exception as ex:
-            return InsertionResult.failure(
-                TokenDataServiceException(ex=ex, message=f"{method}: {TokenDataServiceException.DEFAULT_MESSAGE}")
-            )
-
-
-    @LoggingLevelRouter.monitor
-    def search(self, context: TokenContext) -> SearchResult[List[Token]]:
-        """
-        # ACTION:
-        1.  Pass map argument to self.searcher.
-        2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
-        3.  The Finder object will return any exception if it fails, success otherwise.
-        4.  Because Finder object does all the error using a try-catch is uneccesar
-        
-        2.  If certification fails return the exception inside an InsertionResult.
-        3.  Otherwise, push item onto the stack.
-        4.  Send the successfully pushed data back in an InsertionResult.
-
-        # PARAMETERS:
-            *   item (Token)
-
-        # RETURNS:
-        SearchResult[List[Token]] containing either:
-            - On success: List[Token] in the payload.
-            - On failure: Exception.
-
-        # RAISES:
-        None
-        """
-        method = "TokenDataService.searcher"
-        
-        return self.search.find(
-            dataset=self.items, context=context, context_validator=self.context_service.item_validator
-        )
+    @property
+    def context_service(self) -> TokenContextService:
+        return cast(TokenContextService, self.context_service)
+    
+    # @LoggingLevelRouter.monitor
+    # def push_item(self, item: Token) -> InsertionResult[Token]:
+    #     """
+    #     # ACTION:
+    #     1.  Use TokenDataService.service.validator to certify item.
+    #     2.  If certification fails return the exception inside an InsertionResult.
+    #     3.  Otherwise, push item onto the stack.
+    #     4.  Send the successfully pushed data back in an InsertionResult.
+    #
+    #     # PARAMETERS:
+    #         *   item (Token)
+    #
+    #     # RETURNS:
+    #     InsertionResult[TToken] containing either:
+    #         - On success: Token in the payload.
+    #         - On failure: Exception.
+    #
+    #     # RAISES:
+    #         *   TokenDataServiceException
+    #     """
+    #     method = "TokenDataService.push"
+    #
+    #     try:
+    #         validation = self.data.item_validator.validate(item)
+    #         if validation.is_failure():
+    #             return InsertionResult.failure(validation.exception)
+    #         self.items.append(item)
+    #
+    #         return InsertionResult.success(payload=item)
+    #     except Exception as ex:
+    #         return InsertionResult.failure(
+    #             TokenDataServiceException(ex=ex, message=f"{method}: {TokenDataServiceException.DEFAULT_MESSAGE}")
+    #         )
+    #
+    #
+    # @LoggingLevelRouter.monitor
+    # def search(self, context: TokenContext) -> SearchResult[List[Token]]:
+    #     """
+    #     # ACTION:
+    #     1.  Pass map argument to self.searcher.
+    #     2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
+    #     3.  The Finder object will return any exception if it fails, success otherwise.
+    #     4.  Because Finder object does all the error using a try-catch is uneccesar
+    #
+    #     2.  If certification fails return the exception inside an InsertionResult.
+    #     3.  Otherwise, push item onto the stack.
+    #     4.  Send the successfully pushed data back in an InsertionResult.
+    #
+    #     # PARAMETERS:
+    #         *   item (Token)
+    #
+    #     # RETURNS:
+    #     SearchResult[List[Token]] containing either:
+    #         - On success: List[Token] in the payload.
+    #         - On failure: Exception.
+    #
+    #     # RAISES:
+    #     None
+    #     """
+    #     method = "TokenDataService.searcher"
+    #
+    #     return self.search.find(
+    #         dataset=self.items, context=context, context_validator=self.context_service.item_validator
+    #     )

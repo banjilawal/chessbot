@@ -8,10 +8,10 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.coord import Coord, CoordService
+from chess.coord import Coord, CoordAlreadyToppingStackException, CoordService
 from chess.formation import FormationService
 from chess.system import EntityService, InsertionResult, id_emitter
-from chess.token import Token, TokenFactory, TokenValidator
+from chess.token import Token, TokenDataServiceException, TokenFactory, TokenValidator
 from chess.token.service.exception.catchall import TokenServiceException
 
 
@@ -108,15 +108,18 @@ class TokenService(EntityService[Token]):
                 )
             )
         
-        # Handle the case that the token already occupies the position.
-        if position in token.current_position:
+        # Handle the case that the token is already the current position
+        if position == token.current_position:
+            # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenService.ERROR_CODE}"
-                    ex=DuplicateCoordPushException(f"{method}: {DuplicateCoordPushException.DEFAULT_MESSAGE}")
+                    message=f"{method}: {TokenServiceException.ERROR_CODE}",
+                    ex=CoordAlreadyToppingStackException(
+                        f"{method}: {CoordAlreadyToppingStackException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
-        push_result = token.positions.push_coord(coord=position)
+        insertion_result = token.postions.
         
         
         return InsertionResult.success(position)

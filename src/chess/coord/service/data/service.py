@@ -9,8 +9,11 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.system import DataService, id_emitter
-from chess.coord import Coord, CoordService, CoordContextService
+from chess.system import DataService, DeletionResult, InsertionResult, id_emitter
+from chess.coord import (
+    Coord, CoordDataServiceException, CoordService, CoordContextService,
+    PoppingEmtpyCoordDataServiceException
+)
 
 
 class CoordDataService(DataService[Coord]):
@@ -82,3 +85,53 @@ class CoordDataService(DataService[Coord]):
     def coord_context_service(self) -> CoordContextService:
         """Get CoordContextService."""
         return cast(CoordContextService, self.context_service)
+    
+    def add_coord(self, coord: Coord) -> InsertionResult[Coord]:
+        method = "CoordDataService.add_coord"
+        # Handle the case that coord validation fails.
+        validation = self.coord_service.validator.validate(candidate=coord)
+        if validation.is_failure:
+            # Return the exception chain.
+            return InsertionResult(
+                CoordDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
+                    ex=validation.exception
+                )
+            )
+        # Handle the case that super class push fails.
+        insertion_result = self.push_item(item=coord)
+        if insertion_result.is_failure:
+            return InsertionResult(
+                CoordDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.DEFAULT_MESSAGE}",
+                    ex=insertion_result.exception
+                )
+            )
+        # Otherwise the insertion_result is a success which can be forwarded to the caller.
+        return insertion_result
+    
+    def pop_coord(self) -> DeletionResult[Coord]:
+        method = "CoordDataService.pop_coord"
+        # Handle the case that the list is empty
+        if self.is_empty:
+            # Return the exception chain.
+            return DeletionResult(
+                CoordDataServiceException(
+                    message=f"ServiceId:{self.id}, {CoordDataServiceException.ERROR_CODE}",
+                    ex=PoppingEmtpyCoordDataServiceException(f"{method}: {CoordDataServiceException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case that the super class undo_push fails.
+        deletion_result = self.undo_item_push()
+        if deletion_result.is_failure:
+            # Return the exception chain.
+            return DeletionResult(
+                CoordDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
+                    ex=deletion_result.exception
+                )
+            )
+        # Otherwise the deletion_result is a success which can be forwarded to the caller.
+        return deletion_result
+        
+        
