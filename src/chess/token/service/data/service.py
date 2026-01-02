@@ -13,7 +13,10 @@ from chess.system import (
     DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
     SearchResult, id_emitter
 )
-from chess.token import Token, TokenContext, TokenDataServiceException, TokenService, TokenContextService
+from chess.token import (
+    Token, TokenContext, TokenDataServiceException, TokenDoesNotExistForRemovalException,
+    TokenService, TokenContextService
+)
 
 
 class TokenDataService(DataService[Token]):

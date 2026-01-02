@@ -83,7 +83,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
     def remove_token_by_designation(
             self,
             designation: str,
-            identity_service: IdentityService = IdentityService()
+            identity_service: IdentityService = IdentityService(),
     ) -> DeletionResult[Token]:
         method = "UniqueTokenDataService.remove_token_by_designation"
         deletion_result = self._token_data_service.delete_by_designation(designation, identity_service)
