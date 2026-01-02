@@ -1,7 +1,7 @@
-# src/chess/coord/service/exception/base.py
+# src/chess/coord/service/exception/catchall.py
 
 """
-Module: chess.coord.service.exception.base
+Module: chess.coord.service.exception.catchall
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

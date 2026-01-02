@@ -15,25 +15,25 @@ __all__ = [
     "PoppingEmtpyTokenDataServiceException",
 ]
 
-    # ======================# POPPING_EMPTY_TOKEN_DATA_SERVICE EXCEPTION #======================#
-    class PoppingEmtpyTokenDataServiceException(TokenDataServiceException):
-        """
-        # ROLE: Debug, Error Tracing
+# ======================# POPPING_EMPTY_TOKEN_DATA_SERVICE EXCEPTION #======================#
+class PoppingEmtpyTokenDataServiceException(TokenDataServiceException):
+    """
+    # ROLE: Debug, Error Tracing
 
-        # RESPONSIBILITIES:
-        1.  Indicate that an attempt to remove a token failed because the TokenDataService was not managing any tokens.
+    # RESPONSIBILITIES:
+    1.  Indicate that an attempt to remove a token failed because the TokenDataService was not managing any tokens.
 
-        # PARENT:
-            *   TeamDaaServiceException
+    # PARENT:
+        *   TeamDaaServiceException
 
-        # PROVIDES:
-        None
+    # PROVIDES:
+    None
 
-        # LOCAL ATTRIBUTES:
-        None
+    # LOCAL ATTRIBUTES:
+    None
 
-        # INHERITED ATTRIBUTES:
-        None
-        """
-        ERROR_CODE = "POPPING_EMPTY_TOKEN_DATA_SERVICE_ERROR"
-        DEFAULT_MESSAGE = "Token deletion failed: TokenDataService does not own any tokens."
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "POPPING_EMPTY_TOKEN_DATA_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "Token deletion failed: TokenDataService does not own any tokens."
