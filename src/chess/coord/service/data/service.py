@@ -87,6 +87,21 @@ class CoordDataService(DataService[Coord]):
         return cast(CoordContextService, self.context_service)
     
     def add_coord(self, coord: Coord) -> InsertionResult[Coord]:
+        """
+        # ACTION:
+            1.  If the coord fails validation send the exception in the InsertionResult. Else, call the super class
+                push_item method.
+            2.  If the super class push failed encapsulate the super class exception and send in the InsertionResult.
+                Else, forward the super().push_item() result to the caller.
+        # PARAMETERS:
+            *   coord (Coord)
+        # RETURN:
+            *   InsertionResult[Coord] containing either:
+                - On failure: Exception
+                - On success: Coord in the payload.
+        # RAISES:
+            *   CoordDataServiceException
+        """
         method = "CoordDataService.add_coord"
         # Handle the case that coord validation fails.
         validation = self.coord_service.validator.validate(candidate=coord)
@@ -111,6 +126,21 @@ class CoordDataService(DataService[Coord]):
         return insertion_result
     
     def pop_coord(self) -> DeletionResult[Coord]:
+        """
+        # ACTION:
+            1.  If the list is empty send the exception in the DeletionResult. Else, call the super class undo_push
+            2.  If the super class undo_push failed encapsulate the super class exception and send in the
+                DeletionResult, Else, forward the super().push_item() result to the caller.
+        # PARAMETERS:
+            None
+        # RETURN:
+            *   DeletionResult[Coord] containing either:
+                - On failure: Exception
+                - On success: Coord in the payload.
+        # RAISES:
+            *   CoordDataServiceException
+            *   PoppingEmtpyCoordDataServiceException
+        """
         method = "CoordDataService.pop_coord"
         # Handle the case that the list is empty
         if self.is_empty:
