@@ -116,7 +116,7 @@ class TokenFactory(Builder[Token]):
             )
         # Get the RelationReport between the team's roster to see if the token can be added to the team's roster.
         relation_report = team_service.roster_relation_analyzer.analyze(
-            candidate_primary=team,
+            candidate_primary=owner,
             candidate_satellite=token,
             team_service=team_service,
             piece_service=piece_service,
@@ -162,7 +162,6 @@ class TokenFactory(Builder[Token]):
             )
         # If all the steps completed successfully return the token in the BuildResult.
         return BuildResult.success(token)
-        
             
     @classmethod
     @LoggingLevelRouter.monitor
@@ -199,23 +198,6 @@ class TokenFactory(Builder[Token]):
             roster_number=roster_number,
             positions=UniqueCoordDataService()
         )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _ensure_team_binding(cls, token: Token, team: Team) -> BuildResult[(Token, Team)]:
-        method = "TokenFactory._verify_team_building"
-        try:
-            # If the Token is not in team.roster register it.
-            if token not in team.roster.items:
-                team.roster.items.append(token)
-                
-            return BuildResult.success((token, team))
-        # Finally, catch any missed exception and wrap A TokenBuildFailed exception around it
-        # then return the exception-chain inside a BuildResult.
-        except Exception as ex:
-            return BuildResult.failure(
-                TokenBuildFailedException(ex=ex, message=f"{method}: {TokenBuildFailedException.DEFAULT_MESSAGE}")
-            )
     
     @classmethod
     @LoggingLevelRouter.monitor

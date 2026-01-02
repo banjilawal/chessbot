@@ -7,7 +7,6 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import ChessException
 
 __all__ = [
     

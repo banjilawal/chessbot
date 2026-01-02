@@ -8,25 +8,25 @@ version: 1.0.0
 """
 
 from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, id_emitter
-from chess.piece import Piece, AddingDuplicatePieceException, PieceDataService, UniquePieceDataServiceException
+from chess.token import Token, TokenDataService
 
 
-class UniquePieceDataService(UniqueDataService[Piece]):
+class UniqueTokenDataService(UniqueDataService[Token]):
     """
     # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
-    2.  Wraps PieceDataService.
+    2.  Wraps TokenDataService.
     3.  Guarantees each item on the stack is unique.
 
     # PROVIDES:
-        *   PieceDataService
+        *   TokenDataService
 
     # ATTRIBUTES:
         *   id (int):
         *   name (str):
-        *   data_service (PieceDataService):
+        *   data_service (TokenDataService):
         
     # CONSTRUCTOR:
         *   __init__(id: int, designation: str, data_service: TeamDataService)
@@ -37,23 +37,23 @@ class UniquePieceDataService(UniqueDataService[Piece]):
     # INSTANCE METHODS:
         *   push_unique(item: Team) -> InsertionResult[Team]
     """
-    DEFAULT_NAME = "UniquePieceDataService"
+    DEFAULT_NAME = "UniqueTokenDataService"
     
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            data_service: PieceDataService = PieceDataService(),
+            data_service: TokenDataService = TokenDataService(),
     ):
         """
         # Action
-        1.  Use id_emitter to automatically generate a unique id for each UniquePieceDataService instance.
-        2.  Automatic dependency injection by providing working default instances designation and PieceDataService instance.
+        1.  Use id_emitter to automatically generate a unique id for each UniqueTokenDataService instance.
+        2.  Automatic dependency injection by providing working default instances designation and TokenDataService instance.
         """
         super().__init__(id=id, name=name, data_service=data_service)
     
     @LoggingLevelRouter.monitor
-    def push_unique_item(self, item: Piece) -> InsertionResult[Piece]:
+    def push_unique_item(self, item: Token) -> InsertionResult[Token]:
         """
         # ACTION:
         1.  Use TeamDataService.service.validator to certify item.
@@ -72,7 +72,7 @@ class UniquePieceDataService(UniqueDataService[Piece]):
         # RAISES:
             *   TeamDataServiceException
         """
-        method = "UniquePieceDataService.push_unique"
+        method = "UniqueTokenDataService.push_unique"
         
         try:
             # Start the error detection process.
@@ -90,17 +90,17 @@ class UniquePieceDataService(UniqueDataService[Piece]):
             
             if search_result.is_success():
                 return InsertionResult.failure(
-                    AddingDuplicatePieceException(f"{method}: {AddingDuplicatePieceException.DEFAULT_MESSAGE}")
+                    AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
                 )
             # After the error chain is passed self._data_service returns the outcome of
             # pushing the item on to the stack.
             return self._data_service.push_item(item)
         
         # Finally return an InsertionResult containing any unhandled exception insided an
-        # UniquePieceDataServiceException
+        # UniqueTokenDataServiceException
         except Exception as ex:
             return InsertionResult.failure(
-                UniquePieceDataServiceException(
-                    ex=ex, message=f"{method}: {UniquePieceDataServiceException.DEFAULT_MESSAGE}"
+                UniqueTokenDataServiceException(
+                    ex=ex, message=f"{method}: {UniqueTokenDataServiceException.DEFAULT_MESSAGE}"
                 )
             )

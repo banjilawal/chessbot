@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-# =========== Token.SERVICE.DATA.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== TOKEN.SERVICE.DATAPACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
