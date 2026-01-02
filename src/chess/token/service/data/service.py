@@ -19,42 +19,45 @@ class TokenDataService(DataService[Token]):
 
     # RESPONSIBILITIES:
     1.  Public facing API.
-    2.  Stack data structure for Token objects with no guarantee of uniqueness.
-    3.  Implements searcher, insert, delete, and update operations on Token objects.
-    4.  ContextService for building selecting different searcher attributes.
-    5.  Including a TokenService instance creates a microservice for clients.
+    2.  Microservice for managing Token objects and their lifecycles.
+    3.  Ensure integrity of Token data stack
+    4.  Stack data structure for Token objects with no guarantee of uniqueness.
+    
+    # PARENT:
+        *   DataService[Token]
 
     # PROVIDES:
-        *   TokenService
-        *   ContextService
-        *   Finder
-        *   TokenStack data structure
-
-    # ATTRIBUTES:
     None
-        *   id (int):
-        *   name (str):
-        *   items (List[Token]):
-        *   searcher (Finder[Token]):
-        *   entity_service (EntityService[Token]):
-        *   context_service (EntityService[TokenContext]);
-        *   current_item (Token):
-        *   size (int):
+
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+        *   See DataService class for inherited attributes.
     """
-    DEFAULT_NAME = "TokenDataService"
+    SERVICE_NAME = "TokenDataService"
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Token] = List[Token],
             service: TokenService = TokenService(),
             context_service: TokenContextService = TokenContextService(),
     ):
         """
-        # Action
-        1.  Use id_emitter to automatically generate a unique id for each TokenDataService instance.
-        2.  Automatic dependency injection by providing working default instances of each attribute.
+        # ACTION:
+            Constructor
+        # PARAMETERS:
+            *   id (int)
+            *   name (str)
+            *   items (List[Team])
+            *   service (TeamService)
+            *   context_service (TeamContextService)
+        # RETURNS:
+            None
+        # RAISES:
+            None
         """
         method = "TokenService.__init__"
         super().__init__(
@@ -66,74 +69,10 @@ class TokenDataService(DataService[Token]):
         )
         
     @property
-    def coord_service(self) -> TokenService:
+    def token_service(self) -> TokenService:
         return cast(TokenService, self.entity_service)
     
     @property
-    def context_service(self) -> TokenContextService:
+    def token_context_service(self) -> TokenContextService:
         return cast(TokenContextService, self.context_service)
-    
-    # @LoggingLevelRouter.monitor
-    # def push_item(self, item: Token) -> InsertionResult[Token]:
-    #     """
-    #     # ACTION:
-    #     1.  Use TokenDataService.service.validator to certify item.
-    #     2.  If certification fails return the exception inside an InsertionResult.
-    #     3.  Otherwise, push item onto the stack.
-    #     4.  Send the successfully pushed data back in an InsertionResult.
-    #
-    #     # PARAMETERS:
-    #         *   item (Token)
-    #
-    #     # RETURNS:
-    #     InsertionResult[TToken] containing either:
-    #         - On success: Token in the payload.
-    #         - On failure: Exception.
-    #
-    #     # RAISES:
-    #         *   TokenDataServiceException
-    #     """
-    #     method = "TokenDataService.push"
-    #
-    #     try:
-    #         validation = self.data.item_validator.validate(item)
-    #         if validation.is_failure():
-    #             return InsertionResult.failure(validation.exception)
-    #         self.items.append(item)
-    #
-    #         return InsertionResult.success(payload=item)
-    #     except Exception as ex:
-    #         return InsertionResult.failure(
-    #             TokenDataServiceException(ex=ex, message=f"{method}: {TokenDataServiceException.DEFAULT_MESSAGE}")
-    #         )
-    #
-    #
-    # @LoggingLevelRouter.monitor
-    # def search(self, context: TokenContext) -> SearchResult[List[Token]]:
-    #     """
-    #     # ACTION:
-    #     1.  Pass map argument to self.searcher.
-    #     2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
-    #     3.  The Finder object will return any exception if it fails, success otherwise.
-    #     4.  Because Finder object does all the error using a try-catch is uneccesar
-    #
-    #     2.  If certification fails return the exception inside an InsertionResult.
-    #     3.  Otherwise, push item onto the stack.
-    #     4.  Send the successfully pushed data back in an InsertionResult.
-    #
-    #     # PARAMETERS:
-    #         *   item (Token)
-    #
-    #     # RETURNS:
-    #     SearchResult[List[Token]] containing either:
-    #         - On success: List[Token] in the payload.
-    #         - On failure: Exception.
-    #
-    #     # RAISES:
-    #     None
-    #     """
-    #     method = "TokenDataService.searcher"
-    #
-    #     return self.search.find(
-    #         dataset=self.items, context=context, context_validator=self.context_service.item_validator
-    #     )
+

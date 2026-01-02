@@ -19,30 +19,27 @@ class TeamDataService(DataService[Team]):
 
     # RESPONSIBILITIES:
     1.  Public facing API.
-    2.  Stack data structure for Team objects with no guarantee of uniqueness.
-    3.  Implements search, insert, delete, and update operations on Team objects.
-    4.  Ensure integrity of team data stack
-    5.  Microservice for managing team objects and their lifecycles.
-
+    2.  Microservice for managing team objects and their lifecycles.
+    3.  Ensure integrity of team data stack
+    4.  Stack data structure for Team objects with no guarantee of uniqueness.
+    
     # PARENT:
         *   DataService
 
     # PROVIDES:
-        *   TeamService
-        *   TeamContextService
-        *   TeamStack
+    None
 
     # LOCAL ATTRIBUTES:
     None
-
+    
     # INHERITED ATTRIBUTES:
-    See DataService class for inherited attributes.
+        *   See DataService class for inherited attributes.
     """
-    DEFAULT_NAME = "TeamDataService"
+    SERVICE_NAME = "TeamDataService"
     
     def __init__(
             self,
-            name: str =DEFAULT_NAME,
+            name: str =SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Team] = List[Team],
             service: TeamService = TeamService(),
@@ -50,20 +47,17 @@ class TeamDataService(DataService[Team]):
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
-            *   id (int): = id_emitter.service_id
-            *   name (str): = SERVICE_NAME
-            *   items (List[Team]): = List[Team]
-            *   service (TeamService): = TeamService()
-            *   context_service (TeamContextService): = TeamContextService()
-
+            *   id (int)
+            *   name (str)
+            *   items (List[Team])
+            *   service (TeamService)
+            *   context_service (TeamContextService)
         # RETURNS:
-        None
-
+            None
         # RAISES:
-        None
+            None
         """
         method = "TeamDataService.__init__"
         super().__init__(
@@ -81,73 +75,3 @@ class TeamDataService(DataService[Team]):
     @property
     def team_context_service(self) -> TeamContextService:
         return cast(TeamContextService, self.context_service)
-    
-    # def push_item(self, item: Team) -> InsertionResult[Team]:
-    #     """
-    #     # ACTION:
-    #     1.  Use TeamDataService.service.validator to certify item.
-    #     2.  If certification fails return the exception inside an InsertionResult.
-    #     3.  Otherwise, push item onto the stack.
-    #     4.  Send the successfully pushed data back in an InsertionResult.
-    #
-    #     # PARAMETERS:
-    #         *   item (Team)
-    #
-    #     # RETURNS:
-    #     InsertionResult[TTeam] containing either:
-    #         - On success: Team in the payload.
-    #         - On failure: Exception.
-    #
-    #     # RAISES:
-    #         *   TeamInsertionFailedException
-    #     """
-    #     method = "TeamDataService.push"
-    #
-    #     try:
-    #         # Start the error detection process.
-    #         validation = self.data.item_validator.validate(item)
-    #         if validation.is_failure():
-    #             return InsertionResult.failure(validation.exception)
-    #         self.items.append(item)
-    #         # After item is pushed onto the stack indicate success by sending it
-    #         # back to the caller.
-    #         return InsertionResult.success(payload=item)
-    #
-    #     # Finally, catch any missed exception and wrap A TeamInsertionFailedException around it
-    #     # then return exception chain inside an InsertionResult.
-    #     except Exception as ex:
-    #         return InsertionResult.failure(
-    #             TeamInsertionFailedException(
-    #                 ex=ex, message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}"
-    #             )
-    #         )
-    #
-    # @LoggingLevelRouter.monitor
-    # def search(self, map: TeamContext) -> SearchResult[List[Team]]:
-    #     """
-    #     # ACTION:
-    #     1.  Pass map argument to self.searcher.
-    #     2.  Pass self.items and self.context_service.validator to self.searcher's renaming params.
-    #     3.  The Finder object will return any exception if it fails, success otherwise.
-    #     4.  Because Finder object does all the error using a try-catch is uneccesar
-    #
-    #     2.  If certification fails return the exception inside an InsertionResult.
-    #     3.  Otherwise, push item onto the stack.
-    #     4.  Send the successfully pushed data back in an InsertionResult.
-    #
-    #     # PARAMETERS:
-    #         *   item (Team)
-    #
-    #     # RETURNS:
-    #     SearchResult[List[Team]] containing either:
-    #         - On success: List[Team] in the payload.
-    #         - On failure: Exception.
-    #
-    #     # RAISES:
-    #     None
-    #     """
-    #     method = "TeamDataService.searcher"
-    #
-    #     return self.search.find(
-    #         dataset=self.items, map=map, context_validator=self.context_service.item_validator
-    #     )
