@@ -35,7 +35,7 @@ class TokenService(EntityService[Token]):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   formation_service (FormationService)
 
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
