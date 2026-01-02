@@ -21,7 +21,7 @@ class AddingDuplicateTokenException(UniqueTokenDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to add a token to the UniqueTokeDataService's dataset failed because the token was
+    1.  Indicate that an attempt to add a token to the UniqueTokenDataService's dataset failed because the token was
         already in the collection
 
     # PARENT:

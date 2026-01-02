@@ -1,0 +1,43 @@
+# src/chess/coord/service/data/unique/exception/duplicate.py
+
+"""
+Module: chess.coord.service.data.unique.exception.duplicate
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+from chess.coord import UniqueCoordDataServiceException
+
+__all__ = [
+    # ======================# ADDING_DUPLICATE_COORD EXCEPTION #======================#
+    "AddingDuplicateCoordException",
+]
+
+
+# ======================# ADDING_DUPLICATE_COORD EXCEPTION #======================#
+class AddingDuplicateCoordException(UniqueCoordDataServiceException):
+    """
+    # ROLE: Debug, Error Tracing
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an attempt to add a coord to the UniqueCoordDataService's dataset failed because the coord was
+        already in the collection
+
+    # PARENT:
+        *   UniqueTeamDataServiceException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "ADDING_DUPLICATE_COORD_ERROR"
+    DEFAULT_MESSAGE = (
+        "Coord insertion failed: UniqueCoordDataService is already managing the coord. It cannot be added to the "
+        "dataset again."
+    )
