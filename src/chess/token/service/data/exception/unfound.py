@@ -1,0 +1,40 @@
+# src/chess/token/service/data/exception/unfound.py
+
+"""
+Module: chess.token.service.data.exception.unfound
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+from chess.token import TokenDataServiceException
+
+__all__ = [
+    # ======================# UNFOUNDPING_EMPTY_TOKEN_DATA_SERVICE EXCEPTION #======================#
+    "TokenDoesNotExistForRemovalException",
+]
+
+
+# ======================# TOKEN_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
+class TokenDoesNotExistForRemovalException(TokenDataServiceException):
+    """
+    # ROLE: Debug, Error Tracing
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an attempt to remove instances of a token by a unique attribute failed because no items
+        matching the property were found in the dataset.
+        
+    # PARENT:
+        *   TeamDaaServiceException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "TOKEN_DOES_NOT_EXIST_FOR_REMOVAL_ERROR"
+    DEFAULT_MESSAGE = "Token deletion failed: The token was not found in the dataset. Nothing to remove."

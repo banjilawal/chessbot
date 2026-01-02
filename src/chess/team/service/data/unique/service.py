@@ -50,9 +50,9 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   id (int): = id_emitter.service_id
-            *   name (str): = SERVICE_NAME
-            *   data_service (TeamDataService): = TeamDataService()
+            *   id (int)
+            *   name (str)
+            *   data_service (TeamDataService)
         # RETURNS:
             None
         # RAISES:
