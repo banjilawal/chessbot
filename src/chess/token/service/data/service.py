@@ -84,6 +84,22 @@ class TokenDataService(DataService[Token]):
     
     @LoggingLevelRouter.monitor
     def add_token(self, token: Token) -> InsertionResult[Token]:
+        """
+        # ACTION:
+            1.  If the token is not validated send the exception in the InsertionResult. Else, call the super class
+                push method.
+            2.  If super().push_item fails send the exception in the InsertionResult. Else extract the payload to cast
+                and return to the caller in the BuildResult.
+        # PARAMETERS:
+            *   Only one these must be provided:
+                    *   token (Token)
+        # RETURNS:
+            *   InsertionResult[Token] containing either:
+                    - On failure: Exception.
+                    - On success: Token in the payload.
+        # RAISES:
+            *   TokenDataServiceException
+        """
         method = "TokenDataService.add_token"
         
         # Handle the case that the token is unsafe.
@@ -116,9 +132,24 @@ class TokenDataService(DataService[Token]):
             id: int,
             identity_service: IdentityService = IdentityService()
     ) -> DeletionResult[Token]:
+        """
+        # ACTION:
+            1.  If the id is not certified safe send the exception in the DeletionResult. Else, call
+                _delete_tokens_by_search_result with the outcome of an id search.
+            2.  Forward the DeletionResult from _delete_tokens_by_search_result to the deletion client.
+        # PARAMETERS:
+                    *   id (int)
+                    *   identity_service (IdentityService)
+        # RETURNS:
+            *   InsertionResult[Token] containing either:
+                    - On failure: Exception.
+                    - On success: Token in the payload.
+        # RAISES:
+            *   TokenDataServiceException
+        """
         method = "TokenDataService.remove_token_by_id"
         
-        # Handle the case of an unsfe id.
+        # Handle the case of an unsafe id.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -138,6 +169,21 @@ class TokenDataService(DataService[Token]):
             designation: str,
             identity_service: IdentityService = IdentityService()
     ) -> DeletionResult[Token]:
+        """
+        # ACTION:
+            1.  If the designation is not certified safe send the exception in the DeletionResult. Else, call
+                _delete_tokens_by_search_result with the outcome of an id search.
+            2.  Forward the DeletionResult from _delete_tokens_by_search_result to the deletion client.
+        # PARAMETERS:
+                    *   designation (str)
+                    *   identity_service (IdentityService)
+        # RETURNS:
+            *   InsertionResult[Token] containing either:
+                    - On failure: Exception.
+                    - On success: Token in the payload.
+        # RAISES:
+            *   TokenDataServiceException
+        """
         method = "TokenDataService.remove_token_by_designation"
         
         # Handle the case of an unsafe designation.
@@ -156,6 +202,23 @@ class TokenDataService(DataService[Token]):
     
     @LoggingLevelRouter.monitor
     def _delete_tokens_by_search_result(self, search_result: SearchResult) -> DeletionResult[Token]:
+        """
+        # ACTION:
+            1.  If the search_result param is a failure send the exception in the DeletionResult.
+            2.  If the search_result param is empty there is nothing to delete, send the exception in the
+                DeletionResult.
+            3.  If the search_result was a success delete all copies of the target in from the dataset then,
+                send the deleted item in the DeletionResult.
+        # PARAMETERS:
+                    *   search_result (SearchResult[Token])
+        # RETURNS:
+            *   DeletionResult[Token] containing either:
+                    - On failure: Exception.
+                    - On success: Token in the payload.
+        # RAISES:
+            *   TokenDataServiceException
+            8   TokenDoesNotExistForRemovalException
+        """
         method = "TokenDataService._delete_tokens_by_search_result"
         
         # Handle the case that the search fails
@@ -173,7 +236,9 @@ class TokenDataService(DataService[Token]):
             return DeletionResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=TokenDoesNotExistForRemovalException(f"{method}: {TokenDoesNotExistForRemovalException.DEFAULT_MESSAGE}")
+                    ex=TokenDoesNotExistForRemovalException(
+                        f"{method}: {TokenDoesNotExistForRemovalException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
         # Cast the payload to the array of matches, Then remove all occurrences in a loop
