@@ -1,0 +1,41 @@
+# src/chess/token/validator/null/exception.py
+
+"""
+Module: chess.token.validator.null.exception
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# NULL_TOKEN EXCEPTION #======================#
+    "NullTokenException",
+]
+
+from chess.system import NullException
+from chess.token import TokenException
+
+
+# ======================# NULL_TOKEN EXCEPTION #======================#
+class NullTokenException(TokenException, NullException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that Token validation failed because the candidate was null.
+
+    # PARENT:
+        *   NullTokenException
+        *   InvalidTokenException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "NULL_TOKEN_ERROR"
+    DEFAULT_MESSAGE = "Token validation failed: The candidate was null."

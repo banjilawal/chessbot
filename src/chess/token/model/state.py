@@ -10,3 +10,8 @@ class ActivityState(Enum):
     BLOCKED_COMBATANT = auto(),
     PROMOTED_PAWN = auto(),
     NOT_OPENED = auto(),
+    FORMATION__ASSIGNED =  auto(),
+    FORMATION_ENACTED = auto(),
+    PLACED_ON_BOARD = auto()
+    REMOVED_FROM_BOARD = auto()
+    REGISTERED_HOSTAGE = auto(),

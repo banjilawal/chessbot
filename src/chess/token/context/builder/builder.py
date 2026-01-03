@@ -223,7 +223,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             # On validation success return a ransom_TokenContext in the BuildResult.
             return BuildResult.success(TokenContext(ransom=ransom))
         
-        # The default path returns failure
+        # The default path returns failure.
         return BuildResult.failure(
             TokenContextBuildFailedException(
                 message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",

@@ -160,7 +160,7 @@ class PersonaSuperKeyBuilder(Builder[PersonaSuperKey]):
             # On validation success return a ransom_PersonaSuperKey in the BuildResult.
             return BuildResult.success(PersonaSuperKey(ransom=ransom))
         
-        # The default path returns failure
+        # The default path returns failure.
         BuildResult.failure(
             PersonaSuperKeyBuildFailedException(
                 message=f"{method}: {PersonaSuperKeyBuildFailedException.ERROR_CODE}",

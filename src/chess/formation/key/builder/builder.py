@@ -163,8 +163,7 @@ class FormationSuperKeyBuilder(Builder[FormationSuperKey]):
             # On validation success return a color_FormationSuperKey in the BuildResult.
             return BuildResult.success(FormationSuperKey(persona=persona))
         
-        # The default path is only reached when a super_key attribute does not have a build route. Return
-        # the exception chain.
+        # The default path returns failure.
         BuildResult.failure(
             FormationSuperKeyBuildFailedException(
                 message=f"{method}: {FormationSuperKeyBuildFailedException.ERROR_CODE}",

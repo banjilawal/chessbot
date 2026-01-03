@@ -13,4 +13,5 @@ version: 1.0.0
 None
 
 # Modules
+from .duplicate import AddingDuplicateTeamException
 from .catchall import UniqueTeamDataServiceException

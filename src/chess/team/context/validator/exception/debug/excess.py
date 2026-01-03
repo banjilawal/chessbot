@@ -40,6 +40,5 @@ class ExcessiveTeamContextFlagsException(TeamContextException, ContextFlagCountE
     """
     ERROR_CODE = "EXCESSIVE_TEAM_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
-        "TeamContext validation failed: The candidate had more than one attribute set. Only one "
-        "team property can be used in a search."
+        "TeamContext validation failed: More than one attribute was set. Only one attribute-value should be enabled."
     )
