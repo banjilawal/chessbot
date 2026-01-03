@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== TEAM.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .debug import *
 
 # Modules
 from .catchall import TeamServiceException
-from .token import TokenBelongsOnDifferentRosterException

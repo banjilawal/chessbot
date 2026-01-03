@@ -7,9 +7,8 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import List, Optional, cast
+from typing import List
 
-from chess.schema import Schema
 from chess.token import (
     AddingDuplicateTokenException, Token, TokenContext, TokenContextService, TokenDataService, TokenService,
     UniqueTokenDataServiceException

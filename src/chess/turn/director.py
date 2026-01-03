@@ -20,5 +20,5 @@ class TurnDirector:
             player = game.arena.white_team.owner
         else:
             player = game.arena.black_team.owner
-        self._marker.current_holder()
+        self._marker.current_holder(player)
         return self._marker
