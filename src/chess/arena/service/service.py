@@ -12,7 +12,7 @@ from typing import cast
 
 from chess.arena import (
     Arena, ArenaAlreadyContainsTeamException, ArenaBuilder, ArenaServiceException,
-    ArenaTeamRelationTester, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
+    ArenaTeamRelationAnalyzer, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from chess.schema import Schema, SchemaService
 from chess.system import EntityService, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
@@ -42,7 +42,7 @@ class ArenaService(EntityService[Arena]):
         *   See EntityService for inherited attributes.
     """
     DEFAULT_NAME = "ArenaService"
-    _team_relation_tester: ArenaTeamRelationTester
+    _arena_team_relation_analyzer: ArenaTeamRelationAnalyzer
     
     def __init__(
             self,
@@ -50,7 +50,7 @@ class ArenaService(EntityService[Arena]):
             id: int = id_emitter.service_id,
             builder: ArenaBuilder = ArenaBuilder(),
             validator: ArenaValidator = ArenaValidator(),
-            team_relation_tester: ArenaTeamRelationTester = ArenaTeamRelationTester(),
+            team_relation_tester: ArenaTeamRelationAnalyzer = ArenaTeamRelationAnalyzer(),
     ):
         """
         # ACTION:
@@ -66,7 +66,7 @@ class ArenaService(EntityService[Arena]):
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._team_relation_tester = team_relation_tester
+        self._arena_team_relation_analyzer = team_relation_tester
     
     @property
     def builder(self) -> ArenaBuilder:
@@ -79,14 +79,14 @@ class ArenaService(EntityService[Arena]):
         return cast(ArenaValidator, self.entity_validator)
     
     @property
-    def arena_team_relation_tester(self) -> ArenaTeamRelationTester:
-        return self._team_relation_tester
+    def arena_team_relation_analyzer(self) -> ArenaTeamRelationAnalyzer:
+        return self._arena_team_relation_analyzer
     
     
     @LoggingLevelRouter.monitor
     def add_team(self, arena: Arena, team: Team, team_service: TeamService = ()) -> InsertionResult[Team]:
         method = "ArenaService.add_team"
-        relation = self._team_relation_tester.test(
+        relation = self._arena_team_relation_analyzer.analyze(
             candidate_primary=arena,
             candidate_satellite=team,
             arena_validator=self.validator,

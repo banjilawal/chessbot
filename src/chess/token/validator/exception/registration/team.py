@@ -8,7 +8,6 @@ version: 1.0.0
 """
 
 from chess.piece import InvalidPieceException, PieceRegistrationException
-from chess.system import RegistrationException
 
 __all__ = [
     #======================# PIECE_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#

@@ -10,14 +10,14 @@ version: 1.0.0
 from typing import cast
 
 from chess.team import Team, TeamService
-from chess.system import LoggingLevelRouter, RelationReport, RelationTester
+from chess.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
 from chess.arena import (
-    Arena, ArenaSlotAlreadyOccupiedException, ArenaValidator, ArenaTeamRelationTestFailedException,
+    Arena, ArenaSlotAlreadyOccupiedException, ArenaValidator, ArenaTeamRelationAnalysisFailedException,
     TeamPlayingDifferentArenaException
 )
 
 
-class ArenaTeamRelationTester(RelationTester[Arena, Team]):
+class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
     """
     # ROLE: Reporting, Test for Relationship
 
@@ -39,7 +39,7 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
     """
     @classmethod
     @LoggingLevelRouter.monitor
-    def test(
+    def analyze(
             cls,
             candidate_primary: Arena,
             candidate_satellite: Team,
@@ -74,8 +74,8 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
         if arena_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                ArenaTeamRelationTestFailedException(
-                    message=f"{method}: {ArenaTeamRelationTestFailedException.ERROR_CODE}",
+                ArenaTeamRelationAnalysisFailedException(
+                    message=f"{method}: {ArenaTeamRelationAnalysisFailedException.ERROR_CODE}",
                     ex=arena_validation.exception
                 )
             )
@@ -87,8 +87,8 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                ArenaTeamRelationTestFailedException(
-                    message=f"{method}: {ArenaTeamRelationTestFailedException.ERROR_CODE}",
+                ArenaTeamRelationAnalysisFailedException(
+                    message=f"{method}: {ArenaTeamRelationAnalysisFailedException.ERROR_CODE}",
                     ex=team_validation.exception
                 )
             )
@@ -109,8 +109,8 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
                 return RelationReport.bidirectional(primary=arena, satellite=team)
             # If the black slot is occupied by some other team an error has occurred. Return the exception chain.
             return RelationReport.failure(
-                ArenaTeamRelationTestFailedException(
-                    message=f"{method}: {ArenaTeamRelationTestFailedException.ERROR_CODE}",
+                ArenaTeamRelationAnalysisFailedException(
+                    message=f"{method}: {ArenaTeamRelationAnalysisFailedException.ERROR_CODE}",
                     ex=TeamPlayingDifferentArenaException(
                         f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}"
                     )
@@ -125,8 +125,8 @@ class ArenaTeamRelationTester(RelationTester[Arena, Team]):
             return RelationReport.bidirectional(primary=arena, satellite=team)
         # If the white slot is occupied by some other team an error has occurred. Return the exception chain.
         return RelationReport.failure(
-            ArenaTeamRelationTestFailedException(
-                message=f"{method}: {ArenaTeamRelationTestFailedException.ERROR_CODE}",
+            ArenaTeamRelationAnalysisFailedException(
+                message=f"{method}: {ArenaTeamRelationAnalysisFailedException.ERROR_CODE}",
                 ex=TeamPlayingDifferentArenaException(f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}")
             )
         )

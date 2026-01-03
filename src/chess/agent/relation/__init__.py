@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .tester import AgentTeamRelationTester
-from .wrapper import AgentTeamRelationTestFailedException
+from .analyzer import AgentTeamRelationAnalyzer
+from .wrapper import AgentTeamRelationAnalysisFailedException

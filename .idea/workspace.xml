@@ -6,28 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/excess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/deletion/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/deletion/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/insertion/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/insertion/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/registration/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/registration/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/relationship/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/relationship/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/result/service/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/debug/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/debug/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/duplicate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/data/unique/exception/debug/owner.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/exception/debug/hostages/insert.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/exception/debug/hostages/insert.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/context/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/model/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/relation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/relation/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/relation/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/relation/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/relation/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/agent/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/agent/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/tester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/hostage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/hostage/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/hostage/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/hostage/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/hostage/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/roster/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/roster/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/roster/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/roster/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/relation/roster/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/relation/roster/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/relation/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/relation/analyzer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/validator/exception/registration/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/validator/exception/registration/team.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -324,11 +321,11 @@
       <recent name="$PROJECT_DIR$/src/chess/team/relation/member" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/token/validator/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/team/service/data/unique/exception" />
       <recent name="$PROJECT_DIR$/src/chess/team/service" />
       <recent name="$PROJECT_DIR$/src/chess/token/service/exception" />
       <recent name="$PROJECT_DIR$/src/chess/coord/service/data/unique/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/coord/service/exception" />
     </key>
   </component>
   <component name="RunManager" selected="Python.builder">
@@ -916,7 +913,8 @@
       <workItem from="1767207104231" duration="1365000" />
       <workItem from="1767215502660" duration="3991000" />
       <workItem from="1767244197560" duration="74089000" />
-      <workItem from="1767396224909" duration="7688000" />
+      <workItem from="1767396224909" duration="10281000" />
+      <workItem from="1767436953072" duration="4920000" />
     </task>
     <servers />
   </component>

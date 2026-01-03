@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import cast
 from unittest import removeResult
 
-from chess.agent.relation import AgentTeamRelationTester
+from chess.agent.relation import AgentTeamRelationAnalyzer
 from chess.system import EntityService, InsertionResult, LoggingLevelRouter, Result, id_emitter
 from chess.agent import (
     AgentServiceException, PlayerAgent, AgentFactory, AgentValidator,
@@ -44,7 +44,7 @@ class AgentService(EntityService[PlayerAgent]):
         *   See EntityService class for inherited attributes.
     """
     DEFAULT_NAME = "AgentService"
-    _team_relation_tester: AgentTeamRelationTester
+    _agent_team_relation_analyzer: AgentTeamRelationAnalyzer
     
     def __init__(
             self,
@@ -52,7 +52,7 @@ class AgentService(EntityService[PlayerAgent]):
             id: int = id_emitter.service_id,
             builder: AgentFactory = AgentFactory(),
             validator: AgentValidator = AgentValidator(),
-            team_relation_tester: AgentTeamRelationTester = AgentTeamRelationTester(),
+            agent_team_relation_analyzer: AgentTeamRelationAnalyzer = AgentTeamRelationAnalyzer(),
     ):
         """
         # ACTION:
@@ -71,7 +71,7 @@ class AgentService(EntityService[PlayerAgent]):
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._team_relation_tester = team_relation_tester
+        self._agent_team_relation_analyzer = agent_team_relation_analyzer
         
     @property
     def builder(self) -> AgentFactory:
@@ -84,8 +84,8 @@ class AgentService(EntityService[PlayerAgent]):
         return cast(AgentValidator, self.entity_validator)
     
     @property
-    def team_relation_tester(self) -> AgentTeamRelationTester:
-        return self._team_relation_tester
+    def agent_team_relation_analyzer(self) -> AgentTeamRelationAnalyzer:
+        return self._agent_team_relation_analyzer
     
     def add_team(
             self,
@@ -94,7 +94,7 @@ class AgentService(EntityService[PlayerAgent]):
             team_service: TeamService = TeamService()
     ) -> InsertionResult[Team]:
         method = "AgentService.add_team"
-        relation = self.team_relation_tester.test(
+        relation = self.agent_team_relation_analyzer.test(
             candidate_primary=agent,
             candidate_secondary=team,
             owner_validator=self.validator,

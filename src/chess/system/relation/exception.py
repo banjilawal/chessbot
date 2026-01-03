@@ -11,12 +11,12 @@ from chess.system import ExceptionWrapper
 
 __all__ = [
     # ======================# RELATION_TEST_FAILED EXCEPTION #======================#
-    "RelationTestFailedException",
+    "RelationAnalysisFailedException",
 ]
 
 
 # ======================# RELATION_TEST_FAILED EXCEPTION #======================#
-class RelationTestFailedException(ExceptionWrapper):
+class RelationAnalysisFailedException(ExceptionWrapper):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

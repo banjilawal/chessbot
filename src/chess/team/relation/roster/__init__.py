@@ -14,4 +14,4 @@ None
 
 # Modules
 from .analyzer import RosterRelationAnalyzer
-from .wrapper import RosterRelationTestFailedException
+from .wrapper import RosterRelationAnalysisFailedException

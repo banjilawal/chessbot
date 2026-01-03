@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.arena import Arena
 from chess.schema import Schema
 from chess.agent import PlayerAgent
-from chess.piece import UniquePieceDataService
+from chess.token import UniqueTokenDataService
 
 
 class Team:
@@ -18,8 +18,8 @@ class Team:
     # ROLE: Data-Holding
 
     # RESPONSIBILITY:
-    1.  Disposition of Pieces the PlayerAgent can move on a Board instance.
-    2.  Holds the captured enemy Pieces.
+    1.  Disposition of Tokens the PlayerAgent can move on a Board instance.
+    2.  Holds the captured enemy Tokens.
     
     # PARENT:
     None
@@ -32,8 +32,8 @@ class Team:
         *   schema (Schema)
         *   arena (Arena)
         *   owner (PlayerAgent)
-        *   roster (UniquePieceDataService)
-        *   hostages (UniquePieceDataService)
+        *   roster (UniqueTokenDataService)
+        *   hostages (UniqueTokenDataService)
         
     # INHERITED ATTRIBUTES:
     None
@@ -44,8 +44,8 @@ class Team:
     _arena: Arena
     _schema: Schema
     _owner: PlayerAgent
-    _roster: UniquePieceDataService
-    _hostages: UniquePieceDataService
+    _roster: UniqueTokenDataService
+    _hostages: UniqueTokenDataService
 
     def __init__(
             self,
@@ -53,8 +53,8 @@ class Team:
             arena: Arena,
             schema: Schema,
             owner: PlayerAgent,
-            roster: UniquePieceDataService = UniquePieceDataService(),
-            hostages: UniquePieceDataService = UniquePieceDataService(),
+            roster: UniqueTokenDataService = UniqueTokenDataService(),
+            hostages: UniqueTokenDataService = UniqueTokenDataService(),
     ):
         """
         # ACTION:
@@ -65,8 +65,8 @@ class Team:
             *   owner (PlayerAgent)
             *   arena (Arena)
             *   team_schema (Schema)
-            *   roster (UniquePieceDataService)
-            *   hostages (UniquePieceDataService)
+            *   roster (UniqueTokenDataService)
+            *   hostages (UniqueTokenDataService)
 
         # RETURNS:
         None
@@ -95,15 +95,15 @@ class Team:
         return self._arena
     
     @property
-    def schema(self) -> TeamSchema:
+    def schema(self) -> Schema:
         return self._schema
 
     @property
-    def roster(self) -> UniquePieceDataService:
+    def roster(self) -> UniqueTokenDataService:
         return self._roster
     
     @property
-    def hostages(self) -> UniquePieceDataService:
+    def hostages(self) -> UniqueTokenDataService:
         return self._hostages
     
     def __eq__(self, other) -> bool:

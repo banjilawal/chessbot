@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# ROSTER_RELATION_TEST_FAILURE EXCEPTION #======================#
-    "RosterRelationTestFailedException",
+    "RosterRelationAnalysisFailedException",
 ]
 
-from chess.system import RelationTestFailedException
+from chess.system import RelationAnalysisFailedException
 
 
 # ======================# ROSTER_RELATION_TEST_FAILURE EXCEPTION #======================#
-class RosterRelationTestFailedException(RelationTestFailedException):
+class RosterRelationAnalysisFailedException(RelationAnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

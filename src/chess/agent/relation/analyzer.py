@@ -11,13 +11,13 @@ from typing import cast
 
 from chess.agent.relation import OwnerTeamRelationTestFailedException
 from chess.team import Team, TeamContext, TeamService
-from chess.system import LoggingLevelRouter, RelationReport, RelationTester
+from chess.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
 from chess.agent import (
     AgentValidator, PlayerAgent
 )
 
 
-class AgentTeamRelationTester(RelationTester[PlayerAgent, Team]):
+class AgentTeamRelationAnalyzer(RelationAnalyzer[PlayerAgent, Team]):
     """
     # ROLE: Reporting, Test for Relationship
 
@@ -40,12 +40,12 @@ class AgentTeamRelationTester(RelationTester[PlayerAgent, Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def test(
+    def analyze(
             cls,
-            candidate_primary: PlayerAgent,
             candidate_satellite: Team,
-            owner_validator: AgentValidator = AgentValidator(),
+            candidate_primary: PlayerAgent,
             team_service: TeamService = TeamService(),
+            owner_validator: AgentValidator = AgentValidator(),
     ) -> RelationReport[PlayerAgent, Team]:
         """
         # ACTION:
@@ -70,7 +70,7 @@ class AgentTeamRelationTester(RelationTester[PlayerAgent, Team]):
             *   ArenaValidationFailedException
         """
         method = "AgentService.certify_team_agent_relationship"
-        # Process the possible owner_validation outcomes.
+        # Handle the case that owner validation failer.
         owner_validation = owner_validator.validate(candidate_primary)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
@@ -83,7 +83,7 @@ class AgentTeamRelationTester(RelationTester[PlayerAgent, Team]):
         # Just incase things aren't Liskovian on the candidate_primary ue validation.payload for the cast.
         owner = cast(PlayerAgent, owner_validation.payload)
         
-        # Process the possible team_validation outcomes.
+        # Handle the case that team validation fails.
         team_validation = team_service.validator.validate(candidate_satellite)
         if team_validation.is_failure:
             # Return the exception chain on failure.
