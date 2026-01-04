@@ -1,11 +1,14 @@
 from typing import List, cast
 
 from chess.rank import Rank
-from chess.system import CalculationResult, InsertionResult
+from chess.system import CalculationResult, DeletionResult, InsertionResult
 from chess.team import (
-    AddCapturedTeamMemberException, AddingRosterMemberFailedException, Team, RosterRelationAnalyzer, RosterTable,
+    AddingCapturedTeamMemberException, AddingRosterMemberFailedException, RosterMemberDeletionFailedException,
+    RosterMemberDoesNotExistForRemovalException, Team,
+    RosterRelationAnalyzer, RosterTable,
     TeamRankQuotaFullException, TokenBelongsOnDifferentRosterException
 )
+from chess.team.roster.exception.deletion.active import RemovingActiveTeamMemberException
 from chess.token import AddingDuplicateTokenException, Token, TokenContext, UniqueTokenDataService
 from chess.token.model.combatant.token import CombatantToken
 
@@ -26,7 +29,71 @@ class RosterService:
         self._tokens = tokens
         self._analyzer = analyzer
         
-        
+    def member_deletion(self, member: CombatantToken) -> DeletionResult[Token]:
+        """
+        # ACTION:
+            1.  If the piece fails validation send the wrapped exception in the DeletionResult.
+            2.  If the piece does not belong to the team or is not captured send the wrapped exception in the
+                DeletionResult.
+            3.  If a search for the piece either fails or returns no matches send an exception in the DeletionResult.
+            4.  Run the deletion operation on the DataService and send the DeletionResult in the caller.
+        # PARAMETERS:
+            *   member (Token)
+        # RETURN:
+            *   DeletionResult[int] containing either:
+                - On failure: Exception
+                - On success: int
+        # RAISES:
+            *   RemovingActiveTeamMemberException
+            *   RosterMemberDeletionFailedException
+            *   TokenBelongsOnDifferentRosterException
+        """
+        method = "RosterService.member_deletion"
+    
+        # Handle the case that the piece fails validation.
+        piece_validation = self._tokens.token_service.validator.validate(member)
+        if piece_validation.is_failure:
+            # Return exception chain on failure.
+            return DeletionResult.failure(
+                RosterMemberDeletionFailedException(
+                    message=f"{method}: {RosterMemberDeletionFailedException.ERROR_CODE}",
+                    ex=piece_validation.exception
+                )
+            )
+        # Handle the case that the piece is on a different team.
+        team = member.team
+        if member.team != team:
+            # Return exception chain on failure.
+            return DeletionResult.failure(
+                RosterMemberDeletionFailedException(
+                    message=f"{method}: {RosterMemberDeletionFailedException.ERROR_CODE}",
+                    ex=TokenBelongsOnDifferentRosterException(
+                        f"{method}: {TokenBelongsOnDifferentRosterException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the member has not been captured.
+        if member.captor is None:
+            # Return exception chain on failure.
+            return DeletionResult.failure(
+                RosterMemberDeletionFailedException(
+                    message=f"{method}: {RosterMemberDeletionFailedException.ERROR_CODE}",
+                    ex=RemovingActiveTeamMemberException(
+                        f"{method}: {RemovingActiveTeamMemberException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        deletion_result = self._tokens.remove_token_by_id(id=member.id)
+        if deletion_result.is_failure:
+            # Return exception chain on failure.
+            return DeletionResult.failure(
+                RosterMemberDeletionFailedException(
+                    message=f"{method}: {RosterMemberDeletionFailedException.ERROR_CODE}",
+                    ex=deletion_result.exception
+                )
+            )
+        return deletion_result
+    
     def member_insertion(self, team: Team, piece: Token) -> InsertionResult[Token]:
         """
         # ACTION:
@@ -45,7 +112,7 @@ class RosterService:
         # RAISES:
             *   TeamRankQuotaFullException
             *   AddingDuplicateTokenException
-            *   AddCapturedTeamMemberException
+            *   AddingCapturedTeamMemberException
             *   AddingRosterMemberFailedException
             *   TokenBelongsOnDifferentRosterException
         """
@@ -78,7 +145,7 @@ class RosterService:
             return InsertionResult.failure(
                 AddingRosterMemberFailedException(
                     message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=AddCapturedTeamMemberException(f"{method}: {AddCapturedTeamMemberException.DEFAULT_MESSAGE}")
+                    ex=AddingCapturedTeamMemberException(f"{method}: {AddingCapturedTeamMemberException.DEFAULT_MESSAGE}")
                 )
             )
         # --- Search the collection for the token. ---#

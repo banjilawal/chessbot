@@ -15,6 +15,6 @@ None
 # Modules
 from .quota import TeamRankQuotaFullException
 from .duplicate import TokenAlreadyOnRosterException
-from .captured import AddCapturedTeamMemberException
+from .captured import AddingCapturedTeamMemberException
 from .wrapper import AddingRosterMemberFailedException
 from .owner import TokenBelongsOnDifferentRosterException

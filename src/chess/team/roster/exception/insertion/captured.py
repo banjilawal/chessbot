@@ -9,13 +9,11 @@ version: 1.0.0
 
 __all__ = [
     # ======================# ADDING_CAPTURED_MEMBER_TO_ROSTER EXCEPTION #======================#
-    "AddCapturedTeamMemberException",
+    "AddingCapturedTeamMemberException",
 ]
-    
-from chess.team import TeamException
 
 # ======================# ADDING_CAPTURED_MEMBER_TO_ROSTER EXCEPTION #======================#
-class AddCapturedTeamMemberException(TeamException):
+class AddingCapturedTeamMemberException(TeamRosterException):
     """
     # ROLE: Error Tracing, Debugging
 

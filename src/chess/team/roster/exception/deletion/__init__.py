@@ -13,4 +13,7 @@ version: 1.0.0
 None
 
 # Modules
+from .empty import PoppingEmptyRosterException
+from .active import RemovingActiveTeamMemberException
 from .wrapper import RosterMemberDeletionFailedException
+from .unfound import RosterMemberDoesNotExistForRemovalException
