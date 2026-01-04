@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.token import TokenDataServiceException
 
 __all__ = [
-    # ======================# UNFOUNDPING_EMPTY_TOKEN_DATA_SERVICE EXCEPTION #======================#
+    # ======================# TOKEN_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
     "TokenDoesNotExistForRemovalException",
 ]
 

@@ -13,7 +13,7 @@ version: 1.0.0
 from .builder import *
 from .context import *
 from .service import *
-from .table import *
+from .roster import *
 from .relation import *
 from .validator import *
 

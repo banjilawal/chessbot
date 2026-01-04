@@ -16,12 +16,12 @@ __all__ = [
 
 
 # ======================# ADDING_TOKEN_TO_ROSTER_FAILURE #======================#
-class AddingRosterMemberFailedException(TeamException):
+class AddingRosterMemberFailedException(TeamR):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that add a token to to the roster failed.
+    1.  Indicate that add a token to the roster failed.
 
     # PARENT:
         *   UniqueTeamDataServiceException

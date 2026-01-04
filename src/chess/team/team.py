@@ -10,6 +10,7 @@ version: 1.0.0
 from chess.arena import Arena
 from chess.schema import Schema
 from chess.agent import PlayerAgent
+from chess.team import RosterService
 from chess.token import UniqueTokenDataService
 
 
@@ -44,7 +45,7 @@ class Team:
     _arena: Arena
     _schema: Schema
     _owner: PlayerAgent
-    _roster: UniqueTokenDataService
+    _roster: RosterService
     _hostages: UniqueTokenDataService
 
 
@@ -54,7 +55,7 @@ class Team:
             arena: Arena,
             schema: Schema,
             owner: PlayerAgent,
-            roster: UniqueTokenDataService = UniqueTokenDataService(),
+            roster: RosterService = RosterService(),
             hostages: UniqueTokenDataService = UniqueTokenDataService(),
     ):
         """
@@ -106,6 +107,8 @@ class Team:
     @property
     def hostages(self) -> UniqueTokenDataService:
         return self._hostages
+    
+    de
     
     def __eq__(self, other) -> bool:
         if other is self: return True

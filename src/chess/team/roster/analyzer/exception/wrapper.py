@@ -12,11 +12,10 @@ __all__ = [
     "RosterRelationAnalysisFailedException",
 ]
 
-from chess.system import RelationAnalysisFailedException
 
 
 # ======================# ROSTER_RELATION_TEST_FAILURE EXCEPTION #======================#
-class RosterRelationAnalysisFailedException(RelationAnalysisFailedException):
+class RosterRelationAnalysisFailedException(TeamRosterException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

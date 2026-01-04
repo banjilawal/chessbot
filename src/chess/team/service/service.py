@@ -208,7 +208,6 @@ class TeamService(EntityService[Team]):
             *   TeamServiceException
         """
         method = "TeamService.add_roster_team_member"
-        
         relation_analysis = self._roster_relation_analyzer.analyze(
             candidate_primary=team,
             candidadate_satellite=piece
@@ -217,39 +216,29 @@ class TeamService(EntityService[Team]):
         if relation_analysis.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                        ex=relation_analysis.exception
-                    )
+                AddingRosterMemberFailedException(
+                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                    ex=relation_analysis.exception
                 )
             )
-        
-        # Handle the case that the token belongs to a different team.
+        # Handle the case that the piece belongs to a different team.
         if relation_analysis.does_not_exist:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                        ex=TokenBelongsOnDifferentRosterException(
-                            f"{method}: {TokenBelongsOnDifferentRosterException.DEFAULT_MESSAGE}"
-                        )
+                AddingRosterMemberFailedException(
+                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                    ex=TokenBelongsOnDifferentRosterException(
+                        f"{method}: {TokenBelongsOnDifferentRosterException.DEFAULT_MESSAGE}"
                     )
                 )
             )
-        # Handle the case that the token is already registered with the team.
+        # Handle the case that the piece is already registered with the team.
         if relation_analysis.fully_exists:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                        ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
-                    )
+                AddingRosterMemberFailedException(
+                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                    ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
                 )
             )
         # --- Find how slots are open for the piece's rank. ---#

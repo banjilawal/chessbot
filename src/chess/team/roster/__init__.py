@@ -10,8 +10,9 @@ version: 1.0.0
 # =========== TEAM.ROSTER PACKAGE CONTENTS ===========#
 
 # Packages
+from .analyzer import *
 from .exception import *
 
 # Modules
 from .table import RosterTable
-from .analyzer import RosterRelationAnalyzer
+from .service import RosterService

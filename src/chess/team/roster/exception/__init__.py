@@ -15,4 +15,3 @@ from .insertion import *
 
 # Modules
 from .catchall import TeamRosterException
-from .analysis import RosterRelationAnalysisFailedException
