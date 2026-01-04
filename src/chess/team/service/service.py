@@ -253,8 +253,24 @@ class TeamService(EntityService[Team]):
             rank: Rank,
             rank_service: RankService = RankService()
     ) -> CalculationResult[(Rank, int)]:
-        """"""
-        method = "TeamService.get_open_slots"
+        """
+        # ACTION:
+            1.  If either the team or rank are not certified send the exception in the CalculationResult.
+                Else, search the roster by the rank.
+            2.  If the search did not complete send the exception in the CalculationResult.
+            3.  Calculate rank.team_quota - len(matches) and send in the CalculationResult.
+        # PARAMETERS:
+            *   team (Team)
+            *   rank (Rank)
+            *   rank_service (RankService)
+        # RETURN:
+            *   CalculationReport[Rank, int] containing either:
+                - On failure: Exception
+                - On success: (Rank, int) tuple
+        # RAISES:
+            *   TeamServiceException
+        """
+        method = "TeamService.get_open_slots_for_rank"
         # Handle the case that the team is not certified safe.
         team_validation = self.validator.validate(team)
         if team_validation.is_failure:
@@ -265,7 +281,7 @@ class TeamService(EntityService[Team]):
                     ex=team_validation.exception
                 )
             )
-        # Handle the case that the persona is not certified safe
+        # Handle the case that the rank is not certified safe
         rank_validation = rank_service.validator.validate(rank)
         if rank_validation.is_failure:
             # Return the exception chain on failure.
