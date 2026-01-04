@@ -14,6 +14,8 @@ from chess.rank import Rank, RankService
 from chess.schema import SchemaService
 from chess.team.service.exception.debug.roster.insertion import AddingRosterMemberFailedException
 from chess.team.service.exception.debug.roster.owner import TokenBelongsOnDifferentRosterException
+
+from chess.team.roster import TeamRankQuotaFullException
 from chess.token import AddingDuplicateTokenException, Token, TokenContext, TokenService
 from chess.system import CalculationResult, EntityService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
 from chess.team import (
@@ -186,12 +188,30 @@ class TeamService(EntityService[Team]):
         # Send the tagged matches.
         return SearchResult.success(matches)
     
-    def add_roster_member(self, owner: Team, token: Token) -> InsertionResult[Token]:
-        """"""
+    def add_roster_member(self, team: Team, piece: Token) -> InsertionResult[Token]:
+        """
+        # ACTION:
+            1.  If a successful relation analysis does not show that the team and piece are partially related send an
+                exception. Also send the exception if the relation analysis fails.
+            2.  If the rank's quota is full send the exception in InsertionResult. Else get the result of the
+                super().push_item.
+            3.  If the super class raises an exception wrap and forward it. Else, forward the super class success
+                directly to the caller.
+        # PARAMETERS:
+            *   team (Team)
+            *   piece (Piece)
+        # RETURN:
+            *   InsertionResult[token] containing either:
+                - On failure: Exception
+                - On success: Token
+        # RAISES:
+            *   TeamServiceException
+        """
         method = "TeamService.add_roster_team_member"
+        
         relation_analysis = self._roster_relation_analyzer.analyze(
-            candidate_primary=owner,
-            candidadate_satellite=token
+            candidate_primary=team,
+            candidadate_satellite=piece
         )
         # Handle the case that the relation_analysis returned an error.
         if relation_analysis.is_failure:
@@ -232,9 +252,36 @@ class TeamService(EntityService[Team]):
                     )
                 )
             )
-        team_quota =
+        # --- Find how slots are open for the piece's rank. ---#
+        rank_quota_calculation = self.calculate_remaining_rank_quota(team=team, rank=piece.rank)
+        
+        # Handle the case that the calculation was not completed.
+        if rank_quota_calculation.is_failure:
+            # Return exception chain on failure.
+            return InsertionResult.failure(
+                TeamServiceException(
+                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=rank_quota_calculation.exception
+                    )
+                )
+            )
+        # Handle the case that the rank has been filled.
+        if cast(int, rank_quota_calculation.payload) <= 0:
+            # Return exception chain on failure.
+            return InsertionResult.failure(
+                TeamServiceException(
+                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=TeamRankQuotaFullException(f"{method}: {TeamRankQuotaFullException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
+        
         # Get the relation of adding the token.
-        addition_result = owner.roster.add_token(token)
+        addition_result = team.roster.add_token(piece)
         if addition_result.is_failure:
                 # Return exception chain on failure.
                 return InsertionResult.failure(
@@ -247,12 +294,12 @@ class TeamService(EntityService[Team]):
                     )
                 )
     
-    def get_open_slots_for_rank(
+    def calculate_remaining_rank_quota(
             self,
             team: Team,
             rank: Rank,
             rank_service: RankService = RankService()
-    ) -> CalculationResult[(Rank, int)]:
+    ) -> CalculationResult[int]:
         """
         # ACTION:
             1.  If either the team or rank are not certified send the exception in the CalculationResult.
@@ -270,7 +317,8 @@ class TeamService(EntityService[Team]):
         # RAISES:
             *   TeamServiceException
         """
-        method = "TeamService.get_open_slots_for_rank"
+        method = "TeamService.calculate_remaining_rank_quota"
+        
         # Handle the case that the team is not certified safe.
         team_validation = self.validator.validate(team)
         if team_validation.is_failure:
@@ -305,6 +353,6 @@ class TeamService(EntityService[Team]):
             )
         # Calculate how many slots are available for the rank and send in the CalculationResult.
         open_slots = rank.team_quota - len(search_result.payload)
-        return CalculationResult((rank, open_slots))
+        return CalculationResult(open_slots)
 
         

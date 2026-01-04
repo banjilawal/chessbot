@@ -5,7 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/chess/team/roster/roster.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/team.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/team.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -897,7 +903,7 @@
       <workItem from="1767396224909" duration="10281000" />
       <workItem from="1767436953072" duration="4920000" />
       <workItem from="1767457973808" duration="7644000" />
-      <workItem from="1767506044611" duration="12973000" />
+      <workItem from="1767506044611" duration="20039000" />
     </task>
     <servers />
   </component>

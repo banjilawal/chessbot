@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from typing import List, Optional, cast
+from typing import Dict, List, Optional, cast
 
 
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
@@ -105,6 +105,7 @@ class PersonaService(HashService[Persona]):
             if ransom > maximum:
                 maximum = ransom
         return maximum
+
     
     @classmethod
     def rank_from_persona(cls, entry: Persona) -> Optional[Rank]:

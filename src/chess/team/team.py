@@ -47,6 +47,7 @@ class Team:
     _roster: UniqueTokenDataService
     _hostages: UniqueTokenDataService
 
+
     def __init__(
             self,
             id: int,

@@ -10,6 +10,8 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.formation import Formation, FormationService, FormationSuperKey
+from chess.persona import Persona
+from chess.rank import Bishop, King, Knight, Pawn, Queen, Rook
 from chess.schema import Schema, SchemaServiceException, SchemaSuperKey, SchemaSuperKeyService, SchemaValidator
 from chess.system import CalculationResult, GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
 
@@ -58,7 +60,18 @@ class SchemaService(HashService[Schema]):
         """A Schema name is the key to a metadata dictionary."""
         return [entry.name for entry in Schema]
     
-    @LoggingLevelRouter
+    @classmethod
+    def rank_quotas_for_schema(cls, p) -> {Rank, int}:
+        return {
+            King: Persona.KING.quota,
+            Pawn: Persona.PAWN.quota,
+            Knight: Persona.KNIGHT.quota,
+            Bishop: Persona.BISHOP.quota,
+            Rook: Persona.ROOK.quota,
+            Queen: Persona.QUEEN.quota,
+        }
+    
+    @LoggingLevelRouter.monitor
     def formations_for_schema(
             self,
             schema: Schema,
@@ -153,3 +166,5 @@ class SchemaService(HashService[Schema]):
             )
         # On search success send the result to the caller.
         return result
+    
+    
