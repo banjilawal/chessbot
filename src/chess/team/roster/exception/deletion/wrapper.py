@@ -3,11 +3,9 @@ __all__ = [
     "RosterMemberDeletionFailedException",
 ]
 
-from chess.team import TeamException
-
 
 # ======================# ROSTER_MEMBER_DELETION_FAILURE EXCEPTION #======================#
-class RosterMemberDeletionFailedException(TeamRo):
+class RosterMemberDeletionFailedException(TeamRosterException):
     """
     # ROLE: Catchall Exception
 
