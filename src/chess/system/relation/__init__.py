@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== SYSTEM.RELATION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .wrong import *
 
 # Modules
 from .dyad import Dyad

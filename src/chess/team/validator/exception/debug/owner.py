@@ -7,17 +7,14 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-
+from chess.team import TeamException
+from chess.system import NotRegisteredException
 
 
 __all__ = [
     # ======================# TEAM_NOT_REGISTERED_WITH_OWNER EXCEPTION #======================#
     "TeamNotRegisteredWithOwnerException",
 ]
-
-from chess.team import TeamException
-from chess.system import NotRegisteredException
-
 
 
 #======================# TEAM_NOT_REGISTERED_WITH_OWNER EXCEPTION #======================#
