@@ -1,12 +1,12 @@
 from typing import List, cast
 
+from chess.board import Board
+from chess.board.service.service import BoardService
 from chess.rank import Rank
 from chess.system import CalculationResult, DeletionResult, InsertionResult
 from chess.team import (
     AddingCapturedTeamMemberException, AddingRosterMemberFailedException, RosterMemberDeletionFailedException,
-    RosterMemberDoesNotExistForRemovalException, Team,
-    RosterRelationAnalyzer, RosterTable,
-    TeamRankQuotaFullException, TokenBelongsOnDifferentRosterException
+    Team, RosterRelationAnalyzer, RosterTable, TeamRankQuotaFullException, TokenBelongsOnDifferentRosterException
 )
 from chess.team.roster.exception.deletion.active import RemovingActiveTeamMemberException
 from chess.token import AddingDuplicateTokenException, Token, TokenContext, UniqueTokenDataService
@@ -32,7 +32,7 @@ class RosterService:
     def member_deletion(self, member: CombatantToken) -> DeletionResult[Token]:
         """
         # ACTION:
-            1.  If the piece fails validation send the wrapped exception in the DeletionResult.
+            1.  If the piece fails validation send the wrapped e xception in the DeletionResult.
             2.  If the piece does not belong to the team or is not captured send the wrapped exception in the
                 DeletionResult.
             3.  If a search for the piece either fails or returns no matches send an exception in the DeletionResult.
@@ -93,6 +93,9 @@ class RosterService:
                 )
             )
         return deletion_result
+    
+    def transfer_to_board(self, board: Board, board_service: BoardService = BoardService()):
+        pass
     
     def member_insertion(self, team: Team, piece: Token) -> InsertionResult[Token]:
         """

@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/deletion/active.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/exception/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/deletion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/exception/deletion/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/deletion/empty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/exception/deletion/unfound.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/deletion/unfound.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/exception/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/insertion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/exception/insertion/captured.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/insertion/captured.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/roster/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -905,7 +899,8 @@
       <workItem from="1767436953072" duration="4920000" />
       <workItem from="1767457973808" duration="7644000" />
       <workItem from="1767506044611" duration="32118000" />
-      <workItem from="1767556330222" duration="6779000" />
+      <workItem from="1767556330222" duration="8713000" />
+      <workItem from="1767619131238" duration="1687000" />
     </task>
     <servers />
   </component>

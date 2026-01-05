@@ -1,7 +1,10 @@
 from typing import List, cast
 
+from chess.board import Board
+from chess.board.service.service import BoardService
 from chess.formation import Formation, FormationSuperKey, FormationSuperKeyService, FormationValidator, FormationServiceException
-from chess.system import GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
+from chess.square import Square, SquareContext
+from chess.system import GameColor, HashService, InvariantBreachException, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class FormationService(HashService[Formation]):
@@ -59,6 +62,43 @@ class FormationService(HashService[Formation]):
         """Full name of the formation made up of color, rank, and number."""
         return [order.name.upper() for order in Formation]
     
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def get_board_square(
+            cls,
+            board: Board,
+            board_service: BoardService = BoardService()
+    ) -> SearchResult[List[Square]]:
+        """"""
+        method = "FormationService.get_board_square"
+        board_validation = board_service.validator.validate(candidate=board)
+        if board_validation.is_failure:
+            return SearchResult.failure(
+                FormationServiceException(
+                    message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                    ex=board_validation.exception
+                )
+            )
+        squares = List[Square]
+        for formation in Formation:
+            square_search = board.squares.search(context=SquareContext(name=formation.square_name))
+            if square_search.is_failure:
+                return SearchResult.failure(
+                    FormationServiceException(
+                        message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                        ex=square_search.exception
+                    )
+                )
+            if square_search.is_empty:
+                return SearchResult.failure(
+                    FormationServiceException(
+                        message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                        ex=InvariantBreachException(f"{method}: Square {formation.square_name} not found.")
+                    )
+                )
+            squares.append(cast(Square, square_search.payload[0]))
+        return SearchResult.success(squares)
+            
     @LoggingLevelRouter.monitor
     def lookup_formation(self, super_key: FormationSuperKey) -> SearchResult[List[Formation]]:
         """
