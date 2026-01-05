@@ -69,9 +69,32 @@ class FormationService(HashService[Formation]):
             board: Board,
             board_service: BoardService = BoardService()
     ) -> SearchResult[List[Square]]:
-        """"""
+        """
+        # ACTION:
+            1.  If the board fails validation send the exception chain in the SearchResult.
+            2.  Find each formation's board square by their designation ane put them in a list.
+            3.  if any search fails return the exception instead of the list.
+        # PARAMETERS:
+            *   board (Board)
+            *   board_service (BoardService)
+         # RETURNS:
+            *   SearchResult[List[[Square]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Square] in the payload.
+                    - On no matches found: Exception null, payload null
+        # RAISES:
+            *   TypeError
+            *   NullTeamContextException
+            *   ZeroTeamContextFlagsException
+            *   ExcessiveTeamContextFlagsException
+            *   TeamContextValidationFailedException
+            *   TeamContextValidationRouteException
+        """
         method = "FormationService.get_board_square"
+        
+        # Handle the case that the board does not get certfied safe.
         board_validation = board_service.validator.validate(candidate=board)
+        # Return the exception chain on failure.
         if board_validation.is_failure:
             return SearchResult.failure(
                 FormationServiceException(
@@ -79,23 +102,30 @@ class FormationService(HashService[Formation]):
                     ex=board_validation.exception
                 )
             )
+    
         squares = List[Square]
+        # Loop through the formations to find their squares from the board.
         for formation in Formation:
             square_search = board.squares.search(context=SquareContext(name=formation.square_name))
+            # Handle the case that the search fails.
             if square_search.is_failure:
+                # Return the exception chain on failure.
                 return SearchResult.failure(
                     FormationServiceException(
                         message=f"{method}: {FormationServiceException.ERROR_CODE}",
                         ex=square_search.exception
                     )
                 )
+            # Handle the case that no square with the denomination is found.
             if square_search.is_empty:
+                # Return the exception chain on failure.
                 return SearchResult.failure(
                     FormationServiceException(
                         message=f"{method}: {FormationServiceException.ERROR_CODE}",
                         ex=InvariantBreachException(f"{method}: Square {formation.square_name} not found.")
                     )
                 )
+            # Make sure to cast then return to the caller.
             squares.append(cast(Square, square_search.payload[0]))
         return SearchResult.success(squares)
             

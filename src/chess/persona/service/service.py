@@ -140,6 +140,11 @@ class PersonaService(HashService[Persona]):
             *   super_key (PersonaSuperKey)
         # RETURNS:
             *   SearchResult[List[Persona]] containing a list if a match is found else an exception chain.
+        # RETURNS:
+            *   SearchResult[List[Formation]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Formation] in the payload.
+                    - On no matches found: Exception null, payload null
         # RAISES:
             None
         """
