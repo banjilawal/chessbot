@@ -8,10 +8,12 @@ version: 1.0.0
 """
 
 
-from chess.game import Game
-from chess.piece import UniquePieceDataService
+from chess.arena import Arena
+from chess.system import InsertionResult
+from chess.team import Team, TeamService
+from chess.token import Token, TokenService, UniqueTokenDataService
 from chess.square import UniqueSquareDataService
-from chess.token.service import UniquePieceDataServiceException
+from chess.token.service import UniqueTokenDataServiceException
 
 
 
@@ -20,28 +22,28 @@ class Board:
     # ROLE: Data-Holder/Data Owner
   
     # RESPONSIBILITIES:
-    The Surface of Squares where Pieces are played.
+    The Surface of Squares where Tokens are played.
   
     # PROVIDES:
       Board
   
     # ATTRIBUTES:
         * id (int): Unique identifier.
-        * pieces ([Token]): Array pieces in Board object
+        * tokens ([Token]): Array tokens in Board object
         * squares ([[Square]]): A 2D array of squares in Board object.
     """
     
     _id: int
-    _game: Game
-    _piece_service: UniquePieceDataService
-    _square_service: UniqueSquareDataService
+    _arena: Arena
+    _tokens: UniqueTokenDataService
+    _squares: UniqueSquareDataService
     
     def __init__(
             self,
             id: int,
-            game: Game,
-            piece_service: UniquePieceDataService = UniquePieceDataServiceException(),
-            square_service: UniqueSquareDataService = UniqueSquareDataService(),
+            arena: Arena,
+            tokens: UniqueTokenDataService = UniqueTokenDataServiceException(),
+            squares: UniqueSquareDataService = UniqueSquareDataService(),
     ):
         """
         # ACTION:
@@ -59,25 +61,25 @@ class Board:
         method = "Board.__init__"
         
         self._id = id
-        self._game = game
-        self._piece_service = piece_service
-        self._square_service = square_service
+        self._arena = arena
+        self._tokens = tokens
+        self._squares = squares
     
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def game(self) -> Game:
-        return self._game
+    def arena(self) -> Arena:
+        return self._arena
     
     @@property
-    def piece_service(self) -> UniquePieceDataService:
-        return self._piece_service
+    def tokens(self) -> UniqueTokenDataService:
+        return self._tokens
     
     @@property
-    def square_service(self) -> UniqueSquareDataService:
-        return self._square_service
+    def squares(self) -> UniqueSquareDataService:
+        return self._squares
     
     def __eq__(self, other):
         if other is self: return True
@@ -88,6 +90,18 @@ class Board:
     
     def __hash__(self):
         return hash(self._id)
+    
+    def accept_token(
+            self,
+            token: Token,
+            token_service: TokenService = TokenService()
+    ) -> InsertionResult[Token]:
+        token_validation = token_service.validator.validate(token)
+        if token_validation.is_failure:
+            return InsertionResult.failure(
+                Board
+            )
+        
 
     
     # def __str__(self) -> str:

@@ -16,7 +16,7 @@ from chess.team import TeamException
 
 
 # ======================# TOKEN_ALREADY_ON_ROSTER EXCEPTION #======================#
-class TokenAlreadyOnRosterException(TeamException):
+class TokenAlreadyOnRosterException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 

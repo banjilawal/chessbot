@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# ADDING_TOKEN_TO_ROSTER_FAILURE #======================#
-class AddingRosterMemberFailedException(TeamR):
+class AddingRosterMemberFailedException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 

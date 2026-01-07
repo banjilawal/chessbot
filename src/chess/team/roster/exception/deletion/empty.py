@@ -5,7 +5,7 @@ __all__ = [
 
 
 # ======================# POPPING_EMPTY_ROSTER EXCEPTION #======================#
-class PoppingEmptyRosterException(TeamRosterxception):
+class PoppingEmptyRosterException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 

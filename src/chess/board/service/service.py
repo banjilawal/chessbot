@@ -11,6 +11,7 @@ from typing import cast
 from chess.board import Board, BoardBuilder, BoardValidator
 from chess.system import id_emitter
 from chess.system.service import EntityService
+from chess.team import TeamService
 
 
 class BoardService(EntityService[Board]):
@@ -71,3 +72,15 @@ class BoardService(EntityService[Board]):
     def validator(self) -> BoardValidator:
         """get BoardValidator"""
         return cast(BoardValidator, self.entity_validator)
+    
+    def layout_team_board(
+            self,
+            board: Board,
+            team: Team,
+            team_service: TeamService = TeamService()
+    ) -> InsertionResult[Token]:
+        team_validation = team_service.validator.validate(team)
+        if team_validation.is_failure:
+            return InsertionResult.failure(
+                Board
+            )

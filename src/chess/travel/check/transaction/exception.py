@@ -38,7 +38,7 @@ class FailedCaptorPropertyUpdateRolledBackException(AttackTransactionException):
   """"""
   ERROR_CODE = "FAILED_CAPTOR_PROPERTY_UPDATE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Updating a prisoner's captor consistency during an attack notification failed.  The notification was rolled back "
+    "Updating a combatant's captor consistency during an attack notification failed.  The notification was rolled back "
     "before this rollback_exception was raised."
   )
 

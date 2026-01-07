@@ -68,7 +68,7 @@ class AttackingEnemyKingException(AttackEventException):
 class DoublyAttackingPrisonerException(AttackEventException):
   """"""
   ERROR_CODE = "DOUBLY_ATTACKING_PRISONER_ERROR"
-  DEFAULT_MESSAGE = "Cannot attack an enemy that is already a prisoner."
+  DEFAULT_MESSAGE = "Cannot attack an enemy that is already a combatant."
 
 class AttackingPieceMissingFromBoardException(AttackEventException):
   """"""
@@ -112,10 +112,10 @@ class CaptureFriendException(CapturePieceException):
 
 class DoubleCaptureException(CapturePieceException):
   """
-  Raised when team_name owner attempts to capture an enemy combatant that is already team_name prisoner
+  Raised when team_name owner attempts to capture an enemy combatant that is already team_name combatant
   """
   ERROR_CODE = "DOUBLE_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Cannot capture team_name owner that is already team_name prisoner."
+  DEFAULT_MESSAGE = "Cannot capture team_name owner that is already team_name combatant."
 
 
 class UnsetCaptureException(CapturePieceException):
@@ -124,7 +124,7 @@ class UnsetCaptureException(CapturePieceException):
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR"
   DEFAULT_MESSAGE = (
-    "Cannot set team_name prisoner's captor to validation. A captured owner cannot be freed."
+    "Cannot set team_name combatant's captor to validation. A captured owner cannot be freed."
   )
 
 
@@ -158,23 +158,23 @@ class CaptureFriendRolledBackExceptionCapture(CaptureRollbackException):
 class DoubleCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
   Raised if team_name notification attempts capturing an enemy combatant that is already
-  team_name prisoner. The notification was rolled back before raising this err.
+  team_name combatant. The notification was rolled back before raising this err.
   """
   ERROR_CODE = "DOUBLE_CAPTURE_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot capture team_name owner that is already team_name prisoner. Transaction "
+    "Cannot capture team_name owner that is already team_name combatant. Transaction "
     "rollback performed."
   )
 
 
 class UnsetCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
-  Raised if team_name notification attempts setting prisoner's captor consistency validation.
+  Raised if team_name notification attempts setting combatant's captor consistency validation.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot set team_name prisoner's captor to validation. A captured owner cannot be freed. "
+    "Cannot set team_name combatant's captor to validation. A captured owner cannot be freed. "
     "Transaction rollback performed."
   )
 

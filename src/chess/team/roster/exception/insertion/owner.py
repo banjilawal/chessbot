@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# TOKEN_BELONGS_ON_DIFFERENT_ROSTER EXCEPTION #======================#
-class TokenBelongsOnDifferentRosterException(TeamException, TokenException):
+class TokenBelongsOnDifferentRosterException(TeamRosterException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
