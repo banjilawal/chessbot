@@ -30,8 +30,8 @@ class Game:
     # LOCAL ATTRIBUTES:
         *   id (int)
         *   arena (Arena)
-        *   white_player (PlayerAgent)
-        *   black_player (PlayerAgent)
+        *   white_player (Player)
+        *   black_player (Player)
 
     # INHERITED ATTRIBUTES:
     None

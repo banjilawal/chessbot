@@ -42,7 +42,7 @@ From `chess.board_validator`:
     `Board`, `NullBoard`, `BoardBuildFailedException`, `BoardSchema`
 
 From `chess.player_agent`:
-  `PlayerAgent`, `PlayerAgentValidator`,
+  `Player`, `PlayerAgentValidator`,
 
 From `chess.owner`:
   `Token`

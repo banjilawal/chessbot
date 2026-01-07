@@ -70,7 +70,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
                 *   arena (Optional[Arena])
                 *   timestamp (Optional[int])
                 *   exception (Optional[Exception])
-                *   player (Optional[PlayerAgent])
+                *   player (Optional[Player])
                 
             These Parameters must be provided:
                 *   game_service (GameService)

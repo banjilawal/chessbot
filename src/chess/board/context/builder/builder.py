@@ -87,7 +87,7 @@ class BoardContextBuilder(Builder[BoardContext]):
                 return BuildResult.failure(
                     ExcessiveBoardContextFlagsException(f"{method}: {ExcessiveBoardContextFlagsException}")
                 )
-            # After verifying only one PlayerAgent attribute-value-tuple is enabled, validate it.
+            # After verifying only one Player attribute-value-tuple is enabled, validate it.
             
             # Build the id BoardContext if its flag is enabled.
             if id is not None:

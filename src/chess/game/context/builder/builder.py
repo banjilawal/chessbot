@@ -59,7 +59,7 @@ class GameContextBuilder(Builder[GameContext]):
         # PARAMETERS:
             Only one these must be provided:
                 *   id (Optional[int])
-                *   player_agent (Optional[PlayerAgent])
+                *   player_agent (Optional[Player])
     
             These Parameters must be provided:
                 *   player_agent_service (AgentService)

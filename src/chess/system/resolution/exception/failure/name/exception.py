@@ -35,4 +35,4 @@ class ResolvingPieceNameConflictFailedException(ResolvingNameConflictFailedExcep
 
 class ResolvingAgentNameConflictFailedException(ResolvingNameConflictFailedException):
     DEFAULT_CODE = "AGENT_NAME_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the PlayerAgent.designation conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the Player.designation conflict."

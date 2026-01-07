@@ -150,9 +150,9 @@ class TeamValidator(Validator[Team]):
             *   team (Team)
             *   owner_service (AgentService)
         # RETURNS:
-        ValidationResult[PlayerAgent] containing either:
+        ValidationResult[Player] containing either:
             - On failure: Exception.
-            - On success: PlayerAgent in the payload.
+            - On success: Player in the payload.
         # RAISES:
             *   TeamValidationFailedException
         """
@@ -210,7 +210,7 @@ class TeamValidator(Validator[Team]):
         # RETURNS:
         ValidationResult[Arena] containing either:
             - On failure: Exception.
-            - On success: PlayerAgent in the payload.
+            - On success: Player in the payload.
         # RAISES:
             *   TeamValidationFailedException
         """

@@ -126,7 +126,7 @@ class TeamFinder(DataFinder[Team]):
             2.  Multiple, unique matches in the result indicate that  a problem.
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[PlayerAgent])
+            *   dataset (List[Player])
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
@@ -151,7 +151,7 @@ class TeamFinder(DataFinder[Team]):
             1.  Get any teams which have entered the arena
         # PARAMETERS:
             *   arena (Arena)
-            *   dataset (List[PlayerAgent])
+            *   dataset (List[Player])
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
@@ -176,7 +176,7 @@ class TeamFinder(DataFinder[Team]):
             1.  Get any teams which have been played by the owner,
         # PARAMETERS:
             *   arena (Arena)
-            *   dataset (List[PlayerAgent])
+            *   dataset (List[Player])
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null
@@ -201,7 +201,7 @@ class TeamFinder(DataFinder[Team]):
             1.  Get any teams which have been assigned the targeted color
         # PARAMETERS:
             *   arena (Arena)
-            *   dataset (List[PlayerAgent])
+            *   dataset (List[Player])
         # RETURNS:
             *   SearchResult[List[Team]] containing either:
                     - On error: Exception , payload null

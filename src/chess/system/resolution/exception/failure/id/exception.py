@@ -58,7 +58,7 @@ class ResolvingTeamIDConflictFailedException(ResolvingIDConflictFailedException)
 
 class ResolvingAgentIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "AGENT_ID_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the PlayerAgent.id conflict."
+    DEFAULT_MESSAGE = "The resolution process failed to break the Player.id conflict."
 
 
 class ResolvingBoardIDConflictFailedException(ResolvingIDConflictFailedException):

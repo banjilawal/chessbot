@@ -64,7 +64,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 *   id (Optional[int])
                 *   designation (Optional[int])
                 8   arena (Optional[Arena])
-                *   owner (Optional[PlayerAgent])
+                *   owner (Optional[Player])
                 *   color (Optional[ArenaColor])
             These Parameters must be provided:
                 *   arena_service (ArenaService)

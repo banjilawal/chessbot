@@ -18,11 +18,11 @@ class AgentContextService(ContextService[AgentContext]):
     # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing PlayerAgent search microservice API.
-    2.  Provides a map aware utility for searching PlayerAgent objects.
+    1.  Public facing Player search microservice API.
+    2.  Provides a map aware utility for searching Player objects.
     3.  Encapsulate integrity assurance logic in one extendable module.
-    4.  Create a single source of truth for PlayerAgent search results by having single entry and exit points for the
-        PlayerAgent search flow.
+    4.  Create a single source of truth for Player search results by having single entry and exit points for the
+        Player search flow.
 
     # PARENT:
         *   ContextService

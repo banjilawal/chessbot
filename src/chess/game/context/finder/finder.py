@@ -150,8 +150,8 @@ class GameFinder(DataFinder[Game]):
         3.  An id search should produce either no hits or one hit only.
 
         # PARAMETERS:
-            *   player_agent (PlayerAgent)
-            *   dataset (List[PlayerAgent])
+            *   player_agent (Player)
+            *   dataset (List[Player])
 
         # RETURNS:
         SearchResult[List[Game]] containing either:

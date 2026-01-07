@@ -30,7 +30,7 @@ class TeamContext(Context[Team]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   player_agent (Optional[PlayerAgent])
+        *   player_agent (Optional[Player])
         *   arena (Optional[Arena])
         *   color (Optional[ColorColor])
 

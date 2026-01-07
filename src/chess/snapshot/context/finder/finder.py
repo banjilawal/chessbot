@@ -52,7 +52,7 @@ class SnapshotFinder(Finder[Snapshot]):
         1.  Verify the dataset is not null and contains only Snapshot objects,
         2.  Use context_validator to certify the provided map.
         3.  Call the finder method which matches the attribute whose flag was raised.
-        4.  If the logic does not account for an PlayerAgent attribute drop to the try-finally block.
+        4.  If the logic does not account for an Player attribute drop to the try-finally block.
 
         # PARAMETERS:
             *   dataset (GameTimeline):
@@ -131,7 +131,7 @@ class SnapshotFinder(Finder[Snapshot]):
         method = "SnapshotFinder._find_by_timestamp"
         try:
             matches = [snapshot for snapshot in dataset.items if snapshot.timestamp == timestamp]
-            # There should be either no Agents with the id or one and only one PlayerAgent will have that id.
+            # There should be either no Agents with the id or one and only one Player will have that id.
             if len(matches) == 0:
                 return SearchResult.empty()
             # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
@@ -157,7 +157,7 @@ class SnapshotFinder(Finder[Snapshot]):
         4.  If the finder returns multiple hits call _resolve_matching_ids.
 
         # PARAMETERS:
-            *   player_agent (PlayerAgent)
+            *   player_agent (Player)
             *   dataset (GameTimeline)
 
         # RETURNS:

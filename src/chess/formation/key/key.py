@@ -31,7 +31,7 @@ The attribute-value is used as SuperKey. to search each entry's metadata list.
 ## REVERSE LOOKUP:
 A reverse lookup takes a schema entry and returns a different metadata hashtable with a transitive relationship.
 Teams do not need reverse lookups. Searches by a team schema property do not need a reverse lookup. A use case
-might be looking up formations of openings for a set of pieces. Assuring the Arena tuples of PlayerAgent-Team
+might be looking up formations of openings for a set of pieces. Assuring the Arena tuples of Player-Team
 are unique.
 
 # RESPONSIBILITIES:

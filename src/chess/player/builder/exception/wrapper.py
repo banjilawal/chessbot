@@ -1,0 +1,44 @@
+# src/chess/player/builder/exception.py
+
+"""
+Module: chess.player.builder.exception
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+
+from chess.player import PlayerException
+from chess.system import BuildFailedException
+
+__all__ = [
+    # ======================# PLAYER_BUILD_FAILED EXCEPTION #======================#
+    "PlayerBuildFailedException",
+]
+
+
+#======================# PLAYER_BUILD_FAILED EXCEPTION #======================#
+class PlayerBuildFailedException(PlayerException, BuildFailedException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Any failed check during the PlayerContext build creates an exception. Failed check exceptions are encapsulated
+        in an PlayerContextBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The PlayerContextBuildFailedException provides a trace for debugging and application recovery.
+
+    # PARENT:
+        *   PlayerException
+        *   BuildFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+    
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "PLAYER_BUILD_FAILED"
+    DEFAULT_ERROR_CODE = "Player build failed."

@@ -59,7 +59,7 @@ class TeamBuilder(Builder[Team]):
             *   id (int)
             *   arena (Arena)
             *   schema (Schema)
-            *   owner (PlayerAgent)
+            *   owner (Player)
             *   arena_service (ArenaService)
             *   owner_service (AgentService)
             *   schema_service(TeamSchemaValidator)

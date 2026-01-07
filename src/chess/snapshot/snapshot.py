@@ -34,7 +34,7 @@ class Snapshot(Result):
         *   arena (Arena)
         *   timestamp (int)
         *   game_state (GameState)
-        *   winner (Optional[PlayerAgent])
+        *   winner (Optional[Player])
 
     # INHERITED ATTRIBUTES:
         *   See Result class for inherited attributes.

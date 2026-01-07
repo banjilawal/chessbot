@@ -56,7 +56,7 @@ class GameBuilder(Builder[Game]):
     
         # PARAMETERS:
             *   id (int)
-            *   white_player (PlayerAgent)
+            *   white_player (Player)
             *   black_player (GameSchema)
             *   identity_service (IdentityService)
             *   player_agent_service (AgentService)
@@ -106,7 +106,7 @@ class GameBuilder(Builder[Game]):
             
             # If no errors are detected build the Game object.
             
-            # If the game is not in PlayerAgent.game_assignments register it.
+            # If the game is not in Player.game_assignments register it.
             if game not in agent.games:
                 agent.game_assignments.push_unique_item(game)
             # Send the successfully built and registered Game object inside a BuildResult.

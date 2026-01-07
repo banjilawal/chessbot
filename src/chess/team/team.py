@@ -19,7 +19,7 @@ class Team:
     # ROLE: Data-Holding
 
     # RESPONSIBILITY:
-    1.  Disposition of Tokens the PlayerAgent can move on a Board instance.
+    1.  Disposition of Tokens the Player can move on a Board instance.
     2.  Holds the captured enemy Tokens.
     
     # PARENT:
@@ -32,7 +32,7 @@ class Team:
         *   id (int)
         *   schema (Schema)
         *   arena (Arena)
-        *   owner (PlayerAgent)
+        *   owner (Player)
         *   roster (UniqueTokenDataService)
         *   hostages (UniqueTokenDataService)
         
@@ -64,7 +64,7 @@ class Team:
 
         # PARAMETERS:
             *   id (int)
-            *   owner (PlayerAgent)
+            *   owner (Player)
             *   arena (Arena)
             *   team_schema (Schema)
             *   roster (UniqueTokenDataService)

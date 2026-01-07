@@ -11,7 +11,7 @@ from typing import List, cast
 
 from chess.formation import Formation, FormationService, FormationSuperKey
 from chess.persona import Persona
-from chess.rank import Bishop, King, Knight, Pawn, Queen, Rook
+from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from chess.schema import Schema, SchemaServiceException, SchemaSuperKey, SchemaSuperKeyService, SchemaValidator
 from chess.system import CalculationResult, GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
 
