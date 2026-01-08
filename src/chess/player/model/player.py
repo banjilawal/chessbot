@@ -112,7 +112,7 @@ class Player(ABC):
     #         f"]"
     #     )
     
-    # player_player.order_move(
+    # player.order_move(
     #   owner=TeamFinder.searcher(
     #     data_owner=self._team_name,
     #     search_category=SearchCategory.ROSTER,

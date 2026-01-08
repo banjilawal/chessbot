@@ -26,7 +26,7 @@ class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
         *   UniqueDataService
 
     # PROVIDES:
-        *   player_agent_service: -> AgentService
+        *   player_service: -> AgentService
         *   context_service: -> AgentContextService
         *   add_agent: -> InsertionResult[Player]
         *   undo_add_agent: -> DeletionResult[Player]

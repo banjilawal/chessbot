@@ -8,7 +8,7 @@ from chess.team import (
     AddingCapturedTeamMemberException, AddingRosterMemberFailedException, RosterMemberDeletionFailedException,
     Team, RosterRelationAnalyzer, RosterTable, TeamRankQuotaFullException, TokenBelongsOnDifferentRosterException
 )
-from chess.team.roster.exception.deletion.active import RemovingActiveTeamMemberException
+from chess.team.roster.exception.deletion.active import DeletingActiveTokenException
 from chess.token import AddingDuplicateTokenException, Token, TokenContext, UniqueTokenDataService
 from chess.token.model.combatant.token import CombatantToken
 
@@ -44,9 +44,9 @@ class RosterService:
                 - On failure: Exception
                 - On success: int
         # RAISES:
-            *   RemovingActiveTeamMemberException
+            *   DeletingActiveTokenException
             *   RosterMemberDeletionFailedException
-            *   TokenBelongsOnDifferentRosterException
+            *   EnemyCannotJoinRosterException
         """
         method = "RosterService.member_deletion"
     
@@ -78,8 +78,8 @@ class RosterService:
             return DeletionResult.failure(
                 RosterMemberDeletionFailedException(
                     message=f"{method}: {RosterMemberDeletionFailedException.ERROR_CODE}",
-                    ex=RemovingActiveTeamMemberException(
-                        f"{method}: {RemovingActiveTeamMemberException.DEFAULT_MESSAGE}"
+                    ex=DeletingActiveTokenException(
+                        f"{method}: {DeletingActiveTokenException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -117,7 +117,7 @@ class RosterService:
             *   AddingDuplicateTokenException
             *   AddingCapturedTeamMemberException
             *   AddingRosterMemberFailedException
-            *   TokenBelongsOnDifferentRosterException
+            *   EnemyCannotJoinRosterException
         """
         method = "RosterService.member_insertion"
         

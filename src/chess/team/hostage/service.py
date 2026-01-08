@@ -1,19 +1,20 @@
+
 from typing import List, cast
 
 
 from chess.system import InsertionResult
-from chess.team import HostageRelationAnalyzer
-from chess.team.hostage.exception.insertion import (
-    AddingHostageFailedException, FriendCapturedFriendException,
-    TokenHasNoCaptorException
+from chess.team import (
+    AddingActiveTokenException, AddingHostageTokenFailedException, EnemyAlreadyCapturedException,
+    FriendCannotCaptureFriendException, HostageRelationAnalyzer,
 )
-from chess.token import AddingDuplicateTokenException, TokenContext, UniqueTokenDataService
-from chess.token.model.combatant.token import CombatantToken
+from chess.token import TokenContext, UniqueTokenDataService
+
 
 
 class HostageService:
     _prisoners: UniqueTokenDataService
     _analyzer: HostageRelationAnalyzer
+    
     def __init__(
             self,
             prisoners: UniqueTokenDataService = UniqueTokenDataService(),
@@ -23,7 +24,7 @@ class HostageService:
         self._analyzer = analyzer
     
     
-    def accept_prisoner(self, combatant: CombatantToken) -> InsertionResult[CombatantToken]:
+    def add_prisoner(self, combatant: CombatantToken) -> InsertionResult[CombatantToken]:
         """
         # ACTION:
             1.  If the combatant fails validation send the wrapped exception in the InsertionResult.
@@ -33,17 +34,17 @@ class HostageService:
                 in the InsertionResult.
             5.  Send the number of open slots in the InsertionResult.
         # PARAMETERS:
-            *   rank (Rank)
+            *   combatant (CombatantToken)
         # RETURN:
-            *   CalculationReport[int] containing either:
+            *   InsertionResult[CombatantToken] containing either:
                 - On failure: Exception
-                - On success: int
+                - On success: CombatantToken
         # RAISES:
             *   TeamRankQuotaFullException
-            *   AddingDuplicateTokenException
+            *   EnemyAlreadyCapturedException
             *   CannotCaptureKingException
-            *   AddingHostageFailedException
-            *   TokenHasNoCaptorException
+            *   AddingHostageTokenFailedException
+            *   AddingActiveTokenException
         """
         method = "RosterService.member_insertion"
         
@@ -52,8 +53,8 @@ class HostageService:
         if combatant_validation.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingHostageFailedException(
-                    message=f"{method}: {AddingHostageFailedException.ERROR_CODE}",
+                AddingHostageTokenFailedException(
+                    message=f"{method}: {AddingHostageTokenFailedException.ERROR_CODE}",
                     ex=combatant_validation.exception
                 )
             )
@@ -61,22 +62,20 @@ class HostageService:
         if combatant.captor is None:
             # Return exception chain.
             return InsertionResult.failure(
-                AddingHostageFailedException(
-                    message=f"{method}: {AddingHostageFailedException.ERROR_CODE}",
-                    ex=TokenHasNoCaptorException(
-                        f"{method}: {TokenHasNoCaptorException.DEFAULT_MESSAGE}"
-                    )
+                AddingHostageTokenFailedException(
+                    message=f"{method}: {AddingHostageTokenFailedException.ERROR_CODE}",
+                    ex=AddingActiveTokenException(f"{method}: {AddingActiveTokenException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case that the combatant was captured by a friend.
         if not combatant.captor.is_enemy(combatant):
             # Return exception chain.
             return InsertionResult.failure(
-                AddingHostageFailedException(
-                    message=f"{method}: {AddingHostageFailedException.ERROR_CODE}",
-                    ex=FriendCapturedFriendException(
-                        f"{method}: {FriendCapturedFriendException.DEFAULT_MESSAGE}"
-                    )
+                AddingHostageTokenFailedException(
+                    message=f"{method}: {AddingHostageTokenFailedException.ERROR_CODE}",
+                    ex=FriendCannotCaptureFriendException(
+                        f"{method}: {FriendCannotCaptureFriendException.DEFAULT_MESSAGE}")
+                    
                 )
             )
         # --- Search the collection for the token. ---#
@@ -86,8 +85,8 @@ class HostageService:
         if search_result.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingHostageFailedException(
-                    message=f"{method}: {AddingHostageFailedException.ERROR_CODE}",
+                AddingHostageTokenFailedException(
+                    message=f"{method}: {AddingHostageTokenFailedException.ERROR_CODE}",
                     ex=search_result.exception
                 )
             )
@@ -95,9 +94,9 @@ class HostageService:
         if search_result.is_success:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingHostageFailedException(
-                    message=f"{method}: {AddingHostageFailedException.ERROR_CODE}",
-                    ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
+                AddingHostageTokenFailedException(
+                    message=f"{method}: {AddingHostageTokenFailedException.ERROR_CODE}",
+                    ex=EnemyAlreadyCapturedException(f"{method}: {EnemyAlreadyCapturedException.DEFAULT_MESSAGE}")
                 )
             )
         # --- Run the insertion operation on the DataService. ---#
@@ -107,8 +106,8 @@ class HostageService:
         if insertion_result.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingHostageFailedException(
-                    message=f"{method}: {AddingHostageFailedException.ERROR_CODE}",
+                AddingHostageTokenFailedException(
+                    message=f"{method}: {AddingHostageTokenFailedException.ERROR_CODE}",
                     ex=insertion_result.exception
                 )
             )

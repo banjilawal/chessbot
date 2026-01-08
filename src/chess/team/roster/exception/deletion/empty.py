@@ -3,9 +3,11 @@ __all__ = [
     "PoppingEmptyRosterException",
 ]
 
+from chess.team import RosterServiceException
+
 
 # ======================# POPPING_EMPTY_ROSTER EXCEPTION #======================#
-class PoppingEmptyRosterException(TeamRosterException):
+class PoppingEmptyRosterException(RosterServiceException):
     """
     # ROLE: Debug, Error Tracing
 

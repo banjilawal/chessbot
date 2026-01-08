@@ -51,11 +51,11 @@ class AgentValidator(Validator[PlayerAgent]):
         # ACTION:
         1.  Verify the candidate is not null.
         2.  Verify the candidate is an Player. If so cast it to an Player instance.
-        3.  Use the identity service to verify the player_agent's designation and id.
-        4.  If the player_agent is a MachineAgent, confirm player_agent.engine_service is not null and
+        3.  Use the identity service to verify the player's designation and id.
+        4.  If the player is a MachineAgent, confirm player.engine_service is not null and
             is an EngineService instance.
-        5.  Confirm player_agent.team_assignments is not null and is an UniqueTeamDataService instance.
-        6.  Confirm player_agent.games is not null and is an UniqueGameDataService instance.
+        5.  Confirm player.team_assignments is not null and is an UniqueTeamDataService instance.
+        6.  Confirm player.games is not null and is an UniqueGameDataService instance.
         7.  If any check fails, return the exception inside a ValidationResult.
         8.  When all checks return the successfully validated Player instance inside a ValidationResult.
         
@@ -94,23 +94,23 @@ class AgentValidator(Validator[PlayerAgent]):
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
-            # Certify the player_agent's TeamDataService is correct.
+            # Certify the player's TeamDataService is correct.
             team_data_service_certification = service_validator.validate(candidate=agent.team_assignments)
             if team_data_service_certification.is_failure():
                 return ValidationResult.failure(team_data_service_certification.exception)
             
-            # Certify the player_agent's GameDataService is correct.
+            # Certify the player's GameDataService is correct.
             game_data_service_certification = service_validator.validate(candidate=agent.games)
             if game_data_service_certification.is_failure():
                 return ValidationResult.failure(game_data_service_certification.exception)
             
-            # If the player_agent is a MachineAgent handoff control to certify_machine_agent_engine
+            # If the player is a MachineAgent handoff control to certify_machine_agent_engine
             # for the final check.
             if isinstance(agent, MachineAgent):
                 return cls._certify_machine_agent_engine(machine=cast(MachineAgent, agent))
             
-            # If the player_agent is a HumanAgent all the checks have been passed. Return the
-            # player_agent in the ValidationResult payload.
+            # If the player is a HumanAgent all the checks have been passed. Return the
+            # player in the ValidationResult payload.
             if isinstance(agent, HumanAgent):
                 return ValidationResult.success(payload=cast(HumanAgent, agent))
             

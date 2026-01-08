@@ -1,4 +1,20 @@
-from .friend import FriendCapturedFriendException
+# src/chess/team/hostage/exception/insertion/__init__.py
+
+"""
+Module: chess.team.hostage.exception.insertion.__init__
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+"""
+
+# =========== TEAM.HOSTAGE.EXCEPTION.INSERTION PACKAGE CONTENTS ===========#
+
+# Packages
+None
+
+# Modules
 from .king import CannotCaptureKingException
-from .captor import TokenHasNoCaptorException
-from .wrapper import AddingHostageFailedException
+from .active import AddingActiveTokenException
+from .wrapper import AddingHostageTokenFailedException
+from .duplicate import EnemyAlreadyCapturedException
+from .friend import FriendCannotCaptureFriendException

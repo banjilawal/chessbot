@@ -35,7 +35,7 @@ class PlayerException(ChessException):
     ERROR_CODE = "AGENT_ERROR"
     DEFAULT_MESSAGE = "Agent raised an exception."
 #
-# #======================# PLAYER_AGENT_HISTORY EXCEPTION #======================#
+# #======================# PLAYER_HISTORY EXCEPTION #======================#
 # class PlayerAgentHistoryException(PlayerPlayerException):
 #   """Team list specific errors."""
 #   ERROR_CODE = "PLAYERAGENT_HISTORY_ERROR"
@@ -64,11 +64,11 @@ class PlayerException(ChessException):
 #
 # class InvalidPlayerAgentAssignmentException(PlayerAgentHistoryException):
 #   """
-#   If team_name team_name already attached to team_name player_agent (team_name.player_agent == not None) tries being assigned team_name
-#   different player_agent, `InvalidPlayerAgentAssignmentException` is raised.
+#   If team_name team_name already attached to team_name player (team_name.player == not None) tries being assigned team_name
+#   different player, `InvalidPlayerAgentAssignmentException` is raised.
 #   """
 #   ERROR_CODE = "INVALID_PLAYERAGENT_ASSIGNMENT_ERROR"
-#   DEFAULT_MESSAGE = "Team is already assigned to team_name different player_agent."
+#   DEFAULT_MESSAGE = "Team is already assigned to team_name different player."
 
 
 

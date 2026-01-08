@@ -58,7 +58,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
     ) -> BuildResult[SnapshotContext]:
         """
         # ACTION:
-            1.  Confirm that only one in the (team, player_agent, timestamp) tuple is not null.
+            1.  Confirm that only one in the (team, player, timestamp) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a SnapshotContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.

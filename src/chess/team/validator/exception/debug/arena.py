@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/registration/game
+# src/chess/team/validator/exception/debug/arena.py
 
 """
-Module: chess.team.validator.exception.registration.game
+Module: chess.team.validator.exception.debug.arena
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

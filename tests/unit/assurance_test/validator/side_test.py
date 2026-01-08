@@ -55,7 +55,7 @@ class SideValidatorTest(unittest.TestCase):
     mock_side.visitor_id=1
 
 
-    mock_side.competitor=Commander(1, "player_agent")
+    mock_side.competitor=Commander(1, "player")
     mock_side.schema = None
 
     with self.assertRaises(TeamValidationException) as ctx:
@@ -65,7 +65,7 @@ class SideValidatorTest(unittest.TestCase):
 
 
   def test_side_validator_payload_equals_valid_side(self):
-    side = Side(1, Commander(1, "player_agent"), TeamSchema.BLACK)
+    side = Side(1, Commander(1, "player"), TeamSchema.BLACK)
     validation = TeamValidator.validate(side)
     self.assertEqual(validation.payload, side)
 

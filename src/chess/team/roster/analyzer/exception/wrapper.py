@@ -15,7 +15,7 @@ __all__ = [
 
 
 # ======================# ROSTER_RELATION_TEST_FAILURE EXCEPTION #======================#
-class RosterRelationAnalysisFailedException(TeamRosterException):
+class RosterRelationAnalysisFailedException(RosterServiceException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

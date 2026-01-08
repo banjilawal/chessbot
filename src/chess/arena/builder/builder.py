@@ -99,7 +99,7 @@ class ArenaBuilder(Builder[Arena]):
         """"""
         method = "ArenaBuilder._certify_players"
         try:
-            # Perform the basic player_agent safety validation.
+            # Perform the basic player safety validation.
             for player in players:
                 validation = player_service.validator.validate(candidate=player)
                 if validation.failure:
@@ -131,7 +131,7 @@ class ArenaBuilder(Builder[Arena]):
             agent, team_schema = param_tuple
             build_result = agent.team_assignments.team_service.builder.build(
                 arena=arena,
-                player_agent=agent,
+                player=agent,
                 team_schema=team_schema
             )
             if build_result.failure:

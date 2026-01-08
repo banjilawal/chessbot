@@ -47,7 +47,7 @@ class GameBuilder(Builder[Game]):
         """
         # ACTION:
         1.  Use identity_service to confirm the id is safe.
-        2.  Use player_agent_service to validate the white and black players. are safe.
+        2.  Use player_service to validate the white and black players. are safe.
         3.  Certify the BoardService with the BoardServiceCertifier
         4.  If any check fails, return the exception inside a BuildResult.
         5.  When all checks pass create the new Game object.
@@ -59,7 +59,7 @@ class GameBuilder(Builder[Game]):
             *   white_player (Player)
             *   black_player (GameSchema)
             *   identity_service (IdentityService)
-            *   player_agent_service (AgentService)
+            *   player_service (AgentService)
             *   board_certifier (BoardCertifier)
         All Services have default values to ensure they are never null.
         

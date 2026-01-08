@@ -51,7 +51,7 @@ class GameContextBuilder(Builder[GameContext]):
     ) -> BuildResult[GameContext]:
         """
         # ACTION:
-            1.  Confirm that only one in the (id, player_agent) tuple is not null.
+            1.  Confirm that only one in the (id, player) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a GameContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.
@@ -59,10 +59,10 @@ class GameContextBuilder(Builder[GameContext]):
         # PARAMETERS:
             Only one these must be provided:
                 *   id (Optional[int])
-                *   player_agent (Optional[Player])
+                *   player (Optional[Player])
     
             These Parameters must be provided:
-                *   player_agent_service (AgentService)
+                *   player_service (AgentService)
                 *   identity_service (IdentityService)
 
         # RETURNS:
@@ -102,12 +102,12 @@ class GameContextBuilder(Builder[GameContext]):
                 # On validation success return an id_GameContext in the BuildResult.
                 return BuildResult.success(GameContext(id=id))
             
-            # Build the player_agent GameContext if its flag is enabled.
+            # Build the player GameContext if its flag is enabled.
             if agent is not None:
                 validation = agent_service.validator.validate(candidate=agent)
                 if validation.is_failure:
                     return BuildResult.failure(validation.exception)
-                # On validation success return a player_agent_GameContext in the BuildResult.
+                # On validation success return a player_GameContext in the BuildResult.
                 return BuildResult.success(GameContext(agent=agent))
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.

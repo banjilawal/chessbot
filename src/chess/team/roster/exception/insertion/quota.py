@@ -15,7 +15,7 @@ __all__ = [
 from chess.team import TeamException
 
 # ======================# TEAM_RANK_QUOTA_FULL EXCEPTION #======================#
-class TeamRankQuotaFullException(TeamRosterException):
+class TeamRankQuotaFullException(RosterServiceException):
     """
     # ROLE: Error Tracing, Debugging
 

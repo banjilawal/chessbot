@@ -32,7 +32,7 @@ class GameContext(Context[Game]):
 
     # LOCAL ATTRIBUTES:
         *   team (Optional[Team])
-        *   player_agent (Optional[Player])
+        *   player (Optional[Player])
         *   board (Optional[Board])
         
     # INHERITED ATTRIBUTES:
@@ -56,7 +56,7 @@ class GameContext(Context[Game]):
         # PARAMETERS:
             *   id (Optional[int])
             *   team (Optional[Team])
-            *   player_agent (Optional[Player])
+            *   player (Optional[Player])
             *   board (Optional[Board])
 
         # RETURNS:
@@ -98,6 +98,6 @@ class GameContext(Context[Game]):
         return {
             "id": self.id,
             "team": self.team,
-            "player_agent": self._agent,
+            "player": self._agent,
             "board": self._board,
         }

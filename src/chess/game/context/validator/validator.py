@@ -49,7 +49,7 @@ class GameContextValidator(Validator[GameContext]):
     ) -> ValidationResult[GameContext]:
         """
         # ACTION:
-            1.  Confirm that only one in the (id, player_agent) tuple is not null.
+            1.  Confirm that only one in the (id, player) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success send the verified GameContext in a ValidationResult.
@@ -57,10 +57,10 @@ class GameContextValidator(Validator[GameContext]):
         # PARAMETERS:
         Only one these must be provided:
             *   id (Optional[int])
-            *   player_agent (Optional[Player])
+            *   player (Optional[Player])
 
         These Parameters must be provided:
-            *   player_agent_service (AgentService)
+            *   player_service (AgentService)
             *   identity_service (IdentityService)
 
         # RETURNS:

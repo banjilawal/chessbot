@@ -9,9 +9,9 @@ version: 1.0.0
 
 from chess.arena import Arena
 from chess.schema import Schema
-from chess.agent import PlayerAgent
-from chess.team import RosterService
-from chess.token import UniqueTokenDataService
+from chess.player import Player
+from chess.team import HostageService, RosterService
+from chess.token import HostageService
 
 
 class Team:
@@ -32,9 +32,9 @@ class Team:
         *   id (int)
         *   schema (Schema)
         *   arena (Arena)
-        *   owner (Player)
-        *   roster (UniqueTokenDataService)
-        *   hostages (UniqueTokenDataService)
+        *   player (Player)
+        *   roster (HostageService)
+        *   hostages (HostageService)
         
     # INHERITED ATTRIBUTES:
     None
@@ -44,9 +44,9 @@ class Team:
     _id: int
     _arena: Arena
     _schema: Schema
-    _owner: PlayerAgent
+    _player: Player
     _roster: RosterService
-    _hostages: UniqueTokenDataService
+    _hostages: HostageService
 
 
     def __init__(
@@ -54,9 +54,9 @@ class Team:
             id: int,
             arena: Arena,
             schema: Schema,
-            owner: PlayerAgent,
+            player: Player,
             roster: RosterService = RosterService(),
-            hostages: UniqueTokenDataService = UniqueTokenDataService(),
+            hostages: HostageService = HostageService(),
     ):
         """
         # ACTION:
@@ -64,11 +64,11 @@ class Team:
 
         # PARAMETERS:
             *   id (int)
-            *   owner (Player)
+            *   player (Player)
             *   arena (Arena)
             *   team_schema (Schema)
-            *   roster (UniqueTokenDataService)
-            *   hostages (UniqueTokenDataService)
+            *   roster (HostageService)
+            *   hostages (HostageService)
 
         # RETURNS:
         None
@@ -82,15 +82,15 @@ class Team:
         self._schema = schema
         self._roster = roster
         self._hostages = hostages
-        self._owner = owner
+        self._player = player
     
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def owner(self) -> PlayerAgent:
-        return self._owner
+    def player(self) -> Player:
+        return self._player
     
     @property
     def arena(self) -> Arena:
@@ -101,14 +101,12 @@ class Team:
         return self._schema
 
     @property
-    def roster(self) -> UniqueTokenDataService:
+    def roster(self) -> HostageService:
         return self._roster
     
     @property
-    def hostages(self) -> UniqueTokenDataService:
+    def hostages(self) -> HostageService:
         return self._hostages
-    
-    de
     
     def __eq__(self, other) -> bool:
         if other is self: return True
@@ -121,4 +119,4 @@ class Team:
         return hash(self._id)
     
     def __str__(self) -> str:
-        return f"Team{{id:{self._id} {self._owner.name} {self._schema}}}"
+        return f"Team{{id:{self._id} {self._player.name} {self._schema}}}"

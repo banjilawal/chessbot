@@ -14,4 +14,4 @@ from .deletion import *
 from .insertion import *
 
 # Modules
-from .catchall import TeamRosterException
+from .catchall import RosterServiceException

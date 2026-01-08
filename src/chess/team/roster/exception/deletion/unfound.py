@@ -3,9 +3,11 @@ __all__ = [
     "RosterMemberDoesNotExistForRemovalException",
 ]
 
+from chess.team import RosterServiceException
+
 
 # ======================# ROSTER_MEMBER_TO_REMOVE_DOES_NOT_EXIST EXCEPTION #======================#
-class RosterMemberDoesNotExistForRemovalException(TeamRosterException):
+class RosterMemberDoesNotExistForRemovalException(RosterServiceException):
     """
     # ROLE: Debug, Error Tracing
 

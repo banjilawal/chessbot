@@ -85,13 +85,13 @@ class AgentFinder(DataFinder[PlayerAgent]):
             
             # After map is verified select the search method based on the which flag is enabled.
             
-            # Entry point into searching by player_agent.id.
+            # Entry point into searching by player.id.
             if context.id is not None:
                 return cls._find_by_id(dataset, context.id)
-            # Entry point into searching by player_agent.designation.
+            # Entry point into searching by player.designation.
             if context.name is not None:
                 return cls._find_by_name(dataset, context.name)
-            # Entry point into searching by player_agent's team.
+            # Entry point into searching by player's team.
             if context.team is not None:
                 return cls._find_by_team(dataset, context.team)
             # Entry point into searching by AgentVariety (Human or Machine)
@@ -213,7 +213,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
 
         # RETURNS:
         SearchResult[List[Player]] containing either:
-            - On success: List[player_agent] in the payload.
+            - On success: List[player] in the payload.
             - On failure: Exception.
 
         # RAISES:
@@ -221,13 +221,13 @@ class AgentFinder(DataFinder[PlayerAgent]):
         """
         method = "AgentFinder._find_by_team"
         try:
-            # Loop through the set and return the first player_agent who ran the team.
+            # Loop through the set and return the first player who ran the team.
             # If more than one Player is returned there might be a problem.
             for agent in dataset:
                 team_search = agent.team_assignments.search(context=TeamContext(id=team.id))
                 if team_search.is_failure:
                     return SearchResult.failure(team_search.exception)
-                # Put the first player_agent that matches inside a List then send the array inside a SearchResult.
+                # Put the first player that matches inside a List then send the array inside a SearchResult.
                 # The exhaustive search is just to make sure there are no duplicates.
                 if team_search.is_success:
                     return SearchResult.success(payload=List[team_search.payload])
@@ -256,7 +256,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
 
         # RETURNS:
         SearchResult[List[Player]] containing either:
-            - On success: List[player_agent] in the payload.
+            - On success: List[player] in the payload.
             - On failure: Exception.
 
         # RAISES:

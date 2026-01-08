@@ -1,18 +1,27 @@
-__all__ = [
-    # ======================# TEAM_ROSTER EXCEPTION #======================#
-    "TeamRosterException",
-]
+# src/chess/team/roster/exception/catchall.py
+
+"""
+Module: chess.team.roster.exception.catchall
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+"""
+
 
 from chess.team import TeamException
 
+__all__ = [
+    # ======================# ROSTER_SERVICE EXCEPTION #======================#
+    "RosterServiceException",
+]
 
-# ======================# TEAM_ROSTER EXCEPTION #======================#
-class TeamRosterException(TeamException):
+# ======================# ROSTER_SERVICE EXCEPTION #======================#
+class RosterServiceException(TeamException):
     """
     # ROLE: Catchall Exception
   
     # RESPONSIBILITIES:
-    1.  Catchall for Team.roster errors.
+    1.  Catchall for RosterService errors.
   
     # PARENT:
         *   ChessException
@@ -23,5 +32,5 @@ class TeamRosterException(TeamException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_ROSTER_ERROR"
-    DEFAULT_MESSAGE = "Team.roster raised an exception."
+    ERROR_CODE = "ROSTER_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "RosterService raised an exception."

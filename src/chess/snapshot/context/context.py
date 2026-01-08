@@ -126,7 +126,7 @@ class SnapshotContext(Context[Snapshot]):
             "game": self._game,
             "team": self._team,
             "arena": self._arena,
-            "player_agent": self._agent,
+            "player": self._agent,
             "timestamp": self._timestamp,
             "exception": self._exception,
         }

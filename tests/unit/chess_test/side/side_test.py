@@ -45,7 +45,7 @@ class SideTest(unittest.TestCase):
     mock_id_validation.return_value.is_success.return_value = True
 
     mock_competitor_validation.return_value.is_success.return_value = False
-    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid player_agent")
+    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid player")
 
     with self.assertRaises(CommanderValidationException):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
@@ -57,7 +57,7 @@ class SideTest(unittest.TestCase):
     mock_id_validation.return_value.is_success.return_value = True
 
     mock_competitor_validation.return_value.is_success.return_value = False
-    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid player_agent")
+    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid player")
 
     with self.assertRaises(CommanderValidationException):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
@@ -105,7 +105,7 @@ class SideTest(unittest.TestCase):
     mock_id_validation.return_value.payload = 1
 
 
-    competitor = Commander(competitor_id=1, name="player_agent")
+    competitor = Commander(competitor_id=1, name="player")
     mock_competitor_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.payload = competitor
 
@@ -121,7 +121,7 @@ class SideTest(unittest.TestCase):
     mock_id_validation.return_value.payload = 1
 
 
-    competitor = Commander(competitor_id=1, name="player_agent")
+    competitor = Commander(competitor_id=1, name="player")
     mock_competitor_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.payload = competitor
 

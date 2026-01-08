@@ -29,7 +29,7 @@ class CompetitorValidatorTest(unittest.TestCase):
   def test_competitor_validator_failed_id_validation_raises_exception(self):
     mock_competitor = create_autospec(Commander, instance=True)
     mock_competitor.visitor_id=-1
-    mock_competitor._visitor_name= "player_agent"
+    mock_competitor._visitor_name= "player"
 
     with self.assertRaises(CommanderValidationException) as ctx:
       CommanderValidator.validate(mock_competitor)

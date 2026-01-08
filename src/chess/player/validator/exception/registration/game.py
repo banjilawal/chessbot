@@ -28,7 +28,7 @@ class AgentNotRegisteredWithGameException(InvalidAgentException, RegistrationExc
     # RESPONSIBILITIES:
     1.  Indicate that while the Player has assigned itself to a Game instance, the Game has not
         registered the Player as one of its two participants.
-    2.  Raised if the player_agent.game == game but player_agent not in game.players
+    2.  Raised if the player.game == game but player not in game.players
 
     # PARENT:
         *   AgentRegistrationException

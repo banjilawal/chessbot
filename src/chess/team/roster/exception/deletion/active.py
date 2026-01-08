@@ -9,13 +9,15 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# REMOVING_ACTIVE_MEMBER_FROM_ROSTER EXCEPTION #======================#
-    "RemovingActiveTeamMemberException",
+    # ======================# DELETING_ACTIVE_TOKEN_FROM_ROSTER EXCEPTION #======================#
+    "DeletingActiveTokenException",
 ]
 
+from chess.team import RosterServiceException
 
-# ======================# REMOVING_ACTIVE_MEMBER_FROM_ROSTER EXCEPTION #======================#
-class RemovingActiveTeamMemberException(TeamRosterException):
+
+# ======================# DELETING_ACTIVE_TOKEN_FROM_ROSTER EXCEPTION #======================#
+class DeletingActiveTokenException(RosterServiceException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -23,7 +25,7 @@ class RemovingActiveTeamMemberException(TeamRosterException):
     1.  Indicate that a token cannot be removed from the roster because it has not been captured.
 
     # PARENT:
-        *   TeamException
+        *   RosterServiceException
 
     # PROVIDES:
     None
@@ -34,5 +36,5 @@ class RemovingActiveTeamMemberException(TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "REMOVING_ACTIVE_MEMBER_FROM_ROSTER_ERROR"
-    DEFAULT_MESSAGE = "Roster member deletion failed: An active team member cannot be removed from roster."
+    ERROR_CODE = "DELETING_ACTIVE_TOKEN_FROM_ROSTER_ERROR"
+    DEFAULT_MESSAGE = "Roster member deletion failed: An active token cannot be removed from roster."

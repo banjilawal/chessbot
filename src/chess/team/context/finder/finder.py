@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.arena import Arena
-from chess.agent import PlayerAgent
+from chess.player import Player
 from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from chess.team import (
     Team, TeamContext, TeamContextValidator, TeamSearchDatasetNullException, TeamSearchRouteException,
@@ -78,9 +78,7 @@ class TeamFinder(DataFinder[Team]):
             return SearchResult.failure(
                 TeamSearchFailedException(
                     message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
-                    ex=TeamSearchDatasetNullException(
-                        f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}"
-                    )
+                    ex=TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case that dataset is the wrong type
@@ -101,9 +99,9 @@ class TeamFinder(DataFinder[Team]):
         # Entry point into searching by arena team is playing in.
         if context.arena is not None:
             return cls._find_by_arena(dataset=dataset, arena=context.arena)
-        # Entry point into searching by team's owner.
-        if context.owner is not None:
-            return cls._find_by_player_agent(dataset, context.owner)
+        # Entry point into searching by team's player.
+        if context.player is not None:
+            return cls._find_by_player(dataset, context.player)
         # Entry point into searching by team's color.
         if context.color is not None:
             return cls._find_by_color(dataset=dataset, team=context.color)
@@ -136,6 +134,7 @@ class TeamFinder(DataFinder[Team]):
             *   TeamSearchFailedException
         """
         method = "TeamFinder._find_by_id"
+        
         matches = [team for team in dataset if team.id == id]
         # Handle the nothing found case.
         if len(matches) == 0:
@@ -170,10 +169,10 @@ class TeamFinder(DataFinder[Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_owner(cls, dataset: [Team], owner: PlayerAgent) -> SearchResult[List[Team]]:
+    def _find_by_player(cls, dataset: [Team], player: Player) -> SearchResult[List[Team]]:
         """
         # ACTION:
-            1.  Get any teams which have been played by the owner,
+            1.  Get any teams which have been played by the player,
         # PARAMETERS:
             *   arena (Arena)
             *   dataset (List[Player])
@@ -185,8 +184,8 @@ class TeamFinder(DataFinder[Team]):
         # RAISES:
             *   TeamSearchFailedException
         """
-        method = "TeamFinder._find_by_owner"
-        matches = [team for team in dataset if team.owner == owner]
+        method = "TeamFinder._find_by_player"
+        matches = [team for team in dataset if team.player == player]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

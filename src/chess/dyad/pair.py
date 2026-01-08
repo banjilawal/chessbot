@@ -51,7 +51,7 @@ class SchemaAgentPair:
                 return InsertionResult(arena_validation.exception)
             
             agent_builder = self._agent.team_assignments.team_service.builder
-            build = agent_builder.build(id=id, schema=self._schema, arena=arena, player_agent=self._agent)
+            build = agent_builder.build(id=id, schema=self._schema, arena=arena, player=self._agent)
             if build.is_failure:
                 return InsertionResult.failure(build.exception)
             

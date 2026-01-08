@@ -1,7 +1,7 @@
-# src/chess/team/relation/hostage/analyzer.py
+# src/chess/team/hostage/analyzer.py
 
 """
-Module: chess.team.relation.hostage.analyzer
+Module: chess.team.hostage.analyzer
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import cast
 
+from chess.token import Token, TokenService, CombatantToken, KingToken
 from chess.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
-from chess.token import Token, TokenService, TokenContext, CombatantToken, KingToken
 from chess.team import Team, HostageRelationAnalysisFailedException, TeamContext, TeamValidator
 
 

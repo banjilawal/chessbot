@@ -16,6 +16,6 @@ from .service import *
 from .validator import *
 
 # Modules
-from .exception import *
 from .context import TeamContext
+from .exception import TeamContextException
 

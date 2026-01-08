@@ -145,12 +145,12 @@ class GameFinder(DataFinder[Game]):
     def _find_by_agent(cls, dataset: [Game], agent: PlayerAgent) -> SearchResult[List[Game]]:
         """
         # ACTION:
-        1.  Get the Game with the matching player-player_agent.
+        1.  Get the Game with the matching player-player.
         2.  If no match is found return an exception.
         3.  An id search should produce either no hits or one hit only.
 
         # PARAMETERS:
-            *   player_agent (Player)
+            *   player (Player)
             *   dataset (List[Player])
 
         # RETURNS:

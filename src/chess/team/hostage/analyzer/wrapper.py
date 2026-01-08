@@ -1,7 +1,7 @@
-# src/chess/team/relation/hostage/wrapper.py
+# src/chess/team/hostage/wrapper.py
 
 """
-Module: chess.team.relation.hostage.wrapper
+Module: chess.team.hostage.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
