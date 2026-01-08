@@ -84,7 +84,7 @@ class HostageService:
                     
                 )
             )
-        # --- Search the collection for the token. ---#
+        # --- Search the collection for the combatant. ---#
         search_result = self._prisoners.search_tokens(context=TokenContext(combatant.id))
         
         # Handle the case that search did not complete.

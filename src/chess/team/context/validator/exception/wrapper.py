@@ -1,14 +1,16 @@
-# src/chess/team/validator/exception/exception.py
+# src/chess/team/context/validator/exception/wrapper.py
 
 """
-Module: chess.team.validator.exception.exception
+Module: chess.team.context.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
+
+from chess.team import TeamContextException
 from chess.system import ValidationFailedException
-from chess.team import TeamException
+
 
 __all__ = [
     # ======================# TEAM_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
@@ -17,14 +19,14 @@ __all__ = [
 
 
 # ======================# TEAM_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class TeamContextValidationFailedException(TeamException, ValidationFailedException):
+class TeamContextValidationFailedException(TeamContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a TeamContext candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an TeamContextValidationFailedException creating an exception chain. which is sent to the caller in a
-        ValidationResult.
+    1.  A debug exception is created when a TeamContext candidate fails a validation test. Validation debug exceptions
+        are encapsulated inside an TeamContextValidationFailedException creating an exception chain. which is sent to
+        the caller in a ValidationResult.
     2.  The TeamContextValidationFailedException chain is useful for tracing a  failure to its source.
 
     # PARENT:

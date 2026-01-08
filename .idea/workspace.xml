@@ -6,13 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/model/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/combatant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/model/combatant/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/combatant/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/model/combatant/pawn/piece.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/combatant/pawn/token.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/model/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/model/king/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/king/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/model/king/token.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/king/token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/validator/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/validator/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/validator/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/hostage/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/hostage/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -911,7 +911,8 @@
       <workItem from="1767648440689" duration="3113000" />
       <workItem from="1767704507392" duration="4732000" />
       <workItem from="1767801939753" duration="2917000" />
-      <workItem from="1767822311688" duration="16156000" />
+      <workItem from="1767822311688" duration="16421000" />
+      <workItem from="1767847965951" duration="1398000" />
     </task>
     <servers />
   </component>
@@ -961,6 +962,11 @@
           <url>file://$PROJECT_DIR$/src/chess/team/validator/exception/debug/__init__.py</url>
           <line>15</line>
           <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/chess/team/service/data/service.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

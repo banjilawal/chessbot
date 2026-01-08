@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/debug/excess.py
+# src/chess/team/context/validator/exception/debug/excess.py
 
 """
-Module: chess.team.validator.exception.debug.excess
+Module: chess.team.context.validator.exception.debug.excess
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

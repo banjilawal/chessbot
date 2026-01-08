@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/flag.py
+# src/chess/team/context/validator/exception/debug/null.py
 
 """
-Module: chess.team.validator.exception.flag
+Module: chess.team.context.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

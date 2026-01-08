@@ -10,7 +10,6 @@ version: 1.0.0
 from typing import Optional
 
 from chess.arena import Arena, ArenaService
-from chess.agent import PlayerAgent, AgentService
 from chess.system import Builder, BuildResult,  GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.team import (
     TeamContext, TeamContextBuildFailedException, ExcessiveTeamContextFlagsException, TeamContextBuildRouteException,
@@ -47,10 +46,10 @@ class TeamContextBuilder(Builder[TeamContext]):
             id: Optional[int] = None,
             name: Optional[str] = None,
             arena: Optional[Arena] = None,
-            owner: Optional[PlayerAgent] = None,
+            owner: Optional[PlayerPlayer] = None,
             color: Optional[GameColor] = None,
             arena_service: ArenaService = ArenaService(),
-            owner_service: AgentService = AgentService(),
+            owner_service: PlayerService = PlayerService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[TeamContext]:
@@ -68,7 +67,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 *   color (Optional[ArenaColor])
             These Parameters must be provided:
                 *   arena_service (ArenaService)
-                *   agent_certifier (AgentService)
+                *   player_certifier (PlayerService)
                 *   identity_service (IdentityService)
                 *   schema_validator (TeamSchemaValidator)
         # RETURNS:
