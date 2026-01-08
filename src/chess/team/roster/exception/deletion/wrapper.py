@@ -3,25 +3,30 @@ __all__ = [
     "RosterTokenDeletionFailedException",
 ]
 
+from chess.system import OperationFailedException
 from chess.team import RosterServiceException
 
 
 # ======================# ROSTER_TOKEN_DELETION_FAILURE EXCEPTION #======================#
-class RosterTokenDeletionFailedException(RosterServiceException):
+class RosterTokenDeletionFailedException(RosterServiceException, OperationFailedException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Catchall for Team.roster errors.
-
+    1.  Encapsulate debug exceptions that indicate why deleting a Roster member fails. The encapsulated exceptions create
+        chain for tracing the source of the failure.
 
     # PARENT:
         *   RosterServiceException
+        *   OperationFailedException
 
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "ROSTER_TOKEN_DELETION_FAILURE"

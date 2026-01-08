@@ -115,6 +115,7 @@ class CoordDataService(DataService[Coord]):
             *   CoordDataServiceException
         """
         method = "CoordDataService.add_coord"
+        
         # Handle the case that coord validation fails.
         validation = self.coord_service.validator.validate(candidate=coord)
         if validation.is_failure:
@@ -159,6 +160,7 @@ class CoordDataService(DataService[Coord]):
             *   PoppingEmtpyCoordDataServiceException
         """
         method = "CoordDataService.pop_coord"
+        
         # Handle the case that the list is empty
         if self.is_empty:
             # Return the exception chain.
@@ -168,17 +170,25 @@ class CoordDataService(DataService[Coord]):
                     ex=PoppingEmtpyCoordDataServiceException(f"{method}: {CoordDataServiceException.DEFAULT_MESSAGE}")
                 )
             )
+        # Handle the case that a new coord has not been pushed onto the stack. Only one undo is allowed in a turn.
+        if self._previous_coord == self._current_coord:
+            return DeletionResult.failure(
+                CoordDataServiceException(
+                    message=f"ServiceId:{self.id}, {CoordDataServiceException.ERROR_CODE}",
+                    ex=
+                )
+            )
         # Handle the case that the super class undo_push fails.
-        deletion_result = self.undo_item_push()
-        if deletion_result.is_failure:
+        super_deletion_result = self.undo_item_push()
+        if super_deletion_result.is_failure:
             # Return the exception chain.
             return DeletionResult(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
-                    ex=deletion_result.exception
+                    ex=super_deletion_result.exception
                 )
             )
-        # Otherwise the deletion_result is a success which can be forwarded to the caller.
-        return deletion_result
+        # Otherwise cast the super class payload to a Coord and send to the caller.
+        return DeletionResult.success(cast(Coord, super_deletion_result.payload))
         
         
