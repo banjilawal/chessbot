@@ -1,13 +1,13 @@
-# src/chess/agent/validator/exception/flag/__init__.py
+# src/chess/player/validator/exception/flag/__init__.py
 
 """
-Module: chess.agent.validator.exception.flag.__init__
+Module: chess.player.validator.exception.flag.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== AGENT.CONTEXT.VALIDATOR.EXCEPTION.FLAG PACKAGE CONTENTS ===========#
+#=========== PLAYER.CONTEXT.VALIDATOR.EXCEPTION.FLAG PACKAGE CONTENTS ===========#
 
 # Packages
 None

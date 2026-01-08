@@ -1,7 +1,7 @@
-# src/chess/team/validator/validator.py
+# src/chess/team/context/validator/validator.py
 
 """
-Module: chess.team.validator
+Module: chess.team.context.validator.validator
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -10,14 +10,8 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.arena import ArenaService
-from chess.player import PlayerService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from chess.team import (
-    TeamContextValidationFailedException, NoTeamContextFlagException, NullTeamContextException, TeamContext,
-    ExcessiveTeamContextFlagsException
-)
-from chess.team.context.validator.exception.route import TeamContextValidationRouteException
-from chess.team.context.validator.exception.wraooer import TeamContextValidationFailedException
+from chess.team import TeamContext
 
 
 class TeamContextValidator(Validator[TeamContext]):

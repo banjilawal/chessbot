@@ -72,7 +72,7 @@ class King(Rank):
         None
         """
         method = "King.compute_span"
-        origin = piece.current_position
+        origin = token.current_position
         return [
             self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(1, 0)),
             self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(-1, 0)),

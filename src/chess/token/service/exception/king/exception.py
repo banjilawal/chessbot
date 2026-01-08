@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 
-from chess.piece import InvalidPieceException
+from chess.token import TokenValidationFailedException
 
 
-class CheckmatedKingException(InvalidPieceException):
+class CheckmatedKingException(TokenValidationFailedException):
     """
     # RESPONSIBILITY
     Raised when a checkmated king tries to do something.

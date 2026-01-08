@@ -1,7 +1,7 @@
-# src/chess/agent/finder/exception/dataset.py
+# src/chess/player/finder/exception/dataset.py
 
 """
-Module: chess.agent.cntext.finder.exception.dataset
+Module: chess.player.cntext.finder.exception.dataset
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -18,7 +18,7 @@ __all__ = [
 
 
 
-# ======================# AGENT_NULL_DATASET EXCEPTION #======================#
+# ======================# PLAYER_NULL_DATASET EXCEPTION #======================#
 class AgentSearchDatasetNullException(AgentException, NullDatasetException):
     """
     # ROLE: Error Tracing, Debugging

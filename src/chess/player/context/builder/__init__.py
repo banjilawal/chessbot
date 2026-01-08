@@ -1,13 +1,13 @@
-# src/chess/agent/builder/__init__.py
+# src/chess/player/builder/__init__.py
 
 """
-Module: chess.agent.builder.__init__
+Module: chess.player.builder.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== AGENT.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
+#=========== PLAYER.CONTEXT.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
 None

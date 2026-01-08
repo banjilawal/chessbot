@@ -1,17 +1,17 @@
-# src/chess/agent/validator/exception/__init__.py
+# src/chess/player/validator/exception/__init__.py
 
 """
-Module: chess.agent.validator.exception.__init__
+Module: chess.player.validator.exception.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== AGENT.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
+#=========== PLAYER.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .registration import *
 
 # Modules
 from .null import NullAgentException
-from .base import InvalidAgentException
+from .base import PlayerValidationFailedException

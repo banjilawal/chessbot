@@ -170,7 +170,7 @@ class SnapshotFinder(Finder[Snapshot]):
         """
         method = "SnapshotFinder._find_by_team"
         try:
-            # Agents are unique the search should only produce one unique result.
+            # Players are unique the search should only produce one unique result.
             matches = [snapshot for snapshot in dataset.items if agent in snapshot.arena.agents]
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -210,7 +210,7 @@ class SnapshotFinder(Finder[Snapshot]):
         """
         method = "SnapshotFinder._find_by_team"
         try:
-            # Agents are unique the search should only produce one unique result.
+            # Players are unique the search should only produce one unique result.
             matches = [snapshot for snapshot in dataset.items if team in snapshot.arena.team]
             if len(matches) == 0:
                 return SearchResult.empty()
@@ -251,7 +251,7 @@ class SnapshotFinder(Finder[Snapshot]):
         method = "SnapshotFinder._find_by_agent"
         try:
             matches = []
-            # Agents are unique the search should only produce one unique result.
+            # Players are unique the search should only produce one unique result.
             matches = [snapshot for snapshot in dataset.items if snapshot.exception == exception]
             if len(matches) == 0:
                 return SearchResult.empty()

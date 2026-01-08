@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.piece import InvalidPieceException, KingPieceException
+from chess.piece import TokenValidationFailedException, KingPieceException
 
 __all__ = [
     #======================# NULL KING EXCEPTION #======================#
@@ -18,7 +18,7 @@ __all__ = [
 
 
 #======================# INVALID KING EXCEPTION #======================#
-class InvalidKingPieceException(KingPieceException, InvalidPieceException):
+class InvalidKingPieceException(KingPieceException, TokenValidationFailedException):
     ERROR_CODE = "KING_PIECE_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "KingPiece validation failed."
     

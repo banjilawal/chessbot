@@ -70,7 +70,7 @@ class Pawn(Rank):
         """
         method = "Pawn.compute_span"
         
-        origin = piece.current_position
+        origin = token.current_position
         if piece.positions.size() == 1:
             return self._opening_span(origin)
         return self._developed_span(origin)

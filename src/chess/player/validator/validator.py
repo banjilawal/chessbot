@@ -1,7 +1,7 @@
-# src/chess/agent/validator/validator.py
+# src/chess/player/validator/validator.py
 
 """
-Module: chess.agent.validator
+Module: chess.player.validator
 Author: Banji Lawal
 Created: 2025-08-31
 version: 1.0.0
@@ -9,16 +9,13 @@ version: 1.0.0
 
 from typing import Any, cast
 
+from chess.team import UniqueTeamDataService
 from chess.engine.service import EngineService
 from chess.system import IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
-from chess.agent import (
-    PlayerAgent, AgentVariety, AgentVarietyNullException, HumanAgent, InvalidAgentException, InvalidAgentVarietyException,
-    InvalidMachineAgentException, MachineAgent, NullAgentException,
-)
-from chess.team import UniqueTeamDataService
 
 
-class AgentValidator(Validator[PlayerAgent]):
+
+class PlayerValidator(Validator[Player]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -46,15 +43,15 @@ class AgentValidator(Validator[PlayerAgent]):
             candidate: Any,
             identity_service: IdentityService = IdentityService(),
             service_validator: ServiceValidator = ServiceValidator(),
-    ) -> ValidationResult[PlayerAgent]:
+    ) -> ValidationResult[PlayerPlayer]:
         """
         # ACTION:
         1.  Verify the candidate is not null.
         2.  Verify the candidate is an Player. If so cast it to an Player instance.
         3.  Use the identity service to verify the player's designation and id.
-        4.  If the player is a MachineAgent, confirm player.engine_service is not null and
+        4.  If the player is a MachinePlayer, confirm player.engine_service is not null and
             is an EngineService instance.
-        5.  Confirm player.team_assignments is not null and is an UniqueTeamDataService instance.
+        5.  Confirm player.teams is not null and is an UniqueTeamDataService instance.
         6.  Confirm player.games is not null and is an UniqueGameDataService instance.
         7.  If any check fails, return the exception inside a ValidationResult.
         8.  When all checks return the successfully validated Player instance inside a ValidationResult.
@@ -71,122 +68,122 @@ class AgentValidator(Validator[PlayerAgent]):
 
         # RAISES:
             *   TypeError
-            *   NullAgentException
-            *   InvalidAgentException
+            *   NullPlayerException
+            *   InvalidPlayerException
         """
-        method = "AgentValidator.validate"
+        method = "PlayerValidator.validate"
         try:
             # If candidate does not exist no point continuing
             if candidate is None:
                 return ValidationResult.failure(
-                    NullAgentException(f"{method}: {NullAgentException.DEFAULT_MESSAGE}")
+                    NullPlayerException(f"{method}: {NullPlayerException.DEFAULT_MESSAGE}")
                 )
             # Handle the case, the candidate is not an Player object.
-            if not isinstance(candidate, PlayerAgent):
+            if not isinstance(candidate, PlayerPlayer):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Player, {type(candidate).__name__} instead.")
                 )
             # Cast to an Player for additional processing.
-            agent = cast(PlayerAgent, candidate)
+            player = cast(PlayerPlayer, candidate)
             
             # Verify the id and designation are safe.
-            identity_validation = identity_service.validate_identity(agent.id, agent.name)
+            identity_validation = identity_service.validate_identity(player.id, player.name)
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
             # Certify the player's TeamDataService is correct.
-            team_data_service_certification = service_validator.validate(candidate=agent.team_assignments)
+            team_data_service_certification = service_validator.validate(candidate=player.teams)
             if team_data_service_certification.is_failure():
                 return ValidationResult.failure(team_data_service_certification.exception)
             
             # Certify the player's GameDataService is correct.
-            game_data_service_certification = service_validator.validate(candidate=agent.games)
+            game_data_service_certification = service_validator.validate(candidate=player.games)
             if game_data_service_certification.is_failure():
                 return ValidationResult.failure(game_data_service_certification.exception)
             
-            # If the player is a MachineAgent handoff control to certify_machine_agent_engine
+            # If the player is a MachinePlayer handoff control to certify_machine_player_engine
             # for the final check.
-            if isinstance(agent, MachineAgent):
-                return cls._certify_machine_agent_engine(machine=cast(MachineAgent, agent))
+            if isinstance(player, MachinePlayer):
+                return cls._certify_machine_player_engine(machine=cast(MachinePlayer, player))
             
-            # If the player is a HumanAgent all the checks have been passed. Return the
+            # If the player is a HumanPlayer all the checks have been passed. Return the
             # player in the ValidationResult payload.
-            if isinstance(agent, HumanAgent):
-                return ValidationResult.success(payload=cast(HumanAgent, agent))
+            if isinstance(player, HumanPlayer):
+                return ValidationResult.success(payload=cast(HumanPlayer, player))
             
-            # Any unexpected boundary conditions are caught and wrapped in an InvalidAgentException then,
+            # Any unexpected boundary conditions are caught and wrapped in an InvalidPlayerException then,
             # the exception chain is returned inside a ValidationResult. The flow should only get here if
             # the logic does not handle each concrete Player subclass.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidAgentException(ex=ex, message=f"{method}: {InvalidAgentException.DEFAULT_MESSAGE}")
+                InvalidPlayerException(ex=ex, message=f"{method}: {InvalidPlayerException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def certify_agent_variety(cls, candidate: Any) -> ValidationResult[AgentVariety]:
+    def certify_player_variety(cls, candidate: Any) -> ValidationResult[PlayerVariety]:
         """
         # ACTION:
         This is just a decorator that encapsulates all the logic for making sure an object being
-        passed as an AgentVariety is not null and is actually an AgentVariety object. The comments
+        passed as an PlayerVariety is not null and is actually an PlayerVariety object. The comments
         are almost as lomg as the code.
         
         1.  Verify the candidate is not null.
-        2.  Verify the candidate is an AgentVariety. cast into an AgentVariety instance and return a success.
+        2.  Verify the candidate is an PlayerVariety. cast into an PlayerVariety instance and return a success.
         3.  If any check fails, return the exception inside a ValidationResult.
 
         # PARAMETERS:
             *   candidate (Any)
 
         # RETURNS:
-        ValidationResult[AgentVariety] containing either:
-            - On success: AgentVariety in the payload.
+        ValidationResult[PlayerVariety] containing either:
+            - On success: PlayerVariety in the payload.
             - On failure: Exception.
 
         # RAISES:
             *   TypeError
-            *   NullAgentVarietyException
-            *   InvalidAgentVarietyException
+            *   NullPlayerVarietyException
+            *   InvalidPlayerVarietyException
         """
-        method = "AgentValidator.certify_variety"
+        method = "PlayerValidator.certify_variety"
         try:
             # Handle the null case.
             if candidate is None:
                 return ValidationResult.failure(
-                    AgentVarietyNullException(f"{method}: {AgentVarietyNullException.DEFAULT_MESSAGE}")
+                    PlayerVarietyNullException(f"{method}: {PlayerVarietyNullException.DEFAULT_MESSAGE}")
                 )
             #Handle the incorrect type case
-            if not isinstance(candidate, AgentVariety):
+            if not isinstance(candidate, PlayerVariety):
                 return ValidationResult.failure(
-                    TypeError(f"{method}: Expected AgentVariety,  {type(candidate).__name__} instead.")
+                    TypeError(f"{method}: Expected PlayerVariety,  {type(candidate).__name__} instead.")
                 )
             # Cast and return.
-            return ValidationResult.success(cast(AgentVariety, candidate))
+            return ValidationResult.success(cast(PlayerVariety, candidate))
         
         # If there is unhandled error-raising boundary condition wrap it inside an
-        # InvalidAgentVarietyException then, send the exception chain in a ValidationResult.
+        # InvalidPlayerVarietyException then, send the exception chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidAgentVarietyException(
-                    ex=ex, message=f"{method}: {InvalidAgentVarietyException.DEFAULT_MESSAGE}"
+                InvalidPlayerVarietyException(
+                    ex=ex, message=f"{method}: {InvalidPlayerVarietyException.DEFAULT_MESSAGE}"
                 )
             )
         
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _certify_machine_agent_engine(
+    def _certify_machine_player_engine(
             cls,
-            machine_agent: MachineAgent,
+            machine_player: MachinePlayer,
             engine_service_validator: EngineService = EngineService(),
-    ) -> ValidationResult[PlayerAgent]:
+    ) -> ValidationResult[PlayerPlayer]:
         """
         # ACTION:
         1.  If machine.engine_service passes certification, return the machine inside a ValidationResult.
             Otherwise, send the exception in the ValidationResult..
 
         # PARAMETERS:
-            *   machine (MachineAgent)
+            *   machine (MachinePlayer)
             *   engine_service_validator (EngineService)
 
         # RETURNS:
@@ -195,21 +192,21 @@ class AgentValidator(Validator[PlayerAgent]):
             - On failure: Exception.
 
         # RAISES:
-            *   InvalidMachineAgentException
+            *   InvalidMachinePlayerException
         """
-        method = "AgentValidator.certify_machine_agent_engine"
+        method = "PlayerValidator.certify_machine_player_engine"
         try:
-            engine_validation = engine_service_validator.validate_engine(machine_agent.engine_service)
+            engine_validation = engine_service_validator.validate_engine(machine_player.engine_service)
             if engine_validation.is_failure():
                 return ValidationResult.failure(engine_validation.exception)
-            # On success just return the machineAgent
-            return ValidationResult.success(payload=machine_agent)
+            # On success just return the machinePlayer
+            return ValidationResult.success(payload=machine_player)
         
         # If there is unhandled error-raising boundary condition wrap it inside an
-        # InvalidAgentMachineException then, send the exception chain in a ValidationResult.
+        # InvalidPlayerMachineException then, send the exception chain in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidMachineAgentException(
-                    ex=ex, message=f"{method}: {InvalidMachineAgentException.DEFAULT_MESSAGE}"
+                InvalidMachinePlayerException(
+                    ex=ex, message=f"{method}: {InvalidMachinePlayerException.DEFAULT_MESSAGE}"
                 )
             )

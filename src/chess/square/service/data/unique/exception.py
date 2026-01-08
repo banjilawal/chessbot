@@ -1,7 +1,7 @@
 from chess.system import UniqueDataServiceException
 
 ___all__ = [
-    # ======================# AGENT_DATA_SERVICE EXCEPTION #======================#
+    # ======================# PLAYER_DATA_SERVICE EXCEPTION #======================#
     "UniqueSquareDataServiceException",
 ]
 

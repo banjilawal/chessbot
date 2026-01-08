@@ -11,8 +11,7 @@ from typing import List, Optional, cast
 
 from chess.system import DataService, DeletionResult, InsertionResult, id_emitter
 from chess.coord import (
-    Coord, CoordDataServiceException, CoordService, CoordContextService,
-    PoppingEmtpyCoordDataServiceException
+    Coord, CoordDataServiceException, CoordService, CoordContextService, PoppingEmtpyCoordDataServiceException
 )
 
 
@@ -42,7 +41,8 @@ class CoordDataService(DataService[Coord]):
         *   See DataService class for inherited attributes.
     """
     SERVICE_NAME = "CoordDataService"
-    _previous_top_coord: Optional[Coord]
+    _current_coord: Optional[Coord]
+    _previous_coord: Optional[Coord]
     
     def service(
             self,
@@ -54,20 +54,17 @@ class CoordDataService(DataService[Coord]):
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
             *   items (List[Coord]): = List[Coord]
             *   service (CoordService): = CoordService()
             *   context_service (CoordContextService): = CoordContextService()
-
         # RETURNS:
-        None
-
+            None
         # RAISES:
-        None
+            None
         """
         super().__init__(
             id=id,
@@ -76,7 +73,7 @@ class CoordDataService(DataService[Coord]):
             entity_service=service,
             context_service=context_service,
         )
-        self._previous_top_coord = None
+        self._previous_coord = None
     
     @property
     def coord_service(self) -> CoordService:
@@ -89,22 +86,31 @@ class CoordDataService(DataService[Coord]):
         return cast(CoordContextService, self.context_service)
     
     @property
-    def previous_top_coord(self) -> Optional[Coord]:
-        return self._previous_top_coord
+    def coords(self) -> List[Coord]:
+        return cast(List[Coord], self.items)
+    
+    @property
+    def current_coord(self) -> Optional[Coord]:
+        return cast(Optional[Coord], self.current_item)
+    
+    @property
+    def previous_coord(self) -> Optional[Coord]:
+        return self._previous_coord
     
     def add_coord(self, coord: Coord) -> InsertionResult[Coord]:
         """
         # ACTION:
-            1.  If the coord fails validation send the exception in the InsertionResult. Else, call the super class
-                push_item method.
-            2.  If the super class push failed encapsulate the super class exception and send in the InsertionResult.
-                Else, forward the super().push_item() result to the caller.
+            1.  If the coord fails validation send an exception chain in the InsertionResult.
+            2.  If the current_position is not null, store it in previous_top then call super().push_item.
+            3.  If super().push_item fails send the exception chain in the InsertionResult. Else,
+                *   Set self.previous_coord = previous_top.
+                *   Forward the InsertionResult from super().push_item to the caller.
         # PARAMETERS:
             *   coord (Coord)
         # RETURN:
             *   InsertionResult[Coord] containing either:
-                - On failure: Exception
-                - On success: Coord in the payload.
+                    - On failure: Exception
+                    - On success: Coord in the payload.
         # RAISES:
             *   CoordDataServiceException
         """
@@ -112,28 +118,29 @@ class CoordDataService(DataService[Coord]):
         # Handle the case that coord validation fails.
         validation = self.coord_service.validator.validate(candidate=coord)
         if validation.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return InsertionResult(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
                     ex=validation.exception
                 )
             )
+        # --- Store the current_coord in the temp variable. ---#
+        previous_top = cast(Coord, self.current_item)
         
-        previous_coord_holder = cast(Coord, self.current_item)
-        # Handle the case that super class push fails.
-        insertion_result = self.push_item(item=coord)
-        if insertion_result.is_failure:
+        # Handle the case that super class push does not succeed.
+        super_insertion_result = self.push_item(item=coord)
+        if super_insertion_result.is_failure:
+            # Return the exception chain on failure.
             return InsertionResult(
                 CoordDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.DEFAULT_MESSAGE}",
-                    ex=insertion_result.exception
+                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
+                    ex=super_insertion_result.exception
                 )
             )
-        # If the super class insertion succeeds Set the previous_address from the holder then
-        # forward insertion_result to the caller.
-        self._previous_coord = previous_coord_holder
-        return insertion_result
+        # --- Update the previous_coord field, cast the super().push result into a Coord and return to caller. ---#
+        self._previous_coord = previous_top
+        return InsertionResult.success(cast(Coord, super_insertion_result.payload))
     
     def pop_coord(self) -> DeletionResult[Coord]:
         """

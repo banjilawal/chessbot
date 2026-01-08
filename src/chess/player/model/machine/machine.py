@@ -37,27 +37,24 @@ class MachinePlayer(Player):
             self,
             id: int,
             name: str,
-            team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
             engine_service: EngineService = EngineService(),
+            teams: UniqueTeamDataService = UniqueTeamDataService(),
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (nt)
             *   name (str)
             *   games (UniqueGameDataService)
-            *   team_assignments (UniqueTeamDataService)
+            *   teams (UniqueTeamDataService)
             *   engine_service (EngineService)
-
         # RETURNS:
-        None
-
+            None
         # RAISES:
-        None
+            None
         """
-        super().machine(id=id, name=name, games=games, team_assignments=team_assignments)
+        super().__init__(id=id, name=name, teams=teams)
         self._engine_service = engine_service
     
     @property

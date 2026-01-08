@@ -143,8 +143,8 @@ class SquareValidator(Validator[Square]):
         # ACTION:
         1.  SquareValidator.validate runs integrity checks on square_candidate.
         2.  piece_service verifies piece_candidate is an disabled piece on the board.
-        3.  After casting the candidates into square_name and piece test square_name.target == piece.current_position.
-        4.  Test square_name.occupant == piece.
+        3.  After casting the candidates into square_name and piece test square_name.target == token.current_position.
+        4.  Test square_name.occupant == token.
         5   If any check fails, return the exception inside a ValidationResult.
         6.  When all pass tuple(square_name, piece) to sender in a ValidationResult.
 
@@ -178,7 +178,7 @@ class SquareValidator(Validator[Square]):
             
             piece = cast(Piece, piece_candidate)
             
-            if square.coord != piece.current_position:
+            if square.coord != token.current_position:
                 return ValidationResult.failure(
                     SquareAndPieceMismatchedCoordException(
                         f"{method} {SquareAndPieceMismatchedCoordException.DEFAULT_MESSAGE}"

@@ -9,20 +9,8 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.persona import Persona, PersonaService
 from chess.rank import Rank, RankService
 from chess.schema import SchemaService
-from chess.team.service.exception.debug.roster.insertion import AddingRosterMemberFailedException
-from chess.team.service.exception.debug.roster.owner import TokenBelongsOnDifferentRosterException
-
-from chess.team.roster import TeamRankQuotaFullException
-from chess.token import AddingDuplicateTokenException, Token, TokenContext, TokenService
-from chess.system import CalculationResult, EntityService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.team import (
-    HostageRelationAnalyzer, RosterRelationAnalyzer, Team, TeamBuilder, TeamServiceException, TeamValidator,
-    TokenLocation
-)
-from chess.token.model.combatant.token import CombatantToken
 
 
 class TeamService(EntityService[Team]):

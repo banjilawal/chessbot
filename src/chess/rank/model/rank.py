@@ -98,7 +98,7 @@ class Rank(ABC):
         8.  So for each quadrant we change the slope.
         
         # Action
-        1.  origin = piece.current_position is the basis of the set.
+        1.  origin = token.current_position is the basis of the set.
         2.  Get points on each quadrant with a call to _compute_diagonal_ray then append to a list.
         3.  Add origin to the span if it not already there.
         4.  Return the list.
@@ -114,7 +114,7 @@ class Rank(ABC):
         """
         method = "Rank.compute_diagonal_span"
         
-        origin = piece.current_position
+        origin = token.current_position
         span = [Coord]
         
         self._compute_diagonal_ray(
@@ -242,7 +242,7 @@ class Rank(ABC):
         4.  we can get the span by iterating over the quadrants with the in the range [0, BOARD_DIMENSION - 1]
 
         # Action
-        1.  origin = piece.current_position is the basis of the set.
+        1.  origin = token.current_position is the basis of the set.
         2.  Get points on each quadrant with a call to _compute_perpendicular_ray then append to a list.
         3.  Add origin to the span if it not already there.
         4.  Return the list.
@@ -258,7 +258,7 @@ class Rank(ABC):
         """
         method = "Rank.compute_perpendicular_span"
         
-        origin = piece.current_position
+        origin = token.current_position
         span = [Coord]
         
         # Doing it this way avoids duplicates

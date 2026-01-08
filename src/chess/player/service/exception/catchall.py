@@ -1,7 +1,7 @@
-# src/chess/agent/service/exception/catchall.py
+# src/chess/player/service/exception/catchall.py
 
 """
-Module: chess.agent.service.exception.catchall
+Module: chess.player.service.exception.catchall
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.agent import AgentException
 from chess.system import ServiceException
 
 ___all__ = [
-    # ======================# AGENT_SERVICE EXCEPTION #======================#
+    # ======================# PLAYER_SERVICE EXCEPTION #======================#
     "AgentServiceException",
 ]
 
 
-# ======================# AGENT_SERVICE EXCEPTION #======================#
+# ======================# PLAYER_SERVICE EXCEPTION #======================#
 class AgentServiceException(AgentException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

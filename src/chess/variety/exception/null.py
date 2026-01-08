@@ -1,7 +1,7 @@
-# src/chess/agent/model/variety/exception/null.py
+# src/chess/player/model/variety/exception/null.py
 
 """
-Module: chess.agent.model.variety.exception.null
+Module: chess.player.model.variety.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -12,7 +12,7 @@ from chess.agent import InvalidAgentVarietyException
 
 
 __all__ = [
-    #======================# AGENT_VARIETY NULL EXCEPTION #======================#
+    #======================# PLAYER_VARIETY NULL EXCEPTION #======================#
     "AgentVarietyNullException",
 ]
 

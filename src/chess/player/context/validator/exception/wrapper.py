@@ -1,7 +1,7 @@
-# src/chess/agent/validator/exception/base.py
+# src/chess/player/validator/exception/base.py
 
 """
-Module: chess.agent.validator.exception.base
+Module: chess.player.validator.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.agent import AgentContextException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# AGENT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidAgentContextException",
 ]
 
 
-# ======================# AGENT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# PLAYER_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidAgentContextException(AgentContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper

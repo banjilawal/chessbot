@@ -1,7 +1,7 @@
-# src/chess/agent/finder/exception/base.py
+# src/chess/player/finder/exception/base.py
 
 """
-Module: chess.agent.cntext.finder.exception.base
+Module: chess.player.cntext.finder.exception.base
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -11,12 +11,12 @@ from chess.agent import AgentException
 from chess.system import FinderException
 
 __all__ = [
-    #======================# AGENT_FINDER EXCEPTION #======================#
+    #======================# PLAYER_FINDER EXCEPTION #======================#
     "AgentFinderException",
 ]
 
 
-#======================# AGENT_FINDER EXCEPTION #======================#
+#======================# PLAYER_FINDER EXCEPTION #======================#
 class AgentFinderException(AgentException, FinderException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

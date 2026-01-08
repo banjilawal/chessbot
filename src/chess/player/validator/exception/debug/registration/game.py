@@ -1,7 +1,7 @@
-# src/chess/agent/validator/exception/registration/game.py
+# src/chess/player/validator/exception/registration/game.py
 
 """
-Module: chess.agent.validator.exception.registration.game
+Module: chess.player.validator.exception.registration.game
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -13,14 +13,14 @@ from chess.system import RegistrationException
 
 
 __all__ = [
-    #======================# AGENT REGISTRATION EXCEPTION #======================#
+    #======================# PLAYER REGISTRATION EXCEPTION #======================#
     "AgentNotRegisteredWithGameException",
 ]
 
 
 
 
-#======================# AGENT_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
+#======================# PLAYER_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
 class AgentNotRegisteredWithGameException(InvalidAgentException, RegistrationException):
     """
     # ROLE: Error Tracing, Debugging

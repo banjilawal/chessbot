@@ -66,7 +66,7 @@ class Token(ABC):
         self._roster_number = roster_number
         self._opening_square = opening_square
         self._current_position = self._positions.current_item
-        self.previous_address = self._positions.previous_item
+        self._previous_address = self._positions.previous_item
         
         if self not in team.roster:
             team.roster.append(self)

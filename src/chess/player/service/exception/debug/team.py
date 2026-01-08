@@ -1,7 +1,7 @@
-# src/chess/agent/service/exception/different.py
+# src/chess/player/service/exception/different.py
 
 """
-Module: chess.agent.service.exception.different
+Module: chess.player.service.exception.different
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

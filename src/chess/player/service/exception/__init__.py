@@ -1,13 +1,13 @@
-# src/chess/agent/service/exception/__init__.py
+# src/chess/player/service/exception/__init__.py
 
 """
-Module: chess.agent.service.exception.__init__
+Module: chess.player.service.exception.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== AGENT.SERVICE PACKAGE CONTENTS ===========#
+# =========== PLAYER.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
 None

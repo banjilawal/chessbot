@@ -1,7 +1,7 @@
-# src/chess/team/context/validator/exception/flag/zero.py
+# src/chess/team/context/validator/exception/debug/zero.py
 
 """
-Module: chess.team.context.validator.exception.flag.zero
+Module: chess.team.context.validator.exception.debug.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

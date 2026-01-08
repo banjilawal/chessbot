@@ -8,7 +8,7 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-from chess.agent.service.exception.debug.team import TeamBelongsToDifferentOwnerException
+from chess.player.service.exception.debug.team import TeamBelongsToDifferentOwnerException
 from chess.schema import SchemaService
 from chess.arena import Arena, ArenaService, TeamPlayingDifferentArenaException
 from chess.agent import PlayerAgent, AgentService
@@ -144,7 +144,7 @@ class TeamValidator(Validator[Team]):
         """
         # ACTION:
             1.  If team.owner is not validated by owner_service return validation exception.
-            2.  If the team is not owner.team_assignments return an exception in the ValidationResult.
+            2.  If the team is not owner.teams return an exception in the ValidationResult.
             3.  The tests passed. Send team.owner in the ValidationResult.
         # PARAMETERS:
             *   team (Team)
@@ -182,7 +182,7 @@ class TeamValidator(Validator[Team]):
                     )
                 )
             )
-        # Handle the case that the team has not been added to the owner's team_assignments.
+        # Handle the case that the team has not been added to the owner's teams.
         if owner_team_relation.partially_exists:
             # Return the exception chain.
             return ValidationResult(

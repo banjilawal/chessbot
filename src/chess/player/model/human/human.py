@@ -36,7 +36,7 @@ class HumanPlayer(Player):
             self,
             id: int,
             name: str,
-            team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
+            teams: UniqueTeamDataService = UniqueTeamDataService(),
     ):
         """
         # ACTION:
@@ -46,7 +46,7 @@ class HumanPlayer(Player):
             *   id (nt)
             *   name (str)
             *   games (UniqueGameDataService)
-            *   team_assignments (UniqueTeamDataService)
+            *   teams (UniqueTeamDataService)
 
         # RETURNS:
         None
@@ -54,7 +54,7 @@ class HumanPlayer(Player):
         # RAISES:
         None
         """
-        super().__init__(id=id, name=name, games=games, team_assignments=team_assignments)
+        super().__init__(id=id, name=name, games=games, teams=teams)
     
     def __eq__(self, other):
         if super().__eq__(other):

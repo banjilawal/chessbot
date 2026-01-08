@@ -66,7 +66,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
     except (
         TypeError,
         IdValidationException,
-        InvalidPieceException,
+        TokenValidationFailedException,
         InvalidSqaureException,
         NullOccupationEventException,
         CircularOccupationException

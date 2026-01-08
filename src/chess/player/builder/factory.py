@@ -135,7 +135,7 @@ class PlayerFactory(Builder[Player]):
                     id=id,
                     name=name,
                     games=UniqueGameDataService(),
-                    team_assignments=UniqueTeamDataService(),
+                    teams=UniqueTeamDataService(),
                 )
             )
         
@@ -195,7 +195,7 @@ class PlayerFactory(Builder[Player]):
                     name=name,
                     engine_service=engine_service,
                     games=UniqueGameDataService(),
-                    team_assignments=UniqueTeamDataService(),
+                    teams=UniqueTeamDataService(),
                 )
             )
         

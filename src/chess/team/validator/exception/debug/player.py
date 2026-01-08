@@ -40,4 +40,4 @@ class TeamNotRegisteredWithPlayerException(TeamException, NotRegisteredException
     None
     """
     ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_PLAYER_ERROR"
-    DEFAULT_MESSAGE = "Team validation failed: The candidate was not found in its player.team_assignments."
+    DEFAULT_MESSAGE = "Team validation failed: The candidate was not found in its player.teams."

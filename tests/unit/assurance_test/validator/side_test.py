@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import create_autospec
 
-from chess.agent.exception.invalid_commander import CommanderValidationException
+from chess.player.exception.invalid_commander import CommanderValidationException
 from assurance.exception.invalid_id import IdValidationException
 from chess.team.team_exception.invalid_team import TeamValidationException
 from chess.team.validator import TeamValidator

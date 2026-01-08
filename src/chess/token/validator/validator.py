@@ -12,12 +12,10 @@ from typing import Any, cast
 from chess.coord import CoordDataService, CoordService
 from chess.rank import RankService
 from chess.system import (
-    BoundNumberValidator, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult,
-    Validator
+    BoundNumberValidator, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
 )
 from chess.team import Team, TeamService
-from chess.token.model import Token
-from chess.token.validator.exception.wrapper import TokenValidationFailedException
+from chess.token.model import Token, TokenValidationFailedException
 
 
 class TokenValidator(Validator[Token]):

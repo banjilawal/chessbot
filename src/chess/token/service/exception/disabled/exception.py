@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 
-from chess.piece import InvalidPieceException
+from chess.piece import TokenValidationFailedException
 
 
-class DisabledPieceException(InvalidPieceException):
+class DisabledPieceException(TokenValidationFailedException):
     """
     # RESPONSIBILITY
     Raised when a disabled Token tries to do something.

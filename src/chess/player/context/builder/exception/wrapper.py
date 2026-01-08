@@ -1,7 +1,7 @@
-# src/chess/agent/builder/exception.py
+# src/chess/player/builder/exception.py
 
 """
-Module: chess.agent.builder.exception
+Module: chess.player.builder.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -12,12 +12,12 @@ from chess.agent import AgentContextException
 
 
 __all__ = [
-    # ======================# AGENT_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+    # ======================# PLAYER_CONTEXT_BUILD_FAILED EXCEPTION #======================#
     "AgentContextBuildFailedException",
 ]
 
 
-#======================# AGENT_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+#======================# PLAYER_CONTEXT_BUILD_FAILED EXCEPTION #======================#
 class AgentContextBuildFailedException(AgentContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

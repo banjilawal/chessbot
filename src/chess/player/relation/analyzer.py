@@ -1,7 +1,7 @@
-# src/chess/agent/relation/tester.py
+# src/chess/player/relation/tester.py
 
 """
-Module: chess.agent.relation.tester
+Module: chess.player.relation.tester
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.agent.relation import OwnerTeamRelationTestFailedException
+from chess.player.relation import OwnerTeamRelationTestFailedException
 from chess.team import Team, TeamContext, TeamService
 from chess.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
 from chess.agent import (
@@ -96,12 +96,12 @@ class AgentTeamRelationAnalyzer(RelationAnalyzer[PlayerAgent, Team]):
         # Just incase things aren't Liskovian on the candidate_satellite ue validation.payload for the cast.
         team = cast(Team, team_validation.payload)
         
-        # If the team belongs to a different owner it's not a satellite of the agent. They are not related.
+        # If the team belongs to a different owner it's not a satellite of the player. They are not related.
         if owner != team.owner:
             return RelationReport.not_related()
         
         # For complete coverage and certainty search the assignments not just the current_team.
-        search = owner.team_assignments.search_teams(context=TeamContext(id=team.id))
+        search = owner.teams.search_teams(context=TeamContext(id=team.id))
         if search.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(

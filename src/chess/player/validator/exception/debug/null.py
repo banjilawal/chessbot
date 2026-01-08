@@ -1,7 +1,7 @@
-# src/chess/agent/validator/exception/null.py
+# src/chess/player/validator/exception/null.py
 
 """
-Module: chess.agent.validator.exception.null
+Module: chess.player.validator.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,11 +11,11 @@ from chess.system import NullException
 from chess.agent import InvalidAgentException
 
 __all__ = [
-    #======================# AGENT NULL EXCEPTION #======================#
+    #======================# PLAYER NULL EXCEPTION #======================#
     "NullAgentException",
 ]
 
-#======================# AGENT_CONTEXT NULL EXCEPTION #======================#
+#======================# PLAYER_CONTEXT NULL EXCEPTION #======================#
 class NullAgentException(InvalidAgentException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -24,7 +24,7 @@ class NullAgentException(InvalidAgentException, NullException):
     1.  Indicate if an entity, method or operation required an Player  but got null instead.
 
     # PARENT:
-        *   InvalidAgentException
+        *   PlayerValidationFailedException
         *   NullException
 
     # PROVIDES:

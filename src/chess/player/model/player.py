@@ -39,34 +39,32 @@ class Player(ABC):
     """
     _id: int
     _name: str
-    _team_assignments: UniqueTeamDataService
+    _current_team: Team
+    _teams: UniqueTeamDataService
     
     def player(
             self,
             id: int,
             name: str,
-            team_assignments: UniqueTeamDataService = UniqueTeamDataService(),
+            teams: UniqueTeamDataService = UniqueTeamDataService(),
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   team_assignments (UniqueTeamDataService)
-
+            *   teams (UniqueTeamDataService)
         # RETURNS:
-        None
-
+            None
         # RAISES:
         None
         """
         method = "PlayerContextService.player"
         self._id = id
         self._name = name
-        self._team_assignments = team_assignments
-        self._current_team = self._team_assignments.current_team
+        self._teams = teams
+        self._current_team = self._teams.current_team
     
     @property
     def id(self) -> int:
@@ -81,12 +79,12 @@ class Player(ABC):
         self._name = name
     
     @property
-    def team_assignments(self) -> UniqueTeamDataService:
-        return self._team_assignments
+    def teams(self) -> UniqueTeamDataService:
+        return self._teams
     
     @property
     def current_team(self) -> Optional[Team]:
-        return self._team_assignments.current_team
+        return self._teams.current_team
     
     def __eq__(self, other):
         if other is self: return True

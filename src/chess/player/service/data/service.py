@@ -1,7 +1,7 @@
-# src/chess/agent/service/data/service.py
+# src/chess/player/service/data/service.py
 
 """
-Module: chess.agent.service.data.service
+Module: chess.player.service.data.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

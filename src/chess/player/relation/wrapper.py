@@ -1,21 +1,21 @@
-# src/chess/agent/relation/wrapper.py
+# src/chess/player/relation/wrapper.py
 
 """
-Module: chess.agent.relation.wrapper
+Module: chess.player.relation.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# AGENT_TEAM_RELATION_TEST_FAILURE EXCEPTION #======================#
+    # ======================# PLAYER_TEAM_RELATION_TEST_FAILURE EXCEPTION #======================#
     "AgentTeamRelationAnalysisFailedException",
 ]
 
 from chess.system import RelationAnalysisFailedException
 
 
-# ======================# AGENT_TEAM_RELATION_TEST_FAILURE EXCEPTION #======================#
+# ======================# PLAYER_TEAM_RELATION_TEST_FAILURE EXCEPTION #======================#
 class AgentTeamRelationAnalysisFailedException(RelationAnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining

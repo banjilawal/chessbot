@@ -6,16 +6,17 @@ Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
+
 from typing import cast
 
 from chess.coord import Coord, CoordAlreadyToppingStackException, CoordService, PoppingEmtpyCoordDataServiceException
 from chess.formation import FormationService
 from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.token import (
-    OverMoveUndoLimitException, Token, TokenDataServiceException, TokenFactory,
-    TokenOpeningSquareNullException, TokenValidator
+    OverMoveUndoLimitException, TokenFactory, TokenOpeningSquareNullException, TokenServiceException,
+    TokenValidator
 )
-from chess.token.service.exception.catchall import TokenServiceException
+
 
 
 class TokenService(EntityService[Token]):

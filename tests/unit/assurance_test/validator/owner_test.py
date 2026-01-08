@@ -3,9 +3,9 @@ from unittest.mock import create_autospec
 
 from assurance.exception.invalid_id import IdValidationException
 from assurance.exception.invalid_name import NameValidationException
-from chess.agent.exception.invalid_commander import CommanderValidationException
-from chess.agent.commander_validator import CommanderValidator
-from chess.agent.exception import NullCommanderException
+from chess.player.exception.invalid_commander import CommanderValidationException
+from chess.player.commander_validator import CommanderValidator
+from chess.player.exception import NullCommanderException
 from chess.competitor.commander import Commander
 from unit.chess_test.competitor.competitor_test import CompetitorTest
 

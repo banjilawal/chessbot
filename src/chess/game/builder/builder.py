@@ -107,8 +107,8 @@ class GameBuilder(Builder[Game]):
             # If no errors are detected build the Game object.
             
             # If the game is not in Player.game_assignments register it.
-            if game not in agent.games:
-                agent.game_assignments.push_unique_item(game)
+            if game not in player.games:
+                player.game_assignments.push_unique_item(game)
             # Send the successfully built and registered Game object inside a BuildResult.
             return BuildResult.success(game)
         

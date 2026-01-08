@@ -1,7 +1,7 @@
-# src/chess/agent/finder/finder.py
+# src/chess/player/finder/finder.py
 
 """
-Module: chess.agent.cntext.finder.finder
+Module: chess.player.cntext.finder.finder
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.agent.service.data.exception.null import AgentNullDatasetException
+from chess.player.service.data.exception.null import AgentNullDatasetException
 from chess.system import LoggingLevelRouter, Finder, SearchResult
 from chess.agent import (
     PlayerAgent, AgentContext, AgentContextValidator, AgentFinderException, AgentVariety, HumanAgent,
@@ -136,7 +136,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
         method = "AgentFinder._find_by_id"
         try:
             # Get the list of agents with the same id.
-            matches = [agent for agent in dataset if agent.id == id]
+            matches = [agent for agent in dataset if player.id == id]
             
             # An empty array means nothing was found.
             if len(matches) == 0:
@@ -180,7 +180,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
         method = "AgentFinder._find_by_name"
         try:
             # Get the list of agents with the same name in upper case..
-            matches = [agent for agent in dataset if agent.name.upper() == name.upper()]
+            matches = [agent for agent in dataset if player.name.upper() == name.upper()]
             
             # An empty array means nothing was found.
             if len(matches) == 0:
@@ -224,7 +224,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # Loop through the set and return the first player who ran the team.
             # If more than one Player is returned there might be a problem.
             for agent in dataset:
-                team_search = agent.team_assignments.search(context=TeamContext(id=team.id))
+                team_search = player.teams.search(context=TeamContext(id=team.id))
                 if team_search.is_failure:
                     return SearchResult.failure(team_search.exception)
                 # Put the first player that matches inside a List then send the array inside a SearchResult.

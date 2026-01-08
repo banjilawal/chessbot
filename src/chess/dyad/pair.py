@@ -50,7 +50,7 @@ class SchemaAgentPair:
             if arena_validation.is_failure:
                 return InsertionResult(arena_validation.exception)
             
-            agent_builder = self._agent.team_assignments.team_service.builder
+            agent_builder = self._player.teams.team_service.builder
             build = agent_builder.build(id=id, schema=self._schema, arena=arena, player=self._agent)
             if build.is_failure:
                 return InsertionResult.failure(build.exception)
@@ -73,6 +73,6 @@ class SchemaAgentPair:
         return False
     
     def __hash__(self) -> int:
-        return hash((self.schema, self.agent.__hash__()))
+        return hash((self.schema, self.player.__hash__()))
         
     

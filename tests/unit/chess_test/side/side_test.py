@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import create_autospec, patch
 
-from chess.agent.exception.invalid_commander import CommanderValidationException
+from chess.player.exception.invalid_commander import CommanderValidationException
 from assurance.exception.invalid_id import IdValidationException
 from chess.competitor.commander import Commander
 from chess.team.schema import TeamSchema
@@ -26,7 +26,7 @@ class SideTest(unittest.TestCase):
     return mock_side
 
 
-  @patch('assurance.notification.agent.PlayerAgentValidator.validate')
+  @patch('assurance.notification.player.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_id_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = False
@@ -39,7 +39,7 @@ class SideTest(unittest.TestCase):
       Side(side_id=None, controller=mock_competitor, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.agent.PlayerAgentValidator.validate')
+  @patch('assurance.notification.player.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
@@ -51,7 +51,7 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.agent.PlayerAgentValidator.validate')
+  @patch('assurance.notification.player.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
@@ -63,7 +63,7 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.agent.PlayerAgentValidator.validate')
+  @patch('assurance.notification.player.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_null_profile_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
@@ -75,7 +75,7 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=mock_competitor, profile=None)
 
 
-  @patch('assurance.notification.agent.PlayerAgentValidator.validate')
+  @patch('assurance.notification.player.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_broken_relationship_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
@@ -98,7 +98,7 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=fake_controller, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.agent.PlayerAgentValidator.validate')
+  @patch('assurance.notification.player.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
@@ -114,7 +114,7 @@ class SideTest(unittest.TestCase):
       assert side in competitor.teams.items
 
 
-  @patch('assurance.notification.agent.PlayerAgentValidator.validate')
+  @patch('assurance.notification.player.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_side_is_controller_current_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True

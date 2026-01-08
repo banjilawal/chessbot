@@ -1,13 +1,13 @@
-# src/chess/agent/model/variety/exception/__init__.py
+# src/chess/player/model/variety/exception/__init__.py
 
 """
-Module: chess.agent.model.variety.exception.__init__
+Module: chess.player.model.variety.exception.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== AGENT.MODEL.VARIETY.EXCEPTION PACKAGE CONTENTS ===========#
+#=========== PLAYER.MODEL.VARIETY.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

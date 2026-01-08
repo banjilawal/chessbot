@@ -1,14 +1,14 @@
-# src/chess/agent/service/data/__init__.py
+# src/chess/player/service/data/__init__.py
 
 """
-Module: chess.agent.service.data.__init__
+Module: chess.player.service.data.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 
-#=========== AGENT.SERVICE.DATA PACKAGE CONTENTS ===========#
+#=========== PLAYER.SERVICE.DATA PACKAGE CONTENTS ===========#
 
 # Packages
 from .unique import *

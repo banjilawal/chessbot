@@ -101,7 +101,7 @@ class PlacementChart(Enum):
   def find_placement_by_piece(piece: Piece) -> Optional['WhiteBattleOrder']:
 
     for placement in PlacementChart:
-      if placement.piece_name.upper() == piece.name.upper():
+      if placement.piece_name.upper() == token.name.upper():
         return placement
     return None
 

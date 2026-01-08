@@ -1,7 +1,7 @@
-# src/chess/agent/service/service.py
+# src/chess/player/service/service.py
 
 """
-Module: chess.agent.service.service
+Module: chess.player.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import cast
 from unittest import removeResult
 
-from chess.agent.relation import AgentTeamRelationAnalyzer
+from chess.player.relation import AgentTeamRelationAnalyzer
 from chess.system import EntityService, InsertionResult, LoggingLevelRouter, Result, id_emitter
 from chess.agent import (
     AgentServiceException, PlayerAgent, AgentFactory, AgentValidator,
@@ -123,7 +123,7 @@ class AgentService(EntityService[PlayerAgent]):
                     ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
                 )
             )
-        return agent.team_assignments.add_team(team=team)
+        return player.teams.add_team(team=team)
 
     
     

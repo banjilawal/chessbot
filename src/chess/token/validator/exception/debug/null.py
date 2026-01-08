@@ -1,9 +1,9 @@
-# src/chess/token/validator/null/exception.py
+# src/chess/token/validator/exception/debug/__init__.py
 
 """
-Module: chess.token.validator.null.exception
+Module: chess.token.validator.exception.debug.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-11-20
 version: 1.0.0
 """
 
