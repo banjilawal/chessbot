@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/pop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/pop/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/push/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/pop/max.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/push/wrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/data/exception/current.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/push/current.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/data/exception/pop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/pop/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/data/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/data/exception/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/data/exception/pop/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/pop/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/data/exception/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/push/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/data/exception/push/current.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/data/exception/push/duplicate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/coord/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -912,7 +915,7 @@
       <workItem from="1767801939753" duration="2917000" />
       <workItem from="1767822311688" duration="16421000" />
       <workItem from="1767847965951" duration="10226000" />
-      <workItem from="1767865457519" duration="1941000" />
+      <workItem from="1767865457519" duration="6477000" />
     </task>
     <servers />
   </component>

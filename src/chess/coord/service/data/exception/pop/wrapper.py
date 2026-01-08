@@ -1,3 +1,12 @@
+# src/chess/coord/service/data/exception/pop/wrapper.py
+
+"""
+Module: chess.coord.service.data.exception.pop.wrapper
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
 __all__ = [
     # ======================# POPPING_COORD_STACK_FAILURE EXCEPTION #======================#
     "PoppingCordStackFailedException",

@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.coord import Coord, CoordAlreadyToppingStackException, CoordService, PoppingEmtpyCoordDataServiceException
+from chess.coord import Coord, CoordAlreadyToppingStackException, CoordService, PoppingEmtpyCoordStackException
 from chess.formation import FormationService
 from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.token import (
@@ -102,7 +102,7 @@ class TokenService(EntityService[Token]):
             *   TokenServiceException
             *   OverMoveUndoLimitException
             *   TokenOpeningSquareNullException
-            *   PoppingEmtpyCoordDataServiceException
+            *   PoppingEmtpyCoordStackException
         """
         method = "TokenService.pop_coord_from_token"
         validation = self.validator.validate(token)
@@ -129,8 +129,8 @@ class TokenService(EntityService[Token]):
             return DeletionResult(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
-                    ex=PoppingEmtpyCoordDataServiceException(
-                        f"{method}: {PoppingEmtpyCoordDataServiceException.DEFAULT_MESSAGE}"
+                    ex=PoppingEmtpyCoordStackException(
+                        f"{method}: {PoppingEmtpyCoordStackException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -217,7 +217,7 @@ class TokenService(EntityService[Token]):
                 )
             )
         # Handle the case that adding the coord to the token's position history fails.
-        insertion_result = token.positions.add_coord(coord=position)
+        insertion_result = token.positions.push_coord(coord=position)
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

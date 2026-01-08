@@ -9,9 +9,11 @@ version: 1.0.0
 
 from typing import List, Optional, cast
 
+from chess.coord.service.data.exception.push.duplicate import DuplicateCoordPushException
+from chess.coord.service.data.exception.push.wrapper import PushingCoordFailedException
 from chess.system import DataService, DeletionResult, InsertionResult, id_emitter
 from chess.coord import (
-    Coord, CoordDataServiceException, CoordService, CoordContextService, PoppingEmtpyCoordDataServiceException
+    Coord, CoordDataServiceException, CoordService, CoordContextService, PoppingEmtpyCoordStackException
 )
 
 
@@ -97,7 +99,7 @@ class CoordDataService(DataService[Coord]):
     def previous_coord(self) -> Optional[Coord]:
         return self._previous_coord
     
-    def add_coord(self, coord: Coord) -> InsertionResult[Coord]:
+    def push_coord(self, coord: Coord) -> InsertionResult[Coord]:
         """
         # ACTION:
             1.  If the coord fails validation send an exception chain in the InsertionResult.
@@ -123,7 +125,22 @@ class CoordDataService(DataService[Coord]):
             return InsertionResult(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
-                    ex=validation.exception
+                    ex=PushingCoordFailedException(
+                        message=f"{method}: {PushingCoordFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            )
+        # Handle the case that the Coord is already at the top.
+        if coord == self.current_coord:
+            # Return the exception chain on failure.
+            return InsertionResult(
+                CoordDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
+                    ex=PushingCoordFailedException(
+                        message=f"{method}: {PushingCoordFailedException.ERROR_CODE}",
+                        ex=DuplicateCoordPushException(f"{method}: {DuplicateCoordPushException.DEFAULT_MESSAGE}")
+                    )
                 )
             )
         # --- Store the current_coord in the temp variable. ---#
@@ -136,7 +153,10 @@ class CoordDataService(DataService[Coord]):
             return InsertionResult(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
-                    ex=super_insertion_result.exception
+                    ex=PushingCoordFailedException(
+                        message=f"{method}: {PushingCoordFailedException.ERROR_CODE}",
+                        ex=super_insertion_result.exception
+                    )
                 )
             )
         # --- Update the previous_coord field, cast the super().push result into a Coord and return to caller. ---#
@@ -157,7 +177,7 @@ class CoordDataService(DataService[Coord]):
                 - On success: Coord in the payload.
         # RAISES:
             *   CoordDataServiceException
-            *   PoppingEmtpyCoordDataServiceException
+            *   PoppingEmtpyCoordStackException
         """
         method = "CoordDataService.pop_coord"
         
@@ -167,7 +187,10 @@ class CoordDataService(DataService[Coord]):
             return DeletionResult(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {CoordDataServiceException.ERROR_CODE}",
-                    ex=PoppingEmtpyCoordDataServiceException(f"{method}: {CoordDataServiceException.DEFAULT_MESSAGE}")
+                    ex=PoppingEmtpyCoordStackException(
+                        message=f"{method}: {PoppingEmtpyCoordStackException.ERROR_CODE}",
+                        ex=PoppingEmtpyCoordStackException(f"{method}: {CoordDataServiceException.DEFAULT_MESSAGE}")
+                    )
                 )
             )
         # Handle the case that a new coord has not been pushed onto the stack. Only one undo is allowed in a turn.

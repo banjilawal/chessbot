@@ -7,16 +7,16 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.token import TokenDataServiceException
+from chess.coord import CoordDataServiceException
 
 __all__ = [
-    # ======================# COORD_ALREADY_AT_TOP_OF_STACK EXCEPTION #======================#
-    "CoordAlreadyToppingStackException",
+    # ======================# PUSHING_DUPLICATE_COORD_ONTO_STACK EXCEPTION #======================#
+    "DuplicateCoordPushException",
 ]
 
 
-# ======================# COORD_ALREADY_AT_TOP_OF_STACK EXCEPTION #======================#
-class CoordAlreadyToppingStackException(TokenDataServiceException):
+# ======================# PUSHING_DUPLICATE_COORD_ONTO_STACK EXCEPTION #======================#
+class DuplicateCoordPushException(CoordDataServiceException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -35,5 +35,5 @@ class CoordAlreadyToppingStackException(TokenDataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_ALREADY_AT_TOP_OF_STACK_ERROR"
+    ERROR_CODE = "PUSHING_DUPLICATE_COORD_ONTO_STACK_ERROR"
     DEFAULT_MESSAGE = "CoordStack push failed: Coord already at top of stack."
