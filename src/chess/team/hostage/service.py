@@ -1,13 +1,19 @@
+# src/chess/team/hostage/service.py
 
-from typing import List, cast
-
+"""
+Module: chess.team.hostage.service
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+"""
 
 from chess.system import InsertionResult
+from chess.token import CombatantToken, TokenContext, UniqueTokenDataService
 from chess.team import (
     AddingActiveTokenException, AddingHostageTokenFailedException, EnemyAlreadyCapturedException,
     FriendCannotCaptureFriendException, HostageRelationAnalyzer,
 )
-from chess.token import TokenContext, UniqueTokenDataService
+
 
 
 
@@ -15,7 +21,7 @@ class HostageService:
     _prisoners: UniqueTokenDataService
     _analyzer: HostageRelationAnalyzer
     
-    def __init__(
+    def service(
             self,
             prisoners: UniqueTokenDataService = UniqueTokenDataService(),
             analyzer: HostageRelationAnalyzer = HostageRelationAnalyzer(),

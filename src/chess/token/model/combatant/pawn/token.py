@@ -1,7 +1,7 @@
 # src/chess/token/combatant/pawn/token.py
 
 """
-Module: chess.token.combatant.pawn.piece
+Module: chess.token.combatant.pawn.token
 Author: Banji Lawal
 Created: 2025-11-23
 version: 1.0.0
@@ -12,10 +12,10 @@ from typing import Optional
 
 from chess.rank import Rank
 from chess.team import Team
-from chess.piece import CombatantPiece
+from chess.token import CombatantToken
 
 
-class PawnPiece(CombatantPiece):
+class PawnToken(CombatantToken):
   
   _previous_rank: Optional[Rank]
 
@@ -33,7 +33,7 @@ class PawnPiece(CombatantPiece):
 
   def __eq__(self, other):
     if super().__eq__(other):
-      if isinstance(other, PawnPiece):
+      if isinstance(other, PawnToken):
         return True
     return False
 

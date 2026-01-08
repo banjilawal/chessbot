@@ -10,8 +10,8 @@ version: 1.0.0
 #=========== TOKEN.MODEL PACKAGE CONTENTS ===========#
 
 # Packages
-from .combatant import *
 from .king import *
+from .combatant import *
 
 # Modules
 from .token import Token

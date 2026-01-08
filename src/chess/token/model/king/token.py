@@ -1,7 +1,7 @@
-# src/chess/token/king/king.py
+# src/chess/token/model/king/token.py
 
 """
-Module: chess.token.king.king
+Module: chess.token.model.king.token
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -16,8 +16,8 @@ class KingToken(Token):
     _is_checked: bool
     _is_checkmated: bool
     
-    def __init__(self, id: int, name: str, rank: Rank, team: Team):
-        super().__init__(id, name, rank, team)
+    def token(self, id: int, name: str, rank: Rank, team: Team):
+        super().token(id, name, rank, team)
         self._is_checked = False
         self._is_checkmated = False
     
