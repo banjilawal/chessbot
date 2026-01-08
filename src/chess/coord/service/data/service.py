@@ -11,9 +11,10 @@ from typing import List, Optional, cast
 
 from chess.coord.service.data.exception.push.duplicate import DuplicateCoordPushException
 from chess.coord.service.data.exception.push.wrapper import PushingCoordFailedException
-from chess.system import DataService, DeletionResult, InsertionResult, id_emitter
+from chess.system import DataService, DeletionResult, InsertionResult, SearchResult, id_emitter
 from chess.coord import (
-    Coord, CoordDataServiceException, CoordService, CoordContextService, PoppingEmtpyCoordStackException
+    Coord, CoordContext, CoordDataServiceException, CoordService, CoordContextService, MaxConsecutiveCoordPopException,
+    PoppingEmtpyCoordStackException
 )
 
 
@@ -143,7 +144,7 @@ class CoordDataService(DataService[Coord]):
                     )
                 )
             )
-        # --- Store the current_coord in the temp variable. ---#
+        #--- Store the current_coord in the temp variable. ---#
         previous_top = cast(Coord, self.current_item)
         
         # Handle the case that super class push does not succeed.
@@ -184,7 +185,7 @@ class CoordDataService(DataService[Coord]):
         # Handle the case that the list is empty
         if self.is_empty:
             # Return the exception chain.
-            return DeletionResult(
+            return DeletionResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {CoordDataServiceException.ERROR_CODE}",
                     ex=PoppingEmtpyCoordStackException(
@@ -198,14 +199,14 @@ class CoordDataService(DataService[Coord]):
             return DeletionResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {CoordDataServiceException.ERROR_CODE}",
-                    ex=
+                    ex=MaxConsecutiveCoordPopException(f"{method}: {MaxConsecutiveCoordPopException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case that the super class undo_push fails.
         super_deletion_result = self.undo_item_push()
         if super_deletion_result.is_failure:
             # Return the exception chain.
-            return DeletionResult(
+            return DeletionResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
                     ex=super_deletion_result.exception
@@ -213,5 +214,48 @@ class CoordDataService(DataService[Coord]):
             )
         # Otherwise cast the super class payload to a Coord and send to the caller.
         return DeletionResult.success(cast(Coord, super_deletion_result.payload))
+    
+    def coord_search(self, coord_context: CoordContext) -> SearchResult[List[Coord]]:
+        """
+        # ACTION:
+            1.  If coord_context fails validation send the exception chain in the SearchResult. Else use the
+                coord_context_service to run the search.
+            2.  If the search fails send the exception chain in the SearchResult. Else, send the search_result.
+        # PARAMETERS:
+            *   coord_context (CoordContext)
+        # RETURN:
+            *   SearchResult[Coord] containing either:
+                - On failure: Exception
+                - On success: Coord in the payload.
+                - On empty: Payload is null, Exception is null.
+        # RAISES:
+            *   CoordDataServiceException
+        """
+        method = "CoordDataService.coord_search"
+        
+        # Handle the case that the context is not certified safe.
+        context_validation = self.coord_context_service.validator.validate(coord_context)
+        if context_validation.is_failure:
+            # Return the exception chain.
+            return SearchResult.failure(
+                CoordDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
+                    ex=context_validation.exception
+                )
+            )
+        # --- Run the search for the coord ---#
+        search_result = self.coord_context_service.finder.find(context=coord_context)
+        
+        # Handle the case that the search does not complete.
+        if search_result.is_failure:
+            # Return the exception chain.
+            return SearchResult.failure(
+                CoordDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
+                    ex=search_result.exception
+                )
+            )
+        # Empty or successful searches are directly returned to the caller.
+        return search_result
         
         
