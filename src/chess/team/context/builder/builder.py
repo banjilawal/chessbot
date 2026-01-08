@@ -10,6 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.arena import Arena, ArenaService
+from chess.player import Player
 from chess.system import Builder, BuildResult,  GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.team import (
     TeamContext, TeamContextBuildFailedException, ExcessiveTeamContextFlagsException, TeamContextBuildRouteException,
@@ -46,10 +47,10 @@ class TeamContextBuilder(Builder[TeamContext]):
             id: Optional[int] = None,
             name: Optional[str] = None,
             arena: Optional[Arena] = None,
-            owner: Optional[PlayerPlayer] = None,
+            player: Optional[Player] = None,
             color: Optional[GameColor] = None,
             arena_service: ArenaService = ArenaService(),
-            owner_service: PlayerService = PlayerService(),
+            player_service: PlayerService = PlayerService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
     ) -> BuildResult[TeamContext]:
@@ -63,7 +64,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 *   id (Optional[int])
                 *   designation (Optional[int])
                 8   arena (Optional[Arena])
-                *   owner (Optional[Player])
+                *   player (Optional[Player])
                 *   color (Optional[ArenaColor])
             These Parameters must be provided:
                 *   arena_service (ArenaService)
@@ -81,7 +82,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         """
         method = "PieceSearchContextBuilder.builder"
         # Count how many optional parameters are not-null.
-        params = [id, name, arena, owner, color]
+        params = [id, name, arena, player, color]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that no attribute flags are enabled
@@ -118,9 +119,9 @@ class TeamContextBuilder(Builder[TeamContext]):
             # On validation success return an id_enabled_TeamContext in the BuildResult.
             return BuildResult.success(payload=TeamContext(id=validation.id))
         
-        # Build the owner TeamContext if its flag is enabled.
-        if owner is not None:
-            validation = owner_service.validator.validate(candidate=owner)
+        # Build the player TeamContext if its flag is enabled.
+        if player is not None:
+            validation = player_service.validator.validate(candidate=player)
             if validation.is_failure:
                 # Return the exception chain if validation is denied.
                 return BuildResult.failure(
@@ -128,8 +129,8 @@ class TeamContextBuilder(Builder[TeamContext]):
                         message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}", ex=validation.exception
                     )
                 )
-            # On validation success return a owner_enabled_TeamContext in the BuildResult.
-            return BuildResult.success(payload=TeamContext(owner=validation.payload))
+            # On validation success return a player_enabled_TeamContext in the BuildResult.
+            return BuildResult.success(payload=TeamContext(player=validation.payload))
         
         # Build the arena TeamContext if its flag is enabled.
         if arena is not None:
@@ -142,7 +143,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                     )
                 )
             # On validation success return an arena_enabled_TeamContext in the BuildResult.
-            return BuildResult.success(payload=TeamContext(owner=owner))
+            return BuildResult.success(payload=TeamContext(player=player))
         
         # Build the color TeamContext if its flag is enabled.
         if color is not None:

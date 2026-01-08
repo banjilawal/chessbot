@@ -257,5 +257,4 @@ class CoordDataService(DataService[Coord]):
             )
         # Empty or successful searches are directly returned to the caller.
         return search_result
-        
-        
+

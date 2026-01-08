@@ -11,17 +11,13 @@ version: 1.0.0
 from typing import cast
 from unittest import removeResult
 
-from chess.player.relation import AgentTeamRelationAnalyzer
+from chess.player import Player, PlayerFactory, PlayerValidator
+from chess.player.relation import PlayerTeamRelationAnalyzer
 from chess.system import EntityService, InsertionResult, LoggingLevelRouter, Result, id_emitter
-from chess.agent import (
-    AgentServiceException, PlayerAgent, AgentFactory, AgentValidator,
-    TeamBelongsToDifferentOwnerException
-)
 from chess.team import Team, TeamService
-from chess.team.service.data.result import AddingDuplicateTeamException
 
 
-class AgentService(EntityService[PlayerAgent]):
+class PlayerService(EntityService[Player]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -43,74 +39,66 @@ class AgentService(EntityService[PlayerAgent]):
     # INHERITED ATTRIBUTES:
         *   See EntityService class for inherited attributes.
     """
-    DEFAULT_NAME = "AgentService"
-    _agent_team_relation_analyzer: AgentTeamRelationAnalyzer
+    DEFAULT_NAME = "PlayerService"
+    _player_team_relation_analyzer: PlayerTeamRelationAnalyzer
     
     def __init__(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
-            builder: AgentFactory = AgentFactory(),
-            validator: AgentValidator = AgentValidator(),
-            agent_team_relation_analyzer: AgentTeamRelationAnalyzer = AgentTeamRelationAnalyzer(),
+            builder: PlayerFactory = PlayerFactory(),
+            validator: PlayerValidator = PlayerValidator(),
+            player_team_relation_analyzer: PlayerTeamRelationAnalyzer = PlayerTeamRelationAnalyzer(),
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   builder (AgentFactory)
-            *   validator (AgentValidator)
-
+            *   builder (PlayerFactory)
+            *   validator (PlayerValidator)
         # RETURNS:
-        None
-
+            None
         # RAISES:
-        None
+            None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._agent_team_relation_analyzer = agent_team_relation_analyzer
+        self._player_team_relation_analyzer = player_team_relation_analyzer
         
     @property
-    def builder(self) -> AgentFactory:
-        """get AgentBuilder"""
-        return cast(AgentFactory, self.entity_builder)
+    def builder(self) -> PlayerFactory:
+        """get PlayerBuilder"""
+        return cast(PlayerFactory, self.entity_builder)
     
     @property
-    def validator(self) -> AgentValidator:
-        """get AgentValidator"""
-        return cast(AgentValidator, self.entity_validator)
+    def validator(self) -> PlayerValidator:
+        """get PlayerValidator"""
+        return cast(PlayerValidator, self.entity_validator)
     
     @property
-    def agent_team_relation_analyzer(self) -> AgentTeamRelationAnalyzer:
-        return self._agent_team_relation_analyzer
+    def player_team_relation_analyzer(self) -> PlayerTeamRelationAnalyzer:
+        return self._player_team_relation_analyzer
     
-    def add_team(
-            self,
-            agent: PlayerAgent,
-            team: Team,
-            team_service: TeamService = TeamService()
-    ) -> InsertionResult[Team]:
-        method = "AgentService.add_team"
-        relation = self.agent_team_relation_analyzer.test(
-            candidate_primary=agent,
+    def add_team(self, player: Player, team: Team, team_service: TeamService = TeamService()) -> InsertionResult[Team]:
+        method = "PlayerService.add_team"
+        relation = self.player_team_relation_analyzer.test(
+            candidate_primary=player,
             candidate_secondary=team,
             owner_validator=self.validator,
             team_service=team_service,
         )
         if relation.is_failure:
             return InsertionResult.failure(
-                AgentServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {AgentServiceException.ERROR_CODE}",
+                PlayerServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
                     ex=relation.exception
                 )
             )
         if relation.does_not_exist:
             return InsertionResult.failure(
-                AgentServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {AgentServiceException.ERROR_CODE}",
+                PlayerServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
                     ex=TeamBelongsToDifferentOwnerException(
                         f"{method}: {TeamBelongsToDifferentOwnerException.DEFAULT_MESSAGE}"
                     )
@@ -118,8 +106,8 @@ class AgentService(EntityService[PlayerAgent]):
             )
         if relation.is_success:
             return InsertionResult.failure(
-                AgentServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {AgentServiceException.ERROR_CODE}",
+                PlayerServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
                     ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
                 )
             )
