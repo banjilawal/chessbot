@@ -7,10 +7,10 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import List, Optional, cast
+from typing import List, cast
 
 from chess.system import DataService, id_emitter
-from chess.team import Team, TeamContext, TeamContextService, TeamInsertionFailedException, TeamService
+from chess.team import Team,  TeamContextService, TeamInsertionFailedException, TeamService
 
 
 class TeamDataService(DataService[Team]):

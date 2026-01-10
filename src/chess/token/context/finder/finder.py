@@ -111,7 +111,7 @@ class TokenFinder(DataFinder[Token]):
         # Entry point into finding by token's designation.
         if context.name is not None:
             return cls._find_by_designation(dataset=dataset, name=context.designation)
-        # Entry point into fiding by token's team.
+        # Entry point into finding by token's team.
         if context.team is not None:
             return cls._find_by_team(dataset=dataset, team=context.team)
         # Entry point into searching by toke's rank.
@@ -124,8 +124,7 @@ class TokenFinder(DataFinder[Token]):
         if context.ransom is not None:
             return cls._find_by_color(dataset=dataset, ransom=context.color)
         
-        # The default path is only reached when a context.key does not have a search route. Return
-        # the exception chain.
+        # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             TokenSearchFailedException(
                 message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",

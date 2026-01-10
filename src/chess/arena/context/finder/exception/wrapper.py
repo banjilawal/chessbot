@@ -1,4 +1,4 @@
-# src/chess/arena/finder/exception.py
+# src/chess/arena/context/finder/exception.py
 
 """
 Module: chess.arena.cntext.finder.exception
@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.arena import ArenaException
-from chess.system import FinderException
+from chess.system import SearchFailedException
 
 __all__ = [
     #======================# ARENA_FINDER EXCEPTION #======================#
-    "ArenaFinderException",
+    "ArenaSearchFailedException",
 ]
 
 
 #======================# ARENA_FINDER EXCEPTION #======================#
-class ArenaFinderException(ArenaException, FinderException):
+class ArenaSearchFailedException(ArenaException, SearchFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
   

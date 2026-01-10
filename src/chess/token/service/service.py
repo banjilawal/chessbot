@@ -9,15 +9,13 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.coord import Coord, CoordAlreadyToppingStackException, CoordService, PoppingEmtpyCoordStackException
 from chess.formation import FormationService
+from chess.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
 from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.token import (
     OverMoveUndoLimitException, Token, TokenFactory, TokenOpeningSquareNullException, TokenServiceException,
     TokenValidator
 )
-
-
 
 class TokenService(EntityService[Token]):
     """
@@ -105,6 +103,7 @@ class TokenService(EntityService[Token]):
             *   PoppingEmtpyCoordStackException
         """
         method = "TokenService.pop_coord_from_token"
+        
         validation = self.validator.validate(token)
         if validation.is_failure:
             # Return the exception chain.
@@ -150,12 +149,11 @@ class TokenService(EntityService[Token]):
             return DeletionResult(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
-                    ex=pop_result
+                    ex=pop_result.exception
                 )
             )
         # Otherwise return the successful pop operation's data to the caller in the DeletionResult.
         return pop_result
-    
     
     @LoggingLevelRouter.monitor
     def push_coord_to_token(
@@ -183,6 +181,7 @@ class TokenService(EntityService[Token]):
             *   CoordAlreadyToppingStackException
         """
         method = "TokenService.push_coord_to_token"
+        
         # Handle the case that the token is not certified safe.
         token_validation = self.validator.validate(token)
         if token_validation.is_failure:
@@ -203,15 +202,14 @@ class TokenService(EntityService[Token]):
                     ex=token_validation.exception
                 )
             )
-        
         # Handle the case that the token is already the current position
         if position == token.current_position:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
                     message=f"{method}: {TokenServiceException.ERROR_CODE}",
-                    ex=CoordAlreadyToppingStackException(
-                        f"{method}: {CoordAlreadyToppingStackException.DEFAULT_MESSAGE}"
+                    ex=DuplicateCoordPushException(
+                        f"{method}: {DuplicateCoordPushException.DEFAULT_MESSAGE}"
                     )
                 )
             )

@@ -28,7 +28,6 @@ class TokenServiceException(TokenException, ServiceException):
         *   TokenException
         *   ServiceException
 
-
     # PROVIDES:
     None
 

@@ -9,16 +9,16 @@ version: 1.0.0
 
 
 from chess.coord import CoordException
-from chess.system import FinderException
+from chess.system import SearchFailedException
 
 __all__ = [
     # ======================# COORD_FINDER EXCEPTION #======================#
-    "CoordFinderException",
+    "CoordSearchFailedException",
 ]
 
 
 # ======================# COORD_FINDER EXCEPTION #======================#
-class CoordFinderException(CoordException, FinderException):
+class CoordSearchFailedException(CoordException, SearchFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

@@ -9,12 +9,10 @@ version: 1.0.0
 
 from typing import cast
 
-
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
-from chess.system import BuildResult, EntityService, NotNegativeNumberValidator, id_emitter
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
-
+from chess.system import BuildResult, EntityService, NotNegativeNumberValidator, id_emitter
 
 class CoordService(EntityService[Coord]):
     """

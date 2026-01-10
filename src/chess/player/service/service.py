@@ -227,7 +227,7 @@ class PlayerService(EntityService[Player]):
                     )
                 )
             )
-        # If the coord was successfully pushed onto the token's coord stack forward insertion result.
+        # If the team was successfully pushed onto the player's team stack forward the insertion result.
         return insertion_result
 
     
