@@ -14,4 +14,4 @@ from .data import *
 from .exception import *
 
 # Modules
-from .service import AgentService
+from .service import PlayerService

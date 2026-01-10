@@ -21,11 +21,11 @@ class ValidationFailedException(ExceptionWrapper):
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
   
     # RESPONSIBILITIES:
-    1.  Parent of exception verifying correctness of candidate
-    2.  Wraps an exception that hits the try-finally block of a Validator method.
-  
+    1.  Wrap debug exceptions that indicate why a validation operation failed. The encapsulated exceptions create a chain
+        for tracing the source of the failure.
+
     # PARENT:
-        *   ChessException
+        *   OperationFailedException
   
     # PROVIDES:
     None

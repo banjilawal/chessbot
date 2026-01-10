@@ -14,4 +14,3 @@ None
 
 # Modules
 from .catchall import AgentServiceException
-from .different import TeamBelongsToDifferentOwnerException

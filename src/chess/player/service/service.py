@@ -81,37 +81,86 @@ class PlayerService(EntityService[Player]):
         return self._player_team_relation_analyzer
     
     def add_team(self, player: Player, team: Team, team_service: TeamService = TeamService()) -> InsertionResult[Team]:
+        """
+        # ACTION:
+            1.  If the player_team_relation_result does not return partial registration send an exception chain in
+                the InsertionResult.
+            2.  Forward the result of player.teams.add_team to the caller.
+        # PARAMETERS:
+            *   player (Player)
+            *   team (Team)
+            *   team_service (TeamService)
+        # RETURNS:
+            *   InsertionResult[Team] containing either:
+                    - On failure: Exception.
+                    - On success: Team in the payload.
+        # RAISES:
+            *   TypeError
+            *   PlayerServiceException
+            *   TeamInsertionFailedException
+            *   AddingDuplicateTeamException
+            *   TeamBelongsToDifferentOwnerException
+        """
+        
         method = "PlayerService.add_team"
-        relation = self.player_team_relation_analyzer.test(
+        relation = self.player_team_relation_analyzer.analyze(
             candidate_primary=player,
             candidate_secondary=team,
             owner_validator=self.validator,
             team_service=team_service,
         )
+        # Handle the case that the relation analysis is not completed.
         if relation.is_failure:
+            # Return the exception chain on failure.
             return InsertionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=relation.exception
+                    ex=TeamInsertionFailedException(
+                        message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}",
+                        ex=relation.exception)
                 )
             )
+        # Handle the case that the team belongs to a different player.
         if relation.does_not_exist:
+            # Return the exception chain on failure.
             return InsertionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=TeamBelongsToDifferentOwnerException(
-                        f"{method}: {TeamBelongsToDifferentOwnerException.DEFAULT_MESSAGE}"
+                    ex=TeamInsertionFailedException(
+                        message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}",
+                        ex=TeamBelongsToDifferentOwnerException(
+                            f"{method}: {TeamBelongsToDifferentOwnerException.DEFAULT_MESSAGE}"
+                        )
                     )
                 )
             )
+        # Handle the case that the player already has the team.
         if relation.is_success:
+            # Return the exception chain on failure.
             return InsertionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
+                    ex=TeamInsertionFailedException(
+                        message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}",
+                        ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
+                    )
                 )
             )
-        return player.teams.add_team(team=team)
+        # Handle the case that pushing the new team on to player's TeamStack fails.
+        insertion_result = player.teams.add_team(team=team)
+        if insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                PlayerServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    ex=TeamInsertionFailedException(
+                        message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}",
+                        ex=insertion_result.exception
+                    )
+                )
+            )
+        # If the coord was successfully pushed onto the token's coord stack forward insertion result.
+        return insertion_result
 
     
     

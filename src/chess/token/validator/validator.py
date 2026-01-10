@@ -9,14 +9,14 @@ Version: 1.0.0
 
 from typing import Any, cast
 
-from chess.coord import CoordDataService, CoordService
+
 from chess.rank import RankService
+from chess.team import Team, TeamService
+from chess.coord import CoordDataService, CoordService
+from chess.token import NullTokenException, Token, TokenValidationFailedException
 from chess.system import (
     BoundNumberValidator, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
 )
-from chess.team import Team, TeamService
-from chess.token.model import Token, TokenValidationFailedException
-
 
 class TokenValidator(Validator[Token]):
     """

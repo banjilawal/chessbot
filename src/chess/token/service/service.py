@@ -13,7 +13,7 @@ from chess.coord import Coord, CoordAlreadyToppingStackException, CoordService, 
 from chess.formation import FormationService
 from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.token import (
-    OverMoveUndoLimitException, TokenFactory, TokenOpeningSquareNullException, TokenServiceException,
+    OverMoveUndoLimitException, Token, TokenFactory, TokenOpeningSquareNullException, TokenServiceException,
     TokenValidator
 )
 
@@ -194,7 +194,7 @@ class TokenService(EntityService[Token]):
                 )
             )
         
-        # Handle the case that the team is not certified safe.
+        # Handle the case that the position is not certified safe.
         position_validation = coord_service.validate(position)
         if position_validation.is_failure:
             # Return the exception chain on failure.
@@ -226,6 +226,5 @@ class TokenService(EntityService[Token]):
                     ex=insertion_result.exception
                 )
             )
-        # Otherwise the coord was successfully pushed onto the token's coord stack. Forward the
-        # success to the caller.
+        # If the coord was successfully pushed onto the token's coord stack forward insertion result.
         return insertion_result

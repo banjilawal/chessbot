@@ -12,12 +12,13 @@ ___all__ = [
     "EnemyCannotJoinRosterException",
 ]
 
-from chess.agent import AgentException
 from chess.team import TeamException
+from chess.player import PlayerException
+
 
 
 # ======================# TEAM_BELONGS_TO_DIFFERENT_OWNER EXCEPTION #======================#
-class TeamBelongsToDifferentOwnerException(TeamException, AgentException):
+class TeamBelongsToDifferentOwnerException(PlayerException, TeamException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

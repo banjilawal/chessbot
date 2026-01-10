@@ -10,9 +10,7 @@ version: 1.0.0
 # =========== TEAM.SERVICE.DATA.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .deletion import *
 
 # Modules
 from .catchall import TeamDataServiceException
-from .empty import PoppingEmtpyTeamDataServiceException
-from .unfound import TeamDoesNotExistForRemovalException

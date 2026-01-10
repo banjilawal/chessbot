@@ -255,6 +255,17 @@ class CoordDataService(DataService[Coord]):
                     ex=search_result.exception
                 )
             )
+        # Handle the case that a successful search result does not have List[Coord] as its payload.
+        if not isinstance(List[Coord], search_result.payload):
+            # Return the exception chain.
+            return SearchResult.failure(
+                CoordDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
+                    ex=TypeError(
+                        f"{method}: Expected List[Coord] as CoordSearch payload. "
+                        f"Got {search_result.payload.__name__} instead.")
+                )
+            )
         # Empty or successful searches are directly returned to the caller.
         return search_result
 

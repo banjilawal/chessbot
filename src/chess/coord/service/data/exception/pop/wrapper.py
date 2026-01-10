@@ -22,7 +22,7 @@ class PoppingCordStackFailedException(CoordDataServiceException, OperationFailed
     # ROLE: Exception Wrapper
     
     # RESPONSIBILITIES:
-    1.  Encapsulate debug exceptions that indicate why a CoordStack pop fails. The encapsulated exceptions create
+    1.  Wrap debug exceptions that indicate why a CoordStack pop fails. The encapsulated exceptions create
         chain for tracing the source of the failure.
     
     # PARENT:

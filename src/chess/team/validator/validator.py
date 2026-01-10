@@ -8,7 +8,7 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-from chess.player.service.exception.debug.team import TeamBelongsToDifferentOwnerException
+from chess.player.service.exception.debug.team import TeamBelongsToDifferentPLayerException
 from chess.schema import SchemaService
 from chess.arena import Arena, ArenaService, TeamPlayingDifferentArenaException
 from chess.agent import PlayerAgent, AgentService
@@ -177,7 +177,7 @@ class TeamValidator(Validator[Team]):
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=TeamBelongsToDifferentOwnerException(
+                    ex=TeamBelongsToDifferentPLayerException(
                         f"{method}: {TeamValidationFailedException.DEFAULT_MESSAGE}"
                     )
                 )

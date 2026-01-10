@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== TEAM.SERVICE.DATA.UNIQUE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .insertion import *
 
 # Modules
-from .duplicate import AddingDuplicateTeamException
 from .catchall import UniqueTeamDataServiceException

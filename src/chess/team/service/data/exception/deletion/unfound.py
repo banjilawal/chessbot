@@ -1,7 +1,7 @@
-# src/chess/team/service/data/exception/unfound.py
+# src/chess/team/service/data/exception/deletion/unfound.py
 
 """
-Module: chess.team.service.data.exception.unfound
+Module: chess.team.service.data.exception.deletion.unfound
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

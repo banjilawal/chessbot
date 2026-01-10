@@ -13,8 +13,8 @@ class PushingCoordFailedException(CoordDataServiceException, OperationFailedExce
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Encapsulate debug exceptions that indicate why pushing a Coord onto the stack fails. The encapsulated 
-        exceptions create chain for tracing the source of the failure.
+    1.  Wrap debug exceptions that indicate why pushing a Coord onto the stack fails. The encapsulated 
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   CoordDataServiceException

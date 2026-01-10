@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ExceptionWrapper
+from chess.system import OperationFailedException
 
 __all__ = [
     # ======================# BUILD_FAILED EXCEPTION #======================#
@@ -16,16 +16,16 @@ __all__ = [
 
 
 # ======================# BUILD_FAILED EXCEPTION #======================#
-class BuildFailedException(ExceptionWrapper):
+class BuildFailedException(OperationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an exception prevented a build operation from completing successfully.
-    2.  Wrap an exception that hits the try-finally block of a Build method.
+    1.  Wrap debug exceptions that indicate why a build operation failed. The encapsulated exceptions create a chain
+        for tracing the source of the failure.
 
     # PARENT:
-        *   ChessException
+        *   OperationFailedException
 
     # PROVIDES:
     None
@@ -37,4 +37,4 @@ class BuildFailedException(ExceptionWrapper):
     None
     """
     ERROR_CODE = "BUILD_FAILED"
-    DEFAULT_MESSAGE = "build failed. An exception prevented the build from completing."
+    DEFAULT_MESSAGE = "build failed."
