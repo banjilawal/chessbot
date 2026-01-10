@@ -12,11 +12,11 @@ __all__ = [
     "TeamDeletionFailedException",
 ]
 
-from chess.team import TeamException
+from chess.system import DeletionFailedException
 
 
 # ======================# TEAM_DELETION_FAILURE EXCEPTION #======================#
-class TeamDeletionFailedException(TeamException, DeletionFailedException):
+class TeamDeletionFailedException(DeletionFailedException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,6 @@ class TeamDeletionFailedException(TeamException, DeletionFailedException):
         exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
-        *   RosterServiceException
         *   DeletionFailedException
 
     # PROVIDES:

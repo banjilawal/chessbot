@@ -14,5 +14,5 @@ None
 
 # Modules
 from .wrapper import TeamDeletionFailedException
-from .empty import PoppingEmtpyTeamDataStackException
+from .empty import PoppingEmtpyTeamStackException
 from .unfound import TeamDoesNotExistForRemovalException

@@ -111,7 +111,7 @@ class TeamBuilder(Builder[Team]):
             hostages=UniquePieceDataService(),
         )
         # Push the team onto the owner's stack.
-        insertion_result = owner_service.add_team(agent=owner, team=team)
+        insertion_result = owner_service.push_team_to_player(agent=owner, team=team)
         if insertion_result.is_failure:
             # If the push failed return the exception chain.
             return BuildResult.failure(

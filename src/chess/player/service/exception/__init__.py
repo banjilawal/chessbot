@@ -10,7 +10,8 @@ version: 1.0.0
 # =========== PLAYER.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .deletion import *
+from .insertion import *
 
 # Modules
-from .catchall import AgentServiceException
+from .catchall import PlayerServiceException

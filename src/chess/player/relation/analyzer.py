@@ -9,20 +9,19 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.player.relation import OwnerTeamRelationTestFailedException
+from chess.player import Player, PlayerValidator
+from chess.player.relation import PlayerTeamRelationAnalysisFailedException
 from chess.team import Team, TeamContext, TeamService
 from chess.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
-from chess.agent import (
-    AgentValidator, PlayerAgent
-)
 
 
-class AgentTeamRelationAnalyzer(RelationAnalyzer[PlayerAgent, Team]):
+
+class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
     """
     # ROLE: Reporting, Test for Relationship
 
     # RESPONSIBILITIES:
-    1.  Test if whether an agent-team tuple have either none, partial, or fully bidirectional relation between them.
+    1.  Test if whether an player-team tuple have either none, partial, or fully bidirectional relation between them.
     2.  If the testing was not completed send an exception chain to the caller.
 
     # PARENT:
@@ -43,16 +42,16 @@ class AgentTeamRelationAnalyzer(RelationAnalyzer[PlayerAgent, Team]):
     def analyze(
             cls,
             candidate_satellite: Team,
-            candidate_primary: PlayerAgent,
+            candidate_primary: Player,
             team_service: TeamService = TeamService(),
-            owner_validator: AgentValidator = AgentValidator(),
-    ) -> RelationReport[PlayerAgent, Team]:
+            player_validator: PlayerValidator = PlayerValidator(),
+    ) -> RelationReport[Player, Team]:
         """
         # ACTION:
         1.  If either candidate fails its safety certification send the exception chain in the RelationReport. Else,
-            cast the candidate_primary to agent instance; agent and candidate_satellite to Team instance; team.
-        2.  If the team.owner != owner they are not related. Else they are partially related.
-        3.  If searching owner's teams for the satellite produces an error send the exception chain. If the search
+            cast the candidate_primary to player instance; player and candidate_satellite to Team instance; team.
+        2.  If the team.player != player they are not related. Else they are partially related.
+        3.  If searching player's teams for the satellite produces an error send the exception chain. If the search
             produced aa match send a bidirectional report. Else send a partial relation report.
 
         # PARAMETERS:
@@ -69,49 +68,50 @@ class AgentTeamRelationAnalyzer(RelationAnalyzer[PlayerAgent, Team]):
         # RAISES:
             *   ArenaValidationFailedException
         """
-        method = "AgentService.certify_team_agent_relationship"
-        # Handle the case that owner validation failer.
-        owner_validation = owner_validator.validate(candidate_primary)
-        if owner_validation.is_failure:
+        method = "PlayerService.analyze"
+        
+        # Handle the case that player validation fails.
+        player_validation = player_validator.validate(candidate_primary)
+        if player_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                OwnerTeamRelationTestFailedException(
-                    message=f"{method}: {OwnerTeamRelationTestFailedException.ERROR_CODE}",
-                    ex=owner_validation.exception
+                PlayerTeamRelationAnalysisFailedException(
+                    message=f"{method}: {PlayerTeamRelationAnalysisFailedException.ERROR_CODE}",
+                    ex=player_validation.exception
                 )
             )
         # Just incase things aren't Liskovian on the candidate_primary ue validation.payload for the cast.
-        owner = cast(PlayerAgent, owner_validation.payload)
+        player = cast(Player, player_validation.payload)
         
         # Handle the case that team validation fails.
-        team_validation = team_service.validator.validate(candidate_satellite)
+        team_validation = player.teams.team_service.validator.validate(candidate_satellite)
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                OwnerTeamRelationTestFailedException(
-                    message=f"{method}: {OwnerTeamRelationTestFailedException.ERROR_CODE}",
+                PlayerTeamRelationAnalysisFailedException(
+                    message=f"{method}: {PlayerTeamRelationAnalysisFailedException.ERROR_CODE}",
                     ex=team_validation.exception
                 )
             )
         # Just incase things aren't Liskovian on the candidate_satellite ue validation.payload for the cast.
         team = cast(Team, team_validation.payload)
         
-        # If the team belongs to a different owner it's not a satellite of the player. They are not related.
-        if owner != team.owner:
+        # If the team belongs to a different player it's not a satellite of the player. They are not related.
+        if player != team.player:
             return RelationReport.not_related()
         
         # For complete coverage and certainty search the assignments not just the current_team.
-        search = owner.teams.search_teams(context=TeamContext(id=team.id))
-        if search.is_failure:
+        search_result = player.teams.search_teams(context=TeamContext(id=team.id))
+        if search_result.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                OwnerTeamRelationTestFailedException(
-                    message=f"{method}: {OwnerTeamRelationTestFailedException.ERROR_CODE}",
-                    ex=search.exception
+                PlayerTeamRelationAnalysisFailedException(
+                    message=f"{method}: {PlayerTeamRelationAnalysisFailedException.ERROR_CODE}",
+                    ex=search_result.exception
                 )
             )
         # If the team was not found the bidirectional relationship has not been fully completed.
-        if search.is_empty:
+        if search_result.is_empty:
             return RelationReport.partial(satellite=team)
-        # All other paths in the test chain have been exhausted. The agent-team tuple is fully bidirectional.
-        return RelationReport.bidirectional(primary=owner, satellite=team)
+        # All other paths in the test chain have been exhausted. The player-team tuple is fully bidirectional.
+        return RelationReport.bidirectional(primary=player, satellite=team)

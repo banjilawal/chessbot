@@ -9,8 +9,14 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.rank import Rank, RankService
 from chess.schema import SchemaService
+from chess.rank import Rank, RankService
+from chess.system import CalculationResult, EntityService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
+from chess.team import (
+    AddingRosterMemberFailedException, HostageRelationAnalyzer, RosterRelationAnalyzer, Team, TeamBuilder,
+    TeamRankQuotaFullException, TeamSearchFailedException, TeamServiceException, TeamValidator, TokenLocation
+)
+from chess.token import AddingDuplicateTokenException, CombatantToken, Token, TokenContext, TokenService
 
 
 class TeamService(EntityService[Team]):
@@ -36,7 +42,6 @@ class TeamService(EntityService[Team]):
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
     """
-    
     SERVICE_NAME = "TeamService"
     _schema_service: SchemaService
     _roster_relation_analyzer: RosterRelationAnalyzer
@@ -114,7 +119,10 @@ class TeamService(EntityService[Team]):
             return SearchResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=team_validation.exception
+                    ex=TeamSearchFailedException(
+                        message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}",
+                        ex=team_validation.exception
+                    )
                 )
             )
         # Validate the piece and handle the failure case.
@@ -124,7 +132,10 @@ class TeamService(EntityService[Team]):
             return SearchResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=piece_validation.exception
+                    ex=TeamSearchFailedException(
+                        message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}",
+                        ex=piece_validation.exception
+                    )
                 )
             )
         # Captured token cannot be added to any roster. Handle the failure case.
@@ -229,7 +240,7 @@ class TeamService(EntityService[Team]):
                     ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
                 )
             )
-        # --- Find how slots are open for the piece's rank. ---#
+        # --- Find how many slots are open for the piece's rank. ---#
         rank_quota_calculation = self.calculate_remaining_rank_quota(team=team, rank=piece.rank)
         
         # Handle the case that the calculation was not completed.

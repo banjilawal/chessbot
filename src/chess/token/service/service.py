@@ -193,7 +193,6 @@ class TokenService(EntityService[Token]):
                     ex=token_validation.exception
                 )
             )
-        
         # Handle the case that the position is not certified safe.
         position_validation = coord_service.validate(position)
         if position_validation.is_failure:

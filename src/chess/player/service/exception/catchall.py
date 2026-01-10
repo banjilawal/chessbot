@@ -7,26 +7,26 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import AgentException
+from chess.player import PlayerException
 from chess.system import ServiceException
 
 ___all__ = [
     # ======================# PLAYER_SERVICE EXCEPTION #======================#
-    "AgentServiceException",
+    "PlayerServiceException",
 ]
 
 
 # ======================# PLAYER_SERVICE EXCEPTION #======================#
-class AgentServiceException(AgentException, ServiceException):
+class PlayerServiceException(PlayerException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
     
     # RESPONSIBILITIES:
-    1.  Indicate that an AgentService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of an AgentService method.
+    1.  Indicate that an PlayerService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of an PlayerService method.
         
     # PARENT:
-        *   AgentException
+        *   PlayerException
         *   ServiceException
 
     # PROVIDES:
@@ -38,5 +38,5 @@ class AgentServiceException(AgentException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "AgentService raised an exception."
+    ERROR_CODE = "PLAYER_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "PlayerService raised an exception."

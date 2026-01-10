@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .analyzer import AgentTeamRelationAnalyzer
-from .wrapper import AgentTeamRelationAnalysisFailedException
+from .analyzer import PlayerTeamRelationAnalyzer
+from .wrapper import PlayerTeamRelationAnalysisFailedException

@@ -7,8 +7,8 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import ServiceException
 from chess.token import TokenException
+from chess.system import ServiceException
 
 __all__ = [
     # ======================# TOKEN_SERVICE EXCEPTION #======================#

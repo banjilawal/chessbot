@@ -9,13 +9,13 @@ version: 1.0.0
 
 
 from typing import cast
-from unittest import removeResult
 
-from chess.player import Player, PlayerFactory, PlayerValidator
-from chess.player.relation import PlayerTeamRelationAnalyzer
-from chess.system import EntityService, InsertionResult, LoggingLevelRouter, Result, id_emitter
-from chess.team import Team, TeamService
-
+from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalyzer, PlayerValidator
+from chess.team import (
+    AddingDuplicateTeamException, PoppingEmtpyTeamStackException, Team, TeamDeletionFailedException, TeamService,
+    TeamInsertionFailedException,
+)
 
 class PlayerService(EntityService[Player]):
     """
@@ -80,7 +80,75 @@ class PlayerService(EntityService[Player]):
     def player_team_relation_analyzer(self) -> PlayerTeamRelationAnalyzer:
         return self._player_team_relation_analyzer
     
-    def add_team(self, player: Player, team: Team, team_service: TeamService = TeamService()) -> InsertionResult[Team]:
+    @LoggingLevelRouter.monitor
+    def pop_team_from_player(self, player: Player) -> DeletionResult[Team]:
+        """
+        # ACTION:
+            1.  If the player is not validated send an exception chain in the DeletionResult.
+            2.  If the player has no teams in their history send an exception chain in the DeletionResult. Else
+                run player.teams.undo_team_addition()
+            3.  If the undo fails send an exception chain in the DeletionResult. Else, directly forward the outcome
+                to the caller.
+        # PARAMETERS:
+            *   player (Player)
+        # RETURNS:
+            *   DeletionResult[Team] containing either:
+                    - On failure: Exception.
+                    - On success: Team in the payload.
+        # RAISES:
+            *   PlayerServiceException
+            *   TeamDeletionFailedException
+            *   PoppingEmtpyTeamStackException
+        """
+        method = "PlayerService.pop_team_from_player"
+        
+        # Handle the case that the player is not certified safe.
+        validation = self.validator.validate(player)
+        if validation.is_failure:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                PlayerServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    ex=TeamDeletionFailedException(
+                        message=f"{method}: {TeamDeletionFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
+                )
+            )
+        # Handle the case that the player does not have any teams.
+        if player.teams.is_empty:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                PlayerServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    ex=TeamDeletionFailedException(
+                        message=f"{method}: {TeamDeletionFailedException.DEFAULT_MESSAGE}",
+                        ex=PoppingEmtpyTeamStackException(f"{method}: {PoppingEmtpyTeamStackException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
+        # Handle the case that the player does not have any teams.
+        deletion_result = player.teams.undo_team_addition()
+        if deletion_result.is_failure:
+            return DeletionResult.failure(
+                PlayerServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    ex=TeamDeletionFailedException(
+                        message=f"{method}: {TeamDeletionFailedException.DEFAULT_MESSAGE}",
+                        ex=deletion_result.exception
+                    )
+                )
+            )
+        return deletion_result
+    
+        
+    @LoggingLevelRouter.monitor
+    def push_team_to_player(
+            self,
+            player: Player,
+            team: Team,
+            team_service: TeamService = TeamService()
+    ) -> InsertionResult[Team]:
         """
         # ACTION:
             1.  If the player_team_relation_result does not return partial registration send an exception chain in
@@ -101,8 +169,8 @@ class PlayerService(EntityService[Player]):
             *   AddingDuplicateTeamException
             *   TeamBelongsToDifferentOwnerException
         """
+        method = "PlayerService.push_team_to_player"
         
-        method = "PlayerService.add_team"
         relation = self.player_team_relation_analyzer.analyze(
             candidate_primary=player,
             candidate_secondary=team,

@@ -132,7 +132,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         return result
     
     @LoggingLevelRouter.monitor
-    def undo_add_team(self) -> DeletionResult[Team]:
+    def undo_team_addition(self) -> DeletionResult[Team]:
         method = "UniqueTeamDataService.undo_add_team"
         result = self.data_service.undo_item_push()
         if result.is_failure:

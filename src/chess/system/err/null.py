@@ -7,7 +7,7 @@ Created: 2025-11-21
 version: 1.0.0
 """
 
-from chess.system import ChessException
+from chess.system import DebugException
 
 __all__ = [
 #======================# NULL EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 #======================# NULL EXCEPTION #======================#
-class NullException(ChessException):
+class NullException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 

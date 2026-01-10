@@ -12,11 +12,11 @@ __all__ = [
     "TeamInsertionFailedException",
 ]
 
-from chess.team import TeamException
+from chess.system import InsertionFailedException
 
 
 # ======================# TEAM_INSERTION_FAILURE EXCEPTION #======================#
-class TeamInsertionFailedException(TeamException, InsertionFailedException):
+class TeamInsertionFailedException(InsertionFailedException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,6 @@ class TeamInsertionFailedException(TeamException, InsertionFailedException):
         exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
-        *   RosterServiceException
         *   InsertionFailedException
 
     # PROVIDES:

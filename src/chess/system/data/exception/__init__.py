@@ -15,3 +15,6 @@ None
 # Modules
 from .base import DatasetException
 from .null import  NullDatasetException
+from .deletion import DeletionFailedException
+from .insertion import InsertionFailedException
+from .calculation import CalculationFailedException

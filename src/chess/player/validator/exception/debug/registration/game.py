@@ -8,20 +8,20 @@ version: 1.0.0
 """
 
 
-from chess.agent import InvalidAgentException
+from chess.player import PlayerValidationFailedException
 from chess.system import RegistrationException
 
 
 __all__ = [
     #======================# PLAYER REGISTRATION EXCEPTION #======================#
-    "AgentNotRegisteredWithGameException",
+    "PlayerNotRegisteredWithGameException",
 ]
 
 
 
 
 #======================# PLAYER_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
-class AgentNotRegisteredWithGameException(InvalidAgentException, RegistrationException):
+class PlayerNotRegisteredWithGameException(PlayerValidationFailedException, RegistrationException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -31,10 +31,10 @@ class AgentNotRegisteredWithGameException(InvalidAgentException, RegistrationExc
     2.  Raised if the player.game == game but player not in game.players
 
     # PARENT:
-        *   AgentRegistrationException
+        *   PlayerRegistrationException
 
     # PROVIDES:
-        *   AgentNotRegisteredWithGameException
+        *   PlayerNotRegisteredWithGameException
 
     # LOCAL ATTRIBUTES:
     None
@@ -42,7 +42,7 @@ class AgentNotRegisteredWithGameException(InvalidAgentException, RegistrationExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_NOT_REGISTERED_WITH_GAME_ERROR"
+    ERROR_CODE = "PLAYER_NOT_REGISTERED_WITH_GAME_ERROR"
     DEFAULT_MESSAGE = (
         "Player is not registered as one of the Game's participants. Only the Player "
         "side of the relationship is set."

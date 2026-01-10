@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.team import TeamDataServiceException
 
 __all__ = [
-    # ======================# UNFOUNDPING_EMPTY_TEAM_DATA_SERVICE EXCEPTION #======================#
+    # ======================# TEAM_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
     "TeamDoesNotExistForRemovalException",
 ]
 

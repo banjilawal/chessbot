@@ -11,12 +11,12 @@ from chess.team import TeamDataServiceException
 
 __all__ = [
     # ======================# POPPING_EMPTY_TEAM_STACK EXCEPTION #======================#
-    "PoppingEmtpyTeamDataStackException",
+    "PoppingEmtpyTeamStackException",
 ]
 
 
 # ======================# POPPING_EMPTY_TEAM_STACK EXCEPTION #======================#
-class PoppingEmtpyTeamDataStackException(TeamDataServiceException):
+class PoppingEmtpyTeamStackException(TeamDataServiceException):
     """
     # ROLE: Debug, Error Tracing
 
