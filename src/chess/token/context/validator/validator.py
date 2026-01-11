@@ -12,8 +12,10 @@ from typing import Any, cast
 from chess.team import TeamService
 from chess.rank import RankService
 from chess.coord import CoordService
+from chess.persona import PersonaService
 from chess.system import (
-    GameColorValidator, IdentityService, LoggingLevelRouter, NotNegativeNumberValidator, Validator, ValidationResult
+    GameColorValidator, IdentityService, LoggingLevelRouter, NumberValidator, Validator,
+    ValidationResult
 )
 from chess.token import (
     ExcessiveTokenContextFlagsException, NullTokenContextException, TokenContext, TokenContextValidationFailedException,
@@ -48,9 +50,10 @@ class TokenContextValidator(Validator[TokenContext]):
             rank_service: RankService = RankService(),
             team_service: TeamService = TeamService(),
             coord_service: CoordService = CoordService(),
+            persona_service: PersonaService = PersonaService(),
+            number_validator: NumberValidator = NumberValidator(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
-            number_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
     ) -> ValidationResult[TokenContext]:
         """
         # ACTION:
@@ -104,7 +107,8 @@ class TokenContextValidator(Validator[TokenContext]):
         context = cast(TokenContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.
-        if len(context.to_dict()) == 0:
+        flag_count = len(context.to_dict())
+        if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationFailedException(
@@ -113,7 +117,7 @@ class TokenContextValidator(Validator[TokenContext]):
                 )
             )
         # Handle the case of too many attributes being used in a search.
-        if len(context.to_dict()) > 1:
+        if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenContextValidationFailedException(
@@ -212,7 +216,11 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
-            validation = number_validator.validate(candidate=candidate)
+            validation = number_validator.validate(
+                candidate=candidate.ransom,
+                floor=persona_service.min_ransom,
+                ceiling=persona_service.max_ransom,
+            )
             # Return the exception chain on failure.
             if validation.is_failure:
                 return ValidationResult.failure(

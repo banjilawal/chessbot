@@ -1,3 +1,4 @@
+import sys
 from typing import List, cast
 
 from chess.board import Board

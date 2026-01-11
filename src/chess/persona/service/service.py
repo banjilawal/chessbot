@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
-
+import sys
 from typing import Dict, List, Optional, cast
 
 
@@ -92,7 +92,7 @@ class PersonaService(HashService[Persona]):
     
     @property
     def min_ransom(self) -> int:
-        minimum = 100
+        minimum = sys.maxsize
         for ransom in self.ransoms:
             if ransom < minimum:
                 minimum = ransom
@@ -100,7 +100,7 @@ class PersonaService(HashService[Persona]):
     
     @property
     def max_ransom(self) -> int:
-        maximum = -100
+        maximum = -1 * sys.maxsize
         for ransom in self.ransoms:
             if ransom > maximum:
                 maximum = ransom
