@@ -154,7 +154,7 @@ Args
 RAISES:
   `TypeError`: if `candidate` is not discoverySearchContext DiscoverySearchContext` object
   `NullDiscoverySearchContextException`: if `candidate` is validation
-  `InvalidIdException`: if `visitor_id` fails validate checks
+  `IdValidationFailedException`: if `visitor_id` fails validate checks
   `InvalidCommanderException`: if `player` fails validate checks
   `NullDiscoverySearchContextProfileException`: if `team_schema` is validation
   `InvalidCommanderAssignmentException`: if the assigned player does not consistency the validated player

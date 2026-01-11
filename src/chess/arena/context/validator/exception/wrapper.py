@@ -1,7 +1,7 @@
-# src/chess/arena/validator/exception/base.py
+# src/chess/arena/validator/exception/wrapper.py
 
 """
-Module: chess.arena.validator.exception.base
+Module: chess.arena.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -12,20 +12,20 @@ from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# ARENA_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "InvalidArenaContextException",
+    "ArenaContextValidationFailedException",
 ]
 
 
 # ======================# ARENA_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidArenaContextException(ArenaContextException, ValidationFailedException):
+class ArenaContextValidationFailedException(ArenaContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a ArenaContext candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidArenaContextException creating an exception chain. which is sent to the caller in a
+        encapsulated inside an ArenaContextValidationFailedException creating an exception chain. which is sent to the caller in a
         ValidationResult.
-    2.  The InvalidArenaContextException chain is useful for tracing a  failure to its source.
+    2.  The ArenaContextValidationFailedException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   ArenaContextException

@@ -1,7 +1,7 @@
-# src/chess/arena/validator/exception/null.py
+# src/chess/arena/context/validator/exception/null.py
 
 """
-Module: chess.arenaContext.arena.validator.exception.null
+Module: chess.arena.context.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.system import NullException
-from chess.arena import InvalidArenaContextException
+from chess.arena import ArenaContextException
 
 
 # ======================# NULL_ARENA_CONTEXT EXCEPTION #======================#
-class NullArenaContextException(InvalidArenaContextException, NullException):
+class NullArenaContextException(ArenaContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -26,7 +26,7 @@ class NullArenaContextException(InvalidArenaContextException, NullException):
 
     # PARENT:
         *   NullArenaContextException
-        *   InvalidArenaContextException
+        *   ArenaContextValidationFailedException
 
     # PROVIDES:
     None

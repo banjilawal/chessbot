@@ -4,7 +4,7 @@ from typing import Any, Generic, TypeVar, cast
 from chess.event import EventValidator
 from chess.piece import KingCheckEvent, PieceValidator, InvalidAttackException
 from chess.square import SquareValidator, InvalidSqaureException
-from chess.system import LoggingLevelRouter, Result, IdValidator, InvalidIdException, ValidationResult, Validator
+from chess.system import LoggingLevelRouter, Result, IdValidator, IdValidationFailedException, ValidationResult, Validator
 from chess.token.event import (
   AttackEvent,
   NullAttackEventException,
@@ -38,7 +38,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       `TypeError`: if `candidate` is not OperationEvent
       `NullAttackEventException`: if `candidate` is validation
 
-      `InvalidIdException`: if invalid `visitor_id`
+      `IdValidationFailedException`: if invalid `visitor_id`
       `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
       `InvalidSquareException`: if `target` fails coord_stack_validator
 
@@ -62,7 +62,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
 
       id_validation = IdValidator.validate(event.visitor_id)
       if not id_validation.is_success():
-        raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
+        raise IdValidationFailedException(f"{method}: {IdValidationFailedException.DEFAULT_MESSAGE}")
 
       actor_validation = PieceValidator.validate(event.actor)
       if not actor_validation.is_success():
@@ -78,12 +78,12 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
       return Result(payload=event)
 
     except (
-        TypeError,
-        InvalidIdException,
-        InvalidAttackException,
-        InvalidSqaureException,
-        NullAttackEventException,
-        CircularOccupationException
+            TypeError,
+            IdValidationFailedException,
+            InvalidAttackException,
+            InvalidSqaureException,
+            NullAttackEventException,
+            CircularOccupationException
     ) as e:
       raise InvalidAttackEventException(
         f"{method}: {InvalidAttackEventException.DEFAULT_MESSAGE}"

@@ -46,7 +46,7 @@ RETURNS:
 RAISES:
   AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
   This includes:
-    * `InvalidIdException`: if `attackEvent_id` fails validate checks
+    * `IdValidationFailedException`: if `attackEvent_id` fails validate checks
     * `InvalidNameException`: if `visitor_name` fails validate checks
     * `InvalidRankException`: if `bounds` fails validate checks
     * `InvalidTeamException`: if `team_name` fails validate checks
@@ -165,7 +165,7 @@ Example:
 #       `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
 #
 #   # RAISES:
-#   `InvalidIdException`: Wraps any specification violations including:
+#   `IdValidationFailedException`: Wraps any specification violations including:
 #       * `TypeError`: if candidate is not an `int`
 #       * `IdNullException`: if candidate is validation
 #       * `NegativeIdException`: if candidate is negative `

@@ -40,7 +40,7 @@ class CoordBuilder(Builder[Coord]):
             cls,
             row: int,
             column: int,
-            number_bonds_validator: BoundNumberValidator = BoundNumberValidator(),
+            number_validator: BoundNumberValidator = BoundNumberValidator(),
     ) -> BuildResult[Coord]:
         """
         # ACTION:
@@ -62,21 +62,20 @@ class CoordBuilder(Builder[Coord]):
             *   CoordBuildFailedException
         """
         method = "CoordBuilder.builder"
-        try:
-            # Test the row parameter is between 0 and BOARD_DIMENSION - 1 inclusive.
-            row_validation = number_bonds_validator.validate(candidate=row)
-            if row_validation.is_failure:
-                return BuildResult.failure(row_validation.exception)
-            # Test the column parameter is between 0 and BOARD_DIMENSION - 1 inclusive.
-            column_validation = number_bonds_validator.validate(candidat=column)
-            if column_validation.is_failure:
-                return BuildResult.failure(column_validation.exception)
-            # If both checks are passed create a Coord and return in the BuildResult.
-            return BuildResult.success(payload=Coord(row=row, column=column))
         
-        # Finally, catch any missed exception, wrap an CoordBuildFailedException around it then return the
-        # exception-chain inside the BuildResult.
-        except Exception as ex:
+        # Handle the case that the row param is not certified safe
+        row_validation = number_bounds_validator.validate(candidate=row)
+        if row_validation.is_failure:
+            #
             return BuildResult.failure(
-                CoordBuildFailedException(ex=ex, message=f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}")
+                CoordBuildFailedException(
+                    message=f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=row_validation.exception
+                )
             )
+        # Test the column parameter is between 0 and BOARD_DIMENSION - 1 inclusive.
+        column_validation = number_bonds_validator.validate(candidat=column)
+        if column_validation.is_failure:
+            return BuildResult.failure(column_validation.exception)
+        # If both checks are passed create a Coord and return in the BuildResult.
+        return BuildResult.success(payload=Coord(row=row, column=column))

@@ -1,14 +1,14 @@
-# src/chess/coord/validator/exception/null.py
+# src/chess/coord/validator/exception/debug/null.py
 
 """
-Module: chess.coord.validator.exception.null
+Module: chess.coord.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.coord import InvalidCoordException
+from chess.coord import CoordValidationFailedException
 
 __all__ = [
     # ======================# NULL COORD EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL COORD EXCEPTION #======================#
-class NullCoordException(InvalidCoordException, NullException):
+class NullCoordException(CoordValidationFailedException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -26,7 +26,7 @@ class NullCoordException(InvalidCoordException, NullException):
     2.  Raised if an entity, method or operation requires a Coord but receives null instead.
 
     # PARENT:
-        *   InvalidCoordException
+        *   CoordValidationFailedException
         *   NullCoordException
 
     # PROVIDES:

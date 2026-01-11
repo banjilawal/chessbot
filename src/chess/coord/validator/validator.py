@@ -1,7 +1,7 @@
-# src/chess/coord/validator.py
+# src/chess/coord/validator/validator.py
 
 """
-Module: chess.coord.validator
+Module: chess.coord.validator.validator
 Author: Banji Lawal
 Created: 2025-08-12
 version: 1.0.0
@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import cast, Any
 
-from chess.coord import Coord, NullCoordException, InvalidCoordException
-from chess.system import Validator, ValidationResult, LoggingLevelRouter, BoundNumberValidator
+from chess.coord import Coord, CoordValidationFailedException, NullCoordException
+from chess.system import ROW_SIZE, Validator, ValidationResult, LoggingLevelRouter, BoundNumberValidator
 
 class CoordValidator(Validator[Coord]):
     """
@@ -38,60 +38,69 @@ class CoordValidator(Validator[Coord]):
     def validate(
             cls,
             candidate: Any,
-            validator: BoundNumberValidator = BoundNumberValidator(),
+            number_validator: BoundNumberValidator = BoundNumberValidator(),
     ) -> ValidationResult[Coord]:
         """
         # ACTION:
-        1.  Confirm the candidate exists and is a Coord object. On meeting both conditions cast the candidate to a coord.
-        2.  Confirm Coord.row and Coord.column are within the bounds or the 2D Board array.
-        4.  Return an exception in the VAlidationResult if any check fails otherwise, send the certified Coord.
-    
+            1.  If the candidate fails existence or type checks send an exception chain in the ValidationResult.
+                Else, cast to Coord instance coord.
+            2.  If either coord.row or coord.column are not ints bound in the range [0, BOARD_DIMENSION] send an
+                exception chain in the ValidationResult. Else, send coord in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
-            *   validator (NNumberInBoundsValidato)
-    
+            *   validator (NNumberInBoundsValidator)
         # RETURNS:
-        ValidationResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-    
+            *   ValidationResult[Coord] containing either:
+                    - On failure: Exception.
+                    - On success: Coord in the payload.
         # RAISES:
             * TypeError
             * NullCoordException
-            * InvalidCoordException
+            * CoordValidationFailedException
         """
         method = "CoordValidator.validate"
         
-        try:
-            # Test the candidate exists.
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullCoordException(f"{method}: {NullCoordException.DEFAULT_MESSAGE}")
-                )
-            # Test the candidate is an int before proceeding.
-            if not isinstance(candidate, Coord):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected a Coord, got {type(candidate).__name__} instead.")
-                )
-            # Cast candidate to an int after the existence and type checks pass.
-            coord = cast(Coord, candidate)
-            
-            # Run row integrity checks.
-            row_validation = validator.validate(candidate=coord.row)
-            if row_validation.is_failure:
-                return ValidationResult.failure(row_validation.exception)
-            
-            # Run column integrity checks.
-            column_validation = validator.validate(candidate=coord.column)
-            if column_validation.is_failure:
-                return ValidationResult.failure(column_validation.exception)
-            
-            # Return the Coord if integrity checks are passed.
-            return ValidationResult.success(payload=coord)
-        
-        # Finally, catch any missed exception, wrap an InvalidCoordEException around it then return the
-        # exception-chain inside the ValidationResult.
-        except Exception as ex:
+        # Handle the case that the candidate does not exist.
+        if candidate is None:
+            # Return the exception on failure.
             return ValidationResult.failure(
-                InvalidCoordException(ex=ex, message=f"{method}: {InvalidCoordException.DEFAULT_MESSAGE}")
+                CoordValidationFailedException(
+                    message=f"{method}: {CoordValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=NullCoordException(f"{method}: {NullCoordException.DEFAULT_MESSAGE}")
+                )
             )
+        # Handle the case that the candidate is the wrong type.
+        if not isinstance(candidate, Coord):
+            # Return the exception on failure.
+            return ValidationResult.failure(
+                CoordValidationFailedException(
+                    message=f"{method}: {CoordValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=TypeError(f"{method}: Expected a Coord, got {type(candidate).__name__} instead.")
+                )
+            )
+
+        # Cast candidate to an int after the existence and type checks pass.
+        coord = cast(Coord, candidate)
+        
+        # Handle the case that coord.row is not an int between [0-7] inclusive.
+        row_validation = number_validator.validate(floor=0, ceiling=ROW_SIZE, candidate=coord.row)
+        if row_validation.is_failure:
+            # Return the exception on failure.
+            return ValidationResult.failure(
+                CoordValidationFailedException(
+                    message=f"{method}: {CoordValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=row_validation.exception
+                )
+            )
+        # Handle the case that coord.column is not an int between [0-7] inclusive.
+        column_validation = number_validator.validate(floor=0, ceiling=ROW_SIZE, candidate=coord.column)
+        if row_validation.is_failure:
+            # Return the exception on failure.
+            return ValidationResult.failure(
+                CoordValidationFailedException(
+                    message=f"{method}: {CoordValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=column_validation.exception
+                )
+            )
+        # Return the Coord if integrity checks are passed.
+        return ValidationResult.success(payload=coord)

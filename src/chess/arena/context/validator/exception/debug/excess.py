@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.arena import InvalidArenaContextException
+from chess.arena import ArenaContextException
 
 __all__ = [
     # ========================= EXCESSIVE_ARENA_CONTEXT_FLAG EXCEPTION =========================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ========================= EXCESSIVE_ARENA_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveArenaContextFlagsException(InvalidArenaContextException, ContextFlagCountException):
+class ExcessiveArenaContextFlagsException(ArenaContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class ExcessiveArenaContextFlagsException(InvalidArenaContextException, ContextF
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidArenaContextException
+        *   ArenaContextValidationFailedException
 
     # PROVIDES:
     None

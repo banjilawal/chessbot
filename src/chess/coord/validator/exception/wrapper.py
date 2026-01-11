@@ -12,20 +12,20 @@ from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# COORD_VALIDATION_FAILURE EXCEPTION #======================#
-    "InvalidCoordException",
+    "CoordValidationFailedException",
 ]
 
 
 # ======================# COORD_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidCoordException(CoordException, ValidationFailedException):
+class CoordValidationFailedException(CoordException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a Coord candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidCoordException creating an exception chain. which is sent to the caller in a
+        encapsulated inside an CoordValidationFailedException creating an exception chain. which is sent to the caller in a
         ValidationResult.
-    2.  The InvalidCoordException chain is useful for tracing a  failure to its source.
+    2.  The CoordValidationFailedException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   CoordException

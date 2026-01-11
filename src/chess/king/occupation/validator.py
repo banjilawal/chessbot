@@ -91,7 +91,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     `TypeError`: if `candidate` is not OperationEvent
 #     `NullAttackEventException`: if `candidate` is validation
 #
-#     `InvalidIdException`: if invalid `visitor_id`
+#     `IdValidationFailedException`: if invalid `visitor_id`
 #     `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
 #     `InvalidSquareException`: if `target` fails coord_stack_validator
 #
@@ -115,7 +115,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #
 #     id_validation = IdValidator.validate(travel.visitor_id)
 #     if not id_validation.is_success():
-#       raise InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
+#       raise IdValidationFailedException(f"{method}: {IdValidationFailedException.DEFAULT_MESSAGE}")
 #
 #     actor_validation = PieceValidator.validate(travel.traveler)
 #     if not actor_validation.is_success():
@@ -132,7 +132,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #
 #   except (
 #       TypeError,
-#       InvalidIdException,
+#       IdValidationFailedException,
 #       InvalidAttackException,
 #       InvalidSqaureException,
 #       NullAttackEventException,
@@ -178,7 +178,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #         `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
 #
 #     # RAISES:
-#     `InvalidIdException`: Wraps any specification violations including:
+#     `IdValidationFailedException`: Wraps any specification violations including:
 #         * `TypeError`: if candidate is not an `int`
 #         * `IdNullException`: if candidate is validation
 #         * `NegativeIdException`: if candidate is negative `

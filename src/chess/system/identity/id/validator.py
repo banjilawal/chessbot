@@ -6,11 +6,10 @@ Author: Banji Lawal
 Created: 2025-08-12
 """
 
+import sys
 from typing import Any, cast
 
-from chess.system import (
-    NumberValidator, Validator, ValidationResult, NegativeIdException, InvalidIdException, LoggingLevelRouter,
-)
+from chess.system import IdValidationFailedException, NumberValidator, Validator, ValidationResult, LoggingLevelRouter
 
 
 class IdValidator(Validator[int]):
@@ -57,43 +56,31 @@ class IdValidator(Validator[int]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-        1.  Test the candidate is not null and an int with not_negative_validator.
-        2.  If the value is negative return an exception in the ValidationResult.
-        3.  When all checks pass send the number in a ValidationResult's payload.
-    
+            1.  Test the candidate is not null and an int with not_negative_validator.
+            2.  If the value is negative return an exception in the ValidationResult.
+            3.  When all checks pass send the number in a ValidationResult's payload.
         # PARAMETERS:
             *   candidate (Any):
             *   not_negative_validator (NumberValidator)
-    
         # RETURNS:
-        ValidationResult[int] containing either:
-            - On success: int in the payload.
-            - On failure: Exception.
-    
+            *   ValidationResult[int] containing either:
+                - On failure: Exception.
+                - On success: int in the payload.
         # RAISES:
-            *   NegativeIdException
-            *   InvalidIdException
+            *   IdValidationFailedException
         """
         method = "IdValidator.validate"
         
-        try:
-            # Verify the candidate is not null and an int.
-            validation = number_validator.validate(candidate=candidate)
-            if validation.is_failure():
-                return ValidationResult.failure(validation.exception)
-            
-            # Cast and test if the number is negative.
-            id = cast(int, candidate)
-            if id < 0:
-                return ValidationResult.failure(
-                    NegativeIdException(f"{method}: {NegativeIdException.DEFAULT_MESSAGE}")
-                )
-            # If all checks pass return the validated id in a ValidationResult.
-            return ValidationResult.success(payload=id)
-        
-        # Finally, catch any missed exception, wrap an InvalidNIdException around it
-        # then return the exception-chain inside a ValidationResult.
-        except Exception as ex:
+        # Handle the case that the id is not a positive number.
+        validation = number_validator.validate(candidate=candidate, floor=1, ceiling=sys.maxsize)
+        if validation.is_failure:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidIdException(ex=ex, message=f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
+                IdValidationFailedException(
+                    message=f"{method}: {IdValidationFailedException.DEFAULT_MESSAGE}:",
+                    ex=validation.exception
+                )
             )
+        # If all checks pass return the validated id in a ValidationResult.
+        return ValidationResult.success(payload=cast(int, candidate))
+

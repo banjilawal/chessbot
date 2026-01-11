@@ -1,21 +1,23 @@
-# src/chess/system/number/validator/bounds.py
+# src/chess/system/number/validator.py
 
 """
-Module: chess.system.number.validator.bounds
+Module: chess.system.number.validator
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
+
 from typing import Any, cast
 
 from chess.system import (
-    BOARD_DIMENSION, NumberValidationFailedException, LoggingLevelRouter, NotNegativeNumberValidator,
-    NumberAboveCeilingException, NumberBelowFloorException, NumberValidator, ValidationResult, Validator,
+    BOARD_DIMENSION, NullNumberException, NumberValidationFailedException, LoggingLevelRouter,
+    NumberAboveCeilingException, NumberBelowFloorException, ValidationResult, Validator,
 )
+from chess.system.number.exception.debug.negative import NegativeNumberNotAllowedException
 
 
-class BoundNumberValidator(Validator[int]):
+class NumberValidator(Validator[int]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -42,7 +44,6 @@ class BoundNumberValidator(Validator[int]):
             candidate: Any,
             floor: int = 0,
             ceiling: int = BOARD_DIMENSION,
-            number_validator: NumberValidator = NotNegativeNumberValidator(),
     ) -> ValidationResult[int]:
         """
         # ACTION:
@@ -63,18 +64,38 @@ class BoundNumberValidator(Validator[int]):
               *     NumberAboveCeilingException
         """
         method = "BoundNumberValidator.validate"
-        # Handle the existence and type checks.
-        validation = number_validator.validate(candidate=candidate)
-        if validation.is_failure:
+        
+        # Handle the nonexistence case.
+        if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationFailedException(
-                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}", ex=validation.exception,
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
+                    ex=NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}"),
+                )
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, int):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                NumberValidationFailedException(
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
+                    ex=TypeError(f"{method}: Expected an integer, got {type(candidate).__name__} instead."),
                 )
             )
         # As a triple check cast the payload to an int for additional testing.
-        number = cast(int, validation.payload)
-        
+        number = cast(int, candidate)
+        # Handle the case that the number
+        if floor < 0:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                NumberValidationFailedException(
+                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
+                    ex=NegativeNumberNotAllowedException(
+                        f"{method}: {NegativeNumberNotAllowedException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
         # Handle case that the number is below the floor
         if number < floor:
             # Return the exception chain on failure.

@@ -12,7 +12,7 @@ from chess.domain import DomainValidator
 from chess.neighbor import VisitationEvent
 from chess.piece import Piece, PieceValidator
 
-from chess.system import BuildResult, Builder, ChessException, IdValidator, InvalidIdException, LoggingLevelRouter
+from chess.system import BuildResult, Builder, ChessException, IdValidator, IdValidationFailedException, LoggingLevelRouter
 
 
 
@@ -29,7 +29,7 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
             id_validation = IdValidator.validate(id)
             if id_validation.is_failure():
                 return BuildResult.failure(
-                    InvalidIdException(f"{method}: {InvalidIdException.DEFAULT_MESSAGE}")
+                    IdValidationFailedException(f"{method}: {IdValidationFailedException.DEFAULT_MESSAGE}")
                 )
             
             domain_validation = DomainValidator.validate(domain)

@@ -12,10 +12,10 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .exception import *
 from .auto import AutoId
 from .emitter import IdEmitter, id_emitter
 from .validator import IdValidator
+from .wrapper import IdValidationFailedException
 
 
 

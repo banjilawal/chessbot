@@ -24,7 +24,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
       `TypeError`: if `candidate` is not OperationEvent
       `NullOccupationEventException`: if `candidate` is validation
 
-      `InvalidIdException`: if invalid `visitor_id`
+      `IdValidationFailedException`: if invalid `visitor_id`
       `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
       `InvalidSquareException`: if `target` fails coord_stack_validator
 

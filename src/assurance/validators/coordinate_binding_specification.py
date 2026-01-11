@@ -40,7 +40,7 @@ class CoordinateSBindingValidator(Validator):
       ColumnOutOfBoundsException: If point.column is outside the range
         (0, COLUMN_SIZE - 1) inclusive
 .
-      InvalidCoordException: Wraps any
+      CoordValidationFailedException: Wraps any
         (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)
 
     """

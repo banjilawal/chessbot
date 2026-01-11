@@ -10,9 +10,8 @@ version: 1.0.0
 # =========== COORD.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .debug import *
 
 # Modules
-from .null import NullCoordException
-from .base import InvalidCoordException
+from .wrapper import CoordValidationFailedException
 
