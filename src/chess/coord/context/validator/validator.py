@@ -10,14 +10,13 @@ version: 1.0.0
 
 from typing import Any, cast
 
+from chess.coord.context.validator.exception.debug.null import NullCoordContextException
+from chess.coord.context.validator.exception.wrapper import CoordContextValidationFailedException
+from chess.system import NumberValidator, Validator, ValidationResult, LoggingLevelRouter
+from chess.coord import CoordValidator, CoordContext, ZeroCoordContextFlagsException
 
-from chess.system import Validator, ValidationResult, LoggingLevelRouter
-from chess.coord import (
-    CoordValidator, CoordContext, InvalidCoordContextException, NoCoordContextFlagSetException,
-    NullCoordContextException
-)
 
-class CoordContextValidator(Validator):
+class CoordContextValidator(Validator[CoordContext]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -40,24 +39,20 @@ class CoordContextValidator(Validator):
     def validate(
             cls,
             candidate: Any,
-            validator: CoordValidator=CoordValidator()
+            number_validator: NumberValidator = NumberValidator(),
     ) -> ValidationResult[CoordContext]:
         """
         # ACTION:
         Verifies candidate is a CoordContext in two steps.
             1. Test the candidate is a valid SearchCoordContext with a single searcher option switched on.
             2. Test the value passed to CoordContext passes its validation contract..
-
         # PARAMETERS:
           * candidate (Any): Object to verify is a Coord.
           * validator (type[CoordValidator]): Enforces safety requirements on row, column, square_name coords.
-
-          
         # RETURNS:
           ValidationResult[CoordContext] containing either:
                 - On success: CoordContext in the payload.
                 - On failure: Exception.
-
         # RAISES:
             * TypeError
             * NullCoordContextException
@@ -67,185 +62,76 @@ class CoordContextValidator(Validator):
         """
         method = "CoordSearchContextValidator.validate"
         
-        try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullCoordContextException(
-                        f"{method} "
-                        f"{NullCoordContextException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if not isinstance(candidate, CoordContext):
-                return ValidationResult.failure(
-                    TypeError(
-                        f"{method}: "
-                        f"Expected a CoordContext, "
-                        f"got {type(candidate).__column__} instead."
-                    )
-                )
-           
-            context = cast(CoordContext, candidate)
-            if len(context.to_dict()) == 0:
-                return ValidationResult.failure(
-                    NoCoordContextFlagSetException(
-                        f"{method}: "
-                        f"{NoCoordContextFlagSetException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if context.row is not None and context.column is not None:
-                validation = cls.validate_both(
-                    row_candidate=context.row,
-                    column_candidate=context.column
-                )
-                if validation.is_failure:
-                    return ValidationResult.failure(validation.exception)
-                else:
-                    ValidationResult.success(payload=validation.payload)
-            
-            if context.row is not None:
-                validator = cls.validate_row_context(
-                    candidate=context.row,
-                    validator=validator
-                )
-                if validator.is_failure():
-                    return ValidationResult.failure(validator.exception)
-                else:
-                    return ValidationResult.success(payload=validator.payload)
-            
-            if context.column is not None:
-                validation = cls.validate_column_context(
-                    column=context.column,
-                    coord_validator=validator
-                )
-                if validation.is_failure():
-                    return ValidationResult.failure(validation.exception)
-                else:
-                    return ValidationResult.success(payload=validation.payload)
-        except Exception as ex:
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidCoordContextException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{InvalidCoordContextException.DEFAULT_MESSAGE}"
-                    )
+                CoordContextValidationFailedException(
+                    message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=NullCoordContextException(f"{method}: {NullCoordContextException.DEFAULT_MESSAGE}")
                 )
             )
-
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_row_context(
-            cls,
-            candidate: Any,
-            validator: CoordValidator=CoordValidator()
-    ) -> ValidationResult[int]:
-        """
-        # ACTION:
-        Verify a row_candidate meets application CoordContext safety requirements.
-
-        # PARAMETERS:
-          * candidate (Any): Object to verify is a row.
-          * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
-
-        # RETURNS:
-          ValidationResult[CoordContext] containing either:
-                - On success: CoordContext in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-            * InvalidCoordSearchContextException
-        """
-        method = "CoordSearchContextValidator.validate_id_search_option"
+        # Handle the case that they type is wrong.
+        if not isinstance(candidate, CoordContext):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                CoordContextValidationFailedException(
+                    message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=TypeError(f"{method}: Expected a CoordContext, got {type(candidate).__name__} instead.")
+                )
+            )
+       
+        context = cast(CoordContext, candidate)
+        switch_count = len(context.to_dict())
+        if switch_count == 0:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                CoordContextValidationFailedException(
+                    message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=ZeroCoordContextFlagsException(f"{method}: {ZeroCoordContextFlagsException.DEFAULT_MESSAGE}")
+                )
+            )
         
-        try:
-            validation = validator.validate_row(candidate)
-            if validation.is_failure():
-                return ValidationResult.failure(validation.exception)
-            return ValidationResult.success(payload=validation.payload)
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidCoordContextException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{InvalidCoordContextException.DEFAULT_MESSAGE}"
+        if switch_count == 2:
+            row_validation = number_validator.validate(context.row)
+            if row_validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    CoordContextValidationFailedException(
+                        message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                        ex=row_validation.exception
                     )
                 )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_column_context(
-            cls,
-            candidate: Any,
-            validator: CoordValidator = CoordValidator()
-    ) -> ValidationResult[int]:
-        """
-        # ACTION:
-        Verify a column_candidate meets application CoordContext safety requirements.
-
-        # PARAMETERS:
-          * candidate (Any): Object to verify is a column.
-          * validator (type[CoordValidator]): Checks if candidate complies with safety contract.
-
-        # RETURNS:
-          ValidationResult[CoordContext] containing either:
-                - On success: CoordContext in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-            * InvalidCoordSearchContextException
-        """
-        method = "CoordSearchContextValidator.validate_column_context"
+            column_validation = number_validator.validate(context.column)
+            if column_validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    CoordContextValidationFailedException(
+                        message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                        ex=column_validation.exception
+                    )
+                )
+            return ValidationResult.success(payload=context)
         
-        try:
-            validation = validator.validate(candidate)
-            if validation.is_failure():
-                return ValidationResult.failure(validation.exception)
-            return ValidationResult.success(validation.payload)
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidCoordContextException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{InvalidCoordContextException.DEFAULT_MESSAGE}"
+        if context.row is not None and context.column is not None:
+            row_validation = number_validator.validate(context.row)
+            if row_validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    CoordContextValidationFailedException(
+                        message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                        ex=row_validation.exception
                     )
                 )
-            )
-
-    @classmethod
-    def validate_both(
-            cls,
-            row_candidate: Any,
-            column_candidate: Any
-    ) -> ValidationResult[(int, int)]:
-        method = "CoordSearchContextValidator.validate_both"
-        try:
-            row_validation = cls.validate_row_context(row_candidate)
-            if row_validation.is_failure():
-                return ValidationResult.failure(row_validation.exception)
+            return ValidationResult.success(payload=context)
             
-            column_validation = cls.validate_column_context(column_candidate)
-            if column_validation.is_failure():
-                return ValidationResult.failure(column_validation.exception)
-            
-            return ValidationResult.success(
-                payload=(
-                    row_validation.payload,
-                    column_validation.payload
-                )
-            )
-            
-        except Exception as ex:
+        column_validation = number_validator.validate(context.column)
+        if column_validation.is_failure:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
-                InvalidCoordContextException(
-                    ex=ex,
-                    message=(
-                        f"{method}: "
-                        f"{InvalidCoordContextException.DEFAULT_MESSAGE}"
-                    )
+                CoordContextValidationFailedException(
+                    message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=column_validation.exception
                 )
             )
+        return ValidationResult.success(payload=context)

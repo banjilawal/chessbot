@@ -46,18 +46,15 @@ class CoordContext(Context[Coord]):
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   row (Optional[int])
             *   coord (Optional[Coord])
             *   column (Optional[int])
-
         # RETURNS:
-        None
-
+            None
         # RAISES:
-        None
+            None
         """
         super().__init__(id=None, name=None)
         self._row = row
