@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.system import GameColorException
-from chess.arena import InvalidArenaException
+from chess.arena import ArenaValidationFailedException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 
 
 # ======================# NULL ARENA EXCEPTION #======================#
-class TeamColorCollisionException(InvalidArenaException, GameColorException):
+class TeamColorCollisionException(ArenaValidationFailedException, GameColorException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class TeamColorCollisionException(InvalidArenaException, GameColorException):
     1.  Raised if a both unique teams have the same color.
 
     # PARENT:
-        *   InvalidArenaException
+        *   ArenaValidationFailedException
         *   GameColorException
 
     # PROVIDES:

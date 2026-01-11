@@ -14,20 +14,18 @@ from chess.system import ValidationFailedException
 _
 __all__ = [
     # ======================# FORMATION_VALIDATION_FAILURE EXCEPTION #======================#
-    "InvalidFormationException",
+    "FormationValidationFailedException",
 ]
 
 
 # ======================# FORMATION_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidFormationException(FormationException, ValidationFailedException):
+class FormationValidationFailedException(FormationException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a Formation candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidFormationException creating an exception chain. which is sent to the caller in a
-        ValidationResult.
-    2.  The InvalidFormationException chain is useful for tracing a  failure to its source.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Formation. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
     
     # PARENT:
         *   FormationException

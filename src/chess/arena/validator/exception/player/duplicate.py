@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from chess.arena import InvalidArenaException
+from chess.arena import ArenaValidationFailedException
 from chess.agent import AddingDuplicateAgentException
 
 __all__ = [
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL ARENA EXCEPTION #======================#
-class DuplicatePlayerInArenaException(InvalidArenaException, AddinDuplicateItemException):
+class DuplicatePlayerInArenaException(ArenaValidationFailedException, AddinDuplicateItemException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class DuplicatePlayerInArenaException(InvalidArenaException, AddinDuplicateItemE
     1.  Raised if a both unique teams in an Arena are owned by the same player.
 
     # PARENT:
-        *   InvalidArenaException
+        *   ArenaValidationFailedException
         *   AddingDuplicatePlayerException
 
     # PROVIDES:

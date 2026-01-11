@@ -27,7 +27,7 @@ class NullSquareContextException(InvalidSquareContextException, NullException):
 
     # PARENT:
         *   NullSquareContextException
-        *   InvalidSquareContextException
+        *   SquareContextValidationFailedException
 
     # PROVIDES:
     None

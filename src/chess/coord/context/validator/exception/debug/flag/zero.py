@@ -27,7 +27,7 @@ class ZeroCoordContextFlagsException(InvalidCoordContextException, ContextFlagCo
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidCoordContextException
+        *   CoordContextValidationFailedException
 
     # PROVIDES:
     None

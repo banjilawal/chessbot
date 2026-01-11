@@ -73,7 +73,7 @@ class KnightValidator(Validator[Knight]):
         # RAISES:
             *   TypeError
             *   NullRankException
-            *   InvalidRankException
+            *   RankValidationFailedException
         """
         method = "RankValidatorFactory.validate"
         

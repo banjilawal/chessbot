@@ -12,4 +12,4 @@ Created: 2025-11-19
 None
 # Modules
 from .null import NullSquareException
-from .base import InvalidSquareException
+from .base import SquareValidationFailedException

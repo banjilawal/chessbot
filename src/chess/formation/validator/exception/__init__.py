@@ -14,5 +14,5 @@ None
 
 # Modules
 from .null import NullFormationException
-from .wrapper import InvalidFormationException
+from .wrapper import FormationValidationFailedException
 from .route import FormationValidationRouteException

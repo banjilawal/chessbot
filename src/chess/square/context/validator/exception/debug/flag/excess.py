@@ -27,7 +27,7 @@ class ExcessiveSquareContextFlagsException(InvalidSquareContextException, Contex
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidSquareContextException
+        *   SquareContextValidationFailedException
 
     # PROVIDES:
     None

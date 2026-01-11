@@ -14,5 +14,5 @@ None
 
 # Modules
 from .null import NullBoardException
-from .base import InvalidBoardException
+from .wrapper import BoardValidationFailedException
 from .registration import BoardNotRegisteredWithArenaException

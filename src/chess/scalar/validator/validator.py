@@ -129,7 +129,7 @@ class ScalarValidator(Validator[Scalar]):
         # RAISES:
             * TypeError
             * NullNumberException
-            * InvalidScalarException
+            * ScalarValidationFailedException
             * ScalarBelowBoundsException
             * ScalarAboveBoundsException
         """

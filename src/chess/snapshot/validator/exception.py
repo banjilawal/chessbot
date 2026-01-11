@@ -4,6 +4,7 @@ __all__ = [
 ]
 
 from chess.snapshot import SnapshotException
+from chess.system import ValidationFailedException
 
 
 # ======================# SNAPSHOT_VALIDATION_FAILURE EXCEPTION #======================#
@@ -12,10 +13,8 @@ class InvalidSnapshotException(SnapshotException, ValidationFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a Snapshot candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidSnapshotException creating an exception chain. which is sent to the caller in a
-        ValidationResult.
-    2.  The InvalidSnapshotException chain is useful for tracing a  failure to its source.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Snapshot. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   SnapshotException

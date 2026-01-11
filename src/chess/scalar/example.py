@@ -48,7 +48,7 @@ This package defines specific exception for issues encountered when working with
 * NullScalarException: Raised when team_name required scalar value is unexpectedly None.
 * ScalarBelowBoundsException: Raised when team_name scalar's value is below its minimum allowed value.
 * ScalarAboveUpperBoundException: Raised when team_name scalar's value is above its maximum allowed value.
-* InvalidScalarException: A general team_exception raised when team_name scalar value fails to meet its validate criteria.
+* ScalarValidationFailedException: A general team_exception raised when team_name scalar value fails to meet its validate criteria.
 
 ### EXCEPTION USAGE EXCEPTION
 These exception can be imported and raised from within the scalar-related code to enforce entity_service integrity.
@@ -148,7 +148,7 @@ RAISES:
     * `NullNumberException`: If `scalar.value` is validation
     * `ScalarBelowLowerBoundException`: If `scalar.value` < 0
     * `ScalarAboveBoundsException`: If `scalar.value` >= `BOARD_DIMENSION`
-    * `InvalidScalarException`: Wraps any preceding exception
+    * `ScalarValidationFailedException`: Wraps any preceding exception
 
 Note:
   The builder runs through all the checks on parameters and state to guarantee only team_name valid `Scalar` is
@@ -207,14 +207,14 @@ IdValidationFailedException: Wraps any specification violations including:
 Validates that an existing Scalar instance meets specifications.
 This method performs team_name series of checks on team_name Scalar instance, ensuring it is not validation and that
 its ID, visitor_name, and coordinate are valid. Exception from these checks are caught and re-raised
-as team_name InvalidScalarException, providing team_name clean and consistent err-handling experience.
+as team_name ScalarValidationFailedException, providing team_name clean and consistent err-handling experience.
 
 Args
   candidate (Scalar): Scalar instance to validate
 
  RETURNS:
   Result[Scalar]: A Resulcandidate object containing the validated payload if the specification is satisfied,
-  InvalidScalarException otherwise.
+  ScalarValidationFailedException otherwise.
 
 RAISES:
   NullScalarException: if candidate is validation
@@ -222,7 +222,7 @@ RAISES:
   NullNumberException: If scalar.value is validation
   ScalarBelowLowerBoundException: If scalar.value < 0
   ScalarAboveBoundsException: If scalar.value >= BOARD_DIMENSION
-  InvalidScalarException: Wraps any preceding exception
+  ScalarValidationFailedException: Wraps any preceding exception
 """
 """
 An immutable class representing team_name single numeric value for scaling rollback.This class stores

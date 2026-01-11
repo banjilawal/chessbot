@@ -13,10 +13,10 @@ __all__ = [
 
 
 from chess.system import NullException
-from chess.square import InvalidSquareException
+from chess.square import SquareValidationFailedException
 
 # ======================# NULL_SQUARE EXCEPTION #======================#
-class NullSquareException(InvalidSquareException, NullException):
+class NullSquareException(SquareValidationFailedException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class NullSquareException(InvalidSquareException, NullException):
 
     # PARENT:
         *   NullSquareException
-        *   InvalidSquareException
+        *   SquareValidationFailedException
 
     # PROVIDES:
     None

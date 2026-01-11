@@ -26,7 +26,7 @@ class NullSnapshotContextException(InvalidSnapshotContextException, NullExceptio
 
     # PARENT:
         *   NullSnapshotContextException
-        *   InvalidSnapshotContextException
+        *   SnapshotContextValidationFailedException
 
     # PROVIDES:
     None

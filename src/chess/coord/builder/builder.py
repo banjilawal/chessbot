@@ -8,8 +8,8 @@ version: 1.0.0
 """
 
 
-from chess.system import Builder, BuildResult, LoggingLevelRouter, BoundNumberValidator
-from chess.coord import Coord, CoordValidator,  CoordBuildFailedException
+from chess.system import BOARD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
+from chess.coord import Coord, CoordBuildFailedException
 
 
 
@@ -40,7 +40,7 @@ class CoordBuilder(Builder[Coord]):
             cls,
             row: int,
             column: int,
-            number_validator: BoundNumberValidator = BoundNumberValidator(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[Coord]:
         """
         # ACTION:
@@ -64,18 +64,24 @@ class CoordBuilder(Builder[Coord]):
         method = "CoordBuilder.builder"
         
         # Handle the case that the row param is not certified safe
-        row_validation = number_bounds_validator.validate(candidate=row)
+        row_validation = number_validator.validate(candidate=row, floor=0, ceiling=BOARD_DIMENSION-1)
         if row_validation.is_failure:
-            #
+            # Return the validation chain on failure.
             return BuildResult.failure(
                 CoordBuildFailedException(
                     message=f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}",
                     ex=row_validation.exception
                 )
             )
-        # Test the column parameter is between 0 and BOARD_DIMENSION - 1 inclusive.
-        column_validation = number_bonds_validator.validate(candidat=column)
+        # Handle the case that the row param is not certified safe
+        column_validation = number_validator.validate(candidate=column, floor=0, ceiling=BOARD_DIMENSION-1)
         if column_validation.is_failure:
-            return BuildResult.failure(column_validation.exception)
+            # Return the validation chain on failure.
+            return BuildResult.failure(
+                CoordBuildFailedException(
+                    message=f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=column_validation.exception
+                )
+            )
         # If both checks are passed create a Coord and return in the BuildResult.
         return BuildResult.success(payload=Coord(row=row, column=column))

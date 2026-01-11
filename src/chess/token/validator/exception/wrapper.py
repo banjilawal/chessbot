@@ -23,10 +23,8 @@ class TokenValidationFailedException(TokenException, ValidationFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a Token candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an TokenValidationFailedException creating an exception chain. which is sent to the caller in a
-        ValidationResult.
-    2.  The TokenValidationFailedException chain is useful for tracing a  failure to its source.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Token. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   TokenException

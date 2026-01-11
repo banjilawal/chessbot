@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.system import NullException
-from chess.arena import InvalidArenaException
+from chess.arena import ArenaValidationFailedException
 
 __all__ = [
     # ======================# NULL_ARENA EXCEPTION #======================#
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# NULL_ARENA EXCEPTION #======================#
-class NullArenaException(InvalidArenaException, NullException):
+class NullArenaException(ArenaValidationFailedException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -28,7 +28,7 @@ class NullArenaException(InvalidArenaException, NullException):
 
     # PARENT:
         *   NullArenaException
-        *   InvalidArenaException
+        *   ArenaValidationFailedException
 
     # PROVIDES:
     None

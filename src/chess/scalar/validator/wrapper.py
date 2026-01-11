@@ -1,6 +1,6 @@
 __all__ = [
     # ======================# SCALAR_VALIDATION_FAILURE EXCEPTION #======================#
-    "InvalidScalarException",
+    "ScalarValidationFailedException",
 ]
 
 from chess.scalar import ScalarException
@@ -8,15 +8,13 @@ from chess.system import ValidationFailedException
 
 
 # ======================# SCALAR_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidScalarException(ScalarException, ValidationFailedException):
+class ScalarValidationFailedException(ScalarException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a Scalar candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidScalarException creating an exception chain. which is sent to the caller in a
-        ValidationResult.
-    2.  The InvalidScalarException chain is useful for tracing a  failure to its source.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Scalar. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   ScalarException

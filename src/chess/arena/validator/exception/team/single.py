@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import BoundsException
-from chess.arena import InvalidArenaException
+from chess.arena import ArenaValidationFailedException
 
 __all__ = [
     # ======================# NULL ARENA EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL ARENA EXCEPTION #======================#
-class SingleTeamInArenaException(InvalidArenaException, BoundsException):
+class SingleTeamInArenaException(ArenaValidationFailedException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class SingleTeamInArenaException(InvalidArenaException, BoundsException):
     1.  Raised if an Arena's UniqueDataService instance contains only one team.
 
     # PARENT:
-        *   InvalidArenaException
+        *   ArenaValidationFailedException
         *   SingleTeamInArenaException
 
     # PROVIDES:

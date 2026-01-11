@@ -73,7 +73,7 @@ class QueenValidator(Validator[Queen]):
         # RAISES:
             *   TypeError
             *   NullRankException
-            *   InvalidRankException
+            *   RankValidationFailedException
         """
         method = "RankValidatorFactory.validate"
         

@@ -70,7 +70,7 @@ class CheckEventBuilder(Enum):
       This includes:
         * `IdValidationFailedException`: if `attackEvent_id` fails validate checks
         * `InvalidNameException`: if `visitor_name` fails validate checks
-        * `InvalidRankException`: if `bounds` fails validate checks
+        * `RankValidationFailedException`: if `bounds` fails validate checks
         * `InvalidTeamException`: if `team_name` fails validate checks
         * `InvalidTeamAssignmentException`: If `attackEvent.team_name` is different from `team_name` parameter
         * `FullRankQuotaException`: If the `team_name` has no empty slots for the `attackEvent.bounds`

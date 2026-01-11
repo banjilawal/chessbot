@@ -11,20 +11,18 @@ from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# SQUARE_VALIDATION_FAILURE EXCEPTION #======================#
-    "InvalidSquareException",
+    "SquareValidationFailedException",
 ]
 
 
 # ======================# SQUARE_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidSquareException(SquareException, ValidationFailedException):
+class SquareValidationFailedException(SquareException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a Square candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidSquareException creating an exception chain. which is sent to the caller in a
-        ValidationResult.
-    2.  The InvalidSquareException chain is useful for tracing a  failure to its source.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Square. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   SquareException

@@ -83,7 +83,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             *   NullSnapshotContextException
             *   ZeroSnapshotContextFlagsException
             *   ExcessiveSnapshotContextFlagsException
-            *   InvalidSnapshotContextException
+            *   SnapshotContextValidationFailedException
         """
         method = "SnapshotContextValidator.validate"
         try:
@@ -166,7 +166,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
                 # On validation success return the player_SnapshotContext in the ValidationResult
                 return ValidationResult.success(context)
         
-        # Finally, catch any missed exception, wrap an InvalidSnapshotContextException around it then
+        # Finally, catch any missed exception, wrap an SnapshotContextValidationFailedException around it then
         # return the exception-chain inside the ValidationResult
         except Exception as ex:
             return ValidationResult.failure(

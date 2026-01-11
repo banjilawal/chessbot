@@ -12,20 +12,18 @@ from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "InvalidAgentContextException",
+    "PlayerContextValidationFailedException",
 ]
 
 
 # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidAgentContextException(AgentContextException, ValidationFailedException):
+class PlayerContextValidationFailedException(PlayerContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a AgentContext candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidAgentContextException creating an exception chain. which is sent to the caller in a
-        ValidationResult.
-    2.  The InvalidAgentContextException chain is useful for tracing a  failure to its source.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a PlayerContext. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   AgentContextException

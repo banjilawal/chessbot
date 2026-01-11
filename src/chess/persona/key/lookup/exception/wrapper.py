@@ -22,10 +22,8 @@ class PersonaLookupFailedException(PersonaException, LookupFailedException):
     # ROLE: ExceptionWrapper, Encapsulation
 
     # RESPONSIBILITIES:
-    1.  If a Persona lookup runs into an error a debug exception is created and encapsulated in a
-        PersonaLookupFailedException creating an exception chain which is sent to the caller in a
-        SearchResult.
-    2.  The PersonaLookupFailedException chain is useful for tracing a failure to its source.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Square. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   PersonaException

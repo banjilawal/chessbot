@@ -22,9 +22,8 @@ class PlayerValidationFailedException(PlayerException, ValidationFailedException
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised during an Player verification process.
-    2.  Catchall Exception for PlayerValidator when a candidate fails a sanity check.
-    3.  Wraps an exception that hits the try-finally block of an PlayerValidator method.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Player. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   PlayerException

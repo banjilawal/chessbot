@@ -16,4 +16,4 @@ from player import *
 
 # Modules
 from .null import NullArenaException
-from .base import InvalidArenaException
+from .base import ArenaValidationFailedException

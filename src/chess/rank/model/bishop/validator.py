@@ -73,7 +73,7 @@ class BishopValidator(Validator[Bishop]):
         # RAISES:
             *   TypeError
             *   NullRankException
-            *   InvalidRankException
+            *   RankValidationFailedException
         """
         method = "RankValidatorFactory.validate"
         

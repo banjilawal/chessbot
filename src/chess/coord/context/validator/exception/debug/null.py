@@ -26,7 +26,7 @@ class NullCoordContextException(InvalidCoordContextException, NullException):
 
     # PARENT:
         *   NullCoordContextException
-        *   InvalidCoordContextException
+        *   CoordContextValidationFailedException
 
     # PROVIDES:
     None

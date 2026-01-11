@@ -73,7 +73,7 @@ class KingValidator(Validator[King]):
         # RAISES:
             *   TypeError
             *   NullRankException
-            *   InvalidRankException
+            *   RankValidationFailedException
         """
         method = "RankValidatorFactory.validate"
         

@@ -12,7 +12,7 @@ from chess.board import BoardService
 from chess.coord import CoordService, CoordValidator
 from chess.piece import Piece, PieceValidator
 from chess.square import (
-    InvalidPieceSquareRelationException, PieceInconsistentSquareOccupationException, Square, InvalidSquareException,
+    InvalidPieceSquareRelationException, PieceInconsistentSquareOccupationException, Square, SquareValidationFailedException,
     NullSquareException, SquareAndPieceMismatchedCoordException
 )
 from chess.system import IdentityService, Validator, ValidationResult, NameValidator, LoggingLevelRouter, IdValidator
@@ -71,7 +71,7 @@ class SquareValidator(Validator[Square]):
         # RAISES:
             * TypeError
             * NullSquareException
-            * InvalidSquareException
+            * SquareValidationFailedException
         """
         method = "SquareValidator.validate"
         try:
@@ -105,11 +105,11 @@ class SquareValidator(Validator[Square]):
             # If no errors are detected return the successfully validated Square instance.
             return ValidationResult.success(payload=square)
             
-            # Finally, catch any missed exception and wrap A InvalidSquareException around it
+            # Finally, catch any missed exception and wrap A SquareValidationFailedException around it
             # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidSquareException(ex=ex, message=f"{method}: {InvalidSquareException.DEFAULT_MESSAGE}")
+                SquareValidationFailedException(ex=ex, message=f"{method}: {SquareValidationFailedException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -161,7 +161,7 @@ class SquareValidator(Validator[Square]):
         # RAISES:
             * TypeError
             * NullSquareException
-            * InvalidSquareException
+            * SquareValidationFailedException
         """
         method = "SquareValidator.validate_piece_square_binding"
         

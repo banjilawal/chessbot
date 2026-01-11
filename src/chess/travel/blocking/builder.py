@@ -68,7 +68,7 @@
     This includes:
       * `IdValidationFailedException`: if `scanEvent_id` fails validate checks
       * `InvalidNameException`: if `visitor_name` fails validate checks
-      * `InvalidRankException`: if `bounds` fails validate checks
+      * `RankValidationFailedException`: if `bounds` fails validate checks
       * `InvalidTeamException`: if `team_name` fails validate checks
       * `InvalidTeamAssignmentException`: If `scanEvent.team_name` is different from `team_name` parameter
       * `FullRankQuotaException`: If the `team_name` has no empty slots for the `scanEvent.bounds`

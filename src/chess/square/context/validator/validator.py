@@ -71,7 +71,7 @@ class SquareContextValidator(Validator[SquareContext]):
         # RAISES:
             *   TypeError
             *   NullSquareContextException
-            *   InvalidSquareContextException
+            *   SquareContextValidationFailedException
         """
         method = "SquareContextValidator.validate"
         try:
@@ -121,7 +121,7 @@ class SquareContextValidator(Validator[SquareContext]):
                     return ValidationResult.failure(coord_validation.exception)
                 return ValidationResult.success(payload=context)
             
-        # Finally, catch any missed exception, wrap an InvalidSquareContextException around it
+        # Finally, catch any missed exception, wrap an SquareContextValidationFailedException around it
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

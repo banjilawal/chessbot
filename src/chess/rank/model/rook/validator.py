@@ -73,7 +73,7 @@ class RookValidator(Validator[Rook]):
         # RAISES:
             *   TypeError
             *   NullRankException
-            *   InvalidRankException
+            *   RankValidationFailedException
         """
         method = "RankValidatorFactory.validate"
         

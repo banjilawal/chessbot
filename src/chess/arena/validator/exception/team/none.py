@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.arena import InvalidArenaException
+from chess.arena import ArenaValidationFailedException
 
 __all__ = [
     # ======================# NULL ARENA EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL ARENA EXCEPTION #======================#
-class NoTeamsInArenaException(InvalidArenaException, NullException):
+class NoTeamsInArenaException(ArenaValidationFailedException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class NoTeamsInArenaException(InvalidArenaException, NullException):
     1.  Raised if an Arena's UniqueDataService instance contains no teams.
 
     # PARENT:
-        *   InvalidArenaException
+        *   ArenaValidationFailedException
         *   NoTeamsInArenaException
 
     # PROVIDES:

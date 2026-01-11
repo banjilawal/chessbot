@@ -73,7 +73,7 @@ class PawnValidator(Validator[Pawn]):
         # RAISES:
             *   TypeError
             *   NullRankException
-            *   InvalidRankException
+            *   RankValidationFailedException
         """
         method = "RankValidatorFactory.validate"
         

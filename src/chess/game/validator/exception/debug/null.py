@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.game import InvalidGameException
+from chess.game import GameValidationFailedException
 
 __all__ = [
     # ======================# GAME_ NULL EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL GAME EXCEPTION #======================#
-class NullGameException(InvalidGameException, NullException):
+class NullGameException(GameValidationFailedException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -26,7 +26,7 @@ class NullGameException(InvalidGameException, NullException):
     2.  Raised if an entity, method or operation requires a Game but receives null instead.
 
     # PARENT:
-        *   InvalidGameException
+        *   GameValidationFailedException
         *   NullGameException
 
     # PROVIDES:

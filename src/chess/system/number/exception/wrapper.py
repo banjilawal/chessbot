@@ -21,10 +21,8 @@ class NumberValidationFailedException(NumberException, ValidationFailedException
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a Number candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an NumberValidationFailedException creating an exception chain. which is sent to the caller in a
-        ValidationResult.
-    2.  The NumberValidationFailedException chain is useful for tracing a  failure to its source.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as an Int. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   NumberException

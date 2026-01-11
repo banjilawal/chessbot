@@ -6,27 +6,23 @@ Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-
-
-
+from chess.snapshot import SnapshotContextException
 from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "InvalidSnapshotContextException",
+    "SnapshotContextValidationFailedException",
 ]
 
 
 # ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidSnapshotContextException(SnapshotContextException, ValidationFailedException):
+class SnapshotContextValidationFailedException(SnapshotContextException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a SnapshotContext candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an InvalidSnapshotContextException creating an exception chain. which is sent to the caller in a
-        ValidationResult.
-    2.  The InvalidSnapshotContextException chain is useful for tracing a  failure to its source.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a SnapshotContext. The
+        encapsulated exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   SnapshotContextException

@@ -26,7 +26,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
 
       `IdValidationFailedException`: if invalid `visitor_id`
       `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
-      `InvalidSquareException`: if `target` fails coord_stack_validator
+      `SquareValidationFailedException`: if `target` fails coord_stack_validator
 
       `AutoOccupationException`: if target already occupies the square_name
       `KingAttackException`: if the target square_name is occupied by an enemy occupation

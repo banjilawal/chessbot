@@ -7,7 +7,7 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-from chess.board import InvalidBoardException
+from chess.board import BoardValidationFailedException
 from chess.system import RegistrationException
 
 __all__ = [
@@ -17,7 +17,7 @@ __all__ = [
 
 
 #======================# BOARD_NOT_REGISTERED_WITH_ARENA EXCEPTION #======================#
-class BoardNotRegisteredWithArenaException(InvalidBoardException, RegistrationException):
+class BoardNotRegisteredWithArenaException(BoardValidationFailedException, RegistrationException):
     """
     Catchall for when a Board does not have a relationship with another entity.
     """

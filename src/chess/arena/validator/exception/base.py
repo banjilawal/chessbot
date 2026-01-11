@@ -12,18 +12,18 @@ from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# INVALID_ARENA EXCEPTION #======================#
-    "InvalidArenaException",
+    "ArenaValidationFailedException",
 ]
 
 
 # ======================# ARENA VALIDATION EXCEPTION #======================#
-class InvalidArenaException(ArenaException, ValidationFailedException):
+class ArenaValidationFailedException(ArenaException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised Arena validation.
-    2.  Wrap an exception that hits the try-finally-block in ArenaValidator methods.
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as an Arena. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
         *   ArenaException

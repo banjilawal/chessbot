@@ -12,21 +12,18 @@ from chess.system import ValidationFailedException
 
 __all__ = [
   # ======================# RANK_VALIDATION_FAILURE EXCEPTION #======================#
-  "InvalidRankException",
+  "RankValidationFailedException",
 ]
 
 
 # ======================# RANK_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidRankException(RankException, ValidationFailedException):
+class RankValidationFailedException(RankException, ValidationFailedException):
   """
   # ROLE: Exception Wrapper
 
   # RESPONSIBILITIES:
-  1.  A debug exception is created when a Rank candidate fails a validation test. Validation debug exceptions are
-      encapsulated inside an InvalidRankException creating an exception chain. which is sent to the caller in a
-      ValidationResult.
-  2.  The InvalidRankException chain is useful for tracing a  failure to its source.
-
+    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Rank. The encapsulated
+        exceptions create a chain for tracing the source of the failure.
   # PARENT:
       *   RankException
       *   ValidationFailedException

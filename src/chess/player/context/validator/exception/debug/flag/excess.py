@@ -27,7 +27,7 @@ class ExcessiveAgentContextFlagsException(InvalidAgentContextException, ContextF
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidAgentContextException
+        *   PlayerContextValidationFailedException
 
     # PROVIDES:
     None

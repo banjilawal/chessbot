@@ -28,7 +28,7 @@ class FormationLookupFailedException(FormationException, LookupFailedException):
     2.  The FormationLookupFailedException chain is useful for tracing a wrapper to its source.
 
     # PARENT:
-        *   InvalidFormationException
+        *   FormationValidationFailedException
         *   LookupServiceException
 
     # PROVIDES:
