@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from chess.arena import ArenaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from chess.team import TeamContext
+from chess.team import TeamContext, TeamContextValidationFailedException, TeamContextValidationRouteException
 
 
 class TeamContextValidator(Validator[TeamContext]):
@@ -98,7 +98,7 @@ class TeamContextValidator(Validator[TeamContext]):
             return ValidationResult.failure(
                 TeamContextValidationFailedException(
                     message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
-                    ex=NoTeamContextFlagException(f"{method}: {NoTeamContextFlagException.DEFAULT_MESSAGE}")
+                    ex=ZeroTeamContextFlagException(f"{method}: {NoTeamContextFlagException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case of too many attributes being used in a search.

@@ -14,11 +14,11 @@ __all__ = [
 ]
 
 from chess.system import NullException
-from chess.board import InvalidBoardContextException
+from chess.board import BoardContextException
 
 
 # ======================# NULL_BOARD_CONTEXT EXCEPTION #======================#
-class NullBoardContextException(InvalidBoardContextException, NullException):
+class NullBoardContextException(BoardContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

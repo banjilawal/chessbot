@@ -3,23 +3,20 @@ __all__ = [
     "CoordContextValidationRouteException",
 ]
 
-from chess.system import ResultException, UnhandledRouteException
+from chess.coord import CoordException
+from chess.system import UnhandledRouteException
 
 
 # ======================# UNHANDLED_COORD_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class CoordContextValidationRouteException(ResultException, UnhandledRouteException):
+class CoordContextValidationRouteException(CoordException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that CoordContextValidator did not handle one of the paths necessary to assure a candidate is a
-        safe to use CoordContext. There are different configurations of CoordContext that are correct. Each
-        configuration must have a testing route for a thorough verification process. If a CoordContext configuration
-        does not have a validation route the last step in the logic will return a ValidationResult containing a
-        CoordContextValidationRouteException.
+    1.  Indicate that the CoordContext validation failed because there was no build route for the CoordContext key.
 
     # PARENT:
-        *   ResultException
+        *   CoordException
         *   UnhandledRouteException
 
     # PROVIDES
@@ -32,8 +29,4 @@ class CoordContextValidationRouteException(ResultException, UnhandledRouteExcept
     None
     """
     ERROR_CODE = "UNHANDLED_COORD_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
-        "The CoordContextValidator did not handle one of the paths necessary to assure a candidate is a safe to use"
-        "CoordContext. Ensure all possible verification branches are covered to ensure the execution flow does not "
-        "hit the default failure result outside the if-verification-blocks."
-    )
+    DEFAULT_MESSAGE = "CoordContext validation failed: No validation route was provided for the Coord attribute."

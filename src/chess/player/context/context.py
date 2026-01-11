@@ -51,20 +51,17 @@ class PlayerContext(Context[Player]):
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (Optional[int])
             *   designation (Optional[str])
             *   team (Optional[Team])
             *   game (Optional[Game])
             *   variety (Optional[PlayerVariety])
-
         # RETURNS:
-        None
-
+            None
         # RAISES:
-        None
+            None
         """
         super().__init__(id=id, name=name)
         self._team = team
@@ -86,15 +83,12 @@ class PlayerContext(Context[Player]):
     def to_dict(self) -> dict:
         """
         # Convert the PlayerContext object to a dictionary.
-
         # PARAMETERS:
-        None
-
+            None
         # RETURNS:
-        dict
-
+            dict
         # RAISES:
-        None
+            None
         """
         return {
             "id": self.id,

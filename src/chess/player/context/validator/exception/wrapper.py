@@ -7,7 +7,8 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.agent import AgentContextException
+
+from chess.player import PlayerContextException
 from chess.system import ValidationFailedException
 
 __all__ = [

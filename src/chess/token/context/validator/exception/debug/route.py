@@ -17,7 +17,7 @@ class TokenContextValidationRouteException(TokenException, UnhandledRouteExcepti
     1.  Indicate that the TokenContext validation failed because there was no build route for the TokenContext key.
 
     # PARENT:
-        *   ResultException
+        *   TokenException
         *   UnhandledRouteException
 
     # PROVIDES
