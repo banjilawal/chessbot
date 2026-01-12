@@ -75,3 +75,7 @@ class TeamDataService(DataService[Team]):
     @property
     def team_context_service(self) -> TeamContextService:
         return cast(TeamContextService, self.context_service)
+    
+    @property
+    def items(self) -> List[Team]:
+        return self.items

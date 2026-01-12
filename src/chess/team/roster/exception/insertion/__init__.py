@@ -13,6 +13,7 @@ version: 1.0.0
 None
 
 # Modules
+from .full import RosterIsFullException
 from .quota import TeamRankQuotaFullException
 from .enemy import EnemyCannotJoinRosterException
 from .duplicate import TokenAlreadyOnRosterException

@@ -9,10 +9,10 @@ version: 1.0.0
 
 
 from chess.arena import Arena
+from chess.board import BoardSquareService, BoardSquareServiceException
 from chess.system import InsertionResult
 from chess.team import Team, TeamService
 from chess.token import Token, TokenService, UniqueTokenDataService
-from chess.square import UniqueSquareDataService
 from chess.token.service import UniqueTokenDataServiceException
 
 
@@ -35,15 +35,19 @@ class Board:
     
     _id: int
     _arena: Arena
+    _row_size: int
+    _column_size: int
     _tokens: UniqueTokenDataService
-    _squares: UniqueSquareDataService
+    _squares: BoardSquareService
     
     def __init__(
             self,
             id: int,
             arena: Arena,
+            row_size: int,
+            column_size: int,
+            squares: BoardSquareService = BoardSquareService(),
             tokens: UniqueTokenDataService = UniqueTokenDataServiceException(),
-            squares: UniqueSquareDataService = UniqueSquareDataService(),
     ):
         """
         # ACTION:
@@ -64,6 +68,8 @@ class Board:
         self._arena = arena
         self._tokens = tokens
         self._squares = squares
+        self._row_size = row_size
+        self._column_size = column_size
     
     @property
     def id(self) -> int:
@@ -78,8 +84,16 @@ class Board:
         return self._tokens
     
     @@property
-    def squares(self) -> UniqueSquareDataService:
+    def squares(self) -> BoardSquareServiceException:
         return self._squares
+    
+    @property
+    def row_size(self) -> int:
+        return self._row_size
+    
+    @property
+    def column_size(self) -> int:
+        return self._column_size
     
     def __eq__(self, other):
         if other is self: return True

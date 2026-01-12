@@ -7,14 +7,19 @@ Created: 2025-08-05
 version: 1.0.0
 """
 
-from typing import List, cast
+from typing import List, Optional, cast
 
 from chess.schema import SchemaService
 from chess.rank import Rank, RankService
-from chess.system import CalculationResult, EntityService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
+from chess.system import (
+    CalculationResult, EntityService, IdentityService, InsertionResult, LoggingLevelRouter,
+    SearchResult, id_emitter
+)
 from chess.team import (
-    AddingRosterMemberFailedException, HostageRelationAnalyzer, RosterRelationAnalyzer, Team, TeamBuilder,
-    TeamRankQuotaFullException, TeamSearchFailedException, TeamServiceException, TeamValidator, TokenLocation
+    AddingRosterMemberFailedException, EnemyCannotJoinRosterException, HostageRelationAnalyzer, RosterRelationAnalyzer,
+    Team, TeamBuilder,
+    TeamRankQuotaFullException, TeamSearchFailedException, TeamServiceException, TeamValidator, TokenLocation,
+    ZeroTeamContextFlagsException
 )
 from chess.token import AddingDuplicateTokenException, CombatantToken, Token, TokenContext, TokenService
 
@@ -100,12 +105,13 @@ class TeamService(EntityService[Team]):
         return self._schema_service
     
     @LoggingLevelRouter.monitor
-    def search_team_for_token(
+    def search_team_roster(
             self,
             team: Team,
-            piece: Token,
-            piece_service: TokenService = TokenService(),
-    ) -> SearchResult[List[(Token, TokenLocation)]]:
+            id: Optional[int] = None,
+            designation: Optional[str] = None,
+            identity_service: IdentityService = IdentityService(),
+    ) -> SearchResult[List[Token]]:
         """
         This is only going to be used in Arenas where it might be necessary to check if a captured piece has
         been properly registered with the enemy. I probably won't need it.
@@ -125,67 +131,22 @@ class TeamService(EntityService[Team]):
                     )
                 )
             )
-        # Validate the piece and handle the failure case.
-        piece_validation = piece_service.validator.validate(piece)
-        if piece_validation.is_failure:
+        # --- Run the search on the roster. ---#
+        search_result = team.roster.search(id=id, designation=designation, identity_service=identity_service)
+        
+        # Handle the case that the search did not complete.
+        if search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
                     ex=TeamSearchFailedException(
                         message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}",
-                        ex=piece_validation.exception
+                        ex=search_result.exception
                     )
                 )
             )
-        # Captured token cannot be added to any roster. Handle the failure case.
-        if isinstance(piece, CombatantToken) and cast(CombatantToken, piece).captor is not None:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                        ex=CannotAddCapturedTeamMemberException(
-                            f"{method}: {CannotAddCapturedTeamMemberException.DEFAULT_MESSAGE}"
-                        )
-                    )
-                )
-            )
-        # create the container for storing all the search hits.
-        matches: List[(Token, TokenLocation)]
         
-        # Process tokens on the roster first.
-        roster_search = team.roster.search(context=TokenContext(id=piece.id))
-        if roster_search.is_failure:
-            # If roster_search fails send the exception chain.
-            return SearchResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=roster_search.exception
-                )
-            )
-        # Go through the roster hits, tag their locations and append to matches.
-        if roster_search.is_success:
-            for token in roster_search.payload:
-                matches.append((token, TokenLocation.ROSTER))
-                
-        # Process the hostages
-        hostage_search = team.hostages.search(context=TokenContext(id=piece.id))
-        if hostage_search.is_failure:
-            # Send the exception chain on failure.
-            return SearchResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=hostage_search.exception
-                )
-            )
-        # Tag and append hits from the hostages list.
-        if hostage_search.is_success:
-            for token in hostage_search.payload:
-                matches.append((token, TokenLocation.HOSTAGES))
-        # Send the tagged matches.
-        return SearchResult.success(matches)
     
     def add_roster_member(self, team: Team, piece: Token) -> InsertionResult[Token]:
         """
@@ -226,8 +187,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 AddingRosterMemberFailedException(
                     message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=TokenBelongsOnDifferentRosterException(
-                        f"{method}: {TokenBelongsOnDifferentRosterException.DEFAULT_MESSAGE}"
+                    ex=EnemyCannotJoinRosterException(
+                        f"{method}: {EnemyCannotJoinRosterException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -328,7 +289,7 @@ class TeamService(EntityService[Team]):
                 )
             )
         # --- Search the team's roster for tokens that share the persona's rank. ---#
-        search_result = team.roster.search_tokens(context=TokenContext(rank=rank))
+        search_result = team.roster.search(context=TokenContext(rank=rank))
         
         # Handle the case that the search did not succeed
         if search_result.is_failure:

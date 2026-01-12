@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from typing import List, cast
+from typing import List, Optional, cast
 
 from chess.system import (
     DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
@@ -127,10 +127,10 @@ class TokenDataService(DataService[Token]):
         return InsertionResult.success(payload=cast(Token, super_push_result.payload))
     
     @LoggingLevelRouter.monitor
-    def delete_by_id(
+    def delete_token(
             self,
-            id: int,
-            identity_service: IdentityService = IdentityService()
+            id: Optional[int] = None,
+            iden
     ) -> DeletionResult[Token]:
         """
         # ACTION:
@@ -159,6 +159,10 @@ class TokenDataService(DataService[Token]):
                     ex=validation.exception
                 )
             )
+        removals = []
+        for item in self.items:
+            if item.id == id:
+                removals.append(cast(Token, item))
         # # Pass the results of an id search to the deletion helper.
         search_result = self.token_context_service.finder.find(context=TokenContext(id=id))
         return self._delete_tokens_by_search_result(search_result=search_result)

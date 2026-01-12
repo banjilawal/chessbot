@@ -15,5 +15,5 @@ None
 # Modules
 from .empty import PoppingEmptyRosterException
 from .active import DeletingActiveTokenException
-from .wrapper import RosterMemberDeletionFailedException
+from .wrapper import RosterTokenDeletionFailedException
 from .unfound import RosterMemberDoesNotExistForRemovalException

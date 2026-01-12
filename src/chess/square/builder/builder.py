@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0
 """
+
 from chess.board import Board, BoardService
 from chess.coord import Coord, CoordService
 from chess.square import Square, SquareBuildFailedException, SquareContext, SquareValidator

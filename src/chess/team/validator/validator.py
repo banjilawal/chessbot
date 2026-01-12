@@ -9,11 +9,11 @@ Created: 2025-09-11
 from typing import cast, Any
 
 from chess.schema import SchemaService
-from chess.player import Player, PlayerService, TeamBelongsToDifferentOwnerException
-from chess.arena import Arena, ArenaService, TeamPlayingDifferentArenaException
+from chess.board import Board, BoardService, TeamBelongsToDifferentOwnerException
+from chess.board import Board, BoardService, TeamPlayingDifferentBoardException
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
-    NullTeamException, Team, TeamNotSubmittedOwnerRegistrationException, TeamNotSubmittedArenaRegistrationException,
+    NullTeamException, Team, TeamNotSubmittedOwnerRegistrationException, TeamNotSubmittedBoardRegistrationException,
     TeamValidationFailedException
 )
 
@@ -43,8 +43,8 @@ class TeamValidator(Validator[Team]):
     def validate(
             cls,
             candidate: Any,
-            arena_service: ArenaService(),
-            owner_service: PlayerService = PlayerService(),
+            board_service: BoardService(),
+            owner_service: BoardService = BoardService(),
             schema_service: SchemaService = SchemaService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Team]:
@@ -61,7 +61,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   candidate (Any)
             *   team_schema (Schema)
-            *   player_certifier (PlayerService)
+            *   board_certifier (BoardService)
             *   identity_service (IdentityService)
         # RETURNS:
         ValidationResult[Team] containing either:
@@ -125,14 +125,14 @@ class TeamValidator(Validator[Team]):
                     ex=owner_verification.exception
                 )
             )
-        # Handle the case the team.arena safety and relation fails.
-        arena_verification = cls._validate_arena(team=team, arena_service=arena_service)
-        if arena_verification.is_failure:
+        # Handle the case the team.board safety and relation fails.
+        board_verification = cls._validate_board(team=team, board_service=board_service)
+        if board_verification.is_failure:
             # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=arena_verification.exception
+                    ex=board_verification.exception
                 )
             )
         # On certification successes send the team instance in the ValidationResult.
@@ -140,7 +140,7 @@ class TeamValidator(Validator[Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _validate_owner(cls, team: Team, owner_service: PlayerService = PlayerService()) -> ValidationResult[Player]:
+    def _validate_owner(cls, team: Team, owner_service: BoardService = BoardService()) -> ValidationResult[Board]:
         """
         # ACTION:
             1.  If team.owner is not validated by owner_service return validation exception.
@@ -148,18 +148,18 @@ class TeamValidator(Validator[Team]):
             3.  The tests passed. Send team.owner in the ValidationResult.
         # PARAMETERS:
             *   team (Team)
-            *   owner_service (PlayerService)
+            *   owner_service (BoardService)
         # RETURNS:
-        ValidationResult[Player] containing either:
+        ValidationResult[Board] containing either:
             - On failure: Exception.
-            - On success: Player in the payload.
+            - On success: Board in the payload.
         # RAISES:
             *   TeamValidationFailedException
         """
         method = "TeamValidator._validate_owner"
         
         # Handle the case team.owner certification fails.
-        owner_team_relation = owner_service.player_team_relation_analyzer.analyze(
+        owner_team_relation = owner_service.board_team_relation_analyzer.analyze(
             candidate_primary=team.owner,
             candidate_satellite=team,
         )
@@ -199,58 +199,58 @@ class TeamValidator(Validator[Team]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _validate_arena(cls, team: Team, arena_service: ArenaService = ArenaService()) -> ValidationResult[Arena]:
+    def _validate_board(cls, team: Team, board_service: BoardService = BoardService()) -> ValidationResult[Board]:
         """
         # ACTION:
-            1.  If team.arena is not validated by owner_service return validation exception.
-            2.  If the team is not one of the two teams in the arena return the exception.
-            3.  The tests are passed. Send team.arena in the ValidationResult.
+            1.  If team.board is not validated by owner_service return validation exception.
+            2.  If the team is not one of the two teams in the board return the exception.
+            3.  The tests are passed. Send team.board in the ValidationResult.
         # PARAMETERS:
             *   team (Team)
-            *  arena_service (ArenaService)
+            *   board_service (BoardService)
         # RETURNS:
-        ValidationResult[Arena] containing either:
+        ValidationResult[Board] containing either:
             - On failure: Exception.
-            - On success: Player in the payload.
+            - On success: Board in the payload.
         # RAISES:
             *   TeamValidationFailedException
         """
-        method = "TeamValidator._validate_arena"
-        # Handle the case that arena is not certified
-        arena_team_relation = arena_service.arena_team_relation_analyzer.analyze(
-            candidate_primary=team.arena,
+        method = "TeamValidator._validate_board"
+        # Handle the case that board is not certified
+        board_team_relation = board_service.board_team_relation_analyzer.analyze(
+            candidate_primary=team.board,
             candidate_satellite=team
         )
         # Handle the case that the relation analysis fails.
-        if arena_team_relation.is_failure:
+        if board_team_relation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=arena_team_relation.exception
+                    ex=board_team_relation.exception
                 )
             )
-        # Handle the case that there is no relation between the arena and team.
-        if arena_team_relation.does_not_exist:
+        # Handle the case that there is no relation between the board and team.
+        if board_team_relation.does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=TeamPlayingDifferentArenaException(
-                        f"{method}: {TeamPlayingDifferentArenaException.DEFAULT_MESSAGE}"
+                    ex=TeamPlayingDifferentBoardException(
+                        f"{method}: {TeamPlayingDifferentBoardException.DEFAULT_MESSAGE}"
                     )
                 )
             )
-        # Handle the case that the team has not occupied its slot in the arena.
-        if arena_team_relation.partially_exists:
+        # Handle the case that the team has not occupied its slot in the board.
+        if board_team_relation.partially_exists:
             # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=TeamNotSubmittedArenaRegistrationException(
-                        f"{method}: {TeamNotSubmittedArenaRegistrationException.DEFAULT_MESSAGE}"
+                    ex=TeamNotSubmittedBoardRegistrationException(
+                        f"{method}: {TeamNotSubmittedBoardRegistrationException.DEFAULT_MESSAGE}"
                     )
                 )
             )
-        # The only outcome left is the arena has occupied its slot. Validate the arena,
-        return ValidationResult.success(payload=team.arena)
+        # The only outcome left is the board has occupied its slot. Validate the board,
+        return ValidationResult.success(payload=team.board)

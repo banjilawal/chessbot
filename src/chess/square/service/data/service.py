@@ -29,7 +29,7 @@ class SquareDataService(DataService[Square]):
         super().__init__(id=id, name=name, items=items, entity_service=service, context_service=context_service, )
         
     @LoggingLevelRouter.monitor
-    def entity_service(self) -> SquareService:
+    def square_service(self) -> SquareService:
         return cast(SquareService, self.entity_service)
     
     @LoggingLevelRouter.monitor

@@ -7,7 +7,7 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, Optional
 
 from chess.token import (
     AddingDuplicateTokenException, Token, TokenContext, TokenContextService, TokenDataService, TokenService,
@@ -63,7 +63,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         self._token_data_service = data_service
     
     @property
-    def token_service(self) -> TokenService:
+    def integrity_service(self) -> TokenService:
         return self._token_data_service.token_service
     
     @property
@@ -96,12 +96,19 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         return DeletionResult.success(deletion_result.payload)
     
     @LoggingLevelRouter.monitor
-    def remove_token_by_id(
+    def remove_token(
             self,
-            id: int,
+            id: Optional[int] = None,
+            designation: Optional[str] = None,
             identity_service: IdentityService = IdentityService()
     ) -> DeletionResult[Token]:
-        method = "UniqueTokenDataService.remove_token_by_id"
+        method = "UniqueTokenDataService.remove_token"
+        
+        context_build = self.context_service.build(id=id, designation=designation, identity_service=identity_service)
+        if context_build.is_failure:
+            return DeletionResult.failure(
+                UniqueTokenDataServiceException()
+            )
         deletion_result = self._token_data_service.delete_by_id(id, identity_service)
         if deletion_result.is_failure:
             return DeletionResult.failure(

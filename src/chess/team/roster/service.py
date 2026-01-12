@@ -1,25 +1,35 @@
-from typing import List, cast
+# src/chess/team/roster/service.py
 
-from chess.board import Board
-from chess.board.service.service import BoardService
+"""
+Module: chess.team.roster.service
+Author: Banji Lawal
+Created: 2025-10-06
+version: 1.0.0
+"""
+
+from typing import List, Optional, cast
+
+
 from chess.rank import Rank
-from chess.system import CalculationResult, DeletionResult, InsertionResult
-from chess.team import (
-    AddingCapturedTeamMemberException, AddingRosterMemberFailedException, RosterMemberDeletionFailedException,
-    Team, RosterRelationAnalyzer, RosterTable, TeamRankQuotaFullException, TokenBelongsOnDifferentRosterException
+from chess.board import Board, BoardService
+from chess.token import (
+    AddingDuplicateTokenException, Token, TokenContext, TokenService, UniqueTokenDataService, CombatantToken
 )
-from chess.team.roster.exception.deletion.active import DeletingActiveTokenException
-from chess.token import AddingDuplicateTokenException, Token, TokenContext, UniqueTokenDataService
-from chess.token.model.combatant.token import CombatantToken
-
+from chess.system import CalculationResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult
+from chess.team import (
+    AddingPrisonerToRosterException, AddingRosterMemberFailedException, EnemyCannotJoinRosterException, Team,
+    RosterIsFullException, RosterServiceException, RosterRelationAnalyzer, RosterTable, TeamRankQuotaFullException,
+)
 
 class RosterService:
+    CAPACITY = 16
+    
     _table: RosterTable
     _tokens: UniqueTokenDataService
     _analyzer: RosterRelationAnalyzer
 
     
-    def __init__(
+    def service(
             self,
             table: RosterTable = RosterTable(),
             tokens: UniqueTokenDataService = UniqueTokenDataService(),
@@ -28,71 +38,130 @@ class RosterService:
         self._table = table
         self._tokens = tokens
         self._analyzer = analyzer
+        self.capacity: 16
         
-    def member_deletion(self, member: CombatantToken) -> DeletionResult[Token]:
-        """
-        # ACTION:
-            1.  If the piece fails validation send the wrapped e xception in the DeletionResult.
-            2.  If the piece does not belong to the team or is not captured send the wrapped exception in the
-                DeletionResult.
-            3.  If a search for the piece either fails or returns no matches send an exception in the DeletionResult.
-            4.  Run the deletion operation on the DataService and send the DeletionResult in the caller.
-        # PARAMETERS:
-            *   member (Token)
-        # RETURN:
-            *   DeletionResult[int] containing either:
-                - On failure: Exception
-                - On success: int
-        # RAISES:
-            *   DeletingActiveTokenException
-            *   RosterMemberDeletionFailedException
-            *   EnemyCannotJoinRosterException
-        """
-        method = "RosterService.member_deletion"
+    @property
+    def context_service(self) -> TokenService:
+        return self._tokens.context_service
     
-        # Handle the case that the piece fails validation.
-        piece_validation = self._tokens.token_service.validator.validate(member)
-        if piece_validation.is_failure:
-            # Return exception chain on failure.
-            return DeletionResult.failure(
-                RosterMemberDeletionFailedException(
-                    message=f"{method}: {RosterMemberDeletionFailedException.ERROR_CODE}",
-                    ex=piece_validation.exception
-                )
-            )
-        # Handle the case that the piece is on a different team.
-        team = member.team
-        if member.team != team:
-            # Return exception chain on failure.
-            return DeletionResult.failure(
-                RosterMemberDeletionFailedException(
-                    message=f"{method}: {RosterMemberDeletionFailedException.ERROR_CODE}",
-                    ex=TokenBelongsOnDifferentRosterException(
-                        f"{method}: {TokenBelongsOnDifferentRosterException.DEFAULT_MESSAGE}"
+    @classmethod
+    def capacity(cls) -> int:
+        return cls.CAPACITY
+    
+    @LoggingLevelRouter.monitor
+    def search(
+            self,
+            id: Optional[int] = None,
+            designation: Optional[str] = None,
+            identity_service: IdentityService = IdentityService(),
+    ) -> SearchResult[List[Token]]:
+        """
+        This is only going to be used in Arenas where it might be necessary to check if a captured piece has
+        been properly registered with the enemy. I probably won't need it.
+        """
+        method = "RosterService.search"
+        
+        # Validate the team and handle the failure case.
+        build_context = self._tokens.context_service.build(
+            id=id,
+            designation=designation,
+            identity_service=identity_service
+        )
+        if build_context.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                RosterServiceException(
+                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.DEFAULT_MESSAGE}",
+                        ex=build_context.exception
                     )
                 )
             )
-        # Handle the case that the member has not been captured.
-        if member.captor is None:
-            # Return exception chain on failure.
-            return DeletionResult.failure(
-                RosterMemberDeletionFailedException(
-                    message=f"{method}: {RosterMemberDeletionFailedException.ERROR_CODE}",
-                    ex=DeletingActiveTokenException(
-                        f"{method}: {DeletingActiveTokenException.DEFAULT_MESSAGE}"
+        
+        # --- Run the search on the roster. ---#
+        search_result = self._tokens.search_tokens(context=(cast(TokenContext, build_context.payload)))
+        
+        # Handles the case that the search does not complete.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                RosterServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.DEFAULT_MESSAGE}",
+                        ex=search_result.exception
                     )
                 )
             )
-        deletion_result = self._tokens.remove_token_by_id(id=member.id)
-        if deletion_result.is_failure:
-            # Return exception chain on failure.
-            return DeletionResult.failure(
-                RosterMemberDeletionFailedException(
-                    message=f"{method}: {RosterMemberDeletionFailedException.ERROR_CODE}",
-                    ex=deletion_result.exception
-                )
-            )
-        return deletion_result
+        # If there was no search failure forward th result to the caller.
+        return search_result
+        
+        
+    # def member_deletion(self, member: CombatantToken) -> DeletionResult[Token]:
+    #     """
+    #     # ACTION:
+    #         1.  If the piece fails validation send the wrapped e xception in the DeletionResult.
+    #         2.  If the piece does not belong to the team or is not captured send the wrapped exception in the
+    #             DeletionResult.
+    #         3.  If a search for the piece either fails or returns no matches send an exception in the DeletionResult.
+    #         4.  Run the deletion operation on the DataService and send the DeletionResult in the caller.
+    #     # PARAMETERS:
+    #         *   member (Token)
+    #     # RETURN:
+    #         *   DeletionResult[int] containing either:
+    #             - On failure: Exception
+    #             - On success: int
+    #     # RAISES:
+    #         *   DeletingActiveTokenException
+    #         *   RosterTokenDeletionFailedException
+    #         *   EnemyCannotJoinRosterException
+    #     """
+    #     method = "RosterService.member_deletion"
+    #
+    #     # Handle the case that the piece fails validation.
+    #     piece_validation = self._tokens.token_service.validator.validate(member)
+    #     if piece_validation.is_failure:
+    #         # Return exception chain on failure.
+    #         return DeletionResult.failure(
+    #             RosterTokenDeletionFailedException(
+    #                 message=f"{method}: {RosterTokenDeletionFailedException.ERROR_CODE}",
+    #                 ex=piece_validation.exception
+    #             )
+    #         )
+    #     # Handle the case that the piece is on a different team.
+    #     team = member.team
+    #     if member.team != team:
+    #         # Return exception chain on failure.
+    #         return DeletionResult.failure(
+    #             RosterTokenDeletionFailedException(
+    #                 message=f"{method}: {RosterTokenDeletionFailedException.ERROR_CODE}",
+    #                 ex=TokenBelongsOnDifferentRosterException(
+    #                     f"{method}: {TokenBelongsOnDifferentRosterException.DEFAULT_MESSAGE}"
+    #                 )
+    #             )
+    #         )
+    #     # Handle the case that the member has not been captured.
+    #     if member.captor is None:
+    #         # Return exception chain on failure.
+    #         return DeletionResult.failure(
+    #             RosterTokenDeletionFailedException(
+    #                 message=f"{method}: {RosterTokenDeletionFailedException.ERROR_CODE}",
+    #                 ex=DeletingActiveTokenException(
+    #                     f"{method}: {DeletingActiveTokenException.DEFAULT_MESSAGE}"
+    #                 )
+    #             )
+    #         )
+    #     deletion_result = self._tokens.remove_token_by_id(id=member.id)
+    #     if deletion_result.is_failure:
+    #         # Return exception chain on failure.
+    #         return DeletionResult.failure(
+    #             RosterTokenDeletionFailedException(
+    #                 message=f"{method}: {RosterTokenDeletionFailedException.ERROR_CODE}",
+    #                 ex=deletion_result.exception
+    #             )
+    #         )
+    #     return deletion_result
     
     def transfer_to_board(self, board: Board, board_service: BoardService = BoardService()):
         pass
@@ -121,34 +190,57 @@ class RosterService:
         """
         method = "RosterService.member_insertion"
         
+        # Handle the case that the roster is full.
+        if self._tokens.size == RosterService.CAPACITY:
+            # Return exception chain on failure.
+            return InsertionResult.failure(
+                RosterServiceException(
+                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=RosterIsFullException(f"{method}: {RosterIsFullException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
+        
         # Handle the case that the piece fails validation.
-        piece_validation = self._tokens.token_service.validator.validate(piece)
+        piece_validation = self._tokens.integrity_service.validator.validate(piece)
         if piece_validation.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=piece_validation.exception
+                RosterServiceException(
+                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=piece_validation.exception
+                    )
                 )
             )
+
         # Handle the case that the piece is on a different team.
         if piece.team != team:
-            # Return exception chain.
+            # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=TokenBelongsOnDifferentRosterException(
-                        f"{method}: {TokenBelongsOnDifferentRosterException.DEFAULT_MESSAGE}"
+                RosterServiceException(
+                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=EnemyCannotJoinRosterException(f"{method}: {EnemyCannotJoinRosterException.DEFAULT_MESSAGE}")
                     )
                 )
             )
         # Handle the case that the piece is a captured combatant.
         if isinstance(piece, CombatantToken) and cast(CombatantToken, piece).captor is not None:
-            # Return exception chain.
+            # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=AddingCapturedTeamMemberException(f"{method}: {AddingCapturedTeamMemberException.DEFAULT_MESSAGE}")
+                RosterServiceException(
+                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=AddingPrisonerToRosterException(
+                            f"{method}: {AddingPrisonerToRosterException.DEFAULT_MESSAGE}"
+                        )
+                    )
                 )
             )
         # --- Search the collection for the token. ---#
@@ -158,18 +250,24 @@ class RosterService:
         if search_result.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=search_result.exception
+                RosterServiceException(
+                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=search_result.exception
+                    )
                 )
             )
         # Handle the case that the token is already present.
         if search_result.is_success:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
+                RosterServiceException(
+                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
+                    )
                 )
             )
         # --- Find how many slots are open for the rank. ---#
@@ -189,11 +287,14 @@ class RosterService:
         
         # Handle the case that the rank has been filled.
         if remaining_slots <= 0:
-            # Return exception chain.
+            # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=TeamRankQuotaFullException(f"{method}: {TeamRankQuotaFullException.DEFAULT_MESSAGE}")
+                RosterServiceException(
+                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=TeamRankQuotaFullException(f"{method}: {TeamRankQuotaFullException.DEFAULT_MESSAGE}")
+                    )
                 )
             )
         # --- Run the insertion operation on the DataService. ---#
@@ -203,9 +304,12 @@ class RosterService:
         if insertion_result.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=insertion_result.exception
+                RosterServiceException(
+                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
+                    ex=AddingRosterMemberFailedException(
+                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                        ex=insertion_result.exception
+                    )
                 )
             )
         # Get the payload from insertion result. Decrease the rank's quota. Send the payload to the caller.

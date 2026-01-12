@@ -7,7 +7,7 @@ Created: 2025-08-04
 version: 1.0.0
 """
 
-from chess.arena import Arena
+from chess.board import Board
 from chess.schema import Schema
 from chess.player import Player
 from chess.team import HostageService, RosterService
@@ -31,7 +31,7 @@ class Team:
     # LOCAL ATTRIBUTES:
         *   id (int)
         *   schema (Schema)
-        *   arena (Arena)
+        *   board (Board)
         *   owner (Player)
         *   roster (HostageService)
         *   hostages (HostageService)
@@ -42,7 +42,7 @@ class Team:
     MAX_ROSTER_SIZE = 16
     
     _id: int
-    _arena: Arena
+    _board: Board
     _schema: Schema
     _owner: Player
     _roster: RosterService
@@ -52,7 +52,7 @@ class Team:
     def __init__(
             self,
             id: int,
-            arena: Arena,
+            board: Board,
             schema: Schema,
             owner: Player,
             roster: RosterService = RosterService(),
@@ -65,7 +65,7 @@ class Team:
         # PARAMETERS:
             *   id (int)
             *   owner (Player)
-            *   arena (Arena)
+            *   board (Board)
             *   team_schema (Schema)
             *   roster (HostageService)
             *   hostages (HostageService)
@@ -78,7 +78,7 @@ class Team:
         """
         method = "Team.__init__"
         self._id = id
-        self._arena = arena
+        self._board = board
         self._schema = schema
         self._roster = roster
         self._hostages = hostages
@@ -93,15 +93,15 @@ class Team:
         return self._owner
     
     @property
-    def arena(self) -> Arena:
-        return self._arena
+    def board(self) -> Board:
+        return self._board
     
     @property
     def schema(self) -> Schema:
         return self._schema
 
     @property
-    def roster(self) -> HostageService:
+    def roster(self) -> RosterService:
         return self._roster
     
     @property

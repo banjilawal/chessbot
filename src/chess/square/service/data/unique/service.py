@@ -8,12 +8,14 @@ version: 1.0.0
 """
 
 
-from typing import List
+from typing import List, cast
 
 from chess.square.service.data.unique.exception import UniqueSquareDataServiceException
 from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, ValidationResult, id_emitter
-from chess.square import AddingDuplicateSquareException, Square, SquareDataService, SquareDataServiceException
-
+from chess.square import (
+    AddingDuplicateSquareException, Square, SquareDataService, SquareDataServiceException,
+    SquareService
+)
 
 
 class UniqueSquareDataService(UniqueDataService[Square]):
@@ -21,7 +23,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
     
     DEFAULT_NAME = "UniqueSquareDataService"
     _id: int
-    _data_service: SquareDataService
+    data_service: SquareDataService
     
     def __init__(
             self,
@@ -30,6 +32,10 @@ class UniqueSquareDataService(UniqueDataService[Square]):
             data_service: SquareDataService = SquareDataService(),
     ):
         super().__init__(id=id, name=name, data_service=data_service)
+        
+    @property
+    def integrity_service(self) -> SquareService:
+        return cast(SquareDataService, self.data_service).square_service
     
     @LoggingLevelRouter.monitor
     def push_unique_item(self, item: Square) -> InsertionResult[Square]:

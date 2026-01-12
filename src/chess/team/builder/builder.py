@@ -9,12 +9,9 @@ version: 1.0.0
 
 from chess.arena import Arena, ArenaService
 from chess.schema import Schema, SchemaService
-from chess.token import UniquePieceDataService
-from chess.agent import PlayerAgent, AgentService
-from chess.team import Team, TeamBuildFailedException
+from chess.player import Player, PlayerService
+from chess.team import HostageService, RosterService, Team, TeamBuildFailedException
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
-
-
 
 class TeamBuilder(Builder[Team]):
     """
@@ -43,11 +40,13 @@ class TeamBuilder(Builder[Team]):
     def build(
             cls,
             arena: Arena,
+            owner: Player,
             schema: Schema,
-            owner: PlayerAgent,
             id: int = id_emitter.team_id,
+            roster: RosterService = RosterService(),
+            hostages: HostageService = HostageService(),
             arena_service: ArenaService = ArenaService(),
-            owner_service: AgentService = AgentService(),
+            owner_service: PlayerService = PlayerService(),
             schema_service: SchemaService = SchemaService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Team]:
@@ -61,7 +60,7 @@ class TeamBuilder(Builder[Team]):
             *   schema (Schema)
             *   owner (Player)
             *   arena_service (ArenaService)
-            *   owner_service (AgentService)
+            *   owner_service (PlayerService)
             *   schema_service(TeamSchemaValidator)
             *   identity_service (IdentityService)
 
@@ -107,11 +106,11 @@ class TeamBuilder(Builder[Team]):
             arena=arena,
             schema=schema,
             owner=owner,
-            roster=UniquePieceDataService(),
-            hostages=UniquePieceDataService(),
+            roster=roster,
+            hostages=hostages,
         )
         # Push the team onto the owner's stack.
-        insertion_result = owner_service.push_team_to_player(agent=owner, team=team)
+        insertion_result = owner_service.push_team_to_player(player=owner, team=team)
         if insertion_result.is_failure:
             # If the push failed return the exception chain.
             return BuildResult.failure(
