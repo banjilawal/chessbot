@@ -8,11 +8,12 @@ Created: 2025-09-11
 
 from typing import Any, cast
 
-from chess.board import Board, BoardService
+from chess.board import Board, BoardService, SquareOnDifferentBoardException
 from chess.coord import CoordService, CoordValidator
 from chess.piece import Piece, PieceValidator
 from chess.square import (
-    InvalidPieceSquareRelationException, PieceInconsistentSquareOccupationException, Square, SquareValidationFailedException,
+    InvalidPieceSquareRelationException, PieceInconsistentSquareOccupationException, Square,
+    SquareNotSubmittedBoardRegistrationException, SquareValidationFailedException,
     NullSquareException, SquareAndPieceMismatchedCoordException
 )
 from chess.system import IdentityService, Validator, ValidationResult, NameValidator, LoggingLevelRouter, IdValidator
@@ -170,8 +171,8 @@ class SquareValidator(Validator[Square]):
             return ValidationResult(
                 SquareValidationFailedException(
                     message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
-                    ex=SquareBelongsToDifferentBoardException(
-                        f"{method}: {SquareValidationFailedException.DEFAULT_MESSAGE}"
+                    ex=SquareOnDifferentBoardException(
+                        f"{method}: {SquareOnDifferentBoardException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -181,8 +182,8 @@ class SquareValidator(Validator[Square]):
             return ValidationResult(
                 SquareValidationFailedException(
                     message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
-                    ex=SquareNotSubmitedBoardRegistrationException(
-                        f"{method}: {SquareNotSubmitedBoardRegistrationException.DEFAULT_MESSAGE}"
+                    ex=SquareNotSubmittedBoardRegistrationException(
+                        f"{method}: {SquareNotSubmittedBoardRegistrationException.DEFAULT_MESSAGE}"
                     )
                 )
             )

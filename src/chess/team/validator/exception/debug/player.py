@@ -13,12 +13,12 @@ from chess.system import NotRegisteredException
 
 __all__ = [
     # ======================# TEAM_NOT_REGISTERED_WITH_PLAYER EXCEPTION #======================#
-    "TeamNotSubmitedOwnerRegistrationException",
+    "TeamNotSubmittedOwnerRegistrationException",
 ]
 
 
 #======================# TEAM_NOT_REGISTERED_WITH_PLAYER EXCEPTION #======================#
-class TeamNotSubmitedOwnerRegistrationException(TeamException, NotRegisteredException):
+class TeamNotSubmittedOwnerRegistrationException(TeamException, NotRegisteredException):
     """
     # ROLE: Error Tracing, Debugging
 

@@ -9,7 +9,7 @@ version: 1.0.0
 
 ___all__ = [
     # ======================# TEAM_BELONGS_TO_DIFFERENT_OWNER EXCEPTION #======================#
-    "EnemyCannotJoinRosterException",
+    "TeamBelongsToDifferentOwnerException",
 ]
 
 from chess.team import TeamException

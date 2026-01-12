@@ -37,4 +37,4 @@ class BoardSquareRelationAnalysisFailedException(RelationAnalysisFailedException
     None
     """
     ERROR_CODE = "BOARD_SQUARE_RELATION_TEST_FAILURE"
-    DEFAULT_MESSAGE = "BoardSquareRelationTest failed."
+    DEFAULT_MESSAGE = "Board-Square relation analysis failed."

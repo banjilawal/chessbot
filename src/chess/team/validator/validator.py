@@ -9,11 +9,11 @@ Created: 2025-09-11
 from typing import cast, Any
 
 from chess.schema import SchemaService
-from chess.player import PlayerService, TeamBelongsToDifferentOwnerException
+from chess.player import Player, PlayerService, TeamBelongsToDifferentOwnerException
 from chess.arena import Arena, ArenaService, TeamPlayingDifferentArenaException
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
-    NullTeamException, Team, TeamNotSubmitedOwnerRegistrationException, TeamNotSubmittedArenaRegistrationException,
+    NullTeamException, Team, TeamNotSubmittedOwnerRegistrationException, TeamNotSubmittedArenaRegistrationException,
     TeamValidationFailedException
 )
 
@@ -140,7 +140,7 @@ class TeamValidator(Validator[Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _validate_owner(cls, team: Team, owner_service: PlayerService = PlayerService()) -> ValidationResult[PlayerPlayer]:
+    def _validate_owner(cls, team: Team, owner_service: PlayerService = PlayerService()) -> ValidationResult[Player]:
         """
         # ACTION:
             1.  If team.owner is not validated by owner_service return validation exception.
@@ -157,6 +157,7 @@ class TeamValidator(Validator[Team]):
             *   TeamValidationFailedException
         """
         method = "TeamValidator._validate_owner"
+        
         # Handle the case team.owner certification fails.
         owner_team_relation = owner_service.player_team_relation_analyzer.analyze(
             candidate_primary=team.owner,
@@ -188,8 +189,8 @@ class TeamValidator(Validator[Team]):
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=TeamNotSubmitedOwnerRegistrationException(
-                        f"{method}: {TeamNotSubmitedOwnerRegistrationException.DEFAULT_MESSAGE}"
+                    ex=TeamNotSubmittedOwnerRegistrationException(
+                        f"{method}: {TeamNotSubmittedOwnerRegistrationException.DEFAULT_MESSAGE}"
                     )
                 )
             )
