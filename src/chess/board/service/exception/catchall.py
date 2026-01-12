@@ -1,3 +1,12 @@
+# src/chess/board/service/exception/catchall.py
+
+"""
+Module: chess.board.service.exception.catchall
+Author: Banji Lawal
+Created: 2025-10-01
+version: 1.0.0
+"""
+
 __all__ = [
     # ======================# BOARD_SERVICE EXCEPTION #======================#
     "BoardServiceException",
