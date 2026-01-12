@@ -1,7 +1,7 @@
-# src/chess/coord/validator/validator.py
+# src/chess/coord/context/validator/validator.py
 
 """
-Module: chess.coord.validator
+Module: chess.coord.context.validator.validator
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -25,14 +25,18 @@ class CoordContextValidator(Validator[CoordContext]):
     1. Verify a candidate is a CoordContext that meets the application's safety contract before the client
         is allowed to use the CoordContext object.
     2. Provide pluggable factories for validating different options separately.
-    
-    # PROVIDES:
-      ValidationResult[CoordContext] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-
-    # ATTRIBUTES:
+  
+    # PARENT:
+        * Validator
+        
+    3 PROVIDES:
     None
+    
+    # LOCAL ATTRIBUTES:
+    None
+    
+    3 INHERITED ATTRIBUTES:
+        *   See Validator class for inherited attributes.
     """
 
     @classmethod

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.coord import InvalidCoordContextException
+from chess.coord import CoordContextException
 
 __all__ = [
     # ======================# NULL_COORD_CONTEXT EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL_COORD_CONTEXT EXCEPTION #======================#
-class NullCoordContextException(InvalidCoordContextException, NullException):
+class NullCoordContextException(CoordContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

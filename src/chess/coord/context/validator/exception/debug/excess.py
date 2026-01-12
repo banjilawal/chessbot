@@ -1,14 +1,14 @@
-# src/chess/coord/validator/exception/flag/excess.py
+# src/chess/coord/context/validator/exception/debug/excess.py
 
 """
-Module: chess.coord.validator.exception.flag.excess
+Module: chess.coord.context.validator.exception.debug.excess
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-16
 version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.coord import InvalidCoordContextException
+from chess.coord import CoordContextException
 
 __all__ = [
     # ========================= EXCESSIVE_COORD_CONTEXT_FLAG EXCEPTION =========================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ========================= EXCESSIVE_COORD_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveCoordContextFlagsException(InvalidCoordContextException, ContextFlagCountException):
+class ExcessiveCoordContextFlagsException(CoordContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 

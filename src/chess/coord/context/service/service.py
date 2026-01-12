@@ -1,7 +1,7 @@
-# src/chess/coord/service/service.py
+# src/chess/coord/context/service/service.py
 
 """
-Module: chess.coord.service.service
+Module: chess.coord.context.service.service
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -38,7 +38,7 @@ class CoordContextService(ContextService[CoordContext]):
         *   See ContextService for inherited attributes.
     """
     DEFAULT_NAME = "CoordContextService"
-    def __init__(
+    def service(
             self,
             name: str = DEFAULT_NAME,
             id: int = id_emitter.service_id,
@@ -63,8 +63,8 @@ class CoordContextService(ContextService[CoordContext]):
         # RAISES:
         None
         """
-        method = "CoordContextService.__init__"
-        super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
+        method = "CoordContextService.service"
+        super().service(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property
     def finder(self) -> CoordFinder:

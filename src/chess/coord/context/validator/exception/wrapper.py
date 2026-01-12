@@ -1,7 +1,7 @@
-# src/chess/coord/validator/exception/exception.py
+# src/chess/coord/context/validator/wrapper.py
 
 """
-Module: chess.coord.validator.exception.exception
+Module: chess.coord.context.validator.wrapper
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

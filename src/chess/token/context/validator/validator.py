@@ -232,7 +232,7 @@ class TokenContextValidator(Validator[TokenContext]):
             # On certification success return the ransom_TokenContext in the ValidationResult.
             return ValidationResult.success(context)
         
-        # Return the exception chain if there was no validation route for the context.
+        # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             TokenContextValidationFailedException(
                 message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",

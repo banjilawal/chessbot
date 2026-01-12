@@ -1,22 +1,22 @@
-# src/chess/coord/searcher/finder.py
+# src/chess/context/coord/finder/finder.py
 
 """
-Module: chess.coord.searcher.searcher
+Module: chess.context.coord.finder.finder
 Author: Banji Lawal
-Created: 2025-11-16
+Created: 2025-09-16
 version: 1.0.0
 """
 
 from typing import List
 
-from chess.system import LoggingLevelRouter, Finder, SearchFailedException, SearchResult
+from chess.system import DataFinder, LoggingLevelRouter, Finder, SearchFailedException, SearchResult
 from chess.coord import (
     Coord, CoordContext, CoordContextValidator, CoordDatasetNullException,
     CoordSearchFailedException, CoordSearchPayloadTypeException, CoordSearchRouteException
 )
 
 
-class CoordFinder(Finder[Coord]):
+class CoordFinder(DataFinder[Coord]):
     """
     # ROLE: Finder
 

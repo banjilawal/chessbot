@@ -1,7 +1,7 @@
-# src/chess/coord/builder/builder.py
+# src/chess/coord/context/builder/builder.py
 
 """
-Module: ches.coord.builder.builder
+Module: chess.coord.context.builder.builder
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -9,13 +9,11 @@ version: 1.0.0
 
 from typing import Optional
 
+from chess.coord.context.builder.exception import CoordContextBuildFailedException, CoordContextBuildRouteException
 from chess.system import (
-    BuildResult, Builder, UnhandledRouteException, LoggingLevelRouter,
-    BoundNumberValidator
+    BOARD_DIMENSION, BuildResult, Builder, NumberValidator, UnhandledRouteException, LoggingLevelRouter,
 )
-from chess.coord import (
-    Coord, CoordContextValidator, CoordContext, CoordContextBuildFailedException
-)
+from chess.coord import CoordContext, ZeroCoordContextFlagsException
 
 
 class CoordContextBuilder(Builder[CoordContext]):
@@ -44,34 +42,26 @@ class CoordContextBuilder(Builder[CoordContext]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            row: Optional[int],
-            column: Optional[int],
-            coord: Optional[Coord] = None,
-            coord_validator: CoordContextValidator = CoordContextValidator(),
-            validator: BoundNumberValidator = BoundNumberValidator(),
+            row: Optional[int] = None,
+            column: Optional[int] = None,
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[CoordContext]:
         """
         # ACTION:
-            1.  Confirm that only one in the (row, column, coord) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a CoordContext and send in a BuildResult. Else, return an exception
-                in the BuildResult.
-
+            1.  If all the optional params are null send and exception chain in the BuildResult. Else,
+                route to the build path which matches the not null attribute.
+            2.  If the build params fail their certification checks send an exception in the BuildResult. Otherwise,
+                create the CoordContext and send it in the BuildResult.
         # PARAMETERS:
             At least one of these must be provided:
                 *   row (Optional[int])
-                *   coord (Optional[Coord])
                 *   column (Optional[int])
-                
             This parameter is Required:
-                *   coord_validator (CoordContextValidator)
-                *   validator (BoundNumberValidator)
-
+                *   number_validator (NumberValidator)
         # RETURNS:
-          BuildResult[CoordContext] containing either:
-                - On success: CoordContext in the payload.
-                - On failure: Exception.
-
+            *   BuildResult[CoordContext] containing either:
+                    - On failure: Exception.
+                    - On success: CoordContext in the payload.
         # RAISES:
             *   ZeroCoordContextFlagsException
             *   CoordContextBuildFailedException
@@ -79,56 +69,78 @@ class CoordContextBuilder(Builder[CoordContext]):
         """
         method = "CoordContextBuilder.builder"
         
-        try:
-            # Count how many optional parameters are not-null. One param needs to be not-null.
-            params = [row, column, Coord]
-            param_count = sum(bool(p) for p in params)
-            
-            # Test if no params are set. Need an attribute-value pair to find which Coords match the target.
-            if param_count == 0:
-                return BuildResult.failure(
-                    ZeroCoordFlagsContextException(f"{method}: {ZeroCoordFlagsContextException.DEFAULT_MESSAGE}")
-                )
-            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
-            if param_count > 1:
-                return BuildResult.failure(
-                    ExcessiveCoordContextFlagsException(f"{method}: {ExcessiveCoordContextFlagsException}")
-                )
-            # After verifying only one Coord attribute-value-tuple is enabled, validate it.
-            
-            # Build the row CoordContext if its flag is enabled.
-            if row is not None:
-                validation = validator.validate(candidate=row)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a row_CoordContext in the BuildResult.
-                return BuildResult.success(CoordContext(row=row, column=column))
-                
-            # Build the column CoordContext if its flag is enabled.
-            if column is not None:
-                validation = validator.validate(candidate=column)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a column_CoordContext in the BuildResult.
-                return BuildResult.success(CoordContext(row=row))
-            
-            # Build the coord CoordContext if its flag is enabled.
-            if coord is not None:
-                validation = coord_validator.validate(candidate=coord)
-                if validation.is_failure:
-                    return BuildResult.failure(validation.exception)
-                # On validation success return a coord_CoordContext in the BuildResult.
-                return BuildResult.success(CoordContext(column=column))
-            
-            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
-            BuildResult.failure(
-                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
-            )
-        # Finally, catch any missed exception and wrap A CoordContextBuildFailedException around it then
-        # return the exception-chain inside the ValidationResult.
-        except Exception as ex:
+        # Count how many optional parameters are not-null. One param needs to be not-null.
+        params = [row, column]
+        param_count = sum(bool(p) for p in params)
+        
+        # Handle the case that all the optional params are null.
+        if param_count == 0:
+            # Return the exception chain on failure.
             return BuildResult.failure(
                 CoordContextBuildFailedException(
-                    ex=ex,  message=f"{method}: {CoordContextBuildFailedException.DEFAULT_MESSAGE}"
+                    message=f"{method}: {CoordContextBuildFailedException.ERROR_CODE}",
+                    ex=ZeroCoordContextFlagsException(f"{method}: {ZeroCoordContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
+        # --- Route to the appropriate validation/build branch. ---#
+        
+        # Build the row_column CoordContext if both flags are enabled.
+        if row is not None and column is not None:
+            # Handle the case that the row is not certified safe.
+            row_validation = number_validator.validate(candidate=row, floor=0, ceiling=BOARD_DIMENSION - 1)
+            if row_validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    CoordContextBuildFailedException(
+                        message=f"{method}: {CoordContextBuildFailedException.ERROR_CODE}",
+                        ex=row_validation.exception
+                    )
+                )
+            # Handle the case that the column is not certified safe.
+            column_validation = number_validator.validate(candidate=column, floor=0, ceiling=BOARD_DIMENSION - 1)
+            if column_validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    CoordContextBuildFailedException(
+                        message=f"{method}: {CoordContextBuildFailedException.ERROR_CODE}",
+                        ex=column_validation.exception
+                    )
+                )
+            # On validation success return a row_CoordContext in the BuildResult.
+            return BuildResult.success(CoordContext(row=row, column=column))
+        
+        # Build the row CoordContext if it's the only flag enabled.
+        if row is not None:
+            validation = number_validator.validate(candidate=row, floor=0, ceiling=BOARD_DIMENSION-1)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    CoordContextBuildFailedException(
+                        message=f"{method}: {CoordContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a row_CoordContext in the BuildResult.
+            return BuildResult.success(CoordContext(row=row))
+        
+        # Build the column CoordContext if it's the only flag enabled.
+        if column is not None:
+            validation = number_validator.validate(candidate=column, floor=0, ceiling=BOARD_DIMENSION - 1)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    CoordContextBuildFailedException(
+                        message=f"{method}: {CoordContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a column_CoordContext in the BuildResult.
+            return BuildResult.success(CoordContext(column=column))
+  
+        # Return the exception chain if there is no build route for the context.
+        return BuildResult.failure(
+            CoordContextBuildFailedException(
+                message=f"{method}: {CoordContextBuildFailedException.ERROR_CODE}",
+                ex=CoordContextBuildRouteException(f"{method}: {CoordContextBuildRouteException.DEFAULT_MESSAGE}")
+            )
+        )

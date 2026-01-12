@@ -1,7 +1,7 @@
-# src/chess/coord/map
+# src/chess/coord/context/context.py
 
 """
-Module: chess.coord.map
+Module: chess.coord.context.context
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -38,7 +38,7 @@ class CoordContext(Context[Coord]):
     _coord: Optional[Coord] = None
     _column: Optional[int] = None
     
-    def __init__(
+    def context(
             self,
             row: Optional[int] = None,
             coord: Optional[Coord] = None,
@@ -56,7 +56,7 @@ class CoordContext(Context[Coord]):
         # RAISES:
             None
         """
-        super().__init__(id=None, name=None)
+        super().context(id=None, name=None)
         self._row = row
         self._coord = coord
         self._column = column

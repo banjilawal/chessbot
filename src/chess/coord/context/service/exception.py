@@ -1,9 +1,9 @@
-# src/chess/coord/service/exception/exception
+# src/chess/coord/context/service/exception.py
 
 """
-Module: chess.coord.service.exception.exception
+Module: chess.coord.context.service.exception
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-16
 version: 1.0.0
 """
 

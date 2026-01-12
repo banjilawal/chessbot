@@ -1,14 +1,26 @@
+# src/chess/coord/context/validator/exception/debug/route.py
+
+"""
+Module: chess.coord.context.validator.exception.debug.route
+Author: Banji Lawal
+Created: 2025-11-16
+version: 1.0.0
+"""
+
+from chess.system import ContextFlagCountException
+from chess.coord import CoordContextException
+
 __all__ = [
     # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "CoordContextValidationRouteException",
 ]
 
-from chess.coord import CoordException
+from chess.coord import CoordContextException
 from chess.system import UnhandledRouteException
 
 
 # ======================# UNHANDLED_COORD_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class CoordContextValidationRouteException(CoordException, UnhandledRouteException):
+class CoordContextValidationRouteException(CoordContextException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

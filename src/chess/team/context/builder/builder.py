@@ -1,7 +1,7 @@
-# src/chess/team/builder/builder.py
+# src/chess/team/context/builder/builder.py
 
 """
-Module: chess.team.builder.builder
+Module: chess.team.context.builder.builder
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.arena import Arena, ArenaService
-from chess.player import Player
+from chess.player import Player, PlayerService
 from chess.system import Builder, BuildResult,  GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.team import (
     TeamContext, TeamContextBuildFailedException, ExcessiveTeamContextFlagsException, TeamContextBuildRouteException,
@@ -72,29 +72,30 @@ class TeamContextBuilder(Builder[TeamContext]):
                 *   identity_service (IdentityService)
                 *   schema_validator (TeamSchemaValidator)
         # RETURNS:
-        BuildResult[TeamContext] containing either:
-            - On success: TeamContext in the payload.
-            - On failure: Exception.
+            *   BuildResult[TeamContext] containing either:
+                    - On failure: Exception.
+                    - On success: TeamContext in the payload.
         # RAISES:
             *   ZeroTeamContextFlagsException
             *   TeamContextBuildFailedException
             *   ExcessiveTeamContextFlagsException
         """
         method = "PieceSearchContextBuilder.builder"
-        # Count how many optional parameters are not-null.
+        
+        # Count how many optional parameters are not-null. One param needs to be not-null.
         params = [id, name, arena, player, color]
         param_count = sum(bool(p) for p in params)
         
-        # Handle the case that no attribute flags are enabled
+        # Handle the case that all the optional params are null.
         if param_count == 0:
-            # Return the exception chain if validation is denied.
+            # Return the exception chain on failure.
             return BuildResult.failure(
                 TeamContextBuildFailedException(
                     message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}",
                     ex=ZeroTeamContextFlagsException(f"{method}: {ZeroTeamContextFlagsException.ERROR_CODE}")
                 )
             )
-        # Handle the case that more than one attribute flag is enabled.
+        # Handle the case that more than one optional param is not-null.
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -103,62 +104,65 @@ class TeamContextBuilder(Builder[TeamContext]):
                     ex=ExcessiveTeamContextFlagsException(f"{method}: {ExcessiveTeamContextFlagsException}")
                 )
             )
-        
-        # Route to the appropriate build branch
+        # --- Route to the appropriate validation/build branch. ---#
         
         # Build the id TeamContext if its flag is set.
         if id is not None:
             validation = identity_service.validate_id(candidate=id)
             if validation.is_failure:
-                # Return the exception chain if validation is denied.
+                # Return the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildFailedException(
-                        message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}", ex=validation.exception
+                        message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
                     )
                 )
-            # On validation success return an id_enabled_TeamContext in the BuildResult.
-            return BuildResult.success(payload=TeamContext(id=validation.id))
+            # On validation success return an id_TeamContext in the BuildResult.
+            return BuildResult.success(payload=TeamContext(id=id))
         
         # Build the player TeamContext if its flag is enabled.
         if player is not None:
             validation = player_service.validator.validate(candidate=player)
             if validation.is_failure:
-                # Return the exception chain if validation is denied.
+                # Return the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildFailedException(
-                        message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}", ex=validation.exception
+                        message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
                     )
                 )
-            # On validation success return a player_enabled_TeamContext in the BuildResult.
-            return BuildResult.success(payload=TeamContext(player=validation.payload))
+            # On validation success return a player_TeamContext in the BuildResult.
+            return BuildResult.success(payload=TeamContext(player=player))
         
         # Build the arena TeamContext if its flag is enabled.
         if arena is not None:
             validation = arena_service.item_validator.validate(candidate=arena)
             if validation.is_failure:
-                # Return the exception chain if validation is denied.
+                # Return the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildFailedException(
-                        message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}", ex=validation.exception
+                        message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
                     )
                 )
-            # On validation success return an arena_enabled_TeamContext in the BuildResult.
-            return BuildResult.success(payload=TeamContext(player=player))
+            # On validation success return an arena_TeamContext in the BuildResult.
+            return BuildResult.success(payload=TeamContext(arena=arena))
         
         # Build the color TeamContext if its flag is enabled.
         if color is not None:
             validation = color_validator.validate(candidate=color)
             if validation.is_failure:
-                # Return the exception chain if validation is denied.
+                # Return the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildFailedException(
-                        message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}", ex=validation.exception
+                        message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
                     )
                 )
-            # On validation success return a color_enabled_TeamContext in the BuildResult.
+            # On validation success return a color_TeamContext in the BuildResult.
             return BuildResult.success(payload=TeamContext(color=color))
         
-        # Handle the default case where no exception is raised and SchemaSuperKey was not covered with an if-block
+        # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             TeamContextBuildFailedException(
                 message=f"{method}: {TeamContextBuildFailedException.ERROR_CODE}",

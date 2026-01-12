@@ -1,7 +1,7 @@
-# src/chess/coord/builder/__init__.py
+# src/chess/coord/context/builder/__init__.py
 
 """
-Module: chess.coord.builder.__init__
+Module: chess.coord.context.builder.__init__
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0
@@ -14,4 +14,3 @@ None
 
 # Modules
 from .builder import CoordContextBuilder
-from .exception import CoordContextBuildFailedException

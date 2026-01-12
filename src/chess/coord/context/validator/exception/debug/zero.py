@@ -1,14 +1,14 @@
-# src/chess/coord/validator/exception/flag/zero.py
+# src/chess/coord/context/validator/exception/debug/zero.py
 
 """
-Module: chess.coord.validator.exception.flag.zero
+Module: chess.coord.context.validator.exception.debug.zero
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-16
 version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.coord import InvalidCoordContextException
+from chess.coord import CoordContextException
 
 __all__ = [
     # ========================= ZERO_COORD_CONTEXT_FLAGS EXCEPTION =========================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ========================= ZERO_COORD_CONTEXT_FLAGS EXCEPTION =========================#
-class ZeroCoordContextFlagsException(InvalidCoordContextException, ContextFlagCountException):
+class ZeroCoordContextFlagsException(CoordContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
