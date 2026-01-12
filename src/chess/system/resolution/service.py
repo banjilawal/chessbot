@@ -22,9 +22,9 @@ class CollisionResolutionService(EntityService[ABC, Generic[T]]):
 
 """
 Sorting
-1.  if the piece.team.player.game.id != lock.game.id:
+1.  if the piece.team.owner.game.id != lock.game.id:
     deliver_to_game_level_resolver.(piece)
-2.  if piece.team.player.id != lock.player.id:
+2.  if piece.team.owner.id != lock.owner.id:
     deliver_to_player_level_resolver.(piece)
 3.  if piece.team.id != lock.team.id:
     deliver_to_team_level_resolver.(piece)

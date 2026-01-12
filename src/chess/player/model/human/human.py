@@ -16,7 +16,7 @@ class HumanPlayer(Player):
     # ROLE: Controller
 
     # RESPONSIBILITIES:
-    1.  Forward requests and commands from a Human player to the Game model.
+    1.  Forward requests and commands from a Human owner to the Game model.
     2.  Forward movement commands from the person playing to their pieces on the Board.
     
     # PARENT:

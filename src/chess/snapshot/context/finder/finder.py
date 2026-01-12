@@ -84,7 +84,7 @@ class SnapshotFinder(Finder[Snapshot]):
             # After checks are passed pick which finder method to call.
             if context.timestamp is not None:
                 return cls._find_by_timestamp(dataset, context.timestamp)
-            # Find by player
+            # Find by owner
             if context.agent is not None:
                 return cls._find_by_agent(dataset, context.agent)
             # Find by team
@@ -157,7 +157,7 @@ class SnapshotFinder(Finder[Snapshot]):
         4.  If the finder returns multiple hits call _resolve_matching_ids.
 
         # PARAMETERS:
-            *   player (Player)
+            *   owner (Player)
             *   dataset (GameTimeline)
 
         # RETURNS:
@@ -191,7 +191,7 @@ class SnapshotFinder(Finder[Snapshot]):
     def _find_by_team(cls, dataset: GameTimeline, team: Team) -> SearchResult[List[Snapshot]]:
         """
         # ACTION:
-        1.  Get the player whose team is a match for the target.
+        1.  Get the owner whose team is a match for the target.
         2.  If no matches are found return an empty SearchResult.
         3.  If exactly one match is found return a successful SearchResult with the single item in an array.
         4.  If multiple agents own the same target there is a problem.

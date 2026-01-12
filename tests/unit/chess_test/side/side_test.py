@@ -26,7 +26,7 @@ class SideTest(unittest.TestCase):
     return mock_side
 
 
-  @patch('assurance.notification.player.PlayerAgentValidator.validate')
+  @patch('assurance.notification.owner.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_id_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = False
@@ -39,31 +39,31 @@ class SideTest(unittest.TestCase):
       Side(side_id=None, controller=mock_competitor, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.player.PlayerAgentValidator.validate')
+  @patch('assurance.notification.owner.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
 
     mock_competitor_validation.return_value.is_success.return_value = False
-    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid player")
+    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid owner")
 
     with self.assertRaises(CommanderValidationException):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.player.PlayerAgentValidator.validate')
+  @patch('assurance.notification.owner.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_invalid_competitor_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
 
     mock_competitor_validation.return_value.is_success.return_value = False
-    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid player")
+    mock_competitor_validation.return_value.exception = CommanderValidationException("Invalid owner")
 
     with self.assertRaises(CommanderValidationException):
       Side(side_id=1, controller=None, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.player.PlayerAgentValidator.validate')
+  @patch('assurance.notification.owner.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_null_profile_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
@@ -75,7 +75,7 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=mock_competitor, profile=None)
 
 
-  @patch('assurance.notification.player.PlayerAgentValidator.validate')
+  @patch('assurance.notification.owner.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_broken_relationship_raises_error(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
@@ -98,14 +98,14 @@ class SideTest(unittest.TestCase):
       Side(side_id=1, controller=fake_controller, profile=TeamSchema.BLACK)
 
 
-  @patch('assurance.notification.player.PlayerAgentValidator.validate')
+  @patch('assurance.notification.owner.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_valid_params_creates_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_id_validation.return_value.payload = 1
 
 
-    competitor = Commander(competitor_id=1, name="player")
+    competitor = Commander(competitor_id=1, name="owner")
     mock_competitor_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.payload = competitor
 
@@ -114,14 +114,14 @@ class SideTest(unittest.TestCase):
       assert side in competitor.teams.items
 
 
-  @patch('assurance.notification.player.PlayerAgentValidator.validate')
+  @patch('assurance.notification.owner.PlayerAgentValidator.validate')
   @patch('assurance.notification.visitor_id.IdValidator.validate')
   def test_side_is_controller_current_side(self, mock_id_validation, mock_competitor_validation):
     mock_id_validation.return_value.is_success.return_value = True
     mock_id_validation.return_value.payload = 1
 
 
-    competitor = Commander(competitor_id=1, name="player")
+    competitor = Commander(competitor_id=1, name="owner")
     mock_competitor_validation.return_value.is_success.return_value = True
     mock_competitor_validation.return_value.payload = competitor
 

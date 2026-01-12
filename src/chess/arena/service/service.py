@@ -103,7 +103,7 @@ class ArenaService(EntityService[Arena]):
             )
         # Handle the case that the team should be playing a different arena.
         if relation.does_not_exist:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return InsertionResult.failure(
                 ArenaServiceException(
                     message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
@@ -113,7 +113,7 @@ class ArenaService(EntityService[Arena]):
                 )
             )
         if relation.fully_exists:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return InsertionResult.failure(
                 ArenaServiceException(
                     message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",

@@ -1,7 +1,7 @@
-# src/chess/player/validator/exception/registration/__init__.py
+# src/chess/owner/validator/exception/registration/__init__.py
 
 """
-Module: chess.player.validator.exception.registration.__init__
+Module: chess.owner.validator.exception.registration.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

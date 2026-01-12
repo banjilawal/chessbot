@@ -1,7 +1,7 @@
-# src/chess/square/square_name.py
+# src/chess/square/square.py
 
 """
-Module: chess.square.square_name
+Module: chess.square.square
 Author: Banji Lawal
 Created: 2025-07-26
 """
@@ -10,48 +10,51 @@ from typing import Optional
 
 from chess.board import Board
 from chess.coord import Coord
-from chess.piece import Piece
+from chess.token import Token
 
 
 class Square:
     """
-    # ROLE: Data-Holding
+    # ROLE: Data-Holding, Addressing
   
     # RESPONSIBILITIES:
-    1.  A Token occupies a Square.
-    2.  Provides reference to a Token.
+    1.  Maps a Coord to its unique name.
+    2.  Space a Token occupies on the Board.
+    
+    # PARENT:
+    None
     
     # PROVIDES:
-    Square
+    None
   
-    # ATTRIBUTES:
-        *   timestamp (int)
+    # LOCAL ATTRIBUTES:
         *   _name (str)
         *   _board (Board)
         *   _coord (Coord)
         *   _occupant (Optional[Token])
+        
+    # INHERITED ATTRIBUTES:
+    None
     """
     _id: int
     _name: str
     _board: Board
     _coord: Coord
-    _occupant: Optional[Piece]
+    _occupant: Optional[Token]
     
     def __init__(self, id: int, name: str, coord: Coord, board: Board):
         """
         # ACTION:
-        Construct a Token instance.
-        
+            Constructor.
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   target (Coord)
-        
+            *   coord (Coord)
+            *   board (Board)
         # RETURNS:
-        None
-        
+            Non
         # RAISES:
-        None
+            None
         """
         self._id = id
         self._name = name
@@ -76,12 +79,12 @@ class Square:
         return self._coord
     
     @property
-    def occupant(self) -> Optional[Piece]:
+    def occupant(self) -> Optional[Token]:
         return self._occupant
     
     @occupant.setter
-    def occupant(self, piece: Optional[Piece]):
-        self._occupant = piece
+    def occupant(self, token: Optional[Token]):
+        self._occupant = token
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True

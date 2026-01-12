@@ -117,7 +117,7 @@ class ArenaValidator(Validator[Arena]):
                     ArenaTeamColorCollisionException(f"{method}: {ArenaTeamColorCollisionException.DEFAULT_MESSAGE}")
                 )
             
-            if arena.black_team.player == arena.white_team.player:
+            if arena.black_team.owner == arena.white_team.owner:
                 return ValidationResult.failure(
                     ArenaTeamPlayerCollisionException(f"{method}: {ArenaTeamPlayerCollisionException.DEFAULT_MESSAGE}")
                 )

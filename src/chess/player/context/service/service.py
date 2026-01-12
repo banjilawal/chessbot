@@ -1,7 +1,7 @@
-# src/chess/player/service/service.py
+# src/chess/owner/service/service.py
 
 """
-Module: chess.player.service.service
+Module: chess.owner.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/player/model/machine/machine.py
+# src/chess/owner/model/machine/machine.py
 
 """
-Module: chess.player.model.machine.machine
+Module: chess.owner.model.machine.machine
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -17,7 +17,7 @@ class MachinePlayer(Player):
     # ROLE: Controller
 
     # RESPONSIBILITIES:
-    1.  Forward requests and commands from a Machine player to the Game model.
+    1.  Forward requests and commands from a Machine owner to the Game model.
 
     # PARENT:
         *   Player

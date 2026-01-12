@@ -1,7 +1,7 @@
-# src/chess/player/model/human/exception.py
+# src/chess/owner/model/human/exception.py
 
 """
-Module: chess.player.model.human.exception
+Module: chess.owner.model.human.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

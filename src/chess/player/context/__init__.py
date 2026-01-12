@@ -1,7 +1,7 @@
-# src/chess/player/__init__.py
+# src/chess/owner/__init__.py
 
 """
-Module: chess.player.__init__
+Module: chess.owner.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

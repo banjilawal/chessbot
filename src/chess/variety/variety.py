@@ -1,7 +1,7 @@
-# src/chess/player/model/variety/variety.py
+# src/chess/owner/model/variety/variety.py
 
 """
-Module: chess.player.model.variety.variety
+Module: chess.owner.model.variety.variety
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

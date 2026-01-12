@@ -10,8 +10,12 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.arena import ArenaService
+from chess.player import PlayerService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
-from chess.team import TeamContext, TeamContextValidationFailedException, TeamContextValidationRouteException
+from chess.team import (
+    ExcessiveTeamContextFlagsException, NullTeamContextException, TeamContext, TeamContextValidationFailedException,
+    TeamContextValidationRouteException, ZeroTeamContextFlagsException
+)
 
 
 class TeamContextValidator(Validator[TeamContext]):
@@ -98,7 +102,7 @@ class TeamContextValidator(Validator[TeamContext]):
             return ValidationResult.failure(
                 TeamContextValidationFailedException(
                     message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
-                    ex=ZeroTeamContextFlagException(f"{method}: {NoTeamContextFlagException.DEFAULT_MESSAGE}")
+                    ex=ZeroTeamContextFlagsException(f"{method}: {ZeroTeamContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case of too many attributes being used in a search.
@@ -148,7 +152,8 @@ class TeamContextValidator(Validator[TeamContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     TeamContextValidationFailedException(
-                        message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}", ex=validation.exception
+                        message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
+                        ex=validation.exception
                     )
                 )
             # On certification success return the TeamContext_arena in a ValidationResult.

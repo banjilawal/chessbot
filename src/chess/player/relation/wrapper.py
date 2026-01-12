@@ -1,7 +1,7 @@
-# src/chess/player/relation/wrapper.py
+# src/chess/owner/relation/wrapper.py
 
 """
-Module: chess.player.relation.wrapper
+Module: chess.owner.relation.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

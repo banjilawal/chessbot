@@ -30,8 +30,8 @@ def main():
       print(p, " current point", p.positions.current_coord(), p.positions.size())
   #
   # team_service = TeamFactory.assemble()
-  # white_team_owner = team_service[0].player
-  # black_team_owner = team_service[1].player
+  # white_team_owner = team_service[0].owner
+  # black_team_owner = team_service[1].owner
   #
   #
   # arena = Arena(
@@ -40,10 +40,10 @@ def main():
   # TeamPlacementManager.place_teams(arena)
   # return arena
   #
-  # print("white team_name player", arena.white_owner,
+  # print("white team_name owner", arena.white_owner,
   #    "\nwhite chess pieces:", len(arena.white_owner.team_name.chess_pieces))
   #
-  # print("\nblack team_name player", arena.black_owner,
+  # print("\nblack team_name owner", arena.black_owner,
   #    "\nblack chess pieces:", len(arena.black_owner.team_name.chess_pieces))
 
 

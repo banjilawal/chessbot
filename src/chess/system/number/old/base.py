@@ -56,7 +56,7 @@ class NumberValidator(Validator[int]):
         method = "NumberValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationFailedException(
                     message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
@@ -65,7 +65,7 @@ class NumberValidator(Validator[int]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, int):
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationFailedException(
                     message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",

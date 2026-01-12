@@ -51,7 +51,7 @@ class GameBuilder(Builder[Game]):
         3.  Certify the BoardService with the BoardServiceCertifier
         4.  If any check fails, return the exception inside a BuildResult.
         5.  When all checks pass create the new Game object.
-        6.  Register the game with the white and black player by pushing onto their respective game stacks.
+        6.  Register the game with the white and black owner by pushing onto their respective game stacks.
         7.  Return the Game inside a BuildResult.
     
         # PARAMETERS:

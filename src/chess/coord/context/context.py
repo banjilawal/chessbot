@@ -35,15 +35,9 @@ class CoordContext(Context[Coord]):
         *   See Context class for inherited attributes.
     """
     _row: Optional[int] = None
-    _coord: Optional[Coord] = None
     _column: Optional[int] = None
     
-    def context(
-            self,
-            row: Optional[int] = None,
-            coord: Optional[Coord] = None,
-            column: Optional[int] = None,
-    ):
+    def __init__(self, row: Optional[int] = None, column: Optional[int] = None,):
         """
         # ACTION:
             Constructor
@@ -56,9 +50,8 @@ class CoordContext(Context[Coord]):
         # RAISES:
             None
         """
-        super().context(id=None, name=None)
+        super().__init__(id=None, name=None)
         self._row = row
-        self._coord = coord
         self._column = column
     
     @property
@@ -66,29 +59,11 @@ class CoordContext(Context[Coord]):
         return self._row
     
     @property
-    def coord(self) -> Optional[Coord]:
-        return self._coord
-    
-    @property
     def column(self) -> Optional[int]:
         return self._column
     
     def to_dict(self) -> dict:
-        """
-        # Convert the CoordContext object to a dictionary.
-
-        # PARAMETERS:
-        None
-
-        # RETURNS:
-        dict
-
-        # RAISES:
-        None
-        """
-        method = "CoordContext.to_dict"
         return {
             "row": self._row,
-            "coord": self._coord,
             "column": self._column,
         }

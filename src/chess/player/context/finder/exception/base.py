@@ -1,7 +1,7 @@
-# src/chess/player/finder/exception/base.py
+# src/chess/owner/finder/exception/base.py
 
 """
-Module: chess.player.cntext.finder.exception.base
+Module: chess.owner.cntext.finder.exception.base
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

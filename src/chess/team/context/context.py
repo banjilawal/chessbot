@@ -30,7 +30,7 @@ class TeamContext(Context[Team]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   player (Optional[Player])
+        *   owner (Optional[Player])
         *   arena (Optional[Arena])
         *   color (Optional[ColorColor])
 
@@ -55,7 +55,7 @@ class TeamContext(Context[Team]):
         self._color = color
     
     @property
-    def player(self) -> Optional[Player]:
+    def owner(self) -> Optional[Player]:
         return self._player
     
     @property
@@ -80,6 +80,6 @@ class TeamContext(Context[Team]):
         return {
             "id": self.id,
             "arena": self._arena,
-            "player": self._player,
+            "owner": self._player,
             "color": self._color,
         }

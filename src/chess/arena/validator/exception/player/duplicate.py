@@ -1,7 +1,7 @@
-# src/chess/arena/validator/exception/player/duplicate.py
+# src/chess/arena/validator/exception/owner/duplicate.py
 
 """
-Module: chess.arena.validator.exception.player.duplicate
+Module: chess.arena.validator.exception.owner.duplicate
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -22,7 +22,7 @@ class DuplicatePlayerInArenaException(ArenaValidationFailedException, AddinDupli
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if a both unique teams in an Arena are owned by the same player.
+    1.  Raised if a both unique teams in an Arena are owned by the same owner.
 
     # PARENT:
         *   ArenaValidationFailedException
@@ -39,5 +39,5 @@ class DuplicatePlayerInArenaException(ArenaValidationFailedException, AddinDupli
     """
     ERROR_CODE = "DUPLICATE_PLAYER_IN_ARENA_ERROR"
     DEFAULT_MESSAGE = (
-        "Both unique teams in an Arena are owned by the same player. A player is not allowed to play themselves."
+        "Both unique teams in an Arena are owned by the same owner. A owner is not allowed to play themselves."
     )

@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast, Any
 
 from chess.coord import Coord, CoordValidationFailedException, NullCoordException
-from chess.system import ROW_SIZE, Validator, ValidationResult, LoggingLevelRouter, BoundNumberValidator
+from chess.system import ROW_SIZE, Validator, ValidationResult, LoggingLevelRouter, NumberValidator
 
 class CoordValidator(Validator[Coord]):
     """
@@ -38,7 +38,7 @@ class CoordValidator(Validator[Coord]):
     def validate(
             cls,
             candidate: Any,
-            number_validator: BoundNumberValidator = BoundNumberValidator(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> ValidationResult[Coord]:
         """
         # ACTION:
@@ -78,8 +78,8 @@ class CoordValidator(Validator[Coord]):
                     ex=TypeError(f"{method}: Expected a Coord, got {type(candidate).__name__} instead.")
                 )
             )
-
-        # Cast candidate to an int after the existence and type checks pass.
+        
+        # --- Cast candidate to a Coord for additional tests ---#
         coord = cast(Coord, candidate)
         
         # Handle the case that coord.row is not an int between [0-7] inclusive.

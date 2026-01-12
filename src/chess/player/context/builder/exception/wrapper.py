@@ -1,7 +1,7 @@
-# src/chess/player/builder/exception.py
+# src/chess/owner/builder/exception.py
 
 """
-Module: chess.player.builder.exception
+Module: chess.owner.builder.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

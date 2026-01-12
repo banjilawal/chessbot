@@ -1,7 +1,7 @@
-# src/chess/player/validator/validator.py
+# src/chess/owner/validator/validator.py
 
 """
-Module: chess.player.validator
+Module: chess.owner.validator
 Author: Banji Lawal
 Created: 2025-08-31
 version: 1.0.0
@@ -48,11 +48,11 @@ class PlayerValidator(Validator[Player]):
         # ACTION:
         1.  Verify the candidate is not null.
         2.  Verify the candidate is an Player. If so cast it to an Player instance.
-        3.  Use the identity service to verify the player's designation and id.
-        4.  If the player is a MachinePlayer, confirm player.engine_service is not null and
+        3.  Use the identity service to verify the owner's designation and id.
+        4.  If the owner is a MachinePlayer, confirm owner.engine_service is not null and
             is an EngineService instance.
-        5.  Confirm player.teams is not null and is an UniqueTeamDataService instance.
-        6.  Confirm player.games is not null and is an UniqueGameDataService instance.
+        5.  Confirm owner.teams is not null and is an UniqueTeamDataService instance.
+        6.  Confirm owner.games is not null and is an UniqueGameDataService instance.
         7.  If any check fails, return the exception inside a ValidationResult.
         8.  When all checks return the successfully validated Player instance inside a ValidationResult.
         
@@ -91,23 +91,23 @@ class PlayerValidator(Validator[Player]):
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
-            # Certify the player's TeamDataService is correct.
+            # Certify the owner's TeamDataService is correct.
             team_data_service_certification = service_validator.validate(candidate=player.teams)
             if team_data_service_certification.is_failure():
                 return ValidationResult.failure(team_data_service_certification.exception)
             
-            # Certify the player's GameDataService is correct.
+            # Certify the owner's GameDataService is correct.
             game_data_service_certification = service_validator.validate(candidate=player.games)
             if game_data_service_certification.is_failure():
                 return ValidationResult.failure(game_data_service_certification.exception)
             
-            # If the player is a MachinePlayer handoff control to certify_machine_player_engine
+            # If the owner is a MachinePlayer handoff control to certify_machine_player_engine
             # for the final check.
             if isinstance(player, MachinePlayer):
                 return cls._certify_machine_player_engine(machine=cast(MachinePlayer, player))
             
-            # If the player is a HumanPlayer all the checks have been passed. Return the
-            # player in the ValidationResult payload.
+            # If the owner is a HumanPlayer all the checks have been passed. Return the
+            # owner in the ValidationResult payload.
             if isinstance(player, HumanPlayer):
                 return ValidationResult.success(payload=cast(HumanPlayer, player))
             

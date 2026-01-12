@@ -1,7 +1,7 @@
-# src/chess/player/service/service.py
+# src/chess/owner/service/service.py
 
 """
-Module: chess.player.service.service
+Module: chess.owner.service.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -84,13 +84,13 @@ class PlayerService(EntityService[Player]):
     def pop_team_from_player(self, player: Player) -> DeletionResult[Team]:
         """
         # ACTION:
-            1.  If the player is not validated send an exception chain in the DeletionResult.
-            2.  If the player has no teams in their history send an exception chain in the DeletionResult. Else
-                run player.teams.undo_team_addition()
+            1.  If the owner is not validated send an exception chain in the DeletionResult.
+            2.  If the owner has no teams in their history send an exception chain in the DeletionResult. Else
+                run owner.teams.undo_team_addition()
             3.  If the undo fails send an exception chain in the DeletionResult. Else, directly forward the outcome
                 to the caller.
         # PARAMETERS:
-            *   player (Player)
+            *   owner (Player)
         # RETURNS:
             *   DeletionResult[Team] containing either:
                     - On failure: Exception.
@@ -102,7 +102,7 @@ class PlayerService(EntityService[Player]):
         """
         method = "PlayerService.pop_team_from_player"
         
-        # Handle the case that the player is not certified safe.
+        # Handle the case that the owner is not certified safe.
         validation = self.validator.validate(player)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -115,7 +115,7 @@ class PlayerService(EntityService[Player]):
                     )
                 )
             )
-        # Handle the case that the player does not have any teams.
+        # Handle the case that the owner does not have any teams.
         if player.teams.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -127,7 +127,7 @@ class PlayerService(EntityService[Player]):
                     )
                 )
             )
-        # Handle the case that the player does not have any teams.
+        # Handle the case that the owner does not have any teams.
         deletion_result = player.teams.undo_team_addition()
         if deletion_result.is_failure:
             return DeletionResult.failure(
@@ -153,9 +153,9 @@ class PlayerService(EntityService[Player]):
         # ACTION:
             1.  If the player_team_relation_result does not return partial registration send an exception chain in
                 the InsertionResult.
-            2.  Forward the result of player.teams.add_team to the caller.
+            2.  Forward the result of owner.teams.add_team to the caller.
         # PARAMETERS:
-            *   player (Player)
+            *   owner (Player)
             *   team (Team)
             *   team_service (TeamService)
         # RETURNS:
@@ -188,7 +188,7 @@ class PlayerService(EntityService[Player]):
                         ex=relation.exception)
                 )
             )
-        # Handle the case that the team belongs to a different player.
+        # Handle the case that the team belongs to a different owner.
         if relation.does_not_exist:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -202,7 +202,7 @@ class PlayerService(EntityService[Player]):
                     )
                 )
             )
-        # Handle the case that the player already has the team.
+        # Handle the case that the owner already has the team.
         if relation.is_success:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -214,7 +214,7 @@ class PlayerService(EntityService[Player]):
                     )
                 )
             )
-        # Handle the case that pushing the new team on to player's TeamStack fails.
+        # Handle the case that pushing the new team on to owner's TeamStack fails.
         insertion_result = player.teams.add_team(team=team)
         if insertion_result.is_failure:
             # Return the exception chain on failure.
@@ -227,7 +227,7 @@ class PlayerService(EntityService[Player]):
                     )
                 )
             )
-        # If the team was successfully pushed onto the player's team stack forward the insertion result.
+        # If the team was successfully pushed onto the owner's team stack forward the insertion result.
         return insertion_result
 
     

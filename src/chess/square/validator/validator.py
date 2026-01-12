@@ -8,7 +8,7 @@ Created: 2025-09-11
 
 from typing import Any, cast
 
-from chess.board import BoardService
+from chess.board import Board, BoardService
 from chess.coord import CoordService, CoordValidator
 from chess.piece import Piece, PieceValidator
 from chess.square import (
@@ -30,7 +30,7 @@ class SquareValidator(Validator[Square]):
         *   Validator
 
     # PROVIDES:
-        * SquareValidator
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -50,153 +50,141 @@ class SquareValidator(Validator[Square]):
     ) -> ValidationResult[Square]:
         """
         # ACTION:
-        1.  Check candidate is not validation.
-        2.  Check if candidate is a Square.
-        3.  Run id and designation integrity checks with identity_service
-        4.  Run target integrity checks with coord_service.
-        5  If any check fails, return the exception inside a ValidationResult.
-        3.  When all checks pass cast candidate to a Square instance, then return inside a ValidationResult.
-
+            1.  If the candidate fails existence or type checks send an exception chain in the ValidationResult. Else,
+                cast candidate to a Square instance square.
+            2.  If the square's name or id fails integrity checks send an exception chain in the ValidationResult.
+                Else validate is coord using coord_service.
+            3.  If coord fails integrity checks send an exception chain in the ValidationResult. Else validate its
+                board using board_service.
+            4.  If board fails integrity checks send an exception chain in the ValidationResult. Else return square.
+                in the ValidationResult payload.
         # PARAMETERS:
-            *   candidate (Any): Object to validate.
+            *   candidate (Any)
+            *   board_service (BoardService)
             *   coord_service (CoordService)
             *   identity_service: (IdentityService)
-        coord_service and identity_service have default values.
-
         # RETURNS:
-        ValidationResult[Coord] containing either:
-            - On success: Coord in the payload.
-            - On failure: Exception.
-
+            *   ValidationResult[Square] containing either:
+                - On failure: Exception.
+                - On success: Coord in the payload.
         # RAISES:
             * TypeError
             * NullSquareException
             * SquareValidationFailedException
         """
         method = "SquareValidator.validate"
-        try:
-            # Make sure its not null first.
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullSquareException(f"{method}: {NullSquareException.DEFAULT_MESSAGE}")
-                )
-            # Verify candidate is a Square instance
-            if not isinstance(candidate, Square):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected Square, but, got {type(candidate).__name__} instead.")
-                )
-            square = cast(Square, candidate)
-            
-            # Verify the Square.id and Square.designation
-            identity_validation = identity_service.validate_identity(
-                id_candidate=square.id,
-                name_candidate=square.name
-            )
-            if identity_validation.is_failure():
-                return ValidationResult.failure(identity_validation.exception)
-            # Verify the Square.coord
-            coord_validation = coord_service.item_validator.validate(candidate=square.coord)
-            if coord_validation.is_failure():
-                return ValidationResult.failure(coord_validation.exception)
-            # Ensure the Square is registered with a Board.
-            board_validation = board_service.item_validator.validate(square.board)
-            if board_validation.is_failure():
-                return ValidationResult.failure(board_validation.exception)
-            # If no errors are detected return the successfully validated Square instance.
-            return ValidationResult.success(payload=square)
-            
-            # Finally, catch any missed exception and wrap A SquareValidationFailedException around it
-            # then return the exception-chain inside a ValidationResult.
-        except Exception as ex:
+        
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationFailedException(ex=ex, message=f"{method}: {SquareValidationFailedException.DEFAULT_MESSAGE}")
+                SquareValidationFailedException(
+                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                    ex=NullSquareException(f"{method}: {NullSquareException.DEFAULT_MESSAGE}")
+                )
             )
+        # Handle the wrong class case.
+        if not isinstance(candidate, Square):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareValidationFailedException(
+                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                    ex=TypeError(f"{method}: Expected Square, but, got {type(candidate).__name__} instead.")
+                )
+            )
+        # --- Cast candidate to a Square for additional tests ---#
+        square = cast(Square, candidate)
+        
+        # Handle the case square.id or square.name certification fails.
+        identity_validation = identity_service.validate_identity(
+            id_candidate=square.id,
+            name_candidate=square.name
+        )
+        if identity_validation.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareValidationFailedException(
+                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                    ex=identity_validation.exception
+                )
+            )
+        # Handle the case square.coord is not certified safe.
+        coord_validation = coord_service.validator.validate(candidate=square.coord)
+        if coord_validation.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareValidationFailedException(
+                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                    ex=coord_validation.exception
+                )
+            )
+        # Handle the case that square.board safety and relation validation fails.
+        board_verification = cls._validate_board(square=square, board_service=board_service)
+        if board_verification.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult(
+                SquareValidationFailedException(
+                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                    ex=board_verification.exception
+                )
+            )
+        # On certification successes send the square instance in the ValidationResult.
+        return ValidationResult.success(payload=square)
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate_piece_square_binding(
-            cls,
-            square_candidate: Any,
-            piece_candidate: Any,
-            piece_validator: type[PieceValidator] = PieceValidator
-    ) -> ValidationResult[Square, Piece]:
+    def _validate_board(cls, square: Square, board_service: BoardService = BoardService()) -> ValidationResult[Board]:
         """
         # ACTION:
-        Verify there is a relationship between an actionable piece and a square_name before, they
-        are used in conjunction in the system.
-
+            1.  If square.board is not validated by board_service return validation exception.
+            2.  If the square is not board.squares return an exception in the ValidationResult.
+            3.  The tests passed. Send square.board in the ValidationResult.
         # PARAMETERS:
-            * square_candidate (Any): The object to verify is a Square instance.
-            * piece_candidate (Any): The object to verify is an disabled Token instance.
-            * piece_service (type[PieceValidator])=PieceService
-
+            *   square (Square)
+            *   board_service (BoardService)
         # RETURNS:
-          ValidationResult[(Square, Token)] containing either:
-                - On success: Tuple(Square, Token) in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-            * SquareAndPieceMismatchedCoordException
-            * PieceInconsistentSquareOccupationException
-        """
-        """
-        # ACTION:
-        1.  SquareValidator.validate runs integrity checks on square_candidate.
-        2.  piece_service verifies piece_candidate is an disabled piece on the board.
-        3.  After casting the candidates into square_name and piece test square_name.target == token.current_position.
-        4.  Test square_name.occupant == token.
-        5   If any check fails, return the exception inside a ValidationResult.
-        6.  When all pass tuple(square_name, piece) to sender in a ValidationResult.
-
-        # PARAMETERS:
-            *   candidate_square (Any): Object to validate as a Square.
-            *   candidate_piece (Any): object to validate as an disabled Token
-            *   piece_service (ype[PieceService])
-
-        # RETURNS:
-        ValidationResult[(Square, Token)] containing either:
-            - On success: tuple(Square, Token) in the payload.
+        ValidationResult[Board] containing either:
             - On failure: Exception.
-
+            - On success: Board in the payload.
         # RAISES:
-            * TypeError
-            * NullSquareException
-            * SquareValidationFailedException
+            *   SquareValidationFailedException
         """
-        method = "SquareValidator.validate_piece_square_binding"
-        
-        try:
-            square_verification = cls.validate(square_candidate)
-            if square_verification.is_failure():
-                return ValidationResult.failure(square_verification.exception)
-            
-            square = cast(Square, square_candidate)
-            
-            piece_verification = piece_validator.validate_piece_is_actionable(piece_candidate)
-            if piece_verification.is_failure():
-                return ValidationResult.failure(piece_verification.exception)
-            
-            piece = cast(Piece, piece_candidate)
-            
-            if square.coord != token.current_position:
-                return ValidationResult.failure(
-                    SquareAndPieceMismatchedCoordException(
-                        f"{method} {SquareAndPieceMismatchedCoordException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            if square.occupant != piece:
-                return ValidationResult.failure(
-                    PieceInconsistentSquareOccupationException(
-                        f"{method} {PieceInconsistentSquareOccupationException.DEFAULT_MESSAGE}"
-                    )
-                )
-            
-            return ValidationResult.success(payload=(square, piece))
-        
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidPieceSquareRelationException(
-                    ex=ex, message=f"{method}: {InvalidPieceSquareRelationException.DEFAULT_MESSAGE}"
+        method = "SquareValidator._validate_board"
+        # Handle the case square.board certification fails.
+        board_square_relation = board_service.board_square_relation_analyzer.analyze(
+            candidate_primary=square.board,
+            candidate_satellite=square,
+        )
+        # Handle the case that there is a direct failure of analyzer.
+        if board_square_relation.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult(
+                SquareValidationFailedException(
+                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                    ex=board_square_relation.exception
                 )
             )
+        # Handle the case that the square belongs to a different board.
+        if board_square_relation.does_not_exist:
+            # Return the exception chain on failure.
+            return ValidationResult(
+                SquareValidationFailedException(
+                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                    ex=SquareBelongsToDifferentBoardException(
+                        f"{method}: {SquareValidationFailedException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the square has not been added to the board's squares.
+        if board_square_relation.partially_exists:
+            # Return the exception chain on failure.
+            return ValidationResult(
+                SquareValidationFailedException(
+                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                    ex=SquareNotSubmitedBoardRegistrationException(
+                        f"{method}: {SquareNotSubmitedBoardRegistrationException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # On certification successes send the board back to the validator.
+        return ValidationResult.success(payload=square.board)

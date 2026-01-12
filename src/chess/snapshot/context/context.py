@@ -38,7 +38,7 @@ class SnapshotContext(Context[Snapshot]):
         *   arena (Optional[Arena])
         *   timestamp (Optional[int])
         *   exception (Optional[Exception])
-        *   player (Optional[Player])
+        *   owner (Optional[Player])
 
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
@@ -69,7 +69,7 @@ class SnapshotContext(Context[Snapshot]):
             *   arena (Optional[Arena])
             *   timestamp (Optional[int])
             *   exception (Optional[Exception])
-            *   player (Optional[Player])
+            *   owner (Optional[Player])
 
         # RETURNS:
         None
@@ -126,7 +126,7 @@ class SnapshotContext(Context[Snapshot]):
             "game": self._game,
             "team": self._team,
             "arena": self._arena,
-            "player": self._agent,
+            "owner": self._agent,
             "timestamp": self._timestamp,
             "exception": self._exception,
         }

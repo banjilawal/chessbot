@@ -1,7 +1,7 @@
-# src/chess/player/model/player.py
+# src/chess/owner/model/owner.py
 
 """
-Module: chess.player.model.player
+Module: chess.owner.model.owner
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -60,7 +60,7 @@ class Player(ABC):
         # RAISES:
         None
         """
-        method = "PlayerContextService.player"
+        method = "PlayerContextService.owner"
         self._id = id
         self._name = name
         self._teams = teams
@@ -110,7 +110,7 @@ class Player(ABC):
     #         f"]"
     #     )
     
-    # player.order_move(
+    # owner.order_move(
     #   owner=TeamFinder.searcher(
     #     data_owner=self._team_name,
     #     search_category=SearchCategory.ROSTER,

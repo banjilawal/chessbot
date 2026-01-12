@@ -41,7 +41,7 @@ From `chess.system`:
 From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
-From `chess.player`:
+From `chess.owner`:
   `Player`, `PlayerAgentValidator`,
 
 From `chess.owner`:
@@ -95,7 +95,7 @@ From `chess.system`:
 From `chess.team_name`:
     `Team`, `NullTeam`, `TeamBuildFailedException`, `Schema`
 
-From `chess.player`:
+From `chess.owner`:
   `Player`, `PlayerAgentValidator`,
 
 From `chess.owner`:
@@ -155,9 +155,9 @@ RAISES:
   `TypeError`: if `candidate` is not discoverySearchContext DiscoverySearchContext` object
   `NullDiscoverySearchContextException`: if `candidate` is validation
   `IdValidationFailedException`: if `visitor_id` fails validate checks
-  `InvalidCommanderException`: if `player` fails validate checks
+  `InvalidCommanderException`: if `owner` fails validate checks
   `NullDiscoverySearchContextProfileException`: if `team_schema` is validation
-  `InvalidCommanderAssignmentException`: if the assigned player does not consistency the validated player
+  `InvalidCommanderAssignmentException`: if the assigned owner does not consistency the validated owner
   `RelationshipException`: if the bidirectional relationship between DiscoverySearchContext and Player is broken
   `InvalidDiscoverySearchContextException`: Wraps any preceding exception
 """
@@ -204,7 +204,7 @@ From `chess.system`:
 From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
-From `chess.player`:
+From `chess.owner`:
   `Player`, `PlayerAgentValidator`,
 
 From `chess.owner`:
@@ -258,7 +258,7 @@ From `chess.system`:
 From `chess.discoverySearchContext`:
     `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
 
-From `chess.player`:
+From `chess.owner`:
   `Player`, `PlayerAgentValidator`,
 
 From `chess.owner`:

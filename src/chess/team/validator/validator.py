@@ -8,14 +8,13 @@ Created: 2025-09-11
 
 from typing import cast, Any
 
-from chess.player.service.exception.debug.team import TeamBelongsToDifferentPLayerException
 from chess.schema import SchemaService
+from chess.player import PlayerService, TeamBelongsToDifferentOwnerException
 from chess.arena import Arena, ArenaService, TeamPlayingDifferentArenaException
-from chess.agent import PlayerAgent, AgentService
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
-    TeamContext, TeamNotRegisteredWithOwnerException, TeamValidationFailedException, NullTeamException, Team,
-    TeamNotSubmittedArenaRegistrationException,
+    NullTeamException, Team, TeamNotSubmitedOwnerRegistrationException, TeamNotSubmittedArenaRegistrationException,
+    TeamValidationFailedException
 )
 
 
@@ -45,7 +44,7 @@ class TeamValidator(Validator[Team]):
             cls,
             candidate: Any,
             arena_service: ArenaService(),
-            owner_service: AgentService = AgentService(),
+            owner_service: PlayerService = PlayerService(),
             schema_service: SchemaService = SchemaService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[Team]:
@@ -62,7 +61,7 @@ class TeamValidator(Validator[Team]):
         # PARAMETERS:
             *   candidate (Any)
             *   team_schema (Schema)
-            *   agent_certifier (AgentService)
+            *   player_certifier (PlayerService)
             *   identity_service (IdentityService)
         # RETURNS:
         ValidationResult[Team] containing either:
@@ -76,7 +75,7 @@ class TeamValidator(Validator[Team]):
         method = "TeamValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
@@ -85,19 +84,20 @@ class TeamValidator(Validator[Team]):
             )
         # Handle the wrong class case.
         if not isinstance(candidate, Team):
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected Team, got {type(candidate).__name__} instead.")
                 )
             )
-        # After the existence and type checks cast the candidate to Team for additional tests.
+        # --- Cast candidate to a Team for additional tests ---#
         team = cast(Team, candidate)
         
         # Handle the case team.id certification fails.
         id_validation = identity_service.validate_id(candidate=team.id)
         if id_validation.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
@@ -108,7 +108,7 @@ class TeamValidator(Validator[Team]):
         schema_validation = schema_service.schema_validator.validate(team.schema)
         if schema_validation.is_failure:
             if id_validation.is_failure:
-                # Return the exception chain.
+                # Return the exception chain on failure.
                 return ValidationResult(
                     TeamValidationFailedException(
                         message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
@@ -118,7 +118,7 @@ class TeamValidator(Validator[Team]):
         # Handle the case that team.owner safety and relation validation fails.
         owner_verification = cls._validate_owner(team=team, owner_service=owner_service)
         if owner_verification.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
@@ -128,7 +128,7 @@ class TeamValidator(Validator[Team]):
         # Handle the case the team.arena safety and relation fails.
         arena_verification = cls._validate_arena(team=team, arena_service=arena_service)
         if arena_verification.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
@@ -140,7 +140,7 @@ class TeamValidator(Validator[Team]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _validate_owner(cls, team: Team, owner_service: AgentService = AgentService()) -> ValidationResult[PlayerAgent]:
+    def _validate_owner(cls, team: Team, owner_service: PlayerService = PlayerService()) -> ValidationResult[PlayerPlayer]:
         """
         # ACTION:
             1.  If team.owner is not validated by owner_service return validation exception.
@@ -148,7 +148,7 @@ class TeamValidator(Validator[Team]):
             3.  The tests passed. Send team.owner in the ValidationResult.
         # PARAMETERS:
             *   team (Team)
-            *   owner_service (AgentService)
+            *   owner_service (PlayerService)
         # RETURNS:
         ValidationResult[Player] containing either:
             - On failure: Exception.
@@ -158,13 +158,13 @@ class TeamValidator(Validator[Team]):
         """
         method = "TeamValidator._validate_owner"
         # Handle the case team.owner certification fails.
-        owner_team_relation = owner_service.agent_team_relation_analyzer.analyze(
+        owner_team_relation = owner_service.player_team_relation_analyzer.analyze(
             candidate_primary=team.owner,
             candidate_satellite=team,
         )
         # Handle the case that there is a direct failure of analyzer.
         if owner_team_relation.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
@@ -173,23 +173,23 @@ class TeamValidator(Validator[Team]):
             )
         # Handle the case that the team belongs to a different owner.
         if owner_team_relation.does_not_exist:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=TeamBelongsToDifferentPLayerException(
+                    ex=TeamBelongsToDifferentOwnerException(
                         f"{method}: {TeamValidationFailedException.DEFAULT_MESSAGE}"
                     )
                 )
             )
         # Handle the case that the team has not been added to the owner's teams.
         if owner_team_relation.partially_exists:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
-                    ex=TeamNotRegisteredWithOwnerException(
-                        f"{method}: {TeamNotRegisteredWithOwnerException.DEFAULT_MESSAGE}"
+                    ex=TeamNotSubmitedOwnerRegistrationException(
+                        f"{method}: {TeamNotSubmitedOwnerRegistrationException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -222,7 +222,7 @@ class TeamValidator(Validator[Team]):
         )
         # Handle the case that the relation analysis fails.
         if arena_team_relation.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
@@ -231,7 +231,7 @@ class TeamValidator(Validator[Team]):
             )
         # Handle the case that there is no relation between the arena and team.
         if arena_team_relation.does_not_exist:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
@@ -242,7 +242,7 @@ class TeamValidator(Validator[Team]):
             )
         # Handle the case that the team has not occupied its slot in the arena.
         if arena_team_relation.partially_exists:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return ValidationResult(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",

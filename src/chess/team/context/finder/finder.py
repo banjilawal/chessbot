@@ -99,9 +99,9 @@ class TeamFinder(DataFinder[Team]):
         # Entry point into searching by arena team is playing in.
         if context.arena is not None:
             return cls._find_by_arena(dataset=dataset, arena=context.arena)
-        # Entry point into searching by team's player.
-        if context.player is not None:
-            return cls._find_by_player(dataset, context.player)
+        # Entry point into searching by team's owner.
+        if context.owner is not None:
+            return cls._find_by_player(dataset, context.owner)
         # Entry point into searching by team's color.
         if context.color is not None:
             return cls._find_by_color(dataset=dataset, team=context.color)
@@ -172,7 +172,7 @@ class TeamFinder(DataFinder[Team]):
     def _find_by_player(cls, dataset: [Team], player: Player) -> SearchResult[List[Team]]:
         """
         # ACTION:
-            1.  Get any teams which have been played by the player,
+            1.  Get any teams which have been played by the owner,
         # PARAMETERS:
             *   arena (Arena)
             *   dataset (List[Player])
@@ -185,7 +185,7 @@ class TeamFinder(DataFinder[Team]):
             *   TeamSearchFailedException
         """
         method = "TeamFinder._find_by_player"
-        matches = [team for team in dataset if team.player == player]
+        matches = [team for team in dataset if team.owner == player]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

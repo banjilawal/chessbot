@@ -86,7 +86,7 @@ class GameFinder(DataFinder[Game]):
             # Entry point into searching by game id.
             if context.id is not None:
                 return cls._find_by_id(dataset, context.id)
-            # Entry point into searching by game player.
+            # Entry point into searching by game owner.
             if context.agent is not None:
                 return cls._find_by_agent(dataset, context.agent)
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
@@ -145,12 +145,12 @@ class GameFinder(DataFinder[Game]):
     def _find_by_agent(cls, dataset: [Game], agent: PlayerAgent) -> SearchResult[List[Game]]:
         """
         # ACTION:
-        1.  Get the Game with the matching player-player.
+        1.  Get the Game with the matching owner-owner.
         2.  If no match is found return an exception.
         3.  An id search should produce either no hits or one hit only.
 
         # PARAMETERS:
-            *   player (Player)
+            *   owner (Player)
             *   dataset (List[Player])
 
         # RETURNS:

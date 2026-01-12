@@ -92,7 +92,7 @@ class EnemyCannotBeBlockerException(BlockingEventException):
   """"""
   ERROR_CODE = "BLOCKER_IS_ENEMY_ERROR"
   DEFAULT_MESSAGE = ("Blocker cannot be an enemy. An enemy at the destination is attacked or checked."
-     " Only friends can block the player."
+     " Only friends can block the owner."
   )
 
 

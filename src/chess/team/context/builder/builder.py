@@ -64,7 +64,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 *   id (Optional[int])
                 *   designation (Optional[int])
                 8   arena (Optional[Arena])
-                *   player (Optional[Player])
+                *   owner (Optional[Player])
                 *   color (Optional[ArenaColor])
             These Parameters must be provided:
                 *   arena_service (ArenaService)
@@ -120,7 +120,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             # On validation success return an id_TeamContext in the BuildResult.
             return BuildResult.success(payload=TeamContext(id=id))
         
-        # Build the player TeamContext if its flag is enabled.
+        # Build the owner TeamContext if its flag is enabled.
         if player is not None:
             validation = player_service.validator.validate(candidate=player)
             if validation.is_failure:

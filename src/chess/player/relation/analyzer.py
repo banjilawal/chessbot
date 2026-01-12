@@ -1,7 +1,7 @@
-# src/chess/player/relation/tester.py
+# src/chess/owner/relation/tester.py
 
 """
-Module: chess.player.relation.tester
+Module: chess.owner.relation.tester
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -21,7 +21,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
     # ROLE: Reporting, Test for Relationship
 
     # RESPONSIBILITIES:
-    1.  Test if whether an player-team tuple have either none, partial, or fully bidirectional relation between them.
+    1.  Test if whether an owner-team tuple have either none, partial, or fully bidirectional relation between them.
     2.  If the testing was not completed send an exception chain to the caller.
 
     # PARENT:
@@ -49,9 +49,9 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
         """
         # ACTION:
         1.  If either candidate fails its safety certification send the exception chain in the RelationReport. Else,
-            cast the candidate_primary to player instance; player and candidate_satellite to Team instance; team.
-        2.  If the team.player != player they are not related. Else they are partially related.
-        3.  If searching player's teams for the satellite produces an error send the exception chain. If the search
+            cast the candidate_primary to owner instance; owner and candidate_satellite to Team instance; team.
+        2.  If the team.owner != owner they are not related. Else they are partially related.
+        3.  If searching owner's teams for the satellite produces an error send the exception chain. If the search
             produced aa match send a bidirectional report. Else send a partial relation report.
 
         # PARAMETERS:
@@ -70,7 +70,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
         """
         method = "PlayerService.analyze"
         
-        # Handle the case that player validation fails.
+        # Handle the case that owner validation fails.
         player_validation = player_validator.validate(candidate_primary)
         if player_validation.is_failure:
             # Return the exception chain on failure.
@@ -96,8 +96,8 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
         # Just incase things aren't Liskovian on the candidate_satellite ue validation.payload for the cast.
         team = cast(Team, team_validation.payload)
         
-        # If the team belongs to a different player it's not a satellite of the player. They are not related.
-        if player != team.player:
+        # If the team belongs to a different owner it's not a satellite of the owner. They are not related.
+        if player != team.owner:
             return RelationReport.not_related()
         
         # For complete coverage and certainty search the assignments not just the current_team.
@@ -113,5 +113,5 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
         # If the team was not found the bidirectional relationship has not been fully completed.
         if search_result.is_empty:
             return RelationReport.partial(satellite=team)
-        # All other paths in the test chain have been exhausted. The player-team tuple is fully bidirectional.
+        # All other paths in the test chain have been exhausted. The owner-team tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=player, satellite=team)

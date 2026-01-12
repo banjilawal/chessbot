@@ -11,7 +11,7 @@ import logging
 
 log = logging.getLogger("chessbot")
 #
-# from .player import AgentService, TeamSearchService
+# from .owner import AgentService, TeamSearchService
 # from .arena import *
 # from .assets import *
 # from .board import *

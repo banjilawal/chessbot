@@ -158,7 +158,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
                 # On validation success return the exception_SnapshotContext in the ValidationResult.
                 return ValidationResult.success(context)
 
-            # Validation subflow for player SnapshotContexts.
+            # Validation subflow for owner SnapshotContexts.
             if context.plyer is not None:
                 validation = player_service.validator.validate(candidate=context.player)
                 if validation.is_failure:

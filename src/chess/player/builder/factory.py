@@ -1,7 +1,7 @@
-# src/chess/player/builder/factory.py
+# src/chess/owner/builder/factory.py
 
 """
-Module: chess.player.builder.factory
+Module: chess.owner.builder.factory
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -82,7 +82,7 @@ class PlayerFactory(Builder[Player]):
             if isinstance(player_variety, HumanPlayer):
                 return cls.build_human_player(id=id, name=name, )
             
-            # Machine player requires an engine_service.
+            # Machine owner requires an engine_service.
             if isinstance(player_variety, MachinePlayer):
                 return cls.build_machine_player(id=id, name=name, engine_service=engine_service)
         

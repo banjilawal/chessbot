@@ -9,6 +9,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.board import Board, BoardBuilder, BoardValidator
+from chess.board.relation import BoardSquareRelationAnalyzer
 from chess.system import id_emitter
 from chess.system.service import EntityService
 from chess.team import TeamService
@@ -36,14 +37,16 @@ class BoardService(EntityService[Board]):
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
     """
-    DEFAULT_NAME = "BoardService"
+    SERVICE_NAME = "BoardService"
+    _square_relation_analyzer: BoardSquareRelationAnalyzer
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             builder: BoardBuilder = BoardBuilder(),
             validator: BoardValidator = BoardValidator(),
+            square_relation_analyzer: BoardSquareRelationAnalyzer = BoardSquareRelationAnalyzer()
     ):
         """
         # ACTION:
@@ -62,6 +65,7 @@ class BoardService(EntityService[Board]):
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._square_relation_analyzer = square_relation_analyzer
     
     @property
     def builder(self) -> BoardBuilder:
@@ -73,14 +77,6 @@ class BoardService(EntityService[Board]):
         """get BoardValidator"""
         return cast(BoardValidator, self.entity_validator)
     
-    def layout_team_board(
-            self,
-            board: Board,
-            team: Team,
-            team_service: TeamService = TeamService()
-    ) -> InsertionResult[Token]:
-        team_validation = team_service.validator.validate(team)
-        if team_validation.is_failure:
-            return InsertionResult.failure(
-                Board
-            )
+    @property
+    def square_relation_analyzer(self) -> BoardSquareRelationAnalyzer:
+        return self._board_square_relation_analyzer

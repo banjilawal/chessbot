@@ -184,7 +184,7 @@ class CoordDataService(DataService[Coord]):
         
         # Handle the case that the list is empty
         if self.is_empty:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return DeletionResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {CoordDataServiceException.ERROR_CODE}",
@@ -205,7 +205,7 @@ class CoordDataService(DataService[Coord]):
         # Handle the case that the super class undo_push fails.
         super_deletion_result = self.undo_item_push()
         if super_deletion_result.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return DeletionResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
@@ -236,7 +236,7 @@ class CoordDataService(DataService[Coord]):
         # Handle the case that the context is not certified safe.
         context_validation = self.coord_context_service.validator.validate(coord_context)
         if context_validation.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return SearchResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
@@ -248,7 +248,7 @@ class CoordDataService(DataService[Coord]):
         
         # Handle the case that the search does not complete.
         if search_result.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return SearchResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
@@ -257,7 +257,7 @@ class CoordDataService(DataService[Coord]):
             )
         # Handle the case that a successful search result does not have List[Coord] as its payload.
         if not isinstance(List[Coord], search_result.payload):
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return SearchResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",

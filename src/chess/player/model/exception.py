@@ -1,7 +1,7 @@
-# src/chess/player/model/exception.py
+# src/chess/owner/model/exception.py
 
 """
-Module: chess.player.model.exception
+Module: chess.owner.model.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -64,11 +64,11 @@ class PlayerException(ChessException):
 #
 # class InvalidPlayerPlayerAssignmentException(PlayerPlayerHistoryException):
 #   """
-#   If team_name team_name already attached to team_name player (team_name.player == not None) tries being assigned team_name
-#   different player, `InvalidPlayerPlayerAssignmentException` is raised.
+#   If team_name team_name already attached to team_name owner (team_name.owner == not None) tries being assigned team_name
+#   different owner, `InvalidPlayerPlayerAssignmentException` is raised.
 #   """
 #   ERROR_CODE = "INVALID_PLAYERPLAYER_ASSIGNMENT_ERROR"
-#   DEFAULT_MESSAGE = "Team is already assigned to team_name different player."
+#   DEFAULT_MESSAGE = "Team is already assigned to team_name different owner."
 
 
 

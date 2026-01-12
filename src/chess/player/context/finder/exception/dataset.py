@@ -1,7 +1,7 @@
-# src/chess/player/finder/exception/dataset.py
+# src/chess/owner/finder/exception/dataset.py
 
 """
-Module: chess.player.cntext.finder.exception.dataset
+Module: chess.owner.cntext.finder.exception.dataset
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

@@ -99,7 +99,7 @@ class ArenaBuilder(Builder[Arena]):
         """"""
         method = "ArenaBuilder._certify_players"
         try:
-            # Perform the basic player safety validation.
+            # Perform the basic owner safety validation.
             for player in players:
                 validation = player_service.validator.validate(candidate=player)
                 if validation.failure:

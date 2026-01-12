@@ -106,7 +106,7 @@ class TokenService(EntityService[Token]):
         
         validation = self.validator.validate(token)
         if validation.is_failure:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return DeletionResult(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
@@ -115,7 +115,7 @@ class TokenService(EntityService[Token]):
             )
         # Handle the case that the opening square is null which implies there are no moves to undo.
         if token.opening_square is None:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return DeletionResult(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
@@ -124,7 +124,7 @@ class TokenService(EntityService[Token]):
             )
         # Handle the case that the token has no positions that can be removed.
         if token.positions.is_empty:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return DeletionResult(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
@@ -135,7 +135,7 @@ class TokenService(EntityService[Token]):
             )
         # Handle the case that an attempt is made to undo more than one turn.
         if token.previous_address == token.current_address:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return DeletionResult(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
@@ -145,7 +145,7 @@ class TokenService(EntityService[Token]):
         # Handle the case that the coord stack pop operation fails.
         pop_result = token.positions.pop_coord()
         if token.previous_address == token.current_address:
-            # Return the exception chain.
+            # Return the exception chain on failure.
             return DeletionResult(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",

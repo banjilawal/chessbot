@@ -12,6 +12,8 @@ __all__ = [
     "SquareException",
 ]
 
+from chess.system import ChessException
+
 
 # ======================# SQUARE EXCEPTION #======================#
 class SquareException(ChessException):

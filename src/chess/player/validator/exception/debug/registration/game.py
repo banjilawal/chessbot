@@ -1,7 +1,7 @@
-# src/chess/player/validator/exception/registration/game.py
+# src/chess/owner/validator/exception/registration/game.py
 
 """
-Module: chess.player.validator.exception.registration.game
+Module: chess.owner.validator.exception.registration.game
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -28,7 +28,7 @@ class PlayerNotRegisteredWithGameException(PlayerValidationFailedException, Regi
     # RESPONSIBILITIES:
     1.  Indicate that while the Player has assigned itself to a Game instance, the Game has not
         registered the Player as one of its two participants.
-    2.  Raised if the player.game == game but player not in game.players
+    2.  Raised if the owner.game == game but owner not in game.players
 
     # PARENT:
         *   PlayerRegistrationException
