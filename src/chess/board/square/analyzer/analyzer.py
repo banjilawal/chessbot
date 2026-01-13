@@ -1,9 +1,15 @@
-from typing import cast
+# src/chess/board/square/analyzer/analyzer.py
 
-from chess.board import Board, BoardValidator
-from chess.board.relation import BoardSquareRelationAnalysisFailedException
-from chess.square import Square, SquareContext, SquareService
-from chess.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
+"""
+Module: chess.board.square.analyzer.analyzer
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
+from chess.board import Board
+from chess.square import Square
+from chess.system import RelationAnalyzer
 
 
 class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
@@ -11,7 +17,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
     # ROLE: Reporting, Test for Relationship
 
     # RESPONSIBILITIES:
-    1.  Test if whether an board-square tuple have either none, partial, or fully bidirectional relation between them.
+    1.  Test if whether a board-square tuple have either none, partial, or fully bidirectional relation between them.
     2.  If the testing was not completed send an exception chain to the caller.
 
     # PARENT:

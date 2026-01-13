@@ -16,5 +16,6 @@ from .service import *
 from .validator import *
 
 # Modules
-from .exception import *
 from .square import Square
+from .exception import SquareException
+

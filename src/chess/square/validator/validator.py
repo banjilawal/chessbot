@@ -11,11 +11,9 @@ from typing import Any, cast
 from chess.board import Board, BoardService, SquareOnDifferentBoardException
 from chess.coord import CoordService
 from chess.square import (
-    InvalidPieceSquareRelationException, PieceInconsistentSquareOccupationException, Square,
-    SquareNotSubmittedBoardRegistrationException, SquareValidationFailedException,
-    NullSquareException, SquareAndPieceMismatchedCoordException
+    Square, SquareNotSubmittedBoardRegistrationException, SquareValidationFailedException, NullSquareException,
 )
-from chess.system import IdentityService, Validator, ValidationResult, NameValidator, LoggingLevelRouter, IdValidator
+from chess.system import IdentityService, Validator, ValidationResult, LoggingLevelRouter
 
 
 class SquareValidator(Validator[Square]):
@@ -56,8 +54,8 @@ class SquareValidator(Validator[Square]):
                 Else validate is coord using coord_service.
             3.  If coord fails integrity checks send an exception chain in the ValidationResult. Else validate its
                 board using board_service.
-            4.  If board fails integrity checks send an exception chain in the ValidationResult. Else return square.
-                in the ValidationResult payload.
+            4.  If board fails integrity checks send an exception chain in the ValidationResult. Else, the square
+                has been successfully validated. Send it in the ValidationResult's payload.
         # PARAMETERS:
             *   candidate (Any)
             *   board_service (BoardService)
@@ -65,12 +63,12 @@ class SquareValidator(Validator[Square]):
             *   identity_service: (IdentityService)
         # RETURNS:
             *   ValidationResult[Square] containing either:
-                - On failure: Exception.
-                - On success: Coord in the payload.
+                    - On failure: Exception.
+                    - On success: Square in the payload.
         # RAISES:
-            * TypeError
-            * NullSquareException
-            * SquareValidationFailedException
+            *   TypeError
+            *   NullSquareException
+            *   SquareValidationFailedException
         """
         method = "SquareValidator.validate"
         
@@ -92,7 +90,7 @@ class SquareValidator(Validator[Square]):
                     ex=TypeError(f"{method}: Expected Square, but, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast candidate to a Square for additional tests ---#
+        # --- Cast candidate to a Square for additional tests. ---#
         square = cast(Square, candidate)
         
         # Handle the case square.id or square.name certification fails.
@@ -128,7 +126,7 @@ class SquareValidator(Validator[Square]):
                     ex=board_verification.exception
                 )
             )
-        # On certification successes send the square instance in the ValidationResult.
+        # --- On certification successes send the square instance in the ValidationResult. ---#
         return ValidationResult.success(payload=square)
     
     @classmethod

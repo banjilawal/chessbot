@@ -1,7 +1,7 @@
-# src/chess/board/square/analyzer__init__.py
+# src/chess/board/square/analyzer/__init__.py
 
 """
-Module: chess.board.square.analyzer__init__
+Module: chess.board.square.analyzer.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

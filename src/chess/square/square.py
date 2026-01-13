@@ -96,6 +96,6 @@ class Square:
     def __hash__(self) -> int:
         return hash(self._id)
     
-    def __str__(self) -> str:
-        occupant_str = f" occupant:{self._occupant.name}" if self._occupant else ""
-        return f"Square:[{self._id} {self._name} {self._coord}{occupant_str}]"
+    # def __str__(self) -> str:
+    #     occupant_str = f" occupant:{self._occupant.name}" if self._occupant else ""
+    #     return f"Square:[{self._id} {self._name} {self._coord}{occupant_str}]"

@@ -1,7 +1,7 @@
-# src/chess/board/relation/wrapper.py
+# src/chess/board/square/analyzer/wrapper.py
 
 """
-Module: chess.board.relation.wrapper
+Module: chess.board.square.analyzer.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

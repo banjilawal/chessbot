@@ -9,13 +9,11 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.system import (
-    DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
-)
+from chess.system import DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.square import (
     AppendingSquareDirectlyIntoItemsFailedException, PoppingEmptySquareStackException, Square, SquareContext,
-    SquareDataServiceException, SquareDoesNotExistForRemovalException, SquareNotSubmittedBoardRegistrationException,
-    SquareService, SquareContextService, SquareDeletionFailedException, SquareInsertionFailedException
+    SquareDataServiceException, SquareDoesNotExistForRemovalException, SquareService, SquareContextService,
+    SquareDeletionFailedException, SquareInsertionFailedException
 )
 
 class SquareDataService(DataService[Square]):
