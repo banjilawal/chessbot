@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import ContextService, id_emitter
-from chess.square import SquareContext, SquareContextBuilder, SquareContextValidator
+from chess.square import SquareContext, SquareContextBuilder, SquareContextValidator, SquareFinder
 
 
 class SquareContextService(ContextService[SquareContext]):
@@ -36,10 +36,10 @@ class SquareContextService(ContextService[SquareContext]):
     # INHERITED ATTRIBUTES:
         *   See ContextService for inherited attributes.
     """
-    DEFAULT_NAME = "SquareContextService"
+    SERVICE_NAME = "SquareContextService"
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             finder: SquareFinder = SquareFinder(),
             builder: SquareContextBuilder = SquareContextBuilder(),

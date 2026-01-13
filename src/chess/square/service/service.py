@@ -46,19 +46,16 @@ class SquareService(EntityService[Square]):
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   id (nt)
             *   name (str)
             *   builder (SquareFactory)
             *   validator (SquareValidator)
-
         # RETURNS:
-        None
-
+            None
         # RAISES:
-        None
+            None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     

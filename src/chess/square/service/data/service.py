@@ -1,18 +1,22 @@
-# src/chess/square/service/data/service.py
+# src/chess/square/service/data/service_.py
 
 """
 Module: chess.square.service.data.service
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2025-11-19
 version: 1.0.0
 """
 
+from typing import List, Optional, cast
 
-from typing import List, cast
-
-from chess.system import DataService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
-from chess.square import Square, SquareContext, SquareContextService, SquareDataServiceException, SquareService
-
+from chess.system import (
+    DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
+    SearchResult, id_emitter
+)
+from chess.square import (
+    Square, SquareContext, SquareDataServiceException, SquareDoesNotExistForRemovalException,
+    SquareService, SquareContextService, SquareDeletionFailedException, SquareInsertionFailedException
+)
 
 class SquareDataService(DataService[Square]):
     """
@@ -111,8 +115,6 @@ class SquareDataService(DataService[Square]):
                 )
             )
         
-        search_result = self.square_context_service.finder.f
-        
         push_result = self.push_item(item=square)
         # Handle the case that super().push_item fails
         if push_result.is_failure:
@@ -168,91 +170,3 @@ class SquareDataService(DataService[Square]):
                 self.items.remove(square)
                 return DeletionResult.success(payload=square)
         return DeletionResult.nothing()
-    #
-    #
-    # @LoggingLevelRouter.monitor
-    # def delete_by_designation(
-    #         self,
-    #         designation: str,
-    #         identity_service: IdentityService = IdentityService()
-    # ) -> DeletionResult[Square]:
-    #     """
-    #     # ACTION:
-    #         1.  If the designation is not certified safe send the exception in the DeletionResult. Else, call
-    #             _delete_squares_by_search_result with the outcome of an id search.
-    #         2.  Forward the DeletionResult from _delete_squares_by_search_result to the deletion client.
-    #     # PARAMETERS:
-    #                 *   designation (str)
-    #                 *   identity_service (IdentityService)
-    #     # RETURNS:
-    #         *   InsertionResult[Square] containing either:
-    #                 - On failure: Exception.
-    #                 - On success: Square in the payload.
-    #     # RAISES:
-    #         *   SquareDataServiceException
-    #     """
-    #     method = "SquareDataService.remove_square_by_designation"
-    #
-    #     # Handle the case of an unsafe designation.
-    #     validation = identity_service.validate_name(candidate=designation)
-    #     if validation.is_failure:
-    #         # Return the exception chain on failure.
-    #         return DeletionResult.failure(
-    #             SquareDataServiceException(
-    #                 message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
-    #                 ex=validation.exception
-    #             )
-    #         )
-    #     # # Pass the results of a designation search to the deletion helper.
-    #     search_result = self.square_context_service.finder.find(context=SquareContext(designation=designation))
-    #     return self._delete_squares_by_search_result(search_result=search_result)
-    #
-    # @LoggingLevelRouter.monitor
-    # def _delete_squares_by_search_result(self, search_result: SearchResult) -> DeletionResult[Square]:
-    #     """
-    #     # ACTION:
-    #         1.  If the search_result param is a failure send the exception in the DeletionResult.
-    #         2.  If the search_result param is empty there is nothing to delete, send the exception in the
-    #             DeletionResult.
-    #         3.  If the search_result was a success delete all copies of the target in from the dataset then,
-    #             send the deleted item in the DeletionResult.
-    #     # PARAMETERS:
-    #                 *   search_result (SearchResult[Square])
-    #     # RETURNS:
-    #         *   DeletionResult[Square] containing either:
-    #                 - On failure: Exception.
-    #                 - On success: Square in the payload.
-    #     # RAISES:
-    #         *   SquareDataServiceException
-    #         8   SquareDoesNotExistForRemovalException
-    #     """
-    #     method = "SquareDataService._delete_squares_by_search_result"
-    #
-    #     # Handle the case that the search fails
-    #     if search_result.is_failure:
-    #         # Return the exception chain on failure.
-    #         return DeletionResult.failure(
-    #             SquareDataServiceException(
-    #                 message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
-    #                 ex=search_result.exception
-    #             )
-    #         )
-    #     # Handle the case that square does not exist in the dataset.
-    #     if search_result.is_empty:
-    #         # Return the exception chain on failure.
-    #         return DeletionResult.failure(
-    #             SquareDataServiceException(
-    #                 message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
-    #                 ex=SquareDoesNotExistForRemovalException(
-    #                     f"{method}: {SquareDoesNotExistForRemovalException.DEFAULT_MESSAGE}"
-    #                 )
-    #             )
-    #         )
-    #     # Cast the payload to the array of matches, Then remove all occurrences in a loop
-    #     matches = cast(List[Square], search_result.payload)
-    #     square_removed = matches[0]
-    #     # Python remove is not exhaustive hence the loop.
-    #     for square in matches:
-    #         self.items.remove(square)
-    #     # Send the square_removed in the DeletionResult to confirm success.
-    #     return DeletionResult.success(payload=square_removed)
