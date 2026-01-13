@@ -75,6 +75,7 @@ class TeamContextValidator(Validator[TeamContext]):
             *   TeamContextValidationRouteException
         """
         method = "TeamContextValidator.validate"
+        
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.

@@ -10,8 +10,8 @@ version: 1.0.0
 # =========== COORD.SERVICE.SERVICE.DATA.UNIQUE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .deletion import *
+from .insertion import *
 
 # Modules
-from .duplicate import AddingDuplicateCoordException
 from .catchall import UniqueCoordDataServiceException

@@ -1,4 +1,11 @@
-from chess.system import UniqueDataServiceException
+# src/chess/square/service/data/unique/exception/catchall.py
+
+"""
+Module: chess.square.service.data.unique.exception.catchall
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
 
 ___all__ = [
     # ======================# PLAYER_DATA_SERVICE EXCEPTION #======================#
@@ -6,11 +13,11 @@ ___all__ = [
 ]
 
 from chess.square import SquareException
-from chess.system import ServiceException
+from chess.system import UniqueDataServiceException
 
 
 # ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
-class UniqueSquareDataServiceException(SquareException, ServiceException):
+class UniqueSquareDataServiceException(SquareException, UniqueDataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

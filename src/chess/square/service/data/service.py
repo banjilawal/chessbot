@@ -7,17 +7,14 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from typing import List, Optional, cast
+from typing import List, cast
 
-from chess.neighbor import SquareSearchCoordCollisionException
 from chess.system import (
-    DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
-    SearchResult, id_emitter
+    DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 )
 from chess.square import (
     AppendingSquareDirectlyIntoItemsFailedException, PoppingEmptySquareStackException, Square, SquareContext,
-    SquareCoordCollisionException, SquareDataServiceException,
-    SquareDoesNotExistForRemovalException,
+    SquareDataServiceException, SquareDoesNotExistForRemovalException, SquareNotSubmittedBoardRegistrationException,
     SquareService, SquareContextService, SquareDeletionFailedException, SquareInsertionFailedException
 )
 
@@ -142,7 +139,9 @@ class SquareDataService(DataService[Square]):
                     message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
-                        ex=search_result.exception
+                        ex=SquareDoesNotExistForRemovalException(
+                            f"{method}: {SquareDoesNotExistForRemovalException.ERROR_CODE}"
+                        )
                     )
                 )
             )

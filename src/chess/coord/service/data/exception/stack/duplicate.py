@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/current.py
+# src/chess/coord/service/data/exception/stack/duplicate.py
 
 """
-Module: chess.token.service.data.exception.current
+Module: chess.coord.service.data.exception.stack.duplicate
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

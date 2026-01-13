@@ -7,21 +7,16 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from typing import List, Optional, cast
+from typing import List, cast
 
 from chess.system import (
-    DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
-    SearchResult, id_emitter
+    DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 )
 from chess.token import (
-    AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException, Token, TokenContext,
-    TokenDataServiceException,
-    TokenDoesNotExistForRemovalException,
-    TokenService, TokenContextService
+    AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException, Token, TokenDataServiceException,
+    TokenDoesNotExistForRemovalException, TokenService, TokenContextService, TokenDeletionFailedException,
+    TokenInsertionFailedException
 )
-from chess.token.service.data.exception.deletion.wrapper import TokenDeletionFailedException
-from chess.token.service.data.exception.insertion.wrapper import TokenInsertionFailedException
-
 
 class TokenDataService(DataService[Token]):
     """
@@ -184,7 +179,9 @@ class TokenDataService(DataService[Token]):
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
                     ex=TokenDeletionFailedException(
                         message=f"{method}: {TokenDeletionFailedException.ERROR_CODE}",
-                        ex=validation.exception
+                        ex=TokenDoesNotExistForRemovalException(
+                            f"{method}: {TokenDoesNotExistForRemovalException.ERROR_CODE}"
+                        )
                     )
                 )
             )

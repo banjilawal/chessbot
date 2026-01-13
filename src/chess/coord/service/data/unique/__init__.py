@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-# =========== COORD.SERVICE.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
+# =========== COORD.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
