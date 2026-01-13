@@ -13,11 +13,11 @@ ___all__ = [
 ]
 
 from chess.square import SquareException
-from chess.system import ServiceException
+from chess.system import DataServiceException
 
 
 # ======================# SQUARE_DATA_SERVICE EXCEPTION #======================#
-class SquareDataServiceException(SquareException, ServiceException):
+class SquareDataServiceException(SquareException, DataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

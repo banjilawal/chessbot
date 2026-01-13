@@ -15,7 +15,8 @@ from chess.system import (
     SearchResult, id_emitter
 )
 from chess.square import (
-    Square, SquareContext, SquareDataServiceException, SquareDoesNotExistForRemovalException,
+    PoppingEmptySquareStackException, Square, SquareContext, SquareCoordCollisionException, SquareDataServiceException,
+    SquareDoesNotExistForRemovalException,
     SquareService, SquareContextService, SquareDeletionFailedException, SquareInsertionFailedException
 )
 
@@ -83,7 +84,7 @@ class SquareDataService(DataService[Square]):
         return cast(SquareContextService, self.context_service)
     
     @LoggingLevelRouter.monitor
-    def add_square(self, square: Square) -> InsertionResult[Square]:
+    def insert_square(self, square: Square) -> InsertionResult[Square]:
         """
         # ACTION:
             1.  If the square is not validated send the exception in the InsertionResult. Else, call the super class
