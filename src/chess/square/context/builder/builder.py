@@ -10,11 +10,11 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.board import Board
+from chess.board import Board, BoardService
 from chess.coord import Coord, CoordService
-from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService
+from chess.system import Builder, BuildResult, IdentityService
 from chess.square import (
-    ZeroSquareContextFlagsException, SquareContext, SquareContextBuildFailedException,
+    SquareContextBuildRouteException, ZeroSquareContextFlagsException, SquareContext, SquareContextBuildFailedException,
     ExcessiveSquareContextFlagsException
 )
 
@@ -48,92 +48,129 @@ class SquareContextBuilder(Builder[SquareContext]):
             name: Optional[str] = None,
             coord: Optional[Coord] = None,
             board: Optional[Board] = None,
+            board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[SquareContext]:
         """
         # ACTION:
-            1.  Confirm that only one in the (id, name, coord, board) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate validating service.
-            3.  If all checks pass build a SnapshotContext and send in a BuildResult. Else, return an exception
-                in the BuildResult.
-
-
+            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
+                Else, cast to TeamContext instance context.
+            2.  If one-and-only-one context attribute is not null return an exception in the ValidationResult.
+            3.  If there is no certification route for the attribute return an exception in the ValidationResult.
+            4.  If the certification route exists use the appropriate service or validator to send either an exception
+                chain the ValidationResult or the context.
         # PARAMETERS:
             Only one these must be provided:
                 *   id Optional[(int)]
                 *   null Optional[(str)]
                 *   cord Optional[(Coord)]
                 *   board Optional[(Board)]
-                
             These Parameters must be provided:
                 *   board_service (BoardService)
                 *   coord_service (CoordService)
                 *   identity_service (IdentityService)
-
         # RETURNS:
-        ValidationResult[Square] containing either:
-            - On success: Square in the payload.
-            - On failure: Exception.
+            *   BuildResult[SquareContext] containing either:
+                - On success: SquareContext in the payload.
+                - On failure: Exception.
 
         # RAISES:
             *   ZeroSnapshotContextFlagsException
             *   SnapshotContextBuildFailedException
             *   ExcessiveSnapshotContextFlagsException
+            *   SnapshotContextBuildRouteException
         """
         method = "SquareContextBuilder.build"
-        try:
-            # Count how many optional parameters are not-null. One param needs to be not-null.
-            params = [id, name, coord]
-            param_count = sum(bool(p) for p in params)
-            
-            # Test if no params are set. Need an attribute-value pair to find which Squares match the target.
-            if param_count == 0:
-                return BuildResult.failure(
-                    ZeroSquareContextFlagsException(f"{method}: {ZeroSquareContextFlagsException.DEFAULT_MESSAGE}")
+
+        # --- Count how many optional parameters are not-null. only one should be not null. ---#
+        params = [id, name, coord]
+        param_count = sum(bool(p) for p in params)
+        
+        # Handle the case that all the optional params are null.
+        if param_count == 0:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                SquareContextBuildFailedException(
+                    message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=ZeroSquareContextFlagsException(
+                        f"{method}: {ZeroSquareContextFlagsException.DEFAULT_MESSAGE}"
+                    )
                 )
-            # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
-            if param_count > 1:
-                return BuildResult.failure(
-                    ExcessiveSquareContextFlagsException(
+            )
+        # Handle the case that more than one optional param is not-null.
+        if param_count > 1:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                SquareContextBuildFailedException(
+                    message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=ExcessiveSquareContextFlagsException(
                         f"{method}: {ExcessiveSquareContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
-            # After verifying only one Square attribute-value-tuple is enabled, validate it.
-            
-            # Build the id SquareContext if its flag is enabled.
-            if id is not None:
-                id_validation = identity_service.validate_id(candidate=id)
-                if id_validation.is_failure:
-                    return BuildResult.failure(id_validation.exception)
-                # On validation success return an id_SquareContext in the BuildResult.
-                return BuildResult.success(SquareContext(id=id))
-            
-            # Build the name SquareContext if its flag is enabled.
-            if name is not None:
-                name_validation = identity_service.validate_name(candidate=name)
-                if name_validation.is_failure:
-                    return BuildResult.failure(name_validation.exception)
-                # On validation success return a name_SquareContext in the BuildResult.
-                return BuildResult.success(SquareContext(name=name))
-            
-            # Build the coord SquareContext if its flag is enabled.
-            if coord is not None:
-                coord_validation = coord_service.validator.validate(coord)
-                if coord_validation.is_failure:
-                    return BuildResult.failure(coord_validation.exception)
-                # On validation success return a coord_SquareContext in the BuildResult.
-                return BuildResult.success(SquareContext(coord=coord))
-            
-            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
-            BuildResult.failure(
-                UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception and wrap A SquareContextBuildFailedException around it then
-        # return the exception-chain inside the ValidationResult.
-        except Exception as ex:
-            return BuildResult.failure(
-                SquareContextBuildFailedException(
-                    ex=ex, message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}"
+        # --- Route to the appropriate validation/build branch. ---#
+        
+        # Build the id SquareContext if its flag is enabled.
+        if id is not None:
+            validation = identity_service.validate_id(candidate=id)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    SquareContextBuildFailedException(
+                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
                 )
+            # On validation success return an id_SquareContext in the BuildResult.
+            return BuildResult.success(SquareContext(id=id))
+        
+        # Build the name SquareContext if its flag is enabled.
+        if name is not None:
+            validation = identity_service.validate_name(candidate=name)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    SquareContextBuildFailedException(
+                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a name_SquareContext in the BuildResult.
+            return BuildResult.success(SquareContext(name=name))
+        
+        # Build the coord SquareContext if its flag is enabled.
+        if coord is not None:
+            validation = coord_service.validator.validate(coord)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    SquareContextBuildFailedException(
+                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a coord_SquareContext in the BuildResult.
+            return BuildResult.success(SquareContext(coord=coord))
+        
+        # Build the board SquareContext if its flag is enabled.
+        if board is not None:
+            validation = board_service.validator.validate(candidate=board)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    SquareContextBuildFailedException(
+                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a board_SquareContext in the BuildResult.
+            return BuildResult.success(SquareContext(board=board))
+        
+        # Return the exception chain if there is no build route for the context.
+        return BuildResult.failure(
+            SquareContextBuildFailedException(
+                message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                ex=SquareContextBuildRouteException(f"{method}: {SquareContextBuildRouteException.DEFAULT_MESSAGE}")
             )
+        )

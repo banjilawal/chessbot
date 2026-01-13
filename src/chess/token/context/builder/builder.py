@@ -13,7 +13,7 @@ from chess.rank import Rank, RankService
 from chess.team import Team, TeamService
 from chess.coord import Coord, CoordService
 from chess.system import (
-    BoundNumberValidator, Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
+    NumberValidator, Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.token import (
     ExcessiveTokenContextFlagsException, TokenContext, TokenContextBuildFailedException,
@@ -59,7 +59,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
-            bound_number_validator: BoundNumberValidator = BoundNumberValidator(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[TokenContext]:
         """
         # ACTION:
@@ -96,7 +96,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         """
         method = "TokenContextBuilder.builder"
         
-        # Count how many optional parameters are not-null. One param needs to be not-null.
+        # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, designation, team, rank, ransom, coord, color]
         param_count = sum(bool(p) for p in params)
         
@@ -207,7 +207,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Build the ransom TokenContext if its flag is enabled.
         if ransom is not None:
-            validation = bound_number_validator.validate(
+            validation = number_validator.validate(
                 candidate=ransom,
                 floor=rank_service.persona_service.min_ransom,
                 ceiling=rank_service.persona_service.max_ransom

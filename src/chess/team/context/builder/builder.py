@@ -82,7 +82,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         """
         method = "PieceSearchContextBuilder.builder"
         
-        # Count how many optional parameters are not-null. One param needs to be not-null.
+        # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, arena, player, color]
         param_count = sum(bool(p) for p in params)
         
