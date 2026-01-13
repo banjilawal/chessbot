@@ -7,11 +7,11 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import List, Optional
+from typing import List
 
 from chess.token import (
     AddingDuplicateTokenException, Token, TokenContext, TokenContextService, TokenDataService, TokenService,
-    UniqueTokenDataServiceException
+    UniqueTokenDataServiceException, UniqueTokenDeletionFailedException, UniqueTokenInsertionFailedException
 )
 from chess.system import (
     DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
@@ -79,51 +79,26 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         return self._token_data_service.is_empty
     
     @LoggingLevelRouter.monitor
-    def remove_token_by_designation(
-            self,
-            designation: str,
-            identity_service: IdentityService = IdentityService(),
-    ) -> DeletionResult[Token]:
+    def remove_token(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[Token]:
         method = "UniqueTokenDataService.remove_token_by_designation"
-        deletion_result = self._token_data_service.delete_by_designation(designation, identity_service)
-        if deletion_result.is_failure:
-            return DeletionResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=deletion_result.exception
-                )
-            )
-        return DeletionResult.success(deletion_result.payload)
-    
-    @LoggingLevelRouter.monitor
-    def remove_token(
-            self,
-            id: Optional[int] = None,
-            designation: Optional[str] = None,
-            identity_service: IdentityService = IdentityService()
-    ) -> DeletionResult[Token]:
-        method = "UniqueTokenDataService.remove_token"
         
-        context_build = self.context_service.build(id=id, designation=designation, identity_service=identity_service)
-        if context_build.is_failure:
-            return DeletionResult.failure(
-                UniqueTokenDataServiceException()
-            )
-        deletion_result = self._token_data_service.delete_by_id(id, identity_service)
+        deletion_result = self._token_data_service.delete_token_by_id(id=id, identity_service=identity_service)
         if deletion_result.is_failure:
             return DeletionResult.failure(
                 UniqueTokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=deletion_result.exception
+                    ex=UniqueTokenDeletionFailedException(
+                        message=f"{method}: {UniqueTokenDeletionFailedException.ERROR_CODE}",
+                        ex=deletion_result.exception)
                 )
             )
-        return DeletionResult.success(deletion_result.payload)
+        return deletion_result
    
     @LoggingLevelRouter.monitor
-    def add_token(self, token: Token) -> InsertionResult[Token]:
+    def add_unique_token(self, token: Token) -> InsertionResult[Token]:
         method = "UniqueTokenDataService.add_token"
         # Handle the case that the token is not safe.
-        validation = self.token_service.validator.validate(candidate=token)
+        validation = self.integrity_service.validator.validate(candidate=token)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -142,7 +117,10 @@ class UniqueTokenDataService(UniqueDataService[Token]):
             return InsertionResult.failure(
                 UniqueTokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=search_result.exception
+                    ex=UniqueTokenInsertionFailedException(
+                        message=f"{method}: {UniqueTokenInsertionFailedException.ERROR_CODE}",
+                        ex=search_result.exception
+                    )
                 )
             )
         # Handle the case that the token is already in the dataset.
@@ -151,23 +129,28 @@ class UniqueTokenDataService(UniqueDataService[Token]):
             return InsertionResult.failure(
                 UniqueTokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
+                    ex=UniqueTokenInsertionFailedException(
+                        message=f"{method}: {UniqueTokenInsertionFailedException.ERROR_CODE}",
+                        ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
+                    )
                 )
             )
         # The token is not in the dataset it can be added.
-        insertion_result = self._token_data_service.add_token(token=token)
         
-        result = self.push_unique_item(token)
-        if result.is_failure:
-            # Handle the failure case by wrapping the debugging exception then sending in the InsertionResult.
-            return SearchResult.failure(
+        insertion_result = self._token_data_service.add_token(token)
+        if insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
                 UniqueTokenDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=result.exception
+                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
+                    ex=UniqueTokenInsertionFailedException(
+                        message=f"{method}: {UniqueTokenInsertionFailedException.ERROR_CODE}",
+                        ex=insertion_result.exception
+                    )
                 )
             )
-        # On a successful search directly return the result.
-        return result
+        # On a successful insertion directly return the result.
+        return insertion_result
     
     @LoggingLevelRouter.monitor
     def undo_add_token(self) -> DeletionResult[Token]:

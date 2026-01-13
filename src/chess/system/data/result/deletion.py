@@ -9,7 +9,7 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar
 
-from chess.system.data import DataResult
+from chess.system import DataResult, DeletionResult
 from chess.system import EmptyDataResultException, NotImplementedException
 
 T = TypeVar("T")
@@ -37,6 +37,14 @@ class DeletionResult(DataResult[Generic[T]]):
     
     def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
         super().__init__(payload=payload, exception=exception)
+        
+    @property
+    def is_nothing_to_delete(self) -> bool:
+        return self.payload is None and self.exception is None
+    
+    @classmethod
+    def nothing(cls) -> DeletionResult:
+        return DeletionResult(payload=None, exception=None)
     
     @classmethod
     def empty(cls) -> DataResult:
