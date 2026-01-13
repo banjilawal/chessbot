@@ -162,7 +162,7 @@ class SquareDataService(DataService[Square]):
                     )
                 )
             )
-        # On success return the toke in the InsertionResult
+        # On success return the square in the InsertionResult
         return InsertionResult.success(payload=square)
     
     @LoggingLevelRouter.monitor

@@ -10,8 +10,9 @@ version: 1.0.0
 from typing import List
 
 from chess.token import (
-    AddingDuplicateTokenException, Token, TokenContext, TokenContextService, TokenDataService, TokenService,
-    UniqueTokenDataServiceException, UniqueTokenDeletionFailedException, UniqueTokenInsertionFailedException
+    AddingDuplicateTokenException, ExhaustiveTokenDeletionFailedException, Token, TokenContext, TokenContextService,
+    TokenDataService, TokenService, UniqueTokenDataServiceException, UniqueTokenInsertionFailedException,
+    UniqueTokenSearchFailedException
 )
 from chess.system import (
     DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
@@ -80,38 +81,83 @@ class UniqueTokenDataService(UniqueDataService[Token]):
     
     @LoggingLevelRouter.monitor
     def remove_token(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[Token]:
-        method = "UniqueTokenDataService.remove_token_by_designation"
+        """
+        # ACTION:
+            1.  Get the result of calling _token_data_service.delete_token_by_id for method. If the deletion failed
+                wrap the exception inside the appropriate UniqueDataService exceptions and send the exception chain
+                in the DeletionResult.
+            2.  If the deletion operation completed directly forward the DeletionResult to the caller.
+        # PARAMETERS:
+            *   id (int)
+        # RETURN:
+            *   DeletionResult[Token] containing either:
+                    - On failure: An exception.
+                    - On success: Token in payload.
+                    - On Empty: No payload nor exception.
+        # RAISES:
+            *   UniqueTokenDataServiceException
+            *   ExhaustiveTokenDeletionFailedException
+        """
+        method = "UniqueTokenDataService.remove_token"
         
+        # --- Handoff the deletion responsibility to _token_data_service. ---#
         deletion_result = self._token_data_service.delete_token_by_id(id=id, identity_service=identity_service)
+        
+        # Handle the case that the deletion was not completed.
         if deletion_result.is_failure:
+            # Return the exception chain on failure.
             return DeletionResult.failure(
                 UniqueTokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=UniqueTokenDeletionFailedException(
-                        message=f"{method}: {UniqueTokenDeletionFailedException.ERROR_CODE}",
+                    ex=ExhaustiveTokenDeletionFailedException(
+                        message=f"{method}: {ExhaustiveTokenDeletionFailedException.ERROR_CODE}",
                         ex=deletion_result.exception)
                 )
             )
+        # --- For either a successful or null deletion result directly forward to the caller. ---#
         return deletion_result
    
     @LoggingLevelRouter.monitor
     def add_unique_token(self, token: Token) -> InsertionResult[Token]:
-        method = "UniqueTokenDataService.add_token"
-        # Handle the case that the token is not safe.
+        """
+        # ACTION:
+            1.  If the square fails validation send the wrapped exception in the InsertionResult.
+            2.  If a search for the square either fails or finds a match send the wrapped exception in the
+                InsertionResult.
+            3.  If the call to _token_data_service.insert_token fails send the wrapped exception in the InsertionResult.
+                Else send the outgoing result directly to the caller.
+        # PARAMETERS:
+            *   token (Token)
+        # RETURN:
+            *   InsertionResult[Token] containing either:
+                    - On failure: An exception.
+                    - On success: Token in payload.
+        # RAISES:
+            *   UniqueTokenDataServiceException
+            *   UniqueTokenInsertionFailedException
+            *   UniqueTokenDataServiceException
+        """
+        method = "UniqueTokenDataService.add_unique_token"
+        
+        # --- To assure uniqueness the data_service has to conduct a search. The token should be validated first. ---#
+        
+        # Handle the case that the token is not certified safe.
         validation = self.integrity_service.validator.validate(candidate=token)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 UniqueTokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=validation.exception
+                    ex=UniqueTokenInsertionFailedException(
+                        message=f"{method}: {UniqueTokenInsertionFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
                 )
             )
-        
         # --- Check if the token is already in the dataset before adding it. ---#
-        
         search_result = self.search_tokens(context=TokenContext(id=token.id))
-        # Handle the case that the search fails
+        
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -135,9 +181,10 @@ class UniqueTokenDataService(UniqueDataService[Token]):
                     )
                 )
             )
-        # The token is not in the dataset it can be added.
+        # --- Use _token_data_service.insert_token because order does not matter for the token access. ---#
+        insertion_result = self._token_data_service.insert_token(token=token)
         
-        insertion_result = self._token_data_service.add_token(token)
+        # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -149,35 +196,43 @@ class UniqueTokenDataService(UniqueDataService[Token]):
                     )
                 )
             )
-        # On a successful insertion directly return the result.
+        # --- On success directly forward the insertion result to the caller. ---#
         return insertion_result
     
     @LoggingLevelRouter.monitor
-    def undo_add_token(self) -> DeletionResult[Token]:
-        method = "UniqueTokenDataService.undo_add_token"
-        result = self.data_service.undo_item_push()
-        if result.is_failure:
-            # Handle the failure case by wrapping the debugging exception then sending in the DeletionResult.
-            return SearchResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=result.exception
-                )
-            )
-        # On a successful search directly return the result.
-        return result
-    
-    @LoggingLevelRouter.monitor
     def search_tokens(self, context: TokenContext) -> SearchResult[List[Token]]:
+        """
+        # ACTION:
+            1.  Get the result of calling _token_data_service.delete_token_by_id for method. If the deletion failed
+                wrap the exception inside the appropriate UniqueDataService exceptions and send the exception chain
+                in the DeletionResult.
+            2.  If the deletion operation completed directly forward the DeletionResult to the caller.
+        # PARAMETERS:
+            *   id (int)
+        # RETURN:
+            *   SearchResult[Token] containing either:
+                    - On failure: An exception.
+                    - On success: Token in payload.
+                    - On Empty: No payload nor exception.
+        # RAISES:
+            *   UniqueTokenDataServiceException
+            *   ExhaustiveTokenDeletionFailedException
+        """
         method = "UniqueTokenDataService.search_tokens"
-        result = self.data_service.search(context)
-        if result.is_failure:
-            # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
+        
+        # --- Handoff the search responsibility to _token_data_service. ---#
+        search_result = self._token_data_service.token_context_service.finder.find(context=context)
+        
+        # Handle the case that the search is not completed.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
             return SearchResult.failure(
                 UniqueTokenDataServiceException(
                     message=f"ServiceID:{self.id} {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=result.exception
+                    ex=UniqueTokenSearchFailedException(
+                        message=f"{method}: {UniqueTokenSearchFailedException.ERROR_CODE}",
+                        ex=search_result.exception)
                 )
             )
-        # On a successful search directly return the result.
-        return result
+        # --- For either a successful or empty search result directly forward to the caller. ---#
+        return search_result

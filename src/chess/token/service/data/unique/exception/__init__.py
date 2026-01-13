@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
 
 # Packages
+from .search import *
 from .deletion import *
 from .insertion import *
 

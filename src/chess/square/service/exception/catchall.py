@@ -1,9 +1,9 @@
-# src/chess/square_name.service/service/collision.py
+# src/chess/square/service/exception/catchall.py
 
 """
-Module: chess.square.service.service.exception
+Module: chess.square.service.exception.catchall
 Author: Banji Lawal
-Created: 2025-11-12
+Created: 2025-11-19
 version: 1.0.0
 """
 
@@ -14,8 +14,6 @@ from chess.square import SquareException
 __all__ = [
     # ======================# SQUARE_SERVICE EXCEPTION #======================#
     "SquareServiceException",
-    "AddingDuplicateSquareException",
-    "RemovingNonExistentSquareException",
 ]
 
 
@@ -43,15 +41,3 @@ class SquareServiceException(SquareException, ServiceException):
     """
     ERROR_CODE = "SQUARE_SERVICE_ERROR"
     DEFAULT_MESSAGE = "SquareService raised an exception."
-
-
-class AddingDuplicateSquareException(ServiceException):
-    """Raised when trying to add a duplicate Square to a list of Squares."""
-    ERROR_CODE = "DUPLICATE_SQUARE_ADDITION_ERROR"
-    DEFAULT_MESSAGE = "SquareService cannot add duplicate Squares to the list."
-
-
-class RemovingNonExistentSquareException(ServiceException):
-    """Raised when trying  to remove a Square not in the list."""
-    ERROR_CODE = "REMOVING_NON_EXISTENT_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "SquareService cannot remove a Square not in the list."

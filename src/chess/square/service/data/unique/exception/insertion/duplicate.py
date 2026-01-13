@@ -1,9 +1,9 @@
-# src/chess/square/service/data/unique/exception/duplicate.py
+# src/chess/square/service/data/unique/exception/insertion/duplicate.py
 
 """
-Module: chess.square.service.data.unique.exception.duplicate
+Module: chess.square.service.data.unique.exception.insertion.duplicate
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2025-11-22
 version: 1.0.0
 """
 

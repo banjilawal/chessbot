@@ -1,9 +1,9 @@
-# src/chess/token/service/data/unique/exception/duplicate.py
+# src/chess/token/service/data/unique/exception/insertion/duplicate.py
 
 """
-Module: chess.token.service.data.unique.exception.duplicate
+Module: chess.token.service.data.unique.exception.insertion.duplicate
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2025-11-22
 version: 1.0.0
 """
 
@@ -25,7 +25,7 @@ class AddingDuplicateTokenException(UniqueTokenDataServiceException):
         already in the collection
 
     # PARENT:
-        *   UniqueTeamDataServiceException
+        *   UniqueTokenDataServiceException
 
     # PROVIDES:
     None
@@ -37,7 +37,4 @@ class AddingDuplicateTokenException(UniqueTokenDataServiceException):
     None
     """
     ERROR_CODE = "ADDING_DUPLICATE_TOKEN_ERROR"
-    DEFAULT_MESSAGE = (
-        "Token insertion failed: UniqueTokenDataService is already managing the token. It cannot be added to the "
-        "dataset again."
-    )
+    DEFAULT_MESSAGE = "Unique token insertion failed: The token is already in the collection."
