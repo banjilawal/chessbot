@@ -1,7 +1,7 @@
-# src/chess/coord/context/finder/exception/payload/kind.py
+# src/chess/coord/context/finder/exception/debug/payload/kind.py
 
 """
-Module: chess.coord.context.finder.exception.payload.kind
+Module: chess.coord.context.finder.exception.debug.payload.kind
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

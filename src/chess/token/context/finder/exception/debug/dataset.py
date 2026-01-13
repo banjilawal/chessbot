@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    "TokenSearchDatasetNullException",
+    "TokenSearchNullDatasetException",
 ]
 
 from chess.token import Token
@@ -16,7 +16,7 @@ from chess.system import NullDatasetException
 
 
 # ======================# TOKEN_NULL_DATASET EXCEPTION #======================#
-class TokenSearchDatasetNullException(Token, NullDatasetException):
+class TokenSearchNullDatasetException(Token, NullDatasetException):
     """
     # ROLE: Error Tracing, Debugging
 

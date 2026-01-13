@@ -14,4 +14,4 @@ None
 # Modules
 from .route import TokenSearchRouteException
 from .id import TokenSearchIdCollisionException
-from .dataset import TokenSearchDatasetNullException
+from .dataset import TokenSearchNullDatasetException

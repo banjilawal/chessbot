@@ -1,7 +1,7 @@
-# src/chess/coord/searcher/exception.py
+# src/chess/coord/context/finder/exception/wrapper.py
 
 """
-Module: chess.coord.searcher.exception
+Module: chess.coord.context.finder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-16
 version: 1.0.0

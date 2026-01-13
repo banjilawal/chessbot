@@ -1,7 +1,7 @@
-# src/chess/coord/context/finder/exception/route.py
+# src/chess/coord/context/finder/exception/debug/route.py
 
 """
-Module: chess.coord.context.finder.exception.route.null
+Module: chess.coord.context.finder.exception.debug.route.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -27,7 +27,7 @@ class CoordSearchRouteException(CoordException, UnhandledRouteException):
         supported in the CoordContext.
 
     # PARENT:
-        *   CoordContext
+        *   CoordException
         *   UnhandledRouteException
 
     # PROVIDES

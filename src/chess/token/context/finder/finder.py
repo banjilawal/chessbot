@@ -13,7 +13,7 @@ from chess.rank import Rank
 from chess.team import Team
 from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from chess.token import (
-    Token, TokenContext, TokenContextValidator, TokenSearchDatasetNullException, TokenSearchFailedException,
+    Token, TokenContext, TokenContextValidator, TokenSearchNullDatasetException, TokenSearchFailedException,
     TokenSearchRouteException
 )
 
@@ -78,8 +78,8 @@ class TokenFinder(DataFinder[Token]):
             return SearchResult.failure(
                 TokenSearchFailedException(
                     message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
-                    ex=TokenSearchDatasetNullException(
-                        f"{method}: {TokenSearchDatasetNullException.DEFAULT_MESSAGE}"
+                    ex=TokenSearchNullDatasetException(
+                        f"{method}: {TokenSearchNullDatasetException.DEFAULT_MESSAGE}"
                     )
                 )
             )
