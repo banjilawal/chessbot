@@ -9,19 +9,19 @@ version: 1.0.0
 
 __all__ = [
     # ======================# BOARD_REACHED_LIMIT_FOR_SQUARES EXCEPTION #======================#
-    "BoardSquareServiceIsFullException",
+    "BoardSquareCoordCollisionException",
 ]
 
 from chess.board import BoardSquareServiceException
 
 
 # ======================# BOARD_REACHED_LIMIT_FOR_SQUARES EXCEPTION #======================#
-class BoardSquareServiceIsFullException(BoardSquareServiceException):
+class BoardSquareCoordCollisionException(BoardSquareServiceException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that adding a square to the board failed because the board has its maximum number of squares.
+    1.  Indicate that adding a square to the board failed because a square was already using the coord.
 
     # PARENT:
         *   BoardSquareServiceException
@@ -36,4 +36,4 @@ class BoardSquareServiceIsFullException(BoardSquareServiceException):
     None
     """
     ERROR_CODE = "SQUARE_ALREADY_ON_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Adding board square failed: The has reached its maximum number of squares."
+    DEFAULT_MESSAGE = "Adding board square failed: The coord was already referencing the Coord."

@@ -8,28 +8,35 @@ version: 1.0.0
 """
 
 from chess.board import (
-    AddingBoardSquareFailedException, Board, BoardSquareRelationAnalyzer,
-    BoardSquareServiceException
+    AddingBoardSquareFailedException, BoardSquareRelationAnalyzer, BoardSquareServiceException,
+    BoardSquareServiceIsFullException
 )
-from chess.square import Square, UniqueSquareDataService
-from chess.system import InsertionResult
+from chess.square import Square, SquareContext, UniqueSquareDataService
+from chess.system import COLUMN_SIZE, InsertionResult, ROW_SIZE
 
 
 class BoardSquareService:
+    _capacity: int
     _data_service: UniqueSquareDataService
     _analyzer: BoardSquareRelationAnalyzer
     
     def __init__(
             self,
+            capacity: int = ROW_SIZE * COLUMN_SIZE,
             data_service: UniqueSquareDataService = UniqueSquareDataService(),
             analyzer: BoardSquareRelationAnalyzer = BoardSquareRelationAnalyzer(),
     ):
+        self._capacity = capacity
         self._analyzer = analyzer
         self._data_service = data_service
         
     @property
     def is_empty(self) -> bool:
         return self._data_service.is_empty
+    
+    @property
+    def is_full(self) -> bool:
+        return self._data_service.size == self._capacity
         
     @property
     def number_of_squares(self) -> int:
@@ -39,7 +46,7 @@ class BoardSquareService:
     def board_square_analyzer(self) -> BoardSquareRelationAnalyzer:
         return self._analyzer
 
-    def member_insertion(self, board: Board, square: Square) -> InsertionResult[Square]:
+    def add(self, square: Square) -> InsertionResult[Square]:
         """
         # ACTION:
             1.  If the square fails validation send the wrapped exception in the InsertionResult.
@@ -63,8 +70,20 @@ class BoardSquareService:
         """
         method = "RosterService.member_insertion"
         
-        # Handle the case that the square fails validation.
-        square_validation = self._data_service.square_service.validator.validate(square=square)
+        # Handle the case that the BoardSquareService is at capacity.
+        if self.is_full:
+            # Return exception chain on failure.
+            return InsertionResult.failure(
+                BoardSquareServiceException(
+                    message=f"{method}: {BoardSquareServiceException.ERROR_CODE}",
+                    ex=AddingBoardSquareFailedException(
+                        message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
+                        ex=BoardSquareServiceIsFullException(f"{method}: {BoardSquareServiceIsFullException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
+        # Handle the case that the square is not certified safe.
+        square_validation = self._data_service.integrity_service.validator.validate(square=square)
         if square_validation.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
@@ -76,84 +95,52 @@ class BoardSquareService:
                     )
                 )
             )
-        # Handle the case that the square is on a different board.
-        if square.board != board:
-            # Return exception chain.
-            return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=EnemyCannotJoinRosterException(f"{method}: {EnemyCannotJoinRosterException.DEFAULT_MESSAGE}")
-                )
-            )
-        # Handle the case that the square is a captured combatant.
-        if isinstance(square, CombatantSquare) and cast(CombatantSquare, square).captor is not None:
-            # Return exception chain.
-            return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=AddingPrisonerToRosterException(f"{method}: {AddingPrisonerToRosterException.DEFAULT_MESSAGE}")
-                )
-            )
-        # --- Search the collection for the square. ---#
-        search_result = self._squares.search_squares(context=SquareContext(square.id))
+        # --- Find out if a square is already at the coord ---#
+        search_result = self._data_service.search_squares(context=SquareContext(coord=square.coord))
         
-        # Handle the case that search did not complete.
+        # Handle the case that the search was not completed.
         if search_result.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=search_result.exception
+                BoardSquareServiceException(
+                    message=f"{method}: {BoardSquareServiceException.ERROR_CODE}",
+                    ex=AddingBoardSquareFailedException(
+                        message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
+                        ex=search_result.exception
+                    )
                 )
             )
-        # Handle the case that the square is already present.
+        # Handle the case that the coord is already in use.
         if search_result.is_success:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=AddingDuplicateSquareException(f"{method}: {AddingDuplicateSquareException.DEFAULT_MESSAGE}")
-                )
-            )
-        # --- Find how many slots are open for the rank. ---#
-        calculation_result = self._calculate_remaining_rank_quota(square.rank)
-        
-        # Handle the case that the calculation operation was not completed.
-        if calculation_result.is_failure:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=calculation_result.exception
-                )
-            )
-        # --- Make sure the payload is an int. ---#
-        remaining_slots = cast(int, calculation_result.payload)
-        
-        # Handle the case that the rank has been filled.
-        if remaining_slots <= 0:
-            # Return exception chain.
-            return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=BoardRankQuotaFullException(f"{method}: {BoardRankQuotaFullException.DEFAULT_MESSAGE}")
+                BoardSquareServiceException(
+                    message=f"{method}: {BoardSquareServiceException.ERROR_CODE}",
+                    ex=AddingBoardSquareFailedException(
+                        message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
+                        ex=BoardSquareCoordCollisionException(
+                            f"{method}: {BoardSquareCoordColliionException.DEFAULT_MESSAGE}"
+                        )
+                    )
                 )
             )
         # --- Run the insertion operation on the DataService. ---#
-        insertion_result = self._squares.add_square(square=square)
+        insertion_result = self._data_service.add_unique_square(square=square)
+        
         
         # Handle the case that the insertion was not completed
         if insertion_result.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
-                AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                    ex=insertion_result.exception
+                BoardSquareServiceException(
+                    message=f"{method}: {BoardSquareServiceException.ERROR_CODE}",
+                    ex=AddingBoardSquareFailedException(
+                        message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
+                        ex=insertion_result.exception
+                    )
                 )
             )
-        # Get the payload from insertion result. Decrease the rank's quota. Send the payload to the caller.
-        payload = insertion_result.payload
-        self._table.decrease_quota(rank=square.rank)
-        return InsertionResult.success(payload=payload)
+        # --- On insertion success extract the insertion payload and send in the BuildResult. ---#
+        return InsertionResult.success(cast(Square, insertion_result.payload))
     
     

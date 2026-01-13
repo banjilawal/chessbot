@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import ContextService, id_emitter
-from chess.square import SquareContext, SquareContextBuilder, SquareContextValidator, SquareFinder
+from chess.square import SquareContext, SquareContextBuilder, SquareContextValidator
 
 
 class SquareContextService(ContextService[SquareContext]):
