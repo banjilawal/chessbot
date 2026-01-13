@@ -6,11 +6,12 @@ Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0
 """
+from typing import cast
 
 from chess.board import Board, BoardService
 from chess.coord import Coord, CoordService
-from chess.square import Square, SquareBuildFailedException, SquareContext, SquareValidator
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, RegistrationException, id_emitter
+from chess.square import AddingDuplicateSquareException, Square, SquareBuildFailedException, SquareContext
+from chess.system import Builder, BuildResult, IdentityService, InvariantBreachException, LoggingLevelRouter, id_emitter
 
 
 class SquareBuilder(Builder[Square]):
@@ -40,18 +41,17 @@ class SquareBuilder(Builder[Square]):
     @LoggingLevelRouter.monitor()
     def build(
             cls,
-            name: str,
             board: Board,
             coord: Coord,
+            name: str,
             id: int = id_emitter.square_id,
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
-            square_validator: SquareValidator = SquareValidator(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Square]:
         """
         # ACTION:
-        1.  Run id and designation checks with identity_service.
+        1.  Run id and name checks with identity_service.
         2.  Run coord checks with coord_service.
         3.  Run Board checks with board_service.
         4.  If any checks fail, send their exception to the caller in a BuildResult.
@@ -75,33 +75,102 @@ class SquareBuilder(Builder[Square]):
             *   SquareBuildFailedException
         """
         method = "SquareBuilder.builder"
-        try:
-            identity_validation = identity_service.validate_identity(
-                id_candidate=id,
-                name_candidate=name
-            )
-            if identity_validation.is_failure():
-                return BuildResult.failure(identity_validation.exception)
-            
-            coord_validation = coord_service.item_validator.validate(coord)
-            if coord_validation.is_failure():
-                return BuildResult.failure(coord_validation.exception)
-            
-            board_validation = board_service.item_validator.validate(board)
-            if board_validation.is_failure():
-                return BuildResult.failure(board_validation.exception)
-            
-            square = Square(id=id, name=name, coord=coord, board=board)
-            search_result = board.square_service.search(context=SquareContext(id=square.id))
-            if search_result.is_failure():
-                return BuildResult.failure(search_result.exception)
-            if search_result.is_empty():
-                return BuildResult.failure(RegistrationException)
-            return BuildResult.success(payload=)
         
-        except Exception as ex:
-            return BuildResult(
+        # Handle the case that either id or name are not certified safe.
+        identity_validation = identity_service.validate_identity(
+            id_candidate=id,
+            name_candidate=name
+        )
+        if identity_validation.is_failure:
+            # On failure return the exception.
+            return BuildResult.failure(
                 SquareBuildFailedException(
-                    ex=ex, message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}"
+                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=identity_validation.exception
                 )
             )
+        # Handle the case that the coord is not certified safe.
+        coord_validation = coord_service.item_validator.validate(coord)
+        if coord_validation.is_failure:
+            # On failure return the exception.
+            return BuildResult.failure(
+                SquareBuildFailedException(
+                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=coord_validation.exception
+                )
+            )
+        # Handle the case that the board is not certified safe.
+        board_validation = board_service.item_validator.validate(board)
+        if board_validation.is_failure:
+            # On failure return the exception.
+            return BuildResult.failure(
+                SquareBuildFailedException(
+                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=board_validation.exception
+                )
+            )
+        # Handle the case that the coord has already been assigned to a square.
+        search_result = board.squares.search(context=SquareContext(coord=coord))
+        if search_result.is_failure:
+            # On failure return the exception.
+            return BuildResult.failure(
+                SquareBuildFailedException(
+                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=search_result.exception
+                )
+            )
+        # --- Create the Square. ---#
+        
+        square = Square(id=id, name=name, coord=coord, board=board)
+        
+        # If the square does not have  a fully bidirectional relationship with the board process the registration.
+        relation_analysis = board_service.square_relation_analyzer.analyze(
+            candidate_primary=board,
+            candidate_satellite=square
+        )
+        # Handle the case that the relation analysis was not completed.
+        if relation_analysis.is_failure:
+            # On failure return the exception.
+            return BuildResult.failure(
+                SquareBuildFailedException(
+                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=relation_analysis.exception
+                )
+            )
+        # Handle the case that the board and square are not related.
+        if relation_analysis.not_related:
+            # On failure return the exception.
+            return BuildResult.failure(
+                SquareBuildFailedException(
+                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=InvariantBreachException(
+                        message=f"{method}:{InvariantBreachException.DEFAULT_MESSAGE}",
+                    )
+                )
+            )
+        # Handle the case that the board and square are have a fully bidirectional relationship.
+        if relation_analysis.is_bidirectional:
+            # On failure return the exception.
+            return BuildResult.failure(
+                SquareBuildFailedException(
+                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=AddingDuplicateSquareException(
+                        message=f"{method}:{AddingDuplicateSquareException.DEFAULT_MESSAGE}",
+                    )
+                )
+            )
+        # --- Last relationship state is a partial binding. This is the only case for registering the Square ---#
+        
+        # Handle the case that the insertion fails.
+        insertion_result = board.squares.add(square=square)
+        if insertion_result.is_failure:
+            # On failure return the exception.
+            return BuildResult.failure(
+                SquareBuildFailedException(
+                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=insertion_result.exception
+                )
+            )
+        # --- On insertion success extract the insertion payload and send in the BuildResult. ---#
+        return BuildResult.success(cast(Square, insertion_result.payload))
+

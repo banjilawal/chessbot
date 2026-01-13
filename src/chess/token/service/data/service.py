@@ -17,6 +17,8 @@ from chess.token import (
     Token, TokenContext, TokenDataServiceException, TokenDoesNotExistForRemovalException,
     TokenService, TokenContextService
 )
+from chess.token.service.data.exception.deletion.wrapper import TokenDeletionFailedException
+from chess.token.service.data.exception.insertion.wrapper import TokenInsertionFailedException
 
 
 class TokenDataService(DataService[Token]):
@@ -109,7 +111,9 @@ class TokenDataService(DataService[Token]):
             return InsertionResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=validation.exception
+                    ex=TokenInsertionFailedException(
+                        message=f"{method}: {TokenInsertionFailedException.ERROR_CODE}",
+                        ex=validation.exception)
                 )
             )
         
@@ -120,7 +124,10 @@ class TokenDataService(DataService[Token]):
             return InsertionResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=push_result.exception
+                    ex=TokenInsertionFailedException(
+                        message=f"{method}: {TokenInsertionFailedException.ERROR_CODE}",
+                        ex=push_result.exception
+                    )
                 )
             )
         # On success cast the payload and return to the caller in an insertion result.

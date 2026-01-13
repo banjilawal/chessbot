@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== TOKEN.SERVICE.DATA.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .deletion import *
-from .insertion import *
+None
 
 # Modules
-from .catchall import TokenDataServiceException
+from .wrapper import TokenInsertionFailedException

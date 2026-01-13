@@ -9,8 +9,7 @@ Created: 2025-09-11
 from typing import Any, cast
 
 from chess.board import Board, BoardService, SquareOnDifferentBoardException
-from chess.coord import CoordService, CoordValidator
-from chess.piece import Piece, PieceValidator
+from chess.coord import CoordService
 from chess.square import (
     InvalidPieceSquareRelationException, PieceInconsistentSquareOccupationException, Square,
     SquareNotSubmittedBoardRegistrationException, SquareValidationFailedException,
