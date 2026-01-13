@@ -47,20 +47,17 @@ class SquareContextService(ContextService[SquareContext]):
     ):
         """
         # ACTION:
-        Constructor
-
+            Constructor
         # PARAMETERS:
             *   name (str): Default value - SERVICE_NAME
             *   id (int): Default value - id_emitter.service_id
             *   finder (SquareFinder): Default value - SquareFinder()
             *   builder (SquareContextBuilder): Default value - SquareContextBuilder()
             *   validator (SquareContextValidator): Default value - SquareContextValidator()
-
         # RETURNS:
-        None
-
+            None
         # RAISES:
-        None
+            None
         """
         method = "SquareContextService.__init__"
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)

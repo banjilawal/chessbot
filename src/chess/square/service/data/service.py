@@ -9,6 +9,7 @@ version: 1.0.0
 
 from typing import List, Optional, cast
 
+from chess.neighbor import SquareSearchCoordCollisionException
 from chess.system import (
     DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
     SearchResult, id_emitter
@@ -114,8 +115,35 @@ class SquareDataService(DataService[Square]):
                     )
                 )
             )
-        
+        # --- Check if an item in the list shares the square's coord. ---#
+        search_result = self.square_context_service.finder.find(
+            dataset=self.items,
+            context=SquareContext(coord=square.coord)
+        )
+        # Handle the case that the search is not completed.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
+                    ex=SquareInsertionFailedException(
+                        message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
+                        ex=search_result.exception
+                    )
+                )
+            )
+        # Handle the case that a square in collection has the same coord.
+        if search_result.is_success:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
+                    ex=SquareCoordCollisionException(f"{method}: {SquareSearchCoordCollisionException.DEFAULT_MESSAGE}")
+                )
+            )
+        # --- Push the square onto the stack. ---#
         push_result = self.push_item(item=square)
+        
         # Handle the case that super().push_item fails
         if push_result.is_failure:
             # Return the exception chain on failure.
@@ -132,8 +160,11 @@ class SquareDataService(DataService[Square]):
         return push_result
     
     @LoggingLevelRouter.monitor
-    def delete_square_by_id(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[
-        Square]:
+    def delete_square_by_id(
+            self,
+            id: int,
+            identity_service: IdentityService = IdentityService()
+    ) -> DeletionResult[Square]:
         """
         # ACTION:
             1.  If the id is not certified safe send the exception in the DeletionResult. Else, call
@@ -151,7 +182,21 @@ class SquareDataService(DataService[Square]):
         """
         method = "SquareDataService.remove_square_by_id"
         
-        # Handle the case of an unsafe id.
+        # Handle the case that there are no items in the list.
+        if self.is_empty:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                SquareDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
+                    ex=SquareDeletionFailedException(
+                        message=f"{method}: {SquareDeletionFailedException.ERROR_CODE}",
+                        ex=PoppingEmptySquareStackException(
+                            f"{method}: {PoppingEmptySquareStackException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
+        # Handle the case that the id is not certified safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -164,9 +209,27 @@ class SquareDataService(DataService[Square]):
                     )
                 )
             )
+        # --- Search the list for a square with target id. ---#
         for item in self.items:
             if item.id == id:
+                # Handle the case that the match is the wrong type.
+                if not isinstance(item, Square):
+                    # Return the exception chain on failure.
+                    return DeletionResult.failure(
+                        SquareDataServiceException(
+                            message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
+                            ex=SquareDeletionFailedException(
+                                message=f"{method}: {SquareDeletionFailedException.ERROR_CODE}",
+                                ex=TypeError(
+                                    f"{method}: Could not cast deletion target to Square, got {type(item).__name__} "
+                                    f"instead of a Square."
+                                )
+                            )
+                        )
+                    )
+                # --- Cast the item before removal and return the deleted square in the DeletionResult. ---#
                 square = cast(Square, item)
                 self.items.remove(square)
                 return DeletionResult.success(payload=square)
+        # If none of the items had that id return an empty DeletionResult.
         return DeletionResult.nothing()
