@@ -15,7 +15,8 @@ from chess.system import (
     SearchResult, id_emitter
 )
 from chess.square import (
-    PoppingEmptySquareStackException, Square, SquareContext, SquareCoordCollisionException, SquareDataServiceException,
+    AppendingSquareDirectlyIntoItemsFailedException, PoppingEmptySquareStackException, Square, SquareContext,
+    SquareCoordCollisionException, SquareDataServiceException,
     SquareDoesNotExistForRemovalException,
     SquareService, SquareContextService, SquareDeletionFailedException, SquareInsertionFailedException
 )
@@ -139,26 +140,31 @@ class SquareDataService(DataService[Square]):
             return InsertionResult.failure(
                 SquareDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
-                    ex=SquareCoordCollisionException(f"{method}: {SquareSearchCoordCollisionException.DEFAULT_MESSAGE}")
+                    ex=SquareInsertionFailedException(
+                        message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
+                        ex=search_result.exception
+                    )
                 )
             )
-        # --- Push the square onto the stack. ---#
-        push_result = self.push_item(item=square)
+        # --- Square order is not required. Direct insertion into the dataset is simpler that a push. ---#
+        self.items.append(square)
         
-        # Handle the case that super().push_item fails
-        if push_result.is_failure:
+        # Handle the case that the square was not appended to the dataset.
+        if square not in self.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
-                        ex=push_result.exception
+                        ex=AppendingSquareDirectlyIntoItemsFailedException(
+                            f"{method}: {AppendingSquareDirectlyIntoItemsFailedException.ERROR_CODE}"
+                        )
                     )
                 )
             )
-        # On success cast the payload and return to the caller in an insertion result.
-        return push_result
+        # On success return the toke in the InsertionResult
+        return InsertionResult.success(payload=square)
     
     @LoggingLevelRouter.monitor
     def delete_square_by_id(
@@ -181,7 +187,7 @@ class SquareDataService(DataService[Square]):
         # RAISES:
             *   SquareDataServiceException
         """
-        method = "SquareDataService.remove_square_by_id"
+        method = "SquareDataService.delete_square_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
@@ -232,5 +238,6 @@ class SquareDataService(DataService[Square]):
                 square = cast(Square, item)
                 self.items.remove(square)
                 return DeletionResult.success(payload=square)
+            
         # If none of the items had that id return an empty DeletionResult.
         return DeletionResult.nothing()

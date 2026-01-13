@@ -1,7 +1,7 @@
-# src/chess/square/service/data/exception.py
+# src/chess/square/service/data/catchall.py
 
 """
-Module: chess.square.service.data.exception
+Module: chess.square.service.data.catchall
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -22,12 +22,11 @@ class SquareDataServiceException(SquareException, DataServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an SquareDataService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a SquareDataService method.
+    1.  Wrap any exceptions raised by SquareDataService methods that return Result objects.
 
     # PARENT:
-        *   ServiceException
         *   SquareException
+        *   DataServiceException
 
     # PROVIDES:
     None

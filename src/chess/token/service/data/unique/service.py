@@ -51,9 +51,9 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   id (int): = id_emitter.service_id
-            *   name (str): = SERVICE_NAME
-            *   data_service (TokenDataService): = TokenDataService()
+            *   id (int)
+            *   name (str)
+            *   data_service (TokenDataService)
         # RETURNS:
             None
         # RAISES:

@@ -23,9 +23,9 @@ class TokenDoesNotExistForRemovalException(TokenDataServiceException):
     # RESPONSIBILITIES:
     1.  Indicate that an attempt to remove instances of a token by a unique attribute failed because no items
         matching the property were found in the dataset.
-        
+
     # PARENT:
-        *   TeamDaaServiceException
+        *   TokenDataServiceException
 
     # PROVIDES:
     None

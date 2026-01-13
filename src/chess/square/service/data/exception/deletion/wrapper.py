@@ -12,12 +12,12 @@ __all__ = [
     "SquareDeletionFailedException",
 ]
 
-from chess.square import SquareDataServiceException
-from chess.system import OperationFailedException
+from chess.square import SquareException
+from chess.system import DeletionFailedException
 
 
 # ======================# SQUARE_DELETION_FAILURE EXCEPTION #======================#
-class SquareDeletionFailedException(SquareDataServiceException, OperationFailedException):
+class SquareDeletionFailedException(SquareException, DeletionFailedException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,8 @@ class SquareDeletionFailedException(SquareDataServiceException, OperationFailedE
         chain for tracing the source of the failure.
 
     # PARENT:
-        *   SquareDataServiceException
+        *   SquareException
+        *   DeletionFailedException
 
     # PROVIDES:
     None

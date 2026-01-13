@@ -12,19 +12,21 @@ __all__ = [
     "SquareInsertionFailedException",
 ]
 
-from chess.square import SquareDataServiceException
+from chess.square import SquareException
+from chess.system import InsertionFailedException
 
 
 # ======================# SQUARE_INSERTION_FAILURE #======================#
-class SquareInsertionFailedException(SquareDataServiceException):
+class SquareInsertionFailedException(SquareException, InsertionFailedException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that add a token to the roster failed.
 
     # PARENT:
-        *   SquareDataServiceException
+        *   SquareException
+        *   InsertionFailedException
 
     # PROVIDES:
     None

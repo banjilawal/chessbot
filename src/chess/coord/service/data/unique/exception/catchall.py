@@ -1,14 +1,14 @@
-# src/chess/coord/service/data/unique/exception/base.py
+# src/chess/coord/service/data/unique/exception/wrapper.py
 
 """
-Module: chess.coord.service.data.unique.exception.base
+Module: chess.coord.service.data.unique.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
 
 from chess.coord import CoordException
-from chess.system import DataServiceException
+from chess.system import UniqueDataServiceException
 
 __all__ = [
     # ======================# UNIQUE_COORD_DATA_SERVICE EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# UNIQUE_COORD_DATA_SERVICE EXCEPTION #======================#
-class UniqueCoordDataServiceException(CoordException, DataServiceException):
+class UniqueCoordDataServiceException(CoordException, UniqueDataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -28,7 +28,7 @@ class UniqueCoordDataServiceException(CoordException, DataServiceException):
 
     # PARENT:
         *   CoordException
-        *   ServiceException
+        *   UniqueCoordDataServiceException
 
     # PROVIDES:
     None

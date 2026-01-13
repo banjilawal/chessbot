@@ -10,7 +10,7 @@ from chess.system import ServiceException
 
 
 # ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
-class UniqueSquareDataServiceException(SquaretException, ServiceException):
+class UniqueSquareDataServiceException(SquareException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

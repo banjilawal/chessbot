@@ -25,7 +25,7 @@ class AddingDuplicateCoordException(UniqueCoordDataServiceException):
         already in the collection
 
     # PARENT:
-        *   UniqueTeamDataServiceException
+        *   UniqueCoordDataServiceException
 
     # PROVIDES:
     None
@@ -37,7 +37,4 @@ class AddingDuplicateCoordException(UniqueCoordDataServiceException):
     None
     """
     ERROR_CODE = "ADDING_DUPLICATE_COORD_ERROR"
-    DEFAULT_MESSAGE = (
-        "Coord insertion failed: UniqueCoordDataService is already managing the coord. It cannot be added to the "
-        "dataset again."
-    )
+    DEFAULT_MESSAGE = "Unique cord insertion failed."

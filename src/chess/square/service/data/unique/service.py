@@ -10,27 +10,55 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.square.service.data.unique.exception import UniqueSquareDataServiceException
-from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, ValidationResult, id_emitter
+
+from chess.system import InsertionResult, LoggingLevelRouter, UniqueDataService, id_emitter
 from chess.square import (
-    AddingDuplicateSquareException, Square, SquareDataService, SquareDataServiceException,
-    SquareService
+    AddingDuplicateSquareException, Square, SquareDataService, SquareService, UniqueSquareDataServiceException
 )
 
 
 class UniqueSquareDataService(UniqueDataService[Square]):
-    """"""
-    
-    DEFAULT_NAME = "UniqueSquareDataService"
+    """
+    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+
+    # RESPONSIBILITIES:
+    1.  Ensure all items in managed by TokenDataService are unique.
+    2.  Guarantee consistency of records in TokenDataService.
+
+    # PARENT:
+        *   UniqueDataService
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See UniqueDataService class for inherited attributes.
+    """
+    SQUARE_NAME = "UniqueSquareDataService"
     _id: int
     data_service: SquareDataService
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SQUARE_NAME,
             id: int = id_emitter.service_id,
             data_service: SquareDataService = SquareDataService(),
     ):
+        """
+        # ACTION:
+            Constructor
+        # PARAMETERS:
+            *   id (int)
+            *   name (str)
+            *   data_service (TokenDataService)
+        # RETURNS:
+            None
+        # RAISES:
+            None
+        """
         super().__init__(id=id, name=name, data_service=data_service)
         
     @property

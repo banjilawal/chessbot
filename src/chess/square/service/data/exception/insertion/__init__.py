@@ -15,3 +15,4 @@ None
 # Modules
 from .coord import SquareCoordCollisionException
 from .wrapper import SquareInsertionFailedException
+from .direct import AppendingSquareDirectlyIntoItemsFailedException
