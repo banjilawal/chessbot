@@ -1,14 +1,14 @@
-# src/chess/square/validator/exception/flag/zero.py
+# src/chess/square/context.validator/exception/debug/zero.py
 
 """
-Module: chess.square.validator.exception.flag.zero
+Module: chess.square.context.validator.exception.debug.zero
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-22
 version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.square import InvalidSquareContextException
+from chess.square import SquareContextException
 
 __all__ = [
     # ========================= ZERO_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ========================= ZERO_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
-class ZeroSquareContextFlagsException(InvalidSquareContextException, ContextFlagCountException):
+class ZeroSquareContextFlagsException(SquareContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 

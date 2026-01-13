@@ -1,24 +1,23 @@
-# src/chess/square/validator/exception/null/exception.py
+# src/chess/square/context.validator/exception/debug/null.py
 
 """
-Module: chess.square.validator.exception.null.exception
+Module: chess.square.context.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
+from chess.system import NullException
+from chess.square import SquareContextException
 
 __all__ = [
     # ======================# NULL_SQUARE_CONTEXT EXCEPTION #======================#
     "NullSquareContextException",
 ]
 
-from chess.system import NullException
-from chess.square import InvalidSquareContextException
-
 
 # ======================# NULL_SQUARE_CONTEXT EXCEPTION #======================#
-class NullSquareContextException(InvalidSquareContextException, NullException):
+class NullSquareContextException(SquareContextException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

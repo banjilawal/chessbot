@@ -1,14 +1,14 @@
-# src/chess/square/validator/exception/flag/excess.py
+# src/chess/square/context.validator/exception/debug/excess.py
 
 """
-Module: chess.square.validator.exception.flag.excess
+Module: chess.square.context.validator.exception.debug.excess
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-22
 version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.square import InvalidSquareContextException
+from chess.square import SquareContextException
 
 __all__ = [
     # ========================= EXCESSIVE_SQUARE_CONTEXT_FLAG EXCEPTION =========================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ========================= EXCESSIVE_SQUARE_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveSquareContextFlagsException(InvalidSquareContextException, ContextFlagCountException):
+class ExcessiveSquareContextFlagsException(SquareContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 

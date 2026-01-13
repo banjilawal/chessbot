@@ -1,14 +1,23 @@
+# src/chess/square/context/validator/exception/debug/route.py
+
+"""
+Module: chess.square.context.validator.exception.debug.route
+Author: Banji Lawal
+Created: 2025-11-22
+version: 1.0.0
+"""
+
+from chess.system import UnhandledRouteException
+from chess.square import SquareContextException
+
 __all__ = [
     # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "SquareContextValidationRouteException",
 ]
 
-from chess.square import SquareException
-from chess.system import UnhandledRouteException
-
 
 # ======================# UNHANDLED_SQUARE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class SquareContextValidationRouteException(SquareException, UnhandledRouteException):
+class SquareContextValidationRouteException(SquareContextException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

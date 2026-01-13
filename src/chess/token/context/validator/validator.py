@@ -103,7 +103,7 @@ class TokenContextValidator(Validator[TokenContext]):
                     ex=TypeError(f"{method}: Expected TokenContext, got {type(candidate).__designation__} instead.")
                 )
             )
-        # After existence and type checks cast the candidate to a TeamContext for additional tests.
+        # --- Cast the candidate to TokenContext for additional tests. ---#
         context = cast(TokenContext, candidate)
         
         # Handle the case of searching with no attribute-value provided.

@@ -93,11 +93,12 @@ class TeamContextValidator(Validator[TeamContext]):
                     ex=TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
                 )
             )
-        # After existence and type checks cast the candidate to a TeamContext for additional tests.
+        # --- Cast the candidate to TeamContext for additional tests. ---#
         context = cast(TeamContext, candidate)
         
-        # Handle the case of searching with no attribute-value provided
-        if len(context.to_dict()) == 0:
+        # Handle the case of searching with no attribute-value provided.
+        flag_count = len(context.to_dict())
+        if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextValidationFailedException(
@@ -106,7 +107,7 @@ class TeamContextValidator(Validator[TeamContext]):
                 )
             )
         # Handle the case of too many attributes being used in a search.
-        if len(context.to_dict()) > 1:
+        if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextValidationFailedException(
@@ -116,7 +117,6 @@ class TeamContextValidator(Validator[TeamContext]):
                     )
                 )
             )
-
         # --- Route to the appropriate validation branch. ---#
         
         # Certification for the search-by-id target.
@@ -173,7 +173,7 @@ class TeamContextValidator(Validator[TeamContext]):
             # On certification success return the team_color_context in a ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Default exit point
+        # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             TeamContextValidationFailedException(
                 message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
