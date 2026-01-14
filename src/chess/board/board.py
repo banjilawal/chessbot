@@ -7,10 +7,9 @@ Created: 2025-07-31
 version: 1.0.0
 """
 
-
 from chess.arena import Arena
 from chess.board import BoardSquareService, BoardTokenService
-
+from chess.system import BOARD_DIMENSION
 
 class Board:
     """
@@ -35,15 +34,7 @@ class Board:
     _tokens: BoardTokenService
     _squares: BoardSquareService
     
-    def __init__(
-            self,
-            id: int,
-            arena: Arena,
-            row_size: int,
-            column_size: int,
-            tokens: BoardTokenService = BoardTokenService(),
-            squares: BoardSquareService = BoardSquareService(),
-    ):
+    def __init__(self, id: int, arena: Arena, row_size: int = BOARD_DIMENSION, column_size: int = BOARD_DIMENSION,):
         """
         # ACTION:
             Constructs Board object
@@ -52,8 +43,6 @@ class Board:
             *   arena (Arena)
             *   row_size (int)
             *   column_size (int)
-            *   tokens (BoardTokenService)
-            *   squares (BoardSquareService)
         # RETURNS:
             None
         # RAISES:
@@ -63,10 +52,11 @@ class Board:
         
         self._id = id
         self._arena = arena
-        self._tokens = tokens
-        self._squares = squares
         self._row_size = row_size
         self._column_size = column_size
+        
+        self._tokens = BoardTokenService()
+        self._squares = BoardSquareService()
     
     @property
     def id(self) -> int:

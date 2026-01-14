@@ -10,11 +10,8 @@ version: 1.0.0
 from typing import cast
 
 from chess.arena import Arena, ArenaService
-from chess.board import (
-    AddingDuplicateBoardException, Board, BoardBuildFailedException, BoardContext,
-    BoardSquareService, BoardTokenService
-)
-from chess.system import Builder, BuildResult, IdentityService, InvariantBreachException, LoggingLevelRouter, id_emitter
+from chess.board import ArenaAlreadyContainsBoardException, Board, BoardBuildFailedException
+from chess.system import Builder, BuildResult, BOARD_DIMENSION, IdentityService, LoggingLevelRouter, id_emitter
 
 
 class BoardBuilder(Builder[Board]):
@@ -46,9 +43,9 @@ class BoardBuilder(Builder[Board]):
             cls,
             arena: Arena,
             id: int = id_emitter.board_id,
+            row_size: int = BOARD_DIMENSION,
+            column_size: int = BOARD_DIMENSION,
             arena_service: ArenaService = ArenaService(),
-            tokens: BoardTokenService = BoardTokenService(),
-            squares: BoardSquareService = BoardSquareService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[Board]:
         """
@@ -61,8 +58,8 @@ class BoardBuilder(Builder[Board]):
         # PARAMETERS:
             *   id (int)
             *   arena (Arena)
-            *   tokens (BoardTokenService)
-            *   boards (BoardBoardService)
+            *   row_size (int)
+            *   column_size (int)
             *   arena_service (ArenaService)
             *   identity_service (IdentityService)
         # RETURNS:
@@ -105,7 +102,7 @@ class BoardBuilder(Builder[Board]):
                 )
             )
         # Create the board.
-        board = Board(id=id, arena=arena, tokens=tokens, squares=squares)
+        board = Board(id=id, arena=arena, row_size=row_size, column_size=column_size)
         
         # --- Can directly bind the board to the arena in a new build without arena_service.insert_board here. ---#
         arena.board = board

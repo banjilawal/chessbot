@@ -1,3 +1,12 @@
+# src/chess/board/builder/exception/debug/arena.py
+
+"""
+Module: chess.board.builder.exception.debug.arena
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
 __all__ = [
     # ======================# ARENA_ALREADY_CONTAINS_BOARD EXCEPTION #======================#
     "ArenaAlreadyContainsBoardException",
