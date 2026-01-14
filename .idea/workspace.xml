@@ -5,52 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/payload/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/payload/kind.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/exception/catchall.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/exception/deletion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/exception/deletion/emptty.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/exception/deletion/unfound.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/exception/deletion/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/exception/insertion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/exception/insertion/direct.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/exception/insertion/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/unique/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/unique/exception/catchall.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/unique/exception/deletion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/unique/exception/deletion/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/unique/exception/insertion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/unique/exception/insertion/duplicate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/service/data/unique/exception/insertion/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/analyzer/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/analyzer/analyzer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/analyzer/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/exception/catchall.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/exception/insertion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/exception/insertion/duplicate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/exception/insertion/full.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/exception/insertion/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/board/token/service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/board/validator/exception/debug/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/board/validator/exception/debug/owner.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/board/validator/exception/debug/registration.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/context/finder/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/dataset/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/context/finder/exception/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/dataset/dataset.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square/analyzer/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square/analyzer/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square/analyzer/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square/exception/insertion/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square/exception/insertion/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/team/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/dataset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/validator/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/validator/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/validator/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/validator/exception/registration.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/board/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/data/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/square.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/scar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,11 +311,11 @@
       <recent name="$PROJECT_DIR$/src/chess/team/table" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/board/validator/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/dataset" />
       <recent name="$PROJECT_DIR$/src/chess/coord/service/data/exception/stack" />
       <recent name="$PROJECT_DIR$/src/chess/coord/service/data/exception" />
       <recent name="$PROJECT_DIR$/src/chess/square/service/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/coord/service/data/unique/exception/insertion" />
     </key>
   </component>
   <component name="RunManager" selected="Python.builder">
@@ -964,7 +928,7 @@
       <workItem from="1768220782037" duration="55583000" />
       <workItem from="1768285973201" duration="5135000" />
       <workItem from="1768297075403" duration="32919000" />
-      <workItem from="1768342273215" duration="2350000" />
+      <workItem from="1768342273215" duration="7194000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

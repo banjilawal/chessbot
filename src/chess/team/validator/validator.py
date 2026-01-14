@@ -179,7 +179,7 @@ class TeamValidator(Validator[Team]):
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
                     ex=TeamBelongsToDifferentOwnerException(
-                        f"{method}: {TeamValidationFailedException.DEFAULT_MESSAGE}"
+                        f"{method}: {TeamBelongsToDifferentOwnerException.DEFAULT_MESSAGE}"
                     )
                 )
             )
