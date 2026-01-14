@@ -11,9 +11,8 @@ from typing import Any, cast
 
 from chess.persona import (
     ExcessivePersonaKeysException, NullPersonaKeyException, PersonaKey, ZeroPersonaKeysException,
-    PersonaKeyValidationFailedException, 
+    PersonaKeyValidationFailedException, PersonaKeyValidationRouteException
 )
-from chess.persona.key.validator.exception.debug.route import PersonaKeyValidationRouteException
 from chess.system import (
     IdentityService, LoggingLevelRouter, NumberValidator, ValidationFailedException, ValidationResult, Validator
 )

@@ -8,7 +8,6 @@ version: 1.0.0
 """
 
 from chess.system import ContextException
-from chess.persona import PersonaException
 
 __all__ = [
     # ======================# PERSONA_KEY EXCEPTION #======================#

@@ -1,18 +1,16 @@
-# src/board/searcher/exception.py
+# src/chess/board/context/builder/exception/wrapper.py
 
 """
-Module: chess.board.searcher.exception
+Module: chess.board.context.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-11-22
 version: 1.0.0
 """
-from chess.board.context import BoardContextException
-from chess.system import (
-    BuildOptionSelectionTooLargeException, ContextException, NoBuildOptionSelectedException, NullException,
-    BuildFailedException, ValidationException,
-)
 
-___all__ = [
+from chess.system import BuildFailedException
+from chess.board import BoardContextException
+
+__all__ = [
     # ======================# BOARD_CONTEXT_BUILD_FAILED EXCEPTION #======================#
     "BoardContextBuildFailedException",
 ]
