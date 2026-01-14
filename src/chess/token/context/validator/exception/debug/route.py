@@ -3,13 +3,13 @@ __all__ = [
     "TokenContextValidationRouteException",
 ]
 
-from chess.token import TokenException
-from chess.system import UnhandledRouteException
+from chess.token import TokenContextException
+from chess.system import NoValidationRouteException
 
 
 
 # ======================# UNHANDLED_TOKEN_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class TokenContextValidationRouteException(TokenContextException, UnhandledRouteException):
+class TokenContextValidationRouteException(TokenContextException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
