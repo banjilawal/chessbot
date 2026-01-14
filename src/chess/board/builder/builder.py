@@ -10,8 +10,6 @@ version: 1.0.0
 from typing import cast
 
 from chess.arena import Arena, ArenaService
-from chess.arena import ArenaTokenService
-from chess.coord import Coord, ArenaBoardService
 from chess.board import (
     AddingDuplicateBoardException, Board, BoardBuildFailedException, BoardContext,
     BoardSquareService, BoardTokenService
