@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# PERSONA_SUPER_KEY_SERVICE EXCEPTION #======================#
+    # ======================# PERSONA_KEY_SERVICE EXCEPTION #======================#
     "PersonaSuperKeyServiceException",
 ]
 
@@ -38,5 +38,5 @@ class PersonaSuperKeyServiceException(PersonaSuperKeyException, ServiceException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_SUPER_KEY_SERVICE_ERROR"
+    ERROR_CODE = "PERSONA_KEY_SERVICE_ERROR"
     DEFAULT_MESSAGE = "PersonaSuperKeyService raised an exception."

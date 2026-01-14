@@ -52,7 +52,7 @@ None
 # INHERITED ATTRIBUTES:
     *   See Context class for inherited attributes.
 """
-class FormationSuperKey(Context[Formation]):
+class FormationKey(Context[Formation]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 

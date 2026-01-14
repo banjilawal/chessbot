@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# SCHEMA_SUPER_KEY_SERVICE EXCEPTION #======================#
+    # ======================# SCHEMA_KEY_SERVICE EXCEPTION #======================#
     "SchemaSuperKeyServiceException",
 ]
 
@@ -38,5 +38,5 @@ class SchemaSuperKeyServiceException(SchemaSuperKeyException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_SUPER_KEY_SERVICE_ERROR"
+    ERROR_CODE = "SCHEMA_KEY_SERVICE_ERROR"
     DEFAULT_MESSAGE = "SchemaSuperKeyService raised an exception."

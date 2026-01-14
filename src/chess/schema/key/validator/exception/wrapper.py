@@ -11,12 +11,12 @@ from chess.schema import SchemaSuperKeyException
 from chess.system import ValidationFailedException
 
 __all__ = [
-    # ======================# SCHEMA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# SCHEMA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
     "SchemaSuperKeyValidationFailedException",
 ]
 
 
-# ======================# SCHEMA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# SCHEMA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
 class SchemaSuperKeyValidationFailedException(SchemaSuperKeyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
@@ -40,5 +40,5 @@ class SchemaSuperKeyValidationFailedException(SchemaSuperKeyException, Validatio
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_SUPER_KEY_VALIDATION_FAILURE"
+    ERROR_CODE = "SCHEMA_KEY_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "SchemaSuperKey validation failed."

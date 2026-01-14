@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.formation import Formation, FormationService, FormationSuperKey
+from chess.formation import Formation, FormationService, FormationKey
 from chess.persona import Persona
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from chess.schema import Schema, SchemaServiceException, SchemaSuperKey, SchemaSuperKeyService, SchemaValidator
@@ -43,7 +43,7 @@ class SchemaService(HashService[Schema]):
     @property
     def key_service(self) -> SchemaSuperKeyService:
         """"""
-        return cast(SchemaSuperKeyService, self.hash_super_key_service)
+        return cast(SchemaSuperKeyService, self.hash_key_service)
     
     @property
     def schema_validator(self) -> SchemaValidator:
@@ -87,7 +87,7 @@ class SchemaService(HashService[Schema]):
                     ex=schema_validation.exception
                 )
             )
-        return formation_service.lookup_formation(supker_key=FormationSuperKey(color=schema.color))
+        return formation_service.lookup_formation(supker_key=FormationKey(color=schema.color))
     
     @LoggingLevelRouter.monitor
     def pawn_row(self, schema: Schema) -> CalculationResult[int]:

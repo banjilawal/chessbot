@@ -10,13 +10,13 @@ version: 1.0.0
 from chess.system import ContextException
 
 __all__ = [
-    # ======================# FORMATION_SUPER_KEY EXCEPTION #======================#
-    "FormationSuperKeyException",
+    # ======================# FORMATION_KEY EXCEPTION #======================#
+    "FormationKeyException",
 ]
 
 
-# ======================# FORMATION_SUPER_KEY EXCEPTION #======================#
-class FormationSuperKeyException(ContextException):
+# ======================# FORMATION_KEY EXCEPTION #======================#
+class FormationKeyException(ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -36,5 +36,5 @@ class FormationSuperKeyException(ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_SUPER_KEY_ERROR"
+    ERROR_CODE = "FORMATION_KEY_ERROR"
     DEFAULT_ERROR_CODE = "OrderContext raised an exception."

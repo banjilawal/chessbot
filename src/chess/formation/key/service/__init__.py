@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .service import FormationSuperKeyService
-from .exception import FormationSuperKeyServiceException
+from .service import FormationKeyService
+from .exception import FormationKeyServiceException

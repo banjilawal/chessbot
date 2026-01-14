@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# PERSONA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# PERSONA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
     "PersonaSuperKeyValidationFailedException",
 ]
 
@@ -16,7 +16,7 @@ from chess.persona import PersonaSuperKeyException
 from chess.system import ValidationFailedException
 
 
-# ======================# PERSONA_SUPER_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# PERSONA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
 class PersonaSuperKeyValidationFailedException(PersonaSuperKeyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
@@ -40,5 +40,5 @@ class PersonaSuperKeyValidationFailedException(PersonaSuperKeyException, Validat
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_SUPER_KEY_VALIDATION_FAILURE"
+    ERROR_CODE = "PERSONA_KEY_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "PersonaSuperKey validation failed."

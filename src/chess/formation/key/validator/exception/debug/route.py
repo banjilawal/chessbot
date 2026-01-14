@@ -12,12 +12,12 @@ __all__ = [
     "FormationKeyValidationRouteException",
 ]
 
-from chess.formation import FormationSuperKeyException
+from chess.formation import FormationKeyException
 from chess.system import NoValidationRouteException
 
 
 # ======================# UNHANDLED_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class FormationKeyValidationRouteException(FormationSuperKeyException, NoValidationRouteException):
+class FormationKeyValidationRouteException(FormationKeyException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

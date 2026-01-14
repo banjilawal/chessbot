@@ -11,11 +11,11 @@ from chess.schema import SchemaSuperKeyException
 from chess.system import ContextFlagCountException
 
 __all__ = [
-    # ========================= EXCESS_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
+    # ========================= EXCESS_SCHEMA_KEYS_VALIDATION EXCEPTION =========================#
     "ExcessiveSchemaSuperKeysException",
 ]
 
-# ========================= EXCESS_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
+# ========================= EXCESS_SCHEMA_KEYS_VALIDATION EXCEPTION =========================#
 class ExcessiveSchemaSuperKeysException(SchemaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
@@ -33,7 +33,7 @@ class ExcessiveSchemaSuperKeysException(SchemaSuperKeyException, ContextFlagCoun
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESS_SCHEMA_SUPER_KEYS_VALIDATION_ERROR"
+    ERROR_CODE = "EXCESS_SCHEMA_KEYS_VALIDATION_ERROR"
     DEFAULT_MESSAGE = (
         "SchemaSuperKey validation failed: More than one attribute is not-null.Only ond attribute should be enabled."
     )

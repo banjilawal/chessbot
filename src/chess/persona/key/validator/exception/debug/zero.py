@@ -11,12 +11,12 @@ from chess.system import ContextFlagCountException
 from chess.persona import PersonaSuperKeyException
 
 __all__ = [
-    # ========================= ZERO_PERSONA_SUPER_KEYS EXCEPTION =========================#
+    # ========================= ZERO_PERSONA_KEYS EXCEPTION =========================#
     "ZeroPersonaSuperKeysException"
 ]
 
 
-# ========================= ZERO_PERSONA_SUPER_KEYS EXCEPTION =========================#
+# ========================= ZERO_PERSONA_KEYS EXCEPTION =========================#
 class ZeroPersonaSuperKeysException(PersonaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging

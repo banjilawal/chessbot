@@ -12,19 +12,19 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.formation import (
-    ExcessiveFormationSuperKeysException, FormationSuperKey, FormationSuperKeyValidationFailedException,
-    FormationSuperKeyValidationRouteException, NullFormationSuperKeyException, ZeroFormationSuperKeysException
+    ExcessiveFormationKeysException, FormationKey, FormationKeyValidationFailedException,
+    FormationSuperKeyValidationRouteException, NullFormationKeyException, ZeroFormationSuperKeysException
 )
 from chess.persona import PersonaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 
 
-class FormationSuperKeyValidator(Validator[FormationSuperKey]):
+class FormationKeyValidator(Validator[FormationKey]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Ensure a FormationSuperKey instance is certified safe, reliable and consistent before use.
+    1.  Ensure a FormationKey instance is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     # PARENT:
@@ -47,10 +47,10 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             persona_service: PersonaService = PersonaService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
-    ) -> ValidationResult[FormationSuperKey]:
+    ) -> ValidationResult[FormationKey]:
         """
         # ACTION:
-            1.  If the candidate passes existence and type checks cast into a FormationSuperKey instance, super_key.
+            1.  If the candidate passes existence and type checks cast into a FormationKey instance, super_key.
                 Else, return an exception in the ValidationResult.
             2.  If one-and-only-one super_key field is not null return an exception in the ValidationResult.
             3.  Use super_key.attribute to route to the appropriate validation subflow.
@@ -62,48 +62,48 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
         # RETURNS:Confirm
-            *   ValidationResult[FormationSuperKey] containing either:
+            *   ValidationResult[FormationKey] containing either:
                     - On failure: Exception.
-                    - On success: FormationSuperKey in the payload.
+                    - On success: FormationKey in the payload.
         # RAISES:
             *   TypeError
             *   NNullFormationSuperKeyException
             *   ZeroFormationSuperKeysException
-            *   ExcessiveFormationSuperKeysException
-            *   FormationSuperKeyValidationFailedException
+            *   ExcessiveFormationKeysException
+            *   FormationKeyValidationFailedException
         """
-        method = "FormationSuperKeyValidator.validate"
+        method = "FormationKeyValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                FormationSuperKeyValidationFailedException(
-                    message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
-                    ex=NullFormationSuperKeyException(f"{method}: {NullFormationSuperKeyException.DEFAULT_MESSAGE}")
+                FormationKeyValidationFailedException(
+                    message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
+                    ex=NullFormationKeyException(f"{method}: {NullFormationKeyException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, FormationSuperKey):
+        if not isinstance(candidate, FormationKey):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                FormationSuperKeyValidationFailedException(
-                    message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+                FormationKeyValidationFailedException(
+                    message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
                     ex=TypeError(
-                        f"{method}: Expected FormationSuperKey, got {type(candidate).__designation__} instead."
+                        f"{method}: Expected FormationKey, got {type(candidate).__designation__} instead."
                     )
                 )
             )
         
-        # After existence and type checks cast the candidate to a FormationSuperKey for additional tests.
-        super_key = cast(FormationSuperKey, candidate)
+        # After existence and type checks cast the candidate to a FormationKey for additional tests.
+        super_key = cast(FormationKey, candidate)
         
         # Handle the case of searching with no key-value is set.
         if len(super_key.to_dict()) == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                FormationSuperKeyValidationFailedException(
-                    message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+                FormationKeyValidationFailedException(
+                    message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
                     ex=ZeroFormationSuperKeysException(f"{method}: {ZeroFormationSuperKeysException.DEFAULT_MESSAGE}")
                 )
             )
@@ -111,10 +111,10 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
         if len(super_key.to_dict()) > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                FormationSuperKeyValidationFailedException(
-                    message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
-                    ex=ExcessiveFormationSuperKeysException(
-                        f"{method}: {ExcessiveFormationSuperKeysException.DEFAULT_MESSAGE}"
+                FormationKeyValidationFailedException(
+                    message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
+                    ex=ExcessiveFormationKeysException(
+                        f"{method}: {ExcessiveFormationKeysException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -127,8 +127,8 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    FormationSuperKeyValidationFailedException(
-                        message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+                    FormationKeyValidationFailedException(
+                        message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -141,8 +141,8 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    FormationSuperKeyValidationFailedException(
-                        message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+                    FormationKeyValidationFailedException(
+                        message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -155,8 +155,8 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    FormationSuperKeyValidationFailedException(
-                        message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+                    FormationKeyValidationFailedException(
+                        message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -168,8 +168,8 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             validation = color_validator.validate(candidate=super_key.color)
             if validation.is_failure:
                 return ValidationResult.failure(
-                    FormationSuperKeyValidationFailedException(
-                        message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+                    FormationKeyValidationFailedException(
+                        message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -181,8 +181,8 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
             validation = persona_service.validator.validate(candidate=super_key.persona)
             if validation.is_failure:
                 return ValidationResult.failure(
-                    FormationSuperKeyValidationFailedException(
-                        message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+                    FormationKeyValidationFailedException(
+                        message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -191,8 +191,8 @@ class FormationSuperKeyValidator(Validator[FormationSuperKey]):
         
         # The default path returns failure
         return ValidationResult.failure(
-            FormationSuperKeyValidationFailedException(
-                message=f"{method}: {FormationSuperKeyValidationFailedException.ERROR_CODE}",
+            FormationKeyValidationFailedException(
+                message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
                 ex=FormationSuperKeyValidationRouteException(
                     f"{method}: {FormationSuperKeyValidationRouteException.DEFAULT_MESSAGE}"
                 )

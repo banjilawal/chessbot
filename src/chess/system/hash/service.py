@@ -13,7 +13,7 @@ from chess.system import ContextService, Service, Validator
 
 
 class HashService(Service[Enum]):
-    _hash_super_key_service: ContextService[Enum]
+    _hash_key_service: ContextService[Enum]
   
     def __init__(
             self,
@@ -23,11 +23,11 @@ class HashService(Service[Enum]):
             super_key_service: ContextService[Enum],
     ):
         super().__init__(id=id, name=name, certifier=validator)
-        self._hash_super_key_service = super_key_service
+        self._hash_key_service = super_key_service
         
     @property
-    def hash_super_key_service(self) -> ContextService[Enum]:
-        return self._hash_super_key_service
+    def hash_key_service(self) -> ContextService[Enum]:
+        return self._hash_key_service
     
     @property
     def hash_validator(self) -> Validator[Enum]:

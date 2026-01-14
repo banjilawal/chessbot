@@ -12,12 +12,12 @@ from chess.system import ContextFlagCountException
 
 
 __all__ = [
-    # ========================= ZERO_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
+    # ========================= ZERO_SCHEMA_KEYS_VALIDATION EXCEPTION =========================#
     "ZeroSchemaSuperKeysException",
 ]
 
 
-# ========================= ZERO_SCHEMA_SUPER_KEYS_VALIDATION EXCEPTION =========================#
+# ========================= ZERO_SCHEMA_KEYS_VALIDATION EXCEPTION =========================#
 class ZeroSchemaSuperKeysException(SchemaSuperKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
@@ -36,7 +36,7 @@ class ZeroSchemaSuperKeysException(SchemaSuperKeyException, ContextFlagCountExce
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_SCHEMA_SUPER_KEYS_VALIDATION_ERROR"
+    ERROR_CODE = "ZERO_SCHEMA_KEYS_VALIDATION_ERROR"
     DEFAULT_MESSAGE = (
         "SchemaSuperKey validation failed: All attributes are null. A SchemaSuperKey must have a "
         "single attribute enabled by a value."

@@ -12,12 +12,12 @@ __all__ = [
     "FormationKeyBuildRouteException",
 ]
 
-from chess.formation import FormationSuperKeyException
+from chess.formation import FormationKeyException
 from chess.system import NoBuildRouteException
 
 
 # ======================# UNHANDLED_FORMATION_KEY_BUILD_ROUTE EXCEPTION #======================#
-class FormationKeyBuildRouteException(FormationSuperKeyException, NoBuildRouteException):
+class FormationKeyBuildRouteException(FormationKeyException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -25,7 +25,7 @@ class FormationKeyBuildRouteException(FormationSuperKeyException, NoBuildRouteEx
     1.  Indicate that the FormationKey build failed because there was no build route for the Formation key.
 
     # PARENT:
-        *   FormationSuperKeyException
+        *   FormationKeyException
         *   UnhandledRouteException
 
     # PROVIDES

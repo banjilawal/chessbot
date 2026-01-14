@@ -13,12 +13,12 @@ from chess.schema import SchemaSuperKeyException
 
 
 __all__ = [
-    # ======================# SCHEMA_SUPER_KEY_BUILD_FAILED EXCEPTION #======================#
+    # ======================# SCHEMA_KEY_BUILD_FAILED EXCEPTION #======================#
     "SchemaSuperKeyBuildFailedException",
 ]
 
 
-#======================# SCHEMA_SUPER_KEY_BUILD_FAILED EXCEPTION #======================#
+#======================# SCHEMA_KEY_BUILD_FAILED EXCEPTION #======================#
 class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedException):
     """
     # ROLE: Exception Wrapper
@@ -42,5 +42,5 @@ class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_SUPER_KEY_BUILD_FAILED"
+    ERROR_CODE = "SCHEMA_KEY_BUILD_FAILED"
     DEFAULT_MESSAGE = "SchemaSuperKey build failed:"

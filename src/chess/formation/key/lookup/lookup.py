@@ -11,8 +11,8 @@ from typing import List, cast
 
 from chess.formation import (
     Formation, FormationColorBoundsException, FormationDesignationBoundsException, FormationLookupFailedException,
-    FormationLookupRouteException, FormationPersonaBoundsException, FormationSquareBoundsException, FormationSuperKey,
-    FormationSuperKeyValidator
+    FormationLookupRouteException, FormationPersonaBoundsException, FormationSquareBoundsException, FormationKey,
+    FormationKeyValidator
 )
 from chess.persona import Persona
 from chess.system import GameColor, HashLookup, LoggingLevelRouter, SearchResult
@@ -43,8 +43,8 @@ class FormationLookup(HashLookup[Formation]):
     @LoggingLevelRouter.monitor
     def query(
             cls, 
-            super_key: FormationSuperKey, 
-            super_key_validator: FormationSuperKeyValidator = FormationSuperKeyValidator()
+            super_key: FormationKey,
+            super_key_validator: FormationKeyValidator = FormationKeyValidator()
     ) -> SearchResult[List[Formation]]:
         """
         # ACTION:
@@ -52,8 +52,8 @@ class FormationLookup(HashLookup[Formation]):
             2.  If the key validation fails return the exception in a validation result. Otherwise, return
                 the formation entries with the targeted key-values.
         # PARAMETERS:
-            *   key: FormationSuperKey
-            *   key_validator: FormationSuperKeyValidator
+            *   key: FormationKey
+            *   key_validator: FormationKeyValidator
         # RETURNS:
             *   SearchResult[List[Formation]] containing either:
                     - On error: Exception , payload null

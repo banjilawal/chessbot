@@ -16,5 +16,5 @@ from .service import *
 from .validator import *
 
 # Modules
-from .key import FormationSuperKey
-from .exception import FormationSuperKeyException
+from .key import FormationKey
+from .exception import FormationKeyException

@@ -8,25 +8,25 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.formation import FormationSuperKeyException
+from chess.formation import FormationKeyException
 
 __all__ = [
-    # ======================# NULL_FORMATION_SUPER_KEY EXCEPTION #======================#
-    "NullFormationSuperKeyException",
+    # ======================# NULL_FORMATION_KEY EXCEPTION #======================#
+    "NullFormationKeyException",
 ]
 
 
-# ======================# NULL_FORMATION_SUPER_KEY EXCEPTION #======================#
-class NullFormationSuperKeyException(FormationSuperKeyException, NullException):
+# ======================# NULL_FORMATION_KEY EXCEPTION #======================#
+class NullFormationKeyException(FormationKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that FormationSuperKey validation failed because the candidate was null.
+    1.  Indicate that FormationKey validation failed because the candidate was null.
 
     # PARENT:
         *   NullException
-        *   FormationSuperKeyException
+        *   FormationKeyException
 
     # PROVIDES:
     None
@@ -34,5 +34,5 @@ class NullFormationSuperKeyException(FormationSuperKeyException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_FORMATION_SUPER_KEY_ERROR"
-    DEFAULT_MESSAGE = "FormationSuperKey validation failed: The candidate was null."
+    ERROR_CODE = "NULL_FORMATION_KEY_ERROR"
+    DEFAULT_MESSAGE = "FormationKey validation failed: The candidate was null."

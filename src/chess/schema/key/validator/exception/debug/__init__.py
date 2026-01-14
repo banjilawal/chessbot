@@ -16,4 +16,4 @@ None
 from .null import NullSchemaSuperKeyException
 from .zero import ZeroSchemaSuperKeysException
 from .excess import ExcessiveSchemaSuperKeysException
-from .route import SchemaSuperKeyValidationRouteException
+from .route import SchemaKeyValidationRouteException

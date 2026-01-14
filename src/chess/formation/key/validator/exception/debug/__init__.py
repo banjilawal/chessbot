@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .null import NullFormationSuperKeyException
+from .null import NullFormationKeyException
 from .zero import ZeroFormationSuperKeysException
-from .excess import ExcessiveFormationSuperKeysException
+from .excess import ExcessiveFormationKeysException
 from .route import FormationSuperKeyValidationRouteException

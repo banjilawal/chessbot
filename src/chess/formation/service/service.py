@@ -3,7 +3,7 @@ from typing import List, cast
 
 from chess.board import Board
 from chess.board.service.service import BoardService
-from chess.formation import Formation, FormationSuperKey, FormationSuperKeyService, FormationValidator, FormationServiceException
+from chess.formation import Formation, FormationKey, FormationKeyService, FormationValidator, FormationServiceException
 from chess.square import Square, SquareContext
 from chess.system import GameColor, HashService, InvariantBreachException, LoggingLevelRouter, SearchResult, id_emitter
 
@@ -16,7 +16,7 @@ class FormationService(HashService[Formation]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             validator: FormationValidator = FormationValidator(),
-            super_key_service: FormationSuperKeyService = FormationSuperKeyService(),
+            super_key_service: FormationKeyService = FormationKeyService(),
     ):
         """
         # ACTION:
@@ -25,7 +25,7 @@ class FormationService(HashService[Formation]):
             *   id (int)
             *   name (str)
             *   validator (FormationValidator)
-            *   super_key_service (FormationSuperKeyService)
+            *   super_key_service (FormationKeyService)
         # RETURNS:
             None
         # RAISES:
@@ -34,9 +34,9 @@ class FormationService(HashService[Formation]):
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
     
     @property
-    def key_service(self) -> FormationSuperKeyService:
+    def key_service(self) -> FormationKeyService:
         """"""
-        return cast(FormationSuperKeyService, self.hash_super_key_service)
+        return cast(FormationKeyService, self.hash_key_service)
     
     @property
     def validator(self) -> FormationValidator:
@@ -131,14 +131,14 @@ class FormationService(HashService[Formation]):
         return SearchResult.success(squares)
             
     @LoggingLevelRouter.monitor
-    def lookup_formation(self, super_key: FormationSuperKey) -> SearchResult[List[Formation]]:
+    def lookup_formation(self, super_key: FormationKey) -> SearchResult[List[Formation]]:
         """
         # ACTION:
             Using lookup_formation is simpler and more extendable than building searches manually from self.key_service.
             1.  If the self.key_service.lookup does not produce a payload send a FormationServiceException chain in the
                 SearchResult. Otherwise, return the payload.
         # PARAMETERS:
-            *   super_key (FormationSuperKey)
+            *   super_key (FormationKey)
         # RETURNS:
             *   SearchResult[List[Formation]] containing a list if a match is found else an exception chain.
         # RAISES:

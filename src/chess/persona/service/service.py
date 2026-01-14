@@ -63,7 +63,7 @@ class PersonaService(HashService[Persona]):
         
     @property
     def key_service(self) -> PersonaSuperKeyService:
-        return cast(PersonaSuperKeyService, self.hash_super_key_service)
+        return cast(PersonaSuperKeyService, self.hash_key_service)
     
     @property
     def persona_validator(self) -> PersonaValidator:

@@ -7,22 +7,22 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.formation import FormationSuperKeyException
+from chess.formation import FormationKeyException
 from chess.system import ContextFlagCountException
 
 __all__ = [
-    # ========================= EXCESS_FORMATION_SUPER_KEYS_VALIDATION EXCEPTION =========================#
-    "ExcessiveFormationSuperKeysException",
+    # ========================= EXCESS_FORMATION_KEYS_VALIDATION EXCEPTION =========================#
+    "ExcessiveFormationKeysException",
 ]
 
 
-# ========================= EXCESS_FORMATION_SUPER_KEYS_VALIDATION EXCEPTION =========================#
-class ExcessiveFormationSuperKeysException(FormationSuperKeyException, ContextFlagCountException):
+# ========================= EXCESS_FORMATION_KEYS_VALIDATION EXCEPTION =========================#
+class ExcessiveFormationKeysException(FormationKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed FormationSuperKey validation because more than one attribute was enabled.
+    1.  Indicate that a candidate failed FormationKey validation because more than one attribute was enabled.
 
     # PARENT:
         *   ContextFlagCountException
@@ -34,7 +34,7 @@ class ExcessiveFormationSuperKeysException(FormationSuperKeyException, ContextFl
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESS_FORMATION_SUPER_KEYS_VALIDATION_ERROR"
+    ERROR_CODE = "EXCESS_FORMATION_KEYS_VALIDATION_ERROR"
     DEFAULT_MESSAGE = (
-        "FormationSuperKey validation failed: More than one attribute is not-null.Only ond attribute should be enabled."
+        "FormationKey validation failed: More than one attribute is not-null.Only ond attribute should be enabled."
     )

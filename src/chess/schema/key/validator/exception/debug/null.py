@@ -11,12 +11,12 @@ from chess.system import NullException
 from chess.schema import SchemaSuperKeyException
 
 __all__ = [
-    # ======================# NULL_SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
+    # ======================# NULL_SCHEMA_KEY_VALIDATION EXCEPTION #======================#
     "NullSchemaSuperKeyException",
 ]
 
 
-# ======================# NULL_SCHEMA_SUPER_KEY_VALIDATION EXCEPTION #======================#
+# ======================# NULL_SCHEMA_KEY_VALIDATION EXCEPTION #======================#
 class NullSchemaSuperKeyException(SchemaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -34,5 +34,5 @@ class NullSchemaSuperKeyException(SchemaSuperKeyException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SCHEMA_SUPER_KEY_VALIDATION_ERROR"
+    ERROR_CODE = "NULL_SCHEMA_KEY_VALIDATION_ERROR"
     DEFAULT_MESSAGE = "SchemaSuperKey validation failed: A SchemaSuperKey cannot be null."

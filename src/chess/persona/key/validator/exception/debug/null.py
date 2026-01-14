@@ -11,12 +11,12 @@ from chess.system import NullException
 from chess.persona import PersonaSuperKeyException
 
 __all__ = [
-    # ======================# NULL_PERSON_SUPER_KEY EXCEPTION #======================#
+    # ======================# NULL_PERSON_KEY EXCEPTION #======================#
     "NullPersonaSuperKeyException",
 ]
 
 
-# ======================# NULL_PERSON_SUPER_KEY EXCEPTION #======================#
+# ======================# NULL_PERSON_KEY EXCEPTION #======================#
 class NullPersonaSuperKeyException(PersonaSuperKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
@@ -34,5 +34,5 @@ class NullPersonaSuperKeyException(PersonaSuperKeyException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_PERSON_SUPER_KEY_ERROR"
+    ERROR_CODE = "NULL_PERSON_KEY_ERROR"
     DEFAULT_MESSAGE = "PersonSuperKey validation failed: The candidate was null."
