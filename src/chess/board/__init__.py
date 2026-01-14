@@ -14,7 +14,7 @@ from .builder import *
 from .context import *
 from .exception import *
 from .square import *
-from .team import *
+from .token import *
 from .validator import *
 from .service import *
 

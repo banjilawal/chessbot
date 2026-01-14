@@ -9,12 +9,7 @@ version: 1.0.0
 
 
 from chess.arena import Arena
-from chess.board import BoardSquareService, BoardSquareServiceException
-from chess.system import InsertionResult
-from chess.team import Team, TeamService
-from chess.token import Token, TokenService, UniqueTokenDataService
-from chess.token.service import UniqueTokenDataServiceException
-
+from chess.board import BoardSquareService, BoardTokenService
 
 
 class Board:
@@ -37,7 +32,7 @@ class Board:
     _arena: Arena
     _row_size: int
     _column_size: int
-    _tokens: UniqueTokenDataService
+    _tokens: BoardTokenService
     _squares: BoardSquareService
     
     def __init__(
@@ -46,8 +41,8 @@ class Board:
             arena: Arena,
             row_size: int,
             column_size: int,
+            tokens: BoardTokenService = BoardTokenService(),
             squares: BoardSquareService = BoardSquareService(),
-            tokens: UniqueTokenDataService = UniqueTokenDataServiceException(),
     ):
         """
         # ACTION:
@@ -80,11 +75,11 @@ class Board:
         return self._arena
     
     @@property
-    def tokens(self) -> UniqueTokenDataService:
+    def tokens(self) -> BoardTokenService:
         return self._tokens
     
     @@property
-    def squares(self) -> BoardSquareServiceException:
+    def squares(self) -> BoardSquareService:
         return self._squares
     
     @property
@@ -104,17 +99,6 @@ class Board:
     
     def __hash__(self):
         return hash(self._id)
-    
-    def accept_token(
-            self,
-            token: Token,
-            token_service: TokenService = TokenService()
-    ) -> InsertionResult[Token]:
-        token_validation = token_service.validator.validate(token)
-        if token_validation.is_failure:
-            return InsertionResult.failure(
-                Board
-            )
         
 
     

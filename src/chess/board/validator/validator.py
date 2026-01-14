@@ -90,16 +90,13 @@ class BoardValidator(Validator[Board]):
         board = cast(Board, candidate)
         
         # Handle the case board.id or board.name certification fails.
-        identity_validation = identity_service.validate_identity(
-            id_candidate=board.id,
-            name_candidate=board.name
-        )
-        if identity_validation.is_failure:
+        id_validation = identity_service.validate_id(candidate=board.id)
+        if id_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidationFailedException(
                     message=f"{method}: {BoardValidationFailedException.ERROR_CODE}",
-                    ex=identity_validation.exception
+                    ex=id_validation.exception
                 )
             )
         # Handle the case that board.arena integrity verification and the arena-board relation fails.

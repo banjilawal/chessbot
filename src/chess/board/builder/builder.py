@@ -1,20 +1,14 @@
-# src/chess/board/builder/builder
+# src/chess/board/builder/__init__.py
 
 """
-Module: chess.board.builder.builder
+Module: chess.board.builder__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
-
-from typing import List, cast
-
-from chess.coord import Coord, CoordService
-from chess.game.model import Game
-from chess.piece import UniquePieceDataService
-from chess.square import SquareBuilder, SquareService, UniqueSquareDataService
-from chess.board import Board, BoardBuildFailedException
-from chess.system import BOARD_DIMENSION, Builder, BuildResult, IdentityService
+from chess.board import BoardSquareService, BoardTokenService
+from chess.coord import CoordService
+from chess.system import BOARD_DIMENSION, IdentityService
 
 
 class BoardBuilder(Builder[Board]):
@@ -44,13 +38,12 @@ class BoardBuilder(Builder[Board]):
     def build(
             cls,
             id: int,
-            game: Game,
             num_rows: int=BOARD_DIMENSION,
             num_columns: int=BOARD_DIMENSION,
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
-            piece_service: UniquePieceDataService = UniquePieceDataService(),
-            square_data: UniqueSquareDataService = UniqueSquareDataService(),
+            tokens: BoardTokenService = BoardTokenService(),
+            squares: BoardSquareService = BoardSquareService(),
     ) -> BuildResult[Board]:
         """
         # ACTION:
