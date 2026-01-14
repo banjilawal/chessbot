@@ -1,7 +1,7 @@
-# src/chess/square/builder/builder.py
+# src/chess/square/context/builder/builder.py
 
 """
-Module: chess.square.builder.builder
+Module: chess.square.context.builder.builder
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -24,9 +24,9 @@ class SquareContextBuilder(Builder[SquareContext]):
     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce TeamContext instances whose integrity is guaranteed at creation.
-    2.  Manage construction of TeamContext instances that can be used safely by the client.
-    3.  Ensure params for TeamContext creation have met the application's safety contract.
+    1.  Produce SquareContext instances whose integrity is guaranteed at creation.
+    2.  Manage construction of SquareContext instances that can be used safely by the client.
+    3.  Ensure params for SquareContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
     # PARENT:
@@ -54,33 +54,30 @@ class SquareContextBuilder(Builder[SquareContext]):
     ) -> BuildResult[SquareContext]:
         """
         # ACTION:
-            1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
-                Else, cast to TeamContext instance context.
-            2.  If one-and-only-one context attribute is not null return an exception in the ValidationResult.
-            3.  If there is no certification route for the attribute return an exception in the ValidationResult.
-            4.  If the certification route exists use the appropriate service or validator to send either an exception
-                chain the ValidationResult or the context.
+            1.  If one-and-only-one context attribute is not null send an exception chain in the BuildResult.
+            2.  If there is no build route for the not-null context attribute send an exception chain in the BuildResult.
+            3.  If the build route exists and the context attribute is not verified send an exception chain in the
+                BuildResult. Else build the context and send it in the BuildResult's payload.
         # PARAMETERS:
             Only one these must be provided:
                 *   id Optional[(int)]
-                *   null Optional[(str)]
+                *   name Optional[(str)]
                 *   cord Optional[(Coord)]
                 *   board Optional[(Board)]
             These Parameters must be provided:
                 *   board_service (BoardService)
                 *   coord_service (CoordService)
                 *   identity_service (IdentityService)
-        # RETURNS:
-            *   BuildResult[SquareContext] containing either:
-                - On success: SquareContext in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-            *   ZeroSnapshotContextFlagsException
-            *   SnapshotContextBuildFailedException
-            *   ExcessiveSnapshotContextFlagsException
-            *   SnapshotContextBuildRouteException
-        """
+            # RETURNS:
+                *   BuildResult[SquareContext] containing either:
+                        - On failure: Exception.
+                        - On success: SquareContext in the payload.
+            # RAISES:
+                *   ZeroSquareContextFlagsException
+                *   SquareContextBuildFailedException
+                *   ExcessiveSquareContextFlagsException
+                *   SquareContextBuildRouteException
+            """
         method = "SquareContextBuilder.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#

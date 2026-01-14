@@ -23,9 +23,12 @@ class Board:
       Board
   
     # ATTRIBUTES:
-        * id (int): Unique identifier.
-        * tokens ([Token]): Array tokens in Board object
-        * squares ([[Square]]): A 2D array of squares in Board object.
+        * id (int)
+        * arena (Arena)
+        * row_size (int)
+        * column_size (int)
+        * tokens ([BoardTokenService])
+        * squares ([[BoardSquareService]])
     """
     _id: int
     _arena: Arena
