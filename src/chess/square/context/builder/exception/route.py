@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.square import SquareContextException
-from chess.system import UnhandledRouteException
+from chess.system import NoBuildRouteException
 
 
 # ======================# UNHANDLED_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class SquareContextBuildRouteException(SquareContextException, UnhandledRouteException):
+class SquareContextBuildRouteException(SquareContextException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

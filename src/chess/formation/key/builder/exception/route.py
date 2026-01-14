@@ -1,25 +1,31 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/formation/key/builder/exception/route.py
+
+"""
+Module: chess.formation.key.builder.exception.route
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
 
 __all__ = [
-    # ======================# UNHANDLED_FORMATION_SUPER_KEY_BUILD_ROUTE EXCEPTION #======================#
-    "FormationSuperKeyBuildRouteException",
+    # ======================# UNHANDLED_FORMATION_KEY_BUILD_ROUTE EXCEPTION #======================#
+    "FormationKeyBuildRouteException",
 ]
 
+from chess.formation import FormationSuperKeyException
+from chess.system import NoBuildRouteException
 
-# ======================# UNHANDLED_FORMATION_SUPER_KEY_BUILD_ROUTE EXCEPTION #======================#
-class FormationSuperKeyBuildRouteException(ResultException, UnhandledRouteException):
+
+# ======================# UNHANDLED_FORMATION_KEY_BUILD_ROUTE EXCEPTION #======================#
+class FormationKeyBuildRouteException(FormationSuperKeyException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that FormationSuperKeyBuilder did not handle one of the paths necessary to assure a candidate is a
-        safe to use FormationSuperKey. There are different configurations of FormationSuperKey that are correct. Each
-        configuration must have a build route to guarantee all FormationSuperKey products are safe. If a
-        FormationSuperKey configuration does not have a build route the last step in the logic will return a
-        BuildResult containing a FormationSuperKeyBuildRouteException.
+    1.  Indicate that the FormationKey build failed because there was no build route for the Formation key.
 
     # PARENT:
-        *   ResultException
+        *   FormationSuperKeyException
         *   UnhandledRouteException
 
     # PROVIDES
@@ -31,9 +37,5 @@ class FormationSuperKeyBuildRouteException(ResultException, UnhandledRouteExcept
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_FORMATION_SUPER_KEY_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
-        "The FormationSuperKeyBuilder did not handle one of the paths necessary to guarantee FormationSuperKeys are "
-        "safe products. Ensure all possible build branches are covered to ensure the execution flow does not "
-        "hit the default failure result outside the if-blocks."
-    )
+    ERROR_CODE = "UNHANDLED_FORMATION_KEY_BUILD_ROUTE_ERROR"
+    DEFAULT_MESSAGE = "FormationKey build failed: No build path existed for the Formation key."

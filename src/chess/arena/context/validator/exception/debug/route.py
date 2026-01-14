@@ -1,14 +1,23 @@
+# src/chess/arena/context/validator/exception/debug/route.py
+
+"""
+Module: chess.arena.context.validator.exception.debug.route
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
 __all__ = [
-    # ======================# UNHANDLED_ARENA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "ArenaContextValidationRouteException",
 ]
 
-from chess.arena import ArenaException
-from chess.system import UnhandledRouteException
+from chess.arena import ArenaContextException
+from chess.system import NoValidationRouteException
 
 
 # ======================# UNHANDLED_ARENA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class ArenaContextValidationRouteException(ArenaException, UnhandledRouteException):
+class ArenaContextValidationRouteException(ArenaContextException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -16,8 +25,8 @@ class ArenaContextValidationRouteException(ArenaException, UnhandledRouteExcepti
     1.  Indicate that the ArenaContext validation failed because there was no build route for the ArenaContext key.
 
     # PARENT:
-        *   ArenaException
-        *   UnhandledRouteException
+        *   ArenaContextException
+        *   NoValidationRouteException
 
     # PROVIDES
     None

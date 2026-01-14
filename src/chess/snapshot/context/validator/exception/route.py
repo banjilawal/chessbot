@@ -1,14 +1,23 @@
+# src/chess/snapshot/context/validator/exception/debug/route.py
+
+"""
+Module: chess.snapshot.context.validator.exception.debug.route
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
 __all__ = [
-    # ======================# UNHANDLED_SNAPSHOT_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "SnapshotContextValidationRouteException",
 ]
 
-from chess.snapshot import SnapshotException
-from chess.system import UnhandledRouteException
+from chess.snapshot import SnapshotContextException
+from chess.system import NoValidationRouteException
 
 
 # ======================# UNHANDLED_SNAPSHOT_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class SnapshotContextValidationRouteException(SnapshotException, UnhandledRouteException):
+class SnapshotContextValidationRouteException(SnapshotContextException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -16,8 +25,8 @@ class SnapshotContextValidationRouteException(SnapshotException, UnhandledRouteE
     1.  Indicate that the SnapshotContext validation failed because there was no build route for the SnapshotContext key.
 
     # PARENT:
-        *   ResultException
-        *   UnhandledRouteException
+        *   SnapshotContextException
+        *   NoValidationRouteException
 
     # PROVIDES
     None

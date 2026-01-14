@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.token import TokenContextException
-from chess.system import UnhandledRouteException
+from chess.system import NoBuildRouteException
 
 
 # ======================# UNHANDLED_TOKEN_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class TokenContextBuildRouteException(TokenContextException, UnhandledRouteException):
+class TokenContextBuildRouteException(TokenContextException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

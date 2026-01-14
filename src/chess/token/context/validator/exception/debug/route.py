@@ -1,3 +1,12 @@
+# src/chess/token/context/validator/exception/debug/route.py
+
+"""
+Module: chess.token.context.validator.exception.debug.route
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
 __all__ = [
     # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "TokenContextValidationRouteException",
@@ -17,8 +26,8 @@ class TokenContextValidationRouteException(TokenContextException, NoValidationRo
     1.  Indicate that the TokenContext validation failed because there was no build route for the TokenContext key.
 
     # PARENT:
-        *   TokenException
-        *   UnhandledRouteException
+        *   TokenContextException
+        *   NoValidationRouteException
 
     # PROVIDES
     None

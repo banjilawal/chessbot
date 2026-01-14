@@ -1,25 +1,31 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/coord/context/builder/exception/route.py
+
+"""
+Module: chess.coord.context.builder.exception.route
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
 
 __all__ = [
     # ======================# UNHANDLED_COORD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "CoordContextBuildRouteException",
 ]
 
+from chess.coord import CoordContextException
+from chess.system import NoBuildRouteException
+
 
 # ======================# UNHANDLED_COORD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class CoordContextBuildRouteException(ResultException, UnhandledRouteException):
+class CoordContextBuildRouteException(CoordContextException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that CoordContextBuilder did not handle one of the paths necessary to assure a candidate is a
-        safe to use CoordContext. There are different configurations of CoordContext that are correct. Each
-        configuration must have a build route to guarantee all CoordContext products are safe. If a
-        CoordContext configuration does not have a build route the last step in the logic will return a
-        BuildResult containing a CoordContextBuildRouteException.
+    1.  Indicate that the CoordContext build failed because there was no build route for the Coord key.
 
     # PARENT:
-        *   ResultException
+        *   CoordContextException
         *   UnhandledRouteException
 
     # PROVIDES
@@ -32,8 +38,4 @@ class CoordContextBuildRouteException(ResultException, UnhandledRouteException):
     None
     """
     ERROR_CODE = "UNHANDLED_COORD_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
-        "The CoordContextBuilder did not handle one of the paths necessary to guarantee CoordContexts are "
-        "safe products. Ensure all possible build branches are covered to ensure the execution flow does not "
-        "hit the default failure result outside the if-blocks."
-    )
+    DEFAULT_MESSAGE = "CoordContext build failed: No build path existed for the Coord key."

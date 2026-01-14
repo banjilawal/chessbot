@@ -1,25 +1,31 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/arena/context/builder/exception/route.py
+
+"""
+Module: chess.arena.context.builder.exception.route
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
 
 __all__ = [
     # ======================# UNHANDLED_ARENA_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "ArenaContextBuildRouteException",
 ]
 
+from chess.arena import ArenaContextException
+from chess.system import NoBuildRouteException
+
 
 # ======================# UNHANDLED_ARENA_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class ArenaContextBuildRouteException(ResultException, UnhandledRouteException):
+class ArenaContextBuildRouteException(ArenaContextException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that ArenaContextBuilder did not handle one of the paths necessary to assure a candidate is a
-        safe to use ArenaContext. There are different configurations of ArenaContext that are correct. Each
-        configuration must have a build route to guarantee all ArenaContext products are safe. If a
-        ArenaContext configuration does not have a build route the last step in the logic will return a
-        BuildResult containing a ArenaContextBuildRouteException.
+    1.  Indicate that the ArenaContext build failed because there was no build route for the Arena key.
 
     # PARENT:
-        *   ResultException
+        *   ArenaContextException
         *   UnhandledRouteException
 
     # PROVIDES
@@ -32,8 +38,4 @@ class ArenaContextBuildRouteException(ResultException, UnhandledRouteException):
     None
     """
     ERROR_CODE = "UNHANDLED_ARENA_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
-        "The ArenaContextBuilder did not handle one of the paths necessary to guarantee ArenaContexts are "
-        "safe products. Ensure all possible build branches are covered to ensure the execution flow does not "
-        "hit the default failure result outside the if-blocks."
-    )
+    DEFAULT_MESSAGE = "ArenaContext build failed: No build path existed for the Arena key."

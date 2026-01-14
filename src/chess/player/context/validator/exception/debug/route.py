@@ -1,14 +1,23 @@
+# src/chess/player/context/validator/exception/debug/route.py
+
+"""
+Module: chess.player.context.validator.exception.debug.route
+Author: Banji Lawal
+Created: 2025-09-16
+version: 1.0.0
+"""
+
 __all__ = [
-    # ======================# UNHANDLED_PLAYER_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "PlayerContextValidationRouteException",
 ]
 
-from chess.player import PlayerException
-from chess.system import UnhandledRouteException
+from chess.player import PlayerContextException
+from chess.system import NoValidationRouteException
 
 
 # ======================# UNHANDLED_PLAYER_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class PlayerContextValidationRouteException(PlayerException, UnhandledRouteException):
+class PlayerContextValidationRouteException(PlayerContextException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -16,8 +25,8 @@ class PlayerContextValidationRouteException(PlayerException, UnhandledRouteExcep
     1.  Indicate that the PlayerContext validation failed because there was no build route for the PlayerContext key.
 
     # PARENT:
-        *   PlayerException
-        *   UnhandledRouteException
+        *   PlayerContextException
+        *   NoValidationRouteException
 
     # PROVIDES
     None

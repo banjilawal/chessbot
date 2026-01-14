@@ -1,25 +1,31 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/snapshot/context/builder/exception/route.py
+
+"""
+Module: chess.snapshot.context.builder.exception.route
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
 
 __all__ = [
     # ======================# UNHANDLED_SNAPSHOT_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "SnapshotContextBuildRouteException",
 ]
 
+from chess.snapshot import SnapshotContextException
+from chess.system import NoBuildRouteException
+
 
 # ======================# UNHANDLED_SNAPSHOT_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class SnapshotContextBuildRouteException(ResultException, UnhandledRouteException):
+class SnapshotContextBuildRouteException(SnapshotContextException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that SnapshotContextBuilder did not handle one of the paths necessary to assure a candidate is a
-        safe to use SnapshotContext. There are different configurations of SnapshotContext that are correct. Each
-        configuration must have a build route to guarantee all SnapshotContext products are safe. If a
-        SnapshotContext configuration does not have a build route the last step in the logic will return a
-        BuildResult containing a SnapshotContextBuildRouteException.
+    1.  Indicate that the SnapshotContext build failed because there was no build route for the Snapshot key.
 
     # PARENT:
-        *   ResultException
+        *   SnapshotContextException
         *   UnhandledRouteException
 
     # PROVIDES
@@ -32,8 +38,4 @@ class SnapshotContextBuildRouteException(ResultException, UnhandledRouteExceptio
     None
     """
     ERROR_CODE = "UNHANDLED_SNAPSHOT_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
-        "The SnapshotContextBuilder did not handle one of the paths necessary to guarantee SnapshotContexts are "
-        "safe products. Ensure all possible build branches are covered to ensure the execution flow does not "
-        "hit the default failure result outside the if-blocks."
-    )
+    DEFAULT_MESSAGE = "SnapshotContext build failed: No build path existed for the Snapshot key."

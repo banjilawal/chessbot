@@ -3,30 +3,30 @@
 """
 Module: chess.schema.key.validator.exception.debug.route
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.schema import SchemaSuperKey
-from chess.system import UnhandledRouteException
-
 __all__ = [
-    # ======================# UNHANDLED_SCHEMA_SUPER_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-    "SchemaSuperKeyValidationRouteException",
+    # ======================# UNHANDLED_SCHEMA_KEY_VALIDATION_ROUTE EXCEPTION #======================#
+    "SchemaKeyValidationRouteException",
 ]
 
+from chess.schema import SchemaSuperKeyException
+from chess.system import NoValidationRouteException
 
-# ======================# UNHANDLED_SCHEMA_SUPER_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class SchemaSuperKeyValidationRouteException(SchemaSuperKey, UnhandledRouteException):
+
+# ======================# UNHANDLED_SCHEMA_KEY_VALIDATION_ROUTE EXCEPTION #======================#
+class SchemaKeyValidationRouteException(SchemaSuperKeyException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the candidate failed SchemaSuperKey validation because no validation route for its attribute.
+    1.  Indicate that the SchemaKey validation failed because there was no build route for the SchemaKey key.
 
     # PARENT:
-        *   SchemaSuperKey
-        *   UnhandledRouteException
+        *   SchemaKeyException
+        *   NoValidationRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class SchemaSuperKeyValidationRouteException(SchemaSuperKey, UnhandledRouteExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SCHEMA_SUPER_KEY_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "SchemaSuperKey validation failed: No validation route was provided for the Schema attribute."
+    ERROR_CODE = "UNHANDLED_SCHEMA_KEY_VALIDATION_ROUTE_ERROR"
+    DEFAULT_MESSAGE = "SchemaKey validation failed: No validation route was provided for the Schema attribute."

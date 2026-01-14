@@ -1,34 +1,32 @@
-# src/chess/formation/validator/exception/debug/route.py
+# src/chess/formation/key/validator/exception/debug/route.py
 
 """
-Module: chess.formation.validator.exception.debug.route
+Module: chess.formation.key.validator.exception.debug.route
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import UnhandledRouteException
-from chess.formation import FormationSuperKeyException
-
-
-
 __all__ = [
-    # ======================# UNHANDLED_FORMATION_SUPER_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-    "FormationSuperKeyValidationRouteException",
+    # ======================# UNHANDLED_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#
+    "FormationKeyValidationRouteException",
 ]
 
+from chess.formation import FormationSuperKeyException
+from chess.system import NoValidationRouteException
 
-# ======================# UNHANDLED_FORMATION_SUPER_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class FormationSuperKeyValidationRouteException(FormationSuperKeyException, UnhandledRouteException):
+
+# ======================# UNHANDLED_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#
+class FormationKeyValidationRouteException(FormationSuperKeyException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the candidate failed FormationSuperKey validation because no validation route for its attribute.
+    1.  Indicate that the FormationKey validation failed because there was no build route for the FormationKey key.
 
     # PARENT:
-        *   UnhandledRouteException
-        *   FormationSuperKeyException
+        *   FormationKeyException
+        *   NoValidationRouteException
 
     # PROVIDES
     None
@@ -39,7 +37,5 @@ class FormationSuperKeyValidationRouteException(FormationSuperKeyException, Unha
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_FORMATION_SUPER_KEY_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
-        "FormationSuperKey validation failed: No validation route was provided for the Formation attribute."
-    )
+    ERROR_CODE = "UNHANDLED_FORMATION_KEY_VALIDATION_ROUTE_ERROR"
+    DEFAULT_MESSAGE = "FormationKey validation failed: No validation route was provided for the Formation attribute."

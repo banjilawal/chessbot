@@ -12,13 +12,12 @@ __all__ = [
     "TeamContextValidationRouteException",
 ]
 
-
-from chess.team import TeamContext, TeamContextException
-from chess.system import UnhandledRouteException
+from chess.team import TeamContextException
+from chess.system import NoValidationRouteException
 
 
 # ======================# UNHANDLED_TEAM_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class TeamContextValidationRouteException(TeamContextException, UnhandledRouteException):
+class TeamContextValidationRouteException(TeamContextException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,8 +25,8 @@ class TeamContextValidationRouteException(TeamContextException, UnhandledRouteEx
     1.  Indicate that the TeamContext validation failed because there was no build route for the TeamContext key.
 
     # PARENT:
-        *   TeamContext
-        *   UnhandledRouteException
+        *   TeamContextException
+        *   NoValidationRouteException
 
     # PROVIDES
     None

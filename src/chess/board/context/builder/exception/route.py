@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.board import BoardContextException
-from chess.system import UnhandledRouteException
+from chess.system import NoBuildRouteException
 
 
 # ======================# UNHANDLED_BOARD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class BoardContextBuildRouteException(BoardContextException, UnhandledRouteException):
+class BoardContextBuildRouteException(BoardContextException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

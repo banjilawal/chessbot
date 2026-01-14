@@ -11,9 +11,9 @@ version: 1.0.0
 
 # Packages
 from .result import *
+from .exception import *
 
 
 # Modules
 from .builder import Builder
-from .exception import BuildFailedException
 

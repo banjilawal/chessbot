@@ -3,26 +3,26 @@
 """
 Module: chess.schema.key.builder.exception.route
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.schema import SchemaSuperKeyException
-from chess.system import UnhandledRouteException
-
 __all__ = [
-    # ======================# UNHANDLED_SCHEMA_SUPER_KEY_BUILD_ROUTE EXCEPTION #======================#
-    "SchemaSuperKeyBuildRouteException",
+    # ======================# UNHANDLED_SCHEMA_KEY_BUILD_ROUTE EXCEPTION #======================#
+    "SchemaKeyBuildRouteException",
 ]
 
+from chess.schema import SchemaSuperKeyException
+from chess.system import NoBuildRouteException
 
-# ======================# UNHANDLED_SCHEMA_SUPER_KEY_BUILD_ROUTE EXCEPTION #======================#
-class SchemaSuperKeyBuildRouteException(SchemaSuperKeyException, UnhandledRouteException):
+
+# ======================# UNHANDLED_SCHEMA_KEY_BUILD_ROUTE EXCEPTION #======================#
+class SchemaKeyBuildRouteException(SchemaSuperKeyException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the SchemaSuperK build failed because there was no build route for the Schema attribute.
+    1.  Indicate that the SchemaKey build failed because there was no build route for the Schema key.
 
     # PARENT:
         *   SchemaSuperKeyException
@@ -37,5 +37,5 @@ class SchemaSuperKeyBuildRouteException(SchemaSuperKeyException, UnhandledRouteE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SCHEMA_SUPER_KEY_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "SchemaSuperKey build failed: No build path existed for the Schema attribute."
+    ERROR_CODE = "UNHANDLED_SCHEMA_KEY_BUILD_ROUTE_ERROR"
+    DEFAULT_MESSAGE = "SchemaKey build failed: No build path existed for the Schema key."
