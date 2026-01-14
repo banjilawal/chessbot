@@ -11,6 +11,7 @@ from chess.arena import Arena
 from chess.board import BoardSquareService, BoardTokenService
 from chess.system import BOARD_DIMENSION
 
+
 class Board:
     """
     # ROLE: Data-Holder/Data Owner
@@ -34,7 +35,7 @@ class Board:
     _tokens: BoardTokenService
     _squares: BoardSquareService
     
-    def __init__(self, id: int, arena: Arena, row_size: int = BOARD_DIMENSION, column_size: int = BOARD_DIMENSION,):
+    def __init__(self, id: int, arena: Arena, row_size: int = BOARD_DIMENSION, column_size: int = BOARD_DIMENSION, ):
         """
         # ACTION:
             Constructs Board object
@@ -66,11 +67,11 @@ class Board:
     def arena(self) -> Arena:
         return self._arena
     
-    @@property
+    @ @property
     def tokens(self) -> BoardTokenService:
         return self._tokens
     
-    @@property
+    @ @property
     def squares(self) -> BoardSquareService:
         return self._squares
     
@@ -91,8 +92,6 @@ class Board:
     
     def __hash__(self):
         return hash(self._id)
-        
-
     
     # def __str__(self) -> str:
     #     """"""

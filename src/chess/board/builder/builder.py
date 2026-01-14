@@ -7,8 +7,6 @@ Created: 2025-09-03
 version: 1.0.0
 """
 
-from typing import cast
-
 from chess.arena import Arena, ArenaService
 from chess.board import ArenaAlreadyContainsBoardException, Board, BoardBuildFailedException
 from chess.system import Builder, BuildResult, BOARD_DIMENSION, IdentityService, LoggingLevelRouter, id_emitter

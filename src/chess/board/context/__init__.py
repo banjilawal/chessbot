@@ -1,9 +1,9 @@
-# src/chess/board/__init__.py
+# src/chess/board/context/__init__.py
 
 """
-Module: chess.board.__init__
+Module: chess.board.context.__init__
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-10-02
 version: 1.0.0
 """
 
@@ -11,11 +11,10 @@ version: 1.0.0
 
 # Packages
 from .builder import *
-from .context import *
+from .finder import *
 from .service import *
 from .validator import *
 
 # Modules
-from .board import Board
-from .iterator import SquareIterator
-from .service import BoardService
+from .exception import *
+from .context import BoardContext
