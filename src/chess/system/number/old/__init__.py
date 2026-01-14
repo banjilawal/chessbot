@@ -14,5 +14,5 @@ None
 
 # Modules
 from .base import NumberValidator
-from .bound import BoundNumberValidator
+from .bound import NumberValidator
 from .not_negative import  NotNegativeNumberValidator

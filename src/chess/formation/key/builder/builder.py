@@ -11,7 +11,7 @@ from typing import Optional
 
 from chess.formation import (
     ExcessiveFormationKeysException, FormationKey, FormationKeyBuildFailedException,
-    FormationSuperKeyBuildRouteException, ZeroFormationSuperKeysException
+    FormationKeyBuildRouteException, ZeroFormationKeysException
 )
 from chess.persona import Persona, PersonaService
 from chess.square import Square, SquareService
@@ -73,7 +73,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
                     - On failure: Exception.
                     - On success: FormationKey in the payload.
         # RAISES:
-            *   ZeroFormationSuperKeysException
+            *   ZeroFormationKeysException
             *   FormationKeyBuildFailedException
             *   ExcessiveFormationKeysException
             *   FormationKeyBuildFailedException
@@ -90,8 +90,8 @@ class FormationKeyBuilder(Builder[FormationKey]):
             return BuildResult.failure(
                 FormationKeyBuildFailedException(
                     message=f"{method}: {FormationKeyBuildFailedException.ERROR_CODE}",
-                    ex=ZeroFormationSuperKeysException(
-                        f"{method}: {ZeroFormationSuperKeysException.DEFAULT_MESSAGE}"
+                    ex=ZeroFormationKeysException(
+                        f"{method}: {ZeroFormationKeysException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -118,7 +118,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a square_name_FormationSuperKey in the BuildResult.
+            # On validation success return a square_name_FormationKey in the BuildResult.
             return BuildResult.success(FormationKey(square_name=square.name))
         
         # Build the designation FormationKey if its value is set.
@@ -132,7 +132,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a designation_FormationSuperKey in the BuildResult.
+            # On validation success return a designation_FormationKey in the BuildResult.
             return BuildResult.success(FormationKey(designation=designation))
         
         # Build the color FormationKey if its value is set.
@@ -146,7 +146,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a color_FormationSuperKey in the BuildResult.
+            # On validation success return a color_FormationKey in the BuildResult.
             return BuildResult.success(FormationKey(color=color))
         
         # Build the persona FormationKey if its value is set.
@@ -160,15 +160,15 @@ class FormationKeyBuilder(Builder[FormationKey]):
                         ex=validation.exception,
                     )
                 )
-            # On validation success return a color_FormationSuperKey in the BuildResult.
+            # On validation success return a color_FormationKey in the BuildResult.
             return BuildResult.success(FormationKey(persona=persona))
         
         # The default path returns failure.
         BuildResult.failure(
             FormationKeyBuildFailedException(
                 message=f"{method}: {FormationKeyBuildFailedException.ERROR_CODE}",
-                ex=FormationSuperKeyBuildRouteException(
-                    f"{method}: {FormationSuperKeyBuildRouteException.DEFAULT_MESSAGE}"
+                ex=FormationKeyBuildRouteException(
+                    f"{method}: {FormationKeyBuildRouteException.DEFAULT_MESSAGE}"
                 )
             )
         )

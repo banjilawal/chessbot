@@ -14,7 +14,7 @@ version: 1.0.0
 None
 
 # Modules
-from .null import NullPersonaSuperKeyException
-from .zero import ZeroPersonaSuperKeysException
-from .excess import ExcessivePersonaSuperKeysException
-from .route import PersonaSuperKeyValidationRouteException
+from .null import NullPersonaKeyException
+from .zero import ZeroPersonaKeysException
+from .excess import ExcessivePersonaKeysException
+from .route import PersonaKeyValidationRouteException

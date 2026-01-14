@@ -12,12 +12,12 @@ __all__ = [
     "PersonaKeyValidationRouteException",
 ]
 
-from chess.persona import PersonaSuperKeyException
+from chess.persona import PersonaKeyException
 from chess.system import NoValidationRouteException
 
 
 # ======================# UNHANDLED_PERSONA_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class PersonaKeyValidationRouteException(PersonaSuperKeyException, NoValidationRouteException):
+class PersonaKeyValidationRouteException(PersonaKeyException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

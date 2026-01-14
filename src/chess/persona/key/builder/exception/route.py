@@ -12,12 +12,12 @@ __all__ = [
     "PersonaKeyBuildRouteException",
 ]
 
-from chess.persona import PersonaSuperKeyException
+from chess.persona import PersonaKeyException
 from chess.system import NoBuildRouteException
 
 
 # ======================# UNHANDLED_PERSONA_KEY_BUILD_ROUTE EXCEPTION #======================#
-class PersonaKeyBuildRouteException(PersonaSuperKeyException, NoBuildRouteException):
+class PersonaKeyBuildRouteException(PersonaKeyException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -25,7 +25,7 @@ class PersonaKeyBuildRouteException(PersonaSuperKeyException, NoBuildRouteExcept
     1.  Indicate that the PersonaKey build failed because there was no build route for the Persona key.
 
     # PARENT:
-        *   PersonaSuperKeyException
+        *   PersonaKeyException
         *   UnhandledRouteException
 
     # PROVIDES

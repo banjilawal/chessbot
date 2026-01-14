@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ========================= ZERO_FORMATION_KEYS_VALIDATION EXCEPTION =========================#
-    "ZeroFormationSuperKeysException",
+    "ZeroFormationKeysException",
 ]
 
-from chess.formation.key.validator.exception.wrapper import InvalidFormationSuperKeyException
+from chess.formation.key.validator.exception.wrapper import InvalidFormationKeyException
 from chess.system import ContextFlagCountException
 
 
 # ========================= ZERO_FORMATION_KEYS_VALIDATION EXCEPTION =========================#
-class ZeroFormationSuperKeysException(InvalidFormationSuperKeyException, ContextFlagCountException):
+class ZeroFormationKeysException(InvalidFormationKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class ZeroFormationSuperKeysException(InvalidFormationSuperKeyException, Context
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidFormationSuperKeyException
+        *   InvalidFormationKeyException
 
     # PROVIDES:
     None

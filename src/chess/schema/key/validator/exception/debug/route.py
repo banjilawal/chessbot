@@ -12,12 +12,12 @@ __all__ = [
     "SchemaKeyValidationRouteException",
 ]
 
-from chess.schema import SchemaSuperKeyException
+from chess.schema import SchemaKeyException
 from chess.system import NoValidationRouteException
 
 
 # ======================# UNHANDLED_SCHEMA_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class SchemaKeyValidationRouteException(SchemaSuperKeyException, NoValidationRouteException):
+class SchemaKeyValidationRouteException(SchemaKeyException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

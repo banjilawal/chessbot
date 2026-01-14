@@ -50,7 +50,7 @@ class CoordBuilder(Builder[Coord]):
         # PARAMETERS:
             *   row (int)
             *   column (int)
-            *   number_bonds_validator (BoundNumberValidator)
+            *   number_bonds_validator (NumberValidator)
         # RETURNS:
             *   BuildResult[Coord] containing either:
                     - On success: Coord in the payload.

@@ -10,15 +10,16 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.persona import (
-    ExcessivePersonaSuperKeysException, NullPersonaSuperKeyException, PersonaSuperKey, ZeroPersonaSuperKeysException,
-    PersonaSuperKeyValidationFailedException, PersonaSuperKeyValidationRouteException,
+    ExcessivePersonaKeysException, NullPersonaKeyException, PersonaKey, ZeroPersonaKeysException,
+    PersonaKeyValidationFailedException, 
 )
+from chess.persona.key.validator.exception.debug.route import PersonaKeyValidationRouteException
 from chess.system import (
     IdentityService, LoggingLevelRouter, NumberValidator, ValidationFailedException, ValidationResult, Validator
 )
 
 
-class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
+class PersonaKeyValidator(Validator[PersonaKey]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
@@ -46,10 +47,10 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
             candidate: Any,
             number_validator: NumberValidator = NumberValidator(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[PersonaSuperKey]:
+    ) -> ValidationResult[PersonaKey]:
         """
         # ACTION:
-            1.  If the candidate passes existence and type checks cast into a PersonaSuperKey instance, super_key.
+            1.  If the candidate passes existence and type checks cast into a PersonaKey instance, super_key.
                 Else, return an exception in the ValidationResult.
             2.  If one-and-only-one super_key field is not null return an exception in the ValidationResult.
             3.  Use super_key.attribute to route to the appropriate validation subflow.
@@ -60,57 +61,57 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
             *   color_validator (ColorValidator)
             *   identity_service (IdentityService)
         # RETURNS:Confirm
-            *   ValidationResult[PersonaSuperKey] containing either:
+            *   ValidationResult[PersonaKey] containing either:
                     - On failure: Exception.
-                    - On success: PersonaSuperKey in the payload.
+                    - On success: PersonaKey in the payload.
         # RAISES:
             *   TypeError
-            *   NNullPersonaSuperKeyException
-            *   ZeroPersonaSuperKeysException
-            *   ExcessivePersonaSuperKeysException
-            *   PersonaSuperKeyValidationFailedException
+            *   NNullPersonaKeyException
+            *   ZeroPersonaKeysException
+            *   ExcessivePersonaKeysException
+            *   PersonaKeyValidationFailedException
         """
-        method = "PersonaSuperKeyValidator.validate"
+        method = "PersonaKeyValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaSuperKeyValidationFailedException(
+                PersonaKeyValidationFailedException(
                     message=f"{method}: {ValidationFailedException.ERROR_CODE}",
-                    ex=NullPersonaSuperKeyException(f"{method}: {NullPersonaSuperKeyException.DEFAULT_MESSAGE}")
+                    ex=NullPersonaKeyException(f"{method}: {NullPersonaKeyException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the wrong class case.
-        if not isinstance(candidate, PersonaSuperKey):
+        if not isinstance(candidate, PersonaKey):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaSuperKeyValidationFailedException(
+                PersonaKeyValidationFailedException(
                     message=f"{method}: {ValidationFailedException.ERROR_CODE}",
-                    ex=TypeError(f"{method}: Expected PersonaSuperKey, got {type(candidate).__designation__} instead.")
+                    ex=TypeError(f"{method}: Expected PersonaKey, got {type(candidate).__designation__} instead.")
                 )
             )
         
-        # After existence and type checks cast the candidate to a PersonaSuperKey for additional tests.
-        super_key = cast(PersonaSuperKey, candidate)
+        # After existence and type checks cast the candidate to a PersonaKey for additional tests.
+        super_key = cast(PersonaKey, candidate)
         
         # Handle the case of searching with no attribute-value.
         if len(super_key.to_dict()) == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaSuperKeyValidationFailedException(
+                PersonaKeyValidationFailedException(
                     message=f"{method}: {ValidationFailedException.ERROR_CODE}",
-                    ex=ZeroPersonaSuperKeysException(f"{method}: {ZeroPersonaSuperKeysException.DEFAULT_MESSAGE}")
+                    ex=ZeroPersonaKeysException(f"{method}: {ZeroPersonaKeysException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case of more than one key-value is set.
         if len(super_key.to_dict()) > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaSuperKeyValidationFailedException(
+                PersonaKeyValidationFailedException(
                     message=f"{method}: {ValidationFailedException.ERROR_CODE}",
-                    ex=ExcessivePersonaSuperKeysException(
-                        f"{method}: {ExcessivePersonaSuperKeysException.DEFAULT_MESSAGE}"
+                    ex=ExcessivePersonaKeysException(
+                        f"{method}: {ExcessivePersonaKeysException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -123,7 +124,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaSuperKeyValidationFailedException(
+                    PersonaKeyValidationFailedException(
                         message=f"{method}: {ValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
@@ -137,7 +138,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaSuperKeyValidationFailedException(
+                    PersonaKeyValidationFailedException(
                         message=f"{method}: {ValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
@@ -151,7 +152,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaSuperKeyValidationFailedException(
+                    PersonaKeyValidationFailedException(
                         message=f"{method}: {ValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
@@ -165,7 +166,7 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaSuperKeyValidationFailedException(
+                    PersonaKeyValidationFailedException(
                         message=f"{method}: {ValidationFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
@@ -175,10 +176,10 @@ class PersonaSuperKeyValidator(Validator[PersonaSuperKey]):
         
         # The default returns failure.
         return ValidationResult.failure(
-            PersonaSuperKeyValidationFailedException(
+            PersonaKeyValidationFailedException(
                 message=f"{method}: {ValidationFailedException.ERROR_CODE}",
-                ex=PersonaSuperKeyValidationRouteException(
-                    f"{method}: {PersonaSuperKeyValidationRouteException.DEFAULT_MESSAGE}"
+                ex=PersonaKeyValidationRouteException(
+                    f"{method}: {PersonaKeyValidationRouteException.DEFAULT_MESSAGE}"
                 )
             )
         )

@@ -13,17 +13,17 @@ from chess.system import ContextException
 
 __all__ = [
     # ======================# SCHEMA_KEY EXCEPTION #======================#
-    "SchemaSuperKeyException",
+    "SchemaKeyException",
 ]
 
 
 # ======================# SCHEMA_KEY EXCEPTION #======================#
-class SchemaSuperKeyException(SchemaException, ContextException):
+class SchemaKeyException(SchemaException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for conditions which are not covered by SchemaSuperKeyException subclasses.
+    1.  Catchall for conditions which are not covered by SchemaKeyException subclasses.
 
     # PARENT:
         *   SchemaException
@@ -39,4 +39,4 @@ class SchemaSuperKeyException(SchemaException, ContextException):
     None
     """
     ERROR_CODE = "SCHEMA_KEY_ERROR"
-    DEFAULT_ERROR_CODE = "SchemaSuperKey raised an exception."
+    DEFAULT_ERROR_CODE = "SchemaKey raised an exception."

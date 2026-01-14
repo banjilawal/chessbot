@@ -14,5 +14,5 @@ version: 1.0.0
 
 
 # Modules
-from .service import PersonaSuperKeyService
-from .exception import PersonaSuperKeyServiceException
+from .service import PersonaKeyService
+from .exception import PersonaKeyServiceException

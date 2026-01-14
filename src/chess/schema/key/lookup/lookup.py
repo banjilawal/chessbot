@@ -10,8 +10,8 @@ version: 1.0.0
 from typing import List
 
 from chess.schema import (
-    SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaSuperKey, Schema,
-    SchemaNameBoundsException, SchemaSuperKeyValidator,
+    SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaKey, Schema,
+    SchemaNameBoundsException, SchemaKeyValidator,
 )
 from chess.system import ForwardLookup, GameColor, HashLookup, LoggingLevelRouter, SearchResult
 
@@ -40,18 +40,18 @@ class SchemaLookup(HashLookup[Schema]):
     @classmethod
     def query(
             cls,
-            super_key: SchemaSuperKey,
-            super_key_validator: SchemaSuperKeyValidator = SchemaSuperKeyValidator()
+            super_key: SchemaKey,
+            super_key_validator: SchemaKeyValidator = SchemaKeyValidator()
     ) -> SearchResult[List[Schema]]:
         """
         # ACTION:
             1.  If super_key fails validation send the exception chain in the SearchResult. Else, route to the
-                search method by the attribute portion of the SuperKey.
-            2.  If the value portion of the SuperKey is not in the permitted attribute values send the exception
+                search method by the attribute portion of the Key.
+            2.  If the value portion of the Key is not in the permitted attribute values send the exception
                 chain in the SearchResult. Else, send Personas whose targeted attribute values match.
         # PARAMETERS:
-            *   key: SchemaSuperKey
-            *   key_validator: SchemaSuperKeyValidator
+            *   key: SchemaKey
+            *   key_validator: SchemaKeyValidator
         # RETURNS:
             *   SearchResult[List[Schema]] containing either:
                     - On error: Exception , payload null
@@ -62,7 +62,7 @@ class SchemaLookup(HashLookup[Schema]):
         """
         method = "SchemaLookup.query"
 
-        # Handle the case that the SuperKey fails validation.
+        # Handle the case that the Key fails validation.
         validation = super_key_validator.validate(candidate=super_key)
         if validation.is_failure:
             # Return the exception chain on failure.

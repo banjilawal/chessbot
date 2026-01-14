@@ -11,13 +11,13 @@ from chess.system import ContextException
 from chess.persona import PersonaException
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT EXCEPTION #======================#
-    "PersonaSuperKeyException",
+    # ======================# PERSONA_KEY EXCEPTION #======================#
+    "PersonaKeyException",
 ]
 
 
-# ======================# PERSONA_CONTEXT EXCEPTION #======================#
-class PersonaSuperKeyException(ContextException):
+# ======================# PERSONA_KEY EXCEPTION #======================#
+class PersonaKeyException(ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -38,5 +38,5 @@ class PersonaSuperKeyException(ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_CONTEXT_ERROR"
+    ERROR_CODE = "PERSONA_KEY_ERROR"
     DEFAULT_ERROR_CODE = "PersonaContext raised an exception."

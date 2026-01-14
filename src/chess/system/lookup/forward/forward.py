@@ -21,10 +21,10 @@ class ForwardLookup(Lookup[Enum]):
     # ROLE: Forward Lookups,
 
     # RESPONSIBILITIES:
-    1.  Use SuperKey (metadata_attribute: value) to find entries in
+    1.  Use Key (metadata_attribute: value) to find entries in
             StrategyContractorHashMap{StrategyTitle: {ContractorBuildMetadata}
-    2.  Use SuperKey to find entries in CategoryHashMap{Name: Tuple}
-    3.  Indicate the HashMap does have an entry for the SuperKey with an exception in the SearchResult.
+    2.  Use Key to find entries in CategoryHashMap{Name: Tuple}
+    3.  Indicate the HashMap does have an entry for the Key with an exception in the SearchResult.
 
     # PARENT:
     None

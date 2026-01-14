@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .route import FormationSuperKeyBuildRouteException
+from .route import FormationKeyBuildRouteException
 from .wrapper import FormationKeyBuildFailedException

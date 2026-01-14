@@ -8,25 +8,25 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.persona import PersonaSuperKeyException
+from chess.persona import PersonaKeyException
 
 __all__ = [
     # ========================= ZERO_PERSONA_KEYS EXCEPTION =========================#
-    "ZeroPersonaSuperKeysException"
+    "ZeroPersonaKeysException"
 ]
 
 
 # ========================= ZERO_PERSONA_KEYS EXCEPTION =========================#
-class ZeroPersonaSuperKeysException(PersonaSuperKeyException, ContextFlagCountException):
+class ZeroPersonaKeysException(PersonaKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed PersonaSuperKey validation because no attribute was enabled.
+    1.  Indicate that a candidate failed PersonaKey validation because no attribute was enabled.
 
     # PARENT:
         *   ContextFlagCountException
-        *   PersonaSuperKeyException
+        *   PersonaKeyException
 
     # PROVIDES:
     None
@@ -39,5 +39,5 @@ class ZeroPersonaSuperKeysException(PersonaSuperKeyException, ContextFlagCountEx
     """
     ERROR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = (
-        "PersonaSuperKey validation failed: All attributes were null. One attribute should be enabled."
+        "PersonaKey validation failed: All attributes were null. One attribute should be enabled."
     )

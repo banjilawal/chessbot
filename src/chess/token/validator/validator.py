@@ -15,7 +15,7 @@ from chess.team import Team, TeamService
 from chess.coord import CoordDataService, CoordService
 from chess.token import NullTokenException, Token, TokenValidationFailedException
 from chess.system import (
-    BoundNumberValidator, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
+    NumberValidator, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
 )
 
 class TokenValidator(Validator[Token]):
@@ -49,7 +49,7 @@ class TokenValidator(Validator[Token]):
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
             service_validator: ServiceValidator = ServiceValidator(),
-            number_validation: BoundNumberValidator = BoundNumberValidator(),
+            number_validation: NumberValidator = NumberValidator(),
     ) -> ValidationResult[Token]:
         """
         # ACTION:
@@ -64,7 +64,7 @@ class TokenValidator(Validator[Token]):
             *   team_service (TeamService)
             *   coord_service (CoordService)
             *   identity_service (IdentityService)
-            *   number_validator (BoundNumberValidator)
+            *   number_validator (NumberValidator)
         # RETURNS:
             *   ValidationResult[Team] containing either:
                     - On failure: Exception.

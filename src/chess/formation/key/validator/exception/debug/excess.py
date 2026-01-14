@@ -26,7 +26,7 @@ class ExcessiveFormationKeysException(FormationKeyException, ContextFlagCountExc
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidFormationSuperKeyException
+        *   InvalidFormationKeyException
 
     # PROVIDES:
     None

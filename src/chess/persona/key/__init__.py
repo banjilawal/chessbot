@@ -16,5 +16,5 @@ from .service import *
 from .validator import *
 
 # Modules
-from .key import PersonaSuperKey
-from .exception import PersonaSuperKeyException
+from .key import PersonaKey
+from .exception import PersonaKeyException

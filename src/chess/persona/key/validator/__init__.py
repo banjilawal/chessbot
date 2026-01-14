@@ -14,4 +14,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .validator import PersonaSuperKeyValidator
+from .validator import PersonaKeyValidator

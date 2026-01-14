@@ -12,12 +12,12 @@ __all__ = [
     "SchemaKeyBuildRouteException",
 ]
 
-from chess.schema import SchemaSuperKeyException
+from chess.schema import SchemaKeyException
 from chess.system import NoBuildRouteException
 
 
 # ======================# UNHANDLED_SCHEMA_KEY_BUILD_ROUTE EXCEPTION #======================#
-class SchemaKeyBuildRouteException(SchemaSuperKeyException, NoBuildRouteException):
+class SchemaKeyBuildRouteException(SchemaKeyException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -25,7 +25,7 @@ class SchemaKeyBuildRouteException(SchemaSuperKeyException, NoBuildRouteExceptio
     1.  Indicate that the SchemaKey build failed because there was no build route for the Schema key.
 
     # PARENT:
-        *   SchemaSuperKeyException
+        *   SchemaKeyException
         *   UnhandledRouteException
 
     # PROVIDES

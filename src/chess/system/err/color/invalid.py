@@ -21,7 +21,7 @@ class InvalidGameColorException(GameColorException, ValidationFailedException):
 
     # RESPONSIBILITIES:
     1.  Indicate a candidate failed a GameColor validation test.
-    2.  Wrap an exception that hits the try-finally block of a SchemSuperKeyValidator method.
+    2.  Wrap an exception that hits the try-finally block of a SchemKeyValidator method.
 
     # PARENT:
         *   GameColorException

@@ -8,25 +8,25 @@ version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.persona import PersonaSuperKeyException
+from chess.persona import PersonaKeyException
 
 __all__ = [
     # ========================= EXCESSIVE_PERSONA_KEY EXCEPTION =========================#
-    "ExcessivePersonaSuperKeysException"
+    "ExcessivePersonaKeysException"
 ]
 
 
 # ========================= EXCESSIVE_PERSONA_KEY EXCEPTION =========================#
-class ExcessivePersonaSuperKeysException(PersonaSuperKeyException, ContextFlagCountException):
+class ExcessivePersonaKeysException(PersonaKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed PersonaSuperKey validation because more than one attribute was enabled.
+    1.  Indicate that a candidate failed PersonaKey validation because more than one attribute was enabled.
 
     # PARENT:
         *   ContextFlagCountException
-        *   PersonaSuperKeyException
+        *   PersonaKeyException
 
     # PROVIDES:
     None
@@ -39,5 +39,5 @@ class ExcessivePersonaSuperKeysException(PersonaSuperKeyException, ContextFlagCo
     """
     ERROR_CODE = "EXCESSIVE_PERSONA_KEY_ERROR"
     DEFAULT_MESSAGE = (
-        "PersonaSuperKey validation failed: More than one attribute is not-null. Only one attribute should be enabled."
+        "PersonaKey validation failed: More than one attribute is not-null. Only one attribute should be enabled."
     )

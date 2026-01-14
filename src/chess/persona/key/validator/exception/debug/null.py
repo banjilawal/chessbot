@@ -8,25 +8,25 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.persona import PersonaSuperKeyException
+from chess.persona import PersonaKeyException
 
 __all__ = [
     # ======================# NULL_PERSON_KEY EXCEPTION #======================#
-    "NullPersonaSuperKeyException",
+    "NullPersonaKeyException",
 ]
 
 
 # ======================# NULL_PERSON_KEY EXCEPTION #======================#
-class NullPersonaSuperKeyException(PersonaSuperKeyException, NullException):
+class NullPersonaKeyException(PersonaKeyException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that PersonSuperKey validation failed because the candidate was null.
+    1.  Indicate that PersonKey validation failed because the candidate was null.
 
     # PARENT:
         *   NullException
-        *   PersonaSuperKeyException
+        *   PersonaKeyException
 
     # PROVIDES:
     None
@@ -35,4 +35,4 @@ class NullPersonaSuperKeyException(PersonaSuperKeyException, NullException):
     None
     """
     ERROR_CODE = "NULL_PERSON_KEY_ERROR"
-    DEFAULT_MESSAGE = "PersonSuperKey validation failed: The candidate was null."
+    DEFAULT_MESSAGE = "PersonKey validation failed: The candidate was null."

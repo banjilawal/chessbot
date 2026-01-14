@@ -8,30 +8,30 @@ version: 1.0.0
 """
 
 from chess.system import BuildFailedException
-from chess.schema import SchemaSuperKeyException
+from chess.schema import SchemaKeyException
 
 
 
 __all__ = [
     # ======================# SCHEMA_KEY_BUILD_FAILED EXCEPTION #======================#
-    "SchemaSuperKeyBuildFailedException",
+    "SchemaKeyBuildFailedException",
 ]
 
 
 #======================# SCHEMA_KEY_BUILD_FAILED EXCEPTION #======================#
-class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedException):
+class SchemaKeyBuildFailedException(SchemaKeyException, BuildFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the SchemaSuperKey build creates an exception. Failed check exceptions are encapsulated
-        in a SchemaSuperKeyBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The SchemaSuperKeyBuildFailedException provides a trace for debugging and application recovery.
+    1.  Any failed check during the SchemaKey build creates an exception. Failed check exceptions are encapsulated
+        in a SchemaKeyBuildFailedException which is sent to the caller in a BuildResult.
+    2.  The SchemaKeyBuildFailedException provides a trace for debugging and application recovery.
         # RESPONSIBILITIES:
 
     # PARENT:
         *   BuildFailedException
-        *   SchemaSuperKeyException
+        *   SchemaKeyException
 
     # PROVIDES:
     None
@@ -43,4 +43,4 @@ class SchemaSuperKeyBuildFailedException(SchemaSuperKeyException, BuildFailedExc
     None
     """
     ERROR_CODE = "SCHEMA_KEY_BUILD_FAILED"
-    DEFAULT_MESSAGE = "SchemaSuperKey build failed:"
+    DEFAULT_MESSAGE = "SchemaKey build failed:"

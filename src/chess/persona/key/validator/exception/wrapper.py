@@ -9,26 +9,26 @@ version: 1.0.0
 
 __all__ = [
     # ======================# PERSONA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
-    "PersonaSuperKeyValidationFailedException",
+    "PersonaKeyValidationFailedException",
 ]
 
-from chess.persona import PersonaSuperKeyException
+from chess.persona import PersonaKeyException
 from chess.system import ValidationFailedException
 
 
 # ======================# PERSONA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
-class PersonaSuperKeyValidationFailedException(PersonaSuperKeyException, ValidationFailedException):
+class PersonaKeyValidationFailedException(PersonaKeyException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  A debug exception is created when a PersonaSuperKey candidate fails a validation test. Validation debug 
-        exceptions are encapsulated inside an PersonaSuperKeyValidationFailedException creating an exception chain. 
+    1.  A debug exception is created when a PersonaKey candidate fails a validation test. Validation debug
+        exceptions are encapsulated inside an PersonaKeyValidationFailedException creating an exception chain.
         which is sent to the caller in a ValidationResult.
-    2.  The PersonaSuperKeyValidationFailedException chain is useful for tracing a  failure to its source.
+    2.  The PersonaKeyValidationFailedException chain is useful for tracing a  failure to its source.
 
     # PARENT:
-        *   PersonaSuperKeyException
+        *   PersonaKeyException
         *   ValidationFailedException
 
     # PROVIDES:
@@ -41,4 +41,4 @@ class PersonaSuperKeyValidationFailedException(PersonaSuperKeyException, Validat
     None
     """
     ERROR_CODE = "PERSONA_KEY_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "PersonaSuperKey validation failed."
+    DEFAULT_MESSAGE = "PersonaKey validation failed."

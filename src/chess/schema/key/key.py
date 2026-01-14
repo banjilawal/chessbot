@@ -13,7 +13,7 @@ from chess.schema import Schema
 from chess.system import Context, GameColor
 
 
-class SchemaSuperKey(Context[Schema]):
+class SchemaKey(Context[Schema]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
@@ -26,7 +26,7 @@ class SchemaSuperKey(Context[Schema]):
         *   The first entry that matches the search tuple the lookup succeeds, returning the entry.
     All entries in the hashtable have unique instances of an attribute-value tuple so there are no search collisions.
     
-    The attribute-value is used as SuperKey. to search each entry's metadata list.
+    The attribute-value is used as Key. to search each entry's metadata list.
     
     ## REVERSE LOOKUP:
     A reverse lookup takes a schema entry and returns a different metadata hashtable with a transitive relationship.
@@ -35,10 +35,10 @@ class SchemaSuperKey(Context[Schema]):
     are unique.
     
     # RESPONSIBILITIES:
-    The for A SchemaSuperKey is used tForward Schema lookups use a SchemaSuperKet ro
+    The for A SchemaKey is used tForward Schema lookups use a SchemaSuperKet ro
     1.  Provides information to complete run forward-lookups on the Schema
-    1.  Define a SuperKey from an attribute-value pair. The attribute must exist in the schema.
-    2.  A forward lookup for a Schema variant requires a SchemaSuperKey.
+    1.  Define a Key from an attribute-value pair. The attribute must exist in the schema.
+    2.  A forward lookup for a Schema variant requires a SchemaKey.
 
     # PARENT:
         *   Context
@@ -84,7 +84,7 @@ class SchemaSuperKey(Context[Schema]):
     def to_dict(self) -> dict:
         """
         # ACTION
-            1.  Convert the SchemaSuperKey object to a dictionary.
+            1.  Convert the SchemaKey object to a dictionary.
         # PARAMETERS:
             *   None
         # RETURNS:

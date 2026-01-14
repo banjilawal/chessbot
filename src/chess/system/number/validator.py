@@ -63,7 +63,7 @@ class NumberValidator(Validator[int]):
               *     NumberBelowFloorException
               *     NumberAboveCeilingException
         """
-        method = "BoundNumberValidator.validate"
+        method = "NumberValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:

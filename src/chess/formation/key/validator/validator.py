@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from chess.formation import (
     ExcessiveFormationKeysException, FormationKey, FormationKeyValidationFailedException,
-    FormationSuperKeyValidationRouteException, NullFormationKeyException, ZeroFormationSuperKeysException
+    FormationKeyValidationRouteException, NullFormationKeyException, ZeroFormationKeysException
 )
 from chess.persona import PersonaService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
@@ -67,8 +67,8 @@ class FormationKeyValidator(Validator[FormationKey]):
                     - On success: FormationKey in the payload.
         # RAISES:
             *   TypeError
-            *   NNullFormationSuperKeyException
-            *   ZeroFormationSuperKeysException
+            *   NNullFormationKeyException
+            *   ZeroFormationKeysException
             *   ExcessiveFormationKeysException
             *   FormationKeyValidationFailedException
         """
@@ -104,7 +104,7 @@ class FormationKeyValidator(Validator[FormationKey]):
             return ValidationResult.failure(
                 FormationKeyValidationFailedException(
                     message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
-                    ex=ZeroFormationSuperKeysException(f"{method}: {ZeroFormationSuperKeysException.DEFAULT_MESSAGE}")
+                    ex=ZeroFormationKeysException(f"{method}: {ZeroFormationKeysException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case of more than one key-value is set.
@@ -193,8 +193,8 @@ class FormationKeyValidator(Validator[FormationKey]):
         return ValidationResult.failure(
             FormationKeyValidationFailedException(
                 message=f"{method}: {FormationKeyValidationFailedException.ERROR_CODE}",
-                ex=FormationSuperKeyValidationRouteException(
-                    f"{method}: {FormationSuperKeyValidationRouteException.DEFAULT_MESSAGE}"
+                ex=FormationKeyValidationRouteException(
+                    f"{method}: {FormationKeyValidationRouteException.DEFAULT_MESSAGE}"
                 )
             )
         )

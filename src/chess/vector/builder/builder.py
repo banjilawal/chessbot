@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, BoundNumberValidator
+from chess.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator
 from chess.vector import Vector, VectorBuildFailedException,VectorValidator
 
 
@@ -40,7 +40,7 @@ class VectorBuilder(Builder[Vector]):
             self,
             x: int,
             y: int,
-            bound_number_validator: BoundNumberValidator = BoundNumberValidator(),
+            bound_number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[Vector]:
         """
         # ACTION:
@@ -50,7 +50,7 @@ class VectorBuilder(Builder[Vector]):
         # PARAMETERS:
             *   x (int)
             *   y (int)
-            *   bound_number_validator (BoundNumberValidator)
+            *   bound_number_validator (NumberValidator)
             
         # RETURNS:
         BuildResult[Vector] containing either:

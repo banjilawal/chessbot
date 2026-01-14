@@ -13,15 +13,15 @@ from chess.persona import Persona
 from chess.system import Context
 
 
-class PersonaSuperKey(Context[Persona]):
+class PersonaKey(Context[Persona]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    The for A PersonaSuperKey is used to run Forward Persona lookups use a PersonaSuperKey
+    The for A PersonaKey is used to run Forward Persona lookups use a PersonaKey
     1.  Provides information to complete run forward-lookups on the Persona
-    2.  Define a SuperKey from an attribute-value pair. The attribute must exist in the persona.
-    3.  A forward lookup for a Persona variant requires a PersonaSuperKey.
+    2.  Define a Key from an attribute-value pair. The attribute must exist in the persona.
+    3.  A forward lookup for a Persona variant requires a PersonaKey.
 
     # PARENT:
         *   Context
@@ -82,7 +82,7 @@ class PersonaSuperKey(Context[Persona]):
     def to_dict(self) -> dict:
         """
         # ACTION
-            1.  Convert the PersonaSuperKey object to a dictionary.
+            1.  Convert the PersonaKey object to a dictionary.
         # PARAMETERS:
             *   None
         # RETURNS:

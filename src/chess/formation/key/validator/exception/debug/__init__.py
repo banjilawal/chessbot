@@ -14,6 +14,6 @@ None
 
 # Modules
 from .null import NullFormationKeyException
-from .zero import ZeroFormationSuperKeysException
+from .zero import ZeroFormationKeysException
 from .excess import ExcessiveFormationKeysException
-from .route import FormationSuperKeyValidationRouteException
+from .route import FormationKeyValidationRouteException

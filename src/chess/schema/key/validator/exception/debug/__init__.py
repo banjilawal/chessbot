@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .null import NullSchemaSuperKeyException
-from .zero import ZeroSchemaSuperKeysException
-from .excess import ExcessiveSchemaSuperKeysException
+from .null import NullSchemaKeyException
+from .zero import ZeroSchemaKeysException
+from .excess import ExcessiveSchemaKeysException
 from .route import SchemaKeyValidationRouteException

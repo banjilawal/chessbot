@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .route import SchemaSuperKeyBuildRouteException
-from .wrapper import SchemaSuperKeyBuildFailedException
+from .route import SchemaKeyBuildRouteException
+from .wrapper import SchemaKeyBuildFailedException

@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .route import PersonaSuperKeyBuildRouteException
-from .wrapper import PersonaSuperKeyBuildFailedException
+from .route import PersonaKeyBuildRouteException
+from .wrapper import PersonaKeyBuildFailedException

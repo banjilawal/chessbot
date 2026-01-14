@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .service import SchemaSuperKeyService
-from .exception import SchemaSuperKeyServiceException
+from .service import SchemaKeyService
+from .exception import SchemaKeyServiceException

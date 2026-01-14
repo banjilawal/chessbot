@@ -18,7 +18,7 @@ from chess.snapshot.context.validator.exception.flag.excess import ExcessiveSnap
 from chess.snapshot.context.validator.exception.flag.zero import ZeroSnapshotContextFlagsException
 from chess.team import TeamService
 from chess.system import (
-    IdentityService, LoggingLevelRouter, NullException, BoundNumberValidator, NumberValidator,
+    IdentityService, LoggingLevelRouter, NullException, NumberValidator, NumberValidator,
     ValidationResult, Validator
 )
 
