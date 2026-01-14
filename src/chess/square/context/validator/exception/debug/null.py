@@ -1,4 +1,4 @@
-# src/chess/square/context.validator/exception/debug/null.py
+# src/chess/square/context/validator/exception/debug/null.py
 
 """
 Module: chess.square.context.validator.exception.debug.null
@@ -25,8 +25,8 @@ class NullSquareContextException(SquareContextException, NullException):
     1.  Indicate that SquareContext validation failed because the candidate was null.
 
     # PARENT:
-        *   NullSquareContextException
-        *   SquareContextValidationFailedException
+        *   SquareContextException
+        *   NullException
 
     # PROVIDES:
     None

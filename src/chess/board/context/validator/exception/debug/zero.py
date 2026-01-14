@@ -1,14 +1,14 @@
-# src/chess/board/validator/exception/flag/zero.py
+# src/chess/board/context/validator/exception/debug/zero.py
 
 """
-Module: chess.board.validator.exception.flag.zero
+Module: chess.board.context.validator.exception.debug.zero
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-22
 version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.board import InvalidBoardContextException
+from chess.board import BoardContextException
 
 __all__ = [
     # ========================= ZERO_BOARD_CONTEXT_FLAGS EXCEPTION =========================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ========================= ZERO_BOARD_CONTEXT_FLAGS EXCEPTION =========================#
-class ZeroBoardContextFlagsException(InvalidBoardContextException, ContextFlagCountException):
+class ZeroBoardContextFlagsException(BoardContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class ZeroBoardContextFlagsException(InvalidBoardContextException, ContextFlagCo
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidBoardContextException
+        *   BoardContextValidationFailedException
 
     # PROVIDES:
     None

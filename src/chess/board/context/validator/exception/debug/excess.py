@@ -1,14 +1,14 @@
-# src/chess/board/validator/exception/flag/excess.py
+# src/chess/board/context/validator/exception/debug/excess.py
 
 """
-Module: chess.board.validator.exception.flag.excess
+Module: chess.board.context.validator.exception.debug.excess
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-22
 version: 1.0.0
 """
 
 from chess.system import ContextFlagCountException
-from chess.board import InvalidBoardContextException
+from chess.board import BoardContextException
 
 __all__ = [
     # ========================= EXCESSIVE_BOARD_CONTEXT_FLAG EXCEPTION =========================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ========================= EXCESSIVE_BOARD_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveBoardContextFlagsException(InvalidBoardContextException, ContextFlagCountException):
+class ExcessiveBoardContextFlagsException(BoardContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class ExcessiveBoardContextFlagsException(InvalidBoardContextException, ContextF
 
     # PARENT:
         *   ContextFlagCountException
-        *   InvalidBoardContextException
+        *   BoardContextValidationFailedException
 
     # PROVIDES:
     None

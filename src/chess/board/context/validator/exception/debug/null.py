@@ -1,20 +1,19 @@
-# src/board/searcher/exception.py
+# src/chess/board/context/validator/exception/debug/null.py
 
 """
-Module: chess.board.searcher.exception
+Module: chess.board.context.validator.exception.debug.null
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-11-22
 version: 1.0.0
 """
 
+from chess.system import NullException
+from chess.board import BoardContextException
 
 __all__ = [
     # ======================# NULL_BOARD_CONTEXT EXCEPTION #======================#
     "NullBoardContextException",
 ]
-
-from chess.system import NullException
-from chess.board import BoardContextException
 
 
 # ======================# NULL_BOARD_CONTEXT EXCEPTION #======================#
@@ -26,8 +25,8 @@ class NullBoardContextException(BoardContextException, NullException):
     1.  Indicate that BoardContext validation failed because the candidate was null.
 
     # PARENT:
-        *   NullBoardContextException
-        *   InvalidBoardContextException
+        *   BoardContextException
+        *   NullException
 
     # PROVIDES:
     None

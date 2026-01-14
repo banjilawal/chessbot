@@ -1,4 +1,4 @@
-# src/chess/board/context.validator/exception/__init__.py
+# src/chess/board/context/validator/exception/__init__.py
 
 """
 Module: chess.board.context.validator.exception.__init__

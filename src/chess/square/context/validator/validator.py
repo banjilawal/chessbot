@@ -1,4 +1,4 @@
-# src/chess/square/context.validator/validator.py
+# src/chess/square/context/validator/validator.py
 
 """
 Module: chess.square.context.validator.validator
