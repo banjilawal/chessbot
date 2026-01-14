@@ -18,11 +18,11 @@ class Arena:
     _white_team: Team
     _black_team: Team
 
-    def __init__(self, id: int, board: Board):
+    def __init__(self, id: int, white_team: Team, black_team: Team):
         self._id = id
-        self._board = board
-        self._white_team = self._white_team
-        self._black_team = self._black_team
+        self._white_team = white_team
+        self._black_team = black_team
+        self._board = None
 
     @property
     def id(self) -> int:
@@ -55,6 +55,10 @@ class Arena:
     @property
     def black_team_is_assigned(self) -> bool:
         return self._black_team is not None
+    
+    @board.setter
+    def board(self, board: Board):
+        self._board = board
     
     @white_team.setter
     def white_team(self, team: Team):

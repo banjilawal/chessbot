@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-03
 version: 1.0.0
 """
+
 from typing import cast
 
 from chess.board import Board, BoardService
@@ -51,12 +52,14 @@ class SquareBuilder(Builder[Square]):
     ) -> BuildResult[Square]:
         """
         # ACTION:
-        1.  Run id and name checks with identity_service.
-        2.  Run coord checks with coord_service.
-        3.  Run Board checks with board_service.
-        4.  If any checks fail, send their exception to the caller in a BuildResult.
-        5.  When all checks pass, create a new Square object then send to the caller in a BuildResult.
-    
+            1.  If the id or name are not certified safe send an exception chain in the BuildResult. Else verify
+                the coord param's correctness.
+            2.  If the coord is not certified safe send an exception chain in the BuildResult. Else verify the board.
+            3.  If the board is not certfied safe send an exception chain in the BuildResult. Else  create the
+                square instance.
+            4.  Register the squre with its board using the board's instance of BoardSquareService. If the
+                registration is not successful send an exception chain in the BuildResult. Otherwise, send
+                the successfully created sqaure in the BuildResult's payload.
         # PARAMETERS:
             *   id (int)
             *   name (str)
@@ -65,12 +68,10 @@ class SquareBuilder(Builder[Square]):
             *   board_service (BoardService)
             *   coord_service (CoordService)
             *   identity_service (IdentityService)
-    
         # RETURNS:
-        ValidationResult[Square] containing either:
-            - On success: Square in the payload.
-            - On failure: Exception.
-    
+            *   ValidationResult[Square] containing either:
+                    - On failure: Exception.
+                    - On success: Square in the payload.
         # RAISES:
             *   SquareBuildFailedException
         """

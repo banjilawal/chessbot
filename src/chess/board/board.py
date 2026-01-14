@@ -46,16 +46,18 @@ class Board:
     ):
         """
         # ACTION:
-        Constructs Board object
-    
+            Constructs Board object
         # PARAMETERS:
-          * id (int):
-    
+            *   id (int)
+            *   arena (Arena)
+            *   row_size (int)
+            *   column_size (int)
+            *   tokens (BoardTokenService)
+            *   squares (BoardSquareService)
         # RETURNS:
-        None
-    
+            None
         # RAISES:
-        None
+            None
         """
         method = "Board.__init__"
         
