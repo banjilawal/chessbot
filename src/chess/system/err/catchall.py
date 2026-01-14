@@ -18,11 +18,22 @@ from chess.system import ChessException
 # ======================# CATCHALL EXCEPTION #======================#
 class CatchallException(ChessException):
     """
-    # ROLE: Wrapper, Catchall
+    # ROLE: Catchall, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Parent of a collection of debug and wrapper exceptions for an entity objects that support it
-    2.  Raised when subclasses do not provide coverage for an error case.
+    1.  Outermost layer of the 3-part exception chain that is created when an operation's result is failure.
+    
+    # NAMING CONVENTION:
+    1.  Class name followed by the Exception suffix
+    2.  The Syntax is: [Class]Exception
+
+    # ERROR CODE CONVENTION:
+    1.  Class name followed by the ERROR suffix.
+    2.  The Syntax is: [Class]_ERROR
+    
+    # DEFAULT MESSAGE CONVENTION:
+    1.  Class name followed by "raised an exception."
+    2.  The Syntax is: [Class] raised an exception
 
     # PARENT:
         *   ChessException
@@ -37,4 +48,4 @@ class CatchallException(ChessException):
      None
     """
     ERROR_CODE = "CATCHALL_ERROR"
-    DEFAULT_MESSAGE = "CatchallException"
+    DEFAULT_MESSAGE = "CatchallException."

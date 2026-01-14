@@ -25,7 +25,7 @@ class BoardTokenRelationAnalysisFailedException(RelationAnalysisFailedException)
         status has been evaluated.
 
     # PARENT:
-        *   ExceptionWrapper
+        *   WrapperException
 
     # PROVIDES:
     None

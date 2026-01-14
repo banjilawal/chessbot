@@ -19,9 +19,11 @@ from .consistency import *
 from .null import NullException
 from .base import ChessException
 from .debug import DebugException
-from .wrapper import ExceptionWrapper
+from .wrapper import WrapperException
 from .catchall import CatchallException
-from .unhandled import UnhandledRouteException
+from .rollback import RollbackException
+from .route import NoExecutionRouteException
+from .operation import OperationFailedException
 from .implementation import NotImplementedException
 
 

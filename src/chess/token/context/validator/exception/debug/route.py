@@ -9,7 +9,7 @@ from chess.system import UnhandledRouteException
 
 
 # ======================# UNHANDLED_TOKEN_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class TokenContextValidationRouteException(TokenException, UnhandledRouteException):
+class TokenContextValidationRouteException(TokenContextException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

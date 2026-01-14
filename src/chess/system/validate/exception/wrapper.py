@@ -1,13 +1,13 @@
-# src/chess/system/validate/exception.py
+# src/chess/system/validate/exception/wrapper.py
 
 """
-Module: chess.system.validate.exception
+Module: chess.system.validate.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ExceptionWrapper
+from chess.system import OperationFailedException
 
 __all__ = [
     # ======================# VALIDATION_FAILED EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 #======================# VALIDATION_FAILED EXCEPTION #======================#
-class ValidationFailedException(ExceptionWrapper):
+class ValidationFailedException(OperationFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
   

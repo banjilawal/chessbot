@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import ExceptionWrapper
+from chess.system import WrapperException
 
 __all__ = [
     # ======================# RELATION_TEST_FAILED EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# RELATION_TEST_FAILED EXCEPTION #======================#
-class RelationAnalysisFailedException(ExceptionWrapper):
+class RelationAnalysisFailedException(WrapperException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -24,7 +24,7 @@ class RelationAnalysisFailedException(ExceptionWrapper):
     1.  Wrap any exception that kills the relation test process before the status has been evaluated.
 
     # PARENT:
-        *   ExceptionWrapper
+        *   WrapperException
 
     # PROVIDES:
     None

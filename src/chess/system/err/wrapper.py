@@ -9,20 +9,36 @@ version: 1.0.0
 
 __all__ = [
     # ======================# NOT_IMPLEMENTED EXCEPTION #======================#
-    "ExceptionWrapper",
+    "WrapperException",
 ]
 
 from chess.system import ChessException
 
 
 # ======================# WRAPPER EXCEPTION #======================#
-class ExceptionWrapper(ChessException):
+class WrapperException(ChessException):
     """
-    # ROLE: Wrapper, Encapsulation, Messaging
+    # ROLE: Wrapper, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wraps exceptions creating an exception chain. Unwrapping the chain gives the source of an error.
-    2.  Are the desired exception type in a Result.
+    1.  Encapsulates the debug exception that was raised when a specific condition prevented an operation successfully
+        completing. Middle layer of the 3-part exception chain.
+        
+    # NAMING CONVENTION:
+    1.  Prefix is the Class name with the Result name. The operation name should match the Result subclass.
+    2.  Operation outcome. This will always be Failed.
+    3.  Suffix is Exception.
+    4.  The Syntax is: [ClassName][ResultClassName]FailedException
+            
+    # ERROR CODE CONVENTION:
+    1.  All caps, snake case. Prefix is the class name followed by the operation name. The operation name should
+        match the type of result.
+    3.  Suffix is Exception.
+    2.  The Syntax is: [Class]_[OPERATION]_FAILURE
+    
+    # DEFAULT MESSAGE CONVENTION:
+    1.  Sentence whose first word is the class name followed by the operation name. The sentence ends with failed.
+    2.  The Syntax is: [Class] operation failed.
 
     # PARENT:
         *   ChessException
@@ -36,5 +52,5 @@ class ExceptionWrapper(ChessException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "EXCEPTION_WRAPPER"
-    DEFAULT_MESSAGE = "ExceptionWrapper"
+    ERROR_CODE = "WRAPPER_EXCEPTION"
+    DEFAULT_MESSAGE = "WrapperException"

@@ -1,32 +1,33 @@
 # src/chess/system/transaction/failure.py
 
 """
-Module: chess.system.transaction.failure
+Module: chess.system.transaction
 Author: Banji Lawal
-Created: 2025-11-21
+Created: 2025-10-015
 version: 1.0.0
 """
-from chess.system import TransactionException
+
+from chess.system import OperationFailedException, RollbackException
 
 
 __all__ = [
-    # ======================# OPERATION EXCEPTION #======================#
-    "OperationFailedException",
+    # ======================# TRANSACTION_FAILURE EXCEPTION #======================#
+    "TransactionFailedException",
 ]
 
 
-
-
-# ======================# OPERATION EXCEPTION #======================#
-class OperationFailedException(TransactionException):
+# ======================# TRANSACTION_FAILURE EXCEPTION #======================#
+class TransactionFailedException(OperationFailedException, RollbackException):
     """
-    # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper, Integrity Debugging, State Restoration,
 
     # RESPONSIBILITIES:
-    1.  Indicate That  a method that returns a Result object caught an unhandled exception in its try-catch-finally block.
+    1.  Wraps a transaction DebugException and indicates that the transaction was rolled back before the
+        the exception chain was sent.
 
     # PARENT:
-        *   ChessException
+        *   RollbackException
+        *   OperationFailedException
 
     # PROVIDES:
     None
@@ -37,5 +38,5 @@ class OperationFailedException(TransactionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "OPERATION_ERROR"
-    DEFAULT_MESSAGE = "Operation failed."
+    ERROR_CODE = "TRANSACTION_FAILURE"
+    DEFAULT_MESSAGE = "Transaction failed. The transaction was rolled back before the exception chain was raised."

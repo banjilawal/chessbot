@@ -25,7 +25,7 @@ class PlayerTeamRelationAnalysisFailedException(RelationAnalysisFailedException)
         status has been evaluated.
 
     # PARENT:
-        *   ExceptionWrapper
+        *   WrapperException
 
     # PROVIDES:
     None

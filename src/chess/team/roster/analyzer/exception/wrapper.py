@@ -24,7 +24,7 @@ class RosterRelationAnalysisFailedException(RosterServiceException):
         status has been evaluated.
 
     # PARENT:
-        *   ExceptionWrapper
+        *   WrapperException
 
     # PROVIDES:
     None
