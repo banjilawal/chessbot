@@ -1,9 +1,9 @@
-# src/chess/board/exception.py
+# src/chess/board/context/exception.py
 
 """
-Module: chess.game.board.exception
+Module: chess.board.context.exception
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-11-24
 version: 1.0.0
 """
 
@@ -19,11 +19,10 @@ __all__ = [
 # ======================# BOARD_CONTEXT EXCEPTION #======================#
 class BoardContextException(BoardException, ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by BoardContext objects.
-    2.  Catchall for conditions which are not covered by lower level BoardContext exceptions.
+    1.  Catchall for BoardContext errors not covered by BoardException subclasses.
 
     # PARENT:
         *   BoardException
@@ -32,12 +31,9 @@ class BoardContextException(BoardException, ContextException):
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
+    # ATTRIBUTES:
     None
     """
     ERROR_CODE = "BOARD_CONTEXT_ERROR"
-    DEFAULT_ERROR_CODE = "BoardContext raised an exception."
+    DEFAULT_MESSAGE = "BoardContext raised an exception."
 

@@ -1,12 +1,13 @@
-# src/chess/team/exception.py
+# src/chess/team/context/exception.py
 
 """
-Module: chess.team.exception
+Module: chess.team.context.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
 """
 
+from chess.team import TeamException
 from chess.system import ContextException
 
 __all__ = [
@@ -14,30 +15,23 @@ __all__ = [
     "TeamContextException",
 ]
 
-
 # ======================# TEAM_CONTEXT EXCEPTION #======================#
-class TeamContextException(ContextException):
+class TeamContextException(TeamException, ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised when an TeamContext's organic fields or methods run into a condition that
-        leads to an operation failing.
-    2.  Parent of exception raised by TeamContext Builders and Validators or any other classes that highly
-        cohere with TeamContext objects.
-    3.  Catchall for TeamContext errors not covered by lower level  TeamContext exception.
+    1.  Catchall for TeamContext errors not covered by TeamException subclasses.
 
     # PARENT:
+        *   TeamException
         *   ContextException
 
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
+    # ATTRIBUTES:
     None
     """
     ERROR_CODE = "TEAM_CONTEXT_ERROR"
-    DEFAULT_ERROR_CODE = "TeamContext raised an exception."
+    DEFAULT_MESSAGE = "TeamContext raised an exception."
