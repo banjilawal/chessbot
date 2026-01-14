@@ -67,11 +67,11 @@ class Board:
     def arena(self) -> Arena:
         return self._arena
     
-    @ @property
+    @property
     def tokens(self) -> BoardTokenService:
         return self._tokens
     
-    @ @property
+    @property
     def squares(self) -> BoardSquareService:
         return self._squares
     

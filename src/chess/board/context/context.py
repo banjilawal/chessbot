@@ -1,8 +1,9 @@
-# src/chess/board/searcher/map
+# src/chess/board/context/context.py
+
 """
-Module: chess.board.searcher.map
+Module: chess.board.context.context
 Author: Banji Lawal
-Created: 2025-10-08
+Created: 2025-10-02
 version: 1.0.0
 """
 
@@ -18,7 +19,8 @@ class BoardContext(Context[Board]):
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    Provide a BoardFinder with an attribute-value which finds Boards which match the targeted attribute-value.
+    Provide an SquareFinder with an attribute value to find Squares with a matching value in their version of
+    the attribute.
     
     # PARENT:
         *   Context
@@ -27,21 +29,14 @@ class BoardContext(Context[Board]):
     None
   
     # LOCAL ATTRIBUTES:
-        *   id (int)
         *   arena (Arena)
         
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
     """
-    _id: Optional[int] = None
     _arena: Optional[Arena] = None
     
-    def __init__(
-            self,
-            id: Optional[int] = None,
-            name: Optional[str] = None,
-            arena: Optional[Arena] = None,
-    ):
+    def __init__( self, id: Optional[int] = None, arena: Optional[Arena] = None,):
         super().__init__(id=id, name=None)
         self._arena = arena
     
@@ -54,6 +49,16 @@ class BoardContext(Context[Board]):
         return self._arena
     
     def to_dict(self) -> dict:
+        """
+        # ACTION:
+            Convert a SquareContext attributes into a dictionary.
+        # PARAMETERS:
+        None
+        # RETURNS:
+            dict
+        # RAISES:
+        None
+        """
         return {
             "id": self.id,
             "arena": self._arena

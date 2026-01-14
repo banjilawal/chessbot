@@ -20,8 +20,8 @@ class SquareContext(Context[Square]):
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    Provide an SquareFinder with an attribute value to find Squares with a matching value in
-    their version of the attribute.
+    Provide an SquareFinder with an attribute value to find Squares with a matching value in teir version of
+    the attribute.
 
     # PARENT:
         *   Context
