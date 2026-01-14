@@ -1,16 +1,21 @@
-# src/board/searcher/coord_stack_validator.py
+# src/chess/board/context.validator/validator.py
 
 """
-Module: chess.board.searcher.coord_stack_validator
+Module: chess.board.context.validator.validator
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2025-11-22
 version: 1.0.0
 """
 
 from typing import Any, cast
 
-from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
-
+from chess.board import BoardService
+from chess.arena.service import ArenaService
+from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from chess.board import (
+    BoardContextValidationFailedException, ZeroBoardContextFlagsException, BoardContext,
+    NullBoardContextException, ExcessiveBoardContextFlagsException, BoardContextValidationRouteException
+)
 
 
 class BoardContextValidator(Validator[BoardContext]):
@@ -18,16 +23,19 @@ class BoardContextValidator(Validator[BoardContext]):
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
-    1.  Verify a candidate is a TeamSearchContext that meets the application's safety contract before the client
-        is allowed to use the TeamSearchContext object.
-    2.  Provide pluggable factories for validating different options separately.
-    
-    # PROVIDES:
-    ValidationResult[TeamSearchContext] containing either:
-        - On success:   Board in the payload.
-        - On failure:   Exception.
+    1.  Ensure a BoardContext instance is certified safe, reliable and consistent before use.
+    2.  If verification fails indicate the reason in an exception returned to the caller.
 
-    # ATTRIBUTES:
+    # PARENT:
+        *   Validator
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
     
@@ -36,202 +44,113 @@ class BoardContextValidator(Validator[BoardContext]):
     def validate(
             cls,
             candidate: Any,
-            id_validator: type[IdValidator] = IdValidator,
-            name_validator: type[NameValidator] = NameValidator,
-            coord_validator: type[CoordValidator] = CoordValidator
+            arena_service: ArenaService = ArenaService(),
+            identity_service: IdentityService = IdentityService()
     ) -> ValidationResult[BoardContext]:
         """
         # ACTION:
-        Verifies candidate is a TeamSearchContext in two steps.
-            1.  Test the candidate is a valid SearchBoardContext with a single searcher option switched on.
-            2.  Test the value passed to TeamSearchContext passes its validation contract..
-
+            1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult. Else,
+                test how many optional attributes are not null.
+            2.  If only one attribute is one and only one attribute is not null return the exception chain in the
+                ValidationResult.
+            3.  If no route is found for the enabled attribute send an exception chain in the ValidationResult.
+            4.  If a validation route exists return the outcome of the validation to the caller.
         # PARAMETERS:
-          * candidate (Any):                            Object to verify is a Board.
-          * id_validator (type[IdValidator]):           Enforces safety requirements on id-searcher targets.
-          * name_validator (type[NameValidator]):       Enforces safety requirements on designation-searcher targets.
-          * validator (type[CoordValidator]):     Enforces safety requirements on designation-searcher targets.
-          
+            *   candidate (Any)
+            *   arena_service (ArenaService)
+            *   identity_service (IdentityService):
         # RETURNS:
-          ValidationResult[TeamSearchContext] containing either:
-                - On success:   TeamSearchContext in the payload.
-                - On failure:   Exception.
-
+            *   ValidationResult[BoardContext] containing either:
+                    - On failure:   Exception.
+                    - On success:   BoardContext in the payload.
         # RAISES:
             *   TypeError
-            *   InvalidBoardSearchContextException
             *   NullBoardContextException
-            *   NoBoardSearchOptionSelectedException
-            *   MoreThanOneBoardSearchOptionPickedException
+            *   ZeroBoardContextFlagsException
+            *   ExcessiveBoardContextFlagsException
+            *   BoardContextValidationRouteException
+            *   BoardContextValidationFailedException
         """
         method = "BoardContextValidator.validate"
         
-        try:
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullBoardSearchContextException(f"{method} {NullBoardSearchContextException.DEFAULT_MESSAGE}")
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                BoardContextValidationFailedException(
+                    message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=NullBoardContextException(f"{method}: {NullBoardContextException.DEFAULT_MESSAGE}")
                 )
-            
-            if not isinstance(candidate, BoardContext):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected TeamSearchContext, got {type(candidate).__name__} instead.")
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, BoardContext):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                BoardContextValidationFailedException(
+                    message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=TypeError(f"{method}: Was expecting a BoardContext, got {type(candidate).__name__} instead.")
                 )
-            
-            board_search_context = cast(BoardContext, candidate)
-            if len(board_search_context.to_dict() == 0):
-                return ValidationResult.failure(
-                    NoBoardSearchOptionSelectedException(
-                        f"{method}: {NoBoardSearchOptionSelectedException.DEFAULT_MESSAGE}"
+            )
+        # --- Cast the candidate to BoardContext for additional tests. ---#
+        context = cast(BoardContext, candidate)
+        
+        # Handle the case of searching with no attribute-value provided.
+        flag_count = len(context.to_dict())
+        if flag_count == 0:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                BoardContextValidationFailedException(
+                    message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=ZeroBoardContextFlagsException(f"{method}: {ZeroBoardContextFlagsException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case of too many attributes being used in a search.
+        if flag_count > 1:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                BoardContextValidationFailedException(
+                    message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=ExcessiveBoardContextFlagsException(
+                        f"{method}: {ExcessiveBoardContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
-            
-            if len(board_search_context.to_dict()) > 1:
+            )
+        # --- Route to the appropriate validation branch. ---#
+        
+        # Certification for the search-by-id target.
+        if context.id is not None:
+            validation = identity_service.validate_id(candidate=context.id)
+            if validation.is_failure:
+                # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    MoreThanOneBoardSearchOptionPickedException(
-                        f"{method}: {MoreThanOneBoardSearchOptionPickedException.DEFAULT_MESSAGE}"
+                    BoardContextValidationFailedException(
+                        message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
                     )
                 )
-            
-            if board_search_context.id is not None:
-                return cls.validate_id_search_option(
-                    candidate=board_search_context.id,
-                    id_validator=id_validator
-                )
-            
-            if board_search_context.name is not None:
-                return cls.validate_name_search_option(
-                    name=board_search_context.name,
-                    name_validator=name_validator
-                )
-            
-            if board_search_context.coord is not None:
-                return cls.validate_coord_search_option(
-                    coord=board_search_context.coord,
-                    coord_validator=coord_validator
-                )
+            # On certification success return the id_BoardContext in the ValidationResult.
+            return ValidationResult.success(payload=context)
         
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidBoardSearchContextException(
-                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}",
-                    ex
+        # Certification for the search-by-arena target.
+        if context.arena is not None:
+            validation = arena_service.validator.validate(context.arena)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    BoardContextValidationFailedException(
+                        message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the arena_BoardContext in the ValidationResult.
+            return ValidationResult.success(payload=context)
+        
+        # Return the exception chain if there is no validation route for the context.
+        return ValidationResult.failure(
+            BoardContextValidationFailedException(
+                message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                ex=BoardContextValidationRouteException(
+                    f"{method}: {BoardContextValidationRouteException.DEFAULT_MESSAGE}"
                 )
             )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_id_search_option(
-            cls,
-            candidate: Any,
-            id_validator: type[IdValidator] = IdValidator
-    ) -> ValidationResult[BoardContext]:
-        """
-        # ACTION:
-        Verify an id_candidate meets application TeamSearchContext safety requirements.
-
-        # PARAMETERS:
-            *   candidate (Any):                    Object to verify is an id.
-            *   id_validator (type[IdValidator]):   Checks if candidate complies with safety contract.
-
-        # RETURNS:
-          ValidationResult[TeamSearchContext] containing either:
-                - On success:   TeamSearchContext in the payload.
-                - On failure:   Exception.
-
-        # RAISES:
-            *   InvalidBoardSearchContextException
-        """
-        method = "BoardContextValidator.validate_id_search_option"
-        
-        try:
-            id_validation = id_validator.validate(candidate)
-            if id_validation.is_failure():
-                return ValidationResult.failure(id_validation.exception)
-            
-            return ValidationResult.success(payload=BoardContext(id=id_validation.payload))
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidBoardSearchContextException(
-                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}",
-                    ex
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_name_search_option(
-            cls,
-            candidate: Any,
-            name_validator: type[NameValidator] = NameValidator
-    ) -> ValidationResult[BoardContext]:
-        """
-        # ACTION:
-        Verify a name_candidate meets application TeamSearchContext safety requirements.
-
-        # PARAMETERS:
-          * candidate (Any): Object to verify is a designation.
-          * name_validator (type[NameValidator]): Checks if candidate complies with safety contract.
-
-        # RETURNS:
-          ValidationResult[TeamSearchContext] containing either:
-                - On success: TeamSearchContext in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-            * InvalidBoardSearchContextException
-        """
-        method = "BoardContextValidator.validate_name_search_option"
-        
-        try:
-            name_validation = name_validator.validate(candidate)
-            if name_validation.is_failure():
-                return ValidationResult.failure(name_validation.exception)
-            
-            return ValidationResult.success(payload=BoardContext(name=name_validation.payload))
-        
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidBoardSearchContextException(
-                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}",
-                    ex
-                )
-            )
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def validate_coord_search_option(
-            cls,
-            candidate: Any,
-            coord_validator: type[CoordValidator] = CoordValidator
-    ) -> ValidationResult[BoardContext]:
-        """
-        # ACTION:
-        Verify a coord_candidate meets application TeamSearchContext safety requirements.
-
-        # PARAMETERS:
-            *   candidate (Any):                        Object to verify is a target.
-            *   name_validator (type[CoordValidator]):  Checks if candidate complies with safety contract.
-
-        # RETURNS:
-          ValidationResult[TeamSearchContext] containing either:
-                - On success:   TeamSearchContext in the payload.
-                - On failure:    Exception.
-
-        # RAISES:
-            *   InvalidBoardSearchContextException
-        """
-        method = "BoardContextValidator.validate_coord_search_option"
-        
-        try:
-            coord_validation = coord_validator.validate(candidate)
-            if coord_validation.is_failure():
-                return ValidationResult.failure(coord_validation.exception)
-            
-            return ValidationResult.success(payload=BoardContext(coord=coord_validation.payload))
-        except Exception as ex:
-            return ValidationResult.failure(
-                InvalidBoardSearchContextException(
-                    f"{method}: {InvalidBoardSearchContextException.DEFAULT_MESSAGE}",
-                    ex
-                )
-            )
+        )

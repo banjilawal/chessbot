@@ -1,7 +1,7 @@
-# src/chess/square/validator/validator.py
+# src/chess/square/context.validator/validator.py
 
 """
-Module: chess.square.validator
+Module: chess.square.context.validator.validator
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -62,14 +62,18 @@ class SquareContextValidator(Validator[SquareContext]):
             *   identity_service (IdentityService):
         # RETURNS:
             *   ValidationResult[SquareContext] containing either:
-                - On success:   SquareContext in the payload.
-                - On failure:   Exception.
+                    - On failure:   Exception.
+                    - On success:   SquareContext in the payload.
         # RAISES:
             *   TypeError
             *   NullSquareContextException
+            *   ZeroSquareContextFlagsException
+            *   ExcessiveSquareContextFlagsException
+            *   SquareContextValidationRouteException
             *   SquareContextValidationFailedException
         """
         method = "SquareContextValidator.validate"
+        
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
@@ -144,7 +148,7 @@ class SquareContextValidator(Validator[SquareContext]):
         
         # Certification for the search-by-coord target.
         if context.coord is not None:
-            validation = coord_service.item_validator.validate(context.coord)
+            validation = coord_service.validator.validate(context.coord)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -158,7 +162,7 @@ class SquareContextValidator(Validator[SquareContext]):
         
         # Certification for the search-by-board target.
         if context.board is not None:
-            validation = board_service.item_validator.validate(context.board)
+            validation = board_service.validator.validate(context.board)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
