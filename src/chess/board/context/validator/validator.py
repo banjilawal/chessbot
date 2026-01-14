@@ -9,7 +9,6 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from chess.board import BoardService
 from chess.arena.service import ArenaService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.board import (
