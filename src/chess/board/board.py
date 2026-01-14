@@ -8,8 +8,8 @@ version: 1.0.0
 """
 
 from chess.arena import Arena
-from chess.board import BoardSquareService, BoardTokenService
 from chess.system import BOARD_DIMENSION
+from chess.board import BoardSquareService, BoardTokenService
 
 
 class Board:
@@ -27,7 +27,6 @@ class Board:
         * tokens ([Token]): Array tokens in Board object
         * squares ([[Square]]): A 2D array of squares in Board object.
     """
-    
     _id: int
     _arena: Arena
     _row_size: int

@@ -1,4 +1,4 @@
-# src/chess/token/_context/builder/exception/route.py
+# src/chess/token/context/builder/exception/route.py
 
 """
 Module: chess.token.context.builder.exception.route
@@ -12,8 +12,8 @@ __all__ = [
     "TokenContextBuildRouteException",
 ]
 
-from chess.system import UnhandledRouteException
 from chess.token import TokenContextException
+from chess.system import UnhandledRouteException
 
 
 # ======================# UNHANDLED_TOKEN_CONTEXT_BUILD_ROUTE EXCEPTION #======================#

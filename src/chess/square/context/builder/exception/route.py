@@ -1,25 +1,31 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/square/context/builder/exception/route.py
+
+"""
+Module: chess.square.context.builder.exception.route
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
 
 __all__ = [
     # ======================# UNHANDLED_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "SquareContextBuildRouteException",
 ]
 
+from chess.square import SquareContextException
+from chess.system import UnhandledRouteException
+
 
 # ======================# UNHANDLED_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class SquareContextBuildRouteException(ResultException, UnhandledRouteException):
+class SquareContextBuildRouteException(SquareContextException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that SquareContextBuilder did not handle one of the paths necessary to assure a candidate is a
-        safe to use SquareContext. There are different configurations of SquareContext that are correct. Each
-        configuration must have a build route to guarantee all SquareContext products are safe. If a
-        SquareContext configuration does not have a build route the last step in the logic will return a
-        BuildResult containing a SquareContextBuildRouteException.
+    1.  Indicate that the SquareContext build failed because there was no build route for the Square key.
 
     # PARENT:
-        *   ResultException
+        *   SquareContextException
         *   UnhandledRouteException
 
     # PROVIDES
@@ -32,8 +38,4 @@ class SquareContextBuildRouteException(ResultException, UnhandledRouteException)
     None
     """
     ERROR_CODE = "UNHANDLED_SQUARE_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
-        "The SquareContextBuilder did not handle one of the paths necessary to guarantee SquareContexts are "
-        "safe products. Ensure all possible build branches are covered to ensure the execution flow does not "
-        "hit the default failure result outside the if-blocks."
-    )
+    DEFAULT_MESSAGE = "SquareContext build failed: No build path existed for the Square key."

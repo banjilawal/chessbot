@@ -1,25 +1,31 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/board/context/builder/exception/route.py
+
+"""
+Module: chess.board.context.builder.exception.route
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
 
 __all__ = [
     # ======================# UNHANDLED_BOARD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "BoardContextBuildRouteException",
 ]
 
+from chess.board import BoardContextException
+from chess.system import UnhandledRouteException
+
 
 # ======================# UNHANDLED_BOARD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class BoardContextBuildRouteException(ResultException, UnhandledRouteException):
+class BoardContextBuildRouteException(BoardContextException, UnhandledRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that BoardContextBuilder did not handle one of the paths necessary to assure a candidate is a
-        safe to use BoardContext. There are different configurations of BoardContext that are correct. Each
-        configuration must have a build route to guarantee all BoardContext products are safe. If a
-        BoardContext configuration does not have a build route the last step in the logic will return a
-        BuildResult containing a BoardContextBuildRouteException.
+    1.  Indicate that the BoardContext build failed because there was no build route for the Board key.
 
     # PARENT:
-        *   ResultException
+        *   BoardContextException
         *   UnhandledRouteException
 
     # PROVIDES
@@ -32,8 +38,4 @@ class BoardContextBuildRouteException(ResultException, UnhandledRouteException):
     None
     """
     ERROR_CODE = "UNHANDLED_BOARD_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
-        "The BoardContextBuilder did not handle one of the paths necessary to guarantee BoardContexts are "
-        "safe products. Ensure all possible build branches are covered to ensure the execution flow does not "
-        "hit the default failure result outside the if-blocks."
-    )
+    DEFAULT_MESSAGE = "BoardContext build failed: No build path existed for the Board key."
