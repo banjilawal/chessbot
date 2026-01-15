@@ -12,12 +12,12 @@ __all__ = [
     "SquareSearchRouteException",
 ]
 
-from chess.system import UnhandledRouteException
+from chess.system import NoSearchRouteException
 from chess.square import SquareException
 
 
 # ======================# UNHANDLED_SQUARE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class SquareSearchRouteException(SquareException, NoRou):
+class SquareSearchRouteException(SquareException, NoSearchRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class SquareSearchRouteException(SquareException, NoRou):
 
     # PARENT:
         *   SquareException
-        *   UnhandledRouteException
+        *   oSearchRouteException
 
     # PROVIDES
     None
