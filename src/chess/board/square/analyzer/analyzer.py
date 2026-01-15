@@ -7,9 +7,11 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.board import Board
-from chess.square import Square
-from chess.system import RelationAnalyzer
+from typing import cast
+
+from chess.square import Square, SquareContext, SquareService
+from chess.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
+from chess.board import Board, BoardSquareRelationAnalysisFailedException, BoardValidator
 
 
 class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
@@ -45,23 +47,22 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
     ) -> RelationReport[Board, Square]:
         """
         # ACTION:
-        1.  If either candidate fails its safety certification send the exception chain in the RelationReport. Else,
-            cast the candidate_primary to board instance; board and candidate_satellite to Square instance; square.
-        2.  If the square.owner != owner they are not related. Else they are partially related.
-        3.  If searching owner's squares for the satellite produces an error send the exception chain. If the search
-            produced aa match send a bidirectional report. Else send a partial relation report.
-
+            1.  If either candidate fails its safety certification send the exception chain in the
+                RelationReport.
+            2.  Cast the candidate_primary to board instance; board and candidate_satellite to Square instance;
+                square.
+            3.  If the square.owner != owner they are not related. Else they are partially related.
+            4.  If searching owner's squares for the satellite produces an error send the exception chain.
+           5.  If the search produced aa match send a bidirectional report. Else send a partial relation report.
         # PARAMETERS:
             *   candidate_primary (Board)
             *   candidate_satellite (Square)
             *   board_validator (BoardValidator)
             *   square_service (SquareService)
-
         # RETURN:
-        RelationTest[Board, Square] containing either
-            *   No relation:
-            *   On error: an Exception
-
+            *   RelationReport[Board, Square] containing either
+                *   No relation:
+                *   On error: an Exception
         # RAISES:
             *   BoardValidationFailedException
         """
