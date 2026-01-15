@@ -22,10 +22,11 @@ class SquareSearchNullDatasetException(SquareException, NullDatasetException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that SquareContext validation failed because the there was no dataset to search.
+    1.  Indicate that a Square search operation failed because no dataset was provided for the query.
 
     # PARENT:
-        *   SquareSearchNullDatasetException
+        *   SquareException
+        *   NullDatasetException
 
     # PROVIDES:
     None
@@ -37,4 +38,4 @@ class SquareSearchNullDatasetException(SquareException, NullDatasetException):
     None
     """
     ERROR_CODE = "SQUARE_SEARCH_NULL_DATASET_ERROR"
-    DEFAULT_MESSAGE = "Square search failed: No dataset provided for search"
+    DEFAULT_MESSAGE = "Square search failed: There was no dataset to search"

@@ -1,7 +1,7 @@
 # src/chess/square/context/finder/exception/debug/route.py
 
 """
-Module: chess.square.context.finder.exception.debug.route.null
+Module: chess.square.context.finder.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
