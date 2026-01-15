@@ -1,0 +1,41 @@
+# src/chess/board/service/data/catchall.py
+
+"""
+Module: chess.board.service.data.catchall
+Author: Banji Lawal
+Created: 2025-11-22
+version: 1.0.0
+"""
+
+___all__ = [
+    # ======================# BOARD_DATA_SERVICE EXCEPTION #======================#
+    "BoardDataServiceException",
+]
+
+from chess.board import BoardException
+from chess.system import DataServiceException
+
+
+# ======================# BOARD_DATA_SERVICE EXCEPTION #======================#
+class BoardDataServiceException(BoardException, DataServiceException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Wrap any exceptions raised by BoardDataService methods that return Result objects.
+
+    # PARENT:
+        *   BoardException
+        *   DataServiceException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "BOARD_DATA_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "BoardDataService raised an exception."

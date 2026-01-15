@@ -1,0 +1,41 @@
+# src/chess/board/service/data/exception/insertion/wrapper.py
+
+"""
+Module: chess.board.service.data.exception.insertion.wrapper
+Author: Banji Lawal
+Created: 2025-11-22
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# BOARD_INSERTION_FAILURE #======================#
+    "BoardInsertionFailedException",
+]
+
+from chess.board import BoardException
+from chess.system import InsertionFailedException
+
+
+# ======================# BOARD_INSERTION_FAILURE #======================#
+class BoardInsertionFailedException(BoardException, InsertionFailedException):
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Indicate that add a token to the roster failed.
+
+    # PARENT:
+        *   BoardException
+        *   InsertionFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "BOARD_INSERTION_FAILURE_ERROR"
+    DEFAULT_MESSAGE = "Board insertion failed."

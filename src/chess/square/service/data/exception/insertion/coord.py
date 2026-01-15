@@ -12,11 +12,13 @@ __all__ = [
     "SquareCoordCollisionException",
 ]
 
-from chess.square import SquareDataServiceException
+from chess.system import CollisionException
+from chess.board import BoardSquareServiceException
+
 
 
 # ======================# SQUARE_COORD_COLLISION EXCEPTION #======================#
-class SquareCoordCollisionException(SquareDataServiceException):
+class SquareCoordCollisionException(BoardSquareServiceException, CollisionException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,6 +26,7 @@ class SquareCoordCollisionException(SquareDataServiceException):
     1.  Indicate that inserting a square failed because its coord has been assigned to a collection member.
 
     # PARENT:
+        *   CollisionException*
         *   BoardSquareServiceException
 
     # PROVIDES:

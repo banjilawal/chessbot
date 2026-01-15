@@ -1,13 +1,13 @@
-# src/chess/square/service/data/exception/empty.py
+# src/chess/square/service/data/exception/deletion/empty.py
 
 """
-Module: chess.square.service.data.exception.empty
+Module: chess.square.service.data.exception.deletion.empty
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.square import SquareDataServiceException
+from chess.square import SquareException
 
 __all__ = [
     # ======================# POPPING_EMPTY_SQUARE_STACK EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# POPPING_EMPTY_SQUARE_STACK EXCEPTION #======================#
-class PoppingEmptySquareStackException(SquareDataServiceException):
+class PoppingEmptySquareStackException(SquareException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,7 +24,7 @@ class PoppingEmptySquareStackException(SquareDataServiceException):
     1.  Indicate that an attempt to remove a square failed because the stack was empty
 
     # PARENT:
-        *   SquareDataServiceException
+        *   SquareException
 
     # PROVIDES:
     None
