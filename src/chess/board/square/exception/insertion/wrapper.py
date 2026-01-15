@@ -1,4 +1,4 @@
-# src/chess/team/board.square/exception/insertion/wrapper.py
+# src/chess/team/board/square/exception/insertion/wrapper.py
 
 """
 Module: chess.team.board.square.exception.insertion.wrapper

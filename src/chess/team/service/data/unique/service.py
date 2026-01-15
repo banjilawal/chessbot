@@ -52,7 +52,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   data_service (TeamDataService)
+            *   member_service (TeamDataService)
         # RETURNS:
             None
         # RAISES:

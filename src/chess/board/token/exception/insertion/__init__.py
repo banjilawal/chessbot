@@ -7,12 +7,11 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== BOARD.TOKEN.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== BOARD.TOKEN.EXCEPTION.INSERTION PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .full import BoardTokenServiceIsFullException
-from .duplicate import TokenAlreadyOnBoardException
+from .full import BoardTokenListIsFullException
 from .wrapper import AddingBoardTokenFailedException

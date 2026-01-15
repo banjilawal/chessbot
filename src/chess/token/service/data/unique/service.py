@@ -54,7 +54,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   data_service (TokenDataService)
+            *   member_service (TokenDataService)
         # RETURNS:
             None
         # RAISES:
@@ -139,7 +139,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         """
         method = "UniqueTokenDataService.add_unique_token"
         
-        # --- To assure uniqueness the data_service has to conduct a search. The token should be validated first. ---#
+        # --- To assure uniqueness the member_service has to conduct a search. The token should be validated first. ---#
         
         # Handle the case that the token is not certified safe.
         validation = self.integrity_service.validator.validate(candidate=token)

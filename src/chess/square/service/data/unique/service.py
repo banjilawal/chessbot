@@ -54,7 +54,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   data_service (SquareDataService)
+            *   member_service (SquareDataService)
         # RETURNS:
             None
         # RAISES:
@@ -101,7 +101,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
         """
         method = "UniqueSquareDataService.add_unique_square"
         
-        # --- To assure uniqueness the data_service has to conduct a search. The square should be validated first. ---#
+        # --- To assure uniqueness the member_service has to conduct a search. The square should be validated first. ---#
         
         # Handle the case that the square is not certified safe.
         validation = self.integrity_service.validator.validate(candidate=square)

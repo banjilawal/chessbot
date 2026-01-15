@@ -163,7 +163,7 @@ class SquareBuilder(Builder[Square]):
         # --- Last relationship state is a partial binding. This is the only case for registering the Square ---#
         
         # Handle the case that the insertion fails.
-        insertion_result = board.squares.add(square=square)
+        insertion_result = board.squares.add_member(square=square)
         if insertion_result.is_failure:
             # On failure return the exception.
             return BuildResult.failure(

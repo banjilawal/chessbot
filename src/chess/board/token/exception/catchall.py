@@ -7,16 +7,18 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-from chess.board import BoardException
-
 __all__ = [
     # ======================# BOARD_TOKEN_SERVICE EXCEPTION #======================#
     "BoardTokenServiceException",
 ]
 
+from chess.board import BoardException
+from chess.token import TokenException
+from chess.system import ServiceException
+
 
 # ======================# BOARD_TOKEN_SERVICE EXCEPTION #======================#
-class BoardTokenServiceException(BoardException):
+class BoardTokenServiceException(BoardException, TokenException, ServiceException):
     """
     # ROLE: Catchall Exception
 
@@ -25,6 +27,8 @@ class BoardTokenServiceException(BoardException):
 
     # PARENT:
         *   BoardTokenException
+        *   TokenException
+        *   ServiceException
 
     # PROVIDES:
     None

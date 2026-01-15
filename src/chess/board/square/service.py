@@ -18,40 +18,40 @@ from chess.system import COLUMN_SIZE, InsertionResult, ROW_SIZE
 
 class BoardSquareService:
     _capacity: int
-    _data_service: UniqueSquareDataService
+    _member_service: UniqueSquareDataService
     _analyzer: BoardSquareRelationAnalyzer
     
     def __init__(
             self,
             capacity: int = ROW_SIZE * COLUMN_SIZE,
-            data_service: UniqueSquareDataService = UniqueSquareDataService(),
+            member_service: UniqueSquareDataService = UniqueSquareDataService(),
             analyzer: BoardSquareRelationAnalyzer = BoardSquareRelationAnalyzer(),
     ):
         self._capacity = capacity
         self._analyzer = analyzer
-        self._data_service = data_service
+        self._member_service = member_service
         
     @property
     def is_empty(self) -> bool:
-        return self._data_service.is_empty
+        return self._member_service.is_empty
     
     @property
     def is_full(self) -> bool:
-        return self._data_service.size == self._capacity
+        return self._member_service.size == self._capacity
         
     @property
-    def number_of_squares(self) -> int:
-        return self._data_service.size
+    def number_of_members(self) -> int:
+        return self._member_service.size
     
     @property
     def board_square_analyzer(self) -> BoardSquareRelationAnalyzer:
         return self._analyzer
 
-    def add(self, square: Square) -> InsertionResult[Square]:
+    def add_member(self, square: Square) -> InsertionResult[Square]:
         """
         # ACTION:
-            1.  If data_service is full then return an exception chain. Else hand off the square insertion to
-                the data_service.
+            1.  If member_service is full then return an exception chain. Else hand off the square insertion to
+                the member_service.
             2.  If the insertion was not successful then return an exception chain. Else the insertion was
                 successful. Cast the insertion payload into a Square then send in the InsertionResult's payload.
                 return the inserted square.
@@ -82,8 +82,8 @@ class BoardSquareService:
                     )
                 )
             )
-        # --- Hand off the insertion to the self.data_service the DataService. ---#
-        insertion_result = self._data_service.add_unique_square(square=square)
+        # --- Hand off the insertion to the self.member_service the DataService. ---#
+        insertion_result = self._member_service.add_unique_square(square=square)
         
         # Handle the case that the insertion was not completed
         if insertion_result.is_failure:

@@ -55,7 +55,7 @@ class UniqueBoardDataService(UniqueDataService[Board]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   data_service (BoardDataService)
+            *   member_service (BoardDataService)
         # RETURNS:
             None
         # RAISES:
@@ -102,7 +102,7 @@ class UniqueBoardDataService(UniqueDataService[Board]):
         """
         method = "UniqueBoardDataService.add_unique_board"
         
-        # --- To assure uniqueness the data_service has to conduct a search. The board should be validated first. ---#
+        # --- To assure uniqueness the member_service has to conduct a search. The board should be validated first. ---#
         
         # Handle the case that the board is not certified safe.
         validation = self.integrity_service.validator.validate(candidate=board)

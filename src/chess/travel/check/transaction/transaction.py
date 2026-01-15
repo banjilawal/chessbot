@@ -98,7 +98,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
     event.enemy_square.occupant = None
     if not event.enemy_square.occupant is None:
       # Rollback all changes in reverse order
-      context.board.pieces.add(event.enemy_square.occupant)
+      context.board.pieces.add_member(event.enemy_square.occupant)
       event.actor.team_name.hostages.remove(event.enemy_combatant)
       event.enemy_combatant.team_name.add_to_roster(event.enemy_combatant)
       event.enemy_combatant.captor = None

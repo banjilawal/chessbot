@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# BOARD_REACHED_LIMIT_FOR_TOKENS EXCEPTION #======================#
-    "BoardTokenServiceIsFullException",
+    "BoardTokenListIsFullException",
 ]
 
-from chess.board import BoardTokenServiceException
+from chess.board import BoardTokenMemberException
 
 
 # ======================# BOARD_REACHED_LIMIT_FOR_TOKENS EXCEPTION #======================#
-class BoardTokenServiceIsFullException(BoardTokenServiceException):
+class BoardTokenListIsFullException(BoardTokenMemberException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,7 +24,7 @@ class BoardTokenServiceIsFullException(BoardTokenServiceException):
     1.  Indicate that adding a token to the board failed because the board has its maximum number of tokens.
 
     # PARENT:
-        *   BoardTokenServiceException
+        *   BoardTokenMemberException
 
     # PROVIDES:
     None
@@ -35,5 +35,5 @@ class BoardTokenServiceIsFullException(BoardTokenServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_ALREADY_ON_TOKEN_ERROR"
+    ERROR_CODE = "BOARD_REACHED_LIMIT_FOR_TOKENS_ERROR"
     DEFAULT_MESSAGE = "Adding board token failed: The has reached its maximum number of tokens."

@@ -50,7 +50,7 @@ class UniqueGameDataService(UniqueDataService[Game]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   data_service (GameDataService): = GameDataService()
+            *   member_service (GameDataService): = GameDataService()
 
         # RETURNS:
         None
@@ -96,11 +96,11 @@ class UniqueGameDataService(UniqueDataService[Game]):
     #         if validation.is_failure():
     #             return InsertionResult.failure(validation.exception)
     #
-    #         context_validation = self._data_service.context_service.item_builder.build(id=item.id)
+    #         context_validation = self._member_service.context_service.item_builder.build(id=item.id)
     #         if context_validation.is_failure():
     #             return InsertionResult.failure(context_validation.exception)
     #
-    #         search_result = self._data_service.search(map=context_validation.payload)
+    #         search_result = self._member_service.search(map=context_validation.payload)
     #         if search_result.is_failure():
     #             return InsertionResult.failure(search_result.exception)
     #
@@ -110,7 +110,7 @@ class UniqueGameDataService(UniqueDataService[Game]):
     #                     f"{method}: {AddingDuplicateGameException.DEFAULT_MESSAGE}"
     #                 )
     #             )
-    #         return self._data_service.push_item(item)
+    #         return self._member_service.push_item(item)
     #     except Exception as ex:
     #         return InsertionResult.failure(
     #             UniqueGameDataServiceException(

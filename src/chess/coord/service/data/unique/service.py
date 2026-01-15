@@ -48,7 +48,7 @@ class UniqueCoordDataService(UniqueDataService[Coord]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   data_service (CoordDataService): = CoordDataService()
+            *   member_service (CoordDataService): = CoordDataService()
 
         # RETURNS:
         None

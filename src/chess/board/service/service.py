@@ -152,7 +152,7 @@ class BoardService(EntityService[Board]):
                 )
             )
         # --- Run the insertion operation using board.squares. ---#
-        insertion_result = board.squares.add(square=square)
+        insertion_result = board.squares.add_member(square=square)
     
         # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:

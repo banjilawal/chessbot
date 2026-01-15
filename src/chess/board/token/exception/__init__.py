@@ -1,7 +1,7 @@
 # src/chess/board/token/exception/__init__.py
 
 """
-Module: chess.board.token.exception.__init__
+Module: chess.board.token.exception__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -13,4 +13,5 @@ version: 1.0.0
 from .insertion import *
 
 # Modules
+from .member import BoardTokenMemberException
 from .catchall import BoardTokenServiceException

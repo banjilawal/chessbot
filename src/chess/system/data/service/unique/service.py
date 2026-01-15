@@ -37,7 +37,7 @@ class UniqueDataService(ABC, Generic[T]):
     None
         *   id (int):
         *   name (str):
-        *   data_service (DataService[D]):
+        *   member_service (DataService[D]):
         
     # INHERITED ATTRIBUTES:
     None
