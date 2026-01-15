@@ -17,62 +17,60 @@ from chess.system import (
 class TransactionResult(Result[Event]):
     """"""
     _checkpoint: Event
-    _transaction_state: TransactionState
+    _state: TransactionState
     _exception: Optional[Exception]
     
     def __init__(
             self,
-            event_update: Event,
-            transaction_state: TransactionState,
+            checkpoint: Event,
+            state: TransactionState,
             exception: Optional[Exception] = None
     ):
-        super().__init__(payload=event_update, exception=exception)
+        super().__init__(payload=checkpoint, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "TransactionResult.__init__"
-        self._transaction_state = transaction_state
+        self._state = state
     
     @property
     def checkpoint(self) -> Event:
         return cast(Event, self.payload)
     
     @property
-    def transaction_state(self) -> Optional[TransactionState]:
-        return self._transaction_state
+    def state(self) -> TransactionState:
+        return self._state
     
     @property
     def is_success(self) -> bool:
         return (
-                self.exception is None and self.payload is not None and
-                self._transaction_state == TransactionState.SUCCESS
+                self.exception is None and self._state == TransactionState.SUCCESS
         )
     
     @property
     def is_failure(self) -> bool:
         return (
                 self.exception is not None and
-                self._transaction_state == TransactionState.FAILURE or
-                self._transaction_state == TransactionState.ROLLED_BACK
+                self._state == TransactionState.FAILURE or self._state == TransactionState.ROLLED_BACK
         )
     
     @property
     def is_rolled_back(self) -> bool:
-        return self.exception is not None and self._transaction_state == TransactionState.ROLLED_BACK
+        return self.exception is not None and self._state == TransactionState.ROLLED_BACK
     
     @property
     def is_timed_out(self) -> bool:
-        return self.exception is not None and self._transaction_state == TransactionState.TIMED_OUT
+        return self.exception is not None and self._state == TransactionState.TIMED_OUT
     
     @classmethod
-    def success(cls, event_update) -> TransactionResult:
-        return cls(event_update, TransactionState.SUCCESS)
+    def success(cls, checkpoint) -> TransactionResult:
+        return cls(checkpoint, TransactionState.SUCCESS)
     
     @classmethod
-    def errored(cls, event_update: Event, exception: Exception) -> TransactionResult:
-        return cls(event_update, TransactionState.FAILURE, exception)
+    def errored(cls, checkpoint: Event, exception: Exception) -> TransactionResult:
+        return cls(checkpoint, TransactionState.FAILURE, exception)
     
     @classmethod
-    def rolled_back(cls, event_update: Event, rollback_exception: RollbackException) -> TransactionResult:
-        return cls(event_update, TransactionState.ROLLED_BACK, rollback_exception)
+    def rolled_back(cls, checkpoint: Event, rollback_exception: RollbackException) -> TransactionResult:
+        return cls(checkpoint, TransactionState.ROLLED_BACK, rollback_exception)
     
     @classmethod
     def empty(cls) -> Result:

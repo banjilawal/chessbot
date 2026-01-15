@@ -188,7 +188,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #     event_validation = TravelEventValidator.validate(travel)
 #     if not event_validation.is_success():
 #       return TransactionResult(
-#         event_update=travel,
+#         checkpoint=travel,
 #         transaction_state=TransactionState.FAILURE,
 #         rollback_exception=event_validation.rollback_exception
 #       )
@@ -201,7 +201,7 @@ class OccupationEventValidator(Validator[OccupationEvent]):
 #
 #     if not actor_square_search.is_success():
 #       return TransactionResult(
-#         event_update=travel,
+#         checkpoint=travel,
 #         transaction_state=TransactionState.FAILURE,
 #         rollback_exception=actor_square_search.rollback_exception
 #       )

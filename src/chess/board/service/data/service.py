@@ -9,9 +9,11 @@ version: 1.0.0
 
 from typing import List, cast
 
+from chess.arena import Arena
 from chess.system import DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.board import (
-    AppendingBoardDirectlyIntoItemsFailedException, PoppingEmptyBoardStackException, Board, BoardContext,
+    AppendingBoardDirectlyIntoItemsFailedException, ArenaAlreadyContainsBoardException, PoppingEmptyBoardStackException,
+    Board, BoardContext,
     BoardDataServiceException, BoardDoesNotExistForRemovalException, BoardService, BoardContextService,
     BoardDeletionFailedException, BoardInsertionFailedException
 )
@@ -113,10 +115,10 @@ class BoardDataService(DataService[Board]):
                     )
                 )
             )
-        # --- Check if an item in the list shares the board's coord. ---#
+        # --- Check if an item in the list shares the board's arena. ---#
         search_result = self.board_context_service.finder.find(
             dataset=self.items,
-            context=BoardContext(coord=board.coord)
+            context=BoardContext(arena=board.arena)
         )
         # Handle the case that the search is not completed.
         if search_result.is_failure:
@@ -130,7 +132,7 @@ class BoardDataService(DataService[Board]):
                     )
                 )
             )
-        # Handle the case that a board in collection has the same coord.
+        # Handle the case that a board in collection has the same arena.
         if search_result.is_success:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -138,8 +140,8 @@ class BoardDataService(DataService[Board]):
                     message=f"ServiceId:{self.id}, {method}: {BoardDataServiceException.ERROR_CODE}",
                     ex=BoardInsertionFailedException(
                         message=f"{method}: {BoardInsertionFailedException.ERROR_CODE}",
-                        ex=BoardDoesNotExistForRemovalException(
-                            f"{method}: {BoardDoesNotExistForRemovalException.ERROR_CODE}"
+                        ex=ArenaAlreadyContainsBoardException(
+                            f"{method}: {ArenaAlreadyContainsBoardException.DEFAULT_MESSAGE}"
                         )
                     )
                 )

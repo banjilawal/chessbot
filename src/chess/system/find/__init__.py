@@ -14,5 +14,4 @@ from .exception import *
 
 # Modules
 from .finder import Finder
-from .result import SearchResult
 

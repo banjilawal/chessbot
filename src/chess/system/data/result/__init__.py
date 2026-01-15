@@ -10,11 +10,11 @@ Version: 1.0.0
 # =========== SYSTEM.DATA.RESULT PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .search import *
+from .deletion import *
+from .insertion import *
+from .calculation import *
 
 # Modules
-from .base import DataResult
-from .deletion import DeletionResult
-from .insertion import InsertionResult
-from .calculation import CalculationResult
+from .result import DataResult
 from .empty import  EmptyDataResultException

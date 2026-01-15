@@ -79,7 +79,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     event_validation = TravelEventValidator.validate(event)
     if not event_validation.is_success():
       return TransactionResult(
-        event_update=event,
+        checkpoint=event,
         transaction_state=TransactionState.FAILURE,
         exception=event_validation.exception
       )
@@ -92,7 +92,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
 
     if not actor_square_search.is_success():
       return TransactionResult(
-        event_update=event,
+        checkpoint=event,
         transaction_state=TransactionState.FAILURE,
         exception=actor_square_search.exception
       )

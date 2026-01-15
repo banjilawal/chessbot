@@ -49,7 +49,7 @@ class Graph:
    #  def update(self, event: OccupationEvent, visitation_service: VisitationService) -> TransactionResult:
    #      event_validation = OccupationEventValidator.validate(event)
    #      if event_validation.is_failure():
-   #          return TransactionResult.errored(event_update=event, exception=event_validation.exception)
+   #          return TransactionResult.errored(checkpoint=event, exception=event_validation.exception)
    #      domain_search_result = find_domain(piece=event.actor)
    #
    #      actor = event.actor
@@ -57,7 +57,7 @@ class Graph:
    #      for point in actor.rank_name.compute_span(actor):
    #          search_result = BoardPieceFinder.searcher(self._board, TeamSearchContext(target=point))
    #          if search_result.is_failure():
-   #              return TransactionResult.errored(event_update=event, exception=search_result.exception)
+   #              return TransactionResult.errored(checkpoint=event, exception=search_result.exception)
    #
    #          if search_result.is_success():
    #              domain.residents.append(cast(search_result.payload[0]))
@@ -75,7 +75,7 @@ class Graph:
    #
    #
    #
-   #      return TransactionResult.success(event_update=event)
+   #      return TransactionResult.success(checkpoint=event)
    #
    #
    #
