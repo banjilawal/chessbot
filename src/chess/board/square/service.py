@@ -10,9 +10,9 @@ from typing import cast
 
 from chess.board import (
     AddingBoardSquareFailedException, BoardSquareRelationAnalyzer, BoardSquareServiceException,
-    BoardSquareServiceIsFullException
+    BoardSquareListIsFullException
 )
-from chess.square import Square, SquareContext, UniqueSquareDataService
+from chess.square import Square, UniqueSquareDataService
 from chess.system import COLUMN_SIZE, InsertionResult, ROW_SIZE
 
 
@@ -64,7 +64,7 @@ class BoardSquareService:
         # RAISES:
             *   BoardSquareServiceException
             *   AddingBoardSquareFailedException
-            *   BoardSquareServiceIsFullException
+            *   BoardSquareListIsFullException
         """
         method = "RosterService.member_insertion"
         
@@ -76,7 +76,9 @@ class BoardSquareService:
                     message=f"{method}: {BoardSquareServiceException.ERROR_CODE}",
                     ex=AddingBoardSquareFailedException(
                         message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
-                        ex=BoardSquareServiceIsFullException(f"{method}: {BoardSquareServiceIsFullException.DEFAULT_MESSAGE}")
+                        ex=BoardSquareListIsFullException(
+                            f"{method}: {BoardSquareListIsFullException.DEFAULT_MESSAGE}"
+                        )
                     )
                 )
             )

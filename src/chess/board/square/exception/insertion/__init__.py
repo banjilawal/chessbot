@@ -7,11 +7,11 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-# =========== BOARD.SQUARE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== BOARD.SQUARE.EXCEPTION.INSERTION PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .full import BoardSquareServiceIsFullException
+from .full import BoardSquareListIsFullException
 from .wrapper import  AddingBoardSquareFailedException

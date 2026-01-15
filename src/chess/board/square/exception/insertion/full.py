@@ -9,12 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# BOARD_REACHED_LIMIT_FOR_SQUARES EXCEPTION #======================#
-    "BoardSquareServiceIsFullException",
+    "BoardSquareListIsFullException",
 ]
+
+from chess.board import BoardSquareMemberException
 
 
 # ======================# BOARD_REACHED_LIMIT_FOR_SQUARES EXCEPTION #======================#
-class BoardSquareServiceIsFullException(BoardSquareException):
+class BoardSquareListIsFullException(BoardSquareMemberException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -22,7 +24,7 @@ class BoardSquareServiceIsFullException(BoardSquareException):
     1.  Indicate that adding a square to the board failed because the board has its maximum number of squares.
 
     # PARENT:
-        *   BoardSquareServiceException
+        *   BoardSquareMemberException
 
     # PROVIDES:
     None
@@ -33,5 +35,5 @@ class BoardSquareServiceIsFullException(BoardSquareException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_ALREADY_ON_SQUARE_ERROR"
+    ERROR_CODE = "BOARD_REACHED_LIMIT_FOR_SQUARES_ERROR"
     DEFAULT_MESSAGE = "Adding board square failed: The has reached its maximum number of squares."

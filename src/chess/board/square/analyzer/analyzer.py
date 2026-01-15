@@ -17,7 +17,8 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
     # ROLE: Reporting, Test for Relationship
 
     # RESPONSIBILITIES:
-    1.  Test if whether a board-square tuple have either none, partial, or fully bidirectional relation between them.
+    1.  Test if whether a board-square tuple have either none, partial, or fully bidirectional relation
+        between them.
     2.  If the testing was not completed send an exception chain to the caller.
 
     # PARENT:

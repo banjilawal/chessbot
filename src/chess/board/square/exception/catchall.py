@@ -14,11 +14,12 @@ __all__ = [
 ]
 
 from chess.board import BoardException
+from chess.square import SquareException
 from chess.system import ServiceException
 
 
 # ======================# BOARD_SQUARE_SERVICE EXCEPTION #======================#
-class BoardSquareServiceException(BoardException, ServiceException):
+class BoardSquareServiceException(BoardException, SquareException,ServiceException):
     """
     # ROLE: Catchall Exception
 
@@ -27,6 +28,8 @@ class BoardSquareServiceException(BoardException, ServiceException):
 
     # PARENT:
         *   BoardSquareException
+        *   SquareException
+        *   ServiceException
 
     # PROVIDES:
     None
