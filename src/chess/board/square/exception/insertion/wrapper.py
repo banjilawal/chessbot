@@ -7,16 +7,18 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-from chess.board import BoardSquareServiceException
-
 __all__ = [
-    # ======================# ADDING_TOKEN_TO_BOARD_SQUARE_FAILURE #======================#
+    # ======================# ADDING_SQUARE_TO_BOARD_FAILURE #======================#
     "AddingBoardSquareFailedException",
 ]
 
+from chess.board import BoardException
+from chess.square import SquareException
+from chess.system import InsertionFailedException
 
-# ======================# ADDING_TOKEN_TO_BOARD_SQUARE_FAILURE #======================#
-class AddingBoardSquareFailedException(BoardSquareServiceException):
+
+# ======================# ADDING_SQUARE_TO_BOARD_FAILURE #======================#
+class AddingBoardSquareFailedException(BoardException, SquareException, InsertionFailedException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,7 +26,9 @@ class AddingBoardSquareFailedException(BoardSquareServiceException):
     1.  Indicate that add a token to the boardSquare failed.
 
     # PARENT:
-        *   UniqueTeamDataServiceException
+        *   BoardException
+        *   SquareException
+        *   InsertionFailedException
 
     # PROVIDES:
     None
@@ -35,5 +39,5 @@ class AddingBoardSquareFailedException(BoardSquareServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_TOKEN_TO_BOARD_SQUARE_FAILURE_ERROR"
+    ERROR_CODE = "ADDING_SQUARE_TO_BOARD_FAILURE_ERROR"
     DEFAULT_MESSAGE = "Adding boardSquare member failed."

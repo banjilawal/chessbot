@@ -240,4 +240,4 @@ class BoardDataService(DataService[Board]):
                 return DeletionResult.success(payload=board)
         
         # If none of the items had that id return an empty DeletionResult.
-        return DeletionResult.nothing()
+        return DeletionResult.empty()

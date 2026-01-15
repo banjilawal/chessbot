@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
+from typing import cast
 
 from chess.board import (
     AddingBoardSquareFailedException, BoardSquareRelationAnalyzer, BoardSquareServiceException,
@@ -49,24 +50,21 @@ class BoardSquareService:
     def add(self, square: Square) -> InsertionResult[Square]:
         """
         # ACTION:
-            1.  If the square fails validation send the wrapped exception in the InsertionResult.
-            2.  If the square does not belong to the board a wrapped exception needs to be sent in the InsertionResult.
-            3.  If square is a captured CombatantToked a wrapped exception needs to be sent in the InsertionResult.
-            4.  If self._calculate_remaining_rank_quota returns an error or zero open slots then send the wrapped
-                in the InsertionResult.
-            5.  Send the number of open slots in the InsertionResult.
+            1.  If data_service is full then return an exception chain. Else hand off the square insertion to
+                the data_service.
+            2.  If the insertion was not successful then return an exception chain. Else the insertion was
+                successful. Cast the insertion payload into a Square then send in the InsertionResult's payload.
+                return the inserted square.
         # PARAMETERS:
-            *   rank (Rank)
+            *   square (Square)
         # RETURN:
-            *   CalculationReport[int] containing either:
-                - On failure: Exception
-                - On success: int
+            *   InsertionResult[Square] containing either:
+                    - On failure: Exception
+                    - On success: Square
         # RAISES:
-            *   BoardRankQuotaFullException
-            *   AddingDuplicateSquareException
-            *   AddingCapturedBoardMemberException
-            *   AddingRosterMemberFailedException
-            *   EnemyCannotJoinRosterException
+            *   BoardSquareServiceException
+            *   AddingBoardSquareFailedException
+            *   BoardSquareServiceIsFullException
         """
         method = "RosterService.member_insertion"
         
@@ -82,51 +80,8 @@ class BoardSquareService:
                     )
                 )
             )
-        # Handle the case that the square is not certified safe.
-        square_validation = self._data_service.integrity_service.validator.validate(square=square)
-        if square_validation.is_failure:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                BoardSquareServiceException(
-                    message=f"{method}: {BoardSquareServiceException.ERROR_CODE}",
-                    ex=AddingBoardSquareFailedException(
-                        message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
-                        ex=square_validation.exception
-                    )
-                )
-            )
-        # --- Find out if a square is already at the coord ---#
-        search_result = self._data_service.search_squares(context=SquareContext(coord=square.coord))
-        
-        # Handle the case that the search was not completed.
-        if search_result.is_failure:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                BoardSquareServiceException(
-                    message=f"{method}: {BoardSquareServiceException.ERROR_CODE}",
-                    ex=AddingBoardSquareFailedException(
-                        message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
-                        ex=search_result.exception
-                    )
-                )
-            )
-        # Handle the case that the coord is already in use.
-        if search_result.is_success:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                BoardSquareServiceException(
-                    message=f"{method}: {BoardSquareServiceException.ERROR_CODE}",
-                    ex=AddingBoardSquareFailedException(
-                        message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
-                        ex=BoardSquareCoordCollisionException(
-                            f"{method}: {BoardSquareCoordColliionException.DEFAULT_MESSAGE}"
-                        )
-                    )
-                )
-            )
-        # --- Run the insertion operation on the DataService. ---#
+        # --- Hand off the insertion to the self.data_service the DataService. ---#
         insertion_result = self._data_service.add_unique_square(square=square)
-        
         
         # Handle the case that the insertion was not completed
         if insertion_result.is_failure:

@@ -7,16 +7,18 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-from chess.board import BoardException
 
 __all__ = [
     # ======================# BOARD_SQUARE_SERVICE EXCEPTION #======================#
     "BoardSquareServiceException",
 ]
 
+from chess.board import BoardException
+from chess.system import ServiceException
+
 
 # ======================# BOARD_SQUARE_SERVICE EXCEPTION #======================#
-class BoardSquareServiceException(BoardException):
+class BoardSquareServiceException(BoardException, ServiceException):
     """
     # ROLE: Catchall Exception
 

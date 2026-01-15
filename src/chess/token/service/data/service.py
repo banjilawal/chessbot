@@ -209,4 +209,4 @@ class TokenDataService(DataService[Token]):
                 return DeletionResult.success(payload=token)
             
             # If none of the items had that id return an empty DeletionResult.
-            return DeletionResult.nothing()
+            return DeletionResult.empty()

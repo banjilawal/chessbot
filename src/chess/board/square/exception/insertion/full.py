@@ -12,11 +12,9 @@ __all__ = [
     "BoardSquareServiceIsFullException",
 ]
 
-from chess.board import BoardSquareServiceException
-
 
 # ======================# BOARD_REACHED_LIMIT_FOR_SQUARES EXCEPTION #======================#
-class BoardSquareServiceIsFullException(BoardSquareServiceException):
+class BoardSquareServiceIsFullException(BoardSquareException):
     """
     # ROLE: Debug, Error Tracing
 

@@ -237,4 +237,4 @@ class SquareDataService(DataService[Square]):
                 return DeletionResult.success(payload=square)
             
         # If none of the items had that id return an empty DeletionResult.
-        return DeletionResult.nothing()
+        return DeletionResult.empty()

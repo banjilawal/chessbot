@@ -14,5 +14,4 @@ None
 
 # Modules
 from .full import BoardSquareServiceIsFullException
-from .duplicate import SquareAlreadyOnBoardException
 from .wrapper import  AddingBoardSquareFailedException
