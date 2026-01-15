@@ -7,16 +7,18 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.square import SquareDataServiceException
+
 
 __all__ = [
     # ======================# SQUARE_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
     "SquareDoesNotExistForRemovalException",
 ]
 
+from chess.square import SquareException
+
 
 # ======================# SQUARE_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
-class SquareDoesNotExistForRemovalException(SquareDataServiceException):
+class SquareDoesNotExistForRemovalException(SquareException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -25,7 +27,7 @@ class SquareDoesNotExistForRemovalException(SquareDataServiceException):
         matching the property were found in the dataset.
 
     # PARENT:
-        *   SquareDataServiceException
+        *   SquareException
 
     # PROVIDES:
     None
