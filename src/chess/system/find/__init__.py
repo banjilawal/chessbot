@@ -10,10 +10,9 @@ version: 1.0.0
 #=========== SYSTEM.FIND PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .finder import Finder
 from .result import SearchResult
-from .exception import SearchFailedException
 

@@ -37,7 +37,7 @@ class Board:
     _tokens: BoardTokenService
     _squares: BoardSquareService
     
-    def __init__(self, id: int, arena: Arena, row_size: int = BOARD_DIMENSION, column_size: int = BOARD_DIMENSION, ):
+    def __init__(self, id: int, arena: Arena, row_size: int = BOARD_DIMENSION, column_size: int = BOARD_DIMENSION):
         """
         # ACTION:
             Constructs Board object

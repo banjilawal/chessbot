@@ -17,7 +17,7 @@ from chess.square import SquareException
 
 
 # ======================# UNHANDLED_SQUARE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class SquareSearchRouteException(SquareException, UnhandledRouteException):
+class SquareSearchRouteException(SquareException, NoRou):
     """
     # ROLE: Fallback Result, Debugging
 

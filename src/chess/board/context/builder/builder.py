@@ -9,14 +9,12 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.board import Board, BoardService
 from chess.arena import Arena, ArenaService
 from chess.system import Builder, BuildResult, IdentityService
 from chess.board import (
     BoardContextBuildRouteException, ZeroBoardContextFlagsException, BoardContext, BoardContextBuildFailedException,
     ExcessiveBoardContextFlagsException
 )
-
 
 class BoardContextBuilder(Builder[BoardContext]):
     """

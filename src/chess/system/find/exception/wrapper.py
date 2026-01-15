@@ -1,7 +1,7 @@
-# src/chess/system/find/exception/failure.py
+# src/chess/system/find/exception/wrapper
 
 """
-Module: chess.system.find.exception.failure
+Module: chess.system.find.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

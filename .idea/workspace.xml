@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path." />
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/chess/system/find/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/system/find/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/dataset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/dataset/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/payload/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/payload/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/payload/kind.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/debug/payload/kind.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/context/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/build/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/find/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/find/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/find/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/find/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/exception/route.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -301,11 +319,11 @@
       <recent name="$PROJECT_DIR$/src/chess/team/table" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/system/find/exception" />
       <recent name="$PROJECT_DIR$/src/chess/rank/context/builder/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/err" />
       <recent name="$PROJECT_DIR$/src/chess/system/build/exception" />
       <recent name="$PROJECT_DIR$/src/chess/system/validate/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/board/builder/exception" />
     </key>
   </component>
   <component name="RunManager" selected="Python.null">
@@ -827,7 +845,10 @@
       <workItem from="1768285973201" duration="5135000" />
       <workItem from="1768297075403" duration="32919000" />
       <workItem from="1768342273215" duration="8143000" />
-      <workItem from="1768358602979" duration="34292000" />
+      <workItem from="1768358602979" duration="39191000" />
+      <workItem from="1768443968145" duration="11000" />
+      <workItem from="1768444661787" duration="967000" />
+      <workItem from="1768456803848" duration="1951000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
