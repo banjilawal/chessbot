@@ -13,7 +13,7 @@ from chess.square import AddingDuplicateSquareException, Square
 from chess.system import InsertionResult, id_emitter, EntityService
 from chess.board import (
     AddingBoardSquareFailedException, Board, BoardBuilder, BoardServiceException, BoardValidator,
-    SquareOnDifferentBoardException, BoardSquareRelationAnalyzer
+    BoardSquareRelationAnalyzer, BoardServiceInsertionOpFailedException, SquareOnDifferentBoardException,
 )
 
 
@@ -86,18 +86,17 @@ class BoardService(EntityService[Board]):
     def insert_square(self, board: Board, square: Square) -> InsertionResult[Square]:
         """
         # ACTION:
-            1.  If the square fails validation send the wrapped exception in the InsertionResult.
-            2.  If the square does not belong to the board a wrapped exception needs to be sent in the InsertionResult.
-            3.  If square is a captured CombatantToked a wrapped exception needs to be sent in the InsertionResult.
-            4.  If self._calculate_remaining_rank_quota returns an error or zero open slots then send the wrapped
-                in the InsertionResult.
-            5.  Send the number of open slots in the InsertionResult.
+            1.  Use self._square_relation_analyzer to determine if square_has a partial relationship with the bard.
+                Any other case but a partial relation send an exception cahin in the InsertionResult.
+            2.  If self._squares.add fails encapsulate its exception and send in the InsertionResult. Else directly
+                forward the insertion result to the caller.
         # PARAMETERS:
-            *   rank (Rank)
+            *   board (Board)
+            *   square (Square)
         # RETURN:
-            *   InsertionResult[SQuare] containing either:
-                - On failure: Exception
-                - On success: Square
+            *   InsertionResult[Square] containing either:
+                    - On failure: Exception
+                    - On success: Square
         # RAISES:
             *   BoardServiceException
             *   AddingDuplicateSquareException
@@ -106,18 +105,20 @@ class BoardService(EntityService[Board]):
         """
         method = "BoardService.insert_square"
         
+        # --- Check if the board-square relation is partial, allowing the insertion to proceed. ---#
         relation_analysis = self._square_relation_analyzer.analyze(
             candidate_primary=board,
             candidate_secondary=square
         )
+        
         # Handle the case that the relation analysis is not completed.
         if relation_analysis.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
                     message=f"{method}: {BoardServiceException.ERROR_CODE}",
-                    ex=AddingBoardSquareFailedException(
-                        message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
+                    ex=BoardServiceInsertionOpFailedException(
+                        message=f"{method}: {BoardServiceInsertionOpFailedException.ERROR_CODE}",
                         ex=relation_analysis.exception
                     )
                 )
@@ -128,8 +129,8 @@ class BoardService(EntityService[Board]):
             return InsertionResult.failure(
                 BoardServiceException(
                     message=f"{method}: {BoardServiceException.ERROR_CODE}",
-                    ex=AddingBoardSquareFailedException(
-                        message=f"{method}: {AddingBoardSquareFailedException.ERROR_CODE}",
+                    ex=BoardServiceInsertionOpFailedException(
+                        message=f"{method}: {BoardServiceInsertionOpFailedException.ERROR_CODE}",
                         ex=SquareOnDifferentBoardException(
                             f"{method}: {SquareOnDifferentBoardException.DEFAULT_MESSAGE}"
                         )
@@ -150,5 +151,23 @@ class BoardService(EntityService[Board]):
                     )
                 )
             )
-        # --- Run the insertion operation on using board.squares. ---#
+        # --- Run the insertion operation using board.squares. ---#
         insertion_result = board.squares.add(square=square)
+    
+        # Handle the case that the insertion is not completed.
+        if insertion_result.is_failure:
+            # Return exception chain on failure.
+            return InsertionResult.failure(
+                BoardServiceException(
+                    message=f"{method}: {BoardServiceException.ERROR_CODE}",
+                    ex=BoardServiceInsertionOpFailedException(
+                        message=f"{method}: {BoardServiceInsertionOpFailedException.ERROR_CODE}",
+                        ex=AddingDuplicateSquareException(
+                            f"{method}: {AddingDuplicateSquareException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
+        
+        # --- On insertion success forward the insertion_result to the caller. ---#
+        return insertion_result

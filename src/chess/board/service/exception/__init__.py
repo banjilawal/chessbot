@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== BOARD.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .insertion import *
 
 # Modules
 from .catchall import BoardServiceException
-from .owner import SquareOnDifferentBoardException

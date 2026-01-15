@@ -97,7 +97,7 @@ class BoardSquareService:
                     )
                 )
             )
-        # --- On insertion success extract the insertion payload and send in the BuildResult. ---#
-        return InsertionResult.success(cast(Square, insertion_result.payload))
+        # --- On insertion success forward the insertion_result to the caller. ---#
+        return insertion_result
     
     
