@@ -1,14 +1,12 @@
-# src/chess/board/service/exception/exception
+# src/chess/board/context/service/exception.py
 
 """
-Module: chess.board.service.exception.exception
+Module: chess.board.context.service.exception
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.board import BoardContext
-from chess.system import ServiceException
 from chess.system import ServiceException
 from chess.board import BoardContextException
 
