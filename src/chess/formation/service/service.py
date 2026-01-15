@@ -10,11 +10,13 @@ from chess.system import GameColor, HashService, InvariantBreachException, Loggi
 
 class FormationService(HashService[Formation]):
     SERVICE_NAME = "FormationService"
+    _formation: Formation
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
+            formation: Formation = Formation(),
             validator: FormationValidator = FormationValidator(),
             super_key_service: FormationKeyService = FormationKeyService(),
     ):
@@ -32,6 +34,15 @@ class FormationService(HashService[Formation]):
             None
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
+        self._formation = formation
+        
+    @property
+    def formation(self) -> Formation:
+        return self._formation
+    
+    @property
+    def number_of_pieces_per_team(self) -> int:
+        return cast(int, len(self._formation.__dict__) / 2)
     
     @property
     def key_service(self) -> FormationKeyService:
