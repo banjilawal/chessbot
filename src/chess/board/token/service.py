@@ -17,30 +17,30 @@ from chess.system import COLUMN_SIZE, InsertionResult, ROW_SIZE
 
 class BoardTokenService:
     _capacity: int
-    _data_service: UniqueTokenDataService
+    _members: UniqueTokenDataService
     _analyzer: BoardTokenRelationAnalyzer
     
     def __init__(
             self,
             capacity: int = ROW_SIZE * COLUMN_SIZE,
-            data_service: UniqueTokenDataService = UniqueTokenDataService(),
+            members: UniqueTokenDataService = UniqueTokenDataService(),
             analyzer: BoardTokenRelationAnalyzer = BoardTokenRelationAnalyzer(),
     ):
         self._capacity = capacity
         self._analyzer = analyzer
-        self._data_service = data_service
+        self._members = members
     
     @property
     def is_empty(self) -> bool:
-        return self._data_service.is_empty
+        return self._members.is_empty
     
     @property
     def is_full(self) -> bool:
-        return self._data_service.size == self._capacity
+        return self._members.size == self._capacity
     
     @property
-    def number_of_tokens(self) -> int:
-        return self._data_service.size
+    def number_of_members(self) -> int:
+        return self._members.size
     
     @property
     def board_token_analyzer(self) -> BoardTokenRelationAnalyzer:
@@ -80,12 +80,12 @@ class BoardTokenService:
                         message=f"{method}: {AddingBoardTokenFailedException.ERROR_CODE}",
                         ex=BoardTokenServiceIsFullException(
                             f"{method}: {BoardTokenServiceIsFullException.DEFAULT_MESSAGE}"
-                            )
+                        )
                     )
                 )
             )
         # Handle the case that the token is not certified safe.
-        token_validation = self._data_service.integrity_service.validator.validate(token=token)
+        token_validation = self._members.integrity_service.validator.validate(token=token)
         if token_validation.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
@@ -98,7 +98,7 @@ class BoardTokenService:
                 )
             )
         # --- Find out if a token is already at the coord ---#
-        search_result = self._data_service.search_tokens(context=TokenContext(coord=token.coord))
+        search_result = self._members.search_tokens(context=TokenContext(coord=token.coord))
         
         # Handle the case that the search was not completed.
         if search_result.is_failure:
@@ -127,7 +127,7 @@ class BoardTokenService:
                 )
             )
         # --- Run the insertion operation on the DataService. ---#
-        insertion_result = self._data_service.add_unique_token(token=token)
+        insertion_result = self._members.add_unique_token(token=token)
         
         # Handle the case that the insertion was not completed
         if insertion_result.is_failure:

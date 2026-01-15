@@ -9,12 +9,14 @@ version: 1.0.0
 
 from typing import List, cast
 
+from chess.rank import Rank
 from chess.system import (
-    DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+    CalculationResult, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 )
 from chess.token import (
-    AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException, Token, TokenDataServiceException,
-    TokenDoesNotExistForRemovalException, TokenService, TokenContextService, TokenDeletionFailedException,
+    AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException,
+    RankCountCalculationFailedException, Token, TokenContext, TokenService,
+    TokenDataServiceException, TokenDoesNotExistForRemovalException, TokenContextService, TokenDeletionFailedException,
     TokenInsertionFailedException
 )
 
@@ -80,6 +82,62 @@ class TokenDataService(DataService[Token]):
     @property
     def token_context_service(self) -> TokenContextService:
         return cast(TokenContextService, self.context_service)
+    
+    @LoggingLevelRouter.monitor
+    def number_of_rank_members(self, rank: Rank) -> CalculationResult[int]:
+        """
+        # ACTION:
+            1.  Build the search-by-rank TokenContext. If the build fails send the exception in the InsertionResult.
+                Else run the search.
+            2.  If the search fails send the exception in the InsertionResult. Else the calculation was successful.
+                Return the number of hits in the CalculationResult's payload.
+        # PARAMETERS:
+            *   rank (Rank)
+        # RETURNS:
+            *   CalculationResult[int] containing either:
+                    - On failure: Exception.
+                    - On success: int in the payload.
+        # RAISES:
+            *   TokenDataServiceException
+            *   RankCountCalculationFailedException
+        """
+        method = "TokenDataService.number_of_rank_members"
+        
+        # --- First step in getting rank count is building search-by-rank context. ---#
+        build_result = self.token_context_service.builder.build(rank=rank)
+        
+        # Handle the case that the context build is not completed.
+        if build_result.is_failure:
+            # Return the exception chain on failure.
+            return CalculationResult.failure(
+                TokenDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                    ex=RankCountCalculationFailedException(
+                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                        ex=build_result.exception
+                    )
+                )
+            )
+        # --- Cast the context_build_result payload and run the search. ---#
+        search_result = self.token_context_service.finder.find(context=cast(TokenContext, build_result.payload))
+        
+        # Handle the case that the search was not completed.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
+            return CalculationResult.failure(
+                TokenDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                    ex=RankCountCalculationFailedException(
+                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                        ex=search_result.exception
+                    )
+                )
+            )
+        # Handle the case that no tokens hold the rank
+        if search_result.is_empty:
+            return CalculationResult.success(payload=0)
+        # Handle the case that some hits were found
+        return CalculationResult.success(payload=len(cast(List[Token], search_result.payload)))
     
     @LoggingLevelRouter.monitor
     def insert_token(self, token: Token) -> InsertionResult[Token]:

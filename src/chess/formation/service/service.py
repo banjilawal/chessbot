@@ -41,7 +41,7 @@ class FormationService(HashService[Formation]):
         return self._formation
     
     @property
-    def number_of_pieces_per_team(self) -> int:
+    def number_of_tokens_per_team(self) -> int:
         return cast(int, len(self._formation.__dict__) / 2)
     
     @property
