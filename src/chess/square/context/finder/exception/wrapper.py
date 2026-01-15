@@ -11,19 +11,20 @@ from chess.square import SquareException
 from chess.system import SearchFailedException
 
 __all__ = [
-    # ======================# SQUARE_FINDER EXCEPTION #======================#
+    # ======================# SQUARE_SEARCH_FAILURE EXCEPTION #======================#
     "SquareSearchFailedException",
 ]
 
 
-# ======================# SQUARE_FINDER EXCEPTION #======================#
+# ======================# SQUARE_SEARCH_FAILURE EXCEPTION #======================#
 class SquareSearchFailedException(SquareException, SearchFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised when SquareFinder objects.
-    2.  Wraps an exception that hits the try-finally block of an SquareFinder method.
+    1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
+        failed. That debug exception is wrapped in the SquareSearchFailedException which is the middle layer of the
+        3-part exception chain.
 
     # PARENT:
         *   SquareException
@@ -38,5 +39,5 @@ class SquareSearchFailedException(SquareException, SearchFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_FINDER_ERROR"
-    DEFAULT_MESSAGE = "SquareFinder raised an exception."
+    ERROR_CODE = "SQUARE_SEARCH_FAILURE"
+    DEFAULT_MESSAGE = "Square search failed."

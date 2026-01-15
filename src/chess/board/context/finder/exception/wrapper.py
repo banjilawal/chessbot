@@ -11,19 +11,20 @@ from chess.board import BoardException
 from chess.system import SearchFailedException
 
 __all__ = [
-    # ======================# BOARD_FINDER EXCEPTION #======================#
+    # ======================# BOARD_SEARCH_FAILURE EXCEPTION #======================#
     "BoardSearchFailedException",
 ]
 
 
-# ======================# BOARD_FINDER EXCEPTION #======================#
+# ======================# BOARD_SEARCH_FAILURE EXCEPTION #======================#
 class BoardSearchFailedException(BoardException, SearchFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised when BoardFinder objects.
-    2.  Wraps an exception that hits the try-finally block of an BoardFinder method.
+    1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
+        failed. That debug exception is wrapped in the BoardSearchFailedException which is the middle layer of the
+        3-part exception chain.
 
     # PARENT:
         *   BoardException
@@ -38,5 +39,5 @@ class BoardSearchFailedException(BoardException, SearchFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_FINDER_ERROR"
-    DEFAULT_MESSAGE = "BoardFinder raised an exception."
+    ERROR_CODE = "BOARD_SEARCH_FAILURE"
+    DEFAULT_MESSAGE = "Board search failed."
