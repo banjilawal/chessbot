@@ -138,7 +138,7 @@ class SquareFinder(DataFinder[Square]):
         # RETURNS:
             *   SearchResult[List[Square]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Tokem] in the payload.
+                    - On finding a match: List[Square] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             None
@@ -163,12 +163,11 @@ class SquareFinder(DataFinder[Square]):
         # RETURNS:
             *   SearchResult[List[Square]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Tokem] in the payload.
+                    - On finding a match: List[Square] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             None
         """
-        method = "SquareFinder._find_by_name"
         matches = [square for square in dataset if square.name.upper() == name.upper()]
         # Handle the nothing found case.
         if len(matches) == 0:
@@ -188,12 +187,11 @@ class SquareFinder(DataFinder[Square]):
         # RETURNS:
             *   SearchResult[List[Square]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Tokem] in the payload.
+                    - On finding a match: List[Square] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             None
         """
-        method = "SquareFinder._find_by_coord"
         matches = [square for square in dataset if square.coord == coord]
         # Handle the nothing found case.
         if len(matches) == 0:
@@ -213,12 +211,11 @@ class SquareFinder(DataFinder[Square]):
         # RETURNS:
             *   SearchResult[List[Square]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[Tokem] in the payload.
+                    - On finding a match: List[Square] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             None
         """
-        method = "SquareFinder._find_by_board"
         matches = [square for square in dataset if square.board == board]
         # Handle the nothing found case.
         if len(matches) == 0:

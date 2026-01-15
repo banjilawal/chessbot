@@ -27,7 +27,7 @@ class BoardSearchRouteException(BoardException, NoSearchRouteException):
 
     # PARENT:
         *   BoardException
-        *   oSearchRouteException
+        *   SearchRouteException
 
     # PROVIDES
     None
