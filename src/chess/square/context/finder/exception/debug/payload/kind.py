@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from chess.square import SquareException
+from chess.system import ResultException
 
 _all__ = [
     # ======================# SQUARE_DATASET_NULL EXCEPTION #======================#
@@ -15,16 +16,18 @@ _all__ = [
 ]
 
 
-# ======================# SQUARE_SEARCH_PAYLOAD_IS_NOT_LIST EXCEPTION #======================#
-class SquareSearchPayloadTypeException(SquareException):
+# ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_SQUARES EXCEPTION #======================#
+class SquareSearchPayloadTypeException(SquareException, ResultException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the payload  of a successful SquareSearch payload is not List[Square].
+    1.  Indicate that after the SquareSearch ran successfully the payload was not a List[Square]. This exception makes
+        sure search payloads follow the convention of returning an array of matches not a single item.
 
     # PARENT:
         *   SquareException
+        *   ResultException
 
     # PROVIDES:
     None
