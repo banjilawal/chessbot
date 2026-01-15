@@ -4,6 +4,7 @@ from typing import List, cast
 from chess.board import Board
 from chess.board.service.service import BoardService
 from chess.formation import Formation, FormationKey, FormationKeyService, FormationValidator, FormationServiceException
+from chess.schema import SchemaService
 from chess.square import Square, SquareContext
 from chess.system import GameColor, HashService, InvariantBreachException, LoggingLevelRouter, SearchResult, id_emitter
 
@@ -11,6 +12,7 @@ from chess.system import GameColor, HashService, InvariantBreachException, Loggi
 class FormationService(HashService[Formation]):
     SERVICE_NAME = "FormationService"
     _formation: Formation
+    _schema_service: SchemaService
     
     def __init__(
             self,
@@ -19,6 +21,7 @@ class FormationService(HashService[Formation]):
             formation: Formation = Formation(),
             validator: FormationValidator = FormationValidator(),
             super_key_service: FormationKeyService = FormationKeyService(),
+            schema_service: SchemaService = SchemaService()
     ):
         """
         # ACTION:
@@ -35,6 +38,11 @@ class FormationService(HashService[Formation]):
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
         self._formation = formation
+        self._schema_service = schema_service
+        
+    @property
+    def schema_service(self) -> SchemaService:
+        return self._schema_service
         
     @property
     def formation(self) -> Formation:
