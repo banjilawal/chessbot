@@ -9,6 +9,8 @@ version: 1.0.0
 
 from typing import List
 
+from chess.rank import Rank
+from chess.system.data.result.calculation import CalculationResult
 from chess.token import (
     AddingDuplicateTokenException, ExhaustiveTokenDeletionFailedException, Token, TokenContext, TokenContextService,
     TokenDataService, TokenService, UniqueTokenDataServiceException, UniqueTokenInsertionFailedException,
@@ -78,6 +80,40 @@ class UniqueTokenDataService(UniqueDataService[Token]):
     @property
     def is_empty(self) -> bool:
         return self._token_data_service.is_empty
+    
+    @LoggingLevelRouter.monitor
+    def rank_count(self, rank: Rank) -> CalculationResult[int]:
+        """
+        # ACTION:
+            1.  Get the result of calling _token_data_service.number_of_rank_members.
+            2.  If the calculation fails wrap the exception chain and send in the CalculationResult.
+                Else directly forward the CalculationResult to the caller.
+        # PARAMETERS:
+            *   rank (Rank)
+        # RETURNS:
+            *   CalculationResult[int] containing either:
+                    - On failure: Exception.
+                    - On success: int in the payload.
+        # RAISES:
+            *   UniqueTokenDataServiceException
+        """
+        method = "UniqueTokenDataService.rank_count"
+    
+        # --- Handoff the calculation responsibility to _token_data_service. ---#
+        calculation_result = self._token_data_service.number_of_rank_members(rank=rank)
+        
+        # Handle the case that the calculation was not completed.
+        if calculation_result.is_failure:
+            # Return the exception chain on failure.
+            return CalculationResult.failure(
+                UniqueTokenDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
+                    ex=calculation_result.exception
+                )
+            )
+        # --- For either a successful calculation result directly forward to the caller. ---#
+        return calculation_result
+        
     
     @LoggingLevelRouter.monitor
     def remove_token(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[Token]:
