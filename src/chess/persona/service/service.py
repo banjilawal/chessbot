@@ -11,9 +11,13 @@ from typing import Dict, List, Optional, cast
 
 
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankService, Rook
-from chess.system import CalculationResult, HashService, LoggingLevelRouter, SearchResult, id_emitter
+from chess.rank.factory.exception.wrapper import RankBuildFailedException
+from chess.system import (
+    BuildResult, CalculationResult, HashService, LoggingLevelRouter, Result, SearchResult,
+    id_emitter
+)
 from chess.persona import (
-    Persona, PersonaServiceException, PersonaKey, PersonaKeyService, PersonaValidator,
+    Persona, PersonaLookupFailedException, PersonaServiceException, PersonaKey, PersonaKeyService, PersonaValidator,
     RankQuotaPerTeamLookupFailedException
 )
 
@@ -119,12 +123,28 @@ class PersonaService(HashService[Persona]):
     
     @LoggingLevelRouter.monitor
     def quota_per_rank(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
-        """Get the Rank which the persona entry builds."""
+        """
+        # ACTION:
+            1   f the rank is not certified safe send an exception chain in the CalculationResult.
+                Otherwise, send the quota which matches the rank in the CalculationResult's payload.
+        # PARAMETERS:
+            *   rank (Rank)
+            *   rank_service (RankService)
+        # RETURNS:
+            *   CalculationResult[int] containing either:
+                    - On error: Exception
+                    - On success: int in the payload.
+        # RAISES:
+            *   PersonaServiceException
+            *   RankQuotaPerTeamLookupFailedException
+        """
         method = "PersonaService.quota_per_rank"
         
+        # Handle the case that rank is not certified safe.
         validation = rank_service.validator.validate(candidate=rank)
         if validation.is_failure:
             return CalculationResult.failure(
+                # Return exception chain on failure.
                 PersonaServiceException(
                     message=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERROR_CODE}",
                     ex=RankQuotaPerTeamLookupFailedException(
@@ -133,24 +153,57 @@ class PersonaService(HashService[Persona]):
                     )
                 )
             )
+        # --- Because of the validation all the ranks will be valid. Can forward the quota to the caller. ---#
         if rank == King: return CalculationResult.success(payload=Persona.KING.quota)
         if rank == Pawn: return CalculationResult.success(payload=Persona.PAWN.quota)
         if rank == Knight: return CalculationResult.success(payload=Persona.KNIGHT.quota)
         if rank == Bishop: return CalculationResult.success(payload=Persona.BISHOP.quota)
         if rank == Rook: return CalculationResult.success(payload=Persona.ROOK.quota)
+        
+        # --- Only possible case left is Queen ---#
         return CalculationResult.success(payload=Persona.QUEEN.quota)
 
     
-    @classmethod
-    def rank_from_persona(cls, entry: Persona) -> Optional[Rank]:
-        """Get the Rank which the persona entry builds."""
-        if entry == Persona.KING: return King()
-        if entry == Persona.PAWN: return Pawn()
-        if entry == Persona.KNIGHT: return Knight()
-        if entry == Persona.BISHOP: return Bishop()
-        if entry == Persona.ROOK: return Rook()
-        if entry == Persona.QUEEN: return Queen()
-        return None
+    @LoggingLevelRouter.monitor
+    def build_rank_from_persona(self, persona: Persona) -> BuildResult[Rank]:
+        """
+        # ACTION:
+            1   f the persona is not certified safe send an exception chain in the BuildResult.
+                Otherwise, send a rank instance in the BuildResult's payload.'
+        # PARAMETERS:
+            *   persona (Persona)
+        # RETURNS:
+            *   BuildResult[Rank] containing either:
+                    - On error: Exception
+                    - On success: Rankin the payload.
+        # RAISES:
+            *   PersonaServiceException
+            *   BuildRankFailedException
+        """
+        method = "PersonaService.rank_from_persona"
+
+        # Handle the case that persona is not certified safe.
+        validation = self.persona_validator.validate(candidate=persona)
+        if validation.is_failure:
+            return BuildResult.failure(
+                # Return exception chain on failure.
+                PersonaServiceException(
+                    message=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERROR_CODE}",
+                    ex=RankBuildFailedException(
+                        message=f"{method}: {RankBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            )
+        # --- Because of the validation all the ranks will be valid. Can forward the Rank to the caller. ---#
+        if persona == Persona.KING: return BuildResult.success(King())
+        if persona == Persona.PAWN: return BuildResult.success(Pawn())
+        if persona == Persona.KNIGHT: return BuildResult.success(Knight())
+        if persona == Persona.BISHOP: return BuildResult.success(Bishop())
+        if persona == Persona.ROOK:  return BuildResult.success(Rook())
+        
+        # --- Only possible case left is Queen ---#
+        return BuildResult.success(Queen())
     
     @classmethod
     def persona_from_rank(cls, rank: Rank) -> Optional[Persona]:
