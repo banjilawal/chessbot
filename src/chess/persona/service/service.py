@@ -10,9 +10,13 @@ import sys
 from typing import Dict, List, Optional, cast
 
 
-from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
-from chess.system import HashService, LoggingLevelRouter, SearchResult, id_emitter
-from chess.persona import Persona, PersonaServiceException, PersonaKey, PersonaKeyService, PersonaValidator
+from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankService, Rook
+from chess.system import CalculationResult, HashService, LoggingLevelRouter, SearchResult, id_emitter
+from chess.persona import (
+    Persona, PersonaServiceException, PersonaKey, PersonaKeyService, PersonaValidator,
+    RankQuotaPerTeamLookupFailedException
+)
+
 
 class PersonaService(HashService[Persona]):
     """
@@ -38,10 +42,12 @@ class PersonaService(HashService[Persona]):
         *   See ContextService for inherited attributes.
     """
     SERVICE_NAME = "PersonaService"
+    _persona: Persona
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
+            persona: Persona = Persona(),
             id: int = id_emitter.service_id,
             validator: PersonaValidator = PersonaValidator(),
             super_key_service: PersonaKeyService = PersonaKeyService(),
@@ -60,6 +66,11 @@ class PersonaService(HashService[Persona]):
             None
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
+        self._persona = persona
+        
+    @property
+    def persona(self) -> Persona:
+        return self._persona
         
     @property
     def key_service(self) -> PersonaKeyService:
@@ -105,6 +116,29 @@ class PersonaService(HashService[Persona]):
             if ransom > maximum:
                 maximum = ransom
         return maximum
+    
+    @LoggingLevelRouter.monitor
+    def quota_per_rank(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
+        """Get the Rank which the persona entry builds."""
+        method = "PersonaService.quota_per_rank"
+        
+        validation = rank_service.validator.validate(candidate=rank)
+        if validation.is_failure:
+            return CalculationResult.failure(
+                PersonaServiceException(
+                    message=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERROR_CODE}",
+                    ex=RankQuotaPerTeamLookupFailedException(
+                        message=f"{method}: {RankQuotaPerTeamLookupFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            )
+        if rank == King: return CalculationResult.success(payload=Persona.KING.quota)
+        if rank == Pawn: return CalculationResult.success(payload=Persona.PAWN.quota)
+        if rank == Knight: return CalculationResult.success(payload=Persona.KNIGHT.quota)
+        if rank == Bishop: return CalculationResult.success(payload=Persona.BISHOP.quota)
+        if rank == Rook: return CalculationResult.success(payload=Persona.ROOK.quota)
+        return CalculationResult.success(payload=Persona.QUEEN.quota)
 
     
     @classmethod

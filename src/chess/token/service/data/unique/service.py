@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.rank import Rank
+from chess.rank import Rank, RankService
 from chess.system.data.result.calculation import CalculationResult
 from chess.token import (
     AddingDuplicateTokenException, ExhaustiveTokenDeletionFailedException, Token, TokenContext, TokenContextService,
@@ -80,6 +80,36 @@ class UniqueTokenDataService(UniqueDataService[Token]):
     @property
     def is_empty(self) -> bool:
         return self._token_data_service.is_empty
+    
+    @LoggingLevelRouter.monitor
+    def token_rank_quota(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
+        """
+        # ACTION:
+            1.  If the rank fails its integrity checks send an exception in the CalculationResult..
+            2.  If the calculation fails wrap the exception chain and send in the CalculationResult.
+                Else directly forward the CalculationResult to the caller.
+        # PARAMETERS:
+            *   rank (Rank)
+        # RETURNS:
+            *   CalculationResult[int] containing either:
+                    - On failure: Exception.
+                    - On success: int in the payload.
+        # RAISES:
+            *   UniqueTokenDataServiceException
+        """
+        method = "UniqueTokenDataService.token_rank_quota"
+    
+        # Handle the case that the rank is not certified safe.
+        validation_result = rank_service.validator.validate(candidate=rank)
+        if validation_result.is_failure:
+            # Return the exception chain on failure.
+            return CalculationResult.failure(
+                UniqueTokenDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
+                    ex=calculation_result.exception
+                )
+            )
+        
     
     @LoggingLevelRouter.monitor
     def rank_count(self, rank: Rank) -> CalculationResult[int]:

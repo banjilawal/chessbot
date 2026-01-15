@@ -1,7 +1,7 @@
-# src/chess/persona/service/exception.py
+# src/chess/persona/service/exception/catchall.py
 
 """
-Module: chess.persona.service.exception
+Module: chess.persona.service.exception.catchall
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/chess/token/service/data/exception/calculation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/token/service/data/exception/calculation/wrappper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/persona/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/token/service/data/exception/calculation/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/token/service/data/exception/calculation/rank/quota.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/token/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/token/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/formation/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/service/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/data/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/service/data/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/data/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/exception/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/service/data/exception/calculation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/data/exception/calculation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/service/data/exception/calculation/wrappper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/data/exception/calculation/rank/count.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/token/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/data/unique/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,11 +313,11 @@
       <recent name="$PROJECT_DIR$/src/chess/team/table" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/persona/service/exception" />
+      <recent name="$PROJECT_DIR$/src/chess/token/service/data/exception/calculation/rank" />
       <recent name="$PROJECT_DIR$/src/chess/board/service/exception/insertion/square" />
       <recent name="$PROJECT_DIR$/src/chess/board/service/exception/insertion" />
       <recent name="$PROJECT_DIR$/src/chess/board/square/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/system/data/result/search" />
-      <recent name="$PROJECT_DIR$/src/chess/system/data/result/insertion" />
     </key>
   </component>
   <component name="RunManager" selected="Python.null">
@@ -841,7 +844,7 @@
       <workItem from="1768444661787" duration="967000" />
       <workItem from="1768456803848" duration="19263000" />
       <workItem from="1768484452794" duration="154000" />
-      <workItem from="1768487418469" duration="15124000" />
+      <workItem from="1768487418469" duration="20289000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

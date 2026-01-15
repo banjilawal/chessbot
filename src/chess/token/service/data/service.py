@@ -9,13 +9,14 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.rank import Rank
+from chess.formation import FormationService
+from chess.rank import Rank, RankService
 from chess.system import (
     CalculationResult, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 )
 from chess.token import (
     AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException,
-    RankCountCalculationFailedException, Token, TokenContext, TokenService,
+    RankCountCalculationFailedException, RankQuotaPerTeamLookupFailedException, Token, TokenContext, TokenService,
     TokenDataServiceException, TokenDoesNotExistForRemovalException, TokenContextService, TokenDeletionFailedException,
     TokenInsertionFailedException
 )
@@ -43,14 +44,16 @@ class TokenDataService(DataService[Token]):
         *   See DataService class for inherited attributes.
     """
     SERVICE_NAME = "TokenDataService"
+    _formation_service: FormationService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Token] = List[Token],
-            service: TokenService = TokenService(),
-            context_service: TokenContextService = TokenContextService(),
+            token_service: TokenService = TokenService(),
+            formation_service: FormationService = FormationService(),
+            token_context_service: TokenContextService = TokenContextService(),
     ):
         """
         # ACTION:
@@ -58,9 +61,10 @@ class TokenDataService(DataService[Token]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   items (List[Team])
-            *   service (TeamService)
-            *   context_service (TeamContextService)
+            *   items (List[Token])
+            *   token_service (TokenService)
+            *   formation_service (FormationService)
+            *   token_context_service (TokenContextService)
         # RETURNS:
             None
         # RAISES:
@@ -71,8 +75,8 @@ class TokenDataService(DataService[Token]):
             id=id,
             name=name,
             items=items,
-            entity_service=service,
-            context_service=context_service,
+            entity_service=token_service,
+            context_service=token_context_service,
         )
         
     @property
@@ -82,6 +86,44 @@ class TokenDataService(DataService[Token]):
     @property
     def token_context_service(self) -> TokenContextService:
         return cast(TokenContextService, self.context_service)
+    
+    @property
+    def formation_service(self) -> FormationService:
+        return self._formation_service
+    
+    @LoggingLevelRouter.monitor
+    def team_max_tokens_per_rank(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
+        """
+        # ACTION:
+            1.  If the rank fails its integrity checks send an exception in the CalculationResult..
+            2.  If the calculation fails wrap the exception chain and send in the CalculationResult.
+                Else directly forward the CalculationResult to the caller.
+        # PARAMETERS:
+            *   rank (Rank)
+            *   rank_service (RankService)
+        # RETURNS:
+            *   CalculationResult[int] containing either:
+                    - On failure: Exception.
+                    - On success: int in the payload.
+        # RAISES:
+            *   TokenDataServiceException
+        """
+        method = "TokenDataService.team_max_tokens_per_rank"
+        
+        # Handle the case that the rank is not certified safe.
+        validation_result = rank_service.validator.validate(candidate=rank)
+        if validation_result.is_failure:
+            # Return the exception chain on failure.
+            return CalculationResult.failure(
+                TokenDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                    ex=RankQuotaPerTeamLookupFailedException(
+                        message=f"{method}: {RankQuotaPerTeamLookupFailedException.ERROR_CODE}",
+                        ex=validation_result.exception
+                    )
+                )
+            )
+        self._formation_service.schema_service.qu
     
     @LoggingLevelRouter.monitor
     def number_of_rank_members(self, rank: Rank) -> CalculationResult[int]:

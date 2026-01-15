@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== PERSONA.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .service import PersonaService
-from .exception import PersonaServiceException
