@@ -9,13 +9,12 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TEAM_RANK_QUOTA_FULL EXCEPTION #======================#
-    "TeamRankQuotaFullException",
+    "RankQuotaIsFullException",
 ]
-    
-from chess.team import TeamException
+
 
 # ======================# TEAM_RANK_QUOTA_FULL EXCEPTION #======================#
-class TeamRankQuotaFullException(RosterServiceException):
+class RankQuotaIsFullException(RosterServiceException):
     """
     # ROLE: Error Tracing, Debugging
 

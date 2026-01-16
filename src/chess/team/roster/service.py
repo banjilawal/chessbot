@@ -182,7 +182,7 @@ class RosterService:
                 - On failure: Exception
                 - On success: int
         # RAISES:
-            *   TeamRankQuotaFullException
+            *   RankQuotaIsFullException
             *   AddingDuplicateTokenException
             *   AddingCapturedTeamMemberException
             *   AddingRosterMemberFailedException

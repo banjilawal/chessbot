@@ -46,7 +46,7 @@ class HostageService:
                 - On failure: Exception
                 - On success: CombatantToken
         # RAISES:
-            *   TeamRankQuotaFullException
+            *   RankQuotaIsFullException
             *   EnemyAlreadyCapturedException
             *   CannotCaptureKingException
             *   AddingHostageTokenFailedException

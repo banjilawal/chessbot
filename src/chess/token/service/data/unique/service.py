@@ -82,7 +82,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         return self._token_data_service.is_empty
     
     @LoggingLevelRouter.monitor
-    def team_rank_quota(self, rank: Rank) -> CalculationResult[int]:
+    def lookup_team_rank_quote(self, rank: Rank) -> CalculationResult[int]:
         """
         # ACTION:
             1.  If the rank fails its integrity checks send an exception in the CalculationResult..

@@ -42,8 +42,10 @@ class TokenDataService(DataService[Token]):
     # INHERITED ATTRIBUTES:
         *   See DataService class for inherited attributes.
     """
-    SERVICE_NAME = "TokenDataService"
+    CAPACITY: int = 16
+    SERVICE_NAME: str = "TokenDataService"
     _formation_service: FormationService
+    
     
     def __init__(
             self,
@@ -78,6 +80,10 @@ class TokenDataService(DataService[Token]):
             context_service=token_context_service,
         )
         self._formation_service = formation_service
+    
+    @property
+    def is_full(self) -> bool:
+        return len(self.items) == self.CAPACITY
         
     @property
     def token_service(self) -> TokenService:
@@ -308,3 +314,91 @@ class TokenDataService(DataService[Token]):
             
             # If none of the items had that id return an empty DeletionResult.
             return DeletionResult.empty()
+        
+    @LoggingLevelRouter.monitor
+    def has_slot_for_rank(self, rank: Rank) -> CalculationResult[bool]:
+        """
+        # ACTION:
+            1.  If self.count_rank_openings fails send the exception chain in the CalculationResult. Else,
+                send open_slot_count > 0 in the CalculationResult's payload.
+        # PARAMETERS:
+            *   rank (Rank)
+        # RETURN:
+            *   CalculationReport[bool] containing either:
+                    - On failure: Exception
+                    - On success: bool
+        # RAISES:
+            *   TokenDataServiceException
+            *   RankCountCalculationFailedException
+        """
+        method = "TokenDataService.has_slot_for_rank"
+        
+        # Handle the case that the rank is not certified safe.
+        openings_count = self.count_rank_openings(rank)
+        if openings_count.is_failure:
+            # Return the exception chain on failure.
+            return CalculationResult.failure(
+                TokenDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                    ex=RankCountCalculationFailedException(
+                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                        ex=openings_count.exception
+                    )
+                )
+            )
+    
+        # --- Find if there are open slots for the rank. ---#
+        has_opening = cast(int, openings_count.payload) > 0
+        return CalculationResult.success(payload=has_opening)
+    
+    @LoggingLevelRouter.monitor
+    def count_rank_openings(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
+        """
+        # ACTION:
+            1.  If the rank is not validated send an exception chain in the CalculationResult.
+            2.  If calculating the number of rank members fails send ab exception chain in the CalculationResult.
+                Else, send rank.team_quota - rank_members in the CalculationResult's payload.
+        # PARAMETERS:
+            *   rank (Rank)
+            *   rank_service (RankService
+        # RETURN:
+            *   CalculationReport[int] containing either:
+                    - On failure: Exception
+                    - On success: int
+        # RAISES:
+            *   TokenDataServiceException
+            *   RankCountCalculationFailedException
+        """
+        method = "TokenDataService.count_rank_openings"
+        
+        # Handle the case that the rank is not certified safe.
+        rank_validation = rank_service.validator.validate(rank)
+        if rank_validation.is_failure:
+            # Return the exception chain on failure.
+            return CalculationResult.failure(
+                TokenDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                    ex=RankCountCalculationFailedException(
+                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                        ex=rank_validation.exception
+                    )
+                )
+            )
+        # --- Find if there are open slots for the rank. ---#
+        rank_count_result = self.number_of_rank_members(rank=rank)
+        
+        # Handle the case that the rank_count_result_computation was not completed.
+        if rank_count_result.is_failure:
+            # Return the exception chain on failure.
+            return CalculationResult.failure(
+                TokenDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                    ex=RankCountCalculationFailedException(
+                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                        ex=rank_count_result.exception
+                    )
+                )
+            )
+        # --- On success send the difference between the quota and rank_member_count in the CalculationResult. ---#
+        rank_member_count = cast(int, rank_count_result.payload)
+        return CalculationResult.success(payload=rank.team_quota - rank_member_count)

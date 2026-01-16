@@ -37,15 +37,11 @@ class CalculationResult(DataResult[Generic[T]]):
     """
     _state: CalculationState
     
-    def __init__(self, state: CalculationState, payload: Optional[int] = None, exception: Optional[Exception] = None):
+    def __init__(self, state: CalculationState, payload: Optional[T] = None, exception: Optional[Exception] = None):
         super().__init__(payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "TransactionResult.result"
         self._state = state
-        
-    @property
-    def value(self) -> int:
-        return cast(int, self.payload)
     
     @property
     def state(self) -> CalculationState:
@@ -76,7 +72,7 @@ class CalculationResult(DataResult[Generic[T]]):
         )
     
     @classmethod
-    def success(cls, payload: int) -> CalculationResult:
+    def success(cls, payload: int|bool) -> CalculationResult:
         return cls(state=CalculationState.SUCCESS, payload=payload)
     
     @classmethod

@@ -6,11 +6,13 @@ Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
+from typing import cast
 
 from chess.board import (
     AddingBoardTokenFailedException, BoardTokenRelationAnalyzer, BoardTokenServiceException,
     BoardTokenServiceIsFullException
 )
+from chess.team import TeamRankQuotaFullException
 from chess.token import Token, TokenContext, UniqueTokenDataService
 from chess.system import COLUMN_SIZE, InsertionResult, ROW_SIZE
 
@@ -97,8 +99,54 @@ class BoardTokenService:
                     )
                 )
             )
+        # --- Get the rank's quota. ---#
+        rank_quota_lookup = self._members.lookup_team_rank_quote(token.rank)
+        
+        # Handle the case that the rank_quota_lookup was not completed.
+        if rank_quota_lookup.is_failure:
+            # Return exception chain on failure.
+            return InsertionResult.failure(
+                BoardTokenServiceException(
+                    message=f"{method}: {BoardTokenServiceException.ERROR_CODE}",
+                    ex=AddingBoardTokenFailedException(
+                        message=f"{method}: {AddingBoardTokenFailedException.ERROR_CODE}",
+                        ex=rank_quota_lookup.exception
+                    )
+                )
+            )
+        rank_quota = cast(int, rank_quota_lookup.payload)
+        
+        # --- Find if there are open slots for the token's rank. ---#
+        rank_count_result = self._members.rank_count(rank=token.rank)
+        
+        # Handle the case that the rank_count_result_computation was not completed.
+        if rank_count_result.is_failure:
+            # Return exception chain on failure.
+            return InsertionResult.failure(
+                BoardTokenServiceException(
+                    message=f"{method}: {BoardTokenServiceException.ERROR_CODE}",
+                    ex=AddingBoardTokenFailedException(
+                        message=f"{method}: {AddingBoardTokenFailedException.ERROR_CODE}",
+                        ex=rank_count_result.exception
+                    )
+                )
+            )
+        # Handle the case that the rank's quota has been filled.
+        if rank_quota >= cast(int, rank_count_result.payload):
+            # Return exception chain on failure.
+            return InsertionResult.failure(
+                BoardTokenServiceException(
+                    message=f"{method}: {BoardTokenServiceException.ERROR_CODE}",
+                    ex=AddingBoardTokenFailedException(
+                        message=f"{method}: {AddingBoardTokenFailedException.ERROR_CODE}",
+                        ex=TeamRankQuotaFullException(f"{method}: {TeamRankQuotaFullException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
+
+        
         # --- Find out if a token is already at the coord ---#
-        search_result = self._members.search_tokens(context=TokenContext(coord=token.coord))
+        search_result = self._members.search_tokens(context=TokenContext(coord=token.current_position))
         
         # Handle the case that the search was not completed.
         if search_result.is_failure:
