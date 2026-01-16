@@ -92,15 +92,13 @@ class TokenDataService(DataService[Token]):
         return self._formation_service
     
     @LoggingLevelRouter.monitor
-    def team_max_tokens_per_rank(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
+    def team_max_tokens_per_rank(self, rank: Rank) -> CalculationResult[int]:
         """
         # ACTION:
-            1.  If the rank fails its integrity checks send an exception in the CalculationResult..
-            2.  If the calculation fails wrap the exception chain and send in the CalculationResult.
-                Else directly forward the CalculationResult to the caller.
+            1.  If formation_service fails to return a quota value send the exception chain in the CalculationResult.
+                Else, directly forward quota_result to the caller.
         # PARAMETERS:
             *   rank (Rank)
-            *   rank_service (RankService)
         # RETURNS:
             *   CalculationResult[int] containing either:
                     - On failure: Exception.
@@ -110,20 +108,20 @@ class TokenDataService(DataService[Token]):
         """
         method = "TokenDataService.team_max_tokens_per_rank"
         
-        # Handle the case that the rank is not certified safe.
-        validation_result = rank_service.validator.validate(candidate=rank)
-        if validation_result.is_failure:
+        # --- Handoff the rank validation and quote lookup to self._formation_service ---#
+        
+        # Handle the case that the quota lookup is not completed.
+        quota_result = self._formation_service.persona_service.quota_per_rank(rank=rank)
+        if quota_result.is_failure:
             # Return the exception chain on failure.
             return CalculationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=RankQuotaPerTeamLookupFailedException(
-                        message=f"{method}: {RankQuotaPerTeamLookupFailedException.ERROR_CODE}",
-                        ex=validation_result.exception
-                    )
+                    ex=quota_result.exception
                 )
             )
-        self._formation_service.schema_service.qu
+        # On success just forward the quota_result to the caller.
+        return quota_result
     
     @LoggingLevelRouter.monitor
     def number_of_rank_members(self, rank: Rank) -> CalculationResult[int]:
@@ -230,7 +228,7 @@ class TokenDataService(DataService[Token]):
                     )
                 )
             )
-        # On success return the toke in the InsertionResult
+        # On success return the token in the InsertionResult
         return InsertionResult.success(payload=token)
     
     @LoggingLevelRouter.monitor
