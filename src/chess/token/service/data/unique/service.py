@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.rank import Rank, RankService
+from chess.rank import Rank
 from chess.system.data.result.calculation import CalculationResult
 from chess.token import (
     AddingDuplicateTokenException, ExhaustiveTokenDeletionFailedException, Token, TokenContext, TokenContextService,
@@ -82,7 +82,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         return self._token_data_service.is_empty
     
     @LoggingLevelRouter.monitor
-    def token_rank_quota(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
+    def team_rank_quota(self, rank: Rank) -> CalculationResult[int]:
         """
         # ACTION:
             1.  If the rank fails its integrity checks send an exception in the CalculationResult..
@@ -98,17 +98,22 @@ class UniqueTokenDataService(UniqueDataService[Token]):
             *   UniqueTokenDataServiceException
         """
         method = "UniqueTokenDataService.token_rank_quota"
-    
-        # Handle the case that the rank is not certified safe.
-        validation_result = rank_service.validator.validate(candidate=rank)
-        if validation_result.is_failure:
+        
+        # --- Handoff the calculation responsibility to _token_data_service. ---#
+        quota_result = self._token_data_service.team_max_tokens_per_rank(rank)
+        
+        
+        # Handle the case that the quota lookup was not completed.
+        if quota_result.is_failure:
             # Return the exception chain on failure.
             return CalculationResult.failure(
                 UniqueTokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=calculation_result.exception
+                    ex=quota_result.exception
                 )
             )
+        # --- Forward the quota_result to the caller on success. ---#
+        return quota_result
         
     
     @LoggingLevelRouter.monitor

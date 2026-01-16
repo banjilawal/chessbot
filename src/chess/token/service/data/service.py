@@ -15,10 +15,9 @@ from chess.system import (
     CalculationResult, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 )
 from chess.token import (
-    AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException,
-    RankCountCalculationFailedException, RankQuotaPerTeamLookupFailedException, Token, TokenContext, TokenService,
+    AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException, Token, TokenContext, TokenService,
     TokenDataServiceException, TokenDoesNotExistForRemovalException, TokenContextService, TokenDeletionFailedException,
-    TokenInsertionFailedException
+    TokenInsertionFailedException, RankCountCalculationFailedException,
 )
 
 class TokenDataService(DataService[Token]):
@@ -78,6 +77,7 @@ class TokenDataService(DataService[Token]):
             entity_service=token_service,
             context_service=token_context_service,
         )
+        self._formation_service = formation_service
         
     @property
     def token_service(self) -> TokenService:
