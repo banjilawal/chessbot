@@ -45,10 +45,12 @@ class TokenDataService(DataService[Token]):
     CAPACITY: int = 16
     SERVICE_NAME: str = "TokenDataService"
     _formation_service: FormationService
+    _capacity: int
     
     
     def __init__(
             self,
+            capacity: int = CAPACITY,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Token] = List[Token],
@@ -80,10 +82,15 @@ class TokenDataService(DataService[Token]):
             context_service=token_context_service,
         )
         self._formation_service = formation_service
+        self._capacity = capacity
+        
+    @property
+    def capacity(self) -> int:
+        return self._capacity
     
     @property
     def is_full(self) -> bool:
-        return len(self.items) == self.CAPACITY
+        return len(self.items) == self._capacity
         
     @property
     def token_service(self) -> TokenService:
