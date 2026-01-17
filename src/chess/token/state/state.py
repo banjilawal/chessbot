@@ -1,7 +1,16 @@
+# src/chess/token/state/state.py
+
+"""
+Module: chess.token.state.state
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
 from enum import Enum, auto
 
 
-class ActivityState(Enum):
+class TokenState(Enum):
     ACTIVE_KING = auto(),
     KING_IN_CHECK = auto(),
     CHECKMATED_KING = auto(),
@@ -12,6 +21,6 @@ class ActivityState(Enum):
     NOT_OPENED = auto(),
     FORMATION__ASSIGNED =  auto(),
     FORMATION_ENACTED = auto(),
-    PLACED_ON_BOARD = auto()
+    FORMED_ON_BOARD = auto()
     REMOVED_FROM_BOARD = auto()
     REGISTERED_HOSTAGE = auto(),

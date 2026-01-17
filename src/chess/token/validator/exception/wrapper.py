@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# Token_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# TOKEN_VALIDATION_FAILURE EXCEPTION #======================#
     "TokenValidationFailedException",
 ]
 
@@ -17,7 +17,7 @@ from chess.token import TokenException
 from chess.system import ValidationFailedException
 
 
-# ======================# Token_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# TOKEN_VALIDATION_FAILURE EXCEPTION #======================#
 class TokenValidationFailedException(TokenException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper

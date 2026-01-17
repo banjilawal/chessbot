@@ -108,13 +108,7 @@ class TeamService(EntityService[Team]):
         return self._schema_service
     
     @LoggingLevelRouter.monitor
-    def search_team_roster(
-            self,
-            team: Team,
-            id: Optional[int] = None,
-            designation: Optional[str] = None,
-            identity_service: IdentityService = IdentityService(),
-    ) -> SearchResult[List[Token]]:
+    def search_team_roster( self, team: Team, context: TokenContext) -> SearchResult[List[Token]]:
         """
         This is only going to be used in Arenas where it might be necessary to check if a captured piece has
         been properly registered with the enemy. I probably won't need it.
@@ -135,7 +129,7 @@ class TeamService(EntityService[Team]):
                 )
             )
         # --- Run the search on the roster. ---#
-        search_result = team.roster.search(id=id, designation=designation, identity_service=identity_service)
+        search_result = team.roster.members.search_tokens(context=context)
         
         # Handle the case that the search did not complete.
         if search_result.is_failure:
@@ -149,6 +143,7 @@ class TeamService(EntityService[Team]):
                     )
                 )
             )
+        return search_result
         
     
     def add_roster_member(self, team: Team, piece: Token) -> InsertionResult[Token]:
@@ -232,7 +227,7 @@ class TeamService(EntityService[Team]):
                     )
                 )
             )
-        # --- Find out if there is an openin for the token's rank on the roster. ---#
+        # --- Find out if there is an opening for the token's rank on the roster. ---#
         boolean_result = team.roster.members.rank_has_openings(piece.rank)
         
         # Handle the case that the rank_has_openings failed test failed.
@@ -276,66 +271,66 @@ class TeamService(EntityService[Team]):
             )
         # On success, directly forward result to the caller.
         return insertion_result
-    
-    def calculate_remaining_rank_quota(
-            self,
-            team: Team,
-            rank: Rank,
-            rank_service: RankService = RankService()
-    ) -> CalculationResult[int]:
-        """
-        # ACTION:
-            1.  If either the team or rank are not certified send the exception in the CalculationResult.
-                Else, search the roster by the rank.
-            2.  If the search did not complete send the exception in the CalculationResult.
-            3.  Calculate rank.team_quota - len(matches) and send in the CalculationResult.
-        # PARAMETERS:
-            *   team (Team)
-            *   rank (Rank)
-            *   rank_service (RankService)
-        # RETURN:
-            *   CalculationReport[Rank, int] containing either:
-                - On failure: Exception
-                - On success: (Rank, int) tuple
-        # RAISES:
-            *   TeamServiceException
-        """
-        method = "TeamService.calculate_remaining_rank_quota"
-        
-        # Handle the case that the team is not certified safe.
-        team_validation = self.validator.validate(team)
-        if team_validation.is_failure:
-            # Return the exception chain on failure.
-            return CalculationResult.failure(
-                TeamServiceException(
-                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
-                    ex=team_validation.exception
-                )
-            )
-        # Handle the case that the rank is not certified safe
-        rank_validation = rank_service.validator.validate(rank)
-        if rank_validation.is_failure:
-            # Return the exception chain on failure.
-            return CalculationResult.failure(
-                TeamServiceException(
-                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
-                    ex=rank_validation.exception
-                )
-            )
-        # --- Search the team's roster for tokens that share the persona's rank. ---#
-        search_result = team.roster.search(context=TokenContext(rank=rank))
-        
-        # Handle the case that the search did not succeed
-        if search_result.is_failure:
-            # Return the exception chain on failure.
-            return CalculationResult.failure(
-                TeamServiceException(
-                    message=f"{method}: {TeamServiceException.ERROR_CODE}",
-                    ex=search_result.exception
-                )
-            )
-        # Calculate how many slots are available for the rank and send in the CalculationResult.
-        open_slots = rank.team_quota - len(search_result.payload)
-        return CalculationResult(open_slots)
+    #
+    # def calculate_remaining_rank_quota(
+    #         self,
+    #         team: Team,
+    #         rank: Rank,
+    #         rank_service: RankService = RankService()
+    # ) -> CalculationResult[int]:
+    #     """
+    #     # ACTION:
+    #         1.  If either the team or rank are not certified send the exception in the CalculationResult.
+    #             Else, search the roster by the rank.
+    #         2.  If the search did not complete send the exception in the CalculationResult.
+    #         3.  Calculate rank.team_quota - len(matches) and send in the CalculationResult.
+    #     # PARAMETERS:
+    #         *   team (Team)
+    #         *   rank (Rank)
+    #         *   rank_service (RankService)
+    #     # RETURN:
+    #         *   CalculationReport[Rank, int] containing either:
+    #             - On failure: Exception
+    #             - On success: (Rank, int) tuple
+    #     # RAISES:
+    #         *   TeamServiceException
+    #     """
+    #     method = "TeamService.calculate_remaining_rank_quota"
+    #
+    #     # Handle the case that the team is not certified safe.
+    #     team_validation = self.validator.validate(team)
+    #     if team_validation.is_failure:
+    #         # Return the exception chain on failure.
+    #         return CalculationResult.failure(
+    #             TeamServiceException(
+    #                 message=f"{method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=team_validation.exception
+    #             )
+    #         )
+    #     # Handle the case that the rank is not certified safe
+    #     rank_validation = rank_service.validator.validate(rank)
+    #     if rank_validation.is_failure:
+    #         # Return the exception chain on failure.
+    #         return CalculationResult.failure(
+    #             TeamServiceException(
+    #                 message=f"{method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=rank_validation.exception
+    #             )
+    #         )
+    #     # --- Search the team's roster for tokens that share the persona's rank. ---#
+    #     search_result = team.roster.search(context=TokenContext(rank=rank))
+    #
+    #     # Handle the case that the search did not succeed
+    #     if search_result.is_failure:
+    #         # Return the exception chain on failure.
+    #         return CalculationResult.failure(
+    #             TeamServiceException(
+    #                 message=f"{method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=search_result.exception
+    #             )
+    #         )
+    #     # Calculate how many slots are available for the rank and send in the CalculationResult.
+    #     open_slots = rank.team_quota - len(search_result.payload)
+    #     return CalculationResult(open_slots)
 
         
