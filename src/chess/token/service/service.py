@@ -85,7 +85,7 @@ class TokenService(EntityService[Token]):
     def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
         """
         # ACTION:
-            1.  If the token fails validation return the exception in the DeletionResult.
+            1.  If the token fails validation returns the exception in the DeletionResult.
             2.  If the token has not been activated with an opening square return the exception in the DeletionResult.
             3.  If the token has an empty coord stack return the exception in the DeletionResult.
             4.  If a new coord has not been pushed since the last undo send and exception in the DeletionResult.
@@ -107,7 +107,7 @@ class TokenService(EntityService[Token]):
         validation = self.validator.validate(token)
         if validation.is_failure:
             # Return the exception chain on failure.
-            return DeletionResult(
+            return DeletionResult.failure(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
                     ex=validation.exception
@@ -116,7 +116,7 @@ class TokenService(EntityService[Token]):
         # Handle the case that the opening square is null which implies there are no moves to undo.
         if token.opening_square is None:
             # Return the exception chain on failure.
-            return DeletionResult(
+            return DeletionResult.failure(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
                     ex=TokenOpeningSquareNullException(f"{method}: {TokenOpeningSquareNullException.DEFAULT_MESSAGE}")
@@ -125,7 +125,7 @@ class TokenService(EntityService[Token]):
         # Handle the case that the token has no positions that can be removed.
         if token.positions.is_empty:
             # Return the exception chain on failure.
-            return DeletionResult(
+            return DeletionResult.failure(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
                     ex=PoppingEmtpyCoordStackException(
@@ -136,7 +136,7 @@ class TokenService(EntityService[Token]):
         # Handle the case that an attempt is made to undo more than one turn.
         if token.previous_address == token.current_address:
             # Return the exception chain on failure.
-            return DeletionResult(
+            return DeletionResult.failure(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
                     ex=OverMoveUndoLimitException(f"{method}: {OverMoveUndoLimitException.DEFAULT_MESSAGE}")
@@ -146,7 +146,7 @@ class TokenService(EntityService[Token]):
         pop_result = token.positions.pop_coord()
         if token.previous_address == token.current_address:
             # Return the exception chain on failure.
-            return DeletionResult(
+            return DeletionResult.failure(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
                     ex=pop_result.exception

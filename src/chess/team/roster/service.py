@@ -13,7 +13,7 @@ from typing import List, Optional, cast
 from chess.rank import Rank
 from chess.board import Board, BoardService
 from chess.token import (
-    AddingDuplicateTokenException, Token, TokenContext, TokenService, UniqueTokenDataService, CombatantToken
+    AddingDuplicateTokenException, Token, TokenContext, Memberservice, UniqueTokenDataService, CombatantToken
 )
 from chess.system import CalculationResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult
 from chess.team import (
@@ -22,80 +22,76 @@ from chess.team import (
 )
 
 class RosterService:
-    CAPACITY = 16
-    
-    _table: RosterTable
-    _tokens: UniqueTokenDataService
+    # _table: RosterTable
+    _members: UniqueTokenDataService
     _analyzer: RosterRelationAnalyzer
 
-    
     def service(
             self,
-            table: RosterTable = RosterTable(),
-            tokens: UniqueTokenDataService = UniqueTokenDataService(),
+            # table: RosterTable = RosterTable(),
+            members: UniqueTokenDataService = UniqueTokenDataService(),
             analyzer: RosterRelationAnalyzer = RosterRelationAnalyzer(),
     ):
-        self._table = table
-        self._tokens = tokens
+        # self._table = table
+        self._members = members
         self._analyzer = analyzer
-        self.capacity: 16
         
     @property
-    def context_service(self) -> TokenService:
-        return self._tokens.context_service
-    
-    @classmethod
-    def capacity(cls) -> int:
-        return cls.CAPACITY
-    
-    @LoggingLevelRouter.monitor
-    def search(
-            self,
-            id: Optional[int] = None,
-            designation: Optional[str] = None,
-            identity_service: IdentityService = IdentityService(),
-    ) -> SearchResult[List[Token]]:
-        """
-        This is only going to be used in Arenas where it might be necessary to check if a captured piece has
-        been properly registered with the enemy. I probably won't need it.
-        """
-        method = "RosterService.search"
+    def members(self) -> UniqueTokenDataService:
+        return self._members
         
-        # Validate the team and handle the failure case.
-        build_context = self._tokens.context_service.build(
-            id=id,
-            designation=designation,
-            identity_service=identity_service
-        )
-        if build_context.is_failure:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                RosterServiceException(
-                    message=f"{method}: {RosterServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.DEFAULT_MESSAGE}",
-                        ex=build_context.exception
-                    )
-                )
-            )
-        
-        # --- Run the search on the roster. ---#
-        search_result = self._tokens.search_tokens(context=(cast(TokenContext, build_context.payload)))
-        
-        # Handles the case that the search does not complete.
-        if search_result.is_failure:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                RosterServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {RosterServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.DEFAULT_MESSAGE}",
-                        ex=search_result.exception
-                    )
-                )
-            )
-        # If there was no search failure forward th result to the caller.
-        return search_result
+    # @property
+    # def context_service(self) -> Memberservice:
+    #     return self._members.context_service
+    #
+    # @LoggingLevelRouter.monitor
+    # def search(
+    #         self,
+    #         id: Optional[int] = None,
+    #         designation: Optional[str] = None,
+    #         identity_service: IdentityService = IdentityService(),
+    # ) -> SearchResult[List[Token]]:
+    #     """
+    #     This is only going to be used in Arenas where it might be necessary to check if a captured piece has
+    #     been properly registered with the enemy. I probably won't need it.
+    #     """
+    #     method = "RosterService.search"
+    #
+    #     # Validate the team and handle the failure case.
+    #     build_context = self._members.context_service.build(
+    #         id=id,
+    #         designation=designation,
+    #         identity_service=identity_service
+    #     )
+    #     if build_context.is_failure:
+    #         # Return the exception chain on failure.
+    #         return SearchResult.failure(
+    #             RosterServiceException(
+    #                 message=f"{method}: {RosterServiceException.ERROR_CODE}",
+    #                 ex=AddingRosterMemberFailedException(
+    #                     message=f"{method}: {AddingRosterMemberFailedException.DEFAULT_MESSAGE}",
+    #                     ex=build_context.exception
+    #                 )
+    #             )
+    #         )
+    #
+    #     # --- Run the search on the roster. ---#
+    #     search_result = self._members.search_members(context=(cast(TokenContext, build_context.payload)))
+    #
+    #     # Handles the case that the search does not complete.
+    #     if search_result.is_failure:
+    #         # Return the exception chain on failure.
+    #         return SearchResult.failure(
+    #             RosterServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {RosterServiceException.ERROR_CODE}",
+    #                 ex=AddingRosterMemberFailedException(
+    #                     message=f"{method}: {AddingRosterMemberFailedException.DEFAULT_MESSAGE}",
+    #                     ex=search_result.exception
+    #                 )
+    #             )
+    #         )
+    #     # If there was no search failure forward th result to the caller.
+    #     return search_result
         
         
     # def member_deletion(self, member: CombatantToken) -> DeletionResult[Token]:
@@ -120,7 +116,7 @@ class RosterService:
     #     method = "RosterService.member_deletion"
     #
     #     # Handle the case that the piece fails validation.
-    #     piece_validation = self._tokens.token_service.validator.validate(member)
+    #     piece_validation = self._members.token_service.validator.validate(member)
     #     if piece_validation.is_failure:
     #         # Return exception chain on failure.
     #         return DeletionResult.failure(
@@ -152,7 +148,7 @@ class RosterService:
     #                 )
     #             )
     #         )
-    #     deletion_result = self._tokens.remove_token_by_id(id=member.id)
+    #     deletion_result = self._members.remove_token_by_id(id=member.id)
     #     if deletion_result.is_failure:
     #         # Return exception chain on failure.
     #         return DeletionResult.failure(
@@ -191,7 +187,7 @@ class RosterService:
         method = "RosterService.member_insertion"
         
         # Handle the case that the roster is full.
-        if self._tokens.size == RosterService.CAPACITY:
+        if self._members.size == RosterService.CAPACITY:
             # Return exception chain on failure.
             return InsertionResult.failure(
                 RosterServiceException(
@@ -204,7 +200,7 @@ class RosterService:
             )
         
         # Handle the case that the piece fails validation.
-        piece_validation = self._tokens.integrity_service.validator.validate(piece)
+        piece_validation = self._members.integrity_service.validator.validate(piece)
         if piece_validation.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
@@ -244,7 +240,7 @@ class RosterService:
                 )
             )
         # --- Search the collection for the token. ---#
-        search_result = self._tokens.search_tokens(context=TokenContext(piece.id))
+        search_result = self._members.search_members(context=TokenContext(piece.id))
         
         # Handle the case that search did not complete.
         if search_result.is_failure:
@@ -298,7 +294,7 @@ class RosterService:
                 )
             )
         # --- Run the insertion operation on the DataService. ---#
-        insertion_result = self._tokens.add_token(token=piece)
+        insertion_result = self._members.add_token(token=piece)
         
         #Handle the case that the insertion was not completed
         if insertion_result.is_failure:
@@ -320,7 +316,7 @@ class RosterService:
     def _calculate_remaining_rank_quota(self,rank: Rank,) -> CalculationResult[int]:
         """
         # ACTION:
-            1.  Search self._tokens for pieces with the rank. If the search fails send the wrapped exception
+            1.  Search self._members for pieces with the rank. If the search fails send the wrapped exception
                 in the CalculationResult.
             2.  If no matches are found send rank.team_quota in the CalculationResult.
             3.  If matches are found ut the payload is not a List[Token] send the wrapped exception in the
@@ -337,8 +333,8 @@ class RosterService:
         """
         method = "TeamService._calculate_remaining_rank_quota"
         
-        # --- Search the team's roster for tokens that share the persona's rank. ---#
-        search_result = self._tokens.search_tokens(context=TokenContext(rank=rank))
+        # --- Search the team's roster for members that share the persona's rank. ---#
+        search_result = self._members.search_members(context=TokenContext(rank=rank))
         
         # Handle the case that the search did not succeed
         if search_result.is_failure:

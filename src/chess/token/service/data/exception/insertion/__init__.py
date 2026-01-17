@@ -13,5 +13,6 @@ version: 1.0.0
 None
 
 # Modules
+from .full import TokenServiceCapacityException
 from .wrapper import TokenInsertionFailedException
 from .direct import AppendingTokenDirectlyIntoItemsFailedException

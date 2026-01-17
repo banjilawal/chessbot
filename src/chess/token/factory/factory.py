@@ -56,6 +56,7 @@ class TokenFactory(Builder[Token]):
             id: int = id_emitter.token_id,
             rank_service: RankService = RankService(),
             team_service: TeamService = TeamService(),
+            square_service
             piece_service: TokenService = TokenService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[PawnToken|KingToken|CombatantToken]:

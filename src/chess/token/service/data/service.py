@@ -108,7 +108,7 @@ class TokenDataService(DataService[Token]):
     def team_max_tokens_per_rank(self, rank: Rank) -> CalculationResult[int]:
         """
         # ACTION:
-            1.  If formation_service fails to return a quota value send the exception chain in the CalculationResult.
+            1.  If formation_service fails to return a quota value, send the exception chain in the CalculationResult.
                 Else, directly forward quota_result to the caller.
         # PARAMETERS:
             *   rank (Rank)
@@ -362,8 +362,8 @@ class TokenDataService(DataService[Token]):
     def count_rank_openings(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
         """
         # ACTION:
-            1.  If the rank is not validated send an exception chain in the CalculationResult.
-            2.  If calculating the number of rank members fails send ab exception chain in the CalculationResult.
+            1.  If the rank is not validated, send an exception chain in the CalculationResult.
+            2.  If calculating the number of rank members fails send an exception chain in the CalculationResult.
                 Else, send rank.team_quota - rank_members in the CalculationResult's payload.
         # PARAMETERS:
             *   rank (Rank)

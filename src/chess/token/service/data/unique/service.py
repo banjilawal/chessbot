@@ -78,8 +78,26 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         return self._token_data_service.size
     
     @property
+    def is_full(self) -> bool:
+        return self._token_data_service.is_full
+    
+    @property
     def is_empty(self) -> bool:
         return self._token_data_service.is_empty
+    
+    @LoggingLevelRouter
+    def open_rank_slots(self, rank: Rank) -> CalculationResult[int]:
+        lookup_result = self._token_data_service.count_rank_openings(rank=rank)
+        if lookup_result.is_failure:
+            return CalculationResult.failure(lookup_result.exception)
+        return lookup_result.payload
+    
+    @LoggingLevelRouter.monitor
+    def rank_has_openings(self, rank: Rank) -> CalculationResult[bool]:
+        answer = self._token_data_service.count_rank_openings(rank=rank)
+        if answer.is_failure:
+            return CalculationResult.failure(answer.exception)
+        return answer
     
     @LoggingLevelRouter.monitor
     def lookup_team_rank_quote(self, rank: Rank) -> CalculationResult[int]:
