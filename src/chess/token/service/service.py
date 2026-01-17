@@ -9,6 +9,7 @@ version: 1.0.0
 
 from typing import cast
 
+from chess.board import Board, BoardService
 from chess.formation import FormationService
 from chess.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
 from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
@@ -81,6 +82,16 @@ class TokenService(EntityService[Token]):
     def formation_service(self) -> FormationService:
         return self._formation_service
     
+    @LoggingLevelRouter.monitor
+    def form_token_on_board(
+            self,
+            token: Token,
+            board: Board,
+            board_service: BoardService = BoardService(),
+    ):
+        token_validation = self.validator.validate(candidate=token)
+        if token_validation.is_failure:
+        
     @LoggingLevelRouter.monitor
     def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
         """

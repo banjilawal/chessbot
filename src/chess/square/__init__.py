@@ -13,7 +13,9 @@ version: 1.0.0
 from .builder import *
 from .context import *
 from .service import *
+from .relation import *
 from .validator import *
+from .occupation import *
 
 # Modules
 from .square import Square
