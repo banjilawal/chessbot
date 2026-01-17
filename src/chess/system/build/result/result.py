@@ -8,28 +8,30 @@ version: 1.0.0
 """
 
 from typing import Optional, TypeVar, Generic
-from chess.system import Result, NotImplementedException
+from chess.system import Result, NotImplementedException, BuildResult
 
-T = TypeVar('V')
+T = TypeVar("T")
 
 
-class BuildResult(Result[Generic[T]]):
+class BuildResult(Result[T], Generic[T]):
     """"""
     
-    def result(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
-        super().result(payload=payload, exception=exception)
+    def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
+        super().__init__(payload=payload, exception=exception)
+    
+    @classmethod
+    def success(cls, payload: T) -> BuildResult[T]:
+        return cls(payload=payload)
+    
+    @classmethod
+    def failure(cls, exception: Exception) -> BuildResult[T]:
+        return cls(exception=exception)
         
     @classmethod
     def empty(cls) -> Result:
         method = "BuildResult.empty"
-        
-        return cls(
-            exception=NotImplementedException(
-                message=f"{method}: {NotImplementedException.DEFAULT_MESSAGE}",
-                ex=EmptyBuildResultException(message=f"{method}: {EmptyBuildResultException.DEFAULT_MESSAGE}")
-            )
-        )
-        
+        return cls(exception=NotImplementedException(message=f"{method}: {NotImplementedException.DEFAULT_MESSAGE}"))
+
         #
         #   method = "Result.__init_"
         #

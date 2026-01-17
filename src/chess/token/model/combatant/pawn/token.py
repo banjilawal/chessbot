@@ -11,16 +11,31 @@ version: 1.0.0
 from typing import Optional
 
 from chess.rank import Rank
+from chess.square import Square
 from chess.team import Team
 from chess.token import CombatantToken
 
 
 class PawnToken(CombatantToken):
-  
   _previous_rank: Optional[Rank]
 
-  def __init__(self, id: int, name: str, rank: Rank, team: Team):
-    super().__init__(id, name, rank, team)
+  def __init__(
+          self,
+          id: int,
+          rank: Rank,
+          team: Team,
+          designation: str,
+          roster_number: int,
+          opening_square: Square,
+  ):
+    super().__init__(
+        id=id,
+        team=team,
+        rank=rank,
+        designation=designation,
+        roster_number=roster_number,
+        opening_square=opening_square
+    )
     self._previous_rank = None
     
   @property
@@ -29,7 +44,6 @@ class PawnToken(CombatantToken):
     
   def promote(self, new_rank: Rank):
     self._set_rank(new_rank)
-
 
   def __eq__(self, other):
     if super().__eq__(other):

@@ -43,6 +43,7 @@ class Token(ABC):
     _rank: Rank
     _designation: str
     _roster_number: int
+    _opening_square: Square
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _positions: CoordDataService
@@ -67,9 +68,6 @@ class Token(ABC):
         self._opening_square = opening_square
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_item
-        
-        if self not in team.roster:
-            team.roster.append(self)
     
     @property
     def id(self) -> int:
@@ -104,7 +102,7 @@ class Token(ABC):
         return self._positions.current_item
     
     @property
-    def previous_address(self) -> Optional[Coord]:
+    def previous_coord(self) -> Optional[Coord]:
         return self._previous_address
     
     def _set_rank(self, rank: Rank) -> None:

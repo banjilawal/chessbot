@@ -38,9 +38,17 @@ class ValidationResult(Result[T], Generic[T]):
         super().__init__(payload=payload, exception=exception)
     
     @classmethod
-    def empty(cls) -> Result:
+    def success(cls, payload: T) -> ValidationResult[T]:
+        return cls(payload=payload)
+    
+    @classmethod
+    def failure(cls, exception: Exception) -> ValidationResult[T]:
+        return cls(exception=exception)
+    
+    @classmethod
+    def empty(cls) -> ValidationResult[T]:
         method = "ValidationResult.empty"
-        return Result(
+        return cls(
             exception=NotImplementedException(
                 f"{method}: {NotImplementedException.DEFAULT_MESSAGE}. ValidationResult cannot"
                 f" be empty. It must have either a payload or an rollback_exception."
@@ -48,11 +56,3 @@ class ValidationResult(Result[T], Generic[T]):
         )
 
 
-    @classmethod
-    def success(cls, payload: T) -> ValidationResult[T]:
-        return cls(payload=payload)
-    
-    
-    @classmethod
-    def failure(cls, exception: Exception) -> ValidationResult[T]:
-        return cls(exception=exception)

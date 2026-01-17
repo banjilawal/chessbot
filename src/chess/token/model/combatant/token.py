@@ -9,6 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
+from chess.square import Square
 from chess.team import Team
 from chess.rank import Rank
 from chess.token import Token
@@ -30,8 +31,23 @@ class CombatantToken(Token):
     """
     _captor: Optional[Token]
     
-    def __init__(self, id: int, name: str, rank: Rank, team: Team):
-        super().__init__(id, name, rank, team)
+    def __init__(
+            self,
+            id: int,
+            rank: Rank,
+            team: Team,
+            designation: str,
+            roster_number: int,
+            opening_square: Square,
+    ):
+        super().__init__(
+            id=id,
+            team=team,
+            rank=rank,
+            designation=designation,
+            roster_number=roster_number,
+            opening_square=opening_square
+        )
         self._captor = None
     
     @property

@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from typing import cast
+from typing import Any, cast
 
 from chess.team import TeamService
 from chess.rank import RankService
@@ -21,7 +21,7 @@ class TokenBuildManifestValidator(Validator[TokenBuildManifest]):
     @classmethod
     def validate(
             cls,
-            candidate: TokenBuildManifest,
+            candidate: Any,
             rank_service: RankService = RankService(),
             team_service: TeamService = TeamService(),
             coord_service: CoordService = CoordService(),

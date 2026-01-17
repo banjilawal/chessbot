@@ -134,7 +134,7 @@ class TokenService(EntityService[Token]):
                 )
             )
         # Handle the case that an attempt is made to undo more than one turn.
-        if token.previous_address == token.current_address:
+        if token.previous_coord == token.current_address:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenServiceException(
@@ -144,7 +144,7 @@ class TokenService(EntityService[Token]):
             )
         # Handle the case that the coord stack pop operation fails.
         pop_result = token.positions.pop_coord()
-        if token.previous_address == token.current_address:
+        if token.previous_coord == token.current_address:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenServiceException(
