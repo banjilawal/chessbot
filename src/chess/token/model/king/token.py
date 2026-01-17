@@ -9,17 +9,27 @@ version: 1.0.0
 
 from chess.rank import Rank
 from chess.team import Team
-from chess.token import Token
+from chess.token import KingActivityState, Token
 
 
 class KingToken(Token):
+    _activity_state: KingActivityState
     _is_checked: bool
     _is_checkmated: bool
     
-    def token(self, id: int, name: str, rank: Rank, team: Team):
-        super().token(id, name, rank, team)
+    def __init__(self, id: int, name: str, rank: Rank, team: Team):
+        super().__init__n(id, name, rank, team)
         self._is_checked = False
         self._is_checkmated = False
+        self._activity_state = KingActivityState.FREE
+        
+    @property
+    def state(self) -> KingActivityState:
+        return self._activity_state
+    
+    @state.setter
+    def state(self, state: KingActivityState):
+        self._activity_state = state
     
     @property
     def is_checked(self) -> bool:

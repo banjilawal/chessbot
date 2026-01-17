@@ -12,7 +12,7 @@ from typing import Optional
 
 from chess.rank import Rank
 from chess.team import Team
-from chess.token import Token
+from chess.token import Token, TokenBoardState
 from chess.square import Square
 from chess.coord import Coord, CoordDataService
 
@@ -44,9 +44,10 @@ class Token(ABC):
     _designation: str
     _roster_number: int
     _opening_square: Square
+    _positions: CoordDataService
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
-    _positions: CoordDataService
+    _token_board_state: TokenBoardState
 
     def __init__(
             self,
@@ -68,6 +69,7 @@ class Token(ABC):
         self._opening_square = opening_square
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_item
+        self._token_board_state = TokenBoardState.NEVER_PLACED
     
     @property
     def id(self) -> int:
@@ -104,6 +106,15 @@ class Token(ABC):
     @property
     def previous_coord(self) -> Optional[Coord]:
         return self._previous_address
+    
+    @property
+    def board_state(self) -> TokenBoardState:
+        return self._token_board_state
+    
+    @board_state.setter
+    def board_state(self, token_board_state: TokenBoardState):
+        self._token_board_state = token_board_state
+    
     
     def _set_rank(self, rank: Rank) -> None:
         self._rank = rank

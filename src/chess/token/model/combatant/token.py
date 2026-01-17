@@ -12,7 +12,7 @@ from typing import Optional
 from chess.square import Square
 from chess.team import Team
 from chess.rank import Rank
-from chess.token import Token
+from chess.token import CombatantActivityState, Token
 
 
 class CombatantToken(Token):
@@ -30,6 +30,7 @@ class CombatantToken(Token):
         *   captor (Optional[Token]): Enemy who captured the combatant.
     """
     _captor: Optional[Token]
+    _activity_state: CombatantActivityState
     
     def __init__(
             self,
@@ -49,14 +50,20 @@ class CombatantToken(Token):
             opening_square=opening_square
         )
         self._captor = None
+        self._activity_state = CombatantActivityState.FREE
     
     @property
     def captor(self) -> Optional[Token]:
         return self._captor
     
+    @property
+    def activity_state(self) -> CombatantActivityState:
+        return self._activity_state
+    
     @captor.setter
     def captor(self, captor: Token):
         self._captor = captor
+        self._activity_state = CombatantActivityState.CAPTURED
     
     def __eq__(self, other):
         if super().__eq__(other):

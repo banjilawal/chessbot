@@ -123,7 +123,7 @@ class CoordDataService(DataService[Coord]):
         validation = self.coord_service.validator.validate(candidate=coord)
         if validation.is_failure:
             # Return the exception chain on failure.
-            return InsertionResult(
+            return InsertionResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
                     ex=PushingCoordFailedException(
@@ -135,7 +135,7 @@ class CoordDataService(DataService[Coord]):
         # Handle the case that the Coord is already at the top.
         if coord == self.current_coord:
             # Return the exception chain on failure.
-            return InsertionResult(
+            return InsertionResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
                     ex=PushingCoordFailedException(
@@ -151,7 +151,7 @@ class CoordDataService(DataService[Coord]):
         super_insertion_result = self.push_item(item=coord)
         if super_insertion_result.is_failure:
             # Return the exception chain on failure.
-            return InsertionResult(
+            return InsertionResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
                     ex=PushingCoordFailedException(

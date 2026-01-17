@@ -15,4 +15,5 @@ from .combatant import *
 
 # Modules
 from .token import Token
+from .state import TokenBoardState
 from .exception import TokenException
