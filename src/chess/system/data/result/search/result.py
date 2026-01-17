@@ -9,12 +9,12 @@ Version: 1.0.0
 
 from typing import Generic, List, Optional, TypeVar
 
-from chess.system import DataResult, SearchState
+from chess.system import DataResult, SearchState, SearchResult
 
 T = TypeVar("T")
 
 
-class SearchResult(DataResult[Generic[T]]):
+class SearchResult(DataResult[T], Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
@@ -79,17 +79,17 @@ class SearchResult(DataResult[Generic[T]]):
         )
     
     @classmethod
-    def success(cls, payload: List[T]) -> SearchResult:
+    def success(cls, payload: List[T]) -> SearchResult[List[T]]:
         return cls(state=SearchState.SUCCESS, payload=payload)
     
     @classmethod
-    def failure(cls, exception: Exception) -> SearchResult:
+    def failure(cls, exception: Exception) -> SearchResult[T]:
         return cls(state=SearchState.FAILURE, exception=exception)
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> SearchResult:
+    def timed_out(cls, exception: Exception) -> SearchResult[T]:
         return cls(state=SearchState.TIMED_OUT, exception=exception)
     
     @classmethod
-    def empty(cls) -> SearchResult:
+    def empty(cls) -> SearchResult[T]:
         return cls(state=SearchState.EMPTY)

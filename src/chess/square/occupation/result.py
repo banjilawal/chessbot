@@ -1,7 +1,7 @@
-# src/chess/system/data/result/occupation/result.py
+# src/chess/square/occupation/result.py
 
 """
-Module: chess.system.data.result.occupation.result
+Module: chess.square.occupation.result
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -10,6 +10,7 @@ Version: 1.0.0
 from typing import Generic, Optional, TypeVar
 
 from chess.system import Result, OccupationResult, OccupationState
+from chess.token.model import Token
 
 T = TypeVar("T")
 
@@ -35,6 +36,7 @@ class OccupationResult(Result[Generic[T]]):
         *   See DataResult class for inherited attributes.
     """
     _state: OccupationState
+    _occupier: Optional[Token]
     
     def __init__(self, state: OccupationState, payload: Optional[T] = None, exception: Optional[Exception] = None):
         super().__init__(payload=payload, exception=exception)

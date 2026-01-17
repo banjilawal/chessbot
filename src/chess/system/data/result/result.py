@@ -13,8 +13,7 @@ from chess.system import EmptyDataResultException, NotImplementedException, Resu
 
 T = TypeVar("T")
 
-
-class DataResult(Result[Generic[T]]):
+class DataResult(Result[T], Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 

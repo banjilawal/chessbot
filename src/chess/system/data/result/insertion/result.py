@@ -16,7 +16,7 @@ from chess.system import (
 T = TypeVar("T")
 
 
-class InsertionResult(DataResult[Generic[T]]):
+class InsertionResult(DataResult[T], Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 

@@ -15,7 +15,7 @@ from chess.system import (
 
 T = TypeVar("T")
 
-class CalculationResult(DataResult[Generic[T]]):
+class CalculationResult(DataResult[T], Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
