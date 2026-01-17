@@ -10,6 +10,7 @@ version: 1.0.0
 #=========== TOKEN.FACTORY PACKAGE CONTENTS ===========#
 
 # Packages
+from .manifest import *
 from .exception import *
 
 # Modules

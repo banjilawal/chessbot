@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
 """
+from typing import Tuple
 
 from chess.coord import CoordDataService, UniqueCoordDataService
 from chess.square import Square, SquareService
@@ -56,10 +57,10 @@ class TokenFactory(Builder[Token]):
             id: int = id_emitter.token_id,
             rank_service: RankService = RankService(),
             team_service: TeamService = TeamService(),
-            square_service
             piece_service: TokenService = TokenService(),
+            square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[PawnToken|KingToken|CombatantToken]:
+    ) -> BuildResult[Token]:
         """
         # ACTION:
             1.  If any build param fails its certification tests send the exception in the BuildResult. Else,
@@ -92,6 +93,7 @@ class TokenFactory(Builder[Token]):
             opening_square=opening_square,
             rank_service=rank_service,
             team_service=team_service,
+            square_service=square_service,
             identity_service=identity_service,
         )
         if param_validation.is_failure:
@@ -209,13 +211,15 @@ class TokenFactory(Builder[Token]):
             team: Team,
             designation: str,
             roster_number: int,
+            opening_square: Square,
             rank_service: RankService = RankService(),
             team_service: TeamService = TeamService(),
+            square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[(int, str, Rank, Team, int)]:
+    ) -> ValidationResult[Tuple(int, str, Rank, Team, int, Square)]:
         """
         # ACTION:
-            1.  If any build parameter fails its validation send the exception in the ValidationResult. Else,
+            1.  If any build parameter fails, its validation sends the exception in the ValidationResult. Else,
                 return the certified tuple of parameters in the ValidationResult.
         # PARAMETERS:
             *   id (int)
@@ -238,42 +242,27 @@ class TokenFactory(Builder[Token]):
         # Handle the case that either id or designation fail their validation.
         identity_validation = identity_service.validate_identity(id_candidate=id, name_candidate=designation)
         if identity_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=identity_validation.exception,
-                )
-            )
+            return ValidationResult.failure(identity_validation.exception)
+        
         # Handle the case that rank validation fails.
         rank_validation = rank_service.item_validator.validate(candidate=rank)
-        if rank_validation.is_failure():
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=rank_validation.exception,
-                )
-            )
+        if rank_validation.is_failure:
+            return ValidationResult.failure(ex=rank_validation.exception)
+        
         # Handle the case that team validation fails.
         team_validation = team_service.item_validator.validate(candidate=team)
         if team_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=team_validation.exception,
-                )
-            )
+            return ValidationResult.failure(team_validation.exception)
+        
         # Handle the case that roster_number validation fails.
         roster_number_validation = identity_service.validate_id(candidate=roster_number)
         if roster_number_validation.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=roster_number_validation.exception,
-                )
-            )
+            return ValidationResult.failure(roster_number_validation.exception)
+        
+        # Handle the case that square validation fails.
+        square_validation = square_service.item_validator.validate(candidate=opening_square)
+        if square_validation.is_failure:
+            return ValidationResult.failure(square_validation.exception)
+        
         # On successfully certifying the build parameters return them as a tuple in the ValidationResult.
-        return ValidationResult.success((id, designation, rank, team, roster_number))
+        return ValidationResult.success((id, designation, rank, team, roster_number, opening_square))

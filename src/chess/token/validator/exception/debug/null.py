@@ -25,8 +25,8 @@ class NullTokenException(TokenException, NullException):
     1.  Indicate that Token validation failed because the candidate was null.
 
     # PARENT:
+        *   TokenException
         *   NullTokenException
-        *   InvalidTokenException
 
     # PROVIDES:
     None

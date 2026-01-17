@@ -91,7 +91,7 @@ class TeamValidator(Validator[Team]):
                     ex=TypeError(f"{method}: Expected Team, got {type(candidate).__name__} instead.")
                 )
             )
-        # --- Cast candidate to a Team for additional tests ---#
+        # --- Cast the candidate to a Team for additional tests ---#
         team = cast(Team, candidate)
         
         # Handle the case team.id certification fails.

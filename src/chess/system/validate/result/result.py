@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 from typing import Optional, TypeVar, Generic
-from chess.system import NotImplementedException, Result
+from chess.system import NotImplementedException, Result, ValidationResult
 
 T = TypeVar("T")
 
 
-class ValidationResult(Result[Generic[T]]):
+class ValidationResult(Result[T], Generic[T]):
     """
-    # ROLE: Messanger  Data Transport Object, Error Transport Object.
+    # ROLE: Messanger Data Transport Object, Error Transport Object.
   
     # RESPONSIBILITIES:
     1. Send the outcome of a validation request to the client.
@@ -25,13 +25,13 @@ class ValidationResult(Result[Generic[T]]):
         *   Result
   
     # PROVIDES:
-    ValidationResult
+    NOne
   
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    See Result class for inherited attributes.
+        *   See Result class for inherited attributes.
     """
     
     def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
@@ -46,3 +46,13 @@ class ValidationResult(Result[Generic[T]]):
                 f" be empty. It must have either a payload or an rollback_exception."
             )
         )
+
+
+    @classmethod
+    def success(cls, payload: T) -> ValidationResult[T]:
+        return cls(payload=payload)
+    
+    
+    @classmethod
+    def failure(cls, exception: Exception) -> ValidationResult[T]:
+        return cls(exception=exception)

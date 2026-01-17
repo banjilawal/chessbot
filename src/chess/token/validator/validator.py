@@ -94,7 +94,7 @@ class TokenValidator(Validator[Token]):
                     ex=TypeError(f"{method}:Expected Token, got {type(candidate).__name__} instead.")
                 )
             )
-        # After existence and type checks cast the candidate to a Token for additional tests.
+        # --- Cast the candidate to a Token for additional tests ---#
         token = cast(Token, candidate)
         
         # Handle the case that id or designation are not certified safe.
