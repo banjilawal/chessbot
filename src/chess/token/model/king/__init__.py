@@ -13,5 +13,5 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .state import KingState
+from .state import KingActivityState
 from .token import KingToken

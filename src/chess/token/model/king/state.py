@@ -10,7 +10,7 @@ version: 1.0.0
 from enum import Enum, auto
 
 
-class KingState(Enum):
+class KingActivityState(Enum):
     FREE = auto(),
     IN_CHECK = auto(),
     CHECKMATED = auto()
