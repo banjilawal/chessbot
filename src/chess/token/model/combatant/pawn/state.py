@@ -9,8 +9,7 @@ version: 1.0.0
 
 from enum import Enum, auto
 
-
-class PawnActivityState(Enum):
-    FREE = auto(),
-    CAPTURED = auto(),
-    PROMOTED = auto(),
+class PromotionState(Enum):
+    NO_PROMOTION = auto(),
+    PROMOTED_TO_QUEEN = auto(),
+    PROMOTED_TO_CASTLE = auto(),
