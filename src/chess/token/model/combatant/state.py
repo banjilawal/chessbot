@@ -10,7 +10,7 @@ version: 1.0.0
 from enum import Enum, auto
 
 
-class CombatantActivityState(Enum):
+class CombatantStatus(Enum):
     FREE = auto(),
     CAPTURE_ACTIVATED = auto(),
     REGISTERED_HOSTAGE = auto(),

@@ -1,5 +1,5 @@
 from chess.square import SquareException
 
 
-class TargetSquareNotEmptyException(SquareException):
+class OccupiedSquareCannotRecieveFormationException(SquareException):
     pass

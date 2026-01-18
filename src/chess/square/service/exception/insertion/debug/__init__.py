@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .full import TargetSquareNotEmptyException
+from .full import OccupiedSquareCannotRecieveFormationException

@@ -11,7 +11,6 @@ from chess.board import Board
 from chess.schema import Schema
 from chess.player import Player
 from chess.team import HostageService, RosterService
-from chess.token import HostageService
 
 
 class Team:
