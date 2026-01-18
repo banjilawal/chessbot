@@ -11,6 +11,7 @@ from typing import cast
 from chess.square import (
     Square, SquareTokenAnalysisFailedException, SquareTokenAnalysisRouteException,  SquareValidator
 )
+from chess.square.state import SquareState
 from chess.token import CombatantActivityState, CombatantToken, KingToken, Token, TokenBoardState, TokenService
 from chess.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
 
@@ -95,75 +96,84 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         # Declare local token variable for additional testing and return.
         token = cast(Token, token_validation.payload)
         
-        # --- Deal with cases where there is no relation between the square and token. ---#
-        
-        # If the token has not been placed on the board then, the square and token are not related.
-        if token.board_state == TokenBoardState.NEVER_BEEN_PLACED:
-            return RelationReport.no_relation()
-        # If the square and token have different coords they are not relatied.
-        if square.occupant != token and square.coord != token.current_position:
+        # --- Deal with cases that are not dependent on the subclass. ---#
+        if (
+                token.board_state == TokenBoardState.NEVER_BEEN_PLACED or
+                square.occupant != token and square.coord != token.current_position
+        ):
             return RelationReport.no_relation()
         
         if isinstance(token, KingToken):
-            king = cast(KingToken, token)
-            # The king occupies the same coord but is not set as the occupant. (Occupation incomplete)
-            if square.occupant != king and square.coord == king.current_position:
-                return RelationReport.registration_missing(satellite=token)
-            # The king is at a different coord but is still set as the occupant (Evacuation incomplete)
-            if square.occupant == token and square.coord != token.current_position:
-                return RelationReport.stale_link(primary=square)
-            # Only case left is bidirectional (Transition complete)
-            return RelationReport.bidirectional(primary=square, satellite=king)
+            return cls._king_square_analysis(king=cast(KingToken, token), square=square)
+        if isinstance(square, KingToken):
+            return cls._combatant_square_analysis(king=cast(CombatantToken, token), square=square)
+         
+        return RelationReport.failure(
+            SquareTokenAnalysisFailedException(
+                message=f"{method}: {SquareTokenAnalysisFailedException.DEFAULT_MESSAGE}",
+                ex=SquareTokenAnalysisRouteException(f"{method}: {SquareTokenAnalysisRouteException.DEFAULT_MESSAGE}")
+            )
+        )
+    
+    @LoggingLevelRouter.monitor
+    def _combatant_square_analysis(self, combatant: CombatantToken, square: Square) -> RelationReport[Square, Token]:
+        method = "SquareTokenRelationAnalyzer._token_square_analysis"
+    
+        # --- Neither the square nor the king share the same coord. (No transition event) ---#
+        if square.occupant != combatant and square.coord != combatant.current_position:
+            return RelationReport.no_relation()
         
-        if isinstance(token, CombatantToken):
-            combatant = cast(CombatantToken, token)
-            # The combatant has been removed from the board and is inside enemy_team.hostages. (Removal complete)
-            if (
-                    square.occupant != combatant and
-                    combatant.activity_state == CombatantActivityState.REGISTERED_HOSTAGE
-            ):
-                return RelationReport.no_relation()
-            # The combatant has been captured by an enemy but has not been transferred to enemy_team.hostages (Removal incomplete)
-            if (
-                    square.occupant != combatant and
-                    square.coord == combatant.current_position and
-                    combatant.activity_state == CombatantActivityState.CAPTURE_ACTIVATED
-            ):
-                square
-                return RelationReport.stale_link(primary=square)
-            
-            if (
-                    square.occupant == combatant and
-                    square.coord != combatant.current_position
-            ):
-                return RelationReport.stale_link(primary=square)
-            
-            if (
-                    square.occupant == combatant and
-                    square.coord == combatant.current_position and
-                    combatant.activity_state != CombatantActivityState.FREE
-            ):
-                return RelationReport.stale_link(primary=square)
-
-            if (
-                    square.occupant != combatant and
-                    square.coord == token.current_position and
-                    combatant.activity_state == CombatantActivityState.FREE
-            ):
-                return RelationReport.registration_missing(satellite=token)
-            
-            if (
-                    square.occupant == combatant and
-                    square.coord == token.current_position and
-                    combatant.activity_state == CombatantActivityState.FREE
-            ):
-                return RelationReport.bidirectional(primary=square, satellite=token)
+        # --- The captured token has been transferred from the board to enemy_team.hostages. (No transition event) ---#
+        if square.occupant != combatant and combatant.activity_state == CombatantActivityState.REGISTERED_HOSTAGE:
+            return RelationReport.no_relation()
+        
+        # --- The combatant occupies a different coord but is still set as the occupant (Evacuation event incomplete) ---#
+        if (
+                square.occupant == combatant and square.coord != combatant.current_position and
+                combatant.activity_state == CombatantActivityState.FREE
+        ):
+            return RelationReport.stale_link(primary=square)
+        
+        # --- The free combatant shares the coord but is not set as the occupant yet (Occupation event incomplete) ---#
+        if (
+                square.occupant != combatant and square.coord == combatant.current_position and
+                combatant.activity_state == CombatantActivityState.FREE
+        ):
+            return RelationReport.registration_missing(satellite=combatant)
+        
+        # --- The captive has not been removed from the square yet. (CaptiveTransfer event incomplete) ---#
+        if square.occupant == combatant and combatant.activity_state == CombatantActivityState.CAPTURE_ACTIVATED:
+            return RelationReport.bidirectional(primary=square, satellite=combatant)
+        
+        # --- The free combatant and the square share the coord and the combatant is occupying a square. (No Transition event) ---#
+        if (
+                square.occupant == combatant and square.coord == combatant.current_position and
+                combatant.activity_state == CombatantActivityState.FREE
+        ):
+            return RelationReport.bidirectional(primary=square, satellite=combatant)
         
         return RelationReport.failure(
             SquareTokenAnalysisFailedException(
                 message=f"{method}: {SquareTokenAnalysisFailedException.DEFAULT_MESSAGE}",
-                ex=SquareTokenAnalysisRouteException(
-                    f"{method}: {SquareTokenAnalysisRouteException.DEFAULT_MESSAGE}"
-                )
+                ex=SquareTokenAnalysisRouteException(f"{method}: {SquareTokenAnalysisRouteException.DEFAULT_MESSAGE}")
             )
         )
+    
+    @LoggingLevelRouter.monitor
+    def _king_square_analysis(self, king: KingToken, square: Square) -> RelationReport[Square, Token]:
+        method = "SquareTokenRelationAnalyzer._king_square_analysis"
+        
+        # --- Neither the square nor the king share the same coord. (No transition event) ---#
+        if square.occupant != king and square.coord != king.current_position:
+            return RelationReport.no_relation()
+        
+        # --- The king occupies the same coord but is not set as the occupant. (Occupation event incomplete) ---#
+        if square.occupant != king and square.coord == king.current_position:
+            return RelationReport.registration_missing(satellite=king)
+        
+        # --- The king occupies a different coord but is still set as the occupant (Evacuation event incomplete) ---#
+        if square.occupant == king and square.coord != king.current_position:
+            return RelationReport.stale_link(primary=square)
+        
+        # --- Only case left is bidirectional. (No transition event) ---#
+        return RelationReport.bidirectional(primary=square, satellite=king)

@@ -86,13 +86,21 @@ class Square:
         return self._state == SquareState.EMPTY and self._occupant is None
     
     @property
+    def state(self) -> SquareState:
+        return self._state
+    
+    @state.setter
+    def state(self, state: SquareState):
+        self._state = state
+    
+    @property
     def occupant(self) -> Optional[Token]:
         return self._occupant
     
     @occupant.setter
     def occupant(self, token: Optional[Token]):
         self._occupant = token
-        self._state = SquareState.OCCUPIED
+        self._state = SquareState.CONCRETE_OCCUPANT
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True
