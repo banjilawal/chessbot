@@ -10,6 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.rank import Rank, RankService
+from chess.square import Square, SquareService
 from chess.team import Team, TeamService
 from chess.coord import Coord, CoordService
 from chess.system import (
@@ -54,9 +55,11 @@ class TokenContextBuilder(Builder[TokenContext]):
             coord: Optional[Coord] = None,
             color: Optional[GameColor] = None,
             designation: Optional[str] = None,
+            opening_square: Optional[Square] = None,
             team_service: TeamService = TeamService(),
             rank_service: RankService = RankService(),
             coord_service: CoordService = CoordService(),
+            square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
             color_validator: GameColorValidator = GameColorValidator(),
             number_validator: NumberValidator = NumberValidator(),
@@ -148,6 +151,20 @@ class TokenContextBuilder(Builder[TokenContext]):
                 )
             # On validation success return a designation_TokenContext in the BuildResult.
             return BuildResult.success(TokenContext(designation=designation))
+        
+        # Build the opening_square TokenContext if its flag is enabled.
+        if opening_square is not None:
+            validation = square_service.validator.validate(opening_square)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    TokenContextBuildFailedException(
+                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a designation_TokenContext in the BuildResult.
+            return BuildResult.success(TokenContext(opening_square=opening_square))
         
         # Build the coord TokenContext if its flag is enabled.
         if coord is not None:

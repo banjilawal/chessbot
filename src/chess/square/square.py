@@ -100,7 +100,6 @@ class Square:
     @occupant.setter
     def occupant(self, token: Optional[Token]):
         self._occupant = token
-        self._state = SquareState.CONCRETE_OCCUPANT
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True

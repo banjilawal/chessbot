@@ -8,8 +8,8 @@ version: 1.0.0
 """
 
 from typing import Optional
-from zipimport import cp437_table
 
+from chess.square import Square
 from chess.team import Team
 from chess.rank import Rank
 from chess.token import Token
@@ -32,6 +32,7 @@ class TokenContext(Context[Token]):
         *   rank (Rank)
         *   ransom (str)
         *   coord (Coord)
+        *   opening_square (Square)
     """
     _rank: Optional[Rank]
     _team: Optional[Team]
@@ -39,6 +40,7 @@ class TokenContext(Context[Token]):
     _coord: Optional[Coord]
     _color: Optional[GameColor]
     _designation: Optional[str]
+    _opening_square: Optional[Square]
     
     @LoggingLevelRouter.monitor
     def __init__(
@@ -50,6 +52,7 @@ class TokenContext(Context[Token]):
             coord: Optional[Coord] = None,
             designation: Optional[str] = None,
             color: Optional[GameColor] = None,
+            opening_square: Optional[Square] = None
     ):
         super().__init__(id=id, name=None)
         self._coord = coord
@@ -58,6 +61,7 @@ class TokenContext(Context[Token]):
         self._ransom = ransom
         self._color = color
         self._designation = designation
+        self._opening_square = opening_square
 
     @property
     def team(self) -> Optional[Team]:
@@ -83,6 +87,10 @@ class TokenContext(Context[Token]):
     def designation(self) -> Optional[str]:
         return self._designation
     
+    @property
+    def opening_square(self) -> Optional[Square]:
+        return self._opening_square
+    
     def to_dict(self) -> {}:
         return {
             "id": self.id,
@@ -92,4 +100,5 @@ class TokenContext(Context[Token]):
             "coord": self._coord,
             "ransom": self._ransom,
             "designation": self.designation,
+            "opening_square": self._opening_square
         }

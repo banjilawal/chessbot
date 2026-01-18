@@ -10,6 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.rank import Rank
+from chess.square import Square
 from chess.team import Team
 from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from chess.token import (
@@ -109,8 +110,11 @@ class TokenFinder(DataFinder[Token]):
         if context.id is not None:
             return cls._find_by_id(dataset=dataset, id=context.id)
         # Entry point into finding by token's designation.
-        if context.name is not None:
+        if context.designation is not None:
             return cls._find_by_designation(dataset=dataset, name=context.designation)
+        # Entry point into finding by token's opening_square.
+        if context.opening_square is not None:
+            return cls._find_by_opening_square(dataset=dataset, name=context.opening_square)
         # Entry point into finding by token's team.
         if context.team is not None:
             return cls._find_by_team(dataset=dataset, team=context.team)
@@ -177,6 +181,31 @@ class TokenFinder(DataFinder[Token]):
         """
         method = "TokenFinder._find_by_designation"
         matches = [token for token in dataset if token.designation.upper() == designation.upper()]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_opening_square(cls, dataset: List[Token], opening_square: Square) -> SearchResult[List[Token]]:
+        """
+        # ACTION:
+            1.  Get the Tokens which match the designation.
+        # PARAMETERS:
+            *   opening_square (Square)
+            *   dataset (List[Token])
+        # RETURNS:
+            *   SearchResult[List[Token]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Tokem] in the payload.
+                    - On no matches found: Exception null, payload null
+        # RAISES:
+            None
+        """
+        method = "TokenFinder._find_by_opening_square"
+        matches = [token for token in dataset if token.opening_square == opening_square]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

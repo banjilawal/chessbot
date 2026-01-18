@@ -11,7 +11,6 @@ from typing import cast
 from chess.square import (
     Square, SquareTokenAnalysisFailedException, SquareTokenAnalysisRouteException,  SquareValidator
 )
-from chess.square.state import SquareState
 from chess.token import CombatantActivityState, CombatantToken, KingToken, Token, TokenBoardState, TokenService
 from chess.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
 
