@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# SQUARE_TOKEN_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-    "SquareTokenRelationAnalysisFailedException",
+    "SquareTokenAnalysisFailedException",
 ]
 
-from chess.system import RelationAnalysisFailedException
+from chess.system import AnalysisFailedException
 
 
 # ======================# SQUARE_TOKEN_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-class SquareTokenRelationAnalysisFailedException(RelationAnalysisFailedException):
+class SquareTokenAnalysisFailedException(AnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

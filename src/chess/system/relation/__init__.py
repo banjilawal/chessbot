@@ -11,10 +11,10 @@ version: 1.0.0
 
 # Packages
 from .wrong import *
+from .exception import *
 
 # Modules
 from .dyad import Dyad
 from .status import RelationStatus
 from .report import RelationReport
 from .analyzer import RelationAnalyzer
-from .exception import RelationAnalysisFailedException

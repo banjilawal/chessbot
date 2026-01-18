@@ -1,0 +1,302 @@
+
+```python
+"""
+=========================================================================
+========= ENTITY RELATIONSHIPS: BI_DIRECTIONAL VS REGISTRATIONS =========
+=========================================================================
+For the application the ideal relations are binary. They may be either
+bidirectional or unidirectional. The highest order relations are trinities.
+Anything higher than that implies a poor design choice. Any triple relations
+should be converted from a symmetric to transitive.
+
+This document focuses on the types of binary relations.
+    *   bidirectional
+    *   unidirectional
+    *   registrations
+
+The differences mainly manifest in the
+    **  TYPE OF SEARCHABLE: DataSet vs EntityMetadataHash
+    **  EXCEPTION SUBCLASS: NoRegistrationException vs RelationExceptions.
+
+There is a subtle difference between bidirectional and registration exception.
+
+## WHAT IS A BIDIRECTIONAL RELATIONSHIP?:
+========================================
+This is simply a relationship between two entities that does not involve a data set.
+The parties will have may have either
+
+### TYPES OF BIDIRECTIONAL RELATIONSHIPS:
+........................................
+
+    1.  ONE-TO-ONE RELATIONSHIP:
+    ...........................
+        -   One side is a storage resource with permanent single slots, i.e Square, Arena.
+        -   Other side is resource client that occupies and leaves the storage slot i.e Token, Team
+
+    2.  MANY-TO-ONE POINTER RELATIONSHIP:
+    .....................................
+        -   The one-side does not own a resource, collection, storage it provides.
+        -   The each member in the many-set points to the one-sider.
+        -   Neither side owns the relationship.
+        -   One way only, one-side is unaware of the manys.
+    3.  ONE-COLLECTION-OWNED-BY ONE RELATIONSHIP:
+    .............................................
+        -   owning-side has a collection of the many
+        -   many-side-member can belong to a single collection owner. that is,
+                many_side_entity_2.owner == owner_a
+                many_side_entity_2.owner != owner_b
+                many_side_entity_1.owner_a == owner_b
+
+### TYPICAL USE CASES FOR BIDIRECTIONAL RELATIONSHIP:
+.....................................................
+
+    ALIVENESS:
+    ..........
+        Verifying a transient relationship between an entity occupying another. The transient occupier needs
+        to launch a transaction from the hosting
+        entity.
+
+        EXAMPLE: -->    Verifying a Token is active if it is occupying a Square.
+
+    FINDER FILTERING:
+    .................
+        Using the one-side to filter items in a many-sides by one-side along with some other unique attribute
+        they all have with the shared attribute that at least one collection member has.
+
+        EXAMPLE: -->    Filtering Team datasets by Game (shared attribute) and globally unique (id), or
+                        locally unique (designation, color)
+
+### BI_DIRECTIONAL_EXCEPTION SUPER CLASS:
+........................................
+    PARENT: ChessException
+    ,,,,,,,,,,,,,,,,,,,,,,,,
+    PURPOSE:
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        1.  Indicate if a required bidirectional relationship does not exist.
+
+## WHAT IS A REGISTRATION RELATIONSHIP
+======================================
+THere are two conditions.
+    1.  many_side_entity.owner == owner
+    2.  many_side_entity in owner.many_items_dataset.
+
+### REGISTRATION_EXCEPTION SUPER CLASS:
+........................................
+    PARENT: NoBidirectionalRelationException
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+
+    PURPOSE:
+    ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+        1.  Indicate if an item has its owner set correctly but the item does not exist in the Owner's collection.
+        2.  Indicate a bidirectional relationship is broken on the owning side
+        3.  Raised when Entity.owner == owner but the Owner does not find the item in its dataset.
+"""
+```this explains the types of relations i have defined
+```python
+class RelationAnalyzer(ABC, Generic[P, S]):
+
+                                                          @classmethod
+                                                          @abstractmethod
+                                                          @LoggingLevelRouter.monitor
+                                                          def analyze(cls, candidate_primary: P, candidate_satellite: S) -> RelationReport[P, S]:
+                                                              pass
+```this is the interface for a relation analyzer
+```python
+class RelationReport(Result[P, S], Generic[P, S]):
+                                                    _satellite: Optional[S]
+                                                    _relation_status: Optional[RelationStatus]
+
+                                                    def __init__(
+                                                            self,
+                                                            primary: Optional[P],
+                                                            satellite: Optional[S],
+                                                            relation_status: Optional[RelationStatus],
+                                                            exception: Optional[Exception],
+                                                    ):
+                                                        super().__init__(payload=primary, exception=exception)
+                                                        """INTERNAL: Use factory methods instead of direct constructor."""
+                                                        method = "RelationReport.__init__"
+                                                        self._satellite = satellite
+                                                        self._relation_status = relation_status
+
+                                                    @property
+                                                    def primary(self) -> Optional[P]:
+                                                        return cast(P, self.payload)
+
+                                                    @property
+                                                    def satellite(self) -> Optional[S]:
+                                                        return self._satellite
+
+                                                    @property
+                                                    def relation_status(self) -> Optional[RelationStatus]:
+                                                        return self._relation_status
+
+                                                    @property
+                                                    def does_not_exist(self) -> bool:
+                                                        return (
+                                                                self.exception is None and
+                                                                self.payload is None and
+                                                                self._satellite is None and
+                                                                self._relation_status == RelationStatus.NO_RELATION
+                                                        )
+
+                                                    @property
+                                                    def partially_exists(self) -> bool:
+                                                        return (
+                                                                self.exception is None and
+                                                                self.payload is None and
+                                                                self._satellite is not None and
+                                                                self._relation_status == RelationStatus.REGISTRATION_NOT_SUBMITTED
+                                                        )
+
+                                                    @property
+                                                    def fully_exists(self) -> bool:
+                                                        return (
+                                                                self.exception is None and
+                                                                self.payload is not None and
+                                                                self._satellite is not None and
+                                                                self._relation_status == RelationStatus.BIDIRECTIONAL
+                                                        )
+
+                                                    @classmethod
+                                                    def not_related(cls) -> RelationReport[P, S]:
+                                                        return RelationReport(
+                                                            primary=None,
+                                                            satellite=None,
+                                                            exception=None,
+                                                            relation_status=RelationStatus.NO_RELATION,
+                                                        )
+
+                                                    @classmethod
+                                                    def partial(cls, satellite: S) -> RelationReport[P, S]:
+                                                        return RelationReport(
+                                                            primary=None,
+                                                            exception=None,
+                                                            satellite=satellite,
+                                                            relation_status=RelationStatus.REGISTRATION_NOT_SUBMITTED
+                                                        )
+
+                                                    @classmethod
+                                                    def bidirectional(cls, primary: P, satellite: S) -> RelationReport[P,S]:
+                                                        return RelationReport(
+                                                            exception=None,
+                                                            primary=primary,
+                                                            satellite=satellite,
+                                                            relation_status=RelationStatus.BIDIRECTIONAL,
+                                                        )
+```this is is the relationreport the problem is this works for a one-to-many perfectly however like between a bidirectioonal square-tokn binding where it does not work  se SquareTokenRelationReport shows the problem
+```python
+class SquareTokenRelationReport(RelationReport[Square, Token]):
+
+                                                                                                                                                                                                                            def __init__(
+                                                                                                                                                                                                                                    self,
+                                                                                                                                                                                                                                    primary: Optional[Square],
+                                                                                                                                                                                                                                    satellite: Optional[Token],
+                                                                                                                                                                                                                                    relation_status: Optional[RelationStatus],
+                                                                                                                                                                                                                                    exception: Optional[Exception],
+                                                                                                                                                                                                                            ):
+                                                                                                                                                                                                                                super().__init__(
+                                                                                                                                                                                                                                    primary=primary,
+                                                                                                                                                                                                                                    satellite=satellite,
+                                                                                                                                                                                                                                    exception=exception,
+                                                                                                                                                                                                                                    relation_status=RelationStatus.NO_RELATION
+                                                                                                                                                                                                                                )
+                                                                                                                                                                                                                                """INTERNAL: Use factory methods instead of direct constructor."""
+                                                                                                                                                                                                                                method = "RelationReport.__init__"
+
+                                                                                                                                                                                                                            @property
+                                                                                                                                                                                                                            def primary(self) -> Optional[Square]:
+                                                                                                                                                                                                                                return cast(Square, self.primary)
+
+                                                                                                                                                                                                                            @property
+                                                                                                                                                                                                                            def satellite(self) -> Optional[Token]:
+                                                                                                                                                                                                                                return cast(Token, self._satellite)
+
+                                                                                                                                                                                                                            @property
+                                                                                                                                                                                                                            def relation_status(self) -> Optional[RelationStatus]:
+                                                                                                                                                                                                                                return self._relation_status
+
+                                                                                                                                                                                                                            @property
+                                                                                                                                                                                                                            def does_not_exist(self) -> bool:
+                                                                                                                                                                                                                                return (
+                                                                                                                                                                                                                                        self.exception is None and
+                                                                                                                                                                                                                                        self.primary is None and
+                                                                                                                                                                                                                                        self.satellite is None and
+                                                                                                                                                                                                                                        self.relation_status == RelationStatus.NO_RELATION
+                                                                                                                                                                                                                                )
+
+                                                                                                                                                                                                                            @property
+                                                                                                                                                                                                                            def partially_exists(self) -> bool:
+                                                                                                                                                                                                                                return (
+                                                                                                                                                                                                                                        self.exception is None and
+                                                                                                                                                                                                                                        self.primary is None and
+                                                                                                                                                                                                                                        self._satellite is not None and
+                                                                                                                                                                                                                                        self._relation_status == RelationStatus.REGISTRATION_NOT_SUBMITTED
+                                                                                                                                                                                                                                )
+
+                                                                                                                                                                                                                            @property
+                                                                                                                                                                                                                            def fully_exists(self) -> bool:
+                                                                                                                                                                                                                                return (
+                                                                                                                                                                                                                                        self.exception is None and
+                                                                                                                                                                                                                                        self.primary is not None and
+                                                                                                                                                                                                                                        self._satellite is not None and
+                                                                                                                                                                                                                                        self._relation_status == RelationStatus.BIDIRECTIONAL
+                                                                                                                                                                                                                                )
+
+                                                                                                                                                                                                                            @classmethod
+                                                                                                                                                                                                                            def not_related(cls) -> RelationReport[Square, Token]:
+                                                                                                                                                                                                                                return cls(
+                                                                                                                                                                                                                                    primary=None,
+                                                                                                                                                                                                                                    satellite=None,
+                                                                                                                                                                                                                                    exception=None,
+                                                                                                                                                                                                                                    relation_status=RelationStatus.NO_RELATION,
+                                                                                                                                                                                                                                )
+
+                                                                                                                                                                                                                            @classmethod
+                                                                                                                                                                                                                            def square_not_submitted_lease_termination(cls, primary: Square) -> RelationReport[Square, Token]:
+                                                                                                                                                                                                                                return cls(
+                                                                                                                                                                                                                                    primary=primary,
+                                                                                                                                                                                                                                    exception=None,
+                                                                                                                                                                                                                                    satellite=None,
+                                                                                                                                                                                                                                    relation_status=RelationStatus.REGISTRATION_NOT_SUBMITTED
+                                                                                                                                                                                                                                )
+
+                                                                                                                                                                                                                            @classmethod
+                                                                                                                                                                                                                            def token_not_registered_with_square(cls, satellite: Token) -> RelationReport[Square, Token]:
+                                                                                                                                                                                                                                return cls(
+                                                                                                                                                                                                                                    primary=None,
+                                                                                                                                                                                                                                    exception=None,
+                                                                                                                                                                                                                                    satellite=satellite,
+                                                                                                                                                                                                                                    relation_status=RelationStatus.REGISTRATION_NOT_SUBMITTED
+                                                                                                                                                                                                                                )
+
+                                                                                                                                                                                                                            @classmethod
+                                                                                                                                                                                                                            def partial(cls, satellite: Token) -> RelationReport[Square, Token]:
+                                                                                                                                                                                                                                return cls(
+                                                                                                                                                                                                                                    primary=None,
+                                                                                                                                                                                                                                    exception=NotImplementedException("SquareTokenRelation does not unidrecitonalimplement partial relation reporting."),
+                                                                                                                                                                                                                                    satellite=None,
+                                                                                                                                                                                                                                    relation_status=RelationStatus.REGISTRATION_NOT_SUBMITTED
+                                                                                                                                                                                                                                )
+
+                                                                                                                                                                                                                            @classmethod
+                                                                                                                                                                                                                            def bidirectional(cls, primary: Square, satellite: Token) -> RelationReport[Square, Token]:
+                                                                                                                                                                                                                                return cls(
+                                                                                                                                                                                                                                    exception=None,
+                                                                                                                                                                                                                                    primary=primary,
+                                                                                                                                                                                                                                    satellite=satellite,
+                                                                                                                                                                                                                                    relation_status=RelationStatus.BIDIRECTIONAL,
+                                                                                                                                                                                                                                )
+```
+```python
+class SquareState(Enum):
+       EMPTY = auto(),
+       OCCUPIED = auto(),
+       GHOST_OCCUPATION = auto()
+```finally the SquareStaTe and RelationStatus
+```python
+class SquareState(Enum):
+                                                  EMPTY = auto(),
+                                                  OCCUPIED = auto(),
+                                                  GHOST_OCCUPATION = auto()
+```What I really want to do is havetwo partials one is satellite_not_registred I don't like that neither do i like primary_not_terminated_lease becasue they sound like boolean methods. As I wrote this I realized that the token and square kinda have a transitive relationshio when they are complete because square.occupant == token && square.coord == token.current_positon && token.activity_status == FREE then there is a relationshp to the coord if and only if token.is_free my qiestion is not how to write this my question is what are good names for the factory methods that will not be confused with the boolean I am considering having TransitiveRelationReport[U, V, W]' where u -> v -> w or something like that but the transitive seems unduly complex

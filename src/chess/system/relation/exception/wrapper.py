@@ -10,13 +10,13 @@ version: 1.0.0
 from chess.system import WrapperException
 
 __all__ = [
-    # ======================# RELATION_TEST_FAILED EXCEPTION #======================#
-    "RelationAnalysisFailedException",
+    # ======================# RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
+    "AnalysisFailedException",
 ]
 
 
-# ======================# RELATION_TEST_FAILED EXCEPTION #======================#
-class RelationAnalysisFailedException(WrapperException):
+# ======================# RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
+class AnalysisFailedException(WrapperException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -35,5 +35,5 @@ class RelationAnalysisFailedException(WrapperException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RELATION_TEST_FAILED_ERROR"
-    DEFAULT_MESSAGE = "RelationTest failed."
+    ERROR_CODE = "RELATION_ANALYSIS_FAILURE_ERROR"
+    DEFAULT_MESSAGE = "Relation analysis failed."

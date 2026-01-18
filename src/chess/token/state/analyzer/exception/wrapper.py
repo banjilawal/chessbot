@@ -3,12 +3,12 @@ __all__ = [
     "TokenStateAnalysisFailedException",
 ]
 
-from chess.system import RelationAnalysisFailedException
+from chess.system import AnalysisFailedException
 from chess.token import TokenStateException
 
 
 # ======================# ROSTER_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-class TokenStateAnalysisFailedException(TokenStateException, RelationAnalysisFailedException):
+class TokenStateAnalysisFailedException(TokenStateException, AnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

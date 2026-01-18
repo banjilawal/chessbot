@@ -1,4 +1,4 @@
-from typing import Optional, TypeVar, cast
+from typing import Generic, Optional, TypeVar, cast
 
 from chess.system import Dyad, RelationStatus, RelationReport, Result
 
@@ -7,9 +7,8 @@ S = TypeVar("S")
 
 
 
-class RelationReport(Result):
+class RelationReport(Result[P, S], Generic[P, S]):
     _satellite: Optional[S]
-    _relation_status: Optional[RelationStatus]
     
     def __init__(
             self,
@@ -46,13 +45,31 @@ class RelationReport(Result):
         )
     
     @property
-    def partially_exists(self) -> bool:
+    def registration_does_not_exist(self) -> bool:
         return (
                 self.exception is None and
                 self.payload is None and
                 self._satellite is not None and
                 self._relation_status == RelationStatus.REGISTRATION_NOT_SUBMITTED
         )
+    
+    @property
+    def stale_link_exists(self) -> bool:
+        return (
+                self.exception is None and
+                self.payload is not None and
+                self._satellite is None and
+                self._relation_status == RelationStatus.STALE_LINK_NOT_PURGED
+        )
+    
+    # @property
+    # def partially_exists(self) -> bool:
+    #     return (
+    #             self.exception is None and
+    #             self.payload is None and
+    #             self._satellite is not None and
+    #             self._relation_status == RelationStatus.REGISTRATION_NOT_SUBMITTED
+    #     )
     
     @property
     def fully_exists(self) -> bool:
@@ -64,14 +81,38 @@ class RelationReport(Result):
         )
     
     @classmethod
-    def not_related(cls) -> RelationReport:
-        return RelationReport(relation_status=RelationStatus.NO_RELATION)
+    def no_relation(cls) -> RelationReport[P, S]:
+        return RelationReport(
+            primary=None,
+            satellite=None,
+            exception=None,
+            relation_status=RelationStatus.NO_RELATION,
+        )
     
     @classmethod
-    def partial(cls, satellite: S) -> RelationReport:
-        return RelationReport(satellite=satellite, relation_status=RelationStatus.REGISTRATION_NOT_SUBMITTED)
+    def registration_missing(cls, satellite: S) -> RelationReport[P, S]:
+        return RelationReport(
+            primary=None,
+            exception=None,
+            satellite=satellite,
+            relation_status=RelationStatus.REGISTRATION_NOT_SUBMITTED
+        )
     
     @classmethod
-    def bidirectional(cls, primary: P, satellite: S) -> RelationReport:
-        return RelationReport(primary=primary, satellite=None, relation_status=RelationStatus.BIDIRECTIONAL)
+    def stale_link(cls, primary: P) -> RelationReport[P, S]:
+        return RelationReport(
+            satellite=None,
+            exception=None,
+            primary=primary,
+            relation_status=RelationStatus.STALE_LINK_NOT_PURGED
+        )
+    
+    @classmethod
+    def bidirectional(cls, primary: P, satellite: S) -> RelationReport[P,S]:
+        return RelationReport(
+            exception=None,
+            primary=primary,
+            satellite=satellite,
+            relation_status=RelationStatus.BIDIRECTIONAL,
+        )
         

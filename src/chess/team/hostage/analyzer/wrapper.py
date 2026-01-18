@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# HOSTAGE_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-    "HostageRelationAnalysisFailedException",
+    "HostageAnalysisFailedException",
 ]
 
-from chess.system import RelationAnalysisFailedException
+from chess.system import AnalysisFailedException
 
 
 # ======================# HOSTAGE_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-class HostageRelationAnalysisFailedException(RelationAnalysisFailedException):
+class HostageAnalysisFailedException(AnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

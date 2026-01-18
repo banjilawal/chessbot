@@ -14,4 +14,4 @@ None
 
 # Modules
 from .analyzer import BoardSquareRelationAnalyzer
-from .wrapper import BoardSquareRelationAnalysisFailedException
+from .wrapper import BoardSquareAnalysisFailedException
