@@ -5,36 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/relation-report-question" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/square/analyzer/exception/debug/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/square/analyzer/report.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/relation/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/relation/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square/analyzer/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/square/analyzer/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square/analyzer/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/token/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/token/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/token/analyzer/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/token/analyzer/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/relation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/relation/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/relation/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/relation/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/relation/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/analyzer/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/square/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/analyzer/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/analyzer/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/analyzer/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/analyzer/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/analyzer/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/analyzer/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/analyzer/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/status.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/status.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/hostage/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/hostage/analyzer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/hostage/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/hostage/analyzer/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/hostage/analyzer/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/hostage/analyzer/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/state/analyzer/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/state/analyzer/exception/wrapper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +277,7 @@
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.editor.code.editing",
     "settings.editor.splitter.proportion": "0.14655593",
     "vue.rearranger.settings.migration": "true"
   }
@@ -873,7 +844,7 @@
       <workItem from="1768671616580" duration="35433000" />
       <workItem from="1768719061700" duration="4489000" />
       <workItem from="1768723759252" duration="607000" />
-      <workItem from="1768730243841" duration="2233000" />
+      <workItem from="1768730243841" duration="3438000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -12,5 +12,5 @@ from enum import Enum, auto
 
 class SquareState(Enum):
     EMPTY = auto(),
-    OCCUPIED = auto(),
-    GHOST_OCCUPATION = auto()
+    CONCRETE_OCCUPANT = auto(),
+    GHOST_NOT_PURGED= auto()
