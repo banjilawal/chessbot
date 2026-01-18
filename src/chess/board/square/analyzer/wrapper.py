@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# BOARD_SQUARE_RELATION_TEST_FAILURE EXCEPTION #======================#
+    # ======================# BOARD_SQUARE_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
     "BoardSquareRelationAnalysisFailedException",
 ]
 
 from chess.system import RelationAnalysisFailedException
 
 
-# ======================# BOARD_SQUARE_RELATION_TEST_FAILURE EXCEPTION #======================#
+# ======================# BOARD_SQUARE_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
 class BoardSquareRelationAnalysisFailedException(RelationAnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
@@ -36,5 +36,5 @@ class BoardSquareRelationAnalysisFailedException(RelationAnalysisFailedException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_SQUARE_RELATION_TEST_FAILURE"
+    ERROR_CODE = "BOARD_SQUARE_RELATION_ANALYSIS_FAILURE"
     DEFAULT_MESSAGE = "Board-Square relation analysis failed."

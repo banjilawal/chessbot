@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# BOARD_TOKEN_RELATION_TEST_FAILURE EXCEPTION #======================#
+    # ======================# BOARD_TOKEN_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
     "BoardTokenRelationAnalysisFailedException",
 ]
 
 from chess.system import RelationAnalysisFailedException
 
 
-# ======================# BOARD_TOKEN_RELATION_TEST_FAILURE EXCEPTION #======================#
+# ======================# BOARD_TOKEN_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
 class BoardTokenRelationAnalysisFailedException(RelationAnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
@@ -36,5 +36,5 @@ class BoardTokenRelationAnalysisFailedException(RelationAnalysisFailedException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_TOKEN_RELATION_TEST_FAILURE"
+    ERROR_CODE = "BOARD_TOKEN_RELATION_ANALYSIS_FAILURE"
     DEFAULT_MESSAGE = "Board-Token relation analysis failed."

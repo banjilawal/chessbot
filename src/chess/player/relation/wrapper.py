@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# PLAYER_TEAM_RELATION_TEST_FAILURE EXCEPTION #======================#
+    # ======================# PLAYER_TEAM_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
     "PlayerTeamRelationAnalysisFailedException",
 ]
 
 from chess.system import RelationAnalysisFailedException
 
 
-# ======================# PLAYER_TEAM_RELATION_TEST_FAILURE EXCEPTION #======================#
+# ======================# PLAYER_TEAM_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
 class PlayerTeamRelationAnalysisFailedException(RelationAnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
@@ -36,5 +36,5 @@ class PlayerTeamRelationAnalysisFailedException(RelationAnalysisFailedException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_TEAM_RELATION_TEST_FAILURE"
+    ERROR_CODE = "AGENT_TEAM_RELATION_ANALYSIS_FAILURE"
     DEFAULT_MESSAGE = "AgentTeamRelationTest failed."

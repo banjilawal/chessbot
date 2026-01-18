@@ -9,8 +9,9 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.system import EntityService, id_emitter
+from chess.system import EntityService, LoggingLevelRouter, id_emitter
 from chess.square import Square, SquareBuilder, SquareValidator
+from chess.token import Token, TokenService
 
 
 class SquareService(EntityService[Square]):
@@ -35,11 +36,11 @@ class SquareService(EntityService[Square]):
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
     """
-    DEFAULT_NAME = "SquareService"
+    SERVICE_NAME = "SquareService"
     
     def __init__(
             self,
-            name: str = DEFAULT_NAME,
+            name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             builder: SquareBuilder = SquareBuilder(),
             validator: SquareValidator = SquareValidator(),
@@ -68,3 +69,19 @@ class SquareService(EntityService[Square]):
     def validator(self) -> SquareValidator:
         """get SquareValidator"""
         return cast(SquareValidator, self.entity_validator)
+    
+    @LoggingLevelRouter.monitor
+    def process_square_occupation(self, square: Square, token: Token, token_service: TokenService):
+        method = "squareService.processSquareOccupation"
+        
+        square_validation
+        
+        
+    @LoggingLevelRouter.monitor
+    def process_square_evacution(self, square: Square):
+        method = "squareService.processSquareEvacuation"
+        
+        # Handle the case that the square is not certified as safe.
+        validation = self.validator.validate(candidate=square)
+        if validation.is_failure:
+            return SquareServiceExce

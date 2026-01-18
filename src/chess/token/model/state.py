@@ -10,6 +10,6 @@ version: 1.0.0
 from enum import Enum, auto
 
 class TokenBoardState(Enum):
-    NEVER_PLACED = auto(),
+    NEVER_BEEN_PLACED = auto(),
     FORMED_ON_BOARD = auto(),
     REMOVED_FROM_BOARD = auto(),

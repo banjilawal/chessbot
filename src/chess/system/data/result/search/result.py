@@ -36,7 +36,12 @@ class SearchResult(DataResult[T], Generic[T]):
     """
     _state: SearchState
     
-    def __init__(self, state: SearchState, payload: Optional[List[T]] = None, exception: Optional[Exception] = None):
+    def __init__(
+            self,
+            state: SearchState,
+            payload: Optional[List[T]] = None,
+            exception: Optional[Exception] = None,
+    ):
         super().__init__(payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "TransactionResult.result"

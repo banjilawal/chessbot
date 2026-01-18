@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# HOSTAGE_RELATION_TEST_FAILURE EXCEPTION #======================#
+    # ======================# HOSTAGE_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
     "HostageRelationAnalysisFailedException",
 ]
 
 from chess.system import RelationAnalysisFailedException
 
 
-# ======================# HOSTAGE_RELATION_TEST_FAILURE EXCEPTION #======================#
+# ======================# HOSTAGE_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
 class HostageRelationAnalysisFailedException(RelationAnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
@@ -36,5 +36,5 @@ class HostageRelationAnalysisFailedException(RelationAnalysisFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_RELATION_TEST_FAILURE"
+    ERROR_CODE = "HOSTAGE_RELATION_ANALYSIS_FAILURE"
     DEFAULT_MESSAGE = "TeamHostageRelationTest failed."

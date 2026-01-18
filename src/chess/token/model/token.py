@@ -69,7 +69,7 @@ class Token(ABC):
         self._opening_square = opening_square
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_item
-        self._token_board_state = TokenBoardState.NEVER_PLACED
+        self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
     
     @property
     def id(self) -> int:

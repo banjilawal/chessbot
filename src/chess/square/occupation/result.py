@@ -7,10 +7,11 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar, cast
 
-from chess.system import Result, OccupationResult, OccupationState
-from chess.token.model import Token
+from chess.token import Token
+from chess.system import Result
+from chess.square import OccupationState, OccupationResult, Square
 
 T = TypeVar("T")
 
@@ -38,15 +39,30 @@ class OccupationResult(Result[Generic[T]]):
     _state: OccupationState
     _occupier: Optional[Token]
     
-    def __init__(self, state: OccupationState, payload: Optional[T] = None, exception: Optional[Exception] = None):
+    def __init__(
+            self,
+            state: OccupationState,
+            payload: Optional[T] = None,
+            occupier: Optional[Token] = None,
+            exception: Optional[Exception] = None,
+    ):
         super().__init__(payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "TransactionResult.result"
         self._state = state
+        self._occupier = occupier
+        
+    @property
+    def payload(self) -> Optional[Square]:
+        return cast(Square, self._payload)
     
     @property
     def state(self) -> OccupationState:
         return self._state
+    
+    @property
+    def occupier(self) -> Optional[Token]:
+        return self._occupier
     
     @property
     def is_success(self) -> bool:

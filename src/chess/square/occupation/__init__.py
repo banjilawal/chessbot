@@ -13,5 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .state import OccupationState
 from .result import OccupationResult

@@ -10,6 +10,7 @@ from typing import Optional
 
 from chess.board import Board
 from chess.coord import Coord
+from chess.square.state import SquareState
 from chess.token import Token
 
 
@@ -40,6 +41,7 @@ class Square:
     _name: str
     _board: Board
     _coord: Coord
+    _state: SquareState
     _occupant: Optional[Token]
     
     def __init__(self, id: int, name: str, coord: Coord, board: Board):
@@ -61,6 +63,7 @@ class Square:
         self._coord = coord
         self._board = board
         self._occupant = None
+        self._state = SquareState.EMPTY
     
     @property
     def id(self) -> int:
@@ -79,12 +82,17 @@ class Square:
         return self._coord
     
     @property
+    def is_empty(self) -> bool:
+        return self._state == SquareState.EMPTY and self._occupant is None
+    
+    @property
     def occupant(self) -> Optional[Token]:
         return self._occupant
     
     @occupant.setter
     def occupant(self, token: Optional[Token]):
         self._occupant = token
+        self._state = SquareState.OCCUPIED
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True
