@@ -22,7 +22,7 @@ class NullSquareContextException(SquareContextException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that SquareContext validation failed because the candidate was null.
+    1.  Indicate that a candidate failed its validation as a SquareContext because it was null.
 
     # PARENT:
         *   SquareContextException

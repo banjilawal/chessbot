@@ -7,7 +7,7 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-# =========== COORD.CONTEXT.VALIDATOR.EXCEPTION,DEBUG PACKAGE CONTENTS ===========#
+# =========== COORD.CONTEXT.VALIDATOR.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
 None

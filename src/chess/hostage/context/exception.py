@@ -7,22 +7,22 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from chess.hostageManifest import HostageManifestException
+from chess.hostage import HostageManifestException
 from chess.system import ContextException
 
 __all__ = [
     # ======================# HOSTAGE_MANIFEST_CONTEXT EXCEPTION #======================#
-    "HostageManifestContextException",
+    "CaptivityContextException",
 ]
 
 
 # ======================# HOSTAGE_MANIFEST_CONTEXT EXCEPTION #======================#
-class HostageManifestContextException(HostageManifestException, ContextException):
+class CaptivityContextException(HostageManifestException, ContextException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by HostageManifestContext objects.
+    1.  Parent of exceptions raised by CaptivityContext objects.
 
     # PARENT:
         *   HostageManifestException
@@ -38,4 +38,4 @@ class HostageManifestContextException(HostageManifestException, ContextException
     None
     """
     ERROR_CODE = "HOSTAGE_MANIFEST_CONTEXT_ERROR"
-    DEFAULT_ERROR_CODE = "HostageManifestContext raised an exception."
+    DEFAULT_ERROR_CODE = "CaptivityContext raised an exception."

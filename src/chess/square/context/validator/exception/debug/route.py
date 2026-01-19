@@ -1,31 +1,32 @@
-# src/chess/route/context/validator/exception/debug/route.py
+# src/chess/square/context/validator/exception/debug/route.py
 
 """
-Module: chess.route.context.validator.exception.debug.route
+Module: chess.square.context.validator.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-    "RouteContextValidationRouteException",
+    # ======================# UNHANDLED_SQUARE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    "SquareContextValidationRouteException",
 ]
 
-from chess.route import RouteContextException
+from chess.square import SquareContextException
 from chess.system import NoValidationRouteException
 
 
-# ======================# UNHANDLED_ROUTE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class RouteContextValidationRouteException(RouteContextException, NoValidationRouteException):
+# ======================# UNHANDLED_SQUARE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class SquareContextValidationRouteException(SquareContextException, NoValidationRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the RouteContext validation failed because there was no build route for the RouteContext key.
+    1.  Indicate that the SquareContext validation failed because there was no validation route for the
+        SquareContext key.
 
     # PARENT:
-        *   RouteContextException
+        *   SquareContextException
         *   NoValidationRouteException
 
     # PROVIDES
@@ -37,5 +38,5 @@ class RouteContextValidationRouteException(RouteContextException, NoValidationRo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_ROUTE_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "RouteContext validation failed: No validation route was provided for the Route attribute."
+    ERROR_CODE = "UNHANDLED_SQUARE_CONTEXT_VALIDATION_ROUTE_ERROR"
+    DEFAULT_MESSAGE = "SquareContext validation failed: No validation route was provided for a SquareContext attribute."

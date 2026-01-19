@@ -22,12 +22,11 @@ class ExcessiveSquareContextFlagsException(SquareContextException, ContextFlagCo
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate That  more than one SquareContext flag was enabled. Only one Square attribute-value-tuple can be used in
-        a search.
+    1.  Indicate that a candidate failed its validation as a SquareContext because more than one of its attributes
+        was enabled.
 
     # PARENT:
         *   ContextFlagCountException
-        *   SquareContextValidationFailedException
 
     # PROVIDES:
     None
@@ -39,7 +38,4 @@ class ExcessiveSquareContextFlagsException(SquareContextException, ContextFlagCo
     None
     """
     ERROR_CODE = "EXCESSIVE_SQUARE_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = (
-        "Excessive SquareContext flags were set. an Square search can only use one-and-only "
-        "map flag at a time."
-    )
+    DEFAULT_MESSAGE = "SquareContext validation failed: More than one flag was enable."

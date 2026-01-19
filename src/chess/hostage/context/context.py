@@ -11,11 +11,11 @@ from typing import Optional
 from chess.coord import Coord
 from chess.hostage import HostageManifest
 from chess.system import Context
-from chess.token import CombatantToken
+from chess.token import CombatantToken, TokenContext
 from chess.token.model import Token
 
 
-class HostageManifestContext(Context[HostageManifest]):
+class CaptivityContext(Context[HostageManifest]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
@@ -40,6 +40,7 @@ class HostageManifestContext(Context[HostageManifest]):
     _victor: Optional[Token] = None
     _prisoner: Optional[CombatantToken] = None
     _capture_location: Optional[Coord] = None
+    _token_context: TokenContext
     
     def __init__(
             self,
@@ -47,6 +48,7 @@ class HostageManifestContext(Context[HostageManifest]):
             prisoner: Optional[CombatantToken] = None,
             victor: Optional[Token] = None,
             capture_location: Optional[Coord] = None,
+            token_context: TokenContext= TokenContext(),
     ):
         """
         # ACTION:
@@ -64,6 +66,7 @@ class HostageManifestContext(Context[HostageManifest]):
         self._prisoner = prisoner
         self._victor = victor
         self._capture_location = capture_location
+        self._token_context = token_context
     
     @property
     def prisoner(self) -> Optional[int]:
@@ -76,6 +79,10 @@ class HostageManifestContext(Context[HostageManifest]):
     @property
     def capture_location(self) -> Optional[Coord]:
         return self._capture_location
+    
+    @property
+    def token_context(self) -> TokenContext:
+        return self._token_context
     
     def to_dict(self) -> dict:
         return {
