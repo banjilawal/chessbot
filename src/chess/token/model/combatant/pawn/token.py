@@ -9,20 +9,18 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.rank import Pawn, Rank
-from chess.square import Square
 from chess.team import Team
+from chess.square import Square
+from chess.rank import Pawn, Rank
 from chess.token import CombatantToken, PromotionState
 
 
 class PawnToken(CombatantToken):
-    _previous_rank: Optional[Rank]
     _promotion_state: PromotionState
     
     def __init__(
             self,
             id: int,
-            rank: Rank,
             team: Team,
             designation: str,
             roster_number: int,
@@ -31,7 +29,7 @@ class PawnToken(CombatantToken):
         super().__init__(
             id=id,
             team=team,
-            rank=rank,
+            rank=Pawn(),
             designation=designation,
             roster_number=roster_number,
             opening_square=opening_square

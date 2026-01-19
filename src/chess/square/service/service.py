@@ -18,7 +18,7 @@ from chess.square import (
 )
 from chess.team import FriendCannotCaptureFriendException, Team, TeamService
 from chess.token import (
-    CombatantActivityStatue, CombatantToken, KingToken, Token, TokenBoardState, TokenContext,
+    CombatantActivityState, CombatantToken, KingToken, Token, TokenBoardState, TokenContext,
     TokenDoesNotExistForRemovalException,
     TokenService
 )
@@ -160,7 +160,7 @@ class SquareService(EntityService[Square]):
         combatant = cast(CombatantToken, square.occupant)
         
         # Handle the case that the combatant has not been captured.
-        if combatant.captor is None and combatant.activity_status == CombatantActivityStatue.FREE:
+        if combatant.captor is None and combatant.activity_state == CombatantActivityState.FREE:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareServiceException(
@@ -174,7 +174,7 @@ class SquareService(EntityService[Square]):
                 )
             )
         # Handle the case that the combatant is already among the hostages.
-        if combatant.activity_status == CombatantActivityStatue.REGISTERED_HOSTAGE:
+        if combatant.activity_state == CombatantActivityState.HAS_HOSTAGE_MANIFEST:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareServiceException(
@@ -204,7 +204,7 @@ class SquareService(EntityService[Square]):
                 )
             )
         hostage = cast(CombatantToken, insertion_result.payload)
-        hostage.combatant_status = CombatantActivityStatue.REGISTERED_HOSTAGE
+        hostage.combatant_status = CombatantActivityState.HAS_HOSTAGE_MANIFEST
         return InsertionResult.success(payload=hostage)
         
 

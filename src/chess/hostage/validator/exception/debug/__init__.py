@@ -18,5 +18,5 @@ from .different import *
 
 # Modules
 from .king import KingCannotBeCapturedException
-from .free import FreeEnemyContradictsCaptureException
+from .free import PrisonerCannotBeActiveCombatantException
 from .friend import FriendCannotCaptureFriendException

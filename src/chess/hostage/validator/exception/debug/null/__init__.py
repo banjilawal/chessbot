@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .captor import PrisonerDoesNotHaveCaptorException
+from .captor import PrisonerAlreadyHasHostageManifestException
 from .manifest import NullHostageManifestException

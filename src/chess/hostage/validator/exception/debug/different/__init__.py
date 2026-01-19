@@ -15,4 +15,4 @@ None
 # Modules
 from .captor import PrisonerHasDifferentCaptorException
 from .board import VictorAndPrisonerConflictingBoardException
-from .coord import VictorAndPrisonerConflictingCoordException
+from .square import PrisonerCapturedOnDifferentSquareException

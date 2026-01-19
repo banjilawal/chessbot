@@ -2,7 +2,7 @@
 from chess.hostage import HostageManifestException
 
 
-class FreeEnemyContradictsCaptureException(HostageManifestException):
+class PrisonerCannotBeActiveCombatantException(HostageManifestException):
     """
     # ROLE: Error Tracing, Debugging
 

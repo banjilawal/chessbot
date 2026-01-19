@@ -11,14 +11,14 @@ from typing import Any, cast
 
 from chess.square import SquareService
 from chess.hostage import (
-    FreeEnemyContradictsCaptureException, FriendCannotCaptureFriendException, HostageManifest,
+    PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException, HostageManifest,
     HostageManifestValidationFailedException, KingCannotBeCapturedException, NullHostageManifestException,
-    PrisonerDoesNotHaveCaptorException, PrisonerHasDifferentCaptorException, TokenCannotCaptureItselfException,
+    PrisonerAlreadyHasHostageManifestException, PrisonerHasDifferentCaptorException, TokenCannotCaptureItselfException,
     UnformedTokenCannotBePrisonerException, UnformedTokenCannotBeVictorException,
-    VictorAndPrisonerConflictingBoardException, VictorAndPrisonerConflictingCoordException,
+    VictorAndPrisonerConflictingBoardException, PrisonerCapturedOnDifferentSquareException,
 )
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult,Validator
-from chess.token import CombatantActivityStatue, CombatantToken, TokenBoardState, TokenService
+from chess.token import CombatantActivityState, CombatantToken, TokenBoardState, TokenService
 
 
 class HostageManifestValidator(Validator[HostageManifest]):
@@ -49,28 +49,36 @@ class HostageManifestValidator(Validator[HostageManifest]):
     def validate(
             cls,
             candidate: Any,
-            square_service: SquareService = SquareService(),
             token_service: TokenService = TokenService(),
+            square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[HostageManifest]:
         """
         # ACTION:
-        1.  verify hostage_variety is a not-null HostageVariety object.
-        2.  Use hostage_variety to pick which Validation method will create the concrete Hostage object.
-
+            1.  verify hostage_variety is a not-null HostageVariety object.
+            2.  Use hostage_variety to pick which Validation method will create the concrete Hostage object.
         # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   hostage_variety (HostageVariety)
-            *   engine_service (Optional[EngineService])
-
+            *   candidate (int)
+            *   token_service (TokenService)
+            *   square_service (SquareService)
+            *   identity_service (IdentityService)
         # RETURN:
-        ValidationResult[Hostage] containing either:
-            - On success: Hostage in the payload.
-            - On failure: Exception.
-
+            *   ValidationResult[HostageManifest] containing either:
+                    - On failure: Exception.
+                    - On success: HostageManifest in the payload.
         # RAISES:
+            *   TypeError
+            *   NullHostageManifestException
+            *   KingCannotBeCapturedException
+            *   TokenCannotCaptureItselfException
+            *   FriendCannotCaptureFriendException
+            *   PrisonerHasDifferentCaptorException
+            *   UnformedTokenCannotBeVictorException
+            *   PrisonerCannotBeActiveCombatantException
             *   HostageManifestValidationFailedException
+            *   VictorAndPrisonerConflictingBoardException
+            *   PrisonerAlreadyHasHostageManifestException
+            *   PrisonerCapturedOnDifferentSquareException
         """
         method = "HostageValidator.validate"
         
@@ -140,36 +148,25 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that the prisoner was not placed on the board
-        if manifest.prisoner.board_state == TokenBoardState.NEVER_BEEN_PLACED:
+        # Handle the case that the prisoner is still active:
+        if manifest.prisoner.is_active:
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=UnformedTokenCannotBePrisonerException(
-                        f"{method}: {UnformedTokenCannotBePrisonerException.DEFAULT_MESSAGE}"
+                    ex=PrisonerCannotBeActiveCombatantException(
+                        f"{method}: {PrisonerCannotBeActiveCombatantException.DEFAULT_MESSAGE}"
                     )
                 )
             )
-        # Handle the case that prisoner does not have a captor
-        if manifest.prisoner.captor is None:
+        # Handle the case that prisoner already has a manifest.
+        if not manifest.prisoner.has_hostage_manifest:
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=PrisonerDoesNotHaveCaptorException(
-                        f"{method}: {PrisonerDoesNotHaveCaptorException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # Handle the case that the prisoner is free
-        if manifest.prisoner.activity_status == CombatantActivityStatue.FREE:
-            # Send the exception chain on failure
-            return ValidationResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=FreeEnemyContradictsCaptureException(
-                        f"{method}: {FreeEnemyContradictsCaptureException.DEFAULT_MESSAGE}"
+                    ex=PrisonerAlreadyHasHostageManifestException(
+                        f"{method}: {PrisonerAlreadyHasHostageManifestException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -180,12 +177,14 @@ class HostageManifestValidator(Validator[HostageManifest]):
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
                     ex=PrisonerCapturedOnDifferentSquareException(
-                        f"{method}: {PrisonerCaputeredOnDifferentSquare.DEFAULT_MESSAGE}"
+                        f"{method}: {PrisonerCapturedOnDifferentSquareException.DEFAULT_MESSAGE}"
                     )
                 )
             )
+        # Extract the prisoner into a temporary variable.
+        prisoner = manifest.prisoner
             
-            # --- Perform tests on the matrix.victor that do not rely on the prisoner. ---#
+            # --- Perform tests on the manifest.victor that do not rely on the prisoner. ---#
             
         # Handle the case that the victor is not certified safe.
         victor_validation = token_service.validator.validate(candidate=manifest.victor)
@@ -197,10 +196,21 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     ex=victor_validation.exception
                 )
             )
-
-        # --- Assign the certified tokens to local variables for additional testing.. ---#
+        # The victor can get captured later. Only test that is has been formed.
+        if manifest.victor.board_state == TokenBoardState.NEVER_BEEN_PLACED:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=UnformedTokenCannotBeVictorException(
+                        f"{method}: {UnformedTokenCannotBeVictorException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Extract the victor into a temporary variable.
         victor = manifest.victor
-        prisoner = manifest.prisoner
+
+        # --- Perform tests that require the prisoner and victor. ---#
     
         # Handle the case that the victor and the prisoner are the same.
         if prisoner == victor:
@@ -235,10 +245,6 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     )
                 )
             )
-
-
-
-
         # Handle the case that prisoner.captor != victor
         if prisoner.captor != victor:
             # Send the exception chain on failure
@@ -250,18 +256,5 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     )
                 )
             )
-
-        # Handle the case that the victor was not placed on the board
-        if victor.board_state == TokenBoardState.NEVER_BEEN_PLACED:
-            # Send the exception chain on failure
-            return ValidationResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=UnformedTokenCannotBeVictorException(
-                        f"{method}: {UnformedTokenCannotBeVictorException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-
         # --- Candidate has been successfully validated. Return to the caller. ---#
         return ValidationResult.success(payload=manifest)

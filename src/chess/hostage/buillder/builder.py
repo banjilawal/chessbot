@@ -10,14 +10,14 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.hostage import (
-    FreeEnemyContradictsCaptureException, FriendCannotCaptureFriendException, HostageManifest,
+    PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException, HostageManifest,
     HostageManifestValidationFailedException, KingCannotBeCapturedException, NullHostageManifestException,
-    PrisonerDoesNotHaveCaptorException, PrisonerHasDifferentCaptorException, TokenCannotCaptureItselfException,
+    PrisonerAlreadyHasHostageManifestException, PrisonerHasDifferentCaptorException, TokenCannotCaptureItselfException,
     UnformedTokenCannotBePrisonerException, UnformedTokenCannotBeVictorException,
-    VictorAndPrisonerConflictingBoardException, VictorAndPrisonerConflictingCoordException,
+    VictorAndPrisonerConflictingBoardException, PrisonerCapturedOnDifferentSquareException,
 )
 from chess.system import IdentityService, LoggingLevelRouter, BuildResult, Builder
-from chess.token import CombatantActivityStatue, CombatantToken, Token, TokenBoardState, TokenService
+from chess.token import CombatantActivityState, CombatantToken, Token, TokenBoardState, TokenService
 
 
 class HostageManifestBuilder(Builder[HostageManifest]):
@@ -154,8 +154,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
             return BuildResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=PrisonerDoesNotHaveCaptorException(
-                        f"{method}: {PrisonerDoesNotHaveCaptorException.DEFAULT_MESSAGE}"
+                    ex=PrisonerAlreadyHasHostageManifestException(
+                        f"{method}: {PrisonerAlreadyHasHostageManifestException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -171,13 +171,13 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                 )
             )
         # Handle the case that the prisoner is free
-        if prisoner.activity_status == CombatantActivityStatue.FREE:
+        if prisoner.activity_state == CombatantActivityState.FREE:
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=FreeEnemyContradictsCaptureException(
-                        f"{method}: {FreeEnemyContradictsCaptureException.DEFAULT_MESSAGE}"
+                    ex=PrisonerCannotBeActiveCombatantException(
+                        f"{method}: {PrisonerCannotBeActiveCombatantException.DEFAULT_MESSAGE}"
                     )
                 )
             )
