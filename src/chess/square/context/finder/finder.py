@@ -1,7 +1,7 @@
-# src/chess/square/searcher/finder.py
+# src/chess/square/context/finder/finder.py
 
 """
-Module: chess.square.searcher.service
+Module: chess.square.context.finder.finder
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
