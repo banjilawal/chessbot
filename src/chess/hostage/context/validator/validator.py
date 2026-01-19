@@ -1,12 +1,13 @@
 from typing import Any, cast
 
+from chess.coord import CoordService
 from chess.hostage import (
-    CaptivityContextValidationFailedException, ExcessiveCaptivityContextFlagsException, NullCaptivityContextException,
-    ZeroCaptivityContextFlagsException
+    CaptivityContextValidationFailedException, CaptivityContextValidationRouteException,
+    ExcessiveCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException
 )
 from chess.hostage.context.context import CaptivityContext
-from chess.system import LoggingLevelRouter, ValidationResult, Validator
-from chess.token import TokenService
+from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
+from chess.token import CombatantToken, TokenService
 
 
 class CaptivityContextValidator(Validator[CaptivityContext]):
@@ -36,6 +37,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
     def validate(
             cls,
             candidate: Any,
+            coord_service: CoordService = CoordService(),
+            identity_service: IdentityService = IdentityService(),
             token_service: TokenService = TokenService(),
     ) -> ValidationResult[CaptivityContext]:
         """
@@ -68,7 +71,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
                     ex=NullCaptivityContextException(f"{method}: {NullCaptivityContextException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that they type is wrong.
+        # Handle the case that the type is wrong.
         if not isinstance(candidate, CaptivityContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -107,57 +110,65 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             )
         # --- Route to the appropriate validation branch. ---#
         
-        # Certification for the search-by-column-and-row target.
-        if switch_count == 2:
-            # Handle the case that row of search-by-column-and-row target fails its integrity checks.
-            row_validation = number_validator.validate(context.row)
-            if row_validation.is_failure:
+        # Certification for the search-by-id target.
+        if context.id is not None and context.id is not None:
+            validation = identity_service.validate_id(context.id)
+            if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     CaptivityContextValidationFailedException(
                         message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
-                        ex=row_validation.exception
+                        ex=validation.exception
                     )
                 )
-            # Handle the case that column of search-by-column-and-row target fails its integrity checks.
-            column_validation = number_validator.validate(context.column)
-            if column_validation.is_failure:
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    CaptivityContextValidationFailedException(
-                        message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
-                        ex=column_validation.exception
-                    )
-                )
-            # On certification success return the row-and-column_CaptivityContext in the ValidationResult.
+            # On certification success return the id_CaptivityContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-row target.
-        if context.row is not None and context.column is not None:
-            row_validation = number_validator.validate(context.row)
-            if row_validation.is_failure:
+        # Certification for the search-by-victor target.
+        if context.victor is not None:
+            validation = token_service.validator.validate(context.victor)
+            if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     CaptivityContextValidationFailedException(
                         message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
-                        ex=row_validation.exception
+                        ex=validation.exception
                     )
                 )
-            # On certification success return the row_CaptivityContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-column target.
-        if context.column is not None and context.column is not None:
-            column_validation = number_validator.validate(context.column)
-            if column_validation.is_failure:
+        # Certification for the search-by-prisoner target.
+        if context.prisoner is not None:
+            validation = token_service.validator.validate(context.prisoner)
+            if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     CaptivityContextValidationFailedException(
                         message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
-                        ex=column_validation.exception
+                        ex=validation.exception
                     )
                 )
-            # On certification success return the column_CaptivityContext in the ValidationResult.
+            if not isinstance(validation.payload, CombatantToken):
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    CaptivityContextValidationFailedException(
+                        message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                        ex=TypeError(f"{method}: Expected a CombatantToken, got {type(candidate).__name__} instead.")
+                    )
+                )
+            return ValidationResult.success(payload=context)
+        
+        # Certification for the search-by-victor target.
+        if context.capture_location is not None:
+            validation = coord_service.validator.validate(context.capture_location)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    CaptivityContextValidationFailedException(
+                        message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
+                )
             return ValidationResult.success(payload=context)
         
         # Return the exception chain if there was no validation route for the context.
