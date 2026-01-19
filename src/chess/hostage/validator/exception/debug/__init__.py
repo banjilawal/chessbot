@@ -10,7 +10,11 @@ version: 1.0.0
 # =========== HOSTAGE.VALIDATOR.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .different import *
+from .null import *
+from .same import *
 
 # Modules
-from .null
+from .king import KingCannotBeCapturedException
+from .free import FreeEnemyContradictsCaptureException
+from .friend import FriendCannotCaptureFriendException

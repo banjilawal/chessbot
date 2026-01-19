@@ -1,7 +1,7 @@
-# src/chess/manifest/validator/exception/null.py
+# src/chess/manifest/validator/exception/debug/null.py
 
 """
-Module: chess.manifest.validator.exception.null
+Module: chess.manifest.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-11-19
 """
@@ -37,4 +37,4 @@ class NullHostageManifestException(HostageManifestException, NullException):
     None
     """
     ERROR_CODE = "NULL_HOSTAGE_MANIFEST_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest cannot be null."
+    DEFAULT_MESSAGE = "HostageManifest validation failed: The candidate was null."

@@ -11,10 +11,15 @@ from typing import Any, cast
 
 from chess.coord import CoordService
 from chess.hostage import (
-    Hostage, HostageManifest, HostageManifestValidationFailedException, HostageValidationFailedException,
-    NullHostageException,
-    ExcessiveTeamsInHostageException
+    FreeEnemyContradictsCaptureException, FriendCannotCaptureFriendException, Hostage, HostageManifest,
+    HostageManifestValidationFailedException,
+    KingCannotBeCapturedException, NullHostageException,
+    ExcessiveTeamsInHostageException, PrisonerDoesNotHaveCaptorException, PrisonerHasDifferentCaptorException,
+    VictorAndPrisonerConflictingBoardException,
+    VictorAndPrisonerConflictingCoordException
 )
+from chess.hostage.validator.exception.debug.formation.prisoner import UnformedTokenCannotBePrisonerException
+from chess.hostage.validator.exception.debug.formation.victor import UnformedTokenCannotBeVictorException
 from chess.hostage.validator.exception.debug.null import NullHostageManifestException
 from chess.system import (
     IdentityService, LoggingLevelRouter, , ValidationResult,
@@ -169,8 +174,8 @@ class HostageManifestValidator(Validator[HostageManifest]):
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=TokenCannotCaptureFriendException(
-                        f"{method}: {TokenCannotCaptureFriendException.DEFAULT_MESSAGE}"
+                    ex=FriendCannotCaptureFriendException(
+                        f"{method}: {FriendCannotCaptureFriendException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -235,8 +240,8 @@ class HostageManifestValidator(Validator[HostageManifest]):
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=UnformedTokenCannotAttackExcetion(
-                        f"{method}: {UnformedTokenCannotAttackExcetion.DEFAULT_MESSAGE}"
+                    ex=UnformedTokenCannotBeVictorException(
+                        f"{method}: {UnformedTokenCannotBeVictorException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -246,8 +251,8 @@ class HostageManifestValidator(Validator[HostageManifest]):
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=UnformedTokenCannotBeCapturedExcetion(
-                        f"{method}: {UnformedTokenCannotBeCapturedExcetion.DEFAULT_MESSAGE}"
+                    ex=UnformedTokenCannotBePrisonerException(
+                        f"{method}: {UnformedTokenCannotBePrisonerException.DEFAULT_MESSAGE}"
                     )
                 )
             )
