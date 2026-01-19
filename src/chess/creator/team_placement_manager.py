@@ -23,7 +23,7 @@ class TeamPlacementManager:
 
     for chess_piece in chess_pieces:
         # .black_owner.team_name.chess_pieces):
-      # print("placing", captor.visitor_name)
+      # print("placing", victor.visitor_name)
       for placement in PlacementChart:
         # print("checking placement", placement.value[0])
         square_name = placement.find_placement_by_piece(chess_piece)

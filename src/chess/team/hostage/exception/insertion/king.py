@@ -1,7 +1,7 @@
-# src/chess/team/hostage/exception/insertion/king.py
+# src/chess/team/prisoner/exception/insertion/king.py
 
 """
-Module: chess.team.hostage.exception.insertion.king
+Module: chess.team.prisoner.exception.insertion.king
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

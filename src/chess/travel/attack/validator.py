@@ -72,7 +72,7 @@ class AttackEventValidator(Validator[AttackEvent]):
                     AttackingEnemyKingException(AttackingEnemyKingException.DEFAULT_MESSAGE)
                 )
             
-            if cast(CombatantPiece, event.enemy_combatant).captor is not None:
+            if cast(CombatantPiece, event.enemy_combatant).victor is not None:
                 return ValidationResult.failure(
                     DoublyAttackingPrisonerException(f"{method}: {DoublyAttackingPrisonerException.DEFAULT_MESSAGE}")
                 )

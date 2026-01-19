@@ -1,7 +1,7 @@
-# src/chess/team/hostage/exception/insertion/active.py
+# src/chess/team/prisoner/exception/insertion/active.py
 
 """
-Module: chess.team.hostage.exception.insertion.active
+Module: chess.team.prisoner.exception.insertion.active
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

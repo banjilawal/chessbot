@@ -1,7 +1,7 @@
-# src/chess/team/hostage/exception/catchall.py
+# src/chess/team/prisoner/exception/catchall.py
 
 """
-Module: chess.team.hostage.exception.catchall
+Module: chess.team.prisoner.exception.catchall
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

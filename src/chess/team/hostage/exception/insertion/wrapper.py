@@ -1,7 +1,7 @@
-# src/chess/team/hostage/exception/insertion/wrapper.py
+# src/chess/team/prisoner/exception/insertion/wrapper.py
 
 """
-Module: chess.team.hostage.exception.insertion.wrapper
+Module: chess.team.prisoner.exception.insertion.wrapper
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -21,7 +21,7 @@ class AddingHostageTokenFailedException(HostageServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that add a token to the hostage failed.
+    1.  Indicate that add a token to the prisoner failed.
 
     # PARENT:
         *  HostageServiceException

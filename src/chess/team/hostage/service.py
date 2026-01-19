@@ -1,7 +1,7 @@
-# src/chess/team/hostage/service.py
+# src/chess/team/prisoner/service.py
 
 """
-Module: chess.team.hostage.service
+Module: chess.team.prisoner.service
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

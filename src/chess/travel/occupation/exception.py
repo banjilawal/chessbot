@@ -70,22 +70,22 @@ class UnexpectedNullEnemyException(AttackEventException):
 # --- Rollback Attack Errors (Dual Inheritance) ---
 class SetCaptorRolledBackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Setting captor failed. Transaction rolled back performed."
+  DEFAULT_MESSAGE = "Setting victor failed. Transaction rolled back performed."
 
 
 class EmptyDestinationSquareRolledBackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Setting captor failed. Transaction rolled back performed."
+  DEFAULT_MESSAGE = "Setting victor failed. Transaction rolled back performed."
 
 
 class RosterRemovalRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "ROSTER_REMOVAL_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to remove actor_candidate from enemy roster after assigning captor; rollback performed."
+  DEFAULT_MESSAGE = "Failed to remove actor_candidate from enemy roster after assigning victor; rollback performed."
 
 
 class HostageAdditionRollbackException(AttackEventException, RollbackException):
   DEFAULT_CODE = "HOSTAGE_ADDITION_ROLLBACK"
-  DEFAULT_MESSAGE = "Failed to add captured actor_candidate to captor's hostage list; rollback performed."
+  DEFAULT_MESSAGE = "Failed to add captured actor_candidate to victor's prisoner list; rollback performed."
 
 
 class BoardPieceRemovalRollbackException(AttackEventException, RollbackException):

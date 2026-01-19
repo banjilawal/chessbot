@@ -1,7 +1,7 @@
-# src/chess/square/validator/exception/base.py
+# src/chess/square/validator/exception/wrapper.py
 
 """
-Module: chess.square.validator.exception.base
+Module: chess.square.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 """

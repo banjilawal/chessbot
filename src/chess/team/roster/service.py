@@ -138,7 +138,7 @@ class RosterService:
     #             )
     #         )
     #     # Handle the case that the member has not been captured.
-    #     if member.captor is None:
+    #     if member.victor is None:
     #         # Return exception chain on failure.
     #         return DeletionResult.failure(
     #             RosterTokenDeletionFailedException(

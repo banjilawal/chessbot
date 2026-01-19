@@ -120,11 +120,11 @@ class DoubleCaptureException(CapturePieceException):
 
 class UnsetCaptureException(CapturePieceException):
   """
-  If owner.captor is not validation. Attempting to change it raises this err
+  If owner.victor is not validation. Attempting to change it raises this err
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR"
   DEFAULT_MESSAGE = (
-    "Cannot set team_name combatant's captor to validation. A captured owner cannot be freed."
+    "Cannot set team_name combatant's victor to validation. A captured owner cannot be freed."
   )
 
 
@@ -169,19 +169,19 @@ class DoubleCaptureRolledBackExceptionCapture(CaptureRollbackException):
 
 class UnsetCaptureRolledBackExceptionCapture(CaptureRollbackException):
   """
-  Raised if team_name notification attempts setting combatant's captor consistency validation.
+  Raised if team_name notification attempts setting combatant's victor consistency validation.
   The notification was rolled back before raising this err.
   """
   ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
   DEFAULT_MESSAGE = (
-    "Cannot set team_name combatant's captor to validation. A captured owner cannot be freed. "
+    "Cannot set team_name combatant's victor to validation. A captured owner cannot be freed. "
     "Transaction rollback performed."
   )
 
 
 class CapturingItSelfRolledBackException(CapturePieceException):
   """
-  Raised if team_name notification attempts to set team_name owner as its own captor. The notification was
+  Raised if team_name notification attempts to set team_name owner as its own victor. The notification was
   rolled back before raising this err.
   """
   ERROR_CODE = "PIECE_CAPTURING_IT_SELF_ROLLED_BACK_ERROR"
@@ -207,7 +207,7 @@ class PieceAttackingKingException(AttackEventException):
 class PieceAttackingHostageException(AttackEventException):
   """"""
   ERROR_CODE = "PIECE_ATTACKING_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Token cannot attack a hostage."
+  DEFAULT_MESSAGE = "Token cannot attack a prisoner."
 
 
 class AttackingNullException(AttackEventException, NullException):

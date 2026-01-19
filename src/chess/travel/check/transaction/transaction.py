@@ -36,10 +36,10 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
     if not validation.is_success():
       return TransactionResult(event, validation.exception)
 
-    event.enemy_combatant.captor = event.actor
-    if event.enemy_combatant.captor != event.actor:
+    event.enemy_combatant.victor = event.actor
+    if event.enemy_combatant.victor != event.actor:
       # Rollback all changes in reverse order
-      event.enemy_combatant.captor = None
+      event.enemy_combatant.victor = None
 
       # Send the notification indicating rollback
       return TransactionResult(
@@ -53,7 +53,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
     event.enemy_combatant.team_name.roster.remove(event.enemy_combatant)
     if event.enemy_combatant in event.enemy_combatant.team_name.roster:
       # Rollback all changes in reverse order
-      event.enemy_combatant.captor = None
+      event.enemy_combatant.victor = None
 
       # Send the notification indicating rollback
       return TransactionResult(
@@ -68,7 +68,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
     if event.enemy_combatant not in event.actor.team_name.hostages:
       # Rollback all changes in reverse order
       event.enemy_combatant.team_name.add_to_roster(event.enemy_combatant)
-      event.enemy_combatant.captor = None
+      event.enemy_combatant.victor = None
 
       # Send the notification indicating rollback
       return TransactionResult(
@@ -84,7 +84,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
       # Rollback all changes in reverse order
       event.actor.team_name.hostages.remove(event.enemy_combatant)
       event.enemy_combatant.team_name.add_to_roster(event.enemy_combatant)
-      event.enemy_combatant.captor = None
+      event.enemy_combatant.victor = None
 
       # Send the notification indicating rollback
       return TransactionResult(
@@ -101,7 +101,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
       context.board.pieces.add_member(event.enemy_square.occupant)
       event.actor.team_name.hostages.remove(event.enemy_combatant)
       event.enemy_combatant.team_name.add_to_roster(event.enemy_combatant)
-      event.enemy_combatant.captor = None
+      event.enemy_combatant.victor = None
 
       # Send the notification indicating rollback
       return TransactionResult(

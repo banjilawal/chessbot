@@ -48,8 +48,8 @@ def main():
 
 
   #
-  # for captor in arena.white_owner.team_name.chess_pieces:
-  #   print(captor, " current point", captor.coordinate_stack.current_coordinate())
+  # for victor in arena.white_owner.team_name.chess_pieces:
+  #   print(victor, " current point", victor.coordinate_stack.current_coordinate())
 
   # TeamPlacementManager.place_teams(arena)
   # print(arena.chess_board)
@@ -57,8 +57,8 @@ def main():
   # for square_name in arena.chess_board.occupied_squares():
   #   print(square_name, " occupied by", square_name.occupant.visitor_name)
 
-  # for captor in arena.white_owner.team_name.chess_pieces:
-  #   print(captor, " current point", captor.coordinate_stack.current_coordinate())
+  # for victor in arena.white_owner.team_name.chess_pieces:
+  #   print(victor, " current point", victor.coordinate_stack.current_coordinate())
   # for square_name in arena.chess_board.squares:
   #   print(square_name)
 

@@ -400,10 +400,10 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #
 #   method = "OccupationExecutor._attack_enemy"
 #
-#   directive.enemy.captor = directive.owner
-#   if directive.enemy.captor != directive.owner:
+#   directive.enemy.victor = directive.owner
+#   if directive.enemy.victor != directive.owner:
 #     # Rollback all changes in reverse order
-#     directive.enemy.captor = None
+#     directive.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -416,7 +416,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #   directive.enemy.team_name.roster.remove(directive.enemy)
 #   if directive.enemy in directive.enemy.team_name.roster:
 #     # Rollback all changes in reverse order
-#     directive.enemy.captor = None
+#     directive.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -432,7 +432,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #   if directive.enemy not in directive.owner.team_name.hostages:
 #     # Rollback all changes in reverse order
 #     directive.enemy.team_name.add_to_roster(directive.enemy)
-#     directive.enemy.captor = None
+#     directive.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -449,7 +449,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     # Rollback all changes in reverse order
 #     directive.owner.team_name.hostages.remove(directive.enemy)
 #     directive.enemy.team_name.add_to_roster(directive.enemy)
-#     directive.enemy.captor = None
+#     directive.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -465,7 +465,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     directive.friend.occupant = directive.enemy
 #     directive.owner.team_name.hostages.remove(directive.enemy)
 #     directive.enemy.team_name.add_to_roster(directive.enemy)
-#     directive.enemy.captor = None
+#     directive.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(

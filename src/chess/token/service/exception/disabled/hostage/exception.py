@@ -1,7 +1,7 @@
-# src/chess/token/validator/exception/disabled/hostage/exception.py
+# src/chess/token/validator/exception/disabled/prisoner/exception.py
 
 """
-Module: chess.token.validator.exception.disabled.hostage.exception
+Module: chess.token.validator.exception.disabled.prisoner.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

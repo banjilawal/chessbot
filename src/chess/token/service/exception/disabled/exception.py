@@ -21,7 +21,7 @@ class DisabledPieceException(TokenValidationFailedException):
         *   AttackException
         *   CastlingException
         *   CheckmateException
-        *   HostageException
+        *   HostageManifestException
         *   NullException
         *   PromotionException
         *   RosterException

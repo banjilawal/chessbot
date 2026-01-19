@@ -176,10 +176,10 @@ Example:
 #   if not coord_stack_validator.is_success():
 #     return TransactionResult(travel, coord_stack_validator.rollback_exception)
 #
-#   travel.enemy.captor = travel.traveler
-#   if travel.enemy.captor != travel.traveler:
+#   travel.enemy.victor = travel.traveler
+#   if travel.enemy.victor != travel.traveler:
 #     # Rollback all changes in reverse order
-#     travel.enemy.captor = None
+#     travel.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -193,7 +193,7 @@ Example:
 #   travel.enemy.team_name.roster.remove(travel.enemy)
 #   if travel.enemy in travel.enemy.team_name.roster:
 #     # Rollback all changes in reverse order
-#     travel.enemy.captor = None
+#     travel.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -208,7 +208,7 @@ Example:
 #   if travel.enemy not in travel.traveler.team_name.hostages:
 #     # Rollback all changes in reverse order
 #     travel.enemy.team_name.add_to_roster(travel.enemy)
-#     travel.enemy.captor = None
+#     travel.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -224,7 +224,7 @@ Example:
 #     # Rollback all changes in reverse order
 #     travel.traveler.team_name.hostages.remove(travel.enemy)
 #     travel.enemy.team_name.add_to_roster(travel.enemy)
-#     travel.enemy.captor = None
+#     travel.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -241,7 +241,7 @@ Example:
 #     travel.board.pieces.add(travel.enemy_square.occupant)
 #     travel.traveler.team_name.hostages.remove(travel.enemy)
 #     travel.enemy.team_name.add_to_roster(travel.enemy)
-#     travel.enemy.captor = None
+#     travel.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -265,7 +265,7 @@ Example:
 #     # Rollback all changes in reverse order
 #     travel.traveler.team_name.hostages.remove(travel.enemy)
 #     travel.enemy.team_name.add_to_roster(travel.enemy)
-#     travel.enemy.captor = None
+#     travel.enemy.victor = None
 #
 #     # Send the notification indicating rollback
 #     return TransactionResult(
@@ -562,22 +562,22 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 # # --- Rollback Attack Errors (Dual Inheritance) ---
 # class SetCaptorRolledBackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
-#   DEFAULT_MESSAGE = "Setting captor failed. Transaction rolled back performed."
+#   DEFAULT_MESSAGE = "Setting victor failed. Transaction rolled back performed."
 #
 #
 # class EmptyDestinationSquareRolledBackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
-#   DEFAULT_MESSAGE = "Setting captor failed. Transaction rolled back performed."
+#   DEFAULT_MESSAGE = "Setting victor failed. Transaction rolled back performed."
 #
 #
 # class RosterRemovalRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "ROSTER_REMOVAL_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to remove actor_candidate from enemy roster after assigning captor; rollback performed."
+#   DEFAULT_MESSAGE = "Failed to remove actor_candidate from enemy roster after assigning victor; rollback performed."
 #
 #
 # class HostageAdditionRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "HOSTAGE_ADDITION_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to add captured actor_candidate to captor's hostage list; rollback performed."
+#   DEFAULT_MESSAGE = "Failed to add captured actor_candidate to victor's prisoner list; rollback performed."
 #
 #
 # class BoardPieceRemovalRollbackException(AttackEventException, RollbackException):

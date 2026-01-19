@@ -1,7 +1,7 @@
-# src/chess/team/hostage/exception/insertion/friend.py
+# src/chess/team/prisoner/exception/insertion/friend.py
 
 """
-Module: chess.team.hostage.exception.insertion.friend
+Module: chess.team.prisoner.exception.insertion.friend
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

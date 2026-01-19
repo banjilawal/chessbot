@@ -160,7 +160,7 @@ class SquareService(EntityService[Square]):
         combatant = cast(CombatantToken, square.occupant)
         
         # Handle the case that the combatant has not been captured.
-        if combatant.captor is None and combatant.combat_status == CombatantStatus.FREE:
+        if combatant.captor is None and combatant.combatant_status == CombatantStatus.FREE:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareServiceException(
@@ -174,7 +174,7 @@ class SquareService(EntityService[Square]):
                 )
             )
         # Handle the case that the combatant is already among the hostages.
-        if combatant.combat_status == CombatantStatus.REGISTERED_HOSTAGE:
+        if combatant.combatant_status == CombatantStatus.REGISTERED_HOSTAGE:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareServiceException(

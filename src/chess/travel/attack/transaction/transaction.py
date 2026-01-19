@@ -39,12 +39,12 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
             event = cast(AttackEvent, event_validation.payload)
             
             # Set checkpoint 1.
-            event.enemy_combatant.captor = event.actor
+            event.enemy_combatant.victor = event.actor
             
             # Evaluate checkpoint 1 success condition.
-            if event.enemy_combatant.captor != event.actor:
+            if event.enemy_combatant.victor != event.actor:
                 # Rollback all changes in reverse order to checkpoint 0
-                event.enemy_combatant.captor = None
+                event.enemy_combatant.victor = None
                 
                 # Send the error and last checkpoint in the result on failure.
                 return TransactionResult.rolled_back(
@@ -59,7 +59,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
             
             # Evaluate checkpoint 2 success condition.
             if event.enemy_combatant in event.enemy_combatant.team_name.roster:
-                event.enemy_combatant.captor = None
+                event.enemy_combatant.victor = None
                 
                 # Send the error and last checkpoint in the result on failure.
                 return TransactionResult.rolled_back(
@@ -73,7 +73,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
             if event.enemy_combatant not in event.actor.team_name.hostages:
                 # Rollback all changes in reverse order
                 event.enemy_combatant.team_name.roster.append(event.enemy_combatant)
-                event.enemy_combatant.captor = None
+                event.enemy_combatant.victor = None
                 
                 # Send the error and last checkpoint in the result
                 return TransactionResult.rolled_back(
@@ -88,7 +88,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
                 # Rollback all changes in reverse order
                 event.actor.team_name.hostages.remove(event.enemy_combatant)
                 event.enemy_combatant.team_name.roster.append(event.enemy_combatant)
-                event.enemy_combatant.captor = None
+                event.enemy_combatant.victor = None
                 
                 # Send the error and last checkpoint in the result
                 return TransactionResult.rolled_back(
@@ -103,7 +103,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
                 # Rollback all changes in reverse order
                 event.actor.team_name.hostages.remove(event.enemy_combatant)
                 event.enemy_combatant.team_name.roster.append(event.enemy_combatant)
-                event.enemy_combatant.captor = None
+                event.enemy_combatant.victor = None
                 
                 # Send the error and last checkpoint in the result
                 return TransactionResult.rolled_back(

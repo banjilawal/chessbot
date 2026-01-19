@@ -24,7 +24,7 @@
 #
 # # A captured combatant cannot be a TravelEvent resource_candidate. No need for validating a checkmated
 # # occupation as an resource_candidate because the game ends when a occupation is in checkmate.
-# if isinstance(square_name, CombatantSquare) and square_name.captor is not None:
+# if isinstance(square_name, CombatantSquare) and square_name.victor is not None:
 #   return ValidationResult(rollback_exception=CapturedResourceCannotMoveException(
 #     f"{method}: {CapturedResourceCannotMoveException.DEFAULT_MESSAGE}"
 #   ))

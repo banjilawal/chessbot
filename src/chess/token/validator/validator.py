@@ -205,7 +205,7 @@ class TokenValidator(Validator[Token]):
     #                 CheckmatedKingException(f"{method} {CheckmatedKingException.DEFAULT_MESSAGE}")
     #             )
     #
-    #         if isinstance(token, CombatantToken) and cast(CombatantToken, token).captor is not None:
+    #         if isinstance(token, CombatantToken) and cast(CombatantToken, token).victor is not None:
     #             return ValidationResult.failure(
     #                 CapturedTokenException(f"{method}: {CapturedTokenException.DEFAULT_MESSAGE}")
     #             )
@@ -245,7 +245,7 @@ class TokenValidator(Validator[Token]):
     #             return ValidationResult.failure()
     #
     #         if (
-    #                 (isinstance(token, CombatantToken) and cast(CombatantToken, token).captor is not None) or
+    #                 (isinstance(token, CombatantToken) and cast(CombatantToken, token).victor is not None) or
     #                 isinstance(token, KingToken) and cast(KingToken, token).is_checkmated
     #         ):
     #             return ValidationResult.failure()

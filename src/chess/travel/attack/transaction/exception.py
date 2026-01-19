@@ -48,7 +48,7 @@ class FailedSettingActorAsEnemyCaptorRolledBackException(RolledBackAttackTransac
   """"""
   ERROR_CODE = "FAILED_CAPTOR_PROPERTY_UPDATE_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Updating a combatant's captor consistency during an attack transaction failed. The transaction was rolled back "
+    "Updating a combatant's victor consistency during an attack transaction failed. The transaction was rolled back "
     "before raising this exception."
   )
 
@@ -64,7 +64,7 @@ class FailedHostageAdditionRolledBackException(RolledBackAttackTransactionExcept
   """"""
   ERROR_CODE = "FAILED_HOSTAGE_ADDITION_ROLLED_BACK_ERROR"
   DEFAULT_MESSAGE = (
-    "Adding a hostage failed during an attack transaction. The transaction was rolled back before raising this "
+    "Adding a prisoner failed during an attack transaction. The transaction was rolled back before raising this "
     "exception."
   )
 

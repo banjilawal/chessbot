@@ -152,7 +152,7 @@ class TurnSceneValidator(Validator[TurnScene]):
                 combatant_piece = cast(CombatantPiece, piece)
                 team = combatant_piece.team
                 
-                if combatant_piece.captor is not None:
+                if combatant_piece.victor is not None:
                     return ValidationResult.failure(
                         CapturedPieceCannotActException(
                             f"{method}: {CapturedPieceCannotActException.DEFAULT_MESSAGE}"

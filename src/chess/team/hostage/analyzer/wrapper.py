@@ -1,7 +1,7 @@
-# src/chess/team/hostage/wrapper.py
+# src/chess/team/prisoner/wrapper.py
 
 """
-Module: chess.team.hostage.wrapper
+Module: chess.team.prisoner.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -21,7 +21,7 @@ class HostageAnalysisFailedException(AnalysisFailedException):
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
     # RESPONSIBILITIES:
-    1.  Wrap any exception that kills the relation test process before the team-hostage relationship
+    1.  Wrap any exception that kills the relation test process before the team-prisoner relationship
         status has been evaluated.
 
     # PARENT:

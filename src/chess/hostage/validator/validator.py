@@ -1,0 +1,255 @@
+# src/chess/prisoner/validator/validator.py
+
+"""
+Module: chess.prisoner.validator
+Author: Banji Lawal
+Created: 2025-10-01
+version: 1.0.0
+"""
+
+from typing import Any, cast
+
+from chess.coord import CoordService
+from chess.hostage import (
+    Hostage, HostageManifest, HostageManifestValidationFailedException, HostageValidationFailedException,
+    NullHostageException,
+    ExcessiveTeamsInHostageException
+)
+from chess.hostage.validator.exception.debug.null import NullHostageManifestException
+from chess.system import (
+    IdentityService, LoggingLevelRouter, , ValidationResult,
+    Validator
+)
+from chess.token import CombatantStatus, CombatantToken, TokenBoardState, TokenService
+
+
+class HostageManifestValidator(Validator[HostageManifest]):
+    """
+    # ROLE: Validation, Data Integrity And Reliability Guarantor
+
+    # RESPONSIBILITIES:
+    1.  Produce Hostage instances whose integrity is guaranteed at creation.
+    2.  Manage construction of Hostage instances that can be used safely by the client.
+    3.  Ensure params for Hostage creation have met the application's safety contract.
+    4.  Return an exception to the client if a Validation resource does not satisfy integrity requirements.
+
+    # PARENT:
+        *   Validation
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate(
+            cls,
+            candidate: Any,
+            coord_service: CoordService = CoordService(),
+            token_service: TokenService = TokenService(),
+            identity_service: IdentityService = IdentityService(),
+    ) -> ValidationResult[HostageManifest]:
+        """
+        # ACTION:
+        1.  verify hostage_variety is a not-null HostageVariety object.
+        2.  Use hostage_variety to pick which Validation method will create the concrete Hostage object.
+
+        # PARAMETERS:
+            *   id (int)
+            *   name (str)
+            *   hostage_variety (HostageVariety)
+            *   engine_service (Optional[EngineService])
+
+        # RETURN:
+        ValidationResult[Hostage] containing either:
+            - On success: Hostage in the payload.
+            - On failure: Exception.
+
+        # RAISES:
+            *   HostageManifestValidationFailedException
+        """
+        method = "HostageValidator.validate"
+        
+        # Handle the case that the candidate does not exist.
+        if candidate is None:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=NullHostageManifestException(f"{method}: {NullHostageException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case, that the candidate is the wrong type.
+        if not isinstance(candidate, HostageManifest):
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=TypeError(f"{method}: Expected Hostage, {type(candidate).__name__} instead.")
+                )
+            )
+        # --- Cast the candidate into a HostageManifest for additional testing. ---#
+        manifest = cast(HostageManifest, candidate)
+        
+        # Handle the case that the id is not certified safe.
+        id_validation = identity_service.validate_id(candidate=id)
+        if id_validation.failure:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=id_validation.exception
+                )
+            )
+        # Handle the case that the capture_location is not certified safe.
+        coord_validation = coord_service.validator.validate(candidate=manifest.capture_location)
+        if coord_validation.failure:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=coord_validation.exception
+                )
+            )
+        # Handle the case that the prisoner is not certified safe.
+        prisoner_validation = token_service.validator.validate(candidate=manifest.prisoner)
+        if prisoner_validation.failure:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=prisoner_validation.exception
+                )
+            )
+        # Handle the case that the victor is not certified safe.
+        victor_validation = token_service.validator.validate(candidate=manifest.victor)
+        if victor_validation.failure:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=victor_validation.exception
+                )
+            )
+        # --- Assign the certified tokens to local variables for addtional testing.. ---#
+        victor = manifest.victor
+        prisoner = manifest.prisoner
+    
+        # Handle the case that the victor and the prisoner are the same.
+        if prisoner == victor:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=TokenCannotCaptureItselfException(
+                        f"{method}: {TokenCannotCaptureItselfException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the tokens are not on the same board.
+        if victor.team.board != prisoner.team.board:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=VictorAndPrisonerConflictingBoardException(
+                        f"{method}: {VictorAndPrisonerConflictingBoardException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the tokens are not enemies.
+        if not victor.is_enemy(prisoner):
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=TokenCannotCaptureFriendException(
+                        f"{method}: {TokenCannotCaptureFriendException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the prisoner is not a CombatantToken
+        if not isinstance(prisoner, CombatantToken):
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=KingCannotBeCapturedException(
+                        f"{method}: {KingCannotBeCapturedException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the prisoner and victor are not at the same coord.
+        if prisoner.current_position != manifest.capture_location:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=VictorAndPrisonerConflictingCoordException(
+                        f"{method}: {VictorAndPrisonerConflictingCoordException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that prisoner does not have a captor
+        if prisoner.captor is None:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=PrisonerDoesNotHaveCaptorException(
+                        f"{method}: {PrisonerDoesNotHaveCaptorException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that prisoner.captor != victor
+        if prisoner.captor != victor:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=PrisonerHasDifferentCaptorException(
+                        f"{method}: {PrisonerHasDifferentCaptorException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the prisoner is free
+        if prisoner.combatant_status == CombatantStatus.FREE:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=FreeEnemyContradictsCaptureException(
+                        f"{method}: {FreeEnemyContradictsCaptureException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the victor was not placed on the board
+        if victor.board_state == TokenBoardState.NEVER_BEEN_PLACED:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=UnformedTokenCannotAttackExcetion(
+                        f"{method}: {UnformedTokenCannotAttackExcetion.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the prisoner was not placed on the board
+        if prisoner.board_state == TokenBoardState.NEVER_BEEN_PLACED:
+            # Send the exception chain on failure
+            return ValidationResult.failure(
+                HostageManifestValidationFailedException(
+                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=UnformedTokenCannotBeCapturedExcetion(
+                        f"{method}: {UnformedTokenCannotBeCapturedExcetion.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # --- Candidate has been successfully validated. Return to the caller. ---#
+        return ValidationResult.success(payload=manifest)

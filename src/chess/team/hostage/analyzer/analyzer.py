@@ -1,7 +1,7 @@
-# src/chess/team/hostage/analyzer.py
+# src/chess/team/prisoner/analyzer.py
 
 """
-Module: chess.team.hostage.analyzer
+Module: chess.team.prisoner.analyzer
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -19,7 +19,7 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
     # ROLE: Reporting, Test for Relationship
 
     # RESPONSIBILITIES:
-    1.  Establish what type of relationship a piece has with team's hostage. Either none, a partial relation or
+    1.  Establish what type of relationship a piece has with team's prisoner. Either none, a partial relation or
         completely bidirectional.
 
     # PARENT:
@@ -49,7 +49,7 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
                 Else, cast the candidate_primary to a Team instance; arena and candidate_satellite to Token
                 instance; piece.
             2.  If the piece == team they are not related. Else they are partially related.
-            3.  If searching team hostage for the satellite produces an error send the exception chain. If the
+            3.  If searching team prisoner for the satellite produces an error send the exception chain. If the
                 search produced a match send a bidirectional report. Else send a partial relation report.
         # PARAMETERS:
             *   candidate_primary (Team)
@@ -89,7 +89,7 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
                 )
             )
         piece = cast(Token, piece_validation.payload)
-        # Kings, tokens set to the team, and free enemies are not related to the hostage list.
+        # Kings, tokens set to the team, and free enemies are not related to the prisoner list.
         if (
                 isinstance(piece, KingToken) or
                 piece.team == team or
@@ -108,7 +108,7 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
                     ex=hostage_search.exception,
                     )
                 )
-        # On the empty search the token has not been added to the hostage list.
+        # On the empty search the token has not been added to the prisoner list.
         if hostage_search.is_empty:
             return RelationReport.partial(satellite=piece)
         # All other paths in the test chain have been exhausted. The team.hostages-token tuple is fully bidirectional.

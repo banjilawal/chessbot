@@ -33,7 +33,7 @@ class TeamFactory:
             rank=rank,
             team=team
           )
-          # print(captor)
+          # print(victor)
     return teams
 
 
@@ -45,23 +45,23 @@ def main():
     print(team)
 
   # for team_name in team_service:
-  #   for captor in team_name.chess_pieces:
-  #     print(captor)
+  #   for victor in team_name.chess_pieces:
+  #     print(victor)
 
       # for placement in WhiteBattleOrder:
-      #   square_name = placement.map_chess_piece_to_square_name(captor)
+      #   square_name = placement.map_chess_piece_to_square_name(victor)
       #   if square_name is not None:
       #     chessboard = chess_board.find_square_by_name(square_name)
-      #     chessboard(captor)
+      #     chessboard(victor)
       #     print(chessboard)
   # print(repo)
           # print(chessboard.visitor_name, " occupied by", chessboard.occupant.visitor_name)
         # print(placement.value[0])
-        # placement.map_chess_piece_to_square_name(captor)
-        # print("comparing", placement.chess_piece_name.capitalize(), " with", captor.visitor_name.capitalize())
-        # captor.visitor_name.capitalize() == placement.value[0].capitalize():
+        # placement.map_chess_piece_to_square_name(victor)
+        # print("comparing", placement.chess_piece_name.capitalize(), " with", victor.visitor_name.capitalize())
+        # victor.visitor_name.capitalize() == placement.value[0].capitalize():
 
-    # print(f"matched chessboard:{placement.square_name} with {captor.visitor_name}")`````````
+    # print(f"matched chessboard:{placement.square_name} with {victor.visitor_name}")`````````
 
 if __name__ == "__main__":
   main()

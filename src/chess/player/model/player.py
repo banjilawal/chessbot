@@ -148,7 +148,7 @@ class Player(ABC):
             if piece.current_position is None:
                 raise PieceCoordNullException(f"{method}: {PieceCoordNullException.DEFAULT_MESSAGE}")
             
-            if isinstance(piece, CombatantPiece) and piece.captor is not None:
+            if isinstance(piece, CombatantPiece) and piece.victor is not None:
                 raise PrisonerEscapeException(f"{method}: Cannot move {piece.name} it has been captured.")
             
             validation = CoordValidator.validate(destination)

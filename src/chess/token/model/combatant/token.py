@@ -21,13 +21,13 @@ class CombatantToken(Token):
   
     # RESPONSIBILITIES:
     1.  Concrete subclass of Token
-    2.  Indicate the Combatant should be removed from the board by setting its captor attribute.
+    2.  Indicate the Combatant should be removed from the board by setting its victor attribute.
   
     # PROVIDES:
     CombatantToken
   
     # ATTRIBUTES:
-        *   captor (Optional[Token]): Enemy who captured the combatant.
+        *   victor (Optional[Token]): Enemy who captured the combatant.
     """
     _captor: Optional[Token]
     _activity_state: CombatantStatus
@@ -57,7 +57,7 @@ class CombatantToken(Token):
         return self._captor
     
     @property
-    def combat_status(self) -> CombatantStatus:
+    def combatant_status(self) -> CombatantStatus:
         return self._activity_state
     
     @captor.setter

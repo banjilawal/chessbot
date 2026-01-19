@@ -123,31 +123,31 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
             return RelationReport.no_relation()
         
         # --- The captured token has been transferred from the board to enemy_team.hostages. (No transition event) ---#
-        if square.occupant != combatant and combatant.combat_status == CombatantStatus.REGISTERED_HOSTAGE:
+        if square.occupant != combatant and combatant.combatant_status == CombatantStatus.REGISTERED_HOSTAGE:
             return RelationReport.no_relation()
         
         # --- The combatant occupies a different coord but is still set as the occupant (Evacuation event incomplete) ---#
         if (
                 square.occupant == combatant and square.coord != combatant.current_position and
-                combatant.combat_status == CombatantStatus.FREE
+                combatant.combatant_status == CombatantStatus.FREE
         ):
             return RelationReport.stale_link(primary=square)
         
         # --- The free combatant shares the coord but is not set as the occupant yet (Occupation event incomplete) ---#
         if (
                 square.occupant != combatant and square.coord == combatant.current_position and
-                combatant.combat_status == CombatantStatus.FREE
+                combatant.combatant_status == CombatantStatus.FREE
         ):
             return RelationReport.registration_missing(satellite=combatant)
         
         # --- The captive has not been removed from the square yet. (CaptiveTransfer event incomplete) ---#
-        if square.occupant == combatant and combatant.combat_status == CombatantStatus.CAPTURE_ACTIVATED:
+        if square.occupant == combatant and combatant.combatant_status == CombatantStatus.CAPTURE_ACTIVATED:
             return RelationReport.bidirectional(primary=square, satellite=combatant)
         
         # --- The free combatant and the square share the coord and the combatant is occupying a square. (No Transition event) ---#
         if (
                 square.occupant == combatant and square.coord == combatant.current_position and
-                combatant.combat_status == CombatantStatus.FREE
+                combatant.combatant_status == CombatantStatus.FREE
         ):
             return RelationReport.bidirectional(primary=square, satellite=combatant)
         

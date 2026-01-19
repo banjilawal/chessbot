@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
 """
+
 from typing import Any, cast
 
 from chess.board import BoardService
