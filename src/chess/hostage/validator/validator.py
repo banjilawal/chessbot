@@ -1,7 +1,7 @@
-# src/chess/prisoner/validator/validator.py
+# src/chess/hostage/validator/validator.py
 
 """
-Module: chess.prisoner.validator
+Module: chess.hostage.validator
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -11,20 +11,13 @@ from typing import Any, cast
 
 from chess.coord import CoordService
 from chess.hostage import (
-    FreeEnemyContradictsCaptureException, FriendCannotCaptureFriendException, Hostage, HostageManifest,
-    HostageManifestValidationFailedException,
-    KingCannotBeCapturedException, NullHostageException,
-    ExcessiveTeamsInHostageException, PrisonerDoesNotHaveCaptorException, PrisonerHasDifferentCaptorException,
-    VictorAndPrisonerConflictingBoardException,
-    VictorAndPrisonerConflictingCoordException
+    FreeEnemyContradictsCaptureException, FriendCannotCaptureFriendException, HostageManifest,
+    HostageManifestValidationFailedException, KingCannotBeCapturedException, NullHostageManifestException,
+    PrisonerDoesNotHaveCaptorException, PrisonerHasDifferentCaptorException, TokenCannotCaptureItselfException,
+    UnformedTokenCannotBePrisonerException, UnformedTokenCannotBeVictorException,
+    VictorAndPrisonerConflictingBoardException, VictorAndPrisonerConflictingCoordException,
 )
-from chess.hostage.validator.exception.debug.formation.prisoner import UnformedTokenCannotBePrisonerException
-from chess.hostage.validator.exception.debug.formation.victor import UnformedTokenCannotBeVictorException
-from chess.hostage.validator.exception.debug.null import NullHostageManifestException
-from chess.system import (
-    IdentityService, LoggingLevelRouter, , ValidationResult,
-    Validator
-)
+from chess.system import IdentityService, LoggingLevelRouter, ValidationResult,Validator
 from chess.token import CombatantStatus, CombatantToken, TokenBoardState, TokenService
 
 

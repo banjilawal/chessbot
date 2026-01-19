@@ -1,7 +1,7 @@
-# src/chess/manifest/validator/exception/debug/null.py
+# src/chess/manifest/validator/exception/debug/manifest.py
 
 """
-Module: chess.manifest.validator.exception.debug.null
+Module: chess.manifest.validator.exception.debug.manifest
 Author: Banji Lawal
 Created: 2025-11-19
 """

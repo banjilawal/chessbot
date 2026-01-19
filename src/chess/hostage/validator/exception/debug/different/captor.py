@@ -1,7 +1,7 @@
-# src/chess/prisoner/validator/exception/debug/different/board.py
+# src/chess/hostage/validator/exception/debug/different/board.py
 
 """
-Module: chess.prisoner.validator.exception.debug.different.board
+Module: chess.hostage.validator.exception.debug.different.board
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

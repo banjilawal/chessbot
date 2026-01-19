@@ -1,7 +1,7 @@
-# src/chess/prisoner/exception.py
+# src/chess/hostage/exception.py
 
 """
-Module: chess.prisoner.exception
+Module: chess.hostage.exception
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

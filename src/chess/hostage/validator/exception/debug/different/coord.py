@@ -1,7 +1,7 @@
-# src/chess/prisoner/validator/exception/debug/different/coord.py
+# src/chess/hostage/validator/exception/debug/different/coord.py
 
 """
-Module: chess.prisoner.validator.exception.debug.different.coord
+Module: chess.hostage.validator.exception.debug.different.coord
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/prisoner/validator/exception/debug/same/__init__.py
+# src/chess/hostage/validator/exception/debug/same/__init__.py
 
 """
-Module: chess.prisoner.validator.exception.debug.same.__init__
+Module: chess.hostage.validator.exception.debug.same.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -13,3 +13,4 @@ version: 1.0.0
 None
 
 # Modules
+from .token import TokenCannotCaptureItselfException

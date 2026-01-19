@@ -1,7 +1,7 @@
-# src/chess/prisoner/validator/exception/wrapper.py
+# src/chess/hostage/validator/exception/wrapper.py
 
 """
-Module: chess.prisoner.validator.exception.wrapper
+Module: chess.hostage.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 """

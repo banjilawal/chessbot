@@ -1,7 +1,7 @@
-# src/chess/prisoner/__init__.py
+# src/chess/hostage/__init__.py
 
 """
-Module: chess.prisoner.__init__
+Module: chess.hostage.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

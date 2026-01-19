@@ -1,18 +1,20 @@
-# src/chess/prisoner/validator/exception/debug/__init__.py
+# src/chess/hostage/validator/exception/debug/same/__init__.py
 
 """
-Module: chess.prisoner.validator.exception.debug.__init__
+Module: chess.hostage.validator.exception.debug.same.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== HOSTAGE.VALIDATOR.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
+# =========== HOSTAGE.VALIDATOR.EXCEPTION.DEBUG.SAME PACKAGE CONTENTS ===========#
 
 # Packages
-from .different import *
 from .null import *
 from .same import *
+from .same import *
+from .formation import *
+from .different import *
 
 # Modules
 from .king import KingCannotBeCapturedException

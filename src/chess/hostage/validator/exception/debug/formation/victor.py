@@ -1,7 +1,6 @@
-# src/chess/formation/validator/exception/debug/null.py
-
+# src/chess/hostage/validator/exception/debug/formation/victor
 """
-Module: chess.formation.validator.exception.debug.null
+Module: chess.hostage.validator.exception.debug.formation.victor
 Author: Banji Lawal
 Created: 2025-11-19
 """

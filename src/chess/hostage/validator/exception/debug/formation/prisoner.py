@@ -1,13 +1,12 @@
-# src/chess/formation/validator/exception/debug/null.py
-
+# src/chess/hostage/validator/exception/debug/formation/prisoner
 """
-Module: chess.formation.validator.exception.debug.null
+Module: chess.hostage.validator.exception.debug.formation.prisoner
 Author: Banji Lawal
 Created: 2025-11-19
 """
 
 __all__ = [
-    # ======================# UNFORMED_TOKEN_CANNOT_BE_PRISONEREXCEPTION #======================#
+    # ======================# UNFORMED_TOKEN_CANNOT_BE_PRISONER EXCEPTION #======================#
     "UnformedTokenCannotBePrisonerException",
 ]
 

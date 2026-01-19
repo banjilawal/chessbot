@@ -1,7 +1,7 @@
-# src/chess/manifest/validator/exception/debug/suicide.py
+# src/chess/manifest/validator/exception/debug/token.py
 
 """
-Module: chess.manifest.validator.exception.debug.suicide
+Module: chess.manifest.validator.exception.debug.toke
 Author: Banji Lawal
 Created: 2025-11-19
 """
