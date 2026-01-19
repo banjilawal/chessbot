@@ -2,10 +2,9 @@ from typing import Any, cast
 
 from chess.coord import CoordService
 from chess.hostage import (
-    CaptivityContextValidationFailedException, CaptivityContextValidationRouteException,
-    ExcessiveCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException
+    CaptivityContextValidationFailedException, CaptivityContextValidationRouteException, CaptivityContext,
+    ExcessiveCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
 )
-from chess.hostage.context.context import CaptivityContext
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.token import CombatantToken, TokenService
 
@@ -177,6 +176,6 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
                 message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
                 ex=CaptivityContextValidationRouteException(
                     f"{method}: {CaptivityContextValidationRouteException.DEFAULT_MESSAGE}"
-                    )
+                )
             )
         )

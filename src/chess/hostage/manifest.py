@@ -1,4 +1,4 @@
-from chess.coord import Coord
+from chess.Square import Square
 from chess.token import CombatantToken, Token
 
 
@@ -6,13 +6,13 @@ class HostageManifest:
     _id: int
     _victor: Token
     _prisoner: CombatantToken
-    _capture_location: Coord
+    _capture_location: Square
     
-    def __init__(self, id: int, victor: Token, prisoner: CombatantToken):
+    def __init__(self, id: int, victor: Token, prisoner: CombatantToken, capture_location: Square):
         self._id = id
         self._victor = victor
         self._prisoner = prisoner
-        self._capture_location = self._victor.current_position
+        self._capture_location = capture_location
         
     @property
     def id(self) -> int:
@@ -27,7 +27,7 @@ class HostageManifest:
         return self._prisoner
     
     @property
-    def capture_location(self) -> Coord:
+    def capture_location(self) -> Square:
         return self._capture_location
         
     

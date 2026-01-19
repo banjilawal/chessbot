@@ -39,4 +39,6 @@ class ZeroCaptivityContextFlagsException(CaptivityContextException, ContextFlagC
     None
     """
     ERROR_CODE = "ZERO_CAPTIVITY_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "CaptivityContext validation failed: None of the flags were set. A single flag must be enabled."
+    DEFAULT_MESSAGE = (
+        "CaptivityContext validation failed: None of the flags were set. A single flag must be enabled."
+    )

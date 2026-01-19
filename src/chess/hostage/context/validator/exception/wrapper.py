@@ -7,8 +7,9 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
+from chess.hostage import CaptivityContextException
 from chess.system import ValidationFailedException
-from chess.captivity import CaptivityContextException
+
 
 __all__ = [
     # ======================# CAPTIVITY_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
