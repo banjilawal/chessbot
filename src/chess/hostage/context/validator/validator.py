@@ -1,5 +1,9 @@
-from typing import Any
+from typing import Any, cast
 
+from chess.hostage import (
+    CaptivityContextValidationFailedException, ExcessiveCaptivityContextFlagsException, NullCaptivityContextException,
+    ZeroCaptivityContextFlagsException
+)
 from chess.hostage.context.context import CaptivityContext
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
 from chess.token import TokenService
@@ -85,7 +89,20 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             return ValidationResult.failure(
                 CaptivityContextValidationFailedException(
                     message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=ZeroCaptivityContextFlagsException(f"{method}: {ZeroCaptivityContextFlagsException.DEFAULT_MESSAGE}")
+                    ex=ZeroCaptivityContextFlagsException(
+                        f"{method}: {ZeroCaptivityContextFlagsException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that more than one context flags are set.
+        if switch_count > 1:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                CaptivityContextValidationFailedException(
+                    message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=ExcessiveCaptivityContextFlagsException(
+                        f"{method}: {ExcessiveCaptivityContextFlagsException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
         # --- Route to the appropriate validation branch. ---#

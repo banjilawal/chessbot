@@ -86,6 +86,7 @@ class CaptivityContext(Context[HostageManifest]):
     
     def to_dict(self) -> dict:
         return {
+            "id:": self.id,
             "prisoner": self._prisoner,
             "victor": self._victor,
             "capture_location": self._capture_location,
