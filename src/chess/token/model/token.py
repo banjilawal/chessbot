@@ -7,7 +7,7 @@ Created: 2025-07-22
 version: 1.0.0
 """
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Optional
 
 from chess.rank import Rank
@@ -67,8 +67,8 @@ class Token(ABC):
         self._designation = designation
         self._roster_number = roster_number
         self._opening_square = opening_square
-        self._current_position = self._positions.current_item
-        self._previous_address = self._positions.previous_item
+        self._current_position = self._positions.current_coord
+        self._previous_address = self._positions.previous_coord
         self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
     
     @property
@@ -111,16 +111,27 @@ class Token(ABC):
     def board_state(self) -> TokenBoardState:
         return self._token_board_state
     
+    @property
+    @abstractmethod
+    def is_active(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def is_disabled(self) -> bool:
+        pass
+    
     @board_state.setter
     def board_state(self, token_board_state: TokenBoardState):
         self._token_board_state = token_board_state
-    
     
     def _set_rank(self, rank: Rank) -> None:
         self._rank = rank
     
     def is_enemy(self, token: Token) -> bool:
         return self._team != token.team
+    
+
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True

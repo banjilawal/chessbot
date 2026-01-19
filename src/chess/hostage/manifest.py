@@ -1,4 +1,13 @@
-from chess.Square import Square
+# src/chess/hostage/manifest.py
+
+"""
+Module: chess.hostage.manifest
+Author: Banji Lawal
+Created: 2025-10-09
+version: 1.0.0
+"""
+
+from chess.square import Square
 from chess.token import CombatantToken, Token
 
 

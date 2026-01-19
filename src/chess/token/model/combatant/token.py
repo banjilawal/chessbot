@@ -63,7 +63,8 @@ class CombatantToken(Token):
     @captor.setter
     def captor(self, captor: Token):
         self._captor = captor
-        self._activity_state = CombatantStatus.CAPTURED
+        
+    
     
     def __eq__(self, other):
         if super().__eq__(other):

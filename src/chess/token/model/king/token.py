@@ -7,49 +7,51 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.rank import Rank
+from chess.rank import King
 from chess.team import Team
-from chess.token import KingActivityState, Token
+from chess.token import KingActivityState, Token, TokenBoardState
 
 
 class KingToken(Token):
     _activity_state: KingActivityState
-    _is_checked: bool
-    _is_checkmated: bool
     
-    def __init__(self, id: int, name: str, rank: Rank, team: Team):
-        super().__init__n(id, name, rank, team)
-        self._is_checked = False
-        self._is_checkmated = False
+    def __init__(self, id: int, name: str, team: Team):
+        super().__init__(id, name, King, team)
         self._activity_state = KingActivityState.FREE
         
     @property
-    def state(self) -> KingActivityState:
+    def activity_state(self) -> KingActivityState:
         return self._activity_state
     
-    @state.setter
-    def state(self, state: KingActivityState):
+    @activity_state.setter
+    def activity_state(self, state: KingActivityState):
         self._activity_state = state
-    
+     
     @property
-    def is_checked(self) -> bool:
-        return self._is_checked
+    def is_in_checked(self) -> bool:
+        return (
+                self.board_state == TokenBoardState.FORMED_ON_BOARD and
+                self._activity_state == KingActivityState.IN_CHECK
+        )
     
     @property
     def is_checkmated(self) -> bool:
-        return self._is_checkmated
+        return (
+                self.board_state == TokenBoardState.FORMED_ON_BOARD and
+                self._activity_state == KingActivityState.CHECKMATED
+        )
     
-    @is_checked.setter
-    def is_checked(self, is_checked: bool):
-        self._is_checked = is_checked
+    @property
+    def is_active(self) -> bool:
+        return (
+            self.board_state == TokenBoardState.FORMED_ON_BOARD and
+            self._activity_state != KingActivityState.FREE
+        )
     
-    @is_checkmated.setter
-    def is_checkmated(self, is_checkmated: bool):
-        if self._is_checked:
-            self._is_checkmated = is_checkmated
-        else:
-            raise Exception("Cannot set checkmated status if not checked")
-    
+    @property
+    def is_disabled(self) -> bool:
+        return self.board_state == TokenBoardState.NEVER_BEEN_PLACED or self.is_checkmated
+
     def __eq__(self, other):
         if super().__eq__(other):
             if isinstance(other, KingToken):
