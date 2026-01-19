@@ -18,7 +18,7 @@ from chess.hostage import (
     VictorAndPrisonerConflictingBoardException, VictorAndPrisonerConflictingCoordException,
 )
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult,Validator
-from chess.token import CombatantStatus, CombatantToken, TokenBoardState, TokenService
+from chess.token import CombatantActivityStatue, CombatantToken, TokenBoardState, TokenService
 
 
 class HostageManifestValidator(Validator[HostageManifest]):
@@ -163,7 +163,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                 )
             )
         # Handle the case that the prisoner is free
-        if manifest.prisoner.combatant_status == CombatantStatus.FREE:
+        if manifest.prisoner.activity_status == CombatantActivityStatue.FREE:
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(

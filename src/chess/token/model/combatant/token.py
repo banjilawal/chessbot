@@ -12,7 +12,7 @@ from typing import Optional
 from chess.square import Square
 from chess.team import Team
 from chess.rank import Rank
-from chess.token import CombatantStatus, Token
+from chess.token import CombatantActivityStatue, Token, TokenBoardState
 
 
 class CombatantToken(Token):
@@ -30,7 +30,7 @@ class CombatantToken(Token):
         *   victor (Optional[Token]): Enemy who captured the combatant.
     """
     _captor: Optional[Token]
-    _activity_state: CombatantStatus
+    _activity_state: CombatantActivityStatue
     
     def __init__(
             self,
@@ -50,15 +50,40 @@ class CombatantToken(Token):
             opening_square=opening_square
         )
         self._captor = None
-        self._activity_state = CombatantStatus.FREE
+        self._activity_state = CombatantActivityStatue.FREE
+    
+    @property
+    def is_active(self) -> bool:
+        return (
+            self._captor is None and
+            self.board_state == TokenBoardState.FORMED_ON_BOARD and
+            self.activity_status != CombatantActivityStatue.FREE
+        )
+    
+    @property
+    def is_disabled(self) -> bool:
+        return not self.is_active
+
+    @property
+    def is_captured(self) -> bool:
+        return (
+            self._captor is not None and
+            self.board_state == TokenBoardState.FORMED_ON_BOARD and
+            self.activity_status != CombatantActivityStatue.FREE and
+
+        )
+    
+    @property
+    def activity_status(self) -> CombatantActivityStatue:
+        return self._activity_state
+    
+    @activity_status.setter
+    def activity_status(self, activity_status: CombatantActivityStatue):
+        self._activity_state = activity_status
     
     @property
     def captor(self) -> Optional[Token]:
         return self._captor
-    
-    @property
-    def combatant_status(self) -> CombatantStatus:
-        return self._activity_state
     
     @captor.setter
     def captor(self, captor: Token):

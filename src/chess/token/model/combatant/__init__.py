@@ -15,4 +15,4 @@ from .exception import *
 
 # Modules
 from .token import CombatantToken
-from .state import CombatantStatus
+from .state import CombatantActivityStatue
