@@ -47,7 +47,6 @@ class Team:
     _roster: RosterService
     _hostages: HostageService
 
-
     def __init__(
             self,
             id: int,

@@ -10,6 +10,8 @@ version: 1.0.0
 from enum import Enum, auto
 
 class PromotionState(Enum):
-    NO_PROMOTION = auto(),
+    NOT_PROMOTED = auto(),
     PROMOTED_TO_QUEEN = auto(),
     PROMOTED_TO_CASTLE = auto(),
+    PROMOTED_TO_BISHOP = auto(),
+    PROMOTED_TO_KNIGHT = auto(),

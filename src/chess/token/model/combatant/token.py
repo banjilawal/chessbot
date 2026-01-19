@@ -69,8 +69,7 @@ class CombatantToken(Token):
         return (
             self._captor is not None and
             self.board_state == TokenBoardState.FORMED_ON_BOARD and
-            self.activity_status != CombatantActivityStatue.FREE and
-
+            self.activity_status != CombatantActivityStatue.FREE
         )
     
     @property

@@ -9,6 +9,7 @@ version: 1.0.0
 
 from enum import Enum
 
+from chess.schema import Schema
 from chess.scalar import Scalar
 from chess.geometry import Quadrant
 from chess.system import GameColor, ROW_SIZE
@@ -89,6 +90,12 @@ class Schema(Enum):
     @property
     def pawn_row(self) -> int:
         return self._rank_row + self._advancing_step.value
+    
+    @property
+    def opposite(self) -> Schema:
+        if self == Schema.WHITE:
+            return Schema.BLACK
+        return Schema.WHITE
     #
     # @property
     # def battle_order(self) -> SearchResult[List[Formation]]:
