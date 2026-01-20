@@ -186,8 +186,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
             return BuildResult.failure(
                 HostageManifestBuildFailedException(
                     message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
-                    ex=VictorCannotBeDisableToknException(
-                        f"{method}: {VictorCannotBeDisableToknException.DEFAULT_MESSAGE}"
+                    ex=VictorCannotBeDisableTokenException(
+                        f"{method}: {VictorCannotBeDisableTokenException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -257,4 +257,3 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         
         # Return to the caller in the BuildResult.
         return BuildResult.success(payload=manifest)
-        
