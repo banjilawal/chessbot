@@ -10,15 +10,15 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.square import SquareService
+from chess.token import TokenBoardState, TokenService
 from chess.hostage import (
     PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException, HostageManifest,
-    HostageManifestValidationFailedException, KingCannotBeCapturedException, NullHostageManifestException,
-    PrisonerAlreadyHasHostageManifestException, PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException,
-    UnformedTokenCannotBeVictorException, VictorAndPrisoneOnDifferentBoardsException,
-    PrisonerCapturedOnDifferentSquareException,
+    HostageManifestValidationFailedException, NullHostageManifestException, PrisonerAlreadyHasHostageManifestException,
+    PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException, UnformedTokenCannotBeVictorException,
+    VictorAndPrisoneOnDifferentBoardsException, PrisonerCapturedOnDifferentSquareException,
 )
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult,Validator
-from chess.token import  CombatantToken, TokenBoardState, TokenService
+
 
 
 class HostageManifestValidator(Validator[HostageManifest]):
@@ -76,7 +76,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
             *   UnformedTokenCannotBeVictorException
             *   PrisonerCannotBeActiveCombatantException
             *   HostageManifestValidationFailedException
-            *   VictorAndPrisoneOnDifferentBoardsException
+            *   VictorAndPrisonerOnDifferentBoardsException
             *   PrisonerAlreadyHasHostageManifestException
             *   PrisonerCapturedOnDifferentSquareException
         """

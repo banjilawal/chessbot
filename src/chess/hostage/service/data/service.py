@@ -1,83 +1,133 @@
-# src/chess/square/service/service.py
+# src/chess/hostage/service/data/service_.py
 
 """
-Module: chess.square.service.service
+Module: chess.hostage.service.data.service
 Author: Banji Lawal
-Created: 2025-11-12
+Created: 2025-11-19
 version: 1.0.0
 """
 
-from typing import cast
+from typing import List, cast
 
-from chess.hostage import CaptivityContextService, HostageManifest, HostageManifestValidator
-from chess.square.service.exception.insertion import OccupiedSquareCannotRecieveFormationException
-from chess.square.state import SquareState
-from chess.system import EntityService, InsertionResult, LoggingLevelRouter, id_emitter
-from chess.square import (
-    AddingFormationToSquareFailedException, Square, SquareBuilder, HostageManifestServiceException,
-    SquareValidator
-)
-from chess.team import FriendCannotCaptureFriendException, Team, TeamService
-from chess.token import (
-    CombatantActivityState, CombatantToken, KingToken, Token, TokenBoardState, TokenContext,
-    TokenDoesNotExistForRemovalException,
-    TokenService
-)
+from chess.hostage import CaptivityContextService, HostageManifest, HostageManifestService
+from chess.system import DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 
 
-class HostageManifestService(EntityService[HostageManifest]):
+class HostageManifestDataService(DataService[HostageManifest]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing Square microservice API.
-    2.  Encapsulate integrity assurance logic in one extendable module.
-    3.  Authoritative, single source of truth for Square state by providing single entry and exit points to Square
-        lifecycle.
+    1.  Public facing API.
+    2.  Microservice for managing HostageManifest objects and their lifecycles.
+    3.  Ensure integrity of HostageManifest data stack
+    4.  Stack data structure for HostageManifest objects with no guarantee of uniqueness.
 
     # PARENT:
-        *   EntityService
+        *   DataService[HostageManifest]
 
     # PROVIDES:
-        *   HostageManifestService
+    None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See DataService class for inherited attributes.
     """
-    SERVICE_NAME = "HostageManifestService"
-    
+    SERVICE_NAME = "HostageManifestDataService"
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            builder: HostaManifestBuilder = HostgaeManifestBuilder(),
-            validator: HostageManifestValidator = HostageManifestValidator(),
+            items: List[HostageManifest] = List[HostageManifest],
+            service: HostageManifestService = HostageManifestService(),
+            context_service: CaptivityContextService = CaptivityContextService(),
     ):
         """
         # ACTION:
             Constructor
         # PARAMETERS:
-            *   id (nt)
+            *   id (int)
             *   name (str)
-            *   builder (SquareFactory)
-            *   validator (SquareValidator)
+            *   items (List[Team])
+            *   service (TeamService)
+            *   context_service (TeamContextService)
         # RETURNS:
             None
         # RAISES:
             None
         """
-        super().__init__(id=id, name=name, builder=builder, validator=validator)
+        method = "HostageManifestService.__init__"
+        super().__init__(
+            id=id,
+            name=name,
+            items=items,
+            entity_service=service,
+            context_service=context_service,
+        )
     
     @property
-    def builder(self) -> HostageManfiestBuilder:
-        """get SquareBuilder"""
-        return cast(HostageManfiestBuilderr, self.entity_builder)
+    def hostage_manifest_service(self) -> HostageManifestService:
+        return cast(HostageManifestService, self.entity_service)
     
     @property
-    def validator(self) -> HostageManifestValidator:
-        """get SquareValidator"""
-        return cast(HostageManifestValidator, self.entity_validator)
+    def captivity_context_service(self) -> CaptivityContextService:
+        return cast(CaptivityContextService, self.context_service)
+    
+    @LoggingLevelRouter.monitor
+    def insert_manifest(self, manifest: HostageManifest) -> InsertionResult[HostageManifest]:
+        """
+        # ACTION:
+            1.  If the hostageManifest is not validated send the exception in the InsertionResult. Else, call the super class
+                push method.
+            2.  If super().push_item fails send the exception in the InsertionResult. Else extract the payload to cast
+                and return to the caller in the BuildResult.
+        # PARAMETERS:
+            *   Only one these must be provided:
+                    *   hostageManifest (HostageManifest)
+        # RETURNS:
+            *   InsertionResult[HostageManifest] containing either:
+                    - On failure: Exception.
+                    - On success: HostageManifest in the payload.
+        # RAISES:
+            *   HostageManifestDataServiceException
+        """
+        method = "HostageManifestDataService.add_hostageManifest"
+        
+        # Handle the case that the hostageManifest is unsafe.
+        validation = self.hostage_manifest_service.validator.validate(candidate=manifest)
+        if validation.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                HostageManifestDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDataServiceException.ERROR_CODE}",
+                    ex=HostageManifestInsertionFailedException(
+                        message=f"{method}: {HostageManifestInsertionFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            )
+
+        # --- HostageManifest order is not required. Direct insertion into the dataset is simpler that a push. ---#
+        self.items.append(manifest)
+        
+        # Handle the case that the hostageManifest was not appended to the dataset.
+        if manifest not in self.items:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                HostageManifestDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDataServiceException.ERROR_CODE}",
+                    ex=HostageManifestInsertionFailedException(
+                        message=f"{method}: {HostageManifestInsertionFailedException.ERROR_CODE}",
+                        ex=AppendingHostageManifestDirectlyIntoItemsFailedException(
+                            f"{method}: {AppendingHostageManifestDirectlyIntoItemsFailedException.ERROR_CODE}"
+                        )
+                    )
+                )
+            )
+        # On success return the hostageManifest in the InsertionResult
+        return InsertionResult.success(payload=manifest)
+    
+    

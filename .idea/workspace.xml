@@ -5,14 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/chess/hostage/buillder/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/hostage/buillder/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/hostage/buillder/exception/debug/occupation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/hostage/buillder/exception/debug/occupation/victor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/hostage/buillder/exception/debug/victor/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/hostage/buillder/exception/debug/victor/disabled.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/buillder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/buillder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/buillder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/buillder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/data/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/data/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/data/exception/insertion/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/data/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/data/exception/unfound.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/data/exception/search/unfound.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/validator/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -311,11 +310,11 @@
       <recent name="$PROJECT_DIR$/src/chess/team/table" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/hostage/service/data/exception/search" />
       <recent name="$PROJECT_DIR$/src/chess/hostage/buillder/exception" />
       <recent name="$PROJECT_DIR$/src/chess/hostage/context/service" />
       <recent name="$PROJECT_DIR$/src/chess/hostage/context/finder/exception/debug/dataset" />
       <recent name="$PROJECT_DIR$/src/chess/hostage/context/finder/exception/debug/payload" />
-      <recent name="$PROJECT_DIR$/src/chess/hostage/buillder" />
     </key>
   </component>
   <component name="RunManager" selected="Python.board">
@@ -853,7 +852,7 @@
       <workItem from="1768723759252" duration="607000" />
       <workItem from="1768730243841" duration="45120000" />
       <workItem from="1768807959437" duration="20802000" />
-      <workItem from="1768847739942" duration="29360000" />
+      <workItem from="1768847739942" duration="33759000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
