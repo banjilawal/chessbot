@@ -18,7 +18,6 @@ class TokenBuildManifest:
     _id: int
     _rank: Rank
     _owner: Team
-    coord: Coord
     _designation: str
     _roster_number: int
     _opening_square: Square
@@ -28,7 +27,6 @@ class TokenBuildManifest:
             id: int,
             rank: Rank,
             owner: Team,
-            coord: Coord,
             designation: str,
             roster_number: int,
             opening_square: Square,
@@ -36,7 +34,6 @@ class TokenBuildManifest:
         self._id = id
         self._rank = rank
         self._owner = owner
-        self._coord = coord
         self._designation = designation
         self._roster_number = roster_number
         self._opening_square = opening_square
@@ -52,10 +49,6 @@ class TokenBuildManifest:
     @property
     def owner(self) -> Team:
         return self._owner
-    
-    @property
-    def coord(self) -> Coord:
-        return self._coord
     
     @property
     def designation(self) -> str:

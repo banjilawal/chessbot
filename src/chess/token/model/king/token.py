@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from chess.rank import King
+from chess.square import Square
 from chess.team import Team
 from chess.token import KingActivityState, Token, TokenBoardState
 
@@ -15,8 +16,14 @@ from chess.token import KingActivityState, Token, TokenBoardState
 class KingToken(Token):
     _activity_state: KingActivityState
     
-    def __init__(self, id: int, name: str, team: Team):
-        super().__init__(id, name, King, team)
+    def __init__(self, id: int, designation: str, roster_number: int, team: Team, opening_square: Square):
+        super().__init__(
+            id=id,
+            designation=designation,
+            roster_number=roster_number,
+            rank=King(), team=team,
+            opening_square=opening_square
+        )
         self._activity_state = KingActivityState.FREE
         
     @property

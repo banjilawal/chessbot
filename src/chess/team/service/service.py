@@ -9,11 +9,14 @@ version: 1.0.0
 
 from typing import List, Optional, cast
 
+from chess.board import Board, BoardService
+from chess.formation import FormationKey
 from chess.schema import SchemaService
 from chess.rank import Rank, RankService
+from chess.square import Square, SquareContext
 from chess.system import (
     CalculationResult, EntityService, IdentityService, InsertionResult, LoggingLevelRouter,
-    SearchResult, id_emitter
+    Result, SearchResult, id_emitter
 )
 from chess.team import (
     AddingTeamRosterMemberFailedException, EnemyCannotJoinTeamRosterException, HostageRelationAnalyzer, RosterRelationAnalyzer,
@@ -22,7 +25,8 @@ from chess.team import (
     ZeroTeamContextFlagsException
 )
 from chess.token import (
-    AddingDuplicateTokenException, CombatantToken, Token, TokenContext, TokenService,
+    AddingDuplicateTokenException, CombatantToken, Token, TokenBuildManifest, TokenBuildManifestValidator, TokenContext,
+    TokenService,
     TokenServiceCapacityException
 )
 
@@ -54,6 +58,7 @@ class TeamService(EntityService[Team]):
     _schema_service: SchemaService
     _roster_relation_analyzer: RosterRelationAnalyzer
     _hostage_relation_analyzer: HostageRelationAnalyzer
+    _token_build_manifest_validator: TokenBuildManifestValidator
     
     def __init__(
             self,
@@ -64,6 +69,7 @@ class TeamService(EntityService[Team]):
             schema_service: SchemaService = SchemaService(),
             roster_relation_analyzer: RosterRelationAnalyzer = RosterRelationAnalyzer(),
             hostage_relation_analyzer: HostageRelationAnalyzer = HostageRelationAnalyzer(),
+            token_build_manifest_validator: TokenBuildManifestValidator = TokenBuildManifestValidator(),
     ):
         """
         # ACTION:
@@ -84,6 +90,7 @@ class TeamService(EntityService[Team]):
         self._schema_service = schema_service
         self._roster_relation_analyzer = roster_relation_analyzer
         self._hostage_relation_analyzer = hostage_relation_analyzer
+        self._token_build_manifest_validator = token_build_manifest_validator
     
     @property
     def builder(self) -> TeamBuilder:
@@ -94,6 +101,10 @@ class TeamService(EntityService[Team]):
     def validator(self) -> TeamValidator:
         """get TeamValidator."""
         return cast(TeamValidator, self.entity_validator)
+    
+    @property
+    def token_build_manifest_validator(self) -> TokenBuildManifestValidator:
+        return self._token_build_manifest_validator
     
     @property
     def roster_relation_analyzer(self) -> RosterRelationAnalyzer:
@@ -144,6 +155,123 @@ class TeamService(EntityService[Team]):
                 )
             )
         return search_result
+    
+    def fill_team_roster(self, team: Team) -> Result[Team]:
+        """
+        # ACTION:
+            1.  If a successful relation analysis does not show that the team and piece are partially related send an
+                exception. Also, send the exception if the relation analysis fails.
+            2.  If the rank's quota is full, send the exception in InsertionResult. Else get the result of the
+                super().push_item.
+            3.  If the super class raises an exception, wrap and forward it. Else, forward the super class success
+                directly to the caller.
+        # PARAMETERS:
+            *   team (Team)
+            *   piece (Piece)
+        # RETURN:
+            *   InsertionResult[token] containing either:
+                    - On failure: Exception
+                    - On success: Token
+        # RAISES:
+            *   TeamServiceException
+        """
+        method = "TeamService.fill_team_roster"
+        
+        # Handle the case that the team is not certified safe.
+        team_validation = self.validator.validate(candidate=team)
+        if team_validation.is_failure:
+            # Return exception chain on failure.
+            return UpdatenResult.failure(
+                TeamServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                    ex=FillingTeamRosterFailedException(
+                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                        ex=team_validation.exception
+                    )
+                )
+            )
+        # --- Get the formations for the team by its color. ---#
+        formation_lookup_result = team.roster.integrity_service.formation_service.lookup_formation(
+            super_key=FormationKey(color=team.schema.color)
+        )
+        
+        # Handle the case that the formation lookup was not completed.
+        if formation_lookup_result.is_failure:
+            # Return exception chain on failure.
+            return UpdateResult.failure(
+                TeamServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                    ex=FillingTeamRosterFailedException(
+                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                        ex=formation_lookup_result.exception
+                    )
+                )
+            )
+        # --- Iterate through each formation to get each token's build params. ---#
+        formations = cast(List[FormationKey], formation_lookup_result.payload)
+        for index in range(len(formations)):
+            # --- Search for each formation's square on the team.board. ---#
+            formation = formations[index]
+            square_search_result = team.board.squares.search_squares(
+                context=SquareContext(name=formation.square_name)
+            )
+            
+            # Handle the case that the search was not completed.
+            if square_search_result.is_failure:
+                # Return exception chain on failure.
+                return UpdateResult.failure(
+                    TeamServiceException(
+                        message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                        ex=FillingTeamRosterFailedException(
+                            message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                            ex=square_search_result.exception
+                        )
+                    )
+                )
+            opening_square = cast(Square, square_search_result.payload[0])
+            # --- Build the token. ---#
+            token_build_result = team.roster.integrity_service.builder.build(
+                token_manifest=TokenBuildManifest(
+                    owner=team,
+                    rank=formation.rank,
+                    roster_number=index,
+                    id=id_emitter.token_id,
+                    opening_square=opening_square,
+                    designation=formation.designation
+                ),
+                manifest_validator=self.token_build_manifest_validator
+            )
+            
+            # Handle the case that the token does not get built.
+            if token_build_result.is_failure:
+                # Return exception chain on failure.
+                return UpdateResult.failure(
+                    TeamServiceException(
+                        message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                        ex=FillingTeamRosterFailedException(
+                            message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                            ex=token_build_result.exception
+                        )
+                    )
+                )
+            
+            # --- The factory returns only instances of concrete tokens so don't cast during the insert.---#
+            insertion_result = team.roster.add_unique_token(token=token_build_result.payload)
+            
+            # Handle the case that the insertion was not completed.
+            if insertion_result.is_failure:
+                # Return exception chain on failure.
+                return UpdateResult.failure(
+                    TeamServiceException(
+                        message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                        ex=FillingTeamRosterFailedException(
+                            message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                            ex=insertion_result.exception
+                        )
+                    )
+                )
+            # --- The team's roster has been successfully updated send it in the UpdateResult. ---#
+            return UpdateResult.success(team)
         
     
     def add_roster_member(self, team: Team, piece: Token) -> InsertionResult[Token]:

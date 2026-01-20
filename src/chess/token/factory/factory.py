@@ -46,7 +46,7 @@ class TokenFactory(Builder[Token]):
     def build(
             cls,
             manifest: TokenBuildManifest,
-            team_service: TeamService = TeamService(),
+            # team_service: TeamService = TeamService(),
             manifest_validator: TokenBuildManifestValidator = TokenBuildManifestValidator(),
     ) -> BuildResult[Token]:
         """
@@ -85,7 +85,7 @@ class TokenFactory(Builder[Token]):
         
         # Build path for Pawns.
         if isinstance(manifest.rank, Pawn):
-            token = cls._build_pawn(
+            return cls._build_pawn(
                 id=manifest.id,
                 owner=manifest.owner,
                 designation=manifest.designation,
@@ -94,7 +94,7 @@ class TokenFactory(Builder[Token]):
             )
         # Build path for Kings
         elif isinstance(manifest.rank, King):
-            token = cls._build_king(
+            return cls._build_king(
                 id=manifest.id,
                 owner=manifest.owner,
                 designation=manifest.designation,
@@ -102,61 +102,61 @@ class TokenFactory(Builder[Token]):
                 opening_square=manifest.opening_square,
             )
         else:
-            token = cls._build_combatant(
+            return cls._build_combatant(
                 id=manifest.id,
                 owner=manifest.owner,
                 designation=manifest.designation,
                 roster_number=manifest.roster_number,
                 opening_square=manifest.opening_square,
             )
-        # Get the RelationReport between the team's roster to see if the token can be added to the team's roster.
-        relation_report = team_service.roster_relation_analyzer.analyze(
-            candidate_primary=manifest.owner,
-            candidate_satellite=token,
-            team_service=team_service,
-            piece_service=manifest.owner.roster.members.integrity_service,
-        )
-        # Handle the case that the relation analysis ran into an error.
-        if relation_report.is_failure:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=relation_report.exception
-                )
-            )
-        # Handle the case that the piece has a different owner.
-        if relation_report.does_not_exist:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=EnemyCannotJoinTeamRosterException(f"{method}: {EnemyCannotJoinTeamRosterException.DEFAULT_MESSAGE}")
-                )
-            )
-        # Handle the case that the piece is already registered with its owner.
-        if relation_report.fully_exists:
-            # Return the exception chain on failure.
-            return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
-                )
-            )
-        # Last relation outcome is the piece has not registered with its owner. Do an insertion to complete
-        # the registration process which creates a fully bidirectional relation between the token and its owner.
-        insertion_result = team_service.add_member(team=manifest.owner, token=token)
-        
-        # Handle the case that the insertion failed.
-        if insertion_result.is_failure:
-            return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=insertion_result.exception
-                )
-            )
+        # # Get the RelationReport between the team's roster to see if the token can be added to the team's roster.
+        # relation_report = team_service.roster_relation_analyzer.analyze(
+        #     candidate_primary=manifest.owner,
+        #     candidate_satellite=token,
+        #     team_service=team_service,
+        #     piece_service=manifest.owner.roster.members.integrity_service,
+        # )
+        # # Handle the case that the relation analysis ran into an error.
+        # if relation_report.is_failure:
+        #     # Return the exception chain on failure.
+        #     return BuildResult.failure(
+        #         TokenBuildFailedException(
+        #             message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+        #             ex=relation_report.exception
+        #         )
+        #     )
+        # # Handle the case that the piece has a different owner.
+        # if relation_report.does_not_exist:
+        #     # Return the exception chain on failure.
+        #     return BuildResult.failure(
+        #         TokenBuildFailedException(
+        #             message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+        #             ex=EnemyCannotJoinTeamRosterException(f"{method}: {EnemyCannotJoinTeamRosterException.DEFAULT_MESSAGE}")
+        #         )
+        #     )
+        # # Handle the case that the piece is already registered with its owner.
+        # if relation_report.fully_exists:
+        #     # Return the exception chain on failure.
+        #     return BuildResult.failure(
+        #         TokenBuildFailedException(
+        #             message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+        #             ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
+        #         )
+        #     )
+        # # Last relation outcome is the piece has not registered with its owner. Do an insertion to complete
+        # # the registration process which creates a fully bidirectional relation between the token and its owner.
+        # insertion_result = team_service.add_member(team=manifest.owner, token=token)
+        #
+        # # Handle the case that the insertion failed.
+        # if insertion_result.is_failure:
+        #     return BuildResult.failure(
+        #         TokenBuildFailedException(
+        #             message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+        #             ex=insertion_result.exception
+        #         )
+        #     )
         # If all the steps completed successfully return the token in the BuildResult.
-        return BuildResult.success(token)
+        # return BuildResult.success(token)
             
     @classmethod
     @LoggingLevelRouter.monitor
@@ -168,13 +168,14 @@ class TokenFactory(Builder[Token]):
             roster_number: int,
             opening_square: Square
     ) -> PawnToken:
-        return PawnToken(
-            id=id,
-            team=owner,
-            rank=Pawn(),
-            designation=designation,
-            roster_number=roster_number,
-            opening_square=opening_square,
+        return BuildResult.success(
+            payload=PawnToken(
+                id=id,
+                team=owner,
+                designation=designation,
+                roster_number=roster_number,
+                opening_square=opening_square,
+            )
         )
     
     @classmethod
@@ -187,13 +188,14 @@ class TokenFactory(Builder[Token]):
             roster_number: int,
             opening_square: Square
     ) -> KingToken:
-        return KingToken(
-            id=id,
-            team=owner,
-            rank=King(),
-            designation=designation,
-            roster_number=roster_number,
-            opening_square=opening_square,
+        return BuildResult.success(
+                payload=KingToken(
+                id=id,
+                team=owner,
+                designation=designation,
+                roster_number=roster_number,
+                opening_square=opening_square,
+            )
         )
     
     @classmethod
@@ -206,11 +208,13 @@ class TokenFactory(Builder[Token]):
             roster_number: int,
             opening_square: Square
     ) -> CombatantToken:
-        return CombatantToken(
-            id=id,
-            team=owner,
-            rank=King(),
-            designation=designation,
-            roster_number=roster_number,
-            opening_square=opening_square,
+        return BuildResult.success(
+                payload=CombatantToken(
+                id=id,
+                team=owner,
+                rank=King(),
+                designation=designation,
+                roster_number=roster_number,
+                opening_square=opening_square,
+            )
         )
