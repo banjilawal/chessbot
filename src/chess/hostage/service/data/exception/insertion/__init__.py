@@ -10,5 +10,8 @@ version: 1.0.0
 # =========== HOSTAGE.SERVICE.DATA.EXCEPTION.INSERTION PACKAGE CONTENTS ===========#
 
 # Packages
+None
 
 # Modules
+from .wrapper import HostageManifestInsertionFailedException
+from .direct import AppendingHostageManifestDirectlyIntoItemsFailedException

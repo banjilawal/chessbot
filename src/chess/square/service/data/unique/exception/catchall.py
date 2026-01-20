@@ -8,13 +8,12 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# PLAYER_DATA_SERVICE EXCEPTION #======================#
+    # ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
     "UniqueSquareDataServiceException",
 ]
 
 from chess.square import SquareException
 from chess.system import UniqueDataServiceException
-
 
 # ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
 class UniqueSquareDataServiceException(SquareException, UniqueDataServiceException):
@@ -38,5 +37,5 @@ class UniqueSquareDataServiceException(SquareException, UniqueDataServiceExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_DATA_SERVICE_ERROR"
+    ERROR_CODE = "UNIQUE_SQUARE_DATA_SERVICE_ERROR"
     DEFAULT_MESSAGE = "UniqueSquareDataService raised an exception."

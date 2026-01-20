@@ -9,8 +9,12 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.hostage import CaptivityContextService, HostageManifest, HostageManifestService
-from chess.system import DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.hostage import (
+    CaptivityContextService, HostageManifest, HostageManifestDataServiceException,
+    HostageManifestService
+)
+from chess.hostage.service.data.exception.insertion.wrapper import HostageManifestInsertionFailedException
+from chess.system import DataService, InsertionResult, LoggingLevelRouter, id_emitter
 
 
 class HostageManifestDataService(DataService[HostageManifest]):
@@ -69,7 +73,7 @@ class HostageManifestDataService(DataService[HostageManifest]):
         )
     
     @property
-    def hostage_manifest_service(self) -> HostageManifestService:
+    def integrity_service(self) -> HostageManifestService:
         return cast(HostageManifestService, self.entity_service)
     
     @property
@@ -97,7 +101,7 @@ class HostageManifestDataService(DataService[HostageManifest]):
         method = "HostageManifestDataService.add_hostageManifest"
         
         # Handle the case that the hostageManifest is unsafe.
-        validation = self.hostage_manifest_service.validator.validate(candidate=manifest)
+        validation = self.integrity_service.validator.validate(candidate=manifest)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

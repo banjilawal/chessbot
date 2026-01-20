@@ -39,4 +39,4 @@ class UniqueSquareInsertionFailedException(SquareException, InsertionFailedExcep
     None
     """
     ERROR_CODE = "UNIQUE_SQUARE_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Unique square insertion failed."
+    DEFAULT_MESSAGE = "Unique Square insertion failed."

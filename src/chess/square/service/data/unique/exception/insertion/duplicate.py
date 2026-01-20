@@ -21,8 +21,8 @@ class AddingDuplicateSquareException(UniqueSquareDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to add a square to the UniqueSquareDataService's dataset failed because the square was
-        already in the collection
+    1.  Indicate that an attempt to add a item to the UniqueSquareDataService's dataset failed because it was
+        already present.
 
     # PARENT:
         *   UniqueSquareDataServiceException
@@ -37,4 +37,4 @@ class AddingDuplicateSquareException(UniqueSquareDataServiceException):
     None
     """
     ERROR_CODE = "ADDING_DUPLICATE_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Unique square insertion failed: The square is already in the collection."
+    DEFAULT_MESSAGE = "Unique Square insertion failed: The square is already present."
