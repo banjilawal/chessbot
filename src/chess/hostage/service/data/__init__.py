@@ -10,5 +10,8 @@ version: 1.0.0
 # =========== HOSTAGE.SERVICE.DATA PACKAGE CONTENTS ===========#
 
 # Packages
+from .unique import *
+from .exception import *
 
 # Modules
+from .service import HostageManifestDataService
