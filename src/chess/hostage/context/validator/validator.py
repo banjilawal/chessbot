@@ -137,24 +137,13 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         
         # Certification for the search-by-prisoner target.
         if context.prisoner is not None:
-            validation = token_service.validator.validate(context.prisoner)
+            validation = token_service.validator.verify_token_is_combatant(candidate=context.prisoner)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     CaptivityContextValidationFailedException(
                         message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
                         ex=validation.exception
-                    )
-                )
-            # Handle the case that the class is wrong.
-            if not isinstance(context.prisoner, CombatantToken):
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    CaptivityContextValidationFailedException(
-                        message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
-                        ex=TypeError(
-                            f"{method}: Expected a CombatantToken, got {type(candidate).__name__} instead."
-                        )
                     )
                 )
             # On certification success return the prisoner_CaptivityContext in the ValidationResult.

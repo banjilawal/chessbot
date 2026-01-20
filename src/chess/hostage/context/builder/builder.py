@@ -1,11 +1,10 @@
-from typing import Any, Optional, cast
+from typing import Optional, cast
 
-from chess.coord import CoordService
 from chess.hostage import (
-    CaptivityContextBuildFailedExceptionBuild, CaptivityContextBuildRouteException, CaptivityContext,
-    ExcessiveCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
+    CaptivityContext, CaptivityContextBuildFailedException,
+    CaptivityContextBuildRouteException, ExcessiveCaptivityContextFlagsException, ZeroCaptivityContextFlagsException
 )
-from chess.square import Square
+from chess.square import Square, SquareService
 from chess.system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
 from chess.token import CombatantToken, Token, TokenService
 
@@ -40,8 +39,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             captured_square: Optional[Square],
             prisoner: Optional[CombatantToken],
             id: Optional[int] = id_emitter.scout_report_id,
-            coord_service: CoordService = CoordService(),
             token_service: TokenService = TokenService(),
+            square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[CaptivityContext]:
         """
@@ -50,8 +49,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             1. Test the candidate is a valid SearchCaptivityContext with a single searcher option switched on.
             2. Test the value passed to CaptivityContext passes its validation contract.
         # PARAMETERS:
-            * candidate (Any): Object to verify is a Coord.
-            * validator (type[CoordValidator]): Enforces safety requirements on row, column, square_name coords.
+            * candidate (Any): Object to verify is a Square.
+            * validator (type[SquareValidator]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
             * BuildResult[CaptivityContext] containing either:
                     - On failure: Exception.
@@ -60,7 +59,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             * TypeError
             * NullCaptivityContextException
             * ZeroCaptivityContextFlagsException
-            * CaptivityContextBuildFailedExceptionBuild
+            * CaptivityContextBuildFailedException
             * CaptivityContextBuildRouteException
         """
         method = "CaptivityContextBuilder.validate"
@@ -73,8 +72,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                CaptivityContextBuildFailedExceptionBuild(
-                    message=f"{method}: {CaptivityContextBuildFailedExceptionBuild.DEFAULT_MESSAGE}",
+                CaptivityContextBuildFailedException(
+                    message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
                     ex=ZeroCaptivityContextFlagsException(
                         f"{method}: {ZeroCaptivityContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -84,8 +83,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                CaptivityContextBuildFailedExceptionBuild(
-                    message=f"{method}: {CaptivityContextBuildFailedExceptionBuild.DEFAULT_MESSAGE}",
+                CaptivityContextBuildFailedException(
+                    message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
                     ex=ExcessiveCaptivityContextFlagsException(
                         f"{method}: {ExcessiveCaptivityContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -99,8 +98,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildFailedExceptionBuild(
-                        message=f"{method}: {CaptivityContextBuildFailedExceptionBuild.DEFAULT_MESSAGE}",
+                    CaptivityContextBuildFailedException(
+                        message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -113,39 +112,47 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildFailedExceptionBuild(
-                        message=f"{method}: {CaptivityContextBuildFailedExceptionBuild.DEFAULT_MESSAGE}",
+                    CaptivityContextBuildFailedException(
+                        message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
-            # On validation success return an victorCaptivityContext in the BuildResult.
+            # On validation success return a victorCaptivityContext in the BuildResult.
+    
             return BuildResult.success(CaptivityContext(victor=victor))
         
         # Certification for the search-by-prisoner target.
-        if context.prisoner is not None:
-            validation = token_service.validator.validate(context.prisoner)
+        if prisoner is not None:
+            validation = token_service.validator.verify_token_is_combatant(candidate=prisoner)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildFailedExceptionBuild(
-                        message=f"{method}: {CaptivityContextBuildFailedExceptionBuild.DEFAULT_MESSAGE}",
+                    CaptivityContextBuildFailedException(
+                        message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
-            if not isinstance(validation.payload, CombatantToken):
+            # On validation success return a prisonerCaptivityContext in the BuildResult.
+            return BuildResult.success(CaptivityContext(prisoner=prisoner))
+        
+        # Certification for the search-by-captured-square target.
+        if captured_square is not None:
+            validation = square_service.validator.validate(candidate=captured_square)
+            if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildFailedExceptionBuild(
-                        message=f"{method}: {CaptivityContextBuildFailedExceptionBuild.DEFAULT_MESSAGE}",
-                        ex=TypeError(f"{method}: Expected a CombatantToken, got {type(candidate).__name__} instead.")
+                    CaptivityContextBuildFailedException(
+                        message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
                     )
                 )
-            return BuildResult.success(payload=context)
+            # On validation success return a captured_squareCaptivityContext in the BuildResult.
+            return BuildResult.success(CaptivityContext(captured_square=captured_square))
         
-        # Return the exception chain if there was no validation route for the context.
+        # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            CaptivityContextBuildFailedExceptionBuild(
-                message=f"{method}: {CaptivityContextBuildFailedExceptionBuild.DEFAULT_MESSAGE}",
+            CaptivityContextBuildFailedException(
+                message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
                 ex=CaptivityContextBuildRouteException(
                     f"{method}: {CaptivityContextBuildRouteException.DEFAULT_MESSAGE}"
                 )

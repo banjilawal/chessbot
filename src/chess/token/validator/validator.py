@@ -159,7 +159,7 @@ class TokenValidator(Validator[Token]):
     
     @classmethod
     def verify_token_is_combatant(cls, candidate: Any) -> ValidationResult[CombatantToken]:
-        method = "TokenValidator.validate_token_is_active_combatant"
+        method = "TokenValidator.validate_token_is_combatant"
         # Handle the case that the candidate is not certified as a safe token.
         validation = cls.validate(candidate)
         if validation.is_failure:
@@ -185,7 +185,7 @@ class TokenValidator(Validator[Token]):
     
     @classmethod
     def verify_token_is_king(cls, candidate: Any) -> ValidationResult[KingToken]:
-        method = "TokenValidator.validate_token_is_active_combatant"
+        method = "TokenValidator.validate_token_is_king"
         # Handle the case that the candidate is not certified as a safe token.
         validation = cls.validate(candidate)
         if validation.is_failure:
