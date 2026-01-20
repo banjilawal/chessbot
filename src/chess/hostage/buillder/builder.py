@@ -11,12 +11,13 @@ from typing import Any, cast
 
 from chess.hostage import (
     PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException, HostageManifest,
-    HostageManifestValidationFailedException, KingCannotBeCapturedException, NullHostageManifestException,
-    PrisonerAlreadyHasHostageManifestException, PrisonerHasDifferentCaptorException, TokenCannotCaptureItselfException,
+    HostageManifestBuildFailedException, KingCannotBeCapturedException, NullHostageManifestException,
+    PrisonerAlreadyHasHostageManifestException, PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException,
     UnformedTokenCannotBePrisonerException, UnformedTokenCannotBeVictorException,
-    VictorAndPrisonerConflictingBoardException, PrisonerCapturedOnDifferentSquareException,
+    VictorAndPrisoneOnDifferentBoardsException, PrisonerCapturedOnDifferentSquareException,
 )
-from chess.system import IdentityService, LoggingLevelRouter, BuildResult, Builder
+from chess.square import Square, SquareService
+from chess.system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
 from chess.token import CombatantActivityState, CombatantToken, Token, TokenBoardState, TokenService
 
 
@@ -47,10 +48,12 @@ class HostageManifestBuilder(Builder[HostageManifest]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            id: int,
             victor: Token,
+            captured_square: Square,
             prisoner: CombatantToken,
+            id: int = id_emitter.scout_report_id,
             token_service: TokenService = TokenService(),
+            square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
     ) -> BuildResult[HostageManifest]:
         """
@@ -70,7 +73,18 @@ class HostageManifestBuilder(Builder[HostageManifest]):
             - On failure: Exception.
 
         # RAISES:
-            *   HostageManifestValidationFailedException
+            *   TypeError
+            *   NullHostageManifestException
+            *   KingCannotBeCapturedException
+            *   TokenCannotCaptureItselfException
+            *   FriendCannotCaptureFriendException
+            *   PrisonerCapturedByDifferentEnemyException
+            *   UnformedTokenCannotBeVictorException
+            *   PrisonerCannotBeActiveCombatantException
+            *   HostageManifestBuildFailedException
+            *   VictorAndPrisoneOnDifferentBoardsException
+            *   PrisonerAlreadyHasHostageManifestException
+            *   PrisonerCapturedOnDifferentSquareException
         """
         method = "HostageBuilder.build"
         
@@ -79,48 +93,124 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if id_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that the prisoner is not certified safe.
-        prisoner_validation = token_service.validator.validate(candidate=prisoner)
+        
+        # --- Perform the square tests that are independent of the prisoner and victor. ---#
+        
+        # Handle the case that the square where the capture occurred is not certified safe.
+        square_validation = square_service.validator.validate(candidate=captured_square)
+        if square_validation.failure:
+            # Send the exception chain on failure
+            return BuildResult.failure(
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=square_validation.exception
+                )
+            )
+        # Handle the case that the square is empty
+        if captured_square.is_empty:
+            # Send the exception chain on failure
+            return BuildResult.failure(
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=CapturedSquareCannotBeEmptyException(
+                        f"{method}: {CapturedSquareCannotBeEmptyException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # --- Perform the prisoner prebuild tests that are independent of the victor. ---#
+        
+        # Handle the case that the prisoner is not certified safe nor is .
+        prisoner_validation = token_service.validator.verify_token_is_combatant(candidate=prisoner)
         if prisoner_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
                     ex=prisoner_validation.exception
                 )
             )
+        # Handle the case that the prisoner is still active:
+        if prisoner.is_active:
+            # Send the exception chain on failure
+            return BuildResult.failure(
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=PrisonerCannotBeActiveCombatantException(
+                        f"{method}: {PrisonerCannotBeActiveCombatantException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that prisoner already has a manifest.
+        if prisoner.has_hostage_manifest:
+            # Send the exception chain on failure
+            return BuildResult.failure(
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=PrisonerAlreadyHasHostageManifestException(
+                        f"{method}: {PrisonerAlreadyHasHostageManifestException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the prisoner was capture on a different square.
+        if prisoner.current_position != captured_square.coord:
+            # Send the exception chain on failure
+            return BuildResult.failure(
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=PrisonerCapturedOnDifferentSquareException(
+                        f"{method}: {PrisonerCapturedOnDifferentSquareException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+            
+        # --- Perform tests on the victor that do not rely on the prisoner. ---#
+        
         # Handle the case that the victor is not certified safe.
         victor_validation = token_service.validator.validate(candidate=victor)
         if victor_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
                     ex=victor_validation.exception
                 )
             )
-        # Handle the case that the prisoner is not a CombatantToken
-        if not isinstance(prisoner, CombatantToken):
+        # Handle the case that the victor is not active.
+        if victor.is_disabled:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=KingCannotBeCapturedException(
-                        f"{method}: {KingCannotBeCapturedException.DEFAULT_MESSAGE}"
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=VictorCannotBeDisableToknException(
+                        f"{method}: {VictorCannotBeDisableToknException.DEFAULT_MESSAGE}"
                     )
                 )
             )
+        # Handle the case that the victor is not occupying the square.
+        if captured_square.occupant != victor:
+            # Send the exception chain on failure
+            return BuildResult.failure(
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=VictorNotOccupyingCapturedSquareException(
+                        f"{method}: {VictorNotOccupyingCapturedSquareException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        
+        # --- Perform tests that require the prisoner and victor. ---#
+        
         # Handle the case that the victor and the prisoner are the same.
         if prisoner == victor:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
                     ex=TokenCannotCaptureItselfException(
                         f"{method}: {TokenCannotCaptureItselfException.DEFAULT_MESSAGE}"
                     )
@@ -130,10 +220,10 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if victor.team.board != prisoner.team.board:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=VictorAndPrisonerConflictingBoardException(
-                        f"{method}: {VictorAndPrisonerConflictingBoardException.DEFAULT_MESSAGE}"
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=VictorAndPrisoneOnDifferentBoardsException(
+                        f"{method}: {VictorAndPrisoneOnDifferentBoardsException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -141,67 +231,30 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if not victor.is_enemy(prisoner):
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
                     ex=FriendCannotCaptureFriendException(
                         f"{method}: {FriendCannotCaptureFriendException.DEFAULT_MESSAGE}"
                     )
                 )
             )
-        # Handle the case that prisoner does not have a captor
-        if prisoner.captor is None:
-            # Send the exception chain on failure
-            return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=PrisonerAlreadyHasHostageManifestException(
-                        f"{method}: {PrisonerAlreadyHasHostageManifestException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # Handle the case that prisoner.captor != victor
+        # Handle the case that victor did not capture the prisoner
         if prisoner.captor != victor:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=PrisonerHasDifferentCaptorException(
-                        f"{method}: {PrisonerHasDifferentCaptorException.DEFAULT_MESSAGE}"
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=PrisonerCapturedByDifferentEnemyException(
+                        f"{method}: {PrisonerCapturedByDifferentEnemyException.DEFAULT_MESSAGE}"
                     )
                 )
             )
-        # Handle the case that the prisoner is free
-        if prisoner.activity_state == CombatantActivityState.FREE:
-            # Send the exception chain on failure
-            return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=PrisonerCannotBeActiveCombatantException(
-                        f"{method}: {PrisonerCannotBeActiveCombatantException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # Handle the case that the victor was not placed on the board
-        if victor.board_state == TokenBoardState.NEVER_BEEN_PLACED:
-            # Send the exception chain on failure
-            return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=UnformedTokenCannotBeVictorException(
-                        f"{method}: {UnformedTokenCannotBeVictorException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # Handle the case that the prisoner was not placed on the board
-        if prisoner.board_state == TokenBoardState.NEVER_BEEN_PLACED:
-            # Send the exception chain on failure
-            return BuildResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=UnformedTokenCannotBePrisonerException(
-                        f"{method}: {UnformedTokenCannotBePrisonerException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # --- Candidate has been successfully validated. Return to the caller. ---#
-        return BuildResult.success(payload=HostageManifest(id=id, prisoner=prisoner, victor=victor))
+        # --- Build params have been certified safe. Start the build steps. ---#
+        
+        # Build and change the prisoner's activity status from CAPTURE_ACTIVATED
+        manifest = HostageManifest(id=id, prisoner=prisoner, victor=victor, captured_square=captured_square)
+        manifest.prisoner.activity_state =  CombatantActivityState.HAS_HOSTAGE_MANIFEST
+        
+        # Return to the caller in the BuildResult.
+        return BuildResult.success(payload=manifest)
+        

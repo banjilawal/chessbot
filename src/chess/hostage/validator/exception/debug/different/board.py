@@ -9,13 +9,13 @@ version: 1.0.0
 
 __all__ = [
     # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS EXCEPTION #======================#
-    "VictorAndPrisonerConflictingBoardException",
+    "VictorAndPrisoneOnDifferentBoardsException",
 ]
 
 from chess.hostage import HostageManifestException
 
 # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS EXCEPTION #======================#
-class VictorAndPrisonerConflictingBoardException(HostageManifestException):
+class VictorAndPrisoneOnDifferentBoardsException(HostageManifestException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

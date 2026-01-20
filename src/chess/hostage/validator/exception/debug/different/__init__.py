@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .captor import PrisonerHasDifferentCaptorException
-from .board import VictorAndPrisonerConflictingBoardException
+from .captor import PrisonerCapturedByDifferentEnemyException
+from .board import VictorAndPrisoneOnDifferentBoardsException
 from .square import PrisonerCapturedOnDifferentSquareException

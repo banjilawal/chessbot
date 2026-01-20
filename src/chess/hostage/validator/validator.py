@@ -13,8 +13,8 @@ from chess.square import SquareService
 from chess.hostage import (
     PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException, HostageManifest,
     HostageManifestValidationFailedException, KingCannotBeCapturedException, NullHostageManifestException,
-    PrisonerAlreadyHasHostageManifestException, PrisonerHasDifferentCaptorException, TokenCannotCaptureItselfException,
-    UnformedTokenCannotBeVictorException, VictorAndPrisonerConflictingBoardException,
+    PrisonerAlreadyHasHostageManifestException, PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException,
+    UnformedTokenCannotBeVictorException, VictorAndPrisoneOnDifferentBoardsException,
     PrisonerCapturedOnDifferentSquareException,
 )
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult,Validator
@@ -72,11 +72,11 @@ class HostageManifestValidator(Validator[HostageManifest]):
             *   KingCannotBeCapturedException
             *   TokenCannotCaptureItselfException
             *   FriendCannotCaptureFriendException
-            *   PrisonerHasDifferentCaptorException
+            *   PrisonerCapturedByDifferentEnemyException
             *   UnformedTokenCannotBeVictorException
             *   PrisonerCannotBeActiveCombatantException
             *   HostageManifestValidationFailedException
-            *   VictorAndPrisonerConflictingBoardException
+            *   VictorAndPrisoneOnDifferentBoardsException
             *   PrisonerAlreadyHasHostageManifestException
             *   PrisonerCapturedOnDifferentSquareException
         """
@@ -127,25 +127,14 @@ class HostageManifestValidator(Validator[HostageManifest]):
         
         # --- Perform tests on the matrix.prisoner that do not rely on the victor. ---#
         
-        # Handle the case that the prisoner is not certified safe.
-        prisoner_validation = token_service.validator.validate(candidate=manifest.prisoner)
+        # Handle the case that the prisoner is not a safe combatant
+        prisoner_validation = token_service.validator.verify_token_is_combatant(candidate=manifest.prisoner)
         if prisoner_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
                     ex=prisoner_validation.exception
-                )
-            )
-        # Handle the case that prisoner is not a CombatantToken.
-        if not isinstance(manifest.prisoner, CombatantToken):
-            # Send the exception chain on failure
-            return ValidationResult.failure(
-                HostageManifestValidationFailedException(
-                    message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=KingCannotBeCapturedException(
-                        f"{method}: {KingCannotBeCapturedException.DEFAULT_MESSAGE}"
-                    )
                 )
             )
         # Handle the case that the prisoner is still active:
@@ -229,8 +218,8 @@ class HostageManifestValidator(Validator[HostageManifest]):
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=VictorAndPrisonerConflictingBoardException(
-                        f"{method}: {VictorAndPrisonerConflictingBoardException.DEFAULT_MESSAGE}"
+                    ex=VictorAndPrisoneOnDifferentBoardsException(
+                        f"{method}: {VictorAndPrisoneOnDifferentBoardsException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -251,8 +240,8 @@ class HostageManifestValidator(Validator[HostageManifest]):
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(
                     message=f"{method}: {HostageManifestValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=PrisonerHasDifferentCaptorException(
-                        f"{method}: {PrisonerHasDifferentCaptorException.DEFAULT_MESSAGE}"
+                    ex=PrisonerCapturedByDifferentEnemyException(
+                        f"{method}: {PrisonerCapturedByDifferentEnemyException.DEFAULT_MESSAGE}"
                     )
                 )
             )

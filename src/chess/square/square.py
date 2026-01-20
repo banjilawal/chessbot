@@ -86,6 +86,10 @@ class Square:
         return self._state == SquareState.EMPTY and self._occupant is None
     
     @property
+    def is_occupied(self) -> bool:
+        return self._occupant is not None and self._state != SquareState.EMPTY
+    
+    @property
     def state(self) -> SquareState:
         return self._state
     
