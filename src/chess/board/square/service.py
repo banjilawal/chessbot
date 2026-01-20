@@ -19,13 +19,11 @@ from chess.system import COLUMN_SIZE,ROW_SIZE
 class BoardSquareService:
     _capacity: int
     _member_service: UniqueSquareDataService
-    _analyzer: BoardSquareRelationAnalyzer
     
     def __init__(
             self,
             capacity: int = ROW_SIZE * COLUMN_SIZE,
             member_service: UniqueSquareDataService = UniqueSquareDataService(),
-            analyzer: BoardSquareRelationAnalyzer = BoardSquareRelationAnalyzer(),
     ):
         self._capacity = capacity
         self._analyzer = analyzer

@@ -10,7 +10,8 @@ version: 1.0.0
 from chess.board import Board
 from chess.schema import Schema
 from chess.player import Player
-from chess.team import HostageService, RosterService
+from chess.team import HostageService
+from chess.token import UniqueTokenDataService
 
 
 class Team:
@@ -44,7 +45,7 @@ class Team:
     _board: Board
     _schema: Schema
     _owner: Player
-    _roster: RosterService
+    _roster: UniqueTokenDataService
     _hostages: HostageService
 
     def __init__(
@@ -53,7 +54,7 @@ class Team:
             board: Board,
             schema: Schema,
             owner: Player,
-            roster: RosterService = RosterService(),
+            roster: UniqueTokenDataService = UniqueTokenDataService(),
             hostages: HostageService = HostageService(),
     ):
         """
@@ -99,7 +100,7 @@ class Team:
         return self._schema
 
     @property
-    def roster(self) -> RosterService:
+    def roster(self) -> UniqueTokenDataService:
         return self._roster
     
     @property

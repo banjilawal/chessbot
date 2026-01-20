@@ -243,23 +243,8 @@ class UniqueTokenDataService(UniqueDataService[Token]):
                     )
                 )
             )
-        # --- Check if the token is already in the dataset before adding it. ---#
-        search_result = self.search_tokens(context=TokenContext(id=token.id))
-        
-        # Handle the case that the search is not completed.
-        if search_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=UniqueTokenInsertionFailedException(
-                        message=f"{method}: {UniqueTokenInsertionFailedException.ERROR_CODE}",
-                        ex=search_result.exception
-                    )
-                )
-            )
         # Handle the case that the token is already in the dataset.
-        if search_result.is_success:
+        if token in self._token_data_service.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 UniqueTokenDataServiceException(

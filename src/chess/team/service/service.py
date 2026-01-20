@@ -214,7 +214,7 @@ class TeamService(EntityService[Team]):
                 )
             )
         # --- Would have liked to check roster capacity first, but that requires validating the team. ---#
-        if team.roster.members.is_full:
+        if team.roster.is_full:
             # Return exception chain on failure.
             return InsertionResult.failure(
                 TeamServiceException(
@@ -228,22 +228,24 @@ class TeamService(EntityService[Team]):
                 )
             )
         # --- Find out if there is an opening for the token's rank on the roster. ---#
-        boolean_result = team.roster.members.rank_has_openings(piece.rank)
+        has_openings_test = team.roster.rank_has_openings(piece.rank)
         
         # Handle the case that the rank_has_openings failed test failed.
-        if boolean_result.is_failure:
+        if has_openings_test.is_failure:
             # Return exception chain on failure.
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
                     ex=AddingRosterMemberFailedException(
                         message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                        ex=boolean_result.exception
+                        ex=has_openings_test.exception
                     )
                 )
             )
+        
         # Handle the case that the roster has no openings for the rank.
-        if not cast(bool, boolean_result.payload):
+        has_openings = cast(bool, has_openings_test.payload)
+        if not has_openings:
             # Return exception chain on failure.
             return InsertionResult.failure(
                 TeamServiceException(
@@ -255,7 +257,7 @@ class TeamService(EntityService[Team]):
                 )
             )
         # --- Run the insertion operation on the DataService. ---#
-        insertion_result = team.roster.members.add_unique_token(piece)
+        insertion_result = team.roster.add_unique_token(piece)
         
         # Handle the case that the insertion was not completed.
         if insertion_result.is_failure:
