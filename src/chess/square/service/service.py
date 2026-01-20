@@ -174,7 +174,7 @@ class SquareService(EntityService[Square]):
                 )
             )
         # Handle the case that the combatant is already among the hostages.
-        if combatant.activity_state == CombatantActivityState.HAS_HOSTAGE_MANIFEST:
+        if combatant.activity_state == CombatantActivityState.ISSUED_HOSTAGE_MANIFEST:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareServiceException(
@@ -204,7 +204,7 @@ class SquareService(EntityService[Square]):
                 )
             )
         hostage = cast(CombatantToken, insertion_result.payload)
-        hostage.combatant_status = CombatantActivityState.HAS_HOSTAGE_MANIFEST
+        hostage.combatant_status = CombatantActivityState.ISSUED_HOSTAGE_MANIFEST
         return InsertionResult.success(payload=hostage)
         
 

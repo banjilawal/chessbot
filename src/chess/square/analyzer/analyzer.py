@@ -123,7 +123,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
             return RelationReport.no_relation()
         
         # --- The captured token has been transferred from the board to enemy_team.hostages. (No transition event) ---#
-        if square.occupant != combatant and combatant.activity_state == CombatantActivityState.HAS_HOSTAGE_MANIFEST:
+        if square.occupant != combatant and combatant.activity_state == CombatantActivityState.ISSUED_HOSTAGE_MANIFEST:
             return RelationReport.no_relation()
         
         # --- The combatant occupies a different coord but is still set as the occupant (Evacuation event incomplete) ---#

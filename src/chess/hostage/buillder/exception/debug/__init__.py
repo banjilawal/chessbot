@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .victor import *
-from .occupation import *
+from .square import *
 
 # Modules
 None

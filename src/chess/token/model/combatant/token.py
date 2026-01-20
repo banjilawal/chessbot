@@ -77,7 +77,7 @@ class CombatantToken(Token):
         return (
             self._captor is not None and
             self.board_state == TokenBoardState.FORMED_ON_BOARD and
-            self._activity_state == CombatantActivityState.HAS_HOSTAGE_MANIFEST
+            self._activity_state == CombatantActivityState.ISSUED_HOSTAGE_MANIFEST
         )
     
     @property

@@ -7,18 +7,16 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from typing import Any, cast
-
 from chess.hostage import (
-    PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException, HostageManifest,
-    HostageManifestBuildFailedException, KingCannotBeCapturedException, NullHostageManifestException,
-    PrisonerAlreadyHasHostageManifestException, PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException,
-    UnformedTokenCannotBePrisonerException, UnformedTokenCannotBeVictorException,
+    CapturedSquareCannotBeEmptyException, PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException,
+    HostageManifest, HostageManifestBuildFailedException, PrisonerAlreadyHasHostageManifestException,
+    PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException,
     VictorAndPrisoneOnDifferentBoardsException, PrisonerCapturedOnDifferentSquareException,
+    VictorCannotBeDisableTokenException, VictorNotOccupyingCapturedSquareException,
 )
 from chess.square import Square, SquareService
 from chess.system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
-from chess.token import CombatantActivityState, CombatantToken, Token, TokenBoardState, TokenService
+from chess.token import CombatantActivityState, CombatantToken, Token, TokenService
 
 
 class HostageManifestBuilder(Builder[HostageManifest]):
@@ -249,11 +247,11 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     )
                 )
             )
-        # --- Build params have been certified safe. Start the build steps. ---#
         
-        # Build and change the prisoner's activity status from CAPTURE_ACTIVATED
+        # Build the HostageManifest.
         manifest = HostageManifest(id=id, prisoner=prisoner, victor=victor, captured_square=captured_square)
-        manifest.prisoner.activity_state =  CombatantActivityState.HAS_HOSTAGE_MANIFEST
+        # Update the prisoner's activity_state from to CAPTURE_ACTIVATED to ISSUED_HOSTAGE_MANIFEST
+        manifest.prisoner.activity_state =  CombatantActivityState.ISSUED_HOSTAGE_MANIFEST
         
         # Return to the caller in the BuildResult.
         return BuildResult.success(payload=manifest)

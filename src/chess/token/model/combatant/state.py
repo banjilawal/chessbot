@@ -13,5 +13,5 @@ from enum import Enum, auto
 class CombatantActivityState(Enum):
     FREE = auto(),
     CAPTURE_ACTIVATED = auto(),
-    HAS_HOSTAGE_MANIFEST = auto(),
+    ISSUED_HOSTAGE_MANIFEST = auto(),
     

@@ -1,8 +1,17 @@
+# src/chess/hostage/builder/exception/debug/victor/disabled.py
+
+"""
+Module: chess.hostage.builder.exception.debug.victor.disabled
+Author: Banji Lawal
+Created: 2025-10-01
+version: 1.0.0
+"""
+
 from chess.hostage import HostageManifestException
 from chess.system import DebugException
 
 __all__ = [
-    # ======================# HOSTAGE_MANIFEST_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# VICTOR_CANNOT_BE_DISABLED_TOKEN EXCEPTION #======================#
     "VictorCannotBeDisableTokenException",
 ]
 
@@ -11,7 +20,7 @@ __all__ = [
 
 class VictorCannotBeDisableTokenException(HostageManifestException, DebugException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
     1.  Indicate that the HostageManifest build failed because the victor was not active for the build process.
