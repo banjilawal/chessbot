@@ -84,7 +84,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
         player = cast(Player, player_validation.payload)
         
         # Handle the case that team validation fails.
-        team_validation = player.teams.team_service.validator.validate(candidate_satellite)
+        team_validation = player.teams.integrity_service.validator.validate(candidate_satellite)
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(

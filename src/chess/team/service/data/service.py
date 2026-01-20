@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.system import DataService, id_emitter
-from chess.team import Team,  TeamContextService, TeamInsertionFailedException, TeamService
+from chess.team import Team,  TeamContextService,  TeamService
 
 
 class TeamDataService(DataService[Team]):
@@ -35,11 +35,14 @@ class TeamDataService(DataService[Team]):
     # INHERITED ATTRIBUTES:
         *   See DataService class for inherited attributes.
     """
+    CAPACITY = 2
     SERVICE_NAME = "TeamDataService"
+    _capacity: int
     
     def __init__(
             self,
             name: str =SERVICE_NAME,
+            capacity: int = CAPACITY,
             id: int = id_emitter.service_id,
             items: List[Team] = List[Team],
             service: TeamService = TeamService(),
@@ -67,9 +70,22 @@ class TeamDataService(DataService[Team]):
             entity_service=service,
             context_service=context_service
         )
+        self._capacity = capacity
+        
+    @property
+    def capacity(self) -> int:
+        return self._capacity
     
     @property
-    def team_service(self) -> TeamService:
+    def is_full(self) -> bool:
+        return len(self.items) >= self.capacity
+    
+    @property
+    def is_empty(self) -> bool:
+        return len(self.items) == 0
+    
+    @property
+    def integrity_service(self) -> TeamService:
         return cast(TeamService, self.entity_service)
     
     @property

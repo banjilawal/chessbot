@@ -130,7 +130,7 @@ class SquareService(EntityService[Square]):
                 )
             )
         # Handle the case that the square is not empty
-        if square.state != SquareState.EMPTY:
+        if square.is_occupied:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareServiceException(
@@ -201,7 +201,6 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        
         square.occupant = deletion_result.payload
         token.positions.push_coord(square.coord)
         
@@ -209,14 +208,13 @@ class SquareService(EntityService[Square]):
         token.board_state = TokenBoardState.FORMED_ON_BOARD
         return InsertionResult.success(payload=square)
         
-    
     @LoggingLevelRouter.monitor
     def process_square_occupation(self, square: Square, token: Token, token_service: TokenService):
         method = "squareService.processSquareOccupation"
         
         
     @LoggingLevelRouter.monitor
-    def process_square_evacution(self, square: Square):
+    def process_square_evacuation(self, square: Square):
         method = "squareService.processSquareEvacuation"
         
         # Handle the case that the square is not certified as safe.

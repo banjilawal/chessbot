@@ -14,5 +14,4 @@ from .analyzer import *
 from .exception import *
 
 # Modules
-from .table import RosterTable
-from .service import RosterService
+None

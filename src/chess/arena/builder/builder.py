@@ -129,7 +129,7 @@ class ArenaBuilder(Builder[Arena]):
         method = "ArenaBuilder._build_teams"
         for param_tuple in team_param_tuples:
             agent, team_schema = param_tuple
-            build_result = player.teams.team_service.builder.build(
+            build_result = player.teams.integrity_service.builder.build(
                 arena=arena,
                 player=agent,
                 team_schema=team_schema

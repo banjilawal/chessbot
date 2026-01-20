@@ -39,6 +39,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
         *   See UniqueDataService class for inherited attributes.
     """
     SERVICE_NAME = "UniqueTeamDataService"
+    _team_data_service: TeamDataService
     
     def __init__(
             self,
@@ -59,14 +60,15 @@ class UniqueTeamDataService(UniqueDataService[Team]):
             None
         """
         super().__init__(id=id, name=name, data_service=data_service)
+        self._team_data_service = data_service
 
     @property
-    def team_service(self) -> TeamService:
-        return cast(TeamDataService, self.data_service).team_service
+    def integrity_service(self) -> TeamService:
+        return self._team_data_service.integrity_service
     
     @property
     def context_service(self) -> TeamContextService:
-        return cast(TeamDataService, self.data_service).team_context_service
+        return self._team_data_service.context_service
     
     @property
     def size(self) -> int:

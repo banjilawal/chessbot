@@ -131,14 +131,19 @@ class Token(ABC):
     def is_enemy(self, token: Token) -> bool:
         return self._team != token.team
     
-
-    
     def __eq__(self, other: object) -> bool:
         if other is self: return True
         if other in None: return False
         if isinstance(other, Token):
             return self._id == other.id
         return False
+    
+    @property
+    def has_been_formed(self) -> bool:
+        return (
+                self._token_board_state == TokenBoardState.FORMED_ON_BOARD and
+                self.positions.size == 1
+        )
     
     def __hash__(self) -> int:
         return hash(self._id)

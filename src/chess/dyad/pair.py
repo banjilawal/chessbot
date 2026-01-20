@@ -50,7 +50,7 @@ class SchemaAgentPair:
             if arena_validation.is_failure:
                 return InsertionResult(arena_validation.exception)
             
-            agent_builder = self._player.teams.team_service.builder
+            agent_builder = self._player.teams.integrity_service.builder
             build = agent_builder.build(id=id, schema=self._schema, arena=arena, player=self._agent)
             if build.is_failure:
                 return InsertionResult.failure(build.exception)
