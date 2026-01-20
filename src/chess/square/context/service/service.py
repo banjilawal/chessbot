@@ -37,6 +37,7 @@ class SquareContextService(ContextService[SquareContext]):
         *   See ContextService for inherited attributes.
     """
     SERVICE_NAME = "SquareContextService"
+    
     def __init__(
             self,
             name: str = SERVICE_NAME,

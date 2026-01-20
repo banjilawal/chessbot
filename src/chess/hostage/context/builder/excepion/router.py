@@ -12,7 +12,7 @@ __all__ = [
     "CaptivityContextBuildRouteException",
 ]
 
-from chess.captivity import CaptivityContextException
+from chess.hostage import CaptivityContextException
 from chess.system import NoBuildRouteException
 
 
