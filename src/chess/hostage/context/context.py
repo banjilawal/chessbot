@@ -20,7 +20,8 @@ class CaptivityContext(Context[HostageManifest]):
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    Provide an HostageManifestFinder with an attribute-value which finds HostageManifests which match the targeted attribute-value.
+    1.  Provide an HostageManifestFinder with an attribute-value which finds HostageManifests which match the
+        targeted attribute-value.
 
     # PARENT:
         *   Context
@@ -32,7 +33,6 @@ class CaptivityContext(Context[HostageManifest]):
         *   victor (Optional[Token])
         *   prisoner (Optional[CombatantToken])
         *   capturedSquare (Optional[Square])
-
 
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.

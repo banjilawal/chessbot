@@ -12,9 +12,9 @@ from typing import List
 from chess.square import Square
 from chess.system import DataFinder, LoggingLevelRouter, SearchResult
 from chess.hostage import (
-    CaptivityContext, CaptivityContextValidator, HostageManifest,
-    HostageManifestSearchFailedException, HostageManifestSearchNullDatasetException,
-    HostageManifestSearchPayloadTypeException, HostageManifestSearchRouteException
+    CaptivityContext, CaptivityContextValidator, HostageManifest, HostageManifestSearchFailedException,
+    HostageManifestSearchNullDatasetException, HostageManifestSearchPayloadTypeException,
+    HostageManifestSearchRouteException
 )
 from chess.token import CombatantToken, Token
 

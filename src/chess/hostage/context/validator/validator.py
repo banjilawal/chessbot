@@ -108,7 +108,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         # --- Route to the appropriate validation branch. ---#
         
         # Certification for the search-by-id target.
-        if context.id is not None and context.id is not None:
+        if context.id is not None:
             validation = identity_service.validate_id(context.id)
             if validation.is_failure:
                 # Return the exception chain on failure.

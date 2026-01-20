@@ -9,9 +9,9 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.square import Square
 from chess.team import Team
 from chess.rank import Rank
+from chess.square import Square
 from chess.token import CombatantActivityState, Token, TokenBoardState
 
 
@@ -69,7 +69,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self._activity_status == CombatantActivityState.CAPTURE_ACTIVATED
+                self._activity_state == CombatantActivityState.CAPTURE_ACTIVATED
         )
     
     @property
@@ -85,8 +85,8 @@ class CombatantToken(Token):
         return self._activity_state
     
     @activity_state.setter
-    def activity_state(self, activity_status: CombatantActivityState):
-        self._activity_state = activity_status
+    def activity_state(self, activity_state: CombatantActivityState):
+        self._activity_state = activity_state
     
     @property
     def captor(self) -> Optional[Token]:
@@ -96,8 +96,6 @@ class CombatantToken(Token):
     def captor(self, captor: Token):
         self._captor = captor
         
-    
-    
     def __eq__(self, other):
         if super().__eq__(other):
             if isinstance(other, CombatantToken):
