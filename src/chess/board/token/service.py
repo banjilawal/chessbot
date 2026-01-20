@@ -67,8 +67,8 @@ class BoardTokenService:
             *   BoardRankQuotaFullException
             *   AddingDuplicateTokenException
             *   AddingCapturedBoardMemberException
-            *   AddingRosterMemberFailedException
-            *   EnemyCannotJoinRosterException
+            *   AddingTeamRosterMemberFailedException
+            *   EnemyCannotJoinTeamRosterException
         """
         method = "RosterService.member_insertion"
         

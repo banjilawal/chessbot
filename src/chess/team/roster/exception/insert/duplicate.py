@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TOKEN_ALREADY_ON_ROSTER EXCEPTION #======================#
-    "TokenAlreadyOnRosterException",
+    "TokenAlreadyOnTeamRosterException",
 ]
 
-from chess.team import RosterServiceException, TeamException
+from chess.team import TeamRosterException, TeamException
 
 
 # ======================# TOKEN_ALREADY_ON_ROSTER EXCEPTION #======================#
-class TokenAlreadyOnRosterException(RosterServiceException):
+class TokenAlreadyOnTeamRosterException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,7 +24,7 @@ class TokenAlreadyOnRosterException(RosterServiceException):
     1.  Indicate that adding a roster member failed because the token was already present.
 
     # PARENT:
-        *   RosterServiceException
+        *   TeamRosterException
 
     # PROVIDES:
     None

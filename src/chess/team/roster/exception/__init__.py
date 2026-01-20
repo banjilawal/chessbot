@@ -10,8 +10,8 @@ version: 1.0.0
 # =========== TEAM.ROSTER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .deletion import *
-from .insertion import *
+from .delete import *
+from .insert import *
 
 # Modules
-from .catchall import RosterServiceException
+from .catchall import TeamRosterException

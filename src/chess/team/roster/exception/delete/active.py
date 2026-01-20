@@ -10,14 +10,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# DELETING_ACTIVE_TOKEN_FROM_ROSTER EXCEPTION #======================#
-    "DeletingActiveTokenException",
+    "DeletingActiveTokenExceptionTeam",
 ]
 
-from chess.team import RosterServiceException
+from chess.team import TeamRosterException
 
 
 # ======================# DELETING_ACTIVE_TOKEN_FROM_ROSTER EXCEPTION #======================#
-class DeletingActiveTokenException(RosterServiceException):
+class DeletingActiveTokenExceptionTeam(TeamRosterException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class DeletingActiveTokenException(RosterServiceException):
     1.  Indicate that a token cannot be removed from the roster because it has not been captured.
 
     # PARENT:
-        *   RosterServiceException
+        *   TeamRosterException
 
     # PROVIDES:
     None

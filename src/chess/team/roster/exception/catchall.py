@@ -11,12 +11,12 @@ version: 1.0.0
 from chess.team import TeamException
 
 __all__ = [
-    # ======================# ROSTER_SERVICE EXCEPTION #======================#
-    "RosterServiceException",
+    # ======================# TEAM_ROSTER EXCEPTION #======================#
+    "TeamRosterException",
 ]
 
-# ======================# ROSTER_SERVICE EXCEPTION #======================#
-class RosterServiceException(TeamException):
+# ======================# TEAM_ROSTER EXCEPTION #======================#
+class TeamRosterException(TeamException):
     """
     # ROLE: Catchall Exception
   
@@ -32,5 +32,5 @@ class RosterServiceException(TeamException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ROSTER_SERVICE_ERROR"
+    ERROR_CODE = "TEAM_ROSTER_ERROR"
     DEFAULT_MESSAGE = "RosterService raised an exception."

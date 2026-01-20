@@ -7,11 +7,13 @@ Created: 2025-09-04
 version: 1.0.0
 """
 
-from chess.arena import Arena, ArenaService
+from chess.board import Board, BoardService
 from chess.schema import Schema, SchemaService
 from chess.player import Player, PlayerService
 from chess.team import HostageService, RosterService, Team, TeamBuildFailedException
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, UniqueDataService, id_emitter
+from chess.token import UniqueTokenDataService
+
 
 class TeamBuilder(Builder[Team]):
     """
@@ -39,16 +41,16 @@ class TeamBuilder(Builder[Team]):
     @LoggingLevelRouter.monitor()
     def build(
             cls,
-            arena: Arena,
+            board: Board,
             owner: Player,
             schema: Schema,
             id: int = id_emitter.team_id,
-            roster: RosterService = RosterService(),
             hostages: HostageService = HostageService(),
-            arena_service: ArenaService = ArenaService(),
+            board_service: BoardService = BoardService(),
             owner_service: PlayerService = PlayerService(),
             schema_service: SchemaService = SchemaService(),
             identity_service: IdentityService = IdentityService(),
+            roster: UniqueTokenDataService = UniqueTokenDataService(),
     ) -> BuildResult[Team]:
         """
         # ACTION:
@@ -56,10 +58,10 @@ class TeamBuilder(Builder[Team]):
             2.  When all checks pass send create the Team instance and send in the BuildResult.
         # PARAMETERS:
             *   id (int)
-            *   arena (Arena)
+            *   board (Board)
             *   schema (Schema)
             *   owner (Player)
-            *   arena_service (ArenaService)
+            *   board_service (BoardService)
             *   owner_service (PlayerService)
             *   schema_service(TeamSchemaValidator)
             *   identity_service (IdentityService)
@@ -103,7 +105,7 @@ class TeamBuilder(Builder[Team]):
         # If no errors are detected build the Team object.
         team = Team(
             id=id,
-            arena=arena,
+            board=board,
             schema=schema,
             owner=owner,
             roster=roster,
@@ -118,14 +120,14 @@ class TeamBuilder(Builder[Team]):
                     message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=owner_validation.exception
                 )
             )
-        # Put the team in the arena.
-        insertion_result = arena_service.add_team(arena=arena, team=team)
+        # Put the team in the board.
+        insertion_result = board_service.add_team(board=board, team=team)
         if insertion_result.is_failure:
-            # If arena entry fails return the exception chain.
+            # If board entry fails return the exception chain.
             return BuildResult.failure(
                 TeamBuildFailedException(
                     message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=owner_validation.exception
                 )
             )
-        # After the team is registered with its owner and entered the arena send it in the BuildResult.
+        # After the team is registered with its owner and entered the board send it in the BuildResult.
         return BuildResult(team)

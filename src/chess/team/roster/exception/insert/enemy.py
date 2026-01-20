@@ -7,16 +7,16 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-from chess.team import RosterServiceException
+from chess.team import TeamRosterException
 
 __all__ = [
     # ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#
-    "EnemyCannotJoinRosterException",
+    "EnemyCannotJoinTeamRosterException",
 ]
 
 
 # ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#
-class EnemyCannotJoinRosterException(RosterServiceException):
+class EnemyCannotJoinTeamRosterException(TeamRosterException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -24,7 +24,7 @@ class EnemyCannotJoinRosterException(RosterServiceException):
     1.  Indicate that inserting into a Team's roster failed because it the token had a different team.
 
     # PARENT:
-        *   RosterServiceException
+        *   TeamRosterException
 
     # PROVIDES:
     None

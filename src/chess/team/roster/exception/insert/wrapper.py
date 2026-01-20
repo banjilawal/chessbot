@@ -7,16 +7,16 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-from chess.team import RosterServiceException
+from chess.team import TeamRosterException
 
 __all__ = [
     # ======================# ADDING_TOKEN_TO_ROSTER_FAILURE #======================#
-    "AddingRosterMemberFailedException",
+    "AddingTeamRosterMemberFailedException",
 ]
 
 
 # ======================# ADDING_TOKEN_TO_ROSTER_FAILURE #======================#
-class AddingRosterMemberFailedException(RosterServiceException):
+class AddingTeamRosterMemberFailedException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 

@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# ADDING_PRISONER_TO_ROSTER EXCEPTION #======================#
-    "AddingPrisonerToRosterException",
+    "AddingPrisonerToTeamRosterException",
 ]
 
-from chess.team import RosterServiceException
+from chess.team import TeamRosterException
 
 
 # ======================# ADDING_PRISONER_TO_ROSTER EXCEPTION #======================#
-class AddingPrisonerToRosterException (RosterServiceException):
+class AddingPrisonerToTeamRosterException (TeamRosterException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class AddingPrisonerToRosterException (RosterServiceException):
     1.  Indicate that a token cannot be added to the roster because it was not free.
 
     # PARENT:
-        *   RosterServiceException
+        *   TeamRosterException
 
     # PROVIDES:
     None

@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import RosterRelationAnalysisFailedException
+from .wrapper import TeamRosterRelationAnalysisFailedException

@@ -1,13 +1,13 @@
 __all__ = [
     # ======================# POPPING_EMPTY_ROSTER EXCEPTION #======================#
-    "PoppingEmptyRosterException",
+    "PoppingEmptyTeamRosterException",
 ]
 
-from chess.team import RosterServiceException
+from chess.team import TeamRosterException
 
 
 # ======================# POPPING_EMPTY_ROSTER EXCEPTION #======================#
-class PoppingEmptyRosterException(RosterServiceException):
+class PoppingEmptyTeamRosterException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 

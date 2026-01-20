@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# ROSTER_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-    "RosterRelationAnalysisFailedException",
+    "TeamRosterRelationAnalysisFailedException",
 ]
 
-from chess.team import RosterServiceException
+from chess.team import TeamRosterException
 
 
 # ======================# ROSTER_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-class RosterRelationAnalysisFailedException(RosterServiceException):
+class TeamRosterRelationAnalysisFailedException(TeamRosterException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

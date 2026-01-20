@@ -16,7 +16,7 @@ from chess.system import (
     SearchResult, id_emitter
 )
 from chess.team import (
-    AddingRosterMemberFailedException, EnemyCannotJoinRosterException, HostageRelationAnalyzer, RosterRelationAnalyzer,
+    AddingTeamRosterMemberFailedException, EnemyCannotJoinTeamRosterException, HostageRelationAnalyzer, RosterRelationAnalyzer,
     Team, TeamBuilder,
     TeamRankQuotaFullException, TeamSearchFailedException, TeamServiceException, TeamValidator, TokenLocation,
     ZeroTeamContextFlagsException
@@ -179,8 +179,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                    message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                    ex=AddingTeamRosterMemberFailedException(
+                    message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
                     ex=relation_analysis.exception
                     )
                 )
@@ -191,10 +191,10 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
-                        ex=EnemyCannotJoinRosterException(
-                            f"{method}: {EnemyCannotJoinRosterException.DEFAULT_MESSAGE}"
+                    ex=AddingTeamRosterMemberFailedException(
+                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
+                        ex=EnemyCannotJoinTeamRosterException(
+                            f"{method}: {EnemyCannotJoinTeamRosterException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
@@ -205,8 +205,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                    ex=AddingTeamRosterMemberFailedException(
+                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
                         ex=AddingDuplicateTokenException(
                             f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}"
                         )
@@ -219,8 +219,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                    ex=AddingTeamRosterMemberFailedException(
+                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
                         ex=TokenServiceCapacityException(
                             f"{method}: {TokenServiceCapacityException.DEFAULT_MESSAGE}"
                         )
@@ -236,8 +236,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                    ex=AddingTeamRosterMemberFailedException(
+                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
                         ex=has_openings_test.exception
                     )
                 )
@@ -250,8 +250,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                    ex=AddingTeamRosterMemberFailedException(
+                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
                         ex=TeamRankQuotaFullException(f"{method}: {TeamRankQuotaFullException.DEFAULT_MESSAGE}")
                     )
                 )
@@ -265,8 +265,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingRosterMemberFailedException(
-                        message=f"{method}: {AddingRosterMemberFailedException.ERROR_CODE}",
+                    ex=AddingTeamRosterMemberFailedException(
+                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
                         ex=insertion_result.exception
                     )
                 )

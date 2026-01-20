@@ -1,13 +1,13 @@
-from chess.team import RosterServiceException
+from chess.team import TeamRosterException
 
 __all__ = [
     # ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#
-    "CannotDeleteTokenRosterDoesNotOwnException",
+    "CannotDeleteTokenFromDifferentRosterException",
 ]
 
 
 # ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#
-class CannotDeleteTokenRosterDoesNotOwnException(RosterServiceException):
+class CannotDeleteTokenFromDifferentRosterException(TeamRosterException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -15,7 +15,7 @@ class CannotDeleteTokenRosterDoesNotOwnException(RosterServiceException):
     1.  Indicate that inserting into a Team's roster failed because it the token had a different team.
 
     # PARENT:
-        *   RosterServiceException
+        *   TeamRosterException
 
     # PROVIDES:
     None

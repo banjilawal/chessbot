@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# ROSTER_IS_FULL EXCEPTION #======================#
-    "RosterIsFullException",
+    "TeamRosterIsFullException",
 ]
 
-from chess.team import RosterServiceException
+from chess.team import TeamRosterException
 
 
 # ======================# ROSTER_IS_FULL EXCEPTION #======================#
-class RosterIsFullException(RosterServiceException):
+class TeamRosterIsFullException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 

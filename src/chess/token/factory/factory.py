@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.square import Square
 from chess.rank import King, Pawn
 from chess.system import BuildResult, Builder, LoggingLevelRouter
-from chess.team import EnemyCannotJoinRosterException, Team, TeamService
+from chess.team import EnemyCannotJoinTeamRosterException, Team, TeamService
 
 from chess.token import (
     AddingDuplicateTokenException, CombatantToken, KingToken, PawnToken, TokenBuildFailedException, TokenBuildManifest,
@@ -131,7 +131,7 @@ class TokenFactory(Builder[Token]):
             return BuildResult.failure(
                 TokenBuildFailedException(
                     message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=EnemyCannotJoinRosterException(f"{method}: {EnemyCannotJoinRosterException.DEFAULT_MESSAGE}")
+                    ex=EnemyCannotJoinTeamRosterException(f"{method}: {EnemyCannotJoinTeamRosterException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case that the piece is already registered with its owner.
