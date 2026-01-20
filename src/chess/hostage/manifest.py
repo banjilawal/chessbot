@@ -15,13 +15,13 @@ class HostageManifest:
     _id: int
     _victor: Token
     _prisoner: CombatantToken
-    _capture_location: Square
+    _captured_square: Square
     
-    def __init__(self, id: int, victor: Token, prisoner: CombatantToken, capture_location: Square):
+    def __init__(self, id: int, victor: Token, prisoner: CombatantToken, captured_square: Square):
         self._id = id
         self._victor = victor
         self._prisoner = prisoner
-        self._capture_location = capture_location
+        self._captured_square = captured_square
         
     @property
     def id(self) -> int:
@@ -36,7 +36,7 @@ class HostageManifest:
         return self._prisoner
     
     @property
-    def capture_location(self) -> Square:
-        return self._capture_location
+    def captured_square(self) -> Square:
+        return self._captured_square
         
     

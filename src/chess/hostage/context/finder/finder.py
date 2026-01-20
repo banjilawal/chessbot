@@ -9,8 +9,14 @@ version: 1.0.0
 
 from typing import List
 
+from chess.square import Square
 from chess.system import DataFinder, LoggingLevelRouter, SearchResult
-from chess.hostage import CaptivityContext, CaptivityContextValidator, HostageManifest
+from chess.hostage import (
+    CaptivityContext, CaptivityContextValidator, HostageManifest,
+    HostageManifestSearchFailedException, HostageManifestSearchNullDatasetException,
+    HostageManifestSearchPayloadTypeException, HostageManifestSearchRouteException
+)
+from chess.token import CombatantToken, Token
 
 
 class HostageManifestFinder(DataFinder[HostageManifest]):
@@ -85,7 +91,9 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
             return SearchResult.failure(
                 HostageManifestSearchFailedException(
                     message=f"{method}: {HostageManifestSearchFailedException.ERROR_CODE}",
-                    ex=HostageManifestSearchPayloadTypeException(f"{method}: {HostageManifestSearchPayloadTypeException.DEFAULT_MESSAGE}")
+                    ex=HostageManifestSearchPayloadTypeException(
+                        f"{method}: {HostageManifestSearchPayloadTypeException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
         # Handle the case that the context fails validation.
@@ -103,15 +111,15 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         # Entry point into finding by hostageManifest's id.
         if context.id is not None:
             return cls._find_by_id(dataset=dataset, id=context.id)
-        # Entry point into finding by hostageManifest's name.
-        if context.name is not None:
-            return cls._find_by_name(dataset=dataset, name=context.name)
-        # Entry point into finding by hostageManifest's coord.
-        if context.coord is not None:
-            return cls._find_by_coord(dataset=dataset, coord=context.coord)
-        # Entry point into searching by hostageManifest's board.
-        if context.board is not None:
-            return cls._find_by_board(dataset=dataset, coord=context.board)
+        # Entry point into finding by the prisoner.
+        if context.prisoner is not None:
+            return cls._find_by_prisoner(dataset=dataset, prisoner=context.prisoner)
+        # Entry point into finding by victor.
+        if context.victor is not None:
+            return cls._find_by_victor(dataset=dataset, coord=context.victor)
+        # Entry point into searching by captured square.
+        if context.captured_square is not None:
+            return cls._find_by_captured_square(dataset=dataset, coord=context.captured_square)
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
@@ -138,7 +146,6 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         # RAISES:
             None
         """
-        method = "HostageManifestFinder._find_by_id"
         matches = [hostageManifest for hostageManifest in dataset if hostageManifest.id == id]
         # Handle the nothing found case.
         if len(matches) == 0:
@@ -148,7 +155,11 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_name(cls, dataset: List[HostageManifest], name: str) -> SearchResult[List[HostageManifest]]:
+    def _find_by_prisoner(
+            cls,
+            dataset: List[HostageManifest],
+            prisoner: CombatantToken
+    ) -> SearchResult[List[HostageManifest]]:
         """
         # ACTION:
             1.  Get the HostageManifests which match the name.
@@ -163,7 +174,7 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         # RAISES:
             None
         """
-        matches = [hostageManifest for hostageManifest in dataset if hostageManifest.name.upper() == name.upper()]
+        matches = [manifest for manifest in dataset if manifest.prisoner == prisoner]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
@@ -172,7 +183,11 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_coord(cls, dataset: List[HostageManifest], coord: Coord) -> SearchResult[List[HostageManifest]]:
+    def _find_by_victor(
+            cls,
+            dataset: List[HostageManifest],
+            victor: Token
+    ) -> SearchResult[List[HostageManifest]]:
         """
         # ACTION:
             1.  Get the HostageManifests which match the name.
@@ -187,7 +202,7 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         # RAISES:
             None
         """
-        matches = [hostageManifest for hostageManifest in dataset if hostageManifest.coord == coord]
+        matches = [manifest for manifest in dataset if manifest.victor == victor]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
@@ -196,7 +211,11 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_board(cls, dataset: List[HostageManifest], board: Board) -> SearchResult[List[HostageManifest]]:
+    def _find_by_captured_square(
+            cls,
+            dataset: List[HostageManifest],
+            captured_square: Square
+    ) -> SearchResult[List[HostageManifest]]:
         """
         # ACTION:
             1.  Get the HostageManifests which match the board.
@@ -211,7 +230,7 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         # RAISES:
             None
         """
-        matches = [hostageManifest for hostageManifest in dataset if hostageManifest.board == board]
+        matches = [manifest for manifest in dataset if manifest.captured_square == captured_square]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

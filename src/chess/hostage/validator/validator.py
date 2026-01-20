@@ -14,11 +14,11 @@ from chess.hostage import (
     PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException, HostageManifest,
     HostageManifestValidationFailedException, KingCannotBeCapturedException, NullHostageManifestException,
     PrisonerAlreadyHasHostageManifestException, PrisonerHasDifferentCaptorException, TokenCannotCaptureItselfException,
-    UnformedTokenCannotBePrisonerException, UnformedTokenCannotBeVictorException,
-    VictorAndPrisonerConflictingBoardException, PrisonerCapturedOnDifferentSquareException,
+    UnformedTokenCannotBeVictorException, VictorAndPrisonerConflictingBoardException,
+    PrisonerCapturedOnDifferentSquareException,
 )
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult,Validator
-from chess.token import CombatantActivityState, CombatantToken, TokenBoardState, TokenService
+from chess.token import  CombatantToken, TokenBoardState, TokenService
 
 
 class HostageManifestValidator(Validator[HostageManifest]):
@@ -115,7 +115,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                 )
             )
         # Handle the case that the square where the capture occurred is not certified safe.
-        square_validation = square_service.validator.validate(candidate=manifest.capture_location)
+        square_validation = square_service.validator.validate(candidate=manifest.captured_square)
         if square_validation.failure:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -171,7 +171,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                 )
             )
         # Handle the case that the prisoner was capture on a different square.
-        if manifest.prisoner.current_position != manifest.capture_location.coord:
+        if manifest.prisoner.current_position != manifest.captured_square.coord:
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageManifestValidationFailedException(

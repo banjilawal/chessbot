@@ -1,6 +1,6 @@
 from typing import Any, cast
 
-from chess.coord import CoordService
+from chess.square import SquareService
 from chess.hostage import (
     CaptivityContextValidationFailedException, CaptivityContextValidationRouteException, CaptivityContext,
     ExcessiveCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
@@ -36,20 +36,20 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
     def validate(
             cls,
             candidate: Any,
-            coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
             token_service: TokenService = TokenService(),
+            square_service: SquareService = SquareService(),
+            identity_service: IdentityService = IdentityService(),
     ) -> ValidationResult[CaptivityContext]:
         """
         # ACTION:
         Verifies candidate is a CaptivityContext in two steps.
             1. Test the candidate is a valid SearchCaptivityContext with a single searcher option switched on.
-            2. Test the value passed to CaptivityContext passes its validation contract..
+            2. Test the value passed to CaptivityContext passes its validation contract.
         # PARAMETERS:
-          * candidate (Any): Object to verify is a Coord.
-          * validator (type[CoordValidator]): Enforces safety requirements on row, column, square_name coords.
+            * candidate (Any): Object to verify is a Square.
+            * validator (type[SquareValidator]): Enforces safety requirements on row, column, square_name squares.
         # RETURNS:
-          *    ValidationResult[CaptivityContext] containing either:
+            * ValidationResult[CaptivityContext] containing either:
                     - On failure: Exception.
                     - On success: CaptivityContext in the payload.
         # RAISES:
@@ -59,7 +59,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             * CaptivityContextValidationFailedException
             * CaptivityContextValidationRouteException
         """
-        method = "CoordSearchContextValidator.validate"
+        method = "CaptivityContextValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -70,7 +70,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
                     ex=NullCaptivityContextException(f"{method}: {NullCaptivityContextException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the type is wrong.
+        # Handle the wrong class case.
         if not isinstance(candidate, CaptivityContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -82,11 +82,9 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         # --- Cast candidate to the CaptivityContext for additional tests. ---#
         context = cast(CaptivityContext, candidate)
         
-        # Get how many context flags are set.
-        switch_count = len(context.to_dict())
-        
-        # Handle the case that no context flags are set.
-        if switch_count == 0:
+        # Handle the case of searching with no attribute-value provided.
+        flag_count = len(context.to_dict())
+        if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CaptivityContextValidationFailedException(
@@ -96,8 +94,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
                     )
                 )
             )
-        # Handle the case that more than one context flags are set.
-        if switch_count > 1:
+        # Handle the case of too many attributes being used in a search.
+        if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 CaptivityContextValidationFailedException(
@@ -134,6 +132,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
                         ex=validation.exception
                     )
                 )
+            # On certification success return the victor_CaptivityContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
         # Certification for the search-by-prisoner target.
@@ -147,19 +146,23 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
                         ex=validation.exception
                     )
                 )
-            if not isinstance(validation.payload, CombatantToken):
+            # Handle the case that the class is wrong.
+            if not isinstance(context.prisoner, CombatantToken):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     CaptivityContextValidationFailedException(
                         message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
-                        ex=TypeError(f"{method}: Expected a CombatantToken, got {type(candidate).__name__} instead.")
+                        ex=TypeError(
+                            f"{method}: Expected a CombatantToken, got {type(candidate).__name__} instead."
+                        )
                     )
                 )
+            # On certification success return the prisoner_CaptivityContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-victor target.
-        if context.capture_location is not None:
-            validation = coord_service.validator.validate(context.capture_location)
+        # Certification for the search-by-captured_square target.
+        if context.captured_square is not None:
+            validation = square_service.validator.validate(context.captured_square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
@@ -168,6 +171,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
                         ex=validation.exception
                     )
                 )
+            # On certification success return the captured_square_CaptivityContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
         # Return the exception chain if there was no validation route for the context.

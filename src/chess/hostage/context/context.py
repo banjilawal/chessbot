@@ -6,13 +6,13 @@ Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
 """
+
 from typing import Optional
 
-from chess.coord import Coord
-from chess.hostage import HostageManifest
+from chess.square import Square
 from chess.system import Context
-from chess.token import CombatantToken, TokenContext
-from chess.token.model import Token
+from chess.hostage import HostageManifest
+from chess.token import CombatantToken, Token
 
 
 class CaptivityContext(Context[HostageManifest]):
@@ -29,9 +29,10 @@ class CaptivityContext(Context[HostageManifest]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   prisoner (Optional[int])
-        *   hostageManifest (Optional[HostageManifest])
-        *   victor (Optional[int])
+        *   victor (Optional[Token])
+        *   prisoner (Optional[CombatantToken])
+        *   capturedSquare (Optional[Square])
+
 
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
@@ -39,16 +40,14 @@ class CaptivityContext(Context[HostageManifest]):
     _id: Optional[int] = None
     _victor: Optional[Token] = None
     _prisoner: Optional[CombatantToken] = None
-    _capture_location: Optional[Coord] = None
-    _token_context: TokenContext
+    _captured_square: Optional[Square] = None
     
     def __init__(
             self,
             id: Optional[int],
-            prisoner: Optional[CombatantToken] = None,
             victor: Optional[Token] = None,
-            capture_location: Optional[Coord] = None,
-            token_context: TokenContext= TokenContext(),
+            captured_square: Optional[Square] = None,
+            prisoner: Optional[CombatantToken] = None,
     ):
         """
         # ACTION:
@@ -65,29 +64,24 @@ class CaptivityContext(Context[HostageManifest]):
         super().__init__(id=id, name=None)
         self._prisoner = prisoner
         self._victor = victor
-        self._capture_location = capture_location
-        self._token_context = token_context
+        self._captured_square = captured_square
     
     @property
-    def prisoner(self) -> Optional[int]:
+    def prisoner(self) -> Optional[CombatantToken]:
         return self._prisoner
     
     @property
-    def victor(self) -> Optional[int]:
+    def victor(self) -> Optional[Token]:
         return self._victor
     
     @property
-    def capture_location(self) -> Optional[Coord]:
-        return self._capture_location
-    
-    @property
-    def token_context(self) -> TokenContext:
-        return self._token_context
+    def captured_square(self) -> Optional[Square]:
+        return self._captured_square
     
     def to_dict(self) -> dict:
         return {
             "id:": self.id,
             "prisoner": self._prisoner,
             "victor": self._victor,
-            "capture_location": self._capture_location,
+            "captured_square": self._captured_square,
         }
