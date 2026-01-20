@@ -13,5 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .analyzer import BoardSquareRelationAnalyzer
-from .wrapper import BoardSquareAnalysisFailedException
+from chess.board.analyzer.square.wrapper import BoardSquareAnalysisFailedException

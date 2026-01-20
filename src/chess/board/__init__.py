@@ -13,8 +13,8 @@ version: 1.0.0
 from .builder import *
 from .context import *
 from .exception import *
-from .square import *
 from .token import *
+from .analyzer import *
 from .validator import *
 from .service import *
 

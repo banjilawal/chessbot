@@ -8,10 +8,8 @@ version: 1.0.0
 """
 
 from chess.arena import Arena
-from chess.hostage import HostageManifestDirectoryService, HostageManifestDirectoryServiceException
-from chess.system import BOARD_DIMENSION
-from chess.board import BoardSquareService, BoardTokenService
-
+from chess.square import UniqueSquareDataService
+from chess.hostage import HostageManifestDirectoryService
 
 class Board:
     """
@@ -33,17 +31,14 @@ class Board:
     """
     _id: int
     _arena: Arena
-    _row_size: int
-    _column_size: int
-    _squares: BoardSquareService
+    _squares: UniqueSquareDataService
     _hostage_manifest: HostageManifestDirectoryService
     
     def __init__(
             self,
             id: int,
             arena: Arena,
-            row_size: int = BOARD_DIMENSION,
-            column_size: int = BOARD_DIMENSION,
+            squares: UniqueSquareDataService = UniqueSquareDataService(),
             hostage_manifest: HostageManifestDirectoryService = HostageManifestDirectoryService(),
     ):
         """
@@ -63,9 +58,7 @@ class Board:
         
         self._id = id
         self._arena = arena
-        self._row_size = row_size
-        self._column_size = column_size
-        self._squares = BoardSquareService()
+        self._squares = squares
         self._hostage_manifest = hostage_manifest
     
     @property
@@ -81,16 +74,8 @@ class Board:
         return self._hostage_manifest
     
     @property
-    def squares(self) -> BoardSquareService:
+    def squares(self) -> UniqueSquareDataService:
         return self._squares
-    
-    @property
-    def row_size(self) -> int:
-        return self._row_size
-    
-    @property
-    def column_size(self) -> int:
-        return self._column_size
     
     def __eq__(self, other):
         if other is self: return True

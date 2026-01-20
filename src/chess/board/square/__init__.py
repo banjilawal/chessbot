@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== BOARD.SQUARE PACKAGE CONTENTS ===========#
 
 # Packages
-from .analyzer import *
 from .exception import *
 
 # Modules

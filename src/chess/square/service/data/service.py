@@ -9,11 +9,14 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.system import DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.system import (
+    COLUMN_SIZE, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, ROW_SIZE,
+    id_emitter
+)
 from chess.square import (
     AppendingSquareDirectlyIntoItemsFailedException, PoppingEmptySquareStackException, Square, SquareContext,
     SquareDataServiceException, SquareDoesNotExistForRemovalException, SquareService, SquareContextService,
-    SquareDeletionFailedException, SquareInsertionFailedException
+    SquareDeletionFailedException, SquareInsertionFailedException, SquareServiceCapacityException
 )
 
 class SquareDataService(DataService[Square]):
@@ -39,12 +42,14 @@ class SquareDataService(DataService[Square]):
         *   See DataService class for inherited attributes.
     """
     SERVICE_NAME = "SquareDataService"
+    _capacity: int
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Square] = List[Square],
+            capacity: int = ROW_SIZE * COLUMN_SIZE,
             service: SquareService = SquareService(),
             context_service: SquareContextService = SquareContextService(),
     ):
@@ -70,6 +75,18 @@ class SquareDataService(DataService[Square]):
             entity_service=service,
             context_service=context_service,
         )
+        
+    @property
+    def capacity(self) -> int:
+        return self._capacity
+    
+    @property
+    def is_full(self) -> bool:
+        return len(self.items) >= self.capacity
+    
+    @property
+    def is_empty(self) -> bool:
+        return len(self.items) == 0
     
     @property
     def square_service(self) -> SquareService:
@@ -99,6 +116,19 @@ class SquareDataService(DataService[Square]):
         """
         method = "SquareDataService.add_square"
         
+        # Handle the case that the list is full
+        if self.is_full:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
+                    ex=SquareInsertionFailedException(
+                        message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
+                        ex=SquareServiceCapacityException(
+                            f"{method}: {SquareServiceCapacityException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
         # Handle the case that the square is unsafe.
         validation = self.square_service.validator.validate(candidate=square)
         if validation.is_failure:

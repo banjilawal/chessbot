@@ -17,7 +17,7 @@ from chess.system import (
 from chess.token import (
     AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException, Token, TokenContext, TokenService,
     TokenDataServiceException, TokenDoesNotExistForRemovalException, TokenContextService, TokenDeletionFailedException,
-    TokenInsertionFailedException, RankCountCalculationFailedException,
+    TokenInsertionFailedException, RankCountCalculationFailedException, TokenServiceCapacityException,
 )
 
 class TokenDataService(DataService[Token]):
@@ -91,6 +91,10 @@ class TokenDataService(DataService[Token]):
     @property
     def is_full(self) -> bool:
         return len(self.items) == self._capacity
+    
+    @property
+    def is_empty(self) -> bool:
+        return len(self.items) == 0
         
     @property
     def token_service(self) -> TokenService:
@@ -211,6 +215,18 @@ class TokenDataService(DataService[Token]):
         """
         method = "TokenDataService.add_token"
         
+        # Handle the case that the list is full.
+        if self.is_full:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                    ex=TokenInsertionFailedException(
+                        message=f"{method}: {TokenInsertionFailedException.ERROR_CODE}",
+                        ex=TokenServiceCapacityException(f"{method}: {TokenServiceCapacityException.ERROR_CODE}")
+                    )
+                )
+            )
         # Handle the case that the token is unsafe.
         validation = self.token_service.validator.validate(candidate=token)
         if validation.is_failure:

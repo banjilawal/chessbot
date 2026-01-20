@@ -10,12 +10,16 @@ version: 1.0.0
 from typing import List
 
 from chess.square import (
-    AddingDuplicateSquareException, ExhaustiveSquareDeletionFailedException, Square, SquareContext, SquareContextService,
-    SquareDataService, SquareService, UniqueSquareDataServiceException, UniqueSquareInsertionFailedException,
+    AddingDuplicateSquareException, ExhaustiveSquareDeletionFailedException, Square, SquareContext,
+    SquareContextService,
+    SquareDataService, SquareService, SquareServiceCapacityException, UniqueSquareDataServiceException,
+    UniqueSquareInsertionFailedException,
     UniqueSquareSearchFailedException
 )
 from chess.system import (
-    DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
+    COLUMN_SIZE, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, ROW_SIZE, SearchResult,
+    UniqueDataService,
+    id_emitter
 )
 
 
@@ -46,7 +50,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: SquareDataService = SquareDataService(),
+            data_service: SquareDataService = SquareDataService(capacity=ROW_SIZE * COLUMN_SIZE),
     ):
         """
         # ACTION:
@@ -76,6 +80,14 @@ class UniqueSquareDataService(UniqueDataService[Square]):
         return self._square_data_service.size
     
     @property
+    def max_capacity(self) -> int:
+        return self._square_data_service.capacity
+    
+    @property
+    def is_full(self) -> bool:
+        return self._square_data_service.is_full
+    
+    @property
     def is_empty(self) -> bool:
         return self._square_data_service.is_empty
     
@@ -101,6 +113,21 @@ class UniqueSquareDataService(UniqueDataService[Square]):
         """
         method = "UniqueSquareDataService.add_unique_square"
         
+        # Handle the case that the service cannot manage anymore squares.
+        if self.is_full:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                UniqueSquareDataServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                    ex=UniqueSquareInsertionFailedException(
+                        message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
+                        ex=SquareServiceCapacityException(
+                            f"{method}: {SquareServiceCapacityException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
+        
         # --- To assure uniqueness the member_service has to conduct a search. The square should be validated first. ---#
         
         # Handle the case that the square is not certified safe.
@@ -116,23 +143,8 @@ class UniqueSquareDataService(UniqueDataService[Square]):
                     )
                 )
             )
-        # --- Check if the square is already in the dataset before adding it. ---#
-        search_result = self.search_squares(context=SquareContext(id=square.id))
-        
-        # Handle the case that the search is not completed.
-        if search_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                UniqueSquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
-                    ex=UniqueSquareInsertionFailedException(
-                        message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
-                        ex=search_result.exception
-                    )
-                )
-            )
         # Handle the case that the square is already in the dataset.
-        if search_result.is_success:
+        if square in self._square_data_service.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 UniqueSquareDataServiceException(
@@ -144,6 +156,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
                 )
             )
         # --- Use _square_data_service.insert_square because order does not matter for the square access. ---#
+        
         insertion_result = self._square_data_service.insert_square(square=square)
         
         # Handle the case that the insertion is not completed.

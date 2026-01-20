@@ -5,12 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/chess/square/service/data/exception/insertion/full.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/board.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/data/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/data/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/data/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/data/exception/catchall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/data/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/data/unique/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/square/analyzer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/analyzer/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/square/analyzer/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/analyzer/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/square/analyzer/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/analyzer/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/square/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/square/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/data/exception/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/data/exception/insertion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/data/unique/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/data/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -855,6 +863,7 @@
       <workItem from="1768898597231" duration="2610000" />
       <workItem from="1768901223108" duration="3252000" />
       <workItem from="1768904984791" duration="489000" />
+      <workItem from="1768905487804" duration="3610000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

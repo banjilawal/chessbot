@@ -13,6 +13,7 @@ version: 1.0.0
 None
 
 # Modules
+from .full import SquareServiceCapacityException
 from .coord import SquareCoordCollisionException
 from .wrapper import SquareInsertionFailedException
 from .direct import AppendingSquareDirectlyIntoItemsFailedException

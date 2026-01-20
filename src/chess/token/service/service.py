@@ -82,15 +82,15 @@ class TokenService(EntityService[Token]):
     def formation_service(self) -> FormationService:
         return self._formation_service
     
-    @LoggingLevelRouter.monitor
-    def form_token_on_board(
-            self,
-            token: Token,
-            board: Board,
-            board_service: BoardService = BoardService(),
-    ):
-        token_validation = self.validator.validate(candidate=token)
-        if token_validation.is_failure:
+    # @LoggingLevelRouter.monitor
+    # def form_token_on_board(
+    #         self,
+    #         token: Token,
+    #         board: Board,
+    #         board_service: BoardService = BoardService(),
+    # ):
+    #     token_validation = self.validator.validate(candidate=token)
+    #     if token_validation.is_failure:
         
     @LoggingLevelRouter.monitor
     def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
