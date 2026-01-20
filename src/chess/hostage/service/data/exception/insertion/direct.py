@@ -12,11 +12,11 @@ __all__ = [
     "AppendingHostageManifestDirectlyIntoItemsFailedException",
 ]
 
-from chess.hostage import HostageManifestDataServiceException
+from chess.hostage import HostageManifestDataListException
 
 
 # ======================# APPENDING_HOSTAGE_MANIFEST_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
-class AppendingHostageManifestDirectlyIntoItemsFailedException(HostageManifestDataServiceException):
+class AppendingHostageManifestDirectlyIntoItemsFailedException(HostageManifestDataListException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,7 +24,7 @@ class AppendingHostageManifestDirectlyIntoItemsFailedException(HostageManifestDa
     1.  Indicate that appending the hostageManifest directly into self.items was not in the list after running items.append.
 
     # PARENT:
-        *   HostageManifestDataServiceException
+        *   HostageManifestDataListException
 
     # PROVIDES:
     None

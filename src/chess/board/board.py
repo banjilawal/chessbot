@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from chess.arena import Arena
+from chess.hostage import HostageManifestDirectoryService, HostageManifestDirectoryServiceException
 from chess.system import BOARD_DIMENSION
 from chess.board import BoardSquareService, BoardTokenService
 
@@ -34,10 +35,17 @@ class Board:
     _arena: Arena
     _row_size: int
     _column_size: int
-    _tokens: BoardTokenService
     _squares: BoardSquareService
+    _hostage_manifest: HostageManifestDirectoryService
     
-    def __init__(self, id: int, arena: Arena, row_size: int = BOARD_DIMENSION, column_size: int = BOARD_DIMENSION):
+    def __init__(
+            self,
+            id: int,
+            arena: Arena,
+            row_size: int = BOARD_DIMENSION,
+            column_size: int = BOARD_DIMENSION,
+            hostage_manifest: HostageManifestDirectoryService = HostageManifestDirectoryService(),
+    ):
         """
         # ACTION:
             Constructs Board object
@@ -57,9 +65,8 @@ class Board:
         self._arena = arena
         self._row_size = row_size
         self._column_size = column_size
-        
-        self._tokens = BoardTokenService()
         self._squares = BoardSquareService()
+        self._hostage_manifest = hostage_manifest
     
     @property
     def id(self) -> int:
@@ -70,8 +77,8 @@ class Board:
         return self._arena
     
     @property
-    def tokens(self) -> BoardTokenService:
-        return self._tokens
+    def hostage_manifest(self) -> HostageManifestDirectoryService:
+        return self._hostage_manifest
     
     @property
     def squares(self) -> BoardSquareService:

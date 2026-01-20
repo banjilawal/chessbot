@@ -14,4 +14,4 @@ from .search import *
 from .insertion import *
 
 # Modules
-from .catchall import UniqueHostageManifestDataServiceException
+from .catchall import HostageManifestDirectoryServiceException

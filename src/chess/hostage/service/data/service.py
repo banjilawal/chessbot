@@ -10,14 +10,13 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.hostage import (
-    CaptivityContextService, HostageManifest, HostageManifestDataServiceException,
-    HostageManifestService
+    AppendingHostageManifestDirectlyIntoItemsFailedException, CaptivityContextService, HostageManifest,
+    HostageManifestDataListException, HostageManifestInsertionFailedException, HostageManifestService
 )
-from chess.hostage.service.data.exception.insertion.wrapper import HostageManifestInsertionFailedException
 from chess.system import DataService, InsertionResult, LoggingLevelRouter, id_emitter
 
 
-class HostageManifestDataService(DataService[HostageManifest]):
+class HostageManifestList(DataService[HostageManifest]):
     """
     # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -39,7 +38,7 @@ class HostageManifestDataService(DataService[HostageManifest]):
     # INHERITED ATTRIBUTES:
         *   See DataService class for inherited attributes.
     """
-    SERVICE_NAME = "HostageManifestDataService"
+    SERVICE_NAME = "HostageManifestList"
     
     def __init__(
             self,
@@ -96,17 +95,17 @@ class HostageManifestDataService(DataService[HostageManifest]):
                     - On failure: Exception.
                     - On success: HostageManifest in the payload.
         # RAISES:
-            *   HostageManifestDataServiceException
+            *   HostageManifestDataListException
         """
-        method = "HostageManifestDataService.add_hostageManifest"
+        method = "HostageManifestList.add_hostageManifest"
         
         # Handle the case that the hostageManifest is unsafe.
         validation = self.integrity_service.validator.validate(candidate=manifest)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                HostageManifestDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDataServiceException.ERROR_CODE}",
+                HostageManifestDataListException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDataListException.ERROR_CODE}",
                     ex=HostageManifestInsertionFailedException(
                         message=f"{method}: {HostageManifestInsertionFailedException.ERROR_CODE}",
                         ex=validation.exception
@@ -121,8 +120,8 @@ class HostageManifestDataService(DataService[HostageManifest]):
         if manifest not in self.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                HostageManifestDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDataServiceException.ERROR_CODE}",
+                HostageManifestDataListException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDataListException.ERROR_CODE}",
                     ex=HostageManifestInsertionFailedException(
                         message=f"{method}: {HostageManifestInsertionFailedException.ERROR_CODE}",
                         ex=AppendingHostageManifestDirectlyIntoItemsFailedException(

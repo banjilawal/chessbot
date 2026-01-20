@@ -11,18 +11,18 @@ from chess.hostage import HostageManifestException
 from chess.system import DataServiceException
 
 __all__ = [
-    # ======================# HOSTAGE_MANIFEST_DATA_SERVICE EXCEPTION #======================#
-    "HostageManifestDataServiceException",
+    # ======================# HOSTAGE_MANIFEST_LIST EXCEPTION #======================#
+    "HostageManifestDataListException",
 ]
 
 
-# ======================# HOSTAGE_MANIFEST_DATA_SERVICE EXCEPTION #======================#
-class HostageManifestDataServiceException(HostageManifestException, DataServiceException):
+# ======================# HOSTAGE_MANIFEST_LIST EXCEPTION #======================#
+class HostageManifestDataListException(HostageManifestException, DataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by HostageManifestDataService methods that return Result objects.
+    1.  Wrap any exceptions raised by HostageManifestList methods that return Result objects.
 
     # PARENT:
         *   HostageManifestException
@@ -37,5 +37,5 @@ class HostageManifestDataServiceException(HostageManifestException, DataServiceE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_MANIFEST_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "HostageManifestDataService raised an exception."
+    ERROR_CODE = "HOSTAGE_MANIFEST_LIST_ERROR"
+    DEFAULT_MESSAGE = "HostageManifestList raised an exception."

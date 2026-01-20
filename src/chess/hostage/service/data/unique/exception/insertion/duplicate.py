@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.hostage import UniqueHostageManifestDataServiceException
+from chess.hostage import HostageManifestDirectoryServiceException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_HOSTAGE_MANIFEST EXCEPTION #======================#
@@ -16,16 +16,16 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_HOSTAGE_MANIFEST EXCEPTION #======================#
-class AddingDuplicateHostageManifestException(UniqueHostageManifestDataServiceException):
+class AddingDuplicateHostageManifestException(HostageManifestDirectoryServiceException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to add a item to the UniqueHostageManifestDataService's dataset failed
+    1.  Indicate that an attempt to add a item to the HostageManifestDirectoryService's dataset failed
         because it was already present.
 
     # PARENT:
-        *   UniqueHostageManifestDataServiceException
+        *   HostageManifestDirectoryServiceException
 
     # PROVIDES:
     None

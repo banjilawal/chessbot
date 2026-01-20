@@ -11,19 +11,19 @@ from typing import List
 
 from chess.hostage import (
     AddingDuplicateHostageManifestException, CaptivityContext, CaptivityContextService, HostageManifest,
-    HostageManifestDataService, HostageManifestService, UniqueHostageManifestDataServiceException,
+    HostageManifestList, HostageManifestService, HostageManifestDirectoryServiceException,
     UniqueHostageManifestInsertionFailedException, UniqueHostageManifestSearchFailedException
 )
 from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
 
 
-class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
+class HostageManifestDirectoryService(UniqueDataService[HostageManifest]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by HostageManifestDataService are unique.
-    2.  Guarantee consistency of records in HostageManifestDataService.
+    1.  Ensure all items in managed by HostageManifestList are unique.
+    2.  Guarantee consistency of records in HostageManifestList.
 
     # PARENT:
         *   UniqueDataService
@@ -37,14 +37,14 @@ class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
     # INHERITED ATTRIBUTES:
         *   See UniqueDataService class for inherited attributes.
     """
-    SERVICE_NAME = "UniqueHostageManifestDataService"
-    _data_service: HostageManifestDataService
+    SERVICE_NAME = "HostageManifestDirectoryService"
+    _data_service: HostageManifestList
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: HostageManifestDataService = HostageManifestDataService(),
+            data_service: HostageManifestList = HostageManifestList(),
     ):
         """
         # ACTION:
@@ -52,7 +52,7 @@ class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (HostageManifestDataService)
+            *   member_service (HostageManifestList)
         # RETURNS:
             None
         # RAISES:
@@ -93,11 +93,11 @@ class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
                     - On failure: An exception.
                     - On success: HostageManifest in payload.
         # RAISES:
-            *   UniqueHostageManifestDataServiceException
+            *   HostageManifestDirectoryServiceException
             *   UniqueHostageManifestInsertionFailedException
-            *   UniqueHostageManifestDataServiceException
+            *   HostageManifestDirectoryServiceException
         """
-        method = "UniqueHostageManifestDataService.add_unique_hostageManifest"
+        method = "HostageManifestDirectoryService.add_unique_hostageManifest"
         
         # --- To assure uniqueness the member_service has to conduct a search. The hostageManifest should be validated first. ---#
         
@@ -106,8 +106,8 @@ class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                UniqueHostageManifestDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueHostageManifestDataServiceException.ERROR_CODE}",
+                HostageManifestDirectoryServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDirectoryServiceException.ERROR_CODE}",
                     ex=UniqueHostageManifestInsertionFailedException(
                         message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
                         ex=validation.exception
@@ -121,8 +121,8 @@ class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
         if search_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                UniqueHostageManifestDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueHostageManifestDataServiceException.ERROR_CODE}",
+                HostageManifestDirectoryServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDirectoryServiceException.ERROR_CODE}",
                     ex=UniqueHostageManifestInsertionFailedException(
                         message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
                         ex=search_result.exception
@@ -133,8 +133,8 @@ class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
         if search_result.is_success:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                UniqueHostageManifestDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueHostageManifestDataServiceException.ERROR_CODE}",
+                HostageManifestDirectoryServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDirectoryServiceException.ERROR_CODE}",
                     ex=UniqueHostageManifestInsertionFailedException(
                         message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
                         ex=AddingDuplicateHostageManifestException(
@@ -150,9 +150,9 @@ class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                UniqueHostageManifestDataServiceException(
+                HostageManifestDirectoryServiceException(
                     message=(
-                        f"ServiceId:{self.id}, {method}: {UniqueHostageManifestDataServiceException.ERROR_CODE}"
+                        f"ServiceId:{self.id}, {method}: {HostageManifestDirectoryServiceException.ERROR_CODE}"
                     ),
                     ex=UniqueHostageManifestInsertionFailedException(
                         message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
@@ -180,10 +180,10 @@ class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
                     - On success: HostageManifest in payload.
                     - On Empty: No payload nor exception.
         # RAISES:
-            *   UniqueHostageManifestDataServiceException
+            *   HostageManifestDirectoryServiceException
             *   ExhaustiveHostageManifestDeletionFailedException
         """
-        method = "UniqueHostageManifestDataService.searchnanifests"
+        method = "HostageManifestDirectoryService.searchnanifests"
         
         # --- Handoff the search responsibility to _hostageManifest_data_service. ---#
         search_result = self._data_service.context_service.finder.find(context=context)
@@ -192,8 +192,8 @@ class UniqueHostageManifestDataService(UniqueDataService[HostageManifest]):
         if search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                UniqueHostageManifestDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueHostageManifestDataServiceException.ERROR_CODE}",
+                HostageManifestDirectoryServiceException(
+                    message=f"ServiceID:{self.id} {method}: {HostageManifestDirectoryServiceException.ERROR_CODE}",
                     ex=UniqueHostageManifestSearchFailedException(
                         message=f"{method}: {UniqueHostageManifestSearchFailedException.ERROR_CODE}",
                         ex=search_result.exception

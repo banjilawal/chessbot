@@ -8,23 +8,23 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# UNIQUE_HOSTAGE_MANIFEST_DATA_SERVICE EXCEPTION #======================#
-    "UniqueHostageManifestDataServiceException",
+    # ======================# HOSTAGE_MANIFEST_DIRECTORY_SERVICE EXCEPTION #======================#
+    "HostageManifestDirectoryServiceException",
 ]
 
 from chess.hostage import HostageManifestException
 from chess.system import UniqueDataServiceException
 
 
-# ======================# UNIQUE_HOSTAGE_MANIFEST_DATA_SERVICE EXCEPTION #======================#
-class UniqueHostageManifestDataServiceException(HostageManifestException, UniqueDataServiceException):
+# ======================# HOSTAGE_MANIFEST_DIRECTORY_SERVICE EXCEPTION #======================#
+class HostageManifestDirectoryServiceException(HostageManifestException, UniqueDataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an UniqueHostageManifestDataService encountered an error which prevented the
+    1.  Indicate that an HostageManifestDirectoryService encountered an error which prevented the
         service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a UniqueHostageManifestDataService method.
+    2.  Wrap an exception that hits the try-finally block of a HostageManifestDirectoryService method.
 
     # PARENT:
         *   ServiceException
@@ -39,5 +39,5 @@ class UniqueHostageManifestDataServiceException(HostageManifestException, Unique
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_HOSTAGE_MANIFEST_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "UniqueHostageManifestDataService raised an exception."
+    ERROR_CODE = "HOSTAGE_MANIFEST_DIRECTORY_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "HostageManifestDirectoryService raised an exception."
