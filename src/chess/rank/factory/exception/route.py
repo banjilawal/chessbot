@@ -1,4 +1,13 @@
-from chess.system import ResultException, UnhandledRouteException
+# src/chess/rank/factory/exception/route.py
+
+"""
+Module: chess.rank.factory.exception.route
+Author: Banji Lawal
+Created: 2025-11-20
+version: 1.0.0
+"""
+
+from chess.system import NoBuildRouteException, ResultException
 
 __all__ = [
     # ======================# UNHANDLED_RANK_BUILD_ROUTE EXCEPTION #======================#
@@ -7,7 +16,7 @@ __all__ = [
 
 
 # ======================# UNHANDLED_RANK_BUILD_ROUTE EXCEPTION #======================#
-class RankBuildRouteException(ResultException, UnhandledRouteException):
+class RankBuildRouteException(ResultException, NoBuildRouteException):
     """
     # ROLE: Fallback Result, Debugging
 

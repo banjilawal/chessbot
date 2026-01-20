@@ -81,7 +81,7 @@ class PersonaService(HashService[Persona]):
         return cast(PersonaKeyService, self.hash_key_service)
     
     @property
-    def persona_validator(self) -> PersonaValidator:
+    def validator(self) -> PersonaValidator:
         """"""
         return cast(PersonaValidator, self.hash_validator)
     
@@ -162,48 +162,40 @@ class PersonaService(HashService[Persona]):
         
         # --- Only possible case left is Queen ---#
         return CalculationResult.success(payload=Persona.QUEEN.quota)
-
-    
-    @LoggingLevelRouter.monitor
-    def build_rank_from_persona(self, persona: Persona) -> BuildResult[Rank]:
-        """
-        # ACTION:
-            1   f the persona is not certified safe send an exception chain in the BuildResult.
-                Otherwise, send a rank instance in the BuildResult's payload.'
-        # PARAMETERS:
-            *   persona (Persona)
-        # RETURNS:
-            *   BuildResult[Rank] containing either:
-                    - On error: Exception
-                    - On success: Rankin the payload.
-        # RAISES:
-            *   PersonaServiceException
-            *   BuildRankFailedException
-        """
-        method = "PersonaService.rank_from_persona"
-
-        # Handle the case that persona is not certified safe.
-        validation = self.persona_validator.validate(candidate=persona)
-        if validation.is_failure:
-            return BuildResult.failure(
-                # Return exception chain on failure.
-                PersonaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERROR_CODE}",
-                    ex=RankBuildFailedException(
-                        message=f"{method}: {RankBuildFailedException.ERROR_CODE}",
-                        ex=validation.exception
-                    )
-                )
-            )
-        # --- Because of the validation all the ranks will be valid. Can forward the Rank to the caller. ---#
-        if persona == Persona.KING: return BuildResult.success(King())
-        if persona == Persona.PAWN: return BuildResult.success(Pawn())
-        if persona == Persona.KNIGHT: return BuildResult.success(Knight())
-        if persona == Persona.BISHOP: return BuildResult.success(Bishop())
-        if persona == Persona.ROOK:  return BuildResult.success(Rook())
-        
-        # --- Only possible case left is Queen ---#
-        return BuildResult.success(Queen())
+    #
+    #
+    # @LoggingLevelRouter.monitor
+    # def build_rank_from_persona(self, persona: Persona, rank_service: RankService = RankService()) -> BuildResult[Rank]:
+    #     """
+    #     # ACTION:
+    #         1   f the persona is not certified safe send an exception chain in the BuildResult.
+    #             Otherwise, send a rank instance in the BuildResult's payload.'
+    #     # PARAMETERS:
+    #         *   persona (Persona)
+    #     # RETURNS:
+    #         *   BuildResult[Rank] containing either:
+    #                 - On error: Exception
+    #                 - On success: Rankin the payload.
+    #     # RAISES:
+    #         *   PersonaServiceException
+    #         *   BuildRankFailedException
+    #     """
+    #     method = "PersonaService.rank_from_persona"
+    #
+    #     # Handle the case that persona is not certified safe.
+    #     validation = self.validator.validate(candidate=persona)
+    #     if validation.is_failure:
+    #         return BuildResult.failure(
+    #             # Return exception chain on failure.
+    #             PersonaServiceException(
+    #                 message=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERROR_CODE}",
+    #                 ex=RankBuildFailedException(
+    #                     message=f"{method}: {RankBuildFailedException.ERROR_CODE}",
+    #                     ex=validation.exception
+    #                 )
+    #             )
+    #         )
+    #     # --- Use the RankService instance to build the rank. It comes with its ow n  ---#
     
     @classmethod
     def persona_from_rank(cls, rank: Rank) -> Optional[Persona]:

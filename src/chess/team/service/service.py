@@ -156,7 +156,11 @@ class TeamService(EntityService[Team]):
             )
         return search_result
     
-    def fill_team_roster(self, team: Team) -> Result[Team]:
+    def fill_team_roster(
+            self,
+            team: Team,
+            rank_service: RankService = RankService(),
+    ) -> Result[Team]:
         """
         # ACTION:
             1.  If a successful relation analysis does not show that the team and piece are partially related send an
@@ -210,13 +214,27 @@ class TeamService(EntityService[Team]):
         # --- Iterate through each formation to get each token's build params. ---#
         formations = cast(List[FormationKey], formation_lookup_result.payload)
         for index in range(len(formations)):
-            # --- Search for each formation's square on the team.board. ---#
             formation = formations[index]
+
+            # Handle the case tha rank build is not completed.
+            rank_build_result = rank_service.factory.build(persona=formation.persona)
+            if rank_build_result.is_failure:
+                # Return exception chain on failure.
+                return UpdateResult.failure(
+                    TeamServiceException(
+                        message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                        ex=FillingTeamRosterFailedException(
+                            message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                            ex=rank_build_result.exception
+                        )
+                    )
+                )
+            # --- Don't cast the build result. The factory returns the concrete product which matches the persona. ---#
+            
+            # Handle the case that searching the board for the formation's square is not completed.
             square_search_result = team.board.squares.search_squares(
                 context=SquareContext(name=formation.square_name)
             )
-            
-            # Handle the case that the search was not completed.
             if square_search_result.is_failure:
                 # Return exception chain on failure.
                 return UpdateResult.failure(
@@ -230,14 +248,15 @@ class TeamService(EntityService[Team]):
                 )
             opening_square = cast(Square, square_search_result.payload[0])
             # --- Build the token. ---#
+            
             token_build_result = team.roster.integrity_service.builder.build(
                 token_manifest=TokenBuildManifest(
                     owner=team,
-                    rank=formation.rank,
                     roster_number=index,
                     id=id_emitter.token_id,
                     opening_square=opening_square,
-                    designation=formation.designation
+                    designation=formation.designation,
+                    rank = rank_build_result.payload,
                 ),
                 manifest_validator=self.token_build_manifest_validator
             )

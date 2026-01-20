@@ -6,14 +6,10 @@ Author: Banji Lawal
 Created: 2025-08-25
 version: 1.0.0
 """
-from typing import Optional
 
-from chess.system import Builder, BuildResult, IdEmitter, LoggingLevelRouter, id_emitter
-from chess.rank import (
-    Rank, King, Pawn, Knight, Bishop, RankSpecValidator, Rook, Queen, RankSpec, NullRankSpecException,
-    RankBuildFailedException
-)
-
+from chess.persona import Persona, PersonaService
+from chess.system import Builder, BuildResult, LoggingLevelRouter, id_emitter
+from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankBuildFailedException, RankBuildRouteException, Rook
 
 class RankFactory(Builder[Rank]):
     """
@@ -42,9 +38,9 @@ class RankFactory(Builder[Rank]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            rank_spec: RankSpec,
-            id: Optional[int] = None,
-            rank_spec_validator: RankSpecValidator = RankSpecValidator(),
+            persona: Persona,
+            id: int = id_emitter.rank_id,
+            persona_service: PersonaService = PersonaService(),
     ) -> BuildResult[Rank]:
         """
         # ACTION:
@@ -62,63 +58,57 @@ class RankFactory(Builder[Rank]):
             * RankBuildFailedException
         """
         method = "RankFactory.builder"
-        try:
-            validation = rank_spec_validator.validate(rank_spec)
-            if validation.is_failure():
-                return BuildResult.failure(validation.exception)
-            
-            if rank_spec == RankSpec.KING:
-                return cls.build_king_rank(id=id)
-            if rank_spec == RankSpec.PAWN:
-                return cls.build_pawn_rank(id=id)
-            if rank_spec == RankSpec.KNIGHT:
-                return cls.build_knight_rank(id=id)
-            if rank_spec == RankSpec.BISHOP:
-                return cls.build_bishop_rank(id=id)
-            if rank_spec == RankSpec.ROOK:
-                return cls.build_rook_rank(id=id)
-            if rank_spec == RankSpec.QUEEN:
-                return cls.build_queen_rank(id=id)
-            
-        except Exception as ex:
+        # Handle the case that the persona is not certifed as safe.
+        validation = persona_service.validator.validate(candidate=persona)
+        if validation.is_failure:
+            # Return the exception chain on failure.
             return BuildResult.failure(
-                RankBuildFailedException(ex=ex, message=f"{method}: {RankBuildFailedException.DEFAULT_MESSAGE}")
+                RankBuildFailedException(
+                    message=f"{method}: {RankBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=validation.exception
+                )
             )
-    
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def build_king_rank(cls, id: int = id_emitter.king_id) -> BuildResult[King]:
-        """
-        # ACTION:
-        Returns a BuildResult containing a King instance.
-
-        # PARAMETERS:
-        None
-
-        # RETURNS:
-          BuildResult[King] containing either:
-                - On success: a King in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-        None
-        """
-        method = "RankFactory.build_king_rank"
-        return BuildResult.success(
-            King(
-                id=id,
-                name=RankSpec.KING.name,
-                designation=RankSpec.KING.designation,
-                ransom=RankSpec.KING.ransom,
-                team_quota=RankSpec.KING.quota,
-                quadrants=RankSpec.KING.quadrants,
+        # --- Route to the appropriate concrete builder. ---#
+        
+        if persona == Persona.KING:
+            return cls._build_king_rank(id=id)
+        if persona == Persona.PAWN:
+            return cls._build_pawn_rank(id=id)
+        if persona == Persona.KNIGHT:
+            return cls._build_knight_rank(id=id)
+        if persona == Persona.BISHOP:
+            return cls._build_bishop_rank(id=id)
+        if persona == Persona.ROOK:
+            return cls._build_rook_rank(id=id)
+        if persona == Persona.QUEEN:
+            return cls._build_queen_rank(id=id)
+            
+        # Return the exception chain if there is no build route for the context.
+        return BuildResult.failure(
+            RankBuildFailedException(
+                message=f"{method}: {RankBuildFailedException.DEFAULT_MESSAGE}",
+                ex=RankBuildRouteException(f"{method}: {RankBuildRouteException.DEFAULT_MESSAGE}")
             )
         )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_pawn_rank(cls, id: int = id_emitter.pawn_id) -> BuildResult[Pawn]:
+    def _build_king_rank(cls, id: int) -> BuildResult[King]:
+        method = "RankFactory.build_king_rank"
+        return BuildResult.success(
+            King(
+                id=id,
+                name=Persona.KING.name,
+                ransom=Persona.KING.ransom,
+                team_quota=Persona.KING.quota,
+                quadrants=Persona.KING.quadrants,
+                designation=Persona.KING.designation,
+            )
+        )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _build_pawn_rank(cls, id: int) -> BuildResult[Pawn]:
         """
         # ACTION:
         Returns a BuildResult containing a Pawn instance.
@@ -138,130 +128,66 @@ class RankFactory(Builder[Rank]):
         return BuildResult.success(
             Pawn(
                 id=id_emitter.pawn_id,
-                name=RankSpec.PAWN.name,
-                designation=RankSpec.PAWN.designation,
-                ransom=RankSpec.PAWN.ransom,
-                team_quota=RankSpec.PAWN.quota,
-                quadrants=RankSpec.PAWN.quadrants,
+                name=Persona.PAWN.name,
+                ransom=Persona.PAWN.ransom,
+                team_quota=Persona.PAWN.quota,
+                quadrants=Persona.PAWN.quadrants,
+                designation=Persona.PAWN.designation,
             )
         )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_knight_rank(cls, id: int = id_emitter.knight_id) -> BuildResult[Knight]:
-        """
-        # ACTION:
-        Returns a BuildResult containing a Knight instance.
-
-        # PARAMETERS:
-        None
-
-        # RETURNS:
-          BuildResult[Knight] containing either:
-                - On success: a Knight in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-        None
-        """
-        method = "RankFactory.build_knight_rank"
+    def _build_knight_rank(cls, id: int) -> BuildResult[Knight]:
         return BuildResult.success(
             Knight(
                 id=id_emitter.knight_id,
-                name=RankSpec.KNIGHT.name,
-                designation=RankSpec.KNIGHT.designation,
-                ransom=RankSpec.KNIGHT.ransom,
-                team_quota=RankSpec.KNIGHT.quota,
-                quadrants=RankSpec.KNIGHT.quadrants,
+                name=Persona.KNIGHT.name,
+                ransom=Persona.KNIGHT.ransom,
+                team_quota=Persona.KNIGHT.quota,
+                quadrants=Persona.KNIGHT.quadrants,
+                designation=Persona.KNIGHT.designation,
             )
         )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_bishop_rank(cls, id: int = id_emitter.bishop_id) -> BuildResult[Bishop]:
-        """
-        # ACTION:
-        Returns a BuildResult containing a Bishop instance.
-
-        # PARAMETERS:
-        None
-
-        # RETURNS:
-          BuildResult[Bishop] containing either:
-                - On success: a Bishop in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-        None
-        """
-        method = "RankFactory.build_bishop_rank"
+    def _build_bishop_rank(cls, id: int) -> BuildResult[Bishop]:
         return BuildResult.success(
             Bishop(
                 id=id_emitter.bishop_id,
-                name=RankSpec.BISHOP.name,
-                designation=RankSpec.BISHOP.designation,
-                ransom=RankSpec.BISHOP.ransom,
-                team_quota=RankSpec.BISHOP.quota,
-                quadrants=RankSpec.BISHOP.quadrants,
+                name=Persona.BISHOP.name,
+                ransom=Persona.BISHOP.ransom,
+                team_quota=Persona.BISHOP.quota,
+                quadrants=Persona.BISHOP.quadrants,
+                designation=Persona.BISHOP.designation,
             )
         )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_rook_rank(cls, i: int = id_emitter.rook_id) -> BuildResult[Rook]:
-        """
-        # ACTION:
-        Returns a BuildResult containing a Rook instance.
-
-        # PARAMETERS:
-        None
-
-        # RETURNS:
-          BuildResult[Rook] containing either:
-                - On success: a Rook in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-        None
-        """
-        method = "RankFactory.build_rook_rank"
+    def _build_rook_rank(cls, id: int) -> BuildResult[Rook]:
         return BuildResult.success(
             Rook(
                 id=id_emitter.rook_id,
-                name=RankSpec.ROOK.name,
-                designation=RankSpec.ROOK.designation,
-                ransom=RankSpec.ROOK.ransom,
-                team_quota=RankSpec.ROOK.quota,
-                quadrants=RankSpec.ROOK.quadrants,
+                name=Persona.ROOK.name,
+                ransom=Persona.ROOK.ransom,
+                team_quota=Persona.ROOK.quota,
+                quadrants=Persona.ROOK.quadrants,
+                designation=Persona.ROOK.designation,
             )
         )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def build_queen_rank(cls, id: int = id_emitter.queen_id) -> BuildResult[Queen]:
-        """
-        # ACTION:
-        Returns a BuildResult containing a Queen instance.
-
-        # PARAMETERS:
-        None
-
-        # RETURNS:
-          BuildResult[Queen] containing either:
-                - On success: a Queen in the payload.
-                - On failure: Exception.
-
-        # RAISES:
-        None
-        """
-        method = "RankFactory.build_queen_rank"
+    def _build_queen_rank(cls, id: int) -> BuildResult[Queen]:
         return BuildResult.success(
             Queen(
                 id=id_emitter.queen_id,
-                name=RankSpec.QUEEN.name,
-                designation=RankSpec.QUEEN.designation,
-                ransom=RankSpec.QUEEN.ransom,
-                team_quota=RankSpec.QUEEN.quota,
-                quadrants=RankSpec.QUEEN.quadrants,
+                name=Persona.QUEEN.name,
+                ransom=Persona.QUEEN.ransom,
+                team_quota=Persona.QUEEN.quota,
+                quadrants=Persona.QUEEN.quadrants,
+                designation=Persona.QUEEN.designation,
             )
         )

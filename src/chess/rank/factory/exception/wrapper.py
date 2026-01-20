@@ -1,7 +1,7 @@
-# src/chess/rank/factory/exception.py
+# src/chess/rank/factory/exception/wrapper.py
 
 """
-Module: chess.rank.factory.exception
+Module: chess.rank.factory.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
