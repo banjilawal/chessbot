@@ -1,28 +1,36 @@
-# src/chess/token/model/king/token.py
+# src/chess/token/model/concrete/king/king.py
 
 """
-Module: chess.token.model.king.token
+Module: chess.token.model.concrete.king.king
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
 from chess.rank import King
-from chess.square import Square
 from chess.team import Team
+from chess.square import Square
 from chess.token import KingActivityState, Token, TokenBoardState
 
 
 class KingToken(Token):
     _activity_state: KingActivityState
     
-    def __init__(self, id: int, designation: str, roster_number: int, team: Team, opening_square: Square):
+    def __init__(
+            self,
+            id: int,
+            team: Team,
+            designation: str,
+            roster_number: int,
+            opening_square: Square,
+    ):
         super().__init__(
             id=id,
+            team=team,
+            rank=King(),
             designation=designation,
             roster_number=roster_number,
-            rank=King(), team=team,
-            opening_square=opening_square
+            opening_square=opening_square,
         )
         self._activity_state = KingActivityState.FREE
         

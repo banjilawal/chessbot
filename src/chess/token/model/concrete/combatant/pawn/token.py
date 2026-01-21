@@ -1,9 +1,9 @@
-# src/chess/token/combatant/pawn/token.py
+# src/chess/token/model/concrete/combatant/pawn/token.py
 
 """
-Module: chess.token.combatant.pawn.token
+Module: chess.token.model.concrete.combatant.pawn.token
 Author: Banji Lawal
-Created: 2025-11-23
+Created: 2025-10-03
 version: 1.0.0
 """
 

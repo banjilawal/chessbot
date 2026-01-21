@@ -1,7 +1,7 @@
-# src/chess/token/model/token.py
+# src/chess/token/model/abstract.py
 
 """
-Module: chess.token.model.piece
+Module: chess.token.model.abstract
 Author: Banji Lawal
 Created: 2025-07-22
 version: 1.0.0
@@ -12,8 +12,8 @@ from typing import Optional
 
 from chess.rank import Rank
 from chess.team import Team
-from chess.token import Token, TokenBoardState
 from chess.square import Square
+from chess.token import Token, TokenBoardState
 from chess.coord import Coord, CoordDataService
 
 class Token(ABC):
@@ -141,8 +141,8 @@ class Token(ABC):
     @property
     def has_been_formed(self) -> bool:
         return (
-                self._token_board_state == TokenBoardState.FORMED_ON_BOARD and
-                self.positions.size == 1
+                self.positions.size == 1 and
+                self._token_board_state == TokenBoardState.FORMED_ON_BOARD
         )
     
     def __hash__(self) -> int:

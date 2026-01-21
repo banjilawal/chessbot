@@ -9,6 +9,7 @@ version: 1.0.0
 
 from abc import ABC, abstractmethod
 
+from chess.token import Token
 from chess.geometry import Quadrant
 from chess.vector import VectorService
 from chess.coord import Coord, CoordService

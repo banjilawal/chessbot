@@ -10,10 +10,9 @@ version: 1.0.0
 #=========== TOKEN.MODEL PACKAGE CONTENTS ===========#
 
 # Packages
-from .king import *
-from .combatant import *
+from .concrete import *
 
 # Modules
-from .token import Token
+from .abstract import Token
 from .state import TokenBoardState
 from .exception import TokenException
