@@ -19,7 +19,7 @@ from chess.snapshot import GameTimeline, NullGameTimelineException, Snapshot, Sn
 
 class SnapshotFinder(Finder[Snapshot]):
     """
-    # ROLE: Searcher
+    # ROLE: AbstractSearcher
 
     # RESPONSIBILITIES:
     1.  Search AgentDataService or UniqueDataService objects for Agents with an attribute that matches the
@@ -27,7 +27,7 @@ class SnapshotFinder(Finder[Snapshot]):
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT:
-        *   Searcher
+        *   AbstractSearcher
 
     # PROVIDES:
     SnapshotFinder:

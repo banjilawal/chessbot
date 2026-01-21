@@ -20,7 +20,7 @@ from chess.square import (
 
 class SquareFinder(DataFinder[Square]):
     """
-    # ROLE: Searcher
+    # ROLE: AbstractSearcher
 
     # RESPONSIBILITIES:
     1.  Send items in a SquareList whose attribute value match the context.key value to the caller.
@@ -30,7 +30,7 @@ class SquareFinder(DataFinder[Square]):
     1.  SquareFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   Searcher
+        *   AbstractSearcher
 
     # PROVIDES:
     None

@@ -22,7 +22,7 @@ from chess.token import (
 
 class TokenDataService(DataService[Token]):
     """
-    # ROLE: Data Stack, Searcher EntityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

@@ -39,7 +39,7 @@ class DataService(ABC, Generic[D]):
         *   id (int):
         *   name (str):
         *   items (List[D]):
-        *   searcher (Searcher[D]):
+        *   searcher (AbstractSearcher[D]):
         *   entity_service (EntityService[D]):
         *   context_service (ContextService);
         *   current_item (D):

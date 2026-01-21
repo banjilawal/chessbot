@@ -29,7 +29,7 @@ class ContextService(EntityService[Context[T]]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   finder (Searcher[T])
+        *   finder (AbstractSearcher[T])
         
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
@@ -50,7 +50,7 @@ class ContextService(EntityService[Context[T]]):
         # PARAMETERS:
             *   name (str)
             *   id (int)
-            *   finder (Searcher[T])
+            *   finder (AbstractSearcher[T])
             *   builder (Builder[Context[T]])
             *   validator (Validator[Context[T]])
 

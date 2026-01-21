@@ -21,7 +21,7 @@ from chess.token import (
 
 class TokenFinder(DataFinder[Token]):
     """
-    # ROLE: Searcher
+    # ROLE: AbstractSearcher
 
     # RESPONSIBILITIES:
     1.  Send items in a TokenList whose attribute value match the context.key value to the caller.
@@ -31,7 +31,7 @@ class TokenFinder(DataFinder[Token]):
     1.  TokenFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   Searcher
+        *   AbstractSearcher
 
     # PROVIDES:
     None

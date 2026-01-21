@@ -25,7 +25,7 @@ class HashLookup(Finder[Enum]):
     3.  Indicate the HashMap does have an entry for the Key with an exception in the SearchResult.
 
     # PARENT:
-        *   Searcher
+        *   AbstractSearcher
 
     # PROVIDES:
     None

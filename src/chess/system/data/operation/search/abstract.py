@@ -13,5 +13,5 @@ from typing import TypeVar, Generic
 T = TypeVar("T")
 
 
-class Searcher(ABC, Generic[T]):
+class AbstractSearcher(ABC, Generic[T]):
     pass

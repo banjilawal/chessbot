@@ -14,3 +14,4 @@ None
 
 # Modules
 from .wrapper import UpdateFailedException
+from .unsupported import UnsupportedEmptyUpdateResultException
