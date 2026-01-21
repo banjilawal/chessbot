@@ -9,7 +9,7 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, DeletionResult, DeletionState, ResultState
+from chess.system import DataResult, DeletionResult, DeletionState, DataResultState
 
 T = TypeVar("T")
 
@@ -36,7 +36,7 @@ class DeletionResult(DataResult[Generic[T]]):
     """
     def __init__(
             self,
-            state: ResultState,
+            state: DataResultState,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None
     ):

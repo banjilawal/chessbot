@@ -10,7 +10,7 @@ Version: 1.0.0
 from typing import Generic, Optional, TypeVar, cast
 
 from chess.system import (
-    DataResult, InsertionResult, EmptyDataResultException, NotImplementedException, ResultState,
+    DataResult, InsertionResult, EmptyDataResultException, NotImplementedException, DataResultState,
     UnsupportedEmptyInsertionResultException
 )
 
@@ -39,7 +39,7 @@ class InsertionResult(DataResult[T], Generic[T]):
     """
     def __init__(
             self,
-            state: ResultState,
+            state: DataResultState,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None
     ):
@@ -56,7 +56,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 self.exception is None and
                 self.payload is not None and
-                ResultState.SUCCESS
+                DataResultState.SUCCESS
         )
     
     @property
@@ -64,7 +64,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 self.exception is not None and
                 self.payload is None and
-                ResultState.FAILURE
+                DataResultState.FAILURE
         )
     
     @property
@@ -72,20 +72,20 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 self.exception is not None and
                 self.payload is None and
-                ResultState.TIMED_OUT
+                DataResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> InsertionResult:
-        return cls(state=ResultState.SUCCESS, payload=payload)
+        return cls(state=DataResultState.SUCCESS, payload=payload)
     
     @classmethod
     def failure(cls, exception: Exception) -> InsertionResult:
-        return cls(state=ResultState.FAILURE, exception=exception)
+        return cls(state=DataResultState.FAILURE, exception=exception)
     
     @classmethod
     def timed_out(cls, exception: Exception) -> InsertionResult:
-        return cls(state=ResultState.TIMED_OUT, exception=exception)
+        return cls(state=DataResultState.TIMED_OUT, exception=exception)
     
     @classmethod
     def empty(cls) -> InsertionResult:

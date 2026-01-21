@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .state import CalculationState
 from .result import ComputationResult
+from .exception import UnsupportedEmptyComputationResultException

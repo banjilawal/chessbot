@@ -10,7 +10,8 @@ Version: 1.0.0
 from typing import Generic, Optional, TypeVar, cast
 
 from chess.system import (
-    DataResult, ComputationResult, CalculationState, EmptyDataResultException, NotImplementedException
+    DataResult, ComputationResult, CalculationState, EmptyDataResultException, NotImplementedException,
+    UnsupportedEmptyComputationResultException
 )
 
 T = TypeVar("T")
@@ -35,7 +36,6 @@ class ComputationResult(DataResult[T], Generic[T]):
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
-    _state: CalculationState
     
     def __init__(
             self,
@@ -92,9 +92,8 @@ class ComputationResult(DataResult[T], Generic[T]):
     def empty(cls) -> ComputationResult[T]:
         method = "ComputationResult.empty"
         return cls(
-            exception=NotImplementedException(
-                message=f"{method}: {NotImplementedException.DEFAULT_MESSAGE}",
-                ex=EmptyDataResultException(f"{method}: {EmptyDataResultException.DEFAULT_MESSAGE}")
+            UnsupportedEmptyComputationResultException(
+                f"{method}: {UnsupportedEmptyComputationResultException.DEFAULT_MESSAGE}"
             )
         )
 

@@ -36,4 +36,4 @@ class UnsupportedEmptyInsertionResultException(UnsupportedDataResultStateExcepti
      None
     """
     ERROR_CODE = "UNSUPPORTED_EMPTY_INSERTION_RESULT_STATE_ERROR"
-    DEFAULT_MESSAGE = "An InsertionResult outcome is either success or failure. It cannot be empty."
+    DEFAULT_MESSAGE = "An InsertionResult's outcome is either success or failure. It cannot be empty."

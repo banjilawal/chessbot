@@ -10,7 +10,7 @@ Version: 1.0.0
 from enum import auto, Enum
 
 
-class ResultState(Enum):
+class DataResultState(Enum):
     """
     """
     SUCCESS = auto(),

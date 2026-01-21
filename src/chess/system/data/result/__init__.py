@@ -19,5 +19,5 @@ from .exception import *
 
 # Modules
 from .result import DataResult
-from .state import ResultState
-from .empty import  EmptyDataResultException
+from .state import DataResultState
+from .empty import EmptyDataResultException
