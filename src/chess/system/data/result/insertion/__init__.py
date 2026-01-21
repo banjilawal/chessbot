@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .state import InsertionState
 from .result import InsertionResult
+from .exception import  UnsupportedEmptyInsertionResultException

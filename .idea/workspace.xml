@@ -4,67 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/compute/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/compute/ray.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/compute/ray/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/compute/ray/diagonal.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/compute/ray/perpendicular.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/compute/span.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/compute/span/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/compute/span/diagonal.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/compute/span/perpendicular.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/scratch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/scratch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/token/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/token/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/creator/entity/builder/rank_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/creator/entity/builder/rank_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/factory/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/factory/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/bishop/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/bishop/bishop.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/bishop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/bishop/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/bishop/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/bishop/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/king/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/king/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/king/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/king.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/king/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/king/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/knight/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/knight/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/knight/knight.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/knight.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/knight/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/knight/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/pawn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/pawn/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/pawn/pawn.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/pawn/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/pawn/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/queen/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/queen/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/queen/queen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/queen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/queen/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/queen/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/rank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/abstract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/rook/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/rook/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/rook/rook.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/rook.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/rook/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/rook/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/data/result/calculation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/result/calculation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/data/result/calculation/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/result/calculation/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/exception/insert/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/insert/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/exception/insert/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/insert/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/service/data/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/data/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/service/data/unique/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/data/unique/service.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -909,7 +849,7 @@
       <workItem from="1768901223108" duration="3252000" />
       <workItem from="1768904984791" duration="489000" />
       <workItem from="1768905487804" duration="9523000" />
-      <workItem from="1768926121948" duration="26688000" />
+      <workItem from="1768926121948" duration="30233000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

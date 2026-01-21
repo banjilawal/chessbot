@@ -9,7 +9,10 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar, cast
 
-from chess.system import DataResult, InsertionResult, EmptyDataResultException, NotImplementedException, ResultState
+from chess.system import (
+    DataResult, InsertionResult, EmptyDataResultException, NotImplementedException, ResultState,
+    UnsupportedEmptyInsertionResultException
+)
 
 T = TypeVar("T")
 
@@ -88,9 +91,8 @@ class InsertionResult(DataResult[T], Generic[T]):
     def empty(cls) -> InsertionResult:
         method = "InsertionResult.empty"
         return cls(
-            exception=NotImplementedException(
-                message=f"{method}: {NotImplementedException.DEFAULT_MESSAGE}",
-                ex=EmptyDataResultException(f"{method}: {EmptyDataResultException.DEFAULT_MESSAGE}")
+            exception=UnsupportedEmptyInsertionResultException(
+                f"{method}: {UnsupportedEmptyInsertionResultException.DEFAULT_MESSAGE}"
             )
         )
 

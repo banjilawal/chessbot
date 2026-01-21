@@ -1,10 +1,10 @@
-# src/chess/system/err/implementation.py
+# src/chess/system/data/result/exception/unsupported.py
 
 """
-Module: chess.system.err.implementation
+Module: chess.system.data.result.exception.unsupported
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2025-11-18
+Version: 1.0.0
 """
 
 __all__ = [
@@ -12,7 +12,7 @@ __all__ = [
     "UnsupportedDataResultStateException",
 ]
 
-from chess.system import ChessException, NotImplementedException
+from chess.system import NotImplementedException
 
 
 # ======================# UNSUPPORTED_DATA_RESULT_STATE EXCEPTION #======================#
