@@ -12,6 +12,7 @@ Version: 1.0.0
 # Packages
 from .collection import *
 from .operation import *
+from .result import *
 
 # Modules
 None

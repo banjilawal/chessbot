@@ -3,7 +3,7 @@ from typing import List
 from chess.coord import Coord
 from chess.rank import DiagonalRay
 from chess.system import LoggingLevelRouter
-from chess.system.data.operation.result import ComputationResult
+from chess.system.data.result import ComputationResult
 
 
 class DiagonalSpan:
