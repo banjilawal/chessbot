@@ -9,7 +9,7 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar
 
-from chess.system import EmptyDataResultException, NotImplementedException, Result
+from chess.system import EmptyDataResultException, NotImplementedException, Result, ResultState
 
 T = TypeVar("T")
 
@@ -37,9 +37,15 @@ class DataResult(Result[T], Generic[T]):
     # INHERITED ATTRIBUTES:
         *   See Result class for inherited attributes.
     """
+    _state: ResultState
     
-    def __init__(self, payload: Optional[T] = None, exception: Optional[Exception] = None):
+    def __init__(self, state: ResultState, payload: Optional[T] = None, exception: Optional[Exception] = None):
         super().__init__(payload=payload, exception=exception)
+        self._state = state
+        
+    @property
+    def state(self) -> ResultState:
+        return self._state
     
     @classmethod
     def empty(cls) -> Result:

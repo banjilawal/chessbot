@@ -34,9 +34,11 @@ class DeletionResult(DataResult[Generic[T]]):
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
-    _state: DeletionState
     
-    def __init__(self, state: DeletionState, payload: Optional[T] = None, exception: Optional[Exception] = None):
+    def __init__(
+            self,
+            state: ResultState,
+            payload: Optional[T] = None, exception: Optional[Exception] = None):
         super().__init__(payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "TransactionResult.result"
