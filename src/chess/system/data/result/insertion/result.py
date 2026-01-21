@@ -10,12 +10,10 @@ Version: 1.0.0
 from typing import Generic, Optional, TypeVar, cast
 
 from chess.system import (
-    DataResult, InsertionResult, EmptyDataResultException, NotImplementedException, DataResultState,
-    UnsupportedEmptyInsertionResultException
+    DataResult, InsertionResult, DataResultState, UnsupportedEmptyInsertionResultException
 )
 
 T = TypeVar("T")
-
 
 class InsertionResult(DataResult[T], Generic[T]):
     """

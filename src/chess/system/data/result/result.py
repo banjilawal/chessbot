@@ -7,9 +7,10 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
+from abc import abstractmethod
 from typing import Generic, Optional, TypeVar
 
-from chess.system import EmptyDataResultException, NotImplementedException, Result, DataResultState
+from chess.system import Result, DataResult, DataResultState
 
 T = TypeVar("T")
 
@@ -41,23 +42,25 @@ class DataResult(Result[T], Generic[T]):
     
     def __init__(
             self,
-            state: DataResultState,
             payload: Optional[T] = None,
-            exception: Optional[Exception] = None
+            exception: Optional[Exception] = None,
+            state: Optional[DataResultState] = None,
     ):
         super().__init__(payload=payload, exception=exception)
         self._state = state
         
     @property
-    def state(self) -> DataResultState:
+    def state(self) -> Optional[DataResultState]:
         return self._state
     
     @classmethod
-    def empty(cls) -> Result:
-        method = "DataResult.empty"
-        return cls(
-            exception=NotImplementedException(
-                message=f"{method}: {NotImplementedException.DEFAULT_MESSAGE}",
-                ex=EmptyDataResultException(f"{method}: {EmptyDataResultException.DEFAULT_MESSAGE}")
-            )
-        )
+    @abstractmethod
+    def empty(cls) -> DataResult[T]:
+        pass
+        # method = "DataResult.empty"
+        # return cls(
+        #     exception=NotImplementedException(
+        #         message=f"{method}: {NotImplementedException.DEFAULT_MESSAGE}",
+        #         ex=EmptyDataResultException(f"{method}: {EmptyDataResultException.DEFAULT_MESSAGE}")
+        #     )
+        # )

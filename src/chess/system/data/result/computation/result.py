@@ -7,9 +7,11 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from typing import Generic, Optional, TypeVar, cast
+from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, ComputationResult, DataResultState, UnsupportedEmptyComputationResultException
+from chess.system import (
+    DataResult, ComputationResult, DataResultState, UnsupportedEmptyComputationResultException
+)
 
 T = TypeVar("T")
 
