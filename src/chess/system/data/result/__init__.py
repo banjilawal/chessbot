@@ -15,6 +15,7 @@ from .update import *
 from .deletion import *
 from .insertion import *
 from .computation import *
+from .exception import *
 
 # Modules
 from .result import DataResult

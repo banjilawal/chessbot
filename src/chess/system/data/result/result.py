@@ -39,7 +39,12 @@ class DataResult(Result[T], Generic[T]):
     """
     _state: ResultState
     
-    def __init__(self, state: ResultState, payload: Optional[T] = None, exception: Optional[Exception] = None):
+    def __init__(
+            self,
+            state: ResultState,
+            payload: Optional[T] = None,
+            exception: Optional[Exception] = None
+    ):
         super().__init__(payload=payload, exception=exception)
         self._state = state
         

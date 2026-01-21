@@ -9,7 +9,7 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, DeletionResult, DeletionState
+from chess.system import DataResult, DeletionResult, DeletionState, ResultState
 
 T = TypeVar("T")
 
@@ -34,19 +34,19 @@ class DeletionResult(DataResult[Generic[T]]):
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
-    
     def __init__(
             self,
             state: ResultState,
-            payload: Optional[T] = None, exception: Optional[Exception] = None):
-        super().__init__(payload=payload, exception=exception)
+            payload: Optional[T] = None,
+            exception: Optional[Exception] = None
+    ):
+        super().__init__(
+            state=state,
+            payload=payload,
+            exception=exception
+        )
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "TransactionResult.result"
-        self._state = state
-    
-    @property
-    def state(self) -> DeletionState:
-        return self._state
     
     @property
     def is_success(self) -> bool:

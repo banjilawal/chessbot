@@ -9,9 +9,7 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar, cast
 
-from chess.system import (
-    DataResult, InsertionResult, InsertionState, EmptyDataResultException, NotImplementedException
-)
+from chess.system import DataResult, InsertionResult, EmptyDataResultException, NotImplementedException, ResultState
 
 T = TypeVar("T")
 
@@ -36,33 +34,26 @@ class InsertionResult(DataResult[T], Generic[T]):
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
-    _state: InsertionState
-    
     def __init__(
             self,
-            state: InsertionState,
+            state: ResultState,
             payload: Optional[T] = None,
-            exception: Optional[Exception] = None,
+            exception: Optional[Exception] = None
     ):
-        super().__init__(payload=payload, exception=exception)
+        super().__init__(
+            state=state,
+            payload=payload,
+            exception=exception
+        )
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "TransactionResult.result"
-        self._state = state
-    
-    @property
-    def value(self) -> int:
-        return cast(int, self.payload)
-    
-    @property
-    def state(self) -> InsertionState:
-        return self._state
-    
+        
     @property
     def is_success(self) -> bool:
         return (
                 self.exception is None and
                 self.payload is not None and
-                self._state == InsertionState.SUCCESS
+                ResultState.SUCCESS
         )
     
     @property
@@ -70,7 +61,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 self.exception is not None and
                 self.payload is None and
-                self._state == InsertionState.FAILURE
+                ResultState.FAILURE
         )
     
     @property
@@ -78,20 +69,20 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 self.exception is not None and
                 self.payload is None and
-                self._state == InsertionState.TIMED_OUT
+                ResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> InsertionResult:
-        return cls(state=InsertionState.SUCCESS, payload=payload)
+        return cls(state=ResultState.SUCCESS, payload=payload)
     
     @classmethod
     def failure(cls, exception: Exception) -> InsertionResult:
-        return cls(state=InsertionState.FAILURE, exception=exception)
+        return cls(state=ResultState.FAILURE, exception=exception)
     
     @classmethod
     def timed_out(cls, exception: Exception) -> InsertionResult:
-        return cls(state=InsertionState.TIMED_OUT, exception=exception)
+        return cls(state=ResultState.TIMED_OUT, exception=exception)
     
     @classmethod
     def empty(cls) -> InsertionResult:
