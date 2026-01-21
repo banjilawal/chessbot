@@ -11,12 +11,12 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING, Optional
 
 from chess.coord import Coord
-from chess.rank.model.bishop import Bishop
-from chess.rank.model.rook import Rook
-from chess.rank.model.knight import Knight
-from chess.rank.model.king import King
+from chess.rank.model.concrete.bishop import Bishop
+from chess.rank.model.concrete.rook import Rook
+from chess.rank.model.concrete.knight import Knight
+from chess.rank.model.concrete.king import King
 from chess.pawn import Pawn
-from chess.rank.model.queen import Queen
+from chess.rank.model.concrete.queen import Queen
 from chess.token.piece import Piece
 
 if TYPE_CHECKING:

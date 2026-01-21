@@ -1,11 +1,12 @@
-# src/chess/rank/model/pawn/pawn.py
+# src/chess/rank/model/concrete/pawn.py
 
 """
-Module: chess.rank.model.pawn.pawn
+Module: chess.rank.model.concrete.pawn
 Author: Banji Lawal
-Created: 2025-07-25
+Created: 2025-09-08
 version: 1.0.0
 """
+
 from typing import List
 
 from chess.coord import Coord, CoordService

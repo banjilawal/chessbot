@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.rank import Rank
-from chess.system.data.result.calculation import CalculationResult
+from chess.system.data.result.calculation import ComputationResult
 from chess.token import (
     AddingDuplicateTokenException, ExhaustiveTokenDeletionFailedException, Token, TokenContext, TokenContextService,
     TokenDataService, TokenService, UniqueTokenDataServiceException, UniqueTokenInsertionFailedException,
@@ -86,30 +86,30 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         return self._token_data_service.is_empty
     
     @LoggingLevelRouter
-    def open_rank_slots(self, rank: Rank) -> CalculationResult[int]:
+    def open_rank_slots(self, rank: Rank) -> ComputationResult[int]:
         lookup_result = self._token_data_service.count_rank_openings(rank=rank)
         if lookup_result.is_failure:
-            return CalculationResult.failure(lookup_result.exception)
+            return ComputationResult.failure(lookup_result.exception)
         return lookup_result.payload
     
     @LoggingLevelRouter.monitor
-    def rank_has_openings(self, rank: Rank) -> CalculationResult[bool]:
+    def rank_has_openings(self, rank: Rank) -> ComputationResult[bool]:
         answer = self._token_data_service.count_rank_openings(rank=rank)
         if answer.is_failure:
-            return CalculationResult.failure(answer.exception)
+            return ComputationResult.failure(answer.exception)
         return answer
     
     @LoggingLevelRouter.monitor
-    def lookup_team_rank_quote(self, rank: Rank) -> CalculationResult[int]:
+    def lookup_team_rank_quote(self, rank: Rank) -> ComputationResult[int]:
         """
         # ACTION:
-            1.  If the rank fails its integrity checks send an exception in the CalculationResult..
-            2.  If the calculation fails wrap the exception chain and send in the CalculationResult.
-                Else directly forward the CalculationResult to the caller.
+            1.  If the rank fails its integrity checks send an exception in the ComputationResult..
+            2.  If the calculation fails wrap the exception chain and send in the ComputationResult.
+                Else directly forward the ComputationResult to the caller.
         # PARAMETERS:
             *   rank (Rank)
         # RETURNS:
-            *   CalculationResult[int] containing either:
+            *   ComputationResult[int] containing either:
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
@@ -124,7 +124,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         # Handle the case that the quota lookup was not completed.
         if quota_result.is_failure:
             # Return the exception chain on failure.
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 UniqueTokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
                     ex=quota_result.exception
@@ -135,16 +135,16 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         
     
     @LoggingLevelRouter.monitor
-    def rank_count(self, rank: Rank) -> CalculationResult[int]:
+    def rank_count(self, rank: Rank) -> ComputationResult[int]:
         """
         # ACTION:
             1.  Get the result of calling _token_data_service.number_of_rank_members.
-            2.  If the calculation fails wrap the exception chain and send in the CalculationResult.
-                Else directly forward the CalculationResult to the caller.
+            2.  If the calculation fails wrap the exception chain and send in the ComputationResult.
+                Else directly forward the ComputationResult to the caller.
         # PARAMETERS:
             *   rank (Rank)
         # RETURNS:
-            *   CalculationResult[int] containing either:
+            *   ComputationResult[int] containing either:
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
@@ -158,7 +158,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         # Handle the case that the calculation was not completed.
         if calculation_result.is_failure:
             # Return the exception chain on failure.
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 UniqueTokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
                     ex=calculation_result.exception

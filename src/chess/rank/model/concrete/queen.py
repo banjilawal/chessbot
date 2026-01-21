@@ -1,9 +1,9 @@
-# src/chess/rank/model/queen/queen.py
+# src/chess/rank/model/concrete/queen.py
 
 """
-Module: chess.rank.model.queen.queen
+Module: chess.rank.model.concrete.queen
 Author: Banji Lawal
-Created: 2025-07-25
+Created: 2025-09-08
 version: 1.0.0
 """
 

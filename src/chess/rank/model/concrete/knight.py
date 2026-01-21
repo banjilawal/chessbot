@@ -1,9 +1,9 @@
-# src/chess/rank/model/knight/knight.py
+# src/chess/rank/model/concrete/knight.py
 
 """
-Module: chess.rank.model.knight.knight
+Module: chess.rank.model.concrete.knight
 Author: Banji Lawal
-Created: 2025-07-25
+Created: 2025-09-08
 version: 1.0.0
 """
 

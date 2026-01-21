@@ -13,7 +13,7 @@ from typing import Dict, List, Optional, cast
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankService, Rook
 from chess.rank.factory.exception.wrapper import RankBuildFailedException
 from chess.system import (
-    BuildResult, CalculationResult, HashService, LoggingLevelRouter, Result, SearchResult,
+    BuildResult, ComputationResult, HashService, LoggingLevelRouter, Result, SearchResult,
     id_emitter
 )
 from chess.persona import (
@@ -122,16 +122,16 @@ class PersonaService(HashService[Persona]):
         return maximum
     
     @LoggingLevelRouter.monitor
-    def quota_per_rank(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
+    def quota_per_rank(self, rank: Rank, rank_service: RankService = RankService()) -> ComputationResult[int]:
         """
         # ACTION:
-            1   f the rank is not certified safe send an exception chain in the CalculationResult.
-                Otherwise, send the quota which matches the rank in the CalculationResult's payload.
+            1   f the rank is not certified safe send an exception chain in the ComputationResult.
+                Otherwise, send the quota which matches the rank in the ComputationResult's payload.
         # PARAMETERS:
             *   rank (Rank)
             *   rank_service (RankService)
         # RETURNS:
-            *   CalculationResult[int] containing either:
+            *   ComputationResult[int] containing either:
                     - On error: Exception
                     - On success: int in the payload.
         # RAISES:
@@ -143,7 +143,7 @@ class PersonaService(HashService[Persona]):
         # Handle the case that rank is not certified safe.
         validation = rank_service.validator.validate(candidate=rank)
         if validation.is_failure:
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 # Return exception chain on failure.
                 PersonaServiceException(
                     message=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERROR_CODE}",
@@ -154,14 +154,14 @@ class PersonaService(HashService[Persona]):
                 )
             )
         # --- Because of the validation all the ranks will be valid. Can forward the quota to the caller. ---#
-        if rank == King: return CalculationResult.success(payload=Persona.KING.quota)
-        if rank == Pawn: return CalculationResult.success(payload=Persona.PAWN.quota)
-        if rank == Knight: return CalculationResult.success(payload=Persona.KNIGHT.quota)
-        if rank == Bishop: return CalculationResult.success(payload=Persona.BISHOP.quota)
-        if rank == Rook: return CalculationResult.success(payload=Persona.ROOK.quota)
+        if rank == King: return ComputationResult.success(payload=Persona.KING.quota)
+        if rank == Pawn: return ComputationResult.success(payload=Persona.PAWN.quota)
+        if rank == Knight: return ComputationResult.success(payload=Persona.KNIGHT.quota)
+        if rank == Bishop: return ComputationResult.success(payload=Persona.BISHOP.quota)
+        if rank == Rook: return ComputationResult.success(payload=Persona.ROOK.quota)
         
         # --- Only possible case left is Queen ---#
-        return CalculationResult.success(payload=Persona.QUEEN.quota)
+        return ComputationResult.success(payload=Persona.QUEEN.quota)
     #
     #
     # @LoggingLevelRouter.monitor

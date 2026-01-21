@@ -1,18 +1,17 @@
-# src/chess/rank/model/rook/rook.py
+# src/chess/rank/model/concrete/rook.py
 
 """
-Module: chess.rank.model.rook.rook
+Module: chess.rank.model.concrete.rook
 Author: Banji Lawal
-Created: 2025-07-28
+Created: 2025-09-08
 version: 1.0.0
 """
 
 
-from chess.piece import Piece
 from chess.geometry import Quadrant
-from chess.rank import Rank, RankSpec
+from chess.rank import Rank
 from chess.coord import Coord, CoordService
-from chess.system import COLUMN_SIZE, LoggingLevelRouter
+from chess.system import oggingLevelRouter
 
 
 

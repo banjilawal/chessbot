@@ -14,4 +14,4 @@ None
 
 # Modules
 from .state import CalculationState
-from .result import CalculationResult
+from .result import ComputationResult

@@ -15,11 +15,11 @@ from chess.schema import SchemaService
 from chess.rank import Rank, RankService
 from chess.square import Square, SquareContext
 from chess.system import (
-    CalculationResult, EntityService, IdentityService, InsertionResult, LoggingLevelRouter,
+    ComputationResult, EntityService, IdentityService, InsertionResult, LoggingLevelRouter,
     Result, SearchResult, id_emitter
 )
 from chess.team import (
-    AddingTeamRosterMemberFailedException, EnemyCannotJoinTeamRosterException, HostageRelationAnalyzer, RosterRelationAnalyzer,
+    FillingTeamRosterFailedException, EnemyCannotJoinTeamRosterException, HostageRelationAnalyzer, RosterRelationAnalyzer,
     Team, TeamBuilder,
     TeamRankQuotaFullException, TeamSearchFailedException, TeamServiceException, TeamValidator, TokenLocation,
     ZeroTeamContextFlagsException
@@ -326,8 +326,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingTeamRosterMemberFailedException(
-                    message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
+                    ex=FillingTeamRosterFailedException(
+                    message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
                     ex=relation_analysis.exception
                     )
                 )
@@ -338,8 +338,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingTeamRosterMemberFailedException(
-                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
+                    ex=FillingTeamRosterFailedException(
+                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
                         ex=EnemyCannotJoinTeamRosterException(
                             f"{method}: {EnemyCannotJoinTeamRosterException.DEFAULT_MESSAGE}"
                         )
@@ -352,8 +352,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingTeamRosterMemberFailedException(
-                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
+                    ex=FillingTeamRosterFailedException(
+                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
                         ex=AddingDuplicateTokenException(
                             f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}"
                         )
@@ -366,8 +366,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingTeamRosterMemberFailedException(
-                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
+                    ex=FillingTeamRosterFailedException(
+                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
                         ex=TokenServiceCapacityException(
                             f"{method}: {TokenServiceCapacityException.DEFAULT_MESSAGE}"
                         )
@@ -383,8 +383,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingTeamRosterMemberFailedException(
-                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
+                    ex=FillingTeamRosterFailedException(
+                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
                         ex=has_openings_test.exception
                     )
                 )
@@ -397,8 +397,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingTeamRosterMemberFailedException(
-                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
+                    ex=FillingTeamRosterFailedException(
+                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
                         ex=TeamRankQuotaFullException(f"{method}: {TeamRankQuotaFullException.DEFAULT_MESSAGE}")
                     )
                 )
@@ -412,8 +412,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=AddingTeamRosterMemberFailedException(
-                        message=f"{method}: {AddingTeamRosterMemberFailedException.ERROR_CODE}",
+                    ex=FillingTeamRosterFailedException(
+                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
                         ex=insertion_result.exception
                     )
                 )
@@ -426,13 +426,13 @@ class TeamService(EntityService[Team]):
     #         team: Team,
     #         rank: Rank,
     #         rank_service: RankService = RankService()
-    # ) -> CalculationResult[int]:
+    # ) -> ComputationResult[int]:
     #     """
     #     # ACTION:
-    #         1.  If either the team or rank are not certified send the exception in the CalculationResult.
+    #         1.  If either the team or rank are not certified send the exception in the ComputationResult.
     #             Else, search the roster by the rank.
-    #         2.  If the search did not complete send the exception in the CalculationResult.
-    #         3.  Calculate rank.team_quota - len(matches) and send in the CalculationResult.
+    #         2.  If the search did not complete send the exception in the ComputationResult.
+    #         3.  Calculate rank.team_quota - len(matches) and send in the ComputationResult.
     #     # PARAMETERS:
     #         *   team (Team)
     #         *   rank (Rank)
@@ -450,7 +450,7 @@ class TeamService(EntityService[Team]):
     #     team_validation = self.validator.validate(team)
     #     if team_validation.is_failure:
     #         # Return the exception chain on failure.
-    #         return CalculationResult.failure(
+    #         return ComputationResult.failure(
     #             TeamServiceException(
     #                 message=f"{method}: {TeamServiceException.ERROR_CODE}",
     #                 ex=team_validation.exception
@@ -460,7 +460,7 @@ class TeamService(EntityService[Team]):
     #     rank_validation = rank_service.validator.validate(rank)
     #     if rank_validation.is_failure:
     #         # Return the exception chain on failure.
-    #         return CalculationResult.failure(
+    #         return ComputationResult.failure(
     #             TeamServiceException(
     #                 message=f"{method}: {TeamServiceException.ERROR_CODE}",
     #                 ex=rank_validation.exception
@@ -472,14 +472,14 @@ class TeamService(EntityService[Team]):
     #     # Handle the case that the search did not succeed
     #     if search_result.is_failure:
     #         # Return the exception chain on failure.
-    #         return CalculationResult.failure(
+    #         return ComputationResult.failure(
     #             TeamServiceException(
     #                 message=f"{method}: {TeamServiceException.ERROR_CODE}",
     #                 ex=search_result.exception
     #             )
     #         )
-    #     # Calculate how many slots are available for the rank and send in the CalculationResult.
+    #     # Calculate how many slots are available for the rank and send in the ComputationResult.
     #     open_slots = rank.team_quota - len(search_result.payload)
-    #     return CalculationResult(open_slots)
+    #     return ComputationResult(open_slots)
 
         

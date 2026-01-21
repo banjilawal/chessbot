@@ -1,7 +1,7 @@
-# src/chess/rank/model/rank.py
+# src/chess/rank/model/abstract.py
 
 """
-Module: chess.rank.model.rank
+Module: chess.rank.model.abstract
 Author: Banji Lawal
 Created: 2025-07-25
 version: 1.0.0
@@ -9,13 +9,10 @@ version: 1.0.0
 
 from abc import ABC, abstractmethod
 
-
-from chess.piece import Piece
 from chess.geometry import Quadrant
 from chess.vector import VectorService
 from chess.coord import Coord, CoordService
 from chess.system import COLUMN_SIZE, LoggingLevelRouter, ROW_SIZE
-
 
 
 class Rank(ABC):
@@ -31,11 +28,11 @@ class Rank(ABC):
     Rank
 
     # ATTRIBUTES:
-        *   id (int):       Identifier for the subclass.
-        *   name (str):     Common designation of the rank.
-        *   name (str):   Chess designation
-        *   ransom (int):   Value of ranks that can be captured.
-        *   team_quota  (int):   Number of instances on a team.
+        *   id (int)
+        *   name (str)
+        *   ransom (int)
+        *   team_quota (int)
+        *   designation(str)
         *   quadrants (List[Quadrant]):
     """
     _id: int
@@ -69,12 +66,12 @@ class Rank(ABC):
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def compute_span(self, piece: Piece) -> [Coord]:
+    def compute_span(self, token: Token) -> [Coord]:
         """"""
         pass
     
     @LoggingLevelRouter.monitor
-    def compute_diagonal_span(self, piece: Piece) -> [[Coord]]:
+    def compute_diagonal_span(self, token: Token) -> [[Coord]]:
         """
         # BACKGROUND:
         1.  Consider a diagonal relation is: p_1(0,0), p_2(1,1), p_3(2,2), ...., p_n(n,n)
@@ -104,7 +101,7 @@ class Rank(ABC):
         4.  Return the list.
 
         # PARAMETERS:
-            *   piece (Token): Single-source-of-truth for the basis of the span.
+            *   token (Token): Single-source-of-truth for the basis of the span.
         
         # RETURNS:
         List[Coord]
@@ -204,7 +201,7 @@ class Rank(ABC):
         5.  End the loop when x >= end_x and y >= end_y.
 
         PARAMETERS:
-            *   start_x (int):          Starting x value. In practice, it will be piece.current_position.column.
+            *   start_x (int):          Starting x value. In practice, it will be token.current_position.column.
             *   end_x (int):            Ending x value. This will be either 0 or COLUMN_SIZE - 1.
             *   x_step (int):           Step size for x. In practice, the magnitude will be 1,
                                         the sign may be negative.
@@ -233,7 +230,7 @@ class Rank(ABC):
             
     
     @LoggingLevelRouter.monitor
-    def compute_perpendicular_span(self, piece: Piece) -> [Coord]:
+    def compute_perpendicular_span(self, token: Token) -> [Coord]:
         """
         # BACKGROUND:
         1.  Perpendicular relations will define a Cartesian plane with 4 quadrants.
@@ -248,7 +245,7 @@ class Rank(ABC):
         4.  Return the list.
 
         # PARAMETERS:
-            *   piece (Token): Single-source-of-truth for the basis of the span.
+            *   token (Token): Single-source-of-truth for the basis of the span.
 
         # RETURNS:
         List[Coord]
@@ -357,11 +354,11 @@ class Rank(ABC):
         5.  End the loop when x >= end_x and y >= end_y.
 
         PARAMETERS:
-            *   start_x (int):          Starting x value. In practice, it will be piece.current_position.column.
+            *   start_x (int):          Starting x value. In practice, it will be token.current_position.column.
             *   end_x (int):            Ending x value. This will be either 0 or COLUMN_SIZE - 1.
             *   x_step (int):           Step size for x. In practice, the magnitude will be 1,
                                         the sign may be negative.
-            *   start_y (int):          Starting y value. In practice, it will be piece.current_position.row.
+            *   start_y (int):          Starting y value. In practice, it will be token.current_position.row.
             *   end_y (int):            Ending y value. This will be either 0 or ROW_SIZE - 1 depending on the
                                         direction of travel.
             *   y_step (int):           Step size for y. In practice, the magnitude will be 1,

@@ -1,18 +1,20 @@
-# src/chess/rank/model/bishop/bishop.py
+# src/chess/rank/model/concrete/bishop.py
 
 """
-Module: chess.rank.model.bishop.bishop
+Module: chess.rank.model.concrete.bishop
 Author: Banji Lawal
-Created: 2025-07-24
+Created: 2025-09-08
 version: 1.0.0
 """
 
+from _ast import List
 
-from chess.piece import Piece
+from chess.rank import Rank
+from chess.persona import Persona
 from chess.geometry import Quadrant
-from chess.rank import Rank, RankSpec
+
 from chess.coord import Coord, CoordService
-from chess.system import COLUMN_SIZE, LoggingLevelRouter, ROW_SIZE
+from chess.system import LoggingLevelRouter
 
 
 class Bishop(Rank):
@@ -30,35 +32,35 @@ class Bishop(Rank):
     See super class
     """
     
-    def __init__(
+    def bishop(
             self,
-            id: int = RankSpec.BISHOP.id,
-            name: str = RankSpec.BISHOP.name,
-            ransom: int = RankSpec.BISHOP.ransom,
-            team_quota: int = RankSpec.BISHOP.quota,
-            designation: str = RankSpec.BISHOP.designation,
-            quadrants: list[Quadrant] = RankSpec.BISHOP.quadrants,
+            id: int,
+            name: str = Persona.BISHOP.name,
+            ransom: int = Persona.BISHOP.ransom,
+            team_quota: int = Persona.BISHOP.quota,
+            designation: str = Persona.BISHOP.designation,
+            quadrants: List[Quadrant] = List[Persona.BISHOP.quadrants],
             coord_service: CoordService = CoordService(),
     ):
-        super().__init(
+        super().__init__(
             id=id,
             name=name,
             ransom=ransom,
-            quota=team_quota,
-            letter=designation,
+            team_quota=team_quota,
+            designation=designation,
             quadrants=quadrants,
             coord_service=coord_service,
         )
     
     @LoggingLevelRouter.monitor
-    def compute_span(self, piece: Piece) -> [[Coord]]:
+    def compute_span(self, token: Token) -> [[Coord]]:
         """
         # Action
         Call compute_diagonal_span points in the Bishop's range.
 
 
         # PARAMETERS:
-            *   piece (Token): Single-source-of-truth for the basis of the span.
+            *   token (Token): Single-source-of-truth for the basis of the span.
 
         # RETURNS:
         List[Coord]
@@ -67,4 +69,4 @@ class Bishop(Rank):
         None
         """
         method = "Bishop.compute_span"
-        return self.compute_diagonal_span(piece)
+        return self.compute_diagonal_span(token)

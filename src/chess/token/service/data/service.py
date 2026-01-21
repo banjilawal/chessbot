@@ -12,7 +12,7 @@ from typing import List, cast
 from chess.formation import FormationService
 from chess.rank import Rank, RankService
 from chess.system import (
-    CalculationResult, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+    ComputationResult, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 )
 from chess.token import (
     AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException, Token, TokenContext, TokenService,
@@ -109,15 +109,15 @@ class TokenDataService(DataService[Token]):
         return self._formation_service
     
     @LoggingLevelRouter.monitor
-    def team_max_tokens_per_rank(self, rank: Rank) -> CalculationResult[int]:
+    def team_max_tokens_per_rank(self, rank: Rank) -> ComputationResult[int]:
         """
         # ACTION:
-            1.  If formation_service fails to return a quota value, send the exception chain in the CalculationResult.
+            1.  If formation_service fails to return a quota value, send the exception chain in the ComputationResult.
                 Else, directly forward quota_result to the caller.
         # PARAMETERS:
             *   rank (Rank)
         # RETURNS:
-            *   CalculationResult[int] containing either:
+            *   ComputationResult[int] containing either:
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
@@ -131,7 +131,7 @@ class TokenDataService(DataService[Token]):
         quota_result = self._formation_service.persona_service.quota_per_rank(rank=rank)
         if quota_result.is_failure:
             # Return the exception chain on failure.
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
                     ex=quota_result.exception
@@ -141,17 +141,17 @@ class TokenDataService(DataService[Token]):
         return quota_result
     
     @LoggingLevelRouter.monitor
-    def number_of_rank_members(self, rank: Rank) -> CalculationResult[int]:
+    def number_of_rank_members(self, rank: Rank) -> ComputationResult[int]:
         """
         # ACTION:
             1.  Build the search-by-rank TokenContext. If the build fails send the exception in the InsertionResult.
                 Else run the search.
             2.  If the search fails send the exception in the InsertionResult. Else the calculation was successful.
-                Return the number of hits in the CalculationResult's payload.
+                Return the number of hits in the ComputationResult's payload.
         # PARAMETERS:
             *   rank (Rank)
         # RETURNS:
-            *   CalculationResult[int] containing either:
+            *   ComputationResult[int] containing either:
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
@@ -166,7 +166,7 @@ class TokenDataService(DataService[Token]):
         # Handle the case that the context build is not completed.
         if build_result.is_failure:
             # Return the exception chain on failure.
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
                     ex=RankCountCalculationFailedException(
@@ -181,7 +181,7 @@ class TokenDataService(DataService[Token]):
         # Handle the case that the search was not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
                     ex=RankCountCalculationFailedException(
@@ -192,9 +192,9 @@ class TokenDataService(DataService[Token]):
             )
         # Handle the case that no tokens hold the rank
         if search_result.is_empty:
-            return CalculationResult.success(payload=0)
+            return ComputationResult.success(payload=0)
         # Handle the case that some hits were found
-        return CalculationResult.success(payload=len(cast(List[Token], search_result.payload)))
+        return ComputationResult.success(payload=len(cast(List[Token], search_result.payload)))
     
     @LoggingLevelRouter.monitor
     def insert_token(self, token: Token) -> InsertionResult[Token]:
@@ -339,11 +339,11 @@ class TokenDataService(DataService[Token]):
             return DeletionResult.empty()
         
     @LoggingLevelRouter.monitor
-    def has_slot_for_rank(self, rank: Rank) -> CalculationResult[bool]:
+    def has_slot_for_rank(self, rank: Rank) -> ComputationResult[bool]:
         """
         # ACTION:
-            1.  If self.count_rank_openings fails send the exception chain in the CalculationResult. Else,
-                send open_slot_count > 0 in the CalculationResult's payload.
+            1.  If self.count_rank_openings fails send the exception chain in the ComputationResult. Else,
+                send open_slot_count > 0 in the ComputationResult's payload.
         # PARAMETERS:
             *   rank (Rank)
         # RETURN:
@@ -360,7 +360,7 @@ class TokenDataService(DataService[Token]):
         openings_count = self.count_rank_openings(rank)
         if openings_count.is_failure:
             # Return the exception chain on failure.
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
                     ex=RankCountCalculationFailedException(
@@ -372,15 +372,15 @@ class TokenDataService(DataService[Token]):
     
         # --- Find if there are open slots for the rank. ---#
         has_opening = cast(int, openings_count.payload) > 0
-        return CalculationResult.success(payload=has_opening)
+        return ComputationResult.success(payload=has_opening)
     
     @LoggingLevelRouter.monitor
-    def count_rank_openings(self, rank: Rank, rank_service: RankService = RankService()) -> CalculationResult[int]:
+    def count_rank_openings(self, rank: Rank, rank_service: RankService = RankService()) -> ComputationResult[int]:
         """
         # ACTION:
-            1.  If the rank is not validated, send an exception chain in the CalculationResult.
-            2.  If calculating the number of rank members fails send an exception chain in the CalculationResult.
-                Else, send rank.team_quota - rank_members in the CalculationResult's payload.
+            1.  If the rank is not validated, send an exception chain in the ComputationResult.
+            2.  If calculating the number of rank members fails send an exception chain in the ComputationResult.
+                Else, send rank.team_quota - rank_members in the ComputationResult's payload.
         # PARAMETERS:
             *   rank (Rank)
             *   rank_service (RankService
@@ -398,7 +398,7 @@ class TokenDataService(DataService[Token]):
         rank_validation = rank_service.validator.validate(rank)
         if rank_validation.is_failure:
             # Return the exception chain on failure.
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
                     ex=RankCountCalculationFailedException(
@@ -413,7 +413,7 @@ class TokenDataService(DataService[Token]):
         # Handle the case that the rank_count_result_computation was not completed.
         if rank_count_result.is_failure:
             # Return the exception chain on failure.
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
                     ex=RankCountCalculationFailedException(
@@ -422,6 +422,6 @@ class TokenDataService(DataService[Token]):
                     )
                 )
             )
-        # --- On success send the difference between the quota and rank_member_count in the CalculationResult. ---#
+        # --- On success send the difference between the quota and rank_member_count in the ComputationResult. ---#
         rank_member_count = cast(int, rank_count_result.payload)
-        return CalculationResult.success(payload=rank.team_quota - rank_member_count)
+        return ComputationResult.success(payload=rank.team_quota - rank_member_count)

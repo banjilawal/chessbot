@@ -17,4 +17,4 @@ from .full import TeamRosterIsFullException
 from .enemy import EnemyCannotJoinTeamRosterException
 from .duplicate import TokenAlreadyOnTeamRosterException
 from .prisoner import AddingPrisonerToTeamRosterException
-from .wrapper import AddingTeamRosterMemberFailedException
+from .wrapper import FillingTeamRosterFailedException

@@ -70,16 +70,22 @@ class RankFactory(Builder[Rank]):
             )
         # --- Route to the appropriate concrete builder. ---#
         
+        # Entry point into building a King instance.
         if persona == Persona.KING:
             return cls._build_king_rank(id=id)
+        # Entry point into building a Pawn instance.
         if persona == Persona.PAWN:
             return cls._build_pawn_rank(id=id)
+        # Entry point into building a Knight instance.
         if persona == Persona.KNIGHT:
             return cls._build_knight_rank(id=id)
+        # Entry point into building a Bishop instance.
         if persona == Persona.BISHOP:
             return cls._build_bishop_rank(id=id)
+        # Entry point into building a Rook instance.
         if persona == Persona.ROOK:
             return cls._build_rook_rank(id=id)
+        # Entry point into building a Queen instance.
         if persona == Persona.QUEEN:
             return cls._build_queen_rank(id=id)
             

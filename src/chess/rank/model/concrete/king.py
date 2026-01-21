@@ -1,17 +1,16 @@
-# src/chess/rank/model/king/king.py
+# src/chess/rank/model/concrete/king.py
 
 """
-Module: chess.rank.model.king.king
+Module: chess.rank.model.concrete.king
 Author: Banji Lawal
-Created: 2025-07-25
+Created: 2025-09-08
 version: 1.0.0
 """
-
 
 from chess.piece import Piece
 from chess.coord import Coord, CoordService
 from chess.geometry import Quadrant
-from chess.rank import Rank, Bishop, RankSpec, Rook
+from chess.rank import Rank, King, RankSpec, Rook
 from chess.system import LoggingLevelRouter
 from chess.vector import Vector, VectorService
 

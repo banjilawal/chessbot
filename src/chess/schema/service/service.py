@@ -13,7 +13,7 @@ from chess.formation import Formation, FormationService, FormationKey
 from chess.persona import Persona
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, Rook
 from chess.schema import Schema, SchemaServiceException, SchemaKey, SchemaKeyService, SchemaValidator
-from chess.system import CalculationResult, GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
+from chess.system import ComputationResult, GameColor, HashService, LoggingLevelRouter, SearchResult, id_emitter
 
 
 class SchemaService(HashService[Schema]):
@@ -90,17 +90,17 @@ class SchemaService(HashService[Schema]):
         return formation_service.lookup_formation(supker_key=FormationKey(color=schema.color))
     
     @LoggingLevelRouter.monitor
-    def pawn_row(self, schema: Schema) -> CalculationResult[int]:
+    def pawn_row(self, schema: Schema) -> ComputationResult[int]:
         """
         # ACTION:
-            1.  If the schema fails verification send SchemaServiceException chain in the CalculationResult.
-                Else, send the computed pawn_row in the CalculationResult.
+            1.  If the schema fails verification send SchemaServiceException chain in the ComputationResult.
+                Else, send the computed pawn_row in the ComputationResult.
         # PARAMETERS:
             *   schema (Schema)
         # RETURNS:
-            *   CalculationResult[int]
-                    On failure --> Exception in the CalculationResult.
-                    On success --> int in the CalculationResult payload.
+            *   ComputationResult[int]
+                    On failure --> Exception in the ComputationResult.
+                    On success --> int in the ComputationResult payload.
         # RAISES:
         None
         """
@@ -109,18 +109,18 @@ class SchemaService(HashService[Schema]):
         
         # Handle the validation failure branch.
         if validation.is_failure:
-            return CalculationResult.failure(
+            return ComputationResult.failure(
                 SchemaServiceException(ex=validation.exception, message=f"{method}: {SchemaServiceException.ERROR_CODE}")
             )
-        # On validation success compute the pawn_row and return in the CalculationResult.
+        # On validation success compute the pawn_row and return in the ComputationResult.
         pawn_row = schema.rank_row + schema.advancing_step.value
-        return CalculationResult.success(pawn_row)
+        return ComputationResult.success(pawn_row)
     
     @LoggingLevelRouter.monitor
     def enemy_schema(self, schema: Schema) -> SearchResult[List[Schema]]:
         """
         # ACTION:
-            1.  If the schema fails verification send SchemaServiceException chain in the CalculationResult.
+            1.  If the schema fails verification send SchemaServiceException chain in the ComputationResult.
                 Else, following the convention put opposite Schema in an array then send in the SearchResult.
         # PARAMETERS:
             *   schema (Schema)

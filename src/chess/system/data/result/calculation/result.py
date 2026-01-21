@@ -10,18 +10,18 @@ Version: 1.0.0
 from typing import Generic, Optional, TypeVar, cast
 
 from chess.system import (
-    DataResult, CalculationResult, CalculationState, EmptyDataResultException, NotImplementedException
+    DataResult, ComputationResult, CalculationState, EmptyDataResultException, NotImplementedException
 )
 
 T = TypeVar("T")
 
-class CalculationResult(DataResult[T], Generic[T]):
+class ComputationResult(DataResult[T], Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
     # RESPONSIBILITIES:
     1.  Send the outcome of a calculation to the caller.
-    2.  Enforcing mutual exclusion. A CalculationResult can either carry payload or exception. Not both.
+    2.  Enforcing mutual exclusion. A ComputationResult can either carry payload or exception. Not both.
 
     # PARENT:
         *   DataResult
@@ -77,20 +77,20 @@ class CalculationResult(DataResult[T], Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: int|bool) -> CalculationResult:
+    def success(cls, payload: T) -> ComputationResult[T]:
         return cls(state=CalculationState.SUCCESS, payload=payload)
     
     @classmethod
-    def failure(cls, exception: Exception) -> CalculationResult:
+    def failure(cls, exception: Exception) -> ComputationResult[T]:
         return cls(state=CalculationState.FAILURE, exception=exception)
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> CalculationResult:
+    def timed_out(cls, exception: Exception) -> ComputationResult[T]:
         return cls(state=CalculationState.TIMED_OUT, exception=exception)
     
     @classmethod
-    def empty(cls) -> CalculationResult:
-        method = "CalculationResult.empty"
+    def empty(cls) -> ComputationResult[T]:
+        method = "ComputationResult.empty"
         return cls(
             exception=NotImplementedException(
                 message=f"{method}: {NotImplementedException.DEFAULT_MESSAGE}",

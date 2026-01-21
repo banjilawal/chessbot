@@ -10,18 +10,18 @@ version: 1.0.0
 from chess.team import TeamRosterException
 
 __all__ = [
-    # ======================# ADDING_TOKEN_TO_ROSTER_FAILURE #======================#
-    "AddingTeamRosterMemberFailedException",
+    # ======================# FILLING_TEAM_ROSTER_FAILURE #======================#
+    "FillingTeamRosterFailedException",
 ]
 
 
-# ======================# ADDING_TOKEN_TO_ROSTER_FAILURE #======================#
-class AddingTeamRosterMemberFailedException(TeamRosterException):
+# ======================# FILLING_TEAM_ROSTER_FAILURE #======================#
+class FillingTeamRosterFailedException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that add a token to the roster failed.
+    1.  Carry the DebugException that explains why initializing the team's roster failed.
 
     # PARENT:
         *   UniqueTeamDataServiceException
@@ -35,5 +35,5 @@ class AddingTeamRosterMemberFailedException(TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_TOKEN_TO_ROSTER_FAILURE_ERROR"
-    DEFAULT_MESSAGE = "Adding roster member failed."
+    ERROR_CODE = "FILLING_TEAM_ROSTER_FAILURE_ERROR"
+    DEFAULT_MESSAGE = "Filling the team's roster failed."
