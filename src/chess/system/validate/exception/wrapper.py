@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import OperationFailedException
 
 __all__ = [
-    # ======================# VALIDATION_FAILED EXCEPTION #======================#
+    # ======================# VALIDATION_FAILURE EXCEPTION #======================#
     "ValidationFailedException",
 ]
 
 
-#======================# VALIDATION_FAILED EXCEPTION #======================#
+#======================# VALIDATION_FAILURE EXCEPTION #======================#
 class ValidationFailedException(OperationFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining

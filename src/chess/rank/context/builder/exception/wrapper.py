@@ -1,10 +1,10 @@
 __all__ = [
-    # ======================# RANK_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+    # ======================# RANK_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
     "RankContextBuildFailedException",
 ]
 
 
-# ======================# RANK_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+# ======================# RANK_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
 class RankContextBuildFailedException(RankContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

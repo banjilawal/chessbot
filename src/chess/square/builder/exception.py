@@ -11,12 +11,12 @@ from  chess.square import SquareException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# SQUARE_BUILD_FAILED EXCEPTION #======================#
+    # ======================# SQUARE_BUILD_FAILURE EXCEPTION #======================#
     "SquareBuildFailedException",
 ]
 
 
-# ======================# SQUARE_BUILD_FAILED EXCEPTION #======================#
+# ======================# SQUARE_BUILD_FAILURE EXCEPTION #======================#
 class SquareBuildFailedException(SquareException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

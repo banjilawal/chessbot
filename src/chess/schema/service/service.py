@@ -46,7 +46,7 @@ class SchemaService(HashService[Schema]):
         return cast(SchemaKeyService, self.hash_key_service)
     
     @property
-    def schema_validator(self) -> SchemaValidator:
+    def validator(self) -> SchemaValidator:
         """"""
         return cast(SchemaValidator, self.hash_validator)
     
@@ -78,7 +78,7 @@ class SchemaService(HashService[Schema]):
             formation_service: FormationService = FormationService()
     ) -> SearchResult[List[Formation]]:
         method = "SchemaService.formations_for_schema"
-        schema_validation = self.schema_validator.validate(candidate=schema)
+        schema_validation = self.validator.validate(candidate=schema)
         if schema_validation.is_failure:
             # On failure return the exception chain.
             return SearchResult.failure(
@@ -105,7 +105,7 @@ class SchemaService(HashService[Schema]):
         None
         """
         method = "SchemaService.pawn_row"
-        validation = self.schema_validator.validate(schema)
+        validation = self.validator.validate(schema)
         
         # Handle the validation failure branch.
         if validation.is_failure:
@@ -130,7 +130,7 @@ class SchemaService(HashService[Schema]):
             None
         """
         method = "SchemaService.enemy_schema"
-        validation = self.schema_validator.validate(schema)
+        validation = self.validator.validate(schema)
         
         # Handle the validation failure branch.
         if validation.is_failure:

@@ -20,7 +20,7 @@ from chess.team import (
 
 class TeamFinder(DataFinder[Team]):
     """
-    # ROLE: Finder
+    # ROLE: Searcher
 
     # RESPONSIBILITIES:
     1.  Send items in a TeamList whose attribute value match the context.key value to the caller.
@@ -30,7 +30,7 @@ class TeamFinder(DataFinder[Team]):
     1.  TeamFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   Finder
+        *   Searcher
 
     # PROVIDES:
     None

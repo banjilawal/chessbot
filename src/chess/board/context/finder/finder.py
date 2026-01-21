@@ -20,7 +20,7 @@ from chess.board import (
 
 class BoardFinder(DataFinder[Board]):
     """
-    # ROLE: Finder
+    # ROLE: Searcher
 
     # RESPONSIBILITIES:
     1.  Send items in a BoardList whose attribute value match the context.key value to the caller.
@@ -30,7 +30,7 @@ class BoardFinder(DataFinder[Board]):
     1.  BoardFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
-        *   Finder
+        *   Searcher
 
     # PROVIDES:
     None

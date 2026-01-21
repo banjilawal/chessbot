@@ -12,7 +12,7 @@ This module provides:
   2. A satisfaction of the `ChessBot` reliability requirement.
 
 # SECTION 2 - Scope:
-The module's effects and actions cover exception raised by implementors of the `Finder` interface.
+The module's effects and actions cover exception raised by implementors of the `Searcher` interface.
 
 # SECTION 3: Limitations
   1. Does not provide granular, precise information pertinent to debugging. The module's

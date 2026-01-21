@@ -27,7 +27,7 @@ class RankQuotaPerTeamLookupFailedException(TokenException, CalculationFailedExc
 
     # PARENT:
         *   TokenException
-        *   CalculationFailedException
+        *   ComputationFailedException
 
     # PROVIDES:
     None

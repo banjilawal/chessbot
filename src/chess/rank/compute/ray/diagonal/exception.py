@@ -1,0 +1,1 @@
+class DiagonalRayComputationFailedException(Computation)

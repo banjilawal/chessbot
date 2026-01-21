@@ -11,12 +11,12 @@ from chess.rank import RankException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# RANK_BUILD_FAILED EXCEPTION #======================#
+    # ======================# RANK_BUILD_FAILURE EXCEPTION #======================#
     "RankBuildFailedException",
 ]
 
 
-# ======================# RANK_BUILD_FAILED EXCEPTION #======================#
+# ======================# RANK_BUILD_FAILURE EXCEPTION #======================#
 class RankBuildFailedException(RankException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

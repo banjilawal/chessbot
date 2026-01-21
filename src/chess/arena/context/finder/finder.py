@@ -10,7 +10,6 @@ from typing import List
 
 from chess.system import DataFinder, SearchResult
 from chess.arena import Arena, ArenaContext
-from chess.system.data.finder import T
 
 
 class ArenaFinder(DataFinder[Arena]):

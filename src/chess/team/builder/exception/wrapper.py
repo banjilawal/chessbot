@@ -12,12 +12,12 @@ from chess.system import BuildFailedException
 
 
 __all__ = [
-    # ======================# TEAM_BUILD_FAILED EXCEPTION #======================#
+    # ======================# TEAM_BUILD_FAILURE EXCEPTION #======================#
     "TeamBuildFailedException",
 ]
 
 
-# ======================# TEAM_BUILD_FAILED EXCEPTION #======================#
+# ======================# TEAM_BUILD_FAILURE EXCEPTION #======================#
 class TeamBuildFailedException(TeamException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

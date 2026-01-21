@@ -21,7 +21,7 @@ from chess.square import (
 
 class SquareDataService(DataService[Square]):
     """
-    # ROLE: Data Stack, Finder EntityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Searcher EntityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

@@ -11,12 +11,12 @@ from chess.system import BuildFailedException
 from chess.arena import ArenaContextException
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+    # ======================# ARENA_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
     "ArenaContextBuildFailedException",
 ]
 
 
-# ======================# ARENA_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+# ======================# ARENA_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
 class ArenaContextBuildFailedException(ArenaContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

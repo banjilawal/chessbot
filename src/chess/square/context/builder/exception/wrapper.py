@@ -12,12 +12,12 @@ from chess.square import SquareContextException
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+    # ======================# SQUARE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
     "SquareContextBuildFailedException",
 ]
 
 
-# ======================# SQUARE_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+# ======================# SQUARE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
 class SquareContextBuildFailedException(SquareContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

@@ -27,7 +27,7 @@ class RankCountCalculationFailedException(TokenException, CalculationFailedExcep
 
     # PARENT:
         *   TokenException
-        *   CalculationFailedException
+        *   ComputationFailedException
 
     # PROVIDES:
     None

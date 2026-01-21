@@ -11,25 +11,24 @@ version: 1.0.0
 from typing import List
 
 from chess.player.service.data.exception.null import AgentNullDatasetException
-from chess.system import LoggingLevelRouter, Finder, SearchResult
+from chess.system import LoggingLevelRouter, SearchResult
 from chess.agent import (
-    PlayerAgent, AgentContext, AgentContextValidator, AgentFinderException, AgentVariety, HumanAgent,
-    MachineAgent
+    PlayerAgent, AgentContext, AgentContextValidator, AgentVariety
 )
-from chess.system.find.finder.data import DataFinder
+from chess.system.data.operation import DataFinder
 from chess.team import Team, TeamContext
 
 
 class AgentFinder(DataFinder[PlayerAgent]):
     """
-    # ROLE: Finder
+    # ROLE: Searcher
 
     # RESPONSIBILITIES:
     1.  Search Player collections for items which match the attribute target specified in the AgentContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     # PARENT:
-        *   Finder
+        *   Searcher
 
     # PROVIDES:
     None
@@ -38,7 +37,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See Finder class for inherited attributes.
+        *   See Searcher class for inherited attributes.
     """
     @classmethod
     @LoggingLevelRouter.monitor

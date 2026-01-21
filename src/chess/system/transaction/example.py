@@ -56,7 +56,7 @@ This module provides:
 The module covers `Transaction` instances that emit a `TransactionResult` and consumers of the notification.
 
 # SECTION 3 - Limitations:
-  1. The module is limited to presenting the answer from a `Finder` entity_service provider to the client delivering a query.
+  1. The module is limited to presenting the answer from a `Searcher` entity_service provider to the client delivering a query.
   2. The module does not guarantee the accuracy or precision of entity_service in the notification.
 
 # SECTION 4 - Design Considerations and Themes:

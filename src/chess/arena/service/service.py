@@ -152,7 +152,7 @@ class ArenaService(EntityService[Arena]):
                     message=f"{method}: {ArenaServiceException.ERROR_CODE}", ex=arena_validation.exception
                 )
             )
-        schema_validation = schema_service.schema_validator.validate(schema)
+        schema_validation = schema_service.validator.validate(schema)
         if schema_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(

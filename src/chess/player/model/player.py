@@ -120,7 +120,7 @@ class Player(ABC):
     # )
     #
     # # Which internally uses your transactional system:
-    # # 1. Finder returns Result[Token]
+    # # 1. Searcher returns Result[Token]
     # # 2. Validates inputs
     # # 3. Creates MoveEvent
     # # 4. Executes via TravelTransaction

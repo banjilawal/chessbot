@@ -12,12 +12,12 @@ from chess.system import BuildFailedException
 from chess.token import TokenContextException
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+    # ======================# TOKEN_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
     "TokenContextBuildFailedException",
 ]
 
 
-# ======================# TOKEN_CONTEXT_BUILD_FAILED EXCEPTION #======================#
+# ======================# TOKEN_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
 class TokenContextBuildFailedException(TokenContextException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

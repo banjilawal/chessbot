@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import OperationFailedException
 
 __all__ = [
-    # ======================# BUILD_FAILED EXCEPTION #======================#
+    # ======================# BUILD_FAILURE EXCEPTION #======================#
     "BuildFailedException",
 ]
 
 
-# ======================# BUILD_FAILED EXCEPTION #======================#
+# ======================# BUILD_FAILURE EXCEPTION #======================#
 class BuildFailedException(OperationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

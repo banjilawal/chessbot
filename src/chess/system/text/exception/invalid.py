@@ -10,13 +10,13 @@ version: 1.0.0
 from chess.system import StringException, ValidationFailedException
 
 __all__ = [
-    # ======================# STRING_VALIDATION_FAILED EXCEPTION #======================#
+    # ======================# STRING_VALIDATION_FAILURE EXCEPTION #======================#
     "InvalidStringException",
 
 ]
 
 
-# ======================# STRING_VALIDATION_FAILED EXCEPTION #======================#
+# ======================# STRING_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidStringException(StringException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

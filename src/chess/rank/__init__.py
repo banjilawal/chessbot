@@ -14,8 +14,8 @@ from .factory import *
 from .model import *
 from .search import *
 from .service import *
-from .spec import *
 from .validator import *
+from .compute import *
 
 # Modules
 from .exception import *

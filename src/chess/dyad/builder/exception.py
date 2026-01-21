@@ -12,12 +12,12 @@ from chess.dyad import SchemaAgentPairException
 
 
 __all__ = [
-    # ======================# SCHEMA_AGENT_PAIR_BUILD_FAILED EXCEPTION #======================#
+    # ======================# SCHEMA_AGENT_PAIR_BUILD_FAILURE EXCEPTION #======================#
     "SchemaAgentPairBuildFailedException",
 ]
 
 
-# ======================# SCHEMA_AGENT_PAIR_BUILD_FAILED EXCEPTION #======================#
+# ======================# SCHEMA_AGENT_PAIR_BUILD_FAILURE EXCEPTION #======================#
 class SchemaAgentPairBuildFailedException(SchemaAgentPairException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

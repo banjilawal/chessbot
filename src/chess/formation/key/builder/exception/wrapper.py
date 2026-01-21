@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# FORMATION_KEY_BUILD_FAILED EXCEPTION #======================#
+    # ======================# FORMATION_KEY_BUILD_FAILURE EXCEPTION #======================#
     "FormationKeyBuildFailedException",
 ]
 
 from chess.formation.key import FormationKeyException
 
 
-# ======================# FORMATION_KEY_BUILD_FAILED EXCEPTION #======================#
+# ======================# FORMATION_KEY_BUILD_FAILURE EXCEPTION #======================#
 class FormationKeyBuildFailedException(FormationKeyException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

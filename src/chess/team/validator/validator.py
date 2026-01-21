@@ -105,7 +105,7 @@ class TeamValidator(Validator[Team]):
                 )
             )
         # Handle the case team.schema certification fails.
-        schema_validation = schema_service.schema_validator.validate(team.schema)
+        schema_validation = schema_service.validator.validate(team.schema)
         if schema_validation.is_failure:
             if id_validation.is_failure:
                 # Return the exception chain on failure.

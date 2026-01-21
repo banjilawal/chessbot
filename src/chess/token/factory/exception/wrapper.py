@@ -12,12 +12,12 @@ from chess.token import TokenException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# TOKEN_BUILD_FAILED EXCEPTION #======================#
+    # ======================# TOKEN_BUILD_FAILURE EXCEPTION #======================#
     "TokenBuildFailedException",
 ]
 
 
-# ======================# TOKEN_BUILD_FAILED EXCEPTION #======================#
+# ======================# TOKEN_BUILD_FAILURE EXCEPTION #======================#
 class TokenBuildFailedException(TokenException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

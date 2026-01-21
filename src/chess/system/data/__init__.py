@@ -10,11 +10,9 @@ Version: 1.0.0
 # =========== SYSTEM.DATA PACKAGE CONTENTS ===========#
 
 # Packages
-from .result import *
-from .service import *
-from .exception import *
+from .collection import *
+from .operation import *
 
 # Modules
-from .finder import DataFinder
-
+None
 

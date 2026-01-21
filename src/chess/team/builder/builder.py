@@ -85,7 +85,7 @@ class TeamBuilder(Builder[Team]):
                 )
             )
         # Handle the case schema certification fails.
-        schema_validation = schema_service.schema_validator.validate(schema)
+        schema_validation = schema_service.validator.validate(schema)
         if schema_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(

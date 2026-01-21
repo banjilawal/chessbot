@@ -11,12 +11,12 @@ from chess.coord import CoordException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# COORD_BUILD_FAILED EXCEPTION #======================#
+    # ======================# COORD_BUILD_FAILURE EXCEPTION #======================#
     "CoordBuildFailedException",
 ]
 
 
-# ======================# COORD_BUILD_FAILED EXCEPTION #======================#
+# ======================# COORD_BUILD_FAILURE EXCEPTION #======================#
 class CoordBuildFailedException(CoordException, BuildFailedException):
     """
     # ROLE: Exception Wrapper

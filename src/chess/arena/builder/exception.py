@@ -11,12 +11,12 @@ from chess.arena import ArenaException
 from chess.system import BuildFailedException
 
 __all__ = [
-    # ======================# ARENA_BUILD_FAILED EXCEPTION #======================#
+    # ======================# ARENA_BUILD_FAILURE EXCEPTION #======================#
     "ArenaBuildFailedException",
 ]
 
 
-#======================# ARENA_BUILD_FAILED EXCEPTION #======================#
+#======================# ARENA_BUILD_FAILURE EXCEPTION #======================#
 class ArenaBuildFailedException(ArenaException, BuildFailedException):
     """
     # ROLE: Exception Wrapper
