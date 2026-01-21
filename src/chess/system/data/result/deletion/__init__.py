@@ -13,5 +13,4 @@ Version: 1.0.0
 None
 
 # Modules
-from .state import DeletionState
 from .result import DeletionResult

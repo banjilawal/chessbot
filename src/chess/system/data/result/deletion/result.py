@@ -9,7 +9,7 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, DeletionResult, DeletionState, DataResultState
+from chess.system import DataResult, DeletionResult, DataResultState
 
 T = TypeVar("T")
 
@@ -29,16 +29,16 @@ class DeletionResult(DataResult[Generic[T]]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   state (DeletionState)
+    None
 
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
     def __init__(
             self,
-            state: DataResultState,
             payload: Optional[T] = None,
-            exception: Optional[Exception] = None
+            exception: Optional[Exception] = None,
+            state: Optional[DataResultState] = None,
     ):
         super().__init__(
             state=state,
@@ -46,53 +46,69 @@ class DeletionResult(DataResult[Generic[T]]):
             exception=exception
         )
         """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "TransactionResult.result"
+        method = "DeletionResult.__init__"
     
     @property
     def is_success(self) -> bool:
         return (
-                self.exception is None and
                 self.payload is not None and
-                self._state == DeletionState.SUCCESS
+                self.exception is None and
+                self._state == DataResultState.SUCCESS
         )
     
     @property
     def is_failure(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == DeletionState.FAILURE
+                self.exception is not None and
+                self._state == DataResultState.FAILURE
         )
     
     @property
     def is_empty(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == DeletionState.EMPTY
+                self.exception is not None and
+                self._state == DataResultState.EMPTY
         )
     
     @property
     def is_timed_out(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == DeletionState.TIMED_OUT
+                self.exception is not None and
+                self.state == DataResultState.TIMED_OUT
         )
     
     @classmethod
-    def success(cls, payload: T) -> DeletionResult:
-        return cls(state=DeletionState.SUCCESS, payload=payload)
+    def success(cls, payload: T) -> DeletionResult[T]:
+        return cls(
+            payload=payload,
+            exception=None,
+            state=DataResultState.SUCCESS,
+        )
     
     @classmethod
-    def failure(cls, exception: Exception) -> DeletionResult:
-        return cls(state=DeletionState.FAILURE, exception=exception)
+    def failure(cls, exception: Exception) -> DeletionResult[T]:
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.FAILURE,
+        )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> DeletionResult:
-        return cls(state=DeletionState.TIMED_OUT, exception=exception)
+    def timed_out(cls, exception: Exception) -> DeletionResult[T]:
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.TIMED_OUT,
+        )
     
     @classmethod
     def empty(cls) -> DeletionResult:
-        return cls(state=DeletionState.EMPTY)
+        return cls(
+            payload=None,
+            exception=None,
+            state=DataResultState.EMPTY,
+        )
 

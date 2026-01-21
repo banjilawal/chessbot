@@ -9,7 +9,7 @@ Version: 1.0.0
 
 from typing import Generic, List, Optional, TypeVar
 
-from chess.system import DataResult, SearchState, SearchResult
+from chess.system import DataResult, DataResultState, SearchResult
 
 T = TypeVar("T")
 
@@ -29,72 +29,86 @@ class SearchResult(DataResult[T], Generic[T]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   state (SearchState)
+        *   state (DataResultState)
 
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
-    """
-    _state: SearchState
-    
+    """    
     def __init__(
             self,
-            state: SearchState,
-            payload: Optional[List[T]] = None,
+            payload: Optional[T] = None,
             exception: Optional[Exception] = None,
+            state: Optional[DataResultState] = None,
     ):
-        super().__init__(payload=payload, exception=exception)
+        super().__init__(
+            state=state,
+            payload=payload,
+            exception=exception
+        )
         """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "TransactionResult.result"
-        self._state = state
-    
-    @property
-    def state(self) -> SearchState:
-        return self._state
+        method = "SearchResult.__init__"
     
     @property
     def is_success(self) -> bool:
         return (
-                self.exception is None and
                 self.payload is not None and
-                self._state == SearchState.SUCCESS
+                self.exception is None and
+                self._state == DataResultState.SUCCESS
         )
     
     @property
     def is_failure(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == SearchState.FAILURE
+                self.exception is not None and
+                self._state == DataResultState.FAILURE
         )
     
     @property
     def is_empty(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == SearchState.EMPTY
+                self.exception is not None and
+                self._state == DataResultState.EMPTY
         )
     
     @property
     def is_timed_out(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == SearchState.TIMED_OUT
+                self.exception is not None and
+                self._state == DataResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: List[T]) -> SearchResult[List[T]]:
-        return cls(state=SearchState.SUCCESS, payload=payload)
+        return cls(
+            payload=payload,
+            exception=None,
+            state=DataResultState.SUCCESS,
+        )
     
     @classmethod
     def failure(cls, exception: Exception) -> SearchResult[T]:
-        return cls(state=SearchState.FAILURE, exception=exception)
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.FAILURE,
+        )
     
     @classmethod
     def timed_out(cls, exception: Exception) -> SearchResult[T]:
-        return cls(state=SearchState.TIMED_OUT, exception=exception)
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.FAILURE,
+        )
     
     @classmethod
     def empty(cls) -> SearchResult[T]:
-        return cls(state=SearchState.EMPTY)
+        return cls(
+            payload=None,
+            exception=None,
+            state=DataResultState.EMPTY,
+        )
+

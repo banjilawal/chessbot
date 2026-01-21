@@ -39,9 +39,9 @@ class InsertionResult(DataResult[T], Generic[T]):
     """
     def __init__(
             self,
-            state: DataResultState,
             payload: Optional[T] = None,
-            exception: Optional[Exception] = None
+            exception: Optional[Exception] = None,
+            state: Optional[DataResultState] = None,
     ):
         super().__init__(
             state=state,
@@ -49,48 +49,62 @@ class InsertionResult(DataResult[T], Generic[T]):
             exception=exception
         )
         """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "TransactionResult.result"
+        method = "InsertionResult.__init__"
         
     @property
     def is_success(self) -> bool:
         return (
-                self.exception is None and
                 self.payload is not None and
+                self.exception is None and
                 DataResultState.SUCCESS
         )
     
     @property
     def is_failure(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
+                self.exception is not None and
                 DataResultState.FAILURE
         )
     
     @property
     def is_timed_out(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
+                self.exception is not None and
                 DataResultState.TIMED_OUT
         )
     
     @classmethod
-    def success(cls, payload: T) -> InsertionResult:
-        return cls(state=DataResultState.SUCCESS, payload=payload)
+    def success(cls, payload: T) -> InsertionResult[T]:
+        return cls(
+            payload=payload,
+            exception=None,
+            state=DataResultState.SUCCESS,
+        )
     
     @classmethod
-    def failure(cls, exception: Exception) -> InsertionResult:
-        return cls(state=DataResultState.FAILURE, exception=exception)
+    def failure(cls, exception: Exception) -> InsertionResult[T]:
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.FAILURE,
+        )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> InsertionResult:
-        return cls(state=DataResultState.TIMED_OUT, exception=exception)
+    def timed_out(cls, exception: Exception) -> InsertionResult[T]:
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.TIMED_OUT,
+        )
     
     @classmethod
-    def empty(cls) -> InsertionResult:
+    def empty(cls) -> InsertionResult[T]:
         method = "InsertionResult.empty"
         return cls(
+            payload=None,
+            state=None,
             exception=UnsupportedEmptyInsertionResultException(
                 f"{method}: {UnsupportedEmptyInsertionResultException.DEFAULT_MESSAGE}"
             )

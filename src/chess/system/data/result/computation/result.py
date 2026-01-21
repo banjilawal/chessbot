@@ -9,10 +9,7 @@ Version: 1.0.0
 
 from typing import Generic, Optional, TypeVar, cast
 
-from chess.system import (
-    DataResult, ComputationResult, CalculationState, EmptyDataResultException, NotImplementedException,
-    UnsupportedEmptyComputationResultException
-)
+from chess.system import DataResult, ComputationResult, DataResultState, UnsupportedEmptyComputationResultException
 
 T = TypeVar("T")
 
@@ -31,7 +28,7 @@ class ComputationResult(DataResult[T], Generic[T]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   state (CalculationState)
+        *   state (DataResultState)
 
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
@@ -39,60 +36,73 @@ class ComputationResult(DataResult[T], Generic[T]):
     
     def __init__(
             self,
-            state: CalculationState,
             payload: Optional[T] = None,
-            exception: Optional[Exception] = None
+            exception: Optional[Exception] = None,
+            state: Optional[DataResultState] = None,
     ):
-        super().__init__(payload=payload, exception=exception)
+        super().__init__(
+            state=state,
+            payload=payload,
+            exception=exception
+        )
         """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "TransactionResult.result"
-        self._state = state
-    
-    @property
-    def state(self) -> CalculationState:
-        return self._state
-    
+        method = "ComputationResult.__init__"
+
     @property
     def is_success(self) -> bool:
         return (
-                self.exception is None and
                 self.payload is not None and
-                self._state == CalculationState.SUCCESS
+                self.exception is None and
+                self.state == DataResultState.SUCCESS
         )
     
     @property
     def is_failure(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == CalculationState.FAILURE
+                self.exception is not None and
+                self.state == DataResultState.FAILURE
         )
     
     @property
     def is_timed_out(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == CalculationState.TIMED_OUT
+                self.exception is not None and
+                self.state == DataResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> ComputationResult[T]:
-        return cls(state=CalculationState.SUCCESS, payload=payload)
+        return cls(
+            payload=payload,
+            exception=None,
+            state=DataResultState.SUCCESS,
+        )
     
     @classmethod
     def failure(cls, exception: Exception) -> ComputationResult[T]:
-        return cls(state=CalculationState.FAILURE, exception=exception)
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.FAILURE,
+        )
     
     @classmethod
     def timed_out(cls, exception: Exception) -> ComputationResult[T]:
-        return cls(state=CalculationState.TIMED_OUT, exception=exception)
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.TIMED_OUT,
+        )
     
     @classmethod
     def empty(cls) -> ComputationResult[T]:
         method = "ComputationResult.empty"
         return cls(
-            UnsupportedEmptyComputationResultException(
+            payload=None,
+            state=None,
+            exception=UnsupportedEmptyComputationResultException(
                 f"{method}: {UnsupportedEmptyComputationResultException.DEFAULT_MESSAGE}"
             )
         )

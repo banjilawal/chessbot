@@ -10,7 +10,7 @@ Version: 1.0.0
 from typing import Generic, Optional, TypeVar, cast
 
 from chess.system import (
-    DataResult, UpdateResult, UpdateState, EmptyDataResultException, NotImplementedException
+    DataResult, DataResultState, UpdateResult
 )
 
 T = TypeVar("T")
@@ -31,70 +31,77 @@ class UpdateResult(DataResult[T], Generic[T]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   state (UpdateState)
+        *   state (DataResultState)
 
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
-    _state: UpdateState
-    
     def __init__(
             self,
-            state: UpdateState,
             payload: Optional[T] = None,
-            exception: Optional[Exception] = None
+            exception: Optional[Exception] = None,
+            state: Optional[DataResultState] = None,
     ):
-        super().__init__(payload=payload, exception=exception)
+        super().__init__(
+            state=state,
+            payload=payload,
+            exception=exception
+        )
         """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "TransactionResult.result"
-        self._state = state
-    
-    @property
-    def state(self) -> UpdateState:
-        return self._state
+        method = "UpdateResult.__init__"
     
     @property
     def is_success(self) -> bool:
         return (
-                self.exception is None and
                 self.payload is not None and
-                self._state == UpdateState.SUCCESS
+                self.exception is None and
+                self._state == DataResultState.SUCCESS
         )
     
     @property
     def is_failure(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == UpdateState.FAILURE
+                self.exception is not None and
+                self._state == DataResultState.FAILURE
         )
     
     @property
     def is_timed_out(self) -> bool:
         return (
-                self.exception is not None and
                 self.payload is None and
-                self._state == UpdateState.TIMED_OUT
+                self.exception is not None and
+                self._state == DataResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> UpdateResult[T]:
-        return cls(state=UpdateState.SUCCESS, payload=payload)
+        return cls(
+            payload=payload,
+            exception=None,
+            state=DataResultState.SUCCESS,
+        )
     
     @classmethod
     def failure(cls, exception: Exception) -> UpdateResult[T]:
-        return cls(state=UpdateState.FAILURE, exception=exception)
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.FAILURE,
+        )
     
     @classmethod
     def timed_out(cls, exception: Exception) -> UpdateResult[T]:
-        return cls(state=UpdateState.TIMED_OUT, exception=exception)
+        return cls(
+            payload=None,
+            exception=exception,
+            state=DataResultState.TIMED_OUT,
+        )
     
     @classmethod
     def empty(cls) -> UpdateResult[T]:
-        method = "UpdateResult.empty"
         return cls(
-            exception=NotImplementedException(
-                message=f"{method}: {NotImplementedException.DEFAULT_MESSAGE}",
-                ex=EmptyDataResultException(f"{method}: {EmptyDataResultException.DEFAULT_MESSAGE}")
-            )
+            payload=None,
+            exception=None,
+            state=DataResultState.EMPTY,
         )
