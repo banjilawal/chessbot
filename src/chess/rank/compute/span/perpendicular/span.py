@@ -1,52 +1,62 @@
-from typing import List
-
-from chess.coord import Coord, CoordService
-from chess.system import BuildResult, ComputationResult
-
-
-class DiagonalRay:
+class PerpendicularRay:
     
     @classmethod
+    @LoggingLevelRouter.monitor
     def compute(
             cls,
             start_x: int,
             end_x: int,
             x_step: int,
+            start_y: int,
             end_y: int,
-            slope: int,
-            span: [Coord] =  List[Coord],
+            y_step: int,
+            span: [Coord] = List[Coord],
             coord_service: CoordService = CoordService(),
     ) -> ComputationResult[List[Coord]]:
-        method = "DiagonalRay.compute"
-        
+        method = "PerpendicularRay.compute"
+        """
+        # Action
+        1.  Iterate over the range of start_x to end_x with step x_step.
+        2.  For each x find the y value using the slope.
+        3.  Build a Coord from the x, y pair.
+        4.  If the Coord is not in span, append it.
+        5.  End the loop when x >= end_x and y >= end_y.
+
+        PARAMETERS:
+            *   start_x (int):          Starting x value. In practice, it will be token.current_position.column.
+            *   end_x (int):            Ending x value. This will be either 0 or COLUMN_SIZE - 1.
+            *   x_step (int):           Step size for x. In practice, the magnitude will be 1,
+                                        the sign may be negative.
+            *   start_y (int):          Starting y value. In practice, it will be token.current_position.row.
+            *   end_y (int):            Ending y value. This will be either 0 or ROW_SIZE - 1 depending on the
+                                        direction of travel.
+            *   y_step (int):           Step size for y. In practice, the magnitude will be 1,
+            *   span (List[Coord]):     List to append Coords to if they are not already in the list.
+
+        # RETURNS:
+        List[Coord]
+
+        RAISES:
+        None
+        """
+        method = "Rank._compute_perpendicular_ray"
         i = start_x
-        j = (2 * slope * i) + slope
+        j = start_y
         
         while i < end_x and j < end_y:
             build_result = coord_service.builder.build(row=j, column=i)
             if build_result.is_failure:
                 return BuildResult.failure(
                     DiagonalRayComputationFailedException(
-                        message=f"{method}: {DiagonalRayComputationFailedException.DEFAULT_MESSAGE}",
+                        message=f"{method}: {PerpendicularRayComputationFailedException.DEFAULT_MESSAGE}",
                         ex=build_result.exception
                     )
                 )
             if build_result.payload not in span:
                 span.append(build_result.payload)
             i += x_step
-            j = (2 * slope * i) + slope
-        
+            j += y_step
         return ComputationResult.success(payload=span)
-    
-
-
-#     self._compute_diagonal_ray(
-#         start_x=0,
-#         end_x=origin.column,
-#         x_step=1,
-#         end_y=origin.row,
-#         slop=1,
-#     ),
 
 
 class Rank(ABC):
@@ -78,7 +88,7 @@ class Rank(ABC):
     _coord_service: CoordService
     _vector_service: VectorService
     
-    def __init__(self,
+    def ray(self,
             id: int,
             name: str,
             designation: str,
@@ -216,52 +226,6 @@ class Rank(ABC):
         # ]
     
     @LoggingLevelRouter.monitor
-    def _compute_diagonal_ray(
-            self,
-            start_x: int,
-            end_x: int,
-            x_step: int,
-            end_y: int,
-            slope: int,
-            span: [Coord],
-    ):
-        """
-        # Action
-        1.  Iterate over the range of start_x to end_x with step x_step.
-        2.  For each x find the y value using the slope.
-        3.  Build a Coord from the x, y pair.
-        4.  If the Coord is not in span, append it.
-        5.  End the loop when x >= end_x and y >= end_y.
-
-        PARAMETERS:
-            *   start_x (int):          Starting x value. In practice, it will be token.current_position.column.
-            *   end_x (int):            Ending x value. This will be either 0 or COLUMN_SIZE - 1.
-            *   x_step (int):           Step size for x. In practice, the magnitude will be 1,
-                                        the sign may be negative.
-            *   end_y (int):            Ending y value. This will be either 0 or ROW_SIZE - 1 depending on the
-                                        direction of travel.
-            *   slope (int):            Slope of the diagonal. Used to find next y value.
-            *   span (List[Coord]):     List to append Coords to if they are not already in the list.
-
-        # RETURNS:
-        List[Coord]
-
-        RAISES:
-        None
-        """
-        method = "Rank._compute_diagonal_ray"
-        
-        i = start_x
-        j = (2 * slope * i) + slope
-        
-        while i < end_x and j < end_y:
-            point = self.coord_service.build_coord(row=j, column=i)
-            if point not in span:
-                span.append(point)
-            i += x_step
-            j = (2 * slope * i) + slope
-    
-    @LoggingLevelRouter.monitor
     def compute_perpendicular_span(self, token: Token) -> [Coord]:
         """
         # BACKGROUND:
@@ -365,51 +329,3 @@ class Rank(ABC):
         #         y_step=1
         #     )
         # ].append(origin)
-    
-    @LoggingLevelRouter.monitor
-    def _compute_perpendicular_ray(
-            self,
-            start_x: int,
-            end_x: int,
-            x_step: int,
-            start_y: int,
-            end_y: int,
-            y_step: int,
-            span: [Coord] = None,
-    ):
-        """
-        # Action
-        1.  Iterate over the range of start_x to end_x with step x_step.
-        2.  For each x find the y value using the slope.
-        3.  Build a Coord from the x, y pair.
-        4.  If the Coord is not in span, append it.
-        5.  End the loop when x >= end_x and y >= end_y.
-
-        PARAMETERS:
-            *   start_x (int):          Starting x value. In practice, it will be token.current_position.column.
-            *   end_x (int):            Ending x value. This will be either 0 or COLUMN_SIZE - 1.
-            *   x_step (int):           Step size for x. In practice, the magnitude will be 1,
-                                        the sign may be negative.
-            *   start_y (int):          Starting y value. In practice, it will be token.current_position.row.
-            *   end_y (int):            Ending y value. This will be either 0 or ROW_SIZE - 1 depending on the
-                                        direction of travel.
-            *   y_step (int):           Step size for y. In practice, the magnitude will be 1,
-            *   span (List[Coord]):     List to append Coords to if they are not already in the list.
-
-        # RETURNS:
-        List[Coord]
-
-        RAISES:
-        None
-        """
-        method = "Rank._compute_perpendicular_ray"
-        i = start_x
-        j = start_y
-        
-        while i < end_x and j < end_y:
-            point = self.coord_service.build_coord(row=j, column=i)
-            if point not in span:
-                span.append(point)
-            i += x_step
-            j += y_step
-    
