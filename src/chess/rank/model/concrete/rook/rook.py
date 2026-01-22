@@ -1,7 +1,7 @@
-# src/chess/rank/model/concrete/bishop/bishop.py
+# src/chess/rank/model/concrete/rook/rook.py
 
 """
-Module: chess.rank.model.concrete.bishop.bishop
+Module: chess.rank.model.concrete.rook.rook
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -13,16 +13,16 @@ from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import BishopSpanComputationFailedException, DiagonalSpan, Rank, Bishop
+from chess.rank import RookSpanComputationFailedException, PerpendicularSpan, Rank, Rook
 
 
-class Bishop(Rank):
+class Rook(Rank):
     """
     # ROLE: Computation, Metadata
 
     # RESPONSIBILITIES:
-    1.  Produces a list of Coords reachable from a Bishop's current position.
-    2.  Metadata about the Bishop rank useful for optimizing the GameGraph.
+    1.  Produces a list of Coords reachable from a Rook's current position.
+    2.  Metadata about the Rook rank useful for optimizing the GameGraph.
 
     # PARENT:
         Rank
@@ -31,22 +31,22 @@ class Bishop(Rank):
     None
 
     # LOCAL ATTRIBUTES:
-        * diagonal_span (DiagonalSpan)
+        * perpendicular_span (PerpendicularSpan)
 
     INHERITED ATTRIBUTES:
         *   See Rank class for inherited attributes
     """
-    _diagonal_span: DiagonalSpan
+    _perpendicular_span: PerpendicularSpan
     
     def __init__(
             self,
             id: int,
-            name: str = Persona.BISHOP.name,
-            ransom: int = Persona.BISHOP.ransom,
-            team_quota: int = Persona.BISHOP.quota,
-            designation: str = Persona.BISHOP.designation,
-            quadrants: List[Quadrant] = List[Persona.BISHOP.quadrants],
-            diagonal_span: DiagonalSpan = DiagonalSpan(),
+            name: str = Persona.ROOK.name,
+            ransom: int = Persona.ROOK.ransom,
+            team_quota: int = Persona.ROOK.quota,
+            designation: str = Persona.ROOK.designation,
+            quadrants: List[Quadrant] = List[Persona.ROOK.quadrants],
+            perpendicular_span: PerpendicularSpan = PerpendicularSpan(),
     ):
         super().__init__(
             id=id,
@@ -57,7 +57,7 @@ class Bishop(Rank):
             quadrants=quadrants,
             vectors=None
         )
-        self._diagonal_span = diagonal_span
+        self._perpendicular_span = perpendicular_span
     
     @LoggingLevelRouter.monitor
     def compute_span(
@@ -67,7 +67,7 @@ class Bishop(Rank):
     ) -> ComputationResult[[[Coord]]]:
         """
         # Action
-            1.  Pass the origin and coord_service to Bishop._diagonal_span. If diagonal span returns an origin
+            1.  Pass the origin and coord_service to Rook._perpendicular_span. If perpendicular span returns an origin
                 validation failure or some other problem, wrap the exception chain then send in the ComputationResult.
             2.  Else, the computation was successful, the span is in the payload. Forward computation_result to the 
                 caller. 
@@ -79,11 +79,11 @@ class Bishop(Rank):
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   BishopSpanComputationFailedException
+            *   RookSpanComputationFailedException
         """
-        method = "Bishop.compute_span"
+        method = "Rook.compute_span"
         
-        computation_result = self._diagonal_span.compute(
+        computation_result = self._perpendicular_span.compute(
             points=[],
             origin=origin,
             coord_service=coord_service
@@ -92,11 +92,11 @@ class Bishop(Rank):
         if computation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                BishopSpanComputationFailedException(
-                    message=f"{method}: {BishopSpanComputationFailedException.DEFAULT_MESSAGE}",
+                RookSpanComputationFailedException(
+                    message=f"{method}: {RookSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=computation_result.exception
                 )
             )
         
-        # --- The Bishop's span has been successfully computed. Return in the ComputationResult's payload. ---#
+        # --- The Rook's span has been successfully computed. Return in the ComputationResult's payload. ---#
         return computation_result

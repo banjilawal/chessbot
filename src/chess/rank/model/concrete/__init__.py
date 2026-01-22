@@ -11,13 +11,15 @@ version: 1.0.0
 
 # Packages
 from .king import *
+from .rook import *
 from .bishop import *
+from .knight import *
 
 # Modules
-from .rook import Rook
+
 
 from .pawn import Pawn
 from .queen import Queen
-from .knight import Knight
+
 
 

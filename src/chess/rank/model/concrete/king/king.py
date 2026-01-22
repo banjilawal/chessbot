@@ -24,12 +24,18 @@ class King(Rank):
     # RESPONSIBILITIES:
     1.  Produces a list of Coords reachable from a King's current position.
     2.  Metadata about the King rank useful for optimizing the GameGraph.
+    
+    # PARENT:
+        Rank
 
     # PROVIDES:
-    King
+    None
 
-    # ATTRIBUTES:
-    See super class
+    # LOCAL ATTRIBUTES:
+    None
+    
+    INHERITED ATTRIBUTES:
+        *   See Rank class for inherited attributes
     """
 
     def __init__(

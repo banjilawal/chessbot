@@ -25,11 +25,17 @@ class Knight(Rank):
     1.  Produces a list of Coords reachable from a Knight's current position.
     2.  Metadata about the Knight rank useful for optimizing the GameGraph.
 
-    # PROVIDES:
-    Knight
+    # PARENT:
+        Rank
 
-    # ATTRIBUTES:
-    See super class
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+        *   See Rank class for inherited attributes
     """
     
     def __init__(
