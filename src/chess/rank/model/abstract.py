@@ -35,6 +35,7 @@ class Rank(ABC):
         *   team_quota (int)
         *   designation(str)
         *   quadrants (List[Quadrant]):
+        *   vectors (List[Vector])
     """
     _id: int
     _name: str

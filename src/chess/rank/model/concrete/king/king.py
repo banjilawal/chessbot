@@ -7,7 +7,7 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, Optional
 
 from chess.coord import Coord, CoordService
 from chess.geometry import Quadrant
@@ -40,6 +40,7 @@ class King(Rank):
             team_quota: int = Persona.KING.quota,
             designation: str = Persona.KING.designation,
             quadrants: List[Quadrant] = List[Persona.KING.quadrants],
+            vectors: Optional[List[Vector]] = List[Persona.KING.quadrants],
     ):
         super().__init__(
             id=id,
@@ -60,19 +61,19 @@ class King(Rank):
         """
         # Action
             1.  If the origin is not certified safe send an exception chain in the ComputationResult.
-            2.  Loop through the set of vectors
-                rays aof the origin, send an exception chain in the CalculationResult.
+            2.  Add origin to each vector in King.vectors to get the spanning set. If any of the
+                additions fails send an exception chain in the ComputationResult.
+            3.  Send the set of points to the caller in the ComputationReslt's payload.
         # PARAMETERS:
             *   origin (Coord)
-            *   points (List[Coord])
             *   coord_service (CoordService)
-            *   diagonal_ray (DiagonalRay)
+
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   DiagonalSpanComputationFailedException
+            *   KingSpanComputationFailedException
         """
         method = "King.compute_span"
         
@@ -89,7 +90,7 @@ class King(Rank):
         
         # Iterate through the vectors, adding each one to the origin to get the King's spanning set.
         span: List[Coord] = []
-        for vector in self._vectors:
+        for vector in self.vectors:
             # Handle the case that the computation does not produce a solution.
             result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
             # Return the exception chain on failure.
@@ -98,5 +99,6 @@ class King(Rank):
             # Otherwise add the coord to the span.
             if result.payload not in span:
                 span.append(result.payload)
+                
         # --- The King's span has been successfully computed. Return in the ComputationResult's payload. ---#
         return ComputationResult.success(span)
