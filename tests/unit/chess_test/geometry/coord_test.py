@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import create_autospec
 
-from chess.system.config import COLUMN_SIZE, ROW_SIZE
+from chess.system.config import NUMBER_OF_COLUMNS, ROW_SIZE
 from chess.exception.coord_exception import ColumnBelowBoundsException
 from chess.exception.coord_exception import RowBelowBoundsException
 from chess.coord.coord_exception import NullColumnException
@@ -50,7 +50,7 @@ class CoordTest(unittest.TestCase):
 
   def test_column_in_bounds(self):
     # Tests all columns within bounds construct team_name Coord without exception
-    for column in range(0, COLUMN_SIZE):
+    for column in range(0, NUMBER_OF_COLUMNS):
       coord = Coord(row=0, column=column)
       self.assertEqual(coord.column, column)
 
@@ -62,7 +62,7 @@ class CoordTest(unittest.TestCase):
 
   def test_column_above_upper_bound_raises_exception(self):
     with self.assertRaises(ColumnBelowBoundsException):
-      Coord(row=0, column=COLUMN_SIZE)
+      Coord(row=0, column=NUMBER_OF_COLUMNS)
 
 
 if __name__ == '__main__':

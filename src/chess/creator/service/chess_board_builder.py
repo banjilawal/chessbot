@@ -4,7 +4,7 @@
 # from chess.geometry.point.point import Coord
 # from chess.chessboard.square_name import Square
 # from chess.chessboard.chessboard import ChessBoard
-# from chess.system.config import ROW_SIZE, COLUMN_SIZE
+# from chess.system.config import ROW_SIZE, NUMBER_OF_COLUMNS
 #
 #
 # class ChessBoardBuilder:
@@ -18,7 +18,7 @@
 #       row_squares: List[Square] = []
 #       ascii_value = ord('A')
 #
-#       for j in range(COLUMN_SIZE):
+#       for j in range(NUMBER_OF_COLUMNS):
 #         visitor_name = chr(ascii_value) + str(i + 1)
 #         point = Coord(row=i, column=j)
 #         square_name = Square(id_emitter.visitor_id, visitor_name, point)

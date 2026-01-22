@@ -37,7 +37,7 @@ class PerpendicularRay:
             5.  End the loop when x >= end_x and y >= end_y.
         PARAMETERS:
             *   start_x (int):          Starting x value. In practice, it will be token.current_position.column.
-            *   end_x (int):            Ending x value. This will be either 0 or COLUMN_SIZE - 1.
+            *   end_x (int):            Ending x value. This will be either 0 or NUMBER_OF_COLUMNS - 1.
             *   x_step (int):           Step size for x. In practice, the magnitude will be 1,
                                         the sign may be negative.
             *   start_y (int):          Starting y value. In practice, it will be token.current_position.row.

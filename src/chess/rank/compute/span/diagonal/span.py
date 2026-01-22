@@ -10,7 +10,7 @@ from typing import List
 
 from chess.coord import Coord, CoordService
 from chess.rank import DiagonalRay, DiagonalSpanComputationFailedException
-from chess.system import COLUMN_SIZE, ComputationResult, LoggingLevelRouter, ROW_SIZE
+from chess.system import NUMBER_OF_COLUMNS, ComputationResult, LoggingLevelRouter, ROW_SIZE
 
 class DiagonalSpan:
     """
@@ -87,9 +87,9 @@ class DiagonalSpan:
         # The unique span elements in the quadrant.
         span = ray_computation_result.payload
         
-        # ge the subset of the span in [] quadrant: [Po(origin.column, 0), Pn(COLUMN_SIZE, 0)].
+        # ge the subset of the span in [] quadrant: [Po(origin.column, 0), Pn(NUMBER_OF_COLUMNS, 0)].
         ray_computation_result = DiagonalRay.compute(
-            start_x=origin.column, end_x=COLUMN_SIZE, x_step=1, end_y=0, slope=1, span=span,
+            start_x=origin.column, end_x=NUMBER_OF_COLUMNS, x_step=1, end_y=0, slope=1, span=span,
         )
         # Handle the case that the computation halted.
         if ray_computation_result.is_failure:
@@ -117,7 +117,7 @@ class DiagonalSpan:
             )
         # Compute the ray in NE quadrant: [Po(origin.column, 0), Pn(0, ROW_SIZE)]
         ray_computation_result = DiagonalRay.compute(
-            start_x=origin.column, end_x=COLUMN_SIZE, x_step=1, end_y=ROW_SIZE, slope=-1,span=span,
+            start_x=origin.column, end_x=NUMBER_OF_COLUMNS, x_step=1, end_y=ROW_SIZE, slope=-1,span=span,
         )
         if ray_computation_result.is_failure:
             # On failure return the exception chain

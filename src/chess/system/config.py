@@ -10,7 +10,7 @@ from chess.system import GameColor
 
 __all__ = [
   "ROW_SIZE",
-  "COLUMN_SIZE",
+  "NUMBER_OF_COLUMNS",
   "BOARD_DIMENSION",
   "MIN_NAME_LENGTH",
   "MAX_NAME_LENGTH",
@@ -27,7 +27,7 @@ __all__ = [
 ]
 
 ROW_SIZE = 8
-COLUMN_SIZE = 8
+NUMBER_OF_COLUMNS = 8
 
 BOARD_DIMENSION = 8
 MIN_NAME_LENGTH = 2

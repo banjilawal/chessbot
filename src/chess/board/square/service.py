@@ -13,7 +13,7 @@ from chess.board import (
 
 )
 from chess.square import UniqueSquareDataService
-from chess.system import COLUMN_SIZE,ROW_SIZE
+from chess.system import NUMBER_OF_COLUMNS,ROW_SIZE
 
 
 class BoardSquareService:
@@ -22,7 +22,7 @@ class BoardSquareService:
     
     def __init__(
             self,
-            capacity: int = ROW_SIZE * COLUMN_SIZE,
+            capacity: int = ROW_SIZE * NUMBER_OF_COLUMNS,
             member_service: UniqueSquareDataService = UniqueSquareDataService(),
     ):
         self._capacity = capacity

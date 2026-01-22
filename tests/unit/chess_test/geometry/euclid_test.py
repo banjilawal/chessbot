@@ -1,6 +1,6 @@
 import unittest
 
-from chess.system.config import ROW_SIZE, COLUMN_SIZE
+from chess.system.config import ROW_SIZE, NUMBER_OF_COLUMNS
 from chess.exception.coord_exception import ColumnBelowBoundsException
 from chess.exception.coord_exception import RowBelowBoundsException
 from chess.coord.coord_exception import NullCoordException
@@ -52,12 +52,12 @@ class EuclidDistanceTest(unittest.TestCase):
 
   def test_p_column_above_upper_bounds_raises_exception(self):
     with self.assertRaises(ColumnBelowBoundsException):
-      Distance(p=Coord(row=0, column=COLUMN_SIZE), q=Coord(row=0, column=0))
+      Distance(p=Coord(row=0, column=NUMBER_OF_COLUMNS), q=Coord(row=0, column=0))
 
 
   def test_p_column_in_bounds(self):
     # Valid rows should construct team_name Coord without exception
-    for col in range(0, COLUMN_SIZE):
+    for col in range(0, NUMBER_OF_COLUMNS):
       cartesian_distance = Distance(
         p=Coord(row=0, column=col),
         q=Coord(row=0, column=0)
@@ -106,11 +106,11 @@ class EuclidDistanceTest(unittest.TestCase):
 
   def test_q_column_above_upper_bounds_raises_exception(self):
     with self.assertRaises(ColumnBelowBoundsException):
-      Distance(p=Coord(row=0, column=0), q=Coord(row=0, column=COLUMN_SIZE))
+      Distance(p=Coord(row=0, column=0), q=Coord(row=0, column=NUMBER_OF_COLUMNS))
 
 
   def test_q_column_in_bounds(self):
-    for col in range(0, COLUMN_SIZE):
+    for col in range(0, NUMBER_OF_COLUMNS):
       cartesian_distance = Distance(
         p=Coord(row=0, column=0),
         q=Coord(row=0, column=col)

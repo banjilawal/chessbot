@@ -38,7 +38,7 @@ class CoordinateSBindingValidator(Validator):
         (0, ROW_SIZE - 1) inclusive
 
       ColumnOutOfBoundsException: If point.column is outside the range
-        (0, COLUMN_SIZE - 1) inclusive
+        (0, NUMBER_OF_COLUMNS - 1) inclusive
 .
       CoordValidationFailedException: Wraps any
         (NullCoordinate, TypeError, RowOutOfBounds or ColumnOutOfBoundsException)

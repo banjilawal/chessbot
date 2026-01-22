@@ -1,7 +1,7 @@
 from typing import List
 
 from chess.coord import Coord, CoordService
-from chess.system import COLUMN_SIZE, ComputationResult, LoggingLevelRouter
+from chess.system import NUMBER_OF_COLUMNS, ComputationResult, LoggingLevelRouter
 from chess.rank import PerpendicularRay, PerpendicularSpanComputationFailedException
 
 
@@ -78,7 +78,7 @@ class PerpendicularSpan:
         # Get subset of the span east of v(x=origin.column, y=origin.row)
         east_ray_result = perpendicular_ray.compute(
             start_x=origin.column,
-            end_x=COLUMN_SIZE-1,
+            end_x=NUMBER_OF_COLUMNS - 1,
             x_step=1,
             start_y=origin.row,
             end_y=origin.row,
