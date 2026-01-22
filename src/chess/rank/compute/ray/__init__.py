@@ -3,7 +3,7 @@
 """
 Module: chess.rank.compute.ray.__init__
 Author: Banji Lawal
-Created: 2025-09-08
+Created: 2025-22-01-22
 version: 1.0.0
 """
 
@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .diagonal import *
-from .perpendicular import  *
+from .perpendicular import *
 
 # Modules
+from .exception import RayComputationFailedException
