@@ -1,7 +1,7 @@
-# src/chess/domain/origin/__init__.py
+# src/chess/points/origin/__init__.py
 
 """
-Module: chess.domain.origin.__init__
+Module: chess.points.origin.__init__
 Author: Banji Lawal
 Created: 2025-11-11
 version: 1.0.0

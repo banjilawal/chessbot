@@ -1,7 +1,7 @@
-# src/chess/domain/exception.py
+# src/chess/points/exception.py
 
 """
-Module: chess.domain.exception
+Module: chess.points.exception
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0

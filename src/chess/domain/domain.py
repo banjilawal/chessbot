@@ -1,7 +1,7 @@
-# src/chess/domain/domain.py
+# src/chess/points/points.py
 
 """
-Module: chess.domain.domain
+Module: chess.points.points
 Author: Banji Lawal
 Created: 2025-10-28
 version: 1.0.0

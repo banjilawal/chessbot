@@ -1,7 +1,7 @@
-# src/chess/domain/searcher/__init__.py
+# src/chess/points/searcher/__init__.py
 
 """
-Module: chess.domain.searcher.__init__
+Module: chess.points.searcher.__init__
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

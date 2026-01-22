@@ -1,7 +1,7 @@
-# src/chess/graph/searcher/domain/searcher
+# src/chess/graph/searcher/points/searcher
 
 """
-Module: chess.graph.searcher.domain.searcher
+Module: chess.graph.searcher.points.searcher
 Author: Banji Lawal
 Created: 2025-11-09
 version: 1.0.0

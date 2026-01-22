@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .span import Dia
+from .span import DiagonalSpan
 from .execption import DiagonalSpanComputationFailedException

@@ -6,13 +6,14 @@ Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
+from typing import List
 
-from chess.piece import Piece
 from chess.coord import Coord, CoordService
 from chess.geometry import Quadrant
-from chess.rank import Rank, King, RankSpec, Rook
-from chess.system import LoggingLevelRouter
-from chess.vector import Vector, VectorService
+from chess.persona import Persona
+from chess.rank import Rank, King
+from chess.system import ComputationResult, LoggingLevelRouter
+from chess.vector import Vector
 
 
 class King(Rank):
@@ -32,52 +33,40 @@ class King(Rank):
     
     def __init__(
             self,
-            id: int=RankSpec.KING.id,
-            name: str=RankSpec.KING.name,
-            ransom: int = RankSpec.KING.ransom,
-            team_quota: int = RankSpec.KING.quota,
-            designation: str=RankSpec.KING.designation,
-            quadrants: list[Quadrant]=RankSpec.KING.quadrants,
-            coord_service: CoordService=CoordService(),
-            vector_service: VectorService=VectorService(),
+            id: int,
+            name: str = Persona.KING.name,
+            ransom: int = Persona.KING.ransom,
+            team_quota: int = Persona.KING.quota,
+            designation: str = Persona.KING.designation,
+            quadrants: List[Quadrant] = List[Persona.KING.quadrants],
     ):
-        super().__init(
+        super().__init__(
             id=id,
             name=name,
             ransom=ransom,
-            quota=team_quota,
-            letter=designation,
+            team_quota=team_quota,
+            designation=designation,
             quadrants=quadrants,
-            coord_service=coord_service,
-            vector_service=vector_service,
         )
-        
-    @LoggingLevelRouter.monitor
-    def compute_span(self, piece: Piece) -> [Coord]:
+    
+    def compute_span(
+            self, 
+            origin: Coord, 
+            coord_service: CoordService = CoordService()
+    ) -> ComputationResult[[Coord]]:
         """
-        # BACKGROUND:
-        Kings move in a radius of one square_name.
-        # Action
-        1.  Get the points in a unit circle around the origin.
-        2.  Return the list.
-
-        # PARAMETERS:
-            *   piece (Token): Single-source-of-truth for the basis of the span.
-
-        # RETURNS:
-        List[Coord]
-
-        RAISES:
-        None
         """
         method = "King.compute_span"
-        origin = token.current_position
-        return [
-            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(1, 0)),
-            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(-1, 0)),
-            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(0, 1)),
-            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(1, 1)),
-            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(-1, 1)),
-            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(-1, -1)),
-            self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(1, -1))
+        
+        vectors = [
+            Vector(1, 0), Vector(-1, 0), Vector(0, 1),  Vector(1, 1),  Vector(-1, 1), 
+            Vector(-1, -1), Vector(1, -1)
         ]
+        span: [Coord] = []
+        for vector in vectors:
+            result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
+            if result.is_failure:
+                return ComputationResult.failure(result.exception)
+            if result.payload not in span:
+                span.append(result.payload)
+        return ComputationResult.success(span)

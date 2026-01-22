@@ -9,12 +9,12 @@ version: 1.0.0
 
 from _ast import List
 
-from chess.rank import Rank
+from chess.rank import DiagonalSpan, Rank
 from chess.persona import Persona
 from chess.geometry import Quadrant
 
 from chess.coord import Coord, CoordService
-from chess.system import LoggingLevelRouter
+from chess.system import ComputationResult, LoggingLevelRouter
 
 
 class Bishop(Rank):
@@ -31,7 +31,7 @@ class Bishop(Rank):
     # ATTRIBUTES:
     See super class
     """
-    
+    _diagonal_span: DiagonalSpan
     def bishop(
             self,
             id: int,
@@ -40,7 +40,7 @@ class Bishop(Rank):
             team_quota: int = Persona.BISHOP.quota,
             designation: str = Persona.BISHOP.designation,
             quadrants: List[Quadrant] = List[Persona.BISHOP.quadrants],
-            coord_service: CoordService = CoordService(),
+            diagonal_span: DiagonalSpan = DiagonalSpan(),
     ):
         super().__init__(
             id=id,
@@ -49,24 +49,10 @@ class Bishop(Rank):
             team_quota=team_quota,
             designation=designation,
             quadrants=quadrants,
-            coord_service=coord_service,
         )
+        self._diagonal_span = diagonal_span
     
     @LoggingLevelRouter.monitor
-    def compute_span(self, token: Token) -> [[Coord]]:
-        """
-        # Action
-        Call compute_diagonal_span points in the Bishop's range.
-
-
-        # PARAMETERS:
-            *   token (Token): Single-source-of-truth for the basis of the span.
-
-        # RETURNS:
-        List[Coord]
-
-        RAISES:
-        None
-        """
+    def compute_span(self, origin: Coord, coord_service: CoordService = CoordService()) -> ComputationResult[[[Coord]]]:
         method = "Bishop.compute_span"
-        return self.compute_diagonal_span(token)
+        return self._diagonal_span.compute(origin=origin, coord_service=coord_service)

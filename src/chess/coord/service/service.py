@@ -12,7 +12,7 @@ from typing import cast
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
-from chess.system import BuildResult, EntityService, NotNegativeNumberValidator, id_emitter
+from chess.system import BuildResult, ComputationResult, EntityService, NotNegativeNumberValidator, id_emitter
 
 class CoordService(EntityService[Coord]):
     """
@@ -78,8 +78,7 @@ class CoordService(EntityService[Coord]):
             coord: Coord,
             vector: Vector,
             vector_service: VectorService = VectorService(),
-            number_validator: NotNegativeNumberValidator = NotNegativeNumberValidator(),
-    ) -> BuildResult[Coord]:
+    ) -> ComputationResult[Coord]:
         """
         # ACTION:
         1.  Certify the vector argument with vector_service.
@@ -113,9 +112,12 @@ class CoordService(EntityService[Coord]):
                 return BuildResult.failure(vector_validation.exception)
             
             # when params are certified return the BuildResult.
-            return self.builder.build(
+            build_result =  self.builder.build(
                 row=(coord.row + vector.y), column=(coord.column + vector.x), validator=self.validator
             )
+            if build_result.is_failure:
+                return ComputationResult.failure(build_result.exception)
+            return ComputationResult.success(build_result.payload)
         # Finally, catch any missed exception and wrap A CoordServiceException around it then return the
         # exception-chain inside the BuildResult.
         except Exception as ex:

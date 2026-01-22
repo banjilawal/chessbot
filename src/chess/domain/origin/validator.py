@@ -1,7 +1,7 @@
-# src/chess/domain/origin/coord_stack_validator.py
+# src/chess/points/origin/coord_stack_validator.py
 
 """
-Module: chess.domain.origin.coord_stack_validator
+Module: chess.points.origin.coord_stack_validator
 Author: Banji Lawal
 Created: 2025-11-11
 version: 1.0.0

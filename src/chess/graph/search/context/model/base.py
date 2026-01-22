@@ -1,7 +1,7 @@
-# src/chess/domain/searcher/model/exception.py
+# src/chess/points/searcher/model/exception.py
 
 """
-Module: chess.domain.searcher.model.base
+Module: chess.points.searcher.model.base
 Author: Banji Lawal
 Created: 2025-11-08
 version: 1.0.0

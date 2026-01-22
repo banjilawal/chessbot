@@ -40,16 +40,14 @@ class Knight(Rank):
             team_quota: int = RankSpec.KNIGHT.quota,
             designation: str = RankSpec.KNIGHT.designation,
             quadrants: list[Quadrant] = RankSpec.KNIGHT.quadrants,
-            coord_service: CoordService=CoordService()
     ):
-        super().__init(
+        super().__init__(
             id=id,
             name=name,
             ransom=ransom,
-            quota=team_quota,
-            letter=designation,
+            team_quota=team_quota,
+            designation=designation,
             quadrants=quadrants,
-            coord_service=coord_service,
         )
     
 

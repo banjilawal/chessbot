@@ -6,12 +6,13 @@ Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
-
+from typing import List
 
 from chess.geometry import Quadrant
-from chess.rank import Rank
+from chess.persona import Persona
+from chess.rank import PerpendicularSpan, Rank
 from chess.coord import Coord, CoordService
-from chess.system import oggingLevelRouter
+from chess.system import ComputationResult, LoggingLevelRouter
 
 
 
@@ -31,41 +32,34 @@ class Rook(Rank):
     # ATTRIBUTES:
     See super class
     """
+    _perpendicular_span: PerpendicularSpan
+    
     def __init__(
             self,
-            id: int = RankSpec.ROOK.id,
-            name: str = RankSpec.ROOK.name,
-            designation: str = RankSpec.ROOK.designation,
-            ransom: int = RankSpec.ROOK.ransom,
-            team_quota: int = RankSpec.ROOK.quota,
-            quadrants: list[Quadrant] = RankSpec.ROOK.quadrants,
-            coord_service: CoordService = CoordService()
+            id: int,
+            name: str = Persona.ROOK.name,
+            designation: str = Persona.ROOK.designation,
+            ransom: int = Persona.ROOK.ransom,
+            team_quota: int = Persona.ROOK.quota,
+            quadrants: List[Quadrant] = List[Persona.ROOK.quadrants],
+            perpendicular_span: PerpendicularSpan = PerpendicularSpan(),
     ):
-        super().__init(
+        super().__init__(
             id=id,
             name=name,
             ransom=ransom,
-            quota=team_quota,
-            letter=designation,
+            team_quota=team_quota,
+            designation=designation,
             quadrants=quadrants,
-            coord_service=coord_service,
         )
-
-    @LoggingLevelRouter.monitor
-    def compute_span(self, piece: Piece) -> [Coord]:
+        self._perpendicular_span = perpendicular_span
+    
+    def compute_span(
+            self,
+            origin: Coord,
+            coord_service: CoordService = CoordService()
+    ) -> ComputationResult[[Coord]]:
         """
-        # Action
-        1.  Call compute_perpendicular_span. to get the horizontal and vertical points
-            in the Rook's range.
-
-        # PARAMETERS:
-            *   piece (Token): Single-source-of-truth for the basis of the span.
-
-        # RETURNS:
-        List[Coord]
-
-        RAISES:
-        None
         """
         method = "Rook.compute_span"
-        return self.compute_perpendicular_span(piece)
+        return self._perpendicular_span.compute(orgin=origin, points=[], coord_service=coord_service)

@@ -1,7 +1,7 @@
-# src/chess/domain/origin/exception.py
+# src/chess/points/origin/exception.py
 
 """
-Module: chess.domain.origin.exception
+Module: chess.points.origin.exception
 Author: Banji Lawal
 Created: 2025-11-11
 version: 1.0.0

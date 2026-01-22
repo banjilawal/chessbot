@@ -19,6 +19,7 @@ class PerpendicularSpan:
     def compute(
             cls,
             origin: Coord,
+            points: List[Coord] = [],
             coord_service: CoordService = CoordService(),
     ) -> ComputationResult[List[Coord]]:
         """
@@ -51,7 +52,7 @@ class PerpendicularSpan:
         
         # Get subset of the span in [N, E] quadrant: [Po(0,0), Pn(origin.column, origin.row)]
         ray_computation_result = PerpendicularRay.compute(
-            start_x=0, end_x=origin.column, x_step=1, end_y=origin.row, slope=1, span=List[Coord],
+            start_x=0, end_x=origin.column, x_step=1, end_y=origin.row, slope=1, span=points,
         )
         # Handle the case that the computation halted.
         if ray_computation_result.is_failure:

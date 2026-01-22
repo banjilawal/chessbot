@@ -53,17 +53,17 @@ class Graph:
    #      domain_search_result = find_domain(piece=event.actor)
    #
    #      actor = event.actor
-   #      domain = Domain(piece=event.actor)
+   #      points = Domain(piece=event.actor)
    #      for point in actor.rank_name.compute_span(actor):
    #          search_result = BoardPieceFinder.searcher(self._board, TeamSearchContext(target=point))
    #          if search_result.is_failure():
    #              return TransactionResult.errored(checkpoint=event, exception=search_result.exception)
    #
    #          if search_result.is_success():
-   #              domain.residents.append(cast(search_result.payload[0]))
+   #              points.residents.append(cast(search_result.payload[0]))
    #
-   #          if search_result.is_empty() and point not in domain.tree:
-   #              domain.tree.append(point)
+   #          if search_result.is_empty() and point not in points.tree:
+   #              points.tree.append(point)
    #
    #
    #
@@ -81,7 +81,7 @@ class Graph:
    #
    #
    # def find_domain(self, piece: Token) -> Optional[Domain]:
-   #     hit = next((domain for domain in self._domains if domain.owner == piece), None)
+   #     hit = next((points for points in self._domains if points.owner == piece), None)
    #     if hit is not None:
    #         return hit
    #     return None

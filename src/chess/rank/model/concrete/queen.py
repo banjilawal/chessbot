@@ -11,8 +11,8 @@ version: 1.0.0
 from chess.piece import Piece
 
 from chess.geometry import Quadrant
-from chess.rank import Rank, RankSpec
-from chess.system import LoggingLevelRouter
+from chess.rank import DiagonalSpan, PerpendicularSpan, Rank, RankSpec
+from chess.system import ComputationResult, LoggingLevelRouter
 from chess.coord import Coord, CoordService
 
 
@@ -32,6 +32,8 @@ class Queen(Rank):
     # ATTRIBUTES:
     See super class
     """
+    _diagonal_span: DiagonalSpan
+    _perpendicular_span: PerpendicularSpan
     
     def __init__(
             self,
@@ -41,35 +43,36 @@ class Queen(Rank):
             team_quota: int = RankSpec.QUEEN.quota,
             designation: str = RankSpec.QUEEN.designation,
             quadrants: list[Quadrant] = RankSpec.QUEEN.quadrants,
-            coord_service: CoordService = CoordService()
+            diagonal_span: DiagonalSpan = DiagonalSpan(),
+            perpendicular_span: PerpendicularSpan = PerpendicularSpan(),
     ):
-        super().__init(
+        super().__init__(
             id=id,
             name=name,
             ransom=ransom,
-            quota=team_quota,
-            letter=designation,
+            team_quota=team_quota,
+            designation=designation,
             quadrants=quadrants,
-            coord_service=coord_service,
         )
+        self._diagonal_span = diagonal_span
+        self._perpendicular_span = perpendicular_span
     
-
     @LoggingLevelRouter.monitor
-    def compute_span(self, piece: Piece) -> [Coord]:
+    def compute_span(
+            self,
+            origin: Coord,
+            coord_service: CoordService = CoordService()
+    ) -> ComputationResult[[Coord]]:
         """
-        # Action
-        Call compute_diagonal_span and compute_perpendicular_span to get vertical,
-        horizontal and diagonal points in the Queen's range.
-
-        
-        # PARAMETERS:
-            *   piece (Token): Single-source-of-truth for the basis of the span.
-        
-        # RETURNS:
-        List[Coord]
-        
-        RAISES:
-        None
         """
         method = "Queen.compute_span"
-        return [self.compute_diagonal_span(piece), self.compute_perpendicular_span(piece)]
+        computation_result = self._perpendicular_span.compute(orgin=origin, points=[], coord_service=coord_service)
+        if computation_result.is_failure:
+            return ComputationResult.failure(computation_result.exception)
+        span = computation_result.payload
+        
+        computation_result = self._diagonal_span.compute(orgin=origin, points=span, coord_service=coord_service)
+        if computation_result.is_failure:
+            return ComputationResult.failure(computation_result.exception)
+        return ComputationResult.success(computation_result.payload)
+    

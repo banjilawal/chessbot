@@ -1,7 +1,7 @@
-# src/chess/domain/factory.py
+# src/chess/points/factory.py
 
 """
-Module: chess.domain.builder
+Module: chess.points.builder
 Author: Banji Lawal
 Created: 2025-11-03
 version: 1.0.0
@@ -49,7 +49,7 @@ class DomainBuilder(Builder[Domain]):
         Construct a new Domain object after verifying its inputs will not cause an error.
         
         # PARAMETERS:
-          * piece (Token): The domain owner
+          * piece (Token): The points owner
           * board (Board): Provides the Square of the Domain owner.
           * domain_origin_builder (DomainOriginBuilder): Creates the DomainOwner object.
 
