@@ -8,7 +8,21 @@ version: 1.0.0
 """
 
 from enum import Enum
+from typing import List
+
+from chess.vector import Vector
 
 
 class AttackVectorSubset(Enum):
-    pass
+    def __new__(cls, vectors: List[Vector]):
+        obj = object.__new__(cls)
+        obj._vectors = vectors
+        return obj
+    
+    OPENING = [Vector(x=0, y=2), Vector(x=-1, y=2), Vector(x=1, y=2),]
+    DEVELOPED = [Vector(x=0, y=1), Vector(x=-1, y=1), Vector(x=1, y=1),]
+    
+    @property
+    def vectors(self) -> List[Vector]:
+        return self._vectors
+

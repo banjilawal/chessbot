@@ -9,8 +9,8 @@
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/group.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/span.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/subset.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/developed/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/developed/exception.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/developed/span.py" afterDir="false" />
@@ -869,7 +869,7 @@
       <workItem from="1768905487804" duration="9523000" />
       <workItem from="1768926121948" duration="61424000" />
       <workItem from="1769014389486" duration="11124000" />
-      <workItem from="1769071457912" duration="39948000" />
+      <workItem from="1769071457912" duration="40825000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
