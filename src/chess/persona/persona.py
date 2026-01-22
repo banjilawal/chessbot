@@ -8,9 +8,10 @@ version: 1.0.0
 """
 
 from enum import Enum
-from typing import List
+from typing import List, Optional
 
 from chess.geometry import Quadrant
+from chess.vector import Vector
 
 
 class Persona(Enum):
@@ -50,21 +51,33 @@ class Persona(Enum):
         * name (str) -->  Name give to each Enum entry.
     """
     
-    def __new__(cls, designation: str, quota: int, ransom: int, quadrants: List[Quadrant]):
+    def __new__(
+            cls,
+            designation: str,
+            quota: int,
+            ransom: int,
+            quadrants: List[Quadrant],
+            vectors: Optional[List[Vector]]
+    ):
         obj = object.__new__(cls)
         obj._designation = designation
         obj._quota = quota
         obj._ransom = ransom
         obj._quadrants = quadrants
+        obj._vectors = vectors
         return obj
     
-    PAWN = ("P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW])
-    BISHOP = ("B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW])
-    ROOK = ("C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W])
-    KNIGHT = ("N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW])
+    PAWN = ("P", 8, 1, [Quadrant.NE, Quadrant.SE, Quadrant.NW, Quadrant.SW], None)
+    BISHOP = ("B", 2, 3, [Quadrant.NE, Quadrant.NW, Quadrant.SE, Quadrant.SW], None)
+    ROOK = ("C", 2, 5, [Quadrant.N, Quadrant.S, Quadrant.E, Quadrant.W], None)
+    KNIGHT = ("N", 2, 3, [Quadrant.N, Quadrant.NE, Quadrant.NW, Quadrant.E, Quadrant.SE, Quadrant.SW], None)
     KING = (
         "K", 1, 0,
-        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW]
+        [Quadrant.N, Quadrant.NE, Quadrant.E, Quadrant.SE, Quadrant.S, Quadrant.SW, Quadrant.W, Quadrant.NW],
+        [
+            Vector(1, 0), Vector(-1, 0), Vector(0, 1), Vector(1, 1), Vector(-1, 1),
+            Vector(-1, -1), Vector(1, -1)
+        ]
     )
     QUEEN = (
         "Q", 1, 9,

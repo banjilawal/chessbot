@@ -8,11 +8,12 @@ version: 1.0.0
 """
 
 from abc import ABC, abstractmethod
-from typing import List
+from typing import List, Optional
 
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
+from chess.vector import Vector
 
 
 class Rank(ABC):
@@ -41,6 +42,7 @@ class Rank(ABC):
     _ransom: int
     _team_quota: int
     _quadrants: List[Quadrant]
+    _vectors: Optional[Vector]
     
     def __init__(self,
             id: int,
@@ -49,6 +51,7 @@ class Rank(ABC):
             ransom: int,
             team_quota: int,
             quadrants: List[Quadrant],
+            vectors: Optional[Vector] = None
     ):
         self._id = id
         self._name = name
@@ -56,6 +59,7 @@ class Rank(ABC):
         self._team_quota = team_quota
         self._designation = designation
         self._quadrants = quadrants
+        self._vectors = vectors
 
     @abstractmethod
     @LoggingLevelRouter.monitor
@@ -86,6 +90,10 @@ class Rank(ABC):
     @property
     def quadrants(self) -> List[Quadrant]:
         return self._quadrants
+    
+    @property
+    def vectors(self) -> Optional[List[Vector]]:
+        return self._vectors
     
     @property
     def team_quota(self) -> int:

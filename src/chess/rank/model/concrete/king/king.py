@@ -12,7 +12,7 @@ from typing import List
 from chess.coord import Coord, CoordService
 from chess.geometry import Quadrant
 from chess.persona import Persona
-from chess.rank import Rank, King
+from chess.rank import KingSpanComputationFailedException, Rank, King
 from chess.system import ComputationResult, LoggingLevelRouter
 from chess.vector import Vector
 
@@ -48,6 +48,7 @@ class King(Rank):
             team_quota=team_quota,
             designation=designation,
             quadrants=quadrants,
+            vectors=vectors,
         )
     
     @LoggingLevelRouter.monitor
@@ -57,23 +58,45 @@ class King(Rank):
             coord_service: CoordService = CoordService()
     ) -> ComputationResult[[Coord]]:
         """
+        # Action
+            1.  If the origin is not certified safe send an exception chain in the ComputationResult.
+            2.  Loop through the set of vectors
+                rays aof the origin, send an exception chain in the CalculationResult.
+        # PARAMETERS:
+            *   origin (Coord)
+            *   points (List[Coord])
+            *   coord_service (CoordService)
+            *   diagonal_ray (DiagonalRay)
+        # RETURNS:
+            *   ComputationResult[List[Coord]]:
+                    - On failure: An exception.
+                    - On success: List[Coord] in the payload.
+        # RAISES:
+            *   DiagonalSpanComputationFailedException
         """
         method = "King.compute_span"
+        
         # Handle the case that the coord is not certified safe.
-        coord_validation_result = coord_service.validate_coord(coord=origin)
-        if coord_validation_result.is_failure:
+        coord_validation = coord_service.validator.validate(candidate=origin)
+        if coord_validation.is_failure:
+            # On failure return the exception chain
+            return ComputationResult.failure(
+                KingSpanComputationFailedException(
+                    message=f"{method}: {KingSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    ex=coord_validation.exception
+                )
+            )
         
-        
-        span: [Coord] = []
-        vectors = [
-            Vector(1, 0), Vector(-1, 0), Vector(0, 1),  Vector(1, 1),  Vector(-1, 1), 
-            Vector(-1, -1), Vector(1, -1)
-        ]
-
-        for vector in vectors:
+        # Iterate through the vectors, adding each one to the origin to get the King's spanning set.
+        span: List[Coord] = []
+        for vector in self._vectors:
+            # Handle the case that the computation does not produce a solution.
             result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
+            # Return the exception chain on failure.
             if result.is_failure:
                 return ComputationResult.failure(result.exception)
+            # Otherwise add the coord to the span.
             if result.payload not in span:
                 span.append(result.payload)
+        # --- The King's span has been successfully computed. Return in the ComputationResult's payload. ---#
         return ComputationResult.success(span)
