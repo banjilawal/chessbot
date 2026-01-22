@@ -1,17 +1,38 @@
 from typing import List
 
 from chess.coord import Coord, CoordService
-from chess.rank import PerpendicularRay, PerpendicularSpanComputationFailedException
 from chess.system import COLUMN_SIZE, ComputationResult, LoggingLevelRouter
+from chess.rank import PerpendicularRay, PerpendicularSpanComputationFailedException
+
 
 
 class PerpendicularSpan:
     """
+    # ROLE: Computation
+
     # BACKGROUND:
+    The perpendicular
     1.  Perpendicular relations will define a Cartesian plane with 4 quadrants.
     2.  In the X-plane, points are in the form: p_0(0,0), p_1(1,0), p_2(2,0), p_3(3,0), ...., p_n(n,0)
     3.  In the Y-plane, points are in the form: p_0(0,0), p_1(0,1), p_2(0,2), p_3(0,3), ...., p_n(0,n)
     4.  we can get the span by iterating over the quadrants with the in the range [0, BOARD_DIMENSION - 1]
+    
+
+    # RESPONSIBILITIES:
+    1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
+    2.  If the computation fails send an exception chain to the caller for error tracing.
+
+    # PARENT:
+    None
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     
     @classmethod
@@ -21,21 +42,24 @@ class PerpendicularSpan:
             origin: Coord,
             points: List[Coord] = [],
             coord_service: CoordService = CoordService(),
+            perpendicular_ray: PerpendicularRay = PerpendicularRay(),
     ) -> ComputationResult[List[Coord]]:
         """
         # Action
-            1.  origin = token.current_position is the basis of the set.
-            2.  Get points on each quadrant with a call to _compute_perpendicular_ray then append to a list.
-            3.  Add origin to the span if it not already there.
-            4.  Return the list.
+            1.  If the origin does not pass its validation checks send an exception chain in the CalculationResult.
+            2.  If perpendicular_ray fails when its computing either the northern, southern, eastern or western
+                rays aof the origin, send an exception chain in the CalculationResult.
         # PARAMETERS:
-            *   token (Token): Single-source-of-truth for the basis of the span.
+            *   origin (Coord)
+            *   points (List[Coord])
+            *   coord_service (CoordService)
+            *   perpendicular_ray (PerpendicularRay)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   DiagonalRayComputationFailedException
+            *   PerpendicularSpanComputationFailedException
         """
         method = "PerpendicularSpan.compute"
         
@@ -52,7 +76,7 @@ class PerpendicularSpan:
         # --- Compute rays in each quadrant pass points into next ray computation to prevent duplicates. ---#
 
         # Get subset of the span east of v(x=origin.column, y=origin.row)
-        east_ray_result = PerpendicularRay.compute(
+        east_ray_result = perpendicular_ray.compute(
             start_x=origin.column,
             end_x=COLUMN_SIZE-1,
             x_step=1,
@@ -71,7 +95,7 @@ class PerpendicularSpan:
                 )
             )
         # Add unique points west of v(x=origin.column, y=origin.row) to get the horizontal spanning set.
-        horizontal_ray_result = PerpendicularRay.compute(
+        horizontal_ray_result = perpendicular_ray.compute(
             start_x=0,
             end_x=origin.column,
             x_step=1,
@@ -93,7 +117,7 @@ class PerpendicularSpan:
         horizontal_span = horizontal_ray_result.payload
 
         # Add unique points north of v(x=origin.column, y=origin.row) to the horizontal spanning set.
-        span_subset_result = PerpendicularRay.compute(
+        span_subset_result = perpendicular_ray.compute(
             start_x=origin.column,
             end_x=origin.column,
             x_step=0,
@@ -112,7 +136,7 @@ class PerpendicularSpan:
                 )
             )
         # Add unique points south of v(x=origin.column, y=origin.row) to get complete perpendicular spanning set.
-        perpendicular_span_result = PerpendicularRay.compute(
+        perpendicular_span_result = perpendicular_ray.compute(
             start_x=origin.column,
             end_x=origin.column,
             x_step=0,
