@@ -22,7 +22,7 @@ class PerpendicularSpanComputationFailedException(SpanComputationFailedException
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
     # RESPONSIBILITIES:
-    1.  wrap any debug exception created when a condition prevents the computational logic from producing
+    1.  Wrap any debug exception created when a condition prevents the computational logic from producing
         a san in either horizontal:{R(x,y) -> (X,0)}, or vertical:{R(x,y) -> (0,Y)} domains.
 
     # PARENT:
