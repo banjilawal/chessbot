@@ -11,12 +11,16 @@ class PerpendicularSpan:
     # ROLE: Computation
 
     # BACKGROUND:
-    The perpendicular
-    1.  Perpendicular relations will define a Cartesian plane with 4 quadrants.
-    2.  In the X-plane, points are in the form: p_0(0,0), p_1(1,0), p_2(2,0), p_3(3,0), ...., p_n(n,0)
-    3.  In the Y-plane, points are in the form: p_0(0,0), p_1(0,1), p_2(0,2), p_3(0,3), ...., p_n(0,n)
+    The perpendicular domain is defined by relations in the Cartesian plane.
+        #   The X-Plane:
+                *   Given a range of ith-points where i = [0 < i < N] and for some c
+                        p_i = p(x_(i-1), y_c)) = p(x_i, y_i)
+                *   These are points north and south of  p_c
+        #   The Y-Plane:
+                *   Given a range of ith-points where i = [0 < i < N] and for some c
+                        p_i = p(x_c, y_(i-1) + 1) = p(x_i, y_i)
+                *   These are points north and south of  p_c
     4.  we can get the span by iterating over the quadrants with the in the range [0, BOARD_DIMENSION - 1]
-    
 
     # RESPONSIBILITIES:
     1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
