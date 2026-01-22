@@ -9,13 +9,13 @@ version: 1.0.0
 
 from _ast import List
 
-from chess.rank import BishopSpanComputationFailedException, DiagonalSpan, Rank
+from typing import List, Optional
+
 from chess.persona import Persona
 from chess.geometry import Quadrant
-
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
-
+from chess.rank import BishopSpanComputationFailedException, DiagonalSpan, Rank, Bishop
 
 class Bishop(Rank):
     """
@@ -32,6 +32,7 @@ class Bishop(Rank):
     See super class
     """
     _diagonal_span: DiagonalSpan
+    
     def bishop(
             self,
             id: int,
@@ -54,7 +55,11 @@ class Bishop(Rank):
         self._diagonal_span = diagonal_span
     
     @LoggingLevelRouter.monitor
-    def compute_span(self, origin: Coord, coord_service: CoordService = CoordService()) -> ComputationResult[[[Coord]]]:
+    def compute_span(
+            self,
+            origin: Coord,
+            coord_service: CoordService = CoordService()
+    ) -> ComputationResult[[[Coord]]]:
         """
         # Action
             1.  Pass the origin and coord_service to Bishop._diagonal_span. If diagonal span returns an origin
