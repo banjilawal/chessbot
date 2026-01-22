@@ -6,10 +6,11 @@ Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
-
+from typing import List
 
 from chess.piece import Piece
 from chess.coord import Coord, CoordService
+from chess.persona import Persona
 from chess.system import LoggingLevelRouter
 from chess.vector import Vector
 from chess.geometry import Quadrant
@@ -34,12 +35,12 @@ class Knight(Rank):
     
     def __init__(
             self,
-            id: int = RankSpec.KNIGHT.id,
-            name: str = RankSpec.KNIGHT.name,
-            ransom: int = RankSpec.KNIGHT.ransom,
-            team_quota: int = RankSpec.KNIGHT.quota,
-            designation: str = RankSpec.KNIGHT.designation,
-            quadrants: list[Quadrant] = RankSpec.KNIGHT.quadrants,
+            id: int,
+            name: str = Persona.KNIGHT.name,
+            ransom: int = Persona.KNIGHT.ransom,
+            team_quota: int = Persona.KNIGHT.quota,
+            designation: str = Persona.KNIGHT.designation,
+            quadrants: List[Quadrant] = List[Persona.KNIGHT.quadrants],
     ):
         super().__init__(
             id=id,

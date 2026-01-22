@@ -119,7 +119,7 @@ class RansomOutOfBoundsException(ProjectionSearchContextException):
   ERROR_CODE = "RANSOM_IN_SEARCH_CONTEXT_OUT_BOUNDS_ERROR"
   DEFAULT_MESSAGE = (
       f"The `TeamSearchContext.ransom` is out of bounds. Ransoms are "
-      f"between {RankSpec.KING.ransom} and {RankSpec.QUEEN.ransom} inclusive."
+      f"between {Persona.KING.ransom} and {Persona.QUEEN.ransom} inclusive."
   )
 #=========================================================================#
 #======================= FILTER_CONTEXT EXCEPTION =======================#

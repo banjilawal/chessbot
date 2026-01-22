@@ -34,12 +34,12 @@ class Pawn(Rank):
     
     def __init__(
             self,
-            id: int = RankSpec.PAWN.id,
-            name: str = RankSpec.PAWN.name,
-            ransom: int = RankSpec.PAWN.ransom,
-            team_quota: int = RankSpec.PAWN.quota,
-            designation: str = RankSpec.PAWN.designation,
-            quadrants: list[Quadrant] = RankSpec.PAWN.quadrants,
+            id: int = Persona.PAWN.id,
+            name: str = Persona.PAWN.name,
+            ransom: int = Persona.PAWN.ransom,
+            team_quota: int = Persona.PAWN.quota,
+            designation: str = Persona.PAWN.designation,
+            quadrants: List[Quadrant] = Persona.PAWN.quadrants,
     ):
         super().__init__(
             id=id,

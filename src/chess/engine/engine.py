@@ -43,7 +43,7 @@ class Engine(ABC):
   def __init__(self, engine_id:int, analyzer: 'BoardAnalyzer'):
     self._id = engine_id
     self._board_analyzer = analyzer
-    self._max_capture_value = RankSpec.QUEEN.ransom
+    self._max_capture_value = Persona.QUEEN.ransom
 
 
   @property

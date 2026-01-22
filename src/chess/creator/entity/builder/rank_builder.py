@@ -12,7 +12,7 @@ class RankBuilder:
   @staticmethod
   def build(config: RankSpec):
 
-    if config is RankSpec.KING:
+    if config is Persona.KING:
       return King(
         name=config.name,
         designation=config.designation,
@@ -20,7 +20,7 @@ class RankBuilder:
         quadrants=config.quadrants,
         value=config.capture_value
       )
-    if config is RankSpec.PAWN:
+    if config is Persona.PAWN:
       return Pawn(
         name=config.name,
         letter=config.designation,
@@ -28,7 +28,7 @@ class RankBuilder:
         quadrants=config.quadrants,
         value=config.capture_value
       )
-    if config is RankSpec.KNIGHT:
+    if config is Persona.KNIGHT:
       return Knight(
         name=config.name,
         designation=config.designation,
@@ -36,7 +36,7 @@ class RankBuilder:
         quadrants=config.quadrants,
         value=config.capture_value
       )
-    if config is RankSpec.BISHOP:
+    if config is Persona.BISHOP:
       return Bishop(
         name=config.name,
         designation=config.designation,
@@ -44,7 +44,7 @@ class RankBuilder:
         quadrants=config.quadrants,
         value=config.capture_value
       )
-    if config is RankSpec.ROOK:
+    if config is Persona.ROOK:
       return Rook(
         name=config.name,
         designation=config.designation,
@@ -52,7 +52,7 @@ class RankBuilder:
         quadrants=config.quadrants,
         ransom=config.capture_value
       )
-    if config is RankSpec.QUEEN:
+    if config is Persona.QUEEN:
       return Queen(
         name=config.name,
         designation=config.designation,
@@ -65,7 +65,7 @@ class RankBuilder:
 
 
 def main():
-  rank = RankBuilder.build(RankSpec.PAWN)
+  rank = RankBuilder.build(Persona.PAWN)
   print(rank)
 
 

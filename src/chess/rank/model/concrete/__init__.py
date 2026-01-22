@@ -10,11 +10,11 @@ version: 1.0.0
 # =========== RANK.MODEL.CONCRETE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .king import *
 
 # Modules
 from .rook import Rook
-from .king import King
+
 from .pawn import Pawn
 from .queen import Queen
 from .knight import Knight

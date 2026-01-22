@@ -37,12 +37,12 @@ class Queen(Rank):
     
     def __init__(
             self,
-            id: int = RankSpec.QUEEN.id,
-            name: str = RankSpec.QUEEN.name,
-            ransom: int = RankSpec.QUEEN.ransom,
-            team_quota: int = RankSpec.QUEEN.quota,
-            designation: str = RankSpec.QUEEN.designation,
-            quadrants: list[Quadrant] = RankSpec.QUEEN.quadrants,
+            id: int = Persona.QUEEN.id,
+            name: str = Persona.QUEEN.name,
+            ransom: int = Persona.QUEEN.ransom,
+            team_quota: int = Persona.QUEEN.quota,
+            designation: str = Persona.QUEEN.designation,
+            quadrants: List[Quadrant] = Persona.QUEEN.quadrants,
             diagonal_span: DiagonalSpan = DiagonalSpan(),
             perpendicular_span: PerpendicularSpan = PerpendicularSpan(),
     ):

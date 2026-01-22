@@ -87,7 +87,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
                 if team_name_validation.is_failure():
                     return BuildResult.failure(team_name_validation.exception)
 
-            if rank_name is not None and rank_name.upper() not in RankSpec.__members__:
+            if rank_name is not None and rank_name.upper() not in Persona.__members__:
                 return BuildResult.failure(
                     VisitationInvalidRankNameParamException(f"{method}: {VisitationInvalidRankNameParamException.DEFAULT_MESSAGE}")
                 )

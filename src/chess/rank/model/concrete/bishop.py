@@ -55,4 +55,4 @@ class Bishop(Rank):
     @LoggingLevelRouter.monitor
     def compute_span(self, origin: Coord, coord_service: CoordService = CoordService()) -> ComputationResult[[[Coord]]]:
         method = "Bishop.compute_span"
-        return self._diagonal_span.compute(origin=origin, coord_service=coord_service)
+        return self._diagonal_span.compute(origin=origin, points=[], coord_service=coord_service)

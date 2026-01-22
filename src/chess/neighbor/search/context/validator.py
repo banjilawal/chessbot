@@ -87,7 +87,7 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
                 if team_name_validation.is_failure():
                     return ValidationResult.failure(team_name_validation.exception)
             
-            if search_context.visitor_rank is not None and search_context.visitor_rank.upper() not in RankSpec.__members__:
+            if search_context.visitor_rank is not None and search_context.visitor_rank.upper() not in Persona.__members__:
                 return ValidationResult.failure(
                     DomainInvalidRankNameParamException(
                         f"{method}: {DomainInvalidRankNameParamException.DEFAULT_MESSAGE}"

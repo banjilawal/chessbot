@@ -49,6 +49,7 @@ class King(Rank):
             quadrants=quadrants,
         )
     
+    @LoggingLevelRouter.monitor
     def compute_span(
             self, 
             origin: Coord, 
@@ -57,12 +58,17 @@ class King(Rank):
         """
         """
         method = "King.compute_span"
+        # Handle the case that the coord is not certified safe.
+        coord_validation_result = coord_service.validate_coord(coord=origin)
+        if coord_validation_result.is_failure:
         
+        
+        span: [Coord] = []
         vectors = [
             Vector(1, 0), Vector(-1, 0), Vector(0, 1),  Vector(1, 1),  Vector(-1, 1), 
             Vector(-1, -1), Vector(1, -1)
         ]
-        span: [Coord] = []
+
         for vector in vectors:
             result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
             if result.is_failure:
