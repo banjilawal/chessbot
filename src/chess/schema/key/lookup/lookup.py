@@ -13,7 +13,7 @@ from chess.schema import (
     SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaKey, Schema,
     SchemaNameBoundsException, SchemaKeyValidator,
 )
-from chess.system import ForwardLookup, GameColor, HashLookup, LoggingLevelRouter, SearchResult
+from chess.system import GameColor, HashLookup, LoggingLevelRouter, SearchResult
 
 
 class SchemaLookup(HashLookup[Schema]):

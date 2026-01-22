@@ -1,10 +1,10 @@
-# src/chess/system/hash/service.py
+# src/chess/system/data/collection/hash/service/service.py
 
 """
-Module: chess.system.hash.service
+Module: chess.system.data.collection.hash.service.service
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2025-11-18
+Version: 1.0.0
 """
 
 from enum import Enum

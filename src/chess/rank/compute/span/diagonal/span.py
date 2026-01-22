@@ -9,23 +9,22 @@ version: 1.0.0
 from typing import List
 
 from chess.coord import Coord, CoordService
-from chess.rank import DiagonalRay, PerpendicularSpanComputationFailedException
+from chess.rank import DiagonalRay, DiagonalSpanComputationFailedException
 from chess.system import COLUMN_SIZE, ComputationResult, LoggingLevelRouter, ROW_SIZE
 
-
-class PerpendicularSpan:
+class DiagonalSpan:
     """
     # BACKGROUND:
     1. Consider a diagonal relation is: p_1(0,0), p_2(1,1), p_3(2,2), ...., p_n(n,n)
     2. For any p_i, y_i = x_i. So, once we know how x changes we can find the relation
-            Let us consider x in non-negative integers, {0, 1, 2,3,....,n}
+       Let us consider x in non-negative integers, {0, 1, 2,3,....,n}
             x_n > x_j >= x_i.
     3. And,
             X_0 = 0,
             X_1 = 1,
             x_2 = 2
             x_3 = 3
-     Looking at the indices we see x_j = x_i + (j-i)
+       Looking at the indices we see x_j = x_i + (j-i)
     4. In terms of i only,
             x_i = x_(i-1) + (i - (i -1))
             x_i= x_(i-1) + delta_x
@@ -58,20 +57,20 @@ class PerpendicularSpan:
         # RAISES:
             *   DiagonalRayComputationFailedException
         """
-        method = "PerpendicularSpan.compute"
+        method = "DiagonalSpan.compute"
         
         # Handle the case that the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationFailedException(
+                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
-          
-        # Compute the ray in SW quadrant: [Po(0,0), Pn(origin.column, origin.row)]
+      
+        # Get subset of the span in [N, E] quadrant: [Po(0,0), Pn(origin.column, origin.row)]
         ray_computation_result = DiagonalRay.compute(
             start_x=0, end_x=origin.column, x_step=1, end_y=origin.row, slope=1, span=List[Coord],
         )
@@ -79,13 +78,15 @@ class PerpendicularSpan:
         if ray_computation_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationFailedException(
+                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=ray_computation_result.exception
                 )
             )
+        # The unique span elements in the quadrant.
         span = ray_computation_result.payload
-        # Compute the ray in NE quadrant: [Po(origin.column, 0), Pn(COLUMN_SIZE, 0)]
+        
+        # ge the subset of the span in [] quadrant: [Po(origin.column, 0), Pn(COLUMN_SIZE, 0)].
         ray_computation_result = DiagonalRay.compute(
             start_x=origin.column, end_x=COLUMN_SIZE, x_step=1, end_y=0, slope=1, span=span,
         )
@@ -93,11 +94,12 @@ class PerpendicularSpan:
         if ray_computation_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationFailedException(
+                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=ray_computation_result.exception
                 )
             )
+        # Get the current span.
         span = ray_computation_result.payload
         # Compute the ray in NE quadrant: [Po(origin.column, 0), Pn(0, ROW_SIZE)]
         ray_computation_result = DiagonalRay.compute(
@@ -107,21 +109,22 @@ class PerpendicularSpan:
         if ray_computation_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationFailedException(
+                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=ray_computation_result.exception
                 )
             )
         # Compute the ray in NE quadrant: [Po(origin.column, 0), Pn(0, ROW_SIZE)]
         ray_computation_result = DiagonalRay.compute(
-            start_x=origin.column,cend_x=COLUMN_SIZE, x_step=1, end_y=ROW_SIZE, slope=-1,span=span,
+            start_x=origin.column, end_x=COLUMN_SIZE, x_step=1, end_y=ROW_SIZE, slope=-1,span=span,
         )
         if ray_computation_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationFailedException(
+                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=ray_computation_result.exception
                 )
             )
+        # On search success send the span to the caller.
         return ComputationResult.success(span)

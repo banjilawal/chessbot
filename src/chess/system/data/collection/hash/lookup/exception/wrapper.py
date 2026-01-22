@@ -1,7 +1,7 @@
-# src/chess/system/lookup/exception.py
+# src/chess/system/data/collection/hash/lookup/exception/wrapper.py
 
 """
-Module: chess.system.lookup.exception
+Module: chess.system.data.collection.hash.lookup.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

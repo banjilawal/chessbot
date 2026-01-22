@@ -139,8 +139,8 @@ class SchemaService(HashService[Schema]):
             )
         # On validation success send the opposite Schema entry in the SearchResult.
         if schema.color == GameColor.WHITE:
-            return SearchResult.success(List[Schema.BLACK])
-        return SearchResult.success(List[Schema.WHITE])
+            return SearchResult.success([Schema.BLACK])
+        return SearchResult.success([Schema.WHITE])
     
     @LoggingLevelRouter.monitor
     def lookup_schema(self, super_key: SchemaKey) -> SearchResult[List[Schema]]:

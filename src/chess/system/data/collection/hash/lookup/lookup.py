@@ -1,7 +1,7 @@
-# src/chess/system/hash/lookup.py
+# src/chess/system/data/collection/hash/lookup/lookup.py
 
 """
-Module: chess.system.hash.lookup
+Module: chess.system.data.collection.hash.lookup.lookup
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,10 +11,10 @@ from enum import Enum
 from typing import List
 from abc import abstractmethod
 
-from chess.system import Context, Finder, LoggingLevelRouter, SearchResult, Validator
+from chess.system import AbstractSearcher, Context, LoggingLevelRouter, SearchResult, Validator
 
 
-class HashLookup(Finder[Enum]):
+class HashLookup(AbstractSearcher[Enum]):
     """
     # ROLE: Forward Lookups,
 
@@ -40,7 +40,11 @@ class HashLookup(Finder[Enum]):
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def query(cls, super_key: Context[Enum], super_key_validator: Validator[Context[Enum]]) -> SearchResult[List[Enum]]:
+    def query(
+            cls,
+            super_key: Context[Enum],
+            super_key_validator: Validator[Context[Enum]]
+    ) -> SearchResult[List[Enum]]:
         """"""
         pass
 

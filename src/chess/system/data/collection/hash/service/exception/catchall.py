@@ -1,3 +1,12 @@
+# src/chess/system/data/collection/hash/service/exception/catchall.py
+
+"""
+Module: chess.system.data.collection.hash.service.exception.catchall
+Author: Banji Lawal
+Created: 2025-11-18
+Version: 1.0.0
+"""
+
 from chess.system import ServiceException
 
 

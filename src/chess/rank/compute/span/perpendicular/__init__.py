@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .perpendicular import PerpendicularSpan
+from .span import PerpendicularSpan
 from .exception import PerpendicularSpanComputationFailedException

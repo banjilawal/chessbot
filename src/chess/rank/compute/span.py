@@ -1,3 +1,0 @@
-class ComputeLineSpan:
-    classmethod
-    def
