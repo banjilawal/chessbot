@@ -79,7 +79,7 @@ class PerpendicularSpan:
             )
         # --- Compute rays in each quadrant pass points into next ray computation to prevent duplicates. ---#
 
-        # Get subset of the span east of v(x=origin.column, y=origin.row)
+        # Get subset of the span east of v(x=origin.column, y=origin.row).
         east_ray_result = perpendicular_ray.compute(
             start_x=origin.column,
             end_x=NUMBER_OF_COLUMNS - 1,
@@ -89,7 +89,7 @@ class PerpendicularSpan:
             y_step=0,
             span=points,
         )
-        # Handle the case that the east_ray computation halted.
+        # Handle the case that the eastern ray computation does not produce a solution.
         if east_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -108,7 +108,7 @@ class PerpendicularSpan:
             y_step=0,
             span=east_ray_result.payload,
         )
-        # Handle the case that the western ray computation halted.
+        # Handle the case that the western ray computation does not produce a solution.
         if horizontal_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -117,10 +117,9 @@ class PerpendicularSpan:
                     ex=horizontal_ray_result.exception
                 )
             )
-        # --- Compute rays in each quadrant pass points into next ray computation to prevent duplicates. ---#
+        # --- Extract the horizontal spanning set and, pass it to the vertical rays. ---#
         horizontal_span = horizontal_ray_result.payload
 
-        # Add unique points north of v(x=origin.column, y=origin.row) to the horizontal spanning set.
         span_subset_result = perpendicular_ray.compute(
             start_x=origin.column,
             end_x=origin.column,
@@ -130,7 +129,7 @@ class PerpendicularSpan:
             y_step=-1,
             span=horizontal_span,
         )
-        # Handle the case that the computation halted.
+        # Handle the case that the northern ray computation does not produce a solution.
         if span_subset_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -149,6 +148,7 @@ class PerpendicularSpan:
             y_step=-1,
             span=span_subset_result.payload
         )
+        # Handle the case that the southern ray computation does not produce a solution.
         if perpendicular_span_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(

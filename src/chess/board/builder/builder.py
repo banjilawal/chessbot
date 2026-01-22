@@ -41,7 +41,7 @@ class BoardBuilder(Builder[Board]):
             cls,
             arena: Arena,
             id: int = id_emitter.board_id,
-            row_size: int = BOARD_DIMENSION,
+            NUMBER_OF_ROWS: int = BOARD_DIMENSION,
             column_size: int = BOARD_DIMENSION,
             arena_service: ArenaService = ArenaService(),
             identity_service: IdentityService = IdentityService(),
@@ -56,7 +56,7 @@ class BoardBuilder(Builder[Board]):
         # PARAMETERS:
             *   id (int)
             *   arena (Arena)
-            *   row_size (int)
+            *   NUMBER_OF_ROWS (int)
             *   column_size (int)
             *   arena_service (ArenaService)
             *   identity_service (IdentityService)
@@ -100,7 +100,7 @@ class BoardBuilder(Builder[Board]):
                 )
             )
         # Create the board.
-        board = Board(id=id, arena=arena, row_size=row_size, column_size=column_size)
+        board = Board(id=id, arena=arena, NUMBER_OF_ROWS=NUMBER_OF_ROWS, column_size=column_size)
         
         # --- Can directly bind the board to the arena in a new build without arena_service.insert_board here. ---#
         arena.board = board

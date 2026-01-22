@@ -24,7 +24,7 @@ class Board:
     # ATTRIBUTES:
         * id (int)
         * arena (Arena)
-        * row_size (int)
+        * NUMBER_OF_ROWS (int)
         * column_size (int)
         * tokens ([BoardTokenService])
         * squares ([[BoardSquareService]])
@@ -47,7 +47,7 @@ class Board:
         # PARAMETERS:
             *   id (int)
             *   arena (Arena)
-            *   row_size (int)
+            *   NUMBER_OF_ROWS (int)
             *   column_size (int)
         # RETURNS:
             None

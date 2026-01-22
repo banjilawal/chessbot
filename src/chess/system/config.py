@@ -9,7 +9,7 @@ Created: 2025-09-16
 from chess.system import GameColor
 
 __all__ = [
-  "ROW_SIZE",
+  "NUMBER_OF_ROWS",
   "NUMBER_OF_COLUMNS",
   "BOARD_DIMENSION",
   "MIN_NAME_LENGTH",
@@ -26,7 +26,7 @@ __all__ = [
   "OPPOSITE_CELL_COLOR"
 ]
 
-ROW_SIZE = 8
+NUMBER_OF_ROWS = 8
 NUMBER_OF_COLUMNS = 8
 
 BOARD_DIMENSION = 8

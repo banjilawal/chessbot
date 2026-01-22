@@ -68,10 +68,10 @@ class GameValidator(Validator[Game]):
           NullCommanderException: if candidate is validation
     
           RowBelowBoundsException: If game.row < 0
-          RowAboveBoundsException: If game.row >= ROW_SIZE
+          RowAboveBoundsException: If game.row >= NUMBER_OF_ROWS
           
           ColumnBelowBoundsException: If game.column < 0
-          ColumnAboveBoundsException: If game.column>= ROW_SIZE
+          ColumnAboveBoundsException: If game.column>= NUMBER_OF_ROWS
           
           InvalidCommanderException: Wraps any preceding team_exception
         """

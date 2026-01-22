@@ -3,7 +3,7 @@ from unittest.mock import create_autospec
 
 from chess.geometry.exception.coord import CoordValidationException
 from chess.coord import CoordValidator
-from chess.system.config import ROW_SIZE, NUMBER_OF_COLUMNS
+from chess.system.config import NUMBER_OF_ROWS, NUMBER_OF_COLUMNS
 from chess.exception.coord_exception import (
   RowBelowBoundsException,
   RowAboveBoundsException,
@@ -60,7 +60,7 @@ class CoordValidatorTest(unittest.TestCase):
   def test_row_above_or_equals_bound_raises_exception(self):
     # Create team_name mock Coord with row = None
     mock_coord = create_autospec(Coord, instance=True)
-    mock_coord.row = ROW_SIZE
+    mock_coord.row = NUMBER_OF_ROWS
     mock_coord.column = 0 # valid column
 
     with self.assertRaises(CoordValidationException) as ctx:

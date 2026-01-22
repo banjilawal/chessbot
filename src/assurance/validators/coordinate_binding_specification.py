@@ -35,7 +35,7 @@ class CoordinateSBindingValidator(Validator):
       TypeError: if candidate is not Coord
 
       RowOutOfBoundsException: If point.row is outside the range
-        (0, ROW_SIZE - 1) inclusive
+        (0, NUMBER_OF_ROWS - 1) inclusive
 
       ColumnOutOfBoundsException: If point.column is outside the range
         (0, NUMBER_OF_COLUMNS - 1) inclusive

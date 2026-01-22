@@ -11,7 +11,7 @@ from typing import cast
 
 from chess.square.service.exception.insertion import OccupiedSquareCannotRecieveFormationException
 from chess.square.state import SquareState
-from chess.system import NUMBER_OF_COLUMNS, EntityService, InsertionResult, LoggingLevelRouter, ROW_SIZE, id_emitter
+from chess.system import NUMBER_OF_COLUMNS, EntityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS, id_emitter
 from chess.square import (
     AddingFormationToSquareFailedException, Square, SquareBuilder, SquareServiceException,
     SquareValidator

@@ -66,8 +66,8 @@ These exception can be imported and raised from within the scalar-related code t
 >>> try:
 ...   # This will raise team_name ScalarAboveUpperBoundException
 ...
-...   from chess.system import ROW_SIZE
-...   my_scalar = Scalar(value=(ROW_SIZE + 1))
+...   from chess.system import NUMBER_OF_ROWS
+...   my_scalar = Scalar(value=(NUMBER_OF_ROWS + 1))
 ... except ScalarAboveBoundsException as e:
 ...   print(f'Error: {e}')
 

@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import create_autospec
 
-from chess.system.config import NUMBER_OF_COLUMNS, ROW_SIZE
+from chess.system.config import NUMBER_OF_COLUMNS, NUMBER_OF_ROWS
 from chess.exception.coord_exception import ColumnBelowBoundsException
 from chess.exception.coord_exception import RowBelowBoundsException
 from chess.coord.coord_exception import NullColumnException
@@ -28,7 +28,7 @@ class CoordTest(unittest.TestCase):
 
   def test_row_in_bounds(self):
     # Valid rows should construct team_name Coord without exception
-    for row in range(0, ROW_SIZE):
+    for row in range(0, NUMBER_OF_ROWS):
       coord = Coord(row=row, column=0)
       self.assertEqual(coord.row, row)
 
@@ -40,7 +40,7 @@ class CoordTest(unittest.TestCase):
 
   def test_row_above_upper_bound_raises_exception(self):
     with self.assertRaises(RowBelowBoundsException):
-      Coord(row=ROW_SIZE, column=0)
+      Coord(row=NUMBER_OF_ROWS, column=0)
 
 
   def test_null_column_raises_exception(self):

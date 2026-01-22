@@ -41,7 +41,7 @@ class PerpendicularRay:
             *   x_step (int):           Step size for x. In practice, the magnitude will be 1,
                                         the sign may be negative.
             *   start_y (int):          Starting y value. In practice, it will be token.current_position.row.
-            *   end_y (int):            Ending y value. This will be either 0 or ROW_SIZE - 1 depending on the
+            *   end_y (int):            Ending y value. This will be either 0 or NUMBER_OF_ROWS - 1 depending on the
                                         direction of travel.
             *   y_step (int):           Step size for y. In practice, the magnitude will be 1,
             *   span (List[Coord]):     List to append Coords to if they are not already in the list.

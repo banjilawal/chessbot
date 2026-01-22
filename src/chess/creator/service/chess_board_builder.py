@@ -4,7 +4,7 @@
 # from chess.geometry.point.point import Coord
 # from chess.chessboard.square_name import Square
 # from chess.chessboard.chessboard import ChessBoard
-# from chess.system.config import ROW_SIZE, NUMBER_OF_COLUMNS
+# from chess.system.config import NUMBER_OF_ROWS, NUMBER_OF_COLUMNS
 #
 #
 # class ChessBoardBuilder:
@@ -14,7 +14,7 @@
 #
 #     squares: List[List[Square]] = []
 #
-#     for i in range(ROW_SIZE):
+#     for i in range(NUMBER_OF_ROWS):
 #       row_squares: List[Square] = []
 #       ascii_value = ord('A')
 #

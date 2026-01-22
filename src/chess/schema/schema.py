@@ -12,7 +12,7 @@ from enum import Enum
 from chess.schema import Schema
 from chess.scalar import Scalar
 from chess.geometry import Quadrant
-from chess.system import GameColor, ROW_SIZE
+from chess.system import GameColor, NUMBER_OF_ROWS
 
 
 class Schema(Enum):
@@ -69,7 +69,7 @@ class Schema(Enum):
         return obj
     
     WHITE = (GameColor.WHITE, 0, Scalar(1), Quadrant.N,)
-    BLACK = (GameColor.BLACK, (ROW_SIZE - 1), Scalar(-1), Quadrant.S,)
+    BLACK = (GameColor.BLACK, (NUMBER_OF_ROWS - 1), Scalar(-1), Quadrant.S,)
     
     @property
     def color(self) -> GameColor:

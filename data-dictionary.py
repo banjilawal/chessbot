@@ -26,7 +26,7 @@ class ColumnOutOfBoundsException(Exception):
 
 # --- Constants for Chessboard Size ---
 # These are assumed to be defined globally in your project.
-ROW_SIZE = 8
+NUMBER_OF_ROWS = 8
 COLUMN_SIZE = 8
 
 
@@ -68,7 +68,7 @@ class Coordinate(BaseModel):
     column (int): The 0-based column index.
   """
   # Pydantic's Field handles notification for bounds checks.
-  row: int = Field(..., ge=0, lt=ROW_SIZE)
+  row: int = Field(..., ge=0, lt=NUMBER_OF_ROWS)
   column: int = Field(..., ge=0, lt=COLUMN_SIZE)
 
   class Config:
@@ -80,7 +80,7 @@ class Coordinate(BaseModel):
     #   # Example of re-raising for 'row' consistency
     #   # You would need team_name more complex state to see which consistency failed.
     #   # This is often not needed as Pydantic's errors are clear.
-    #   if 'row' in cls.__fields__ and not (0 <= v < ROW_SIZE):
+    #   if 'row' in cls.__fields__ and not (0 <= v < NUMBER_OF_ROWS):
     #     raise RowOutOfBoundsException()
     #   return v
 
@@ -227,7 +227,7 @@ if TYPE_CHECKING:
   from chess.token.piece import Piece
 
 # --- Constants for Chessboard Size ---
-ROW_SIZE = 8
+NUMBER_OF_ROWS = 8
 COLUMN_SIZE = 8
 
 
@@ -248,7 +248,7 @@ class Coordinate(BaseModel):
   """
   Represents an immutable point on team_name chessboard with bounds checking.
   """
-  row: int = Field(..., ge=0, lt=ROW_SIZE)
+  row: int = Field(..., ge=0, lt=NUMBER_OF_ROWS)
   column: int = Field(..., ge=0, lt=COLUMN_SIZE)
 
   class Config:
@@ -350,8 +350,8 @@ class ChessBoard(BaseModel):
 
   @validator('squares')
   def check_board_size(cls, v):
-    if len(v) != ROW_SIZE or not all(len(row) == COLUMN_SIZE for row in v):
-      raise ValueError(f"ChessBoard must be team_name {ROW_SIZE}x{COLUMN_SIZE} grid.")
+    if len(v) != NUMBER_OF_ROWS or not all(len(row) == COLUMN_SIZE for row in v):
+      raise ValueError(f"ChessBoard must be team_name {NUMBER_OF_ROWS}x{COLUMN_SIZE} grid.")
     return v
 
 

@@ -17,7 +17,7 @@ from chess.square import (
     UniqueSquareSearchFailedException
 )
 from chess.system import (
-    NUMBER_OF_COLUMNS, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, ROW_SIZE, SearchResult,
+    NUMBER_OF_COLUMNS, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult,
     UniqueDataService,
     id_emitter
 )
@@ -50,7 +50,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: SquareDataService = SquareDataService(capacity=ROW_SIZE * NUMBER_OF_COLUMNS),
+            data_service: SquareDataService = SquareDataService(capacity=NUMBER_OF_ROWS * NUMBER_OF_COLUMNS),
     ):
         """
         # ACTION:

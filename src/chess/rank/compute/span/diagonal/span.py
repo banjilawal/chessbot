@@ -10,53 +10,72 @@ from typing import List
 
 from chess.coord import Coord, CoordService
 from chess.rank import DiagonalRay, DiagonalSpanComputationFailedException
-from chess.system import NUMBER_OF_COLUMNS, ComputationResult, LoggingLevelRouter, ROW_SIZE
+from chess.system import NUMBER_OF_COLUMNS, ComputationResult, LoggingLevelRouter, NUMBER_OF_ROWS
 
 class DiagonalSpan:
     """
     # BACKGROUND:
-    1. Consider a diagonal relation is: p_1(0,0), p_2(1,1), p_3(2,2), ...., p_n(n,n)
-    2. For any p_i, y_i = x_i. So, once we know how x changes we can find the relation
-       Let us consider x in non-negative integers, {0, 1, 2,3,....,n}
-            x_n > x_j >= x_i.
-    3. And,
+    1.  Consider the diagonal series: p_1(0,0), p_2(1,1), p_3(2,2), ...., p_n(n,n). For any
+            p_i, y_i = x_i.
+        We want to find some invariant only in terms of x that will gives us all the ys.
+    2.  Let us consider x in non-negative integers, {0, 1, 2,3,....,n}
+        we now that
+            x_i <= x_j < x_n.
+    3.  The start of the X sequence is
             X_0 = 0,
             X_1 = 1,
             x_2 = 2
             x_3 = 3
-       Looking at the indices we see x_j = x_i + (j-i)
-    4. In terms of i only,
-            x_i = x_(i-1) + (i - (i -1))
-            x_i= x_(i-1) + delta_x
+       Which reveals: x_j = x_i + (j-i) But we want to express only in terms of x and restrict that i < j
+            when i = 0, xo = x
+            x_i = x_(i-1) + 1
     5. Since x_i = y_i, we can express the series in terms of x_(i-i)
             y_i = (x_(i-1) + delta_x) + x_(i-1)
             y_i = 2x_(i-1)
     6. In the quadrant(x<0, y>0) delta_x = -1.
     7. For thr quadrant (x<0, y>0) delta_x = 1.
     8. So for each quadrant we change the slope.
+    
+    # RESPONSIBILITIES:
+    1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
+    2.  If the computation fails send an exception chain to the caller for error tracing.
+
+    # PARENT:
+    None
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
     """
     @classmethod
     @LoggingLevelRouter.monitor
     def compute(
             cls,
             origin: Coord,
-            domain: List[Coord] = [],
+            domain: List[Coord] = List[Coord],
             coord_service: CoordService = CoordService(),
     ) -> ComputationResult[List[Coord]]:
         """
         # Action
-            1.  origin = token.current_position is the basis of the set.
-            2.  Get points on each quadrant with a call to _compute_diagonal_ray then append to a list.
-            3.  Add origin to the span if it not already there.
-            4.  Return the list.
+            1.  If the origin does not pass its validation checks send an exception chain in the CalculationResult.
+            2.  If diagonal_ray fails when its computing either the northern, southern, eastern or western
+                rays aof the origin, send an exception chain in the CalculationResult.
         # PARAMETERS:
-            *   token (Token): Single-source-of-truth for the basis of the span.
+            *   origin (Coord)
+            *   points (List[Coord])
+            *   coord_service (CoordService)
+            *   diagonal_ray (DiagonalRay)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   DiagonalRayComputationFailedException
+            *   DiagonalSpanComputationFailedException
         """
         method = "DiagonalSpan.compute"
         
@@ -70,62 +89,80 @@ class DiagonalSpan:
                     ex=coord_validation.exception
                 )
             )
-      
-        # Get subset of the span in [N, E] quadrant: [Po(0,0), Pn(origin.column, origin.row)]
-        ray_computation_result = DiagonalRay.compute(
-            start_x=0, end_x=origin.column, x_step=1, end_y=origin.row, slope=1, span=domain,
+        # --- Compute rays in each quadrant pass points into next ray computation to prevent duplicates. ---#
+
+        # Get subset of the span in north-west of v(x=origin.column, y=origin.row). This is quadrant, Q1
+        north_west_ray_result = DiagonalRay.compute(
+            start_x=0,
+            end_x=origin.column,
+            x_step=1,
+            end_y=origin.row,
+            slope=1,
+            span=domain,
         )
-        # Handle the case that the computation halted.
-        if ray_computation_result.is_failure:
+        # Handle the case that the northwestern computation does not produce a solution.
+        if north_west_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
                 DiagonalSpanComputationFailedException(
                     message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=ray_computation_result.exception
+                    ex=north_west_ray_result.exception
                 )
             )
-        # The unique span elements in the quadrant.
-        span = ray_computation_result.payload
-        
-        # ge the subset of the span in [] quadrant: [Po(origin.column, 0), Pn(NUMBER_OF_COLUMNS, 0)].
-        ray_computation_result = DiagonalRay.compute(
-            start_x=origin.column, end_x=NUMBER_OF_COLUMNS, x_step=1, end_y=0, slope=1, span=span,
+        # Add unique points northeast of v(x=origin.column, y=origin.row) to get the northern spanning set.
+        northern_ray_result = DiagonalRay.compute(
+            start_x=origin.column,
+            end_x=NUMBER_OF_ROWS - 1,
+            x_step=1,
+            end_y=0,
+            slope=1, span=north_west_ray_result.payload,
         )
-        # Handle the case that the computation halted.
-        if ray_computation_result.is_failure:
+        # Handle the case that the northeastern ray computation does not produce a solution.
+        if northern_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
                 DiagonalSpanComputationFailedException(
                     message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=ray_computation_result.exception
+                    ex=northern_ray_result.exception
                 )
             )
-        # Get the current span.
-        span = ray_computation_result.payload
-        # Compute the ray in NE quadrant: [Po(origin.column, 0), Pn(0, ROW_SIZE)]
-        ray_computation_result = DiagonalRay.compute(
-            start_x=origin.column, end_x=0, x_step=-1, end_y=ROW_SIZE, slope=-1, span=span,
+        # --- Extract the northern spanning set and, pass it to the southern rays. ---#
+        northern_span = northern_ray_result.payload
+
+        span_subset_result = DiagonalRay.compute(
+            start_x=origin.column,
+            end_x=0,
+            x_step=-1,
+            end_y=NUMBER_OF_ROWS,
+            slope=-1,
+            span=northern_span,
         )
-        # Handle the case that the computation halted.
-        if ray_computation_result.is_failure:
+        # Handle the case that the southwest ray computation does not produce a solution.
+        if span_subset_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
                 DiagonalSpanComputationFailedException(
                     message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=ray_computation_result.exception
+                    ex=span_subset_result.exception
                 )
             )
-        # Compute the ray in NE quadrant: [Po(origin.column, 0), Pn(0, ROW_SIZE)]
-        ray_computation_result = DiagonalRay.compute(
-            start_x=origin.column, end_x=NUMBER_OF_COLUMNS, x_step=1, end_y=ROW_SIZE, slope=-1,span=span,
+        # Add unique points southwest of v(x=origin.column, y=origin.row) to get complete diagonal spanning set.
+        diagonal_span_result = DiagonalRay.compute(
+            start_x=origin.column,
+            end_x=NUMBER_OF_COLUMNS - 1,
+            x_step=1,
+            end_y=NUMBER_OF_ROWS - 1,
+            slope=-1,
+            span=span_subset_result.payload,
         )
-        if ray_computation_result.is_failure:
+        # Handle the case that the southeastern ray computation does not produce a solution.
+        if diagonal_span_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
                 DiagonalSpanComputationFailedException(
                     message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=ray_computation_result.exception
+                    ex=diagonal_span_result.exception
                 )
             )
         # On search success send the span to the caller.
-        return ComputationResult.success(span)
+        return ComputationResult.success(diagonal_span_result.payload)

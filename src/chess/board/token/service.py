@@ -14,7 +14,7 @@ from chess.board import (
 )
 from chess.team import TeamRankQuotaFullException
 from chess.token import Token, TokenContext, UniqueTokenDataService
-from chess.system import NUMBER_OF_COLUMNS, InsertionResult, ROW_SIZE
+from chess.system import NUMBER_OF_COLUMNS, InsertionResult, NUMBER_OF_ROWS
 
 
 class BoardTokenService:
@@ -24,7 +24,7 @@ class BoardTokenService:
     
     def __init__(
             self,
-            capacity: int = ROW_SIZE * NUMBER_OF_COLUMNS,
+            capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
             members: UniqueTokenDataService = UniqueTokenDataService(),
             analyzer: BoardTokenRelationAnalyzer = BoardTokenRelationAnalyzer(),
     ):

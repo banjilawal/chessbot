@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.system import (
-    NUMBER_OF_COLUMNS, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, ROW_SIZE,
+    NUMBER_OF_COLUMNS, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
     id_emitter
 )
 from chess.square import (
@@ -49,7 +49,7 @@ class SquareDataService(DataService[Square]):
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Square] = List[Square],
-            capacity: int = ROW_SIZE * NUMBER_OF_COLUMNS,
+            capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
             service: SquareService = SquareService(),
             context_service: SquareContextService = SquareContextService(),
     ):

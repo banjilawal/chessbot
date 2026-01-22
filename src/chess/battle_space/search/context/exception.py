@@ -29,7 +29,7 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Constants: `ROW_SIZE`, `NUMBER_OF_COLUMNS`
+  * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
         `BuildFailedException`.
 
