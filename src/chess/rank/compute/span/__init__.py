@@ -14,4 +14,4 @@ from .diagonal import *
 from .perpendicular import *
 
 # Modules
-None
+from .exception import SpanComputationFailedException

@@ -7,25 +7,25 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.system import ComputationFailedException
-
+from chess.rank import SpanComputationFailedException
 
 __all__ = [
     # ======================# DIAGONAL_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
     "DiagonalSpanComputationFailedException",
 ]
 
+
 # ======================# DIAGONAL_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-class DiagonalSpanComputationFailedException(ComputationFailedException):
+class DiagonalSpanComputationFailedException(SpanComputationFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
     # RESPONSIBILITIES:
     1.  wrap any debug exception created when a condition prevents the computational logic from producing
-        a solution. This exception chain is passed to the caller for handling.
+        a san in either horizontal:{R(x,y) -> (X,0)}, or vertical:{R(x,y) -> (0,Y)} domains.
 
     # PARENT:
-        *   ComputationFailedException
+        *   SpanComputationFailedException
 
     # PROVIDES:
     None

@@ -1,11 +1,12 @@
-# src/chess/rank/model/concrete/king.py
+# src/chess/rank/model/concrete/king/king.py
 
 """
-Module: chess.rank.model.concrete.king
+Module: chess.rank.model.concrete.king.king
 Author: Banji Lawal
-Created: 2025-09-08
+Created: 2026-01-22
 version: 1.0.0
 """
+
 from typing import List
 
 from chess.coord import Coord, CoordService
