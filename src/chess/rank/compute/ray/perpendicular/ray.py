@@ -1,7 +1,7 @@
-# src/chess/rank/compute/ray/diagonal/ray.py
+# src/chess/rank/compute/ray/perpendicular/ray.py
 
 """
-Module: chess.rank.compute.ray.diagonal.ray
+Module: chess.rank.compute.ray.perpendicular.ray
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -50,7 +50,7 @@ class PerpendicularRay:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         RAISES:
-            *   DiagonalRayComputationFailedException
+            *   PerpendicularRayComputationFailedException
         """
         method = "PerpendicularRay.compute"
         
@@ -60,7 +60,7 @@ class PerpendicularRay:
             build_result = coord_service.builder.build(row=j, column=i)
             if build_result.is_failure:
                 return BuildResult.failure(
-                    DiagonalRayComputationFailedException(
+                    PerpendicularRayComputationFailedException(
                         message=f"{method}: {PerpendicularRayComputationFailedException.DEFAULT_MESSAGE}",
                         ex=build_result.exception
                     )

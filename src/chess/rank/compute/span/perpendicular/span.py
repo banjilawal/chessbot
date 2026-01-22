@@ -49,62 +49,85 @@ class PerpendicularSpan:
                     ex=coord_validation.exception
                 )
             )
-        
-        # Get subset of the span in [N, E] quadrant: [Po(0,0), Pn(origin.column, origin.row)]
-        ray_computation_result = PerpendicularRay.compute(
-            start_x=0, end_x=origin.column, x_step=1, end_y=origin.row, slope=1, span=points,
+        # --- Compute rays in each quadrant pass points into next ray computation to prevent duplicates. ---#
+
+        # Get subset of the span east of v(x=origin.column, y=origin.row)
+        east_ray_result = PerpendicularRay.compute(
+            start_x=origin.column,
+            end_x=COLUMN_SIZE-1,
+            x_step=1,
+            start_y=origin.row,
+            end_y=origin.row,
+            y_step=0,
+            span=points,
+        )
+        # Handle the case that the east_ray computation halted.
+        if east_ray_result.is_failure:
+            # On failure return the exception chain
+            return ComputationResult.failure(
+                PerpendicularSpanComputationFailedException(
+                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    ex=east_ray_result.exception
+                )
+            )
+        # Add unique points west of v(x=origin.column, y=origin.row) to get the horizontal spanning set.
+        horizontal_ray_result = PerpendicularRay.compute(
+            start_x=0,
+            end_x=origin.column,
+            x_step=1,
+            start_y=origin.row,
+            end_y=origin.row,
+            y_step=0,
+            span=east_ray_result.payload,
+        )
+        # Handle the case that the western ray computation halted.
+        if horizontal_ray_result.is_failure:
+            # On failure return the exception chain
+            return ComputationResult.failure(
+                PerpendicularSpanComputationFailedException(
+                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    ex=horizontal_ray_result.exception
+                )
+            )
+        # --- Compute rays in each quadrant pass points into next ray computation to prevent duplicates. ---#
+        horizontal_span = horizontal_ray_result.payload
+
+        # Add unique points north of v(x=origin.column, y=origin.row) to the horizontal spanning set.
+        span_subset_result = PerpendicularRay.compute(
+            start_x=origin.column,
+            end_x=origin.column,
+            x_step=0,
+            start_y=origin.row,
+            end_y=0,
+            y_step=-1,
+            span=horizontal_span,
         )
         # Handle the case that the computation halted.
-        if ray_computation_result.is_failure:
+        if span_subset_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
                 PerpendicularSpanComputationFailedException(
                     message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=ray_computation_result.exception
+                    ex=span_subset_result.exception
                 )
             )
-        # The unique span elements in the quadrant.
-        span = ray_computation_result.payload
-        
-        # ge the subset of the span in [] quadrant: [Po(origin.column, 0), Pn(COLUMN_SIZE, 0)].
-        ray_computation_result = PerpendicularRay.compute(
-            start_x=origin.column, end_x=origin.column, x_step=0, start_y=origin.row, end_y=origin.row, y_step=0, span=span
+        # Add unique points south of v(x=origin.column, y=origin.row) to get complete perpendicular spanning set.
+        perpendicular_span_result = PerpendicularRay.compute(
+            start_x=origin.column,
+            end_x=origin.column,
+            x_step=0,
+            start_y=origin.row,
+            end_y=0,
+            y_step=-1,
+            span=span_subset_result.payload
         )
-        # Handle the case that the computation halted.
-        if ray_computation_result.is_failure:
+        if perpendicular_span_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
                 PerpendicularSpanComputationFailedException(
                     message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=ray_computation_result.exception
+                    ex=perpendicular_span_result.exception
                 )
             )
-        # Get the current span.
-        span = ray_computation_result.payload
-        # Compute the ray in NE quadrant: [Po(origin.column, 0), Pn(0, ROW_SIZE)]
-        ray_computation_result = PerpendicularRay.compute(
-            start_x=origin.column, end_x=COLUMN_SIZE, x_step=1, start_y=origin.row, end_y=origin.row, y_step=0, span=span,
-        )
-        # Handle the case that the computation halted.
-        if ray_computation_result.is_failure:
-            # On failure return the exception chain
-            return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=ray_computation_result.exception
-                )
-            )
-        # Compute the ray in NE quadrant: [Po(origin.column, 0), Pn(0, ROW_SIZE)]
-        ray_computation_result = PerpendicularRay.compute(
-            start_x=origin.column, end_x=origin.column, x_step=0, start_y=0, end_y=origin.row, y_step=1, span=span,
-        )
-        if ray_computation_result.is_failure:
-            # On failure return the exception chain
-            return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=ray_computation_result.exception
-                )
-            )
-        # On search success send the span to the caller.
-        return ComputationResult.success(span)
+        # On search success send the complete perpendicular spanning set to the caller.
+        return ComputationResult.success(perpendicular_span_result.payload)
