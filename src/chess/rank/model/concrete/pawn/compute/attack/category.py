@@ -1,7 +1,7 @@
-# src/chess/rank/model/concrete/pawn/compute/attack/subset.py
+# src/chess/rank/model/concrete/pawn/compute/attack/category.py
 
 """
-Module: chess.rank.model.concrete.pawn.compute.attack.subset
+Module: chess.rank.model.concrete.pawn.compute.attack.category
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -13,7 +13,7 @@ from typing import List
 from chess.vector import Vector
 
 
-class AttackVectorSubset(Enum):
+class AttackCategory(Enum):
     def __new__(cls, vectors: List[Vector]):
         obj = object.__new__(cls)
         obj._vectors = vectors

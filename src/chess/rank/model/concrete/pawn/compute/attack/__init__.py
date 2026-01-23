@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .subset AttackVectorSubset
 from .span import PawnAttackSpan
+from .category import AttackCategory
 from .exception import PawnAttackSpanComputationFailedException

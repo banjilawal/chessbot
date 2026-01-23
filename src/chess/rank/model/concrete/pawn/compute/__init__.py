@@ -10,9 +10,10 @@ version: 1.0.0
 # =========== RANK.MODEL.CONCRETE.PAWN.COMPUTE PACKAGE CONTENTS ===========#
 
 # Packages
-from .opening import *
 from .attack import *
+from .opening import *
+from .developed import *
+
 
 # Modules
-from .pawn import Pawn
-from .exception import PawnSpanComputationFailedException
+None

@@ -86,25 +86,30 @@ class King(Rank):
         # Handle the case that the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
         if coord_validation.is_failure:
-            # On failure return the exception chain
+            # Return the exception chain on failure.
             return ComputationResult.failure(
                 KingSpanComputationFailedException(
                     message=f"{method}: {KingSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
-        
         # Iterate through the vectors, adding each one to the origin to get the King's spanning set.
         span: List[Coord] = []
         for vector in self.vectors:
+            addition_result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
+            
             # Handle the case that the computation does not produce a solution.
-            result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
-            # Return the exception chain on failure.
-            if result.is_failure:
-                return ComputationResult.failure(result.exception)
-            # Otherwise add the coord to the span.
-            if result.payload not in span:
-                span.append(result.payload)
+            if addition_result.is_failure:
+                # Return the exception chain on failure.
+                return ComputationResult.failure(
+                    KingSpanComputationFailedException(
+                        message=f"{method}: {KingSpanComputationFailedException.DEFAULT_MESSAGE}",
+                        ex=coord_validation.exception
+                    )
+                )
+            # Otherwise add the coord to the targets.
+            if addition_result.payload not in span:
+                span.append(addition_result.payload)
                 
         # --- The King's span has been successfully computed. Return in the ComputationResult's payload. ---#
         return ComputationResult.success(span)
