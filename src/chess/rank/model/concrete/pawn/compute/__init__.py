@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .attack import *
-from .opening import *
+from .opeining import *
 from .developed import *
 
 

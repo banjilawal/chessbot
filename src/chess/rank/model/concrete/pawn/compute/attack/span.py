@@ -40,6 +40,7 @@ class PawnAttackSpan:
             origin: Coord,
             attack_category: AttackCategory,
             coord_service: CoordService = CoordService(),
+            span: List[Coord] = [],
     ) -> ComputationResult[List[Coord]]:
         """
         # Action
@@ -51,6 +52,7 @@ class PawnAttackSpan:
             *   origin (Coord)
             *   attack_category (AttackCategory)
             *   coord_service (CoordService)
+            *   span (List[Coord])
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
@@ -71,7 +73,6 @@ class PawnAttackSpan:
                 )
             )
         # Iterate through the vectors, adding each one to the origin to get the King's spanning set.
-        targets: List[Coord] = []
         for vector in attack_category.vectors:
             addition_result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
             
@@ -85,8 +86,8 @@ class PawnAttackSpan:
                     )
                 )
             # Otherwise add the coord to the targets.
-            if addition_result.payload not in targets:
-                targets.append(addition_result.payload)
+            if addition_result.payload not in span:
+                span.append(addition_result.payload)
         
         # --- The targets have been successfully computed. Return in the ComputationResult's payload. ---#
-        return ComputationResult.success(targets)
+        return ComputationResult.success(span)
