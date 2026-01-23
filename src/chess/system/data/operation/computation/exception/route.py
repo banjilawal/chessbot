@@ -1,0 +1,40 @@
+# src/chess/system/data/operation/computation/exception/route.py
+
+"""
+Module: chess.system.data.operation.computation.exception.route
+Author: Banji Lawal
+Created: 2025-11-18
+Version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# NO_COMPUTATION_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
+    "NoComputationRouteException",
+]
+
+from chess.system import NoExecutionRouteException
+
+
+# ======================# NO_COMPUTATION_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
+class NoComputationRouteException(NoExecutionRouteException):
+    """
+    # ROLE: Error Tracing, Debugging, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Indicate that a computation failed because there was no execution logic for one the different 
+        computation behaviors.
+
+    # PARENT:
+        *   NoExecutionRouteException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "NO_COMPUTATION_ROUTE_FOR_SELECTED_OPTION_ERROR"
+    DEFAULT_MESSAGE = "Computation failed: No computation route was defined for the specified option."

@@ -14,4 +14,5 @@ None
 
 # Modules
 from .wrapper import InsertionFailedException
+from .route import NoInsertionRouteException
 from .unsupported import UnsupportedEmptyInsertionResultException

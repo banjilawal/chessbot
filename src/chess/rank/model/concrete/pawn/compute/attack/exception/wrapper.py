@@ -7,7 +7,7 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from chess.rank import SpanComputationFailedException
+
 
 __all__ = [
     # ======================# PAWN_ATTACK_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# PAWN_ATTACK_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-class PawnAttackSpanComputationFailedException(SpanComputationFailedException):
+class PawnAttackSpanComputationFailedException(NoBui):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

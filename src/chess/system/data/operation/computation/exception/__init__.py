@@ -13,5 +13,6 @@ Version: 1.0.0
 None
 
 # Modules
+from .route import NoComputationRouteException
 from .wrapper import ComputationFailedException
 from .unsupported import UnsupportedEmptyComputationResultException
