@@ -7,14 +7,18 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from typing import List, Optional
+from typing import List, Optional, cast
 
+from chess.token import MoveCategory, PawnToken
 from chess.vector import Vector
 from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import PawnSpanComputationFailedException, Rank, Pawn
+from chess.rank import (
+    PawnAttackSpan, PawnMoveCategory, PeacefulPawnSpan, PawnSpanComputationFailedException, Rank,
+    Pawn
+)
 
 
 class Pawn(Rank):
@@ -37,7 +41,8 @@ class Pawn(Rank):
     INHERITED ATTRIBUTES:
         *   See Rank class for inherited attributes
     """
-    
+    _attack_span: PawnAttackSpan
+    _peaceful_span: PeacefulPawnSpan
     
     def __init__(
             self,
@@ -58,11 +63,40 @@ class Pawn(Rank):
             quadrants=quadrants,
             vectors=vectors,
         )
+        
+        
+    @LoggingLevelRouter.monitor
+    def compute_peaceful_span(self, token: PawnToken) -> ComputationResult[[Coord]]:
+        if token.can_open:
+            return self._peaceful_span.compute(
+                origin=token.current_position,
+                coord_service=CoordService(),
+                pawn_move_category=PawnMoveCategory.OPENING_MOVE
+            )
+        return self._peaceful_span.compute(
+            origin=token.current_position,
+            coord_service=CoordService(),
+            pawn_move_category=PawnMoveCategory.DEVELOPED_MOVE
+        )
+    
+    @LoggingLevelRouter.monitor
+    def compute_attack_span(self, token: PawnToken) -> ComputationResult[[Coord]]:
+        if token.can_open:
+            return self._attack_span.compute(
+                origin=token.current_position,
+                coord_service=CoordService(),
+                pawn_move_category=PawnMoveCategory.OPENING_MOVE
+            )
+        return self._attack_span.compute(
+            origin=token.current_position,
+            coord_service=CoordService(),
+            pawn_move_category=PawnMoveCategory.DEVELOPED_MOVE
+        )
     
     @LoggingLevelRouter.monitor
     def compute_span(
             self,
-            origin: Coord,
+            token: PawnToken,
             coord_service: CoordService = CoordService()
     ) -> ComputationResult[[Coord]]:
         """
@@ -84,8 +118,40 @@ class Pawn(Rank):
         """
         method = "Pawn.compute_span"
         
+        destinations = []
+        if token.can_open:
+            destination_computation = self._peaceful_span.compute(
+                origin=token.current_position,
+                coord_service=coord_service,
+                pawn_move_category=PawnMoveCategory.OPENING_MOVE
+            )
+            if destination_computation.is_failure:
+                return ComputationResult.failure(
+                    PawnSpanComputationFailedException(
+                        message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
+                        ex=destination_computation.exception
+                    )
+                )
+            targeting_computation =self._attack_span.compute(
+                origin=token.current_position,
+                coord_service=coord_service,
+                pawn_move_category=PawnMoveCategory.OPENING_MOVE
+            )
+            if destination_computation.is_failure:
+                return ComputationResult.failure(
+                    PawnSpanComputationFailedException(
+                        message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
+                        ex=destination_computation.exception
+                    )
+                )
+            span = cast(List, list(set(destination_computation.payload + targeting_computation.payload)))
+            ComputationResult.success(span)
+            
+            
+        
+        
         # Handle the case that the coord is not certified safe.
-        coord_validation = coord_service.validator.validate(candidate=origin)
+        coord_validation = coord_service.validator.validate(candidate=token.current_position)
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(

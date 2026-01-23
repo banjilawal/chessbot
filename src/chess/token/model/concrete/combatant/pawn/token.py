@@ -75,11 +75,11 @@ class PawnToken(CombatantToken):
         
     @property
     def is_developed(self) -> bool:
-        return self.is_opened and self.move_category == MoveCategory.DEVELOPED
+        return self._positions > 1 and self.move_category == MoveCategory.DEVELOPED
     
     @property
-    def is_opened(self) -> bool:
-        return self._positions.size == 2 and self._move_category == MoveCategory.OPENED
+    def can_open(self) -> bool:
+        return self._positions.size == 1 and self._move_category == MoveCategory.NULL
     
     
 

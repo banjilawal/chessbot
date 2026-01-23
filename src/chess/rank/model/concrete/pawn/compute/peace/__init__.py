@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .span import PawnPeacefulSpan
+from .span import PeacefulPawnSpan
 from .exception import PawnPeacefulSpanComputationFailedException

@@ -15,7 +15,7 @@ from chess.rank import PawnMoveCategory, PawnPeacefulSpanComputationFailedExcept
 
 
 
-class PawnPeacefulSpan:
+class PeacefulPawnSpan:
     """
     # RESPONSIBILITIES:
     1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
