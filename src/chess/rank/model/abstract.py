@@ -13,6 +13,7 @@ from typing import List, Optional
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
+from chess.token import Token, TokenService
 from chess.vector import Vector
 
 
@@ -66,7 +67,8 @@ class Rank(ABC):
     @LoggingLevelRouter.monitor
     def compute_span(
             self,
-            origin: Coord,
+            token: Token,
+            token_service: TokenService = TokenService(),
             coord_service: CoordService = CoordService()
     ) -> ComputationResult[[Coord]]:
         """"""

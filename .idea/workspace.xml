@@ -8,6 +8,7 @@
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/engine/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/engine/engine.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/engine/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opening/span.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/peace/__init__.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/peace/exception.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/peace/span.py" afterDir="false" />
@@ -19,7 +20,7 @@
       <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/developed/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/developed/span.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opeining/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opening/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opeining/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opeining/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opening/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opeining/span.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -868,7 +869,7 @@
       <workItem from="1768926121948" duration="61424000" />
       <workItem from="1769014389486" duration="11124000" />
       <workItem from="1769071457912" duration="53061000" />
-      <workItem from="1769146830340" duration="9231000" />
+      <workItem from="1769146830340" duration="9676000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

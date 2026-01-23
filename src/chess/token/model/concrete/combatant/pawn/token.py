@@ -12,10 +12,11 @@ from typing import Optional
 from chess.team import Team
 from chess.square import Square
 from chess.rank import Pawn, Rank
-from chess.token import CombatantToken, PromotionState
+from chess.token import CombatantToken, MoveCategory, PromotionState
 
 
 class PawnToken(CombatantToken):
+    _motion_category: MoveCategory
     _promotion_state: PromotionState
     
     def __init__(
@@ -35,6 +36,7 @@ class PawnToken(CombatantToken):
             opening_square=opening_square
         )
         self._previous_rank = None
+        self._move_category = MoveCategory.CANNOT_MOVE
         self._promotion_state = PromotionState.NOT_PROMOTED
     
     @property
@@ -46,7 +48,7 @@ class PawnToken(CombatantToken):
         return self._promotion_state
     
     @promotion_state.setter
-    def promotion(self, promotion_state: PromotionState):
+    def promotion_state(self, promotion_state: PromotionState):
         self._promotion_state = promotion_state
         
     @property
@@ -62,6 +64,25 @@ class PawnToken(CombatantToken):
     
     def promote(self, new_rank: Rank):
         self._set_rank(new_rank)
+    
+    @property
+    def move_category(self) -> MoveCategory:
+        return self._move_category
+    
+    @move_category.setter
+    def move_category(self, move_category: MoveCategory):
+        self._move_category = move_category
+        
+    @property
+    def is_developed(self) -> bool:
+        return self.is_opened and self.move_category == MoveCategory.DEVELOPED
+    
+    @property
+    def is_opened(self) -> bool:
+        return self._positions.size == 2 and self._move_category == MoveCategory.OPENED
+    
+    
+
     
     def __eq__(self, other):
         if super().__eq__(other):

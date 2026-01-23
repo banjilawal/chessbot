@@ -1,7 +1,7 @@
-# src/chess/rank/model/concrete/knight/knight.py
+# src/chess/rank/model/concrete/pawn/pawn.py
 
 """
-Module: chess.rank.model.concrete.knight.knight
+Module: chess.rank.model.concrete.pawn.pawn
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -14,7 +14,7 @@ from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import KnightSpanComputationFailedException, Rank, Pawn
+from chess.rank import PawnSpanComputationFailedException, Rank, Pawn
 
 
 class Pawn(Rank):
@@ -22,8 +22,8 @@ class Pawn(Rank):
     # ROLE: Computation, Metadata
 
     # RESPONSIBILITIES:
-    1.  Produces a list of Coords reachable from a Knight's current position.
-    2.  Metadata about the Knight rank useful for optimizing the GameGraph.
+    1.  Produces a list of Coords reachable from a Pawn's current position.
+    2.  Metadata about the Pawn rank useful for optimizing the GameGraph.
 
     # PARENT:
         Rank
@@ -37,18 +37,17 @@ class Pawn(Rank):
     INHERITED ATTRIBUTES:
         *   See Rank class for inherited attributes
     """
-    _attack_vectors: List[Vector]
+    
     
     def __init__(
             self,
             id: int,
-            name: str = Persona.KNIGHT.name,
-            ransom: int = Persona.KNIGHT.ransom,
-            team_quota: int = Persona.KNIGHT.quota,
-            designation: str = Persona.KNIGHT.designation,
-            quadrants: List[Quadrant] = List[Persona.KNIGHT.quadrants],
-            vectors: Optional[List[Vector]] = List[Persona.KNIGHT.quadrants],
-            attack_vectors: List[Vectors] = 
+            name: str = Persona.PAWN.name,
+            ransom: int = Persona.PAWN.ransom,
+            team_quota: int = Persona.PAWN.quota,
+            designation: str = Persona.PAWN.designation,
+            quadrants: List[Quadrant] = List[Persona.PAWN.quadrants],
+            vectors: Optional[List[Vector]] = None,
     ):
         super().__init__(
             id=id,
@@ -69,7 +68,7 @@ class Pawn(Rank):
         """
         # Action
             1.  If the origin is not certified safe send an exception chain in the ComputationResult.
-            2.  Add origin to each vector in Knight.vectors to get the spanning set. If any of the
+            2.  Add origin to each vector in Pawn.vectors to get the spanning set. If any of the
                 additions fails send an exception chain in the ComputationResult.
             3.  Send the set of points to the caller in the ComputationReslt's payload.
         # PARAMETERS:
@@ -81,22 +80,22 @@ class Pawn(Rank):
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   KnightSpanComputationFailedException
+            *   PawnSpanComputationFailedException
         """
-        method = "Knight.compute_span"
+        method = "Pawn.compute_span"
         
         # Handle the case that the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                KnightSpanComputationFailedException(
-                    message=f"{method}: {KnightSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PawnSpanComputationFailedException(
+                    message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
         
-        # Iterate through the vectors, adding each one to the origin to get the Knight's spanning set.
+        # Iterate through the vectors, adding each one to the origin to get the Pawn's spanning set.
         span: List[Coord] = []
         for vector in self.vectors:
             # Handle the case that the computation does not produce a solution.
@@ -108,7 +107,7 @@ class Pawn(Rank):
             if result.payload not in span:
                 span.append(result.payload)
         
-        # --- The Knight's span has been successfully computed. Return in the ComputationResult's payload. ---#
+        # --- The Pawn's span has been successfully computed. Return in the ComputationResult's payload. ---#
         return ComputationResult.success(span)
     
     @LoggingLevelRouter.monitor
