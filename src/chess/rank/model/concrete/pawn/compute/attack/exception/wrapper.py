@@ -14,9 +14,11 @@ __all__ = [
     "PawnAttackSpanComputationFailedException",
 ]
 
+from chess.system import ComputationFailedException
+
 
 # ======================# PAWN_ATTACK_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-class PawnAttackSpanComputationFailedException(NoBui):
+class PawnAttackSpanComputationFailedException(ComputationFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
