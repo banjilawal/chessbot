@@ -12,8 +12,9 @@ from typing import List, Optional
 from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
-from chess.system import ComputationResult, LoggingLevelRouter
+from chess.system import ChessException, ComputationResult, LoggingLevelRouter
 from chess.rank import RookSpanComputationFailedException, PerpendicularSpan, Rank, Rook
+from chess.token import Token, TokenService
 
 
 class Rook(Rank):
@@ -62,8 +63,9 @@ class Rook(Rank):
     @LoggingLevelRouter.monitor
     def compute_span(
             self,
-            origin: Coord,
-            coord_service: CoordService = CoordService()
+            token: Token,
+            token_service: TokenService = TokenService(),
+            coord_service: CoordService = CoordService(),
     ) -> ComputationResult[[[Coord]]]:
         """
         # Action
@@ -82,10 +84,18 @@ class Rook(Rank):
             *   RookSpanComputationFailedException
         """
         method = "Rook.compute_span"
-        
+
+        if not token.is_active:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                RookSpanComputationFailedException(
+                    message=f"{method}: {RookSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    ex=ChessException()
+                )
+            )
         computation_result = self._perpendicular_span.compute(
             points=[],
-            origin=origin,
+            origin=token.current_position,
             coord_service=coord_service
         )
         # Handle the case that spanning set computation does not produce a solution.

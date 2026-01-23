@@ -9,11 +9,13 @@ version: 1.0.0
 
 from typing import List, Optional
 
+from chess.token import TokenService
+from chess.token.model import Token
 from chess.vector import Vector
 from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
-from chess.system import ComputationResult, LoggingLevelRouter
+from chess.system import ChessException, ComputationResult, LoggingLevelRouter
 from chess.rank import KnightSpanComputationFailedException, Rank, Knight
 
 
@@ -61,9 +63,10 @@ class Knight(Rank):
     @LoggingLevelRouter.monitor
     def compute_span(
             self,
-            origin: Coord,
-            coord_service: CoordService = CoordService()
-    ) -> ComputationResult[[Coord]]:
+            token: Token,
+            token_service: TokenService = TokenService(),
+            coord_service: CoordService = CoordService(),
+    ) -> ComputationResult[[[Coord]]]:
         """
         # Action
             1.  If the origin is not certified safe send an exception chain in the ComputationResult.
@@ -83,14 +86,22 @@ class Knight(Rank):
         """
         method = "Knight.compute_span"
         
-        # Handle the case that the coord is not certified safe.
-        coord_validation = coord_service.validator.validate(candidate=origin)
-        if coord_validation.is_failure:
-            # On failure return the exception chain
+        # # Handle the case that the coord is not certified safe.
+        # coord_validation = coord_service.validator.validate(candidate=origin)
+        # if coord_validation.is_failure:
+        #     # On failure return the exception chain
+        #     return ComputationResult.failure(
+        #         KnightSpanComputationFailedException(
+        #             message=f"{method}: {KnightSpanComputationFailedException.DEFAULT_MESSAGE}",
+        #             ex=coord_validation.exception
+        #         )
+        #     )
+        if not token.is_active:
+            # Return the exception chain on failure.
             return ComputationResult.failure(
                 KnightSpanComputationFailedException(
                     message=f"{method}: {KnightSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=coord_validation.exception
+                    ex=ChessException()
                 )
             )
         
@@ -98,7 +109,7 @@ class Knight(Rank):
         span: List[Coord] = []
         for vector in self.vectors:
             # Handle the case that the computation does not produce a solution.
-            result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
+            result = coord_service.add_vector_to_coord(coord=token.current_position, vector=vector)
             # Return the exception chain on failure.
             if result.is_failure:
                 return ComputationResult.failure(result.exception)
