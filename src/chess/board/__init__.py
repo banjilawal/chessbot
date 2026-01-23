@@ -21,4 +21,3 @@ from .service import *
 # Modules
 from .board import Board
 from .iterator import SquareIterator
-from .exception import BoardException

@@ -9,10 +9,13 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.board import Board, BoardService
+from chess.board import Board, BoardService, DisabledTokenCannotExploreException
 from chess.formation import FormationService
 from chess.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
-from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.system import (
+    DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, ValidationResult,
+    id_emitter
+)
 from chess.token import (
     OverMoveUndoLimitException, Token, TokenFactory, TokenOpeningSquareNullException, TokenServiceException,
     TokenValidator
@@ -81,6 +84,34 @@ class TokenService(EntityService[Token]):
     @property
     def formation_service(self) -> FormationService:
         return self._formation_service
+    
+
+    def verify_actionable_token(self, token: Token) -> ValidationResult[Token]:
+        method = "TokenService.verify_actionable_token"
+        # Handle the case that the token is not certified safe.
+        token_validation = self.validator.validate(candidate=token)
+        if token_validation.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenServiceException(
+                    message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
+                    ex=token_validation.exception
+                )
+            )
+        # Handle the case that the token has not been placed.
+        if token.is_disabled:
+            # Return the exception chain on failure.
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenServiceException(
+                    message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
+                    ex=DisabledTokenCannotExploreException(
+                        f"{method}: {DisabledTokenCannotExploreException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # The token is actionable.
+        return ValidationResult.success(token)
     
     # @LoggingLevelRouter.monitor
     # def form_token_on_board(

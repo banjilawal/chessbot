@@ -12,7 +12,8 @@ from typing import List, Optional
 from chess.vector import Vector
 from chess.persona import Persona
 from chess.geometry import Quadrant
-from chess.coord import Coord, CoordService
+from chess.coord import Coord
+from chess.token import Token
 from chess.system import ComputationResult, LoggingLevelRouter
 from chess.rank import KingSpanComputationFailedException, Rank, King
 
@@ -59,11 +60,7 @@ class King(Rank):
         )
     
     @LoggingLevelRouter.monitor
-    def compute_span(
-            self, 
-            origin: Coord, 
-            coord_service: CoordService = CoordService()
-    ) -> ComputationResult[[Coord]]:
+    def compute_span(self, token: Token,) -> ComputationResult[[Coord]]:
         """
         # Action
             1.  If the origin is not certified safe send an exception chain in the ComputationResult.
@@ -82,21 +79,22 @@ class King(Rank):
             *   KingSpanComputationFailedException
         """
         method = "King.compute_span"
-        
-        # Handle the case that the coord is not certified safe.
-        coord_validation = coord_service.validator.validate(candidate=origin)
-        if coord_validation.is_failure:
-            # Return the exception chain on failure.
-            return ComputationResult.failure(
-                KingSpanComputationFailedException(
-                    message=f"{method}: {KingSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=coord_validation.exception
-                )
-            )
-        # Iterate through the vectors, adding each one to the origin to get the King's spanning set.
+        #
+        # # Handle the case that the token is both safe and actionable.
+        # actionable_token_verification_result = token_service.verify_token_is_actionable(token=token)
+        # if actionable_token_verification_result.is_failure:
+        #     # Return the exception chain on failure.
+        #     return ComputationResult.failure(
+        #         KingSpanComputationFailedException(
+        #             message=f"{method}: {KingSpanComputationFailedException.DEFAULT_MESSAGE}",
+        #             ex=actionable_token_verification_result.exception
+        #         )
+        #     )
+
+        # Iterate through the vectors, adding each to the king's position to get the King's spanning set.
         span: List[Coord] = []
         for vector in self.vectors:
-            addition_result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
+            addition_result = self.coord_service.add_vector_to_coord(coord=token.current_position, vector=vector)
             
             # Handle the case that the computation does not produce a solution.
             if addition_result.is_failure:
@@ -104,10 +102,10 @@ class King(Rank):
                 return ComputationResult.failure(
                     KingSpanComputationFailedException(
                         message=f"{method}: {KingSpanComputationFailedException.DEFAULT_MESSAGE}",
-                        ex=coord_validation.exception
+                        ex=addition_result.exception
                     )
                 )
-            # Otherwise add the coord to the targets.
+            # Otherwise add the coord to the span.
             if addition_result.payload not in span:
                 span.append(addition_result.payload)
                 

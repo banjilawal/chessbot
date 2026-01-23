@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .compute import *
+from .vector import *
 
 # Modules
 from .pawn import Pawn

@@ -15,8 +15,7 @@ from .engine import *
 from .attack import *
 from .opening import *
 from .developed import *
-
-
+from .category import *
 
 # Modules
-from .category import PawnMoveCategory
+None

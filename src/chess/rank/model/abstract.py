@@ -45,6 +45,7 @@ class Rank(ABC):
     _team_quota: int
     _quadrants: List[Quadrant]
     _vectors: Optional[Vector]
+    _coord_service: CoordService
     
     def __init__(self,
             id: int,
@@ -53,7 +54,8 @@ class Rank(ABC):
             ransom: int,
             team_quota: int,
             quadrants: List[Quadrant],
-            vectors: Optional[Vector] = None
+            vectors: Optional[Vector] = None,
+            coord_service: CoordService = CoordService(),
     ):
         self._id = id
         self._name = name
@@ -62,17 +64,17 @@ class Rank(ABC):
         self._designation = designation
         self._quadrants = quadrants
         self._vectors = vectors
+        self._coord_service = coord_service
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def compute_span(
-            self,
-            token: Token,
-            token_service: TokenService = TokenService(),
-            coord_service: CoordService = CoordService()
-    ) -> ComputationResult[[Coord]]:
+    def compute_span(self, token: Token,) -> ComputationResult[[Coord]]:
         """"""
         pass
+    
+    @property
+    def coord_service(self) -> CoordService:
+        return self._coord_service
     
     @property
     def id(self) -> int:

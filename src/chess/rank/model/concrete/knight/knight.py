@@ -61,12 +61,7 @@ class Knight(Rank):
         )
     
     @LoggingLevelRouter.monitor
-    def compute_span(
-            self,
-            token: Token,
-            token_service: TokenService = TokenService(),
-            coord_service: CoordService = CoordService(),
-    ) -> ComputationResult[[[Coord]]]:
+    def compute_span(self, token: Token,) -> ComputationResult[[Coord]]:
         """
         # Action
             1.  If the origin is not certified safe send an exception chain in the ComputationResult.
@@ -85,31 +80,24 @@ class Knight(Rank):
             *   KnightSpanComputationFailedException
         """
         method = "Knight.compute_span"
-        
-        # # Handle the case that the coord is not certified safe.
-        # coord_validation = coord_service.validator.validate(candidate=origin)
-        # if coord_validation.is_failure:
-        #     # On failure return the exception chain
+        #
+        # # Handle the case that the token is both safe and actionable.
+        # actionable_token_verification_result = token_service.verify_token_is_actionable(token=token)
+        # if actionable_token_verification_result.is_failure:
+        #     # Return the exception chain on failure.
         #     return ComputationResult.failure(
         #         KnightSpanComputationFailedException(
         #             message=f"{method}: {KnightSpanComputationFailedException.DEFAULT_MESSAGE}",
-        #             ex=coord_validation.exception
+        #             ex=actionable_token_verification_result.exception
         #         )
         #     )
-        if not token.is_active:
-            # Return the exception chain on failure.
-            return ComputationResult.failure(
-                KnightSpanComputationFailedException(
-                    message=f"{method}: {KnightSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=ChessException()
-                )
-            )
+        # --- Compute the Knight's possible destinations. ---#
         
         # Iterate through the vectors, adding each one to the origin to get the Knight's spanning set.
         span: List[Coord] = []
         for vector in self.vectors:
             # Handle the case that the computation does not produce a solution.
-            result = coord_service.add_vector_to_coord(coord=token.current_position, vector=vector)
+            result = self.coord_service.add_vector_to_coord(coord=token.current_position, vector=vector)
             # Return the exception chain on failure.
             if result.is_failure:
                 return ComputationResult.failure(result.exception)

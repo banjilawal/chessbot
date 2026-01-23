@@ -9,14 +9,14 @@ version: 1.0.0
 
 from typing import List, Optional, cast
 
-from chess.token import MoveCategory, PawnToken
+from chess.token import MoveCategory, PawnToken, TokenService
 from chess.vector import Vector
 from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
 from chess.rank import (
-    PawnAttackSpan, PawnMoveCategory, PeacefulPawnSpan, PawnSpanComputationFailedException, Rank,
+    PawnAttackSpan, PawnException, PawnMoveCategory, PeacefulPawnSpan, PawnSpanComputationFailedException, Rank,
     Pawn
 )
 
@@ -64,23 +64,86 @@ class Pawn(Rank):
             vectors=vectors,
         )
         
-        
+    
     @LoggingLevelRouter.monitor
-    def compute_peaceful_span(self, token: PawnToken) -> ComputationResult[[Coord]]:
+    def spanning_set_dictionary(
+            self,
+            token: PawnToken,
+            token_service: TokenService = TokenService(),
+            coord_service: CoordService = CoordService(),
+    ) -> ComputationResult[dict[str, List[Coord]]]:
+        """
+        
+        """
+        method = "Pawn.spanning_set_dictionary"
+        #
+        # # Handle the case that the token is either neither safe nor actionable.
+        # actionable_token_verification_result = token_service.verify_token_is_actionable(token=token)
+        # if actionable_token_verification_result.is_failure:
+        #     # Return the exception chain on failure.
+        #     return ComputationResult.failure(
+        #         PawnSpanComputationFailedException(
+        #             message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
+        #             ex=actionable_token_verification_result.exception
+        #         )
+        #     )
+        # Handle the case that the token is not a Pawn
+        if not isinstance(token, PawnToken):
+            return ComputationResult.failure(
+                PawnSpanComputationFailedException(
+                    message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    ex=TypeError(
+                        f"{method}: Expected PawnToken, got {type(token).__name__} instead. Cannot "
+                        f"compute pawn spanning dictionary for non-Pawn tokens."
+                    )
+                )
+            )
+        solution_set: dict[str, List[Coord]] = {}
+        # Get the peaceful destinations
+        destination_result = self._compute_peaceful_span(token=token)
+        
+        # Handle the case that the computation does not produce a solution.
+        if destination_result.is_failure:
+            # On failure return the exception chain
+            return ComputationResult.failure(
+                PawnException(
+                    message=f"{method}: {PawnException.DEFAULT_MESSAGE}",
+                    ex=destination_result.exception
+                )
+            )
+        targeting_result = self._compute_attack_span(token=token)
+        # Handle the case that the computation does not produce a solution.
+        if targeting_result.is_failure:
+            # On failure return the exception chain
+            return ComputationResult.failure(
+                PawnException(
+                    message=f"{method}: {PawnException.DEFAULT_MESSAGE}",
+                    ex=targeting_result.exception
+                )
+            )
+        
+        
+        
+        
+    
+    
+    @LoggingLevelRouter.monitor
+    def _compute_peaceful_span(self, token: PawnToken,) -> ComputationResult[[Coord]]:
+        
         if token.can_open:
             return self._peaceful_span.compute(
                 origin=token.current_position,
-                coord_service=CoordService(),
+                coord_service=self.coord_service,
                 pawn_move_category=PawnMoveCategory.OPENING_MOVE
             )
         return self._peaceful_span.compute(
             origin=token.current_position,
-            coord_service=CoordService(),
+            coord_service=self.coord_service,
             pawn_move_category=PawnMoveCategory.DEVELOPED_MOVE
         )
     
     @LoggingLevelRouter.monitor
-    def compute_attack_span(self, token: PawnToken) -> ComputationResult[[Coord]]:
+    def _compute_attack_span(self, token: PawnToken) -> ComputationResult[[Coord]]:
         if token.can_open:
             return self._attack_span.compute(
                 origin=token.current_position,
@@ -97,7 +160,8 @@ class Pawn(Rank):
     def compute_span(
             self,
             token: PawnToken,
-            coord_service: CoordService = CoordService()
+            token_service: TokenService = TokenService(),
+            coord_service: CoordService = CoordService(),
     ) -> ComputationResult[[Coord]]:
         """
         # Action
