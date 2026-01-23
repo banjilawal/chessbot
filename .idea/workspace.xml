@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
+      <change afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/category.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/category.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/attack/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/developed/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/developed/span.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opeining/span.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opeining/span.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute/opening.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,11 +311,11 @@
       <recent name="$PROJECT_DIR$/src/chess/board/relation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/compute" />
       <recent name="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn" />
       <recent name="$PROJECT_DIR$/src/chess/rank/model/concrete/rook" />
       <recent name="$PROJECT_DIR$/src/chess/rank/model/concrete/knight" />
       <recent name="$PROJECT_DIR$/src/chess/rank/model/concrete/bishop" />
-      <recent name="$PROJECT_DIR$/src/chess/rank/model/concrete/king" />
     </key>
   </component>
   <component name="RunManager" selected="Python.board">
@@ -855,7 +860,8 @@
       <workItem from="1768905487804" duration="9523000" />
       <workItem from="1768926121948" duration="61424000" />
       <workItem from="1769014389486" duration="11124000" />
-      <workItem from="1769071457912" duration="50600000" />
+      <workItem from="1769071457912" duration="53061000" />
+      <workItem from="1769146830340" duration="3861000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -12,7 +12,7 @@ from typing import List
 from chess.vector import Vector
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import AttackCategory, PawnAttackSpan, PawnOpeningSpanComputationFailedException
+from chess.rank import PawnVectorCategory, PawnAttackSpan, PawnOpeningSpanComputationFailedException
 
 class PawnOpeningSpan:
     """
@@ -32,7 +32,7 @@ class PawnOpeningSpan:
     # INHERITED ATTRIBUTES:
     None
     """
-    ATTACK_CATEGORY = AttackCategory.OPENING
+    ATTACK_CATEGORY = PawnVectorCategory.OPENING
     FORWARD_VECTORS = [Vector(x=0, y=1), Vector(0, y=2)]
     
     @classmethod
@@ -51,7 +51,7 @@ class PawnOpeningSpan:
                 IN THE ComputationResult's payload.
         # PARAMETERS:
             *   origin (Coord)
-            *   attack_category (AttackCategory)
+            *   attack_category (PawnVectorCategory)
             *   coord_service (CoordService)
         # RETURNS:
             *   ComputationResult[List[Coord]]:

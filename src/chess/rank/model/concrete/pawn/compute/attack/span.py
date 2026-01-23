@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.coord import Coord, CoordService
-from chess.rank import AttackCategory, PawnAttackSpanComputationFailedException
+from chess.rank import PawnVectorCategory, PawnAttackSpanComputationFailedException
 from chess.system import ComputationResult, LoggingLevelRouter
 
 
@@ -38,9 +38,8 @@ class PawnAttackSpan:
     def compute(
             cls,
             origin: Coord,
-            attack_category: AttackCategory,
+            attack_category: PawnVectorCategory,
             coord_service: CoordService = CoordService(),
-            span: List[Coord] = [],
     ) -> ComputationResult[List[Coord]]:
         """
         # Action
@@ -50,7 +49,7 @@ class PawnAttackSpan:
                 IN THE ComputationResult's payload.
         # PARAMETERS:
             *   origin (Coord)
-            *   attack_category (AttackCategory)
+            *   attack_category (PawnVectorCategory)
             *   coord_service (CoordService)
             *   span (List[Coord])
         # RETURNS:
@@ -73,6 +72,7 @@ class PawnAttackSpan:
                 )
             )
         # Iterate through the vectors, adding each one to the origin to get the King's spanning set.
+        span: List[Coord] = []
         for vector in attack_category.vectors:
             addition_result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
             

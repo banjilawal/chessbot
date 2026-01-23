@@ -14,5 +14,4 @@ None
 
 # Modules
 from .span import PawnAttackSpan
-from .category import AttackCategory
 from .exception import PawnAttackSpanComputationFailedException

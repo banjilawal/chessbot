@@ -16,4 +16,4 @@ from .developed import *
 
 
 # Modules
-None
+from .category import PawnVectorCategory
