@@ -14,14 +14,14 @@ from chess.vector import Vector
 
 
 class OpeningPawnVectorSet(PawnVectorSet):
-    PEACEFUL_DESTINATION_VECTORS = [Vector(x=0, y=1), Vector(x=0, y=2), ],
-    ATTACK_TARGETING_VECTORS = [Vector(x=0, y=2), Vector(x=-1, y=2), Vector(x=1, y=2), ]
+    # PEACEFUL_DESTINATION_VECTORS = [Vector(x=0, y=1), Vector(x=0, y=2),]
+    # ATTACK_TARGETING_VECTORS = [Vector(x=0, y=2), Vector(x=-1, y=2), Vector(x=1, y=2), ]
     def __init__(
             self,
-            attack_targeting_vectors: List[Vector] = ATTACK_TARGETING_VECTORS,
-            peaceful_destination_vectors: List[Vector] = PEACEFUL_DESTINATION_VECTORS
+            # attack_targeting_vectors: List[Vector] = ATTACK_TARGETING_VECTORS,
+            # peaceful_destination_vectors: List[Vector] = PEACEFUL_DESTINATION_VECTORS
     ):
         super().__init__(
-            attack_targeting_vectors=attack_targeting_vectors,
-            peaceful_destination_vectors=peaceful_destination_vectors
+            attack_targeting_vectors=[Vector(x=0, y=2), Vector(x=-1, y=2), Vector(x=1, y=2), ],
+            peaceful_destination_vectors=[Vector(x=0, y=1), Vector(x=0, y=2), ]
         )

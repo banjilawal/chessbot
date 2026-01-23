@@ -30,6 +30,6 @@ class PawnVectorSet(ABC):
     def attack_targeting_vectors(self) -> List[Vector]:
         return self._attack_targeting_vectors
     
-    @proprerty
+    @property
     def peaceful_destination_vectors(self) -> List[Vector]:
         return self._peaceful_destination_vectors

@@ -10,8 +10,12 @@ version: 1.0.0
 from typing import List
 
 from chess.coord import Coord, CoordService
-from chess.rank import PawnMoveCategory, PawnAttackSpanComputationFailedException
+from chess.rank import (
+    OpeningPawnVectorSet, PawnAttackSpanComputationRouteException, PawnAttackSpanComputationFailedException
+)
 from chess.system import ComputationResult, LoggingLevelRouter
+from chess.token import PawnToken
+from chess.vector import Vector
 
 
 class PawnAttackSpan:
@@ -32,13 +36,14 @@ class PawnAttackSpan:
     # INHERITED ATTRIBUTES:
     None
     """
+    OPENING_PAWN_VECTOR_SET = OpeningPawnVectorSet()
+    DEVELOPED_PAWN_VECTOR_SET = OpeningPawnVectorSet()
     
     @classmethod
     @LoggingLevelRouter.monitor
     def compute(
             cls,
-            origin: Coord,
-            pawn_move_category: PawnMoveCategory,
+            token: PawnToken,
             coord_service: CoordService = CoordService(),
     ) -> ComputationResult[List[Coord]]:
         """
@@ -61,6 +66,39 @@ class PawnAttackSpan:
         """
         method = "PawnAttack.compute"
         
+        if token.can_open:
+            return cls._span(
+                origin=token.current_position,
+                coord_service=coord_service,
+                attack_vectors=cls.OPENING_PAWN_VECTOR_SET.attack_targeting_vectors
+            )
+        if token.is_developed:
+            return cls._span(
+                origin=token.current_position,
+                coord_service=coord_service,
+                attack_vectors=cls.DEVELOPED_PAWN_VECTOR_SET.attack_targeting_vectors
+            )
+        
+        # On failure return the exception chain
+        return ComputationResult.failure(
+            PawnAttackSpanComputationFailedException(
+                message=f"{method}: {PawnAttackSpanComputationFailedException.DEFAULT_MESSAGE}",
+                ex=PawnAttackSpanComputationRouteException(
+                    f"{method}: {PawnAttackSpanComputationRouteException.DEFAULT_MESSAGE}"
+                )
+            )
+        )
+        
+    
+    @classmethod
+    def _span(
+            cls,
+            origin: Coord,
+            attack_vectors: List[Vector],
+            coord_service: CoordService
+    ) -> ComputationResult[List[Coord]]:
+        method = "PawnAttackSpan._opening_targets"
+        
         # Handle the case that the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
         if coord_validation.is_failure:
@@ -71,9 +109,9 @@ class PawnAttackSpan:
                     ex=coord_validation.exception
                 )
             )
-        # Iterate through the vectors, adding each one to the origin to get the King's spanning set.
+        
         targets: List[Coord] = []
-        for vector in pawn_move_category.attack_vectors:
+        for vector in attack_vectors:
             addition_result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
             
             # Handle the case that vector addition does not produce a result.
@@ -88,6 +126,5 @@ class PawnAttackSpan:
             # Otherwise add the coord to the targets.
             if addition_result.payload not in targets:
                 targets.append(addition_result.payload)
-        
         # --- The targets have been successfully computed. Return in the ComputationResult's payload. ---#
         return ComputationResult.success(targets)
