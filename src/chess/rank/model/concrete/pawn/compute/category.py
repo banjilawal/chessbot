@@ -13,7 +13,7 @@ from typing import List
 from chess.vector import Vector
 
 
-class PawnVectorCategory(Enum):
+class PawnMoveCategory(Enum):
     def __new__(cls, peaceful_vectors: List[Vector], attack_vectors: List[Vector]):
         obj = object.__new__(cls)
         obj._peaceful_vectors = peaceful_vectors

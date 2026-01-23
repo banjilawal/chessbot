@@ -1,7 +1,7 @@
 # src/chess/rank/model/concrete/pawn/compute/opening/exception.py
 
 """
-Module: chess.rank.model.concrete.pawn.compute.openingexception
+Module: chess.rank.model.concrete.pawn.compute.opening.exception
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0

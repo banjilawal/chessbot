@@ -10,10 +10,13 @@ version: 1.0.0
 # =========== RANK.MODEL.CONCRETE.PAWN.COMPUTE PACKAGE CONTENTS ===========#
 
 # Packages
+from .peace import *
+from .engine import *
 from .attack import *
-from .opeining import *
+from .opening import *
 from .developed import *
 
 
+
 # Modules
-from .category import PawnVectorCategory
+from .category import PawnMoveCategory

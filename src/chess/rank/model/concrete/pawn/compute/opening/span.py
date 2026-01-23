@@ -1,7 +1,7 @@
-# src/chess/rank/model/concrete/pawn/compute/Developed/span.py
+# src/chess/rank/model/concrete/pawn/compute/opening/span.py
 
 """
-Module: chess.rank.model.concrete.pawn.compute.Developed.span
+Module: chess.rank.model.concrete.pawn.compute.opening.span
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -11,10 +11,9 @@ from typing import List
 
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import PawnMoveCategory, PawnAttackSpan, PawnDevelopedSpanComputationFailedException
+from chess.rank import PawnMoveCategory, PawnAttackSpan, PawnOpeningSpanComputationFailedException
 
-
-class PawnDevelopedSpan:
+class PawnOpeningSpan:
     """
     # RESPONSIBILITIES:
     1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
@@ -32,7 +31,7 @@ class PawnDevelopedSpan:
     # INHERITED ATTRIBUTES:
     None
     """
-    MOVEMENT_CATEGORY = PawnMoveCategory.DEVELOPED_MOVE
+    MOVEMENT_CATEGORY = PawnMoveCategory.OPENING_MOVE
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -66,8 +65,8 @@ class PawnDevelopedSpan:
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PawnDevelopedSpanComputationFailedException(
-                    message=f"{method}: {PawnDevelopedSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PawnOpeningSpanComputationFailedException(
+                    message=f"{method}: {PawnOpeningSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
@@ -83,15 +82,15 @@ class PawnDevelopedSpan:
             if destination_computation.is_failure:
                 # On failure return the exception chain
                 return ComputationResult.failure(
-                    PawnDevelopedSpanComputationFailedException(
-                        message=f"{method}: {PawnDevelopedSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    PawnOpeningSpanComputationFailedException(
+                        message=f"{method}: {PawnOpeningSpanComputationFailedException.DEFAULT_MESSAGE}",
                         ex=destination_computation.exception
                     )
                 )
             # On success append the solution to the span
             if destination_computation.payload not in destinations:
                 destinations.append(destination_computation.payload)
-                
+        
         # --- Compute attack targets ---#
         targeting_computation = pawn_attack_span.compute(
             origin=origin,
@@ -101,8 +100,8 @@ class PawnDevelopedSpan:
         if targeting_computation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PawnDevelopedSpanComputationFailedException(
-                    message=f"{method}: {PawnDevelopedSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PawnOpeningSpanComputationFailedException(
+                    message=f"{method}: {PawnOpeningSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=targeting_computation.exception
                 )
             )

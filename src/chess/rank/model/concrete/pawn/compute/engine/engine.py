@@ -1,20 +1,21 @@
-# src/chess/rank/model/concrete/pawn/compute/Developed/span.py
+# src/chess/rank/model/concrete/pawn/compute/engine/engine.py
 
 """
-Module: chess.rank.model.concrete.pawn.compute.Developed.span
+Module: chess.rank.model.concrete.pawn.compute.engine.engine
 Author: Banji Lawal
-Created: 2026-01-22
+Created: 2026-01-23
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, cast
 
 from chess.coord import Coord, CoordService
+from chess.rank.model.concrete.pawn.compute.engine import PawnSolutionEngineException
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import PawnMoveCategory, PawnAttackSpan, PawnDevelopedSpanComputationFailedException
+from chess.rank import PawnMoveCategory, PawnAttackSpan, PawnOpeningSpanComputationFailedException
 
 
-class PawnDevelopedSpan:
+class PawnSolutionEngine:
     """
     # RESPONSIBILITIES:
     1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
@@ -32,13 +33,14 @@ class PawnDevelopedSpan:
     # INHERITED ATTRIBUTES:
     None
     """
-    MOVEMENT_CATEGORY = PawnMoveCategory.DEVELOPED_MOVE
+    MOVEMENT_CATEGORY = PawnMoveCategory.OPENING_MOVE
     
     @classmethod
     @LoggingLevelRouter.monitor
     def compute(
             cls,
             origin: Coord,
+            pawn_move_category: PawnMoveCategory,
             coord_service: CoordService = CoordService(),
             pawn_attack_span: PawnAttackSpan = PawnAttackSpan(),
     ) -> ComputationResult[List[Coord]]:
@@ -59,22 +61,22 @@ class PawnDevelopedSpan:
         # RAISES:
             *   PawnAttackSpanComputationFailedException
         """
-        method = "PawnAttack.compute"
+        method = "PawnSolutionEngine.compute"
         
         # Handle the case that the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PawnDevelopedSpanComputationFailedException(
-                    message=f"{method}: {PawnDevelopedSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PawnOpeningSpanComputationFailedException(
+                    message=f"{method}: {PawnOpeningSpanComputationFailedException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
         
         # --- Compute the peaceful destinations ---#
         destinations: List[Coord] = []
-        for vector in cls.MOVEMENT_CATEGORY.peaceful_vectors:
+        for vector in pawn_move_category.peaceful_vectors:
             destination_computation = coord_service.add_vector_to_coord(
                 coord=origin,
                 vector=vector
@@ -83,30 +85,33 @@ class PawnDevelopedSpan:
             if destination_computation.is_failure:
                 # On failure return the exception chain
                 return ComputationResult.failure(
-                    PawnDevelopedSpanComputationFailedException(
-                        message=f"{method}: {PawnDevelopedSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    PawnSolutionEngineException(
+                        message=f"{method}: {PawnSolutionEngineException.DEFAULT_MESSAGE}",
                         ex=destination_computation.exception
                     )
                 )
-            # On success append the solution to the span
+            # The payloads will all b unique but using the if is a safety check.
             if destination_computation.payload not in destinations:
                 destinations.append(destination_computation.payload)
-                
+        
         # --- Compute attack targets ---#
         targeting_computation = pawn_attack_span.compute(
             origin=origin,
             coord_service=coord_service,
+            pawn_move_category=pawn_move_category,
         )
-        # Handle the case that the no solution is produced.
+        # Handle the case that the no targeting solution is produced.
         if targeting_computation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PawnDevelopedSpanComputationFailedException(
-                    message=f"{method}: {PawnDevelopedSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PawnSolutionEngineException(
+                    message=f"{method}: {PawnSolutionEngineException.DEFAULT_MESSAGE}",
                     ex=targeting_computation.exception
                 )
             )
+        targets = targeting_computation.payload
         
-        # --- Get the unique points in the destination and attack solutions and send them to the caller. ---#
-        span = list(set(destinations + targeting_computation.payload))
+        # The destinations and targets should be unique but putting them in a set guarantees it.
+        span = cast(List ,list(set(destinations + targets)))
+        # --- Send the span to the caller ---#
         ComputationResult.success(span)
