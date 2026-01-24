@@ -9,13 +9,12 @@ version: 1.0.0
 
 from typing import List, Optional
 
+from chess.token import Token
 from chess.coord import Coord
 from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.system import ComputationResult, LoggingLevelRouter
 from chess.rank import BishopSpanComputationFailedException, DiagonalSpan, Rank, Bishop
-from chess.token import Token
-
 
 class Bishop(Rank):
     """
@@ -64,33 +63,21 @@ class Bishop(Rank):
     def compute_span(self, token: Token,) -> ComputationResult[[Coord]]:
         """
         # Action
-            1.  If the origin is not certified safe send an exception chain in the ComputationResult.
-            2.  Add origin to each vector in Bishop.vectors to get the spanning set. If any of the
-                additions fails send an exception chain in the ComputationResult.
-            3.  Send the set of points to the caller in the ComputationReslt's payload.
+            1.  Pass the token's current position to Rook._perpendicular_span to get the set of possible destinations.
+            2.  If perpendicular_span fails send the exception chain in the ComputationResult. Else, return
+                the span in the ComputationResult's payload.
         # PARAMETERS:
-            *   origin (Coord)
-            *   coord_service (CoordService)
-
+            *   token (Token)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   BishopSpanComputationFailedException
+            *   RookException
+            *   RookSpanComputationFailedException
         """
         method = "Bishop.compute_span"
         
-        # # Handle the case that the token is both safe and actionable.
-        # actionable_token_verification_result = token_service.verify_token_is_actionable(token=token)
-        # if actionable_token_verification_result.is_failure:
-        #     # Return the exception chain on failure.
-        #     return ComputationResult.failure(
-        #         BishopSpanComputationFailedException(
-        #             message=f"{method}: {BishopSpanComputationFailedException.DEFAULT_MESSAGE}",
-        #             ex=actionable_token_verification_result.exception
-        #         )
-        #     )
         # --- Compute the Bishop's possible destinations. ---#
         computation_result = self._diagonal_span.compute(
             points=[],
@@ -106,6 +93,5 @@ class Bishop(Rank):
                     ex=computation_result.exception
                 )
             )
-        
-        # --- The Bishop's span has been successfully computed. Return in the ComputationResult's payload. ---#
+        # Put the completed Bishop's span into a ComputationResult and send to the caller.
         return computation_result
