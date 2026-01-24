@@ -14,6 +14,25 @@ from chess.vector import Vector
 
 
 class PawnVectorSet(ABC):
+    """
+    # ROLE: Configuration Information.
+
+    # RESPONSIBILITIES:
+    1.  Provide a set of vectors that are used for computing coords a Pawn can move to.
+
+    # PARENT:
+    None
+
+    # PROVIDES
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   attack_targeting_vectors (List[Vector])
+        *   peaceful_destination_vectors (List[Vector])
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     _attack_targeting_vectors: List[Vector]
     _peaceful_destination_vectors: List[Vector]
     
@@ -22,6 +41,17 @@ class PawnVectorSet(ABC):
             attack_targeting_vectors: List[Vector],
             peaceful_destination_vectors: List[Vector]
     ):
+        """
+        # Action
+            Constructor
+        # PARAMETERS:
+            *   attack_targeting_vectors (List[Vector])
+            *   peaceful_destination_vectors (List[Vector])
+        # RETURNS:
+        None
+        # RAISES:
+        None
+        """
         self._attack_targeting_vectors = attack_targeting_vectors
         self._peaceful_destination_vectors = peaceful_destination_vectors
         
