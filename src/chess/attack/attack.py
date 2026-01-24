@@ -1,5 +1,6 @@
 from chess.square import Square
 from chess.system import LoggingLevelRouter
+from chess.token import Token
 
 
 class Attack:
