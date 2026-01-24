@@ -1,7 +1,7 @@
-# src/chess/attack/exception/debug/friend.py
+# src/chess/attack/exception/debug/square/friend.py
 
 """
-Module: chess.attack.exception.debug.friend
+Module: chess.attack.exception.debug.square.friend
 Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0

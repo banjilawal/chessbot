@@ -1,7 +1,7 @@
-# src/chess/attack/exception/debug/square.py
+# src/chess/attack/exception/debug/square/empty.py
 
 """
-Module: chess.attack.exception.debug.square
+Module: chess.attack.exception.debug.square.empty
 Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0

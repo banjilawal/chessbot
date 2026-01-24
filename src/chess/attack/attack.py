@@ -6,12 +6,15 @@ Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
 """
+from typing import cast
+
 from chess.attack import (
-    AttackFailedException, AttackResult, AttackingEnemyKingException, AttackingFriendlySquareException,
-    AttackingVacantSquareException
+    AttackFailedException, AttackResult, AttackerSquareInconsistencyException, AttackingEnemyKingException,
+    AttackingFriendlySquareException,
+    AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
 from chess.hostage import HostageDatabaseService, HostageDatabaseService
-from chess.square import Square, SquareService
+from chess.square import Square, SquareContext, SquareService
 from chess.system import LoggingLevelRouter
 from chess.token import KingToken, Token, TokenService
 
@@ -31,7 +34,7 @@ class Attack:
         method = "Attack.execute"
         
         # Handle the case that the attacker is disabled
-        attacker_validation = token_service.verify_actionable_token(candidate=attacker)
+        attacker_validation = token_service.verify_actionable_token(token=attacker)
         if attacker_validation.is_failure:
             # Return exception chain on failure.
             return AttackResult.failure(
@@ -57,6 +60,17 @@ class Attack:
                 AttackFailedException(
                     message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
                     ex=AttackingVacantSquareException(f"{method}: {AttackingVacantSquareException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case that the tokens are on different boards.
+        if attacker.team.board != square.occupant.team.boardy:
+            # Return the exception chain on failure.
+            return AttackResult.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=AttackingTokenOnWrongBoardException(
+                        f"{method}: {AttackingTokenOnWrongBoardException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
         # Handle the case that the square is occupied by a friend.
@@ -86,7 +100,7 @@ class Attack:
                     ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
                 )
             )
-        # --- Start Processing the attack. ---#
+        # Handoff validating the attacker's square and processing the attack.
         return cls._process_attack(
             attacker=attacker,
             square=square,
@@ -104,5 +118,38 @@ class Attack:
         square: Square,
         hostage_database_service: HostageDatabaseService,
     ) -> AttackResult:
-        pass
-        
+        """"""
+        method = "Attack._process_attack"
+        square_search_result = attacker.team.board.squares.search_squares(
+            context=SquareContext(coord=attacker.current_position)
+        )
+        # Handle the case that the square_search fails.
+        if square_search_result.is_failure:
+            # Return exception chain on failure.
+            return AttackResult.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case that no square matching the token's coords is found.
+        if square_search_result.is_empty:
+            # Return exception chain on failure.
+            return AttackResult.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case that the square does not contain the attacker despite their share coord.
+        if cast(Square, square_search_result.payload).occupant != attacker:
+            # Return exception chain on failure.
+            return AttackResult.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=AttackerSquareInconsistencyException(
+                        f"{method}: {AttackerSquareInconsistencyException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # --- Start Processing the attack. ---#

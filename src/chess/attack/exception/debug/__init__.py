@@ -10,6 +10,7 @@ version: 1.0.0
 # ===========  ATTACK.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
+from .board import *
 from .enemy import *
 from .square import *
 
