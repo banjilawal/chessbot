@@ -14,25 +14,21 @@ __all__ = [
     "PawnException",
 ]
 
-
 # ======================# PAWN_ERROR EXCEPTION #======================#
 class PawnException(RankException):
     """
-    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
+    # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions that prevent the Pawn's spanning set computation from producing a result.
+    1.  Catchall for Pawn errors.
 
     # PARENT:
-        *   SpanComputationFailedException
+        *   RankException
 
     # PROVIDES:
     None
 
-    # LOCAL ATTRIBUTES:
-    None
-
-    # INHERITED ATTRIBUTES:
+    # ATTRIBUTES:
     None
     """
     ERROR_CODE = "PAWN_ERROR"

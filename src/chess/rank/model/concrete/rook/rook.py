@@ -6,13 +6,13 @@ Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
 """
-from collections.abc import coroutine
+
 from typing import List, Optional
 
 from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
-from chess.system import ChessException, ComputationResult, LoggingLevelRouter
+from chess.system import ComputationResult, LoggingLevelRouter
 from chess.rank import RookSpanComputationFailedException, PerpendicularSpan, Rank, Rook
 from chess.token import Token, TokenService
 
@@ -58,7 +58,7 @@ class Rook(Rank):
             designation=designation,
             quadrants=quadrants,
             vectors=None,
-            coord_service=coroutine
+            coord_service=coord_service
         )
         self._perpendicular_span = perpendicular_span
     
@@ -73,7 +73,6 @@ class Rook(Rank):
         # PARAMETERS:
             *   origin (Coord)
             *   coord_service (CoordService)
-
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
@@ -83,21 +82,11 @@ class Rook(Rank):
         """
         method = "Rook.compute_span"
         
-        # # Handle the case that the token is both safe and actionable.
-        # actionable_token_verification_result = token_service.verify_token_is_actionable(token=token)
-        # if actionable_token_verification_result.is_failure:
-        #     # Return the exception chain on failure.
-        #     return ComputationResult.failure(
-        #         RookSpanComputationFailedException(
-        #             message=f"{method}: {RookSpanComputationFailedException.DEFAULT_MESSAGE}",
-        #             ex=actionable_token_verification_result.exception
-        #         )
-        #     )
         # --- Compute the Rook's possible destinations. ---#
         computation_result = self._perpendicular_span.compute(
             points=[],
             origin=token.current_position,
-            coord_service=self.coord_service
+            coord_service=self.coord_service,
         )
         # Handle the case that spanning set computation does not produce a solution.
         if computation_result.is_failure:

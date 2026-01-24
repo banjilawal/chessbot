@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== RANK.MODEL.CONCRETE.ROOK PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .rook import Rook
-from .exception import RookSpanComputationFailedException
