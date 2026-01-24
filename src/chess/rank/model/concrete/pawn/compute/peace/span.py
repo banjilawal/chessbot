@@ -1,4 +1,4 @@
-# src/chess/rank/model/concrete/pawn/compute/peacek/span.py
+# src/chess/rank/model/concrete/pawn/compute/peace/span.py
 
 """
 Module: chess.rank.model.concrete.pawn.compute.peace.span
@@ -9,17 +9,21 @@ version: 1.0.0
 
 from typing import List
 
+from chess.vector import Vector
+from chess.token import PawnToken
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import PawnMoveCategory, PawnPeacefulSpanComputationFailedException
-
+from chess.rank import (
+    OpeningPawnVectorSet, PawnPeacefulSpanComputationFailedException, PawnPeacefulSpanComputationRouteException,
+)
 
 
 class PeacefulPawnSpan:
     """
     # RESPONSIBILITIES:
-    1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
-    2.  If the computation fails send an exception chain to the caller for error tracing.
+    1.  Provide a set of destinations a pawn can only peacefully advance to.
+    2.  If a solution is not provided PeacefulPawnSpan sends an exception for tracing and solving the
+        logic.
 
     # PARENT:
     None
@@ -33,26 +37,25 @@ class PeacefulPawnSpan:
     # INHERITED ATTRIBUTES:
     None
     """
+    OPENING_PAWN_VECTOR_SET = OpeningPawnVectorSet()
+    DEVELOPED_PAWN_VECTOR_SET = OpeningPawnVectorSet()
     
     @classmethod
     @LoggingLevelRouter.monitor
     def compute(
             cls,
-            origin: Coord,
-            pawn_move_category: PawnMoveCategory,
+            token: PawnToken,
             coord_service: CoordService = CoordService(),
     ) -> ComputationResult[List[Coord]]:
         """
         # Action
-            1.  If the origin does not pass its validation checks send an exception chain in the CalculationResult.
-            2.  Iterate through the vectors in the peaceful category to compute the destinations. If any of th computations
-                fail send an exception in the CalculationResult. Else, the computation was successful. Send it
-                IN THE ComputationResult's payload.
+            1.  If the token fails actionable or type tests send an exception chain in the ComputationResult.
+            2.  If the pawn is neither opening nor developed send an exception chain in the ComputationResult.
+            3.  Give the helper method the pawn's position and vectors it needs to find destinations. The helper sends
+                result to the caller.
         # PARAMETERS:
-            *   origin (Coord)
-            *   peaceful_category (PawnMoveCategory)
+            *   token (PawnToken):
             *   coord_service (CoordService)
-            *   span (List[Coord])
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
@@ -60,7 +63,49 @@ class PeacefulPawnSpan:
         # RAISES:
             *   PawnPeacefulSpanComputationFailedException
         """
-        method = "PawnPeaceful.compute"
+        method = "PawnAttack.compute"
+        
+        # If the token has not made its first move, call the helper with OPENING_MOVE.targeting_vectors.
+        if token.can_open:
+            return cls._span_helper(
+                origin=token.current_position,
+                coord_service=coord_service,
+                attack_vectors=cls.OPENING_PAWN_VECTOR_SET.peaceful_destination_vectors
+            )
+        # If the token has moved once, call the helper with DEVELOPED_MOVE.targeting vectors.
+        if token.is_developed:
+            return cls._span_helper(
+                origin=token.current_position,
+                coord_service=coord_service,
+                attack_vectors=cls.DEVELOPED_PAWN_VECTOR_SET.peaceful_destination_vectors
+            )
+        # Return the exception chain if there is no solution route for the any other pawn state,
+        return ComputationResult.failure(
+            PawnPeacefulSpanComputationFailedException(
+                message=f"{method}: {PawnPeacefulSpanComputationFailedException.DEFAULT_MESSAGE}",
+                ex=PawnPeacefulSpanComputationRouteException(
+                    f"{method}: {PawnPeacefulSpanComputationRouteException.DEFAULT_MESSAGE}"
+                )
+            )
+        )
+    
+    @classmethod
+    def _span_helper(
+            cls,
+            origin: Coord,
+            attack_vectors: List[Vector],
+            coord_service: CoordService
+    ) -> ComputationResult[List[Coord]]:
+        """
+        # Action:
+            1.  If the coord is not certified as safe send an exception chain in the ComputationResult.
+                Else iterate the through the vectors.
+            2.  Add each vector to the origin to get a target coord.
+            3.  If the addition fails send an exception chain. Otherwise, add the target coord to the
+                destinations list if it's not already present.
+            4.  After the loop send the target list to the caller in the ComputationResult's payload.'
+        """
+        method = "PeacefulPawnSpan._span_helper"
         
         # Handle the case that the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
@@ -72,9 +117,9 @@ class PeacefulPawnSpan:
                     ex=coord_validation.exception
                 )
             )
-        # Iterate through the vectors, adding each one to the origin to get the King's spanning set.
+        # --- Process the vectors ---#
         destinations: List[Coord] = []
-        for vector in pawn_move_category.peaceful_vectors:
+        for vector in attack_vectors:
             addition_result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
             
             # Handle the case that vector addition does not produce a result.
@@ -86,9 +131,9 @@ class PeacefulPawnSpan:
                         ex=addition_result.exception
                     )
                 )
-            # Otherwise add the coord to the destinations.
+            # On computation success add the result to the target list. It should not be present.
             if addition_result.payload not in destinations:
                 destinations.append(addition_result.payload)
         
-        # --- The destinations have been successfully computed. Return in the ComputationResult's payload. ---#
+        # After the loop, put the target inside a ComputationResult and send to the caller.
         return ComputationResult.success(destinations)

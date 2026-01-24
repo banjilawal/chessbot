@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== RANK.MODEL.CONCRETE.PAWN.COMPUTE.PEACE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .span import PeacefulPawnSpan
-from .exception import PawnPeacefulSpanComputationFailedException

@@ -21,9 +21,7 @@ class PawnAttackSpan:
     """
     # RESPONSIBILITIES:
     1.  Single source of targeting truth for opening and developed pawns.
-    2.  Compute the set of coordinates to squares a PawnToken can attack if they are occupied by
-        an enemy.
-    3.  If a solution is not provided PawnAttackSpan sends an exception for tracing and solving the
+    2.  If a solution is not provided PawnAttackSpan sends an exception for tracing and solving the
         logic.
 
     # PARENT:
