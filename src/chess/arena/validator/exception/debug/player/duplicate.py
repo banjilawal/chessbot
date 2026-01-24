@@ -7,17 +7,16 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from chess.arena import ArenaValidationFailedException
-from chess.agent import AddingDuplicateAgentException
+from chess.arena import ArenaDebugException
 
 __all__ = [
-    # ======================# NULL ARENA EXCEPTION #======================#
+    # ======================# DUPLICATE_PLAYER_IN_ARENA EXCEPTION #======================#
     "DuplicatePlayerInArenaException",
 ]
 
 
-# ======================# NULL ARENA EXCEPTION #======================#
-class DuplicatePlayerInArenaException(ArenaValidationFailedException, AddinDuplicateItemException):
+# ======================# DUPLICATE_PLAYER_IN_ARENA EXCEPTION #======================#
+class DuplicatePlayerInArenaException(ArenaDebugException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,8 +24,7 @@ class DuplicatePlayerInArenaException(ArenaValidationFailedException, AddinDupli
     1.  Raised if a both unique teams in an Arena are owned by the same owner.
 
     # PARENT:
-        *   ArenaValidationFailedException
-        *   AddingDuplicatePlayerException
+        *   ArenaDebugException
 
     # PROVIDES:
     None

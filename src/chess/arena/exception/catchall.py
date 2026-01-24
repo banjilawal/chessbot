@@ -1,9 +1,9 @@
-# src/chess/arena/exception.py
+# src/chess/arena/exception/catchall.py
 
 """
-Module: chess.arena.exception
+Module: chess.arena.exception.catchall
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-01-24
 version: 1.0.0
 """
 
@@ -21,7 +21,7 @@ class ArenaException(ChessException):
   # ROLE: Catchall Exception
 
   # RESPONSIBILITIES:
-  1.  Catchall for Arena errors not covered by ArenaException subclasses.
+  1.  Catchall for Arena and parent of exceptions raised by things Arena is responsible for.
 
   # PARENT:
       *   ChessException

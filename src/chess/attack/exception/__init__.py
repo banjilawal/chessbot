@@ -10,7 +10,8 @@ version: 1.0.0
 # ===========  ATTACK.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .debug import *
 
 # Modules
+from .catchall import AttackException
 from .wrapper import AttackFailedException

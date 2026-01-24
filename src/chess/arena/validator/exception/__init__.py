@@ -10,10 +10,8 @@ version: 1.0.0
 # =========== ARENA.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .team import *
-from player import *
+from debug import *
 
 
 # Modules
-from .null import NullArenaException
-from .base import ArenaValidationFailedException
+from .wrapper import  ArenaValidationFailedException

@@ -18,4 +18,4 @@ from .analyzer import *
 from .validator import *
 
 # Modules
-from .abstract import Token
+None
