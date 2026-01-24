@@ -96,7 +96,7 @@ Example:
 #     - `actor_square` (`Square`): The `Square` occupied by `actor_candidate`.
 #
 #   RETURNS:
-#   `OccupationResult` containing:
+#   `VisitationResult` containing:
 #     - On success: A new `TravelEvent` with the updated squares and `owner`.
 #     - On failure: The original `TravelEvent`or verifying any rollbacks succeeded and the err
 #       describing the failure.
@@ -343,7 +343,7 @@ Example:
 #     - `travel` (`BlockingEvent`): The `BlockingEvent` to execute.
 #
 #   RETURNS:
-#   `OccupationResult` containing:
+#   `VisitationResult` containing:
 #     - On success: A new `BlockingEvent` object that containing updated `actor_candidate`. Observer will have
 #       team_name new `Checker` instance inside `actor_candidate.discoveries`.
 #     - On failure: The original `BlockingEvent` for verifying any rollbacks succeeded and the err

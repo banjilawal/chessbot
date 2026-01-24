@@ -334,7 +334,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     - `actor_square` (`Square`): The `Square` occupied by `actor_candidate`.
 #
 #   RETURNS:
-#   `OccupationResult` containing:
+#   `VisitationResult` containing:
 #     - On success: A new `OccupationDirective` with the updated squares and `owner`.
 #     - On failure: The original `OccupationDirective`or verifying any rollbacks succeeded and the err
 #       describing the failure.

@@ -1,20 +1,21 @@
-# src/chess/attack/attack.py
+# src/chess/visit/visit.py
 
 """
-Module: chess.attack.attack
+Module: chess.visit.visit
 Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
 """
-from chess.attack import AttackResult
+
 from chess.square import Square
 from chess.system import LoggingLevelRouter
 from chess.token import Token
+from chess.visit import VisitationResult
 
 
-class Attack:
+class Visit:
     
     @classmethod
     @LoggingLevelRouter
-    def execute(cls, attacker: Token, target_square: Square) -> AttackResult:
+    def execute(cls, visitor: Token, square: Square) -> VisitationResult:
         pass

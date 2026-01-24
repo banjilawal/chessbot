@@ -22,7 +22,7 @@ class OccupationResult(Result[Generic[T]]):
 
     # RESPONSIBILITIES:
     1.  Send the outcome of a occupation to the caller.
-    2.  Enforcing mutual exclusion. A OccupationResult can either carry payload or exception. Not both.
+    2.  Enforcing mutual exclusion. A VisitationResult can either carry payload or exception. Not both.
 
     # PARENT:
         *   DataResult

@@ -1,13 +1,13 @@
-# src/chess/attack/__init__.py
+# src/chess/visit/__init__.py
 
 """
-Module: chess.attack.__init__
+Module: chess.visit.__init__
 Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
 """
 
-# ===========  ATTACK PACKAGE CONTENTS ===========#
+# ===========  VISIT PACKAGE CONTENTS ===========#
 
 # Packages
 from .builder import *
@@ -17,5 +17,5 @@ from .validator import *
 from .service import *
 
 # Modules
-from .attack import Attack
-from .result import AttackResult
+from .visit import Visit
+from .result import VisitationResult
