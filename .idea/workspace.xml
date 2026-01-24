@@ -10,6 +10,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/exception/span.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/king.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/knight/knight.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/knight/knight.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -860,7 +862,7 @@
       <workItem from="1769071457912" duration="53061000" />
       <workItem from="1769146830340" duration="37584000" />
       <workItem from="1769208110394" duration="12000" />
-      <workItem from="1769209172456" duration="18252000" />
+      <workItem from="1769209172456" duration="18677000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
