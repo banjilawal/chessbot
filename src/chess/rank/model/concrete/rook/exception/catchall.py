@@ -1,7 +1,7 @@
-# src/chess/rank/model/concrete/rook/exception.py
+# src/chess/rank/model/concrete/rook/exception/catchall.py
 
 """
-Module: chess.rank.model.concrete.rook.exception
+Module: chess.rank.model.concrete.rook.exception.catchall
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -13,7 +13,6 @@ __all__ = [
     # ======================# ROOK_ERROR EXCEPTION #======================#
     "RookException",
 ]
-
 
 # ======================# ROOK_ERROR EXCEPTION #======================#
 class RookException(RankException):

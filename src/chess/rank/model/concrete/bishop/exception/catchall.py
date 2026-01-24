@@ -1,7 +1,7 @@
-# src/chess/rank/model/concrete/bishop/exception.py
+# src/chess/rank/model/concrete/bishop/exception/catchall.py
 
 """
-Module: chess.rank.model.concrete.bishop.exception
+Module: chess.rank.model.concrete.bishop.exception.catchall
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0

@@ -1,16 +1,7 @@
-# src/chess/rank/model/concrete/bishop/exception.py
+# src/chess/rank/model/concrete/bishop/exception/span.py
 
 """
-Module: chess.rank.model.concrete.bishop.exception
-Author: Banji Lawal
-Created: 2026-01-22
-version: 1.0.0
-"""
-
-# src/chess/rank/compute/span/bishop/exception.py
-
-"""
-Module: chess.rank.compute.span.bishop.exception
+Module: chess.rank.model.concrete.bishop.exception.span
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0

@@ -15,7 +15,7 @@ from .rook import *
 from .pawn import *
 from .bishop import *
 from .knight import *
-from .queen import None
+from .queen import *
 
 # Modules
 None

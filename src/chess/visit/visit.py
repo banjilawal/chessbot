@@ -17,5 +17,5 @@ class Visit:
     
     @classmethod
     @LoggingLevelRouter
-    def execute(cls, visitor: Token, square: Square) -> VisitationResult:
+    def execute(cls, token: Token, square: Square) -> VisitationResult:
         pass

@@ -1,7 +1,7 @@
-# src/chess/rank/model/concrete/queen/exception/catchall.py
+# src/chess/rank/model/concrete/queen/exception/span.py
 
 """
-Module: chess.rank.model.concrete.queen.exception.catchall
+Module: chess.rank.model.concrete.queen.exception.span
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
