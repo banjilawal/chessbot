@@ -14,5 +14,6 @@ None
 
 # Modules
 from  .base import AttackDebugException
+from .king import AttackingEnemyKingException
 from .friend import AttackingFriendlySquareException
 from .empty import AttackingVacantSquareException

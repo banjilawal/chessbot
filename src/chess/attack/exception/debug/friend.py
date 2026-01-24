@@ -1,7 +1,18 @@
+# src/chess/attack/exception/debug/friend.py
+
+"""
+Module: chess.attack.exception.debug.friend
+Author: Banji Lawal
+Created: 2026-01-24
+version: 1.0.0
+"""
+
 __all__ = [
     # ======================# ATTACKING_FRIENDLY_SQUARE EXCEPTION #======================#
     "AttackingFriendlySquareException",
 ]
+
+from chess.attack import AttackDebugException
 
 
 # ======================# ATTACKING_FRIENDLY_SQUARE EXCEPTION #======================#

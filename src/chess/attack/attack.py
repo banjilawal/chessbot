@@ -6,10 +6,13 @@ Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
 """
-from chess.attack import AttackFailedException, AttackResult, AttackingVacantSquareException
+from chess.attack import (
+    AttackFailedException, AttackResult, AttackingEnemyKingException, AttackingFriendlySquareException,
+    AttackingVacantSquareException
+)
 from chess.square import Square, SquareService
 from chess.system import LoggingLevelRouter
-from chess.token import Token, TokenService
+from chess.token import KingToken, Token, TokenService
 
 
 class Attack:
@@ -60,7 +63,16 @@ class Attack:
             return AttackResult.failure(
                 AttackFailedException(
                     message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackingVacantSquareException(f"{method}: {AttackingVacantSquareException.DEFAULT_MESSAGE}")
+                    ex=AttackingFriendlySquareException(f"{method}: {AttackingFriendlySquareException.DEFAULT_MESSAGE}")
+                )
+            )
+        # Handle the case that the enemy king is occupying the square.
+        if isinstance(KingToken, square.occupant):
+            # Return the exception chain on failure.
+            return AttackResult.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
                 )
             )
         

@@ -1,7 +1,18 @@
+# src/chess/attack/exception/debug/square.py
+
+"""
+Module: chess.attack.exception.debug.square
+Author: Banji Lawal
+Created: 2026-01-24
+version: 1.0.0
+"""
+
 __all__ = [
     # ======================# ATTACKING_EMPTY_SQUARE EXCEPTION #======================#
     "AttackingVacantSquareException",
 ]
+
+from chess.attack import AttackDebugException
 
 
 # ======================# ATTACKING_EMPTY_SQUARE EXCEPTION #======================#

@@ -12,11 +12,12 @@ __all__ = [
     "AttackFailedException",
 ]
 
+from chess.attack import AttackException
 from chess.system import OperationFailedException
 
 
 # ======================# ATTACK_FAILURE EXCEPTION #======================#
-class AttackFailedException(OperationFailedException):
+class AttackFailedException(AttackException, OperationFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
