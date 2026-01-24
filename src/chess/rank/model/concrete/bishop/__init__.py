@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== RANK.MODEL.CONCRETE.BISHOP PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .bishop import Bishop
-from .exception import BishopSpanComputationFailedException

@@ -7,15 +7,14 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from typing import List, Optional
+from typing import List
 
+from chess.token import Token
 from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
 from chess.rank import RookException, RookSpanComputationFailedException, PerpendicularSpan, Rank, Rook
-from chess.token import Token, TokenService
-
 
 class Rook(Rank):
     """
@@ -66,18 +65,17 @@ class Rook(Rank):
     def compute_span(self, token: Token) -> ComputationResult[[Coord]]:
         """
         # Action
-            1.  If the origin is not certified safe send an exception chain in the ComputationResult.
-            2.  Add origin to each vector in Rook.vectors to get the spanning set. If any of the
-                additions fails send an exception chain in the ComputationResult.
-            3.  Send the set of points to the caller in the ComputationReslt's payload.
+            1.  Pass the token's current position to Rook._perpendicular_span to get the set of possible destinations.
+            2.  If perpendicular_span fails send the exception chain in the ComputationResult. Else, return
+                the span in the ComputationResult's payload.
         # PARAMETERS:
-            *   origin (Coord)
-            *   coord_service (CoordService)
+            *   token (Token)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
+            *   RookException
             *   RookSpanComputationFailedException
         """
         method = "Rook.compute_span"
@@ -88,6 +86,7 @@ class Rook(Rank):
             origin=token.current_position,
             coord_service=self.coord_service,
         )
+        
         # Handle the case that spanning set computation does not produce a solution.
         if computation_result.is_failure:
             # Return the exception chain on failure.
@@ -100,5 +99,5 @@ class Rook(Rank):
                     )
                 )
             )
-        # --- The Rook's span has been successfully computed. Return in the ComputationResult's payload. ---#
+        # Put the completed Knight's span into a ComputationResult and send to the caller.
         return computation_result

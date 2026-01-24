@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== RANK.MODEL.CONCRETE.KNIGHT PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .knight import Knight
-from .exception import KnightSpanComputationFailedException

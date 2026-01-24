@@ -7,14 +7,15 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-
-from chess.piece import Piece
-
+from chess.coord import Coord
+from chess.persona import Persona
 from chess.geometry import Quadrant
-from chess.rank import DiagonalSpan, PerpendicularSpan, Rank, RankSpec
+from chess.token.model import Token
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.coord import Coord, CoordService
-
+from chess.rank import (
+    DiagonalSpan, KnightException, KnightSpanComputationFailedException, PerpendicularSpan, Rank,
+    Knight
+)
 
 
 
@@ -58,11 +59,7 @@ class Queen(Rank):
         self._perpendicular_span = perpendicular_span
     
     @LoggingLevelRouter.monitor
-    def compute_span(
-            self,
-            origin: Coord,
-            coord_service: CoordService = CoordService()
-    ) -> ComputationResult[[Coord]]:
+    def compute_span(self, token: Token) -> ComputationResult[[Coord]]:
         """
         """
         method = "Queen.compute_span"

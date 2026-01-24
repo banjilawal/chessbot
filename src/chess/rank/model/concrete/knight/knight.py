@@ -9,15 +9,13 @@ version: 1.0.0
 
 from typing import List, Optional
 
-from chess.token import TokenService
-from chess.token.model import Token
+from chess.coord import Coord
 from chess.vector import Vector
 from chess.persona import Persona
 from chess.geometry import Quadrant
-from chess.coord import Coord, CoordService
-from chess.system import ChessException, ComputationResult, LoggingLevelRouter
-from chess.rank import KnightSpanComputationFailedException, Rank, Knight
-
+from chess.token.model import Token
+from chess.system import ComputationResult, LoggingLevelRouter
+from chess.rank import KnightException, KnightSpanComputationFailedException, Rank, Knight
 
 class Knight(Rank):
     """
@@ -64,47 +62,43 @@ class Knight(Rank):
     def compute_span(self, token: Token,) -> ComputationResult[[Coord]]:
         """
         # Action
-            1.  If the origin is not certified safe send an exception chain in the ComputationResult.
-            2.  Add origin to each vector in Knight.vectors to get the spanning set. If any of the
-                additions fails send an exception chain in the ComputationResult.
-            3.  Send the set of points to the caller in the ComputationReslt's payload.
+            1.  Iterate through the Knight.vectors. Add each to token.current_position.
+            2.  If the vector addition fails, return an exception chain in the ComputationResult. Else,
+                add the resulting Coord to the span.
+            3.  Put the completed span inside the ComputationResult and send to the caller.a
         # PARAMETERS:
-            *   origin (Coord)
+            *   token (Token)
             *   coord_service (CoordService)
-
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
+            *   KnightException
             *   KnightSpanComputationFailedException
         """
         method = "Knight.compute_span"
-        #
-        # # Handle the case that the token is both safe and actionable.
-        # actionable_token_verification_result = token_service.verify_token_is_actionable(token=token)
-        # if actionable_token_verification_result.is_failure:
-        #     # Return the exception chain on failure.
-        #     return ComputationResult.failure(
-        #         KnightSpanComputationFailedException(
-        #             message=f"{method}: {KnightSpanComputationFailedException.DEFAULT_MESSAGE}",
-        #             ex=actionable_token_verification_result.exception
-        #         )
-        #     )
-        # --- Compute the Knight's possible destinations. ---#
         
-        # Iterate through the vectors, adding each one to the origin to get the Knight's spanning set.
         span: List[Coord] = []
+        # Iterate through the knight.vectors, adding each one to the origin to get the Knight's spanning set.
         for vector in self.vectors:
-            # Handle the case that the computation does not produce a solution.
             result = self.coord_service.add_vector_to_coord(coord=token.current_position, vector=vector)
-            # Return the exception chain on failure.
+            
+            # Handle the case that the computation does not produce a solution.
             if result.is_failure:
-                return ComputationResult.failure(result.exception)
-            # Otherwise add the coord to the span.
+                # Return the exception chain on failure.
+                return ComputationResult.failure(
+                    KnightException(
+                        message=f"{method}: {KnightException.DEFAULT_MESSAGE}",
+                        ex=KnightSpanComputationFailedException(
+                            message=f"{method}: {KnightSpanComputationFailedException.DEFAULT_MESSAGE}",
+                            ex=result.exception
+                        )
+                    )
+                )
+            # On computation success add the coord to the span. It should not be present.
             if result.payload not in span:
                 span.append(result.payload)
-        
-        # --- The Knight's span has been successfully computed. Return in the ComputationResult's payload. ---#
+        # Put the completed Knight's span into a ComputationResult and send to the caller.
         return ComputationResult.success(span)
         
