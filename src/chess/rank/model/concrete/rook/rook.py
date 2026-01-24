@@ -13,7 +13,7 @@ from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import RookSpanComputationFailedException, PerpendicularSpan, Rank, Rook
+from chess.rank import RookException, RookSpanComputationFailedException, PerpendicularSpan, Rank, Rook
 from chess.token import Token, TokenService
 
 
@@ -92,11 +92,13 @@ class Rook(Rank):
         if computation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RookSpanComputationFailedException(
+                RookException(
                     message=f"{method}: {RookSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=computation_result.exception
+                    ex=RookSpanComputationFailedException(
+                        message=f"{method}: {RookSpanComputationFailedException.DEFAULT_MESSAGE}",
+                        ex=computation_result.exception
+                    )
                 )
             )
-        
         # --- The Rook's span has been successfully computed. Return in the ComputationResult's payload. ---#
         return computation_result
