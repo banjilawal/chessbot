@@ -9,13 +9,13 @@ version: 1.0.0
 
 from typing import List, Optional
 
+from chess.coord import Coord
 from chess.vector import Vector
 from chess.persona import Persona
 from chess.geometry import Quadrant
-from chess.coord import Coord
-from chess.token import Token
+from chess.token.model import Token
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import KingSpanComputationFailedException, Rank, King
+from chess.rank import KingException, KingSpanComputationFailedException, Rank, King
 
 
 class King(Rank):
@@ -60,39 +60,28 @@ class King(Rank):
         )
     
     @LoggingLevelRouter.monitor
-    def compute_span(self, token: Token,) -> ComputationResult[[Coord]]:
+    def compute_span(self, token: Token, ) -> ComputationResult[[Coord]]:
         """
         # Action
-            1.  If the origin is not certified safe send an exception chain in the ComputationResult.
-            2.  Add origin to each vector in King.vectors to get the spanning set. If any of the
-                additions fails send an exception chain in the ComputationResult.
-            3.  Send the set of points to the caller in the ComputationReslt's payload.
+            1.  Iterate through the King.vectors. Add each to token.current_position.
+            2.  If the vector addition fails, return an exception chain in the ComputationResult. Else,
+                add the resulting Coord to the span.
+            3.  Put the completed span inside the ComputationResult and send to the caller.a
         # PARAMETERS:
-            *   origin (Coord)
+            *   token (Token)
             *   coord_service (CoordService)
-
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
+            *   KingException
             *   KingSpanComputationFailedException
         """
         method = "King.compute_span"
-        #
-        # # Handle the case that the token is both safe and actionable.
-        # actionable_token_verification_result = token_service.verify_token_is_actionable(token=token)
-        # if actionable_token_verification_result.is_failure:
-        #     # Return the exception chain on failure.
-        #     return ComputationResult.failure(
-        #         KingSpanComputationFailedException(
-        #             message=f"{method}: {KingSpanComputationFailedException.DEFAULT_MESSAGE}",
-        #             ex=actionable_token_verification_result.exception
-        #         )
-        #     )
-
-        # Iterate through the vectors, adding each to the king's position to get the King's spanning set.
+        
         span: List[Coord] = []
+        # Iterate through the king.vectors, adding each one to the origin to get the King's spanning set.
         for vector in self.vectors:
             addition_result = self.coord_service.add_vector_to_coord(coord=token.current_position, vector=vector)
             
@@ -100,14 +89,16 @@ class King(Rank):
             if addition_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
-                    KingSpanComputationFailedException(
-                        message=f"{method}: {KingSpanComputationFailedException.DEFAULT_MESSAGE}",
-                        ex=addition_result.exception
+                    KingException(
+                        message=f"{method}: {KingException.DEFAULT_MESSAGE}",
+                        ex=KingSpanComputationFailedException(
+                            message=f"{method}: {KingSpanComputationFailedException.DEFAULT_MESSAGE}",
+                            ex=addition_result.exception
+                        )
                     )
                 )
-            # Otherwise add the coord to the span.
+            # On computation success add the coord to the span. It should not be present.
             if addition_result.payload not in span:
                 span.append(addition_result.payload)
-                
-        # --- The King's span has been successfully computed. Return in the ComputationResult's payload. ---#
+        # Put the completed King's span into a ComputationResult and send to the caller.
         return ComputationResult.success(span)

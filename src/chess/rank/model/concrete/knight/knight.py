@@ -82,23 +82,23 @@ class Knight(Rank):
         span: List[Coord] = []
         # Iterate through the knight.vectors, adding each one to the origin to get the Knight's spanning set.
         for vector in self.vectors:
-            result = self.coord_service.add_vector_to_coord(coord=token.current_position, vector=vector)
+            addition_result = self.coord_service.add_vector_to_coord(coord=token.current_position, vector=vector)
             
             # Handle the case that the computation does not produce a solution.
-            if result.is_failure:
+            if addition_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     KnightException(
                         message=f"{method}: {KnightException.DEFAULT_MESSAGE}",
                         ex=KnightSpanComputationFailedException(
                             message=f"{method}: {KnightSpanComputationFailedException.DEFAULT_MESSAGE}",
-                            ex=result.exception
+                            ex=addition_result.exception
                         )
                     )
                 )
             # On computation success add the coord to the span. It should not be present.
-            if result.payload not in span:
-                span.append(result.payload)
+            if addition_result.payload not in span:
+                span.append(addition_result.payload)
         # Put the completed Knight's span into a ComputationResult and send to the caller.
         return ComputationResult.success(span)
         
