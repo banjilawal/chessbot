@@ -18,4 +18,4 @@ from .validator import *
 from .compute import *
 
 # Modules
-from .exception import *
+from chess.rank.model.exception import *

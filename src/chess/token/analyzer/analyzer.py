@@ -51,4 +51,3 @@ class TokenStateAnalyzer(RelationAnalyzer[TokenState, Token]):
                     ex=token_validation.exception
                 )
             )
-        if

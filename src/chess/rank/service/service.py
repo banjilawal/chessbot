@@ -67,7 +67,7 @@ class RankService(EntityService[Rank]):
         self._persona_service = persona_service
     
     @property
-    def factory(self) -> RankFactory:
+    def builder(self) -> RankFactory:
         """get RankBuilder."""
         return cast(RankFactory, self.entity_builder)
     

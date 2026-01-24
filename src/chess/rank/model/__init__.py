@@ -14,3 +14,4 @@ from .concrete import *
 
 # Modules
 from .abstract import Rank
+from .exception import RankException
