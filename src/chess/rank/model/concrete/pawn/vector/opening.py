@@ -14,14 +14,27 @@ from chess.vector import Vector
 
 
 class OpeningPawnVectorSet(PawnVectorSet):
-    # PEACEFUL_DESTINATION_VECTORS = [Vector(x=0, y=1), Vector(x=0, y=2),]
-    # ATTACK_TARGETING_VECTORS = [Vector(x=0, y=2), Vector(x=-1, y=2), Vector(x=1, y=2), ]
-    def __init__(
-            self,
-            # attack_targeting_vectors: List[Vector] = ATTACK_TARGETING_VECTORS,
-            # peaceful_destination_vectors: List[Vector] = PEACEFUL_DESTINATION_VECTORS
-    ):
+    """
+    # ROLE: Configuration Information.
+
+    # RESPONSIBILITIES:
+    1.  Provides a read-ony sets of vectors for computing attack targets and peaceful destinations
+        for a pawn that has not moved from its starting square.
+
+    # PARENT:
+        *   PawnVectorSet
+
+    # PROVIDES
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See PawnVectorSet super class for inherited attributes.
+    """
+    def __init__(self,):
         super().__init__(
-            attack_targeting_vectors=[Vector(x=0, y=2), Vector(x=-1, y=2), Vector(x=1, y=2), ],
-            peaceful_destination_vectors=[Vector(x=0, y=1), Vector(x=0, y=2), ]
+            peaceful_destination_vectors=[Vector(x=0, y=1), Vector(x=0, y=2), ],
+            attack_targeting_vectors=[Vector(x=0, y=2), Vector(x=-1, y=2), Vector(x=1, y=2),],
         )

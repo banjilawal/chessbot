@@ -9,20 +9,31 @@ version: 1.0.0
 
 from typing import List
 
-from chess.rank import PawnVectorSet
 from chess.vector import Vector
-
+from chess.rank import PawnVectorSet
 
 class DevelopedPawnVectorSet(PawnVectorSet):
-    PEACEFUL_DESTINATION_VECTORS = [Vector(x=0, y=1)],
-    ATTACK_TARGETING_VECTORS = [Vector(x=0, y=1), Vector(x=-1, y=1), Vector(x=1, y=1),]
+    """
+    # ROLE: Configuration Information.
 
-    def __init__(
-            self,
-            attack_targeting_vectors: List[Vector] = ATTACK_TARGETING_VECTORS,
-            peaceful_destination_vectors: List[Vector] = PEACEFUL_DESTINATION_VECTORS
-    ):
+    # RESPONSIBILITIES:
+    1.  Provides a read-ony sets of vectors for computing attack targets and peaceful destinations
+        for a pawn that has made its first move.
+
+    # PARENT:
+        *   PawnVectorSet
+
+    # PROVIDES
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+        *   See PawnVectorSet super class for inherited attributes.
+    """
+    def __init__(self,):
         super().__init__(
-            attack_targeting_vectors=attack_targeting_vectors,
-            peaceful_destination_vectors=peaceful_destination_vectors
+            peaceful_destination_vectors=[Vector(x=0, y=1)],
+            attack_targeting_vectors=[Vector(x=0, y=1), Vector(x=-1, y=1), Vector(x=1, y=1)],
         )
