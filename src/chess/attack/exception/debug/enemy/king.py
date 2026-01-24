@@ -15,7 +15,7 @@ class AttackingEnemyKingException(AttackDebugException):
     1.  Indicate that an attack failed because the enemy was a king.
 
     # PARENT:
-        *   AttackException
+        *   AttackDebugException
 
     # PROVIDES:
     None

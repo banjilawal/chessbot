@@ -14,4 +14,4 @@ from .search import *
 from .insertion import *
 
 # Modules
-from .catchall import HostageManifestDirectoryServiceException
+from .catchall import HostageDatabaseService

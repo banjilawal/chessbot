@@ -10,10 +10,8 @@ version: 1.0.0
 # ===========  ATTACK.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .enemy import *
+from .square import *
 
 # Modules
 from  .base import AttackDebugException
-from .king import AttackingEnemyKingException
-from .friend import AttackingFriendlySquareException
-from .empty import AttackingVacantSquareException

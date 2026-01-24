@@ -10,6 +10,7 @@ from chess.attack import (
     AttackFailedException, AttackResult, AttackingEnemyKingException, AttackingFriendlySquareException,
     AttackingVacantSquareException
 )
+from chess.hostage import HostageDatabaseService, HostageDatabaseService
 from chess.square import Square, SquareService
 from chess.system import LoggingLevelRouter
 from chess.token import KingToken, Token, TokenService
@@ -25,6 +26,7 @@ class Attack:
             square: Square,
             token_service: TokenService = TokenService(),
             square_service: SquareService = SquareService(),
+            hostage_database_service: HostageDatabaseService = HostageDatabaseService(),
     ) -> AttackResult:
         method = "Attack.execute"
         
@@ -67,7 +69,7 @@ class Attack:
                 )
             )
         # Handle the case that the enemy king is occupying the square.
-        if isinstance(KingToken, square.occupant):
+        if isinstance(square.occupant, KingToken):
             # Return the exception chain on failure.
             return AttackResult.failure(
                 AttackFailedException(
@@ -75,6 +77,32 @@ class Attack:
                     ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
                 )
             )
+        # Handle the case that the enemy combatant, occupying the square, is already disabled.
+        if isinstance(square.occupant, KingToken):
+            # Return the exception chain on failure.
+            return AttackResult.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
+                )
+            )
+        # --- Start Processing the attack. ---#
+        return cls._process_attack(
+            attacker=attacker,
+            square=square,
+            hostage_database_service=hostage_database_service
+        )
         
-        return AttackResult.success()
+        # Set the
+    
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _process_attack(
+        cls,
+        attacker: Token,
+        square: Square,
+        hostage_database_service: HostageDatabaseService,
+    ) -> AttackResult:
+        pass
         

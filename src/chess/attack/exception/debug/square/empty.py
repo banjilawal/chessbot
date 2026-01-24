@@ -24,7 +24,7 @@ class AttackingVacantSquareException(AttackDebugException):
     1.  Indicate that an attack failed because there was nothing in the square.
 
     # PARENT:
-        *   AttackException
+        *   AttackDebugException
 
     # PROVIDES:
     None

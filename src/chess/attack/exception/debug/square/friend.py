@@ -24,7 +24,7 @@ class AttackingFriendlySquareException(AttackDebugException):
     1.  Indicate that an attack failed because the square was occupied by a friend.
     
     # PARENT:
-        *   AttackException
+        *   AttackDebugException
 
     # PROVIDES:
     None
