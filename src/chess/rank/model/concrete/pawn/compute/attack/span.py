@@ -9,20 +9,22 @@ version: 1.0.0
 
 from typing import List
 
+from chess.vector import Vector
+from chess.token import PawnToken
 from chess.coord import Coord, CoordService
+from chess.system import ComputationResult, LoggingLevelRouter
 from chess.rank import (
     OpeningPawnVectorSet, PawnAttackSpanComputationRouteException, PawnAttackSpanComputationFailedException
 )
-from chess.system import ComputationResult, LoggingLevelRouter
-from chess.token import PawnToken
-from chess.vector import Vector
-
 
 class PawnAttackSpan:
     """
     # RESPONSIBILITIES:
-    1.  Compute the spanning subset in the horizontal and vertical plane with no duplicates.
-    2.  If the computation fails send an exception chain to the caller for error tracing.
+    1.  Single source of targeting truth for opening and developed pawns.
+    2.  Compute the set of coordinates to squares a PawnToken can attack if they are occupied by
+        an enemy.
+    3.  If a solution is not provided PawnAttackSpan sends an exception for tracing and solving the
+        logic.
 
     # PARENT:
     None
@@ -48,15 +50,13 @@ class PawnAttackSpan:
     ) -> ComputationResult[List[Coord]]:
         """
         # Action
-            1.  If the origin does not pass its validation checks send an exception chain in the CalculationResult.
-            2.  Iterate through the vectors in the attack category to compute the targets. If any of th computations
-                fail send an exception in the CalculationResult. Else, the computation was successful. Send it
-                IN THE ComputationResult's payload.
+            1.  If the token fails actionable or type tests send an exception chain in the ComputationResult.
+            2.  If the pawn is neither opening nor developed send an exception chain in the ComputationResult.
+            3.  Give the helper method the pawn's position and vectors it needs to find targets. The helper sends
+                result to the caller.
         # PARAMETERS:
-            *   origin (Coord)
-            *   attack_category (PawnMoveCategory)
+            *   token (PawnToken):
             *   coord_service (CoordService)
-            *   span (List[Coord])
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.
@@ -66,20 +66,21 @@ class PawnAttackSpan:
         """
         method = "PawnAttack.compute"
         
+        # If the token has not made its first move, call the helper with OPENING_MOVE.targeting_vectors.
         if token.can_open:
-            return cls._span(
+            return cls._span_helper(
                 origin=token.current_position,
                 coord_service=coord_service,
                 attack_vectors=cls.OPENING_PAWN_VECTOR_SET.attack_targeting_vectors
             )
+        # If the token has moved once, call the helper with DEVELOPED_MOVE.targeting vectors.
         if token.is_developed:
-            return cls._span(
+            return cls._span_helper(
                 origin=token.current_position,
                 coord_service=coord_service,
                 attack_vectors=cls.DEVELOPED_PAWN_VECTOR_SET.attack_targeting_vectors
             )
-        
-        # On failure return the exception chain
+        # Return the exception chain if there is no solution route for the any other pawn state,
         return ComputationResult.failure(
             PawnAttackSpanComputationFailedException(
                 message=f"{method}: {PawnAttackSpanComputationFailedException.DEFAULT_MESSAGE}",
@@ -88,16 +89,24 @@ class PawnAttackSpan:
                 )
             )
         )
-        
     
     @classmethod
-    def _span(
+    def _span_helper(
             cls,
             origin: Coord,
             attack_vectors: List[Vector],
             coord_service: CoordService
     ) -> ComputationResult[List[Coord]]:
-        method = "PawnAttackSpan._opening_targets"
+        """
+        # Action:
+            1.  If the coord is not certified as safe send an exception chain in the ComputationResult.
+                Else iterate the through the vectors.
+            2.  Add each vector to the origin to get a target coord.
+            3.  If the addition fails send an exception chain. Otherwise, add the target coord to the
+                targets list if it's not already present.
+            4.  After the loop send the target list to the caller in the ComputationResult's payload.'
+        """
+        method = "PawnAttackSpan._span_helper"
         
         # Handle the case that the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
@@ -109,7 +118,7 @@ class PawnAttackSpan:
                     ex=coord_validation.exception
                 )
             )
-        
+        # --- Process the vectors ---#
         targets: List[Coord] = []
         for vector in attack_vectors:
             addition_result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
@@ -123,8 +132,9 @@ class PawnAttackSpan:
                         ex=addition_result.exception
                     )
                 )
-            # Otherwise add the coord to the targets.
+            # On computation success add the result to the target list. It should not be present.
             if addition_result.payload not in targets:
                 targets.append(addition_result.payload)
-        # --- The targets have been successfully computed. Return in the ComputationResult's payload. ---#
+                
+        # After the loop, put the target inside a ComputationResult and send to the caller.
         return ComputationResult.success(targets)
