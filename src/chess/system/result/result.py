@@ -63,9 +63,9 @@ class Result(Generic[T]):
     def is_failure(self) -> bool:
         return self._exception is not None
     
-    @property
-    def is_empty(self) -> bool:
-        return self._payload is None and self._exception is None
+    # @property
+    # def is_empty(self) -> bool:
+    #     return self._payload is None and self._exception is None
     
     @classmethod
     def success(cls, payload: T) -> Result[T]:
@@ -93,15 +93,15 @@ class Result(Generic[T]):
         """
         return cls(exception=exception)
     
-    @classmethod
-    def empty(cls) -> Result[None]:
-        """
-        Factory method for returning a null outcome.
-        # PARAM:
-        None
-        # RETURN:
-        Result[None]
-        # RAISES:
-        None
-        """
-        return cls()
+    # @classmethod
+    # def empty(cls) -> Result[None]:
+    #     """
+    #     Factory method for returning a null outcome.
+    #     # PARAM:
+    #     None
+    #     # RETURN:
+    #     Result[None]
+    #     # RAISES:
+    #     None
+    #     """
+    #     return cls()
