@@ -138,10 +138,12 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         """
         method = "SquareTokenAnalyzer._type_independent_analysis"
         
-        # --- The two no-relation cases. ---#
-        if not token.has_been_formed:
-            return RelationReport.no_relation()
-        if square.occupant != token and square.coord != token.current_position:
+        # --- The no-relation cases. ---#
+        if (
+                not token.has_been_formed or
+                token.team.board != square.board or
+                (square.occupant != token and square.coord != token.current_position)
+        ):
             return RelationReport.no_relation()
         
         # --- The stale link case. ---#
