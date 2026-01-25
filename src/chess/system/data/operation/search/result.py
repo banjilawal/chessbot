@@ -10,7 +10,7 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Generic, List, Optional, TypeVar
 
-from chess.system import DataResult, DataResultState
+from chess.system import DataResult, DataResultEnum
 
 T = TypeVar("T")
 
@@ -30,7 +30,7 @@ class SearchResult(DataResult[T], Generic[T]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   state (DataResultState)
+        *   state (DataResultEnum)
 
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
@@ -39,7 +39,7 @@ class SearchResult(DataResult[T], Generic[T]):
             self,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None,
-            state: Optional[DataResultState] = None,
+            state: Optional[DataResultEnum] = None,
     ):
         super().__init__(
             state=state,
@@ -54,7 +54,7 @@ class SearchResult(DataResult[T], Generic[T]):
         return (
                 self.payload is not None and
                 self.exception is None and
-                self._state == DataResultState.SUCCESS
+                self._state == DataResultEnum.SUCCESS
         )
     
     @property
@@ -62,7 +62,7 @@ class SearchResult(DataResult[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == DataResultState.FAILURE
+                self._state == DataResultEnum.FAILURE
         )
     
     @property
@@ -70,7 +70,7 @@ class SearchResult(DataResult[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == DataResultState.EMPTY
+                self._state == DataResultEnum.EMPTY
         )
     
     @property
@@ -78,7 +78,7 @@ class SearchResult(DataResult[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == DataResultState.TIMED_OUT
+                self._state == DataResultEnum.TIMED_OUT
         )
     
     @classmethod
@@ -86,7 +86,7 @@ class SearchResult(DataResult[T], Generic[T]):
         return cls(
             payload=payload,
             exception=None,
-            state=DataResultState.SUCCESS,
+            state=DataResultEnum.SUCCESS,
         )
     
     @classmethod
@@ -94,7 +94,7 @@ class SearchResult(DataResult[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=DataResultState.FAILURE,
+            state=DataResultEnum.FAILURE,
         )
     
     @classmethod
@@ -102,7 +102,7 @@ class SearchResult(DataResult[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=DataResultState.FAILURE,
+            state=DataResultEnum.FAILURE,
         )
     
     @classmethod
@@ -110,6 +110,6 @@ class SearchResult(DataResult[T], Generic[T]):
         return cls(
             payload=None,
             exception=None,
-            state=DataResultState.EMPTY,
+            state=DataResultEnum.EMPTY,
         )
 

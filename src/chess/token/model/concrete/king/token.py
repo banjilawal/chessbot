@@ -34,40 +34,36 @@ class KingToken(Token):
             activity=activity
         )
         self.activity.state = KingReadiness.NOT_INITIALIZED
-        
-    # @property
-    # def activity_state(self) -> KingActivityState:
-    #     return self._activity_state
-    #
-    # @activity_state.setter
-    # def activity_state(self, state: KingActivityState):
-    #     self._activity_state = state
+
      
     @property
-    def is_in_checked(self) -> bool:
+    def is_in_check(self) -> bool:
         return (
                 self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self._activity_state == KingActivityState.IN_CHECK
+                self.activity == KingReadiness.IN_CHECK
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
                 self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self._activity_state == KingActivityState.CHECKMATED
+                self.activity == KingReadiness.CHECKMATED
         )
     
     @property
     def is_active(self) -> bool:
         return (
             self.board_state == TokenBoardState.FORMED_ON_BOARD and
-            self._activity_state != KingActivityState.FREE
+            self.activity != KingReadiness.FREE
         )
     
     @property
     def is_disabled(self) -> bool:
-        return self.board_state == TokenBoardState.NEVER_BEEN_PLACED or self.is_checkmated
-
+        return (
+                self.is_checkmated or
+                self.board_state == TokenBoardState.NEVER_BEEN_PLACED
+        )
+    
     def __eq__(self, other):
         if super().__eq__(other):
             if isinstance(other, KingToken):

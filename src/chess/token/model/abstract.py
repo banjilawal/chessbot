@@ -118,11 +118,12 @@ class Token(ABC):
     @property
     def board_state(self) -> TokenBoardState:
         return self._token_board_state
+
     
     @property
-    def is_not_formed(self) -> bool:
+    def has_not_been_formed(self) -> bool:
         return (
-                self._positions.is_empty and
+                self.positions.size == 0 and
                 self._token_board_state == TokenBoardState.NEVER_BEEN_PLACED
         )
     
@@ -152,13 +153,7 @@ class Token(ABC):
         if isinstance(other, Token):
             return self._id == other.id
         return False
-    
-    @property
-    def has_not_been_formed(self) -> bool:
-        return (
-                self.positions.size == 0 and
-                self._token_board_state == TokenBoardState.NEVER_BEEN_PLACED
-        )
+
     
     def __hash__(self) -> int:
         return hash(self._id)

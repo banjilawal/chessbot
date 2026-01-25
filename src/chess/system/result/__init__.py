@@ -13,5 +13,5 @@ version: 1.0.0
 from .stack import *
 
 # Modules
-from .exception import *
 from .result import Result
+from .state import ResultState

@@ -9,7 +9,7 @@ Version: 1.0.0
 from abc import abstractmethod
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DTO, DataResult, DataResultState, UpdateResult
+from chess.system import DTO, DataResult, DataResultEnum, UpdateResult
 
 T = TypeVar("T")
 
@@ -29,7 +29,7 @@ class UpdateResult(DataResult[T], Generic[T]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   state (DataResultState)
+        *   state (DataResultEnum)
 
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
@@ -41,7 +41,7 @@ class UpdateResult(DataResult[T], Generic[T]):
             previous_data: DTO,
             current:  Optional[T],
             exception: Optional[Exception] = None,
-            state: Optional[DataResultState] = None,
+            state: Optional[DataResultEnum] = None,
     ):
         super().__init__(
             state=state,
@@ -66,7 +66,7 @@ class UpdateResult(DataResult[T], Generic[T]):
                 self._current is not None and
                 self.previous is not None and
                 self.exception is None and
-                self._state == DataResultState.SUCCESS
+                self._state == DataResultEnum.SUCCESS
         )
     
     @property
@@ -75,7 +75,7 @@ class UpdateResult(DataResult[T], Generic[T]):
                 self._current is None and
                 self.previous is not None and
                 self.exception is not None and
-                self.state == DataResultState.FAILURE
+                self.state == DataResultEnum.FAILURE
         )
     
     @property
@@ -84,7 +84,7 @@ class UpdateResult(DataResult[T], Generic[T]):
                 self._current is None and
                 self.previous is not None and
                 self.exception is not None and
-                self.state == DataResultState.TIMED_OUT
+                self.state == DataResultEnum.TIMED_OUT
         )
     
     @property
@@ -93,7 +93,7 @@ class UpdateResult(DataResult[T], Generic[T]):
                 self._current is None and self.exception is not None and
                 self.previous == self._current and
                 self.exception is not None and
-                self._state == DataResultState.CURRENT_AND_PREVIOUS_THE_SAME
+                self._state == DataResultEnum.CURRENT_AND_PREVIOUS_THE_SAME
         )
     
     @classmethod
@@ -102,7 +102,7 @@ class UpdateResult(DataResult[T], Generic[T]):
             previous=previous,
             current=current,
             exception=None,
-            state=DataResultState.SUCCESS,
+            state=DataResultEnum.SUCCESS,
         )
     
     @classmethod
@@ -111,7 +111,7 @@ class UpdateResult(DataResult[T], Generic[T]):
             previous=previous,
             current=current,
             exception=exception,
-            state=DataResultState.FAILURE,
+            state=DataResultEnum.FAILURE,
         )
     
     @classmethod
@@ -120,7 +120,7 @@ class UpdateResult(DataResult[T], Generic[T]):
             previous=previous,
             current=current,
             exception=exception,
-            state=DataResultState.TIMED_OUT,
+            state=DataResultEnum.TIMED_OUT,
         )
     
     @classmethod
@@ -129,7 +129,7 @@ class UpdateResult(DataResult[T], Generic[T]):
             previous=previous,
             current=current,
             exception=None,
-            state=DataResultState.CURRENT_AND_PREVIOUS_THE_SAME,
+            state=DataResultEnum.CURRENT_AND_PREVIOUS_THE_SAME,
         )
     
     @classmethod
@@ -138,5 +138,5 @@ class UpdateResult(DataResult[T], Generic[T]):
             previous=None,
             current=None,
             exception=None,
-            state=DataResultState.EMPTY,
+            state=DataResultEnum.EMPTY,
         )

@@ -21,7 +21,7 @@ class UnsupportedDataResultStateException(NotImplementedException):
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Indicate that a Result class does not have logic for a DataResultState. Some data operations
+    1.  Indicate that a Result class does not have logic for a DataResultEnum. Some data operations
         either succeed or fail. Others can have a null result.
 
     # PARENT:

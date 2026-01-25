@@ -14,4 +14,4 @@ from .exception import *
 
 # Modules
 from .result import DataResult
-from .state import DataResultState
+from .state import DataResultEnum

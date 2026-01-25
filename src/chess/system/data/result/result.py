@@ -10,7 +10,7 @@ Version: 1.0.0
 from abc import abstractmethod
 from typing import Generic, Optional, TypeVar
 
-from chess.system import Result, DataResult, DataResultState
+from chess.system import Result, DataResult, DataResultEnum, ResultState
 
 T = TypeVar("T")
 
@@ -38,17 +38,17 @@ class DataResult(Result[T], Generic[T]):
     # INHERITED ATTRIBUTES:
         *   See Result class for inherited attributes.
     """
-    _state: DataResultState
+    _state: ResultState
     
     def __init__(
             self,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None,
-            state: Optional[DataResultState] = None,
+            state: Optional[ResultState] = None,
     ):
         super().__init__(payload=payload, exception=exception)
         self._state = state
         
     @property
-    def state(self) -> Optional[DataResultState]:
+    def state(self) -> Optional[ResultState]:
         return self._state

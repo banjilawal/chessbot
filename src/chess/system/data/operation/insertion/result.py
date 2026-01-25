@@ -10,7 +10,7 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar, cast
 
-from chess.system import DataResult, DataResultState, UnsupportedEmptyInsertionResultException
+from chess.system import DataResult, DataResultEnum, UnsupportedEmptyInsertionResultException
 
 T = TypeVar("T")
 
@@ -38,7 +38,7 @@ class InsertionResult(DataResult[T], Generic[T]):
             self,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None,
-            state: Optional[DataResultState] = None,
+            state: Optional[DataResultEnum] = None,
     ):
         super().__init__(
             state=state,
@@ -53,7 +53,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 self.payload is not None and
                 self.exception is None and
-                DataResultState.SUCCESS
+                DataResultEnum.SUCCESS
         )
     
     @property
@@ -61,7 +61,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                DataResultState.FAILURE
+                DataResultEnum.FAILURE
         )
     
     @property
@@ -69,7 +69,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                DataResultState.TIMED_OUT
+                DataResultEnum.TIMED_OUT
         )
     
     @classmethod
@@ -77,7 +77,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return cls(
             payload=payload,
             exception=None,
-            state=DataResultState.SUCCESS,
+            state=DataResultEnum.SUCCESS,
         )
     
     @classmethod
@@ -85,7 +85,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=DataResultState.FAILURE,
+            state=DataResultEnum.FAILURE,
         )
     
     @classmethod
@@ -93,6 +93,6 @@ class InsertionResult(DataResult[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=DataResultState.TIMED_OUT,
+            state=DataResultEnum.TIMED_OUT,
         )
 

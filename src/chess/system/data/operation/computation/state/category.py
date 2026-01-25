@@ -1,7 +1,7 @@
-# src/chess/system/data/result/state.py
+# src/chess/system/data/operation/computation/state/category.py
 
 """
-Module: chess.system.data.result.state
+Module: chess.system.data.operation.computation.state.category
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -10,7 +10,7 @@ Version: 1.0.0
 from enum import auto, Enum
 
 
-class DataResultEnum(Enum):
+class ComputationResultEnum(Enum):
     """
     """
     SUCCESS = auto(),
