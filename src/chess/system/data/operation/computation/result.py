@@ -55,7 +55,7 @@ class ComputationResult(DataResult[T], Generic[T]):
         return (
                 self.payload is not None and
                 self.exception is None and
-                self.state == ComputationResultState(state=DataResultEnum.SUCCESS)
+                self.state.classification == DataResultEnum.SUCCESS
         )
     
     @property
@@ -63,7 +63,7 @@ class ComputationResult(DataResult[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == ComputationResultState(DataResultEnum.FAILURE)
+                self.state.classification == DataResultEnum.FAILURE
         )
     
     @property
@@ -71,7 +71,7 @@ class ComputationResult(DataResult[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == ComputationResultState(DataResultEnum.TIMED_OUT)
+                self.state == DataResultEnum.TIMED_OUT
         )
     
     @classmethod

@@ -14,12 +14,8 @@ from typing import Generic, TypeVar
 T = TypeVar("T")
 
 class ResultState(ABC, Generic[T]):
-    _state: T
+    _classification: T
 
     @property
-    def state(self) -> T:
-        return self._state
-    
-    @state.setter
-    def state(self, state: T):
-        self._state = state
+    def classification(self) -> T:
+        return self._classification

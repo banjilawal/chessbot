@@ -10,7 +10,8 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, DataResultEnum
+from chess.system import DataResult, DataResultEnum, DeletionResultEnum
+from chess.system.data.operation.deletion.state.state import DeletionResultState
 
 T = TypeVar("T")
 
@@ -37,15 +38,11 @@ class DeletionResult(DataResult[Generic[T]]):
     """
     def __init__(
             self,
-            payload: Optional[T] = None,
+            state: DeletionResultState,
             exception: Optional[Exception] = None,
-            state: Optional[DataResultEnum] = None,
+            payload: Optional[T] = None,
     ):
-        super().__init__(
-            state=state,
-            payload=payload,
-            exception=exception
-        )
+        super().__init__(state=state, payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "DeletionResult.wrapper"
     
@@ -54,7 +51,7 @@ class DeletionResult(DataResult[Generic[T]]):
         return (
                 self.payload is not None and
                 self.exception is None and
-                self._state == DataResultEnum.SUCCESS
+                self.state.classification == DeletionResultEnum.SUCCESS
         )
     
     @property
@@ -62,7 +59,7 @@ class DeletionResult(DataResult[Generic[T]]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state == DataResultEnum.FAILURE
+                self.state.classification == DeletionResultEnum.FAILURE
         )
     
     @property
@@ -70,7 +67,7 @@ class DeletionResult(DataResult[Generic[T]]):
         return (
                 self.payload is None and
                 self.exception is None and
-                self._state == DataResultEnum.NOTHING_TO_DELETE
+                self.state.classification == DeletionResultEnum.NOTHING_TO_DELETE
         )
     
     @property
@@ -78,7 +75,7 @@ class DeletionResult(DataResult[Generic[T]]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == DataResultEnum.TIMED_OUT
+                self.state.classification == DeletionResultEnum.TIMED_OUT
         )
     
     @classmethod
@@ -86,7 +83,7 @@ class DeletionResult(DataResult[Generic[T]]):
         return cls(
             payload=payload,
             exception=None,
-            state=DataResultEnum.SUCCESS,
+            state=DeletionResultState(DeletionResultEnum.SUCCESS),
         )
     
     @classmethod
@@ -94,7 +91,7 @@ class DeletionResult(DataResult[Generic[T]]):
         return cls(
             payload=None,
             exception=exception,
-            state=DataResultEnum.FAILURE,
+            state=DeletionResultState(DeletionResultEnum.FAILURE),
         )
     
     @classmethod
@@ -102,7 +99,7 @@ class DeletionResult(DataResult[Generic[T]]):
         return cls(
             payload=None,
             exception=exception,
-            state=DataResultEnum.TIMED_OUT,
+            state=DeletionResultState(DeletionResultEnum.TIMED_OUT),
         )
     
     @classmethod
@@ -110,6 +107,6 @@ class DeletionResult(DataResult[Generic[T]]):
         return cls(
             payload=None,
             exception=None,
-            state=DataResultEnum.NOTHING_TO_DELETE,
+            state=DeletionResultState(DeletionResultEnum.NOTHING_TO_DELETE),
         )
 
