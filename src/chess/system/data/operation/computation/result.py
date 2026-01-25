@@ -42,11 +42,7 @@ class ComputationResult(DataResult[T], Generic[T]):
             exception: Optional[Exception] = None,
             payload: Optional[T] = None,
     ):
-        super().__init__(
-            state=state,
-            payload=payload,
-            exception=exception
-        )
+        super().__init__(state=state, payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "ComputationResult.result"
 

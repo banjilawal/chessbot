@@ -10,7 +10,7 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar, cast
 
-from chess.system import DataResult, DataResultEnum, UnsupportedEmptyInsertionResultException
+from chess.system import DataResult, DataResultEnum, InsertionResultState
 
 T = TypeVar("T")
 
@@ -36,15 +36,12 @@ class InsertionResult(DataResult[T], Generic[T]):
     """
     def __init__(
             self,
-            payload: Optional[T] = None,
+            state: InsertionResultState,
             exception: Optional[Exception] = None,
-            state: Optional[DataResultEnum] = None,
+            payload: Optional[T] = None,
+
     ):
-        super().__init__(
-            state=state,
-            payload=payload,
-            exception=exception
-        )
+        super().__init__(state=state, payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "InsertionResult.__init__"
         

@@ -15,6 +15,9 @@ T = TypeVar("T")
 
 class ResultState(ABC, Generic[T]):
     _classification: T
+    
+    def __init__(self, classification: T):
+        self._classification = classification
 
     @property
     def classification(self) -> T:

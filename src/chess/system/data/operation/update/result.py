@@ -7,9 +7,10 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 from abc import abstractmethod
+from platform import python_revision
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DTO, DataResult, DataResultEnum, UpdateResult
+from chess.system import DTO, DataResult, DataResultEnum, UpdateResult, UpdateResultEnum, UpdateResultState
 
 T = TypeVar("T")
 
@@ -34,109 +35,96 @@ class UpdateResult(DataResult[T], Generic[T]):
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
-    _current: T
+    _update: DTO
 
     def __init__(
             self,
-            previous_data: DTO,
-            current:  Optional[T],
+            original: T,
+            state: UpdateResultState,
             exception: Optional[Exception] = None,
-            state: Optional[DataResultEnum] = None,
+            update: Optional[T] = None,
     ):
-        super().__init__(
-            state=state,
-            payload=previous_data,
-            exception=exception
-        )
+        super().__init__(state=state, payload=update, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "UpdateResult.result"
-        self._current = current
+        self._original = original
         
     @property
     def previous(self) -> T:
         return self.payload
     
     @property
-    def current(self) -> Optional[T]:
-        return self._current
+    def update(self) -> Optional[T]:
+        return self.payload
     
     @property
     def is_success(self) -> bool:
         return (
-                self._current is not None and
+                self._update is not None and
                 self.previous is not None and
                 self.exception is None and
-                self._state == DataResultEnum.SUCCESS
+                self.state == UpdateResultEnum.SUCCESS
         )
     
     @property
     def is_failure(self) -> bool:
         return (
-                self._current is None and
+                self._update is None and
                 self.previous is not None and
                 self.exception is not None and
-                self.state == DataResultEnum.FAILURE
+                self.state == UpdateResultEnum.FAILURE
         )
     
     @property
     def is_timed_out(self) -> bool:
         return (
-                self._current is None and
+                self._update is None and
                 self.previous is not None and
                 self.exception is not None and
-                self.state == DataResultEnum.TIMED_OUT
+                self.state == UpdateResultEnum.TIMED_OUT
         )
     
     @property
-    def are_the_same(self) -> bool:
+    def original_is_update(self) -> bool:
         return (
-                self._current is None and self.exception is not None and
-                self.previous == self._current and
+                self._update is None and self.exception is not None and
+                self.previous == self._update and
                 self.exception is not None and
-                self._state == DataResultEnum.CURRENT_AND_PREVIOUS_THE_SAME
+                self._state == UpdateResultEnum.ORIGINAL_IS_UPDATE
         )
     
     @classmethod
-    def update_success(cls, previous: T, current: T) -> UpdateResult[T]:
+    def update_success(cls, original: T, update: DTO) -> UpdateResult[T]:
         return cls(
-            previous=previous,
-            current=current,
+            original=original,
+            update=update,
             exception=None,
-            state=DataResultEnum.SUCCESS,
+            state=UpdateResultState(classification=UpdateResultEnum.SUCCESS),
         )
     
     @classmethod
-    def update_failure(cls, previous: T, current: T, exception: Exception):
+    def update_failure(cls, original: T, exception: Exception):
         return cls(
-            previous=previous,
-            current=current,
+            original=original,
+            update=None,
             exception=exception,
-            state=DataResultEnum.FAILURE,
+            state=UpdateResultState(classification=UpdateResultEnum.FAILURE),
         )
     
     @classmethod
-    def update_timed_out(cls, previous: T, current: T, exception: Exception):
+    def update_timed_out(cls, original: T, exception: Exception):
         return cls(
-            previous=previous,
-            current=current,
+            original=original,
+            update=None,
             exception=exception,
-            state=DataResultEnum.TIMED_OUT,
+            state=UpdateResultState(classification=UpdateResultEnum.TIMED_OUT),
         )
     
     @classmethod
-    def nothing_to_change(cls, previous: T, current: T) -> UpdateResult[T]:
+    def original_same_as_update(cls, original: T, update: DTO) -> UpdateResult[T]:
         return cls(
-            previous=previous,
-            current=current,
+            original=original,
+            update=update,
             exception=None,
-            state=DataResultEnum.CURRENT_AND_PREVIOUS_THE_SAME,
-        )
-    
-    @classmethod
-    def empty(cls) -> UpdateResult[T]:
-        return cls(
-            previous=None,
-            current=None,
-            exception=None,
-            state=DataResultEnum.EMPTY,
+            state=UpdateResultState(classification=UpdateResultEnum.ORIGINAL_AND_UPDATE_ARE_SAME),
         )

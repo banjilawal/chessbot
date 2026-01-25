@@ -10,9 +10,9 @@ Version: 1.0.0
 # =========== SYSTEM.DATA.OPERATION.SEARCH PACKAGE CONTENTS ===========#
 
 # Packages
+from .result import *
 from .context import *
 from .exception import *
 
 # Modules
-from .result import SearchResult
 from .abstract import AbstractSearcher
