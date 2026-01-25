@@ -14,6 +14,7 @@ from chess.team import Team
 from chess.rank import Rank
 from chess.square import Square
 from chess.token import CombatantActivityState, Token, TokenBoardState
+from chess.token.activity.combatant.state import CombatantReadiness
 
 
 class CombatantToken(Token):
@@ -31,7 +32,6 @@ class CombatantToken(Token):
         *   victor (Optional[Token]): Enemy who captured the combatant.
     """
     _captor: Optional[Token]
-    _activity_state: CombatantActivityState
     
     def __init__(
             self,
@@ -41,6 +41,7 @@ class CombatantToken(Token):
             designation: str,
             roster_number: int,
             opening_square: Square,
+            activity: CombatantActivityState = CombatantActivityState(),
     ):
         super().__init__(
             id=id,
@@ -48,17 +49,18 @@ class CombatantToken(Token):
             rank=rank,
             designation=designation,
             roster_number=roster_number,
-            opening_square=opening_square
+            opening_square=opening_square,
+            activity=activity,
         )
         self._captor = None
-        self._activity_state = CombatantActivityState.FREE
+        self.activity.state = CombatantReadiness.NOT_INITIALIZED
     
     @property
     def is_active(self) -> bool:
         return (
                 self._captor is None and
                 self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self.activity_state != CombatantActivityState.FREE
+                self.activity.state == CombatantReadiness.FREE
         )
     
     @property
@@ -70,24 +72,16 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self._activity_state == CombatantActivityState.CAPTURE_ACTIVATED
+                self._activity == CombatantReadiness.CAPTURE_ACTIVATED
         )
     
     @property
     def has_hostage_manifest(self) -> bool:
         return (
-            self._captor is not None and
-            self.board_state == TokenBoardState.FORMED_ON_BOARD and
-            self._activity_state == CombatantActivityState.ISSUED_HOSTAGE_MANIFEST
+                self._captor is not None and
+                self.board_state == TokenBoardState.FORMED_ON_BOARD and
+                self._activity == CombatantReadiness.ISSUED_HOSTAGE_MANIFEST
         )
-
-    @property
-    def activity_state(self) -> CombatantActivityState:
-        return self._activity_state
-    
-    @activity_state.setter
-    def activity_state(self, activity_state: CombatantActivityState):
-        self._activity_state = activity_state
     
     @property
     def captor(self) -> Optional[Token]:

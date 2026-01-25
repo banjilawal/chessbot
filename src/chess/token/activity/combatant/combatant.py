@@ -12,11 +12,11 @@ from abc import ABC
 from enum import Enum
 
 from chess.token import ActivityState
-from chess.token.activity.combatant.state import CombatantState
+from chess.token.activity.combatant.state import CombatantReadiness
 
 
 class CombatantActivityState(ActivityState, ABC):
     _state: Enum
     
-    def __init__(self, state: CombatantState):
+    def __init__(self, state: CombatantReadiness):
         super().__init__(state=state)

@@ -44,7 +44,7 @@ class Token(ABC):
     _rank: Rank
     _designation: str
     _roster_number: int
-    _activity_state: ActivityState
+    _activity: ActivityState
     _opening_square: Square
     _positions: CoordDataService
     _current_position: Optional[Coord]
@@ -59,6 +59,7 @@ class Token(ABC):
             designation: str,
             roster_number: int,
             opening_square: Square,
+            activity: ActivityState,
             positions: CoordDataService = CoordDataService()
     ):
         method = "Token.__init__"
@@ -72,6 +73,7 @@ class Token(ABC):
         self._current_position = self._positions.current_coord
         self._previous_address = self._positions.previous_coord
         self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
+        self._activity = activity
     
     @property
     def id(self) -> int:
@@ -96,6 +98,10 @@ class Token(ABC):
     @property
     def opening_square(self) -> Square:
         return self._opening_square
+    
+    @property
+    def activity(self) -> ActivityState:
+        return self._activity_state
     
     @property
     def positions(self) -> CoordDataService:

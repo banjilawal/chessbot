@@ -10,7 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 from enum import Enum, auto
 
-class KingState(Enum):
+class KingReadiness(Enum):
     FREE = auto(),
     IN_CHECK = auto(),
-    CHECKMATED = auto()
+    CHECKMATED = auto(),
+    NOT_INITIALIZED = auto(),

@@ -10,11 +10,10 @@ version: 1.0.0
 from chess.rank import King
 from chess.team import Team
 from chess.square import Square
-from chess.token import KingActivityState, Token, TokenBoardState
+from chess.token import KingActivityState, KingReadiness, Token, TokenBoardState
 
 
 class KingToken(Token):
-    _activity_state: KingActivityState
     
     def __init__(
             self,
@@ -23,6 +22,7 @@ class KingToken(Token):
             designation: str,
             roster_number: int,
             opening_square: Square,
+            activity: KingActivityState(),
     ):
         super().__init__(
             id=id,
@@ -31,16 +31,17 @@ class KingToken(Token):
             designation=designation,
             roster_number=roster_number,
             opening_square=opening_square,
+            activity=activity
         )
-        self._activity_state = KingActivityState.FREE
+        self.activity.state = KingReadiness.NOT_INITIALIZED
         
-    @property
-    def activity_state(self) -> KingActivityState:
-        return self._activity_state
-    
-    @activity_state.setter
-    def activity_state(self, state: KingActivityState):
-        self._activity_state = state
+    # @property
+    # def activity_state(self) -> KingActivityState:
+    #     return self._activity_state
+    #
+    # @activity_state.setter
+    # def activity_state(self, state: KingActivityState):
+    #     self._activity_state = state
      
     @property
     def is_in_checked(self) -> bool:
