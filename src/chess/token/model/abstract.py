@@ -7,13 +7,14 @@ Created: 2025-07-22
 version: 1.0.0
 """
 
+from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Optional
 
 from chess.rank import Rank
 from chess.team import Team
 from chess.square import Square
-from chess.token import Token, TokenBoardState
+from chess.token import TokenBoardState
 from chess.coord import Coord, CoordDataService
 
 class Token(ABC):
@@ -112,7 +113,11 @@ class Token(ABC):
         return self._token_board_state
     
     @property
-    def is_not_formed(self):
+    def is_not_formed(self) -> bool:
+        return (
+                self._positions.is_empty and
+                self._token_board_state == TokenBoardState.NEVER_BEEN_PLACED
+        )
     
     @property
     @abstractmethod

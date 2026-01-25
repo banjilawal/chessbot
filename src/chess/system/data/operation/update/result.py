@@ -9,7 +9,7 @@ Version: 1.0.0
 from abc import abstractmethod
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, DataResultState, UpdateResult
+from chess.system import DTO, DataResult, DataResultState, UpdateResult
 
 T = TypeVar("T")
 
@@ -38,14 +38,14 @@ class UpdateResult(DataResult[T], Generic[T]):
 
     def __init__(
             self,
-            previous: T,
+            previous_data: DTO,
             current:  Optional[T],
             exception: Optional[Exception] = None,
             state: Optional[DataResultState] = None,
     ):
         super().__init__(
             state=state,
-            payload=previous,
+            payload=previous_data,
             exception=exception
         )
         """INTERNAL: Use factory methods instead of direct constructor."""

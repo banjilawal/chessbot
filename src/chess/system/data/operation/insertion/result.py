@@ -7,11 +7,10 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Generic, Optional, TypeVar, cast
 
-from chess.system import (
-    DataResult, InsertionResult, DataResultState, UnsupportedEmptyInsertionResultException
-)
+from chess.system import DataResult, DataResultState, UnsupportedEmptyInsertionResultException
 
 T = TypeVar("T")
 
@@ -96,17 +95,4 @@ class InsertionResult(DataResult[T], Generic[T]):
             exception=exception,
             state=DataResultState.TIMED_OUT,
         )
-    
-    @classmethod
-    def empty(cls) -> InsertionResult[T]:
-        method = "InsertionResult.empty"
-        return cls(
-            payload=None,
-            state=None,
-            exception=UnsupportedEmptyInsertionResultException(
-                f"{method}: {UnsupportedEmptyInsertionResultException.DEFAULT_MESSAGE}"
-            )
-        )
-
-
 

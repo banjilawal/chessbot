@@ -7,9 +7,10 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, DeletionResult, DataResultState
+from chess.system import DataResult, DataResultState
 
 T = TypeVar("T")
 
@@ -65,14 +66,6 @@ class DeletionResult(DataResult[Generic[T]]):
         )
     
     @property
-    def is_empty(self) -> bool:
-        return (
-                self.payload is None and
-                self.exception is None and
-                self._state == DataResultState.NOTHING_TO_DELETE
-        )
-    
-    @property
     def is_nothing_to_delete(self) -> bool:
         return (
                 self.payload is None and
@@ -114,10 +107,6 @@ class DeletionResult(DataResult[Generic[T]]):
     
     @classmethod
     def nothing_to_delete(cls) -> DeletionResult[T]:
-        return cls.empty()
-    
-    @classmethod
-    def empty(cls) -> DeletionResult[T]:
         return cls(
             payload=None,
             exception=None,

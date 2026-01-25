@@ -52,15 +52,3 @@ class DataResult(Result[T], Generic[T]):
     @property
     def state(self) -> Optional[DataResultState]:
         return self._state
-    
-    @classmethod
-    @abstractmethod
-    def empty(cls) -> DataResult[T]:
-        pass
-        # method = "DataResult.empty"
-        # return cls(
-        #     exception=NotImplementedException(
-        #         message=f"{method}: {NotImplementedException.DEFAULT_MESSAGE}",
-        #         ex=EmptyDataResultException(f"{method}: {EmptyDataResultException.DEFAULT_MESSAGE}")
-        #     )
-        # )

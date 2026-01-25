@@ -15,5 +15,5 @@ from .operation import *
 from .result import *
 
 # Modules
-None
+from .dto import DTO
 
