@@ -14,4 +14,3 @@ None
 
 # Modules
 from .token import KingToken
-from .state import KingActivityState

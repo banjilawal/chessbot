@@ -14,7 +14,7 @@ from typing import Optional
 from chess.rank import Rank
 from chess.team import Team
 from chess.square import Square
-from chess.token import TokenBoardState
+from chess.token import ActivityState, TokenBoardState
 from chess.coord import Coord, CoordDataService
 
 class Token(ABC):
@@ -44,6 +44,7 @@ class Token(ABC):
     _rank: Rank
     _designation: str
     _roster_number: int
+    _activity_state: ActivityState
     _opening_square: Square
     _positions: CoordDataService
     _current_position: Optional[Coord]

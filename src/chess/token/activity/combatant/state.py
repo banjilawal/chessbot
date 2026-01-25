@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from enum import Enum, auto
 
-class CombatantActivityState(Enum):
+class CombatantState(Enum):
     FREE = auto(),
     CAPTURE_ACTIVATED = auto(),
     ISSUED_HOSTAGE_MANIFEST = auto(),
