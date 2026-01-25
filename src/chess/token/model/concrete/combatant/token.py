@@ -65,7 +65,7 @@ class CombatantToken(Token):
         return not self.is_active
 
     @property
-    def is_captured(self) -> bool:
+    def capture_is_activated(self) -> bool:
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.FORMED_ON_BOARD and
@@ -79,7 +79,7 @@ class CombatantToken(Token):
             self.board_state == TokenBoardState.FORMED_ON_BOARD and
             self._activity_state == CombatantActivityState.ISSUED_HOSTAGE_MANIFEST
         )
-    
+
     @property
     def activity_state(self) -> CombatantActivityState:
         return self._activity_state

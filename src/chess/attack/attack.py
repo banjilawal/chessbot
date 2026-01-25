@@ -16,7 +16,7 @@ from chess.attack import (
 from chess.hostage import HostageDatabaseService, HostageDatabaseService
 from chess.square import Square, SquareContext, SquareService
 from chess.system import LoggingLevelRouter
-from chess.token import KingToken, Token, TokenService
+from chess.token import CombatantActivityState, KingToken, Token, TokenService
 
 
 class Attack:
@@ -120,11 +120,11 @@ class Attack:
     ) -> AttackResult:
         """"""
         method = "Attack._process_attack"
-        square_search_result = attacker.team.board.squares.search_squares(
+        attacker_square_search = attacker.team.board.squares.search_squares(
             context=SquareContext(coord=attacker.current_position)
         )
         # Handle the case that the square_search fails.
-        if square_search_result.is_failure:
+        if attacker_square_search.is_failure:
             # Return exception chain on failure.
             return AttackResult.failure(
                 AttackFailedException(
@@ -133,7 +133,7 @@ class Attack:
                 )
             )
         # Handle the case that no square matching the token's coords is found.
-        if square_search_result.is_empty:
+        if attacker_square_search.is_empty:
             # Return exception chain on failure.
             return AttackResult.failure(
                 AttackFailedException(
@@ -142,7 +142,7 @@ class Attack:
                 )
             )
         # Handle the case that the square does not contain the attacker despite their share coord.
-        if cast(Square, square_search_result.payload).occupant != attacker:
+        if cast(Square, attacker_square_search.payload).occupant != attacker:
             # Return exception chain on failure.
             return AttackResult.failure(
                 AttackFailedException(
@@ -153,3 +153,13 @@ class Attack:
                 )
             )
         # --- Start Processing the attack. ---#
+        
+        # Set the square's captor.
+        square.occupant.captor = attacker
+        # Update the hostage's activity_status
+        square.occupant.activity_state = CombatantActivityState.CAPTURE_ACTIVATED
+        # Remove the enemy from their square.
+        hostage = square.occupant
+        # Set the square's new occupant.
+        square.occupant = attacker
+        

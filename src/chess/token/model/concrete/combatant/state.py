@@ -13,4 +13,5 @@ class CombatantActivityState(Enum):
     FREE = auto(),
     CAPTURE_ACTIVATED = auto(),
     ISSUED_HOSTAGE_MANIFEST = auto(),
+    MANIFESTED_HOSTAGE_OFF_BOARD = auto(),
     

@@ -77,3 +77,6 @@ class SquareContextService(ContextService[SquareContext]):
     def validator(self) -> SquareContextValidator:
         """Get SquareContextValidator instance."""
         return cast(SquareContextValidator, self.entity_validator)
+    
+    @property
+    def token:

@@ -49,6 +49,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
             victor: Token,
             captured_square: Square,
             prisoner: CombatantToken,
+            victor_square: Square,
             id: int = id_emitter.scout_report_id,
             token_service: TokenService = TokenService(),
             square_service: SquareService = SquareService(),
@@ -99,17 +100,17 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         
         # --- Perform the square tests that are independent of the prisoner and victor. ---#
         
-        # Handle the case that the square where the capture occurred is not certified safe.
-        square_validation = square_service.validator.validate(candidate=captured_square)
-        if square_validation.failure:
+        # Handle the case that the captured_square is not certified safe.
+        captured_square_validation = square_service.validator.validate(candidate=captured_square)
+        if captured_square_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageManifestBuildFailedException(
                     message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
-                    ex=square_validation.exception
+                    ex=captured_square_validation.exception
                 )
             )
-        # Handle the case that the square is empty
+        # Handle the case that the captured_square is empty
         if captured_square.is_empty:
             # Send the exception chain on failure
             return BuildResult.failure(
@@ -117,6 +118,28 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
                     ex=CapturedSquareCannotBeEmptyException(
                         f"{method}: {CapturedSquareCannotBeEmptyException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that the hostage is not in the
+        # Handle the case that the victor_square is not certified safe.
+        captured_square_validation = square_service.validator.validate(candidate=captured_square)
+        if captured_square_validation.failure:
+            # Send the exception chain on failure
+            return BuildResult.failure(
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=captured_square_validation.exception
+                )
+            )
+        # Handle the case that the victor_square is empty
+        if victor_square.is_empty:
+            # Send the exception chain on failure
+            return BuildResult.failure(
+                HostageManifestBuildFailedException(
+                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=VictorSquareCannotBeEmptyException(
+                        f"{method}: {VictorSquareCannotBeEmptyException.DEFAULT_MESSAGE}"
                     )
                 )
             )
