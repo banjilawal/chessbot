@@ -11,6 +11,7 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
 from chess.system import DataResult, DataResultEnum, UnsupportedEmptyComputationResultException
+from chess.system.data.operation.computation.state.state import ComputationResultState
 
 T = TypeVar("T")
 
@@ -37,9 +38,9 @@ class ComputationResult(DataResult[T], Generic[T]):
     
     def __init__(
             self,
-            payload: Optional[T] = None,
+            state: ComputationResultState,
             exception: Optional[Exception] = None,
-            state: Optional[DataResultEnum] = None,
+            payload: Optional[T] = None,
     ):
         super().__init__(
             state=state,
@@ -54,7 +55,7 @@ class ComputationResult(DataResult[T], Generic[T]):
         return (
                 self.payload is not None and
                 self.exception is None and
-                self.state == DataResultEnum.SUCCESS
+                self.state == ComputationResultState(state=DataResultEnum.SUCCESS)
         )
     
     @property
@@ -62,7 +63,7 @@ class ComputationResult(DataResult[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == DataResultEnum.FAILURE
+                self.state == ComputationResultState(DataResultEnum.FAILURE)
         )
     
     @property
@@ -70,7 +71,7 @@ class ComputationResult(DataResult[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state == DataResultEnum.TIMED_OUT
+                self.state == ComputationResultState(DataResultEnum.TIMED_OUT)
         )
     
     @classmethod
@@ -78,7 +79,7 @@ class ComputationResult(DataResult[T], Generic[T]):
         return cls(
             payload=payload,
             exception=None,
-            state=DataResultEnum.SUCCESS,
+            state=ComputationResultState(state=DataResultEnum.SUCCESS),
         )
     
     @classmethod
@@ -86,7 +87,7 @@ class ComputationResult(DataResult[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=DataResultEnum.FAILURE,
+            state=ComputationResultState(state=DataResultEnum.FAILURE),
         )
     
     @classmethod
@@ -94,7 +95,7 @@ class ComputationResult(DataResult[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=DataResultEnum.TIMED_OUT,
+            state=ComputationResultState(state=DataResultEnum.TIMED_OUT),
         )
 
     
