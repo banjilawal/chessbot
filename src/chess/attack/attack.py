@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from chess.attack import (
-    AttackFailedException, AttackResult, AttackerSquareNotFoundException,
+    AttackFailedException, AttackResult, AttackerSquareInconsistencyException, AttackerSquareNotFoundException,
     AttackingEnemyKingException,
     AttackingFriendlySquareException,
     AttackingTokenOnWrongBoardException, AttackingVacantSquareException
@@ -135,7 +135,15 @@ class Attack:
             attacker=attacker,
             square_service=square_service,
         )
-
+        # Handle the case that the there is no bidirectional relationship between the attacker and their square.
+        if not attack_source_square_analysis.fully_exists:
+            # Return exception chain on failure.
+            return RelationReport.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=attack_source_square_analysis.exception
+                )
+            )
         # --- Start Processing the attack. ---#
         
         # Set the square's captor.
@@ -147,8 +155,16 @@ class Attack:
         # Set the square's new occupant.
         square.occupant = attacker
         
+        # Remove the attacker from their old square
+        
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _attacker_leaves_square(attacker: Token, attack_square: Square) -> Deletion
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
     def _process_attacker_square(
-            self,
+            cls,
             attacker: Token,
             square_service: SquareService,
     ) -> RelationReport[Square, Token]:
@@ -180,7 +196,20 @@ class Attack:
                     )
                 )
             )
+        # If there is more than one square in the result at least one of them is stale.
+        if len(set(square_search)) > 1:
+            # Return exception chain on failure.
+            return RelationReport.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=ConflictingAttackerSquareException(
+                        f"{method}: {ConflictingAttackerSquareException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
         # --- Run the relationship analysis between the attacker and their square. ---#
+        
+    
         square = cast(Square, square_search.payload[0])
         
         relation_analysis = square_service.square_token_relation_analyzer.analyze(
@@ -196,10 +225,17 @@ class Attack:
                     ex=relation_analysis.exception
                 )
             )
-        # Handle the case that there is a stale link.
-        if  relation_analysis.stale_link_exists:
+        # Handle the case that there is no bidirectional_relation
+        if  not relation_analysis.fully_exists:
+            # Return exception chain on failure.
             return RelationReport.failure(
-            
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=AttackerSquareInconsistencyException(
+                        f"{method}: {AttackerSquareInconsistencyException.DEFAULT_MESSAGE}"
+                    )
+                )
             )
+        return relation_analysis
         
             

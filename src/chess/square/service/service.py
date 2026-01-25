@@ -12,7 +12,10 @@ from typing import cast
 
 from chess.square.service.exception.insertion import OccupiedSquareCannotRecieveFormationException
 from chess.square.state import SquareState
-from chess.system import  EntityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS, id_emitter
+from chess.system import (
+    DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
+    UpdateResult, id_emitter
+)
 from chess.square import (
     AddingFormationToSquareFailedException, Square, SquareBuilder, SquareServiceException,
     SquareTokenRelationAnalyzer, SquareValidator
@@ -87,6 +90,131 @@ class SquareService(EntityService[Square]):
     @property
     def square_token_relation_analyzer(self) -> SquareTokenRelationAnalyzer:
         return self._square_token_relation_analyzer
+    
+    @LoggingLevelRouter.monitor
+    def remove_occupant_from_square(self, square: Square) -> DeletionResult[Token]:
+        method = "SquareService.remove_occupant_from_square"
+        
+        # Handle the case that the square is not certified safe.
+        validation = self.validator.validate(candidate=square)
+        if validation.is_failure:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=RemovingSquareOccupantFailedException(
+                        message=f"{method}: {RemovingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            )
+        # Handle the case that the square is empty.
+        if square.is_empty:
+            return DeletionResult.nothing_to_delete()
+        # Process removal if the square is occupied.
+        token = square.occupant
+        square.occupant = None
+        square.state = SquareState.EMPTY
+        DeletionResult.success(payload=token)
+    
+    @LoggingLevelRouter.monitor
+    def add_occupant_to_square(
+            self,
+            square: Square,
+            token: Token,
+            token_service: TokenService = TokenService()
+    ) -> InsertionResult[Square]:
+        method = "SquareService.add_occupant_to_square"
+        
+        # Handle the case that the square is not certified safe.
+        square_validation = self.validator.validate(candidate=square)
+        if square_validation.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=square_validation.exception
+                    )
+                )
+            )
+        # Handle the case that the square is occupied.
+        if square.is_occupied:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=SquareIsFullException(f"{method}: {SquareIsFullException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
+        # Handle the case that the token is not certified safe.
+        token_validation = token_service.validator.validate(candidate=token)
+        if token_validation.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=token_validation.exception
+                    )
+                )
+            )
+        # Handle the case that the token is disabled
+        if token.is_disabled:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=DisabledTokenCannotOccupySquareException(
+                            f"{method}: {DisabledTokenCannotOccupySquareException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
+        # Handle the case that the token has not been placed on the board.
+        if token.has_not_been_formed:
+            return self._add_unformed_token(square=square, token=token)
+        
+        square.occupant = token
+        square.state = SquareState.OCCUPIED
+        token.positions.push_coord(square.coord)
+        return InsertionResult.success(payload=token)
+    
+    @LoggingLevelRouter.monitor
+    def _add_unformed_token(self, square: Square, token: Token,) -> InsertionResult[Square]:
+        method = "SquareService.add_unformed_token"
+        
+        # Handle the case that the token belongs to a different square.
+        if square != token.opening_square:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=TokenHasWrongOpeningSquareException(
+                            f"{method}: {TokenHasWrongOpeningSquareException}"
+                        )
+                    )
+                )
+            )
+        # Form the token.
+        square.occupant = token
+        square.state = SquareState.OCCUPIED
+        token.positions.push_coord(square.coord)
+        token.board_state = TokenBoardState.FORMED_ON_BOARD
+        
+        if isinstance(token, KingToken)
+
+        
+        
     
     @LoggingLevelRouter.monitor
     def accept_from_roster(
@@ -212,7 +340,7 @@ class SquareService(EntityService[Square]):
         square.occupant = deletion_result.payload
         token.positions.push_coord(square.coord)
         
-        square.state = SquareState.SINGLE_OCCUPANT
+        square.state = SquareState.OCCUPIED
         token.board_state = TokenBoardState.FORMED_ON_BOARD
         return InsertionResult.success(payload=square)
         

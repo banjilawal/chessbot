@@ -112,6 +112,9 @@ class Token(ABC):
         return self._token_board_state
     
     @property
+    def is_not_formed(self):
+    
+    @property
     @abstractmethod
     def is_active(self) -> bool:
         pass
@@ -139,10 +142,10 @@ class Token(ABC):
         return False
     
     @property
-    def has_been_formed(self) -> bool:
+    def has_not_been_formed(self) -> bool:
         return (
-                self.positions.size == 1 and
-                self._token_board_state == TokenBoardState.FORMED_ON_BOARD
+                self.positions.size == 0 and
+                self._token_board_state == TokenBoardState.NEVER_BEEN_PLACED
         )
     
     def __hash__(self) -> int:

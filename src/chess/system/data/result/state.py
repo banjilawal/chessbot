@@ -17,4 +17,5 @@ class DataResultState(Enum):
     FAILURE = auto(),
     EMPTY = auto(),
     TIMED_OUT = auto(),
+    NOTHING_TO_DELETE = auto(),
     CURRENT_AND_PREVIOUS_THE_SAME = auto(),

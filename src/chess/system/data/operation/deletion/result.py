@@ -68,8 +68,16 @@ class DeletionResult(DataResult[Generic[T]]):
     def is_empty(self) -> bool:
         return (
                 self.payload is None and
-                self.exception is not None and
-                self._state == DataResultState.EMPTY
+                self.exception is None and
+                self._state == DataResultState.NOTHING_TO_DELETE
+        )
+    
+    @property
+    def is_nothing_to_delete(self) -> bool:
+        return (
+                self.payload is None and
+                self.exception is None and
+                self._state == DataResultState.NOTHING_TO_DELETE
         )
     
     @property
@@ -105,10 +113,14 @@ class DeletionResult(DataResult[Generic[T]]):
         )
     
     @classmethod
-    def empty(cls) -> DeletionResult:
+    def nothing_to_delete(cls) -> DeletionResult[T]:
+        return cls.empty()
+    
+    @classmethod
+    def empty(cls) -> DeletionResult[T]:
         return cls(
             payload=None,
             exception=None,
-            state=DataResultState.EMPTY,
+            state=DataResultState.NOTHING_TO_DELETE,
         )
 
