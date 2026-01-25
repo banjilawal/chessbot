@@ -7,6 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Optional
 
 from chess.team import Team

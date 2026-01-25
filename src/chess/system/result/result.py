@@ -7,9 +7,8 @@ Created: 2025-09-28
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Optional, TypeVar, Generic
-
-from chess.system import Result
 
 T = TypeVar("T")
 

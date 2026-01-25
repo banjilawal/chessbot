@@ -7,6 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import cast
 
 from chess.system import ContextService, id_emitter
@@ -77,6 +78,3 @@ class SquareContextService(ContextService[SquareContext]):
     def validator(self) -> SquareContextValidator:
         """Get SquareContextValidator instance."""
         return cast(SquareContextValidator, self.entity_validator)
-    
-    @property
-    def token:

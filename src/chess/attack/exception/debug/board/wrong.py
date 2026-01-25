@@ -1,4 +1,11 @@
-AttackingVacantSquareException
+# src/chess/attack/exception/debug/board/wrong.py
+
+"""
+Module: chess.attack.exception.debug.board.wrong
+Author: Banji Lawal
+Created: 2026-01-24
+version: 1.0.0
+"""
 
 __all__ = [
     # ======================# ATTACKING_TOKEN_ON_WRONG_BOARD EXCEPTION #======================#

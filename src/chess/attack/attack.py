@@ -6,23 +6,27 @@ Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
 """
+
+from __future__ import annotations
 from typing import cast
 
 from chess.attack import (
-    AttackFailedException, AttackResult, AttackerSquareInconsistencyException, AttackingEnemyKingException,
+    AttackFailedException, AttackResult, AttackerSquareNotFoundException,
+    AttackingEnemyKingException,
     AttackingFriendlySquareException,
     AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
-from chess.hostage import HostageDatabaseService, HostageDatabaseService
+from chess.hostage import HostageDatabaseService
 from chess.square import Square, SquareContext, SquareService
 from chess.system import LoggingLevelRouter
+from chess.system.relation import RelationReport
 from chess.token import CombatantActivityState, KingToken, Token, TokenService
 
 
 class Attack:
     
     @classmethod
-    @LoggingLevelRouter
+    @LoggingLevelRouter.monitor
     def execute(
             cls,
             attacker: Token,
@@ -63,7 +67,7 @@ class Attack:
                 )
             )
         # Handle the case that the tokens are on different boards.
-        if attacker.team.board != square.occupant.team.boardy:
+        if attacker.team.board != square.occupant.team.board:
             # Return the exception chain on failure.
             return AttackResult.failure(
                 AttackFailedException(
@@ -79,7 +83,9 @@ class Attack:
             return AttackResult.failure(
                 AttackFailedException(
                     message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackingFriendlySquareException(f"{method}: {AttackingFriendlySquareException.DEFAULT_MESSAGE}")
+                    ex=AttackingFriendlySquareException(
+                        f"{method}: {AttackingFriendlySquareException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
         # Handle the case that the enemy king is occupying the square.
@@ -97,14 +103,17 @@ class Attack:
             return AttackResult.failure(
                 AttackFailedException(
                     message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
+                    ex=AttackingEnemyKingException(
+                        f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
         # Handoff validating the attacker's square and processing the attack.
         return cls._process_attack(
             attacker=attacker,
             square=square,
-            hostage_database_service=hostage_database_service
+            square_serivce=square_service,
+            hostage_database_service=hostage_database_service,
         )
         
         # Set the
@@ -116,42 +125,17 @@ class Attack:
         cls,
         attacker: Token,
         square: Square,
+        square_service: SquareService,
         hostage_database_service: HostageDatabaseService,
     ) -> AttackResult:
         """"""
         method = "Attack._process_attack"
-        attacker_square_search = attacker.team.board.squares.search_squares(
-            context=SquareContext(coord=attacker.current_position)
+        
+        attack_source_square_analysis = cls._process_attacker_square(
+            attacker=attacker,
+            square_service=square_service,
         )
-        # Handle the case that the square_search fails.
-        if attacker_square_search.is_failure:
-            # Return exception chain on failure.
-            return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
-                )
-            )
-        # Handle the case that no square matching the token's coords is found.
-        if attacker_square_search.is_empty:
-            # Return exception chain on failure.
-            return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
-                )
-            )
-        # Handle the case that the square does not contain the attacker despite their share coord.
-        if cast(Square, attacker_square_search.payload).occupant != attacker:
-            # Return exception chain on failure.
-            return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackerSquareInconsistencyException(
-                        f"{method}: {AttackerSquareInconsistencyException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
+
         # --- Start Processing the attack. ---#
         
         # Set the square's captor.
@@ -163,3 +147,59 @@ class Attack:
         # Set the square's new occupant.
         square.occupant = attacker
         
+    def _process_attacker_square(
+            self,
+            attacker: Token,
+            square_service: SquareService,
+    ) -> RelationReport[Square, Token]:
+        method = "Attack._process_attacker_square"
+        
+        # --- Search for the attacker's square from their board. ---#
+        square_search = attacker.team.board.squares.search_squares(
+            context=SquareContext(coord=attacker.current_position)
+        )
+        # Handle the case that the square_search fails.
+        if square_search.is_failure:
+            # Return exception chain on failure.
+            return RelationReport.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=AttackingEnemyKingException(
+                        f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that no square matching the token's coords is found.
+        if square_search.is_empty:
+            # Return exception chain on failure.
+            return RelationReport.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=AttackerSquareNotFoundException(
+                        f"{method}: {AttackerSquareNotFoundException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # --- Run the relationship analysis between the attacker and their square. ---#
+        square = cast(Square, square_search.payload[0])
+        
+        relation_analysis = square_service.square_token_relation_analyzer.analyze(
+            candidate_primary=square,
+            candidate_satellite=attacker
+        )
+        # Handle the case that the analysis is not completed.
+        if relation_analysis.is_failure:
+            # Return exception chain on failure.
+            return RelationReport.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=relation_analysis.exception
+                )
+            )
+        # Handle the case that there is a stale link.
+        if  relation_analysis.stale_link_exists:
+            return RelationReport.failure(
+            
+            )
+        
+            

@@ -1,7 +1,7 @@
-# src/chess/arena/validator/exception/player/none.py
+# src/chess/arena/validator/exception/debug/player/none.py
 
 """
-Module: chess.arena.validator.exception.player.none
+Module: chess.arena.validator.exception.debug.player.none
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

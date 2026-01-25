@@ -17,7 +17,7 @@ from chess.system import UniqueDataServiceException
 
 
 # ======================# HOSTAGE_MANIFEST_DIRECTORY_SERVICE EXCEPTION #======================#
-class HostageDatabaseService(HostageManifestException, UniqueDataServiceException):
+class HostageDatabaseServiceException(HostageManifestException, UniqueDataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

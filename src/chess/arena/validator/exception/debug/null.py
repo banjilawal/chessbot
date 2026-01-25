@@ -1,7 +1,7 @@
-# src/chess/arena/validator/exception/null.py
+# src/chess/arena/validator/exception/debug/null.py
 
 """
-Module: chess.arena.validator.exception.null
+Module: chess.arena.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.system import NullException
-from chess.arena import ArenaValidationFailedException
+from chess.arena import ArenaDebugException
 
 __all__ = [
     # ======================# NULL_ARENA EXCEPTION #======================#
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# NULL_ARENA EXCEPTION #======================#
-class NullArenaException(ArenaValidationFailedException, NullException):
+class NullArenaException(ArenaDebugException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,8 +27,8 @@ class NullArenaException(ArenaValidationFailedException, NullException):
     2.  Raised if an entity, method or operation requires a Arena but receives null instead.
 
     # PARENT:
-        *   NullArenaException
-        *   ArenaValidationFailedException
+        *   NullException
+        *   ArenaDebugException
 
     # PROVIDES:
     None

@@ -1,14 +1,13 @@
-# src/chess/arena/validator/exception/player/color.py
+# src/chess/arena/validator/exception/debug/player/color.py
 
 """
-Module: chess.arena.validator.exception.player.color
+Module: chess.arena.validator.exception.debug.player.color
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
 """
 
 
-from chess.system import GameColorException
 from chess.arena import ArenaDebugException
 
 

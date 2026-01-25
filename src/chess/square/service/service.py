@@ -7,14 +7,15 @@ Created: 2025-11-12
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import cast
 
 from chess.square.service.exception.insertion import OccupiedSquareCannotRecieveFormationException
 from chess.square.state import SquareState
-from chess.system import NUMBER_OF_COLUMNS, EntityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS, id_emitter
+from chess.system import  EntityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS, id_emitter
 from chess.square import (
     AddingFormationToSquareFailedException, Square, SquareBuilder, SquareServiceException,
-    SquareValidator
+    SquareTokenRelationAnalyzer, SquareValidator
 )
 from chess.team import FriendCannotCaptureFriendException, Team, TeamService
 from chess.token import (
@@ -47,6 +48,7 @@ class SquareService(EntityService[Square]):
         *   See EntityService for inherited attributes.
     """
     SERVICE_NAME = "SquareService"
+    _square_token_relation_analyzer: SquareTokenRelationAnalyzer
     
     def __init__(
             self,
@@ -54,6 +56,7 @@ class SquareService(EntityService[Square]):
             id: int = id_emitter.service_id,
             builder: SquareBuilder = SquareBuilder(),
             validator: SquareValidator = SquareValidator(),
+            relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer(),
     ):
         """
         # ACTION:
@@ -69,6 +72,7 @@ class SquareService(EntityService[Square]):
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._square_token_relation_analyzer = relation_analyzer
     
     @property
     def builder(self) -> SquareBuilder:
@@ -79,6 +83,10 @@ class SquareService(EntityService[Square]):
     def validator(self) -> SquareValidator:
         """get SquareValidator"""
         return cast(SquareValidator, self.entity_validator)
+    
+    @property
+    def square_token_relation_analyzer(self) -> SquareTokenRelationAnalyzer:
+        return self._square_token_relation_analyzer
     
     @LoggingLevelRouter.monitor
     def accept_from_roster(

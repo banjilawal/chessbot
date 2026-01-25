@@ -7,6 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
+from __future__ import annotations
 from chess.hostage import (
     CapturedSquareCannotBeEmptyException, PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException,
     HostageManifest, HostageManifestBuildFailedException, PrisonerAlreadyHasHostageManifestException,

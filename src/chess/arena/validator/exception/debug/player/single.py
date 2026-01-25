@@ -1,7 +1,7 @@
-# src/chess/arena/validator/exception/player/single.py
+# src/chess/arena/validator/exception/debug/player/single.py
 
 """
-Module: chess.arena.validator.exception.player.single
+Module: chess.arena.validator.exception.debug.player.single
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
