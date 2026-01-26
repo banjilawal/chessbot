@@ -36,10 +36,9 @@ class InsertionResult(DataResult[T], Generic[T]):
     """
     def __init__(
             self,
+            payload: bool,
             state: InsertionResultState,
             exception: Optional[Exception] = None,
-            payload: Optional[T] = None,
-
     ):
         super().__init__(state=state, payload=payload, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
@@ -48,7 +47,7 @@ class InsertionResult(DataResult[T], Generic[T]):
     @property
     def is_success(self) -> bool:
         return (
-                self.payload is not None and
+                self.payload and
                 self.exception is None and
                 DataResultEnum.SUCCESS
         )
@@ -56,7 +55,7 @@ class InsertionResult(DataResult[T], Generic[T]):
     @property
     def is_failure(self) -> bool:
         return (
-                self.payload is None and
+                not self.payload and
                 self.exception is not None and
                 DataResultEnum.FAILURE
         )
@@ -64,15 +63,15 @@ class InsertionResult(DataResult[T], Generic[T]):
     @property
     def is_timed_out(self) -> bool:
         return (
-                self.payload is None and
+                not self.payload and
                 self.exception is not None and
                 DataResultEnum.TIMED_OUT
         )
     
     @classmethod
-    def success(cls, payload: T) -> InsertionResult[T]:
+    def success(cls,) -> InsertionResult[T]:
         return cls(
-            payload=payload,
+            payload=True,
             exception=None,
             state=DataResultEnum.SUCCESS,
         )
@@ -80,7 +79,7 @@ class InsertionResult(DataResult[T], Generic[T]):
     @classmethod
     def failure(cls, exception: Exception) -> InsertionResult[T]:
         return cls(
-            payload=None,
+            payload=False,
             exception=exception,
             state=DataResultEnum.FAILURE,
         )
@@ -88,7 +87,7 @@ class InsertionResult(DataResult[T], Generic[T]):
     @classmethod
     def timed_out(cls, exception: Exception) -> InsertionResult[T]:
         return cls(
-            payload=None,
+            payload=False,
             exception=exception,
             state=DataResultEnum.TIMED_OUT,
         )

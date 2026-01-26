@@ -14,3 +14,4 @@ None
 
 # Modules
 from .state import InsertionResultState
+from .classification import InsertionResultEnum

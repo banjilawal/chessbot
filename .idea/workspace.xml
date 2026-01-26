@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/remove/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/add/disabled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/add/disabled.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/add/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/add/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/remove/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/remove/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/data/operation/insertion/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/data/operation/insertion/result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -865,6 +860,7 @@
       <workItem from="1769261670615" duration="82015000" />
       <workItem from="1769372282317" duration="11293000" />
       <workItem from="1769446248552" duration="1753000" />
+      <workItem from="1769448015456" duration="1178000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
