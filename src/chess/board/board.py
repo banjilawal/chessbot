@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.arena import Arena
-from chess.square import UniqueSquareDataService
+from chess.square import SquareDatabase
 from chess.hostage import HostageDatabaseService
 
 class Board:
@@ -31,14 +31,14 @@ class Board:
     """
     _id: int
     _arena: Arena
-    _squares: UniqueSquareDataService
+    __square_database: SquareDatabase
     _hostage_manifest: HostageDatabaseService
     
     def __init__(
             self,
             id: int,
             arena: Arena,
-            squares: UniqueSquareDataService = UniqueSquareDataService(),
+            _square_database: SquareDatabase = SquareDatabase(),
             hostage_manifest: HostageDatabaseService = HostageDatabaseService(),
     ):
         """
@@ -74,7 +74,7 @@ class Board:
         return self._hostage_manifest
     
     @property
-    def squares(self) -> UniqueSquareDataService:
+    def squares(self) -> SquareDatabase:
         return self._squares
     
     def __eq__(self, other):

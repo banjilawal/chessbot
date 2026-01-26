@@ -12,18 +12,18 @@ from chess.board import (
 
 
 )
-from chess.square import UniqueSquareDataService
+from chess.square import SquareDatabase
 from chess.system import NUMBER_OF_COLUMNS,NUMBER_OF_ROWS
 
 
 class BoardSquareService:
     _capacity: int
-    _member_service: UniqueSquareDataService
+    _square_database: SquareDatabase
     
     def __init__(
             self,
             capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
-            member_service: UniqueSquareDataService = UniqueSquareDataService(),
+            square_database: SquareDatabase = SquareDatabase(),
     ):
         self._capacity = capacity
         self._analyzer = analyzer

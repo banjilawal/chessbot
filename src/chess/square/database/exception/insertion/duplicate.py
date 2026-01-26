@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.square import UniqueSquareDataServiceException
+from chess.square import SquareDatabaseException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_SQUARE EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_SQUARE EXCEPTION #======================#
-class AddingDuplicateSquareException(UniqueSquareDataServiceException):
+class AddingDuplicateSquareException(SquareDatabaseException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -25,7 +25,7 @@ class AddingDuplicateSquareException(UniqueSquareDataServiceException):
         already present.
 
     # PARENT:
-        *   UniqueSquareDataServiceException
+        *   SquareDatabaseException
 
     # PROVIDES:
     None

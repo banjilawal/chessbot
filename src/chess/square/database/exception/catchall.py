@@ -9,14 +9,14 @@ version: 1.0.0
 
 ___all__ = [
     # ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
-    "UniqueSquareDataServiceException",
+    "SquareDatabaseException",
 ]
 
 from chess.square import SquareException
 from chess.system import UniqueDataServiceException
 
 # ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
-class UniqueSquareDataServiceException(SquareException, UniqueDataServiceException):
+class SquareDatabaseException(SquareException, UniqueDataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

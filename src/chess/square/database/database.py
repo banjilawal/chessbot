@@ -12,7 +12,7 @@ from typing import List
 from chess.square import (
     AddingDuplicateSquareException, DeleteTokenBySearchFailedException, Square, SquareContext,
     SquareContextService,
-    SquareDataService, SquareService, SquareServiceCapacityException, UniqueSquareDataServiceException,
+    SquareDataService, SquareService, SquareServiceCapacityException, SquareDatabaseException,
     UniqueSquareInsertionFailedException,
     UniqueSquareSearchFailedException
 )
@@ -104,8 +104,8 @@ class SquareDatabase(DatabaseService[Square]):
         if search_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                UniqueSquareDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                SquareDatabaseException(
+                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=DeleteTokenBySearchFailedException(
                         message=f"{method}: {DeleteTokenBySearchFailedException.ERROR_CODE}",
                         ex=search_result.exception
@@ -123,8 +123,8 @@ class SquareDatabase(DatabaseService[Square]):
             if deletion_result.is_failure:
                 # Return the exception chain on failure.
                 return DeletionResult.failure(
-                    UniqueSquareDataServiceException(
-                        message=f"ServiceID:{self.id} {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                    SquareDatabaseException(
+                        message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
                         ex=DeleteTokenBySearchFailedException(
                             message=f"{method}: {DeleteTokenBySearchFailedException.ERROR_CODE}",
                             ex=search_result.exception
@@ -151,9 +151,9 @@ class SquareDatabase(DatabaseService[Square]):
                     - On failure: An exception.
                     - On success: Square in payload.
         # RAISES:
-            *   UniqueSquareDataServiceException
+            *   SquareDatabaseException
             *   UniqueSquareInsertionFailedException
-            *   UniqueSquareDataServiceException
+            *   SquareDatabaseException
         """
         method = "SquareDatabase.add_unique_square"
         
@@ -161,8 +161,8 @@ class SquareDatabase(DatabaseService[Square]):
         if self.is_full:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                UniqueSquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                SquareDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=UniqueSquareInsertionFailedException(
                         message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
                         ex=SquareServiceCapacityException(
@@ -179,8 +179,8 @@ class SquareDatabase(DatabaseService[Square]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                UniqueSquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                SquareDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=UniqueSquareInsertionFailedException(
                         message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
                         ex=validation.exception
@@ -191,8 +191,8 @@ class SquareDatabase(DatabaseService[Square]):
         if square in self._square_data_service.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                UniqueSquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                SquareDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=UniqueSquareInsertionFailedException(
                         message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
                         ex=AddingDuplicateSquareException(f"{method}: {AddingDuplicateSquareException.DEFAULT_MESSAGE}")
@@ -207,8 +207,8 @@ class SquareDatabase(DatabaseService[Square]):
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                UniqueSquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                SquareDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=UniqueSquareInsertionFailedException(
                         message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
                         ex=insertion_result.exception
@@ -234,7 +234,7 @@ class SquareDatabase(DatabaseService[Square]):
                     - On success: Square in payload.
                     - On Empty: No payload nor exception.
         # RAISES:
-            *   UniqueSquareDataServiceException
+            *   SquareDatabaseException
             *   DeleteTokenBySearchFailedException
         """
         method = "SquareDatabase.search_squares"
@@ -246,8 +246,8 @@ class SquareDatabase(DatabaseService[Square]):
         if search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                UniqueSquareDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                SquareDatabaseException(
+                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=UniqueSquareSearchFailedException(
                         message=f"{method}: {UniqueSquareSearchFailedException.ERROR_CODE}",
                         ex=search_result.exception

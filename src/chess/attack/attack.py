@@ -17,7 +17,7 @@ from chess.attack import (
     AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
 from chess.hostage import HostageDatabaseService
-from chess.square import Square, SquareContext, UniqueSquareDataService
+from chess.square import Square, SquareContext, SquareDatabase
 from chess.system import LoggingLevelRouter
 from chess.system.relation import RelationReport
 from chess.token import CombatantActivityState, KingToken, Token, TokenService
@@ -32,7 +32,7 @@ class Attack:
             attacker: Token,
             square: Square,
             token_service: TokenService = TokenService(),
-            square_service: UniqueSquareDataService = UniqueSquareDataService(),
+            square_database: SquareDatabase = SquareDatabase(),
             hostage_database_service: HostageDatabaseService = HostageDatabaseService(),
     ) -> AttackResult:
         method = "Attack.execute"
@@ -125,7 +125,7 @@ class Attack:
         cls,
         attacker: Token,
         square: Square,
-        square_service: UniqueSquareDataService,
+        square_database: SquareDatabase,
         hostage_database_service: HostageDatabaseService,
     ) -> AttackResult:
         """"""
@@ -154,7 +154,7 @@ class Attack:
     def _process_attacker_square(
             cls,
             attacker: Token,
-            square_service: UniqueSquareDataService,
+            square_database: SquareDatabase,
     ) -> RelationReport[Square, Token]:
         method = "Attack._process_attacker_square"
         
