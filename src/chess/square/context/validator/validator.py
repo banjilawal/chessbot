@@ -16,6 +16,7 @@ from chess.square import (
     SquareContextValidationFailedException, ZeroSquareContextFlagsException, SquareContext,
     NullSquareContextException, ExcessiveSquareContextFlagsException, SquareContextValidationRouteException
 )
+from chess.token import TokenService
 
 
 class SquareContextValidator(Validator[SquareContext]):
@@ -45,6 +46,7 @@ class SquareContextValidator(Validator[SquareContext]):
             candidate: Any,
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
+            token_service: TokenService = TokenService(),
             identity_service: IdentityService = IdentityService()
     ) -> ValidationResult[SquareContext]:
         """
@@ -59,6 +61,7 @@ class SquareContextValidator(Validator[SquareContext]):
             *   candidate (Any)
             *   board_service (BoardService)
             *   coord_service (CoordService)
+            *   token_service (TokenService)
             *   identity_service (IdentityService):
         # RETURNS:
             *   ValidationResult[SquareContext] containing either:
@@ -163,6 +166,20 @@ class SquareContextValidator(Validator[SquareContext]):
         # Certification for the search-by-board target.
         if context.board is not None:
             validation = board_service.validator.validate(context.board)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    SquareContextValidationFailedException(
+                        message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
+                )
+            # On certification success return the board_SquareContext in the ValidationResult.
+            return ValidationResult.success(payload=context)
+        
+        # Certification for the search-by-token target.
+        if context.token is not None:
+            validation = token_service.validator.validate(context.token)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
