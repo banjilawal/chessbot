@@ -10,7 +10,6 @@ version: 1.0.0
 #=========== SQUARE.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from .data import *
 from .exception import *
 
 # Modules
