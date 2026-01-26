@@ -10,11 +10,11 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.system import DeletionResult, InsertionResult, SearchResult, UniqueDataService
+from chess.system import DeletionResult, InsertionResult, SearchResult, DatabaseService
 from chess.agent import PlayerAgent, AgentContext, AgentContextService, AgentDataService, AgentService
 
 
-class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
+class UniqueAgentDataService(DatabaseService[PlayerAgent]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -23,7 +23,7 @@ class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
     2.  Guarantee consistency of records in AgentDataService.
     
     # PARENT:
-        *   UniqueDataService
+        *   DatabaseService
 
     # PROVIDES:
         *   player_service: -> AgentService
@@ -36,7 +36,7 @@ class UniqueAgentDataService(UniqueDataService[PlayerAgent]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See UniqueDataService class for inherited attributes.
+        *   See DatabaseService class for inherited attributes.
     """
     DEFAULT_NAME = "UniqueAgentDataService"
     

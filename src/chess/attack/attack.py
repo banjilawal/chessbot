@@ -17,7 +17,7 @@ from chess.attack import (
     AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
 from chess.hostage import HostageDatabaseService
-from chess.square import Square, SquareContext, SquareService
+from chess.square import Square, SquareContext, UniqueSquareDataService
 from chess.system import LoggingLevelRouter
 from chess.system.relation import RelationReport
 from chess.token import CombatantActivityState, KingToken, Token, TokenService
@@ -32,7 +32,7 @@ class Attack:
             attacker: Token,
             square: Square,
             token_service: TokenService = TokenService(),
-            square_service: SquareService = SquareService(),
+            square_service: UniqueSquareDataService = UniqueSquareDataService(),
             hostage_database_service: HostageDatabaseService = HostageDatabaseService(),
     ) -> AttackResult:
         method = "Attack.execute"
@@ -125,26 +125,14 @@ class Attack:
         cls,
         attacker: Token,
         square: Square,
-        square_service: SquareService,
+        square_service: UniqueSquareDataService,
         hostage_database_service: HostageDatabaseService,
     ) -> AttackResult:
         """"""
         method = "Attack._process_attack"
         
-        attack_source_square_analysis = cls._process_attacker_square(
-            attacker=attacker,
-            square_service=square_service,
-        )
-        # Handle the case that the there is no bidirectional relationship between the attacker and their square.
-        if not attack_source_square_analysis.fully_exists:
-            # Return exception chain on failure.
-            return RelationReport.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=attack_source_square_analysis.exception
-                )
-            )
-        # --- Start Processing the attack. ---#
+        # Remove the the captive from their square.
+        captive_removal_result = square_service
         
         # Set the square's captor.
         square.occupant.captor = attacker
@@ -166,7 +154,7 @@ class Attack:
     def _process_attacker_square(
             cls,
             attacker: Token,
-            square_service: SquareService,
+            square_service: UniqueSquareDataService,
     ) -> RelationReport[Square, Token]:
         method = "Attack._process_attacker_square"
         

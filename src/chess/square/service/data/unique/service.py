@@ -18,13 +18,13 @@ from chess.square import (
 )
 from chess.system import (
     NUMBER_OF_COLUMNS, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult,
-    UniqueDataService,
+    DatabaseService,
     id_emitter
 )
 from chess.token import Token
 
 
-class UniqueSquareDataService(UniqueDataService[Square]):
+class UniqueSquareDataService(DatabaseService[Square]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -33,7 +33,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
     2.  Guarantee consistency of records in SquareDataService.
 
     # PARENT:
-        *   UniqueDataService
+        *   DatabaseService
 
     # PROVIDES:
     None
@@ -42,7 +42,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See UniqueDataService class for inherited attributes.
+        *   See DatabaseService class for inherited attributes.
     """
     SERVICE_NAME = "UniqueSquareDataService"
     _square_data_service: SquareDataService
@@ -223,7 +223,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
         """
         # ACTION:
             1.  Get the result of calling _square_data_service.delete_square_by_id for method. If the deletion failed
-                wrap the exception inside the appropriate UniqueDataService exceptions and send the exception chain
+                wrap the exception inside the appropriate DatabaseService exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
         # PARAMETERS:

@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.system import (
-    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
+    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
 )
 from chess.coord import Coord, CoordContext, CoordContextService, CoordDataService, CoordService
 
-class UniqueCoordDataService(UniqueDataService[Coord]):
+class UniqueCoordDataService(DatabaseService[Coord]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -23,7 +23,7 @@ class UniqueCoordDataService(UniqueDataService[Coord]):
     2.  Guarantee consistency of records in CoordDataService.
 
     # PARENT:
-        *   UniqueDataService
+        *   DatabaseService
 
     # PROVIDES:
     None
@@ -32,7 +32,7 @@ class UniqueCoordDataService(UniqueDataService[Coord]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See UniqueDataService class for inherited attributes.
+        *   See DatabaseService class for inherited attributes.
     """
     SERVICE_NAME = "UniqueCoordDataService"
     def __init__(

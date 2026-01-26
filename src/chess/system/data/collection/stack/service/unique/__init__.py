@@ -14,4 +14,4 @@ from .exception import *
 
 
 # Modules
-from .service import UniqueDataService
+from .service import DatabaseService

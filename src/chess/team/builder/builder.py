@@ -11,7 +11,7 @@ from chess.board import Board, BoardService
 from chess.schema import Schema, SchemaService
 from chess.player import Player, PlayerService
 from chess.team import HostageService, RosterService, Team, TeamBuildFailedException
-from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, UniqueDataService, id_emitter
+from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, DatabaseService, id_emitter
 from chess.token import UniqueTokenDataService
 
 

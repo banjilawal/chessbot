@@ -16,7 +16,7 @@ from chess.system import (
 
 T = TypeVar("T")
 
-class UniqueDataService(ABC, Generic[T]):
+class DatabaseService(ABC, Generic[T]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 

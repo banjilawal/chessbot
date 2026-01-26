@@ -14,11 +14,11 @@ from chess.team import (
     Team, TeamContext, TeamContextService, TeamDataService, TeamService, UniqueTeamDataServiceException
 )
 from chess.system import (
-    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
+    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
 )
 
 
-class UniqueTeamDataService(UniqueDataService[Team]):
+class UniqueTeamDataService(DatabaseService[Team]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -27,7 +27,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
     2.  Guarantee consistency of records in TeamDataService.
 
     # PARENT:
-        *   UniqueDataService
+        *   DatabaseService
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class UniqueTeamDataService(UniqueDataService[Team]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See UniqueDataService class for inherited attributes.
+        *   See DatabaseService class for inherited attributes.
     """
     SERVICE_NAME = "UniqueTeamDataService"
     _team_data_service: TeamDataService

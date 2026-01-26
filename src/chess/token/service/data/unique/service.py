@@ -17,11 +17,11 @@ from chess.token import (
     UniqueTokenSearchFailedException
 )
 from chess.system import (
-    DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
+    DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
 )
 
 
-class UniqueTokenDataService(UniqueDataService[Token]):
+class UniqueTokenDataService(DatabaseService[Token]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -30,7 +30,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
     2.  Guarantee consistency of records in TokenDataService.
 
     # PARENT:
-        *   UniqueDataService
+        *   DatabaseService
 
     # PROVIDES:
     None
@@ -39,7 +39,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See UniqueDataService class for inherited attributes.
+        *   See DatabaseService class for inherited attributes.
     """
     SERVICE_NAME = "UniqueTokenDataService"
     _token_data_service: TokenDataService
@@ -173,7 +173,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         """
         # ACTION:
             1.  Get the result of calling _token_data_service.delete_token_by_id for method. If the deletion failed
-                wrap the exception inside the appropriate UniqueDataService exceptions and send the exception chain
+                wrap the exception inside the appropriate DatabaseService exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
         # PARAMETERS:
@@ -278,7 +278,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         """
         # ACTION:
             1.  Get the result of calling _token_data_service.delete_token_by_id for method. If the deletion failed
-                wrap the exception inside the appropriate UniqueDataService exceptions and send the exception chain
+                wrap the exception inside the appropriate DatabaseService exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
         # PARAMETERS:

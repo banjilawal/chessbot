@@ -21,8 +21,8 @@ class UniqueDataServiceException(DataServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by UniqueDataService objects.
-    2.  Wraps an exception that hits the try-finally block of an UniqueDataService object.
+    1.  Parent of exception raised by DatabaseService objects.
+    2.  Wraps an exception that hits the try-finally block of an DatabaseService object.
 
     # PARENT:
         *   DataServiceException
@@ -37,4 +37,4 @@ class UniqueDataServiceException(DataServiceException):
     None
     """
     ERROR_CODE = "UNIQUE_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "UniqueDataService raised an exception."
+    DEFAULT_MESSAGE = "DatabaseService raised an exception."

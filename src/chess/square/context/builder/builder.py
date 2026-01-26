@@ -17,7 +17,7 @@ from chess.square import (
     SquareContextBuildRouteException, ZeroSquareContextFlagsException, SquareContext, SquareContextBuildFailedException,
     ExcessiveSquareContextFlagsException
 )
-from chess.token import TokenService
+from chess.token import Token, TokenService
 
 
 class SquareContextBuilder(Builder[SquareContext]):

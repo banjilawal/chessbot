@@ -15,10 +15,10 @@ from chess.hostage import (
     HostageManifestList, HostageManifestService, UniqueHostageManifestInsertionFailedException,
     UniqueHostageManifestSearchFailedException
 )
-from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, UniqueDataService, id_emitter
+from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
 
 
-class HostageDatabaseService(UniqueDataService[HostageManifest]):
+class HostageDatabaseService(DatabaseService[HostageManifest]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -27,7 +27,7 @@ class HostageDatabaseService(UniqueDataService[HostageManifest]):
     2.  Guarantee consistency of records in HostageManifestList.
 
     # PARENT:
-        *   UniqueDataService
+        *   DatabaseService
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class HostageDatabaseService(UniqueDataService[HostageManifest]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See UniqueDataService class for inherited attributes.
+        *   See DatabaseService class for inherited attributes.
     """
     SERVICE_NAME = "HostageDatabaseService"
     _data_service: HostageManifestList
@@ -170,7 +170,7 @@ class HostageDatabaseService(UniqueDataService[HostageManifest]):
         # ACTION:
             1.  Get the result of calling _hostageManifest_data_service.delete_hostageManifest_by_id for method.
                 If the deletion failed
-                wrap the exception inside the appropriate UniqueDataService exceptions and send the exception chain
+                wrap the exception inside the appropriate DatabaseService exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
         # PARAMETERS:
