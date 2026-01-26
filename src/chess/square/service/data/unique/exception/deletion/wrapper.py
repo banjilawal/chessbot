@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# EXHAUSTIVE_SQUARE_DELETION_FAILURE EXCEPTION #======================#
-    "ExhaustiveSquareDeletionFailedException",
+    # ======================# DELETING_OCCUPANT_BY_SEARCH_FAILURE EXCEPTION #======================#
+    "DeleteTokenBySearchFailedException",
 ]
 
 from chess.square import SquareException
 from chess.system import DeletionFailedException
 
 
-# ======================# EXHAUSTIVE_SQUARE_DELETION_FAILURE EXCEPTION #======================#
-class ExhaustiveSquareDeletionFailedException(SquareException, DeletionFailedException):
+# ======================# DELETING_OCCUPANT_BY_SEARCH_FAILURE EXCEPTION #======================#
+class DeleteTokenBySearchFailedException(SquareException, DeletionFailedException):
     """
     # ROLE: Exception Wrapper
 
@@ -38,5 +38,5 @@ class ExhaustiveSquareDeletionFailedException(SquareException, DeletionFailedExc
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXHAUSTIVE_SQUARE_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Exhaustive square deletion failed."
+    ERROR_CODE = "DELETING_OCCUPANT_BY_SEARCH_FAILURE"
+    DEFAULT_MESSAGE = "Deleting a token by square failed."

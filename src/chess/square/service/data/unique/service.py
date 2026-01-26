@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.square import (
-    AddingDuplicateSquareException, ExhaustiveSquareDeletionFailedException, Square, SquareContext,
+    AddingDuplicateSquareException, DeleteTokenBySearchFailedException, Square, SquareContext,
     SquareContextService,
     SquareDataService, SquareService, SquareServiceCapacityException, UniqueSquareDataServiceException,
     UniqueSquareInsertionFailedException,
@@ -21,6 +21,7 @@ from chess.system import (
     UniqueDataService,
     id_emitter
 )
+from chess.token import Token
 
 
 class UniqueSquareDataService(UniqueDataService[Square]):
@@ -90,6 +91,49 @@ class UniqueSquareDataService(UniqueDataService[Square]):
     @property
     def is_empty(self) -> bool:
         return self._square_data_service.is_empty
+    
+    @LoggingLevelRouter.monitor
+    def delete_occupant_by_search(self, occupant: Token) -> DeletionResult[Token]:
+        """
+        
+        """
+        method = "SquareService.empty_square_by_token_search"
+        
+        search_result = self.search_squares(context=SquareContext(occupant=occupant))
+        # Handle the case that the search is not completed.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                UniqueSquareDataServiceException(
+                    message=f"ServiceID:{self.id} {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                    ex=DeleteTokenBySearchFailedException(
+                        message=f"{method}: {DeleteTokenBySearchFailedException.ERROR_CODE}",
+                        ex=search_result.exception
+                    )
+                )
+            )
+        # Handle the case that the search target was not found.
+        if search_result.is_empty:
+            return DeletionResult.nothing_to_delete()
+        
+        for square in search_result.payload:
+            deletion_result = self.integrity_service.remove_occupant_from_square(square)
+            
+            # Handle the case that removing the occupant does not succeed.
+            if deletion_result.is_failure:
+                # Return the exception chain on failure.
+                return DeletionResult.failure(
+                    UniqueSquareDataServiceException(
+                        message=f"ServiceID:{self.id} {method}: {UniqueSquareDataServiceException.ERROR_CODE}",
+                        ex=DeleteTokenBySearchFailedException(
+                            message=f"{method}: {DeleteTokenBySearchFailedException.ERROR_CODE}",
+                            ex=search_result.exception
+                        )
+                    )
+                )
+            
+            # --- The token has bee completely removed from the dataset. ---#
+            return DeletionResult.success(payload=occupant)
     
     @LoggingLevelRouter.monitor
     def add_unique_square(self, square: Square) -> InsertionResult[Square]:
@@ -191,7 +235,7 @@ class UniqueSquareDataService(UniqueDataService[Square]):
                     - On Empty: No payload nor exception.
         # RAISES:
             *   UniqueSquareDataServiceException
-            *   ExhaustiveSquareDeletionFailedException
+            *   DeleteTokenBySearchFailedException
         """
         method = "UniqueSquareDataService.search_squares"
         
