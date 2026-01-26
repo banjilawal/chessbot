@@ -17,6 +17,7 @@ from chess.square import (
     SquareContextBuildRouteException, ZeroSquareContextFlagsException, SquareContext, SquareContextBuildFailedException,
     ExcessiveSquareContextFlagsException
 )
+from chess.token import TokenService
 
 
 class SquareContextBuilder(Builder[SquareContext]):
@@ -48,6 +49,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             name: Optional[str] = None,
             coord: Optional[Coord] = None,
             board: Optional[Board] = None,
+            token: Optional[Token] = None,
+            token_service: TokenService = TokenService(),
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
@@ -67,6 +70,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             These Parameters must be provided:
                 *   board_service (BoardService)
                 *   coord_service (CoordService)
+                *   token_service (TokenService)
                 *   identity_service (IdentityService)
             # RETURNS:
                 *   BuildResult[SquareContext] containing either:
@@ -81,7 +85,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         method = "SquareContextBuilder.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
-        params = [id, name, coord]
+        params = [id, name, coord, token]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that all the optional params are null.
@@ -163,6 +167,20 @@ class SquareContextBuilder(Builder[SquareContext]):
                 )
             # On validation success return a board_SquareContext in the BuildResult.
             return BuildResult.success(SquareContext(board=board))
+        
+        # Build the token SquareContext if its flag is enabled.
+        if token is not None:
+            validation = token_service.validator.validate(candidate=token)
+            if validation.is_failure:
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    SquareContextBuildFailedException(
+                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
+                )
+            # On validation success return a token_SquareContext in the BuildResult.
+            return BuildResult.success(SquareContext(token=token))
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(

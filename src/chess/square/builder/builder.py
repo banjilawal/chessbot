@@ -42,9 +42,9 @@ class SquareBuilder(Builder[Square]):
     @LoggingLevelRouter.monitor()
     def build(
             cls,
+            name: str,
             board: Board,
             coord: Coord,
-            name: str,
             id: int = id_emitter.square_id,
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
