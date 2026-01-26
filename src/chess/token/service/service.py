@@ -1,7 +1,7 @@
-# src/chess/token/service/service.py
+# src/chess/occupant/service/service.py
 
 """
-Module: chess.token.service.service
+Module: chess.occupant.service.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -88,7 +88,7 @@ class TokenService(EntityService[Token]):
 
     def verify_actionable_token(self, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_actionable_token"
-        # Handle the case that the token is not certified safe.
+        # Handle the case that the occupant is not certified safe.
         token_validation = self.validator.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
@@ -98,7 +98,7 @@ class TokenService(EntityService[Token]):
                     ex=token_validation.exception
                 )
             )
-        # Handle the case that the token has not been placed.
+        # Handle the case that the occupant has not been placed.
         if token.is_disabled:
             # Return the exception chain on failure.
             # Return the exception chain on failure.
@@ -110,30 +110,30 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # The token is actionable.
+        # The occupant is actionable.
         return ValidationResult.success(token)
     
     # @LoggingLevelRouter.monitor
     # def form_token_on_board(
     #         self,
-    #         token: Token,
+    #         occupant: Token,
     #         board: Board,
     #         board_service: BoardService = BoardService(),
     # ):
-    #     token_validation = self.validator.validate(candidate=token)
+    #     token_validation = self.validator.validate(candidate=occupant)
     #     if token_validation.is_failure:
         
     @LoggingLevelRouter.monitor
     def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
         """
         # ACTION:
-            1.  If the token fails validation returns the exception in the DeletionResult.
-            2.  If the token has not been activated with an opening square return the exception in the DeletionResult.
-            3.  If the token has an empty coord stack return the exception in the DeletionResult.
+            1.  If the occupant fails validation returns the exception in the DeletionResult.
+            2.  If the occupant has not been activated with an opening square return the exception in the DeletionResult.
+            3.  If the occupant has an empty coord stack return the exception in the DeletionResult.
             4.  If a new coord has not been pushed since the last undo send and exception in the DeletionResult.
-                Else, forward the results of token.positions.pop_coord() to the caller.
+                Else, forward the results of occupant.positions.pop_coord() to the caller.
         # PARAMETERS:
-            *   token (Token)
+            *   occupant (Token)
         # RETURN:
             *   DeletionResult[Coord] containing either:
                     - On failure: Exception
@@ -164,7 +164,7 @@ class TokenService(EntityService[Token]):
                     ex=TokenOpeningSquareNullException(f"{method}: {TokenOpeningSquareNullException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the token has no positions that can be removed.
+        # Handle the case that the occupant has no positions that can be removed.
         if token.positions.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -206,12 +206,12 @@ class TokenService(EntityService[Token]):
     ) -> InsertionResult[Coord]:
         """
         # ACTION:
-            1.  If the token or coord fail their validations return the exception in the InsertionResult.
+            1.  If the occupant or coord fail their validations return the exception in the InsertionResult.
             2.  If the position is already the current position return the exception in the InsertionResult.
-            3.  If the pushing the position to the token's coord stack fails encapsulate the exception then
+            3.  If the pushing the position to the occupant's coord stack fails encapsulate the exception then
                 send the exception chain in the InsertionResult.'
         # PARAMETERS:
-            *   token (Token)
+            *   occupant (Token)
             *   coord (Coord)
             *   coord_service (CoordService)
         # RETURN:
@@ -224,7 +224,7 @@ class TokenService(EntityService[Token]):
         """
         method = "TokenService.push_coord_to_token"
         
-        # Handle the case that the token is not certified safe.
+        # Handle the case that the occupant is not certified safe.
         token_validation = self.validator.validate(token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
@@ -244,7 +244,7 @@ class TokenService(EntityService[Token]):
                     ex=token_validation.exception
                 )
             )
-        # Handle the case that the token is already the current position
+        # Handle the case that the occupant is already the current position
         if position == token.current_position:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -255,7 +255,7 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # Handle the case that adding the coord to the token's position history fails.
+        # Handle the case that adding the coord to the occupant's position history fails.
         insertion_result = token.positions.push_coord(coord=position)
         if insertion_result.is_failure:
             # Return the exception chain on failure.
@@ -265,5 +265,5 @@ class TokenService(EntityService[Token]):
                     ex=insertion_result.exception
                 )
             )
-        # If the coord was successfully pushed onto the token's coord stack forward insertion result.
+        # If the coord was successfully pushed onto the occupant's coord stack forward insertion result.
         return insertion_result

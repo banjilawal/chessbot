@@ -49,12 +49,12 @@ class PeacefulPawnSpan:
     ) -> ComputationResult[List[Coord]]:
         """
         # Action
-            1.  If the token fails actionable or type tests send an exception chain in the ComputationResult.
+            1.  If the occupant fails actionable or type tests send an exception chain in the ComputationResult.
             2.  If the pawn is neither opening nor developed send an exception chain in the ComputationResult.
             3.  Give the helper method the pawn's position and vectors it needs to find destinations. The helper sends
                 result to the caller.
         # PARAMETERS:
-            *   token (PawnToken):
+            *   occupant (PawnToken):
             *   coord_service (CoordService)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
@@ -65,14 +65,14 @@ class PeacefulPawnSpan:
         """
         method = "PawnAttack.compute"
         
-        # If the token has not made its first move, call the helper with OPENING_MOVE.targeting_vectors.
+        # If the occupant has not made its first move, call the helper with OPENING_MOVE.targeting_vectors.
         if token.can_open:
             return cls._span_helper(
                 origin=token.current_position,
                 coord_service=coord_service,
                 attack_vectors=cls.OPENING_PAWN_VECTOR_SET.peaceful_destination_vectors
             )
-        # If the token has moved once, call the helper with DEVELOPED_MOVE.targeting vectors.
+        # If the occupant has moved once, call the helper with DEVELOPED_MOVE.targeting vectors.
         if token.is_developed:
             return cls._span_helper(
                 origin=token.current_position,

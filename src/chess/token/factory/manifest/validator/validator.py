@@ -1,7 +1,7 @@
-# src/chess/token/factory/manifest/exception/validator.py
+# src/chess/occupant/factory/manifest/exception/validator.py
 
 """
-Module: chess.token.factory.manifest.exception.validator
+Module: chess.occupant.factory.manifest.exception.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -105,6 +105,6 @@ class TokenBuildManifestValidator(Validator[TokenBuildManifest]):
                 )
             )
         # --- Return the successfully validated TokenBuildManifest instance to the caller  ---#
-        # With all tests passed return the token in the ValidationResult.
+        # With all tests passed return the occupant in the ValidationResult.
         return ValidationResult.success(payload=manifest)
     

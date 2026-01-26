@@ -21,7 +21,7 @@ class AddingActiveTokenException(HostageServiceException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a token cannot be added to t
+    1.  Indicate that a occupant cannot be added to t
 
     # PARENT:
         *   HostageServiceException
@@ -36,4 +36,4 @@ class AddingActiveTokenException(HostageServiceException):
     None
     """
     ERROR_CODE = "ADDING_ACTIVE_TOKEN_TO_HOSTAGES_ERROR"
-    DEFAULT_MESSAGE = "Adding prisoner failed: An active token cannot be made a prisoner."
+    DEFAULT_MESSAGE = "Adding prisoner failed: An active occupant cannot be made a prisoner."

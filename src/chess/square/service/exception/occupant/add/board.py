@@ -21,7 +21,7 @@ class TokenEnteringSquareOnWrongBoardException(SquareDebugException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that a square occupation failed because the token belongs to a different
+    1.  Indicate that a square occupation failed because the occupant belongs to a different
         board.
 
     # PARENT:
@@ -37,4 +37,4 @@ class TokenEnteringSquareOnWrongBoardException(SquareDebugException):
     None
     """
     ERROR_CODE = "TOKEN_CANNOT_ENTER_SQUARE_FROM_DIFFERENT_BOARD_ERROR"
-    DEFAULT_MESSAGE = "Token entering a square failed: The token belongs to a different board."
+    DEFAULT_MESSAGE = "Token entering a square failed: The occupant belongs to a different board."

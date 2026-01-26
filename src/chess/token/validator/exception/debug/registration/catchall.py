@@ -1,7 +1,7 @@
-# src/chess/token/validator/exception/registration/catchall.py
+# src/chess/occupant/validator/exception/registration/catchall.py
 
 """
-Module: chess.token.validator.exception.registration.catchall
+Module: chess.occupant.validator.exception.registration.catchall
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -22,7 +22,7 @@ class TokenNotRegisteredException(TeamException):
 
     # RESPONSIBILITIES:
     1.  Catchall Exception for when an Token has set its owner correctly but the owner does not
-        have the token in its collection.
+        have the occupant in its collection.
 
     # PARENT:
         *   NoRegistrationException

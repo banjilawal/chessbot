@@ -1,7 +1,7 @@
-# src/chess/board/exception/exploration/token.py
+# src/chess/board/exception/exploration/occupant.py
 
 """
-Module: chess.board.exception.exploration.token
+Module: chess.board.exception.exploration.occupant
 Author: Banji Lawal
 Created: 2026-01-23
 version: 1.0.0
@@ -21,7 +21,7 @@ class DisabledTokenCannotExploreException(ExplorationException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that a disabled token cannot explore the board
+    1.  Indicate that a disabled occupant cannot explore the board
 
     # PARENT:
         *   BoardExplorationException
@@ -36,4 +36,4 @@ class DisabledTokenCannotExploreException(ExplorationException):
     None
     """
     ERROR_CODE = "DISABLED_TOKEN_EXPLORATION"
-    DEFAULT_MESSAGE = "Disabled token cannot explore board."
+    DEFAULT_MESSAGE = "Disabled occupant cannot explore board."

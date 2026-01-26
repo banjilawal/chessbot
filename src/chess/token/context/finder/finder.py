@@ -1,7 +1,7 @@
-# src/chess/token/context/finder/finder.py
+# src/chess/occupant/context/finder/finder.py
 
 """
-Module: chess.token.context.finder.finder
+Module: chess.occupant.context.finder.finder
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -106,25 +106,25 @@ class TokenFinder(DataFinder[Token]):
     
     # --- Route to the search method which matches the context key. ---#
         
-        # Entry point into finding by token's id.
+        # Entry point into finding by occupant's id.
         if context.id is not None:
             return cls._find_by_id(dataset=dataset, id=context.id)
-        # Entry point into finding by token's designation.
+        # Entry point into finding by occupant's designation.
         if context.designation is not None:
             return cls._find_by_designation(dataset=dataset, name=context.designation)
-        # Entry point into finding by token's opening_square.
+        # Entry point into finding by occupant's opening_square.
         if context.opening_square is not None:
             return cls._find_by_opening_square(dataset=dataset, name=context.opening_square)
-        # Entry point into finding by token's team.
+        # Entry point into finding by occupant's team.
         if context.team is not None:
             return cls._find_by_team(dataset=dataset, team=context.team)
         # Entry point into searching by toke's rank.
         if context.rank is not None:
             return cls._find_by_rank(dataset=dataset, team=context.rank)
-        # Entry point into searching by token's ransom.
+        # Entry point into searching by occupant's ransom.
         if context.ransom is not None:
             return cls._find_by_ransom(dataset=dataset, ransom=context.ransom)
-        # Entry point into searching by token's color.
+        # Entry point into searching by occupant's color.
         if context.ransom is not None:
             return cls._find_by_color(dataset=dataset, ransom=context.color)
         

@@ -7,7 +7,7 @@ class PrisonerCannotBeActiveCombatantException(HostageManifestException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a token cannot be added to t
+    1.  Indicate that a occupant cannot be added to t
 
     # PARENT:
         *   HostageManifestException

@@ -24,7 +24,7 @@ class VictorCannotBeDisableTokenException(HostageManifestException, DebugExcepti
 
     # RESPONSIBILITIES:
     1.  Indicate that the HostageManifest build failed because the victor was not active for the build process.
-        A token must be active when it creates a capture event.
+        A occupant must be active when it creates a capture event.
 
     # PARENT:
         *   DebugException

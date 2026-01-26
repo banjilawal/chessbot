@@ -1,7 +1,7 @@
-# src/chess/token/context/exception.py
+# src/chess/occupant/context/exception.py
 
 """
-Module: chess.token.context.exception
+Module: chess.occupant.context.exception
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

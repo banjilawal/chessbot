@@ -12,7 +12,7 @@ class KingCannotBeCapturedException(HostageManifestException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that adding a token to the prisoners failed because it was a KingToken instead of a CombatantToken
+    1.  Indicate that adding a occupant to the prisoners failed because it was a KingToken instead of a CombatantToken
 
     # PARENT:
         *   HostageServiceException

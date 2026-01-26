@@ -1,7 +1,7 @@
-# src/chess/token/context/service/service.py
+# src/chess/occupant/context/service/service.py
 
 """
-Module: chess.token.context.service.service
+Module: chess.occupant.context.service.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/token/service/exception/unopened.py
+# src/chess/occupant/service/exception/unopened.py
 
 """
-Module: chess.token.service.exception.unopened
+Module: chess.occupant.service.exception.unopened
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -22,7 +22,7 @@ class OverMoveUndoLimitException(TokenException, NullException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that a token.positions.undo_coord_push failed because no Coord had been added since the last undo.
+    1.  Indicate that a occupant.positions.undo_coord_push failed because no Coord had been added since the last undo.
         Allowing more than one undo means more than one turn can be undone.
 
     # PARENT:

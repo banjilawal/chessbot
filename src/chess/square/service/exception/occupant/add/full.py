@@ -21,7 +21,7 @@ class CannotEnterOccupiedSquareException(SquareDebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that a token could not enter a square because it already had an occupant.
+    1.  Indicate that a occupant could not enter a square because it already had an occupant.
     
     # PARENT:
         *   SquareException

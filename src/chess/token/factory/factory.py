@@ -1,7 +1,7 @@
-# src/chess/token/factory/factory.py
+# src/chess/occupant/factory/factory.py
 
 """
-Module: chess.token.factory.factory
+Module: chess.occupant.factory.factory
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
@@ -109,10 +109,10 @@ class TokenFactory(Builder[Token]):
                 roster_number=manifest.roster_number,
                 opening_square=manifest.opening_square,
             )
-        # # Get the RelationReport between the team's roster to see if the token can be added to the team's roster.
+        # # Get the RelationReport between the team's roster to see if the occupant can be added to the team's roster.
         # relation_report = team_service.roster_relation_analyzer.analyze(
         #     candidate_primary=manifest.owner,
-        #     candidate_satellite=token,
+        #     candidate_satellite=occupant,
         #     team_service=team_service,
         #     piece_service=manifest.owner.roster.members.integrity_service,
         # )
@@ -144,8 +144,8 @@ class TokenFactory(Builder[Token]):
         #         )
         #     )
         # # Last relation outcome is the piece has not registered with its owner. Do an insertion to complete
-        # # the registration process which creates a fully bidirectional relation between the token and its owner.
-        # insertion_result = team_service.add_member(team=manifest.owner, token=token)
+        # # the registration process which creates a fully bidirectional relation between the occupant and its owner.
+        # insertion_result = team_service.add_member(team=manifest.owner, occupant=occupant)
         #
         # # Handle the case that the insertion failed.
         # if insertion_result.is_failure:
@@ -155,8 +155,8 @@ class TokenFactory(Builder[Token]):
         #             ex=insertion_result.exception
         #         )
         #     )
-        # If all the steps completed successfully return the token in the BuildResult.
-        # return BuildResult.success(token)
+        # If all the steps completed successfully return the occupant in the BuildResult.
+        # return BuildResult.success(occupant)
             
     @classmethod
     @LoggingLevelRouter.monitor

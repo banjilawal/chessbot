@@ -61,7 +61,7 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
                 - On failure: Exception
                 - On partial: Token only
                 - On bidirectional: Team and Token
-                - On not related: Neither team, token nor exception.
+                - On not related: Neither team, occupant nor exception.
         # RAISES:
             *   HostageAnalysisFailedException
         """
@@ -98,7 +98,7 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
             return RelationReport.not_related()
         
         # At this point a piece can only be a captured combatant. The possible relations are unregistered
-        # token or fully bidirectional. This can only be resolved with a search.
+        # occupant or fully bidirectional. This can only be resolved with a search.
         hostage_search = team.hostages.search(context=TeamContext(id=piece.id))
         if hostage_search.is_failure:
             # Return the exception chain on failure.
@@ -108,8 +108,8 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
                     ex=hostage_search.exception,
                     )
                 )
-        # On the empty search the token has not been added to the prisoner list.
+        # On the empty search the occupant has not been added to the prisoner list.
         if hostage_search.is_empty:
             return RelationReport.partial(satellite=piece)
-        # All other paths in the test chain have been exhausted. The team.hostages-token tuple is fully bidirectional.
+        # All other paths in the test chain have been exhausted. The team.hostages-occupant tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=team, satellite=piece)

@@ -1,7 +1,7 @@
-# src/chess/token/service/data/unique/exception/__init__.py
+# src/chess/occupant/service/data/unique/exception/__init__.py
 
 """
-Module: chess.token.service.data.unique.exception.__init__
+Module: chess.occupant.service.data.unique.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

@@ -61,7 +61,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
                 - On failure: Exception
                 - On partial: Token only
                 - On bidirectional: Team and Token
-                - On not related: Neither team, token nor exception.
+                - On not related: Neither team, occupant nor exception.
         # RAISES:
             *   TeamRosterRelationAnalysisFailedException
         """
@@ -104,8 +104,8 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
                     ex=member_search.exception,
                 )
             )
-        # On the empty search the token has not been added to the roster list.
+        # On the empty search the occupant has not been added to the roster list.
         if member_search.is_empty:
             return RelationReport.partial(satellite=piece)
-        # All other paths in the test chain have been exhausted. The roster-token tuple is fully bidirectional.
+        # All other paths in the test chain have been exhausted. The roster-occupant tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=team, satellite=piece)

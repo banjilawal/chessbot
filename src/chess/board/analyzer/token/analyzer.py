@@ -1,7 +1,7 @@
-# src/chess/board/token/analyzer/analyzer.py
+# src/chess/board/occupant/analyzer/analyzer.py
 
 """
-Module: chess.board.token.analyzer.analyzer
+Module: chess.board.occupant.analyzer.analyzer
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -17,7 +17,7 @@ class BoardTokenRelationAnalyzer(RelationAnalyzer[Board, Token]):
     # ROLE: Reporting, Test for Relationship
 
     # RESPONSIBILITIES:
-    1.  Test if whether a board-token tuple have either none, partial, or fully bidirectional relation between them.
+    1.  Test if whether a board-occupant tuple have either none, partial, or fully bidirectional relation between them.
     2.  If the testing was not completed send an exception chain to the caller.
 
     # PARENT:
@@ -45,8 +45,8 @@ class BoardTokenRelationAnalyzer(RelationAnalyzer[Board, Token]):
         """
         # ACTION:
         1.  If either candidate fails its safety certification send the exception chain in the RelationReport. Else,
-            cast the candidate_primary to board instance; board and candidate_satellite to Token instance; token.
-        2.  If the token.owner != owner they are not related. Else they are partially related.
+            cast the candidate_primary to board instance; board and candidate_satellite to Token instance; occupant.
+        2.  If the occupant.owner != owner they are not related. Else they are partially related.
         3.  If searching owner's tokens for the satellite produces an error send the exception chain. If the search
             produced aa match send a bidirectional report. Else send a partial relation report.
 
@@ -91,11 +91,11 @@ class BoardTokenRelationAnalyzer(RelationAnalyzer[Board, Token]):
             )
         token = cast(Token, token_validation.payload)
         
-        # If the token is assigned to a different board it's not a satellite of the area. They are not related.
+        # If the occupant is assigned to a different board it's not a satellite of the area. They are not related.
         if board != token.board:
             return RelationReport.not_related()
         
-        # Search the board to find out if the token has a full or partial bidirectional relation with its board.
+        # Search the board to find out if the occupant has a full or partial bidirectional relation with its board.
         token_search = board.tokens.search(context=TokenContext(id=token.id))
         if token_search.is_failure:
             # Return the exception chain on failure.
@@ -105,8 +105,8 @@ class BoardTokenRelationAnalyzer(RelationAnalyzer[Board, Token]):
                     ex=token_search.exception
                 )
             )
-        # On the empty search the token has not been added to the Board.
+        # On the empty search the occupant has not been added to the Board.
         if token_search.is_empty:
             return RelationReport.partial(satellite=token)
-        # All other paths in the test chain have been exhausted. The roster-token tuple is fully bidirectional.
+        # All other paths in the test chain have been exhausted. The roster-occupant tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=board, satellite=token)

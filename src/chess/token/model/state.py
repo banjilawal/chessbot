@@ -1,7 +1,7 @@
-# src/chess/token/model/state.py
+# src/chess/occupant/model/state.py
 
 """
-Module: chess.token.model.state
+Module: chess.occupant.model.state
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/token/factory/manifest/__init__.py
+# src/chess/occupant/factory/manifest/__init__.py
 
 """
-Module: chess.token.factory.manifest.__init__
+Module: chess.occupant.factory.manifest.__init__
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

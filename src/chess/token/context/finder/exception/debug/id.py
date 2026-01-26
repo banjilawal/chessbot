@@ -1,7 +1,7 @@
-# src/chess/token/context/finder/exception/debug/id.py
+# src/chess/occupant/context/finder/exception/debug/id.py
 
 """
-Module: chess.token.context.finder.exception.debug.id
+Module: chess.occupant.context.finder.exception.debug.id
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

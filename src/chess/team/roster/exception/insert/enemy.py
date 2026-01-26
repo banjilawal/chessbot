@@ -21,7 +21,7 @@ class EnemyCannotJoinTeamRosterException(TeamRosterException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that inserting into a Team's roster failed because it the token had a different team.
+    1.  Indicate that inserting into a Team's roster failed because it the occupant had a different team.
 
     # PARENT:
         *   TeamRosterException
@@ -36,4 +36,4 @@ class EnemyCannotJoinTeamRosterException(TeamRosterException):
     None
     """
     ERROR_CODE = "ENEMY_CANNOT_JOIN_ROSTER"
-    DEFAULT_MESSAGE = "Adding roster member failed: The token is on an enemy team."
+    DEFAULT_MESSAGE = "Adding roster member failed: The occupant is on an enemy team."

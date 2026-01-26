@@ -39,7 +39,7 @@ class SquareContext(Context[Square]):
     """
     _board: Optional[Board]
     _coord: Optional[Coord]
-    _token: Optional[Token]
+    _occupant: Optional[Token]
     
     def __init__(
             self,
@@ -47,12 +47,12 @@ class SquareContext(Context[Square]):
             name: Optional[str],
             board: Optional[Board] = None,
             coord: Optional[Coord] = None,
-            token: Optional[Token] = None,
+            occupant: Optional[Token] = None,
     ):
         super().__init__(id=id, name=name)
         self._board = board
         self._coord = coord
-        self._token = token
+        self._occupant = occupant
         
     @property
     def board(self) -> Optional[Board]:
@@ -63,8 +63,8 @@ class SquareContext(Context[Square]):
         return self._coord
     
     @property
-    def token(self) -> Optional[Token]:
-        return self._token
+    def occupant(self) -> Optional[Token]:
+        return self._occupant
     
     def to_dict(self) -> dict:
         """
@@ -82,5 +82,5 @@ class SquareContext(Context[Square]):
             "name": self.name,
             "board": self._board,
             "coord": self._coord,
-            "token": self._token,
+            "occupant": self._occupant,
         }

@@ -110,5 +110,5 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         # On the empty search the square has not been added to the Board.
         if square_search.is_empty:
             return RelationReport.partial(satellite=square)
-        # All other paths in the test chain have been exhausted. The roster-token tuple is fully bidirectional.
+        # All other paths in the test chain have been exhausted. The roster-occupant tuple is fully bidirectional.
         return RelationReport.bidirectional(primary=board, satellite=square)

@@ -1,7 +1,7 @@
-# src/chess/board/token/service.py
+# src/chess/board/occupant/service.py
 
 """
-Module: chess.board.token.service
+Module: chess.board.occupant.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -51,9 +51,9 @@ class BoardTokenService:
     def add(self, token: Token) -> InsertionResult[Token]:
         """
         # ACTION:
-            1.  If the token fails validation send the wrapped exception in the InsertionResult.
-            2.  If the token does not belong to the board a wrapped exception needs to be sent in the InsertionResult.
-            3.  If token is a captured CombatantToked a wrapped exception needs to be sent in the InsertionResult.
+            1.  If the occupant fails validation send the wrapped exception in the InsertionResult.
+            2.  If the occupant does not belong to the board a wrapped exception needs to be sent in the InsertionResult.
+            3.  If occupant is a captured CombatantToked a wrapped exception needs to be sent in the InsertionResult.
             4.  If self._calculate_remaining_rank_quota returns an error or zero open slots then send the wrapped
                 in the InsertionResult.
             5.  Send the number of open slots in the InsertionResult.
@@ -86,7 +86,7 @@ class BoardTokenService:
                     )
                 )
             )
-        # Handle the case that the token is not certified safe.
+        # Handle the case that the occupant is not certified safe.
         token_validation = self._members.integrity_service.validator.validate(token=token)
         if token_validation.is_failure:
             # Return exception chain on failure.
@@ -116,7 +116,7 @@ class BoardTokenService:
             )
         rank_quota = cast(int, rank_quota_lookup.payload)
         
-        # --- Find if there are open slots for the token's rank. ---#
+        # --- Find if there are open slots for the occupant's rank. ---#
         rank_count_result = self._members.rank_count(rank=token.rank)
         
         # Handle the case that the rank_count_result_computation was not completed.
@@ -145,7 +145,7 @@ class BoardTokenService:
             )
 
         
-        # --- Find out if a token is already at the coord ---#
+        # --- Find out if a occupant is already at the coord ---#
         search_result = self._members.search_tokens(context=TokenContext(coord=token.current_position))
         
         # Handle the case that the search was not completed.

@@ -30,4 +30,4 @@ class TeamRosterTokenDeletionFailedException(TeamRosterException, OperationFaile
     None
     """
     ERROR_CODE = "ROSTER_TOKEN_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Roster token deletion failed."
+    DEFAULT_MESSAGE = "Roster occupant deletion failed."

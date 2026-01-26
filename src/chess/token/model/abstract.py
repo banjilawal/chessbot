@@ -1,7 +1,7 @@
-# src/chess/token/model/abstract.py
+# src/chess/occupant/model/abstract.py
 
 """
-Module: chess.token.model.abstract
+Module: chess.occupant.model.abstract
 Author: Banji Lawal
 Created: 2025-07-22
 version: 1.0.0

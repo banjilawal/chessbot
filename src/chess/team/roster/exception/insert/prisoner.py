@@ -21,7 +21,7 @@ class AddingPrisonerToTeamRosterException (TeamRosterException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a token cannot be added to the roster because it was not free.
+    1.  Indicate that a occupant cannot be added to the roster because it was not free.
 
     # PARENT:
         *   TeamRosterException
@@ -36,4 +36,4 @@ class AddingPrisonerToTeamRosterException (TeamRosterException):
     None
     """
     ERROR_CODE = "ADDING_PRISONER_TO_ROSTER_ERROR"
-    DEFAULT_MESSAGE = "Roster addition failed: A captured token cannot be added to the roster of active pieces."
+    DEFAULT_MESSAGE = "Roster addition failed: A captured occupant cannot be added to the roster of active pieces."

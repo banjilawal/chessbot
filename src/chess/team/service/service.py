@@ -173,7 +173,7 @@ class TeamService(EntityService[Team]):
             *   team (Team)
             *   piece (Piece)
         # RETURN:
-            *   InsertionResult[token] containing either:
+            *   InsertionResult[occupant] containing either:
                     - On failure: Exception
                     - On success: Token
         # RAISES:
@@ -211,7 +211,7 @@ class TeamService(EntityService[Team]):
                     )
                 )
             )
-        # --- Iterate through each formation to get each token's build params. ---#
+        # --- Iterate through each formation to get each occupant's build params. ---#
         formations = cast(List[FormationKey], formation_lookup_result.payload)
         for index in range(len(formations)):
             formation = formations[index]
@@ -247,7 +247,7 @@ class TeamService(EntityService[Team]):
                     )
                 )
             opening_square = cast(Square, square_search_result.payload[0])
-            # --- Build the token. ---#
+            # --- Build the occupant. ---#
             
             token_build_result = team.roster.integrity_service.builder.build(
                 token_manifest=TokenBuildManifest(
@@ -261,7 +261,7 @@ class TeamService(EntityService[Team]):
                 manifest_validator=self.token_build_manifest_validator
             )
             
-            # Handle the case that the token does not get built.
+            # Handle the case that the occupant does not get built.
             if token_build_result.is_failure:
                 # Return exception chain on failure.
                 return UpdateResult.failure(
@@ -306,7 +306,7 @@ class TeamService(EntityService[Team]):
             *   team (Team)
             *   piece (Piece)
         # RETURN:
-            *   InsertionResult[token] containing either:
+            *   InsertionResult[occupant] containing either:
                     - On failure: Exception
                     - On success: Token
         # RAISES:
@@ -374,7 +374,7 @@ class TeamService(EntityService[Team]):
                     )
                 )
             )
-        # --- Find out if there is an opening for the token's rank on the roster. ---#
+        # --- Find out if there is an opening for the occupant's rank on the roster. ---#
         has_openings_test = team.roster.rank_has_openings(piece.rank)
         
         # Handle the case that the rank_has_openings failed test failed.

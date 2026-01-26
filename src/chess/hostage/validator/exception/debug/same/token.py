@@ -1,4 +1,4 @@
-# src/chess/manifest/validator/exception/debug/token.py
+# src/chess/manifest/validator/exception/debug/occupant.py
 
 """
 Module: chess.manifest.validator.exception.debug.toke

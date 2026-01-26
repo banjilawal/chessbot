@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/insertion/wrapper.py
+# src/chess/occupant/service/data/exception/insertion/wrapper.py
 
 """
-Module: chess.token.service.data.exception.insertion.wrapper
+Module: chess.occupant.service.data.exception.insertion.wrapper
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -22,7 +22,7 @@ class TokenInsertionFailedException(TokenException, InsertionFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate that add a token to the roster failed.
+    1.  Indicate that add a occupant to the roster failed.
 
     # PARENT:
         *   TokenException

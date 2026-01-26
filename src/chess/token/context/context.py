@@ -1,7 +1,7 @@
-# src/chess/token/map.py
+# src/chess/occupant/map.py
 
 """
-Module: chess.token.map
+Module: chess.occupant.map
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

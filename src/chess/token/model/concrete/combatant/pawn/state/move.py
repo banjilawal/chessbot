@@ -1,7 +1,7 @@
-# src/chess/token/model/concrete/combatant/pawn/state/move.py
+# src/chess/occupant/model/concrete/combatant/pawn/state/move.py
 
 """
-Module: chess.token.model.concrete.combatant.pawn.state.move
+Module: chess.occupant.model.concrete.combatant.pawn.state.move
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

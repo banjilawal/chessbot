@@ -168,7 +168,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             # On validation success return a board_SquareContext in the BuildResult.
             return BuildResult.success(SquareContext(board=board))
         
-        # Build the token SquareContext if its flag is enabled.
+        # Build the occupant SquareContext if its flag is enabled.
         if token is not None:
             validation = token_service.validator.validate(candidate=token)
             if validation.is_failure:
@@ -180,7 +180,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                     )
                 )
             # On validation success return a token_SquareContext in the BuildResult.
-            return BuildResult.success(SquareContext(token=token))
+            return BuildResult.success(SquareContext(occupant=token))
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(

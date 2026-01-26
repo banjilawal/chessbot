@@ -1,7 +1,7 @@
-# src/chess/token/travel/__init__.py
+# src/chess/occupant/travel/__init__.py
 
 """
-Module: `chess.token.travel.__init__`
+Module: `chess.occupant.travel.__init__`
 Author: Banji Lawal
 Created: 2025-10-06
 Version: 1.0.1

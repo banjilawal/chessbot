@@ -21,7 +21,7 @@ class AddingHostageTokenFailedException(HostageServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that add a token to the prisoner failed.
+    1.  Indicate that add a occupant to the prisoner failed.
 
     # PARENT:
         *  HostageServiceException

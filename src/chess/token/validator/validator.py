@@ -1,7 +1,7 @@
-# src/chess/token/validator/validator.py
+# src/chess/occupant/validator/validator.py
 
 """
-Module: chess.token.validator
+Module: chess.occupant.validator
 Author: Banji Lawal
 Created: 2025-10-22
 Version: 1.0.0
@@ -54,10 +54,10 @@ class TokenValidator(Validator[Token]):
         """
         # ACTION:
             1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
-                Else, cast to Token instance token.
+                Else, cast to Token instance occupant.
             2.  If any of the attributes; id, designation, roster_number, rank or positions fail their validation
                 tests send the exception in the ValidationResult.
-            3.  The token has passed all verification tests. Send the token in the ValidationResult.
+            3.  The occupant has passed all verification tests. Send the occupant in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
             *   rank_service (RankService)
@@ -110,7 +110,7 @@ class TokenValidator(Validator[Token]):
                     ex=identity_validation.exception
                 )
             )
-        # Handle the case that the token's team fails validation.
+        # Handle the case that the occupant's team fails validation.
         team_validation = team_service.item_validator.validate(token.team)
         if team_validation.is_failure:
             # Return the exception chain on failure.
@@ -144,7 +144,7 @@ class TokenValidator(Validator[Token]):
                     ex=rank_validation.exception
                 )
             )
-        # Handle the case that token.positions fails its validation.
+        # Handle the case that occupant.positions fails its validation.
         service_validation = service_validator.validate(candidate=token.positions, expected_type=CoordDataService)
         if service_validation.is_failure:
             # Return the exception chain on failure.
@@ -154,13 +154,13 @@ class TokenValidator(Validator[Token]):
                     ex=service_validation.exception
                 )
             )
-        # Tests have been passed return the token in the ValidationResult.
+        # Tests have been passed return the occupant in the ValidationResult.
         return ValidationResult.success(payload=token)
     
     @classmethod
     def verify_token_is_combatant(cls, candidate: Any) -> ValidationResult[CombatantToken]:
         method = "TokenValidator.validate_token_is_combatant"
-        # Handle the case that the candidate is not certified as a safe token.
+        # Handle the case that the candidate is not certified as a safe occupant.
         validation = cls.validate(candidate)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -186,7 +186,7 @@ class TokenValidator(Validator[Token]):
     @classmethod
     def verify_token_is_king(cls, candidate: Any) -> ValidationResult[KingToken]:
         method = "TokenValidator.validate_token_is_king"
-        # Handle the case that the candidate is not certified as a safe token.
+        # Handle the case that the candidate is not certified as a safe occupant.
         validation = cls.validate(candidate)
         if validation.is_failure:
             # Return the exception chain on failure.

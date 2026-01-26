@@ -63,11 +63,11 @@ class Bishop(Rank):
     def compute_span(self, token: Token,) -> ComputationResult[[Coord]]:
         """
         # Action
-            1.  Pass the token's current position to Rook._perpendicular_span to get the set of possible destinations.
+            1.  Pass the occupant's current position to Rook._perpendicular_span to get the set of possible destinations.
             2.  If perpendicular_span fails send the exception chain in the ComputationResult. Else, return
                 the span in the ComputationResult's payload.
         # PARAMETERS:
-            *   token (Token)
+            *   occupant (Token)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.

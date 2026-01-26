@@ -1,7 +1,7 @@
-# src/chess/token/service/data/unique/exception/deletion/wrapper.py
+# src/chess/occupant/service/data/unique/exception/deletion/wrapper.py
 
 """
-Module: chess.token.service.data.unique.exception.deletion.wrapper
+Module: chess.occupant.service.data.unique.exception.deletion.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -22,7 +22,7 @@ class ExhaustiveTokenDeletionFailedException(TokenException, DeletionFailedExcep
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why deleting all occurrences of a token failed. deletion fails. The
+    1.  Wrap debug exceptions that indicate why deleting all occurrences of a occupant failed. deletion fails. The
         encapsulated exceptions create chain for tracing the source of the failure.
 
     # PARENT:
@@ -39,4 +39,4 @@ class ExhaustiveTokenDeletionFailedException(TokenException, DeletionFailedExcep
     None
     """
     ERROR_CODE = "EXHAUSTIVE_TOKEN_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Exhaustive token deletion failed."
+    DEFAULT_MESSAGE = "Exhaustive occupant deletion failed."

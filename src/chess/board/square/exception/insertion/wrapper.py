@@ -23,7 +23,7 @@ class AddingBoardSquareFailedException(BoardException, SquareException, Insertio
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that add a token to the boardSquare failed.
+    1.  Indicate that add a occupant to the boardSquare failed.
 
     # PARENT:
         *   BoardException

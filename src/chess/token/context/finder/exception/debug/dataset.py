@@ -1,7 +1,7 @@
-# src/chess/token/context/finder/exception/debug/dataset.py
+# src/chess/occupant/context/finder/exception/debug/dataset.py
 
 """
-Module: chess.token.context.finder.exception.debug.dataset
+Module: chess.occupant.context.finder.exception.debug.dataset
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

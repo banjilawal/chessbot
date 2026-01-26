@@ -1,7 +1,7 @@
-# src/chess/token/factory/manifest/exception.py
+# src/chess/occupant/factory/manifest/exception.py
 
 """
-Module: chess.token.factory.manifest.exception
+Module: chess.occupant.factory.manifest.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

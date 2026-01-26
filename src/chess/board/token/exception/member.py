@@ -1,7 +1,7 @@
-# src/chess/board/token/exception/member.py
+# src/chess/board/occupant/exception/member.py
 
 """
-Module: chess.board.token.exception.member
+Module: chess.board.occupant.exception.member
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

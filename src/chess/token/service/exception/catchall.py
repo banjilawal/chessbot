@@ -1,7 +1,7 @@
-# src/chess/token/service/exception.catchall.py
+# src/chess/occupant/service/exception.catchall.py
 
 """
-Module: chess.token.service.exception.catchall
+Module: chess.occupant.service.exception.catchall
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

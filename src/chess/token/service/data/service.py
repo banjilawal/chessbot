@@ -1,7 +1,7 @@
-# src/chess/token/service/data/service_.py
+# src/chess/occupant/service/data/service_.py
 
 """
-Module: chess.token.service.data.service
+Module: chess.occupant.service.data.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -200,12 +200,12 @@ class TokenDataService(DataService[Token]):
     def insert_token(self, token: Token) -> InsertionResult[Token]:
         """
         # ACTION:
-            1.  If the token is not validated send the exception in the InsertionResult. Else, call the super class
+            1.  If the occupant is not validated send the exception in the InsertionResult. Else, call the super class
                 push method.
             2.  If super().push_item fails send the exception in the InsertionResult. Else extract the payload to cast
                 and return to the caller in the BuildResult.
         # PARAMETERS:
-            *   token (Token)
+            *   occupant (Token)
         # RETURNS:
             *   InsertionResult[Token] containing either:
                     - On failure: Exception.
@@ -227,7 +227,7 @@ class TokenDataService(DataService[Token]):
                     )
                 )
             )
-        # Handle the case that the token is unsafe.
+        # Handle the case that the occupant is unsafe.
         validation = self.token_service.validator.validate(candidate=token)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -243,7 +243,7 @@ class TokenDataService(DataService[Token]):
         # --- Token order is not required. Direct insertion into the dataset is simpler that a push. ---#
         self.items.append(token)
         
-        # Handle the case that the token was not appended to the dataset.
+        # Handle the case that the occupant was not appended to the dataset.
         if token not in self.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -257,7 +257,7 @@ class TokenDataService(DataService[Token]):
                     )
                 )
             )
-        # On success return the token in the InsertionResult
+        # On success return the occupant in the InsertionResult
         return InsertionResult.success(payload=token)
     
     @LoggingLevelRouter.monitor
@@ -312,7 +312,7 @@ class TokenDataService(DataService[Token]):
                     )
                 )
             )
-        # --- Search the list for a token with target id. ---#
+        # --- Search the list for a occupant with target id. ---#
         for item in self.items:
             if item.id == id:
                 # Handle the case that the match is the wrong type.
@@ -330,7 +330,7 @@ class TokenDataService(DataService[Token]):
                             )
                         )
                     )
-                # --- Cast the item before removal and return the deleted token in the DeletionResult. ---#
+                # --- Cast the item before removal and return the deleted occupant in the DeletionResult. ---#
                 token = cast(Token, item)
                 self.items.remove(token)
                 return DeletionResult.success(payload=token)

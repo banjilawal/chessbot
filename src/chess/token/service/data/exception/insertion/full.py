@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/insertion/full.py
+# src/chess/occupant/service/data/exception/insertion/full.py
 
 """
-Module: chess.token.service.data.exception.insertion.full
+Module: chess.occupant.service.data.exception.insertion.full
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -22,7 +22,7 @@ class TokenServiceCapacityException(TokenServiceException, DebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that adding a token to the service failed because the service has reached the limit of
+    1.  Indicate that adding a occupant to the service failed because the service has reached the limit of
         how many tokens it manages. 
 
     # PARENT:
@@ -39,4 +39,4 @@ class TokenServiceCapacityException(TokenServiceException, DebugException):
     None
     """
     ERROR_CODE = "TOKEN_SERVICE_CAPACITY_ERROR"
-    DEFAULT_MESSAGE = "Adding a token to the service failed: The number of tokens managed is at full capacity."
+    DEFAULT_MESSAGE = "Adding a occupant to the service failed: The number of tokens managed is at full capacity."

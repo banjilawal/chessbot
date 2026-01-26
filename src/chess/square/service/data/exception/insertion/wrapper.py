@@ -22,7 +22,7 @@ class SquareInsertionFailedException(SquareException, InsertionFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate that add a token to the roster failed.
+    1.  Indicate that add a occupant to the roster failed.
 
     # PARENT:
         *   SquareException

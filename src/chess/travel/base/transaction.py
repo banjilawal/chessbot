@@ -1,7 +1,7 @@
-# src/chess/token/travel/base/transaction.py
+# src/chess/occupant/travel/base/transaction.py
 
 """
-Module: chess.token.travel.base.transaction
+Module: chess.occupant.travel.base.transaction
 Author: Banji Lawal
 Created: 2025-09-28
 """

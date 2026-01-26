@@ -1,7 +1,7 @@
-# src/chess/token/validator/__init__.py
+# src/chess/occupant/validator/__init__.py
 
 """
-Module: chess.token.validator__init__
+Module: chess.occupant.validator__init__
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

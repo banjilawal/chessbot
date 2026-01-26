@@ -21,7 +21,7 @@ class FriendCannotCaptureFriendException(HostageServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that adding a combatant to the prisoners failed because the token was a friend.
+    1.  Indicate that adding a combatant to the prisoners failed because the occupant was a friend.
 
     # PARENT:
         *   HostageServiceException

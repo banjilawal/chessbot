@@ -1,7 +1,7 @@
-# src/chess/token/context/finder/exception/debug/route.py
+# src/chess/occupant/context/finder/exception/debug/route.py
 
 """
-Module: chess.token.context.finder.exception.debug.route
+Module: chess.occupant.context.finder.exception.debug.route
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

@@ -63,12 +63,12 @@ class King(Rank):
     def compute_span(self, token: Token, ) -> ComputationResult[[Coord]]:
         """
         # Action
-            1.  Iterate through the King.vectors. Add each to token.current_position.
+            1.  Iterate through the King.vectors. Add each to occupant.current_position.
             2.  If the vector addition fails, return an exception chain in the ComputationResult. Else,
                 add the resulting Coord to the span.
             3.  Put the completed span inside the ComputationResult and send to the caller.a
         # PARAMETERS:
-            *   token (Token)
+            *   occupant (Token)
             *   coord_service (CoordService)
         # RETURNS:
             *   ComputationResult[List[Coord]]:

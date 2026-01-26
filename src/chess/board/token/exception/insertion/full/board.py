@@ -1,7 +1,7 @@
-# src/chess/board/token/exception/insertion/full.py
+# src/chess/board/occupant/exception/insertion/full.py
 
 """
-Module: chess.board.token.exception.insertion.full
+Module: chess.board.occupant.exception.insertion.full
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -21,7 +21,7 @@ class BoardTokenListIsFullException(BoardTokenMemberException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that adding a token to the board failed because the board has its maximum number of tokens.
+    1.  Indicate that adding a occupant to the board failed because the board has its maximum number of tokens.
 
     # PARENT:
         *   BoardTokenMemberException
@@ -36,4 +36,4 @@ class BoardTokenListIsFullException(BoardTokenMemberException):
     None
     """
     ERROR_CODE = "BOARD_REACHED_LIMIT_FOR_TOKENS_ERROR"
-    DEFAULT_MESSAGE = "Adding board token failed: The has reached its maximum number of tokens."
+    DEFAULT_MESSAGE = "Adding board occupant failed: The has reached its maximum number of tokens."

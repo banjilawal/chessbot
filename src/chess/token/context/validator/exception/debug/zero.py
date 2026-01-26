@@ -1,7 +1,7 @@
-# src/chess/token/validator/exception/flag/zero.py
+# src/chess/occupant/validator/exception/flag/zero.py
 
 """
-Module: chess.token.validator.exception.flag.zero
+Module: chess.occupant.validator.exception.flag.zero
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

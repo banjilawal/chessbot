@@ -13,7 +13,7 @@ class TokenStateAnalysisFailedException(TokenStateException, AnalysisFailedExcep
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
     # RESPONSIBILITIES:
-    1.  Wrap any exception that kills the relation test process before the token's state has been evaluated.
+    1.  Wrap any exception that kills the relation test process before the occupant's state has been evaluated.
 
     # PARENT:
         *   WrapperException

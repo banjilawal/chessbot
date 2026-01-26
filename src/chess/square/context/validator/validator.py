@@ -177,9 +177,9 @@ class SquareContextValidator(Validator[SquareContext]):
             # On certification success return the board_SquareContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-token target.
-        if context.token is not None:
-            validation = token_service.validator.validate(context.token)
+        # Certification for the search-by-occupant target.
+        if context.occupant is not None:
+            validation = token_service.validator.validate(context.occupant)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(

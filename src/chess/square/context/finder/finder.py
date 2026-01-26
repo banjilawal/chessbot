@@ -11,11 +11,12 @@ from typing import List
 
 from chess.board import Board
 from chess.coord import Coord
-from chess.system import DataFinder, LoggingLevelRouter, SearchResult
+from chess.system import LoggingLevelRouter, SearchResult
 from chess.square import (
     Square, SquareContext, SquareContextValidator, SquareSearchFailedException, SquareSearchRouteException,
     SquareSearchNullDatasetException, SquareSearchPayloadTypeException,
 )
+from chess.token import Token
 
 
 class SquareFinder(DataFinder[Square]):
@@ -117,6 +118,9 @@ class SquareFinder(DataFinder[Square]):
         # Entry point into searching by square's board.
         if context.board is not None:
             return cls._find_by_board(dataset=dataset, coord=context.board)
+        # Entry point into searching by square's occupant.
+        if context.board is not None:
+            return cls._find_by_board(dataset=dataset, coord=context.occupant)
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
@@ -217,6 +221,32 @@ class SquareFinder(DataFinder[Square]):
             None
         """
         matches = [square for square in dataset if square.board == board]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_occupant(cls, dataset: List[Square], occupant: Token) -> SearchResult[List[Square]]:
+        """
+        # ACTION:
+            1.  Get the Squares which match the token.
+        # PARAMETERS:
+            *   board (Board)
+            *   dataset (List[Square])
+        # RETURNS:
+            *   SearchResult[List[Square]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Square] in the payload.
+                    - On no matches found: Exception null, payload null
+        # RAISES:
+            None
+        """
+        matches = [
+            square for square in dataset if (square.occupant is not None and square.occupant) == occupant
+        ]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

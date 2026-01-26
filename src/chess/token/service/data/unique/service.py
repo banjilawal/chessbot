@@ -1,7 +1,7 @@
-# src/chess/token/service/data/unique/service.py
+# src/chess/occupant/service/data/unique/service.py
 
 """
-Module: chess.token.service.data.unique.service
+Module: chess.occupant.service.data.unique.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -216,7 +216,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
             3.  If the call to _token_data_service.insert_token fails send the wrapped exception in the InsertionResult.
                 Else send the outgoing result directly to the caller.
         # PARAMETERS:
-            *   token (Token)
+            *   occupant (Token)
         # RETURN:
             *   InsertionResult[Token] containing either:
                     - On failure: An exception.
@@ -228,9 +228,9 @@ class UniqueTokenDataService(UniqueDataService[Token]):
         """
         method = "UniqueTokenDataService.add_unique_token"
         
-        # --- To assure uniqueness the member_service has to conduct a search. The token should be validated first. ---#
+        # --- To assure uniqueness the member_service has to conduct a search. The occupant should be validated first. ---#
         
-        # Handle the case that the token is not certified safe.
+        # Handle the case that the occupant is not certified safe.
         validation = self.integrity_service.validator.validate(candidate=token)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -243,7 +243,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
                     )
                 )
             )
-        # Handle the case that the token is already in the dataset.
+        # Handle the case that the occupant is already in the dataset.
         if token in self._token_data_service.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -255,7 +255,7 @@ class UniqueTokenDataService(UniqueDataService[Token]):
                     )
                 )
             )
-        # --- Use _token_data_service.insert_token because order does not matter for the token access. ---#
+        # --- Use _token_data_service.insert_token because order does not matter for the occupant access. ---#
         insertion_result = self._token_data_service.insert_token(token=token)
         
         # Handle the case that the insertion is not completed.

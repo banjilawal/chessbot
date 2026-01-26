@@ -19,7 +19,7 @@ class RankQuotaIsFullException(RosterServiceException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a token cannot be added to roster because berths are full.
+    1.  Indicate that a occupant cannot be added to roster because berths are full.
 
     # PARENT:
         *   TeamException

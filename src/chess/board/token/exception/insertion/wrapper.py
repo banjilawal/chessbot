@@ -1,7 +1,7 @@
-# src/chess/team/board/token/exception/insertion/wrapper.py
+# src/chess/team/board/occupant/exception/insertion/wrapper.py
 
 """
-Module: chess.team.board.token.exception.insertion.wrapper
+Module: chess.team.board.occupant.exception.insertion.wrapper
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -23,7 +23,7 @@ class AddingBoardTokenFailedException(BoardException, TokenException, InsertionF
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that add a token to the boardToken failed.
+    1.  Indicate that add a occupant to the boardToken failed.
 
     # PARENT:
         *   BoardException

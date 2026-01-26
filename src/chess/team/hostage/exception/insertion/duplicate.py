@@ -21,7 +21,7 @@ class EnemyAlreadyCapturedException(HostageServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that adding a prisoner member failed because the token was already present.
+    1.  Indicate that adding a prisoner member failed because the occupant was already present.
 
     # PARENT:
         *   HostageServiceException

@@ -1,7 +1,7 @@
-# src/chess/token/validator/exception/registration/square_name
+# src/chess/occupant/validator/exception/registration/square_name
 
 """
-Module: chess.token.validator.exception.registration.square_name
+Module: chess.occupant.validator.exception.registration.square_name
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -23,8 +23,8 @@ class TokenNotRegisteredWithSquareException(TokenNotRegisteredException):
 
     # RESPONSIBILITIES:
     1.  Indicate that while the Token has assigned itself to a Square instance but the Square
-        has not registered the token as its occupant.
-    2.  That is token.coord == square_name.coord but square_name.occupant != token.
+        has not registered the occupant as its occupant.
+    2.  That is occupant.coord == square_name.coord but square_name.occupant != occupant.
 
     # PARENT:
         *   TokenRegistrationException

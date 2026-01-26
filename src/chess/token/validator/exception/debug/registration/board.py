@@ -1,7 +1,7 @@
-# src/chess/token/validator/exception/registration/board.py
+# src/chess/occupant/validator/exception/registration/board.py
 
 """
-Module: chess.token.validator.exception.registration.board
+Module: chess.occupant.validator.exception.registration.board
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -41,5 +41,5 @@ class TokenNotRegisteredWithBoardException(TokenNotRegisteredException):
     """
     ERROR_CODE = "TOKEN_NOT_REGISTERED_WITH_BOARD_ERROR"
     DEFAULT_MESSAGE = (
-        "Token is not registered in Board.tokens collection. Only the token-side of the relationship is set."
+        "Token is not registered in Board.tokens collection. Only the occupant-side of the relationship is set."
     )

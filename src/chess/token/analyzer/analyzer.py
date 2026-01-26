@@ -1,7 +1,7 @@
-# src/chess/token/state/analyzer.py
+# src/chess/occupant/state/analyzer.py
 
 """
-Module: chess.token.state.analyzer
+Module: chess.occupant.state.analyzer
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

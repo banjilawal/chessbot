@@ -200,7 +200,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that the token is not certified safe.
+        # Handle the case that the occupant is not certified safe.
         token_validation = token_service.validator.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
@@ -213,7 +213,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that the token belongs to a different board
+        # Handle the case that the occupant belongs to a different board
         if token.team.board != square.board:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -227,7 +227,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that the token is disabled
+        # Handle the case that the occupant is disabled
         if token.is_disabled:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -241,7 +241,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that the token has not been placed on the board.
+        # Handle the case that the occupant has not been placed on the board.
         if token.has_not_been_formed:
             return self._add_unformed_token(square=square, token=token)
         
@@ -254,7 +254,7 @@ class SquareService(EntityService[Square]):
     def _add_unformed_token(self, square: Square, token: Token,) -> InsertionResult[Square]:
         method = "SquareService.add_unformed_token"
         
-        # Handle the case that the token belongs to a different square.
+        # Handle the case that the occupant belongs to a different square.
         if square != token.opening_square:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -268,7 +268,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Form the token.
+        # Form the occupant.
         square.occupant = token
         square.state = SquareState.OCCUPIED
         token.positions.push_coord(square.coord)
@@ -301,7 +301,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that the token is not certified safe.
+        # Handle the case that the occupant is not certified safe.
         team_validation = team_service.validator.validate(candidate=team)
         if team_validation.is_failure:
             # Return the exception chain on failure.
@@ -356,7 +356,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that no token opens with the square
+        # Handle the case that no occupant opens with the square
         if search_result.is_empty:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -372,7 +372,7 @@ class SquareService(EntityService[Square]):
             )
         token = cast(Token, search_result.payload[0])
         
-        # Handle the case that the token has been already placed on the board.
+        # Handle the case that the occupant has been already placed on the board.
         if token.board_state != TokenBoardState.NEVER_BEEN_PLACED:
             # Return the exception chain on failure.
             return InsertionResult.failure(

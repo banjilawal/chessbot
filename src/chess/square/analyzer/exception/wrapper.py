@@ -21,7 +21,7 @@ class SquareTokenAnalysisFailedException(AnalysisFailedException):
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
     # RESPONSIBILITIES:
-    1.  Wrap any exception that kills the relation test process before the square-token relationship
+    1.  Wrap any exception that kills the relation test process before the square-occupant relationship
         status has been evaluated.
 
     # PARENT:

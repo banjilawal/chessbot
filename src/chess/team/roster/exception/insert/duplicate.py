@@ -21,7 +21,7 @@ class TokenAlreadyOnTeamRosterException(TeamRosterException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that adding a roster member failed because the token was already present.
+    1.  Indicate that adding a roster member failed because the occupant was already present.
 
     # PARENT:
         *   TeamRosterException
@@ -36,4 +36,4 @@ class TokenAlreadyOnTeamRosterException(TeamRosterException):
     None
     """
     ERROR_CODE = "TOKEN_ALREADY_ON_ROSTER_ERROR"
-    DEFAULT_MESSAGE = "Adding roster member failed: The token was already on the roster."
+    DEFAULT_MESSAGE = "Adding roster member failed: The occupant was already on the roster."

@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/search/wrapper.py
+# src/chess/occupant/service/data/exception/search/wrapper.py
 
 """
-Module: chess.token.service.data.exception.search.wrapper
+Module: chess.occupant.service.data.exception.search.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -22,7 +22,7 @@ class UniqueTokenSearchFailedException(TokenException, SearchFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why inserting a unique token failed. The encapsulated exceptions create 
+    1.  Wrap debug exceptions that indicate why inserting a unique occupant failed. The encapsulated exceptions create
         chain for tracing the source of the failure.
 
     # PARENT:
@@ -39,4 +39,4 @@ class UniqueTokenSearchFailedException(TokenException, SearchFailedException):
     None
     """
     ERROR_CODE = "UNIQUE_TOKEN_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Unique token search failed."
+    DEFAULT_MESSAGE = "Unique occupant search failed."

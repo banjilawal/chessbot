@@ -185,7 +185,7 @@ class Attack:
                     )
                 )
             )
-        # Handle the case that no square matching the token's coords is found.
+        # Handle the case that no square matching the occupant's coords is found.
         if square_search.is_empty:
             # Return exception chain on failure.
             return RelationReport.failure(

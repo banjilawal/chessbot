@@ -22,7 +22,7 @@ class DeletingActiveTokenExceptionTeam(TeamRosterException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a token cannot be removed from the roster because it has not been captured.
+    1.  Indicate that a occupant cannot be removed from the roster because it has not been captured.
 
     # PARENT:
         *   TeamRosterException
@@ -37,4 +37,4 @@ class DeletingActiveTokenExceptionTeam(TeamRosterException):
     None
     """
     ERROR_CODE = "DELETING_ACTIVE_TOKEN_FROM_ROSTER_ERROR"
-    DEFAULT_MESSAGE = "Roster member deletion failed: An active token cannot be removed from roster."
+    DEFAULT_MESSAGE = "Roster member deletion failed: An active occupant cannot be removed from roster."

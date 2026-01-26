@@ -22,7 +22,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
     # ROLE: Reporting, Test for Relationship
 
     # RESPONSIBILITIES:
-    1.  Test what type of relationship a token and square have then issue a report of its analysis.
+    1.  Test what type of relationship a occupant and square have then issue a report of its analysis.
     2.  If the testing was not completed send an exception chain to the caller.
 
     # PARENT:
@@ -97,7 +97,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
                     ex=token_validation.exception
                 )
             )
-        # --- Declare local square and token variables for additional testing. ---#
+        # --- Declare local square and occupant variables for additional testing. ---#
         token = cast(Token, token_validation.payload)
         square = cast(Square, square_validation.payload)
         
@@ -131,7 +131,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
                 relation, send Null back to the caller.
         # PARAMETERS:
             *   square (Square)
-            *   token (Token)
+            *   occupant (Token)
         # RETURN:
             *   None or RelationTest[Square, Token].
         # RAISES:
@@ -163,7 +163,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
     ) -> RelationReport[Square, Token]:
         """
         # ACTION:
-            1.  If there is a predicate matching the conditions of the square and token return
+            1.  If there is a predicate matching the conditions of the square and occupant return
                 a RelationReport with that analysis. Else return an exception in the RelationReport.
         # PARAMETERS:
             *   square (Square)
@@ -219,7 +219,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
     ) -> RelationReport[Square, Token]:
         """
         # ACTION:
-            1.  If there is a predicate matching the conditions of the square and token return
+            1.  If there is a predicate matching the conditions of the square and occupant return
                 a RelationReport with that analysis. Else return an exception in the RelationReport.
         # PARAMETERS:
             *   square (Square)

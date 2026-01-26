@@ -1,7 +1,7 @@
-# src/chess/board/service/exception/insertion/token/owner.py
+# src/chess/board/service/exception/insertion/occupant/owner.py
 
 """
-Module: chess.board.service.exception.insertion.token.owner
+Module: chess.board.service.exception.insertion.occupant.owner
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -22,7 +22,7 @@ class TokenOnDifferentBoardException(BoardException, TokenException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that inserting a BoardToken failed because the token belonged to a  different board.
+    1.  Indicate that inserting a BoardToken failed because the occupant belonged to a  different board.
 
     # PARENT:
         *   BoardException

@@ -1,7 +1,7 @@
-# src/chess/token/context/validator/exception/debug/route.py
+# src/chess/occupant/context/validator/exception/debug/route.py
 
 """
-Module: chess.token.context.validator.exception.debug.route
+Module: chess.occupant.context.validator.exception.debug.route
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

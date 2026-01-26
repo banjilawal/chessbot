@@ -1,7 +1,7 @@
-# src/chess/token/validator/null/exception.py
+# src/chess/occupant/validator/null/exception.py
 
 """
-Module: chess.token.validator.null.exception
+Module: chess.occupant.validator.null.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

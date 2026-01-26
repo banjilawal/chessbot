@@ -1,7 +1,7 @@
-# src/chess/token/state/activity/king/king.py
+# src/chess/occupant/state/activity/king/king.py
 
 """
-Module: chess.token.state.activity.king.king
+Module: chess.occupant.state.activity.king.king
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

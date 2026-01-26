@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/deletion/empty.py
+# src/chess/occupant/service/data/exception/deletion/empty.py
 
 """
-Module: chess.token.service.data.exception.deletion.empty
+Module: chess.occupant.service.data.exception.deletion.empty
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -21,7 +21,7 @@ class PoppingEmptyTokenStackException(TokenDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove a token failed because the TokenDataService was not managing any tokens.
+    1.  Indicate that an attempt to remove a occupant failed because the TokenDataService was not managing any tokens.
 
     # PARENT:
         *   TeamDaaServiceException

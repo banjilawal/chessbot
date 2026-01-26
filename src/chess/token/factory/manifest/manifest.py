@@ -1,7 +1,7 @@
-# src/chess/token/factory/param/param.py
+# src/chess/occupant/factory/param/param.py
 
 """
-Module: chess.token.factory.param.param
+Module: chess.occupant.factory.param.param
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

@@ -96,7 +96,7 @@ class HostageService:
                     ex=search_result.exception
                 )
             )
-        # Handle the case that the token is already present.
+        # Handle the case that the occupant is already present.
         if search_result.is_success:
             # Return exception chain on failure.
             return InsertionResult.failure(

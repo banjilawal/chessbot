@@ -65,7 +65,7 @@ class Queen(Rank):
             2.  If Queen.perpendicular_span fails send an exception chain in the Computation result.
             3.  Make a set of unique points of the perpendicular spans and send it in the ComputationResult.
         # PARAMETERS:
-            *   token (Token)
+            *   occupant (Token)
         # RETURNS:
             *   ComputationResult[List[Coord]]:
                     - On failure: An exception.

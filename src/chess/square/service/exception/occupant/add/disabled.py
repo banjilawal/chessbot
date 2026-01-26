@@ -21,7 +21,7 @@ class DisabledTokenOccupyingSquareException(SquareDebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that a square occupation attempt failed because the token was disabled.
+    1.  Indicate that a square occupation attempt failed because the occupant was disabled.
 
     # PARENT:
         *   SquareDebugException
@@ -36,4 +36,4 @@ class DisabledTokenOccupyingSquareException(SquareDebugException):
     None
     """
     ERROR_CODE = "DISABLED_TOKEN_OCCUPYING_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Token entering a square failed: A disabled token cannot occupy a square."
+    DEFAULT_MESSAGE = "Token entering a square failed: A disabled occupant cannot occupy a square."

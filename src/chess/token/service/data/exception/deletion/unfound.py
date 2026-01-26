@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/deletion/unfound.py
+# src/chess/occupant/service/data/exception/deletion/unfound.py
 
 """
-Module: chess.token.service.data.exception.deletion.unfound
+Module: chess.occupant.service.data.exception.deletion.unfound
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -21,7 +21,7 @@ class TokenDoesNotExistForRemovalException(TokenDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove instances of a token by a unique attribute failed because no items
+    1.  Indicate that an attempt to remove instances of a occupant by a unique attribute failed because no items
         matching the property were found in the dataset.
 
     # PARENT:
@@ -37,4 +37,4 @@ class TokenDoesNotExistForRemovalException(TokenDataServiceException):
     None
     """
     ERROR_CODE = "TOKEN_DOES_NOT_EXIST_FOR_REMOVAL_ERROR"
-    DEFAULT_MESSAGE = "Token deletion failed: The token was not found in the dataset. Nothing to remove."
+    DEFAULT_MESSAGE = "Token deletion failed: The occupant was not found in the dataset. Nothing to remove."

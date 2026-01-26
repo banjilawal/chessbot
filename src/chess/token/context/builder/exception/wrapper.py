@@ -1,7 +1,7 @@
-# src/chess/token/_context/builder/exception/wrapper.py
+# src/chess/occupant/_context/builder/exception/wrapper.py
 
 """
-Module: chess.token.context.builder.exception.wrapper
+Module: chess.occupant.context.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

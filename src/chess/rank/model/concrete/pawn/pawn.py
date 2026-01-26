@@ -77,8 +77,8 @@ class Pawn(Rank):
         """
         method = "Pawn.spanning_set_dictionary"
         #
-        # # Handle the case that the token is either neither safe nor actionable.
-        # actionable_token_verification_result = token_service.verify_token_is_actionable(token=token)
+        # # Handle the case that the occupant is either neither safe nor actionable.
+        # actionable_token_verification_result = token_service.verify_token_is_actionable(occupant=occupant)
         # if actionable_token_verification_result.is_failure:
         #     # Return the exception chain on failure.
         #     return ComputationResult.failure(
@@ -87,7 +87,7 @@ class Pawn(Rank):
         #             ex=actionable_token_verification_result.exception
         #         )
         #     )
-        # Handle the case that the token is not a Pawn
+        # Handle the case that the occupant is not a Pawn
         if not isinstance(token, PawnToken):
             return ComputationResult.failure(
                 PawnSpanComputationFailedException(
