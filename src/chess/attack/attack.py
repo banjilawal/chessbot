@@ -12,7 +12,7 @@ from typing import cast
 
 from chess.attack import (
     AttackFailedException, AttackResult, AttackerSquareInconsistencyException, AttackerSquareNotFoundException,
-    AttackingEnemyKingException,
+    AttackingDisabledEnemyException, AttackingEnemyKingException,
     AttackingFriendlySquareException,
     AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
@@ -20,7 +20,7 @@ from chess.hostage import HostageDatabaseService
 from chess.square import Square, SquareContext, SquareDatabase
 from chess.system import LoggingLevelRouter
 from chess.system.relation import RelationReport
-from chess.token import CombatantActivityState, KingToken, Token, TokenService
+from chess.token import CombatantActivityState, CombatantReadinessEnum, CombatantToken, KingToken, Token, TokenService
 
 
 class Attack:
@@ -48,7 +48,7 @@ class Attack:
                 )
             )
         # Handle the case the square is not certified as safe.
-        square_validation = square_service.validator.validate(candidate=square)
+        square_validation = square_database.integrity_service.validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -98,13 +98,13 @@ class Attack:
                 )
             )
         # Handle the case that the enemy combatant, occupying the square, is already disabled.
-        if isinstance(square.occupant, KingToken):
+        if square.occupant.is_disabled:
             # Return the exception chain on failure.
             return AttackResult.failure(
                 AttackFailedException(
                     message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackingEnemyKingException(
-                        f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}"
+                    ex=AttackingDisabledEnemyException(
+                        f"{method}: {AttackingDisabledEnemyException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -112,7 +112,7 @@ class Attack:
         return cls._process_attack(
             attacker=attacker,
             square=square,
-            square_serivce=square_service,
+            square_database=square_database,
             hostage_database_service=hostage_database_service,
         )
         
@@ -131,8 +131,36 @@ class Attack:
         """"""
         method = "Attack._process_attack"
         
-        # Remove the the captive from their square.
-        captive_removal_result = square_service
+        # Handle the case that removing the captive from their square fails.
+        captive_removal = square_database.delete_occupant_by_search(square.occupant)
+        if captive_removal.is_failure:
+            # Return exception chain on failure.
+            return RelationReport.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=captive_removal.exception
+                )
+            )
+        # Update the hostage's captor field and its status.
+        captive = cast(CombatantToken, captive_removal.payload.captor)
+        captive.captor = attacker
+        captive.activity.classification = CombatantReadinessEnum.CAPTURE_ACTIVATED
+        
+        # Handle the case that removing the attacker from their old square fails.
+        attacker_removal = square_database.delete_occupant_by_search(occupant=attacker)
+        if attacker_removal.is_failure:
+            # Return exception chain on failure.
+            return RelationReport.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=attacker_removal.exception
+                )
+            )
+        
+        # Transfer the attacker to the square the captured.
+        square_database_add_
+        
+        
         
         # Set the square's captor.
         square.occupant.captor = attacker

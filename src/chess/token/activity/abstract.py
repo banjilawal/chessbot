@@ -13,17 +13,16 @@ from enum import Enum
 
 
 class ActivityState(ABC):
-    _state: Enum
+    _classification: Enum
     
-    def __init__(self, state: Enum):
-        self._state = state
+    def __init__(self, classification: Enum):
+        self._classification = classification
     
     @property
-    def state(self) -> Enum:
-        pass
+    def classification(self) -> Enum:
+        return self._classification
     
-    @state.setter
-    def state(self, state: Enum):
-        pass
-    
+    @classification.setter
+    def classification(self, classification: Enum):
+        self._classification = classification
     

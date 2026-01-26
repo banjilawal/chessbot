@@ -8,15 +8,11 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from abc import ABC
-from enum import Enum
 
-from chess.token import ActivityState
-from chess.token.activity.combatant.state import CombatantReadiness
+from chess.token import ActivityState, CombatantReadinessEnum
 
 
-class CombatantActivityState(ActivityState, ABC):
-    _state: Enum
+class CombatantActivityState(ActivityState[CombatantReadinessEnum]):
     
-    def __init__(self, state: CombatantReadiness):
-        super().__init__(state=state)
+    def __init__(self, classification: CombatantReadinessEnum):
+        super().__init__(classification=classification)

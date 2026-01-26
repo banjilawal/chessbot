@@ -7,21 +7,23 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, cast
 
 from chess.square import (
-    AddingDuplicateSquareException, DeleteTokenBySearchFailedException, Square, SquareContext,
+    AddingDuplicateSquareException, AddingSquareOccupantFailedException, DeleteTokenBySearchFailedException, Square,
+    SquareContext,
     SquareContextService,
     SquareDataService, SquareService, SquareServiceCapacityException, SquareDatabaseException,
     UniqueSquareInsertionFailedException,
     UniqueSquareSearchFailedException
 )
+from chess.square.state import SquareState
 from chess.system import (
     NUMBER_OF_COLUMNS, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult,
     DatabaseService,
     id_emitter
 )
-from chess.token import Token
+from chess.token import Token, TokenService
 
 
 class SquareDatabase(DatabaseService[Square]):
@@ -93,6 +95,76 @@ class SquareDatabase(DatabaseService[Square]):
         return self._square_data_service.is_empty
     
     @LoggingLevelRouter.monitor
+    def add_occupant_to_square(
+            self,
+            square: Square,
+            token: Token,
+            token_service: TokenService = TokenService()
+    ) -> InsertionResult:
+        method = "SquareDatabase.add_occupant_to_square"
+        
+        # Handle the case that the is not active
+        actionable_token_validation = token_service.verify_access_token(token)
+        if actionable_token_validation.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareDatabaseException(
+                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=actionable_token_validation.exception
+                    )
+                )
+            )
+        
+        # Handle the case that the square is not certified safe.
+        square_validation = self.integrity_service.validator.validate(square)
+        if square_validation.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareDatabaseException(
+                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=square_validation.exception
+                    )
+                )
+            )
+        # Handle the case that the square is not in the database
+        square_search_result = self._square_data_service.square_context_service.finder.find(
+            context=SquareContext(id=square.id)
+        )
+        if square_search_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareDatabaseException(
+                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=square_search_result.exception
+                    )
+                )
+            )
+        # Handle the case that the square does not exist in the database
+        if square_search_result.is_empty:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareDatabaseException(
+                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=SquareToOccupyDoesNotFoundException(
+                            f"{method}: {SquareToOccupyDoesNotFoundException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
+        
+        square.occupant = token
+        square.state = SquareState.OCCUPIED
+        return InsertionResult.success()
+    
+    @LoggingLevelRouter.monitor
     def delete_occupant_by_search(self, occupant: Token) -> DeletionResult[Token]:
         """
         
@@ -117,7 +189,7 @@ class SquareDatabase(DatabaseService[Square]):
             return DeletionResult.nothing_to_delete()
         
         for square in search_result.payload:
-            deletion_result = self.integrity_service.remove_occupant_from_square(square)
+            deletion_result = self.integrity_service.remove_occupant(square)
             
             # Handle the case that removing the occupant does not succeed.
             if deletion_result.is_failure:

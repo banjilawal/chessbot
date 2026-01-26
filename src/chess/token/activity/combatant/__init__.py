@@ -14,3 +14,4 @@ None
 
 # Modules
 from .combatant import CombatantActivityState
+from .classification import CombatantReadinessEnum

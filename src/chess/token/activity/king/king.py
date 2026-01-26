@@ -15,7 +15,7 @@ from chess.token.activity import ActivityState
 
 
 class KingActivityState(ActivityState, ABC):
-    _state: Enum
+    _classification: Enum
     
     def __init__(self, state: KingReadiness):
         super().__init__(state=state)

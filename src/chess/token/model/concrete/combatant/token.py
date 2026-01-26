@@ -53,14 +53,14 @@ class CombatantToken(Token):
             activity=activity,
         )
         self._captor = None
-        self.activity.state = CombatantReadiness.NOT_INITIALIZED
+        self.activity.state = CombatantActivityState
     
     @property
     def is_active(self) -> bool:
         return (
                 self._captor is None and
                 self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self.activity.state == CombatantReadiness.FREE
+                self.activity.classification == CombatantReadiness.FREE
         )
     
     @property
@@ -72,7 +72,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self._activity == CombatantReadiness.CAPTURE_ACTIVATED
+                self.activity.classification == CombatantReadiness.CAPTURE_ACTIVATED
         )
     
     @property
@@ -80,7 +80,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self._activity == CombatantReadiness.ISSUED_HOSTAGE_MANIFEST
+                self.activity.classification == CombatantReadiness.ISSUED_HOSTAGE_MANIFEST
         )
     
     @property

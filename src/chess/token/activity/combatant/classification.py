@@ -1,7 +1,7 @@
-# src/chess/occupant/model/concrete/combatant/state.py
+# src/chess/occupant/model/concrete/combatant/classification.py
 
 """
-Module: chess.occupant.model.concrete.combatant.state
+Module: chess.occupant.model.concrete.combatant.classification
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from enum import Enum, auto
 
-class CombatantReadiness(Enum):
+class CombatantReadinessEnum(Enum):
     FREE = auto(),
     CAPTURE_ACTIVATED = auto(),
     ISSUED_HOSTAGE_MANIFEST = auto(),
