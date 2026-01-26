@@ -1,13 +1,13 @@
 # src/chess/square/database/core/exception/__init__.py
 
 """
-Module: chess.square.database.core.core.exception.__init__
+Module: chess.square.database.core.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== SQUARE.SERVICE.DATA.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SQUARE.DATABASE.CORE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .deletion import *

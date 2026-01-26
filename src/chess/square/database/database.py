@@ -13,7 +13,7 @@ from chess.square import (
     AddingDuplicateSquareException, AddingSquareOccupantFailedException, DeleteTokenBySearchFailedException, Square,
     SquareContext,
     SquareContextService,
-    SquareDataService, SquareService, SquareServiceCapacityException, SquareDatabaseException,
+    SquareDataService, SquareService, SquareDataServiceCapacityException, SquareDatabaseException,
     UniqueSquareInsertionFailedException,
     UniqueSquareSearchFailedException
 )
@@ -167,7 +167,6 @@ class SquareDatabase(DatabaseService[Square]):
     @LoggingLevelRouter.monitor
     def delete_occupant_by_search(self, occupant: Token) -> DeletionResult[Token]:
         """
-        
         """
         method = "SquareService.empty_square_by_token_search"
         
@@ -237,8 +236,8 @@ class SquareDatabase(DatabaseService[Square]):
                     message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=UniqueSquareInsertionFailedException(
                         message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
-                        ex=SquareServiceCapacityException(
-                            f"{method}: {SquareServiceCapacityException.DEFAULT_MESSAGE}"
+                        ex=SquareDataServiceCapacityException(
+                            f"{method}: {SquareDataServiceCapacityException.DEFAULT_MESSAGE}"
                         )
                     )
                 )

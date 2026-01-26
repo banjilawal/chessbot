@@ -1,7 +1,7 @@
 # src/chess/square/database/core/exception/deletion/unfound.py
 
 """
-Module: chess.square.database.core.core.exception.deletion.unfound
+Module: chess.square.database.core.exception.deletion.unfound
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

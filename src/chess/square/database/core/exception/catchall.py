@@ -1,7 +1,7 @@
 # src/chess/square/database/core/catchall.py
 
 """
-Module: chess.square.database.core.core.catchall
+Module: chess.square.database.core.catchall
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

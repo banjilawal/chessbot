@@ -1,23 +1,23 @@
 # src/chess/square/database/core/exception/insertion/full.py
 
 """
-Module: chess.square.database.core.core.exception.insertion.full
+Module: chess.square.database.core.exception.insertion.full
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# SQUARE_SERVICE_CAPACITY EXCEPTION #======================#
-    "SquareServiceCapacityException",
+    # ======================# SQUARE_DATA_SERVICE EXCEPTION #======================#
+    "SquareDataServiceCapacityException",
 ]
 
 from chess.system import DebugException
 from chess.square import SquareServiceException
 
 
-# ======================# SQUARE_SERVICE_CAPACITY EXCEPTION #======================#
-class SquareServiceCapacityException(SquareServiceException, DebugException):
+# ======================# SQUARE_DATA_SERVICE EXCEPTION #======================#
+class SquareDataServiceCapacityException(SquareServiceException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -38,5 +38,5 @@ class SquareServiceCapacityException(SquareServiceException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_SERVICE_CAPACITY_ERROR"
+    ERROR_CODE = "SQUARE_DATA_SERVICE_ERROR"
     DEFAULT_MESSAGE = "Adding a square to the service failed: The number of squares managed is at full capacity."

@@ -1,7 +1,7 @@
 # src/chess/square/database/core/exception/search/wrapper.py
 
 """
-Module: chess.square.database.core.core.exception.search.wrapper
+Module: chess.square.database.core.exception.search.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

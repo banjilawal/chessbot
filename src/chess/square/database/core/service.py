@@ -1,7 +1,7 @@
 # src/chess/square/database/core/service_.py
 
 """
-Module: chess.square.database.core.core.service
+Module: chess.square.database.core.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -16,7 +16,7 @@ from chess.system import (
 from chess.square import (
     AppendingSquareDirectlyIntoItemsFailedException, PoppingEmptySquareStackException, Square, SquareContext,
     SquareDataServiceException, SquareDoesNotExistForRemovalException, SquareService, SquareContextService,
-    SquareDeletionFailedException, SquareInsertionFailedException, SquareServiceCapacityException
+    SquareDeletionFailedException, SquareInsertionFailedException, SquareDataServiceCapacityException
 )
 
 class SquareDataService(DataService[Square]):
@@ -124,8 +124,8 @@ class SquareDataService(DataService[Square]):
                     message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
-                        ex=SquareServiceCapacityException(
-                            f"{method}: {SquareServiceCapacityException.DEFAULT_MESSAGE}")
+                        ex=SquareDataServiceCapacityException(
+                            f"{method}: {SquareDataServiceCapacityException.DEFAULT_MESSAGE}")
                     )
                 )
             )

@@ -1,7 +1,7 @@
 # src/chess/square/database/core/exception/insertion/direct.py
 
 """
-Module: chess.square.database.core.core.exception.insertion.direct
+Module: chess.square.database.core.exception.insertion.direct
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

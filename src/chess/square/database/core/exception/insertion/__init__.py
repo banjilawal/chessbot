@@ -1,19 +1,18 @@
 # src/chess/square/database/core/exception/insertion/__init__.py
 
 """
-Module: chess.square.database.core.core.exception.insertion.__init__
+Module: chess.square.database.core.exception.insertion.__init__
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== SQUARE.SERVICE.DATA.EXCEPTION.INSERTION PACKAGE CONTENTS ===========#
+# =========== SQUARE.DATABASE.CORE.EXCEPTION.INSERTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .collision import *
 
 # Modules
-from .full import SquareServiceCapacityException
-from .coord import SquareCoordCollisionException
+from .full import SquareDataServiceCapacityException
 from .wrapper import SquareInsertionFailedException
 from .direct import AppendingSquareDirectlyIntoItemsFailedException
