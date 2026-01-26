@@ -19,7 +19,7 @@ from chess.system import (
 )
 from chess.square import (
     AddingFormationToSquareFailedException, AddingSquareOccupantFailedException, DisabledTokenOccupyingSquareException,
-    Square, SquareBuilder,
+    NothingToRemoveFromEmptySquareException, RemovingSquareOccupantFailedException, Square, SquareBuilder,
     SquareServiceException,
     SquareTokenRelationAnalyzer, SquareValidator, TokenEnteringSquareOnWrongBoardException,
     TokenEnteringWrongOpeningSquareException
@@ -114,7 +114,18 @@ class SquareService(EntityService[Square]):
             )
         # Handle the case that the square is empty.
         if square.is_empty:
-            return DeletionResult.nothing_to_delete()
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=RemovingSquareOccupantFailedException(
+                        message=f"{method}: {RemovingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=NothingToRemoveFromEmptySquareException(
+                            f"{method}: {NothingToRemoveFromEmptySquareException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
         # Process removal if the square is occupied.
         token = square.occupant
         square.occupant = None

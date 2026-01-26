@@ -1,15 +1,15 @@
-# src/chess/team/roster/exception/insertion/wrapper.py
+# src/chess/square/service/exception/occupant/add/add.py
 
 """
-Module: chess.team.roster.exception.insertion.wrapper
+Module: chess.square.service.exception.occupant.add.add
 Author: Banji Lawal
-Created: 2025-10-06
+Created: 2025-11-19
 version: 1.0.0
 """
 
 from chess.square import SquareException
 from chess.system import InsertionFailedException
-from chess.team import TeamRosterException
+
 
 __all__ = [
     # ======================# ADDING_SQUARE_OCCUPANT_FAILURE #======================#

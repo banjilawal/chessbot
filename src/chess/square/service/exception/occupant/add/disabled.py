@@ -36,4 +36,4 @@ class DisabledTokenOccupyingSquareException(SquareDebugException):
     None
     """
     ERROR_CODE = "DISABLED_TOKEN_OCCUPYING_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Token entering a square failed: A dsiabled token cannot occupy a square."
+    DEFAULT_MESSAGE = "Token entering a square failed: A disabled token cannot occupy a square."
