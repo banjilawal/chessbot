@@ -96,6 +96,38 @@ class SquareService(EntityService[Square]):
         return self._square_token_relation_analyzer
     
     @LoggingLevelRouter.monitor
+    def empty_square_by_token_search(self, token: Token) -> DeletionResult[Token]:
+        method = "SquareService.empty_square_by_token_search"
+        
+        # Handle the case that the square is not certified safe.
+        validation = self.validator.validate(candidate=square)
+        if validation.is_failure:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=RemovingSquareOccupantFailedException(
+                        message=f"{method}: {RemovingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            )
+        # Handle the case that the square is empty.
+        if square.is_empty:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=RemovingSquareOccupantFailedException(
+                        message=f"{method}: {RemovingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=NothingToRemoveFromEmptySquareException(
+                            f"{method}: {NothingToRemoveFromEmptySquareException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
+    
+    @LoggingLevelRouter.monitor
     def remove_occupant_from_square(self, square: Square) -> DeletionResult[Token]:
         method = "SquareService.remove_occupant_from_square"
         

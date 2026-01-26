@@ -13,6 +13,7 @@ from chess.board import Board
 from chess.coord import Coord
 from chess.square import Square
 from chess.system import Context
+from chess.token import Token
 
 
 class SquareContext(Context[Square]):
@@ -38,17 +39,20 @@ class SquareContext(Context[Square]):
     """
     _board: Optional[Board]
     _coord: Optional[Coord]
+    _token: Optional[Token]
     
     def __init__(
             self,
             id: Optional[int],
             name: Optional[str],
             board: Optional[Board] = None,
-            coord: Optional[Coord] = None
+            coord: Optional[Coord] = None,
+            token: Optional[Token] = None,
     ):
         super().__init__(id=id, name=name)
         self._board = board
         self._coord = coord
+        self._token = token
         
     @property
     def board(self) -> Optional[Board]:
@@ -57,6 +61,10 @@ class SquareContext(Context[Square]):
     @property
     def coord(self) -> Optional[Coord]:
         return self._coord
+    
+    @property
+    def token(self) -> Optional[Token]:
+        return self._token
     
     def to_dict(self) -> dict:
         """
@@ -74,4 +82,5 @@ class SquareContext(Context[Square]):
             "name": self.name,
             "board": self._board,
             "coord": self._coord,
+            "token": self._token,
         }
