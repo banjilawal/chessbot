@@ -16,9 +16,8 @@ from .service import *
 from .analyzer import *
 from .validator import *
 from .occupation import *
-from .evacuation import *
+from .exception import *
 
 # Modules
 from .square import Square
-from .exception import SquareException
 

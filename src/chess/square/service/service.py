@@ -11,14 +11,18 @@ from __future__ import annotations
 from typing import cast
 
 from chess.square.service.exception.insertion import OccupiedSquareCannotRecieveFormationException
+from chess.square.service.exception.occupant.add.full import CannotEnterOccupiedSquareException
 from chess.square.state import SquareState
 from chess.system import (
     DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
     UpdateResult, id_emitter
 )
 from chess.square import (
-    AddingFormationToSquareFailedException, Square, SquareBuilder, SquareServiceException,
-    SquareTokenRelationAnalyzer, SquareValidator
+    AddingFormationToSquareFailedException, AddingSquareOccupantFailedException, DisabledTokenOccupyingSquareException,
+    Square, SquareBuilder,
+    SquareServiceException,
+    SquareTokenRelationAnalyzer, SquareValidator, TokenEnteringSquareOnWrongBoardException,
+    TokenEnteringWrongOpeningSquareException
 )
 from chess.team import FriendCannotCaptureFriendException, Team, TeamService
 from chess.token import (
@@ -147,7 +151,9 @@ class SquareService(EntityService[Square]):
                     message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
                     ex=AddingSquareOccupantFailedException(
                         message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
-                        ex=SquareIsFullException(f"{method}: {SquareIsFullException.DEFAULT_MESSAGE}")
+                        ex=CannotEnterOccupiedSquareException(
+                            f"{method}: {CannotEnterOccupiedSquareException.DEFAULT_MESSAGE}"
+                        )
                     )
                 )
             )
@@ -164,6 +170,20 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
+        # Handle the case that the token belongs to a different board
+        if token.team.board != square.board:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareServiceException(
+                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=TokenEnteringSquareOnWrongBoardException(
+                            f"{method}: {TokenEnteringSquareOnWrongBoardException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
         # Handle the case that the token is disabled
         if token.is_disabled:
             # Return the exception chain on failure.
@@ -172,8 +192,8 @@ class SquareService(EntityService[Square]):
                     message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
                     ex=AddingSquareOccupantFailedException(
                         message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
-                        ex=DisabledTokenCannotOccupySquareException(
-                            f"{method}: {DisabledTokenCannotOccupySquareException.DEFAULT_MESSAGE}"
+                        ex=DisabledTokenOccupyingSquareException(
+                            f"{method}: {DisabledTokenOccupyingSquareException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
@@ -199,8 +219,8 @@ class SquareService(EntityService[Square]):
                     message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
                     ex=AddingSquareOccupantFailedException(
                         message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
-                        ex=TokenHasWrongOpeningSquareException(
-                            f"{method}: {TokenHasWrongOpeningSquareException}"
+                        ex=TokenEnteringWrongOpeningSquareException(
+                            f"{method}: {TokenEnteringWrongOpeningSquareException.}"
                         )
                     )
                 )

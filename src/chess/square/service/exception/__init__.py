@@ -11,7 +11,8 @@ version: 1.0.0
 
 # Packages
 from .debug import *
-from .formation import *
+from .insertion import *
+from .occupant import *
 
 # Modules
 from .catchall import SquareServiceException

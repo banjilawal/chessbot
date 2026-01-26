@@ -37,5 +37,5 @@ class AttackDebugException(AttackException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "DEBUG_ERROR"
+    ERROR_CODE = "ATTACK_DEBUG_ERROR"
     DEFAULT_MESSAGE = "An attack debug error occurred."
