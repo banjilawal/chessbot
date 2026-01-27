@@ -17,7 +17,6 @@ class HostageManifest:
     _victor: Token
     _prisoner: CombatantToken
     _captured_square: Square
-    _victor_square: Square
     
     def __init__(
             self,
@@ -25,7 +24,6 @@ class HostageManifest:
             victor: Token,
             prisoner: CombatantToken,
             captured_square: Square,
-            victor_square: Square
     ):
         self._id = id
         self._victor = victor
@@ -47,9 +45,5 @@ class HostageManifest:
     @property
     def captured_square(self) -> Square:
         return self._captured_square
-    
-    @property
-    def victor_square(self) -> Square:
-        return self._victor_square
         
     

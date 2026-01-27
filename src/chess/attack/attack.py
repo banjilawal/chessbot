@@ -16,10 +16,11 @@ from chess.attack import (
     AttackingFriendlySquareException,
     AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
-from chess.hostage import HostageDatabaseService
+from chess.hostage import HostageService
 from chess.square import Square, SquareContext, SquareDatabase
 from chess.system import LoggingLevelRouter
 from chess.system.relation import RelationReport
+from chess.team import HostageService
 from chess.token import CombatantActivityState, CombatantReadinessEnum, CombatantToken, KingToken, Token, TokenService
 
 
@@ -33,7 +34,7 @@ class Attack:
             square: Square,
             token_service: TokenService = TokenService(),
             square_database: SquareDatabase = SquareDatabase(),
-            hostage_database_service: HostageDatabaseService = HostageDatabaseService(),
+            hostage_database_service: HostageService = HostageService(),
     ) -> AttackResult:
         method = "Attack.execute"
         
@@ -126,7 +127,7 @@ class Attack:
         attacker: Token,
         square: Square,
         square_database: SquareDatabase,
-        hostage_database_service: HostageDatabaseService,
+        hostage_service: HostageService = HostageService(),
     ) -> AttackResult:
         """"""
         method = "Attack._process_attack"
@@ -156,11 +157,19 @@ class Attack:
                     ex=attacker_removal.exception
                 )
             )
+        # Handle the case that the transferring the attacker to their conquered square fails.
+        add_occupant_result = square_database.add_occupant_to_square(square=square, occupant=attacker)
+        if add_occupant_result.is_failure:
+            # Return exception chain on failure.
+            return RelationReport.failure(
+                AttackFailedException(
+                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                    ex=attacker_removal.exception
+                )
+            )
         
-        # Transfer the attacker to the square the captured.
-        square_database_add_
-        
-        
+        # Build the hostage manifest
+        manifest_build_result = hostage_service.builder.build()
         
         # Set the square's captor.
         square.occupant.captor = attacker

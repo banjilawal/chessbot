@@ -9,6 +9,8 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from typing import cast
+
 from chess.token import ActivityState, CombatantReadinessEnum
 
 
