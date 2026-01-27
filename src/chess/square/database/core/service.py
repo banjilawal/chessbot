@@ -10,11 +10,15 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.system import (
-    NUMBER_OF_COLUMNS, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
-    id_emitter
+    NUMBER_OF_COLUMNS, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
+    NUMBER_OF_ROWS,
+    SearchResult, id_emitter
 )
 from chess.square import (
-    AppendingSquareDirectlyIntoItemsFailedException, PoppingEmptySquareStackException, Square, SquareContext,
+    AppendingSquareDirectlyIntoItemsFailedException, SquareNameAlreadyInUseException,
+    SquareCoordAlreadyInUseException,
+    SquareIdAlreadyInUseException,
+    PoppingEmptySquareStackException, Square, SquareContext,
     SquareDataServiceException, SquareDoesNotExistForRemovalException, SquareService, SquareContextService,
     SquareDeletionFailedException, SquareInsertionFailedException, SquareDataServiceCapacityException
 )
@@ -43,6 +47,7 @@ class SquareDataService(DataService[Square]):
     """
     SERVICE_NAME = "SquareDataService"
     _capacity: int
+    _dataset: List[Square]
     
     def __init__(
             self,
@@ -75,6 +80,7 @@ class SquareDataService(DataService[Square]):
             entity_service=service,
             context_service=context_service,
         )
+        self._dataset = items
         
     @property
     def capacity(self) -> int:
@@ -142,56 +148,26 @@ class SquareDataService(DataService[Square]):
                     )
                 )
             )
-        # --- Check if an item in the list shares the square's coord. ---#
-        search_result = self.square_context_service.finder.find(
-            dataset=self.items,
-            context=SquareContext(coord=square.coord)
-        )
-        # Handle the case that the search is not completed.
-        if search_result.is_failure:
+        # --- Check if any of the square's attributes are already in use. ---#
+        collision_detection = self._attribute_collision_detector(target=square)
+        if collision_detection.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
-                        ex=search_result.exception
-                    )
-                )
-            )
-        # Handle the case that a square in collection has the same coord.
-        if search_result.is_success:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
-                    ex=SquareInsertionFailedException(
-                        message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
-                        ex=SquareDoesNotExistForRemovalException(
-                            f"{method}: {SquareDoesNotExistForRemovalException.ERROR_CODE}"
-                        )
+                        ex=collision_detection.exception
                     )
                 )
             )
         # --- Square order is not required. Direct insertion into the dataset is simpler that a push. ---#
-        self.items.append(square)
+
         
-        # Handle the case that the square was not appended to the dataset.
-        if square not in self.items:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
-                    ex=SquareInsertionFailedException(
-                        message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
-                        ex=AppendingSquareDirectlyIntoItemsFailedException(
-                            f"{method}: {AppendingSquareDirectlyIntoItemsFailedException.ERROR_CODE}"
-                        )
-                    )
-                )
-            )
         # On success return the square in the InsertionResult
-        return InsertionResult.success(payload=square)
+        self.items.append(square)
+        self._dataset.append(square)
+        return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
     def delete_square_by_id(
@@ -267,4 +243,29 @@ class SquareDataService(DataService[Square]):
                 return DeletionResult.success(payload=square)
             
         # If none of the items had that id return an empty DeletionResult.
-        return DeletionResult.empty()
+        return DeletionResult.nothing_to_delete()
+    
+    
+    def _attribute_collision_detector(self, target) -> SearchResult[Square]:
+        method = "SquareDataService.attribute_collision_detector"
+        
+        for square in self._dataset:
+            if square.id == target.id:
+                return SearchResult.failure(
+                    SquareIdAlreadyInUseException(
+                        f"{method}: {SquareIdAlreadyInUseException.DEFAULT_MESSAGE}",
+                    )
+                )
+            if square.coord == target.coord:
+                return SearchResult.failure(
+                    SquareCoordAlreadyInUseException(
+                        f"{method}: {SquareCoordAlreadyInUseException.DEFAULT_MESSAGE}",
+                    )
+                )
+            if square.name.upper() == target.name.upper():
+                return SearchResult.failure(
+                    SquareNameAlreadyInUseException(
+                        f"{method}: {SquareNameAlreadyInUseException.DEFAULT_MESSAGE}",
+                    )
+                )
+        return SearchResult.empty()

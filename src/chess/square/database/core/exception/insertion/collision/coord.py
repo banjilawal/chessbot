@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# COORD_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-    "CoordAlreadyUsedInSquareDatasetException",
+    "SquareCoordAlreadyInUseException",
 ]
 
 from chess.square import SquareDataServiceException
 
 
 # ======================# COORD_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-class CoordAlreadyUsedInSquareDatasetException(SquareDataServiceException):
+class SquareCoordAlreadyInUseException(SquareDataServiceException):
     """
     # ROLE: Debug, Error Tracing
 

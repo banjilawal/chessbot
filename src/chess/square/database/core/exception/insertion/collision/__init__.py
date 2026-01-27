@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .id import IdAlreadyUsedInSquareDatasetException
-from .name import NameAlreadyUsedInSquareDatasetException
-from .coord import CoordAlreadyUsedInSquareDatasetException
+from .id import SquareIdAlreadyInUseException
+from .name import SquareNameAlreadyInUseException
+from .coord import SquareCoordAlreadyInUseException

@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# NAME_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-    "NameAlreadyUsedInSquareDatasetException",
+    "SquareNameAlreadyInUseException",
 ]
 
 from chess.square import SquareDataServiceException
 
 
 # ======================# NAME_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-class NameAlreadyUsedInSquareDatasetException(SquareDataServiceException):
+class SquareNameAlreadyInUseException(SquareDataServiceException):
     """
     # ROLE: Debug, Error Tracing
 

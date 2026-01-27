@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# ID_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-    "IdAlreadyUsedInSquareDatasetException",
+    "SquareIdAlreadyInUseException",
 ]
 
 from chess.square import SquareDataServiceException
 
 
 # ======================# ID_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-class IdAlreadyUsedInSquareDatasetException(SquareDataServiceException):
+class SquareIdAlreadyInUseException(SquareDataServiceException):
     """
     # ROLE: Debug, Error Tracing
 
