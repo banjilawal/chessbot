@@ -10,8 +10,9 @@ version: 1.0.0
 #=========== SQUARE.DATABASE PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
 from .core import *
+from .exception import *
+
 
 # Modules
 from .database import SquareDatabase

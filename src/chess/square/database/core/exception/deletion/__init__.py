@@ -15,4 +15,4 @@ None
 # Modules
 from .wrapper import SquareDeletionFailedException
 from .empty import PoppingEmptySquareStackException
-from .unfound import SquareDoesNotExistForRemovalException
+from .unfound import SquareToDeleteNotFoundException

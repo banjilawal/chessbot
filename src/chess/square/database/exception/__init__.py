@@ -11,8 +11,8 @@ version: 1.0.0
 
 # Packages
 from .search import *
-from .deletion import *
-from .insertion import *
+from .occupant import *
+from .square import *
 
 # Modules
 from .catchall import SquareDatabaseException

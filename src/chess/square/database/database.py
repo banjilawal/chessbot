@@ -14,7 +14,7 @@ from chess.square import (
     SquareContext,
     SquareContextService,
     SquareDataService, SquareService, SquareDataServiceCapacityException, SquareDatabaseException,
-    UniqueSquareInsertionFailedException,
+    SquareToOccupyNotFoundException, UniqueSquareInsertionFailedException,
     UniqueSquareSearchFailedException
 )
 from chess.square.state import SquareState
@@ -153,15 +153,25 @@ class SquareDatabase(DatabaseService[Square]):
                     message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=AddingSquareOccupantFailedException(
                         message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
-                        ex=SquareToOccupyDoesNotFoundException(
-                            f"{method}: {SquareToOccupyDoesNotFoundException.DEFAULT_MESSAGE}"
+                        ex=SquareToOccupyNotFoundException(
+                            f"{method}: {SquareToOccupyNotFoundException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
             )
-        
-        square.occupant = token
-        square.state = SquareState.OCCUPIED
+        # Handle the case that the occupation fails.
+        insertion_result = self.integrity_service.add_occupant_to_square(square, token)
+        if insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                SquareDatabaseException(
+                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
+                    ex=AddingSquareOccupantFailedException(
+                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                        ex=insertion_result.exception
+                    )
+                )
+            )
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor

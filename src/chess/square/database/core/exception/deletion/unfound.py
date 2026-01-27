@@ -10,15 +10,15 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# SQUARE_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
-    "SquareDoesNotExistForRemovalException",
+    # ======================# SQUARE_TO_DELETE_NOT_FOUND EXCEPTION #======================#
+    "SquareToDeleteNotFoundException",
 ]
 
-from chess.square import SquareException
+from chess.square import SquareDataServiceException
 
 
-# ======================# SQUARE_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
-class SquareDoesNotExistForRemovalException(SquareException):
+# ======================# SQUARE_TO_DELETE_NOT_FOUND EXCEPTION #======================#
+class SquareToDeleteNotFoundException(SquareDataServiceException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -27,7 +27,7 @@ class SquareDoesNotExistForRemovalException(SquareException):
         matching the property were found in the dataset.
 
     # PARENT:
-        *   SquareException
+        *   SquareDataServceException
 
     # PROVIDES:
     None
@@ -38,5 +38,5 @@ class SquareDoesNotExistForRemovalException(SquareException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_DOES_NOT_EXIST_FOR_REMOVAL_ERROR"
+    ERROR_CODE = "SQUARE_TO_DELETE_NOT_FOUND_ERROR"
     DEFAULT_MESSAGE = "Square deletion failed: The square was not found in the dataset. Nothing to remove."

@@ -19,7 +19,7 @@ from chess.square import (
     SquareCoordAlreadyInUseException,
     SquareIdAlreadyInUseException,
     PoppingEmptySquareStackException, Square, SquareContext,
-    SquareDataServiceException, SquareDoesNotExistForRemovalException, SquareService, SquareContextService,
+    SquareDataServiceException, SquareToDeleteNotFoundException, SquareService, SquareContextService,
     SquareDeletionFailedException, SquareInsertionFailedException, SquareDataServiceCapacityException
 )
 
@@ -81,6 +81,7 @@ class SquareDataService(DataService[Square]):
             context_service=context_service,
         )
         self._dataset = items
+        self._capacity = capacity
         
     @property
     def capacity(self) -> int:
@@ -88,11 +89,11 @@ class SquareDataService(DataService[Square]):
     
     @property
     def is_full(self) -> bool:
-        return len(self.items) >= self.capacity
+        return len(self._dataset) >= self.capacity
     
     @property
     def is_empty(self) -> bool:
-        return len(self.items) == 0
+        return len(self._dataset) == 0
     
     @property
     def square_service(self) -> SquareService:
@@ -240,6 +241,7 @@ class SquareDataService(DataService[Square]):
                 # --- Cast the item before removal and return the deleted square in the DeletionResult. ---#
                 square = cast(Square, item)
                 self.items.remove(square)
+                self._dataset.remove(square)
                 return DeletionResult.success(payload=square)
             
         # If none of the items had that id return an empty DeletionResult.
