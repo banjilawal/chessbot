@@ -1,7 +1,7 @@
-# src/chess/hostage/service/data/service_.py
+# src/chess/hostage/databse/coreservice_.py
 
 """
-Module: chess.hostage.service.data.service
+Module: chess.hostage.database.core.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

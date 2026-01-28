@@ -1,13 +1,13 @@
-# src/chess/hostage/service/data/unique/exception/insertion/duplicate.py
+# src/chess/hostage/database/exception/insertion/duplicate.py
 
 """
-Module: chess.hostage.service.data.unique.exception.insertion.duplicate
+Module: chess.hostage.database.exception.insertion.duplicate
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.hostage import HostageDatabaseService
+from chess.hostage import HostageDatabase
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_HOSTAGE_MANIFEST EXCEPTION #======================#
@@ -16,16 +16,16 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_HOSTAGE_MANIFEST EXCEPTION #======================#
-class AddingDuplicateHostageManifestException(HostageDatabaseService):
+class AddingDuplicateHostageManifestException(HostageDatabase):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to add a item to the HostageDatabaseService's dataset failed
+    1.  Indicate that an attempt to add a item to the HostageDatabase's dataset failed
         because it was already present.
 
     # PARENT:
-        *   HostageDatabaseService
+        *   HostageDatabase
 
     # PROVIDES:
     None

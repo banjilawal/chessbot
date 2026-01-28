@@ -1,7 +1,7 @@
-# src/chess/hostage/service/data/unique/service.py
+# src/chess/hostage/database/service.py
 
 """
-Module: chess.hostage.service.data.unique.service
+Module: chess.hostage.database.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -18,7 +18,7 @@ from chess.hostage import (
 from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
 
 
-class HostageDatabaseService(DatabaseService[HostageManifest]):
+class HostageDatabase(DatabaseService[HostageManifest]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -38,7 +38,7 @@ class HostageDatabaseService(DatabaseService[HostageManifest]):
     # INHERITED ATTRIBUTES:
         *   See DatabaseService class for inherited attributes.
     """
-    SERVICE_NAME = "HostageDatabaseService"
+    SERVICE_NAME = "HostageDatabase"
     _data_service: HostageManifestList
     
     def __init__(
@@ -94,11 +94,11 @@ class HostageDatabaseService(DatabaseService[HostageManifest]):
                     - On failure: An exception.
                     - On success: HostageManifest in payload.
         # RAISES:
-            *   HostageDatabaseService
+            *   HostageDatabase
             *   UniqueHostageManifestInsertionFailedException
-            *   HostageDatabaseService
+            *   HostageDatabase
         """
-        method = "HostageDatabaseService.add_unique_hostageManifest"
+        method = "HostageDatabase.add_unique_hostageManifest"
         
         # --- To assure uniqueness the member_service has to conduct a search. The hostageManifest should be validated first. ---#
         
@@ -107,8 +107,8 @@ class HostageDatabaseService(DatabaseService[HostageManifest]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                HostageDatabaseServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageDatabaseServiceException.ERROR_CODE}",
+                HostageDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERROR_CODE}",
                     ex=UniqueHostageManifestInsertionFailedException(
                         message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
                         ex=validation.exception
@@ -122,8 +122,8 @@ class HostageDatabaseService(DatabaseService[HostageManifest]):
         if search_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                HostageDatabaseServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageDatabaseServiceException.ERROR_CODE}",
+                HostageDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERROR_CODE}",
                     ex=UniqueHostageManifestInsertionFailedException(
                         message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
                         ex=search_result.exception
@@ -134,8 +134,8 @@ class HostageDatabaseService(DatabaseService[HostageManifest]):
         if search_result.is_success:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                HostageDatabaseServiceDatabaseServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageDatabaseService.ERROR_CODE}",
+                HostageDatabaseDatabaseServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageDatabase.ERROR_CODE}",
                     ex=UniqueHostageManifestInsertionFailedException(
                         message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
                         ex=AddingDuplicateHostageManifestException(
@@ -151,9 +151,9 @@ class HostageDatabaseService(DatabaseService[HostageManifest]):
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                HostageDatabaseService(
+                HostageDatabase(
                     message=(
-                        f"ServiceId:{self.id}, {method}: {HostageDatabaseService.ERROR_CODE}"
+                        f"ServiceId:{self.id}, {method}: {HostageDatabase.ERROR_CODE}"
                     ),
                     ex=UniqueHostageManifestInsertionFailedException(
                         message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
@@ -181,10 +181,10 @@ class HostageDatabaseService(DatabaseService[HostageManifest]):
                     - On success: HostageManifest in payload.
                     - On Empty: No payload nor exception.
         # RAISES:
-            *   HostageDatabaseService
+            *   HostageDatabase
             *   ExhaustiveHostageManifestDeletionFailedException
         """
-        method = "HostageDatabaseService.searchnanifests"
+        method = "HostageDatabase.searchnanifests"
         
         # --- Handoff the search responsibility to _hostageManifest_data_service. ---#
         search_result = self._data_service.context_service.finder.find(context=context)
@@ -193,8 +193,8 @@ class HostageDatabaseService(DatabaseService[HostageManifest]):
         if search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                HostageDatabaseService(
-                    message=f"ServiceID:{self.id} {method}: {HostageDatabaseService.ERROR_CODE}",
+                HostageDatabase(
+                    message=f"ServiceID:{self.id} {method}: {HostageDatabase.ERROR_CODE}",
                     ex=UniqueHostageManifestSearchFailedException(
                         message=f"{method}: {UniqueHostageManifestSearchFailedException.ERROR_CODE}",
                         ex=search_result.exception

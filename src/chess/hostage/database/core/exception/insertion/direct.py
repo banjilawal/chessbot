@@ -1,7 +1,7 @@
-# src/chess/hostage/service/data/exception/insertion/direct.py
+# src/chess/hostage/databse/coreexception/insertion/direct.py
 
 """
-Module: chess.hostage.service.data.exception.insertion.direct
+Module: chess.hostage.database.core.exception.insertion.direct
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/hostage/service/data/exception/search/wrapper.py
+# src/chess/hostage/databse/coreexception/search/wrapper.py
 
 """
-Module: chess.hostage.service.data.exception.search.wrapper
+Module: chess.hostage.database.core.exception.search.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

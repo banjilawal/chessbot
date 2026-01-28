@@ -1,13 +1,13 @@
-# src/chess/hostage/service/data/exception/__init__.py
+# src/chess/hostage/databse/coreexception/__init__.py
 
 """
-Module: chess.hostage.service.data.exception.__init__
+Module: chess.hostage.database.core.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== HOSTAGE.SERVICE.DATA.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== HOSTAGE.DATABASE.CORE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .search import *

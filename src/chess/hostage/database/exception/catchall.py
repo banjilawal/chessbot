@@ -1,7 +1,7 @@
-# src/chess/hostage/service/data/unique/exception/catchall.py
+# src/chess/hostage/database/exception/catchall.py
 
 """
-Module: chess.hostage.service.data.unique.exception.catchall
+Module: chess.hostage.database.exception.catchall
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 ___all__ = [
     # ======================# HOSTAGE_MANIFEST_DIRECTORY_SERVICE EXCEPTION #======================#
-    "HostageDatabaseService",
+    "HostageDatabase",
 ]
 
 from chess.hostage import HostageManifestException
@@ -17,14 +17,14 @@ from chess.system import UniqueDataServiceException
 
 
 # ======================# HOSTAGE_MANIFEST_DIRECTORY_SERVICE EXCEPTION #======================#
-class HostageDatabaseServiceException(HostageManifestException, UniqueDataServiceException):
+class HostageDatabaseException(HostageManifestException, UniqueDataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an HostageDatabaseService encountered an error which prevented the
+    1.  Indicate that an HostageDatabase encountered an error which prevented the
         service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a HostageDatabaseService method.
+    2.  Wrap an exception that hits the try-finally block of a HostageDatabase method.
 
     # PARENT:
         *   ServiceException
@@ -40,4 +40,4 @@ class HostageDatabaseServiceException(HostageManifestException, UniqueDataServic
     None
     """
     ERROR_CODE = "HOSTAGE_MANIFEST_DIRECTORY_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "HostageDatabaseService raised an exception."
+    DEFAULT_MESSAGE = "HostageDatabase raised an exception."

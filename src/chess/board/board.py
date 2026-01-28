@@ -9,7 +9,7 @@ version: 1.0.0
 
 from chess.arena import Arena
 from chess.square import SquareDatabase
-from chess.hostage import HostageDatabaseService
+from chess.hostage import HostageDatabase
 
 class Board:
     """
@@ -32,14 +32,14 @@ class Board:
     _id: int
     _arena: Arena
     __square_database: SquareDatabase
-    _hostage_manifest: HostageDatabaseService
+    _hostage_manifest: HostageDatabase
     
     def __init__(
             self,
             id: int,
             arena: Arena,
             _square_database: SquareDatabase = SquareDatabase(),
-            hostage_manifest: HostageDatabaseService = HostageDatabaseService(),
+            hostage_manifest: HostageDatabase = HostageDatabase(),
     ):
         """
         # ACTION:
@@ -70,7 +70,7 @@ class Board:
         return self._arena
     
     @property
-    def hostage_manifest(self) -> HostageDatabaseService:
+    def hostage_manifest(self) -> HostageDatabase:
         return self._hostage_manifest
     
     @property

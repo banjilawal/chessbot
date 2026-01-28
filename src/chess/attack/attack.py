@@ -169,7 +169,7 @@ class Attack:
             )
         
         # Build the hostage manifest
-        manifest_build_result = hostage_service.builder.build()
+        manifest_build_result = hostage_service.b
         
         # Set the square's captor.
         square.occupant.captor = attacker
