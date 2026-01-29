@@ -7,9 +7,14 @@ Created: 2025-07-31
 version: 1.0.0
 """
 
+from typing import Dict
+
 from chess.arena import Arena
 from chess.square import SquareDatabase
 from chess.hostage import HostageDatabase
+from chess.system import GameColor
+from chess.team import Team
+
 
 class Board:
     """
@@ -31,15 +36,17 @@ class Board:
     """
     _id: int
     _arena: Arena
-    __square_database: SquareDatabase
-    _hostage_manifest: HostageDatabase
+    _squares: SquareDatabase
+    _teams: Dict[GameColor: Team]
+    _hostage_database: HostageDatabase
     
     def __init__(
             self,
             id: int,
             arena: Arena,
-            _square_database: SquareDatabase = SquareDatabase(),
-            hostage_manifest: HostageDatabase = HostageDatabase(),
+            teams: Dict[GameColor, Team],
+            squares: SquareDatabase = SquareDatabase(),
+            hostage_database: HostageDatabase = HostageDatabase(),
     ):
         """
         # ACTION:
@@ -58,8 +65,9 @@ class Board:
         
         self._id = id
         self._arena = arena
+        self._teams = teams
         self._squares = squares
-        self._hostage_manifest = hostage_manifest
+        self._hostage_database = hostage_database
     
     @property
     def id(self) -> int:
@@ -70,12 +78,20 @@ class Board:
         return self._arena
     
     @property
-    def hostage_manifest(self) -> HostageDatabase:
-        return self._hostage_manifest
-    
-    @property
     def squares(self) -> SquareDatabase:
         return self._squares
+    
+    @property
+    def teams(self) -> Dict[GameColor, Team]:
+        return self._teams
+    
+    @property
+    def hostage_database(self) -> HostageDatabase:
+        return self._hostage_database
+
+        
+            
+
     
     def __eq__(self, other):
         if other is self: return True
