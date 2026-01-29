@@ -21,7 +21,7 @@ class TeamDeletionFailedException(DeletionFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why TeamDataService could not delete a team. The encapsulated 
+    1.  Wrap debug exceptions that indicate why TeamListService could not delete a team. The encapsulated
         exceptions create a chain for tracing the source of the failure.
 
     # PARENT:

@@ -14,4 +14,4 @@ from .unique import *
 from .exception import *
 
 # Modules
-from .service import DataService
+from .service import ListService

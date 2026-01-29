@@ -14,5 +14,5 @@ version: 1.0.0
 from .unique import *
 
 # Modules
-from .service import AgentDataService
+from .service import AgentListService
 from .exception import AgentDataServiceException

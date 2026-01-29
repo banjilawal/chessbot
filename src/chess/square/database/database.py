@@ -13,7 +13,7 @@ from chess.square import (
     AddingDuplicateSquareException, AddingSquareOccupantFailedException, DeleteTokenBySearchFailedException, Square,
     SquareContext,
     SquareContextService,
-    SquareDataService, SquareService, SquareDataServiceCapacityException, SquareDatabaseException,
+    SquareListService, SquareService, SquareDataServiceCapacityException, SquareDatabaseException,
     SquareToOccupyNotFoundException, UniqueSquareInsertionFailedException,
     UniqueSquareSearchFailedException
 )
@@ -31,8 +31,8 @@ class SquareDatabase(DatabaseService[Square]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by SquareDataService are unique.
-    2.  Guarantee consistency of records in SquareDataService.
+    1.  Ensure all items in managed by SquareListService are unique.
+    2.  Guarantee consistency of records in SquareListService.
 
     # PARENT:
         *   DatabaseService
@@ -47,13 +47,13 @@ class SquareDatabase(DatabaseService[Square]):
         *   See DatabaseService class for inherited attributes.
     """
     SERVICE_NAME = "SquareDatabase"
-    _square_data_service: SquareDataService
+    _square_data_service: SquareListService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: SquareDataService = SquareDataService(capacity=NUMBER_OF_ROWS * NUMBER_OF_COLUMNS),
+            data_service: SquareListService = SquareListService(capacity=NUMBER_OF_ROWS * NUMBER_OF_COLUMNS),
     ):
         """
         # ACTION:
@@ -61,7 +61,7 @@ class SquareDatabase(DatabaseService[Square]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (SquareDataService)
+            *   member_service (SquareListService)
         # RETURNS:
             None
         # RAISES:

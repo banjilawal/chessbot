@@ -22,7 +22,7 @@ class SquareDataServiceException(SquareException, DataServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by SquareDataService methods that return Result objects.
+    1.  Wrap any exceptions raised by SquareListService methods that return Result objects.
 
     # PARENT:
         *   SquareException
@@ -38,4 +38,4 @@ class SquareDataServiceException(SquareException, DataServiceException):
     None
     """
     ERROR_CODE = "SQUARE_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SquareDataService raised an exception."
+    DEFAULT_MESSAGE = "SquareListService raised an exception."

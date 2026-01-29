@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.arena import Arena
-from chess.system import DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.system import ListService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.board import (
     AppendingBoardDirectlyIntoItemsFailedException, ArenaAlreadyContainsBoardException, PoppingEmptyBoardStackException,
     Board, BoardContext,
@@ -19,7 +19,7 @@ from chess.board import (
 )
 
 
-class BoardDataService(DataService[Board]):
+class BoardListService(ListService[Board]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -30,7 +30,7 @@ class BoardDataService(DataService[Board]):
     4.  Stack data structure for Board objects with no guarantee of uniqueness.
 
     # PARENT:
-        *   DataService[Board]
+        *   ListService[Board]
 
     # PROVIDES:
     None
@@ -39,9 +39,9 @@ class BoardDataService(DataService[Board]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DataService class for inherited attributes.
+        *   See ListService class for inherited attributes.
     """
-    SERVICE_NAME = "BoardDataService"
+    SERVICE_NAME = "BoardListService"
     
     def __init__(
             self,
@@ -100,7 +100,7 @@ class BoardDataService(DataService[Board]):
         # RAISES:
             *   BoardDataServiceException
         """
-        method = "BoardDataService.add_board"
+        method = "BoardListService.add_board"
         
         # Handle the case that the board is unsafe.
         validation = self.board_service.validator.validate(candidate=board)
@@ -187,7 +187,7 @@ class BoardDataService(DataService[Board]):
         # RAISES:
             *   BoardDataServiceException
         """
-        method = "BoardDataService.delete_board_by_id"
+        method = "BoardListService.delete_board_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:

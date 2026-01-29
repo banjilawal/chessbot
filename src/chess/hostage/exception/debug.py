@@ -1,22 +1,22 @@
 __all__ = [
-    # ======================# ATTACK_DEBUG EXCEPTION #======================#
-    "AttackDebugException",
+    # ======================# HOSTAGE_MANIFEST_DEBUG EXCEPTION #======================#
+    "HostageManifestDebugException",
 ]
 
-from chess.attack import AttackException
+from chess.hostage import HostageManifestException
 from chess.system import DebugException
 
 
-# ======================# ATTACK_DEBUG EXCEPTION #======================#
-class AttackDebugException(AttackException, DebugException):
+# ======================# HOSTAGE_MANIFEST_DEBUG EXCEPTION #======================#
+class HostageManifestDebugException(HostageManifestException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused an Attack operation failure.
+    1.  Describes the condition that caused an HostageManifest operation failure.
 
     # PARENT:
-        *   AttackException
+        *   HostageManifestException
         *   DebugException
 
     # PROVIDES:
@@ -28,5 +28,5 @@ class AttackDebugException(AttackException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "ATTACK_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "An attack debug error occurred."
+    ERROR_CODE = "HOSTAGE_MANIFEST_DEBUG_ERROR"
+    DEFAULT_MESSAGE = "An hostageManifest debug error occurred."

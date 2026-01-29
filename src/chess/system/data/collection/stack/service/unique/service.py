@@ -11,7 +11,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from chess.system import (
-    AddingDuplicateDataException, DataService, InsertionResult, LoggingLevelRouter, UniqueDataServiceException
+    AddingDuplicateDataException, ListService, InsertionResult, LoggingLevelRouter, UniqueDataServiceException
 )
 
 T = TypeVar("T")
@@ -21,10 +21,10 @@ class DatabaseService(ABC, Generic[T]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Assures DataService only stores unique data with no duplicates.
-    2.  Interface for inserting data into the DataService.
+    1.  Assures ListService only stores unique data with no duplicates.
+    2.  Interface for inserting data into the ListService.
     3.  Protects data from direct access.
-    4.  Wrapper for DataService
+    4.  Wrapper for ListService
     5.  Public facing API.
     
     # PARENT:
@@ -37,16 +37,16 @@ class DatabaseService(ABC, Generic[T]):
     None
         *   id (int):
         *   name (str):
-        *   member_service (DataService[D]):
+        *   member_service (ListService[D]):
         
     # INHERITED ATTRIBUTES:
     None
     """
     _id: int
     _name: str
-    _data_service: DataService[T]
+    _data_service: ListService[T]
     
-    def __init__(self, id: int, name: str, data_service: DataService[T]):
+    def __init__(self, id: int, name: str, data_service: ListService[T]):
         self._id = id
         self._name =  name
         self._data_service = data_service
@@ -72,7 +72,7 @@ class DatabaseService(ABC, Generic[T]):
         return self._data_service.is_empty
     
     @property
-    def data_service(self) -> DataService[T]:
+    def data_service(self) -> ListService[T]:
         return self._data_service
     
     @LoggingLevelRouter.monitor

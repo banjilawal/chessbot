@@ -21,7 +21,7 @@ class PoppingEmtpyTeamStackException(TeamDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove a team failed because the TeamDataService was not managing any teams.
+    1.  Indicate that an attempt to remove a team failed because the TeamListService was not managing any teams.
 
     # PARENT:
         *   TeamDaaServiceException

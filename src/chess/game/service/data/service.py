@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import List, cast
 
 
-from chess.system import DataService, LoggingLevelRouter, id_emitter
+from chess.system import ListService, LoggingLevelRouter, id_emitter
 from chess.game import Game, GameContext, GameContextService, GameService
 
 
-class GameDataService(DataService[Game]):
+class GameListService(ListService[Game]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -28,18 +28,18 @@ class GameDataService(DataService[Game]):
     6.  Search utility.
     
     # PARENT:
-        *   DataService
+        *   ListService
 
     # PROVIDES:
-        *   GameDataService
+        *   GameListService
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DataService class for inherited attributes.
+        *   See ListService class for inherited attributes.
     """
-    DEFAULT_NAME = "GameDataService"
+    DEFAULT_NAME = "GameListService"
     
     def __init__(
             self,
@@ -100,7 +100,7 @@ class GameDataService(DataService[Game]):
     #
     # @LoggingLevelRouter.monitor
     # def push_item(self, item: Game) -> InsertionResult[Game]:
-    #     method = "GameDataService.push"
+    #     method = "GameListService.push"
     #     try:
     #         validation = self.data.item_validator.validate(item)
     #         if validation.is_failure():
@@ -115,7 +115,7 @@ class GameDataService(DataService[Game]):
     #
     # @LoggingLevelRouter.monitor
     # def search(self, map: GameContext) -> SearchResult[List[Game]]:
-    #     method = "GameDataService.finder"
+    #     method = "GameListService.finder"
     #     game_context_service = cast(GameContextService, self.context_service)
     #
     #     return self.context_service.finder.find(

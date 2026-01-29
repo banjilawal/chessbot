@@ -36,4 +36,4 @@ class PoppingEmptySquareStackException(SquareException):
     None
     """
     ERROR_CODE = "POPPING_EMPTY_SQUARE_STACK_ERROR"
-    DEFAULT_MESSAGE = "Square deletion failed: SquareDataService does not own any squares."
+    DEFAULT_MESSAGE = "Square deletion failed: SquareListService does not own any squares."

@@ -12,7 +12,7 @@ from typing import List, cast
 from chess.formation import FormationService
 from chess.rank import Rank, RankService
 from chess.system import (
-    ComputationResult, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+    ComputationResult, ListService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 )
 from chess.token import (
     AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException, Token, TokenContext, TokenService,
@@ -20,7 +20,7 @@ from chess.token import (
     TokenInsertionFailedException, RankCountCalculationFailedException, TokenServiceCapacityException,
 )
 
-class TokenDataService(DataService[Token]):
+class TokenListService(ListService[Token]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -31,7 +31,7 @@ class TokenDataService(DataService[Token]):
     4.  Stack data structure for Token objects with no guarantee of uniqueness.
     
     # PARENT:
-        *   DataService[Token]
+        *   ListService[Token]
 
     # PROVIDES:
     None
@@ -40,10 +40,10 @@ class TokenDataService(DataService[Token]):
     None
     
     # INHERITED ATTRIBUTES:
-        *   See DataService class for inherited attributes.
+        *   See ListService class for inherited attributes.
     """
     CAPACITY: int = 16
-    SERVICE_NAME: str = "TokenDataService"
+    SERVICE_NAME: str = "TokenListService"
     _formation_service: FormationService
     _capacity: int
     
@@ -123,7 +123,7 @@ class TokenDataService(DataService[Token]):
         # RAISES:
             *   TokenDataServiceException
         """
-        method = "TokenDataService.team_max_tokens_per_rank"
+        method = "TokenListService.team_max_tokens_per_rank"
         
         # --- Handoff the rank validation and quote lookup to self._formation_service ---#
         
@@ -158,7 +158,7 @@ class TokenDataService(DataService[Token]):
             *   TokenDataServiceException
             *   RankCountCalculationFailedException
         """
-        method = "TokenDataService.number_of_rank_members"
+        method = "TokenListService.number_of_rank_members"
         
         # --- First step in getting rank count is building search-by-rank context. ---#
         build_result = self.token_context_service.builder.build(rank=rank)
@@ -213,7 +213,7 @@ class TokenDataService(DataService[Token]):
         # RAISES:
             *   TokenDataServiceException
         """
-        method = "TokenDataService.add_token"
+        method = "TokenListService.add_token"
         
         # Handle the case that the list is full.
         if self.is_full:
@@ -281,7 +281,7 @@ class TokenDataService(DataService[Token]):
         # RAISES:
             *   TokenDataServiceException
         """
-        method = "TokenDataService.delete_token_by_id"
+        method = "TokenListService.delete_token_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
@@ -354,7 +354,7 @@ class TokenDataService(DataService[Token]):
             *   TokenDataServiceException
             *   RankCountCalculationFailedException
         """
-        method = "TokenDataService.has_slot_for_rank"
+        method = "TokenListService.has_slot_for_rank"
         
         # Handle the case that the rank is not certified safe.
         openings_count = self.count_rank_openings(rank)
@@ -392,7 +392,7 @@ class TokenDataService(DataService[Token]):
             *   TokenDataServiceException
             *   RankCountCalculationFailedException
         """
-        method = "TokenDataService.count_rank_openings"
+        method = "TokenListService.count_rank_openings"
         
         # Handle the case that the rank is not certified safe.
         rank_validation = rank_service.validator.validate(rank)

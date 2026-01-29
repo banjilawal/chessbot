@@ -22,7 +22,7 @@ class BoardDataServiceException(BoardException, DataServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by BoardDataService methods that return Result objects.
+    1.  Wrap any exceptions raised by BoardListService methods that return Result objects.
 
     # PARENT:
         *   BoardException
@@ -38,4 +38,4 @@ class BoardDataServiceException(BoardException, DataServiceException):
     None
     """
     ERROR_CODE = "BOARD_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "BoardDataService raised an exception."
+    DEFAULT_MESSAGE = "BoardListService raised an exception."

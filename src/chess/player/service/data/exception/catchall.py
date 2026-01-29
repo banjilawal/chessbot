@@ -25,8 +25,8 @@ class AgentDataServiceException(AgentException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an AgentDataService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a AgentDataService method.
+    1.  Indicate that an AgentListService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a AgentListService method.
 
     # PARENT:
         *   ServiceException
@@ -42,4 +42,4 @@ class AgentDataServiceException(AgentException, ServiceException):
     None
     """
     ERROR_CODE = "AGENT_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "AgentDataService raised an exception."
+    DEFAULT_MESSAGE = "AgentListService raised an exception."

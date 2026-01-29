@@ -12,7 +12,7 @@ from typing import List
 from chess.board import (
     AddingDuplicateBoardException, ExhaustiveBoardDeletionFailedException, Board, BoardContext,
     BoardContextService,
-    BoardDataService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionFailedException,
+    BoardListService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionFailedException,
     UniqueBoardSearchFailedException
 )
 from chess.system import (
@@ -25,8 +25,8 @@ class UniqueBoardDataService(DatabaseService[Board]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by BoardDataService are unique.
-    2.  Guarantee consistency of records in BoardDataService.
+    1.  Ensure all items in managed by BoardListService are unique.
+    2.  Guarantee consistency of records in BoardListService.
 
     # PARENT:
         *   DatabaseService
@@ -41,13 +41,13 @@ class UniqueBoardDataService(DatabaseService[Board]):
         *   See DatabaseService class for inherited attributes.
     """
     SERVICE_NAME = "UniqueBoardDataService"
-    _board_data_service: BoardDataService
+    _board_data_service: BoardListService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: BoardDataService = BoardDataService(),
+            data_service: BoardListService = BoardListService(),
     ):
         """
         # ACTION:
@@ -55,7 +55,7 @@ class UniqueBoardDataService(DatabaseService[Board]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (BoardDataService)
+            *   member_service (BoardListService)
         # RETURNS:
             None
         # RAISES:

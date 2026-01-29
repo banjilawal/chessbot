@@ -60,7 +60,7 @@ class TokenFactory(Builder[Token]):
             *   team (Team)
             *   rank_service (RankService)
             *   team_service (TeamService)
-            *   positions (CoordDataService)
+            *   positions (CoordListService)
             *   identity_service (IdentityService)
         # RETURNS:
             *   BuildResult[Position] containing either:

@@ -19,8 +19,8 @@ class UniqueAgentDataService(DatabaseService[PlayerAgent]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by AgentDataService are unique.
-    2.  Guarantee consistency of records in AgentDataService.
+    1.  Ensure all items in managed by AgentListService are unique.
+    2.  Guarantee consistency of records in AgentListService.
     
     # PARENT:
         *   DatabaseService
@@ -53,7 +53,7 @@ class UniqueAgentDataService(DatabaseService[PlayerAgent]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   member_service (AgentDataService): = AgentDataService()
+            *   member_service (AgentListService): = AgentListService()
 
         # RETURNS:
         None

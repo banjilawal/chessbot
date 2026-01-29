@@ -23,7 +23,7 @@ class DataServiceException(DatasetException, ServiceException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by DataServices.
-    2.  Wraps an exception that hits the try-finally block of a DataService method.
+    2.  Wraps an exception that hits the try-finally block of a ListService method.
 
     # PARENT:
         *   DatasetException
@@ -39,4 +39,4 @@ class DataServiceException(DatasetException, ServiceException):
     None
     """
     ERROR_CODE = "DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "DataService raised an exception."
+    DEFAULT_MESSAGE = "ListService raised an exception."

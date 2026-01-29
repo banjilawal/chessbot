@@ -13,8 +13,8 @@ class BoardDataServiceException(BoardException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an BoardDataService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a BoardDataService method.
+    1.  Indicate that an BoardListService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a BoardListService method.
 
     # PARENT:
         *   ServiceException
@@ -30,4 +30,4 @@ class BoardDataServiceException(BoardException, ServiceException):
     None
     """
     ERROR_CODE = "BOARD_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "BoardDataService raised an exception."
+    DEFAULT_MESSAGE = "BoardListService raised an exception."

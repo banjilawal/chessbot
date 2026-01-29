@@ -13,10 +13,10 @@ from chess.hostage import (
     AppendingHostageManifestDirectlyIntoItemsFailedException, CaptivityContextService, HostageManifest,
     HostageManifestDataListException, HostageManifestInsertionFailedException, HostageManifestService
 )
-from chess.system import DataService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.system import ListService, InsertionResult, LoggingLevelRouter, id_emitter
 
 
-class HostageManifestList(DataService[HostageManifest]):
+class HostageManifestList(ListService[HostageManifest]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -27,7 +27,7 @@ class HostageManifestList(DataService[HostageManifest]):
     4.  Stack data structure for HostageManifest objects with no guarantee of uniqueness.
 
     # PARENT:
-        *   DataService[HostageManifest]
+        *   ListService[HostageManifest]
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class HostageManifestList(DataService[HostageManifest]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DataService class for inherited attributes.
+        *   See ListService class for inherited attributes.
     """
     SERVICE_NAME = "HostageManifestList"
     

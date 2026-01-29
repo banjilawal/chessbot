@@ -24,7 +24,7 @@ class DatasetException(ChessException):
     
     # RESPONSIBILITIES:
     1.  Wrapper for data collection integrity problems.
-    2   Parent of exceptions raised by a collection of items a DataService owns.
+    2   Parent of exceptions raised by a collection of items a ListService owns.
     3.  Catchall for errors not covered by lower level DatasetException subclasses.
     
     # PARENT:

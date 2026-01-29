@@ -22,8 +22,8 @@ class CoordDataServiceException(CoordException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an CoordDataService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a CoordDataService method.
+    1.  Indicate that an CoordListService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a CoordListService method.
 
     # PARENT:
         *   ServiceException
@@ -39,4 +39,4 @@ class CoordDataServiceException(CoordException, ServiceException):
     None
     """
     ERROR_CODE = "COORD_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CoordDataService raised an exception."
+    DEFAULT_MESSAGE = "CoordListService raised an exception."

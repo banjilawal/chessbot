@@ -91,12 +91,12 @@ class PlayerValidator(Validator[Player]):
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
-            # Certify the owner's TeamDataService is correct.
+            # Certify the owner's TeamListService is correct.
             team_data_service_certification = service_validator.validate(candidate=player.teams)
             if team_data_service_certification.is_failure():
                 return ValidationResult.failure(team_data_service_certification.exception)
             
-            # Certify the owner's GameDataService is correct.
+            # Certify the owner's GameListService is correct.
             game_data_service_certification = service_validator.validate(candidate=player.games)
             if game_data_service_certification.is_failure():
                 return ValidationResult.failure(game_data_service_certification.exception)

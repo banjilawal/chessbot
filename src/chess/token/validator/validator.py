@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from chess.rank import RankService
 from chess.team import Team, TeamService
-from chess.coord import CoordDataService, CoordService
+from chess.coord import CoordListService, CoordService
 from chess.token import CombatantToken, KingToken, NullTokenException, Token, TokenValidationFailedException
 from chess.system import (
     NumberValidator, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
@@ -145,7 +145,7 @@ class TokenValidator(Validator[Token]):
                 )
             )
         # Handle the case that occupant.positions fails its validation.
-        service_validation = service_validator.validate(candidate=token.positions, expected_type=CoordDataService)
+        service_validation = service_validator.validate(candidate=token.positions, expected_type=CoordListService)
         if service_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

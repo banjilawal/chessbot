@@ -11,17 +11,14 @@ from __future__ import annotations
 from typing import cast
 
 from chess.attack import (
-    AttackFailedException, AttackResult, AttackerSquareInconsistencyException, AttackerSquareNotFoundException,
-    AttackingDisabledEnemyException, AttackingEnemyKingException,
-    AttackingFriendlySquareException,
-    AttackingTokenOnWrongBoardException, AttackingVacantSquareException
+    AttackFailedException, AttackResult, AttackingDisabledEnemyException, AttackingEnemyKingException,
+    AttackingFriendlySquareException, AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
-from chess.hostage import HostageService
-from chess.square import Square, SquareContext, SquareDatabase
 from chess.system import LoggingLevelRouter
+from chess.square import Square, SquareDatabase
 from chess.system.relation import RelationReport
-from chess.team import HostageService
-from chess.token import CombatantActivityState, CombatantReadinessEnum, CombatantToken, KingToken, Token, TokenService
+from chess.hostage import HostageManifestService
+from chess.token import CombatantReadinessEnum, CombatantToken, KingToken, Token, TokenService
 
 
 class Attack:
@@ -34,7 +31,7 @@ class Attack:
             square: Square,
             token_service: TokenService = TokenService(),
             square_database: SquareDatabase = SquareDatabase(),
-            hostage_database_service: HostageService = HostageService(),
+            hostage_service: HostageManifestService = HostageManifestService,
     ) -> AttackResult:
         method = "Attack.execute"
         
@@ -113,8 +110,9 @@ class Attack:
         return cls._process_attack(
             attacker=attacker,
             square=square,
+            token_service=token_service,
             square_database=square_database,
-            hostage_database_service=hostage_database_service,
+            hostage_service=hostage_service,
         )
         
         # Set the
@@ -126,8 +124,9 @@ class Attack:
         cls,
         attacker: Token,
         square: Square,
+        token_service: TokenService,
         square_database: SquareDatabase,
-        hostage_service: HostageService = HostageService(),
+        hostage_service: HostageManifestService,
     ) -> AttackResult:
         """"""
         method = "Attack._process_attack"
@@ -169,98 +168,21 @@ class Attack:
             )
         
         # Build the hostage manifest
-        manifest_build_result = hostage_service.b
-        
-        # Set the square's captor.
-        square.occupant.captor = attacker
-        # Update the hostage's activity_status
-        square.occupant.activity_state = CombatantActivityState.CAPTURE_ACTIVATED
-        # Remove the enemy from their square.
-        hostage = square.occupant
-        # Set the square's new occupant.
-        square.occupant = attacker
-        
-        # Remove the attacker from their old square
-        
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _attacker_leaves_square(attacker: Token, attack_square: Square) -> Deletion
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _process_attacker_square(
-            cls,
-            attacker: Token,
-            square_database: SquareDatabase,
-    ) -> RelationReport[Square, Token]:
-        method = "Attack._process_attacker_square"
-        
-        # --- Search for the attacker's square from their board. ---#
-        square_search = attacker.team.board.squares.search_squares(
-            context=SquareContext(coord=attacker.current_position)
+        manifest_build_result = hostage_service.builder.build(
+            prisoner=captive,
+            captured_square=square,
+            token_service=token_service,
+            square_service=square_database.integrity_service,
         )
-        # Handle the case that the square_search fails.
-        if square_search.is_failure:
-            # Return exception chain on failure.
-            return RelationReport.failure(
+        # Handle the case that the manifest bui;d failed.
+        if manifest_build_result.is_failure:
+            # Return the exception chain on failure.
+            return AttackResult.failure(
                 AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackingEnemyKingException(
-                        f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}"
-                    )
+                    f"{method}: {AttackFailedException}",
+                    ex=manifest_build_result.exception
                 )
             )
-        # Handle the case that no square matching the occupant's coords is found.
-        if square_search.is_empty:
-            # Return exception chain on failure.
-            return RelationReport.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackerSquareNotFoundException(
-                        f"{method}: {AttackerSquareNotFoundException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # If there is more than one square in the result at least one of them is stale.
-        if len(set(square_search)) > 1:
-            # Return exception chain on failure.
-            return RelationReport.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=ConflictingAttackerSquareException(
-                        f"{method}: {ConflictingAttackerSquareException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # --- Run the relationship analysis between the attacker and their square. ---#
         
-    
-        square = cast(Square, square_search.payload[0])
-        
-        relation_analysis = square_service.square_token_relation_analyzer.analyze(
-            candidate_primary=square,
-            candidate_satellite=attacker
-        )
-        # Handle the case that the analysis is not completed.
-        if relation_analysis.is_failure:
-            # Return exception chain on failure.
-            return RelationReport.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=relation_analysis.exception
-                )
-            )
-        # Handle the case that there is no bidirectional_relation
-        if  not relation_analysis.fully_exists:
-            # Return exception chain on failure.
-            return RelationReport.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
-                    ex=AttackerSquareInconsistencyException(
-                        f"{method}: {AttackerSquareInconsistencyException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        return relation_analysis
-        
+        return AttackResult.success(manifest_build_result.payload)
             

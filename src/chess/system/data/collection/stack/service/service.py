@@ -19,7 +19,7 @@ from chess.system import (
 D = TypeVar("D")
 C = TypeVar("C", bound=Context)
 
-class DataService(ABC, Generic[D]):
+class ListService(ABC, Generic[D]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -106,7 +106,7 @@ class DataService(ABC, Generic[D]):
     @LoggingLevelRouter.monitor
     def push_item(self, item: D) -> InsertionResult[D]:
         """"""
-        method = "DataService.push"
+        method = "ListService.push"
         try:
             validation = self._entity_service.entity_validator.validate(item)
             if validation.is_failure():
@@ -121,7 +121,7 @@ class DataService(ABC, Generic[D]):
     @LoggingLevelRouter.monitor
     def search(self, context: C) -> SearchResult[List[D]]:
         """"""
-        method = "DataService.search"
+        method = "ListService.search"
         return self._context_service.entity_finder.find(
             dataset=self.items,
             context=context,
@@ -139,7 +139,7 @@ class DataService(ABC, Generic[D]):
     
     @LoggingLevelRouter.monitor
     def undo_item_push(self) -> DeletionResult[D]:
-        method = "DataService.undo_item_push"
+        method = "ListService.undo_item_push"
         try:
             if self._items == 0:
                 return DeletionResult.failure(

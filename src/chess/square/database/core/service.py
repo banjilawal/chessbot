@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.system import (
-    NUMBER_OF_COLUMNS, DataService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
+    NUMBER_OF_COLUMNS, ListService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
     NUMBER_OF_ROWS,
     SearchResult, id_emitter
 )
@@ -23,7 +23,7 @@ from chess.square import (
     SquareDeletionFailedException, SquareInsertionFailedException, SquareDataServiceCapacityException
 )
 
-class SquareDataService(DataService[Square]):
+class SquareListService(ListService[Square]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -34,7 +34,7 @@ class SquareDataService(DataService[Square]):
     4.  Stack data structure for Square objects with no guarantee of uniqueness.
 
     # PARENT:
-        *   DataService[Square]
+        *   ListService[Square]
 
     # PROVIDES:
     None
@@ -43,9 +43,9 @@ class SquareDataService(DataService[Square]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DataService class for inherited attributes.
+        *   See ListService class for inherited attributes.
     """
-    SERVICE_NAME = "SquareDataService"
+    SERVICE_NAME = "SquareListService"
     _capacity: int
     _dataset: List[Square]
     
@@ -121,7 +121,7 @@ class SquareDataService(DataService[Square]):
         # RAISES:
             *   SquareDataServiceException
         """
-        method = "SquareDataService.add_square"
+        method = "SquareListService.add_square"
         
         # Handle the case that the list is full
         if self.is_full:
@@ -191,7 +191,7 @@ class SquareDataService(DataService[Square]):
         # RAISES:
             *   SquareDataServiceException
         """
-        method = "SquareDataService.delete_square_by_id"
+        method = "SquareListService.delete_square_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
@@ -249,7 +249,7 @@ class SquareDataService(DataService[Square]):
     
     
     def _attribute_collision_detector(self, target) -> SearchResult[Square]:
-        method = "SquareDataService.attribute_collision_detector"
+        method = "SquareListService.attribute_collision_detector"
         
         for square in self._dataset:
             if square.id == target.id:

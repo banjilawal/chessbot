@@ -22,7 +22,7 @@ class TokenDataServiceException(TokenException, DataServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by TokenDataService methods that return Result objects.
+    1.  Wrap any exceptions raised by TokenListService methods that return Result objects.
 
     # PARENT:
         *   TokenException
@@ -38,4 +38,4 @@ class TokenDataServiceException(TokenException, DataServiceException):
     None
     """
     ERROR_CODE = "TOKEN_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "TokenDataService raised an exception."
+    DEFAULT_MESSAGE = "TokenListService raised an exception."

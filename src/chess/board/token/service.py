@@ -174,7 +174,7 @@ class BoardTokenService:
                     )
                 )
             )
-        # --- Run the insertion operation on the DataService. ---#
+        # --- Run the insertion operation on the ListService. ---#
         insertion_result = self._members.add_unique_token(token=token)
         
         # Handle the case that the insertion was not completed

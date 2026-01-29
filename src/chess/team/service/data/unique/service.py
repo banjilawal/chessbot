@@ -11,7 +11,7 @@ from typing import List, Optional, cast
 
 from chess.schema import Schema
 from chess.team import (
-    Team, TeamContext, TeamContextService, TeamDataService, TeamService, UniqueTeamDataServiceException
+    Team, TeamContext, TeamContextService, TeamListService, TeamService, UniqueTeamDataServiceException
 )
 from chess.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
@@ -23,8 +23,8 @@ class UniqueTeamDataService(DatabaseService[Team]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by TeamDataService are unique.
-    2.  Guarantee consistency of records in TeamDataService.
+    1.  Ensure all items in managed by TeamListService are unique.
+    2.  Guarantee consistency of records in TeamListService.
 
     # PARENT:
         *   DatabaseService
@@ -39,13 +39,13 @@ class UniqueTeamDataService(DatabaseService[Team]):
         *   See DatabaseService class for inherited attributes.
     """
     SERVICE_NAME = "UniqueTeamDataService"
-    _team_data_service: TeamDataService
+    _team_data_service: TeamListService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: TeamDataService = TeamDataService(),
+            data_service: TeamListService = TeamListService(),
     ):
         """
         # ACTION:
@@ -53,7 +53,7 @@ class UniqueTeamDataService(DatabaseService[Team]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (TeamDataService)
+            *   member_service (TeamListService)
         # RETURNS:
             None
         # RAISES:

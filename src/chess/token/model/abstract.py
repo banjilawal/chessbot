@@ -15,7 +15,7 @@ from chess.rank import Rank
 from chess.team import Team
 from chess.square import Square
 from chess.token import ActivityState, TokenBoardState
-from chess.coord import Coord, CoordDataService
+from chess.coord import Coord, CoordListService
 
 class Token(ABC):
     """
@@ -37,7 +37,7 @@ class Token(ABC):
         *   rank (Rank)
         *   roster_number (int)
         *   current_position (Coord)
-        *   positions (CoordDataService):
+        *   positions (CoordListService):
     """
     _id: int
     _team: Team
@@ -46,7 +46,7 @@ class Token(ABC):
     _roster_number: int
     _activity: ActivityState
     _opening_square: Square
-    _positions: CoordDataService
+    _positions: CoordListService
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _token_board_state: TokenBoardState
@@ -60,7 +60,7 @@ class Token(ABC):
             roster_number: int,
             opening_square: Square,
             activity: ActivityState,
-            positions: CoordDataService = CoordDataService()
+            positions: CoordListService = CoordListService()
     ):
         method = "Token.__init__"
         self._id = id
@@ -104,7 +104,7 @@ class Token(ABC):
         return self._activity_state
     
     @property
-    def positions(self) -> CoordDataService:
+    def positions(self) -> CoordListService:
         return self._positions
     
     @property

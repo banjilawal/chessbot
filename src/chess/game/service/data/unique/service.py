@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.game import Game, GameContext, GameContextService, GameDataService, GameService
+from chess.game import Game, GameContext, GameContextService, GameListService, GameService
 from chess.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
 )
@@ -20,8 +20,8 @@ class UniqueGameDataService(DatabaseService[Game]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items managed by GameDataService are unique.
-    2.  Guarantee consistency of records in GameDataService.
+    1.  Ensure all items managed by GameListService are unique.
+    2.  Guarantee consistency of records in GameListService.
 
     # PARENT:
         *   DatabaseService
@@ -41,7 +41,7 @@ class UniqueGameDataService(DatabaseService[Game]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: GameDataService = GameDataService(),
+            data_service: GameListService = GameListService(),
     ):
         """
         # ACTION:
@@ -50,7 +50,7 @@ class UniqueGameDataService(DatabaseService[Game]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   member_service (GameDataService): = GameDataService()
+            *   member_service (GameListService): = GameListService()
 
         # RETURNS:
         None
@@ -62,11 +62,11 @@ class UniqueGameDataService(DatabaseService[Game]):
     
     @property
     def game_service(self) -> GameService:
-        return cast(GameDataService, self.data_service).game_service
+        return cast(GameListService, self.data_service).game_service
     
     @property
     def context_service(self) -> GameContextService:
-        return cast(GameDataService, self.data_service).game_context_service
+        return cast(GameListService, self.data_service).game_context_service
     
     @property
     def size(self) -> int:

@@ -23,8 +23,8 @@ class GameDataServiceException(GameException, ServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an GameDataService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a GameDataService method.
+    1.  Indicate that an GameListService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a GameListService method.
 
     # PARENT:
         *   ServiceException
@@ -40,4 +40,4 @@ class GameDataServiceException(GameException, ServiceException):
     None
     """
     ERROR_CODE = "GAME_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "GameDataService raised an exception."
+    DEFAULT_MESSAGE = "GameListService raised an exception."

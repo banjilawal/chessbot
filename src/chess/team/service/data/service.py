@@ -9,11 +9,11 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.system import DataService, id_emitter
+from chess.system import ListService, id_emitter
 from chess.team import Team,  TeamContextService,  TeamService
 
 
-class TeamDataService(DataService[Team]):
+class TeamListService(ListService[Team]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -24,7 +24,7 @@ class TeamDataService(DataService[Team]):
     4.  Stack data structure for Team objects with no guarantee of uniqueness.
     
     # PARENT:
-        *   DataService
+        *   ListService
 
     # PROVIDES:
     None
@@ -33,10 +33,10 @@ class TeamDataService(DataService[Team]):
     None
     
     # INHERITED ATTRIBUTES:
-        *   See DataService class for inherited attributes.
+        *   See ListService class for inherited attributes.
     """
     CAPACITY = 2
-    SERVICE_NAME = "TeamDataService"
+    SERVICE_NAME = "TeamListService"
     _capacity: int
     
     def __init__(
@@ -62,7 +62,7 @@ class TeamDataService(DataService[Team]):
         # RAISES:
             None
         """
-        method = "TeamDataService.__init__"
+        method = "TeamListService.__init__"
         super().__init__(
             id=id,
             name=name,

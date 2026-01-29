@@ -21,7 +21,7 @@ class PoppingEmptyTokenStackException(TokenDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove a occupant failed because the TokenDataService was not managing any tokens.
+    1.  Indicate that an attempt to remove a occupant failed because the TokenListService was not managing any tokens.
 
     # PARENT:
         *   TeamDaaServiceException
@@ -36,4 +36,4 @@ class PoppingEmptyTokenStackException(TokenDataServiceException):
     None
     """
     ERROR_CODE = "POPPING_EMPTY_TOKEN_STACK_ERROR"
-    DEFAULT_MESSAGE = "Token deletion failed: TokenDataService does not own any tokens."
+    DEFAULT_MESSAGE = "Token deletion failed: TokenListService does not own any tokens."

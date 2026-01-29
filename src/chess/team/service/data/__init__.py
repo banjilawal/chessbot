@@ -14,4 +14,4 @@ from .unique import *
 from .exception import *
 
 # Modules
-from .service import  TeamDataService
+from .service import  TeamListService

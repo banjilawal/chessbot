@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import List, cast
 
 
-from chess.system import DataService, id_emitter
+from chess.system import ListService, id_emitter
 from chess.agent import PlayerAgent, AgentContextService, AgentService
 
 
-class AgentDataService(DataService[PlayerAgent]):
+class AgentListService(ListService[PlayerAgent]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -28,7 +28,7 @@ class AgentDataService(DataService[PlayerAgent]):
     6.  Search utility.
     
     # PARENT:
-        *   DataService
+        *   ListService
 
     # PROVIDES:
     None
@@ -37,9 +37,9 @@ class AgentDataService(DataService[PlayerAgent]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DataService class for inherited attributes.
+        *   See ListService class for inherited attributes.
     """
-    SERVICE_NAME = "AgentDataService"
+    SERVICE_NAME = "AgentListService"
     
     def service(
             self,
@@ -101,7 +101,7 @@ class AgentDataService(DataService[PlayerAgent]):
     #
     # @LoggingLevelRouter.monitor
     # def push_item(self, item: Player) -> InsertionResult[Player]:
-    #     method = "AgentDataService.push"
+    #     method = "AgentListService.push"
     #     try:
     #         validation = self.data.item_validator.validate(item)
     #         if validation.is_failure():
@@ -116,7 +116,7 @@ class AgentDataService(DataService[PlayerAgent]):
     #
     # @LoggingLevelRouter.monitor
     # def search(self, map: AgentContext) -> SearchResult[List[Player]]:
-    #     method = "AgentDataService.finder"
+    #     method = "AgentListService.finder"
     #     agent_context_service = cast(AgentContextService, self.context_service)
     #
     #     return self.context_service.finder.find(

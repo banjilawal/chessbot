@@ -105,7 +105,7 @@ class HostageService:
                     ex=EnemyAlreadyCapturedException(f"{method}: {EnemyAlreadyCapturedException.DEFAULT_MESSAGE}")
                 )
             )
-        # --- Run the insertion operation on the DataService. ---#
+        # --- Run the insertion operation on the ListService. ---#
         insertion_result = self._prisoners.add_token(token=combatant)
         
         # Handle the case that the insertion was not completed

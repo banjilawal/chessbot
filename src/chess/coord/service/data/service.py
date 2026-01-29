@@ -11,14 +11,14 @@ from typing import List, Optional, cast
 
 from chess.coord.service.data.exception.push.duplicate import DuplicateCoordPushException
 from chess.coord.service.data.exception.push.wrapper import PushingCoordFailedException
-from chess.system import DataService, DeletionResult, InsertionResult, SearchResult, id_emitter
+from chess.system import ListService, DeletionResult, InsertionResult, SearchResult, id_emitter
 from chess.coord import (
     Coord, CoordContext, CoordDataServiceException, CoordService, CoordContextService, MaxConsecutiveCoordPopException,
     PoppingEmtpyCoordStackException
 )
 
 
-class CoordDataService(DataService[Coord]):
+class CoordListService(ListService[Coord]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -32,7 +32,7 @@ class CoordDataService(DataService[Coord]):
     6.  Search utility.
 
     # PARENT:
-        *   DataService
+        *   ListService
 
     # PROVIDES:
     None
@@ -41,9 +41,9 @@ class CoordDataService(DataService[Coord]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DataService class for inherited attributes.
+        *   See ListService class for inherited attributes.
     """
-    SERVICE_NAME = "CoordDataService"
+    SERVICE_NAME = "CoordListService"
     _current_coord: Optional[Coord]
     _previous_coord: Optional[Coord]
     
@@ -117,7 +117,7 @@ class CoordDataService(DataService[Coord]):
         # RAISES:
             *   CoordDataServiceException
         """
-        method = "CoordDataService.add_coord"
+        method = "CoordListService.add_coord"
         
         # Handle the case that coord validation fails.
         validation = self.coord_service.validator.validate(candidate=coord)
@@ -180,7 +180,7 @@ class CoordDataService(DataService[Coord]):
             *   CoordDataServiceException
             *   PoppingEmtpyCoordStackException
         """
-        method = "CoordDataService.pop_coord"
+        method = "CoordListService.pop_coord"
         
         # Handle the case that the list is empty
         if self.is_empty:
@@ -231,7 +231,7 @@ class CoordDataService(DataService[Coord]):
         # RAISES:
             *   CoordDataServiceException
         """
-        method = "CoordDataService.coord_search"
+        method = "CoordListService.coord_search"
         
         # Handle the case that the context is not certified safe.
         context_validation = self.coord_context_service.validator.validate(coord_context)

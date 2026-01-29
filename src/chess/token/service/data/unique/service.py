@@ -13,7 +13,7 @@ from chess.rank import Rank
 from chess.system.data.result import ComputationResult
 from chess.token import (
     AddingDuplicateTokenException, ExhaustiveTokenDeletionFailedException, Token, TokenContext, TokenContextService,
-    TokenDataService, TokenService, UniqueTokenDataServiceException, UniqueTokenInsertionFailedException,
+    TokenListService, TokenService, UniqueTokenDataServiceException, UniqueTokenInsertionFailedException,
     UniqueTokenSearchFailedException
 )
 from chess.system import (
@@ -26,8 +26,8 @@ class UniqueTokenDataService(DatabaseService[Token]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by TokenDataService are unique.
-    2.  Guarantee consistency of records in TokenDataService.
+    1.  Ensure all items in managed by TokenListService are unique.
+    2.  Guarantee consistency of records in TokenListService.
 
     # PARENT:
         *   DatabaseService
@@ -42,13 +42,13 @@ class UniqueTokenDataService(DatabaseService[Token]):
         *   See DatabaseService class for inherited attributes.
     """
     SERVICE_NAME = "UniqueTokenDataService"
-    _token_data_service: TokenDataService
+    _token_data_service: TokenListService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: TokenDataService = TokenDataService(),
+            data_service: TokenListService = TokenListService(),
     ):
         """
         # ACTION:
@@ -56,7 +56,7 @@ class UniqueTokenDataService(DatabaseService[Token]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (TokenDataService)
+            *   member_service (TokenListService)
         # RETURNS:
             None
         # RAISES:

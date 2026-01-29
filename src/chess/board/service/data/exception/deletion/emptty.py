@@ -36,4 +36,4 @@ class PoppingEmptyBoardStackException(BoardException):
     None
     """
     ERROR_CODE = "POPPING_EMPTY_BOARD_STACK_ERROR"
-    DEFAULT_MESSAGE = "Board deletion failed: BoardDataService does not own any boards."
+    DEFAULT_MESSAGE = "Board deletion failed: BoardListService does not own any boards."

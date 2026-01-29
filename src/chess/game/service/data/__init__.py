@@ -13,5 +13,5 @@ version: 1.0.0
 from .unique import *
 
 # Modules
-from .service import GameDataService
+from .service import GameListService
 from .exception import GameDataServiceException

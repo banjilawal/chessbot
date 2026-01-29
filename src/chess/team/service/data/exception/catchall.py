@@ -22,7 +22,7 @@ class TeamDataServiceException(TeamException, DataServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Encapsulate TeamDataService method outputs when there is a failure.
+    1.  Encapsulate TeamListService method outputs when there is a failure.
 
     # PARENT:
         *   ServiceException
@@ -38,4 +38,4 @@ class TeamDataServiceException(TeamException, DataServiceException):
     None
     """
     ERROR_CODE = "TEAM_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "TeamDataService raised an exception."
+    DEFAULT_MESSAGE = "TeamListService raised an exception."

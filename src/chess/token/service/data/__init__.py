@@ -15,4 +15,4 @@ from .exception import *
 from .unique import *
 
 # Modules
-from .service import TokenDataService
+from .service import TokenListService
