@@ -1,7 +1,7 @@
-# src/chess/system/data/service/unique/exception.duplicate.py
+# src/chess/system/collectionservice/unique/exception.duplicate.py
 
 """
-Module: chess.system.data.service.unique.exception.duplicate
+Module: chess.system.collection.service.unique.exception.duplicate
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

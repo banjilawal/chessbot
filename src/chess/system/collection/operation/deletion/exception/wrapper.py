@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/deletion/exception/wrapper.py
+# src/chess/system/collectionoperation/deletion/exception/wrapper.py
 
 """
-Module: chess.system.data.operation.deletion.exception.wrapper
+Module: chess.system.collection.operation.deletion.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

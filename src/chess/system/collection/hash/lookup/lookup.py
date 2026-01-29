@@ -1,7 +1,7 @@
-# src/chess/system/data/collection/hash/lookup/lookup.py
+# src/chess/system/collection/hash/lookup/lookup.py
 
 """
-Module: chess.system.data.collection.hash.lookup.lookup
+Module: chess.system.collection.hash.lookup.lookup
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

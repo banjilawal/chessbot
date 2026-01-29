@@ -1,13 +1,13 @@
-# src/chess/system/data/operation/deletion/__init__.py
+# src/chess/system/collectionoperation/deletion/__init__.py
 
 """
-Module: chess.system.data.operation.deletion.__init__
+Module: chess.system.collection.operation.deletion.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.DATA.OPERATION.DELETION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.OPERATION.DELETION PACKAGE CONTENTS ===========#
 
 # Packages
 from .state import *

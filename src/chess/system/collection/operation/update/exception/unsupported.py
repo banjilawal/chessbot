@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/update/exception/unsupported.py
+# src/chess/system/collectionoperation/update/exception/unsupported.py
 
 """
-Module: chess.system.data.operation.update.exception.unsupported
+Module: chess.system.collection.operation.update.exception.unsupported
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

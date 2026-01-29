@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/update/exception/wrapper.py
+# src/chess/system/collectionoperation/update/exception/wrapper.py
 
 """
-Module: chess.system.data.operation.update.exception.wrapper
+Module: chess.system.collection.operation.update.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

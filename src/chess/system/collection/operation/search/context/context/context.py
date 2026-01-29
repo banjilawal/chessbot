@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/search/context/context.py
+# src/chess/system/collectionoperation/search/context/context.py
 
 """
-Module: chess.system.data.operation.search.context.context
+Module: chess.system.collection.operation.search.context.context
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

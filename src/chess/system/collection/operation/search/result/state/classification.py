@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/search/result/state/classification.py
+# src/chess/system/collectionoperation/search/result/state/classification.py
 
 """
-Module: chess.system.data.operation.search.result.state.classification
+Module: chess.system.collection.operation.search.result.state.classification
 Author: Banji Lawal
 Created: 2026-01-25
 Version: 1.0.0

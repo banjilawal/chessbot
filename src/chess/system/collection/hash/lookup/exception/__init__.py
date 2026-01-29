@@ -1,13 +1,13 @@
-# src/chess/system/data/collection/hash/lookup/exception/__init__.py
+# src/chess/system/collection/hash/lookup/exception/__init__.py
 
 """
-Module: chess.system.data.collection.hash.lookup.exception.__init__
+Module: chess.system.collection.hash.lookup.exception.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== SYSTEM.DATA.COLLECTION.HASH.LOOKUP.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.HASH.LOOKUP.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

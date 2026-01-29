@@ -15,7 +15,7 @@ from chess.system import LoggingLevelRouter, SearchResult
 from chess.agent import (
     PlayerAgent, AgentContext, AgentContextValidator, AgentVariety
 )
-from chess.system.data.operation import DataFinder
+from chess.system.collection.operation import DataFinder
 from chess.team import Team, TeamContext
 
 

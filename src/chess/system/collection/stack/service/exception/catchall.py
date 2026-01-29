@@ -1,7 +1,7 @@
-# src/chess/system/data/service/exception/base.py
+# src/chess/system/collectionservice/exception/base.py
 
 """
-Module: chess.system.data.service.exception.base
+Module: chess.system.collection.service.exception.base
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -26,7 +26,7 @@ class StackServiceException(DatasetException, ServiceException):
     2.  Wraps an exception that hits the try-finally block of a StackService method.
 
     # PARENT:
-        *   DatasetException
+        *   CollectionException
         *   ServiceException
 
     # PROVIDES:

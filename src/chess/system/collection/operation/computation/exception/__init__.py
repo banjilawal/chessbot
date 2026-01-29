@@ -1,13 +1,13 @@
-# src/chess/system/data/operation/computation/exception/__init__.py
+# src/chess/system/collectionoperation/computation/exception/__init__.py
 
 """
-Module: chess.system.data.operation.computation.exception.__init__
+Module: chess.system.collection.operation.computation.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.DATA.OPERATION.COMPUTATION.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.OPERATION.COMPUTATION.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

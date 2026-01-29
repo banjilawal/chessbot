@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/update/result.py
+# src/chess/system/collectionoperation/update/result.py
 
 """
-Module: chess.system.data.operation.update.result
+Module: chess.system.collection.operation.update.result
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/system/data/collection/hash/service/service.py
+# src/chess/system/collection/hash/service/service.py
 
 """
-Module: chess.system.data.collection.hash.service.service
+Module: chess.system.collection.hash.service.service
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

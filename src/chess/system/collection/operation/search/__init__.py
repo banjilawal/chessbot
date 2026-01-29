@@ -1,13 +1,13 @@
-# src/chess/system/data/operation/search/__init__.py
+# src/chess/system/collectionoperation/search/__init__.py
 
 """
-Module: chess.system.data.operation.search.__init__
+Module: chess.system.collection.operation.search.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.DATA.OPERATION.SEARCH PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.OPERATION.SEARCH PACKAGE CONTENTS ===========#
 
 # Packages
 from .result import *

@@ -1,13 +1,13 @@
-# src/chess/system/data/operation/update/state/__init__.py
+# src/chess/system/collectionoperation/update/state/__init__.py
 
 """
-Module: chess.system.data.operation.update.state.__init__
+Module: chess.system.collection.operation.update.state.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.DATA.OPERATION.UPDATE.STATE PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.OPERATION.UPDATE.STATE PACKAGE CONTENTS ===========#
 
 # Packages
 None

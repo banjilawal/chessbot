@@ -1,13 +1,13 @@
-# src/chess/system/data/collection/operation/search/context/service/exception/__init__.py
+# src/chess/system/collection/operation/search/context/service/exception/__init__.py
 
 """
-Module: chess.system.data.collection.operation.search.context.service.exception.__init__
+Module: chess.system.collection.operation.search.context.service.exception.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.DATA.COLLECTION.OPERATION.SEARCH.CONTEXT.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.OPERATION.SEARCH.CONTEXT.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

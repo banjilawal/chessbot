@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/search/abstract.py
+# src/chess/system/collectionoperation/search/abstract.py
 
 """
-Module: chess.system.data.operation.search.abstract
+Module: chess.system.collection.operation.search.abstract
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

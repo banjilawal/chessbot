@@ -1,7 +1,7 @@
-# src/chess/system/data/collection/operation/search/context/service/exception/catchall.py
+# src/chess/system/collection/operation/search/context/service/exception/catchall.py
 
 """
-Module: chess.system.data.collection.operation.search.context.service.exceptioncatchall
+Module: chess.system.collection.operation.search.context.service.exceptioncatchall
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

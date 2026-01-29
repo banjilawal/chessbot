@@ -29,7 +29,7 @@ class GameSearchDatasetNullException(GameException, NullDatasetException):
     1.  Indicate That  GameFinder received null instead of a List[Game] collection.
 
     # PARENT:
-        *   DatasetException
+        *   CollectionException
         *   NullException
 
     # PROVIDES:

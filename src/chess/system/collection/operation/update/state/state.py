@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/update/state/state.py
+# src/chess/system/collectionoperation/update/state/state.py
 
 """
-Module: chess.system.data.operation.update.state.state
+Module: chess.system.collection.operation.update.state.state
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

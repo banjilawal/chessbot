@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/deletion/wrapper.py
+# src/chess/system/collectionoperation/deletion/wrapper.py
 
 """
-Module: chess.system.data.operation.deletion.wrapper
+Module: chess.system.collection.operation.deletion.wrapper
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
 from chess.system import DataResult, DataResultEnum, DeletionResultEnum
-from chess.system.data.operation.deletion.state.state import DeletionResultState
+from chess.system.collection.operation.deletion.state.state import DeletionResultState
 
 T = TypeVar("T")
 

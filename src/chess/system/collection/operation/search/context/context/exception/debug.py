@@ -1,7 +1,7 @@
-# src/chess/system/data/collection/operation/search/context/service/exception/debug.py
+# src/chess/system/collection/operation/search/context/service/exception/debug.py
 
 """
-Module: chess.system.data.collection.operation.search.context.service.exception.debug
+Module: chess.system.collection.operation.search.context.service.exception.debug
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

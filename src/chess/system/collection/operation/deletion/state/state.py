@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/deletion/state/state.py
+# src/chess/system/collectionoperation/deletion/state/state.py
 
 """
-Module: chess.system.data.operation.deletion.state.state
+Module: chess.system.collection.operation.deletion.state.state
 Author: Banji Lawal
 Created: 2026-01-25
 Version: 1.0.0

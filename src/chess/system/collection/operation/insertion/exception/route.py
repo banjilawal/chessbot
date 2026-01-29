@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/insertion/exception/route.py
+# src/chess/system/collectionoperation/insertion/exception/route.py
 
 """
-Module: chess.system.data.operation.insertion.exception.route
+Module: chess.system.collection.operation.insertion.exception.route
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/computation/exception/unsupported.py
+# src/chess/system/collectionoperation/computation/exception/unsupported.py
 
 """
-Module: chess.system.data.operation.computation.exception.unsupported
+Module: chess.system.collection.operation.computation.exception.unsupported
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

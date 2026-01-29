@@ -24,7 +24,7 @@ class TokenSearchNullDatasetException(Token, NullDatasetException):
     1.  Indicate That TokenFinder received null instead of a List[Token] collection.
 
     # PARENT:
-        *   DatasetException
+        *   CollectionException
         *   NullException
 
     # PROVIDES:

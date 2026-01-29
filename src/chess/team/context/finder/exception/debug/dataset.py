@@ -26,7 +26,7 @@ class TeamSearchDatasetNullException(Team, NullDatasetException):
     1.  Indicate That TeamFinder received null instead of a List[Team] collection.
 
     # PARENT:
-        *   DatasetException
+        *   CollectionException
         *   NullException
 
     # PROVIDES:

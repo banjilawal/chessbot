@@ -27,7 +27,7 @@ class AgentSearchDatasetNullException(AgentException, NullDatasetException):
     1.  Indicate That  AgentFinder received null instead of a List[Agent] collection.
 
     # PARENT:
-        *   DatasetException
+        *   CollectionException
         *   NullException
 
     # PROVIDES:

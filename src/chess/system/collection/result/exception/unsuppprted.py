@@ -1,7 +1,7 @@
-# src/chess/system/data/result/exception/unsupported.py
+# src/chess/system/collectionresult/exception/unsupported.py
 
 """
-Module: chess.system.data.result.exception.unsupported
+Module: chess.system.collection.result.exception.unsupported
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

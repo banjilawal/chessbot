@@ -1,7 +1,7 @@
-# src/chess/system/data/service/exception/pop.py
+# src/chess/system/collectionservice/exception/pop.py
 
 """
-Module: chess.system.data.service.exception.pop
+Module: chess.system.collection.service.exception.pop
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

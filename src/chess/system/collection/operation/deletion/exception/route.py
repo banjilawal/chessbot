@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/deletion/exception/route.py
+# src/chess/system/collectionoperation/deletion/exception/route.py
 
 """
-Module: chess.system.data.operation.deletion.exception.route
+Module: chess.system.collection.operation.deletion.exception.route
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

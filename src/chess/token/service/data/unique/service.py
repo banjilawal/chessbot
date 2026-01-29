@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List
 
 from chess.rank import Rank
-from chess.system.data.result import ComputationResult
+from chess.system.collection.result import ComputationResult
 from chess.token import (
     AddingDuplicateTokenException, ExhaustiveTokenDeletionFailedException, Token, TokenContext, TokenContextService,
     TokenListService, TokenService, UniqueTokenDataServiceException, UniqueTokenInsertionFailedException,

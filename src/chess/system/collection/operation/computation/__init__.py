@@ -1,13 +1,13 @@
-# src/chess/system/data/operation/computation/__init__.py
+# src/chess/system/collectionoperation/computation/__init__.py
 
 """
-Module: chess.system.data.operation.computation.__init__
+Module: chess.system.collection.operation.computation.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.DATA.OPERATION.COMPUTATION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION.OPERATION.COMPUTATION PACKAGE CONTENTS ===========#
 
 # Packages
 from .state import *

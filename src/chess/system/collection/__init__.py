@@ -1,13 +1,13 @@
-# src/chess/system/data/__init__.py
+# src/chess/system/collection__init__.py
 
 """
-Module: chess.system.data.__init__
+Module: chess.system.collection.__init__
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-# =========== SYSTEM.DATA PACKAGE CONTENTS ===========#
+# =========== SYSTEM.COLLECTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .hash import *

@@ -1,7 +1,7 @@
 # src/chess/system/database/service.py
 
 """
-Module: chess.system.database.service
+Module: chess.system.collectionbase.service
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

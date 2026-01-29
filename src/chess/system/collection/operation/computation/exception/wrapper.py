@@ -1,7 +1,7 @@
-# src/chess/system/data/collection/operation/computation/exception/wrapper.py
+# src/chess/system/collection/operation/computation/exception/wrapper.py
 
 """
-Module: chess.system.data.collection.operation.computation.exception.wrapper
+Module: chess.system.collection.operation.computation.exception.wrapper
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

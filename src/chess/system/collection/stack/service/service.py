@@ -1,7 +1,7 @@
-# src/chess/system/data/collection/stack/service/service.py
+# src/chess/system/collection/stack/service/service.py
 
 """
-Module: chess.system.data.collection.stack.service.service
+Module: chess.system.collection.stack.service.service
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

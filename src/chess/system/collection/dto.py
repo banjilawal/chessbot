@@ -1,7 +1,7 @@
-# src/chess/system/data/dto.py
+# src/chess/system/collectiondto.py
 
 """
-Module: chess.system.data.dto
+Module: chess.system.collection.dto
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

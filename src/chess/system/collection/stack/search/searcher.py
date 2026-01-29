@@ -1,7 +1,7 @@
-# src/chess/system/data/collection/stack/search/searcher.py
+# src/chess/system/collection/stack/search/searcher.py
 
 """
-Module: chess.system.data.collection.stack.search.searcher
+Module: chess.system.collection.stack.search.searcher
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/deletion/state/classification.py
+# src/chess/system/collectionoperation/deletion/state/classification.py
 
 """
-Module: chess.system.data.operation.deletion.state.classification
+Module: chess.system.collection.operation.deletion.state.classification
 Author: Banji Lawal
 Created: 2026-01-25
 Version: 1.0.0

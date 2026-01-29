@@ -1,7 +1,7 @@
-# src/chess/system/data/operation/computation/result.py
+# src/chess/system/collectionoperation/computation/result.py
 
 """
-Module: chess.system.data.operation.computation.result
+Module: chess.system.collection.operation.computation.result
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
 from chess.system import DataResult, DataResultEnum, UnsupportedEmptyComputationResultException
-from chess.system.data.operation.computation.state.state import ComputationResultState
+from chess.system.collection.operation.computation.state.state import ComputationResultState
 
 T = TypeVar("T")
 
