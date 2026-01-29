@@ -26,7 +26,7 @@ class TokenDataServiceException(TokenException, DataServiceException):
 
     # PARENT:
         *   TokenException
-        *   DataServiceException
+        *   StackServiceException
 
     # PROVIDES:
     None

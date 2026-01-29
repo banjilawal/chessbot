@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.agent import AgentException
-from chess.system import UniqueDataServiceException
+from chess.system import DatabaseException
 
 __all__ = [
     #======================# UNIQUE_AGENT_DATA_SERVICE EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 #======================# UNIQUE_AGENT_DATA_SERVICE EXCEPTION #======================#
-class UniqueAgentDataServiceException(AgentException, UniqueDataServiceException):
+class UniqueAgentDataServiceException(AgentException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -26,7 +26,7 @@ class UniqueAgentDataServiceException(AgentException, UniqueDataServiceException
     2.  Wraps an exception that hits the try-finally block of an UniqueDataAgent's method.
 
     # PARENT:
-        *   UniqueDataServiceException
+        *   DatabaseException
 
     # PROVIDES:
     None

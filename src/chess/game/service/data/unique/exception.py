@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.game import GameException
-from chess.system import UniqueDataServiceException
+from chess.system import DatabaseException
 
 __all__ = [
     # ======================# UNIQUE_GAME_DATA_SERVICE EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# UNIQUE_GAME_DATA_SERVICE EXCEPTION #======================#
-class UniqueGameDataServiceException(GameException, UniqueDataServiceException):
+class UniqueGameDataServiceException(GameException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -27,7 +27,7 @@ class UniqueGameDataServiceException(GameException, UniqueDataServiceException):
 
     # PARENT:
         *   GameException
-        *   UniqueDataServiceException
+        *   DatabaseException
 
     # PROVIDES:
     None

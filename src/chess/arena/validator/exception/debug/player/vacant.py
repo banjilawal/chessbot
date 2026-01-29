@@ -22,7 +22,7 @@ class NoPlayersInArenaException(ArenaDebugException, NullException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an Arena's DatabaseService instance contains no players.
+    1.  Raised if an Arena's Database instance contains no players.
 
     # PARENT:
         *   ArenaDebugException

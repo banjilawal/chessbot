@@ -13,11 +13,11 @@ ___all__ = [
 ]
 
 from chess.hostage import HostageManifestException
-from chess.system import UniqueDataServiceException
+from chess.system import DatabaseException
 
 
 # ======================# HOSTAGE_MANIFEST_DIRECTORY_SERVICE EXCEPTION #======================#
-class HostageDatabaseException(HostageManifestException, UniqueDataServiceException):
+class HostageDatabaseException(HostageManifestException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

@@ -51,7 +51,7 @@ class PlayerValidator(Validator[Player]):
         3.  Use the identity service to verify the owner's designation and id.
         4.  If the owner is a MachinePlayer, confirm owner.engine_service is not null and
             is an EngineService instance.
-        5.  Confirm owner.teams is not null and is an UniqueTeamDataService instance.
+        5.  Confirm owner.teams is not null and is an TeamDatabase instance.
         6.  Confirm owner.games is not null and is an UniqueGameDataService instance.
         7.  If any check fails, return the exception inside a ValidationResult.
         8.  When all checks return the successfully validated Player instance inside a ValidationResult.

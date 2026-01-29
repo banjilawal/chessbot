@@ -47,7 +47,7 @@ class MachinePlayer(Player):
             *   id (nt)
             *   name (str)
             *   games (UniqueGameDataService)
-            *   teams (UniqueTeamDataService)
+            *   teams (TeamDatabase)
             *   engine_service (EngineService)
         # RETURNS:
             None

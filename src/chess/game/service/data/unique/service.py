@@ -11,11 +11,11 @@ from typing import List, cast
 
 from chess.game import Game, GameContext, GameContextService, GameListService, GameService
 from chess.system import (
-    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
+    DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
 
 
-class UniqueGameDataService(DatabaseService[Game]):
+class UniqueGameDataService(Database[Game]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -24,7 +24,7 @@ class UniqueGameDataService(DatabaseService[Game]):
     2.  Guarantee consistency of records in GameListService.
 
     # PARENT:
-        *   DatabaseService
+        *   Database
 
     # PROVIDES:
     None
@@ -33,7 +33,7 @@ class UniqueGameDataService(DatabaseService[Game]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DatabaseService class for inherited attributes.
+        *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "UniqueGameDataService"
     

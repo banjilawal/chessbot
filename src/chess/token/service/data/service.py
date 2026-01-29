@@ -31,7 +31,7 @@ class TokenListService(ListService[Token]):
     4.  Stack data structure for Token objects with no guarantee of uniqueness.
     
     # PARENT:
-        *   ListService[Token]
+        *   StackService[Token]
 
     # PROVIDES:
     None
@@ -40,7 +40,7 @@ class TokenListService(ListService[Token]):
     None
     
     # INHERITED ATTRIBUTES:
-        *   See ListService class for inherited attributes.
+        *   See StackService class for inherited attributes.
     """
     CAPACITY: int = 16
     SERVICE_NAME: str = "TokenListService"

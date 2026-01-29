@@ -7,7 +7,7 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-from chess.team import TeamException
+from chess.team import TeamDebugException
 from chess.system import NotRegisteredException
 
 
@@ -18,7 +18,7 @@ __all__ = [
 
 
 #======================# TEAM_NOT_REGISTERED_WITH_PLAYER EXCEPTION #======================#
-class TeamNotSubmittedPlayerRegistrationException(TeamException, NotRegisteredException):
+class TeamNotSubmittedPlayerRegistrationException(TeamDebugException, NotRegisteredException):
     """
     # ROLE: Error Tracing, Debugging
 

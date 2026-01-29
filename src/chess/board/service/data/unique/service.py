@@ -16,11 +16,11 @@ from chess.board import (
     UniqueBoardSearchFailedException
 )
 from chess.system import (
-    DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
+    DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
 
 
-class UniqueBoardDataService(DatabaseService[Board]):
+class UniqueBoardDataService(Database[Board]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -29,7 +29,7 @@ class UniqueBoardDataService(DatabaseService[Board]):
     2.  Guarantee consistency of records in BoardListService.
 
     # PARENT:
-        *   DatabaseService
+        *   Database
 
     # PROVIDES:
     None
@@ -38,7 +38,7 @@ class UniqueBoardDataService(DatabaseService[Board]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DatabaseService class for inherited attributes.
+        *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "UniqueBoardDataService"
     _board_data_service: BoardListService
@@ -167,7 +167,7 @@ class UniqueBoardDataService(DatabaseService[Board]):
         """
         # ACTION:
             1.  Get the result of calling _board_data_service.delete_board_by_id for method. If the deletion failed
-                wrap the exception inside the appropriate DatabaseService exceptions and send the exception chain
+                wrap the exception inside the appropriate Database exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
         # PARAMETERS:

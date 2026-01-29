@@ -403,7 +403,7 @@ class TeamService(EntityService[Team]):
                     )
                 )
             )
-        # --- Run the insertion operation on the ListService. ---#
+        # --- Run the insertion operation on the StackService. ---#
         insertion_result = team.roster.add_unique_token(piece)
         
         # Handle the case that the insertion was not completed.

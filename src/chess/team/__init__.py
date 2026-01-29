@@ -16,7 +16,7 @@ from .service import *
 from .roster import *
 from .hostage import *
 from .validator import *
+from .exception import *
 
 # Modules
 from .team import Team
-from .exception import TeamException

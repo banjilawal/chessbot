@@ -15,10 +15,10 @@ from chess.hostage import (
     HostageManifestList, HostageManifestService, UniqueHostageManifestInsertionFailedException,
     UniqueHostageManifestSearchFailedException
 )
-from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, DatabaseService, id_emitter
+from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 
 
-class HostageDatabase(DatabaseService[HostageManifest]):
+class HostageDatabase(Database[HostageManifest]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -27,7 +27,7 @@ class HostageDatabase(DatabaseService[HostageManifest]):
     2.  Guarantee consistency of records in HostageManifestList.
 
     # PARENT:
-        *   DatabaseService
+        *   Database
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class HostageDatabase(DatabaseService[HostageManifest]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DatabaseService class for inherited attributes.
+        *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "HostageDatabase"
     _data_service: HostageManifestList
@@ -134,7 +134,7 @@ class HostageDatabase(DatabaseService[HostageManifest]):
         if search_result.is_success:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                HostageDatabaseDatabaseServiceException(
+                HostageDatabaseDatabaseException(
                     message=f"ServiceId:{self.id}, {method}: {HostageDatabase.ERROR_CODE}",
                     ex=UniqueHostageManifestInsertionFailedException(
                         message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
@@ -170,7 +170,7 @@ class HostageDatabase(DatabaseService[HostageManifest]):
         # ACTION:
             1.  Get the result of calling _hostageManifest_data_service.delete_hostageManifest_by_id for method.
                 If the deletion failed
-                wrap the exception inside the appropriate DatabaseService exceptions and send the exception chain
+                wrap the exception inside the appropriate Database exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
         # PARAMETERS:

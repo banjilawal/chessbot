@@ -7,6 +7,8 @@ Created: 2025-08-04
 version: 1.0.0
 """
 
+from __future__ import annotations
+
 from chess.board import Board
 from chess.schema import Schema
 from chess.player import Player

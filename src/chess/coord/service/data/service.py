@@ -32,7 +32,7 @@ class CoordListService(ListService[Coord]):
     6.  Search utility.
 
     # PARENT:
-        *   ListService
+        *   StackService
 
     # PROVIDES:
     None
@@ -41,7 +41,7 @@ class CoordListService(ListService[Coord]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ListService class for inherited attributes.
+        *   See StackService class for inherited attributes.
     """
     SERVICE_NAME = "CoordListService"
     _current_coord: Optional[Coord]

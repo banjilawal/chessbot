@@ -32,7 +32,7 @@ class Player(ABC):
         *   id (int)
         *   designation (string)
         *   games (UniqueGameDataService)
-        *   team_assignment (UniqueTeamDataService)
+        *   team_assignment (TeamDatabase)
 
     # INHERITED ATTRIBUTES:
     None
@@ -54,7 +54,7 @@ class Player(ABC):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   teams (UniqueTeamDataService)
+            *   teams (TeamDatabase)
         # RETURNS:
             None
         # RAISES:

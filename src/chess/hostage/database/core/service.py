@@ -27,7 +27,7 @@ class HostageManifestList(ListService[HostageManifest]):
     4.  Stack data structure for HostageManifest objects with no guarantee of uniqueness.
 
     # PARENT:
-        *   ListService[HostageManifest]
+        *   StackService[HostageManifest]
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class HostageManifestList(ListService[HostageManifest]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ListService class for inherited attributes.
+        *   See StackService class for inherited attributes.
     """
     SERVICE_NAME = "HostageManifestList"
     

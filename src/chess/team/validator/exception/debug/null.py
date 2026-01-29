@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.system import NullException
-from chess.team import TeamException
+from chess.team import TeamDebugException
 
 
 # ======================# NULL_TEAM EXCEPTION #======================#
-class NullTeamException(TeamException, NullException):
+class NullTeamException(TeamDebugException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

@@ -22,7 +22,7 @@ class SnapshotFinder(Finder[Snapshot]):
     # ROLE: AbstractSearcher
 
     # RESPONSIBILITIES:
-    1.  Search AgentListService or DatabaseService objects for Agents with an attribute that matches the
+    1.  Search AgentListService or Database objects for Agents with an attribute that matches the
         target inside an SnapshotContext.
     2.  Safely forward any errors encountered during a search to the caller.
 

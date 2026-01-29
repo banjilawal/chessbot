@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.token import TokenException
-from chess.system import UniqueDataServiceException
+from chess.system import DatabaseException
 
 __all__ = [
     #======================# UNIQUE_TOKEN_DATA_SERVICE EXCEPTION #======================#
@@ -19,7 +19,7 @@ __all__ = [
 
 
 #======================# UNIQUE_TOKEN_DATA_SERVICE EXCEPTION #======================#
-class UniqueTokenDataServiceException(TokenException, UniqueDataServiceException):
+class UniqueTokenDataServiceException(TokenException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -28,7 +28,7 @@ class UniqueTokenDataServiceException(TokenException, UniqueDataServiceException
 
     # PARENT:
         *   TokenException
-        *   UniqueDataServiceException
+        *   DatabaseException
 
     # PROVIDES:
     None

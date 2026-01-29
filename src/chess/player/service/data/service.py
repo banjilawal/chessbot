@@ -28,7 +28,7 @@ class AgentListService(ListService[PlayerAgent]):
     6.  Search utility.
     
     # PARENT:
-        *   ListService
+        *   StackService
 
     # PROVIDES:
     None
@@ -37,7 +37,7 @@ class AgentListService(ListService[PlayerAgent]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ListService class for inherited attributes.
+        *   See StackService class for inherited attributes.
     """
     SERVICE_NAME = "AgentListService"
     

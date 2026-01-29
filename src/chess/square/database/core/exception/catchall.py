@@ -26,7 +26,7 @@ class SquareDataServiceException(SquareException, DataServiceException):
 
     # PARENT:
         *   SquareException
-        *   DataServiceException
+        *   StackServiceException
 
     # PROVIDES:
     None

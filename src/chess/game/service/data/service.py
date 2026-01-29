@@ -28,7 +28,7 @@ class GameListService(ListService[Game]):
     6.  Search utility.
     
     # PARENT:
-        *   ListService
+        *   StackService
 
     # PROVIDES:
         *   GameListService
@@ -37,7 +37,7 @@ class GameListService(ListService[Game]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ListService class for inherited attributes.
+        *   See StackService class for inherited attributes.
     """
     DEFAULT_NAME = "GameListService"
     

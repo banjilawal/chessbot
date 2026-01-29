@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.coord import CoordException
-from chess.system import UniqueDataServiceException
+from chess.system import DatabaseException
 
 __all__ = [
     # ======================# UNIQUE_COORD_DATA_SERVICE EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# UNIQUE_COORD_DATA_SERVICE EXCEPTION #======================#
-class UniqueCoordDataServiceException(CoordException, UniqueDataServiceException):
+class UniqueCoordDataServiceException(CoordException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

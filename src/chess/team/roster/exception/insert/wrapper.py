@@ -24,7 +24,7 @@ class FillingTeamRosterFailedException(TeamRosterException):
     1.  Carry the DebugException that explains why initializing the team's roster failed.
 
     # PARENT:
-        *   UniqueTeamDataServiceException
+        *   TeamDatabaseException
 
     # PROVIDES:
     None

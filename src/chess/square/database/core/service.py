@@ -34,7 +34,7 @@ class SquareListService(ListService[Square]):
     4.  Stack data structure for Square objects with no guarantee of uniqueness.
 
     # PARENT:
-        *   ListService[Square]
+        *   StackService[Square]
 
     # PROVIDES:
     None
@@ -43,7 +43,7 @@ class SquareListService(ListService[Square]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ListService class for inherited attributes.
+        *   See StackService class for inherited attributes.
     """
     SERVICE_NAME = "SquareListService"
     _capacity: int

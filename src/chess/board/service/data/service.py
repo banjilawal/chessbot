@@ -30,7 +30,7 @@ class BoardListService(ListService[Board]):
     4.  Stack data structure for Board objects with no guarantee of uniqueness.
 
     # PARENT:
-        *   ListService[Board]
+        *   StackService[Board]
 
     # PROVIDES:
     None
@@ -39,7 +39,7 @@ class BoardListService(ListService[Board]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See ListService class for inherited attributes.
+        *   See StackService class for inherited attributes.
     """
     SERVICE_NAME = "BoardListService"
     

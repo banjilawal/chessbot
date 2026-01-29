@@ -13,11 +13,11 @@ ___all__ = [
 ]
 
 from chess.board import BoardException
-from chess.system import UniqueDataServiceException
+from chess.system import DatabaseException
 
 
 # ======================# UNIQUE_BOARD_DATA_SERVICE EXCEPTION #======================#
-class UniqueBoardDataServiceException(BoardException, UniqueDataServiceException):
+class UniqueBoardDataServiceException(BoardException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -38,5 +38,5 @@ class UniqueBoardDataServiceException(BoardException, UniqueDataServiceException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_DATA_SERVICE_ERROR"
+    ERROR_CODE = "DATABASE_ERROR"
     DEFAULT_MESSAGE = "UniqueBoardDataService raised an exception."

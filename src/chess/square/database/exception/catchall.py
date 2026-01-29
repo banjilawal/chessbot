@@ -13,10 +13,10 @@ ___all__ = [
 ]
 
 from chess.square import SquareException
-from chess.system import UniqueDataServiceException
+from chess.system import DatabaseException
 
 # ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
-class SquareDatabaseException(SquareException, UniqueDataServiceException):
+class SquareDatabaseException(SquareException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

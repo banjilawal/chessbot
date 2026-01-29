@@ -1,0 +1,41 @@
+# src/chess/tea/database/core/exception/catchall.py
+
+"""
+Module: chess.team.database.core.exception.catchall
+Author: Banji Lawal
+Created: 2025-11-24
+version: 1.0.0
+"""
+
+___all__ = [
+    # ======================# TEAM_DATA_SERVICE EXCEPTION #======================#
+    "TeamDataServiceException",
+]
+
+from chess.team import TeamException
+from chess.system import DataServiceException
+
+
+# ======================# TEAM_DATA_SERVICE EXCEPTION #======================#
+class TeamDataServiceException(TeamException, DataServiceException):
+    """
+    # ROLE: Exception Wrapper, Catchall Exception
+
+    # RESPONSIBILITIES:
+    1.  Encapsulate TeamListService method outputs when there is a failure.
+
+    # PARENT:
+        *   ServiceException
+        *   TeamException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "TEAM_DATA_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "TeamListService raised an exception."

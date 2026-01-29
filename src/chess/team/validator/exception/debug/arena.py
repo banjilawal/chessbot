@@ -7,15 +7,18 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-from chess.team import TeamException
+
 
 __all__ = [
     # ======================# TEAM_NOT_SUBMITTED_ARENA_REGISTRATION EXCEPTION #======================#
     "TeamNotSubmittedArenaRegistrationException",
 ]
 
+from chess.team import TeamDebugException
+
+
 #======================# TEAM_NOT_SUBMITTED_ARENA_REGISTRATION EXCEPTION #======================#
-class TeamNotSubmittedArenaRegistrationException(TeamException):
+class TeamNotSubmittedArenaRegistrationException(TeamDebugException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +27,7 @@ class TeamNotSubmittedArenaRegistrationException(TeamException):
         available in the arena.
     
     # PARENT:
-        *   TeamException
+        *   TeamDebugException
         *   NotRegisteredException
 
     # PROVIDES:

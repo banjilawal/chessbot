@@ -22,7 +22,7 @@ class SinglePlayerInArena(ArenaDebugException, BoundsException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Raised if an Arena's DatabaseService instance contains only one player.
+    1.  Raised if an Arena's Database instance contains only one player.
 
     # PARENT:
         *   ArenaDebugException

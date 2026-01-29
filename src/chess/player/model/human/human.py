@@ -46,7 +46,7 @@ class HumanPlayer(Player):
             *   id (nt)
             *   name (str)
             *   games (UniqueGameDataService)
-            *   teams (UniqueTeamDataService)
+            *   teams (TeamDatabase)
 
         # RETURNS:
         None
