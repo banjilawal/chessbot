@@ -1,4 +1,4 @@
-# src/chess/system/collectionservice/exception/base.py
+# src/chess/system/collection/exception/base.py
 
 """
 Module: chess.system.collection.service.exception.base

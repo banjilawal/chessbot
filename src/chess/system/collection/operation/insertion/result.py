@@ -1,4 +1,4 @@
-# src/chess/system/collectionresult/insertion/result.py
+# src/chess/system/collection/result/insertion/result.py
 
 """
 Module: chess.system.collection.result.insertion.result

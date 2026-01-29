@@ -1,4 +1,4 @@
-# src/chess/system/collectionservice/exception/pop.py
+# src/chess/system/collection/exception/pop.py
 
 """
 Module: chess.system.collection.service.exception.pop
@@ -8,7 +8,7 @@ Version: 1.0.0
 """
 
 
-from chess.system import DataServiceException
+from chess.system import StackServiceException
 
 __all__ = [
     # ====================== POPPING_EMPTY_STACK EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 # ====================== POPPING_EMPTY_STACK EXCEPTION #======================#
-class PoppingEmptyStackException(DataServiceException):
+class PoppingEmptyStackException(StackServiceException):
     """
     # ROLE: Error Tracing, Debugging
 

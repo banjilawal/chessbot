@@ -1,4 +1,4 @@
-# src/chess/system/collectionservice/unique/exception.duplicate.py
+# src/chess/system/collection/unique/exception.duplicate.py
 
 """
 Module: chess.system.collection.service.unique.exception.duplicate
@@ -7,16 +7,16 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import DatabaseException
+from chess.system import CollectionException
 
 __all__ = [
-    #======================# ADDING_DUPLICATE_DATA_EXCEPTION  #======================#
-    "AddingDuplicateDataException",
+    #======================# CANNOT_ADD_DUPLICATE_ITEM EXCEPTION  #======================#
+    "CannotAddDuplicateException",
 ]
 
 
-#======================# ADDING_DUPLICATE_DATA_EXCEPTION  #======================#
-class AddingDuplicateDataException(DatabaseException):
+#======================# CANNOT_ADD_DUPLICATE_ITEM EXCEPTION  #======================#
+class CannotAddDuplicateException(CollectionException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class AddingDuplicateDataException(DatabaseException):
     Indicate an attempt was made to add a duplicate item o a collection that only allows uniques.
 
     # PARENT:
-        *   DatabaseException
+        *   CollectionException
 
     # PROVIDES:
     None
@@ -35,5 +35,5 @@ class AddingDuplicateDataException(DatabaseException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_DUPLICATE_DATA_ERROR"
+    ERROR_CODE = "CANNOT_ADD_DUPLICATE_ITEM ERROR"
     DEFAULT_MESSAGE = "The data already exists. Adding duplicate data is not allowed."

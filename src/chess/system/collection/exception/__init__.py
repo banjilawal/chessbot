@@ -13,7 +13,6 @@ Version: 1.0.0
 None
 
 # Modules
-None
 from .base import CollectionException
 from .null import NullCollectionException
 from .kind import WrongCollectionTypeException

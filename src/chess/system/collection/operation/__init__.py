@@ -17,4 +17,4 @@ from .insertion import *
 from .computation import *
 
 # Modules
-None
+from .result import DataResult

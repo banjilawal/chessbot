@@ -1,7 +1,7 @@
 # src/chess/system/database/exception/catchall.py
 
 """
-Module: chess.system.collectionbase.exception.catchall
+Module: chess.system.database.exception.catchall
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
