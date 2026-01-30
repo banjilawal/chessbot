@@ -1,7 +1,7 @@
-# src/chess/owner/service/data/unique/exception.py
+# src/chess/owner/database/exception.py
 
 """
-Module: chess.owner.service.data.unique.exception
+Module: chess.owner.database.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -25,7 +25,7 @@ from chess.team import (
     ZeroTeamContextFlagsException
 )
 from chess.token import (
-    AddingDuplicateTokenException, CombatantToken, Token, TokenBuildManifest, TokenBuildManifestValidator, TokenContext,
+    AddingDuplicateTokenException, CombatantToken, Token, TokenManifest, TokenManifestValidator, TokenContext,
     TokenService,
     TokenServiceCapacityException
 )
@@ -58,7 +58,7 @@ class TeamService(EntityService[Team]):
     _schema_service: SchemaService
     _roster_relation_analyzer: RosterRelationAnalyzer
     _hostage_relation_analyzer: HostageRelationAnalyzer
-    _token_build_manifest_validator: TokenBuildManifestValidator
+    _token_build_manifest_validator: TokenManifestValidator
     
     def __init__(
             self,
@@ -69,7 +69,7 @@ class TeamService(EntityService[Team]):
             schema_service: SchemaService = SchemaService(),
             roster_relation_analyzer: RosterRelationAnalyzer = RosterRelationAnalyzer(),
             hostage_relation_analyzer: HostageRelationAnalyzer = HostageRelationAnalyzer(),
-            token_build_manifest_validator: TokenBuildManifestValidator = TokenBuildManifestValidator(),
+            token_build_manifest_validator: TokenManifestValidator = TokenManifestValidator(),
     ):
         """
         # ACTION:
@@ -103,7 +103,7 @@ class TeamService(EntityService[Team]):
         return cast(TeamValidator, self.entity_validator)
     
     @property
-    def token_build_manifest_validator(self) -> TokenBuildManifestValidator:
+    def token_build_manifest_validator(self) -> TokenManifestValidator:
         return self._token_build_manifest_validator
     
     @property
@@ -155,6 +155,7 @@ class TeamService(EntityService[Team]):
                 )
             )
         return search_result
+
     
     def fill_team_roster(
             self,
@@ -250,7 +251,7 @@ class TeamService(EntityService[Team]):
             # --- Build the occupant. ---#
             
             token_build_result = team.roster.integrity_service.builder.build(
-                token_manifest=TokenBuildManifest(
+                token_manifest=TokenManifest(
                     owner=team,
                     roster_number=index,
                     id=id_emitter.token_id,

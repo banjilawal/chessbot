@@ -14,9 +14,9 @@ from chess.rank import RankService
 from chess.coord import CoordService
 from chess.square import SquareService
 from chess.system import IdentityService, ValidationResult, Validator
-from chess.token import NullTokenBuildManifestException, TokenBuildManifest, TokenBuildManifestValidationFailedException
+from chess.token import NullTokenBuildManifestException, TokenManifest, TokenBuildManifestValidationFailedException
 
-class TokenBuildManifestValidator(Validator[TokenBuildManifest]):
+class TokenManifestValidator(Validator[TokenManifest]):
     
     @classmethod
     def validate(
@@ -27,8 +27,8 @@ class TokenBuildManifestValidator(Validator[TokenBuildManifest]):
             coord_service: CoordService = CoordService(),
             square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[TokenBuildManifest]:
-        method = "TokenBuildManifestValidator.validate"
+    ) -> ValidationResult[TokenManifest]:
+        method = "TokenManifestValidator.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -40,7 +40,7 @@ class TokenBuildManifestValidator(Validator[TokenBuildManifest]):
                 )
             )
         # Handle the case that the candidate is the wrong type
-        if not isinstance(candidate, TokenBuildManifest):
+        if not isinstance(candidate, TokenManifest):
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenBuildManifestValidationFailedException(
@@ -48,8 +48,8 @@ class TokenBuildManifestValidator(Validator[TokenBuildManifest]):
                     ex=NullTokenBuildManifestException(f"{method}: {NullTokenBuildManifestException.DEFAULT_MESSAGE}")
                 )
             )
-        # --- Cast the candidate to a TokenBuildManifest for additional tests ---#
-        manifest = cast(TokenBuildManifest, candidate)
+        # --- Cast the candidate to a TokenManifest for additional tests ---#
+        manifest = cast(TokenManifest, candidate)
         
         # Handle the case that the id or designation are not certified as safe.
         identity_validation = identity_service.validate_identity(
@@ -104,7 +104,7 @@ class TokenBuildManifestValidator(Validator[TokenBuildManifest]):
                     ex=square_validation.exception
                 )
             )
-        # --- Return the successfully validated TokenBuildManifest instance to the caller  ---#
+        # --- Return the successfully validated TokenManifest instance to the caller  ---#
         # With all tests passed return the occupant in the ValidationResult.
         return ValidationResult.success(payload=manifest)
     

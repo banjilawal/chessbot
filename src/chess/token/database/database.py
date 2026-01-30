@@ -1,7 +1,7 @@
-# src/chess/token/service/data/unique/service.py
+# src/chess/token/database/service.py
 
 """
-Module: chess.token.service.data.unique.service
+Module: chess.token.database.service
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

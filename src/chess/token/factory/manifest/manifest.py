@@ -1,7 +1,7 @@
-# src/chess/token/factory/param/param.py
+# src/chess/token/factory/manifest/manifest.py
 
 """
-Module: chess.token.factory.param.param
+Module: chess.token.factory.manifest.manifest
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -12,7 +12,7 @@ from chess.rank import Rank
 from chess.square import Square
 
 
-class TokenBuildManifest:
+class TokenManifest:
     _id: int
     _rank: Rank
     _owner: Team
@@ -59,6 +59,3 @@ class TokenBuildManifest:
     @property
     def opening_square(self) -> Square:
         return self._opening_square
-    
-    def _square_setter (self):
-        self._owner.schema.

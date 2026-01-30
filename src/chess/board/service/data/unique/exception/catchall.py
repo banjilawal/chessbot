@@ -1,7 +1,7 @@
-# src/chess/board/service/data/unique/exception/catchall.py
+# src/chess/board/database/exception/catchall.py
 
 """
-Module: chess.board.service.data.unique.exception.catchall
+Module: chess.board.database.exception.catchall
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

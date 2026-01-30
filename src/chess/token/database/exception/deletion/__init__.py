@@ -1,7 +1,7 @@
-# src/chess/token/service/data/unique/exception/deletion/__init__.py
+# src/chess/token/database/exception/deletion/__init__.py
 
 """
-Module: chess.token.service.data.unique.exception.deletion.__init__
+Module: chess.token.database.exception.deletion.__init__
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

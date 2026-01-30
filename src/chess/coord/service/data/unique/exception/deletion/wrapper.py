@@ -1,7 +1,7 @@
-# src/chess/coord/service/data/unique/exception/deletion/wrapper.py
+# src/chess/coord/database/exception/deletion/wrapper.py
 
 """
-Module: chess.coord.service.data.unique.exception.deletion.wrapper
+Module: chess.coord.database.exception.deletion.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

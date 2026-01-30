@@ -1,7 +1,7 @@
-# src/chess/token/service/data/unique/exception/insertion/duplicate.py
+# src/chess/token/database/exception/insertion/duplicate.py
 
 """
-Module: chess.token.service.data.unique.exception.insertion.duplicate
+Module: chess.token.database.exception.insertion.duplicate
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

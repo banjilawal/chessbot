@@ -13,8 +13,8 @@ from chess.system import BuildResult, Builder, LoggingLevelRouter
 from chess.team import Team, TeamService
 
 from chess.token import (
-    AddingDuplicateTokenException, CombatantToken, KingToken, PawnToken, TokenBuildFailedException, TokenBuildManifest,
-    TokenBuildManifestValidator, Token
+    AddingDuplicateTokenException, CombatantToken, KingToken, PawnToken, TokenBuildFailedException, TokenManifest,
+    TokenManifestValidator, Token
 )
 
 
@@ -45,10 +45,10 @@ class TokenFactory(Builder[Token]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            manifest: TokenBuildManifest,
+            manifest: TokenManifest,
             # team_service: TeamService = TeamService(),
             formation_service: FormationService = FormationService(),
-            manifest_validator: TokenBuildManifestValidator = TokenBuildManifestValidator(),
+            manifest_validator: TokenManifestValidator = TokenManifestValidator(),
     ) -> BuildResult[Token]:
         """
         # ACTION:

@@ -1,7 +1,7 @@
-# src/chess/owner/service/data/unique/service.py
+# src/chess/owner/database/service.py
 
 """
-Module: chess.owner.service.data.unique.service
+Module: chess.owner.database.service
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

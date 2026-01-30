@@ -9,20 +9,20 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# TOKEN_BUILD_MANIFEST EXCEPTION #======================#
-    "TokenBuildManifestException",
+    # ======================# TOKEN_MANIFEST EXCEPTION #======================#
+    "TokenManifestException",
 ]
 
 from chess.system import ChessException
 
 
-# ======================# TOKEN_BUILD_MANIFEST EXCEPTION #======================#
-class TokenBuildManifestException(ChessException):
+# ======================# TOKEN_MANIFEST EXCEPTION #======================#
+class TokenManifestException(ChessException):
     """
     # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for TokenBuildManifest errors.
+    1.  Catchall for TokenManifest errors.
 
     # PARENT:
         *   ChessException
@@ -33,5 +33,5 @@ class TokenBuildManifestException(ChessException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_BUILD_MANIFEST_ERROR"
-    DEFAULT_MESSAGE = "TokenBuildManifest raised an exception."
+    ERROR_CODE = "TOKEN_MANIFEST_ERROR"
+    DEFAULT_MESSAGE = "TokenManifest raised an exception."

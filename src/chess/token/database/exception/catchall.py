@@ -1,7 +1,7 @@
-# src/chess/token/service/data/unique/exception/catchall.py
+# src/chess/token/database/exception/catchall.py
 
 """
-Module: chess.token.service.data.unique.exception.catchall
+Module: chess.token.database.exception.catchall
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

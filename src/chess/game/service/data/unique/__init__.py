@@ -1,13 +1,13 @@
-# src/chess/game/service/data/unique/__init__.py
+# src/chess/game/database/__init__.py
 
 """
-Module: chess.game.service.data.unique.__init__
+Module: chess.game.database.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== GAME.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
+#=========== GAME.DATABASE PACKAGE CONTENTS ===========#
 
 # Packages
 None

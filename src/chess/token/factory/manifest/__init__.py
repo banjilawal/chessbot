@@ -10,8 +10,9 @@ version: 1.0.0
 # =========== TOKEN.FACTORY.MANIFEST PACKAGE CONTENTS ===========#
 
 # Packages
+from .builder import *
 from .validator import *
 
 # Modules
-from .manifest import TokenBuildManifest
-from .exception import TokenBuildManifestException
+from .manifest import TokenManifest
+from .exception import TokenManifestException

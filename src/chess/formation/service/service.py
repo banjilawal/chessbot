@@ -1,8 +1,8 @@
 import sys
 from typing import List, cast
 
-from chess.board import Board
-from chess.board.service.service import BoardService
+from chess.team import Team
+from chess.team.service.service import TeamService
 from chess.formation import Formation, FormationKey, FormationKeyService, FormationValidator, FormationServiceException
 from chess.persona import PersonaService
 from chess.square import Square, SquareContext
@@ -84,20 +84,20 @@ class FormationService(HashService[Formation]):
     
 
     @LoggingLevelRouter.monitor
-    def get_board_square(
+    def derive_token_manifest(
             self,
+            team: Team,
             token_designation: str,
-            board: Board,
-            board_service: BoardService = BoardService()
+            team_service: TeamService = TeamService()
     ) -> SearchResult[List[Square]]:
         """
         # ACTION:
-            1.  If the board fails validation send the exception chain in the SearchResult.
-            2.  Find each formation's board item by their designation ane put them in a list.
+            1.  If the team fails validation send the exception chain in the SearchResult.
+            2.  Find each formation's team item by their designation ane put them in a list.
             3.  if any search fails return the exception instead of the list.
         # PARAMETERS:
-            *   board (Board)
-            *   board_service (BoardService)
+            *   team (Team)
+            *   team_service (TeamService)
          # RETURNS:
             *   SearchResult[List[[Square]] containing either:
                     - On error: Exception , payload null
@@ -111,16 +111,16 @@ class FormationService(HashService[Formation]):
             *   TeamContextValidationFailedException
             *   TeamContextValidationRouteException
         """
-        method = "FormationService.get_board_square"
+        method = "FormationService.get_team_square"
         
-        # Handle the case that the board does not get certfied safe.
-        board_validation = board_service.validator.validate(candidate=board)
+        # Handle the case that the team does not get certfied safe.
+        team_validation = team_service.validator.validate(candidate=team)
         # Return the exception chain on failure.
-        if board_validation.is_failure:
+        if team_validation.is_failure:
             return SearchResult.failure(
                 FormationServiceException(
                     message=f"{method}: {FormationServiceException.ERROR_CODE}",
-                    ex=board_validation.exception
+                    ex=team_validation.exception
                 )
             )
         formation_search_result = self.lookup_formation(super_key=FormationKey(designation=token_designation))
@@ -134,7 +134,7 @@ class FormationService(HashService[Formation]):
                 )
             )
         formation = formation_search_result.payload[0]
-        square_search_result = board.squares.search_squares(context=SquareContext(name=formation.square_name))
+        square_search_result = team.squares.search_squares(context=SquareContext(name=formation.square_name))
         # Handle the case that the square search fails.
         if square_search_result.is_failure:
             # Return the exception chain on failure.
@@ -157,24 +157,24 @@ class FormationService(HashService[Formation]):
             "square": square_search_result.payload[0],
             "formation": formation,
         }
-        if square_search_result.is_failure:
-        squares = List[Square]
-        # Loop through the formations to find their squares from the board.
-        for formation in Formation:
-            square_search = board.squares.search(context=SquareContext(name=formation.square_name))
-
-            # Handle the case that no item with the denomination is found.
-            if square_search.is_empty:
-                # Return the exception chain on failure.
-                return SearchResult.failure(
-                    FormationServiceException(
-                        message=f"{method}: {FormationServiceException.ERROR_CODE}",
-                        ex=InvariantBreachException(f"{method}: Square {formation.square_name} not found.")
-                    )
-                )
-            # Make sure to cast then return to the caller.
-            squares.append(cast(Square, square_search.payload[0]))
-        return SearchResult.success(squares)
+        # if square_search_result.is_failure:
+        # squares = List[Square]
+        # # Loop through the formations to find their squares from the team.
+        # for formation in Formation:
+        #     square_search = team.squares.search(context=SquareContext(name=formation.square_name))
+        #
+        #     # Handle the case that no item with the denomination is found.
+        #     if square_search.is_empty:
+        #         # Return the exception chain on failure.
+        #         return SearchResult.failure(
+        #             FormationServiceException(
+        #                 message=f"{method}: {FormationServiceException.ERROR_CODE}",
+        #                 ex=InvariantBreachException(f"{method}: Square {formation.square_name} not found.")
+        #             )
+        #         )
+        #     # Make sure to cast then return to the caller.
+        #     squares.append(cast(Square, square_search.payload[0]))
+        # return SearchResult.success(squares)
             
     @LoggingLevelRouter.monitor
     def lookup_formation(self, super_key: FormationKey) -> SearchResult[List[Formation]]:

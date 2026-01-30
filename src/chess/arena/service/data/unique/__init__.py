@@ -1,13 +1,13 @@
-# src/chess/arena/service/data/unique/__init__.py
+# src/chess/arena/database/__init__.py
 
 """
-Module: chess.arena.service.data.unique.__init__
+Module: chess.arena.database.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== ARENA.SERVICE.DATA.UNIQUE PACKAGE CONTENTS ===========#
+# =========== ARENA.DATABASE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

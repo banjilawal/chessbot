@@ -1,7 +1,7 @@
-# src/chess/coord/service/data/unique/exception/duplicate.py
+# src/chess/coord/database/exception/duplicate.py
 
 """
-Module: chess.coord.service.data.unique.exception.duplicate
+Module: chess.coord.database.exception.duplicate
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

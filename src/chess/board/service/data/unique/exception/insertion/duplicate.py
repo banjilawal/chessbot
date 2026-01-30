@@ -1,7 +1,7 @@
-# src/chess/board/service/data/unique/exception/insertion/duplicate.py
+# src/chess/board/database/exception/insertion/duplicate.py
 
 """
-Module: chess.board.service.data.unique.exception.insertion.duplicate
+Module: chess.board.database.exception.insertion.duplicate
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

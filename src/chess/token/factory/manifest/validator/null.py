@@ -9,24 +9,24 @@ version: 1.0.0
 
 __all__ = [
     # ======================# NULL_TOKEN_BUILD_MANIFEST EXCEPTION #======================#
-    "NullTokenBuildManifestException",
+    "NullTokenManifestException",
 ]
 
 from chess.system import NullException
-from chess.token import TokenBuildManifestException
+from chess.token import TokenManifestException
 
 
 # ======================# NULL_TOKEN_BUILD_MANIFEST EXCEPTION #======================#
-class NullTokenBuildManifestException(TokenBuildManifestException, NullException):
+class NullTokenManifestException(TokenManifestException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that TokenBuildManifest validation failed because the candidate was null.
+    1.  Indicate that TokenManifest validation failed because the candidate was null.
 
     # PARENT:
         *   NullException
-        *   TokenBuildManifestException
+        *   TokenManifestException
 
     # PROVIDES:
     None
@@ -38,4 +38,4 @@ class NullTokenBuildManifestException(TokenBuildManifestException, NullException
     None
     """
     ERROR_CODE = "NULL_TOKEN_BUILD_MANIFEST_ERROR"
-    DEFAULT_MESSAGE = "TokenBuildManifest validation failed: The candidate was null."
+    DEFAULT_MESSAGE = "TokenManifest validation failed: The candidate was null."

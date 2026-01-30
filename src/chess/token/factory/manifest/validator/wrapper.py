@@ -1,7 +1,7 @@
-# src/chess/token/factory/manifest/exception/exception.py
+# src/chess/token/factory/manifest/exception.py
 
 """
-Module: chess.token.factory.manifest.exception.exception
+Module: chess.token.factory.manifest.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TOKEN_BUILD_MANIFEST_VALIDATION_FAILURE EXCEPTION #======================#
-    "TokenBuildManifestValidationFailedException",
+    "TokenManifestValidationFailedException",
 ]
 
-from chess.token import TokenBuildManifestException
+from chess.token import TokenManifestException
 from chess.system import ValidationFailedException
 
 
 # ======================# TOKEN_BUILD_MANIFEST_VALIDATION_FAILURE EXCEPTION #======================#
-class TokenBuildManifestValidationFailedException(TokenBuildManifestException, ValidationFailedException):
+class TokenManifestValidationFailedException(TokenManifestException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 
@@ -39,4 +39,4 @@ class TokenBuildManifestValidationFailedException(TokenBuildManifestException, V
     None
     """
     ERROR_CODE = "TOKEN_BUILD_MANIFEST_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "TokenBuildManifest validation failed."
+    DEFAULT_MESSAGE = "TokenManifest validation failed."
