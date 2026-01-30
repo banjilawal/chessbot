@@ -1,7 +1,7 @@
-# src/chess/occupant/validator/exception/wrapper.py
+# src/chess/token/validator/exception/wrapper.py
 
 """
-Module: chess.occupant.validator.exception.wrapper
+Module: chess.token.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

@@ -1,4 +1,4 @@
-# src/chess/tea/database/core/__init__.py
+# src/chess/team/database/core/__init__.py
 
 """
 Module: chess.team.database.core.__init__
@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .service import  TeamListService
+from .stack import  TeamStackService

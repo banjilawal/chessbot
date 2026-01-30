@@ -1,7 +1,7 @@
-# src/chess/board/square/exception/catchall.py
+# src/chess/board/item/exception/catchall.py
 
 """
-Module: chess.board.square.exception.catchall
+Module: chess.board.item.exception.catchall
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

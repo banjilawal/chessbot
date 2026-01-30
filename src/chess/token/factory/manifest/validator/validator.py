@@ -1,7 +1,7 @@
-# src/chess/occupant/factory/manifest/exception/validator.py
+# src/chess/token/factory/manifest/exception/validator.py
 
 """
-Module: chess.occupant.factory.manifest.exception.validator
+Module: chess.token.factory.manifest.exception.validator
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -94,7 +94,7 @@ class TokenBuildManifestValidator(Validator[TokenBuildManifest]):
                     ex=coord_validation.exception
                 )
             )
-        # Handle the case that the square is not certified as safe.
+        # Handle the case that the item is not certified as safe.
         square_validation = square_service.validator.validate(candidate=manifest.opening_square)
         if square_validation.is_failure:
             # Send the exception chain on failure.

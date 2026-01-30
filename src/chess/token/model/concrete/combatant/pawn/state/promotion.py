@@ -1,7 +1,7 @@
-# src/chess/occupant/model/concrete/combatant/pawn/state/promotion.py
+# src/chess/token/model/concrete/combatant/pawn/state/promotion.py
 
 """
-Module: chess.occupant.model.concrete.combatant.pawn.state.promotion
+Module: chess.token.model.concrete.combatant.pawn.state.promotion
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

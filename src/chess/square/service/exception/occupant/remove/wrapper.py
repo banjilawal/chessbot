@@ -22,7 +22,7 @@ class RemovingSquareOccupantFailedException(SquareException, DeletionFailedExcep
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why removing a occupant from a square failed..
+    1.  Wrap debug exceptions indicating why removing a occupant from a item failed..
 
     # PARENT:
         *   SquareException
@@ -39,4 +39,4 @@ class RemovingSquareOccupantFailedException(SquareException, DeletionFailedExcep
     None
     """
     ERROR_CODE = "REMOVING_SQUARE_OCCUPANT_FAILURE_ERROR"
-    DEFAULT_MESSAGE = "Removing occupant from square failed."
+    DEFAULT_MESSAGE = "Removing occupant from item failed."

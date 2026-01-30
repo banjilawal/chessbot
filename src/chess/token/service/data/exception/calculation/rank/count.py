@@ -1,7 +1,7 @@
-# src/chess/occupant/service/data/exception/calculation/rank/count.py
+# src/chess/token/service/data/exception/calculation/rank/count.py
 
 """
-Module: chess.occupant.service.data.exception.calculation.rank.count
+Module: chess.token.service.data.exception.calculation.rank.count
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

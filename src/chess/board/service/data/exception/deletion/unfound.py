@@ -21,7 +21,7 @@ class BoardDoesNotExistForRemovalException(BoardException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove instances of a board by a unique attribute failed because no items
+    1.  Indicate that an attempt to remove instances of a board by a unique attribute failed because no bag
         matching the property were found in the dataset.
 
     # PARENT:

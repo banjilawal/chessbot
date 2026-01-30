@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/update/result.py
+# src/chess/system/collection/operation/update/result.py
 
 """
 Module: chess.system.collection.operation.update.result

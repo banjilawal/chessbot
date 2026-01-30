@@ -21,7 +21,7 @@ class CollisionException(InconsistencyException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a set of items of the same class, has two items share a value for their unique property
+    1.  Indicate that a set of bag of the same class, has two bag share a value for their unique property
 
     # PARENT:
         *   InconsistencyException

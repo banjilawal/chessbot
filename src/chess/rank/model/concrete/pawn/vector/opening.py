@@ -19,7 +19,7 @@ class OpeningPawnVectorSet(PawnVectorSet):
 
     # RESPONSIBILITIES:
     1.  Provides a read-ony sets of vectors for computing attack targets and peaceful destinations
-        for a pawn that has not moved from its starting square.
+        for a pawn that has not moved from its starting item.
 
     # PARENT:
         *   PawnVectorSet

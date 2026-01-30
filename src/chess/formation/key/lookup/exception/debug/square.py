@@ -1,7 +1,7 @@
-# src/chess/formation/key/lookup/exception/debug/square.py
+# src/chess/formation/key/lookup/exception/debug/item.py
 
 """
-Module: chess.formation.key.lookup.exception.debug.square
+Module: chess.formation.key.lookup.exception.debug.item
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
@@ -22,7 +22,7 @@ class FormationSquareBoundsException(FormationException, BoundsException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a Formation lookup failed because the square value was not permitted for the Formation
+    1.  Indicate that a Formation lookup failed because the item value was not permitted for the Formation
         attribute.
 
     # PARENT:
@@ -39,4 +39,4 @@ class FormationSquareBoundsException(FormationException, BoundsException):
     None
     """
     ERROR_CODE = "FORMATION_SQUARE_NAME_BOUNDS"
-    DEFAULT_MESSAGE = "FormationLookup failed: Target was outside the set of possible Formation square names."
+    DEFAULT_MESSAGE = "FormationLookup failed: Target was outside the set of possible Formation item names."

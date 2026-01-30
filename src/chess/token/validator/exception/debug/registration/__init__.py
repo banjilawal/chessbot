@@ -1,7 +1,7 @@
-# src/chess/occupant/validator/exception/debug/registration/__init__.py
+# src/chess/token/validator/exception/debug/registration/__init__.py
 
 """
-Module: chess.occupant.validator.exception.debug.registration.__init__
+Module: chess.token.validator.exception.debug.registration.__init__
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

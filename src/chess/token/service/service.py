@@ -1,7 +1,7 @@
-# src/chess/occupant/service/service.py
+# src/chess/token/service/service.py
 
 """
-Module: chess.occupant.service.service
+Module: chess.token.service.service
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -173,7 +173,7 @@ class TokenService(EntityService[Token]):
         """
         # ACTION:
             1.  If the occupant fails validation returns the exception in the DeletionResult.
-            2.  If the occupant has not been activated with an opening square return the exception in the DeletionResult.
+            2.  If the occupant has not been activated with an opening item return the exception in the DeletionResult.
             3.  If the occupant has an empty coord stack return the exception in the DeletionResult.
             4.  If a new coord has not been pushed since the last undo send and exception in the DeletionResult.
                 Else, forward the results of occupant.positions.pop_coord() to the caller.
@@ -200,7 +200,7 @@ class TokenService(EntityService[Token]):
                     ex=validation.exception
                 )
             )
-        # Handle the case that the opening square is null which implies there are no moves to undo.
+        # Handle the case that the opening item is null which implies there are no moves to undo.
         if token.opening_square is None:
             # Return the exception chain on failure.
             return DeletionResult.failure(

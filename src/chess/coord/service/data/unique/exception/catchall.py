@@ -11,12 +11,12 @@ from chess.coord import CoordException
 from chess.system import DatabaseException
 
 __all__ = [
-    # ======================# UNIQUE_COORD_DATA_SERVICE EXCEPTION #======================#
+    # ======================# UNIQUE_COORD_STACK_SERVICE EXCEPTION #======================#
     "UniqueCoordDataServiceException",
 ]
 
 
-# ======================# UNIQUE_COORD_DATA_SERVICE EXCEPTION #======================#
+# ======================# UNIQUE_COORD_STACK_SERVICE EXCEPTION #======================#
 class UniqueCoordDataServiceException(CoordException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -39,5 +39,5 @@ class UniqueCoordDataServiceException(CoordException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_COORD_DATA_SERVICE_ERROR"
+    ERROR_CODE = "UNIQUE_COORD_DATABASE_CORE_ERROR"
     DEFAULT_ERROR_CODE = "UniqueCoordDataService raised an exception."

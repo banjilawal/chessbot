@@ -1,7 +1,7 @@
-# src/chess/occupant/validator/exception/registration/team.py
+# src/chess/token/validator/exception/registration/team.py
 
 """
-Module: chess.occupant.validator.exception.registration.team
+Module: chess.token.validator.exception.registration.team
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/computation/__init__.py
+# src/chess/system/collection/operation/computation/__init__.py
 
 """
 Module: chess.system.collection.operation.computation.__init__

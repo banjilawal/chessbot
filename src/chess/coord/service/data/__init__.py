@@ -7,11 +7,11 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-# =========== COORD.SERVICE.DATA PACKAGE CONTENTS ===========#
+# =========== COORD.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
 from .unique import *
 from .exception import *
 
 # Modules
-from .service import CoordListService
+from .service import CoordStackService

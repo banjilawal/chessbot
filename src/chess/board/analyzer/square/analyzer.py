@@ -1,7 +1,7 @@
-# src/chess/board/square/analyzer/analyzer.py
+# src/chess/board/item/analyzer/analyzer.py
 
 """
-Module: chess.board.square.analyzer.analyzer
+Module: chess.board.item.analyzer.analyzer
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -19,7 +19,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
     # ROLE: Reporting, Test for Relationship
 
     # RESPONSIBILITIES:
-    1.  Test if whether a board-square tuple have either none, partial, or fully bidirectional relation
+    1.  Test if whether a board-item tuple have either none, partial, or fully bidirectional relation
         between them.
     2.  If the testing was not completed send an exception chain to the caller.
 
@@ -50,8 +50,8 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
             1.  If either candidate fails its safety certification send the exception chain in the
                 RelationReport.
             2.  Cast the candidate_primary to board instance; board and candidate_satellite to Square instance;
-                square.
-            3.  If the square.owner != owner they are not related. Else they are partially related.
+                item.
+            3.  If the item.owner != owner they are not related. Else they are partially related.
             4.  If searching owner's squares for the satellite produces an error send the exception chain.
            5.  If the search produced aa match send a bidirectional report. Else send a partial relation report.
         # PARAMETERS:
@@ -93,11 +93,11 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
             )
         square = cast(Square, square_validation.payload)
         
-        # If the square is assigned to a different board it's not a satellite of the area. They are not related.
+        # If the item is assigned to a different board it's not a satellite of the area. They are not related.
         if board != square.board:
             return RelationReport.not_related()
         
-        # Search the board to find out if the square has a full or partial bidirectional relation with its board.
+        # Search the board to find out if the item has a full or partial bidirectional relation with its board.
         square_search = board.squares.search(context=SquareContext(id=square.id))
         if square_search.is_failure:
             # Return the exception chain on failure.
@@ -107,7 +107,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
                     ex=square_search.exception
                 )
             )
-        # On the empty search the square has not been added to the Board.
+        # On the empty search the item has not been added to the Board.
         if square_search.is_empty:
             return RelationReport.partial(satellite=square)
         # All other paths in the test chain have been exhausted. The roster-occupant tuple is fully bidirectional.

@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
+    # ======================# UNIQUE_SQUARE_STACK_SERVICE EXCEPTION #======================#
     "SquareDatabaseException",
 ]
 
 from chess.square import SquareException
 from chess.system import DatabaseException
 
-# ======================# UNIQUE_SQUARE_DATA_SERVICE EXCEPTION #======================#
+# ======================# UNIQUE_SQUARE_STACK_SERVICE EXCEPTION #======================#
 class SquareDatabaseException(SquareException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -37,5 +37,5 @@ class SquareDatabaseException(SquareException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_SQUARE_DATA_SERVICE_ERROR"
+    ERROR_CODE = "UNIQUE_SQUARE_STACK_SERVICE_ERROR"
     DEFAULT_MESSAGE = "SquareDatabase raised an exception."

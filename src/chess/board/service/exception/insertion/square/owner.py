@@ -1,7 +1,7 @@
-# src/chess/board/service/exception/insertion/square/owner.py
+# src/chess/board/service/exception/insertion/item/owner.py
 
 """
-Module: chess.board.service.exception.insertion.square.owner
+Module: chess.board.service.exception.insertion.item.owner
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -23,7 +23,7 @@ class SquareOnDifferentBoardException(BoardException, SquareException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that inserting a BoardSquare failed because the square belonged to a  different board.
+    1.  Indicate that inserting a BoardSquare failed because the item belonged to a  different board.
 
     # PARENT:
         *   BoardException

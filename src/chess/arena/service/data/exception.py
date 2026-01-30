@@ -1,5 +1,5 @@
 ___all__ = [
-    # ======================# ARENA_DATA_SERVICE EXCEPTION #======================#
+    # ======================# ARENA_STACK_SERVICE EXCEPTION #======================#
     "ArenaDataServiceException",
 ]
 
@@ -7,7 +7,7 @@ from chess.arena import ArenaException
 from chess.system import ServiceException
 
 
-# ======================# ARENA_DATA_SERVICE EXCEPTION #======================#
+# ======================# ARENA_STACK_SERVICE EXCEPTION #======================#
 class ArenaDataServiceException(ArenaException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -29,5 +29,5 @@ class ArenaDataServiceException(ArenaException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_DATA_SERVICE_ERROR"
+    ERROR_CODE = "ARENA_DATABASE_CORE_ERROR"
     DEFAULT_MESSAGE = "ArenaDataService raised an exception."

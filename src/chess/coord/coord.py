@@ -13,7 +13,7 @@ class Coord:
     # ROLE: Addressing, Data Object
   
     # RESPONSIBILITY:
-    1.  Provide global, low-level addressing for referencing items on Board by row and column indexes.
+    1.  Provide global, low-level addressing for referencing bag on Board by row and column indexes.
     
     # PARENT:
     None

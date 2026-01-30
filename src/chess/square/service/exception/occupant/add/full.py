@@ -21,7 +21,7 @@ class CannotEnterOccupiedSquareException(SquareDebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that a occupant could not enter a square because it already had an occupant.
+    1.  Indicate that a occupant could not enter a item because it already had an occupant.
     
     # PARENT:
         *   SquareException
@@ -36,4 +36,4 @@ class CannotEnterOccupiedSquareException(SquareDebugException):
     None
     """
     ERROR_CODE = "SQUARE_IS_FULL_ERROR"
-    DEFAULT_MESSAGE = "Token entering a square failed: The square is full."
+    DEFAULT_MESSAGE = "Token entering a item failed: The item is full."

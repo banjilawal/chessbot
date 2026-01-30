@@ -1,7 +1,7 @@
-# src/chess/team/board/square/exception/insertion/wrapper.py
+# src/chess/team/board/item/exception/insertion/wrapper.py
 
 """
-Module: chess.team.board.square.exception.insertion.wrapper
+Module: chess.team.board.item.exception.insertion.wrapper
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

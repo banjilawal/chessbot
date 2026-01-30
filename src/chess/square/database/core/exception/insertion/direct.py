@@ -12,19 +12,19 @@ __all__ = [
     "AppendingSquareDirectlyIntoItemsFailedException",
 ]
 
-from chess.square import SquareDataServiceException
+from chess.square import SquareStackServiceException
 
 
 # ======================# APPENDING_SQUARE_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
-class AppendingSquareDirectlyIntoItemsFailedException(SquareDataServiceException):
+class AppendingSquareDirectlyIntoItemsFailedException(SquareStackServiceException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that appending the square directly into self.items was not in the list after running items.append.
+    1.  Indicate that appending the item directly into self.bag was not in the list after running bag.append.
 
     # PARENT:
-        *   SquareDataServiceException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None
@@ -36,4 +36,4 @@ class AppendingSquareDirectlyIntoItemsFailedException(SquareDataServiceException
     None
     """
     ERROR_CODE = "APPENDING_SQUARE_DIRECTLY_INTO_ITEMS_ERROR"
-    DEFAULT_MESSAGE = "Square insertion failed: The square was not found in self.items after running self.items.append."
+    DEFAULT_MESSAGE = "Square insertion failed: The item was not found in self.bag after running self.bag.append."

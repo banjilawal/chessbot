@@ -1,7 +1,7 @@
-# src/chess/occupant/context/builder/exception/route.py
+# src/chess/token/context/builder/exception/route.py
 
 """
-Module: chess.occupant.context.builder.exception.route
+Module: chess.token.context.builder.exception.route
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

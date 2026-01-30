@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/insertion/__init__.py
+# src/chess/system/collection/operation/insertion/__init__.py
 
 """
 Module: chess.system.collection.operation.insertion.__init__

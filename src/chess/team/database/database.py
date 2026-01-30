@@ -11,9 +11,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from chess.schema import Schema
-from chess.team import (
-    Team, TeamContext, TeamContextService, TeamListService, TeamService, UniqueTeamDataServiceException
-)
+from chess.team import Team
 from chess.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
@@ -24,8 +22,8 @@ class TeamDatabase(Database[Team]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by TeamListService are unique.
-    2.  Guarantee consistency of records in TeamListService.
+    1.  Ensure all bag in managed by TeamStackService are unique.
+    2.  Guarantee consistency of records in TeamStackService.
 
     # PARENT:
         *   Database
@@ -40,13 +38,13 @@ class TeamDatabase(Database[Team]):
         *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "TeamDatabase"
-    _team_data_service: TeamListService
+    _team_database_core: TeamStackService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: TeamListService = TeamListService(),
+            data_service: TeamStackService = TeamStackService(),
     ):
         """
         # ACTION:
@@ -54,22 +52,22 @@ class TeamDatabase(Database[Team]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (TeamListService)
+            *   member_service (TeamStackService)
         # RETURNS:
             None
         # RAISES:
             None
         """
         super().__init__(id=id, name=name, data_service=data_service)
-        self._team_data_service = data_service
+        self._team_stack_service = data_service
 
     @property
     def integrity_service(self) -> TeamService:
-        return self._team_data_service.integrity_service
+        return self._team_database_core.integrity_service
     
     @property
     def context_service(self) -> TeamContextService:
-        return self._team_data_service.context_service
+        return self._team_database_core.context_service
     
     @property
     def size(self) -> int:
@@ -93,8 +91,8 @@ class TeamDatabase(Database[Team]):
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
-                UniqueTeamDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                UniqueTeamStackServiceException(
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
                     ex=result.exception
                 )
             )
@@ -111,8 +109,8 @@ class TeamDatabase(Database[Team]):
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
-                UniqueTeamDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                UniqueTeamStackServiceException(
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
                     ex=result.exception
                 )
             )
@@ -126,8 +124,8 @@ class TeamDatabase(Database[Team]):
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the InsertionResult.
             return SearchResult.failure(
-                UniqueTeamDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                UniqueTeamStackServiceException(
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
                     ex=result.exception
                 )
             )
@@ -137,12 +135,12 @@ class TeamDatabase(Database[Team]):
     @LoggingLevelRouter.monitor
     def undo_team_addition(self) -> DeletionResult[Team]:
         method = "TeamDatabase.undo_add_team"
-        result = self.data_service.undo_item_push()
+        result = self.data_service.pop()
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the DeletionResult.
             return SearchResult.failure(
-                UniqueTeamDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                UniqueTeamStackServiceException(
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
                     ex=result.exception
                 )
             )
@@ -156,8 +154,8 @@ class TeamDatabase(Database[Team]):
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
-                UniqueTeamDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamDataServiceException.ERROR_CODE}",
+                UniqueTeamStackServiceException(
+                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
                     ex=result.exception
                 )
             )

@@ -1,7 +1,7 @@
-# src/chess/hostage/builder/exception/debug/square/__init__.py
+# src/chess/hostage/builder/exception/debug/item/__init__.py
 
 """
-Module: chess.hostage.builder.exception.debug.square.__init__
+Module: chess.hostage.builder.exception.debug.item.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

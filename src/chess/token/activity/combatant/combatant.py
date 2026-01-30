@@ -1,7 +1,7 @@
-# src/chess/occupant/state/activity/combatant/combatant.py
+# src/chess/token/state/activity/combatant/combatant.py
 
 """
-Module: chess.occupant.state.activity.combatant.combatant
+Module: chess.token.state.activity.combatant.combatant
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

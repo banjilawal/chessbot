@@ -24,7 +24,7 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
     # ROLE: AbstractSearcher
 
     # RESPONSIBILITIES:
-    1.  Send items in a HostageManifestList whose attribute value match the context.key value to the caller.
+    1.  Send bag in a HostageManifestList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
@@ -117,7 +117,7 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         # Entry point into finding by victor.
         if context.victor is not None:
             return cls._find_by_victor(dataset=dataset, coord=context.victor)
-        # Entry point into searching by captured square.
+        # Entry point into searching by captured item.
         if context.captured_square is not None:
             return cls._find_by_captured_square(dataset=dataset, coord=context.captured_square)
         

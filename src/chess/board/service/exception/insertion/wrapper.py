@@ -1,7 +1,7 @@
-# src/chess/square/database/core/exception/insertion/wrapper.py
+# src/chess/item/database/core/exception/insertion/wrapper.py
 
 """
-Module: chess.square.database.core.exception.insertion.wrapper
+Module: chess.item.database.core.exception.insertion.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

@@ -361,10 +361,10 @@ Example:
 #     return TransactionResult(op_result_id, travel, rollback_exception=build_outcome.rollback_exception)
 #
 #   discovery = cast(Discovery, build_outcome.payload)
-#   if discovery not in travel.observer.discoveries.items:
+#   if discovery not in travel.observer.discoveries.bag:
 #     travel.observer.discoveries.record_discovery(discovery=discovery)
 #
-#   if discovery not in travel.observer.discoveries.items:
+#   if discovery not in travel.observer.discoveries.bag:
 #     return TransactionResult(
 #       # There is nothing to actually do so there is no rollback because the discover was not added
 #       result_id=op_result_id,

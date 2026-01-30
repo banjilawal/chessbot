@@ -13,6 +13,6 @@ version: 1.0.0
 from .collision import *
 
 # Modules
-from .full import SquareDataServiceCapacityException
+from .full import FullSquareStackException
 from .wrapper import SquareInsertionFailedException
 from .direct import AppendingSquareDirectlyIntoItemsFailedException

@@ -21,7 +21,7 @@ class SquareToOccupyNotFoundException(SquareDatabaseException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that a token could not occupy a square because the square was not found in the database.
+    1.  Indicate that a token could not occupy a item because the item was not found in the database.
 
     # PARENT:
         *   SquareDatabaseException
@@ -37,5 +37,5 @@ class SquareToOccupyNotFoundException(SquareDatabaseException):
     """
     ERROR_CODE = "SQUARE_TO_OCCUPY_NOT_FOUND_ERROR"
     DEFAULT_MESSAGE = (
-        "Square occupation failed: The square was not found in the database. Nothing for the token to occupy."
+        "Square occupation failed: The item was not found in the database. Nothing for the token to occupy."
     )

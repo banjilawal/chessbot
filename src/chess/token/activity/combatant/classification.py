@@ -1,7 +1,7 @@
-# src/chess/occupant/model/concrete/combatant/classification.py
+# src/chess/token/model/concrete/combatant/classification.py
 
 """
-Module: chess.occupant.model.concrete.combatant.classification
+Module: chess.token.model.concrete.combatant.classification
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

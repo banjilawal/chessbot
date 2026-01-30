@@ -1,4 +1,4 @@
-# src/chess/system/collectiondto.py
+# src/chess/system/collection/dto.py
 
 """
 Module: chess.system.collection.dto

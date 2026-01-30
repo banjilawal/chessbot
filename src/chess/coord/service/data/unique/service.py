@@ -12,15 +12,15 @@ from typing import List, cast
 from chess.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
-from chess.coord import Coord, CoordContext, CoordContextService, CoordListService, CoordService
+from chess.coord import Coord, CoordContext, CoordContextService, CoordStackService, CoordService
 
 class UniqueCoordDataService(Database[Coord]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items managed by CoordListService are unique.
-    2.  Guarantee consistency of records in CoordListService.
+    1.  Ensure all bag managed by CoordStackService are unique.
+    2.  Guarantee consistency of records in CoordStackService.
 
     # PARENT:
         *   Database
@@ -39,7 +39,7 @@ class UniqueCoordDataService(Database[Coord]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: CoordListService = CoordListService(),
+            data_service: CoordStackService = CoordStackService(),
     ):
         """
         # ACTION:
@@ -48,7 +48,7 @@ class UniqueCoordDataService(Database[Coord]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   member_service (CoordListService): = CoordListService()
+            *   member_service (CoordStackService): = CoordStackService()
 
         # RETURNS:
         None
@@ -60,11 +60,11 @@ class UniqueCoordDataService(Database[Coord]):
     
     @property
     def coord_service(self) -> CoordService:
-        return cast(CoordListService, self.data_service).coord_service
+        return cast(CoordStackService, self.data_service).coord_service
     
     @property
     def context_service(self) -> CoordContextService:
-        return cast(CoordListService, self.data_service).coord_context_service
+        return cast(CoordStackService, self.data_service).coord_context_service
     
     @property
     def size(self) -> int:
@@ -80,7 +80,7 @@ class UniqueCoordDataService(Database[Coord]):
     
     @LoggingLevelRouter.monitor
     def undo_add_coord(self) -> DeletionResult[Coord]:
-        return self.data_service.undo_item_push()
+        return self.data_service.pop()
     
     @LoggingLevelRouter.monitor
     def search_coords(self, context: CoordContext) -> SearchResult[List[Coord]]:

@@ -24,7 +24,7 @@ class SquareFinder(DataFinder[Square]):
     # ROLE: AbstractSearcher
 
     # RESPONSIBILITIES:
-    1.  Send items in a SquareList whose attribute value match the context.key value to the caller.
+    1.  Send bag in a SquareList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
@@ -106,19 +106,19 @@ class SquareFinder(DataFinder[Square]):
             )
         # --- Route to the search method which matches the context key. ---#
         
-        # Entry point into finding by square's id.
+        # Entry point into finding by item's id.
         if context.id is not None:
             return cls._find_by_id(dataset=dataset, id=context.id)
-        # Entry point into finding by square's name.
+        # Entry point into finding by item's name.
         if context.name is not None:
             return cls._find_by_name(dataset=dataset, name=context.name)
-        # Entry point into finding by square's coord.
+        # Entry point into finding by item's coord.
         if context.coord is not None:
             return cls._find_by_coord(dataset=dataset, coord=context.coord)
-        # Entry point into searching by square's board.
+        # Entry point into searching by item's board.
         if context.board is not None:
             return cls._find_by_board(dataset=dataset, coord=context.board)
-        # Entry point into searching by square's occupant.
+        # Entry point into searching by item's occupant.
         if context.board is not None:
             return cls._find_by_board(dataset=dataset, coord=context.occupant)
         

@@ -8,21 +8,21 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# SQUARE_DATA_SERVICE EXCEPTION #======================#
-    "SquareDataServiceException",
+    # ======================# SQUARE_STACK EXCEPTION #======================#
+    "SquareStackServiceException",
 ]
 
 from chess.square import SquareException
-from chess.system import DataServiceException
+from chess.system import StackServiceException
 
 
-# ======================# SQUARE_DATA_SERVICE EXCEPTION #======================#
-class SquareDataServiceException(SquareException, DataServiceException):
+# ======================# SQUARE_STACK EXCEPTION #======================#
+class SquareStackServiceException(SquareException, StackServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by SquareListService methods that return Result objects.
+    1.  Wrap any exceptions raised by SquareStackService methods that return Result objects.
 
     # PARENT:
         *   SquareException
@@ -37,5 +37,5 @@ class SquareDataServiceException(SquareException, DataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SquareListService raised an exception."
+    ERROR_CODE = "SQUARE_STACK_ERROR"
+    DEFAULT_MESSAGE = "SquareStackService raised an exception."

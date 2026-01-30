@@ -62,7 +62,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
         # PARAMETERS:
             *   Only one these must be provided:
                     *   persona (Optional[Persona])
-                    *   square (Optional[Square])
+                    *   item (Optional[Square])
                     *   color (Optional[GameColor])
             *   These Parameters must be provided:
                     *   square_service (SquareService)

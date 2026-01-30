@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/deletion/state/classification.py
+# src/chess/system/collection/operation/deletion/state/classification.py
 
 """
 Module: chess.system.collection.operation.deletion.state.classification

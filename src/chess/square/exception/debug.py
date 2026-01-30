@@ -38,4 +38,4 @@ class SquareDebugException(SquareException, DebugException):
      None
     """
     ERROR_CODE = "SQUARE_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A square debug error occurred."
+    DEFAULT_MESSAGE = "A item debug error occurred."

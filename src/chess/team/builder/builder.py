@@ -12,7 +12,7 @@ from chess.schema import Schema, SchemaService
 from chess.player import Player, PlayerService
 from chess.team import HostageService, RosterService, Team, TeamBuildFailedException
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, Database, id_emitter
-from chess.token import UniqueTokenDataService
+from chess.token import TokenDatabase
 
 
 class TeamBuilder(Builder[Team]):
@@ -50,7 +50,7 @@ class TeamBuilder(Builder[Team]):
             owner_service: PlayerService = PlayerService(),
             schema_service: SchemaService = SchemaService(),
             identity_service: IdentityService = IdentityService(),
-            roster: UniqueTokenDataService = UniqueTokenDataService(),
+            roster: TokenDatabase = TokenDatabase(),
     ) -> BuildResult[Team]:
         """
         # ACTION:

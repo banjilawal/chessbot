@@ -1,16 +1,16 @@
-# src/chess/occupant/factory/factory.py
+# src/chess/token/factory/factory.py
 
 """
-Module: chess.occupant.factory.factory
+Module: chess.token.factory.factory
 Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
 """
-
+from chess.formation import FormationService
 from chess.square import Square
 from chess.rank import King, Pawn
 from chess.system import BuildResult, Builder, LoggingLevelRouter
-from chess.team import EnemyCannotJoinTeamRosterException, Team, TeamService
+from chess.team import Team, TeamService
 
 from chess.token import (
     AddingDuplicateTokenException, CombatantToken, KingToken, PawnToken, TokenBuildFailedException, TokenBuildManifest,
@@ -47,6 +47,7 @@ class TokenFactory(Builder[Token]):
             cls,
             manifest: TokenBuildManifest,
             # team_service: TeamService = TeamService(),
+            formation_service: FormationService = FormationService(),
             manifest_validator: TokenBuildManifestValidator = TokenBuildManifestValidator(),
     ) -> BuildResult[Token]:
         """
@@ -60,7 +61,7 @@ class TokenFactory(Builder[Token]):
             *   team (Team)
             *   rank_service (RankService)
             *   team_service (TeamService)
-            *   positions (CoordListService)
+            *   positions (CoordStackService)
             *   identity_service (IdentityService)
         # RETURNS:
             *   BuildResult[Position] containing either:
@@ -93,7 +94,7 @@ class TokenFactory(Builder[Token]):
                 opening_square=manifest.opening_square,
             )
         # Build path for Kings
-        elif isinstance(manifest.rank, King):
+        if isinstance(manifest.rank, King):
             return cls._build_king(
                 id=manifest.id,
                 owner=manifest.owner,
@@ -101,14 +102,14 @@ class TokenFactory(Builder[Token]):
                 roster_number=manifest.roster_number,
                 opening_square=manifest.opening_square,
             )
-        else:
-            return cls._build_combatant(
-                id=manifest.id,
-                owner=manifest.owner,
-                designation=manifest.designation,
-                roster_number=manifest.roster_number,
-                opening_square=manifest.opening_square,
-            )
+        # Default path
+        return cls._build_combatant(
+            id=manifest.id,
+            owner=manifest.owner,
+            designation=manifest.designation,
+            roster_number=manifest.roster_number,
+            opening_square=manifest.opening_square,
+        )
         # # Get the RelationReport between the team's roster to see if the occupant can be added to the team's roster.
         # relation_report = team_service.roster_relation_analyzer.analyze(
         #     candidate_primary=manifest.owner,

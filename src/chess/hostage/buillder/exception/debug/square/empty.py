@@ -23,7 +23,7 @@ class CapturedSquareCannotBeEmptyException(HostageManifestException, DebugExcept
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that the HostageManifest build failed because the captured square was empty.
+    1.  Indicate that the HostageManifest build failed because the captured item was empty.
 
     # PARENT:
         *   DebugException
@@ -39,4 +39,4 @@ class CapturedSquareCannotBeEmptyException(HostageManifestException, DebugExcept
     None
     """
     ERROR_CODE = "CAPTURED_SQUARE_CANNOT_BE_EMPTY_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest build failed: The captured square cannot be empty during the build."
+    DEFAULT_MESSAGE = "HostageManifest build failed: The captured item cannot be empty during the build."

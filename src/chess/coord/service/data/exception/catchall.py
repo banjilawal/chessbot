@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# COORD_DATA_SERVICE EXCEPTION #======================#
+    # ======================# COORD_STACK_SERVICE EXCEPTION #======================#
     "CoordDataServiceException",
 ]
 
@@ -16,14 +16,14 @@ from chess.coord import CoordException
 from chess.system import ServiceException
 
 
-# ======================# COORD_DATA_SERVICE EXCEPTION #======================#
+# ======================# COORD_STACK_SERVICE EXCEPTION #======================#
 class CoordDataServiceException(CoordException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an CoordListService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a CoordListService method.
+    1.  Indicate that an CoordStackService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a CoordStackService method.
 
     # PARENT:
         *   ServiceException
@@ -38,5 +38,5 @@ class CoordDataServiceException(CoordException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CoordListService raised an exception."
+    ERROR_CODE = "COORD_DATABASE_CORE_ERROR"
+    DEFAULT_MESSAGE = "CoordStackService raised an exception."

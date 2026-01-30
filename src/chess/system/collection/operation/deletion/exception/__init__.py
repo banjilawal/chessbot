@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/deletion/exception/__init__.py
+# src/chess/system/collection/operation/deletion/exception/__init__.py
 
 """
 Module: chess.system.collection.operation.deletion.exception.__init__

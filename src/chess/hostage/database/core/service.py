@@ -13,10 +13,10 @@ from chess.hostage import (
     AppendingHostageManifestDirectlyIntoItemsFailedException, CaptivityContextService, HostageManifest,
     HostageManifestDataListException, HostageManifestInsertionFailedException, HostageManifestService
 )
-from chess.system import ListService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.system import StackService, InsertionResult, LoggingLevelRouter, id_emitter
 
 
-class HostageManifestList(ListService[HostageManifest]):
+class HostageManifestList(StackService[HostageManifest]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -54,7 +54,7 @@ class HostageManifestList(ListService[HostageManifest]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   items (List[Team])
+            *   bag (List[Team])
             *   service (TeamService)
             *   context_service (TeamContextService)
         # RETURNS:

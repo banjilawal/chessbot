@@ -1,7 +1,7 @@
-# src/chess/occupant/exception.py
+# src/chess/token/exception.py
 
 """
-Module: chess.occupant.exception
+Module: chess.token.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0

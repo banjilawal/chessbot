@@ -1,7 +1,7 @@
-# src/chess/square/square.py
+# src/chess/square/item.py
 
 """
-Module: chess.square.square
+Module: chess.square.item
 Author: Banji Lawal
 Created: 2025-07-26
 """

@@ -101,7 +101,7 @@ class SquareService(EntityService[Square]):
     def remove_occupant(self, square: Square) -> DeletionResult[Token]:
         method = "SquareService.remove_occupant_from_square"
         
-        # Handle the case that the square is not certified safe.
+        # Handle the case that the item is not certified safe.
         validation = self.validator.validate(candidate=square)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -114,7 +114,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that the square is empty.
+        # Handle the case that the item is empty.
         if square.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -128,7 +128,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Process removal if the square is occupied.
+        # Process removal if the item is occupied.
         token = square.occupant
         square.occupant = None
         square.state = SquareState.EMPTY
@@ -143,7 +143,7 @@ class SquareService(EntityService[Square]):
     ) -> InsertionResult[Square]:
         method = "SquareService.add_occupant_to_square"
         
-        # Handle the case that the square is not certified safe.
+        # Handle the case that the item is not certified safe.
         square_validation = self.validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
@@ -156,7 +156,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that the square is occupied.
+        # Handle the case that the item is occupied.
         if square.is_occupied:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -224,7 +224,7 @@ class SquareService(EntityService[Square]):
     def _add_unformed_token(self, square: Square, token: Token,) -> InsertionResult[Square]:
         method = "SquareService.add_unformed_token"
         
-        # Handle the case that the occupant belongs to a different square.
+        # Handle the case that the occupant belongs to a different item.
         if square != token.opening_square:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -258,7 +258,7 @@ class SquareService(EntityService[Square]):
     ) -> InsertionResult[Square]:
         method = "SquareService.accept_from_roster"
         
-        # Handle the case that the square is not certified safe.
+        # Handle the case that the item is not certified safe.
         square_validation = self.validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
@@ -298,7 +298,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that the square is not empty
+        # Handle the case that the item is not empty
         if square.is_occupied:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -326,7 +326,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that no occupant opens with the square
+        # Handle the case that no occupant opens with the item
         if search_result.is_empty:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -386,7 +386,7 @@ class SquareService(EntityService[Square]):
     def process_square_evacuation(self, square: Square):
         method = "squareService.processSquareEvacuation"
         
-        # Handle the case that the square is not certified as safe.
+        # Handle the case that the item is not certified as safe.
         validation = self.validator.validate(candidate=square)
         if validation.is_failure:
             return SquareServiceExce

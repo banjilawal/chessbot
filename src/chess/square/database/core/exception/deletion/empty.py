@@ -7,21 +7,24 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.square import SquareException
+
 
 __all__ = [
     # ======================# POPPING_EMPTY_SQUARE_STACK EXCEPTION #======================#
     "PoppingEmptySquareStackException",
 ]
 
+from chess.square import SquareDebugException
+from chess.system import PoppingEmptyStackException
+
 
 # ======================# POPPING_EMPTY_SQUARE_STACK EXCEPTION #======================#
-class PoppingEmptySquareStackException(SquareException):
+class PoppingEmptySquareStackException(SquareDebugException, PoppingEmptyStackException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove a square failed because the stack was empty
+    1.  Indicate that an attempt to remove a item failed because the stack was empty
 
     # PARENT:
         *   SquareException
@@ -36,4 +39,4 @@ class PoppingEmptySquareStackException(SquareException):
     None
     """
     ERROR_CODE = "POPPING_EMPTY_SQUARE_STACK_ERROR"
-    DEFAULT_MESSAGE = "Square deletion failed: SquareListService does not own any squares."
+    DEFAULT_MESSAGE = "Square deletion failed: SquareStackService does not own any squares."

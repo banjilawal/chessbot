@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/computation/state/state.py
+# src/chess/system/collection/operation/computation/state/state.py
 
 """
 Module: chess.system.collection.operation.computation.state.state

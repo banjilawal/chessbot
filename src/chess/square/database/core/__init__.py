@@ -7,10 +7,10 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-#=========== SQUARE.SERVICE.DATA PACKAGE CONTENTS ===========#
+#=========== SQUARE.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
 
 # Modules
-from .service import SquareListService
+from .stack import SquareStackService

@@ -12,19 +12,19 @@ __all__ = [
     "SquareCoordAlreadyInUseException",
 ]
 
-from chess.square import SquareDataServiceException
+from chess.square import SquareStackServiceException
 
 
 # ======================# COORD_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-class SquareCoordAlreadyInUseException(SquareDataServiceException):
+class SquareCoordAlreadyInUseException(SquareStackServiceException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that inserting a square failed because the coord was already in use by a collection member.
+    1.  Indicate that inserting a item failed because the coord was already in use by a collection member.
 
     # PARENT:
-        *   SquareDataServiceException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None
@@ -36,4 +36,4 @@ class SquareCoordAlreadyInUseException(SquareDataServiceException):
     None
     """
     ERROR_CODE = "COORD_ALREADY_USED_IN_SQUARE_DATASET_ERROR"
-    DEFAULT_MESSAGE = "Square insertion failed: Another square is already using the coord."
+    DEFAULT_MESSAGE = "Square insertion failed: Another item is already using the coord."

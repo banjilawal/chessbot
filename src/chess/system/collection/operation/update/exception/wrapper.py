@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/update/exception/wrapper.py
+# src/chess/system/collection/operation/update/exception/wrapper.py
 
 """
 Module: chess.system.collection.operation.update.exception.wrapper

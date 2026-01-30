@@ -1,7 +1,7 @@
-# src/chess/occupant/builder/builder.py
+# src/chess/token/builder/builder.py
 
 """
-Module: chess.occupant.builder.builder
+Module: chess.token.builder.builder
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

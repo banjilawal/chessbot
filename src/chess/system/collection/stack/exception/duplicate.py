@@ -1,22 +1,22 @@
-# src/chess/system/collection/unique/exception.duplicate.py
+# src/chess/system/collection/stack/exception/duplicate.py
 
 """
-Module: chess.system.collection.service.unique.exception.duplicate
+Module: chess.system.collection.stack.exception.duplicate
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import CollectionException
+from chess.system import StackServiceException
 
 __all__ = [
     #======================# CANNOT_ADD_DUPLICATE_ITEM EXCEPTION  #======================#
-    "CannotAddDuplicateException",
+    "AddingDuplicateException",
 ]
 
 
 #======================# CANNOT_ADD_DUPLICATE_ITEM EXCEPTION  #======================#
-class CannotAddDuplicateException(CollectionException):
+class AddingDuplicateException(StackServiceException):
     """
     # ROLE: Error Tracing, Debugging
 

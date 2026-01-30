@@ -1,4 +1,4 @@
-# src/chess/tea/database/core/exception/deletion/unfound.py
+# src/chess/team/database/core/exception/deletion/unfound.py
 
 """
 Module: chess.team.database.core.exception.deletion.unfound
@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.team import TeamDataServiceException
+from chess.team import TeamStackServiceException
 
 __all__ = [
     # ======================# TEAM_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
@@ -16,12 +16,12 @@ __all__ = [
 
 
 # ======================# TEAM_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
-class TeamDoesNotExistForRemovalException(TeamDataServiceException):
+class TeamDoesNotExistForRemovalException(TeamStackServiceException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove instances of a team by a unique attribute failed because no items
+    1.  Indicate that an attempt to remove instances of a team by a unique attribute failed because no bag
         matching the property were found in the dataset.
 
     # PARENT:

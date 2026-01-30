@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/deletion/state/__init__.py
+# src/chess/system/collection/operation/deletion/state/__init__.py
 
 """
 Module: chess.system.collection.operation.deletion.state.__init__

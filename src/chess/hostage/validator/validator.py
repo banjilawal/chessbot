@@ -115,7 +115,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that the square where the capture occurred is not certified safe.
+        # Handle the case that the item where the capture occurred is not certified safe.
         captured_square_validation = square_service.validator.validate(candidate=manifest.captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
@@ -125,7 +125,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     ex=captured_square_validation.exception
                 )
             )
-        # Handle the case that the victor's square is not certified safe.
+        # Handle the case that the victor's item is not certified safe.
         victor_square_validation = square_service.validator.validate(candidate=manifest.victor_square)
         if victor_square_validation.failure:
             # Send the exception chain on failure
@@ -169,7 +169,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that the prisoner was capture on a different square.
+        # Handle the case that the prisoner was capture on a different item.
         if manifest.prisoner.current_position != manifest.captured_square.coord:
             # Send the exception chain on failure
             return ValidationResult.failure(

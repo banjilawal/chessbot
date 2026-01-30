@@ -21,7 +21,7 @@ class AppendingHostageManifestDirectlyIntoItemsFailedException(HostageManifestDa
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that appending the hostageManifest directly into self.items was not in the list after running items.append.
+    1.  Indicate that appending the hostageManifest directly into self.bag was not in the list after running bag.append.
 
     # PARENT:
         *   HostageManifestDataListException
@@ -37,6 +37,6 @@ class AppendingHostageManifestDirectlyIntoItemsFailedException(HostageManifestDa
     """
     ERROR_CODE = "APPENDING_HOSTAGE_MANIFEST_DIRECTLY_INTO_ITEMS_ERROR"
     DEFAULT_MESSAGE = (
-        "HostageManifest insertion failed: The manifest was not found in self.items after "
-        "running self.items.append."
+        "HostageManifest insertion failed: The manifest was not found in self.bag after "
+        "running self.bag.append."
     )

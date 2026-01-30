@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 ___all__ = [
-    # ======================# GAME_DATA_SERVICE EXCEPTION #======================#
+    # ======================# GAME_STACK_SERVICE EXCEPTION #======================#
     "GameDataServiceException",
 ]
 
@@ -17,14 +17,14 @@ from chess.game import GameException
 from chess.system import ServiceException
 
 
-# ======================# GAME_DATA_SERVICE EXCEPTION #======================#
+# ======================# GAME_STACK_SERVICE EXCEPTION #======================#
 class GameDataServiceException(GameException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an GameListService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a GameListService method.
+    1.  Indicate that an GameStackService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a GameStackService method.
 
     # PARENT:
         *   ServiceException
@@ -39,5 +39,5 @@ class GameDataServiceException(GameException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "GameListService raised an exception."
+    ERROR_CODE = "GAME_DATABASE_CORE_ERROR"
+    DEFAULT_MESSAGE = "GameStackService raised an exception."

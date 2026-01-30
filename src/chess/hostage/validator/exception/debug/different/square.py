@@ -1,7 +1,7 @@
-# src/chess/hostage/validator/exception/debug/different/square.py
+# src/chess/hostage/validator/exception/debug/different/item.py
 
 """
-Module: chess.hostage.validator.exception.debug.different.square
+Module: chess.hostage.validator.exception.debug.different.item
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -22,7 +22,7 @@ class PrisonerCapturedOnDifferentSquareException(HostageManifestException):
 
     # RESPONSIBILITIES:
     1.  Indicate that a candidate failed its HostageManifest validation because the victor and prisoner were on
-        different square.
+        different item.
 
     # PARENT:
         *   HostageManifestException
@@ -37,4 +37,4 @@ class PrisonerCapturedOnDifferentSquareException(HostageManifestException):
     None
     """
     ERROR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: The victor can only capture enemies on its own square."
+    DEFAULT_MESSAGE = "HostageManifest validation failed: The victor can only capture enemies on its own item."

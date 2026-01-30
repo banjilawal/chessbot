@@ -36,4 +36,4 @@ class PoppingEmtpyCoordStackException(CoordDataServiceException):
     None
     """
     ERROR_CODE = "POPPING_EMPTY_COORD_STACK_ERROR"
-    DEFAULT_MESSAGE = "Coord deletion failed: CoordListService does not own any coords."
+    DEFAULT_MESSAGE = "Coord deletion failed: CoordStackService does not own any coords."

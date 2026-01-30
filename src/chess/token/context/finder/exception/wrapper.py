@@ -1,7 +1,7 @@
-# src/chess/occupant/finder/exception/wrapper.py
+# src/chess/token/finder/exception/wrapper.py
 
 """
-Module: chess.occupant.finder.exception.wrapper
+Module: chess.token.finder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0

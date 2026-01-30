@@ -12,7 +12,7 @@ from typing import List
 from chess.board import (
     AddingDuplicateBoardException, ExhaustiveBoardDeletionFailedException, Board, BoardContext,
     BoardContextService,
-    BoardListService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionFailedException,
+    BoardStackService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionFailedException,
     UniqueBoardSearchFailedException
 )
 from chess.system import (
@@ -25,8 +25,8 @@ class UniqueBoardDataService(Database[Board]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by BoardListService are unique.
-    2.  Guarantee consistency of records in BoardListService.
+    1.  Ensure all bag in managed by BoardStackService are unique.
+    2.  Guarantee consistency of records in BoardStackService.
 
     # PARENT:
         *   Database
@@ -41,13 +41,13 @@ class UniqueBoardDataService(Database[Board]):
         *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "UniqueBoardDataService"
-    _board_data_service: BoardListService
+    _board_database_core: BoardStackService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: BoardListService = BoardListService(),
+            data_service: BoardStackService = BoardStackService(),
     ):
         """
         # ACTION:
@@ -55,30 +55,30 @@ class UniqueBoardDataService(Database[Board]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (BoardListService)
+            *   member_service (BoardStackService)
         # RETURNS:
             None
         # RAISES:
             None
         """
         super().__init__(id=id, name=name, data_service=data_service)
-        self._board_data_service = data_service
+        self._board_stack_service = data_service
     
     @property
     def integrity_service(self) -> BoardService:
-        return self._board_data_service.board_service
+        return self._board_database_core.board_service
     
     @property
     def context_service(self) -> BoardContextService:
-        return self._board_data_service.context_service
+        return self._board_database_core.context_service
     
     @property
     def size(self) -> int:
-        return self._board_data_service.size
+        return self._board_database_core.size
     
     @property
     def is_empty(self) -> bool:
-        return self._board_data_service.is_empty
+        return self._board_database_core.is_empty
     
     @LoggingLevelRouter.monitor
     def add_unique_board(self, board: Board) -> InsertionResult[Board]:
@@ -87,7 +87,7 @@ class UniqueBoardDataService(Database[Board]):
             1.  If the board fails validation send the wrapped exception in the InsertionResult.
             2.  If a search for the board either fails or finds a match send the wrapped exception in the
                 InsertionResult.
-            3.  If the call to _board_data_service.insert_board fails send the wrapped exception in the InsertionResult.
+            3.  If the call to _board_database_core.insert_board fails send the wrapped exception in the InsertionResult.
                 Else send the outgoing result directly to the caller.
         # PARAMETERS:
             *   board (Board)
@@ -144,8 +144,8 @@ class UniqueBoardDataService(Database[Board]):
                     )
                 )
             )
-        # --- Use _board_data_service.insert_board because order does not matter for the board access. ---#
-        insertion_result = self._board_data_service.insert_board(board=board)
+        # --- Use _board_database_core.insert_board because order does not matter for the board access. ---#
+        insertion_result = self._board_database_core.insert_board(board=board)
         
         # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
@@ -166,7 +166,7 @@ class UniqueBoardDataService(Database[Board]):
     def search_boards(self, context: BoardContext) -> SearchResult[List[Board]]:
         """
         # ACTION:
-            1.  Get the result of calling _board_data_service.delete_board_by_id for method. If the deletion failed
+            1.  Get the result of calling _board_database_core.delete_board_by_id for method. If the deletion failed
                 wrap the exception inside the appropriate Database exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
@@ -183,8 +183,8 @@ class UniqueBoardDataService(Database[Board]):
         """
         method = "UniqueBoardDataService.search_boards"
         
-        # --- Handoff the search responsibility to _board_data_service. ---#
-        search_result = self._board_data_service.board_context_service.finder.find(context=context)
+        # --- Handoff the search responsibility to _board_database_core. ---#
+        search_result = self._board_database_core.board_context_service.finder.find(context=context)
         
         # Handle the case that the search is not completed.
         if search_result.is_failure:

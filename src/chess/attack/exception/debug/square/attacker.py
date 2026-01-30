@@ -1,7 +1,7 @@
-# src/chess/attack/exception/debug/square/square.py
+# src/chess/attack/exception/debug/item/item.py
 
 """
-Module: chess.attack.exception.debug.square.square
+Module: chess.attack.exception.debug.item.item
 Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
@@ -21,7 +21,7 @@ class AttackerSquareInconsistencyException(AttackDebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attack failed because the attacker's square does not have them as an occupant.
+    1.  Indicate that an attack failed because the attacker's item does not have them as an occupant.
 
     # PARENT:
         *   AttackDebugException
@@ -36,4 +36,4 @@ class AttackerSquareInconsistencyException(AttackDebugException):
     None
     """
     ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: The attacker was not the occupant of the square its shares a coord with."
+    DEFAULT_MESSAGE = "Attack failed: The attacker was not the occupant of the item its shares a coord with."

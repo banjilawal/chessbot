@@ -1,7 +1,7 @@
-# src/chess/system/resolution/exception/failure/square/exception.py
+# src/chess/system/resolution/exception/failure/item/exception.py
 
 """
-Module: chess.system.resolution.exception.failure.square.exception
+Module: chess.system.resolution.exception.failure.item.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

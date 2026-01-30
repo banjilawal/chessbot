@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import List, cast
 
 
-from chess.system import ListService, LoggingLevelRouter, id_emitter
+from chess.system import StackService, LoggingLevelRouter, id_emitter
 from chess.game import Game, GameContext, GameContextService, GameService
 
 
-class GameListService(ListService[Game]):
+class GameStackService(StackService[Game]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -22,7 +22,7 @@ class GameListService(ListService[Game]):
     1.  Microservice API for managing and searching Game collections.
     2.  Assures collection is always reliable.
     3.  Assure only valid Games are put in the collection.
-    4.  Assure updates do not break the integrity individual items in the collection or
+    4.  Assure updates do not break the integrity individual bag in the collection or
         the collection itself.
     5.  Provide Game stack data structure with no guarantee of uniqueness.
     6.  Search utility.
@@ -31,7 +31,7 @@ class GameListService(ListService[Game]):
         *   StackService
 
     # PROVIDES:
-        *   GameListService
+        *   GameStackService
 
     # LOCAL ATTRIBUTES:
     None
@@ -39,7 +39,7 @@ class GameListService(ListService[Game]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    DEFAULT_NAME = "GameListService"
+    DEFAULT_NAME = "GameStackService"
     
     def __init__(
             self,
@@ -56,7 +56,7 @@ class GameListService(ListService[Game]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   items (List[Game]): = List[Game]
+            *   bag (List[Game]): = List[Game]
             *   service (GameService): = GameService()
             *   context_service (GameContextService): = GameContextService()
 
@@ -100,12 +100,12 @@ class GameListService(ListService[Game]):
     #
     # @LoggingLevelRouter.monitor
     # def push_item(self, item: Game) -> InsertionResult[Game]:
-    #     method = "GameListService.push"
+    #     method = "GameStackService.push"
     #     try:
     #         validation = self.data.item_validator.validate(item)
     #         if validation.is_failure():
     #             return InsertionResult.failure(validation.exception)
-    #         self.items.append(item)
+    #         self.bag.append(item)
     #
     #         return InsertionResult.success(payload=item)
     #     except Exception as ex:
@@ -115,11 +115,11 @@ class GameListService(ListService[Game]):
     #
     # @LoggingLevelRouter.monitor
     # def search(self, map: GameContext) -> SearchResult[List[Game]]:
-    #     method = "GameListService.finder"
+    #     method = "GameStackService.finder"
     #     game_context_service = cast(GameContextService, self.context_service)
     #
     #     return self.context_service.finder.find(
-    #         dataset=self.items,
+    #         dataset=self.bag,
     #         map=map,
     #         context_validator=self.context_service.item_validator
     #     )

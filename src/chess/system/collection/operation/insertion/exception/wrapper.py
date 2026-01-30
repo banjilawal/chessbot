@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/insertion/exception/wrapper.py
+# src/chess/system/collection/operation/insertion/exception/wrapper.py
 
 """
 Module: chess.system.collection.operation.insertion.exception.wrapper

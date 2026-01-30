@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/search/context/__init__.py
+# src/chess/system/collection/operation/search/context/__init__.py
 
 """
 Module: chess.system.collection.operation.search.context.__init__

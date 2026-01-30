@@ -1,7 +1,7 @@
-# src/chess/board/square/exception/member.py
+# src/chess/board/item/exception/member.py
 
 """
-Module: chess.board.square.exception.member
+Module: chess.board.item.exception.member
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

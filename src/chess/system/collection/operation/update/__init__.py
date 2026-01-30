@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/update/__init__.py
+# src/chess/system/collection/operation/update/__init__.py
 
 """
 Module: chess.system.collection.operation.update.__init__

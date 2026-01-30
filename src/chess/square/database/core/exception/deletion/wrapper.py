@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# SQUARE_DELETION_FAILURE EXCEPTION #======================#
-    "SquareDeletionFailedException",
+    "PoppingSquareStackFailedException",
 ]
 
 from chess.square import SquareException
@@ -17,7 +17,7 @@ from chess.system import DeletionFailedException
 
 
 # ======================# SQUARE_DELETION_FAILURE EXCEPTION #======================#
-class SquareDeletionFailedException(SquareException, DeletionFailedException):
+class PoppingSquareStackFailedException(SquareException, DeletionFailedException):
     """
     # ROLE: Exception Wrapper
 

@@ -10,20 +10,18 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.system import (
-    NUMBER_OF_COLUMNS, ListService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
+    NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
     NUMBER_OF_ROWS,
     SearchResult, id_emitter
 )
 from chess.square import (
-    AppendingSquareDirectlyIntoItemsFailedException, SquareNameAlreadyInUseException,
-    SquareCoordAlreadyInUseException,
-    SquareIdAlreadyInUseException,
-    PoppingEmptySquareStackException, Square, SquareContext,
-    SquareDataServiceException, SquareToDeleteNotFoundException, SquareService, SquareContextService,
-    SquareDeletionFailedException, SquareInsertionFailedException, SquareDataServiceCapacityException
+    SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, SquareIdAlreadyInUseException,
+    PoppingEmptySquareStackException, Square, SquareStackServiceException, SquareService, SquareContextService,
+    PoppingSquareStackFailedException, SquareInsertionFailedException, FullSquareStackException
 )
 
-class SquareListService(ListService[Square]):
+
+class SquareStackService(StackService[Square]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -45,17 +43,17 @@ class SquareListService(ListService[Square]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    SERVICE_NAME = "SquareListService"
+    SERVICE_NAME = "SquareStackService"
     _capacity: int
-    _dataset: List[Square]
+    _stack: List[Square]
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Square] = List[Square],
-            capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
             service: SquareService = SquareService(),
+            capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
             context_service: SquareContextService = SquareContextService(),
     ):
         """
@@ -80,8 +78,11 @@ class SquareListService(ListService[Square]):
             entity_service=service,
             context_service=context_service,
         )
-        self._dataset = items
+        self._stack = items
         self._capacity = capacity
+    
+    def pop(self) -> DeletionResult[D]:
+        pass
         
     @property
     def capacity(self) -> int:
@@ -89,11 +90,11 @@ class SquareListService(ListService[Square]):
     
     @property
     def is_full(self) -> bool:
-        return len(self._dataset) >= self.capacity
+        return self.size == self._capacity
     
     @property
-    def is_empty(self) -> bool:
-        return len(self._dataset) == 0
+    def remaining_slots(self) -> int:
+        return self.capacity - self.size
     
     @property
     def square_service(self) -> SquareService:
@@ -104,74 +105,72 @@ class SquareListService(ListService[Square]):
         return cast(SquareContextService, self.context_service)
     
     @LoggingLevelRouter.monitor
-    def insert_square(self, square: Square) -> InsertionResult[Square]:
+    def push_square(self, item: Square) -> InsertionResult[bool]:
         """
         # ACTION:
-            1.  If the square is not validated send the exception in the InsertionResult. Else, call the super class
+            1.  If the item is not validated send the exception in the InsertionResult. Else, call the super class
                 push method.
             2.  If super().push_item fails send the exception in the InsertionResult. Else extract the payload to cast
                 and return to the caller in the BuildResult.
         # PARAMETERS:
             *   Only one these must be provided:
-                    *   square (Square)
+                    *   item (Square)
         # RETURNS:
             *   InsertionResult[Square] containing either:
                     - On failure: Exception.
                     - On success: Square in the payload.
         # RAISES:
-            *   SquareDataServiceException
+            *   SquareStackServiceException
         """
-        method = "SquareListService.add_square"
+        method = "SquareStackService.add_square"
         
         # Handle the case that the list is full
         if self.is_full:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                SquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
+                SquareStackServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
-                        ex=SquareDataServiceCapacityException(
-                            f"{method}: {SquareDataServiceCapacityException.DEFAULT_MESSAGE}")
+                        ex=FullSquareStackException(f"{method}: {FullSquareStackException.DEFAULT_MESSAGE}")
                     )
                 )
             )
-        # Handle the case that the square is unsafe.
-        validation = self.square_service.validator.validate(candidate=square)
+        # Handle the case that the item is unsafe.
+        validation = self.square_service.validator.validate(candidate=item)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                SquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
+                SquareStackServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
             )
-        # --- Check if any of the square's attributes are already in use. ---#
-        collision_detection = self._attribute_collision_detector(target=square)
+        # --- Check if any of the item's attributes are already in use. ---#
+        collision_detection = self._attribute_collision_detector(target=item)
         if collision_detection.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                SquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
+                SquareStackServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
                         ex=collision_detection.exception
                     )
                 )
             )
-        # --- Square order is not required. Direct insertion into the dataset is simpler that a push. ---#
-
+        # --- Square order is not required. Direct insertion into the stack is simpler that a push. ---#
         
-        # On success return the square in the InsertionResult
-        self.items.append(square)
-        self._dataset.append(square)
+        # On success return the item in the InsertionResult
+        self.items.append(item)
+        self._stack.append(item)
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
-    def delete_square_by_id(
+    def delete_by_id(
             self,
             id: int,
             identity_service: IdentityService = IdentityService()
@@ -189,18 +188,18 @@ class SquareListService(ListService[Square]):
                     - On failure: Exception.
                     - On success: Square in the payload.
         # RAISES:
-            *   SquareDataServiceException
+            *   SquareStackServiceException
         """
-        method = "SquareListService.delete_square_by_id"
+        method = "SquareStackService.delete_square_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                SquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
-                    ex=SquareDeletionFailedException(
-                        message=f"{method}: {SquareDeletionFailedException.ERROR_CODE}",
+                SquareStackServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                    ex=PoppingSquareStackFailedException(
+                        message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
                         ex=PoppingEmptySquareStackException(
                             f"{method}: {PoppingEmptySquareStackException.DEFAULT_MESSAGE}"
                         )
@@ -212,25 +211,25 @@ class SquareListService(ListService[Square]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                SquareDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
-                    ex=SquareDeletionFailedException(
-                        message=f"{method}: {SquareDeletionFailedException.ERROR_CODE}",
+                SquareStackServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                    ex=PoppingSquareStackFailedException(
+                        message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
             )
-        # --- Search the list for a square with target id. ---#
+        # --- Search the list for an item with target id. ---#
         for item in self.items:
             if item.id == id:
                 # Handle the case that the match is the wrong type.
                 if not isinstance(item, Square):
                     # Return the exception chain on failure.
                     return DeletionResult.failure(
-                        SquareDataServiceException(
-                            message=f"ServiceId:{self.id}, {method}: {SquareDataServiceException.ERROR_CODE}",
-                            ex=SquareDeletionFailedException(
-                                message=f"{method}: {SquareDeletionFailedException.ERROR_CODE}",
+                        SquareStackServiceException(
+                            message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                            ex=PoppingSquareStackFailedException(
+                                message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
                                 ex=TypeError(
                                     f"{method}: Could not cast deletion target to Square, got {type(item).__name__} "
                                     f"instead of a Square."
@@ -238,10 +237,9 @@ class SquareListService(ListService[Square]):
                             )
                         )
                     )
-                # --- Cast the item before removal and return the deleted square in the DeletionResult. ---#
+                # --- Cast the item before removal and return the deleted item in the DeletionResult. ---#
                 square = cast(Square, item)
                 self.items.remove(square)
-                self._dataset.remove(square)
                 return DeletionResult.success(payload=square)
             
         # If none of the items had that id return an empty DeletionResult.
@@ -249,9 +247,9 @@ class SquareListService(ListService[Square]):
     
     
     def _attribute_collision_detector(self, target) -> SearchResult[Square]:
-        method = "SquareListService.attribute_collision_detector"
+        method = "SquareStackService.attribute_collision_detector"
         
-        for square in self._dataset:
+        for square in self._stack:
             if square.id == target.id:
                 return SearchResult.failure(
                     SquareIdAlreadyInUseException(

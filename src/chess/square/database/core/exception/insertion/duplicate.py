@@ -1,13 +1,13 @@
-# src/chess/square/database/exception/insertion/duplicate.py
+# src/chess/square/database/core/exception/insertion/duplicate.py
 
 """
-Module: chess.square.database.exception.insertion.duplicate
+Module: chess.square.database.core.exception.insertion.duplicate
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.square import SquareDatabaseException
+from chess.square import SquareStackServiceException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_SQUARE EXCEPTION #======================#
@@ -16,16 +16,15 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_SQUARE EXCEPTION #======================#
-class AddingDuplicateSquareException(SquareDatabaseException):
+class AddingDuplicateSquareException(SquareStackServiceException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to add a item to the SquareDatabase's dataset failed because it was
-        already present.
+    1.  Indicate that an attempt to add a square to teh stack failed because it was already present.
 
     # PARENT:
-        *   SquareDatabaseException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None
@@ -37,4 +36,4 @@ class AddingDuplicateSquareException(SquareDatabaseException):
     None
     """
     ERROR_CODE = "ADDING_DUPLICATE_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Unique Square insertion failed: The square is already present."
+    DEFAULT_MESSAGE = "Pushing square onto stack failed: The square is already present."

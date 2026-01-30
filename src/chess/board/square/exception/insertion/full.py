@@ -1,7 +1,7 @@
-# src/chess/board/square/exception/insertion/full.py
+# src/chess/board/item/exception/insertion/full.py
 
 """
-Module: chess.board.square.exception.insertion.full
+Module: chess.board.item.exception.insertion.full
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -21,7 +21,7 @@ class BoardSquareListIsFullException(BoardSquareMemberException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that adding a square to the board failed because the board has its maximum number of squares.
+    1.  Indicate that adding a item to the board failed because the board has its maximum number of squares.
 
     # PARENT:
         *   BoardSquareMemberException
@@ -36,4 +36,4 @@ class BoardSquareListIsFullException(BoardSquareMemberException):
     None
     """
     ERROR_CODE = "BOARD_REACHED_LIMIT_FOR_SQUARES_ERROR"
-    DEFAULT_MESSAGE = "Adding board square failed: The has reached its maximum number of squares."
+    DEFAULT_MESSAGE = "Adding board item failed: The has reached its maximum number of squares."

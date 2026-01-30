@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/update/state/state.py
+# src/chess/system/collection/operation/update/state/state.py
 
 """
 Module: chess.system.collection.operation.update.state.state

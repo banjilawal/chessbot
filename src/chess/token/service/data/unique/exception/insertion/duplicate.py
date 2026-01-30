@@ -1,7 +1,7 @@
-# src/chess/occupant/service/data/unique/exception/insertion/duplicate.py
+# src/chess/token/service/data/unique/exception/insertion/duplicate.py
 
 """
-Module: chess.occupant.service.data.unique.exception.insertion.duplicate
+Module: chess.token.service.data.unique.exception.insertion.duplicate
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -21,7 +21,7 @@ class AddingDuplicateTokenException(UniqueTokenDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to add a occupant to the UniqueTokenDataService's dataset failed because the occupant was
+    1.  Indicate that an attempt to add a occupant to the TokenDatabase's dataset failed because the occupant was
         already in the collection
 
     # PARENT:

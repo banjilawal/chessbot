@@ -92,7 +92,7 @@ class BoardService(EntityService[Board]):
                 forward the insertion result to the caller.
         # PARAMETERS:
             *   board (Board)
-            *   square (Square)
+            *   item (Square)
         # RETURN:
             *   InsertionResult[Square] containing either:
                     - On failure: Exception
@@ -105,7 +105,7 @@ class BoardService(EntityService[Board]):
         """
         method = "BoardService.insert_square"
         
-        # --- Check if the board-square relation is partial, allowing the insertion to proceed. ---#
+        # --- Check if the board-item relation is partial, allowing the insertion to proceed. ---#
         relation_analysis = self._square_relation_analyzer.analyze(
             candidate_primary=board,
             candidate_secondary=square
@@ -137,7 +137,7 @@ class BoardService(EntityService[Board]):
                     )
                 )
             )
-        # Handle the case that the square is already present on the board.
+        # Handle the case that the item is already present on the board.
         if relation_analysis.fully_exists:
             # Return exception chain on failure.
             return InsertionResult.failure(

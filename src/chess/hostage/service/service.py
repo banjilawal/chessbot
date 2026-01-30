@@ -1,7 +1,7 @@
-# src/chess/square/service/service.py
+# src/chess/item/service/service.py
 
 """
-Module: chess.square.service.service
+Module: chess.item.service.service
 Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0

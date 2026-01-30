@@ -45,7 +45,7 @@ class Attack:
                     ex=attacker_validation.exception
                 )
             )
-        # Handle the case the square is not certified as safe.
+        # Handle the case the item is not certified as safe.
         square_validation = square_database.integrity_service.validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
@@ -55,7 +55,7 @@ class Attack:
                     ex=square_validation.exception
                 )
             )
-        # Handle the case that the square is empty
+        # Handle the case that the item is empty
         if square.is_empty:
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -75,7 +75,7 @@ class Attack:
                     )
                 )
             )
-        # Handle the case that the square is occupied by a friend.
+        # Handle the case that the item is occupied by a friend.
         if not attacker.is_enemy(square.occupant):
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -86,7 +86,7 @@ class Attack:
                     )
                 )
             )
-        # Handle the case that the enemy king is occupying the square.
+        # Handle the case that the enemy king is occupying the item.
         if isinstance(square.occupant, KingToken):
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -95,7 +95,7 @@ class Attack:
                     ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the enemy combatant, occupying the square, is already disabled.
+        # Handle the case that the enemy combatant, occupying the item, is already disabled.
         if square.occupant.is_disabled:
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -106,7 +106,7 @@ class Attack:
                     )
                 )
             )
-        # Handoff validating the attacker's square and processing the attack.
+        # Handoff validating the attacker's item and processing the attack.
         return cls._process_attack(
             attacker=attacker,
             square=square,
@@ -131,7 +131,7 @@ class Attack:
         """"""
         method = "Attack._process_attack"
         
-        # Handle the case that removing the captive from their square fails.
+        # Handle the case that removing the captive from their item fails.
         captive_removal = square_database.delete_occupant_by_search(square.occupant)
         if captive_removal.is_failure:
             # Return exception chain on failure.
@@ -146,7 +146,7 @@ class Attack:
         captive.captor = attacker
         captive.activity.classification = CombatantReadinessEnum.CAPTURE_ACTIVATED
         
-        # Handle the case that removing the attacker from their old square fails.
+        # Handle the case that removing the attacker from their old item fails.
         attacker_removal = square_database.delete_occupant_by_search(occupant=attacker)
         if attacker_removal.is_failure:
             # Return exception chain on failure.
@@ -156,7 +156,7 @@ class Attack:
                     ex=attacker_removal.exception
                 )
             )
-        # Handle the case that the transferring the attacker to their conquered square fails.
+        # Handle the case that the transferring the attacker to their conquered item fails.
         add_occupant_result = square_database.add_occupant_to_square(square=square, occupant=attacker)
         if add_occupant_result.is_failure:
             # Return exception chain on failure.

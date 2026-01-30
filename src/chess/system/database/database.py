@@ -11,7 +11,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from chess.system import (
-    AddingDuplicateDataException, ListService, InsertionResult, LoggingLevelRouter, DatabaseException
+    AddingDuplicateDataException, StackService, InsertionResult, LoggingLevelRouter, DatabaseException
 )
 
 T = TypeVar("T")
@@ -44,12 +44,12 @@ class Database(ABC, Generic[T]):
     """
     _id: int
     _name: str
-    _data_service: ListService[T]
+    _database_core: StackService[T]
     
-    def __init__(self, id: int, name: str, data_service: ListService[T]):
+    def __init__(self, id: int, name: str, data_service: StackService[T]):
         self._id = id
         self._name =  name
-        self._data_service = data_service
+        self._stack_service = data_service
 
     @property
     def id(self) -> int:
@@ -61,19 +61,19 @@ class Database(ABC, Generic[T]):
     
     @property
     def size(self) -> int:
-        return self._data_service.size
+        return self._database_core.size
     
     @property
     def current_item(self) -> Optional[T]:
-        return self._data_service.current_item
+        return self._database_core.current_item
     
     @property
     def is_empty(self) -> bool:
-        return self._data_service.is_empty
+        return self._database_core.is_empty
     
     @property
-    def data_service(self) -> ListService[T]:
-        return self._data_service
+    def data_service(self) -> StackService[T]:
+        return self._database_core
     
     @LoggingLevelRouter.monitor
     def push_unique_item(self, item: T) -> InsertionResult[T]:
@@ -83,11 +83,11 @@ class Database(ABC, Generic[T]):
             if validation.is_failure:
                 return InsertionResult.failure(validation.exception)
 
-            context_build = self._data_service.context_service.entity_builder.build(id=item.id)
+            context_build = self._database_core.context_service.entity_builder.build(id=item.id)
             if context_build.is_failure:
                 return InsertionResult.failure(context_build.exception)
 
-            query_result = self._data_service.search(context=context_build.payload)
+            query_result = self._database_core.search(context=context_build.payload)
             if query_result.is_failure:
                 return InsertionResult.failure(query_result.exception)
 
@@ -95,7 +95,7 @@ class Database(ABC, Generic[T]):
                 return InsertionResult.failure(
                     AddingDuplicateDataException(f"{method}: {AddingDuplicateDataException.DEFAULT_MESSAGE}")
                 )
-            return self._data_service.push_item(item)
+            return self._database_core.push_item(item)
 
         except Exception as ex:
             return InsertionResult.failure(

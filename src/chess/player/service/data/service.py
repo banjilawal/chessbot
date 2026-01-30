@@ -10,11 +10,11 @@ version: 1.0.0
 from typing import List, cast
 
 
-from chess.system import ListService, id_emitter
+from chess.system import StackService, id_emitter
 from chess.agent import PlayerAgent, AgentContextService, AgentService
 
 
-class AgentListService(ListService[PlayerAgent]):
+class AgentStackService(StackService[PlayerAgent]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -22,7 +22,7 @@ class AgentListService(ListService[PlayerAgent]):
     1.  Microservice API for managing and searching Player collections.
     2.  Assures collection is always reliable.
     3.  Assure only valid Agents are put in the collection.
-    4.  Assure updates do not break the integrity individual items in the collection or
+    4.  Assure updates do not break the integrity individual bag in the collection or
         the collection itself.
     5.  Provide Player stack data structure with no guarantee of uniqueness.
     6.  Search utility.
@@ -39,7 +39,7 @@ class AgentListService(ListService[PlayerAgent]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    SERVICE_NAME = "AgentListService"
+    SERVICE_NAME = "AgentStackService"
     
     def service(
             self,
@@ -56,7 +56,7 @@ class AgentListService(ListService[PlayerAgent]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   items (List[Player]): = List[Player]
+            *   bag (List[Player]): = List[Player]
             *   service (AgentService): = AgentService()
             *   context_service (AgentContextService): = AgentContextService()
 
@@ -101,12 +101,12 @@ class AgentListService(ListService[PlayerAgent]):
     #
     # @LoggingLevelRouter.monitor
     # def push_item(self, item: Player) -> InsertionResult[Player]:
-    #     method = "AgentListService.push"
+    #     method = "AgentStackService.push"
     #     try:
     #         validation = self.data.item_validator.validate(item)
     #         if validation.is_failure():
     #             return InsertionResult.failure(validation.exception)
-    #         self.items.append(item)
+    #         self.bag.append(item)
     #
     #         return InsertionResult.success(payload=item)
     #     except Exception as ex:
@@ -116,11 +116,11 @@ class AgentListService(ListService[PlayerAgent]):
     #
     # @LoggingLevelRouter.monitor
     # def search(self, map: AgentContext) -> SearchResult[List[Player]]:
-    #     method = "AgentListService.finder"
+    #     method = "AgentStackService.finder"
     #     agent_context_service = cast(AgentContextService, self.context_service)
     #
     #     return self.context_service.finder.find(
-    #         dataset=self.items,
+    #         dataset=self.bag,
     #         map=map,
     #         context_validator=self.context_service.item_validator
     #     )

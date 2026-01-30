@@ -1,7 +1,7 @@
-# src/chess/occupant/validator/exception/disabled/placement/exception.py
+# src/chess/token/validator/exception/disabled/placement/exception.py
 
 """
-Module: chess.occupant.validator.exception.disabled.placement.exception
+Module: chess.token.validator.exception.disabled.placement.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

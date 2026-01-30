@@ -1,7 +1,7 @@
-# src/chess/attack/exception/debug/square/friend.py
+# src/chess/attack/exception/debug/item/friend.py
 
 """
-Module: chess.attack.exception.debug.square.friend
+Module: chess.attack.exception.debug.item.friend
 Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
@@ -21,7 +21,7 @@ class AttackingFriendlySquareException(AttackDebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attack failed because the square was occupied by a friend.
+    1.  Indicate that an attack failed because the item was occupied by a friend.
     
     # PARENT:
         *   AttackDebugException
@@ -36,4 +36,4 @@ class AttackingFriendlySquareException(AttackDebugException):
     None
     """
     ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: The square was occupied by a friend."
+    DEFAULT_MESSAGE = "Attack failed: The item was occupied by a friend."

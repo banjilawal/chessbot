@@ -1,7 +1,7 @@
-# src/chess/attack/exception/debug/square/stale.py
+# src/chess/attack/exception/debug/item/stale.py
 
 """
-Module: chess.attack.exception.debug.square.stale
+Module: chess.attack.exception.debug.item.stale
 Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
@@ -36,4 +36,4 @@ class StaleLinkDiscoveredInAttackingSquareSearchException(AttackDebugException):
     None
     """
     ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: The square was occupied by a stale."
+    DEFAULT_MESSAGE = "Attack failed: The item was occupied by a stale."

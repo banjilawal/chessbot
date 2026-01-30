@@ -1,5 +1,5 @@
 ___all__ = [
-    # ======================# SNAPSHOT_DATA_SERVICE EXCEPTION #======================#
+    # ======================# SNAPSHOT_STACK_SERVICE EXCEPTION #======================#
     "SnapshotDataServiceException",
 ]
 
@@ -7,7 +7,7 @@ from chess.snapshot import SnapshotException
 from chess.system import ServiceException
 
 
-# ======================# SNAPSHOT_DATA_SERVICE EXCEPTION #======================#
+# ======================# SNAPSHOT_STACK_SERVICE EXCEPTION #======================#
 class SnapshotDataServiceException(SnapshotException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -29,5 +29,5 @@ class SnapshotDataServiceException(SnapshotException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SNAPSHOT_DATA_SERVICE_ERROR"
+    ERROR_CODE = "SNAPSHOT_DATABASE_CORE_ERROR"
     DEFAULT_MESSAGE = "SnapshotDataService raised an exception."

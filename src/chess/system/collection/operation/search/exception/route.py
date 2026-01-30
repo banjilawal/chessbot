@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/search/exception/route.py
+# src/chess/system/collection/operation/search/exception/route.py
 
 """
 Module: chess.system.collection.operation.search.exception.route

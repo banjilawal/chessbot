@@ -11,14 +11,14 @@ from typing import List, Optional, cast
 
 from chess.coord.service.data.exception.push.duplicate import DuplicateCoordPushException
 from chess.coord.service.data.exception.push.wrapper import PushingCoordFailedException
-from chess.system import ListService, DeletionResult, InsertionResult, SearchResult, id_emitter
+from chess.system import StackService, DeletionResult, InsertionResult, SearchResult, id_emitter
 from chess.coord import (
     Coord, CoordContext, CoordDataServiceException, CoordService, CoordContextService, MaxConsecutiveCoordPopException,
     PoppingEmtpyCoordStackException
 )
 
 
-class CoordListService(ListService[Coord]):
+class CoordStackService(StackService[Coord]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -26,7 +26,7 @@ class CoordListService(ListService[Coord]):
     1.  Microservice API for managing and searching Coord collections.
     2.  Assures collection is always reliable.
     3.  Assure only valid Coords are put in the collection.
-    4.  Assure updates do not break the integrity individual items in the collection or
+    4.  Assure updates do not break the integrity individual bag in the collection or
         the collection itself.
     5.  Provide Coord stack data structure with no guarantee of uniqueness.
     6.  Search utility.
@@ -43,7 +43,7 @@ class CoordListService(ListService[Coord]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    SERVICE_NAME = "CoordListService"
+    SERVICE_NAME = "CoordStackService"
     _current_coord: Optional[Coord]
     _previous_coord: Optional[Coord]
     
@@ -61,7 +61,7 @@ class CoordListService(ListService[Coord]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   items (List[Coord]): = List[Coord]
+            *   bag (List[Coord]): = List[Coord]
             *   service (CoordService): = CoordService()
             *   context_service (CoordContextService): = CoordContextService()
         # RETURNS:
@@ -117,7 +117,7 @@ class CoordListService(ListService[Coord]):
         # RAISES:
             *   CoordDataServiceException
         """
-        method = "CoordListService.add_coord"
+        method = "CoordStackService.add_coord"
         
         # Handle the case that coord validation fails.
         validation = self.coord_service.validator.validate(candidate=coord)
@@ -180,7 +180,7 @@ class CoordListService(ListService[Coord]):
             *   CoordDataServiceException
             *   PoppingEmtpyCoordStackException
         """
-        method = "CoordListService.pop_coord"
+        method = "CoordStackService.pop_coord"
         
         # Handle the case that the list is empty
         if self.is_empty:
@@ -203,7 +203,7 @@ class CoordListService(ListService[Coord]):
                 )
             )
         # Handle the case that the super class undo_push fails.
-        super_deletion_result = self.undo_item_push()
+        super_deletion_result = self.pop()
         if super_deletion_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -231,7 +231,7 @@ class CoordListService(ListService[Coord]):
         # RAISES:
             *   CoordDataServiceException
         """
-        method = "CoordListService.coord_search"
+        method = "CoordStackService.coord_search"
         
         # Handle the case that the context is not certified safe.
         context_validation = self.coord_context_service.validator.validate(coord_context)

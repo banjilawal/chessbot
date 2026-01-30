@@ -14,16 +14,16 @@ __all__ = [
     "SquareToDeleteNotFoundException",
 ]
 
-from chess.square import SquareDataServiceException
+from chess.square import SquareStackServiceException
 
 
 # ======================# SQUARE_TO_DELETE_NOT_FOUND EXCEPTION #======================#
-class SquareToDeleteNotFoundException(SquareDataServiceException):
+class SquareToDeleteNotFoundException(SquareStackServiceException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove instances of a square by a unique attribute failed because no items
+    1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
         matching the property were found in the dataset.
 
     # PARENT:
@@ -39,4 +39,4 @@ class SquareToDeleteNotFoundException(SquareDataServiceException):
     None
     """
     ERROR_CODE = "SQUARE_TO_DELETE_NOT_FOUND_ERROR"
-    DEFAULT_MESSAGE = "Square deletion failed: The square was not found in the dataset. Nothing to remove."
+    DEFAULT_MESSAGE = "Square deletion failed: The item was not found in the dataset. Nothing to remove."

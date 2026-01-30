@@ -22,7 +22,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
     # ROLE: Reporting, Test for Relationship
 
     # RESPONSIBILITIES:
-    1.  Test what type of relationship a occupant and square have then issue a report of its analysis.
+    1.  Test what type of relationship a occupant and item have then issue a report of its analysis.
     2.  If the testing was not completed send an exception chain to the caller.
 
     # PARENT:
@@ -51,9 +51,9 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         # ACTION:
             1.  If either candidate fails its safety certification send the exception chain in the RelationReport.
             2.  Cast
-                    *   candidate_primary to Square instance square
-                    *   square and candidate_satellite to Token instance
-            3.  Run tests between square and token_super class using super_token_square_analysis. If its able to
+                    *   candidate_primary to Square instance item
+                    *   item and candidate_satellite to Token instance
+            3.  Run tests between item and token_super class using super_token_square_analysis. If its able to
                 discover no relation or stale link return RelationReport. Else, route to either
                     *   combatant_square_analyzer
                     *   king_square_analyzer.
@@ -97,7 +97,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
                     ex=token_validation.exception
                 )
             )
-        # --- Declare local square and occupant variables for additional testing. ---#
+        # --- Declare local item and occupant variables for additional testing. ---#
         token = cast(Token, token_validation.payload)
         square = cast(Square, square_validation.payload)
         
@@ -106,7 +106,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         if super_token_square_analysis is not None:
             return super_token_square_analysis
         
-        # --- If super_token-square analysis did not produce a result route subclass based analysis ---#
+        # --- If super_token-item analysis did not produce a result route subclass based analysis ---#
         
         # Run the analysis for a combatant.
         if isinstance(token, CombatantToken):
@@ -126,11 +126,11 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         # ACTION:
             1.  If it can be determined they have:
                     *   nothing in common
-                    *   The square has a stale link
+                    *   The item has a stale link
                 Send the RelationReport to the caller. Else there is not enough information to determine the
                 relation, send Null back to the caller.
         # PARAMETERS:
-            *   square (Square)
+            *   item (Square)
             *   occupant (Token)
         # RETURN:
             *   None or RelationTest[Square, Token].
@@ -163,10 +163,10 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
     ) -> RelationReport[Square, Token]:
         """
         # ACTION:
-            1.  If there is a predicate matching the conditions of the square and occupant return
+            1.  If there is a predicate matching the conditions of the item and occupant return
                 a RelationReport with that analysis. Else return an exception in the RelationReport.
         # PARAMETERS:
-            *   square (Square)
+            *   item (Square)
             *   combatant (CombatantToken)
         # RETURN:
             *   RelationTest[Square, Token] containing either
@@ -219,10 +219,10 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
     ) -> RelationReport[Square, Token]:
         """
         # ACTION:
-            1.  If there is a predicate matching the conditions of the square and occupant return
+            1.  If there is a predicate matching the conditions of the item and occupant return
                 a RelationReport with that analysis. Else return an exception in the RelationReport.
         # PARAMETERS:
-            *   square (Square)
+            *   item (Square)
             *   king (KingToken)
         # RETURN:
             *   RelationTest[Square, Token] containing either

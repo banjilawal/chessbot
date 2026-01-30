@@ -1,4 +1,4 @@
-# src/chess/tea/database/core/exception/deletion/empty
+# src/chess/team/database/core/exception/deletion/empty
 
 """
 Module: chess.team.database.core.exception.deletion.empty
@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.team import TeamDataServiceException
+from chess.team import TeamStackServiceException
 
 __all__ = [
     # ======================# POPPING_EMPTY_TEAM_STACK EXCEPTION #======================#
@@ -16,12 +16,12 @@ __all__ = [
 
 
 # ======================# POPPING_EMPTY_TEAM_STACK EXCEPTION #======================#
-class PoppingEmtpyTeamStackException(TeamDataServiceException):
+class PoppingEmtpyTeamStackException(TeamStackServcException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove a team failed because the TeamListService was not managing any teams.
+    1.  Indicate that an attempt to remove a team failed because the TeamStackService was not managing any teams.
 
     # PARENT:
         *   TeamDaaServiceException

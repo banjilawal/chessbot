@@ -1,4 +1,4 @@
-# src/chess/tea/database/core/exception/deletion/__init__.py
+# src/chess/team/database/core/exception/deletion/__init__.py
 
 """
 Module: chess.team.database.core.exception.deletion.__init__

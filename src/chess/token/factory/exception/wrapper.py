@@ -1,7 +1,7 @@
-# src/chess/occupant/factory/exception
+# src/chess/token/factory/exception
 
 """
-Module: chess.occupant.factory.exception
+Module: chess.token.factory.exception
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0

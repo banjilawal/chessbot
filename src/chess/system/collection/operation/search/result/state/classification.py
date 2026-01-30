@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/search/result/state/classification.py
+# src/chess/system/collection/operation/search/result/state/classification.py
 
 """
 Module: chess.system.collection.operation.search.result.state.classification

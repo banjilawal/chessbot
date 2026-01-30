@@ -1,7 +1,7 @@
-# src/chess/board/square/__init__.py
+# src/chess/board/item/__init__.py
 
 """
-Module: chess.board.square.__init__
+Module: chess.board.item.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

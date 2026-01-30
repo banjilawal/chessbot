@@ -23,7 +23,7 @@ class HostageDatabase(Database[HostageManifest]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all items in managed by HostageManifestList are unique.
+    1.  Ensure all bag in managed by HostageManifestList are unique.
     2.  Guarantee consistency of records in HostageManifestList.
 
     # PARENT:
@@ -39,7 +39,7 @@ class HostageDatabase(Database[HostageManifest]):
         *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "HostageDatabase"
-    _data_service: HostageManifestList
+    _database_core: HostageManifestList
     
     def __init__(
             self,
@@ -60,23 +60,23 @@ class HostageDatabase(Database[HostageManifest]):
             None
         """
         super().__init__(id=id, name=name, data_service=data_service)
-        self._data_service = data_service
+        self._stack_service = data_service
     
     @property
     def integrity_service(self) -> HostageManifestService:
-        return self._data_service.integrity_service
+        return self._database_core.integrity_service
     
     @property
     def context_service(self) -> CaptivityContextService:
-        return self._data_service.context_service
+        return self._database_core.context_service
     
     @property
     def size(self) -> int:
-        return self._data_service.size
+        return self._database_core.size
     
     @property
     def is_empty(self) -> bool:
-        return self._data_service.is_empty
+        return self._database_core.is_empty
     
     @LoggingLevelRouter.monitor
     def add_unique_manifest(self, manifest: HostageManifest) -> InsertionResult[HostageManifest]:
@@ -85,7 +85,7 @@ class HostageDatabase(Database[HostageManifest]):
             1.  If the hostageManifest fails validation send the wrapped exception in the InsertionResult.
             2.  If a search for the hostageManifest either fails or finds a match send the wrapped exception in the
                 InsertionResult.
-            3.  If the call to _hostageManifest_data_service.insert_hostageManifest fails send the wrapped exception in the InsertionResult.
+            3.  If the call to _hostageManifest_database_core.insert_hostageManifest fails send the wrapped exception in the InsertionResult.
                 Else send the outgoing result directly to the caller.
         # PARAMETERS:
             *   hostageManifest (HostageManifest)
@@ -144,8 +144,8 @@ class HostageDatabase(Database[HostageManifest]):
                     )
                 )
             )
-        # --- Use _data_service.insert_manifest because order does not matter for the manifest access. ---#
-        insertion_result = self._data_service.insert_manifest(manifest=manifest)
+        # --- Use _database_core.insert_manifest because order does not matter for the manifest access. ---#
+        insertion_result = self._database_core.insert_manifest(manifest=manifest)
         
         # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
@@ -168,7 +168,7 @@ class HostageDatabase(Database[HostageManifest]):
     def search_manifests(self, context: CaptivityContext) -> SearchResult[List[HostageManifest]]:
         """
         # ACTION:
-            1.  Get the result of calling _hostageManifest_data_service.delete_hostageManifest_by_id for method.
+            1.  Get the result of calling _hostageManifest_database_core.delete_hostageManifest_by_id for method.
                 If the deletion failed
                 wrap the exception inside the appropriate Database exceptions and send the exception chain
                 in the DeletionResult.
@@ -186,8 +186,8 @@ class HostageDatabase(Database[HostageManifest]):
         """
         method = "HostageDatabase.searchnanifests"
         
-        # --- Handoff the search responsibility to _hostageManifest_data_service. ---#
-        search_result = self._data_service.context_service.finder.find(context=context)
+        # --- Handoff the search responsibility to _hostageManifest_database_core. ---#
+        search_result = self._database_core.context_service.finder.find(context=context)
         
         # Handle the case that the search is not completed.
         if search_result.is_failure:

@@ -231,7 +231,7 @@ class TeamService(EntityService[Team]):
                 )
             # --- Don't cast the build result. The factory returns the concrete product which matches the persona. ---#
             
-            # Handle the case that searching the board for the formation's square is not completed.
+            # Handle the case that searching the board for the formation's item is not completed.
             square_search_result = team.board.squares.search_squares(
                 context=SquareContext(name=formation.square_name)
             )

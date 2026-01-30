@@ -1,4 +1,4 @@
-# src/chess/tea/database/core/exception/__init__.py
+# src/chess/team/database/core/exception/__init__.py
 
 """
 Module: chess.team.database.core.exception.__init__
@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .deletion import *
+from .insertion import *
 
 # Modules
-from .catchall import TeamDataServiceException
+from .catchall import TeamStackServiceException

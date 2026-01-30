@@ -77,7 +77,7 @@ class VisitationFinder(Finder[List[Coord]]):
   def _id_search(cls, visitation: Visitation, piece_id: int) -> SearchResult[List[Coord]]:
       """
       IDs should be unique. Faster old_search would return the first consistency. An easy
-      integrity check finds all the items with the same visitor_id. If there is more than
+      integrity check finds all the bag with the same visitor_id. If there is more than
       one raise owner `DuplicateUniqueIdException`.
 
       Performance Impact:

@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/insertion/exception/unsupported.py
+# src/chess/system/collection/operation/insertion/exception/unsupported.py
 
 """
 Module: chess.system.collection.operation.insertion.exception.unsupported

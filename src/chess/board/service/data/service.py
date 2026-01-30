@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.arena import Arena
-from chess.system import ListService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.system import StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.board import (
     AppendingBoardDirectlyIntoItemsFailedException, ArenaAlreadyContainsBoardException, PoppingEmptyBoardStackException,
     Board, BoardContext,
@@ -19,7 +19,7 @@ from chess.board import (
 )
 
 
-class BoardListService(ListService[Board]):
+class BoardStackService(StackService[Board]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -41,7 +41,7 @@ class BoardListService(ListService[Board]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    SERVICE_NAME = "BoardListService"
+    SERVICE_NAME = "BoardStackService"
     
     def __init__(
             self,
@@ -57,7 +57,7 @@ class BoardListService(ListService[Board]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   items (List[Team])
+            *   bag (List[Team])
             *   service (TeamService)
             *   context_service (TeamContextService)
         # RETURNS:
@@ -100,7 +100,7 @@ class BoardListService(ListService[Board]):
         # RAISES:
             *   BoardDataServiceException
         """
-        method = "BoardListService.add_board"
+        method = "BoardStackService.add_board"
         
         # Handle the case that the board is unsafe.
         validation = self.board_service.validator.validate(candidate=board)
@@ -187,9 +187,9 @@ class BoardListService(ListService[Board]):
         # RAISES:
             *   BoardDataServiceException
         """
-        method = "BoardListService.delete_board_by_id"
+        method = "BoardStackService.delete_board_by_id"
         
-        # Handle the case that there are no items in the list.
+        # Handle the case that there are no bag in the list.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -239,5 +239,5 @@ class BoardListService(ListService[Board]):
                 self.items.remove(board)
                 return DeletionResult.success(payload=board)
         
-        # If none of the items had that id return an empty DeletionResult.
+        # If none of the bag had that id return an empty DeletionResult.
         return DeletionResult.empty()

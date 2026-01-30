@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== ARENA.SERVICE.DATA PACKAGE CONTENTS ===========#
+# =========== ARENA.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *

@@ -58,7 +58,7 @@ The parties will have may have either
 
     FINDER FILTERING:
     .................
-        Using the one-side to filter items in a many-sides by one-side along with some other unique attribute
+        Using the one-side to filter bag in a many-sides by one-side along with some other unique attribute
         they all have with the shared attribute that at least one collection member has.
     
         EXAMPLE: -->    Filtering Team datasets by Game (shared attribute) and globally unique (id), or

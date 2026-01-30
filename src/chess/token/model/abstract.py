@@ -1,7 +1,7 @@
-# src/chess/occupant/model/abstract.py
+# src/chess/token/model/abstract.py
 
 """
-Module: chess.occupant.model.abstract
+Module: chess.token.model.abstract
 Author: Banji Lawal
 Created: 2025-07-22
 version: 1.0.0
@@ -15,7 +15,7 @@ from chess.rank import Rank
 from chess.team import Team
 from chess.square import Square
 from chess.token import ActivityState, TokenBoardState
-from chess.coord import Coord, CoordListService
+from chess.coord import Coord, CoordStackService
 
 class Token(ABC):
     """
@@ -37,7 +37,7 @@ class Token(ABC):
         *   rank (Rank)
         *   roster_number (int)
         *   current_position (Coord)
-        *   positions (CoordListService):
+        *   positions (CoordStackService):
     """
     _id: int
     _team: Team
@@ -46,7 +46,7 @@ class Token(ABC):
     _roster_number: int
     _activity: ActivityState
     _opening_square: Square
-    _positions: CoordListService
+    _positions: CoordStackService
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _token_board_state: TokenBoardState
@@ -60,7 +60,7 @@ class Token(ABC):
             roster_number: int,
             opening_square: Square,
             activity: ActivityState,
-            positions: CoordListService = CoordListService()
+            positions: CoordStackService = CoordStackService()
     ):
         method = "Token.__init__"
         self._id = id
@@ -104,7 +104,7 @@ class Token(ABC):
         return self._activity_state
     
     @property
-    def positions(self) -> CoordListService:
+    def positions(self) -> CoordStackService:
         return self._positions
     
     @property

@@ -1,7 +1,7 @@
-# src/chess/occupant/service/data/exception/search/wrapper.py
+# src/chess/token/service/data/exception/search/wrapper.py
 
 """
-Module: chess.occupant.service.data.exception.search.wrapper
+Module: chess.token.service.data.exception.search.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

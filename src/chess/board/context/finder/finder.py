@@ -23,7 +23,7 @@ class BoardFinder(DataFinder[Board]):
     # ROLE: AbstractSearcher
 
     # RESPONSIBILITIES:
-    1.  Send items in a BoardList whose attribute value match the context.key value to the caller.
+    1.  Send bag in a BoardList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:

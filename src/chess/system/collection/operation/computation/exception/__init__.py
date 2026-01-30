@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/computation/exception/__init__.py
+# src/chess/system/collection/operation/computation/exception/__init__.py
 
 """
 Module: chess.system.collection.operation.computation.exception.__init__

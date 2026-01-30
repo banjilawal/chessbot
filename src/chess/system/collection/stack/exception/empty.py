@@ -1,7 +1,7 @@
-# src/chess/system/collection/exception/pop.py
+# src/chess/system/collection/stack/exception/empty.py
 
 """
-Module: chess.system.collection.service.exception.pop
+Module: chess.system.collection.stack.exception.empty
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

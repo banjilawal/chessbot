@@ -149,7 +149,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that the prisoner was capture on a different square.
+        # Handle the case that the prisoner was capture on a different item.
         if prisoner.current_position != captured_square.coord:
             # Send the exception chain on failure
             return BuildResult.failure(

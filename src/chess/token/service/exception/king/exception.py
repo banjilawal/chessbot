@@ -1,7 +1,7 @@
-# src/chess/occupant/validator/exception/king/collision.py
+# src/chess/token/validator/exception/king/collision.py
 
 """
-Module: chess.occupant.validator.exception.king.exception
+Module: chess.token.validator.exception.king.exception
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0

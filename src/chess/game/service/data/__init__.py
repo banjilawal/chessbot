@@ -7,11 +7,11 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== GAME.SERVICE.DATA PACKAGE CONTENTS ===========#
+#=========== GAME.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
 from .unique import *
 
 # Modules
-from .service import GameListService
+from .service import GameStackService
 from .exception import GameDataServiceException

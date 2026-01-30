@@ -1,5 +1,5 @@
 ___all__ = [
-    # ======================# UNIQUESNAPSHOT_DATA_SERVICE EXCEPTION #======================#
+    # ======================# UNIQUESNAPSHOT_STACK_SERVICE EXCEPTION #======================#
     "UniqueSnapshotDataServiceException",
 ]
 
@@ -7,7 +7,7 @@ from chess.snapshot import SnapshotException
 from chess.system import ServiceException
 
 
-# ======================# UNIQUE_SNAPSHOT_DATA_SERVICE EXCEPTION #======================#
+# ======================# UNIQUE_SNAPSHOT_STACK_SERVICE EXCEPTION #======================#
 class UniqueSnapshotDataServiceException(SnapshotException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

@@ -1,7 +1,7 @@
-# src/chess/attack/exception/debug/square/unfound.py
+# src/chess/attack/exception/debug/item/unfound.py
 
 """
-Module: chess.attack.exception.debug.square.unfound
+Module: chess.attack.exception.debug.item.unfound
 Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
@@ -21,7 +21,7 @@ class AttackerSquareNotFoundException(AttackDebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that the attack failed because no square was found at the attacker's coord.
+    1.  Indicate that the attack failed because no item was found at the attacker's coord.
 
     # PARENT:
         *   AttackDebugException
@@ -36,4 +36,4 @@ class AttackerSquareNotFoundException(AttackDebugException):
     None
     """
     ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: No square was found at the attacker's position."
+    DEFAULT_MESSAGE = "Attack failed: No item was found at the attacker's position."

@@ -12,19 +12,19 @@ __all__ = [
     "SquareIdAlreadyInUseException",
 ]
 
-from chess.square import SquareDataServiceException
+from chess.square import SquareStackServiceException
 
 
 # ======================# ID_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-class SquareIdAlreadyInUseException(SquareDataServiceException):
+class SquareIdAlreadyInUseException(SquareStackServiceException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that inserting a square failed because the id was already in use by a collection member.
+    1.  Indicate that inserting a item failed because the id was already in use by a collection member.
 
     # PARENT:
-        *   SquareDataServiceException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None
@@ -36,4 +36,4 @@ class SquareIdAlreadyInUseException(SquareDataServiceException):
     None
     """
     ERROR_CODE = "ID_ALREADY_USED_IN_SQUARE_DATASET_ERROR"
-    DEFAULT_MESSAGE = "Square insertion failed: Another square is already using the id."
+    DEFAULT_MESSAGE = "Square insertion failed: Another item is already using the id."

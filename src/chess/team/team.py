@@ -12,8 +12,7 @@ from __future__ import annotations
 from chess.board import Board
 from chess.schema import Schema
 from chess.player import Player
-from chess.team import HostageService
-from chess.token import UniqueTokenDataService
+from chess.token import TokenDatabase
 
 
 class Team:
@@ -45,10 +44,9 @@ class Team:
     
     _id: int
     _board: Board
-    _schema: Schema
     _owner: Player
-    _roster: UniqueTokenDataService
-    _hostages: HostageService
+    _schema: Schema
+    _roster: TokenDatabase
 
     def __init__(
             self,
@@ -56,8 +54,7 @@ class Team:
             board: Board,
             schema: Schema,
             owner: Player,
-            roster: UniqueTokenDataService = UniqueTokenDataService(),
-            hostages: HostageService = HostageService(),
+            roster: TokenDatabase = TokenDatabase(),
     ):
         """
         # ACTION:
@@ -82,7 +79,6 @@ class Team:
         self._board = board
         self._schema = schema
         self._roster = roster
-        self._hostages = hostages
         self._owner = owner
     
     @property
@@ -102,12 +98,8 @@ class Team:
         return self._schema
 
     @property
-    def roster(self) -> UniqueTokenDataService:
+    def roster(self) -> TokenDatabase:
         return self._roster
-    
-    @property
-    def hostages(self) -> HostageService:
-        return self._hostages
     
     def __eq__(self, other) -> bool:
         if other is self: return True

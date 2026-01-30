@@ -1,7 +1,7 @@
-# src/chess/occupant/model/concrete/combatant/occupant.py
+# src/chess/token/model/concrete/combatant/occupant.py
 
 """
-Module: chess.occupant.model.concrete.combatant.occupant
+Module: chess.token.model.concrete.combatant.occupant
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

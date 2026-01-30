@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/deletion/exception/route.py
+# src/chess/system/collection/operation/deletion/exception/route.py
 
 """
 Module: chess.system.collection.operation.deletion.exception.route

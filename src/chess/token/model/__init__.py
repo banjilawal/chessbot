@@ -1,7 +1,7 @@
-# src/chess/occupant/model/__init__.py
+# src/chess/token/model/__init__.py
 
 """
-Module: chess.occupant.model.__init__
+Module: chess.token.model.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

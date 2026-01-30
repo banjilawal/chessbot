@@ -22,7 +22,7 @@ class UniqueSquareSearchFailedException(SquareException, SearchFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why inserting a unique square failed. The encapsulated exceptions create 
+    1.  Wrap debug exceptions that indicate why inserting a unique item failed. The encapsulated exceptions create
         chain for tracing the source of the failure.
 
     # PARENT:
@@ -39,4 +39,4 @@ class UniqueSquareSearchFailedException(SquareException, SearchFailedException):
     None
     """
     ERROR_CODE = "UNIQUE_SQUARE_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Unique square search failed."
+    DEFAULT_MESSAGE = "Unique item search failed."

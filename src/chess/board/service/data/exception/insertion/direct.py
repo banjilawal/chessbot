@@ -21,7 +21,7 @@ class AppendingBoardDirectlyIntoItemsFailedException(BoardDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that appending the board directly into self.items was not in the list after running items.append.
+    1.  Indicate that appending the board directly into self.bag was not in the list after running bag.append.
 
     # PARENT:
         *   BoardDataServiceException
@@ -36,4 +36,4 @@ class AppendingBoardDirectlyIntoItemsFailedException(BoardDataServiceException):
     None
     """
     ERROR_CODE = "APPENDING_BOARD_DIRECTLY_INTO_ITEMS_ERROR"
-    DEFAULT_MESSAGE = "Board insertion failed: The board was not found in self.items after running self.items.append."
+    DEFAULT_MESSAGE = "Board insertion failed: The board was not found in self.bag after running self.bag.append."

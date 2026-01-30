@@ -1,7 +1,7 @@
-# src/chess/occupant/service/data/exception/catchall.py
+# src/chess/token/service/data/exception/catchall.py
 
 """
-Module: chess.occupant.service.data.exception.catchall
+Module: chess.token.service.data.exception.catchall
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -12,17 +12,17 @@ from chess.system import DataServiceException
 
 
 __all__ = [
-    # ======================# TOKEN_DATA_SERVICE EXCEPTION #======================#
+    # ======================# TOKEN_STACK_SERVICE EXCEPTION #======================#
     "TokenDataServiceException",
 ]
 
-# ======================# TOKEN_DATA_SERVICE EXCEPTION #======================#
+# ======================# TOKEN_STACK_SERVICE EXCEPTION #======================#
 class TokenDataServiceException(TokenException, DataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by TokenListService methods that return Result objects.
+    1.  Wrap any exceptions raised by TokenStackService methods that return Result objects.
 
     # PARENT:
         *   TokenException
@@ -37,5 +37,5 @@ class TokenDataServiceException(TokenException, DataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "TokenListService raised an exception."
+    ERROR_CODE = "TOKEN_DATABASE_CORE_ERROR"
+    DEFAULT_MESSAGE = "TokenStackService raised an exception."

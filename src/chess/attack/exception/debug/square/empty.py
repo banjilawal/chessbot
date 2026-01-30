@@ -1,7 +1,7 @@
-# src/chess/attack/exception/debug/square/empty.py
+# src/chess/attack/exception/debug/item/empty.py
 
 """
-Module: chess.attack.exception.debug.square.empty
+Module: chess.attack.exception.debug.item.empty
 Author: Banji Lawal
 Created: 2026-01-24
 version: 1.0.0
@@ -21,7 +21,7 @@ class AttackingVacantSquareException(AttackDebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attack failed because there was nothing in the square.
+    1.  Indicate that an attack failed because there was nothing in the item.
 
     # PARENT:
         *   AttackDebugException
@@ -36,4 +36,4 @@ class AttackingVacantSquareException(AttackDebugException):
     None
     """
     ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: The square was empty. There was nothing to attack."
+    DEFAULT_MESSAGE = "Attack failed: The item was empty. There was nothing to attack."

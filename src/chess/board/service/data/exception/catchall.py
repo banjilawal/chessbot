@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# BOARD_DATA_SERVICE EXCEPTION #======================#
+    # ======================# BOARD_STACK_SERVICE EXCEPTION #======================#
     "BoardDataServiceException",
 ]
 
@@ -16,13 +16,13 @@ from chess.board import BoardException
 from chess.system import DataServiceException
 
 
-# ======================# BOARD_DATA_SERVICE EXCEPTION #======================#
+# ======================# BOARD_STACK_SERVICE EXCEPTION #======================#
 class BoardDataServiceException(BoardException, DataServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by BoardListService methods that return Result objects.
+    1.  Wrap any exceptions raised by BoardStackService methods that return Result objects.
 
     # PARENT:
         *   BoardException
@@ -37,5 +37,5 @@ class BoardDataServiceException(BoardException, DataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "BoardListService raised an exception."
+    ERROR_CODE = "BOARD_DATABASE_CORE_ERROR"
+    DEFAULT_MESSAGE = "BoardStackService raised an exception."

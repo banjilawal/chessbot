@@ -11,7 +11,7 @@ from chess.agent import AgentException
 from chess.system import DataServiceException
 
 ___all__ = [
-    # ======================# PLAYER_DATA_SERVICE EXCEPTION #======================#
+    # ======================# PLAYER_STACK_SERVICE EXCEPTION #======================#
     "AgentDataServiceException",
 ]
 
@@ -19,14 +19,14 @@ from chess.agent import AgentException
 from chess.system import ServiceException
 
 
-# ======================# PLAYER_DATA_SERVICE EXCEPTION #======================#
+# ======================# PLAYER_STACK_SERVICE EXCEPTION #======================#
 class AgentDataServiceException(AgentException, ServiceException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an AgentListService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a AgentListService method.
+    1.  Indicate that an AgentStackService encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a AgentStackService method.
 
     # PARENT:
         *   ServiceException
@@ -41,5 +41,5 @@ class AgentDataServiceException(AgentException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "AgentListService raised an exception."
+    ERROR_CODE = "AGENT_DATABASE_CORE_ERROR"
+    DEFAULT_MESSAGE = "AgentStackService raised an exception."

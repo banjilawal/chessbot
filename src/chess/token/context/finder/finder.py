@@ -1,7 +1,7 @@
-# src/chess/occupant/context/finder/finder.py
+# src/chess/token/context/finder/finder.py
 
 """
-Module: chess.occupant.context.finder.finder
+Module: chess.token.context.finder.finder
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -24,7 +24,7 @@ class TokenFinder(DataFinder[Token]):
     # ROLE: AbstractSearcher
 
     # RESPONSIBILITIES:
-    1.  Send items in a TokenList whose attribute value match the context.key value to the caller.
+    1.  Send bag in a TokenList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
     
     # LIMITATIONS:

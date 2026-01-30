@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/search/abstract.py
+# src/chess/system/collection/operation/search/abstract.py
 
 """
 Module: chess.system.collection.operation.search.abstract

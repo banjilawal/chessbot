@@ -10,8 +10,8 @@ Version: 1.0.0
 # =========== SYSTEM.COLLECTION.STACK PACKAGE CONTENTS ===========#
 
 # Packages
-from .service import *
-from .service import *
+from .exception import *
 
 # Modules
-None
+from .stack import StackService
+from .searcher import StackSearcher

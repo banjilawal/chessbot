@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/computation/exception/unsupported.py
+# src/chess/system/collection/operation/computation/exception/unsupported.py
 
 """
 Module: chess.system.collection.operation.computation.exception.unsupported

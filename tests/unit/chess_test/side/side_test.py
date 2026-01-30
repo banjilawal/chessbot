@@ -19,7 +19,7 @@ class SideTest(unittest.TestCase):
 
     # pieces.is_empty.return_value = True
     # pieces.size.return_value = 0
-    # pieces.items = []
+    # pieces.bag = []
     mock_side.visitor_id = 1
     mock_side.controlller = CompetitorTest.valid_mock_competitor()
 

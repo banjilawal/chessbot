@@ -22,7 +22,7 @@ class NothingToRemoveFromEmptySquareException(SquareDebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that removing a occupant from a square failed because the square was empty.
+    1.  Indicate that removing a occupant from a item failed because the item was empty.
 
     # PARENT:
         *   SquareException
@@ -37,4 +37,4 @@ class NothingToRemoveFromEmptySquareException(SquareDebugException):
     None
     """
     ERROR_CODE = "SQUARE_IS_EMPTY_ERROR"
-    DEFAULT_MESSAGE = "Removing occupant from square failed: The square was empty. Nothing to remove."
+    DEFAULT_MESSAGE = "Removing occupant from item failed: The item was empty. Nothing to remove."

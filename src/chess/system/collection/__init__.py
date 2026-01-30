@@ -1,4 +1,4 @@
-# src/chess/system/collection__init__.py
+# src/chess/system/collection/__init__.py
 
 """
 Module: chess.system.collection.__init__
@@ -13,7 +13,7 @@ Version: 1.0.0
 from .hash import *
 from .stack import *
 from .operation import *
-from .result import *
+from .exception import *
 
 # Modules
 from .dto import DTO

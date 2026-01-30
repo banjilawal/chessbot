@@ -1,7 +1,7 @@
-# src/chess/occupant/model/concrete/king/king.py
+# src/chess/token/model/concrete/king/king.py
 
 """
-Module: chess.occupant.model.concrete.king.king
+Module: chess.token.model.concrete.king.king
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

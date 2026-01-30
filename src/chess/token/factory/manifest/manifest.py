@@ -1,17 +1,15 @@
-# src/chess/occupant/factory/param/param.py
+# src/chess/token/factory/param/param.py
 
 """
-Module: chess.occupant.factory.param.param
+Module: chess.token.factory.param.param
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
 """
-from chess.coord import Coord
+
+from chess.team import Team
 from chess.rank import Rank
 from chess.square import Square
-from chess.team import Team
-
-
 
 
 class TokenBuildManifest:
@@ -61,3 +59,6 @@ class TokenBuildManifest:
     @property
     def opening_square(self) -> Square:
         return self._opening_square
+    
+    def _square_setter (self):
+        self._owner.schema.

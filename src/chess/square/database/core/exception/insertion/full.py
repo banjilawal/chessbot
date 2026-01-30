@@ -8,21 +8,21 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# SQUARE_DATA_SERVICE EXCEPTION #======================#
-    "SquareDataServiceCapacityException",
+    # ======================# SQUARE_STACK_SERVICE EXCEPTION #======================#
+    "FullSquareStackException",
 ]
 
 from chess.system import DebugException
 from chess.square import SquareServiceException
 
 
-# ======================# SQUARE_DATA_SERVICE EXCEPTION #======================#
-class SquareDataServiceCapacityException(SquareServiceException, DebugException):
+# ======================# SQUARE_STACK_SERVICE EXCEPTION #======================#
+class FullSquareStackException(SquareServiceException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that adding a square to the service failed because the service has reached the limit of
+    1.  Indicate that adding a item to the service failed because the service has reached the limit of
         how many squares it manages. 
 
     # PARENT:
@@ -38,5 +38,5 @@ class SquareDataServiceCapacityException(SquareServiceException, DebugException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_DATA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "Adding a square to the service failed: The number of squares managed is at full capacity."
+    ERROR_CODE = "SQUARE_STACK_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "Adding an item to the SquareStack failed: The stack is full."

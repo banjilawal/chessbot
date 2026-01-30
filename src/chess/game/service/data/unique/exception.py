@@ -11,12 +11,12 @@ from chess.game import GameException
 from chess.system import DatabaseException
 
 __all__ = [
-    # ======================# UNIQUE_GAME_DATA_SERVICE EXCEPTION #======================#
+    # ======================# UNIQUE_GAME_STACK_SERVICE EXCEPTION #======================#
     "UniqueGameDataServiceException",
 ]
 
 
-# ======================# UNIQUE_GAME_DATA_SERVICE EXCEPTION #======================#
+# ======================# UNIQUE_GAME_STACK_SERVICE EXCEPTION #======================#
 class UniqueGameDataServiceException(GameException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -38,5 +38,5 @@ class UniqueGameDataServiceException(GameException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_GAME_DATA_SERVICE_ERROR"
+    ERROR_CODE = "UNIQUE_GAME_DATABASE_CORE_ERROR"
     DEFAULT_MESSAGE = "UniqueGameDataService raised an exception."

@@ -13,19 +13,19 @@ from chess.board import (
     BoardTokenServiceIsFullException
 )
 from chess.team import TeamRankQuotaFullException
-from chess.token import Token, TokenContext, UniqueTokenDataService
+from chess.token import Token, TokenContext, TokenDatabase
 from chess.system import NUMBER_OF_COLUMNS, InsertionResult, NUMBER_OF_ROWS
 
 
 class BoardTokenService:
     _capacity: int
-    _members: UniqueTokenDataService
+    _members: TokenDatabase
     _analyzer: BoardTokenRelationAnalyzer
     
     def __init__(
             self,
             capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
-            members: UniqueTokenDataService = UniqueTokenDataService(),
+            members: TokenDatabase = TokenDatabase(),
             analyzer: BoardTokenRelationAnalyzer = BoardTokenRelationAnalyzer(),
     ):
         self._capacity = capacity

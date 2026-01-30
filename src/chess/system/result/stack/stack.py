@@ -42,7 +42,7 @@ class ResultStack(ABC, Generic[T]):
     # LOCAL ATTRIBUTES:
         *   size (int)
         *   is_empty (bool)
-        *   items (List[T])
+        *   bag (List[T])
         *   current_result (T)
 
     # INHERITED ATTRIBUTES:

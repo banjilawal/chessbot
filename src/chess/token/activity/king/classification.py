@@ -1,7 +1,7 @@
-# src/chess/occupant/classification/activity/king/classification.py
+# src/chess/token/classification/activity/king/classification.py
 
 """
-Module: chess.occupant.classification.activity.king.classification
+Module: chess.token.classification.activity.king.classification
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

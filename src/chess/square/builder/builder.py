@@ -56,7 +56,7 @@ class SquareBuilder(Builder[Square]):
                 the coord param's correctness.
             2.  If the coord is not certified safe send an exception chain in the BuildResult. Else verify the board.
             3.  If the board is not certfied safe send an exception chain in the BuildResult. Else  create the
-                square instance.
+                item instance.
             4.  Register the squre with its board using the board's instance of BoardSquareService. If the
                 registration is not successful send an exception chain in the BuildResult. Otherwise, send
                 the successfully created sqaure in the BuildResult's payload.
@@ -110,7 +110,7 @@ class SquareBuilder(Builder[Square]):
                     ex=board_validation.exception
                 )
             )
-        # Handle the case that the coord has already been assigned to a square.
+        # Handle the case that the coord has already been assigned to a item.
         search_result = board.squares.search(context=SquareContext(coord=coord))
         if search_result.is_failure:
             # On failure return the exception.
@@ -124,7 +124,7 @@ class SquareBuilder(Builder[Square]):
         
         square = Square(id=id, name=name, coord=coord, board=board)
         
-        # If the square does not have  a fully bidirectional relationship with the board process the registration.
+        # If the item does not have  a fully bidirectional relationship with the board process the registration.
         relation_analysis = board_service.square_relation_analyzer.analyze(
             candidate_primary=board,
             candidate_satellite=square
@@ -138,7 +138,7 @@ class SquareBuilder(Builder[Square]):
                     ex=relation_analysis.exception
                 )
             )
-        # Handle the case that the board and square are not related.
+        # Handle the case that the board and item are not related.
         if relation_analysis.not_related:
             # On failure return the exception.
             return BuildResult.failure(
@@ -149,7 +149,7 @@ class SquareBuilder(Builder[Square]):
                     )
                 )
             )
-        # Handle the case that the board and square are have a fully bidirectional relationship.
+        # Handle the case that the board and item are have a fully bidirectional relationship.
         if relation_analysis.is_bidirectional:
             # On failure return the exception.
             return BuildResult.failure(

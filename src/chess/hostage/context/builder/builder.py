@@ -135,7 +135,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             # On validation success return a prisonerCaptivityContext in the BuildResult.
             return BuildResult.success(CaptivityContext(prisoner=prisoner))
         
-        # Certification for the search-by-captured-square target.
+        # Certification for the search-by-captured-item target.
         if captured_square is not None:
             validation = square_service.validator.validate(candidate=captured_square)
             if validation.is_failure:

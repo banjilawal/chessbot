@@ -13,15 +13,12 @@ version: 1.0.0
 from .build import *
 from .color import *
 from .config import *
-from chess.system.collection.operation.search.context import *
+from .collection import *
 from .database import *
 from .err import *
 from .event import *
-from chess.system.collection.operation import *
-from chess.system.collection.hash import *
 from .identity import *
 from .logging import *
-from chess.system.collection.hash import *
 from .mouse import *
 from .notification import *
 from .number import *

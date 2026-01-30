@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import DatasetException, OperationFailedException
+from chess.system import CollectionException, OperationFailedException
 
 __all__ = [
     # ======================# CALCULATION_FAILURE EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# CALCULATION_FAILURE EXCEPTION #======================#
-class ComputationFailedException(DatasetException, OperationFailedException):
+class ComputationFailedException(CollectionException, OperationFailedException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 

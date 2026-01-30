@@ -11,12 +11,12 @@ from chess.agent import AgentException
 from chess.system import DatabaseException
 
 __all__ = [
-    #======================# UNIQUE_AGENT_DATA_SERVICE EXCEPTION #======================#
+    #======================# UNIQUE_AGENT_STACK_SERVICE EXCEPTION #======================#
     "UniqueAgentDataServiceException",
 ]
 
 
-#======================# UNIQUE_AGENT_DATA_SERVICE EXCEPTION #======================#
+#======================# UNIQUE_AGENT_STACK_SERVICE EXCEPTION #======================#
 class UniqueAgentDataServiceException(AgentException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
@@ -37,5 +37,5 @@ class UniqueAgentDataServiceException(AgentException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_AGENT_DATA_SERVICE_ERROR"
+    ERROR_CODE = "UNIQUE_AGENT_DATABASE_CORE_ERROR"
     DEFAULT_MESSAGE = "UniqueAgentDataService raised an exception."

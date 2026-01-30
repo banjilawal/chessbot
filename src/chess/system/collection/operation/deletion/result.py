@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/deletion/wrapper.py
+# src/chess/system/collection/operation/deletion/wrapper.py
 
 """
 Module: chess.system.collection.operation.deletion.wrapper

@@ -8,11 +8,11 @@ version: 1.0.0
 """
 
 
-#=========== PLAYER.SERVICE.DATA PACKAGE CONTENTS ===========#
+#=========== PLAYER.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
 from .unique import *
 
 # Modules
-from .service import AgentListService
+from .service import AgentStackService
 from .exception import AgentDataServiceException

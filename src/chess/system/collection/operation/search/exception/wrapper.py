@@ -1,4 +1,4 @@
-# src/chess/system/collectionoperation/search/exception/wrapper.py
+# src/chess/system/collection/operation/search/exception/wrapper.py
 
 """
 Module: chess.system.collection.operation.search.exception.wrapper

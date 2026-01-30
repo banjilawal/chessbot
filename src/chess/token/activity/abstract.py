@@ -1,7 +1,7 @@
-# src/chess/occupant/state/activity/abstract.py
+# src/chess/token/state/activity/abstract.py
 
 """
-Module: chess.occupant.state.activity.abstract
+Module: chess.token.state.activity.abstract
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

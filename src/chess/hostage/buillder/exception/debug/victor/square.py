@@ -1,7 +1,7 @@
-# src/chess/hostage/builder/exception/debug/victor/square.py
+# src/chess/hostage/builder/exception/debug/victor/item.py
 
 """
-Module: chess.hostage.builder.exception.debug.victor.square
+Module: chess.hostage.builder.exception.debug.victor.item
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
@@ -23,7 +23,7 @@ class VictorNotOccupyingCapturedSquareException(HostageManifestException, DebugE
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that the HostageManifest build failed because the victor was not occupying the square where it
+    1.  Indicate that the HostageManifest build failed because the victor was not occupying the item where it
         captured the prisoner.
 
     # PARENT:
@@ -40,4 +40,4 @@ class VictorNotOccupyingCapturedSquareException(HostageManifestException, DebugE
     None
     """
     ERROR_CODE = "VICTOR_NOT_ON_CAPTURED_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest build failed: Victor not occupying captured square."
+    DEFAULT_MESSAGE = "HostageManifest build failed: Victor not occupying captured item."

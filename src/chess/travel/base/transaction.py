@@ -295,10 +295,10 @@ class TravelTransaction(Transaction[TravelEvent]):
   #     return TransactionResult(op_result_id, directive, rollback_exception=build_outcome.rollback_exception)
   #
   #   discovery = cast(Discovery, build_outcome.payload)
-  #   if discovery not in directive.observer.discoveries.items:
+  #   if discovery not in directive.observer.discoveries.bag:
   #     directive.observer.discoveries.record_discovery(discovery=discovery)
   #
-  #   if discovery not in directive.observer.discoveries.items:
+  #   if discovery not in directive.observer.discoveries.bag:
   #     return TransactionResult(
   #       # There is nothing to actually do so there is no rollback because the discover was not added
   #       result_id=op_result_id,

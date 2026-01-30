@@ -1,7 +1,7 @@
-# src/chess/board/square/analyzer/wrapper.py
+# src/chess/board/item/analyzer/wrapper.py
 
 """
-Module: chess.board.square.analyzer.wrapper
+Module: chess.board.item.analyzer.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -21,7 +21,7 @@ class BoardSquareAnalysisFailedException(AnalysisFailedException):
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
     # RESPONSIBILITIES:
-    1.  Wrap any exception that kills the relation test process before the board-square relationship
+    1.  Wrap any exception that kills the relation test process before the board-item relationship
         status has been evaluated.
 
     # PARENT:

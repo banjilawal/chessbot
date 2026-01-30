@@ -21,8 +21,8 @@ class TokenEnteringWrongOpeningSquareException(SquareDebugException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that a square occupation attempt failed because the occupant picked the wrong
-        square for its initial placement.
+    1.  Indicate that a item occupation attempt failed because the occupant picked the wrong
+        item for its initial placement.
 
     # PARENT:
         *   SquareDebugException
@@ -37,4 +37,4 @@ class TokenEnteringWrongOpeningSquareException(SquareDebugException):
     None
     """
     ERROR_CODE = "TOKEN_PICKED_WRONG_OPENING_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Token entering a square failed: The occupant is assigned a different opening square."
+    DEFAULT_MESSAGE = "Token entering a item failed: The occupant is assigned a different opening item."

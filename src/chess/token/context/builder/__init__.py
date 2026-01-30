@@ -1,7 +1,7 @@
-# src/chess/occupant/_context/builder.__init__.py
+# src/chess/token/_context/builder.__init__.py
 
 """
-Module: chess.occupant.context.builder.__init__
+Module: chess.token.context.builder.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

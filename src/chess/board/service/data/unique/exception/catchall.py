@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# PLAYER_DATA_SERVICE EXCEPTION #======================#
+    # ======================# PLAYER_STACK_SERVICE EXCEPTION #======================#
     "UniqueBoardDataServiceException",
 ]
 
@@ -16,7 +16,7 @@ from chess.board import BoardException
 from chess.system import DatabaseException
 
 
-# ======================# UNIQUE_BOARD_DATA_SERVICE EXCEPTION #======================#
+# ======================# UNIQUE_BOARD_STACK_SERVICE EXCEPTION #======================#
 class UniqueBoardDataServiceException(BoardException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception

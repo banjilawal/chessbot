@@ -74,7 +74,7 @@ class FormationService(HashService[Formation]):
     
     @classmethod
     def formation_square_names(cls) -> List[str]:
-        """Name of the square a piece makes its opening from."""
+        """Name of the item a piece makes its opening from."""
         return [entry.name for entry in Formation]
 
     @property
@@ -82,17 +82,18 @@ class FormationService(HashService[Formation]):
         """Full name of the formation made up of color, rank, and number."""
         return [order.name.upper() for order in Formation]
     
-    @classmethod
+
     @LoggingLevelRouter.monitor
     def get_board_square(
-            cls,
+            self,
+            token_designation: str,
             board: Board,
             board_service: BoardService = BoardService()
     ) -> SearchResult[List[Square]]:
         """
         # ACTION:
             1.  If the board fails validation send the exception chain in the SearchResult.
-            2.  Find each formation's board square by their designation ane put them in a list.
+            2.  Find each formation's board item by their designation ane put them in a list.
             3.  if any search fails return the exception instead of the list.
         # PARAMETERS:
             *   board (Board)
@@ -122,21 +123,47 @@ class FormationService(HashService[Formation]):
                     ex=board_validation.exception
                 )
             )
-    
+        formation_search_result = self.lookup_formation(super_key=FormationKey(designation=token_designation))
+        # Handle the case that the search fails.
+        if formation_search_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                FormationServiceException(
+                    message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                    ex=formation_search_result.exception
+                )
+            )
+        formation = formation_search_result.payload[0]
+        square_search_result = board.squares.search_squares(context=SquareContext(name=formation.square_name))
+        # Handle the case that the square search fails.
+        if square_search_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                FormationServiceException(
+                    message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                    ex=square_search_result.exception
+                )
+            )
+        # Handle the case that no square was found.
+        if square_search_result.is_empty:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                FormationServiceException(
+                    message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                    ex=InvariantBreachException(f"{method}: Square {formation.square_name} not found.")
+                )
+            )
+        hash = {
+            "square": square_search_result.payload[0],
+            "formation": formation,
+        }
+        if square_search_result.is_failure:
         squares = List[Square]
         # Loop through the formations to find their squares from the board.
         for formation in Formation:
             square_search = board.squares.search(context=SquareContext(name=formation.square_name))
-            # Handle the case that the search fails.
-            if square_search.is_failure:
-                # Return the exception chain on failure.
-                return SearchResult.failure(
-                    FormationServiceException(
-                        message=f"{method}: {FormationServiceException.ERROR_CODE}",
-                        ex=square_search.exception
-                    )
-                )
-            # Handle the case that no square with the denomination is found.
+
+            # Handle the case that no item with the denomination is found.
             if square_search.is_empty:
                 # Return the exception chain on failure.
                 return SearchResult.failure(
