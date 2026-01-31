@@ -11,9 +11,7 @@ from typing import List
 
 from chess.rank import Rank
 from chess.token import (
-    AddingDuplicateTokenException, ExhaustiveTokenDeletionFailedException, Token, TokenContext, TokenContextService,
-    TokenStackService, TokenService, UniqueTokenDataServiceException, UniqueTokenInsertionFailedException,
-    UniqueTokenSearchFailedException
+    RankQuotaManager, Token, TokenContext, TokenContextService, TokenStack, TokenService, TokenDatabaseException
 )
 from chess.system import (
     ComputationResult, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, Database,
@@ -42,13 +40,13 @@ class TokenDatabase(Database[Token]):
         *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "TokenDatabase"
-    _token_database_core: TokenStackService
+    _token_stack: TokenStack
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: TokenStackService = TokenStackService(),
+            token_stack: TokenStack = TokenStack(),
     ):
         """
         # ACTION:
@@ -62,80 +60,55 @@ class TokenDatabase(Database[Token]):
         # RAISES:
             None
         """
-        super().__init__(id=id, name=name, data_service=data_service)
-        self._token_stack_service = data_service
+        super().__init__(id=id, name=name, data_service=token_stack)
+        self._token_stack = token_stack
     
     @property
     def integrity_service(self) -> TokenService:
-        return self._token_database_core.integrity_service
+        return self._token_stack.integrity_service
     
     @property
     def context_service(self) -> TokenContextService:
-        return self._token_database_core.context_service
+        return self._token_stack.context_service
+    
+    @property
+    def rank_quota_manager(self) -> RankQuotaManager:
+        return self._token_stack.rank_quota_manager
     
     @property
     def size(self) -> int:
-        return self._token_database_core.size
+        return self._token_stack.size
     
     @property
     def is_full(self) -> bool:
-        return self._token_database_core.is_full
+        return self._token_stack.is_full
     
     @property
     def is_empty(self) -> bool:
-        return self._token_database_core.is_empty
+        return self._token_stack.is_empty
     
     @LoggingLevelRouter.monitor
     def open_rank_slots(self, rank: Rank) -> ComputationResult[int]:
-        lookup_result = self._token_database_core.count_rank_openings(rank=rank)
-        if lookup_result.is_failure:
-            return ComputationResult.failure(lookup_result.exception)
-        return lookup_result.payload
-    
-    @LoggingLevelRouter.monitor
-    def rank_has_openings(self, rank: Rank) -> ComputationResult[bool]:
-        answer = self._token_database_core.count_rank_openings(rank=rank)
-        if answer.is_failure:
-            return ComputationResult.failure(answer.exception)
-        return answer
-    
-    @LoggingLevelRouter.monitor
-    def lookup_team_rank_quote(self, rank: Rank) -> ComputationResult[int]:
-        """
-        # ACTION:
-            1.  If the rank fails its integrity checks send an exception in the ComputationResult..
-            2.  If the calculation fails wrap the exception chain and send in the ComputationResult.
-                Else directly forward the ComputationResult to the caller.
-        # PARAMETERS:
-            *   rank (Rank)
-        # RETURNS:
-            *   ComputationResult[int] containing either:
-                    - On failure: Exception.
-                    - On success: int in the payload.
-        # RAISES:
-            *   UniqueTokenDataServiceException
-        """
-        method = "TokenDatabase.token_rank_quota"
+        method = "TokenDatabase.open_rank_slots"
         
-        # --- Handoff the calculation responsibility to _token_database_core. ---#
-        quota_result = self._token_database_core.rank_quota(rank)
-        
-        
-        # Handle the case that the quota lookup was not completed.
-        if quota_result.is_failure:
-            # Return the exception chain on failure.
+        # Handle the case that the calculation was not completed.
+        open_slots_count_result = self._token_stack.rank_quota_manager.number_of_rank_openings(
+            rank=rank,
+            token_stack=self._token_stack
+        )
+        # Return the exception chain on failure.
+        if open_slots_count_result.is_failure:
             return ComputationResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=quota_result.exception
+                TokenDatabaseException(
+                    f"{method}: {TokenDatabaseException.ERROR_CODE}",
+                    ex=open_slots_count_result.exception,
                 )
             )
-        # --- Forward the quota_result to the caller on success. ---#
-        return quota_result
-        
+        # --- For either a successful calculation result directly forward to the caller. ---#
+        return open_slots_count_result
     
     @LoggingLevelRouter.monitor
-    def rank_count(self, rank: Rank) -> ComputationResult[int]:
+    def rank_size(self, rank: Rank) -> ComputationResult[int]:
         """
         # ACTION:
             1.  Get the result of calling _token_database_core.number_of_rank_members.
@@ -148,28 +121,47 @@ class TokenDatabase(Database[Token]):
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
-            *   UniqueTokenDataServiceException
+            *   TokenDatabaseException
         """
-        method = "TokenDatabase.rank_count"
-    
-        # --- Handoff the calculation responsibility to _token_database_core. ---#
-        calculation_result = self._token_database_core.rank_size(rank=rank)
+        method = "TokenDatabase.size"
         
         # Handle the case that the calculation was not completed.
-        if calculation_result.is_failure:
+        rank_size_result = self._token_stack.rank_quota_manager.rank_size(
+            rank=rank,
+            token_stack=self._token_stack
+        )
+        if rank_size_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=calculation_result.exception
+                TokenDatabaseException(
+                    f"{method}: {TokenDatabaseException.ERROR_CODE}",
+                    ex=rank_size_result.exception,
                 )
             )
         # --- For either a successful calculation result directly forward to the caller. ---#
-        return calculation_result
-        
+        return rank_size_result
     
     @LoggingLevelRouter.monitor
-    def remove_token(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[Token]:
+    def can_accept_rank(self, rank: Rank) -> ComputationResult[bool]:
+        method = "TokenDatabase.can_accept_rank"
+        does_rank_have_opening_result = self._token_stack.rank_quota_manager.has_rank_opening(
+            rank=rank,
+            token_stack=self._token_stack
+        )
+        if does_rank_have_opening_result.is_failure:
+            return ComputationResult.failure(
+                TokenDatabaseException(
+                    f"{method}: {TokenDatabaseException.ERROR_CODE}",
+                    ex=does_rank_have_opening_result.exception,
+                )
+            )
+    
+    @LoggingLevelRouter.monitor
+    def delete_by_id(
+            self,
+            id: int,
+            identity_service: IdentityService = IdentityService()
+    ) -> DeletionResult[Token]:
         """
         # ACTION:
             1.  Get the result of calling _token_database_core.delete_token_by_id for method. If the deletion failed
@@ -184,30 +176,28 @@ class TokenDatabase(Database[Token]):
                     - On success: Token in payload.
                     - On Empty: No payload nor exception.
         # RAISES:
-            *   UniqueTokenDataServiceException
-            *   ExhaustiveTokenDeletionFailedException
+            *   TokenDatabaseException
+            *   TokenDatabase
         """
         method = "TokenDatabase.remove_token"
         
         # --- Handoff the deletion responsibility to _token_database_core. ---#
-        deletion_result = self._token_database_core.delete_token_by_id(id=id, identity_service=identity_service)
+        deletion_result = self._token_stack.delete_token_by_id(id=id, identity_service=identity_service)
         
         # Handle the case that the deletion was not completed.
         if deletion_result.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=ExhaustiveTokenDeletionFailedException(
-                        message=f"{method}: {ExhaustiveTokenDeletionFailedException.ERROR_CODE}",
-                        ex=deletion_result.exception)
+                TokenDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenDatabaseException.ERROR_CODE}",
+                    ex=deletion_result.exception
                 )
             )
         # --- For either a successful or null deletion result directly forward to the caller. ---#
         return deletion_result
    
     @LoggingLevelRouter.monitor
-    def add_unique_token(self, token: Token) -> InsertionResult[Token]:
+    def insert(self, token: Token) -> InsertionResult[bool]:
         """
         # ACTION:
             1.  If the item fails validation send the wrapped exception in the InsertionResult.
@@ -218,63 +208,33 @@ class TokenDatabase(Database[Token]):
         # PARAMETERS:
             *   occupant (Token)
         # RETURN:
-            *   InsertionResult[Token] containing either:
+            *   InsertionResult[Bool] containing either:
                     - On failure: An exception.
                     - On success: Token in payload.
         # RAISES:
-            *   UniqueTokenDataServiceException
-            *   UniqueTokenInsertionFailedException
-            *   UniqueTokenDataServiceException
+            *   TokenDatabaseException
+            *   TokenDatabaseInsertionException
+            *   TokenDatabaseException
         """
-        method = "TokenDatabase.add_unique_token"
+        method = "TokenDatabase.insert_token"
         
-        # --- To assure uniqueness the member_service has to conduct a search. The occupant should be validated first. ---#
-        
-        # Handle the case that the occupant is not certified safe.
-        validation = self.integrity_service.validator.validate(candidate=token)
-        if validation.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=UniqueTokenInsertionFailedException(
-                        message=f"{method}: {UniqueTokenInsertionFailedException.ERROR_CODE}",
-                        ex=validation.exception
-                    )
-                )
-            )
-        # Handle the case that the occupant is already in the dataset.
-        if token in self._token_database_core.items:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=UniqueTokenInsertionFailedException(
-                        message=f"{method}: {UniqueTokenInsertionFailedException.ERROR_CODE}",
-                        ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
-                    )
-                )
-            )
         # --- Use _token_database_core.insert_token because order does not matter for the occupant access. ---#
-        insertion_result = self._token_database_core.insert_token(token=token)
+        insertion_result = self._token_stack.push(item=token)
         
         # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=UniqueTokenInsertionFailedException(
-                        message=f"{method}: {UniqueTokenInsertionFailedException.ERROR_CODE}",
-                        ex=insertion_result.exception
+                TokenDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenDatabaseException.ERROR_CODE}",
+                    ex=insertion_result.exception
                     )
-                )
             )
         # --- On success directly forward the insertion result to the caller. ---#
         return insertion_result
     
     @LoggingLevelRouter.monitor
-    def search_tokens(self, context: TokenContext) -> SearchResult[List[Token]]:
+    def search(self, context: TokenContext) -> SearchResult[List[Token]]:
         """
         # ACTION:
             1.  Get the result of calling _token_database_core.delete_token_by_id for method. If the deletion failed
@@ -289,23 +249,21 @@ class TokenDatabase(Database[Token]):
                     - On success: Token in payload.
                     - On Empty: No payload nor exception.
         # RAISES:
-            *   UniqueTokenDataServiceException
-            *   ExhaustiveTokenDeletionFailedException
+            *   TokenDatabaseException
+            *   TokenDatabase
         """
         method = "TokenDatabase.search_tokens"
         
         # --- Handoff the search responsibility to _token_database_core. ---#
-        search_result = self._token_database_core.context_service.finder.find(context=context)
+        search_result = self._token_stack.context_service.finder.find(context=context)
         
         # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                UniqueTokenDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTokenDataServiceException.ERROR_CODE}",
-                    ex=UniqueTokenSearchFailedException(
-                        message=f"{method}: {UniqueTokenSearchFailedException.ERROR_CODE}",
-                        ex=search_result.exception)
+                TokenDatabaseException(
+                    message=f"ServiceID:{self.id} {method}: {TokenDatabaseException.ERROR_CODE}",
+                    ex=search_result.exception
                 )
             )
         # --- For either a successful or empty search result directly forward to the caller. ---#

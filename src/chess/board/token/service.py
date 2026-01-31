@@ -146,7 +146,7 @@ class BoardTokenService:
 
         
         # --- Find out if a occupant is already at the coord ---#
-        search_result = self._members.search_tokens(context=TokenContext(coord=token.current_position))
+        search_result = self._members.search(context=TokenContext(coord=token.current_position))
         
         # Handle the case that the search was not completed.
         if search_result.is_failure:

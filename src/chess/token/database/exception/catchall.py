@@ -11,15 +11,15 @@ from chess.token import TokenException
 from chess.system import DatabaseException
 
 __all__ = [
-    #======================# UNIQUE_TOKEN_STACK_SERVICE EXCEPTION #======================#
-    "UniqueTokenDataServiceException",
+    #======================# TOKEN_DATABASE EXCEPTION #======================#
+    "TokenDatabaseException",
 ]
 
 
 
 
-#======================# UNIQUE_TOKEN_STACK_SERVICE EXCEPTION #======================#
-class UniqueTokenDataServiceException(TokenException, DatabaseException):
+#======================# TOKEN_DATABASE EXCEPTION #======================#
+class TokenDatabaseException(TokenException, DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -39,5 +39,5 @@ class UniqueTokenDataServiceException(TokenException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_TOKEN_DATABASE_CORE_ERROR"
+    ERROR_CODE = "TOKEN_DATABASE_ERROR"
     DEFAULT_MESSAGE = "TokenDatabase raised an exception."

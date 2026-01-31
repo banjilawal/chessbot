@@ -140,7 +140,7 @@ class TeamService(EntityService[Team]):
                 )
             )
         # --- Run the search on the roster. ---#
-        search_result = team.roster.members.search_tokens(context=context)
+        search_result = team.roster.members.search(context=context)
         
         # Handle the case that the search did not complete.
         if search_result.is_failure:
