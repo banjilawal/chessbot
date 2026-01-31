@@ -13,7 +13,7 @@ from typing import cast
 from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalyzer, PlayerValidator
 from chess.team import (
-    AddingDuplicateTeamException, PoppingEmtpyTeamStackException, Team, TeamDeletionFailedException, TeamService,
+    AddingDuplicateTeamException, PoppingEmtpyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
     TeamInsertionFailedException,
 )
 
@@ -97,7 +97,7 @@ class PlayerService(EntityService[Player]):
                     - On success: Team in the payload.
         # RAISES:
             *   PlayerServiceException
-            *   TeamDeletionFailedException
+            *   PoppingTeamStackFailedException
             *   PoppingEmtpyTeamStackException
         """
         method = "PlayerService.pop_team_from_player"
@@ -109,8 +109,8 @@ class PlayerService(EntityService[Player]):
             return DeletionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=TeamDeletionFailedException(
-                        message=f"{method}: {TeamDeletionFailedException.DEFAULT_MESSAGE}",
+                    ex=PoppingTeamStackFailedException(
+                        message=f"{method}: {PoppingTeamStackFailedException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -121,8 +121,8 @@ class PlayerService(EntityService[Player]):
             return DeletionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=TeamDeletionFailedException(
-                        message=f"{method}: {TeamDeletionFailedException.DEFAULT_MESSAGE}",
+                    ex=PoppingTeamStackFailedException(
+                        message=f"{method}: {PoppingTeamStackFailedException.DEFAULT_MESSAGE}",
                         ex=PoppingEmtpyTeamStackException(f"{method}: {PoppingEmtpyTeamStackException.DEFAULT_MESSAGE}")
                     )
                 )
@@ -133,8 +133,8 @@ class PlayerService(EntityService[Player]):
             return DeletionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=TeamDeletionFailedException(
-                        message=f"{method}: {TeamDeletionFailedException.DEFAULT_MESSAGE}",
+                    ex=PoppingTeamStackFailedException(
+                        message=f"{method}: {PoppingTeamStackFailedException.DEFAULT_MESSAGE}",
                         ex=deletion_result.exception
                     )
                 )
@@ -165,7 +165,7 @@ class PlayerService(EntityService[Player]):
         # RAISES:
             *   TypeError
             *   PlayerServiceException
-            *   TeamInsertionFailedException
+            *   PushingTeamFailedException
             *   AddingDuplicateTeamException
             *   TeamBelongsToDifferentOwnerException
         """

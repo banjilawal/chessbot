@@ -39,5 +39,5 @@ class GameDataServiceException(GameException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_DATABASE_CORE_ERROR"
+    ERROR_CODE = "GAME_STACK_ERROR"
     DEFAULT_MESSAGE = "GameStackService raised an exception."

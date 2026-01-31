@@ -38,5 +38,5 @@ class CoordDataServiceException(CoordException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_DATABASE_CORE_ERROR"
+    ERROR_CODE = "COORD_STACK_ERROR"
     DEFAULT_MESSAGE = "CoordStackService raised an exception."

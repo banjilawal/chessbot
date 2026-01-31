@@ -37,5 +37,5 @@ class BoardDataServiceException(BoardException, DataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_DATABASE_CORE_ERROR"
+    ERROR_CODE = "BOARD_STACK_ERROR"
     DEFAULT_MESSAGE = "BoardStackService raised an exception."

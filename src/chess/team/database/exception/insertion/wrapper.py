@@ -21,7 +21,7 @@ class TeamInsertionFailedException(InsertionFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why TeamStackService could not delete a team. The encapsulated
+    1.  Wrap debug exceptions that indicate why TeamStack could not delete a team. The encapsulated
         exceptions create a chain for tracing the source of the failure.
 
     # PARENT:

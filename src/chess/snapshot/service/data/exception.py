@@ -29,5 +29,5 @@ class SnapshotDataServiceException(SnapshotException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SNAPSHOT_DATABASE_CORE_ERROR"
+    ERROR_CODE = "SNAPSHOT_STACK_ERROR"
     DEFAULT_MESSAGE = "SnapshotDataService raised an exception."

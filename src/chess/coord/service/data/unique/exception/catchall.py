@@ -39,5 +39,5 @@ class UniqueCoordDataServiceException(CoordException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_COORD_DATABASE_CORE_ERROR"
+    ERROR_CODE = "UNIQUE_COORD_STACK_ERROR"
     DEFAULT_ERROR_CODE = "UniqueCoordDataService raised an exception."

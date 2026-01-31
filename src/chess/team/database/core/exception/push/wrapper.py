@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TEAM_INSERTION_FAILURE #======================#
-    "TeamInsertionFailedException",
+    "PushingTeamFailedException",
 ]
 
-from chess.team import TeamStackServiceException
+from chess.team import TeamStackException
 from chess.system import InsertionFailedException
 
 
 # ======================# TEAM_INSERTION_FAILURE #======================#
-class TeamInsertionFailedException(TeamStackServiceException, InsertionFailedException):
+class PushingTeamFailedException(TeamStackException, InsertionFailedException):
     """
     # ROLE: Exception Wrapper
 

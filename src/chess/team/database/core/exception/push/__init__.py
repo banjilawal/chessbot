@@ -14,4 +14,4 @@ None
 
 # Modules
 from .duplicate import AddingDuplicateTeamException
-from .wrapper import TeamInsertionFailedException
+from .wrapper import PushingTeamFailedException

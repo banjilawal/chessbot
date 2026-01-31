@@ -22,8 +22,8 @@ class TeamDatabase(Database[Team]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all bag in managed by TeamStackService are unique.
-    2.  Guarantee consistency of records in TeamStackService.
+    1.  Ensure all bag in managed by TeamStack are unique.
+    2.  Guarantee consistency of records in TeamStack.
 
     # PARENT:
         *   Database
@@ -52,7 +52,7 @@ class TeamDatabase(Database[Team]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (TeamStackService)
+            *   member_service (TeamStack)
         # RETURNS:
             None
         # RAISES:

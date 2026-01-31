@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.team import TeamStackServiceException
+from chess.team import TeamStackException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_TEAM EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_TEAM EXCEPTION #======================#
-class AddingDuplicateTeamException(TeamStackServiceException):
+class AddingDuplicateTeamException(TeamStackException):
     """
     # ROLE: Debug, Error Tracing
 

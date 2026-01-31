@@ -29,5 +29,5 @@ class ArenaDataServiceException(ArenaException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_DATABASE_CORE_ERROR"
+    ERROR_CODE = "ARENA_STACK_ERROR"
     DEFAULT_MESSAGE = "ArenaDataService raised an exception."

@@ -22,7 +22,7 @@ class TeamStackException(TeamException, StackException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Encapsulate TeamStackService method outputs when there is a failure.
+    1.  Encapsulate TeamStack method outputs when there is a failure.
 
     # PARENT:
         *   TeamException
@@ -38,4 +38,4 @@ class TeamStackException(TeamException, StackException):
     None
     """
     ERROR_CODE = "TEAM_STACK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "TeamStackService raised an exception."
+    DEFAULT_MESSAGE = "TeamStack raised an exception."

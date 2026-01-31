@@ -7,16 +7,18 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.team import TeamStackServiceException
 
 __all__ = [
     # ======================# TEAM_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
     "TeamDoesNotExistForRemovalException",
 ]
 
+from chess.system import NullException
+from chess.team import TeamStackException
+
 
 # ======================# TEAM_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
-class TeamDoesNotExistForRemovalException(TeamStackServiceException):
+class TeamDoesNotExistForRemovalException(TeamStackException, NullException):
     """
     # ROLE: Debug, Error Tracing
 

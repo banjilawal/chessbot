@@ -10,6 +10,7 @@ version: 1.0.0
 #=========== TEAM.DATABASE PACKAGE CONTENTS ===========#
 
 # Packages
+from .core import *
 from .exception import *
 
 # Modules

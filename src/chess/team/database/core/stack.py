@@ -11,10 +11,13 @@ from typing import List, cast
 
 from chess.system import DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, StackService, id_emitter
 from chess.system.collection.stack.stack import D
-from chess.team import Team,  TeamContextService,  TeamService
+from chess.team import (
+    AddingDuplicateTeamException, PoppingTeamStackFailedException, PushingTeamFailedException, Team, TeamContextService,
+    TeamService, TeamStackException
+)
 
 
-class TeamStackService(StackService[Team]):
+class TeamStack(StackService[Team]):
     """
     # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -36,7 +39,7 @@ class TeamStackService(StackService[Team]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    SERVICE_NAME = "TeamStackService"
+    SERVICE_NAME = "TeamStack"
     
     def __init__(
             self,
@@ -60,7 +63,7 @@ class TeamStackService(StackService[Team]):
         # RAISES:
             None
         """
-        method = "TeamStackService.__init__"
+        method = "TeamStack.__init__"
         super().__init__(
             id=id,
             name=name,
@@ -70,7 +73,7 @@ class TeamStackService(StackService[Team]):
         )
     
     @property
-    def team_service(self) -> TeamService:
+    def integrity_service(self) -> TeamService:
         return cast(TeamService, self.entity_service)
     
     @property
@@ -82,7 +85,7 @@ class TeamStackService(StackService[Team]):
         return self.items
     
     @LoggingLevelRouter.monitor
-    def push_team(self, team: Team) -> InsertionResult[bool]:
+    def push(self, item: Team) -> InsertionResult[bool]:
         """
         # ACTION:
             1.  If the item is not validated send the exception in the InsertionResult. Else, call the super class
@@ -99,39 +102,37 @@ class TeamStackService(StackService[Team]):
         # RAISES:
             *   TeamStackException
         """
-        method = "TeamStackService.add_team"
+        method = "TeamStack.add_team"
         
         # Handle the case that the team is unsafe.
-        validation = self.team_service.validator.validate(candidate=team)
+        validation = self.integrity_service.validator.validate(candidate=item)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                TeamStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamStackServiceException.ERROR_CODE}",
-                    ex=TeamInsertionFailedException(
-                        message=f"{method}: {TeamInsertionFailedException.ERROR_CODE}",
+                TeamStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
+                    ex=PushingTeamFailedException(
+                        message=f"{method}: {PushingTeamFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
             )
-        # --- Check if any of the item's attributes are already in use. ---#
-        collision_detection = self._attribute_collision_detector(target=item)
-        if collision_detection.is_failure:
+        # Handle the case that the team is already present in the stack.
+        if item in self.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                TeamStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamStackServiceException.ERROR_CODE}",
-                    ex=TeamInsertionFailedException(
-                        message=f"{method}: {TeamInsertionFailedException.ERROR_CODE}",
-                        ex=collision_detection.exception
+                TeamStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
+                    ex=PushingTeamFailedException(
+                        message=f"{method}: {PushingTeamFailedException.ERROR_CODE}",
+                        ex=AddingDuplicateTeamException(
+                            f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}"
+                        )
                     )
                 )
             )
         # --- Team order is not required. Direct insertion into the stack is simpler that a push. ---#
-        
-        # On success return the item in the InsertionResult
         self.items.append(item)
-        self._stack.append(item)
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
@@ -155,14 +156,14 @@ class TeamStackService(StackService[Team]):
         # RAISES:
             *   TeamStackException
         """
-        method = "TeamStackService.delete_Team_by_id"
+        method = "TeamStack.delete_Team_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TeamStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamStackServiceException.ERROR_CODE}",
+                TeamStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
                     ex=PoppingTeamStackFailedException(
                         message=f"{method}: {PoppingTeamStackFailedException.ERROR_CODE}",
                         ex=PoppingEmptyTeamStackException(
@@ -176,8 +177,8 @@ class TeamStackService(StackService[Team]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TeamStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamStackServiceException.ERROR_CODE}",
+                TeamStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
                     ex=PoppingTeamStackFailedException(
                         message=f"{method}: {PoppingTeamStackFailedException.ERROR_CODE}",
                         ex=validation.exception
@@ -191,8 +192,8 @@ class TeamStackService(StackService[Team]):
                 if not isinstance(item, Team):
                     # Return the exception chain on failure.
                     return DeletionResult.failure(
-                        TeamStackServiceException(
-                            message=f"ServiceId:{self.id}, {method}: {TeamStackServiceException.ERROR_CODE}",
+                        TeamStackException(
+                            message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
                             ex=PoppingTeamStackFailedException(
                                 message=f"{method}: {PoppingTeamStackFailedException.ERROR_CODE}",
                                 ex=TypeError(

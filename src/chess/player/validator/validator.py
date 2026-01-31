@@ -91,15 +91,15 @@ class PlayerValidator(Validator[Player]):
             if identity_validation.is_failure():
                 return ValidationResult.failure(identity_validation.exception)
             
-            # Certify the owner's TeamStackService is correct.
-            team_database_core_certification = service_validator.validate(candidate=player.teams)
-            if team_database_core_certification.is_failure():
-                return ValidationResult.failure(team_database_core_certification.exception)
+            # Certify the owner's TeamStack is correct.
+            team_stack_certification = service_validator.validate(candidate=player.teams)
+            if team_stack_certification.is_failure():
+                return ValidationResult.failure(team_stack_certification.exception)
             
             # Certify the owner's GameStackService is correct.
-            game_database_core_certification = service_validator.validate(candidate=player.games)
-            if game_database_core_certification.is_failure():
-                return ValidationResult.failure(game_database_core_certification.exception)
+            game_stack_certification = service_validator.validate(candidate=player.games)
+            if game_stack_certification.is_failure():
+                return ValidationResult.failure(game_stack_certification.exception)
             
             # If the owner is a MachinePlayer handoff control to certify_machine_player_engine
             # for the final check.

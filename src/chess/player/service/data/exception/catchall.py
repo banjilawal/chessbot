@@ -41,5 +41,5 @@ class AgentDataServiceException(AgentException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_DATABASE_CORE_ERROR"
+    ERROR_CODE = "AGENT_STACK_ERROR"
     DEFAULT_MESSAGE = "AgentStackService raised an exception."

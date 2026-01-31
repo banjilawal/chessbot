@@ -8,23 +8,25 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_DELETION_FAILURE EXCEPTION #======================#
-    "TeamDeletionFailedException",
+    # ======================# POPPING_TEAM_STACK_FAILURE EXCEPTION #======================#
+    "PoppingTeamStackFailedException",
 ]
 
+from chess.team import TeamStackException
 from chess.system import DeletionFailedException
 
 
-# ======================# TEAM_DELETION_FAILURE EXCEPTION #======================#
-class TeamDeletionFailedException(DeletionFailedException):
+# ======================# POPPING_TEAM_STACK_FAILURE EXCEPTION #======================#
+class PoppingTeamStackFailedException(TeamStackException, DeletionFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why TeamStackService could not delete a team. The encapsulated
+    1.  Wrap debug exceptions that indicate why TeamStack could not delete a team. The encapsulated
         exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
+        *   TeamStackException
         *   DeletionFailedException
 
     # PROVIDES:
@@ -36,5 +38,5 @@ class TeamDeletionFailedException(DeletionFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_DELETION_FAILURE"
+    ERROR_CODE = "POPPING_TEAM_STACK_FAILURE"
     DEFAULT_MESSAGE = "Team deletion failed."

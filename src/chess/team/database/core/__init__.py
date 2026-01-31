@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .stack import  TeamStackService
+from .stack import  TeamStack

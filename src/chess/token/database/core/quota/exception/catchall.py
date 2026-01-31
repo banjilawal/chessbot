@@ -38,5 +38,5 @@ class RankQuotaManagerException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_DATABASE_CORE_ERROR"
+    ERROR_CODE = "TOKEN_STACK_ERROR"
     DEFAULT_MESSAGE = "TokenStack raised an exception."
