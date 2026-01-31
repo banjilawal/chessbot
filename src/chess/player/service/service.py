@@ -13,7 +13,7 @@ from typing import cast
 from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalyzer, PlayerValidator
 from chess.team import (
-    AddingDuplicateTeamException, PoppingEmtpyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
+    AddingDuplicateTeamException, PoppingEmptyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
     TeamInsertionFailedException,
 )
 
@@ -98,7 +98,7 @@ class PlayerService(EntityService[Player]):
         # RAISES:
             *   PlayerServiceException
             *   PoppingTeamStackFailedException
-            *   PoppingEmtpyTeamStackException
+            *   PoppingEmptyTeamStackException
         """
         method = "PlayerService.pop_team_from_player"
         
@@ -123,7 +123,7 @@ class PlayerService(EntityService[Player]):
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
                     ex=PoppingTeamStackFailedException(
                         message=f"{method}: {PoppingTeamStackFailedException.DEFAULT_MESSAGE}",
-                        ex=PoppingEmtpyTeamStackException(f"{method}: {PoppingEmtpyTeamStackException.DEFAULT_MESSAGE}")
+                        ex=PoppingEmptyTeamStackException(f"{method}: {PoppingEmptyTeamStackException.DEFAULT_MESSAGE}")
                     )
                 )
             )

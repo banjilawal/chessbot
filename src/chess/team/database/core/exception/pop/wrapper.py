@@ -1,7 +1,7 @@
-# src/chess/team/database/core/exception/deletion/wrapper.py
+# src/chess/team/database/core/exception/pop/wrapper.py
 
 """
-Module: chess.team.database.core.exception.deletion.wrapper
+Module: chess.team.database.core.exception.pop.wrapper
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -39,4 +39,4 @@ class PoppingTeamStackFailedException(TeamStackException, DeletionFailedExceptio
     None
     """
     ERROR_CODE = "POPPING_TEAM_STACK_FAILURE"
-    DEFAULT_MESSAGE = "Team deletion failed."
+    DEFAULT_MESSAGE = "Popping TeamStack Failed."

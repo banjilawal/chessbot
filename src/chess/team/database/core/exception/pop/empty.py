@@ -1,7 +1,7 @@
-# src/chess/team/database/core/exception/deletion/empty
+# src/chess/team/database/core/exception/pop/empty
 
 """
-Module: chess.team.database.core.exception.deletion.empty
+Module: chess.team.database.core.exception.pop.empty
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -11,14 +11,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# POPPING_EMPTY_TEAM_STACK EXCEPTION #======================#
-    "PoppingEmtpyTeamStackException",
+    "PoppingEmptyTeamStackException",
 ]
 
+from chess.system import NullException
 from chess.team import TeamStackException
 
 
 # ======================# POPPING_EMPTY_TEAM_STACK EXCEPTION #======================#
-class PoppingEmtpyTeamStackException(TeamStackException):
+class PoppingEmptyTeamStackException(TeamStackException, NullException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -38,4 +39,4 @@ class PoppingEmtpyTeamStackException(TeamStackException):
     None
     """
     ERROR_CODE = "POPPING_EMPTY_TEAM_STACK_ERROR"
-    DEFAULT_MESSAGE = "Team deletion failed: The stack is empty. Nothing to delete"
+    DEFAULT_MESSAGE = "Team pop failed: The stack is empty. Nothing to delete"

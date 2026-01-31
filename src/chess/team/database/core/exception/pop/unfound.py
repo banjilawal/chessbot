@@ -1,7 +1,7 @@
-# src/chess/team/database/core/exception/deletion/unfound.py
+# src/chess/team/database/core/exception/pop/unfound.py
 
 """
-Module: chess.team.database.core.exception.deletion.unfound
+Module: chess.team.database.core.exception.pop.unfound
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -39,4 +39,4 @@ class TeamDoesNotExistForRemovalException(TeamStackException, NullException):
     None
     """
     ERROR_CODE = "TEAM_DOES_NOT_EXIST_FOR_REMOVAL_ERROR"
-    DEFAULT_MESSAGE = "Team deletion failed: The team was not found in the dataset. Nothing to remove."
+    DEFAULT_MESSAGE = "Team pop failed: The team was not found in the dataset. Nothing to remove."

@@ -1,7 +1,7 @@
-# src/chess/team/database/core/exception/insertion/duplicate.py
+# src/chess/team/database/core/exception/push/duplicate.py
 
 """
-Module: chess.team.database.core.exception.insertion.duplicate
+Module: chess.team.database.core.exception.push.duplicate
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

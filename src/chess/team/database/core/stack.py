@@ -10,10 +10,11 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.system import DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, StackService, id_emitter
-from chess.system.collection.stack.stack import D
 from chess.team import (
-    AddingDuplicateTeamException, PoppingTeamStackFailedException, PushingTeamFailedException, Team, TeamContextService,
-    TeamService, TeamStackException
+    AddingDuplicateTeamException, PoppingEmptyTeamStackException, PoppingTeamStackFailedException,
+    PushingTeamFailedException, Team, TeamContextService,
+    TeamService,
+    TeamStackException
 )
 
 
@@ -77,7 +78,7 @@ class TeamStack(StackService[Team]):
         return cast(TeamService, self.entity_service)
     
     @property
-    def team_context_service(self) -> TeamContextService:
+    def context_service(self) -> TeamContextService:
         return cast(TeamContextService, self.context_service)
     
     @property
@@ -110,7 +111,7 @@ class TeamStack(StackService[Team]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TeamStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
+                    message=f"StackId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
                     ex=PushingTeamFailedException(
                         message=f"{method}: {PushingTeamFailedException.ERROR_CODE}",
                         ex=validation.exception
@@ -122,7 +123,7 @@ class TeamStack(StackService[Team]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TeamStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
+                    message=f"StackId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
                     ex=PushingTeamFailedException(
                         message=f"{method}: {PushingTeamFailedException.ERROR_CODE}",
                         ex=AddingDuplicateTeamException(
@@ -134,6 +135,42 @@ class TeamStack(StackService[Team]):
         # --- Team order is not required. Direct insertion into the stack is simpler that a push. ---#
         self.items.append(item)
         return InsertionResult.success()
+    
+    @LoggingLevelRouter.monitor
+    def pop(self) -> DeletionResult[Team]:
+        """
+        # ACTION:
+            1.  If the id is not certified safe send the exception in the DeletionResult. Else, call
+                _delete_Teams_by_search_result with the outcome of an id search.
+            2.  Forward the DeletionResult from _delete_Teams_by_search_result to the deletion client.
+        # PARAMETERS:
+                    *   id (int)
+                    *   identity_service (IdentityService)
+        # RETURNS:
+            *   InsertionResult[Team] containing either:
+                    - On failure: Exception.
+                    - On success: Team in the payload.
+        # RAISES:
+            *   TeamStackException
+        """
+        method = "TeamStack.delete_Team_by_id"
+        
+        # Handle the case that there are no items in the list.
+        if self.is_empty:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                TeamStackException(
+                    message=f"StackId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
+                    ex=PoppingTeamStackFailedException(
+                        message=f"{method}: {PoppingTeamStackFailedException.ERROR_CODE}",
+                        ex=PoppingEmptyTeamStackException(
+                            f"{method}: {PoppingEmptyTeamStackException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
+        team = self.items.pop(-1)
+        return DeletionResult.success(team)
     
     @LoggingLevelRouter.monitor
     def delete_by_id(
@@ -163,7 +200,7 @@ class TeamStack(StackService[Team]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TeamStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
+                    message=f"StackId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
                     ex=PoppingTeamStackFailedException(
                         message=f"{method}: {PoppingTeamStackFailedException.ERROR_CODE}",
                         ex=PoppingEmptyTeamStackException(
@@ -178,7 +215,7 @@ class TeamStack(StackService[Team]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TeamStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
+                    message=f"StackId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
                     ex=PoppingTeamStackFailedException(
                         message=f"{method}: {PoppingTeamStackFailedException.ERROR_CODE}",
                         ex=validation.exception
@@ -193,7 +230,7 @@ class TeamStack(StackService[Team]):
                     # Return the exception chain on failure.
                     return DeletionResult.failure(
                         TeamStackException(
-                            message=f"ServiceId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
+                            message=f"StackId:{self.id}, {method}: {TeamStackException.ERROR_CODE}",
                             ex=PoppingTeamStackFailedException(
                                 message=f"{method}: {PoppingTeamStackFailedException.ERROR_CODE}",
                                 ex=TypeError(
@@ -204,9 +241,9 @@ class TeamStack(StackService[Team]):
                         )
                     )
                 # --- Cast the item before removal and return the deleted item in the DeletionResult. ---#
-                Team = cast(Team, item)
-                self.items.remove(Team)
-                return DeletionResult.success(payload=Team)
+                team = cast(Team, item)
+                self.items.remove(team)
+                return DeletionResult.success(payload=team)
         
         # If none of the items had that id return an empty DeletionResult.
         return DeletionResult.nothing_to_delete()
