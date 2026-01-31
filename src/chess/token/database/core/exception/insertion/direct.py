@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/insertion/direct.py
+# src/chess/token/database/core/exception/insertion/direct.py
 
 """
-Module: chess.token.service.data.exception.insertion.direct
+Module: chess.token.database.core.exception.insertion.direct
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

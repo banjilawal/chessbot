@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== HOSTAGE.SERVICE.UNIQUE.DATA.EXCEPTION.INSERTION PACKAGE CONTENTS ===========#
+# =========== HOSTAGE.DATABASE.EXCEPTION.INSERTION PACKAGE CONTENTS ===========#
 
 # Packages
 None

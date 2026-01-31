@@ -1,7 +1,7 @@
-# src/chess/board/service/data/exception/deletion/unfound.py
+# src/chess/board/database/core/exception/deletion/unfound.py
 
 """
-Module: chess.board.service.data.exception.deletion.unfound
+Module: chess.board.database.core.exception.deletion.unfound
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

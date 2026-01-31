@@ -1,7 +1,7 @@
-# src/chess/game/service/data/exception.py
+# src/chess/game/database/core/exception.py
 
 """
-Module: chess.game.service.data.exception
+Module: chess.game.database.core.exception
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

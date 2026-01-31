@@ -1,7 +1,7 @@
-# src/chess/coord/service/data/exception/stack/consecutive.py
+# src/chess/coord/database/core/exception/stack/consecutive.py
 
 """
-Module: chess.coord.service.data.exception.stack.consecutive
+Module: chess.coord.database.core.exception.stack.consecutive
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

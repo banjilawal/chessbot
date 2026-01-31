@@ -10,7 +10,7 @@ version: 1.0.0
 
 from typing import List
 
-from chess.player.service.data.exception.null import AgentNullDatasetException
+from chess.player.database.core.exception.null import AgentNullDatasetException
 from chess.system import LoggingLevelRouter, SearchResult
 from chess.agent import (
     PlayerAgent, AgentContext, AgentContextValidator, AgentVariety

@@ -1,7 +1,7 @@
-# src/chess/board/service/data/exception/insertion/direct.py
+# src/chess/board/database/core/exception/insertion/direct.py
 
 """
-Module: chess.board.service.data.exception.insertion.direct
+Module: chess.board.database.core.exception.insertion.direct
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

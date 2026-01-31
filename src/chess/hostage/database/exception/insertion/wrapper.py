@@ -1,7 +1,7 @@
-# src/chess/hostageManifest/service/data/exception/insertion/wrapper.py
+# src/chess/hostageManifest/database/core/exception/insertion/wrapper.py
 
 """
-Module: chess.hostageManifest.service.data.exception.insertion.wrapper
+Module: chess.hostageManifest.database.core.exception.insertion.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

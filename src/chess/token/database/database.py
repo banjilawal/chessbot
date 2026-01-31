@@ -1,7 +1,7 @@
-# src/chess/token/database/service.py
+# src/chess/token/database/database.py
 
 """
-Module: chess.token.database.service
+Module: chess.token.database.database
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0
@@ -26,8 +26,8 @@ class TokenDatabase(Database[Token]):
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all bag in managed by TokenStackService are unique.
-    2.  Guarantee consistency of records in TokenStackService.
+    1.  Ensure all bag in managed by TokenStack are unique.
+    2.  Guarantee consistency of records in TokenStack.
 
     # PARENT:
         *   Database
@@ -56,7 +56,7 @@ class TokenDatabase(Database[Token]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (TokenStackService)
+            *   member_service (TokenStack)
         # RETURNS:
             None
         # RAISES:
@@ -118,7 +118,7 @@ class TokenDatabase(Database[Token]):
         method = "TokenDatabase.token_rank_quota"
         
         # --- Handoff the calculation responsibility to _token_database_core. ---#
-        quota_result = self._token_database_core.team_max_tokens_per_rank(rank)
+        quota_result = self._token_database_core.rank_quota(rank)
         
         
         # Handle the case that the quota lookup was not completed.
@@ -153,7 +153,7 @@ class TokenDatabase(Database[Token]):
         method = "TokenDatabase.rank_count"
     
         # --- Handoff the calculation responsibility to _token_database_core. ---#
-        calculation_result = self._token_database_core.number_of_rank_members(rank=rank)
+        calculation_result = self._token_database_core.rank_size(rank=rank)
         
         # Handle the case that the calculation was not completed.
         if calculation_result.is_failure:
@@ -295,7 +295,7 @@ class TokenDatabase(Database[Token]):
         method = "TokenDatabase.search_tokens"
         
         # --- Handoff the search responsibility to _token_database_core. ---#
-        search_result = self._token_database_core.token_context_service.finder.find(context=context)
+        search_result = self._token_database_core.context_service.finder.find(context=context)
         
         # Handle the case that the search is not completed.
         if search_result.is_failure:

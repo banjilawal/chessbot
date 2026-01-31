@@ -1,7 +1,7 @@
-# src/chess/board/service/data/exception/deletion/empty.py
+# src/chess/board/database/core/exception/deletion/empty.py
 
 """
-Module: chess.board.service.data.exception.deletion.empty
+Module: chess.board.database.core.exception.deletion.empty
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

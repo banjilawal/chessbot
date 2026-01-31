@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== COORD.SERVICE.UNIQUE.DATA.EXCEPTION.DELETION PACKAGE CONTENTS ===========#
+# =========== COORD.DATABASE.EXCEPTION.DELETION PACKAGE CONTENTS ===========#
 
 # Packages
 None

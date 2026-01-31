@@ -1,7 +1,7 @@
-# src/chess/board/service/data/service_.py
+# src/chess/board/database/core/service_.py
 
 """
-Module: chess.board.service.data.service
+Module: chess.board.database.core.stack
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/arena/service/data/service.py
+# src/chess/arena/database/core/service.py
 
 """
-Module: chess.arena.service.data.service
+Module: chess.arena.database.core.stack
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0

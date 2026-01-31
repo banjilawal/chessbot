@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/deletion/wrapper.py
+# src/chess/token/database/core/exception/deletion/wrapper.py
 
 """
-Module: chess.token.service.data.exception.deletion.wrapper
+Module: chess.token.database.core.exception.deletion.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

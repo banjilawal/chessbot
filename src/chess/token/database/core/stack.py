@@ -1,7 +1,7 @@
-# src/chess/token/service/data/service_.py
+# src/chess/token/database/core/service_.py
 
 """
-Module: chess.token.service.data.service
+Module: chess.token.database.core.stack
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -20,7 +20,7 @@ from chess.token import (
     TokenInsertionFailedException, RankCountCalculationFailedException, TokenServiceCapacityException,
 )
 
-class TokenStackService(StackService[Token]):
+class TokenStack(StackService[Token]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -43,7 +43,7 @@ class TokenStackService(StackService[Token]):
         *   See StackService class for inherited attributes.
     """
     CAPACITY: int = 16
-    SERVICE_NAME: str = "TokenStackService"
+    SERVICE_NAME: str = "TokenStack"
     _formation_service: FormationService
     _capacity: int
     
@@ -101,7 +101,7 @@ class TokenStackService(StackService[Token]):
         return cast(TokenService, self.entity_service)
     
     @property
-    def token_context_service(self) -> TokenContextService:
+    def context_service(self) -> TokenContextService:
         return cast(TokenContextService, self.context_service)
     
     @property
@@ -123,7 +123,7 @@ class TokenStackService(StackService[Token]):
         # RAISES:
             *   TokenDataServiceException
         """
-        method = "TokenStackService.team_max_tokens_per_rank"
+        method = "TokenStack.team_max_tokens_per_rank"
         
         # --- Handoff the rank validation and quote lookup to self._formation_service ---#
         
@@ -158,10 +158,10 @@ class TokenStackService(StackService[Token]):
             *   TokenDataServiceException
             *   RankCountCalculationFailedException
         """
-        method = "TokenStackService.number_of_rank_members"
+        method = "TokenStack.number_of_rank_members"
         
         # --- First step in getting rank count is building search-by-rank context. ---#
-        build_result = self.token_context_service.builder.build(rank=rank)
+        build_result = self.context_service.builder.build(rank=rank)
         
         # Handle the case that the context build is not completed.
         if build_result.is_failure:
@@ -176,7 +176,7 @@ class TokenStackService(StackService[Token]):
                 )
             )
         # --- Cast the context_build_result payload and run the search. ---#
-        search_result = self.token_context_service.finder.find(context=cast(TokenContext, build_result.payload))
+        search_result = self.context_service.finder.find(context=cast(TokenContext, build_result.payload))
         
         # Handle the case that the search was not completed.
         if search_result.is_failure:
@@ -213,7 +213,7 @@ class TokenStackService(StackService[Token]):
         # RAISES:
             *   TokenDataServiceException
         """
-        method = "TokenStackService.add_token"
+        method = "TokenStack.add_token"
         
         # Handle the case that the list is full.
         if self.is_full:
@@ -281,7 +281,7 @@ class TokenStackService(StackService[Token]):
         # RAISES:
             *   TokenDataServiceException
         """
-        method = "TokenStackService.delete_token_by_id"
+        method = "TokenStack.delete_token_by_id"
         
         # Handle the case that there are no bag in the list.
         if self.is_empty:
@@ -354,7 +354,7 @@ class TokenStackService(StackService[Token]):
             *   TokenDataServiceException
             *   RankCountCalculationFailedException
         """
-        method = "TokenStackService.has_slot_for_rank"
+        method = "TokenStack.has_slot_for_rank"
         
         # Handle the case that the rank is not certified safe.
         openings_count = self.count_rank_openings(rank)
@@ -392,7 +392,7 @@ class TokenStackService(StackService[Token]):
             *   TokenDataServiceException
             *   RankCountCalculationFailedException
         """
-        method = "TokenStackService.count_rank_openings"
+        method = "TokenStack.count_rank_openings"
         
         # Handle the case that the rank is not certified safe.
         rank_validation = rank_service.validator.validate(rank)

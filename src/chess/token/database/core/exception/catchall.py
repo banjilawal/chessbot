@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/catchall.py
+# src/chess/token/database/core/exception/catchall.py
 
 """
-Module: chess.token.service.data.exception.catchall
+Module: chess.token.database.core.exception.catchall
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -22,7 +22,7 @@ class TokenDataServiceException(TokenException, DataServiceException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by TokenStackService methods that return Result objects.
+    1.  Wrap any exceptions raised by TokenStack methods that return Result objects.
 
     # PARENT:
         *   TokenException
@@ -38,4 +38,4 @@ class TokenDataServiceException(TokenException, DataServiceException):
     None
     """
     ERROR_CODE = "TOKEN_DATABASE_CORE_ERROR"
-    DEFAULT_MESSAGE = "TokenStackService raised an exception."
+    DEFAULT_MESSAGE = "TokenStack raised an exception."

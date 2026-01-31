@@ -1,7 +1,7 @@
-# src/chess/board/service/data/catchall.py
+# src/chess/board/database/core/catchall.py
 
 """
-Module: chess.board.service.data.catchall
+Module: chess.board.database.core.catchall
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

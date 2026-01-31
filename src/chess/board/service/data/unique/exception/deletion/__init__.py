@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== BOARD.SERVICE.UNIQUE.DATA.EXCEPTION.DELETION PACKAGE CONTENTS ===========#
+# =========== BOARD.DATABASE.EXCEPTION.DELETION PACKAGE CONTENTS ===========#
 
 # Packages
 None

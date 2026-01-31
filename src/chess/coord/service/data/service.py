@@ -1,7 +1,7 @@
-# src/chess/coord/service/data/service.py
+# src/chess/coord/database/core/service.py
 
 """
-Module: chess.coord.service.data.service
+Module: chess.coord.database.core.stack
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import List, Optional, cast
 
-from chess.coord.service.data.exception.push.duplicate import DuplicateCoordPushException
-from chess.coord.service.data.exception.push.wrapper import PushingCoordFailedException
+from chess.coord.database.core.exception.push.duplicate import DuplicateCoordPushException
+from chess.coord.database.core.exception.push.wrapper import PushingCoordFailedException
 from chess.system import StackService, DeletionResult, InsertionResult, SearchResult, id_emitter
 from chess.coord import (
     Coord, CoordContext, CoordDataServiceException, CoordService, CoordContextService, MaxConsecutiveCoordPopException,

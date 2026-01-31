@@ -1,7 +1,7 @@
-# src/chess/game/service/data/service.py
+# src/chess/game/database/core/service.py
 
 """
-Module: chess.game.service.data.service
+Module: chess.game.database.core.stack
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

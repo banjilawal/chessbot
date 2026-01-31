@@ -1,7 +1,7 @@
-# src/chess/token/service/data/exception/insertion/full.py
+# src/chess/token/database/core/exception/insertion/full.py
 
 """
-Module: chess.token.service.data.exception.insertion.full
+Module: chess.token.database.core.exception.insertion.full
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

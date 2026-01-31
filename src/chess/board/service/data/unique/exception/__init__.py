@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-# =========== BOARD.SERVICE.UNIQUE.DATA.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== BOARD.DATABASE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 from .search import *

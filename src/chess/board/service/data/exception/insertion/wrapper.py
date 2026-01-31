@@ -1,7 +1,7 @@
-# src/chess/board/service/data/exception/insertion/wrapper.py
+# src/chess/board/database/core/exception/insertion/wrapper.py
 
 """
-Module: chess.board.service.data.exception.insertion.wrapper
+Module: chess.board.database.core.exception.insertion.wrapper
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

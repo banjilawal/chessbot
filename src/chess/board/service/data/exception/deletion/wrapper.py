@@ -1,7 +1,7 @@
-# src/chess/board/service/data/exception/deletion/wrapper.py
+# src/chess/board/database/core/exception/deletion/wrapper.py
 
 """
-Module: chess.board.service.data.exception.deletion.wrapper
+Module: chess.board.database.core.exception.deletion.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
