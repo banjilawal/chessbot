@@ -11,7 +11,9 @@ from typing import List, cast
 
 from chess.rank import Rank, RankService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.token import RankQuotaComputationFailedException, RankQuotaManagerException, TokenStack
+from chess.token import (
+    RankQuotaComputationFailedException, RankQuotaManagerException, Token, TokenContext, TokenStack
+)
 
 
 class RankQuotaManager:
@@ -171,7 +173,7 @@ class RankQuotaManager:
                 )
             )
         # --- Find if there are open slots for the rank. ---#
-        rank_size_computation = cls.rank_size(token_stack=token_stack, rank=rank)
+        rank_size_computation = self.rank_size(token_stack=token_stack, rank=rank)
         
         # Handle the case that the rank_count_result_computation was not completed.
         if rank_size_computation.is_failure:

@@ -19,7 +19,8 @@ from chess.token import (
     AddingDuplicateTokenException, AppendingTokenDirectlyIntoItemsFailedException, NoRankOpeningsException,
     PoppingEmptyTokenStackException,
     RankQuotaManager, Token,
-    TokenContext, TokenDesignationAlreadyInUseException, TokenIdAlreadyInUseException, TokenService,
+    TokenContext, TokenDesignationAlreadyInUseException, TokenIdAlreadyInUseException,
+    TokenOpeningSquareAlreadyInUseException, TokenService,
     TokenStackException, TokenDoesNotExistForRemovalException, TokenContextService, TokenDeletionFailedException,
     TokenPushFailedException, RankQuotaComputationFailedException, TokenServiceCapacityException,
 )
@@ -122,94 +123,6 @@ class TokenStack(StackService[Token]):
         return self._rank_quota_manager
     
     @LoggingLevelRouter.monitor
-    def team_max_tokens_per_rank(self, rank: Rank) -> ComputationResult[int]:
-        """
-        # ACTION:
-            1.  If formation_service fails to return a quota value, send the exception chain in the ComputationResult.
-                Else, directly forward quota_result to the caller.
-        # PARAMETERS:
-            *   rank (Rank)
-        # RETURNS:
-            *   ComputationResult[int] containing either:
-                    - On failure: Exception.
-                    - On success: int in the payload.
-        # RAISES:
-            *   TokenStackException
-        """
-        method = "TokenStack.team_max_tokens_per_rank"
-        
-        # --- Handoff the rank validation and quote lookup to self._formation_service ---#
-        
-        # Handle the case that the quota lookup is not completed.
-        quota_result = self._formation_service.persona_service.quota_per_rank(rank=rank)
-        if quota_result.is_failure:
-            # Return the exception chain on failure.
-            return ComputationResult.failure(
-                TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=quota_result.exception
-                )
-            )
-        # On success just forward the quota_result to the caller.
-        return quota_result
-    
-    @LoggingLevelRouter.monitor
-    def number_of_rank_members(self, rank: Rank) -> ComputationResult[int]:
-        """
-        # ACTION:
-            1.  Build the search-by-rank TokenContext. If the build fails send the exception in the InsertionResult.
-                Else run the search.
-            2.  If the search fails send the exception in the InsertionResult. Else the calculation was successful.
-                Return the number of hits in the ComputationResult's payload.
-        # PARAMETERS:
-            *   rank (Rank)
-        # RETURNS:
-            *   ComputationResult[int] containing either:
-                    - On failure: Exception.
-                    - On success: int in the payload.
-        # RAISES:
-            *   TokenStackException
-            *   RankQuotaComputationFailedException
-        """
-        method = "TokenStack.number_of_rank_members"
-        
-        # --- First step in getting rank count is building search-by-rank context. ---#
-        build_result = self.context_service.builder.build(rank=rank)
-        
-        # Handle the case that the context build is not completed.
-        if build_result.is_failure:
-            # Return the exception chain on failure.
-            return ComputationResult.failure(
-                TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
-                        ex=build_result.exception
-                    )
-                )
-            )
-        # --- Cast the context_build_result payload and run the search. ---#
-        search_result = self.context_service.finder.find(context=cast(TokenContext, build_result.payload))
-        
-        # Handle the case that the search was not completed.
-        if search_result.is_failure:
-            # Return the exception chain on failure.
-            return ComputationResult.failure(
-                TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
-                        ex=search_result.exception
-                    )
-                )
-            )
-        # Handle the case that no tokens hold the rank
-        if search_result.is_empty:
-            return ComputationResult.success(payload=0)
-        # Handle the case that some hits were found
-        return ComputationResult.success(payload=len(cast(List[Token], search_result.payload)))
-    
-    @LoggingLevelRouter.monitor
     def push(self, item: Token) -> InsertionResult[bool]:
         """
         # ACTION:
@@ -253,16 +166,17 @@ class TokenStack(StackService[Token]):
                     )
                 )
             )
-        # Handle the case that one of the items unique attributes is already in use.
-        collision_detection = self._find_colliding_tokens(target=item)
-        if not collision_detection.is_empty:
+        # Handle the case that at least one stack member already has the insertion target's
+        # id, designation or square.
+        colliding_tokens_search_result = self._find_colliding_tokens(target=item)
+        if not colliding_tokens_search_result.is_empty:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenStackException(
                     message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=TokenPushFailedException(
                         message=f"{method}: {TokenPushFailedException.ERROR_CODE}",
-                        ex=collision_detection.exception
+                        ex=colliding_tokens_search_result.exception
                     )
                 )
             )
@@ -312,6 +226,39 @@ class TokenStack(StackService[Token]):
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
+    def pop(self) -> DeletionResult[Token]:
+        """
+        # ACTION:
+            1.  If the stack is empty send an exception in the DeletionResult. Else remove the
+                token at the top of the stack and send in the DeletionResult
+        # PARAMETERS:
+                    *   None
+        # RETURNS:
+            *   DeletionResult[Token] containing either:
+                    - On failure: Exception.
+                    - On success: Token in the payload.
+        # RAISES:
+            *   TokenStackException
+            *   PoppingEmptyTokenStackException
+        """
+        method = "TokenStack.dpop"
+        
+        # Handle the case that there are no tokens in the stack.
+        if self.is_empty:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    ex=TokenDeletionFailedException(
+                        message=f"{method}: {TokenDeletionFailedException.ERROR_CODE}",
+                        ex=PoppingEmptyTokenStackException(
+                            f"{method}: {PoppingEmptyTokenStackException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
+    
+    @LoggingLevelRouter.monitor
     def delete_token_by_id(
             self, 
             id: int, 
@@ -334,7 +281,7 @@ class TokenStack(StackService[Token]):
         """
         method = "TokenStack.delete_token_by_id"
         
-        # Handle the case that there are no bag in the list.
+        # Handle the case that there are no tokens in the stack.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -387,96 +334,8 @@ class TokenStack(StackService[Token]):
                 return DeletionResult.success(payload=token)
             
             # If none of the bag had that id return an empty DeletionResult.
-            return DeletionResult.empty()
-        
-    @LoggingLevelRouter.monitor
-    def has_slot_for_rank(self, rank: Rank) -> ComputationResult[bool]:
-        """
-        # ACTION:
-            1.  If self.count_rank_openings fails send the exception chain in the ComputationResult. Else,
-                send open_slot_count > 0 in the ComputationResult's payload.
-        # PARAMETERS:
-            *   rank (Rank)
-        # RETURN:
-            *   CalculationReport[bool] containing either:
-                    - On failure: Exception
-                    - On success: bool
-        # RAISES:
-            *   TokenStackException
-            *   RankQuotaComputationFailedException
-        """
-        method = "TokenStack.has_slot_for_rank"
-        
-        # Handle the case that the rank is not certified safe.
-        openings_count = self.count_rank_openings(rank)
-        if openings_count.is_failure:
-            # Return the exception chain on failure.
-            return ComputationResult.failure(
-                TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
-                        ex=openings_count.exception
-                    )
-                )
-            )
-    
-        # --- Find if there are open slots for the rank. ---#
-        has_opening = cast(int, openings_count.payload) > 0
-        return ComputationResult.success(payload=has_opening)
-    
-    @LoggingLevelRouter.monitor
-    def count_rank_openings(self, rank: Rank, rank_service: RankService = RankService()) -> ComputationResult[int]:
-        """
-        # ACTION:
-            1.  If the rank is not validated, send an exception chain in the ComputationResult.
-            2.  If calculating the number of rank members fails send an exception chain in the ComputationResult.
-                Else, send rank.team_quota - rank_members in the ComputationResult's payload.
-        # PARAMETERS:
-            *   rank (Rank)
-            *   rank_service (RankService
-        # RETURN:
-            *   CalculationReport[int] containing either:
-                    - On failure: Exception
-                    - On success: int
-        # RAISES:
-            *   TokenStackException
-            *   RankQuotaComputationFailedException
-        """
-        method = "TokenStack.count_rank_openings"
-        
-        # Handle the case that the rank is not certified safe.
-        rank_validation = rank_service.validator.validate(rank)
-        if rank_validation.is_failure:
-            # Return the exception chain on failure.
-            return ComputationResult.failure(
-                TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
-                        ex=rank_validation.exception
-                    )
-                )
-            )
-        # --- Find if there are open slots for the rank. ---#
-        rank_count_result = self.number_of_rank_members(rank=rank)
-        
-        # Handle the case that the rank_count_result_computation was not completed.
-        if rank_count_result.is_failure:
-            # Return the exception chain on failure.
-            return ComputationResult.failure(
-                TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
-                        ex=rank_count_result.exception
-                    )
-                )
-            )
-        # --- On success send the difference between the quota and rank_member_count in the ComputationResult. ---#
-        rank_member_count = cast(int, rank_count_result.payload)
-        return ComputationResult.success(payload=rank.team_quota - rank_member_count)
-    
+            return DeletionResult.nothing_to_delete()
+   
     def _find_colliding_tokens(self, target: Token) -> SearchResult[Token]:
         method = "TokenStack._attribute_collision_detector"
         
