@@ -27,7 +27,7 @@ class RankQuotaManagerException(ChessException):
 
     # PARENT:
         *   TokenException
-        *   StackServiceException
+        *   StackException
 
     # PROVIDES:
     None

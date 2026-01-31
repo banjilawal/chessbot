@@ -13,5 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .duplicate import AddingDuplicateTokenException
 from .wrapper import UniqueTokenInsertionFailedException

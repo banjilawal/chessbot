@@ -9,15 +9,15 @@ version: 1.0.0
 
 ___all__ = [
     # ======================# TEAM_STACK_SERVICE EXCEPTION #======================#
-    "TeamStackServiceException",
+    "TeamStackException",
 ]
 
 from chess.team import TeamException
-from chess.system import StackServiceException
+from chess.system import StackException
 
 
 # ======================# TEAM_STACK_SERVICE EXCEPTION #======================#
-class TeamStackServiceException(TeamException, StackServiceException):
+class TeamStackException(TeamException, StackException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -26,7 +26,7 @@ class TeamStackServiceException(TeamException, StackServiceException):
 
     # PARENT:
         *   TeamException
-        *   StackServiceException
+        *   StackException
 
     # PROVIDES:
     None

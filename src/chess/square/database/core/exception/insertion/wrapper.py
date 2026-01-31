@@ -12,12 +12,12 @@ __all__ = [
     "SquareInsertionFailedException",
 ]
 
-from chess.square import SquareStackServiceException
+from chess.square import SquareStackException
 from chess.system import InsertionFailedException
 
 
 # ======================# SQUARE_INSERTION_FAILURE #======================#
-class SquareInsertionFailedException(SquareStackServiceException, InsertionFailedException):
+class SquareInsertionFailedException(SquareStackException, InsertionFailedException):
     """
     # ROLE: Exception Wrapper
 

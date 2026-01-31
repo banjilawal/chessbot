@@ -12,12 +12,16 @@ from typing import List, cast
 from chess.formation import FormationService
 from chess.rank import Rank, RankService
 from chess.system import (
-    ComputationResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, id_emitter
+    ComputationResult, SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
+    id_emitter
 )
 from chess.token import (
-    AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException, Token, TokenContext, TokenService,
-    TokenDataServiceException, TokenDoesNotExistForRemovalException, TokenContextService, TokenDeletionFailedException,
-    TokenInsertionFailedException, RankQuotaComputationFailedException, TokenServiceCapacityException,
+    AddingDuplicateTokenException, AppendingTokenDirectlyIntoItemsFailedException, NoRankOpeningsException,
+    PoppingEmptyTokenStackException,
+    RankQuotaManager, Token,
+    TokenContext, TokenDesignationAlreadyInUseException, TokenIdAlreadyInUseException, TokenService,
+    TokenStackException, TokenDoesNotExistForRemovalException, TokenContextService, TokenDeletionFailedException,
+    TokenPushFailedException, RankQuotaComputationFailedException, TokenServiceCapacityException,
 )
 
 class TokenStack(StackService[Token]):
@@ -42,20 +46,23 @@ class TokenStack(StackService[Token]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    CAPACITY: int = 16
+    DEFAULT_CAPACITY: int = 16
     SERVICE_NAME: str = "TokenStack"
     _formation_service: FormationService
+    _rank_quota_manager: RankQuotaManager
+
     _capacity: int
     
     
     def __init__(
             self,
-            capacity: int = CAPACITY,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             items: List[Token] = List[Token],
+            capacity: int = DEFAULT_CAPACITY,
             token_service: TokenService = TokenService(),
             formation_service: FormationService = FormationService(),
+            rank_quota_manager: RankQuotaManager = RankQuotaManager(),
             token_context_service: TokenContextService = TokenContextService(),
     ):
         """
@@ -81,8 +88,10 @@ class TokenStack(StackService[Token]):
             entity_service=token_service,
             context_service=token_context_service,
         )
-        self._formation_service = formation_service
         self._capacity = capacity
+        self._formation_service = formation_service
+        self._rank_quota_manager = rank_quota_manager
+
         
     @property
     def capacity(self) -> int:
@@ -97,7 +106,7 @@ class TokenStack(StackService[Token]):
         return len(self.items) == 0
         
     @property
-    def token_service(self) -> TokenService:
+    def integrity_service(self) -> TokenService:
         return cast(TokenService, self.entity_service)
     
     @property
@@ -107,6 +116,10 @@ class TokenStack(StackService[Token]):
     @property
     def formation_service(self) -> FormationService:
         return self._formation_service
+    
+    @property
+    def rank_quota_manager(self) -> RankQuotaManager:
+        return self._rank_quota_manager
     
     @LoggingLevelRouter.monitor
     def team_max_tokens_per_rank(self, rank: Rank) -> ComputationResult[int]:
@@ -121,7 +134,7 @@ class TokenStack(StackService[Token]):
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
-            *   TokenDataServiceException
+            *   TokenStackException
         """
         method = "TokenStack.team_max_tokens_per_rank"
         
@@ -132,8 +145,8 @@ class TokenStack(StackService[Token]):
         if quota_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=quota_result.exception
                 )
             )
@@ -155,7 +168,7 @@ class TokenStack(StackService[Token]):
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
-            *   TokenDataServiceException
+            *   TokenStackException
             *   RankQuotaComputationFailedException
         """
         method = "TokenStack.number_of_rank_members"
@@ -167,8 +180,8 @@ class TokenStack(StackService[Token]):
         if build_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=build_result.exception
@@ -182,8 +195,8 @@ class TokenStack(StackService[Token]):
         if search_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=search_result.exception
@@ -197,7 +210,7 @@ class TokenStack(StackService[Token]):
         return ComputationResult.success(payload=len(cast(List[Token], search_result.payload)))
     
     @LoggingLevelRouter.monitor
-    def insert_token(self, token: Token) -> InsertionResult[Token]:
+    def push(self, item: Token) -> InsertionResult[bool]:
         """
         # ACTION:
             1.  If the occupant is not validated send the exception in the InsertionResult. Else, call the super class
@@ -211,7 +224,7 @@ class TokenStack(StackService[Token]):
                     - On failure: Exception.
                     - On success: Token in the payload.
         # RAISES:
-            *   TokenDataServiceException
+            *   TokenStackException
         """
         method = "TokenStack.add_token"
         
@@ -219,46 +232,84 @@ class TokenStack(StackService[Token]):
         if self.is_full:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=TokenInsertionFailedException(
-                        message=f"{method}: {TokenInsertionFailedException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    ex=TokenPushFailedException(
+                        message=f"{method}: {TokenPushFailedException.ERROR_CODE}",
                         ex=TokenServiceCapacityException(f"{method}: {TokenServiceCapacityException.ERROR_CODE}")
                     )
                 )
             )
         # Handle the case that the occupant is unsafe.
-        validation = self.token_service.validator.validate(candidate=token)
+        validation = self.integrity_service.validator.validate(candidate=item)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=TokenInsertionFailedException(
-                        message=f"{method}: {TokenInsertionFailedException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    ex=TokenPushFailedException(
+                        message=f"{method}: {TokenPushFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
             )
-        # --- Token order is not required. Direct insertion into the dataset is simpler that a push. ---#
-        self.items.append(token)
-        
-        # Handle the case that the occupant was not appended to the dataset.
-        if token not in self.items:
+        # Handle the case that one of the items unique attributes is already in use.
+        collision_detection = self._find_colliding_tokens(target=item)
+        if not collision_detection.is_empty:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=TokenInsertionFailedException(
-                        message=f"{method}: {TokenInsertionFailedException.ERROR_CODE}",
-                        ex=AppendingTokenDirectlyIntoItemsFailedException(
-                            f"{method}: {AppendingTokenDirectlyIntoItemsFailedException.ERROR_CODE}"
-                        )
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    ex=TokenPushFailedException(
+                        message=f"{method}: {TokenPushFailedException.ERROR_CODE}",
+                        ex=collision_detection.exception
                     )
                 )
             )
-        # On success return the occupant in the InsertionResult
-        return InsertionResult.success(payload=token)
+        # Handle the case that the token is already in the stack.
+        if item in self.items:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    ex=TokenPushFailedException(
+                        message=f"{method}: {TokenPushFailedException.ERROR_CODE}",
+                        ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
+        # --- Query if there are opening s ---#
+        boolean_query = self._rank_quota_manager.has_rank_opening(rank=item.rank, token_stack=self)
+        
+        # Handle the case that the boolean query is not answered.
+        if boolean_query.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    ex=TokenPushFailedException(
+                        message=f"{method}: {TokenPushFailedException.ERROR_CODE}",
+                        ex=boolean_query.exception
+                    )
+                )
+            )
+        # Handle the case that the token's rank is full.
+        has_openings = boolean_query.payload
+        if not has_openings:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    ex=TokenPushFailedException(
+                        message=f"{method}: {TokenPushFailedException.ERROR_CODE}",
+                        ex=NoRankOpeningsException(f"{method}: {NoRankOpeningsException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
+
+        # --- Append the token to the stack and send the success result. ---#
+        self.items.append(item)
+        return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
     def delete_token_by_id(
@@ -279,7 +330,7 @@ class TokenStack(StackService[Token]):
                     - On failure: Exception.
                     - On success: Token in the payload.
         # RAISES:
-            *   TokenDataServiceException
+            *   TokenStackException
         """
         method = "TokenStack.delete_token_by_id"
         
@@ -287,8 +338,8 @@ class TokenStack(StackService[Token]):
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=TokenDeletionFailedException(
                         message=f"{method}: {TokenDeletionFailedException.ERROR_CODE}",
                         ex=PoppingEmptyTokenStackException(
@@ -302,8 +353,8 @@ class TokenStack(StackService[Token]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=TokenDeletionFailedException(
                         message=f"{method}: {TokenDeletionFailedException.ERROR_CODE}",
                         ex=TokenDoesNotExistForRemovalException(
@@ -319,8 +370,8 @@ class TokenStack(StackService[Token]):
                 if not isinstance(item, Token):
                     # Return the exception chain on failure.
                     return DeletionResult.failure(
-                        TokenDataServiceException(
-                            message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                        TokenStackException(
+                            message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                             ex=TokenDeletionFailedException(
                                 message=f"{method}: {TokenDeletionFailedException.ERROR_CODE}",
                                 ex=TypeError(
@@ -351,7 +402,7 @@ class TokenStack(StackService[Token]):
                     - On failure: Exception
                     - On success: bool
         # RAISES:
-            *   TokenDataServiceException
+            *   TokenStackException
             *   RankQuotaComputationFailedException
         """
         method = "TokenStack.has_slot_for_rank"
@@ -361,8 +412,8 @@ class TokenStack(StackService[Token]):
         if openings_count.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=openings_count.exception
@@ -389,7 +440,7 @@ class TokenStack(StackService[Token]):
                     - On failure: Exception
                     - On success: int
         # RAISES:
-            *   TokenDataServiceException
+            *   TokenStackException
             *   RankQuotaComputationFailedException
         """
         method = "TokenStack.count_rank_openings"
@@ -399,8 +450,8 @@ class TokenStack(StackService[Token]):
         if rank_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=rank_validation.exception
@@ -414,8 +465,8 @@ class TokenStack(StackService[Token]):
         if rank_count_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                TokenDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
+                TokenStackException(
+                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=rank_count_result.exception
@@ -425,3 +476,27 @@ class TokenStack(StackService[Token]):
         # --- On success send the difference between the quota and rank_member_count in the ComputationResult. ---#
         rank_member_count = cast(int, rank_count_result.payload)
         return ComputationResult.success(payload=rank.team_quota - rank_member_count)
+    
+    def _find_colliding_tokens(self, target: Token) -> SearchResult[Token]:
+        method = "TokenStack._attribute_collision_detector"
+        
+        for item in self.items:
+            if item.id == target.id:
+                return SearchResult.failure(
+                    TokenIdAlreadyInUseException(
+                        f"{method}: {TokenIdAlreadyInUseException.DEFAULT_MESSAGE}",
+                    )
+                )
+            if item.designation.upper() == target.designation.upper():
+                return SearchResult.failure(
+                    TokenDesignationAlreadyInUseException(
+                        f"{method}: {TokenDesignationAlreadyInUseException.DEFAULT_MESSAGE}",
+                    )
+                )
+            if item.opening_square() == target.opening_square:
+                return SearchResult.failure(
+                    TokenOpeningSquareAlreadyInUseException(
+                        f"{method}: {TokenOpeningSquareAlreadyInUseException.DEFAULT_MESSAGE}",
+                    )
+                )
+        return SearchResult.empty()

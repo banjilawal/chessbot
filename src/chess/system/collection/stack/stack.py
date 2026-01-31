@@ -117,7 +117,7 @@ class StackService(ABC, Generic[D]):
     #         return InsertionResult.success(payload=items)
     #     except Exception as ex:
     #         return InsertionResult.failure(
-    #             StackServiceException(ex=ex, message=f"{method}: {StackServiceException.DEFAULT_MESSAGE}")
+    #             StackException(ex=ex, message=f"{method}: {StackException.DEFAULT_MESSAGE}")
     #         )
     
     
@@ -137,7 +137,7 @@ class StackService(ABC, Generic[D]):
         #     return SearchResult.success(payload=validation.payload)
         # except Exception as ex:
         #     return SearchResult.failure(
-        #         StackServiceException(ex=ex, message=f"{method}: {StackServiceException.DEFAULT_MESSAGE}")
+        #         StackException(ex=ex, message=f"{method}: {StackException.DEFAULT_MESSAGE}")
         #     )
     
     @abstractmethod
@@ -154,6 +154,6 @@ class StackService(ABC, Generic[D]):
         #     return DeletionResult.success(payload=items)
         # except Exception as ex:
         #     return DeletionResult.failure(
-        #         StackServiceException(ex=ex, message=f"{method}: {StackServiceException.DEFAULT_MESSAGE}")
+        #         StackException(ex=ex, message=f"{method}: {StackException.DEFAULT_MESSAGE}")
         #     )
         #

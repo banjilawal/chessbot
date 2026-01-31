@@ -12,11 +12,11 @@ __all__ = [
     "AppendingTokenDirectlyIntoItemsFailedException",
 ]
 
-from chess.token import TokenDataServiceException
+from chess.token import TokenStackException
 
 
 # ======================# APPENDING_TOKEN_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
-class AppendingTokenDirectlyIntoItemsFailedException(TokenDataServiceException):
+class AppendingTokenDirectlyIntoItemsFailedException(TokenStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,7 +24,7 @@ class AppendingTokenDirectlyIntoItemsFailedException(TokenDataServiceException):
     1.  Indicate that appending the occupant directly into self.bag was not in the list after running bag.append.
 
     # PARENT:
-        *   TokenDataServiceException
+        *   TokenStackException
 
     # PROVIDES:
     None

@@ -9,15 +9,15 @@ version: 1.0.0
 
 ___all__ = [
     # ======================# SQUARE_STACK EXCEPTION #======================#
-    "SquareStackServiceException",
+    "SquareStackException",
 ]
 
 from chess.square import SquareException
-from chess.system import StackServiceException
+from chess.system import StackException
 
 
 # ======================# SQUARE_STACK EXCEPTION #======================#
-class SquareStackServiceException(SquareException, StackServiceException):
+class SquareStackException(SquareException, StackException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -26,7 +26,7 @@ class SquareStackServiceException(SquareException, StackServiceException):
 
     # PARENT:
         *   SquareException
-        *   StackServiceException
+        *   StackException
 
     # PROVIDES:
     None

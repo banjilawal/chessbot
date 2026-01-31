@@ -12,11 +12,11 @@ __all__ = [
     "SquareNameAlreadyInUseException",
 ]
 
-from chess.square import SquareStackServiceException
+from chess.square import SquareStackException
 
 
 # ======================# NAME_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-class SquareNameAlreadyInUseException(SquareStackServiceException):
+class SquareNameAlreadyInUseException(SquareStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,7 +24,7 @@ class SquareNameAlreadyInUseException(SquareStackServiceException):
     1.  Indicate that inserting a item failed because the name was already in use by a collection member.
 
     # PARENT:
-        *   SquareStackServiceException
+        *   SquareStackException
 
     # PROVIDES:
     None

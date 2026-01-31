@@ -14,11 +14,11 @@ __all__ = [
     "SquareToDeleteNotFoundException",
 ]
 
-from chess.square import SquareStackServiceException
+from chess.square import SquareStackException
 
 
 # ======================# SQUARE_TO_DELETE_NOT_FOUND EXCEPTION #======================#
-class SquareToDeleteNotFoundException(SquareStackServiceException):
+class SquareToDeleteNotFoundException(SquareStackException):
     """
     # ROLE: Debug, Error Tracing
 

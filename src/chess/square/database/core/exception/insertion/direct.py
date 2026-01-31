@@ -12,11 +12,11 @@ __all__ = [
     "AppendingSquareDirectlyIntoItemsFailedException",
 ]
 
-from chess.square import SquareStackServiceException
+from chess.square import SquareStackException
 
 
 # ======================# APPENDING_SQUARE_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
-class AppendingSquareDirectlyIntoItemsFailedException(SquareStackServiceException):
+class AppendingSquareDirectlyIntoItemsFailedException(SquareStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,7 +24,7 @@ class AppendingSquareDirectlyIntoItemsFailedException(SquareStackServiceExceptio
     1.  Indicate that appending the item directly into self.bag was not in the list after running bag.append.
 
     # PARENT:
-        *   SquareStackServiceException
+        *   SquareStackException
 
     # PROVIDES:
     None

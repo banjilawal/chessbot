@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.token import TokenDataServiceException
+from chess.token import TokenStackException
 
 __all__ = [
     # ======================# TOKEN_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# TOKEN_DOES_NOT_EXIST_FOR_REMOVAL EXCEPTION #======================#
-class TokenDoesNotExistForRemovalException(TokenDataServiceException):
+class TokenDoesNotExistForRemovalException(TokenStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -25,7 +25,7 @@ class TokenDoesNotExistForRemovalException(TokenDataServiceException):
         matching the property were found in the dataset.
 
     # PARENT:
-        *   TokenDataServiceException
+        *   TokenStackException
 
     # PROVIDES:
     None

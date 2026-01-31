@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.token import TokenDataServiceException
+from chess.token import TokenStackException
 
 
 __all__ = [
@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 # ======================# POPPING_EMPTY_TOKEN_STACK EXCEPTION #======================#
-class PoppingEmptyTokenStackException(TokenDataServiceException):
+class PoppingEmptyTokenStackException(TokenStackException):
     """
     # ROLE: Debug, Error Tracing
 

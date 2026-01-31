@@ -67,7 +67,7 @@ class TokenDatabase(Database[Token]):
     
     @property
     def integrity_service(self) -> TokenService:
-        return self._token_database_core.token_service
+        return self._token_database_core.integrity_service
     
     @property
     def context_service(self) -> TokenContextService:

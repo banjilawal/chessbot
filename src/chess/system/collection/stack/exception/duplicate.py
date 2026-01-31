@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import StackServiceException
+from chess.system import StackException
 
 __all__ = [
     #======================# CANNOT_ADD_DUPLICATE_ITEM EXCEPTION  #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 #======================# CANNOT_ADD_DUPLICATE_ITEM EXCEPTION  #======================#
-class AddingDuplicateException(StackServiceException):
+class AddingDuplicateException(StackException):
     """
     # ROLE: Error Tracing, Debugging
 

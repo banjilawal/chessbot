@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.token import TokenException
-from chess.system import DataServiceException
+from chess.system import StackException
 
 
 __all__ = [
-    # ======================# TOKEN_STACK_SERVICE EXCEPTION #======================#
-    "TokenDataServiceException",
+    # ======================# TOKEN_STACK EXCEPTION #======================#
+    "TokenStackException",
 ]
 
-# ======================# TOKEN_STACK_SERVICE EXCEPTION #======================#
-class TokenDataServiceException(TokenException, DataServiceException):
+# ======================# TOKEN_STACK EXCEPTION #======================#
+class TokenStackException(TokenException, StackException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -26,7 +26,7 @@ class TokenDataServiceException(TokenException, DataServiceException):
 
     # PARENT:
         *   TokenException
-        *   StackServiceException
+        *   StackException
 
     # PROVIDES:
     None
@@ -37,5 +37,5 @@ class TokenDataServiceException(TokenException, DataServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_DATABASE_CORE_ERROR"
+    ERROR_CODE = "TOKEN_STACK_ERROR"
     DEFAULT_MESSAGE = "TokenStack raised an exception."

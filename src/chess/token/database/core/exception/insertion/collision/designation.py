@@ -1,0 +1,39 @@
+# src/chess/token/database/core/exception/insertion/collision/designation.py
+
+"""
+Module: chess.token.database.core.exception.insertion.collision.designation
+Author: Banji Lawal
+Created: 2025-11-22
+version: 1.0.0
+"""
+
+__all__ = [
+    # ======================# TOKEN_DESIGNATION_ALREADY_USED EXCEPTION #======================#
+    "TokenDesignationAlreadyInUseException",
+]
+
+from chess.token import TokenStackException
+
+
+# ======================# TOKEN_DESIGNATION_ALREADY_USED EXCEPTION #======================#
+class TokenDesignationAlreadyInUseException(TokenStackException):
+    """
+    # ROLE: Debug, Error Tracing
+
+    # RESPONSIBILITIES:
+    1.  Indicate that pushing a token onto the stack failed because its designation was already in use.
+
+    # PARENT:
+        *   TokenStackException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "TOKEN_DESIGNATION_ALREADY_USED_ERROR"
+    DEFAULT_MESSAGE = "Pushing token failed: The designation was already in use."

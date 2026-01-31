@@ -16,7 +16,7 @@ from chess.system import (
 )
 from chess.square import (
     SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, SquareIdAlreadyInUseException,
-    PoppingEmptySquareStackException, Square, SquareStackServiceException, SquareService, SquareContextService,
+    PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
     PoppingSquareStackFailedException, SquareInsertionFailedException, FullSquareStackException
 )
 
@@ -120,7 +120,7 @@ class SquareStackService(StackService[Square]):
                     - On failure: Exception.
                     - On success: Square in the payload.
         # RAISES:
-            *   SquareStackServiceException
+            *   SquareStackException
         """
         method = "SquareStackService.add_square"
         
@@ -128,8 +128,8 @@ class SquareStackService(StackService[Square]):
         if self.is_full:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                SquareStackException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
                         ex=FullSquareStackException(f"{method}: {FullSquareStackException.DEFAULT_MESSAGE}")
@@ -141,8 +141,8 @@ class SquareStackService(StackService[Square]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                SquareStackException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
                         ex=validation.exception
@@ -154,8 +154,8 @@ class SquareStackService(StackService[Square]):
         if collision_detection.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                SquareStackException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                     ex=SquareInsertionFailedException(
                         message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
                         ex=collision_detection.exception
@@ -188,7 +188,7 @@ class SquareStackService(StackService[Square]):
                     - On failure: Exception.
                     - On success: Square in the payload.
         # RAISES:
-            *   SquareStackServiceException
+            *   SquareStackException
         """
         method = "SquareStackService.delete_square_by_id"
         
@@ -196,8 +196,8 @@ class SquareStackService(StackService[Square]):
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                SquareStackException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                     ex=PoppingSquareStackFailedException(
                         message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
                         ex=PoppingEmptySquareStackException(
@@ -211,8 +211,8 @@ class SquareStackService(StackService[Square]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                SquareStackException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                     ex=PoppingSquareStackFailedException(
                         message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
                         ex=validation.exception
@@ -226,8 +226,8 @@ class SquareStackService(StackService[Square]):
                 if not isinstance(item, Square):
                     # Return the exception chain on failure.
                     return DeletionResult.failure(
-                        SquareStackServiceException(
-                            message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                        SquareStackException(
+                            message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                             ex=PoppingSquareStackFailedException(
                                 message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
                                 ex=TypeError(

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_INSERTION_FAILURE #======================#
-    "TokenInsertionFailedException",
+    # ======================# TOKEN_PUSH_FAILURE EXCEPTION #======================#
+    "TokenPushFailedException",
 ]
 
-from chess.token import TokenException
+from chess.token import TokenStackException
 from chess.system import InsertionFailedException
 
 
-# ======================# TOKEN_INSERTION_FAILURE #======================#
-class TokenInsertionFailedException(TokenException, InsertionFailedException):
+# ======================# TOKEN_PUSH_FAILURE EXCEPTION #======================#
+class TokenPushFailedException(TokenStackException, InsertionFailedException):
     """
     # ROLE: Exception Wrapper
 
@@ -37,5 +37,5 @@ class TokenInsertionFailedException(TokenException, InsertionFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_INSERTION_FAILURE_ERROR"
-    DEFAULT_MESSAGE = "Token insertion failed."
+    ERROR_CODE = "TOKEN_PUSH_FAILURE_ERROR"
+    DEFAULT_MESSAGE = "Pushing token failed."

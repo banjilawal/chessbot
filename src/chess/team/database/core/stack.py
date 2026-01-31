@@ -97,7 +97,7 @@ class TeamStackService(StackService[Team]):
                     - On failure: Exception.
                     - On success: Team in the payload.
         # RAISES:
-            *   TeamStackServiceException
+            *   TeamStackException
         """
         method = "TeamStackService.add_team"
         
@@ -153,7 +153,7 @@ class TeamStackService(StackService[Team]):
                     - On failure: Exception.
                     - On success: Team in the payload.
         # RAISES:
-            *   TeamStackServiceException
+            *   TeamStackException
         """
         method = "TeamStackService.delete_Team_by_id"
         
