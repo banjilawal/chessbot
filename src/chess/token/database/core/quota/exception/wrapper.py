@@ -1,23 +1,14 @@
-# src/chess/token/database/core/exception/calculation/rank/count.py
-
-"""
-Module: chess.token.database.core.exception.calculation.rank.count
-Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
-"""
-
 __all__ = [
     # ======================# COUNT_OF_RANK_MEMBERS_FAILURE EXCEPTION #======================#
-    "RankCountCalculationFailedException",
+    "RankQuotaComputationFailedException",
 ]
 
-from chess.token import TokenException
-from chess.system import CalculationFailedException
+from chess.token import RankQuotaManager, RankQuotaManagerException, TokenException
+from chess.system import CalculationFailedException, ComputationFailedException
 
 
 # ======================# COUNT_OF_RANK_MEMBERS_FAILURE EXCEPTION #======================#
-class RankCountCalculationFailedException(TokenException, CalculationFailedException):
+class RankQuotaComputationFailedException(RankQuotaManagerException, ComputationFailedException):
     """
     # ROLE: Exception Wrapper
 

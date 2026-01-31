@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .activity import *
+from .database import *
 from .context import *
 from .factory import *
 from .model import *

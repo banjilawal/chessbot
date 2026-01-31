@@ -1,4 +1,4 @@
-# src/chess/arena/database/core/service.py
+# src/chess/arena/database/core/stack.py
 
 """
 Module: chess.arena.database.core.stack

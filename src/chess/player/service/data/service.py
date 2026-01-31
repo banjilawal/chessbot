@@ -1,4 +1,4 @@
-# src/chess/owner/database/core/service.py
+# src/chess/owner/database/core/stack.py
 
 """
 Module: chess.owner.database.core.stack

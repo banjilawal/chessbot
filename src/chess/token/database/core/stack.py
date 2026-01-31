@@ -1,4 +1,4 @@
-# src/chess/token/database/core/service_.py
+# src/chess/token/database/core/stack.py
 
 """
 Module: chess.token.database.core.stack
@@ -17,7 +17,7 @@ from chess.system import (
 from chess.token import (
     AppendingTokenDirectlyIntoItemsFailedException, PoppingEmptyTokenStackException, Token, TokenContext, TokenService,
     TokenDataServiceException, TokenDoesNotExistForRemovalException, TokenContextService, TokenDeletionFailedException,
-    TokenInsertionFailedException, RankCountCalculationFailedException, TokenServiceCapacityException,
+    TokenInsertionFailedException, RankQuotaComputationFailedException, TokenServiceCapacityException,
 )
 
 class TokenStack(StackService[Token]):
@@ -156,7 +156,7 @@ class TokenStack(StackService[Token]):
                     - On success: int in the payload.
         # RAISES:
             *   TokenDataServiceException
-            *   RankCountCalculationFailedException
+            *   RankQuotaComputationFailedException
         """
         method = "TokenStack.number_of_rank_members"
         
@@ -169,8 +169,8 @@ class TokenStack(StackService[Token]):
             return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=RankCountCalculationFailedException(
-                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                    ex=RankQuotaComputationFailedException(
+                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=build_result.exception
                     )
                 )
@@ -184,8 +184,8 @@ class TokenStack(StackService[Token]):
             return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=RankCountCalculationFailedException(
-                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                    ex=RankQuotaComputationFailedException(
+                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=search_result.exception
                     )
                 )
@@ -352,7 +352,7 @@ class TokenStack(StackService[Token]):
                     - On success: bool
         # RAISES:
             *   TokenDataServiceException
-            *   RankCountCalculationFailedException
+            *   RankQuotaComputationFailedException
         """
         method = "TokenStack.has_slot_for_rank"
         
@@ -363,8 +363,8 @@ class TokenStack(StackService[Token]):
             return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=RankCountCalculationFailedException(
-                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                    ex=RankQuotaComputationFailedException(
+                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=openings_count.exception
                     )
                 )
@@ -390,7 +390,7 @@ class TokenStack(StackService[Token]):
                     - On success: int
         # RAISES:
             *   TokenDataServiceException
-            *   RankCountCalculationFailedException
+            *   RankQuotaComputationFailedException
         """
         method = "TokenStack.count_rank_openings"
         
@@ -401,8 +401,8 @@ class TokenStack(StackService[Token]):
             return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=RankCountCalculationFailedException(
-                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                    ex=RankQuotaComputationFailedException(
+                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=rank_validation.exception
                     )
                 )
@@ -416,8 +416,8 @@ class TokenStack(StackService[Token]):
             return ComputationResult.failure(
                 TokenDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenDataServiceException.ERROR_CODE}",
-                    ex=RankCountCalculationFailedException(
-                        message=f"{method}: {RankCountCalculationFailedException.ERROR_CODE}",
+                    ex=RankQuotaComputationFailedException(
+                        message=f"{method}: {RankQuotaComputationFailedException.ERROR_CODE}",
                         ex=rank_count_result.exception
                     )
                 )
