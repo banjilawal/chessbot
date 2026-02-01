@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from chess.arena import Arena
+from chess.board import BoardState
 from chess.team import TeamHash
 from chess.square import SquareDatabase
 from chess.hostage import HostageDatabase
@@ -32,6 +33,7 @@ class Board:
     """
     _id: int
     _arena: Arena
+    _state: BoardState
     _team_hash: TeamHash
     _squares: SquareDatabase
     _hostage_database: HostageDatabase
@@ -64,10 +66,15 @@ class Board:
         self._squares = squares
         self._team_hash = team_hash
         self._hostage_database = hostage_database
+        self._state = BoardState.IS_EMPTY
     
     @property
     def id(self) -> int:
         return self._id
+    
+    @property
+    def state(self) -> BoardState:
+        return self._state
     
     @property
     def arena(self) -> Arena:
@@ -86,6 +93,7 @@ class Board:
         return self._hostage_database
     
     def layout_board(self):
+    
     
     def __eq__(self, other):
         if other is self: return True

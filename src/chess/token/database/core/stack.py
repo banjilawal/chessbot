@@ -11,6 +11,7 @@ from typing import List, cast
 
 from chess.formation import FormationService
 from chess.rank import Rank, RankService
+from chess.square import SquareContext
 from chess.system import (
     ComputationResult, SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
     id_emitter
@@ -24,6 +25,8 @@ from chess.token import (
     TokenStackException, TokenDoesNotExistForRemovalException, TokenContextService, TokenDeletionFailedException,
     TokenPushFailedException, RankQuotaComputationFailedException, TokenServiceCapacityException,
 )
+from chess.token.database.core.state import TokenStackState
+
 
 class TokenStack(StackService[Token]):
     """
@@ -49,11 +52,11 @@ class TokenStack(StackService[Token]):
     """
     DEFAULT_CAPACITY: int = 16
     SERVICE_NAME: str = "TokenStack"
+    
+    _capacity: int
+    _deployment_state: TokenStackState
     _formation_service: FormationService
     _rank_quota_manager: RankQuotaManager
-
-    _capacity: int
-    
     
     def __init__(
             self,
@@ -92,6 +95,7 @@ class TokenStack(StackService[Token]):
         self._capacity = capacity
         self._formation_service = formation_service
         self._rank_quota_manager = rank_quota_manager
+        self._deployment_state = TokenStackState.EMPTY
 
         
     @property
@@ -100,11 +104,15 @@ class TokenStack(StackService[Token]):
     
     @property
     def is_full(self) -> bool:
-        return len(self.items) == self._capacity
+        return len(self.items) == self._capacity and self._deployment_state == TokenStackState.FILLED
     
     @property
     def is_empty(self) -> bool:
-        return len(self.items) == 0
+        return len(self.items) == 0 and self._deployment_state == TokenStackState.EMPTY
+    
+    @property
+    def is_deployed_on_board(self) -> bool:
+        return len(self.items) == 0 and self._deployment_state == TokenStackState.DEPLOYED_ON_BOARD
         
     @property
     def integrity_service(self) -> TokenService:
@@ -121,6 +129,14 @@ class TokenStack(StackService[Token]):
     @property
     def rank_quota_manager(self) -> RankQuotaManager:
         return self._rank_quota_manager
+    
+    @property
+    def deployment_state(self) -> TokenStackState:
+        return self._deployment_state
+    
+    @deployment_state.setter
+    def deployment_state(self, state: TokenStackState):
+        self._deployment_state = state
     
     @LoggingLevelRouter.monitor
     def push(self, item: Token) -> InsertionResult[bool]:
@@ -335,6 +351,49 @@ class TokenStack(StackService[Token]):
             
             # If none of the bag had that id return an empty DeletionResult.
             return DeletionResult.nothing_to_delete()
+        
+    def form_tokens(self) -> InsertionResult[bool]:
+        method = "TokenStack.place_tokens"
+        for token in self.items:
+            square_search_result = token.team.board.squares.search_squares(
+                context=SquareContext(token.opening_square)
+            )
+            
+            # Handle the case that the search is not completed.
+            if square_search_result.is_failure:
+                # Return the exception on failure.
+                return InsertionResult.failure(
+                    TokenStackException(
+                        f"{method}: {TokenStackException}",
+                        ex=square_search_result.exception
+                    )
+                )
+            # Handle the case the square is not found.
+            if square_search_result.is_empty:
+                # Return the exception on failure.
+                return InsertionResult.failure(
+                    TokenStackException(
+                        f"{method}: {TokenStackException}",
+                        ex=OpeningSquareNotFoundException(
+                            f"{method}: {OpeningSquareNotFoundException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            occupation_result = token.team.board.squares.add_occupant_to_square(
+                token=token,
+                square=square_search_result.payload[0],
+            )
+            # Handle the case that occupying the opening square fails.
+            if occupation_result.is_failure:
+                # Return the exception on failure.
+                return InsertionResult.failure(
+                    TokenStackException(
+                        f"{method}: {TokenStackException}",
+                        ex=occupation_result.exception
+                    )
+                )
+        self._deployment_state = TokenStackState.DEPLOYED_ON_BOARD
+        return InsertionResult.success()
    
     def _find_colliding_tokens(self, target: Token) -> SearchResult[Token]:
         method = "TokenStack._attribute_collision_detector"
@@ -352,7 +411,7 @@ class TokenStack(StackService[Token]):
                         f"{method}: {TokenDesignationAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
-            if item.opening_square() == target.opening_square:
+            if item.opening_square == target.opening_square:
                 return SearchResult.failure(
                     TokenOpeningSquareAlreadyInUseException(
                         f"{method}: {TokenOpeningSquareAlreadyInUseException.DEFAULT_MESSAGE}",

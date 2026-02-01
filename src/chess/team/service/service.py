@@ -118,43 +118,62 @@ class TeamService(EntityService[Team]):
     def schema_service(self) -> SchemaService:
         return self._schema_service
     
-    @LoggingLevelRouter.monitor
-    def search_team_roster( self, team: Team, context: TokenContext) -> SearchResult[List[Token]]:
-        """
-        This is only going to be used in Arenas where it might be necessary to check if a captured piece has
-        been properly registered with the enemy. I probably won't need it.
-        """
-        method = "TeamService.search_team_for_token"
+    # @LoggingLevelRouter.monitor
+    # def search_team_roster( self, team: Team, context: TokenContext) -> SearchResult[List[Token]]:
+    #     """
+    #     This is only going to be used in Arenas where it might be necessary to check if a captured piece has
+    #     been properly registered with the enemy. I probably won't need it.
+    #     """
+    #     method = "TeamService.search_team_for_token"
+    #
+    #     # Validate the team and handle the failure case.
+    #     team_validation = self.validator.validate(candidate=team)
+    #     if team_validation.is_failure:
+    #         # Return the exception chain on failure.
+    #         return SearchResult.failure(
+    #             TeamServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=TeamSearchFailedException(
+    #                     message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}",
+    #                     ex=team_validation.exception
+    #                 )
+    #             )
+    #         )
+    #     # --- Run the search on the roster. ---#
+    #     search_result = team.roster.members.search(context=context)
+    #
+    #     # Handle the case that the search did not complete.
+    #     if search_result.is_failure:
+    #         # Return the exception chain on failure.
+    #         return SearchResult.failure(
+    #             TeamServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=TeamSearchFailedException(
+    #                     message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}",
+    #                     ex=search_result.exception
+    #                 )
+    #             )
+    #         )
+    #     return search_result
+    
+    def layout_team(self, team: Team) -> InsertionResult[Team]:
+        method = "TeamService.layout_team"
         
-        # Validate the team and handle the failure case.
+        # Handle the case that the team is not certified safe.
         team_validation = self.validator.validate(candidate=team)
         if team_validation.is_failure:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
+            # Return exception chain on failure.
+            return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=TeamSearchFailedException(
-                        message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}",
+                    ex=LayingOutTeamFailedException(
+                        message=f"{method}: {LayingOutTeamFailedException.ERROR_CODE}",
                         ex=team_validation.exception
                     )
                 )
             )
-        # --- Run the search on the roster. ---#
-        search_result = team.roster.members.search(context=context)
+        for member in team.roster.:
         
-        # Handle the case that the search did not complete.
-        if search_result.is_failure:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=TeamSearchFailedException(
-                        message=f"{method}: {TeamSearchFailedException.DEFAULT_MESSAGE}",
-                        ex=search_result.exception
-                    )
-                )
-            )
-        return search_result
 
     
     def fill_team_roster(
@@ -294,133 +313,133 @@ class TeamService(EntityService[Team]):
             return UpdateResult.success(team)
         
     
-    def add_roster_member(self, team: Team, piece: Token) -> InsertionResult[Token]:
-        """
-        # ACTION:
-            1.  If a successful relation analysis does not show that the team and piece are partially related send an
-                exception. Also, send the exception if the relation analysis fails.
-            2.  If the rank's quota is full, send the exception in InsertionResult. Else get the result of the
-                super().push_item.
-            3.  If the super class raises an exception, wrap and forward it. Else, forward the super class success
-                directly to the caller.
-        # PARAMETERS:
-            *   team (Team)
-            *   piece (Piece)
-        # RETURN:
-            *   InsertionResult[occupant] containing either:
-                    - On failure: Exception
-                    - On success: Token
-        # RAISES:
-            *   TeamServiceException
-        """
-        method = "TeamService.add_roster_team_member"
-        
-        # --- The relation analyzer validates its candidates. This has to be done before running further tests. ---#
-        relation_analysis = self._roster_relation_analyzer.analyze(
-            candidate_primary=team,
-            candidadate_satellite=piece
-        )
-        
-        # Handle the case that the relation_analysis was not completed.
-        if relation_analysis.is_failure:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=FillingTeamRosterFailedException(
-                    message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
-                    ex=relation_analysis.exception
-                    )
-                )
-            )
-        # Handle the case that the piece belongs to a different team.
-        if relation_analysis.does_not_exist:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=FillingTeamRosterFailedException(
-                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
-                        ex=EnemyCannotJoinTeamRosterException(
-                            f"{method}: {EnemyCannotJoinTeamRosterException.DEFAULT_MESSAGE}"
-                        )
-                    )
-                )
-            )
-        # Handle the case that the piece is already registered with the team.
-        if relation_analysis.fully_exists:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=FillingTeamRosterFailedException(
-                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
-                        ex=AddingDuplicateTokenException(
-                            f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}"
-                        )
-                    )
-                )
-            )
-        # --- Would have liked to check roster capacity first, but that requires validating the team. ---#
-        if team.roster.is_full:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=FillingTeamRosterFailedException(
-                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
-                        ex=TokenServiceCapacityException(
-                            f"{method}: {TokenServiceCapacityException.DEFAULT_MESSAGE}"
-                        )
-                    )
-                )
-            )
-        # --- Find out if there is an opening for the occupant's rank on the roster. ---#
-        has_openings_test = team.roster.rank_has_openings(piece.rank)
-        
-        # Handle the case that the rank_has_openings failed test failed.
-        if has_openings_test.is_failure:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=FillingTeamRosterFailedException(
-                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
-                        ex=has_openings_test.exception
-                    )
-                )
-            )
-        
-        # Handle the case that the roster has no openings for the rank.
-        has_openings = cast(bool, has_openings_test.payload)
-        if not has_openings:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=FillingTeamRosterFailedException(
-                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
-                        ex=TeamRankQuotaFullException(f"{method}: {TeamRankQuotaFullException.DEFAULT_MESSAGE}")
-                    )
-                )
-            )
-        # --- Run the insertion operation on the StackService. ---#
-        insertion_result = team.roster.add_unique_token(piece)
-        
-        # Handle the case that the insertion was not completed.
-        if insertion_result.is_failure:
-            # Return exception chain on failure.
-            return InsertionResult.failure(
-                TeamServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=FillingTeamRosterFailedException(
-                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
-                        ex=insertion_result.exception
-                    )
-                )
-            )
-        # On success, directly forward result to the caller.
-        return insertion_result
+    # def add_roster_member(self, team: Team, piece: Token) -> InsertionResult[Token]:
+    #     """
+    #     # ACTION:
+    #         1.  If a successful relation analysis does not show that the team and piece are partially related send an
+    #             exception. Also, send the exception if the relation analysis fails.
+    #         2.  If the rank's quota is full, send the exception in InsertionResult. Else get the result of the
+    #             super().push_item.
+    #         3.  If the super class raises an exception, wrap and forward it. Else, forward the super class success
+    #             directly to the caller.
+    #     # PARAMETERS:
+    #         *   team (Team)
+    #         *   piece (Piece)
+    #     # RETURN:
+    #         *   InsertionResult[occupant] containing either:
+    #                 - On failure: Exception
+    #                 - On success: Token
+    #     # RAISES:
+    #         *   TeamServiceException
+    #     """
+    #     method = "TeamService.add_roster_team_member"
+    #
+    #     # --- The relation analyzer validates its candidates. This has to be done before running further tests. ---#
+    #     relation_analysis = self._roster_relation_analyzer.analyze(
+    #         candidate_primary=team,
+    #         candidadate_satellite=piece
+    #     )
+    #
+    #     # Handle the case that the relation_analysis was not completed.
+    #     if relation_analysis.is_failure:
+    #         # Return exception chain on failure.
+    #         return InsertionResult.failure(
+    #             TeamServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=FillingTeamRosterFailedException(
+    #                 message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+    #                 ex=relation_analysis.exception
+    #                 )
+    #             )
+    #         )
+    #     # Handle the case that the piece belongs to a different team.
+    #     if relation_analysis.does_not_exist:
+    #         # Return exception chain on failure.
+    #         return InsertionResult.failure(
+    #             TeamServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=FillingTeamRosterFailedException(
+    #                     message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+    #                     ex=EnemyCannotJoinTeamRosterException(
+    #                         f"{method}: {EnemyCannotJoinTeamRosterException.DEFAULT_MESSAGE}"
+    #                     )
+    #                 )
+    #             )
+    #         )
+    #     # Handle the case that the piece is already registered with the team.
+    #     if relation_analysis.fully_exists:
+    #         # Return exception chain on failure.
+    #         return InsertionResult.failure(
+    #             TeamServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=FillingTeamRosterFailedException(
+    #                     message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+    #                     ex=AddingDuplicateTokenException(
+    #                         f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}"
+    #                     )
+    #                 )
+    #             )
+    #         )
+    #     # --- Would have liked to check roster capacity first, but that requires validating the team. ---#
+    #     if team.roster.is_full:
+    #         # Return exception chain on failure.
+    #         return InsertionResult.failure(
+    #             TeamServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=FillingTeamRosterFailedException(
+    #                     message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+    #                     ex=TokenServiceCapacityException(
+    #                         f"{method}: {TokenServiceCapacityException.DEFAULT_MESSAGE}"
+    #                     )
+    #                 )
+    #             )
+    #         )
+    #     # --- Find out if there is an opening for the occupant's rank on the roster. ---#
+    #     has_openings_test = team.roster.rank_has_openings(piece.rank)
+    #
+    #     # Handle the case that the rank_has_openings failed test failed.
+    #     if has_openings_test.is_failure:
+    #         # Return exception chain on failure.
+    #         return InsertionResult.failure(
+    #             TeamServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=FillingTeamRosterFailedException(
+    #                     message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+    #                     ex=has_openings_test.exception
+    #                 )
+    #             )
+    #         )
+    #
+    #     # Handle the case that the roster has no openings for the rank.
+    #     has_openings = cast(bool, has_openings_test.payload)
+    #     if not has_openings:
+    #         # Return exception chain on failure.
+    #         return InsertionResult.failure(
+    #             TeamServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=FillingTeamRosterFailedException(
+    #                     message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+    #                     ex=TeamRankQuotaFullException(f"{method}: {TeamRankQuotaFullException.DEFAULT_MESSAGE}")
+    #                 )
+    #             )
+    #         )
+    #     # --- Run the insertion operation on the StackService. ---#
+    #     insertion_result = team.roster.add_unique_token(piece)
+    #
+    #     # Handle the case that the insertion was not completed.
+    #     if insertion_result.is_failure:
+    #         # Return exception chain on failure.
+    #         return InsertionResult.failure(
+    #             TeamServiceException(
+    #                 message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+    #                 ex=FillingTeamRosterFailedException(
+    #                     message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+    #                     ex=insertion_result.exception
+    #                 )
+    #             )
+    #         )
+    #     # On success, directly forward result to the caller.
+    #     return insertion_result
     #
     # def calculate_remaining_rank_quota(
     #         self,

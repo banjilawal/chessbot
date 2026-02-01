@@ -11,7 +11,8 @@ from typing import List
 
 from chess.rank import Rank
 from chess.token import (
-    RankQuotaManager, Token, TokenContext, TokenContextService, TokenStack, TokenService, TokenDatabaseException
+    RankQuotaManager, Token, TokenContext, TokenContextService, TokenStack, TokenService, TokenDatabaseException,
+    TokenStackState
 )
 from chess.system import (
     ComputationResult, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, Database,
@@ -86,6 +87,22 @@ class TokenDatabase(Database[Token]):
     @property
     def is_empty(self) -> bool:
         return self._token_stack.is_empty
+    
+    @property
+    def is_deployed(self) -> bool:
+        return self._token_stack.is_deployed_on_board
+    
+    @property
+    def stack_state(self) -> TokenStackState:
+        return self._token_stack.deployment_state
+    
+    @stack_state.setter
+    def stack_state(self, state: TokenStackState):
+        self._token_stack.deployment_state = state
+        
+    @LoggingLevelRouter.monitor
+    def deploy_tokens(self) -> InsertionResult[bool]:
+        return self._token_stack.form_tokens()
     
     @LoggingLevelRouter.monitor
     def open_rank_slots(self, rank: Rank) -> ComputationResult[int]:
