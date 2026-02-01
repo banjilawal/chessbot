@@ -12,9 +12,7 @@ from typing import List, cast
 from chess.system import DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, StackService, id_emitter
 from chess.team import (
     AddingDuplicateTeamException, PoppingEmptyTeamStackException, PoppingTeamStackFailedException,
-    PushingTeamFailedException, Team, TeamContextService,
-    TeamService,
-    TeamStackException
+    PushingTeamFailedException, Team, TeamContextService, TeamService, TeamStackException
 )
 
 

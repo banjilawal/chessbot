@@ -21,3 +21,4 @@ from .exception import *
 
 # Modules
 from .team import Team
+from .hash import TeamHash
