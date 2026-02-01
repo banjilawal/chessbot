@@ -20,7 +20,7 @@ from chess.system import (
 )
 
 
-class UniqueBoardDataService(Database[Board]):
+class BoardDatabase(Database[Board]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -40,7 +40,7 @@ class UniqueBoardDataService(Database[Board]):
     # INHERITED ATTRIBUTES:
         *   See Database class for inherited attributes.
     """
-    SERVICE_NAME = "UniqueBoardDataService"
+    SERVICE_NAME = "BoardDatabase"
     _board_database_core: BoardStackService
     
     def __init__(
@@ -100,7 +100,7 @@ class UniqueBoardDataService(Database[Board]):
             *   UniqueBoardInsertionFailedException
             *   UniqueBoardDataServiceException
         """
-        method = "UniqueBoardDataService.add_unique_board"
+        method = "BoardDatabase.add_unique_board"
         
         # --- To assure uniqueness the member_service has to conduct a search. The board should be validated first. ---#
         
@@ -181,7 +181,7 @@ class UniqueBoardDataService(Database[Board]):
             *   UniqueBoardDataServiceException
             *   ExhaustiveBoardDeletionFailedException
         """
-        method = "UniqueBoardDataService.search_boards"
+        method = "BoardDatabase.search_boards"
         
         # --- Handoff the search responsibility to _board_database_core. ---#
         search_result = self._board_database_core.board_context_service.finder.find(context=context)

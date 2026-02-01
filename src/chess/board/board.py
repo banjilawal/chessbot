@@ -13,7 +13,7 @@ from chess.arena import Arena
 from chess.square import SquareDatabase
 from chess.hostage import HostageDatabase
 from chess.system import GameColor
-from chess.team import Team
+from chess.team import Team, TeamHash
 
 
 class Board:
@@ -36,15 +36,15 @@ class Board:
     """
     _id: int
     _arena: Arena
+    _team_hash: TeamHash
     _squares: SquareDatabase
-    _teams: Dict[GameColor: Team]
     _hostage_database: HostageDatabase
     
     def __init__(
             self,
             id: int,
             arena: Arena,
-            teams: Dict[GameColor, Team],
+            team_hash: TeamHash,
             squares: SquareDatabase = SquareDatabase(),
             hostage_database: HostageDatabase = HostageDatabase(),
     ):
@@ -65,8 +65,8 @@ class Board:
         
         self._id = id
         self._arena = arena
-        self._teams = teams
         self._squares = squares
+        self._team_hash = team_hash
         self._hostage_database = hostage_database
     
     @property
@@ -82,16 +82,12 @@ class Board:
         return self._squares
     
     @property
-    def teams(self) -> Dict[GameColor, Team]:
-        return self._teams
+    def team_hash(self) -> TeamHash:
+        return self._team_hash
     
     @property
     def hostage_database(self) -> HostageDatabase:
-        return self._hostage_database
-
-        
-            
-
+        return self._hostage_database     
     
     def __eq__(self, other):
         if other is self: return True

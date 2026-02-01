@@ -22,8 +22,8 @@ class UniqueBoardDataServiceException(BoardException, DatabaseException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an UniqueBoardDataService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a UniqueBoardDataService method.
+    1.  Indicate that an BoardDatabase encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a BoardDatabase method.
 
     # PARENT:
         *   ServiceException
@@ -39,4 +39,4 @@ class UniqueBoardDataServiceException(BoardException, DatabaseException):
     None
     """
     ERROR_CODE = "DATABASE_ERROR"
-    DEFAULT_MESSAGE = "UniqueBoardDataService raised an exception."
+    DEFAULT_MESSAGE = "BoardDatabase raised an exception."

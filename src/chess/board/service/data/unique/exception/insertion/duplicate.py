@@ -23,7 +23,7 @@ class AddingDuplicateBoardException(UniqueBoardDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to add a board to the UniqueBoardDataService's dataset failed because the board was
+    1.  Indicate that an attempt to add a board to the BoardDatabase's dataset failed because the board was
         already in the collection
 
     # PARENT:
