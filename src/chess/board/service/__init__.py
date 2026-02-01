@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== BOARD.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from .data import *
 from .exception import *
 
 # Modules

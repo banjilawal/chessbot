@@ -8,16 +8,15 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# PLAYER_STACK_SERVICE EXCEPTION #======================#
-    "UniqueBoardDataServiceException",
+    # ======================# BOARD_DATABASE EXCEPTION #======================#
+    "BoardDatabaseException",
 ]
 
-from chess.board import BoardException
 from chess.system import DatabaseException
 
 
-# ======================# UNIQUE_BOARD_STACK_SERVICE EXCEPTION #======================#
-class UniqueBoardDataServiceException(BoardException, DatabaseException):
+# ======================# BOARD_DATABASE EXCEPTION #======================#
+class BoardDatabaseException(DatabaseException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -26,8 +25,7 @@ class UniqueBoardDataServiceException(BoardException, DatabaseException):
     2.  Wrap an exception that hits the try-finally block of a BoardDatabase method.
 
     # PARENT:
-        *   ServiceException
-        *   BoardException
+        *   DatabaseException
 
     # PROVIDES:
     None
@@ -38,5 +36,5 @@ class UniqueBoardDataServiceException(BoardException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "DATABASE_ERROR"
+    ERROR_CODE = "BOARD_DATABASE_ERROR"
     DEFAULT_MESSAGE = "BoardDatabase raised an exception."

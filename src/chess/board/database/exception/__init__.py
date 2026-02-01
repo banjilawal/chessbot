@@ -15,4 +15,4 @@ from .deletion import *
 from .insertion import *
 
 # Modules
-from .catchall import UniqueBoardDataServiceException
+from .catchall import BoardDatabaseException

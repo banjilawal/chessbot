@@ -10,7 +10,8 @@ version: 1.0.0
 # =========== BOARD.DATABASE PACKAGE CONTENTS ===========#
 
 # Packages
+from .core import *
 from .exception import *
 
 # Modules
-from .service import BoardDatabase
+from .database import BoardDatabase

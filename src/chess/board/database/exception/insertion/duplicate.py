@@ -27,7 +27,7 @@ class AddingDuplicateBoardException(UniqueBoardDataServiceException):
         already in the collection
 
     # PARENT:
-        *   UniqueBoardDataServiceException
+        *   BoardDatabaseException
 
     # PROVIDES:
     None

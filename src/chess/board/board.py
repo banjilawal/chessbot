@@ -7,14 +7,10 @@ Created: 2025-07-31
 version: 1.0.0
 """
 
-from typing import Dict
-
 from chess.arena import Arena
+from chess.team import TeamHash
 from chess.square import SquareDatabase
 from chess.hostage import HostageDatabase
-from chess.system import GameColor
-from chess.team import Team, TeamHash
-
 
 class Board:
     """
@@ -87,7 +83,9 @@ class Board:
     
     @property
     def hostage_database(self) -> HostageDatabase:
-        return self._hostage_database     
+        return self._hostage_database
+    
+    def layout_board(self):
     
     def __eq__(self, other):
         if other is self: return True

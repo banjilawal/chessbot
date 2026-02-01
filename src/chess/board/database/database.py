@@ -96,9 +96,9 @@ class BoardDatabase(Database[Board]):
                     - On failure: An exception.
                     - On success: Board in payload.
         # RAISES:
-            *   UniqueBoardDataServiceException
+            *   BoardDatabaseException
             *   UniqueBoardInsertionFailedException
-            *   UniqueBoardDataServiceException
+            *   BoardDatabaseException
         """
         method = "BoardDatabase.add_unique_board"
         
@@ -178,7 +178,7 @@ class BoardDatabase(Database[Board]):
                     - On success: Board in payload.
                     - On Empty: No payload nor exception.
         # RAISES:
-            *   UniqueBoardDataServiceException
+            *   BoardDatabaseException
             *   ExhaustiveBoardDeletionFailedException
         """
         method = "BoardDatabase.search_boards"
