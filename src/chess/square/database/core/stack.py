@@ -247,25 +247,47 @@ class SquareStackService(StackService[Square]):
     
     
     def _find_colliding_squares(self, target) -> SearchResult[Square]:
-        method = "SquareStackService.attribute_collision_detector"
+        """
+        # ACTION:
+            1.  If any stack members share either an id, coord or name with the target send and
+                exception in the SearchResult. Those three properties must be unique within the game.
+            2.  If no matches are found send an empty SearchResult indicating there were no collisions.
+        # PARAMETERS:
+                    *   target (Square)
+        # RETURNS:
+            *   SearchResult[List[Token]] containing either:
+                    - On failure: Exception or non-empty list.
+                    - On success: Empty search result.
+        # RAISES:
+            *  TokenIdAlreadyInUseException
+            *  TokenDesignationAlreadyInUseException
+            *   TokenOpeningSquareAlreadyInUseException
+        """
+        method = "SquareStackService.find_colliding_squares"
         
+        # --- Loop through the stack to find matches. ---#
         for square in self._stack:
+            
+            # Return an exception in the SearchResult if a stack member shares the target's id.
             if square.id == target.id:
                 return SearchResult.failure(
                     SquareIdAlreadyInUseException(
                         f"{method}: {SquareIdAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
+            # Return an exception in the SearchResult if a stack member shares the target's coord.
             if square.coord == target.coord:
                 return SearchResult.failure(
                     SquareCoordAlreadyInUseException(
                         f"{method}: {SquareCoordAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
+            # Return an exception in the SearchResult if a stack member shares the target's name.
             if square.name.upper() == target.name.upper():
                 return SearchResult.failure(
                     SquareNameAlreadyInUseException(
                         f"{method}: {SquareNameAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
+        # --- At the happy path return an empty search result indication there are no collisions. ---#
         return SearchResult.empty()

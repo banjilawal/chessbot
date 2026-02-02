@@ -456,25 +456,30 @@ class TokenStack(StackService[Token]):
             *  TokenDesignationAlreadyInUseException
             *   TokenOpeningSquareAlreadyInUseException
         """
-        method = "TokenStack._attribute_collision_detector"
+        method = "TokenStack._find_colliding_tokens"
         
+        # --- Loop through the stack to find matches. ---#
         for item in self.items:
+            # Return an exception in the SearchResult if a stack member shares the target's id.
             if item.id == target.id:
                 return SearchResult.failure(
                     TokenIdAlreadyInUseException(
                         f"{method}: {TokenIdAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
+            # Return an exception in the SearchResult if a stack member shares the target's designation.
             if item.designation.upper() == target.designation.upper():
                 return SearchResult.failure(
                     TokenDesignationAlreadyInUseException(
                         f"{method}: {TokenDesignationAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
-            if item.opening_square == target.opening_square:
+            # Return an exception in the SearchResult if a stack member shares the target's opening square.
+            if item.opening_square.upper() == target.opening_square.upper():
                 return SearchResult.failure(
                     TokenOpeningSquareAlreadyInUseException(
                         f"{method}: {TokenOpeningSquareAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
+        # --- At the happy path return an empty search result indication there are no collisions. ---#
         return SearchResult.empty()
