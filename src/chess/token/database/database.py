@@ -101,11 +101,11 @@ class TokenDatabase(Database[Token]):
         self._token_stack.deployment_state = state
         
     @LoggingLevelRouter.monitor
-    def deploy_tokens(self) -> InsertionResult[bool]:
+    def deploy_tokens_on_board(self) -> InsertionResult[bool]:
         return self._token_stack.form_tokens()
     
     @LoggingLevelRouter.monitor
-    def open_rank_slots(self, rank: Rank) -> ComputationResult[int]:
+    def number_open_rank_slots(self, rank: Rank) -> ComputationResult[int]:
         method = "TokenDatabase.open_rank_slots"
         
         # Handle the case that the calculation was not completed.
@@ -174,11 +174,7 @@ class TokenDatabase(Database[Token]):
             )
     
     @LoggingLevelRouter.monitor
-    def delete_by_id(
-            self,
-            id: int,
-            identity_service: IdentityService = IdentityService()
-    ) -> DeletionResult[Token]:
+    def delete_by_id(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[Token]:
         """
         # ACTION:
             1.  Get the result of calling _token_database_core.delete_token_by_id for method. If the deletion failed

@@ -150,7 +150,7 @@ class SquareStackService(StackService[Square]):
                 )
             )
         # --- Check if any of the item's attributes are already in use. ---#
-        collision_detection = self._attribute_collision_detector(target=item)
+        collision_detection = self._find_colliding_squares(target=item)
         if collision_detection.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -246,7 +246,7 @@ class SquareStackService(StackService[Square]):
         return DeletionResult.nothing_to_delete()
     
     
-    def _attribute_collision_detector(self, target) -> SearchResult[Square]:
+    def _find_colliding_squares(self, target) -> SearchResult[Square]:
         method = "SquareStackService.attribute_collision_detector"
         
         for square in self._stack:

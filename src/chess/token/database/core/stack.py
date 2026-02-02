@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
-
+from distutils.version import LooseVersion
 from typing import List, cast
 
 from chess.formation import FormationService
@@ -54,7 +54,7 @@ class TokenStack(StackService[Token]):
     SERVICE_NAME: str = "TokenStack"
     
     _capacity: int
-    _deployment_state: TokenStackState
+    _stack_state: TokenStackState
     _formation_service: FormationService
     _rank_quota_manager: RankQuotaManager
     
@@ -95,7 +95,7 @@ class TokenStack(StackService[Token]):
         self._capacity = capacity
         self._formation_service = formation_service
         self._rank_quota_manager = rank_quota_manager
-        self._deployment_state = TokenStackState.EMPTY
+        self._stack_state = TokenStackState.EMPTY
 
         
     @property
@@ -104,15 +104,24 @@ class TokenStack(StackService[Token]):
     
     @property
     def is_full(self) -> bool:
-        return len(self.items) == self._capacity and self._deployment_state == TokenStackState.FILLED
+        return (
+                self.size == self._capacity and
+                self._stack_state == TokenStackState.FILLED_READY_TO_DEPLOY
+        )
     
     @property
     def is_empty(self) -> bool:
-        return len(self.items) == 0 and self._deployment_state == TokenStackState.EMPTY
+        return (
+                self.size == 0 and
+                self._stack_state == TokenStackState.EMPTY
+        )
     
     @property
     def is_deployed_on_board(self) -> bool:
-        return len(self.items) == 0 and self._deployment_state == TokenStackState.DEPLOYED_ON_BOARD
+        return (
+                self.size == 0 and
+                self._stack_state == TokenStackState.DEPLOYED_ON_BOARD
+        )
         
     @property
     def integrity_service(self) -> TokenService:
@@ -131,12 +140,12 @@ class TokenStack(StackService[Token]):
         return self._rank_quota_manager
     
     @property
-    def deployment_state(self) -> TokenStackState:
-        return self._deployment_state
+    def stack_state(self) -> TokenStackState:
+        return self._stack_state
     
-    @deployment_state.setter
-    def deployment_state(self, state: TokenStackState):
-        self._deployment_state = state
+    @stack_state.setter
+    def stack_state(self, state: TokenStackState):
+        self._stack_state = state
     
     @LoggingLevelRouter.monitor
     def push(self, item: Token) -> InsertionResult[bool]:
@@ -182,8 +191,7 @@ class TokenStack(StackService[Token]):
                     )
                 )
             )
-        # Handle the case that at least one stack member already has the insertion target's
-        # id, designation or square.
+        # Handle the case that either the id, designation or opening square are already used.
         colliding_tokens_search_result = self._find_colliding_tokens(target=item)
         if not colliding_tokens_search_result.is_empty:
             # Return the exception chain on failure.
@@ -196,36 +204,24 @@ class TokenStack(StackService[Token]):
                     )
                 )
             )
-        # Handle the case that the token is already in the stack.
-        if item in self.items:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=TokenPushFailedException(
-                        message=f"{method}: {TokenPushFailedException.ERROR_CODE}",
-                        ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
-                    )
-                )
-            )
-        # --- Query if there are opening s ---#
-        boolean_query = self._rank_quota_manager.has_rank_opening(rank=item.rank, token_stack=self)
+        # --- Find out if there are open slots for the token's rank ---#
+        rank_has_opening_result = self._rank_quota_manager.has_rank_opening(rank=item.rank, token_stack=self)
         
         # Handle the case that the boolean query is not answered.
-        if boolean_query.is_failure:
+        if rank_has_opening_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenStackException(
                     message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=TokenPushFailedException(
                         message=f"{method}: {TokenPushFailedException.ERROR_CODE}",
-                        ex=boolean_query.exception
+                        ex=rank_has_opening_result.exception
                     )
                 )
             )
         # Handle the case that the token's rank is full.
-        has_openings = boolean_query.payload
-        if not has_openings:
+        rank_has_opening = rank_has_opening_result.payload
+        if not rank_has_opening:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenStackException(
@@ -236,9 +232,13 @@ class TokenStack(StackService[Token]):
                     )
                 )
             )
-
-        # --- Append the token to the stack and send the success result. ---#
+        # --- Push the token onto the stack. ---#
         self.items.append(item)
+        
+        # --- If the stack is full  update TokenStackState before sending the success result. ---#
+        if self.size == self.capacity:
+            self._stack_state = TokenStackState.FILLED_READY_TO_DEPLOY
+        # Send the popped token to the caller.
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
@@ -273,6 +273,14 @@ class TokenStack(StackService[Token]):
                     )
                 )
             )
+        # --- Pop the non-empty token stack. ---#
+        token = self.items.pop(-1)
+        
+        # --- If the stack is empty update TokenStackState before sending the success result. ---#
+        if self.size == 0:
+            self._stack_state = TokenStackState.EMPTY
+        # Send the popped token to the caller.
+        return DeletionResult.success(token)
     
     @LoggingLevelRouter.monitor
     def delete_token_by_id(
@@ -326,7 +334,11 @@ class TokenStack(StackService[Token]):
                     )
                 )
             )
-        # --- Search the list for a occupant with target id. ---#
+        # --- After validation checks do the deletion processing. ---#
+        deletion_counter = 0
+        deleted_token = None
+        
+        # Iterate through the list and to find id matches.
         for item in self.items:
             if item.id == id:
                 # Handle the case that the match is the wrong type.
@@ -344,17 +356,47 @@ class TokenStack(StackService[Token]):
                             )
                         )
                     )
-                # --- Cast the item before removal and return the deleted occupant in the DeletionResult. ---#
-                token = cast(Token, item)
-                self.items.remove(token)
-                return DeletionResult.success(payload=token)
+                # Store the item before removing it then, increment the deletion counter after the removal.
+                deleted_token = item
+                self.items.remove(item)
+                deletion_counter += 1
+            # --- If there was nothing to delete inform the caller. ---#
+            if deletion_counter == 0:
+                return DeletionResult.nothing_to_delete()
             
-            # If none of the bag had that id return an empty DeletionResult.
-            return DeletionResult.nothing_to_delete()
+            # --- Otherwise update state before sending the success result. ---#
+            if self.size == 0:
+                self._stack_state = TokenStackState.EMPTY
+            return DeletionResult.success(deleted_token)
         
     def form_tokens(self) -> InsertionResult[bool]:
         method = "TokenStack.place_tokens"
+        
+        # Handle the case that TokenStack is empty.
+        if not self.is_empty:
+            # Return the exception on failure.
+            return InsertionResult.failure(
+                TokenStackException(
+                    f"{method}: {TokenStackException}",
+                    ex=EmptyTokenStackDeploymentException(
+                        f"{method}: {EmptyTokenStackDeploymentException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # Handle the case that TokenStack is not full.
+        if not self.is_full:
+            # Return the exception on failure.
+            return InsertionResult.failure(
+                TokenStackException(
+                    f"{method}: {TokenStackException}",
+                    ex=CannotDeployPartlyFullTokenStackException(
+                        f"{method}: {CannotDeployPartlyFullTokenStackException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # --- Start the transfer process. ---#
         for token in self.items:
+            # Find the square where the token gets formed.
             square_search_result = token.team.board.squares.search_squares(
                 context=SquareContext(token.opening_square)
             )
@@ -379,10 +421,12 @@ class TokenStack(StackService[Token]):
                         )
                     )
                 )
+            # --- Run the occupation process on the opening square. ---#
             occupation_result = token.team.board.squares.add_occupant_to_square(
                 token=token,
                 square=square_search_result.payload[0],
             )
+            
             # Handle the case that occupying the opening square fails.
             if occupation_result.is_failure:
                 # Return the exception on failure.
@@ -392,10 +436,26 @@ class TokenStack(StackService[Token]):
                         ex=occupation_result.exception
                     )
                 )
-        self._deployment_state = TokenStackState.DEPLOYED_ON_BOARD
+        self._stack_state = TokenStackState.EMPTY
         return InsertionResult.success()
    
     def _find_colliding_tokens(self, target: Token) -> SearchResult[Token]:
+        """
+        # ACTION:
+            1.  If any stack members share either an id, designation or opening square with the target send and
+                exception in the SearchResult. Those three properties must be unique within the game.
+            2.  If no matches are found send an empty SearchResult indicating there were no collisions.
+        # PARAMETERS:
+                    *   target (Token)
+        # RETURNS:
+            *   SearchResult[List[Token]] containing either:
+                    - On failure: Exception or non-empty list.
+                    - On success: Empty search result.
+        # RAISES:
+            *  TokenIdAlreadyInUseException
+            *  TokenDesignationAlreadyInUseException
+            *   TokenOpeningSquareAlreadyInUseException
+        """
         method = "TokenStack._attribute_collision_detector"
         
         for item in self.items:

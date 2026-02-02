@@ -156,7 +156,7 @@ class TeamService(EntityService[Team]):
     #         )
     #     return search_result
     
-    def layout_team(self, team: Team) -> InsertionResult[Team]:
+    def form_roster_on_board(self, team: Team) -> InsertionResult[Team]:
         method = "TeamService.layout_team"
         
         # Handle the case that the team is not certified safe.
@@ -172,7 +172,18 @@ class TeamService(EntityService[Team]):
                     )
                 )
             )
-        for member in team.roster.:
+        deployment_result = team.roster.deploy_tokens_on_board()
+        if deployment_result.is_failure:
+            # Return exception chain on failure.
+            return InsertionResult.failure(
+                TeamServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
+                    ex=LayingOutTeamFailedException(
+                        message=f"{method}: {LayingOutTeamFailedException.ERROR_CODE}",
+                        ex=team_validation.exception
+                    )
+                )
+            )
         
 
     
