@@ -25,64 +25,79 @@ class TransferResult(Generic[R, S]):
     _state: TransferResultState
     _exception: Optional[Exception]
     
-    def result(
+    def __init__(
             self,
-            checkpoint: Event,
-            state: TransactionState,
+            sender: S,
+            state: TransferResultState,
+            recipient: Optional[R] = None,
             exception: Optional[Exception] = None
     ):
-        super().result(payload=checkpoint, exception=exception)
-        """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "TransactionResult.result"
+        method = "TransferResult.__init__"
         self._state = state
+        self._sender = sender
+        self._recipient = recipient
+        self._exception = exception
     
     @property
-    def checkpoint(self) -> Event:
-        return cast(Event, self.payload)
+    def sender(self) -> S:
+        return self._sender
     
     @property
-    def state(self) -> TransactionState:
+    def recipient(self) -> R:
+        return self._recipient
+    
+    @property
+    def state(self) -> TransferResultState:
         return self._state
     
     @property
     def is_success(self) -> bool:
         return (
-                self.exception is None and self._state == TransactionState.SUCCESS
+                self._sender is not None and
+                self._recipient is not None and
+                self._exception is None and
+                self._state == TransferResultState.SUCCESS
         )
     
     @property
     def is_failure(self) -> bool:
         return (
-                self.exception is not None and
-                self._state == TransactionState.FAILURE or self._state == TransactionState.ROLLED_BACK
+                self._sender is not None and
+                self._recipient is None and
+                self._exception is not None and
+                self._state != TransferResultState.SUCCESS
         )
     
     @property
     def is_rolled_back(self) -> bool:
-        return self.exception is not None and self._state == TransactionState.ROLLED_BACK
-    
-    @property
-    def is_timed_out(self) -> bool:
-        return self.exception is not None and self._state == TransactionState.TIMED_OUT
-    
-    @classmethod
-    def success(cls, checkpoint) -> TransactionResult:
-        return cls(checkpoint, TransactionState.SUCCESS)
+        return (
+                self._sender is not None and
+                self._recipient is not None and
+                self._exception is not None and
+                self._state != TransferResultState.ROLLED_BACK
+        )
     
     @classmethod
-    def errored(cls, checkpoint: Event, exception: Exception) -> TransactionResult:
-        return cls(checkpoint, TransactionState.FAILURE, exception)
+    def success(cls, sender: S, recipient: R) -> TransferResult[S, R]:
+        return cls(
+            sender=sender,
+            recipient=recipient,
+            state=TransferResultState.SUCCESS
+        )
     
     @classmethod
-    def rolled_back(cls, checkpoint: Event, rollback_exception: RollbackException) -> TransactionResult:
-        return cls(checkpoint, TransactionState.ROLLED_BACK, rollback_exception)
+    def failure(cls, sender: S, exception: Exception) -> TransferResult[S, R]:
+        return cls(
+            sender=sender,
+            exception=exception,
+            state=TransferResultState.FAILURE
+        )
     
     @classmethod
-    def empty(cls) -> Result:
-        method = "TransactionResult.empty"
-        return Result(
-            exception=NotImplementedException(
-                f"{method}: {NotImplementedException.DEFAULT_MESSAGE}. TransactionResult must "
-                f"always have an event in the payload. It cannot be empty."
-            )
+    def rollback(cls, sender: S, recipient: R, exception: Exception) -> TransferResult[S, R]:
+        return cls(
+            sender=sender,
+            recipient=recipient,
+            exception=exception,
+            state=TransferResultState.ROLLED_BACK
         )

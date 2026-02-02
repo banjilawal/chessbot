@@ -13,6 +13,6 @@ from enum import Enum, auto
 class TransferResultState(Enum):
     SUCCESS = auto(),
     FAILURE = auto(),
-    TIMEOUT = auto(),
-    ROLLED_BACK_FAILURE = auto(),
+    TIMED_OUT = auto(),
+    ROLLED_BACK = auto(),
     ROLLED_BACK_TIMEOUT = auto(),
