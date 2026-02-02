@@ -84,7 +84,7 @@ class TokenManifestBuilder(Builder[TokenManifest]):
                     )
                 )
         formation = formation_search_result.payload[0]
-        square_search_result = team.board.squares.search_squares(
+        square_search_result = team.board.squares.search(
             context=SquareContext(name=formation.square_name)
         )
         # Handle the case that the square search fails.

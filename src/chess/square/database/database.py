@@ -180,7 +180,7 @@ class SquareDatabase(Database[Square]):
         """
         method = "SquareService.empty_square_by_token_search"
         
-        search_result = self.search_squares(context=SquareContext(occupant=occupant))
+        search_result = self.search(context=SquareContext(occupant=occupant))
         # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.
@@ -300,7 +300,7 @@ class SquareDatabase(Database[Square]):
         return insertion_result
     
     @LoggingLevelRouter.monitor
-    def search_squares(self, context: SquareContext) -> SearchResult[List[Square]]:
+    def search(self, context: SquareContext) -> SearchResult[List[Square]]:
         """
         # ACTION:
             1.  Get the result of calling _square_database_core.delete_square_by_id for method. If the deletion failed
