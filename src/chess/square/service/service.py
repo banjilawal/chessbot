@@ -210,7 +210,7 @@ class SquareService(EntityService[Square]):
                 )
             )
         # Handle the case that the occupant has not been placed on the board.
-        if token.has_not_been_formed:
+        if token.is_not_deployed:
             return self._add_unformed_token(square=square, token=token)
         
         square.occupant = token
@@ -240,7 +240,7 @@ class SquareService(EntityService[Square]):
         square.occupant = token
         square.state = SquareState.OCCUPIED
         token.positions.push_coord(square.coord)
-        token.board_state = TokenBoardState.FORMED_ON_BOARD
+        token.board_state = TokenBoardState.DEPLOYED_ON_BOARED
         return InsertionResult.success()
         
         
@@ -370,7 +370,7 @@ class SquareService(EntityService[Square]):
         token.positions.push_coord(square.coord)
         
         square.state = SquareState.OCCUPIED
-        token.board_state = TokenBoardState.FORMED_ON_BOARD
+        token.board_state = TokenBoardState.DEPLOYED_ON_BOARED
         return InsertionResult.success(payload=square)
         
     @LoggingLevelRouter.monitor

@@ -12,12 +12,12 @@ from chess.token import TokenException
 
 __all__ = [
     # ======================# TOKEN_OPENING_SQUARE_NULL EXCEPTION #======================#
-    "TokenOpeningSquareNullException",
+    "TokenOpeningSquareNotFoundException",
 ]
 
 
 # ======================# TOKEN_OPENING_SQUARE_NULL EXCEPTION #======================#
-class TokenOpeningSquareNullException(TokenException, NullException):
+class TokenOpeningSquareNotFoundException(TokenException, NullException):
     """
     # ROLE: Debug, Error Tracing
 

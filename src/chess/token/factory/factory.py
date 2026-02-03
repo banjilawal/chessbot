@@ -6,6 +6,9 @@ Author: Banji Lawal
 Created: 2025-09-04
 version: 1.0.0
 """
+
+from __future__ import annotations
+
 from chess.formation import FormationService
 from chess.square import Square
 from chess.rank import King, Pawn

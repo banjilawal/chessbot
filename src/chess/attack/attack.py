@@ -18,7 +18,7 @@ from chess.system import LoggingLevelRouter
 from chess.square import Square, SquareDatabase
 from chess.system.relation import RelationReport
 from chess.hostage import HostageManifestService
-from chess.token import CombatantReadinessEnum, CombatantToken, KingToken, Token, TokenService
+from chess.token import CombatantReadinessEnum, CombatantToken, KingToken, Token, TokenBoardState, TokenService
 
 
 class Attack:
@@ -142,9 +142,10 @@ class Attack:
                 )
             )
         # Update the hostage's captor field and its status.
-        captive = cast(CombatantToken, captive_removal.payload.captor)
-        captive.captor = attacker
-        captive.activity.classification = CombatantReadinessEnum.CAPTURE_ACTIVATED
+        prisoner = captive_removal.payload
+        prisoner.captor = attacker
+        prisoner.board_state = TokenBoardState.REMOVED_FROM_BOARD
+        prisoner.activity.classification = CombatantReadinessEnum.CAPTURE_ACTIVATED
         
         # Handle the case that removing the attacker from their old item fails.
         attacker_removal = square_database.delete_occupant_by_search(occupant=attacker)
@@ -169,7 +170,7 @@ class Attack:
         
         # Build the hostage manifest
         manifest_build_result = hostage_service.builder.build(
-            prisoner=captive,
+            prisoner=prisoner,
             captured_square=square,
             token_service=token_service,
             square_service=square_database.integrity_service,

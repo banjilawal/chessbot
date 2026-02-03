@@ -14,7 +14,7 @@ from typing import Optional
 from chess.rank import Rank
 from chess.team import Team
 from chess.square import Square
-from chess.token import ActivityState, TokenBoardState
+from chess.token import Readiness_StateState, TokenBoardState, TokenReadinessState
 from chess.coord import Coord, CoordStackService
 
 class Token(ABC):
@@ -44,12 +44,12 @@ class Token(ABC):
     _rank: Rank
     _designation: str
     _roster_number: int
-    _activity: ActivityState
     _opening_square: str
     _positions: CoordStackService
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _token_board_state: TokenBoardState
+    _readiness_state: Readiness_StateState
 
     def __init__(
             self,
@@ -59,7 +59,6 @@ class Token(ABC):
             designation: str,
             roster_number: int,
             opening_square: str,
-            activity: ActivityState,
             positions: CoordStackService = CoordStackService(),
     ):
         method = "Token.__init__"
@@ -73,7 +72,7 @@ class Token(ABC):
         self._current_position = self._positions.current_coord
         self._previous_address = self._positions.previous_coord
         self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
-        self._activity = activity
+        self._readiness_state = TokenReadinessState.NOT_INITIALIZED
     
     @property
     def id(self) -> int:
@@ -100,8 +99,12 @@ class Token(ABC):
         return self._opening_square
     
     @property
-    def activity(self) -> ActivityState:
-        return self._activity_state
+    def readiness_state(self) -> TokenReadinessState:
+        return self._readiness_state
+    
+    @readiness_state.setter
+    def readiness_state(self, readiness_state: TokenReadinessState):
+        self._readiness_state = readiness_state
     
     @property
     def positions(self) -> CoordStackService:
@@ -118,12 +121,11 @@ class Token(ABC):
     @property
     def board_state(self) -> TokenBoardState:
         return self._token_board_state
-
     
     @property
-    def has_not_been_formed(self) -> bool:
+    def is_not_deployed(self) -> bool:
         return (
-                self.positions.size == 0 and
+                self.positions.is_empty and
                 self._token_board_state == TokenBoardState.NEVER_BEEN_PLACED
         )
     

@@ -7,6 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import cast
 
 from chess.board import Board, BoardService, DisabledTokenCannotExploreException
@@ -19,11 +20,14 @@ from chess.system import (
 )
 from chess.system.transfer import TransferResult
 from chess.token import (
-    KingToken, OverMoveUndoLimitException, Token, TokenBoardState, TokenException, TokenFactory,
-    TokenOpeningSquareNullException,
+    KingToken, OverMoveUndoLimitException, Token, TokenBoardState, TokenDeploymentFailedException, TokenException,
+    TokenFactory,
+    TokenOpeningSquareNotFoundException,
     TokenServiceException,
     TokenValidator
 )
+from chess.token.service.exception.deploy.state import TokenAlreadyDeployedOnBoardException
+
 
 class TokenService(EntityService[Token]):
     """
@@ -105,7 +109,6 @@ class TokenService(EntityService[Token]):
         # Handle the case that the occupant has not been placed.
         if token.is_disabled:
             # Return the exception chain on failure.
-            # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenServiceException(
                     message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
@@ -157,7 +160,13 @@ class TokenService(EntityService[Token]):
             )
         # Handle the case that the token is a King.
         if isinstance(token, KingToken):
-        
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenServiceException(
+                    message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
+                    ex=TokenException()
+                )
+            )
         # The occupant is disabled
         return ValidationResult.success(token)
     
@@ -189,7 +198,7 @@ class TokenService(EntityService[Token]):
         # RAISES:
             *   TokenServiceException
             *   OverMoveUndoLimitException
-            *   TokenOpeningSquareNullException
+            *   TokenOpeningSquareNotFoundException
             *   PoppingEmtpyCoordStackException
         """
         method = "TokenService.pop_coord_from_token"
@@ -209,7 +218,9 @@ class TokenService(EntityService[Token]):
             return DeletionResult.failure(
                 TokenServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
-                    ex=TokenOpeningSquareNullException(f"{method}: {TokenOpeningSquareNullException.DEFAULT_MESSAGE}")
+                    ex=TokenOpeningSquareNotFoundException(
+                        f"{method}: {TokenOpeningSquareNotFoundException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
         # Handle the case that the occupant has no positions that can be removed.
@@ -317,10 +328,7 @@ class TokenService(EntityService[Token]):
         return insertion_result
     
     @LoggingLevelRouter.monitor
-    def form_on_board(
-            self,
-            token: Token,
-    ) -> InsertionResult[bool]:
+    def deploy_on_board(self,token: Token,) -> InsertionResult[bool]:
         """
         # ACTION:
             1.  If the occupant or coord fail their validations return the exception in the InsertionResult.
@@ -328,9 +336,7 @@ class TokenService(EntityService[Token]):
             3.  If the pushing the position to the occupant's coord stack fails encapsulate the exception then
                 send the exception chain in the InsertionResult.'
         # PARAMETERS:
-            *   occupant (Token)
-            *   coord (Coord)
-            *   coord_service (CoordService)
+            *   token (Token)
         # RETURN:
             *   InsertionResult[Coord] containing either:
                     - On failure: Exception
@@ -339,7 +345,7 @@ class TokenService(EntityService[Token]):
             *   TokenServiceException
             *   CoordAlreadyToppingStackException
         """
-        method = "TokenService.form_on_board"
+        method = "TokenService.deploy_on_board"
         
         # Handle the case that the occupant is not certified safe.
         token_validation = self.validator.validate(token)
@@ -348,16 +354,24 @@ class TokenService(EntityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     message=f"{method}: {TokenService.ERROR_CODE}",
-                    ex=token_validation.exception
+                    ex=TokenDeploymentFailedException(
+                        message=f"{method}: {TokenDeploymentFailedException.ERROR_CODE}",
+                        ex=token_validation.exception
+                    )
                 )
             )
-        # Handle the case that the position is not certified safe.
-        if token.board_state != TokenBoardState.FORMED_ON_BOARD:
+        # Handle the case that the token has already been placed on the board.
+        if token.board_state != TokenBoardState.NEVER_BEEN_PLACED:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
                     message=f"{method}: {TokenService.ERROR_CODE}",
-                    ex=token_validation.exception
+                    ex=TokenDeploymentFailedException(
+                        message=f"{method}: {TokenDeploymentFailedException.ERROR_CODE}",
+                        ex=TokenAlreadyDeployedOnBoardException(
+                            message=f"{method}: {TokenAlreadyDeployedOnBoardException.DEFAULT_MESSAGE}",
+                        )
+                    )
                 )
             )
         # Find the square where the token gets formed.
@@ -370,7 +384,10 @@ class TokenService(EntityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     message=f"{method}: {TokenService.ERROR_CODE}",
-                    ex=token_validation.exception
+                    ex=TokenDeploymentFailedException(
+                        message=f"{method}: {TokenDeploymentFailedException.ERROR_CODE}",
+                        ex=square_search_result.exception
+                    )
                 )
             )
         # Handle the case the square is not found.
@@ -379,7 +396,12 @@ class TokenService(EntityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     message=f"{method}: {TokenService.ERROR_CODE}",
-                    ex=token_validation.exception
+                    ex=TokenDeploymentFailedException(
+                        message=f"{method}: {TokenDeploymentFailedException.ERROR_CODE}",
+                        ex=TokenOpeningSquareNotFoundException(
+                            f"{method}: {TokenOpeningSquareNotFoundException.DEFAULT_MESSAGE}"
+                        )
+                    )
                 )
             )
         # --- Run the occupation process on the opening square. ---#
@@ -393,9 +415,15 @@ class TokenService(EntityService[Token]):
             return InsertionResult.failure(
                 TokenServiceException(
                     message=f"{method}: {TokenService.ERROR_CODE}",
-                    ex=token_validation.exception
+                    ex=TokenDeploymentFailedException(
+                        message=f"{method}: {TokenDeploymentFailedException.ERROR_CODE}",
+                        ex=occupation_result.exception
+                    )
                 )
             )
-        if square_search_result.payload[0].occupant.board_state != TokenBoardState.FORMED_ON_BOARD:
-            square_search_result.payload[0].occupant.board_state = TokenBoardState.FORMED_ON_BOARD
+        # --- Assure that token.board_state has been updated. ---#
+        if token.board_state == TokenBoardState.NEVER_BEEN_PLACED:
+            token.board_state = TokenBoardState.DEPLOYED_ON_BOARED
+            
+        # Send the success result to the caller.
         return InsertionResult.success()

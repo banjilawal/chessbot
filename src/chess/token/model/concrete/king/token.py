@@ -7,10 +7,11 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
+
 from chess.rank import King
 from chess.team import Team
-from chess.square import Square
-from chess.token import KingActivityState, KingReadiness, Token, TokenBoardState
+from chess.token import Token, TokenBoardState, TokenReadinessState
 
 
 class KingToken(Token):
@@ -21,8 +22,7 @@ class KingToken(Token):
             team: Team,
             designation: str,
             roster_number: int,
-            opening_square: Square,
-            activity: KingActivityState(),
+            opening_square: str,
     ):
         super().__init__(
             id=id,
@@ -31,30 +31,27 @@ class KingToken(Token):
             designation=designation,
             roster_number=roster_number,
             opening_square=opening_square,
-            activity=activity
         )
-        self.activity.state = KingReadiness.NOT_INITIALIZED
-
      
     @property
     def is_in_check(self) -> bool:
         return (
-                self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self.activity == KingReadiness.IN_CHECK
+                self.board_state == TokenBoardState.DEPLOYED_ON_BOARED and
+                self.readiness_state == TokenReadinessState.IN_CHECK
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
-                self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self.activity == KingReadiness.CHECKMATED
+                self.board_state == TokenBoardState.DEPLOYED_ON_BOARED and
+                self.readiness_state == TokenReadinessState.CHECKMATED
         )
     
     @property
     def is_active(self) -> bool:
         return (
-            self.board_state == TokenBoardState.FORMED_ON_BOARD and
-            self.activity != KingReadiness.FREE
+                (TokenReadinessState.FREE or TokenReadinessState.IN_CHECK) and
+                self.board_state == TokenBoardState.DEPLOYED_ON_BOARED
         )
     
     @property

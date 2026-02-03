@@ -26,6 +26,7 @@ class TokenStateAnalysis(RelationAnalyzer[ActivityState, Token]):
     @classmethod
     @LoggingLevelRouter.monitor
     def _analyze_combatant_state(cls, combatant: CombatantToken):
+        if combatant.activity.classification ==
     
 
 

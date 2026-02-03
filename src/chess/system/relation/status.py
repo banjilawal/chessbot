@@ -9,7 +9,6 @@ version: 1.0.0
 
 from enum import Enum, auto
 
-
 class RelationStatus(Enum):
     NO_RELATION = auto(),
     BIDIRECTIONAL = auto(),

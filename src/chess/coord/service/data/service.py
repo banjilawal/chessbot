@@ -7,6 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import List, Optional, cast
 
 from chess.coord.database.core.exception.push.duplicate import DuplicateCoordPushException
@@ -44,8 +45,10 @@ class CoordStackService(StackService[Coord]):
         *   See StackService class for inherited attributes.
     """
     SERVICE_NAME = "CoordStackService"
+    
     _current_coord: Optional[Coord]
     _previous_coord: Optional[Coord]
+    _stack: List[Coord]
     
     def service(
             self,
@@ -77,6 +80,24 @@ class CoordStackService(StackService[Coord]):
             context_service=context_service,
         )
         self._previous_coord = None
+        self._current_coord = None
+        self._stack = []
+    
+    @property
+    def size(self) -> int:
+        return len(self._stack)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def previous_coord(self) -> Optional[Coord]:
+        return self._stack[-2] if self._stack else None
+    
+    @property
+    def current_coord(self) -> Optional[Coord]:
+        return self._stack[-1] if self._stack else None
     
     @property
     def coord_service(self) -> CoordService:
@@ -84,21 +105,13 @@ class CoordStackService(StackService[Coord]):
         return cast(CoordService, self.entity_service)
     
     @property
-    def coord_context_service(self) -> CoordContextService:
+    def context_service(self) -> CoordContextService:
         """Get CoordContextService."""
         return cast(CoordContextService, self.context_service)
     
     @property
     def coords(self) -> List[Coord]:
         return cast(List[Coord], self.items)
-    
-    @property
-    def current_coord(self) -> Optional[Coord]:
-        return cast(Optional[Coord], self.current_item)
-    
-    @property
-    def previous_coord(self) -> Optional[Coord]:
-        return self._previous_coord
     
     def push_coord(self, coord: Coord) -> InsertionResult[Coord]:
         """

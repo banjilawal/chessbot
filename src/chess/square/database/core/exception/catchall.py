@@ -22,7 +22,7 @@ class SquareStackException(SquareException, StackException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by SquareStackService methods that return Result objects.
+    1.  Wrap any exceptions raised by SquareStack methods that return Result objects.
 
     # PARENT:
         *   SquareException
@@ -38,4 +38,4 @@ class SquareStackException(SquareException, StackException):
     None
     """
     ERROR_CODE = "SQUARE_STACK_ERROR"
-    DEFAULT_MESSAGE = "SquareStackService raised an exception."
+    DEFAULT_MESSAGE = "SquareStack raised an exception."

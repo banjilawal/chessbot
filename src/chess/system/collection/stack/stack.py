@@ -7,6 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
+from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 

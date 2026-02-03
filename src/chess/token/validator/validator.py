@@ -7,6 +7,7 @@ Created: 2025-10-22
 Version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Any, cast
 
 
@@ -120,18 +121,17 @@ class TokenValidator(Validator[Token]):
                     ex=team_validation.exception
                 )
             )
-        # Handle the case that the Token's roster number fails validation and in the allowed range.
-        roster_number_validation = number_validation.validate(
-            candidate=token.roster_number,
-            floor=1,
-            ceiling=Team.MAX_ROSTER_SIZE
+        # Handle the case that the Token's roster or opening_square  fail validation and in the allowed range.
+        roster_and_square_validation = identity_service.validate_identity(
+            id_candidate=token.roster_number,
+            name_candidate=token.opening_square
         )
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationFailedException(
                     message=f"{method}: {TokenValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=roster_number_validation.exception
+                    ex=roster_and_square_validation.exception
                 )
             )
         # Handle the case that the rank is not certified safe.
@@ -182,7 +182,6 @@ class TokenValidator(Validator[Token]):
         # Tests have been passed return cast the candidate to CombatantToken and return to the caller.
         return ValidationResult.success(payload=cast(CombatantToken, candidate))
         
-    
     @classmethod
     def verify_token_is_king(cls, candidate: Any) -> ValidationResult[KingToken]:
         method = "TokenValidator.validate_token_is_king"

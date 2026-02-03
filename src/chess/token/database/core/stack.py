@@ -442,7 +442,7 @@ class TokenStack(StackService[Token]):
         transferred_tokens: [Token] = []
         board = self.current_token.team.board
         for token in self.items:
-            formation_result = self.integrity_service.form_on_board(token=token)
+            formation_result = self.integrity_service.deploy_on_board(token=token)
             if formation_result.is_failure:
                 # Return the exception on failure.
                 return InsertionResult.failure(

@@ -11,20 +11,16 @@ from typing import List, Optional, cast
 
 from chess.system import (
     ComputationResult, NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult,
-    LoggingLevelRouter,
-    NUMBER_OF_ROWS,
-    SearchResult, id_emitter
+    LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, id_emitter
 )
 from chess.square import (
     SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, SquareIdAlreadyInUseException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
     PoppingSquareStackFailedException, SquareInsertionFailedException, FullSquareStackException
 )
-from chess.system.transfer import TransferResult
-from chess.token import TokenStack
 
 
-class SquareStackService(StackService[Square]):
+class SquareStack(StackService[Square]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -46,7 +42,7 @@ class SquareStackService(StackService[Square]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    SERVICE_NAME = "SquareStackService"
+    SERVICE_NAME = "SquareStack"
     
     _capacity: int
     _stack: List[Square]
@@ -135,7 +131,7 @@ class SquareStackService(StackService[Square]):
         # RAISES:
             *   SquareStackException
         """
-        method = "SquareStackService.add_square"
+        method = "SquareStack.add_square"
         
         # Handle the case that the list is full
         if self.is_full:
@@ -175,9 +171,7 @@ class SquareStackService(StackService[Square]):
                     )
                 )
             )
-        # --- Square order is not required. Direct insertion into the stack is simpler that a push. ---#
-        
-        # On success return the item in the InsertionResult
+        # --- Append the square and send the successful InsertionResult. ---#
         self._stack.append(item)
         return InsertionResult.success()
     
@@ -238,7 +232,7 @@ class SquareStackService(StackService[Square]):
         # RAISES:
             *   SquareStackException
         """
-        method = "SquareStackService.delete_square_by_id"
+        method = "SquareStack.delete_square_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
@@ -307,7 +301,7 @@ class SquareStackService(StackService[Square]):
         # RAISES:
             None
         """
-        method = "SquareStackService.number_of_occupied_squares"
+        method = "SquareStack.number_of_occupied_squares"
         
         number_of_occupied_squares = 0
         # Loop through the squares to get tally of occupied squares.
@@ -316,8 +310,6 @@ class SquareStackService(StackService[Square]):
                 number_of_occupied_squares += 1
         # Send the total in the ComputationResult.
         return ComputationResult.success(number_of_occupied_squares)
-        
-    
     
     def _find_colliding_squares(self, target) -> SearchResult[Square]:
         """
@@ -336,7 +328,7 @@ class SquareStackService(StackService[Square]):
             *   TokenDesignationAlreadyInUseException
             *   TokenOpeningSquareAlreadyInUseException
         """
-        method = "SquareStackService.find_colliding_squares"
+        method = "SquareStack.find_colliding_squares"
         
         # --- Loop through the stack to find matches. ---#
         for square in self._stack:

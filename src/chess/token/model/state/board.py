@@ -11,5 +11,5 @@ from enum import Enum, auto
 
 class TokenBoardState(Enum):
     NEVER_BEEN_PLACED = auto(),
-    FORMED_ON_BOARD = auto(),
+    DEPLOYED_ON_BOARED = auto(),
     REMOVED_FROM_BOARD = auto(),

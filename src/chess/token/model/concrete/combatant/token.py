@@ -12,9 +12,7 @@ from typing import Optional
 
 from chess.team import Team
 from chess.rank import Rank
-from chess.square import Square
-from chess.token import CombatantActivityState, Token, TokenBoardState
-from chess.token.activity.combatant.state import CombatantReadiness
+from chess.token import Token, TokenBoardState, TokenReadinessState
 
 
 class CombatantToken(Token):
@@ -40,8 +38,7 @@ class CombatantToken(Token):
             team: Team,
             designation: str,
             roster_number: int,
-            opening_square: Square,
-            activity: CombatantActivityState = CombatantActivityState(),
+            opening_square: str,
     ):
         super().__init__(
             id=id,
@@ -50,17 +47,14 @@ class CombatantToken(Token):
             designation=designation,
             roster_number=roster_number,
             opening_square=opening_square,
-            activity=activity,
         )
         self._captor = None
-        self.activity.state = CombatantActivityState
     
     @property
     def is_active(self) -> bool:
         return (
                 self._captor is None and
-                self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self.activity.classification == CombatantReadiness.FREE
+                self.board_state == TokenBoardState.DEPLOYED_ON_BOARED
         )
     
     @property
@@ -71,16 +65,24 @@ class CombatantToken(Token):
     def capture_is_activated(self) -> bool:
         return (
                 self._captor is not None and
-                self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self.activity.classification == CombatantReadiness.CAPTURE_ACTIVATED
+                self.board_state == TokenBoardState.DEPLOYED_ON_BOARED and
+                self.readiness_state== TokenReadinessState.CAPTURE_ACTIVATED
         )
     
     @property
     def has_hostage_manifest(self) -> bool:
         return (
                 self._captor is not None and
-                self.board_state == TokenBoardState.FORMED_ON_BOARD and
-                self.activity.classification == CombatantReadiness.ISSUED_HOSTAGE_MANIFEST
+                self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
+                self.readiness_state == TokenReadinessState.HOSTAGE_MANIFEST_CREATED
+        )
+    
+    @property
+    def capture_is_in_database(self) -> bool:
+        return (
+                self._captor is not None and
+                self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
+                self.readiness_state == TokenReadinessState.HOSTAGE_MANIFEST_IN_DATABASE
         )
     
     @property
