@@ -21,4 +21,5 @@ from .exception import *
 
 # Modules
 from .square import Square
+from .state import SquareState
 

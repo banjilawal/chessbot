@@ -10,12 +10,12 @@ Version: 1.0.0
 from abc import abstractmethod
 from typing import TypeVar, List
 
-from chess.system import Context, Finder, Validator, SearchResult
+from chess.system import Context, AbstractSearcher, Validator, SearchResult
 
 T = TypeVar("T")
 
 
-class StackSearcher(Finder[T]):
+class StackSearcher(AbstractSearcher[T]):
     """"""
     
     @classmethod

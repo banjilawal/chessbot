@@ -12,12 +12,15 @@ from typing import cast
 from chess.board import Board, BoardService, DisabledTokenCannotExploreException
 from chess.formation import FormationService
 from chess.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
+from chess.square import Square, SquareContext
 from chess.system import (
     DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, ValidationResult,
     id_emitter
 )
+from chess.system.transfer import TransferResult
 from chess.token import (
-    KingToken, OverMoveUndoLimitException, Token, TokenException, TokenFactory, TokenOpeningSquareNullException,
+    KingToken, OverMoveUndoLimitException, Token, TokenBoardState, TokenException, TokenFactory,
+    TokenOpeningSquareNullException,
     TokenServiceException,
     TokenValidator
 )
@@ -312,3 +315,87 @@ class TokenService(EntityService[Token]):
             )
         # If the coord was successfully pushed onto the occupant's coord stack forward insertion result.
         return insertion_result
+    
+    @LoggingLevelRouter.monitor
+    def form_on_board(
+            self,
+            token: Token,
+    ) -> InsertionResult[bool]:
+        """
+        # ACTION:
+            1.  If the occupant or coord fail their validations return the exception in the InsertionResult.
+            2.  If the position is already the current position return the exception in the InsertionResult.
+            3.  If the pushing the position to the occupant's coord stack fails encapsulate the exception then
+                send the exception chain in the InsertionResult.'
+        # PARAMETERS:
+            *   occupant (Token)
+            *   coord (Coord)
+            *   coord_service (CoordService)
+        # RETURN:
+            *   InsertionResult[Coord] containing either:
+                    - On failure: Exception
+                    - On success: Coord in the payload.
+        # RAISES:
+            *   TokenServiceException
+            *   CoordAlreadyToppingStackException
+        """
+        method = "TokenService.form_on_board"
+        
+        # Handle the case that the occupant is not certified safe.
+        token_validation = self.validator.validate(token)
+        if token_validation.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenServiceException(
+                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    ex=token_validation.exception
+                )
+            )
+        # Handle the case that the position is not certified safe.
+        if token.board_state != TokenBoardState.FORMED_ON_BOARD:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenServiceException(
+                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    ex=token_validation.exception
+                )
+            )
+        # Find the square where the token gets formed.
+        square_search_result = token.team.board.squares.search(
+            context=SquareContext(token.opening_square)
+        )
+        # Handle the case that the search is not completed.
+        if square_search_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenServiceException(
+                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    ex=token_validation.exception
+                )
+            )
+        # Handle the case the square is not found.
+        if square_search_result.is_empty:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenServiceException(
+                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    ex=token_validation.exception
+                )
+            )
+        # --- Run the occupation process on the opening square. ---#
+        occupation_result = token.team.board.squares.add_occupant_to_square(
+            token=token,
+            square=square_search_result.payload[0],
+        )
+        # Handle the case that occupying the opening square fails.
+        if occupation_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TokenServiceException(
+                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    ex=token_validation.exception
+                )
+            )
+        if square_search_result.payload[0].occupant.board_state != TokenBoardState.FORMED_ON_BOARD:
+            square_search_result.payload[0].occupant.board_state = TokenBoardState.FORMED_ON_BOARD
+        return InsertionResult.success()

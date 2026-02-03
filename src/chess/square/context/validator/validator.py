@@ -7,6 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Any, cast
 
 from chess.board import BoardService

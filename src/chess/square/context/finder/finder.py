@@ -7,20 +7,20 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import List
 
 from chess.board import Board
 from chess.coord import Coord
-from chess.square.state import SquareState
-from chess.system import LoggingLevelRouter, SearchResult
+from chess.system import LoggingLevelRouter, SearchResult, StackSearcher
 from chess.square import (
     Square, SquareContext, SquareContextValidator, SquareSearchFailedException, SquareSearchRouteException,
-    SquareSearchNullDatasetException, SquareSearchPayloadTypeException,
+    SquareSearchNullDatasetException, SquareSearchPayloadTypeException, SquareState
 )
 from chess.token import Token
 
 
-class SquareFinder(DataFinder[Square]):
+class SquareFinder(StackSearcher[Square]):
     """
     # ROLE: AbstractSearcher
 

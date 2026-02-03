@@ -7,12 +7,13 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Optional
 
 from chess.board import Board
 from chess.coord import Coord
 from chess.square import Square
-from chess.square.context.count import SquareState
+
 
 from chess.square.state import SquareState
 from chess.system import Context

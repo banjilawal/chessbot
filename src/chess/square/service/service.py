@@ -95,8 +95,6 @@ class SquareService(EntityService[Square]):
     def square_token_relation_analyzer(self) -> SquareTokenRelationAnalyzer:
         return self._square_token_relation_analyzer
     
-
-    
     @LoggingLevelRouter.monitor
     def remove_occupant(self, square: Square) -> DeletionResult[Token]:
         method = "SquareService.remove_occupant_from_square"
@@ -140,7 +138,7 @@ class SquareService(EntityService[Square]):
             square: Square,
             token: Token,
             token_service: TokenService = TokenService()
-    ) -> InsertionResult[Square]:
+    ) -> InsertionResult[bool]:
         method = "SquareService.add_occupant_to_square"
         
         # Handle the case that the item is not certified safe.
@@ -218,10 +216,10 @@ class SquareService(EntityService[Square]):
         square.occupant = token
         square.state = SquareState.OCCUPIED
         token.positions.push_coord(square.coord)
-        return InsertionResult.success(payload=token)
+        return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
-    def _add_unformed_token(self, square: Square, token: Token,) -> InsertionResult[Square]:
+    def _add_unformed_token(self, square: Square, token: Token,) -> InsertionResult[bool]:
         method = "SquareService.add_unformed_token"
         
         # Handle the case that the occupant belongs to a different item.
@@ -243,9 +241,7 @@ class SquareService(EntityService[Square]):
         square.state = SquareState.OCCUPIED
         token.positions.push_coord(square.coord)
         token.board_state = TokenBoardState.FORMED_ON_BOARD
-        
-        if isinstance(token, KingToken)
-
+        return InsertionResult.success()
         
         
     
