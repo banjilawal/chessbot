@@ -195,7 +195,7 @@ class TokenDatabase(Database[Token]):
         method = "TokenDatabase.remove_token"
         
         # --- Handoff the deletion responsibility to _token_database_core. ---#
-        deletion_result = self._token_stack.delete_token_by_id(id=id, identity_service=identity_service)
+        deletion_result = self._token_stack.delete_by_id(id=id, identity_service=identity_service)
         
         # Handle the case that the deletion was not completed.
         if deletion_result.is_failure:

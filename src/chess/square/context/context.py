@@ -12,6 +12,9 @@ from typing import Optional
 from chess.board import Board
 from chess.coord import Coord
 from chess.square import Square
+from chess.square.context.count import SquareState
+
+from chess.square.state import SquareState
 from chess.system import Context
 from chess.token import Token
 
@@ -40,6 +43,7 @@ class SquareContext(Context[Square]):
     _board: Optional[Board]
     _coord: Optional[Coord]
     _occupant: Optional[Token]
+    _state: Optional[SquareState]
     
     def __init__(
             self,
@@ -48,11 +52,13 @@ class SquareContext(Context[Square]):
             board: Optional[Board] = None,
             coord: Optional[Coord] = None,
             occupant: Optional[Token] = None,
+            state: Optional[SquareState] = None,
     ):
         super().__init__(id=id, name=name)
         self._board = board
         self._coord = coord
         self._occupant = occupant
+        self._state = state
         
     @property
     def board(self) -> Optional[Board]:
@@ -65,6 +71,10 @@ class SquareContext(Context[Square]):
     @property
     def occupant(self) -> Optional[Token]:
         return self._occupant
+    
+    @property
+    def state(self) -> Optional[SquareState]:
+        return self._state
     
     def to_dict(self) -> dict:
         """
@@ -83,4 +93,5 @@ class SquareContext(Context[Square]):
             "board": self._board,
             "coord": self._coord,
             "occupant": self._occupant,
+            "state": self._state,
         }

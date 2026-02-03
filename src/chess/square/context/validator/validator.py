@@ -11,6 +11,7 @@ from typing import Any, cast
 
 from chess.board import BoardService
 from chess.coord.service import CoordService
+from chess.square.state import SquareState
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.square import (
     SquareContextValidationFailedException, ZeroSquareContextFlagsException, SquareContext,
@@ -92,7 +93,9 @@ class SquareContextValidator(Validator[SquareContext]):
             return ValidationResult.failure(
                 SquareContextValidationFailedException(
                     message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=TypeError(f"{method}: Was expecting a SquareContext, got {type(candidate).__name__} instead.")
+                    ex=TypeError(
+                        f"{method}: Was expecting a SquareContext, got {type(candidate).__name__} instead."
+                    )
                 )
             )
         # --- Cast the candidate to SquareContext for additional tests. ---#
@@ -186,6 +189,21 @@ class SquareContextValidator(Validator[SquareContext]):
                     SquareContextValidationFailedException(
                         message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
                         ex=validation.exception
+                    )
+                )
+            # On certification success return the board_SquareContext in the ValidationResult.
+            return ValidationResult.success(payload=context)
+        
+        # Certification for the search-by-state.
+        if context.state is not None:
+            if not isinstance(context.state, SquareState):
+                # Return the exception chain on failure.
+                return ValidationResult.failure(
+                    SquareContextValidationFailedException(
+                        message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                        ex=TypeError(
+                            f"{method}: Was expecting a SquareState, got {type(candidate).__name__} instead."
+                        )
                     )
                 )
             # On certification success return the board_SquareContext in the ValidationResult.

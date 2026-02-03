@@ -10,14 +10,15 @@ version: 1.0.0
 from __future__ import annotations
 
 from lib2to3.fixes.fix_input import context
-from typing import List, cast
+from typing import List, Optional, cast
 
 from chess.board import Board
 from chess.formation import FormationService
 from chess.rank import Rank, RankService
 from chess.square import SquareContext
 from chess.system import (
-    ComputationResult, SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
+    ComputationResult, RollbackException, SearchResult, StackService, DeletionResult, IdentityService, InsertionResult,
+    LoggingLevelRouter,
     id_emitter
 )
 from chess.system.transfer import TransferResult
@@ -60,6 +61,7 @@ class TokenStack(StackService[Token]):
     
     _capacity: int
     _stack_state: TokenStackState
+    _stack: List[Token]
     _formation_service: FormationService
     _rank_quota_manager: RankQuotaManager
     
@@ -101,6 +103,15 @@ class TokenStack(StackService[Token]):
         self._formation_service = formation_service
         self._rank_quota_manager = rank_quota_manager
         self._stack_state = TokenStackState.EMPTY
+        self._stack = items
+        
+    @property
+    def size(self) -> int:
+        return len(self._stack)
+    
+    @property
+    def current_token(self) -> Optional[Token]:
+        return self._stack[-1] if self._stack else None
 
         
     @property
@@ -279,7 +290,7 @@ class TokenStack(StackService[Token]):
                 )
             )
         # --- Pop the non-empty token stack. ---#
-        token = self.items.pop(-1)
+        token = self._stack.pop(-1)
         
         # --- If the stack is empty update TokenStackState before sending the success result. ---#
         if self.size == 0:
@@ -288,7 +299,7 @@ class TokenStack(StackService[Token]):
         return DeletionResult.success(token)
     
     @LoggingLevelRouter.monitor
-    def delete_token_by_id(
+    def delete_by_id(
             self, 
             id: int, 
             identity_service: IdentityService = IdentityService()
@@ -375,32 +386,63 @@ class TokenStack(StackService[Token]):
             return DeletionResult.success(deleted_token)
         
     def form_tokens(self) -> TransferResult[TokenStack, Board]:
+        """
+        # ACTION:
+            1.  If the stack is not full send an exception chain in the TransferResult.
+            2.  For each token:
+                i.      Look for its opening square in the board.
+                ii.     If the search fails or the square is not found send an exception chain.
+                iii.    Copy the token to transferred_tokens list before it occupies its square.
+                iii.    If the occupation fails call _rollback_transfer to restore the stack and board to their
+                        original states.
+            3.  If the increase in board occupants does not match the stack's capacity send an exception chain
+                in the TransferResult.
+            4.  Set the TokenStackState to empty.
+            5.  The transfer has been completed. Send the TokenStack and Board in the TransferResult.
+        # PARAMETERS:
+            None
+        # RETURNS:
+            *   TransferResult[TokenStack, Board] containing either:
+                    - On failure: Exception.
+                    - On success: TokenStack and Board in the TransferResult.
+        # RAISES:
+            *   TokenStackException
+            *   TokenStackDeploymentFailedException
+            *   EmptyTokenStackCannotDeployException
+        """
         method = "TokenStack.place_tokens"
         
         # Handle the case that TokenStack is empty.
         if not self.is_empty:
             # Return the exception on failure.
-            return InsertionResult.failure(
+            return TransferResult.failure(
                 TokenStackException(
-                    f"{method}: {TokenStackException}",
-                    ex=EmptyTokenStackDeploymentException(
-                        f"{method}: {EmptyTokenStackDeploymentException.DEFAULT_MESSAGE}"
+                    f"ServiceId:{self.id}, {method}: {TokenStackException}",
+                    ex=TokenStackDeploymentFailedException(
+                        message=f"{method}: {TokenStackDeploymentFailedException.ERROR_CODE}",
+                        ex=EmptyTokenStackCannotDeployException(
+                            f"{method}: {EmptyTokenStackDeploymentExceptionDEFAULT_MESSAGE}"
+                        )
                     )
                 )
             )
         # Handle the case that TokenStack is not full.
         if not self.is_full:
             # Return the exception on failure.
-            return InsertionResult.failure(
+            return TransferResult.failure(
                 TokenStackException(
-                    f"{method}: {TokenStackException}",
-                    ex=CannotDeployPartlyFullTokenStackException(
-                        f"{method}: {CannotDeployPartlyFullTokenStackException.DEFAULT_MESSAGE}"
+                    f"ServiceId:{self.id}, {method}: {TokenStackException}",
+                    ex=TokenStackDeploymentFailedException(
+                        message=f"{method}: {TokenStackDeploymentFailedException.ERROR_CODE}",
+                        ex=CannotDeployPartlyFullTokenStackException(
+                            f"{method}: {CannotDeployPartlyFullTokenStackException.DEFAULT_MESSAGE}"
+                        )
                     )
                 )
             )
         # --- Start the transfer process. ---#
         transferred_tokens: [Token] = []
+        board = self.current_token.team.board
         for token in self.items:
             # Find the square where the token gets formed.
             square_search_result = token.team.board.squares.search(
@@ -409,35 +451,21 @@ class TokenStack(StackService[Token]):
             
             # Handle the case that the search is not completed.
             if square_search_result.is_failure:
-                # Return the exception on failure.
+                # Handoff to the rollback handler which restores state and forwards exceptions.
                 return self._rollback_transfer(
                     board=token.team.board,
                     recovery_targets=transferred_tokens,
                     debug_exception=square_search_result.exception,
                 )
-                return InsertionResult.failure(
-                    TokenStackException(
-                        f"{method}: {TokenStackException}",
-                        ex=square_search_result.exception
-                    )
-                )
             # Handle the case the square is not found.
             if square_search_result.is_empty:
-                # Return the exception on failure.
+                # Handoff to the rollback handler which restores state and forwards exceptions.
                 return self._rollback_transfer(
                     board=token.team.board,
                     recovery_targets=transferred_tokens,
                     debug_exception=OpeningSquareNotFoundException(
                         f"{method}: {OpeningSquareNotFoundException.DEFAULT_MESSAGE}"
                     ),
-                )
-                return InsertionResult.failure(
-                    TokenStackException(
-                        f"{method}: {TokenStackException}",
-                        ex=OpeningSquareNotFoundException(
-                            f"{method}: {OpeningSquareNotFoundException.DEFAULT_MESSAGE}"
-                        )
-                    )
                 )
             # --- Run the occupation process on the opening square. ---#
             occupation_result = token.team.board.squares.add_occupant_to_square(
@@ -446,22 +474,19 @@ class TokenStack(StackService[Token]):
             )
             # Handle the case that occupying the opening square fails.
             if occupation_result.is_failure:
-                # Return the exception on failure.
+                # Handoff to the rollback handler which restores state and forwards exceptions.
                 return self._rollback_transfer(
                     board=token.team.board,
                     recovery_targets=transferred_tokens,
                     debug_exception=occupation_result.exception,
                 )
-                return InsertionResult.failure(
-                    TokenStackException(
-                        f"{method}: {TokenStackException}",
-                        ex=occupation_result.exception
-                    )
-                )
+            # --- Copy the successful occupant into transferred tokens in case a rollback is needed. ---#
             clone_token = square_search_result.payload[0].occupant
             transferred_tokens.append(clone_token)
+        
+        # --- Update the stack's state and send the success result. ---#
         self._stack_state = TokenStackState.EMPTY
-        return InsertionResult.success()
+        return TransferResult.success(sender=self, recipient=board)
     
     def _rollback_transfer(
             self,
@@ -471,40 +496,59 @@ class TokenStack(StackService[Token]):
     ) -> TransferResult[TokenStack, Board]:
         method = "TokenStack.rollback_transfer"
         
+        # If there are no recovery targets nothing needs to be rolled back.
         if len(recovery_targets) == 0:
+            # Return the debug exception in a chain.
             return TransferResult.failure(
-                sender=self,
                 exception=TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=debug_exception,
+                    f"ServiceId:{self.id}, {method}: {TokenStackException}",
+                    ex=TokenStackDeploymentFailedException(
+                        message=f"{method}: {TokenStackDeploymentFailedException.ERROR_CODE}",
+                        ex=debug_exception
+                    )
                 )
             )
+        # --- Otherwise go through the board, removing the recovery targets. ---#
         for target in recovery_targets:
-            # Search for the targets and remove them.
-            removal_result = board.squares.delete_occupant_by_search(occupant=target)
-            
             # Handle the case that the removal crashes
+            removal_result = board.squares.delete_occupant_by_search(occupant=target)
             if removal_result.is_failure:
                 # Return the exception chain on failure.
-                return TransferResult.failure(
+                return TransferResult.rollback(
                     sender=self,
+                    recipient=board,
                     exception=TokenStackException(
-                        message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                        ex=removal_result.exception,
+                        f"ServiceId:{self.id}, {method}: {TokenStackException}",
+                        ex=TokenStackDeploymentFailedException(
+                            message=f"{method}: {TokenStackDeploymentFailedException.ERROR_CODE}",
+                            ex=RollbackException(
+                                message=f"{method}: {RollbackException.ERROR_CODE}",
+                                ex=removal_result.exception
+                            )
+                        )
                     )
                 )
             # Handle the case that target is not found.
-            if removal_result.nothing_to_delete():
+            if removal_result.nothing_to_delete:
                 # Return the exception chain on failure.
-                return TransferResult.failure(
+                return TransferResult.rollback(
                     sender=self,
+                    recipient=board,
                     exception=TokenStackException(
-                        message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                        ex=debug_exception,
+                        f"ServiceId:{self.id}, {method}: {TokenStackException}",
+                        ex=TokenStackDeploymentFailedException(
+                            message=f"{method}: {TokenStackDeploymentFailedException.ERROR_CODE}",
+                            ex=RollbackException(
+                                message=f"{method}: {RollbackException.ERROR_CODE}",
+                                ex=RecoveryTargetNotFoundException(
+                                    f"{method}: {RecoveryTargetNotFoundException.DEFAULT_MESSAGE}"
+                                )
+                            )
+                        )
                     )
                 )
-            # Pop the target's stack.
-            token = cast(Token, removal_result.payload)
+            # --- Restore the ejected token's pre-deployment state. ---#
+            token = removal_result.payload
             token.positions.pop_coord()
             token.board_state = TokenBoardState.NEVER_BEEN_PLACED
             self.items.append(token)

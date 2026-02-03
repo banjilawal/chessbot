@@ -11,6 +11,7 @@ from typing import List
 
 from chess.board import Board
 from chess.coord import Coord
+from chess.square.state import SquareState
 from chess.system import LoggingLevelRouter, SearchResult
 from chess.square import (
     Square, SquareContext, SquareContextValidator, SquareSearchFailedException, SquareSearchRouteException,
@@ -91,7 +92,9 @@ class SquareFinder(DataFinder[Square]):
             return SearchResult.failure(
                 SquareSearchFailedException(
                     message=f"{method}: {SquareSearchFailedException.ERROR_CODE}",
-                    ex=SquareSearchPayloadTypeException(f"{method}: {SquareSearchPayloadTypeException.DEFAULT_MESSAGE}")
+                    ex=SquareSearchPayloadTypeException(
+                        f"{method}: {SquareSearchPayloadTypeException.DEFAULT_MESSAGE}"
+                    )
                 )
             )
         # Handle the case that the context fails validation.
@@ -121,6 +124,12 @@ class SquareFinder(DataFinder[Square]):
         # Entry point into searching by item's occupant.
         if context.board is not None:
             return cls._find_by_board(dataset=dataset, coord=context.occupant)
+        # Entry point into searching by emptiness.
+        if context.state is not None and context.state == SquareState.EMPTY:
+            return cls._find_by_empty_state(dataset=dataset)
+        # Entry point into searching by fullness.
+        if context.state is not None and context.state == SquareState.OCCUPIED:
+            return cls._find_by_occupied_state(dataset=dataset)
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
@@ -247,6 +256,54 @@ class SquareFinder(DataFinder[Square]):
         matches = [
             square for square in dataset if (square.occupant is not None and square.occupant) == occupant
         ]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_empty_state(cls, dataset: List[Square]) -> SearchResult[List[Square]]:
+        """
+        # ACTION:
+            1.  Get the Squares which are empty.
+        # PARAMETERS:
+            *   board (Board)
+            *   dataset (List[Square])
+        # RETURNS:
+            *   SearchResult[List[Square]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Square] in the payload.
+                    - On no matches found: Exception null, payload null
+        # RAISES:
+            None
+        """
+        matches = [square for square in dataset if square.is_empty]
+        # Handle the nothing found case.
+        if len(matches) == 0:
+            return SearchResult.empty()
+        # Only other case
+        return SearchResult.success(payload=matches)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_occupied_state(cls, dataset: List[Square]) -> SearchResult[List[Square]]:
+        """
+        # ACTION:
+            1.  Get the Squares which are empty.
+        # PARAMETERS:
+            *   board (Board)
+            *   dataset (List[Square])
+        # RETURNS:
+            *   SearchResult[List[Square]] containing either:
+                    - On error: Exception , payload null
+                    - On finding a match: List[Square] in the payload.
+                    - On no matches found: Exception null, payload null
+        # RAISES:
+            None
+        """
+        matches = [square for square in dataset if square.is_occupied]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

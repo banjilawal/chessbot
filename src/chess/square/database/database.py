@@ -72,7 +72,7 @@ class SquareDatabase(Database[Square]):
     
     @property
     def integrity_service(self) -> SquareService:
-        return self._square_database_core.square_service
+        return self._square_database_core.integrity_service
     
     @property
     def context_service(self) -> SquareContextService:
@@ -131,7 +131,7 @@ class SquareDatabase(Database[Square]):
                 )
             )
         # Handle the case that the item is not in the database
-        square_search_result = self._square_database_core.square_context_service.finder.find(
+        square_search_result = self._square_database_core.context_service.finder.find(
             context=SquareContext(id=square.id)
         )
         if square_search_result.is_failure:
@@ -282,7 +282,7 @@ class SquareDatabase(Database[Square]):
             )
         # --- Use _square_database_core.insert_square because order does not matter for the item access. ---#
         
-        insertion_result = self._square_database_core.push_square(square=square)
+        insertion_result = self._square_database_core.push(square=square)
         
         # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
@@ -321,7 +321,7 @@ class SquareDatabase(Database[Square]):
         method = "SquareDatabase.search_squares"
         
         # --- Handoff the search responsibility to _square_database_core. ---#
-        search_result = self._square_database_core.square_context_service.finder.find(context=context)
+        search_result = self._square_database_core.context_service.finder.find(context=context)
         
         # Handle the case that the search is not completed.
         if search_result.is_failure:

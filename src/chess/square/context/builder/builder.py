@@ -12,6 +12,7 @@ from typing import Optional
 
 from chess.board import Board, BoardService
 from chess.coord import Coord, CoordService
+from chess.square.state import SquareState
 from chess.system import Builder, BuildResult, IdentityService
 from chess.square import (
     SquareContextBuildRouteException, ZeroSquareContextFlagsException, SquareContext, SquareContextBuildFailedException,
@@ -50,6 +51,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             coord: Optional[Coord] = None,
             board: Optional[Board] = None,
             token: Optional[Token] = None,
+            state: Optional[SquareState] = None,
             token_service: TokenService = TokenService(),
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
@@ -67,6 +69,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                 *   name Optional[(str)]
                 *   cord Optional[(Coord)]
                 *   board Optional[(Board)]
+                *   state Optional[SquareState]
             These Parameters must be provided:
                 *   board_service (BoardService)
                 *   coord_service (CoordService)
@@ -85,7 +88,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         method = "SquareContextBuilder.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
-        params = [id, name, coord, token]
+        params = [id, name, coord, token,board, state,]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that all the optional params are null.
@@ -181,6 +184,21 @@ class SquareContextBuilder(Builder[SquareContext]):
                 )
             # On validation success return a token_SquareContext in the BuildResult.
             return BuildResult.success(SquareContext(occupant=token))
+        
+        # Build the state SquareContext if its flag is enabled.
+        if state is not None:
+            if not isinstance(state, SquareState):
+                # Return the exception chain on failure.
+                return BuildResult.failure(
+                    SquareContextBuildFailedException(
+                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                        ex=TypeError(
+                            f"{method}: Was expecting a SquareState, got {type(state).__name__} instead."
+                        )
+                    )
+                )
+            # On validation success return a token_SquareContext in the BuildResult.
+            return BuildResult.success(SquareContext(state=state))
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
