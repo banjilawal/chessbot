@@ -8,10 +8,10 @@ version: 1.0.0
 """
 
 # ======================# MAX_CONSECUTIVE_COORD_POP EXCEPTION #======================#
-from chess.coord import CoordDataServiceException
+from chess.coord import CoordStackException
 
 
-class MaxConsecutiveCoordPopException(CoordDataServiceException):
+class MaxConsecutiveCoordPopException(CoordStackException):
         """
         # ROLE: Debug, Error Tracing
     

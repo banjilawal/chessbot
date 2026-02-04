@@ -26,6 +26,7 @@ from chess.token import (
     TokenServiceException,
     TokenValidator
 )
+from chess.token.factory.manifest.service.service import TokenManifestService
 from chess.token.service.exception.deploy.state import TokenAlreadyDeployedOnBoardException
 
 
@@ -52,7 +53,9 @@ class TokenService(EntityService[Token]):
         *   See EntityService for inherited attributes.
     """
     SERVICE_NAME = "TokenService"
+    
     _formation_service: FormationService
+    _manifest_service: TokenManifestService
     
     def __init__(
             self,
@@ -60,6 +63,8 @@ class TokenService(EntityService[Token]):
             id: int = id_emitter.service_id,
             builder: TokenFactory = TokenFactory(),
             validator: TokenValidator = TokenValidator(),
+            formation_service: FormationService = FormationService(),
+            manifest_service: TokenManifestService = TokenManifestService(),
     ):
         """
         # ACTION:
@@ -78,6 +83,8 @@ class TokenService(EntityService[Token]):
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._manifest_service = manifest_service
+        self._formation_service = formation_service
     
     @property
     def builder(self) -> TokenFactory:
@@ -93,82 +100,10 @@ class TokenService(EntityService[Token]):
     def formation_service(self) -> FormationService:
         return self._formation_service
     
+    @property
+    def manifest_service(self) -> TokenManifestService:
+        return self._manifest_service
 
-    def verify_actionable_token(self, token: Token) -> ValidationResult[Token]:
-        method = "TokenService.verify_actionable_token"
-        # Handle the case that the occupant is not certified safe.
-        token_validation = self.validator.validate(candidate=token)
-        if token_validation.is_failure:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TokenServiceException(
-                    message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
-                    ex=token_validation.exception
-                )
-            )
-        # Handle the case that the occupant has not been placed.
-        if token.is_disabled:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TokenServiceException(
-                    message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
-                    ex=DisabledTokenCannotExploreException(
-                        f"{method}: {DisabledTokenCannotExploreException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # The occupant is actionable.
-        return ValidationResult.success(token)
-    
-    def verify_disabled_token(self, token: Token) -> ValidationResult[Token]:
-        method = "TokenService.verify_disabled_token"
-        # Handle the case that the occupant is not certified safe.
-        token_validation = self.validator.validate(candidate=token)
-        if token_validation.is_failure:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TokenServiceException(
-                    message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
-                    ex=token_validation.exception
-                )
-            )
-        # Handle the case that the occupant has not been placed.
-        if token.is_active:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TokenServiceException(
-                    message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
-                    ex=TokenException(
-                        f"{method}: {DisabledTokenCannotExploreException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # The occupant is disabled
-        return ValidationResult.success(token)
-    
-    def verify_capture_activated_token(self, token: Token) -> ValidationResult[Token]:
-        method = "TokenService.verify_capture_activated_token"
-        # Handle the case that the occupant is enable.
-        token_validation = self.verify_disabled_token(token)
-        if token.is_active:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TokenServiceException(
-                    message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
-                    ex=token_validation.exception
-                )
-            )
-        # Handle the case that the token is a King.
-        if isinstance(token, KingToken):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TokenServiceException(
-                    message=f"{method}: {TokenServiceException.DEFAULT_MESSAGE}",
-                    ex=TokenException()
-                )
-            )
-        # The occupant is disabled
-        return ValidationResult.success(token)
     
     # @LoggingLevelRouter.monitor
     # def form_token_on_board(

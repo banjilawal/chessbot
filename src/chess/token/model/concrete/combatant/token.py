@@ -12,7 +12,7 @@ from typing import Optional
 
 from chess.team import Team
 from chess.rank import Rank
-from chess.token import Token, TokenBoardState, TokenReadinessState
+from chess.token import Token, TokenBoardState, ReadinessState
 
 
 class CombatantToken(Token):
@@ -66,7 +66,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARED and
-                self.readiness_state== TokenReadinessState.CAPTURE_ACTIVATED
+                self.readiness_state == ReadinessState.CAPTURE_ACTIVATED
         )
     
     @property
@@ -74,7 +74,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
-                self.readiness_state == TokenReadinessState.HOSTAGE_MANIFEST_CREATED
+                self.readiness_state == ReadinessState.HOSTAGE_MANIFEST_CREATED
         )
     
     @property
@@ -82,7 +82,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
-                self.readiness_state == TokenReadinessState.HOSTAGE_MANIFEST_IN_DATABASE
+                self.readiness_state == ReadinessState.HOSTAGE_MANIFEST_IN_DATABASE
         )
     
     @property

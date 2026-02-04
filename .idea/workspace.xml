@@ -5,11 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/chess/coord/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/exception/push/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/exception/push/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/exception/push/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/exception/push/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/exception/pop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/exception/pop/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/exception/pop/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/exception/pop/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/exception/push/consecutive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/exception/push/consecutive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/exception/push/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/exception/push/duplicate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/exception/insertion/duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/exception/insertion/duplicate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/factory/factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/factory/factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/model/abstract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/abstract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/validator/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -875,7 +884,7 @@
       <workItem from="1769716773991" duration="20357000" />
       <workItem from="1769795383857" duration="52637000" />
       <workItem from="1769975378921" duration="66466000" />
-      <workItem from="1770204159281" duration="3466000" />
+      <workItem from="1770204159281" duration="8818000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -956,6 +965,11 @@
           <url>file://$PROJECT_DIR$/src/chess/token/database/core/quota/exception/catchall.py</url>
           <line>8</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/chess/coord/service/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

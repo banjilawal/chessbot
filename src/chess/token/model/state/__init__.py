@@ -14,4 +14,4 @@ None
 
 # Modules
 from .board import TokenBoardState
-from .readiness import TokenReadinessState
+from .readiness import ReadinessState

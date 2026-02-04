@@ -8,20 +8,20 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List, cast
+from typing import List
 
 from chess.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
-from chess.coord import Coord, CoordContext, CoordContextService, CoordStackService, CoordService
+from chess.coord import Coord, CoordContext, CoordContextService, CoordDatabaseException, CoordStack, CoordService
 
 class CoordDatabase(Database[Coord]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all bag managed by CoordStackService are unique.
-    2.  Guarantee consistency of records in CoordStackService.
+    1.  Ensure all bag managed by CoordStack are unique.
+    2.  Guarantee consistency of records in CoordStack.
 
     # PARENT:
         *   Database
@@ -36,11 +36,13 @@ class CoordDatabase(Database[Coord]):
         *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "CoordDatabase"
+    
+    _coord_stack: CoordStack
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: CoordStackService = CoordStackService(),
+            coord_stack: CoordStack = CoordStack(),
     ):
         """
         # ACTION:
@@ -49,7 +51,7 @@ class CoordDatabase(Database[Coord]):
         # PARAMETERS:
             *   id (int): = id_emitter.service_id
             *   name (str): = SERVICE_NAME
-            *   member_service (CoordStackService): = CoordStackService()
+            *   member_service (CoordStack): = CoordStack()
 
         # RETURNS:
         None
@@ -57,32 +59,57 @@ class CoordDatabase(Database[Coord]):
         # RAISES:
         None
         """
-        super().__init__(id=id, name=name, data_service=data_service)
-    
-    @property
-    def coord_service(self) -> CoordService:
-        return cast(CoordStackService, self.data_service).integrity_service
-    
-    @property
-    def context_service(self) -> CoordContextService:
-        return cast(CoordStackService, self.data_service).coord_context_service
+        super().__init__(id=id, name=name, data_service=coord_stack)
+        self._coord_stack = coord_stack
     
     @property
     def size(self) -> int:
-        return self.data_service.size
+        return self._coord_stack.size
     
     @property
     def is_empty(self) -> bool:
-        return self.data_service.is_empty
+        return self._coord_stack.is_empty
+    
+    @property
+    def integrity_service(self) -> CoordService:
+        return self._coord_stack.integrity_service
+    
+    @property
+    def context_service(self) -> CoordContextService:
+        return self._coord_stack.context_service
     
     @LoggingLevelRouter.monitor
-    def add_coord(self, coord: Coord) -> InsertionResult[Coord]:
-        return self.push_unique_item(coord)
+    def push(self, coord: Coord) -> InsertionResult[bool]:
+        push_result = self._coord_stack.push(coord)
+        if push_result.is_failure:
+            return InsertionResult.failure(
+                CoordDatabaseException(
+                    message=f"ServiceId:{self.id}, {CoordDatabaseException.ERROR_CODE}",
+                    ex=push_result.exception
+                )
+            )
+        return push_result
     
     @LoggingLevelRouter.monitor
-    def undo_add_coord(self) -> DeletionResult[Coord]:
-        return self.data_service.pop()
+    def undo_push(self) -> DeletionResult[Coord]:
+        pop_result = self._coord_stack.pop()
+        if pop_result.is_failure:
+            return InsertionResult.failure(
+                CoordDatabaseException(
+                    message=f"ServiceId:{self.id}, {CoordDatabaseException.ERROR_CODE}",
+                    ex=pop_result.exception
+                )
+            )
+        return pop_result
     
     @LoggingLevelRouter.monitor
-    def search_coords(self, context: CoordContext) -> SearchResult[List[Coord]]:
-        return self.data_service.search(context)
+    def search(self, context: CoordContext) -> SearchResult[List[Coord]]:
+        search_result = self._coord_stack.coord_search(context)
+        if search_result.is_failure:
+            return SearchResult.failure(
+                CoordDatabaseException(
+                    message=f"ServiceId:{self.id}, {CoordDatabaseException.ERROR_CODE}",
+                    ex=search_result.exception
+                )
+            )
+        return search_result

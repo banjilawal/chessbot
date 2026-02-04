@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.coord import CoordDataServiceException
+from chess.coord import CoordStackException
 
 __all__ = [
     # ======================# POPPING_EMPTY_COORD_STACK EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# POPPING_EMPTY_COORD_STACK EXCEPTION #======================#
-class PoppingEmtpyCoordStackException(CoordDataServiceException):
+class PoppingEmtpyCoordStackException(CoordStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -36,4 +36,4 @@ class PoppingEmtpyCoordStackException(CoordDataServiceException):
     None
     """
     ERROR_CODE = "POPPING_EMPTY_COORD_STACK_ERROR"
-    DEFAULT_MESSAGE = "Coord deletion failed: CoordStackService does not own any coords."
+    DEFAULT_MESSAGE = "Coord deletion failed: CoordStack does not own any coords."

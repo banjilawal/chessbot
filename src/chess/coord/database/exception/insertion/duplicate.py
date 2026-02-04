@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.coord import UniqueCoordDataServiceException
+from chess.coord import UniqueCoordStackException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_COORD EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_COORD EXCEPTION #======================#
-class AddingDuplicateCoordException(UniqueCoordDataServiceException):
+class AddingDuplicateCoordException(UniqueCoordStackException):
     """
     # ROLE: Debug, Error Tracing
 

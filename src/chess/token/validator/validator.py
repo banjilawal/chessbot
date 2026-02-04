@@ -10,11 +10,14 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
-
+from chess.board import DisabledTokenCannotExploreException
 from chess.rank import RankService
 from chess.team import Team, TeamService
-from chess.coord import CoordStackService, CoordService
-from chess.token import CombatantToken, KingToken, NullTokenException, Token, TokenValidationFailedException
+from chess.coord import CoordStack, CoordService
+from chess.token import (
+    CombatantToken, KingToken, NullTokenException, Token, TokenException,
+    TokenValidationFailedException
+)
 from chess.system import (
     NumberValidator, IdentityService, LoggingLevelRouter, ServiceValidator, ValidationResult, Validator
 )
@@ -145,7 +148,7 @@ class TokenValidator(Validator[Token]):
                 )
             )
         # Handle the case that occupant.positions fails its validation.
-        service_validation = service_validator.validate(candidate=token.positions, expected_type=CoordStackService)
+        service_validation = service_validator.validate(candidate=token.positions, expected_type=CoordStack)
         if service_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -206,3 +209,79 @@ class TokenValidator(Validator[Token]):
             )
         # Tests have been passed return cast the candidate to CombatantToken and return to the caller.
         return ValidationResult.success(payload=cast(CombatantToken, candidate))
+    
+    def verify_actionable_token(self, token: Token) -> ValidationResult[Token]:
+        method = "TokenService.verify_actionable_token"
+        # Handle the case that the occupant is not certified safe.
+        token_validation = self.validator.validate(candidate=token)
+        if token_validation.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidationFailedException(
+                    message=f"{method}: {TokenValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=token_validation.exception
+                )
+            )
+        # Handle the case that the occupant has not been placed.
+        if token.is_disabled:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidationFailedException(
+                    message=f"{method}: {TokenValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=DisabledTokenCannotExploreException(
+                        f"{method}: {DisabledTokenCannotExploreException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # The occupant is actionable.
+        return ValidationResult.success(token)
+    
+    def verify_disabled_token(self, token: Token) -> ValidationResult[Token]:
+        method = "TokenService.verify_disabled_token"
+        # Handle the case that the occupant is not certified safe.
+        token_validation = self.validator.validate(candidate=token)
+        if token_validation.is_failure:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidationFailedException(
+                    message=f"{method}: {TokenValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=token_validation.exception
+                )
+            )
+        # Handle the case that the occupant has not been placed.
+        if token.is_active:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidationFailedException(
+                    message=f"{method}: {TokenValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=TokenException(
+                        f"{method}: {DisabledTokenCannotExploreException.DEFAULT_MESSAGE}"
+                    )
+                )
+            )
+        # The occupant is disabled
+        return ValidationResult.success(token)
+    
+    def verify_capture_activated_token(self, token: Token) -> ValidationResult[Token]:
+        method = "TokenService.verify_capture_activated_token"
+        # Handle the case that the occupant is enable.
+        token_validation = self.verify_disabled_token(token)
+        if token.is_active:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidationFailedException(
+                    message=f"{method}: {TokenValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=token_validation.exception
+                )
+            )
+        # Handle the case that the token is a King.
+        if isinstance(token, KingToken):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidationFailedException(
+                    message=f"{method}: {TokenValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=TokenException()
+                )
+            )
+        # The occupant is disabled
+        return ValidationResult.success(token)

@@ -7,7 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.coord import CoordDataServiceException
+from chess.coord import CoordStackException
 
 __all__ = [
     # ======================# PUSHING_DUPLICATE_COORD_ONTO_STACK EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# PUSHING_DUPLICATE_COORD_ONTO_STACK EXCEPTION #======================#
-class DuplicateCoordPushException(CoordDataServiceException):
+class DuplicateCoordPushException(CoordStackException):
     """
     # ROLE: Debug, Error Tracing
 

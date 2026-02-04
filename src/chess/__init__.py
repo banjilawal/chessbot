@@ -29,7 +29,7 @@ log = logging.getLogger("chessbot")
 # from .king import *
 # from .neighbor import *
 # from .pawn import *
-# from .piece import CoordStackService, PieceService
+# from .piece import CoordStack, PieceService
 # from .rank import RankCertifier
 # from .runtime import *
 # from .randomize import *

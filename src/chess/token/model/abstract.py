@@ -14,8 +14,8 @@ from typing import Optional
 from chess.rank import Rank
 from chess.team import Team
 from chess.square import Square
-from chess.token import Readiness_StateState, TokenBoardState, TokenReadinessState
-from chess.coord import Coord, CoordStackService
+from chess.token import Readiness_StateState, TokenBoardState, ReadinessState
+from chess.coord import Coord, CoordStack
 
 class Token(ABC):
     """
@@ -37,7 +37,7 @@ class Token(ABC):
         *   rank (Rank)
         *   roster_number (int)
         *   current_position (Coord)
-        *   positions (CoordStackService):
+        *   positions (CoordStack):
     """
     _id: int
     _team: Team
@@ -45,7 +45,7 @@ class Token(ABC):
     _designation: str
     _roster_number: int
     _opening_square: str
-    _positions: CoordStackService
+    _positions: CoordStack
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _token_board_state: TokenBoardState
@@ -59,7 +59,7 @@ class Token(ABC):
             designation: str,
             roster_number: int,
             opening_square: str,
-            positions: CoordStackService = CoordStackService(),
+            positions: CoordStack = CoordStack(),
     ):
         method = "Token.__init__"
         self._id = id
@@ -72,7 +72,7 @@ class Token(ABC):
         self._current_position = self._positions.current_coord
         self._previous_address = self._positions.previous_coord
         self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
-        self._readiness_state = TokenReadinessState.NOT_INITIALIZED
+        self._readiness_state = ReadinessState.NOT_INITIALIZED
     
     @property
     def id(self) -> int:
@@ -99,15 +99,15 @@ class Token(ABC):
         return self._opening_square
     
     @property
-    def readiness_state(self) -> TokenReadinessState:
+    def readiness_state(self) -> ReadinessState:
         return self._readiness_state
     
     @readiness_state.setter
-    def readiness_state(self, readiness_state: TokenReadinessState):
+    def readiness_state(self, readiness_state: ReadinessState):
         self._readiness_state = readiness_state
     
     @property
-    def positions(self) -> CoordStackService:
+    def positions(self) -> CoordStack:
         return self._positions
     
     @property

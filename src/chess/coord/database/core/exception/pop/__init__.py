@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .pop import PoppingCoordStackFailedException
+from .wrapper import PoppingCoordStackFailedException
 from .empty import PoppingEmtpyCoordStackException
 

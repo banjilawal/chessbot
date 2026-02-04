@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from chess.rank import King
 from chess.team import Team
-from chess.token import Token, TokenBoardState, TokenReadinessState
+from chess.token import Token, TokenBoardState, ReadinessState
 
 
 class KingToken(Token):
@@ -37,20 +37,20 @@ class KingToken(Token):
     def is_in_check(self) -> bool:
         return (
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARED and
-                self.readiness_state == TokenReadinessState.IN_CHECK
+                self.readiness_state == ReadinessState.IN_CHECK
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARED and
-                self.readiness_state == TokenReadinessState.CHECKMATED
+                self.readiness_state == ReadinessState.CHECKMATED
         )
     
     @property
     def is_active(self) -> bool:
         return (
-                (TokenReadinessState.FREE or TokenReadinessState.IN_CHECK) and
+                (ReadinessState.FREE or ReadinessState.IN_CHECK) and
                 self.board_state == TokenBoardState.DEPLOYED_ON_BOARED
         )
     

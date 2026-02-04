@@ -22,8 +22,8 @@ class CoordStackException(CoordException, StackException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate that an CoordStackService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a CoordStackService method.
+    1.  Indicate that an CoordStack encountered an error which prevented the service from completing a task.
+    2.  Wrap an exception that hits the try-finally block of a CoordStack method.
 
     # PARENT:
         *   StackException
@@ -39,4 +39,4 @@ class CoordStackException(CoordException, StackException):
     None
     """
     ERROR_CODE = "COORD_STACK_ERROR"
-    DEFAULT_MESSAGE = "CoordStackService raised an exception."
+    DEFAULT_MESSAGE = "CoordStack raised an exception."
