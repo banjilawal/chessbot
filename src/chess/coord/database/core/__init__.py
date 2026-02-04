@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== COORD.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
-from .unique import *
 from .exception import *
 
 # Modules
-from .service import CoordStackService
+from .stack import CoordStackService

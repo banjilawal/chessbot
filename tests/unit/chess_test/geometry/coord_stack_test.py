@@ -22,26 +22,26 @@ class CoordinateStackTest(unittest.TestCase):
 
   def test_null_coordinate_push_raises_exception(self):
     with self.assertRaises(PushingNullEntityException):
-      CoordinateStack().push_coord(None)
+      CoordinateStack().push(None)
 
 
   def test_duplicate_coordinate_push_raises_exception(self):
     coord = Coord(row=1, column=1)
     coordinate_stack = CoordinateStack()
-    coordinate_stack.push_coord(coord)
+    coordinate_stack.push(coord)
 
     with self.assertRaises(DuplicatePushException):
-      coordinate_stack.push_coord(coord)
+      coordinate_stack.push(coord)
 
   def test_pushing_coordinate_updates_current_coordinate(self):
     coord1 = Coord(row=1, column=1)
     coord2 = Coord(row=2, column=2)
 
     coordinate_stack = CoordinateStack()
-    coordinate_stack.push_coord(coord1)
+    coordinate_stack.push(coord1)
     self.assertEqual(coordinate_stack.current_coord, coord1)
 
-    coordinate_stack.push_coord(coord2)
+    coordinate_stack.push(coord2)
     self.assertEqual(coordinate_stack.current_coord, coord2)
 
   def test_undo_push_updates_current_coordinate(self):
@@ -49,8 +49,8 @@ class CoordinateStackTest(unittest.TestCase):
     coord2 = Coord(row=2, column=2)
 
     coordinate_stack = CoordinateStack()
-    coordinate_stack.push_coord(coord1)
-    coordinate_stack.push_coord(coord2)
+    coordinate_stack.push(coord1)
+    coordinate_stack.push(coord2)
 
     coordinate_stack.undo_push()
     self.assertEqual(coordinate_stack.current_coord, coord1)
@@ -63,14 +63,14 @@ class CoordinateStackTest(unittest.TestCase):
     original_size = coordinate_stack.size()
     self.assertEqual(coordinate_stack.size(), 0)
 
-    coordinate_stack.push_coord(coord1)
+    coordinate_stack.push(coord1)
     self.assertEqual(coordinate_stack.size(), original_size + 1)
 
 
   def test_undo_push_decrements_size(self):
 
     coordinate_stack = CoordinateStack()
-    coordinate_stack.push_coord(Coord(row=1, column=1))
+    coordinate_stack.push(Coord(row=1, column=1))
     size_before_undo = coordinate_stack.size()
 
     coordinate_stack.undo_push()
@@ -84,7 +84,7 @@ class CoordinateStackTest(unittest.TestCase):
 
   def test_is_empty_false_when_stack_has_items(self):
     coordinate_stack = CoordinateStack()
-    coordinate_stack.push_coord(Coord(row=0, column=0))
+    coordinate_stack.push(Coord(row=0, column=0))
 
     self.assertTrue(not coordinate_stack.is_empty() and coordinate_stack.size() > 0)
 

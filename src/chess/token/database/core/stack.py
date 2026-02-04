@@ -519,7 +519,7 @@ class TokenStack(StackService[Token]):
                 )
             # --- Restore the ejected token's pre-deployment state. ---#
             token = removal_result.payload
-            token.positions.pop_coord()
+            token.positions.pop()
             token.board_state = TokenBoardState.NEVER_BEEN_PLACED
             self.items.append(token)
     

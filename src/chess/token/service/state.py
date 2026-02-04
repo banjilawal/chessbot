@@ -1,3 +1,4 @@
+from __future__ import annotations
 from typing import cast
 
 from chess.rank.model.concrete.king import King

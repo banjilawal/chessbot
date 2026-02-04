@@ -8,7 +8,7 @@ class BishopTest(unittest.TestCase):
     rank = Bishop("bishop", "b", 2, 1, [Quadrant.N])
     side = Side(1, Commander(1, "coosmof"), TeamProfile.BLACK)
     piece = Piece(1, "BB-1", rank, side)
-    piece.positions.push_coord(Coord(0, 0))
+    piece.positions.push(Coord(0, 0))
     board = ChessBoardBuilder.build(1)
 
     with self.assertRaises(BishopException) as ctx:
@@ -22,7 +22,7 @@ class BishopTest(unittest.TestCase):
     side = Side(1, Commander(1, "owner"), TeamProfile.BLACK)
 
     piece = Piece(1, "BB-1", rank, side)
-    piece.positions.push_coord(Coord(0, 0))
+    piece.positions.push(Coord(0, 0))
     piece.rank_name.walk(piece, Coord(5, 5), board)
 
 

@@ -289,11 +289,11 @@ def _compute_developed_span(self, origin: Coord) -> [Coord]:
     method = "Pawn._compute_developed_span"
     return [
         # Forward position
-        self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(x=0, y=1)),
+        self.integrity_service.add_vector_to_coord(coord=origin, vector=Vector(x=0, y=1)),
         # Queen-side attacking position
-        self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(x=-1, y=1)),
+        self.integrity_service.add_vector_to_coord(coord=origin, vector=Vector(x=-1, y=1)),
         # King-side attacking position
-        self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(x=1, y=1))
+        self.integrity_service.add_vector_to_coord(coord=origin, vector=Vector(x=1, y=1))
     ]
 
 @LoggingLevelRouter
@@ -322,11 +322,11 @@ def _compute_opening_span(self, origin: Coord) -> [Coord]:
     method = "Pawn._compute_opening_span"
     return [
         # Get destination of 2 step advance.
-        self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(x=0, y=2)),
+        self.integrity_service.add_vector_to_coord(coord=origin, vector=Vector(x=0, y=2)),
         # Get 2 step queen-side attack destination.
-        self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(x=-1, y=2)),
+        self.integrity_service.add_vector_to_coord(coord=origin, vector=Vector(x=-1, y=2)),
         # Get 2 step king-side attack destination.
-        self.coord_service.add_vector_to_coord(coord=origin, vector=Vector(x=1, y=2)),
+        self.integrity_service.add_vector_to_coord(coord=origin, vector=Vector(x=1, y=2)),
         # Add points in developed move.
         self._compute_developed_span(origin),
     ]

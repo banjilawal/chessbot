@@ -244,7 +244,7 @@ class TokenService(EntityService[Token]):
                 )
             )
         # Handle the case that the coord stack pop operation fails.
-        pop_result = token.positions.pop_coord()
+        pop_result = token.positions.pop()
         if token.previous_coord == token.current_address:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -315,7 +315,7 @@ class TokenService(EntityService[Token]):
                 )
             )
         # Handle the case that adding the coord to the occupant's position history fails.
-        insertion_result = token.positions.push_coord(coord=position)
+        insertion_result = token.positions.push(coord=position)
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# COORD_STACK_SERVICE EXCEPTION #======================#
-    "CoordDataServiceException",
+    # ======================# COORD_STACK EXCEPTION #======================#
+    "CoordStackException",
 ]
 
 from chess.coord import CoordException
-from chess.system import ServiceException
+from chess.system import StackException
 
 
-# ======================# COORD_STACK_SERVICE EXCEPTION #======================#
-class CoordDataServiceException(CoordException, ServiceException):
+# ======================# COORD_STACK EXCEPTION #======================#
+class CoordStackException(CoordException, StackException):
     """
     # ROLE: Exception Wrapper, Catchall Exception
 
@@ -26,7 +26,7 @@ class CoordDataServiceException(CoordException, ServiceException):
     2.  Wrap an exception that hits the try-finally block of a CoordStackService method.
 
     # PARENT:
-        *   ServiceException
+        *   StackException
         *   CoordDataException
 
     # PROVIDES:

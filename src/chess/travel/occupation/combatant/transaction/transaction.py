@@ -76,7 +76,7 @@ class CombatantOccupationTransaction(OccupationEvent[CombatantOccupationEvent]):
                     )
                 )
             
-            self.event.actor.positions.push_coord(self.event.destination_square.point)
+            self.event.actor.positions.push(self.event.destination_square.point)
             
             # If the push destination point is not the traveler's current position rollback the rollback,
             # then return the rollback_exception.

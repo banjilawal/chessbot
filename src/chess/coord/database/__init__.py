@@ -11,7 +11,8 @@ version: 1.0.0
 # =========== COORD.DATABASE PACKAGE CONTENTS ===========#
 
 # Packages
+from .core import *
 from .exception import *
 
 # Modules
-from .service import UniqueCoordDataService
+from .database import CoordDatabase

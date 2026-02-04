@@ -7,6 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import List, cast
 
 from chess.system import (
@@ -14,7 +15,7 @@ from chess.system import (
 )
 from chess.coord import Coord, CoordContext, CoordContextService, CoordStackService, CoordService
 
-class UniqueCoordDataService(Database[Coord]):
+class CoordDatabase(Database[Coord]):
     """
     # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
 
@@ -34,7 +35,7 @@ class UniqueCoordDataService(Database[Coord]):
     # INHERITED ATTRIBUTES:
         *   See Database class for inherited attributes.
     """
-    SERVICE_NAME = "UniqueCoordDataService"
+    SERVICE_NAME = "CoordDatabase"
     def __init__(
             self,
             name: str = SERVICE_NAME,
@@ -60,7 +61,7 @@ class UniqueCoordDataService(Database[Coord]):
     
     @property
     def coord_service(self) -> CoordService:
-        return cast(CoordStackService, self.data_service).coord_service
+        return cast(CoordStackService, self.data_service).integrity_service
     
     @property
     def context_service(self) -> CoordContextService:

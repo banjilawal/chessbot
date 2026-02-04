@@ -32,7 +32,7 @@ class TeamPlacementManager:
           square = arena.chess_board.find_square_by_name(square_name)
           # print("found square_name", square_name)
           square.occupant = chess_piece
-          chess_piece.positions.push_coord(square.position)
+          chess_piece.positions.push(square.position)
           # print(square_name)
 
 

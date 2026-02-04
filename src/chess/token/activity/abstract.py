@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-
+from __future__ import annotations
 from abc import ABC
 from enum import Enum
 

@@ -20,7 +20,7 @@ class MaxConsecutiveCoordPopException(CoordDataServiceException):
             last pop.
     
         # PARENT:
-            *   CoordDataServiceException
+            *   CoordStackException
     
         # PROVIDES:
         None

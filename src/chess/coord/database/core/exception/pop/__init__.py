@@ -14,8 +14,5 @@ None
 
 # Modules
 from .pop import PoppingCoordStackFailedException
-from .duplicate import DuplicateCoordPushException
 from .empty import PoppingEmtpyCoordStackException
-from .push import PushingCoordOntoStackFailedException
-from .consecutive import MaxConsecutiveCoordPopException
 

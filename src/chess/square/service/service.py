@@ -215,7 +215,7 @@ class SquareService(EntityService[Square]):
         
         square.occupant = token
         square.state = SquareState.OCCUPIED
-        token.positions.push_coord(square.coord)
+        token.positions.push(square.coord)
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
@@ -239,7 +239,7 @@ class SquareService(EntityService[Square]):
         # Form the occupant.
         square.occupant = token
         square.state = SquareState.OCCUPIED
-        token.positions.push_coord(square.coord)
+        token.positions.push(square.coord)
         token.board_state = TokenBoardState.DEPLOYED_ON_BOARED
         return InsertionResult.success()
         
@@ -367,7 +367,7 @@ class SquareService(EntityService[Square]):
                 )
             )
         square.occupant = deletion_result.payload
-        token.positions.push_coord(square.coord)
+        token.positions.push(square.coord)
         
         square.state = SquareState.OCCUPIED
         token.board_state = TokenBoardState.DEPLOYED_ON_BOARED

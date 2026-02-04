@@ -81,7 +81,7 @@ class CoordStackService(StackService[Coord]):
         )
         self._previous_coord = None
         self._current_coord = None
-        self._stack = []
+        self._stack = items
     
     @property
     def size(self) -> int:
@@ -100,7 +100,7 @@ class CoordStackService(StackService[Coord]):
         return self._stack[-1] if self._stack else None
     
     @property
-    def coord_service(self) -> CoordService:
+    def integrity_service(self) -> CoordService:
         """Get CoordService instance."""
         return cast(CoordService, self.entity_service)
     
@@ -113,7 +113,7 @@ class CoordStackService(StackService[Coord]):
     def coords(self) -> List[Coord]:
         return cast(List[Coord], self.items)
     
-    def push_coord(self, coord: Coord) -> InsertionResult[Coord]:
+    def push(self, item: Coord) -> InsertionResult[bool]:
         """
         # ACTION:
             1.  If the coord fails validation send an exception chain in the InsertionResult.
@@ -128,12 +128,12 @@ class CoordStackService(StackService[Coord]):
                     - On failure: Exception
                     - On success: Coord in the payload.
         # RAISES:
-            *   CoordDataServiceException
+            *   CoordStackException
         """
-        method = "CoordStackService.add_coord"
+        method = "CoordStackService.push"
         
         # Handle the case that coord validation fails.
-        validation = self.coord_service.validator.validate(candidate=coord)
+        validation = self.integrity_service.validator.validate(candidate=item)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -146,7 +146,7 @@ class CoordStackService(StackService[Coord]):
                 )
             )
         # Handle the case that the Coord is already at the top.
-        if coord == self.current_coord:
+        if item == self.current_coord:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 CoordDataServiceException(
@@ -157,27 +157,14 @@ class CoordStackService(StackService[Coord]):
                     )
                 )
             )
-        #--- Store the current_coord in the temp variable. ---#
-        previous_top = cast(Coord, self.current_item)
+        #--- Set the current coord as the previous one then, push the new coord. ---#
+        self._previous_coord = self._current_coord
+        self._stack.append(item)
         
-        # Handle the case that super class push does not succeed.
-        super_insertion_result = self.push_item(item=coord)
-        if super_insertion_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                CoordDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
-                    ex=PushingCoordFailedException(
-                        message=f"{method}: {PushingCoordFailedException.ERROR_CODE}",
-                        ex=super_insertion_result.exception
-                    )
-                )
-            )
-        # --- Update the previous_coord field, cast the super().push result into a Coord and return to caller. ---#
-        self._previous_coord = previous_top
-        return InsertionResult.success(cast(Coord, super_insertion_result.payload))
+        # Return the successful result to the caller.
+        return InsertionResult.success()
     
-    def pop_coord(self) -> DeletionResult[Coord]:
+    def pop(self) -> DeletionResult[Coord]:
         """
         # ACTION:
             1.  If the list is empty send the exception in the DeletionResult. Else, call the super class undo_push
@@ -190,7 +177,7 @@ class CoordStackService(StackService[Coord]):
                 - On failure: Exception
                 - On success: Coord in the payload.
         # RAISES:
-            *   CoordDataServiceException
+            *   CoordStackException
             *   PoppingEmtpyCoordStackException
         """
         method = "CoordStackService.pop_coord"
@@ -215,18 +202,9 @@ class CoordStackService(StackService[Coord]):
                     ex=MaxConsecutiveCoordPopException(f"{method}: {MaxConsecutiveCoordPopException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the super class undo_push fails.
-        super_deletion_result = self.pop()
-        if super_deletion_result.is_failure:
-            # Return the exception chain on failure.
-            return DeletionResult.failure(
-                CoordDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
-                    ex=super_deletion_result.exception
-                )
-            )
-        # Otherwise cast the super class payload to a Coord and send to the caller.
-        return DeletionResult.success(cast(Coord, super_deletion_result.payload))
+        # --- Remove the coord at the top of the stack and send in the DeletionResult. ---#
+        coord = self._stack.pop(-1)
+        return DeletionResult.success(payload=coord)
     
     def coord_search(self, coord_context: CoordContext) -> SearchResult[List[Coord]]:
         """
@@ -242,12 +220,12 @@ class CoordStackService(StackService[Coord]):
                 - On success: Coord in the payload.
                 - On empty: Payload is null, Exception is null.
         # RAISES:
-            *   CoordDataServiceException
+            *   CoordStackException
         """
         method = "CoordStackService.coord_search"
         
         # Handle the case that the context is not certified safe.
-        context_validation = self.coord_context_service.validator.validate(coord_context)
+        context_validation = self.context_service.validator.validate(coord_context)
         if context_validation.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -257,7 +235,7 @@ class CoordStackService(StackService[Coord]):
                 )
             )
         # --- Run the search for the coord ---#
-        search_result = self.coord_context_service.finder.find(context=coord_context)
+        search_result = self.context_service.finder.find(context=coord_context)
         
         # Handle the case that the search does not complete.
         if search_result.is_failure:
@@ -268,14 +246,14 @@ class CoordStackService(StackService[Coord]):
                     ex=search_result.exception
                 )
             )
-        # Handle the case that a successful search result does not have List[Coord] as its payload.
-        if not isinstance(List[Coord], search_result.payload):
+        # Handle the case that a successful search result does no[Coord]  t have List[Coord] as its payload.
+        if not isinstance(search_result.payload, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 CoordDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {CoordDataServiceException.ERROR_CODE}",
                     ex=TypeError(
-                        f"{method}: Expected List[Coord] as CoordSearch payload. "
+                        f"{method}: Expected List as CoordSearch payload. "
                         f"Got {search_result.payload.__name__} instead.")
                 )
             )

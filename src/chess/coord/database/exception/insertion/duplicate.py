@@ -21,11 +21,11 @@ class AddingDuplicateCoordException(UniqueCoordDataServiceException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to add a coord to the UniqueCoordDataService's dataset failed because the coord was
+    1.  Indicate that an attempt to add a coord to the CoordDatabase's dataset failed because the coord was
         already in the collection
 
     # PARENT:
-        *   UniqueCoordDataServiceException
+        *   CoordDatabaseException
 
     # PROVIDES:
     None
