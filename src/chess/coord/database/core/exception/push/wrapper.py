@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# PUSHING_COORD_ONTO_STACK_FAILURE EXCEPTION #======================#
-    "PushingCoordOntoStackFailedException",
+    "PushingCoordFailedException",
 ]
 
-from chess.coord import CoordDataServiceException
+
 from chess.system import InsertionFailedException
 
 
 # ======================# PUSHING_COORD_ONTO_STACK_FAILURE EXCEPTION #======================#
-class PushingCoordOntoStackFailedException(CoordDataServiceException, InsertionFailedException):
+class PushingCoordFailedException(CoordStackException, InsertionFailedException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class PushingCoordOntoStackFailedException(CoordDataServiceException, InsertionF
         exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
-        *   CoordException
+        *   CoordStackException
         *   InsertionFailedException
 
     # PROVIDES:
