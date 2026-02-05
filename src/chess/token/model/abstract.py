@@ -13,8 +13,7 @@ from typing import Optional
 
 from chess.rank import Rank
 from chess.team import Team
-from chess.square import Square
-from chess.token import Readiness_StateState, TokenBoardState, ReadinessState
+from chess.token import TokenBoardState, ReadinessState
 from chess.coord import Coord, CoordStack
 
 class Token(ABC):
@@ -44,12 +43,12 @@ class Token(ABC):
     _rank: Rank
     _designation: str
     _roster_number: int
-    _opening_square: str
     _positions: CoordStack
+    _opening_square_name: str
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _token_board_state: TokenBoardState
-    _readiness_state: Readiness_StateState
+    _readiness_state: ReadinessState
 
     def __init__(
             self,
@@ -58,7 +57,7 @@ class Token(ABC):
             team: Team,
             designation: str,
             roster_number: int,
-            opening_square: str,
+            opening_square_name: str,
             positions: CoordStack = CoordStack(),
     ):
         method = "Token.__init__"
@@ -68,7 +67,7 @@ class Token(ABC):
         self._positions = positions
         self._designation = designation
         self._roster_number = roster_number
-        self._opening_square = opening_square
+        self._opening_square_name = opening_square_name
         self._current_position = self._positions.current_coord
         self._previous_address = self._positions.previous_coord
         self._token_board_state = TokenBoardState.NEVER_BEEN_PLACED
@@ -95,8 +94,8 @@ class Token(ABC):
         return self._rank
     
     @property
-    def opening_square(self) -> str:
-        return self._opening_square
+    def opening_square_name(self) -> str:
+        return self._opening_square_name
     
     @property
     def readiness_state(self) -> ReadinessState:
@@ -121,6 +120,10 @@ class Token(ABC):
     @property
     def board_state(self) -> TokenBoardState:
         return self._token_board_state
+    
+    @board_state.setter
+    def board_state(self, board_state: TokenBoardState):
+        self._token_board_state = board_state
     
     @property
     def is_not_deployed(self) -> bool:
@@ -156,7 +159,6 @@ class Token(ABC):
             return self._id == other.id
         return False
 
-    
     def __hash__(self) -> int:
         return hash(self._id)
     

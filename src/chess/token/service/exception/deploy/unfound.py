@@ -22,7 +22,7 @@ class TokenOpeningSquareNotFoundException(TokenException, NullException):
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an operation failed because the Token.opening_square is null.
+    1.  Indicate that an operation failed because the Token.opening_square_name is null.
 
     # PARENT:
         *   TeamDaaServiceException
@@ -37,4 +37,4 @@ class TokenOpeningSquareNotFoundException(TokenException, NullException):
     None
     """
     ERROR_CODE = "TOKEN_OPENING_SQUARE_NULL_ERROR"
-    DEFAULT_MESSAGE = "Token.opening_square cannot be null."
+    DEFAULT_MESSAGE = "Token.opening_square_name cannot be null."

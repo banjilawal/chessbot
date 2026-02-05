@@ -9,17 +9,12 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from chess.formation import FormationService
-from chess.square import Square
-from chess.rank import King, Pawn
-from chess.system import BuildResult, Builder, LoggingLevelRouter
+from chess.persona import Persona
 from chess.team import Team, TeamService
-
-from chess.token import (
-    AddingDuplicateTokenException, CombatantToken, KingToken, PawnToken, TokenBuildFailedException, TokenManifest,
-    TokenManifestValidator, Token
-)
-
+from chess.rank import Rank, RankService
+from chess.formation import Formation, FormationService
+from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter, id_emitter
+from chess.token import CombatantToken, KingToken, PawnToken, TokenBuildFailedException, Token
 
 class TokenFactory(Builder[Token]):
     """
@@ -48,10 +43,13 @@ class TokenFactory(Builder[Token]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            manifest: TokenManifest,
-            # team_service: TeamService = TeamService(),
+            owner: Team,
+            formation: Formation,
+            id: int = id_emitter.piece_id,
+            team_service: TeamService = TeamService(),
+            rank_service: RankService = RankService(),
+            identity_service: IdentityService = IdentityService(),
             formation_service: FormationService = FormationService(),
-            manifest_validator: TokenManifestValidator = TokenManifestValidator(),
     ) -> BuildResult[Token]:
         """
         # ACTION:
@@ -59,15 +57,14 @@ class TokenFactory(Builder[Token]):
                 route to the appropriate concrete Token builder method.
         # PARAMETERS:
             *   id (int)
-            *   name (str)
-            *   rank (Rank)
-            *   team (Team)
+            *   owner (Team)
+            *   formation: (Formation)
             *   rank_service (RankService)
             *   team_service (TeamService)
-            *   positions (CoordStack)
             *   identity_service (IdentityService)
+            *   formation_service: (FormationService)
         # RETURNS:
-            *   BuildResult[Position] containing either:
+            *   BuildResult[Token] containing either:
                     - On failure: Exception.
                     - On success: Token in the payload.
         # RAISES:
@@ -75,92 +72,66 @@ class TokenFactory(Builder[Token]):
         """
         method = "TokenFactory.builder"
         
-        # Handle the case that any of the build params is not safe.
-        validation = manifest_validator.validate(candidate=manifest)
-        if validation.is_failure:
+        # Handle the case that the id is not certified as safe.
+        id_validation = identity_service.validate_id(candidate=id)
+        if id_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildFailedException(
                     message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-                    ex=validation.exception
+                    ex=id_validation.exception
+                )
+            )
+        # Handle the case that the team is not certified as safe.
+        owner_validation = team_service.validator.validate(candidate=owner)
+        if owner_validation.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                TokenBuildFailedException(
+                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+                    ex=owner_validation.exception
+                )
+            )
+        # Handle the case that the formation is not certified as safe.
+        formation_validation = formation_service.validator.validate(candidate=formation)
+        if formation_validation.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                TokenBuildFailedException(
+                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+                    ex=formation_validation.exception
                 )
             )
         # --- Route to the appropriate concrete Token builder method. ---#
         
+        if formation.persona == Persona.PAWN:
         # Build path for Pawns.
-        if isinstance(manifest.rank, Pawn):
             return cls._build_pawn(
-                id=manifest.id,
-                owner=manifest.owner,
-                designation=manifest.designation,
-                roster_number=manifest.roster_number,
-                opening_square=manifest.opening_square,
+                id=id,
+                owner=owner,
+                designation=formation.designation,
+                roster_number=formation.roster_number,
+                opening_square_name=formation.square_name,
             )
         # Build path for Kings
-        if isinstance(manifest.rank, King):
+        if formation.persona == Persona.KING:
             return cls._build_king(
-                id=manifest.id,
-                owner=manifest.owner,
-                designation=manifest.designation,
-                roster_number=manifest.roster_number,
-                opening_square=manifest.opening_square,
+                id=id,
+                owner=owner,
+                designation=formation.designation,
+                roster_number=formation.roster_number,
+                Opening_square_name=formation.square_name,
             )
-        # Default path
+        # The default path builds Combatants
         return cls._build_combatant(
-            id=manifest.id,
-            owner=manifest.owner,
-            designation=manifest.designation,
-            roster_number=manifest.roster_number,
-            opening_square=manifest.opening_square,
+            id=id,
+            owner=owner,
+            formation=formation,
+            rank_service=rank_service,
         )
-        # # Get the RelationReport between the team's roster to see if the occupant can be added to the team's roster.
-        # relation_report = team_service.roster_relation_analyzer.analyze(
-        #     candidate_primary=manifest.owner,
-        #     candidate_satellite=occupant,
-        #     team_service=team_service,
-        #     piece_service=manifest.owner.roster.members.integrity_service,
-        # )
-        # # Handle the case that the relation analysis ran into an error.
-        # if relation_report.is_failure:
-        #     # Return the exception chain on failure.
-        #     return BuildResult.failure(
-        #         TokenBuildFailedException(
-        #             message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-        #             ex=relation_report.exception
-        #         )
-        #     )
-        # # Handle the case that the piece has a different owner.
-        # if relation_report.does_not_exist:
-        #     # Return the exception chain on failure.
-        #     return BuildResult.failure(
-        #         TokenBuildFailedException(
-        #             message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-        #             ex=EnemyCannotJoinTeamRosterException(f"{method}: {EnemyCannotJoinTeamRosterException.DEFAULT_MESSAGE}")
-        #         )
-        #     )
-        # # Handle the case that the piece is already registered with its owner.
-        # if relation_report.fully_exists:
-        #     # Return the exception chain on failure.
-        #     return BuildResult.failure(
-        #         TokenBuildFailedException(
-        #             message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-        #             ex=AddingDuplicateTokenException(f"{method}: {AddingDuplicateTokenException.DEFAULT_MESSAGE}")
-        #         )
-        #     )
-        # # Last relation outcome is the piece has not registered with its owner. Do an insertion to complete
-        # # the registration process which creates a fully bidirectional relation between the occupant and its owner.
-        # insertion_result = team_service.add_member(team=manifest.owner, occupant=occupant)
-        #
-        # # Handle the case that the insertion failed.
-        # if insertion_result.is_failure:
-        #     return BuildResult.failure(
-        #         TokenBuildFailedException(
-        #             message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
-        #             ex=insertion_result.exception
-        #         )
-        #     )
-        # If all the steps completed successfully return the occupant in the BuildResult.
-        # return BuildResult.success(occupant)
+        
+
+
             
     @classmethod
     @LoggingLevelRouter.monitor
@@ -170,15 +141,34 @@ class TokenFactory(Builder[Token]):
             owner: Team,
             designation: str,
             roster_number: int,
-            opening_square: Square
-    ) -> PawnToken:
+            opening_square_name: str,
+    ) -> BuildResult[PawnToken]:
+        """
+        # ACTION:
+            1.  Use the params to build the PawnToken then return to caller in the
+        # PARAMETERS:
+            *   id (int)
+            *   owner (Team)
+            *   formation: (Formation)
+            *   rank_service (RankService)
+            *   team_service (TeamService)
+            *   identity_service (IdentityService)
+            *   formation_service: (FormationService)
+        # RETURNS:
+            *   BuildResult[PawnToken]
+
+        # RAISES:
+            *   None
+        """
+        method = "TokenFactory._build_pawn"
+        
         return BuildResult.success(
             payload=PawnToken(
                 id=id,
                 team=owner,
                 designation=designation,
                 roster_number=roster_number,
-                opening_square=opening_square,
+                opening_square_name=opening_square_name,
             )
         )
     
@@ -190,15 +180,33 @@ class TokenFactory(Builder[Token]):
             owner: Team,
             designation: str,
             roster_number: int,
-            opening_square: Square
-    ) -> KingToken:
+            Opening_square_name: str
+    ) -> BuildResult[KingToken]:
+        """
+        # ACTION:
+            1.  Build KingToken and return to the caller.
+        # PARAMETERS:
+            *   id (int)
+            *   owner (Team)
+            *   formation: (Formation)
+            *   rank_service (RankService)
+            *   team_service (TeamService)
+            *   identity_service (IdentityService)
+            *   formation_service: (FormationService)
+        # RETURNS:
+            *   BuildResult[PawnToken]
+        # RAISES:
+            *   None
+        """
+        method = "TokenFactory._build_king"
+        
         return BuildResult.success(
                 payload=KingToken(
                 id=id,
                 team=owner,
                 designation=designation,
                 roster_number=roster_number,
-                opening_square=opening_square,
+                opening_square_name=Opening_square_name,
             )
         )
     
@@ -208,17 +216,43 @@ class TokenFactory(Builder[Token]):
             cls,
             id: int,
             owner: Team,
-            designation: str,
-            roster_number: int,
-            opening_square: Square
-    ) -> CombatantToken:
+            formation: Formation, str,
+            rank_service: RankService,
+    ) -> BuildResult[KingToken]:
+        """
+        # ACTION:
+            1.  Use the formation's Persona property to build the combatant's rank. If the rank build fails
+                send an exception chain the BuildResult.
+        # PARAMETERS:
+            *   id (int)
+            *   owner (Team)
+            *   formation (Formation)
+            *   formation_service: (FormationService)
+        # RETURNS:
+            *   BuildResult[CombatantToken]
+        # RAISES:
+            *   None
+        """
+        method = "TokenFactory._build_combatant"
+        
+        # Handle the case that the rank build is not completed.
+        rank_build_result = rank_service.builder.build(persona=formation.persona)
+        if rank_build_result.is_failure:
+            # Return the exception chain on failure.
+            return BuildResult.failure(
+                TokenBuildFailedException(
+                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+                    ex=rank_build_result.exception
+                )
+            )
+        # Return the combatant's build result to the caller
         return BuildResult.success(
-                payload=CombatantToken(
+            payload=CombatantToken(
                 id=id,
                 team=owner,
-                rank=King(),
-                designation=designation,
-                roster_number=roster_number,
-                opening_square=opening_square,
+                rank=rank_build_result.payload,
+                designation=formation.designation,
+                roster_number=formation.roster_number,
+                opening_square_name=formation.square_name,
             )
         )

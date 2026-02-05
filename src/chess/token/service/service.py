@@ -54,17 +54,11 @@ class TokenService(EntityService[Token]):
     """
     SERVICE_NAME = "TokenService"
     
-    _formation_service: FormationService
-    _manifest_service: TokenManifestService
-    
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             builder: TokenFactory = TokenFactory(),
-            validator: TokenValidator = TokenValidator(),
-            formation_service: FormationService = FormationService(),
-            manifest_service: TokenManifestService = TokenManifestService(),
     ):
         """
         # ACTION:
@@ -95,30 +89,12 @@ class TokenService(EntityService[Token]):
     def validator(self) -> TokenValidator:
         """get TokenValidator"""
         return cast(TokenValidator, self.entity_validator)
-    
-    @property
-    def formation_service(self) -> FormationService:
-        return self._formation_service
-    
-    @property
-    def manifest_service(self) -> TokenManifestService:
-        return self._manifest_service
-
-    
-    # @LoggingLevelRouter.monitor
-    # def form_token_on_board(
-    #         self,
-    #         occupant: Token,
-    #         board: Board,
-    #         board_service: BoardService = BoardService(),
-    # ):
-    #     token_validation = self.validator.validate(candidate=occupant)
-    #     if token_validation.is_failure:
         
     @LoggingLevelRouter.monitor
     def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
         """
         # ACTION:
+        
             1.  If the occupant fails validation returns the exception in the DeletionResult.
             2.  If the occupant has not been activated with an opening item return the exception in the DeletionResult.
             3.  If the occupant has an empty coord stack return the exception in the DeletionResult.
@@ -250,7 +226,7 @@ class TokenService(EntityService[Token]):
                 )
             )
         # Handle the case that adding the coord to the occupant's position history fails.
-        insertion_result = token.positions.push(coord=position)
+        insertion_result = token.positions.push(item=position)
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

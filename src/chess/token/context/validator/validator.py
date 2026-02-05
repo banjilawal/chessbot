@@ -160,7 +160,7 @@ class TokenContextValidator(Validator[TokenContext]):
             # On certification success return the designation_TokenContext in the ValidationResult.
             return ValidationResult.success(context)
         
-        # Certification for the search-by-opening_square target.
+        # Certification for the search-by-opening_square_name target.
         if context.opening_square is not None:
             validation = square_service.validator.validate(candidate=context.opening_square)
             if validation.is_failure:

@@ -112,7 +112,7 @@ class TokenFinder(DataFinder[Token]):
         # Entry point into finding by occupant's designation.
         if context.designation is not None:
             return cls._find_by_designation(dataset=dataset, name=context.designation)
-        # Entry point into finding by occupant's opening_square.
+        # Entry point into finding by occupant's opening_square_name.
         if context.opening_square is not None:
             return cls._find_by_opening_square(dataset=dataset, name=context.opening_square)
         # Entry point into finding by occupant's team.
@@ -194,7 +194,7 @@ class TokenFinder(DataFinder[Token]):
         # ACTION:
             1.  Get the Tokens which match the designation.
         # PARAMETERS:
-            *   opening_square (Square)
+            *   opening_square_name (Square)
             *   dataset (List[Token])
         # RETURNS:
             *   SearchResult[List[Token]] containing either:

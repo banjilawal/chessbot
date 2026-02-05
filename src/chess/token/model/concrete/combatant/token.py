@@ -38,7 +38,7 @@ class CombatantToken(Token):
             team: Team,
             designation: str,
             roster_number: int,
-            opening_square: str,
+            opening_square_name: str,
     ):
         super().__init__(
             id=id,
@@ -46,7 +46,7 @@ class CombatantToken(Token):
             rank=rank,
             designation=designation,
             roster_number=roster_number,
-            opening_square=opening_square,
+            opening_square=opening_square_name,
         )
         self._captor = None
     

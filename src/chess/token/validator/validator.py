@@ -124,7 +124,7 @@ class TokenValidator(Validator[Token]):
                     ex=team_validation.exception
                 )
             )
-        # Handle the case that the Token's roster or opening_square  fail validation and in the allowed range.
+        # Handle the case that the Token's roster or opening_square_name  fail validation and in the allowed range.
         roster_and_square_validation = identity_service.validate_identity(
             id_candidate=token.roster_number,
             name_candidate=token.opening_square

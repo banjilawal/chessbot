@@ -152,7 +152,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             # On validation success return a designation_TokenContext in the BuildResult.
             return BuildResult.success(TokenContext(designation=designation))
         
-        # Build the opening_square TokenContext if its flag is enabled.
+        # Build the opening_square_name TokenContext if its flag is enabled.
         if opening_square is not None:
             validation = square_service.validator.validate(opening_square)
             if validation.is_failure:

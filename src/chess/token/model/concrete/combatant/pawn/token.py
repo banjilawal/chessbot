@@ -11,7 +11,6 @@ from __future__ import annotations
 from typing import Optional
 
 from chess.team import Team
-from chess.square import Square
 from chess.rank import Pawn, Rank
 from chess.token import CombatantToken, MoveCategory, PromotionState
 
@@ -26,7 +25,7 @@ class PawnToken(CombatantToken):
             team: Team,
             designation: str,
             roster_number: int,
-            opening_square: Square,
+            opening_square_name: str,
     ):
         super().__init__(
             id=id,
@@ -34,10 +33,9 @@ class PawnToken(CombatantToken):
             rank=Pawn(),
             designation=designation,
             roster_number=roster_number,
-            opening_square=opening_square
+            opening_square_name=opening_square_name
         )
         self._previous_rank = None
-        self._move_category = MoveCategory.CANNOT_MOVE
         self._promotion_state = PromotionState.NOT_PROMOTED
     
     @property

@@ -7,49 +7,19 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.token import (
-    NullTokenStateException, Token, TokenException, ReadinessState, TokenService, TokenState,
-    TokenStateAnalysisFailedException
-)
-from chess.system import RelationAnalyzer, RelationReport
-
-
-class TokenStateAnalyzer(RelationAnalyzer[TokenState, Token]):
-    
-    @classmethod
-    def analyze(
-            cls,
-            candidate_satellite: Token,
-            candidate_primary: TokenState,
-            token_service: TokenService = TokenService(),
-    ) -> RelationReport[TokenState, Token]:
-        """"""
-        method = "TokenStateAnalyzer.analyze"
-
-        # Handle the case that the candidate_satellites is not certified.
-        token_validation = token_service.validator.validate(candidate=candidate_satellite)
-        if token_validation.is_failure:
-            # Return the exception chain on failure.
-            return RelationReport.failure(
-                TokenStateAnalysisFailedException(
-                    message=f"{method}: {TokenStateAnalysisFailedException.DEFAULT_MESSAGE}",
-                    ex=token_validation.exception
-                )
-            )
-
-
 from __future__ import annotations
 from typing import cast
 
-from chess.rank.model.concrete.king import King
-from chess.system import ChessException, LoggingLevelRouter, RelationAnalyzer, RelationReport, ValidationResult
+from chess.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
 from chess.token import (
-    ActivityState, CombatantToken, KingActivityState, KingReadinessEnum, KingToken, Token,
-    TokenValidator
+    NullTokenStateException, TokenException, ReadinessState,  TokenReadniessAnalysisFailedException, CombatantToken,
+    KingToken, Token, TokenValidator
 )
 
 
-class TokenReadinessAnalysis(RelationAnalyzer[ActivityState, Token]):
+
+
+class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -65,21 +35,20 @@ class TokenReadinessAnalysis(RelationAnalyzer[ActivityState, Token]):
         if candidate_primary is None:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                TokenStateAnalysisFailedException(
-                    message=f"{method}: {TokenStateAnalysisFailedException.DEFAULT_MESSAGE}",
-                    ex=NullTokenStateException(f"{method}: {TokenStateAnalysisFailedException.DEFAULT_MESSAGE}")
+                TokenReadniessAnalysisFailedException(
+                    message=f"{method}: {TokenReadniessAnalysisFailedException.DEFAULT_MESSAGE}",
+                    ex=NullTokenStateException(f"{method}: {TokenReadniessAnalysisFailedException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case that the candidate_primary is the wrong type.
         if not isinstance(candidate_primary, TokenState):
             # Return the exception chain on failure.
             return RelationReport.failure(
-                TokenStateAnalysisFailedException(
-                    message=f"{method}: {TokenStateAnalysisFailedException.DEFAULT_MESSAGE}",
+                TokenReadniessAnalysisFailedException(
+                    message=f"{method}: {TokenReadniessAnalysisFailedException.DEFAULT_MESSAGE}",
                     ex=TypeError(f"{method}: Expected TokenState, got {type(candidate_primary).__name__} instead.")
                 )
             )
-        
         # Handle the case that the token is not certified as safe.
         validation_result = token_validator.validate(candidate=candidate_satellite)
         # Send the exception chain on failre.

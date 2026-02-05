@@ -1,6 +1,6 @@
 __all__ = [
     # ======================# ROSTER_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-    "TokenStateAnalysisFailedException",
+    "TokenReadniessAnalysisFailedException",
 ]
 
 from chess.system import AnalysisFailedException
@@ -8,7 +8,7 @@ from chess.token import TokenStateException
 
 
 # ======================# ROSTER_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-class TokenStateAnalysisFailedException(TokenStateException, AnalysisFailedException):
+class TokenReadniessAnalysisFailedException(TokenStateException, AnalysisFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

@@ -32,7 +32,7 @@ class TokenContext(Context[Token]):
         *   rank (Rank)
         *   ransom (str)
         *   coord (Coord)
-        *   opening_square (Square)
+        *   opening_square_name (Square)
     """
     _rank: Optional[Rank]
     _team: Optional[Team]
@@ -100,5 +100,5 @@ class TokenContext(Context[Token]):
             "coord": self._coord,
             "ransom": self._ransom,
             "designation": self.designation,
-            "opening_square": self._opening_square
+            "opening_square_name": self._opening_square
         }
