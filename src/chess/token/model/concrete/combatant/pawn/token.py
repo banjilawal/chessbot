@@ -16,7 +16,6 @@ from chess.token import CombatantToken, MoveCategory, PromotionState
 
 
 class PawnToken(CombatantToken):
-    _motion_category: MoveCategory
     _promotion_state: PromotionState
     
     def __init__(
@@ -61,7 +60,7 @@ class PawnToken(CombatantToken):
     def is_promoted(self) -> bool:
         return not isinstance(self.rank, Pawn) and self._promotion_state != PromotionState.NOT_PROMOTED
     
-    def promote(self, new_rank: Rank):
+    def set_new_rank(self, new_rank: Rank):
         self._set_rank(new_rank)
     
     @property
@@ -74,7 +73,7 @@ class PawnToken(CombatantToken):
         
     @property
     def is_developed(self) -> bool:
-        return self._positions > 1 and self.move_category == MoveCategory.DEVELOPED
+        return self.positions.size > 1 and self.move_category == MoveCategory.DEVELOPED
     
     @property
     def can_open(self) -> bool:

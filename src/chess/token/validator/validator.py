@@ -210,10 +210,11 @@ class TokenValidator(Validator[Token]):
         # Tests have been passed return cast the candidate to CombatantToken and return to the caller.
         return ValidationResult.success(payload=cast(CombatantToken, candidate))
     
-    def verify_actionable_token(self, token: Token) -> ValidationResult[Token]:
+    @classmethod
+    def verify_actionable_token(cls, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_actionable_token"
         # Handle the case that the occupant is not certified safe.
-        token_validation = self.validator.validate(candidate=token)
+        token_validation = cls.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -236,10 +237,11 @@ class TokenValidator(Validator[Token]):
         # The occupant is actionable.
         return ValidationResult.success(token)
     
-    def verify_disabled_token(self, token: Token) -> ValidationResult[Token]:
+    @classmethod
+    def verify_disabled_token(cls, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_disabled_token"
         # Handle the case that the occupant is not certified safe.
-        token_validation = self.validator.validate(candidate=token)
+        token_validation = cls.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -262,10 +264,11 @@ class TokenValidator(Validator[Token]):
         # The occupant is disabled
         return ValidationResult.success(token)
     
-    def verify_capture_activated_token(self, token: Token) -> ValidationResult[Token]:
+    @classmethod
+    def verify_capture_activated_token(cls, token: Token) -> ValidationResult[Token]:
         method = "TokenService.verify_capture_activated_token"
         # Handle the case that the occupant is enable.
-        token_validation = self.verify_disabled_token(token)
+        token_validation = cls.verify_disabled_token(token)
         if token.is_active:
             # Return the exception chain on failure.
             return ValidationResult.failure(

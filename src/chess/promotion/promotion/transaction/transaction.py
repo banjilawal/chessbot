@@ -40,7 +40,7 @@ class OldPromotionTransaction(TravelTransaction[PromotionEvent]):
                     )
                 )
         
-            self.event.actor.promote(self.event.new_rank)
+            self.event.actor.set_new_rank(self.event.new_rank)
             if not isinstance(self.event.actor.rank_name, self.event.new_rank):
                 self.event.actor._set_rank(self.event.actor.previous_rank)
                 self.event.actor.previous_rank = None

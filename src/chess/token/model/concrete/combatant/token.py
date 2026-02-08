@@ -46,7 +46,7 @@ class CombatantToken(Token):
             rank=rank,
             designation=designation,
             roster_number=roster_number,
-            opening_square=opening_square_name,
+            opening_square_name=opening_square_name,
         )
         self._captor = None
     

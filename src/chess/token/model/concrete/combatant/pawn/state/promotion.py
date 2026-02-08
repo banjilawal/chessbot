@@ -12,6 +12,6 @@ from enum import Enum, auto
 class PromotionState(Enum):
     NOT_PROMOTED = auto(),
     PROMOTED_TO_QUEEN = auto(),
-    PROMOTED_TO_CASTLE = auto(),
+    PROMOTED_TO_ROOK = auto(),
     PROMOTED_TO_BISHOP = auto(),
     PROMOTED_TO_KNIGHT = auto(),
