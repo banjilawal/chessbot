@@ -14,3 +14,4 @@ from .state import *
 
 # Modules
 from .token import PawnToken
+from .exception import PawnTokenException
