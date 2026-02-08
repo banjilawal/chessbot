@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .null import NullTokenStateException
+from .null import ReadinessStateNullException
 from .wrapper import  TokenReadniessAnalysisFailedException

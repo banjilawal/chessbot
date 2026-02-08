@@ -10,24 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from chess.board import Board, BoardService, DisabledTokenCannotExploreException
-from chess.formation import FormationService
+from chess.square import SquareContext
+from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
-from chess.square import Square, SquareContext
-from chess.system import (
-    DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, ValidationResult,
-    id_emitter
-)
-from chess.system.transfer import TransferResult
 from chess.token import (
-    KingToken, OverMoveUndoLimitException, Token, TokenBoardState, TokenDeploymentFailedException, TokenException,
-    TokenFactory,
-    TokenOpeningSquareNotFoundException,
+    OverMoveUndoLimitException, Token, TokenAlreadyDeployedOnBoardException, TokenBoardState, TokenValidator,
+    TokenDeploymentFailedException, TokenFactory, TokenReadinessAnalyzer, TokenOpeningSquareNotFoundException,
     TokenServiceException,
-    TokenValidator
 )
-from chess.token.factory.manifest.service.service import TokenManifestService
-from chess.token.service.exception.deploy.state import TokenAlreadyDeployedOnBoardException
 
 
 class TokenService(EntityService[Token]):
@@ -53,12 +43,15 @@ class TokenService(EntityService[Token]):
         *   See EntityService for inherited attributes.
     """
     SERVICE_NAME = "TokenService"
+    _readiness_analyzer: TokenReadinessAnalyzer
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             builder: TokenFactory = TokenFactory(),
+            validator: TokenValidator = TokenValidator(),
+            readiness_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer(),
     ):
         """
         # ACTION:
@@ -77,8 +70,7 @@ class TokenService(EntityService[Token]):
         None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
-        self._manifest_service = manifest_service
-        self._formation_service = formation_service
+        self._readiness_analyzer = readiness_analyzer
     
     @property
     def builder(self) -> TokenFactory:
@@ -89,12 +81,15 @@ class TokenService(EntityService[Token]):
     def validator(self) -> TokenValidator:
         """get TokenValidator"""
         return cast(TokenValidator, self.entity_validator)
+    
+    @property
+    def readiness_analyzer(self) -> TokenReadinessAnalyzer:
+        return self._readiness_analyzer
         
     @LoggingLevelRouter.monitor
     def pop_coord_from_token(self, token) -> DeletionResult[Coord]:
         """
         # ACTION:
-        
             1.  If the occupant fails validation returns the exception in the DeletionResult.
             2.  If the occupant has not been activated with an opening item return the exception in the DeletionResult.
             3.  If the occupant has an empty coord stack return the exception in the DeletionResult.
@@ -124,7 +119,7 @@ class TokenService(EntityService[Token]):
                 )
             )
         # Handle the case that the opening item is null which implies there are no moves to undo.
-        if token.opening_square is None:
+        if token.opening_square_name is None:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenServiceException(
@@ -173,7 +168,7 @@ class TokenService(EntityService[Token]):
             token: Token,
             position: Coord,
             coord_service: CoordService = CoordService()
-    ) -> InsertionResult[Coord]:
+    ) -> InsertionResult:
         """
         # ACTION:
             1.  If the occupant or coord fail their validations return the exception in the InsertionResult.
@@ -279,15 +274,13 @@ class TokenService(EntityService[Token]):
                     message=f"{method}: {TokenService.ERROR_CODE}",
                     ex=TokenDeploymentFailedException(
                         message=f"{method}: {TokenDeploymentFailedException.ERROR_CODE}",
-                        ex=TokenAlreadyDeployedOnBoardException(
-                            message=f"{method}: {TokenAlreadyDeployedOnBoardException.DEFAULT_MESSAGE}",
-                        )
+                        ex=TokenAlreadyDeployedOnBoardException(f"{method}:")
                     )
                 )
             )
         # Find the square where the token gets formed.
         square_search_result = token.team.board.squares.search(
-            context=SquareContext(token.opening_square)
+            context=SquareContext(token.opening_square_name)
         )
         # Handle the case that the search is not completed.
         if square_search_result.is_failure:
@@ -334,7 +327,7 @@ class TokenService(EntityService[Token]):
             )
         # --- Assure that token.board_state has been updated. ---#
         if token.board_state == TokenBoardState.NEVER_BEEN_PLACED:
-            token.board_state = TokenBoardState.DEPLOYED_ON_BOARED
+            token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
             
         # Send the success result to the caller.
         return InsertionResult.success()

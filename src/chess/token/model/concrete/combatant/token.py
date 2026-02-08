@@ -54,7 +54,7 @@ class CombatantToken(Token):
     def is_active(self) -> bool:
         return (
                 self._captor is None and
-                self.board_state == TokenBoardState.DEPLOYED_ON_BOARED
+                self.board_state == TokenBoardState.DEPLOYED_ON_BOARD
         )
     
     @property
@@ -65,7 +65,7 @@ class CombatantToken(Token):
     def capture_is_activated(self) -> bool:
         return (
                 self._captor is not None and
-                self.board_state == TokenBoardState.DEPLOYED_ON_BOARED and
+                self.board_state == TokenBoardState.DEPLOYED_ON_BOARD and
                 self.readiness_state == ReadinessState.CAPTURE_ACTIVATED
         )
     

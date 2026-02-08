@@ -1,6 +1,6 @@
 __all__ = [
     # ======================# NULL_TOKEN_STATE EXCEPTION #======================#
-    "NullTokenStateException",
+    "ReadinessStateNullException",
 ]
 
 from chess.system import NullException
@@ -8,7 +8,7 @@ from chess.token import TokenStateException
 
 
 # ======================# NULL_TOKEN_STATE EXCEPTION #======================#
-class NullTokenStateException(TokenStateException, NullException):
+class ReadinessStateNullException(TokenStateException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -17,7 +17,7 @@ class NullTokenStateException(TokenStateException, NullException):
 
     # PARENT:
         *   TokenStateException
-        *   NullTokenStateException
+        *   ReadinessStateNullException
 
     # PROVIDES:
     None

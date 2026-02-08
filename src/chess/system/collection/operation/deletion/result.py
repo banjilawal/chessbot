@@ -10,7 +10,7 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, DataResultEnum, DeletionResultEnum
+from chess.system import DataResult, DeletionResultEnum
 from chess.system.collection.operation.deletion.state.state import DeletionResultState
 
 T = TypeVar("T")

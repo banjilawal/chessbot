@@ -94,7 +94,7 @@ class TokenDatabase(Database[Token]):
     
     @property
     def stack_state(self) -> TokenStackState:
-        return self._token_stack.deployment_state
+        return self._token_stack.stack_state
     
     @stack_state.setter
     def stack_state(self, state: TokenStackState):

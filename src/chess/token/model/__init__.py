@@ -15,4 +15,3 @@ from .concrete import *
 
 # Modules
 from .abstract import Token
-from .exception import TokenException

@@ -14,4 +14,5 @@ None
 
 # Modules
 from .wrapper import TokenDeploymentFailedException
+from .state import TokenAlreadyDeployedOnBoardException
 from .unfound import TokenOpeningSquareNotFoundException

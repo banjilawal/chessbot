@@ -1,7 +1,7 @@
-# src/chess/system/collection/stack/exception/__init__.py
+# src/chess/system/collection/stack/exception/stack.py
 
 """
-Module: chess.system.collection.stack.exception.__init__
+Module: chess.system.collection.stack.exception.stack
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -54,7 +54,7 @@ class StackService(ABC, Generic[D]):
     _entity_service: EntityService[D]
     _context_service: ContextService[C]
 
-    def __init__(
+    def stack(
             self,
             id: int,
             name: str,

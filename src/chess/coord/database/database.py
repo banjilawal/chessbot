@@ -104,12 +104,32 @@ class CoordDatabase(Database[Coord]):
     
     @LoggingLevelRouter.monitor
     def search(self, context: CoordContext) -> SearchResult[List[Coord]]:
-        search_result = self._coord_stack.coord_search(context)
+        """
+        # ACTION:
+            1.  If coord_context fails validation send the exception chain in the SearchResult. Else use the
+                coord_context_service to run the search.
+            2.  If the search fails send the exception chain in the SearchResult. Else, send the search_result.
+        # PARAMETERS:
+            *   coord_context (CoordContext)
+        # RETURN:
+            *   SearchResult[Coord] containing either:
+                - On failure: Exception
+                - On success: Coord in the payload.
+                - On empty: Payload is null, Exception is null.
+        # RAISES:
+            *   CoordStackException
+        """
+        method = "CoordStack.coord_search"
+        
+        search_result = self._coord_stack.context_service.finder.find(context=context)
+        # Handle the case that a successful search result does not have List[Coord] as its payload.
         if search_result.is_failure:
+            # Return the exception chain on failure.
             return SearchResult.failure(
                 CoordDatabaseException(
                     message=f"ServiceId:{self.id}, {CoordDatabaseException.ERROR_CODE}",
                     ex=search_result.exception
                 )
             )
+        # Empty or successful searches are directly returned to the caller.
         return search_result

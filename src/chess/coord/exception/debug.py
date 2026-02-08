@@ -38,4 +38,4 @@ class CoordDebugException(CoordException, DebugException):
      None
     """
     ERROR_CODE = "COORD_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A item debug error occurred."
+    DEFAULT_MESSAGE = "A Coord debug error occurred."

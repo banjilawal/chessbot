@@ -14,8 +14,6 @@ from chess.system import RelationStatus
 P = TypeVar("P")
 S = TypeVar("S")
 
-
-
 class RelationReport(Generic[P, S]):
     _primary: Optional[P]
     _satellite: Optional[S]

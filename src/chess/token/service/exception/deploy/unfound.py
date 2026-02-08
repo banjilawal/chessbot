@@ -1,14 +1,14 @@
-# src/chess/token/service/exception/unopened.py
+# src/chess/token/service/exception/unfound.py
 
 """
-Module: chess.token.service.exception.unopened
+Module: chess.token.service.exception.unfound
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.token import TokenException
+from chess.token import TokenDebugException
 
 __all__ = [
     # ======================# TOKEN_OPENING_SQUARE_NULL EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# TOKEN_OPENING_SQUARE_NULL EXCEPTION #======================#
-class TokenOpeningSquareNotFoundException(TokenException, NullException):
+class TokenOpeningSquareNotFoundException(TokenDebugException, NullException):
     """
     # ROLE: Debug, Error Tracing
 

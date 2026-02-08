@@ -12,7 +12,7 @@ from typing import cast
 
 from chess.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
 from chess.token import (
-    NullTokenStateException, TokenException, ReadinessState,  TokenReadniessAnalysisFailedException, CombatantToken,
+    ReadinessStateNullException, TokenException, ReadinessState, TokenReadniessAnalysisFailedException, CombatantToken,
     KingToken, Token, TokenValidator
 )
 
@@ -37,11 +37,11 @@ class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
             return RelationReport.failure(
                 TokenReadniessAnalysisFailedException(
                     message=f"{method}: {TokenReadniessAnalysisFailedException.DEFAULT_MESSAGE}",
-                    ex=NullTokenStateException(f"{method}: {TokenReadniessAnalysisFailedException.DEFAULT_MESSAGE}")
+                    ex=ReadinessStateNullException(f"{method}: {ReadinessStateNullException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the case that the candidate_primary is the wrong type.
-        if not isinstance(candidate_primary, TokenState):
+        if not isinstance(candidate_primary, ReadinessState):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 TokenReadniessAnalysisFailedException(

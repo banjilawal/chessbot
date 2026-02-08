@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from chess.persona import Persona
 from chess.team import Team, TeamService
-from chess.rank import Rank, RankService
+from chess.rank import RankService
 from chess.formation import Formation, FormationService
 from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter, id_emitter
 from chess.token import CombatantToken, KingToken, PawnToken, TokenBuildFailedException, Token
@@ -130,9 +130,6 @@ class TokenFactory(Builder[Token]):
             rank_service=rank_service,
         )
         
-
-
-            
     @classmethod
     @LoggingLevelRouter.monitor
     def _build_pawn(

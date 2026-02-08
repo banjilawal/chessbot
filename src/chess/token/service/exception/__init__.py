@@ -13,5 +13,5 @@ version: 1.0.0
 from .deploy import *
 
 # Modules
-from .catchall import TokenServiceException
 from .undo import OverMoveUndoLimitException
+from .catchall import TokenServiceException

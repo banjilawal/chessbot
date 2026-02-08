@@ -17,8 +17,6 @@ from chess.system import LoggingLevelRouter, RelationReport
 P = TypeVar("P")
 S = TypeVar("S")
 
-
-
 class RelationAnalyzer(ABC, Generic[P, S]):
     
     @classmethod

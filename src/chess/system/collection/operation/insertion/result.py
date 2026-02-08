@@ -8,9 +8,9 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar, cast
+from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, DataResultEnum, InsertionResultState
+from chess.system import DataResult, InsertionResultEnum, InsertionResultState
 
 T = TypeVar("T")
 
@@ -49,7 +49,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 self.payload and
                 self.exception is None and
-                DataResultEnum.SUCCESS
+                self.state.classification == InsertionResultEnum.SUCCESS
         )
     
     @property
@@ -57,7 +57,7 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 not self.payload and
                 self.exception is not None and
-                DataResultEnum.FAILURE
+                self.state.classification == InsertionResultEnum.FAILURE
         )
     
     @property
@@ -65,30 +65,30 @@ class InsertionResult(DataResult[T], Generic[T]):
         return (
                 not self.payload and
                 self.exception is not None and
-                DataResultEnum.TIMED_OUT
+                self.state.classification == InsertionResultEnum.TIMED_OUT
         )
     
     @classmethod
-    def success(cls,) -> InsertionResult[T]:
+    def success(cls,) -> InsertionResult[bool]:
         return cls(
             payload=True,
             exception=None,
-            state=DataResultEnum.SUCCESS,
+            state=InsertionResultState(InsertionResultEnum.SUCCESS),
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> InsertionResult[T]:
+    def failure(cls, exception: Exception) -> InsertionResult[bool]:
         return cls(
             payload=False,
             exception=exception,
-            state=DataResultEnum.FAILURE,
+            state=InsertionResultState(InsertionResultEnum.FAILURE),
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> InsertionResult[T]:
+    def timed_out(cls, exception: Exception) -> InsertionResult[bool]:
         return cls(
             payload=False,
             exception=exception,
-            state=DataResultEnum.TIMED_OUT,
+            state=InsertionResultState(InsertionResultEnum.TIMED_OUT),
         )
 
