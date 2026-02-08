@@ -21,7 +21,7 @@ class InsertionFailedException(DatasetException, OperationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why a insertion operation failed. The encapsulated 
+    1.  Wrap debug exceptions indicating why a insertion operation failed. The encapsulated 
         exceptions create a chain for tracing the source of the failure.
 
     # PARENT:

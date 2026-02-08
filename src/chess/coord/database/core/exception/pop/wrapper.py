@@ -22,7 +22,7 @@ class PoppingCoordStackFailedException(CoordException, DeletionFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why popping a Coord from the stack fails. The encapsulated 
+    1.  Wrap debug exceptions indicating why popping a Coord from the stack fails. The encapsulated 
         exceptions create a chain for tracing the source of the failure.
 
     # PARENT:

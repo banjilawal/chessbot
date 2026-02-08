@@ -62,26 +62,7 @@ class PawnToken(CombatantToken):
     
     def set_new_rank(self, new_rank: Rank):
         self._set_rank(new_rank)
-    
-    @property
-    def move_category(self) -> MoveCategory:
-        return self._move_category
-    
-    @move_category.setter
-    def move_category(self, move_category: MoveCategory):
-        self._move_category = move_category
-        
-    @property
-    def is_developed(self) -> bool:
-        return self.positions.size > 1 and self.move_category == MoveCategory.DEVELOPED
-    
-    @property
-    def can_open(self) -> bool:
-        return self._positions.size == 1 and self._move_category == MoveCategory.NULL
-    
-    
-
-    
+       
     def __eq__(self, other):
         if super().__eq__(other):
             if isinstance(other, PawnToken):

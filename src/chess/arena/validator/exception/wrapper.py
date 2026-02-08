@@ -22,8 +22,7 @@ class ArenaValidationFailedException(ArenaException, ValidationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why a candidate failed its validation as an Arena. The encapsulated
-        exceptions create a chain for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as an Arena. The exception chain traces the ultimate source of failure.
 
     # PARENT:
         *   ArenaException

@@ -22,8 +22,7 @@ class CoordValidationFailedException(CoordException, ValidationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Coord. The encapsulated
-        exceptions create a chain for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Coord. The exception chain traces the ultimate source of failure.
 
     # PARENT:
         *   CoordException

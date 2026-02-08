@@ -24,7 +24,7 @@ class TokenContextValidationFailedException(TokenContextException, ValidationFai
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a TokenContext. The
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a TokenContext. The
         encapsulated exceptions create a chain for tracing the source of the failure.
 
     # PARENT:

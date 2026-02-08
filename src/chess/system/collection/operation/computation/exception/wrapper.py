@@ -21,7 +21,7 @@ class ComputationFailedException(CollectionException, OperationFailedException):
     # ROLE: Exception Wrapper, Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why a calculation operation failed. The encapsulated exceptions create
+    1.  Wrap debug exceptions indicating why a calculation operation failed. The encapsulated exceptions create
         chain for tracing the source of the failure.
 
     # PARENT:

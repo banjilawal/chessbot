@@ -13,7 +13,7 @@ class TeamRosterTokenDeletionFailedException(TeamRosterException, OperationFaile
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why deleting a Roster member fails. The encapsulated exceptions create
+    1.  Wrap debug exceptions indicating why deleting a Roster member fails. The encapsulated exceptions create
         chain for tracing the source of the failure.
 
     # PARENT:

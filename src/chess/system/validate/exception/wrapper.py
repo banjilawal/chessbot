@@ -21,7 +21,7 @@ class ValidationFailedException(OperationFailedException):
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
   
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why a validation operation failed. The encapsulated exceptions create a chain
+    1.  Wrap debug exceptions indicating why a validation operation failed. The encapsulated exceptions create a chain
         for tracing the source of the failure.
 
     # PARENT:

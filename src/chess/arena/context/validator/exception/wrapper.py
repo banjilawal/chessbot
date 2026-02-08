@@ -22,7 +22,7 @@ class ArenaContextValidationFailedException(ArenaContextException, ValidationFai
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why a candidate failed its validation as an ArenaContext. The
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as an ArenaContext. The
         encapsulated exceptions create a chain for tracing the source of the failure.
 
     # PARENT:

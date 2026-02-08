@@ -7,9 +7,36 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+
+__all__ = [
+    # ======================# TOKEN_DEPLOYMENT_FAILURE EXCEPTION #======================#
+    "TokenDeploymentFailedException",
+]
+
 from chess.token import TokenException
+from chess.system import OperationFailedException
 
-
+# ======================# TOKEN_DEPLOYMENT_FAILURE EXCEPTION #======================#
 class TokenDeploymentFailedException(TokenException, OperationFailedException):
-    pass
+    """
+    # ROLE: Exception Wrapper
+
+    # RESPONSIBILITIES:
+    1.  Wrap debug exceptions indicating why a Token was not deployed onto its board. The exception chain traces
+        the ultimate source of failure.
+
+    # PARENT:
+        *   TokenException
+        *   OperationFailedException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "Token_DEPLOYMENT_FAILURE"
+    DEFAULT_MESSAGE = "Token deployment failed."

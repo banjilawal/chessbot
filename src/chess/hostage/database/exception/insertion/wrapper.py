@@ -22,7 +22,7 @@ class UniqueHostageManifestInsertionFailedException(HostageManifestException, In
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why inserting a unique manifest failed. The encapsulated
+    1.  Wrap debug exceptions indicating why inserting a unique manifest failed. The encapsulated
         exceptions create  chain for tracing the source of the failure.
 
     # PARENT:

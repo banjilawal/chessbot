@@ -22,8 +22,7 @@ class PoppingTeamStackFailedException(TeamStackException, DeletionFailedExceptio
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why TeamStack could not delete a team. The encapsulated
-        exceptions create a chain for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why TeamStack could not delete a team. The exception chain traces the ultimate source of failure.
 
     # PARENT:
         *   TeamStackException

@@ -22,7 +22,7 @@ class DeleteTokenBySearchFailedException(SquareException, DeletionFailedExceptio
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why deleting all occurrences of a item failed. deletion fails. The
+    1.  Wrap debug exceptions indicating why deleting all occurrences of a item failed. deletion fails. The
         encapsulated exceptions create chain for tracing the source of the failure.
 
     # PARENT:

@@ -13,7 +13,7 @@ class RankQuotaComputationFailedException(RankQuotaManagerException, Computation
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why a count of records holding a rank did not succeed. The encapsulated
+    1.  Wrap debug exceptions indicating why a count of records holding a rank did not succeed. The encapsulated
         exceptions create chain for tracing the source of the failure.
 
     # PARENT:

@@ -22,8 +22,7 @@ class PlayerValidationFailedException(PlayerException, ValidationFailedException
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why a candidate failed its validation as a Player. The encapsulated
-        exceptions create a chain for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Player. The exception chain traces the ultimate source of failure.
 
     # PARENT:
         *   PlayerException

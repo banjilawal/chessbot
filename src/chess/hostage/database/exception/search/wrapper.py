@@ -22,7 +22,7 @@ class UniqueHostageManifestSearchFailedException(HostageManifestException, Searc
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why inserting a unique HostageManifest failed. The encapsulated 
+    1.  Wrap debug exceptions indicating why inserting a unique HostageManifest failed. The encapsulated 
         exceptions create chain for tracing the source of the failure.
 
     # PARENT:

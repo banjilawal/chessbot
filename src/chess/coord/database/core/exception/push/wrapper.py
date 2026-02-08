@@ -22,7 +22,7 @@ class PushingCoordFailedException(CoordStackException, InsertionFailedException)
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions that indicate why pushing a Coord onto the stack fails. The encapsulated 
+    1.  Wrap debug exceptions indicating why pushing a Coord onto the stack fails. The encapsulated 
         exceptions create a chain for tracing the source of the failure.
 
     # PARENT:
