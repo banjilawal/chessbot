@@ -10,11 +10,12 @@ version: 1.0.0
 #=========== TEAM PACKAGE CONTENTS ===========#
 
 # Packages
+from .hash import *
+from .roster import *
 from .builder import *
 from .context import *
 from .database import *
 from .service import *
-from .roster import *
 from .hostage import *
 from .validator import *
 from .exception import *

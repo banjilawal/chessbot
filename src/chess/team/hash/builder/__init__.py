@@ -13,4 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .hash import TeamHash
+from .builder import TeamHashBuilder
+from .wrapper import TeamHashBuildFailedException

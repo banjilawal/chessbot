@@ -1,3 +1,12 @@
+# src/chess/team/hash/exception/base.py
+
+"""
+Module: chess.team.hash.exception.base
+Author: Banji Lawal
+Created: 2025-02-08
+version: 1.0.0
+"""
+
 __all__ = [
     # ======================# TEAM_HASH EXCEPTION #======================#
     "TeamHashException",

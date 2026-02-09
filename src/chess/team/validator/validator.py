@@ -98,7 +98,7 @@ class TeamValidator(Validator[Team]):
         id_validation = identity_service.validate_id(candidate=team.id)
         if id_validation.is_failure:
             # Return the exception chain on failure.
-            return ValidationResult(
+            return ValidationResult.failure(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
                     ex=id_validation.exception
@@ -109,7 +109,7 @@ class TeamValidator(Validator[Team]):
         if schema_validation.is_failure:
             if id_validation.is_failure:
                 # Return the exception chain on failure.
-                return ValidationResult(
+                return ValidationResult.failure(
                     TeamValidationFailedException(
                         message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
                         ex=schema_validation.exception
@@ -119,7 +119,7 @@ class TeamValidator(Validator[Team]):
         owner_verification = cls._validate_owner(team=team, owner_service=owner_service)
         if owner_verification.is_failure:
             # Return the exception chain on failure.
-            return ValidationResult(
+            return ValidationResult.failure(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
                     ex=owner_verification.exception
@@ -129,7 +129,7 @@ class TeamValidator(Validator[Team]):
         board_verification = cls._validate_board(team=team, board_service=board_service)
         if board_verification.is_failure:
             # Return the exception chain on failure.
-            return ValidationResult(
+            return ValidationResult.failure(
                 TeamValidationFailedException(
                     message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
                     ex=board_verification.exception

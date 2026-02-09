@@ -18,12 +18,14 @@ from chess.system import ComputationResult, GameColor, HashService, LoggingLevel
 
 class SchemaService(HashService[Schema]):
     SERVICE_NAME = "SchemaService"
+    _schema: Schema
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
             validator: SchemaValidator = SchemaValidator(),
             super_key_service: SchemaKeyService = SchemaKeyService(),
+            _schema: Schema = Schema(),
     ):
         """
         # ACTION:
@@ -39,6 +41,10 @@ class SchemaService(HashService[Schema]):
             None
         """
         super().__init__(id=id, name=name, validator=validator, super_key_service=super_key_service)
+        
+    @property
+    def schema(self) -> Schema:
+        return self._schema
         
     @property
     def key_service(self) -> SchemaKeyService:

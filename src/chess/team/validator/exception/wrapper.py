@@ -22,7 +22,8 @@ class TeamValidationFailedException(TeamException, ValidationFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Team. The exception chain traces the ultimate source of failure.
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Team. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   TeamException
