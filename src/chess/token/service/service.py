@@ -16,7 +16,11 @@ from chess.square import SquareContext
 from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
 from chess.token import (
-    OverMoveUndoLimitException, PawnToken, PromotionState, Token, TokenAlreadyDeployedOnBoardException, TokenBoardState,
+    CannotPromotePawnToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
+    PawnAlreadyPromotedException,
+    PawnPromotionFailedException, PawnPromotionRouteException, PawnToken,
+    PromotionState, Token,
+    TokenAlreadyDeployedOnBoardException, TokenBoardState,
     TokenValidator,
     TokenDeploymentFailedException, TokenFactory, TokenReadinessAnalyzer, TokenOpeningSquareNotFoundException,
     TokenServiceException,
@@ -281,7 +285,9 @@ class TokenService(EntityService[Token]):
                     message=f"ServiceId:{self.id}, {method}: {TokenService.ERROR_CODE}",
                     ex=PawnPromotionFailedException(
                         message=f"{method}: {PawnPromotionFailedException.ERROR_CODE}",
-                        ex=f"{method}: Expected type PawnToken for promotion. Got {type(pawn).__name__} instead."
+                        ex=TypeError(
+                            f"{method}: Expected type PawnToken for promotion. Got {type(pawn).__name__} instead."
+                        )
                     )
                 )
             )
@@ -349,6 +355,10 @@ class TokenService(EntityService[Token]):
         if isinstance(new_rank, Queen):
             pawn.promotion_state = PromotionState.PROMOTED_TO_QUEEN
         
+        # Send the success result to the caller.
+        return InsertionResult.success()
+            
+        
         
     
     @LoggingLevelRouter.monitor
@@ -358,7 +368,7 @@ class TokenService(EntityService[Token]):
             1.  If the token or coord fail their validations return the exception in the InsertionResult.
             2.  If the position is already the current position return the exception in the InsertionResult.
             3.  If the pushing the position to the token's coord stack fails encapsulate the exception then
-                send the exception chain in the InsertionResult.'
+                send the exception chain in the InsertionResult's payload.
         # PARAMETERS:
             *   token (Token)
         # RETURN:

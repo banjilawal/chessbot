@@ -10,8 +10,9 @@ version: 1.0.0
 # =========== TOKEN.MODEL.CONCRETE.COMBATANT.PAWN PACKAGE CONTENTS ===========#
 
 # Packages
-from .state import *
+None
 
 # Modules
 from .token import PawnToken
+from .state import PromotionState
 from .exception import PawnTokenException
