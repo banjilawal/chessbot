@@ -15,8 +15,8 @@ from chess.schema import SchemaService
 from chess.system import LoggingLevelRouter, Validator
 from chess.system.validate.result import ValidationResult
 from chess.team import (
-    BlackTeamHasWrongSchemaException, TeamHash, TeamHashNullException, TeamHashValidationFailedException, TeamValidator,
-    WhiteTeamHasWrongSchemaException
+    BlackTeamHasWrongSchemaException, TeamHash, TeamHashNullException, TeamHashValidationFailedException,
+    TeamValidator, WhiteTeamHasWrongSchemaException
 )
 
 

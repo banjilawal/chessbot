@@ -7,13 +7,14 @@ Created: 2025-11-21
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import cast
 
-from chess.square import AddingDuplicateSquareException, Square
+
 from chess.system import InsertionResult, LoggingLevelRouter, id_emitter, EntityService
 from chess.board import (
-    AddingBoardSquareFailedException, Board, BoardBuilder, BoardServiceException, BoardValidator,
-    BoardSquareRelationAnalyzer, BoardServiceInsertionOpFailedException, SquareOnDifferentBoardException,
+    Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardServiceException,
+    BoardState, BoardValidator,
 )
 
 
@@ -80,19 +81,56 @@ class BoardService(EntityService[Board]):
         return cast(BoardValidator, self.entity_validator)
     
     @LoggingLevelRouter.monitor
-    def layout_board(self, board: Board) -> InsertionResult[Board]:
+    def layout_board(self, board: Board) -> InsertionResult[bool]:
         method = "BoardService.layout_board"
         
+        # Handle the case that the board is not certified as safe.
         validation = self.validator.validate(candidate=board)
         if validation.is_failure:
+            # Return exception chain on failure
             return InsertionResult.failure(
                 BoardServiceException(
                     f"{method}: {BoardServiceException.DEFAULT_MESSAGE}",
-                    ex=validation.exception,
+                    ex=BoardLayoutFailedException(
+                        message=f"{method}: {BoardLayoutFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
                 )
             )
+        # Handle the case that the board has already been laid out.
+        if board.state == BoardState.HAS_BEEN_LAID_OUT:
+            # Return exception chain on failure
+            return InsertionResult.failure(
+                BoardServiceException(
+                    f"{method}: {BoardServiceException.DEFAULT_MESSAGE}",
+                    ex=BoardLayoutFailedException(
+                        message=f"{method}: {BoardLayoutFailedException.DEFAULT_MESSAGE}",
+                        ex=BoardAlreadyLaidOutException(
+                            f"{method}: {BoardLayoutFailedException.DEFAULT_MESSAGE}",
+                        )
+                    )
+                )
+            )
+        # --- Deploy each team's tokens on the board by looping through their hash-table. ---#
+        for key in board.team_hash.table.keys():
+            deployment_result = board.team_hash.table[key].roster.deploy_tokens_on_board
+            
+            # Handle the case that the team's deployment is not completed.
+            if deployment_result.is_failure:
+                # Return the exception chain on failure.
+                return InsertionResult.failure(
+                    BoardServiceException(
+                        f"{method}: {BoardServiceException.DEFAULT_MESSAGE}",
+                        ex=deployment_result.exception,
+                    )
+                )
+        # --- Update the board's state and send the success result to the caller. ---#
+        board.state = BoardState.HAS_BEEN_LAID_OUT
+        return InsertionResult.success()
         
-        for entry in board.team_hash.table:
+
+        
+            
         
         
 

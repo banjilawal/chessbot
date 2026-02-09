@@ -10,9 +10,6 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, cast
 
-
-
-
 from chess.rank import RankService
 from chess.schema import SchemaService
 from chess.formation import FormationKey, FormationService
@@ -49,6 +46,7 @@ class TeamService(EntityService[Team]):
         *   See EntityService for inherited attributes.
     """
     SERVICE_NAME = "TeamService"
+    
     _schema_service: SchemaService
     _roster_relation_analyzer: RosterRelationAnalyzer
     
@@ -242,8 +240,8 @@ class TeamService(EntityService[Team]):
             1.  If the item fails validation send the wrapped exception in the InsertionResult.
             2.  If a search for the item either fails or finds a match send the wrapped exception in the
                 InsertionResult.
-            3.  If the call to _token_database_core.insert_token fails send the wrapped exception in the InsertionResult.
-                Else send the outgoing result directly to the caller.
+            3.  If the call to _token_database_core.insert_token fails send the wrapped exception in the
+                InsertionResult. Else send the outgoing result directly to the caller.
         # PARAMETERS:
             *   team (Team)
         # RETURN:

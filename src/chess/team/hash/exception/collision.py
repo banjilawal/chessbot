@@ -12,6 +12,8 @@ __all__ = [
     "TeamSchemaCollisionException",
 ]
 
+from chess.team import TeamHashException
+
 
 # ======================# TEAM_HASH_SCHEMA_COLLISION EXCEPTION #======================#
 class TeamSchemaCollisionException(TeamHashException):

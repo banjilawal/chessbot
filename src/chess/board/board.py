@@ -7,9 +7,11 @@ Created: 2025-07-31
 version: 1.0.0
 """
 
+from __future__ import annotations
+
 from chess.arena import Arena
-from chess.board import BoardState
 from chess.team import TeamHash
+from chess.board import BoardState
 from chess.square import SquareDatabase
 from chess.hostage import HostageDatabase
 
@@ -76,6 +78,10 @@ class Board:
     def state(self) -> BoardState:
         return self._state
     
+    @state.setter
+    def state(self, state: BoardState):
+        self._state = state
+    
     @property
     def arena(self) -> Arena:
         return self._arena
@@ -92,7 +98,9 @@ class Board:
     def hostage_database(self) -> HostageDatabase:
         return self._hostage_database
     
-    def layout_board(self):
+    def layout(self):
+        for key in self._team_hash.table.keys():
+            self._team_hash.table[key].roster.deploy_tokens_on_board()
     
     
     def __eq__(self, other):

@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== BOARD.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
+from .layout import *
 from .insertion import *
 
 # Modules
