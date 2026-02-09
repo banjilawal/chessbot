@@ -3,7 +3,7 @@
 """
 Module: chess.token.service.exception.promote.double
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-02-08
 version: 1.0.0
 """
 

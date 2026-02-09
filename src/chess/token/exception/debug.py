@@ -3,7 +3,7 @@
 """
 Module: chess.token.exception.debug
 Author: Banji Lawal
-Created: 2026-01-26
+Created: 2026-02-08
 version: 1.0.0
 """
 

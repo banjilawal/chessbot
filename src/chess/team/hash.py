@@ -5,6 +5,26 @@ from chess.team import Team
 
 
 class TeamHash:
+    """
+    # ROLE: Data-Holding Structure, Indexer
+
+    # RESPONSIBILITY:
+    1.  Hash table for simplifying and centralizing operations on opposing teams in a game.
+    2.  Single unified entry point for team operations on the board.
+
+    # PARENT:
+    None
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   white_team (Team)
+        *   blake_team (Team)
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     _white_team: Team
     _black_team: Team
     
@@ -24,7 +44,7 @@ class TeamHash:
     def table(self) -> Dict[GameColor, Team]:
         return {
             GameColor.WHITE: self._white_team,
-            GameColor.BLACK: self._black_team
+            GameColor.BLACK: self._black_team,
         }
         
     
