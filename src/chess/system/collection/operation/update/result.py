@@ -6,11 +6,14 @@ Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
+
+from __future__ import annotations
+
 from abc import abstractmethod
 from platform import python_revision
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DTO, DataResult, DataResultEnum, UpdateResult, UpdateResultEnum, UpdateResultState
+from chess.system import DTO, DataResult, UpdateResultEnum, UpdateResultState
 
 T = TypeVar("T")
 
@@ -35,19 +38,19 @@ class UpdateResult(DataResult[T], Generic[T]):
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
-    _update: DTO
+    _updated_entity: T
 
     def __init__(
             self,
-            original: T,
+            original_data: JSONObject,
             state: UpdateResultState,
             exception: Optional[Exception] = None,
-            update: Optional[T] = None,
+            updated_entity: Optional[T] = None,
     ):
-        super().__init__(state=state, payload=update, exception=exception)
+        super().__init__(state=state, payload=updated_entity, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "UpdateResult.result"
-        self._original = original
+        self._original_data = original_data
         
     @property
     def previous(self) -> T:

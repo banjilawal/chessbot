@@ -96,7 +96,7 @@ class SquareService(EntityService[Square]):
         return self._square_token_relation_analyzer
     
     @LoggingLevelRouter.monitor
-    def remove_occupant(self, square: Square) -> DeletionResult[Token]:
+    def remove_occupant(self, square: Square) -> UpdateResult[Square]:
         method = "SquareService.remove_occupant_from_square"
         
         # Handle the case that the item is not certified safe.
@@ -138,7 +138,7 @@ class SquareService(EntityService[Square]):
             square: Square,
             token: Token,
             token_service: TokenService = TokenService()
-    ) -> InsertionResult[bool]:
+    ) -> UpdateResult[Square]:
         method = "SquareService.add_occupant_to_square"
         
         # Handle the case that the item is not certified safe.
