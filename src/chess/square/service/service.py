@@ -9,7 +9,6 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from copy import deepcopy
 from typing import cast
 
 from chess.square.service.exception.insertion import OccupiedSquareCannotRecieveFormationException
@@ -98,7 +97,7 @@ class SquareService(EntityService[Square]):
         return self._square_token_relation_analyzer
     
     @LoggingLevelRouter.monitor
-    def remove_occupant(self, square: Square) -> UpdateResult[Square]:
+    def remove_occupant(self, square: Square) -> DeletionResult[Token]:
         method = "SquareService.remove_occupant_from_square"
         
         # Handle the case that the item is not certified safe.
@@ -129,7 +128,7 @@ class SquareService(EntityService[Square]):
                 )
             )
         # Process removal if the item is occupied.
-        original_square = deepcopy(self)
+
         token = square.occupant
         square.occupant = None
         square.state = SquareState.EMPTY
