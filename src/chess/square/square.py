@@ -6,12 +6,14 @@ Author: Banji Lawal
 Created: 2025-07-26
 """
 
+from __future__ import annotations
 from typing import Optional
 
 from chess.board import Board
 from chess.coord import Coord
-from chess.square.state import SquareState
 from chess.token import Token
+from chess.square.state import SquareState
+
 
 
 class Square:

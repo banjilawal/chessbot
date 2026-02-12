@@ -7,12 +7,15 @@ Created: 2025-09-03
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import cast
 
 from chess.board import Board, BoardService
 from chess.coord import Coord, CoordService
-from chess.square import AddingDuplicateSquareException, Square, SquareBuildFailedException, SquareContext
-from chess.system import Builder, BuildResult, IdentityService, InvariantBreachException, LoggingLevelRouter, id_emitter
+from chess.square import Square, SquareBuildFailedException, SquareContext
+from chess.system import (
+    Builder, BuildResult, IdFactory, IdentityService, InvariantBreachException, LoggingLevelRouter,
+)
 
 
 class SquareBuilder(Builder[Square]):
@@ -45,7 +48,7 @@ class SquareBuilder(Builder[Square]):
             name: str,
             board: Board,
             coord: Coord,
-            id: int = id_emitter.square_id,
+            id: int = IdFactory.next_id(Square.__name__),
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),

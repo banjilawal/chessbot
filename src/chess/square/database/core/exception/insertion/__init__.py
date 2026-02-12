@@ -15,4 +15,5 @@ from .collision import *
 # Modules
 from .full import FullSquareStackException
 from .wrapper import SquareInsertionFailedException
+from .duplicate import AddingDuplicateSquareException
 from .direct import AppendingSquareDirectlyIntoItemsFailedException
