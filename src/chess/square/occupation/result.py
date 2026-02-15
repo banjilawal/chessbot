@@ -85,7 +85,7 @@ class OccupationResult(Result[Generic[T]]):
         return (
                 self.exception is not None and
                 self.payload is None and
-                self._state == OccupationState.EMPTY
+                self._state == OccupationState.NO_OCCUPANT
         )
     
     @property
@@ -110,4 +110,4 @@ class OccupationResult(Result[Generic[T]]):
     
     @classmethod
     def empty(cls) -> OccupationResult:
-        return cls(state=OccupationState.EMPTY)
+        return cls(state=OccupationState.NO_OCCUPANT)
