@@ -6,13 +6,13 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
-
+from math import sqrt
 from typing import cast
 
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
-from chess.system import BuildResult, ComputationResult, EntityService, NotNegativeNumberValidator, id_emitter
+from chess.system import BuildResult, ComputationResult, EntityService, id_emitter
 
 class CoordService(EntityService[Coord]):
     """
@@ -175,7 +175,24 @@ class CoordService(EntityService[Coord]):
                 CoordServiceException(ex=ex, message=f"{method}: {CoordServiceException.DEFAULT_MESSAGE}")
             )
         
+    def euclidean_distance(self, u: Coord, v: Coord) -> ComputationResult[int]:
+        method = "CoordService.euclidean_distance"
         
+        # Handle the case that the u is not certified as safe.
+        u_validation = self._validator.validate(candidate=u)
+        if u_validation.is_failure:
+            return ComputationResult.failure(u_validation.exception)
+        
+        # Handle the case that v is not certified as safe.
+        v_validation = self._validator.validate(candidate=v)
+        if v_validation.is_failure:
+            return ComputationResult.failure(v_validation.exception)
+        
+        # Compute the Euclidean distance and return it.
+        distance = sqrt(pow(base=(u.row - v.row), exp=2) + pow(base=(u.column - v.column), exp=2))
+        return ComputationResult.success(payload=cast(int, distance))
+        
+    
     def convert_vector_to_coord(
             self,
             vector: Vector,

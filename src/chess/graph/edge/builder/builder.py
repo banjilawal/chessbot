@@ -9,7 +9,7 @@ version: 1.0.0
 
 from chess.coord import CoordService
 from chess.graph import Edge, Vertex, VertexValidator
-from chess.system import BuildResult, Builder, LoggingLevelRouter
+from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter
 
 
 class EdgeBuilder(Builder[Edge]):
@@ -22,6 +22,50 @@ class EdgeBuilder(Builder[Edge]):
              head: Vertex, 
              tail: Vertex,
              coord_service: CoordService = CoordService(),
-             vertex_validator: VertexValidator = VertexValidator(), 
+             vertex_validator: VertexValidator = VertexValidator(),
+             identity_service: IdentityService = IdentityService(),
      ) -> BuildResult[Edge]:
-         pass
+         method = "EdgeBuilder.build"
+         
+         # Handle the case that the id is not certified safe.
+         id_validation = identity_service.validate_id(id)
+         if id_validation.is_failure:
+             # Return the exception chain on failure.
+             return BuildResult.failure(id_validation.exception)
+         
+         # Handle the case that the head is not certified safe.
+         head_validation = vertex_validator.validate(candidate=head)
+         if head_validation.is_failure:
+             # Return the exception chain on failure
+             return BuildResult.failure(head_validation.exception)
+         
+         # Handle the case that the tail is not certified safe.
+         tail_validation = vertex_validator.validate(candidate=tail)
+         if head_validation.is_failure:
+             # Return the exception chain on failure
+             return BuildResult.failure(tail_validation.exception)
+         
+         
+         distance_computation_result = coord_service.euclidean_distance(head.square.coord, tail.square.coord)
+         # Handle the case that the distance is not computed.
+         if distance_computation_result.is_failure:
+             # Return the exception chain on failure
+             return BuildResult.failure(distance_computation_result.exception)
+         
+         # Create the Edge with a heuristic of zero. Then return to the caller.
+         return BuildResult.success(
+             payload=Edge(
+                 id=id,
+                 head=head,
+                 tail=tail,
+                 heuristic=0,
+                 distance=distance_computation_result.payload,
+             )
+         )
+         
+         
+         
+         if not tail.square.is_empty:
+         
+         return BuildResult.success(Edge(id=id, head=head, tail=tail, distance=distance_computation_result.value)
+    
