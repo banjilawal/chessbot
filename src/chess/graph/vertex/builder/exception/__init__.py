@@ -3,14 +3,14 @@
 """
 Module: chess.graph.square.builder.exception.__init__
 Author: Banji Lawal
-Created: 2025-10-28
+Created: 2026-02-17
 version: 1.0.0
 """
 
 # =========== GRAPH.SQUARE.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
+
 
 # Modules
 from .wrapper import VertexBuildFailedException

@@ -6,7 +6,11 @@ Author: Banji Lawal
 Created: 2025-10-28
 version: 1.0.0
 """
+
+from __future__ import annotations
 from typing import List
+
+from chess.graph import Vertex
 
 
 class Graph:

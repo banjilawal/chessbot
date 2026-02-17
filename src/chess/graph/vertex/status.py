@@ -1,9 +1,9 @@
-# src/chess/graph/square/status.py
+# src/chess/graph/vertex/status.py
 
 """
-Module: chess.graph.square.status
+Module: chess.graph.vertex.status
 Author: Banji Lawal
-Created: 2025-10-28
+Created: 2026-02-17
 version: 1.0.0
 """
 

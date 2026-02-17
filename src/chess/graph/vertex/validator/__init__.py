@@ -1,13 +1,13 @@
-# src/chess/graph/square/validator/__init__.py
+# src/chess/graph/vertex/validator/__init__.py
 
 """
-Module: chess.graph.square.validator.__init__
+Module: chess.graph.vertex.validator.__init__
 Author: Banji Lawal
-Created: 2025-10-28
+Created: 2025-02-17
 version: 1.0.0
 """
 
-# =========== GRAPH.SQUARE.VALIDATOR PACKAGE CONTENTS ===========#
+# =========== GRAPH.VERTEX.VALIDATOR PACKAGE CONTENTS ===========#
 
 # Packages
 from .exception import *
