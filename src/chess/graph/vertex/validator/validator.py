@@ -51,7 +51,7 @@ class VertexValidator(Validator[Vertex]):
             1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Vertex instance, vertex.
             2.  If either the head, tail, distance, heuristic or weight fail verification send an exception chain
-                in the ValidationResult. Else, send the vertex in the ValidationResult..
+                in the ValidationResult. Else, send the vertex in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
             *   vertex_validator (VertexValidator)

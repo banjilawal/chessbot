@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from chess.graph import (
     Edge, EdgeDistanceException, EdgeHeuristicException, EdgeValidationFailedException, EdgeWeightException,
-    NullEgeException, VertexValidator
+    HeadCannotBeTailException, NullEgeException, VertexValidator
 )
 from chess.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 
@@ -158,6 +158,15 @@ class EdgeValidator(Validator[Edge]):
                 EdgeValidationFailedException(
                     message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
                     ex=tail_validation_result.exception
+                )
+            )
+        # Handle the case that head and tail are the same.
+        if edge.head == edge.tail:
+            # Return the exception chain on failure
+            return ValidationResult.failure(
+                EdgeValidationFailedException(
+                    message=f"{method} {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                    ex=HeadCannotBeTailException(f"{method}: {HeadCannotBeTailException.DEFAULT_MESSAGE}")
                 )
             )
         # Tests have been passed return the edge in the ValidationResult.

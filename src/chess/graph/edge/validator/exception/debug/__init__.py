@@ -17,3 +17,4 @@ from .null import NullEgeException
 from .weight import EdgeWeightException
 from .distance import EdgeDistanceException
 from .heuristic import EdgeHeuristicException
+from .conflict import HeadCannotBeTailException

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from chess.coord import CoordService
-from chess.graph import Edge, EdgeBuildFailedException, Vertex, VertexValidator
+from chess.graph import Edge, EdgeBuildFailedException, HeadCannotBeTailException, Vertex, VertexValidator
 from chess.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
 
 
@@ -98,6 +98,15 @@ class EdgeBuilder(Builder[Edge]):
                  EdgeBuildFailedException(
                      message=f"{method} {EdgeBuildFailedException.DEFAULT_MESSAGE}",
                      ex=tail_validation.exception
+                 )
+             )
+         # Handle the case that head and tail are the same.
+         if head == tail:
+             # Return the exception chain on failure
+             return BuildResult.failure(
+                 EdgeBuildFailedException(
+                     message=f"{method} {EdgeBuildFailedException.DEFAULT_MESSAGE}",
+                     ex=HeadCannotBeTailException(f"{method}: {HeadCannotBeTailException.DEFAULT_MESSAGE}")
                  )
              )
          # --- After the inputs have been validated compute the edge's Euclidean distance. ---#
