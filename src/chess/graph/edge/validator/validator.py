@@ -12,8 +12,8 @@ from typing import Any, cast
 
 
 from chess.graph import (
-    Edge, EdgeDistanceException, EdgeHeuristicException, EdgeValidationFailedException,
-    EdgeWeightException, NullEgeException, VertexValidator
+    Edge, EdgeDistanceException, EdgeHeuristicException, EdgeValidationFailedException, EdgeWeightException,
+    NullEgeException, VertexValidator
 )
 from chess.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 
