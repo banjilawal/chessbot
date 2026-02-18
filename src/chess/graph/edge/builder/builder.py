@@ -7,16 +7,38 @@ Created: 2026-02-17
 version: 1.0.0
 """
 
+from __future__ import annotations
+
 from chess.coord import CoordService
 from chess.graph import Edge, EdgeBuildFailedException, Vertex, VertexValidator
 from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter
 
 
 class EdgeBuilder(Builder[Edge]):
-     
-     @classmethod
-     @LoggingLevelRouter.monitor
-     def build(
+    """
+    # ROLE: Factory, Data Integrity Guarantor
+
+    # RESPONSIBILITIES:
+    1.  Produce Edge instances whose integrity is guaranteed at creation.
+    2.  Manage construction of Edge instances that can be used safely by the client.
+    3.  Ensure params for Edge creation have met the application's safety contract.
+    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+
+    # PARENT:
+        *   Builder
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def build(
              cls, 
              id: int,
              head: Vertex, 
@@ -25,6 +47,27 @@ class EdgeBuilder(Builder[Edge]):
              vertex_validator: VertexValidator = VertexValidator(),
              identity_service: IdentityService = IdentityService(),
      ) -> BuildResult[Edge]:
+         """
+         # ACTION:
+             1. If any build param fails its certification tests send the exception in the BuildResult.
+             2. Use coord_service to compute the edge's Euclidean distance. If the computation fails send the
+                exception in the BuildResult.
+            3.  Return an Edge whose heuristic is zero in the BuildResult.
+         # PARAMETERS:
+             *   id (int)
+             *   head (Vertex)
+             *   tail: (Vertex)
+             *   coord_service (CoordService)
+             *   vertex_service (VertexService)
+             *   identity_service (IdentityService)
+             *   formation_service: (FormationService)
+         # RETURNS:
+             *   BuildResult[Edge] containing either:
+                     - On failure: Exception.
+                     - On success: Edge in the payload.
+         # RAISES:
+             *   EdgeBuildFailedException
+         """
          method = "EdgeBuilder.build"
          
          # Handle the case that the id is not certified safe.
@@ -37,7 +80,7 @@ class EdgeBuilder(Builder[Edge]):
                      ex=id_validation.exception
                  )
              )
-         # Handle the case that the head is not certified safe.
+         # Handle the case that the head is not certified as a safe vertex.
          head_validation = vertex_validator.validate(candidate=head)
          if head_validation.is_failure:
              # Return the exception chain on failure
@@ -47,7 +90,7 @@ class EdgeBuilder(Builder[Edge]):
                      ex=head_validation.exception
                  )
              )
-         # Handle the case that the tail is not certified safe.
+         # Handle the case that the tail is not certified as a safe vertex.
          tail_validation = vertex_validator.validate(candidate=tail)
          if tail_validation.is_failure:
              # Return the exception chain on failure
@@ -57,12 +100,12 @@ class EdgeBuilder(Builder[Edge]):
                      ex=tail_validation.exception
                  )
              )
-         
+         # --- After the inputs have been validated compute the edge's Euclidean distance. ---#
          distance_computation_result = coord_service.euclidean_distance(
              u=head.square.coord,
              v=tail.square.coord
          )
-         # Handle the case that the distance is not computed.
+         # Handle the case that the distance is not computed successfully.
          if distance_computation_result.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
@@ -71,8 +114,7 @@ class EdgeBuilder(Builder[Edge]):
                      ex=distance_computation_result.exception
                  )
              )
-         
-         # Create the Edge with a heuristic of zero. Then return to the caller.
+         # --- Create the edge with a heuristic of zero then return in the BuildResult. ---#
          return BuildResult.success(
              payload=Edge(
                  id=id,
@@ -82,4 +124,3 @@ class EdgeBuilder(Builder[Edge]):
                  distance=distance_computation_result.payload,
              )
          )
-    
