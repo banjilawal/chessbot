@@ -15,6 +15,6 @@ None
 # Modules
 from .null import NullEgeException
 from .weight import EdgeWeightException
+from .circular import CircularEdgeException
 from .distance import EdgeDistanceException
 from .heuristic import EdgeHeuristicException
-from .conflict import HeadCannotBeTailException
