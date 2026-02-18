@@ -13,4 +13,4 @@ from enum import Enum, auto
 class DiscoveryStatus(Enum):
     UNKNOWN = auto(),
     DISCOVERED = auto(),
-    PROCESSED = auto()
+    PROCESSED = auto(),

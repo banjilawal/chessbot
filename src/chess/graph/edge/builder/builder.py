@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from chess.coord import CoordService
 from chess.graph import Edge, EdgeBuildFailedException, Vertex, VertexValidator
-from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter
+from chess.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
 
 
 class EdgeBuilder(Builder[Edge]):
@@ -39,13 +39,13 @@ class EdgeBuilder(Builder[Edge]):
     @classmethod
     @LoggingLevelRouter.monitor
     def build(
-             cls, 
-             id: int,
-             head: Vertex, 
-             tail: Vertex,
-             coord_service: CoordService = CoordService(),
-             vertex_validator: VertexValidator = VertexValidator(),
-             identity_service: IdentityService = IdentityService(),
+            cls,
+            head: Vertex,
+            tail: Vertex,
+            id: int = IdFactory.next_id(class_name="Edge"),
+            coord_service: CoordService = CoordService(),
+            vertex_validator: VertexValidator = VertexValidator(),
+            identity_service: IdentityService = IdentityService(),
      ) -> BuildResult[Edge]:
          """
          # ACTION:
