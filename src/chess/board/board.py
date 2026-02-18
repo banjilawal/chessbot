@@ -36,7 +36,6 @@ class Board:
     _id: int
     _arena: Arena
     _state: BoardState
-    _team_hash: TeamHash
     _squares: SquareDatabase
     _hostage_database: HostageDatabase
     
@@ -44,7 +43,6 @@ class Board:
             self,
             id: int,
             arena: Arena,
-            team_hash: TeamHash,
             squares: SquareDatabase = SquareDatabase(),
             hostage_database: HostageDatabase = HostageDatabase(),
     ):
@@ -66,7 +64,6 @@ class Board:
         self._id = id
         self._arena = arena
         self._squares = squares
-        self._team_hash = team_hash
         self._hostage_database = hostage_database
         self._state = BoardState.IS_EMPTY
     

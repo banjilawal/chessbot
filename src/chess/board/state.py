@@ -9,7 +9,6 @@ version: 1.0.0
 
 from enum import Enum, auto
 
-
 class BoardState(Enum):
     IS_EMPTY = auto(),
-    HAS_BEEN_LAID_OUT = auto(),
+    HAS_TOKENS_LAID_OUT = auto(),

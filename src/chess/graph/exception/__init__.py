@@ -14,3 +14,4 @@ None
 
 # Modules
 from .catchall import GraphException
+from .computation import GraphComputationFailedException

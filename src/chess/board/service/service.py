@@ -10,8 +10,9 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-
-from chess.system import InsertionResult, LoggingLevelRouter, id_emitter, EntityService
+from chess.board.analyzer.square.analyzer import BoardSquareRelationAnalyzer
+from chess.graph import Graph, GraphComputationFailedException
+from chess.system import ComputationResult, InsertionResult, LoggingLevelRouter, id_emitter, EntityService
 from chess.board import (
     Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardServiceException,
     BoardState, BoardValidator,
@@ -98,7 +99,7 @@ class BoardService(EntityService[Board]):
                 )
             )
         # Handle the case that the board has already been laid out.
-        if board.state == BoardState.HAS_BEEN_LAID_OUT:
+        if board.state == BoardState.HAS_TOKENS_LAID_OUT:
             # Return exception chain on failure
             return InsertionResult.failure(
                 BoardServiceException(
@@ -125,8 +126,28 @@ class BoardService(EntityService[Board]):
                     )
                 )
         # --- Update the board's state and send the success result to the caller. ---#
-        board.state = BoardState.HAS_BEEN_LAID_OUT
+        board.state = BoardState.HAS_TOKENS_LAID_OUT
         return InsertionResult.success()
+    
+    @LoggingLevelRouter.monitor
+    def generate_graph(self, board: Board) -> ComputationResult[Graph]:
+        method = "BoardService.generate_graph"
+    
+        # Handle the case that the board is not certified as safe.
+        validation = self.validator.validate(candidate=board)
+        if validation.is_failure:
+            # Return exception chain on failure
+            return ComputationResult.failure(
+                BoardServiceException(
+                    f"{method}: {BoardServiceException.DEFAULT_MESSAGE}",
+                    ex=GraphComputationFailedException(
+                        message=f"{method}: {GraphComputationFailedException.DEFAULT_MESSAGE}",
+                        ex=validation.exception
+                    )
+                )
+            )
+        
+        
         
 
         
