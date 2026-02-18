@@ -10,7 +10,8 @@ version: 1.0.0
 # =========== GRAPH.EDGE.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .builder import EdgeBuilder
+from .wrapper import EdgeBuildFailedException

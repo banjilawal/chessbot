@@ -1,7 +1,7 @@
-# src/chess/graph/square/builder/builder.py
+# src/chess/graph/vertex/builder/builder.py
 
 """
-Module: chess.graph.square.builder.builder
+Module: chess.graph.vertex.builder.builder
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from chess.graph import Vertex
+from chess.graph import Vertex, VertexBuildFailedException
 from chess.square import Square, SquareValidator
 from chess.system import BuildResult, Builder, LoggingLevelRouter
 
@@ -60,7 +60,12 @@ class VertexBuilder(Builder[Vertex]):
         validation_result = square_validator.validate(square)
         if validation_result.is_failure:
             # Return the exception chain on failure.
-            return BuildResult.failure(validation_result.exception)
+            return BuildResult.failure(
+                VertexBuildFailedException(
+                    message=f"{method}: {VertexBuildFailedException.DEFAULT_MESSAGE}",
+                    ex=validation_result.exception
+                )
+            )
         
         # --- Create the Vertex and return in the BuildResult. ---#
         return BuildResult.success(payload=Vertex(square=square))

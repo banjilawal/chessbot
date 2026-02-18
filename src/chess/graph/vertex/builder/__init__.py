@@ -1,16 +1,17 @@
-# src/chess/graph/square/builder/__init__.py
+# src/chess/graph/vertex/builder/__init__.py
 
 """
-Module: chess.graph.square.builder.__init__
+Module: chess.graph.vertex.builder.__init__
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0
 """
 
-# =========== GRAPH.SQUARE.BUILDER PACKAGE CONTENTS ===========#
+# =========== GRAPH.VERTEX.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
 from .builder import VertexBuilder
+from .wrapper import VertexBuildFailedException

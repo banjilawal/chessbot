@@ -25,3 +25,4 @@ class VertexValidator(Validator[Vertex]):
             square_validator: SquareValidator = SquareValidator(),
     ) -> ValidationResult[Vertex]:
         pass
+    
