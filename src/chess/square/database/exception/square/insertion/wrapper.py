@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# UNIQUE_SQUARE_INSERTION_FAILURE EXCEPTION #======================#
-    "UniqueSquareInsertionFailedException",
+    "InsertingSquareInDatabaseFailedException",
 ]
 
 from chess.square import SquareException
@@ -17,7 +17,7 @@ from chess.system import InsertionFailedException
 
 
 # ======================# UNIQUE_SQUARE_INSERTION_FAILURE EXCEPTION #======================#
-class UniqueSquareInsertionFailedException(SquareException, InsertionFailedException):
+class InsertingSquareInDatabaseFailedException(SquareException, InsertionFailedException):
     """
     # ROLE: Exception Wrapper
 

@@ -10,18 +10,15 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.square import (
-    AddingDuplicateSquareException, AddingSquareOccupantFailedException, DeleteTokenBySearchFailedException, Square,
-    SquareContext,
-    SquareContextService,
-    SquareStack, SquareService, FullSquareStackException, SquareDatabaseException,
-    SquareToOccupyNotFoundException, UniqueSquareInsertionFailedException,
-    UniqueSquareSearchFailedException
+    AddingDuplicateSquareException, AddingSquareOccupantFailedException, DeleteTokenBySearchFailedException,
+    InsertingSquareInDatabaseFailedException, Square, SquareContext, SquareContextService, SquareStack, SquareService,
+    FullSquareStackException, SquareDatabaseException, SquareToOccupyNotFoundException, UniqueSquareSearchFailedException
 )
 from chess.square.state import SquareState
 from chess.system import (
-    NUMBER_OF_COLUMNS, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult,
-    Database,
-    id_emitter
+    IdFactory, NUMBER_OF_COLUMNS, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
+    SearchResult,
+    Database, id_emitter
 )
 from chess.token import Token, TokenService
 
@@ -47,12 +44,13 @@ class SquareDatabase(Database[Square]):
         *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "SquareDatabase"
-    _square_database_core: SquareStack
+    _stack_service: SquareStack
+    _token_map: [Token, Square]
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
+            id: int = IdFactory.next_id(class_name="SquareDatabase"),
             data_service: SquareStack = SquareStack(capacity=NUMBER_OF_ROWS * NUMBER_OF_COLUMNS),
     ):
         """
@@ -69,41 +67,71 @@ class SquareDatabase(Database[Square]):
         """
         super().__init__(id=id, name=name, data_service=data_service)
         self._square_stack_service = data_service
+        self._token_map = {}
     
     @property
     def integrity_service(self) -> SquareService:
-        return self._square_database_core.integrity_service
+        return self._stack_service.integrity_service
     
     @property
     def context_service(self) -> SquareContextService:
-        return self._square_database_core.context_service
+        return self._stack_service.context_service
     
     @property
     def size(self) -> int:
-        return self._square_database_core.size
+        return self._stack_service.size
     
     @property
     def max_capacity(self) -> int:
-        return self._square_database_core.capacity
+        return self._stack_service.capacity
     
     @property
     def is_full(self) -> bool:
-        return self._square_database_core.is_full
+        return self._stack_service.is_full
     
     @property
     def is_empty(self) -> bool:
-        return self._square_database_core.is_empty
+        return self._stack_service.is_empty
+    
+    @property
+    def token_map(self) -> dict[Token, Square]:
+        return self._token_map
     
     @LoggingLevelRouter.monitor
     def add_occupant_to_square(
             self,
-            square: Square,
             token: Token,
+            square: Square,
             token_service: TokenService = TokenService()
     ) -> InsertionResult:
+        """
+        # ACTION:
+            1.  If token_service cannot verify the occupation candidate is actionable send the wrapped exception
+                in the InsertionResult.
+            2.  If the square either:
+                    *   Fails validation.
+                    *   Searching for it in the database raises an error.
+                    *   The square is not in the database.
+                send the wrapped exception in the InsertionResult.
+            3.  If the occupation fails send the wrapped exception in the InsertionResult.
+            4.  Add an entry for the occupant in the token_map then send the success InsertionResult.
+        # PARAMETERS:
+            *   token (Token)
+            *   square (Square)
+            *   token_service (TokenService)
+        # RETURN:
+            *   DeletionResult[Token] containing either:
+                    - On failure: An exception.
+                    - On success: Token in payload.
+                    - On occupant not found: Empty DeletionResult.
+        # RAISES:
+            *   SquareDatabaseException
+            *   SquareToOccupyNotFoundException
+            *   AddingSquareOccupantFailedException
+        """
         method = "SquareDatabase.add_occupant_to_square"
         
-        # Handle the case that the is not active
+        # Handle the case that the token is not active
         actionable_token_validation = token_service.verify_access_token(token)
         if actionable_token_validation.is_failure:
             # Return the exception chain on failure.
@@ -116,8 +144,7 @@ class SquareDatabase(Database[Square]):
                     )
                 )
             )
-        
-        # Handle the case that the item is not certified safe.
+        # Handle the case that the target square is not certified safe.
         square_validation = self.integrity_service.validator.validate(square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
@@ -130,8 +157,8 @@ class SquareDatabase(Database[Square]):
                     )
                 )
             )
-        # Handle the case that the item is not in the database
-        square_search_result = self._square_database_core.context_service.finder.find(
+        # Handle the case that the target square is not in the database
+        square_search_result = self._stack_service.context_service.finder.find(
             context=SquareContext(id=square.id)
         )
         if square_search_result.is_failure:
@@ -145,7 +172,7 @@ class SquareDatabase(Database[Square]):
                     )
                 )
             )
-        # Handle the case that the item does not exist in the database
+        # Handle the case that the item does not square in the database
         if square_search_result.is_empty:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -172,11 +199,31 @@ class SquareDatabase(Database[Square]):
                     )
                 )
             )
+        # --- Update the token map and send the success result. ---#
+        self._token_map[token] = square
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
     def delete_occupant_by_search(self, occupant: Token) -> DeletionResult[Token]:
         """
+        # ACTION:
+            1.  If the search handler cannot certify the occupant is a valid token the exception chain will include.
+                TokenVerificationFailedException.
+            2.  If the token is not found in any of the squares send a nothing_to_delete result.
+            3.  If the token was found in a square but the removal failed send the wrapped exception in the
+                DeletionResult.
+            4.  When the token is successfully removed from the square remove its entry from the token_map then
+                send the ejected token in the DeletionResult.
+        # PARAMETERS:
+            *   occupant (Token)
+        # RETURN:
+            *   DeletionResult[Token] containing either:
+                    - On failure: An exception.
+                    - On success: Token in payload.
+                    - On occupant not found: Empty DeletionResult.
+        # RAISES:
+            *   SquareDatabaseException
+            *   DeleteTokenBySearchFailedException
         """
         method = "SquareService.empty_square_by_token_search"
         
@@ -212,18 +259,18 @@ class SquareDatabase(Database[Square]):
                         )
                     )
                 )
-            
-            # --- The token has bee completely removed from the dataset. ---#
+            # --- Update the token map then send the ejected occupant in the DeletionResult ---#
+            self._token_map.pop(occupant)
             return DeletionResult.success(payload=occupant)
     
     @LoggingLevelRouter.monitor
-    def add_unique_square(self, square: Square) -> InsertionResult[bool]:
+    def insert_square(self, square: Square) -> InsertionResult[bool]:
         """
         # ACTION:
             1.  If the item fails validation send the wrapped exception in the InsertionResult.
             2.  If a search for the item either fails or finds a match send the wrapped exception in the
                 InsertionResult.
-            3.  If the call to _square_database_core.insert_square fails send the wrapped exception in the InsertionResult.
+            3.  If the call to _stack_service.insert_square fails send the wrapped exception in the InsertionResult.
                 Else send the outgoing result directly to the caller.
         # PARAMETERS:
             *   item (Square)
@@ -233,8 +280,7 @@ class SquareDatabase(Database[Square]):
                     - On success: Square in payload.
         # RAISES:
             *   SquareDatabaseException
-            *   UniqueSquareInsertionFailedException
-            *   SquareDatabaseException
+            *   InsertingSquareInDatabaseFailedException
         """
         method = "SquareDatabase.add_unique_square"
         
@@ -244,8 +290,8 @@ class SquareDatabase(Database[Square]):
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=UniqueSquareInsertionFailedException(
-                        message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
+                    ex=InsertingSquareInDatabaseFailedException(
+                        message=f"{method}: {InsertingSquareInDatabaseFailedException.ERROR_CODE}",
                         ex=FullSquareStackException(
                             f"{method}: {FullSquareStackException.DEFAULT_MESSAGE}"
                         )
@@ -262,27 +308,27 @@ class SquareDatabase(Database[Square]):
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=UniqueSquareInsertionFailedException(
-                        message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
+                    ex=InsertingSquareInDatabaseFailedException(
+                        message=f"{method}: {InsertingSquareInDatabaseFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
             )
         # Handle the case that the item is already in the dataset.
-        if square in self._square_database_core.items:
+        if square in self._stack_service.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=UniqueSquareInsertionFailedException(
-                        message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
+                    ex=InsertingSquareInDatabaseFailedException(
+                        message=f"{method}: {InsertingSquareInDatabaseFailedException.ERROR_CODE}",
                         ex=AddingDuplicateSquareException(f"{method}: {AddingDuplicateSquareException.DEFAULT_MESSAGE}")
                     )
                 )
             )
-        # --- Use _square_database_core.insert_square because order does not matter for the item access. ---#
+        # --- Use _stack_service.insert_square because order does not matter for the item access. ---#
         
-        insertion_result = self._square_database_core.push(square=square)
+        insertion_result = self._stack_service.push(square=square)
         
         # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
@@ -290,8 +336,8 @@ class SquareDatabase(Database[Square]):
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=UniqueSquareInsertionFailedException(
-                        message=f"{method}: {UniqueSquareInsertionFailedException.ERROR_CODE}",
+                    ex=InsertingSquareInDatabaseFailedException(
+                        message=f"{method}: {InsertingSquareInDatabaseFailedException.ERROR_CODE}",
                         ex=insertion_result.exception
                     )
                 )
@@ -303,7 +349,7 @@ class SquareDatabase(Database[Square]):
     def search(self, context: SquareContext) -> SearchResult[List[Square]]:
         """
         # ACTION:
-            1.  Get the result of calling _square_database_core.delete_square_by_id for method. If the deletion failed
+            1.  Get the result of calling _stack_service.delete_square_by_id for method. If the deletion failed
                 wrap the exception inside the appropriate Database exceptions and send the exception chain
                 in the DeletionResult.
             2.  If the deletion operation completed directly forward the DeletionResult to the caller.
@@ -320,8 +366,8 @@ class SquareDatabase(Database[Square]):
         """
         method = "SquareDatabase.search_squares"
         
-        # --- Handoff the search responsibility to _square_database_core. ---#
-        search_result = self._square_database_core.context_service.finder.find(context=context)
+        # --- Handoff the search responsibility to _stack_service. ---#
+        search_result = self._stack_service.context_service.finder.find(context=context)
         
         # Handle the case that the search is not completed.
         if search_result.is_failure:

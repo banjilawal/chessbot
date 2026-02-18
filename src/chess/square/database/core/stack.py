@@ -18,6 +18,7 @@ from chess.square import (
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
     PoppingSquareStackFailedException, SquareInsertionFailedException, FullSquareStackException
 )
+from chess.token import Token
 
 
 class SquareStack(StackService[Square]):
