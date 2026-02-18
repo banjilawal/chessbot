@@ -10,6 +10,10 @@ version: 1.0.0
 from chess.graph import EdgeException
 from chess.system import NullException
 
+__all__ = [
+    # ======================# NULL_EDGE EXCEPTION #======================#
+    "NullEgeException",
+]
 
 class NullEgeException(EdgeException, NullException):
     pass

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from chess.coord import CoordService
-from chess.graph import Edge, EdgeBuildFailedException, HeadCannotBeTailException, Vertex, VertexValidator
+from chess.graph import Edge, EdgeBuildFailedException, HeadCannotBeTailException, Node, NodeValidator
 from chess.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
 
 
@@ -40,11 +40,11 @@ class EdgeBuilder(Builder[Edge]):
     @LoggingLevelRouter.monitor
     def build(
             cls,
-            head: Vertex,
-            tail: Vertex,
+            head: Node,
+            tail: Node,
             id: int = IdFactory.next_id(class_name="Edge"),
             coord_service: CoordService = CoordService(),
-            vertex_validator: VertexValidator = VertexValidator(),
+            node_validator: NodeValidator = NodeValidator(),
             identity_service: IdentityService = IdentityService(),
      ) -> BuildResult[Edge]:
          """
@@ -55,10 +55,10 @@ class EdgeBuilder(Builder[Edge]):
             3.  Return an Edge whose heuristic is zero in the BuildResult.
          # PARAMETERS:
              *   id (int)
-             *   head (Vertex)
-             *   tail: (Vertex)
+             *   head (Node)
+             *   tail: (Node)
              *   coord_service (CoordService)
-             *   vertex_service (VertexService)
+             *   node_service (NodeService)
              *   identity_service (IdentityService)
              *   formation_service: (FormationService)
          # RETURNS:
@@ -80,8 +80,8 @@ class EdgeBuilder(Builder[Edge]):
                      ex=id_validation.exception
                  )
              )
-         # Handle the case that the head is not certified as a safe vertex.
-         head_validation = vertex_validator.validate(candidate=head)
+         # Handle the case that the head is not certified as a safe node.
+         head_validation = node_validator.validate(candidate=head)
          if head_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
@@ -90,8 +90,8 @@ class EdgeBuilder(Builder[Edge]):
                      ex=head_validation.exception
                  )
              )
-         # Handle the case that the tail is not certified as a safe vertex.
-         tail_validation = vertex_validator.validate(candidate=tail)
+         # Handle the case that the tail is not certified as a safe node.
+         tail_validation = node_validator.validate(candidate=tail)
          if tail_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(

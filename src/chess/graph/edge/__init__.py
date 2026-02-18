@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== GRAPH.EDGE PACKAGE CONTENTS ===========#
 
 # Packages
+from .service import *
 from .builder import *
 from .validator import *
 

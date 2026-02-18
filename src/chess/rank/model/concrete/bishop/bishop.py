@@ -7,13 +7,17 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from typing import List, Optional
+from __future__ import annotations
 
+from typing import List
+
+from chess.graph import Graph
+from chess.square import SquareContext
 from chess.token import Token
 from chess.coord import Coord
 from chess.persona import Persona
 from chess.geometry import Quadrant
-from chess.system import ComputationResult, LoggingLevelRouter
+from chess.system import ComputationResult, IdFactory, LoggingLevelRouter
 from chess.rank import BishopSpanComputationFailedException, DiagonalSpan, Rank, Bishop
 
 class Bishop(Rank):
@@ -95,3 +99,78 @@ class Bishop(Rank):
             )
         # Put the completed Bishop's span into a ComputationResult and send to the caller.
         return computation_result
+    
+    @LoggingLevelRouter.monitor
+    def compute_graph(self, token: Token, id_factory: IdFactory = IdFactory()) -> ComputationResult[Graph]:
+        method = "Bishop.compute_graph"
+        
+        # --- Initialize the graph and compute the spanning set. ---#
+        graph = Graph(id=id_factory.next_id(class_name="Graph"))
+        span_computation_result = self.compute_span(token=token)
+        
+        # Handle the case that the spanning set computation does not produce a solution.
+        if span_computation_result.is_failure:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                BishopGraphComputationFailedException(
+                    message=f"{method}: {BishopGraphComputationFailedException.DEFAULT_MESSAGE}",
+                    ex=span_computation_result.exception
+                )
+            )
+        
+        i = 0
+        j += 1
+        
+        while j < len(span_computation_result.payload):
+            
+            # --- Find square_u. ---#
+            square_u_search_result = token.board.squares.search(
+                context=SquareContext(coord=span_computation_result.payload[i])
+            )
+            # Handle the case that the square_u search was not completed.
+            if square_u_search_result.is_failure:
+                # Return the exception chain on failure.
+                return ComputationResult.failure(
+                    BishopGraphComputationFailedException(
+                        message=f"{method}: {BishopGraphComputationFailedException.DEFAULT_MESSAGE}",
+                        ex=square_u_search_result.exception
+                    )
+                )
+            square_u = square_u_search_result.payload
+            
+            # --- Find square_v. ---#
+            square_v_search_result = token.board.squares.search(
+                context=SquareContext(coord=span_computation_result.payload[i])
+            )
+            # Handle the case that the square_u search was not completed.
+            if square_v_search_result.is_failure:
+                # Return the exception chain on failure.
+                return ComputationResult.failure(
+                    BishopGraphComputationFailedException(
+                        message=f"{method}: {BishopGraphComputationFailedException.DEFAULT_MESSAGE}",
+                        ex=square_v_search_result.exception
+                    )
+                )
+            square_v = square_u_search_result.payload
+            Build
+            square_a_search_result = token.board.squares.search(
+                context=SquareContext(coord=span_computation_result.payload[i])
+            )
+            if square_a_search_result.is_failure:
+                # Return the exception chain on failure.
+                return ComputationResult.failure(
+                    BishopGraphComputationFailedException(
+                        message=f"{method}: {BishopGraphComputationFailedException.DEFAULT_MESSAGE}",
+                        ex=span_computation_result.exception
+                    )
+                )
+        previous_coord = span_computation_result.payload[0]
+        for i in range(len(span_computation_result.payload)):
+            j += 1
+            
+        
+        
+        
+        
+        
+    

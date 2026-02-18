@@ -9,6 +9,10 @@ version: 1.0.0
 
 from chess.system import ValidationFailedException
 
+__all__ = [
+    # ======================# EDGE_VALIDATION_FAILURE EXCEPTION #======================#
+    "EdgeValidationFailedException",
+]
 
 class EdgeValidationFailedException(ValidationFailedException):
     pass

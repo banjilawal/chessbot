@@ -1,7 +1,7 @@
-# src/chess/graph/vertex/validator/exception/debug/status.py
+# src/chess/graph/node/validator/exception/debug/status.py
 
 """
-Module: chess.graph.vertex.validator.exception.debug.status
+Module: chess.graph.node.validator.exception.debug.status
 Author: Banji Lawal
 Created: 2025-02-17
 version: 1.0.0
@@ -10,6 +10,10 @@ version: 1.0.0
 
 from chess.system import NullException
 
+__all__ = [
+    # ======================# NULL_DISCOVERY_STATUS EXCEPTION #======================#
+    "NullDiscoveryStatusException",
+]
 
 class NullDiscoveryStatusException(NullException):
     pass

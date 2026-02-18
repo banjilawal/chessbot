@@ -1,19 +1,20 @@
-# src/chess/graph/vertex/__init__.py
+# src/chess/graph/node/__init__.py
 
 """
-Module: chess.graph.vertex.__init__
+Module: chess.graph.node.__init__
 Author: Banji Lawal
 Created: 2025-02-17
 version: 1.0.0
 """
 
-# =========== GRAPH.VERTEX PACKAGE CONTENTS ===========#
+# =========== GRAPH.NODE PACKAGE CONTENTS ===========#
 
 # Packages
+from .service import *
 from .builder import *
 from .validator import *
+from .exception import *
 
 # Modules
-from .vertex import Vertex
+from .node import Node
 from .status import DiscoveryStatus
-from .exception import VertexException

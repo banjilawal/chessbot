@@ -37,16 +37,16 @@ class Service(ABC, Generic[T]):
     """
     _id: int
     _name: str
-    _certifier: Validator[T]
+    _validator: Validator[T]
     
-    def __init__(self, id: int, name: str, certifier: Validator[T], ):
+    def __init__(self, id: int, name: str, validator: Validator[T],):
         """
         # ACTION:
             Constructor
         # PARAMETERS:
             *   id (nt)
             *   name (str)
-            *   certifier (Validator[T])
+            *   validator (Validator[T])
         # RETURNS:
             None
         # RAISES:
@@ -54,7 +54,7 @@ class Service(ABC, Generic[T]):
         """
         self._id = id
         self._name = name
-        self._certifier = certifier
+        self._validator = validator
     
     @property
     def id(self) -> int:
@@ -65,8 +65,8 @@ class Service(ABC, Generic[T]):
         return self._name
     
     @property
-    def certifier(self) -> Validator[T]:
-        return self._certifier
+    def validator(self) -> Validator[T]:
+        return self._validator
     
     def __eq__(self, other):
         if other is self:

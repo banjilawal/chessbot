@@ -1,7 +1,7 @@
-# src/chess/graph/vertex/vertex.py
+# src/chess/graph/node/node.py
 
 """
-Module: chess.graph.vertex.vertex
+Module: chess.graph.node.node
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0
@@ -15,10 +15,10 @@ from chess.square import Square
 from chess.graph import DiscoveryStatus, Edge
 
 
-class Vertex:
+class Node:
     _priority: int
     _square: Square
-    _predecessor: Vertex
+    _predecessor: Node
     _incoming_edges: List[Edge]
     _outgoing_edges: List[Edge]
     _discovery_status: DiscoveryStatus
@@ -54,11 +54,20 @@ class Vertex:
         self._priority = priority
         
     @property
-    def predecessor(self) -> Vertex:
+    def predecessor(self) -> Node:
         return self._predecessor
     
     @predecessor.setter
-    def predecessor(self, predecessor: Vertex):
+    def predecessor(self, predecessor: Node):
         self._predecessor = predecessor
+        
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, Node): return self.square == other.square
+        return False
+    
+    def __hash__(self):
+        return hash(self.square)
         
     

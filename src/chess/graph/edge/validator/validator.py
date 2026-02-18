@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from chess.graph import (
     Edge, EdgeDistanceException, EdgeHeuristicException, EdgeValidationFailedException, EdgeWeightException,
-    HeadCannotBeTailException, NullEgeException, VertexValidator
+    HeadCannotBeTailException, NullEgeException, NodeValidator
 )
 from chess.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 
@@ -46,7 +46,7 @@ class EdgeValidator(Validator[Edge]):
             candidate: Any,
             number_validator: NumberValidator = NumberValidator(),
             identity_service: IdentityService = IdentityService(),
-            vertex_validator: VertexValidator = VertexValidator()
+            node_validator: NodeValidator = NodeValidator()
     ) -> ValidationResult[Edge]:
         """
         # ACTION:
@@ -56,7 +56,7 @@ class EdgeValidator(Validator[Edge]):
                 in the ValidationResult. Else, send the edge in the ValidationResult..
         # PARAMETERS:
             *   candidate (Any)
-            *   vertex_validator (VertexValidator)
+            *   node_validator (NodeValidator)
             *   identity_service (IdentityService)
             *   number_validator (NumberValidator)
         # RETURNS:
@@ -140,8 +140,8 @@ class EdgeValidator(Validator[Edge]):
                     )
                 )
             )
-        # Handle the case that the head is not certified as a safe vertex.
-        head_validation_result = vertex_validator.validate(edge.head)
+        # Handle the case that the head is not certified as a safe node.
+        head_validation_result = node_validator.validate(edge.head)
         if head_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -150,8 +150,8 @@ class EdgeValidator(Validator[Edge]):
                     ex=head_validation_result.exception
                 )
             )
-        # Handle the case that the tail is not certified as a safe vertex.
-        tail_validation_result = vertex_validator.validate(edge.head)
+        # Handle the case that the tail is not certified as a safe node.
+        tail_validation_result = node_validator.validate(edge.head)
         if tail_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(

@@ -9,6 +9,10 @@ version: 1.0.0
 
 from chess.system import ValidationFailedException
 
+__all__ = [
+    # ======================# NODE_VALIDATION_FAILURE EXCEPTION #======================#
+    "NodeValidationFailedException",
+]
 
-class VertexValidationFailedException(ValidationFailedException):
+class NodeValidationFailedException(ValidationFailedException):
     pass

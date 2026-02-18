@@ -10,29 +10,28 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from chess.graph import Vertex
+from chess.graph import Edge, Node
 
 
 class Graph:
     """"""
     _id: int
-    _vertices: List[Vertex]
     _edges: List[Edge]
+    _vertices: List[Node]
+
     
-    def __init__(
-            self,
-            id: int,
-    ):
+    def __init__(self, id: int,):
         self._id = id
-        self._vertices = List[Vertex]
-        self._edges = List[Edge]
+        self._edges = []
+        self._vertices = []
+
     
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def vertices(self) -> List[Vertex]:
+    def vertices(self) -> List[Node]:
         return self._vertices
     
     @property
