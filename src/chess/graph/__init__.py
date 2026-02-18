@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 from .edge import *
-from .node import *
 from .exception import *
 
 # Modules
