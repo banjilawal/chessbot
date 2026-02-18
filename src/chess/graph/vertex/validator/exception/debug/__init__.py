@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== GRAPH.VERTEX.VALIDATOR.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .null import *
 
 # Modules
-from .null import NullVertexException
+None

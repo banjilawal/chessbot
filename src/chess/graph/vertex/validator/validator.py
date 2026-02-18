@@ -10,9 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, List, cast
 
-from chess.graph import DiscoveryStatus, NullVertexException, Vertex, VertexValidationFailedException
 from chess.square import SquareValidator
 from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
+from chess.graph import (
+    DiscoveryStatus, NullDiscoveryStatusException, NullVertexException, Vertex, VertexValidationFailedException
+)
 
 
 class VertexValidator(Validator[Vertex]):
