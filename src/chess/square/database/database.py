@@ -349,22 +349,23 @@ class SquareDatabase(Database[Square]):
     def search(self, context: SquareContext) -> SearchResult[List[Square]]:
         """
         # ACTION:
-            1.  Get the result of calling _stack_service.delete_square_by_id for method. If the deletion failed
-                wrap the exception inside the appropriate Database exceptions and send the exception chain
-                in the DeletionResult.
-            2.  If the deletion operation completed directly forward the DeletionResult to the caller.
+            1.  Pass the context param to stack_service.context_service manages all error handling and operations in
+                search lifecycle.
+            2.  Any failures stack_service.context_service will be encapsulated inside a SquareDatabaseException
+                which is sent inside a SearchResult.
+            3.  If the search completes successfully the result can be sent directly because it will contain the
+                payload.
         # PARAMETERS:
-            *   id (int)
+            *   context (SquareContext)
         # RETURN:
             *   SearchResult[Square] containing either:
-                    - On failure: A                self._stack.remove(square)n exception.
-                    - On success: Square in payload.
+                    - On failure: An exception.
+                    - On success: List[Square] in payload.
                     - On Empty: No payload nor exception.
         # RAISES:
             *   SquareDatabaseException
-            *   DeleteTokenBySearchFailedException
         """
-        method = "SquareDatabase.search_squares"
+        method = "SquareDatabase.search"
         
         # --- Handoff the search responsibility to _stack_service. ---#
         search_result = self._stack_service.context_service.finder.find(context=context)
@@ -375,10 +376,7 @@ class SquareDatabase(Database[Square]):
             return SearchResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=UniqueSquareSearchFailedException(
-                        message=f"{method}: {UniqueSquareSearchFailedException.ERROR_CODE}",
-                        ex=search_result.exception
-                    )
+                    ex=search_result.exception
                 )
             )
         # --- For either a successful or empty search result directly forward to the caller. ---#

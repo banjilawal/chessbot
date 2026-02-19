@@ -10,10 +10,11 @@ version: 1.0.0
 from typing import List, Optional, cast
 
 from chess.node import (
-    AddingDuplicateNodeException, Node, NodeContextService, NodePopException, NodePushException, NodeService,
+    AddingDuplicateNodeException, Node, NodeContext, NodeContextService, NodePopException, NodePushException,
+    NodeService,
     NodeStackException, PoppingEmptyNodeStackException
 )
-from chess.system import DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, StackService
+from chess.system import DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, SearchResult, StackService
 
 
 class NodeStack(StackService[Node]):
@@ -171,3 +172,41 @@ class NodeStack(StackService[Node]):
         # --- Pop the current node of the non-empty stack and return in the DeletionResult. ---#
         node = self._stack.pop(-1)
         DeletionResult.success(node)
+    
+    @LoggingLevelRouter.monitor
+    def search(self, context: NodeContext) -> SearchResult[List[Node]]:
+        """
+        # ACTION:
+            1.  Pass the context param to context_service manages all error handling and operations in
+                search lifecycle.
+            2.  Any failures context_service will be encapsulated inside a NodeStackException 
+                which is sent inside a SearchResult.
+            3.  If the search completes successfully the result can be sent directly because it will contain the
+                payload.
+        # PARAMETERS:
+            *   context (NodeContext)
+        # RETURN:
+            *   SearchResult[Node] containing either:
+                    - On failure: An exception.
+                    - On success: List[Node] in payload.
+                    - On Empty: No payload nor exception.
+        # RAISES:
+            *   NodeStackException
+        """
+        method = "NodeStack.search"
+        
+        # --- Handoff the search responsibility to _stack_service. ---#
+        search_result = self._context_service.finder.find(context=context)
+        
+        # Handle the case that the search is not completed.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                NodeStackException(
+                    message=f"ServiceID:{self.id} {method}: {NodeStackException.ERROR_CODE}",
+                    ex=search_result.exception
+                )
+            )
+        # --- For either a successful or empty search result directly forward to the caller. ---#
+        return search_result
+    
