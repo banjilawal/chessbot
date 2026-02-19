@@ -14,4 +14,6 @@ None
 
 # Modules
 from .catchall import NodeException
+from .debug import NodeDebugException
 from .incoming import AddIncomingEdgeException
+from .outgoing import AddOutgoingEdgeException

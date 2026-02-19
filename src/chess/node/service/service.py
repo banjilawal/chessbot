@@ -10,12 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 from typing import cast
 
-from chess.node.service import NodeServiceException
+from chess.node import Node, NodeBuilder, NodeValidator
 from chess.system import EntityService, IdFactory, InsertionResult, LoggingLevelRouter
-from chess.graph import Edge, EdgeValidator, Node, NodeBuilder, NodeValidator
 
 
-class NodeService(EntityService[ Node]):
+class NodeService(EntityService[Node]):
     """
     """
     SERVICE_NAME = "NodeService"
