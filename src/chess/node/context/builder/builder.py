@@ -8,17 +8,20 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
+import sys
 from typing import Optional
 
-from chess.board import Board, BoardService
-from chess.coord import Coord, CoordService
-from chess.node.state import NodeState
-from chess.system import Builder, BuildResult, IdentityService
+from chess.predecessor import Predecessor, PredecessorService
+from chess.priority import Priority, PriorityService
+from chess.node.discovery_status import DiscoveryStatus
+from chess.system import Builder, BuildResult, IdentityService, NumberValidator
 from chess.node import (
-    NodeContextBuildRouteException, ZeroNodeContextFlagsException, NodeContext, NodeContextBuildFailedException,
+    Node, NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException, NodeContext,
+    NodeContextBuildFailedException,
     ExcessiveNodeContextFlagsException
 )
-from chess.token import Token, TokenService
+from chess.square import Square, SquareService
 
 
 class NodeContextBuilder(Builder[NodeContext]):
@@ -46,16 +49,13 @@ class NodeContextBuilder(Builder[NodeContext]):
     @classmethod
     def build(
             cls,
-            id: Optional[int] = None,
-            name: Optional[str] = None,
-            coord: Optional[Coord] = None,
-            board: Optional[Board] = None,
-            token: Optional[Token] = None,
-            state: Optional[NodeState] = None,
-            token_service: TokenService = TokenService(),
-            board_service: BoardService = BoardService(),
-            coord_service: CoordService = CoordService(),
-            identity_service: IdentityService = IdentityService(),
+            priority: Optional[int] = None,
+            square: Optional[Square] = None,
+            predecessor: Optional[Node] = None,
+            discovery_status: Optional[DiscoveryStatus] = None,
+            square_service: SquareService = SquareService(),
+            node_validator: NodeValidator = NodeValidator(),
+            number_validator: NumberValidator = NumberValidator(),
     ) -> BuildResult[NodeContext]:
         """
         # ACTION:
@@ -65,16 +65,15 @@ class NodeContextBuilder(Builder[NodeContext]):
                 BuildResult. Else build the context and send it in the BuildResult's payload.
         # PARAMETERS:
             Only one these must be provided:
-                *   id Optional[(int)]
-                *   name Optional[(str)]
-                *   cord Optional[(Coord)]
-                *   board Optional[(Board)]
-                *   state Optional[NodeState]
+
+                *   priority Optional[(int)]
+                *   predecessor Optional[(Predecessor)]
+                *   discovery_status Optional[DiscoveryStatus]
             These Parameters must be provided:
-                *   board_service (BoardService)
-                *   coord_service (CoordService)
-                *   token_service (TokenService)
-                *   identity_service (IdentityService)
+                *   predecessor_service (PredecessorService)
+                *   priority_service (PriorityService)
+                *   square_service (SquareService)
+                *   number_validator (IdentityService)
             # RETURNS:
                 *   BuildResult[NodeContext] containing either:
                         - On failure: Exception.
@@ -88,7 +87,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         method = "NodeContextBuilder.build"
 
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
-        params = [id, name, coord, token,board, state,]
+        params = [priority, square,predecessor, discovery_status,]
         param_count = sum(bool(p) for p in params)
         
         # Handle the case that all the optional params are null.
@@ -115,9 +114,13 @@ class NodeContextBuilder(Builder[NodeContext]):
             )
         # --- Route to the appropriate validation/build branch. ---#
         
-        # Build the id NodeContext if its flag is enabled.
-        if id is not None:
-            validation = identity_service.validate_id(candidate=id)
+        # Build the priority NodeContext if its flag is enabled.
+        if priority is not None:
+            validation = number_validator.validate(
+                candidate=priority,
+                ceiling=sys.maxsize,
+                floor=-(sys.maxsize - 1),
+            )
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -127,11 +130,11 @@ class NodeContextBuilder(Builder[NodeContext]):
                     )
                 )
             # On validation success return an id_NodeContext in the BuildResult.
-            return BuildResult.success(NodeContext(id=id))
+            return BuildResult.success(NodeContext(priority=priority))
         
-        # Build the name NodeContext if its flag is enabled.
-        if name is not None:
-            validation = identity_service.validate_name(candidate=name)
+        # Build the square NodeContext if its flag is enabled.
+        if square is not None:
+            validation = square_service.validator.validate(candidate=square)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -140,12 +143,12 @@ class NodeContextBuilder(Builder[NodeContext]):
                         ex=validation.exception
                     )
                 )
-            # On validation success return a name_NodeContext in the BuildResult.
-            return BuildResult.success(NodeContext(name=name))
+            # On validation success return a square_NodeContext in the BuildResult.
+            return BuildResult.success(NodeContext(square=square))
         
-        # Build the coord NodeContext if its flag is enabled.
-        if coord is not None:
-            validation = coord_service.validator.validate(coord)
+        # Build the predecessor NodeContext if its flag is enabled.
+        if predecessor is not None:
+            validation = node_validator.validate(candidate=predecessor)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -154,12 +157,12 @@ class NodeContextBuilder(Builder[NodeContext]):
                         ex=validation.exception
                     )
                 )
-            # On validation success return a coord_NodeContext in the BuildResult.
-            return BuildResult.success(NodeContext(coord=coord))
+            # On validation success return a predecessor_NodeContext in the BuildResult.
+            return BuildResult.success(NodeContext(predecessor=predecessor))
         
-        # Build the board NodeContext if its flag is enabled.
-        if board is not None:
-            validation = board_service.validator.validate(candidate=board)
+        # Build the discovery_status NodeContext if its flag is enabled.
+        if discovery_status is not None:
+            validation = node_validator.validate_discovery_status(candidate=discovery_status)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -168,37 +171,8 @@ class NodeContextBuilder(Builder[NodeContext]):
                         ex=validation.exception
                     )
                 )
-            # On validation success return a board_NodeContext in the BuildResult.
-            return BuildResult.success(NodeContext(board=board))
-        
-        # Build the occupant NodeContext if its flag is enabled.
-        if token is not None:
-            validation = token_service.validator.validate(candidate=token)
-            if validation.is_failure:
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    NodeContextBuildFailedException(
-                        message=f"{method}: {NodeContextBuildFailedException.DEFAULT_MESSAGE}",
-                        ex=validation.exception
-                    )
-                )
-            # On validation success return a token_NodeContext in the BuildResult.
-            return BuildResult.success(NodeContext(occupant=token))
-        
-        # Build the state NodeContext if its flag is enabled.
-        if state is not None:
-            if not isinstance(state, NodeState):
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    NodeContextBuildFailedException(
-                        message=f"{method}: {NodeContextBuildFailedException.DEFAULT_MESSAGE}",
-                        ex=TypeError(
-                            f"{method}: Was expecting a NodeState, got {type(state).__name__} instead."
-                        )
-                    )
-                )
-            # On validation success return a token_NodeContext in the BuildResult.
-            return BuildResult.success(NodeContext(state=state))
+            # On validation success return a predecessor_NodeContext in the BuildResult.
+            return BuildResult.success(NodeContext(discovery_status=discovery_status))
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(

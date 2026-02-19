@@ -50,7 +50,7 @@ class NodeContextValidator(Validator[NodeContext]):
             candidate: Any,
             square_service: SquareService = SquareService(),
             node_validator: NodeValidator = NodeValidator(),
-            number_validator: NumberValidator = NumberValidator()
+            number_validator: NumberValidator = NumberValidator(),
     ) -> ValidationResult[NodeContext]:
         """
         # ACTION:
@@ -126,7 +126,7 @@ class NodeContextValidator(Validator[NodeContext]):
             )
         # --- Route to the appropriate validation branch. ---#
         
-        # Certification for the search-by-id target.
+        # Certification for the search-by-priority target.
         if context.priority is not None:
             validation = number_validator.validate(
                 candidate=context.priority,
@@ -196,39 +196,5 @@ class NodeContextValidator(Validator[NodeContext]):
             )
         )
     
-    @classmethod
-    def validate_discovery_status(cls, candidate: Any) -> ValidationResult[DiscoveryStatus]:
-        """
-        # ACTION:
-            1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult.
-                Else, cast to DiscoveryState and send in the ValidationResult.
-        # PARAMETERS:
-            *   candidate (Any)
-        # RETURNS:
-            *   ValidationResult[DiscoveryStatus] containing either:
-                    - On failure: Exception.
-                    - On success: DiscoveryStatus in the payload.
-        # RAISES:
-            *   TypeError
-            *   DiscoveryStatusNullException
-        """
-        method = "NodeContextValidator.validate_discovery_status"
-        
-        # Handle the nonexistence case.
-        if candidate is None:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                    DiscoveryStatusNullException(f"{method}: {DiscoveryStatusNullException.DEFAULT_MESSAGE}")
-                )
-        # Handle the wrong class case.
-        if not isinstance(candidate, NodeContext):
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                NodeContextValidationFailedException(
-                    ex=TypeError(
-                        f"{method}: Was expecting a DiscoveryStatus, got {type(candidate).__predecessor__} instead."
-                    )
-                )
-            )
-        return ValidationResult.success(cast(DiscoveryStatus, candidate))
+
 

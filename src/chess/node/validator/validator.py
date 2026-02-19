@@ -12,8 +12,8 @@ from typing import Any, List, cast
 
 from chess.square import SquareValidator
 from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
-from chess.graph import (
-    DiscoveryStatus, NullDiscoveryStatusException, NullNodeException, Node, NodeValidationFailedException
+from chess.node import (
+    DiscoveryStatus, DiscoveryStatusNullException, NullNodeException, Node, NodeValidationFailedException
 )
 
 
@@ -151,8 +151,8 @@ class NodeValidator(Validator[Node]):
             return ValidationResult.failure(
                 NodeValidationFailedException(
                     message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=NullDiscoveryStatusException(
-                        f"{method}: {NullDiscoveryStatusException.DEFAULT_MESSAGE}"
+                    ex=DiscoveryStatusNullException(
+                        f"{method}: {DiscoveryStatusNullException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -169,3 +169,37 @@ class NodeValidator(Validator[Node]):
             )
         # Tests have been passed return the node in the ValidationResult.
         return ValidationResult.success(payload=node)
+    
+    @classmethod
+    def validate_discovery_status(cls, candidate: Any) -> ValidationResult[DiscoveryStatus]:
+        """
+        # ACTION:
+            1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult.
+                Else, cast to DiscoveryState and send in the ValidationResult.
+        # PARAMETERS:
+            *   candidate (Any)
+        # RETURNS:
+            *   ValidationResult[DiscoveryStatus] containing either:
+                    - On failure: Exception.
+                    - On success: DiscoveryStatus in the payload.
+        # RAISES:
+            *   TypeError
+            *   DiscoveryStatusNullException
+        """
+        method = "NodeContextValidator.validate_discovery_status"
+        
+        # Handle the nonexistence case.
+        if candidate is None:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                DiscoveryStatusNullException(f"{method}: {DiscoveryStatusNullException.DEFAULT_MESSAGE}")
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, DiscoveryStatus):
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                TypeError(
+                    f"{method}: Was expecting a DiscoveryStatus, got {type(candidate).__predecessor__} instead."
+                )
+            )
+        return ValidationResult.success(cast(DiscoveryStatus, candidate))

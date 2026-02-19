@@ -15,6 +15,5 @@ None
 # Modules
 from .null import NullNodeContextException
 from .zero import ZeroNodeContextFlagsException
-from .status import DiscoveryStatusNullException
 from .excess import ExcessiveNodeContextFlagsException
 from .route import NodeContextValidationRouteException

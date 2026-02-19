@@ -14,4 +14,4 @@ None
 
 # Modules
 from .node import NullNodeException
-from .status import NullDiscoveryStatusException
+from .status import DiscoveryStatusNullException

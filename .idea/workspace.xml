@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/node/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/node/context/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/context/validator/validator.py" afterDir="false" />
-    </list>
+    <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -300,11 +296,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/node/context/validator/exception/debug" />
       <recent name="$PROJECT_DIR$/src/chess/node/service/exception/edge/outgoing" />
       <recent name="$PROJECT_DIR$/src/chess/node/service/exception/edge" />
       <recent name="$PROJECT_DIR$/src/chess/edge" />
       <recent name="$PROJECT_DIR$/src/chess/node/stack/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/node" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess" />
@@ -856,7 +852,7 @@
       <workItem from="1770817253294" duration="20000" />
       <workItem from="1770828502342" duration="5758000" />
       <workItem from="1770842905646" duration="113119000" />
-      <workItem from="1771491412101" duration="8047000" />
+      <workItem from="1771491412101" duration="8771000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
