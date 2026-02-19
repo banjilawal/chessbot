@@ -13,7 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import NodeException
+from .base import NodeException
 from .debug import NodeDebugException
-from .incoming import AddIncomingEdgeException
-from .outgoing import AddOutgoingEdgeException

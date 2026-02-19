@@ -298,8 +298,8 @@ class NodeService(EntityService[Node]):
                 )
             )
         return deletion_result
-
     
+
     @LoggingLevelRouter.monitor
     def add_outgoing_edge(self, node: Node, edge: Edge) -> InsertionResult:
         """

@@ -1,7 +1,7 @@
-# src/chess/node/map.py
+# src/chess/node/context/context.py
 
 """
-Module: chess.node.map
+Module: chess.node.context.context
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -10,14 +10,9 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
-from chess.board import Board
-from chess.coord import Coord
-from chess.node import Node
-
-
-from chess.node.state import NodeState
+from chess.square import Square
 from chess.system import Context
-from chess.token import Token
+from chess.node import DiscoveryStatus, Node
 
 
 class NodeContext(Context[Node]):
@@ -35,47 +30,45 @@ class NodeContext(Context[Node]):
     None
 
     # LOCAL ATTRIBUTES:
-        *   board (Optional[Board])
-        *   coord (Optional[Coord])
+        *   priority (Optional[Priority])
+        *   square (Optional[Square])
 
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
     """
-    _board: Optional[Board]
-    _coord: Optional[Coord]
-    _occupant: Optional[Token]
-    _state: Optional[NodeState]
+    _priority: Optional[int]
+    _square: Optional[Square]
+    _predecessor: Optional[Node]
+    _discovery_status: Optional[DiscoveryStatus]
     
     def __init__(
             self,
-            id: Optional[int],
-            name: Optional[str],
-            board: Optional[Board] = None,
-            coord: Optional[Coord] = None,
-            occupant: Optional[Token] = None,
-            state: Optional[NodeState] = None,
+            priority: Optional[int] = None,
+            square: Optional[Square] = None,
+            predecessor: Optional[Node] = None,
+            discovery_status: Optional[DiscoveryStatus] = None,
     ):
-        super().__init__(id=id, name=name)
-        self._board = board
-        self._coord = coord
-        self._occupant = occupant
-        self._state = state
+        super().__init__(id=None, name=None)
+        self._priority = priority
+        self._square = square
+        self._predecessor = predecessor
+        self._discovery_status = discovery_status
         
     @property
-    def board(self) -> Optional[Board]:
-        return self._board
+    def priority(self) -> Optional[int]:
+        return self._priority
         
     @property
-    def coord(self) -> Optional[Coord]:
-        return self._coord
+    def square(self) -> Optional[Square]:
+        return self._square
     
     @property
-    def occupant(self) -> Optional[Token]:
-        return self._occupant
+    def predecessor(self) -> Optional[Node]:
+        return self._predecessor
     
     @property
-    def state(self) -> Optional[NodeState]:
-        return self._state
+    def discovery_status(self) -> Optional[DiscoveryStatus]:
+        return self._discovery_status
     
     def to_dict(self) -> dict:
         """
@@ -89,10 +82,8 @@ class NodeContext(Context[Node]):
         None
         """
         return {
-            "id": self.id,
-            "name": self.name,
-            "board": self._board,
-            "coord": self._coord,
-            "occupant": self._occupant,
-            "state": self._state,
+            "priority": self._priority,
+            "square": self._square,
+            "predecessor": self._predecessor,
+            "discovery_status": self._discovery_status,
         }

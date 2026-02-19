@@ -21,7 +21,7 @@ class AddOutgoingEdgeFailedException(NodeException, InsertionFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why 
+    1.  Wrap debug exceptions indicating why adding a new outgoing edge to a node failed.
 
     # PARENT:
         *   NodeException
