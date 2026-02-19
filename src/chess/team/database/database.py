@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from chess.schema import Schema
-from chess.team import Team
+from chess.team import Team, TeamContext, TeamContextService, TeamService, TeamStack
 from chess.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
@@ -38,13 +38,13 @@ class TeamDatabase(Database[Team]):
         *   See Database class for inherited attributes.
     """
     SERVICE_NAME = "TeamDatabase"
-    _team_database_core: TeamStackService
+    _stack_service: TeamStack
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            data_service: TeamStackService = TeamStackService(),
+            stack_service: TeamStack = TeamStack(),
     ):
         """
         # ACTION:
@@ -58,16 +58,16 @@ class TeamDatabase(Database[Team]):
         # RAISES:
             None
         """
-        super().__init__(id=id, name=name, data_service=data_service)
-        self._team_stack_service = data_service
+        super().__init__(id=id, name=name, data_service=stack_service)
+        self._stack_service = stack_service
 
     @property
     def integrity_service(self) -> TeamService:
-        return self._team_database_core.integrity_service
+        return self._stack_service.integrity_service
     
     @property
     def context_service(self) -> TeamContextService:
-        return self._team_database_core.context_service
+        return self._stack_service.context_service
     
     @property
     def size(self) -> int:

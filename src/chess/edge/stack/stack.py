@@ -14,7 +14,7 @@ from chess.edge import (
     AddingDuplicateEdgeException, Edge, EdgeContextService, EdgePopException, EdgePushException, EdgeService,
     EdgeStackException, PoppingEmptyEdgeStackException
 )
-from chess.system import DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, StackService
+from chess.system import DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, StackService
 
 
 class EdgeStack(StackService[Edge]):
@@ -172,3 +172,79 @@ class EdgeStack(StackService[Edge]):
         # --- Pop the current edge of the non-empty stack and return in the DeletionResult. ---#
         edge = self._stack.pop(-1)
         DeletionResult.success(edge)
+    
+    @LoggingLevelRouter.monitor
+    def delete_by_label(
+            self,
+            label: int,
+            identity_service: IdentityService = IdentityService()
+    ) -> DeletionResult[Edge]:
+        """
+        # ACTION:
+            1.  If the id is not certified safe send the exception in the DeletionResult. Else, call
+                _delete_Edges_by_search_result with the outcome of an id search.
+            2.  Forward the DeletionResult from _delete_Edges_by_search_result to the deletion client.
+        # PARAMETERS:
+                    *   label (int)
+                    *   identity_service (IdentityService)
+        # RETURNS:
+            *   InsertionResult[Edge] containing either:
+                    - On failure: Exception.
+                    - On success: Edge in the payload.
+        # RAISES:
+            *   EdgeStackException
+        """
+        method = "EdgeStack.delete_by_label"
+        
+        # Handle the case that there are no items in the list.
+        if self.is_empty:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                EdgeStackException(
+                    message=f"StackId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
+                    ex=EdgePopException(
+                        message=f"{method}: {EdgePopException.ERROR_CODE}",
+                        ex=PoppingEmptyEdgeStackException(
+                            f"{method}: {PoppingEmptyEdgeStackException.DEFAULT_MESSAGE}"
+                        )
+                    )
+                )
+            )
+        # Handle the case that the id is not certified safe.
+        validation = identity_service.validate_id(candidate=label)
+        if validation.is_failure:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                EdgeStackException(
+                    message=f"StackId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
+                    ex=EdgePopException(
+                        message=f"{method}: {EdgePopException.ERROR_CODE}",
+                        ex=validation.exception
+                    )
+                )
+            )
+        # --- Search the list for an item with target id. ---#
+        for item in self.items:
+            if item.label == label:
+                # Handle the case that the match is the wrong type.
+                if not isinstance(item, Edge):
+                    # Return the exception chain on failure.
+                    return DeletionResult.failure(
+                        EdgeStackException(
+                            message=f"StackId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
+                            ex=EdgePopException(
+                                message=f"{method}: {EdgePopException.ERROR_CODE}",
+                                ex=TypeError(
+                                    f"{method}: Could not cast deletion target to Edge, got {type(item).__name__} "
+                                    f"instead of a Edge."
+                                )
+                            )
+                        )
+                    )
+                # --- Cast the item before removal and return the deleted item in the DeletionResult. ---#
+                edge = cast(Edge, item)
+                self.items.remove(edge)
+                return DeletionResult.success(payload=edge)
+        
+        # If none of the items had that label return an empty DeletionResult.
+        return DeletionResult.nothing_to_delete()

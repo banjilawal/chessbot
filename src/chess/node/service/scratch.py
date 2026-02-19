@@ -1,4 +1,5 @@
-from chess.node import AddOutgoingEdgeFailedException, NodeServiceException
-from chess.system import InsertionResult
+from chess.edge import Edge
+from chess.node import AddOutgoingEdgeFailedException, Node, NodeServiceException, RemoveOutgoingEdgeFailedException
+from chess.system import DeletionResult, InsertionResult
 
 

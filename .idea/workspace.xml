@@ -5,25 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/catchall.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/incoming/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/incoming/add.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/incoming/remove.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/incoming/tail.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/outgoing/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/outgoing/add.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/outgoing/remove.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/edge/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/service/service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/edge/stack/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/stack/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/node/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/node.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/node/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/node/service/exception.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/node/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/add/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/add/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/operation/insertion/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/operation/insertion/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/database/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/database/database.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -871,7 +856,7 @@
       <workItem from="1770572968691" duration="42219000" />
       <workItem from="1770817253294" duration="20000" />
       <workItem from="1770828502342" duration="5758000" />
-      <workItem from="1770842905646" duration="109092000" />
+      <workItem from="1770842905646" duration="112013000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
