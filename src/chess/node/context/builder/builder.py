@@ -12,16 +12,13 @@ from __future__ import annotations
 import sys
 from typing import Optional
 
-from chess.predecessor import Predecessor, PredecessorService
-from chess.priority import Priority, PriorityService
-from chess.node.discovery_status import DiscoveryStatus
-from chess.system import Builder, BuildResult, IdentityService, NumberValidator
 from chess.node import (
-    Node, NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException, NodeContext,
-    NodeContextBuildFailedException,
-    ExcessiveNodeContextFlagsException
+    DiscoveryStatus, ExcessiveNodeContextFlagsException, Node, NodeContext, NodeContextBuildFailedException,
+    NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException
 )
 from chess.square import Square, SquareService
+from chess.system import Builder, BuildResult, NumberValidator
+
 
 
 class NodeContextBuilder(Builder[NodeContext]):

@@ -10,14 +10,12 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from chess.board import Board
-from chess.coord import Coord
+from chess.square import Square
 from chess.system import LoggingLevelRouter, SearchResult, StackSearcher
 from chess.node import (
-    Node, NodeContext, NodeContextValidator, NodeSearchFailedException, NodeSearchRouteException,
-    NodeSearchNullDatasetException, NodeSearchPayloadTypeException, NodeState
+    DiscoveryStatus, Node, NodeContext, NodeContextValidator, NodeSearchFailedException, NodeSearchRouteException,
+    NodeSearchNullDatasetException, NodeSearchPayloadTypeException
 )
-from chess.token import Token
 
 
 class NodeFinder(StackSearcher[Node]):
@@ -109,27 +107,18 @@ class NodeFinder(StackSearcher[Node]):
             )
         # --- Route to the search method which matches the context key. ---#
         
-        # Entry point into finding by item's id.
-        if context.id is not None:
-            return cls._find_by_id(dataset=dataset, id=context.id)
-        # Entry point into finding by item's name.
-        if context.name is not None:
-            return cls._find_by_name(dataset=dataset, name=context.name)
-        # Entry point into finding by item's coord.
-        if context.coord is not None:
-            return cls._find_by_coord(dataset=dataset, coord=context.coord)
-        # Entry point into searching by item's board.
-        if context.board is not None:
-            return cls._find_by_board(dataset=dataset, coord=context.board)
-        # Entry point into searching by item's occupant.
-        if context.board is not None:
-            return cls._find_by_board(dataset=dataset, coord=context.occupant)
-        # Entry point into searching by emptiness.
-        if context.state is not None and context.state == NodeState.EMPTY:
-            return cls._find_by_empty_state(dataset=dataset)
-        # Entry point into searching by fullness.
-        if context.state is not None and context.state == NodeState.OCCUPIED:
-            return cls._find_by_occupied_state(dataset=dataset)
+        # Entry point into finding by item's priority.
+        if context.priority is not None:
+            return cls._find_by_priority(dataset=dataset, priority=context.priority)
+        # Entry point into finding by item's square.
+        if context.square is not None:
+            return cls._find_by_square(dataset=dataset, square=context.square)
+        # Entry point into searching by item's predecessor.
+        if context.predecessor is not None:
+            return cls._find_by_predecessor(dataset=dataset, priority=context.predecessor)
+        # Entry point into searching by discovery status.
+        if context.discovery_status is not None:
+            return cls._find_by_discovery_status(dataset=dataset, discovery_status=context.discovery_status)
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
@@ -141,7 +130,7 @@ class NodeFinder(StackSearcher[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_id(cls, dataset: List[Node], id: int) -> SearchResult[List[Node]]:
+    def _find_by_priority(cls, dataset: List[Node], priority: int) -> SearchResult[List[Node]]:
         """
         # ACTION:
             1.  Get the Nodes with the desired id.
@@ -156,8 +145,8 @@ class NodeFinder(StackSearcher[Node]):
         # RAISES:
             None
         """
-        method = "NodeFinder._find_by_id"
-        matches = [node for node in dataset if node.id == id]
+        method = "NodeFinder._find_by_priority"
+        matches = [node for node in dataset if node.priority == priority]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
@@ -166,12 +155,12 @@ class NodeFinder(StackSearcher[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_name(cls, dataset: List[Node], name: str) -> SearchResult[List[Node]]:
+    def _find_by_square(cls, dataset: List[Node], square: Square) -> SearchResult[List[Node]]:
         """
         # ACTION:
-            1.  Get the Nodes which match the name.
+            1.  Get the Nodes which match the square.
         # PARAMETERS:
-            *   name (str)
+            *   square (square)
             *   dataset (List[Node])
         # RETURNS:
             *   SearchResult[List[Node]] containing either:
@@ -181,7 +170,7 @@ class NodeFinder(StackSearcher[Node]):
         # RAISES:
             None
         """
-        matches = [node for node in dataset if node.name.upper() == name.upper()]
+        matches = [node for node in dataset if node.square == square]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
@@ -190,12 +179,12 @@ class NodeFinder(StackSearcher[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_coord(cls, dataset: List[Node], coord: Coord) -> SearchResult[List[Node]]:
+    def _find_by_predecessor(cls, dataset: List[Node], predecessor: Node) -> SearchResult[List[Node]]:
         """
         # ACTION:
-            1.  Get the Nodes which match the name.
+            1.  Get the Nodes which match the predecessor.
         # PARAMETERS:
-            *   coord (Coord)
+            *   predecessor (Predecessor)
             *   dataset (List[Node])
         # RETURNS:
             *   SearchResult[List[Node]] containing either:
@@ -205,7 +194,7 @@ class NodeFinder(StackSearcher[Node]):
         # RAISES:
             None
         """
-        matches = [node for node in dataset if node.coord == coord]
+        matches = [node for node in dataset if node.predecessor == predecessor]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
@@ -214,62 +203,16 @@ class NodeFinder(StackSearcher[Node]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_board(cls, dataset: List[Node], board: Board) -> SearchResult[List[Node]]:
-        """
-        # ACTION:
-            1.  Get the Nodes which match the board.
-        # PARAMETERS:
-            *   board (Board)
-            *   dataset (List[Node])
-        # RETURNS:
-            *   SearchResult[List[Node]] containing either:
-                    - On error: Exception , payload null
-                    - On finding a match: List[Node] in the payload.
-                    - On no matches found: Exception null, payload null
-        # RAISES:
-            None
-        """
-        matches = [node for node in dataset if node.board == board]
-        # Handle the nothing found case.
-        if len(matches) == 0:
-            return SearchResult.empty()
-        # Only other case
-        return SearchResult.success(payload=matches)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_occupant(cls, dataset: List[Node], occupant: Token) -> SearchResult[List[Node]]:
-        """
-        # ACTION:
-            1.  Get the Nodes which match the token.
-        # PARAMETERS:
-            *   board (Board)
-            *   dataset (List[Node])
-        # RETURNS:
-            *   SearchResult[List[Node]] containing either:
-                    - On error: Exception , payload null
-                    - On finding a match: List[Node] in the payload.
-                    - On no matches found: Exception null, payload null
-        # RAISES:
-            None
-        """
-        matches = [
-            node for node in dataset if (node.occupant is not None and node.occupant) == occupant
-        ]
-        # Handle the nothing found case.
-        if len(matches) == 0:
-            return SearchResult.empty()
-        # Only other case
-        return SearchResult.success(payload=matches)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_empty_state(cls, dataset: List[Node]) -> SearchResult[List[Node]]:
+    def _find_by_discovery_status(
+            cls,
+            dataset: List[Node],
+            discovery_status: DiscoveryStatus
+    ) -> SearchResult[List[Node]]:
         """
         # ACTION:
             1.  Get the Nodes which are empty.
         # PARAMETERS:
-            *   board (Board)
+            *   predecessor (Predecessor)
             *   dataset (List[Node])
         # RETURNS:
             *   SearchResult[List[Node]] containing either:
@@ -279,31 +222,7 @@ class NodeFinder(StackSearcher[Node]):
         # RAISES:
             None
         """
-        matches = [node for node in dataset if node.is_empty]
-        # Handle the nothing found case.
-        if len(matches) == 0:
-            return SearchResult.empty()
-        # Only other case
-        return SearchResult.success(payload=matches)
-    
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def _find_by_occupied_state(cls, dataset: List[Node]) -> SearchResult[List[Node]]:
-        """
-        # ACTION:
-            1.  Get the Nodes which are empty.
-        # PARAMETERS:
-            *   board (Board)
-            *   dataset (List[Node])
-        # RETURNS:
-            *   SearchResult[List[Node]] containing either:
-                    - On error: Exception , payload null
-                    - On finding a match: List[Node] in the payload.
-                    - On no matches found: Exception null, payload null
-        # RAISES:
-            None
-        """
-        matches = [node for node in dataset if node.is_occupied]
+        matches = [node for node in dataset if node.discovery_status == discovery_status]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
