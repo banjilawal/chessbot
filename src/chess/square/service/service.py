@@ -15,7 +15,7 @@ from chess.square.service.exception.insertion import OccupiedSquareCannotRecieve
 from chess.square.service.exception.occupant.add.full import CannotEnterOccupiedSquareException
 from chess.square.state import SquareState
 from chess.system import (
-    DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
+    DeletionResult, EntityService, IdFactory, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
     UpdateResult, id_emitter
 )
 from chess.square import (
@@ -47,7 +47,7 @@ class SquareService(EntityService[Square]):
         *   EntityService
 
     # PROVIDES:
-        *   SquareService
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -61,9 +61,9 @@ class SquareService(EntityService[Square]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
             builder: SquareBuilder = SquareBuilder(),
             validator: SquareValidator = SquareValidator(),
+            id: int = IdFactory.next_id(class_name="SquareService"),
             relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer(),
     ):
         """

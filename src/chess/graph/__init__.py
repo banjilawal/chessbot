@@ -10,7 +10,6 @@ version: 1.0.0
 # =========== GRAPH PACKAGE CONTENTS ===========#
 
 # Packages
-from .edge import *
 from .exception import *
 
 # Modules
