@@ -5,76 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/builder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/builder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/builder/builder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/builder/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/builder/exception/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/builder/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/exception/debug/dataset/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/exception/debug/dataset/null.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/exception/debug/payload/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/exception/debug/payload/kind.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/exception/debug/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/finder/finder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/service/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/service/service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/exception/debug/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/exception/debug/excess.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/exception/debug/null.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/exception/debug/route.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/exception/debug/zero.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/exception/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/service/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/service/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/service/service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/exist.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/pop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/pop/empty.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/pop/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/push/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/push/duplicate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/push/wrapper.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/stack/stack.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/validator/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/catchall.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/incoming/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/incoming/add.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/incoming/remove.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/incoming/tail.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/outgoing/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/outgoing/add.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/node/service/exception/edge/outgoing/remove.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/builder/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/builder/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/builder/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/edge.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/edge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/service/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/service/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/service/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/exception/debug/circular.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/debug/circular.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/exception/debug/distance.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/debug/distance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/exception/debug/heuristic.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/debug/heuristic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/exception/debug/weight.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/debug/weight.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/edge/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/stack/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/stack/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/node/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/node.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/node/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/node/service/exception.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/node/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/add/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/exception/occupant/add/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/operation/insertion/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/operation/insertion/result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -340,7 +289,7 @@
     "ToolWindow.Python Packages.ShowToolbar": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/edge",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/chess/node/service/exception/edge/outgoing",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
@@ -367,11 +316,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/node/service/exception/edge/outgoing" />
+      <recent name="$PROJECT_DIR$/src/chess/node/service/exception/edge" />
       <recent name="$PROJECT_DIR$/src/chess/edge" />
       <recent name="$PROJECT_DIR$/src/chess/node/stack/exception" />
       <recent name="$PROJECT_DIR$/src/chess/node" />
-      <recent name="$PROJECT_DIR$/src/chess/graph/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/graph/vertex/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/chess" />
@@ -922,7 +871,7 @@
       <workItem from="1770572968691" duration="42219000" />
       <workItem from="1770817253294" duration="20000" />
       <workItem from="1770828502342" duration="5758000" />
-      <workItem from="1770842905646" duration="102627000" />
+      <workItem from="1770842905646" duration="109092000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

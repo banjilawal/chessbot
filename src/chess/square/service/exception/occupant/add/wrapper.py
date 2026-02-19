@@ -23,7 +23,7 @@ class AddingSquareOccupantFailedException(SquareException, InsertionFailedExcept
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a occupant entering a item failed.
+    1.  Wrap debug exceptions indicating why adding an occupant to a square failed.
 
     # PARENT:
         *   SquareException

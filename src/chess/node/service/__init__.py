@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== NODE.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .service import NodeService
-from .exception import NodeServiceException

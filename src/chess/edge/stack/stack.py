@@ -7,6 +7,7 @@ Created: 2025-02-17
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import List, Optional, cast
 
 from chess.edge import (

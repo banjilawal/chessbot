@@ -9,33 +9,39 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from typing import List
-
 from chess.square import Square
-from chess.graph import DiscoveryStatus, Edge
-
+from chess.edge import EdgeStack
+from chess.node import DiscoveryStatus
 
 class Node:
     _priority: int
     _square: Square
     _predecessor: Node
-    _incoming_edges: List[Edge]
-    _outgoing_edges: List[Edge]
+    _incoming_edges: EdgeStack
+    _outgoing_edges: EdgeStack
     _discovery_status: DiscoveryStatus
+
     
     def __init__(self, square: Square):
         self._square = square
         
         self._priority = 0
         self._predecessor = None
+        self._incoming_edges = EdgeStack()
+        self._outgoing_edges = EdgeStack()
         self._discovery_status = DiscoveryStatus.UNKNOWN
-        self._incoming_edges = []
-        self._outgoing_edges = []
-        
         
     @property
     def square(self) -> Square:
         return self._square
+    
+    @property
+    def incoming_edges(self) -> EdgeStack:
+        return self._incoming_edges
+    
+    @property
+    def outgoing_edges(self) -> EdgeStack:
+        return self._outgoing_edges
     
     @property
     def discovery_status(self) -> DiscoveryStatus:

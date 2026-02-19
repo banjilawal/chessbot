@@ -8,13 +8,11 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import Generic, Optional, TypeVar
+from typing import Optional, TypeVar
 
 from chess.system import DataResult, InsertionResultEnum, InsertionResultState
 
-T = TypeVar("T")
-
-class InsertionResult(DataResult[T], Generic[T]):
+class InsertionResult(DataResult[bool]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
@@ -47,7 +45,7 @@ class InsertionResult(DataResult[T], Generic[T]):
     @property
     def is_success(self) -> bool:
         return (
-                self.payload and
+                self.payload == True and
                 self.exception is None and
                 self.state.classification == InsertionResultEnum.SUCCESS
         )
@@ -55,7 +53,7 @@ class InsertionResult(DataResult[T], Generic[T]):
     @property
     def is_failure(self) -> bool:
         return (
-                not self.payload and
+                self.payload == False and
                 self.exception is not None and
                 self.state.classification == InsertionResultEnum.FAILURE
         )
@@ -63,13 +61,13 @@ class InsertionResult(DataResult[T], Generic[T]):
     @property
     def is_timed_out(self) -> bool:
         return (
-                not self.payload and
+                self.payload == False and
                 self.exception is not None and
                 self.state.classification == InsertionResultEnum.TIMED_OUT
         )
     
     @classmethod
-    def success(cls,) -> InsertionResult[bool]:
+    def success(cls, payload: bool = True) -> InsertionResult[bool]:
         return cls(
             payload=True,
             exception=None,
