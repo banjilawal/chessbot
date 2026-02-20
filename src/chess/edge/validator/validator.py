@@ -17,7 +17,7 @@ from chess.system import (
     BOARD_DIMENSION, IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 )
 from chess.edge import (
-    CircularEdgeException, Edge, EdgeDistanceException, EdgeHeuristicException, EdgeValidationFailedException,
+    CircularEdgeException, Edge, EdgeDistanceException, EdgeHeuristicException, ValidatingEdgeException,
     EdgeWeightException, NullEgeException
 )
 
@@ -71,7 +71,7 @@ class EdgeValidator(Validator[Edge]):
         # RAISES:
             *   TypeError
             *   NullEdgeException
-            *   EdgeValidationFailedException
+            *   ValidatingEdgeException
         """
         method = "EdgeValidator.validate"
         
@@ -79,8 +79,8 @@ class EdgeValidator(Validator[Edge]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                EdgeValidationFailedException(
-                    message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                ValidatingEdgeException(
+                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
                     ex=NullEgeException(f"{method}: {NullEgeException.DEFAULT_MESSAGE}")
                 )
             )
@@ -88,8 +88,8 @@ class EdgeValidator(Validator[Edge]):
         if not isinstance(Edge, candidate):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                EdgeValidationFailedException(
-                    message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                ValidatingEdgeException(
+                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
                     ex=TypeError(f"{method}: Expected an Edge, got {type(candidate).__name__}. instead")
                 )
             )
@@ -101,8 +101,8 @@ class EdgeValidator(Validator[Edge]):
         # Return the exception chain on failure.
         if label_validation_result.is_failure:
             return ValidationResult.failure(
-                EdgeValidationFailedException(
-                    message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                ValidatingEdgeException(
+                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
                     ex=label_validation_result.exception
                 )
             )
@@ -115,8 +115,8 @@ class EdgeValidator(Validator[Edge]):
         if distance_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                EdgeValidationFailedException(
-                    message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                ValidatingEdgeException(
+                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
                     ex=EdgeDistanceException(
                         message="{method}: {EdgeDistanceException.DEFAULT_MESSAGE}",
                         ex=distance_validation_result.exception
@@ -132,8 +132,8 @@ class EdgeValidator(Validator[Edge]):
         if heuristic_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                EdgeValidationFailedException(
-                    message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                ValidatingEdgeException(
+                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
                     ex=EdgeHeuristicException(
                         message=f"{method}: {EdgeHeuristicException.DEFAULT_MESSAGE}",
                         ex=heuristic_validation_result.exception
@@ -149,8 +149,8 @@ class EdgeValidator(Validator[Edge]):
         if weight_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                EdgeValidationFailedException(
-                    message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                ValidatingEdgeException(
+                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
                     ex=EdgeWeightException(
                         message=f"{method}: {EdgeWeightException.DEFAULT_MESSAGE}",
                         ex=weight_validation_result.exception
@@ -162,8 +162,8 @@ class EdgeValidator(Validator[Edge]):
         if head_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                EdgeValidationFailedException(
-                    message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                ValidatingEdgeException(
+                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
                     ex=head_validation_result.exception
                 )
             )
@@ -172,8 +172,8 @@ class EdgeValidator(Validator[Edge]):
         if tail_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                EdgeValidationFailedException(
-                    message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                ValidatingEdgeException(
+                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
                     ex=tail_validation_result.exception
                 )
             )
@@ -181,8 +181,8 @@ class EdgeValidator(Validator[Edge]):
         if edge.head == edge.tail:
             # Return the exception chain on failure
             return ValidationResult.failure(
-                EdgeValidationFailedException(
-                    message=f"{method} {EdgeValidationFailedException.DEFAULT_MESSAGE}",
+                ValidatingEdgeException(
+                    message=f"{method} {ValidatingEdgeException.DEFAULT_MESSAGE}",
                     ex=CircularEdgeException(f"{method}: {CircularEdgeException.DEFAULT_MESSAGE}")
                 )
             )

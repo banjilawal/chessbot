@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change afterPath="$PROJECT_DIR$/src/chess/edge/exception/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/edge/service/exception/update/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/edge/service/exception/update/heuristic.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/chess/edge/service/exception/update/weight.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/edge/edge.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/edge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/validator/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,11 +314,11 @@
       <recent name="$PROJECT_DIR$/src/chess/node/stack/exception" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/chess/edge/service/exception/debug" />
+      <recent name="$PROJECT_DIR$/src/chess/edge/service/exception" />
+      <recent name="$PROJECT_DIR$/src/chess/edge/exception" />
       <recent name="$PROJECT_DIR$/src/chess/node/validator/exception/debug/null" />
       <recent name="$PROJECT_DIR$/src/chess" />
-      <recent name="$PROJECT_DIR$/src/chess/node/stack/exception" />
-      <recent name="$PROJECT_DIR$/src/chess/graph/vertex/stack" />
-      <recent name="$PROJECT_DIR$/src/chess/graph/vertex/exception" />
     </key>
   </component>
   <component name="RunManager" selected="Python.edge">
@@ -857,7 +864,7 @@
       <workItem from="1770828502342" duration="5758000" />
       <workItem from="1770842905646" duration="113119000" />
       <workItem from="1771491412101" duration="13201000" />
-      <workItem from="1771579310427" duration="925000" />
+      <workItem from="1771579310427" duration="8959000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

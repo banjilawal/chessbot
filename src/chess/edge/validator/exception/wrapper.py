@@ -11,12 +11,12 @@ from chess.system import ValidationFailedException
 
 __all__ = [
     # ======================# EDGE_VALIDATION_FAILURE EXCEPTION #======================#
-    "EdgeValidationFailedException",
+    "ValidatingEdgeException",
 ]
 
 
 # ======================# EDGE_VALIDATION_FAILURE EXCEPTION #======================#
-class EdgeValidationFailedException(EdgeException, ValidationFailedException):
+class ValidatingEdgeException(EdgeException, ValidationFailedException):
     """
     # ROLE: Exception Wrapper
 

@@ -55,9 +55,17 @@ class Edge:
     def heuristic(self) -> int:
         return self._heuristic
     
+    @heuristic.setter
+    def heuristic(self, value: int):
+        self._heuristic = value
+    
     @property
     def weight(self) -> int:
         return self._weight
+    
+    @weight.setter
+    def weight(self, value: int):
+        self._weight = value
     
     def __eq__(self, other):
         if other is self: return True

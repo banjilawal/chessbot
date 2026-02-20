@@ -13,7 +13,10 @@ import sys
 from copy import deepcopy
 from typing import cast
 
-from chess.edge import Edge, EdgeBuilder, EdgeServiceException, EdgeValidator
+from chess.edge import (
+    Edge, EdgeBuilder, EdgeServiceException, EdgeValidator, UpdatingEdgeHeuristicException,
+    UpdatingEdgeWeightException
+)
 from chess.system import EntityService, IdFactory, LoggingLevelRouter, NumberValidator, UpdateResult
 
 
@@ -106,8 +109,8 @@ class EdgeService(EntityService[Edge]):
                 original=edge,
                 exception=EdgeServiceException(
                     message=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERROR_CODE}",
-                    ex=EdgeHeuristicException(
-                        message=f"{method}: {EdgeHeuristicException.DEFAULT_MESSAGE}",
+                    ex=UpdatingEdgeHeuristicException(
+                        message=f"{method}: {UpdatingEdgeHeuristicException.DEFAULT_MESSAGE}",
                         ex=heuristic_validation_result.exception
                     )
                 )
@@ -117,4 +120,48 @@ class EdgeService(EntityService[Edge]):
         edge.heuristic = heuristic
         return UpdateResult.update_success(original=original_edge, updated=edge)
     
+    @LoggingLevelRouter.monitor
+    def update_edge_weight(
+            self,
+            edge: Edge,
+            weight: int,
+            number_validator: NumberValidator = NumberValidator()
+    ) -> UpdateResult[Edge]:
+        method = "EdgeService.update_edge_weight"
         
+        # Handle the case that the edge is unsafe.
+        edge_validation = self.integrity_service.validator.validate(candidate=edge)
+        if edge_validation.is_failure:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=edge,
+                exception=EdgeServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERROR_CODE}",
+                    ex=UpdatingEdgeWeightException(
+                        message=f"{method}: {UpdatingEdgeHeuristicException.ERROR_CODE}",
+                        ex=edge_validation.exception
+                    )
+                )
+            )
+        # Handle the case that the heuristic is not a number.
+        weight_validation_result = number_validator.validate(
+            candidate=weight,
+            ceiling=sys.maxsize,
+            floor=(-sys.maxsize + 1),
+        )
+        if weight_validation_result.is_failure:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=edge,
+                exception=EdgeServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERROR_CODE}",
+                    ex=UpdatingEdgeWeightException(
+                        message=f"{method}: {UpdatingEdgeWeightException.DEFAULT_MESSAGE}",
+                        ex=weight_validation_result.exception
+                    )
+                )
+            )
+        original_edge = deepcopy(edge)
+        
+        edge.weight = weight
+        return UpdateResult.update_success(original=original_edge, updated=edge)

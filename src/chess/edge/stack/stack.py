@@ -11,10 +11,14 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from chess.edge import (
-    AddingDuplicateEdgeException, Edge, EdgeContextService, PoppingEdgeException, PushingEdgeException, EdgeService,
+    AddingDuplicateEdgeException, Edge, EdgeContext, EdgeContextService, PoppingEdgeException, PushingEdgeException,
+    EdgeService,
     EdgeStackException, PoppingEmptyEdgeStackException
 )
-from chess.system import DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, StackService
+from chess.system import (
+    DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult,
+    StackService
+)
 
 
 class EdgeStack(StackService[Edge]):
@@ -40,7 +44,7 @@ class EdgeStack(StackService[Edge]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    SERVICE_NAME = "EdgeStackService"
+    SERVICE_NAME = "EdgeStack"
     
     _id: int
     _stack: List[Edge]
@@ -171,7 +175,7 @@ class EdgeStack(StackService[Edge]):
                     )
                 )
             )
-        # --- Pop the updated edge of the non-empty stack and return in the DeletionResult. ---#
+        # --- Remove the top edge in the stack and return in the DeletionResult. ---#
         edge = self._stack.pop(-1)
         DeletionResult.success(edge)
     
@@ -183,7 +187,8 @@ class EdgeStack(StackService[Edge]):
     ) -> DeletionResult[Edge]:
         """
         # ACTION:
-            1.  If the id is not certified safe send the exception in the DeletionResult. Else, call
+            1.  If the label is not certified safe send the exception in the DeletionResult.
+            2.  Iterate through the list of edges deleting and edges which match the label.
                 _delete_Edges_by_search_result with the outcome of an id search.
             2.  Forward the DeletionResult from _delete_Edges_by_search_result to the deletion client.
         # PARAMETERS:
@@ -225,33 +230,55 @@ class EdgeStack(StackService[Edge]):
                     )
                 )
             )
-        # --- Search the list for an item with target id. ---#
-        edge = None
-        for item in self.items:
-            if item.label == label:
-                # Handle the case that the match is the wrong type.
-                if not isinstance(item, Edge):
-                    # Return the exception chain on failure.
-                    return DeletionResult.failure(
-                        EdgeStackException(
-                            message=f"StackId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
-                            ex=PoppingEdgeException(
-                                message=f"{method}: {PoppingEdgeException.ERROR_CODE}",
-                                ex=TypeError(
-                                    f"{method}: Could not cast deletion target to Edge, got {type(item).__name__} "
-                                    f"instead of a Edge."
-                                )
-                            )
-                        )
-                    )
-                # --- Cast the item before removal and return the deleted item in the DeletionResult. ---#
-                edge = cast(Edge, item)
+        # --- Loop through the collection to ensure all matches are removed. ---#
+        target = None
+        for edge in self._stack:
+            if edge.label == label:
+                # Record a hit before pulling it from the stack.
+                target = edge
                 self.items.remove(edge)
         # --- After the loop handle the two possible outcomes of purging the stack. ---#
         
-        # Handle the case that an edge with the matching label was deleted.
-        if edge is not None:
-            return DeletionResult.success(payload=edge)
+        # Handle the case that at least one edge was removed
+        if target is not None:
+            return DeletionResult.success(payload=target)
         
         # The default case is no edge had that label so there was nothing to delete.
         return DeletionResult.nothing_to_delete()
+    
+    @LoggingLevelRouter.monitor
+    def search(self, context: EdgeContext) -> SearchResult[List[Edge]]:
+        """
+        # ACTION:
+            1.  Pass the context param to context_service manages all error handling and operations in
+                search lifecycle.
+            2.  Any failures context_service will be encapsulated inside a EdgeStackException 
+                which is sent inside a SearchResult.
+            3.  If the search completes successfully the result can be sent directly because it will contain the
+                payload.
+        # PARAMETERS:
+            *   context (EdgeContext)
+        # RETURN:
+            *   SearchResult[Edge] containing either:
+                    - On failure: An exception.
+                    - On success: List[Edge] in payload.
+                    - On Empty: No payload nor exception.
+        # RAISES:
+            *   EdgeStackException
+        """
+        method = "EdgeStack.search"
+        
+        # --- Handoff the search responsibility to _stack_service. ---#
+        search_result = self._context_service.finder.find(context=context)
+        
+        # Handle the case that the search is not completed.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                EdgeStackException(
+                    message=f"ServiceID:{self.id} {method}: {EdgeStackException.ERROR_CODE}",
+                    ex=search_result.exception
+                )
+            )
+        # --- For either a successful or empty search result directly forward to the caller. ---#
+        return search_result
