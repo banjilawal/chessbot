@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# SQUARE_INSERTION_FAILURE #======================#
-    "SquareInsertionFailedException",
+    "PushingSquareException",
 ]
 
 from chess.square import SquareStackException
@@ -17,7 +17,7 @@ from chess.system import InsertionFailedException
 
 
 # ======================# SQUARE_INSERTION_FAILURE #======================#
-class SquareInsertionFailedException(SquareStackException, InsertionFailedException):
+class PushingSquareException(SquareStackException, InsertionFailedException):
     """
     # ROLE: Exception Wrapper
 

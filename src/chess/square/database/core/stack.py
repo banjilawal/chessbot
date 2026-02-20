@@ -16,7 +16,7 @@ from chess.system import (
 from chess.square import (
     SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, SquareIdAlreadyInUseException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
-    PoppingSquareStackFailedException, SquareInsertionFailedException, FullSquareStackException
+    PoppingSquareException, PushingSquareException, FullSquareStackException
 )
 from chess.token import Token
 
@@ -140,8 +140,8 @@ class SquareStack(StackService[Square]):
             return InsertionResult.failure(
                 SquareStackException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                    ex=SquareInsertionFailedException(
-                        message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
+                    ex=PushingSquareException(
+                        message=f"{method}: {PushingSquareException.ERROR_CODE}",
                         ex=FullSquareStackException(f"{method}: {FullSquareStackException.DEFAULT_MESSAGE}")
                     )
                 )
@@ -153,8 +153,8 @@ class SquareStack(StackService[Square]):
             return InsertionResult.failure(
                 SquareStackException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                    ex=SquareInsertionFailedException(
-                        message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
+                    ex=PushingSquareException(
+                        message=f"{method}: {PushingSquareException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -166,8 +166,8 @@ class SquareStack(StackService[Square]):
             return InsertionResult.failure(
                 SquareStackException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                    ex=SquareInsertionFailedException(
-                        message=f"{method}: {SquareInsertionFailedException.ERROR_CODE}",
+                    ex=PushingSquareException(
+                        message=f"{method}: {PushingSquareException.ERROR_CODE}",
                         ex=collision_detection.exception
                     )
                 )
@@ -200,8 +200,8 @@ class SquareStack(StackService[Square]):
             return DeletionResult.failure(
                 SquareStackException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                    ex=PoppingSquareStackFailedException(
-                        message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
+                    ex=PoppingSquareException(
+                        message=f"{method}: {PoppingSquareException.ERROR_CODE}",
                         ex=PoppingEmptySquareStackException(
                             f"{method}: {PoppingEmptySquareStackException.DEFAULT_MESSAGE}"
                         )
@@ -241,8 +241,8 @@ class SquareStack(StackService[Square]):
             return DeletionResult.failure(
                 SquareStackException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                    ex=PoppingSquareStackFailedException(
-                        message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
+                    ex=PoppingSquareException(
+                        message=f"{method}: {PoppingSquareException.ERROR_CODE}",
                         ex=PoppingEmptySquareStackException(
                             f"{method}: {PoppingEmptySquareStackException.DEFAULT_MESSAGE}"
                         )
@@ -256,8 +256,8 @@ class SquareStack(StackService[Square]):
             return DeletionResult.failure(
                 SquareStackException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                    ex=PoppingSquareStackFailedException(
-                        message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
+                    ex=PoppingSquareException(
+                        message=f"{method}: {PoppingSquareException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -271,8 +271,8 @@ class SquareStack(StackService[Square]):
                     return DeletionResult.failure(
                         SquareStackException(
                             message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                            ex=PoppingSquareStackFailedException(
-                                message=f"{method}: {PoppingSquareStackFailedException.ERROR_CODE}",
+                            ex=PoppingSquareException(
+                                message=f"{method}: {PoppingSquareException.ERROR_CODE}",
                                 ex=TypeError(
                                     f"{method}: Could not cast deletion target to Square, got {type(item).__name__} "
                                     f"instead of a Square."

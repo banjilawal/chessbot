@@ -12,9 +12,9 @@ from typing import List, cast
 from chess.square import (
     AddingDuplicateSquareException, AddingSquareOccupantFailedException, DeleteTokenBySearchFailedException,
     InsertingSquareInDatabaseFailedException, Square, SquareContext, SquareContextService, SquareStack, SquareService,
-    FullSquareStackException, SquareDatabaseException, SquareToOccupyNotFoundException, UniqueSquareSearchFailedException
+    FullSquareStackException, SquareDatabaseException, SquareToOccupyNotFoundException
 )
-from chess.square.state import SquareState
+
 from chess.system import (
     IdFactory, NUMBER_OF_COLUMNS, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
     SearchResult,
@@ -282,7 +282,7 @@ class SquareDatabase(Database[Square]):
             *   SquareDatabaseException
             *   InsertingSquareInDatabaseFailedException
         """
-        method = "SquareDatabase.add_unique_square"
+        method = "SquareDatabase.insert_square"
         
         # Handle the case that the service cannot manage anymore squares.
         if self.is_full:
@@ -308,7 +308,7 @@ class SquareDatabase(Database[Square]):
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=InsertingSquareInDatabaseFailedException(
+                    ex=Squ(
                         message=f"{method}: {InsertingSquareInDatabaseFailedException.ERROR_CODE}",
                         ex=validation.exception
                     )

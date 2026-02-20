@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import PoppingSquareStackFailedException
+from .wrapper import PoppingSquareException
 from .empty import PoppingEmptySquareStackException
 from .unfound import SquareToDeleteNotFoundException
