@@ -1,4 +1,4 @@
-from chess.graph import EdgeException
+from chess.edge import EdgeException
 from chess.system import DebugException
 
 __all__ = [

@@ -153,7 +153,7 @@ class CoordStack(StackService[Coord]):
                     )
                 )
             )
-        #--- Set the current coord as the previous one then, push the new coord. ---#
+        #--- Set the updated coord as the original one then, push the new coord. ---#
         self._previous_coord = self._current_coord
         self._stack.append(item)
         

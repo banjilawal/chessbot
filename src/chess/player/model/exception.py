@@ -53,7 +53,7 @@ class PlayerException(ChessException):
 #   DEFAULT_MESSAGE = "Could not push team_name new team_name to TeamStack."
 #
 # class UndoingPushTeamFailedException(PlayerPlayerHistoryException):
-#   """Raised if removing the current team_name failed"""
+#   """Raised if removing the updated team_name failed"""
 #   ERROR_CODE = "UNDOING_PUSH_TEAM_FAILED_ERROR"
 #   DEFAULT_MESSAGE = "Could not undo the new team_name addition."
 #

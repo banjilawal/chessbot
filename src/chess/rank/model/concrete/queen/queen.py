@@ -22,7 +22,7 @@ class Queen(Rank):
     # ROLE: Computation, Metadata
 
     # RESPONSIBILITIES:
-    1.  Produces a list of Coords reachable from a Queen's current position.
+    1.  Produces a list of Coords reachable from a Queen's updated position.
     2.  Metadata about the Queen rank.
 
     # PROVIDES:

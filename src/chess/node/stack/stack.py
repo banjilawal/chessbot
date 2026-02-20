@@ -169,7 +169,7 @@ class NodeStack(StackService[Node]):
                     )
                 )
             )
-        # --- Pop the current node of the non-empty stack and return in the DeletionResult. ---#
+        # --- Pop the updated node of the non-empty stack and return in the DeletionResult. ---#
         node = self._stack.pop(-1)
         DeletionResult.success(node)
     

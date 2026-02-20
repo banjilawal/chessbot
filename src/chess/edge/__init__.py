@@ -14,8 +14,8 @@ from .stack import *
 from .context import *
 from .service import *
 from .builder import *
+from .exception import *
 from .validator import *
 
 # Modules
 from .edge import Edge
-from .exception import EdgeException

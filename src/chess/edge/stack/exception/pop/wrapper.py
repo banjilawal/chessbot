@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# EDGE_DELETION_FAILURE EXCEPTION #======================#
-    "EdgePopException",
+    "PoppingEdgeException",
 ]
 
 from chess.edge import EdgeStackException
@@ -17,7 +17,7 @@ from chess.system import DeletionFailedException
 
 
 # ======================# EDGE_DELETION_FAILURE EXCEPTION #======================#
-class EdgePopException(EdgeStackException, DeletionFailedException):
+class PoppingEdgeException(EdgeStackException, DeletionFailedException):
     """
     # ROLE: Exception Wrapper
 

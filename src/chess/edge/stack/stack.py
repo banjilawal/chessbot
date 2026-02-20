@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from chess.edge import (
-    AddingDuplicateEdgeException, Edge, EdgeContextService, EdgePopException, EdgePushException, EdgeService,
+    AddingDuplicateEdgeException, Edge, EdgeContextService, PoppingEdgeException, PushingEdgeException, EdgeService,
     EdgeStackException, PoppingEmptyEdgeStackException
 )
 from chess.system import DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, StackService
@@ -45,6 +45,7 @@ class EdgeStack(StackService[Edge]):
     _id: int
     _stack: List[Edge]
     _service: EdgeService
+    _context_service: EdgeContextService
     
     def __init__(
             self,
@@ -63,6 +64,7 @@ class EdgeStack(StackService[Edge]):
         )
         self._stack = items
         self._service = service
+        self._context_service = context_service
         
     @property
     def id(self) -> int:
@@ -82,7 +84,7 @@ class EdgeStack(StackService[Edge]):
     
     @property
     def context_service(self) -> EdgeContextService:
-        return cast(EdgeContextService, self.context_service)
+        return self._context_service
     
     @property
     def current_edge(self) -> Optional[Edge]:
@@ -102,7 +104,7 @@ class EdgeStack(StackService[Edge]):
                     - On success: Edge in the payload.
         # RAISES:
             *   EdgeStackException
-            *   EdgePushException
+            *   PushingEdgeException
             *   AddingDuplicateEdgeException
         """
         method = "EdgeStack.push"
@@ -114,8 +116,8 @@ class EdgeStack(StackService[Edge]):
             return InsertionResult.failure(
                 EdgeStackException(
                     message=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
-                    ex=EdgePushException(
-                        message=f"{method}: {EdgePushException.ERROR_CODE}", 
+                    ex=PushingEdgeException(
+                        message=f"{method}: {PushingEdgeException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -126,8 +128,8 @@ class EdgeStack(StackService[Edge]):
             return InsertionResult.failure(
                 EdgeStackException(
                     message=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
-                    ex=EdgePushException(
-                        message=f"{method}: {EdgePushException.ERROR_CODE}",
+                    ex=PushingEdgeException(
+                        message=f"{method}: {PushingEdgeException.ERROR_CODE}",
                         ex=AddingDuplicateEdgeException(f"{method}: {AddingDuplicateEdgeException.DEFAULT_MESSAGE}")
                     )
                 )
@@ -150,7 +152,7 @@ class EdgeStack(StackService[Edge]):
                     - On success: Edge in the payload.
         # RAISES:
             *   EdgeStackException
-            *   EdgePopException 
+            *   PoppingEdgeException
             *   PoppingEmptyEdgeStackException
         """
         method = "EdgeStack.pop"
@@ -161,15 +163,15 @@ class EdgeStack(StackService[Edge]):
             return DeletionResult.failure(
                 EdgeStackException(
                     message=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
-                    ex=EdgePopException(
-                        message=f"{method}: {EdgePopException.ERROR_CODE}",
+                    ex=PoppingEdgeException(
+                        message=f"{method}: {PoppingEdgeException.ERROR_CODE}",
                         ex=PoppingEmptyEdgeStackException(
                             f"{method}: {PoppingEmptyEdgeStackException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
             )
-        # --- Pop the current edge of the non-empty stack and return in the DeletionResult. ---#
+        # --- Pop the updated edge of the non-empty stack and return in the DeletionResult. ---#
         edge = self._stack.pop(-1)
         DeletionResult.success(edge)
     
@@ -202,8 +204,8 @@ class EdgeStack(StackService[Edge]):
             return DeletionResult.failure(
                 EdgeStackException(
                     message=f"StackId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
-                    ex=EdgePopException(
-                        message=f"{method}: {EdgePopException.ERROR_CODE}",
+                    ex=PoppingEdgeException(
+                        message=f"{method}: {PoppingEdgeException.ERROR_CODE}",
                         ex=PoppingEmptyEdgeStackException(
                             f"{method}: {PoppingEmptyEdgeStackException.DEFAULT_MESSAGE}"
                         )
@@ -217,13 +219,14 @@ class EdgeStack(StackService[Edge]):
             return DeletionResult.failure(
                 EdgeStackException(
                     message=f"StackId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
-                    ex=EdgePopException(
-                        message=f"{method}: {EdgePopException.ERROR_CODE}",
+                    ex=PoppingEdgeException(
+                        message=f"{method}: {PoppingEdgeException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
             )
         # --- Search the list for an item with target id. ---#
+        edge = None
         for item in self.items:
             if item.label == label:
                 # Handle the case that the match is the wrong type.
@@ -232,8 +235,8 @@ class EdgeStack(StackService[Edge]):
                     return DeletionResult.failure(
                         EdgeStackException(
                             message=f"StackId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
-                            ex=EdgePopException(
-                                message=f"{method}: {EdgePopException.ERROR_CODE}",
+                            ex=PoppingEdgeException(
+                                message=f"{method}: {PoppingEdgeException.ERROR_CODE}",
                                 ex=TypeError(
                                     f"{method}: Could not cast deletion target to Edge, got {type(item).__name__} "
                                     f"instead of a Edge."
@@ -244,7 +247,11 @@ class EdgeStack(StackService[Edge]):
                 # --- Cast the item before removal and return the deleted item in the DeletionResult. ---#
                 edge = cast(Edge, item)
                 self.items.remove(edge)
-                return DeletionResult.success(payload=edge)
+        # --- After the loop handle the two possible outcomes of purging the stack. ---#
         
-        # If none of the items had that label return an empty DeletionResult.
+        # Handle the case that an edge with the matching label was deleted.
+        if edge is not None:
+            return DeletionResult.success(payload=edge)
+        
+        # The default case is no edge had that label so there was nothing to delete.
         return DeletionResult.nothing_to_delete()

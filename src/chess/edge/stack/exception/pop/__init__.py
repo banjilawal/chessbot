@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import EdgePopException
+from .wrapper import PoppingEdgeException
 from .empty import PoppingEmptyEdgeStackException

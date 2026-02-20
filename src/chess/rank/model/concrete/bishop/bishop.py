@@ -25,7 +25,7 @@ class Bishop(Rank):
     # ROLE: Computation, Metadata
 
     # RESPONSIBILITIES:
-    1.  Produces a list of Coords reachable from a Bishop's current position.
+    1.  Produces a list of Coords reachable from a Bishop's updated position.
     2.  Metadata about the Bishop rank useful for optimizing the GameGraph.
 
     # PARENT:
@@ -67,7 +67,7 @@ class Bishop(Rank):
     def compute_span(self, token: Token,) -> ComputationResult[[Coord]]:
         """
         # Action
-            1.  Pass the occupant's current position to Rook._perpendicular_span to get the set of possible destinations.
+            1.  Pass the occupant's updated position to Rook._perpendicular_span to get the set of possible destinations.
             2.  If perpendicular_span fails send the exception chain in the ComputationResult. Else, return
                 the span in the ComputationResult's payload.
         # PARAMETERS:

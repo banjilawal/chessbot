@@ -20,8 +20,8 @@ class Event(Generic[A, R, X]):
   # ROLE: State Management, Data Transport, Abstract Data Type
 
   # RESPONSIBILITIES:
-  1. Transport entity_service representing an entity's current state.
-  2. A store of current states of an entities whose states might change.
+  1. Transport entity_service representing an entity's updated state.
+  2. A store of updated states of an entities whose states might change.
   3. A reference for verifying success of a rollback notification.
 
   # PROVIDES:

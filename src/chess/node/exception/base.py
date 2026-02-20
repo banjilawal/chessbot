@@ -1,7 +1,7 @@
-# src/chess/node/exception/catchall.py
+# src/chess/node/exception/base.py
 
 """
-Module: chess.node.exception.catchall
+Module: chess.node.exception.base
 Author: Banji Lawal
 Created: 2025-02-17
 version: 1.0.0

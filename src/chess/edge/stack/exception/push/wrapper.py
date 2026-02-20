@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# EDGE_INSERTION_FAILURE #======================#
-    "EdgePushException",
+    "PushingEdgeException",
 ]
 
 from chess.edge import EdgeStackException
@@ -17,7 +17,7 @@ from chess.system import InsertionFailedException
 
 
 # ======================# EDGE_INSERTION_FAILURE #======================#
-class EdgePushException(EdgeStackException, InsertionFailedException):
+class PushingEdgeException(EdgeStackException, InsertionFailedException):
     """
     # ROLE: Exception Wrapper
 

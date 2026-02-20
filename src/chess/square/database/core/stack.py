@@ -208,7 +208,7 @@ class SquareStack(StackService[Square]):
                     )
                 )
             )
-        # --- Pop the current square of the non-empty stack and return in the DeletionResult. ---#
+        # --- Pop the updated square of the non-empty stack and return in the DeletionResult. ---#
         square = self._stack.pop(-1)
         DeletionResult.success(square)
     

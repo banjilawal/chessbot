@@ -21,16 +21,11 @@ from chess.system import (
 from chess.square import (
     AddingFormationToSquareFailedException, AddingSquareOccupantFailedException, DisabledTokenOccupyingSquareException,
     NothingToRemoveFromEmptySquareException, RemovingSquareOccupantFailedException, Square, SquareBuilder,
-    SquareServiceException,
-    SquareTokenRelationAnalyzer, SquareValidator, TokenEnteringSquareOnWrongBoardException,
+    SquareServiceException, SquareTokenRelationAnalyzer, SquareValidator, TokenEnteringSquareOnWrongBoardException,
     TokenEnteringWrongOpeningSquareException
 )
-from chess.team import FriendCannotCaptureFriendException, Team, TeamService
-from chess.token import (
-    CombatantActivityState, CombatantToken, KingToken, Token, TokenBoardState, TokenContext,
-    TokenDoesNotExistForRemovalException,
-    TokenService
-)
+from chess.team import Team, TeamService
+from chess.token import Token, TokenBoardState, TokenContext, TokenDoesNotExistForRemovalException, TokenService
 
 
 class SquareService(EntityService[Square]):

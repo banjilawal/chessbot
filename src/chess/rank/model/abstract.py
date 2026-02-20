@@ -22,7 +22,7 @@ class Rank(ABC):
     # ROLE: Computation
 
     # RESPONSIBILITIES:
-    1.  Single-source-of-truth of Coords reachable from a Token's current position on the board.
+    1.  Single-source-of-truth of Coords reachable from a Token's updated position on the board.
     2.  Metadata for weighing edges in the GameGraph.
     3.  Hosting logic common to Rank subclasses.
 

@@ -20,7 +20,7 @@ class Domain:
 
     # RESPONSIBILITIES:
     Immutable data structure that:
-        1. Lists all squares reachable by Domain owner in a walk from its current position.
+        1. Lists all squares reachable by Domain owner in a walk from its updated position.
         2. Indicate which Squares are blocked by a friendly Token.
         3. Indicate which Squares contain an enemy Token which might be attacked or avoided.
         

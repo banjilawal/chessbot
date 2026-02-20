@@ -90,7 +90,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
             )
         piece = cast(Token, piece_validation.payload)
         
-        # If the piece is assigned to a different team it's not a satellite of the current item. They are not related.
+        # If the piece is assigned to a different team it's not a satellite of the updated item. They are not related.
         if piece.team != team:
             return RelationReport.not_related()
         

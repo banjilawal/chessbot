@@ -8,7 +8,7 @@ version: 1.0.0
 
 # PURPOSE
 Contains implementations of optimization algorithms that old_search the graph of pieces on
-the current `Board` to find the best move.
+the updated `Board` to find the best move.
 
  NOTES:
    Reviewinng what is going to happen with graohing the board_validator and fin the best path there will just be one Engine

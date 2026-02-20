@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import EdgePushException
+from .wrapper import PushingEdgeException
 from .duplicate import AddingDuplicateEdgeException

@@ -8,14 +8,19 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
+import sys
 from typing import Any, cast
 
-
-from chess.graph import (
-    Edge, EdgeDistanceException, EdgeHeuristicException, EdgeValidationFailedException, EdgeWeightException,
-    HeadCannotBeTailException, NullEgeException, EdgeValidator
+from chess.node import NodeValidator
+from chess.system import (
+    BOARD_DIMENSION, IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 )
-from chess.system import IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
+from chess.edge import (
+    CircularEdgeException, Edge, EdgeDistanceException, EdgeHeuristicException, EdgeValidationFailedException,
+    EdgeWeightException, NullEgeException
+)
+
 
 
 class EdgeValidator(Validator[Edge]):
@@ -44,9 +49,9 @@ class EdgeValidator(Validator[Edge]):
     def validate(
             cls,
             candidate: Any,
+            node_validator: NodeValidator = NodeValidator(),
             number_validator: NumberValidator = NumberValidator(),
             identity_service: IdentityService = IdentityService(),
-            edge_validator: EdgeValidator = EdgeValidator()
     ) -> ValidationResult[Edge]:
         """
         # ACTION:
@@ -56,11 +61,11 @@ class EdgeValidator(Validator[Edge]):
                 in the ValidationResult. Else, send the edge in the ValidationResult..
         # PARAMETERS:
             *   candidate (Any)
-            *   edge_validator (EdgeValidator)
+            *   node_validator (NodeValidator)
             *   identity_service (IdentityService)
             *   number_validator (NumberValidator)
         # RETURNS:
-            *   ValidationResult[] containing either:
+            *   ValidationResult[Edge] containing either:
                     - On failure: Exception.
                     - On success: Edge in the payload.
         # RAISES:
@@ -91,57 +96,69 @@ class EdgeValidator(Validator[Edge]):
         # --- Cast the candidate to an Edge for additional tests ---#
         edge = cast(candidate, Edge)
         
-        # Handle the case that the id is not certified as safe
-        id_validation_result = identity_service.validate_id(edge.id)
+        # Handle the case that the label is not certified as safe
+        label_validation_result = identity_service.validate_id(edge.id)
         # Return the exception chain on failure.
-        if id_validation_result.is_failure:
+        if label_validation_result.is_failure:
             return ValidationResult.failure(
                 EdgeValidationFailedException(
                     message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=id_validation_result.exception
+                    ex=label_validation_result.exception
                 )
             )
         # Handle the case that the distance is not a number.
-        distance_validation_result = number_validator.validate(edge.distance)
+        distance_validation_result = number_validator.validate(
+            candidate=edge.distance,
+            ceiling=BOARD_DIMENSION,
+            floor=0,
+        )
         if distance_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 EdgeValidationFailedException(
                     message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
                     ex=EdgeDistanceException(
-                        f"{method}: {EdgeDistanceException.DEFAULT_MESSAGE}",
+                        message="{method}: {EdgeDistanceException.DEFAULT_MESSAGE}",
                         ex=distance_validation_result.exception
                     )
                 )
             )
         # Handle the case that the heuristic is not a number.
-        heuristic_validation_result = number_validator.validate(edge.heuristic)
+        heuristic_validation_result = number_validator.validate(
+            candidate=edge.heuristic,
+            ceiling=sys.maxsize,
+            floor=0,
+        )
         if heuristic_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 EdgeValidationFailedException(
                     message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
                     ex=EdgeHeuristicException(
-                        f"{method}: {EdgeHeuristicException.DEFAULT_MESSAGE}",
+                        message=f"{method}: {EdgeHeuristicException.DEFAULT_MESSAGE}",
                         ex=heuristic_validation_result.exception
                     )
                 )
             )
         # Handle the case that the weight is not a number.
-        weight_validation_result = number_validator.validate(edge.weight)
+        weight_validation_result = number_validator.validate(
+            candidate=edge.weight,
+            ceiling=sys.maxsize,
+            floor=(-sys.maxsize + 1),
+        )
         if weight_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 EdgeValidationFailedException(
                     message=f"{method}: {EdgeValidationFailedException.DEFAULT_MESSAGE}",
                     ex=EdgeWeightException(
-                        f"{method}: {EdgeWeightException.DEFAULT_MESSAGE}",
+                        message=f"{method}: {EdgeWeightException.DEFAULT_MESSAGE}",
                         ex=weight_validation_result.exception
                     )
                 )
             )
-        # Handle the case that the head is not certified as a safe edge.
-        head_validation_result = edge_validator.validate(edge.head)
+        # Handle the case that the head is not certified as a safe node.
+        head_validation_result = node_validator.validate(edge.head)
         if head_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -150,8 +167,8 @@ class EdgeValidator(Validator[Edge]):
                     ex=head_validation_result.exception
                 )
             )
-        # Handle the case that the tail is not certified as a safe edge.
-        tail_validation_result = edge_validator.validate(edge.head)
+        # Handle the case that the tail is not certified as a safe node.
+        tail_validation_result = node_validator.validate(edge.head)
         if tail_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -166,7 +183,7 @@ class EdgeValidator(Validator[Edge]):
             return ValidationResult.failure(
                 EdgeValidationFailedException(
                     message=f"{method} {EdgeValidationFailedException.DEFAULT_MESSAGE}",
-                    ex=HeadCannotBeTailException(f"{method}: {HeadCannotBeTailException.DEFAULT_MESSAGE}")
+                    ex=CircularEdgeException(f"{method}: {CircularEdgeException.DEFAULT_MESSAGE}")
                 )
             )
         # Tests have been passed return the edge in the ValidationResult.

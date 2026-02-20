@@ -22,7 +22,7 @@ class Knight(Rank):
     # ROLE: Computation, Metadata
 
     # RESPONSIBILITIES:
-    1.  Produces a list of Coords reachable from a Knight's current position.
+    1.  Produces a list of Coords reachable from a Knight's updated position.
     2.  Metadata about the Knight rank useful for optimizing the GameGraph.
 
     # PARENT:

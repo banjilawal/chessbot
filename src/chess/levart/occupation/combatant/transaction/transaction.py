@@ -60,7 +60,7 @@ class CombatantOccupationTransaction(OccupationEvent[CombatantOccupationEvent]):
             
             """
             #Step 3.1
-            Cannot guarantee that traveler's previous square_name is empty. So the success condition is:
+            Cannot guarantee that traveler's original square_name is empty. So the success condition is:
                 actor_previous_square.occupant != traveler.
             If the condition is not met then rollback the rollback and return the rollback_exception.
             """
@@ -78,7 +78,7 @@ class CombatantOccupationTransaction(OccupationEvent[CombatantOccupationEvent]):
             
             self.event.actor.positions.push(self.event.destination_square.point)
             
-            # If the push destination point is not the traveler's current position rollback the rollback,
+            # If the push destination point is not the traveler's updated position rollback the rollback,
             # then return the rollback_exception.
             if self.event.actor.current_position != self.event.destination_square.point:
                 self.event.actor.positions.undo_push()

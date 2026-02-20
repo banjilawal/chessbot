@@ -36,33 +36,33 @@ class UpdateResult(DataResult[T], Generic[T]):
     # INHERITED ATTRIBUTES:
         *   See DataResult class for inherited attributes.
     """
-    _current: Optional[T]
+    _updated: Optional[T]
 
     def __init__(
             self,
-            previous: T,
+            original: T,
             state: UpdateResultState,
             exception: Optional[Exception] = None,
-            current: Optional[T] = None,
+            updated: Optional[T] = None,
     ):
-        super().__init__(state=state, payload=previous, exception=exception)
+        super().__init__(state=state, payload=original, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
         method = "UpdateResult.result"
-        self._current = current
+        self._updated = updated
         
     @property
-    def previous(self) -> T:
+    def original(self) -> T:
         return self.payload
     
     @property
-    def current(self) -> Optional[T]:
-        return self._current
+    def updated(self) -> Optional[T]:
+        return self._updated
     
     @property
     def is_success(self) -> bool:
         return (
-                self._current is not None and
-                self.previous is not None and
+                self._updated is not None and
+                self.original is not None and
                 self.exception is None and
                 self.state == UpdateResultEnum.SUCCESS
         )
@@ -70,8 +70,8 @@ class UpdateResult(DataResult[T], Generic[T]):
     @property
     def is_failure(self) -> bool:
         return (
-                self._current is None and
-                self.previous is not None and
+                self._updated is None and
+                self.original is not None and
                 self.exception is not None and
                 self.state == UpdateResultEnum.FAILURE
         )
@@ -79,8 +79,8 @@ class UpdateResult(DataResult[T], Generic[T]):
     @property
     def is_timed_out(self) -> bool:
         return (
-                self._current is None and
-                self.previous is not None and
+                self._updated is None and
+                self.original is not None and
                 self.exception is not None and
                 self.state == UpdateResultEnum.TIMED_OUT
         )
@@ -89,34 +89,34 @@ class UpdateResult(DataResult[T], Generic[T]):
     # def original_is_update(self) -> bool:
     #     return (
     #             self._update is None and self.exception is not None and
-    #             self.previous == self._update and
+    #             self.original == self._update and
     #             self.exception is not None and
     #             self._state == UpdateResultEnum.ORIGINAL_IS_UPDATE
     #     )
     
     @classmethod
-    def update_success(cls, previous: T, current: T) -> UpdateResult[T]:
+    def update_success(cls, original: T, updated: T) -> UpdateResult[T]:
         return cls(
-            current=current,
-            previous=previous,
+            updated=updated,
+            original=original,
             exception=None,
             state=UpdateResultState(classification=UpdateResultEnum.SUCCESS),
         )
     
     @classmethod
-    def update_failure(cls, previous: T, exception: Exception):
+    def update_failure(cls, original: T, exception: Exception):
         return cls(
-            current=None,
-            previous=previous,
+            updated=None,
+            original=original,
             exception=exception,
             state=UpdateResultState(classification=UpdateResultEnum.FAILURE),
         )
     
     @classmethod
-    def update_timed_out(cls, previous: T, exception: Exception):
+    def update_timed_out(cls, original: T, exception: Exception):
         return cls(
-            current=None,
-            previous=previous,
+            updated=None,
+            original=original,
             exception=exception,
             state=UpdateResultState(classification=UpdateResultEnum.TIMED_OUT),
         )

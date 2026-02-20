@@ -1,4 +1,4 @@
-# src/chess/edge/edge.py
+# src/chess/node/node.py
 
 """
 Module: chess.edge.edge
@@ -9,19 +9,25 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from chess.edge import Edge
+from chess.node import Node
 
 
 class Edge:
     _label: int
-    _head: Edge
-    _tail: Edge
+    _head: Node
+    _tail: Node
+    _weight: int
     _distance: int
     _heuristic: int
-    _weight: int
     
-    
-    def __init__(self, label: int, head: Edge, tail: Edge, distance: int, heuristic: int):
+    def __init__(
+            self,
+            label: int, 
+            head: Node,
+            tail: Node,
+            distance: int,
+            heuristic: int
+    ):
         self._label = label
         self._head = head
         self._tail = tail
@@ -34,11 +40,11 @@ class Edge:
         return self._label
     
     @property
-    def head(self) -> Edge:
+    def head(self) -> Node:
         return self._head
     
     @property
-    def tail(self):
+    def tail(self) -> Node:
         return self._tail
     
     @property

@@ -306,7 +306,7 @@ class Rank(BaseModel):
 
 class ChessPiece(BaseModel):
   """
-  Represents an immutable chess discovery and its current state.
+  Represents an immutable chess discovery and its updated state.
   """
   id: int = Field(..., gt=0)
   name: str = Field(...)

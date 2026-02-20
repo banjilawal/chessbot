@@ -179,7 +179,7 @@ class TokenService(EntityService[Token]):
         """
         # ACTION:
             1.  If the token or coord fail their validations return the exception in the InsertionResult.
-            2.  If the position is already the current position return the exception in the InsertionResult.
+            2.  If the position is already the updated position return the exception in the InsertionResult.
             3.  If the pushing the position to the token's coord stack fails encapsulate the exception then
                 send the exception chain in the InsertionResult.'
         # PARAMETERS:
@@ -216,7 +216,7 @@ class TokenService(EntityService[Token]):
                     ex=token_validation.exception
                 )
             )
-        # Handle the case that the token is already the current position
+        # Handle the case that the token is already the updated position
         if position == token.current_position:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -366,7 +366,7 @@ class TokenService(EntityService[Token]):
         """
         # ACTION:
             1.  If the token or coord fail their validations return the exception in the InsertionResult.
-            2.  If the position is already the current position return the exception in the InsertionResult.
+            2.  If the position is already the updated position return the exception in the InsertionResult.
             3.  If the pushing the position to the token's coord stack fails encapsulate the exception then
                 send the exception chain in the InsertionResult's payload.
         # PARAMETERS:

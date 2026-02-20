@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== EDGE.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
 from .service import EdgeService
-from .exception import EdgeServiceException

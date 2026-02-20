@@ -13,11 +13,8 @@ import sys
 from typing import Any, cast
 
 from chess.node import (
-    DiscoveryStatus, DiscoveryStatusNullException, ExcessiveNodeContextFlagsException, NodeContext,
-    NodeContextValidationFailedException,
-    NodeContextValidationRouteException, NodeValidator,
-    NullNodeContextException,
-    ZeroNodeContextFlagsException
+    ExcessiveNodeContextFlagsException, NodeContext, NodeContextValidationFailedException, NodeValidator,
+    NodeContextValidationRouteException, NullNodeContextException, ZeroNodeContextFlagsException
 )
 from chess.square import SquareService
 from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
@@ -174,7 +171,7 @@ class NodeContextValidator(Validator[NodeContext]):
         
         # Certification for the search-by-discovery_status target.
         if context.discovery_status is not None:
-            validation = cls.validate_discovery_status(context.discovery_status)
+            validation = node_validator.validate_discovery_status(context.discovery_status)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
