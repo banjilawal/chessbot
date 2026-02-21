@@ -9,16 +9,16 @@ version: 1.0.0
 
 
 from chess.player import PlayerContextException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "PlayerContextValidationFailedException",
+    "PlayerContextValidationException",
 ]
 
 
 # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class PlayerContextValidationFailedException(PlayerContextException, ValidationFailedException):
+class PlayerContextValidationException(PlayerContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class PlayerContextValidationFailedException(PlayerContextException, ValidationF
 
     # PARENT:
         *   AgentContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

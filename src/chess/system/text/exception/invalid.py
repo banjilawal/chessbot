@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import StringException, ValidationFailedException
+from chess.system import StringException, ValidationException
 
 __all__ = [
     # ======================# STRING_VALIDATION_FAILURE EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# STRING_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidStringException(StringException, ValidationFailedException):
+class InvalidStringException(StringException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class InvalidStringException(StringException, ValidationFailedException):
 
     # PARENT:
         *   StringException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

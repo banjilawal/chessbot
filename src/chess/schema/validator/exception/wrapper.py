@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 from chess.schema import SchemaException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# SCHEMA_VALIDATION_FAILURE EXCEPTION #======================#
-    "SchemaValidationFailedException",
+    "SchemaValidationException",
 ]
 
 # ======================# SCHEMA_VALIDATION_FAILURE EXCEPTION #======================#
-class SchemaValidationFailedException(SchemaException, ValidationFailedException):
+class SchemaValidationException(SchemaException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class SchemaValidationFailedException(SchemaException, ValidationFailedException
     
     # PARENT:
         *   SchemaException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

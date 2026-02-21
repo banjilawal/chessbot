@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import LoggingLevelRouter, ValidationResult, Validator
-from chess.persona import Persona, PersonaValidationFailedException, NullPersonaException
+from chess.persona import Persona, PersonaValidationException, NullPersonaException
 
 
 class PersonaValidator(Validator[Persona]):
@@ -47,15 +47,15 @@ class PersonaValidator(Validator[Persona]):
         # RAISES:
             *   TypeError
             *   NullPersonaException
-            *   PersonaValidationFailedException
+            *   PersonaValidationException
         """
         method = "PersonaValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaValidationFailedException(
-                    message=f"{method}: {PersonaValidationFailedException.ERROR_CODE}",
+                PersonaValidationException(
+                    message=f"{method}: {PersonaValidationException.ERROR_CODE}",
                     ex=NullPersonaException(f"{method} {NullPersonaException.DEFAULT_MESSAGE}")
                 )
             )
@@ -63,8 +63,8 @@ class PersonaValidator(Validator[Persona]):
         if not isinstance(candidate, Persona):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaValidationFailedException(
-                    message=f"{method}: {PersonaValidationFailedException.ERROR_CODE}",
+                PersonaValidationException(
+                    message=f"{method}: {PersonaValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method} Expected Persona, got {type(candidate).__name__} instead.")
                 )
             )

@@ -9,17 +9,17 @@ version: 1.0.0
 
 
 from chess.team import TeamContextException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 
 __all__ = [
     # ======================# TEAM_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "TeamContextValidationFailedException",
+    "TeamContextValidationException",
 ]
 
 
 # ======================# TEAM_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class TeamContextValidationFailedException(TeamContextException, ValidationFailedException):
+class TeamContextValidationException(TeamContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -28,7 +28,7 @@ class TeamContextValidationFailedException(TeamContextException, ValidationFaile
 
     # PARENT:
         *   TeamContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

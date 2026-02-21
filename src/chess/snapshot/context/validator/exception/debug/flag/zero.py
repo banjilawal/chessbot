@@ -25,7 +25,7 @@ class ZeroSnapshotContextFlagsException(InvalidSnapshotContextException, Context
     1.  Indicate no SnapshotContext flag is provided with a searcher value.
 
     # PARENT:
-        *   SnapshotContextValidationFailedException
+        *   SnapshotContextValidationException
         *   ContextFlagCountException
 
     # PROVIDES:

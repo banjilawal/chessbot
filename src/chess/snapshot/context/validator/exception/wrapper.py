@@ -7,16 +7,16 @@ Created: 2025-10-03
 version: 1.0.0
 """
 from chess.snapshot import SnapshotContextException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "SnapshotContextValidationFailedException",
+    "SnapshotContextValidationException",
 ]
 
 
 # ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class SnapshotContextValidationFailedException(SnapshotContextException, ValidationFailedException):
+class SnapshotContextValidationException(SnapshotContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class SnapshotContextValidationFailedException(SnapshotContextException, Validat
 
     # PARENT:
         *   SnapshotContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

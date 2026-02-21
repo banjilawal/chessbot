@@ -60,6 +60,6 @@ class Validator(ABC, Generic[T]):
         # RAISES:
             *   TypeError
             *   NullException
-            *   ValidationFailedException
+            *   ValidationException
         """
         pass

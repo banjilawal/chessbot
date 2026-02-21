@@ -66,7 +66,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
             - On failure: Exception.
 
         # RAISES:
-            *   ArenaValidationFailedException
+            *   ArenaValidationException
         """
         method = "PlayerService.analyze"
         

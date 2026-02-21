@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.board import BoardException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# BOARD_VALIDATION_FAILURE EXCEPTION #======================#
-    "BoardValidationFailedException",
+    "BoardValidationException",
 ]
 
 
 # ======================# BOARD_VALIDATION_FAILURE EXCEPTION #======================#
-class BoardValidationFailedException(BoardException, ValidationFailedException):
+class BoardValidationException(BoardException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class BoardValidationFailedException(BoardException, ValidationFailedException):
 
     # PARENT:
         *   BoardException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

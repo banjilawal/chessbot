@@ -19,7 +19,7 @@ from chess.system import (
     ValidationResult
 )
 from chess.token import (
-    ExcessiveTokenContextFlagsException, NullTokenContextException, TokenContext, TokenContextValidationFailedException,
+    ExcessiveTokenContextFlagsException, NullTokenContextException, TokenContext, TokenContextValidationException,
     TokenContextValidationRouteException, ZeroTokenContextFlagsException
 )
 
@@ -82,7 +82,7 @@ class TokenContextValidator(Validator[TokenContext]):
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException
             *   ExcessiveTeamContextFlagsException
-            *   TeamContextValidationFailedException
+            *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """
         method = "TokenContextValidator.validate"
@@ -91,8 +91,8 @@ class TokenContextValidator(Validator[TokenContext]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidationFailedException(
-                    message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                TokenContextValidationException(
+                    message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                     ex=NullTokenContextException(f"{method}: {NullTokenContextException.DEFAULT_MESSAGE}")
                 )
             )
@@ -100,8 +100,8 @@ class TokenContextValidator(Validator[TokenContext]):
         if not isinstance(candidate, TokenContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidationFailedException(
-                    message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                TokenContextValidationException(
+                    message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected TokenContext, got {type(candidate).__designation__} instead.")
                 )
             )
@@ -113,8 +113,8 @@ class TokenContextValidator(Validator[TokenContext]):
         if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidationFailedException(
-                    message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                TokenContextValidationException(
+                    message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                     ex=ZeroTokenContextFlagsException(f"{method}: {ZeroTokenContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
@@ -122,8 +122,8 @@ class TokenContextValidator(Validator[TokenContext]):
         if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidationFailedException(
-                    message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                TokenContextValidationException(
+                    message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                     ex=ExcessiveTokenContextFlagsException(
                         f"{method}: {ExcessiveTokenContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -138,8 +138,8 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationFailedException(
-                        message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                    TokenContextValidationException(
+                        message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -152,8 +152,8 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationFailedException(
-                        message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                    TokenContextValidationException(
+                        message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -166,8 +166,8 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationFailedException(
-                        message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                    TokenContextValidationException(
+                        message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -180,8 +180,8 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationFailedException(
-                        message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                    TokenContextValidationException(
+                        message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -194,8 +194,8 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationFailedException(
-                        message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                    TokenContextValidationException(
+                        message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -208,8 +208,8 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationFailedException(
-                        message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                    TokenContextValidationException(
+                        message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -222,8 +222,8 @@ class TokenContextValidator(Validator[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidationFailedException(
-                        message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                    TokenContextValidationException(
+                        message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -240,8 +240,8 @@ class TokenContextValidator(Validator[TokenContext]):
             # Return the exception chain on failure.
             if validation.is_failure:
                 return ValidationResult.failure(
-                    TokenContextValidationFailedException(
-                        message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+                    TokenContextValidationException(
+                        message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -250,8 +250,8 @@ class TokenContextValidator(Validator[TokenContext]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            TokenContextValidationFailedException(
-                message=f"{method}: {TokenContextValidationFailedException.ERROR_CODE}",
+            TokenContextValidationException(
+                message=f"{method}: {TokenContextValidationException.ERROR_CODE}",
                 ex=TokenContextValidationRouteException(
                     f"{method}: {TokenContextValidationRouteException.DEFAULT_MESSAGE}"
                 )

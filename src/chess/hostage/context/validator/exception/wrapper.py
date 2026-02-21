@@ -8,17 +8,17 @@ version: 1.0.0
 """
 
 from chess.hostage import CaptivityContextException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 
 __all__ = [
     # ======================# CAPTIVITY_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "CaptivityContextValidationFailedException",
+    "CaptivityContextValidationException",
 ]
 
 
 # ======================# CAPTIVITY_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class CaptivityContextValidationFailedException(CaptivityContextException, ValidationFailedException):
+class CaptivityContextValidationException(CaptivityContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class CaptivityContextValidationFailedException(CaptivityContextException, Valid
 
     # PARENT:
         *   CaptivityContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.arena import ArenaContextException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# ARENA_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "ArenaContextValidationFailedException",
+    "ArenaContextValidationException",
 ]
 
 
 # ======================# ARENA_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class ArenaContextValidationFailedException(ArenaContextException, ValidationFailedException):
+class ArenaContextValidationException(ArenaContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class ArenaContextValidationFailedException(ArenaContextException, ValidationFai
 
     # PARENT:
         *   ArenaContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

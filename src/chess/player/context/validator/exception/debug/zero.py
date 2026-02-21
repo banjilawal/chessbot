@@ -28,7 +28,7 @@ class ZeroAgentContextFlagsException(InvalidAgentContextException, ContextFlagCo
 
     # PARENT:
         *   ContextFlagCountException
-        *   PlayerContextValidationFailedException
+        *   PlayerContextValidationException
 
     # PROVIDES:
     None

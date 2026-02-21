@@ -7,28 +7,28 @@ Created: 2025-09-17
 version: 1.0.0
 """
 
-from chess.system import NumberException, ValidationFailedException
+from chess.system import NumberException, ValidationException
 
 __all__ = [
     # ======================# ID_VALIDATION EXCEPTION #======================#
-    "IdValidationFailedException",
+    "IdValidationException",
 ]
 
 
 # ======================# ID_VALIDATION EXCEPTION #======================#
-class IdValidationFailedException(NumberException, ValidationFailedException):
+class IdValidationException(NumberException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when an ID candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an IdValidationFailedException creating an exception chain. which is sent to the caller in a
+        encapsulated inside an IdValidationException creating an exception chain. which is sent to the caller in a
         ValidationResult.
-    2.  The IdValidationFailedException chain is useful for tracing a  failure to its source.
+    2.  The IdValidationException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   NumberException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

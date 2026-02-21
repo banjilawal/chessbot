@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# NUMBER_VALIDATION_FAILURE EXCEPTION #======================#
-    "NumberValidationFailedException",
+    "NumberValidationException",
 ]
 
-from chess.system import NumberException, ValidationFailedException
+from chess.system import NumberException, ValidationException
 
 
 # ======================# NUMBER_VALIDATION_FAILURE EXCEPTION #======================#
-class NumberValidationFailedException(NumberException, ValidationFailedException):
+class NumberValidationException(NumberException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class NumberValidationFailedException(NumberException, ValidationFailedException
 
     # PARENT:
         *   NumberException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

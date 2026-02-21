@@ -26,7 +26,7 @@ class NullAgentContextException(InvalidAgentContextException, NullException):
 
     # PARENT:
         *   NullAgentContextException
-        *   PlayerContextValidationFailedException
+        *   PlayerContextValidationException
 
     # PROVIDES:
     None

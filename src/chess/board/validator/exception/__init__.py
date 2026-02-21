@@ -13,4 +13,4 @@ version: 1.0.0
 from .debug import *
 
 # Modules
-from .wrapper import BoardValidationFailedException
+from .wrapper import BoardValidationException

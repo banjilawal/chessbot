@@ -27,7 +27,7 @@ class ExcessiveArenaContextFlagsException(ArenaContextException, ContextFlagCoun
 
     # PARENT:
         *   ContextFlagCountException
-        *   ArenaContextValidationFailedException
+        *   ArenaContextValidationException
 
     # PROVIDES:
     None

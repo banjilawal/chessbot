@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.vector import VectorException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 _
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# VECTOR_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidVectorException(VectorException, ValidationFailedException):
+class InvalidVectorException(VectorException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class InvalidVectorException(VectorException, ValidationFailedException):
     
     # PARENT:
         *   VectorException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

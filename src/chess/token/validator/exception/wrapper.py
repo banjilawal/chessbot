@@ -10,15 +10,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_FAILURE EXCEPTION #======================#
-    "TokenValidationFailedException",
+    "TokenValidationException",
 ]
 
 from chess.token import TokenException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 
 # ======================# TOKEN_VALIDATION_FAILURE EXCEPTION #======================#
-class TokenValidationFailedException(TokenException, ValidationFailedException):
+class TokenValidationException(TokenException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -28,7 +28,7 @@ class TokenValidationFailedException(TokenException, ValidationFailedException):
 
     # PARENT:
         *   TokenException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

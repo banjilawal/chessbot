@@ -7,7 +7,7 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 from chess.game import GameContextException
 
 __all__ = [
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# GAME_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class InvalidGameContextException(GameContextException, ValidationFailedException):
+class InvalidGameContextException(GameContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -29,7 +29,7 @@ class InvalidGameContextException(GameContextException, ValidationFailedExceptio
 
     # PARENT:
         *   GameContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

@@ -8,28 +8,28 @@ version: 1.0.0
 """
 
 from chess.schema import SchemaKeyException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# SCHEMA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
-    "SchemaKeyValidationFailedException",
+    "SchemaKeyValidationException",
 ]
 
 
 # ======================# SCHEMA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
-class SchemaKeyValidationFailedException(SchemaKeyException, ValidationFailedException):
+class SchemaKeyValidationException(SchemaKeyException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a SchemaKey candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an SchemaKeyValidationFailedException creating an exception chain. which is sent to the caller in a
+        encapsulated inside an SchemaKeyValidationException creating an exception chain. which is sent to the caller in a
         ValidationResult.
-    2.  The SchemaKeyValidationFailedException chain is useful for tracing a  failure to its source.
+    2.  The SchemaKeyValidationException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   SchemaKeyException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

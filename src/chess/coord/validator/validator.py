@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import cast, Any
 
-from chess.coord import Coord, CoordValidationFailedException, NullCoordException
+from chess.coord import Coord, CoordValidationException, NullCoordException
 from chess.system import NUMBER_OF_ROWS, Validator, ValidationResult, LoggingLevelRouter, NumberValidator
 
 class CoordValidator(Validator[Coord]):
@@ -56,7 +56,7 @@ class CoordValidator(Validator[Coord]):
         # RAISES:
             * TypeError
             * NullCoordException
-            * CoordValidationFailedException
+            * CoordValidationException
         """
         method = "CoordValidator.validate"
         
@@ -64,8 +64,8 @@ class CoordValidator(Validator[Coord]):
         if candidate is None:
             # Return the exception on failure.
             return ValidationResult.failure(
-                CoordValidationFailedException(
-                    message=f"{method}: {CoordValidationFailedException.DEFAULT_MESSAGE}",
+                CoordValidationException(
+                    message=f"{method}: {CoordValidationException.DEFAULT_MESSAGE}",
                     ex=NullCoordException(f"{method}: {NullCoordException.DEFAULT_MESSAGE}")
                 )
             )
@@ -73,8 +73,8 @@ class CoordValidator(Validator[Coord]):
         if not isinstance(candidate, Coord):
             # Return the exception on failure.
             return ValidationResult.failure(
-                CoordValidationFailedException(
-                    message=f"{method}: {CoordValidationFailedException.DEFAULT_MESSAGE}",
+                CoordValidationException(
+                    message=f"{method}: {CoordValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(f"{method}: Expected a Coord, got {type(candidate).__name__} instead.")
                 )
             )
@@ -87,8 +87,8 @@ class CoordValidator(Validator[Coord]):
         if row_validation.is_failure:
             # Return the exception on failure.
             return ValidationResult.failure(
-                CoordValidationFailedException(
-                    message=f"{method}: {CoordValidationFailedException.DEFAULT_MESSAGE}",
+                CoordValidationException(
+                    message=f"{method}: {CoordValidationException.DEFAULT_MESSAGE}",
                     ex=row_validation.exception
                 )
             )
@@ -97,8 +97,8 @@ class CoordValidator(Validator[Coord]):
         if row_validation.is_failure:
             # Return the exception on failure.
             return ValidationResult.failure(
-                CoordValidationFailedException(
-                    message=f"{method}: {CoordValidationFailedException.DEFAULT_MESSAGE}",
+                CoordValidationException(
+                    message=f"{method}: {CoordValidationException.DEFAULT_MESSAGE}",
                     ex=column_validation.exception
                 )
             )

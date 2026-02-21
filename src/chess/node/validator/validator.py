@@ -13,7 +13,7 @@ from typing import Any, List, cast
 from chess.square import SquareValidator
 from chess.system import LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 from chess.node import (
-    DiscoveryStatus, DiscoveryStatusNullException, NullNodeException, Node, NodeValidationFailedException
+    DiscoveryStatus, DiscoveryStatusNullException, NullNodeException, Node, NodeValidationException
 )
 
 
@@ -64,7 +64,7 @@ class NodeValidator(Validator[Node]):
         # RAISES:
             *   TypeError
             *   NullNodeException
-            *   NodeValidationFailedException
+            *   NodeValidationException
         """
         method = "NodeValidator.validate"
         
@@ -72,8 +72,8 @@ class NodeValidator(Validator[Node]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeValidationFailedException(
-                    message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
+                NodeValidationException(
+                    message=f"{method}: {NodeValidationException.DEFAULT_MESSAGE}",
                     ex=NullNodeException(f"{method}: {NullNodeException.DEFAULT_MESSAGE}")
                 )
             )
@@ -81,8 +81,8 @@ class NodeValidator(Validator[Node]):
         if not isinstance(Node, candidate):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeValidationFailedException(
-                    message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
+                NodeValidationException(
+                    message=f"{method}: {NodeValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(f"{method}: Expected an Node, got {type(candidate).__name__}. instead")
                 )
             )
@@ -94,8 +94,8 @@ class NodeValidator(Validator[Node]):
         if square_validation_result.is_failure:
             # Return the exception chain on failure.
             ValidationResult.failure(
-                NodeValidationFailedException(
-                    message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
+                NodeValidationException(
+                    message=f"{method}: {NodeValidationException.DEFAULT_MESSAGE}",
                     ex=square_validation_result.exception
                 )
             )
@@ -103,8 +103,8 @@ class NodeValidator(Validator[Node]):
         if not isinstance(node.incoming_nodes, List):
             # Return the exception chain on failure.
             ValidationResult.failure(
-                NodeValidationFailedException(
-                    message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
+                NodeValidationException(
+                    message=f"{method}: {NodeValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(
                         f"{method}: Node expected a List of Nodes, for its incoming got "
                         f"{type(node.incoming_nodes).__name__}. instead."
@@ -115,8 +115,8 @@ class NodeValidator(Validator[Node]):
         if not isinstance(node.outgoing_nodes, List):
             # Return the exception chain on failure.
             ValidationResult.failure(
-                NodeValidationFailedException(
-                    message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
+                NodeValidationException(
+                    message=f"{method}: {NodeValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(
                         f"{method}: Node expected a List of Nodes, for its outgoing got "
                         f"{type(node.outgoing_nodes).__name__}. instead."
@@ -127,8 +127,8 @@ class NodeValidator(Validator[Node]):
         if node.predecessor is not None and not isinstance(node.predecessor, Node):
             # Return the exception chain on failure.
             ValidationResult.failure(
-                NodeValidationFailedException(
-                    message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
+                NodeValidationException(
+                    message=f"{method}: {NodeValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(
                         f"{method}: Node expected a Node for its predecessor, got "
                         f"{type(node.predecessor).__name__}. instead."
@@ -140,8 +140,8 @@ class NodeValidator(Validator[Node]):
         if priority_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeValidationFailedException(
-                    message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
+                NodeValidationException(
+                    message=f"{method}: {NodeValidationException.DEFAULT_MESSAGE}",
                     ex=priority_validation_result.exception
                 )
             )
@@ -149,8 +149,8 @@ class NodeValidator(Validator[Node]):
         if node.discovery_status is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeValidationFailedException(
-                    message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
+                NodeValidationException(
+                    message=f"{method}: {NodeValidationException.DEFAULT_MESSAGE}",
                     ex=DiscoveryStatusNullException(
                         f"{method}: {DiscoveryStatusNullException.DEFAULT_MESSAGE}"
                     )
@@ -160,8 +160,8 @@ class NodeValidator(Validator[Node]):
         if not isinstance(node.discovery_status, DiscoveryStatus):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeValidationFailedException(
-                    message=f"{method}: {NodeValidationFailedException.DEFAULT_MESSAGE}",
+                NodeValidationException(
+                    message=f"{method}: {NodeValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(
                         f"{method}: Expected DiscoveryStatus, got {type(node.discovery_status).__name__} instead."
                     )

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.agent import AgentVarietyException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 
 #======================# PLAYER_VARIETY VALIDATION EXCEPTION  #======================#
-class InvalidAgentVarietyException(AgentVarietyException, ValidationFailedException):
+class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -28,7 +28,7 @@ class InvalidAgentVarietyException(AgentVarietyException, ValidationFailedExcept
 
     # PARENT:
         *   AgentVarietyException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

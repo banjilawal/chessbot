@@ -2,7 +2,7 @@ from enum import Enum
 
 from assurance import ThrowHelper
 from chess.board import BoardSearch
-from chess.system import IdValidator, BuildResult, IdValidationFailedException
+from chess.system import IdValidator, BuildResult, IdValidationException
 from chess.event import TargetSquareMismatchException, AttackEvent
 from chess.token.event.attack.event.exception import AttackEventBuilderException
 from chess.token.event.travel_exception import TravelEventResourceNotFoundException
@@ -68,9 +68,9 @@ class CheckEventBuilder(Enum):
     RAISES:
       AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
       This includes:
-        * `IdValidationFailedException`: if `attackEvent_id` fails validate checks
+        * `IdValidationException`: if `attackEvent_id` fails validate checks
         * `InvalidNameException`: if `visitor_name` fails validate checks
-        * `RankValidationFailedException`: if `bounds` fails validate checks
+        * `RankValidationException`: if `bounds` fails validate checks
         * `InvalidTeamException`: if `team_name` fails validate checks
         * `InvalidTeamAssignmentException`: If `attackEvent.team_name` is different from `team_name` parameter
         * `FullRankQuotaException`: If the `team_name` has no empty slots for the `attackEvent.bounds`
@@ -159,7 +159,7 @@ class CheckEventBuilder(Enum):
       )
 
     except (
-            IdValidationFailedException,
+            IdValidationException,
             InvalidAttackException,
             PieceCapturingItSelfException,
             TargetSquareMismatchException,

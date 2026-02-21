@@ -7,16 +7,16 @@ Created: 2025-11-19
 """
 
 from chess.hostage import HostageManifestException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# HOSTAGE_MANIFEST_VALIDATION_FAILURE EXCEPTION #======================#
-    "HostageManifestValidationFailedException",
+    "HostageManifestValidationException",
 ]
 
 
 # ======================# HOSTAGE_MANIFEST_VALIDATION_FAILURE EXCEPTION #======================#
-class HostageManifestValidationFailedException(HostageManifestException, ValidationFailedException):
+class HostageManifestValidationException(HostageManifestException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class HostageManifestValidationFailedException(HostageManifestException, Validat
 
     # PARENT:
         *   HostageManifestException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

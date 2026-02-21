@@ -7,17 +7,17 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 from chess.square import SquareContextException
 
 __all__ = [
     # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "SquareContextValidationFailedException",
+    "SquareContextValidationException",
 ]
 
 
 # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class SquareContextValidationFailedException(SquareContextException, ValidationFailedException):
+class SquareContextValidationException(SquareContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class SquareContextValidationFailedException(SquareContextException, ValidationF
 
     # PARENT:
         *   SquareContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

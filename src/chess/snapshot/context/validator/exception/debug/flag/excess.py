@@ -26,7 +26,7 @@ class ExcessiveSnapshotContextFlagsException(InvalidSnapshotContextException, Co
     1.  Indicate if more than one Game attribute is going to be used in an SnapshotFinder.
 
     # PARENT:
-        *   SnapshotContextValidationFailedException
+        *   SnapshotContextValidationException
         *   ContextFlagCountException
 
     # PROVIDES:

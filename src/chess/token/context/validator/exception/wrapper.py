@@ -8,18 +8,18 @@ version: 1.0.0
 """
 
 
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "TokenContextValidationFailedException",
+    "TokenContextValidationException",
 ]
 
 from chess.token import TokenContextException
 
 
 # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class TokenContextValidationFailedException(TokenContextException, ValidationFailedException):
+class TokenContextValidationException(TokenContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -29,7 +29,7 @@ class TokenContextValidationFailedException(TokenContextException, ValidationFai
 
     # PARENT:
         *   TokenContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

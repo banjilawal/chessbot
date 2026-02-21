@@ -14,7 +14,7 @@ from chess.board import Board, BoardService, TeamPlayingDifferentBoardException
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
     NullTeamException, Team, TeamNotSubmittedOwnerRegistrationException, TeamNotSubmittedBoardRegistrationException,
-    TeamValidationFailedException
+    TeamValidationException
 )
 
 
@@ -70,15 +70,15 @@ class TeamValidator(Validator[Team]):
         # RAISES:
             *   TypeError
             *   NullTeamException
-            *   TeamValidationFailedException
+            *   TeamValidationException
         """
         method = "TeamValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=NullTeamException(f"{method}: {NullTeamException.DEFAULT_MESSAGE}")
                 )
             )
@@ -86,8 +86,8 @@ class TeamValidator(Validator[Team]):
         if not isinstance(candidate, Team):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected Team, got {type(candidate).__name__} instead.")
                 )
             )
@@ -99,8 +99,8 @@ class TeamValidator(Validator[Team]):
         if id_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=id_validation.exception
                 )
             )
@@ -110,8 +110,8 @@ class TeamValidator(Validator[Team]):
             if id_validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamValidationFailedException(
-                        message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                    TeamValidationException(
+                        message=f"{method}: {TeamValidationException.ERROR_CODE}",
                         ex=schema_validation.exception
                     )
                 )
@@ -120,8 +120,8 @@ class TeamValidator(Validator[Team]):
         if owner_verification.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=owner_verification.exception
                 )
             )
@@ -130,8 +130,8 @@ class TeamValidator(Validator[Team]):
         if board_verification.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=board_verification.exception
                 )
             )
@@ -154,7 +154,7 @@ class TeamValidator(Validator[Team]):
             - On failure: Exception.
             - On success: Board in the payload.
         # RAISES:
-            *   TeamValidationFailedException
+            *   TeamValidationException
         """
         method = "TeamValidator._validate_owner"
         
@@ -167,8 +167,8 @@ class TeamValidator(Validator[Team]):
         if owner_team_relation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=owner_team_relation.exception
                 )
             )
@@ -176,8 +176,8 @@ class TeamValidator(Validator[Team]):
         if owner_team_relation.does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=TeamBelongsToDifferentOwnerException(
                         f"{method}: {TeamBelongsToDifferentOwnerException.DEFAULT_MESSAGE}"
                     )
@@ -187,8 +187,8 @@ class TeamValidator(Validator[Team]):
         if owner_team_relation.partially_exists:
             # Return the exception chain on failure.
             return ValidationResult(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=TeamNotSubmittedOwnerRegistrationException(
                         f"{method}: {TeamNotSubmittedOwnerRegistrationException.DEFAULT_MESSAGE}"
                     )
@@ -213,7 +213,7 @@ class TeamValidator(Validator[Team]):
             - On failure: Exception.
             - On success: Board in the payload.
         # RAISES:
-            *   TeamValidationFailedException
+            *   TeamValidationException
         """
         method = "TeamValidator._validate_board"
         # Handle the case that board is not certified
@@ -225,8 +225,8 @@ class TeamValidator(Validator[Team]):
         if board_team_relation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=board_team_relation.exception
                 )
             )
@@ -234,8 +234,8 @@ class TeamValidator(Validator[Team]):
         if board_team_relation.does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=TeamPlayingDifferentBoardException(
                         f"{method}: {TeamPlayingDifferentBoardException.DEFAULT_MESSAGE}"
                     )
@@ -245,8 +245,8 @@ class TeamValidator(Validator[Team]):
         if board_team_relation.partially_exists:
             # Return the exception chain on failure.
             return ValidationResult(
-                TeamValidationFailedException(
-                    message=f"{method}: {TeamValidationFailedException.ERROR_CODE}",
+                TeamValidationException(
+                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
                     ex=TeamNotSubmittedBoardRegistrationException(
                         f"{method}: {TeamNotSubmittedBoardRegistrationException.DEFAULT_MESSAGE}"
                     )

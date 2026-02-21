@@ -39,7 +39,7 @@
       `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
 
   # RAISES:
-  `IdValidationFailedException`: Wraps any specification violations including:
+  `IdValidationException`: Wraps any specification violations including:
       * `TypeError`: if candidate is not an `int`
       * `IdNullException`: if candidate is validation
       * `NegativeIdException`: if candidate is negative `
@@ -66,9 +66,9 @@
   RAISES:
     ScanEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
     This includes:
-      * `IdValidationFailedException`: if `scanEvent_id` fails validate checks
+      * `IdValidationException`: if `scanEvent_id` fails validate checks
       * `InvalidNameException`: if `visitor_name` fails validate checks
-      * `RankValidationFailedException`: if `bounds` fails validate checks
+      * `RankValidationException`: if `bounds` fails validate checks
       * `InvalidTeamException`: if `team_name` fails validate checks
       * `InvalidTeamAssignmentException`: If `scanEvent.team_name` is different from `team_name` parameter
       * `FullRankQuotaException`: If the `team_name` has no empty slots for the `scanEvent.bounds`

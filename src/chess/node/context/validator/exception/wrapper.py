@@ -7,17 +7,17 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 from chess.node import NodeContextException
 
 __all__ = [
     # ======================# NODE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "NodeContextValidationFailedException",
+    "NodeContextValidationException",
 ]
 
 
 # ======================# NODE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class NodeContextValidationFailedException(NodeContextException, ValidationFailedException):
+class NodeContextValidationException(NodeContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class NodeContextValidationFailedException(NodeContextException, ValidationFaile
 
     # PARENT:
         *   NodeContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

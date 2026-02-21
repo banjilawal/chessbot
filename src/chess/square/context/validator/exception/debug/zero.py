@@ -27,7 +27,7 @@ class ZeroSquareContextFlagsException(SquareContextException, ContextFlagCountEx
 
     # PARENT:
         *   ContextFlagCountException
-        *   SquareContextValidationFailedException
+        *   SquareContextValidationException
 
     # PROVIDES:
     None

@@ -62,7 +62,7 @@ class BoardTokenRelationAnalyzer(RelationAnalyzer[Board, Token]):
             *   On error: an Exception
 
         # RAISES:
-            *   BoardValidationFailedException
+            *   BoardValidationException
         """
         method = "BoardService.analyze"
         

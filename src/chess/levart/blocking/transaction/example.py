@@ -78,7 +78,7 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.
 
 CONTAINS:

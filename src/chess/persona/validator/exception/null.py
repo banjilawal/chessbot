@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.persona import PersonaValidationFailedException
+from chess.persona import PersonaValidationException
 
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# NULL PERSONA EXCEPTION #======================#
-class NullPersonaException(PersonaValidationFailedException, NullException):
+class NullPersonaException(PersonaValidationException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class NullPersonaException(PersonaValidationFailedException, NullException):
     2.  Raised if an entity, method or operation requires an Persona but receives null instead.
 
     # PARENT:
-        *   PersonaValidationFailedException
+        *   PersonaValidationException
         *   NullException
 
     # PROVIDES:

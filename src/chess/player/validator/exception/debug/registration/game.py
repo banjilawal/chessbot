@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.player import PlayerValidationFailedException
+from chess.player import PlayerValidationException
 from chess.system import RegistrationException
 
 
@@ -21,7 +21,7 @@ __all__ = [
 
 
 #======================# PLAYER_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
-class PlayerNotRegisteredWithGameException(PlayerValidationFailedException, RegistrationException):
+class PlayerNotRegisteredWithGameException(PlayerValidationException, RegistrationException):
     """
     # ROLE: Error Tracing, Debugging
 

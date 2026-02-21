@@ -13,7 +13,7 @@ from chess.arena import ArenaService
 from chess.player import PlayerService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
-    ExcessiveTeamContextFlagsException, NullTeamContextException, TeamContext, TeamContextValidationFailedException,
+    ExcessiveTeamContextFlagsException, NullTeamContextException, TeamContext, TeamContextValidationException,
     TeamContextValidationRouteException, ZeroTeamContextFlagsException
 )
 
@@ -71,7 +71,7 @@ class TeamContextValidator(Validator[TeamContext]):
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException
             *   ExcessiveTeamContextFlagsException
-            *   TeamContextValidationFailedException
+            *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """
         method = "TeamContextValidator.validate"
@@ -80,8 +80,8 @@ class TeamContextValidator(Validator[TeamContext]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamContextValidationFailedException(
-                    message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
+                TeamContextValidationException(
+                    message=f"{method}: {TeamContextValidationException.ERROR_CODE}",
                     ex=NullTeamContextException(f"{method}: {NullTeamContextException.DEFAULT_MESSAGE}")
                 )
             )
@@ -89,8 +89,8 @@ class TeamContextValidator(Validator[TeamContext]):
         if not isinstance(candidate, TeamContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamContextValidationFailedException(
-                    message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
+                TeamContextValidationException(
+                    message=f"{method}: {TeamContextValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected TeamContext, got {type(candidate).__name__} instead.")
                 )
             )
@@ -102,8 +102,8 @@ class TeamContextValidator(Validator[TeamContext]):
         if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamContextValidationFailedException(
-                    message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
+                TeamContextValidationException(
+                    message=f"{method}: {TeamContextValidationException.ERROR_CODE}",
                     ex=ZeroTeamContextFlagsException(f"{method}: {ZeroTeamContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
@@ -111,8 +111,8 @@ class TeamContextValidator(Validator[TeamContext]):
         if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamContextValidationFailedException(
-                    message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
+                TeamContextValidationException(
+                    message=f"{method}: {TeamContextValidationException.ERROR_CODE}",
                     ex=ExcessiveTeamContextFlagsException(
                         f"{method}: {ExcessiveTeamContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -126,8 +126,8 @@ class TeamContextValidator(Validator[TeamContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationFailedException(
-                        message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}", ex=validation.exception
+                    TeamContextValidationException(
+                        message=f"{method}: {TeamContextValidationException.ERROR_CODE}", ex=validation.exception
                     )
                 )
             # On certification success return the TeamContext_id in the ValidationResult.
@@ -139,8 +139,8 @@ class TeamContextValidator(Validator[TeamContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationFailedException(
-                        message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}", ex=validation.exception
+                    TeamContextValidationException(
+                        message=f"{method}: {TeamContextValidationException.ERROR_CODE}", ex=validation.exception
                     )
                 )
             # On certification success return the TeamContext_owner in the ValidationResult.
@@ -152,8 +152,8 @@ class TeamContextValidator(Validator[TeamContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationFailedException(
-                        message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
+                    TeamContextValidationException(
+                        message=f"{method}: {TeamContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -166,8 +166,8 @@ class TeamContextValidator(Validator[TeamContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    TeamContextValidationFailedException(
-                        message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
+                    TeamContextValidationException(
+                        message=f"{method}: {TeamContextValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -176,8 +176,8 @@ class TeamContextValidator(Validator[TeamContext]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            TeamContextValidationFailedException(
-                message=f"{method}: {TeamContextValidationFailedException.ERROR_CODE}",
+            TeamContextValidationException(
+                message=f"{method}: {TeamContextValidationException.ERROR_CODE}",
                 ex=TeamContextValidationRouteException(
                     f"{method}: {TeamContextValidationRouteException.DEFAULT_MESSAGE}"
                 )

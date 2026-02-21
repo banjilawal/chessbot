@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.rank import RankException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
   # ======================# RANK_VALIDATION_FAILURE EXCEPTION #======================#
-  "RankValidationFailedException",
+    "RankValidationException",
 ]
 
 
 # ======================# RANK_VALIDATION_FAILURE EXCEPTION #======================#
-class RankValidationFailedException(RankException, ValidationFailedException):
+class RankValidationException(RankException, ValidationException):
   """
   # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class RankValidationFailedException(RankException, ValidationFailedException):
     1.  Wrap debug exceptions indicating why a candidate failed its validation as a Rank. The exception chain traces the ultimate source of failure.
   # PARENT:
       *   RankException
-      *   ValidationFailedException
+      *   ValidationException
 
   # PROVIDES:
   None

@@ -8,28 +8,28 @@ version: 1.0.0
 """
 
 from chess.formation import FormationKeyException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# FORMATION_KEY_VALIDATION_FAILURE EXCEPTION #======================#
-    "FormationKeyValidationFailedException",
+    "FormationKeyValidationException",
 ]
 
 
 # ======================# FORMATION_KEY_VALIDATION_FAILURE EXCEPTION #======================#
-class FormationKeyValidationFailedException(FormationKeyException, ValidationFailedException):
+class FormationKeyValidationException(FormationKeyException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a FormationKey candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an FormationKeyValidationFailedException creating an exception chain. which is sent to the caller in a
+        encapsulated inside an FormationKeyValidationException creating an exception chain. which is sent to the caller in a
         ValidationResult.
-    2.  The FormationKeyValidationFailedException chain is useful for tracing a  failure to its source.
+    2.  The FormationKeyValidationException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   FormationKeyException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

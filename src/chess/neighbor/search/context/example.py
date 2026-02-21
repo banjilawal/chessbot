@@ -154,7 +154,7 @@ Args
 RAISES:
   `TypeError`: if `candidate` is not discoverySearchContext DiscoverySearchContext` object
   `NullDiscoverySearchContextException`: if `candidate` is validation
-  `IdValidationFailedException`: if `visitor_id` fails validate checks
+  `IdValidationException`: if `visitor_id` fails validate checks
   `InvalidCommanderException`: if `owner` fails validate checks
   `NullDiscoverySearchContextProfileException`: if `team_schema` is validation
   `InvalidCommanderAssignmentException`: if the assigned owner does not consistency the validated owner
@@ -308,7 +308,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
-  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.
 
 CONTAINS:

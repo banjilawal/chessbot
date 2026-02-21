@@ -15,7 +15,7 @@ from chess.coord.service import CoordService
 from chess.square.state import SquareState
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.square import (
-    SquareContextValidationFailedException, ZeroSquareContextFlagsException, SquareContext,
+    SquareContextValidationException, ZeroSquareContextFlagsException, SquareContext,
     NullSquareContextException, ExcessiveSquareContextFlagsException, SquareContextValidationRouteException
 )
 from chess.token import TokenService
@@ -75,7 +75,7 @@ class SquareContextValidator(Validator[SquareContext]):
             *   ZeroSquareContextFlagsException
             *   ExcessiveSquareContextFlagsException
             *   SquareContextValidationRouteException
-            *   SquareContextValidationFailedException
+            *   SquareContextValidationException
         """
         method = "SquareContextValidator.validate"
         
@@ -83,8 +83,8 @@ class SquareContextValidator(Validator[SquareContext]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareContextValidationFailedException(
-                    message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                SquareContextValidationException(
+                    message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                     ex=NullSquareContextException(f"{method}: {NullSquareContextException.DEFAULT_MESSAGE}")
                 )
             )
@@ -92,8 +92,8 @@ class SquareContextValidator(Validator[SquareContext]):
         if not isinstance(candidate, SquareContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareContextValidationFailedException(
-                    message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                SquareContextValidationException(
+                    message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(
                         f"{method}: Was expecting a SquareContext, got {type(candidate).__name__} instead."
                     )
@@ -107,8 +107,8 @@ class SquareContextValidator(Validator[SquareContext]):
         if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareContextValidationFailedException(
-                    message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                SquareContextValidationException(
+                    message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                     ex=ZeroSquareContextFlagsException(f"{method}: {ZeroSquareContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
@@ -116,8 +116,8 @@ class SquareContextValidator(Validator[SquareContext]):
         if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareContextValidationFailedException(
-                    message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                SquareContextValidationException(
+                    message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                     ex=ExcessiveSquareContextFlagsException(
                         f"{method}: {ExcessiveSquareContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -131,8 +131,8 @@ class SquareContextValidator(Validator[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationFailedException(
-                        message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                    SquareContextValidationException(
+                        message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -145,8 +145,8 @@ class SquareContextValidator(Validator[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationFailedException(
-                        message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                    SquareContextValidationException(
+                        message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -159,8 +159,8 @@ class SquareContextValidator(Validator[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationFailedException(
-                        message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                    SquareContextValidationException(
+                        message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -173,8 +173,8 @@ class SquareContextValidator(Validator[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationFailedException(
-                        message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                    SquareContextValidationException(
+                        message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -187,8 +187,8 @@ class SquareContextValidator(Validator[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationFailedException(
-                        message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                    SquareContextValidationException(
+                        message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -200,8 +200,8 @@ class SquareContextValidator(Validator[SquareContext]):
             if not isinstance(context.state, SquareState):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareContextValidationFailedException(
-                        message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+                    SquareContextValidationException(
+                        message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                         ex=TypeError(
                             f"{method}: Was expecting a SquareState, got {type(candidate).__name__} instead."
                         )
@@ -212,8 +212,8 @@ class SquareContextValidator(Validator[SquareContext]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            SquareContextValidationFailedException(
-                message=f"{method}: {SquareContextValidationFailedException.DEFAULT_MESSAGE}",
+            SquareContextValidationException(
+                message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
                 ex=SquareContextValidationRouteException(
                     f"{method}: {SquareContextValidationRouteException.DEFAULT_MESSAGE}"
                 )

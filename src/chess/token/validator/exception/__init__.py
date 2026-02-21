@@ -14,4 +14,4 @@ from .debug import *
 
 
 # Modules
-from .wrapper import TokenValidationFailedException
+from .wrapper import TokenValidationException

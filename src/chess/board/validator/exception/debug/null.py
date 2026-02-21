@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.board import BoardValidationFailedException
+from chess.board import BoardValidationException
 
 __all__ = [
     # ======================# NULL_BOARD EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL_BOARD EXCEPTION #======================#
-class NullBoardException(BoardValidationFailedException, NullException):
+class NullBoardException(BoardValidationException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,7 @@ class NullBoardException(BoardValidationFailedException, NullException):
 
     # PARENT:
         *   NullBoardException
-        *   BoardValidationFailedException
+        *   BoardValidationException
 
     # PROVIDES:
     None

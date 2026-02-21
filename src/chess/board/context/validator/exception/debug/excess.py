@@ -27,7 +27,7 @@ class ExcessiveBoardContextFlagsException(BoardContextException, ContextFlagCoun
 
     # PARENT:
         *   ContextFlagCountException
-        *   BoardContextValidationFailedException
+        *   BoardContextValidationException
 
     # PROVIDES:
     None

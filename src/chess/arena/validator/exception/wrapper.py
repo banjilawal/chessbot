@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.arena import ArenaException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# ARENA_VALIDATION_FAILURE EXCEPTION #======================#
-    "ArenaValidationFailedException",
+    "ArenaValidationException",
 ]
 
 
 # ======================# ARENA_VALIDATION_FAILURE EXCEPTION #======================#
-class ArenaValidationFailedException(ArenaException, ValidationFailedException):
+class ArenaValidationException(ArenaException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class ArenaValidationFailedException(ArenaException, ValidationFailedException):
 
     # PARENT:
         *   ArenaException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

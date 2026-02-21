@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.game import GameTimelineException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# GAME_TIMELINE VALIDATION EXCEPTION #======================#
@@ -19,7 +19,7 @@ __all__ = [
 
 
 # ======================# GAME_TIMELINE VALIDATION EXCEPTION #======================#
-class InvalidGameTimelineException(GameTimelineException, ValidationFailedException):
+class InvalidGameTimelineException(GameTimelineException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -29,7 +29,7 @@ class InvalidGameTimelineException(GameTimelineException, ValidationFailedExcept
 
     # PARENT:
         *   GameTimelineException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     InvalidGameTimelineException

@@ -91,9 +91,9 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     `TypeError`: if `candidate` is not OperationEvent
 #     `NullAttackEventException`: if `candidate` is validation
 #
-#     `IdValidationFailedException`: if invalid `visitor_id`
+#     `IdValidationException`: if invalid `visitor_id`
 #     `PieceValidationException`: if `actor_candidate` fails coord_stack_validator
-#     `SquareValidationFailedException`: if `target` fails coord_stack_validator
+#     `SquareValidationException`: if `target` fails coord_stack_validator
 #
 #     `AutoOccupationException`: if target already occupies the square_name
 #     `KingAttackException`: if the target square_name is occupied by an enemy occupation
@@ -115,7 +115,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #
 #     id_validation = IdValidator.validate(travel.visitor_id)
 #     if not id_validation.is_success():
-#       raise IdValidationFailedException(f"{method}: {IdValidationFailedException.DEFAULT_MESSAGE}")
+#       raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
 #
 #     actor_validation = PieceValidator.validate(travel.traveler)
 #     if not actor_validation.is_success():
@@ -132,7 +132,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #
 #   except (
 #       TypeError,
-#       IdValidationFailedException,
+#       IdValidationException,
 #       InvalidAttackException,
 #       InvalidSqaureException,
 #       NullAttackEventException,
@@ -178,7 +178,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #         `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
 #
 #     # RAISES:
-#     `IdValidationFailedException`: Wraps any specification violations including:
+#     `IdValidationException`: Wraps any specification violations including:
 #         * `TypeError`: if candidate is not an `int`
 #         * `IdNullException`: if candidate is validation
 #         * `NegativeIdException`: if candidate is negative `

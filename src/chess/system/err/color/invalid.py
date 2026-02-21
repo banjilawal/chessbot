@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import GameColorException, ValidationFailedException
+from chess.system import GameColorException, ValidationException
 
 __all__ = [
 #======================# GAME_COLOR_VALIDATION EXCEPTION #======================#
@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 #======================# GAME_COLOR_VALIDATION EXCEPTION #======================#
-class InvalidGameColorException(GameColorException, ValidationFailedException):
+class InvalidGameColorException(GameColorException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class InvalidGameColorException(GameColorException, ValidationFailedException):
 
     # PARENT:
         *   GameColorException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.coord import CoordValidationFailedException
+from chess.coord import CoordValidationException
 
 __all__ = [
     # ======================# NULL COORD EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL COORD EXCEPTION #======================#
-class NullCoordException(CoordValidationFailedException, NullException):
+class NullCoordException(CoordValidationException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -26,7 +26,7 @@ class NullCoordException(CoordValidationFailedException, NullException):
     2.  Raised if an entity, method or operation requires a Coord but receives null instead.
 
     # PARENT:
-        *   CoordValidationFailedException
+        *   CoordValidationException
         *   NullCoordException
 
     # PROVIDES:

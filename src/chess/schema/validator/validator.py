@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast, Any
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
-from chess.schema import Schema, SchemaValidationFailedException, NullSchemaException
+from chess.schema import Schema, SchemaValidationException, NullSchemaException
 
 
 class SchemaValidator(Validator[Schema]):
@@ -49,15 +49,15 @@ class SchemaValidator(Validator[Schema]):
         # RAISES:
             *   TypeError
             *   NullSchemaException
-            *   SchemaValidationFailedException
+            *   SchemaValidationException
         """
         method = "SchemaValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SchemaValidationFailedException(
-                    message=f"{method}: {SchemaValidationFailedException.ERROR_CODE}",
+                SchemaValidationException(
+                    message=f"{method}: {SchemaValidationException.ERROR_CODE}",
                     ex=NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
                 )
             )
@@ -65,8 +65,8 @@ class SchemaValidator(Validator[Schema]):
         if not isinstance(candidate, Schema):
             # Return the exception chain on failure
             return ValidationResult.failure(
-                SchemaValidationFailedException(
-                    message=f"{method}: {SchemaValidationFailedException.ERROR_CODE}",
+                SchemaValidationException(
+                    message=f"{method}: {SchemaValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
                 )
             )

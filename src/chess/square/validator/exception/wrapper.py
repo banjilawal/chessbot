@@ -7,16 +7,16 @@ Created: 2025-11-19
 """
 
 from chess.square import SquareException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# SQUARE_VALIDATION_FAILURE EXCEPTION #======================#
-    "SquareValidationFailedException",
+    "SquareValidationException",
 ]
 
 
 # ======================# SQUARE_VALIDATION_FAILURE EXCEPTION #======================#
-class SquareValidationFailedException(SquareException, ValidationFailedException):
+class SquareValidationException(SquareException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class SquareValidationFailedException(SquareException, ValidationFailedException
 
     # PARENT:
         *   SquareException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

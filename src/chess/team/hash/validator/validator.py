@@ -15,7 +15,7 @@ from chess.schema import SchemaService
 from chess.system import LoggingLevelRouter, Validator
 from chess.system.validate.result import ValidationResult
 from chess.team import (
-    BlackTeamHasWrongSchemaException, TeamHash, TeamHashNullException, TeamHashValidationFailedException,
+    BlackTeamHasWrongSchemaException, TeamHash, TeamHashNullException, TeamHashValidationException,
     TeamValidator, WhiteTeamHasWrongSchemaException
 )
 
@@ -49,7 +49,7 @@ class TeamHashValidator(Validator[TeamHash]):
             *   TeamHashNullException
             *   WhiteTeamHasWrongSchemaException
             *   BlackTeamHasWrongSchemaException
-            *   TeamHashValidationFailedException
+            *   TeamHashValidationException
         """
         method = "TeamHashValidator.validate"
         
@@ -57,8 +57,8 @@ class TeamHashValidator(Validator[TeamHash]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationFailedException(
-                    message=f"{method}: {TeamHashValidationFailedException.DEFAULT_MESSAGE}",
+                TeamHashValidationException(
+                    message=f"{method}: {TeamHashValidationException.DEFAULT_MESSAGE}",
                     ex=TeamHashNullException(f"{method}: {TeamHashNullException.DEFAULT_MESSAGE}")
                 )
             )
@@ -66,8 +66,8 @@ class TeamHashValidator(Validator[TeamHash]):
         if not isinstance(candidate, TeamHash):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationFailedException(
-                    message=f"{method}: {TeamHashValidationFailedException.DEFAULT_MESSAGE}",
+                TeamHashValidationException(
+                    message=f"{method}: {TeamHashValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(f"{method}: Expected TeamHash, got {type(candidate).__name__} instead.")
                 )
             )
@@ -79,8 +79,8 @@ class TeamHashValidator(Validator[TeamHash]):
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationFailedException(
-                    message=f"{method}: {TeamHashValidationFailedException.DEFAULT_MESSAGE}",
+                TeamHashValidationException(
+                    message=f"{method}: {TeamHashValidationException.DEFAULT_MESSAGE}",
                     ex=white_team_validation_result.exception
                 )
             )
@@ -89,8 +89,8 @@ class TeamHashValidator(Validator[TeamHash]):
         if black_team_validation_result.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationFailedException(
-                    message=f"{method}: {TeamHashValidationFailedException.DEFAULT_MESSAGE}",
+                TeamHashValidationException(
+                    message=f"{method}: {TeamHashValidationException.DEFAULT_MESSAGE}",
                     ex=black_team_validation_result.exception
                 )
             )
@@ -98,8 +98,8 @@ class TeamHashValidator(Validator[TeamHash]):
         if hash.white_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationFailedException(
-                    message=f"{method}: {TeamHashValidationFailedException.DEFAULT_MESSAGE}",
+                TeamHashValidationException(
+                    message=f"{method}: {TeamHashValidationException.DEFAULT_MESSAGE}",
                     ex=WhiteTeamHasWrongSchemaException(
                         f"{method}: {WhiteTeamHasWrongSchemaException.DEFAULT_MESSAGE}"
                     )
@@ -109,8 +109,8 @@ class TeamHashValidator(Validator[TeamHash]):
         if hash.black_team.schema != schema_service.schema.BLACK:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHashValidationFailedException(
-                    message=f"{method}: {TeamHashValidationFailedException.DEFAULT_MESSAGE}",
+                TeamHashValidationException(
+                    message=f"{method}: {TeamHashValidationException.DEFAULT_MESSAGE}",
                     ex=BlackTeamHasWrongSchemaException(
                         f"{method}: {BlackTeamHasWrongSchemaException.DEFAULT_MESSAGE}"
                     )

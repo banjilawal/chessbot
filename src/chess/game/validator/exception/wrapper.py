@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.game import GameException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# GAME_VALIDATION_FAILURE EXCEPTION #======================#
-    "GameValidationFailedException",
+    "GameValidationException",
 ]
 
 
 # ======================# GAME_VALIDATION_FAILURE EXCEPTION #======================#
-class GameValidationFailedException(GameException, ValidationFailedException):
+class GameValidationException(GameException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class GameValidationFailedException(GameException, ValidationFailedException):
 
     # PARENT:
         *   GameException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

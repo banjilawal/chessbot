@@ -2,7 +2,7 @@ from typing import Any, cast
 
 from chess.square import SquareService
 from chess.hostage import (
-    CaptivityContextValidationFailedException, CaptivityContextValidationRouteException, CaptivityContext,
+    CaptivityContextValidationException, CaptivityContextValidationRouteException, CaptivityContext,
     ExcessiveCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
 )
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
@@ -56,7 +56,7 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             * TypeError
             * NullCaptivityContextException
             * ZeroCaptivityContextFlagsException
-            * CaptivityContextValidationFailedException
+            * CaptivityContextValidationException
             * CaptivityContextValidationRouteException
         """
         method = "CaptivityContextValidator.validate"
@@ -65,8 +65,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                CaptivityContextValidationFailedException(
-                    message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                CaptivityContextValidationException(
+                    message=f"{method}: {CaptivityContextValidationException.DEFAULT_MESSAGE}",
                     ex=NullCaptivityContextException(f"{method}: {NullCaptivityContextException.DEFAULT_MESSAGE}")
                 )
             )
@@ -74,8 +74,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         if not isinstance(candidate, CaptivityContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                CaptivityContextValidationFailedException(
-                    message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                CaptivityContextValidationException(
+                    message=f"{method}: {CaptivityContextValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(f"{method}: Expected a CaptivityContext, got {type(candidate).__name__} instead.")
                 )
             )
@@ -87,8 +87,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                CaptivityContextValidationFailedException(
-                    message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                CaptivityContextValidationException(
+                    message=f"{method}: {CaptivityContextValidationException.DEFAULT_MESSAGE}",
                     ex=ZeroCaptivityContextFlagsException(
                         f"{method}: {ZeroCaptivityContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -98,8 +98,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                CaptivityContextValidationFailedException(
-                    message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                CaptivityContextValidationException(
+                    message=f"{method}: {CaptivityContextValidationException.DEFAULT_MESSAGE}",
                     ex=ExcessiveCaptivityContextFlagsException(
                         f"{method}: {ExcessiveCaptivityContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -113,8 +113,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    CaptivityContextValidationFailedException(
-                        message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                    CaptivityContextValidationException(
+                        message=f"{method}: {CaptivityContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -127,8 +127,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    CaptivityContextValidationFailedException(
-                        message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                    CaptivityContextValidationException(
+                        message=f"{method}: {CaptivityContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -141,8 +141,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    CaptivityContextValidationFailedException(
-                        message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                    CaptivityContextValidationException(
+                        message=f"{method}: {CaptivityContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -155,8 +155,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    CaptivityContextValidationFailedException(
-                        message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+                    CaptivityContextValidationException(
+                        message=f"{method}: {CaptivityContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -165,8 +165,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
         
         # Return the exception chain if there was no validation route for the context.
         return ValidationResult.failure(
-            CaptivityContextValidationFailedException(
-                message=f"{method}: {CaptivityContextValidationFailedException.DEFAULT_MESSAGE}",
+            CaptivityContextValidationException(
+                message=f"{method}: {CaptivityContextValidationException.DEFAULT_MESSAGE}",
                 ex=CaptivityContextValidationRouteException(
                     f"{method}: {CaptivityContextValidationRouteException.DEFAULT_MESSAGE}"
                 )

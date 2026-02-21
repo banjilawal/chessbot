@@ -107,7 +107,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   ERROR_CODE = "DOUBLE_BLOCKING_ERROR"
 #   DEFAULT_MESSAGE = "The friend has already been encountered."
 #
-# class InvalidEncounterException(BlockingEventException, ValidationFailedException):
+# class InvalidEncounterException(BlockingEventException, ValidationException):
 #   """"""
 #   ERROR_CODE = "INVALID_BLOCKING_EVENT_ERROR"
 #   DEFAULT_MESSAGE = "BlockingEventException validation failed."
@@ -157,7 +157,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # Requires base rollback_exception classes and constants from the core system:
 # From `chess.system`:
 #   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
-#   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
+#   * Exception: `ChessException`, `ValidationException`, `NullException`,
 #         `BuildException`.
 #
 # CONTAINS:
@@ -167,7 +167,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # """
 #
 # from chess.owner import TravelEventException
-# from chess.system import NullException, ValidationFailedException, InconsistencyException
+# from chess.system import NullException, ValidationException, InconsistencyException
 #
 # __all__ = [
 #   'TravelActorException',
@@ -202,7 +202,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate cannot be null."
 #
 #
-# class InvalidTravelActorException(TravelActorException, ValidationFailedException):
+# class InvalidTravelActorException(TravelActorException, ValidationException):
 #   ERROR_CODE = "TRAVEL_ACTOR_VALIDATION_ERROR"
 #   DEFAULT_MESSAGE = "TravelEvent actor_candidate validation failed."
 #

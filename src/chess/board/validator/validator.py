@@ -12,7 +12,7 @@ from typing import Any, cast
 from chess.arena import Arena, ArenaService
 from chess.board import (
     Board, BoardNotSubmittedArenaRegistrationException, BoardOwnedByDifferentArenaException, NullBoardException,
-    BoardValidationFailedException,
+    BoardValidationException,
 )
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 
@@ -64,7 +64,7 @@ class BoardValidator(Validator[Board]):
         # RAISES:
             *   TypeError
             *   NullBoardException
-            *   BoardValidationFailedException
+            *   BoardValidationException
         """
         method = "BoardValidator.validate"
         
@@ -72,8 +72,8 @@ class BoardValidator(Validator[Board]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardValidationFailedException(
-                    message=f"{method}: {BoardValidationFailedException.ERROR_CODE}",
+                BoardValidationException(
+                    message=f"{method}: {BoardValidationException.ERROR_CODE}",
                     ex=NullBoardException(f"{method}: {NullBoardException.DEFAULT_MESSAGE}")
                 )
             )
@@ -81,8 +81,8 @@ class BoardValidator(Validator[Board]):
         if not isinstance(candidate, Board):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardValidationFailedException(
-                    message=f"{method}: {BoardValidationFailedException.ERROR_CODE}",
+                BoardValidationException(
+                    message=f"{method}: {BoardValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected Board, but, got {type(candidate).__name__} instead.")
                 )
             )
@@ -94,8 +94,8 @@ class BoardValidator(Validator[Board]):
         if id_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardValidationFailedException(
-                    message=f"{method}: {BoardValidationFailedException.ERROR_CODE}",
+                BoardValidationException(
+                    message=f"{method}: {BoardValidationException.ERROR_CODE}",
                     ex=id_validation.exception
                 )
             )
@@ -104,8 +104,8 @@ class BoardValidator(Validator[Board]):
         if arena_verification.is_failure:
             # Return the exception chain on failure.
             return ValidationResult(
-                BoardValidationFailedException(
-                    message=f"{method}: {BoardValidationFailedException.ERROR_CODE}",
+                BoardValidationException(
+                    message=f"{method}: {BoardValidationException.ERROR_CODE}",
                     ex=arena_verification.exception
                 )
             )
@@ -128,7 +128,7 @@ class BoardValidator(Validator[Board]):
             - On failure: Exception.
             - On success: Area in the payload.
         # RAISES:
-        *   BoardValidationFailedException
+        *   BoardValidationException
         """
         
         method = "BoardValidator._validate_arena"
@@ -141,8 +141,8 @@ class BoardValidator(Validator[Board]):
         if relation_analysis.is_failure:
             # Return the exception chain on failure.
             return ValidationResult(
-                BoardValidationFailedException(
-                    message=f"{method}: {BoardValidationFailedException.ERROR_CODE}",
+                BoardValidationException(
+                    message=f"{method}: {BoardValidationException.ERROR_CODE}",
                     ex=relation_analysis.exception
                 )
             )
@@ -150,8 +150,8 @@ class BoardValidator(Validator[Board]):
         if relation_analysis.does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult(
-                BoardValidationFailedException(
-                    message=f"{method}: {BoardValidationFailedException.ERROR_CODE}",
+                BoardValidationException(
+                    message=f"{method}: {BoardValidationException.ERROR_CODE}",
                     ex=BoardOwnedByDifferentArenaException(
                         f"{method}: {BoardOwnedByDifferentArenaException.DEFAULT_MESSAGE}"
                     )
@@ -161,8 +161,8 @@ class BoardValidator(Validator[Board]):
         if relation_analysis.partially_exists:
             # Return the exception chain on failure.
             return ValidationResult(
-                BoardValidationFailedException(
-                    message=f"{method}: {BoardValidationFailedException.ERROR_CODE}",
+                BoardValidationException(
+                    message=f"{method}: {BoardValidationException.ERROR_CODE}",
                     ex=BoardNotSubmittedArenaRegistrationException(
                         f"{method}: {BoardNotSubmittedArenaRegistrationException.DEFAULT_MESSAGE}"
                     )

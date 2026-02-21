@@ -46,9 +46,9 @@ RETURNS:
 RAISES:
   AttackEventBuilderException: Wraps any underlying validate failures that occur during the construction process.
   This includes:
-    * `IdValidationFailedException`: if `attackEvent_id` fails validate checks
+    * `IdValidationException`: if `attackEvent_id` fails validate checks
     * `InvalidNameException`: if `visitor_name` fails validate checks
-    * `RankValidationFailedException`: if `bounds` fails validate checks
+    * `RankValidationException`: if `bounds` fails validate checks
     * `InvalidTeamException`: if `team_name` fails validate checks
     * `InvalidTeamAssignmentException`: If `attackEvent.team_name` is different from `team_name` parameter
     * `FullRankQuotaException`: If the `team_name` has no empty slots for the `attackEvent.bounds`
@@ -165,7 +165,7 @@ Example:
 #       `rollback_exception` (`Exception`) - An exception detailing which naming rule was broken.
 #
 #   # RAISES:
-#   `IdValidationFailedException`: Wraps any specification violations including:
+#   `IdValidationException`: Wraps any specification violations including:
 #       * `TypeError`: if candidate is not an `int`
 #       * `IdNullException`: if candidate is validation
 #       * `NegativeIdException`: if candidate is negative `
@@ -459,7 +459,7 @@ DEPENDENCIES:
 ------------
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
-  * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
+  * Exception: `ChessException`, `ValidationException`, `NullException`,
         `BuildException`.
 
 CONTAINS:
@@ -534,7 +534,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #   ERROR_CODE = "NULL_EVENT_ERROR"
 #   DEFAULT_MESSAGE = "KingCheckEvent cannot be validation"
 #
-# class InvalidAttackEventException(AttackEventException, ValidationFailedException):
+# class InvalidAttackEventException(AttackEventException, ValidationException):
 #   """Raised by ExchangeValidators if client fails coord_stack_validator."""
 #   ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
 #   DEFAULT_MESSAGE = "KingCheckEvent failed validate"

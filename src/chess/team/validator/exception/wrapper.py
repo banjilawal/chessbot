@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.team import TeamException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# TEAM_VALIDATION_FAILURE EXCEPTION #======================#
-    "TeamValidationFailedException",
+    "TeamValidationException",
 ]
 
 
 # ======================# TEAM_VALIDATION_FAILURE EXCEPTION #======================#
-class TeamValidationFailedException(TeamException, ValidationFailedException):
+class TeamValidationException(TeamException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class TeamValidationFailedException(TeamException, ValidationFailedException):
 
     # PARENT:
         *   TeamException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

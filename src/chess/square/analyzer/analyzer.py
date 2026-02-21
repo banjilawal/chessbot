@@ -73,7 +73,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
                     - On Error:
                         - Exception
         # RAISES:
-            *   SquareValidationFailedException
+            *   SquareValidationException
         """
         method = "SquareService.analyze"
         

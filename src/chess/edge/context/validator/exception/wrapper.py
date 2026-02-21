@@ -7,17 +7,17 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 from chess.edge import EdgeContextException
 
 __all__ = [
     # ======================# EDGE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "EdgeContextValidationFailedException",
+    "EdgeContextValidationException",
 ]
 
 
 # ======================# EDGE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class EdgeContextValidationFailedException(EdgeContextException, ValidationFailedException):
+class EdgeContextValidationException(EdgeContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class EdgeContextValidationFailedException(EdgeContextException, ValidationFaile
 
     # PARENT:
         *   EdgeContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

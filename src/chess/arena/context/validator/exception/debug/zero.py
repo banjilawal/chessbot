@@ -27,7 +27,7 @@ class ZeroArenaContextFlagsException(InvalidArenaContextException, ContextFlagCo
 
     # PARENT:
         *   ContextFlagCountException
-        *   ArenaContextValidationFailedException
+        *   ArenaContextValidationException
 
     # PROVIDES:
     None

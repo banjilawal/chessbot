@@ -25,7 +25,7 @@ class NullSquareException(SquareException, NullException):
 
     # PARENT:
         *   NullSquareException
-        *   SquareValidationFailedException
+        *   SquareValidationException
 
     # PROVIDES:
     None

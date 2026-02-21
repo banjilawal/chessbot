@@ -9,7 +9,7 @@ Created: 2025-08-12
 import sys
 from typing import Any, cast
 
-from chess.system import IdValidationFailedException, NumberValidator, Validator, ValidationResult, LoggingLevelRouter
+from chess.system import IdValidationException, NumberValidator, Validator, ValidationResult, LoggingLevelRouter
 
 
 class IdValidator(Validator[int]):
@@ -67,7 +67,7 @@ class IdValidator(Validator[int]):
                 - On failure: Exception.
                 - On success: int in the payload.
         # RAISES:
-            *   IdValidationFailedException
+            *   IdValidationException
         """
         method = "IdValidator.validate"
         
@@ -76,8 +76,8 @@ class IdValidator(Validator[int]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                IdValidationFailedException(
-                    message=f"{method}: {IdValidationFailedException.DEFAULT_MESSAGE}:",
+                IdValidationException(
+                    message=f"{method}: {IdValidationException.DEFAULT_MESSAGE}:",
                     ex=validation.exception
                 )
             )

@@ -27,7 +27,7 @@ class ZeroBoardContextFlagsException(BoardContextException, ContextFlagCountExce
 
     # PARENT:
         *   ContextFlagCountException
-        *   BoardContextValidationFailedException
+        *   BoardContextValidationException
 
     # PROVIDES:
     None

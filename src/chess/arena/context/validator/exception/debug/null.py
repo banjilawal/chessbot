@@ -26,7 +26,7 @@ class NullArenaContextException(ArenaContextException, NullException):
 
     # PARENT:
         *   NullArenaContextException
-        *   ArenaContextValidationFailedException
+        *   ArenaContextValidationException
 
     # PROVIDES:
     None

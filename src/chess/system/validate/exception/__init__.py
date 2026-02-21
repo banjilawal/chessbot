@@ -15,4 +15,4 @@ None
 
 # Modules
 from .route import NoValidationRouteException
-from .wrapper import ValidationFailedException
+from .wrapper import ValidationException

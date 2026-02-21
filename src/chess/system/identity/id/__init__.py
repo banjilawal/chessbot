@@ -16,7 +16,7 @@ from .auto import AutoId
 from .factory import IdFactory
 from .emitter import IdEmitter, id_emitter
 from .validator import IdValidator
-from .wrapper import IdValidationFailedException
+from .wrapper import IdValidationException
 
 
 

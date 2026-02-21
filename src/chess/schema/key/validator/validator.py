@@ -13,7 +13,7 @@ from typing import Any, cast
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
     ExcessiveSchemaKeysException, NullSchemaKeyException, SchemaKey,
-    SchemaKeyValidationFailedException,
+    SchemaKeyValidationException,
     SchemaKeyValidationRouteException, ZeroSchemaKeysException
 )
 
@@ -67,7 +67,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             *   NNullSchemaKeyException
             *   ZeroSchemaKeysException
             *   ExcessiveSchemaKeysException
-            *   SchemaKeyValidationFailedException
+            *   SchemaKeyValidationException
         """
         method = "SchemaKeyValidator.validate"
         
@@ -75,8 +75,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SchemaKeyValidationFailedException(
-                    message=f"{method}: {SchemaKeyValidationFailedException.ERROR_CODE}",
+                SchemaKeyValidationException(
+                    message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
                     ex=NullSchemaKeyException(f"{method}: {NullSchemaKeyException.DEFAULT_MESSAGE}")
                 )
             )
@@ -84,8 +84,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
         if not isinstance(candidate, SchemaKey):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SchemaKeyValidationFailedException(
-                    message=f"{method}: {SchemaKeyValidationFailedException.ERROR_CODE}",
+                SchemaKeyValidationException(
+                    message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected SchemaKey, got {type(candidate).__name__} instead.")
                 )
             )
@@ -98,8 +98,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
         if size  == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SchemaKeyValidationFailedException(
-                    message=f"{method}: {SchemaKeyValidationFailedException.ERROR_CODE}",
+                SchemaKeyValidationException(
+                    message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
                     ex=ZeroSchemaKeysException(f"{method}: {ZeroSchemaKeysException.DEFAULT_MESSAGE}")
                 )
             )
@@ -107,8 +107,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
         if size > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SchemaKeyValidationFailedException(
-                    message=f"{method}: {SchemaKeyValidationFailedException.ERROR_CODE}",
+                SchemaKeyValidationException(
+                    message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
                     ex=ExcessiveSchemaKeysException(
                         f"{method}: {ExcessiveSchemaKeysException.DEFAULT_MESSAGE}"
                     )
@@ -123,8 +123,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             # Return the exception chain on failure.
             if validation.is_failure:
                 return ValidationResult.failure(
-                    SchemaKeyValidationFailedException(
-                        message=f"{method}: {SchemaKeyValidationFailedException.ERROR_CODE}",
+                    SchemaKeyValidationException(
+                        message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -137,8 +137,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    SchemaKeyValidationFailedException(
-                        message=f"{method}: {SchemaKeyValidationFailedException.ERROR_CODE}",
+                    SchemaKeyValidationException(
+                        message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -147,8 +147,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
         
         # The default returns failure.
         return ValidationResult.failure(
-            SchemaKeyValidationFailedException(
-                message=f"{method}: {SchemaKeyValidationFailedException.ERROR_CODE}",
+            SchemaKeyValidationException(
+                message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
                 ex=SchemaKeyValidationRouteException(
                     f"{method}: {SchemaKeyValidationRouteException.ERROR_CODE}"
                 )

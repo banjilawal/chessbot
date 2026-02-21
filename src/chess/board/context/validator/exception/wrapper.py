@@ -7,17 +7,17 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 from chess.board import BoardContextException
 
 __all__ = [
     # ======================# BOARD_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-    "BoardContextValidationFailedException",
+    "BoardContextValidationException",
 ]
 
 
 # ======================# BOARD_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
-class BoardContextValidationFailedException(BoardContextException, ValidationFailedException):
+class BoardContextValidationException(BoardContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class BoardContextValidationFailedException(BoardContextException, ValidationFai
 
     # PARENT:
         *   BoardContextException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

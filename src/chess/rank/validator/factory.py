@@ -80,7 +80,7 @@ class RankValidatorFactory(Validator[Rank]):
         # RAISES:
             *   TypeError
             *   NullRankException
-            *   RankValidationFailedException
+            *   RankValidationException
         """
         method = "RankValidatorFactory.validate"
         try:
@@ -110,7 +110,7 @@ class RankValidatorFactory(Validator[Rank]):
                 return pawn_validator.validate(rank)
             
         # If the candidate is not any of the concrete Ranks control passes to the except block.
-        # The unhandled exception is wrapped inside an RankValidationFailedException which is sent inside
+        # The unhandled exception is wrapped inside an RankValidationException which is sent inside
         # a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
@@ -175,7 +175,7 @@ class RankValiatorFactory(Validator[Rank]):
                 - On failure: Exception.
 
         # RAISES:
-            * RankValidationFailedException
+            * RankValidationException
         """
         method = "RankFactory.builder"
         # Handle the case that the candidate does not exist.

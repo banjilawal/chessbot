@@ -7,7 +7,7 @@ Created: 2026-02-17
 """
 
 from chess.edge import EdgeException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# EDGE_VALIDATION_FAILURE EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# EDGE_VALIDATION_FAILURE EXCEPTION #======================#
-class ValidatingEdgeException(EdgeException, ValidationFailedException):
+class ValidatingEdgeException(EdgeException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class ValidatingEdgeException(EdgeException, ValidationFailedException):
 
     # PARENT:
         *   EdgeException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

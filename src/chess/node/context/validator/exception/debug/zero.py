@@ -27,7 +27,7 @@ class ZeroNodeContextFlagsException(NodeContextException, ContextFlagCountExcept
 
     # PARENT:
         *   ContextFlagCountException
-        *   NodeContextValidationFailedException
+        *   NodeContextValidationException
 
     # PROVIDES:
     None

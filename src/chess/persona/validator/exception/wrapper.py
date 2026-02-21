@@ -8,17 +8,17 @@ version: 1.0.0
 """
 
 from chess.persona import PersonaException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 _
 __all__ = [
     # ======================# PERSONA_VALIDATION_FAILURE EXCEPTION #======================#
-    "PersonaValidationFailedException",
+    "PersonaValidationException",
 ]
 
 
 # ======================# PERSONA_VALIDATION_FAILURE EXCEPTION #======================#
-class PersonaValidationFailedException(PersonaException, ValidationFailedException):
+class PersonaValidationException(PersonaException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class PersonaValidationFailedException(PersonaException, ValidationFailedExcepti
     
     # PARENT:
         *   PersonaException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

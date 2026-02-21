@@ -9,16 +9,16 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TEAM_HASH_VALIDATION_FAILURE EXCEPTION #======================#
-    "TeamHashValidationFailedException",
+    "TeamHashValidationException",
 ]
 
 from chess.team import TeamHashException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 
 
 # ======================# TEAM_HASH_VALIDATION_FAILURE EXCEPTION #======================#
-class TeamHashValidationFailedException(TeamHashException, ValidationFailedException):
+class TeamHashValidationException(TeamHashException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -28,7 +28,7 @@ class TeamHashValidationFailedException(TeamHashException, ValidationFailedExcep
 
     # PARENT:
         *   TeamHashException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

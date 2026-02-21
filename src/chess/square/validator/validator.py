@@ -11,7 +11,7 @@ from typing import Any, cast
 from chess.board import Board, BoardService, SquareOnDifferentBoardException
 from chess.coord import CoordService
 from chess.square import (
-    Square, SquareNotSubmittedBoardRegistrationException, SquareValidationFailedException, NullSquareException,
+    Square, SquareNotSubmittedBoardRegistrationException, SquareValidationException, NullSquareException,
 )
 from chess.system import IdentityService, Validator, ValidationResult, LoggingLevelRouter
 
@@ -68,7 +68,7 @@ class SquareValidator(Validator[Square]):
         # RAISES:
             *   TypeError
             *   NullSquareException
-            *   SquareValidationFailedException
+            *   SquareValidationException
         """
         method = "SquareValidator.validate"
         
@@ -76,8 +76,8 @@ class SquareValidator(Validator[Square]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationFailedException(
-                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                SquareValidationException(
+                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
                     ex=NullSquareException(f"{method}: {NullSquareException.DEFAULT_MESSAGE}")
                 )
             )
@@ -85,8 +85,8 @@ class SquareValidator(Validator[Square]):
         if not isinstance(candidate, Square):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationFailedException(
-                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                SquareValidationException(
+                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected Square, but, got {type(candidate).__name__} instead.")
                 )
             )
@@ -101,8 +101,8 @@ class SquareValidator(Validator[Square]):
         if identity_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationFailedException(
-                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                SquareValidationException(
+                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
                     ex=identity_validation.exception
                 )
             )
@@ -111,8 +111,8 @@ class SquareValidator(Validator[Square]):
         if coord_validation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationFailedException(
-                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                SquareValidationException(
+                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
                     ex=coord_validation.exception
                 )
             )
@@ -121,8 +121,8 @@ class SquareValidator(Validator[Square]):
         if board_verification.is_failure:
             # Return the exception chain on failure.
             return ValidationResult(
-                SquareValidationFailedException(
-                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                SquareValidationException(
+                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
                     ex=board_verification.exception
                 )
             )
@@ -145,7 +145,7 @@ class SquareValidator(Validator[Square]):
             - On failure: Exception.
             - On success: Board in the payload.
         # RAISES:
-            *   SquareValidationFailedException
+            *   SquareValidationException
         """
         method = "SquareValidator._validate_board"
         # Handle the case item.board certification fails.
@@ -157,8 +157,8 @@ class SquareValidator(Validator[Square]):
         if board_square_relation.is_failure:
             # Return the exception chain on failure.
             return ValidationResult(
-                SquareValidationFailedException(
-                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                SquareValidationException(
+                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
                     ex=board_square_relation.exception
                 )
             )
@@ -166,8 +166,8 @@ class SquareValidator(Validator[Square]):
         if board_square_relation.does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult(
-                SquareValidationFailedException(
-                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                SquareValidationException(
+                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
                     ex=SquareOnDifferentBoardException(
                         f"{method}: {SquareOnDifferentBoardException.DEFAULT_MESSAGE}"
                     )
@@ -177,8 +177,8 @@ class SquareValidator(Validator[Square]):
         if board_square_relation.partially_exists:
             # Return the exception chain on failure.
             return ValidationResult(
-                SquareValidationFailedException(
-                    message=f"{method}: {SquareValidationFailedException.ERROR_CODE}",
+                SquareValidationException(
+                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
                     ex=SquareNotSubmittedBoardRegistrationException(
                         f"{method}: {SquareNotSubmittedBoardRegistrationException.DEFAULT_MESSAGE}"
                     )

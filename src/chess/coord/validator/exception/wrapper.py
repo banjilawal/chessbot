@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.coord import CoordException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# COORD_VALIDATION_FAILURE EXCEPTION #======================#
-    "CoordValidationFailedException",
+    "CoordValidationException",
 ]
 
 
 # ======================# COORD_VALIDATION_FAILURE EXCEPTION #======================#
-class CoordValidationFailedException(CoordException, ValidationFailedException):
+class CoordValidationException(CoordException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class CoordValidationFailedException(CoordException, ValidationFailedException):
 
     # PARENT:
         *   CoordException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

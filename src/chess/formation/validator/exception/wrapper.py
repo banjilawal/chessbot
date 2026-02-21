@@ -9,17 +9,17 @@ version: 1.0.0
 
 
 from chess.formation import FormationException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 _
 __all__ = [
     # ======================# FORMATION_VALIDATION_FAILURE EXCEPTION #======================#
-    "FormationValidationFailedException",
+    "FormationValidationException",
 ]
 
 
 # ======================# FORMATION_VALIDATION_FAILURE EXCEPTION #======================#
-class FormationValidationFailedException(FormationException, ValidationFailedException):
+class FormationValidationException(FormationException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -28,7 +28,7 @@ class FormationValidationFailedException(FormationException, ValidationFailedExc
     
     # PARENT:
         *   FormationException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

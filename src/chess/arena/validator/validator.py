@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from chess.board import BoardService
 from chess.team import Team, UniqueTeamDataService
-from chess.arena import Arena, ArenaValidationFailedException, NullArenaException, ExcessiveTeamsInArenaException
+from chess.arena import Arena, ArenaValidationException, NullArenaException, ExcessiveTeamsInArenaException
 from chess.system import (
     IdentityService, LoggingLevelRouter, SearchResult, ServiceValidator, ValidationResult,
     Validator
@@ -66,7 +66,7 @@ class ArenaValidator(Validator[Arena]):
             - On failure: Exception.
 
         # RAISES:
-            *   ArenaValidationFailedException
+            *   ArenaValidationException
         """
         method = "ArenaValidator.validate"
         try:
@@ -127,11 +127,11 @@ class ArenaValidator(Validator[Arena]):
             return ValidationResult.success(arena)
         
         # The flow should only get here if the logic did not route all the types of concrete Arenas.
-        # In that case wrap the unhandled exception inside an ArenaValidationFailedException then, return
+        # In that case wrap the unhandled exception inside an ArenaValidationException then, return
         # the exception chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                ArenaValidationFailedException(
-                    ex=ex, message=f"{method}: {ArenaValidationFailedException.DEFAULT_MESSAGE}"
+                ArenaValidationException(
+                    ex=ex, message=f"{method}: {ArenaValidationException.DEFAULT_MESSAGE}"
                 )
             )

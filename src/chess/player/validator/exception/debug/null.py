@@ -24,7 +24,7 @@ class NullAgentException(InvalidAgentException, NullException):
     1.  Indicate if an entity, method or operation required an Player  but got null instead.
 
     # PARENT:
-        *   PlayerValidationFailedException
+        *   PlayerValidationException
         *   NullException
 
     # PROVIDES:

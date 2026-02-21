@@ -9,7 +9,7 @@ consistent way to handle exception across different modules and layers
 of the application.
 
 The package includes specific validate exception for system entity_service types,
-such as `RankValidationException` and `IdValidationFailedException`, promoting
+such as `RankValidationException` and `IdValidationException`, promoting
 predictable error handling and clear communication of validate failures.
 """
 

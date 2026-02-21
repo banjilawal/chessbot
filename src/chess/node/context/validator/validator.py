@@ -13,7 +13,7 @@ import sys
 from typing import Any, cast
 
 from chess.node import (
-    ExcessiveNodeContextFlagsException, NodeContext, NodeContextValidationFailedException, NodeValidator,
+    ExcessiveNodeContextFlagsException, NodeContext, NodeContextValidationException, NodeValidator,
     NodeContextValidationRouteException, NullNodeContextException, ZeroNodeContextFlagsException
 )
 from chess.square import SquareService
@@ -73,7 +73,7 @@ class NodeContextValidator(Validator[NodeContext]):
             *   ZeroNodeContextFlagsException
             *   ExcessiveNodeContextFlagsException
             *   NodeContextValidationRouteException
-            *   NodeContextValidationFailedException
+            *   NodeContextValidationException
         """
         method = "NodeContextValidator.validate"
         
@@ -81,8 +81,8 @@ class NodeContextValidator(Validator[NodeContext]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeContextValidationFailedException(
-                    message=f"{method}: {NodeContextValidationFailedException.DEFAULT_MESSAGE}",
+                NodeContextValidationException(
+                    message=f"{method}: {NodeContextValidationException.DEFAULT_MESSAGE}",
                     ex=NullNodeContextException(f"{method}: {NullNodeContextException.DEFAULT_MESSAGE}")
                 )
             )
@@ -90,8 +90,8 @@ class NodeContextValidator(Validator[NodeContext]):
         if not isinstance(candidate, NodeContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeContextValidationFailedException(
-                    message=f"{method}: {NodeContextValidationFailedException.DEFAULT_MESSAGE}",
+                NodeContextValidationException(
+                    message=f"{method}: {NodeContextValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(
                         f"{method}: Was expecting a NodeContext, got {type(candidate).__predecessor__} instead."
                     )
@@ -105,8 +105,8 @@ class NodeContextValidator(Validator[NodeContext]):
         if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeContextValidationFailedException(
-                    message=f"{method}: {NodeContextValidationFailedException.DEFAULT_MESSAGE}",
+                NodeContextValidationException(
+                    message=f"{method}: {NodeContextValidationException.DEFAULT_MESSAGE}",
                     ex=ZeroNodeContextFlagsException(f"{method}: {ZeroNodeContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
@@ -114,8 +114,8 @@ class NodeContextValidator(Validator[NodeContext]):
         if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NodeContextValidationFailedException(
-                    message=f"{method}: {NodeContextValidationFailedException.DEFAULT_MESSAGE}",
+                NodeContextValidationException(
+                    message=f"{method}: {NodeContextValidationException.DEFAULT_MESSAGE}",
                     ex=ExcessiveNodeContextFlagsException(
                         f"{method}: {ExcessiveNodeContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -133,8 +133,8 @@ class NodeContextValidator(Validator[NodeContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeContextValidationFailedException(
-                        message=f"{method}: {NodeContextValidationFailedException.DEFAULT_MESSAGE}",
+                    NodeContextValidationException(
+                        message=f"{method}: {NodeContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -147,8 +147,8 @@ class NodeContextValidator(Validator[NodeContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeContextValidationFailedException(
-                        message=f"{method}: {NodeContextValidationFailedException.DEFAULT_MESSAGE}",
+                    NodeContextValidationException(
+                        message=f"{method}: {NodeContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -161,8 +161,8 @@ class NodeContextValidator(Validator[NodeContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeContextValidationFailedException(
-                        message=f"{method}: {NodeContextValidationFailedException.DEFAULT_MESSAGE}",
+                    NodeContextValidationException(
+                        message=f"{method}: {NodeContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -175,8 +175,8 @@ class NodeContextValidator(Validator[NodeContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    NodeContextValidationFailedException(
-                        message=f"{method}: {NodeContextValidationFailedException.DEFAULT_MESSAGE}",
+                    NodeContextValidationException(
+                        message=f"{method}: {NodeContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -185,8 +185,8 @@ class NodeContextValidator(Validator[NodeContext]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            NodeContextValidationFailedException(
-                message=f"{method}: {NodeContextValidationFailedException.DEFAULT_MESSAGE}",
+            NodeContextValidationException(
+                message=f"{method}: {NodeContextValidationException.DEFAULT_MESSAGE}",
                 ex=NodeContextValidationRouteException(
                     f"{method}: {NodeContextValidationRouteException.DEFAULT_MESSAGE}"
                 )

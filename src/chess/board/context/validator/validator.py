@@ -12,7 +12,7 @@ from typing import Any, cast
 from chess.arena.service import ArenaService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.board import (
-    BoardContextValidationFailedException, ZeroBoardContextFlagsException, BoardContext,
+    BoardContextValidationException, ZeroBoardContextFlagsException, BoardContext,
     NullBoardContextException, ExcessiveBoardContextFlagsException, BoardContextValidationRouteException
 )
 
@@ -68,7 +68,7 @@ class BoardContextValidator(Validator[BoardContext]):
             *   ZeroBoardContextFlagsException
             *   ExcessiveBoardContextFlagsException
             *   BoardContextValidationRouteException
-            *   BoardContextValidationFailedException
+            *   BoardContextValidationException
         """
         method = "BoardContextValidator.validate"
         
@@ -76,8 +76,8 @@ class BoardContextValidator(Validator[BoardContext]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationFailedException(
-                    message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                BoardContextValidationException(
+                    message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
                     ex=NullBoardContextException(f"{method}: {NullBoardContextException.DEFAULT_MESSAGE}")
                 )
             )
@@ -85,8 +85,8 @@ class BoardContextValidator(Validator[BoardContext]):
         if not isinstance(candidate, BoardContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationFailedException(
-                    message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                BoardContextValidationException(
+                    message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(f"{method}: Was expecting a BoardContext, got {type(candidate).__name__} instead.")
                 )
             )
@@ -98,8 +98,8 @@ class BoardContextValidator(Validator[BoardContext]):
         if flag_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationFailedException(
-                    message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                BoardContextValidationException(
+                    message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
                     ex=ZeroBoardContextFlagsException(f"{method}: {ZeroBoardContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
@@ -107,8 +107,8 @@ class BoardContextValidator(Validator[BoardContext]):
         if flag_count > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                BoardContextValidationFailedException(
-                    message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                BoardContextValidationException(
+                    message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
                     ex=ExcessiveBoardContextFlagsException(
                         f"{method}: {ExcessiveBoardContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -122,8 +122,8 @@ class BoardContextValidator(Validator[BoardContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    BoardContextValidationFailedException(
-                        message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                    BoardContextValidationException(
+                        message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -136,8 +136,8 @@ class BoardContextValidator(Validator[BoardContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    BoardContextValidationFailedException(
-                        message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+                    BoardContextValidationException(
+                        message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -146,8 +146,8 @@ class BoardContextValidator(Validator[BoardContext]):
         
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
-            BoardContextValidationFailedException(
-                message=f"{method}: {BoardContextValidationFailedException.DEFAULT_MESSAGE}",
+            BoardContextValidationException(
+                message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
                 ex=BoardContextValidationRouteException(
                     f"{method}: {BoardContextValidationRouteException.DEFAULT_MESSAGE}"
                 )

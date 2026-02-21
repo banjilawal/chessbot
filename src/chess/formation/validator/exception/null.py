@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.formation import FormationValidationFailedException
+from chess.formation import FormationValidationException
 
 __all__ = [
     # ======================# NULL_FORMATION EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL_FORMATION EXCEPTION #======================#
-class NullFormationException(FormationValidationFailedException, NullException):
+class NullFormationException(FormationValidationException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -26,7 +26,7 @@ class NullFormationException(FormationValidationFailedException, NullException):
     2.  Raised if an entity, method or operation requires an Formation but receives null instead.
 
     # PARENT:
-        *   FormationValidationFailedException
+        *   FormationValidationException
         *   NullException
 
     # PROVIDES:

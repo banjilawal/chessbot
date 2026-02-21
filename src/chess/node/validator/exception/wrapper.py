@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.node import NodeException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# NODE_VALIDATION_FAILURE EXCEPTION #======================#
-    "NodeValidationFailedException",
+    "NodeValidationException",
 ]
 
 
 # ======================# NODE_VALIDATION_FAILURE EXCEPTION #======================#
-class NodeValidationFailedException(NodeException, ValidationFailedException):
+class NodeValidationException(NodeException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class NodeValidationFailedException(NodeException, ValidationFailedException):
 
     # PARENT:
         *   NodeException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None

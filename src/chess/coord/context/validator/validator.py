@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from chess.system import NumberValidator, Validator, ValidationResult, LoggingLevelRouter
 from chess.coord import (
-    CoordContextValidationFailedException, CoordContextValidationRouteException, CoordContext,
+    CoordContextValidationException, CoordContextValidationRouteException, CoordContext,
     NullCoordContextException, ZeroCoordContextFlagsException
 )
 
@@ -62,7 +62,7 @@ class CoordContextValidator(Validator[CoordContext]):
             * TypeError
             * NullCoordContextException
             * ZeroCoordContextFlagsException
-            * CoordContextValidationFailedException
+            * CoordContextValidationException
             * CoordContextValidationRouteException
         """
         method = "CoordSearchContextValidator.validate"
@@ -71,8 +71,8 @@ class CoordContextValidator(Validator[CoordContext]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                CoordContextValidationFailedException(
-                    message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                CoordContextValidationException(
+                    message=f"{method}: {CoordContextValidationException.DEFAULT_MESSAGE}",
                     ex=NullCoordContextException(f"{method}: {NullCoordContextException.DEFAULT_MESSAGE}")
                 )
             )
@@ -80,8 +80,8 @@ class CoordContextValidator(Validator[CoordContext]):
         if not isinstance(candidate, CoordContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                CoordContextValidationFailedException(
-                    message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                CoordContextValidationException(
+                    message=f"{method}: {CoordContextValidationException.DEFAULT_MESSAGE}",
                     ex=TypeError(f"{method}: Expected a CoordContext, got {type(candidate).__name__} instead.")
                 )
             )
@@ -95,8 +95,8 @@ class CoordContextValidator(Validator[CoordContext]):
         if switch_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                CoordContextValidationFailedException(
-                    message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                CoordContextValidationException(
+                    message=f"{method}: {CoordContextValidationException.DEFAULT_MESSAGE}",
                     ex=ZeroCoordContextFlagsException(f"{method}: {ZeroCoordContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
@@ -109,8 +109,8 @@ class CoordContextValidator(Validator[CoordContext]):
             if row_validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    CoordContextValidationFailedException(
-                        message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                    CoordContextValidationException(
+                        message=f"{method}: {CoordContextValidationException.DEFAULT_MESSAGE}",
                         ex=row_validation.exception
                     )
                 )
@@ -119,8 +119,8 @@ class CoordContextValidator(Validator[CoordContext]):
             if column_validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    CoordContextValidationFailedException(
-                        message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                    CoordContextValidationException(
+                        message=f"{method}: {CoordContextValidationException.DEFAULT_MESSAGE}",
                         ex=column_validation.exception
                     )
                 )
@@ -133,8 +133,8 @@ class CoordContextValidator(Validator[CoordContext]):
             if row_validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    CoordContextValidationFailedException(
-                        message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                    CoordContextValidationException(
+                        message=f"{method}: {CoordContextValidationException.DEFAULT_MESSAGE}",
                         ex=row_validation.exception
                     )
                 )
@@ -147,8 +147,8 @@ class CoordContextValidator(Validator[CoordContext]):
             if column_validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    CoordContextValidationFailedException(
-                        message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+                    CoordContextValidationException(
+                        message=f"{method}: {CoordContextValidationException.DEFAULT_MESSAGE}",
                         ex=column_validation.exception
                     )
                 )
@@ -157,8 +157,8 @@ class CoordContextValidator(Validator[CoordContext]):
         
         # Return the exception chain if there was no validation route for the context.
         return ValidationResult.failure(
-            CoordContextValidationFailedException(
-                message=f"{method}: {CoordContextValidationFailedException.DEFAULT_MESSAGE}",
+            CoordContextValidationException(
+                message=f"{method}: {CoordContextValidationException.DEFAULT_MESSAGE}",
                 ex=CoordContextValidationRouteException(f"{method}: {CoordContextValidationRouteException.DEFAULT_MESSAGE}")
             )
         )

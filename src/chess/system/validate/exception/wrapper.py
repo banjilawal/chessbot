@@ -11,18 +11,18 @@ from chess.system import OperationFailedException
 
 __all__ = [
     # ======================# VALIDATION_FAILURE EXCEPTION #======================#
-    "ValidationFailedException",
+    "ValidationException",
 ]
 
 
 #======================# VALIDATION_FAILURE EXCEPTION #======================#
-class ValidationFailedException(OperationFailedException):
+class ValidationException(OperationFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
   
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a validation operation failed. The encapsulated exceptions create a chain
-        for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why a validation operation failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   OperationFailedException

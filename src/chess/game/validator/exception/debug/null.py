@@ -26,7 +26,7 @@ class NullGameException(GameValidationFailedException, NullException):
     2.  Raised if an entity, method or operation requires a Game but receives null instead.
 
     # PARENT:
-        *   GameValidationFailedException
+        *   GameValidationException
         *   NullGameException
 
     # PROVIDES:

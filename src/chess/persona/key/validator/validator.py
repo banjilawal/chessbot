@@ -11,10 +11,10 @@ from typing import Any, cast
 
 from chess.persona import (
     ExcessivePersonaKeysException, NullPersonaKeyException, PersonaKey, ZeroPersonaKeysException,
-    PersonaKeyValidationFailedException, PersonaKeyValidationRouteException
+    PersonaKeyValidationException, PersonaKeyValidationRouteException
 )
 from chess.system import (
-    IdentityService, LoggingLevelRouter, NumberValidator, ValidationFailedException, ValidationResult, Validator
+    IdentityService, LoggingLevelRouter, NumberValidator, ValidationException, ValidationResult, Validator
 )
 
 
@@ -68,7 +68,7 @@ class PersonaKeyValidator(Validator[PersonaKey]):
             *   NNullPersonaKeyException
             *   ZeroPersonaKeysException
             *   ExcessivePersonaKeysException
-            *   PersonaKeyValidationFailedException
+            *   PersonaKeyValidationException
         """
         method = "PersonaKeyValidator.validate"
         
@@ -76,8 +76,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaKeyValidationFailedException(
-                    message=f"{method}: {ValidationFailedException.ERROR_CODE}",
+                PersonaKeyValidationException(
+                    message=f"{method}: {ValidationException.ERROR_CODE}",
                     ex=NullPersonaKeyException(f"{method}: {NullPersonaKeyException.DEFAULT_MESSAGE}")
                 )
             )
@@ -85,8 +85,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
         if not isinstance(candidate, PersonaKey):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaKeyValidationFailedException(
-                    message=f"{method}: {ValidationFailedException.ERROR_CODE}",
+                PersonaKeyValidationException(
+                    message=f"{method}: {ValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected PersonaKey, got {type(candidate).__designation__} instead.")
                 )
             )
@@ -98,8 +98,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
         if len(super_key.to_dict()) == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaKeyValidationFailedException(
-                    message=f"{method}: {ValidationFailedException.ERROR_CODE}",
+                PersonaKeyValidationException(
+                    message=f"{method}: {ValidationException.ERROR_CODE}",
                     ex=ZeroPersonaKeysException(f"{method}: {ZeroPersonaKeysException.DEFAULT_MESSAGE}")
                 )
             )
@@ -107,8 +107,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
         if len(super_key.to_dict()) > 1:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PersonaKeyValidationFailedException(
-                    message=f"{method}: {ValidationFailedException.ERROR_CODE}",
+                PersonaKeyValidationException(
+                    message=f"{method}: {ValidationException.ERROR_CODE}",
                     ex=ExcessivePersonaKeysException(
                         f"{method}: {ExcessivePersonaKeysException.DEFAULT_MESSAGE}"
                     )
@@ -123,8 +123,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaKeyValidationFailedException(
-                        message=f"{method}: {ValidationFailedException.ERROR_CODE}",
+                    PersonaKeyValidationException(
+                        message=f"{method}: {ValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -137,8 +137,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaKeyValidationFailedException(
-                        message=f"{method}: {ValidationFailedException.ERROR_CODE}",
+                    PersonaKeyValidationException(
+                        message=f"{method}: {ValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -151,8 +151,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaKeyValidationFailedException(
-                        message=f"{method}: {ValidationFailedException.ERROR_CODE}",
+                    PersonaKeyValidationException(
+                        message=f"{method}: {ValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -165,8 +165,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
-                    PersonaKeyValidationFailedException(
-                        message=f"{method}: {ValidationFailedException.ERROR_CODE}",
+                    PersonaKeyValidationException(
+                        message=f"{method}: {ValidationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -175,8 +175,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
         
         # The default returns failure.
         return ValidationResult.failure(
-            PersonaKeyValidationFailedException(
-                message=f"{method}: {ValidationFailedException.ERROR_CODE}",
+            PersonaKeyValidationException(
+                message=f"{method}: {ValidationException.ERROR_CODE}",
                 ex=PersonaKeyValidationRouteException(
                     f"{method}: {PersonaKeyValidationRouteException.DEFAULT_MESSAGE}"
                 )

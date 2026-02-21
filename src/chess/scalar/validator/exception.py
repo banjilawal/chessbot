@@ -12,7 +12,7 @@ from chess.scalar.exception import ScalarException
 
 
 __all__ = [
-    "ScalarValidationFailedException",
+    "ScalarValidationException",
     
     #======================# SCALAR BOUNDS EXCEPTION #======================#
     "ScalarBelowBoundsException",
@@ -21,26 +21,26 @@ __all__ = [
 
 __all__ = [
     # ======================# SCALAR_VALIDATION_FAILURE EXCEPTION #======================#
-    "ScalarValidationFailedException",
+    "ScalarValidationException",
 ]
 
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 
 # ======================# SCALAR_VALIDATION_FAILURE EXCEPTION #======================#
-class ScalarValidationFailedException(ScalarException, ValidationFailedException):
+class ScalarValidationException(ScalarException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  A debug exception is created when a Scalar candidate fails a validation test. Validation debug exceptions are
-        encapsulated inside an ScalarValidationFailedException creating an exception chain. which is sent to the caller in a
+        encapsulated inside an ScalarValidationException creating an exception chain. which is sent to the caller in a
         ValidationResult.
-    2.  The ScalarValidationFailedException chain is useful for tracing a  failure to its source.
+    2.  The ScalarValidationException chain is useful for tracing a  failure to its source.
 
     # PARENT:
         *   ScalarException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None
@@ -57,13 +57,13 @@ class ScalarValidationFailedException(ScalarException, ValidationFailedException
 
 
 #======================# SCALAR BOUNDS EXCEPTION #======================#
-class ScalarBelowBoundsException(ScalarValidationFailedException):
+class ScalarBelowBoundsException(ScalarValidationException):
     """Raised if scalar is below its < -LONGEST_KNIGHT_LEG_SIZE"""
     ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
     DEFAULT_MESSAGE = "Scalar cannot be less than -LONGEST_KNIGHT_LEG_SIZE."
 
 
-class ScalarAboveBoundsException(ScalarValidationFailedException):
+class ScalarAboveBoundsException(ScalarValidationException):
     """Raised if scalar is above its > LONGEST_KNIGHT_LEG_SIZE"""
     ERROR_CODE = "SCALAR_UPPER_BOUND_ERROR"
     DEFAULT_MESSAGE = "Scalar cannot be greater than LONGEST_KNIGHT_LEG_SIZE."

@@ -26,7 +26,7 @@ class NullNodeException(NodeException, NullException):
 
     # PARENT:
         *   NullNodeException
-        *   NodeValidationFailedException
+        *   NodeValidationException
 
     # PROVIDES:
     None

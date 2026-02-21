@@ -27,7 +27,7 @@ class ZeroCaptivityContextFlagsException(CaptivityContextException, ContextFlagC
 
     # PARENT:
         *   ContextFlagCountException
-        *   CaptivityContextValidationFailedException
+        *   CaptivityContextValidationException
 
     # PROVIDES:
     None

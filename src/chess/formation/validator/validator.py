@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast, Any
 
 from chess.system import Validator, ValidationResult, LoggingLevelRouter
-from chess.formation import Formation, FormationValidationFailedException, NullFormationException
+from chess.formation import Formation, FormationValidationException, NullFormationException
 
 
 class FormationValidator(Validator[Formation]):
@@ -50,15 +50,15 @@ class FormationValidator(Validator[Formation]):
         # RAISES:
             *   TypeError
             *   NullFormationException
-            *   FormationValidationFailedException
+            *   FormationValidationException
         """
         method = "FormationValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                FormationValidationFailedException(
-                    message=f"{method}: {FormationValidationFailedException.ERROR_CODE}",
+                FormationValidationException(
+                    message=f"{method}: {FormationValidationException.ERROR_CODE}",
                     ex=NullFormationException(f"{method} {NullFormationException.DEFAULT_MESSAGE}")
                 )
             )
@@ -66,8 +66,8 @@ class FormationValidator(Validator[Formation]):
         if not isinstance(candidate, Formation):
             # Return the exception chain on failure
             return ValidationResult.failure(
-                FormationValidationFailedException(
-                    message=f"{method}: {FormationValidationFailedException.ERROR_CODE}",
+                FormationValidationException(
+                    message=f"{method}: {FormationValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method} Expected a Formation, got {type(candidate).__name__} instead.")
                 )
             )

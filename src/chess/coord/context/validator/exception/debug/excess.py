@@ -27,7 +27,7 @@ class ExcessiveCoordContextFlagsException(CoordContextException, ContextFlagCoun
 
     # PARENT:
         *   ContextFlagCountException
-        *   CoordContextValidationFailedException
+        *   CoordContextValidationException
 
     # PROVIDES:
     None

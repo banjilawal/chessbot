@@ -11,7 +11,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import (
-    BOARD_DIMENSION, NullNumberException, NumberValidationFailedException, LoggingLevelRouter,
+    BOARD_DIMENSION, NullNumberException, NumberValidationException, LoggingLevelRouter,
     NumberAboveCeilingException, NumberBelowFloorException, ValidationResult, Validator,
 )
 from chess.system.number.exception.debug.negative import NegativeNumberNotAllowedException
@@ -59,7 +59,7 @@ class NumberValidator(Validator[int]):
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
-              *     NumberValidationFailedException
+              *     NumberValidationException
               *     NumberBelowFloorException
               *     NumberAboveCeilingException
         """
@@ -69,8 +69,8 @@ class NumberValidator(Validator[int]):
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NumberValidationFailedException(
-                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
+                NumberValidationException(
+                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
                     ex=NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}"),
                 )
             )
@@ -78,8 +78,8 @@ class NumberValidator(Validator[int]):
         if not isinstance(candidate, int):
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NumberValidationFailedException(
-                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
+                NumberValidationException(
+                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected an integer, got {type(candidate).__name__} instead."),
                 )
             )
@@ -89,8 +89,8 @@ class NumberValidator(Validator[int]):
         if floor < 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NumberValidationFailedException(
-                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
+                NumberValidationException(
+                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
                     ex=NegativeNumberNotAllowedException(
                         f"{method}: {NegativeNumberNotAllowedException.DEFAULT_MESSAGE}"
                     )
@@ -100,8 +100,8 @@ class NumberValidator(Validator[int]):
         if number < floor:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NumberValidationFailedException(
-                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
+                NumberValidationException(
+                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
                     ex=NumberBelowFloorException(f"{method}: {NumberBelowFloorException.DEFAULT_MESSAGE}")
                 )
             )
@@ -109,8 +109,8 @@ class NumberValidator(Validator[int]):
         if number < floor:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                NumberValidationFailedException(
-                    message=f"{method}: {NumberValidationFailedException.ERROR_CODE}",
+                NumberValidationException(
+                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
                     ex=NumberAboveCeilingException(f"{method}: {NumberAboveCeilingException.DEFAULT_MESSAGE}")
                 )
             )

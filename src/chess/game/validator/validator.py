@@ -105,7 +105,7 @@ class GameValidator(Validator[Game]):
                     return ValidationResult.failure(validation.exception)
             return ValidationResult.success(game)
         
-        # Finally, for unhandled exception, wrap it inside an GameValidationFailedException. Then send the  exception-chain
+        # Finally, for unhandled exception, wrap it inside an GameValidationException. Then send the  exception-chain
         # in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(

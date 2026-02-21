@@ -27,7 +27,7 @@ class ZeroEdgeContextFlagsException(EdgeContextException, ContextFlagCountExcept
 
     # PARENT:
         *   ContextFlagCountException
-        *   EdgeContextValidationFailedException
+        *   EdgeContextValidationException
 
     # PROVIDES:
     None

@@ -1,14 +1,14 @@
 __all__ = [
     # ======================# SCALAR_VALIDATION_FAILURE EXCEPTION #======================#
-    "ScalarValidationFailedException",
+    "ScalarValidationException",
 ]
 
 from chess.scalar import ScalarException
-from chess.system import ValidationFailedException
+from chess.system import ValidationException
 
 
 # ======================# SCALAR_VALIDATION_FAILURE EXCEPTION #======================#
-class ScalarValidationFailedException(ScalarException, ValidationFailedException):
+class ScalarValidationException(ScalarException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
@@ -17,7 +17,7 @@ class ScalarValidationFailedException(ScalarException, ValidationFailedException
 
     # PARENT:
         *   ScalarException
-        *   ValidationFailedException
+        *   ValidationException
 
     # PROVIDES:
     None
