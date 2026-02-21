@@ -437,7 +437,7 @@ class TokenService(EntityService[Token]):
                 )
             )
         # --- Run the occupation process on the opening square. ---#
-        occupation_result = token.team.board.squares.add_token_to_square(
+        occupation_result = token.team.board.squares.add_occupant_to_square(
             token=token,
             square=square_search_result.payload[0],
         )

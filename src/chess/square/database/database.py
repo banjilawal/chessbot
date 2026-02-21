@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.square import (
-    AddingDuplicateSquareException, AddingSquareOccupantFailedException, DeleteTokenBySearchFailedException,
+    AddingDuplicateSquareException, AddingSquareOccupantException, DeleteTokenBySearchFailedException,
     InsertingSquareInDatabaseFailedException, Square, SquareContext, SquareContextService, SquareStack, SquareService,
     FullSquareStackException, SquareDatabaseException, SquareToOccupyNotFoundException
 )
@@ -127,7 +127,7 @@ class SquareDatabase(Database[Square]):
         # RAISES:
             *   SquareDatabaseException
             *   SquareToOccupyNotFoundException
-            *   AddingSquareOccupantFailedException
+            *   AddingSquareOccupantException
         """
         method = "SquareDatabase.add_occupant_to_square"
         
@@ -138,8 +138,8 @@ class SquareDatabase(Database[Square]):
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=AddingSquareOccupantFailedException(
-                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                    ex=AddingSquareOccupantException(
+                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=actionable_token_validation.exception
                     )
                 )
@@ -151,8 +151,8 @@ class SquareDatabase(Database[Square]):
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=AddingSquareOccupantFailedException(
-                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                    ex=AddingSquareOccupantException(
+                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=square_validation.exception
                     )
                 )
@@ -166,8 +166,8 @@ class SquareDatabase(Database[Square]):
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=AddingSquareOccupantFailedException(
-                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                    ex=AddingSquareOccupantException(
+                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=square_search_result.exception
                     )
                 )
@@ -178,8 +178,8 @@ class SquareDatabase(Database[Square]):
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=AddingSquareOccupantFailedException(
-                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                    ex=AddingSquareOccupantException(
+                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=SquareToOccupyNotFoundException(
                             f"{method}: {SquareToOccupyNotFoundException.DEFAULT_MESSAGE}"
                         )
@@ -193,8 +193,8 @@ class SquareDatabase(Database[Square]):
             return InsertionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=AddingSquareOccupantFailedException(
-                        message=f"{method}: {AddingSquareOccupantFailedException.ERROR_CODE}",
+                    ex=AddingSquareOccupantException(
+                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=insertion_result.exception
                     )
                 )
