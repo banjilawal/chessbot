@@ -281,7 +281,7 @@ class SquareService(EntityService[Square]):
         # --- After integrity and consistency checks are passed, process the occupation. ---#
         
         # Make a deep copy of the square before its occupied then
-        original_square  = deepcopy(square)
+        pre_occupation_square  = deepcopy(square)
         # Update state on the square side.
         square.occupant = token
         square.state = SquareState.OCCUPIED
@@ -291,7 +291,7 @@ class SquareService(EntityService[Square]):
             token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
             
         # --- Send the update success result to the caller. ---#
-        return UpdateResult.update_success(original=original_square, updated=square)
+        return UpdateResult.update_success(original=pre_occupation_square, updated=square)
     
     @LoggingLevelRouter.monitor
     def _verify_token_opens_from_square(self, square: Square, token: Token) -> ValidationResult[Square]:
@@ -301,6 +301,8 @@ class SquareService(EntityService[Square]):
         if square.name.upper() != token.opening_square_name.upper():
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenEnteringWrongOpeningSquareException(f"{method}: {TokenEnteringWrongOpeningSquareException.}")
+                TokenEnteringWrongOpeningSquareException(
+                    f"{method}: {TokenEnteringWrongOpeningSquareException.DEFAULT_MESSAGE}"
+                )
             )
         return ValidationResult.success(payload=token)

@@ -6,19 +6,20 @@ Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
-
+from copy import deepcopy
 from typing import List, Optional, cast
 
 from chess.system import (
     ComputationResult, NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult,
-    LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, id_emitter
+    LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, UpdateResult, id_emitter
 )
 from chess.square import (
-    SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, SquareIdAlreadyInUseException,
+    SquareContext, SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, SquareIdAlreadyInUseException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
     PoppingSquareException, PushingSquareException, FullSquareStackException
 )
-from chess.token import Token
+from chess.team import Team, TeamService
+from chess.token import Token, TokenContext
 
 
 class SquareStack(StackService[Square]):
@@ -47,6 +48,7 @@ class SquareStack(StackService[Square]):
     
     _capacity: int
     _stack: List[Square]
+    _service: SquareService
     
     def __init__(
             self,
@@ -81,6 +83,7 @@ class SquareStack(StackService[Square]):
         )
         self._stack = items
         self._capacity = capacity
+        self._service = service
     
     @property
     def size(self) -> int:
@@ -108,7 +111,7 @@ class SquareStack(StackService[Square]):
     
     @property
     def integrity_service(self) -> SquareService:
-        return cast(SquareService, self.entity_service)
+        return self._service
     
     @property
     def context_service(self) -> SquareContextService:
@@ -263,29 +266,13 @@ class SquareStack(StackService[Square]):
                 )
             )
         # --- Search the list for an item with target id. ---#
-        for item in self._stack:
-            if item.id == id:
-                # Handle the case that the match is the wrong type.
-                if not isinstance(item, Square):
-                    # Return the exception chain on failure.
-                    return DeletionResult.failure(
-                        SquareStackException(
-                            message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                            ex=PoppingSquareException(
-                                message=f"{method}: {PoppingSquareException.ERROR_CODE}",
-                                ex=TypeError(
-                                    f"{method}: Could not cast deletion target to Square, got {type(item).__name__} "
-                                    f"instead of a Square."
-                                )
-                            )
-                        )
-                    )
-                # --- Cast the item before removal and return the deleted item in the DeletionResult. ---#
-                square = cast(Square, item)
+        target = None
+        for square in self._stack:
+            if square.id == id:
+                target = square
                 self._stack.remove(square)
-                return DeletionResult.success(payload=square)
-            
-        # If none of the items had that id return an empty DeletionResult.
+        if target is not None:
+            return DeletionResult.success(payload=target)
         return DeletionResult.nothing_to_delete()
     
     def number_of_occupied_squares(self) -> ComputationResult[int]:
@@ -359,130 +346,76 @@ class SquareStack(StackService[Square]):
         return SearchResult.empty()
     
     @LoggingLevelRouter.monitor
-    def accept_from_roster(
+    def accept_roster_members_from_team(
             self,
             team: Team,
-            square: Square,
             team_service: TeamService = TeamService()
-    ) -> InsertionResult[Square]:
-        method = "SquareService.accept_from_roster"
+    ) -> UpdateResult[Team]:
+        method = "SquareService.accept_roster_members_from_team"
         
-        # Handle the case that the item is not certified safe.
-        square_validation = self.validator.validate(candidate=square)
-        if square_validation.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=AddingFormationToSquareFailedException(
-                        message=f"{method}: {AddingFormationToSquareFailedException.ERROR_CODE}",
-                        ex=square_validation.exception
-                    )
-                )
-            )
         # Handle the case that the occupant is not certified safe.
         team_validation = team_service.validator.validate(candidate=team)
         if team_validation.is_failure:
             # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=AddingFormationToSquareFailedException(
-                        message=f"{method}: {AddingFormationToSquareFailedException.ERROR_CODE}",
+            return UpdateResult.update_failure(
+                original=team,
+                exception=SquareStackException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
+                    ex=DeployingTeamRosterExcetion(
+                        message=f"{method}: {DeployingTeamRosterExcetion.ERROR_CODE}",
                         ex=team_validation.exception
                     )
                 )
             )
-        # Handle the case that the team has been assigned to a different board.
-        if square.board != team.board:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=AddingFormationToSquareFailedException(
-                        message=f"{method}: {AddingFormationToSquareFailedException.ERROR_CODE}",
-                        ex=TeamAndSquareNotOnSameBoardException(
-                            f"{method}: {TeamAndSquareNotOnSameBoardException.DEFAULT_MESSAGE}"
+        pre_deployment_team = deepcopy(team)
+        
+        for square in self._stack:
+            # Find the roster member's opening square.
+            token_search_result = team.roster.search(context=TokenContext(opening_square=square))
+            
+            # Handle the case that the search is not completed.
+            if token_search_result.is_failure:
+                # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
+                return UpdateResult.update_failure(
+                    original=pre_deployment_team,
+                    exception=SquareStackException(
+                        message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
+                        ex=DeployingTeamRosterExcetion(
+                            message=f"{method}: {DeployingTEamRosterExcetion.ERROR_CODE}",
+                            ex=token_search_result.exception
                         )
                     )
                 )
-            )
-        # Handle the case that the item is not empty
-        if square.is_occupied:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=AddingFormationToSquareFailedException(
-                        message=f"{method}: {AddingFormationToSquareFailedException.ERROR_CODE}",
-                        ex=OccupiedSquareCannotRecieveFormationException(
-                            f"{method}: {OccupiedSquareCannotRecieveFormationException.DEFAULT_MESSAGE}"
+            # Handle the case that the no token which opens from the square is found.
+            if token_search_result.is_empty:
+                # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
+                return UpdateResult.update_failure(
+                    original=pre_deployment_team,
+                    exception=SquareStackException(
+                        message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
+                        ex=DeployingTeamRosterExcetion(
+                            message=f"{method}: {DeployingTEamRosterExcetion.ERROR_CODE}",
+                            ex=TokenDoesNotExistException(
+                                f"{method}: {TokenDoesNotExistException.DEFAULT_MESSAGE}"
+                            )
                         )
                     )
                 )
-            )
-        search_result = team_service.roster.search_for_token(context=TokenContext(opening_square=square))
-        
-        # Handle the case that the search is not completed.
-        if search_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=AddingFormationToSquareFailedException(
-                        message=f"{method}: {AddingFormationToSquareFailedException.ERROR_CODE}",
-                        ex=search_result.exception
-                    )
-                )
-            )
-        # Handle the case that no occupant opens with the item
-        if search_result.is_empty:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=AddingFormationToSquareFailedException(
-                        message=f"{method}: {AddingFormationToSquareFailedException.ERROR_CODE}",
-                        ex=TokenDoesNotExistForRemovalException(
-                            f"{method}: {TokenDoesNotExistForRemovalException.DEFAULT_MESSAGE}"
+            # --- Handoff the square's occupation to the integrity service. ---#
+            square_update_result = self._service.add_occupant(square=square, token=token_search_result.payload[0])
+            
+            # Handle the case that the occupation fails.
+            if square_update_result.is_failure:
+                # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
+                return UpdateResult.update_failure(
+                    original=pre_deployment_team,
+                    exception=SquareStackException(
+                        message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
+                        ex=DeployingTeamRosterExcetion(
+                            message=f"{method}: {DeployingTEamRosterExcetion.ERROR_CODE}",
+                            ex=square_update_result.exception
                         )
                     )
                 )
-            )
-        token = cast(Token, search_result.payload[0])
-        
-        # Handle the case that the occupant has been already placed on the board.
-        if token.board_state != TokenBoardState.NEVER_BEEN_PLACED:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=AddingFormationToSquareFailedException(
-                        message=f"{method}: {AddingFormationToSquareFailedException.ERROR_CODE}",
-                        ex=CannotFormTokenAlreadyOnSquareException(
-                            f"{method}: {CannotFormTokenAlreadyOnSquareException.DEFAULT_MESSAGE}"
-                        )
-                    )
-                )
-            )
-        deletion_result = team_service.roster.remove_token(token=token)
-        
-        # Handle the case that the deletion is not completed.
-        if deletion_result.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=AddingFormationToSquareFailedException(
-                        message=f"{method}: {AddingFormationToSquareFailedException.ERROR_CODE}",
-                        ex=deletion_result.exception
-                    )
-                )
-            )
-        square.occupant = deletion_result.payload
-        token.positions.push(square.coord)
-        
-        square.state = SquareState.OCCUPIED
-        token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
-        return InsertionResult.success(payload=square)
-        
+            # --- When the loop finishes send the success result to the caller. ---#
+            return UpdateResult.update_success(original=pre_deployment_team, updated=team)
