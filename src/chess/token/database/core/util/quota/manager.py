@@ -49,7 +49,12 @@ class RankQuotaManager:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def rank_size(cls, rank: Rank, token_stack: TokenStack, rank_service: RankService = RankService()) -> ComputationResult[int]:
+    def compute_rank_size_in_stack(
+            cls,
+            rank: Rank,
+            token_stack: TokenStack,
+            rank_service: RankService = RankService(),
+    ) -> ComputationResult[int]:
         """
         # ACTION:
             1.  Build the search-by-rank TokenContext. If the build fails send the exception in the InsertionResult.
@@ -66,10 +71,10 @@ class RankQuotaManager:
             *   RankQuotaManagerException
             *   RankQuotaComputationFailedException
         """
-        method = "TokenStack.number_of_rank_members"
+        method = "RankQuotaManager.compute_rank_size_in_stack"
         
         # Handle the case that the rank is not certified safe.
-        rank_validation = self._rank_service.validator.validate(rank)
+        rank_validation = rank_service.validator.validate(rank)
         if rank_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
@@ -81,9 +86,8 @@ class RankQuotaManager:
                     )
                 )
             )
-        
-        # --- Cast the context_build_result payload and run the search. ---#
-        search_result = token_stack.context_service.finder.find(context=TokenContext(rank=rank))
+        # --- Cast the context_build_result payload and run a search-by-rank on token-stack. ---#
+        search_result = token_stack.query(context=TokenContext(rank=rank))
         
         # Handle the case that the search was not completed.
         if search_result.is_failure:
@@ -103,9 +107,14 @@ class RankQuotaManager:
         # Handle the case that some hits were found
         return ComputationResult.success(payload=len(cast(List[Token], search_result.payload)))
   
-
+    @classmethod
     @LoggingLevelRouter.monitor
-    def has_rank_opening(self, rank: Rank, token_stack: TokenStack,) -> ComputationResult[bool]:
+    def stack_has_opening_for_rank(
+            cls,
+            rank: Rank,
+            token_stack: TokenStack,
+            rank_service: RankService = RankService(),
+    ) -> ComputationResult[bool]:
         """
         # ACTION:
             1.  If self.count_rank_openings fails send the exception chain in the ComputationResult. Else,
@@ -120,10 +129,14 @@ class RankQuotaManager:
             *   RankQuotaManagerException
             *   RankQuotaComputationFailedException
         """
-        method = "TokenStack.has_slot_for_rank"
+        method = "RankQuotaManager.stack_has_opening_for_rank"
         
         # Handle the case that the rank is not certified safe.
-        openings_count_result = self.count_rank_openings(token_stack=token_stack, rank=rank)
+        openings_count_result = cls.count_openings_for_rank(
+            rank=rank,
+            token_stack=token_stack,
+            rank_service=rank_service,
+        )
         if openings_count_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
@@ -140,8 +153,14 @@ class RankQuotaManager:
         has_opening = cast(int, openings_count_result.payload) > 0
         return ComputationResult.success(payload=has_opening)
     
+    @classmethod
     @LoggingLevelRouter.monitor
-    def number_of_rank_openings(self, rank: Rank, token_stack: TokenStack,) -> ComputationResult[int]:
+    def count_openings_for_rank(
+            cls,
+            rank: Rank,
+            token_stack: TokenStack,
+            rank_service: RankService = RankService(),
+    ) -> ComputationResult[int]:
         """
         # ACTION:
             1.  If the rank is not validated, send an exception chain in the ComputationResult.
@@ -158,10 +177,10 @@ class RankQuotaManager:
             *   RankQuotaManagerException
             *   RankQuotaComputationFailedException
         """
-        method = "TokenStack.count_rank_openings"
+        method = "RankQuotaManager.count_openings_for_rank"
         
         # Handle the case that the rank is not certified safe.
-        rank_validation = self._rank_service.validator.validate(rank)
+        rank_validation = rank_service.validator.validate(rank)
         if rank_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
@@ -174,7 +193,11 @@ class RankQuotaManager:
                 )
             )
         # --- Find if there are open slots for the rank. ---#
-        rank_size_computation = self.rank_size(token_stack=token_stack, rank=rank)
+        rank_size_computation = cls.stack_has_opening_for_rank(
+            rank=rank,
+            token_stack=token_stack,
+            rank_service=rank_service,
+        )
         
         # Handle the case that the rank_count_result_computation was not completed.
         if rank_size_computation.is_failure:
