@@ -133,11 +133,37 @@ class SquareService(EntityService[Square]):
     @LoggingLevelRouter.monitor
     def add_occupant(
             self,
-            square: Square,
             token: Token,
-            token_service: TokenService = TokenService()
+            square: Square,
+            token_service: TokenService = TokenService(),
     ) -> UpdateResult[Square]:
-        method = "SquareService.add_occupant_to_square"
+        """
+        # ACTION:
+            1.  If the square is either unsafe or occupied send the exception chain and the unmodified square back
+                in the UpdatedResult.
+            2.  If the token is either
+                    *   Disabled.
+                    *   Not certified safe.
+                    *   Belongs to a different board.
+                    *   unformed but want to start from the wrong square.
+                Send the exception chain and the unmodified square back in the UpdatedResult.
+            3.  Make a deep copy of the square before its occupied.
+            4.  Put the token in the square and update the square's occupation state.
+            5.  Push the square's coord onto the token's position and update the token's board state if necessary.
+            6.  Send the deep copy and the back to the caller in the UpdatedResult.
+        # PARAMETERS:
+            *   token (Token)
+            *   square (Square)
+            *   token_service (TokenService)
+        # RETURN:
+            *   UpdateResult[Square]
+        # RAISES:
+            *   SquareServiceException
+            *   AddingSquareOccupantException
+            *   CannotEnterOccupiedSquareException
+            *   TokenEnteringSquareOnWrongBoardException
+        """
+        method = "SquareService.add_occupant"
         
         # Handle the case that the item is not certified safe.
         square_validation = self.validator.validate(candidate=square)
@@ -153,7 +179,7 @@ class SquareService(EntityService[Square]):
                     )
                 )
             )
-        # Handle the case that the item is occupied.
+        # Handle the case that the square is already occupied.
         if square.is_occupied:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
