@@ -14,4 +14,4 @@ None
 
 # Modules
 from .empty import NothingToRemoveFromEmptySquareException
-from .wrapper import RemovingSquareOccupantFailedException
+from .wrapper import RemovingSquareOccupantException

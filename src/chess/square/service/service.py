@@ -21,7 +21,7 @@ from chess.system import (
 )
 from chess.square import (
     AddingFormationToSquareFailedException, AddingSquareOccupantException, DisabledTokenOccupyingSquareException,
-    NothingToRemoveFromEmptySquareException, RemovingSquareOccupantFailedException, Square, SquareBuilder,
+    NothingToRemoveFromEmptySquareException, RemovingSquareOccupantException, Square, SquareBuilder,
     SquareServiceException, SquareTokenRelationAnalyzer, SquareValidator, TokenEnteringSquareOnWrongBoardException,
     TokenEnteringWrongOpeningSquareException
 )
@@ -94,40 +94,63 @@ class SquareService(EntityService[Square]):
     
     @LoggingLevelRouter.monitor
     def remove_occupant(self, square: Square) -> DeletionResult[Token]:
-        method = "SquareService.remove_occupant_from_square"
+        """
+        # ACTION:
+            1.  We need the token removed from the square so removing an occupant sends a DeletionResult unlike
+                adding an occupant where the caller needs the original square to verify correctness.
+            2.  If the square is either unsafe or empty send an exception chain in the DeletionResult.
+            3.  Store the store's occupant in a local variable.
+            4.  Set the square's occupant to None and its state to empty.
+            5.  Send the token back in the DeletionResult.
+        # PARAMETERS:
+            *   square (Square)
+        # RETURN:
+            *   DeletionResult[Token]:
+                    - On failure: Exception.
+                    - On success: Token.
+        # RAISES:
+            *   SquareServiceException
+            *   RemovingSquareOccupantException
+            *   NothingToRemoveFromEmptySquareException
+        """
+        method = "SquareService.remove_occupant"
         
-        # Handle the case that the item is not certified safe.
+        # Handle the case that the square is not certified as safe.
         validation = self.validator.validate(candidate=square)
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareServiceException(
                     message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=RemovingSquareOccupantFailedException(
-                        message=f"{method}: {RemovingSquareOccupantFailedException.ERROR_CODE}",
+                    ex=RemovingSquareOccupantException(
+                        message=f"{method}: {RemovingSquareOccupantException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
             )
-        # Handle the case that the item is empty.
+        # Handle the case that the square is empty.
         if square.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareServiceException(
                     message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
-                    ex=RemovingSquareOccupantFailedException(
-                        message=f"{method}: {RemovingSquareOccupantFailedException.ERROR_CODE}",
+                    ex=RemovingSquareOccupantException(
+                        message=f"{method}: {RemovingSquareOccupantException.ERROR_CODE}",
                         ex=NothingToRemoveFromEmptySquareException(
                             f"{method}: {NothingToRemoveFromEmptySquareException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
             )
-        # Process removal if the item is occupied.
-
+        # --- Process the removal logic that maintains integrity and consistency. ---#
+        
+        # Store the square's occupant.
         token = square.occupant
+        # Remove the occupant then update the square's state.
         square.occupant = None
         square.state = SquareState.EMPTY
+        
+        # --- Send the deletion success result to the caller. ---#
         DeletionResult.success(payload=token)
     
     @LoggingLevelRouter.monitor

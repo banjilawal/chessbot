@@ -12,12 +12,12 @@ from chess.system import DeletionFailedException
 
 __all__ = [
     # ======================# REMOVING_SQUARE_OCCUPANT_FAILURE #======================#
-    "RemovingSquareOccupantFailedException",
+    "RemovingSquareOccupantException",
 ]
 
 
 # ======================# REMOVING_SQUARE_OCCUPANT_FAILURE #======================#
-class RemovingSquareOccupantFailedException(SquareException, DeletionFailedException):
+class RemovingSquareOccupantException(SquareException, DeletionFailedException):
     """
     # ROLE: Exception Wrapper
 
