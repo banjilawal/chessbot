@@ -295,6 +295,18 @@ class SquareService(EntityService[Square]):
     
     @LoggingLevelRouter.monitor
     def _verify_token_opens_from_square(self, square: Square, token: Token) -> ValidationResult[Square]:
+        """
+        # ACTION:
+            1.  If the token and square belong to different boards send an exception in the ValidationResult.
+                Else, return the token in the success result.
+        # PARAMETERS:
+            *   token (Token)
+            *   square (Square)
+        # RETURN:
+            *   UpdateResult[Square]
+        # RAISES:
+            *   TokenEnteringWrongOpeningSquareException
+        """
         method = "SquareService._verify_token_forms_on_square"
         
         # Handle the case that the occupant belongs to a different square.

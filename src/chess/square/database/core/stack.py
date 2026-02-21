@@ -7,6 +7,7 @@ Created: 2025-11-19
 version: 1.0.0
 """
 from copy import deepcopy
+from http.server import DEFAULT_ERROR_MESSAGE
 from typing import List, Optional, cast
 
 from chess.system import (
@@ -14,12 +15,13 @@ from chess.system import (
     LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, UpdateResult, id_emitter
 )
 from chess.square import (
-    SquareContext, SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, SquareIdAlreadyInUseException,
+    DeployingTeamRosterException, SquareContext, SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException,
+    SquareIdAlreadyInUseException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
     PoppingSquareException, PushingSquareException, FullSquareStackException
 )
 from chess.team import Team, TeamService
-from chess.token import Token, TokenContext
+from chess.token import NullTokenException, Token, TokenContext
 
 
 class SquareStack(StackService[Square]):
@@ -351,6 +353,33 @@ class SquareStack(StackService[Square]):
             team: Team,
             team_service: TeamService = TeamService()
     ) -> UpdateResult[Team]:
+        """
+        # ACTION:
+            1.  If the team fails its validation checks send the exception chain and team back in the UpdatedResult.
+            2.  Iff the team has already been deployed or is at partial strength send the exception chain and team
+                in the UpdatedResult.
+            3.  Make a deep copy of the pre-deployment team.
+                    *   The deep copy can be sent back instead of doing an expensive rollback.
+                    *   If the update succeeds the client can use the pre-deployment copy for verifying correctness.
+            4.  Iterate through the squares in the stack and search the roster for tokens which open on the squares.
+                If any search fails send the exception chain and the pre-deployment team back.
+            5.  For each successful search, handoff the token to the integrity service. If any occupation fails send
+                the exception chain and the pre-deployment team back.
+            6.  After the loop completes, if some tokens were not deployed, send the exception chain and
+                the pre-deployment team back.
+            7.  The update was successful send the pre-deployment team and updated teams back to the caller.
+        # PARAMETERS:
+            *   team (Team)
+            *   team_service (TeamService)
+        # RETURN:
+            *   UpdateResult[Team]
+        # RAISES:
+            *   SquareStackException
+            *   DeployingTeamRosterException
+            *   TeamAlreadyDeployedException
+            *   PartialTeamDeploymentException
+            *   CannotDeployUnderStrengthTeamException
+        """
         method = "SquareService.accept_roster_members_from_team"
         
         # Handle the case that the occupant is not certified safe.
@@ -361,14 +390,43 @@ class SquareStack(StackService[Square]):
                 original=team,
                 exception=SquareStackException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                    ex=DeployingTeamRosterExcetion(
-                        message=f"{method}: {DeployingTeamRosterExcetion.ERROR_CODE}",
+                    ex=DeployingTeamRosterException(
+                        message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                         ex=team_validation.exception
+                    )
+                )
+            )
+        # Handle the case that the team has already been deployed
+        if team.roster.is_empty:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=team,
+                exception=SquareStackException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
+                    ex=DeployingTeamRosterException(
+                        message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
+                        ex=TeamAlreadyDeployedException(f"{method}: {TeamAlreadyDeployedException.DEFAULT_MESSAGE}")
+                    )
+                )
+            )
+        # Handle the case that the team is not at full strength.
+        if team.roster.is_empty:
+            # Return the exception chain on failure.
+            return UpdateResult.update_failure(
+                original=team,
+                exception=SquareStackException(
+                    message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
+                    ex=DeployingTeamRosterException(
+                        message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
+                        ex=CannotDeployUnderStrengthTeamException(
+                            f"{method}: {CannotDeployUnderStrengthTeamException.DEFAULT_MESSAGE}"
+                        )
                     )
                 )
             )
         pre_deployment_team = deepcopy(team)
         
+        total_occupations = 0
         for square in self._stack:
             # Find the roster member's opening square.
             token_search_result = team.roster.search(context=TokenContext(opening_square=square))
@@ -380,24 +438,9 @@ class SquareStack(StackService[Square]):
                     original=pre_deployment_team,
                     exception=SquareStackException(
                         message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                        ex=DeployingTeamRosterExcetion(
-                            message=f"{method}: {DeployingTEamRosterExcetion.ERROR_CODE}",
+                        ex=DeployingTeamRosterException(
+                            message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                             ex=token_search_result.exception
-                        )
-                    )
-                )
-            # Handle the case that the no token which opens from the square is found.
-            if token_search_result.is_empty:
-                # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
-                return UpdateResult.update_failure(
-                    original=pre_deployment_team,
-                    exception=SquareStackException(
-                        message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                        ex=DeployingTeamRosterExcetion(
-                            message=f"{method}: {DeployingTEamRosterExcetion.ERROR_CODE}",
-                            ex=TokenDoesNotExistException(
-                                f"{method}: {TokenDoesNotExistException.DEFAULT_MESSAGE}"
-                            )
                         )
                     )
                 )
@@ -411,9 +454,27 @@ class SquareStack(StackService[Square]):
                     original=pre_deployment_team,
                     exception=SquareStackException(
                         message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                        ex=DeployingTeamRosterExcetion(
-                            message=f"{method}: {DeployingTEamRosterExcetion.ERROR_CODE}",
+                        ex=DeployingTeamRosterException(
+                            message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                             ex=square_update_result.exception
+                        )
+                    )
+                )
+            # Increment the number of occupations.
+            total_occupations += 1
+            
+            # Handle the case that at least one token was not deployed.
+            if total_occupations != team.roster.size:
+                # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
+                return UpdateResult.update_failure(
+                    original=pre_deployment_team,
+                    exception=SquareStackException(
+                        message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
+                        ex=DeployingTeamRosterException(
+                            message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
+                            ex=PartialTeamDeploymentException(
+                                f"{method}: {PartialTeamDeploymentException,DEFAULT_ERROR_MESSAGE}"
+                            )
                         )
                     )
                 )
