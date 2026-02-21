@@ -9,10 +9,14 @@ version: 1.0.0
 
 from typing import List, cast
 
-from chess.system import DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, StackService, id_emitter
+from chess.system import (
+    DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_COLUMNS, NUMBER_OF_ROWS,
+    SearchResult, StackService,
+    id_emitter
+)
 from chess.team import (
     AddingDuplicateTeamException, PoppingEmptyTeamStackException, PoppingTeamStackFailedException,
-    PushingTeamFailedException, Team, TeamContextService, TeamService, TeamStackException
+    PushingTeamFailedException, Team, TeamContext, TeamContextService, TeamService, TeamStackException
 )
 
 
@@ -40,12 +44,15 @@ class TeamStack(StackService[Team]):
     """
     SERVICE_NAME = "TeamStack"
     
+    _stack: List[Team]
+    _service: TeamService
+    _context_service: TeamContextService
+    
     def __init__(
             self,
-            name: str =SERVICE_NAME,
-            id: int = id_emitter.service_id,
-            items: List[Team] = List[Team],
+            name: str = SERVICE_NAME,
             service: TeamService = TeamService(),
+            id: int = IdFactory.next_id(class_name="TeamStack"),
             context_service: TeamContextService = TeamContextService(),
     ):
         """
@@ -54,7 +61,6 @@ class TeamStack(StackService[Team]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   bag (List[Team])
             *   service (TeamService)
             *   context_service (TeamContextService)
         # RETURNS:
@@ -62,26 +68,23 @@ class TeamStack(StackService[Team]):
         # RAISES:
             None
         """
-        method = "TeamStack.__init__"
-        super().__init__(
-            id=id,
-            name=name,
-            items=items,
-            entity_service=service,
-            context_service=context_service
-        )
+        method = "TokenStack.__init__"
+        super().__init__(id=id, name=name, )
+        self._stack = []
+        self._service = service
+        self._context_service = context_service
     
     @property
     def integrity_service(self) -> TeamService:
-        return cast(TeamService, self.entity_service)
+        return self._service
     
     @property
     def context_service(self) -> TeamContextService:
-        return cast(TeamContextService, self.context_service)
+        return self.context_service
     
     @property
-    def items(self) -> List[Team]:
-        return self.items
+    def current_item(self) -> Team:
+        return self._stack[-1] if self.is_empty else None
     
     @LoggingLevelRouter.monitor
     def push(self, item: Team) -> InsertionResult[bool]:
@@ -245,3 +248,78 @@ class TeamStack(StackService[Team]):
         
         # If none of the items had that id return an empty DeletionResult.
         return DeletionResult.nothing_to_delete()
+    
+    @LoggingLevelRouter.monitor
+    def query(self, context: TeamContext) -> SearchResult[List[Team]]:
+        """
+        # ACTION:
+            1.  Pass the context param to context_service manages all error handling and operations in
+                search lifecycle.
+            2.  Any failures context_service will be encapsulated inside a TeamStackException 
+                which is sent inside a SearchResult.
+            3.  If the search completes successfully the result can be sent directly because it will contain the
+                payload.
+        # PARAMETERS:
+            *   context (TeamContext)
+        # RETURN:
+            *   SearchResult[List[Team] containing either:
+                    - On failure: An exception.
+                    - On success: List[Team] in payload.
+                    - On Empty: No payload nor exception.
+        # RAISES:
+            *   TeamStackException
+        """
+        method = "TeamStack.query"
+        
+        # --- Handoff the search responsibility to _stack_service. ---#
+        query_result = self._context_service.finder.find(dataset=self._stack, context=context)
+        
+        # Handle the case that the search is not completed.
+        if query_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                TeamStackException(
+                    message=f"ServiceID:{self.id} {method}: {TeamStackException.ERROR_CODE}",
+                    ex=query_result.exception
+                )
+            )
+        # --- For either a successful or empty search result directly forward to the caller. ---#
+        return query_result
+    
+    @LoggingLevelRouter.monitor
+    def query(self, context: TeamContext) -> SearchResult[List[Team]]:
+        """
+        # ACTION:
+            1.  Pass the context param to context_service manages all error handling and operations in
+                search lifecycle.
+            2.  Any failures context_service will be encapsulated inside a TeamStackException 
+                which is sent inside a SearchResult.
+            3.  If the search completes successfully the result can be sent directly because it will contain the
+                payload.
+        # PARAMETERS:
+            *   context (TeamContext)
+        # RETURN:
+            *   SearchResult[List[Team] containing either:
+                    - On failure: An exception.
+                    - On success: List[Team] in payload.
+                    - On Empty: No payload nor exception.
+        # RAISES:
+            *   TeamStackException
+        """
+        method = "TeamStack.query"
+        
+        # --- Handoff the search responsibility to _stack_service. ---#
+        query_result = self._context_service.finder.find(dataset=self._stack, context=context)
+        
+        # Handle the case that the search is not completed.
+        if query_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                TeamStackException(
+                    message=f"ServiceID:{self.id} {method}: {TeamStackException.ERROR_CODE}",
+                    ex=query_result.exception
+                )
+            )
+        # --- For either a successful or empty search result directly forward to the caller. ---#
+        return query_result
+    

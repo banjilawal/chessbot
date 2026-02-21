@@ -66,9 +66,8 @@ class SquareStack(StackService[Square]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   items (List[Team])
-            *   service (TeamService)
-            *   context_service (TeamContextService)
+            *   service (SquareService)
+            *   context_service (SquareContextService)
         # RETURNS:
             None
         # RAISES:
@@ -484,8 +483,7 @@ class SquareStack(StackService[Square]):
                 )
             # --- When the loop finishes send the success result to the caller. ---#
             return UpdateResult.update_success(original=pre_deployment_team, updated=team)
-    
-    
+      
     @LoggingLevelRouter.monitor
     def query(self, context: SquareContext) -> SearchResult[List[Square]]:
         """

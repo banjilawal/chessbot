@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .pop import *
 from .push import *
+from .query import *
 
 # Modules
 from .catchall import TokenStackException
