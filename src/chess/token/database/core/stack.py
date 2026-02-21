@@ -15,7 +15,7 @@ from chess.system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
 from chess.token import (
-    NoRankOpeningsException, PoppingEmptyTokenStackException, RankQuotaManager, Token, TokenContext,
+    NoRankOpeningsException, PoppingEmptyTokenStackException, RankQuotaAnalyzer, Token, TokenContext,
     TokenDesignationAlreadyInUseException, TokenIdAlreadyInUseException, TokenOpeningSquareAlreadyInUseException,
     TokenService, TokenStackException, TokenContextService, PoppingTokenException, PushingTokenException,
 )
@@ -52,7 +52,7 @@ class TokenStack(StackService[Token]):
     _service: TokenService
     _state: TokenStackState
     _formation_service: FormationService
-    _rank_quota_manager: RankQuotaManager
+    _rank_quota_manager: RankQuotaAnalyzer
     _context_service: TokenContextService
     
     def __init__(
@@ -62,7 +62,7 @@ class TokenStack(StackService[Token]):
             service: TokenService = TokenService(),
             id: int = IdFactory.next_id(class_name="Token"),
             formation_service: FormationService = FormationService(),
-            rank_quota_manager: RankQuotaManager = RankQuotaManager(),
+            rank_quota_manager: RankQuotaAnalyzer = RankQuotaAnalyzer(),
             context_service: TokenContextService = TokenContextService(),
     ):
         """
@@ -135,7 +135,7 @@ class TokenStack(StackService[Token]):
         return self._formation_service
     
     @property
-    def rank_quota_manager(self) -> RankQuotaManager:
+    def rank_quota_manager(self) -> RankQuotaAnalyzer:
         return self._rank_quota_manager
     
     @property

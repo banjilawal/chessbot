@@ -3,7 +3,7 @@ __all__ = [
     "RankQuotaComputationFailedException",
 ]
 
-from chess.token import RankQuotaManager, RankQuotaManagerException, TokenException
+from chess.token import RankQuotaAnalyzer, RankQuotaManagerException, TokenException
 from chess.system import CalculationFailedException, ComputationFailedException
 
 

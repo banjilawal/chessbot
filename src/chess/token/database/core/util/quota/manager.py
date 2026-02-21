@@ -16,9 +16,9 @@ from chess.token import (
 )
 
 
-class RankQuotaManager:
+class RankQuotaAnalyzer:
     """
-    # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Quota management, Utility class.
 
     # RESPONSIBILITIES:
     1.  Public facing API.
@@ -27,7 +27,7 @@ class RankQuotaManager:
     4.  Stack data structure for Token objects with no guarantee of uniqueness.
 
     # PARENT:
-        *   StackService[Token]
+    None
 
     # PROVIDES:
     None
@@ -36,16 +36,8 @@ class RankQuotaManager:
     None
 
     # INHERITED ATTRIBUTES:
-        *   See StackService class for inherited attributes.
+    None
     """
-    _rank_service: RankService
-    
-    def __init__(self, rank_service: RankService = RankService()):
-        self._rank_service = rank_service
-        
-    @property
-    def rank_service(self) -> RankService:
-        return self._rank_service
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -71,7 +63,7 @@ class RankQuotaManager:
             *   RankQuotaManagerException
             *   RankQuotaComputationFailedException
         """
-        method = "RankQuotaManager.compute_rank_size_in_stack"
+        method = "RankQuotaAnalyzer.compute_rank_size_in_stack"
         
         # Handle the case that the rank is not certified safe.
         rank_validation = rank_service.validator.validate(rank)
@@ -129,7 +121,7 @@ class RankQuotaManager:
             *   RankQuotaManagerException
             *   RankQuotaComputationFailedException
         """
-        method = "RankQuotaManager.stack_has_opening_for_rank"
+        method = "RankQuotaAnalyzer.stack_has_opening_for_rank"
         
         # Handle the case that the rank is not certified safe.
         openings_count_result = cls.count_openings_for_rank(
@@ -177,7 +169,7 @@ class RankQuotaManager:
             *   RankQuotaManagerException
             *   RankQuotaComputationFailedException
         """
-        method = "RankQuotaManager.count_openings_for_rank"
+        method = "RankQuotaAnalyzer.count_openings_for_rank"
         
         # Handle the case that the rank is not certified safe.
         rank_validation = rank_service.validator.validate(rank)

@@ -11,7 +11,7 @@ from typing import List
 
 from chess.rank import Rank
 from chess.token import (
-    RankQuotaManager, Token, TokenContext, TokenContextService, TokenStack, TokenService, TokenDatabaseException,
+    RankQuotaAnalyzer, Token, TokenContext, TokenContextService, TokenStack, TokenService, TokenDatabaseException,
     TokenStackState
 )
 from chess.system import (
@@ -73,7 +73,7 @@ class TokenDatabase(Database[Token]):
         return self._token_stack.context_service
     
     @property
-    def rank_quota_manager(self) -> RankQuotaManager:
+    def rank_quota_manager(self) -> RankQuotaAnalyzer:
         return self._token_stack.rank_quota_manager
     
     @property
