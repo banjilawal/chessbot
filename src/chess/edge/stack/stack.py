@@ -44,7 +44,6 @@ class EdgeStack(StackService[Edge]):
     """
     SERVICE_NAME = "EdgeStack"
     
-    _id: int
     _stack: List[Edge]
     _service: EdgeService
     _context_service: EdgeContextService
@@ -56,7 +55,7 @@ class EdgeStack(StackService[Edge]):
             id: int = IdFactory.next_id(class_name="EdgeStack"),
             context_service: EdgeContextService = EdgeContextService(),
     ):
-        super().__init__(id=id, name=name, )
+        super().__init__(id=id, name=name,)
         self._stack = []
         self._service = service
         self._context_service = context_service

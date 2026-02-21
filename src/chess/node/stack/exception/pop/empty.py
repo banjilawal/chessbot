@@ -15,11 +15,10 @@ __all__ = [
 ]
 
 from chess.node import NodeDebugException
-from chess.system import PoppingEmptyStackException
 
 
 # ======================# POPPING_EMPTY_NODE_STACK EXCEPTION #======================#
-class PoppingEmptyNodeStackException(NodeDebugException, PoppingEmptyStackException):
+class PoppingEmptyNodeStackException(NodeDebugException):
     """
     # ROLE: Debug, Error Tracing
 

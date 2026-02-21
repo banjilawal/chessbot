@@ -1,7 +1,7 @@
-# src/chess/edge/stack/exception/pop/exist.py
+# src/chess/edge/stack/exception/query/exist.py
 
 """
-Module: chess.edge.stack.exception.pop.exist
+Module: chess.edge.stack.exception.query.exist
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -14,12 +14,11 @@ __all__ = [
     "EdgeNotFoundException",
 ]
 
-from chess.edge import EdgeStackException
-from chess.system import NullException
+from chess.edge import EdgeDebugException
 
 
 # ======================# EDGE_NOT_FOUND EXCEPTION #======================#
-class EdgeNotFoundException(EdgeStackException, NullException):
+class EdgeNotFoundException(EdgeDebugException):
     """
     # ROLE: Debug, Error Tracing
 

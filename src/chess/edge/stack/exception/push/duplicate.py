@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from chess.edge import EdgeStackException
+from chess.edge import EdgeDebugException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_EDGE EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_EDGE EXCEPTION #======================#
-class AddingDuplicateEdgeException(EdgeStackException):
+class AddingDuplicateEdgeException(EdgeDebugException):
     """
     # ROLE: Debug, Error Tracing
 

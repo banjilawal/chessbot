@@ -19,7 +19,7 @@ from chess.system import PoppingEmptyStackException
 
 
 # ======================# POPPING_EMPTY_EDGE_STACK EXCEPTION #======================#
-class PoppingEmptyEdgeStackException(EdgeDebugException, PoppingEmptyStackException):
+class PoppingEmptyEdgeStackException(EdgeDebugException):
     """
     # ROLE: Debug, Error Tracing
 

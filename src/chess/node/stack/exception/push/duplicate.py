@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from chess.node import NodeStackException
+from chess.node import NodeDebugException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_NODE EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_NODE EXCEPTION #======================#
-class AddingDuplicateNodeException(NodeStackException):
+class AddingDuplicateNodeException(NodeDebugException):
     """
     # ROLE: Debug, Error Tracing
 

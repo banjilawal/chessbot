@@ -1,7 +1,7 @@
-# src/chess/node/stack/exception/pop/exist.py
+# src/chess/node/stack/exception/query/exist.py
 
 """
-Module: chess.node.stack.exception.pop.exist
+Module: chess.node.stack.exception.query.exist
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -14,12 +14,11 @@ __all__ = [
     "NodeNotFoundException",
 ]
 
-from chess.node import NodeStackException
-from chess.system import NullException
+from chess.node import NodeDebugException
 
 
 # ======================# NODE_NOT_FOUND EXCEPTION #======================#
-class NodeNotFoundException(NodeStackException, NullException):
+class NodeNotFoundException(NodeDebugException):
     """
     # ROLE: Debug, Error Tracing
 
