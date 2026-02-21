@@ -14,8 +14,8 @@ from chess.system import (
     LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, UpdateResult, id_emitter
 )
 from chess.square import (
-    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, PartialTeamDeploymentException, SquareContext,
-    SquareNameAlreadyInUseException,  SquareCoordAlreadyInUseException, quareIdAlreadyInUseException,
+    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, TeamPartiallyDeployedException, SquareContext,
+    SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, quareIdAlreadyInUseException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
     PoppingSquareException, PushingSquareException, FullSquareStackException, TeamAlreadyDeployedException
 )
@@ -376,7 +376,7 @@ class SquareStack(StackService[Square]):
             *   SquareStackException
             *   DeployingTeamRosterException
             *   TeamAlreadyDeployedException
-            *   PartialTeamDeploymentException
+            *   TeamPartiallyDeployedException
             *   CannotDeployUnderStrengthTeamException
         """
         method = "SquareService.accept_roster_members_from_team"
@@ -471,8 +471,8 @@ class SquareStack(StackService[Square]):
                         message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                         ex=DeployingTeamRosterException(
                             message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
-                            ex=PartialTeamDeploymentException(
-                                f"{method}: {PartialTeamDeploymentException,DEFAULT_ERROR_MESSAGE}"
+                            ex=TeamPartiallyDeployedException(
+                                f"{method}: {TeamPartiallyDeployedException,DEFAULT_ERROR_MESSAGE}"
                             )
                         )
                     )

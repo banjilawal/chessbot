@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TEAM_PARTIALLY_DEPLOYED EXCEPTION #======================#
-    "PartialTeamDeploymentException",
+    "TeamPartiallyDeployedException",
 ]
 
 from chess.square import SquareStackException
@@ -17,7 +17,7 @@ from chess.system import DebugException
 
 
 # ======================# TEAM_PARTIALLY_DEPLOYED EXCEPTION #======================#
-class PartialTeamDeploymentException(SquareStackException, DebugException):
+class TeamPartiallyDeployedException(SquareStackException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
