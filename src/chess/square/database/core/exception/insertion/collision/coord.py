@@ -1,7 +1,7 @@
-# src/chess/square/database/core/exception/insertion/coord.py
+# src/chess/square/database/core/exception/push/coord.py
 
 """
-Module: chess.square.database.core.exception.insertion.coord
+Module: chess.square.database.core.exception.push.coord
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -36,4 +36,4 @@ class SquareCoordAlreadyInUseException(SquareStackException):
     None
     """
     ERROR_CODE = "COORD_ALREADY_USED_IN_SQUARE_DATASET_ERROR"
-    DEFAULT_MESSAGE = "Square insertion failed: Another item is already using the coord."
+    DEFAULT_MESSAGE = "Square push failed: Another item is already using the coord."

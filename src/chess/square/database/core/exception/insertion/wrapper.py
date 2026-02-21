@@ -1,23 +1,23 @@
-# src/chess/square/database/core/exception/insertion/wrapper.py
+# src/chess/square/database/core/exception/push/wrapper.py
 
 """
-Module: chess.square.database.core.exception.insertion.wrapper
+Module: chess.square.database.core.exception.push.wrapper
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# SQUARE_INSERTION_FAILURE #======================#
+    # ======================# SQUARE_PUSH_FAILURE #======================#
     "PushingSquareException",
 ]
 
 from chess.square import SquareStackException
-from chess.system import InsertionFailedException
+from chess.system import PushFailedException
 
 
-# ======================# SQUARE_INSERTION_FAILURE #======================#
-class PushingSquareException(SquareStackException, InsertionFailedException):
+# ======================# SQUARE_PUSH_FAILURE #======================#
+class PushingSquareException(SquareStackException, PushFailedException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class PushingSquareException(SquareStackException, InsertionFailedException):
 
     # PARENT:
         *   SquareStackException
-        *   InsertionFailedException
+        *   PushFailedException
 
     # PROVIDES:
     None
@@ -37,5 +37,5 @@ class PushingSquareException(SquareStackException, InsertionFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_INSERTION_FAILURE_ERROR"
-    DEFAULT_MESSAGE = "Square insertion failed."
+    ERROR_CODE = "SQUARE_PUSH_FAILURE_ERROR"
+    DEFAULT_MESSAGE = "Square push failed."

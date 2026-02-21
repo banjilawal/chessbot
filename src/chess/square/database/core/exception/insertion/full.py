@@ -1,7 +1,7 @@
-# src/chess/square/database/core/exception/insertion/full.py
+# src/chess/square/database/core/exception/push/full.py
 
 """
-Module: chess.square.database.core.exception.insertion.full
+Module: chess.square.database.core.exception.push.full
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

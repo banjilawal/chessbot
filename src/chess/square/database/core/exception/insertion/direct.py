@@ -1,7 +1,7 @@
-# src/chess/square/database/core/exception/insertion/direct.py
+# src/chess/square/database/core/exception/push/direct.py
 
 """
-Module: chess.square.database.core.exception.insertion.direct
+Module: chess.square.database.core.exception.push.direct
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -36,4 +36,4 @@ class AppendingSquareDirectlyIntoItemsFailedException(SquareStackException):
     None
     """
     ERROR_CODE = "APPENDING_SQUARE_DIRECTLY_INTO_ITEMS_ERROR"
-    DEFAULT_MESSAGE = "Square insertion failed: The item was not found in self.bag after running self.bag.append."
+    DEFAULT_MESSAGE = "Square push failed: The item was not found in self.bag after running self.bag.append."

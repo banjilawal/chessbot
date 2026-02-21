@@ -1,7 +1,7 @@
-# src/chess/square/database/core/exception/insertion/id.py
+# src/chess/square/database/core/exception/push/id.py
 
 """
-Module: chess.square.database.core.exception.insertion.id
+Module: chess.square.database.core.exception.push.id
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -36,4 +36,4 @@ class SquareIdAlreadyInUseException(SquareStackException):
     None
     """
     ERROR_CODE = "ID_ALREADY_USED_IN_SQUARE_DATASET_ERROR"
-    DEFAULT_MESSAGE = "Square insertion failed: Another item is already using the id."
+    DEFAULT_MESSAGE = "Square push failed: Another item is already using the id."

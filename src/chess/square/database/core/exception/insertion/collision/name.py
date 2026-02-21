@@ -1,7 +1,7 @@
-# src/chess/square/database/core/exception/insertion/name.py
+# src/chess/square/database/core/exception/push/name.py
 
 """
-Module: chess.square.database.core.exception.insertion.name
+Module: chess.square.database.core.exception.push.name
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -36,4 +36,4 @@ class SquareNameAlreadyInUseException(SquareStackException):
     None
     """
     ERROR_CODE = "NAME_ALREADY_USED_IN_SQUARE_DATASET_ERROR"
-    DEFAULT_MESSAGE = "Square insertion failed: Another item is already using the name."
+    DEFAULT_MESSAGE = "Square push failed: Another item is already using the name."

@@ -15,4 +15,4 @@ from .push import *
 from .query import *
 
 # Modules
-from .exception import NodeStackException
+from .catchall import NodeStackException

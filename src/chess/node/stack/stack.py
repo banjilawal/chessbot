@@ -45,28 +45,19 @@ class NodeStack(StackService[Node]):
     _id: int
     _stack: List[Node]
     _service: NodeService
+    _context_service: NodeContextService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            items: List[Node] = List[Node],
             service: NodeService = NodeService(),
             id: int = IdFactory.next_id(class_name="NodeStack"),
             context_service: NodeContextService = NodeContextService(),
     ):
-        super().__init__(
-            id=id,
-            name=name,
-            items=[],
-            entity_service=service,
-            context_service=context_service,
-        )
-        self._stack = items
+        super().__init__(id=id,name=name,)
+        self._stack = []
         self._service = service
-        
-    @property
-    def id(self) -> int:
-        return self._id
+        self._context_service = context_service
     
     @property
     def size(self) -> int:
@@ -82,10 +73,10 @@ class NodeStack(StackService[Node]):
     
     @property
     def context_service(self) -> NodeContextService:
-        return cast(NodeContextService, self.context_service)
+        return self._context_service
     
     @property
-    def current_node(self) -> Optional[Node]:
+    def current_item(self) -> Optional[Node]:
         return self._stack[-1] if self._stack else None
     
     @LoggingLevelRouter.monitor
@@ -174,7 +165,7 @@ class NodeStack(StackService[Node]):
         DeletionResult.success(node)
     
     @LoggingLevelRouter.monitor
-    def search(self, context: NodeContext) -> SearchResult[List[Node]]:
+    def query(self, context: NodeContext) -> SearchResult[List[Node]]:
         """
         # ACTION:
             1.  Pass the context param to context_service manages all error handling and operations in
@@ -186,27 +177,27 @@ class NodeStack(StackService[Node]):
         # PARAMETERS:
             *   context (NodeContext)
         # RETURN:
-            *   SearchResult[Node] containing either:
+            *   SearchResult[List[Node] containing either:
                     - On failure: An exception.
                     - On success: List[Node] in payload.
                     - On Empty: No payload nor exception.
         # RAISES:
             *   NodeStackException
         """
-        method = "NodeStack.search"
+        method = "NodeStack.query"
         
         # --- Handoff the search responsibility to _stack_service. ---#
-        search_result = self._context_service.finder.find(context=context)
+        query_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
         # Handle the case that the search is not completed.
-        if search_result.is_failure:
+        if query_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
                 NodeStackException(
                     message=f"ServiceID:{self.id} {method}: {NodeStackException.ERROR_CODE}",
-                    ex=search_result.exception
+                    ex=query_result.exception
                 )
             )
         # --- For either a successful or empty search result directly forward to the caller. ---#
-        return search_result
+        return query_result
     
