@@ -81,6 +81,23 @@ class EdgeService(EntityService[Edge]):
             heuristic: int,
             number_validator: NumberValidator = NumberValidator()
     ) -> UpdateResult[Edge]:
+        """
+        # ACTION:
+            1.  If edge is unsafe send the exception chain and edge back in the UpdatedResult.
+            2.  If the heuristic is not non-negative number send the exception chain and edge back in the UpdatedResult.
+            3.  Make a deep copy of the edge.
+                    *   The deep copy can be sent back instead of doing an expensive rollback.
+                    *   The client can verify correctness by comparing the original and updated edges.
+        # PARAMETERS:
+            *   edge (Edge)
+            *   heuristic (int)
+            *   number_validator (NUmberValidator)
+        # RETURN:
+            *   UpdateResult[Edge]
+        # RAISES:
+            *   EdgeServiceException
+            *   UpdatingEdgeHeuristicException
+        """
         method = "EdgeService.update_edge_heuristic"
         
         # Handle the case that the edge is unsafe.
@@ -115,9 +132,11 @@ class EdgeService(EntityService[Edge]):
                     )
                 )
             )
+        # --- The validation checks were passed, make a deep copy of edge and set the new heuristic. ---#
         original_edge = deepcopy(edge)
-        
         edge.heuristic = heuristic
+        
+        # --- Send the success result to the caller. ---#
         return UpdateResult.update_success(original=original_edge, updated=edge)
     
     @LoggingLevelRouter.monitor
@@ -127,6 +146,23 @@ class EdgeService(EntityService[Edge]):
             weight: int,
             number_validator: NumberValidator = NumberValidator()
     ) -> UpdateResult[Edge]:
+        """
+        # ACTION:
+            1.  If edge is unsafe send the exception chain and edge back in the UpdatedResult.
+            2.  If the weight is not a number send the exception chain and edge back in the UpdatedResult.
+            3.  Make a deep copy of the edge.
+                    *   The deep copy can be sent back instead of doing an expensive rollback.
+                    *   The client can verify correctness by comparing the original and updated edges.
+        # PARAMETERS:
+            *   edge (Edge)
+            *   weight (int)
+            *   number_validator (NUmberValidator)
+        # RETURN:
+            *   UpdateResult[Edge]
+        # RAISES:
+            *   EdgeServiceException
+            *   UpdatingEdgeWeightException
+        """
         method = "EdgeService.update_edge_weight"
         
         # Handle the case that the edge is unsafe.
@@ -143,7 +179,7 @@ class EdgeService(EntityService[Edge]):
                     )
                 )
             )
-        # Handle the case that the heuristic is not a number.
+        # Handle the case that the weight is not a number.
         weight_validation_result = number_validator.validate(
             candidate=weight,
             ceiling=sys.maxsize,
@@ -161,7 +197,9 @@ class EdgeService(EntityService[Edge]):
                     )
                 )
             )
+        # --- The validation checks were passed, make a deep copy of edge and set the new heuristic. ---#
         original_edge = deepcopy(edge)
-        
         edge.weight = weight
+        
+        # --- Send the success result to the caller. ---#
         return UpdateResult.update_success(original=original_edge, updated=edge)

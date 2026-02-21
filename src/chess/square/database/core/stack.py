@@ -9,18 +9,18 @@ version: 1.0.0
 from copy import deepcopy
 from typing import List, Optional, cast
 
+from chess.token import TokenContext
+from chess.team import Team, TeamService
 from chess.system import (
-    ComputationResult, NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult,
+    ComputationResult, IdFactory, NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult,
     LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, UpdateResult, id_emitter
 )
 from chess.square import (
-    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, TeamPartiallyDeployedException, SquareContext,
-    SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, quareIdAlreadyInUseException,
+    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, TeamPartiallyDeployedException,
+    SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, SquareIdAlreadyInUseException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
     PoppingSquareException, PushingSquareException, FullSquareStackException, TeamAlreadyDeployedException
 )
-from chess.team import Team, TeamService
-from chess.token import NullTokenException, Token, TokenContext
 
 
 class SquareStack(StackService[Square]):
@@ -54,10 +54,9 @@ class SquareStack(StackService[Square]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
-            items: List[Square] = List[Square],
             service: SquareService = SquareService(),
             capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
+            id: int = IdFactory.next_id(class_name="SquareStack"),
             context_service: SquareContextService = SquareContextService(),
     ):
         """
@@ -78,11 +77,10 @@ class SquareStack(StackService[Square]):
         super().__init__(
             id=id,
             name=name,
-            items=items,
             entity_service=service,
             context_service=context_service,
         )
-        self._stack = items
+        self._stack = []
         self._capacity = capacity
         self._service = service
     
@@ -286,7 +284,7 @@ class SquareStack(StackService[Square]):
         # RETURNS:
             *   ComputationResult[int] containing either:
                     - On failure: Exception.
-                    - On success: An int in the payload.
+                    - On success: int.
         # RAISES:
             None
         """
@@ -423,6 +421,7 @@ class SquareStack(StackService[Square]):
                     )
                 )
             )
+        # --- The validation checks were passed, make a deep copy of the team and run deployment steps ---#
         pre_deployment_team = deepcopy(team)
         
         total_occupations = 0
