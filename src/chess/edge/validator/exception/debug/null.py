@@ -1,19 +1,41 @@
-# src/chess/graph/square/validator/exception/debug/null.py
+# src/chess/edge/validator/exception/debug/null.py
 
 """
-Module: chess.graph.square.validator.exception.debug/null
+Module: chess.edge.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2026-02-17
 version: 1.0.0
 """
 
-from chess.graph import EdgeException
-from chess.system import NullException
-
 __all__ = [
     # ======================# NULL_EDGE EXCEPTION #======================#
-    "NullEgeException",
+    "NullEdgeException",
 ]
 
-class NullEgeException(EdgeException, NullException):
-    pass
+from chess.system import NullException
+from chess.edge import EdgeDebugException
+
+
+# ======================# NULL_EDGE EXCEPTION #======================#
+class NullEdgeException(EdgeDebugException, NullException):
+    """
+    # ROLE: Error Tracing, Debugging
+
+    # RESPONSIBILITIES:
+    1.  Indicate that an entity, method, or operation that required a Edge but got null instead.
+
+    # PARENT:
+        *   NullException
+        *   EdgeDebugException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "NULL_EDGE_ERROR"
+    DEFAULT_MESSAGE = "Edge cannot be null."

@@ -30,7 +30,7 @@ class TokenNotRegisteredWithSquareException(TokenNotRegisteredException):
         *   TokenRegistrationException
 
     # PROVIDES:
-    TokenNotRegisteredWithSquareException
+    None
 
     # LOCAL ATTRIBUTES:
     None

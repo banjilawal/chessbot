@@ -29,7 +29,7 @@ class TokenNotRegisteredWithTeamException(TokenNotRegisteredException):
         *   TokenRegistrationException
 
     # PROVIDES:
-    TokenNotRegisteredWithTeamException
+    None
 
     # LOCAL ATTRIBUTES:
     None

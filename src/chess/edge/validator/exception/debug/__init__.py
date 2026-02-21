@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .null import NullEgeException
+from .null import NullEdgeException
 from .weight import EdgeWeightException
 from .circular import CircularEdgeException
 from .distance import EdgeDistanceException

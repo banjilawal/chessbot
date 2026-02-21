@@ -31,7 +31,7 @@ class TokenNotRegisteredWithBoardException(TokenNotRegisteredException):
         *   TokenNotRegisteredException
 
     # PROVIDES:
-    TokenNotRegisteredWithBoardException
+    None
 
     # LOCAL ATTRIBUTES:
     None
