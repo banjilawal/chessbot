@@ -14,6 +14,6 @@ from .full import *
 from .collision import *
 
 # Modules
-from .wrapper import TokenPushFailedException
+from .wrapper import PushingTokenException
 from .duplicate import AddingDuplicateTokenException
 from .direct import AppendingTokenDirectlyIntoItemsFailedException

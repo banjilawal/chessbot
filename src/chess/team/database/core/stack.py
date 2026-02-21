@@ -73,6 +73,14 @@ class TeamStack(StackService[Team]):
         self._stack = []
         self._service = service
         self._context_service = context_service
+        
+    @property
+    def size(self) -> int:
+        return len(self._stack)
+        
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
     
     @property
     def integrity_service(self) -> TeamService:
@@ -104,7 +112,7 @@ class TeamStack(StackService[Team]):
         # RAISES:
             *   TeamStackException
         """
-        method = "TeamStack.add_team"
+        method = "TeamStack.push"
         
         # Handle the case that the team is unsafe.
         validation = self.integrity_service.validator.validate(candidate=item)
@@ -120,7 +128,7 @@ class TeamStack(StackService[Team]):
                 )
             )
         # Handle the case that the team is already present in the stack.
-        if item in self.items:
+        if item in self._stack:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TeamStackException(
@@ -134,7 +142,7 @@ class TeamStack(StackService[Team]):
                 )
             )
         # --- Team order is not required. Direct insertion into the stack is simpler that a push. ---#
-        self.items.append(item)
+        self._stack.append(item)
         return InsertionResult.success()
     
     @LoggingLevelRouter.monitor
@@ -154,7 +162,7 @@ class TeamStack(StackService[Team]):
         # RAISES:
             *   TeamStackException
         """
-        method = "TeamStack.delete_Team_by_id"
+        method = "TeamStack.pop"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
@@ -170,7 +178,7 @@ class TeamStack(StackService[Team]):
                     )
                 )
             )
-        team = self.items.pop(-1)
+        team = self._stack.pop(-1)
         return DeletionResult.success(team)
     
     @LoggingLevelRouter.monitor
@@ -194,7 +202,7 @@ class TeamStack(StackService[Team]):
         # RAISES:
             *   TeamStackException
         """
-        method = "TeamStack.delete_Team_by_id"
+        method = "TeamStack.delete_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
@@ -224,7 +232,7 @@ class TeamStack(StackService[Team]):
                 )
             )
         # --- Search the list for an item with target id. ---#
-        for item in self.items:
+        for item in self._stack:
             if item.id == id:
                 # Handle the case that the match is the wrong type.
                 if not isinstance(item, Team):
@@ -243,7 +251,7 @@ class TeamStack(StackService[Team]):
                     )
                 # --- Cast the item before removal and return the deleted item in the DeletionResult. ---#
                 team = cast(Team, item)
-                self.items.remove(team)
+                self._stack.remove(team)
                 return DeletionResult.success(payload=team)
         
         # If none of the items had that id return an empty DeletionResult.

@@ -206,8 +206,9 @@ class SquareStack(StackService[Square]):
                     )
                 )
             )
-        # --- Pop the updated square of the non-empty stack and return in the DeletionResult. ---#
+        # --- Pop the non-empty token stack. ---#
         square = self._stack.pop(-1)
+        # --- Send the success result to the caller. ---#
         DeletionResult.success(square)
     
     @LoggingLevelRouter.monitor
@@ -235,7 +236,7 @@ class SquareStack(StackService[Square]):
             *   PoppingSquareException
             *   PoppingEmptySquareStackException
         """
-        method = "SquareStack.delete_square_by_id"
+        method = "SquareStack.delete_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
@@ -271,12 +272,12 @@ class SquareStack(StackService[Square]):
                 # Record a hit before pulling it from the stack.
                 target = square
                 self._stack.remove(square)
-        # --- After the loop handle the two possible outcomes of purging the stack. ---#
+        # --- After the purging loop finishes handle the possible return cases. ---#
         
-        # Handle the case that at least one edge was removed
+        # At least one edge was removed.
         if target is not None:
             return DeletionResult.success(payload=target)
-        # The default case is, no square had that id.
+        # Default case: no edges were removed.
         return DeletionResult.nothing_to_delete()
     
     def number_of_occupied_squares(self) -> ComputationResult[int]:

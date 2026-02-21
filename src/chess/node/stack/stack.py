@@ -54,6 +54,19 @@ class NodeStack(StackService[Node]):
             id: int = IdFactory.next_id(class_name="NodeStack"),
             context_service: NodeContextService = NodeContextService(),
     ):
+        """
+        # ACTION:
+            Constructor
+        # PARAMETERS:
+            *   id (int)
+            *   name (str)
+            *   service (NodeService)
+            *   context_service (NodeContextService)
+        # RETURNS:
+            None
+        # RAISES:
+            None
+        """
         super().__init__(id=id,name=name,)
         self._stack = []
         self._service = service

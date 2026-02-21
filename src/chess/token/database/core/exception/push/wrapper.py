@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TOKEN_PUSH_FAILURE EXCEPTION #======================#
-    "TokenPushFailedException",
+    "PushingTokenException",
 ]
 
 from chess.token import TokenStackException
@@ -17,7 +17,7 @@ from chess.system import InsertionFailedException
 
 
 # ======================# TOKEN_PUSH_FAILURE EXCEPTION #======================#
-class TokenPushFailedException(TokenStackException, InsertionFailedException):
+class PushingTokenException(TokenStackException, InsertionFailedException):
     """
     # ROLE: Exception Wrapper
 

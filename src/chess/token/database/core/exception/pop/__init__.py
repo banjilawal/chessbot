@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import TokenDeletionFailedException
+from .wrapper import PoppingTokenException
 from .empty import PoppingEmptyTokenStackException
 from .unfound import TokenDoesNotExistForRemovalException

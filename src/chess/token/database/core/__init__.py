@@ -11,7 +11,7 @@ version: 1.0.0
 # =========== TOKEN.DATABASE.CORE PACKAGE CONTENTS ===========#
 
 # Packages
-from .quota import *
+from chess.token.database.core.util.quota import *
 from .exception import *
 
 # Modules

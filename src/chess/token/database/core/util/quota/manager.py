@@ -1,7 +1,7 @@
-# src/chess/token/database/core/quota/manager.py
+# src/chess/token/database/core/util/quota/manager.py
 
 """
-Module: chess.token.database.core.quota.manager
+Module: chess.token.database.core.util.quota.manager
 Author: Banji Lawal
 Created: 2026-01-31
 version: 1.0.0
@@ -47,8 +47,9 @@ class RankQuotaManager:
     def rank_service(self) -> RankService:
         return self._rank_service
     
+    @classmethod
     @LoggingLevelRouter.monitor
-    def rank_size(self, rank: Rank, token_stack: TokenStack,) -> ComputationResult[int]:
+    def rank_size(cls, rank: Rank, token_stack: TokenStack, rank_service: RankService = RankService()) -> ComputationResult[int]:
         """
         # ACTION:
             1.  Build the search-by-rank TokenContext. If the build fails send the exception in the InsertionResult.

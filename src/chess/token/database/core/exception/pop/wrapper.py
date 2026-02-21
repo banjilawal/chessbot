@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TOKEN_DELETION_FAILURE EXCEPTION #======================#
-    "TokenDeletionFailedException",
+    "PoppingTokenException",
 ]
 
 from chess.token import TokenException
@@ -17,7 +17,7 @@ from chess.system import DeletionFailedException
 
 
 # ======================# TOKEN_DELETION_FAILURE EXCEPTION #======================#
-class TokenDeletionFailedException(TokenException, DeletionFailedException):
+class PoppingTokenException(TokenException, DeletionFailedException):
     """
     # ROLE: Exception Wrapper
 

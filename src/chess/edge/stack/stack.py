@@ -55,14 +55,23 @@ class EdgeStack(StackService[Edge]):
             id: int = IdFactory.next_id(class_name="EdgeStack"),
             context_service: EdgeContextService = EdgeContextService(),
     ):
+        """
+        # ACTION:
+            Constructor
+        # PARAMETERS:
+            *   id (int)
+            *   name (str)
+            *   service (EdgeService)
+            *   context_service (EdgeContextService)
+        # RETURNS:
+            None
+        # RAISES:
+            None
+        """
         super().__init__(id=id, name=name,)
         self._stack = []
         self._service = service
         self._context_service = context_service
-        
-    @property
-    def id(self) -> int:
-        return self._id
     
     @property
     def size(self) -> int:
@@ -230,13 +239,12 @@ class EdgeStack(StackService[Edge]):
                 # Record a hit before pulling it from the stack.
                 target = edge
                 self._stack.remove(edge)
-        # --- After the loop handle the two possible outcomes of purging the stack. ---#
+        # --- After the purging loop finished handle the possible return cases. ---#
         
-        # Handle the case that at least one edge was removed
+        # At least one edge was removed.
         if target is not None:
             return DeletionResult.success(payload=target)
-        
-        # The default case is no edge had that label so there was nothing to delete.
+        # Default case: no edges were removed.
         return DeletionResult.nothing_to_delete()
     
     @LoggingLevelRouter.monitor
@@ -257,19 +265,19 @@ class EdgeStack(StackService[Edge]):
         # RAISES:
             *   EdgeStackException
         """
-        method = "EdgeStack.search"
+        method = "EdgeStack.query"
         
         # --- Handoff the search responsibility to _context_service. ---#
-        search_result = self._context_service.finder.find(dataset=self._stack, context=context)
+        query_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
         # Handle the case that the search is not completed.
-        if search_result.is_failure:
+        if query_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
                 EdgeStackException(
                     message=f"ServiceID:{self.id} {method}: {EdgeStackException.ERROR_CODE}",
-                    ex=search_result.exception
+                    ex=query_result.exception
                 )
             )
         # --- For either a successful or empty search result directly forward to the caller. ---#
-        return search_result
+        return query_result
