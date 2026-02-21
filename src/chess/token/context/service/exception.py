@@ -19,7 +19,7 @@ __all__ = [
 # ======================# PIECE_CONTEXT_SERVICE EXCEPTION #======================#
 class PieceContextServiceException(PieceContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an TokenContextService encountered an error which prevented the service from completing a task.

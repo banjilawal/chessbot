@@ -19,7 +19,7 @@ from chess.system import ServiceException
 # ======================# BOARD_SERVICE EXCEPTION #======================#
 class BoardServiceException(BoardException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an BoardService encountered an error which prevented the service from completing a task.

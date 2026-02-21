@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.square import SquareException
-from chess.system import SearchFailedException
+from chess.system import SearchException
 
 __all__ = [
     # ======================# SQUARE_SEARCH_FAILURE EXCEPTION #======================#
-    "SquareSearchFailedException",
+    "SquareSearchException",
 ]
 
 
 # ======================# SQUARE_SEARCH_FAILURE EXCEPTION #======================#
-class SquareSearchFailedException(SquareException, SearchFailedException):
+class SquareSearchException(SquareException, SearchException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
-        failed. That debug exception is wrapped in the SquareSearchFailedException which is the middle layer of the
+        failed. That debug exception is wrapped in the SquareSearchException which is the middle layer of the
         3-part exception chain.
 
     # PARENT:
         *   SquareException
-        *   SearchFailedException
+        *   SearchException
 
     # PROVIDES:
     None

@@ -20,7 +20,7 @@ from chess.board import BoardException
 # ======================# SQUARE_ON_DIFFERENT_BOARD EXCEPTION #======================#
 class SquareOnDifferentBoardException(BoardException, SquareException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that inserting a BoardSquare failed because the item belonged to a  different board.

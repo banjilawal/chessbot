@@ -22,7 +22,8 @@ class NodeValidationFailedException(NodeException, ValidationFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Node. The exception chain traces the ultimate source of failure.
+    1.  Wrap debug exceptions indicating why a candidate failed its Node validation.The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   NodeException

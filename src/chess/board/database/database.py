@@ -13,7 +13,7 @@ from chess.board import (
     AddingDuplicateBoardException, ExhaustiveBoardDeletionFailedException, Board, BoardContext,
     BoardContextService,
     BoardStackService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionFailedException,
-    UniqueBoardSearchFailedException
+    UniqueBoardSearchException
 )
 from chess.system import (
     DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
@@ -192,8 +192,8 @@ class BoardDatabase(Database[Board]):
             return SearchResult.failure(
                 UniqueBoardDataServiceException(
                     message=f"ServiceID:{self.id} {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
-                    ex=UniqueBoardSearchFailedException(
-                        message=f"{method}: {UniqueBoardSearchFailedException.ERROR_CODE}",
+                    ex=UniqueBoardSearchException(
+                        message=f"{method}: {UniqueBoardSearchException.ERROR_CODE}",
                         ex=search_result.exception
                     )
                 )

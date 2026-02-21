@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TOKEN_SEARCH_FAILURE EXCEPTION #======================#
-    "TokenSearchFailedException",
+    "TokenSearchException",
 ]
 
-from chess.system import SearchFailedException
+from chess.system import SearchException
 from chess.token import TokenException
 
 
 # ======================# TOKEN_SEARCH_FAILURE EXCEPTION #======================#
-class TokenSearchFailedException(TokenException, SearchFailedException):
+class TokenSearchException(TokenException, SearchException):
     """
     # ROLE: Exception Wrapper
 

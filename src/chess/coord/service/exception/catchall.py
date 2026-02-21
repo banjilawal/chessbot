@@ -19,7 +19,7 @@ from chess.system import ServiceException
 # ======================# COORD_SERVICE EXCEPTION #======================#
 class CoordServiceException(CoordException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an CoordService encountered an error which prevented the service from completing a task.

@@ -7,24 +7,24 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import DatasetException, OperationFailedException
+from chess.system import CollectionOperationFailedException
 
 __all__ = [
-    # ======================# DELETION_FAILURE EXCEPTION #======================#
-    "DeletionFailedException",
+    # ======================# DELETION_FAILURE #======================#
+    "DeletionException",
 ]
 
 
-# ======================# DELETION_FAILURE EXCEPTION #======================#
-class DeletionFailedException(DatasetException, OperationFailedException):
+# ======================# DELETION_FAILURE #======================#
+class DeletionException(CollectionOperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a deletion operation failed. The exception chain traces the ultimate source of failure.
+    1.  Wrap debug exceptions indicating why a deletion operation failed. The exception chain 
+        traces the ultimate source of failure.
 
     # PARENT:
-        *   DataException
         *   OperationFailedException
 
     # PROVIDES:
@@ -36,5 +36,5 @@ class DeletionFailedException(DatasetException, OperationFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "DELETION_FAILED"
+    ERROR_CODE = "DELETION_FAILURE"
     DEFAULT_MESSAGE = "Deletion failed."

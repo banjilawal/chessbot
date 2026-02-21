@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional, cast
 
 from chess.system import (
-    Event, NotImplementedException, Result, RollbackException, TransactionState, TransactionResult
+    Event, MethodNotImplementedException, Result, RollbackException, TransactionState, TransactionResult
 )
 
 
@@ -76,8 +76,8 @@ class TransactionResult(Result[Event]):
     def empty(cls) -> Result:
         method = "TransactionResult.empty"
         return Result(
-            exception=NotImplementedException(
-                f"{method}: {NotImplementedException.DEFAULT_MESSAGE}. TransactionResult must "
+            exception=MethodNotImplementedException(
+                f"{method}: {MethodNotImplementedException.DEFAULT_MESSAGE}. TransactionResult must "
                 f"always have an event in the payload. It cannot be empty."
             )
         )

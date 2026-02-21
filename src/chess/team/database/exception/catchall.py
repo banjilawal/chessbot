@@ -19,7 +19,7 @@ from chess.system import ServiceException
 # ======================# TEAM_DATABASE EXCEPTION #======================#
 class TeamDatabaseException(TeamException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Encapsulate TeamDatabase method outputs when there is a failure.

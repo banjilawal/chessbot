@@ -17,7 +17,7 @@ __all__ = [
 #======================# HUMAN_PLAYER EXCEPTION #======================#
 class HumanPlayerException(PlayerException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate an attribute, method, or operation organic to a HumanPlayer encountered a condition which

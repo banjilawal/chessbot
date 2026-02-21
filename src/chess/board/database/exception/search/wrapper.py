@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# UNIQUE_BOARD_SEARCH_FAILURE EXCEPTION #======================#
-    "UniqueBoardSearchFailedException",
+    "UniqueBoardSearchException",
 ]
 
 from chess.board import BoardException
-from chess.system import SearchFailedException
+from chess.system import SearchException
 
 
 # ======================# UNIQUE_BOARD_SEARCH_FAILURE EXCEPTION #======================#
-class UniqueBoardSearchFailedException(BoardException, SearchFailedException):
+class UniqueBoardSearchException(BoardException, SearchException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class UniqueBoardSearchFailedException(BoardException, SearchFailedException):
 
     # PARENT:
         *   BoardException
-        *   SearchFailedException
+        *   SearchException
 
     # PROVIDES:
     None

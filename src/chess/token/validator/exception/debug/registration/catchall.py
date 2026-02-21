@@ -18,7 +18,7 @@ __all__ = [
 #======================# TOKEN_NOT_REGISTERED EXCEPTION #======================#
 class TokenNotRegisteredException(TeamException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Catchall Exception for when an Token has set its owner correctly but the owner does not

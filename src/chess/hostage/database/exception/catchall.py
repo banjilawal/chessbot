@@ -19,7 +19,7 @@ from chess.system import DatabaseException
 # ======================# HOSTAGE_MANIFEST_DIRECTORY_SERVICE EXCEPTION #======================#
 class HostageDatabaseException(HostageManifestException, DatabaseException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an HostageDatabase encountered an error which prevented the

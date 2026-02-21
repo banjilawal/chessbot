@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.edge import EdgeServiceException
-from chess.system import UpdateFailedException
+from chess.system import UpdateException
 
 __all__ = [
     # ======================# EDGE_WEIGHT_UPDATE_FAILURE #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# EDGE_WEIGHT_UPDATE_FAILURE #======================#
-class UpdatingEdgeWeightException(EdgeServiceException, UpdateFailedException):
+class UpdatingEdgeWeightException(EdgeServiceException, UpdateException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class UpdatingEdgeWeightException(EdgeServiceException, UpdateFailedException):
 
     # PARENT:
         *   EdgeServiceException
-        *   UpdateFailedException
+        *   UpdateException
 
     # PROVIDES:
     None

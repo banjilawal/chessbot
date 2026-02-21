@@ -19,7 +19,7 @@ __all__ = [
 # ======================# TOKEN_STACK EXCEPTION #======================#
 class TokenStackException(TokenException, StackException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap any exceptions raised by TokenStack methods that return Result objects.

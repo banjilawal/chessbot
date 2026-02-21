@@ -19,7 +19,7 @@ __all__ = [
 # ======================# NODE_CONTEXT_SERVICE EXCEPTION #======================#
 class NodeContextServiceException(NodeContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an NodeContextService encountered an error which prevented the service from completing a task.

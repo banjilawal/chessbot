@@ -19,7 +19,7 @@ __all__ = [
 # ======================# UNIQUE_GAME_STACK_SERVICE EXCEPTION #======================#
 class UniqueGameDataServiceException(GameException, DatabaseException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by UniqueGameDataService objects.

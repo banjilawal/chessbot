@@ -20,7 +20,7 @@ __all__ = [
 # ======================# SNAPSHOT_CONTEXT EXCEPTION #======================#
 class SnapshotContextException(SnapshotException, ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by SnapshotContext objects.

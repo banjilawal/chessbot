@@ -22,7 +22,7 @@ from chess.system import ServiceException
 # ======================# PLAYER_STACK_SERVICE EXCEPTION #======================#
 class AgentDataServiceException(AgentException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an AgentStackService encountered an error which prevented the service from completing a task.

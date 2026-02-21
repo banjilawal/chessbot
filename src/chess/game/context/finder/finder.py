@@ -14,7 +14,7 @@ from typing import List
 from chess.agent import PlayerAgent
 from chess.game import Game, GameContext, GameContextValidator
 from chess.system import (
-    DataFinder, UnhandledRouteException, LoggingLevelRouter, SearchFailedException, SearchResult
+    DataFinder, UnhandledRouteException, LoggingLevelRouter, SearchException, SearchResult
 )
 
 
@@ -93,11 +93,11 @@ class GameFinder(DataFinder[Game]):
             SearchResult.failure(
                 UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -133,11 +133,11 @@ class GameFinder(DataFinder[Game]):
             # inconsistency later.
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -169,9 +169,9 @@ class GameFinder(DataFinder[Game]):
                 return SearchResult.empty()
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )

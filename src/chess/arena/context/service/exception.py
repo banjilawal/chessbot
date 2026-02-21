@@ -20,7 +20,7 @@ __all__ = [
 # ======================# ARENA_CONTEXT_SERVICE EXCEPTION #======================#
 class ArenaContextServiceException(ArenaContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an ArenaContextService encountered an error which prevented the service from completing a task.

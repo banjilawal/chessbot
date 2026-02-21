@@ -20,7 +20,7 @@ __all__ = [
 # ======================# PERSONA_CONTEXT BUILD EXCEPTION #======================#
 class PersonaKeyBuildFailedException(PersonaKeyException, BuildFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised during PersonaKey build process.

@@ -10,7 +10,7 @@ from chess.system import ServiceException
 # ======================# UNIQUE_SNAPSHOT_STACK_SERVICE EXCEPTION #======================#
 class UniqueSnapshotDataServiceException(SnapshotException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an UniqueSnapshotDataService encountered an error which prevented the service from completing a task.

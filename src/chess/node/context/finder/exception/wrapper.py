@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.node import NodeException
-from chess.system import SearchFailedException
+from chess.system import SearchException
 
 __all__ = [
     # ======================# NODE_SEARCH_FAILURE EXCEPTION #======================#
-    "NodeSearchFailedException",
+    "NodeSearchException",
 ]
 
 
 # ======================# NODE_SEARCH_FAILURE EXCEPTION #======================#
-class NodeSearchFailedException(NodeException, SearchFailedException):
+class NodeSearchException(NodeException, SearchException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
-        failed. That debug exception is wrapped in the NodeSearchFailedException which is the middle layer of the
+        failed. That debug exception is wrapped in the NodeSearchException which is the middle layer of the
         3-part exception chain.
 
     # PARENT:
         *   NodeException
-        *   SearchFailedException
+        *   SearchException
 
     # PROVIDES:
     None

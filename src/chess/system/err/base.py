@@ -18,7 +18,7 @@ __all__ = [
 # ======================# BASE APPLICATION EXCEPTION CLASS #======================#
 class ChessException(Exception):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception by the application

@@ -19,7 +19,7 @@ ___all__ = [
 # ======================# PLAYER_SERVICE EXCEPTION #======================#
 class PlayerServiceException(PlayerException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
     
     # RESPONSIBILITIES:
     1.  Indicate that an PlayerService encountered an error which prevented the service from completing a task.

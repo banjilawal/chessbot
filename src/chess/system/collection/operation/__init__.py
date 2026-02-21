@@ -14,7 +14,9 @@ from .search import *
 from .update import *
 from .deletion import *
 from .insertion import *
+from .collision import *
 from .computation import *
 
 # Modules
 from .result import DataResult
+from .exception import CollectionOperationFailedException

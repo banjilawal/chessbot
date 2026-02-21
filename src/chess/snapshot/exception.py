@@ -18,7 +18,7 @@ __all__ = [
 # ======================# SNAPSHOT EXCEPTION #======================#
 class SnapshotException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by Snapshot objects.

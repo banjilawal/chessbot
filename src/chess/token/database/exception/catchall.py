@@ -21,7 +21,7 @@ __all__ = [
 #======================# TOKEN_DATABASE EXCEPTION #======================#
 class TokenDatabaseException(TokenException, DatabaseException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap any exceptions raised by TokenDatabase methods that return Result objects.

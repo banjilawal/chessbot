@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.board import BoardException
-from chess.system import SearchFailedException
+from chess.system import SearchException
 
 __all__ = [
     # ======================# BOARD_SEARCH_FAILURE EXCEPTION #======================#
-    "BoardSearchFailedException",
+    "BoardSearchException",
 ]
 
 
 # ======================# BOARD_SEARCH_FAILURE EXCEPTION #======================#
-class BoardSearchFailedException(BoardException, SearchFailedException):
+class BoardSearchException(BoardException, SearchException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
-        failed. That debug exception is wrapped in the BoardSearchFailedException which is the middle layer of the
+        failed. That debug exception is wrapped in the BoardSearchException which is the middle layer of the
         3-part exception chain.
 
     # PARENT:
         *   BoardException
-        *   SearchFailedException
+        *   SearchException
 
     # PROVIDES:
     None

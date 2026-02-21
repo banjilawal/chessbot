@@ -20,7 +20,7 @@ __all__ = [
 # ======================# SCHEMA_KEY EXCEPTION #======================#
 class SchemaKeyException(SchemaException, ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Catchall for conditions which are not covered by SchemaKeyException subclasses.

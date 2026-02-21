@@ -8,10 +8,9 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
-
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, UpdateResultEnum, UpdateResultState
+from chess.system import DataResult, MethodNotImplementedException, UpdateResultEnum, UpdateResultState
 
 T = TypeVar("T")
 
@@ -40,7 +39,7 @@ class UpdateResult(DataResult[T], Generic[T]):
 
     def __init__(
             self,
-            original: T,
+            original: Optional[T],
             state: UpdateResultState,
             exception: Optional[Exception] = None,
             updated: Optional[T] = None,
@@ -85,15 +84,6 @@ class UpdateResult(DataResult[T], Generic[T]):
                 self.state == UpdateResultEnum.TIMED_OUT
         )
     
-    # @property
-    # def original_is_update(self) -> bool:
-    #     return (
-    #             self._update is None and self.exception is not None and
-    #             self.original == self._update and
-    #             self.exception is not None and
-    #             self._state == UpdateResultEnum.ORIGINAL_IS_UPDATE
-    #     )
-    
     @classmethod
     def update_success(cls, original: T, updated: T) -> UpdateResult[T]:
         return cls(
@@ -119,4 +109,34 @@ class UpdateResult(DataResult[T], Generic[T]):
             original=original,
             exception=exception,
             state=UpdateResultState(classification=UpdateResultEnum.TIMED_OUT),
+        )
+    
+    @classmethod
+    def success(cls, payload: T) -> UpdateResult[T]:
+        method = "UpdateResult.success"
+        return cls.update_failure(
+            original=payload,
+            exception=MethodNotImplementedException(
+                f"UpdateResult does not support Result.success. Use UpdateResult.update_success instead."
+            )
+        )
+
+    @classmethod
+    def failure(cls, exception: Exception) -> UpdateResult[T]:
+        method = "UpdateResult.failure"
+        return cls.update_failure(
+            original=None,
+            exception=MethodNotImplementedException(
+                f"UpdateResult does not support Result.failure. Use UpdateResult.update_failure instead."
+            )
+        )
+    
+    @classmethod
+    def timed_out(cls, exception: Exception) -> UpdateResult[T]:
+        method = "UpdateResult.timed_out"
+        return cls.update_timed_out(
+            original=None,
+            exception=MethodNotImplementedException(
+                f"UpdateResult does not support Result.timed_out. Use UpdateResult.update_timed instead."
+            )
         )

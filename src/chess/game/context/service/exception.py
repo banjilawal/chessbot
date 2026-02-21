@@ -18,7 +18,7 @@ __all__ = [
 #======================# GAME_CONTEXT_SERVICE EXCEPTION #======================#
 class GameContextServiceException(ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
     
     # RESPONSIBILITIES:
     1.  Parent of exception raised when an GameContextService's normal operations are halted

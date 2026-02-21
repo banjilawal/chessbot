@@ -18,7 +18,7 @@ __all__ = [
 # ======================# FRIEND_CANNOT_CAPTURE_FRIEND EXCEPTION #======================#
 class FriendCannotCaptureFriendException(HostageServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that adding a combatant to the prisoners failed because the occupant was a friend.

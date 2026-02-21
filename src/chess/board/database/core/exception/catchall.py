@@ -19,7 +19,7 @@ from chess.system import DataServiceException
 # ======================# BOARD_STACK_SERVICE EXCEPTION #======================#
 class BoardDataServiceException(BoardException, DataServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap any exceptions raised by BoardStackService methods that return Result objects.

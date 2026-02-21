@@ -19,7 +19,7 @@ __all__ = [
 #======================# GAME_CONTEXT EXCEPTION #======================#
 class GameContextException(ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised when an GameContext's organic fields or methods run into a condition that

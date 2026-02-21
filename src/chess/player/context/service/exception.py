@@ -20,7 +20,7 @@ __all__ = [
 #======================# PLAYER_CONTEXT_SERVICE EXCEPTION #======================#
 class AgentContextServiceException(AgentContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
     
     # RESPONSIBILITIES:
     1.  Indicate that an AgentContextService encountered an error which prevented the service from completing a task.

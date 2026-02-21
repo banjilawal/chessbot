@@ -18,7 +18,7 @@ __all__ = [
 # ======================# NUMBER EXCEPTION #======================#
 class NumberException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by Numbers.

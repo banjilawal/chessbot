@@ -9,7 +9,7 @@ __all__ = [
 # ======================# ENEMY_CANNOT_JOIN_ROSTER EXCEPTION #======================#
 class CannotDeleteTokenFromDifferentRosterException(TeamRosterException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that inserting into a Team's roster failed because it the occupant had a different team.

@@ -19,7 +19,7 @@ from chess.system import StackException
 # ======================# EDGE_STACK EXCEPTION #======================#
 class EdgeStackException(EdgeException, StackException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap any exceptions raised by EdgeStack methods that return Result objects.

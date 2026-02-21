@@ -18,7 +18,7 @@ from chess.system import DatabaseException
 # ======================# UNIQUE_SQUARE_STACK_SERVICE EXCEPTION #======================#
 class SquareDatabaseException(SquareException, DatabaseException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an SquareDatabase encountered an error which prevented the service from completing a task.

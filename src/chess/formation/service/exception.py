@@ -10,7 +10,7 @@ __all__ = [
 # ======================# FORMATION_SERVICE EXCEPTION #======================#
 class FormationServiceException(FormationException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an FormationService encountered an error which prevented the service from completing a task.

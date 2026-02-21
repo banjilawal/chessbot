@@ -19,7 +19,7 @@ __all__ = [
 # ======================# HOSTAGE_MANIFEST_CONTEXT EXCEPTION #======================#
 class CaptivityContextException(HostageManifestException, ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by CaptivityContext objects.

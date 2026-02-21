@@ -7,35 +7,34 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+from chess.system import CollectionOperationFailedException
 
 __all__ = [
-    # ======================# SEARCH_FAILURE EXCEPTION #======================#
-    "SearchFailedException",
+    # ======================# SEARCH_FAILURE #======================#
+    "SearchException",
 ]
 
 
-#======================# SEARCH_FAILURE EXCEPTION #======================#
-class SearchFailedException(OperationFailedException):
+# ======================# SEARCH_FAILURE #======================#
+class SearchException(CollectionOperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
-  
+    # ROLE: Exception Wrapper
+
     # RESPONSIBILITIES:
-    1.  Indicate that an exception prevented a search operation from completing successfully.
-    2.  Wrap an exception that hits the try-finally block of a Search method.
-  
+    1.  Wrap debug exceptions indicating why a search operation failed. The exception chain 
+        traces the ultimate source of failure.
+
     # PARENT:
-        *   SearchException
         *   OperationFailedException
-  
+
     # PROVIDES:
     None
-  
+
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SEARCH_FAILED_ERROR"
-    DEFAULT_MESSAGE = "search failed. An exception prevented the search from completing."
+    ERROR_CODE = "SEARCH_FAILURE"
+    DEFAULT_MESSAGE = "Search failed."

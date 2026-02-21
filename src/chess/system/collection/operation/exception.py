@@ -18,7 +18,7 @@ __all__ = [
 # ======================# COLLECTION_OPERATION_FAILURE EXCEPTION #======================#
 class CollectionOperationFailedException(CollectionException, OperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wraps collection operation debug exceptions to create an exception chain.

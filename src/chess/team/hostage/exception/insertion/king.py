@@ -18,7 +18,7 @@ __all__ = [
 # ======================# KING_CANNOT_BE_CAPTURED EXCEPTION #======================#
 class CannotCaptureKingException(HostageServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that adding a occupant to the prisoners failed because it was a KingToken instead of a CombatantToken

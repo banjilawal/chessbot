@@ -19,7 +19,7 @@ __all__ = [
 #======================# PLAYER_FINDER EXCEPTION #======================#
 class AgentFinderException(AgentException, FinderException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
   
     # RESPONSIBILITIES:
     1.  Parent of exception raised when AgentFinder objects.

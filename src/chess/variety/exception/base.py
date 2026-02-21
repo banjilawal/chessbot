@@ -18,7 +18,7 @@ __all__ = [
 #======================# PLAYER_VARIETY EXCEPTION  #======================#
 class AgentVarietyException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised when an AgentVariety's normal operations are halted by an error condition.

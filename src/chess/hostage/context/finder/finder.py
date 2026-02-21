@@ -12,7 +12,7 @@ from typing import List
 from chess.square import Square
 from chess.system import DataFinder, LoggingLevelRouter, SearchResult
 from chess.hostage import (
-    CaptivityContext, CaptivityContextValidator, HostageManifest, HostageManifestSearchFailedException,
+    CaptivityContext, CaptivityContextValidator, HostageManifest, HostageManifestSearchException,
     HostageManifestSearchNullDatasetException, HostageManifestSearchPayloadTypeException,
     HostageManifestSearchRouteException
 )
@@ -70,7 +70,7 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         # RAISES:
             *   HostageManifestSearchPayloadTypeException
             *   HostageManifestNullDatasetException
-            *   HostageManifestSearchFailedException
+            *   HostageManifestSearchException
         """
         method = "HostageManifestFinder.find"
         
@@ -78,8 +78,8 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                HostageManifestSearchFailedException(
-                    message=f"{method}: {HostageManifestSearchFailedException.ERROR_CODE}",
+                HostageManifestSearchException(
+                    message=f"{method}: {HostageManifestSearchException.ERROR_CODE}",
                     ex=HostageManifestSearchNullDatasetException(
                         f"{method}: {HostageManifestSearchNullDatasetException.DEFAULT_MESSAGE}"
                     )
@@ -89,8 +89,8 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
-                HostageManifestSearchFailedException(
-                    message=f"{method}: {HostageManifestSearchFailedException.ERROR_CODE}",
+                HostageManifestSearchException(
+                    message=f"{method}: {HostageManifestSearchException.ERROR_CODE}",
                     ex=HostageManifestSearchPayloadTypeException(
                         f"{method}: {HostageManifestSearchPayloadTypeException.DEFAULT_MESSAGE}"
                     )
@@ -101,8 +101,8 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                HostageManifestSearchFailedException(
-                    message=f"{method}: {HostageManifestSearchFailedException.ERROR_CODE}",
+                HostageManifestSearchException(
+                    message=f"{method}: {HostageManifestSearchException.ERROR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -123,8 +123,8 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
-            HostageManifestSearchFailedException(
-                message=f"{method}: {HostageManifestSearchFailedException.ERROR_CODE}",
+            HostageManifestSearchException(
+                message=f"{method}: {HostageManifestSearchException.ERROR_CODE}",
                 ex=HostageManifestSearchRouteException(f"{method}: {HostageManifestSearchRouteException.DEFAULT_MESSAGE}")
             )
         )

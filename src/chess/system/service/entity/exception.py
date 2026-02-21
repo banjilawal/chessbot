@@ -18,7 +18,7 @@ from chess.system import ServiceException
 # ======================# ENTITY_SERVICE EXCEPTION #======================#
 class EntityServiceException(ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
     
     # A Service bundles methods that return different classes of Result.
 

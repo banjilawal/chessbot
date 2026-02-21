@@ -7,25 +7,24 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+from chess.system import CollectionOperationFailedException
 
 __all__ = [
-    # ======================# UPDATE_FAILURE EXCEPTION #======================#
-    "UpdateFailedException",
+    # ======================# UPDATE_FAILURE #======================#
+    "UpdateException",
 ]
 
 
-# ======================# UPDATE_FAILURE EXCEPTION #======================#
-class UpdateFailedException(OperationFailedException):
+# ======================# UPDATE_FAILURE #======================#
+class UpdateException(CollectionOperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate that an exception prevented a update operation from completing successfully.
-    2.  Wrap an exception that hits the try-finally block of a Update method.
+    1.  Wrap debug exceptions indicating why a update operation failed. The exception chain 
+        traces the ultimate source of failure.
 
     # PARENT:
-        *   UpdateException
         *   OperationFailedException
 
     # PROVIDES:
@@ -37,5 +36,5 @@ class UpdateFailedException(OperationFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UPDATE_FAILED_ERROR"
-    DEFAULT_MESSAGE = "update failed."
+    ERROR_CODE = "UPDATE_FAILURE"
+    DEFAULT_MESSAGE = "Update failed."

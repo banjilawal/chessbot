@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .wrapper import SearchFailedException
+from .wrapper import SearchException
 from .route import NoSearchRouteException

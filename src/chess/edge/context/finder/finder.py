@@ -14,7 +14,7 @@ from chess.board import Board
 from chess.coord import Coord
 from chess.system import LoggingLevelRouter, SearchResult, StackSearcher
 from chess.edge import (
-    Edge, EdgeContext, EdgeContextValidator, EdgeSearchFailedException, EdgeSearchRouteException,
+    Edge, EdgeContext, EdgeContextValidator, EdgeSearchException, EdgeSearchRouteException,
     EdgeSearchNullDatasetException, EdgeSearchPayloadTypeException, EdgeState
 )
 from chess.token import Token
@@ -71,7 +71,7 @@ class EdgeFinder(StackSearcher[Edge]):
         # RAISES:
             *   EdgeSearchPayloadTypeException
             *   EdgeNullDatasetException
-            *   EdgeSearchFailedException
+            *   EdgeSearchException
         """
         method = "EdgeFinder.find"
         
@@ -79,8 +79,8 @@ class EdgeFinder(StackSearcher[Edge]):
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                EdgeSearchFailedException(
-                    message=f"{method}: {EdgeSearchFailedException.ERROR_CODE}",
+                EdgeSearchException(
+                    message=f"{method}: {EdgeSearchException.ERROR_CODE}",
                     ex=EdgeSearchNullDatasetException(
                         f"{method}: {EdgeSearchNullDatasetException.DEFAULT_MESSAGE}"
                     )
@@ -90,8 +90,8 @@ class EdgeFinder(StackSearcher[Edge]):
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
-                EdgeSearchFailedException(
-                    message=f"{method}: {EdgeSearchFailedException.ERROR_CODE}",
+                EdgeSearchException(
+                    message=f"{method}: {EdgeSearchException.ERROR_CODE}",
                     ex=EdgeSearchPayloadTypeException(
                         f"{method}: {EdgeSearchPayloadTypeException.DEFAULT_MESSAGE}"
                     )
@@ -102,8 +102,8 @@ class EdgeFinder(StackSearcher[Edge]):
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                EdgeSearchFailedException(
-                    message=f"{method}: {EdgeSearchFailedException.ERROR_CODE}",
+                EdgeSearchException(
+                    message=f"{method}: {EdgeSearchException.ERROR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -133,8 +133,8 @@ class EdgeFinder(StackSearcher[Edge]):
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
-            EdgeSearchFailedException(
-                message=f"{method}: {EdgeSearchFailedException.ERROR_CODE}",
+            EdgeSearchException(
+                message=f"{method}: {EdgeSearchException.ERROR_CODE}",
                 ex=EdgeSearchRouteException(f"{method}: {EdgeSearchRouteException.DEFAULT_MESSAGE}")
             )
         )

@@ -18,7 +18,7 @@ __all__ = [
 #======================# GAME_FINDER EXCEPTION #======================#
 class GameFinderException(FinderException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
   
     # RESPONSIBILITIES:
     1.  Parent of exception raised by GameFinder objects.

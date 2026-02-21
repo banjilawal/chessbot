@@ -18,7 +18,7 @@ __all__ = [
 # ======================# LOOKUP_FAILURE EXCEPTION #======================#
 class LookupFailedException(OperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
   
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by Lookup operations.

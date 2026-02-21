@@ -20,7 +20,7 @@ __all__ = [
 #======================# PLAYER_VARIETY VALIDATION EXCEPTION  #======================#
 class InvalidAgentVarietyException(AgentVarietyException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during AgentVariety verification process.

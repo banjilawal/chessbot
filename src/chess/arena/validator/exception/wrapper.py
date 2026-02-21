@@ -19,7 +19,7 @@ __all__ = [
 # ======================# ARENA_VALIDATION_FAILURE EXCEPTION #======================#
 class ArenaValidationFailedException(ArenaException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as an Arena. The exception chain traces the ultimate source of failure.

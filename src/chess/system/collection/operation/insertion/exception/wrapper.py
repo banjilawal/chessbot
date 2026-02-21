@@ -7,25 +7,24 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import DatasetException, OperationFailedException
+from chess.system import CollectionOperationFailedException
 
 __all__ = [
-    # ======================# INSERTION_FAILURE EXCEPTION #======================#
-    "InsertionFailedException",
+    # ======================# INSERTION_FAILURE #======================#
+    "InsertionException",
 ]
 
 
-# ======================# INSERTION_FAILURE EXCEPTION #======================#
-class InsertionFailedException(DatasetException, OperationFailedException):
+# ======================# INSERTION_FAILURE #======================#
+class InsertionException(CollectionOperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a insertion operation failed. The encapsulated 
-        exceptions create a chain for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why a insertion operation failed. The exception chain 
+        traces the ultimate source of failure.
 
     # PARENT:
-        *   DataException
         *   OperationFailedException
 
     # PROVIDES:
@@ -37,5 +36,5 @@ class InsertionFailedException(DatasetException, OperationFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "INSERTION_FAILED"
+    ERROR_CODE = "INSERTION_FAILURE"
     DEFAULT_MESSAGE = "Insertion failed."

@@ -19,7 +19,7 @@ __all__ = [
 # ======================# TEAM_SERVICE EXCEPTION #======================#
 class TeamServiceException(TeamException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Encapsulate TeamService method outputs when there is a failure.

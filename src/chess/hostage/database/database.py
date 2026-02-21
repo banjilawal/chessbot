@@ -13,7 +13,7 @@ from typing import List
 from chess.hostage import (
     AddingDuplicateHostageManifestException, CaptivityContext, CaptivityContextService, HostageManifest,
     HostageManifestList, HostageManifestService, UniqueHostageManifestInsertionFailedException,
-    UniqueHostageManifestSearchFailedException
+    UniqueHostageManifestSearchException
 )
 from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 
@@ -195,8 +195,8 @@ class HostageDatabase(Database[HostageManifest]):
             return SearchResult.failure(
                 HostageDatabase(
                     message=f"ServiceID:{self.id} {method}: {HostageDatabase.ERROR_CODE}",
-                    ex=UniqueHostageManifestSearchFailedException(
-                        message=f"{method}: {UniqueHostageManifestSearchFailedException.ERROR_CODE}",
+                    ex=UniqueHostageManifestSearchException(
+                        message=f"{method}: {UniqueHostageManifestSearchException.ERROR_CODE}",
                         ex=search_result.exception
                     )
                 )

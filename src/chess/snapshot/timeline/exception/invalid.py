@@ -21,7 +21,7 @@ __all__ = [
 # ======================# GAME_TIMELINE VALIDATION EXCEPTION #======================#
 class InvalidGameTimelineException(GameTimelineException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised during GameTimeline verification process.

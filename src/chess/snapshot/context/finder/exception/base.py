@@ -18,7 +18,7 @@ __all__ = [
 # ======================# SNAPSHOT_FINDER EXCEPTION #======================#
 class SnapshotFinderException(FinderException, OperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by GameFinder objects.

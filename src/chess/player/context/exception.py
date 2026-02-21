@@ -20,7 +20,7 @@ __all__ = [
 #======================# PLAYER_CONTEXT EXCEPTION #======================#
 class PlayerContextException(PlayerException, ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by PlayerContext objects.

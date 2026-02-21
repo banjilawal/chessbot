@@ -1,7 +1,7 @@
-# src/chess/token/database/core/util/quota/manager.py
+# src/chess/token/database/core/util/quota/analyzer.py
 
 """
-Module: chess.token.database.core.util.quota.manager
+Module: chess.token.database.core.util.quota.analyzer
 Author: Banji Lawal
 Created: 2026-01-31
 version: 1.0.0
@@ -12,7 +12,7 @@ from typing import List, cast
 from chess.rank import Rank, RankService
 from chess.system import ComputationResult, LoggingLevelRouter
 from chess.token import (
-    RankQuotaComputationFailedException, RankQuotaManagerException, Token, TokenContext, TokenStack
+    RankQuotaComputationFailedException, RankQuotaAnalyzerException, Token, TokenContext, TokenStack
 )
 
 
@@ -60,7 +60,7 @@ class RankQuotaAnalyzer:
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
-            *   RankQuotaManagerException
+            *   RankQuotaAnalyzerException
             *   RankQuotaComputationFailedException
         """
         method = "RankQuotaAnalyzer.compute_rank_size_in_stack"
@@ -70,8 +70,8 @@ class RankQuotaAnalyzer:
         if rank_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaManagerException(
-                    message=f"{method}: {RankQuotaManagerException.DEFAULT_MESSAGE}",
+                RankQuotaAnalyzerException(
+                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
                         ex=rank_validation.exception
@@ -85,8 +85,8 @@ class RankQuotaAnalyzer:
         if search_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaManagerException(
-                    message=f"{method}: {RankQuotaManagerException.DEFAULT_MESSAGE}",
+                RankQuotaAnalyzerException(
+                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
                         ex=search_result.exception
@@ -118,7 +118,7 @@ class RankQuotaAnalyzer:
                     - On failure: Exception
                     - On success: bool
         # RAISES:
-            *   RankQuotaManagerException
+            *   RankQuotaAnalyzerException
             *   RankQuotaComputationFailedException
         """
         method = "RankQuotaAnalyzer.stack_has_opening_for_rank"
@@ -132,8 +132,8 @@ class RankQuotaAnalyzer:
         if openings_count_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaManagerException(
-                    message=f"{method}: {RankQuotaManagerException.DEFAULT_MESSAGE}",
+                RankQuotaAnalyzerException(
+                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
                         ex=openings_count_result.exception
@@ -166,7 +166,7 @@ class RankQuotaAnalyzer:
                     - On failure: Exception
                     - On success: int
         # RAISES:
-            *   RankQuotaManagerException
+            *   RankQuotaAnalyzerException
             *   RankQuotaComputationFailedException
         """
         method = "RankQuotaAnalyzer.count_openings_for_rank"
@@ -176,8 +176,8 @@ class RankQuotaAnalyzer:
         if rank_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaManagerException(
-                    message=f"{method}: {RankQuotaManagerException.DEFAULT_MESSAGE}",
+                RankQuotaAnalyzerException(
+                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
                         ex=rank_validation.exception
@@ -195,8 +195,8 @@ class RankQuotaAnalyzer:
         if rank_size_computation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaManagerException(
-                    message=f"{method}: {RankQuotaManagerException.DEFAULT_MESSAGE}",
+                RankQuotaAnalyzerException(
+                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
                     ex=RankQuotaComputationFailedException(
                         message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
                         ex=rank_size_computation.exception

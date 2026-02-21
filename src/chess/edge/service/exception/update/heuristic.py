@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.edge import EdgeServiceException
-from chess.system import UpdateFailedException
+from chess.system import UpdateException
 
 __all__ = [
     # ======================# EDGE_HEURISTIC_UPDATE_FAILURE #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# EDGE_HEURISTIC_UPDATE_FAILURE #======================#
-class UpdatingEdgeHeuristicException(EdgeServiceException, UpdateFailedException):
+class UpdatingEdgeHeuristicException(EdgeServiceException, UpdateException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class UpdatingEdgeHeuristicException(EdgeServiceException, UpdateFailedException
 
     # PARENT:
         *   EdgeServiceException
-        *   UpdateFailedException
+        *   UpdateException
 
     # PROVIDES:
     None

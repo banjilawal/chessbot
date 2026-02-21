@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.square import SquareStackException
-from chess.system import UpdateFailedException
+from chess.system import UpdateException
 
 
 # ======================# TEAM_ROSTER_DEPLOYMENT_FAILURE #======================#
-class DeployingTeamRosterException(SquareStackException, UpdateFailedException):
+class DeployingTeamRosterException(SquareStackException, UpdateException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class DeployingTeamRosterException(SquareStackException, UpdateFailedException):
 
     # PARENT:
         *   SquareStackException
-        *   UpdateFailedException
+        *   UpdateException
 
     # PROVIDES:
     None

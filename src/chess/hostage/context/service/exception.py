@@ -19,7 +19,7 @@ __all__ = [
 # ======================# CAPTIVITY_CONTEXT_SERVICE EXCEPTION #======================#
 class CaptivityContextServiceException(CaptivityContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an CaptivityContextService encountered an error which prevented the service from completing a task.

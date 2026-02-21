@@ -9,18 +9,18 @@ version: 1.0.0
 
 
 from chess.coord import CoordException
-from chess.system import SearchFailedException
+from chess.system import SearchException
 
 __all__ = [
     # ======================# COORD_FINDER EXCEPTION #======================#
-    "CoordSearchFailedException",
+    "CoordSearchException",
 ]
 
 
 # ======================# COORD_FINDER EXCEPTION #======================#
-class CoordSearchFailedException(CoordException, SearchFailedException):
+class CoordSearchException(CoordException, SearchException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised when CoordFinder objects.

@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# NOT_IMPLEMENTED EXCEPTION #======================#
-    "NotImplementedException",
+    "MethodNotImplementedException",
 ]
 
 from chess.system import ChessException
 
 
 # ======================# NOT_IMPLEMENTED EXCEPTION #======================#
-class NotImplementedException(ChessException):
+class MethodNotImplementedException(ChessException):
     """
     # ROLE: Information, Reporting, Debug
 

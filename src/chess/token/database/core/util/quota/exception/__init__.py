@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import RankQuotaManagerException
+from .catchall import RankQuotaAnalyzerException
 from .wrapper import RankQuotaComputationFailedException

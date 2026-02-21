@@ -8,18 +8,18 @@ version: 1.0.0
 """
 
 from chess.arena import ArenaException
-from chess.system import SearchFailedException
+from chess.system import SearchException
 
 __all__ = [
     #======================# ARENA_FINDER EXCEPTION #======================#
-    "ArenaSearchFailedException",
+    "ArenaSearchException",
 ]
 
 
 #======================# ARENA_FINDER EXCEPTION #======================#
-class ArenaSearchFailedException(ArenaException, SearchFailedException):
+class ArenaSearchException(ArenaException, SearchException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
   
     # RESPONSIBILITIES:
     1.  Parent of exception raised when ArenaFinder objects.

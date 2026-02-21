@@ -3,12 +3,12 @@ __all__ = [
     "RankQuotaComputationFailedException",
 ]
 
-from chess.token import RankQuotaAnalyzer, RankQuotaManagerException, TokenException
+from chess.token import RankQuotaAnalyzer, RankQuotaAnalyzerException, TokenException
 from chess.system import CalculationFailedException, ComputationFailedException
 
 
 # ======================# COUNT_OF_RANK_MEMBERS_FAILURE EXCEPTION #======================#
-class RankQuotaComputationFailedException(RankQuotaManagerException, ComputationFailedException):
+class RankQuotaComputationFailedException(RankQuotaAnalyzerException, ComputationFailedException):
     """
     # ROLE: Exception Wrapper
 

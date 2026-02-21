@@ -19,7 +19,7 @@ __all__ = [
 # ======================# COORD_DATABASE EXCEPTION #======================#
 class CoordDatabaseException(CoordException, DatabaseException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by CoordDatabase objects.

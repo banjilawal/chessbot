@@ -18,7 +18,7 @@ __all__ = [
 # ======================# EDGE_SERVICE EXCEPTION #======================#
 class EdgeServiceException(EdgeException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an EdgeService encountered an error which prevented the service from completing a task.

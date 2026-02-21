@@ -20,7 +20,7 @@ from chess.system import InvalidStringException, NullException
 class VoidStringException(InvalidStringException):
     """
     # ROLE: Error Tracing, Debugging
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
     
     # RESPONSIBILITIES:
     1.  Parent of exceptions which indicate an entity, method, or operation requires a String but gets either

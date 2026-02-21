@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.edge import EdgeException
-from chess.system import SearchFailedException
+from chess.system import SearchException
 
 __all__ = [
     # ======================# EDGE_SEARCH_FAILURE EXCEPTION #======================#
-    "EdgeSearchFailedException",
+    "EdgeSearchException",
 ]
 
 
 # ======================# EDGE_SEARCH_FAILURE EXCEPTION #======================#
-class EdgeSearchFailedException(EdgeException, SearchFailedException):
+class EdgeSearchException(EdgeException, SearchException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
-        failed. That debug exception is wrapped in the EdgeSearchFailedException which is the middle layer of the
+        failed. That debug exception is wrapped in the EdgeSearchException which is the middle layer of the
         3-part exception chain.
 
     # PARENT:
         *   EdgeException
-        *   SearchFailedException
+        *   SearchException
 
     # PROVIDES:
     None

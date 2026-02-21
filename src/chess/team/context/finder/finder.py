@@ -14,7 +14,7 @@ from chess.player import Player
 from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from chess.team import (
     Team, TeamContext, TeamContextValidator, TeamSearchDatasetNullException, TeamSearchRouteException,
-    TeamSearchFailedException
+    TeamSearchException
 )
 
 
@@ -68,7 +68,7 @@ class TeamFinder(DataFinder[Team]):
         # RAISES:
             *   TypeError
             *   TeamNullDatasetException
-            *   TeamSearchFailedException
+            *   TeamSearchException
         """
         method = "TeamFinder.find"
         
@@ -76,8 +76,8 @@ class TeamFinder(DataFinder[Team]):
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                TeamSearchFailedException(
-                    message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
+                TeamSearchException(
+                    message=f"{method}: {TeamSearchException.ERROR_CODE}",
                     ex=TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}")
                 )
             )
@@ -85,8 +85,8 @@ class TeamFinder(DataFinder[Team]):
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
-                TeamSearchFailedException(
-                    message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
+                TeamSearchException(
+                    message=f"{method}: {TeamSearchException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected List[Team], got {type(dataset).__name__} instead.")
                 )
             )
@@ -109,8 +109,8 @@ class TeamFinder(DataFinder[Team]):
         # The default path is only reached when a context.key does not have a search route. Return
         # the exception chain.
         return SearchResult.failure(
-            TeamSearchFailedException(
-                message=f"{method}: {TeamSearchFailedException.ERROR_CODE}",
+            TeamSearchException(
+                message=f"{method}: {TeamSearchException.ERROR_CODE}",
                 ex=TeamSearchRouteException(f"{method}: {TeamSearchRouteException.ERROR_CODE}")
             )
         )
@@ -131,7 +131,7 @@ class TeamFinder(DataFinder[Team]):
                     - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
-            *   TeamSearchFailedException
+            *   TeamSearchException
         """
         method = "TeamFinder._find_by_id"
         
@@ -157,7 +157,7 @@ class TeamFinder(DataFinder[Team]):
                     - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
-            *   TeamSearchFailedException
+            *   TeamSearchException
         """
         method = "TeamFinder._find_by_arena"
         matches = [team for team in dataset if team.arena == arena]
@@ -182,7 +182,7 @@ class TeamFinder(DataFinder[Team]):
                     - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
-            *   TeamSearchFailedException
+            *   TeamSearchException
         """
         method = "TeamFinder._find_by_player"
         matches = [team for team in dataset if team.owner == player]
@@ -207,7 +207,7 @@ class TeamFinder(DataFinder[Team]):
                     - On searching a match: List[Team] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
-            *   TeamSearchFailedException
+            *   TeamSearchException
         """
         method = "TeamFinder._find_by_color"
         matches = [team for team in dataset if team.schema.color == color]

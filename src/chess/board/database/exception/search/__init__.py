@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import UniqueBoardSearchFailedException
+from .wrapper import UniqueBoardSearchException

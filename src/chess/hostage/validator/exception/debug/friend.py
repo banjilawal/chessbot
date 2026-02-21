@@ -9,7 +9,7 @@ from chess.hostage import HostageManifestException
 # ======================# FRIEND_CANNOT_CAPTURE_FRIEND EXCEPTION #======================#
 class FriendCannotCaptureFriendException(HostageManifestException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that adding a combatant to the prisoners failed because the occupant was a friend.

@@ -10,15 +10,15 @@ version: 1.0.0
 
 __all__ = [
     #======================# TEAM_SEARCH_FAILURE EXCEPTION #======================#
-    "TeamSearchFailedException",
+    "TeamSearchException",
 ]
 
-from chess.system import SearchFailedException
+from chess.system import SearchException
 from chess.team import TeamException
 
 
 #======================# TEAM_SEARCH_FAILURE EXCEPTION #======================#
-class TeamSearchFailedException(TeamException, SearchFailedException):
+class TeamSearchException(TeamException, SearchException):
     """
     # ROLE: Exception Wrapper
   

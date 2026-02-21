@@ -7,35 +7,14 @@ Created: 2025-02-21
 version: 1.0.0
 """
 
-class TokenStackUtil:
-    pass
-
-
-# src/chess/token/database/core/stack.py
-
-"""
-Module: chess.token.database.core.stack
-Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
-"""
-
 from __future__ import annotations
-from typing import List, Optional, cast
 
-from chess.formation import FormationService
-from chess.system import (
-    SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
-)
-from chess.token import (
-    NoRankOpeningsException, PoppingEmptyTokenStackException, RankQuotaAnalyzer, Token, TokenContext,
-    TokenDesignationAlreadyInUseException, TokenIdAlreadyInUseException, TokenOpeningSquareAlreadyInUseException,
-    TokenService, TokenStackException, TokenContextService, PoppingTokenException, PushingTokenException,
-)
-from chess.token.database.core.state import TokenStackState
-
-
-class TokenStack(StackService[Token]):
+class TokenStackUtil:
+    _rank_quota_analyzer: RankQuotaAnalyzer
+    
+    def __init__(self, rank_quota_analyzer: RankQuotaAnalyzer = RankQuotaAnalyzer()):
+        self._rank_quota_analyzer = rank_quota_analyzer
+    
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -59,7 +38,7 @@ class TokenStack(StackService[Token]):
     """
     
     @classmethod
-    def find_colliding_tokens(cls, stack: TokenStack, target: Token) -> SearchResult[Token]:
+    def detect_token_collisions(cls, stack: TokenStack, candidate: Token) -> UpdateResult[Token]:
         """
         # ACTION:
             1.  If any stack members share either an id, designation or opening square with the target send and
@@ -79,30 +58,59 @@ class TokenStack(StackService[Token]):
         method = "TokenStack._find_colliding_tokens"
         
         # --- Loop through the stack to find matches. ---#
-        for item in stack:
-            # Return an exception in the SearchResult if a stack member shares the target's id.
-            if item.id == target.id:
-                return SearchResult.failure(
-                    TokenIdAlreadyInUseException(
+        for token in stack:
+            # Return the collider
+            if token.id == candidate.id:
+                return UpdateResult.failure(
+                    original=token,
+                    exception=TokenIdAlreadyInUseException(
                         f"{method}: {TokenIdAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
             # Return an exception in the SearchResult if a stack member shares the target's designation.
-            if item.designation.upper() == target.designation.upper():
-                return SearchResult.failure(
+            if token.designation.upper() == candidate.designation.upper():
+                return ValidationResult.failure(
                     TokenDesignationAlreadyInUseException(
                         f"{method}: {TokenDesignationAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
             # Return an exception in the SearchResult if a stack member shares the target's opening square.
-            if item.opening_square.upper() == target.opening_square.upper():
-                return SearchResult.failure(
+            if token.opening_square_name.upper() == candidate.opening_square_name.upper():
+                return ValidationResult.failure(
                     TokenOpeningSquareAlreadyInUseException(
                         f"{method}: {TokenOpeningSquareAlreadyInUseException.DEFAULT_MESSAGE}",
                     )
                 )
         # --- At the happy path return an empty search result indication there are no collisions. ---#
-        return SearchResult.empty()
+        return ValidationResult.empty()
+    
+# src/chess/token/database/core/stack.py
+
+"""
+Module: chess.token.database.core.stack
+Author: Banji Lawal
+Created: 2025-11-19
+version: 1.0.0
+"""
+
+
+from typing import List, Optional, cast
+
+from chess.formation import FormationService
+from chess.system import (
+    SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory,
+    UpdateResult, ValidationResult
+)
+from chess.token import (
+    NoRankOpeningsException, PoppingEmptyTokenStackException, RankQuotaAnalyzer, Token, TokenContext,
+    TokenDesignationAlreadyInUseException, TokenIdAlreadyInUseException, TokenOpeningSquareAlreadyInUseException,
+    TokenService, TokenStackException, TokenContextService, PoppingTokenException, PushingTokenException,
+)
+from chess.token.database.core.state import TokenStackState
+
+
+class TokenStack(StackService[Token]):
+
     
     DEFAULT_CAPACITY: int = 16
     SERVICE_NAME: str = "TokenStack"

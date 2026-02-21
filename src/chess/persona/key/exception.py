@@ -18,7 +18,7 @@ __all__ = [
 # ======================# PERSONA_KEY EXCEPTION #======================#
 class PersonaKeyException(ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by PersonaContext objects.

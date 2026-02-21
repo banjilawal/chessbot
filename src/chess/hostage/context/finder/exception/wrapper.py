@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.hostage import HostageManifestException
-from chess.system import SearchFailedException
+from chess.system import SearchException
 
 __all__ = [
     # ======================# HOSTAGE_MANIFEST_SEARCH_FAILURE EXCEPTION #======================#
-    "HostageManifestSearchFailedException",
+    "HostageManifestSearchException",
 ]
 
 
 # ======================# HOSTAGE_MANIFEST_SEARCH_FAILURE EXCEPTION #======================#
-class HostageManifestSearchFailedException(HostageManifestException, SearchFailedException):
+class HostageManifestSearchException(HostageManifestException, SearchException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
-        failed. That debug exception is wrapped in the HostageManifestSearchFailedException which is the middle layer of the
+        failed. That debug exception is wrapped in the HostageManifestSearchException which is the middle layer of the
         3-part exception chain.
 
     # PARENT:
         *   HostageManifestException
-        *   SearchFailedException
+        *   SearchException
 
     # PROVIDES:
     None

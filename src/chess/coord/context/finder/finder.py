@@ -9,10 +9,10 @@ version: 1.0.0
 
 from typing import List
 
-from chess.system import DataFinder, LoggingLevelRouter, Finder, SearchFailedException, SearchResult
+from chess.system import DataFinder, LoggingLevelRouter, Finder, SearchException, SearchResult
 from chess.coord import (
     Coord, CoordContext, CoordContextValidator, CoordDatasetNullException,
-    CoordSearchFailedException, CoordSearchPayloadTypeException, CoordSearchRouteException
+    CoordSearchException, CoordSearchPayloadTypeException, CoordSearchRouteException
 )
 
 
@@ -67,7 +67,7 @@ class CoordFinder(DataFinder[Coord]):
         # RAISES:
             *   TypeError
             *   TokenNullDatasetException
-            *   TokenSearchFailedException
+            *   TokenSearchException
         """
         method = "CoordFinder.find"
         
@@ -75,8 +75,8 @@ class CoordFinder(DataFinder[Coord]):
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                CoordSearchFailedException(
-                    message=f"{method}: {CoordSearchFailedException.DEFAULT_MESSAGE}",
+                CoordSearchException(
+                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}",
                     ex=CoordDatasetNullException(f"{method}: {CoordDatasetNullException.DEFAULT_MESSAGE}")
                 )
             )
@@ -84,8 +84,8 @@ class CoordFinder(DataFinder[Coord]):
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
-                CoordSearchFailedException(
-                    message=f"{method}: {CoordSearchFailedException.DEFAULT_MESSAGE}",
+                CoordSearchException(
+                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}",
                     ex=CoordSearchPayloadTypeException(f"{method}: {CoordSearchPayloadTypeException.DEFAULT_MESSAGE}")
                 )
             )
@@ -94,8 +94,8 @@ class CoordFinder(DataFinder[Coord]):
         if context_validation.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                CoordSearchFailedException(
-                    message=f"{method}: {CoordSearchFailedException.DEFAULT_MESSAGE}",
+                CoordSearchException(
+                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}",
                     ex=context_validation.exception
                 )
             )
@@ -113,8 +113,8 @@ class CoordFinder(DataFinder[Coord]):
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
-            CoordSearchFailedException(
-                message=f"{method}: {CoordSearchFailedException.DEFAULT_MESSAGE}",
+            CoordSearchException(
+                message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}",
                 ex=CoordSearchRouteException(f"{method}: {CoordSearchRouteException.DEFAULT_MESSAGE}")
             )
         )

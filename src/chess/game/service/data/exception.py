@@ -20,7 +20,7 @@ from chess.system import ServiceException
 # ======================# GAME_STACK_SERVICE EXCEPTION #======================#
 class GameDataServiceException(GameException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an GameStackService encountered an error which prevented the service from completing a task.

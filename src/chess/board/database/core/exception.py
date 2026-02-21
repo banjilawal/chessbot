@@ -10,7 +10,7 @@ from chess.system import ServiceException
 # ======================# BOARD_STACK_SERVICE EXCEPTION #======================#
 class BoardDataServiceException(BoardException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an BoardStackService encountered an error which prevented the service from completing a task.

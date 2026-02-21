@@ -10,7 +10,7 @@ from chess.system import ServiceException
 # ======================# ARENA_STACK_SERVICE EXCEPTION #======================#
 class ArenaDataServiceException(ArenaException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an ArenaDataService encountered an error which prevented the service from completing a task.

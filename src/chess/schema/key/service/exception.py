@@ -19,7 +19,7 @@ from chess.system import ServiceException
 # ======================# SCHEMA_KEY_SERVICE EXCEPTION #======================#
 class SchemaKeyServiceException(SchemaKeyException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an SchemaKeyService encountered an error which prevented the service from completing a task.

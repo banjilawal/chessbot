@@ -19,7 +19,7 @@ from chess.board import BoardException
 # ======================# TOKEN_ON_DIFFERENT_BOARD EXCEPTION #======================#
 class TokenOnDifferentBoardException(BoardException, TokenException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that inserting a BoardToken failed because the occupant belonged to a  different board.

@@ -101,7 +101,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             SearchResult.failure(
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
@@ -145,7 +145,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
@@ -189,7 +189,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
@@ -232,7 +232,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
                     return SearchResult.success(payload=List[team_search.payload])
             return SearchResult.empty()
             
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
@@ -271,7 +271,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
                 
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(

@@ -13,7 +13,7 @@ from typing import List
 from chess.square import Square
 from chess.system import LoggingLevelRouter, SearchResult, StackSearcher
 from chess.node import (
-    DiscoveryStatus, Node, NodeContext, NodeContextValidator, NodeSearchFailedException, NodeSearchRouteException,
+    DiscoveryStatus, Node, NodeContext, NodeContextValidator, NodeSearchException, NodeSearchRouteException,
     NodeSearchNullDatasetException, NodeSearchPayloadTypeException
 )
 
@@ -69,7 +69,7 @@ class NodeFinder(StackSearcher[Node]):
         # RAISES:
             *   NodeSearchPayloadTypeException
             *   NodeNullDatasetException
-            *   NodeSearchFailedException
+            *   NodeSearchException
         """
         method = "NodeFinder.find"
         
@@ -77,8 +77,8 @@ class NodeFinder(StackSearcher[Node]):
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                NodeSearchFailedException(
-                    message=f"{method}: {NodeSearchFailedException.ERROR_CODE}",
+                NodeSearchException(
+                    message=f"{method}: {NodeSearchException.ERROR_CODE}",
                     ex=NodeSearchNullDatasetException(
                         f"{method}: {NodeSearchNullDatasetException.DEFAULT_MESSAGE}"
                     )
@@ -88,8 +88,8 @@ class NodeFinder(StackSearcher[Node]):
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
-                NodeSearchFailedException(
-                    message=f"{method}: {NodeSearchFailedException.ERROR_CODE}",
+                NodeSearchException(
+                    message=f"{method}: {NodeSearchException.ERROR_CODE}",
                     ex=NodeSearchPayloadTypeException(
                         f"{method}: {NodeSearchPayloadTypeException.DEFAULT_MESSAGE}"
                     )
@@ -100,8 +100,8 @@ class NodeFinder(StackSearcher[Node]):
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                NodeSearchFailedException(
-                    message=f"{method}: {NodeSearchFailedException.ERROR_CODE}",
+                NodeSearchException(
+                    message=f"{method}: {NodeSearchException.ERROR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -122,8 +122,8 @@ class NodeFinder(StackSearcher[Node]):
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
-            NodeSearchFailedException(
-                message=f"{method}: {NodeSearchFailedException.ERROR_CODE}",
+            NodeSearchException(
+                message=f"{method}: {NodeSearchException.ERROR_CODE}",
                 ex=NodeSearchRouteException(f"{method}: {NodeSearchRouteException.DEFAULT_MESSAGE}")
             )
         )

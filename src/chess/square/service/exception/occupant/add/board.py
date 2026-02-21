@@ -18,7 +18,7 @@ from chess.square import SquareDebugException
 class TokenEnteringSquareOnWrongBoardException(SquareDebugException):
       
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that a item occupation failed because the occupant belongs to a different

@@ -19,7 +19,7 @@ __all__ = [
 # ======================# STRING_VALIDATION_FAILURE EXCEPTION #======================#
 class InvalidStringException(StringException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate That  a candidate failed String validation checks.

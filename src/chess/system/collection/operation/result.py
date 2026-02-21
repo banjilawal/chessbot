@@ -7,10 +7,10 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from abc import abstractmethod
+from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
-from chess.system import Result, DataResult, DataResultEnum, ResultState
+from chess.system import Result, ResultState
 
 T = TypeVar("T")
 

@@ -11,7 +11,7 @@ from typing import List
 
 from chess.team import Team
 from chess.agent import PlayerAgent
-from chess.system import Finder, LoggingLevelRouter, SearchFailedException, SearchResult
+from chess.system import Finder, LoggingLevelRouter, SearchException, SearchResult
 from chess.snapshot import GameTimeline, NullGameTimelineException, Snapshot, SnapshotContext, SnapshotContextValidator
 
 
@@ -99,11 +99,11 @@ class SnapshotFinder(Finder[Snapshot]):
                 FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
             )
         
-        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -139,11 +139,11 @@ class SnapshotFinder(Finder[Snapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -179,11 +179,11 @@ class SnapshotFinder(Finder[Snapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -219,11 +219,11 @@ class SnapshotFinder(Finder[Snapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
         
-        # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchException
         # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -260,9 +260,9 @@ class SnapshotFinder(Finder[Snapshot]):
             if len(matches) >= 1:
                 return SearchResult.success(payload=matches)
             
-            # Finally, if some exception is not handled by the checks wrap it inside an SearchFailedException
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )

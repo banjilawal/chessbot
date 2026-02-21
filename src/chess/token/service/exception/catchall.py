@@ -19,7 +19,7 @@ __all__ = [
 # ======================# TOKEN_SERVICE EXCEPTION #======================#
 class TokenServiceException(TokenException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap any exceptions raised by TokenService methods that return Result objects.

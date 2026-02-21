@@ -19,7 +19,7 @@ from chess.team import TeamException
 # ======================# TEAM_DIFFERENT_DIFFERENT_ARENA EXCEPTION #======================#
 class TeamPlayingDifferentArenaException(TeamException, ArenaException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that a team different a different arena.

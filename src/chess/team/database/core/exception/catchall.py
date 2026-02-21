@@ -19,7 +19,7 @@ from chess.system import StackException
 # ======================# TEAM_STACK_SERVICE EXCEPTION #======================#
 class TeamStackException(TeamException, StackException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Encapsulate TeamStack method outputs when there is a failure.

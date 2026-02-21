@@ -19,7 +19,7 @@ __all__ = [
 # ======================# COORD_CONTEXT EXCEPTION #======================#
 class CoordContextException(CoordException, ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by CoordContext objects.

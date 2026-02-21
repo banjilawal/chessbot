@@ -19,7 +19,7 @@ __all__ = [
 # ======================# HOSTAGE_MANIFEST_LIST EXCEPTION #======================#
 class HostageManifestDataListException(HostageManifestException, DataServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap any exceptions raised by HostageManifestList methods that return Result objects.

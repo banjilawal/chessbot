@@ -19,7 +19,7 @@ __all__ = [
 # ======================# SCHEMA_SERVICE EXCEPTION #======================#
 class SchemaServiceException(SchemaException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an SchemaService encountered an error which prevented the service from completing a task.

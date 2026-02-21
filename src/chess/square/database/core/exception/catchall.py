@@ -19,7 +19,7 @@ from chess.system import StackException
 # ======================# SQUARE_STACK EXCEPTION #======================#
 class SquareStackException(SquareException, StackException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap any exceptions raised by SquareStack methods that return Result objects.

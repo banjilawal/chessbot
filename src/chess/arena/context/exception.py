@@ -19,7 +19,7 @@ __all__ = [
 # ======================# ARENA_CONTEXT EXCEPTION #======================#
 class ArenaContextException(ArenaException, ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by ArenaContext objects.

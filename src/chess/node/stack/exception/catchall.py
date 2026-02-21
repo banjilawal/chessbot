@@ -19,7 +19,7 @@ from chess.system import StackException
 # ======================# NODE_STACK EXCEPTION #======================#
 class NodeStackException(NodeException, StackException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap any exceptions raised by NodeStack methods that return Result objects.

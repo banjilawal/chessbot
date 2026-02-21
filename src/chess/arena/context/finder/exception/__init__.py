@@ -15,4 +15,4 @@ from .payload import *
 
 # Modules
 from .route import ArenaSearchRouteException
-from .wrapper import ArenaSearchFailedException
+from .wrapper import ArenaSearchException

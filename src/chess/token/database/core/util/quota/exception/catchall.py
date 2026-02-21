@@ -11,16 +11,16 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TOKEN_STACK_SERVICE EXCEPTION #======================#
-    "RankQuotaManagerException",
+    "RankQuotaAnalyzerException",
 ]
 
 from chess.system import ChessException
 
 
 # ======================# TOKEN_STACK_SERVICE EXCEPTION #======================#
-class RankQuotaManagerException(ChessException):
+class RankQuotaAnalyzerException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap any exceptions raised by TokenStack methods that return Result objects.

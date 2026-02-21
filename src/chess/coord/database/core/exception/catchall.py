@@ -19,7 +19,7 @@ from chess.system import StackException
 # ======================# COORD_STACK EXCEPTION #======================#
 class CoordStackException(CoordException, StackException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an CoordStack encountered an error which prevented the service from completing a task.

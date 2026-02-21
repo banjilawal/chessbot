@@ -13,7 +13,7 @@ from chess.arena import Arena
 from chess.coord import Coord
 from chess.system import DataFinder, LoggingLevelRouter, SearchResult
 from chess.board import (
-    Board, BoardContext, BoardContextValidator, BoardSearchFailedException, BoardSearchRouteException,
+    Board, BoardContext, BoardContextValidator, BoardSearchException, BoardSearchRouteException,
     BoardSearchNullDatasetException, BoardSearchPayloadTypeException,
 )
 
@@ -69,7 +69,7 @@ class BoardFinder(DataFinder[Board]):
         # RAISES:
             *   BoardSearchPayloadTypeException
             *   BoardNullDatasetException
-            *   BoardSearchFailedException
+            *   BoardSearchException
         """
         method = "BoardFinder.find"
         
@@ -77,8 +77,8 @@ class BoardFinder(DataFinder[Board]):
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                BoardSearchFailedException(
-                    message=f"{method}: {BoardSearchFailedException.ERROR_CODE}",
+                BoardSearchException(
+                    message=f"{method}: {BoardSearchException.ERROR_CODE}",
                     ex=BoardSearchNullDatasetException( f"{method}: {BoardSearchNullDatasetException.DEFAULT_MESSAGE}")
                 )
             )
@@ -86,8 +86,8 @@ class BoardFinder(DataFinder[Board]):
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
-                BoardSearchFailedException(
-                    message=f"{method}: {BoardSearchFailedException.ERROR_CODE}",
+                BoardSearchException(
+                    message=f"{method}: {BoardSearchException.ERROR_CODE}",
                     ex=BoardSearchPayloadTypeException(f"{method}: {BoardSearchPayloadTypeException.DEFAULT_MESSAGE}")
                 )
             )
@@ -96,8 +96,8 @@ class BoardFinder(DataFinder[Board]):
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                BoardSearchFailedException(
-                    message=f"{method}: {BoardSearchFailedException.ERROR_CODE}",
+                BoardSearchException(
+                    message=f"{method}: {BoardSearchException.ERROR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -112,8 +112,8 @@ class BoardFinder(DataFinder[Board]):
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
-            BoardSearchFailedException(
-                message=f"{method}: {BoardSearchFailedException.ERROR_CODE}",
+            BoardSearchException(
+                message=f"{method}: {BoardSearchException.ERROR_CODE}",
                 ex=BoardSearchRouteException(f"{method}: {BoardSearchRouteException.DEFAULT_MESSAGE}")
             )
         )

@@ -20,7 +20,7 @@ __all__ = [
 # ====================== COLLECTION EXCEPTION #======================#
 class CollectionException(ChessException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
     
     # RESPONSIBILITIES:
     1.  Wrapper for data collection integrity problems.

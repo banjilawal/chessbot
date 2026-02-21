@@ -19,7 +19,7 @@ __all__ = [
 # ======================# COORD_VALIDATION_FAILURE EXCEPTION #======================#
 class CoordValidationFailedException(CoordException, ValidationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap debug exceptions indicating why a candidate failed its validation as a Coord. The exception chain traces the ultimate source of failure.

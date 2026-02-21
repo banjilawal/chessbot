@@ -19,7 +19,7 @@ from chess.system import ServiceException
 # ======================# PERSONA_SERVICE EXCEPTION #======================#
 class PersonaServiceException(PersonaException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an PersonaService encountered an error which prevented the service from completing a task.

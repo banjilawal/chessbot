@@ -12,7 +12,7 @@ from typing import Optional, cast
 from chess.agent import PlayerAgent
 from chess.arena import Arena
 from chess.game import GameState
-from chess.system import NotImplementedException, RollbackException, Result
+from chess.system import MethodNotImplementedException, RollbackException, Result
 
 
 class Snapshot(Result):
@@ -130,8 +130,8 @@ class Snapshot(Result):
         """Should not be called."""
         method = "Snapshot.empty"
         return Result(
-            exception=NotImplementedException(
-                f"{method}: {NotImplementedException.DEFAULT_MESSAGE}. Snapshot must "
+            exception=MethodNotImplementedException(
+                f"{method}: {MethodNotImplementedException.DEFAULT_MESSAGE}. Snapshot must "
                 f"always have at least a payload and GameState."
             )
         )

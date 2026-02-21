@@ -14,7 +14,7 @@ from chess.square import Square
 from chess.team import Team
 from chess.system import DataFinder, GameColor, LoggingLevelRouter, SearchResult
 from chess.token import (
-    Token, TokenContext, TokenContextValidator, TokenSearchNullDatasetException, TokenSearchFailedException,
+    Token, TokenContext, TokenContextValidator, TokenSearchNullDatasetException, TokenSearchException,
     TokenSearchRouteException
 )
 
@@ -69,7 +69,7 @@ class TokenFinder(DataFinder[Token]):
         # RAISES:
             *   TypeError
             *   TokenNullDatasetException
-            *   TokenSearchFailedException
+            *   TokenSearchException
         """
         method = "TokenFinder.find"
         
@@ -77,8 +77,8 @@ class TokenFinder(DataFinder[Token]):
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                TokenSearchFailedException(
-                    message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
+                TokenSearchException(
+                    message=f"{method}: {TokenSearchException.ERROR_CODE}",
                     ex=TokenSearchNullDatasetException(
                         f"{method}: {TokenSearchNullDatasetException.DEFAULT_MESSAGE}"
                     )
@@ -88,8 +88,8 @@ class TokenFinder(DataFinder[Token]):
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
-                TokenSearchFailedException(
-                    message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
+                TokenSearchException(
+                    message=f"{method}: {TokenSearchException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected List[Token], got {type(dataset).__name__} instead.")
                 )
             )
@@ -98,8 +98,8 @@ class TokenFinder(DataFinder[Token]):
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                TokenSearchFailedException(
-                    message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
+                TokenSearchException(
+                    message=f"{method}: {TokenSearchException.ERROR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -130,8 +130,8 @@ class TokenFinder(DataFinder[Token]):
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
-            TokenSearchFailedException(
-                message=f"{method}: {TokenSearchFailedException.ERROR_CODE}",
+            TokenSearchException(
+                message=f"{method}: {TokenSearchException.ERROR_CODE}",
                 ex=TokenSearchRouteException(f"{method}: {TokenSearchRouteException.DEFAULT_MESSAGE}")
             )
         )

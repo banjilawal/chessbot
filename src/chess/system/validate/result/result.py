@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from typing import Optional, TypeVar, Generic
-from chess.system import NotImplementedException, Result, ValidationResult
+from chess.system import MethodNotImplementedException, Result, ValidationResult
 
 T = TypeVar("T")
 
@@ -49,8 +49,8 @@ class ValidationResult(Result[T], Generic[T]):
     def empty(cls) -> ValidationResult[T]:
         method = "ValidationResult.empty"
         return cls(
-            exception=NotImplementedException(
-                f"{method}: {NotImplementedException.DEFAULT_MESSAGE}. ValidationResult cannot"
+            exception=MethodNotImplementedException(
+                f"{method}: {MethodNotImplementedException.DEFAULT_MESSAGE}. ValidationResult cannot"
                 f" be empty. It must have either a payload or an rollback_exception."
             )
         )

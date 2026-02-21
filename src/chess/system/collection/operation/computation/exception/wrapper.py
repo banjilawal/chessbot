@@ -7,25 +7,24 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import CollectionException, OperationFailedException
+from chess.system import CollectionOperationFailedException
 
 __all__ = [
-    # ======================# CALCULATION_FAILURE EXCEPTION #======================#
-    "ComputationFailedException",
+    # ======================# COMPUTATION_FAILURE #======================#
+    "ComputationException",
 ]
 
 
-# ======================# CALCULATION_FAILURE EXCEPTION #======================#
-class ComputationFailedException(CollectionException, OperationFailedException):
+# ======================# COMPUTATION_FAILURE #======================#
+class ComputationException(CollectionOperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a calculation operation failed. The encapsulated exceptions create
-        chain for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why a computation operation failed. The exception chain 
+        traces the ultimate source of failure.
 
     # PARENT:
-        *   DataException
         *   OperationFailedException
 
     # PROVIDES:
@@ -37,5 +36,5 @@ class ComputationFailedException(CollectionException, OperationFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CALCULATION_FAILURE"
-    DEFAULT_MESSAGE = "Calculation failed."
+    ERROR_CODE = "COMPUTATION_FAILURE"
+    DEFAULT_MESSAGE = "Computation failed."

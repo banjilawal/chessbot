@@ -21,7 +21,7 @@ __all__ = [
 # ======================# COORD_CONTEXT_SERVICE EXCEPTION #======================#
 class CoordContextServiceException(CoordContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an CoordContextService encountered an error which prevented the service from completing a task.

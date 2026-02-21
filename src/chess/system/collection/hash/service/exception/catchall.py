@@ -19,7 +19,7 @@ __all__ = [
 # ======================# HASH_SERVICE EXCEPTION #======================#
 class HashServiceException(ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Basic, Service Primitive

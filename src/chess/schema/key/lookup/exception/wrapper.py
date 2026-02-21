@@ -23,7 +23,7 @@ from chess.system import ForwardLookupFailedException
 # ======================# SCHEMA_LOOKUP_FAILURE EXCEPTION #======================#
 class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap an exception that hits the try-finally block of a SchemaLookup method.

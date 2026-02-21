@@ -18,7 +18,7 @@ __all__ = [
 # ======================# BUILD_FAILURE EXCEPTION #======================#
 class BuildFailedException(OperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Wrap debug exceptions indicating why a build operation failed. The encapsulated exceptions create a chain

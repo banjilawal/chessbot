@@ -10,7 +10,7 @@ __all__ = [
 # ======================# SNAPSHOT_SERVICE EXCEPTION #======================#
 class SnapshotServiceException(SnapshotException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an SnapshotService encountered an error which prevented the service from completing a task.

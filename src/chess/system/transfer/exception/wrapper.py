@@ -18,7 +18,7 @@ __all__ = [
 # ======================# TRANSFER_FAILURE EXCEPTION #======================#
 class TransferFailedException(OperationFailedException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an exception prevented a transfer operation from completing successfully.

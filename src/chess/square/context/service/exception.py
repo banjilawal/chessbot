@@ -19,7 +19,7 @@ __all__ = [
 # ======================# SQUARE_CONTEXT_SERVICE EXCEPTION #======================#
 class SquareContextServiceException(SquareContextException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an SquareContextService encountered an error which prevented the service from completing a task.

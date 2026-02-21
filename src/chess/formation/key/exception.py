@@ -18,7 +18,7 @@ __all__ = [
 # ======================# FORMATION_KEY EXCEPTION #======================#
 class FormationKeyException(ContextException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by OrderContext objects.

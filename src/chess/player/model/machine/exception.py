@@ -17,7 +17,7 @@ __all__ = [
 #======================# MACHINE_PLAYER EXCEPTION #======================#
 class MachinePlayerException(PlayerException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate an attribute, method, or operation organic to a MachinePlayer encountered a condition which

@@ -20,7 +20,7 @@ __all__ = [
 # ======================# SQUARE_SERVICE EXCEPTION #======================#
 class SquareServiceException(SquareException, ServiceException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that an SquareService encountered an error which prevented the service from completing a task.

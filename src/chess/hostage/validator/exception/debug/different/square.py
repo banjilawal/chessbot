@@ -18,7 +18,7 @@ from chess.hostage import HostageManifestException
 # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_SQUARE EXCEPTION #======================#
 class PrisonerCapturedOnDifferentSquareException(HostageManifestException):
     """
-    # ROLE: Exception Wrapper, Catchall Exception
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Indicate that a candidate failed its HostageManifest validation because the victor and prisoner were on
