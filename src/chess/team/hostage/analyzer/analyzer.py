@@ -11,7 +11,7 @@ from typing import cast
 
 from chess.token import Token, TokenService, CombatantToken, KingToken
 from chess.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
-from chess.team import Team, HostageAnalysisFailedException, TeamContext, TeamValidator
+from chess.team import Team, HostageAnalysisException, TeamContext, TeamValidator
 
 
 class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
@@ -63,7 +63,7 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
                 - On bidirectional: Team and Token
                 - On not related: Neither team, occupant nor exception.
         # RAISES:
-            *   HostageAnalysisFailedException
+            *   HostageAnalysisException
         """
         method = "HostageRelationAnalyzer.test"
         
@@ -72,8 +72,8 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                HostageAnalysisFailedException(
-                    message=f"{method}: {HostageAnalysisFailedException.ERROR_CODE}",
+                HostageAnalysisException(
+                    message=f"{method}: {HostageAnalysisException.ERROR_CODE}",
                     ex=team_validation.exception,
                 )
             )
@@ -83,8 +83,8 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
         piece_validation = piece_service.validator.validate(candidate_satellite)
         if piece_validation.is_failure:
             return RelationReport(
-                HostageAnalysisFailedException(
-                    message=f"{method}: {HostageAnalysisFailedException.ERROR_CODE}",
+                HostageAnalysisException(
+                    message=f"{method}: {HostageAnalysisException.ERROR_CODE}",
                     ex=piece_validation.exception,
                 )
             )
@@ -103,8 +103,8 @@ class HostageRelationAnalyzer(RelationAnalyzer[Team, Token]):
         if hostage_search.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                HostageAnalysisFailedException(
-                    message=f"{method}: {HostageAnalysisFailedException.ERROR_CODE}",
+                HostageAnalysisException(
+                    message=f"{method}: {HostageAnalysisException.ERROR_CODE}",
                     ex=hostage_search.exception,
                     )
                 )

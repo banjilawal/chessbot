@@ -1,7 +1,7 @@
-# src/chess/system/builder/exception/failure.py
+# src/chess/system/builder/exception/wrapper.py
 
 """
-Module: chess.system.builder.exception.failure
+Module: chess.system.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import OperationFailedException
 
 __all__ = [
-    # ======================# BUILD_FAILURE EXCEPTION #======================#
+    # ======================# BUILD_FAILURE #======================#
     "BuildException",
 ]
 
 
-# ======================# BUILD_FAILURE EXCEPTION #======================#
+# ======================# BUILD_FAILURE #======================#
 class BuildException(OperationFailedException):
     """
     # ROLE: Exception Wrapper
@@ -36,5 +36,5 @@ class BuildException(OperationFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BUILD_FAILED"
+    ERROR_CODE = "BUILD_FAILURE"
     DEFAULT_MESSAGE = "build failed."

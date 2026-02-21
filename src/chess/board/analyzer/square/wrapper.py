@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# BOARD_SQUARE_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-    "BoardSquareAnalysisFailedException",
+    "BoardSquareAnalysisException",
 ]
 
-from chess.system import AnalysisFailedException
+from chess.system import AnalysisException
 
 
 # ======================# BOARD_SQUARE_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-class BoardSquareAnalysisFailedException(AnalysisFailedException):
+class BoardSquareAnalysisException(AnalysisException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

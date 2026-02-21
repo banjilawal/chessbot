@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# ARENA_TEAM_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-    "ArenaTeamAnalysisFailedException",
+    "ArenaTeamAnalysisException",
 ]
 
-from chess.system import AnalysisFailedException
+from chess.system import AnalysisException
 
 
 # ======================# ARENA_TEAM_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-class ArenaTeamAnalysisFailedException(AnalysisFailedException):
+class ArenaTeamAnalysisException(AnalysisException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 

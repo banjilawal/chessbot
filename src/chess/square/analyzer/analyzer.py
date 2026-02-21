@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from chess.square import (
-    Square, SquareTokenAnalysisFailedException, SquareTokenAnalysisRouteException,  SquareValidator
+    Square, SquareTokenAnalysisException, SquareTokenAnalysisRouteException, SquareValidator
 )
 from chess.token import CombatantToken, KingToken, Token, TokenService
 from chess.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
@@ -82,8 +82,8 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                SquareTokenAnalysisFailedException(
-                    message=f"{method}: {SquareTokenAnalysisFailedException.ERROR_CODE}",
+                SquareTokenAnalysisException(
+                    message=f"{method}: {SquareTokenAnalysisException.ERROR_CODE}",
                     ex=square_validation.exception
                 )
             )
@@ -92,8 +92,8 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         if token_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                SquareTokenAnalysisFailedException(
-                    message=f"{method}: {SquareTokenAnalysisFailedException.ERROR_CODE}",
+                SquareTokenAnalysisException(
+                    message=f"{method}: {SquareTokenAnalysisException.ERROR_CODE}",
                     ex=token_validation.exception
                 )
             )
@@ -177,7 +177,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
                     - On Error:
                         - Exception
         # RAISES:
-            *   SquareTokenAnalysisFailedException
+            *   SquareTokenAnalysisException
             *   SquareTokenAnalysisRouteException
         """
         method = "SquareTokenRelationAnalyzer._combatant_square_analysis"
@@ -203,8 +203,8 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         
         # Return the exception chain if a predicate doesn't have an analysis route.
         return RelationReport.failure(
-            SquareTokenAnalysisFailedException(
-                message=f"{method}: {SquareTokenAnalysisFailedException.DEFAULT_MESSAGE}",
+            SquareTokenAnalysisException(
+                message=f"{method}: {SquareTokenAnalysisException.DEFAULT_MESSAGE}",
                 ex=SquareTokenAnalysisRouteException(
                     f"{method}: {SquareTokenAnalysisRouteException.DEFAULT_MESSAGE}"
                 )
@@ -233,7 +233,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
                     - On Error:
                         - Exception
         # RAISES:
-            *   SquareTokenAnalysisFailedException
+            *   SquareTokenAnalysisException
             *   SquareTokenAnalysisRouteException
         """
         method = "SquareTokenRelationAnalyzer._king_square_analysis"
@@ -244,8 +244,8 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         
         # Return the exception chain if a predicate doesn't have an analysis route.
         return RelationReport.failure(
-            SquareTokenAnalysisFailedException(
-                message=f"{method}: {SquareTokenAnalysisFailedException.DEFAULT_MESSAGE}",
+            SquareTokenAnalysisException(
+                message=f"{method}: {SquareTokenAnalysisException.DEFAULT_MESSAGE}",
                 ex=SquareTokenAnalysisRouteException(
                     f"{method}: {SquareTokenAnalysisRouteException.DEFAULT_MESSAGE}"
                 )

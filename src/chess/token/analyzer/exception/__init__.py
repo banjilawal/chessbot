@@ -14,4 +14,4 @@ None
 
 # Modules
 from .null import ReadinessStateNullException
-from .wrapper import  TokenReadniessAnalysisFailedException
+from .wrapper import  TokenReadniessAnalysisException

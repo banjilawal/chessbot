@@ -7,24 +7,25 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import WrapperException
+from chess.system import OperationFailedException
 
 __all__ = [
-    # ======================# RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-    "AnalysisFailedException",
+    # ======================# RELATION_ANALYSIS_FAILURE #======================#
+    "AnalysisException",
 ]
 
 
-# ======================# RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
-class AnalysisFailedException(WrapperException):
+# ======================# RELATION_ANALYSIS_FAILURE #======================#
+class AnalysisException(OperationFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
     # RESPONSIBILITIES:
-    1.  Wrap any exception that kills the relation test process before the status has been evaluated.
+    1.  Wrap debug exceptions indicating why an analysis operation failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
-        *   WrapperException
+        *   OperationFailedException
 
     # PROVIDES:
     None
@@ -35,5 +36,5 @@ class AnalysisFailedException(WrapperException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RELATION_ANALYSIS_FAILURE_ERROR"
+    ERROR_CODE = "RELATION_ANALYSIS_FAILURE"
     DEFAULT_MESSAGE = "Relation analysis failed."

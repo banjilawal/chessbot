@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.player import Player, PlayerValidator
-from chess.player.relation import PlayerTeamAnalysisFailedException
+from chess.player.relation import PlayerTeamAnalysisException
 from chess.team import Team, TeamContext, TeamService
 from chess.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
 
@@ -75,8 +75,8 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
         if player_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                PlayerTeamAnalysisFailedException(
-                    message=f"{method}: {PlayerTeamAnalysisFailedException.ERROR_CODE}",
+                PlayerTeamAnalysisException(
+                    message=f"{method}: {PlayerTeamAnalysisException.ERROR_CODE}",
                     ex=player_validation.exception
                 )
             )
@@ -88,8 +88,8 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                PlayerTeamAnalysisFailedException(
-                    message=f"{method}: {PlayerTeamAnalysisFailedException.ERROR_CODE}",
+                PlayerTeamAnalysisException(
+                    message=f"{method}: {PlayerTeamAnalysisException.ERROR_CODE}",
                     ex=team_validation.exception
                 )
             )
@@ -105,8 +105,8 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
         if search_result.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                PlayerTeamAnalysisFailedException(
-                    message=f"{method}: {PlayerTeamAnalysisFailedException.ERROR_CODE}",
+                PlayerTeamAnalysisException(
+                    message=f"{method}: {PlayerTeamAnalysisException.ERROR_CODE}",
                     ex=search_result.exception
                 )
             )

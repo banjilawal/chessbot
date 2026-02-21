@@ -14,4 +14,4 @@ None
 
 # Modules
 from .analyzer import ArenaTeamRelationAnalyzer
-from .wrapper import ArenaTeamAnalysisFailedException
+from .wrapper import ArenaTeamAnalysisException

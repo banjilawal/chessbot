@@ -14,4 +14,4 @@ None
 
 # Modules
 from .analyzer import BoardTokenRelationAnalyzer
-from .wrapper import BoardTokenAnalysisFailedException
+from .wrapper import BoardTokenAnalysisException

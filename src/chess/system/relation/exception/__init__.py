@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import NoAnalysisRouteException
-from .wrapper import AnalysisFailedException
+from .wrapper import AnalysisException

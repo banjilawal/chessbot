@@ -12,7 +12,7 @@ from typing import cast
 
 from chess.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
 from chess.token import (
-    ReadinessStateNullException, TokenException, ReadinessState, TokenReadniessAnalysisFailedException, CombatantToken,
+    ReadinessStateNullException, TokenException, ReadinessState, TokenReadniessAnalysisException, CombatantToken,
     KingToken, Token, TokenValidator
 )
 
@@ -35,8 +35,8 @@ class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
         if candidate_primary is None:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                TokenReadniessAnalysisFailedException(
-                    message=f"{method}: {TokenReadniessAnalysisFailedException.DEFAULT_MESSAGE}",
+                TokenReadniessAnalysisException(
+                    message=f"{method}: {TokenReadniessAnalysisException.DEFAULT_MESSAGE}",
                     ex=ReadinessStateNullException(f"{method}: {ReadinessStateNullException.DEFAULT_MESSAGE}")
                 )
             )
@@ -44,8 +44,8 @@ class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
         if not isinstance(candidate_primary, ReadinessState):
             # Return the exception chain on failure.
             return RelationReport.failure(
-                TokenReadniessAnalysisFailedException(
-                    message=f"{method}: {TokenReadniessAnalysisFailedException.DEFAULT_MESSAGE}",
+                TokenReadniessAnalysisException(
+                    message=f"{method}: {TokenReadniessAnalysisException.DEFAULT_MESSAGE}",
                     ex=TypeError(f"{method}: Expected TokenState, got {type(candidate_primary).__name__} instead.")
                 )
             )

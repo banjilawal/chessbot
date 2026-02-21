@@ -14,4 +14,4 @@ None
 
 # Modules
 from .analyzer import HostageRelationAnalyzer
-from .wrapper import HostageAnalysisFailedException
+from .wrapper import HostageAnalysisException

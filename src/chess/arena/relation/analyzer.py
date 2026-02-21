@@ -12,7 +12,7 @@ from typing import cast
 from chess.team import Team, TeamService
 from chess.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
 from chess.arena import (
-    Arena, ArenaSlotAlreadyOccupiedException, ArenaValidator, ArenaTeamAnalysisFailedException,
+    Arena, ArenaSlotAlreadyOccupiedException, ArenaValidator, ArenaTeamAnalysisException,
     TeamPlayingDifferentArenaException
 )
 
@@ -74,8 +74,8 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
         if arena_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                ArenaTeamAnalysisFailedException(
-                    message=f"{method}: {ArenaTeamAnalysisFailedException.ERROR_CODE}",
+                ArenaTeamAnalysisException(
+                    message=f"{method}: {ArenaTeamAnalysisException.ERROR_CODE}",
                     ex=arena_validation.exception
                 )
             )
@@ -87,8 +87,8 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                ArenaTeamAnalysisFailedException(
-                    message=f"{method}: {ArenaTeamAnalysisFailedException.ERROR_CODE}",
+                ArenaTeamAnalysisException(
+                    message=f"{method}: {ArenaTeamAnalysisException.ERROR_CODE}",
                     ex=team_validation.exception
                 )
             )
@@ -109,8 +109,8 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
                 return RelationReport.bidirectional(primary=arena, satellite=team)
             # If the black slot is occupied by some other team an error has occurred. Return the exception chain.
             return RelationReport.failure(
-                ArenaTeamAnalysisFailedException(
-                    message=f"{method}: {ArenaTeamAnalysisFailedException.ERROR_CODE}",
+                ArenaTeamAnalysisException(
+                    message=f"{method}: {ArenaTeamAnalysisException.ERROR_CODE}",
                     ex=TeamPlayingDifferentArenaException(
                         f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}"
                     )
@@ -125,8 +125,8 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
             return RelationReport.bidirectional(primary=arena, satellite=team)
         # If the white slot is occupied by some other team an error has occurred. Return the exception chain.
         return RelationReport.failure(
-            ArenaTeamAnalysisFailedException(
-                message=f"{method}: {ArenaTeamAnalysisFailedException.ERROR_CODE}",
+            ArenaTeamAnalysisException(
+                message=f"{method}: {ArenaTeamAnalysisException.ERROR_CODE}",
                 ex=TeamPlayingDifferentArenaException(f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}")
             )
         )

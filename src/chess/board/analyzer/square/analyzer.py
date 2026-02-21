@@ -11,7 +11,7 @@ from typing import cast
 
 from chess.square import Square, SquareContext, SquareService
 from chess.system import LoggingLevelRouter, RelationAnalyzer, RelationReport
-from chess.board import Board, BoardSquareAnalysisFailedException, BoardValidator
+from chess.board import Board, BoardSquareAnalysisException, BoardValidator
 
 
 class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
@@ -73,8 +73,8 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         if board_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                BoardSquareAnalysisFailedException(
-                    message=f"{method}: {BoardSquareAnalysisFailedException.ERROR_CODE}",
+                BoardSquareAnalysisException(
+                    message=f"{method}: {BoardSquareAnalysisException.ERROR_CODE}",
                     ex=board_validation.exception
                 )
             )
@@ -86,8 +86,8 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                BoardSquareAnalysisFailedException(
-                    message=f"{method}: {BoardSquareAnalysisFailedException.ERROR_CODE}",
+                BoardSquareAnalysisException(
+                    message=f"{method}: {BoardSquareAnalysisException.ERROR_CODE}",
                     ex=square_validation.exception
                 )
             )
@@ -102,8 +102,8 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
         if square_search.is_failure:
             # Return the exception chain on failure.
             return RelationReport.failure(
-                BoardSquareAnalysisFailedException(
-                    message=f"{method}: {BoardSquareAnalysisFailedException.ERROR_CODE}",
+                BoardSquareAnalysisException(
+                    message=f"{method}: {BoardSquareAnalysisException.ERROR_CODE}",
                     ex=square_search.exception
                 )
             )
