@@ -222,18 +222,22 @@ class SquareStack(StackService[Square]):
     ) -> DeletionResult[Square]:
         """
         # ACTION:
-            1.  If the id is not certified safe send the exception in the DeletionResult. Else, call
-                _delete_squares_by_search_result with the outcome of an id search.
-            2.  Forward the DeletionResult from _delete_squares_by_search_result to the deletion client.
+            1.  If the id is not certified safe send an exception in the DeletionResult.
+            2.  Create a temp variable for storing a square before it's deleted.
+            3.  Iterate through the squares.
+                    *   If a square's id matches the target record the square in a temp variable before deleting
+                        it from the list.
+            4.  After the loop is finishes, if the temp variable is not None send it in the deletion success result.
+                Else, send the nothing to delete result instead.
         # PARAMETERS:
                     *   id (int)
                     *   identity_service (IdentityService)
         # RETURNS:
-            *   InsertionResult[Square] containing either:
-                    - On failure: Exception.
-                    - On success: Square in the payload.
+            *   DeletionResult[Square]
         # RAISES:
             *   SquareStackException
+            *   PoppingSquareException
+            *   PoppingEmptySquareStackException
         """
         method = "SquareStack.delete_square_by_id"
         
@@ -264,14 +268,19 @@ class SquareStack(StackService[Square]):
                     )
                 )
             )
-        # --- Search the list for an item with target id. ---#
+        # --- Loop through the collection to ensure all matches are removed. ---#
         target = None
         for square in self._stack:
             if square.id == id:
+                # Record a hit before pulling it from the stack.
                 target = square
                 self._stack.remove(square)
+        # --- After the loop handle the two possible outcomes of purging the stack. ---#
+        
+        # Handle the case that at least one edge was removed
         if target is not None:
             return DeletionResult.success(payload=target)
+        # The default case is, no square had that id.
         return DeletionResult.nothing_to_delete()
     
     def number_of_occupied_squares(self) -> ComputationResult[int]:
@@ -471,7 +480,7 @@ class SquareStack(StackService[Square]):
                         ex=DeployingTeamRosterException(
                             message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                             ex=TeamPartiallyDeployedException(
-                                f"{method}: {TeamPartiallyDeployedException,DEFAULT_ERROR_MESSAGE}"
+                                f"{method}: {TeamPartiallyDeployedException.DEFAULT_MESSAGE}"
                             )
                         )
                     )

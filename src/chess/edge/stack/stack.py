@@ -12,12 +12,10 @@ from typing import List, Optional, cast
 
 from chess.edge import (
     AddingDuplicateEdgeException, Edge, EdgeContext, EdgeContextService, PoppingEdgeException, PushingEdgeException,
-    EdgeService,
-    EdgeStackException, PoppingEmptyEdgeStackException
+    EdgeService, EdgeStackException, PoppingEmptyEdgeStackException
 )
 from chess.system import (
-    DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult,
-    StackService
+    DeletionResult, IdFactory, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, StackService
 )
 
 
@@ -103,9 +101,9 @@ class EdgeStack(StackService[Edge]):
         # PARAMETERS:
             *   item (Edge)
         # RETURNS:
-            *   InsertionResult[Edge] containing either:
-                    - On failure: Exception.
-                    - On success: Edge in the payload.
+            *   InsertionResult[bool] containing either:
+                    - On failure: Exception and bool(False).
+                    - On success: bool(True) only
         # RAISES:
             *   EdgeStackException
             *   PushingEdgeException
@@ -138,7 +136,7 @@ class EdgeStack(StackService[Edge]):
                     )
                 )
             )
-        # --- Append the edge and send the successful InsertionResult. ---#
+        # --- Append the edge and send the success result. ---#
         self._stack.append(item)
         return InsertionResult.success()
     
@@ -153,7 +151,7 @@ class EdgeStack(StackService[Edge]):
         # RETURNS:
             *   DeletionResult[Edge] containing either:
                     - On failure: Exception.
-                    - On success: Edge in the payload.
+                    - On success: Edge.
         # RAISES:
             *   EdgeStackException
             *   PoppingEdgeException
@@ -187,19 +185,22 @@ class EdgeStack(StackService[Edge]):
     ) -> DeletionResult[Edge]:
         """
         # ACTION:
-            1.  If the label is not certified safe send the exception in the DeletionResult.
-            2.  Iterate through the list of edges deleting and edges which match the label.
-                _delete_Edges_by_search_result with the outcome of an id search.
-            2.  Forward the DeletionResult from _delete_Edges_by_search_result to the deletion client.
+            1.  If the label is not certified safe send an exception in the DeletionResult.
+            2.  Create a temp variable for storing a edge before it's deleted.
+            3.  Iterate through the edges.
+                    *   If a edge's id matches the target record the edge in a temp variable before deleting
+                        it from the list.
+            4.  After the loop is finishes, if the temp variable is not None send it in the deletion success result.
+                Else, send the nothing to delete result instead.
         # PARAMETERS:
                     *   label (int)
                     *   identity_service (IdentityService)
         # RETURNS:
-            *   InsertionResult[Edge] containing either:
-                    - On failure: Exception.
-                    - On success: Edge in the payload.
+            *   DeletionResult[Edge]
         # RAISES:
             *   EdgeStackException
+            *   PoppingEdgeException
+            *   PoppingEmptyEdgeStackException
         """
         method = "EdgeStack.delete_by_label"
         
@@ -217,7 +218,7 @@ class EdgeStack(StackService[Edge]):
                     )
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that the label is not certified safe.
         validation = identity_service.validate_id(candidate=label)
         if validation.is_failure:
             # Return the exception chain on failure.

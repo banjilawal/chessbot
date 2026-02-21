@@ -15,7 +15,6 @@ __all__ = [
     "EdgeServiceException",
 ]
 
-
 # ======================# EDGE_SERVICE EXCEPTION #======================#
 class EdgeServiceException(EdgeException, ServiceException):
     """
