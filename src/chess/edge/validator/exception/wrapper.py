@@ -21,7 +21,8 @@ class ValidatingEdgeException(EdgeException, ValidationFailedException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Edge. The exception chain traces the ultimate source of failure.
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Edge. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   EdgeException
