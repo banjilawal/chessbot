@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import NodeContextBuildRouteException
-from .wrapper import NodeContextBuildFailedException
+from .wrapper import NodeContextBuildException

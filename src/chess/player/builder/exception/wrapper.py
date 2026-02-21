@@ -9,16 +9,16 @@ version: 1.0.0
 
 
 from chess.player import PlayerException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# PLAYER_BUILD_FAILURE EXCEPTION #======================#
-    "PlayerBuildFailedException",
+    "PlayerBuildException",
 ]
 
 
 #======================# PLAYER_BUILD_FAILURE EXCEPTION #======================#
-class PlayerBuildFailedException(PlayerException, BuildFailedException):
+class PlayerBuildException(PlayerException, BuildException):
     """
     # ROLE: Exception Wrapper
 
@@ -29,7 +29,7 @@ class PlayerBuildFailedException(PlayerException, BuildFailedException):
 
     # PARENT:
         *   PlayerException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

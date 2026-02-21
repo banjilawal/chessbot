@@ -7,7 +7,7 @@ Created: 2025-10-31
 version: 1.0.0
 """
 
-from chess.system import SearchContextException, NullException, BuildFailedException, ValidationException
+from chess.system import SearchContextException, NullException, BuildException, ValidationException
 
 __all__ = [
     "ResidentSearchContextException",
@@ -19,7 +19,7 @@ __all__ = [
     "ExcessiveResidentSearchParamsException",
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
-    "ResidentSearchContextBuildFailedException",
+    "ResidentSearchContextBuildException",
 ]
 
 
@@ -71,7 +71,7 @@ class ExcessiveResidentSearchParamsException(ResidentSearchContextException):
 
 
 # #======================# RESIDENT_SEARCH_CONTEXT BUILD EXCEPTION #======================#
-class ResidentSearchContextBuildFailedException(ResidentSearchContextException, BuildFailedException):
+class ResidentSearchContextBuildException(ResidentSearchContextException, BuildException):
     """"""
     ERROR_CODE = "RESIDENT_SEARCH_CONTEXT_BUILD_FAILED"
     DEFAULT_MESSAGE = "ResidentFilter build failed."

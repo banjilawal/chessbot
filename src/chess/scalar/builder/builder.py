@@ -9,7 +9,7 @@ version: 1.0.0
 from wsgiref.validate import validator
 
 from chess.system import Builder, BuildResult, LoggingLevelRouter
-from chess.scalar import Scalar, ScalarBuildFailedException, ScalarValidator
+from chess.scalar import Scalar, ScalarBuildException, ScalarValidator
 
 
 class ScalarBuilder(Builder[Scalar]):
@@ -57,7 +57,7 @@ class ScalarBuilder(Builder[Scalar]):
                 - On failure: Exception.
     
         # RAISES:
-            * ScalarBuildFailedException
+            * ScalarBuildException
         """
         method = "ScalarBuilder.builder"
         
@@ -70,9 +70,9 @@ class ScalarBuilder(Builder[Scalar]):
         
         except Exception as ex:
             return BuildResult.failure(
-                ScalarBuildFailedException(
+                ScalarBuildException(
                     ex=ex,
                     message=f"{method}: "
-                            f"{ScalarBuildFailedException.DEFAULT_MESSAGE}"
+                            f"{ScalarBuildException.DEFAULT_MESSAGE}"
                 )
             )

@@ -9,26 +9,26 @@ version: 1.0.0
 
 __all__ = [
     # ======================# CAPTIVITY_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-    "CaptivityContextBuildFailedException",
+    "CaptivityContextBuildException",
 ]
 
 from chess.hostage import CaptivityContextException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 
 # ======================# CAPTIVITY_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-class CaptivityContextBuildFailedException(CaptivityContextException, BuildFailedException):
+class CaptivityContextBuildException(CaptivityContextException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the CaptivityContext build creates an exception. Failed check exceptions are encapsulated
-        in an CaptivityContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The CaptivityContextBuildFailedException provides a trace for debugging and application recovery.
+        in an CaptivityContextBuildException which is sent to the caller in a BuildResult.
+    2.  The CaptivityContextBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   CaptivityContextException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.scalar import ScalarException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# SCALAR_BUILD_FAILURE EXCEPTION #======================#
-    "ScalarBuildFailedException",
+    "ScalarBuildException",
 ]
 
 
 # ======================# SCALAR_BUILD_FAILURE EXCEPTION #======================#
-class ScalarBuildFailedException(ScalarException, BuildFailedException):
+class ScalarBuildException(ScalarException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the Scalar build creates an exception. Failed check exceptions are encapsulated
-        in an ScalarBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The ScalarBuildFailedException provides a trace for debugging and application recovery.
+        in an ScalarBuildException which is sent to the caller in a BuildResult.
+    2.  The ScalarBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   ScalarException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

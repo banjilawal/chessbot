@@ -14,4 +14,4 @@ None
 
 # Modules
 from .router import CaptivityContextBuildRouteException
-from .wrapper import CaptivityContextBuildFailedException
+from .wrapper import CaptivityContextBuildException

@@ -9,10 +9,10 @@ version: 1.0.0
 
 
 
-from chess.system import BuildFailedException
+from chess.system import BuildException
 from chess.promotion import PromotionEventException
 
 
-class PromotionEventBuildFailedException(PromotionEventException, BuildFailedException):
+class PromotionEventBuildException(PromotionEventException, BuildException):
     ERROR_CODE = "PROMOTION_EVENT_ERROR"
     DEFAULT_MESSAGE = "PromotionEvent raised an exception."

@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# TEAM_HASH_BUILD_FAILURE EXCEPTION #======================#
-    "TeamHashBuildFailedException",
+    "TeamHashBuildException",
 ]
 
 from chess.team import TeamHashException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 
 # ======================# TEAM_HASH_BUILD_FAILURE EXCEPTION #======================#
-class TeamHashBuildFailedException(TeamHashException, BuildFailedException):
+class TeamHashBuildException(TeamHashException, BuildException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class TeamHashBuildFailedException(TeamHashException, BuildFailedException):
 
     # PARENT:
         *   TeamException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

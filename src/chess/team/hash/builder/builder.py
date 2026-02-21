@@ -12,7 +12,7 @@ from __future__ import annotations
 from chess.schema import SchemaService
 from chess.system import BuildResult, Builder, LoggingLevelRouter
 from chess.team import (
-    BlackTeamHasWrongSchemaException, Team, TeamHash, TeamHashBuildFailedException,
+    BlackTeamHasWrongSchemaException, Team, TeamHash, TeamHashBuildException,
     TeamSchemaCollisionException, TeamValidator, WhiteTeamHasWrongSchemaException
 )
 
@@ -35,8 +35,8 @@ class TeamHashBuilder(Builder[TeamHash]):
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamHashBuildFailedException(
-                    message=f"{method}: {TeamHashBuildFailedException.DEFAULT_MESSAGE}",
+                TeamHashBuildException(
+                    message=f"{method}: {TeamHashBuildException.DEFAULT_MESSAGE}",
                     ex=white_team_validation_result.exception
                 )
             )
@@ -44,8 +44,8 @@ class TeamHashBuilder(Builder[TeamHash]):
         if white_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamHashBuildFailedException(
-                    message=f"{method}: {TeamHashBuildFailedException.DEFAULT_MESSAGE}",
+                TeamHashBuildException(
+                    message=f"{method}: {TeamHashBuildException.DEFAULT_MESSAGE}",
                     ex=WhiteTeamHasWrongSchemaException(
                         f"{method}: {WhiteTeamHasWrongSchemaException.DEFAULT_MESSAGE}",
                     )
@@ -55,8 +55,8 @@ class TeamHashBuilder(Builder[TeamHash]):
         if black_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamHashBuildFailedException(
-                    message=f"{method}: {TeamHashBuildFailedException.DEFAULT_MESSAGE}",
+                TeamHashBuildException(
+                    message=f"{method}: {TeamHashBuildException.DEFAULT_MESSAGE}",
                     ex=BlackTeamHasWrongSchemaException(
                         f"{method}: {BlackTeamHasWrongSchemaException.DEFAULT_MESSAGE}",
                     )
@@ -66,8 +66,8 @@ class TeamHashBuilder(Builder[TeamHash]):
         if black_team.schema == white_team.schema:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamHashBuildFailedException(
-                    message=f"{method}: {TeamHashBuildFailedException.DEFAULT_MESSAGE}",
+                TeamHashBuildException(
+                    message=f"{method}: {TeamHashBuildException.DEFAULT_MESSAGE}",
                     ex=TeamSchemaCollisionException(
                         f"{method}:{TeamSchemaCollisionException.DEFAULT_MESSAGE}",
                     )

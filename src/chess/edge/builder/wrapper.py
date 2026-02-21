@@ -8,13 +8,13 @@ version: 1.0.0
 """
 
 
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# EDGE_BUILD_FAILURE EXCEPTION #======================#
-    "EdgeBuildFailedException",
+    "EdgeBuildException",
 ]
 
 
-class EdgeBuildFailedException(BuildFailedException):
+class EdgeBuildException(BuildException):
     pass

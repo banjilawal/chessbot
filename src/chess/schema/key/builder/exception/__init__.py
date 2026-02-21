@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import SchemaKeyBuildRouteException
-from .wrapper import SchemaKeyBuildFailedException
+from .wrapper import SchemaKeyBuildException

@@ -7,7 +7,7 @@ Created: 2025-10-31
 version: 1.0.0
 """
 
-from chess.system import SearchContextException, NullException, BuildFailedException, ValidationException
+from chess.system import SearchContextException, NullException, BuildException, ValidationException
 
 __all__ = [
     "VisitorSearchContextException",
@@ -19,7 +19,7 @@ __all__ = [
     "ExcessiveVisitorSearchParamsException",
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
-    "VisitorSearchContextBuildFailedException",
+    "VisitorSearchContextBuildException",
 ]
 
 
@@ -71,7 +71,7 @@ class ExcessiveVisitorSearchParamsException(VisitorSearchContextException):
 
 
 # #======================# VISITOR_SEARCH_CONTEXT BUILD EXCEPTION #======================# 
-class VisitorSearchContextBuildFailedException(VisitorSearchContextException, BuildFailedException):
+class VisitorSearchContextBuildException(VisitorSearchContextException, BuildException):
     """
     Raised when VisitorSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new visitorSearchContext

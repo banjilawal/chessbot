@@ -72,7 +72,7 @@ class GameContextBuilder(Builder[GameContext]):
 
         # RAISES:
             *   ZeroGameContextFlagsException
-            *   GameContextBuildFailedException
+            *   GameContextBuildException
             *   ExcessiveGameContextFlagsException
         """
         method = "GameSearchContextBuilder.build"
@@ -114,7 +114,7 @@ class GameContextBuilder(Builder[GameContext]):
             BuildResult.failure(
                 UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception and wrap A GameContextBuildFailedException around it then
+        # Finally, catch any missed exception and wrap A GameContextBuildException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(

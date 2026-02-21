@@ -8,28 +8,28 @@ version: 1.0.0
 """
 
 from chess.game import GameException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 
 __all__ = [
     # ======================# GAME_BUILD_FAILURE EXCEPTION #======================#
-    "GameBuildFailedException",
+    "GameBuildException",
 ]
 
 
 # ======================# GAME_BUILD_FAILURE EXCEPTION #======================#
-class GameBuildFailedException(GameException, BuildFailedException):
+class GameBuildException(GameException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the Game build creates an exception. Failed check exceptions are encapsulated
-        in an GameBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The GameBuildFailedException provides a trace for debugging and application recovery.
+        in an GameBuildException which is sent to the caller in a BuildResult.
+    2.  The GameBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   GameException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

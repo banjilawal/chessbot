@@ -10,7 +10,7 @@ version: 1.0.0
 
 from chess.system import (
     BuildOptionSelectionTooLargeException, ContextException, NoBuildOptionSelectedException, NullException,
-    BuildFailedException, ValidationException,
+    BuildException, ValidationException,
 )
 
 __all__ = [
@@ -25,7 +25,7 @@ __all__ = [
     "MoreThanOneRankSearchOptionPickedException",
     
 #========================= RANK_SEARCH_CONTEXT BUILD EXCEPTION =========================#
-    "RankSearchContextBuildFailedException",
+    "RankSearchContextBuildException",
 ]
 
 
@@ -68,7 +68,7 @@ class MoreThanOneRankSearchOptionPickedException(
 
 
 #========================= RANK_SEARCH_CONTEXT BUILD EXCEPTION =========================#
-class RankSearchContextBuildFailedException(RankSearchContextException, BuildFailedException):
+class RankSearchContextBuildException(RankSearchContextException, BuildException):
     """
     Catchall Exception for RankSearchContextBuilder when it encounters an error building
     a RankSearchContext.

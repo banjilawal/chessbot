@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.agent import PlayerAgent, AgentService, UniqueAgentDataService
 from chess.board import BoardService
 from chess.team import Team, UniqueTeamDataService
-from chess.game import Game, GameBuildFailedException
+from chess.game import Game, GameBuildException
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, id_emitter
 
 
@@ -69,7 +69,7 @@ class GameBuilder(Builder[Game]):
             - On failure: Exception.
     
         RAISES:
-            *   GameBuildFailedException
+            *   GameBuildException
         """
         method = "GameBuilder.builder"
         
@@ -113,8 +113,8 @@ class GameBuilder(Builder[Game]):
             return BuildResult.success(game)
         
         # Finally return a BuildResult containing any unhandled exception insided an
-        # GameBuildFailedException
+        # GameBuildException
         except Exception as ex:
             return BuildResult.failure(
-                GameBuildFailedException(ex=ex, message=f"{method}: {GameBuildFailedException.DEFAULT_MESSAGE}")
+                GameBuildException(ex=ex, message=f"{method}: {GameBuildException.DEFAULT_MESSAGE}")
             )

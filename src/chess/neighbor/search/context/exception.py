@@ -7,7 +7,7 @@ version: 1.0.0
 """
 
 
-from chess.system import ContextException, NullException, BuildFailedException, ValidationException
+from chess.system import ContextException, NullException, BuildException, ValidationException
 
 __all__ = [
     'VisitationSearchContextException',
@@ -21,7 +21,7 @@ __all__ = [
     'VisitationInvalidRankNameParamException',
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
-    'VisitationSearchContextBuildFailedException',
+    'VisitationSearchContextBuildException',
 ]
 
 
@@ -91,7 +91,7 @@ class VisitationInvalidRankNameParamException(VisitationSearchContextException):
 
 
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTION #======================#
-class VisitationSearchContextBuildFailedException(VisitationSearchContextException, BuildFailedException):
+class VisitationSearchContextBuildException(VisitationSearchContextException, BuildException):
     """
     Raised when VisitationSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new visitationSearchContext

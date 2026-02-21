@@ -9,27 +9,27 @@ version: 1.0.0
 
 
 from chess.board import BoardException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# Board_BUILD_FAILURE EXCEPTION #======================#
-    "BoardBuildFailedException",
+    "BoardBuildException",
 ]
 
 
 # ======================# BOARD_BUILD_FAILURE EXCEPTION #======================#
-class BoardBuildFailedException(BoardException, BuildFailedException):
+class BoardBuildException(BoardException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the Board build creates an exception. Failed check exceptions are encapsulated
-        in an BoardBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The BoardBuildFailedException provides a trace for debugging and application recovery.
+        in an BoardBuildException which is sent to the caller in a BuildResult.
+    2.  The BoardBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   BoardException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from chess.schema.key.builder.exception import SchemaKeyBuildFailedException, SchemaKeyBuildRouteException
+from chess.schema.key.builder.exception import SchemaKeyBuildException, SchemaKeyBuildRouteException
 from chess.system import (
     BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
@@ -66,7 +66,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
                     - On success: SchemaKey in the payload.
         # RAISES:
             *   ZeroSchemaKeysException
-            *   SchemaKeyBuildFailedException
+            *   SchemaKeyBuildException
             *   ExcessiveSchemaKeysException
         """
         method = "SchemaKeyBuilder.build"
@@ -79,8 +79,8 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                SchemaKeyBuildFailedException(
-                    message=f"{method}: {SchemaKeyBuildFailedException.ERROR_CODE}",
+                SchemaKeyBuildException(
+                    message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
                     ex=ZeroSchemaKeysException(f"{method}: {ZeroSchemaKeysException.DEFAULT_MESSAGE}")
                 )
             )
@@ -88,8 +88,8 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                SchemaKeyBuildFailedException(
-                    message=f"{method}: {SchemaKeyBuildFailedException.ERROR_CODE}",
+                SchemaKeyBuildException(
+                    message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
                     ex=ExcessiveSchemaKeysException(f"{method}: {ExcessiveSchemaKeysException}")
                 )
             )
@@ -101,8 +101,8 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    SchemaKeyBuildFailedException(
-                        message=f"{method}: {SchemaKeyBuildFailedException.ERROR_CODE}",
+                    SchemaKeyBuildException(
+                        message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -115,8 +115,8 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    SchemaKeyBuildFailedException(
-                        message=f"{method}: {SchemaKeyBuildFailedException.ERROR_CODE}",
+                    SchemaKeyBuildException(
+                        message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -125,8 +125,8 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
         
         # The default path returns failure
         return BuildResult.failure(
-            SchemaKeyBuildFailedException(
-                message=f"{method}: {SchemaKeyBuildFailedException.ERROR_CODE}",
+            SchemaKeyBuildException(
+                message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
                 ex=SchemaKeyBuildRouteException(f"{method}: {SchemaKeyBuildRouteException.DEFAULT_MESSAGE}")
             )
         )

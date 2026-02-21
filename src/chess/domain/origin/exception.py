@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import (
-    ChessException, NullException, ValidationException, BuildFailedException, InconsistencyException
+    ChessException, NullException, ValidationException, BuildException, InconsistencyException
 )
 
 __all__ = [
@@ -50,7 +50,7 @@ class InvalidDomainOriginException(DomainOriginException, ValidationException):
 
 
 #====================== DOMAIN_ORIGIN BUILD EXCEPTION #======================#
-class DomainOriginBuildFailedException(DomainOriginException, BuildFailedException):
+class DomainOriginBuildFailedException(DomainOriginException, BuildException):
     """Catchall Exception for DomainOriginBuilder when it stops because of an error."""
     ERROR_CODE = "DOMAIN_ORIGIN_BUILD_FAILED"
     DEFAULT_MESSAGE = "DomainOrigin build failed."

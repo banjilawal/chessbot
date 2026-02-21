@@ -8,7 +8,7 @@ Version: 1.0.1
 """
 
 from chess.system import (
-  ChessException, NullException, ValidationException, BuildFailedException, InconsistencyException
+    ChessException, NullException, ValidationException, BuildException, InconsistencyException
 )
 
 
@@ -27,7 +27,7 @@ __all__ = [
   "CheckmatedKingCannotActException",
 
 #====================== TURN_SCENE BUILD EXCEPTION #======================#
-  "TurnSceneBuildFailedException",
+    "TurnSceneBuildException",
 
 #====================== TURN_SCENE SQUARE CONSISTENCY EXCEPTION #======================#
   "TurnSceneSquareNotFoundException",
@@ -62,7 +62,7 @@ class InvalidTurnSceneException(TurnSceneException, ValidationException):
 
 
 #====================== TURN_SCENE BUILD EXCEPTION #======================#
-class TurnSceneBuildFailedException(TurnSceneException, BuildFailedException):
+class TurnSceneBuildException(TurnSceneException, BuildException):
   """"""
   ERROR_CODE = "TURN_SCENE_BUILD_FAILED"
   DEFAULT_MESSAGE = "TurnScene build failed."

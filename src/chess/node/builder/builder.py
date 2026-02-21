@@ -52,7 +52,7 @@ class NodeBuilder(Builder[Node]):
                     - On failure: Exception.
                     - On success: Node in the payload.
         # RAISES:
-            *   NodeBuildFailedException
+            *   NodeBuildException
         """
         method = "NodeBuilder.build"
         

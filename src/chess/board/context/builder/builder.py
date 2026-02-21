@@ -12,7 +12,7 @@ from typing import Optional
 from chess.arena import Arena, ArenaService
 from chess.system import Builder, BuildResult, IdentityService
 from chess.board import (
-    BoardContextBuildRouteException, ZeroBoardContextFlagsException, BoardContext, BoardContextBuildFailedException,
+    BoardContextBuildRouteException, ZeroBoardContextFlagsException, BoardContext, BoardContextBuildException,
     ExcessiveBoardContextFlagsException
 )
 
@@ -65,7 +65,7 @@ class BoardContextBuilder(Builder[BoardContext]):
                     - On success: BoardContext in the payload.
         # RAISES:
             *   ZeroBoardContextFlagsException
-            *   BoardContextBuildFailedException
+            *   BoardContextBuildException
             *   ExcessiveBoardContextFlagsException
             *   BoardContextBuildRouteException
         """
@@ -79,8 +79,8 @@ class BoardContextBuilder(Builder[BoardContext]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                BoardContextBuildFailedException(
-                    message=f"{method}: {BoardContextBuildFailedException.DEFAULT_MESSAGE}",
+                BoardContextBuildException(
+                    message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
                     ex=ZeroBoardContextFlagsException(
                         f"{method}: {ZeroBoardContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -90,8 +90,8 @@ class BoardContextBuilder(Builder[BoardContext]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                BoardContextBuildFailedException(
-                    message=f"{method}: {BoardContextBuildFailedException.DEFAULT_MESSAGE}",
+                BoardContextBuildException(
+                    message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
                     ex=ExcessiveBoardContextFlagsException(
                         f"{method}: {ExcessiveBoardContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -105,8 +105,8 @@ class BoardContextBuilder(Builder[BoardContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    BoardContextBuildFailedException(
-                        message=f"{method}: {BoardContextBuildFailedException.DEFAULT_MESSAGE}",
+                    BoardContextBuildException(
+                        message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -119,8 +119,8 @@ class BoardContextBuilder(Builder[BoardContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    BoardContextBuildFailedException(
-                        message=f"{method}: {BoardContextBuildFailedException.DEFAULT_MESSAGE}",
+                    BoardContextBuildException(
+                        message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -129,8 +129,8 @@ class BoardContextBuilder(Builder[BoardContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            BoardContextBuildFailedException(
-                message=f"{method}: {BoardContextBuildFailedException.DEFAULT_MESSAGE}",
+            BoardContextBuildException(
+                message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
                 ex=BoardContextBuildRouteException(f"{method}: {BoardContextBuildRouteException.DEFAULT_MESSAGE}")
             )
         )

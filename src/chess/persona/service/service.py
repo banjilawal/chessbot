@@ -11,7 +11,7 @@ from typing import Dict, List, Optional, cast
 
 
 from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankService, Rook
-from chess.rank.factory.exception.wrapper import RankBuildFailedException
+from chess.rank.factory.exception.wrapper import RankBuildException
 from chess.system import (
     BuildResult, ComputationResult, HashService, LoggingLevelRouter, Result, SearchResult,
     id_emitter
@@ -189,8 +189,8 @@ class PersonaService(HashService[Persona]):
     #             # Return exception chain on failure.
     #             PersonaServiceException(
     #                 message=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERROR_CODE}",
-    #                 ex=RankBuildFailedException(
-    #                     message=f"{method}: {RankBuildFailedException.ERROR_CODE}",
+    #                 ex=RankBuildException(
+    #                     message=f"{method}: {RankBuildException.ERROR_CODE}",
     #                     ex=validation.exception
     #                 )
     #             )

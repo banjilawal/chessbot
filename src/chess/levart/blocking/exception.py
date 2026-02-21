@@ -48,7 +48,7 @@ See the list of exception in the `__all__` list following (e.g., `EventException
 """
 
 
-from chess.system import ChessException, NullException, BuildFailedException, ValidationException
+from chess.system import ChessException, NullException, BuildException, ValidationException
 
 __all__ = [
   'BlockingEventException',
@@ -114,7 +114,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 #
 # #======================# BLOCKING_EVENT BUILD EXCEPTION #======================#
-# class BlockingEventExceptionBuildFailedException(BlockingEventException, BuildFailedException):
+# class BlockingEventExceptionBuildFailedException(BlockingEventException, BuildException):
 #   """
 #   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
 #   during builder.
@@ -158,7 +158,7 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # From `chess.system`:
 #   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
 #   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
-#         `BuildFailedException`.
+#         `BuildException`.
 #
 # CONTAINS:
 # --------

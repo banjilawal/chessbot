@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import EdgeContextBuildRouteException
-from .wrapper import EdgeContextBuildFailedException
+from .wrapper import EdgeContextBuildException

@@ -86,7 +86,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
 
         # RAISES:
             *   ZeroSnapshotContextFlagsException
-            *   SnapshotContextBuildFailedException
+            *   SnapshotContextBuildException
             *   ExcessiveSnapshotContextFlagsException
         """
         method = "SnapshotContextBuilder.build"
@@ -135,7 +135,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             BuildResult.failure(
                 UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception and wrap A SnapshotContextBuildFailedException around it then
+        # Finally, catch any missed exception and wrap A SnapshotContextBuildException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(

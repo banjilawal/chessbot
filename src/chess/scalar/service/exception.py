@@ -7,7 +7,7 @@ Created: 2025-09-11
 version: 1.0.0
 """
 
-from chess.system import ServiceException, NullException, ValidationException, BuildFailedException
+from chess.system import ServiceException, NullException, ValidationException, BuildException
 
 __all__ = [
   "ScalarServiceException",
@@ -17,7 +17,7 @@ __all__ = [
   "InvalidScalarServiceException",
   
 #======================# SCALARSERVICE BUILD EXCEPTION #======================#
-  "ScalarBuildFailedException",
+    "ScalarBuildException",
 ]
 
 class ScalarServiceException(ServiceException):
@@ -44,7 +44,7 @@ class InvalidScalarServiceException(ScalarServiceException, ValidationException)
 
 
 #======================# SCALARSERVICE BUILD EXCEPTION #======================#
-class ScalarBuildFailedException(ScalarServiceException, BuildFailedException):
+class ScalarBuildException(ScalarServiceException, BuildException):
   """Catchall Exception for ScalarServiceBuilder when it encounters an error building a ScalarService."""
   ERROR_CODE = "SCALAR_SERVICE_BUILD_FAILED"
   DEFAULT_MESSAGE = "ScalarService build failed."

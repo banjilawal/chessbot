@@ -11,18 +11,18 @@ from chess.system import OperationFailedException
 
 __all__ = [
     # ======================# BUILD_FAILURE EXCEPTION #======================#
-    "BuildFailedException",
+    "BuildException",
 ]
 
 
 # ======================# BUILD_FAILURE EXCEPTION #======================#
-class BuildFailedException(OperationFailedException):
+class BuildException(OperationFailedException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a build operation failed. The encapsulated exceptions create a chain
-        for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why a build operation failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   OperationFailedException

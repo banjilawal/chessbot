@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import TeamContextBuildRouteException
-from .wrapper import TeamContextBuildFailedException
+from .wrapper import TeamContextBuildException

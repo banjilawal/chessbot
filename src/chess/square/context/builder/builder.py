@@ -15,7 +15,7 @@ from chess.coord import Coord, CoordService
 from chess.square.state import SquareState
 from chess.system import Builder, BuildResult, IdentityService
 from chess.square import (
-    SquareContextBuildRouteException, ZeroSquareContextFlagsException, SquareContext, SquareContextBuildFailedException,
+    SquareContextBuildRouteException, ZeroSquareContextFlagsException, SquareContext, SquareContextBuildException,
     ExcessiveSquareContextFlagsException
 )
 from chess.token import Token, TokenService
@@ -81,7 +81,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                         - On success: SquareContext in the payload.
             # RAISES:
                 *   ZeroSquareContextFlagsException
-                *   SquareContextBuildFailedException
+                *   SquareContextBuildException
                 *   ExcessiveSquareContextFlagsException
                 *   SquareContextBuildRouteException
             """
@@ -95,8 +95,8 @@ class SquareContextBuilder(Builder[SquareContext]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                SquareContextBuildFailedException(
-                    message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                SquareContextBuildException(
+                    message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
                     ex=ZeroSquareContextFlagsException(
                         f"{method}: {ZeroSquareContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -106,8 +106,8 @@ class SquareContextBuilder(Builder[SquareContext]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                SquareContextBuildFailedException(
-                    message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                SquareContextBuildException(
+                    message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
                     ex=ExcessiveSquareContextFlagsException(
                         f"{method}: {ExcessiveSquareContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -121,8 +121,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildFailedException(
-                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                    SquareContextBuildException(
+                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -135,8 +135,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildFailedException(
-                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                    SquareContextBuildException(
+                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -149,8 +149,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildFailedException(
-                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                    SquareContextBuildException(
+                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -163,8 +163,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildFailedException(
-                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                    SquareContextBuildException(
+                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -177,8 +177,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildFailedException(
-                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                    SquareContextBuildException(
+                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -190,8 +190,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             if not isinstance(state, SquareState):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    SquareContextBuildFailedException(
-                        message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+                    SquareContextBuildException(
+                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
                         ex=TypeError(
                             f"{method}: Was expecting a SquareState, got {type(state).__name__} instead."
                         )
@@ -202,8 +202,8 @@ class SquareContextBuilder(Builder[SquareContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            SquareContextBuildFailedException(
-                message=f"{method}: {SquareContextBuildFailedException.DEFAULT_MESSAGE}",
+            SquareContextBuildException(
+                message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
                 ex=SquareContextBuildRouteException(f"{method}: {SquareContextBuildRouteException.DEFAULT_MESSAGE}")
             )
         )

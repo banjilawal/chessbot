@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import SquareContextBuildRouteException
-from .wrapper import SquareContextBuildFailedException
+from .wrapper import SquareContextBuildException

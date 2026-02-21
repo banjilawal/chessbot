@@ -27,7 +27,7 @@ class FormationKeyBuildFailedException(FormationKeyException, BuildFailedExcepti
         # RESPONSIBILITIES:
 
     # PARENT:
-        *   BuildFailedException
+        *   BuildException
         *   FormationKeyException
 
     # PROVIDES:

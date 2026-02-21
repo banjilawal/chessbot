@@ -141,7 +141,7 @@ RETURNS:
     - On failure: Error information and error details
 
 RAISES:
-  `ScalarBuildFailedException`: Wraps any underlying validate failures that occur during the construction
+  `ScalarBuildException`: Wraps any underlying validate failures that occur during the construction
   process. This includes:
     * `NullScalarException`: if `candidate` is validation
     * `TypeError`: if `candidate` is not Scalar
@@ -282,7 +282,7 @@ The major theme influencing the modules design are
 # SECTION 8 - Contains:
 See the list of exception in the `__all__` list following (e.g., `EventException`,`TransactionException`).
 """
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 # src/chess/vector/rollback_exception.py
 
@@ -324,7 +324,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
-        `BuildFailedException`.
+        `BuildException`.
 
 CONTAINS:
 --------

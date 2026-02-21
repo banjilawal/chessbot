@@ -16,7 +16,7 @@ class RankContextBuildFailedException(RankContextException, BuildFailedException
 
     # PARENT:
         *   RankContextException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

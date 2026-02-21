@@ -13,4 +13,4 @@ version: 1.0.0
 from .debug import *
 
 # Module
-from .wrapper import BoardBuildFailedException
+from .wrapper import BoardBuildException

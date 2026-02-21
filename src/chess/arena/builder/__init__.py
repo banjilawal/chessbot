@@ -14,5 +14,5 @@ None
 
 # Modules
 from .builder import ArenaBuilder
-from .exception import ArenaBuildFailedException
+from .exception import ArenaBuildException
 

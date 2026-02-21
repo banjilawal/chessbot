@@ -80,7 +80,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
 
         # RAISES:
             *   ZeroArenaContextFlagsException
-            *   ArenaContextBuildFailedException
+            *   ArenaContextBuildException
             *   ExcessiveArenaContextFlagsException
         """
         method = "ArenaSearchContextBuilder.builder"
@@ -146,7 +146,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
             BuildResult.failure(
                 UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception, wrap an ArenaContextBuildFailedException around it then
+        # Finally, catch any missed exception, wrap an ArenaContextBuildException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(

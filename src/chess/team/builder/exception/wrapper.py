@@ -8,28 +8,28 @@ version: 1.0.0
 """
 
 from chess.team import TeamException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 
 __all__ = [
     # ======================# TEAM_BUILD_FAILURE EXCEPTION #======================#
-    "TeamBuildFailedException",
+    "TeamBuildException",
 ]
 
 
 # ======================# TEAM_BUILD_FAILURE EXCEPTION #======================#
-class TeamBuildFailedException(TeamException, BuildFailedException):
+class TeamBuildException(TeamException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the Team build creates an exception. Failed check exceptions are encapsulated
-        in an TeamBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The TeamBuildFailedException provides a trace for debugging and application recovery.
+        in an TeamBuildException which is sent to the caller in a BuildResult.
+    2.  The TeamBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   TeamException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

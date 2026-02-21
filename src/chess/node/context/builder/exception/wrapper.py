@@ -7,29 +7,29 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from chess.system import BuildFailedException
+from chess.system import BuildException
 from chess.node import NodeContextException
 
 
 __all__ = [
     # ======================# NODE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-    "NodeContextBuildFailedException",
+    "NodeContextBuildException",
 ]
 
 
 # ======================# NODE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-class NodeContextBuildFailedException(NodeContextException, BuildFailedException):
+class NodeContextBuildException(NodeContextException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the NodeContext build creates an exception. Failed check exceptions are encapsulated
-        in an NodeContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The NodeContextBuildFailedException provides a trace for debugging and application recovery.
+        in an NodeContextBuildException which is sent to the caller in a BuildResult.
+    2.  The NodeContextBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   NodeContextException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

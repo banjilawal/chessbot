@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.arena import ArenaException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# ARENA_BUILD_FAILURE EXCEPTION #======================#
-    "ArenaBuildFailedException",
+    "ArenaBuildException",
 ]
 
 
 #======================# ARENA_BUILD_FAILURE EXCEPTION #======================#
-class ArenaBuildFailedException(ArenaException, BuildFailedException):
+class ArenaBuildException(ArenaException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the Arena build creates an exception. Failed check exceptions are encapsulated
-        in an ArenaBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The ArenaBuildFailedException provides a trace for debugging and application recovery.
+        in an ArenaBuildException which is sent to the caller in a BuildResult.
+    2.  The ArenaBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   ArenaException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

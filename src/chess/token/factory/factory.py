@@ -14,7 +14,7 @@ from chess.team import Team, TeamService
 from chess.rank import RankService
 from chess.formation import Formation, FormationService
 from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter, id_emitter
-from chess.token import CombatantToken, KingToken, PawnToken, TokenBuildFailedException, Token
+from chess.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
 
 class TokenFactory(Builder[Token]):
     """
@@ -68,7 +68,7 @@ class TokenFactory(Builder[Token]):
                     - On failure: Exception.
                     - On success: Token in the payload.
         # RAISES:
-            *   TokenBuildFailedException
+            *   TokenBuildException
         """
         method = "TokenFactory.builder"
         
@@ -77,8 +77,8 @@ class TokenFactory(Builder[Token]):
         if id_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+                TokenBuildException(
+                    message=f"{method}: {TokenBuildException.ERROR_CODE}",
                     ex=id_validation.exception
                 )
             )
@@ -87,8 +87,8 @@ class TokenFactory(Builder[Token]):
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+                TokenBuildException(
+                    message=f"{method}: {TokenBuildException.ERROR_CODE}",
                     ex=owner_validation.exception
                 )
             )
@@ -97,8 +97,8 @@ class TokenFactory(Builder[Token]):
         if formation_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+                TokenBuildException(
+                    message=f"{method}: {TokenBuildException.ERROR_CODE}",
                     ex=formation_validation.exception
                 )
             )
@@ -237,8 +237,8 @@ class TokenFactory(Builder[Token]):
         if rank_build_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenBuildFailedException(
-                    message=f"{method}: {TokenBuildFailedException.ERROR_CODE}",
+                TokenBuildException(
+                    message=f"{method}: {TokenBuildException.ERROR_CODE}",
                     ex=rank_build_result.exception
                 )
             )

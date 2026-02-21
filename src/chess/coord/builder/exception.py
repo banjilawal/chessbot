@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.coord import CoordException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# COORD_BUILD_FAILURE EXCEPTION #======================#
-    "CoordBuildFailedException",
+    "CoordBuildException",
 ]
 
 
 # ======================# COORD_BUILD_FAILURE EXCEPTION #======================#
-class CoordBuildFailedException(CoordException, BuildFailedException):
+class CoordBuildException(CoordException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the Coord build creates an exception. Failed check exceptions are encapsulated
-        in an CoordBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The CoordBuildFailedException provides a trace for debugging and application recovery.
+        in an CoordBuildException which is sent to the caller in a BuildResult.
+    2.  The CoordBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   CoordException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

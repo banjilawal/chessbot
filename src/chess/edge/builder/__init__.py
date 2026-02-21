@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import EdgeBuilder
-from .wrapper import EdgeBuildFailedException
+from .wrapper import EdgeBuildException

@@ -10,7 +10,7 @@ version: 1.0.0
 from chess.board import Board, BoardService
 from chess.schema import Schema, SchemaService
 from chess.player import Player, PlayerService
-from chess.team import HostageService, RosterService, Team, TeamBuildFailedException
+from chess.team import HostageService, RosterService, Team, TeamBuildException
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, Database, id_emitter
 from chess.token import TokenDatabase
 
@@ -72,7 +72,7 @@ class TeamBuilder(Builder[Team]):
                 - On failure: Exception.
                 - On success: Team in the payload.
         RAISES:
-            *   TeamBuildFailedException
+            *   TeamBuildException
         """
         method = "TeamBuilder.builder"
         # Handle the case id certification fails
@@ -80,8 +80,8 @@ class TeamBuilder(Builder[Team]):
         # Return the exception chain on failure.
         if id_validation.is_failure:
             return BuildResult.failure(
-                TeamBuildFailedException(
-                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=id_validation.exception
+                TeamBuildException(
+                    message=f"{method}: {TeamBuildException.ERROR_CODE}", ex=id_validation.exception
                 )
             )
         # Handle the case schema certification fails.
@@ -89,8 +89,8 @@ class TeamBuilder(Builder[Team]):
         if schema_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamBuildFailedException(
-                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=schema_validation.exception
+                TeamBuildException(
+                    message=f"{method}: {TeamBuildException.ERROR_CODE}", ex=schema_validation.exception
                 )
             )
         # Handle the case owner certification fails.
@@ -98,8 +98,8 @@ class TeamBuilder(Builder[Team]):
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TeamBuildFailedException(
-                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=owner_validation.exception
+                TeamBuildException(
+                    message=f"{method}: {TeamBuildException.ERROR_CODE}", ex=owner_validation.exception
                 )
             )
         # If no errors are detected build the Team object.
@@ -116,8 +116,8 @@ class TeamBuilder(Builder[Team]):
         if insertion_result.is_failure:
             # If the push failed return the exception chain.
             return BuildResult.failure(
-                TeamBuildFailedException(
-                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=owner_validation.exception
+                TeamBuildException(
+                    message=f"{method}: {TeamBuildException.ERROR_CODE}", ex=owner_validation.exception
                 )
             )
         # Put the team in the board.
@@ -125,8 +125,8 @@ class TeamBuilder(Builder[Team]):
         if insertion_result.is_failure:
             # If board entry fails return the exception chain.
             return BuildResult.failure(
-                TeamBuildFailedException(
-                    message=f"{method}: {TeamBuildFailedException.ERROR_CODE}", ex=owner_validation.exception
+                TeamBuildException(
+                    message=f"{method}: {TeamBuildException.ERROR_CODE}", ex=owner_validation.exception
                 )
             )
         # After the team is registered with its owner and entered the board send it in the BuildResult.

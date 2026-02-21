@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import CoordContextBuildRouteException
-from .wrapper import CoordContextBuildFailedException
+from .wrapper import CoordContextBuildException

@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.hostage import HostageManifestException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# HOSTAGE_MANIFEST_BUILD_FAILURE EXCEPTION #======================#
-    "HostageManifestBuildFailedException",
+    "HostageManifestBuildException",
 ]
 
 
 # ======================# HOSTAGE_MANIFEST_BUILD_FAILURE EXCEPTION #======================#
-class HostageManifestBuildFailedException(HostageManifestException, BuildFailedException):
+class HostageManifestBuildException(HostageManifestException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the HostageManifest build creates an exception. Failed check exceptions are 
-        encapsulated in an HostageManifestBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The HostageManifestBuildFailedException provides a trace for debugging and application recovery.
+        encapsulated in an HostageManifestBuildException which is sent to the caller in a BuildResult.
+    2.  The HostageManifestBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   HostageManifestException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

@@ -69,7 +69,7 @@ class PlayerFactory(Builder[Player]):
             - On failure: Exception.
 
         # RAISES:
-            *   PlayerBuildFailedException
+            *   PlayerBuildException
         """
         method = "PlayerBuilder.build"
         try:
@@ -87,7 +87,7 @@ class PlayerFactory(Builder[Player]):
                 return cls.build_machine_player(id=id, name=name, engine_service=engine_service)
         
         # The flow should only get here if the logic did not route all the types of concrete Players.
-        # In that case wrap the unhandled exception inside an PlayerBuildFailedException then, return
+        # In that case wrap the unhandled exception inside an PlayerBuildException then, return
         # the exception chain inside a ValidationResult.
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:

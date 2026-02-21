@@ -7,18 +7,18 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.system import BuildFailedException
+from chess.system import BuildException
 from chess.persona import PersonaKeyException
 
 
 __all__ = [
     # ======================# PERSONA_CONTEXT BUILD EXCEPTION #======================#
-    "PersonaKeyBuildFailedException",
+    "PersonaKeyBuildException",
 ]
 
 
 # ======================# PERSONA_CONTEXT BUILD EXCEPTION #======================#
-class PersonaKeyBuildFailedException(PersonaKeyException, BuildFailedException):
+class PersonaKeyBuildException(PersonaKeyException, BuildException):
     """
     # ROLE: Exception Wrapper
 
@@ -28,7 +28,7 @@ class PersonaKeyBuildFailedException(PersonaKeyException, BuildFailedException):
 
     # PARENT:
         *   PersonaKeyException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

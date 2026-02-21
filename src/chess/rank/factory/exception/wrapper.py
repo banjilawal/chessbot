@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.rank import RankException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# RANK_BUILD_FAILURE EXCEPTION #======================#
-    "RankBuildFailedException",
+    "RankBuildException",
 ]
 
 
 # ======================# RANK_BUILD_FAILURE EXCEPTION #======================#
-class RankBuildFailedException(RankException, BuildFailedException):
+class RankBuildException(RankException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the Rank build creates an exception. Failed check exceptions are encapsulated
-        in an RankBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The RankBuildFailedException provides a trace for debugging and application recovery.
+        in an RankBuildException which is sent to the caller in a BuildResult.
+    2.  The RankBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   RankException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from chess.hostage import (
     CapturedSquareCannotBeEmptyException, PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException,
-    HostageManifest, HostageManifestBuildFailedException, PrisonerAlreadyHasHostageManifestException,
+    HostageManifest, HostageManifestBuildException, PrisonerAlreadyHasHostageManifestException,
     PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException,
     VictorAndPrisoneOnDifferentBoardsException, PrisonerCapturedOnDifferentSquareException,
     VictorCannotBeDisableTokenException, VictorNotOccupyingCapturedSquareException,
@@ -74,7 +74,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
             *   TypeError
             *   PrisonerCapturedByDifferentEnemyException
             *   PrisonerCannotBeActiveCombatantException
-            *   HostageManifestBuildFailedException
+            *   HostageManifestBuildException
             *   PrisonerAlreadyHasHostageManifestException
             *   PrisonerCapturedOnDifferentSquareException
         """
@@ -85,8 +85,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if id_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildFailedException(
-                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildException(
+                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
                     ex=id_validation.exception
                 )
             )
@@ -95,8 +95,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if captured_square_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildFailedException(
-                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildException(
+                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
                     ex=captured_square_validation.exception
                 )
             )
@@ -104,8 +104,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if captured_square.is_empty:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildFailedException(
-                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildException(
+                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
                     ex=VictorNotOccupyingCapturedSquareException(
                         f"{method}: {VictorNotOccupyingCapturedSquareException.DEFAULT_MESSAGE}"
                     )
@@ -122,8 +122,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if prisoner_is_combatant_validation.is_failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildFailedException(
-                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildException(
+                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
                     ex=prisoner_is_combatant_validation.exception
                 )
             )
@@ -131,8 +131,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if prisoner.is_active:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildFailedException(
-                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildException(
+                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
                     ex=PrisonerCannotBeActiveCombatantException(
                         f"{method}: {PrisonerCannotBeActiveCombatantException.DEFAULT_MESSAGE}"
                     )
@@ -142,8 +142,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if prisoner.has_hostage_manifest:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildFailedException(
-                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildException(
+                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
                     ex=PrisonerAlreadyHasHostageManifestException(
                         f"{method}: {PrisonerAlreadyHasHostageManifestException.DEFAULT_MESSAGE}"
                     )
@@ -153,8 +153,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if prisoner.current_position != captured_square.coord:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildFailedException(
-                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildException(
+                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
                     ex=PrisonerCapturedOnDifferentSquareException(
                         f"{method}: {PrisonerCapturedOnDifferentSquareException.DEFAULT_MESSAGE}"
                     )
@@ -164,8 +164,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if prisoner.captor != captured_square.occupant:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildFailedException(
-                    message=f"{method}: {HostageManifestBuildFailedException.DEFAULT_MESSAGE}",
+                HostageManifestBuildException(
+                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
                     ex=PrisonerCapturedByDifferentEnemyException(
                         f"{method}: {PrisonerCapturedByDifferentEnemyException.DEFAULT_MESSAGE}"
                     )

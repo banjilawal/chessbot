@@ -8,13 +8,13 @@ version: 1.0.0
 """
 
 from chess.graph import NodeException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# NODE_BUILD_FAILURE EXCEPTION #======================#
-    "NodeBuildFailedException",
+    "NodeBuildException",
 ]
 
 
-class NodeBuildFailedException(NodeException, BuildFailedException):
+class NodeBuildException(NodeException, BuildException):
     pass

@@ -1,7 +1,7 @@
 from typing import Optional, cast
 
 from chess.hostage import (
-    CaptivityContext, CaptivityContextBuildFailedException,
+    CaptivityContext, CaptivityContextBuildException,
     CaptivityContextBuildRouteException, ExcessiveCaptivityContextFlagsException, ZeroCaptivityContextFlagsException
 )
 from chess.square import Square, SquareService
@@ -59,7 +59,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             * TypeError
             * NullCaptivityContextException
             * ZeroCaptivityContextFlagsException
-            * CaptivityContextBuildFailedException
+            * CaptivityContextBuildException
             * CaptivityContextBuildRouteException
         """
         method = "CaptivityContextBuilder.validate"
@@ -72,8 +72,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                CaptivityContextBuildFailedException(
-                    message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
+                CaptivityContextBuildException(
+                    message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
                     ex=ZeroCaptivityContextFlagsException(
                         f"{method}: {ZeroCaptivityContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -83,8 +83,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                CaptivityContextBuildFailedException(
-                    message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
+                CaptivityContextBuildException(
+                    message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
                     ex=ExcessiveCaptivityContextFlagsException(
                         f"{method}: {ExcessiveCaptivityContextFlagsException.DEFAULT_MESSAGE}"
                     )
@@ -98,8 +98,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildFailedException(
-                        message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
+                    CaptivityContextBuildException(
+                        message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -112,8 +112,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildFailedException(
-                        message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
+                    CaptivityContextBuildException(
+                        message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -127,8 +127,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildFailedException(
-                        message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
+                    CaptivityContextBuildException(
+                        message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -141,8 +141,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    CaptivityContextBuildFailedException(
-                        message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
+                    CaptivityContextBuildException(
+                        message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )
@@ -151,8 +151,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            CaptivityContextBuildFailedException(
-                message=f"{method}: {CaptivityContextBuildFailedException.DEFAULT_MESSAGE}",
+            CaptivityContextBuildException(
+                message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
                 ex=CaptivityContextBuildRouteException(
                     f"{method}: {CaptivityContextBuildRouteException.DEFAULT_MESSAGE}"
                 )

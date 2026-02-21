@@ -35,11 +35,11 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
 From `chess.board_validator`:
-    `Board`, `NullBoard`, `BoardBuildFailedException`, `BoardSchema`
+    `Board`, `NullBoard`, `BoardBuildException`, `BoardSchema`
 
 From `chess.owner`:
   `Player`, `PlayerAgentValidator`,

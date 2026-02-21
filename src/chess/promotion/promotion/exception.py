@@ -79,7 +79,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
-        `BuildFailedException`.
+        `BuildException`.
 
 CONTAINS:
 --------
@@ -88,7 +88,7 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 """
 
 from chess.event import EventException, TransactionException
-from chess.system import ChessException, NullException, BuildFailedException, ValidationException
+from chess.system import ChessException, NullException, BuildException, ValidationException
 
 __all__ = [
   'PromotionEventException',
@@ -98,7 +98,7 @@ __all__ = [
   'InvalidPromotionEventException',
 
 #====================== PROMOTION_EVENT BUILD EXCEPTION #======================#
-  'PromotionEventBuildFailed',
+    'PromotionEventBuild',
 
 #====================== PROMOTION_TRANSACTION EXCEPTION #======================#
   'PromotionTransactionException',
@@ -183,7 +183,7 @@ class DoublePromotionRolledBackException(PieceRollBackException):
 
 
 #======================# PROMOTION_EVENT BUILD EXCEPTION #======================#
-class PromotionEventBuildFailed(PromotionEventException, BuildFailedException):
+class PromotionEventBuild(PromotionEventException, BuildException):
   """
   Raised when `PromotionEventBuilder` crashed while building team_name new `PromotionEven`. Exists
   primarily to catch all exception raised creating `PromotionEvent` objects.
@@ -241,7 +241,7 @@ Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
-        `BuildFailedException`.
+        `BuildException`.
 
 CONTAINS:
 --------

@@ -7,29 +7,29 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from chess.system import BuildFailedException
+from chess.system import BuildException
 from chess.edge import EdgeContextException
 
 
 __all__ = [
     # ======================# EDGE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-    "EdgeContextBuildFailedException",
+    "EdgeContextBuildException",
 ]
 
 
 # ======================# EDGE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-class EdgeContextBuildFailedException(EdgeContextException, BuildFailedException):
+class EdgeContextBuildException(EdgeContextException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the EdgeContext build creates an exception. Failed check exceptions are encapsulated
-        in an EdgeContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The EdgeContextBuildFailedException provides a trace for debugging and application recovery.
+        in an EdgeContextBuildException which is sent to the caller in a BuildResult.
+    2.  The EdgeContextBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   EdgeContextException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

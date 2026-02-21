@@ -82,7 +82,7 @@ class AgentContextBuilder(Builder[AgentContext]):
 
         # RAISES:
             *   ZeroAgentContextFlagsException
-            *   AgentContextBuildFailedException
+            *   AgentContextBuildException
             *   ExcessiveAgentContextFlagsException
         """
         method = "AgentSearchContextBuilder.builder"
@@ -148,7 +148,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             BuildResult.failure(
                 UnhandledRouteException(f"{method}: {UnhandledRouteException.DEFAULT_MESSAGE}")
             )
-        # Finally, catch any missed exception, wrap an AgentContextBuildFailedException around it then
+        # Finally, catch any missed exception, wrap an AgentContextBuildException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(

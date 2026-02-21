@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from chess.system import BOARD_DIMENSION, Builder, BuildResult, LoggingLevelRouter, NumberValidator
-from chess.coord import Coord, CoordBuildFailedException
+from chess.coord import Coord, CoordBuildException
 
 
 
@@ -56,7 +56,7 @@ class CoordBuilder(Builder[Coord]):
                     - On success: Coord in the payload.
                     - On failure: Exception.
         # RAISES:
-            *   CoordBuildFailedException
+            *   CoordBuildException
         """
         method = "CoordBuilder.builder"
         
@@ -65,8 +65,8 @@ class CoordBuilder(Builder[Coord]):
         if row_validation.is_failure:
             # Return the validation chain on failure.
             return BuildResult.failure(
-                CoordBuildFailedException(
-                    message=f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}",
+                CoordBuildException(
+                    message=f"{method}: {CoordBuildException.DEFAULT_MESSAGE}",
                     ex=row_validation.exception
                 )
             )
@@ -75,8 +75,8 @@ class CoordBuilder(Builder[Coord]):
         if column_validation.is_failure:
             # Return the validation chain on failure.
             return BuildResult.failure(
-                CoordBuildFailedException(
-                    message=f"{method}: {CoordBuildFailedException.DEFAULT_MESSAGE}",
+                CoordBuildException(
+                    message=f"{method}: {CoordBuildException.DEFAULT_MESSAGE}",
                     ex=column_validation.exception
                 )
             )

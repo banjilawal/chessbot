@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import SnapshotBuilder
-from .exceotion import SnapshotBuildFailedException
+from .exceotion import SnapshotBuildException

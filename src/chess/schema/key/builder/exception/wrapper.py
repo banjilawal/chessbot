@@ -7,30 +7,30 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from chess.system import BuildFailedException
+from chess.system import BuildException
 from chess.schema import SchemaKeyException
 
 
 
 __all__ = [
     # ======================# SCHEMA_KEY_BUILD_FAILURE EXCEPTION #======================#
-    "SchemaKeyBuildFailedException",
+    "SchemaKeyBuildException",
 ]
 
 
 #======================# SCHEMA_KEY_BUILD_FAILURE EXCEPTION #======================#
-class SchemaKeyBuildFailedException(SchemaKeyException, BuildFailedException):
+class SchemaKeyBuildException(SchemaKeyException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the SchemaKey build creates an exception. Failed check exceptions are encapsulated
-        in a SchemaKeyBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The SchemaKeyBuildFailedException provides a trace for debugging and application recovery.
+        in a SchemaKeyBuildException which is sent to the caller in a BuildResult.
+    2.  The SchemaKeyBuildException provides a trace for debugging and application recovery.
         # RESPONSIBILITIES:
 
     # PARENT:
-        *   BuildFailedException
+        *   BuildException
         *   SchemaKeyException
 
     # PROVIDES:

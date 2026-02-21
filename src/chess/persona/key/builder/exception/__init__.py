@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import PersonaKeyBuildRouteException
-from .wrapper import PersonaKeyBuildFailedException
+from .wrapper import PersonaKeyBuildException

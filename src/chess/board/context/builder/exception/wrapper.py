@@ -7,28 +7,28 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.system import BuildFailedException
+from chess.system import BuildException
 from chess.board import BoardContextException
 
 __all__ = [
     # ======================# BOARD_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-    "BoardContextBuildFailedException",
+    "BoardContextBuildException",
 ]
 
 
 # ======================# BOARD_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-class BoardContextBuildFailedException(BoardContextException, BuildFailedException):
+class BoardContextBuildException(BoardContextException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the BoardContext build creates an exception. Failed check exceptions are encapsulated
-        in an BoardContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The BoardContextBuildFailedException provides a trace for debugging and application recovery.
+        in an BoardContextBuildException which is sent to the caller in a BuildResult.
+    2.  The BoardContextBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   BoardContextException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

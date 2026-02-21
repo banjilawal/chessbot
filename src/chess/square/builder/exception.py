@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from  chess.square import SquareException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# SQUARE_BUILD_FAILURE EXCEPTION #======================#
-    "SquareBuildFailedException",
+    "SquareBuildException",
 ]
 
 
 # ======================# SQUARE_BUILD_FAILURE EXCEPTION #======================#
-class SquareBuildFailedException(SquareException, BuildFailedException):
+class SquareBuildException(SquareException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the Square build creates an exception. Failed check exceptions are encapsulated
-        in an SquareBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The SquareBuildFailedException provides a trace for debugging and application recovery.
+        in an SquareBuildException which is sent to the caller in a BuildResult.
+    2.  The SquareBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   SquareException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

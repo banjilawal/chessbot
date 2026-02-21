@@ -38,7 +38,7 @@ DEPENDENCIES:
 Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
-        `BuildFailedException`.
+        `BuildException`.
 
 CONTAINS:
 --------
@@ -51,10 +51,10 @@ __all__ = [
 #======================# ENGINE VALIDATION EXCEPTION #======================#
   'NullEngineException',
 #======================# ENGINE BUILD EXCEPTION #======================#
-  'BuildFailedException'
+    'BuildException'
 ]
 
-from chess.system import ChessException, NullException, BuildFailedException
+from chess.system import ChessException, NullException, BuildException
 
 class EngineException(ChessException):
   """
@@ -70,7 +70,7 @@ class NullEngineException(EngineException, NullException):
   ERROR_CODE = "NULL_ENGINE_ERROR"
   DEFAULT_MESSAGE = "Engine cannot be validation"
 
-class EngineBuildFailed(EngineException, BuildFailedException):
+class EngineBuild(EngineException, BuildException):
   """
   Raised when `EngineBuilder` crashed while building team_name new object. Exists
   primarily to catch all exception raised creating engines.

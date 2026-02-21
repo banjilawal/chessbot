@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.arena import Arena, ArenaService
-from chess.board import ArenaAlreadyContainsBoardException, Board, BoardBuildFailedException
+from chess.board import ArenaAlreadyContainsBoardException, Board, BoardBuildException
 from chess.system import Builder, BuildResult, BOARD_DIMENSION, IdentityService, LoggingLevelRouter, id_emitter
 
 
@@ -65,7 +65,7 @@ class BoardBuilder(Builder[Board]):
                     - On failure: Exception.
                     - On success: Board in the payload.
         # RAISES:
-            *   BoardBuildFailedException
+            *   BoardBuildException
             *   ArenaAlreadyContainsBoardException
         """
         method = "BoardBuilder.builder"
@@ -75,8 +75,8 @@ class BoardBuilder(Builder[Board]):
         if id_validation.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                BoardBuildFailedException(
-                    message=f"{method}: {BoardBuildFailedException.ERROR_CODE}",
+                BoardBuildException(
+                    message=f"{method}: {BoardBuildException.ERROR_CODE}",
                     ex=id_validation.exception
                 )
             )
@@ -85,8 +85,8 @@ class BoardBuilder(Builder[Board]):
         if arena_validation.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                BoardBuildFailedException(
-                    message=f"{method}: {BoardBuildFailedException.ERROR_CODE}",
+                BoardBuildException(
+                    message=f"{method}: {BoardBuildException.ERROR_CODE}",
                     ex=arena_validation.exception
                 )
             )
@@ -94,8 +94,8 @@ class BoardBuilder(Builder[Board]):
         if arena.board is not None:
             # On failure return the exception.
             return BuildResult.failure(
-                BoardBuildFailedException(
-                    message=f"{method}: {BoardBuildFailedException.ERROR_CODE}",
+                BoardBuildException(
+                    message=f"{method}: {BoardBuildException.ERROR_CODE}",
                     ex=ArenaAlreadyContainsBoardException(f"{method}: {ArenaAlreadyContainsBoardException.DEFAULT_MESSAGE}")
                 )
             )

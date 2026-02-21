@@ -12,7 +12,7 @@ from typing import cast
 
 from chess.board import Board, BoardService
 from chess.coord import Coord, CoordService
-from chess.square import Square, SquareBuildFailedException, SquareContext
+from chess.square import Square, SquareBuildException, SquareContext
 from chess.system import (
     Builder, BuildResult, IdFactory, IdentityService, InvariantBreachException, LoggingLevelRouter,
 )
@@ -76,7 +76,7 @@ class SquareBuilder(Builder[Square]):
                     - On failure: Exception.
                     - On success: Square in the payload.
         # RAISES:
-            *   SquareBuildFailedException
+            *   SquareBuildException
         """
         method = "SquareBuilder.builder"
         
@@ -88,8 +88,8 @@ class SquareBuilder(Builder[Square]):
         if identity_validation.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                SquareBuildFailedException(
-                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                SquareBuildException(
+                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
                     ex=identity_validation.exception
                 )
             )
@@ -98,8 +98,8 @@ class SquareBuilder(Builder[Square]):
         if coord_validation.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                SquareBuildFailedException(
-                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                SquareBuildException(
+                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
@@ -108,8 +108,8 @@ class SquareBuilder(Builder[Square]):
         if board_validation.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                SquareBuildFailedException(
-                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                SquareBuildException(
+                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
                     ex=board_validation.exception
                 )
             )
@@ -118,8 +118,8 @@ class SquareBuilder(Builder[Square]):
         if search_result.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                SquareBuildFailedException(
-                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                SquareBuildException(
+                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
                     ex=search_result.exception
                 )
             )
@@ -136,8 +136,8 @@ class SquareBuilder(Builder[Square]):
         if relation_analysis.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                SquareBuildFailedException(
-                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                SquareBuildException(
+                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
                     ex=relation_analysis.exception
                 )
             )
@@ -145,8 +145,8 @@ class SquareBuilder(Builder[Square]):
         if relation_analysis.not_related:
             # On failure return the exception.
             return BuildResult.failure(
-                SquareBuildFailedException(
-                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                SquareBuildException(
+                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
                     ex=InvariantBreachException(
                         message=f"{method}:{InvariantBreachException.DEFAULT_MESSAGE}",
                     )
@@ -156,8 +156,8 @@ class SquareBuilder(Builder[Square]):
         if relation_analysis.is_bidirectional:
             # On failure return the exception.
             return BuildResult.failure(
-                SquareBuildFailedException(
-                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                SquareBuildException(
+                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
                     ex=AddingDuplicateSquareException(
                         message=f"{method}:{AddingDuplicateSquareException.DEFAULT_MESSAGE}",
                     )
@@ -170,8 +170,8 @@ class SquareBuilder(Builder[Square]):
         if insertion_result.is_failure:
             # On failure return the exception.
             return BuildResult.failure(
-                SquareBuildFailedException(
-                    message=f"{method}: {SquareBuildFailedException.DEFAULT_MESSAGE}",
+                SquareBuildException(
+                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
                     ex=insertion_result.exception
                 )
             )

@@ -33,7 +33,7 @@ Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
-        `BuildFailedException`.
+        `BuildException`.
 
 CONTAINS:
 --------
@@ -42,8 +42,8 @@ See the list of exception in the `__all__` list following (e.g., `CoordException
 """
 
 from chess.system import (
-  EventException, NullException, BuildFailedException, TransactionException, ValidationException,
-  ResourceException, InconsistencyException
+    EventException, NullException, BuildException, TransactionException, ValidationException,
+    ResourceException, InconsistencyException
 )
 
 __all__ = [
@@ -69,7 +69,7 @@ class NullTravelEventException(TravelEventException, NullException):
 
 
 #====================== TravelEvent BUILD EXCEPTION #======================#
-class TravelEventBuildFailedException(TravelEventException, BuildFailedException):
+class TravelEventBuildException(TravelEventException, BuildException):
   """
   Indicate That  TravelEvent could not be built. Wraps and re-raises errors that occurred
   during builder.
@@ -77,7 +77,7 @@ class TravelEventBuildFailedException(TravelEventException, BuildFailedException
   ERROR_CODE = "TRAVEL_EVENT_BUILD_FAILED"
   DEFAULT_MESSAGE = "TravelEvent build failed."
 
-class OccupationEventBuildFailedException(TravelEventBuildFailedException):
+class OccupationEventBuildFailedException(TravelEventBuildException):
   """
   Indicate That  OldOccupationEventValidator could not be built. Wraps and re-raises errors that occurred
   during builder.

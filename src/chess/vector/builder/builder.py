@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.system import Builder, BuildResult, LONGEST_KNIGHT_LEG_SIZE, LoggingLevelRouter, NumberValidator
-from chess.vector import Vector, VectorBuildFailedException,VectorValidator
+from chess.vector import Vector, VectorBuildException,VectorValidator
 
 
 class VectorBuilder(Builder[Vector]):
@@ -58,7 +58,7 @@ class VectorBuilder(Builder[Vector]):
             - On success: Vector in the payload.
 
         RAISES:
-            *   VectorBuildFailedException
+            *   VectorBuildException
         """
         method = "VectorBuilder.builder"
         # Handle the x component
@@ -66,9 +66,9 @@ class VectorBuilder(Builder[Vector]):
         if x_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                VectorBuildFailedException(
+                VectorBuildException(
                     ex=x_validation.exception,
-                    message=f"{method}: {VectorBuildFailedException.ERROR_CODE}"
+                    message=f"{method}: {VectorBuildException.ERROR_CODE}"
                 )
             )
         # Handle the y component
@@ -76,9 +76,9 @@ class VectorBuilder(Builder[Vector]):
         if y_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                VectorBuildFailedException(
+                VectorBuildException(
                     ex=y_validation.exception,
-                    message=f"{method}: {VectorBuildFailedException.ERROR_CODE}"
+                    message=f"{method}: {VectorBuildException.ERROR_CODE}"
                 )
             )
         # After the components are certified return the Vector in the BuildResult.

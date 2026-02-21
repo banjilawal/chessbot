@@ -35,7 +35,7 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
 From `chess.discoverySearchContext`:
@@ -89,11 +89,11 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
 From `chess.team_name`:
-    `Team`, `NullTeam`, `TeamBuildFailedException`, `Schema`
+    `Team`, `NullTeam`, `TeamBuildException`, `Schema`
 
 From `chess.owner`:
   `Player`, `PlayerAgentValidator`,
@@ -198,7 +198,7 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
 From `chess.discoverySearchContext`:
@@ -252,7 +252,7 @@ version: 1.0.0
 # DEPENDENCIES:
 ---------------
 From `chess.system`:
-    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildFailedException`
+    `BuildResult`, `Builder`, `LoggingLevelRouter`, `ChessException`, `NullException`, `BuildException`
     `IdValidator`, `NameValidator`
 
 From `chess.discoverySearchContext`:
@@ -309,7 +309,7 @@ Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
-        `BuildFailedException`.
+        `BuildException`.
 
 CONTAINS:
 --------

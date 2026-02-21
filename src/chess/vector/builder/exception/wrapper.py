@@ -8,27 +8,27 @@ version: 1.0.0
 """
 
 from chess.vector import VectorException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 __all__ = [
     # ======================# VECTOR_BUILD_FAILURE EXCEPTION #======================#
-    "VectorBuildFailedException",
+    "VectorBuildException",
 ]
 
 
 # ======================# VECTOR_BUILD_FAILURE EXCEPTION #======================#
-class VectorBuildFailedException(VectorException, BuildFailedException):
+class VectorBuildException(VectorException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the Vector build creates an exception. Failed check exceptions are encapsulated
-        in an VectorBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The VectorBuildFailedException provides a trace for debugging and application recovery.
+        in an VectorBuildException which is sent to the caller in a BuildResult.
+    2.  The VectorBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   VectorException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

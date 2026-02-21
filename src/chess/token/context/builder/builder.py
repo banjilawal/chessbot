@@ -17,7 +17,7 @@ from chess.system import (
     NumberValidator, Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.token import (
-    ExcessiveTokenContextFlagsException, TokenContext, TokenContextBuildFailedException,
+    ExcessiveTokenContextFlagsException, TokenContext, TokenContextBuildException,
     TokenContextBuildRouteException, ZeroTokenContextFlagsException
 )
 
@@ -92,9 +92,9 @@ class TokenContextBuilder(Builder[TokenContext]):
                     - On success: TokenContext in the payload.
         # RAISES:
             *   ZeroTokenContextFlagsException
-            *   TokenContextBuildFailedException
+            *   TokenContextBuildException
             *   ExcessiveTokenContextFlagsException
-            *   TokenContextBuildFailedException
+            *   TokenContextBuildException
             *   TokenContextBuildRouteException
         """
         method = "TokenContextBuilder.builder"
@@ -107,8 +107,8 @@ class TokenContextBuilder(Builder[TokenContext]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenContextBuildFailedException(
-                    message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                TokenContextBuildException(
+                    message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                     ex=ZeroTokenContextFlagsException(f"{method}: {ZeroTokenContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
@@ -116,8 +116,8 @@ class TokenContextBuilder(Builder[TokenContext]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                TokenContextBuildFailedException(
-                    message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                TokenContextBuildException(
+                    message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                     ex=ExcessiveTokenContextFlagsException(f"{method}: {ExcessiveTokenContextFlagsException}")
                 )
             )
@@ -130,8 +130,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildFailedException(
-                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    TokenContextBuildException(
+                        message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -144,8 +144,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildFailedException(
-                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    TokenContextBuildException(
+                        message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -158,8 +158,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildFailedException(
-                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    TokenContextBuildException(
+                        message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -172,8 +172,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildFailedException(
-                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    TokenContextBuildException(
+                        message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -186,8 +186,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildFailedException(
-                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    TokenContextBuildException(
+                        message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -200,8 +200,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildFailedException(
-                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    TokenContextBuildException(
+                        message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -214,8 +214,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    TokenContextBuildFailedException(
-                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    TokenContextBuildException(
+                        message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -232,8 +232,8 @@ class TokenContextBuilder(Builder[TokenContext]):
             # Return the exception chain on failure.
             if validation.is_failure:
                 return BuildResult.failure(
-                    TokenContextBuildFailedException(
-                        message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+                    TokenContextBuildException(
+                        message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -242,8 +242,8 @@ class TokenContextBuilder(Builder[TokenContext]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            TokenContextBuildFailedException(
-                message=f"{method}: {TokenContextBuildFailedException.ERROR_CODE}",
+            TokenContextBuildException(
+                message=f"{method}: {TokenContextBuildException.ERROR_CODE}",
                 ex=TokenContextBuildRouteException(f"{method}: {TokenContextBuildRouteException.DEFAULT_MESSAGE}")
             )
         )

@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import NoBuildRouteException
-from .wrapper import BuildFailedException
+from .wrapper import BuildException

@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import NodeBuilder
-from .wrapper import NodeBuildFailedException
+from .wrapper import NodeBuildException

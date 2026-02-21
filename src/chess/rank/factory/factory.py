@@ -9,7 +9,7 @@ version: 1.0.0
 
 from chess.persona import Persona, PersonaService
 from chess.system import Builder, BuildResult, LoggingLevelRouter, id_emitter
-from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankBuildFailedException, RankBuildRouteException, Rook
+from chess.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankBuildException, RankBuildRouteException, Rook
 
 class RankFactory(Builder[Rank]):
     """
@@ -55,7 +55,7 @@ class RankFactory(Builder[Rank]):
                 - On failure: Exception.
 
         # RAISES:
-            * RankBuildFailedException
+            * RankBuildException
         """
         method = "RankFactory.builder"
         # Handle the case that the persona is not certifed as safe.
@@ -63,8 +63,8 @@ class RankFactory(Builder[Rank]):
         if validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                RankBuildFailedException(
-                    message=f"{method}: {RankBuildFailedException.DEFAULT_MESSAGE}",
+                RankBuildException(
+                    message=f"{method}: {RankBuildException.DEFAULT_MESSAGE}",
                     ex=validation.exception
                 )
             )
@@ -91,8 +91,8 @@ class RankFactory(Builder[Rank]):
             
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            RankBuildFailedException(
-                message=f"{method}: {RankBuildFailedException.DEFAULT_MESSAGE}",
+            RankBuildException(
+                message=f"{method}: {RankBuildException.DEFAULT_MESSAGE}",
                 ex=RankBuildRouteException(f"{method}: {RankBuildRouteException.DEFAULT_MESSAGE}")
             )
         )

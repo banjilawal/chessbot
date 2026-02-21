@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import RankBuildRouteException
-from .wrapper import RankBuildFailedException
+from .wrapper import RankBuildException

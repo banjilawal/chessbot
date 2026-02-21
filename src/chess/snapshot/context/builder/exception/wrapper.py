@@ -7,28 +7,28 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import BuildFailedException
+from chess.system import BuildException
 from chess.snapshot import SnapshotContextException
 
 __all__ = [
     # ======================# SNAPSHOT_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-    "SnapshotContextBuildFailedException",
+    "SnapshotContextBuildException",
 ]
 
 
 # ======================# SNAPSHOT_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-class SnapshotContextBuildFailedException(SnapshotContextException, BuildFailedException):
+class SnapshotContextBuildException(SnapshotContextException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the SnapshotContext build creates an exception. Failed check exceptions are encapsulated
-        in an SnapshotContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The SnapshotContextBuildFailedException provides a trace for debugging and application recovery.
+        in an SnapshotContextBuildException which is sent to the caller in a BuildResult.
+    2.  The SnapshotContextBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   SnapshotContextException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

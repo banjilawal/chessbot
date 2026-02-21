@@ -8,28 +8,28 @@ version: 1.0.0
 """
 
 from chess.team import TeamContextException
-from chess.system import BuildFailedException
+from chess.system import BuildException
 
 
 __all__ = [
     # ======================# TEAM_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-    "TeamContextBuildFailedException",
+    "TeamContextBuildException",
 ]
 
 
 # ======================# TEAM_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-class TeamContextBuildFailedException(TeamContextException, BuildFailedException):
+class TeamContextBuildException(TeamContextException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the TeamContext build creates an exception. Failed check exceptions are encapsulated
-        in an TeamContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The TeamContextBuildFailedException provides a trace for debugging and application recovery.
+        in an TeamContextBuildException which is sent to the caller in a BuildResult.
+    2.  The TeamContextBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   TeamContextException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

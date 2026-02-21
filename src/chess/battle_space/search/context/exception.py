@@ -31,7 +31,7 @@ Requires base rollback_exception classes and constants from the core system:
 From `chess.system`:
   * Constants: `NUMBER_OF_ROWS`, `NUMBER_OF_COLUMNS`
   * Exception: `ChessException`, `ValidationFailedException`, `NullException`,
-        `BuildFailedException`.
+        `BuildException`.
 
 CONTAINS:
 --------
@@ -40,7 +40,7 @@ See the list of exception in the `__all__` list following (e.g., `ProjectionSear
 """
 
 from chess.rank import RankSpec
-from chess.system import ContextException, NullException, BuildFailedException, ValidationException
+from chess.system import ContextException, NullException, BuildException, ValidationException
 
 __all__ = [
     'ProjectionSearchContextException',
@@ -52,7 +52,7 @@ __all__ = [
     # 'ProjectionSearchContextMaxParamCountException',
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
-    'ProjectionSearchContextBuildFailedException',
+    'ProjectionSearchContextBuildException',
     'RansomOutOfBoundsException'
 ]
 
@@ -102,7 +102,7 @@ class ProjectionSearchContextMaxParamCountException(ProjectionSearchContextExcep
 
 
 # #======================#   PROJECTION_SEARCH_CONTEXT BUILD EXCEPTION #======================# 
-class ProjectionSearchContextBuildFailedException(ProjectionSearchContextException, BuildFailedException):
+class ProjectionSearchContextBuildException(ProjectionSearchContextException, BuildException):
     """
     Raised when ProjectionSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new projectionSearchContext

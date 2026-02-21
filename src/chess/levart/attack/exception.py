@@ -7,7 +7,7 @@ Created: 2025-10-18
 version: 1.0.0
 """
 
-from chess.system import ChessException, NullException, BuildFailedException
+from chess.system import ChessException, NullException, BuildException
 
 
 __all__ = [
@@ -82,7 +82,7 @@ class EnemyNotInExpectedSquareException(AttackEventException):
 
 
 #======================# ATTACK_EVENT BUILD EXCEPTION #======================#
-class AttackEventBuildFailedException(AttackEventException, BuildFailedException):
+class AttackEventBuildException(AttackEventException, BuildException):
   """
   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
   during builder.

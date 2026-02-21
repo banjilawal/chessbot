@@ -12,7 +12,7 @@ from typing import List
 from chess.team import Team
 from chess.board import Board
 from chess.agent import PlayerAgent, AgentService
-from chess.arena import Arena, ArenaBuildFailedException, DuplicatePlayerInArenaException
+from chess.arena import Arena, ArenaBuildException, DuplicatePlayerInArenaException
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter, ValidationResult, id_emitter
 
 
@@ -64,7 +64,7 @@ class ArenaBuilder(Builder[Arena]):
             - On failure: Exception.
 
         # RAISES:
-            *   ArenaBuildFailedException
+            *   ArenaBuildException
         """
         method = "ArenaBuilder.build"
         try:
@@ -81,12 +81,12 @@ class ArenaBuilder(Builder[Arena]):
             return BuildResult.success(payload=Arena(id=id, board=board))
         
         # The flow should only get here if the logic did not route all the types of concrete Arenas.
-        # In that case wrap the unhandled exception inside an ArenaBuildFailedException then, return
+        # In that case wrap the unhandled exception inside an ArenaBuildException then, return
         # the exception chain inside a ValidationResult.
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                ArenaBuildFailedException(ex=ex, message=f"{method}: {ArenaBuildFailedException.DEFAULT_MESSAGE}")
+                ArenaBuildException(ex=ex, message=f"{method}: {ArenaBuildException.DEFAULT_MESSAGE}")
             )
         
     @classmethod
@@ -112,11 +112,11 @@ class ArenaBuilder(Builder[Arena]):
             # After individual piece integrity certifcation and uniqueness verification send a success result.
             return ValidationResult.success(payload=players)
         
-        # Finally, catch any missed exception, wrap an ArenaBuildFailedException around it then
+        # Finally, catch any missed exception, wrap an ArenaBuildException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                ArenaBuildFailedException(ex=ex, message=f"{method}: {ArenaBuildFailedException.DEFAULT_MESSAGE}")
+                ArenaBuildException(ex=ex, message=f"{method}: {ArenaBuildException.DEFAULT_MESSAGE}")
             )
         
     @classmethod

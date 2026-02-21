@@ -7,29 +7,29 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.system import BuildFailedException
+from chess.system import BuildException
 from chess.square import SquareContextException
 
 
 __all__ = [
     # ======================# SQUARE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-    "SquareContextBuildFailedException",
+    "SquareContextBuildException",
 ]
 
 
 # ======================# SQUARE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-class SquareContextBuildFailedException(SquareContextException, BuildFailedException):
+class SquareContextBuildException(SquareContextException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the SquareContext build creates an exception. Failed check exceptions are encapsulated
-        in an SquareContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The SquareContextBuildFailedException provides a trace for debugging and application recovery.
+        in an SquareContextBuildException which is sent to the caller in a BuildResult.
+    2.  The SquareContextBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   SquareContextException
-        *   BuildFailedException
+        *   BuildException
 
     # PROVIDES:
     None

@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import BoardContextBuildRouteException
-from .wrapper import BoardContextBuildFailedException
+from .wrapper import BoardContextBuildException
