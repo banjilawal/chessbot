@@ -12,9 +12,8 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
 from chess.system import (
-    Context, ContextService, LoggingLevelRouter,  EntityService, DeletionResult
+    Context, ContextService, InsertionResult, LoggingLevelRouter, EntityService, DeletionResult, SearchResult
 )
-
 
 D = TypeVar("D")
 C = TypeVar("C", bound=Context)
@@ -38,35 +37,16 @@ class StackService(ABC, Generic[D]):
     # LOCAL ATTRIBUTES:
         *   id (int):
         *   name (str):
-        *   items (List[D]):
-        *   searcher (AbstractSearcher[D]):
-        *   entity_service (EntityService[D]):
-        *   context_service (ContextService);
-        *   current_items (D):
-        *   size (int)
     
     # INHERITED ATTRIBUTES:
     None
     """
     _id: int
     _name: str
-    _items: List[D]
-    _entity_service: EntityService[D]
-    _context_service: ContextService[C]
 
-    def stack(
-            self,
-            id: int,
-            name: str,
-            items: List[D],
-            entity_service: EntityService[D],
-            context_service: ContextService[C],
-    ):
+    def stack(self, id: int, name: str,):
         self._id = id
         self._name = name
-        self._items = items
-        self._entity_service = entity_service
-        self._context_service = context_service
         #
         # self._size = len(self._items)
         # self._current_items = self._items[-1] if self._items else None
@@ -80,81 +60,41 @@ class StackService(ABC, Generic[D]):
         return self._name
     
     @property
+    @abstractmethod
     def size(self) -> int:
-        return len(self._items)
+        pass
     
     @property
+    @abstractmethod
     def is_empty(self) -> bool:
-        return len(self.items) == 0
+        pass
     
     @property
+    @abstractmethod
     def current_item(self) -> Optional[D]:
-        return self._items[-1] if self._items else None
-    
-    @property
-    def items(self) -> List[D]:
-        return self._items
+        pass
 
     @property
-    def entity_service(self) -> EntityService[D]:
-        return self._entity_service
+    @abstractmethod
+    def integrity_service(self) -> EntityService[D]:
+        pass
     
     @property
+    @abstractmethod
     def context_service(self) -> ContextService[C]:
-        return self._context_service
+        pass
     
-    # @abstractmethod
-    # @LoggingLevelRouter.monitor
-    # def push(self, item: D) -> InsertionResult[bool]:
-    #     pass
-    # def push_items(self, items: D) -> InsertionResult[D]:
-    #     """"""
-    #     method = "StackService.push"
-    #     try:
-    #         validation = self._entity_service.entity_validator.validate(items)
-    #         if validation.is_failure():
-    #             return InsertionResult.failure(validation.exception)
-    #         self.items.append(items)
-    #         return InsertionResult.success(payload=items)
-    #     except Exception as ex:
-    #         return InsertionResult.failure(
-    #             StackException(ex=ex, message=f"{method}: {StackException.DEFAULT_MESSAGE}")
-    #         )
-    
-    
-    # @LoggingLevelRouter.monitor
-    # def search(self, context: C) -> SearchResult[List[D]]:
-    #     """"""
-    #     method = "StackService.search"
-    #     return self._context_service.entity_finder.find(
-    #         dataset=self.items,
-    #         context=context,
-    #         context_validator=self._context_service.entity_validator,
-    #     )
-        # try:
-        #     validation = self._context_service.entity_validator.validate(map)
-        #     if validation.is_failure():
-        #         return SearchResult.failure(validation.exception)
-        #     return SearchResult.success(payload=validation.payload)
-        # except Exception as ex:
-        #     return SearchResult.failure(
-        #         StackException(ex=ex, message=f"{method}: {StackException.DEFAULT_MESSAGE}")
-        #     )
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def push(self, item: D) -> InsertionResult:
+        pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def pop(self) -> DeletionResult[D]:
         pass
-        # method = "StackService.undo_items_push"
-        # try:
-        #     if self._items == 0:
-        #         return DeletionResult.failure(
-        #             PoppingEmptyStackException(f"{method}: {PoppingEmptyStackException.DEFAULT_MESSAGE}")
-        #         )
-        #     items = self._items.pop()
-        #     return DeletionResult.success(payload=items)
-        # except Exception as ex:
-        #     return DeletionResult.failure(
-        #         StackException(ex=ex, message=f"{method}: {StackException.DEFAULT_MESSAGE}")
-        #     )
-        #
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def query(self, dataset: List[D], context: C) -> SearchResult[List[D]]:
+        pass

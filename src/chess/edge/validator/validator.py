@@ -10,6 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 import sys
+from math import sqrt
 from typing import Any, cast
 
 from chess.node import NodeValidator
@@ -17,11 +18,10 @@ from chess.system import (
     BOARD_DIMENSION, IdentityService, LoggingLevelRouter, NumberValidator, ValidationResult, Validator
 )
 from chess.edge import (
-    CircularEdgeException, Edge, EdgeDistanceException, EdgeHeuristicException, ValidatingEdgeException,
-    EdgeWeightException, NullEgeException
+    CircularEdgeException, Edge, EdgeDistanceException, EdgeHeuristicException, NullEdgeException,
+    ValidatingEdgeException,
+    EdgeWeightException,
 )
-
-
 
 class EdgeValidator(Validator[Edge]):
     """
@@ -81,7 +81,7 @@ class EdgeValidator(Validator[Edge]):
             return ValidationResult.failure(
                 ValidatingEdgeException(
                     message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
-                    ex=NullEgeException(f"{method}: {NullEgeException.DEFAULT_MESSAGE}")
+                    ex=NullEdgeException(f"{method}: {NullEdgeException.DEFAULT_MESSAGE}")
                 )
             )
         # Handle the wrong class case.
@@ -93,7 +93,7 @@ class EdgeValidator(Validator[Edge]):
                     ex=TypeError(f"{method}: Expected an Edge, got {type(candidate).__name__}. instead")
                 )
             )
-        # --- Cast the candidate to an Edge for additional tests ---#
+        # --- Cast the candidate to an Edge for additional tests. ---#
         edge = cast(candidate, Edge)
         
         # Handle the case that the label is not certified as safe
@@ -106,11 +106,12 @@ class EdgeValidator(Validator[Edge]):
                     ex=label_validation_result.exception
                 )
             )
-        # Handle the case that the distance is not a number.
+        # Handle the case that the distance is not at between 0 and the board's diagonal.
         distance_validation_result = number_validator.validate(
             candidate=edge.distance,
-            ceiling=BOARD_DIMENSION,
             floor=0,
+            # Ceiling is the diagonal to an int and increment by 1 to handle truncation.
+            ceiling=cast(int, sqrt(2) *BOARD_DIMENSION) + 1,
         )
         if distance_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -126,6 +127,7 @@ class EdgeValidator(Validator[Edge]):
         # Handle the case that the heuristic is not a number.
         heuristic_validation_result = number_validator.validate(
             candidate=edge.heuristic,
+            # Heuristic is probably going to be distance and the max ransom (the king's).
             ceiling=sys.maxsize,
             floor=0,
         )
@@ -186,6 +188,6 @@ class EdgeValidator(Validator[Edge]):
                     ex=CircularEdgeException(f"{method}: {CircularEdgeException.DEFAULT_MESSAGE}")
                 )
             )
-        # Tests have been passed return the edge in the ValidationResult.
+        # --- Send validated edge to the caller. ---#
         return ValidationResult.success(payload=edge)
 

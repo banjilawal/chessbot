@@ -52,19 +52,12 @@ class EdgeStack(StackService[Edge]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            items: List[Edge] = List[Edge],
             service: EdgeService = EdgeService(),
             id: int = IdFactory.next_id(class_name="EdgeStack"),
             context_service: EdgeContextService = EdgeContextService(),
     ):
-        super().__init__(
-            id=id,
-            name=name,
-            items=[],
-            entity_service=service,
-            context_service=context_service,
-        )
-        self._stack = items
+        super().__init__(id=id, name=name, )
+        self._stack = []
         self._service = service
         self._context_service = context_service
         
@@ -89,7 +82,7 @@ class EdgeStack(StackService[Edge]):
         return self._context_service
     
     @property
-    def current_edge(self) -> Optional[Edge]:
+    def current_item(self) -> Optional[Edge]:
         return self._stack[-1] if self._stack else None
     
     @LoggingLevelRouter.monitor
@@ -237,7 +230,7 @@ class EdgeStack(StackService[Edge]):
             if edge.label == label:
                 # Record a hit before pulling it from the stack.
                 target = edge
-                self.items.remove(edge)
+                self._stack.remove(edge)
         # --- After the loop handle the two possible outcomes of purging the stack. ---#
         
         # Handle the case that at least one edge was removed
@@ -248,7 +241,7 @@ class EdgeStack(StackService[Edge]):
         return DeletionResult.nothing_to_delete()
     
     @LoggingLevelRouter.monitor
-    def search(self, context: EdgeContext) -> SearchResult[List[Edge]]:
+    def query(self, context: EdgeContext) -> SearchResult[List[Edge]]:
         """
         # ACTION:
             1.  Pass the context param to context_service manages all error handling and operations in search lifecycle.
@@ -260,15 +253,15 @@ class EdgeStack(StackService[Edge]):
         # RETURN:
             *   SearchResult[List[Edge]] containing either:
                     - On failure: An exception.
-                    - On success: List[Edge] in payload.
-                    - On Empty: No payload nor exception.
+                    - On success: List[Edge].
+                    - On Empty: payload null, exception null.
         # RAISES:
             *   EdgeStackException
         """
         method = "EdgeStack.search"
         
-        # --- Handoff the search responsibility to _stack_service. ---#
-        search_result = self._context_service.finder.find(context=context)
+        # --- Handoff the search responsibility to _context_service. ---#
+        search_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
         # Handle the case that the search is not completed.
         if search_result.is_failure:
