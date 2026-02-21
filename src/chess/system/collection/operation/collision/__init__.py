@@ -14,4 +14,4 @@ from .state import *
 from .exception import *
 
 # Modules
-from .result import CollisionResult
+from .result import CollisionReport

@@ -15,13 +15,13 @@ from chess.system import CollisionResultEnum, CollisionResultState, DataResult, 
 
 T = TypeVar("T")
 
-class CollisionResult(DataResult[T], Generic[T]):
+class CollisionReport(DataResult[T], Generic[T]):
     """
     # ROLE: Messanger, Data Transport Object, Error Transport Object.
 
     # RESPONSIBILITIES:
     1.  Send the outcome of a collision to the caller.
-    2.  Enforcing mutual exclusion. A CollisionResult can either carry payload or exception. Not both.
+    2.  Enforcing mutual exclusion. A CollisionReport can either carry payload or exception. Not both.
 
     # PARENT:
         *   DataResult
@@ -46,7 +46,7 @@ class CollisionResult(DataResult[T], Generic[T]):
     ):
         super().__init__(state=state, payload=target, exception=exception)
         """INTERNAL: Use factory methods instead of direct constructor."""
-        method = "CollisionResult.result"
+        method = "CollisionReport.result"
         self._collider = collider
         
     @property
@@ -85,7 +85,7 @@ class CollisionResult(DataResult[T], Generic[T]):
         )
     
     @classmethod
-    def collision_detected(cls, target: T, collider: T,) -> CollisionResult[T]:
+    def collision_detected(cls, target: T, collider: T,) -> CollisionReport[T]:
         return cls(
             target=target,
             collider=collider,
@@ -94,7 +94,7 @@ class CollisionResult(DataResult[T], Generic[T]):
         )
     
     @classmethod
-    def no_collision_detected(cls, target: T, ) -> CollisionResult[T]:
+    def no_collision_detected(cls, target: T, ) -> CollisionReport[T]:
         return cls(
             target=target,
             collider=None,
@@ -121,36 +121,36 @@ class CollisionResult(DataResult[T], Generic[T]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> CollisionResult[T]:
+    def success(cls, payload: T) -> CollisionReport[T]:
         return cls.detection_failure(
             target=payload,
             exception=MethodNotImplementedException(
-                f"CollisionResult does not support Result.success. Use CollisionResult.collision_detected instead."
+                f"CollisionReport does not support Result.success. Use CollisionReport.collision_detected instead."
             )
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> CollisionResult[T]:
+    def failure(cls, exception: Exception) -> CollisionReport[T]:
         return cls.detection_failure(
             target=None,
             exception=MethodNotImplementedException(
                 ex=exception,
                 message=(
-                    f"CollisionResult does not support Result.failure. "
-                    f"Use CollisionResult.collision_failure instead."
+                    f"CollisionReport does not support Result.failure. "
+                    f"Use CollisionReport.collision_failure instead."
                 ),
             )
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> CollisionResult[T]:
+    def timed_out(cls, exception: Exception) -> CollisionReport[T]:
         return cls.collision_timed_out(
             target=None,
             exception=MethodNotImplementedException(
                 ex=exception,
                 message=(
-                    f"CollisionResult does not support Result.timed_out. "
-                    f"Use CollisionResult.collision_timed instead."
+                    f"CollisionReport does not support Result.timed_out. "
+                    f"Use CollisionReport.collision_timed instead."
                 ),
             )
         )

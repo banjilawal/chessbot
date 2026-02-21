@@ -38,28 +38,8 @@ class Builder(ABC, Generic[T]):
     None
     """
     
-    def builder(self):
-        pass
-    
     @classmethod
     @abstractmethod
     @LoggingLevelRouter.monitor
     def build(cls, *args, **kwargs) -> BuildResult[T]:
-        """
-        # ACTION:
-        1. Run integrity checks on each parameter required for constructing V.
-        2. If any check fails it raises an exception that is returned inside a BuildResult.
-        3. When all checks pass, construct V then return it inside a BuildResult.
-
-        # PARAMETERS:
-            * args: Parameters for constructing V.
-
-        # RETURNS:
-        BuildResult[V] containing either:
-            - On success: V in the payload.
-            - On failure: Exception.
-
-        # RAISES:
-          * BuildFailedException
-        """
         pass

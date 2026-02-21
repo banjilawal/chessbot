@@ -14,3 +14,4 @@ None
 
 # Modules
 from .state import ComputationResultState
+from .classification import ComputationResultEnum

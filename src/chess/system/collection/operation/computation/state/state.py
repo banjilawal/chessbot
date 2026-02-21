@@ -7,9 +7,9 @@ Created: 2026-01-25
 Version: 1.0.0
 """
 
-from chess.system import DataResultEnum, ResultState
+from chess.system import ComputationResultEnum, ResultState
 
 
-class ComputationResultState(ResultState[DataResultEnum]):
-    def __init__(self, classification: DataResultEnum):
+class ComputationResultState(ResultState[ComputationResultEnum]):
+    def __init__(self, classification: ComputationResultEnum):
         super().__init__(classification=classification)

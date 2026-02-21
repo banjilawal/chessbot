@@ -21,7 +21,7 @@ class UnsupportedEmptyCollisionResultException(UnsupportedDataResultStateExcepti
     # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Indicate that an CollisionResult can either succeed or fail. There are no other outcomes. 
+    1.  Indicate that an CollisionReport can either succeed or fail. There are no other outcomes.
 
     # PARENT:
         *   UnsupportedDataResultStateException
@@ -37,6 +37,6 @@ class UnsupportedEmptyCollisionResultException(UnsupportedDataResultStateExcepti
     """
     ERROR_CODE = "UNSUPPORTED_EMPTY_COLLISION_RESULT_STATE_ERROR"
     DEFAULT_MESSAGE = (
-        "An CollisionResult's outcome is either changed, change_failed, collision original == collision, failure."
+        "An CollisionReport's outcome is either changed, change_failed, collision original == collision, failure."
         " It cannot be empty."
     )
