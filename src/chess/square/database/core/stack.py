@@ -7,7 +7,6 @@ Created: 2025-11-19
 version: 1.0.0
 """
 from copy import deepcopy
-from http.server import DEFAULT_ERROR_MESSAGE
 from typing import List, Optional, cast
 
 from chess.system import (
@@ -15,10 +14,10 @@ from chess.system import (
     LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, UpdateResult, id_emitter
 )
 from chess.square import (
-    DeployingTeamRosterException, SquareContext, SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException,
-    SquareIdAlreadyInUseException,
+    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, PartialTeamDeploymentException, SquareContext,
+    SquareNameAlreadyInUseException,  SquareCoordAlreadyInUseException, quareIdAlreadyInUseException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
-    PoppingSquareException, PushingSquareException, FullSquareStackException
+    PoppingSquareException, PushingSquareException, FullSquareStackException, TeamAlreadyDeployedException
 )
 from chess.team import Team, TeamService
 from chess.token import NullTokenException, Token, TokenContext

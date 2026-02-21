@@ -3,7 +3,7 @@
 """
 Module: chess.square.database.core.exception.deployment.wrapper
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2026-02-21
 version: 1.0.0
 """
 

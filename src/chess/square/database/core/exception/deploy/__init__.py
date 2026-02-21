@@ -14,3 +14,6 @@ None
 
 # Modules
 from .wrapper import DeployingTeamRosterException
+from .duplicate import TeamAlreadyDeployedException
+from .incomplete import PartialTeamDeploymentException
+from .strength import CannotDeployUnderStrengthTeamException
