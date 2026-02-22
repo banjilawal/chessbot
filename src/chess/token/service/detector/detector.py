@@ -15,7 +15,7 @@ from typing import List
 from chess.system import CollisionDetector, CollisionReport, LoggingLevelRouter
 
 from chess.token import Token, TokenDesignationAlreadyInUseException, TokenIdAlreadyInUseException, TokenValidator
-from chess.token.database.core.util.detector.exception.wrapper import TokenCollisionDetectionException
+from chess.token.service.detector.exception.wrapper import TokenCollisionDetectionException
 
 
 class TokenCollisionDetector(CollisionDetector[Token]):

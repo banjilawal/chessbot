@@ -18,14 +18,14 @@ from chess.coord import Coord, CoordService, DuplicateCoordPushException, Poppin
 from chess.token import (
     CannotPromotePawnToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
     PawnAlreadyPromotedException,
-    PawnPromotionFailedException, PawnPromotionRouteException, PawnToken,
+    PawnPromotionFailedException, PawnToken,
     PromotionState, Token,
     TokenAlreadyDeployedOnBoardException, TokenBoardState,
     TokenValidator,
     TokenDeploymentFailedException, TokenFactory, TokenReadinessAnalyzer, TokenOpeningSquareNotFoundException,
     TokenServiceException,
 )
-from chess.token.database.core.util.detector import TokenCollisionDetector
+from chess.token.service.detector import TokenCollisionDetector
 
 
 class TokenService(EntityService[Token]):
