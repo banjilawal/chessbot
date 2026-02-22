@@ -10,9 +10,7 @@ version: 1.0.0
 # =========== SQUARE.DATABASE.CORE.EXCEPTION.PUSH PACKAGE CONTENTS ===========#
 
 # Packages
-from .collision import *
 
 # Modules
 from .wrapper import PushingSquareException
 from .duplicate import AddingDuplicateSquareException
-from .direct import AppendingSquareDirectlyIntoItemsFailedException

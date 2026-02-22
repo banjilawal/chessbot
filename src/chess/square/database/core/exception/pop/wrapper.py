@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# SQUARE_DELETION_FAILURE #======================#
+    # ======================# POPPING_SQUARE_FAILURE #======================#
     "PoppingSquareException",
 ]
 
@@ -16,8 +16,8 @@ from chess.square import SquareException
 from chess.system import DeletionException
 
 
-# ======================# SQUARE_DELETION_FAILURE #======================#
-class PoppingSquareException(SquareException, DeletionException):
+# ======================# POPPING_SQUARE_FAILURE #======================#
+class PoppingSquareException(DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -38,5 +38,5 @@ class PoppingSquareException(SquareException, DeletionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_DELETION_FAILURE"
+    ERROR_CODE = "POPPING_SQUARE_FAILURE"
     DEFAULT_MESSAGE = "Square deletion failed."

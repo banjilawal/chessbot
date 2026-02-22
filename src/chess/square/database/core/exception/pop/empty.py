@@ -14,12 +14,11 @@ __all__ = [
     "PoppingEmptySquareStackException",
 ]
 
-from chess.square import SquareDebugException
-from chess.system import PoppingEmptyStackException
+from chess.square import SquareStackException
 
 
 # ======================# POPPING_EMPTY_SQUARE_STACK EXCEPTION #======================#
-class PoppingEmptySquareStackException(SquareDebugException, PoppingEmptyStackException):
+class PoppingEmptySquareStackException(SquareStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -39,4 +38,4 @@ class PoppingEmptySquareStackException(SquareDebugException, PoppingEmptyStackEx
     None
     """
     ERROR_CODE = "POPPING_EMPTY_SQUARE_STACK_ERROR"
-    DEFAULT_MESSAGE = "Square deletion failed: SquareStack does not own any squares."
+    DEFAULT_MESSAGE = "Popping SquareStack failed: Cannot pop squares from an empty stack."

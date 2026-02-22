@@ -10,9 +10,11 @@ version: 1.0.0
 # =========== SQUARE.DATABASE.CORE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
+from .pop import *
+from .push import *
 from .query import *
-from .deletion import *
-from .insertion import *
+
+
 
 # Modules
 from .catchall import SquareStackException

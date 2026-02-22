@@ -1,27 +1,27 @@
-# src/chess/square/service/detector/exception/debug/id.py
+# src/chess/square/database/core/exception/push/id.py
 
 """
-Module: chess.square.service.detector.exception.debug.id
+Module: chess.square.database.core.exception.push.id
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# SQUARE_ID_COLLISION EXCEPTION #======================#
-    "SquareIdCollisionException",
+    # ======================# ID_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
+    "SquareIdAlreadyInUseException",
 ]
 
 from chess.square import SquareStackException
 
 
-# ======================# SQUARE_ID_COLLISION EXCEPTION #======================#
-class SquareIdCollisionException(SquareStackException):
+# ======================# ID_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
+class SquareIdAlreadyInUseException(SquareStackException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that pushing a square onto the stack failed because its id was already in use.
+    1.  Indicate that inserting a item failed because the id was already in use by a collection member.
 
     # PARENT:
         *   SquareStackException
@@ -35,5 +35,5 @@ class SquareIdCollisionException(SquareStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_ID_COLLISION_ERROR"
-    DEFAULT_MESSAGE = "Pushing square failed: The id was already in use."
+    ERROR_CODE = "ID_ALREADY_USED_IN_SQUARE_DATASET_ERROR"
+    DEFAULT_MESSAGE = "Square push failed: Another item is already using the id."
