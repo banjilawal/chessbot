@@ -10,10 +10,10 @@ version: 1.0.0
 from __future__ import annotations
 
 from chess.persona import Persona
-from chess.team import Team, TeamService
+from chess.team import Team, TeamValidator
 from chess.rank import RankService
 from chess.formation import Formation, FormationService
-from chess.system import BuildResult, Builder, IdentityService, LoggingLevelRouter, id_emitter
+from chess.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter, id_emitter
 from chess.token import CombatantToken, KingToken, PawnToken, TokenBuildException, Token
 
 class TokenFactory(Builder[Token]):
@@ -45,9 +45,9 @@ class TokenFactory(Builder[Token]):
             cls,
             owner: Team,
             formation: Formation,
-            id: int = id_emitter.piece_id,
-            team_service: TeamService = TeamService(),
             rank_service: RankService = RankService(),
+            team_validator: TeamValidator = TeamValidator(),
+            id: int = IdFactory.next_id(class_name="Token"),
             identity_service: IdentityService = IdentityService(),
             formation_service: FormationService = FormationService(),
     ) -> BuildResult[Token]:
@@ -60,7 +60,7 @@ class TokenFactory(Builder[Token]):
             *   owner (Team)
             *   formation: (Formation)
             *   rank_service (RankService)
-            *   team_service (TeamService)
+            *   team_validator (TeamValidator)
             *   identity_service (IdentityService)
             *   formation_service: (FormationService)
         # RETURNS:
@@ -83,7 +83,7 @@ class TokenFactory(Builder[Token]):
                 )
             )
         # Handle the case that the team is not certified as safe.
-        owner_validation = team_service.validator.validate(candidate=owner)
+        owner_validation = team_validator.validate(candidate=owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -148,7 +148,7 @@ class TokenFactory(Builder[Token]):
             *   owner (Team)
             *   formation: (Formation)
             *   rank_service (RankService)
-            *   team_service (TeamService)
+            *   team_validator (TeamValidator)
             *   identity_service (IdentityService)
             *   formation_service: (FormationService)
         # RETURNS:
@@ -187,7 +187,7 @@ class TokenFactory(Builder[Token]):
             *   owner (Team)
             *   formation: (Formation)
             *   rank_service (RankService)
-            *   team_service (TeamService)
+            *   team_validator (TeamValidator)
             *   identity_service (IdentityService)
             *   formation_service: (FormationService)
         # RETURNS:

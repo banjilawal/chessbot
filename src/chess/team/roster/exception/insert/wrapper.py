@@ -11,12 +11,12 @@ from chess.team import TeamRosterException
 
 __all__ = [
     # ======================# FILLING_TEAM_ROSTER_FAILURE #======================#
-    "FillingTeamRosterFailedException",
+    "FillingTeamRosterException",
 ]
 
 
 # ======================# FILLING_TEAM_ROSTER_FAILURE #======================#
-class FillingTeamRosterFailedException(TeamRosterException):
+class FillingTeamRosterException(TeamRosterException):
     """
     # ROLE: Debug, Error Tracing
 

@@ -17,7 +17,7 @@ from chess.system import (
     DeletionResult, EntityService, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, id_emitter
 )
 from chess.team import (
-    FillingTeamRosterFailedException, HostageRelationAnalyzer, RosterRelationAnalyzer, Team, TeamBuilder,
+    FillingTeamRosterException, HostageRelationAnalyzer, RosterRelationAnalyzer, Team, TeamBuilder,
     TeamContext, TeamDatabaseException, TeamServiceException, TeamValidator
 )
 
@@ -130,8 +130,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=FillingTeamRosterFailedException(
-                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                    ex=FillingTeamRosterException(
+                        message=f"{method}: {FillingTeamRosterException.ERROR_CODE}",
                         ex=team_validation.exception
                     )
                 )
@@ -145,8 +145,8 @@ class TeamService(EntityService[Team]):
             return InsertionResult.failure(
                 TeamServiceException(
                     message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                    ex=FillingTeamRosterFailedException(
-                        message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                    ex=FillingTeamRosterException(
+                        message=f"{method}: {FillingTeamRosterException.ERROR_CODE}",
                         ex=formation_lookup_result.exception
                     )
                 )
@@ -170,8 +170,8 @@ class TeamService(EntityService[Team]):
                 return InsertionResult.failure(
                     TeamServiceException(
                         message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                        ex=FillingTeamRosterFailedException(
-                            message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                        ex=FillingTeamRosterException(
+                            message=f"{method}: {FillingTeamRosterException.ERROR_CODE}",
                             ex=token_build_result.exception
                         )
                     )
@@ -185,8 +185,8 @@ class TeamService(EntityService[Team]):
                 return InsertionResult.failure(
                     TeamServiceException(
                         message=f"ServiceId:{self.id}, {method}: {TeamServiceException.ERROR_CODE}",
-                        ex=FillingTeamRosterFailedException(
-                            message=f"{method}: {FillingTeamRosterFailedException.ERROR_CODE}",
+                        ex=FillingTeamRosterException(
+                            message=f"{method}: {FillingTeamRosterException.ERROR_CODE}",
                             ex=insertion_result.exception
                         )
                     )
