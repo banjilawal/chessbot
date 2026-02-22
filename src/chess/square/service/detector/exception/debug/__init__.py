@@ -1,4 +1,4 @@
-# src/chess/square/service/detector/exception/debug/__init__.py
+# src/chess/square/service/detection/exception/debug/__init__.py
 
 """
 Module: chess.square.service.detector.exception.debug.__init__
@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .id import SquareIdAlreadyInUseException
-from .name import SquareNameAlreadyInUseException
-from .coord import SquareCoordAlreadyInUseException
+from .id import SquareIdCollisionException
+from .name import SquareNameCollisionException
+from .coord import SquareCoordCollisionException

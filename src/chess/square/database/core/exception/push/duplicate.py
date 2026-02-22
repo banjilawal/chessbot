@@ -1,7 +1,7 @@
-# src/chess/square/database/core/exception/push/duplicate.py
+# src/chess/square/service/detection/exception/debug/duplicate.py
 
 """
-Module: chess.square.database.core.exception.push.duplicate
+Module: chess.square.service.detection.exception.debug.duplicate
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

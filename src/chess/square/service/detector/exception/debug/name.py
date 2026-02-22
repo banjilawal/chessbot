@@ -1,22 +1,22 @@
-# src/chess/square/database/core/exception/push/name.py
+# src/chess/square/service/detection/exception/debug/name.py
 
 """
-Module: chess.square.database.core.exception.push.name
+Module: chess.square.service.detection.exception.debug.name
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# NAME_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-    "SquareNameAlreadyInUseException",
+    # ======================# SQUARE_NAME_COLLISION EXCEPTION #======================#
+    "SquareNameCollisionException",
 ]
 
 from chess.square import SquareStackException
 
 
-# ======================# NAME_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-class SquareNameAlreadyInUseException(SquareStackException):
+# ======================# SQUARE_NAME_COLLISION EXCEPTION #======================#
+class SquareNameCollisionException(SquareStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -35,5 +35,5 @@ class SquareNameAlreadyInUseException(SquareStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NAME_ALREADY_USED_IN_SQUARE_DATASET_ERROR"
+    ERROR_CODE = "SQUARE_NAME_COLLISION_ERROR"
     DEFAULT_MESSAGE = "Square push failed: Another item is already using the name."

@@ -1,22 +1,22 @@
-# src/chess/square/database/core/exception/push/coord.py
+# src/chess/square/service/detection/exception/debug/coord.py
 
 """
-Module: chess.square.database.core.exception.push.coord
+Module: chess.square.service.detection.exception.debug.coord
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# COORD_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-    "SquareCoordAlreadyInUseException",
+    # ======================# SQUARE_COORD_COLLISION EXCEPTION #======================#
+    "SquareCoordCollisionException",
 ]
 
 from chess.square import SquareStackException
 
 
-# ======================# COORD_ALREADY_USED_IN_SQUARE_DATASET EXCEPTION #======================#
-class SquareCoordAlreadyInUseException(SquareStackException):
+# ======================# SQUARE_COORD_COLLISION EXCEPTION #======================#
+class SquareCoordCollisionException(SquareStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -35,5 +35,5 @@ class SquareCoordAlreadyInUseException(SquareStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_ALREADY_USED_IN_SQUARE_DATASET_ERROR"
+    ERROR_CODE = "SQUARE_COORD_COLLISION_ERROR"
     DEFAULT_MESSAGE = "Square push failed: Another item is already using the coord."
