@@ -110,6 +110,10 @@ class SquareStack(StackService[Square]):
         return self._stack[-1] if self._stack else None
     
     @property
+    def items(self) -> List[Square]:
+        return self._stack
+    
+    @property
     def integrity_service(self) -> SquareService:
         return self._service
     

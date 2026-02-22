@@ -1,7 +1,7 @@
-# src/chess/square/service/detection/exception/debug/coord.py
+# src/chess/square/service/collision/exception/debug/coord.py
 
 """
-Module: chess.square.service.detection.exception.debug.coord
+Module: chess.square.service.collision.exception.debug.coord
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

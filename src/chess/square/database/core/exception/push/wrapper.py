@@ -1,7 +1,7 @@
-# src/chess/square/service/detection/exception/debug/wrapper.py
+# src/chess/square/service/collision/exception/debug/wrapper.py
 
 """
-Module: chess.square.service.detection.exception.debug.wrapper
+Module: chess.square.service.collision.exception.debug.wrapper
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

@@ -5,8 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/detector/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/exception/debug/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/detector/exception/debug/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/collision/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/collision/detector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/collision/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/collision/exception/debug/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/exception/debug/coord.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/collision/exception/debug/coord.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/exception/debug/id.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/collision/exception/debug/id.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/collision/exception/debug/name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/detector/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/collision/exception/wrapper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -857,7 +863,7 @@
       <workItem from="1770842905646" duration="113119000" />
       <workItem from="1771491412101" duration="13201000" />
       <workItem from="1771579310427" duration="67416000" />
-      <workItem from="1771717623716" duration="24290000" />
+      <workItem from="1771717623716" duration="25398000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

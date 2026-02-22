@@ -1,7 +1,7 @@
-# src/chess/square/database/core/util/detector/wrapper.py
+# src/chess/square/square/service/collision/wrapper.py
 
 """
-Module: chess.square.service.detector.wrapper
+Module: chess.square.service.collision.wrapper
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0

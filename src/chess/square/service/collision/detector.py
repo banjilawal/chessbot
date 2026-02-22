@@ -1,7 +1,7 @@
-# src/chess/square/database/core/util/detector/detector.py
+# src/chess/square/square/service/collision/detector.py
 
 """
-Module: chess.square.service.detector.detector
+Module: chess.square.service.collision.detector
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0
@@ -12,16 +12,17 @@ from typing import List
 
 from chess.system import CollisionDetector, CollisionReport, LoggingLevelRouter
 from chess.square import (
-    Square, SquareCollisionDetectionException, SquareNameCollisionException, SquareIdCollisionException,
-    SquareCoordCollisionException, SquareValidator
+    Square, SquareCollisionDetectionException, SquareCoordCollisionException, SquareIdCollisionException,
+    SquareNameCollisionException, SquareValidator
 )
 
 class SquareCollisionDetector(CollisionDetector[Square]):
     """
-    # ROLE: Detector, Consistency and Uniqueness Guarantor,
+    # ROLE: Detector, Consistency and Uniqueness Guarantor, Validation,
 
     # RESPONSIBILITIES:
     1.  Public facing collision detection microservice API.
+    2.  Validates Squares before they are inserted into the Square dataset.
     2.  Ensures consistency of Square datasets by enforcing uniqueness constraints.
     3.  Sends report indicating target, collider and which attribute caused the collision.
 

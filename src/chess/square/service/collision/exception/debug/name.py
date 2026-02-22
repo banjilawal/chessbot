@@ -1,7 +1,7 @@
-# src/chess/square/service/detection/exception/debug/name.py
+# src/chess/square/service/collision/exception/debug/name.py
 
 """
-Module: chess.square.service.detection.exception.debug.name
+Module: chess.square.service.collision.exception.debug.name
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

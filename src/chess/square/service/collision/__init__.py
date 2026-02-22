@@ -1,7 +1,7 @@
-# src/chess/square/database/core/util/detector/__init__.py
+# src/chess/square/square/service/collision/__init__.py
 
 """
-Module: chess.square.service.detector.__init__
+Module: chess.square.service.collision.__init__
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0
