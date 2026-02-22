@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# SQUARE_OPENING)SQUARE_COLLISION EXCEPTION #======================#
-    "SquareOpeningSquareCollisionException",
+    "SquareCoordCollisionException",
 ]
 
 from chess.square import SquareStackException
 
 
 # ======================# SQUARE_OPENING)SQUARE_COLLISION EXCEPTION #======================#
-class SquareOpeningSquareCollisionException(SquareStackException):
+class SquareCoordCollisionException(SquareStackException):
     """
     # ROLE: Debug, Error Tracing
 

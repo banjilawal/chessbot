@@ -12,10 +12,9 @@ from typing import List
 
 from chess.system import CollisionDetector, CollisionReport, LoggingLevelRouter
 from chess.square import (
-    Square, SquareCollisionDetectionException, SquareDesignationCollisionException, SquareIdCollisionException,
-    SquareOpeningSquareCollisionException, SquareValidator
+    Square, SquareCollisionDetectionException, SquareNameCollisionException, SquareIdCollisionException,
+    SquareCoordCollisionException, SquareValidator
 )
-
 
 class SquareCollisionDetector(CollisionDetector[Square]):
     """
@@ -64,8 +63,8 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         # RAISES:
             *   SquareIdCollisionException
             *   SquareCollisionDetectionException
-            *   SquareDesignationCollisionException
-            *   SquareOpeningSquareCollisionException
+            *   SquareNameCollisionException
+            *   SquareCoordCollisionException
         """
         method = "SquareCollisionDetector.detect"
         
@@ -78,12 +77,11 @@ class SquareCollisionDetector(CollisionDetector[Square]):
                 exception=SquareCollisionDetectionException(
                     message=f"{method}: {SquareCollisionDetectionException.ERROR_CODE}",
                     ex=validation_result.exception,
-                ),
+                )
             )
-        
         # --- Loop through the dataset to find matches. ---#
+        
         for member in dataset:
-            
             # Handle the case that, the target shares its id with a dataset member.
             if member.id == target.id:
                 # Return target, the collider, and the exception explaining the collision.
@@ -97,29 +95,29 @@ class SquareCollisionDetector(CollisionDetector[Square]):
                         )
                     )
                 )
-            # Handle the case that, the target shares its designation with a dataset member.
-            if member.designation.upper() == target.designation.upper():
+            # Handle the case that, the target shares its name with a dataset member.
+            if member.name.upper() == target.name.upper():
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_detected(
                     target=target,
                     collider=member,
                     exception=SquareCollisionDetectionException(
                         message=f"{method}: {SquareCollisionDetectionException.ERROR_CODE}",
-                        ex=SquareDesignationCollisionException(
-                            f"{method}: {SquareDesignationCollisionException.DEFAULT_MESSAGE}",
+                        ex=SquareNameCollisionException(
+                            f"{method}: {SquareNameCollisionException.DEFAULT_MESSAGE}",
                         )
                     )
                 )
-            # Handle the case that, the target shares its opening square with a dataset member.
-            if member.opening_square_name.upper() == target.opening_square_name.upper():
+            # Handle the case that, the target shares its coord with a dataset member.
+            if member.coord == target.coord:
                 # Return target, the collider, and the exception explaining the collision.
                 return CollisionReport.collision_detected(
                     target=target,
                     collider=member,
                     exception=SquareCollisionDetectionException(
                         message=f"{method}: {SquareCollisionDetectionException.ERROR_CODE}",
-                        ex=SquareOpeningSquareCollisionException(
-                            f"{method}: {SquareOpeningSquareCollisionException.DEFAULT_MESSAGE}",
+                        ex=SquareCoordCollisionException(
+                            f"{method}: {SquareCoordCollisionException.DEFAULT_MESSAGE}",
                         )
                     )
                 )

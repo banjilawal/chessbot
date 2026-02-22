@@ -14,6 +14,6 @@ None
 
 # Modules
 from .id import SquareIdCollisionException
-from .square import SquareOpeningSquareCollisionException
-from .designation import SquareDesignationCollisionException
+from .square import SquareCoordCollisionException
+from .designation import SquareNameCollisionException
 
