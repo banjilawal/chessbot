@@ -21,9 +21,8 @@ class RankQuotaAnalyzer:
 
     # RESPONSIBILITIES:
     1.  Public facing API.
-    2.  Microservice for managing Token objects and their lifecycles.
-    3.  Ensure integrity of Token data stack
-    4.  Stack data structure for Token objects with no guarantee of uniqueness.
+    2.  Computes and reports information about how many openings a TokenStack has a given rank.
+    3.  Authoritative, single source of truth for rank quota error information.
 
     # PARENT:
     None
