@@ -46,7 +46,6 @@ class SquareStack(StackService[Square]):
         *   See StackService class for inherited attributes.
     """
     SERVICE_NAME = "SquareStack"
-    
     _capacity: int
     _stack: List[Square]
     _service: SquareService
