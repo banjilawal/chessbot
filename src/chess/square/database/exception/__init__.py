@@ -10,9 +10,7 @@ version: 1.0.0
 # =========== SQUARE.DATABASE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .search import *
-from .occupant import *
-from .square import *
+None
 
 # Modules
 from .catchall import SquareDatabaseException
