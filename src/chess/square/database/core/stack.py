@@ -1,11 +1,13 @@
 # src/chess/square/database/core/stack.py
 
 """
-Module: chess.square.database.core.service
+Module: chess.square.database.core.stack
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
+
+from __future__ import annotations
 from copy import deepcopy
 from typing import List, Optional, cast
 
@@ -18,7 +20,7 @@ from chess.system import (
 from chess.square import (
     CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, SquareContext, TeamPartiallyDeployedException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
-    PoppingSquareException, PushingSquareException, FullSquareStackException, TeamAlreadyDeployedException
+    PoppingSquareException, PushingSquareException, SquareStackFullException, TeamAlreadyDeployedException
 )
 
 
@@ -138,7 +140,7 @@ class SquareStack(StackService[Square]):
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                     ex=PushingSquareException(
                         message=f"{method}: {PushingSquareException.ERROR_CODE}",
-                        ex=FullSquareStackException(f"{method}: {FullSquareStackException.DEFAULT_MESSAGE}")
+                        ex=SquareStackFullException(f"{method}: {SquareStackFullException.DEFAULT_MESSAGE}")
                     )
                 )
             )

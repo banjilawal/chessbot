@@ -12,7 +12,7 @@ from typing import List, cast
 from chess.square import (
     AddingDuplicateSquareException, AddingSquareOccupantException, DeleteTokenBySearchException,
     InsertingSquareInDatabaseFailedException, Square, SquareContext, SquareContextService, SquareStack, SquareService,
-    FullSquareStackException, SquareDatabaseException, SquareToOccupyNotFoundException
+    SquareStackFullException, SquareDatabaseException, SquareToOccupyNotFoundException
 )
 
 from chess.system import (
@@ -292,8 +292,8 @@ class SquareDatabase(Database[Square]):
                     message=f"ServiceId:{self.id}, {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=InsertingSquareInDatabaseFailedException(
                         message=f"{method}: {InsertingSquareInDatabaseFailedException.ERROR_CODE}",
-                        ex=FullSquareStackException(
-                            f"{method}: {FullSquareStackException.DEFAULT_MESSAGE}"
+                        ex=SquareStackFullException(
+                            f"{method}: {SquareStackFullException.DEFAULT_MESSAGE}"
                         )
                     )
                 )

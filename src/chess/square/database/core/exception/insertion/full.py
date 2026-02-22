@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# SQUARE_STACK_SERVICE EXCEPTION #======================#
-    "FullSquareStackException",
+    "SquareStackFullException",
 ]
 
 from chess.system import DebugException
@@ -17,7 +17,7 @@ from chess.square import SquareServiceException
 
 
 # ======================# SQUARE_STACK_SERVICE EXCEPTION #======================#
-class FullSquareStackException(SquareServiceException, DebugException):
+class SquareStackFullException(SquareServiceException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
