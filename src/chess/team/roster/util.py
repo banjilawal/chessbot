@@ -1,7 +1,7 @@
-# src/chess/team/service/util/util.py
+# src/chess/team/roster/util/util.py
 
 """
-Module: chess.team.service.util.util
+Module: chess.team.roster.util.util
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from copy import deepcopy
 
-from chess.formation import FormationKey, FormationService
 from chess.rank import RankService
+from chess.formation import FormationKey, FormationService
 from chess.system import IdFactory, IdentityService, UpdateResult
 from chess.team import FillingTeamRosterException, RosterRelationAnalyzer, Team, TeamValidator
 
@@ -52,7 +52,7 @@ class RosterUtil:
     def roster_relation_analyzer(self) -> RosterRelationAnalyzer:
         return self._roster_relation_analyzer
        
-    def fill(
+    def fill_team_roster(
             self,
             team: Team,
             team_validator: TeamValidator = TeamValidator(),
