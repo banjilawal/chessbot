@@ -13,11 +13,10 @@ from chess.token import TokenContext
 from chess.team import Team, TeamService
 from chess.system import (
     ComputationResult, IdFactory, NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult,
-    LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, UpdateResult, id_emitter
+    LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, UpdateResult
 )
 from chess.square import (
     CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, SquareContext, TeamPartiallyDeployedException,
-    SquareNameAlreadyInUseException, SquareCoordAlreadyInUseException, SquareIdAlreadyInUseException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
     PoppingSquareException, PushingSquareException, FullSquareStackException, TeamAlreadyDeployedException
 )
