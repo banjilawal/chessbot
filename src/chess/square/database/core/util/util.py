@@ -8,26 +8,26 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from chess.square import SquareStackAnalyzer
-from chess.square.database.core.util.roster.deployer import RosterFormationCoordinator
+
+from chess.square import OccupationService, SquareStackAnalyzer
 
 
 class SquareStackUtil:
     _stats_analyzer: SquareStackAnalyzer
-    _roster_deployer: RosterFormationCoordinator
+    _occupation_service: OccupationService
     
     def __init__(
             self,
             stats_analyzer: SquareStackAnalyzer = SquareStackAnalyzer(),
-            roster_deployer: RosterFormationCoordinator = RosterFormationCoordinator(),
+            occupation_service: OccupationService = OccupationService(),
     ):
         self._stats_analyzer = stats_analyzer
-        self._roster_deployer = roster_deployer
+        self._occupation_service = occupation_service
         
     @property
     def stats_analyzer(self) -> SquareStackAnalyzer:
         return self._stats_analyzer
     
     @property
-    def roster_deployer(self) -> RosterFormationCoordinator:
-        return self._roster_deployer
+    def occupation_service(self) -> OccupationService:
+        return self._occupation_service

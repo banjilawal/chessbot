@@ -1,7 +1,7 @@
-# src/chess/square/database/core/util/roster/deployer.py
+# src/chess/square/database/core/util/occupation/roster/deployer.py
 
 """
-Module: chess.square.database.core.util.roster.deployer
+Module: chess.square.database.core.util.occupation.roster.deployer
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0

@@ -14,3 +14,4 @@ None
 
 # Modules
 from .full import SquareStackFullException
+from .catchall import SquareStackAnalyzerException

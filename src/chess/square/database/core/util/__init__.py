@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .stats import *
-from .roster import *
+from .occupation import *
 
 # Modules
 from .util import SquareStackUtil

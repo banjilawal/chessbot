@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from chess.schema import Schema
-from chess.team import Team, TeamContext, TeamContextService, TeamService, TeamStack
+from chess.team import Team, TeamContext, TeamContextService, TeamDatabaseException, TeamService, TeamStack
 from chess.system import (
     DeletionResult, InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
 )
@@ -80,6 +80,111 @@ class TeamDatabase(Database[Team]):
     @property
     def current_team(self) -> Optional[Team]:
         return cast (Team, self.data_service.current_item)
+    
+    @LoggingLevelRouter.monitor
+    def delete_by_id(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[Team]:
+        """
+        # ACTION:
+            1.  Get the result of calling _token_database_core.delete_token_by_id for method. If the deletion failed
+                wrap the exception inside the appropriate Database exceptions and send the exception chain
+                in the DeletionResult.
+            2.  If the deletion operation completed directly forward the DeletionResult to the caller.
+        # PARAMETERS:
+            *   id (int)
+        # RETURN:
+            *   DeletionResult[Token] containing either:
+                    - On failure: An exception.
+                    - On success: Token in payload.
+                    - On Empty: No payload nor exception.
+        # RAISES:
+            *   TeamDatabaseException
+        """
+        method = "TeamDatabase.remove_token"
+        
+        # --- Handoff the deletion responsibility to _token_database_core. ---#
+        deletion_result = self._team_stack.delete_by_id(id=id, identity_service=identity_service)
+        
+        # Handle the case that the deletion was not completed.
+        if deletion_result.is_failure:
+            # Return the exception chain on failure.
+            return DeletionResult.failure(
+                TeamDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamDatabaseException.ERROR_CODE}",
+                    ex=deletion_result.exception
+                )
+            )
+        # --- For either a successful or null deletion result directly forward to the caller. ---#
+        return deletion_result
+    
+    @LoggingLevelRouter.monitor
+    def insert(self, team: Team) -> InsertionResult:
+        """
+        # ACTION:
+            1.  If the item fails validation send the wrapped exception in the InsertionResult.
+            2.  If a search for the item either fails or finds a match send the wrapped exception in the
+                InsertionResult.
+            3.  If the call to _token_database_core.insert_token fails send the wrapped exception in the
+                InsertionResult. Else send the outgoing result directly to the caller.
+        # PARAMETERS:
+            *   team (Team)
+        # RETURN:
+            *   InsertionResult containing either:
+                    - On failure: An exception.
+                    - On success: bool in payload.
+        # RAISES:
+            *   TeamDatabaseException
+        """
+        method = "TeamDatabase.insert"
+        
+        # --- Use _token_database_core.insert_token because order does not matter for the occupant access. ---#
+        insertion_result = self._team_stack.push(item=team)
+        
+        # Handle the case that the insertion is not completed.
+        if insertion_result.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                TeamDatabaseException(
+                    message=f"ServiceId:{self.id}, {method}: {TeamDatabaseException.ERROR_CODE}",
+                    ex=insertion_result.exception
+                )
+            )
+        # --- On success directly forward the insertion result to the caller. ---#
+        return insertion_result
+    
+    @LoggingLevelRouter.monitor
+    def search(self, context: TeamContext) -> SearchResult[List[Team]]:
+        """
+        # ACTION:
+            1.  Get the result of calling _token_database_core.delete_token_by_id for method. If the deletion failed
+                wrap the exception inside the appropriate Database exceptions and send the exception chain
+                in the DeletionResult.
+            2.  If the deletion operation completed directly forward the DeletionResult to the caller.
+        # PARAMETERS:
+            *   id (int)
+        # RETURN:
+            *   SearchResult[Token] containing either:
+                    - On failure: An exception.
+                    - On success: Token in payload.
+                    - On Empty: No payload nor exception.
+        # RAISES:
+            *   TeamDatabaseException
+        """
+        method = "TokenDatabase.search"
+        
+        # --- Handoff the search responsibility to _token_database_core. ---#
+        search_result = self._team_stack.context_service.finder.find(context=context)
+        
+        # Handle the case that the search is not completed.
+        if search_result.is_failure:
+            # Return the exception chain on failure.
+            return SearchResult.failure(
+                TeamDatabaseException(
+                    message=f"ServiceID:{self.id} {method}: {TeamDatabaseException.ERROR_CODE}",
+                    ex=search_result.exception
+                )
+            )
+        # --- For either a successful or empty search result directly forward to the caller. ---#
+        return search_result
     
     @property
     @LoggingLevelRouter.monitor
