@@ -13,13 +13,33 @@ from __future__ import annotations
 from typing import List
 
 from chess.system import CollisionDetector, CollisionReport, LoggingLevelRouter
-
-from chess.token import Token, TokenDesignationAlreadyInUseException, TokenIdAlreadyInUseException, TokenValidator
-from chess.token.service.detector.exception.wrapper import TokenCollisionDetectionException
+from chess.token import (
+    Token, TokenCollisionDetectionException, TokenDesignationCollisionException, TokenIdCollisionException,
+    TokenOpeningSquareCollisionException, TokenValidator
+)
 
 
 class TokenCollisionDetector(CollisionDetector[Token]):
-    
+    """
+    # ROLE: Detector, Consistency and Uniqueness Guarantor,
+
+    # RESPONSIBILITIES:
+    1.  Public facing collision detection microservice API.
+    2.  Ensures consistency of Token datasets by enforcing uniqueness constraints.
+    3.  Sends report indicating target, collider and which attribute caused the collision.
+
+    # PARENT:
+        *   CollisionDetector
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def detect(
@@ -46,7 +66,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
         # RAISES:
             *   TokenIdCollisionException
             *   TokenCollisionDetectionException
-            *   TokenDesignationAlreadyInUseException
+            *   TokenDesignationCollisionException
             *   TokenOpeningSquareCollisionException
         """
         method = "TokenCollisionDetector.detect"
@@ -74,8 +94,8 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     collider=member,
                     exception=TokenCollisionDetectionException(
                         message=f"{method}: {TokenCollisionDetectionException.ERROR_CODE}",
-                        ex=TokenIdAlreadyInUseException(
-                            f"{method}: {TokenIdAlreadyInUseException.DEFAULT_MESSAGE}",
+                        ex=TokenIdCollisionException(
+                            f"{method}: {TokenIdCollisionException.DEFAULT_MESSAGE}",
                         )
                     )
                 )
@@ -87,8 +107,8 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     collider=member,
                     exception=TokenCollisionDetectionException(
                         message=f"{method}: {TokenCollisionDetectionException.ERROR_CODE}",
-                        ex=TokenDesignationAlreadyInUseException(
-                            f"{method}: {TokenDesignationAlreadyInUseException.DEFAULT_MESSAGE}",
+                        ex=TokenDesignationCollisionException(
+                            f"{method}: {TokenDesignationCollisionException.DEFAULT_MESSAGE}",
                         )
                     )
                 )
@@ -100,8 +120,8 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     collider=member,
                     exception=TokenCollisionDetectionException(
                         message=f"{method}: {TokenCollisionDetectionException.ERROR_CODE}",
-                        ex=TokenDesignationAlreadyInUseException(
-                            f"{method}: {TokenDesignationAlreadyInUseException.DEFAULT_MESSAGE}",
+                        ex=TokenOpeningSquareCollisionException(
+                            f"{method}: {TokenOpeningSquareCollisionException.DEFAULT_MESSAGE}",
                         )
                     )
                 )

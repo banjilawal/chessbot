@@ -14,9 +14,8 @@ from chess.system import (
      SearchResult, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, IdFactory
 )
 from chess.token import (
-    NoRankOpeningsException, PoppingEmptyTokenStackException, Token, TokenContext, TokenService, TokenStackException,
-    TokenContextService, PoppingTokenException, PushingTokenException, TokenStackFullException, TokenStackState,
-    TokenStackUtil,
+    PoppingEmptyTokenStackException, Token, TokenContext, TokenService, TokenStackException, TokenContextService,
+    PoppingTokenException, PushingTokenException, TokenStackFullException, TokenStackState, TokenStackUtil,
 )
 
 
@@ -198,37 +197,24 @@ class TokenStack(StackService[Token]):
                     )
                 )
             )
-        # --- Find out if there are open slots for the token's rank ---#
-        rank_has_opening_result = self.utils.rank_quota_analyzer.rank_openings_exist(
+        # --- Find out how many openings the rank has. ---#
+        openings_count_result = self.utils.rank_quota_analyzer.count_openings_for_rank(
             rank=item.rank,
             token_stack=self
         )
-        # Handle the case that the boolean query is not answered.
-        if rank_has_opening_result.is_failure:
+        # Handle the case that, the analyzer doesn't give a count of open slots.
+        if openings_count_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenStackException(
                     message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
                     ex=PushingTokenException(
                         message=f"{method}: {PushingTokenException.ERROR_CODE}",
-                        ex=rank_has_opening_result.exception
+                        ex=openings_count_result.exception
                     )
                 )
             )
-        # Handle the case that the token's rank is full.
-        rank_has_opening = rank_has_opening_result.payload
-        if not rank_has_opening:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=PushingTokenException(
-                        message=f"{method}: {PushingTokenException.ERROR_CODE}",
-                        ex=NoRankOpeningsException(f"{method}: {NoRankOpeningsException.DEFAULT_MESSAGE}")
-                    )
-                )
-            )
-        # --- Capacity, collision and quota checks are completed. Push the token onto the stack ---#
+        # --- Capacity, collision and opening check are completed. Push the token onto the stack ---#
         self._stack.append(item)
         
         # --- Perform cleanup and integrity maintenance tasks. ---#
