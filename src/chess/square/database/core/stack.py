@@ -18,7 +18,8 @@ from chess.system import (
     LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, UpdateResult
 )
 from chess.square import (
-    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, SquareContext, TeamPartiallyDeployedException,
+    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, SquareContext, SquareStackUtil,
+    TeamPartiallyDeployedException,
     PoppingEmptySquareStackException, Square, SquareStackException, SquareService, SquareContextService,
     PoppingSquareException, PushingSquareException, SquareStackFullException, TeamAlreadyDeployedException
 )
@@ -49,13 +50,16 @@ class SquareStack(StackService[Square]):
     SERVICE_NAME = "SquareStack"
     _capacity: int
     _stack: List[Square]
+    _util: SquareStackUtil
     _service: SquareService
+
     _context_service: SquareContextService
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             service: SquareService = SquareService(),
+            util: SquareStackUtil = SquareStackUtil(),
             capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
             id: int = IdFactory.next_id(class_name="SquareStack"),
             context_service: SquareContextService = SquareContextService(),
@@ -76,6 +80,7 @@ class SquareStack(StackService[Square]):
         method = "SquareService.__init__"
         super().__init__(id=id,name=name,)
         self._stack = []
+        self_util = util
         self._capacity = capacity
         self._service = service
         self._context_service = context_service
@@ -97,8 +102,8 @@ class SquareStack(StackService[Square]):
         return self.size == self._capacity
     
     @property
-    def remaining_slots(self) -> int:
-        return self.capacity - self.size
+    def util(self) -> SquareStackUtil:
+        return self._util
     
     @property
     def current_item(self) -> Optional[Square]:
@@ -132,24 +137,24 @@ class SquareStack(StackService[Square]):
         """
         method = "SquareStack.add_square"
         
-        # Handle the case that the list is full
-        if self.is_full:
-            # Return the exception chain on failure.
+        # Handle the case that there is no capacity for adding another square.
+        available_capacity_computation_result = self._util.stats_analyzer.available_capacity(stack=self)
+        if available_capacity_computation_result.is_failure:
+            # Return the exception chain on failure
             return InsertionResult.failure(
                 SquareStackException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                     ex=PushingSquareException(
                         message=f"{method}: {PushingSquareException.ERROR_CODE}",
-                        ex=SquareStackFullException(f"{method}: {SquareStackFullException.DEFAULT_MESSAGE}")
+                        ex=available_capacity_computation_result.exception
                     )
                 )
             )
-        # --- Handoff validation, id, designation or opening_square collision detection. ---#
+        # Handle the case that, the square is not safe, or its id, name, or coord are in use.
         collision_report = self.integrity_service.collision_detector.detect(
             target=item,
             dataset=self._stack,
         )
-        # Handle the case that, the collision analysis is not completed.
         if collision_report.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -270,30 +275,6 @@ class SquareStack(StackService[Square]):
             return DeletionResult.success(payload=target)
         # Default case: no edges were removed.
         return DeletionResult.nothing_to_delete()
-    
-    def number_of_occupied_squares(self) -> ComputationResult[int]:
-        """
-        # ACTION:
-            1.  Iterate through the squares. If a square is occupied increment the counter.
-            2.  After the loop send total in the ComputationResult.
-        # PARAMETERS:
-            None
-        # RETURNS:
-            *   ComputationResult[int] containing either:
-                    - On failure: Exception.
-                    - On success: int.
-        # RAISES:
-            None
-        """
-        method = "SquareStack.number_of_occupied_squares"
-        
-        number_of_occupied_squares = 0
-        # Loop through the squares to get tally of occupied squares.
-        for square in self._stack:
-            if square.is_occupied:
-                number_of_occupied_squares += 1
-        # Send the total in the ComputationResult.
-        return ComputationResult.success(number_of_occupied_squares)
     
     @LoggingLevelRouter.monitor
     def accept_roster_members_from_team(
