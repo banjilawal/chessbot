@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_OPENING_SQUARE_ALREADY_USED EXCEPTION #======================#
-    "TokenOpeningSquareAlreadyInUseException",
+    # ======================# TOKEN_OPENING)SQUARE_COLLISION EXCEPTION #======================#
+    "TokenOpeningSquareCollisionException",
 ]
 
 from chess.token import TokenStackException
 
 
-# ======================# TOKEN_OPENING_SQUARE_ALREADY_USED EXCEPTION #======================#
-class TokenOpeningSquareAlreadyInUseException(TokenStackException):
+# ======================# TOKEN_OPENING)SQUARE_COLLISION EXCEPTION #======================#
+class TokenOpeningSquareCollisionException(TokenStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -35,5 +35,5 @@ class TokenOpeningSquareAlreadyInUseException(TokenStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_OPENING_SQUARE_ALREADY_USED_ERROR"
+    ERROR_CODE = "TOKEN_OPENING)SQUARE_COLLISION_ERROR"
     DEFAULT_MESSAGE = "Pushing token failed: The opening square was already in use."

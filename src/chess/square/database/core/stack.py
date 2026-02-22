@@ -317,9 +317,9 @@ class SquareStack(StackService[Square]):
                     - On failure: Exception or non-empty list.
                     - On success: Empty search result.
         # RAISES:
-            *   TokenIdAlreadyInUseException
+            *   TokenIdCollisionException
             *   TokenDesignationAlreadyInUseException
-            *   TokenOpeningSquareAlreadyInUseException
+            *   TokenOpeningSquareCollisionException
         """
         method = "SquareStack.find_colliding_squares"
         

@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_ID_ALREADY_USED EXCEPTION #======================#
-    "TokenIdAlreadyInUseException",
+    # ======================# TOKEN_ID_COLLISION EXCEPTION #======================#
+    "TokenIdCollisionException",
 ]
 
 from chess.token import TokenStackException
 
 
-# ======================# TOKEN_ID_ALREADY_USED EXCEPTION #======================#
-class TokenIdAlreadyInUseException(TokenStackException):
+# ======================# TOKEN_ID_COLLISION EXCEPTION #======================#
+class TokenIdCollisionException(TokenStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -35,5 +35,5 @@ class TokenIdAlreadyInUseException(TokenStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_ID_ALREADY_USED_ERROR"
+    ERROR_CODE = "TOKEN_ID_COLLISION_ERROR"
     DEFAULT_MESSAGE = "Pushing token failed: The id was already in use."

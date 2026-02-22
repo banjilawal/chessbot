@@ -44,10 +44,10 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     - On Collision: Token, Token
                     - On no collisions: Token
         # RAISES:
-            *   TokenIdAlreadyInUseException
+            *   TokenIdCollisionException
             *   TokenCollisionDetectionException
             *   TokenDesignationAlreadyInUseException
-            *   TokenOpeningSquareAlreadyInUseException
+            *   TokenOpeningSquareCollisionException
         """
         method = "TokenCollisionDetector.detect"
         

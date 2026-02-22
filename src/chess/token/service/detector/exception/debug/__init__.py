@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .id import TokenIdAlreadyInUseException
-from .square import TokenOpeningSquareAlreadyInUseException
-from .designation import TokenDesignationAlreadyInUseException
+from .id import TokenIdCollisionException
+from .square import TokenOpeningSquareCollisionException
+from .designation import TokenDesignationCollisionException
 

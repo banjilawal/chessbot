@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_DESIGNATION_ALREADY_USED EXCEPTION #======================#
-    "TokenDesignationAlreadyInUseException",
+    # ======================# TOKEN_DESIGNATION_COLLISION EXCEPTION #======================#
+    "TokenDesignationCollisionException",
 ]
 
 from chess.token import TokenStackException
 
 
-# ======================# TOKEN_DESIGNATION_ALREADY_USED EXCEPTION #======================#
-class TokenDesignationAlreadyInUseException(TokenStackException):
+# ======================# TOKEN_DESIGNATION_COLLISION EXCEPTION #======================#
+class TokenDesignationCollisionException(TokenStackException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -35,5 +35,5 @@ class TokenDesignationAlreadyInUseException(TokenStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_DESIGNATION_ALREADY_USED_ERROR"
+    ERROR_CODE = "TOKEN_DESIGNATION_COLLISION_ERROR"
     DEFAULT_MESSAGE = "Pushing token failed: The designation was already in use."
