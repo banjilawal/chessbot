@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 from .query import *
-from .deploy import *
 from .deletion import *
 from .insertion import *
 
