@@ -143,29 +143,20 @@ class SquareStack(StackService[Square]):
                     )
                 )
             )
-        # Handle the case that the item is unsafe.
-        validation = self.integrity_service.validator.validate(candidate=item)
-        if validation.is_failure:
+        # --- Handoff validation, id, designation or opening_square collision detection. ---#
+        collision_report = self.integrity_service.collision_detector.detect(
+            target=item,
+            dataset=self._stack,
+        )
+        # Handle the case that, the collision analysis is not completed.
+        if collision_report.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareStackException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
                     ex=PushingSquareException(
                         message=f"{method}: {PushingSquareException.ERROR_CODE}",
-                        ex=validation.exception
-                    )
-                )
-            )
-        # --- Check if any of the item's attributes are already in use. ---#
-        collision_detection = self._find_colliding_squares(target=item)
-        if collision_detection.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                SquareStackException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackException.ERROR_CODE}",
-                    ex=PushingSquareException(
-                        message=f"{method}: {PushingSquareException.ERROR_CODE}",
-                        ex=collision_detection.exception
+                        ex=collision_report.exception
                     )
                 )
             )

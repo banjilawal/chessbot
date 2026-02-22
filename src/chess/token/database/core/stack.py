@@ -167,20 +167,7 @@ class TokenStack(StackService[Token]):
                     )
                 )
             )
-        # Handle the case that the occupant is unsafe.
-        validation = self.integrity_service.validator.validate(candidate=item)
-        if validation.is_failure:
-            # Return the exception chain on failure.
-            return InsertionResult.failure(
-                TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
-                    ex=PushingTokenException(
-                        message=f"{method}: {PushingTokenException.ERROR_CODE}",
-                        ex=validation.exception
-                    )
-                )
-            )
-        # --- Check if either the token's" id, designtion, or opening square are already used. ---#
+        # --- Handoff validation, id, designation or opening_square collision detection. ---#
         collision_report = self.integrity_service.collision_detector.detect(
             target=item,
             dataset=self._stack,
