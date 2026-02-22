@@ -1,7 +1,7 @@
-# src/chess/token/database/core/exception/insertion/full/stack.py
+# src/chess/token/database/core/exception/push/full/stack.py
 
 """
-Module: chess.token.database.core.exception.insertion.full.stack
+Module: chess.token.database.core.exception.push.full.stack
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# FULL_TOKEN_STACK EXCEPTION #======================#
-    "FullTokenStackException",
+    "TokenStackFullException",
 ]
 
 from chess.system import DebugException
@@ -17,7 +17,7 @@ from chess.token import TokenStackException
 
 
 # ======================# FULL_TOKEN_STACK EXCEPTION #======================#
-class FullTokenStackException(TokenStackException, DebugException):
+class TokenStackFullException(TokenStackException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 

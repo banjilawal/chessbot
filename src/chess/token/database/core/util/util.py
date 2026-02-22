@@ -10,9 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 
 from chess.rank import RankService
-from chess.formation import FormationService
 from chess.token import RankQuotaAnalyzer
-
+from chess.formation import FormationService
 
 class TokenStackUtil:
     _rank_service: RankService
@@ -30,7 +29,7 @@ class TokenStackUtil:
         self._rank_quota_analyzer = rank_quota_analyzer
         
     @@property
-    def (self) -> RankService:
+    def rank_service(self) -> RankService:
         return self._rank_service
         
     @property

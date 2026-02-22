@@ -12,7 +12,7 @@ from typing import List, cast
 
 from chess.rank import Rank, RankService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.token import RankQuotaAnalysisException, Token, TokenContext, TokenStack
+from chess.token import NoRankOpeningsException, RankQuotaAnalysisException, Token, TokenContext, TokenStack
 
 
 class RankQuotaAnalyzer:
@@ -100,7 +100,7 @@ class RankQuotaAnalyzer:
   
     @classmethod
     @LoggingLevelRouter.monitor
-    def stack_has_opening_for_rank(
+    def rank_openings_exist(
             cls,
             rank: Rank,
             token_stack: TokenStack,
@@ -177,14 +177,11 @@ class RankQuotaAnalyzer:
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
                     message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
-                    ex=RankQuotaAnalysisException(
-                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
-                        ex=rank_validation.exception
-                    )
+                    ex=rank_validation.exception
                 )
             )
         # --- Find if there are open slots for the rank. ---#
-        rank_size_computation = cls.stack_has_opening_for_rank(
+        rank_size_computation = cls.rank_openings_exist(
             rank=rank,
             token_stack=token_stack,
             rank_service=rank_service,
@@ -196,12 +193,19 @@ class RankQuotaAnalyzer:
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
                     message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
-                    ex=RankQuotaAnalysisException(
-                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
-                        ex=rank_size_computation.exception
-                    )
+                    ex=rank_size_computation.exception
+                )
+            )
+        # Handle the case that, there are no openings for the rank.
+        number_of_openings = rank.team_quota - rank_size_computation.payload
+        if number_of_openings < 1:
+            # Return the exception chain on failure.
+            return ComputationResult.failure(
+                RankQuotaAnalysisException(
+                    message=f"{method}: {RankQuotaAnalysisException.ERROR_CODE}",
+                    ex=NoRankOpeningsException(f"{method}: {NoRankOpeningsException.DEFAULT_MESSAGE}.")
                 )
             )
         # --- On success send the difference between the quota and rank_member_count in the ComputationResult. ---#
-        number_of_openings = rank.team_quota - rank_size_computation.payload
+
         return ComputationResult.success(number_of_openings)

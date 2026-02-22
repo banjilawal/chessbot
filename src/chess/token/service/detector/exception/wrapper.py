@@ -1,7 +1,7 @@
 # src/chess/token/database/core/util/detector/wrapper.py
 
 """
-Module: chess.token.database.core.util.detector.wrapper
+Module: chess.token.service.detector.wrapper
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0

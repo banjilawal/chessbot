@@ -1,7 +1,7 @@
-# src/chess/token/database/core/exception/insertion/full/rank.py
+# src/chess/token/database/core/exception/push/full/rank.py
 
 """
-Module: chess.token.database.core.exception.insertion.full.rank
+Module: chess.token.database.core.exception.push.full.rank
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -9,7 +9,7 @@ version: 1.0.0
 
 __all__ = [
     # ======================# NO_OPENINGS_FOR_RANK EXCEPTION #======================#
-    "NoRankOpeningsException",
+    "RankQuotaFullException",
 ]
 
 from chess.system import DebugException
@@ -17,7 +17,7 @@ from chess.token import TokenStackException
 
 
 # ======================# NO_OPENINGS_FOR_RANK EXCEPTION #======================#
-class NoRankOpeningsException(TokenStackException, DebugException):
+class RankQuotaFullException(TokenStackException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 

@@ -1,7 +1,7 @@
 # src/chess/token/database/core/util/detector/detector.py
 
 """
-Module: chess.token.database.core.util.detector.detector
+Module: chess.token.service.detector.detector
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0

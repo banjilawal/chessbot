@@ -1,7 +1,7 @@
-# src/chess/token/database/core/exception/insertion/wrapper.py
+# src/chess/token/database/core/exception/push/wrapper.py
 
 """
-Module: chess.token.database.core.exception.insertion.wrapper
+Module: chess.token.database.core.exception.push.wrapper
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0
@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.token import TokenStackException
-from chess.system import InsertionException
+from chess.system import PushException
 
 
 # ======================# PUSHING_TOKEN_FAILURE #======================#
-class PushingTokenException(TokenStackException, InsertionException):
+class PushingTokenException(TokenStackException, PushException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class PushingTokenException(TokenStackException, InsertionException):
 
     # PARENT:
         *   TokenException
-        *   InsertionException
+        *   PushException
 
     # PROVIDES:
     None

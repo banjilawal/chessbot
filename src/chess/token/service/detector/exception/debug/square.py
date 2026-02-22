@@ -1,7 +1,7 @@
-# src/chess/token/database/core/exception/insertion/collision/square.py
+# src/chess/token/service/detector/exception/debug/square.py
 
 """
-Module: chess.token.database.core.exception.insertion.collision.square
+Module: chess.token.service.detector.exception.debug.square
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

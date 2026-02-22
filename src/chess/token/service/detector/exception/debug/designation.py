@@ -1,7 +1,7 @@
-# src/chess/token/database/core/exception/insertion/collision/designation.py
+# src/chess/token/service/detector/exception/debug/designation.py
 
 """
-Module: chess.token.database.core.exception.insertion.collision.designation
+Module: chess.token.service.detector.exception.debug.designation
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

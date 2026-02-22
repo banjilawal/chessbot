@@ -13,4 +13,5 @@ version: 1.0.0
 None
 
 # Modules
+from .full import RankQuotaFullException
 from .wrapper import RankQuotaAnalysisException
