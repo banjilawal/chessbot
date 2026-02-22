@@ -7,16 +7,15 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import List
 
 from chess.rank import Rank
 from chess.token import (
-    RankQuotaAnalyzer, Token, TokenContext, TokenContextService, TokenStack, TokenService, TokenDatabaseException,
-    TokenStackState
+    Token, TokenContext, TokenContextService, TokenStack, TokenService, TokenDatabaseException, TokenStackState
 )
 from chess.system import (
-    ComputationResult, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, SearchResult, Database,
-    id_emitter
+    ComputationResult, DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, SearchResult,
 )
 
 
@@ -46,8 +45,8 @@ class TokenDatabase(Database[Token]):
     def __init__(
             self,
             name: str = SERVICE_NAME,
-            id: int = id_emitter.service_id,
             token_stack: TokenStack = TokenStack(),
+            id: int = IdFactory.next_id(class_name="TokenDatabase"),
     ):
         """
         # ACTION:
@@ -55,7 +54,7 @@ class TokenDatabase(Database[Token]):
         # PARAMETERS:
             *   id (int)
             *   name (str)
-            *   member_service (TokenStack)
+            *   token_stack (TokenStack)
         # RETURNS:
             None
         # RAISES:
@@ -73,10 +72,6 @@ class TokenDatabase(Database[Token]):
         return self._token_stack.context_service
     
     @property
-    def rank_quota_manager(self) -> RankQuotaAnalyzer:
-        return self._token_stack.rank_quota_manager
-    
-    @property
     def size(self) -> int:
         return self._token_stack.size
     
@@ -89,7 +84,7 @@ class TokenDatabase(Database[Token]):
         return self._token_stack.is_empty
     
     @property
-    def is_deployed(self) -> bool:
+    def is_deployed_on_board(self) -> bool:
         return self._token_stack.is_deployed_on_board
     
     @property
@@ -99,38 +94,20 @@ class TokenDatabase(Database[Token]):
     @stack_state.setter
     def stack_state(self, state: TokenStackState):
         self._token_stack.deployment_state = state
-        
-    @LoggingLevelRouter.monitor
-    def deploy_tokens_on_board(self) -> InsertionResult[bool]:
-        return self._token_stack.form_tokens()
     
     @LoggingLevelRouter.monitor
     def number_open_rank_slots(self, rank: Rank) -> ComputationResult[int]:
-        method = "TokenDatabase.open_rank_slots"
-        
-        # Handle the case that the calculation was not completed.
-        open_slots_count_result = self._token_stack.rank_quota_manager.number_of_rank_openings(
-            rank=rank,
-            token_stack=self._token_stack
-        )
-        # Return the exception chain on failure.
-        if open_slots_count_result.is_failure:
-            return ComputationResult.failure(
-                TokenDatabaseException(
-                    f"{method}: {TokenDatabaseException.ERROR_CODE}",
-                    ex=open_slots_count_result.exception,
-                )
-            )
-        # --- For either a successful calculation result directly forward to the caller. ---#
-        return open_slots_count_result
-    
-    @LoggingLevelRouter.monitor
-    def rank_size(self, rank: Rank) -> ComputationResult[int]:
         """
         # ACTION:
-            1.  Get the result of calling _token_database_core.number_of_rank_members.
-            2.  If the calculation fails wrap the exception chain and send in the ComputationResult.
-                Else directly forward the ComputationResult to the caller.
+            1.  Handoff rank validation and open-slot calculation to the RankQuotaAnalyzer provided by the
+                TokenStack service.
+            2.  If either:
+                    *   The rank fails validation.
+                    *   There are no openings for the rank.
+                    *   The analyzer does not complete the calculation.
+                The analyzer sends an exception chain back. which should be wrapped in TokenDatabaseException.
+                then sent in a ComputationResult.
+            3.  Else the forward the computation result to the caller.
         # PARAMETERS:
             *   rank (Rank)
         # RETURNS:
@@ -140,31 +117,92 @@ class TokenDatabase(Database[Token]):
         # RAISES:
             *   TokenDatabaseException
         """
-        method = "TokenDatabase.size"
+        method = "TokenDatabase.number_open_rank_slots"
         
-        # Handle the case that the calculation was not completed.
-        rank_size_result = self._token_stack.rank_quota_manager.rank_size(
+        # --- Handoff the operation off to rank_quota_analyzer. ---#
+        open_slots_count_result = self._token_stack.utils.rank_quota_analyzer.count_openings_for_rank(
+            rank=rank,
+            token_stack=self._token_stack,
+        )
+        # If the computation is not completed or there are no openings return the exception chain.
+        if open_slots_count_result.is_failure:
+            return ComputationResult.failure(
+                TokenDatabaseException(
+                    message=f"{method}: {TokenDatabaseException.ERROR_CODE}",
+                    ex=open_slots_count_result.exception,
+                )
+            )
+        # --- Otherwise, forward the computation result to the caller. ---#
+        return open_slots_count_result
+    
+    @LoggingLevelRouter.monitor
+    def current_rank_size(self, rank: Rank) -> ComputationResult[int]:
+        """
+        # ACTION:
+            1.  Handoff rank validation and rank size counting to the RankQuotaAnalyzer provided by the
+                TokenStack service.
+            2.  If either:
+                    *   The rank fails validation.
+                    *   The analyzer does not complete the calculation.
+                The analyzer sends an exception chain back. which should be wrapped in TokenDatabaseException.
+                then sent in a ComputationResult.
+            3.  Else the forward the computation result to the caller.
+        # PARAMETERS:
+            *   rank (Rank)
+        # RETURNS:
+            *   ComputationResult[int] containing either:
+                    - On failure: Exception.
+                    - On success: int in the payload.
+        # RAISES:
+            *   TokenDatabaseException
+        """
+        method = "TokenDatabase.current-rank_size"
+        
+        # --- Handoff the operation off to rank_quota_analyzer. ---#
+        rank_size_result = self._token_stack.utils.rank_quota_analyzer.compute_rank_size_in_stack(
             rank=rank,
             token_stack=self._token_stack
         )
+        # If the computation is not completed return the exception chain.
         if rank_size_result.is_failure:
-            # Return the exception chain on failure.
             return ComputationResult.failure(
                 TokenDatabaseException(
-                    f"{method}: {TokenDatabaseException.ERROR_CODE}",
+                    message=f"{method}: {TokenDatabaseException.ERROR_CODE}",
                     ex=rank_size_result.exception,
                 )
             )
-        # --- For either a successful calculation result directly forward to the caller. ---#
+        # --- Otherwise, forward the computation result to the caller. ---#
         return rank_size_result
     
     @LoggingLevelRouter.monitor
-    def can_accept_rank(self, rank: Rank) -> ComputationResult[bool]:
-        method = "TokenDatabase.can_accept_rank"
-        does_rank_have_opening_result = self._token_stack.rank_quota_manager.has_rank_opening(
+    def does_rank_opening_exist(self, rank: Rank) -> ComputationResult[bool]:
+        """
+        # ACTION:
+            1.  Handoff rank validation and rank size counting to the RankQuotaAnalyzer provided by the
+                TokenStack service.
+            2.  If either:
+                    *   The rank fails validation.
+                    *   The analyzer does not complete the calculation.
+                The analyzer sends an exception chain back. which should be wrapped in TokenDatabaseException.
+                then sent in a ComputationResult.
+            3.  Else the forward the computation result to the caller.
+        # PARAMETERS:
+            *   rank (Rank)
+        # RETURNS:
+            *   ComputationResult[bool] containing either:
+                    - On failure: Exception.
+                    - On success: int in the payload.
+        # RAISES:
+            *   TokenDatabaseException
+        """
+        method = "TokenDatabase.does_rank_opening_exist"
+        
+        # --- Handoff the operation off to rank_quota_analyzer. ---#
+        does_rank_have_opening_result = self._token_stack.utils.rank_quota_analyzer.rank_openings_exist(
             rank=rank,
             token_stack=self._token_stack
         )
+        # If the computation is not completed return the exception chain
         if does_rank_have_opening_result.is_failure:
             return ComputationResult.failure(
                 TokenDatabaseException(
@@ -172,9 +210,11 @@ class TokenDatabase(Database[Token]):
                     ex=does_rank_have_opening_result.exception,
                 )
             )
+        # --- Otherwise, forward the computation result to the caller. ---#
+        return does_rank_have_opening_result
     
     @LoggingLevelRouter.monitor
-    def delete_by_id(self, id: int, identity_service: IdentityService = IdentityService()) -> DeletionResult[Token]:
+    def delete_by_id(self, id: int) -> DeletionResult[Token]:
         """
         # ACTION:
             1.  Get the result of calling _token_database_core.delete_token_by_id for method. If the deletion failed
@@ -195,7 +235,7 @@ class TokenDatabase(Database[Token]):
         method = "TokenDatabase.remove_token"
         
         # --- Handoff the deletion responsibility to _token_database_core. ---#
-        deletion_result = self._token_stack.delete_by_id(id=id, identity_service=identity_service)
+        deletion_result = self._token_stack.delete_by_id(id=id)
         
         # Handle the case that the deletion was not completed.
         if deletion_result.is_failure:

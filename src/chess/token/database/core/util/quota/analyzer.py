@@ -12,7 +12,7 @@ from typing import List, cast
 
 from chess.rank import Rank, RankService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.token import NoRankOpeningsException, RankQuotaAnalysisException, Token, TokenContext, TokenStack
+from chess.token import RankQuotaAnalysisException, RankQuotaFullException, Token, TokenContext, TokenStack
 
 
 class RankQuotaAnalyzer:
@@ -202,7 +202,7 @@ class RankQuotaAnalyzer:
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
                     message=f"{method}: {RankQuotaAnalysisException.ERROR_CODE}",
-                    ex=NoRankOpeningsException(f"{method}: {NoRankOpeningsException.DEFAULT_MESSAGE}.")
+                    ex=RankQuotaFullException(f"{method}: {RankQuotaFullException.DEFAULT_MESSAGE}.")
                 )
             )
         # --- On success send the difference between the quota and rank_member_count in the ComputationResult. ---#
