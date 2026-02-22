@@ -30,20 +30,23 @@ class TokenCollisionDetector(CollisionDetector[Token]):
     ) -> CollisionReport[Token]:
         """
         # ACTION:
-            1.  If any stack members share either an id, designation or opening square with the target send and
-                exception in the SearchResult. Those three properties must be unique within the game.
-            2.  If no matches are found send an empty SearchResult indicating there were no collisions.
+            1.  If the target is not certified as safe, send both exception nd target in the CollisionReport.
+            2.  Loop through the dataset to find id, designation or opening square matches. If any are found,
+                send the: target, collider, and exception in the CollisionReport.
+            3.  If no collisions were detected in the loop send the target back in in a no-collision report.
         # PARAMETERS:
             *   target (Token)
             *   dataset (List[Token])
+            *   token_validator (TokenValidator)
         # RETURNS:
             *   CollisionReport[Token] containing either:
                     - On failure: Exception or non-empty list.
                     - On Collision: Token, Token
                     - On no collisions: Token
         # RAISES:
-            *  TokenIdAlreadyInUseException
-            *  TokenDesignationAlreadyInUseException
+            *   TokenIdAlreadyInUseException
+            *   TokenCollisionDetectionException
+            *   TokenDesignationAlreadyInUseException
             *   TokenOpeningSquareAlreadyInUseException
         """
         method = "TokenCollisionDetector.detect"
