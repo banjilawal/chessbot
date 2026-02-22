@@ -3,7 +3,7 @@
 """
 Module: chess.square.database.core.util.__init__
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2026-02-21
 version: 1.0.0
 """
 
@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .stats import *
+from .roster import *
 
 # Modules
 from .util import SquareStackUtil
