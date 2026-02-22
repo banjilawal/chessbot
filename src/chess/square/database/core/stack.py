@@ -8,13 +8,12 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from copy import deepcopy
-from typing import List, Optional, cast
+from typing import List, Optional
 
 
 from chess.system import (
-    ComputationResult, IdFactory, NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult,
-    LoggingLevelRouter, NUMBER_OF_ROWS, SearchResult, UpdateResult
+    IdFactory, NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
+    NUMBER_OF_ROWS, SearchResult
 )
 from chess.square import (
     SquareContext, SquareStackUtil, PoppingEmptySquareStackException, Square, SquareStackException, SquareService,
@@ -49,7 +48,6 @@ class SquareStack(StackService[Square]):
     _stack: List[Square]
     _util: SquareStackUtil
     _service: SquareService
-
     _context_service: SquareContextService
     
     def __init__(
@@ -76,11 +74,12 @@ class SquareStack(StackService[Square]):
         """
         method = "SquareService.__init__"
         super().__init__(id=id,name=name,)
-        self._stack = []
-        self_util = util
-        self._capacity = capacity
+        self._util = util
         self._service = service
         self._context_service = context_service
+        
+        self._stack = []
+        self._capacity = capacity
     
     @property
     def size(self) -> int:
@@ -105,10 +104,6 @@ class SquareStack(StackService[Square]):
     @property
     def current_item(self) -> Optional[Square]:
         return self._stack[-1] if self._stack else None
-    
-    @property
-    def items(self) -> List[Square]:
-        return self._stack
     
     @property
     def integrity_service(self) -> SquareService:

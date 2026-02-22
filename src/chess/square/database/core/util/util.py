@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from chess.square import OccupationService, SquareStackAnalyzer
 
-
 class SquareStackUtil:
     _stats_analyzer: SquareStackAnalyzer
     _occupation_service: OccupationService
