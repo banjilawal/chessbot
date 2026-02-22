@@ -93,10 +93,6 @@ class TeamService(EntityService[Team]):
         return self._roster_relation_analyzer
     
     @property
-    def hostage_relation_analyzer(self) -> HostageRelationAnalyzer:
-        return self._hostage_relation_analyzer
-    
-    @property
     def schema_service(self) -> SchemaService:
         return self._schema_service
     

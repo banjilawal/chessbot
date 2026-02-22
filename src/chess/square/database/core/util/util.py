@@ -7,6 +7,7 @@ Created: 2026-02-21
 version: 1.0.0
 """
 
+from __future__ import annotations
 from chess.square import SquareStackAnalyzer
 from chess.square.database.core.util.roster.deployer import RosterFormationCoordinator
 
