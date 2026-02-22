@@ -12,12 +12,12 @@ from chess.edge import EdgeContextException
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
     "EdgeContextBuildException",
 ]
 
 
-# ======================# EDGE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
+# ======================# EDGE_CONTEXT_BUILD_FAILURE #======================#
 class EdgeContextBuildException(EdgeContextException, BuildException):
     """
     # ROLE: Exception Wrapper

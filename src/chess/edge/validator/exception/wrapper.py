@@ -10,12 +10,12 @@ from chess.edge import EdgeException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# EDGE_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# EDGE_VALIDATION_FAILURE #======================#
     "ValidatingEdgeException",
 ]
 
 
-# ======================# EDGE_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# EDGE_VALIDATION_FAILURE #======================#
 class ValidatingEdgeException(EdgeException, ValidationException):
     """
     # ROLE: Exception Wrapper

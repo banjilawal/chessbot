@@ -14,7 +14,7 @@ from chess.board import BoardService
 from chess.engine.service import EngineService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.game import (
-    Game, GameVariety, GameVarietyNullException, GameValidationFailedException, MachineGame, NullGameException,
+    Game, GameVariety, GameVarietyNullException, GameValidationException, MachineGame, NullGameException,
 )
 
 
@@ -109,5 +109,5 @@ class GameValidator(Validator[Game]):
         # in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                GameValidationFailedException(ex=ex, message=f"{method}: {GameValidationFailedException.DEFAULT_MESSAGE}")
+                GameValidationException(ex=ex, message=f"{method}: {GameValidationException.DEFAULT_MESSAGE}")
             )

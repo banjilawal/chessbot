@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# DELETING_OCCUPANT_BY_SEARCH_FAILURE EXCEPTION #======================#
-    "DeleteTokenBySearchFailedException",
+    # ======================# DELETING_OCCUPANT_BY_SEARCH_FAILURE #======================#
+    "DeleteTokenBySearchException",
 ]
 
 from chess.square import SquareException
-from chess.system import DeletionFailedException
+from chess.system import DeletionException
 
 
-# ======================# DELETING_OCCUPANT_BY_SEARCH_FAILURE EXCEPTION #======================#
-class DeleteTokenBySearchFailedException(SquareException, DeletionFailedException):
+# ======================# DELETING_OCCUPANT_BY_SEARCH_FAILURE #======================#
+class DeleteTokenBySearchException(SquareException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class DeleteTokenBySearchFailedException(SquareException, DeletionFailedExceptio
 
     # PARENT:
         *   SquareException
-        *   DeletionFailedException
+        *   DeletionException
 
     # PROVIDES:
     None

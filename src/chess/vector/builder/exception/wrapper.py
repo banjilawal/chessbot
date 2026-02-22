@@ -11,12 +11,12 @@ from chess.vector import VectorException
 from chess.system import BuildException
 
 __all__ = [
-    # ======================# VECTOR_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# VECTOR_BUILD_FAILURE #======================#
     "VectorBuildException",
 ]
 
 
-# ======================# VECTOR_BUILD_FAILURE EXCEPTION #======================#
+# ======================# VECTOR_BUILD_FAILURE #======================#
 class VectorBuildException(VectorException, BuildException):
     """
     # ROLE: Exception Wrapper

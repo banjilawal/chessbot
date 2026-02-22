@@ -14,5 +14,5 @@ None
 
 # Modules
 from .factory import PlayerFactory
-from .exception import PlayerBuildFailedException
+from .exception import PlayerBuildException
 

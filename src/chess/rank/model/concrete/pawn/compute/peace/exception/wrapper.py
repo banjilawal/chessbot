@@ -7,16 +7,16 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from chess.rank import SpanComputationFailedException
+from chess.rank import SpanComputationException
 
 __all__ = [
-    # ======================# PAWN_PEACEFUL_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-    "PawnPeacefulSpanComputationFailedException",
+    # ======================# PAWN_PEACEFUL_SPAN_COMPUTATION_FAILURE #======================#
+    "PawnPeacefulSpanComputationException",
 ]
 
 
-# ======================# PAWN_PEACEFUL_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-class PawnPeacefulSpanComputationFailedException(SpanComputationFailedException):
+# ======================# PAWN_PEACEFUL_SPAN_COMPUTATION_FAILURE #======================#
+class PawnPeacefulSpanComputationException(SpanComputationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -24,7 +24,7 @@ class PawnPeacefulSpanComputationFailedException(SpanComputationFailedException)
     1.  Wrap any exceptions that prevent the Pawn's peaceful spanning set computation from producing a result.
 
     # PARENT:
-        *   SpanComputationFailedException
+        *   SpanComputationException
 
     # PROVIDES:
     None

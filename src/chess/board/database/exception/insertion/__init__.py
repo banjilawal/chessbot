@@ -14,4 +14,4 @@ None
 
 # Modules
 from .duplicate import AddingDuplicateBoardException
-from .wrapper import UniqueBoardInsertionFailedException
+from .wrapper import UniqueBoardInsertionException

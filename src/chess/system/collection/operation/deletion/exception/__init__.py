@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .wrapper import DeletionFailedException
+from .wrapper import DeletionException
 from .route import NoDeletionRouteException

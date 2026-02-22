@@ -10,15 +10,15 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# PERPENDICULAR_RAY_COMPUTATION_FAILURE EXCEPTION #======================#
-    "PerpendicularRayComputationFailedException",
+    # ======================# PERPENDICULAR_RAY_COMPUTATION_FAILURE #======================#
+    "PerpendicularRayComputationException",
 ]
 
-from chess.rank import RayComputationFailedException
+from chess.rank import RayComputationException
 
 
-# ======================# PERPENDICULAR_RAY_COMPUTATION_FAILURE EXCEPTION #======================#
-class PerpendicularRayComputationFailedException(RayComputationFailedException):
+# ======================# PERPENDICULAR_RAY_COMPUTATION_FAILURE #======================#
+class PerpendicularRayComputationException(RayComputationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -31,7 +31,7 @@ class PerpendicularRayComputationFailedException(RayComputationFailedException):
                 *  the regions where [-n < i] or [i <= j < n] the domain is (x_i, y_i) -> R(:X_j,Y_-)
                 
     # PARENT:
-        *   ComputationFailedException
+        *   ComputationException
 
     # PROVIDES:
     None

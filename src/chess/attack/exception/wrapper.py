@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# ATTACK_FAILURE EXCEPTION #======================#
+    # ======================# ATTACK_FAILURE #======================#
     "AttackFailedException",
 ]
 
@@ -16,7 +16,7 @@ from chess.attack import AttackException
 from chess.system import OperationFailedException
 
 
-# ======================# ATTACK_FAILURE EXCEPTION #======================#
+# ======================# ATTACK_FAILURE #======================#
 class AttackFailedException(AttackException, OperationFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining

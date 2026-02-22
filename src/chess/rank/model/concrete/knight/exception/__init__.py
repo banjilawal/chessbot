@@ -14,4 +14,4 @@ None
 
 # Modules
 from .catchall import KnightException
-from .span import KnightSpanComputationFailedException
+from .span import KnightSpanComputationException

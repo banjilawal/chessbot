@@ -10,15 +10,15 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# PAWN_ATTACK_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-    "PawnAttackSpanComputationFailedException",
+    # ======================# PAWN_ATTACK_SPAN_COMPUTATION_FAILURE #======================#
+    "PawnAttackSpanComputationException",
 ]
 
-from chess.system import ComputationFailedException
+from chess.system import ComputationException
 
 
-# ======================# PAWN_ATTACK_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-class PawnAttackSpanComputationFailedException(ComputationFailedException):
+# ======================# PAWN_ATTACK_SPAN_COMPUTATION_FAILURE #======================#
+class PawnAttackSpanComputationException(ComputationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -26,7 +26,7 @@ class PawnAttackSpanComputationFailedException(ComputationFailedException):
     1.  Wrap any exceptions that prevent the Pawn's attack spanning set computation from producing a result.
 
     # PARENT:
-        *   SpanComputationFailedException
+        *   SpanComputationException
 
     # PROVIDES:
     None

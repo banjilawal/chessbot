@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import BoundsException, NumberException
 
 __all__ = [
-    # ======================# NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE #======================#
     "NegativeNumberNotAllowedException",
 ]
 
 
-# ======================# NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE #======================#
 class NegativeNumberNotAllowedException(NumberException, BoundsException):
     """
     # ROLE: Error Tracing, Debugging
@@ -36,5 +36,5 @@ class NegativeNumberNotAllowedException(NumberException, BoundsException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE_ERROR"
+    ERROR_CODE = "NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Number validation failed: The candidate was negative."

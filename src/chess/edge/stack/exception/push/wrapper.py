@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.edge import EdgeStackException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
 # ======================# EDGE_INSERTION_FAILURE #======================#
-class PushingEdgeException(EdgeStackException, InsertionFailedException):
+class PushingEdgeException(EdgeStackException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class PushingEdgeException(EdgeStackException, InsertionFailedException):
 
     # PARENT:
         *   EdgeStackException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None
@@ -37,5 +37,5 @@ class PushingEdgeException(EdgeStackException, InsertionFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_INSERTION_FAILURE_ERROR"
+    ERROR_CODE = "EDGE_INSERTION_FAILURE"
     DEFAULT_MESSAGE = "Edge insertion failed."

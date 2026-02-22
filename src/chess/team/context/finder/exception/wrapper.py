@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 __all__ = [
-    #======================# TEAM_SEARCH_FAILURE EXCEPTION #======================#
+    #======================# TEAM_SEARCH_FAILURE #======================#
     "TeamSearchException",
 ]
 
@@ -17,7 +17,7 @@ from chess.system import SearchException
 from chess.team import TeamException
 
 
-#======================# TEAM_SEARCH_FAILURE EXCEPTION #======================#
+#======================# TEAM_SEARCH_FAILURE #======================#
 class TeamSearchException(TeamException, SearchException):
     """
     # ROLE: Exception Wrapper
@@ -38,5 +38,5 @@ class TeamSearchException(TeamException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SEARCH_FAILURE_ERROR"
+    ERROR_CODE = "TEAM_SEARCH_FAILURE"
     DEFAULT_MESSAGE = "TeamSearch failed."

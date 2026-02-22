@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# POPPING_TEAM_STACK_FAILURE EXCEPTION #======================#
+    # ======================# POPPING_TEAM_STACK_FAILURE #======================#
     "PoppingTeamStackFailedException",
 ]
 
 from chess.team import TeamStackException
-from chess.system import DeletionFailedException
+from chess.system import DeletionException
 
 
-# ======================# POPPING_TEAM_STACK_FAILURE EXCEPTION #======================#
-class PoppingTeamStackFailedException(TeamStackException, DeletionFailedException):
+# ======================# POPPING_TEAM_STACK_FAILURE #======================#
+class PoppingTeamStackFailedException(TeamStackException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class PoppingTeamStackFailedException(TeamStackException, DeletionFailedExceptio
 
     # PARENT:
         *   TeamStackException
-        *   DeletionFailedException
+        *   DeletionException
 
     # PROVIDES:
     None

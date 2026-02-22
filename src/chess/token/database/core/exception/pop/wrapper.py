@@ -8,26 +8,26 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_DELETION_FAILURE EXCEPTION #======================#
+    # ======================# POPPING_TOKEN_FAILURE #======================#
     "PoppingTokenException",
 ]
 
+from chess.system import DeletionException
 from chess.token import TokenException
-from chess.system import DeletionFailedException
 
 
-# ======================# TOKEN_DELETION_FAILURE EXCEPTION #======================#
-class PoppingTokenException(TokenException, DeletionFailedException):
+# ======================# POPPING_TOKEN_FAILURE #======================#
+class PoppingTokenException(TokenException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a TokenStack deletion fails. The encapsulated exceptions create
-        chain for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why popping a token failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   TokenException
-        *   DeletionFailedException
+        *   DeletionException
 
     # PROVIDES:
     None
@@ -38,5 +38,5 @@ class PoppingTokenException(TokenException, DeletionFailedException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Token deletion failed."
+    ERROR_CODE = "POPPING_TOKEN_FAILURE"
+    DEFAULT_MESSAGE = "Popping token failed."

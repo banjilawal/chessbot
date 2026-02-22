@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# BOARD_INSERTION_FAILURE #======================#
-    "BoardInsertionFailedException",
+    "BoardInsertionException",
 ]
 
 from chess.board import BoardException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
 # ======================# BOARD_INSERTION_FAILURE #======================#
-class BoardInsertionFailedException(BoardException, InsertionFailedException):
+class BoardInsertionException(BoardException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class BoardInsertionFailedException(BoardException, InsertionFailedException):
 
     # PARENT:
         *   BoardException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None
@@ -37,5 +37,5 @@ class BoardInsertionFailedException(BoardException, InsertionFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_INSERTION_FAILURE_ERROR"
+    ERROR_CODE = "BOARD_INSERTION_FAILURE"
     DEFAULT_MESSAGE = "Board insertion failed."

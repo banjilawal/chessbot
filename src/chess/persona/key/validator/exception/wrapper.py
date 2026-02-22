@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# PERSONA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# PERSONA_KEY_VALIDATION_FAILURE #======================#
     "PersonaKeyValidationException",
 ]
 
@@ -16,7 +16,7 @@ from chess.persona import PersonaKeyException
 from chess.system import ValidationException
 
 
-# ======================# PERSONA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# PERSONA_KEY_VALIDATION_FAILURE #======================#
 class PersonaKeyValidationException(PersonaKeyException, ValidationException):
     """
     # ROLE: Exception Wrapper

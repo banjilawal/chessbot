@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.square import (
-    AddingDuplicateSquareException, AddingSquareOccupantException, DeleteTokenBySearchFailedException,
+    AddingDuplicateSquareException, AddingSquareOccupantException, DeleteTokenBySearchException,
     InsertingSquareInDatabaseFailedException, Square, SquareContext, SquareContextService, SquareStack, SquareService,
     FullSquareStackException, SquareDatabaseException, SquareToOccupyNotFoundException
 )
@@ -223,7 +223,7 @@ class SquareDatabase(Database[Square]):
                     - On occupant not found: Empty DeletionResult.
         # RAISES:
             *   SquareDatabaseException
-            *   DeleteTokenBySearchFailedException
+            *   DeleteTokenBySearchException
         """
         method = "SquareService.empty_square_by_token_search"
         
@@ -234,8 +234,8 @@ class SquareDatabase(Database[Square]):
             return DeletionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
-                    ex=DeleteTokenBySearchFailedException(
-                        message=f"{method}: {DeleteTokenBySearchFailedException.ERROR_CODE}",
+                    ex=DeleteTokenBySearchException(
+                        message=f"{method}: {DeleteTokenBySearchException.ERROR_CODE}",
                         ex=search_result.exception
                     )
                 )
@@ -253,8 +253,8 @@ class SquareDatabase(Database[Square]):
                 return DeletionResult.failure(
                     SquareDatabaseException(
                         message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
-                        ex=DeleteTokenBySearchFailedException(
-                            message=f"{method}: {DeleteTokenBySearchFailedException.ERROR_CODE}",
+                        ex=DeleteTokenBySearchException(
+                            message=f"{method}: {DeleteTokenBySearchException.ERROR_CODE}",
                             ex=search_result.exception
                         )
                     )

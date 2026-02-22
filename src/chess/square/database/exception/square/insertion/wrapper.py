@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_SQUARE_INSERTION_FAILURE EXCEPTION #======================#
+    # ======================# UNIQUE_SQUARE_INSERTION_FAILURE #======================#
     "InsertingSquareInDatabaseFailedException",
 ]
 
 from chess.square import SquareException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# UNIQUE_SQUARE_INSERTION_FAILURE EXCEPTION #======================#
-class InsertingSquareInDatabaseFailedException(SquareException, InsertionFailedException):
+# ======================# UNIQUE_SQUARE_INSERTION_FAILURE #======================#
+class InsertingSquareInDatabaseFailedException(SquareException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class InsertingSquareInDatabaseFailedException(SquareException, InsertionFailedE
 
     # PARENT:
         *   SquareException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

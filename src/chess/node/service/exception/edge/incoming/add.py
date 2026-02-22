@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.node import NodeException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 __all__ = [
     # ======================# ADD_INCOMING_EDGE_FAILURE #======================#
@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 # ======================# ADD_INCOMING_EDGE_FAILURE #======================#
-class AddIncomingEdgeFailedException(NodeException, InsertionFailedException):
+class AddIncomingEdgeFailedException(NodeException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class AddIncomingEdgeFailedException(NodeException, InsertionFailedException):
 
     # PARENT:
         *   NodeException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

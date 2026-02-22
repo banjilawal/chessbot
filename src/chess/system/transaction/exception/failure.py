@@ -11,12 +11,12 @@ from chess.system import OperationFailedException, RollbackException
 
 
 __all__ = [
-    # ======================# TRANSACTION_FAILURE EXCEPTION #======================#
+    # ======================# TRANSACTION_FAILURE #======================#
     "TransactionFailedException",
 ]
 
 
-# ======================# TRANSACTION_FAILURE EXCEPTION #======================#
+# ======================# TRANSACTION_FAILURE #======================#
 class TransactionFailedException(OperationFailedException, RollbackException):
     """
     # ROLE: Exception Wrapper, Integrity Debugging, State Restoration,

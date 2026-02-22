@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_TOKEN_INSERTION_FAILURE EXCEPTION #======================#
+    # ======================# UNIQUE_TOKEN_INSERTION_FAILURE #======================#
     "TokenDatabaseInsertionException",
 ]
 
 from chess.token import TokenException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# UNIQUE_TOKEN_INSERTION_FAILURE EXCEPTION #======================#
-class TokenDatabaseInsertionException(TokenException, InsertionFailedException):
+# ======================# UNIQUE_TOKEN_INSERTION_FAILURE #======================#
+class TokenDatabaseInsertionException(TokenException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class TokenDatabaseInsertionException(TokenException, InsertionFailedException):
 
     # PARENT:
         *   TokenException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

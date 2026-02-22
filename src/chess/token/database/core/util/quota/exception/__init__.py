@@ -3,7 +3,7 @@
 """
 Module: chess.token.database.core.util.quota.exception.__init__
 Author: Banji Lawal
-Created: 2026-01-31
+Created: 2026-02-21
 version: 1.0.0
 """
 
@@ -13,5 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import RankQuotaAnalyzerException
-from .wrapper import RankQuotaComputationFailedException
+from .wrapper import RankQuotaAnalysisException

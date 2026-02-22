@@ -11,12 +11,12 @@ from chess.hostage import HostageManifestException
 from chess.system import SearchException
 
 __all__ = [
-    # ======================# HOSTAGE_MANIFEST_SEARCH_FAILURE EXCEPTION #======================#
+    # ======================# HOSTAGE_MANIFEST_SEARCH_FAILURE #======================#
     "HostageManifestSearchException",
 ]
 
 
-# ======================# HOSTAGE_MANIFEST_SEARCH_FAILURE EXCEPTION #======================#
+# ======================# HOSTAGE_MANIFEST_SEARCH_FAILURE #======================#
 class HostageManifestSearchException(HostageManifestException, SearchException):
     """
     # ROLE: Exception Wrapper

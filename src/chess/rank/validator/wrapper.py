@@ -11,12 +11,12 @@ from chess.rank import RankException
 from chess.system import ValidationException
 
 __all__ = [
-  # ======================# RANK_VALIDATION_FAILURE EXCEPTION #======================#
+  # ======================# RANK_VALIDATION_FAILURE #======================#
     "RankValidationException",
 ]
 
 
-# ======================# RANK_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# RANK_VALIDATION_FAILURE #======================#
 class RankValidationException(RankException, ValidationException):
   """
   # ROLE: Exception Wrapper

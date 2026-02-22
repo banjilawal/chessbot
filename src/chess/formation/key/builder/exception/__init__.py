@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import FormationKeyBuildRouteException
-from .wrapper import FormationKeyBuildFailedException
+from .wrapper import FormationKeyBuildException

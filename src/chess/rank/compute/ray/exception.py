@@ -7,16 +7,16 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from chess.system import ComputationFailedException
+from chess.system import ComputationException
 
 __all__ = [
-    # ======================# RAY_COMPUTATION_FAILURE EXCEPTION #======================#
-    "RayComputationFailedException",
+    # ======================# RAY_COMPUTATION_FAILURE #======================#
+    "RayComputationException",
 ]
 
 
-# ======================# RAY_COMPUTATION_FAILURE EXCEPTION #======================#
-class RayComputationFailedException(ComputationFailedException):
+# ======================# RAY_COMPUTATION_FAILURE #======================#
+class RayComputationException(ComputationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -25,7 +25,7 @@ class RayComputationFailedException(ComputationFailedException):
         a solution to a subdomain of a ray computation. This exception chain is passed to the caller for handling.
 
     # PARENT:
-        *   ComputationFailedException
+        *   ComputationException
 
     # PROVIDES:
     None

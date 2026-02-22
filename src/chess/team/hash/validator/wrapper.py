@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_HASH_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# TEAM_HASH_VALIDATION_FAILURE #======================#
     "TeamHashValidationException",
 ]
 
@@ -17,7 +17,7 @@ from chess.system import ValidationException
 
 
 
-# ======================# TEAM_HASH_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# TEAM_HASH_VALIDATION_FAILURE #======================#
 class TeamHashValidationException(TeamHashException, ValidationException):
     """
     # ROLE: Exception Wrapper

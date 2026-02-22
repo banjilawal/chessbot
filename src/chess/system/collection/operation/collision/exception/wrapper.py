@@ -11,12 +11,12 @@ from chess.system import OperationFailedException
 
 __all__ = [
     # ======================# COLLISION_DETECTION_FAILURE #======================#
-    "CollisionetectionException",
+    "CollisionDetectionException",
 ]
 
 
 # ======================# COLLISION_DETECTION_FAILURE #======================#
-class CollisionetectionException(OperationFailedException):
+class CollisionDetectionException(OperationFailedException):
     """
     # ROLE: Exception Wrapper
 

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# EXHAUSTIVE_TOKEN_DELETION_FAILURE EXCEPTION #======================#
-    "ExhaustiveTokenDeletionFailedException",
+    # ======================# EXHAUSTIVE_TOKEN_DELETION_FAILURE #======================#
+    "ExhaustiveTokenDeletionException",
 ]
 
 from chess.token import TokenException
-from chess.system import DeletionFailedException
+from chess.system import DeletionException
 
 
-# ======================# EXHAUSTIVE_TOKEN_DELETION_FAILURE EXCEPTION #======================#
-class ExhaustiveTokenDeletionFailedException(TokenException, DeletionFailedException):
+# ======================# EXHAUSTIVE_TOKEN_DELETION_FAILURE #======================#
+class ExhaustiveTokenDeletionException(TokenException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class ExhaustiveTokenDeletionFailedException(TokenException, DeletionFailedExcep
 
     # PARENT:
         *   TokenException
-        *   DeletionFailedException
+        *   DeletionException
 
     # PROVIDES:
     None

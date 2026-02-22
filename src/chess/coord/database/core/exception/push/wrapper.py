@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# PUSHING_COORD_ONTO_STACK_FAILURE EXCEPTION #======================#
+    # ======================# PUSHING_COORD_ONTO_STACK_FAILURE #======================#
     "PushingCoordFailedException",
 ]
 
 
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# PUSHING_COORD_ONTO_STACK_FAILURE EXCEPTION #======================#
-class PushingCoordFailedException(CoordStackException, InsertionFailedException):
+# ======================# PUSHING_COORD_ONTO_STACK_FAILURE #======================#
+class PushingCoordFailedException(CoordStackException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class PushingCoordFailedException(CoordStackException, InsertionFailedException)
 
     # PARENT:
         *   CoordStackException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

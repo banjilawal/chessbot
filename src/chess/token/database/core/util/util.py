@@ -37,52 +37,7 @@ class TokenStackUtil:
         *   See StackService class for inherited attributes.
     """
     
-    @classmethod
-    def detect_token_collisions(cls, stack: TokenStack, candidate: Token) -> UpdateResult[Token]:
-        """
-        # ACTION:
-            1.  If any stack members share either an id, designation or opening square with the target send and
-                exception in the SearchResult. Those three properties must be unique within the game.
-            2.  If no matches are found send an empty SearchResult indicating there were no collisions.
-        # PARAMETERS:
-                    *   target (Token)
-        # RETURNS:
-            *   SearchResult[List[Token]] containing either:
-                    - On failure: Exception or non-empty list.
-                    - On success: Empty search result.
-        # RAISES:
-            *  TokenIdAlreadyInUseException
-            *  TokenDesignationAlreadyInUseException
-            *   TokenOpeningSquareAlreadyInUseException
-        """
-        method = "TokenStack._find_colliding_tokens"
-        
-        # --- Loop through the stack to find matches. ---#
-        for token in stack:
-            # Return the collider
-            if token.id == candidate.id:
-                return UpdateResult.failure(
-                    original=token,
-                    exception=TokenIdAlreadyInUseException(
-                        f"{method}: {TokenIdAlreadyInUseException.DEFAULT_MESSAGE}",
-                    )
-                )
-            # Return an exception in the SearchResult if a stack member shares the target's designation.
-            if token.designation.upper() == candidate.designation.upper():
-                return ValidationResult.failure(
-                    TokenDesignationAlreadyInUseException(
-                        f"{method}: {TokenDesignationAlreadyInUseException.DEFAULT_MESSAGE}",
-                    )
-                )
-            # Return an exception in the SearchResult if a stack member shares the target's opening square.
-            if token.opening_square_name.upper() == candidate.opening_square_name.upper():
-                return ValidationResult.failure(
-                    TokenOpeningSquareAlreadyInUseException(
-                        f"{method}: {TokenOpeningSquareAlreadyInUseException.DEFAULT_MESSAGE}",
-                    )
-                )
-        # --- At the happy path return an empty search result indication there are no collisions. ---#
-        return ValidationResult.empty()
+ 
     
 # src/chess/token/database/core/stack.py
 

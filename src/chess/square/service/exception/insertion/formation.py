@@ -1,5 +1,5 @@
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-class AddingFormationToSquareFailedException(InsertionFailedException):
+class AddingFormationToSquareFailedException(InsertionException):
     pass

@@ -11,7 +11,7 @@ from typing import List, cast
 
 from chess.hostage import (
     AppendingHostageManifestDirectlyIntoItemsFailedException, CaptivityContextService, HostageManifest,
-    HostageManifestDataListException, HostageManifestInsertionFailedException, HostageManifestService
+    HostageManifestDataListException, HostageManifestInsertionException, HostageManifestService
 )
 from chess.system import StackService, InsertionResult, LoggingLevelRouter, id_emitter
 
@@ -106,8 +106,8 @@ class HostageManifestList(StackService[HostageManifest]):
             return InsertionResult.failure(
                 HostageManifestDataListException(
                     message=f"ServiceId:{self.id}, {method}: {HostageManifestDataListException.ERROR_CODE}",
-                    ex=HostageManifestInsertionFailedException(
-                        message=f"{method}: {HostageManifestInsertionFailedException.ERROR_CODE}",
+                    ex=HostageManifestInsertionException(
+                        message=f"{method}: {HostageManifestInsertionException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -122,8 +122,8 @@ class HostageManifestList(StackService[HostageManifest]):
             return InsertionResult.failure(
                 HostageManifestDataListException(
                     message=f"ServiceId:{self.id}, {method}: {HostageManifestDataListException.ERROR_CODE}",
-                    ex=HostageManifestInsertionFailedException(
-                        message=f"{method}: {HostageManifestInsertionFailedException.ERROR_CODE}",
+                    ex=HostageManifestInsertionException(
+                        message=f"{method}: {HostageManifestInsertionException.ERROR_CODE}",
                         ex=AppendingHostageManifestDirectlyIntoItemsFailedException(
                             f"{method}: {AppendingHostageManifestDirectlyIntoItemsFailedException.ERROR_CODE}"
                         )

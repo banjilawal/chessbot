@@ -48,18 +48,15 @@ class DeletionResult(DataResult[Generic[T]]):
     
     @property
     def is_success(self) -> bool:
-        return (
-                self.payload is not None and
-                self.exception is None and
-                self.state.classification == DeletionResultEnum.SUCCESS
-        )
+        return not self.is_failure
     
     @property
     def is_failure(self) -> bool:
         return (
                 self.payload is None and
                 self.exception is not None and
-                self.state.classification == DeletionResultEnum.FAILURE
+                self.state.classification == DeletionResultEnum.FAILURE or
+                self.state.classification == DeletionResultEnum.TIMED_OUT
         )
     
     @property

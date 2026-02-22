@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_MANIFEST_SEARCH_FAILURE EXCEPTION #======================#
+    # ======================# UNIQUE_MANIFEST_SEARCH_FAILURE #======================#
     "UniqueHostageManifestSearchException",
 ]
 
@@ -16,7 +16,7 @@ from chess.hostage import HostageManifestException
 from chess.system import SearchException
 
 
-# ======================# UNIQUE_MANIFEST_SEARCH_FAILURE EXCEPTION #======================#
+# ======================# UNIQUE_MANIFEST_SEARCH_FAILURE #======================#
 class UniqueHostageManifestSearchException(HostageManifestException, SearchException):
     """
     # ROLE: Exception Wrapper

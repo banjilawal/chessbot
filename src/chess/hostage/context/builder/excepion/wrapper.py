@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# CAPTIVITY_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# CAPTIVITY_CONTEXT_BUILD_FAILURE #======================#
     "CaptivityContextBuildException",
 ]
 
@@ -16,7 +16,7 @@ from chess.hostage import CaptivityContextException
 from chess.system import BuildException
 
 
-# ======================# CAPTIVITY_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
+# ======================# CAPTIVITY_CONTEXT_BUILD_FAILURE #======================#
 class CaptivityContextBuildException(CaptivityContextException, BuildException):
     """
     # ROLE: Exception Wrapper

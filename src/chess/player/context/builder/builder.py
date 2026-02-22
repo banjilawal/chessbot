@@ -14,7 +14,7 @@ from chess.game import Game, GameService
 from chess.team import Team, TeamService
 from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService, LoggingLevelRouter
 from chess.agent import (
-    AgentVariety, AgentContext, AgentContextBuildFailedException, ZeroAgentContextFlagsException,
+    AgentVariety, AgentContext, AgentContextBuildException, ZeroAgentContextFlagsException,
     ExcessiveAgentContextFlagsException
 )
 
@@ -152,7 +152,7 @@ class AgentContextBuilder(Builder[AgentContext]):
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                AgentContextBuildFailedException(
-                    ex=ex, message=f"{method}: {AgentContextBuildFailedException.DEFAULT_MESSAGE}"
+                AgentContextBuildException(
+                    ex=ex, message=f"{method}: {AgentContextBuildException.DEFAULT_MESSAGE}"
                 )
             )

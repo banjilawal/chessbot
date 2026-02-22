@@ -10,12 +10,12 @@ from chess.hostage import HostageManifestException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# HOSTAGE_MANIFEST_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# HOSTAGE_MANIFEST_VALIDATION_FAILURE #======================#
     "HostageManifestValidationException",
 ]
 
 
-# ======================# HOSTAGE_MANIFEST_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# HOSTAGE_MANIFEST_VALIDATION_FAILURE #======================#
 class HostageManifestValidationException(HostageManifestException, ValidationException):
     """
     # ROLE: Exception Wrapper

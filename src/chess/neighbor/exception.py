@@ -29,7 +29,7 @@ __all__ = [
     'NullCombatantException',
     
     #======================# VISITATION BUILD EXCEPTION #======================#
-    'VisitationBuildFailedException',
+    'VisitationBuildException',
 ]
 
 
@@ -129,7 +129,7 @@ class NullCombatantException(NullVisitationEventException):
 
 
 #======================# VISITATION BUILD EXCEPTION #======================#
-class VisitationBuildFailedException(VisitationEventException, BuilderException):
+class VisitationBuildException(VisitationEventException, BuilderException):
     """
     Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
     during builder.

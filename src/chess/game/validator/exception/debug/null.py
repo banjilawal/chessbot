@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.system import NullException
-from chess.game import GameValidationFailedException
+from chess.game import GameValidationException
 
 __all__ = [
     # ======================# GAME_ NULL EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# NULL GAME EXCEPTION #======================#
-class NullGameException(GameValidationFailedException, NullException):
+class NullGameException(GameValidationException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 

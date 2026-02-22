@@ -11,12 +11,12 @@ from chess.hostage import HostageManifestException
 from chess.system import BuildException
 
 __all__ = [
-    # ======================# HOSTAGE_MANIFEST_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# HOSTAGE_MANIFEST_BUILD_FAILURE #======================#
     "HostageManifestBuildException",
 ]
 
 
-# ======================# HOSTAGE_MANIFEST_BUILD_FAILURE EXCEPTION #======================#
+# ======================# HOSTAGE_MANIFEST_BUILD_FAILURE #======================#
 class HostageManifestBuildException(HostageManifestException, BuildException):
     """
     # ROLE: Exception Wrapper

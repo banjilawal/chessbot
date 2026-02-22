@@ -3,17 +3,16 @@
 """
 Module: chess.token.database.core.util.quota.analyzer
 Author: Banji Lawal
-Created: 2026-01-31
+Created: 2026-02-21
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import List, cast
 
 from chess.rank import Rank, RankService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.token import (
-    RankQuotaComputationFailedException, RankQuotaAnalyzerException, Token, TokenContext, TokenStack
-)
+from chess.token import RankQuotaAnalysisException, Token, TokenContext, TokenStack
 
 
 class RankQuotaAnalyzer:
@@ -60,8 +59,8 @@ class RankQuotaAnalyzer:
                     - On failure: Exception.
                     - On success: int in the payload.
         # RAISES:
-            *   RankQuotaAnalyzerException
-            *   RankQuotaComputationFailedException
+            *   RankQuotaAnalysisException
+            *   RankQuotaAnalysisException
         """
         method = "RankQuotaAnalyzer.compute_rank_size_in_stack"
         
@@ -70,10 +69,10 @@ class RankQuotaAnalyzer:
         if rank_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaAnalyzerException(
-                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
+                RankQuotaAnalysisException(
+                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    ex=RankQuotaAnalysisException(
+                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
                         ex=rank_validation.exception
                     )
                 )
@@ -85,10 +84,10 @@ class RankQuotaAnalyzer:
         if search_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaAnalyzerException(
-                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
+                RankQuotaAnalysisException(
+                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    ex=RankQuotaAnalysisException(
+                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
                         ex=search_result.exception
                     )
                 )
@@ -118,8 +117,8 @@ class RankQuotaAnalyzer:
                     - On failure: Exception
                     - On success: bool
         # RAISES:
-            *   RankQuotaAnalyzerException
-            *   RankQuotaComputationFailedException
+            *   RankQuotaAnalysisException
+            *   RankQuotaAnalysisException
         """
         method = "RankQuotaAnalyzer.stack_has_opening_for_rank"
         
@@ -132,10 +131,10 @@ class RankQuotaAnalyzer:
         if openings_count_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaAnalyzerException(
-                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
+                RankQuotaAnalysisException(
+                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    ex=RankQuotaAnalysisException(
+                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
                         ex=openings_count_result.exception
                     )
                 )
@@ -166,8 +165,8 @@ class RankQuotaAnalyzer:
                     - On failure: Exception
                     - On success: int
         # RAISES:
-            *   RankQuotaAnalyzerException
-            *   RankQuotaComputationFailedException
+            *   RankQuotaAnalysisException
+            *   RankQuotaAnalysisException
         """
         method = "RankQuotaAnalyzer.count_openings_for_rank"
         
@@ -176,10 +175,10 @@ class RankQuotaAnalyzer:
         if rank_validation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaAnalyzerException(
-                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
+                RankQuotaAnalysisException(
+                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    ex=RankQuotaAnalysisException(
+                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
                         ex=rank_validation.exception
                     )
                 )
@@ -195,10 +194,10 @@ class RankQuotaAnalyzer:
         if rank_size_computation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                RankQuotaAnalyzerException(
-                    message=f"{method}: {RankQuotaAnalyzerException.DEFAULT_MESSAGE}",
-                    ex=RankQuotaComputationFailedException(
-                        message=f"{method}: {RankQuotaComputationFailedException.DEFAULT_MESSAGE}",
+                RankQuotaAnalysisException(
+                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    ex=RankQuotaAnalysisException(
+                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
                         ex=rank_size_computation.exception
                     )
                 )

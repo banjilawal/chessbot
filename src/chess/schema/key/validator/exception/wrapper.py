@@ -11,12 +11,12 @@ from chess.schema import SchemaKeyException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# SCHEMA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# SCHEMA_KEY_VALIDATION_FAILURE #======================#
     "SchemaKeyValidationException",
 ]
 
 
-# ======================# SCHEMA_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# SCHEMA_KEY_VALIDATION_FAILURE #======================#
 class SchemaKeyValidationException(SchemaKeyException, ValidationException):
     """
     # ROLE: Exception Wrapper

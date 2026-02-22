@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# POPPING_COORD_FROM_STACK_FAILURE EXCEPTION #======================#
+    # ======================# POPPING_COORD_FROM_STACK_FAILURE #======================#
     "PoppingCoordStackFailedException",
 ]
 
 from chess.coord import CoordException
-from chess.system import DeletionFailedException
+from chess.system import DeletionException
 
 
-# ======================# POPPING_COORD_FROM_STACK_FAILURE EXCEPTION #======================#
-class PoppingCoordStackFailedException(CoordException, DeletionFailedException):
+# ======================# POPPING_COORD_FROM_STACK_FAILURE #======================#
+class PoppingCoordStackFailedException(CoordException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class PoppingCoordStackFailedException(CoordException, DeletionFailedException):
 
     # PARENT:
         *   CoordException
-        *   DeletionFailedException
+        *   DeletionException
 
     # PROVIDES:
     None

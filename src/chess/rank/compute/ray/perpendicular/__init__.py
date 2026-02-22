@@ -14,4 +14,4 @@ None
 
 # Modules
 from .ray import PerpendicularRay
-from .exception import PerpendicularRayComputationFailedException
+from .exception import PerpendicularRayComputationException

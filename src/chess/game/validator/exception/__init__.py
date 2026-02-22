@@ -14,4 +14,4 @@ None
 
 # Modules
 from .null import NullGameException
-from .base import GameValidationFailedException
+from .base import GameValidationException

@@ -11,12 +11,12 @@ from chess.scalar import ScalarException
 from chess.system import BuildException
 
 __all__ = [
-    # ======================# SCALAR_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# SCALAR_BUILD_FAILURE #======================#
     "ScalarBuildException",
 ]
 
 
-# ======================# SCALAR_BUILD_FAILURE EXCEPTION #======================#
+# ======================# SCALAR_BUILD_FAILURE #======================#
 class ScalarBuildException(ScalarException, BuildException):
     """
     # ROLE: Exception Wrapper

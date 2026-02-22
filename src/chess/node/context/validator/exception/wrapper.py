@@ -11,12 +11,12 @@ from chess.system import ValidationException
 from chess.node import NodeContextException
 
 __all__ = [
-    # ======================# NODE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
     "NodeContextValidationException",
 ]
 
 
-# ======================# NODE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# NODE_CONTEXT_VALIDATION_FAILURE #======================#
 class NodeContextValidationException(NodeContextException, ValidationException):
     """
     # ROLE: Exception Wrapper

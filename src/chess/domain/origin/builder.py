@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 
-from chess.domain import DomainOrigin, DomainOriginBuildFailedException
+from chess.domain import DomainOrigin, DomainOriginBuildException
 from chess.enviroment import TurnScene, TurnSceneValidator
 from chess.system import Builder, BuildResult, LoggingLevelRouter
 
@@ -67,8 +67,8 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         
         except Exception as e:
             return BuildResult.failure(
-                DomainOriginBuildFailedException(
-                    f"{method}: {DomainOriginBuildFailedException.DEFAULT_MESSAGE}",
+                DomainOriginBuildException(
+                    f"{method}: {DomainOriginBuildException.DEFAULT_MESSAGE}",
                     e
                 )
             )

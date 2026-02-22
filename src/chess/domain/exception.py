@@ -24,7 +24,7 @@ __all__ = [
     "DomainNullFriendsDictException",
     
 #======================# DOMAIN BUILD EXCEPTION #======================#
-    "DomainBuildFailedException",
+    "DomainBuildException",
 ]
 
 
@@ -70,7 +70,7 @@ class DomainNullFriendsDictException(DomainException, InconsistencyException):
 
 
 #======================# DOMAIN BUILD EXCEPTION #======================#
-class DomainBuildFailedException(DomainException, BuilderException):
+class DomainBuildException(DomainException, BuilderException):
     """Catchall Exception for DomainBuilder when it stops because of an error."""
     ERROR_CODE = "DOMAIN_BUILD_FAILED"
     DEFAULT_MESSAGE = "Domain build failed."

@@ -14,7 +14,7 @@ from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import RookException, RookSpanComputationFailedException, PerpendicularSpan, Rank, Rook
+from chess.rank import RookException, RookSpanComputationException, PerpendicularSpan, Rank, Rook
 
 class Rook(Rank):
     """
@@ -76,7 +76,7 @@ class Rook(Rank):
                     - On success: List[Coord] in the payload.
         # RAISES:
             *   RookException
-            *   RookSpanComputationFailedException
+            *   RookSpanComputationException
         """
         method = "Rook.compute_span"
         
@@ -92,9 +92,9 @@ class Rook(Rank):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RookException(
-                    message=f"{method}: {RookSpanComputationFailedException.DEFAULT_MESSAGE}",
-                    ex=RookSpanComputationFailedException(
-                        message=f"{method}: {RookSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    message=f"{method}: {RookSpanComputationException.DEFAULT_MESSAGE}",
+                    ex=RookSpanComputationException(
+                        message=f"{method}: {RookSpanComputationException.DEFAULT_MESSAGE}",
                         ex=computation_result.exception
                     )
                 )

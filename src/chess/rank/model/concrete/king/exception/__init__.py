@@ -14,4 +14,4 @@ None
 
 # Modules
 from .catchall import KingException
-from .span import KingSpanComputationFailedException
+from .span import KingSpanComputationException

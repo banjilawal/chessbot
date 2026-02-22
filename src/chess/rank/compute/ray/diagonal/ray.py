@@ -15,7 +15,7 @@ from chess.graph import Vertex
 from chess.square import SquareContext
 from chess.token import Token
 from chess.coord import Coord, CoordService
-from chess.rank import DiagonalRayComputationFailedException
+from chess.rank import DiagonalRayComputationException
 from chess.system import BuildResult, ComputationResult, LoggingLevelRouter
 from chess.vector import VectorService
 
@@ -56,7 +56,7 @@ class DiagonalRay:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         RAISES:
-            *   DiagonalRayComputationFailedException
+            *   DiagonalRayComputationException
         """
         method = "DiagonalRay.compute"
         
@@ -70,8 +70,8 @@ class DiagonalRay:
             # Return the exception chain on failure.
             if build_result.is_failure:
                 return BuildResult.failure(
-                    DiagonalRayComputationFailedException(
-                        message=f"{method}: {DiagonalRayComputationFailedException.DEFAULT_MESSAGE}",
+                    DiagonalRayComputationException(
+                        message=f"{method}: {DiagonalRayComputationException.DEFAULT_MESSAGE}",
                         ex=build_result.exception
                     )
                 )
@@ -80,8 +80,8 @@ class DiagonalRay:
                 # Return the exception chain on failure.
                 if build_result.is_failure:
                     return BuildResult.failure(
-                        DiagonalRayComputationFailedException(
-                            message=f"{method}: {DiagonalRayComputationFailedException.DEFAULT_MESSAGE}",
+                        DiagonalRayComputationException(
+                            message=f"{method}: {DiagonalRayComputationException.DEFAULT_MESSAGE}",
                             ex=build_result.exception
                         )
                     )
@@ -107,8 +107,8 @@ class DiagonalRay:
         if square_search_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                DiagonalRayComputationFailedException(
-                    message=f"{method}: {DiagonalRayComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalRayComputationException(
+                    message=f"{method}: {DiagonalRayComputationException.DEFAULT_MESSAGE}",
                     ex=square_search_result.exception
                 )
             )
@@ -116,8 +116,8 @@ class DiagonalRay:
         if vector_build_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                DiagonalRayComputationFailedException(
-                    message=f"{method}: {DiagonalRayComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalRayComputationException(
+                    message=f"{method}: {DiagonalRayComputationException.DEFAULT_MESSAGE}",
                     ex=vector_build_result.exception
                 )
             )

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# NODE_DELETION_FAILURE EXCEPTION #======================#
+    # ======================# NODE_DELETION_FAILURE #======================#
     "NodePopException",
 ]
 
 from chess.node import NodeStackException
-from chess.system import DeletionFailedException
+from chess.system import DeletionException
 
 
-# ======================# NODE_DELETION_FAILURE EXCEPTION #======================#
-class NodePopException(NodeStackException, DeletionFailedException):
+# ======================# NODE_DELETION_FAILURE #======================#
+class NodePopException(NodeStackException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class NodePopException(NodeStackException, DeletionFailedException):
 
     # PARENT:
         *   NodeStackException
-        *   DeletionFailedException
+        *   DeletionException
 
     # PROVIDES:
     None

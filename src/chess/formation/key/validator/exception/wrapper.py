@@ -11,12 +11,12 @@ from chess.formation import FormationKeyException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# FORMATION_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# FORMATION_KEY_VALIDATION_FAILURE #======================#
     "FormationKeyValidationException",
 ]
 
 
-# ======================# FORMATION_KEY_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# FORMATION_KEY_VALIDATION_FAILURE #======================#
 class FormationKeyValidationException(FormationKeyException, ValidationException):
     """
     # ROLE: Exception Wrapper

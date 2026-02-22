@@ -7,16 +7,16 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from chess.rank import SpanComputationFailedException
+from chess.rank import SpanComputationException
 
 __all__ = [
-    # ======================# DIAGONAL_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-    "DiagonalSpanComputationFailedException",
+    # ======================# DIAGONAL_SPAN_COMPUTATION_FAILURE #======================#
+    "DiagonalSpanComputationException",
 ]
 
 
-# ======================# DIAGONAL_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-class DiagonalSpanComputationFailedException(SpanComputationFailedException):
+# ======================# DIAGONAL_SPAN_COMPUTATION_FAILURE #======================#
+class DiagonalSpanComputationException(SpanComputationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -25,7 +25,7 @@ class DiagonalSpanComputationFailedException(SpanComputationFailedException):
         a san in either horizontal:{R(x,y) -> (X,0)}, or vertical:{R(x,y) -> (0,Y)} domains.
 
     # PARENT:
-        *   SpanComputationFailedException
+        *   SpanComputationException
 
     # PROVIDES:
     None

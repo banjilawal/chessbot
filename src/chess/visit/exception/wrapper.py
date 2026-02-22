@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# VISIT_FAILURE EXCEPTION #======================#
+    # ======================# VISIT_FAILURE #======================#
     "VisitFailedException",
 ]
 
 from chess.system import OperationFailedException
 
 
-# ======================# VISIT_FAILURE EXCEPTION #======================#
+# ======================# VISIT_FAILURE #======================#
 class VisitFailedException(OperationFailedException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining

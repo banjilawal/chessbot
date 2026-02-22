@@ -13,7 +13,7 @@ from typing import Optional
 from chess.agent import PlayerAgent, AgentService
 from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService, LoggingLevelRouter
 from chess.game import (
-    GameContext, GameContextBuildFailedException, ZeroGameContextFlagsException, ExcessiveGameContextFlagsException
+    GameContext, GameContextBuildException, ZeroGameContextFlagsException, ExcessiveGameContextFlagsException
 )
 
 
@@ -118,7 +118,7 @@ class GameContextBuilder(Builder[GameContext]):
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                GameContextBuildFailedException(
-                    ex=ex, message=f"{method}: {GameContextBuildFailedException.DEFAULT_MESSAGE}"
+                GameContextBuildException(
+                    ex=ex, message=f"{method}: {GameContextBuildException.DEFAULT_MESSAGE}"
                 )
             )

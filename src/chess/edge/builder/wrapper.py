@@ -11,7 +11,7 @@ version: 1.0.0
 from chess.system import BuildException
 
 __all__ = [
-    # ======================# EDGE_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# EDGE_BUILD_FAILURE #======================#
     "EdgeBuildException",
 ]
 

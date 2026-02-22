@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.coord import Coord, CoordService
-from chess.rank import PerpendicularRayComputationFailedException
+from chess.rank import PerpendicularRayComputationException
 from chess.system import BuildResult, ComputationResult, LoggingLevelRouter
 
 class PerpendicularRay:
@@ -50,7 +50,7 @@ class PerpendicularRay:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         RAISES:
-            *   PerpendicularRayComputationFailedException
+            *   PerpendicularRayComputationException
         """
         method = "PerpendicularRay.compute"
         
@@ -60,8 +60,8 @@ class PerpendicularRay:
             build_result = coord_service.builder.build(row=j, column=i)
             if build_result.is_failure:
                 return BuildResult.failure(
-                    PerpendicularRayComputationFailedException(
-                        message=f"{method}: {PerpendicularRayComputationFailedException.DEFAULT_MESSAGE}",
+                    PerpendicularRayComputationException(
+                        message=f"{method}: {PerpendicularRayComputationException.DEFAULT_MESSAGE}",
                         ex=build_result.exception
                     )
                 )

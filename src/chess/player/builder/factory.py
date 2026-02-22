@@ -15,8 +15,8 @@ from chess.team import UniqueTeamDataService
 from chess.system import Builder, BuildResult, IdentityService, LoggingLevelRouter,ValidationResult, id_emitter
 
 from chess.player import (
-    Player, PlayerBuildFailedException, PlayerVariety, PlayerValidator, HumanPlayer, HumanPlayerBuildFailedException,
-    MachinePlayer, MachinePlayerBuildFailedException
+    Player, PlayerBuildException, PlayerVariety, PlayerValidator, HumanPlayer, HumanPlayerBuildException,
+    MachinePlayer, MachinePlayerBuildException
 )
 
 
@@ -92,8 +92,8 @@ class PlayerFactory(Builder[Player]):
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                PlayerBuildFailedException(
-                    ex=ex, message=f"{method}: {PlayerBuildFailedException.DEFAULT_MESSAGE}"
+                PlayerBuildException(
+                    ex=ex, message=f"{method}: {PlayerBuildException.DEFAULT_MESSAGE}"
                 )
             )
     
@@ -121,7 +121,7 @@ class PlayerFactory(Builder[Player]):
             - On failure: Exception.
 
         # RAISES:
-            *   HumanPlayerBuildFailedException
+            *   HumanPlayerBuildException
         """
         method = "PlayerBuilder.build_human_player"
         try:
@@ -140,11 +140,11 @@ class PlayerFactory(Builder[Player]):
             )
         
         # Finally, if some exception unrelated to identity verification is raised wrap it inside a
-        # HumanPlayerBuildFailedException then, send the exception chain inside a BuildResult.
+        # HumanPlayerBuildException then, send the exception chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                HumanPlayerBuildFailedException(
-                    ex=ex, message=f"{method}: {HumanPlayerBuildFailedException.DEFAULT_MESSAGE}"
+                HumanPlayerBuildException(
+                    ex=ex, message=f"{method}: {HumanPlayerBuildException.DEFAULT_MESSAGE}"
                 )
             )
     
@@ -175,7 +175,7 @@ class PlayerFactory(Builder[Player]):
             - On failure: Exception.
 
         # RAISES:
-            *   MachinePlayerBuildFailedException
+            *   MachinePlayerBuildException
         """
         method = "PlayerBuilder.build_machine_player"
         try:
@@ -200,10 +200,10 @@ class PlayerFactory(Builder[Player]):
             )
         
         # Finally, if some exception unrelated to identity verification is raised wrap it inside a
-        # MachinePlayerBuildFailedException then, send the exception chain inside a BuildResult.
+        # MachinePlayerBuildException then, send the exception chain inside a BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                MachinePlayerBuildFailedException(
-                    ex=ex, message=f"{method}: {MachinePlayerBuildFailedException.DEFAULT_MESSAGE}"
+                MachinePlayerBuildException(
+                    ex=ex, message=f"{method}: {MachinePlayerBuildException.DEFAULT_MESSAGE}"
                 )
             )

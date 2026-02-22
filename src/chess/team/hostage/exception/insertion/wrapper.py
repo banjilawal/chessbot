@@ -15,7 +15,7 @@ __all__ = [
 ]
 
 
-# ======================# HOSTAGE_ADDITION_FAILURE EXCEPTION #======================#
+# ======================# HOSTAGE_ADDITION_FAILURE #======================#
 class AddingHostageTokenFailedException(HostageServiceException):
     """
     # ROLE: Debug, Error Tracing
@@ -35,5 +35,5 @@ class AddingHostageTokenFailedException(HostageServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_ADDITION_FAILURE_ERROR"
+    ERROR_CODE = "HOSTAGE_ADDITION_FAILURE"
     DEFAULT_MESSAGE = "Adding prisoner failed."

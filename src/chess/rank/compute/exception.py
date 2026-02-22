@@ -7,16 +7,16 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from chess.system import ComputationFailedException
+from chess.system import ComputationException
 
 __all__ = [
-    # ======================# SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-    "SpanComputationFailedException",
+    # ======================# SPAN_COMPUTATION_FAILURE #======================#
+    "SpanComputationException",
 ]
 
 
-# ======================# SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-class SpanComputationFailedException(ComputationFailedException):
+# ======================# SPAN_COMPUTATION_FAILURE #======================#
+class SpanComputationException(ComputationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -25,7 +25,7 @@ class SpanComputationFailedException(ComputationFailedException):
         a solution. This exception chain is passed to the caller for handling.
 
     # PARENT:
-        *   ComputationFailedException
+        *   ComputationException
 
     # PROVIDES:
     None

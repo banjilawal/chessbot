@@ -13,12 +13,12 @@ from chess.system import ValidationException
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
     "TeamContextValidationException",
 ]
 
 
-# ======================# TEAM_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# TEAM_CONTEXT_VALIDATION_FAILURE #======================#
 class TeamContextValidationException(TeamContextException, ValidationException):
     """
     # ROLE: Exception Wrapper

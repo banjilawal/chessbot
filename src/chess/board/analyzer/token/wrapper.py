@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# BOARD_TOKEN_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
+    # ======================# BOARD_TOKEN_RELATION_ANALYSIS_FAILURE #======================#
     "BoardTokenAnalysisException",
 ]
 
 from chess.system import AnalysisException
 
 
-# ======================# BOARD_TOKEN_RELATION_ANALYSIS_FAILURE EXCEPTION #======================#
+# ======================# BOARD_TOKEN_RELATION_ANALYSIS_FAILURE #======================#
 class BoardTokenAnalysisException(AnalysisException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining

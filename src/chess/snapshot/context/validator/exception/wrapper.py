@@ -10,12 +10,12 @@ from chess.snapshot import SnapshotContextException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE #======================#
     "SnapshotContextValidationException",
 ]
 
 
-# ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# SNAPSHOT_CONTEXT_VALIDATION_FAILURE #======================#
 class SnapshotContextValidationException(SnapshotContextException, ValidationException):
     """
     # ROLE: Exception Wrapper

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from chess.coord import CoordService
-from chess.graph import Edge, EdgeBuildFailedException, HeadCannotBeTailException, Edge, EdgeValidator
+from chess.graph import Edge, EdgeBuildException, HeadCannotBeTailException, Edge, EdgeValidator
 from chess.system import BuildResult, Builder, IdFactory, IdentityService, LoggingLevelRouter
 
 
@@ -75,8 +75,8 @@ class EdgeBuilder(Builder[Edge]):
          if id_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildFailedException(
-                     message=f"{method} {EdgeBuildFailedException.DEFAULT_MESSAGE}",
+                 EdgeBuildException(
+                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
                      ex=id_validation.exception
                  )
              )
@@ -85,8 +85,8 @@ class EdgeBuilder(Builder[Edge]):
          if head_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildFailedException(
-                     message=f"{method} {EdgeBuildFailedException.DEFAULT_MESSAGE}",
+                 EdgeBuildException(
+                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
                      ex=head_validation.exception
                  )
              )
@@ -95,8 +95,8 @@ class EdgeBuilder(Builder[Edge]):
          if tail_validation.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildFailedException(
-                     message=f"{method} {EdgeBuildFailedException.DEFAULT_MESSAGE}",
+                 EdgeBuildException(
+                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
                      ex=tail_validation.exception
                  )
              )
@@ -104,8 +104,8 @@ class EdgeBuilder(Builder[Edge]):
          if head == tail:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildFailedException(
-                     message=f"{method} {EdgeBuildFailedException.DEFAULT_MESSAGE}",
+                 EdgeBuildException(
+                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
                      ex=HeadCannotBeTailException(f"{method}: {HeadCannotBeTailException.DEFAULT_MESSAGE}")
                  )
              )
@@ -118,8 +118,8 @@ class EdgeBuilder(Builder[Edge]):
          if distance_computation_result.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(
-                 EdgeBuildFailedException(
-                     message=f"{method} {EdgeBuildFailedException.DEFAULT_MESSAGE}",
+                 EdgeBuildException(
+                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
                      ex=distance_computation_result.exception
                  )
              )

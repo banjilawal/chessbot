@@ -1,12 +1,12 @@
 __all__ = [
-    # ======================# ENTITY_SERVICE_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# ENTITY_SERVICE_VALIDATION_FAILURE #======================#
     "EntityServiceValidationException",
 ]
 
 from chess.system import ServiceException, ValidationException
 
 
-# ======================# ENTITY_SERVICE_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# ENTITY_SERVICE_VALIDATION_FAILURE #======================#
 class EntityServiceValidationException(ServiceException, ValidationException):
     """
     # ROLE: Exception Wrapper

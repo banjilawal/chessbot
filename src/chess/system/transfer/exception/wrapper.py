@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import OperationFailedException
 
 __all__ = [
-    # ======================# TRANSFER_FAILURE EXCEPTION #======================#
+    # ======================# TRANSFER_FAILURE #======================#
     "TransferFailedException",
 ]
 
 
-# ======================# TRANSFER_FAILURE EXCEPTION #======================#
+# ======================# TRANSFER_FAILURE #======================#
 class TransferFailedException(OperationFailedException):
     """
     # ROLE: Exception Wrapper

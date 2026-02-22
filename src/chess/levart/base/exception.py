@@ -77,7 +77,7 @@ class TravelEventBuildException(TravelEventException, BuildException):
   ERROR_CODE = "TRAVEL_EVENT_BUILD_FAILED"
   DEFAULT_MESSAGE = "TravelEvent build failed."
 
-class OccupationEventBuildFailedException(TravelEventBuildException):
+class OccupationEventBuildException(TravelEventBuildException):
   """
   Indicate That  OldOccupationEventValidator could not be built. Wraps and re-raises errors that occurred
   during builder.

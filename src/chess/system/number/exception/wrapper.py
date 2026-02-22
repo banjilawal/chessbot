@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# NUMBER_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# NUMBER_VALIDATION_FAILURE #======================#
     "NumberValidationException",
 ]
 
 from chess.system import NumberException, ValidationException
 
 
-# ======================# NUMBER_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# NUMBER_VALIDATION_FAILURE #======================#
 class NumberValidationException(NumberException, ValidationException):
     """
     # ROLE: Exception Wrapper

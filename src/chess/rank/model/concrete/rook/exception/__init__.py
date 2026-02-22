@@ -14,4 +14,4 @@ None
 
 # Modules
 from .catchall import RookException
-from .span import RookSpanComputationFailedException
+from .span import RookSpanComputationException

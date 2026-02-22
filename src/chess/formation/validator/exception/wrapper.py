@@ -13,12 +13,12 @@ from chess.system import ValidationException
 
 _
 __all__ = [
-    # ======================# FORMATION_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# FORMATION_VALIDATION_FAILURE #======================#
     "FormationValidationException",
 ]
 
 
-# ======================# FORMATION_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# FORMATION_VALIDATION_FAILURE #======================#
 class FormationValidationException(FormationException, ValidationException):
     """
     # ROLE: Exception Wrapper

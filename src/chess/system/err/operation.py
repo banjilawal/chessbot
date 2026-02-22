@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# OPERATION_FAILURE EXCEPTION #======================#
+    # ======================# OPERATION_FAILURE #======================#
     "OperationFailedException",
 ]
 
 from chess.system import WrapperException
 
 
-# ======================# OPERATION_FAILURE EXCEPTION #======================#
+# ======================# OPERATION_FAILURE #======================#
 class OperationFailedException(WrapperException):
     """
     # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception

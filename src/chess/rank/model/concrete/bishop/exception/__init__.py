@@ -14,4 +14,4 @@ None
 
 # Modules
 from .catchall import BishopException
-from .span import BishopSpanComputationFailedException
+from .span import BishopSpanComputationException

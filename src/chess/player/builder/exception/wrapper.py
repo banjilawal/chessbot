@@ -12,20 +12,20 @@ from chess.player import PlayerException
 from chess.system import BuildException
 
 __all__ = [
-    # ======================# PLAYER_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# PLAYER_BUILD_FAILURE #======================#
     "PlayerBuildException",
 ]
 
 
-#======================# PLAYER_BUILD_FAILURE EXCEPTION #======================#
+#======================# PLAYER_BUILD_FAILURE #======================#
 class PlayerBuildException(PlayerException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the PlayerContext build creates an exception. Failed check exceptions are encapsulated
-        in an PlayerContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The PlayerContextBuildFailedException provides a trace for debugging and application recovery.
+        in an PlayerContextBuildException which is sent to the caller in a BuildResult.
+    2.  The PlayerContextBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   PlayerException

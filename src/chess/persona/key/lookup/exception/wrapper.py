@@ -11,12 +11,12 @@ from chess.persona import PersonaException
 from chess.system import LookupFailedException
 
 __all__ = [
-    # ======================# PERSONA_LOOKUP_FAILURE EXCEPTION #======================#
+    # ======================# PERSONA_LOOKUP_FAILURE #======================#
     "PersonaLookupFailedException",
 ]
 
 
-# ======================# PERSONA_LOOKUP_FAILURE EXCEPTION #======================#
+# ======================# PERSONA_LOOKUP_FAILURE #======================#
 class PersonaLookupFailedException(PersonaException, LookupFailedException):
     """
     # ROLE: WrapperException, Encapsulation

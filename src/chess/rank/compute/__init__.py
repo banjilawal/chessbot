@@ -14,4 +14,4 @@ from .ray import *
 from .span import *
 
 # Modules
-from .exception import SpanComputationFailedException
+from .exception import SpanComputationException

@@ -12,7 +12,7 @@ from typing import Optional
 
 from chess.system import BuildResult, Builder, LoggingLevelRouter
 from chess.rank import (
-    Rank, RankValidator, RankContext, RankContextBuildFailedException,
+    Rank, RankValidator, RankContext, RankContextBuildException,
     NoRankSearchOptionSelectedException, MoreThanOneRankSearchOptionPickedException,
 )
 
@@ -67,7 +67,7 @@ class RankContextBuilder(Builder[RankContext]):
                 - On failure: Exception.
 
         # RAISES:
-            * RankContextBuildFailedException
+            * RankContextBuildException
             * NoRankSearchOptionSelectedException
             * MoreThanOneRankSearchOptionPickedException
         """
@@ -108,8 +108,8 @@ class RankContextBuilder(Builder[RankContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                RankContextBuildFailedException(
-                    f"{method}: {RankContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                RankContextBuildException(
+                    f"{method}: {RankContextBuildException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -142,8 +142,8 @@ class RankContextBuilder(Builder[RankContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                RankContextBuildFailedException(
-                    f"{method}: {RankContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                RankContextBuildException(
+                    f"{method}: {RankContextBuildException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -181,8 +181,8 @@ class RankContextBuilder(Builder[RankContext]):
         
         except Exception as ex:
             return BuildResult.failure(
-                RankContextBuildFailedException(
-                    f"{method}: {RankContextBuildFailedException.DEFAULT_MESSAGE}", ex
+                RankContextBuildException(
+                    f"{method}: {RankContextBuildException.DEFAULT_MESSAGE}", ex
                 )
             )
     
@@ -220,7 +220,7 @@ class RankContextBuilder(Builder[RankContext]):
         
         except Exception as e:
             return BuildResult.failure(
-                RankContextBuildFailedException(
-                    f"{method}: {RankContextBuildFailedException.DEFAULT_MESSAGE}"
+                RankContextBuildException(
+                    f"{method}: {RankContextBuildException.DEFAULT_MESSAGE}"
                 )
             )

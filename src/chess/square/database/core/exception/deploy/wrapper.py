@@ -37,5 +37,5 @@ class DeployingTeamRosterException(SquareStackException, UpdateException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_ROSTER_DEPLOYMENT_FAILURE_ERROR"
+    ERROR_CODE = "TEAM_ROSTER_DEPLOYMENT_FAILURE"
     DEFAULT_MESSAGE = "Deploying team's members failed."

@@ -22,7 +22,7 @@ __all__ = [
     "InvalidDomainOriginException",
     
     #====================== DOMAIN_ORIGIN BUILD EXCEPTION #======================#
-    "DomainOriginBuildFailedException",
+    "DomainOriginBuildException",
 ]
 
 
@@ -50,7 +50,7 @@ class InvalidDomainOriginException(DomainOriginException, ValidationException):
 
 
 #====================== DOMAIN_ORIGIN BUILD EXCEPTION #======================#
-class DomainOriginBuildFailedException(DomainOriginException, BuildException):
+class DomainOriginBuildException(DomainOriginException, BuildException):
     """Catchall Exception for DomainOriginBuilder when it stops because of an error."""
     ERROR_CODE = "DOMAIN_ORIGIN_BUILD_FAILED"
     DEFAULT_MESSAGE = "DomainOrigin build failed."

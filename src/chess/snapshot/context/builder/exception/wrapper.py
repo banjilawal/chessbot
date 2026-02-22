@@ -11,12 +11,12 @@ from chess.system import BuildException
 from chess.snapshot import SnapshotContextException
 
 __all__ = [
-    # ======================# SNAPSHOT_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# SNAPSHOT_CONTEXT_BUILD_FAILURE #======================#
     "SnapshotContextBuildException",
 ]
 
 
-# ======================# SNAPSHOT_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
+# ======================# SNAPSHOT_CONTEXT_BUILD_FAILURE #======================#
 class SnapshotContextBuildException(SnapshotContextException, BuildException):
     """
     # ROLE: Exception Wrapper

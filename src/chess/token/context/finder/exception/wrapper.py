@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_SEARCH_FAILURE EXCEPTION #======================#
+    # ======================# TOKEN_SEARCH_FAILURE #======================#
     "TokenSearchException",
 ]
 
@@ -16,14 +16,14 @@ from chess.system import SearchException
 from chess.token import TokenException
 
 
-# ======================# TOKEN_SEARCH_FAILURE EXCEPTION #======================#
+# ======================# TOKEN_SEARCH_FAILURE #======================#
 class TokenSearchException(TokenException, SearchException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Parent of exceptions raised by TokenFinder objects.
-    2.  Wrap an exception that hits the try-finally block of an TokenFinder method.
+    1.  Wrap debug exceptions indicating why a token search operation failed. The exception chain
+        traces the ultimate source of failure..
 
     # PARENT:
         *   FinderException
@@ -37,5 +37,5 @@ class TokenSearchException(TokenException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_SEARCH_FAILURE_ERROR"
+    ERROR_CODE = "TOKEN_SEARCH_FAILURE"
     DEFAULT_MESSAGE = "TokenSearch failed."

@@ -9,12 +9,12 @@ Created: 2025-11-18
 from chess.system import OperationFailedException, ServiceException
 
 __all__ = [
-    # ======================# SERVICE_OPERATION_FAILURE EXCEPTION #======================#
+    # ======================# SERVICE_OPERATION_FAILURE #======================#
     "ServiceOperationFailedException",
 ]
 
 
-# ======================# SERVICE_OPERATION_FAILURE EXCEPTION #======================#
+# ======================# SERVICE_OPERATION_FAILURE #======================#
 class ServiceOperationFailedException(ServiceException, OperationFailedException):
     """
     # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception

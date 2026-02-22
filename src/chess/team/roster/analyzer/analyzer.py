@@ -11,7 +11,7 @@ from typing import cast
 
 from chess.token import Token, TokenService, TokenContext
 from chess.system import LoggingLevelRouter, RelationReport, RelationAnalyzer
-from chess.team import Team, TeamRosterRelationAnalysisFailedException, TeamValidator
+from chess.team import Team, TeamRosterRelationAnalysisException, TeamValidator
 
 
 class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
@@ -63,7 +63,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
                 - On bidirectional: Team and Token
                 - On not related: Neither team, occupant nor exception.
         # RAISES:
-            *   TeamRosterRelationAnalysisFailedException
+            *   TeamRosterRelationAnalysisException
         """
         method = "RosterRelationAnalyzer.test"
         
@@ -72,8 +72,8 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
         if team_validation.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                TeamRosterRelationAnalysisFailedException(
-                    message=f"{method}: {TeamRosterRelationAnalysisFailedException.ERROR_CODE}",
+                TeamRosterRelationAnalysisException(
+                    message=f"{method}: {TeamRosterRelationAnalysisException.ERROR_CODE}",
                     ex=team_validation.exception,
                 )
             )
@@ -83,8 +83,8 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
         piece_validation = piece_service.validator.validate(candidate_satellite)
         if piece_validation.is_failure:
             return RelationReport(
-                TeamRosterRelationAnalysisFailedException(
-                    message=f"{method}: {TeamRosterRelationAnalysisFailedException.ERROR_CODE}",
+                TeamRosterRelationAnalysisException(
+                    message=f"{method}: {TeamRosterRelationAnalysisException.ERROR_CODE}",
                     ex=piece_validation.exception,
                 )
             )
@@ -99,8 +99,8 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
         if member_search.is_failure:
             # Return the exception chain on failure.
             return RelationReport(
-                TeamRosterRelationAnalysisFailedException(
-                    message=f"{method}: {TeamRosterRelationAnalysisFailedException.ERROR_CODE}",
+                TeamRosterRelationAnalysisException(
+                    message=f"{method}: {TeamRosterRelationAnalysisException.ERROR_CODE}",
                     ex=member_search.exception,
                 )
             )

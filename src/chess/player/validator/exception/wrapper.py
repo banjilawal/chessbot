@@ -11,12 +11,12 @@ from chess.player import PlayerException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# PLAYER_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# PLAYER_VALIDATION_FAILURE #======================#
     "PlayerValidationException",
 ]
 
 
-#======================# PLAYER_VALIDATION_FAILURE EXCEPTION #======================#
+#======================# PLAYER_VALIDATION_FAILURE #======================#
 class PlayerValidationException(PlayerException, ValidationException):
     """
     # ROLE: Exception Wrapper

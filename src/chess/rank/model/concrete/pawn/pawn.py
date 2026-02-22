@@ -16,7 +16,7 @@ from chess.geometry import Quadrant
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
 from chess.rank import (
-    PawnAttackSpan, PawnException, PawnMoveCategory, PeacefulPawnSpan, PawnSpanComputationFailedException, Rank,
+    PawnAttackSpan, PawnException, PawnMoveCategory, PeacefulPawnSpan, PawnSpanComputationException, Rank,
     Pawn
 )
 
@@ -82,16 +82,16 @@ class Pawn(Rank):
         # if actionable_token_verification_result.is_failure:
         #     # Return the exception chain on failure.
         #     return ComputationResult.failure(
-        #         PawnSpanComputationFailedException(
-        #             message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
+        #         PawnSpanComputationException(
+        #             message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
         #             ex=actionable_token_verification_result.exception
         #         )
         #     )
         # Handle the case that the occupant is not a Pawn
         if not isinstance(token, PawnToken):
             return ComputationResult.failure(
-                PawnSpanComputationFailedException(
-                    message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PawnSpanComputationException(
+                    message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
                     ex=TypeError(
                         f"{method}: Expected PawnToken, got {type(token).__name__} instead. Cannot "
                         f"compute pawn spanning dictionary for non-Pawn tokens."
@@ -178,7 +178,7 @@ class Pawn(Rank):
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   PawnSpanComputationFailedException
+            *   PawnSpanComputationException
         """
         method = "Pawn.compute_span"
         
@@ -191,8 +191,8 @@ class Pawn(Rank):
             )
             if destination_computation.is_failure:
                 return ComputationResult.failure(
-                    PawnSpanComputationFailedException(
-                        message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    PawnSpanComputationException(
+                        message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
                         ex=destination_computation.exception
                     )
                 )
@@ -203,8 +203,8 @@ class Pawn(Rank):
             )
             if destination_computation.is_failure:
                 return ComputationResult.failure(
-                    PawnSpanComputationFailedException(
-                        message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    PawnSpanComputationException(
+                        message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
                         ex=destination_computation.exception
                     )
                 )
@@ -219,8 +219,8 @@ class Pawn(Rank):
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PawnSpanComputationFailedException(
-                    message=f"{method}: {PawnSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PawnSpanComputationException(
+                    message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )

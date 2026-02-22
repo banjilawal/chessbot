@@ -13,7 +13,7 @@ from chess.game import Game, GameService
 from chess.team import Team, TeamService
 from chess.system import Builder, BuildResult, UnhandledRouteException, IdentityService, LoggingLevelRouter
 from chess.arena import (
-    ArenaContext, ArenaContextBuildFailedException, ExcessiveArenaContextFlagsException, ZeroArenaContextFlagsException,
+    ArenaContext, ArenaContextBuildException, ExcessiveArenaContextFlagsException, ZeroArenaContextFlagsException,
 )
 
 
@@ -150,7 +150,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                ArenaContextBuildFailedException(
-                    ex=ex, message=f"{method}: {ArenaContextBuildFailedException.DEFAULT_MESSAGE}"
+                ArenaContextBuildException(
+                    ex=ex, message=f"{method}: {ArenaContextBuildException.DEFAULT_MESSAGE}"
                 )
             )

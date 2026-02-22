@@ -10,12 +10,12 @@ Version: 1.0.0
 from chess.system import CollectionException, OperationFailedException
 
 __all__ = [
-    # ======================# COLLECTION_OPERATION_FAILURE EXCEPTION #======================#
+    # ======================# COLLECTION_OPERATION_FAILURE #======================#
     "CollectionOperationFailedException",
 ]
 
 
-# ======================# COLLECTION_OPERATION_FAILURE EXCEPTION #======================#
+# ======================# COLLECTION_OPERATION_FAILURE #======================#
 class CollectionOperationFailedException(CollectionException, OperationFailedException):
     """
     # ROLE: Exception Wrapper

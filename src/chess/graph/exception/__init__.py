@@ -14,4 +14,4 @@ from .edge import *
 
 # Modules
 from .catchall import GraphException
-from .computation import GraphComputationFailedException
+from .computation import GraphComputationException

@@ -11,12 +11,12 @@ from chess.arena import ArenaException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# ARENA_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# ARENA_VALIDATION_FAILURE #======================#
     "ArenaValidationException",
 ]
 
 
-# ======================# ARENA_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# ARENA_VALIDATION_FAILURE #======================#
 class ArenaValidationException(ArenaException, ValidationException):
     """
     # ROLE: Exception Wrapper

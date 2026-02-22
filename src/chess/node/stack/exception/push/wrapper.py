@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.node import NodeStackException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
 # ======================# NODE_INSERTION_FAILURE #======================#
-class NodePushException(NodeStackException, InsertionFailedException):
+class NodePushException(NodeStackException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class NodePushException(NodeStackException, InsertionFailedException):
 
     # PARENT:
         *   NodeStackException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None
@@ -37,5 +37,5 @@ class NodePushException(NodeStackException, InsertionFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_INSERTION_FAILURE_ERROR"
+    ERROR_CODE = "NODE_INSERTION_FAILURE"
     DEFAULT_MESSAGE = "Node insertion failed."

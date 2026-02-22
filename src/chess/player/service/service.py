@@ -14,7 +14,7 @@ from chess.system import DeletionResult, EntityService, InsertionResult, Logging
 from chess.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalyzer, PlayerValidator
 from chess.team import (
     AddingDuplicateTeamException, PoppingEmptyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
-    TeamInsertionFailedException,
+    TeamInsertionException,
 )
 
 class PlayerService(EntityService[Player]):
@@ -183,8 +183,8 @@ class PlayerService(EntityService[Player]):
             return InsertionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=TeamInsertionFailedException(
-                        message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}",
+                    ex=TeamInsertionException(
+                        message=f"{method}: {TeamInsertionException.DEFAULT_MESSAGE}",
                         ex=relation.exception)
                 )
             )
@@ -194,8 +194,8 @@ class PlayerService(EntityService[Player]):
             return InsertionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=TeamInsertionFailedException(
-                        message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}",
+                    ex=TeamInsertionException(
+                        message=f"{method}: {TeamInsertionException.DEFAULT_MESSAGE}",
                         ex=TeamBelongsToDifferentOwnerException(
                             f"{method}: {TeamBelongsToDifferentOwnerException.DEFAULT_MESSAGE}"
                         )
@@ -208,8 +208,8 @@ class PlayerService(EntityService[Player]):
             return InsertionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=TeamInsertionFailedException(
-                        message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}",
+                    ex=TeamInsertionException(
+                        message=f"{method}: {TeamInsertionException.DEFAULT_MESSAGE}",
                         ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
                     )
                 )
@@ -221,8 +221,8 @@ class PlayerService(EntityService[Player]):
             return InsertionResult.failure(
                 PlayerServiceException(
                     message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
-                    ex=TeamInsertionFailedException(
-                        message=f"{method}: {TeamInsertionFailedException.DEFAULT_MESSAGE}",
+                    ex=TeamInsertionException(
+                        message=f"{method}: {TeamInsertionException.DEFAULT_MESSAGE}",
                         ex=insertion_result.exception
                     )
                 )

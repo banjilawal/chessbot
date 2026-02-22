@@ -1,14 +1,14 @@
 __all__ = [
-    # ======================# BOARD_SERVICE_INSERTION_OPERATION_FAILURE EXCEPTION #======================#
+    # ======================# BOARD_SERVICE_INSERTION_OPERATION_FAILURE #======================#
     "BoardLayoutFailedException",
 ]
 
 from chess.board import BoardException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# BOARD_LAYOUT_FAILURE EXCEPTION #======================#
-class BoardLayoutFailedException(BoardException, InsertionFailedException):
+# ======================# BOARD_LAYOUT_FAILURE #======================#
+class BoardLayoutFailedException(BoardException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -18,7 +18,7 @@ class BoardLayoutFailedException(BoardException, InsertionFailedException):
 
     # PARENT:
         *   BoardException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

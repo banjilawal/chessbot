@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# EXHAUSTIVE_COORD_DELETION_FAILURE EXCEPTION #======================#
-    "ExhaustiveCoordDeletionFailedException",
+    # ======================# EXHAUSTIVE_COORD_DELETION_FAILURE #======================#
+    "ExhaustiveCoordDeletionException",
 ]
 
 from chess.coord import CoordException
-from chess.system import DeletionFailedException
+from chess.system import DeletionException
 
 
-# ======================# EXHAUSTIVE_COORD_DELETION_FAILURE EXCEPTION #======================#
-class ExhaustiveCoordDeletionFailedException(CoordException, DeletionFailedException):
+# ======================# EXHAUSTIVE_COORD_DELETION_FAILURE #======================#
+class ExhaustiveCoordDeletionException(CoordException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class ExhaustiveCoordDeletionFailedException(CoordException, DeletionFailedExcep
 
     # PARENT:
         *   CoordException
-        *   DeletionFailedException
+        *   DeletionException
 
     # PROVIDES:
     None

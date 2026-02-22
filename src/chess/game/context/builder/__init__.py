@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import GameContextBuilder
-from .exception import GameContextBuildFailedException
+from .exception import GameContextBuildException

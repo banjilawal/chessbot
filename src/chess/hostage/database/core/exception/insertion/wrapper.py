@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# HOSTAGE_MANIFEST_INSERTION_FAILURE #======================#
-    "HostageManifestInsertionFailedException",
+    "HostageManifestInsertionException",
 ]
 
 from chess.hostage import HostageManifestException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
 # ======================# HOSTAGE_MANIFEST_INSERTION_FAILURE #======================#
-class HostageManifestInsertionFailedException(HostageManifestException, InsertionFailedException):
+class HostageManifestInsertionException(HostageManifestException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class HostageManifestInsertionFailedException(HostageManifestException, Insertio
 
     # PARENT:
         *   HostageManifestException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None
@@ -37,5 +37,5 @@ class HostageManifestInsertionFailedException(HostageManifestException, Insertio
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_MANIFEST_INSERTION_FAILURE_ERROR"
+    ERROR_CODE = "HOSTAGE_MANIFEST_INSERTION_FAILURE"
     DEFAULT_MESSAGE = "HostageManifest insertion failed."

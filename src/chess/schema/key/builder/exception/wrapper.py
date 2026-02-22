@@ -13,12 +13,12 @@ from chess.schema import SchemaKeyException
 
 
 __all__ = [
-    # ======================# SCHEMA_KEY_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# SCHEMA_KEY_BUILD_FAILURE #======================#
     "SchemaKeyBuildException",
 ]
 
 
-#======================# SCHEMA_KEY_BUILD_FAILURE EXCEPTION #======================#
+#======================# SCHEMA_KEY_BUILD_FAILURE #======================#
 class SchemaKeyBuildException(SchemaKeyException, BuildException):
     """
     # ROLE: Exception Wrapper

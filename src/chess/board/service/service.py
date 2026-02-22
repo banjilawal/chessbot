@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from chess.board.analyzer.square.analyzer import BoardSquareRelationAnalyzer
-from chess.graph import Graph, GraphComputationFailedException
+from chess.graph import Graph, GraphComputationException
 from chess.system import ComputationResult, InsertionResult, LoggingLevelRouter, id_emitter, EntityService
 from chess.board import (
     Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardServiceException,
@@ -140,8 +140,8 @@ class BoardService(EntityService[Board]):
             return ComputationResult.failure(
                 BoardServiceException(
                     f"{method}: {BoardServiceException.DEFAULT_MESSAGE}",
-                    ex=GraphComputationFailedException(
-                        message=f"{method}: {GraphComputationFailedException.DEFAULT_MESSAGE}",
+                    ex=GraphComputationException(
+                        message=f"{method}: {GraphComputationException.DEFAULT_MESSAGE}",
                         ex=validation.exception
                     )
                 )

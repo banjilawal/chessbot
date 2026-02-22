@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_INSERTION_FAILURE EXCEPTION #======================#
-    "TeamInsertionFailedException",
+    # ======================# TEAM_INSERTION_FAILURE #======================#
+    "TeamInsertionException",
 ]
 
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# TEAM_INSERTION_FAILURE EXCEPTION #======================#
-class TeamInsertionFailedException(InsertionFailedException):
+# ======================# TEAM_INSERTION_FAILURE #======================#
+class TeamInsertionException(InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -24,7 +24,7 @@ class TeamInsertionFailedException(InsertionFailedException):
     1.  Wrap debug exceptions indicating why TeamStack could not delete a team. The exception chain traces the ultimate source of failure.
 
     # PARENT:
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

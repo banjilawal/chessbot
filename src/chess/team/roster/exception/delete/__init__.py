@@ -15,5 +15,5 @@ None
 # Modules
 from .empty import PoppingEmptyTeamRosterException
 from .active import DeletingActiveTokenExceptionTeam
-from .wrapper import TeamRosterTokenDeletionFailedException
+from .wrapper import TeamRosterTokenDeletionException
 from .unfound import TeamRosterMemberDoesNotExistForRemovalException

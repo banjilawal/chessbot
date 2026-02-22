@@ -37,5 +37,5 @@ class PushingSquareException(SquareStackException, PushFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_PUSH_FAILURE_ERROR"
+    ERROR_CODE = "SQUARE_PUSH_FAILURE"
     DEFAULT_MESSAGE = "Square push failed."

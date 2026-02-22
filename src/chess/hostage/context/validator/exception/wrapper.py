@@ -12,12 +12,12 @@ from chess.system import ValidationException
 
 
 __all__ = [
-    # ======================# CAPTIVITY_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# CAPTIVITY_CONTEXT_VALIDATION_FAILURE #======================#
     "CaptivityContextValidationException",
 ]
 
 
-# ======================# CAPTIVITY_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# CAPTIVITY_CONTEXT_VALIDATION_FAILURE #======================#
 class CaptivityContextValidationException(CaptivityContextException, ValidationException):
     """
     # ROLE: Exception Wrapper

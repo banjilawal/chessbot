@@ -9,7 +9,7 @@ Created: 2025-11-18
 from typing import Any, cast
 
 from chess.system import (
-    Builder, EntityService, LoggingLevelRouter, NullServiceException, Service, ServiceValidationFailedException,
+    Builder, EntityService, LoggingLevelRouter, NullServiceException, Service, ServiceValidationException,
     ValidationResult, Validator
 )
 from chess.system.service.validator.exception.null.builder import ServiceNullBuilderException
@@ -53,15 +53,15 @@ class ServiceValidator(Validator[Service]):
         # RAISES:
             *   TypeError
             *   NullServiceException
-            *   ServiceValidationFailedException
+            *   ServiceValidationException
         """
         method = "ServiceValidator.validate"
         # Handle the nonexistence case.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                ServiceValidationFailedException(
-                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                ServiceValidationException(
+                    message=f"{method}: {ServiceValidationException.ERROR_CODE}",
                     ex=NullServiceException(f"{method} {NullServiceException.DEFAULT_MESSAGE}")
                 )
             )
@@ -69,8 +69,8 @@ class ServiceValidator(Validator[Service]):
         if not isinstance(candidate, expected_service):
             # Return the exception chain on failure
             return ValidationResult.failure(
-                ServiceValidationFailedException(
-                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                ServiceValidationException(
+                    message=f"{method}: {ServiceValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method} Expected a {type(expected_service).__name__}, got {type(candidate).__name__} instead.")
                 )
             )
@@ -85,15 +85,15 @@ class ServiceValidator(Validator[Service]):
         method = "ServiceValidator._validate_builder"
         if candidate is None:
             return ValidationResult(
-                ServiceValidationFailedException(
-                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                ServiceValidationException(
+                    message=f"{method}: {ServiceValidationException.ERROR_CODE}",
                     ex=ServiceNullBuilderException(f"{method}: {ServiceNullBuilderException.DEFAULT_MESSAGE}")
                 )
             )
         if not isinstance(candidate, Builder):
             return ValidationResult(
-                ServiceValidationFailedException(
-                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                ServiceValidationException(
+                    message=f"{method}: {ServiceValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected Builder, got {type(candidate).__name__} instead.")
                 )
             )
@@ -104,15 +104,15 @@ class ServiceValidator(Validator[Service]):
         method = "ServiceValidator._validate_validator"
         if candidate is None:
             return ValidationResult(
-                ServiceValidationFailedException(
-                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                ServiceValidationException(
+                    message=f"{method}: {ServiceValidationException.ERROR_CODE}",
                     ex=ServiceNullValidatorException(f"{method}: {ServiceNullValidatorException.DEFAULT_MESSAGE}")
                 )
             )
         if not isinstance(candidate, Validator):
             return ValidationResult(
-                ServiceValidationFailedException(
-                    message=f"{method}: {ServiceValidationFailedException.ERROR_CODE}",
+                ServiceValidationException(
+                    message=f"{method}: {ServiceValidationException.ERROR_CODE}",
                     ex=TypeError(f"{method}: Expected Builder, got {type(candidate).__name__} instead.")
                 )
             )

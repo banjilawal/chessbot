@@ -15,7 +15,7 @@ from chess.coord import Coord
 from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import PerpendicularSpan, QueenSpanComputationFailedException, DiagonalSpan, Rank, Queen
+from chess.rank import PerpendicularSpan, QueenSpanComputationException, DiagonalSpan, Rank, Queen
 
 class Queen(Rank):
     """
@@ -72,7 +72,7 @@ class Queen(Rank):
                     - On success: List[Coord] in the payload.
         # RAISES:
             *   RookException
-            *   RookSpanComputationFailedException
+            *   RookSpanComputationException
         """
         method = "Queen.compute_span"
         
@@ -87,7 +87,7 @@ class Queen(Rank):
             return ComputationResult.failure(
                 QueenException(
                     f"{method}: {QueenException.DEFAULT_MESSAGE}",
-                    ex=QueenSpanComputationFailedException(
+                    ex=QueenSpanComputationException(
                         f"{method}: {QueenException.DEFAULT_MESSAGE}",
                         ex=perpendicular_result.exception,
                     )
@@ -104,7 +104,7 @@ class Queen(Rank):
             return ComputationResult.failure(
                 QueenException(
                     f"{method}: {QueenException.DEFAULT_MESSAGE}",
-                    ex=QueenSpanComputationFailedException(
+                    ex=QueenSpanComputationException(
                         f"{method}: {QueenException.DEFAULT_MESSAGE}",
                         ex=diagonal_result.exception,
                     )

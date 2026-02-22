@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.team import TeamStackException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
 # ======================# TEAM_PUSH_FAILURE #======================#
-class PushingTeamFailedException(TeamStackException, InsertionFailedException):
+class PushingTeamFailedException(TeamStackException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class PushingTeamFailedException(TeamStackException, InsertionFailedException):
 
     # PARENT:
         *   TeamStackException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None
@@ -37,5 +37,5 @@ class PushingTeamFailedException(TeamStackException, InsertionFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_PUSH_FAILURE_ERROR"
+    ERROR_CODE = "TEAM_PUSH_FAILURE"
     DEFAULT_MESSAGE = "Team push failed."

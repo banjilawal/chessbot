@@ -14,4 +14,4 @@ None
 
 # Modules
 from .duplicate import AddingDuplicateHostageManifestException
-from .wrapper import UniqueHostageManifestInsertionFailedException
+from .wrapper import UniqueHostageManifestInsertionException

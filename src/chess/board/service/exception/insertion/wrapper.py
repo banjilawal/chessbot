@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# BOARD_SERVICE_INSERTION_OPERATION_FAILURE EXCEPTION #======================#
+    # ======================# BOARD_SERVICE_INSERTION_OPERATION_FAILURE #======================#
     "BoardServiceInsertionOpFailedException",
 ]
 
 from chess.board import BoardServiceException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# BOARD_SERVICE_INSERTION_OPERATION_FAILURE EXCEPTION #======================#
-class BoardServiceInsertionOpFailedException(BoardServiceException, InsertionFailedException):
+# ======================# BOARD_SERVICE_INSERTION_OPERATION_FAILURE #======================#
+class BoardServiceInsertionOpFailedException(BoardServiceException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class BoardServiceInsertionOpFailedException(BoardServiceException, InsertionFai
 
     # PARENT:
         *   BoardServiceException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

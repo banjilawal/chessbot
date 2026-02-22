@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.square import SquareException
-from chess.system import DeletionFailedException
+from chess.system import DeletionException
 
 __all__ = [
     # ======================# REMOVING_SQUARE_OCCUPANT_FAILURE #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# REMOVING_SQUARE_OCCUPANT_FAILURE #======================#
-class RemovingSquareOccupantException(SquareException, DeletionFailedException):
+class RemovingSquareOccupantException(SquareException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class RemovingSquareOccupantException(SquareException, DeletionFailedException):
 
     # PARENT:
         *   SquareException
-        *   DeletionFailedException
+        *   DeletionException
 
 
     # PROVIDES:
@@ -38,5 +38,5 @@ class RemovingSquareOccupantException(SquareException, DeletionFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "REMOVING_SQUARE_OCCUPANT_FAILURE_ERROR"
+    ERROR_CODE = "REMOVING_SQUARE_OCCUPANT_FAILURE"
     DEFAULT_MESSAGE = "Removing occupant from item failed."

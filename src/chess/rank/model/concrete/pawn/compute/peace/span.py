@@ -14,7 +14,7 @@ from chess.token import PawnToken
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
 from chess.rank import (
-    OpeningPawnVectorSet, PawnPeacefulSpanComputationFailedException, PawnPeacefulSpanComputationRouteException,
+    OpeningPawnVectorSet, PawnPeacefulSpanComputationException, PawnPeacefulSpanComputationRouteException,
 )
 
 
@@ -61,7 +61,7 @@ class PeacefulPawnSpan:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   PawnPeacefulSpanComputationFailedException
+            *   PawnPeacefulSpanComputationException
         """
         method = "PawnAttack.compute"
         
@@ -81,8 +81,8 @@ class PeacefulPawnSpan:
             )
         # Return the exception chain if there is no solution route for the any other pawn state,
         return ComputationResult.failure(
-            PawnPeacefulSpanComputationFailedException(
-                message=f"{method}: {PawnPeacefulSpanComputationFailedException.DEFAULT_MESSAGE}",
+            PawnPeacefulSpanComputationException(
+                message=f"{method}: {PawnPeacefulSpanComputationException.DEFAULT_MESSAGE}",
                 ex=PawnPeacefulSpanComputationRouteException(
                     f"{method}: {PawnPeacefulSpanComputationRouteException.DEFAULT_MESSAGE}"
                 )
@@ -112,8 +112,8 @@ class PeacefulPawnSpan:
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PawnPeacefulSpanComputationFailedException(
-                    message=f"{method}: {PawnPeacefulSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PawnPeacefulSpanComputationException(
+                    message=f"{method}: {PawnPeacefulSpanComputationException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
@@ -126,8 +126,8 @@ class PeacefulPawnSpan:
             if addition_result.is_failure:
                 # On failure return the exception chain
                 return ComputationResult.failure(
-                    PawnPeacefulSpanComputationFailedException(
-                        message=f"{method}: {PawnPeacefulSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    PawnPeacefulSpanComputationException(
+                        message=f"{method}: {PawnPeacefulSpanComputationException.DEFAULT_MESSAGE}",
                         ex=addition_result.exception
                     )
                 )

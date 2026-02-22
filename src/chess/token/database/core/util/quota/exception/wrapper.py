@@ -1,24 +1,31 @@
+# src/chess/token/database/core/util/quota/exception/wrapper.py
+
+"""
+Module: chess.token.database.core.util.quota.exception.wrapper
+Author: Banji Lawal
+Created: 2026-02-21
+version: 1.0.0
+"""
+
 __all__ = [
-    # ======================# COUNT_OF_RANK_MEMBERS_FAILURE EXCEPTION #======================#
-    "RankQuotaComputationFailedException",
+    # ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
+    "RankQuotaAnalysisException",
 ]
 
-from chess.token import RankQuotaAnalyzer, RankQuotaAnalyzerException, TokenException
-from chess.system import CalculationFailedException, ComputationFailedException
+from chess.system import ComputationException
 
 
-# ======================# COUNT_OF_RANK_MEMBERS_FAILURE EXCEPTION #======================#
-class RankQuotaComputationFailedException(RankQuotaAnalyzerException, ComputationFailedException):
+# ======================# RANK_QUOTA_ANALYSIS_FAILURE #======================#
+class RankQuotaAnalysisException(ComputationException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a count of records holding a rank did not succeed. The encapsulated
-        exceptions create chain for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why rank quota analysis on a token_stack failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
-        *   TokenException
-        *   ComputationFailedException
+        *   ComputationException
 
     # PROVIDES:
     None
@@ -29,5 +36,5 @@ class RankQuotaComputationFailedException(RankQuotaAnalyzerException, Computatio
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COUNT_OF_RANK_MEMBERS_FAILURE"
-    DEFAULT_MESSAGE = "Count or rank members in Token list failed."
+    ERROR_CODE = "RANK_QUOTA_ANALYSIS_FAILURE"
+    DEFAULT_MESSAGE = "Rank quota analysis failed."

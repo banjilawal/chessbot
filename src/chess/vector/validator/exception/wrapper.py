@@ -12,12 +12,12 @@ from chess.system import ValidationException
 
 _
 __all__ = [
-    # ======================# VECTOR_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# VECTOR_VALIDATION_FAILURE #======================#
     "InvalidVectorException",
 ]
 
 
-# ======================# VECTOR_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# VECTOR_VALIDATION_FAILURE #======================#
 class InvalidVectorException(VectorException, ValidationException):
     """
     # ROLE: Exception Wrapper

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_HOSTAGE_MANIFEST_INSERTION_FAILURE EXCEPTION #======================#
-    "UniqueHostageManifestInsertionFailedException",
+    # ======================# UNIQUE_HOSTAGE_MANIFEST_INSERTION_FAILURE #======================#
+    "UniqueHostageManifestInsertionException",
 ]
 
 from chess.hostage import HostageManifestException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# UNIQUE_HOSTAGE_MANIFEST_INSERTION_FAILURE EXCEPTION #======================#
-class UniqueHostageManifestInsertionFailedException(HostageManifestException, InsertionFailedException):
+# ======================# UNIQUE_HOSTAGE_MANIFEST_INSERTION_FAILURE #======================#
+class UniqueHostageManifestInsertionException(HostageManifestException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class UniqueHostageManifestInsertionFailedException(HostageManifestException, In
 
     # PARENT:
         *   HostageManifestException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

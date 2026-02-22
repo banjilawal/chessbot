@@ -14,7 +14,7 @@ from chess.token import PawnToken
 from chess.coord import Coord, CoordService
 from chess.system import ComputationResult, LoggingLevelRouter
 from chess.rank import (
-    OpeningPawnVectorSet, PawnAttackSpanComputationRouteException, PawnAttackSpanComputationFailedException
+    OpeningPawnVectorSet, PawnAttackSpanComputationRouteException, PawnAttackSpanComputationException
 )
 
 class PawnAttackSpan:
@@ -60,7 +60,7 @@ class PawnAttackSpan:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   PawnAttackSpanComputationFailedException
+            *   PawnAttackSpanComputationException
         """
         method = "PawnAttack.compute"
         
@@ -80,8 +80,8 @@ class PawnAttackSpan:
             )
         # Return the exception chain if there is no solution route for the any other pawn state,
         return ComputationResult.failure(
-            PawnAttackSpanComputationFailedException(
-                message=f"{method}: {PawnAttackSpanComputationFailedException.DEFAULT_MESSAGE}",
+            PawnAttackSpanComputationException(
+                message=f"{method}: {PawnAttackSpanComputationException.DEFAULT_MESSAGE}",
                 ex=PawnAttackSpanComputationRouteException(
                     f"{method}: {PawnAttackSpanComputationRouteException.DEFAULT_MESSAGE}"
                 )
@@ -111,8 +111,8 @@ class PawnAttackSpan:
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PawnAttackSpanComputationFailedException(
-                    message=f"{method}: {PawnAttackSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PawnAttackSpanComputationException(
+                    message=f"{method}: {PawnAttackSpanComputationException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
@@ -125,8 +125,8 @@ class PawnAttackSpan:
             if addition_result.is_failure:
                 # On failure return the exception chain
                 return ComputationResult.failure(
-                    PawnAttackSpanComputationFailedException(
-                        message=f"{method}: {PawnAttackSpanComputationFailedException.DEFAULT_MESSAGE}",
+                    PawnAttackSpanComputationException(
+                        message=f"{method}: {PawnAttackSpanComputationException.DEFAULT_MESSAGE}",
                         ex=addition_result.exception
                     )
                 )

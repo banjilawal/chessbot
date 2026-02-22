@@ -8,22 +8,22 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# FORMATION_KEY_BUILD_FAILURE EXCEPTION #======================#
-    "FormationKeyBuildFailedException",
+    # ======================# FORMATION_KEY_BUILD_FAILURE #======================#
+    "FormationKeyBuildException",
 ]
 
 from chess.formation.key import FormationKeyException
 
 
-# ======================# FORMATION_KEY_BUILD_FAILURE EXCEPTION #======================#
-class FormationKeyBuildFailedException(FormationKeyException, BuildFailedException):
+# ======================# FORMATION_KEY_BUILD_FAILURE #======================#
+class FormationKeyBuildException(FormationKeyException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the FormationKey build creates an exception. Failed check exceptions are encapsulated
-        in a FormationKeyBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The FormationKeyBuildFailedException provides a trace for debugging and application recovery.
+        in a FormationKeyBuildException which is sent to the caller in a BuildResult.
+    2.  The FormationKeyBuildException provides a trace for debugging and application recovery.
         # RESPONSIBILITIES:
 
     # PARENT:

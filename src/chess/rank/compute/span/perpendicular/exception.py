@@ -7,17 +7,17 @@ Created: 2026-01-22
 version: 1.0.0
 """
 
-from chess.rank import SpanComputationFailedException
+from chess.rank import SpanComputationException
 
 
 __all__ = [
-    # ======================# PERPENDICULAR_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-    "PerpendicularSpanComputationFailedException",
+    # ======================# PERPENDICULAR_SPAN_COMPUTATION_FAILURE #======================#
+    "PerpendicularSpanComputationException",
 ]
 
 
-# ======================# PERPENDICULAR_SPAN_COMPUTATION_FAILURE EXCEPTION #======================#
-class PerpendicularSpanComputationFailedException(SpanComputationFailedException):
+# ======================# PERPENDICULAR_SPAN_COMPUTATION_FAILURE #======================#
+class PerpendicularSpanComputationException(SpanComputationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -26,7 +26,7 @@ class PerpendicularSpanComputationFailedException(SpanComputationFailedException
         a san in either horizontal:{R(x,y) -> (X,0)}, or vertical:{R(x,y) -> (0,Y)} domains.
 
     # PARENT:
-        *   SpanComputationFailedException
+        *   SpanComputationException
 
     # PROVIDES:
     None

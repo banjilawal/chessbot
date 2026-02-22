@@ -18,7 +18,7 @@ from chess.coord import Coord
 from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.system import ComputationResult, IdFactory, LoggingLevelRouter
-from chess.rank import BishopSpanComputationFailedException, DiagonalSpan, Rank, Bishop
+from chess.rank import BishopSpanComputationException, DiagonalSpan, Rank, Bishop
 
 class Bishop(Rank):
     """
@@ -78,7 +78,7 @@ class Bishop(Rank):
                     - On success: List[Coord] in the payload.
         # RAISES:
             *   RookException
-            *   RookSpanComputationFailedException
+            *   RookSpanComputationException
         """
         method = "Bishop.compute_span"
         
@@ -92,8 +92,8 @@ class Bishop(Rank):
         if computation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                BishopSpanComputationFailedException(
-                    message=f"{method}: {BishopSpanComputationFailedException.DEFAULT_MESSAGE}",
+                BishopSpanComputationException(
+                    message=f"{method}: {BishopSpanComputationException.DEFAULT_MESSAGE}",
                     ex=computation_result.exception
                 )
             )
@@ -112,8 +112,8 @@ class Bishop(Rank):
         if span_computation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
-                BishopGraphComputationFailedException(
-                    message=f"{method}: {BishopGraphComputationFailedException.DEFAULT_MESSAGE}",
+                BishopGraphComputationException(
+                    message=f"{method}: {BishopGraphComputationException.DEFAULT_MESSAGE}",
                     ex=span_computation_result.exception
                 )
             )
@@ -131,8 +131,8 @@ class Bishop(Rank):
             if square_u_search_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
-                    BishopGraphComputationFailedException(
-                        message=f"{method}: {BishopGraphComputationFailedException.DEFAULT_MESSAGE}",
+                    BishopGraphComputationException(
+                        message=f"{method}: {BishopGraphComputationException.DEFAULT_MESSAGE}",
                         ex=square_u_search_result.exception
                     )
                 )
@@ -146,8 +146,8 @@ class Bishop(Rank):
             if square_v_search_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
-                    BishopGraphComputationFailedException(
-                        message=f"{method}: {BishopGraphComputationFailedException.DEFAULT_MESSAGE}",
+                    BishopGraphComputationException(
+                        message=f"{method}: {BishopGraphComputationException.DEFAULT_MESSAGE}",
                         ex=square_v_search_result.exception
                     )
                 )
@@ -159,8 +159,8 @@ class Bishop(Rank):
             if square_a_search_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
-                    BishopGraphComputationFailedException(
-                        message=f"{method}: {BishopGraphComputationFailedException.DEFAULT_MESSAGE}",
+                    BishopGraphComputationException(
+                        message=f"{method}: {BishopGraphComputationException.DEFAULT_MESSAGE}",
                         ex=span_computation_result.exception
                     )
                 )

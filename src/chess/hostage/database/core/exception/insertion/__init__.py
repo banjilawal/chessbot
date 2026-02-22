@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import HostageManifestInsertionFailedException
+from .wrapper import HostageManifestInsertionException
 from .direct import AppendingHostageManifestDirectlyIntoItemsFailedException

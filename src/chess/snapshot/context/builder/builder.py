@@ -14,7 +14,7 @@ from chess.team import Team, TeamService
 from chess.agent import PlayerAgent, AgentService
 from chess.system import BuildResult, Builder, UnhandledRouteException, LoggingLevelRouter, NumberValidator
 from chess.game import (
-    Game, SnapshotContext, SnapshotContextBuildFailedException, ZeroSnapshotContextFlagsException,
+    Game, SnapshotContext, SnapshotContextBuildException, ZeroSnapshotContextFlagsException,
     ExcessiveSnapshotContextFlagsException
 )
 
@@ -139,7 +139,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-               SnapshotContextBuildFailedException(
-                    ex=ex, message=f"{method}: {SnapshotContextBuildFailedException.DEFAULT_MESSAGE}"
+               SnapshotContextBuildException(
+                    ex=ex, message=f"{method}: {SnapshotContextBuildException.DEFAULT_MESSAGE}"
                 )
             )

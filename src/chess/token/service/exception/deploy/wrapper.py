@@ -9,14 +9,14 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# TOKEN_DEPLOYMENT_FAILURE EXCEPTION #======================#
+    # ======================# TOKEN_DEPLOYMENT_FAILURE #======================#
     "TokenDeploymentFailedException",
 ]
 
 from chess.token import TokenException
 from chess.system import OperationFailedException
 
-# ======================# TOKEN_DEPLOYMENT_FAILURE EXCEPTION #======================#
+# ======================# TOKEN_DEPLOYMENT_FAILURE #======================#
 class TokenDeploymentFailedException(TokenException, OperationFailedException):
     """
     # ROLE: Exception Wrapper

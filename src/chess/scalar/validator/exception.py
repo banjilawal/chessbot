@@ -20,14 +20,14 @@ __all__ = [
 ]
 
 __all__ = [
-    # ======================# SCALAR_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# SCALAR_VALIDATION_FAILURE #======================#
     "ScalarValidationException",
 ]
 
 from chess.system import ValidationException
 
 
-# ======================# SCALAR_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# SCALAR_VALIDATION_FAILURE #======================#
 class ScalarValidationException(ScalarException, ValidationException):
     """
     # ROLE: Exception Wrapper

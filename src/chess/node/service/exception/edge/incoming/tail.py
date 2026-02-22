@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.node import NodeException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 __all__ = [
     # ======================# INCOMING_EDGE_WRONG_TAIL EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# INCOMING_EDGE_WRONG_TAIL EXCEPTION #======================#
-class IncomingEdgeWrongTailException(NodeException, InsertionFailedException):
+class IncomingEdgeWrongTailException(NodeException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class IncomingEdgeWrongTailException(NodeException, InsertionFailedException):
 
     # PARENT:
         *   NodeException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

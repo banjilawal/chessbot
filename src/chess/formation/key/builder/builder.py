@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.formation import (
-    ExcessiveFormationKeysException, FormationKey, FormationKeyBuildFailedException,
+    ExcessiveFormationKeysException, FormationKey, FormationKeyBuildException,
     FormationKeyBuildRouteException, ZeroFormationKeysException
 )
 from chess.persona import Persona, PersonaService
@@ -74,9 +74,9 @@ class FormationKeyBuilder(Builder[FormationKey]):
                     - On success: FormationKey in the payload.
         # RAISES:
             *   ZeroFormationKeysException
-            *   FormationKeyBuildFailedException
+            *   FormationKeyBuildException
             *   ExcessiveFormationKeysException
-            *   FormationKeyBuildFailedException
+            *   FormationKeyBuildException
         """
         method = "FormationKeyBuilder.build"
         
@@ -88,8 +88,8 @@ class FormationKeyBuilder(Builder[FormationKey]):
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                FormationKeyBuildFailedException(
-                    message=f"{method}: {FormationKeyBuildFailedException.ERROR_CODE}",
+                FormationKeyBuildException(
+                    message=f"{method}: {FormationKeyBuildException.ERROR_CODE}",
                     ex=ZeroFormationKeysException(
                         f"{method}: {ZeroFormationKeysException.DEFAULT_MESSAGE}"
                     )
@@ -99,8 +99,8 @@ class FormationKeyBuilder(Builder[FormationKey]):
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                FormationKeyBuildFailedException(
-                    message=f"{method}: {FormationKeyBuildFailedException.ERROR_CODE}",
+                FormationKeyBuildException(
+                    message=f"{method}: {FormationKeyBuildException.ERROR_CODE}",
                     ex=ExcessiveFormationKeysException(f"{method}: {ExcessiveFormationKeysException}")
                 )
             )
@@ -113,8 +113,8 @@ class FormationKeyBuilder(Builder[FormationKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    FormationKeyBuildFailedException(
-                        message=f"{method}: {FormationKeyBuildFailedException.ERROR_CODE}",
+                    FormationKeyBuildException(
+                        message=f"{method}: {FormationKeyBuildException.ERROR_CODE}",
                         ex=validation.exception,
                     )
                 )
@@ -127,8 +127,8 @@ class FormationKeyBuilder(Builder[FormationKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    FormationKeyBuildFailedException(
-                        message=f"{method}: {FormationKeyBuildFailedException.ERROR_CODE}",
+                    FormationKeyBuildException(
+                        message=f"{method}: {FormationKeyBuildException.ERROR_CODE}",
                         ex=validation.exception,
                     )
                 )
@@ -141,8 +141,8 @@ class FormationKeyBuilder(Builder[FormationKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    FormationKeyBuildFailedException(
-                        message=f"{method}: {FormationKeyBuildFailedException.ERROR_CODE}",
+                    FormationKeyBuildException(
+                        message=f"{method}: {FormationKeyBuildException.ERROR_CODE}",
                         ex=validation.exception,
                     )
                 )
@@ -155,8 +155,8 @@ class FormationKeyBuilder(Builder[FormationKey]):
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
-                    FormationKeyBuildFailedException(
-                        message=f"{method}: {FormationKeyBuildFailedException.ERROR_CODE}",
+                    FormationKeyBuildException(
+                        message=f"{method}: {FormationKeyBuildException.ERROR_CODE}",
                         ex=validation.exception,
                     )
                 )
@@ -165,8 +165,8 @@ class FormationKeyBuilder(Builder[FormationKey]):
         
         # The default path returns failure.
         BuildResult.failure(
-            FormationKeyBuildFailedException(
-                message=f"{method}: {FormationKeyBuildFailedException.ERROR_CODE}",
+            FormationKeyBuildException(
+                message=f"{method}: {FormationKeyBuildException.ERROR_CODE}",
                 ex=FormationKeyBuildRouteException(
                     f"{method}: {FormationKeyBuildRouteException.DEFAULT_MESSAGE}"
                 )

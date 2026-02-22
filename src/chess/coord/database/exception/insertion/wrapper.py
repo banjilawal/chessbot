@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_COORD_INSERTION_FAILURE EXCEPTION #======================#
-    "UniqueCoordInsertionFailedException",
+    # ======================# UNIQUE_COORD_INSERTION_FAILURE #======================#
+    "UniqueCoordInsertionException",
 ]
 
 from chess.coord import CoordException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# UNIQUE_COORD_INSERTION_FAILURE EXCEPTION #======================#
-class UniqueCoordInsertionFailedException(CoordException, InsertionFailedException):
+# ======================# UNIQUE_COORD_INSERTION_FAILURE #======================#
+class UniqueCoordInsertionException(CoordException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class UniqueCoordInsertionFailedException(CoordException, InsertionFailedExcepti
 
     # PARENT:
         *   CoordException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

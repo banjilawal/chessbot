@@ -58,12 +58,21 @@ class CollisionReport(DataResult[T], Generic[T]):
         return self._collider
     
     @property
-    def is_success(self) -> bool:
+    def is_collision(self) -> bool:
         return (
                 self._collider is not None and
                 self.target is not None and
+                self.exception is not None and
+                self.state == CollisionResultEnum.COLLISION_DETECTED
+        )
+    
+    @property
+    def is_no_collision(self) -> bool:
+        return (
+                self._collider is None and
+                self.target is not None and
                 self.exception is None and
-                self.state == CollisionResultEnum.SUCCESS
+                self.state == CollisionResultEnum.NO_COLLISIONS
         )
     
     @property
@@ -71,9 +80,14 @@ class CollisionReport(DataResult[T], Generic[T]):
         return (
                 self._collider is None and
                 self.target is not None and
-                self.exception is not None and
-                self.state == CollisionResultEnum.FAILURE
+                self.exception is None and
+                self.state == CollisionResultEnum.FAILURE or
+                self.state == CollisionResultEnum.TIMED_OUT
         )
+    
+    @property
+    def is_success(self) -> bool:
+        return not self.is_failure
     
     @property
     def is_timed_out(self) -> bool:
@@ -85,11 +99,15 @@ class CollisionReport(DataResult[T], Generic[T]):
         )
     
     @classmethod
-    def collision_detected(cls, target: T, collider: T,) -> CollisionReport[T]:
+    def collision_detected(
+            cls,
+            target: T,
+            collider: T,
+            exception: Exception) -> CollisionReport[T]:
         return cls(
             target=target,
             collider=collider,
-            exception=None,
+            exception=exception,
             state=CollisionResultState(classification=CollisionResultEnum.COLLISION_DETECTED),
         )
     

@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import ArenaContextBuilder
-from .exception import ArenaContextBuildFailedException
+from .exception import ArenaContextBuildException

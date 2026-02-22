@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from chess.graph import Node, NodeBuildFailedException
+from chess.graph import Node, NodeBuildException
 from chess.square import Square, SquareValidator
 from chess.system import BuildResult, Builder, LoggingLevelRouter
 
@@ -61,8 +61,8 @@ class NodeBuilder(Builder[Node]):
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return BuildResult.failure(
-                NodeBuildFailedException(
-                    message=f"{method}: {NodeBuildFailedException.DEFAULT_MESSAGE}",
+                NodeBuildException(
+                    message=f"{method}: {NodeBuildException.DEFAULT_MESSAGE}",
                     ex=validation_result.exception
                 )
             )

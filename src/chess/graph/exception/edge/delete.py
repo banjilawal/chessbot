@@ -8,13 +8,13 @@ version: 1.0.0
 """
 
 from chess.graph import GraphException
-from chess.system import ComputationFailedException
+from chess.system import ComputationException
 
 __all__ = [
-    # ======================# NODE_DELETION_FAILURE EXCEPTION #======================#
-    "NodeDeletionFailedException",
+    # ======================# NODE_DELETION_FAILURE #======================#
+    "NodeDeletionException",
 ]
 
 
-class NodeDeletionFailedException(GraphException, ComputationFailedException):
+class NodeDeletionException(GraphException, ComputationException):
     pass

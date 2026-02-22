@@ -11,12 +11,12 @@ from chess.node import NodeException
 from chess.system import SearchException
 
 __all__ = [
-    # ======================# NODE_SEARCH_FAILURE EXCEPTION #======================#
+    # ======================# NODE_SEARCH_FAILURE #======================#
     "NodeSearchException",
 ]
 
 
-# ======================# NODE_SEARCH_FAILURE EXCEPTION #======================#
+# ======================# NODE_SEARCH_FAILURE #======================#
 class NodeSearchException(NodeException, SearchException):
     """
     # ROLE: Exception Wrapper

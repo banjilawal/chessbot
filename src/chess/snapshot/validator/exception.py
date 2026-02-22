@@ -1,5 +1,5 @@
 __all__ = [
-    # ======================# SNAPSHOT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# SNAPSHOT_VALIDATION_FAILURE #======================#
     "InvalidSnapshotException",
 ]
 
@@ -7,7 +7,7 @@ from chess.snapshot import SnapshotException
 from chess.system import ValidationException
 
 
-# ======================# SNAPSHOT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# SNAPSHOT_VALIDATION_FAILURE #======================#
 class InvalidSnapshotException(SnapshotException, ValidationException):
     """
     # ROLE: Exception Wrapper

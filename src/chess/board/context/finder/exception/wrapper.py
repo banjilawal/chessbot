@@ -11,12 +11,12 @@ from chess.board import BoardException
 from chess.system import SearchException
 
 __all__ = [
-    # ======================# BOARD_SEARCH_FAILURE EXCEPTION #======================#
+    # ======================# BOARD_SEARCH_FAILURE #======================#
     "BoardSearchException",
 ]
 
 
-# ======================# BOARD_SEARCH_FAILURE EXCEPTION #======================#
+# ======================# BOARD_SEARCH_FAILURE #======================#
 class BoardSearchException(BoardException, SearchException):
     """
     # ROLE: Exception Wrapper

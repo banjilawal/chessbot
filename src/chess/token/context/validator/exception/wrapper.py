@@ -11,21 +11,21 @@ version: 1.0.0
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
     "TokenContextValidationException",
 ]
 
 from chess.token import TokenContextException
 
 
-# ======================# TOKEN_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# TOKEN_CONTEXT_VALIDATION_FAILURE #======================#
 class TokenContextValidationException(TokenContextException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a TokenContext. The
-        encapsulated exceptions create a chain for tracing the source of the failure.
+    1.  Wrap debug exceptions indicating why a token_context validation operation failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   TokenContextException

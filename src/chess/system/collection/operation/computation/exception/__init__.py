@@ -14,5 +14,5 @@ None
 
 # Modules
 from .route import NoComputationRouteException
-from .wrapper import ComputationFailedException
+from .wrapper import ComputationException
 from .unsupported import UnsupportedEmptyComputationResultException

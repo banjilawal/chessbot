@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_BOARD_INSERTION_FAILURE EXCEPTION #======================#
-    "UniqueBoardInsertionFailedException",
+    # ======================# UNIQUE_BOARD_INSERTION_FAILURE #======================#
+    "UniqueBoardInsertionException",
 ]
 
 from chess.board import BoardException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# UNIQUE_BOARD_INSERTION_FAILURE EXCEPTION #======================#
-class UniqueBoardInsertionFailedException(BoardException, InsertionFailedException):
+# ======================# UNIQUE_BOARD_INSERTION_FAILURE #======================#
+class UniqueBoardInsertionException(BoardException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class UniqueBoardInsertionFailedException(BoardException, InsertionFailedExcepti
 
     # PARENT:
         *   BoardException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None

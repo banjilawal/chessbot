@@ -11,12 +11,12 @@ from chess.square import SquareException
 from chess.system import SearchException
 
 __all__ = [
-    # ======================# SQUARE_SEARCH_FAILURE EXCEPTION #======================#
+    # ======================# SQUARE_SEARCH_FAILURE #======================#
     "SquareSearchException",
 ]
 
 
-# ======================# SQUARE_SEARCH_FAILURE EXCEPTION #======================#
+# ======================# SQUARE_SEARCH_FAILURE #======================#
 class SquareSearchException(SquareException, SearchException):
     """
     # ROLE: Exception Wrapper

@@ -39,7 +39,7 @@ From `chess.system`:
     `IdValidator`, `NameValidator`
 
 From `chess.discoverySearchContext`:
-    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
+    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
 
 From `chess.owner`:
   `Player`, `PlayerAgentValidator`,
@@ -202,7 +202,7 @@ From `chess.system`:
     `IdValidator`, `NameValidator`
 
 From `chess.discoverySearchContext`:
-    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
+    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
 
 From `chess.owner`:
   `Player`, `PlayerAgentValidator`,
@@ -256,7 +256,7 @@ From `chess.system`:
     `IdValidator`, `NameValidator`
 
 From `chess.discoverySearchContext`:
-    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildFailedException`, `DiscoverySearchContextSchema`
+    `DiscoverySearchContext`, `NullDiscoverySearchContext`, `DiscoverySearchContextBuildException`, `DiscoverySearchContextSchema`
 
 From `chess.owner`:
   `Player`, `PlayerAgentValidator`,

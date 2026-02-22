@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_SQUARE_SEARCH_FAILURE EXCEPTION #======================#
+    # ======================# UNIQUE_SQUARE_SEARCH_FAILURE #======================#
     "UniqueSquareSearchException",
 ]
 
@@ -16,7 +16,7 @@ from chess.square import SquareException
 from chess.system import SearchException
 
 
-# ======================# UNIQUE_SQUARE_SEARCH_FAILURE EXCEPTION #======================#
+# ======================# UNIQUE_SQUARE_SEARCH_FAILURE #======================#
 class UniqueSquareSearchException(SquareException, SearchException):
     """
     # ROLE: Exception Wrapper

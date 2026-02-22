@@ -14,6 +14,6 @@ None
 
 # Modules
 from .catchall import QueenException
-from .span import QueenSpanComputationFailedException
+from .span import QueenSpanComputationException
 
 

@@ -12,12 +12,12 @@ from chess.system import ValidationException
 
 _
 __all__ = [
-    # ======================# PERSONA_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# PERSONA_VALIDATION_FAILURE #======================#
     "PersonaValidationException",
 ]
 
 
-# ======================# PERSONA_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# PERSONA_VALIDATION_FAILURE #======================#
 class PersonaValidationException(PersonaException, ValidationException):
     """
     # ROLE: Exception Wrapper

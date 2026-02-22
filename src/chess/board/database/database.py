@@ -10,9 +10,9 @@ version: 1.0.0
 from typing import List
 
 from chess.board import (
-    AddingDuplicateBoardException, ExhaustiveBoardDeletionFailedException, Board, BoardContext,
+    AddingDuplicateBoardException, ExhaustiveBoardDeletionException, Board, BoardContext,
     BoardContextService,
-    BoardStackService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionFailedException,
+    BoardStackService, BoardService, UniqueBoardDataServiceException, UniqueBoardInsertionException,
     UniqueBoardSearchException
 )
 from chess.system import (
@@ -97,7 +97,7 @@ class BoardDatabase(Database[Board]):
                     - On success: Board in payload.
         # RAISES:
             *   BoardDatabaseException
-            *   UniqueBoardInsertionFailedException
+            *   UniqueBoardInsertionException
             *   BoardDatabaseException
         """
         method = "BoardDatabase.add_unique_board"
@@ -111,8 +111,8 @@ class BoardDatabase(Database[Board]):
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
-                    ex=UniqueBoardInsertionFailedException(
-                        message=f"{method}: {UniqueBoardInsertionFailedException.ERROR_CODE}",
+                    ex=UniqueBoardInsertionException(
+                        message=f"{method}: {UniqueBoardInsertionException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -126,8 +126,8 @@ class BoardDatabase(Database[Board]):
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
-                    ex=UniqueBoardInsertionFailedException(
-                        message=f"{method}: {UniqueBoardInsertionFailedException.ERROR_CODE}",
+                    ex=UniqueBoardInsertionException(
+                        message=f"{method}: {UniqueBoardInsertionException.ERROR_CODE}",
                         ex=search_result.exception
                     )
                 )
@@ -138,8 +138,8 @@ class BoardDatabase(Database[Board]):
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
-                    ex=UniqueBoardInsertionFailedException(
-                        message=f"{method}: {UniqueBoardInsertionFailedException.ERROR_CODE}",
+                    ex=UniqueBoardInsertionException(
+                        message=f"{method}: {UniqueBoardInsertionException.ERROR_CODE}",
                         ex=AddingDuplicateBoardException(f"{method}: {AddingDuplicateBoardException.DEFAULT_MESSAGE}")
                     )
                 )
@@ -153,8 +153,8 @@ class BoardDatabase(Database[Board]):
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
-                    ex=UniqueBoardInsertionFailedException(
-                        message=f"{method}: {UniqueBoardInsertionFailedException.ERROR_CODE}",
+                    ex=UniqueBoardInsertionException(
+                        message=f"{method}: {UniqueBoardInsertionException.ERROR_CODE}",
                         ex=insertion_result.exception
                     )
                 )
@@ -179,7 +179,7 @@ class BoardDatabase(Database[Board]):
                     - On Empty: No payload nor exception.
         # RAISES:
             *   BoardDatabaseException
-            *   ExhaustiveBoardDeletionFailedException
+            *   ExhaustiveBoardDeletionException
         """
         method = "BoardDatabase.search_boards"
         

@@ -12,7 +12,7 @@ from typing import List
 
 from chess.hostage import (
     AddingDuplicateHostageManifestException, CaptivityContext, CaptivityContextService, HostageManifest,
-    HostageManifestList, HostageManifestService, UniqueHostageManifestInsertionFailedException,
+    HostageManifestList, HostageManifestService, UniqueHostageManifestInsertionException,
     UniqueHostageManifestSearchException
 )
 from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, Database, id_emitter
@@ -95,7 +95,7 @@ class HostageDatabase(Database[HostageManifest]):
                     - On success: HostageManifest in payload.
         # RAISES:
             *   HostageDatabase
-            *   UniqueHostageManifestInsertionFailedException
+            *   UniqueHostageManifestInsertionException
             *   HostageDatabase
         """
         method = "HostageDatabase.add_unique_hostageManifest"
@@ -109,8 +109,8 @@ class HostageDatabase(Database[HostageManifest]):
             return InsertionResult.failure(
                 HostageDatabaseException(
                     message=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERROR_CODE}",
-                    ex=UniqueHostageManifestInsertionFailedException(
-                        message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
+                    ex=UniqueHostageManifestInsertionException(
+                        message=f"{method}: {UniqueHostageManifestInsertionException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -124,8 +124,8 @@ class HostageDatabase(Database[HostageManifest]):
             return InsertionResult.failure(
                 HostageDatabaseException(
                     message=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERROR_CODE}",
-                    ex=UniqueHostageManifestInsertionFailedException(
-                        message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
+                    ex=UniqueHostageManifestInsertionException(
+                        message=f"{method}: {UniqueHostageManifestInsertionException.ERROR_CODE}",
                         ex=search_result.exception
                     )
                 )
@@ -136,8 +136,8 @@ class HostageDatabase(Database[HostageManifest]):
             return InsertionResult.failure(
                 HostageDatabaseDatabaseException(
                     message=f"ServiceId:{self.id}, {method}: {HostageDatabase.ERROR_CODE}",
-                    ex=UniqueHostageManifestInsertionFailedException(
-                        message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
+                    ex=UniqueHostageManifestInsertionException(
+                        message=f"{method}: {UniqueHostageManifestInsertionException.ERROR_CODE}",
                         ex=AddingDuplicateHostageManifestException(
                             f"{method}: {AddingDuplicateHostageManifestException.DEFAULT_MESSAGE}"
                         )
@@ -155,8 +155,8 @@ class HostageDatabase(Database[HostageManifest]):
                     message=(
                         f"ServiceId:{self.id}, {method}: {HostageDatabase.ERROR_CODE}"
                     ),
-                    ex=UniqueHostageManifestInsertionFailedException(
-                        message=f"{method}: {UniqueHostageManifestInsertionFailedException.ERROR_CODE}",
+                    ex=UniqueHostageManifestInsertionException(
+                        message=f"{method}: {UniqueHostageManifestInsertionException.ERROR_CODE}",
                         ex=insertion_result.exception
                     )
                 )
@@ -182,7 +182,7 @@ class HostageDatabase(Database[HostageManifest]):
                     - On Empty: No payload nor exception.
         # RAISES:
             *   HostageDatabase
-            *   ExhaustiveHostageManifestDeletionFailedException
+            *   ExhaustiveHostageManifestDeletionException
         """
         method = "HostageDatabase.searchnanifests"
         

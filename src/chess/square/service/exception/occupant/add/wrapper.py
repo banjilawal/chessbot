@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.square import SquareException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 
 # ======================# ADDING_SQUARE_OCCUPANT_FAILURE #======================#
-class AddingSquareOccupantException(SquareException, InsertionFailedException):
+class AddingSquareOccupantException(SquareException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class AddingSquareOccupantException(SquareException, InsertionFailedException):
 
     # PARENT:
         *   SquareException
-        *   InsertionFailedException
+        *   InsertionException
 
 
     # PROVIDES:
@@ -39,5 +39,5 @@ class AddingSquareOccupantException(SquareException, InsertionFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_SQUARE_OCCUPANT_FAILURE_ERROR"
+    ERROR_CODE = "ADDING_SQUARE_OCCUPANT_FAILURE"
     DEFAULT_MESSAGE = "Token entering a item failed."

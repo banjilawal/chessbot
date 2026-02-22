@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# PAWN_PROMOTION_FAILURE EXCEPTION #======================#
+    # ======================# PAWN_PROMOTION_FAILURE #======================#
     "PawnPromotionFailedException",
 ]
 
@@ -16,7 +16,7 @@ from chess.token import PawnTokenException
 from chess.system import OperationFailedException
 
 
-# ======================# PAWN_PROMOTION_FAILURE EXCEPTION #======================#
+# ======================# PAWN_PROMOTION_FAILURE #======================#
 class PawnPromotionFailedException(PawnTokenException, OperationFailedException):
     """
     # ROLE: Exception Wrapper

@@ -14,4 +14,4 @@ None
 
 # Modules
 from .span import PerpendicularSpan
-from .exception import PerpendicularSpanComputationFailedException
+from .exception import PerpendicularSpanComputationException

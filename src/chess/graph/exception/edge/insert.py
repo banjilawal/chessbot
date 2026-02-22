@@ -8,13 +8,13 @@ version: 1.0.0
 """
 
 from chess.graph import GraphException
-from chess.system import ComputationFailedException
+from chess.system import ComputationException
 
 __all__ = [
-    # ======================# NODE_INSERTION_FAILURE EXCEPTION #======================#
-    "NodeInsertionFailedException",
+    # ======================# NODE_INSERTION_FAILURE #======================#
+    "NodeInsertionException",
 ]
 
 
-class NodeInsertionFailedException(GraphException, ComputationFailedException):
+class NodeInsertionException(GraphException, ComputationException):
     pass

@@ -8,15 +8,15 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# DIAGONAL_RAY_COMPUTATION_FAILURE EXCEPTION #======================#
-    "DiagonalRayComputationFailedException",
+    # ======================# DIAGONAL_RAY_COMPUTATION_FAILURE #======================#
+    "DiagonalRayComputationException",
 ]
 
-from chess.rank import RayComputationFailedException
+from chess.rank import RayComputationException
 
 
-# ======================# DIAGONAL_RAY_COMPUTATION_FAILURE EXCEPTION #======================#
-class DiagonalRayComputationFailedException(RayComputationFailedException):
+# ======================# DIAGONAL_RAY_COMPUTATION_FAILURE #======================#
+class DiagonalRayComputationException(RayComputationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -28,7 +28,7 @@ class DiagonalRayComputationFailedException(RayComputationFailedException):
                 *   j >= N the domain is y_j = x_(j-1) + c x_j
 
     # PARENT:
-        *   ComputationFailedException
+        *   ComputationException
 
     # PROVIDES:
     None

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# BOARD_DELETION_FAILURE EXCEPTION #======================#
-    "BoardDeletionFailedException",
+    # ======================# BOARD_DELETION_FAILURE #======================#
+    "BoardDeletionException",
 ]
 
 from chess.board import BoardException
-from chess.system import DeletionFailedException
+from chess.system import DeletionException
 
 
-# ======================# BOARD_DELETION_FAILURE EXCEPTION #======================#
-class BoardDeletionFailedException(BoardException, DeletionFailedException):
+# ======================# BOARD_DELETION_FAILURE #======================#
+class BoardDeletionException(BoardException, DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -27,7 +27,7 @@ class BoardDeletionFailedException(BoardException, DeletionFailedException):
 
     # PARENT:
         *   BoardException
-        *   DeletionFailedException
+        *   DeletionException
 
     # PROVIDES:
     None

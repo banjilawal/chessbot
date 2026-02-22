@@ -8,25 +8,26 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_PUSH_FAILURE EXCEPTION #======================#
+    # ======================# PUSHING_TOKEN_FAILURE #======================#
     "PushingTokenException",
 ]
 
 from chess.token import TokenStackException
-from chess.system import InsertionFailedException
+from chess.system import InsertionException
 
 
-# ======================# TOKEN_PUSH_FAILURE EXCEPTION #======================#
-class PushingTokenException(TokenStackException, InsertionFailedException):
+# ======================# PUSHING_TOKEN_FAILURE #======================#
+class PushingTokenException(TokenStackException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate that add a occupant to the roster failed.
+    1.  Wrap debug exceptions indicating why pushing a token failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   TokenException
-        *   InsertionFailedException
+        *   InsertionException
 
     # PROVIDES:
     None
@@ -37,5 +38,5 @@ class PushingTokenException(TokenStackException, InsertionFailedException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_PUSH_FAILURE_ERROR"
+    ERROR_CODE = "PUSHING_TOKEN_FAILURE"
     DEFAULT_MESSAGE = "Pushing token failed."

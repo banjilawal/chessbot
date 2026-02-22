@@ -9,7 +9,7 @@ version: 1.0.0
 from typing import List
 
 from chess.coord import Coord, CoordService
-from chess.rank import DiagonalRay, DiagonalSpanComputationFailedException
+from chess.rank import DiagonalRay, DiagonalSpanComputationException
 from chess.system import NUMBER_OF_COLUMNS, ComputationResult, LoggingLevelRouter, NUMBER_OF_ROWS
 
 class DiagonalSpan:
@@ -75,7 +75,7 @@ class DiagonalSpan:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   DiagonalSpanComputationFailedException
+            *   DiagonalSpanComputationException
         """
         method = "DiagonalSpan.compute"
         
@@ -84,8 +84,8 @@ class DiagonalSpan:
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                DiagonalSpanComputationFailedException(
-                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationException(
+                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
@@ -104,8 +104,8 @@ class DiagonalSpan:
         if north_west_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                DiagonalSpanComputationFailedException(
-                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationException(
+                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
                     ex=north_west_ray_result.exception
                 )
             )
@@ -121,8 +121,8 @@ class DiagonalSpan:
         if northern_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                DiagonalSpanComputationFailedException(
-                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationException(
+                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
                     ex=northern_ray_result.exception
                 )
             )
@@ -141,8 +141,8 @@ class DiagonalSpan:
         if span_subset_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                DiagonalSpanComputationFailedException(
-                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationException(
+                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
                     ex=span_subset_result.exception
                 )
             )
@@ -159,8 +159,8 @@ class DiagonalSpan:
         if diagonal_span_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                DiagonalSpanComputationFailedException(
-                    message=f"{method}: {DiagonalSpanComputationFailedException.DEFAULT_MESSAGE}",
+                DiagonalSpanComputationException(
+                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
                     ex=diagonal_span_result.exception
                 )
             )

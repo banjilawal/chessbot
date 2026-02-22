@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_TOKEN_SEARCH_FAILURE EXCEPTION #======================#
+    # ======================# UNIQUE_TOKEN_SEARCH_FAILURE #======================#
     "UniqueTokenSearchException",
 ]
 
@@ -16,7 +16,7 @@ from chess.token import TokenException
 from chess.system import SearchException
 
 
-# ======================# UNIQUE_TOKEN_SEARCH_FAILURE EXCEPTION #======================#
+# ======================# UNIQUE_TOKEN_SEARCH_FAILURE #======================#
 class UniqueTokenSearchException(TokenException, SearchException):
     """
     # ROLE: Exception Wrapper

@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import BoardInsertionFailedException
+from .wrapper import BoardInsertionException
 from .direct import AppendingBoardDirectlyIntoItemsFailedException

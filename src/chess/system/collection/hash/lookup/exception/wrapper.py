@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import OperationFailedException
 
 __all__ = [
-    # ======================# LOOKUP_FAILURE EXCEPTION #======================#
+    # ======================# LOOKUP_FAILURE #======================#
     "LookupFailedException",
 ]
 
 
-# ======================# LOOKUP_FAILURE EXCEPTION #======================#
+# ======================# LOOKUP_FAILURE #======================#
 class LookupFailedException(OperationFailedException):
     """
     # ROLE: Exception Wrapper

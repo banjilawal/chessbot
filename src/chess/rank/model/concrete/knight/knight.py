@@ -15,7 +15,7 @@ from chess.persona import Persona
 from chess.geometry import Quadrant
 from chess.token.model import Token
 from chess.system import ComputationResult, LoggingLevelRouter
-from chess.rank import KnightException, KnightSpanComputationFailedException, Rank, Knight
+from chess.rank import KnightException, KnightSpanComputationException, Rank, Knight
 
 class Knight(Rank):
     """
@@ -75,7 +75,7 @@ class Knight(Rank):
                     - On success: List[Coord] in the payload.
         # RAISES:
             *   KnightException
-            *   KnightSpanComputationFailedException
+            *   KnightSpanComputationException
         """
         method = "Knight.compute_span"
         
@@ -90,8 +90,8 @@ class Knight(Rank):
                 return ComputationResult.failure(
                     KnightException(
                         message=f"{method}: {KnightException.DEFAULT_MESSAGE}",
-                        ex=KnightSpanComputationFailedException(
-                            message=f"{method}: {KnightSpanComputationFailedException.DEFAULT_MESSAGE}",
+                        ex=KnightSpanComputationException(
+                            message=f"{method}: {KnightSpanComputationException.DEFAULT_MESSAGE}",
                             ex=addition_result.exception
                         )
                     )

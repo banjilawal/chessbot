@@ -14,4 +14,4 @@ None
 
 # Modules
 from .span import DiagonalSpan
-from .execption import DiagonalSpanComputationFailedException
+from .execption import DiagonalSpanComputationException

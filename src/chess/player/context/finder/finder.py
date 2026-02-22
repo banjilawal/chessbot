@@ -105,7 +105,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -149,7 +149,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -193,7 +193,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -236,7 +236,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )
     
     @classmethod
@@ -275,5 +275,5 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchFailedException(ex=ex, message=f"{method}: {SearchFailedException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
             )

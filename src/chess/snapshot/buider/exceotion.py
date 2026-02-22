@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# SNAPSHOT_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# SNAPSHOT_BUILD_FAILURE #======================#
     "SnapshotBuildException",
 ]
 
@@ -16,7 +16,7 @@ from chess.snapshot import SnapshotException
 from chess.system import BuildException
 
 
-# ======================# SNAPSHOT_BUILD_FAILURE EXCEPTION #======================#
+# ======================# SNAPSHOT_BUILD_FAILURE #======================#
 class SnapshotBuildException(SnapshotException, BuildException):
     """
     # ROLE: Exception Wrapper

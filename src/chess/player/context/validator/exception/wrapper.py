@@ -12,12 +12,12 @@ from chess.player import PlayerContextException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# PLAYER_CONTEXT_VALIDATION_FAILURE #======================#
     "PlayerContextValidationException",
 ]
 
 
-# ======================# PLAYER_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# PLAYER_CONTEXT_VALIDATION_FAILURE #======================#
 class PlayerContextValidationException(PlayerContextException, ValidationException):
     """
     # ROLE: Exception Wrapper

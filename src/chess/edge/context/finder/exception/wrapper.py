@@ -11,12 +11,12 @@ from chess.edge import EdgeException
 from chess.system import SearchException
 
 __all__ = [
-    # ======================# EDGE_SEARCH_FAILURE EXCEPTION #======================#
+    # ======================# EDGE_SEARCH_FAILURE #======================#
     "EdgeSearchException",
 ]
 
 
-# ======================# EDGE_SEARCH_FAILURE EXCEPTION #======================#
+# ======================# EDGE_SEARCH_FAILURE #======================#
 class EdgeSearchException(EdgeException, SearchException):
     """
     # ROLE: Exception Wrapper

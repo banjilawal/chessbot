@@ -11,12 +11,12 @@ from chess.system import ValidationException
 from chess.square import SquareContextException
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
     "SquareContextValidationException",
 ]
 
 
-# ======================# SQUARE_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
 class SquareContextValidationException(SquareContextException, ValidationException):
     """
     # ROLE: Exception Wrapper

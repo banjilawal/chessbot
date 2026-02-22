@@ -2,7 +2,7 @@ from typing import List
 
 from chess.coord import Coord, CoordService
 from chess.system import NUMBER_OF_COLUMNS, ComputationResult, LoggingLevelRouter
-from chess.rank import PerpendicularRay, PerpendicularSpanComputationFailedException
+from chess.rank import PerpendicularRay, PerpendicularSpanComputationException
 
 
 
@@ -63,7 +63,7 @@ class PerpendicularSpan:
                     - On failure: An exception.
                     - On success: List[Coord] in the payload.
         # RAISES:
-            *   PerpendicularSpanComputationFailedException
+            *   PerpendicularSpanComputationException
         """
         method = "PerpendicularSpan.compute"
         
@@ -72,8 +72,8 @@ class PerpendicularSpan:
         if coord_validation.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PerpendicularSpanComputationException(
+                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
                     ex=coord_validation.exception
                 )
             )
@@ -93,8 +93,8 @@ class PerpendicularSpan:
         if east_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PerpendicularSpanComputationException(
+                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
                     ex=east_ray_result.exception
                 )
             )
@@ -112,8 +112,8 @@ class PerpendicularSpan:
         if horizontal_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PerpendicularSpanComputationException(
+                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
                     ex=horizontal_ray_result.exception
                 )
             )
@@ -133,8 +133,8 @@ class PerpendicularSpan:
         if span_subset_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PerpendicularSpanComputationException(
+                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
                     ex=span_subset_result.exception
                 )
             )
@@ -152,8 +152,8 @@ class PerpendicularSpan:
         if perpendicular_span_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
-                PerpendicularSpanComputationFailedException(
-                    message=f"{method}: {PerpendicularSpanComputationFailedException.DEFAULT_MESSAGE}",
+                PerpendicularSpanComputationException(
+                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
                     ex=perpendicular_span_result.exception
                 )
             )

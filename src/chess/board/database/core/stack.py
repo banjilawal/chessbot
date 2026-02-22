@@ -15,7 +15,7 @@ from chess.board import (
     AppendingBoardDirectlyIntoItemsFailedException, ArenaAlreadyContainsBoardException, PoppingEmptyBoardStackException,
     Board, BoardContext,
     BoardDataServiceException, BoardDoesNotExistForRemovalException, BoardService, BoardContextService,
-    BoardDeletionFailedException, BoardInsertionFailedException
+    BoardDeletionException, BoardInsertionException
 )
 
 
@@ -109,8 +109,8 @@ class BoardStackService(StackService[Board]):
             return InsertionResult.failure(
                 BoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {BoardDataServiceException.ERROR_CODE}",
-                    ex=BoardInsertionFailedException(
-                        message=f"{method}: {BoardInsertionFailedException.ERROR_CODE}",
+                    ex=BoardInsertionException(
+                        message=f"{method}: {BoardInsertionException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -126,8 +126,8 @@ class BoardStackService(StackService[Board]):
             return InsertionResult.failure(
                 BoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {BoardDataServiceException.ERROR_CODE}",
-                    ex=BoardInsertionFailedException(
-                        message=f"{method}: {BoardInsertionFailedException.ERROR_CODE}",
+                    ex=BoardInsertionException(
+                        message=f"{method}: {BoardInsertionException.ERROR_CODE}",
                         ex=search_result.exception
                     )
                 )
@@ -138,8 +138,8 @@ class BoardStackService(StackService[Board]):
             return InsertionResult.failure(
                 BoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {BoardDataServiceException.ERROR_CODE}",
-                    ex=BoardInsertionFailedException(
-                        message=f"{method}: {BoardInsertionFailedException.ERROR_CODE}",
+                    ex=BoardInsertionException(
+                        message=f"{method}: {BoardInsertionException.ERROR_CODE}",
                         ex=ArenaAlreadyContainsBoardException(
                             f"{method}: {ArenaAlreadyContainsBoardException.DEFAULT_MESSAGE}"
                         )
@@ -155,8 +155,8 @@ class BoardStackService(StackService[Board]):
             return InsertionResult.failure(
                 BoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {BoardDataServiceException.ERROR_CODE}",
-                    ex=BoardInsertionFailedException(
-                        message=f"{method}: {BoardInsertionFailedException.ERROR_CODE}",
+                    ex=BoardInsertionException(
+                        message=f"{method}: {BoardInsertionException.ERROR_CODE}",
                         ex=AppendingBoardDirectlyIntoItemsFailedException(
                             f"{method}: {AppendingBoardDirectlyIntoItemsFailedException.ERROR_CODE}"
                         )
@@ -195,8 +195,8 @@ class BoardStackService(StackService[Board]):
             return DeletionResult.failure(
                 BoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {BoardDataServiceException.ERROR_CODE}",
-                    ex=BoardDeletionFailedException(
-                        message=f"{method}: {BoardDeletionFailedException.ERROR_CODE}",
+                    ex=BoardDeletionException(
+                        message=f"{method}: {BoardDeletionException.ERROR_CODE}",
                         ex=PoppingEmptyBoardStackException(
                             f"{method}: {PoppingEmptyBoardStackException.DEFAULT_MESSAGE}"
                         )
@@ -210,8 +210,8 @@ class BoardStackService(StackService[Board]):
             return DeletionResult.failure(
                 BoardDataServiceException(
                     message=f"ServiceId:{self.id}, {method}: {BoardDataServiceException.ERROR_CODE}",
-                    ex=BoardDeletionFailedException(
-                        message=f"{method}: {BoardDeletionFailedException.ERROR_CODE}",
+                    ex=BoardDeletionException(
+                        message=f"{method}: {BoardDeletionException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -225,8 +225,8 @@ class BoardStackService(StackService[Board]):
                     return DeletionResult.failure(
                         BoardDataServiceException(
                             message=f"ServiceId:{self.id}, {method}: {BoardDataServiceException.ERROR_CODE}",
-                            ex=BoardDeletionFailedException(
-                                message=f"{method}: {BoardDeletionFailedException.ERROR_CODE}",
+                            ex=BoardDeletionException(
+                                message=f"{method}: {BoardDeletionException.ERROR_CODE}",
                                 ex=TypeError(
                                     f"{method}: Could not cast deletion target to Board, got {type(item).__name__} "
                                     f"instead of a Board."

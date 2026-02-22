@@ -12,12 +12,12 @@ from chess.node import NodeContextException
 
 
 __all__ = [
-    # ======================# NODE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# NODE_CONTEXT_BUILD_FAILURE #======================#
     "NodeContextBuildException",
 ]
 
 
-# ======================# NODE_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
+# ======================# NODE_CONTEXT_BUILD_FAILURE #======================#
 class NodeContextBuildException(NodeContextException, BuildException):
     """
     # ROLE: Exception Wrapper

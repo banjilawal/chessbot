@@ -1,14 +1,14 @@
 __all__ = [
-    # ======================# ROSTER_TOKEN_DELETION_FAILURE EXCEPTION #======================#
-    "TeamRosterTokenDeletionFailedException",
+    # ======================# ROSTER_TOKEN_DELETION_FAILURE #======================#
+    "TeamRosterTokenDeletionException",
 ]
 
 from chess.system import OperationFailedException
 from chess.team import TeamRosterException
 
 
-# ======================# ROSTER_TOKEN_DELETION_FAILURE EXCEPTION #======================#
-class TeamRosterTokenDeletionFailedException(TeamRosterException, OperationFailedException):
+# ======================# ROSTER_TOKEN_DELETION_FAILURE #======================#
+class TeamRosterTokenDeletionException(TeamRosterException, OperationFailedException):
     """
     # ROLE: Exception Wrapper
 

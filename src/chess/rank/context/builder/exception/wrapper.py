@@ -1,18 +1,18 @@
 __all__ = [
-    # ======================# RANK_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-    "RankContextBuildFailedException",
+    # ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
+    "RankContextBuildException",
 ]
 
 
-# ======================# RANK_CONTEXT_BUILD_FAILURE EXCEPTION #======================#
-class RankContextBuildFailedException(RankContextException, BuildFailedException):
+# ======================# RANK_CONTEXT_BUILD_FAILURE #======================#
+class RankContextBuildException(RankContextException, BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
     1.  Any failed check during the RankContext build creates an exception. Failed check exceptions are encapsulated
-        in an RankContextBuildFailedException which is sent to the caller in a BuildResult.
-    2.  The RankContextBuildFailedException provides a trace for debugging and application recovery.
+        in an RankContextBuildException which is sent to the caller in a BuildResult.
+    2.  The RankContextBuildException provides a trace for debugging and application recovery.
 
     # PARENT:
         *   RankContextException

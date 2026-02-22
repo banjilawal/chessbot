@@ -14,4 +14,4 @@ from .diagonal import *
 from .perpendicular import *
 
 # Modules
-from .exception import RayComputationFailedException
+from .exception import RayComputationException

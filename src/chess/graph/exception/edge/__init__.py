@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .insert import NodeInsertionFailedException
-from .delete import NodeDeletionFailedException
+from .insert import NodeInsertionException
+from .delete import NodeDeletionException

@@ -12,4 +12,4 @@ Created: 2025-11-18
 from .null import *
 
 # Modules
-from .wrapper import ServiceValidationFailedException
+from .wrapper import ServiceValidationException

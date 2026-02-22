@@ -59,12 +59,7 @@ class UpdateResult(DataResult[T], Generic[T]):
     
     @property
     def is_success(self) -> bool:
-        return (
-                self._updated is not None and
-                self.original is not None and
-                self.exception is None and
-                self.state == UpdateResultEnum.SUCCESS
-        )
+        return not self.is_failure
     
     @property
     def is_failure(self) -> bool:
@@ -72,7 +67,8 @@ class UpdateResult(DataResult[T], Generic[T]):
                 self._updated is None and
                 self.original is not None and
                 self.exception is not None and
-                self.state == UpdateResultEnum.FAILURE
+                self.state == UpdateResultEnum.FAILURE or
+                self.state == UpdateResultEnum.TIMED_OUT
         )
     
     @property

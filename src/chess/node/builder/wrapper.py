@@ -11,7 +11,7 @@ from chess.graph import NodeException
 from chess.system import BuildException
 
 __all__ = [
-    # ======================# NODE_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# NODE_BUILD_FAILURE #======================#
     "NodeBuildException",
 ]
 

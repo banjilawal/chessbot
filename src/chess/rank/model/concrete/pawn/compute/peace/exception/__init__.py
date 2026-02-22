@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import PawnPeacefulSpanComputationRouteException
-from .wrapper import PawnPeacefulSpanComputationFailedException
+from .wrapper import PawnPeacefulSpanComputationException

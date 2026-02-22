@@ -10,12 +10,12 @@ from chess.square import SquareException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# SQUARE_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# SQUARE_VALIDATION_FAILURE #======================#
     "SquareValidationException",
 ]
 
 
-# ======================# SQUARE_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# SQUARE_VALIDATION_FAILURE #======================#
 class SquareValidationException(SquareException, ValidationException):
     """
     # ROLE: Exception Wrapper

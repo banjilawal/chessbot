@@ -11,12 +11,12 @@ from chess.coord import CoordContextException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# COORD_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#
     "CoordContextValidationException",
 ]
 
 
-# ======================# COORD_CONTEXT_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# COORD_CONTEXT_VALIDATION_FAILURE #======================#
 class CoordContextValidationException(CoordContextException, ValidationException):
     """
     # ROLE: Exception Wrapper

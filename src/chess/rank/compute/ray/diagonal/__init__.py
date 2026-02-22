@@ -14,4 +14,4 @@ None
 
 # Modules
 from .ray import DiagonalRay
-from .exception import DiagonalRayComputationFailedException
+from .exception import DiagonalRayComputationException

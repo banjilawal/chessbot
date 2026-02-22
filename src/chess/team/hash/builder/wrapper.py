@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_HASH_BUILD_FAILURE EXCEPTION #======================#
+    # ======================# TEAM_HASH_BUILD_FAILURE #======================#
     "TeamHashBuildException",
 ]
 
@@ -16,7 +16,7 @@ from chess.team import TeamHashException
 from chess.system import BuildException
 
 
-# ======================# TEAM_HASH_BUILD_FAILURE EXCEPTION #======================#
+# ======================# TEAM_HASH_BUILD_FAILURE #======================#
 class TeamHashBuildException(TeamHashException, BuildException):
     """
     # ROLE: Exception Wrapper

@@ -14,4 +14,4 @@ None
 
 # Modules
 from .builder import AgentContextBuilder
-from .exception import AgentContextBuildFailedException
+from .exception import AgentContextBuildException

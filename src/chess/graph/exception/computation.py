@@ -8,12 +8,12 @@ version: 1.0.0
 """
 
 from chess.graph import GraphException
-from chess.system import ComputationFailedException
+from chess.system import ComputationException
 
 __all__ = [
-    # ======================# GRAPH_COMPUTATION_FAILURE EXCEPTION #======================#
-    "GraphComputationFailedException",
+    # ======================# GRAPH_COMPUTATION_FAILURE #======================#
+    "GraphComputationException",
 ]
 
-class GraphComputationFailedException(GraphException, ComputationFailedException):
+class GraphComputationException(GraphException, ComputationException):
     pass

@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import TeamInsertionFailedException
+from .wrapper import TeamInsertionException
 from .duplicate import AddingDuplicateTeamException

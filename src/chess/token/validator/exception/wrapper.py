@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# TOKEN_VALIDATION_FAILURE EXCEPTION #======================#
+    # ======================# TOKEN_VALIDATION_FAILURE #======================#
     "TokenValidationException",
 ]
 
@@ -17,13 +17,13 @@ from chess.token import TokenException
 from chess.system import ValidationException
 
 
-# ======================# TOKEN_VALIDATION_FAILURE EXCEPTION #======================#
+# ======================# TOKEN_VALIDATION_FAILURE #======================#
 class TokenValidationException(TokenException, ValidationException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Token. The exception chain
+    1.  Wrap debug exceptions indicating why a token validation operation failed. The exception chain
         traces the ultimate source of failure.
 
     # PARENT:
@@ -39,5 +39,5 @@ class TokenValidationException(TokenException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "Token_VALIDATION_FAILURE"
+    ERROR_CODE = "TOKEN_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Token validation failed."
