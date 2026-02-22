@@ -15,7 +15,7 @@ from chess.token import TokenContext
 from chess.team import Team, TeamService
 from chess.system import LoggingLevelRouter, UpdateResult
 from chess.square import (
-    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, SquareStack, SquareStackException,
+    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, SquareStackService, SquareStackException,
     TeamAlreadyDeployedException, TeamPartiallyDeployedException
 )
 
@@ -26,7 +26,7 @@ class RosterFormationCoordinator:
     def form_team(
             cls,
             team: Team,
-            sqsckuare_stack: SquareStack,
+            sqsckuare_stack: SquareStackService,
             team_service: TeamService = TeamService(),
     ) -> UpdateResult[Team]:
         """

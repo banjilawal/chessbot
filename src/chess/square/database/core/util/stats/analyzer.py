@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from chess.square import Square, SquareStack, SquareStackFullException
+from chess.square import Square, SquareStackService, SquareStackFullException
 from chess.system import ComputationResult, LoggingLevelRouter, NullException
 
 
@@ -33,13 +33,13 @@ class SquareStackAnalyzer:
         # RAISES:
             None
         """
-        method = "SquareStack.occupied_square_count"
+        method = "SquareStackService.occupied_square_count"
         
         # Handle the case that the stack is null
         if squares is None:
             # Send the exception chain on failure.
             return ComputationResult.failure(
-                NullException(f"{method}: Cannot count occupied squares in a null SquareStack.")
+                NullException(f"{method}: Cannot count occupied squares in a null SquareStackService.")
             )
         # --- List comprehend the occupied squares. ---#
         occupations = [square for square in squares if square.is_occupied]
@@ -63,13 +63,13 @@ class SquareStackAnalyzer:
         # RAISES:
             None
         """
-        method = "SquareStack.occupied_square_count"
+        method = "SquareStackService.occupied_square_count"
         
         # Handle the case that the stack is null
         if squares is None:
             # Send the exception chain on failure.
             return ComputationResult.failure(
-                NullException(f"{method}: Cannot count empty squares in a null SquareStack.")
+                NullException(f"{method}: Cannot count empty squares in a null SquareStackService.")
             )
         # --- List comprehend the empty squares. ---#
         empties = [square for square in squares if square.is_empty]
@@ -79,7 +79,7 @@ class SquareStackAnalyzer:
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def available_capacity(cls, stack: SquareStack) -> ComputationResult[int]:
+    def available_capacity(cls, stack: SquareStackService) -> ComputationResult[int]:
         """
         # ACTION:
             1.  Iterate through the squares. If a square is occupied increment the counter.
@@ -93,13 +93,13 @@ class SquareStackAnalyzer:
         # RAISES:
             None
         """
-        method = "SquareStack.occupied_square_count"
+        method = "SquareStackService.occupied_square_count"
         
         # Handle the case that the stack is null
         if stack is None:
             # Send the exception chain on failure.
             return ComputationResult.failure(
-                NullException(f"{method}: Cannot count empty squares in a null SquareStack.")
+                NullException(f"{method}: Cannot count empty squares in a null SquareStackService.")
             )
         
         available_capacity = stack.capacity - stack.size

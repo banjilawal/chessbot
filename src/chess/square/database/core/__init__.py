@@ -14,4 +14,4 @@ from .util import *
 from .exception import *
 
 # Modules
-from .stack import SquareStack
+from .stack import SquareStackService

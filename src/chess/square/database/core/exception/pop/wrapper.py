@@ -22,7 +22,7 @@ class PoppingSquareException(DeletionException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a SquareStack deletion fails. The encapsulated exceptions create
+    1.  Wrap debug exceptions indicating why a SquareStackService deletion fails. The encapsulated exceptions create
         chain for tracing the source of the failure.
 
     # PARENT:

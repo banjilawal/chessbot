@@ -38,4 +38,4 @@ class PoppingEmptySquareStackException(SquareStackException):
     None
     """
     ERROR_CODE = "POPPING_EMPTY_SQUARE_STACK_ERROR"
-    DEFAULT_MESSAGE = "Popping SquareStack failed: Cannot pop squares from an empty stack."
+    DEFAULT_MESSAGE = "Popping SquareStackService failed: Cannot pop squares from an empty stack."

@@ -49,7 +49,7 @@ class OccupationService:
         return self._formation_coordinator
     
     @LoggingLevelRouter.monitor
-    def add_occupant_to_square(
+    def add_occupant(
             self,
             token: Token,
             square: Square,
@@ -147,7 +147,7 @@ class OccupationService:
         return UpdateResult.update_success(original=pre_update_square, updated=square)
     
     @LoggingLevelRouter.monitor
-    def delete_occupant_by_search(
+    def remove_occupant_by_search(
             self,
             occupant: Token,
             square_list: List[Square],

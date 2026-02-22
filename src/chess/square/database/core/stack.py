@@ -21,7 +21,7 @@ from chess.square import (
 )
 
 
-class SquareStack(StackService[Square]):
+class SquareStackService(StackService[Square]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -43,7 +43,7 @@ class SquareStack(StackService[Square]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    SERVICE_NAME = "SquareStack"
+    SERVICE_NAME = "SquareStackService"
     _capacity: int
     _stack: List[Square]
     _util: SquareStackUtil
@@ -56,7 +56,7 @@ class SquareStack(StackService[Square]):
             service: SquareService = SquareService(),
             util: SquareStackUtil = SquareStackUtil(),
             capacity: int = NUMBER_OF_ROWS * NUMBER_OF_COLUMNS,
-            id: int = IdFactory.next_id(class_name="SquareStack"),
+            id: int = IdFactory.next_id(class_name="SquareStackService"),
             context_service: SquareContextService = SquareContextService(),
     ):
         """
@@ -131,7 +131,7 @@ class SquareStack(StackService[Square]):
         # RAISES:
             *   SquareStackException
         """
-        method = "SquareStack.add_square"
+        method = "SquareStackService.add_square"
         
         # Handle the case that there is no capacity for adding another square.
         available_capacity_computation_result = self._util.stats_analyzer.available_capacity(stack=self)
@@ -182,7 +182,7 @@ class SquareStack(StackService[Square]):
             *   SquareStackException
             *   PoppingEmptySquareStackException
         """
-        method = "SquareStack.pop"
+        method = "SquareStackService.pop"
         
         # Handle the case that there are no tokens in the stack.
         if self.is_empty:
@@ -228,7 +228,7 @@ class SquareStack(StackService[Square]):
             *   PoppingSquareException
             *   PoppingEmptySquareStackException
         """
-        method = "SquareStack.delete_by_id"
+        method = "SquareStackService.delete_by_id"
         
         # Handle the case that there are no items in the list.
         if self.is_empty:
@@ -292,7 +292,7 @@ class SquareStack(StackService[Square]):
         # RAISES:
             *   SquareStackException
         """
-        method = "SquareStack.query"
+        method = "SquareStackService.query"
         
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
