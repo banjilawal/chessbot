@@ -46,9 +46,7 @@ class TeamService(EntityService[Team]):
         *   See EntityService for inherited attributes.
     """
     SERVICE_NAME = "TeamService"
-    
-    _schema_service: SchemaService
-    _roster_relation_analyzer: RosterRelationAnalyzer
+    _roster_util: Roster
     
     def __init__(
             self,

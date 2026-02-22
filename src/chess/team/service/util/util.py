@@ -17,7 +17,7 @@ from chess.system import IdFactory, IdentityService, UpdateResult
 from chess.team import FillingTeamRosterException, RosterRelationAnalyzer, Team, TeamValidator
 
 
-class TeamRosterUtil:
+class RosterUtil:
     
     _rank_service: RankService
     _identity_service: IdentityService

@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any
 
 from chess.system import (
-    IdValidator, NameValidator, ValidationResult, IdEmitter,  InvalidIdentityException, id_emitter
+    IdFactory, IdValidator, NameValidator, ValidationResult, IdEmitter, InvalidIdentityException, id_emitter
 )
 
 
@@ -42,7 +42,6 @@ class IdentityService:
     _id_validator: IdValidator
     _name_validator: NameValidator
     
-    
     def __init__(
             self,
             id_validator: IdValidator = IdValidator(),
@@ -51,12 +50,10 @@ class IdentityService:
         method = "IdentityService.__init__"
         self._id_validator=id_validator
         self._name_validator=name_validator
-        self._emit_id=id_emitter
-        
-    @property
-    def id_emitter(self) -> IdEmitter:
-        method = "IdentityService.id_emitter"
-        return IdEmitter()
+       
+    @classmethod
+    def next_id(cls, class_name: str) -> int:
+        return IdFactory.next_id(class_name=class_name)
         
     def validate_id(self, candidate: Any) -> ValidationResult[int]:
         return self._id_validator.validate(candidate)
