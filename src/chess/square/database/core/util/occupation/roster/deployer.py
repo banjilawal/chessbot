@@ -26,7 +26,7 @@ class RosterFormationCoordinator:
     def form_team(
             cls,
             team: Team,
-            sqsckuare_stack: SquareStackService,
+            square_stack: SquareStackService,
             team_service: TeamService = TeamService(),
     ) -> UpdateResult[Team]:
         """

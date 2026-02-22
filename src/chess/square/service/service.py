@@ -53,7 +53,6 @@ class SquareService(EntityService[Square]):
     """
     SERVICE_NAME = "SquareService"
     _collision_detector: CollisionDetector
-    _square_token_relation_analyzer: SquareTokenRelationAnalyzer
     
     def __init__(
             self,
@@ -62,7 +61,6 @@ class SquareService(EntityService[Square]):
             validator: SquareValidator = SquareValidator(),
             id: int = IdFactory.next_id(class_name="SquareService"),
             collision_detector: CollisionDetector = CollisionDetector(),
-            relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer(),
     ):
         """
         # ACTION:
@@ -79,7 +77,6 @@ class SquareService(EntityService[Square]):
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._collision_detector = collision_detector
-        self._square_token_relation_analyzer = relation_analyzer
     
     @property
     def builder(self) -> SquareBuilder:
@@ -90,10 +87,6 @@ class SquareService(EntityService[Square]):
     def validator(self) -> SquareValidator:
         """get SquareValidator"""
         return cast(SquareValidator, self.entity_validator)
-    
-    @property
-    def square_token_relation_analyzer(self) -> SquareTokenRelationAnalyzer:
-        return self._square_token_relation_analyzer
     
     @property
     def collision_detector(self) -> CollisionDetector:
