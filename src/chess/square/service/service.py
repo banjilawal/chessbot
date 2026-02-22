@@ -12,21 +12,17 @@ from __future__ import annotations
 from copy import deepcopy
 from typing import cast
 
-from chess.square.service.exception.insertion import OccupiedSquareCannotRecieveFormationException
 from chess.square.service.exception.occupant.add.full import CannotEnterOccupiedSquareException
 from chess.square.state import SquareState
 from chess.system import (
-    CollisionDetector, DeletionResult, EntityService, IdFactory, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
-    UpdateResult, ValidationResult, id_emitter
+    CollisionDetector, DeletionResult, EntityService, IdFactory, LoggingLevelRouter,  UpdateResult, ValidationResult,
 )
 from chess.square import (
-    AddingFormationToSquareFailedException, AddingSquareOccupantException, DisabledTokenOccupyingSquareException,
-    NothingToRemoveFromEmptySquareException, RemovingSquareOccupantException, Square, SquareBuilder,
-    SquareServiceException, SquareTokenRelationAnalyzer, SquareValidator, TokenEnteringSquareOnWrongBoardException,
-    TokenEnteringWrongOpeningSquareException
+    AddingSquareOccupantException, DisabledTokenOccupyingSquareException, NothingToRemoveFromEmptySquareException,
+    RemovingSquareOccupantException, Square, SquareBuilder, SquareServiceException, SquareValidator,
+    TokenEnteringSquareOnWrongBoardException, TokenEnteringWrongOpeningSquareException
 )
-from chess.team import Team, TeamService
-from chess.token import Token, TokenBoardState, TokenContext, TokenDoesNotExistForRemovalException, TokenService
+from chess.token import Token, TokenBoardState, TokenService
 
 
 class SquareService(EntityService[Square]):
