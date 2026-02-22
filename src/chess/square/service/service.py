@@ -16,7 +16,7 @@ from chess.square.service.exception.insertion import OccupiedSquareCannotRecieve
 from chess.square.service.exception.occupant.add.full import CannotEnterOccupiedSquareException
 from chess.square.state import SquareState
 from chess.system import (
-    DeletionResult, EntityService, IdFactory, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
+    CollisionDetector, DeletionResult, EntityService, IdFactory, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
     UpdateResult, ValidationResult, id_emitter
 )
 from chess.square import (
@@ -52,6 +52,7 @@ class SquareService(EntityService[Square]):
         *   See EntityService for inherited attributes.
     """
     SERVICE_NAME = "SquareService"
+    _collision_detector: CollisionDetector
     _square_token_relation_analyzer: SquareTokenRelationAnalyzer
     
     def __init__(
@@ -60,6 +61,7 @@ class SquareService(EntityService[Square]):
             builder: SquareBuilder = SquareBuilder(),
             validator: SquareValidator = SquareValidator(),
             id: int = IdFactory.next_id(class_name="SquareService"),
+            collision_detector: CollisionDetector = CollisionDetector(),
             relation_analyzer: SquareTokenRelationAnalyzer = SquareTokenRelationAnalyzer(),
     ):
         """
@@ -76,6 +78,7 @@ class SquareService(EntityService[Square]):
             None
         """
         super().__init__(id=id, name=name, builder=builder, validator=validator)
+        self._collision_detector = collision_detector
         self._square_token_relation_analyzer = relation_analyzer
     
     @property
@@ -91,6 +94,10 @@ class SquareService(EntityService[Square]):
     @property
     def square_token_relation_analyzer(self) -> SquareTokenRelationAnalyzer:
         return self._square_token_relation_analyzer
+    
+    @property
+    def collision_detector(self) -> CollisionDetector:
+        return self._collision_detector
     
     @LoggingLevelRouter.monitor
     def remove_occupant(self, square: Square) -> DeletionResult[Token]:
