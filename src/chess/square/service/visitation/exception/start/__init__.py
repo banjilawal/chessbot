@@ -16,4 +16,4 @@ None
 from .wrapper import AddingSquareOccupantException
 from .board import TokenEnteringSquareOnWrongBoardException
 from .disabled import DisabledTokenOccupyingSquareException
-from .opening import TokenEnteringWrongOpeningSquareException
+from .opening import VisitingWrongOpeningSquareException

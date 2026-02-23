@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from chess.square import (
     NoVisitForTerminationException, SquareVisitTerminationException, Square, SquareState, SquareValidator,
-    TokenVisitHandlerException
+    VisitingWrongOpeningSquareException, TokenVisitHandlerException
 )
 from chess.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
 from chess.token import Token, TokenBoardState, TokenService
@@ -175,18 +175,14 @@ class TokenVisitHandler:
     ) -> DeletionResult[Token]:
         """
         # ACTION:
-            1.  We need the token removed from the square so removing an occupant sends a DeletionResult unlike
-                adding an occupant where the caller needs the original square to verify correctness.
-            2.  If the square is either unsafe or empty send an exception chain in the DeletionResult.
-            3.  Store the store's occupant in a local variable.
-            4.  Set the square's occupant to None and its state to empty.
-            5.  Send the token back in the DeletionResult.
+            1.  If the square fails its safety checks send and exception chain in the DeletionResult.
+            2.  If the square is empty send an exception chain in the DeletionResult.
+            3.  Store the square's occupant in a temp variable.
+            4.  Set square.occupant to null and  square.state to empty.
         # PARAMETERS:
             *   square (Square)
         # RETURN:
-            *   DeletionResult[Token]:
-                    - On failure: Exception.
-                    - On success: Token.
+            *   DeletionResult[Token]
         # RAISES:
             *   TokenVisitHandlerException
             *   SquareVisitTerminationException
@@ -194,20 +190,20 @@ class TokenVisitHandler:
         """
         method = "TokenVistHandler.terminate_visit"
         
-        # Handle the case that the square is not certified as safe.
-        validation = self.square_validator.validate(candidate=square)
+        # Handle the case that, the square is not certified as safe.
+        validation = square_validator.validate(candidate=square)
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenVisitHandlerException(
-                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=SquareVisitTerminationException(
                         message=f"{method}: {SquareVisitTerminationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
             )
-        # Handle the case that the square is empty.
+        # Handle the case that, the square is empty.
         if square.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -225,11 +221,12 @@ class TokenVisitHandler:
         
         # Store the square's occupant.
         token = square.occupant
-        # Remove the occupant then update the square's state.
+        
+        # Break the relationship between the square and the token then update the square's state.
         square.occupant = None
         square.state = SquareState.EMPTY
         
-        # --- Send the deletion success result to the caller. ---#
+        # --- Send the success result to the client. ---#
         DeletionResult.success(payload=token)
     
     @LoggingLevelRouter.monitor
@@ -244,7 +241,7 @@ class TokenVisitHandler:
         # RETURN:
             *   UpdateResult[Square]
         # RAISES:
-            *   TokenEnteringWrongOpeningSquareException
+            *   VisitingWrongOpeningSquareException
         """
         method = "SquareService._verify_token_forms_on_square"
         
@@ -252,8 +249,8 @@ class TokenVisitHandler:
         if square.name.upper() != token.opening_square_name.upper():
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TokenEnteringWrongOpeningSquareException(
-                    f"{method}: {TokenEnteringWrongOpeningSquareException.DEFAULT_MESSAGE}"
+                VisitingWrongOpeningSquareException(
+                    f"{method}: {VisitingWrongOpeningSquareException.DEFAULT_MESSAGE}"
                 )
             )
         return ValidationResult.success(payload=token)

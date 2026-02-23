@@ -8,21 +8,19 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_PICKED_WRONG_OPENING_SQUARE EXCEPTION #======================#
-    "TokenEnteringWrongOpeningSquareException",
+    # ======================# VISITING_WRONG_OPENING_SQUARE EXCEPTION #======================#
+    "VisitingWrongOpeningSquareException",
 ]
 
 from chess.square import SquareDebugException
 
 
-# ======================# TOKEN_PICKED_WRONG_OPENING_SQUARE EXCEPTION #======================#
-class TokenEnteringWrongOpeningSquareException(SquareDebugException):
+class VisitingWrongOpeningSquareException(SquareDebugException):
     """
-    # ROLE: Debug, Error Tracing
-
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    
     # RESPONSIBILITIES:
-    1.  Indicate that a item occupation attempt failed because the occupant picked the wrong
-        item for its initial placement.
+    A Validation failure result was returned because a Token was trying to form on the wrong opening square.
 
     # PARENT:
         *   SquareDebugException
@@ -36,5 +34,5 @@ class TokenEnteringWrongOpeningSquareException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_PICKED_WRONG_OPENING_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Token entering a item failed: The occupant is assigned a different opening item."
+    ERROR_CODE = "VISITING_WRONG_OPENING_SQUARE_ERROR"
+    DEFAULT_MESSAGE = "Visit validation failed: Token attempted forming on the wrong opening square."
