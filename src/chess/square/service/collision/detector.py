@@ -10,9 +10,11 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List
 
-from chess.system import CollisionDetector, CollisionReport, LoggingLevelRouter
+from chess.board import Board
+from chess.coord import Coord
+from chess.system import CollisionDetector, CollisionReport, LoggingLevelRouter, ValidationResult
 from chess.square import (
-    Square, SquareCollisionDetectionException, SquareCoordCollisionException, SquareIdCollisionException,
+    Square, SquareCollisionDetectionException, SquareContext, SquareCoordCollisionException, SquareIdCollisionException,
     SquareNameCollisionException, SquareValidator
 )
 
@@ -45,11 +47,13 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         None
 
     # LOCAL METHODS:
-        detect(
-            target: Square,
-            dataset: List[Square],
-            square_validator: SquareValidator = SquareValidator()
-        ) -> CollisionReport[Square]
+        *   detect(
+                target: Square,
+                dataset: List[Square],
+                square_validator: SquareValidator = SquareValidator()
+            ) -> CollisionReport[Square]
+            
+        *   detect_attribute_collisions(id: int, name: str, coord: Coord, board: Board) -> ValidationResult[int]
 
     # INHERITED METHODS:
     None
@@ -67,7 +71,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             1.  If the target is not certified as safe, send both exception nd target in the CollisionReport.
             2.  Loop through the dataset to find id, designation or opening square matches. If any are found,
                 send the: target, collider, and exception in the CollisionReport.
-            3.  If no collisions were detected in the loop send the target back in in a no-collision report.
+            3.  If no collisions were detected in the loop send the target back in a no-collision report.
         # PARAMETERS:
             *   target (Square)
             *   dataset (List[Square])
@@ -140,3 +144,47 @@ class SquareCollisionDetector(CollisionDetector[Square]):
                 )
         # --- After the uniqueness tests are passed send the no_collisions report to the caller. ---#
         return CollisionReport.no_collision_detected(target=target)
+    
+    @classmethod
+    def detect_attribute_collisions(cls, id: int, name: str, coord: Coord, board: Board) -> ValidationResult[int]:
+        method = "SquareCollisionDetector.detect_attribute_collisions"
+        
+        # --- Run the id search. ---#
+        id_search_result = board.squares.search(context=SquareContext(id=id))
+        
+        # Handle the case that, the id search was aborted.
+        if id_search_result.is_failure:
+            return ValidationResult.failure(id_search_result.exception)
+        # Handle the case that the id has already been assigned to a different square.
+        if id_search_result.is_success:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                SquareIdCollisionException(message=f"{method}:{SquareIdCollisionException.DEFAULT_MESSAGE}",)
+            )
+        # --- Run the name search. ---#
+        name_search_result = board.squares.search(context=SquareContext(name=name))
+        
+        # Handle the case that, the name search was aborted.
+        if name_search_result.is_failure:
+            return ValidationResult.failure(name_search_result.exception)
+        # Handle the case that the name has already been assigned to a different square.
+        if name_search_result.is_success:
+            return ValidationResult.failure(
+                SquareNameCollisionException(message=f"{method}:{SquareNameCollisionException.DEFAULT_MESSAGE}", )
+            )
+        # --- Run the coord search. ---#
+        coord_search_result = board.squares.search(context=SquareContext(coord=coord))
+        
+        # Handle the case that, the coord search was aborted.
+        if coord_search_result.is_failure:
+            return ValidationResult.failure(coord_search_result.exception)
+        # Handle the case that the id has already been assigned to a different square.
+        if coord_search_result.is_success:
+            # Handle the case that the coord has already been assigned to a different square.
+            if coord_search_result.is_success:
+                return ValidationResult.failure(
+                    SquareCoordCollisionException(message=f"{method}:{SquareCoordCollisionException.DEFAULT_MESSAGE}", )
+                )
+        # --- Send the success result indicating no attribute conditions. ---#
+        return ValidationResult.success(3)
+    
