@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_CAPTIVITY_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_CAPTIVITY_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "CaptivityContextValidationRouteException",
 ]
 
 from chess.hostage import CaptivityContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_CAPTIVITY_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class CaptivityContextValidationRouteException(CaptivityContextException, NoValidationRouteException):
+# ======================# NO_CAPTIVITY_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class CaptivityContextValidationRouteException(CaptivityContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class CaptivityContextValidationRouteException(CaptivityContextException, NoVali
 
     # PARENT:
         *   CaptivityContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -38,7 +38,7 @@ class CaptivityContextValidationRouteException(CaptivityContextException, NoVali
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_CAPTIVITY_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_CAPTIVITY_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = (
         "CaptivityContext validation failed: No validation route was provided for a CaptivityContext attribute."
     )

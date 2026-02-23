@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_NODE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_NODE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "NodeContextBuildRouteException",
 ]
 
 from chess.node import NodeContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_NODE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class NodeContextBuildRouteException(NodeContextException, NoBuildRouteException):
+# ======================# NO_NODE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class NodeContextBuildRouteException(NodeContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class NodeContextBuildRouteException(NodeContextException, NoBuildRouteException
 
     # PARENT:
         *   NodeContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class NodeContextBuildRouteException(NodeContextException, NoBuildRouteException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_NODE_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_NODE_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "NodeContext build failed: No build path existed for the Node key."

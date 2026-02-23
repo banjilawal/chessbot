@@ -8,17 +8,17 @@ version: 1.0.0
 """
 
 
-from chess.system import ResultException, UnhandledRouteException
+from chess.system import ResultException, NoExecutionRouteException
 
 
 __all__ = [
-    # ======================# UNHANDLED_SCHEMA_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_SCHEMA_VALIDATION_ROUTE EXCEPTION #======================#
     "SchemaValidationRouteException",
 ]
 
 
-# ======================# UNHANDLED_SCHEMA_VALIDATION_ROUTE EXCEPTION #======================#
-class SchemaValidationRouteException(ResultException, UnhandledRouteException):
+# ======================# NO_SCHEMA_VALIDATION_ROUTE EXCEPTION #======================#
+class SchemaValidationRouteException(ResultException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
     
@@ -31,7 +31,7 @@ class SchemaValidationRouteException(ResultException, UnhandledRouteException):
     
     # PARENT:
         *   ResultException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
         
     # PROVIDES
     None
@@ -42,7 +42,7 @@ class SchemaValidationRouteException(ResultException, UnhandledRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SCHEMA_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_SCHEMA_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = (
         "The SchemaValidator did not handle one of the paths necessary to assure a candidate is a safe to use"
         "Schema. Ensure all possible verification branches are covered to ensure the execution flow does not "

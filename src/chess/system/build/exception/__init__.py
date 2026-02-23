@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .route import NoBuildRouteException
+from .route import NoExecutionRouteException
 from .wrapper import BuildException

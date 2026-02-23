@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_SCHEMA_KEY_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_SCHEMA_KEY_BUILD_ROUTE EXCEPTION #======================#
     "SchemaKeyBuildRouteException",
 ]
 
 from chess.schema import SchemaKeyException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_SCHEMA_KEY_BUILD_ROUTE EXCEPTION #======================#
-class SchemaKeyBuildRouteException(SchemaKeyException, NoBuildRouteException):
+# ======================# NO_SCHEMA_KEY_BUILD_ROUTE EXCEPTION #======================#
+class SchemaKeyBuildRouteException(SchemaKeyException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class SchemaKeyBuildRouteException(SchemaKeyException, NoBuildRouteException):
 
     # PARENT:
         *   SchemaKeyException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class SchemaKeyBuildRouteException(SchemaKeyException, NoBuildRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SCHEMA_KEY_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_SCHEMA_KEY_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "SchemaKey build failed: No build path existed for the Schema key."

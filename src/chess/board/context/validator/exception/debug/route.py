@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "BoardContextValidationRouteException",
 ]
 
 from chess.board import BoardContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_BOARD_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class BoardContextValidationRouteException(BoardContextException, NoValidationRouteException):
+# ======================# NO_BOARD_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class BoardContextValidationRouteException(BoardContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class BoardContextValidationRouteException(BoardContextException, NoValidationRo
 
     # PARENT:
         *   BoardContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class BoardContextValidationRouteException(BoardContextException, NoValidationRo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_BOARD_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_BOARD_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "BoardContext validation failed: No validation route was provided for the Board attribute."

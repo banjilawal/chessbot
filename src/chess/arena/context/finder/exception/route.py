@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_ARENA_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+    # ======================# NO_ARENA_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
     "ArenaSearchRouteException",
 ]
 
-from chess.system import UnhandledRouteException
+from chess.system import NoExecutionRouteException
 from chess.arena import ArenaException
 
 
-# ======================# UNHANDLED_ARENA_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class ArenaSearchRouteException(ArenaException, UnhandledRouteException):
+# ======================# NO_ARENA_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+class ArenaSearchRouteException(ArenaException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class ArenaSearchRouteException(ArenaException, UnhandledRouteException):
 
     # PARENT:
         *   ArenaContext
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -38,5 +38,5 @@ class ArenaSearchRouteException(ArenaException, UnhandledRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_ARENA_SEARCH_ROUTE_ROUTE_ERROR"
+    ERROR_CODE = "NO_ARENA_SEARCH_ROUTE_ROUTE_ERROR"
     DEFAULT_MESSAGE = "Arena search failed: No search method was provided for the Arena attribute."

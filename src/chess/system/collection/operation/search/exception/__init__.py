@@ -14,4 +14,4 @@ None
 
 # Modules
 from .wrapper import SearchException
-from .route import NoSearchRouteException
+from .route import NoExecutionRouteException

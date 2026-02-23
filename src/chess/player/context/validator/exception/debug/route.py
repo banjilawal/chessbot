@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "PlayerContextValidationRouteException",
 ]
 
 from chess.player import PlayerContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_PLAYER_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class PlayerContextValidationRouteException(PlayerContextException, NoValidationRouteException):
+# ======================# NO_PLAYER_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class PlayerContextValidationRouteException(PlayerContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class PlayerContextValidationRouteException(PlayerContextException, NoValidation
 
     # PARENT:
         *   PlayerContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class PlayerContextValidationRouteException(PlayerContextException, NoValidation
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_PLAYER_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_PLAYER_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "PlayerContext validation failed: No validation route was provided for the Player attribute."

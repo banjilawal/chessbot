@@ -1,13 +1,13 @@
-from chess.system import ResultException, UnhandledRouteException
+from chess.system import ResultException, NoExecutionRouteException
 
 __all__ = [
-    # ======================# UNHANDLED_PLAYER_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_PLAYER_BUILD_ROUTE EXCEPTION #======================#
     "PlayerBuildRouteException",
 ]
 
 
-# ======================# UNHANDLED_PLAYER_BUILD_ROUTE EXCEPTION #======================#
-class PlayerBuildRouteException(ResultException, UnhandledRouteException):
+# ======================# NO_PLAYER_BUILD_ROUTE EXCEPTION #======================#
+class PlayerBuildRouteException(ResultException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -18,7 +18,7 @@ class PlayerBuildRouteException(ResultException, UnhandledRouteException):
 
     # PARENT:
         *   ResultException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -29,7 +29,7 @@ class PlayerBuildRouteException(ResultException, UnhandledRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_PLAYER_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_PLAYER_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = (
         "The PlayerFactory does not have a production line for all concrete Player classes. Ensure all build branches a"
         "re covered to prevent the execution flow from hit the default failure result outside the if-blocks."

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "CoordContextValidationRouteException",
 ]
 
 from chess.coord import CoordContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_COORD_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class CoordContextValidationRouteException(CoordContextException, NoValidationRouteException):
+# ======================# NO_COORD_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class CoordContextValidationRouteException(CoordContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class CoordContextValidationRouteException(CoordContextException, NoValidationRo
 
     # PARENT:
         *   CoordContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class CoordContextValidationRouteException(CoordContextException, NoValidationRo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_COORD_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_COORD_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "CoordContext validation failed: No validation route was provided for the Coord attribute."

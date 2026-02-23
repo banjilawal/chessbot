@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_EDGE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_EDGE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "EdgeContextBuildRouteException",
 ]
 
 from chess.edge import EdgeContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_EDGE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class EdgeContextBuildRouteException(EdgeContextException, NoBuildRouteException):
+# ======================# NO_EDGE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class EdgeContextBuildRouteException(EdgeContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class EdgeContextBuildRouteException(EdgeContextException, NoBuildRouteException
 
     # PARENT:
         *   EdgeContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class EdgeContextBuildRouteException(EdgeContextException, NoBuildRouteException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_EDGE_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_EDGE_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "EdgeContext build failed: No build path existed for the Edge key."

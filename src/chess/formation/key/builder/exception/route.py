@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_FORMATION_KEY_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_FORMATION_KEY_BUILD_ROUTE EXCEPTION #======================#
     "FormationKeyBuildRouteException",
 ]
 
 from chess.formation import FormationKeyException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_FORMATION_KEY_BUILD_ROUTE EXCEPTION #======================#
-class FormationKeyBuildRouteException(FormationKeyException, NoBuildRouteException):
+# ======================# NO_FORMATION_KEY_BUILD_ROUTE EXCEPTION #======================#
+class FormationKeyBuildRouteException(FormationKeyException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class FormationKeyBuildRouteException(FormationKeyException, NoBuildRouteExcepti
 
     # PARENT:
         *   FormationKeyException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class FormationKeyBuildRouteException(FormationKeyException, NoBuildRouteExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_FORMATION_KEY_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_FORMATION_KEY_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "FormationKey build failed: No build path existed for the Formation key."

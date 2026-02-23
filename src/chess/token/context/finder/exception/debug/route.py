@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_TOKEN_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+    # ======================# NO_TOKEN_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
     "TokenSearchRouteException",
 ]
 
-from chess.system import UnhandledRouteException
+from chess.system import NoExecutionRouteException
 from chess.token import TokenException
 
 
-# ======================# UNHANDLED_TOKEN_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class TokenSearchRouteException(TokenException, UnhandledRouteException):
+# ======================# NO_TOKEN_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+class TokenSearchRouteException(TokenException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class TokenSearchRouteException(TokenException, UnhandledRouteException):
 
     # PARENT:
         *   TokenContext
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -38,5 +38,5 @@ class TokenSearchRouteException(TokenException, UnhandledRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_TOKEN_SEARCH_ROUTE_ROUTE_ERROR"
+    ERROR_CODE = "NO_TOKEN_SEARCH_ROUTE_ROUTE_ERROR"
     DEFAULT_MESSAGE = "Token search failed: No search method was provided for the Token attribute."

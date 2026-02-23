@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "SnapshotContextValidationRouteException",
 ]
 
 from chess.snapshot import SnapshotContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_SNAPSHOT_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class SnapshotContextValidationRouteException(SnapshotContextException, NoValidationRouteException):
+# ======================# NO_SNAPSHOT_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class SnapshotContextValidationRouteException(SnapshotContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class SnapshotContextValidationRouteException(SnapshotContextException, NoValida
 
     # PARENT:
         *   SnapshotContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class SnapshotContextValidationRouteException(SnapshotContextException, NoValida
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SNAPSHOT_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_SNAPSHOT_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "SnapshotContext validation failed: No validation route was provided for the Snapshot attribute."

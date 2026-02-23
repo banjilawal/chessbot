@@ -8,14 +8,14 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE EXCEPTION #======================#
     "PawnPeacefulSpanComputationRouteException",
 ]
 
 from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE EXCEPTION #======================#
+# ======================# NO_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE EXCEPTION #======================#
 class PawnPeacefulSpanComputationRouteException(NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
@@ -35,5 +35,5 @@ class PawnPeacefulSpanComputationRouteException(NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "PawnPeacefulSpan computation failed: No spanning set computation route for Pawn's MoveState."

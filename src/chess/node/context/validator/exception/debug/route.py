@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_NODE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_NODE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "NodeContextValidationRouteException",
 ]
 
 from chess.node import NodeContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_NODE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class NodeContextValidationRouteException(NodeContextException, NoValidationRouteException):
+# ======================# NO_NODE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class NodeContextValidationRouteException(NodeContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class NodeContextValidationRouteException(NodeContextException, NoValidationRout
 
     # PARENT:
         *   NodeContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -38,5 +38,5 @@ class NodeContextValidationRouteException(NodeContextException, NoValidationRout
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_NODE_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_NODE_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "NodeContext validation failed: No validation route was provided for a NodeContext attribute."

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_ARENA_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_ARENA_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "ArenaContextBuildRouteException",
 ]
 
 from chess.arena import ArenaContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_ARENA_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class ArenaContextBuildRouteException(ArenaContextException, NoBuildRouteException):
+# ======================# NO_ARENA_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class ArenaContextBuildRouteException(ArenaContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class ArenaContextBuildRouteException(ArenaContextException, NoBuildRouteExcepti
 
     # PARENT:
         *   ArenaContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class ArenaContextBuildRouteException(ArenaContextException, NoBuildRouteExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_ARENA_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_ARENA_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "ArenaContext build failed: No build path existed for the Arena key."

@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_TEAM_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_TEAM_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "TeamContextBuildRouteException",
 ]
 
 from chess.team import TeamContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_TEAM_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class TeamContextBuildRouteException(TeamContextException, NoBuildRouteException):
+# ======================# NO_TEAM_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class TeamContextBuildRouteException(TeamContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class TeamContextBuildRouteException(TeamContextException, NoBuildRouteException
 
     # PARENT:
         *   TeamContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class TeamContextBuildRouteException(TeamContextException, NoBuildRouteException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_TEAM_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_TEAM_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "TeamContext build failed: No build path existed for the Team key."

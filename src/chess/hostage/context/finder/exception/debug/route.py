@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_HOSTAGEMANIFEST_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+    # ======================# NO_HOSTAGEMANIFEST_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
     "HostageManifestSearchRouteException",
 ]
 
-from chess.system import NoSearchRouteException
+from chess.system import NoExecutionRouteException
 from chess.hostage import HostageManifestException
 
 
-# ======================# UNHANDLED_HOSTAGE_MANIFEST_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class HostageManifestSearchRouteException(HostageManifestException, NoSearchRouteException):
+# ======================# NO_HOSTAGE_MANIFEST_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+class HostageManifestSearchRouteException(HostageManifestException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -38,7 +38,7 @@ class HostageManifestSearchRouteException(HostageManifestException, NoSearchRout
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_HOSTAGE_MANIFEST_SEARCH_ROUTE_ROUTE_ERROR"
+    ERROR_CODE = "NO_HOSTAGE_MANIFEST_SEARCH_ROUTE_ROUTE_ERROR"
     DEFAULT_MESSAGE = (
         "HostageManifest search failed: No search method was provided for the HostageManifest attribute."
     )

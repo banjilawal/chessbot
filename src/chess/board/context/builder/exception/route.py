@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_BOARD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_BOARD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "BoardContextBuildRouteException",
 ]
 
 from chess.board import BoardContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_BOARD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class BoardContextBuildRouteException(BoardContextException, NoBuildRouteException):
+# ======================# NO_BOARD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class BoardContextBuildRouteException(BoardContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class BoardContextBuildRouteException(BoardContextException, NoBuildRouteExcepti
 
     # PARENT:
         *   BoardContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class BoardContextBuildRouteException(BoardContextException, NoBuildRouteExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_BOARD_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_BOARD_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "BoardContext build failed: No build path existed for the Board key."

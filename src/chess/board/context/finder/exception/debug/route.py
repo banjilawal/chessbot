@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_BOARD_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+    # ======================# NO_BOARD_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
     "BoardSearchRouteException",
 ]
 
-from chess.system import NoSearchRouteException
+from chess.system import NoExecutionRouteException
 from chess.board import BoardException
 
 
-# ======================# UNHANDLED_BOARD_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class BoardSearchRouteException(BoardException, NoSearchRouteException):
+# ======================# NO_BOARD_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+class BoardSearchRouteException(BoardException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -38,5 +38,5 @@ class BoardSearchRouteException(BoardException, NoSearchRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_BOARD_SEARCH_ROUTE_ROUTE_ERROR"
+    ERROR_CODE = "NO_BOARD_SEARCH_ROUTE_ROUTE_ERROR"
     DEFAULT_MESSAGE = "Board search failed: No search method was provided for the Board attribute."

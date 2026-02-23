@@ -14,4 +14,3 @@ None
 
 # Modules
 from .wrapper import DeletionException
-from .route import NoDeletionRouteException

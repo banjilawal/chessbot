@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_CAPTIVITY_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_CAPTIVITY_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "CaptivityContextBuildRouteException",
 ]
 
 from chess.hostage import CaptivityContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_CAPTIVITY_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class CaptivityContextBuildRouteException(CaptivityContextException, NoBuildRouteException):
+# ======================# NO_CAPTIVITY_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class CaptivityContextBuildRouteException(CaptivityContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class CaptivityContextBuildRouteException(CaptivityContextException, NoBuildRout
 
     # PARENT:
         *   CaptivityContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class CaptivityContextBuildRouteException(CaptivityContextException, NoBuildRout
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_CAPTIVITY_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_CAPTIVITY_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "CaptivityContext build failed: No build path existed for the Captivity key."

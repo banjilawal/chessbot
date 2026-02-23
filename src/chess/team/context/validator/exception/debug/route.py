@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "TeamContextValidationRouteException",
 ]
 
 from chess.team import TeamContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_TEAM_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class TeamContextValidationRouteException(TeamContextException, NoValidationRouteException):
+# ======================# NO_TEAM_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class TeamContextValidationRouteException(TeamContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class TeamContextValidationRouteException(TeamContextException, NoValidationRout
 
     # PARENT:
         *   TeamContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class TeamContextValidationRouteException(TeamContextException, NoValidationRout
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_TEAM_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_TEAM_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "TeamContext validation failed: No validation route was provided for the Team attribute."

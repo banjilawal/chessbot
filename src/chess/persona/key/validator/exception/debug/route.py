@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_KEY_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_KEY_VALIDATION_ROUTE EXCEPTION #======================#
     "PersonaKeyValidationRouteException",
 ]
 
 from chess.persona import PersonaKeyException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_PERSONA_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class PersonaKeyValidationRouteException(PersonaKeyException, NoValidationRouteException):
+# ======================# NO_PERSONA_KEY_VALIDATION_ROUTE EXCEPTION #======================#
+class PersonaKeyValidationRouteException(PersonaKeyException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class PersonaKeyValidationRouteException(PersonaKeyException, NoValidationRouteE
 
     # PARENT:
         *   PersonaKeyException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class PersonaKeyValidationRouteException(PersonaKeyException, NoValidationRouteE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_PERSONA_KEY_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_PERSONA_KEY_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "PersonaKey validation failed: No validation route was provided for the Persona attribute."

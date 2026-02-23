@@ -9,16 +9,16 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# UNHANDLED_COORD_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+    # ======================# NO_COORD_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
     "CoordSearchRouteException",
 ]
 
-from chess.system import UnhandledRouteException
+from chess.system import NoExecutionRouteException
 from chess.coord import CoordException
 
 
-# ======================# UNHANDLED_COORD_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class CoordSearchRouteException(CoordException, UnhandledRouteException):
+# ======================# NO_COORD_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+class CoordSearchRouteException(CoordException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -28,7 +28,7 @@ class CoordSearchRouteException(CoordException, UnhandledRouteException):
 
     # PARENT:
         *   CoordException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -39,5 +39,5 @@ class CoordSearchRouteException(CoordException, UnhandledRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_COORD_SEARCH_ROUTE_ROUTE_ERROR"
+    ERROR_CODE = "NO_COORD_SEARCH_ROUTE_ROUTE_ERROR"
     DEFAULT_MESSAGE = "Coord search failed: No search method was provided for the Coord attribute."

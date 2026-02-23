@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.persona import PersonaException
-from chess.system import UnhandledRouteException
+from chess.system import NoExecutionRouteException
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_LOOKUP_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_LOOKUP_ROUTE EXCEPTION #======================#
     "PersonaLookupRouteException",
 ]
 
 
-# ======================# UNHANDLED_PERSONA_LOOKUP_ROUTE EXCEPTION #======================#
-class PersonaLookupRouteException(PersonaException, UnhandledRouteException):
+# ======================# NO_PERSONA_LOOKUP_ROUTE EXCEPTION #======================#
+class PersonaLookupRouteException(PersonaException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result
 
@@ -26,7 +26,7 @@ class PersonaLookupRouteException(PersonaException, UnhandledRouteException):
 
     # PARENT:
         *   PersonaException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
 
     # PROVIDES
@@ -38,5 +38,5 @@ class PersonaLookupRouteException(PersonaException, UnhandledRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_PERSONA_LOOKUP_ROUTE_ERROR"
+    ERROR_CODE = "NO_PERSONA_LOOKUP_ROUTE_ERROR"
     DEFAULT_MESSAGE = "PersonaLookup failed: No search route was provided for a Persona attribute."

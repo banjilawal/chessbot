@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_TOKEN_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_TOKEN_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "TokenContextBuildRouteException",
 ]
 
 from chess.token import TokenContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_TOKEN_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class TokenContextBuildRouteException(TokenContextException, NoBuildRouteException):
+# ======================# NO_TOKEN_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class TokenContextBuildRouteException(TokenContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class TokenContextBuildRouteException(TokenContextException, NoBuildRouteExcepti
 
     # PARENT:
         *   TokenContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class TokenContextBuildRouteException(TokenContextException, NoBuildRouteExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_TOKEN_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_TOKEN_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "TokenContext build failed: No build path existed for the Token key."

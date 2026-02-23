@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_NODE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+    # ======================# NO_NODE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
     "NodeSearchRouteException",
 ]
 
-from chess.system import NoSearchRouteException
+from chess.system import NoExecutionRouteException
 from chess.node import NodeException
 
 
-# ======================# UNHANDLED_NODE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class NodeSearchRouteException(NodeException, NoSearchRouteException):
+# ======================# NO_NODE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+class NodeSearchRouteException(NodeException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -38,5 +38,5 @@ class NodeSearchRouteException(NodeException, NoSearchRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_NODE_SEARCH_ROUTE_ROUTE_ERROR"
+    ERROR_CODE = "NO_NODE_SEARCH_ROUTE_ROUTE_ERROR"
     DEFAULT_MESSAGE = "Node search failed: No search method was provided for the Node attribute."

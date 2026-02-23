@@ -8,17 +8,17 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "TokenContextValidationRouteException",
 ]
 
 from chess.token import TokenContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
 
-# ======================# UNHANDLED_TOKEN_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class TokenContextValidationRouteException(TokenContextException, NoValidationRouteException):
+# ======================# NO_TOKEN_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class TokenContextValidationRouteException(TokenContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class TokenContextValidationRouteException(TokenContextException, NoValidationRo
 
     # PARENT:
         *   TokenContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -38,5 +38,5 @@ class TokenContextValidationRouteException(TokenContextException, NoValidationRo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_TOKEN_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_TOKEN_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "TokenContext validation failed: No validation route was provided for the Token attribute."

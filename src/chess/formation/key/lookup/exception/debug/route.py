@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 from chess.formation import FormationException
-from chess.system import UnhandledRouteException
+from chess.system import NoExecutionRouteException
 
 __all__ = [
-    # ======================# UNHANDLED_FORMATION_LOOKUP_ROUTE EXCEPTION #======================#
+    # ======================# NO_FORMATION_LOOKUP_ROUTE EXCEPTION #======================#
     "FormationLookupRouteException",
 ]
 
 
-# ======================# UNHANDLED_FORMATION_LOOKUP_ROUTE EXCEPTION #======================#
-class FormationLookupRouteException(FormationException, UnhandledRouteException):
+# ======================# NO_FORMATION_LOOKUP_ROUTE EXCEPTION #======================#
+class FormationLookupRouteException(FormationException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result
 
@@ -26,7 +26,7 @@ class FormationLookupRouteException(FormationException, UnhandledRouteException)
 
     # PARENT:
         *   FormationException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
 
     # PROVIDES
@@ -38,5 +38,5 @@ class FormationLookupRouteException(FormationException, UnhandledRouteException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_FORMATION_LOOKUP_ROUTE_ERROR"
+    ERROR_CODE = "NO_FORMATION_LOOKUP_ROUTE_ERROR"
     DEFAULT_MESSAGE = "FormationLookup failed: No search route was provided for a Formation attribute."

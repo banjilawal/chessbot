@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PLAYER_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_PLAYER_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "PlayerContextBuildRouteException",
 ]
 
 from chess.player import PlayerContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_PLAYER_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class PlayerContextBuildRouteException(PlayerContextException, NoBuildRouteException):
+# ======================# NO_PLAYER_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class PlayerContextBuildRouteException(PlayerContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class PlayerContextBuildRouteException(PlayerContextException, NoBuildRouteExcep
 
     # PARENT:
         *   PlayerContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class PlayerContextBuildRouteException(PlayerContextException, NoBuildRouteExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_PLAYER_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_PLAYER_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "PlayerContext build failed: No build path existed for the Player key."

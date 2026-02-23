@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_EDGE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+    # ======================# NO_EDGE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
     "EdgeSearchRouteException",
 ]
 
-from chess.system import NoSearchRouteException
+from chess.system import NoExecutionRouteException
 from chess.edge import EdgeException
 
 
-# ======================# UNHANDLED_EDGE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class EdgeSearchRouteException(EdgeException, NoSearchRouteException):
+# ======================# NO_EDGE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+class EdgeSearchRouteException(EdgeException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -38,5 +38,5 @@ class EdgeSearchRouteException(EdgeException, NoSearchRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_EDGE_SEARCH_ROUTE_ROUTE_ERROR"
+    ERROR_CODE = "NO_EDGE_SEARCH_ROUTE_ROUTE_ERROR"
     DEFAULT_MESSAGE = "Edge search failed: No search method was provided for the Edge attribute."

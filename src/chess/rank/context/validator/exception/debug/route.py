@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "RankContextValidationRouteException",
 ]
 
 from chess.rank import RankContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_RANK_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class RankContextValidationRouteException(RankContextException, NoValidationRouteException):
+# ======================# NO_RANK_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class RankContextValidationRouteException(RankContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class RankContextValidationRouteException(RankContextException, NoValidationRout
 
     # PARENT:
         *   RankContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class RankContextValidationRouteException(RankContextException, NoValidationRout
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_RANK_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_RANK_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "RankContext validation failed: No validation route was provided for the Rank attribute."

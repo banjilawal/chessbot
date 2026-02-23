@@ -8,17 +8,17 @@ version: 1.0.0
 """
 
 from chess.schema import SchemaException
-from chess.system import UnhandledRouteException
+from chess.system import NoExecutionRouteException
 
 
 __all__ = [
-    # ======================# UNHANDLED_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
+    # ======================# NO_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
     "SchemaLookupRouteException",
 ]
 
 
-# ======================# UNHANDLED_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
-class SchemaLookupRouteException(SchemaException, UnhandledRouteException):
+# ======================# NO_SCHEMA_LOOKUP_ROUTE EXCEPTION #======================#
+class SchemaLookupRouteException(SchemaException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result
     
@@ -27,7 +27,7 @@ class SchemaLookupRouteException(SchemaException, UnhandledRouteException):
     
     # PARENT:
         *   SchemaException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
         
     # PROVIDES
@@ -39,6 +39,6 @@ class SchemaLookupRouteException(SchemaException, UnhandledRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SCHEMA_LOOKUP_ROUTE_ERROR"
+    ERROR_CODE = "NO_SCHEMA_LOOKUP_ROUTE_ERROR"
     DEFAULT_MESSAGE = "SchemaLookup failed: No search route was provided for a Schema attribute."
  

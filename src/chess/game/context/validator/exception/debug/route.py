@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "GameContextValidationRouteException",
 ]
 
 from chess.game import GameContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_GAME_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class GameContextValidationRouteException(GameContextException, NoValidationRouteException):
+# ======================# NO_GAME_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class GameContextValidationRouteException(GameContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class GameContextValidationRouteException(GameContextException, NoValidationRout
 
     # PARENT:
         *   GameContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class GameContextValidationRouteException(GameContextException, NoValidationRout
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_GAME_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_GAME_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "GameContext validation failed: No validation route was provided for the Game attribute."

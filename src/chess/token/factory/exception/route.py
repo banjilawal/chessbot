@@ -1,13 +1,13 @@
-from chess.system import ResultException, UnhandledRouteException
+from chess.system import ResultException, NoExecutionRouteException
 
 __all__ = [
-    # ======================# UNHANDLED_TOKEN_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_TOKEN_BUILD_ROUTE EXCEPTION #======================#
     "TokenBuildRouteException",
 ]
 
 
-# ======================# UNHANDLED_TOKEN_BUILD_ROUTE EXCEPTION #======================#
-class TokenBuildRouteException(ResultException, UnhandledRouteException):
+# ======================# NO_TOKEN_BUILD_ROUTE EXCEPTION #======================#
+class TokenBuildRouteException(ResultException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -18,7 +18,7 @@ class TokenBuildRouteException(ResultException, UnhandledRouteException):
 
     # PARENT:
         *   ResultException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -29,7 +29,7 @@ class TokenBuildRouteException(ResultException, UnhandledRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_TOKEN_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_TOKEN_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = (
         "The TokenFactory does not have a production line for all concrete Token classes. Ensure all build branches a"
         "re covered to prevent the execution flow from hit the default failure result outside the if-blocks."

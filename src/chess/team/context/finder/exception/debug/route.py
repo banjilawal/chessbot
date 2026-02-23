@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_TEAM_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+    # ======================# NO_TEAM_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
     "TeamSearchRouteException",
 ]
 
-from chess.system import UnhandledRouteException
+from chess.system import NoExecutionRouteException
 from chess.team import TeamException
 
 
-# ======================# UNHANDLED_TEAM_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class TeamSearchRouteException(TeamException, UnhandledRouteException):
+# ======================# NO_TEAM_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+class TeamSearchRouteException(TeamException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class TeamSearchRouteException(TeamException, UnhandledRouteException):
 
     # PARENT:
         *   TeamContext
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -38,5 +38,5 @@ class TeamSearchRouteException(TeamException, UnhandledRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_TEAM_SEARCH_ROUTE_ROUTE_ERROR"
+    ERROR_CODE = "NO_TEAM_SEARCH_ROUTE_ROUTE_ERROR"
     DEFAULT_MESSAGE = "Team search failed: No search method was provided for the Team attribute."

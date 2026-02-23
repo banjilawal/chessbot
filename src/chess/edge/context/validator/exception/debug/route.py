@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_EDGE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_EDGE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "EdgeContextValidationRouteException",
 ]
 
 from chess.edge import EdgeContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_EDGE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class EdgeContextValidationRouteException(EdgeContextException, NoValidationRouteException):
+# ======================# NO_EDGE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class EdgeContextValidationRouteException(EdgeContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class EdgeContextValidationRouteException(EdgeContextException, NoValidationRout
 
     # PARENT:
         *   EdgeContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -38,5 +38,5 @@ class EdgeContextValidationRouteException(EdgeContextException, NoValidationRout
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_EDGE_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_EDGE_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "EdgeContext validation failed: No validation route was provided for a EdgeContext attribute."

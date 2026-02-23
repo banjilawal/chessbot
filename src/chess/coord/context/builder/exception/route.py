@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_COORD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_COORD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "CoordContextBuildRouteException",
 ]
 
 from chess.coord import CoordContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_COORD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class CoordContextBuildRouteException(CoordContextException, NoBuildRouteException):
+# ======================# NO_COORD_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class CoordContextBuildRouteException(CoordContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class CoordContextBuildRouteException(CoordContextException, NoBuildRouteExcepti
 
     # PARENT:
         *   CoordContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class CoordContextBuildRouteException(CoordContextException, NoBuildRouteExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_COORD_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_COORD_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "CoordContext build failed: No build path existed for the Coord key."

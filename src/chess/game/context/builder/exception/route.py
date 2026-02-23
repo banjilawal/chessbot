@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_GAME_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_GAME_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "GameContextBuildRouteException",
 ]
 
 from chess.game import GameContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_GAME_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class GameContextBuildRouteException(GameContextException, NoBuildRouteException):
+# ======================# NO_GAME_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class GameContextBuildRouteException(GameContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class GameContextBuildRouteException(GameContextException, NoBuildRouteException
 
     # PARENT:
         *   GameContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class GameContextBuildRouteException(GameContextException, NoBuildRouteException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_GAME_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_GAME_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "GameContext build failed: No build path existed for the Game key."

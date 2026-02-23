@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#
     "FormationKeyValidationRouteException",
 ]
 
 from chess.formation import FormationKeyException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#
-class FormationKeyValidationRouteException(FormationKeyException, NoValidationRouteException):
+# ======================# NO_FORMATION_KEY_VALIDATION_ROUTE EXCEPTION #======================#
+class FormationKeyValidationRouteException(FormationKeyException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class FormationKeyValidationRouteException(FormationKeyException, NoValidationRo
 
     # PARENT:
         *   FormationKeyException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class FormationKeyValidationRouteException(FormationKeyException, NoValidationRo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_FORMATION_KEY_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_FORMATION_KEY_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "FormationKey validation failed: No validation route was provided for the Formation attribute."

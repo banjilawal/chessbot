@@ -7,16 +7,16 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-from chess.system import NoBuildRouteException, ResultException
+from chess.system import NoExecutionRouteException, ResultException
 
 __all__ = [
-    # ======================# UNHANDLED_RANK_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_RANK_BUILD_ROUTE EXCEPTION #======================#
     "RankBuildRouteException",
 ]
 
 
-# ======================# UNHANDLED_RANK_BUILD_ROUTE EXCEPTION #======================#
-class RankBuildRouteException(ResultException, NoBuildRouteException):
+# ======================# NO_RANK_BUILD_ROUTE EXCEPTION #======================#
+class RankBuildRouteException(ResultException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -27,7 +27,7 @@ class RankBuildRouteException(ResultException, NoBuildRouteException):
 
     # PARENT:
         *   ResultException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -38,7 +38,7 @@ class RankBuildRouteException(ResultException, NoBuildRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_RANK_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_RANK_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = (
         "The RankFactory does not have a production line for all concrete Rank classes. Ensure all build branches a"
         "re covered to prevent the execution flow from hit the default failure result outside the if-blocks."

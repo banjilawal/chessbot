@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# NO_BUILD_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
-    "NoBuildRouteException",
+    "NoExecutionRouteException",
 ]
 
 from chess.system import NoExecutionRouteException
 
 
 # ======================# NO_BUILD_ROUTE_FOR_SELECTED_OPTION EXCEPTION #======================#
-class NoBuildRouteException(NoExecutionRouteException):
+class NoExecutionRouteException(NoExecutionRouteException):
     """
     # ROLE: Error Tracing, Debugging, Catchall Exception
 

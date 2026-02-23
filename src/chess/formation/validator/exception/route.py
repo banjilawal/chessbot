@@ -1,25 +1,25 @@
-from chess.system import ResultException, UnhandledRouteException
+from chess.system import ResultException, NoExecutionRouteException
 
 __all__ = [
-    # ======================# UNHANDLED_FORMATION_VALIDATION_ROUTE EXCEPTION #======================#
-    "SchemValidationUnhandledRouteException",
+    # ======================# NO_FORMATION_VALIDATION_ROUTE EXCEPTION #======================#
+    "SchemValidationNoExecutionRouteException",
 ]
 
 
-# ======================# UNHANDLED_FORMATION_VALIDATION_ROUTE EXCEPTION #======================#
-class SchemValidationUnhandledRouteException(ResultException, UnhandledRouteException):
+# ======================# NO_FORMATION_VALIDATION_ROUTE EXCEPTION #======================#
+class SchemValidationNoExecutionRouteException(ResultException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
     1.  Indicate that FormationValidator did not handle one of the paths necessary to assure a candidate is a 
         Formation safe to use. A Formation has different configurations that are correct. Each configuration has a testing 
-        route. If a configuration does not have a validation route a SchemValidationUnhandledRouteException 
+        route. If a configuration does not have a validation route a SchemValidationNoExecutionRouteException 
         will be returned in a ValidationResult.
 
     # PARENT:
         *   ResultException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -30,7 +30,7 @@ class SchemValidationUnhandledRouteException(ResultException, UnhandledRouteExce
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_FORMATION_VALIDATION_ROUTE"
+    ERROR_CODE = "NO_FORMATION_VALIDATION_ROUTE"
     DEFAULT_MESSAGE = (
         "The FormationValidator did not handle one of the paths necessary to assure a candidate is a Formation safe to use. "
         "Ensure all possible verification branches are covered to ensure the execution flow does not hit the default "

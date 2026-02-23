@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_KEY_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_KEY_BUILD_ROUTE EXCEPTION #======================#
     "PersonaKeyBuildRouteException",
 ]
 
 from chess.persona import PersonaKeyException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_PERSONA_KEY_BUILD_ROUTE EXCEPTION #======================#
-class PersonaKeyBuildRouteException(PersonaKeyException, NoBuildRouteException):
+# ======================# NO_PERSONA_KEY_BUILD_ROUTE EXCEPTION #======================#
+class PersonaKeyBuildRouteException(PersonaKeyException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class PersonaKeyBuildRouteException(PersonaKeyException, NoBuildRouteException):
 
     # PARENT:
         *   PersonaKeyException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class PersonaKeyBuildRouteException(PersonaKeyException, NoBuildRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_PERSONA_KEY_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_PERSONA_KEY_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "PersonaKey build failed: No build path existed for the Persona key."

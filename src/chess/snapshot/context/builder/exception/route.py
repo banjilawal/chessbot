@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_SNAPSHOT_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_SNAPSHOT_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "SnapshotContextBuildRouteException",
 ]
 
 from chess.snapshot import SnapshotContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_SNAPSHOT_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class SnapshotContextBuildRouteException(SnapshotContextException, NoBuildRouteException):
+# ======================# NO_SNAPSHOT_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class SnapshotContextBuildRouteException(SnapshotContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class SnapshotContextBuildRouteException(SnapshotContextException, NoBuildRouteE
 
     # PARENT:
         *   SnapshotContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class SnapshotContextBuildRouteException(SnapshotContextException, NoBuildRouteE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SNAPSHOT_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_SNAPSHOT_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "SnapshotContext build failed: No build path existed for the Snapshot key."

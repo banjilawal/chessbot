@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_PERSONA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "ArenaContextValidationRouteException",
 ]
 
 from chess.arena import ArenaContextException
-from chess.system import NoValidationRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_ARENA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class ArenaContextValidationRouteException(ArenaContextException, NoValidationRouteException):
+# ======================# NO_ARENA_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class ArenaContextValidationRouteException(ArenaContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class ArenaContextValidationRouteException(ArenaContextException, NoValidationRo
 
     # PARENT:
         *   ArenaContextException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class ArenaContextValidationRouteException(ArenaContextException, NoValidationRo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_ARENA_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_ARENA_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = "ArenaContext validation failed: No validation route was provided for the Arena attribute."

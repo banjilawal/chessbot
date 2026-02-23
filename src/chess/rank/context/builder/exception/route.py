@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_RANK_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_RANK_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "RankContextBuildRouteException",
 ]
 
 from chess.rank import RankContextException
-from chess.system import NoBuildRouteException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_RANK_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class RankContextBuildRouteException(RankContextException, NoBuildRouteException):
+# ======================# NO_RANK_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class RankContextBuildRouteException(RankContextException, NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class RankContextBuildRouteException(RankContextException, NoBuildRouteException
 
     # PARENT:
         *   RankContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class RankContextBuildRouteException(RankContextException, NoBuildRouteException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_RANK_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_RANK_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "RankContext build failed: No build path existed for the Rank key."
