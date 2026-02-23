@@ -10,20 +10,20 @@ version: 1.0.0
 
 
 __all__ = [
-    # ======================# SQUARE_NOT_FOUND EXCEPTION #======================#
-    "SquareNotFoundException",
+    # ======================# VISIT_DESTINATION_NOT_FOUND EXCEPTION #======================#
+    "VisitDestinationNotFoundException",
 ]
 
 from chess.square import SquareDebugException
 
 
-# ======================# SQUARE_NOT_FOUND EXCEPTION #======================#
-class SquareNotFoundException(SquareDebugException):
+# ======================# VISIT_DESTINATION_NOT_FOUND EXCEPTION #======================#
+class VisitDestinationNotFoundException(SquareDebugException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure UpdateResult was returned because a tkone wanted to occupy a square which does not exist in
+    A failure UpdateResult was returned because a token wanted to occupy a square which does not exist in
     the SquareStack.
 
     # PARENT:
@@ -38,5 +38,5 @@ class SquareNotFoundException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_NOT_FOUND_ERROR"
+    ERROR_CODE = "VISIT_DESTINATION_NOT_FOUND_ERROR"
     DEFAULT_MESSAGE = "SquareVisit start failed: token wanted to visit square which does not exist."

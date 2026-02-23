@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .exist import SquareNotFoundException
+from .exist import VisitDestinationNotFoundException
 from .catchall import OccupationServiceException

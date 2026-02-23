@@ -14,7 +14,7 @@ from typing import List
 
 from chess.square import (
     StartingSquareVisitException, SquareVisitTerminationException, RosterDeployer, Square,
-    SquareNotFoundException, SquareService, OccupationServiceException
+    VisitDestinationNotFoundException, SquareService, OccupationServiceException
 )
 from chess.system import DeletionResult, IdFactory, LoggingLevelRouter, UpdateResult
 from chess.token import Token, TokenService
@@ -162,7 +162,7 @@ class OccupationService:
                     message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
                         message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
-                        ex=SquareNotFoundException(f"{method}: {SquareNotFoundException.DEFAULT_MESSAGE}")
+                        ex=VisitDestinationNotFoundException(f"{method}: {VisitDestinationNotFoundException.DEFAULT_MESSAGE}")
                     )
                 )
             )
