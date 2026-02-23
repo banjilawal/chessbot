@@ -18,12 +18,12 @@ from chess.system import WrapperException
 # ======================# OPERATION_FAILURE #======================#
 class OperationException(WrapperException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
-
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    
     # RESPONSIBILITIES:
-    1.  Indicate what operation failed.
-    2.  Contains Layer 1 of the exception chain.
-    2.  Encapsulate DebugException raised by the failure's source.
+    1.  Shows what type of class method experienced the error
+    2.  Encapsulates the DebugException which identifies the method's code block that raised the error.
+    3.  Middle part of the 3-layer exception chain. Should only contain a DebugException.
 
     # PARENT:
         *   WrapperException
