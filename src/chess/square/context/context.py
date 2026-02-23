@@ -22,11 +22,10 @@ from chess.token import Token
 
 class SquareContext(Context[Square]):
     """
-    # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
+    # ROLE: Factory, Switch, Attribute Selection
 
     # RESPONSIBILITIES:
-    Provide an SquareFinder with an attribute value to find Squares with a matching value in teir version of
-    the attribute.
+    Factory that produces Context instances for searching Square datasets by different Square attributes.
 
     # PARENT:
         *   Context
@@ -37,9 +36,25 @@ class SquareContext(Context[Square]):
     # LOCAL ATTRIBUTES:
         *   board (Optional[Board])
         *   coord (Optional[Coord])
+        *   state (Optional[SquareState])
 
     # INHERITED ATTRIBUTES:
         *   See Context class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+            *   board (Optional[Board])
+            *   coord (Optional[Coord])
+            *   state (Optional[SquareState])
+
+        Inherited:
+            *   See Context class for inherited constructor parameters.
+
+    # LOCAL METHODS:
+        *   to_dict() -> dict
+
+    # INHERITED METHODS:
+        *   See StackService class for inherited methods.
     """
     _board: Optional[Board]
     _coord: Optional[Coord]
@@ -55,6 +70,7 @@ class SquareContext(Context[Square]):
             occupant: Optional[Token] = None,
             state: Optional[SquareState] = None,
     ):
+        method = "SquareContext.__init__"
         super().__init__(id=id, name=name)
         self._board = board
         self._coord = coord
@@ -79,14 +95,7 @@ class SquareContext(Context[Square]):
     
     def to_dict(self) -> dict:
         """
-        # ACTION:
-        Convert a SquareContext attributes into a dictionary.
-        # PARAMETERS:
-        None
-        # RETURNS:
-            dict
-        # RAISES:
-        None
+        Returns a dictionary representation of the SquareContext.
         """
         return {
             "id": self.id,

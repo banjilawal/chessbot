@@ -70,7 +70,7 @@ class SquareStackService(StackService[Square]):
         *   delete_by_id(id: int, identity_service: IdentityService) -> DeletionResult[Square]
 
     # INHERITED METHODS:
-    *   See StackService class for inherited methods.
+        *   See StackService class for inherited methods.
     """
     SERVICE_NAME = "SquareStackService"
     _capacity: int
