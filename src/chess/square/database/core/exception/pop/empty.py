@@ -7,8 +7,6 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-
-
 __all__ = [
     # ======================# POPPING_EMPTY_SQUARE_STACK EXCEPTION #======================#
     "PoppingEmptySquareStackException",
@@ -20,13 +18,13 @@ from chess.square import SquareStackServiceException
 # ======================# POPPING_EMPTY_SQUARE_STACK EXCEPTION #======================#
 class PoppingEmptySquareStackException(SquareStackServiceException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove a item failed because the stack was empty
+    A failure DeletionResult was returned because an attempt was made to pop an empty square stack..
 
     # PARENT:
-        *   SquareException
+        *   SquareDebugException
 
     # PROVIDES:
     None
@@ -38,4 +36,4 @@ class PoppingEmptySquareStackException(SquareStackServiceException):
     None
     """
     ERROR_CODE = "POPPING_EMPTY_SQUARE_STACK_ERROR"
-    DEFAULT_MESSAGE = "Popping SquareStackService failed: Cannot pop squares from an empty stack."
+    DEFAULT_MESSAGE = "SquareStack pop failed: Cannot pop from an empty stack."

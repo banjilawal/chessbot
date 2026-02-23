@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import PoppingSquareException
+from .wrapper import SquareStackPopException
 from .empty import PoppingEmptySquareStackException

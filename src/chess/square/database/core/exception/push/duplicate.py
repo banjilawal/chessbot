@@ -18,13 +18,13 @@ __all__ = [
 # ======================# ADDING_DUPLICATE_SQUARE EXCEPTION #======================#
 class AddingDuplicateSquareException(SquareStackServiceException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to add a square to teh stack failed because it was already present.
+    A failure InsertionResult was returned because an attempt to add a duplicate square to the stack.
 
     # PARENT:
-        *   SquareStackServiceException
+        *   SquareDebugException
 
     # PROVIDES:
     None
@@ -36,4 +36,4 @@ class AddingDuplicateSquareException(SquareStackServiceException):
     None
     """
     ERROR_CODE = "ADDING_DUPLICATE_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Pushing square onto stack failed: The square is already present."
+    DEFAULT_MESSAGE = "SquareStack push failed: Cannot add a duplicate square to the stack."

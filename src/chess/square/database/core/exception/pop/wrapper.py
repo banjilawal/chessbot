@@ -9,23 +9,23 @@ version: 1.0.0
 
 __all__ = [
     # ======================# SQUARE_STACK_POP_FAILURE #======================#
-    "PoppingSquareException",
+    "SquareStackPopException",
 ]
 
 from chess.system import DeletionException
 
 
 # ======================# SQUARE_STACK_POP_FAILURE #======================#
-class PoppingSquareException(DeletionException):
+class SquareStackPopException(DeletionException):
     """
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SquareStackService.pop that prevented a successful InsertionResult.
-    2.  This error might have occurred in a different SquareStackService method that also returns InsertionResults.
+    1.  An error occurred in SquareStackService.pop that prevented a successful DeletionResult.
+    2.  This error might have occurred in a different SquareStackService method that also returns DeletionResults.
 
     # PARENT:
-        *   InsertionException
+        *   DeletionException
 
     # PROVIDES:
     None

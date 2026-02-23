@@ -12,5 +12,5 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .wrapper import PushingSquareException
+from .wrapper import SquareStackPushException
 from .duplicate import AddingDuplicateSquareException

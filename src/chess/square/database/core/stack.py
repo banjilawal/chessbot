@@ -10,16 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 from typing import List, Optional
 
-
 from chess.system import (
     IdFactory, NUMBER_OF_COLUMNS, StackService, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter,
     NUMBER_OF_ROWS, SearchResult
 )
 from chess.square import (
-    SquareContext, SquareStackUtil, PoppingEmptySquareStackException, Square, SquareStackServiceException, SquareService,
-    SquareContextService, PoppingSquareException, PushingSquareException
+    SquareContext, SquareStackPopException, SquareStackPushException, SquareStackUtil, SquareService,
+    SquareContextService,PoppingEmptySquareStackException, Square,  SquareStackServiceException,
 )
-
 
 class SquareStackService(StackService[Square]):
     """
@@ -158,8 +156,8 @@ class SquareStackService(StackService[Square]):
             return InsertionResult.failure(
                 SquareStackServiceException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
-                    ex=PushingSquareException(
-                        message=f"{method}: {PushingSquareException.ERROR_CODE}",
+                    ex=SquareStackPushException(
+                        message=f"{method}: {SquareStackPushException.ERROR_CODE}",
                         ex=available_capacity_computation_result.exception
                     )
                 )
@@ -174,8 +172,8 @@ class SquareStackService(StackService[Square]):
             return InsertionResult.failure(
                 SquareStackServiceException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
-                    ex=PushingSquareException(
-                        message=f"{method}: {PushingSquareException.ERROR_CODE}",
+                    ex=SquareStackPushException(
+                        message=f"{method}: {SquareStackPushException.ERROR_CODE}",
                         ex=collision_report.exception
                     )
                 )
@@ -208,8 +206,8 @@ class SquareStackService(StackService[Square]):
             return DeletionResult.failure(
                 SquareStackServiceException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
-                    ex=PoppingSquareException(
-                        message=f"{method}: {PoppingSquareException.ERROR_CODE}",
+                    ex=SquareStackPopException(
+                        message=f"{method}: {SquareStackPopException.ERROR_CODE}",
                         ex=PoppingEmptySquareStackException(
                             f"{method}: {PoppingEmptySquareStackException.DEFAULT_MESSAGE}"
                         )
@@ -243,7 +241,7 @@ class SquareStackService(StackService[Square]):
             *   DeletionResult[Square]
         # RAISES:
             *   SquareStackServiceException
-            *   PoppingSquareException
+            *   SquareStackPopException
             *   PoppingEmptySquareStackException
         """
         method = "SquareStackService.delete_by_id"
@@ -254,8 +252,8 @@ class SquareStackService(StackService[Square]):
             return DeletionResult.failure(
                 SquareStackServiceException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
-                    ex=PoppingSquareException(
-                        message=f"{method}: {PoppingSquareException.ERROR_CODE}",
+                    ex=SquareStackPopException(
+                        message=f"{method}: {SquareStackPopException.ERROR_CODE}",
                         ex=PoppingEmptySquareStackException(
                             f"{method}: {PoppingEmptySquareStackException.DEFAULT_MESSAGE}"
                         )
@@ -269,8 +267,8 @@ class SquareStackService(StackService[Square]):
             return DeletionResult.failure(
                 SquareStackServiceException(
                     message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
-                    ex=PoppingSquareException(
-                        message=f"{method}: {PoppingSquareException.ERROR_CODE}",
+                    ex=SquareStackPopException(
+                        message=f"{method}: {SquareStackPopException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
