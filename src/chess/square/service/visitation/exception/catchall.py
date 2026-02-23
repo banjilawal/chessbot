@@ -8,22 +8,22 @@ version: 1.0.0
 """
 
 
-from chess.system import CatchallException, ServiceException
-
 __all__ = [
     # ======================# TOKEN_VISIT_HANDLER EXCEPTION #======================#
     "TokenVisitHandlerException",
 ]
 
+from chess.system import CatchallException
+
 
 # ======================# TOKEN_VISIT_HANDLER EXCEPTION #======================#
 class TokenVisitHandlerException(CatchallException):
     """"
-    # ROLE: Catchall, Exception Messaging
-    
+    # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
+
     # RESPONSIBILITIES:
-    1.  Outermost layer of the 3-part exception chain that is created when a TokenVisitHandler
-        operation aborts.
+    1.  Indicate a failure occurred in TokenVisitHandler.
+    2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     # PARENT:
         *   CatchallException
