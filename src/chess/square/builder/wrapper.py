@@ -17,17 +17,14 @@ __all__ = [
 
 
 # ======================# SQUARE_BUILD_FAILURE #======================#
-class SquareBuildException(SquareException, BuildException):
+class SquareBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the Square build creates an exception. Failed check exceptions are encapsulated
-        in an SquareBuildException which is sent to the caller in a BuildResult.
-    2.  The SquareBuildException provides a trace for debugging and application recovery.
+    1.  An error occurred in SquareBuilder.build that prevented a successful square build.
 
     # PARENT:
-        *   SquareException
         *   BuildException
 
     # PROVIDES:
