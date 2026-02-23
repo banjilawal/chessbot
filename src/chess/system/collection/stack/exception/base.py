@@ -12,12 +12,12 @@ from chess.system import CollectionException, ServiceException
 
 __all__ = [
     # ====================== STACK_SERVICE EXCEPTION #======================#
-    "StackException",
+    "StackServiceException",
 ]
 
 
 # ====================== STACK_SERVICE EXCEPTION #======================#
-class StackException(CollectionException, ServiceException):
+class StackServiceException(CollectionException, ServiceException):
     """
     # ROLE: Exception Wrapper
 

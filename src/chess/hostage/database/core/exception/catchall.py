@@ -26,7 +26,7 @@ class HostageManifestDataListException(HostageManifestException, DataServiceExce
 
     # PARENT:
         *   HostageManifestException
-        *   StackException
+        *   StackServiceException
 
     # PROVIDES:
     None

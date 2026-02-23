@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.square import SquareStackException
+from chess.square import SquareStackServiceException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_SQUARE EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_SQUARE EXCEPTION #======================#
-class AddingDuplicateSquareException(SquareStackException):
+class AddingDuplicateSquareException(SquareStackServiceException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -24,7 +24,7 @@ class AddingDuplicateSquareException(SquareStackException):
     1.  Indicate that an attempt to add a square to teh stack failed because it was already present.
 
     # PARENT:
-        *   SquareStackException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None

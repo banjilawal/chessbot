@@ -14,11 +14,11 @@ __all__ = [
     "PoppingEmptySquareStackException",
 ]
 
-from chess.square import SquareStackException
+from chess.square import SquareStackServiceException
 
 
 # ======================# POPPING_EMPTY_SQUARE_STACK EXCEPTION #======================#
-class PoppingEmptySquareStackException(SquareStackException):
+class PoppingEmptySquareStackException(SquareStackServiceException):
     """
     # ROLE: Debug, Error Tracing
 

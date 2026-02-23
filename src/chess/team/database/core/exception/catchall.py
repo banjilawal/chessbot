@@ -13,11 +13,11 @@ ___all__ = [
 ]
 
 from chess.team import TeamException
-from chess.system import StackException
+from chess.system import StackServiceException
 
 
 # ======================# TEAM_STACK_SERVICE EXCEPTION #======================#
-class TeamStackException(TeamException, StackException):
+class TeamStackException(TeamException, StackServiceException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class TeamStackException(TeamException, StackException):
 
     # PARENT:
         *   TeamException
-        *   StackException
+        *   StackServiceException
 
     # PROVIDES:
     None

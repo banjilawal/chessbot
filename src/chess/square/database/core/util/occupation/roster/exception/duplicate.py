@@ -12,12 +12,12 @@ __all__ = [
     "TeamAlreadyDeployedException",
 ]
 
-from chess.square import SquareStackException
+from chess.square import SquareStackServiceException
 from chess.system import DebugException
 
 
 # ======================# TEAM_ALREADY_DEPLOYED EXCEPTION #======================#
-class TeamAlreadyDeployedException(SquareStackException, DebugException):
+class TeamAlreadyDeployedException(SquareStackServiceException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -26,7 +26,7 @@ class TeamAlreadyDeployedException(SquareStackException, DebugException):
         placed on the board.
 
     # PARENT:
-        *   SquareStackException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None

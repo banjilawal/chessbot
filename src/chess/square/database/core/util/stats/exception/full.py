@@ -13,11 +13,11 @@ __all__ = [
 ]
 
 from chess.system import DebugException
-from chess.square import SquareStackException
+from chess.square import SquareStackServiceException
 
 
 # ======================# SQUARE_STACK_FULL EXCEPTION #======================#
-class SquareStackFullException(SquareStackException, DebugException):
+class SquareStackFullException(SquareStackServiceException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -27,7 +27,7 @@ class SquareStackFullException(SquareStackException, DebugException):
 
     # PARENT:
         *   DebugException
-        *   SquareStackException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None

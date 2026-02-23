@@ -12,19 +12,19 @@ __all__ = [
     "SquareException",
 ]
 
-from chess.system import ChessException
+from chess.system import SuperClassException
 
 
 # ======================# SQUARE EXCEPTION #======================#
-class SquareException(ChessException):
+class SquareException(SuperClassException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Catchall for Square errors not covered by SquareException subclasses.
+    2.  Parent of SquareDebugException
 
     # PARENT:
-        *   ChessException
+        *   SuperClassException
 
     # PROVIDES:
     None

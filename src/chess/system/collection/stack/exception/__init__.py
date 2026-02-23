@@ -13,6 +13,6 @@ Version: 1.0.0
 None
 
 # Modules
-from .base import StackException
+from .base import StackServiceException
 from .empty import PoppingEmptyStackException
 from .duplicate import AddingDuplicateException

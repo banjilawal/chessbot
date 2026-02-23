@@ -13,11 +13,11 @@ ___all__ = [
 ]
 
 from chess.node import NodeException
-from chess.system import StackException
+from chess.system import StackServiceException
 
 
 # ======================# NODE_STACK EXCEPTION #======================#
-class NodeStackException(NodeException, StackException):
+class NodeStackException(NodeException, StackServiceException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class NodeStackException(NodeException, StackException):
 
     # PARENT:
         *   NodeException
-        *   StackException
+        *   StackServiceException
 
     # PROVIDES:
     None

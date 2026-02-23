@@ -15,7 +15,7 @@ from chess.token import TokenContext
 from chess.team import Team, TeamService
 from chess.system import LoggingLevelRouter, UpdateResult
 from chess.square import (
-    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, SquareStackService, SquareStackException,
+    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, SquareStackService, SquareStackServiceException,
     TeamAlreadyDeployedException, TeamPartiallyDeployedException
 )
 
@@ -52,7 +52,7 @@ class RosterFormationCoordinator:
         # RETURN:
             *   UpdateResult[Team]
         # RAISES:
-            *   SquareStackException
+            *   SquareStackServiceException
             *   DeployingTeamRosterException
             *   TeamAlreadyDeployedException
             *   TeamPartiallyDeployedException
@@ -66,8 +66,8 @@ class RosterFormationCoordinator:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=team,
-                exception=SquareStackException(
-                    message=f"{method}: {SquareStackException.ERROR_CODE}",
+                exception=SquareStackServiceException(
+                    message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
                     ex=DeployingTeamRosterException(
                         message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                         ex=team_validation.exception
@@ -79,8 +79,8 @@ class RosterFormationCoordinator:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=team,
-                exception=SquareStackException(
-                    message=f"{method}: {SquareStackException.ERROR_CODE}",
+                exception=SquareStackServiceException(
+                    message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
                     ex=DeployingTeamRosterException(
                         message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                         ex=TeamAlreadyDeployedException(
@@ -94,8 +94,8 @@ class RosterFormationCoordinator:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=team,
-                exception=SquareStackException(
-                    message=f"{method}: {SquareStackException.ERROR_CODE}",
+                exception=SquareStackServiceException(
+                    message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
                     ex=DeployingTeamRosterException(
                         message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                         ex=CannotDeployUnderStrengthTeamException(
@@ -115,8 +115,8 @@ class RosterFormationCoordinator:
                 # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
                 return UpdateResult.update_failure(
                     original=pre_deployment_team,
-                    exception=SquareStackException(
-                        message=f"{method}: {SquareStackException.ERROR_CODE}",
+                    exception=SquareStackServiceException(
+                        message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
                         ex=DeployingTeamRosterException(
                             message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                             ex=token_search_result.exception
@@ -134,8 +134,8 @@ class RosterFormationCoordinator:
                 # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
                 return UpdateResult.update_failure(
                     original=pre_deployment_team,
-                    exception=SquareStackException(
-                        message=f"{method}: {SquareStackException.ERROR_CODE}",
+                    exception=SquareStackServiceException(
+                        message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
                         ex=DeployingTeamRosterException(
                             message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                             ex=square_update_result.exception
@@ -149,8 +149,8 @@ class RosterFormationCoordinator:
             # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_deployment_team,
-                exception=SquareStackException(
-                    message=f"{method}: {SquareStackException.ERROR_CODE}",
+                exception=SquareStackServiceException(
+                    message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
                     ex=DeployingTeamRosterException(
                         message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
                         ex=TeamPartiallyDeployedException(

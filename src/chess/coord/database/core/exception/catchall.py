@@ -13,11 +13,11 @@ ___all__ = [
 ]
 
 from chess.coord import CoordException
-from chess.system import StackException
+from chess.system import StackServiceException
 
 
 # ======================# COORD_STACK EXCEPTION #======================#
-class CoordStackException(CoordException, StackException):
+class CoordStackException(CoordException, StackServiceException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class CoordStackException(CoordException, StackException):
     2.  Wrap an exception that hits the try-finally block of a CoordStack method.
 
     # PARENT:
-        *   StackException
+        *   StackServiceException
         *   CoordDataException
 
     # PROVIDES:

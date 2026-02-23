@@ -13,11 +13,11 @@ ___all__ = [
 ]
 
 from chess.edge import EdgeException
-from chess.system import StackException
+from chess.system import StackServiceException
 
 
 # ======================# EDGE_STACK EXCEPTION #======================#
-class EdgeStackException(EdgeException, StackException):
+class EdgeStackException(EdgeException, StackServiceException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class EdgeStackException(EdgeException, StackException):
 
     # PARENT:
         *   EdgeException
-        *   StackException
+        *   StackServiceException
 
     # PROVIDES:
     None

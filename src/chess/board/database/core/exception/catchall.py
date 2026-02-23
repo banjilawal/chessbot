@@ -26,7 +26,7 @@ class BoardDataServiceException(BoardException, DataServiceException):
 
     # PARENT:
         *   BoardException
-        *   StackException
+        *   StackServiceException
 
     # PROVIDES:
     None

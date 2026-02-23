@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.token import TokenException
-from chess.system import StackException
+from chess.system import StackServiceException
 
 
 __all__ = [
@@ -17,7 +17,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_STACK EXCEPTION #======================#
-class TokenStackException(TokenException, StackException):
+class TokenStackException(TokenException, StackServiceException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class TokenStackException(TokenException, StackException):
 
     # PARENT:
         *   TokenException
-        *   StackException
+        *   StackServiceException
 
     # PROVIDES:
     None

@@ -12,12 +12,12 @@ __all__ = [
     "TeamPartiallyDeployedException",
 ]
 
-from chess.square import SquareStackException
+from chess.square import SquareStackServiceException
 from chess.system import DebugException
 
 
 # ======================# TEAM_PARTIALLY_DEPLOYED EXCEPTION #======================#
-class TeamPartiallyDeployedException(SquareStackException, DebugException):
+class TeamPartiallyDeployedException(SquareStackServiceException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -26,7 +26,7 @@ class TeamPartiallyDeployedException(SquareStackException, DebugException):
         placed on the board.
 
     # PARENT:
-        *   SquareStackException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None

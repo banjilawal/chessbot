@@ -28,7 +28,7 @@ class SquareNotFoundException(SquareDebugException):
 
     # PARENT:
         *   NullException
-        *   SquareStackException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None

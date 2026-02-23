@@ -8,25 +8,24 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# SQUARE_STACK EXCEPTION #======================#
-    "SquareStackException",
+    # ======================# SQUARE_STACK_SERVICE EXCEPTION #======================#
+    "SquareStackServiceException",
 ]
 
-from chess.square import SquareException
-from chess.system import StackException
+from chess.system import StackServiceException
 
 
-# ======================# SQUARE_STACK EXCEPTION #======================#
-class SquareStackException(SquareException, StackException):
+# ======================# SQUARE_STACK_SERVICE EXCEPTION #======================#
+class SquareStackServiceException(StackServiceException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by SquareStackService methods that return Result objects.
+    1.  Indicate a failure occurred in SquareStackService.
+    2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     # PARENT:
-        *   SquareException
-        *   StackException
+        *   StackServiceException
 
     # PROVIDES:
     None

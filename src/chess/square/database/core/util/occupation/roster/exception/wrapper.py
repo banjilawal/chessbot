@@ -12,12 +12,12 @@ __all__ = [
     "DeployingTeamRosterException",
 ]
 
-from chess.square import SquareStackException
+from chess.square import SquareStackServiceException
 from chess.system import UpdateException
 
 
 # ======================# TEAM_ROSTER_DEPLOYMENT_FAILURE #======================#
-class DeployingTeamRosterException(SquareStackException, UpdateException):
+class DeployingTeamRosterException(SquareStackServiceException, UpdateException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class DeployingTeamRosterException(SquareStackException, UpdateException):
     1.  Indicate that deploying all the team's members to their opening squares failed.
 
     # PARENT:
-        *   SquareStackException
+        *   SquareStackServiceException
         *   UpdateException
 
     # PROVIDES:

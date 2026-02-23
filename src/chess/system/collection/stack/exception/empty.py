@@ -8,7 +8,7 @@ Version: 1.0.0
 """
 
 
-from chess.system import StackException
+from chess.system import StackServiceException
 
 __all__ = [
     # ====================== POPPING_EMPTY_STACK EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 ]
 
 # ====================== POPPING_EMPTY_STACK EXCEPTION #======================#
-class PoppingEmptyStackException(StackException):
+class PoppingEmptyStackException(StackServiceException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class PoppingEmptyStackException(StackException):
     Indicate there was an attempt to pop an empty stack.
 
     # PARENT:
-        *   StackException
+        *   StackServiceException
 
     # PROVIDES:
     None

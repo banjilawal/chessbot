@@ -17,7 +17,8 @@ from .consistency import *
 
 # Modules
 from .null import NullException
-from .base import ChessException
+from .root import ChessException
+from .base import SuperClassException
 from .debug import DebugException
 from .wrapper import WrapperException
 from .catchall import CatchallException

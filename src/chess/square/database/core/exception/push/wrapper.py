@@ -24,7 +24,7 @@ class PushingSquareException(InsertionException):
     1.  Indicate that pushing a Square on the Stack failed.
 
     # PARENT:
-        *   SquareStackException
+        *   SquareStackServiceException
         *   PushFailedException
 
     # PROVIDES:

@@ -12,12 +12,12 @@ __all__ = [
     "CannotDeployUnderStrengthTeamException",
 ]
 
-from chess.square import SquareStackException
+from chess.square import SquareStackServiceException
 from chess.system import DebugException
 
 
 # ======================# TEAM_PARTIALLY_DEPLOYED EXCEPTION #======================#
-class CannotDeployUnderStrengthTeamException(SquareStackException, DebugException):
+class CannotDeployUnderStrengthTeamException(SquareStackServiceException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -25,7 +25,7 @@ class CannotDeployUnderStrengthTeamException(SquareStackException, DebugExceptio
     1.  Indicate that an attempt to deploy a team failed because it did not have a full complement of tokens.
 
     # PARENT:
-        *   SquareStackException
+        *   SquareStackServiceException
 
     # PROVIDES:
     None

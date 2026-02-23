@@ -1,83 +1,52 @@
-# src/chess/system/err/base.py
+# src/chess/system/err/super_class.py
 
 """
-Module: chess.system.err.base
+Module: chess.system.err.super_class
 Author: Banji Lawal
-Created: 2025-10-04
+Created: 2026-02-23
 version: 1.0.0
 """
 
-from typing import Optional
-
 __all__ = [
-    # ======================#  BASE APPLICATION EXCEPTION CLASS #======================#
-    "ChessException",
+    # ======================# SUPER_CLASS EXCEPTION #======================#
+    "SuperClassException",
 ]
 
+from chess.system import ChessException
 
-# ======================# BASE APPLICATION EXCEPTION CLASS #======================#
-class ChessException(Exception):
+
+# ======================# SUPER_CLASS EXCEPTION #======================#
+class SuperClassException(ChessException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Parent of exception by the application
+    1.  Exception for an Entity or Class.
+    2.  Parent of Debug exceptions that are raised by an object being manipulated.
+
+    # NAMING CONVENTION:
+    1.  Class name followed by the Exception suffix
+    2.  The Syntax is: [Class]Exception
+
+    # ERROR CODE CONVENTION:
+    1.  Class name followed by the ERROR suffix.
+    2.  The Syntax is: [Class]_ERROR
+
+    # DEFAULT MESSAGE CONVENTION:
+    1.  Class name followed by "raised an exception."
+    2.  The Syntax is: [Class] raised an exception
 
     # PARENT:
-        *   Exception
+        *   ChessException
 
     # PROVIDES:
-    NONE
+    None
 
     # LOCAL ATTRIBUTES:
-        Static Class Fields:
-            *   ERROR_CODE (str): Static class field
-            *   DEFAULT_MESSAGE (str): Static class field
-            
-        Instance Fields:
-            *   ex (Optional[Exception])
-            *   error_code (str)
-            *   message (str)
-    
-    # INHERITED ATTRIBUTES:
     None
+
+    # INHERITED ATTRIBUTES:
+     None
     """
-    ERROR_CODE = "CHESS_ERROR"
-    DEFAULT_MESSAGE = "Chess error occurred."
-    
-    _message: str
-    _error_code: str
-    _ex: Optional[Exception]
-    
-    def __init__(self, message: str = DEFAULT_MESSAGE, error_code: str = ERROR_CODE, ex: Optional[Exception] = None):
-        super().__init__(message)
-        self._ex = ex
-        self._message = message
-        self._error_code = error_code
-    
-    @property
-    def ex(self) -> Exception:
-        return self._ex
-    
-    @property
-    def error_code(self) -> str:
-        return self._error_code
-    
-    @property
-    def msg(self) -> str:
-        return self._message
-    
-    def __str__(self):
-        return f"{self._error_code}: {self._message}"
-    
-    # Only the super class needs the explict constructor
-    # def __init__(self, message: str):
-    #     self.message = message or self.DEFAULT_MESSAGE
-    #     super().__init__(self.message)
-    
-    # Only the super class needs to declare team_name toString. Subclasses
-    # will use this.
-
-
-
-
+    ERROR_CODE = "SUPER_CLASS_ERROR"
+    DEFAULT_MESSAGE = "SuperClassException."
