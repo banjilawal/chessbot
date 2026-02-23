@@ -14,4 +14,4 @@ from .debug import *
 
 # Modules
 from .catchall import AttackException
-from .wrapper import AttackFailedException
+from .wrapper import AttackException

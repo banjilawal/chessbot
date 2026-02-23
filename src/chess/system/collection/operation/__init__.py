@@ -19,4 +19,4 @@ from .computation import *
 
 # Modules
 from .result import DataResult
-from .exception import CollectionOperationFailedException
+from .exception import CollectionOperationException

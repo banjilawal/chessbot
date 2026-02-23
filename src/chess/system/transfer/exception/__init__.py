@@ -14,4 +14,4 @@ None
 
 # Modules
 from .route import NoTransferRouteException
-from .wrapper import TransferFailedException
+from .wrapper import TransferException

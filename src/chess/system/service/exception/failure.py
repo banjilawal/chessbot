@@ -6,16 +6,16 @@ Author: Banji Lawal
 Created: 2025-11-18
 """
 
-from chess.system import OperationFailedException, ServiceException
+from chess.system import OperationException, ServiceException
 
 __all__ = [
     # ======================# SERVICE_OPERATION_FAILURE #======================#
-    "ServiceOperationFailedException",
+    "ServiceOperationException",
 ]
 
 
 # ======================# SERVICE_OPERATION_FAILURE #======================#
-class ServiceOperationFailedException(ServiceException, OperationFailedException):
+class ServiceOperationException(ServiceException, OperationException):
     """
     # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception
 
@@ -24,7 +24,7 @@ class ServiceOperationFailedException(ServiceException, OperationFailedException
 
     # PARENT:
         *   ServiceException
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None

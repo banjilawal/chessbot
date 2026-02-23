@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# OPERATION_FAILURE #======================#
-    "OperationFailedException",
+    "OperationException",
 ]
 
 from chess.system import WrapperException
 
 
 # ======================# OPERATION_FAILURE #======================#
-class OperationFailedException(WrapperException):
+class OperationException(WrapperException):
     """
     # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception
 
@@ -37,3 +37,5 @@ class OperationFailedException(WrapperException):
     """
     ERROR_CODE = "OPERATION_FAILURE"
     DEFAULT_MESSAGE = "Operation failed."
+    
+

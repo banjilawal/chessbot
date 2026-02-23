@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+from chess.system import OperationException
 
 __all__ = [
     # ======================# VALIDATION_FAILURE #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 #======================# VALIDATION_FAILURE #======================#
-class ValidationException(OperationFailedException):
+class ValidationException(OperationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
   
@@ -25,7 +25,7 @@ class ValidationException(OperationFailedException):
         traces the ultimate source of failure.
 
     # PARENT:
-        *   OperationFailedException
+        *   OperationException
   
     # PROVIDES:
     None

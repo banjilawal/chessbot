@@ -9,7 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from chess.square import Square, SquareState, SquareValidator
+from chess.square import (
+    SquareVisitTerminationException, Square, SquareState, SquareValidator,
+    TokenVisitHandlerException
+)
 from chess.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
 from chess.token import Token, TokenBoardState, TokenService
 
@@ -186,20 +189,20 @@ class TokenVisitHandler:
                     - On success: Token.
         # RAISES:
             *   TokenVisitHandlerException
-            *   RemovingSquareOccupantException
+            *   SquareVisitTerminationException
             *   NothingToRemoveFromEmptySquareException
         """
         method = "SquareService.remove_occupant"
         
         # Handle the case that the square is not certified as safe.
-        validation = self.validator.validate(candidate=square)
+        validation = self.square_validator.validate(candidate=square)
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
-                    ex=RemovingSquareOccupantException(
-                        message=f"{method}: {RemovingSquareOccupantException.ERROR_CODE}",
+                    ex=SquareVisitTerminationException(
+                        message=f"{method}: {SquareVisitTerminationException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -210,8 +213,8 @@ class TokenVisitHandler:
             return DeletionResult.failure(
                 TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
-                    ex=RemovingSquareOccupantException(
-                        message=f"{method}: {RemovingSquareOccupantException.ERROR_CODE}",
+                    ex=SquareVisitTerminationException(
+                        message=f"{method}: {SquareVisitTerminationException.ERROR_CODE}",
                         ex=NothingToRemoveFromEmptySquareException(
                             f"{method}: {NothingToRemoveFromEmptySquareException.DEFAULT_MESSAGE}"
                         )

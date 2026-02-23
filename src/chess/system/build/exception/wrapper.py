@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+from chess.system import OperationException
 
 __all__ = [
     # ======================# BUILD_FAILURE #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# BUILD_FAILURE #======================#
-class BuildException(OperationFailedException):
+class BuildException(OperationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class BuildException(OperationFailedException):
         traces the ultimate source of failure.
 
     # PARENT:
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None

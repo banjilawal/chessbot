@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.formation import FormationException
-from chess.system import LookupFailedException
+from chess.system import LookupException
 
 __all__ = [
     # ======================# FORMATION_LOOKUP_WRAPPER EXCEPTION #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# FORMATION_LOOKUP_WRAPPER EXCEPTION #======================#
-class FormationLookupFailedException(FormationException, LookupFailedException):
+class FormationLookupFailedException(FormationException, LookupException):
     """
     # ROLE: WrapperException, Encapsulation
 

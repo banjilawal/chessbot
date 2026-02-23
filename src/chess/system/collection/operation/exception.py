@@ -7,16 +7,16 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import CollectionException, OperationFailedException
+from chess.system import CollectionException, OperationException
 
 __all__ = [
     # ======================# COLLECTION_OPERATION_FAILURE #======================#
-    "CollectionOperationFailedException",
+    "CollectionOperationException",
 ]
 
 
 # ======================# COLLECTION_OPERATION_FAILURE #======================#
-class CollectionOperationFailedException(CollectionException, OperationFailedException):
+class CollectionOperationException(CollectionException, OperationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class CollectionOperationFailedException(CollectionException, OperationFailedExc
 
     # PARENT:
         *   CollectionOperation
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None

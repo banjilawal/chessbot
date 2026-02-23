@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import FinderException, OperationFailedException
+from chess.system import FinderException, OperationException
 
 __all__ = [
     # ======================# SNAPSHOT_FINDER EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# SNAPSHOT_FINDER EXCEPTION #======================#
-class SnapshotFinderException(FinderException, OperationFailedException):
+class SnapshotFinderException(FinderException, OperationException):
     """
     # ROLE: Exception Wrapper
 

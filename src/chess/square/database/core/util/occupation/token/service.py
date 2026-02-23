@@ -13,7 +13,7 @@ from copy import deepcopy
 from typing import List
 
 from chess.square import (
-    AddingSquareOccupantException, RemovingSquareOccupantException, RosterFormationCoordinator, Square,
+    AddingSquareOccupantException, SquareVisitTerminationException, RosterFormationCoordinator, Square,
     SquareNotFoundException, SquareService, OccupationServiceException
 )
 from chess.system import DeletionResult, IdFactory, LoggingLevelRouter, UpdateResult
@@ -183,8 +183,8 @@ class OccupationService:
             return DeletionResult.failure(
                 exception=OccupationServiceException(
                     message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
-                    ex=RemovingSquareOccupantException(
-                        message=f"{method}: {RemovingSquareOccupantException.ERROR_CODE}",
+                    ex=SquareVisitTerminationException(
+                        message=f"{method}: {SquareVisitTerminationException.ERROR_CODE}",
                         ex=token_validation.exception
                     )
                 )

@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from chess.persona import PersonaException
-from chess.system import LookupFailedException
+from chess.system import LookupException
 
 __all__ = [
     # ======================# PERSONA_LOOKUP_FAILURE #======================#
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# PERSONA_LOOKUP_FAILURE #======================#
-class PersonaLookupFailedException(PersonaException, LookupFailedException):
+class PersonaLookupFailedException(PersonaException, LookupException):
     """
     # ROLE: WrapperException, Encapsulation
 
@@ -26,7 +26,7 @@ class PersonaLookupFailedException(PersonaException, LookupFailedException):
 
     # PARENT:
         *   PersonaException
-        *   LookupFailedException
+        *   LookupException
 
     # PROVIDES:
     None

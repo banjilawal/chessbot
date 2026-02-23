@@ -7,16 +7,16 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+from chess.system import OperationException
 
 __all__ = [
     # ======================# LOOKUP_FAILURE #======================#
-    "LookupFailedException",
+    "LookupException",
 ]
 
 
 # ======================# LOOKUP_FAILURE #======================#
-class LookupFailedException(OperationFailedException):
+class LookupException(OperationException):
     """
     # ROLE: Exception Wrapper
   
@@ -26,7 +26,7 @@ class LookupFailedException(OperationFailedException):
   
     # PARENT:
         *   LookupException
-        *   OperationFailedException
+        *   OperationException
   
     # PROVIDES:
     None

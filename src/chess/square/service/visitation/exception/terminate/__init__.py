@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import RemovingSquareOccupantException
+from .wrapper import SquareVisitTerminationException
 from .empty import NothingToRemoveFromEmptySquareException

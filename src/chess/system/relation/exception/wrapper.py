@@ -7,7 +7,7 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+from chess.system import OperationException
 
 __all__ = [
     # ======================# RELATION_ANALYSIS_FAILURE #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# RELATION_ANALYSIS_FAILURE #======================#
-class AnalysisException(OperationFailedException):
+class AnalysisException(OperationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -25,7 +25,7 @@ class AnalysisException(OperationFailedException):
         traces the ultimate source of failure.
 
     # PARENT:
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None

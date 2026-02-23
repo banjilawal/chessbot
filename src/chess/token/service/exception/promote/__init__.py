@@ -15,6 +15,6 @@ None
 # Modules
 from .route import PawnPromotionRouteException
 from .double import PawnAlreadyPromotedException
-from .wrapper import PawnPromotionFailedException
+from .wrapper import PawnPromotionException
 from .king import CannotPromotePawnToKingException
 from .same import NewRankSameAsCurrentRankException

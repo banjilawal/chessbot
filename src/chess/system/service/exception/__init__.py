@@ -13,4 +13,4 @@ None
 
 # Modules
 from .base import ServiceException
-from .failure import ServiceOperationFailedException
+from .failure import ServiceOperationException

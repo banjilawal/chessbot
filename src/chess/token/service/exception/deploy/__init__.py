@@ -13,6 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import TokenDeploymentFailedException
+from .wrapper import TokenDeploymentException
 from .state import TokenAlreadyDeployedOnBoardException
 from .unfound import TokenOpeningSquareNotFoundException

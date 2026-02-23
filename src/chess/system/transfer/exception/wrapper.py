@@ -7,16 +7,16 @@ Created: 2026-02-01
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+from chess.system import OperationException
 
 __all__ = [
     # ======================# TRANSFER_FAILURE #======================#
-    "TransferFailedException",
+    "TransferException",
 ]
 
 
 # ======================# TRANSFER_FAILURE #======================#
-class TransferFailedException(OperationFailedException):
+class TransferException(OperationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class TransferFailedException(OperationFailedException):
     2.  Wrap an exception that hits the try-finally block of a Transfer method.
 
     # PARENT:
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None

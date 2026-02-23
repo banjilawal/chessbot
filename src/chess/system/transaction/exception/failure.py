@@ -7,17 +7,17 @@ Created: 2025-10-015
 version: 1.0.0
 """
 
-from chess.system import OperationFailedException, RollbackException
+from chess.system import OperationException, RollbackException
 
 
 __all__ = [
     # ======================# TRANSACTION_FAILURE #======================#
-    "TransactionFailedException",
+    "TransactionException",
 ]
 
 
 # ======================# TRANSACTION_FAILURE #======================#
-class TransactionFailedException(OperationFailedException, RollbackException):
+class TransactionException(OperationException, RollbackException):
     """
     # ROLE: Exception Wrapper, Integrity Debugging, State Restoration,
 
@@ -27,7 +27,7 @@ class TransactionFailedException(OperationFailedException, RollbackException):
 
     # PARENT:
         *   RollbackException
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None

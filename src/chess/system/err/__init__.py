@@ -23,7 +23,7 @@ from .wrapper import WrapperException
 from .catchall import CatchallException
 from .rollback import RollbackException
 from .route import NoExecutionRouteException
-from .operation import OperationFailedException
+from .operation import OperationException
 from .implementation import MethodNotImplementedException
 
 

@@ -9,15 +9,15 @@ version: 1.0.0
 
 __all__ = [
     # ======================# ATTACK_FAILURE #======================#
-    "AttackFailedException",
+    "AttackException",
 ]
 
 from chess.attack import AttackException
-from chess.system import OperationFailedException
+from chess.system import OperationException
 
 
 # ======================# ATTACK_FAILURE #======================#
-class AttackFailedException(AttackException, OperationFailedException):
+class AttackException(AttackException, OperationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -25,7 +25,7 @@ class AttackFailedException(AttackException, OperationFailedException):
     1.  Wrap any exceptions that were created when an attack is not completed successfully.
 
     # PARENT:
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None

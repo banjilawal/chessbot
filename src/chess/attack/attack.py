@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from chess.attack import (
-    AttackFailedException, AttackResult, AttackingDisabledEnemyException, AttackingEnemyKingException,
+    AttackException, AttackResult, AttackingDisabledEnemyException, AttackingEnemyKingException,
     AttackingFriendlySquareException, AttackingTokenOnWrongBoardException, AttackingVacantSquareException
 )
 from chess.system import LoggingLevelRouter
@@ -40,8 +40,8 @@ class Attack:
         if attacker_validation.is_failure:
             # Return exception chain on failure.
             return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=attacker_validation.exception
                 )
             )
@@ -50,8 +50,8 @@ class Attack:
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=square_validation.exception
                 )
             )
@@ -59,8 +59,8 @@ class Attack:
         if square.is_empty:
             # Return the exception chain on failure.
             return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=AttackingVacantSquareException(f"{method}: {AttackingVacantSquareException.DEFAULT_MESSAGE}")
                 )
             )
@@ -68,8 +68,8 @@ class Attack:
         if attacker.team.board != square.occupant.team.board:
             # Return the exception chain on failure.
             return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=AttackingTokenOnWrongBoardException(
                         f"{method}: {AttackingTokenOnWrongBoardException.DEFAULT_MESSAGE}"
                     )
@@ -79,8 +79,8 @@ class Attack:
         if not attacker.is_enemy(square.occupant):
             # Return the exception chain on failure.
             return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=AttackingFriendlySquareException(
                         f"{method}: {AttackingFriendlySquareException.DEFAULT_MESSAGE}"
                     )
@@ -90,8 +90,8 @@ class Attack:
         if isinstance(square.occupant, KingToken):
             # Return the exception chain on failure.
             return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
                 )
             )
@@ -99,8 +99,8 @@ class Attack:
         if square.occupant.is_disabled:
             # Return the exception chain on failure.
             return AttackResult.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=AttackingDisabledEnemyException(
                         f"{method}: {AttackingDisabledEnemyException.DEFAULT_MESSAGE}"
                     )
@@ -136,8 +136,8 @@ class Attack:
         if captive_removal.is_failure:
             # Return exception chain on failure.
             return RelationReport.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=captive_removal.exception
                 )
             )
@@ -152,8 +152,8 @@ class Attack:
         if attacker_removal.is_failure:
             # Return exception chain on failure.
             return RelationReport.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=attacker_removal.exception
                 )
             )
@@ -162,8 +162,8 @@ class Attack:
         if add_occupant_result.is_failure:
             # Return exception chain on failure.
             return RelationReport.failure(
-                AttackFailedException(
-                    message=f"{method}: {AttackFailedException.DEFAULT_MESSAGE}",
+                AttackException(
+                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
                     ex=attacker_removal.exception
                 )
             )
@@ -179,8 +179,8 @@ class Attack:
         if manifest_build_result.is_failure:
             # Return the exception chain on failure.
             return AttackResult.failure(
-                AttackFailedException(
-                    f"{method}: {AttackFailedException}",
+                AttackException(
+                    f"{method}: {AttackException}",
                     ex=manifest_build_result.exception
                 )
             )

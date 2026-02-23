@@ -12,12 +12,12 @@ from chess.system import DeletionException
 
 __all__ = [
     # ======================# REMOVING_SQUARE_OCCUPANT_FAILURE #======================#
-    "RemovingSquareOccupantException",
+    "SquareVisitTerminationException",
 ]
 
 
 # ======================# REMOVING_SQUARE_OCCUPANT_FAILURE #======================#
-class RemovingSquareOccupantException(DeletionException):
+class SquareVisitTerminationException(DeletionException):
     """
     # ROLE: Exception Wrapper
 
@@ -40,3 +40,5 @@ class RemovingSquareOccupantException(DeletionException):
     """
     ERROR_CODE = "REMOVING_SQUARE_OCCUPANT_FAILURE"
     DEFAULT_MESSAGE = "Removing occupant from item failed."
+    
+    

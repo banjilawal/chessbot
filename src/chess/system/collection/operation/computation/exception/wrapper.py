@@ -7,7 +7,7 @@ Created: 2025-11-18
 Version: 1.0.0
 """
 
-from chess.system import CollectionOperationFailedException
+from chess.system import CollectionOperationException
 
 __all__ = [
     # ======================# COMPUTATION_FAILURE #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# COMPUTATION_FAILURE #======================#
-class ComputationException(CollectionOperationFailedException):
+class ComputationException(CollectionOperationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class ComputationException(CollectionOperationFailedException):
         traces the ultimate source of failure.
 
     # PARENT:
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None

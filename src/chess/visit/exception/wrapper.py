@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# VISIT_FAILURE #======================#
-    "VisitFailedException",
+    "VisitException",
 ]
 
-from chess.system import OperationFailedException
+from chess.system import OperationException
 
 
 # ======================# VISIT_FAILURE #======================#
-class VisitFailedException(OperationFailedException):
+class VisitException(OperationException):
     """
     # ROLE: Exception Wrapper, Encapsulation, Error Chaining
 
@@ -24,7 +24,7 @@ class VisitFailedException(OperationFailedException):
     1.  Wrap any exceptions that were created when an visit is not completed successfully.
 
     # PARENT:
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None

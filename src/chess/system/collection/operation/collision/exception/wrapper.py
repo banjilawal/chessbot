@@ -7,7 +7,7 @@ Created: 2026-02-21
 Version: 1.0.0
 """
 
-from chess.system import OperationFailedException
+from chess.system import OperationException
 
 __all__ = [
     # ======================# COLLISION_DETECTION_FAILURE #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# COLLISION_DETECTION_FAILURE #======================#
-class CollisionDetectionException(OperationFailedException):
+class CollisionDetectionException(OperationException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class CollisionDetectionException(OperationFailedException):
         traces the ultimate source of failure.
 
     # PARENT:
-        *   OperationFailedException
+        *   OperationException
 
     # PROVIDES:
     None
