@@ -12,19 +12,19 @@ __all__ = [
     "SquareNameCollisionException",
 ]
 
-from chess.square import SquareStackException
+from chess.square import SquareDebugException
 
 
 # ======================# SQUARE_NAME_COLLISION EXCEPTION #======================#
-class SquareNameCollisionException(SquareStackException):
+class SquareNameCollisionException(SquareDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that inserting a item failed because the name was already in use by a collection member.
-
+    At least two squares two are sharing a name that should be unique to a square.
+    
     # PARENT:
-        *   SquareStackException
+        *   SquareDebugException
 
     # PROVIDES:
     None
@@ -36,4 +36,4 @@ class SquareNameCollisionException(SquareStackException):
     None
     """
     ERROR_CODE = "SQUARE_NAME_COLLISION_ERROR"
-    DEFAULT_MESSAGE = "Square push failed: Another item is already using the name."
+    DEFAULT_MESSAGE = "Square collision detected: At least two squares have the same name."

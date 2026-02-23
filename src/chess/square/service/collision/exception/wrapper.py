@@ -21,7 +21,8 @@ class SquareCollisionDetectionException(CollisionDetectionException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SquareCollisionDetector.detect that prevented a successful CollisionDetectionResult.
+    1.  An error occurred in SquareCollisionDetector.detect that prevented a successful, no collisions
+        detected result.
 
     # PARENT:
         *   CollisionDetectionException

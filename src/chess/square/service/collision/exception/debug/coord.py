@@ -12,19 +12,19 @@ __all__ = [
     "SquareCoordCollisionException",
 ]
 
-from chess.square import SquareStackException
+from chess.square import SquareDebugException
 
 
 # ======================# SQUARE_COORD_COLLISION EXCEPTION #======================#
-class SquareCoordCollisionException(SquareStackException):
+class SquareCoordCollisionException(SquareDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that inserting a item failed because the coord was already in use by a collection member.
+    At least two squares two are sharing a coord that should be unique to a square.
 
     # PARENT:
-        *   SquareStackException
+        *   SquareDebugException
 
     # PROVIDES:
     None
@@ -36,4 +36,4 @@ class SquareCoordCollisionException(SquareStackException):
     None
     """
     ERROR_CODE = "SQUARE_COORD_COLLISION_ERROR"
-    DEFAULT_MESSAGE = "Square push failed: Another item is already using the coord."
+    DEFAULT_MESSAGE = "Square collision detected: At least two squares have the same coord."

@@ -12,19 +12,19 @@ __all__ = [
     "SquareIdCollisionException",
 ]
 
-from chess.square import SquareStackException
+from chess.square import SquareDebugException
 
 
 # ======================# SQUARE_ID_COLLISION EXCEPTION #======================#
-class SquareIdCollisionException(SquareStackException):
+class SquareIdCollisionException(SquareDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that inserting a item failed because the id was already in use by a collection member.
+    At least two squares two are sharing a id that should be unique to a square.
 
     # PARENT:
-        *   SquareStackException
+        *   SquareDebugException
 
     # PROVIDES:
     None
@@ -36,4 +36,4 @@ class SquareIdCollisionException(SquareStackException):
     None
     """
     ERROR_CODE = "SQUARE_ID_COLLISION_ERROR"
-    DEFAULT_MESSAGE = "Square push failed: Another item is already using the id."
+    DEFAULT_MESSAGE = "Square collision detected: At least two squares have the same id."
