@@ -230,28 +230,29 @@ class TokenVisitHandler:
         DeletionResult.success(payload=token)
     
     @LoggingLevelRouter.monitor
-    def _verify_token_opens_from_square(self, square: Square, token: Token) -> ValidationResult[Square]:
+    def _verify_token_opens_from_square(self, target: Square, visitor: Token) -> ValidationResult[Square]:
         """
         # ACTION:
-            1.  If the token and square belong to different boards send an exception in the ValidationResult.
-                Else, return the token in the success result.
+            1.  If the token's opening name differs from the target's return a ValidationResult with the exception.
+                Else return a Validation success result.
         # PARAMETERS:
-            *   token (Token)
-            *   square (Square)
+            *   visitor (Token)
+            *   target (Square)
         # RETURN:
-            *   UpdateResult[Square]
+            *   ValidationResult[Square]
         # RAISES:
             *   VisitingWrongOpeningSquareException
         """
-        method = "SquareService._verify_token_forms_on_square"
+        method = "TokenVisitHandler._verify_token_forms_on_square"
         
         # Handle the case that the occupant belongs to a different square.
-        if square.name.upper() != token.opening_square_name.upper():
+        if target.name.upper() != visitor.opening_square_name.upper():
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 VisitingWrongOpeningSquareException(
                     f"{method}: {VisitingWrongOpeningSquareException.DEFAULT_MESSAGE}"
                 )
             )
-        return ValidationResult.success(payload=token)
+        # --- Send the success result to the caller. ---#
+        return ValidationResult.success(payload=target)
 

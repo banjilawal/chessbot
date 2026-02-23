@@ -24,7 +24,7 @@ class NoVisitForTerminationException(SquareDebugException):
     A failure DeletionResult was returned because there was no visitor in the square. There was no visit to terminate.
 
     # PARENT:
-        *   SquareException
+        *   SquareDebugException
 
     # PROVIDES:
     None
