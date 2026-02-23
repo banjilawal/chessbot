@@ -22,7 +22,6 @@ class SquareVisitTerminationException(DeletionException):
 
     # RESPONSIBILITIES:
     1.  An error occurred in TokenVistHandler.terminate_visit that prevented a successful DeletionResult.
-    2.  This error might have occurred in a different TokenVisitHandler method that also returns DeletionResults.
 
     # PARENT:
         *   DeletionException

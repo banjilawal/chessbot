@@ -8,24 +8,22 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_ROSTER_DEPLOYMENT_FAILURE #======================#
-    "DeployingTeamRosterException",
+    # ======================# ROSTER_DEPLOYMENT_FAILURE #======================#
+    "RosterDeploymentException",
 ]
 
-from chess.square import SquareStackServiceException
 from chess.system import UpdateException
 
 
-# ======================# TEAM_ROSTER_DEPLOYMENT_FAILURE #======================#
-class DeployingTeamRosterException(SquareStackServiceException, UpdateException):
+# ======================# ROSTER_DEPLOYMENT_FAILURE #======================#
+class RosterDeploymentException(UpdateException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that deploying all the team's members to their opening squares failed.
+    1.  An error occurred in RosterFormationCoordinator.form_team that prevented a successful UpdateResult.
 
     # PARENT:
-        *   SquareStackServiceException
         *   UpdateException
 
     # PROVIDES:
@@ -34,8 +32,9 @@ class DeployingTeamRosterException(SquareStackServiceException, UpdateException)
     # LOCAL ATTRIBUTES:
     None
 
-    # INHERITED ATTRIBUTES:
+    INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_ROSTER_DEPLOYMENT_FAILURE"
-    DEFAULT_MESSAGE = "Deploying team's members failed."
+    ERROR_CODE = "ROSTER_DEPLOYMENT_FAILURE"
+    DEFAULT_MESSAGE = "Roster deployment failed."
+

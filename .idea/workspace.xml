@@ -857,7 +857,7 @@
       <workItem from="1771717623716" duration="30580000" />
       <workItem from="1771759159376" duration="31251000" />
       <workItem from="1771799120009" duration="23003000" />
-      <workItem from="1771822876774" duration="6034000" />
+      <workItem from="1771822876774" duration="18034000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

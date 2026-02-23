@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import DeployingTeamRosterException
+from .wrapper import RosterDeploymentException
 from .duplicate import TeamAlreadyDeployedException
 from .incomplete import TeamPartiallyDeployedException
 from .strength import CannotDeployUnderStrengthTeamException

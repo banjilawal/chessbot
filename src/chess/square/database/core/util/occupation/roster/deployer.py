@@ -15,7 +15,7 @@ from chess.token import TokenContext
 from chess.team import Team, TeamService
 from chess.system import LoggingLevelRouter, UpdateResult
 from chess.square import (
-    CannotDeployUnderStrengthTeamException, DeployingTeamRosterException, SquareStackService, SquareStackServiceException,
+    CannotDeployUnderStrengthTeamException, RosterDeploymentException, SquareStackService, SquareStackServiceException,
     TeamAlreadyDeployedException, TeamPartiallyDeployedException
 )
 
@@ -88,12 +88,12 @@ class RosterFormationCoordinator:
             *   UpdateResult[Team]
         # RAISES:
             *   SquareStackServiceException
-            *   DeployingTeamRosterException
+            *   RosterDeploymentException
             *   TeamAlreadyDeployedException
             *   TeamPartiallyDeployedException
             *   CannotDeployUnderStrengthTeamException
         """
-        method = "SquareService.accept_roster_members_from_team"
+        method = "RosterFormationCoordinator.form_team"
         
         # Handle the case that the occupant is not certified safe.
         team_validation = team_service.validator.validate(candidate=team)
@@ -103,8 +103,8 @@ class RosterFormationCoordinator:
                 original=team,
                 exception=SquareStackServiceException(
                     message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
-                    ex=DeployingTeamRosterException(
-                        message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
+                    ex=RosterDeploymentException(
+                        message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
                         ex=team_validation.exception
                     )
                 )
@@ -116,8 +116,8 @@ class RosterFormationCoordinator:
                 original=team,
                 exception=SquareStackServiceException(
                     message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
-                    ex=DeployingTeamRosterException(
-                        message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
+                    ex=RosterDeploymentException(
+                        message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
                         ex=TeamAlreadyDeployedException(
                             f"{method}: {TeamAlreadyDeployedException.DEFAULT_MESSAGE}"
                         )
@@ -131,8 +131,8 @@ class RosterFormationCoordinator:
                 original=team,
                 exception=SquareStackServiceException(
                     message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
-                    ex=DeployingTeamRosterException(
-                        message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
+                    ex=RosterDeploymentException(
+                        message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
                         ex=CannotDeployUnderStrengthTeamException(
                             f"{method}: {CannotDeployUnderStrengthTeamException.DEFAULT_MESSAGE}"
                         )
@@ -152,8 +152,8 @@ class RosterFormationCoordinator:
                     original=pre_deployment_team,
                     exception=SquareStackServiceException(
                         message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
-                        ex=DeployingTeamRosterException(
-                            message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
+                        ex=RosterDeploymentException(
+                            message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
                             ex=token_search_result.exception
                         )
                     )
@@ -171,8 +171,8 @@ class RosterFormationCoordinator:
                     original=pre_deployment_team,
                     exception=SquareStackServiceException(
                         message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
-                        ex=DeployingTeamRosterException(
-                            message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
+                        ex=RosterDeploymentException(
+                            message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
                             ex=square_update_result.exception
                         )
                     )
@@ -186,8 +186,8 @@ class RosterFormationCoordinator:
                 original=pre_deployment_team,
                 exception=SquareStackServiceException(
                     message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
-                    ex=DeployingTeamRosterException(
-                        message=f"{method}: {DeployingTeamRosterException.ERROR_CODE}",
+                    ex=RosterDeploymentException(
+                        message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
                         ex=TeamPartiallyDeployedException(
                             f"{method}: {TeamPartiallyDeployedException.DEFAULT_MESSAGE}"
                         )
