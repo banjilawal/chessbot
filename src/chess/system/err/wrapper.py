@@ -18,7 +18,7 @@ from chess.system import ChessException
 # ======================# WRAPPER EXCEPTION #======================#
 class WrapperException(ChessException):
     """
-    # ROLE: Wrapper, Exception Messaging
+    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  Encapsulates the debug exception that was raised when a specific condition prevented an operation successfully
