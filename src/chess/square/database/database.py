@@ -124,8 +124,7 @@ class SquareDatabase(Database[Square]):
         )
         # Handle the case that, the occupation was aborted.
         if occupation_update_result.is_failure:
-            # Encapsulate original and exception from occupation_update_result in a
-            # SquareDatabaseException chain then, send to client in new UpdateResult.
+            # Encapsulate occupation_update_result.{original, exception} in exception chain returned on failure.
             return UpdateResult.update_failure(
                 original=occupation_update_result.original,
                 exception=SquareDatabaseException(
@@ -151,7 +150,7 @@ class SquareDatabase(Database[Square]):
         # PARAMETERS:
             *   token (Token)
         # RETURN:
-            *   DeletionResult[Square]
+            *   DeletionResult[Token]
         # RAISES:
             *   SquareDatabaseException
         """
@@ -164,7 +163,7 @@ class SquareDatabase(Database[Square]):
         # Handle the case that, the eviction was aborted.
         if occupant_removal_result.is_failure:
             # Return the exception chain on failure.
-            return UpdateResult.update_failure(
+            return DeletionResult.failure(
                 SquareDatabaseException(
                     message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
                     ex=occupant_removal_result.exception
