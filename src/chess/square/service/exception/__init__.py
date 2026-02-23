@@ -10,9 +10,7 @@ version: 1.0.0
 # =========== SQUARE.SERVICE.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .debug import *
-from .insertion import *
-from .occupant import *
+None
 
 # Modules
 from .catchall import SquareServiceException
