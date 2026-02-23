@@ -9,8 +9,11 @@ version: 1.0.0
 
 from __future__ import annotations
 
+from copy import deepcopy
+
 from chess.square import (
-    StartingSquareVisitException, NoVisitForTerminationException, SquareVisitTerminationException, Square, SquareState,
+    SquareVisitorDisabledException, StartingSquareVisitException, NoVisitForTerminationException,
+    SquareVisitTerminationException, Square, SquareState,
     SquareValidator,
     VisitingWrongOpeningSquareException, TokenVisitHandlerException
 )
@@ -130,15 +133,15 @@ class TokenVisitHandler:
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
                         message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
-                        ex=DisabledTokenOccupyingSquareException(
-                            f"{method}: {DisabledTokenOccupyingSquareException.DEFAULT_MESSAGE}"
+                        ex=SquareVisitorDisabledException(
+                            f"{method}: {SquareVisitorDisabledException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
             )
         # Handle the case that an unformed token is trying to start from the wrong square.
         if token.is_not_deployed:
-            validate_token_opening_square_result = self._verify_token_opens_fromn_square(
+            validate_token_opening_square_result = self._verify_token_opens_from_square(
                 square=square,
                 token=token
             )

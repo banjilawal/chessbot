@@ -15,5 +15,5 @@ None
 # Modules
 from .wrapper import StartingSquareVisitException
 from .board import TokenEnteringSquareOnWrongBoardException
-from .disabled import DisabledTokenOccupyingSquareException
+from .disabled import SquareVisitorDisabledException
 from .opening import VisitingWrongOpeningSquareException

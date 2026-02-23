@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# NOT_IMPLEMENTED EXCEPTION #======================#
+    # ======================# WRAPPER EXCEPTION #======================#
     "WrapperException",
 ]
 
