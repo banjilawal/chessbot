@@ -10,8 +10,8 @@ version: 1.0.0
 # =========== SQUARE.SERVICE.EXCEPTION.OCCUPANT PACKAGE CONTENTS ===========#
 
 # Packages
-from .add import *
-from .remove import *
+from chess.square.service.exception.occupant.add import *
+from chess.square.service.exception.occupant.remove import *
 
 # Modules
 None

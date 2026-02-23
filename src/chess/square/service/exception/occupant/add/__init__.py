@@ -13,9 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .full import CannotEnterOccupiedSquareException
-from .wrapper import AddingSquareOccupantException
-from .board import TokenEnteringSquareOnWrongBoardException
-from .disabled import DisabledTokenOccupyingSquareException
-from .opening import TokenEnteringWrongOpeningSquareException
 
