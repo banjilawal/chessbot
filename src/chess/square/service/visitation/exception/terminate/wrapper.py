@@ -7,27 +7,24 @@ Created: 2026-02-22
 version: 1.0.0
 """
 
-from chess.square import SquareException
 from chess.system import DeletionException
 
 __all__ = [
-    # ======================# REMOVING_SQUARE_OCCUPANT_FAILURE #======================#
+    # ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
     "SquareVisitTerminationException",
 ]
 
 
-# ======================# REMOVING_SQUARE_OCCUPANT_FAILURE #======================#
+# ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
 class SquareVisitTerminationException(DeletionException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why removing a occupant from a item failed..
+    Carry the Layer-1 DebugException which explains why the square visit was not terminated.
 
     # PARENT:
-        *   SquareException
         *   DeletionException
-
 
     # PROVIDES:
     None
@@ -38,7 +35,7 @@ class SquareVisitTerminationException(DeletionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "REMOVING_SQUARE_OCCUPANT_FAILURE"
-    DEFAULT_MESSAGE = "Removing occupant from item failed."
+    ERROR_CODE = "SQUARE_VISIT_TERMINATION_FAILURE"
+    DEFAULT_MESSAGE = "Terminating the square visitation failed:."
     
     
