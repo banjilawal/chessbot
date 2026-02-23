@@ -41,22 +41,23 @@ class TokenVisitHandler:
     ) -> UpdateResult[Square]:
         """
         # ACTION:
-            1.  If the square is either unsafe or occupied send the exception chain and the unmodified square back
-                in the UpdatedResult.
-            2.  If the token is either
+            1.  If the square is either unsafe put the square and exception chain  in the UpdateResult  then
+                return the client. Else make a deep copy of the square.
+            2.  If th  square is already occupied put the deep_copy and the exception chain  in the UpdateResult
+                sent to the client.
+            3.  If the token is either
                     *   Disabled.
                     *   Not certified safe.
                     *   Belongs to a different board.
                     *   unformed but want to start from the wrong square.
-                Send the exception chain and the unmodified square back in the UpdatedResult.
-            3.  Make a deep copy of the square before its occupied.
-            4.  Put the token in the square and update the square's occupation state.
-            5.  Push the square's coord onto the token's position and update the token's board state if necessary.
-            6.  Send the deep copy and the back to the caller in the UpdatedResult.
+                put deep_copy and the exception chain in the UpdateResult sent to the client.
+            4.  Configure the square side of the square-token binding.
+            5.  Configure the token side of the square-token binding.
+            6.  Send deep_copy and the current square in the success result.
         # PARAMETERS:
             *   token (Token)
             *   square (Square)
-            *   token_service (TokenService)
+            *   square_validator (SquareValidator)
         # RETURN:
             *   UpdateResult[Square]
         # RAISES:
@@ -64,6 +65,7 @@ class TokenVisitHandler:
             *   StartingSquareVisitException
             *   VisitingOccupiedSquareException
             *   VisitorFromWrongBoardException
+            *   SquareVisitorDisabledException
         """
         method = "SquareService.add_occupant"
         
@@ -153,25 +155,25 @@ class TokenVisitHandler:
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
                         message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=validate_token_opening_square_result.exception
                     )
                 )
             )
-        # --- After integrity and consistency checks are passed, process the occupation. ---#
+        # --- Integrity and consistency checks are passed. Start the visit. ---#
         
-        # Make a deep copy of the square before its occupied then
-        # Update state on the square side.
+        # Set the square side of the relationship.
         square.occupant = token
         square.state = SquareState.OCCUPIED
-        # Update state ob the token side.
+        
+        # Set the token side of the relationship.
         token.positions.push(square.coord)
         if token.board_state == TokenBoardState.NEVER_BEEN_PLACED:
             token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
         
-        # --- Send the update success result to the caller. ---#
+        # --- Send the update success result to the client. ---#
         return UpdateResult.update_success(original=pre_update_square, updated=square)
     
     @LoggingLevelRouter.monitor
