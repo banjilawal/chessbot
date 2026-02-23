@@ -18,14 +18,13 @@ __all__ = [
 # ======================# UPDATE_FAILURE #======================#
 class UpdateException(CollectionOperationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a update operation failed. The exception chain 
-        traces the ultimate source of failure.
+    1.  Encapsulate the Layer-1 DebugException which describes the cause the update failed.
 
     # PARENT:
-        *   OperationException
+        *   CollectionOperationException
 
     # PROVIDES:
     None

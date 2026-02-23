@@ -18,23 +18,22 @@ __all__ = [
 #======================# VALIDATION_FAILURE #======================#
 class ValidationException(OperationException):
     """
-    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
-  
+    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a validation operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  Encapsulate the Layer-1 DebugException which describes which check the candidate failed.
 
     # PARENT:
         *   OperationException
-  
+
     # PROVIDES:
     None
-  
+
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VALIDATION_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Validation failed."
+    ERROR_CODE = "DELETION_FAILURE"
+    DEFAULT_MESSAGE = "Deletion failed."

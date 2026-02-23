@@ -18,11 +18,11 @@ __all__ = [
 # ======================# BUILD_FAILURE #======================#
 class BuildException(OperationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a build operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  Encapsulate the Layer-1 DebugException which describes what condition prevented the build 
+        from completing.
 
     # PARENT:
         *   OperationException
@@ -37,4 +37,4 @@ class BuildException(OperationException):
     None
     """
     ERROR_CODE = "BUILD_FAILURE"
-    DEFAULT_MESSAGE = "build failed."
+    DEFAULT_MESSAGE = "Build failed."
