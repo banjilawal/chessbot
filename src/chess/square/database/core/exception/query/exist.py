@@ -20,15 +20,14 @@ from chess.square import SquareDebugException
 # ======================# SQUARE_NOT_FOUND EXCEPTION #======================#
 class SquareNotFoundException(SquareDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to remove instances of a item by a unique attribute failed because no bag
-        matching the property were found in the dataset.
+    A failure UpdateResult was returned because a tkone wanted to occupy a square which does not exist in
+    the SquareStack.
 
     # PARENT:
-        *   NullException
-        *   SquareStackServiceException
+        *   SquareDebugException
 
     # PROVIDES:
     None
@@ -40,4 +39,4 @@ class SquareNotFoundException(SquareDebugException):
     None
     """
     ERROR_CODE = "SQUARE_NOT_FOUND_ERROR"
-    DEFAULT_MESSAGE = "Square deletion failed: The item was not found in the dataset. Nothing to remove."
+    DEFAULT_MESSAGE = "SquareVisit start failed: token wanted to visit square which does not exist."

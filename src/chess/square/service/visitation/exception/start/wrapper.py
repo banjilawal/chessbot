@@ -38,4 +38,4 @@ class StartingSquareVisitException(UpdateException):
     None
     """
     ERROR_CODE = "STARTING_SQUARE_VISIT_FAILURE"
-    DEFAULT_MESSAGE = "Square visit start failed."
+    DEFAULT_MESSAGE = "SquareVisit start failed."

@@ -21,6 +21,44 @@ from chess.token import Token, TokenService
 
 
 class OccupationService:
+    """
+    # ROLE: Utilities, Update Management,
+
+    # RESPONSIBILITIES:
+    1.  Owns Token operations in SquareStackService.
+    2.  Transfers Team.roster members to their opening squares.
+    2.  Conducts update transactions for individual squares in the stack
+
+    # PARENT:
+    None
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   id (int)
+        *   SERVICE_NAME (str)
+        *   formation_coordinator (RosterFormationCoordinator)
+
+    # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+            *   id (int)
+            *   name (str)
+            *   formation_coordinator (RosterFormationCoordinator)
+            
+        Inherited:
+        None
+
+    # LOCAL METHODS:
+        *   add_occupant(token: Token, square: Square, square_list: list[Square]) -> UpdateResult[Square]
+        *   remove_occupant_by_search(occupant: Token, square_list: List[Square]) -> DeletionResult[Token]
+
+    # INHERITED METHODS:
+    None
+    """
     SERVICE_NAME = "OccupationService"
     _id: int
     _name: str
