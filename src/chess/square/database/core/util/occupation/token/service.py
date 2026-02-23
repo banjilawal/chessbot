@@ -13,7 +13,7 @@ from copy import deepcopy
 from typing import List
 
 from chess.square import (
-    StartingSquareVisitException, SquareVisitTerminationException, RosterFormationCoordinator, Square,
+    StartingSquareVisitException, SquareVisitTerminationException, RosterDeployer, Square,
     SquareNotFoundException, SquareService, OccupationServiceException
 )
 from chess.system import DeletionResult, IdFactory, LoggingLevelRouter, UpdateResult
@@ -38,7 +38,7 @@ class OccupationService:
     # LOCAL ATTRIBUTES:
         *   id (int)
         *   SERVICE_NAME (str)
-        *   formation_coordinator (RosterFormationCoordinator)
+        *   formation_coordinator (RosterDeployer)
 
     # INHERITED ATTRIBUTES:
     None
@@ -47,7 +47,7 @@ class OccupationService:
         Local:
             *   id (int)
             *   name (str)
-            *   formation_coordinator (RosterFormationCoordinator)
+            *   formation_coordinator (RosterDeployer)
             
         Inherited:
         None
@@ -62,13 +62,13 @@ class OccupationService:
     SERVICE_NAME = "OccupationService"
     _id: int
     _name: str
-    _formation_coordinator: RosterFormationCoordinator
+    _formation_coordinator: RosterDeployer
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="OccupationService"),
-            formation_coordinator: RosterFormationCoordinator = RosterFormationCoordinator()
+            formation_coordinator: RosterDeployer = RosterDeployer()
     ):
         self._id = id
         self._name = name
@@ -83,7 +83,7 @@ class OccupationService:
         return self._name
     
     @property
-    def formation_coordinator(self) -> RosterFormationCoordinator:
+    def formation_coordinator(self) -> RosterDeployer:
         return self._formation_coordinator
     
     @LoggingLevelRouter.monitor

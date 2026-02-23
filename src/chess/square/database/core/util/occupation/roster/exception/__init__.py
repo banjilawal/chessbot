@@ -15,5 +15,5 @@ None
 # Modules
 from .wrapper import RosterDeploymentException
 from .duplicate import RosterDoubleDeploymentException
-from .incomplete import RosterDeploymentInterruptedException
+from .interrupted import RosterDeploymentInterruptedException
 from .strength import CannotDeployUnderStrengthTeamException

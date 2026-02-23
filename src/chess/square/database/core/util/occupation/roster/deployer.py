@@ -19,7 +19,7 @@ from chess.square import (
     RosterDoubleDeploymentException, RosterDeploymentInterruptedException
 )
 
-class RosterFormationCoordinator:
+class RosterDeployer:
     """
     # ROLE: Utilities, Update Management,
 
@@ -93,7 +93,7 @@ class RosterFormationCoordinator:
             *   RosterDeploymentInterruptedException
             *   CannotDeployUnderStrengthTeamException
         """
-        method = "RosterFormationCoordinator.form_team"
+        method = "RosterDeployer.form_team"
         
         # Handle the case that the occupant is not certified safe.
         team_validation = team_service.validator.validate(candidate=team)

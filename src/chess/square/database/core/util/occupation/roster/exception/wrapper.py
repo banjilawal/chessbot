@@ -21,7 +21,7 @@ class RosterDeploymentException(UpdateException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in RosterFormationCoordinator.form_team that prevented a successful UpdateResult.
+    1.  An error occurred in RosterDeployer.form_team that prevented a successful UpdateResult.
 
     # PARENT:
         *   UpdateException
