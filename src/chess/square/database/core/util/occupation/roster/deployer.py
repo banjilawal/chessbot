@@ -16,7 +16,7 @@ from chess.team import Team, TeamService
 from chess.system import LoggingLevelRouter, UpdateResult
 from chess.square import (
     CannotDeployUnderStrengthTeamException, RosterDeploymentException, SquareStackService, SquareStackServiceException,
-    TeamAlreadyDeployedException, TeamPartiallyDeployedException
+    RosterDoubleDeploymentException, TeamPartiallyDeployedException
 )
 
 class RosterFormationCoordinator:
@@ -89,7 +89,7 @@ class RosterFormationCoordinator:
         # RAISES:
             *   SquareStackServiceException
             *   RosterDeploymentException
-            *   TeamAlreadyDeployedException
+            *   RosterDoubleDeploymentException
             *   TeamPartiallyDeployedException
             *   CannotDeployUnderStrengthTeamException
         """
@@ -118,8 +118,8 @@ class RosterFormationCoordinator:
                     message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
                     ex=RosterDeploymentException(
                         message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
-                        ex=TeamAlreadyDeployedException(
-                            f"{method}: {TeamAlreadyDeployedException.DEFAULT_MESSAGE}"
+                        ex=RosterDoubleDeploymentException(
+                            f"{method}: {RosterDoubleDeploymentException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
