@@ -12,17 +12,33 @@ from __future__ import annotations
 from copy import deepcopy
 
 from chess.square import (
-    SquareVisitorDisabledException, StartingSquareVisitException, NoVisitForTerminationException,
-    SquareVisitTerminationException, Square, SquareState,
-    SquareValidator,
-    VisitorFromWrongBoardException, VisitingWrongOpeningSquareException, TokenVisitHandlerException
+    NoVisitForTerminationException, Square, SquareState, SquareValidator, SquareVisitTerminationException,
+    SquareVisitorDisabledException, StartingSquareVisitException, TokenVisitHandlerException,
+    VisitingOccupiedSquareException, VisitingWrongOpeningSquareException, VisitorFromWrongBoardException
 )
-from chess.square.service.visitation.exception.start.full import VisitingOccupiedSquareException
 from chess.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
 from chess.token import Token, TokenBoardState, TokenService
 
 
 class TokenVisitHandler:
+    """
+    # ROLE: Consistency, Integrity Maintenance, Lifecycle Management
+
+    # RESPONSIBILITIES:
+    1.  Ensure integrity and consistency  are maintained in all stages of the square occupation lifecycle.
+
+    # PARENT:
+    None
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None.
+    """
     _token_service: TokenService
     
     def __init__(self, token_service: TokenService):

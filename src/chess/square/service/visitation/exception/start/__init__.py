@@ -16,4 +16,5 @@ None
 from .wrapper import StartingSquareVisitException
 from .board import VisitorFromWrongBoardException
 from .disabled import SquareVisitorDisabledException
+from .occupied import VisitingOccupiedSquareException
 from .opening import VisitingWrongOpeningSquareException
