@@ -8,21 +8,37 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# SQUARE_IS_EMPTY EXCEPTION #======================#
+    # ======================# NO_VISIT_FOR_TERMINATION EXCEPTION #======================#
     "NoVisitForTerminationException",
 ]
 
 from chess.square import SquareDebugException
 
 
-# ======================# SQUARE_IS_EMPTY EXCEPTION #======================#
+# ======================# NO_VISIT_FOR_TERMINATION EXCEPTION #======================#
 class NoVisitForTerminationException(SquareDebugException):
-      
+    """
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+
+
+
+    # PARENT:
+        *   DeletionException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+        """
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that removing a occupant from a item failed because the item was empty.
+    A failure DeletionResult was returned because there was no visitor in the square. There was no visit to terminate.
 
     # PARENT:
         *   SquareException
@@ -36,5 +52,5 @@ class NoVisitForTerminationException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_IS_EMPTY_ERROR"
-    DEFAULT_MESSAGE = "Removing occupant from item failed: The item was empty. Nothing to remove."
+    ERROR_CODE = "NO_VISIT_FOR_TERMINATION_ERROR"
+    DEFAULT_MESSAGE = "Square visit termination failed: There was not visitor in the to eject."

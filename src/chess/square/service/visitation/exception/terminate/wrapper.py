@@ -37,6 +37,6 @@ class SquareVisitTerminationException(DeletionException):
     None
     """
     ERROR_CODE = "SQUARE_VISIT_TERMINATION_FAILURE"
-    DEFAULT_MESSAGE = "Terminating the square visitation failed:."
+    DEFAULT_MESSAGE = "Square visit termination failed."
     
     
