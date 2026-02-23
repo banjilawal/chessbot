@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+    # ======================# NO_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
     "SquareContextBuildRouteException",
 ]
 
 from chess.square import SquareContextException
-from chess.system import NoBuildRouteException
+from chess.system import  NoExecutionRouteException
 
 
-# ======================# UNHANDLED_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
-class SquareContextBuildRouteException(SquareContextException, NoBuildRouteException):
+# ======================# NO_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
+class SquareContextBuildRouteException(SquareContextException,  NoExecutionRouteException):
     """
     # ROLE: Fallback Result, Debugging
 
@@ -26,7 +26,7 @@ class SquareContextBuildRouteException(SquareContextException, NoBuildRouteExcep
 
     # PARENT:
         *   SquareContextException
-        *   UnhandledRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES
     None
@@ -37,5 +37,5 @@ class SquareContextBuildRouteException(SquareContextException, NoBuildRouteExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SQUARE_CONTEXT_BUILD_ROUTE_ERROR"
+    ERROR_CODE = "NO_SQUARE_CONTEXT_BUILD_ROUTE_ERROR"
     DEFAULT_MESSAGE = "SquareContext build failed: No build path existed for the Square key."

@@ -7,7 +7,6 @@ Created: 2025-11-16
 version: 1.0.0
 """
 
-from chess.square import SquareException
 from chess.system import SearchException
 
 __all__ = [
@@ -17,17 +16,14 @@ __all__ = [
 
 
 # ======================# SQUARE_SEARCH_FAILURE #======================#
-class SquareSearchException(SquareException, SearchException):
+class SquareSearchException(SearchException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Any condition that prevents a search from completing creates a debug exception that explains why the query
-        failed. That debug exception is wrapped in the SquareSearchException which is the middle layer of the
-        3-part exception chain.
+    1.  An error occurred in SquareFinder.find that, prevented SearchResult.success() from being returned.
 
     # PARENT:
-        *   SquareException
         *   SearchException
 
     # PROVIDES:

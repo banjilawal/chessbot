@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# MISSING_SQUARE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+    # ======================# NO_SQUARE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
     "SquareContextValidationRouteException",
 ]
 
 from chess.square import SquareContextDebugException
-from chess.system import NoValidationRouteException
+from chess.system import  NoExecutionRouteException
 
 
-# ======================# MISSING_SQUARE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
-class SquareContextValidationRouteException(SquareContextDebugException, NoValidationRouteException):
+# ======================# NO_SQUARE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
+class SquareContextValidationRouteException(SquareContextDebugException,  NoExecutionRouteException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
@@ -27,7 +27,7 @@ class SquareContextValidationRouteException(SquareContextDebugException, NoValid
 
     # PARENT:
         *   SquareContextDebugException
-        *   NoValidationRouteException
+        *   NoExecutionRouteException
 
     # PROVIDES:
     None
@@ -38,7 +38,7 @@ class SquareContextValidationRouteException(SquareContextDebugException, NoValid
     # INHERITED ATTRIBUTES:
     Non
     """
-    ERROR_CODE = "MISSING_SQUARE_CONTEXT_VALIDATION_ROUTE_ERROR"
+    ERROR_CODE = "NO_SQUARE_CONTEXT_VALIDATION_ROUTE_ERROR"
     DEFAULT_MESSAGE = (
         "SquareContext validation failed: No validation route existed for the candidate's attribute."
     )

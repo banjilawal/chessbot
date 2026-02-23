@@ -8,28 +8,28 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNHANDLED_SQUARE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+    # ======================# NO_SQUARE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
     "SquareSearchRouteException",
 ]
 
-from chess.system import NoSearchRouteException
-from chess.square import SquareException
+from chess.square import SquareContextDebugException
+from chess.system import NoExecutionRouteException
 
 
-# ======================# UNHANDLED_SQUARE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
-class SquareSearchRouteException(SquareException, NoSearchRouteException):
+# ======================# NO_SQUARE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
+class SquareSearchRouteException(SquareContextDebugException, NoExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the Square search failed because there was no search method for the Square attribute that was
-        supported in the SquareContext.
+    1.  A failing SearchResult was returned because there was no search route provided for the
+        SquareContext attribute.
 
     # PARENT:
-        *   SquareException
-        *   oSearchRouteException
+        *   SquareContextDebugException
+        *   NoExecutionRouteException
 
-    # PROVIDES
+    # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
@@ -38,5 +38,5 @@ class SquareSearchRouteException(SquareException, NoSearchRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNHANDLED_SQUARE_SEARCH_ROUTE_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "Square search failed: No search method was provided for the Square attribute."
+    ERROR_CODE = "NO_SQUARE_SEARCH_ROUTE_ROUTE_ERROR"
+    DEFAULT_MESSAGE = "Square search failed: No search route was provided for the Square attribute."
