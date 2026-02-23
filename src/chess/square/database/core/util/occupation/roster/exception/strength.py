@@ -8,24 +8,24 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_PARTIALLY_DEPLOYED EXCEPTION #======================#
+    # ======================# CANNOT_DEPLOY_UNDER_STRENGTH_TEAM EXCEPTION #======================#
     "CannotDeployUnderStrengthTeamException",
 ]
 
-from chess.square import SquareStackServiceException
-from chess.system import DebugException
+from chess.square import SquareDebugException
 
 
-# ======================# TEAM_PARTIALLY_DEPLOYED EXCEPTION #======================#
-class CannotDeployUnderStrengthTeamException(SquareStackServiceException, DebugException):
+# ======================# CANNOT_DEPLOY_UNDER_STRENGTH_TEAM EXCEPTION #======================#
+class CannotDeployUnderStrengthTeamException(SquareDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to deploy a team failed because it did not have a full complement of tokens.
+    A failure UpdateResult was returned because the roster was not at full capacity when
+    its formation on the board was attempted.
 
     # PARENT:
-        *   SquareStackServiceException
+        *   SquareDebugException
 
     # PROVIDES:
     None
@@ -36,7 +36,5 @@ class CannotDeployUnderStrengthTeamException(SquareStackServiceException, DebugE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_PARTIALLY_DEPLOYED_ERROR"
-    DEFAULT_MESSAGE = (
-        "Deploying team's members failed: A team must have a full complement of tokens before it can be deployed."
-    )
+    ERROR_CODE = "CANNOT_DEPLOY_UNDER_STRENGTH_TEAM_ERROR"
+    DEFAULT_MESSAGE = "Roster deployment failed: The roster did not have all 16 members available."
