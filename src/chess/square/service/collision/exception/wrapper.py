@@ -12,17 +12,16 @@ __all__ = [
     "SquareCollisionDetectionException",
 ]
 
-
+from chess.system import CollisionDetectionException
 
 
 # ======================# COLLISION_DETECTION_OPERATION_FAILURE #======================#
 class SquareCollisionDetectionException(CollisionDetectionException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why square collision detection operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  An error occurred in SquareCollisionDetector.detect that prevented a successful CollisionDetectionResult.
 
     # PARENT:
         *   CollisionDetectionException
@@ -37,4 +36,4 @@ class SquareCollisionDetectionException(CollisionDetectionException):
     None
     """
     ERROR_CODE = "COLLISION_DETECTION_OPERATION_FAILURE"
-    DEFAULT_MESSAGE = "Square collision detection operation failed."
+    DEFAULT_MESSAGE = "SquareCollisionDetection operation failed."
