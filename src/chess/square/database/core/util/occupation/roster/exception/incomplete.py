@@ -8,25 +8,24 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TEAM_PARTIALLY_DEPLOYED EXCEPTION #======================#
-    "TeamPartiallyDeployedException",
+    # ======================# ROSTER_DEPLOYMENT_INTERRUPTED EXCEPTION #======================#
+    "RosterDeploymentInterruptedException",
 ]
 
-from chess.square import SquareStackServiceException
-from chess.system import DebugException
+from chess.square import SquareDebugException
 
 
-# ======================# TEAM_PARTIALLY_DEPLOYED EXCEPTION #======================#
-class TeamPartiallyDeployedException(SquareStackServiceException, DebugException):
+# ======================# ROSTER_DEPLOYMENT_INTERRUPTED EXCEPTION #======================#
+class RosterDeploymentInterruptedException(SquareDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attempt to deploy a team failed because at least one of its members was not 
-        placed on the board.
+    A failure UpdateResult was returned because one of the roster members failed its attempt to
+    occupy its opening square.
 
     # PARENT:
-        *   SquareStackServiceException
+        *   SquareDebugException
 
     # PROVIDES:
     None
@@ -37,5 +36,5 @@ class TeamPartiallyDeployedException(SquareStackServiceException, DebugException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_PARTIALLY_DEPLOYED_ERROR"
-    DEFAULT_MESSAGE = "Deploying team's members failed: At least one member was not placed on the board."
+    ERROR_CODE = "CANNOT_DEPLOY_UNDER_STRENGTH_TEAM_ERROR"
+    DEFAULT_MESSAGE = "Roster deployment failed: A failed square occupation interrupted the roster's deployment."
