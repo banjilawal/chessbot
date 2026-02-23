@@ -8,21 +8,21 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# TOKEN_CANNOT_ENTER_SQUARE_FROM_DIFFERENT_BOARD EXCEPTION #======================#
-    "TokenEnteringSquareOnWrongBoardException",
+    # ======================# VISITOR_FROM_WRONG_BOARD EXCEPTION #======================#
+    "VisitorFromWrongBoardException",
 ]
 
 from chess.square import SquareDebugException
 
-# ======================# TOKEN_CANNOT_ENTER_SQUARE_FROM_DIFFERENT_BOARD EXCEPTION #======================#
-class TokenEnteringSquareOnWrongBoardException(SquareDebugException):
+# ======================# VISITOR_FROM_WRONG_BOARD EXCEPTION #======================#
+class VisitorFromWrongBoardException(SquareDebugException):
+
       
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a item occupation failed because the occupant belongs to a different
-        board.
+    A failure UpdateResult was returned because a token tried to visit a square on a different board.
 
     # PARENT:
         *   SquareDebugException
@@ -36,5 +36,5 @@ class TokenEnteringSquareOnWrongBoardException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_CANNOT_ENTER_SQUARE_FROM_DIFFERENT_BOARD_ERROR"
-    DEFAULT_MESSAGE = "Token entering a item failed: The occupant belongs to a different board."
+    ERROR_CODE = "VISITOR_FROM_WRONG_BOARD_ERROR"
+    DEFAULT_MESSAGE = "Square visit start failed: The visitor belongs to a different board."

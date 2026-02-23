@@ -14,6 +14,6 @@ None
 
 # Modules
 from .wrapper import StartingSquareVisitException
-from .board import TokenEnteringSquareOnWrongBoardException
+from .board import VisitorFromWrongBoardException
 from .disabled import SquareVisitorDisabledException
 from .opening import VisitingWrongOpeningSquareException

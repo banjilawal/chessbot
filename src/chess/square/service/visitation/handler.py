@@ -15,7 +15,7 @@ from chess.square import (
     SquareVisitorDisabledException, StartingSquareVisitException, NoVisitForTerminationException,
     SquareVisitTerminationException, Square, SquareState,
     SquareValidator,
-    VisitingWrongOpeningSquareException, TokenVisitHandlerException
+    VisitorFromWrongBoardException, VisitingWrongOpeningSquareException, TokenVisitHandlerException
 )
 from chess.square.service.visitation.exception.start.full import VisitingOccupiedSquareException
 from chess.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
@@ -63,19 +63,16 @@ class TokenVisitHandler:
             *   TokenVisitHandlerException
             *   StartingSquareVisitException
             *   VisitingOccupiedSquareException
-            *   TokenEnteringSquareOnWrongBoardException
+            *   VisitorFromWrongBoardException
         """
         method = "SquareService.add_occupant"
-        
-        # --- Make a deep copy of the square for the UpdateResult's original field. ---#
-        pre_update_square = deepcopy(square)
         
         # Handle the case that the item is not certified safe.
         square_validation = square_validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=pre_update_square,
+                original=square,
                 exception=TokenVisitHandlerException(
                     message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
@@ -84,11 +81,14 @@ class TokenVisitHandler:
                     )
                 )
             )
+        # --- Make a deep copy of the square for the original field, after its validated. ---#
+        pre_update_square = deepcopy(square)
+        
         # Handle the case that the square is already occupied.
         if square.is_occupied:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=square,
+                original=pre_update_square,
                 exception=TokenVisitHandlerException(
                     message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
@@ -99,31 +99,31 @@ class TokenVisitHandler:
                     )
                 )
             )
-        # Handle the case that the occupant is not certified safe.
-        token_validation = token_service.validator.validate(candidate=token)
+        # Handle the case that the token is not certified safe.
+        token_validation = self._token_service.validator.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=square,
+                original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
                         message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=token_validation.exception
                     )
                 )
             )
-        # Handle the case that the occupant belongs to a different board
+        # Handle the case that the token belongs to a different board
         if token.team.board != square.board:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=square,
+                original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
                         message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
-                        ex=TokenEnteringSquareOnWrongBoardException(
-                            f"{method}: {TokenEnteringSquareOnWrongBoardException.DEFAULT_MESSAGE}"
+                        ex=VisitorFromWrongBoardException(
+                            f"{method}: {VisitorFromWrongBoardException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
@@ -132,7 +132,7 @@ class TokenVisitHandler:
         if token.is_disabled:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=square,
+                original=pre_update_square,
                 exception=TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
@@ -151,7 +151,7 @@ class TokenVisitHandler:
             )
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=square,
+                original=pre_update_square,
                 exception=TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
@@ -163,7 +163,6 @@ class TokenVisitHandler:
         # --- After integrity and consistency checks are passed, process the occupation. ---#
         
         # Make a deep copy of the square before its occupied then
-        pre_update_square = deepcopy(square)
         # Update state on the square side.
         square.occupant = token
         square.state = SquareState.OCCUPIED
