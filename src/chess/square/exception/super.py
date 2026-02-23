@@ -1,7 +1,7 @@
-# src/chess/square/exception/exception.py
+# src/chess/square/exception/super.py
 
 """
-Module: chess.square.exception.exception
+Module: chess.square.exception.super
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -21,7 +21,7 @@ class SquareException(SuperClassException):
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    2.  Parent of SquareDebugException
+    Layer-0 of Exception chain which is the Parent of SquareDebugException
 
     # PARENT:
         *   SuperClassException

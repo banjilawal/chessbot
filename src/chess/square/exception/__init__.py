@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .base import SquareException
+from .super import SquareException
 from .debug import SquareDebugException
