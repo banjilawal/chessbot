@@ -18,17 +18,15 @@ __all__ = [
 
 
 # ======================# SQUARE_CONTEXT_BUILD_FAILURE #======================#
-class SquareContextBuildException(SquareContextException, BuildException):
+class SquareContextBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the SquareContext build creates an exception. Failed check exceptions are encapsulated
-        in an SquareContextBuildException which is sent to the caller in a BuildResult.
-    2.  The SquareContextBuildException provides a trace for debugging and application recovery.
+    An error occurred in SquareContextBuilder.build that, prevented BuildResult.success()
+    from being returned.
 
     # PARENT:
-        *   SquareContextException
         *   BuildException
 
     # PROVIDES:

@@ -237,7 +237,7 @@ class SquareBuilder(Builder[Square]):
                     - On failure: Exception.
                     - On success: bool.
         # RAISES:
-        Nooe
+        None
         """
         method = "SquareBuilder._build_square_board_relationship"
         

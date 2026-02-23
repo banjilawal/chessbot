@@ -19,13 +19,13 @@ __all__ = [
 # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
 class SquareContextValidationException(SquareContextException, ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a SquareContext. The exception chain traces the ultimate source of failure.
+    An error occurred in SquareContextValidator.validate that, prevented ValidationResult.success()
+    from being returned.
 
     # PARENT:
-        *   SquareContextException
         *   ValidationException
 
     # PROVIDES:
@@ -34,7 +34,7 @@ class SquareContextValidationException(SquareContextException, ValidationExcepti
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "SQUARE_CONTEXT_VALIDATION_FAILURE"
