@@ -18,10 +18,11 @@ __all__ = [
 # ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
 class SquareVisitTerminationException(DeletionException):
     """
-    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    Carry the Layer-1 DebugException which explains why the square visit was not terminated.
+    1.  An error occurred in TokenVistHandler.terminate_visit that prevented a successful DeletionResult.
+    2.  This error might have occurred in a different TokenVisitHandler that returns DeletionResults.
 
     # PARENT:
         *   DeletionException

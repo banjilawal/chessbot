@@ -192,7 +192,7 @@ class TokenVisitHandler:
             *   SquareVisitTerminationException
             *   NoVisitForTerminationException
         """
-        method = "SquareService.remove_occupant"
+        method = "TokenVistHandler.terminate_visit"
         
         # Handle the case that the square is not certified as safe.
         validation = self.square_validator.validate(candidate=square)
