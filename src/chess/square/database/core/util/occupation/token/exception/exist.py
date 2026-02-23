@@ -1,9 +1,9 @@
-# src/chess/square/database/core/exception/query/exist.py
+# src/chess/square/database/core/util/occupation/token/exception/exist.py
 
 """
-Module: chess.square.database.core.exception.query.exist
+Module: chess.square.database.core.util.occupation.token.exception.exist
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2026-02-21
 version: 1.0.0
 """
 
