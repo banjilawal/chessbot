@@ -20,7 +20,42 @@ from chess.square import (
 )
 
 class RosterFormationCoordinator:
-    
+    """
+    # ROLE: Utilities, Update Management,
+
+    # RESPONSIBILITIES:
+    1.  Transfers Team.roster members to their opening squares.
+
+
+    # PARENT:
+    None
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+        None
+
+        Inherited:
+        None
+
+    # LOCAL METHODS:
+        *   form_team(
+                team: Team,
+                square_stack: SquareStackService,
+                team_service: TeamService = TeamService()
+            ) -> UpdateResult[Team]
+
+    # INHERITED METHODS:
+    None
+    """
     @classmethod
     @LoggingLevelRouter.monitor
     def form_team(
