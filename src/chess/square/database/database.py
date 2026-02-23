@@ -21,11 +21,11 @@ from chess.token import Token
 
 class SquareDatabase(Database[Square]):
     """
-    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Repository, CRUD Search Service, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Ensure all bag in managed by SquareStackService are unique.
-    2.  Guarantee consistency of records in SquareStackService.
+    1.  Higher level API for SquareStackService.
+    2.  ACID service provider for SquareStackService.
 
     # PARENT:
         *   Database

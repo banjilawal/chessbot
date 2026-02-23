@@ -23,25 +23,56 @@ from chess.square import (
 
 class SquareStackService(StackService[Square]):
     """
-    # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Structure, Services:(Integrity, Build, Validation, Search) Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Public facing API.
-    2.  Microservice for managing Square objects and their lifecycles.
-    3.  Ensure integrity of Square data stack
-    4.  Stack data structure for Square objects with no guarantee of uniqueness.
+    1.  Microservice for managing Square objects and their lifecycles.
+    2.  Guarantee all Square instances in stack are unique.
 
     # PARENT:
-        *   StackService[Square]
+        *   StackService
 
     # PROVIDES:
     None
+    
+    # LOCAL ATTRIBUTES:
+        *   SERVICE_NAME (str)
+        *   capacity (int)
+        *   stack (List[Square])
+        *   util (SquareStackUtil)
+        *   service (SquareService)
+        *   context_service (SquareContextService)
+    
+    # INHERITED ATTRIBUTES:
+        *   See StackService for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+            *   id (int)
+            *   name (str)
+            *   capacity (int)
+            *   util (SquareStackUtil)
+            *   service (SquareService)
+            *   context_service (SquareContextService)
+
+        Inherited:
+        None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
+        
+    # LOCAL METHODS:
+
+        *   pop() -> DeletionResult[Square]
+        *   push(item: Square) -> InsertionResult[bool]
+        *   query(context: SquareContext) -> SearchResult[List[Square]]
+        *   delete_by_id(id: int, identity_service: IdentityService) -> DeletionResult[Square]
+
+    # INHERITED METHODS:
+    *   See StackService class for inherited methods.
     """
     SERVICE_NAME = "SquareStackService"
     _capacity: int
@@ -59,19 +90,6 @@ class SquareStackService(StackService[Square]):
             id: int = IdFactory.next_id(class_name="SquareStackService"),
             context_service: SquareContextService = SquareContextService(),
     ):
-        """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   service (SquareService)
-            *   context_service (SquareContextService)
-        # RETURNS:
-            None
-        # RAISES:
-            None
-        """
         method = "SquareService.__init__"
         super().__init__(id=id,name=name,)
         self._util = util
