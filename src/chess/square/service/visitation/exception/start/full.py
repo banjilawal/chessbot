@@ -8,23 +8,23 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# SQUARE_IS_FULL EXCEPTION #======================#
-    "CannotEnterOccupiedSquareException",
+    # ======================# VISITING_OCCUPIED_SQUARE EXCEPTION #======================#
+    "VisitingOccupiedSquareException",
 ]
 
 from chess.square import SquareDebugException
 
 
-# ======================# SQUARE_IS_FULL EXCEPTION #======================#
-class CannotEnterOccupiedSquareException(SquareDebugException):
+# ======================# VISITING_OCCUPIED_SQUARE EXCEPTION #======================#
+class VisitingOccupiedSquareException(SquareDebugException):
     """
-    # ROLE: Debug, Error Tracing
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a occupant could not enter a item because it already had an occupant.
-    
+    A failure UpdateResult was returned because a token tried entering an occupied square.
+
     # PARENT:
-        *   SquareException
+        *   SquareDebugException
 
     # PROVIDES:
     None
@@ -35,5 +35,5 @@ class CannotEnterOccupiedSquareException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_IS_FULL_ERROR"
-    DEFAULT_MESSAGE = "Token entering a item failed: The item is full."
+    ERROR_CODE = "VISITING_OCCUPIED_SQUARE_ERROR"
+    DEFAULT_MESSAGE = "Square visit start failed: The square was already occupied."

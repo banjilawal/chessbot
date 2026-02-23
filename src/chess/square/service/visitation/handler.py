@@ -17,6 +17,7 @@ from chess.square import (
     SquareValidator,
     VisitingWrongOpeningSquareException, TokenVisitHandlerException
 )
+from chess.square.service.visitation.exception.start.full import VisitingOccupiedSquareException
 from chess.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
 from chess.token import Token, TokenBoardState, TokenService
 
@@ -36,7 +37,7 @@ class TokenVisitHandler:
             self,
             token: Token,
             square: Square,
-            token_service: TokenService = TokenService(),
+            square_validator: SquareValidator = SquareValidator(),
     ) -> UpdateResult[Square]:
         """
         # ACTION:
@@ -61,19 +62,22 @@ class TokenVisitHandler:
         # RAISES:
             *   TokenVisitHandlerException
             *   StartingSquareVisitException
-            *   CannotEnterOccupiedSquareException
+            *   VisitingOccupiedSquareException
             *   TokenEnteringSquareOnWrongBoardException
         """
         method = "SquareService.add_occupant"
         
+        # --- Make a deep copy of the square for the UpdateResult's original field. ---#
+        pre_update_square = deepcopy(square)
+        
         # Handle the case that the item is not certified safe.
-        square_validation = self.validator.validate(candidate=square)
+        square_validation = square_validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
-                original=square,
+                original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
                         message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=square_validation.exception
@@ -86,11 +90,11 @@ class TokenVisitHandler:
             return UpdateResult.update_failure(
                 original=square,
                 exception=TokenVisitHandlerException(
-                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=StartingSquareVisitException(
                         message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
-                        ex=CannotEnterOccupiedSquareException(
-                            f"{method}: {CannotEnterOccupiedSquareException.DEFAULT_MESSAGE}"
+                        ex=VisitingOccupiedSquareException(
+                            f"{method}: {VisitingOccupiedSquareException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
@@ -159,7 +163,7 @@ class TokenVisitHandler:
         # --- After integrity and consistency checks are passed, process the occupation. ---#
         
         # Make a deep copy of the square before its occupied then
-        pre_occupation_square = deepcopy(square)
+        pre_update_square = deepcopy(square)
         # Update state on the square side.
         square.occupant = token
         square.state = SquareState.OCCUPIED
@@ -169,7 +173,7 @@ class TokenVisitHandler:
             token.board_state = TokenBoardState.DEPLOYED_ON_BOARD
         
         # --- Send the update success result to the caller. ---#
-        return UpdateResult.update_success(original=pre_occupation_square, updated=square)
+        return UpdateResult.update_success(original=pre_update_square, updated=square)
     
     @LoggingLevelRouter.monitor
     def terminate_visit(
