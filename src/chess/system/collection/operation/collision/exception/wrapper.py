@@ -7,7 +7,7 @@ Created: 2026-02-21
 Version: 1.0.0
 """
 
-from chess.system import OperationException
+from chess.system import CollectionOperationException
 
 __all__ = [
     # ======================# COLLISION_DETECTION_FAILURE #======================#
@@ -16,16 +16,15 @@ __all__ = [
 
 
 # ======================# COLLISION_DETECTION_FAILURE #======================#
-class CollisionDetectionException(OperationException):
+class CollisionDetectionException(CollectionOperationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a collision detection operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  Encapsulate the Layer-1 DebugException which describes why the collision detection operation was aborted.
 
     # PARENT:
-        *   OperationException
+        *   CollectionOperationException
 
     # PROVIDES:
     None
@@ -37,4 +36,4 @@ class CollisionDetectionException(OperationException):
     None
     """
     ERROR_CODE = "COLLISION_DETECTION_FAILURE"
-    DEFAULT_MESSAGE = "collision detection failed."
+    DEFAULT_MESSAGE = "Collision detection failed."
