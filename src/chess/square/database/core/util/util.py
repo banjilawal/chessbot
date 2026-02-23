@@ -12,6 +12,44 @@ from __future__ import annotations
 from chess.square import OccupationService, SquareStackAnalyzer
 
 class SquareStackUtil:
+    """
+    # ROLE: Utilities, Update Management Statistics.
+
+    # RESPONSIBILITIES:
+    1.  Unifies SquareStackService utilities in one place.
+    2.  Separates maintenance and debugging of
+            *   Token operations.
+            *   Capacity monitoring operations
+        from  core data structure operations.
+    3.  Manges Updates (state changes) responsibilities for the SquareStackService.
+
+    # PARENT:
+    None
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   SERVICE_NAME (str)
+        *   token_map Dict[Toke, Square]
+        *   stack_service (SquareStackService)
+
+    # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+            *   stats_analyzer (SquareStacKAnalyzer)
+            *   occupation_service (OccupationService)
+        Inherited:
+        None
+
+    # LOCAL METHODS:
+    None
+
+    # INHERITED METHODS:
+    None
+    """
     _stats_analyzer: SquareStackAnalyzer
     _occupation_service: OccupationService
     
