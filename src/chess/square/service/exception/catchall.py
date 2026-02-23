@@ -19,10 +19,11 @@ __all__ = [
 # ======================# SQUARE_SERVICE EXCEPTION #======================#
 class SquareServiceException(ServiceException):
     """
-    # ROLE: Catchall, Exception Messaging
+    # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Outermost layer of the 3-part exception chain that is created when a SquareService operation fails.
+    1.  Indicate a failure occurred in SquareService.
+    2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     # PARENT:
         *   ServiceException
