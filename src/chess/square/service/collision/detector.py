@@ -36,6 +36,22 @@ class SquareCollisionDetector(CollisionDetector[Square]):
     None
 
     # INHERITED ATTRIBUTES:
+   None
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+        None
+        Inherited:
+        None
+
+    # LOCAL METHODS:
+        detect(
+            target: Square,
+            dataset: List[Square],
+            square_validator: SquareValidator = SquareValidator()
+        ) -> CollisionReport[Square]
+
+    # INHERITED METHODS:
     None
     """
     @classmethod

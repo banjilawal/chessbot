@@ -8,10 +8,13 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-
-from copy import deepcopy
 from typing import cast
 
+from chess.square import (
+    Square, SquareBuilder, SquareCollisionDetector, SquareServiceException, SquareValidator, TokenVisitHandler
+)
+from chess.system import DeletionResult, EntityService, IdFactory, LoggingLevelRouter, UpdateResult
+from chess.token import Token
 
 
 class SquareService(EntityService[Square]):
@@ -20,7 +23,7 @@ class SquareService(EntityService[Square]):
 
     # RESPONSIBILITIES:
     1.  Public facing Square microservice API.
-    2.  Encapsulate integrity assurance logic in one extendable module.
+    2.  Encapsulate integrity logic for Square instances in one extendable module.
     3.  Authoritative, single source of truth for Square state by providing single entry and exit points to Square
         lifecycle.
 
@@ -38,15 +41,19 @@ class SquareService(EntityService[Square]):
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
         
-    # LOCAL CONSTRUCTOR PARAMETERS:
-        *   token_visit_handler (TokenVisitHandler)
-        *   collision_detector (SquareCollisionDetector)
-        
-       INHERITED CONSTRUCTOR PARAMETERS: See EntityService for inherited parameters.
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+            *   token_visit_handler (TokenVisitHandler)
+            *   collision_detector (SquareCollisionDetector)
+        Inherited:
+            *   See EntityService for inherited parameters.
         
     # LOCAL METHODS:
         *   begin_square_visit(square: Square, visitor: Token) -> UpdateResult[Square]
         *   end_square_visit(square: Square) -> DeletionResult[Token]
+        
+    # INHERITED METHODS:
+    None
     """
     SERVICE_NAME = "SquareService"
     _token_visit_handler: TokenVisitHandler

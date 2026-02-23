@@ -1,7 +1,7 @@
-# src/chess/square/service/visitation/handlerpy
+# src/chess/square/service/visitation/handler.py
 
 """
-Module: chess.square.service.visitation.__init__
+Module: chess.square.service.visitation.handler
 Author: Banji Lawal
 Created: 2026-02-22
 version: 1.0.0
@@ -28,16 +28,29 @@ class TokenVisitHandler:
     1.  Ensure integrity and consistency  are maintained in all stages of the square occupation lifecycle.
 
     # PARENT:
-    None
+        *   EntityService
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   token-service (TokenService)
 
     # INHERITED ATTRIBUTES:
-    None.
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+            *   token_service (TokenService)
+        Inherited:
+        None
+
+    # LOCAL METHODS:
+        *   start_visit(token: Token, square: Square, square_validator: SquareValidator) -> UpdateResult[Square]
+        *   terminate_visit(square: Square, square_validator: SquareValidator) -> DeletionResult[Token]
+        
+    # INHERITED METHODS:
+    None
     """
     _token_service: TokenService
     
