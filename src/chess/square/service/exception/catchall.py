@@ -9,7 +9,6 @@ version: 1.0.0
 
 
 from chess.system import ServiceException
-from chess.square import SquareException
 
 __all__ = [
     # ======================# SQUARE_SERVICE EXCEPTION #======================#
@@ -18,17 +17,15 @@ __all__ = [
 
 
 # ======================# SQUARE_SERVICE EXCEPTION #======================#
-class SquareServiceException(SquareException, ServiceException):
+class SquareServiceException(ServiceException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Catchall, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an SquareService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of a SquareService method.
+    1.  Outermost layer of the 3-part exception chain that is created when a SquareService operation fails.
 
     # PARENT:
         *   ServiceException
-        *   SquareException
 
     # PROVIDES:
     None

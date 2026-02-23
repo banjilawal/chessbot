@@ -17,10 +17,10 @@ __all__ = [
 # ======================# SERVICE EXCEPTION #======================#
 class ServiceException(CatchallException):
     """
-    # ROLE: Catchall Exception
-
+    # ROLE: Catchall, Exception Messaging
+    
     # RESPONSIBILITIES:
-    1.  Basic, Service Primitive
+    1. Outermost layer of the 3-part exception chain that is created when a Service operation's crashes.
 
     # PARENT:
         *   CatchallException
