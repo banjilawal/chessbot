@@ -10,7 +10,8 @@ version: 1.0.0
 from __future__ import annotations
 
 from chess.square import (
-    NoVisitForTerminationException, SquareVisitTerminationException, Square, SquareState, SquareValidator,
+    StartingSquareVisitException, NoVisitForTerminationException, SquareVisitTerminationException, Square, SquareState,
+    SquareValidator,
     VisitingWrongOpeningSquareException, TokenVisitHandlerException
 )
 from chess.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
@@ -56,7 +57,7 @@ class TokenVisitHandler:
             *   UpdateResult[Square]
         # RAISES:
             *   TokenVisitHandlerException
-            *   AddingSquareOccupantException
+            *   StartingSquareVisitException
             *   CannotEnterOccupiedSquareException
             *   TokenEnteringSquareOnWrongBoardException
         """
@@ -70,8 +71,8 @@ class TokenVisitHandler:
                 original=square,
                 exception=TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=square_validation.exception
                     )
                 )
@@ -83,8 +84,8 @@ class TokenVisitHandler:
                 original=square,
                 exception=TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=CannotEnterOccupiedSquareException(
                             f"{method}: {CannotEnterOccupiedSquareException.DEFAULT_MESSAGE}"
                         )
@@ -99,8 +100,8 @@ class TokenVisitHandler:
                 original=square,
                 exception=TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=token_validation.exception
                     )
                 )
@@ -112,8 +113,8 @@ class TokenVisitHandler:
                 original=square,
                 exception=TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=TokenEnteringSquareOnWrongBoardException(
                             f"{method}: {TokenEnteringSquareOnWrongBoardException.DEFAULT_MESSAGE}"
                         )
@@ -127,8 +128,8 @@ class TokenVisitHandler:
                 original=square,
                 exception=TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=DisabledTokenOccupyingSquareException(
                             f"{method}: {DisabledTokenOccupyingSquareException.DEFAULT_MESSAGE}"
                         )
@@ -146,8 +147,8 @@ class TokenVisitHandler:
                 original=square,
                 exception=TokenVisitHandlerException(
                     message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=validate_token_opening_square_result.exception
                     )
                 )

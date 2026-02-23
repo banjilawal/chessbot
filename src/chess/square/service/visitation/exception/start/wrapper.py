@@ -13,12 +13,12 @@ from chess.system import InsertionException
 
 __all__ = [
     # ======================# ADDING_SQUARE_OCCUPANT_FAILURE #======================#
-    "AddingSquareOccupantException",
+    "StartingSquareVisitException",
 ]
 
 
 # ======================# ADDING_SQUARE_OCCUPANT_FAILURE #======================#
-class AddingSquareOccupantException(SquareException, InsertionException):
+class StartingSquareVisitException(SquareException, InsertionException):
     """
     # ROLE: Exception Wrapper
 

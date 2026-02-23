@@ -13,7 +13,7 @@ from copy import deepcopy
 from typing import List
 
 from chess.square import (
-    AddingSquareOccupantException, SquareVisitTerminationException, RosterFormationCoordinator, Square,
+    StartingSquareVisitException, SquareVisitTerminationException, RosterFormationCoordinator, Square,
     SquareNotFoundException, SquareService, OccupationServiceException
 )
 from chess.system import DeletionResult, IdFactory, LoggingLevelRouter, UpdateResult
@@ -80,7 +80,7 @@ class OccupationService:
         # RAISES:
             *   SquareDatabaseException
             *   SquareToOccupyNotFoundException
-            *   AddingSquareOccupantException
+            *   StartingSquareVisitException
         """
         method = "SquareDatabase.add_occupant_to_square"
         
@@ -92,8 +92,8 @@ class OccupationService:
                 original=square,
                 exception=OccupationServiceException(
                     message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=square_validation.exception
                     )
                 )
@@ -109,8 +109,8 @@ class OccupationService:
                 original=square,
                 exception=OccupationServiceException(
                     message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=actionable_token_validation.exception
                     )
                 )
@@ -122,8 +122,8 @@ class OccupationService:
                 original=square,
                 exception=OccupationServiceException(
                     message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=SquareNotFoundException(f"{method}: {SquareNotFoundException.DEFAULT_MESSAGE}")
                     )
                 )
@@ -136,8 +136,8 @@ class OccupationService:
                 original=square,
                 exception=OccupationServiceException(
                     message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
-                    ex=AddingSquareOccupantException(
-                        message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
+                    ex=StartingSquareVisitException(
+                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
                         ex=insertion_result.exception
                     )
                 )

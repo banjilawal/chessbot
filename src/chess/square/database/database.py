@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.square import (
-    AddingDuplicateSquareException, AddingSquareOccupantException, DeleteTokenBySearchException,
+    AddingDuplicateSquareException, StartingSquareVisitException, DeleteTokenBySearchException,
     InsertingSquareInDatabaseFailedException, Square, SquareContext, SquareContextService, SquareStackService, SquareService,
     SquareStackFullException, SquareDatabaseException, SquareToOccupyNotFoundException
 )

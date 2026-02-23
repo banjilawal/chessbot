@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .wrapper import AddingSquareOccupantException
+from .wrapper import StartingSquareVisitException
 from .board import TokenEnteringSquareOnWrongBoardException
 from .disabled import DisabledTokenOccupyingSquareException
 from .opening import VisitingWrongOpeningSquareException
