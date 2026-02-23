@@ -21,7 +21,7 @@ class SquareVisitorDisabledException(SquareDebugException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure UpdateResult was returned because a disabled token attempted to occupy the square.
+    A failing UpdateResult was returned because a disabled token attempted to occupy the square.
 
     # PARENT:
         *   SquareDebugException

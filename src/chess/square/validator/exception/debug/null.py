@@ -20,7 +20,7 @@ class NullSquareException(SquareDebugException, NullException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure ValidationResult was returned because the validation candidate was null.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
         *   SquareDebugException
@@ -35,5 +35,5 @@ class NullSquareException(SquareDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_NOT_REGISTERED_WITH_BOARD_ERROR"
+    ERROR_CODE = "NULL_SQUARE_ERROR"
     DEFAULT_MESSAGE = "Square validation failed: The validation candidate cannot be null"

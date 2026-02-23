@@ -21,7 +21,7 @@ class AddingDuplicateSquareException(SquareStackServiceException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure InsertionResult was returned because an attempt to add a duplicate square to the stack.
+    A failing InsertionResult was returned because an attempt to add a duplicate square to the stack.
 
     # PARENT:
         *   SquareDebugException

@@ -21,7 +21,7 @@ class CannotDeployUnderStrengthTeamException(SquareDebugException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure UpdateResult was returned because the roster was not at full capacity when
+    A failing UpdateResult was returned because the roster was not at full capacity when
     its formation on the board was attempted.
 
     # PARENT:

@@ -13,4 +13,5 @@ None
 
 # Modules
 from .null import NullSquareException
+from .state import NullSquareStateException
 from .registration import SquareNotSubmittedBoardRegistrationException

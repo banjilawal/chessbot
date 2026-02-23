@@ -22,7 +22,7 @@ class VisitorFromWrongBoardException(SquareDebugException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure UpdateResult was returned because a token tried to visit a square on a different board.
+    A failing UpdateResult was returned because a token tried to visit a square on a different board.
 
     # PARENT:
         *   SquareDebugException

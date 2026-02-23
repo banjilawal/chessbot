@@ -21,7 +21,7 @@ class RosterDoubleDeploymentException(SquareDebugException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure UpdateResult was returned because an attempt was made to deploy a team
+    A failing UpdateResult was returned because an attempt was made to deploy a team
     after its roster had already been formed on the board.
 
     # PARENT:

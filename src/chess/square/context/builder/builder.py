@@ -15,7 +15,8 @@ from chess.coord import Coord, CoordService
 from chess.square.state import SquareState
 from chess.system import Builder, BuildResult, IdentityService
 from chess.square import (
-    SquareContextBuildRouteException, ZeroSquareContextFlagsException, SquareContext, SquareContextBuildException,
+    SquareContextBuildRouteException, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
+    SquareContextBuildException,
     ExcessiveSquareContextFlagsException
 )
 from chess.token import Token, TokenService
@@ -26,13 +27,12 @@ class SquareContextBuilder(Builder[SquareContext]):
     # ROLE: Builder, Data Integrity And Reliability Guarantor
 
     # RESPONSIBILITIES:
-    1.  Produce SquareContext instances whose integrity is guaranteed at creation.
-    2.  Manage construction of SquareContext instances that can be used safely by the client.
-    3.  Ensure params for SquareContext creation have met the application's safety contract.
-    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+     1.  Produce SquareContext instances whose integrity and reliability are guaranteed.
+     2.  Ensure params for SquareContext creation have met the application's safety contract.
+     3.  Return an exception to the client if a build resource does not satisfy integrity requirements.
 
-    # PARENT:
-        *   Builder
+     # PARENT:
+         * Builder
 
     # PROVIDES:
     None
@@ -41,6 +41,27 @@ class SquareContextBuilder(Builder[SquareContext]):
     None
 
     # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+    None
+
+    # LOCAL METHODS:
+        *   build(
+                cls,
+                id: Optional[int] = None,
+                name: Optional[str] = None,
+                coord: Optional[Coord] = None,
+                board: Optional[Board] = None,
+                token: Optional[Token] = None,
+                state: Optional[SquareState] = None,
+                token_service: TokenService = TokenService(),
+                board_service: BoardService = BoardService(),
+                coord_service: CoordService = CoordService(),
+                identity_service: IdentityService = IdentityService(),
+            ) -> BuildResult[SquareContext]:
+
+    # INHERITED METHODS:
     None
     """
     @classmethod
@@ -56,13 +77,21 @@ class SquareContextBuilder(Builder[SquareContext]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),
+            square_validator: SquareValidator = SquareValidator(),
     ) -> BuildResult[SquareContext]:
         """
         # ACTION:
-            1.  If one-and-only-one context attribute is not null send an exception chain in the BuildResult.
-            2.  If there is no build route for the not-null context attribute send an exception chain in the BuildResult.
-            3.  If the build route exists and the context attribute is not verified send an exception chain in the
-                BuildResult. Else build the context and send it in the BuildResult's payload.
+            1.  If the candidate fails either
+                    *   A null check.
+                    *   A type check.
+                Ssend an exception chain in the ValidationResult. Else, cast candidate to SquareContext
+                instance context.
+            2.  Send an exception chain in the BuildResult if either
+                    *   One and only one of attributes is not null.
+                    *   There is no build route for the enabled option.
+                    *   The enabled attribute is not certified as safe by its service.
+                are not certified as safe by their services.
+            3.  Build the appropriate context, sed the build success result.
         # PARAMETERS:
             Only one these must be provided:
                 *   id Optional[(int)]
@@ -171,9 +200,9 @@ class SquareContextBuilder(Builder[SquareContext]):
             # On validation success return a board_SquareContext in the BuildResult.
             return BuildResult.success(SquareContext(board=board))
         
-        # Build the occupant SquareContext if its flag is enabled.
+        # Build the state SquareContext if its flag is enabled.
         if token is not None:
-            validation = token_service.validator.validate(candidate=token)
+            validation = square_validator.validate_square_state(candidate=state)
             if validation.is_failure:
                 # Return the exception chain on failure.
                 return BuildResult.failure(
@@ -182,22 +211,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                         ex=validation.exception
                     )
                 )
-            # On validation success return a token_SquareContext in the BuildResult.
-            return BuildResult.success(SquareContext(occupant=token))
-        
-        # Build the state SquareContext if its flag is enabled.
-        if state is not None:
-            if not isinstance(state, SquareState):
-                # Return the exception chain on failure.
-                return BuildResult.failure(
-                    SquareContextBuildException(
-                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
-                        ex=TypeError(
-                            f"{method}: Was expecting a SquareState, got {type(state).__name__} instead."
-                        )
-                    )
-                )
-            # On validation success return a token_SquareContext in the BuildResult.
+            # On validation success return a state_SquareContext in the BuildResult.
             return BuildResult.success(SquareContext(state=state))
         
         # Return the exception chain if there is no build route for the context.

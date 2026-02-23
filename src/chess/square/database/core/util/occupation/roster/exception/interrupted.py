@@ -21,7 +21,7 @@ class RosterDeploymentInterruptedException(SquareDebugException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure UpdateResult was returned because one of the roster members failed its attempt to
+    A failing UpdateResult was returned because one of the roster members failed its attempt to
     occupy its opening square.
 
     # PARENT:

@@ -10,15 +10,15 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Any, cast
 
+from chess.token import TokenService
 from chess.board import BoardService
 from chess.coord.service import CoordService
-from chess.square.state import SquareState
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.square import (
-    SquareContextValidationException, ZeroSquareContextFlagsException, SquareContext,
+    SquareContextValidationException, SquareState, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
     NullSquareContextException, ExcessiveSquareContextFlagsException, SquareContextValidationRouteException
 )
-from chess.token import TokenService
+
 
 
 class SquareContextValidator(Validator[SquareContext]):
@@ -27,7 +27,7 @@ class SquareContextValidator(Validator[SquareContext]):
 
     # RESPONSIBILITIES:
     1.  Ensure a SquareContext instance is certified safe, reliable and consistent before use.
-    2.  If verification fails indicate the reason in an exception returned to the caller.
+    2.  If verification fails send an exception detailing the failure.
 
     # PARENT:
         *   Validator
@@ -49,26 +49,36 @@ class SquareContextValidator(Validator[SquareContext]):
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             token_service: TokenService = TokenService(),
-            identity_service: IdentityService = IdentityService()
+            identity_service: IdentityService = IdentityService(),
+            square_validator: SquareValidator = SquareValidator(),
     ) -> ValidationResult[SquareContext]:
         """
         # ACTION:
-            1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult. Else,
-                test how many optional attributes are not null.
-            2.  If only one attribute is one and only one attribute is not null return the exception chain in the
-                ValidationResult.
-            3.  If no route is found for the enabled attribute send an exception chain in the ValidationResult.
-            4.  If a validation route exists return the outcome of the validation to the caller.
+            1.  If the candidate fails either
+                    *   A null check.
+                    *   A type check.
+                Ssend an exception chain in the ValidationResult. Else, cast candidate to SquareContext
+                instance context.
+            2.  Send an exception chain in the ValidationResult if either
+                    *   The id
+                    *   The name
+                    *   The coord
+                    *   The state
+                    *   The board
+                    *   The occupant
+                are not certified as safe by their services, or there is no validation
+                route for the context.
+            3.  The context has been certified as safe, send the validation success result.
         # PARAMETERS:
             *   candidate (Any)
             *   board_service (BoardService)
             *   coord_service (CoordService)
-            *   token_service (TokenService)
-            *   identity_service (IdentityService):
+            *   identity_service: (IdentityService)
+            *   square_validator (SquareValidator)
         # RETURNS:
             *   ValidationResult[SquareContext] containing either:
-                    - On failure:   Exception.
-                    - On success:   SquareContext in the payload.
+                    - On failure: Exception.
+                    - On success: Square in the payload
         # RAISES:
             *   TypeError
             *   NullSquareContextException
@@ -197,14 +207,13 @@ class SquareContextValidator(Validator[SquareContext]):
         
         # Certification for the search-by-state.
         if context.state is not None:
-            if not isinstance(context.state, SquareState):
+            validation = square_validator.validate_square_state(context.occupant)
+            if validation.is_failure:
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     SquareContextValidationException(
                         message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
-                        ex=TypeError(
-                            f"{method}: Was expecting a SquareState, got {type(candidate).__name__} instead."
-                        )
+                        ex=validation.exception
                     )
                 )
             # On certification success return the board_SquareContext in the ValidationResult.

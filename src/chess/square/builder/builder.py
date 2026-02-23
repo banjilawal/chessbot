@@ -48,7 +48,7 @@ class SquareBuilder(Builder[Square]):
     None
 
     # LOCAL METHODS:
-        * build(
+        *   build(
                 cls,
                 name: str,
                 board: Board,
@@ -57,11 +57,11 @@ class SquareBuilder(Builder[Square]):
                 board_service: BoardService = BoardService(),
                 coord_service: CoordService = CoordService(),
                 identity_service: IdentityService = IdentityService(),
-        ) -> BuildResult[Square]
+            ) -> BuildResult[Square]
 
     # INHERITED METHODS:
     None
-     """
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor()
