@@ -19,13 +19,14 @@ from chess.system import ServiceException
 # ======================# OCCUPATION_SERVICE EXCEPTION #======================#
 class OccupationServiceException(ServiceException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by OccupationService methods that return Result objects.
+    1.  Indicate a failure occurred in OccupationService.
+    2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     # PARENT:
-        *   ServiceException
+        *   ChessException
 
     # PROVIDES:
     None

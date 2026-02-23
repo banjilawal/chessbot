@@ -24,8 +24,7 @@ class SquareDatabaseException(DatabaseException):
     2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     # PARENT:
-        *   ServiceException
-        *   SquareException
+        *   DatabaseException
 
     # PROVIDES:
     None

@@ -12,17 +12,16 @@ ___all__ = [
     "SquareStackAnalyzerException",
 ]
 
-
 from chess.system import ChessException
-
 
 # ======================# SQUARE_STACK_ANALYZER EXCEPTION #======================#
 class SquareStackAnalyzerException(ChessException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by SquareStackAnalyzer methods that return Result objects.
+    1.  Indicate a failure occurred in SquareStackAnalyzer.
+    2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     # PARENT:
         *   ChessException
