@@ -52,7 +52,7 @@ class TokenVisitHandler:
         # RETURN:
             *   UpdateResult[Square]
         # RAISES:
-            *   SquareServiceException
+            *   TokenVisitHandlerException
             *   AddingSquareOccupantException
             *   CannotEnterOccupiedSquareException
             *   TokenEnteringSquareOnWrongBoardException
@@ -65,8 +65,8 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
-                exception=SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                exception=TokenVisitHandlerException(
+                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=AddingSquareOccupantException(
                         message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=square_validation.exception
@@ -78,8 +78,8 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
-                exception=SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                exception=TokenVisitHandlerException(
+                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=AddingSquareOccupantException(
                         message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=CannotEnterOccupiedSquareException(
@@ -94,8 +94,8 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
-                exception=SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                exception=TokenVisitHandlerException(
+                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=AddingSquareOccupantException(
                         message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=token_validation.exception
@@ -107,8 +107,8 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
-                exception=SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                exception=TokenVisitHandlerException(
+                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=AddingSquareOccupantException(
                         message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=TokenEnteringSquareOnWrongBoardException(
@@ -122,8 +122,8 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
-                exception=SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                exception=TokenVisitHandlerException(
+                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=AddingSquareOccupantException(
                         message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=DisabledTokenOccupyingSquareException(
@@ -141,8 +141,8 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,
-                exception=SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                exception=TokenVisitHandlerException(
+                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=AddingSquareOccupantException(
                         message=f"{method}: {AddingSquareOccupantException.ERROR_CODE}",
                         ex=validate_token_opening_square_result.exception
@@ -185,7 +185,7 @@ class TokenVisitHandler:
                     - On failure: Exception.
                     - On success: Token.
         # RAISES:
-            *   SquareServiceException
+            *   TokenVisitHandlerException
             *   RemovingSquareOccupantException
             *   NothingToRemoveFromEmptySquareException
         """
@@ -196,8 +196,8 @@ class TokenVisitHandler:
         if validation.is_failure:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                TokenVisitHandlerException(
+                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=RemovingSquareOccupantException(
                         message=f"{method}: {RemovingSquareOccupantException.ERROR_CODE}",
                         ex=validation.exception
@@ -208,8 +208,8 @@ class TokenVisitHandler:
         if square.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
-                SquareServiceException(
-                    message=f"ServiceId: {self.id}, {method}: {SquareServiceException.ERROR_CODE}",
+                TokenVisitHandlerException(
+                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=RemovingSquareOccupantException(
                         message=f"{method}: {RemovingSquareOccupantException.ERROR_CODE}",
                         ex=NothingToRemoveFromEmptySquareException(

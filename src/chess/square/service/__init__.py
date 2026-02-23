@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .collision import *
 from .exception import *
+from .visitation import *
 
 # Modules
 from .service import SquareService
