@@ -18,6 +18,37 @@ from chess.system import IdentityService, Validator, ValidationResult, LoggingLe
 
 class SquareValidator(Validator[Square]):
     """
+    # ROLE: Consistency, Integrity Maintenance, Lifecycle Management
+
+    # RESPONSIBILITIES:
+    1.  Ensure integrity and consistency  are maintained in all stages of the square occupation lifecycle.
+
+    # PARENT:
+        *   EntityService
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   token-service (TokenService)
+
+    # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+            *   token_service (TokenService)
+        Inherited:
+        None
+
+    # LOCAL METHODS:
+        *   start_visit(token: Token, square: Square, square_validator: SquareValidator) -> UpdateResult[Square]
+        *   terminate_visit(square: Square, square_validator: SquareValidator) -> DeletionResult[Token]
+
+    # INHERITED METHODS:
+    None
+    """
+    """
      # ROLE: Validation, Data Integrity Guarantor, Security.
 
     # RESPONSIBILITIES:
@@ -34,6 +65,20 @@ class SquareValidator(Validator[Square]):
     None
 
     # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+    None
+
+    # LOCAL METHODS:
+        *   validate(
+                candidate: Any,
+                board_service: BoardService = BoardService(),
+                coord_service: CoordService = CoordService(),
+                identity_service: IdentityService = IdentityService()
+            ) -> ValidationResult[Square]
+
+    # INHERITED METHODS:
     None
     """
     

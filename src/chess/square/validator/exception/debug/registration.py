@@ -1,4 +1,4 @@
-from chess.square import SquareException
+from chess.square import SquareDebugException, SquareException
 from chess.system import NotRegisteredException
 
 __all__ = [
@@ -8,16 +8,15 @@ __all__ = [
 
 
 # ======================# SQUARE_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
-class SquareNotSubmittedBoardRegistrationException(SquareException, NotRegisteredException):
+class SquareNotSubmittedBoardRegistrationException(SquareDebugException, NotRegisteredException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the candidate was not granted Square certification because it was not found
-        in its owner's squares.
+    A failure ValidationResult was returned because the candidate square had not registered with its board.
 
     # PARENT:
-        *   SquareException
+        *   SquareDebugException
         *   NotRegisteredException
 
     # PROVIDES:
@@ -30,4 +29,4 @@ class SquareNotSubmittedBoardRegistrationException(SquareException, NotRegistere
     None
     """
     ERROR_CODE = "SQUARE_NOT_REGISTERED_WITH_BOARD_ERROR"
-    DEFAULT_MESSAGE = "Square validation failed: The candidate was not found in its board.squares."
+    DEFAULT_MESSAGE = "Square validation failed: The candidate square had not registered with its board."

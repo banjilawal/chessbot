@@ -11,21 +11,20 @@ __all__ = [
     "NullSquareException",
 ]
 
-
 from chess.system import NullException
-from chess.square import SquareException
+from chess.square import SquareDebugException
 
 # ======================# NULL_SQUARE EXCEPTION #======================#
-class NullSquareException(SquareException, NullException):
+class NullSquareException(SquareDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an entity, method, or operation that required a Square but got null instead.
+    A failure ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
-        *   NullSquareException
-        *   SquareValidationException
+        *   SquareDebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -36,5 +35,5 @@ class NullSquareException(SquareException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square cannot be null."
+    ERROR_CODE = "SQUARE_NOT_REGISTERED_WITH_BOARD_ERROR"
+    DEFAULT_MESSAGE = "Square validation failed: The validation candidate cannot be null"
