@@ -18,7 +18,12 @@ from chess.system import ChessException
 # ======================# CATCHALL EXCEPTION #======================#
 class CatchallException(ChessException):
     """
-    # ROLE: Catchall, Exception Messaging
+    # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
+    
+    # RESPONSIBILITIES:
+    1.  Identifies the class or module in which the error occurred.
+    2.  Encapsulates the WrapperException which identifies the method that raised the error.
+    3.  Topmost part of the 3-layer exception chain. Should only contain a WrapperException.
 
     # RESPONSIBILITIES:
     1.  Outermost layer of the 3-part exception chain that is created when an operation's result is failure.

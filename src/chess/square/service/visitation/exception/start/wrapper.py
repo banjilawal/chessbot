@@ -7,27 +7,25 @@ Created: 2026-02-22
 version: 1.0.0
 """
 
-from chess.square import SquareException
-from chess.system import InsertionException
-
-
 __all__ = [
-    # ======================# ADDING_SQUARE_OCCUPANT_FAILURE #======================#
+    # ======================# STARTING_SQUARE_VISIT_FAILURE #======================#
     "StartingSquareVisitException",
 ]
 
+from chess.system import UpdateException
 
-# ======================# ADDING_SQUARE_OCCUPANT_FAILURE #======================#
-class StartingSquareVisitException(SquareException, InsertionException):
+
+# ======================# STARTING_SQUARE_VISIT_FAILURE #======================#
+class StartingSquareVisitException(UpdateException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
-    # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why adding an occupant to a square failed.
+    #   RESPONSIBILITIES:
+    1.  An error occurred in TokenVistHandler.terminate_visit that prevented a successful UpdateResult.
+    2.  This error might have occurred in a different TokenVisitHandler method that also returns UpdateResults.
 
     # PARENT:
-        *   SquareException
-        *   InsertionException
+        *   UpdateException
 
 
     # PROVIDES:
@@ -39,5 +37,5 @@ class StartingSquareVisitException(SquareException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_SQUARE_OCCUPANT_FAILURE"
-    DEFAULT_MESSAGE = "Token entering a item failed."
+    ERROR_CODE = "STARTING_SQUARE_VISIT_FAILURE"
+    DEFAULT_MESSAGE = "Square visit start failed."
