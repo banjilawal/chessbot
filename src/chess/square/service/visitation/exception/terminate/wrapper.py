@@ -1,9 +1,9 @@
-# src/chess/square/service/exception/occupant/add/add.py
+# src/chess/square/service/visitation/exception/terminate/wrapper.py
 
 """
-Module: chess.square.service.exception.occupant.add.add
+Module: chess.square.service.visitation.exception.terminate.wrapper
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-02-22
 version: 1.0.0
 """
 
@@ -17,7 +17,7 @@ __all__ = [
 
 
 # ======================# REMOVING_SQUARE_OCCUPANT_FAILURE #======================#
-class RemovingSquareOccupantException(SquareException, DeletionException):
+class RemovingSquareOccupantException(DeletionException):
     """
     # ROLE: Exception Wrapper
 

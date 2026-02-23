@@ -1,9 +1,9 @@
-# src/chess/square/service/exception/occupant/add/board.py
+# src/chess/square/service/visitation/exception/start/board.py
 
 """
-Module: chess.square.service.exception.occupant.add.board
+Module: chess.square.service.visitation.exception.start.board
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-02-22
 version: 1.0.0
 """
 

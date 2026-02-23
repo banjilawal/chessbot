@@ -1,9 +1,9 @@
-# src/chess/square/service/exception/occupant/add/full.py
+# src/chess/square/service/visitation/exception/start/full.py
 
 """
-Module: chess.square.service.exception.occupant.add.full
+Module: chess.square.service.visitation.exception.start.full
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-02-22
 version: 1.0.0
 """
 

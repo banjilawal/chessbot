@@ -1,9 +1,9 @@
-# src/chess/square/service/exception/occupant/add/disabled.py
+# src/chess/square/service/visitation/exception/start/disabled.py
 
 """
-Module: chess.square.service.exception.occupant.add.disabled
+Module: chess.square.service.visitation.exception.start.disabled
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-02-22
 version: 1.0.0
 """
 

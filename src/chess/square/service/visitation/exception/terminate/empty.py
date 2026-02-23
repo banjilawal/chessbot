@@ -1,9 +1,9 @@
-# src/chess/square/service/exception/occupant/remove/empty.py
+# src/chess/square/service/visitation/exception/terminate/empty.py
 
 """
-Module: chess.square.service.exception.occupant.remove.empty
+Module: chess.square.service.visitation.exception.terminate.empty
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-02-22
 version: 1.0.0
 """
 
