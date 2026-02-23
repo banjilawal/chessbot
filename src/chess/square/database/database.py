@@ -7,20 +7,16 @@ Created: 2025-11-24
 version: 1.0.0
 """
 
-from typing import List, cast
+from typing import Dict, List, cast
 
 from chess.square import (
-    AddingDuplicateSquareException, StartingSquareVisitException, DeleteTokenBySearchException,
-    InsertingSquareInDatabaseFailedException, Square, SquareContext, SquareContextService, SquareStackService, SquareService,
-    SquareStackFullException, SquareDatabaseException, SquareToOccupyNotFoundException
+    Square, SquareContext, SquareContextService, SquareDatabaseException, SquareService, SquareStackService
 )
-
 from chess.system import (
-    IdFactory, NUMBER_OF_COLUMNS, DeletionResult, IdentityService, InsertionResult, LoggingLevelRouter, NUMBER_OF_ROWS,
-    SearchResult,
-    Database, UpdateResult, id_emitter
+    Database, DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, NUMBER_OF_COLUMNS, NUMBER_OF_ROWS,
+    SearchResult, UpdateResult
 )
-from chess.token import Token, TokenService
+from chess.token import Token
 
 
 class SquareDatabase(Database[Square]):
@@ -38,13 +34,30 @@ class SquareDatabase(Database[Square]):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   SERVICE_NAME (str)
+        *   token_map Dict[Toke, Square]
+        *   stack_service (SquareStackService)
 
     # INHERITED ATTRIBUTES:
-        *   See Database class for inherited attributes.
+        *   See Database for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+            *   stack_service (StackService)
+        Inherited:
+            *   See Database for inherited parameters.
+            
+    # LOCAL METHODS:
+        *   add_occupant_to_square(token: Token, square: Square) -> UpdateResult[Square]
+        *   remove_occupant_by_search(occupant: Token) -> DeletionResult[Token]
+        *   insert_square(square: Square) -> InsertionResult[bool]
+        *   search(context: SquareContext) -> SearchResult[List[Square]]
+
+    # INHERITED METHODS:
+    None
     """
     SERVICE_NAME = "SquareDatabase"
-    _token_map: [Token, Square]
+    _token_map: Dict[Token, Square]
     _stack_service: SquareStackService
 
     
@@ -54,18 +67,6 @@ class SquareDatabase(Database[Square]):
             id: int = IdFactory.next_id(class_name="SquareDatabase"),
             stack_service: SquareStackService = SquareStackService(capacity=NUMBER_OF_ROWS * NUMBER_OF_COLUMNS),
     ):
-        """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (int)
-            *   name (str)
-            *   stack_service (SquareStackService)
-        # RETURNS:
-            None
-        # RAISES:
-            None
-        """
         super().__init__(id=id, name=name, data_service=stack_service)
         self._token_map = {}
         self._stack_service = stack_service
