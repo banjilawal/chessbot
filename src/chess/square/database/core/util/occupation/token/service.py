@@ -120,7 +120,7 @@ class OccupationService:
             *   SquareToOccupyNotFoundException
             *   StartingSquareVisitException
         """
-        method = "SquareDatabase.add_occupant_to_square"
+        method = "OccupationService.add_occupant"
         
         # Handle the case that, the square is not certified safe.
         square_validation = square_service.validator.validate(square)

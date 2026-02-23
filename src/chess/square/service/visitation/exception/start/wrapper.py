@@ -21,8 +21,8 @@ class StartingSquareVisitException(UpdateException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     #   RESPONSIBILITIES:
-    1.  An error occurred in TokenVistHandler.terminate_visit that prevented a successful UpdateResult.
-    2.  This error might have occurred in a different TokenVisitHandler method that also returns UpdateResults.
+    1.  An error occurred in OccupationService.add_occupant that prevented a successful UpdateResult.
+    2.  This error might have occurred in a different OccupationService method that also returns UpdateResults.
 
     # PARENT:
         *   UpdateException
