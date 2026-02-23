@@ -38,7 +38,7 @@ class OccupationService:
     # LOCAL ATTRIBUTES:
         *   id (int)
         *   SERVICE_NAME (str)
-        *   formation_coordinator (RosterDeployer)
+        *   roster_deployer (RosterDeployer)
 
     # INHERITED ATTRIBUTES:
     None
@@ -47,7 +47,7 @@ class OccupationService:
         Local:
             *   id (int)
             *   name (str)
-            *   formation_coordinator (RosterDeployer)
+            *   roster_deployer (RosterDeployer)
             
         Inherited:
         None
@@ -62,17 +62,17 @@ class OccupationService:
     SERVICE_NAME = "OccupationService"
     _id: int
     _name: str
-    _formation_coordinator: RosterDeployer
+    _roster_deployer: RosterDeployer
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = IdFactory.next_id(class_name="OccupationService"),
-            formation_coordinator: RosterDeployer = RosterDeployer()
+            roster_deployer: RosterDeployer = RosterDeployer()
     ):
         self._id = id
         self._name = name
-        self._formation_coordinator = formation_coordinator
+        self._roster_deployer = roster_deployer
         
     @property
     def id(self) -> int:
@@ -83,8 +83,8 @@ class OccupationService:
         return self._name
     
     @property
-    def formation_coordinator(self) -> RosterDeployer:
-        return self._formation_coordinator
+    def roster_deployer(self) -> RosterDeployer:
+        return self._roster_deployer
     
     @LoggingLevelRouter.monitor
     def add_occupant(

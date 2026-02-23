@@ -6,7 +6,6 @@ Author: Banji Lawal
 Created: 2025-11-19
 """
 
-from chess.square import SquareException
 from chess.system import ValidationException
 
 __all__ = [
@@ -16,15 +15,14 @@ __all__ = [
 
 
 # ======================# SQUARE_VALIDATION_FAILURE #======================#
-class SquareValidationException(SquareException, ValidationException):
+class SquareValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Square. The exception chain traces the ultimate source of failure.
+    1.  An error occurred in SquareValidation.validate that prevented a successful ValidationResult.
 
     # PARENT:
-        *   SquareException
         *   ValidationException
 
     # PROVIDES:
@@ -33,7 +31,7 @@ class SquareValidationException(SquareException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "SQUARE_VALIDATION_FAILURE"
