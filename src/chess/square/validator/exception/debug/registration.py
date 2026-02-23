@@ -13,7 +13,7 @@ class SquareNotSubmittedBoardRegistrationException(SquareDebugException, NotRegi
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure ValidationResult was returned because the candidate square had not registered with its board.
+    1.  A failing ValidationResult was returned because the candidate square had not registered with its board.
 
     # PARENT:
         *   SquareDebugException

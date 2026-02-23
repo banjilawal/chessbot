@@ -19,13 +19,13 @@ __all__ = [
 # ======================# NULL_SQUARE_CONTEXT EXCEPTION #======================#
 class NullSquareContextException(SquareContextException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed its validation as a SquareContext because it was null.
+        1.  A failing ValidationResult was returned because the candidate was null
 
     # PARENT:
-        *   SquareContextException
+        *   SquareContextDebugException
         *   NullException
 
     # PROVIDES:

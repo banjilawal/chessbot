@@ -19,6 +19,26 @@ __all__ = [
 # ========================= ZERO_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
 class ZeroSquareContextFlagsException(SquareContextException, ContextFlagCountException):
     """
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+
+    # RESPONSIBILITIES:
+    1.  A failing ValidationResult was returned because the candidate square_context had all Square
+        attributes switched off.
+
+
+    # PARENT:
+        *   SquareContextDebugException
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:

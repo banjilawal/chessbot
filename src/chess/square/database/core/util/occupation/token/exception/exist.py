@@ -23,8 +23,8 @@ class VisitDestinationNotFoundException(SquareDebugException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failure UpdateResult was returned because a token wanted to occupy a square which does not exist in
-    the SquareStack.
+    1.  An failing UpdateResult was returned because a token wanted to occupy a square which does not exist in
+        the SquareStack.
 
     # PARENT:
         *   SquareDebugException
