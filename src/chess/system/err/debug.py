@@ -9,13 +9,12 @@ from chess.system import ChessException
 # ======================# DEBUG EXCEPTION #======================#
 class DebugException(ChessException):
     """
-    # ROLE: Error Tracing, Debugging
-
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    
     # RESPONSIBILITIES:
-    1.  Innermost layer of the 3-part exception chain. Describes the condition that prevented the operation Leaf
-        node of an exception which contains a description of the condition that caused a transaction or
-        operation failure.
-    2.  Should be encapsulated inside a WrapperException or CatchallException
+    1.  Identifies the code block in a method where the error occurred.
+    2.  Describe what condition or state prevented an operation from completing successfully.
+    3.  Lowest part of the 3-layer exception chain. Should not contain other exceptions.
     
     # ERROR CODE CONVENTION:
     1.  All caps, snake case description of the error with _ERROR as the suffix.

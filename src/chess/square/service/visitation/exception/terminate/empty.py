@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# SQUARE_IS_EMPTY EXCEPTION #======================#
-    "NothingToRemoveFromEmptySquareException",
+    "NoVisitForTerminationException",
 ]
 
 from chess.square import SquareDebugException
 
 
 # ======================# SQUARE_IS_EMPTY EXCEPTION #======================#
-class NothingToRemoveFromEmptySquareException(SquareDebugException):
+class NoVisitForTerminationException(SquareDebugException):
       
     """
     # ROLE: Debug, Error Tracing

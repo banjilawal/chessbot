@@ -14,4 +14,4 @@ None
 
 # Modules
 from .wrapper import SquareVisitTerminationException
-from .empty import NothingToRemoveFromEmptySquareException
+from .empty import NoVisitForTerminationException

@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from chess.square import (
-    SquareVisitTerminationException, Square, SquareState, SquareValidator,
+    NoVisitForTerminationException, SquareVisitTerminationException, Square, SquareState, SquareValidator,
     TokenVisitHandlerException
 )
 from chess.system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
@@ -190,7 +190,7 @@ class TokenVisitHandler:
         # RAISES:
             *   TokenVisitHandlerException
             *   SquareVisitTerminationException
-            *   NothingToRemoveFromEmptySquareException
+            *   NoVisitForTerminationException
         """
         method = "SquareService.remove_occupant"
         
@@ -212,11 +212,11 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenVisitHandlerException(
-                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
                     ex=SquareVisitTerminationException(
                         message=f"{method}: {SquareVisitTerminationException.ERROR_CODE}",
-                        ex=NothingToRemoveFromEmptySquareException(
-                            f"{method}: {NothingToRemoveFromEmptySquareException.DEFAULT_MESSAGE}"
+                        ex=NoVisitForTerminationException(
+                            f"{method}: {NoVisitForTerminationException.DEFAULT_MESSAGE}"
                         )
                     )
                 )
