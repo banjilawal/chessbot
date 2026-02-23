@@ -8,26 +8,24 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# POPPING_SQUARE_FAILURE #======================#
+    # ======================# SQUARE_STACK_POP_FAILURE #======================#
     "PoppingSquareException",
 ]
 
-from chess.square import SquareException
 from chess.system import DeletionException
 
 
-# ======================# POPPING_SQUARE_FAILURE #======================#
+# ======================# SQUARE_STACK_POP_FAILURE #======================#
 class PoppingSquareException(DeletionException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a SquareStackService deletion fails. The encapsulated exceptions create
-        chain for tracing the source of the failure.
+    1.  An error occurred in SquareStackService.pop that prevented a successful InsertionResult.
+    2.  This error might have occurred in a different SquareStackService method that also returns InsertionResults.
 
     # PARENT:
-        *   SquareException
-        *   DeletionException
+        *   InsertionException
 
     # PROVIDES:
     None
@@ -35,8 +33,8 @@ class PoppingSquareException(DeletionException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_SQUARE_FAILURE"
-    DEFAULT_MESSAGE = "Square deletion failed."
+    ERROR_CODE = "SQUARE_STACK_POP_FAILURE"
+    DEFAULT_MESSAGE = "SquareStack pop failed."
