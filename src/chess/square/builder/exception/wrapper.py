@@ -1,9 +1,9 @@
-# src/chess/square/builder/exception.py
+# src/chess/square/builder/exception/wrapper.py
 
 """
-Module: chess.square.builder.exception
+Module: chess.square.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-02
 version: 1.0.0
 """
 

@@ -10,8 +10,7 @@ version: 1.0.0
 # =========== SQUARE.BUILDER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .exception import *
 
 # Modules
-from .wrapper import SquareBuildException
 from .builder import SquareBuilder
