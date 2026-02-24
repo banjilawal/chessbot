@@ -14,5 +14,5 @@ None
 
 # Modules
 from .null import TeamHasDifferentOwnerException
-from .stale import OwnerHasStaleTeamLinkException
+from .stale import PlayerHasStaleTeamLinkException
 from .register import TeamNotRegisteredOwnerException

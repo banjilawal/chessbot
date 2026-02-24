@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/registration/player.py
+# src/chess/team/validator/exception/debug/board/register.py
 
 """
-Module: chess.team.validator.exception.registration.player
+Module: chess.team.validator.exception.board.register
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -22,7 +22,8 @@ class TeamNotRegisteredBoardException(TeamDebugException, NotRegisteredException
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failing ValidationResult was returned because the candidate tteam had not registered with its board.
+    1.  A failing TeamValidationResult was returned because the candidate team had not
+        registered with its board.
 
     # PARENT:
         *   TeamDebugException
@@ -39,4 +40,3 @@ class TeamNotRegisteredBoardException(TeamDebugException, NotRegisteredException
     """
     ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_BOARD_ERROR"
     DEFAULT_MESSAGE = "Team validation failed: The candidate team had not registered with its board."
-

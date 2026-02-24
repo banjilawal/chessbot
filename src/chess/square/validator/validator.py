@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-11
 """
 
+from __future__ import annotations
 from typing import Any, List, cast
 
 from chess.board import Board, BoardService, SquareOnDifferentBoardException
