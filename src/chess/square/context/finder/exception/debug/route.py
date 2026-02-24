@@ -12,7 +12,7 @@ __all__ = [
     "SquareSearchRouteException",
 ]
 
-from chess.square import SquareContextDebugException
+from chess.square.context import SquareContextDebugException
 from chess.system import NoExecutionRouteException
 
 
@@ -22,7 +22,7 @@ class SquareSearchRouteException(SquareContextDebugException, NoExecutionRouteEx
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failing SearchResult was returned because there was no search route provided for the
+    1.  A failing SearchResult was returned because there was no search route was provided for the
         SquareContext attribute.
 
     # PARENT:

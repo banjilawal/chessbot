@@ -19,23 +19,24 @@ from chess.system import  NoExecutionRouteException
 # ======================# NO_SQUARE_CONTEXT_BUILD_ROUTE EXCEPTION #======================#
 class SquareContextBuildRouteException(SquareContextException,  NoExecutionRouteException):
     """
-    # ROLE: Fallback Result, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the SquareContext build failed because there was no build route for the Square key.
+   1.  A failing BuildResult was returned because there was no build route was provided for the
+        SquareContext attribute.
 
     # PARENT:
-        *   SquareContextException
+        *   SquareContextDebugException
         *   NoExecutionRouteException
 
-    # PROVIDES
+    # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
 
     # INHERITED ATTRIBUTES:
-    None
+    Non
     """
     ERROR_CODE = "NO_SQUARE_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "SquareContext build failed: No build path existed for the Square key."
+    DEFAULT_MESSAGE = "SquareContext build failed: No build route existed for the attribute."

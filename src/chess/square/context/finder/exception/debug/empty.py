@@ -10,22 +10,21 @@ from chess.square import SquareContextDebugException
 from chess.system import NullException
 
 _all__ = [
-    # ======================# NO_SQUARE_DATASOURCE_PROVIDED EXCEPTION #======================#
-    "SquareDataSourceNullException",
+    # ======================# SQUARE_DATA_SOURCE_EMPTY EXCEPTION #======================#
+    "SquareDataSourceEmptyException",
 ]
 
 
-# ======================# NO_SQUARE_DATASOURCE_PROVIDED EXCEPTION #======================#
-class SquareDataSourceNullException(SquareContextDebugException, NullException):
+# ======================# SQUARE_DATA_SOURCE_EMPTY EXCEPTION #======================#
+class SquareDataSourceEmptyException(SquareContextDebugException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failing SearchResult was returned because no dataset was provided for the query.
+    1.  A failing SearchResult was returned because the dataset was empty.
 
     # PARENT:
         *   SquareContextDebugException
-        *   NullException
 
     # PROVIDES:
     None
@@ -36,5 +35,5 @@ class SquareDataSourceNullException(SquareContextDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_SQUARE_DATASOURCE_PROVIDED_ERROR"
-    DEFAULT_MESSAGE = "Square search failed: No dataset was provided for the query."
+    ERROR_CODE = "SQUARE_DATA_SOURCE_EMPTY_ERROR"
+    DEFAULT_MESSAGE = "Square search failed: The dataset was empty."

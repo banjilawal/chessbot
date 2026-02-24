@@ -46,7 +46,7 @@ class SquareService(EntityService[Square]):
             *   token_visit_handler (TokenVisitHandler)
             *   collision_detector (SquareCollisionDetector)
         Inherited:
-            *   See EntityService for inherited parameters.
+            *   See EntityService for inherited constructor parameters.
         
     # LOCAL METHODS:
         *   begin_square_visit(square: Square, visitor: Token) -> UpdateResult[Square]

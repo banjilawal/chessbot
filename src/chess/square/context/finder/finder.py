@@ -8,28 +8,69 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import List
+from typing import Any, List, cast
 
 from chess.board import Board
 from chess.coord import Coord
-from chess.system import LoggingLevelRouter, SearchResult, StackSearcher
+from chess.system import LoggingLevelRouter, SearchResult, StackSearcher, ValidationResult
 from chess.square import (
-    Square, SquareContext, SquareContextValidator, SquareSearchException, SquareSearchRouteException,
-    SquareSearchNullDatasetException, SquareSearchPayloadTypeException, SquareState
+    SquareDataSourceNullException, Square, SquareContext, SquareContextValidator, SquareDataSourceEmptyException,
+    SquareSearchException,
+    SquareSearchRouteException,
+    SquareSearchNullDatasetException, SquareSearchPayloadException, SquareState
 )
 from chess.token import Token
 
 
 class SquareFinder(StackSearcher[Square]):
     """
-    # ROLE: AbstractSearcher
+    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
-    1.  Send bag in a SquareList whose attribute value match the context.key value to the caller.
-    2.  If a search does not complete forward the exception chain to the caller for debugging.
+    1.  Public facing Square microservice API.
+    2.  Encapsulate integrity logic for Square instances in one extendable module.
+    3.  Authoritative, single source of truth for Square state by providing single entry and exit points to Square
+        lifecycle.
+
+    # PARENT:
+        *   EntityService
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   SERVICE_NAME (str)
+        *   token_visit_handler (TokenVisitHandler)
+        *   collision_detector (SquareCollisionDetector)
+
+    # INHERITED ATTRIBUTES:
+        *   See EntityService for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+            *   token_visit_handler (TokenVisitHandler)
+            *   collision_detector (SquareCollisionDetector)
+        Inherited:
+            *   See EntityService for inherited parameters.
+
+    # LOCAL METHODS:
+        *   begin_square_visit(square: Square, visitor: Token) -> UpdateResult[Square]
+        *   end_square_visit(square: Square) -> DeletionResult[Token]
+
+    # INHERITED METHODS:
+    None
+    """
+    """
+    # ROLE: Search
+
+    # RESPONSIBILITIES:
+    1.  Single point of entry into different square search routes.
+    2.  Return a list of squares which match the context attribute's value.
+    3.  Provide an exception chain the client can use to trace a search that does is not completed.
+    4.  Manages all phases of the SquareSearch lifecycle.
 
     # LIMITATIONS:
-    1.  SquareFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
+    1.  A search result might contain duplicates.
 
     # PARENT
         *   AbstractSearcher
@@ -41,6 +82,21 @@ class SquareFinder(StackSearcher[Square]):
     None
 
     # INHERITED ATTRIBUTES:
+        *   See AbstractSearcher for inherited attributes.
+        
+    # CONSTRUCTOR PARAMETERS:
+    None
+        Inherited:
+            *   See AbstractSearcher for inherited constructor parameters.
+        
+    # LOCAL METHODS:
+        *   find(
+                dataset: List[Square],
+                context: SquareContext,
+                context_validator: SquareContextValidator
+            ) -> SearchResult[List[Square]]
+        
+    # INHERITED METHODS:
     None
     """
     
@@ -52,6 +108,41 @@ class SquareFinder(StackSearcher[Square]):
             context: SquareContext,
             context_validator: SquareContextValidator = SquareContextValidator()
     ) -> SearchResult[List[Square]]:
+        """
+        # ACTION:
+            1.  Send an exception chain in the SearchResult if either
+                    *   A null check.
+                    *   A type check.
+                Ssend an exception chain in the ValidationResult. Else, cast candidate to SquareContext
+                instance context.
+            2.  Send an exception chain in the BuildResult if either
+                    *   One and only one of attributes is not null.
+                    *   There is no build route for the enabled option.
+                    *   The enabled attribute is not certified as safe by its service.
+                are not certified as safe by their services.
+            3.  Build the appropriate context, sed the build success result.
+        # PARAMETERS:
+            Only one these must be provided:
+                *   id Optional[(int)]
+                *   name Optional[(str)]
+                *   cord Optional[(Coord)]
+                *   board Optional[(Board)]
+                *   state Optional[SquareState]
+            These Parameters must be provided:
+                *   board_service (BoardService)
+                *   coord_service (CoordService)
+                *   token_service (TokenService)
+                *   identity_service (IdentityService)
+        # RETURNS:
+            *   BuildResult[SquareContext] containing either:
+                    - On failure: Exception.
+                    - On success: SquareContext in the payload.
+        # RAISES:
+            *   ZeroSquareContextFlagsException
+            *   SquareContextBuildException
+            *   ExcessiveSquareContextFlagsException
+            *   SquareContextBuildRouteException
+        """
         """
         # ACTION:
         1.  If the dataset is null or the wrong type send the exception in the SearchResult.
@@ -69,34 +160,13 @@ class SquareFinder(StackSearcher[Square]):
                     - On finding a match: List[Square] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
-            *   SquareSearchPayloadTypeException
+            *   SquareSearchPayloadException
             *   SquareNullDatasetException
             *   SquareSearchException
         """
         method = "SquareFinder.find"
         
-        # Handle the case that the dataset is null.
-        if dataset is None:
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                SquareSearchException(
-                    message=f"{method}: {SquareSearchException.ERROR_CODE}",
-                    ex=SquareSearchNullDatasetException(
-                        f"{method}: {SquareSearchNullDatasetException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
-        # Handle the case that dataset is the wrong type
-        if not isinstance(dataset, List):
-            # Return the exception chain on failure.
-            return SearchResult.failure(
-                SquareSearchException(
-                    message=f"{method}: {SquareSearchException.ERROR_CODE}",
-                    ex=SquareSearchPayloadTypeException(
-                        f"{method}: {SquareSearchPayloadTypeException.DEFAULT_MESSAGE}"
-                    )
-                )
-            )
+
         # Handle the case that the context fails validation.
         validation_result = context_validator.validate(context)
         if validation_result.is_failure:
@@ -138,6 +208,71 @@ class SquareFinder(StackSearcher[Square]):
                 ex=SquareSearchRouteException(f"{method}: {SquareSearchRouteException.DEFAULT_MESSAGE}")
             )
         )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _validate_dataset(cls, candidate: Any) -> ValidationResult[List[Square]]:
+        """
+        # ACTION:
+            1.  Send an exception chain in the ValidationResult if either
+                    *   A null check.
+                    *   A type check.
+                Ssend an exception chain in the ValidationResult. Else, cast candidate to SquareContext
+                instance context.
+            2.  Send an exception chain in the BuildResult if either
+                    *   One and only one of attributes is not null.
+                    *   There is no build route for the enabled option.
+                    *   The enabled attribute is not certified as safe by its service.
+                are not certified as safe by their services.
+            3.  Build the appropriate context, sed the build success result.
+        # PARAMETERS:
+            Only one these must be provided:
+                *   id Optional[(int)]
+                *   name Optional[(str)]
+                *   cord Optional[(Coord)]
+                *   board Optional[(Board)]
+                *   state Optional[SquareState]
+            These Parameters must be provided:
+                *   board_service (BoardService)
+                *   coord_service (CoordService)
+                *   token_service (TokenService)
+                *   identity_service (IdentityService)
+        # RETURNS:
+            *   BuildResult[SquareContext] containing either:
+                    - On failure: Exception.
+                    - On success: SquareContext in the payload.
+        # RAISES:
+            *   ZeroSquareContextFlagsException
+            *   SquareContextBuildException
+            *   ExcessiveSquareContextFlagsException
+            *   SquareContextBuildRouteException
+        """
+        method = "SquareFinder._validate_dataset"
+        # Handle the nonexistence case.
+        if candidate is None:
+            return ValidationResult.failure(
+                SquareDataSourceNullException(
+                    f"{method}: {SquareDataSourceNullException.DEFAULT_MESSAGE}"
+                )
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, List):
+            return ValidationResult.failure(
+                TypeError(f"{method}: Expected List[Square], got {type(candidate).__name__} instead.")
+            )
+        
+        squares = cast(List[Square], candidate)
+        # Handle the case that, the dataset is empty
+        if len(squares) == 0:
+            return ValidationResult.failure(
+                SquareDataSourceEmptyException(f"{method}: {SquareDataSourceEmptyException.DEFAULT_MESSAGE}")
+            )
+        # Handle the case that, the list does not contain squares.
+        if not isinstance(squares[0], Square):
+            return ValidationResult.failure(
+                TypeError(f"{method}: The dataset does not contain squares, it has {type(squares).__name__} instead.")
+            )
+        # --- Send the success result to the caller. ---#
     
     @classmethod
     @LoggingLevelRouter.monitor

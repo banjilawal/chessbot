@@ -12,7 +12,7 @@ __all__ = [
     "SquareContextValidationRouteException",
 ]
 
-from chess.square import SquareContextDebugException
+from chess.square.context import SquareContextDebugException
 from chess.system import  NoExecutionRouteException
 
 

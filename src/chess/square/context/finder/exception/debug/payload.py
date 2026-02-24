@@ -12,12 +12,12 @@ from chess.square.context import SquareContextDebugException
 
 _all__ = [
     # ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_SQUARES EXCEPTION #======================#
-    "SquareSearchPayloadTypeException",
+    "SquareSearchPayloadException",
 ]
 
 
 # ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_SQUARES EXCEPTION #======================#
-class SquareSearchPayloadTypeException(SquareContextDebugException):
+class SquareSearchPayloadException(SquareContextDebugException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
