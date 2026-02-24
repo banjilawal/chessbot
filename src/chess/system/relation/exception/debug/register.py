@@ -1,4 +1,4 @@
-# src/chess/system/relation/exception/debug/register_.py
+# src/chess/system/relation/exception/debug/register.py
 
 """
 Module: chess.system.relation.exception.debug.register
@@ -18,7 +18,7 @@ from chess.system import RelationDebugException
 # ======================# NOT_REGISTERED EXCEPTION #======================#
 class NotRegisteredException(RelationDebugException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
     
     # INTRODUCTION:
         Indicate that the owning side of a one-to-many is broken. The many side knows its owner from its owner
