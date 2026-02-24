@@ -1,9 +1,9 @@
-# src/chess/edge/validator/exception/debug/null.py
+# src/chess/edge/validator/exception/null.py
 
 """
-Module: chess.edge.validator.exception.debug.null
+Module: chess.edge.validator.exception.null
 Author: Banji Lawal
-Created: 2026-02-17
+Created: 2026-02-18
 version: 1.0.0
 """
 
@@ -19,14 +19,14 @@ from chess.edge import EdgeDebugException
 # ======================# NULL_EDGE EXCEPTION #======================#
 class NullEdgeException(EdgeDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an entity, method, or operation that required a Edge but got null instead.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
-        *   NullException
         *   EdgeDebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -38,4 +38,4 @@ class NullEdgeException(EdgeDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_EDGE_ERROR"
-    DEFAULT_MESSAGE = "Edge cannot be null."
+    DEFAULT_MESSAGE = "Edge validation failed: The validation candidate cannot be null."

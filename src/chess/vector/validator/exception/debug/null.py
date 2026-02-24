@@ -1,9 +1,9 @@
-# src/chess/vector/validator/exception/debug/null.py
+# src/chess/vector/validator/exception/null.py
 
 """
-Module: chess.vector.validator.exception.debug.null
+Module: chess.vector.validator.exception.null
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-08-12
 version: 1.0.0
 """
 
@@ -13,26 +13,29 @@ __all__ = [
 ]
 
 from chess.system import NullException
-from chess.vector import InvalidVectorException
+from chess.vector import VectorDebugException
 
 
 # ======================# NULL_VECTOR EXCEPTION #======================#
-class NullVectorException(InvalidVectorException, NullException):
+class NullVectorException(VectorDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that Vector validation failed because the candidate was null.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
+        *   VectorDebugException
         *   NullException
-        *   InvalidVectorException
 
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_VECTOR EXCEPTION_ERROR"
-    DEFAULT_MESSAGE = "Vector validation failed: The candidate was null."
+    ERROR_CODE = "NULL_VECTOR_ERROR"
+    DEFAULT_MESSAGE = "Vector validation failed: The validation candidate cannot be null."

@@ -1,33 +1,32 @@
-# src/chess/coord/validator/exception/debug/null.py
+# src/chess/coord/validator/exception/null.py
 
 """
-Module: chess.coord.validator.exception.debug.null
+Module: chess.coord.validator.exception.null
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2025-10-01
 version: 1.0.0
 """
 
-from chess.system import NullException
-from chess.coord import CoordValidationException
-
 __all__ = [
-    # ======================# NULL COORD EXCEPTION #======================#
+    # ======================# NULL_COORD EXCEPTION #======================#
     "NullCoordException",
 ]
 
+from chess.system import NullException
+from chess.coord import CoordDebugException
 
-# ======================# NULL COORD EXCEPTION #======================#
-class NullCoordException(CoordValidationException, NullException):
+
+# ======================# NULL_COORD EXCEPTION #======================#
+class NullCoordException(CoordDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Raised if a Coord validation candidate is null.
-    2.  Raised if an entity, method or operation requires a Coord but receives null instead.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
-        *   CoordValidationException
-        *   NullCoordException
+        *   CoordDebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -38,5 +37,5 @@ class NullCoordException(CoordValidationException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_COORD___ERROR"
-    DEFAULT_MESSAGE = "Coord cannot be null."
+    ERROR_CODE = "NULL_COORD_ERROR"
+    DEFAULT_MESSAGE = "Coord validation failed: The validation candidate cannot be null."

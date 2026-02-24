@@ -3,31 +3,30 @@
 """
 Module: chess.board.validator.exception.null
 Author: Banji Lawal
-Created: 2025-10-01
-version: 1.0.0
+Created: 2025-11-19
+Version: 1.0.0
 """
-
-from chess.system import NullException
-from chess.board import BoardValidationException
 
 __all__ = [
     # ======================# NULL_BOARD EXCEPTION #======================#
     "NullBoardException",
 ]
 
+from chess.system import NullException
+from chess.board import BoardDebugException
+
 
 # ======================# NULL_BOARD EXCEPTION #======================#
-class NullBoardException(BoardValidationException, NullException):
+class NullBoardException(BoardDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Raised if a Board validation candidate is null.
-    2.  Raised if an entity, method or operation requires a Board but receives null instead.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
-        *   NullBoardException
-        *   BoardValidationException
+        *   BoardDebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -38,5 +37,5 @@ class NullBoardException(BoardValidationException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_BOARD___ERROR"
-    DEFAULT_MESSAGE = "Board cannot be null."
+    ERROR_CODE = "NULL_BOARD_ERROR"
+    DEFAULT_MESSAGE = "Board validation failed: The validation candidate cannot be null."

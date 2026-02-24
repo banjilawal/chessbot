@@ -1,9 +1,9 @@
-# src/chess/token/validator/exception/debug/__init__.py
+# src/chess/token/validator/exception/null.py
 
 """
-Module: chess.token.validator.exception.debug.__init__
+Module: chess.token.validator.exception.null
 Author: Banji Lawal
-Created: 2025-11-20
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -13,20 +13,20 @@ __all__ = [
 ]
 
 from chess.system import NullException
-from chess.token import TokenException
+from chess.token import TokenDebugException
 
 
 # ======================# NULL_TOKEN EXCEPTION #======================#
-class NullTokenException(TokenException, NullException):
+class NullTokenException(TokenDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that Token validation failed because the candidate was null.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
-        *   TokenException
-        *   NullTokenException
+        *   TokenDebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -38,4 +38,4 @@ class NullTokenException(TokenException, NullException):
     None
     """
     ERROR_CODE = "NULL_TOKEN_ERROR"
-    DEFAULT_MESSAGE = "Token validation failed: The candidate was null."
+    DEFAULT_MESSAGE = "Token validation failed: The validation candidate cannot be null."

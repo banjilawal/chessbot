@@ -1,9 +1,9 @@
-# src/chess/node/validator/exception/debug/null.py
+# src/chess/node/context/validator/exception/debug/null/node.py
 
 """
-Module: chess.node.validator.exception.debug.null
+Module: chess.node.context.validator.exception.debug.null.node
 Author: Banji Lawal
-Created: 2026-02-17
+Created: 2026-02-18
 version: 1.0.0
 """
 
@@ -13,20 +13,20 @@ __all__ = [
 ]
 
 from chess.system import NullException
-from chess.node import NodeException
+from chess.node import NodeDebugException
 
 
 # ======================# NULL_NODE EXCEPTION #======================#
-class NullNodeException(NodeException, NullException):
+class NullNodeException(NodeDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an entity, method, or operation that required a Node but got null instead.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
-        *   NullNodeException
-        *   NodeValidationException
+        *   NodeDebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -38,4 +38,4 @@ class NullNodeException(NodeException, NullException):
     None
     """
     ERROR_CODE = "NULL_NODE_ERROR"
-    DEFAULT_MESSAGE = "Node cannot be null."
+    DEFAULT_MESSAGE = "Node validation failed: The validation candidate cannot be null."

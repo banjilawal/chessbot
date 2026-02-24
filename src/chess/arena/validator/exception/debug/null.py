@@ -1,34 +1,32 @@
-# src/chess/arena/validator/exception/debug/null.py
+# src/chess/arena/validator/exception/null.py
 
 """
-Module: chess.arena.validator.exception.debug.null
+Module: chess.arena.validator.exception.null
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
 """
-
-
-from chess.system import NullException
-from chess.arena import ArenaDebugException
 
 __all__ = [
     # ======================# NULL_ARENA EXCEPTION #======================#
     "NullArenaException",
 ]
 
+from chess.system import NullException
+from chess.arena import ArenaDebugException
+
 
 # ======================# NULL_ARENA EXCEPTION #======================#
 class NullArenaException(ArenaDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Raised if a Arena validation candidate is null.
-    2.  Raised if an entity, method or operation requires a Arena but receives null instead.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
-        *   NullException
         *   ArenaDebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -39,5 +37,5 @@ class NullArenaException(ArenaDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_ARENA___ERROR"
-    DEFAULT_MESSAGE = "Arena cannot be null."
+    ERROR_CODE = "NULL_ARENA_ERROR"
+    DEFAULT_MESSAGE = "Arena validation failed: The validation candidate cannot be null."

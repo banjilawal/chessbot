@@ -3,7 +3,8 @@
 """
 Module: chess.square.validator.exception.null
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2025-10-01
+version: 1.0.0
 """
 
 __all__ = [
@@ -13,6 +14,7 @@ __all__ = [
 
 from chess.system import NullException
 from chess.square import SquareDebugException
+
 
 # ======================# NULL_SQUARE EXCEPTION #======================#
 class NullSquareException(SquareDebugException, NullException):
@@ -36,4 +38,4 @@ class NullSquareException(SquareDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square validation failed: The validation candidate cannot be null"
+    DEFAULT_MESSAGE = "Square validation failed: The validation candidate cannot be null."

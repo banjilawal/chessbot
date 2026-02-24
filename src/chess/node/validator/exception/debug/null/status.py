@@ -1,7 +1,7 @@
-# src/chess/node/context/validator/exception/debug/null.py
+# src/chess/node/context/validator/exception/debug/null/status.py
 
 """
-Module: chess.node.context.validator.exception.debug.null
+Module: chess.node.context.validator.exception.debug.null.status
 Author: Banji Lawal
 Created: 2026-02-18
 version: 1.0.0
@@ -18,10 +18,10 @@ __all__ = [
 # ======================# DISCOVERY_STATUS_NULL EXCEPTION #======================#
 class DiscoveryStatusNullException(NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an object, method or module received null instead when it expected a DiscoveryStatus.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
         *   NullException
@@ -36,4 +36,4 @@ class DiscoveryStatusNullException(NullException):
     None
     """
     ERROR_CODE = "DISCOVERY_STATUS_NULL_ERROR"
-    DEFAULT_MESSAGE = "Expected a DiscoveryStatus, received null instead."
+    DEFAULT_MESSAGE = "Node validation failed: Expected a DiscoveryStatus, received null instead."

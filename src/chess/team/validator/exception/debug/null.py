@@ -1,9 +1,9 @@
-# src/chess/team/validator/exception/debug/null.py
+# src/chess/team/validator/exception/null.py
 
 """
-Module: chess.team.validator.exception.debug.null
+Module: chess.team.validator.exception.null
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-10-01
 version: 1.0.0
 """
 
@@ -19,23 +19,23 @@ from chess.team import TeamDebugException
 # ======================# NULL_TEAM EXCEPTION #======================#
 class NullTeamException(TeamDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the candidate was not granted Team certification because it was null.
-    
+    A failing ValidationResult was returned because the validation candidate was null.
+
     # PARENT:
+        *   TeamDebugException
         *   NullException
-        *   TeamException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "NULL_TEAM_ERROR"
-    DEFAULT_MESSAGE = "Team validation failed: The candidate was null."
+    DEFAULT_MESSAGE = "Team validation failed: The validation candidate cannot be null."

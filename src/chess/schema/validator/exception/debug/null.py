@@ -3,30 +3,30 @@
 """
 Module: chess.schema.validator.exception.null
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-12-16
 version: 1.0.0
 """
 
-from chess.system import NullException
-from chess.schema import InvalidSchemaException
-
 __all__ = [
-    # ======================# NULL_SCHEMA_VALIDATION EXCEPTION #======================#
+    # ======================# NULL_SCHEMA EXCEPTION #======================#
     "NullSchemaException",
 ]
 
+from chess.system import NullException
+from chess.schema import SchemaDebugException
 
-# ======================# NULL_SCHEMA_VALIDATION EXCEPTION #======================#
-class NullSchemaException(InvalidSchemaException, NullException):
+
+# ======================# NULL_SCHEMA EXCEPTION #======================#
+class NullSchemaException(SchemaDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed its Schema safety certification because it was null.
-    
+    A failing ValidationResult was returned because the validation candidate was null.
+
     # PARENT:
-        *   NullSchemaException
-        *   InvalidSchemaException
+        *   SchemaDebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -37,5 +37,5 @@ class NullSchemaException(InvalidSchemaException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SCHEMA_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Schema validation failed: A Schema cannot be null."
+    ERROR_CODE = "NULL_SCHEMA_ERROR"
+    DEFAULT_MESSAGE = "Schema validation failed: The validation candidate cannot be null."

@@ -1,39 +1,41 @@
-# src/chess/formation/validator/exception/name.py
+# src/chess/formation/validator/exception/null.py
 
 """
-Module: chess.formation.validator.exception.name
+Module: chess.formation.validator.exception.null
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-10-01
 version: 1.0.0
 """
-
-from chess.system import NullException
-from chess.formation import FormationValidationException
 
 __all__ = [
     # ======================# NULL_FORMATION EXCEPTION #======================#
     "NullFormationException",
 ]
 
+from chess.system import NullException
+from chess.formation import FormationDebugException
+
 
 # ======================# NULL_FORMATION EXCEPTION #======================#
-class NullFormationException(FormationValidationException, NullException):
+class NullFormationException(FormationDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Raised if a Formation validation candidate is null.
-    2.  Raised if an entity, method or operation requires an Formation but receives null instead.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
-        *   FormationValidationException
+        *   FormationDebugException
         *   NullException
 
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_ORDER_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "Formation cannot be null."
+    ERROR_CODE = "NULL_FORMATION_ERROR"
+    DEFAULT_MESSAGE = "Formation validation failed: The validation candidate cannot be null."

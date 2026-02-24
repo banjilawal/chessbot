@@ -3,7 +3,8 @@
 """
 Module: chess.player.validator.exception.null
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2025-10-01
+version: 1.0.0
 """
 
 __all__ = [
@@ -37,4 +38,4 @@ class NullPlayerException(PlayerDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_PLAYER_ERROR"
-    DEFAULT_MESSAGE = "Player validation failed: The validation candidate cannot be null"
+    DEFAULT_MESSAGE = "Player validation failed: The validation candidate cannot be null."
