@@ -8,26 +8,25 @@ version: 1.0.0
 """
 
 from chess.team import TeamDebugException
-from chess.system import NotRegisteredException
-
+from chess.system import StaleRelationException
 
 __all__ = [
-    # ======================# PLAYER_HAS_STALE_LINK_TO_TEAM EXCEPTION #======================#
-    "PlayerHasStaleTeamLinkException",
+    # ======================# OWNER_HAS_STALE_LINK_TO_TEAM EXCEPTION #======================#
+    "OwnerHasStaleTeamLinkException",
 ]
 
 
-#======================# PLAYER_HAS_STALE_LINK_TO_TEAM EXCEPTION #======================#
-class PlayerHasStaleTeamLinkException(TeamDebugException, NotRegisteredException):
+#======================# OWNER_HAS_STALE_LINK_TO_TEAM EXCEPTION #======================#
+class OwnerHasStaleTeamLinkException(TeamDebugException, StaleRelationException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failing ValidationResult was returned because the player had a stale link to a team.
+    1.  A failing ValidationResult was returned because the owner had a stale link to a former team.
 
     # PARENT:
         *   TeamDebugException
-        *   NotRegisteredException
+        *   StaleRelationException
 
     # PROVIDES:
     None
@@ -38,5 +37,5 @@ class PlayerHasStaleTeamLinkException(TeamDebugException, NotRegisteredException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PLAYER_HAS_STALE_LINK_TO_TEAM_ERROR"
-    DEFAULT_MESSAGE = "Team validation failed: The candidate team had not registered with its owner."
+    ERROR_CODE = "OWNER_HAS_STALE_LINK_TO_TEAM_ERROR"
+    DEFAULT_MESSAGE = "Team validation failed: The owner has a stale link to a former team."
