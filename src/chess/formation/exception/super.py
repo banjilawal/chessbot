@@ -3,34 +3,34 @@
 """
 Module: chess.formation.exception
 Author: Banji Lawal
-Created: 2025-10-09
+Created: 2025-09-08
 version: 1.0.0
 """
-
-from chess.system import ChessException
 
 __all__ = [
     # ======================# FORMATION EXCEPTION #======================#
     "FormationException",
 ]
 
+from chess.system import SuperClassException
+
 
 # ======================# FORMATION EXCEPTION #======================#
-class FormationException(ChessException):
+class FormationException(SuperClassException):
     """
-    # ROLE: Catchall Exception
+  # ROLE: DebugException Parent, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
-    1.  Catchall for Formation errors not covered by FormationException subclasses.
+  # RESPONSIBILITIES:
+  1.  Layer-0 of Exception chain which is the Parent of FormationDebugException
 
-    # PARENT:
-        *   ChessException
+  # PARENT:
+      *   SuperClassException
 
-    # PROVIDES:
-    None
+  # PROVIDES:
+  None
 
-    # ATTRIBUTES:
-    None
-    """
+  # ATTRIBUTES:
+  None
+  """
     ERROR_CODE = "FORMATION_ERROR"
     DEFAULT_MESSAGE = "Formation raised an exception."

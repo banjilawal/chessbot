@@ -3,7 +3,7 @@
 """
 Module: chess.edge.exception.__init__
 Author: Banji Lawal
-Created: 2025-02-17
+Created: 2026-02-23
 version: 1.0.0
 """
 
@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .base import EdgeException
+from .super import  EdgeException
 from .debug import EdgeDebugException

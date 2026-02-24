@@ -1,3 +1,13 @@
+# src/chess/hostage/exception/debug.py
+
+"""
+Module: chess.hostage.exception.debug
+Author: Banji Lawal
+Created: 2026-02-08
+version: 1.0.0
+"""
+
+
 __all__ = [
     # ======================# HOSTAGE_DEBUG EXCEPTION #======================#
     "HostageDebugException",
@@ -13,7 +23,7 @@ class HostageDebugException(HostageException, DebugException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused an Hostage operation failure.
+    1.  Describes the condition that caused a Hostage operation failure.
 
     # PARENT:
         *   HostageException
@@ -29,4 +39,4 @@ class HostageDebugException(HostageException, DebugException):
      None
     """
     ERROR_CODE = "HOSTAGE_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "An hostage debug error occurred."
+    DEFAULT_MESSAGE = "A HostageDebugException was raised."

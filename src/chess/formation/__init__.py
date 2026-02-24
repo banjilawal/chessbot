@@ -13,7 +13,7 @@ version: 1.0.0
 from .key import *
 from .service import *
 from .validator import *
+from .exception import *
 
 # Modules
 from .formation import Formation
-from .exception import FormationException

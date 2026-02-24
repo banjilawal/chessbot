@@ -1,9 +1,9 @@
-# src/chess/arena/exception//__init__.py
+# src/chess/arena/exception/__init__.py
 
 """
 Module: chess.arena.exception.__init__
 Author: Banji Lawal
-Created: 2025-01-24
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import ArenaException
+from .super import  ArenaException
 from .debug import ArenaDebugException

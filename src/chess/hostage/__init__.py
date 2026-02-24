@@ -18,4 +18,4 @@ from .validator import *
 from .exception import *
 
 # Modules
-from .manifest import Hostage
+from .hostage import Hostage

@@ -3,26 +3,28 @@
 """
 Module: chess.attack.exception.wrapper
 Author: Banji Lawal
-Created: 2026-01-24
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
+
+
 
 __all__ = [
     # ======================# ATTACK_FAILURE #======================#
     "AttackException",
 ]
 
-from chess.attack import AttackException
 from chess.system import OperationException
 
 
 # ======================# ATTACK_FAILURE #======================#
-class AttackException(AttackException, OperationException):
+class AttackException(OperationException):
     """
-    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions that were created when an attack is not completed successfully.
+    1.  An error occurred in Attack.execute that, prevented AttackResult.success() 
+        from being returned.
 
     # PARENT:
         *   OperationException
@@ -37,4 +39,4 @@ class AttackException(AttackException, OperationException):
     None
     """
     ERROR_CODE = "ATTACK_FAILURE"
-    DEFAULT_MESSAGE = "Attack failed."
+    DEFAULT_MESSAGE = "Attack attack failed."

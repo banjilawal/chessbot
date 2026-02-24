@@ -3,33 +3,34 @@
 """
 Module: chess.hostage.exception
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-09-08
 version: 1.0.0
 """
-
-from chess.system import ChessException
 
 __all__ = [
     # ======================# HOSTAGE EXCEPTION #======================#
     "HostageException",
 ]
 
+from chess.system import SuperClassException
+
+
 # ======================# HOSTAGE EXCEPTION #======================#
-class HostageException(ChessException):
+class HostageException(SuperClassException):
     """
-    # ROLE: Catchall Exception
-  
-    # RESPONSIBILITIES:
-    1.  Catchall for Hostage exceptions.
-  
-    # PARENT:
-        *   ChessException
-  
-    # PROVIDES:
-    None
-  
-    # ATTRIBUTES:
-    None
-    """
+  # ROLE: DebugException Parent, Exception Chain Layer 0
+
+  # RESPONSIBILITIES:
+  1.  Layer-0 of Exception chain which is the Parent of HostageDebugException
+
+  # PARENT:
+      *   SuperClassException
+
+  # PROVIDES:
+  None
+
+  # ATTRIBUTES:
+  None
+  """
     ERROR_CODE = "HOSTAGE_ERROR"
     DEFAULT_MESSAGE = "Hostage raised an exception."

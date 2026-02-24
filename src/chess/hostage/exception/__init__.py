@@ -3,7 +3,7 @@
 """
 Module: chess.hostage.exception.__init__
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .base import HostageException
+from .super import  HostageException
 from .debug import HostageDebugException

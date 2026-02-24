@@ -1,9 +1,9 @@
-# src/chess/vector/__init__.py
+# src/chess/vector/exception/__init__.py
 
 """
-Module: chess.vector.__init__
+Module: chess.vector.exception.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -13,4 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import VectorException
+from .super import  VectorException
+from .debug import VectorDebugException

@@ -3,9 +3,10 @@
 """
 Module: chess.arena.exception.debug
 Author: Banji Lawal
-Created: 2025-01-24
+Created: 2026-02-08
 version: 1.0.0
 """
+
 
 __all__ = [
     # ======================# ARENA_DEBUG EXCEPTION #======================#
@@ -22,7 +23,7 @@ class ArenaDebugException(ArenaException, DebugException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused an Arena operation failure.
+    1.  Describes the condition that caused a Arena operation failure.
 
     # PARENT:
         *   ArenaException
@@ -37,5 +38,5 @@ class ArenaDebugException(ArenaException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "DEBUG_ERROR"
-    DEFAULT_MESSAGE = "An arena debug error occurred."
+    ERROR_CODE = "ARENA_DEBUG_ERROR"
+    DEFAULT_MESSAGE = "A ArenaDebugException was raised."

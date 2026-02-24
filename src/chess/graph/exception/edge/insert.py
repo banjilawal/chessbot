@@ -3,7 +3,7 @@
 """
 Module: chess.graph.exception.edge.insert
 Author: Banji Lawal
-Created: 2025-02-18
+Created: 2026-02-18
 version: 1.0.0
 """
 

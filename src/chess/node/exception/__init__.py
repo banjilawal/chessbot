@@ -3,7 +3,7 @@
 """
 Module: chess.node.exception.__init__
 Author: Banji Lawal
-Created: 2025-02-17
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .base import NodeException
+from .super import  NodeException
 from .debug import NodeDebugException

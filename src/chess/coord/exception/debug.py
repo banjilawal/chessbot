@@ -3,9 +3,10 @@
 """
 Module: chess.coord.exception.debug
 Author: Banji Lawal
-Created: 2026-01-26
+Created: 2026-02-08
 version: 1.0.0
 """
+
 
 __all__ = [
     # ======================# COORD_DEBUG EXCEPTION #======================#
@@ -38,4 +39,4 @@ class CoordDebugException(CoordException, DebugException):
      None
     """
     ERROR_CODE = "COORD_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A Coord debug error occurred."
+    DEFAULT_MESSAGE = "A CoordDebugException was raised."

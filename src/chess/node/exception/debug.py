@@ -3,9 +3,10 @@
 """
 Module: chess.node.exception.debug
 Author: Banji Lawal
-Created: 2026-02-18
+Created: 2026-02-08
 version: 1.0.0
 """
+
 
 __all__ = [
     # ======================# NODE_DEBUG EXCEPTION #======================#
@@ -38,4 +39,4 @@ class NodeDebugException(NodeException, DebugException):
      None
     """
     ERROR_CODE = "NODE_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A item debug error occurred."
+    DEFAULT_MESSAGE = "A NodeDebugException was raised."

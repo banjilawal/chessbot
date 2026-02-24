@@ -15,4 +15,4 @@ from .enemy import *
 from .square import *
 
 # Modules
-from  .base import AttackDebugException
+from .debug import AttackDebugException

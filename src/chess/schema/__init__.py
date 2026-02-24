@@ -13,8 +13,8 @@ version: 1.0.0
 from .key import *
 from .validator import *
 from .service import *
+from .exception import *
 
 # Modules
 from .schema import Schema
-from .exception import SchemaException
 

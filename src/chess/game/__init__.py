@@ -13,9 +13,9 @@ version: 1.0.0
 from .builder import *
 from .context import *
 from .service import *
+from .exception import *
 from .validator import *
 
 # Modules
 from .game import Game
 from .state import GameState
-from .exception import GameException

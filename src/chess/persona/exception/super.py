@@ -7,30 +7,30 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from chess.system import ChessException
-
 __all__ = [
     # ======================# PERSONA EXCEPTION #======================#
     "PersonaException",
 ]
 
+from chess.system import SuperClassException
+
 
 # ======================# PERSONA EXCEPTION #======================#
-class PersonaException(ChessException):
+class PersonaException(SuperClassException):
     """
-    # ROLE: Catchall Exception
+  # ROLE: DebugException Parent, Exception Chain Layer 0
 
-    # RESPONSIBILITIES:
-    1.  Catchall for Persona errors not covered by PersonaException subclasses.
+  # RESPONSIBILITIES:
+  1.  Layer-0 of Exception chain which is the Parent of PersonaDebugException
 
-    # PARENT:
-        *   ChessException
+  # PARENT:
+      *   SuperClassException
 
-    # PROVIDES:
-    None
+  # PROVIDES:
+  None
 
-    # ATTRIBUTES:
-    None
-    """
+  # ATTRIBUTES:
+  None
+  """
     ERROR_CODE = "PERSONA_ERROR"
     DEFAULT_MESSAGE = "Persona raised an exception."
