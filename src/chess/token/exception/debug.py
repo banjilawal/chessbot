@@ -7,6 +7,7 @@ Created: 2026-02-08
 version: 1.0.0
 """
 
+
 __all__ = [
     # ======================# TOKEN_DEBUG EXCEPTION #======================#
     "TokenDebugException",
@@ -38,4 +39,4 @@ class TokenDebugException(TokenException, DebugException):
      None
     """
     ERROR_CODE = "TOKEN_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A Token debug error occurred."
+    DEFAULT_MESSAGE = "A TokenDebugException was raised."
