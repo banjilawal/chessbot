@@ -1,37 +1,40 @@
-# src/chess/owner/validator/exception/null.py
+# src/chess/player/validator/exception/null.py
 
 """
-Module: chess.owner.validator.exception.null
+Module: chess.player.validator.exception.null
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2025-11-19
 """
-
-from chess.system import NullException
-from chess.agent import InvalidAgentException
 
 __all__ = [
-    #======================# PLAYER NULL EXCEPTION #======================#
-    "NullAgentException",
+    # ======================# NULL_PLAYER EXCEPTION #======================#
+    "NullPlayerException",
 ]
 
-#======================# PLAYER_CONTEXT NULL EXCEPTION #======================#
-class NullAgentException(InvalidAgentException, NullException):
+from chess.system import NullException
+from chess.player import PlayerDebugException
+
+
+# ======================# NULL_PLAYER EXCEPTION #======================#
+class NullPlayerException(PlayerDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate if an entity, method or operation required an Player  but got null instead.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
-        *   PlayerValidationException
+        *   PlayerDebugException
         *   NullException
 
     # PROVIDES:
-        *   NullAgentCException
+    None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_AGENT_ERROR"
-    DEFAULT_MESSAGE = "Player cannot be null."
+    ERROR_CODE = "NULL_PLAYER_ERROR"
+    DEFAULT_MESSAGE = "Player validation failed: The validation candidate cannot be null"

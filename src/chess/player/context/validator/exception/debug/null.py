@@ -1,7 +1,7 @@
-# src/chess/owner/validator/exception/null.py
+# src/chess/player/validator/exception/null.py
 
 """
-Module: chess.owner.validator.exception.null
+Module: chess.player.validator.exception.null
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

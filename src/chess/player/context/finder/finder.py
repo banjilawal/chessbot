@@ -1,7 +1,7 @@
-# src/chess/owner/finder/finder.py
+# src/chess/player/finder/finder.py
 
 """
-Module: chess.owner.cntext.finder.finder
+Module: chess.player.cntext.finder.finder
 Author: Banji Lawal
 Created: 2025-11-17
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/chess/owner/model/machine/machine.py
+# src/chess/player/model/machine/machine.py
 
 """
-Module: chess.owner.model.machine.machine
+Module: chess.player.model.machine.machine
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

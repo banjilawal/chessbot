@@ -1,7 +1,7 @@
-# src/chess/owner/builder/factory.py
+# src/chess/player/builder/factory.py
 
 """
-Module: chess.owner.builder.factory
+Module: chess.player.builder.factory
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

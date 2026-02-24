@@ -1,7 +1,7 @@
-# src/chess/owner/relation/tester.py
+# src/chess/player/relation/tester.py
 
 """
-Module: chess.owner.relation.tester
+Module: chess.player.relation.tester
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

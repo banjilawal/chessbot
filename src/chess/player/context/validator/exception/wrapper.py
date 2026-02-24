@@ -1,7 +1,7 @@
-# src/chess/owner/validator/exception/base.py
+# src/chess/player/validator/exception/base.py
 
 """
-Module: chess.owner.validator.exception.base
+Module: chess.player.validator.exception.base
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

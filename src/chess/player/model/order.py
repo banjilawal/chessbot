@@ -1,7 +1,7 @@
-# src/chess/owner/model/order.py
+# src/chess/player/model/order.py
 
 """
-Module: chess.owner.model.order
+Module: chess.player.model.order
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

@@ -1,40 +1,35 @@
-# src/chess/owner/validator/exception/registration/game.py
+# src/chess/player/validator/exception/registration/game.py
 
 """
-Module: chess.owner.validator.exception.registration.game
+Module: chess.player.validator.exception.registration.game
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-01-08
 version: 1.0.0
 """
 
-
-from chess.player import PlayerValidationException
-from chess.system import RegistrationException
-
+from chess.player import PlayerDebugException
+from chess.system import NotRegisteredException
 
 __all__ = [
-    #======================# PLAYER REGISTRATION EXCEPTION #======================#
-    "PlayerNotRegisteredWithGameException",
+    # ======================# PLAYER_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
+    "PlayerNotRegisteredGameException",
 ]
 
 
-
-
-#======================# PLAYER_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
-class PlayerNotRegisteredWithGameException(PlayerValidationException, RegistrationException):
+# ======================# PLAYER_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
+class PlayerNotRegisteredGameException(PlayerDebugException, NotRegisteredException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that while the Player has assigned itself to a Game instance, the Game has not
-        registered the Player as one of its two participants.
-    2.  Raised if the owner.game == game but owner not in game.players
+    1.  A failing ValidationResult was returned because the candidate player had not registered with its game.
 
     # PARENT:
-        *   PlayerRegistrationException
+        *   PlayerDebugException
+        *   NotRegisteredException
 
     # PROVIDES:
-        *   PlayerNotRegisteredWithGameException
+    None
 
     # LOCAL ATTRIBUTES:
     None
@@ -43,7 +38,4 @@ class PlayerNotRegisteredWithGameException(PlayerValidationException, Registrati
     None
     """
     ERROR_CODE = "PLAYER_NOT_REGISTERED_WITH_GAME_ERROR"
-    DEFAULT_MESSAGE = (
-        "Player is not registered as one of the Game's participants. Only the Player "
-        "side of the relationship is set."
-    )
+    DEFAULT_MESSAGE = "Player validation failed: The candidate player had not registered with its game."

@@ -1,7 +1,7 @@
-# src/chess/owner/service/exception/catchall.py
+# src/chess/player/service/exception/catchall.py
 
 """
-Module: chess.owner.service.exception.catchall
+Module: chess.player.service.exception.catchall
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

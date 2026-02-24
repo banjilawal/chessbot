@@ -1,12 +1,12 @@
-# src/chess/owner/validator/exception/registration/__init__.py
+# src/chess/player/validator/exception/registration/__init__.py
 
 """
-Module: chess.owner.validator.exception.registration.__init__
+Module: chess.player.validator.exception.registration.__init__
 Author: Banji Lawal
-Created: 2025-09-16
+Created: 2026-01-08
 version: 1.0.0
 """
-n
+
 
 #=========== PLAYER.VALIDATOR.EXCEPTION.REGISTRATION PACKAGE CONTENTS ===========#
 
@@ -14,4 +14,5 @@ n
 None
 
 # Modules
-from .game import AgentNotRegisteredWithGameException
+from .arena import PlayerNotRegisteredArenaException
+from .game import PlayerNotRegisteredGameException

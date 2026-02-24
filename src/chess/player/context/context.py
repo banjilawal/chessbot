@@ -1,7 +1,7 @@
-# src/chess/owner/map.py
+# src/chess/player/map.py
 
 """
-Module: chess.owner.map
+Module: chess.player.map
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

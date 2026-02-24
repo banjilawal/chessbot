@@ -1,34 +1,32 @@
-# src/chess/token/validator/exception/registration/board.py
+# src/chess/token/validator/exception/debug/registration/__init__.py
 
 """
-Module: chess.token.validator.exception.registration.board
+Module: chess.token.validator.exception.debug.registration.__init__
 Author: Banji Lawal
-Created: 2025-11-20
+Created: 2026-01-08
 version: 1.0.0
 """
 
-
-
+from chess.token import TokenDebugException
+from chess.system import NotRegisteredException
 
 __all__ = [
-    #======================# TOKEN_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
-    "TokenNotRegisteredWithBoardException"
+    # ======================# TOKEN_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
+    "TokenNotRegisteredBoardException",
 ]
 
-from chess.token import TokenNotRegisteredException
 
-
-#======================# TOKEN_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
-class TokenNotRegisteredWithBoardException(TokenNotRegisteredException):
+# ======================# TOKEN_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
+class TokenNotRegisteredBoardException(TokenDebugException, NotRegisteredException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that while the Token has assigned itself to a Board instance, the Board does not
-        find the item in board.tokens.
+    1.  A failing ValidationResult was returned because the candidate token had not registered with its board.
 
     # PARENT:
-        *   TokenNotRegisteredException
+        *   TokenDebugException
+        *   NotRegisteredException
 
     # PROVIDES:
     None
@@ -40,6 +38,4 @@ class TokenNotRegisteredWithBoardException(TokenNotRegisteredException):
     None
     """
     ERROR_CODE = "TOKEN_NOT_REGISTERED_WITH_BOARD_ERROR"
-    DEFAULT_MESSAGE = (
-        "Token is not registered in Board.tokens collection. Only the occupant-side of the relationship is set."
-    )
+    DEFAULT_MESSAGE = "Token validation failed: The candidate token had not registered with its board."

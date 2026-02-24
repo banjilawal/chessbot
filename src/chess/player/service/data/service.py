@@ -1,7 +1,7 @@
-# src/chess/owner/database/core/stack.py
+# src/chess/player/database/core/stack.py
 
 """
-Module: chess.owner.database.core.stack
+Module: chess.player.database.core.stack
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

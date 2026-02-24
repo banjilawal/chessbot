@@ -1,31 +1,31 @@
-# src/chess/board/validator/exception/registration/arena.py
+# src/chess/owner/validator/exception/registration/arena.py
 
 """
-Module: chess.board.validator.exception.registration.arena
+Module: chess.owner.validator.exception.registration.arena
 Author: Banji Lawal
-Created: 2025-11-20
+Created: 2026-01-08
 version: 1.0.0
 """
 
-from chess.board import BoardException
+from chess.board import BoardDebugException
 from chess.system import NotRegisteredException
 
 __all__ = [
     # ======================# BOARD_NOT_REGISTERED_WITH_ARENA EXCEPTION #======================#
-    "BoardNotSubmittedArenaRegistrationException",
+    "BoardNotRegisteredArenaException",
 ]
 
 
-# ======================# _NOT_REGISTERED_WITH_ARENA EXCEPTION #======================#
-class BoardNotSubmittedArenaRegistrationException(BoardException, NotRegisteredException):
+# ======================# BOARD_NOT_REGISTERED_WITH_ARENA EXCEPTION #======================#
+class BoardNotRegisteredArenaException(BoardDebugException, NotRegisteredException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the candidate was not granted Board certification because its arena had a null board.
+    1.  A failing ValidationResult was returned because the candidate board had not registered with its arena.
 
     # PARENT:
-        *   BoardException
+        *   BoardDebugException
         *   NotRegisteredException
 
     # PROVIDES:
@@ -38,4 +38,4 @@ class BoardNotSubmittedArenaRegistrationException(BoardException, NotRegisteredE
     None
     """
     ERROR_CODE = "BOARD_NOT_REGISTERED_WITH_ARENA_ERROR"
-    DEFAULT_MESSAGE = "Board validation failed: Its arena.board is null."
+    DEFAULT_MESSAGE = "Board validation failed: The candidate board had not registered with its arena."

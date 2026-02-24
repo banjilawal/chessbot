@@ -1,7 +1,7 @@
-# src/chess/owner/validator/validator.py
+# src/chess/player/validator/validator.py
 
 """
-Module: chess.owner.validator.validator
+Module: chess.player.validator.validator
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0

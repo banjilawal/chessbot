@@ -3,7 +3,7 @@
 """
 Module: chess.token.validator.exception.debug.registration.__init__
 Author: Banji Lawal
-Created: 2025-11-20
+Created: 2026-01-08
 version: 1.0.0
 """
 
@@ -13,7 +13,6 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import TokenNotRegisteredException
-from .team import TokenNotRegisteredWithTeamException
-from .board import TokenNotRegisteredWithBoardException
-from .square import TokenNotRegisteredWithSquareException
+from .team import TokenNotRegisteredTeamException
+from .board import TokenNotRegisteredBoardException
+from .square import TokenNotRegisteredSquareException

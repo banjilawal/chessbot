@@ -1,32 +1,32 @@
-# src/chess/token/validator/exception/registration/team.py
+# src/chess/token/validator/exception/debug/registration/__init__.py
 
 """
-Module: chess.token.validator.exception.registration.team
+Module: chess.token.validator.exception.debug.registration.__init__
 Author: Banji Lawal
-Created: 2025-11-20
+Created: 2026-01-08
 version: 1.0.0
 """
 
-from chess.token import TokenNotRegisteredException
+from chess.token import TokenDebugException
+from chess.system import NotRegisteredException
 
 __all__ = [
-    #======================# TOKEN_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
-    "TokenNotRegisteredWithTeamException"
+    # ======================# TOKEN_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
+    "TokenNotRegisteredTeamException",
 ]
 
 
-#======================# TOKEN_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
-class TokenNotRegisteredWithTeamException(TokenNotRegisteredException):
+# ======================# TOKEN_NOT_REGISTERED_WITH_TEAM EXCEPTION #======================#
+class TokenNotRegisteredTeamException(TokenDebugException, NotRegisteredException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that while the Token has assigned itself to a Team but the occupant is not included in the
-        Team's roster.
-    2.  That is occupant.team = team but occupant not in team.roster.
+    1.  A failing ValidationResult was returned because the candidate token had not registered with its team.
 
     # PARENT:
-        *   TokenRegistrationException
+        *   TokenDebugException
+        *   NotRegisteredException
 
     # PROVIDES:
     None
@@ -38,6 +38,4 @@ class TokenNotRegisteredWithTeamException(TokenNotRegisteredException):
     None
     """
     ERROR_CODE = "TOKEN_NOT_REGISTERED_WITH_TEAM_ERROR"
-    DEFAULT_MESSAGE = (
-        "Token is not registered in Team.roster. Only the occupant-side of the relationship is set."
-    )
+    DEFAULT_MESSAGE = "Token validation failed: The candidate token had not registered with its team."

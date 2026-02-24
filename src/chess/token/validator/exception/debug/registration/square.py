@@ -1,33 +1,32 @@
-# src/chess/token/validator/exception/registration/square_name
+# src/chess/token/validator/exception/debug/registration/__init__.py
 
 """
-Module: chess.token.validator.exception.registration.square_name
+Module: chess.token.validator.exception.debug.registration.__init__
 Author: Banji Lawal
-Created: 2025-11-20
+Created: 2026-01-08
 version: 1.0.0
 """
 
+from chess.token import TokenDebugException
+from chess.system import NotRegisteredException
 
 __all__ = [
-    #======================# TOKEN_NOT_REGISTERED_WITH_SQUARE EXCEPTION #======================#
-    "TokenNotRegisteredWithSquareException"
+    # ======================# TOKEN_NOT_REGISTERED_WITH_SQUARE EXCEPTION #======================#
+    "TokenNotRegisteredSquareException",
 ]
 
-from chess.token import TokenNotRegisteredException
 
-
-#======================# TOKEN_NOT_REGISTERED_WITH_SQUARE EXCEPTION #======================#
-class TokenNotRegisteredWithSquareException(TokenNotRegisteredException):
+# ======================# TOKEN_NOT_REGISTERED_WITH_SQUARE EXCEPTION #======================#
+class TokenNotRegisteredSquareException(TokenDebugException, NotRegisteredException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that while the Token has assigned itself to a Square instance but the Square
-        has not registered the occupant as its occupant.
-    2.  That is occupant.coord == square_name.coord but square_name.occupant != occupant.
+    1.  A failing ValidationResult was returned because the candidate token had not registered with its square.
 
     # PARENT:
-        *   TokenRegistrationException
+        *   TokenDebugException
+        *   NotRegisteredException
 
     # PROVIDES:
     None
@@ -39,7 +38,4 @@ class TokenNotRegisteredWithSquareException(TokenNotRegisteredException):
     None
     """
     ERROR_CODE = "TOKEN_NOT_REGISTERED_WITH_SQUARE_ERROR"
-    DEFAULT_MESSAGE = (
-        "Token is not registered as Square.occupant. There is no relationship between them."
-    )
-
+    DEFAULT_MESSAGE = "Token validation failed: The candidate token had not registered with its square."

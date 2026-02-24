@@ -1,7 +1,7 @@
-# src/chess/owner/database/core/__init__.py
+# src/chess/player/database/core/__init__.py
 
 """
-Module: chess.owner.database.core.__init__
+Module: chess.player.database.core.__init__
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
