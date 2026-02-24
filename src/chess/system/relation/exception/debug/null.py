@@ -9,14 +9,14 @@ version: 1.0.0
 
 ___all__ = [
     # ======================# NO_RELATIONSHIP EXCEPTION #======================#
-    "NoRelationshipException",
+    "NoRelationException",
 ]
 
 from chess.system import RelationDebugException
 
 
 #======================# NO_RELATIONSHIP EXCEPTION #======================#
-class NoRelationshipException(RelationDebugException):
+class NoRelationException(RelationDebugException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 

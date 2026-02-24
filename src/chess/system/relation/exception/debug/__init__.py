@@ -14,7 +14,7 @@ None
 
 # Modules
 from .debug import RelationDebugException
-from .null import NoRelationshipException
+from .null import NoRelationException
 from .register import NotRegisteredException
 from .bidirectional import NoBidirectionalRelationException
 

@@ -11,7 +11,7 @@ from chess.system import ChessException
 
 ___all__ = [
     # ======================# NO_RELATIONSHIP EXCEPTION #======================#
-    "NoRelationshipException",
+    "NoRelationException",
 ]
 
 
