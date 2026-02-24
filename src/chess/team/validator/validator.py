@@ -14,7 +14,8 @@ from chess.board import Board, BoardService, TeamBelongsToDifferentOwnerExceptio
 from chess.board import Board, BoardService, TeamPlayingDifferentBoardException
 from chess.system import IdentityService, LoggingLevelRouter, Validator, ValidationResult
 from chess.team import (
-    NullTeamException, Team, TeamNotRegisteredOwnerException, TeamNotSubmittedBoardRegistrationException,
+    NullTeamException, OwnerHasStaleTeamLinkException, Team, TeamNotRegisteredOwnerException,
+    TeamNotSubmittedBoardRegistrationException,
     TeamValidationException
 )
 
@@ -211,8 +212,8 @@ class TeamValidator(Validator[Team]):
         if owner_team_relation.registration_does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                PlayerHasStaleTeamLinkException(
-                    f"{method}: {PlayerHasStaleTeamLinkException.DEFAULT_MESSAGE}"
+                OwnerHasStaleTeamLinkException(
+                    f"{method}: {OwnerHasStaleTeamLinkException.DEFAULT_MESSAGE}"
                 )
             )
         # --- On certification successes send the owner in the ValidationResult. ---#

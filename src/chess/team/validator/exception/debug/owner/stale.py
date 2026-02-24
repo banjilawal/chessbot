@@ -3,7 +3,7 @@
 """
 Module: chess.team.validator.exception.owner.stale
 Author: Banji Lawal
-Created: 2025-11-20
+Created: 2026-02-23
 version: 1.0.0
 """
 
@@ -22,7 +22,8 @@ class OwnerHasStaleTeamLinkException(TeamDebugException, StaleRelationException)
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failing ValidationResult was returned because the owner had a stale link to a former team.
+    1.  A failing TeamValidationResult was returned because the owner had a stale
+        link to a former team.
 
     # PARENT:
         *   TeamDebugException

@@ -22,7 +22,8 @@ class TeamNotRegisteredOwnerException(TeamDebugException, NotRegisteredException
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failing ValidationResult was returned because the candidate team had not registered with its owner.
+    1.  A failing TeamValidationResult was returned because the candidate team had not
+        registered with its owner.
 
     # PARENT:
         *   TeamDebugException

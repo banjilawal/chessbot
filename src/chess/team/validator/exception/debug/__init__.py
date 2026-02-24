@@ -10,9 +10,8 @@ version: 1.0.0
 # =========== TEAM.VALIDATOR.EXCEPTION.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .owner import *
+from .board import *
 
 # Modules
 from .null import NullTeamException
-from .board import TeamNotRegisteredBoardException
-from chess.team.validator.exception.debug.owner.player import TeamNotRegisteredOwnerException
