@@ -8,7 +8,6 @@ version: 1.0.0
 """
 
 from chess.system import ServiceException
-from chess.square import SquareContextException
 
 __all__ = [
     # ======================# SQUARE_CONTEXT_SERVICE EXCEPTION #======================#
@@ -17,17 +16,16 @@ __all__ = [
 
 
 # ======================# SQUARE_CONTEXT_SERVICE EXCEPTION #======================#
-class SquareContextServiceException(SquareContextException, ServiceException):
+class SquareContextServiceException(ServiceException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an SquareContextService encountered an error which prevented the service from completing a task.
-    2.  Wrap an exception that hits the try-finally block of an SquareContextService method.
+    1.  Indicate a failure occurred in SquareContextService.
+    2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     # PARENT:
         *   ServiceException
-        *   SquareContextException
 
     # PROVIDES:
     None
