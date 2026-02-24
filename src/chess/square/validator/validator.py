@@ -49,8 +49,9 @@ class SquareValidator(Validator[Square]):
                 coord_service: CoordService = CoordService(),
                 identity_service: IdentityService = IdentityService()
             ) -> ValidationResult[Square]
-        
+            
         *   validate_square_state(candidate: Any) -> ValidationResult[SquareState]
+        *   verify_is_square_dataset(candidate: Any) -> ValidationResult[List[Square]]
 
     # INHERITED METHODS:
     None
@@ -153,7 +154,7 @@ class SquareValidator(Validator[Square]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate_dataset(cls, candidate: Any) -> ValidationResult[List[Square]]:
+    def verify_is_square_dataset(cls, candidate: Any) -> ValidationResult[List[Square]]:
         """
         # ACTION:
             1.  Send an exception chain in the ValidationResult if either
