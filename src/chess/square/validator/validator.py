@@ -6,12 +6,14 @@ Author: Banji Lawal
 Created: 2025-09-11
 """
 
-from typing import Any, cast
+from typing import Any, List, cast
 
 from chess.board import Board, BoardService, SquareOnDifferentBoardException
 from chess.coord import CoordService
 from chess.square import (
-    NullSquareStateException, Square, SquareNotSubmittedBoardRegistrationException, SquareState,
+    NullSquareStateException, Square, SquareDataSourceEmptyException, SquareDataSourceNullException,
+    SquareNotSubmittedBoardRegistrationException,
+    SquareState,
     SquareValidationException, NullSquareException,
 )
 from chess.system import IdentityService, Validator, ValidationResult, LoggingLevelRouter
@@ -148,6 +150,55 @@ class SquareValidator(Validator[Square]):
             )
         # --- On certification successes send the square instance in the ValidationResult. ---#
         return ValidationResult.success(payload=square)
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def validate_dataset(cls, candidate: Any) -> ValidationResult[List[Square]]:
+        """
+        # ACTION:
+            1.  Send an exception chain in the ValidationResult if either
+                    *   The candidate is null
+                    *   Is not a List.
+                    *   Does not contain squares.
+            2.  Cast the candidate to a List[Square] instance then, send the validation success result.
+        # PARAMETERS:
+            Only one these must be provided:
+                *   candidate Any
+        # RETURNS:
+            *   ValidationResult[List[Square]] containing either:
+                    - On failure: Exception.
+                    - On success: List[Square] in the payload.
+        # RAISES:
+            *   TypeError
+            *   SquareDataSourceNullException
+            *   SquareDataSourceEmptyException
+        """
+        method = "SquareFinder._validate_dataset"
+        # Handle the nonexistence case.
+        if candidate is None:
+            return ValidationResult.failure(
+                SquareDataSourceNullException(
+                    f"{method}: {SquareDataSourceNullException.DEFAULT_MESSAGE}"
+                )
+            )
+        # Handle the wrong class case.
+        if not isinstance(candidate, List):
+            return ValidationResult.failure(
+                TypeError(f"{method}: Expected List[Square], got {type(candidate).__name__} instead.")
+            )
+        
+        squares = cast(List[Square], candidate)
+        # Handle the case that, the dataset is empty
+        if len(squares) == 0:
+            return ValidationResult.failure(
+                SquareDataSourceEmptyException(f"{method}: {SquareDataSourceEmptyException.DEFAULT_MESSAGE}")
+            )
+        # Handle the case that, the list does not contain squares.
+        if not isinstance(squares[0], Square):
+            return ValidationResult.failure(
+                TypeError(f"{method}: The dataset does not contain squares, it has {type(squares).__name__} instead.")
+            )
+        # --- Send the success result to the caller. ---#
     
     @classmethod
     @LoggingLevelRouter.monitor
