@@ -7,7 +7,7 @@ from chess.team import Team
 
 class TeamHash:
     """
-    # ROLE: Data-Holding Structure, Indexer
+    # ROLE: Data-Holder Structure, Indexer
 
     # RESPONSIBILITY:
     1.  Hash table for simplifying and centralizing operations on opposing teams in a game.

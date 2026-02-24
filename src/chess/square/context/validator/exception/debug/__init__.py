@@ -15,5 +15,5 @@ None
 # Modules
 from .null import NullSquareContextException
 from .zero import ZeroSquareContextFlagsException
-from .excess import ExcessiveSquareContextFlagsException
+from .excess import ExcessSquareContextFlagsException
 from .route import SquareContextValidationRouteException

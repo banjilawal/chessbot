@@ -1,9 +1,9 @@
-# src/chess/square/context/service/exception.py
+# src/chess/square/context/service/exception/catchall.py
 
 """
-Module: chess.square.context.service.exception
+Module: chess.square.context.service.exception.catchall
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2025-02-23
 version: 1.0.0
 """
 

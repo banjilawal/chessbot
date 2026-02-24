@@ -16,7 +16,7 @@ from chess.domain import Domain, DomainOrigin
 
 class Domain:
     """
-    # ROLE: Data-Holding
+    # ROLE: Data-Holder
 
     # RESPONSIBILITIES:
     Immutable data structure that:

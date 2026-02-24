@@ -17,7 +17,7 @@ from chess.token import Token, TokenBoardState, ReadinessState
 
 class CombatantToken(Token):
     """
-    # ROLE: Data-Holding, C
+    # ROLE: Data-Holder, C
   
     # RESPONSIBILITIES:
     1.  Concrete subclass of Token

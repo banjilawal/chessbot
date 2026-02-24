@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-# =========== EDGE.STACK.EXCEPTION.PUSHPACKAGE CONTENTS ===========#
+# =========== EDGE.STACK.EXCEPTION.PUSH PACKAGE CONTENTS ===========#
 
 # Packages
 None

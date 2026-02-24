@@ -14,7 +14,7 @@ from chess.square import Square
 class DomainOrigin:
     """
     # ROLE:
-        Data-Holding
+        Data-Holder
     # RESPONSIBILITIES:
         1. Encapsulates information about a Domain owner and their updated Square.
     # PROVIDES:

@@ -17,7 +17,7 @@ from chess.token import TokenDatabase
 
 class Team:
     """
-    # ROLE: Data-Holding
+    # ROLE: Data-Holder
 
     # RESPONSIBILITY:
     1.  Disposition of Tokens the Player can move on a Board instance.
@@ -31,13 +31,35 @@ class Team:
 
     # LOCAL ATTRIBUTES:
         *   id (int)
-        *   schema (Schema)
         *   board (Board)
         *   owner (Player)
-        *   roster (HostageService)
-        *   hostages (HostageService)
-        
+        *   schema (Schema)
+        *   roster (TokenDatabase)
+
     # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        Local:
+        *   id (int)
+        *   board (Board)
+        *   owner (Player)
+        *   schema (Schema)
+        *   roster (TokenDatabase)
+
+        Inherited:
+        None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+   None
+
+    # LOCAL METHODS:
+    None
+
+    # INHERITED METHODS:
     None
     """
     MAX_ROSTER_SIZE = 16
@@ -56,24 +78,6 @@ class Team:
             owner: Player,
             roster: TokenDatabase = TokenDatabase(),
     ):
-        """
-        # ACTION:
-        Construct a Team object.
-
-        # PARAMETERS:
-            *   id (int)
-            *   owner (Player)
-            *   board (Board)
-            *   team_schema (Schema)
-            *   roster (HostageService)
-            *   hostages (HostageService)
-
-        # RETURNS:
-        None
-
-        # RAISES:
-        None
-        """
         method = "Team.__init__"
         self._id = id
         self._board = board

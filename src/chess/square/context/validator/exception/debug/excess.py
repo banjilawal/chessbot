@@ -10,13 +10,13 @@ version: 1.0.0
 from chess.square import SquareContextDebugException
 
 __all__ = [
-    # ========================= EXCESSIVE_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
-    "ExcessiveSquareContextFlagsException"
+    # ========================= EXCESS_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
+    "ExcessSquareContextFlagsException"
 ]
 
 
-# ========================= EXCESSIVE_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
-class ExcessiveSquareContextFlagsException(SquareContextDebugException):
+# ========================= EXCESS_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
+class ExcessSquareContextFlagsException(SquareContextDebugException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
@@ -36,5 +36,5 @@ class ExcessiveSquareContextFlagsException(SquareContextDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_SQUARE_CONTEXT_FLAGS_ERROR"
+    ERROR_CODE = "EXCESS_SQUARE_CONTEXT_FLAGS_ERROR"
     DEFAULT_MESSAGE = "SquareContext validation failed: More than one flag was enable."

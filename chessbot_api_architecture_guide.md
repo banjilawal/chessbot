@@ -412,7 +412,7 @@ To achieve these the architecture has to be
 - If it crashes no data is lost and game play resumes where it left off.
 - Games can be saved.
 
-To achieve all these architecture implements rollbacks on failure. Separates data-holding objects 
+To achieve all these architecture implements rollbacks on failure. Separates data-holder objects 
 from state/behavioral objects.
 
 <a name="system-layers"></a>
@@ -529,7 +529,7 @@ sequenceDiagram
 
 
 #### Transaction Service Request (`Event`) The 
-  A data-holding object representing an`actor`'s intent to perform a state-changing operation with a
+  A data-holder object representing an`actor`'s intent to perform a state-changing operation with a
   `resource`. An `Event` is passed to a `Transaction` instance that fires and manages the event lifecycle.
   During the event lifecycle the `actor` manipulates the `resource`.
 
@@ -555,7 +555,7 @@ Return exception to the caller for soft handling or rolling back.
 
 #### Mechanism for Policy Enforcement
 `Result` Abstract Data Type that holds data returned from accessor method or exception it threw.
-`Result` is the super class for all data-holding objets which represent outcome of operations that 
+`Result` is the super class for all data-holder objets which represent outcome of operations that 
 produce one of two results only.
  1. Success: A payload is returned
  2. Failure: An exception is raised

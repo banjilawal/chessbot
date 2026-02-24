@@ -15,8 +15,8 @@ from chess.board import BoardService
 from chess.coord.service import CoordService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.square import (
-    SquareContextValidationException, SquareState, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
-    NullSquareContextException, ExcessiveSquareContextFlagsException, SquareContextValidationRouteException
+    SquareContextValidationException, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
+    NullSquareContextException, ExcessSquareContextFlagsException, SquareContextValidationRouteException
 )
 
 
@@ -83,7 +83,7 @@ class SquareContextValidator(Validator[SquareContext]):
             *   TypeError
             *   NullSquareContextException
             *   ZeroSquareContextFlagsException
-            *   ExcessiveSquareContextFlagsException
+            *   ExcessSquareContextFlagsException
             *   SquareContextValidationRouteException
             *   SquareContextValidationException
         """
@@ -128,8 +128,8 @@ class SquareContextValidator(Validator[SquareContext]):
             return ValidationResult.failure(
                 SquareContextValidationException(
                     message=f"{method}: {SquareContextValidationException.DEFAULT_MESSAGE}",
-                    ex=ExcessiveSquareContextFlagsException(
-                        f"{method}: {ExcessiveSquareContextFlagsException.DEFAULT_MESSAGE}"
+                    ex=ExcessSquareContextFlagsException(
+                        f"{method}: {ExcessSquareContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             )

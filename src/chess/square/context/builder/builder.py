@@ -12,12 +12,10 @@ from typing import Optional
 
 from chess.board import Board, BoardService
 from chess.coord import Coord, CoordService
-from chess.square.state import SquareState
 from chess.system import Builder, BuildResult, IdentityService
 from chess.square import (
-    SquareContextBuildRouteException, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
-    SquareContextBuildException,
-    ExcessiveSquareContextFlagsException
+    SquareContextBuildRouteException, SquareState, SquareValidator, ZeroSquareContextFlagsException, SquareContext,
+    SquareContextBuildException, ExcessSquareContextFlagsException
 )
 from chess.token import Token, TokenService
 
@@ -111,7 +109,7 @@ class SquareContextBuilder(Builder[SquareContext]):
             # RAISES:
                 *   ZeroSquareContextFlagsException
                 *   SquareContextBuildException
-                *   ExcessiveSquareContextFlagsException
+                *   ExcessSquareContextFlagsException
                 *   SquareContextBuildRouteException
             """
         method = "SquareContextBuilder.build"
@@ -137,8 +135,8 @@ class SquareContextBuilder(Builder[SquareContext]):
             return BuildResult.failure(
                 SquareContextBuildException(
                     message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
-                    ex=ExcessiveSquareContextFlagsException(
-                        f"{method}: {ExcessiveSquareContextFlagsException.DEFAULT_MESSAGE}"
+                    ex=ExcessSquareContextFlagsException(
+                        f"{method}: {ExcessSquareContextFlagsException.DEFAULT_MESSAGE}"
                     )
                 )
             )
