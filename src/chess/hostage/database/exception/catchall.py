@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 ___all__ = [
-    # ======================# HOSTAGE_MANIFEST_DIRECTORY_SERVICE EXCEPTION #======================#
+    # ======================# HOSTAGE_DIRECTORY_SERVICE EXCEPTION #======================#
     "HostageDatabase",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import DatabaseException
 
 
-# ======================# HOSTAGE_MANIFEST_DIRECTORY_SERVICE EXCEPTION #======================#
-class HostageDatabaseException(HostageManifestException, DatabaseException):
+# ======================# HOSTAGE_DIRECTORY_SERVICE EXCEPTION #======================#
+class HostageDatabaseException(HostageException, DatabaseException):
     """
     # ROLE: Exception Wrapper
 
@@ -28,7 +28,7 @@ class HostageDatabaseException(HostageManifestException, DatabaseException):
 
     # PARENT:
         *   ServiceException
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None
@@ -39,5 +39,5 @@ class HostageDatabaseException(HostageManifestException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_MANIFEST_DIRECTORY_SERVICE_ERROR"
+    ERROR_CODE = "HOSTAGE_DIRECTORY_SERVICE_ERROR"
     DEFAULT_MESSAGE = "HostageDatabase raised an exception."

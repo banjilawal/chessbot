@@ -1,23 +1,23 @@
-# src/chess/hostageManifest/database/core/exception/insertion/wrapper.py
+# src/chess/hostage/database/core/exception/insertion/wrapper.py
 
 """
-Module: chess.hostageManifest.database.core.exception.insertion.wrapper
+Module: chess.hostage.database.core.exception.insertion.wrapper
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_HOSTAGE_MANIFEST_INSERTION_FAILURE #======================#
-    "UniqueHostageManifestInsertionException",
+    # ======================# UNIQUE_HOSTAGE_INSERTION_FAILURE #======================#
+    "UniqueHostageInsertionException",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import InsertionException
 
 
-# ======================# UNIQUE_HOSTAGE_MANIFEST_INSERTION_FAILURE #======================#
-class UniqueHostageManifestInsertionException(HostageManifestException, InsertionException):
+# ======================# UNIQUE_HOSTAGE_INSERTION_FAILURE #======================#
+class UniqueHostageInsertionException(HostageException, InsertionException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class UniqueHostageManifestInsertionException(HostageManifestException, Insertio
         exceptions create  chain for tracing the source of the failure.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
         *   InsertionException
 
     # PROVIDES:
@@ -38,5 +38,5 @@ class UniqueHostageManifestInsertionException(HostageManifestException, Insertio
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_HOSTAGE_MANIFEST_INSERTION_FAILURE"
+    ERROR_CODE = "UNIQUE_HOSTAGE_INSERTION_FAILURE"
     DEFAULT_MESSAGE = "Unique Hostage insertion failed."

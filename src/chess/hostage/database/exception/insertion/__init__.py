@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .duplicate import AddingDuplicateHostageManifestException
-from .wrapper import UniqueHostageManifestInsertionException
+from .duplicate import AddingDuplicateHostageException
+from .wrapper import UniqueHostageInsertionException

@@ -70,11 +70,11 @@ class CombatantToken(Token):
         )
     
     @property
-    def has_hostage_manifest(self) -> bool:
+    def has_hostage(self) -> bool:
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
-                self.readiness_state == ReadinessState.HOSTAGE_MANIFEST_CREATED
+                self.readiness_state == ReadinessState.HOSTAGE_CREATED
         )
     
     @property
@@ -82,7 +82,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.board_state == TokenBoardState.REMOVED_FROM_BOARD and
-                self.readiness_state == ReadinessState.HOSTAGE_MANIFEST_IN_DATABASE
+                self.readiness_state == ReadinessState.HOSTAGE_IN_DATABASE
         )
     
     @property

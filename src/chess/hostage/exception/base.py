@@ -10,12 +10,12 @@ version: 1.0.0
 from chess.system import ChessException
 
 __all__ = [
-    # ======================# HOSTAGE_MANIFEST EXCEPTION #======================#
-    "HostageManifestException",
+    # ======================# HOSTAGE EXCEPTION #======================#
+    "HostageException",
 ]
 
-# ======================# HOSTAGE_MANIFEST EXCEPTION #======================#
-class HostageManifestException(ChessException):
+# ======================# HOSTAGE EXCEPTION #======================#
+class HostageException(ChessException):
     """
     # ROLE: Catchall Exception
   
@@ -31,5 +31,5 @@ class HostageManifestException(ChessException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_MANIFEST_ERROR"
+    ERROR_CODE = "HOSTAGE_ERROR"
     DEFAULT_MESSAGE = "Hostage raised an exception."

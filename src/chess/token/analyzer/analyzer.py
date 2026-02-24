@@ -68,12 +68,12 @@ class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
     def _analyze_combatant_readiness(cls, combatant: CombatantToken) -> RelationReport[ReadinessState, Token]:
         if combatant.capture_is_activated:
             return RelationReport.bidirectional(
-                primary=ReadinessState.HOSTAGE_MANIFEST_CREATED,
+                primary=ReadinessState.HOSTAGE_CREATED,
                 satellite=combatant,
             )
         if combatant.capture_is_in_database:
             return RelationReport.bidirectional(
-                primary=ReadinessState.HOSTAGE_MANIFEST_IN_DATABASE,
+                primary=ReadinessState.HOSTAGE_IN_DATABASE,
                 satellite=combatant,
             )
         if combatant.is_disabled:

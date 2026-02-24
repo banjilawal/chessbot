@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import DebugException
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 # ======================# CAPTURED_SQUARE_CANNOT_BE_EMPTY EXCEPTION #======================#
 
-class CapturedSquareCannotBeEmptyException(HostageManifestException, DebugException):
+class CapturedSquareCannotBeEmptyException(HostageException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -27,7 +27,7 @@ class CapturedSquareCannotBeEmptyException(HostageManifestException, DebugExcept
 
     # PARENT:
         *   DebugException
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None

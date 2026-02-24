@@ -12,11 +12,11 @@ __all__ = [
     "PrisonerCapturedByDifferentEnemyException",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 
 # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS EXCEPTION #======================#
-class PrisonerCapturedByDifferentEnemyException(HostageManifestException):
+class PrisonerCapturedByDifferentEnemyException(HostageException):
     """
     # ROLE: Exception Wrapper
 
@@ -24,7 +24,7 @@ class PrisonerCapturedByDifferentEnemyException(HostageManifestException):
     1.  Indicate that a candidate failed its Hostage validation because the prisoner had a different captor.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None

@@ -8,15 +8,15 @@ Created: 2025-11-19
 
 __all__ = [
     # ======================# PRISONER_DOES_NOT_HAVE_CAPTOR_SET EXCEPTION #======================#
-    "PrisonerAlreadyHasHostageManifestException",
+    "PrisonerAlreadyHasHostageException",
 ]
 
 from chess.system import NullException
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 
 # ======================# PRISONER_DOES_NOT_HAVE_CAPTOR_SET EXCEPTION #======================#
-class PrisonerAlreadyHasHostageManifestException(HostageManifestException, NullException):
+class PrisonerAlreadyHasHostageException(HostageException, NullException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class PrisonerAlreadyHasHostageManifestException(HostageManifestException, NullE
     
     # PARENT:
         *   NullException
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None

@@ -10,13 +10,13 @@ version: 1.0.0
 from chess.hostage import HostageDatabase
 
 __all__ = [
-    # ======================# ADDING_DUPLICATE_HOSTAGE_MANIFEST EXCEPTION #======================#
-    "AddingDuplicateHostageManifestException",
+    # ======================# ADDING_DUPLICATE_HOSTAGE EXCEPTION #======================#
+    "AddingDuplicateHostageException",
 ]
 
 
-# ======================# ADDING_DUPLICATE_HOSTAGE_MANIFEST EXCEPTION #======================#
-class AddingDuplicateHostageManifestException(HostageDatabase):
+# ======================# ADDING_DUPLICATE_HOSTAGE EXCEPTION #======================#
+class AddingDuplicateHostageException(HostageDatabase):
     """
     # ROLE: Debug, Error Tracing
 
@@ -36,5 +36,5 @@ class AddingDuplicateHostageManifestException(HostageDatabase):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_DUPLICATE_HOSTAGE_MANIFEST_ERROR"
+    ERROR_CODE = "ADDING_DUPLICATE_HOSTAGE_ERROR"
     DEFAULT_MESSAGE = "Unique Hostage insertion failed: The manifest was already present."

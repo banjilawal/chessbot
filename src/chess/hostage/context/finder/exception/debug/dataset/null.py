@@ -7,17 +7,17 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import NullDatasetException
 
 _all__ = [
-    # ======================# HOSTAGE_MANIFEST__SEARCH_NULL_DATASET EXCEPTION #======================#
-    "HostageManifestSearchNullDatasetException",
+    # ======================# HOSTAGE__SEARCH_NULL_DATASET EXCEPTION #======================#
+    "HostageSearchNullDatasetException",
 ]
 
 
-# ======================# HOSTAGE_MANIFEST__SEARCH_NULL_DATASET EXCEPTION #======================#
-class HostageManifestSearchNullDatasetException(HostageManifestException, NullDatasetException):
+# ======================# HOSTAGE__SEARCH_NULL_DATASET EXCEPTION #======================#
+class HostageSearchNullDatasetException(HostageException, NullDatasetException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class HostageManifestSearchNullDatasetException(HostageManifestException, NullDa
     1.  Indicate that a Hostage search operation failed because no dataset was provided for the query.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
         *   NullDatasetException
 
     # PROVIDES:
@@ -37,5 +37,5 @@ class HostageManifestSearchNullDatasetException(HostageManifestException, NullDa
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_MANIFEST__SEARCH_NULL_DATASET_ERROR"
+    ERROR_CODE = "HOSTAGE__SEARCH_NULL_DATASET_ERROR"
     DEFAULT_MESSAGE = "Hostage search failed: There was no dataset to search"

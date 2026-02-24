@@ -7,7 +7,7 @@ Created: 2025-10-01
 version: 1.0.0
 """
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import DebugException
 
 __all__ = [
@@ -18,7 +18,7 @@ __all__ = [
 
 # ======================# VICTOR_CANNOT_BE_DISABLED_TOKEN EXCEPTION #======================#
 
-class VictorCannotBeDisableTokenException(HostageManifestException, DebugException):
+class VictorCannotBeDisableTokenException(HostageException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -28,7 +28,7 @@ class VictorCannotBeDisableTokenException(HostageManifestException, DebugExcepti
 
     # PARENT:
         *   DebugException
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None

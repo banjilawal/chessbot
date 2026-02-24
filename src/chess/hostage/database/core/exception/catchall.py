@@ -7,25 +7,25 @@ Created: 2025-11-19
 version: 1.0.0
 """
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import DataServiceException
 
 __all__ = [
-    # ======================# HOSTAGE_MANIFEST_LIST EXCEPTION #======================#
-    "HostageManifestDataListException",
+    # ======================# HOSTAGE_LIST EXCEPTION #======================#
+    "HostageDataListException",
 ]
 
 
-# ======================# HOSTAGE_MANIFEST_LIST EXCEPTION #======================#
-class HostageManifestDataListException(HostageManifestException, DataServiceException):
+# ======================# HOSTAGE_LIST EXCEPTION #======================#
+class HostageDataListException(HostageException, DataServiceException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by HostageManifestList methods that return Result objects.
+    1.  Wrap any exceptions raised by HostageList methods that return Result objects.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
         *   StackServiceException
 
     # PROVIDES:
@@ -37,5 +37,5 @@ class HostageManifestDataListException(HostageManifestException, DataServiceExce
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_MANIFEST_LIST_ERROR"
-    DEFAULT_MESSAGE = "HostageManifestList raised an exception."
+    ERROR_CODE = "HOSTAGE_LIST_ERROR"
+    DEFAULT_MESSAGE = "HostageList raised an exception."

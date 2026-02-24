@@ -7,10 +7,10 @@ Created: 2026-01-24
 version: 1.0.0
 """
 
-from chess.hostage import HostageManifest
+from chess.hostage import Hostage
 from chess.occupation.result import OccupationResult
 from chess.system.result import Result
 
 
-class AttackResult(Result[HostageManifest, OccupationResult]):
+class AttackResult(Result[Hostage, OccupationResult]):
     pass

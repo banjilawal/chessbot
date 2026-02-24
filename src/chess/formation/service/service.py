@@ -84,7 +84,7 @@ class FormationService(HashService[Formation]):
     
 
     @LoggingLevelRouter.monitor
-    def derive_token_manifest(
+    def derive_token(
             self,
             team: Team,
             token_designation: str,

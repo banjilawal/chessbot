@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import List, cast
 
 from chess.hostage import (
-    AppendingHostageManifestDirectlyIntoItemsFailedException, CaptivityContextService, HostageManifest,
-    HostageManifestDataListException, HostageManifestInsertionException, HostageManifestService
+    AppendingHostageDirectlyIntoItemsFailedException, CaptivityContextService, Hostage,
+    HostageDataListException, HostageInsertionException, HostageService
 )
 from chess.system import StackService, InsertionResult, LoggingLevelRouter, id_emitter
 
 
-class HostageManifestList(StackService[HostageManifest]):
+class HostageList(StackService[Hostage]):
     """
     # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
 
@@ -38,14 +38,14 @@ class HostageManifestList(StackService[HostageManifest]):
     # INHERITED ATTRIBUTES:
         *   See StackService class for inherited attributes.
     """
-    SERVICE_NAME = "HostageManifestList"
+    SERVICE_NAME = "HostageList"
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            items: List[HostageManifest] = List[HostageManifest],
-            service: HostageManifestService = HostageManifestService(),
+            items: List[Hostage] = List[Hostage],
+            service: HostageService = HostageService(),
             context_service: CaptivityContextService = CaptivityContextService(),
     ):
         """
@@ -62,7 +62,7 @@ class HostageManifestList(StackService[HostageManifest]):
         # RAISES:
             None
         """
-        method = "HostageManifestService.__init__"
+        method = "HostageService.__init__"
         super().__init__(
             id=id,
             name=name,
@@ -72,42 +72,42 @@ class HostageManifestList(StackService[HostageManifest]):
         )
     
     @property
-    def integrity_service(self) -> HostageManifestService:
-        return cast(HostageManifestService, self.entity_service)
+    def integrity_service(self) -> HostageService:
+        return cast(HostageService, self.entity_service)
     
     @property
     def captivity_context_service(self) -> CaptivityContextService:
         return cast(CaptivityContextService, self.context_service)
     
     @LoggingLevelRouter.monitor
-    def insert_manifest(self, manifest: HostageManifest) -> InsertionResult[HostageManifest]:
+    def insert(self, manifest: Hostage) -> InsertionResult[Hostage]:
         """
         # ACTION:
-            1.  If the hostageManifest is not validated send the exception in the InsertionResult. Else, call the super class
+            1.  If the hostage is not validated send the exception in the InsertionResult. Else, call the super class
                 push method.
             2.  If super().push_item fails send the exception in the InsertionResult. Else extract the payload to cast
                 and return to the caller in the BuildResult.
         # PARAMETERS:
             *   Only one these must be provided:
-                    *   hostageManifest (Hostage)
+                    *   hostage (Hostage)
         # RETURNS:
             *   InsertionResult[Hostage] containing either:
                     - On failure: Exception.
                     - On success: Hostage in the payload.
         # RAISES:
-            *   HostageManifestDataListException
+            *   HostageDataListException
         """
-        method = "HostageManifestList.add_hostageManifest"
+        method = "HostageList.add_hostage"
         
-        # Handle the case that, the hostageManifest is unsafe.
+        # Handle the case that, the hostage is unsafe.
         validation = self.integrity_service.validator.validate(candidate=manifest)
         if validation.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                HostageManifestDataListException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDataListException.ERROR_CODE}",
-                    ex=HostageManifestInsertionException(
-                        message=f"{method}: {HostageManifestInsertionException.ERROR_CODE}",
+                HostageDataListException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageDataListException.ERROR_CODE}",
+                    ex=HostageInsertionException(
+                        message=f"{method}: {HostageInsertionException.ERROR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -116,21 +116,21 @@ class HostageManifestList(StackService[HostageManifest]):
         # --- Hostage order is not required. Direct insertion into the dataset is simpler that a push. ---#
         self.items.append(manifest)
         
-        # Handle the case that, the hostageManifest was not appended to the dataset.
+        # Handle the case that, the hostage was not appended to the dataset.
         if manifest not in self.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                HostageManifestDataListException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageManifestDataListException.ERROR_CODE}",
-                    ex=HostageManifestInsertionException(
-                        message=f"{method}: {HostageManifestInsertionException.ERROR_CODE}",
-                        ex=AppendingHostageManifestDirectlyIntoItemsFailedException(
-                            f"{method}: {AppendingHostageManifestDirectlyIntoItemsFailedException.ERROR_CODE}"
+                HostageDataListException(
+                    message=f"ServiceId:{self.id}, {method}: {HostageDataListException.ERROR_CODE}",
+                    ex=HostageInsertionException(
+                        message=f"{method}: {HostageInsertionException.ERROR_CODE}",
+                        ex=AppendingHostageDirectlyIntoItemsFailedException(
+                            f"{method}: {AppendingHostageDirectlyIntoItemsFailedException.ERROR_CODE}"
                         )
                     )
                 )
             )
-        # On success return the hostageManifest in the InsertionResult
+        # On success return the hostage in the InsertionResult
         return InsertionResult.success(payload=manifest)
     
     

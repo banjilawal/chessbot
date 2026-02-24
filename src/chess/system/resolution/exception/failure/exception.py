@@ -45,7 +45,7 @@ class ResolutionFailedException(ResolutionException):
         *   AttackException
         *   CastlingException
         *   CheckmateException
-        *   HostageManifestException
+        *   HostageException
         *   NullException
         *   PromotionException
         *   RosterException

@@ -8,23 +8,23 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# APPENDING_HOSTAGE_MANIFEST_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
-    "AppendingHostageManifestDirectlyIntoItemsFailedException",
+    # ======================# APPENDING_HOSTAGE_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
+    "AppendingHostageDirectlyIntoItemsFailedException",
 ]
 
-from chess.hostage import HostageManifestDataListException
+from chess.hostage import HostageDataListException
 
 
-# ======================# APPENDING_HOSTAGE_MANIFEST_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
-class AppendingHostageManifestDirectlyIntoItemsFailedException(HostageManifestDataListException):
+# ======================# APPENDING_HOSTAGE_DIRECTLY_INTO_ITEMS EXCEPTION #======================#
+class AppendingHostageDirectlyIntoItemsFailedException(HostageDataListException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that appending the hostageManifest directly into self.bag was not in the list after running bag.append.
+    1.  Indicate that appending the hostage directly into self.bag was not in the list after running bag.append.
 
     # PARENT:
-        *   HostageManifestDataListException
+        *   HostageDataListException
 
     # PROVIDES:
     None
@@ -35,7 +35,7 @@ class AppendingHostageManifestDirectlyIntoItemsFailedException(HostageManifestDa
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "APPENDING_HOSTAGE_MANIFEST_DIRECTLY_INTO_ITEMS_ERROR"
+    ERROR_CODE = "APPENDING_HOSTAGE_DIRECTLY_INTO_ITEMS_ERROR"
     DEFAULT_MESSAGE = (
         "Hostage insertion failed: The manifest was not found in self.bag after "
         "running self.bag.append."

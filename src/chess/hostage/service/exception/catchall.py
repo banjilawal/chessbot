@@ -7,27 +7,27 @@ Created: 2025-10-06
 version: 1.0.0
 """
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 __all__ = [
-    # ======================# HOSTAGE_MANIFEST_SERVICE EXCEPTION #======================#
-    "HostageManifestServiceException",
+    # ======================# HOSTAGE_SERVICE EXCEPTION #======================#
+    "HostageServiceException",
 ]
 
 from chess.system import ServiceException
 
 
-# ======================# HOSTAGE_MANIFEST_SERVICE EXCEPTION #======================#
-class HostageManifestServiceException(HostageManifestException, ServiceException):
+# ======================# HOSTAGE_SERVICE EXCEPTION #======================#
+class HostageServiceException(HostageException, ServiceException):
     """
     # ROLE: Catchall Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for HostageManifestService errors.
+    1.  Catchall for HostageService errors.
 
     # PARENT:
         *   ServiceException
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None
@@ -35,5 +35,5 @@ class HostageManifestServiceException(HostageManifestException, ServiceException
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_MANIFEST_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "HostageManifestService raised an exception."
+    ERROR_CODE = "HOSTAGE_SERVICE_ERROR"
+    DEFAULT_MESSAGE = "HostageService raised an exception."

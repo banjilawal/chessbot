@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .base import HostageManifestException
-from .debug import HostageManifestDebugException
+from .base import HostageException
+from .debug import HostageDebugException

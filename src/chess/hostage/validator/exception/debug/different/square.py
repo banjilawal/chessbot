@@ -12,11 +12,11 @@ __all__ = [
     "PrisonerCapturedOnDifferentSquareException",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 
 # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_SQUARE EXCEPTION #======================#
-class PrisonerCapturedOnDifferentSquareException(HostageManifestException):
+class PrisonerCapturedOnDifferentSquareException(HostageException):
     """
     # ROLE: Exception Wrapper
 
@@ -25,7 +25,7 @@ class PrisonerCapturedOnDifferentSquareException(HostageManifestException):
         different item.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None

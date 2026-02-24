@@ -12,10 +12,10 @@ __all__ = [
     "VictorAndPrisoneOnDifferentBoardsException",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 # ======================# VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS EXCEPTION #======================#
-class VictorAndPrisoneOnDifferentBoardsException(HostageManifestException):
+class VictorAndPrisoneOnDifferentBoardsException(HostageException):
     """
     # ROLE: Exception Wrapper
 
@@ -24,7 +24,7 @@ class VictorAndPrisoneOnDifferentBoardsException(HostageManifestException):
         were on different boards.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None

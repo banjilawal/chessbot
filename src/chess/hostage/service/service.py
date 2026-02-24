@@ -3,17 +3,17 @@
 """
 Module: chess.item.service.service
 Author: Banji Lawal
-Created: 2025-11-12
+Created: 2026-01-18
 version: 1.0.0
 """
 
 from typing import cast
 
 from chess.system import EntityService, id_emitter
-from chess.hostage import HostageManifest, HostageManifestBuilder, HostageManifestValidator
+from chess.hostage import Hostage, HostageBuilder, HostageValidator
 
 
-class HostageManifestService(EntityService[HostageManifest]):
+class HostageService(EntityService[Hostage]):
     """
     # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
 
@@ -27,7 +27,7 @@ class HostageManifestService(EntityService[HostageManifest]):
         *   EntityService
 
     # PROVIDES:
-        *   HostageManifestService
+        *   HostageService
 
     # LOCAL ATTRIBUTES:
     None
@@ -35,14 +35,14 @@ class HostageManifestService(EntityService[HostageManifest]):
     # INHERITED ATTRIBUTES:
         *   See EntityService for inherited attributes.
     """
-    SERVICE_NAME = "HostageManifestService"
+    SERVICE_NAME = "HostageService"
     
     def __init__(
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            builder: HostageManifestBuilder = HostageManifestBuilder(),
-            validator: HostageManifestValidator = HostageManifestValidator(),
+            builder: HostageBuilder = HostageBuilder(),
+            validator: HostageValidator = HostageValidator(),
     ):
         """
         # ACTION:
@@ -60,11 +60,11 @@ class HostageManifestService(EntityService[HostageManifest]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
     
     @property
-    def builder(self) -> HostageManifestBuilder:
+    def builder(self) -> HostageBuilder:
         """get SquareBuilder"""
-        return cast(HostageManifestBuilder, self.entity_builder)
+        return cast(HostageBuilder, self.entity_builder)
     
     @property
-    def validator(self) -> HostageManifestValidator:
+    def validator(self) -> HostageValidator:
         """get SquareValidator"""
-        return cast(HostageManifestValidator, self.entity_validator)
+        return cast(HostageValidator, self.entity_validator)

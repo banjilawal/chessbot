@@ -7,27 +7,27 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.hostageManifest import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import ResultException
 
 _all__ = [
-    # ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_HOSTAGE_MANIFESTS EXCEPTION #======================#
-    "HostageManifestSearchPayloadTypeException",
+    # ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_HOSTAGES EXCEPTION #======================#
+    "HostageSearchPayloadTypeException",
 ]
 
 
-# ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_HOSTAGE_MANIFESTS EXCEPTION #======================#
-class HostageManifestSearchPayloadTypeException(HostageManifestException, ResultException):
+# ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_HOSTAGES EXCEPTION #======================#
+class HostageSearchPayloadTypeException(HostageException, ResultException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that after the HostageManifestSearch ran successfully the payload was not a List[Hostage].
+    1.  Indicate that after the HostageSearch ran successfully the payload was not a List[Hostage].
         This exception makes sure search payloads follow the convention of returning an array of matches not a
         single item.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
         *   ResultException
 
     # PROVIDES:
@@ -39,5 +39,5 @@ class HostageManifestSearchPayloadTypeException(HostageManifestException, Result
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SEARCH_PAYLOAD_IS_NOT_LIST_OF_HOSTAGE_MANIFESTS_ERROR"
-    DEFAULT_MESSAGE = "HostageManifestSearch payload is the wrong type. The payload should be List[Hostage]."
+    ERROR_CODE = "SEARCH_PAYLOAD_IS_NOT_LIST_OF_HOSTAGES_ERROR"
+    DEFAULT_MESSAGE = "HostageSearch payload is the wrong type. The payload should be List[Hostage]."

@@ -3,11 +3,11 @@ __all__ = [
     "KingCannotBeCapturedException",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 
 # ======================# KING_CANNOT_BE_CAPTURED EXCEPTION #======================#
-class KingCannotBeCapturedException(HostageManifestException):
+class KingCannotBeCapturedException(HostageException):
     """
     # ROLE: Exception Wrapper
 

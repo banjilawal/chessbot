@@ -8,16 +8,16 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# UNIQUE_MANIFEST_SEARCH_FAILURE #======================#
-    "UniqueHostageManifestSearchException",
+    # ======================# UNIQUE_SEARCH_FAILURE #======================#
+    "UniqueHostageSearchException",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import SearchException
 
 
-# ======================# UNIQUE_MANIFEST_SEARCH_FAILURE #======================#
-class UniqueHostageManifestSearchException(HostageManifestException, SearchException):
+# ======================# UNIQUE_SEARCH_FAILURE #======================#
+class UniqueHostageSearchException(HostageException, SearchException):
     """
     # ROLE: Exception Wrapper
 
@@ -26,7 +26,7 @@ class UniqueHostageManifestSearchException(HostageManifestException, SearchExcep
         exceptions create chain for tracing the source of the failure.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
         *   SearchException
 
     # PROVIDES:
@@ -38,5 +38,5 @@ class UniqueHostageManifestSearchException(HostageManifestException, SearchExcep
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_MANIFEST_SEARCH_FAILURE"
+    ERROR_CODE = "UNIQUE_SEARCH_FAILURE"
     DEFAULT_MESSAGE = "Unique Hostage search failed."

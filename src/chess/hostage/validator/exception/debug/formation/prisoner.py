@@ -11,12 +11,12 @@ __all__ = [
 ]
 
 from chess.formation import FormationException
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 
 
 # ======================# UNFORMED_TOKEN_CANNOT_BE_PRISONER EXCEPTION #======================#
-class UnformedTokenCannotBePrisonerException(HostageManifestException, FormationException):
+class UnformedTokenCannotBePrisonerException(HostageException, FormationException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class UnformedTokenCannotBePrisonerException(HostageManifestException, Formation
         formation set.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
         *   FormationException
 
     # PROVIDES:

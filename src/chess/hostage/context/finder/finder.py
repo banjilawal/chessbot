@@ -12,23 +12,23 @@ from typing import List
 from chess.square import Square
 from chess.system import DataFinder, LoggingLevelRouter, SearchResult
 from chess.hostage import (
-    CaptivityContext, CaptivityContextValidator, HostageManifest, HostageManifestSearchException,
-    HostageManifestSearchNullDatasetException, HostageManifestSearchPayloadTypeException,
-    HostageManifestSearchRouteException
+    CaptivityContext, CaptivityContextValidator, Hostage, HostageSearchException,
+    HostageSearchNullDatasetException, HostageSearchPayloadTypeException,
+    HostageSearchRouteException
 )
 from chess.token import CombatantToken, Token
 
 
-class HostageManifestFinder(DataFinder[HostageManifest]):
+class HostageFinder(DataFinder[Hostage]):
     """
     # ROLE: AbstractSearcher
 
     # RESPONSIBILITIES:
-    1.  Send bag in a HostageManifestList whose attribute value match the context.key value to the caller.
+    1.  Send bag in a HostageList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
-    1.  HostageManifestFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
+    1.  HostageFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
         *   AbstractSearcher
@@ -47,16 +47,16 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
     @LoggingLevelRouter.monitor
     def find(
             cls,
-            dataset: List[HostageManifest],
+            dataset: List[Hostage],
             context: CaptivityContext,
             context_validator: CaptivityContextValidator = CaptivityContextValidator()
-    ) -> SearchResult[List[HostageManifest]]:
+    ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
         1.  If the dataset is null or the wrong type send the exception in the SearchResult.
         2.  If the context fails validation send the exception in the SearchResult. Else, route to the 
             search method which matches the context key.
-        3.  The search method returns either an empty result or a list of hostageManifests. Any exceptions were caught earlier
+        3.  The search method returns either an empty result or a list of hostages. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
             *   dataset (List[Hostage]):
@@ -68,20 +68,20 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
                     - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
-            *   HostageManifestSearchPayloadTypeException
-            *   HostageManifestNullDatasetException
-            *   HostageManifestSearchException
+            *   HostageSearchPayloadTypeException
+            *   HostageNullDatasetException
+            *   HostageSearchException
         """
-        method = "HostageManifestFinder.find"
+        method = "HostageFinder.find"
         
         # Handle the case that, the dataset is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                HostageManifestSearchException(
-                    message=f"{method}: {HostageManifestSearchException.ERROR_CODE}",
-                    ex=HostageManifestSearchNullDatasetException(
-                        f"{method}: {HostageManifestSearchNullDatasetException.DEFAULT_MESSAGE}"
+                HostageSearchException(
+                    message=f"{method}: {HostageSearchException.ERROR_CODE}",
+                    ex=HostageSearchNullDatasetException(
+                        f"{method}: {HostageSearchNullDatasetException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -89,10 +89,10 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
-                HostageManifestSearchException(
-                    message=f"{method}: {HostageManifestSearchException.ERROR_CODE}",
-                    ex=HostageManifestSearchPayloadTypeException(
-                        f"{method}: {HostageManifestSearchPayloadTypeException.DEFAULT_MESSAGE}"
+                HostageSearchException(
+                    message=f"{method}: {HostageSearchException.ERROR_CODE}",
+                    ex=HostageSearchPayloadTypeException(
+                        f"{method}: {HostageSearchPayloadTypeException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -101,14 +101,14 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         if validation_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
-                HostageManifestSearchException(
-                    message=f"{method}: {HostageManifestSearchException.ERROR_CODE}",
+                HostageSearchException(
+                    message=f"{method}: {HostageSearchException.ERROR_CODE}",
                     ex=validation_result.exception
                 )
             )
         # --- Route to the search method which matches the context key. ---#
         
-        # Entry point into finding by hostageManifest's id.
+        # Entry point into finding by hostage's id.
         if context.id is not None:
             return cls._find_by_id(dataset=dataset, id=context.id)
         # Entry point into finding by the prisoner.
@@ -123,18 +123,18 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
-            HostageManifestSearchException(
-                message=f"{method}: {HostageManifestSearchException.ERROR_CODE}",
-                ex=HostageManifestSearchRouteException(f"{method}: {HostageManifestSearchRouteException.DEFAULT_MESSAGE}")
+            HostageSearchException(
+                message=f"{method}: {HostageSearchException.ERROR_CODE}",
+                ex=HostageSearchRouteException(f"{method}: {HostageSearchRouteException.DEFAULT_MESSAGE}")
             )
         )
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def _find_by_id(cls, dataset: List[HostageManifest], id: int) -> SearchResult[List[HostageManifest]]:
+    def _find_by_id(cls, dataset: List[Hostage], id: int) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the HostageManifests with the desired id.
+            1.  Get the Hostages with the desired id.
         # PARAMETERS:
             *   id (int)
             *   dataset (List[Hostage])
@@ -146,7 +146,7 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         # RAISES:
             None
         """
-        matches = [hostageManifest for hostageManifest in dataset if hostageManifest.id == id]
+        matches = [hostage for hostage in dataset if hostage.id == id]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()
@@ -157,12 +157,12 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
     @LoggingLevelRouter.monitor
     def _find_by_prisoner(
             cls,
-            dataset: List[HostageManifest],
+            dataset: List[Hostage],
             prisoner: CombatantToken
-    ) -> SearchResult[List[HostageManifest]]:
+    ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the HostageManifests which match the name.
+            1.  Get the Hostages which match the name.
         # PARAMETERS:
             *   name (str)
             *   dataset (List[Hostage])
@@ -185,12 +185,12 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
     @LoggingLevelRouter.monitor
     def _find_by_victor(
             cls,
-            dataset: List[HostageManifest],
+            dataset: List[Hostage],
             victor: Token
-    ) -> SearchResult[List[HostageManifest]]:
+    ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the HostageManifests which match the name.
+            1.  Get the Hostages which match the name.
         # PARAMETERS:
             *   coord (Coord)
             *   dataset (List[Hostage])
@@ -213,12 +213,12 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
     @LoggingLevelRouter.monitor
     def _find_by_captured_square(
             cls,
-            dataset: List[HostageManifest],
+            dataset: List[Hostage],
             captured_square: Square
-    ) -> SearchResult[List[HostageManifest]]:
+    ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the HostageManifests which match the board.
+            1.  Get the Hostages which match the board.
         # PARAMETERS:
             *   board (Board)
             *   dataset (List[Hostage])

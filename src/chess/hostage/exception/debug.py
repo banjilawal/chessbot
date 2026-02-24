@@ -1,14 +1,14 @@
 __all__ = [
-    # ======================# HOSTAGE_MANIFEST_DEBUG EXCEPTION #======================#
-    "HostageManifestDebugException",
+    # ======================# HOSTAGE_DEBUG EXCEPTION #======================#
+    "HostageDebugException",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import DebugException
 
 
-# ======================# HOSTAGE_MANIFEST_DEBUG EXCEPTION #======================#
-class HostageManifestDebugException(HostageManifestException, DebugException):
+# ======================# HOSTAGE_DEBUG EXCEPTION #======================#
+class HostageDebugException(HostageException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -16,7 +16,7 @@ class HostageManifestDebugException(HostageManifestException, DebugException):
     1.  Describes the condition that caused an Hostage operation failure.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
         *   DebugException
 
     # PROVIDES:
@@ -28,5 +28,5 @@ class HostageManifestDebugException(HostageManifestException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "HOSTAGE_MANIFEST_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "An hostageManifest debug error occurred."
+    ERROR_CODE = "HOSTAGE_DEBUG_ERROR"
+    DEFAULT_MESSAGE = "An hostage debug error occurred."

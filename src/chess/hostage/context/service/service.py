@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import cast
 
 from chess.system import ContextService, id_emitter
-from chess.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityContextValidator, HostageManifestFinder
+from chess.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityContextValidator, HostageFinder
 
 
 class CaptivityContextService(ContextService[CaptivityContext]):
@@ -42,7 +42,7 @@ class CaptivityContextService(ContextService[CaptivityContext]):
             self,
             name: str = SERVICE_NAME,
             id: int = id_emitter.service_id,
-            finder: HostageManifestFinder = HostageManifestFinder(),
+            finder: HostageFinder = HostageFinder(),
             builder: CaptivityContextBuilder = CaptivityContextBuilder(),
             validator: CaptivityContextValidator = CaptivityContextValidator(),
     ):
@@ -52,7 +52,7 @@ class CaptivityContextService(ContextService[CaptivityContext]):
         # PARAMETERS:
             *   name (str)
             *   id (int)
-            *   finder (HostageManifestFinder)
+            *   finder (HostageFinder)
             *   builder (CaptivityContextBuilder)
             *   validator (CaptivityContextValidator)
         # RETURNS:
@@ -64,9 +64,9 @@ class CaptivityContextService(ContextService[CaptivityContext]):
         super().__init__(id=id, name=name, builder=builder, validator=validator, finder=finder)
     
     @property
-    def finder(self) -> HostageManifestFinder:
+    def finder(self) -> HostageFinder:
         """Get CaptivityFinder instance."""
-        return cast(HostageManifestFinder, self.entity_finder)
+        return cast(HostageFinder, self.entity_finder)
     
     @property
     def builder(self) -> CaptivityContextBuilder:

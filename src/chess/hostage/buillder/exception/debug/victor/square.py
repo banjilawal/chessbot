@@ -12,13 +12,13 @@ __all__ = [
     "VictorNotOccupyingCapturedSquareException",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 from chess.system import DebugException
 
 
 # ======================# VICTOR_NOT_ON_CAPTURED_SQUARE EXCEPTION #======================#
 
-class VictorNotOccupyingCapturedSquareException(HostageManifestException, DebugException):
+class VictorNotOccupyingCapturedSquareException(HostageException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -28,7 +28,7 @@ class VictorNotOccupyingCapturedSquareException(HostageManifestException, DebugE
 
     # PARENT:
         *   DebugException
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None

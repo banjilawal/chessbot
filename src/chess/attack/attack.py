@@ -17,7 +17,7 @@ from chess.attack import (
 from chess.system import LoggingLevelRouter
 from chess.square import Square, SquareDatabase
 from chess.system.relation import RelationReport
-from chess.hostage import HostageManifestService
+from chess.hostage import HostageService
 from chess.token import CombatantReadinessEnum, CombatantToken, KingToken, Token, TokenBoardState, TokenService
 
 
@@ -31,7 +31,7 @@ class Attack:
             square: Square,
             token_service: TokenService = TokenService(),
             square_database: SquareDatabase = SquareDatabase(),
-            hostage_service: HostageManifestService = HostageManifestService,
+            hostage_service: HostageService = HostageService,
     ) -> AttackResult:
         method = "Attack.execute"
         
@@ -126,7 +126,7 @@ class Attack:
         square: Square,
         token_service: TokenService,
         square_database: SquareDatabase,
-        hostage_service: HostageManifestService,
+        hostage_service: HostageService,
     ) -> AttackResult:
         """"""
         method = "Attack._process_attack"

@@ -7,16 +7,16 @@ Created: 2026-01-18
 """
 
 __all__ = [
-    # ======================# NULL_HOSTAGE_MANIFEST EXCEPTION #======================#
-    "NullHostageManifestException",
+    # ======================# NULL_HOSTAGE EXCEPTION #======================#
+    "NullHostageException",
 ]
 
 from chess.system import NullException
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 
-# ======================# NULL_HOSTAGE_MANIFEST EXCEPTION #======================#
-class NullHostageManifestException(HostageManifestDebugException, NullException):
+# ======================# NULL_HOSTAGE EXCEPTION #======================#
+class NullHostageException(HostageDebugException, NullException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
@@ -25,7 +25,7 @@ class NullHostageManifestException(HostageManifestDebugException, NullException)
 
     # PARENT:
         *   NullException
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None
@@ -36,5 +36,5 @@ class NullHostageManifestException(HostageManifestDebugException, NullException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_HOSTAGE_MANIFEST_ERROR"
+    ERROR_CODE = "NULL_HOSTAGE_ERROR"
     DEFAULT_MESSAGE = "Hostage validation failed: The candidate was null."

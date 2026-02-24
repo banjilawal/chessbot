@@ -1,8 +1,8 @@
 # ======================# FREE_AND_ACTIVE_ENEMY_CANNOT_BE_PRISONER EXCEPTION #======================#
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 
-class PrisonerCannotBeActiveCombatantException(HostageManifestException):
+class PrisonerCannotBeActiveCombatantException(HostageException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -10,7 +10,7 @@ class PrisonerCannotBeActiveCombatantException(HostageManifestException):
     1.  Indicate that a occupant cannot be added to t
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None

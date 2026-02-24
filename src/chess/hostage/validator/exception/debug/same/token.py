@@ -12,11 +12,11 @@ __all__ = [
 ]
 
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 
 # ======================# TOKEN_CANNOT_CAPTURE_ITSELF EXCEPTION #======================#
-class TokenCannotCaptureItselfException(HostageManifestException):
+class TokenCannotCaptureItselfException(HostageException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class TokenCannotCaptureItselfException(HostageManifestException):
     1.  Indicate that an entity, method, or operation that required a Hostage but got null instead.
 
     # PARENT:
-        *   HostageManifestException
+        *   HostageException
 
     # PROVIDES:
     None

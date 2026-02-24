@@ -3,11 +3,11 @@ __all__ = [
     "FriendCannotCaptureFriendException",
 ]
 
-from chess.hostage import HostageManifestException
+from chess.hostage import HostageException
 
 
 # ======================# FRIEND_CANNOT_CAPTURE_FRIEND EXCEPTION #======================#
-class FriendCannotCaptureFriendException(HostageManifestException):
+class FriendCannotCaptureFriendException(HostageException):
     """
     # ROLE: Exception Wrapper
 

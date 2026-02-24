@@ -3,7 +3,7 @@
 """
 Module: chess.hostage.validator.__init__
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2026-01-18
 version: 1.0.0
 """
 
@@ -13,4 +13,4 @@ version: 1.0.0
 from .exception import *
 
 # Modules
-from .validator import HostageManifestValidator
+from .validator import HostageValidator

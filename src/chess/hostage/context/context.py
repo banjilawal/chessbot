@@ -11,16 +11,16 @@ from typing import Optional
 
 from chess.square import Square
 from chess.system import Context
-from chess.hostage import HostageManifest
+from chess.hostage import Hostage
 from chess.token import CombatantToken, Token
 
 
-class CaptivityContext(Context[HostageManifest]):
+class CaptivityContext(Context[Hostage]):
     """
     # ROLE: Filter, Search, Selection, Reverse/Forward Lookups
 
     # RESPONSIBILITIES:
-    1.  Provide an HostageManifestFinder with an attribute-value which finds HostageManifests which match the
+    1.  Provide an HostageFinder with an attribute-value which finds Hostages which match the
         targeted attribute-value.
 
     # PARENT:
@@ -54,7 +54,7 @@ class CaptivityContext(Context[HostageManifest]):
             Constructor
         # PARAMETERS:
             *   prisoner (Optional[int])
-            *   hostageManifest (Optional[Hostage])
+            *   hostage (Optional[Hostage])
             *   victor (Optional[int])
         # RETURNS:
             None

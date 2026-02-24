@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 from chess.hostage import (
     CapturedSquareCannotBeEmptyException, PrisonerCannotBeActiveCombatantException, FriendCannotCaptureFriendException,
-    HostageManifest, HostageManifestBuildException, PrisonerAlreadyHasHostageManifestException,
+    Hostage, HostageBuildException, PrisonerAlreadyHasHostageException,
     PrisonerCapturedByDifferentEnemyException, TokenCannotCaptureItselfException,
     VictorAndPrisoneOnDifferentBoardsException, PrisonerCapturedOnDifferentSquareException,
     VictorCannotBeDisableTokenException, VictorNotOccupyingCapturedSquareException,
@@ -20,7 +20,7 @@ from chess.system import IdentityService, LoggingLevelRouter, BuildResult, Build
 from chess.token import CombatantActivityState, CombatantReadinessEnum, CombatantToken, Token, TokenService
 
 
-class HostageManifestBuilder(Builder[HostageManifest]):
+class HostageBuilder(Builder[Hostage]):
     """
     # ROLE: Validation, Data Integrity And Reliability Guarantor
 
@@ -53,7 +53,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
             token_service: TokenService = TokenService(),
             square_service: SquareService = SquareService(),
             identity_service: IdentityService = IdentityService(),
-    ) -> BuildResult[HostageManifest]:
+    ) -> BuildResult[Hostage]:
         """
         # ACTION:
         1.  verify hostage_variety is a not-null HostageVariety object.
@@ -74,8 +74,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
             *   TypeError
             *   PrisonerCapturedByDifferentEnemyException
             *   PrisonerCannotBeActiveCombatantException
-            *   HostageManifestBuildException
-            *   PrisonerAlreadyHasHostageManifestException
+            *   HostageBuildException
+            *   PrisonerAlreadyHasHostageException
             *   PrisonerCapturedOnDifferentSquareException
         """
         method = "HostageBuilder.build"
@@ -85,8 +85,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if id_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildException(
-                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
+                HostageBuildException(
+                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
                     ex=id_validation.exception
                 )
             )
@@ -95,8 +95,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if captured_square_validation.failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildException(
-                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
+                HostageBuildException(
+                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
                     ex=captured_square_validation.exception
                 )
             )
@@ -104,8 +104,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if captured_square.is_empty:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildException(
-                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
+                HostageBuildException(
+                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
                     ex=VictorNotOccupyingCapturedSquareException(
                         f"{method}: {VictorNotOccupyingCapturedSquareException.DEFAULT_MESSAGE}"
                     )
@@ -122,8 +122,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if prisoner_is_combatant_validation.is_failure:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildException(
-                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
+                HostageBuildException(
+                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
                     ex=prisoner_is_combatant_validation.exception
                 )
             )
@@ -131,21 +131,21 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if prisoner.is_active:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildException(
-                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
+                HostageBuildException(
+                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
                     ex=PrisonerCannotBeActiveCombatantException(
                         f"{method}: {PrisonerCannotBeActiveCombatantException.DEFAULT_MESSAGE}"
                     )
                 )
             )
         # Handle the case that, prisoner already has a manifest.
-        if prisoner.has_hostage_manifest:
+        if prisoner.has_hostage:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildException(
-                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
-                    ex=PrisonerAlreadyHasHostageManifestException(
-                        f"{method}: {PrisonerAlreadyHasHostageManifestException.DEFAULT_MESSAGE}"
+                HostageBuildException(
+                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
+                    ex=PrisonerAlreadyHasHostageException(
+                        f"{method}: {PrisonerAlreadyHasHostageException.DEFAULT_MESSAGE}"
                     )
                 )
             )
@@ -153,8 +153,8 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if prisoner.current_position != captured_square.coord:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildException(
-                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
+                HostageBuildException(
+                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
                     ex=PrisonerCapturedOnDifferentSquareException(
                         f"{method}: {PrisonerCapturedOnDifferentSquareException.DEFAULT_MESSAGE}"
                     )
@@ -164,21 +164,21 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         if prisoner.captor != captured_square.occupant:
             # Send the exception chain on failure
             return BuildResult.failure(
-                HostageManifestBuildException(
-                    message=f"{method}: {HostageManifestBuildException.DEFAULT_MESSAGE}",
+                HostageBuildException(
+                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
                     ex=PrisonerCapturedByDifferentEnemyException(
                         f"{method}: {PrisonerCapturedByDifferentEnemyException.DEFAULT_MESSAGE}"
                     )
                 )
             )
         # Build the Hostage the updated the prisoner's state
-        manifest = HostageManifest(
+        manifest = Hostage(
             id=id,
             prisoner=prisoner,
             captured_square=captured_square,
             victor=captured_square.occupant,
         )
-        manifest.prisoner.activity.classification = CombatantReadinessEnum.ISSUED_HOSTAGE_MANIFEST
+        manifest.prisoner.activity.classification = CombatantReadinessEnum.ISSUED_HOSTAGE
         
         # Return to the caller in the BuildResult.
         return BuildResult.success(payload=manifest)
