@@ -70,7 +70,7 @@ class SquareBuilder(Builder[Square]):
             name: str,
             board: Board,
             coord: Coord,
-            id: int = IdFactory.next_id(Square.__name__),
+            id: int = IdFactory.next_id(class_name="Square"),
             board_service: BoardService = BoardService(),
             coord_service: CoordService = CoordService(),
             identity_service: IdentityService = IdentityService(),

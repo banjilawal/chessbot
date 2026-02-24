@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import Dict
 
-from chess.system import GameColor
+from chess.system import ComputationResult, GameColor, LoggingLevelRouter
 from chess.team import Team
 
 
@@ -40,6 +40,10 @@ class TeamHash:
     @property
     def black_team(self) -> Team:
         return self._black_team
+    
+    @LoggingLevelRouter.monitor
+    def slot_is_occupied(self, team: Team) -> ComputationResult[bool]:
+        return ComputationResult.success(self.table[team.schema.color] is None)
     
     @property
     def table(self) -> Dict[GameColor, Team]:

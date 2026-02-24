@@ -9,9 +9,11 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from chess.board import Board
+from chess.board import Board, BoardState
 from chess.schema import Schema
 from chess.player import Player
+from chess.team import TeamState
+from chess.team.state import TeamBoardState, TeamRosterState
 from chess.token import TokenDatabase
 
 
@@ -69,6 +71,9 @@ class Team:
     _owner: Player
     _schema: Schema
     _roster: TokenDatabase
+    _board_state: TeamBoardState
+    _roster_state: TeamRosterState
+
 
     def __init__(
             self,
@@ -84,6 +89,9 @@ class Team:
         self._schema = schema
         self._roster = roster
         self._owner = owner
+        self._roster_state = TeamRosterState.ROSTER_EMPTY
+        self._board_state = TeamBoardState.WAITING_FOR_DEPLOYMENT
+
     
     @property
     def id(self) -> int:
@@ -104,6 +112,39 @@ class Team:
     @property
     def roster(self) -> TokenDatabase:
         return self._roster
+    
+    @property
+    def board_state(self) -> TeamBoardState:
+        return self._board_state
+    
+    @board_state.setter
+    def board_state(self, state: TeamBoardState):
+        self._board_state = state
+        
+    @property
+    def roster_state(self) -> TeamRosterState:
+        return self._roster_state
+    
+    @roster_state.setter
+    def roster_state(self, state: TeamRosterState):
+        self._roster_state = state
+        
+    def is_roster_empty(self) -> bool:
+        return self._roster.is_empty and self._roster_state == TeamRosterState.ROSTER_EMPTY
+    
+    def is_roster_full(self) -> bool:
+        return self._roster.is_full and self._roster_state == TeamRosterState.ROSTER_FULL
+    
+    def is
+    
+    def is_deployment_complete(self) -> bool:
+        return self.is_roster_empty() and self._board_state == TeamBoardState.FULLY_DEPLOYED_ON_BOARD
+    
+    def is_deployment_in_progress(self) -> bool:
+        return self._board_state == TeamBoardState.WAITING_FOR_DEPLOYMENT
+        
+    def is_ready_to_play(self) -> bool:
+    
     
     def __eq__(self, other) -> bool:
         if other is self: return True

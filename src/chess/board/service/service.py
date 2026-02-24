@@ -17,6 +17,7 @@ from chess.board import (
     Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardServiceException,
     BoardState, BoardValidator,
 )
+from chess.team import Team, TeamService
 
 
 class BoardService(EntityService[Board]):
@@ -80,6 +81,44 @@ class BoardService(EntityService[Board]):
     def validator(self) -> BoardValidator:
         """get BoardValidator"""
         return cast(BoardValidator, self.entity_validator)
+    
+    @LoggingLevelRouter.monitor
+    def form_team_on_board(
+            self,
+            board: Board,
+            team: Team,
+            team_service: TeamService = TeamService()
+    ) -> InsertionResult:
+        method = "BoardService.forma_team_on_board"
+        
+        # Handle the case that, the team is not certified as safe.
+        team_validation = team_service.validate(candidate=team)
+        if team_validation.is_failure:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                BoardServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
+                    ex=team_validation.exception
+                ),
+            )
+        # Handle the case that, the team belongs on a different board.
+        if not board == team.board:
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                BoardServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
+                    ex=
+                ),
+            )
+        # Handle the case that, the team's slot is already occupied.
+        if board.team_hash.slot_is_occupied(team):
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                BoardServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
+                    ex=Team
+                ),
+            )
     
     @LoggingLevelRouter.monitor
     def layout_board(self, board: Board) -> InsertionResult[bool]:
