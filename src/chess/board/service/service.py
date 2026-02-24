@@ -17,7 +17,8 @@ from chess.board import (
     Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardServiceException,
     BoardState, BoardValidator,
 )
-from chess.team import Team, TeamService
+from chess.team import Team, TeamBelongsToDifferentBoardException, TeamService, TeamSlotAlreadyOccupiedException
+from chess.token import TokenStackState
 
 
 class BoardService(EntityService[Board]):
@@ -97,7 +98,7 @@ class BoardService(EntityService[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
+                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERROR_CODE}",
                     ex=team_validation.exception
                 ),
             )
@@ -106,17 +107,35 @@ class BoardService(EntityService[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
-                    ex=
-                ),
+                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERROR_CODE}",
+                    ex=TeamBelongsToDifferentBoardException(
+                        message=f"{method}: {TeamBelongsToDifferentBoardException.DEFAULT_MESSAGE}",
+                    ),
+                )
             )
         # Handle the case that, the team's slot is already occupied.
         if board.team_hash.slot_is_occupied(team):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
+                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERROR_CODE}",
+                    ex=TeamSlotAlreadyOccupiedException(
+                        f"{method}: {TeamSlotAlreadyOccupiedException.DEFAULT_MESSAGE}"
+                    ),
+                )
+            )
+        # Handle the case that, the team is already deployed.
+        if team.is_ready_to_play():
+            return InsertionResult.success()
+        # --- The is rea. ---#
+        
+        # Handle the case that, the team is not ready
+        if team.is_not_ready_to_play():
+            # Return the exception chain on failure.
+            return InsertionResult.failure(
+                BoardServiceException(
                     message=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
-                    ex=Team
+                    ex=
                 ),
             )
     

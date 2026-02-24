@@ -15,7 +15,7 @@ from chess.schema import SchemaService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
     BoardHasStaleTeamLinkException, NullTeamException, PlayerHasStaleTeamLinkException, Team,
-    TeamHasDifferentBoardException,
+    TeamBelongsToDifferentBoardException,
     TeamHasDifferentOwnerException,
     TeamNotRegisteredBoardException, TeamNotRegisteredOwnerException,
     TeamValidationException
@@ -248,7 +248,7 @@ class TeamValidator(Validator[Team]):
                     - On failure: Exception.
                     - On success: Board in the payload.
         # RAISES:
-            *   TeamHasDifferentBoardException
+            *   TeamBelongsToDifferentBoardException
             *   TeamNotRegisteredBoardException
             *   BoardHasStaleTeamLinkException
         """
@@ -266,8 +266,8 @@ class TeamValidator(Validator[Team]):
         if board_team_relation.does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamHasDifferentBoardException(
-                    f"{method}: {TeamHasDifferentBoardException.DEFAULT_MESSAGE}"
+                TeamBelongsToDifferentBoardException(
+                    f"{method}: {TeamBelongsToDifferentBoardException.DEFAULT_MESSAGE}"
                 )
             )
         # Handle the case that, the team has not been added to the board's teams.

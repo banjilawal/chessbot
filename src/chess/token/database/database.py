@@ -15,7 +15,7 @@ from chess.token import (
     Token, TokenContext, TokenContextService, TokenStack, TokenService, TokenDatabaseException, TokenStackState
 )
 from chess.system import (
-    ComputationResult, DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, SearchResult,
+    ComputationResult, Database, DeletionResult, IdFactory, InsertionResult, LoggingLevelRouter, SearchResult,
 )
 
 
@@ -82,6 +82,10 @@ class TokenDatabase(Database[Token]):
     @property
     def is_empty(self) -> bool:
         return self._token_stack.is_empty
+    
+    @property
+    def is_ready_for_deployment(self) -> bool:
+        return self._token_stack.is_ready_for_deployment
     
     @property
     def is_deployed_on_board(self) -> bool:

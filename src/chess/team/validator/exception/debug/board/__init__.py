@@ -13,6 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .null import TeamHasDifferentBoardException
 from .stale import BoardHasStaleTeamLinkException
 from .register import TeamNotRegisteredBoardException
+from .occupied import TeamSlotAlreadyOccupiedException
+from .null import TeamBelongsToDifferentBoardException

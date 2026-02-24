@@ -9,11 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from chess.board import Board, BoardState
+from chess.board import Board
 from chess.schema import Schema
 from chess.player import Player
 from chess.team import TeamState
-from chess.team.state import TeamBoardState, TeamRosterState
 from chess.token import TokenDatabase
 
 
@@ -70,9 +69,8 @@ class Team:
     _board: Board
     _owner: Player
     _schema: Schema
+    _state: TeamState
     _roster: TokenDatabase
-    _board_state: TeamBoardState
-    _roster_state: TeamRosterState
 
 
     def __init__(
@@ -89,8 +87,7 @@ class Team:
         self._schema = schema
         self._roster = roster
         self._owner = owner
-        self._roster_state = TeamRosterState.ROSTER_EMPTY
-        self._board_state = TeamBoardState.WAITING_FOR_DEPLOYMENT
+        self._state = TeamState.NOT_READY_TO_PLAY
 
     
     @property
@@ -114,37 +111,21 @@ class Team:
         return self._roster
     
     @property
-    def board_state(self) -> TeamBoardState:
-        return self._board_state
+    def state(self) -> TeamState:
+        return self._state
     
-    @board_state.setter
-    def board_state(self, state: TeamBoardState):
-        self._board_state = state
-        
-    @property
-    def roster_state(self) -> TeamRosterState:
-        return self._roster_state
-    
-    @roster_state.setter
-    def roster_state(self, state: TeamRosterState):
-        self._roster_state = state
-        
-    def is_roster_empty(self) -> bool:
-        return self._roster.is_empty and self._roster_state == TeamRosterState.ROSTER_EMPTY
-    
-    def is_roster_full(self) -> bool:
-        return self._roster.is_full and self._roster_state == TeamRosterState.ROSTER_FULL
-    
-    def is
-    
-    def is_deployment_complete(self) -> bool:
-        return self.is_roster_empty() and self._board_state == TeamBoardState.FULLY_DEPLOYED_ON_BOARD
-    
-    def is_deployment_in_progress(self) -> bool:
-        return self._board_state == TeamBoardState.WAITING_FOR_DEPLOYMENT
+    @state.setter
+    def state(self, state: TeamState):
+        self._state = state
         
     def is_ready_to_play(self) -> bool:
+        return self._roster.is_deployed_on_board and self._state == TeamState.READY_TO_PLAY
     
+    def is_not_ready_to_play(self) -> bool:
+        return not self._roster.is_deployed_on_board and not self._state != TeamState.NOT_READY_TO_PLAY
+    
+    def is_waiting_to_play(self) -> bool:
+        return self._roster.is_deployed_on_board and self._state == TeamState.WAITING_TO_PLAY
     
     def __eq__(self, other) -> bool:
         if other is self: return True

@@ -97,20 +97,32 @@ class TokenStack(StackService[Token]):
         return self._capacity
     
     @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def is_partially_full(self) -> bool:
+        return 0 < self.size < self._capacity
+    
+    @property
     def is_full(self) -> bool:
         return self.size == self._capacity
     
     @property
-    def is_ready_for_deployment(self) -> bool:
-        return self.is_full and self._state == TokenStackState.FILLED_READY_TO_DEPLOY
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0 and self._state == TokenStackState.EMPTY
-    
-    @property
     def current_item(self) -> Optional[Token]:
         return self._stack[-1] if self._stack else None
+    
+    @property
+    def is_getting_ready_for_deployment(self) -> bool:
+        return not self.is_full and self._state == TokenStackState.NOT_READY_FORD_DEPLOYMENT
+    
+    @property
+    def is_ready_for_deployment(self) -> bool:
+        return self.is_full and self._state == TokenStackState.READY_FOR_DEPLOYMENT
+    
+    @property
+    def is_being_deployed(self) -> bool:
+        return self.is_partially_full and self._state == TokenStackState.BEING_DEPLOYEDY
     
     @property
     def is_deployed_on_board(self) -> bool:

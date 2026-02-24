@@ -12,12 +12,12 @@ from chess.team import TeamDebugException
 
 __all__ = [
     # ======================# NO_RELATION_BETWEEN_BOARD_AND_TEAM EXCEPTION #======================#
-    "TeamHasDifferentBoardException",
+    "TeamBelongsToDifferentBoardException",
 ]
 
 
 # ======================# NO_RELATION_BETWEEN_BOARD_AND_TEAM EXCEPTION #======================#
-class TeamHasDifferentBoardException(TeamDebugException, NoRelationException):
+class TeamBelongsToDifferentBoardException(TeamDebugException, NoRelationException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 

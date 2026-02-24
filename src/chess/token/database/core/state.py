@@ -2,7 +2,7 @@ from enum import Enum, auto
 
 
 class TokenStackState(Enum):
-    EMPTY = auto(),
-    PARTIALLY_FULL = auto(),
+    BEING_DEPLOYED = auto(),
     DEPLOYED_ON_BOARD = auto(),
-    FILLED_READY_TO_DEPLOY = auto(),
+    READY_FOR_DEPLOYMENT = auto(),
+    NOT_READY_FORD_DEPLOYMENT = auto(),
