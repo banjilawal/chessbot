@@ -14,4 +14,3 @@ None
 
 # Modules
 from .builder import CoordBuilder
-from .exception import CoordBuildException

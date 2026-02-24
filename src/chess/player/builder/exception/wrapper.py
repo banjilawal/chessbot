@@ -8,7 +8,6 @@ version: 1.0.0
 """
 
 
-from chess.player import PlayerException
 from chess.system import BuildException
 
 __all__ = [
@@ -17,18 +16,16 @@ __all__ = [
 ]
 
 
-#======================# PLAYER_BUILD_FAILURE #======================#
-class PlayerBuildException(PlayerException, BuildException):
+# ======================# PLAYER_BUILD_FAILURE #======================#
+class PlayerBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the PlayerContext build creates an exception. Failed check exceptions are encapsulated
-        in an PlayerContextBuildException which is sent to the caller in a BuildResult.
-    2.  The PlayerContextBuildException provides a trace for debugging and application recovery.
+    1.  An error occurred in PlayerBuilder.build that, prevented BuildResult.success() from 
+        being returned.
 
     # PARENT:
-        *   PlayerException
         *   BuildException
 
     # PROVIDES:
@@ -36,9 +33,9 @@ class PlayerBuildException(PlayerException, BuildException):
 
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "PLAYER_BUILD_FAILED"
-    DEFAULT_ERROR_CODE = "Player build failed."
+    DEFAULT_MESSAGE = "Player build failed."

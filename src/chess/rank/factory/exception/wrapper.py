@@ -7,7 +7,6 @@ Created: 2025-11-20
 version: 1.0.0
 """
 
-from chess.rank import RankException
 from chess.system import BuildException
 
 __all__ = [
@@ -17,17 +16,15 @@ __all__ = [
 
 
 # ======================# RANK_BUILD_FAILURE #======================#
-class RankBuildException(RankException, BuildException):
+class RankBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the Rank build creates an exception. Failed check exceptions are encapsulated
-        in an RankBuildException which is sent to the caller in a BuildResult.
-    2.  The RankBuildException provides a trace for debugging and application recovery.
+    1.  An error occurred in RankBuilder.build that, prevented BuildResult.success() from 
+        being returned.
 
     # PARENT:
-        *   RankException
         *   BuildException
 
     # PROVIDES:

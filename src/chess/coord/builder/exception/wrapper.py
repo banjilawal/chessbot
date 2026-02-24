@@ -1,13 +1,12 @@
-# src/chess/coord/builder/collision.py
+# src/chess/coord/builder/wrapper.py
 
 """
-Module: chess.coord.builder.exception
+Module: chess.coord.builder.wrapper
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.coord import CoordException
 from chess.system import BuildException
 
 __all__ = [
@@ -17,17 +16,15 @@ __all__ = [
 
 
 # ======================# COORD_BUILD_FAILURE #======================#
-class CoordBuildException(CoordException, BuildException):
+class CoordBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the Coord build creates an exception. Failed check exceptions are encapsulated
-        in an CoordBuildException which is sent to the caller in a BuildResult.
-    2.  The CoordBuildException provides a trace for debugging and application recovery.
+    1.  An error occurred in CoordBuilder.build that, prevented BuildResult.success() from
+        being returned.
 
     # PARENT:
-        *   CoordException
         *   BuildException
 
     # PROVIDES:

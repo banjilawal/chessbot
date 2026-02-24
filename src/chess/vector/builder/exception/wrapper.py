@@ -7,7 +7,6 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.vector import VectorException
 from chess.system import BuildException
 
 __all__ = [
@@ -17,17 +16,15 @@ __all__ = [
 
 
 # ======================# VECTOR_BUILD_FAILURE #======================#
-class VectorBuildException(VectorException, BuildException):
+class VectorBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the Vector build creates an exception. Failed check exceptions are encapsulated
-        in an VectorBuildException which is sent to the caller in a BuildResult.
-    2.  The VectorBuildException provides a trace for debugging and application recovery.
+    1.  An error occurred in VectorBuilder.build that, prevented BuildResult.success() from 
+        being returned.
 
     # PARENT:
-        *   VectorException
         *   BuildException
 
     # PROVIDES:

@@ -7,11 +7,10 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-#=========== ARENA.BUILDER PACKAGE CONTENTS ===========#
+# =========== ARENA.BUILDER.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
-from .exception import *
+None
 
 # Modules
-from .builder import ArenaBuilder
-
+from .wrapper import ArenaBuildException

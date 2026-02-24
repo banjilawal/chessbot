@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .builder import EdgeBuilder
-from .wrapper import EdgeBuildException
+from chess.edge.builder.builder import EdgeBuilder
+from chess.edge.builder.exception.wrapper import EdgeBuildException
