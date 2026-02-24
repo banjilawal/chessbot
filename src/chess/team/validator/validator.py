@@ -167,55 +167,52 @@ class TeamValidator(Validator[Team]):
     ) -> ValidationResult[Board]:
         """
         # ACTION:
-            1.  If team.owner is not validated by player_service return validation exception.
-            2.  If the team is not owner.teams return an exception in the ValidationResult.
-            3.  The tests passed. Send team.owner in the ValidationResult.
+            1.  If the TeamOwnerRelationAnalyzer provided by player_service does not return a
+                bidirectional relationship result send the exception to the caller.
+            2.  Else, send the success validation result to the caller.
         # PARAMETERS:
             *   team (Team)
-            *   player_service (BoardService)
+            *   player_service (PlayerService)
         # RETURNS:
-        ValidationResult[Board] containing either:
-            - On failure: Exception.
-            - On success: Board in the payload.
+            *   ValidationResult[Player] containing either:
+                    - On failure: Exception.
+                    - On success: Player in the payload.
         # RAISES:
-            *   TeamValidationException
+            *   TeamBelongsToDifferentOwnerException
+            *   TeamNotRegisteredOwnerException
         """
         method = "TeamValidator._verify_team_owner"
         
-        # Handle the case team.owner is not certified as safe.
-        owner_team_relation = player_service.board_team_relation_analyzer.analyze(
+        # Handle the case that, either team.owner is not certified as safe or the analysis aborts.
+        owner_team_relation = player_service.player_team_relation_analyzer.analyze(
             candidate_primary=team.owner,
             candidate_satellite=team,
         )
-        # Handle the case that, there is a direct failure of analyzer.
         if owner_team_relation.is_failure:
-            # Return the exception chain on failure.
-            return ValidationResult.failure(
-                TeamValidationException(
-                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
-                    ex=owner_team_relation.exception
-                )
-            )
+            return ValidationResult.failure(owner_team_relation.exception)
+        
         # Handle the case that, the team belongs to a different owner.
         if owner_team_relation.does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamValidationException(
-                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
-                    ex=TeamBelongsToDifferentOwnerException(
+                TeamBelongsToDifferentOwnerException(
                         f"{method}: {TeamBelongsToDifferentOwnerException.DEFAULT_MESSAGE}"
-                    )
                 )
             )
         # Handle the case that, the team has not been added to the owner's teams.
-        if owner_team_relation.partially_exists:
+        if owner_team_relation.registration_does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                TeamValidationException(
-                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
-                    ex=TeamNotRegisteredOwnerException(
-                        f"{method}: {TeamNotRegisteredOwnerException.DEFAULT_MESSAGE}"
-                    )
+                TeamNotRegisteredOwnerException(
+                    f"{method}: {TeamNotRegisteredOwnerException.DEFAULT_MESSAGE}"
+                )
+            )
+        # Handle the case that, the player has stale link to the team.
+        if owner_team_relation.registration_does_not_exist:
+            # Return the exception chain on failure.
+            return ValidationResult.failure(
+                PlayerHasStaleTeamLinkException(
+                    f"{method}: {PlayerHasStaleTeamLinkException.DEFAULT_MESSAGE}"
                 )
             )
         # --- On certification successes send the owner in the ValidationResult. ---#
@@ -223,21 +220,26 @@ class TeamValidator(Validator[Team]):
         
     @classmethod
     @LoggingLevelRouter.monitor
-    def _verify_team_board(cls, team: Team, board_service: BoardService = BoardService()) -> ValidationResult[Board]:
+    def _verify_team_board(
+            cls,
+            team: Team,
+            board_service: BoardService = BoardService()
+    ) -> ValidationResult[Board]:
         """
         # ACTION:
-            1.  If team.board is not validated by player_service return validation exception.
-            2.  If the team is not one of the two teams in the board return the exception.
-            3.  The tests are passed. Send team.board in the ValidationResult.
+            1.  If the TeamOwnerRelationAnalyzer provided by board_service does not return a
+                bidirectional relationship result send the exception to the caller.
+            2.  Else, send the success validation result to the caller.
         # PARAMETERS:
             *   team (Team)
             *   board_service (BoardService)
         # RETURNS:
-        ValidationResult[Board] containing either:
-            - On failure: Exception.
-            - On success: Board in the payload.
+            *   ValidationResult[Board] containing either:
+                    - On failure: Exception.
+                    - On success: Board in the payload.
         # RAISES:
-            *   TeamValidationException
+            *   TeamBelongsToDifferentOwnerException
+            *   TeamNotRegisteredOwnerException
         """
         method = "TeamValidator._verify_team_board"
         # Handle the case that, board is not certified

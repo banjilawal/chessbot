@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/registration/player.py
+# src/chess/team/validator/exception/debug/owner/register.py
 
 """
-Module: chess.team.validator.exception.registration.player
+Module: chess.team.validator.exception.owner.register
 Author: Banji Lawal
 Created: 2025-11-20
 version: 1.0.0
@@ -10,20 +10,19 @@ version: 1.0.0
 from chess.team import TeamDebugException
 from chess.system import NotRegisteredException
 
-
 __all__ = [
     # ======================# TEAM_NOT_REGISTERED_WITH_OWNER EXCEPTION #======================#
     "TeamNotRegisteredOwnerException",
 ]
 
 
-#======================# TEAM_NOT_REGISTERED_WITH_OWNER EXCEPTION #======================#
+# ======================# TEAM_NOT_REGISTERED_WITH_OWNER EXCEPTION #======================#
 class TeamNotRegisteredOwnerException(TeamDebugException, NotRegisteredException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failing ValidationResult was returned because the candidate tteam had not registered with its owner.
+    1.  A failing ValidationResult was returned because the candidate team had not registered with its owner.
 
     # PARENT:
         *   TeamDebugException

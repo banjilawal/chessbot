@@ -3,7 +3,7 @@
 """
 Module: chess.manifest.validator.exception.debug.manifest
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2026-01-18
 """
 
 __all__ = [
@@ -16,12 +16,12 @@ from chess.hostage import HostageManifestException
 
 
 # ======================# NULL_HOSTAGE_MANIFEST EXCEPTION #======================#
-class NullHostageManifestException(HostageManifestException, NullException):
+class NullHostageManifestException(HostageManifestDebugException, NullException):
     """
-    # ROLE: Error Tracing, Debugging
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an entity, method, or operation that required a HostageManifest but got null instead.
+    A failing ValidationResult was returned because the validation candidate was null.
 
     # PARENT:
         *   NullException

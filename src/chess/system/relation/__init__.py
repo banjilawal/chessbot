@@ -10,11 +10,9 @@ version: 1.0.0
 # =========== SYSTEM.RELATION PACKAGE CONTENTS ===========#
 
 # Packages
-from .wrong import *
+from .report import *
+from .analyzer import *
 from .exception import *
 
 # Modules
-from .dyad import Dyad
-from .status import RelationStatus
-from .report import RelationReport
-from .analyzer import RelationAnalyzer
+None

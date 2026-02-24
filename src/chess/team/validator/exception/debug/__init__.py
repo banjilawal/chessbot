@@ -15,4 +15,4 @@ None
 # Modules
 from .null import NullTeamException
 from .board import TeamNotRegisteredBoardException
-from .player import TeamNotRegisteredOwnerException
+from chess.team.validator.exception.debug.owner.player import TeamNotRegisteredOwnerException

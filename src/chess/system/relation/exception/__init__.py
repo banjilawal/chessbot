@@ -3,7 +3,7 @@
 """
 Module: chess.system.relation.exception.__init__
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2026-01-18
 version: 1.0.0
 """
 
@@ -13,5 +13,3 @@ version: 1.0.0
 None
 
 # Modules
-from .route import NoAnalysisRouteException
-from .wrapper import AnalysisException
