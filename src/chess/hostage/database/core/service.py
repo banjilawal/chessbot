@@ -22,12 +22,12 @@ class HostageManifestList(StackService[HostageManifest]):
 
     # RESPONSIBILITIES:
     1.  Public facing API.
-    2.  Microservice for managing HostageManifest objects and their lifecycles.
-    3.  Ensure integrity of HostageManifest data stack
-    4.  Stack data structure for HostageManifest objects with no guarantee of uniqueness.
+    2.  Microservice for managing Hostage objects and their lifecycles.
+    3.  Ensure integrity of Hostage data stack
+    4.  Stack data structure for Hostage objects with no guarantee of uniqueness.
 
     # PARENT:
-        *   StackService[HostageManifest]
+        *   StackService[Hostage]
 
     # PROVIDES:
     None
@@ -89,11 +89,11 @@ class HostageManifestList(StackService[HostageManifest]):
                 and return to the caller in the BuildResult.
         # PARAMETERS:
             *   Only one these must be provided:
-                    *   hostageManifest (HostageManifest)
+                    *   hostageManifest (Hostage)
         # RETURNS:
-            *   InsertionResult[HostageManifest] containing either:
+            *   InsertionResult[Hostage] containing either:
                     - On failure: Exception.
-                    - On success: HostageManifest in the payload.
+                    - On success: Hostage in the payload.
         # RAISES:
             *   HostageManifestDataListException
         """
@@ -113,7 +113,7 @@ class HostageManifestList(StackService[HostageManifest]):
                 )
             )
 
-        # --- HostageManifest order is not required. Direct insertion into the dataset is simpler that a push. ---#
+        # --- Hostage order is not required. Direct insertion into the dataset is simpler that a push. ---#
         self.items.append(manifest)
         
         # Handle the case that, the hostageManifest was not appended to the dataset.

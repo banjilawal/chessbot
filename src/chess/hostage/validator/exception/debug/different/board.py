@@ -20,7 +20,7 @@ class VictorAndPrisoneOnDifferentBoardsException(HostageManifestException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed its HostageManifest validation because the victor and prisoner
+    1.  Indicate that a candidate failed its Hostage validation because the victor and prisoner
         were on different boards.
 
     # PARENT:
@@ -36,4 +36,4 @@ class VictorAndPrisoneOnDifferentBoardsException(HostageManifestException):
     None
     """
     ERROR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: The victor can only capture enemies on its own board."
+    DEFAULT_MESSAGE = "Hostage validation failed: The victor can only capture enemies on its own board."

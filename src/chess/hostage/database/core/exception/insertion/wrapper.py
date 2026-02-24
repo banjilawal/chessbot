@@ -38,4 +38,4 @@ class HostageManifestInsertionException(HostageManifestException, InsertionExcep
     None
     """
     ERROR_CODE = "HOSTAGE_MANIFEST_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "HostageManifest insertion failed."
+    DEFAULT_MESSAGE = "Hostage insertion failed."

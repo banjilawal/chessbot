@@ -22,7 +22,7 @@ class HostageManifestSearchPayloadTypeException(HostageManifestException, Result
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that after the HostageManifestSearch ran successfully the payload was not a List[HostageManifest].
+    1.  Indicate that after the HostageManifestSearch ran successfully the payload was not a List[Hostage].
         This exception makes sure search payloads follow the convention of returning an array of matches not a
         single item.
 
@@ -40,4 +40,4 @@ class HostageManifestSearchPayloadTypeException(HostageManifestException, Result
     None
     """
     ERROR_CODE = "SEARCH_PAYLOAD_IS_NOT_LIST_OF_HOSTAGE_MANIFESTS_ERROR"
-    DEFAULT_MESSAGE = "HostageManifestSearch payload is the wrong type. The payload should be List[HostageManifest]."
+    DEFAULT_MESSAGE = "HostageManifestSearch payload is the wrong type. The payload should be List[Hostage]."

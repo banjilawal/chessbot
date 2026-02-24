@@ -22,7 +22,7 @@ class HostageManifestSearchNullDatasetException(HostageManifestException, NullDa
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a HostageManifest search operation failed because no dataset was provided for the query.
+    1.  Indicate that a Hostage search operation failed because no dataset was provided for the query.
 
     # PARENT:
         *   HostageManifestException
@@ -38,4 +38,4 @@ class HostageManifestSearchNullDatasetException(HostageManifestException, NullDa
     None
     """
     ERROR_CODE = "HOSTAGE_MANIFEST__SEARCH_NULL_DATASET_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest search failed: There was no dataset to search"
+    DEFAULT_MESSAGE = "Hostage search failed: There was no dataset to search"

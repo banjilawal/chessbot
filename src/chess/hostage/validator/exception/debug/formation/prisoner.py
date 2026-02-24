@@ -21,7 +21,7 @@ class UnformedTokenCannotBePrisonerException(HostageManifestException, Formation
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed its HostageManifest validation because the prisoner did not have its
+    1.  Indicate that a candidate failed its Hostage validation because the prisoner did not have its
         formation set.
 
     # PARENT:
@@ -38,4 +38,4 @@ class UnformedTokenCannotBePrisonerException(HostageManifestException, Formation
     None
     """
     ERROR_CODE = "UNFORMED_TOKEN_CANNOT_BE_PRISONER_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: The prisoner did not have its formation set."
+    DEFAULT_MESSAGE = "Hostage validation failed: The prisoner did not have its formation set."

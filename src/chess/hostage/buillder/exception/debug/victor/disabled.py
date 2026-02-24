@@ -23,7 +23,7 @@ class VictorCannotBeDisableTokenException(HostageManifestException, DebugExcepti
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that the HostageManifest build failed because the victor was not active for the build process.
+    1.  Indicate that the Hostage build failed because the victor was not active for the build process.
         A occupant must be active when it creates a capture event.
 
     # PARENT:
@@ -40,4 +40,4 @@ class VictorCannotBeDisableTokenException(HostageManifestException, DebugExcepti
     None
     """
     ERROR_CODE = "VICTOR_CANNOT_BE_DISABLED_TOKEN_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest build failed: Victor cannot be disabled. It must be active during the build."
+    DEFAULT_MESSAGE = "Hostage build failed: Victor cannot be disabled. It must be active during the build."

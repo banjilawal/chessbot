@@ -62,7 +62,7 @@ class HostageManifestValidationException(HostageManifestException, ValidationExc
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a HostageManifest. The exception chain traces the ultimate source of failure.
+    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Hostage. The exception chain traces the ultimate source of failure.
 
     # PARENT:
         *   HostageManifestException
@@ -78,4 +78,4 @@ class HostageManifestValidationException(HostageManifestException, ValidationExc
     None
     """
     ERROR_CODE = "HOSTAGE_MANIFEST_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "HostageManifest validation failed."
+    DEFAULT_MESSAGE = "Hostage validation failed."

@@ -21,7 +21,7 @@ class PrisonerCapturedOnDifferentSquareException(HostageManifestException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed its HostageManifest validation because the victor and prisoner were on
+    1.  Indicate that a candidate failed its Hostage validation because the victor and prisoner were on
         different item.
 
     # PARENT:
@@ -37,4 +37,4 @@ class PrisonerCapturedOnDifferentSquareException(HostageManifestException):
     None
     """
     ERROR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: The victor can only capture enemies on its own item."
+    DEFAULT_MESSAGE = "Hostage validation failed: The victor can only capture enemies on its own item."

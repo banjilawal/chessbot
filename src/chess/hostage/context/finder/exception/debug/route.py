@@ -22,7 +22,7 @@ class HostageManifestSearchRouteException(HostageManifestException, NoExecutionR
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the HostageManifest search failed because there was no search method for the HostageManifest
+    1.  Indicate that the Hostage search failed because there was no search method for the Hostage
         attribute that was supported in the HostageManifestContext.
 
     # PARENT:
@@ -40,5 +40,5 @@ class HostageManifestSearchRouteException(HostageManifestException, NoExecutionR
     """
     ERROR_CODE = "NO_HOSTAGE_MANIFEST_SEARCH_ROUTE_ROUTE_ERROR"
     DEFAULT_MESSAGE = (
-        "HostageManifest search failed: No search method was provided for the HostageManifest attribute."
+        "Hostage search failed: No search method was provided for the Hostage attribute."
     )

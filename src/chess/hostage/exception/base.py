@@ -32,4 +32,4 @@ class HostageManifestException(ChessException):
     None
     """
     ERROR_CODE = "HOSTAGE_MANIFEST_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest raised an exception."
+    DEFAULT_MESSAGE = "Hostage raised an exception."

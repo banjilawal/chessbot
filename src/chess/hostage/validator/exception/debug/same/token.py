@@ -21,7 +21,7 @@ class TokenCannotCaptureItselfException(HostageManifestException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an entity, method, or operation that required a HostageManifest but got null instead.
+    1.  Indicate that an entity, method, or operation that required a Hostage but got null instead.
 
     # PARENT:
         *   HostageManifestException
@@ -36,4 +36,4 @@ class TokenCannotCaptureItselfException(HostageManifestException):
     None
     """
     ERROR_CODE = "TOKEN_CANNOT_CAPTURE_ITSELF_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: TheVictor and Captor cannot be the same."
+    DEFAULT_MESSAGE = "Hostage validation failed: TheVictor and Captor cannot be the same."

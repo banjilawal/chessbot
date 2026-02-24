@@ -64,9 +64,9 @@ class HostageManifestValidator(Validator[HostageManifest]):
             *   square_service (SquareService)
             *   identity_service (IdentityService)
         # RETURN:
-            *   ValidationResult[HostageManifest] containing either:
+            *   ValidationResult[Hostage] containing either:
                     - On failure: Exception.
-                    - On success: HostageManifest in the payload.
+                    - On success: Hostage in the payload.
         # RAISES:
             *   TypeError
             *   NullHostageManifestException
@@ -102,7 +102,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                 )
             )
         
-        # --- Cast the candidate into a HostageManifest for additional testing. ---#
+        # --- Cast the candidate into a Hostage for additional testing. ---#
         manifest = cast(HostageManifest, candidate)
         
         # Handle the case that, the id is not certified safe.

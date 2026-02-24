@@ -40,4 +40,4 @@ class HostageManifestSearchException(HostageManifestException, SearchException):
     None
     """
     ERROR_CODE = "HOSTAGE_MANIFEST_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "HostageManifest search failed."
+    DEFAULT_MESSAGE = "Hostage search failed."

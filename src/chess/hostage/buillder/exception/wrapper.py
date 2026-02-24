@@ -22,7 +22,7 @@ class HostageManifestBuildException(HostageManifestException, BuildException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the HostageManifest build creates an exception. Failed check exceptions are 
+    1.  Any failed check during the Hostage build creates an exception. Failed check exceptions are
         encapsulated in an HostageManifestBuildException which is sent to the caller in a BuildResult.
     2.  The HostageManifestBuildException provides a trace for debugging and application recovery.
 
@@ -40,4 +40,4 @@ class HostageManifestBuildException(HostageManifestException, BuildException):
     None
     """
     ERROR_CODE = "HOSTAGE_MANIFEST_BUILD_FAILURE"
-    DEFAULT_MESSAGE = "HostageManifest build failed."
+    DEFAULT_MESSAGE = "Hostage build failed."

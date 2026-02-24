@@ -88,11 +88,11 @@ class HostageDatabase(Database[HostageManifest]):
             3.  If the call to _hostageManifest_database_core.insert_hostageManifest fails send the wrapped exception in the InsertionResult.
                 Else send the outgoing result directly to the caller.
         # PARAMETERS:
-            *   hostageManifest (HostageManifest)
+            *   hostageManifest (Hostage)
         # RETURN:
-            *   InsertionResult[HostageManifest] containing either:
+            *   InsertionResult[Hostage] containing either:
                     - On failure: An exception.
-                    - On success: HostageManifest in payload.
+                    - On success: Hostage in payload.
         # RAISES:
             *   HostageDatabase
             *   UniqueHostageManifestInsertionException
@@ -176,9 +176,9 @@ class HostageDatabase(Database[HostageManifest]):
         # PARAMETERS:
             *   id (int)
         # RETURN:
-            *   SearchResult[HostageManifest] containing either:
+            *   SearchResult[Hostage] containing either:
                     - On failure: An exception.
-                    - On success: HostageManifest in payload.
+                    - On success: Hostage in payload.
                     - On Empty: No payload nor exception.
         # RAISES:
             *   HostageDatabase

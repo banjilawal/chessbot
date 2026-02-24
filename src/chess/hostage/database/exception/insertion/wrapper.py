@@ -39,4 +39,4 @@ class UniqueHostageManifestInsertionException(HostageManifestException, Insertio
     None
     """
     ERROR_CODE = "UNIQUE_HOSTAGE_MANIFEST_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Unique HostageManifest insertion failed."
+    DEFAULT_MESSAGE = "Unique Hostage insertion failed."

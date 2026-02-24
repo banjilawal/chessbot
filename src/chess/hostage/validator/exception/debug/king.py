@@ -27,4 +27,4 @@ class KingCannotBeCapturedException(HostageManifestException):
     None
     """
     ERROR_CODE = "KING_CANNOT_BE_CAPTURED"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: A KingToken cannot be a prisoner"
+    DEFAULT_MESSAGE = "Hostage validation failed: A KingToken cannot be a prisoner"

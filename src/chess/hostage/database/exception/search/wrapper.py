@@ -22,7 +22,7 @@ class UniqueHostageManifestSearchException(HostageManifestException, SearchExcep
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why inserting a unique HostageManifest failed. The encapsulated 
+    1.  Wrap debug exceptions indicating why inserting a unique Hostage failed. The encapsulated
         exceptions create chain for tracing the source of the failure.
 
     # PARENT:
@@ -39,4 +39,4 @@ class UniqueHostageManifestSearchException(HostageManifestException, SearchExcep
     None
     """
     ERROR_CODE = "UNIQUE_MANIFEST_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Unique HostageManifest search failed."
+    DEFAULT_MESSAGE = "Unique Hostage search failed."

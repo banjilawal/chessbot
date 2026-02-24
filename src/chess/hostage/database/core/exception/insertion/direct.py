@@ -37,6 +37,6 @@ class AppendingHostageManifestDirectlyIntoItemsFailedException(HostageManifestDa
     """
     ERROR_CODE = "APPENDING_HOSTAGE_MANIFEST_DIRECTLY_INTO_ITEMS_ERROR"
     DEFAULT_MESSAGE = (
-        "HostageManifest insertion failed: The manifest was not found in self.bag after "
+        "Hostage insertion failed: The manifest was not found in self.bag after "
         "running self.bag.append."
     )

@@ -54,7 +54,7 @@ class CaptivityContext(Context[HostageManifest]):
             Constructor
         # PARAMETERS:
             *   prisoner (Optional[int])
-            *   hostageManifest (Optional[HostageManifest])
+            *   hostageManifest (Optional[Hostage])
             *   victor (Optional[int])
         # RETURNS:
             None

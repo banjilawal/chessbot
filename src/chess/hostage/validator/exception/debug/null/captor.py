@@ -21,7 +21,7 @@ class PrisonerAlreadyHasHostageManifestException(HostageManifestException, NullE
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-   1.  Indicate that a candidate failed its HostageManifest validation because the prisoner did not have its captor set.
+   1.  Indicate that a candidate failed its Hostage validation because the prisoner did not have its captor set.
     
     # PARENT:
         *   NullException
@@ -37,4 +37,4 @@ class PrisonerAlreadyHasHostageManifestException(HostageManifestException, NullE
     None
     """
     ERROR_CODE = "PRISONER_DOES_NOT_HAVE_CAPTOR_SET_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: Captor was not set."
+    DEFAULT_MESSAGE = "Hostage validation failed: Captor was not set."

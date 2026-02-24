@@ -59,13 +59,13 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
         3.  The search method returns either an empty result or a list of hostageManifests. Any exceptions were caught earlier
             by the search router.
        # PARAMETERS:
-            *   dataset (List[HostageManifest]):
+            *   dataset (List[Hostage]):
             *   context: CaptivityContext
             *   context_validator: CaptivityContextValidator
         # RETURNS:
-            *   SearchResult[List[HostageManifest]] containing either:
+            *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[HostageManifest] in the payload.
+                    - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             *   HostageManifestSearchPayloadTypeException
@@ -137,11 +137,11 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
             1.  Get the HostageManifests with the desired id.
         # PARAMETERS:
             *   id (int)
-            *   dataset (List[HostageManifest])
+            *   dataset (List[Hostage])
         # RETURNS:
-            *   SearchResult[List[HostageManifest]] containing either:
+            *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[HostageManifest] in the payload.
+                    - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             None
@@ -165,11 +165,11 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
             1.  Get the HostageManifests which match the name.
         # PARAMETERS:
             *   name (str)
-            *   dataset (List[HostageManifest])
+            *   dataset (List[Hostage])
         # RETURNS:
-            *   SearchResult[List[HostageManifest]] containing either:
+            *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[HostageManifest] in the payload.
+                    - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             None
@@ -193,11 +193,11 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
             1.  Get the HostageManifests which match the name.
         # PARAMETERS:
             *   coord (Coord)
-            *   dataset (List[HostageManifest])
+            *   dataset (List[Hostage])
         # RETURNS:
-            *   SearchResult[List[HostageManifest]] containing either:
+            *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[HostageManifest] in the payload.
+                    - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             None
@@ -221,11 +221,11 @@ class HostageManifestFinder(DataFinder[HostageManifest]):
             1.  Get the HostageManifests which match the board.
         # PARAMETERS:
             *   board (Board)
-            *   dataset (List[HostageManifest])
+            *   dataset (List[Hostage])
         # RETURNS:
-            *   SearchResult[List[HostageManifest]] containing either:
+            *   SearchResult[List[Hostage]] containing either:
                     - On error: Exception , payload null
-                    - On finding a match: List[HostageManifest] in the payload.
+                    - On finding a match: List[Hostage] in the payload.
                     - On no matches found: Exception null, payload null
         # RAISES:
             None

@@ -37,4 +37,4 @@ class AddingDuplicateHostageManifestException(HostageDatabase):
     None
     """
     ERROR_CODE = "ADDING_DUPLICATE_HOSTAGE_MANIFEST_ERROR"
-    DEFAULT_MESSAGE = "Unique HostageManifest insertion failed: The manifest was already present."
+    DEFAULT_MESSAGE = "Unique Hostage insertion failed: The manifest was already present."

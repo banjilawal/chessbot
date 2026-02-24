@@ -12,7 +12,7 @@ from chess.square import Square
 from chess.token import CombatantToken, Token
 
 
-class HostageManifest:
+class Hostage:
     _id: int
     _victor: Token
     _prisoner: CombatantToken

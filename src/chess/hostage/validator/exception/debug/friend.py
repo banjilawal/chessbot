@@ -27,4 +27,4 @@ class FriendCannotCaptureFriendException(HostageManifestException):
     None
     """
     ERROR_CODE = "FRIEND_CANNOT_CAPTURE_FRIEND"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: A friend cannot be a prisoner."
+    DEFAULT_MESSAGE = "Hostage validation failed: A friend cannot be a prisoner."

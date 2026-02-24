@@ -23,7 +23,7 @@ class VictorNotOccupyingCapturedSquareException(HostageManifestException, DebugE
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that the HostageManifest build failed because the victor was not occupying the item where it
+    1.  Indicate that the Hostage build failed because the victor was not occupying the item where it
         captured the prisoner.
 
     # PARENT:
@@ -40,4 +40,4 @@ class VictorNotOccupyingCapturedSquareException(HostageManifestException, DebugE
     None
     """
     ERROR_CODE = "VICTOR_NOT_ON_CAPTURED_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest build failed: Victor not occupying captured item."
+    DEFAULT_MESSAGE = "Hostage build failed: Victor not occupying captured item."

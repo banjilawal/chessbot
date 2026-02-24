@@ -37,4 +37,4 @@ class NullHostageManifestException(HostageManifestDebugException, NullException)
     None
     """
     ERROR_CODE = "NULL_HOSTAGE_MANIFEST_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: The candidate was null."
+    DEFAULT_MESSAGE = "Hostage validation failed: The candidate was null."

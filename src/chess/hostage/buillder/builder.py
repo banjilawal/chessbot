@@ -171,7 +171,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     )
                 )
             )
-        # Build the HostageManifest the updated the prisoner's state
+        # Build the Hostage the updated the prisoner's state
         manifest = HostageManifest(
             id=id,
             prisoner=prisoner,

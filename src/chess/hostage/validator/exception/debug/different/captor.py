@@ -21,7 +21,7 @@ class PrisonerCapturedByDifferentEnemyException(HostageManifestException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed its HostageManifest validation because the prisoner had a different captor.
+    1.  Indicate that a candidate failed its Hostage validation because the prisoner had a different captor.
 
     # PARENT:
         *   HostageManifestException
@@ -36,4 +36,4 @@ class PrisonerCapturedByDifferentEnemyException(HostageManifestException):
     None
     """
     ERROR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: the prisoner was captured by a different friend."
+    DEFAULT_MESSAGE = "Hostage validation failed: the prisoner was captured by a different friend."

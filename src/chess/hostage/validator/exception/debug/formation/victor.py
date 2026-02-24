@@ -20,7 +20,7 @@ class UnformedTokenCannotBeVictorException(HostageManifestException, FormationEx
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed its HostageManifest validation because the victor did not have its
+    1.  Indicate that a candidate failed its Hostage validation because the victor did not have its
         formation set.
 
     # PARENT:
@@ -37,4 +37,4 @@ class UnformedTokenCannotBeVictorException(HostageManifestException, FormationEx
     None
     """
     ERROR_CODE = "UNFORMED_TOKEN_CANNOT_BE_VICTOR_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: The victor did not have its formation set."
+    DEFAULT_MESSAGE = "Hostage validation failed: The victor did not have its formation set."

@@ -22,4 +22,4 @@ class PrisonerCannotBeActiveCombatantException(HostageManifestException):
     None
     """
     ERROR_CODE = "FREE_AND_ACTIVE_ENEMY_CANNOT_BE_PRISONER_ERROR"
-    DEFAULT_MESSAGE = "HostageManifest validation failed: An enemy cannot be a prisoner if its status is free."
+    DEFAULT_MESSAGE = "Hostage validation failed: An enemy cannot be a prisoner if its status is free."

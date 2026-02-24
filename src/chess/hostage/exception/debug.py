@@ -13,7 +13,7 @@ class HostageManifestDebugException(HostageManifestException, DebugException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused an HostageManifest operation failure.
+    1.  Describes the condition that caused an Hostage operation failure.
 
     # PARENT:
         *   HostageManifestException
