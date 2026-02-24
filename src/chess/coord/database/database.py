@@ -122,7 +122,7 @@ class CoordDatabase(Database[Coord]):
         method = "CoordStack.coord_search"
         
         search_result = self._coord_stack.context_service.finder.find(context=context)
-        # Handle the case that a successful search result does not have List[Coord] as its payload.
+        # Handle the case that, a successful search result does not have List[Coord] as its payload.
         if search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

@@ -72,7 +72,7 @@ class TokenFactory(Builder[Token]):
         """
         method = "TokenFactory.builder"
         
-        # Handle the case that the id is not certified as safe.
+        # Handle the case that, the id is not certified as safe.
         id_validation = identity_service.validate_id(candidate=id)
         if id_validation.is_failure:
             # Return the exception chain on failure.
@@ -82,7 +82,7 @@ class TokenFactory(Builder[Token]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that the team is not certified as safe.
+        # Handle the case that, the team is not certified as safe.
         owner_validation = team_validator.validate(candidate=owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.
@@ -92,7 +92,7 @@ class TokenFactory(Builder[Token]):
                     ex=owner_validation.exception
                 )
             )
-        # Handle the case that the formation is not certified as safe.
+        # Handle the case that, the formation is not certified as safe.
         formation_validation = formation_service.validator.validate(candidate=formation)
         if formation_validation.is_failure:
             # Return the exception chain on failure.
@@ -232,7 +232,7 @@ class TokenFactory(Builder[Token]):
         """
         method = "TokenFactory._build_combatant"
         
-        # Handle the case that the rank build is not completed.
+        # Handle the case that, the rank build is not completed.
         rank_build_result = rank_service.builder.build(persona=formation.persona)
         if rank_build_result.is_failure:
             # Return the exception chain on failure.

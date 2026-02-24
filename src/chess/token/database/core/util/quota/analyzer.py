@@ -63,7 +63,7 @@ class RankQuotaAnalyzer:
         """
         method = "RankQuotaAnalyzer.compute_rank_size_in_stack"
         
-        # Handle the case that the rank is not certified safe.
+        # Handle the case that, the rank is not certified safe.
         rank_validation = rank_service.validator.validate(rank)
         if rank_validation.is_failure:
             # Return the exception chain on failure.
@@ -79,7 +79,7 @@ class RankQuotaAnalyzer:
         # --- Cast the context_build_result payload and run a search-by-rank on token-stack. ---#
         search_result = token_stack.query(context=TokenContext(rank=rank))
         
-        # Handle the case that the search was not completed.
+        # Handle the case that, the search was not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
@@ -91,10 +91,10 @@ class RankQuotaAnalyzer:
                     )
                 )
             )
-        # Handle the case that no tokens hold the rank
+        # Handle the case that, no tokens hold the rank
         if search_result.is_empty:
             return ComputationResult.success(payload=0)
-        # Handle the case that some hits were found
+        # Handle the case that, some hits were found
         return ComputationResult.success(payload=len(cast(List[Token], search_result.payload)))
   
     @classmethod
@@ -121,7 +121,7 @@ class RankQuotaAnalyzer:
         """
         method = "RankQuotaAnalyzer.stack_has_opening_for_rank"
         
-        # Handle the case that the rank is not certified safe.
+        # Handle the case that, the rank is not certified safe.
         openings_count_result = cls.count_openings_for_rank(
             rank=rank,
             token_stack=token_stack,
@@ -169,7 +169,7 @@ class RankQuotaAnalyzer:
         """
         method = "RankQuotaAnalyzer.count_openings_for_rank"
         
-        # Handle the case that the rank is not certified safe.
+        # Handle the case that, the rank is not certified safe.
         rank_validation = rank_service.validator.validate(rank)
         if rank_validation.is_failure:
             # Return the exception chain on failure.
@@ -186,7 +186,7 @@ class RankQuotaAnalyzer:
             rank_service=rank_service,
         )
         
-        # Handle the case that the rank_count_result_computation was not completed.
+        # Handle the case that, the rank_count_result_computation was not completed.
         if rank_size_computation.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(

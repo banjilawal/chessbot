@@ -33,7 +33,7 @@ class IdValidator(Validator[int]):
     # RESPONSIBILITIES:
     1.  Ensure a designation is certified safe, reliable and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
-    3.  An Id is is required to be greater than zero.
+    3.  An Id is required to be greater than zero.
 
     # PARENT:
         *   Validator
@@ -71,7 +71,7 @@ class IdValidator(Validator[int]):
         """
         method = "IdValidator.validate"
         
-        # Handle the case that the id is not a positive number.
+        # Handle the case that, the id is not a positive number.
         validation = number_validator.validate(candidate=candidate, floor=1, ceiling=sys.maxsize)
         if validation.is_failure:
             # Return the exception chain on failure.

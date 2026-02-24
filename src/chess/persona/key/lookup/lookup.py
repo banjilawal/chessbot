@@ -64,7 +64,7 @@ class PersonaLookup(HashLookup[Persona]):
         """
         method = "PersonaLookup.query"
         
-        # Handle the case that the Key fails validation.
+        # Handle the case that, the Key fails validation.
         validation = super_key_validator.validate(candidate=super_key)
         if validation.is_failure:
             # Return the exception chain on failure.

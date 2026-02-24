@@ -139,7 +139,7 @@ class OccupationService:
         # --- After the square is validated, get a snapshot of its pre-update state. ---#
         pre_update_square = deepcopy(square)
         
-        # Handle the case that the token is not active
+        # Handle the case that, the token is not active
         actionable_token_validation = token_service.verify_access_token(token)
         if actionable_token_validation.is_failure:
             # Return the exception chain on failure.
@@ -153,7 +153,7 @@ class OccupationService:
                     )
                 )
             )
-        # Handle the case that the target square is not in the list
+        # Handle the case that, the target square is not in the list
         if square not in square_list:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
@@ -166,7 +166,7 @@ class OccupationService:
                     )
                 )
             )
-        # Handle the case that the occupation fails.
+        # Handle the case that, the occupation fails.
         insertion_result = square_service.add_occupant_to_square(square, token)
         if insertion_result.is_failure:
             # Return the exception chain on failure.
@@ -214,7 +214,7 @@ class OccupationService:
         """
         method = "SquareService.empty_square_by_token_search"
         
-        # Handle the case that the token is not certified as safe.
+        # Handle the case that, the token is not certified as safe.
         token_validation = token_service.validator.validate(occupant)
         if token_validation.is_failure:
             # Send the debug exception to the client.

@@ -73,7 +73,7 @@ class TokenFinder(DataFinder[Token]):
         """
         method = "TokenFinder.find"
         
-        # Handle the case that the dataset is null.
+        # Handle the case that, the dataset is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -84,7 +84,7 @@ class TokenFinder(DataFinder[Token]):
                     )
                 )
             )
-        # Handle the case that dataset is the wrong type
+        # Handle the case that, dataset is the wrong type
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -93,7 +93,7 @@ class TokenFinder(DataFinder[Token]):
                     ex=TypeError(f"{method}: Expected List[Token], got {type(dataset).__name__} instead.")
                 )
             )
-        # Handle the case that the context fails validation.
+        # Handle the case that, the context fails validation.
         validation_result = context_validator.validate(context)
         if validation_result.is_failure:
             # Return the exception chain on failure.

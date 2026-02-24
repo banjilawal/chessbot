@@ -102,7 +102,7 @@ class HostageDatabase(Database[HostageManifest]):
         
         # --- To assure uniqueness the member_service has to conduct a search. The hostageManifest should be validated first. ---#
         
-        # Handle the case that the hostageManifest is not certified safe.
+        # Handle the case that, the hostageManifest is not certified safe.
         validation = self.integrity_service.validator.validate(candidate=manifest)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -118,7 +118,7 @@ class HostageDatabase(Database[HostageManifest]):
         # --- Check if the hostageManifest is already in the dataset before adding it. ---#
         search_result = self.search_hostageManifests(context=CaptivityContext(id=manifest.id))
         
-        # Handle the case that the search is not completed.
+        # Handle the case that, the search is not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -130,7 +130,7 @@ class HostageDatabase(Database[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that the hostageManifest is already in the dataset.
+        # Handle the case that, the hostageManifest is already in the dataset.
         if search_result.is_success:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -147,7 +147,7 @@ class HostageDatabase(Database[HostageManifest]):
         # --- Use _database_core.insert_manifest because order does not matter for the manifest access. ---#
         insertion_result = self._database_core.insert_manifest(manifest=manifest)
         
-        # Handle the case that the insertion is not completed.
+        # Handle the case that, the insertion is not completed.
         if insertion_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -189,7 +189,7 @@ class HostageDatabase(Database[HostageManifest]):
         # --- Handoff the search responsibility to _hostageManifest_database_core. ---#
         search_result = self._database_core.context_service.finder.find(context=context)
         
-        # Handle the case that the search is not completed.
+        # Handle the case that, the search is not completed.
         if search_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

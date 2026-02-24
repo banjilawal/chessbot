@@ -89,7 +89,7 @@ class BoardValidator(Validator[Board]):
         # --- Cast candidate to a Board for additional tests. ---#
         board = cast(Board, candidate)
         
-        # Handle the case board.id or board.name certification fails.
+        # Handle the case board.id or board.name is not certified as safe.
         id_validation = identity_service.validate_id(candidate=board.id)
         if id_validation.is_failure:
             # Return the exception chain on failure.
@@ -99,7 +99,7 @@ class BoardValidator(Validator[Board]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that board.arena integrity verification and the arena-board relation fails.
+        # Handle the case that, board.arena integrity verification and the arena-board relation fails.
         arena_verification = cls._validate_arena(board=board, arena_service=arena_service)
         if arena_verification.is_failure:
             # Return the exception chain on failure.
@@ -137,7 +137,7 @@ class BoardValidator(Validator[Board]):
             candidate_primary=board.arena,
             candidate_satellite=board,
         )
-        # Handle the case that there is a direct failure of analyzer.
+        # Handle the case that, there is a direct failure of analyzer.
         if relation_analysis.is_failure:
             # Return the exception chain on failure.
             return ValidationResult(
@@ -146,7 +146,7 @@ class BoardValidator(Validator[Board]):
                     ex=relation_analysis.exception
                 )
             )
-        # Handle the case that the board belongs to a different board.
+        # Handle the case that, the board belongs to a different board.
         if relation_analysis.does_not_exist:
             # Return the exception chain on failure.
             return ValidationResult(
@@ -157,7 +157,7 @@ class BoardValidator(Validator[Board]):
                     )
                 )
             )
-        # Handle the case that the board has not been added to the board's boards.
+        # Handle the case that, the board has not been added to the board's boards.
         if relation_analysis.partially_exists:
             # Return the exception chain on failure.
             return ValidationResult(

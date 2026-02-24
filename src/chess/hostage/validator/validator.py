@@ -83,7 +83,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
         """
         method = "HostageValidator.validate"
         
-        # Handle the case that the candidate does not exist.
+        # Handle the case that, the candidate does not exist.
         if candidate is None:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -105,7 +105,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
         # --- Cast the candidate into a HostageManifest for additional testing. ---#
         manifest = cast(HostageManifest, candidate)
         
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         id_validation = identity_service.validate_id(candidate=id)
         if id_validation.failure:
             # Send the exception chain on failure
@@ -115,7 +115,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that the item where the capture occurred is not certified safe.
+        # Handle the case that, the item where the capture occurred is not certified safe.
         captured_square_validation = square_service.validator.validate(candidate=manifest.captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
@@ -125,7 +125,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     ex=captured_square_validation.exception
                 )
             )
-        # Handle the case that the victor's item is not certified safe.
+        # Handle the case that, the victor's item is not certified safe.
         victor_square_validation = square_service.validator.validate(candidate=manifest.victor_square)
         if victor_square_validation.failure:
             # Send the exception chain on failure
@@ -137,7 +137,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
             )
         # --- Perform tests on the matrix.prisoner that do not rely on the victor. ---#
         
-        # Handle the case that the prisoner is not a safe combatant
+        # Handle the case that, the prisoner is not a safe combatant
         prisoner_validation = token_service.validator.verify_token_is_combatant(candidate=manifest.prisoner)
         if prisoner_validation.failure:
             # Send the exception chain on failure
@@ -147,7 +147,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     ex=prisoner_validation.exception
                 )
             )
-        # Handle the case that the prisoner is still active:
+        # Handle the case that, the prisoner is still active:
         if manifest.prisoner.is_active:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -158,7 +158,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that prisoner already has a manifest.
+        # Handle the case that, prisoner already has a manifest.
         if not manifest.prisoner.has_hostage_manifest:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -169,7 +169,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that the prisoner was capture on a different item.
+        # Handle the case that, the prisoner was capture on a different item.
         if manifest.prisoner.current_position != manifest.captured_square.coord:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -185,7 +185,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
             
             # --- Perform tests on the manifest.victor that do not rely on the prisoner. ---#
             
-        # Handle the case that the victor is not certified safe.
+        # Handle the case that, the victor is not certified safe.
         victor_validation = token_service.validator.validate(candidate=manifest.victor)
         if victor_validation.failure:
             # Send the exception chain on failure
@@ -211,7 +211,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
 
         # --- Perform tests that require the prisoner and victor. ---#
     
-        # Handle the case that the victor and the prisoner are the same.
+        # Handle the case that, the victor and the prisoner are the same.
         if prisoner == victor:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -222,7 +222,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that the tokens are not on the same board.
+        # Handle the case that, the tokens are not on the same board.
         if victor.team.board != prisoner.team.board:
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -233,7 +233,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that the tokens are not enemies.
+        # Handle the case that, the tokens are not enemies.
         if not victor.is_enemy(prisoner):
             # Send the exception chain on failure
             return ValidationResult.failure(
@@ -244,7 +244,7 @@ class HostageManifestValidator(Validator[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that prisoner.captor != victor
+        # Handle the case that, prisoner.captor != victor
         if prisoner.captor != victor:
             # Send the exception chain on failure
             return ValidationResult.failure(

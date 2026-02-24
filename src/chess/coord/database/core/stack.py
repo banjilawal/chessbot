@@ -128,7 +128,7 @@ class CoordStack(StackService[Coord]):
         """
         method = "CoordStack.push"
         
-        # Handle the case that coord validation fails.
+        # Handle the case that, coord validation fails.
         validation = self.integrity_service.validator.validate(candidate=item)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -141,7 +141,7 @@ class CoordStack(StackService[Coord]):
                     )
                 )
             )
-        # Handle the case that the Coord is already at the top.
+        # Handle the case that, the Coord is already at the top.
         if item == self.current_coord:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -178,7 +178,7 @@ class CoordStack(StackService[Coord]):
         """
         method = "CoordStack.pop_coord"
         
-        # Handle the case that the list is empty
+        # Handle the case that, the list is empty
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -190,7 +190,7 @@ class CoordStack(StackService[Coord]):
                     )
                 )
             )
-        # Handle the case that a new coord has not been pushed onto the stack. Only one undo is allowed in a turn.
+        # Handle the case that, a new coord has not been pushed onto the stack. Only one undo is allowed in a turn.
         if self._previous_coord == self._current_coord:
             # Return the exception chain on failure.
             return DeletionResult.failure(

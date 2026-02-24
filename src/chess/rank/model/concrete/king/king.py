@@ -85,7 +85,7 @@ class King(Rank):
         for vector in self.vectors:
             addition_result = self.coord_service.add_vector_to_coord(coord=token.current_position, vector=vector)
             
-            # Handle the case that the computation does not produce a solution.
+            # Handle the case that, the computation does not produce a solution.
             if addition_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(

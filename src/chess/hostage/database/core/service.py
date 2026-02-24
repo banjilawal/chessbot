@@ -99,7 +99,7 @@ class HostageManifestList(StackService[HostageManifest]):
         """
         method = "HostageManifestList.add_hostageManifest"
         
-        # Handle the case that the hostageManifest is unsafe.
+        # Handle the case that, the hostageManifest is unsafe.
         validation = self.integrity_service.validator.validate(candidate=manifest)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -116,7 +116,7 @@ class HostageManifestList(StackService[HostageManifest]):
         # --- HostageManifest order is not required. Direct insertion into the dataset is simpler that a push. ---#
         self.items.append(manifest)
         
-        # Handle the case that the hostageManifest was not appended to the dataset.
+        # Handle the case that, the hostageManifest was not appended to the dataset.
         if manifest not in self.items:
             # Return the exception chain on failure.
             return InsertionResult.failure(

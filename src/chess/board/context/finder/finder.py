@@ -73,7 +73,7 @@ class BoardFinder(DataFinder[Board]):
         """
         method = "BoardFinder.find"
         
-        # Handle the case that the dataset is null.
+        # Handle the case that, the dataset is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -82,7 +82,7 @@ class BoardFinder(DataFinder[Board]):
                     ex=BoardSearchNullDatasetException( f"{method}: {BoardSearchNullDatasetException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that dataset is the wrong type
+        # Handle the case that, dataset is the wrong type
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -91,7 +91,7 @@ class BoardFinder(DataFinder[Board]):
                     ex=BoardSearchPayloadTypeException(f"{method}: {BoardSearchPayloadTypeException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the context fails validation.
+        # Handle the case that, the context fails validation.
         validation_result = context_validator.validate(context)
         if validation_result.is_failure:
             # Return the exception chain on failure.

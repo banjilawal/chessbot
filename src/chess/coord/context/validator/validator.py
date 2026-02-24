@@ -76,7 +76,7 @@ class CoordContextValidator(Validator[CoordContext]):
                     ex=NullCoordContextException(f"{method}: {NullCoordContextException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that they type is wrong.
+        # Handle the case that, they type is wrong.
         if not isinstance(candidate, CoordContext):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -91,7 +91,7 @@ class CoordContextValidator(Validator[CoordContext]):
         # Get how many context flags are set.
         switch_count = len(context.to_dict())
         
-        # Handle the case that no context flags are set.
+        # Handle the case that, no context flags are set.
         if switch_count == 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -104,7 +104,7 @@ class CoordContextValidator(Validator[CoordContext]):
         
         # Certification for the search-by-column-and-row target.
         if switch_count == 2:
-            # Handle the case that row of search-by-column-and-row target fails its integrity checks.
+            # Handle the case that, row of search-by-column-and-row target fails its integrity checks.
             row_validation = number_validator.validate(context.row)
             if row_validation.is_failure:
                 # Return the exception chain on failure.
@@ -114,7 +114,7 @@ class CoordContextValidator(Validator[CoordContext]):
                         ex=row_validation.exception
                     )
                 )
-            # Handle the case that column of search-by-column-and-row target fails its integrity checks.
+            # Handle the case that, column of search-by-column-and-row target fails its integrity checks.
             column_validation = number_validator.validate(context.column)
             if column_validation.is_failure:
                 # Return the exception chain on failure.

@@ -82,13 +82,13 @@ class SquareContextBuilder(Builder[SquareContext]):
             1.  If the candidate fails either
                     *   A null check.
                     *   A type check.
-                Ssend an exception chain in the ValidationResult. Else, cast candidate to SquareContext
+                Send an exception chain in the ValidationResult. Else, cast candidate to SquareContext
                 instance context.
             2.  Send an exception chain in the BuildResult if either
                     *   One and only one of attributes is not null.
                     *   There is no build route for the enabled option.
                     *   The enabled attribute is not certified as safe by its service.
-                are not certified as safe by their services.
+                are is not certified as safe by their services.
             3.  Build the appropriate context, sed the build success result.
         # PARAMETERS:
             Only one these must be provided:
@@ -118,7 +118,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         params = [id, name, coord, token,board, state,]
         param_count = sum(bool(p) for p in params)
         
-        # Handle the case that all the optional params are null.
+        # Handle the case that, all the optional params are null.
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -129,7 +129,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                     )
                 )
             )
-        # Handle the case that more than one optional param is not-null.
+        # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(

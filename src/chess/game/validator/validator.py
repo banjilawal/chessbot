@@ -78,12 +78,12 @@ class GameValidator(Validator[Game]):
         method = "GameValidator.validate"
         
         try:
-            # Handle the case that the candidate does not exist.
+            # Handle the case that, the candidate does not exist.
             if candidate is None:
                 return ValidationResult.failure(
                     NullGameException(f"{method}: {NullGameException.DEFAULT_MESSAGE}")
                 )
-            # Handle the case that the candidate is not a Game.
+            # Handle the case that, the candidate is not a Game.
             if not isinstance(candidate, Game):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Game, {type(candidate).__name__} instead.")

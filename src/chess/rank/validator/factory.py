@@ -178,7 +178,7 @@ class RankValiatorFactory(Validator[Rank]):
             * RankValidationException
         """
         method = "RankFactory.builder"
-        # Handle the case that the candidate does not exist.
+        # Handle the case that, the candidate does not exist.
         if candidate is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -187,7 +187,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=NullRankException(f"{method}: {NullRankException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the candidate is the wrong type.
+        # Handle the case that, the candidate is the wrong type.
         if not isinstance(candidate, Rank):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -251,7 +251,7 @@ class RankValiatorFactory(Validator[Rank]):
     ) -> ValidationResult[King]:
         method = "RankFactory._validate_king"
         
-        # Handle the case that the candidate is not a King.
+        # Handle the case that, the candidate is not a King.
         if not isinstance(candidate, King):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -260,7 +260,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a King, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         king = cast(King, candidate)
         id_validation = identity_service.validate_id(king.id)
         if id_validation.is_failure:
@@ -271,7 +271,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that some of the params do match a King's
+        # Handle the case that, some of the params do match a King's
         if (
                 king.ransom != Persona.KING.ransom or
                 king.team_quota != Persona.KING.quota or
@@ -298,7 +298,7 @@ class RankValiatorFactory(Validator[Rank]):
     ) -> ValidationResult[Pawn]:
         method = "RankFactory._validate_pawn"
         
-        # Handle the case that the candidate is not a Pawn.
+        # Handle the case that, the candidate is not a Pawn.
         if not isinstance(candidate, Pawn):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -307,7 +307,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Pawn, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         pawn = cast(Pawn, candidate)
         id_validation = identity_service.validate_id(pawn.id)
         if id_validation.is_failure:
@@ -318,7 +318,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=id_validation.ex
                 )
             )
-        # Handle the case that some of the params do match a Pawn's
+        # Handle the case that, some of the params do match a Pawn's
         if (
                 pawn.ransom != Persona.PAWN.ransom or
                 pawn.team_quota != Persona.PAWN.quota or
@@ -346,7 +346,7 @@ class RankValiatorFactory(Validator[Rank]):
     ) -> ValidationResult[Knight]:
         method = "RankFactory._validate_knight"
         
-        # Handle the case that the candidate is not a Knight.
+        # Handle the case that, the candidate is not a Knight.
         if not isinstance(candidate, Knight):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -355,7 +355,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Knight, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         knight = cast(Knight, candidate)
         id_validation = identity_service.validate_id(knight.id)
         if id_validation.is_failure:
@@ -366,7 +366,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that some of the params do match a Knight's
+        # Handle the case that, some of the params do match a Knight's
         if (
                 knight.ransom != Persona.KNIGHT.ransom or
                 knight.team_quota != Persona.KNIGHT.quota or
@@ -394,7 +394,7 @@ class RankValiatorFactory(Validator[Rank]):
     ) -> ValidationResult[Bishop]:
         method = "RankFactory._validate_bishop"
         
-        # Handle the case that the candidate is not a Bishop.
+        # Handle the case that, the candidate is not a Bishop.
         if not isinstance(candidate, Bishop):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -403,7 +403,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Bishop, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         bishop = cast(Bishop, candidate)
         id_validation = identity_service.validate_id(bishop.id)
         if id_validation.is_failure:
@@ -414,7 +414,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=id_validation.ex
                 )
             )
-        # Handle the case that some of the params do match a Bishop's
+        # Handle the case that, some of the params do match a Bishop's
         if (
                 bishop.ransom != Persona.BISHOP.ransom or
                 bishop.team_quota != Persona.BISHOP.quota or
@@ -442,7 +442,7 @@ class RankValiatorFactory(Validator[Rank]):
     ) -> ValidationResult[Rook]:
         method = "RankFactory._validate_rook"
         
-        # Handle the case that the candidate is not a Rook.
+        # Handle the case that, the candidate is not a Rook.
         if not isinstance(candidate, Rook):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -451,7 +451,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Rook, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         rook = cast(Rook, candidate)
         id_validation = identity_service.validate_id(rook.id)
         if id_validation.is_failure:
@@ -462,7 +462,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that some of the params do match a Rook's
+        # Handle the case that, some of the params do match a Rook's
         if (
                 rook.ransom != Persona.ROOK.ransom or
                 rook.team_quota != Persona.ROOK.quota or
@@ -490,7 +490,7 @@ class RankValiatorFactory(Validator[Rank]):
     ) -> ValidationResult[Queen]:
         method = "RankFactory._validate_queen"
         
-        # Handle the case that the candidate is not a Queen.
+        # Handle the case that, the candidate is not a Queen.
         if not isinstance(candidate, Queen):
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -499,7 +499,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=TypeError(f"{method}: Expected a Queen, got {type(candidate).__name__} instead.")
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         queen = cast(Queen, candidate)
         id_validation = identity_service.validate_id(queen.id)
         if id_validation.is_failure:
@@ -510,7 +510,7 @@ class RankValiatorFactory(Validator[Rank]):
                     ex=id_validation.ex
                 )
             )
-        # Handle the case that some of the params do match a Queen's
+        # Handle the case that, some of the params do match a Queen's
         if (
                 queen.ransom != Persona.QUEEN.ransom or
                 queen.team_quota != Persona.QUEEN.quota or

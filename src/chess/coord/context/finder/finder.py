@@ -71,7 +71,7 @@ class CoordFinder(DataFinder[Coord]):
         """
         method = "CoordFinder.find"
         
-        # Handle the case that the dataset is null.
+        # Handle the case that, the dataset is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -80,7 +80,7 @@ class CoordFinder(DataFinder[Coord]):
                     ex=CoordDatasetNullException(f"{method}: {CoordDatasetNullException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the dataset is of the wrong type.
+        # Handle the case that, the dataset is of the wrong type.
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -89,7 +89,7 @@ class CoordFinder(DataFinder[Coord]):
                     ex=CoordSearchPayloadTypeException(f"{method}: {CoordSearchPayloadTypeException.DEFAULT_MESSAGE}")
                 )
             )
-        # handle the case that context fails integrity tests.
+        # handle the case that, context fails integrity tests.
         context_validation = context_validator.validate(context)
         if context_validation.is_failure:
             # Return the exception chain on failure.

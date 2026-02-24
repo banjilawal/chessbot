@@ -85,7 +85,7 @@ class BoardService(EntityService[Board]):
     def layout_board(self, board: Board) -> InsertionResult[bool]:
         method = "BoardService.layout_board"
         
-        # Handle the case that the board is not certified as safe.
+        # Handle the case that, the board is not certified as safe.
         validation = self.validator.validate(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
@@ -98,7 +98,7 @@ class BoardService(EntityService[Board]):
                     )
                 )
             )
-        # Handle the case that the board has already been laid out.
+        # Handle the case that, the board has already been laid out.
         if board.state == BoardState.HAS_TOKENS_LAID_OUT:
             # Return exception chain on failure
             return InsertionResult.failure(
@@ -116,7 +116,7 @@ class BoardService(EntityService[Board]):
         for key in board.team_hash.table.keys():
             deployment_result = board.team_hash.table[key].roster.deploy_tokens_on_board
             
-            # Handle the case that the team's deployment is not completed.
+            # Handle the case that, the team's deployment is not completed.
             if deployment_result.is_failure:
                 # Return the exception chain on failure.
                 return InsertionResult.failure(
@@ -133,7 +133,7 @@ class BoardService(EntityService[Board]):
     def generate_graph(self, board: Board) -> ComputationResult[Graph]:
         method = "BoardService.generate_graph"
     
-        # Handle the case that the board is not certified as safe.
+        # Handle the case that, the board is not certified as safe.
         validation = self.validator.validate(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure

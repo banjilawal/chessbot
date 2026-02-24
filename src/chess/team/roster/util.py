@@ -78,7 +78,7 @@ class RosterUtil:
         method = "TeamService.fill_team_roster"
         
         pre_update_team = deepcopy(team)
-        # Handle the case that the team is not certified safe.
+        # Handle the case that, the team is not certified safe.
         team_validation = team_validator.validate(candidate=team)
         if team_validation.is_failure:
             # Return exception chain on failure.
@@ -94,7 +94,7 @@ class RosterUtil:
             super_key=FormationKey(color=team.schema.color)
         )
         
-        # Handle the case that the formation lookup was not completed.
+        # Handle the case that, the formation lookup was not completed.
         if formation_lookup_result.is_failure:
             # Return exception chain on failure.
             return UpdateResult.update_failure(
@@ -118,7 +118,7 @@ class RosterUtil:
                 identity_service=self._identity_service,
                 formation_service=self._formation_service,
             )
-            # Handle the case that the occupant does not get built.
+            # Handle the case that, the occupant does not get built.
             if token_build_result.is_failure:
                 # Return exception chain on failure.
                 return UpdateResult.update_failure(
@@ -131,7 +131,7 @@ class RosterUtil:
             # --- The factory returns only instances of concrete tokens so don't cast during the insert.---#
             insertion_result = team.roster.insert(token=token_build_result.payload)
             
-            # Handle the case that the insertion was not completed.
+            # Handle the case that, the insertion was not completed.
             if insertion_result.is_failure:
                 # Return exception chain on failure.
                 return UpdateResult.update_failure(

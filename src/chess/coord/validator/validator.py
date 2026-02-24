@@ -60,7 +60,7 @@ class CoordValidator(Validator[Coord]):
         """
         method = "CoordValidator.validate"
         
-        # Handle the case that the candidate does not exist.
+        # Handle the case that, the candidate does not exist.
         if candidate is None:
             # Return the exception on failure.
             return ValidationResult.failure(
@@ -69,7 +69,7 @@ class CoordValidator(Validator[Coord]):
                     ex=NullCoordException(f"{method}: {NullCoordException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the candidate is the wrong type.
+        # Handle the case that, the candidate is the wrong type.
         if not isinstance(candidate, Coord):
             # Return the exception on failure.
             return ValidationResult.failure(
@@ -82,7 +82,7 @@ class CoordValidator(Validator[Coord]):
         # --- Cast candidate to a Coord for additional tests ---#
         coord = cast(Coord, candidate)
         
-        # Handle the case that coord.row is not an int between [0-7] inclusive.
+        # Handle the case that, coord.row is not an int between [0-7] inclusive.
         row_validation = number_validator.validate(floor=0, ceiling=NUMBER_OF_ROWS, candidate=coord.row)
         if row_validation.is_failure:
             # Return the exception on failure.
@@ -92,7 +92,7 @@ class CoordValidator(Validator[Coord]):
                     ex=row_validation.exception
                 )
             )
-        # Handle the case that coord.column is not an int between [0-7] inclusive.
+        # Handle the case that, coord.column is not an int between [0-7] inclusive.
         column_validation = number_validator.validate(floor=0, ceiling=NUMBER_OF_ROWS, candidate=coord.column)
         if row_validation.is_failure:
             # Return the exception on failure.

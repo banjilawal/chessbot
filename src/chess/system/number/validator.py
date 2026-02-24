@@ -85,7 +85,7 @@ class NumberValidator(Validator[int]):
             )
         # As a triple check cast the payload to an int for additional testing.
         number = cast(int, candidate)
-        # Handle the case that the number
+        # Handle the case that, the number
         if floor < 0:
             # Return the exception chain on failure.
             return ValidationResult.failure(

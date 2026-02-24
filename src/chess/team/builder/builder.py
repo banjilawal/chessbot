@@ -84,7 +84,7 @@ class TeamBuilder(Builder[Team]):
                     message=f"{method}: {TeamBuildException.ERROR_CODE}", ex=id_validation.exception
                 )
             )
-        # Handle the case schema certification fails.
+        # Handle the case schema is not certified as safe.
         schema_validation = schema_service.validator.validate(schema)
         if schema_validation.is_failure:
             # Return the exception chain on failure.
@@ -93,7 +93,7 @@ class TeamBuilder(Builder[Team]):
                     message=f"{method}: {TeamBuildException.ERROR_CODE}", ex=schema_validation.exception
                 )
             )
-        # Handle the case owner certification fails.
+        # Handle the case owner is not certified as safe.
         owner_validation = owner_service.validator.validate(owner)
         if owner_validation.is_failure:
             # Return the exception chain on failure.

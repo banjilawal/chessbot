@@ -72,7 +72,7 @@ class TeamFinder(DataFinder[Team]):
         """
         method = "TeamFinder.find"
         
-        # Handle the case that the dataset is null.
+        # Handle the case that, the dataset is null.
         if dataset is None:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -81,7 +81,7 @@ class TeamFinder(DataFinder[Team]):
                     ex=TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that dataset is the wrong type
+        # Handle the case that, dataset is the wrong type
         if not isinstance(dataset, List):
             # Return the exception chain on failure.
             return SearchResult.failure(

@@ -70,7 +70,7 @@ class EdgeBuilder(Builder[Edge]):
          """
          method = "EdgeBuilder.build"
          
-         # Handle the case that the id is not certified safe.
+         # Handle the case that, the id is not certified safe.
          id_validation = identity_service.validate_id(id)
          if id_validation.is_failure:
              # Return the exception chain on failure
@@ -80,7 +80,7 @@ class EdgeBuilder(Builder[Edge]):
                      ex=id_validation.exception
                  )
              )
-         # Handle the case that the head is not certified as a safe edge.
+         # Handle the case that, the head is not certified as a safe edge.
          head_validation = edge_validator.validate(candidate=head)
          if head_validation.is_failure:
              # Return the exception chain on failure
@@ -90,7 +90,7 @@ class EdgeBuilder(Builder[Edge]):
                      ex=head_validation.exception
                  )
              )
-         # Handle the case that the tail is not certified as a safe edge.
+         # Handle the case that, the tail is not certified as a safe edge.
          tail_validation = edge_validator.validate(candidate=tail)
          if tail_validation.is_failure:
              # Return the exception chain on failure
@@ -100,7 +100,7 @@ class EdgeBuilder(Builder[Edge]):
                      ex=tail_validation.exception
                  )
              )
-         # Handle the case that head and tail are the same.
+         # Handle the case that, head and tail are the same.
          if head == tail:
              # Return the exception chain on failure
              return BuildResult.failure(
@@ -114,7 +114,7 @@ class EdgeBuilder(Builder[Edge]):
              u=head.square.coord,
              v=tail.square.coord
          )
-         # Handle the case that the distance is not computed successfully.
+         # Handle the case that, the distance is not computed successfully.
          if distance_computation_result.is_failure:
              # Return the exception chain on failure
              return BuildResult.failure(

@@ -69,7 +69,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
         """
         method = "TokenCollisionDetector.detect"
         
-        # Handle the case that the target is not certified as safe.
+        # Handle the case that, the target is not certified as safe.
         validation_result = token_validator.validate(candidate=target)
         if validation_result.is_failure:
             # Return the exception chain on failure.

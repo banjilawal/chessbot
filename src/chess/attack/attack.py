@@ -35,7 +35,7 @@ class Attack:
     ) -> AttackResult:
         method = "Attack.execute"
         
-        # Handle the case that the attacker is disabled
+        # Handle the case that, the attacker is disabled
         attacker_validation = token_service.verify_actionable_token(token=attacker)
         if attacker_validation.is_failure:
             # Return exception chain on failure.
@@ -55,7 +55,7 @@ class Attack:
                     ex=square_validation.exception
                 )
             )
-        # Handle the case that the item is empty
+        # Handle the case that, the item is empty
         if square.is_empty:
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -64,7 +64,7 @@ class Attack:
                     ex=AttackingVacantSquareException(f"{method}: {AttackingVacantSquareException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the tokens are on different boards.
+        # Handle the case that, the tokens are on different boards.
         if attacker.team.board != square.occupant.team.board:
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -75,7 +75,7 @@ class Attack:
                     )
                 )
             )
-        # Handle the case that the item is occupied by a friend.
+        # Handle the case that, the item is occupied by a friend.
         if not attacker.is_enemy(square.occupant):
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -86,7 +86,7 @@ class Attack:
                     )
                 )
             )
-        # Handle the case that the enemy king is occupying the item.
+        # Handle the case that, the enemy king is occupying the item.
         if isinstance(square.occupant, KingToken):
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -95,7 +95,7 @@ class Attack:
                     ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the enemy combatant, occupying the item, is already disabled.
+        # Handle the case that, the enemy combatant, occupying the item, is already disabled.
         if square.occupant.is_disabled:
             # Return the exception chain on failure.
             return AttackResult.failure(
@@ -131,7 +131,7 @@ class Attack:
         """"""
         method = "Attack._process_attack"
         
-        # Handle the case that removing the captive from their item fails.
+        # Handle the case that, removing the captive from their item fails.
         captive_removal = square_database.delete_occupant_by_search(square.occupant)
         if captive_removal.is_failure:
             # Return exception chain on failure.
@@ -147,7 +147,7 @@ class Attack:
         prisoner.board_state = TokenBoardState.REMOVED_FROM_BOARD
         prisoner.activity.classification = CombatantReadinessEnum.CAPTURE_ACTIVATED
         
-        # Handle the case that removing the attacker from their old item fails.
+        # Handle the case that, removing the attacker from their old item fails.
         attacker_removal = square_database.delete_occupant_by_search(occupant=attacker)
         if attacker_removal.is_failure:
             # Return exception chain on failure.
@@ -157,7 +157,7 @@ class Attack:
                     ex=attacker_removal.exception
                 )
             )
-        # Handle the case that the transferring the attacker to their conquered item fails.
+        # Handle the case that, the transferring the attacker to their conquered item fails.
         add_occupant_result = square_database.add_occupant_to_square(square=square, occupant=attacker)
         if add_occupant_result.is_failure:
             # Return exception chain on failure.
@@ -175,7 +175,7 @@ class Attack:
             token_service=token_service,
             square_service=square_database.integrity_service,
         )
-        # Handle the case that the manifest bui;d failed.
+        # Handle the case that, the manifest bui;d failed.
         if manifest_build_result.is_failure:
             # Return the exception chain on failure.
             return AttackResult.failure(

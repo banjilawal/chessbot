@@ -89,7 +89,7 @@ class NodeValidator(Validator[Node]):
         # --- Cast the candidate to an Node for additional tests ---#
         node = cast(candidate, Node)
         
-        # Handle the case that the square is not valid.
+        # Handle the case that, the square is not valid.
         square_validation_result = square_validator.validate(node.square)
         if square_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -99,7 +99,7 @@ class NodeValidator(Validator[Node]):
                     ex=square_validation_result.exception
                 )
             )
-        # Handle the case that the incoming_nodes is not a list of nodes.
+        # Handle the case that, the incoming_nodes is not a list of nodes.
         if not isinstance(node.incoming_nodes, List):
             # Return the exception chain on failure.
             ValidationResult.failure(
@@ -111,7 +111,7 @@ class NodeValidator(Validator[Node]):
                     )
                 )
             )
-        # Handle the case that the outgoing_nodes is not a list of nodes.
+        # Handle the case that, the outgoing_nodes is not a list of nodes.
         if not isinstance(node.outgoing_nodes, List):
             # Return the exception chain on failure.
             ValidationResult.failure(
@@ -135,7 +135,7 @@ class NodeValidator(Validator[Node]):
                     )
                 )
             )
-        # Handle the case that the priority is not a number
+        # Handle the case that, the priority is not a number
         priority_validation_result = number_validator.validate(node.priority)
         if priority_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -145,7 +145,7 @@ class NodeValidator(Validator[Node]):
                     ex=priority_validation_result.exception
                 )
             )
-        # Handle the case that the DiscoveryStatus does not exist
+        # Handle the case that, the DiscoveryStatus does not exist
         if node.discovery_status is None:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -156,7 +156,7 @@ class NodeValidator(Validator[Node]):
                     )
                 )
             )
-        # Handle the case that the DiscoveryStatus is the wrong type
+        # Handle the case that, the DiscoveryStatus is the wrong type
         if not isinstance(node.discovery_status, DiscoveryStatus):
             # Return the exception chain on failure.
             return ValidationResult.failure(

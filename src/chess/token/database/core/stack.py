@@ -155,7 +155,7 @@ class TokenStack(StackService[Token]):
         """
         method = "TokenStack.push"
         
-        # Handle the case that the list is full.
+        # Handle the case that, the list is full.
         if self.is_full:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -229,7 +229,7 @@ class TokenStack(StackService[Token]):
         """
         method = "TokenStack.pop"
         
-        # Handle the case that there are no tokens in the stack.
+        # Handle the case that, there are no tokens in the stack.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -279,7 +279,7 @@ class TokenStack(StackService[Token]):
         """
         method = "TokenStack.delete_by_id"
         
-        # Handle the case that there are no items in the list.
+        # Handle the case that, there are no items in the list.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -293,7 +293,7 @@ class TokenStack(StackService[Token]):
                     )
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -348,7 +348,7 @@ class TokenStack(StackService[Token]):
         # --- Handoff the search responsibility to _context_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
-        # Handle the case that the search is not completed.
+        # Handle the case that, the search is not completed.
         if query_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

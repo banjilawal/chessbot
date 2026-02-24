@@ -65,7 +65,7 @@ class DiagonalRay:
         j = (2 * slope * i) + slope
         previous_square = None
         while i < end_x and j < end_y:
-            # Handle the case that the coord is not built.
+            # Handle the case that, the coord is not built.
             build_result = coord_service.builder.build(row=j, column=i)
             # Return the exception chain on failure.
             if build_result.is_failure:

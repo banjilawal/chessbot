@@ -88,7 +88,7 @@ class Bishop(Rank):
             origin=token.current_position,
             coord_service=self.coord_service
         )
-        # Handle the case that spanning set computation does not produce a solution.
+        # Handle the case that, spanning set computation does not produce a solution.
         if computation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
@@ -108,7 +108,7 @@ class Bishop(Rank):
         graph = Graph(id=id_factory.next_id(class_name="Graph"))
         span_computation_result = self.compute_span(token=token)
         
-        # Handle the case that the spanning set computation does not produce a solution.
+        # Handle the case that, the spanning set computation does not produce a solution.
         if span_computation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(
@@ -127,7 +127,7 @@ class Bishop(Rank):
             square_u_search_result = token.board.squares.search(
                 context=SquareContext(coord=span_computation_result.payload[i])
             )
-            # Handle the case that the square_u search was not completed.
+            # Handle the case that, the square_u search was not completed.
             if square_u_search_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
@@ -142,7 +142,7 @@ class Bishop(Rank):
             square_v_search_result = token.board.squares.search(
                 context=SquareContext(coord=span_computation_result.payload[i])
             )
-            # Handle the case that the square_u search was not completed.
+            # Handle the case that, the square_u search was not completed.
             if square_v_search_result.is_failure:
                 # Return the exception chain on failure.
                 return ComputationResult.failure(

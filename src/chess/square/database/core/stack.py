@@ -149,7 +149,7 @@ class SquareStackService(StackService[Square]):
         """
         method = "SquareStackService.add_square"
         
-        # Handle the case that there is no capacity for adding another square.
+        # Handle the case that, there is no capacity for adding another square.
         available_capacity_computation_result = self._util.stats_analyzer.available_capacity(stack=self)
         if available_capacity_computation_result.is_failure:
             # Return the exception chain on failure
@@ -200,7 +200,7 @@ class SquareStackService(StackService[Square]):
         """
         method = "SquareStackService.pop"
         
-        # Handle the case that there are no tokens in the stack.
+        # Handle the case that, there are no tokens in the stack.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -246,7 +246,7 @@ class SquareStackService(StackService[Square]):
         """
         method = "SquareStackService.delete_by_id"
         
-        # Handle the case that there are no items in the list.
+        # Handle the case that, there are no items in the list.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -260,7 +260,7 @@ class SquareStackService(StackService[Square]):
                     )
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -313,7 +313,7 @@ class SquareStackService(StackService[Square]):
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
-        # Handle the case that the search is not completed.
+        # Handle the case that, the search is not completed.
         if query_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

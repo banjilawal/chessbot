@@ -67,7 +67,7 @@ class PerpendicularSpan:
         """
         method = "PerpendicularSpan.compute"
         
-        # Handle the case that the coord is not certified safe.
+        # Handle the case that, the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
         if coord_validation.is_failure:
             # On failure return the exception chain
@@ -89,7 +89,7 @@ class PerpendicularSpan:
             y_step=0,
             span=points,
         )
-        # Handle the case that the eastern ray computation does not produce a solution.
+        # Handle the case that, the eastern ray computation does not produce a solution.
         if east_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -108,7 +108,7 @@ class PerpendicularSpan:
             y_step=0,
             span=east_ray_result.payload,
         )
-        # Handle the case that the western ray computation does not produce a solution.
+        # Handle the case that, the western ray computation does not produce a solution.
         if horizontal_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -129,7 +129,7 @@ class PerpendicularSpan:
             y_step=-1,
             span=horizontal_span,
         )
-        # Handle the case that the northern ray computation does not produce a solution.
+        # Handle the case that, the northern ray computation does not produce a solution.
         if span_subset_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -148,7 +148,7 @@ class PerpendicularSpan:
             y_step=-1,
             span=span_subset_result.payload
         )
-        # Handle the case that the southern ray computation does not produce a solution.
+        # Handle the case that, the southern ray computation does not produce a solution.
         if perpendicular_span_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(

@@ -184,7 +184,7 @@ class RelationReport(Result[P, S], Generic[P, S]):
                                                             satellite=satellite,
                                                             relation_status=RelationStatus.BIDIRECTIONAL,
                                                         )
-```this is is the relationreport the problem is this works for a one-to-many perfectly however like between a bidirectioonal square-tokn binding where it does not work  se SquareTokenRelationReport shows the problem
+```this is the relationreport the problem is this works for a one-to-many perfectly however like between a bidirectioonal square-tokn binding where it does not work  se SquareTokenRelationReport shows the problem
 ```python
 class SquareTokenRelationReport(RelationReport[Square, Token]):
 

@@ -95,7 +95,7 @@ class RosterDeployer:
         """
         method = "RosterDeployer.form_team"
         
-        # Handle the case that the occupant is not certified safe.
+        # Handle the case that, the occupant is not certified safe.
         team_validation = team_service.validator.validate(candidate=team)
         if team_validation.is_failure:
             # Return the exception chain on failure.
@@ -109,7 +109,7 @@ class RosterDeployer:
                     )
                 )
             )
-        # Handle the case that the team has already been deployed
+        # Handle the case that, the team has already been deployed
         if team.roster.is_deployed_on_board:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
@@ -124,7 +124,7 @@ class RosterDeployer:
                     )
                 )
             )
-        # Handle the case that the team is not at full strength.
+        # Handle the case that, the team is not at full strength.
         if team.roster.size < Team.MAX_ROSTER_SIZE:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
@@ -145,7 +145,7 @@ class RosterDeployer:
             # Find the roster member's opening square.
             token_search_result = team.roster.search(context=TokenContext(opening_square=square))
             
-            # Handle the case that the search is not completed.
+            # Handle the case that, the search is not completed.
             if token_search_result.is_failure:
                 # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
                 return UpdateResult.update_failure(
@@ -164,7 +164,7 @@ class RosterDeployer:
                 token=token_search_result.payload[0]
             )
             
-            # Handle the case that the occupation fails.
+            # Handle the case that, the occupation fails.
             if square_update_result.is_failure:
                 # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
                 return UpdateResult.update_failure(
@@ -179,7 +179,7 @@ class RosterDeployer:
                 )
         # --- After the deployment loop has finished perform clean up tasks.---#
         
-        # Handle the case that at least one token was not deployed.
+        # Handle the case that, at least one token was not deployed.
         if not team.roster.is_empty:
             # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
             return UpdateResult.update_failure(

@@ -74,7 +74,7 @@ class TeamHashValidator(Validator[TeamHash]):
         # --- Cast the candidate to a TeamHash for additional tests ---#
         hash = cast(TeamHash, candidate)
         
-        # Handle the case that the white team is not certified as safe.
+        # Handle the case that, the white team is not certified as safe.
         white_team_validation_result = team_validator.validate(hash.white_team)
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -84,7 +84,7 @@ class TeamHashValidator(Validator[TeamHash]):
                     ex=white_team_validation_result.exception
                 )
             )
-        # Handle the case that the black team is not certified as safe.
+        # Handle the case that, the black team is not certified as safe.
         black_team_validation_result = team_validator.validate(hash.black_team)
         if black_team_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -94,7 +94,7 @@ class TeamHashValidator(Validator[TeamHash]):
                     ex=black_team_validation_result.exception
                 )
             )
-        # Handle the case that the white team does not have a white schema.
+        # Handle the case that, the white team does not have a white schema.
         if hash.white_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -105,7 +105,7 @@ class TeamHashValidator(Validator[TeamHash]):
                     )
                 )
             )
-        # Handle the case that the black team does not have a black schema.
+        # Handle the case that, the black team does not have a black schema.
         if hash.black_team.schema != schema_service.schema.BLACK:
             # Return the exception chain on failure.
             return ValidationResult.failure(

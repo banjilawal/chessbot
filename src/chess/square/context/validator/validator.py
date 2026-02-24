@@ -57,7 +57,7 @@ class SquareContextValidator(Validator[SquareContext]):
             1.  If the candidate fails either
                     *   A null check.
                     *   A type check.
-                Ssend an exception chain in the ValidationResult. Else, cast candidate to SquareContext
+                Send an exception chain in the ValidationResult. Else, cast candidate to SquareContext
                 instance context.
             2.  Send an exception chain in the ValidationResult if either
                     *   The id
@@ -66,7 +66,7 @@ class SquareContextValidator(Validator[SquareContext]):
                     *   The state
                     *   The board
                     *   The occupant
-                are not certified as safe by their services, or there is no validation
+                are is not certified as safe by their services, or there is no validation
                 route for the context.
             3.  The context has been certified as safe, send the validation success result.
         # PARAMETERS:

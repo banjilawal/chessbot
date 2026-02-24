@@ -79,7 +79,7 @@ class DiagonalSpan:
         """
         method = "DiagonalSpan.compute"
         
-        # Handle the case that the coord is not certified safe.
+        # Handle the case that, the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
         if coord_validation.is_failure:
             # On failure return the exception chain
@@ -100,7 +100,7 @@ class DiagonalSpan:
             slope=1,
             span=domain,
         )
-        # Handle the case that the northwestern computation does not produce a solution.
+        # Handle the case that, the northwestern computation does not produce a solution.
         if north_west_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -117,7 +117,7 @@ class DiagonalSpan:
             end_y=0,
             slope=1, span=north_west_ray_result.payload,
         )
-        # Handle the case that the northeastern ray computation does not produce a solution.
+        # Handle the case that, the northeastern ray computation does not produce a solution.
         if northern_ray_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -137,7 +137,7 @@ class DiagonalSpan:
             slope=-1,
             span=northern_span,
         )
-        # Handle the case that the southwest ray computation does not produce a solution.
+        # Handle the case that, the southwest ray computation does not produce a solution.
         if span_subset_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -155,7 +155,7 @@ class DiagonalSpan:
             slope=-1,
             span=span_subset_result.payload,
         )
-        # Handle the case that the southeastern ray computation does not produce a solution.
+        # Handle the case that, the southeastern ray computation does not produce a solution.
         if diagonal_span_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(

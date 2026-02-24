@@ -103,7 +103,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         params = [id, designation, team, rank, ransom, coord, color]
         param_count = sum(bool(p) for p in params)
         
-        # Handle the case that all the optional params are null.
+        # Handle the case that, all the optional params are null.
         if param_count == 0:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -112,7 +112,7 @@ class TokenContextBuilder(Builder[TokenContext]):
                     ex=ZeroTokenContextFlagsException(f"{method}: {ZeroTokenContextFlagsException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that more than one optional param is not-null.
+        # Handle the case that, more than one optional param is not-null.
         if param_count > 1:
             # Return the exception chain on failure.
             return BuildResult.failure(

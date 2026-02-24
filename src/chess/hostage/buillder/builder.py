@@ -80,7 +80,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
         """
         method = "HostageBuilder.build"
         
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         id_validation = identity_service.validate_id(candidate=id)
         if id_validation.failure:
             # Send the exception chain on failure
@@ -90,7 +90,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that the captured_square is not certified safe.
+        # Handle the case that, the captured_square is not certified safe.
         captured_square_validation = square_service.validator.validate(candidate=captured_square)
         if captured_square_validation.failure:
             # Send the exception chain on failure
@@ -100,7 +100,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     ex=captured_square_validation.exception
                 )
             )
-        # Handle the case that the captured_square is empty
+        # Handle the case that, the captured_square is empty
         if captured_square.is_empty:
             # Send the exception chain on failure
             return BuildResult.failure(
@@ -115,7 +115,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
 
         # --- Perform the prisoner prebuild tests that are independent of the victor. ---#
         
-        # Handle the case that the prisoner is not a safe combatant.
+        # Handle the case that, the prisoner is not a safe combatant.
         prisoner_is_combatant_validation = token_service.validator.verify_token_is_combatant(
             candidate=prisoner
         )
@@ -127,7 +127,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     ex=prisoner_is_combatant_validation.exception
                 )
             )
-        # Handle the case that the prisoner is still active:
+        # Handle the case that, the prisoner is still active:
         if prisoner.is_active:
             # Send the exception chain on failure
             return BuildResult.failure(
@@ -138,7 +138,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that prisoner already has a manifest.
+        # Handle the case that, prisoner already has a manifest.
         if prisoner.has_hostage_manifest:
             # Send the exception chain on failure
             return BuildResult.failure(
@@ -149,7 +149,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that the prisoner was capture on a different item.
+        # Handle the case that, the prisoner was capture on a different item.
         if prisoner.current_position != captured_square.coord:
             # Send the exception chain on failure
             return BuildResult.failure(
@@ -160,7 +160,7 @@ class HostageManifestBuilder(Builder[HostageManifest]):
                     )
                 )
             )
-        # Handle the case that the victor did not capture the prisoner
+        # Handle the case that, the victor did not capture the prisoner
         if prisoner.captor != captured_square.occupant:
             # Send the exception chain on failure
             return BuildResult.failure(

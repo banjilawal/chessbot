@@ -12,7 +12,7 @@ from chess.board import Board, BoardService, SquareOnDifferentBoardException
 from chess.coord import CoordService
 from chess.square import (
     NullSquareStateException, Square, SquareDataSourceEmptyException, SquareDataSourceNullException,
-    SquareNotSubmittedBoardRegistrationException,
+    SquareNotRegisteredBoardException,
     SquareState,
     SquareValidationException, NullSquareException,
 )
@@ -56,7 +56,6 @@ class SquareValidator(Validator[Square]):
     # INHERITED METHODS:
     None
     """
-    
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
@@ -71,13 +70,13 @@ class SquareValidator(Validator[Square]):
             1.  If the candidate fails either
                     *   A null check.
                     *   A type check.
-                Ssend an exception chain in the ValidationResult. Else, cast candidate to Square instance square.
+                Send an exception chain in the ValidationResult. Else, cast candidate to Square instance square.
             2.  Send an exception chain in the ValidationResult if either
                     *   The id
                     *   The name
                     *   The coord
                     *   The state
-                are not certified as safe by their services.
+                are is not certified as safe by their services.
             3.  The square has been certified as safe, send the validation success result.
         # PARAMETERS:
             *   candidate (Any)
@@ -116,7 +115,7 @@ class SquareValidator(Validator[Square]):
         # --- Cast candidate to a Square for additional tests. ---#
         square = cast(Square, candidate)
         
-        # Handle the case that, square.id or square.name certification fails.
+        # Handle the case that, square.id or square.name is not certified as safe.
         identity_validation = identity_service.validate_identity(
             id_candidate=square.id,
             name_candidate=square.name
@@ -149,7 +148,7 @@ class SquareValidator(Validator[Square]):
                     ex=board_verification.exception
                 )
             )
-        # --- On certification successes send the square instance in the ValidationResult. ---#
+        # --- On certification successes send the square in the ValidationResult. ---#
         return ValidationResult.success(payload=square)
     
     @classmethod
@@ -221,7 +220,7 @@ class SquareValidator(Validator[Square]):
         """
         method = "SquareValidator._validate_board"
         
-        # Handle the case that, square.board certification fails.
+        # Handle the case that, square.board is not certified as safe.
         board_square_relation = board_service.board_square_relation_analyzer.analyze(
             candidate_primary=square.board,
             candidate_satellite=square,
@@ -252,8 +251,8 @@ class SquareValidator(Validator[Square]):
             return ValidationResult.failure(
                 SquareValidationException(
                     message=f"{method}: {SquareValidationException.ERROR_CODE}",
-                    ex=SquareNotSubmittedBoardRegistrationException(
-                        f"{method}: {SquareNotSubmittedBoardRegistrationException.DEFAULT_MESSAGE}"
+                    ex=SquareNotRegisteredBoardException(
+                        f"{method}: {SquareNotRegisteredBoardException.DEFAULT_MESSAGE}"
                     )
                 )
             )

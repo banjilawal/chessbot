@@ -10,20 +10,19 @@ version: 1.0.0
 from chess.team import TeamDebugException
 from chess.system import NotRegisteredException
 
-
 __all__ = [
-    # ======================# TEAM_NOT_REGISTERED_WITH_OWNER EXCEPTION #======================#
-    "TeamNotRegisteredOwnerException",
+    # ======================# TEAM_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
+    "TeamNotRegisteredBoardException",
 ]
 
 
-#======================# TEAM_NOT_REGISTERED_WITH_OWNER EXCEPTION #======================#
-class TeamNotRegisteredOwnerException(TeamDebugException, NotRegisteredException):
+# ======================# TEAM_NOT_REGISTERED_WITH_BOARD EXCEPTION #======================#
+class TeamNotRegisteredBoardException(TeamDebugException, NotRegisteredException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failing ValidationResult was returned because the candidate tteam had not registered with its owner.
+    1.  A failing ValidationResult was returned because the candidate tteam had not registered with its board.
 
     # PARENT:
         *   TeamDebugException
@@ -38,5 +37,6 @@ class TeamNotRegisteredOwnerException(TeamDebugException, NotRegisteredException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_OWNER_ERROR"
-    DEFAULT_MESSAGE = "Team validation failed: The candidate team had not registered with its owner."
+    ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_BOARD_ERROR"
+    DEFAULT_MESSAGE = "Team validation failed: The candidate team had not registered with its board."
+

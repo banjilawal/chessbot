@@ -96,7 +96,7 @@ class EdgeValidator(Validator[Edge]):
         # --- Cast the candidate to an Edge for additional tests. ---#
         edge = cast(candidate, Edge)
         
-        # Handle the case that the label is not certified as safe
+        # Handle the case that, the label is not certified as safe
         label_validation_result = identity_service.validate_id(edge.id)
         # Return the exception chain on failure.
         if label_validation_result.is_failure:
@@ -106,7 +106,7 @@ class EdgeValidator(Validator[Edge]):
                     ex=label_validation_result.exception
                 )
             )
-        # Handle the case that the distance is not at between 0 and the board's diagonal.
+        # Handle the case that, the distance is not at between 0 and the board's diagonal.
         distance_validation_result = number_validator.validate(
             candidate=edge.distance,
             floor=0,
@@ -124,7 +124,7 @@ class EdgeValidator(Validator[Edge]):
                     )
                 )
             )
-        # Handle the case that the heuristic is not a number.
+        # Handle the case that, the heuristic is not a number.
         heuristic_validation_result = number_validator.validate(
             candidate=edge.heuristic,
             # Heuristic is probably going to be distance and the max ransom (the king's).
@@ -142,7 +142,7 @@ class EdgeValidator(Validator[Edge]):
                     )
                 )
             )
-        # Handle the case that the weight is not a number.
+        # Handle the case that, the weight is not a number.
         weight_validation_result = number_validator.validate(
             candidate=edge.weight,
             ceiling=sys.maxsize,
@@ -159,7 +159,7 @@ class EdgeValidator(Validator[Edge]):
                     )
                 )
             )
-        # Handle the case that the head is not certified as a safe node.
+        # Handle the case that, the head is not certified as a safe node.
         head_validation_result = node_validator.validate(edge.head)
         if head_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -169,7 +169,7 @@ class EdgeValidator(Validator[Edge]):
                     ex=head_validation_result.exception
                 )
             )
-        # Handle the case that the tail is not certified as a safe node.
+        # Handle the case that, the tail is not certified as a safe node.
         tail_validation_result = node_validator.validate(edge.head)
         if tail_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -179,7 +179,7 @@ class EdgeValidator(Validator[Edge]):
                     ex=tail_validation_result.exception
                 )
             )
-        # Handle the case that head and tail are the same.
+        # Handle the case that, head and tail are the same.
         if edge.head == edge.tail:
             # Return the exception chain on failure
             return ValidationResult.failure(

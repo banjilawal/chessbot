@@ -82,7 +82,7 @@ class Queen(Rank):
             orgin=token.current_position,
             coord_service=self.coord_service,
         )
-        # Handle the case that the perpendicular spanning set computation does not produce a solution.
+        # Handle the case that, the perpendicular spanning set computation does not produce a solution.
         if perpendicular_result.is_failure:
             return ComputationResult.failure(
                 QueenException(
@@ -99,7 +99,7 @@ class Queen(Rank):
             orgin=token.current_position,
             coord_service=self.coord_service,
         )
-        # Handle the case that the diagonal spanning set computation does not produce a solution.
+        # Handle the case that, the diagonal spanning set computation does not produce a solution.
         if diagonal_result.is_failure:
             return ComputationResult.failure(
                 QueenException(

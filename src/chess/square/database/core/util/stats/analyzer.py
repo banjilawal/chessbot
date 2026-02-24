@@ -35,7 +35,7 @@ class SquareStackAnalyzer:
         """
         method = "SquareStackService.occupied_square_count"
         
-        # Handle the case that the stack is null
+        # Handle the case that, the stack is null
         if squares is None:
             # Send the exception chain on failure.
             return ComputationResult.failure(
@@ -65,7 +65,7 @@ class SquareStackAnalyzer:
         """
         method = "SquareStackService.occupied_square_count"
         
-        # Handle the case that the stack is null
+        # Handle the case that, the stack is null
         if squares is None:
             # Send the exception chain on failure.
             return ComputationResult.failure(
@@ -95,7 +95,7 @@ class SquareStackAnalyzer:
         """
         method = "SquareStackService.occupied_square_count"
         
-        # Handle the case that the stack is null
+        # Handle the case that, the stack is null
         if stack is None:
             # Send the exception chain on failure.
             return ComputationResult.failure(
@@ -103,7 +103,7 @@ class SquareStackAnalyzer:
             )
         
         available_capacity = stack.capacity - stack.size
-        # Handle the case that no more squares can be added to the stack
+        # Handle the case that, no more squares can be added to the stack
         if available_capacity < 1:
             # Send the exception chain on failure.
             return ComputationResult.failure(

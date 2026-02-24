@@ -21,7 +21,7 @@ class SquareException(SuperClassException):
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    Layer-0 of Exception chain which is the Parent of SquareDebugException
+    1.  Layer-0 of Exception chain which is the Parent of SquareDebugException
 
     # PARENT:
         *   SuperClassException

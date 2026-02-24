@@ -77,7 +77,7 @@ class Pawn(Rank):
         """
         method = "Pawn.spanning_set_dictionary"
         #
-        # # Handle the case that the occupant is either neither safe nor actionable.
+        # # Handle the case that, the occupant is either neither safe nor actionable.
         # actionable_token_verification_result = token_service.verify_token_is_actionable(occupant=occupant)
         # if actionable_token_verification_result.is_failure:
         #     # Return the exception chain on failure.
@@ -87,7 +87,7 @@ class Pawn(Rank):
         #             ex=actionable_token_verification_result.exception
         #         )
         #     )
-        # Handle the case that the occupant is not a Pawn
+        # Handle the case that, the occupant is not a Pawn
         if not isinstance(token, PawnToken):
             return ComputationResult.failure(
                 PawnSpanComputationException(
@@ -102,7 +102,7 @@ class Pawn(Rank):
         # Get the peaceful destinations
         destination_result = self._compute_peaceful_span(token=token)
         
-        # Handle the case that the computation does not produce a solution.
+        # Handle the case that, the computation does not produce a solution.
         if destination_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -112,7 +112,7 @@ class Pawn(Rank):
                 )
             )
         targeting_result = self._compute_attack_span(token=token)
-        # Handle the case that the computation does not produce a solution.
+        # Handle the case that, the computation does not produce a solution.
         if targeting_result.is_failure:
             # On failure return the exception chain
             return ComputationResult.failure(
@@ -214,7 +214,7 @@ class Pawn(Rank):
             
         
         
-        # Handle the case that the coord is not certified safe.
+        # Handle the case that, the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=token.current_position)
         if coord_validation.is_failure:
             # On failure return the exception chain
@@ -228,7 +228,7 @@ class Pawn(Rank):
         # Iterate through the vectors, adding each one to the origin to get the Pawn's spanning set.
         span: List[Coord] = []
         for vector in self.vectors:
-            # Handle the case that the computation does not produce a solution.
+            # Handle the case that, the computation does not produce a solution.
             result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
             # Return the exception chain on failure.
             if result.is_failure:

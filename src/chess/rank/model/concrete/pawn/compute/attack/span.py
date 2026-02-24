@@ -106,7 +106,7 @@ class PawnAttackSpan:
         """
         method = "PawnAttackSpan._span_helper"
         
-        # Handle the case that the coord is not certified safe.
+        # Handle the case that, the coord is not certified safe.
         coord_validation = coord_service.validator.validate(candidate=origin)
         if coord_validation.is_failure:
             # On failure return the exception chain
@@ -121,7 +121,7 @@ class PawnAttackSpan:
         for vector in attack_vectors:
             addition_result = coord_service.add_vector_to_coord(coord=origin, vector=vector)
             
-            # Handle the case that vector addition does not produce a result.
+            # Handle the case that, vector addition does not produce a result.
             if addition_result.is_failure:
                 # On failure return the exception chain
                 return ComputationResult.failure(

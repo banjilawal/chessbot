@@ -98,7 +98,7 @@ class TokenVisitHandler:
         """
         method = "SquareService.add_occupant"
         
-        # Handle the case that the item is not certified safe.
+        # Handle the case that, the item is not certified safe.
         square_validation = square_validator.validate(candidate=square)
         if square_validation.is_failure:
             # Return the exception chain on failure.
@@ -115,7 +115,7 @@ class TokenVisitHandler:
         # --- Make a deep copy of the square for the original field, after its validated. ---#
         pre_update_square = deepcopy(square)
         
-        # Handle the case that the square is already occupied.
+        # Handle the case that, the square is already occupied.
         if square.is_occupied:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
@@ -130,7 +130,7 @@ class TokenVisitHandler:
                     )
                 )
             )
-        # Handle the case that the token is not certified safe.
+        # Handle the case that, the token is not certified safe.
         token_validation = self._token_service.validator.validate(candidate=token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
@@ -144,7 +144,7 @@ class TokenVisitHandler:
                     )
                 )
             )
-        # Handle the case that the token belongs to a different board
+        # Handle the case that, the token belongs to a different board
         if token.team.board != square.board:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
@@ -159,7 +159,7 @@ class TokenVisitHandler:
                     )
                 )
             )
-        # Handle the case that the occupant is disabled
+        # Handle the case that, the occupant is disabled
         if token.is_disabled:
             # Return the exception chain on failure.
             return UpdateResult.update_failure(
@@ -174,7 +174,7 @@ class TokenVisitHandler:
                     )
                 )
             )
-        # Handle the case that an unformed token is trying to start from the wrong square.
+        # Handle the case that, an unformed token is trying to start from the wrong square.
         if token.is_not_deployed:
             validate_token_opening_square_result = self._verify_token_opens_from_square(
                 square=square,
@@ -283,7 +283,7 @@ class TokenVisitHandler:
         """
         method = "TokenVisitHandler._verify_token_forms_on_square"
         
-        # Handle the case that the occupant belongs to a different square.
+        # Handle the case that, the occupant belongs to a different square.
         if target.name.upper() != visitor.opening_square_name.upper():
             # Return the exception chain on failure.
             return ValidationResult.failure(

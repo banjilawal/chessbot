@@ -77,12 +77,12 @@ class GameContextValidator(Validator[GameContext]):
         """
         method = "GameContextValidator.validate"
         try:
-            # Handle the case that the candidate does not exist.
+            # Handle the case that, the candidate does not exist.
             if candidate is None:
                 return ValidationResult.failure(
                     NullGameContextException(f"{method}: {NullGameContextException.DEFAULT_MESSAGE}")
                 )
-            # Handle the case that the candidate is not a GameContext.
+            # Handle the case that, the candidate is not a GameContext.
             if not isinstance(candidate, GameContext):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected GameContext, got {type(candidate).__name__} instead.")
@@ -90,12 +90,12 @@ class GameContextValidator(Validator[GameContext]):
             # After existence and type checks cast the candidate for further processing.
             context = cast(GameContext, candidate)
             
-            # Handle the case that no attribute-value tuple is enabled.
+            # Handle the case that, no attribute-value tuple is enabled.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.DEFAULT_MESSAGE}")
                 )
-            # Handle the case that more than one attribute-value tuple is enabled.
+            # Handle the case that, more than one attribute-value tuple is enabled.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
                     ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException.DEFAULT_MESSAGE}")

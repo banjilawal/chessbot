@@ -105,7 +105,7 @@ class SquareFinder(StackSearcher[Square]):
                     ex=dataset_validation_result.exception
                 )
             )
-        # Handle the case that the context fails validation.
+        # Handle the case that, the context fails validation.
         context_validation_result = context_validator.validate(context)
         if context_validation_result.is_failure:
             # Return the exception chain on failure.

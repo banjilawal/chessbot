@@ -38,4 +38,4 @@ class TeamDebugException(TeamException, DebugException):
      None
     """
     ERROR_CODE = "TEAM_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A team debug error occurred."
+    DEFAULT_MESSAGE = "A TeamDebugException was raised."

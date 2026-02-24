@@ -30,7 +30,7 @@ class TeamHashBuilder(Builder[TeamHash]):
     ) -> BuildResult[TeamHash]:
         method = "TeamHashBuilder.build"
         
-        # Handle the case that the white_team is not certified as safe.
+        # Handle the case that, the white_team is not certified as safe.
         white_team_validation_result = team_validator.validate(white_team)
         if white_team_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -40,7 +40,7 @@ class TeamHashBuilder(Builder[TeamHash]):
                     ex=white_team_validation_result.exception
                 )
             )
-        # Handle the case that the white_team's schema is wrong.
+        # Handle the case that, the white_team's schema is wrong.
         if white_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
             return BuildResult.failure(
@@ -51,7 +51,7 @@ class TeamHashBuilder(Builder[TeamHash]):
                     )
                 )
             )
-        # Handle the case that the black_team's schema is wrong.
+        # Handle the case that, the black_team's schema is wrong.
         if black_team.schema != schema_service.schema.WHITE:
             # Return the exception chain on failure.
             return BuildResult.failure(

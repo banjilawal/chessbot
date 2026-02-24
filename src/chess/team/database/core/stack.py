@@ -114,7 +114,7 @@ class TeamStack(StackService[Team]):
         """
         method = "TeamStack.push"
         
-        # Handle the case that the team is unsafe.
+        # Handle the case that, the team is unsafe.
         validation = self.integrity_service.validator.validate(candidate=item)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -127,7 +127,7 @@ class TeamStack(StackService[Team]):
                     )
                 )
             )
-        # Handle the case that the team is already present in the stack.
+        # Handle the case that, the team is already present in the stack.
         if item in self._stack:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -164,7 +164,7 @@ class TeamStack(StackService[Team]):
         """
         method = "TeamStack.pop"
         
-        # Handle the case that there are no items in the list.
+        # Handle the case that, there are no items in the list.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -204,7 +204,7 @@ class TeamStack(StackService[Team]):
         """
         method = "TeamStack.delete_by_id"
         
-        # Handle the case that there are no items in the list.
+        # Handle the case that, there are no items in the list.
         if self.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -218,7 +218,7 @@ class TeamStack(StackService[Team]):
                     )
                 )
             )
-        # Handle the case that the id is not certified safe.
+        # Handle the case that, the id is not certified safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Return the exception chain on failure.
@@ -234,7 +234,7 @@ class TeamStack(StackService[Team]):
         # --- Search the list for an item with target id. ---#
         for item in self._stack:
             if item.id == id:
-                # Handle the case that the match is the wrong type.
+                # Handle the case that, the match is the wrong type.
                 if not isinstance(item, Team):
                     # Return the exception chain on failure.
                     return DeletionResult.failure(
@@ -282,7 +282,7 @@ class TeamStack(StackService[Team]):
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
-        # Handle the case that the search is not completed.
+        # Handle the case that, the search is not completed.
         if query_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(
@@ -319,7 +319,7 @@ class TeamStack(StackService[Team]):
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
-        # Handle the case that the search is not completed.
+        # Handle the case that, the search is not completed.
         if query_result.is_failure:
             # Return the exception chain on failure.
             return SearchResult.failure(

@@ -60,7 +60,7 @@ class CoordBuilder(Builder[Coord]):
         """
         method = "CoordBuilder.builder"
         
-        # Handle the case that the row param is not certified safe
+        # Handle the case that, the row param is not certified safe
         row_validation = number_validator.validate(candidate=row, floor=0, ceiling=BOARD_DIMENSION-1)
         if row_validation.is_failure:
             # Return the validation chain on failure.
@@ -70,7 +70,7 @@ class CoordBuilder(Builder[Coord]):
                     ex=row_validation.exception
                 )
             )
-        # Handle the case that the row param is not certified safe
+        # Handle the case that, the row param is not certified safe
         column_validation = number_validator.validate(candidate=column, floor=0, ceiling=BOARD_DIMENSION-1)
         if column_validation.is_failure:
             # Return the validation chain on failure.

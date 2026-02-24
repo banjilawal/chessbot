@@ -87,7 +87,7 @@ class Rook(Rank):
             coord_service=self.coord_service,
         )
         
-        # Handle the case that spanning set computation does not produce a solution.
+        # Handle the case that, spanning set computation does not produce a solution.
         if computation_result.is_failure:
             # Return the exception chain on failure.
             return ComputationResult.failure(

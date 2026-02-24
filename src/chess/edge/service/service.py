@@ -100,7 +100,7 @@ class EdgeService(EntityService[Edge]):
         """
         method = "EdgeService.update_edge_heuristic"
         
-        # Handle the case that the edge is unsafe.
+        # Handle the case that, the edge is unsafe.
         edge_validation = self.integrity_service.validator.validate(candidate=edge)
         if edge_validation.is_failure:
             # Return the exception chain on failure.
@@ -114,7 +114,7 @@ class EdgeService(EntityService[Edge]):
                     )
                 )
             )
-        # Handle the case that the heuristic is not a number.
+        # Handle the case that, the heuristic is not a number.
         heuristic_validation_result = number_validator.validate(
             candidate=heuristic,
             ceiling=sys.maxsize,
@@ -165,7 +165,7 @@ class EdgeService(EntityService[Edge]):
         """
         method = "EdgeService.update_edge_weight"
         
-        # Handle the case that the edge is unsafe.
+        # Handle the case that, the edge is unsafe.
         edge_validation = self.integrity_service.validator.validate(candidate=edge)
         if edge_validation.is_failure:
             # Return the exception chain on failure.
@@ -179,7 +179,7 @@ class EdgeService(EntityService[Edge]):
                     )
                 )
             )
-        # Handle the case that the weight is not a number.
+        # Handle the case that, the weight is not a number.
         weight_validation_result = number_validator.validate(
             candidate=weight,
             ceiling=sys.maxsize,

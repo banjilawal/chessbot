@@ -178,12 +178,12 @@ class CoordService(EntityService[Coord]):
     def euclidean_distance(self, u: Coord, v: Coord) -> ComputationResult[int]:
         method = "CoordService.euclidean_distance"
         
-        # Handle the case that the u is not certified as safe.
+        # Handle the case that, the u is not certified as safe.
         u_validation = self._validator.validate(candidate=u)
         if u_validation.is_failure:
             return ComputationResult.failure(u_validation.exception)
         
-        # Handle the case that v is not certified as safe.
+        # Handle the case that, v is not certified as safe.
         v_validation = self._validator.validate(candidate=v)
         if v_validation.is_failure:
             return ComputationResult.failure(v_validation.exception)

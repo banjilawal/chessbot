@@ -58,7 +58,7 @@ class RankFactory(Builder[Rank]):
             * RankBuildException
         """
         method = "RankFactory.builder"
-        # Handle the case that the persona is not certifed as safe.
+        # Handle the case that, the persona is not certifed as safe.
         validation = persona_service.validator.validate(candidate=persona)
         if validation.is_failure:
             # Return the exception chain on failure.

@@ -140,7 +140,7 @@ class PersonaService(HashService[Persona]):
         """
         method = "PersonaService.quota_per_rank"
         
-        # Handle the case that rank is not certified safe.
+        # Handle the case that, rank is not certified safe.
         validation = rank_service.validator.validate(candidate=rank)
         if validation.is_failure:
             return ComputationResult.failure(
@@ -182,7 +182,7 @@ class PersonaService(HashService[Persona]):
     #     """
     #     method = "PersonaService.rank_from_persona"
     #
-    #     # Handle the case that persona is not certified safe.
+    #     # Handle the case that, persona is not certified safe.
     #     validation = self.validator.validate(candidate=persona)
     #     if validation.is_failure:
     #         return BuildResult.failure(

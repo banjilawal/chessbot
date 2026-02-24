@@ -89,7 +89,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         """
         method = "SquareCollisionDetector.detect"
         
-        # Handle the case that the target is not certified as safe.
+        # Handle the case that, the target is not certified as safe.
         validation_result = square_validator.validate(candidate=target)
         if validation_result.is_failure:
             # Return the exception chain on failure.
@@ -155,7 +155,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         # Handle the case that, the id search was aborted.
         if id_search_result.is_failure:
             return ValidationResult.failure(id_search_result.exception)
-        # Handle the case that the id has already been assigned to a different square.
+        # Handle the case that, the id has already been assigned to a different square.
         if id_search_result.is_success:
             # Return the exception chain on failure.
             return ValidationResult.failure(
@@ -167,7 +167,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         # Handle the case that, the name search was aborted.
         if name_search_result.is_failure:
             return ValidationResult.failure(name_search_result.exception)
-        # Handle the case that the name has already been assigned to a different square.
+        # Handle the case that, the name has already been assigned to a different square.
         if name_search_result.is_success:
             return ValidationResult.failure(
                 SquareNameCollisionException(message=f"{method}:{SquareNameCollisionException.DEFAULT_MESSAGE}", )
@@ -178,9 +178,9 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         # Handle the case that, the coord search was aborted.
         if coord_search_result.is_failure:
             return ValidationResult.failure(coord_search_result.exception)
-        # Handle the case that the id has already been assigned to a different square.
+        # Handle the case that, the id has already been assigned to a different square.
         if coord_search_result.is_success:
-            # Handle the case that the coord has already been assigned to a different square.
+            # Handle the case that, the coord has already been assigned to a different square.
             if coord_search_result.is_success:
                 return ValidationResult.failure(
                     SquareCoordCollisionException(message=f"{method}:{SquareCoordCollisionException.DEFAULT_MESSAGE}", )

@@ -77,7 +77,7 @@ class NodeService(EntityService[Node]):
     def add_incoming_edge(self, node: Node, edge: Edge) -> InsertionResult:
         """
         # ACTION:
-            1.  If either the node or edge are not certified as safe send an exception chain in the InsertionResult.
+            1.  If either the node or edge are is not certified as safe send an exception chain in the InsertionResult.
             2.  If the node is not the edge's tail send an exception chain in the InsertionResult.
             3.  Let the node's incoming_edges stack process the addition.
             4.  If  node.incoming_edges.push fails encapsulate its exception inside a NodeServiceException which is
@@ -96,7 +96,7 @@ class NodeService(EntityService[Node]):
         """
         method = "NodeService.add_incoming_edge"
         
-        # Handle the case that the node is not certified as safe.
+        # Handle the case that, the node is not certified as safe.
         node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -122,7 +122,7 @@ class NodeService(EntityService[Node]):
                     )
                 )
             )
-        # Handle the case that the node is not the edge's tail
+        # Handle the case that, the node is not the edge's tail
         if edge.tail != node:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -158,7 +158,7 @@ class NodeService(EntityService[Node]):
     def add_incoming_edge(self, node: Node, edge: Edge) -> InsertionResult:
         """
         # ACTION:
-            1.  If either the node or edge are not certified as safe send an exception chain in the InsertionResult.
+            1.  If either the node or edge are is not certified as safe send an exception chain in the InsertionResult.
             2.  If the node is not the edge's tail send an exception chain in the InsertionResult.
             3.  Let the node's incoming_edges stack process the addition.
             4.  If  node.incoming_edges.push fails encapsulate its exception inside a NodeServiceException which is
@@ -177,7 +177,7 @@ class NodeService(EntityService[Node]):
         """
         method = "NodeService.add_incoming_edge"
         
-        # Handle the case that the node is not certified as safe.
+        # Handle the case that, the node is not certified as safe.
         node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -203,7 +203,7 @@ class NodeService(EntityService[Node]):
                     )
                 )
             )
-        # Handle the case that the node is not the edge's tail
+        # Handle the case that, the node is not the edge's tail
         if edge.tail != node:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -239,7 +239,7 @@ class NodeService(EntityService[Node]):
     def remove_incoming_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
         """
         # ACTION:
-            1.  If either the node or edge are not certified as safe send an exception chain in the DeletionResult.
+            1.  If either the node or edge are is not certified as safe send an exception chain in the DeletionResult.
             2.  If the node is not the edge's tail send an exception chain in the DeletionResult.
             3.  Let the node's incoming_edges stack process the removal.
             4.  If  node.incoming_edges.pop fails encapsulate its exception inside a NodeServiceException which is
@@ -258,7 +258,7 @@ class NodeService(EntityService[Node]):
         """
         method = "NodeService.remove_incoming_edge"
         
-        # Handle the case that the node is not certified as safe.
+        # Handle the case that, the node is not certified as safe.
         node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -304,7 +304,7 @@ class NodeService(EntityService[Node]):
     def add_outgoing_edge(self, node: Node, edge: Edge) -> InsertionResult:
         """
         # ACTION:
-            1.  If either the node or edge are not certified as safe send an exception chain in the InsertionResult.
+            1.  If either the node or edge are is not certified as safe send an exception chain in the InsertionResult.
             2.  If the node is not the edge's tail send an exception chain in the InsertionResult.
             3.  Let the node's outgoing_edges stack process the addition.
             4.  If  node.outgoing_edges.push fails encapsulate its exception inside a NodeServiceException which is
@@ -323,7 +323,7 @@ class NodeService(EntityService[Node]):
         """
         method = "NodeService.add_outgoing_edge"
         
-        # Handle the case that the node is not certified as safe.
+        # Handle the case that, the node is not certified as safe.
         node_validation_result = self.validator.validate(candidate=node)
         if node_validation_result.is_failure:
             # Return the exception chain on failure.
@@ -349,7 +349,7 @@ class NodeService(EntityService[Node]):
                     )
                 )
             )
-        # Handle the case that the node is not the edge's tail
+        # Handle the case that, the node is not the edge's tail
         if edge.tail != node:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -386,7 +386,7 @@ class NodeService(EntityService[Node]):
 def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     """
     # ACTION:
-        1.  If either the node or edge are not certified as safe send an exception chain in the DeletionResult.
+        1.  If either the node or edge are is not certified as safe send an exception chain in the DeletionResult.
         2.  If the node is not the edge's tail send an exception chain in the DeletionResult.
         3.  Let the node's outgoing_edges stack process the removal.
         4.  If  node.outgoing_edges.pop fails encapsulate its exception inside a NodeServiceException which is
@@ -405,7 +405,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     """
     method = "NodeService.remove_outgoing_edge"
     
-    # Handle the case that the node is not certified as safe.
+    # Handle the case that, the node is not certified as safe.
     node_validation_result = self.validator.validate(candidate=node)
     if node_validation_result.is_failure:
         # Return the exception chain on failure.

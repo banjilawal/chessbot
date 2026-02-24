@@ -133,7 +133,7 @@ class TokenService(EntityService[Token]):
                     ex=validation.exception
                 )
             )
-        # Handle the case that the opening item is null which implies there are no moves to undo.
+        # Handle the case that, the opening item is null which implies there are no moves to undo.
         if token.opening_square_name is None:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -144,7 +144,7 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # Handle the case that the token has no positions that can be removed.
+        # Handle the case that, the token has no positions that can be removed.
         if token.positions.is_empty:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -155,7 +155,7 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # Handle the case that an attempt is made to undo more than one turn.
+        # Handle the case that, an attempt is made to undo more than one turn.
         if token.previous_coord == token.current_address:
             # Return the exception chain on failure.
             return DeletionResult.failure(
@@ -164,7 +164,7 @@ class TokenService(EntityService[Token]):
                     ex=OverMoveUndoLimitException(f"{method}: {OverMoveUndoLimitException.DEFAULT_MESSAGE}")
                 )
             )
-        # Handle the case that the coord stack pop operation fails.
+        # Handle the case that, the coord stack pop operation fails.
         pop_result = token.positions.pop()
         if token.previous_coord == token.current_address:
             # Return the exception chain on failure.
@@ -204,7 +204,7 @@ class TokenService(EntityService[Token]):
         """
         method = "TokenService.push_coord_to_token"
         
-        # Handle the case that the token is not certified safe.
+        # Handle the case that, the token is not certified safe.
         token_validation = self.validator.validate(token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
@@ -214,7 +214,7 @@ class TokenService(EntityService[Token]):
                     ex=token_validation.exception
                 )
             )
-        # Handle the case that the position is not certified safe.
+        # Handle the case that, the position is not certified safe.
         position_validation = coord_service.validate(position)
         if position_validation.is_failure:
             # Return the exception chain on failure.
@@ -224,7 +224,7 @@ class TokenService(EntityService[Token]):
                     ex=token_validation.exception
                 )
             )
-        # Handle the case that the token is already the updated position
+        # Handle the case that, the token is already the updated position
         if position == token.current_position:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -235,7 +235,7 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # Handle the case that adding the coord to the token's position history fails.
+        # Handle the case that, adding the coord to the token's position history fails.
         insertion_result = token.positions.push(item=position)
         if insertion_result.is_failure:
             # Return the exception chain on failure.
@@ -275,7 +275,7 @@ class TokenService(EntityService[Token]):
         """
         method = "TokenService.promote_pawn"
         
-        # Handle the case that the token is not certified safe.
+        # Handle the case that, the token is not certified safe.
         pawn_validation = self.validator.verify_actionable_token(pawn)
         if pawn_validation.is_failure:
             # Return the exception chain on failure.
@@ -285,7 +285,7 @@ class TokenService(EntityService[Token]):
                     ex=pawn_validation.exception
                 )
             )
-        # Handle the case that the token is not a pawn
+        # Handle the case that, the token is not a pawn
         if not isinstance(pawn, PawnToken):
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -299,7 +299,7 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # Handle the case that the pawn has already been promoted.
+        # Handle the case that, the pawn has already been promoted.
         if pawn.is_promoted:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -311,7 +311,7 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # Handle the case that the rank is not certified as safe.
+        # Handle the case that, the rank is not certified as safe.
         rank_validation = rank_service.validate(new_rank)
         if rank_validation.is_failure:
             # Return the exception chain on failure.
@@ -324,7 +324,7 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # Handle the case that the new rank is King.
+        # Handle the case that, the new rank is King.
         if isinstance(new_rank, King):
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -338,7 +338,7 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # Handle the case that new_rank is still a Pawn rank.
+        # Handle the case that, new_rank is still a Pawn rank.
         if pawn.rank == new_rank:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -389,7 +389,7 @@ class TokenService(EntityService[Token]):
         """
         method = "TokenService.deploy_on_board"
         
-        # Handle the case that the token is not certified safe.
+        # Handle the case that, the token is not certified safe.
         token_validation = self.validator.validate(token)
         if token_validation.is_failure:
             # Return the exception chain on failure.
@@ -402,7 +402,7 @@ class TokenService(EntityService[Token]):
                     )
                 )
             )
-        # Handle the case that the token has already been placed on the board.
+        # Handle the case that, the token has already been placed on the board.
         if token.board_state != TokenBoardState.NEVER_BEEN_PLACED:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -418,7 +418,7 @@ class TokenService(EntityService[Token]):
         square_search_result = token.team.board.squares.search(
             context=SquareContext(token.opening_square_name)
         )
-        # Handle the case that the search is not completed.
+        # Handle the case that, the search is not completed.
         if square_search_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(
@@ -449,7 +449,7 @@ class TokenService(EntityService[Token]):
             token=token,
             square=square_search_result.payload[0],
         )
-        # Handle the case that occupying the opening square fails.
+        # Handle the case that, occupying the opening square fails.
         if occupation_result.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(

@@ -169,7 +169,7 @@ class SquareBuilder(Builder[Square]):
     ) -> ValidationResult[int]:
         """
         # ACTION:
-            1.  If either the id, name, coord, or board are not certified as safe by their validators, return the
+            1.  If either the id, name, coord, or board are is not certified as safe by their validators, return the
                 validation exception to the caller. Otherwise, return the number of attributes in the success result.
         # PARAMETERS:
             *   id (int)
@@ -246,26 +246,26 @@ class SquareBuilder(Builder[Square]):
             candidate_primary=board,
             candidate_satellite=square
         )
-        # Handle the case that the relation analysis was not completed.
+        # Handle the case that, the relation analysis was not completed.
         if relation_analysis.is_failure:
             # Return the exception chain on failure.
             return InsertionResult.failure(relation_analysis.exception)
         
-        # Handle the case that the board and item are not related.
+        # Handle the case that, the board and item are not related.
         if relation_analysis.not_related:
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 InvariantBreachException(message=f"{method}:{InvariantBreachException.DEFAULT_MESSAGE}", )
             )
         
-        # Handle the case that the board and item are have a fully bidirectional relationship.
+        # Handle the case that, the board and item are have a fully bidirectional relationship.
         if relation_analysis.is_bidirectional:
             # Return the exception chain on failure.
             return InsertionResult.success()
         
         # --- Last relationship state is a partial binding. This is the only case for registering the Square ---#
         
-        # Handle the case that the insertion fails.
+        # Handle the case that, the insertion fails.
         insertion_result = board.squares.insert_square(square=square)
         if insertion_result.is_failure:
             # On failure return the exception.
