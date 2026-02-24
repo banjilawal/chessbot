@@ -3,11 +3,10 @@
 """
 Module: chess.node.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2026-02-17
-version: 1.0.0
+Created: 2026-02-18
+Version: 1.0.0
 """
 
-from chess.node import NodeException
 from chess.system import ValidationException
 
 __all__ = [
@@ -17,16 +16,15 @@ __all__ = [
 
 
 # ======================# NODE_VALIDATION_FAILURE #======================#
-class NodeValidationException(NodeException, ValidationException):
+class NodeValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its Node validation.The exception chain
-        traces the ultimate source of failure.
+    1.  An error occurred in NodeValidator.validate that, prevented ValidationResult.success()
+        from being returned.
 
     # PARENT:
-        *   NodeException
         *   ValidationException
 
     # PROVIDES:
@@ -35,7 +33,7 @@ class NodeValidationException(NodeException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "NODE_VALIDATION_FAILURE"

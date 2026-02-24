@@ -1,13 +1,12 @@
-# src/chess/schema/validator/exception/base.py
+# src/chess/schema/validator/exception/wrapper.py
 
 """
-Module: chess.schema.validator.exception.base
+Module: chess.schema.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
-from chess.schema import SchemaException
 from chess.system import ValidationException
 
 __all__ = [
@@ -15,16 +14,17 @@ __all__ = [
     "SchemaValidationException",
 ]
 
+
 # ======================# SCHEMA_VALIDATION_FAILURE #======================#
-class SchemaValidationException(SchemaException, ValidationException):
+class SchemaValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Schema. The exception chain traces the ultimate source of failure..
-    
+    1.  An error occurred in SchemaValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
+
     # PARENT:
-        *   SchemaException
         *   ValidationException
 
     # PROVIDES:
@@ -33,7 +33,7 @@ class SchemaValidationException(SchemaException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "SCHEMA_VALIDATION_FAILURE"

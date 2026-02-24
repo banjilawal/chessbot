@@ -3,7 +3,8 @@
 """
 Module: chess.square.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-19
+Created: 2025-09-08
+Version: 1.0.0
 """
 
 from chess.system import ValidationException
@@ -20,7 +21,8 @@ class SquareValidationException(ValidationException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SquareValidator.validate that, prevented ValidationResult.success() from being returned.
+    1.  An error occurred in SquareValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
 
     # PARENT:
         *   ValidationException

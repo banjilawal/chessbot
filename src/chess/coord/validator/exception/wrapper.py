@@ -1,13 +1,12 @@
-# src/chess/coord/validator/exception/base.py
+# src/chess/coord/validator/exception/wrapper.py
 
 """
-Module: chess.coord.validator.exception.base
+Module: chess.coord.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-19
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
-from chess.coord import CoordException
 from chess.system import ValidationException
 
 __all__ = [
@@ -17,15 +16,15 @@ __all__ = [
 
 
 # ======================# COORD_VALIDATION_FAILURE #======================#
-class CoordValidationException(CoordException, ValidationException):
+class CoordValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Coord. The exception chain traces the ultimate source of failure.
+    1.  An error occurred in CoordValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
 
     # PARENT:
-        *   CoordException
         *   ValidationException
 
     # PROVIDES:
@@ -34,7 +33,7 @@ class CoordValidationException(CoordException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "COORD_VALIDATION_FAILURE"

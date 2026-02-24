@@ -3,29 +3,28 @@
 """
 Module: chess.edge.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2026-02-17
+Created: 2026-02-18
+Version: 1.0.0
 """
 
-from chess.edge import EdgeException
 from chess.system import ValidationException
 
 __all__ = [
     # ======================# EDGE_VALIDATION_FAILURE #======================#
-    "ValidatingEdgeException",
+    "EdgeValidationException",
 ]
 
 
 # ======================# EDGE_VALIDATION_FAILURE #======================#
-class ValidatingEdgeException(EdgeException, ValidationException):
+class EdgeValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Edge. The exception chain
-        traces the ultimate source of failure.
+    1.  An error occurred in EdgeValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
 
     # PARENT:
-        *   EdgeException
         *   ValidationException
 
     # PROVIDES:
@@ -34,7 +33,7 @@ class ValidatingEdgeException(EdgeException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "EDGE_VALIDATION_FAILURE"

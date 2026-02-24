@@ -1,16 +1,14 @@
-# src/chess/persona/validator/exception/base.py
+# src/chess/persona/validator/exception/wrapper.py
 
 """
-Module: chess.persona.validator.exception.base
+Module: chess.persona.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-08
-version: 1.0.0
+Version: 1.0.0
 """
 
-from chess.persona import PersonaException
 from chess.system import ValidationException
 
-_
 __all__ = [
     # ======================# PERSONA_VALIDATION_FAILURE #======================#
     "PersonaValidationException",
@@ -18,15 +16,15 @@ __all__ = [
 
 
 # ======================# PERSONA_VALIDATION_FAILURE #======================#
-class PersonaValidationException(PersonaException, ValidationException):
+class PersonaValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Persona. The exception chain traces the ultimate source of failure.
-    
+    1.  An error occurred in PersonaValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
+
     # PARENT:
-        *   PersonaException
         *   ValidationException
 
     # PROVIDES:
@@ -35,7 +33,7 @@ class PersonaValidationException(PersonaException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "PERSONA_VALIDATION_FAILURE"

@@ -1,13 +1,12 @@
-# src/chess/player/validator/exception/_base.py
+# src/chess/player/validator/exception/wrapper.py
 
 """
-Module: chess.player.validator.exception._base
+Module: chess.player.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-09-16
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
-from chess.player import PlayerException
 from chess.system import ValidationException
 
 __all__ = [
@@ -16,16 +15,16 @@ __all__ = [
 ]
 
 
-#======================# PLAYER_VALIDATION_FAILURE #======================#
-class PlayerValidationException(PlayerException, ValidationException):
+# ======================# PLAYER_VALIDATION_FAILURE #======================#
+class PlayerValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Player. The exception chain traces the ultimate source of failure.
+    1.  An error occurred in PlayerValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
 
     # PARENT:
-        *   PlayerException
         *   ValidationException
 
     # PROVIDES:
@@ -33,10 +32,9 @@ class PlayerValidationException(PlayerException, ValidationException):
 
     # LOCAL ATTRIBUTES:
     None
-    
-    INHERITED ATTRIBUTES:
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PLAYER_VALIDATION_ERROR"
+    ERROR_CODE = "PLAYER_VALIDATION_FAILURE"
     DEFAULT_MESSAGE = "Player validation failed."
-

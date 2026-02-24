@@ -1,40 +1,40 @@
-# src/chess/rank/validator/exception.py
+# src/chess/rank/validator/exception/wrapper.py
 
 """
-Module: chess.rank.validator.exception
+Module: chess.rank.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-08
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
-from chess.rank import RankException
 from chess.system import ValidationException
 
 __all__ = [
-  # ======================# RANK_VALIDATION_FAILURE #======================#
+    # ======================# RANK_VALIDATION_FAILURE #======================#
     "RankValidationException",
 ]
 
 
 # ======================# RANK_VALIDATION_FAILURE #======================#
-class RankValidationException(RankException, ValidationException):
-  """
-  # ROLE: Exception Wrapper
+class RankValidationException(ValidationException):
+    """
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
-  # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Rank. The exception chain traces the ultimate source of failure.
-  # PARENT:
-      *   RankException
-      *   ValidationException
+    # RESPONSIBILITIES:
+    1.  An error occurred in RankValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
 
-  # PROVIDES:
-  None
+    # PARENT:
+        *   ValidationException
 
-  # LOCAL ATTRIBUTES:
-  None
+    # PROVIDES:
+    None
 
-  INHERITED ATTRIBUTES:
-  None
-  """
-  ERROR_CODE = "RANK_VALIDATION_FAILURE"
-  DEFAULT_MESSAGE = "Rank validation failed."
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    ERROR_CODE = "RANK_VALIDATION_FAILURE"
+    DEFAULT_MESSAGE = "Rank validation failed."

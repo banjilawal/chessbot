@@ -1,31 +1,30 @@
-# src/chess/board/validator/exception/base.py
+# src/chess/base/validator/exception/wrapper.py
 
 """
-Module: chess.board.validator.exception.base
+Module: chess.base.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-01
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
-from chess.board import BoardException
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# BOARD_VALIDATION_FAILURE #======================#
-    "BoardValidationException",
+    # ======================# BASE_VALIDATION_FAILURE #======================#
+    "BaseValidationException",
 ]
 
 
-# ======================# BOARD_VALIDATION_FAILURE #======================#
-class BoardValidationException(BoardException, ValidationException):
+# ======================# BASE_VALIDATION_FAILURE #======================#
+class BaseValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Board. The exception chain traces the ultimate source of failure.
+    1.  An error occurred in BaseValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
 
     # PARENT:
-        *   BoardException
         *   ValidationException
 
     # PROVIDES:
@@ -34,8 +33,8 @@ class BoardValidationException(BoardException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Board validation failed."
+    ERROR_CODE = "BASE_VALIDATION_FAILURE"
+    DEFAULT_MESSAGE = "Base validation failed."

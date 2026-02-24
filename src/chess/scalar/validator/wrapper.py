@@ -1,22 +1,30 @@
+# src/chess/scalar/validator/exception/wrapper.py
+
+"""
+Module: chess.scalar.validator.exception.wrapper
+Author: Banji Lawal
+Created: 2025-09-08
+Version: 1.0.0
+"""
+
+from chess.system import ValidationException
+
 __all__ = [
     # ======================# SCALAR_VALIDATION_FAILURE #======================#
     "ScalarValidationException",
 ]
 
-from chess.scalar import ScalarException
-from chess.system import ValidationException
-
 
 # ======================# SCALAR_VALIDATION_FAILURE #======================#
-class ScalarValidationException(ScalarException, ValidationException):
+class ScalarValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a Scalar. The exception chain traces the ultimate source of failure.
+    1.  An error occurred in ScalarValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
 
     # PARENT:
-        *   ScalarException
         *   ValidationException
 
     # PROVIDES:
@@ -25,7 +33,7 @@ class ScalarValidationException(ScalarException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "SCALAR_VALIDATION_FAILURE"

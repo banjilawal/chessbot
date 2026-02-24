@@ -1,32 +1,30 @@
-# src/chess/vector/validator/exception/exception.py
+# src/chess/vector/validator/exception/wrapper.py
 
 """
-Module: chess.vector.validator.exception.exception
+Module: chess.vector.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-03
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
-from chess.vector import VectorException
 from chess.system import ValidationException
 
-_
 __all__ = [
     # ======================# VECTOR_VALIDATION_FAILURE #======================#
-    "InvalidVectorException",
+    "VectorValidationException",
 ]
 
 
 # ======================# VECTOR_VALIDATION_FAILURE #======================#
-class InvalidVectorException(VectorException, ValidationException):
+class VectorValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as a vector. The exception chain traces the ultimate source of failure.
-    
+    1.  An error occurred in VectorValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
+
     # PARENT:
-        *   VectorException
         *   ValidationException
 
     # PROVIDES:
@@ -35,7 +33,7 @@ class InvalidVectorException(VectorException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "VECTOR_VALIDATION_FAILURE"

@@ -1,13 +1,12 @@
-# src/chess/arena/validator/exception/base.py
+# src/chess/arena/validator/exception/wrapper.py
 
 """
-Module: chess.arena.validator.exception.base
+Module: chess.arena.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-01
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
-from chess.arena import ArenaException
 from chess.system import ValidationException
 
 __all__ = [
@@ -17,15 +16,15 @@ __all__ = [
 
 
 # ======================# ARENA_VALIDATION_FAILURE #======================#
-class ArenaValidationException(ArenaException, ValidationException):
+class ArenaValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a candidate failed its validation as an Arena. The exception chain traces the ultimate source of failure.
+    1.  An error occurred in ArenaValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
 
     # PARENT:
-        *   ArenaException
         *   ValidationException
 
     # PROVIDES:

@@ -3,31 +3,28 @@
 """
 Module: chess.token.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-06
-version: 1.0.0
+Created: 2025-09-08
+Version: 1.0.0
 """
 
+from chess.system import ValidationException
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_FAILURE #======================#
     "TokenValidationException",
 ]
 
-from chess.token import TokenException
-from chess.system import ValidationException
-
 
 # ======================# TOKEN_VALIDATION_FAILURE #======================#
-class TokenValidationException(TokenException, ValidationException):
+class TokenValidationException(ValidationException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a token validation operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  An error occurred in TokenValidator.validate that, prevented ValidationResult.success() 
+        from being returned.
 
     # PARENT:
-        *   TokenException
         *   ValidationException
 
     # PROVIDES:
@@ -36,7 +33,7 @@ class TokenValidationException(TokenException, ValidationException):
     # LOCAL ATTRIBUTES:
     None
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
     None
     """
     ERROR_CODE = "TOKEN_VALIDATION_FAILURE"
