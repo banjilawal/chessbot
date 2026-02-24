@@ -1,9 +1,9 @@
-# src/chess/system/validate/exception.py
+# src/chess/system/relation/analysis/wrapper.py
 
 """
-Module: chess.system.validate.exception
+Module: chess.system.relation.analysis.wrapper
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2026-12-28
 version: 1.0.0
 """
 
@@ -14,15 +14,14 @@ __all__ = [
     "AnalysisException",
 ]
 
-
 # ======================# RELATION_ANALYSIS_FAILURE #======================#
 class AnalysisException(OperationException):
     """
-    # ROLE: Exception Wrapper, Encapsulation, Error Chaining
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why an analysis operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  An error occurred in Analyzer.analysis that, prevented the relation analysis from completing.
+        An exception was sent instead of a report.
 
     # PARENT:
         *   OperationException

@@ -1,9 +1,9 @@
-# src/chess/system/relation/status.py
+# src/chess/system/relation/report/status.py
 
 """
-Module: chess.system.relation.status
+Module: chess.system.relation.report.status
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-12-28
 version: 1.0.0
 """
 

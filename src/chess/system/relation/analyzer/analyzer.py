@@ -1,9 +1,9 @@
-# src/chess/system/relation/__init__.py
+# src/chess/system/relation/analysis/analyzer.py
 
 """
-Module: chess.system.relation.__init__
+Module: chess.system.relation.analysis.analyzer
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2026-02-23
 version: 1.0.0
 """
 
