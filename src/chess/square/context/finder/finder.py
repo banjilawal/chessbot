@@ -215,37 +215,21 @@ class SquareFinder(StackSearcher[Square]):
         """
         # ACTION:
             1.  Send an exception chain in the ValidationResult if either
-                    *   A null check.
-                    *   A type check.
-                Ssend an exception chain in the ValidationResult. Else, cast candidate to SquareContext
-                instance context.
-            2.  Send an exception chain in the BuildResult if either
-                    *   One and only one of attributes is not null.
-                    *   There is no build route for the enabled option.
-                    *   The enabled attribute is not certified as safe by its service.
-                are not certified as safe by their services.
-            3.  Build the appropriate context, sed the build success result.
+                    *   The candidate is null
+                    *   Is not a List.
+                    *   Does not contain squares.
+            2.  Cast the candidate to a List[Square] instance then, send the validation success result.
         # PARAMETERS:
             Only one these must be provided:
-                *   id Optional[(int)]
-                *   name Optional[(str)]
-                *   cord Optional[(Coord)]
-                *   board Optional[(Board)]
-                *   state Optional[SquareState]
-            These Parameters must be provided:
-                *   board_service (BoardService)
-                *   coord_service (CoordService)
-                *   token_service (TokenService)
-                *   identity_service (IdentityService)
+                *   candidate Any
         # RETURNS:
-            *   BuildResult[SquareContext] containing either:
+            *   ValidationResult[List[Square]] containing either:
                     - On failure: Exception.
-                    - On success: SquareContext in the payload.
+                    - On success: List[Square] in the payload.
         # RAISES:
-            *   ZeroSquareContextFlagsException
-            *   SquareContextBuildException
-            *   ExcessiveSquareContextFlagsException
-            *   SquareContextBuildRouteException
+            *   TypeError
+            *   SquareDataSourceNullException
+            *   SquareDataSourceEmptyException
         """
         method = "SquareFinder._validate_dataset"
         # Handle the nonexistence case.
