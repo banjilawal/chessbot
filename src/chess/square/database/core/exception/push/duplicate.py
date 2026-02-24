@@ -7,7 +7,7 @@ Created: 2025-11-22
 version: 1.0.0
 """
 
-from chess.square import SquareStackServiceException
+from chess.square import SquareDebugException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_SQUARE EXCEPTION #======================#
@@ -16,7 +16,7 @@ __all__ = [
 
 
 # ======================# ADDING_DUPLICATE_SQUARE EXCEPTION #======================#
-class AddingDuplicateSquareException(SquareStackServiceException):
+class AddingDuplicateSquareException(SquareDebugException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 

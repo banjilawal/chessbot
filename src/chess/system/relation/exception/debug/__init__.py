@@ -13,7 +13,8 @@ version: 1.0.0
 None
 
 # Modules
-from .base import NoRelationshipException
-from .registered import NotRegisteredException
+from .debug import RelationDebugException
+from .null import NoRelationshipException
+from .register import NotRegisteredException
 from .bidirectional import NoBidirectionalRelationException
 
