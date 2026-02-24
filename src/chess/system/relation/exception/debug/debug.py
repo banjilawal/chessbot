@@ -1,3 +1,12 @@
+# src/chess/system/relation/exception/debug/debug.py
+
+"""
+Module: chess.system.relation.exception.debug.debug
+Author: Banji Lawal
+Created: 2025-12-28
+version: 1.0.0
+"""
+
 __all__ = [
     # ======================# RELATION_DEBUG EXCEPTION #======================#
     "RelationDebugException",

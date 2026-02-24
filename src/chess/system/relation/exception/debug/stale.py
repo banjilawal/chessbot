@@ -1,39 +1,40 @@
-# src/chess/system/relation/exception/__init__.py
+# src/chess/system/relation/exception/debug/stale.py
 
 """
-Module: chess.system.relation.exception.__init__
+Module: chess.system.relation.exception.debug.stale
 Author: Banji Lawal
-Created: 2025-10-01
+Created: 2025-11-26
 version: 1.0.0
 """
 
-from chess.system import ChessException
-
-___all__ = [
-    # ======================# NO_RELATIONSHIP EXCEPTION #======================#
-    "NoRelationException",
+__all__ = [
+    # ======================# STALE_RELATION_LINK EXCEPTION #======================#
+    "StaleRelationException",
 ]
 
+from chess.system import RelationDebugException
 
-#======================# NO_RELATIONSHIP EXCEPTION #======================#
-class NoRelationshipException(ChessException):
+
+# ======================# STALE_RELATION_LINK EXCEPTION #======================#
+class StaleRelationException(RelationDebugException):
     """
-    # ROLE: Error Tracing, Debugging, Catchall
-    
+    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+
     # RESPONSIBILITIES:
-    1.  Indicate that a relationship that is required between entities does not exist.
-    
+    1.  Indicate that, a failing result was returned because the primary had a stale
+        link to a former satellite
+
     # PARENT:
-        *   ChessException
-        
+        *   RelationDebugException
+
     # PROVIDES:
     None
-    
+
     # LOCAL ATTRIBUTES:
     None
-    
+
     # INHERITED ATTRIBUTES:
     None
     """
-    DEFAULT_CODE = "NO_RELATIONSHIP_ERROR"
-    DEFAULT_MESSAGE = "Relationship raised an exception."
+    ERROR_CODE = "STALE_RELATION_LINK_ERROR"
+    DEFAULT_MESSAGE = "The primary had a stale link to a former satellite."
