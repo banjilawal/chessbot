@@ -22,7 +22,8 @@ class SquareBuildException(BuildException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SquareBuilder.build that, prevented BuildResult.success() from being returned.
+    1.  An error occurred in SquareBuilder.build that, prevented BuildResult.success() from
+        being returned.
 
     # PARENT:
         *   BuildException

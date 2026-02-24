@@ -3,13 +3,11 @@
 """
 Module: chess.team.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-10-06
+Created: 2025-09-02
 version: 1.0.0
 """
 
-from chess.team import TeamException
 from chess.system import BuildException
-
 
 __all__ = [
     # ======================# TEAM_BUILD_FAILURE #======================#
@@ -18,17 +16,15 @@ __all__ = [
 
 
 # ======================# TEAM_BUILD_FAILURE #======================#
-class TeamBuildException(TeamException, BuildException):
+class TeamBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the Team build creates an exception. Failed check exceptions are encapsulated
-        in an TeamBuildException which is sent to the caller in a BuildResult.
-    2.  The TeamBuildException provides a trace for debugging and application recovery.
+    1.  An error occurred in TeamBuilder.build that, prevented BuildResult.success() from 
+        being returned.
 
     # PARENT:
-        *   TeamException
         *   BuildException
 
     # PROVIDES:

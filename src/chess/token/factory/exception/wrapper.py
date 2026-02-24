@@ -7,27 +7,24 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-
-from chess.token import TokenException
 from chess.system import BuildException
 
 __all__ = [
-    # ======================# TOKEN_BUILD_FAILURE#======================#
+    # ======================# TOKEN_BUILD_FAILURE #======================#
     "TokenBuildException",
 ]
 
 
 # ======================# TOKEN_BUILD_FAILURE #======================#
-class TokenBuildException(TokenException, BuildException):
+class TokenBuildException(BuildException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a token build operation failed. The exception chain
-        traces the ultimate source of failure.
+    1.  An error occurred in TokenBuilder.build that, prevented BuildResult.success() from 
+        being returned.
 
     # PARENT:
-        *   TokenException
         *   BuildException
 
     # PROVIDES:
@@ -39,5 +36,5 @@ class TokenBuildException(TokenException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_BUILD_FAILURE"
+    ERROR_CODE = "TOKEN_BUILD_FAILED"
     DEFAULT_MESSAGE = "Token build failed."
