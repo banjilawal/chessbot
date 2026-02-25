@@ -26,5 +26,5 @@ class FriendCannotCaptureFriendException(HostageException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FRIEND_CANNOT_CAPTURE_FRIEND"
-    DEFAULT_MESSAGE = "Hostage validation failed: A friend cannot be a prisoner."
+    ERR_CODE = "FRIEND_CANNOT_CAPTURE_FRIEND"
+    MSG = "Hostage validation failed: A friend cannot be a prisoner."

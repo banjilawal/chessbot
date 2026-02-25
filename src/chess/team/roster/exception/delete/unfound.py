@@ -26,5 +26,5 @@ class TeamRosterMemberDoesNotExistForRemovalException(TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ROSTER_MEMBER_TO_REMOVE_DOES_NOT_EXIST_ERROR"
-    DEFAULT_MESSAGE = "Token deletion failed: The roster member does not exist. Nothing to remove."
+    ERR_CODE = "ROSTER_MEMBER_TO_REMOVE_DOES_NOT_EXIST_ERROR"
+    MSG = "Token deletion failed: The roster member does not exist. Nothing to remove."

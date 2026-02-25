@@ -118,9 +118,9 @@ class EdgeStack(StackService[Edge]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 EdgeStackException(
-                    message=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
                     ex=PushingEdgeException(
-                        message=f"{method}: {PushingEdgeException.ERROR_CODE}",
+                        msg=f"{method}: {PushingEdgeException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -130,10 +130,10 @@ class EdgeStack(StackService[Edge]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 EdgeStackException(
-                    message=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
                     ex=PushingEdgeException(
-                        message=f"{method}: {PushingEdgeException.ERROR_CODE}",
-                        ex=AddingDuplicateEdgeException(f"{method}: {AddingDuplicateEdgeException.DEFAULT_MESSAGE}")
+                        msg=f"{method}: {PushingEdgeException.ERR_CODE}",
+                        ex=AddingDuplicateEdgeException(f"{method}: {AddingDuplicateEdgeException.MSG}")
                     )
                 )
             )
@@ -165,11 +165,11 @@ class EdgeStack(StackService[Edge]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 EdgeStackException(
-                    message=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
                     ex=PoppingEdgeException(
-                        message=f"{method}: {PoppingEdgeException.ERROR_CODE}",
+                        msg=f"{method}: {PoppingEdgeException.ERR_CODE}",
                         ex=PoppingEmptyEdgeStackException(
-                            f"{method}: {PoppingEmptyEdgeStackException.DEFAULT_MESSAGE}"
+                            f"{method}: {PoppingEmptyEdgeStackException.MSG}"
                         )
                     )
                 )
@@ -210,11 +210,11 @@ class EdgeStack(StackService[Edge]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 EdgeStackException(
-                    message=f"StackId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
+                    msg=f"StackId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
                     ex=PoppingEdgeException(
-                        message=f"{method}: {PoppingEdgeException.ERROR_CODE}",
+                        msg=f"{method}: {PoppingEdgeException.ERR_CODE}",
                         ex=PoppingEmptyEdgeStackException(
-                            f"{method}: {PoppingEmptyEdgeStackException.DEFAULT_MESSAGE}"
+                            f"{method}: {PoppingEmptyEdgeStackException.MSG}"
                         )
                     )
                 )
@@ -225,9 +225,9 @@ class EdgeStack(StackService[Edge]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 EdgeStackException(
-                    message=f"StackId:{self.id}, {method}: {EdgeStackException.ERROR_CODE}",
+                    msg=f"StackId:{self.id}, {method}: {EdgeStackException.ERR_CODE}",
                     ex=PoppingEdgeException(
-                        message=f"{method}: {PoppingEdgeException.ERROR_CODE}",
+                        msg=f"{method}: {PoppingEdgeException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -275,7 +275,7 @@ class EdgeStack(StackService[Edge]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 EdgeStackException(
-                    message=f"ServiceID:{self.id} {method}: {EdgeStackException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {EdgeStackException.ERR_CODE}",
                     ex=query_result.exception
                 )
             )

@@ -86,7 +86,7 @@ class HostageBuilder(Builder[Hostage]):
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageBuildException(
-                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageBuildException.MSG}",
                     ex=id_validation.exception
                 )
             )
@@ -96,7 +96,7 @@ class HostageBuilder(Builder[Hostage]):
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageBuildException(
-                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageBuildException.MSG}",
                     ex=captured_square_validation.exception
                 )
             )
@@ -105,9 +105,9 @@ class HostageBuilder(Builder[Hostage]):
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageBuildException(
-                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageBuildException.MSG}",
                     ex=VictorNotOccupyingCapturedSquareException(
-                        f"{method}: {VictorNotOccupyingCapturedSquareException.DEFAULT_MESSAGE}"
+                        f"{method}: {VictorNotOccupyingCapturedSquareException.MSG}"
                     )
                 )
             )
@@ -123,7 +123,7 @@ class HostageBuilder(Builder[Hostage]):
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageBuildException(
-                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageBuildException.MSG}",
                     ex=prisoner_is_combatant_validation.exception
                 )
             )
@@ -132,9 +132,9 @@ class HostageBuilder(Builder[Hostage]):
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageBuildException(
-                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageBuildException.MSG}",
                     ex=PrisonerCannotBeActiveCombatantException(
-                        f"{method}: {PrisonerCannotBeActiveCombatantException.DEFAULT_MESSAGE}"
+                        f"{method}: {PrisonerCannotBeActiveCombatantException.MSG}"
                     )
                 )
             )
@@ -143,9 +143,9 @@ class HostageBuilder(Builder[Hostage]):
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageBuildException(
-                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageBuildException.MSG}",
                     ex=PrisonerAlreadyHasHostageException(
-                        f"{method}: {PrisonerAlreadyHasHostageException.DEFAULT_MESSAGE}"
+                        f"{method}: {PrisonerAlreadyHasHostageException.MSG}"
                     )
                 )
             )
@@ -154,9 +154,9 @@ class HostageBuilder(Builder[Hostage]):
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageBuildException(
-                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageBuildException.MSG}",
                     ex=PrisonerCapturedOnDifferentSquareException(
-                        f"{method}: {PrisonerCapturedOnDifferentSquareException.DEFAULT_MESSAGE}"
+                        f"{method}: {PrisonerCapturedOnDifferentSquareException.MSG}"
                     )
                 )
             )
@@ -165,9 +165,9 @@ class HostageBuilder(Builder[Hostage]):
             # Send the exception chain on failure
             return BuildResult.failure(
                 HostageBuildException(
-                    message=f"{method}: {HostageBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageBuildException.MSG}",
                     ex=PrisonerCapturedByDifferentEnemyException(
-                        f"{method}: {PrisonerCapturedByDifferentEnemyException.DEFAULT_MESSAGE}"
+                        f"{method}: {PrisonerCapturedByDifferentEnemyException.MSG}"
                     )
                 )
             )

@@ -36,5 +36,5 @@ class EdgeValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Edge validation failed."
+    ERR_CODE = "EDGE_VALIDATION_FAILURE"
+    MSG = "Edge validation failed."

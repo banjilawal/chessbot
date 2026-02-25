@@ -34,7 +34,7 @@ class AttackEventValidator(Validator[AttackEvent]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullAttackEventException(f"{method}: {NullAttackEventException.DEFAULT_MESSAGE}")
+                    NullAttackEventException(f"{method}: {NullAttackEventException.MSG}")
                 )
             
             if not isinstance(candidate, AttackEvent):
@@ -59,22 +59,22 @@ class AttackEventValidator(Validator[AttackEvent]):
             
             if event.actor == event.enemy_combatant:
                 return ValidationResult.failure(
-                    PieceAttackingItSelfException(PieceAttackingItSelfException.DEFAULT_MESSAGE)
+                    PieceAttackingItSelfException(PieceAttackingItSelfException.MSG)
                 )
             
             if not event.actor.is_enemy(event.enemy_combatant):
                 return ValidationResult.failure(
-                    AttackingFriendException(f"{method}: {AttackingFriendException.DEFAULT_MESSAGE}")
+                    AttackingFriendException(f"{method}: {AttackingFriendException.MSG}")
                 )
             
             if isinstance(event.enemy_combatant, KingPiece):
                 return ValidationResult.failure(
-                    AttackingEnemyKingException(AttackingEnemyKingException.DEFAULT_MESSAGE)
+                    AttackingEnemyKingException(AttackingEnemyKingException.MSG)
                 )
             
             if cast(CombatantPiece, event.enemy_combatant).victor is not None:
                 return ValidationResult.failure(
-                    DoublyAttackingPrisonerException(f"{method}: {DoublyAttackingPrisonerException.DEFAULT_MESSAGE}")
+                    DoublyAttackingPrisonerException(f"{method}: {DoublyAttackingPrisonerException.MSG}")
                 )
             
             enemy_team = event.enemy_combatant.team_name
@@ -89,7 +89,7 @@ class AttackEventValidator(Validator[AttackEvent]):
             actor_team = event.actor.team_name
             if event.enemy_combatant in actor_team.hostages:
                 return ValidationResult.failure(
-                    InconsistentHostageEntry(f"{method}: {InconsistentHostageEntry.DEFAULT_MESSAGE}")
+                    InconsistentHostageEntry(f"{method}: {InconsistentHostageEntry.MSG}")
                 )
             
             enemy_combatant = cast(CombatantPiece, event.enemy_combatant)
@@ -103,7 +103,7 @@ class AttackEventValidator(Validator[AttackEvent]):
             if piece_search.is_empty():
                 return ValidationResult.failure(
                     AttackingPieceMissingFromBoardException(
-                        f"{method}: {AttackingPieceMissingFromBoardException.DEFAULT_MESSAGE}"
+                        f"{method}: {AttackingPieceMissingFromBoardException.MSG}"
                     )
                 )
             
@@ -117,7 +117,7 @@ class AttackEventValidator(Validator[AttackEvent]):
             if event.enemy_square.occupant != event.enemy_combatant:
                 return ValidationResult.failure(
                     EnemyNotInExpectedSquareException(
-                        f"{method}: {EnemyNotInExpectedSquareException.DEFAULT_MESSAGE}"
+                        f"{method}: {EnemyNotInExpectedSquareException.MSG}"
                     )
                 )
          

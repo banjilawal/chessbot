@@ -38,5 +38,5 @@ class NodeDebugException(NodeException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "NODE_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A NodeDebugException was raised."
+    ERR_CODE = "NODE_DEBUG_ERROR"
+    MSG = "A NodeDebugException was raised."

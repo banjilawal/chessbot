@@ -19,7 +19,7 @@ class ServiceRequestValidationException(ValidationException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in ServiceRequestValidator.validate that, prevented a success result from being returned.
+    1.  Indicate that An error occurred in ServiceRequestValidator.validator.
 
     # PARENT:
         *   ValidationException
@@ -33,5 +33,5 @@ class ServiceRequestValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_REQUEST_VALIDATION_FAILED"
-    DEFAULT_MESSAGE = "ServiceRequest validation failed."
+    ERR_CODE = "ServiceRequest.validate error:D"
+    MSG = "An exception was raised in ServiceRequestValidator.validator."

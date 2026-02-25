@@ -37,5 +37,5 @@ class ExcessiveNodeContextFlagsException(NodeContextException, ContextFlagCountE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_NODE_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "NodeContext validation failed: More than one flag was enable."
+    ERR_CODE = "EXCESSIVE_NODE_CONTEXT_FLAG_ERROR"
+    MSG = "NodeContext validation failed: More than one flag was enable."

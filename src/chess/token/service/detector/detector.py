@@ -76,7 +76,7 @@ class TokenCollisionDetector(CollisionDetector[Token]):
             return CollisionReport.detection_failure(
                 target=target,
                 exception=TokenCollisionDetectionException(
-                    message=f"{method}: {TokenCollisionDetectionException.ERROR_CODE}",
+                    msg=f"{method}: {TokenCollisionDetectionException.ERR_CODE}",
                     ex=validation_result.exception,
                 ),
             )
@@ -91,9 +91,9 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     target=target,
                     collider=member,
                     exception=TokenCollisionDetectionException(
-                        message=f"{method}: {TokenCollisionDetectionException.ERROR_CODE}",
+                        msg=f"{method}: {TokenCollisionDetectionException.ERR_CODE}",
                         ex=TokenIdCollisionException(
-                            f"{method}: {TokenIdCollisionException.DEFAULT_MESSAGE}",
+                            f"{method}: {TokenIdCollisionException.MSG}",
                         )
                     )
                 )
@@ -104,9 +104,9 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     target=target,
                     collider=member,
                     exception=TokenCollisionDetectionException(
-                        message=f"{method}: {TokenCollisionDetectionException.ERROR_CODE}",
+                        msg=f"{method}: {TokenCollisionDetectionException.ERR_CODE}",
                         ex=TokenDesignationCollisionException(
-                            f"{method}: {TokenDesignationCollisionException.DEFAULT_MESSAGE}",
+                            f"{method}: {TokenDesignationCollisionException.MSG}",
                         )
                     )
                 )
@@ -117,9 +117,9 @@ class TokenCollisionDetector(CollisionDetector[Token]):
                     target=target,
                     collider=member,
                     exception=TokenCollisionDetectionException(
-                        message=f"{method}: {TokenCollisionDetectionException.ERROR_CODE}",
+                        msg=f"{method}: {TokenCollisionDetectionException.ERR_CODE}",
                         ex=TokenOpeningSquareCollisionException(
-                            f"{method}: {TokenOpeningSquareCollisionException.DEFAULT_MESSAGE}",
+                            f"{method}: {TokenOpeningSquareCollisionException.MSG}",
                         )
                     )
                 )

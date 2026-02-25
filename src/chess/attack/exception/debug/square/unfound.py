@@ -35,5 +35,5 @@ class AttackerSquareNotFoundException(AttackDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: No item was found at the attacker's position."
+    ERR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
+    MSG = "Attack failed: No item was found at the attacker's position."

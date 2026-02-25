@@ -37,5 +37,5 @@ class SquareContextValidationException(SquareContextException, ValidationExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "SquareContext validation failed."
+    ERR_CODE = "SQUARE_CONTEXT_VALIDATION_FAILURE"
+    MSG = "SquareContext validation failed."

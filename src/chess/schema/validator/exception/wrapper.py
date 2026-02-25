@@ -36,5 +36,5 @@ class SchemaValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Schema validation failed."
+    ERR_CODE = "SCHEMA_VALIDATION_FAILURE"
+    MSG = "Schema validation failed."

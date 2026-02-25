@@ -36,5 +36,5 @@ class SquareCollisionDetectionException(CollisionDetectionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COLLISION_DETECTION_OPERATION_FAILURE"
-    DEFAULT_MESSAGE = "SquareCollisionDetection operation failed."
+    ERR_CODE = "COLLISION_DETECTION_OPERATION_FAILURE"
+    MSG = "SquareCollisionDetection operation failed."

@@ -77,7 +77,7 @@ class IdValidator(Validator[int]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 IdValidationException(
-                    message=f"{method}: {IdValidationException.DEFAULT_MESSAGE}:",
+                    msg=f"{method}: {IdValidationException.MSG}:",
                     ex=validation.exception
                 )
             )

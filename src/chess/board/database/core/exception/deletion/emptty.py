@@ -35,5 +35,5 @@ class PoppingEmptyBoardStackException(BoardException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_EMPTY_BOARD_STACK_ERROR"
-    DEFAULT_MESSAGE = "Board deletion failed: BoardStackService does not own any boards."
+    ERR_CODE = "POPPING_EMPTY_BOARD_STACK_ERROR"
+    MSG = "Board deletion failed: BoardStackService does not own any boards."

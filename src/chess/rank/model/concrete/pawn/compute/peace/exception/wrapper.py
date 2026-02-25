@@ -35,5 +35,5 @@ class PawnPeacefulSpanComputationException(SpanComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PAWN_PEACEFUL_SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Pawn peaceful span computation failed."
+    ERR_CODE = "PAWN_PEACEFUL_SPAN_COMPUTATION_FAILURE"
+    MSG = "Pawn peaceful span computation failed."

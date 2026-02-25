@@ -17,13 +17,13 @@ __all__ = [
 
 
 class ResolutionServiceException(ServiceException):
-    ERROR_CODE = "RESOLUTION_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CollisionResolutionService raised an exception."
+    ERR_CODE = "RESOLUTION_SERVICE_ERROR"
+    MSG = "CollisionResolutionService raised an exception."
 
 
 class ResolutionException(ChessException):
-    ERROR_CODE = "RESOLUTION_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Resolution raised an exception."
+    ERR_CODE = "RESOLUTION_FAILED_ERROR"
+    MSG = "Resolution raised an exception."
 
 
 

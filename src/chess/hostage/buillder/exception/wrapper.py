@@ -36,5 +36,5 @@ class HostageBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "Hostage_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Hostage build failed."
+    ERR_CODE = "Hostage_BUILD_FAILED"
+    MSG = "Hostage build failed."

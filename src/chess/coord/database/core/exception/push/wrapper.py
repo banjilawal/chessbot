@@ -38,5 +38,5 @@ class PushingCoordFailedException(CoordStackException, InsertionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PUSHING_COORD_ONTO_STACK_FAILURE"
-    DEFAULT_MESSAGE = "Pushing a Coord onto the stack failed."
+    ERR_CODE = "PUSHING_COORD_ONTO_STACK_FAILURE"
+    MSG = "Pushing a Coord onto the stack failed."

@@ -37,5 +37,5 @@ class BoardOwnedByDifferentArenaException(BoardException, ArenaException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_OWNED_BY_DIFFERENT_ARENA"
-    DEFAULT_MESSAGE = "Board validation failed: The board belongs to a different arena."
+    ERR_CODE = "BOARD_OWNED_BY_DIFFERENT_ARENA"
+    MSG = "Board validation failed: The board belongs to a different arena."

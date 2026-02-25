@@ -38,5 +38,5 @@ class BoardSearchRouteException(BoardException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_BOARD_SEARCH_ROUTE_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "Board search failed: No search method was provided for the Board attribute."
+    ERR_CODE = "NO_BOARD_SEARCH_ROUTE_ROUTE_ERROR"
+    MSG = "Board search failed: No search method was provided for the Board attribute."

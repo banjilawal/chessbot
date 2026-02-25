@@ -77,8 +77,8 @@ class TeamFinder(DataFinder[Team]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TeamSearchException(
-                    message=f"{method}: {TeamSearchException.ERROR_CODE}",
-                    ex=TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {TeamSearchException.ERR_CODE}",
+                    ex=TeamSearchDatasetNullException(f"{method}: {TeamSearchDatasetNullException.MSG}")
                 )
             )
         # Handle the case that, dataset is the wrong type
@@ -86,7 +86,7 @@ class TeamFinder(DataFinder[Team]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TeamSearchException(
-                    message=f"{method}: {TeamSearchException.ERROR_CODE}",
+                    msg=f"{method}: {TeamSearchException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected List[Team], got {type(dataset).__name__} instead.")
                 )
             )
@@ -110,8 +110,8 @@ class TeamFinder(DataFinder[Team]):
         # the exception chain.
         return SearchResult.failure(
             TeamSearchException(
-                message=f"{method}: {TeamSearchException.ERROR_CODE}",
-                ex=TeamSearchRouteException(f"{method}: {TeamSearchRouteException.ERROR_CODE}")
+                msg=f"{method}: {TeamSearchException.ERR_CODE}",
+                ex=TeamSearchRouteException(f"{method}: {TeamSearchRouteException.ERR_CODE}")
             )
         )
     

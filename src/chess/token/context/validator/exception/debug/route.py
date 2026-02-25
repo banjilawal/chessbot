@@ -38,5 +38,5 @@ class TokenContextValidationRouteException(TokenContextException, NoExecutionRou
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_TOKEN_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "TokenContext validation failed: No validation route was provided for the Token attribute."
+    ERR_CODE = "NO_TOKEN_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "TokenContext validation failed: No validation route was provided for the Token attribute."

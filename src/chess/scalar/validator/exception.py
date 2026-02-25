@@ -51,19 +51,19 @@ class ScalarValidationException(ScalarException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCALAR_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Scalar validation failed."
+    ERR_CODE = "SCALAR_VALIDATION_FAILURE"
+    MSG = "Scalar validation failed."
 
 
 
 #======================# SCALAR BOUNDS EXCEPTION #======================#
 class ScalarBelowBoundsException(ScalarValidationException):
     """Raised if scalar is below its < -LONGEST_KNIGHT_LEG_SIZE"""
-    ERROR_CODE = "SCALAR_LOWER_BOUND_ERROR"
-    DEFAULT_MESSAGE = "Scalar cannot be less than -LONGEST_KNIGHT_LEG_SIZE."
+    ERR_CODE = "SCALAR_LOWER_BOUND_ERROR"
+    MSG = "Scalar cannot be less than -LONGEST_KNIGHT_LEG_SIZE."
 
 
 class ScalarAboveBoundsException(ScalarValidationException):
     """Raised if scalar is above its > LONGEST_KNIGHT_LEG_SIZE"""
-    ERROR_CODE = "SCALAR_UPPER_BOUND_ERROR"
-    DEFAULT_MESSAGE = "Scalar cannot be greater than LONGEST_KNIGHT_LEG_SIZE."
+    ERR_CODE = "SCALAR_UPPER_BOUND_ERROR"
+    MSG = "Scalar cannot be greater than LONGEST_KNIGHT_LEG_SIZE."

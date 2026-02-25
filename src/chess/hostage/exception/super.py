@@ -32,5 +32,5 @@ class HostageException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "HOSTAGE_ERROR"
-    DEFAULT_MESSAGE = "Hostage raised an exception."
+    ERR_CODE = "HOSTAGE_ERROR"
+    MSG = "Hostage raised an exception."

@@ -33,5 +33,5 @@ class ServiceExecutionValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_EXECUTION_VALIDATION_FAILED"
-    DEFAULT_MESSAGE = "ServiceExecution validation failed."
+    ERR_CODE = "SERVICE_EXECUTION_VALIDATION_FAILED"
+    MSG = "ServiceExecution validation failed."

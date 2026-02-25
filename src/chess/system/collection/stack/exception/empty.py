@@ -35,5 +35,5 @@ class PoppingEmptyStackException(StackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_EMPTY_STACK_ERROR"
-    DEFAULT_MESSAGE = "Stack is empty. There is nothing to pop."
+    ERR_CODE = "POPPING_EMPTY_STACK_ERROR"
+    MSG = "Stack is empty. There is nothing to pop."

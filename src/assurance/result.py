@@ -18,12 +18,12 @@ class Result(Generic[T]):
     self,
     status: OperationStatus,
     payload: Optional[T] = None,
-    message: Optional[str] = None,
+    msg: Optional[str] = None,
     exception: Optional[Exception] = None,
   ):
     self._status = status
     self._payload = payload
-    self._message = message
+    self._msg = msg
     self._exception = exception
 
 
@@ -38,8 +38,8 @@ class Result(Generic[T]):
 
 
   @property
-  def message(self) -> Optional[str]:
-    return self._message
+  def msg(self) -> Optional[str]:
+    return self._msg
 
 
   @property

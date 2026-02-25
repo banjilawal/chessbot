@@ -142,11 +142,11 @@ class Player(ABC):
             
             # if discover is None:
             #   raise PieceNotFoundException(
-            #     f"{method}: {PieceNotFoundException.DEFAULT_MESSAGE} at index {array_index}"
+            #     f"{method}: {PieceNotFoundException.MSG} at index {array_index}"
             #   )
             
             if piece.current_position is None:
-                raise PieceCoordNullException(f"{method}: {PieceCoordNullException.DEFAULT_MESSAGE}")
+                raise PieceCoordNullException(f"{method}: {PieceCoordNullException.MSG}")
             
             if isinstance(piece, CombatantPiece) and piece.victor is not None:
                 raise PrisonerEscapeException(f"{method}: Cannot move {piece.name} it has been captured.")
@@ -156,9 +156,9 @@ class Player(ABC):
                 raise validation.exception
             
             if piece.current_position == destination:
-                raise AlreadyAtDestinationException(f"{method}: {AlreadyAtDestinationException.DEFAULT_MESSAGE}")
+                raise AlreadyAtDestinationException(f"{method}: {AlreadyAtDestinationException.MSG}")
             
             piece.rank.walk(piece=piece, destination=destination)
         
         except (NullPieceException, ConflictingTeamException) as e:
-            raise AddPieceException(f"{method}: {AddPieceException.DEFAULT_MESSAGE}")
+            raise AddPieceException(f"{method}: {AddPieceException.MSG}")

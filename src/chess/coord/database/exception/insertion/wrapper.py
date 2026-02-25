@@ -38,5 +38,5 @@ class UniqueCoordInsertionException(CoordException, InsertionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_COORD_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Unique coord insertion failed."
+    ERR_CODE = "UNIQUE_COORD_INSERTION_FAILURE"
+    MSG = "Unique coord insertion failed."

@@ -40,7 +40,7 @@ class TurnSceneValidator(Validator[TurnScene]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullTurnSceneException(f"{method}: {NullTurnSceneException.DEFAULT_MESSAGE}")
+                    NullTurnSceneException(f"{method}: {NullTurnSceneException.MSG}")
                 )
             
             if not isinstance(candidate, TurnScene):
@@ -74,7 +74,7 @@ class TurnSceneValidator(Validator[TurnScene]):
             if turn_scene.square is not None and turn_scene.actor_square.coord != actor.coord:
                 return ValidationResult.failure(
                     ActorAndScenePropCoordMismatchException(
-                        f"{method}: {ActorAndScenePropCoordMismatchException.DEFAULT_MESSAGE}"
+                        f"{method}: {ActorAndScenePropCoordMismatchException.MSG}"
                     )
                 )
             
@@ -103,7 +103,7 @@ class TurnSceneValidator(Validator[TurnScene]):
             
             if search_result.is_empty():
                 return ValidationResult.failure(
-                    SquareInvariantBreachException(f"{method}: {SquareInvariantBreachException.DEFAULT_MESSAGE}")
+                    SquareInvariantBreachException(f"{method}: {SquareInvariantBreachException.MSG}")
                 )
             
             actor_square = cast(Square, search_result.payload)
@@ -114,7 +114,7 @@ class TurnSceneValidator(Validator[TurnScene]):
             if actor_square.occupant != actor:
                 return ValidationResult.failure(
                     PieceDoesNotOwnCurrentSquareException(
-                        f"{method}: {PieceDoesNotOwnCurrentSquareException.DEFAULT_MESSAGE}"
+                        f"{method}: {PieceDoesNotOwnCurrentSquareException.MSG}"
                     )
                 )
             
@@ -137,14 +137,14 @@ class TurnSceneValidator(Validator[TurnScene]):
             if piece not in board.pieces:
                 return ValidationResult.failure(
                     PieceNotOnBoardCannotActException(
-                        f"{method}: {PieceNotOnBoardCannotActException.DEFAULT_MESSAGE}"
+                        f"{method}: {PieceNotOnBoardCannotActException.MSG}"
                     )
                 )
             
             if isinstance(piece, KingPiece) and cast(KingPiece, piece).is_checkmated:
                 return ValidationResult.failure(
                     CheckmatedKingCannotActException(
-                        f"{method}: {CheckmatedKingCannotActException.DEFAULT_MESSAGE}"
+                        f"{method}: {CheckmatedKingCannotActException.MSG}"
                     )
                 )
             
@@ -155,21 +155,21 @@ class TurnSceneValidator(Validator[TurnScene]):
                 if combatant_piece.victor is not None:
                     return ValidationResult.failure(
                         CapturedPieceCannotActException(
-                            f"{method}: {CapturedPieceCannotActException.DEFAULT_MESSAGE}"
+                            f"{method}: {CapturedPieceCannotActException.MSG}"
                         )
                     )
                 
                 if combatant_piece not in team.roster:
                     return ValidationResult.failure(
                         PieceNotOnRosterCannotActException(
-                            f"{method}: {PieceNotOnRosterCannotActException.DEFAULT_MESSAGE}"
+                            f"{method}: {PieceNotOnRosterCannotActException.MSG}"
                         )
                     )
             
             if piece.current_position is None or piece.positions.is_empty():
                 return ValidationResult.failure(
                     PieceWithNoStartingPlacementException(
-                        f"{method}: {PieceWithNoStartingPlacementException.DEFAULT_MESSAGE}"
+                        f"{method}: {PieceWithNoStartingPlacementException.MSG}"
                     )
                 )
             

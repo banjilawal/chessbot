@@ -40,5 +40,5 @@ class FormationKeyValidationException(FormationKeyException, ValidationException
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_KEY_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "FormationKey validation failed."
+    ERR_CODE = "FORMATION_KEY_VALIDATION_FAILURE"
+    MSG = "FormationKey validation failed."

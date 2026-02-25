@@ -37,5 +37,5 @@ class ArenaAlreadyContainsTeamException(ArenaException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_ALREADY_CONTAINS_TEAM_ERROR"
-    DEFAULT_MESSAGE = "The team is already in the arena it cannot be added again."
+    ERR_CODE = "ARENA_ALREADY_CONTAINS_TEAM_ERROR"
+    MSG = "The team is already in the arena it cannot be added again."

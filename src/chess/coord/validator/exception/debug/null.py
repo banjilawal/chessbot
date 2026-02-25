@@ -37,5 +37,5 @@ class NullCoordException(CoordDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_COORD_ERROR"
-    DEFAULT_MESSAGE = "Coord validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_COORD_ERROR"
+    MSG = "Coord validation failed: The candidate cannot be null."

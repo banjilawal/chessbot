@@ -36,5 +36,5 @@ class PersonaValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Persona validation failed."
+    ERR_CODE = "PERSONA_VALIDATION_FAILURE"
+    MSG = "Persona validation failed."

@@ -78,8 +78,8 @@ class BoardFinder(DataFinder[Board]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 BoardSearchException(
-                    message=f"{method}: {BoardSearchException.ERROR_CODE}",
-                    ex=BoardSearchNullDatasetException( f"{method}: {BoardSearchNullDatasetException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {BoardSearchException.ERR_CODE}",
+                    ex=BoardSearchNullDatasetException( f"{method}: {BoardSearchNullDatasetException.MSG}")
                 )
             )
         # Handle the case that, dataset is the wrong type
@@ -87,8 +87,8 @@ class BoardFinder(DataFinder[Board]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 BoardSearchException(
-                    message=f"{method}: {BoardSearchException.ERROR_CODE}",
-                    ex=BoardSearchPayloadTypeException(f"{method}: {BoardSearchPayloadTypeException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {BoardSearchException.ERR_CODE}",
+                    ex=BoardSearchPayloadTypeException(f"{method}: {BoardSearchPayloadTypeException.MSG}")
                 )
             )
         # Handle the case that, the context fails validation.
@@ -97,7 +97,7 @@ class BoardFinder(DataFinder[Board]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 BoardSearchException(
-                    message=f"{method}: {BoardSearchException.ERROR_CODE}",
+                    msg=f"{method}: {BoardSearchException.ERR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -113,8 +113,8 @@ class BoardFinder(DataFinder[Board]):
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             BoardSearchException(
-                message=f"{method}: {BoardSearchException.ERROR_CODE}",
-                ex=BoardSearchRouteException(f"{method}: {BoardSearchRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {BoardSearchException.ERR_CODE}",
+                ex=BoardSearchRouteException(f"{method}: {BoardSearchRouteException.MSG}")
             )
         )
     

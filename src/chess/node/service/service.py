@@ -102,9 +102,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.MSG}",
                         ex=node_validation_result.exception
                     )
                 )
@@ -115,9 +115,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.MSG}",
                         ex=edge_validation_result.exception
                     )
                 )
@@ -127,11 +127,11 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.MSG}",
                         ex=IncomingEdgeWrongTailException(
-                            f"{method}: {IncomingEdgeWrongTailException.DEFAULT_MESSAGE}"
+                            f"{method}: {IncomingEdgeWrongTailException.MSG}"
                         )
                     )
                 )
@@ -144,9 +144,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.MSG}",
                         ex=edge_insertion_result.exception
                     )
                 )
@@ -183,9 +183,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.MSG}",
                         ex=node_validation_result.exception
                     )
                 )
@@ -196,9 +196,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.MSG}",
                         ex=edge_validation_result.exception
                     )
                 )
@@ -208,11 +208,11 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.MSG}",
                         ex=IncomingEdgeWrongTailException(
-                            f"{method}: {IncomingEdgeWrongTailException.DEFAULT_MESSAGE}"
+                            f"{method}: {IncomingEdgeWrongTailException.MSG}"
                         )
                     )
                 )
@@ -225,9 +225,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddIncomingEdgeFailedException.MSG}",
                         ex=edge_insertion_result.exception
                     )
                 )
@@ -264,9 +264,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=RemoveIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {RemoveIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {RemoveIncomingEdgeFailedException.MSG}",
                         ex=node_validation_result.exception
                     )
                 )
@@ -277,9 +277,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=RemoveIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {RemoveIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {RemoveIncomingEdgeFailedException.MSG}",
                         ex=edge_validation_result.exception
                     )
                 )
@@ -290,9 +290,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=RemoveIncomingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {RemoveIncomingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {RemoveIncomingEdgeFailedException.MSG}",
                         ex=deletion_result.exception
                     )
                 )
@@ -329,9 +329,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddOutgoingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddOutgoingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddOutgoingEdgeFailedException.MSG}",
                         ex=node_validation_result.exception
                     )
                 )
@@ -342,9 +342,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddOutgoingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddOutgoingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddOutgoingEdgeFailedException.MSG}",
                         ex=edge_validation_result.exception
                     )
                 )
@@ -354,11 +354,11 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddOutgoingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddOutgoingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddOutgoingEdgeFailedException.MSG}",
                         ex=OutgoingEdgeWrongHeadException(
-                            f"{method}: {OutgoingEdgeWrongHeadException.DEFAULT_MESSAGE}"
+                            f"{method}: {OutgoingEdgeWrongHeadException.MSG}"
                         )
                     )
                 )
@@ -371,9 +371,9 @@ class NodeService(EntityService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                     ex=AddOutgoingEdgeFailedException(
-                        message=f"ServiceId:{self.id}, {method}: {AddOutgoingEdgeFailedException.DEFAULT_MESSAGE}",
+                        msg=f"ServiceId:{self.id}, {method}: {AddOutgoingEdgeFailedException.MSG}",
                         ex=edge_insertion_result.exception
                     )
                 )
@@ -411,9 +411,9 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
         # Return the exception chain on failure.
         return DeletionResult.failure(
             NodeServiceException(
-                message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                 ex=RemoveOutgoingEdgeFailedException(
-                    message=f"ServiceId:{self.id}, {method}: {RemoveOutgoingEdgeFailedException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {RemoveOutgoingEdgeFailedException.MSG}",
                     ex=node_validation_result.exception
                 )
             )
@@ -424,9 +424,9 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
         # Return the exception chain on failure.
         return DeletionResult.failure(
             NodeServiceException(
-                message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                 ex=RemoveOutgoingEdgeFailedException(
-                    message=f"ServiceId:{self.id}, {method}: {RemoveOutgoingEdgeFailedException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {RemoveOutgoingEdgeFailedException.MSG}",
                     ex=edge_validation_result.exception
                 )
             )
@@ -437,9 +437,9 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
         # Return the exception chain on failure.
         return DeletionResult.failure(
             NodeServiceException(
-                message=f"ServiceId:{self.id}, {method}: {NodeServiceException.DEFAULT_MESSAGE}",
+                msg=f"ServiceId:{self.id}, {method}: {NodeServiceException.MSG}",
                 ex=RemoveOutgoingEdgeFailedException(
-                    message=f"ServiceId:{self.id}, {method}: {RemoveOutgoingEdgeFailedException.DEFAULT_MESSAGE}",
+                    msg=f"ServiceId:{self.id}, {method}: {RemoveOutgoingEdgeFailedException.MSG}",
                     ex=deletion_result.exception
                 )
             )

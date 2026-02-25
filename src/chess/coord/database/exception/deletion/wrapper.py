@@ -38,5 +38,5 @@ class ExhaustiveCoordDeletionException(CoordException, DeletionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXHAUSTIVE_COORD_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Exhaustive coord deletion failed."
+    ERR_CODE = "EXHAUSTIVE_COORD_DELETION_FAILURE"
+    MSG = "Exhaustive coord deletion failed."

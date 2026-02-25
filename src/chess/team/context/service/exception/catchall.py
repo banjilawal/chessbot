@@ -38,5 +38,5 @@ class TeamContextServiceException(TeamContextException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_CONTEXT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "TeamContextService raised an exception."
+    ERR_CODE = "TEAM_CONTEXT_SERVICE_ERROR"
+    MSG = "TeamContextService raised an exception."

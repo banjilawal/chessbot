@@ -38,7 +38,7 @@ class HostageSearchRouteException(HostageException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_HOSTAGE_SEARCH_ROUTE_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "NO_HOSTAGE_SEARCH_ROUTE_ROUTE_ERROR"
+    MSG = (
         "Hostage search failed: No search method was provided for the Hostage attribute."
     )

@@ -92,9 +92,9 @@ class NodeContextBuilder(Builder[NodeContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 NodeContextBuildException(
-                    message=f"{method}: {NodeContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {NodeContextBuildException.MSG}",
                     ex=ZeroNodeContextFlagsException(
-                        f"{method}: {ZeroNodeContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ZeroNodeContextFlagsException.MSG}"
                     )
                 )
             )
@@ -103,9 +103,9 @@ class NodeContextBuilder(Builder[NodeContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 NodeContextBuildException(
-                    message=f"{method}: {NodeContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {NodeContextBuildException.MSG}",
                     ex=ExcessiveNodeContextFlagsException(
-                        f"{method}: {ExcessiveNodeContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveNodeContextFlagsException.MSG}"
                     )
                 )
             )
@@ -122,7 +122,7 @@ class NodeContextBuilder(Builder[NodeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     NodeContextBuildException(
-                        message=f"{method}: {NodeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {NodeContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -136,7 +136,7 @@ class NodeContextBuilder(Builder[NodeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     NodeContextBuildException(
-                        message=f"{method}: {NodeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {NodeContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -150,7 +150,7 @@ class NodeContextBuilder(Builder[NodeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     NodeContextBuildException(
-                        message=f"{method}: {NodeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {NodeContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -164,7 +164,7 @@ class NodeContextBuilder(Builder[NodeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     NodeContextBuildException(
-                        message=f"{method}: {NodeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {NodeContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -174,7 +174,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             NodeContextBuildException(
-                message=f"{method}: {NodeContextBuildException.DEFAULT_MESSAGE}",
-                ex=NodeContextBuildRouteException(f"{method}: {NodeContextBuildRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {NodeContextBuildException.MSG}",
+                ex=NodeContextBuildRouteException(f"{method}: {NodeContextBuildRouteException.MSG}")
             )
         )

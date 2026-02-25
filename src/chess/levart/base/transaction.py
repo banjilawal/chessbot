@@ -86,14 +86,14 @@ class TravelTransaction(Transaction[TravelEvent]):
   #   )
   #   if not destination_search.is_success():
   #     return TransactionResult(rollback_exception=EventResourceNotFoundExeception(
-  #         f"{method}: {DestinationSquareNotFoundException.DEFAULT_MESSAGE}"
+  #         f"{method}: {DestinationSquareNotFoundException.MSG}"
   #       # EventResourceNotFoundException
   #       )
   #     )
   #
   #   if len(destination_search.payload) > 1:
   #     return TransactionResult(rollback_exception=DestinationSquareColiisonException(
-  #         f"{method}: {DestinationSquareCollisionException.DEFAULT_MESSAGE}"
+  #         f"{method}: {DestinationSquareCollisionException.MSG}"
   #       )
   #     )
   #
@@ -138,7 +138,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #     return TransactionResult(
   #       op_result_id,
   #       travel,
-  #       OccupationSearchEventException(f"{method}: {OccupationSearchEventException.DEFAULT_MESSAGE}")
+  #       OccupationSearchEventException(f"{method}: {OccupationSearchEventException.MSG}")
   #     )
   #   actor_square = cast(Square, search_result.payload)
   #
@@ -226,7 +226,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       result_id=op_result_id,
   #       travel=directive,
   #       was_rolled_back=True,
-  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
   #     )
   #
   #   actor_square.occupant = None
@@ -240,7 +240,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       result_id=op_result_id,
   #       travel=directive,
   #       was_rolled_back=True,
-  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
   #     )
   #
   #   directive.traveler.positions.push_coord(directive.friend.position)
@@ -255,7 +255,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       result_id=op_result_id,
   #       travel=directive,
   #       was_rolled_back=True,
-  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
   #     )
   #
   #   return TransactionResult(
@@ -304,7 +304,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       result_id=op_result_id,
   #       travel=directive,
   #       was_rolled_back=True,
-  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
   #     )
   #
   #   success_directive = ScanDirective(
@@ -331,7 +331,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #     return TransactionResult(
   #       result_id=op_result_id,
   #       travel=directive,
-  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
   #       was_rolled_back=True
   #     )
   #
@@ -346,7 +346,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       travel=directive,
   #       was_rolled_back=True,
   #       rollback_exception=RemoveTeamMemberRolledBackException(
-  #         f"{method}: {RemoveTeamMemberRolledBackException.DEFAULT_MESSAGE}"
+  #         f"{method}: {RemoveTeamMemberRolledBackException.MSG}"
   #       )
   #     )
   #
@@ -362,7 +362,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       travel=directive,
   #       was_rolled_back=True,
   #       rollback_exception=AddEnemyHostageRolledBackException(
-  #         f"{method}: {AddEnemyHostageRolledBackException.DEFAULT_MESSAGE}"
+  #         f"{method}: {AddEnemyHostageRolledBackException.MSG}"
   #       )
   #     )
   #
@@ -378,7 +378,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       result_id=op_result_id,
   #       travel=directive,
   #       was_rolled_back=True,
-  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+  #       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
   #     )
   #
   #   directive.board.pieces.remove(directive.enemy)
@@ -395,7 +395,7 @@ class TravelTransaction(Transaction[TravelEvent]):
   #       travel=directive,
   #       was_rolled_back=True,
   #       rollback_exception=BoardPieceRemovalRollbackException(
-  #         f"{method}: {BoardPieceRemovalRollbackException.DEFAULT_MESSAGE}"
+  #         f"{method}: {BoardPieceRemovalRollbackException.MSG}"
   #       )
   #     )
   #

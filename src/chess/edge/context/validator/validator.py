@@ -84,8 +84,8 @@ class EdgeContextValidator(Validator[EdgeContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 EdgeContextValidationException(
-                    message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
-                    ex=NullEdgeContextException(f"{method}: {NullEdgeContextException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {EdgeContextValidationException.MSG}",
+                    ex=NullEdgeContextException(f"{method}: {NullEdgeContextException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -93,7 +93,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 EdgeContextValidationException(
-                    message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {EdgeContextValidationException.MSG}",
                     ex=TypeError(
                         f"{method}: Was expecting a EdgeContext, got {type(candidate).__name__} instead."
                     )
@@ -108,8 +108,8 @@ class EdgeContextValidator(Validator[EdgeContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 EdgeContextValidationException(
-                    message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
-                    ex=ZeroEdgeContextFlagsException(f"{method}: {ZeroEdgeContextFlagsException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {EdgeContextValidationException.MSG}",
+                    ex=ZeroEdgeContextFlagsException(f"{method}: {ZeroEdgeContextFlagsException.MSG}")
                 )
             )
         # Handle the case of too many attributes being used in a search.
@@ -117,9 +117,9 @@ class EdgeContextValidator(Validator[EdgeContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 EdgeContextValidationException(
-                    message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {EdgeContextValidationException.MSG}",
                     ex=ExcessiveEdgeContextFlagsException(
-                        f"{method}: {ExcessiveEdgeContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveEdgeContextFlagsException.MSG}"
                     )
                 )
             )
@@ -132,7 +132,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
-                        message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextValidationException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -146,7 +146,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
-                        message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextValidationException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -160,7 +160,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
-                        message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextValidationException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -174,7 +174,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
-                        message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextValidationException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -188,7 +188,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
-                        message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextValidationException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -201,7 +201,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     EdgeContextValidationException(
-                        message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextValidationException.MSG}",
                         ex=TypeError(
                             f"{method}: Was expecting a EdgeState, got {type(candidate).__name__} instead."
                         )
@@ -213,9 +213,9 @@ class EdgeContextValidator(Validator[EdgeContext]):
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             EdgeContextValidationException(
-                message=f"{method}: {EdgeContextValidationException.DEFAULT_MESSAGE}",
+                msg=f"{method}: {EdgeContextValidationException.MSG}",
                 ex=EdgeContextValidationRouteException(
-                    f"{method}: {EdgeContextValidationRouteException.DEFAULT_MESSAGE}"
+                    f"{method}: {EdgeContextValidationRouteException.MSG}"
                 )
             )
         )

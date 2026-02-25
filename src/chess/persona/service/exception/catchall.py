@@ -38,5 +38,5 @@ class PersonaServiceException(PersonaException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "PersonaService raised an exception."
+    ERR_CODE = "PERSONA_SERVICE_ERROR"
+    MSG = "PersonaService raised an exception."

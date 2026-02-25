@@ -36,5 +36,5 @@ class NumberValidationException(NumberException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NUMBER_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Number validation failed."
+    ERR_CODE = "NUMBER_VALIDATION_FAILURE"
+    MSG = "Number validation failed."

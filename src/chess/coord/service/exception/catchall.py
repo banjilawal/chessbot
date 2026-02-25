@@ -38,5 +38,5 @@ class CoordServiceException(CoordException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CoordService raised an exception."
+    ERR_CODE = "COORD_SERVICE_ERROR"
+    MSG = "CoordService raised an exception."

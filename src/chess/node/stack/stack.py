@@ -117,9 +117,9 @@ class NodeStack(StackService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeStackException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeStackException.ERR_CODE}",
                     ex=NodePushException(
-                        message=f"{method}: {NodePushException.ERROR_CODE}", 
+                        msg=f"{method}: {NodePushException.ERR_CODE}", 
                         ex=validation.exception
                     )
                 )
@@ -129,10 +129,10 @@ class NodeStack(StackService[Node]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 NodeStackException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeStackException.ERR_CODE}",
                     ex=NodePushException(
-                        message=f"{method}: {NodePushException.ERROR_CODE}",
-                        ex=AddingDuplicateNodeException(f"{method}: {AddingDuplicateNodeException.DEFAULT_MESSAGE}")
+                        msg=f"{method}: {NodePushException.ERR_CODE}",
+                        ex=AddingDuplicateNodeException(f"{method}: {AddingDuplicateNodeException.MSG}")
                     )
                 )
             )
@@ -164,11 +164,11 @@ class NodeStack(StackService[Node]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 NodeStackException(
-                    message=f"ServiceId:{self.id}, {method}: {NodeStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {NodeStackException.ERR_CODE}",
                     ex=NodePopException(
-                        message=f"{method}: {NodePopException.ERROR_CODE}",
+                        msg=f"{method}: {NodePopException.ERR_CODE}",
                         ex=PoppingEmptyNodeStackException(
-                            f"{method}: {PoppingEmptyNodeStackException.DEFAULT_MESSAGE}"
+                            f"{method}: {PoppingEmptyNodeStackException.MSG}"
                         )
                     )
                 )
@@ -207,7 +207,7 @@ class NodeStack(StackService[Node]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 NodeStackException(
-                    message=f"ServiceID:{self.id} {method}: {NodeStackException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {NodeStackException.ERR_CODE}",
                     ex=query_result.exception
                 )
             )

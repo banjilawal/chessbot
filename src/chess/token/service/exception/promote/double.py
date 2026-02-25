@@ -35,5 +35,5 @@ class PawnAlreadyPromotedException(PawnTokenException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PAWN_ALREADY_PROMOTED_ERROR"
-    DEFAULT_MESSAGE = "Pawn promotion failed: The pawn had already been promoted."
+    ERR_CODE = "PAWN_ALREADY_PROMOTED_ERROR"
+    MSG = "Pawn promotion failed: The pawn had already been promoted."

@@ -37,5 +37,5 @@ class ArenaTeamDeletionBlockedException(ArenaException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BLOCKED_ARENA_TEAM_REMOVAL_ERROR"
-    DEFAULT_MESSAGE = "Once a game has started a team cannot be removed from the arena."
+    ERR_CODE = "BLOCKED_ARENA_TEAM_REMOVAL_ERROR"
+    MSG = "Once a game has started a team cannot be removed from the arena."

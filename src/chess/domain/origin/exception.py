@@ -31,26 +31,26 @@ class DomainOriginException(ChessException):
     Super class of exception raised by DomainOrigin objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
-    ERROR_CODE = "DOMAIN_ORIGIN_ERROR"
-    DEFAULT_MESSAGE = "An rollback_exception was raised by a DomainOrigin."
+    ERR_CODE = "DOMAIN_ORIGIN_ERROR"
+    MSG = "An rollback_exception was raised by a DomainOrigin."
 
 
 #====================== NULL DOMAIN_ORIGIN EXCEPTION #======================#
 class NullDomainOriginException(DomainOriginException, NullException):
     """Raised if an entity, method, or operation requires DomainOrigin but gets null instead."""
-    ERROR_CODE = "NULL_DOMAIN_ORIGIN_ERROR"
-    DEFAULT_MESSAGE = "A DomainOrigin cannot be null."
+    ERR_CODE = "NULL_DOMAIN_ORIGIN_ERROR"
+    MSG = "A DomainOrigin cannot be null."
 
 
 #====================== DOMAIN_ORIGIN VALIDATION EXCEPTION #======================#
 class InvalidDomainOriginException(DomainOriginException, ValidationException):
     """Catchall Exception for DomainOriginValidator when a candidate fails a sanity check.""""""
-    ERROR_CODE = "DOMAIN_ORIGIN_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "DomainOrigin validation failed."
+    ERR_CODE = "DOMAIN_ORIGIN_VALIDATION_ERROR"
+    MSG = "DomainOrigin validation failed."
 
 
 #====================== DOMAIN_ORIGIN BUILD EXCEPTION #======================#
 class DomainOriginBuildException(DomainOriginException, BuildException):
     """Catchall Exception for DomainOriginBuilder when it stops because of an error."""
-    ERROR_CODE = "DOMAIN_ORIGIN_BUILD_FAILED"
-    DEFAULT_MESSAGE = "DomainOrigin build failed."
+    ERR_CODE = "DOMAIN_ORIGIN_BUILD_FAILED"
+    MSG = "DomainOrigin build failed."

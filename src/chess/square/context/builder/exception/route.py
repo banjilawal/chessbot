@@ -38,5 +38,5 @@ class SquareContextBuildRouteException(SquareContextException,  NoExecutionRoute
     # INHERITED ATTRIBUTES:
     Non
     """
-    ERROR_CODE = "NO_SQUARE_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "SquareContext build failed: No build route existed for the attribute."
+    ERR_CODE = "NO_SQUARE_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "SquareContext build failed: No build route existed for the attribute."

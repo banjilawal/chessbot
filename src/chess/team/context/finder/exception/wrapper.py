@@ -38,5 +38,5 @@ class TeamSearchException(TeamException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "TeamSearch failed."
+    ERR_CODE = "TEAM_SEARCH_FAILURE"
+    MSG = "TeamSearch failed."

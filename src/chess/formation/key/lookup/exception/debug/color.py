@@ -38,5 +38,5 @@ class FormationColorBoundsException(FormationException, BoundsException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_COLOR_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "FormationLookup failed: Target was outside the set of possible Formation colors."
+    ERR_CODE = "FORMATION_COLOR_BOUNDS_ERROR"
+    MSG = "FormationLookup failed: Target was outside the set of possible Formation colors."

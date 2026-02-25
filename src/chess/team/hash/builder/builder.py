@@ -36,7 +36,7 @@ class TeamHashBuilder(Builder[TeamHash]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TeamHashBuildException(
-                    message=f"{method}: {TeamHashBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TeamHashBuildException.MSG}",
                     ex=white_team_validation_result.exception
                 )
             )
@@ -45,9 +45,9 @@ class TeamHashBuilder(Builder[TeamHash]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TeamHashBuildException(
-                    message=f"{method}: {TeamHashBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TeamHashBuildException.MSG}",
                     ex=WhiteTeamHasWrongSchemaException(
-                        f"{method}: {WhiteTeamHasWrongSchemaException.DEFAULT_MESSAGE}",
+                        f"{method}: {WhiteTeamHasWrongSchemaException.MSG}",
                     )
                 )
             )
@@ -56,9 +56,9 @@ class TeamHashBuilder(Builder[TeamHash]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TeamHashBuildException(
-                    message=f"{method}: {TeamHashBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TeamHashBuildException.MSG}",
                     ex=BlackTeamHasWrongSchemaException(
-                        f"{method}: {BlackTeamHasWrongSchemaException.DEFAULT_MESSAGE}",
+                        f"{method}: {BlackTeamHasWrongSchemaException.MSG}",
                     )
                 )
             )
@@ -67,9 +67,9 @@ class TeamHashBuilder(Builder[TeamHash]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TeamHashBuildException(
-                    message=f"{method}: {TeamHashBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TeamHashBuildException.MSG}",
                     ex=TeamSchemaCollisionException(
-                        f"{method}:{TeamSchemaCollisionException.DEFAULT_MESSAGE}",
+                        f"{method}:{TeamSchemaCollisionException.MSG}",
                     )
                 )
             )

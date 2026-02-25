@@ -38,5 +38,5 @@ class BoardServiceInsertionOpFailedException(BoardServiceException, InsertionExc
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_SERVICE_INSERTION_OPERATION_FAILURE"
-    DEFAULT_MESSAGE = "BoardService insertion operation failed."
+    ERR_CODE = "BOARD_SERVICE_INSERTION_OPERATION_FAILURE"
+    MSG = "BoardService insertion operation failed."

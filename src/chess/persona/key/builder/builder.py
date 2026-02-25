@@ -87,8 +87,8 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 PersonaKeyBuildException(
-                    message=f"{method}: {PersonaKeyBuildException.ERROR_CODE}",
-                    ex=ZeroPersonaKeysException(f"{method}: {ZeroPersonaKeysException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
+                    ex=ZeroPersonaKeysException(f"{method}: {ZeroPersonaKeysException.MSG}")
                 )
             )
         # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
@@ -96,7 +96,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 PersonaKeyBuildException(
-                    message=f"{method}: {PersonaKeyBuildException.ERROR_CODE}",
+                    msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
                     ex=ExcessivePersonaKeysException(f"{method}: {ExcessivePersonaKeysException}")
                 )
             )
@@ -109,7 +109,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     PersonaKeyBuildException(
-                        message=f"{method}: {PersonaKeyBuildException.ERROR_CODE}",
+                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -123,7 +123,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     PersonaKeyBuildException(
-                        message=f"{method}: {PersonaKeyBuildException.ERROR_CODE}",
+                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -138,7 +138,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     PersonaKeyBuildException(
-                        message=f"{method}: {PersonaKeyBuildException.ERROR_CODE}",
+                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -153,7 +153,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     PersonaKeyBuildException(
-                        message=f"{method}: {PersonaKeyBuildException.ERROR_CODE}",
+                        msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -163,9 +163,9 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
         # The default path returns failure.
         BuildResult.failure(
             PersonaKeyBuildException(
-                message=f"{method}: {PersonaKeyBuildException.ERROR_CODE}",
+                msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
                 ex=PersonaKeyBuildRouteException(
-                    f"{method}: {PersonaKeyBuildRouteException.DEFAULT_MESSAGE}"
+                    f"{method}: {PersonaKeyBuildRouteException.MSG}"
                 )
             )
         )

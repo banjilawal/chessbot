@@ -38,5 +38,5 @@ class SchemaDebugException(SchemaException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "SCHEMA_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A SchemaDebugException was raised."
+    ERR_CODE = "SCHEMA_DEBUG_ERROR"
+    MSG = "A SchemaDebugException was raised."

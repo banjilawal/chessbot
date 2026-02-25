@@ -36,5 +36,5 @@ class RankQuotaAnalysisException(ComputationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RANK_QUOTA_ANALYSIS_FAILURE"
-    DEFAULT_MESSAGE = "Rank quota analysis failed."
+    ERR_CODE = "RANK_QUOTA_ANALYSIS_FAILURE"
+    MSG = "Rank quota analysis failed."

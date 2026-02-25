@@ -58,7 +58,7 @@ class EdgeValidator(Validator[Edge]):
             1.  If the candidate fails existence or type tests send the exception in the ValidationResult.
                 Else, cast to Edge instance, edge.
             2.  If either the head, tail, distance, heuristic or weight fail verification send an exception chain 
-                in the ValidationResult. Else, send the edge in the ValidationResult..
+                in the ValidationResult. Else, send the edge in the ValidationResult.
         # PARAMETERS:
             *   candidate (Any)
             *   node_validator (NodeValidator)
@@ -80,8 +80,8 @@ class EdgeValidator(Validator[Edge]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
-                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
-                    ex=NullEdgeException(f"{method}: {NullEdgeException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {ValidatingEdgeException.MSG}",
+                    ex=NullEdgeException(f"{method}: {NullEdgeException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -89,7 +89,7 @@ class EdgeValidator(Validator[Edge]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
-                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {ValidatingEdgeException.MSG}",
                     ex=TypeError(f"{method}: Expected an Edge, got {type(candidate).__name__}. instead")
                 )
             )
@@ -102,7 +102,7 @@ class EdgeValidator(Validator[Edge]):
         if label_validation_result.is_failure:
             return ValidationResult.failure(
                 ValidatingEdgeException(
-                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {ValidatingEdgeException.MSG}",
                     ex=label_validation_result.exception
                 )
             )
@@ -117,9 +117,9 @@ class EdgeValidator(Validator[Edge]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
-                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {ValidatingEdgeException.MSG}",
                     ex=EdgeDistanceException(
-                        message="{method}: {EdgeDistanceException.DEFAULT_MESSAGE}",
+                        msg="{method}: {EdgeDistanceException.MSG}",
                         ex=distance_validation_result.exception
                     )
                 )
@@ -135,9 +135,9 @@ class EdgeValidator(Validator[Edge]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
-                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {ValidatingEdgeException.MSG}",
                     ex=EdgeHeuristicException(
-                        message=f"{method}: {EdgeHeuristicException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeHeuristicException.MSG}",
                         ex=heuristic_validation_result.exception
                     )
                 )
@@ -152,9 +152,9 @@ class EdgeValidator(Validator[Edge]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
-                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {ValidatingEdgeException.MSG}",
                     ex=EdgeWeightException(
-                        message=f"{method}: {EdgeWeightException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeWeightException.MSG}",
                         ex=weight_validation_result.exception
                     )
                 )
@@ -165,7 +165,7 @@ class EdgeValidator(Validator[Edge]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
-                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {ValidatingEdgeException.MSG}",
                     ex=head_validation_result.exception
                 )
             )
@@ -175,7 +175,7 @@ class EdgeValidator(Validator[Edge]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ValidatingEdgeException(
-                    message=f"{method}: {ValidatingEdgeException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {ValidatingEdgeException.MSG}",
                     ex=tail_validation_result.exception
                 )
             )
@@ -184,8 +184,8 @@ class EdgeValidator(Validator[Edge]):
             # Return the exception chain on failure
             return ValidationResult.failure(
                 ValidatingEdgeException(
-                    message=f"{method} {ValidatingEdgeException.DEFAULT_MESSAGE}",
-                    ex=CircularEdgeException(f"{method}: {CircularEdgeException.DEFAULT_MESSAGE}")
+                    msg=f"{method} {ValidatingEdgeException.MSG}",
+                    ex=CircularEdgeException(f"{method}: {CircularEdgeException.MSG}")
                 )
             )
         # --- Send validated edge to the caller. ---#

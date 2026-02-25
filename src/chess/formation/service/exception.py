@@ -29,5 +29,5 @@ class FormationServiceException(FormationException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "FormationService raised an exception."
+    ERR_CODE = "FORMATION_SERVICE_ERROR"
+    MSG = "FormationService raised an exception."

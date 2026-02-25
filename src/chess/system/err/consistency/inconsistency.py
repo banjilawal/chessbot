@@ -22,6 +22,6 @@ class InconsistencyException(ChessException):
     """
     Raised if entity_service inconsistency is detected
     """
-    ERROR_CODE = "DATA_INCONSISTENCY_ERROR"
-    DEFAULT_MESSAGE = "A entity_service inconsistency was detected."
+    ERR_CODE = "DATA_INCONSISTENCY_ERROR"
+    MSG = "A entity_service inconsistency was detected."
 

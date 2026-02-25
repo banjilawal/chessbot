@@ -36,5 +36,5 @@ class NodeBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Node build failed."
+    ERR_CODE = "NODE_BUILD_FAILED"
+    MSG = "Node build failed."

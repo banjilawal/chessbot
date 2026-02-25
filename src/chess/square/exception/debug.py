@@ -37,5 +37,5 @@ class SquareDebugException(SquareException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "SQUARE_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A SquareDebugException was raised."
+    ERR_CODE = "SQUARE_DEBUG_ERROR"
+    MSG = "A SquareDebugException was raised."

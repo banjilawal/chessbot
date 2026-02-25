@@ -21,5 +21,5 @@ class PrisonerCannotBeActiveCombatantException(HostageException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FREE_AND_ACTIVE_ENEMY_CANNOT_BE_PRISONER_ERROR"
-    DEFAULT_MESSAGE = "Hostage validation failed: An enemy cannot be a prisoner if its status is free."
+    ERR_CODE = "FREE_AND_ACTIVE_ENEMY_CANNOT_BE_PRISONER_ERROR"
+    MSG = "Hostage validation failed: An enemy cannot be a prisoner if its status is free."

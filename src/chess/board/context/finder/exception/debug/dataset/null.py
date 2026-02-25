@@ -37,5 +37,5 @@ class BoardSearchNullDatasetException(BoardException, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_SEARCH_NULL_DATASET_ERROR"
-    DEFAULT_MESSAGE = "Board search failed: There was no dataset to search"
+    ERR_CODE = "BOARD_SEARCH_NULL_DATASET_ERROR"
+    MSG = "Board search failed: There was no dataset to search"

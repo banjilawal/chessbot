@@ -36,5 +36,5 @@ class RayComputationException(ComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RAY_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = " Ray computation failed."
+    ERR_CODE = "RAY_COMPUTATION_FAILURE"
+    MSG = " Ray computation failed."

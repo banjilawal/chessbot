@@ -11,7 +11,7 @@
 # # If the square_name has no position history its not on the board and cannot square_name.
 # if square_name.current_position is None or square_name.positions.is_empty():
 #   return ValidationResult(rollback_exception=NoInitialPlacementException(
-#     f"{method}: {NoInitialPlacementException.DEFAULT_MESSAGE}"
+#     f"{method}: {NoInitialPlacementException.MSG}"
 #   ))
 #
 # # If the square_name is not on its team_name roster it cannot be a TravelEvent resource_candidate. This might have been
@@ -19,21 +19,21 @@
 # team_name = square_name.team_name
 # if square_name not in team_name.roster:
 #   return ValidationResult(rollback_exception=ResourceNotOnRosterCannotMoveException(
-#     f"{method}: {ResourceNotOnRosterCannotMoveException.DEFAULT_MESSAGE}"
+#     f"{method}: {ResourceNotOnRosterCannotMoveException.MSG}"
 #   ))
 #
 # # A captured combatant cannot be a TravelEvent resource_candidate. No need for validating a checkmated
 # # occupation as an resource_candidate because the game ends when a occupation is in checkmate.
 # if isinstance(square_name, CombatantSquare) and square_name.victor is not None:
 #   return ValidationResult(rollback_exception=CapturedResourceCannotMoveException(
-#     f"{method}: {CapturedResourceCannotMoveException.DEFAULT_MESSAGE}"
+#     f"{method}: {CapturedResourceCannotMoveException.MSG}"
 #   ))
 #
 # if isinstance(square_name, KingSquare):
 #   king_square = cast(KingSquare, square_name)
 #   if king_square.is_checkmated:
 #     return ValidationResult(rollback_exception=CheckmatedKingCannotActException(
-#       f"{method}: {CheckmatedKingCannotActException.DEFAULT_MESSAGE}"
+#       f"{method}: {CheckmatedKingCannotActException.MSG}"
 #     ))
 #
 # environment_validation = Validator.validate(environment_candidate)
@@ -51,7 +51,7 @@
 # ))
 # if square_search.is_empty():
 #   return ValidationResult(rollback_exception=TravelResourceNotFoundException(
-#       f"{method}: {TravelResourceNotFoundException.DEFAULT_MESSAGE}"
+#       f"{method}: {TravelResourceNotFoundException.MSG}"
 #   ))
 #
 # if square_search.is_failure():
@@ -65,7 +65,7 @@
 #
 # if square_search.is_empty():
 #   return ValidationResult(rollback_exception=TravelResourceSquareNotFoundException(
-#     f"{method}: {TravelResourceSquareNotFoundException.DEFAULT_MESSAGE}"
+#     f"{method}: {TravelResourceSquareNotFoundException.MSG}"
 #   ))
 #
 # if square_search.is_failure():
@@ -78,7 +78,7 @@
 # # or some other integrity problem is likely.
 # if square_name.occupant is not square_name:
 #   return ValidationResult(rollback_exception=SquareMisMatchesTravelResourceException(
-#     f"{method}: {SquareMisMatchesTravelResourceException.DEFAULT_MESSAGE}"
+#     f"{method}: {SquareMisMatchesTravelResourceException.MSG}"
 #   ))
 
 # src/chess/owner/travel/base/coord_stack_validator/traveler/collision.py

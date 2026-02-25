@@ -32,5 +32,5 @@ class TeamException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "TEAM_ERROR"
-    DEFAULT_MESSAGE = "Team raised an exception."
+    ERR_CODE = "TEAM_ERROR"
+    MSG = "Team raised an exception."

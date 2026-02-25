@@ -153,7 +153,7 @@ class CollisionReport(DataResult[T], Generic[T]):
             target=None,
             exception=MethodNotImplementedException(
                 ex=exception,
-                message=(
+                msg=(
                     f"CollisionReport does not support Result.failure. "
                     f"Use CollisionReport.collision_failure instead."
                 ),
@@ -166,7 +166,7 @@ class CollisionReport(DataResult[T], Generic[T]):
             target=None,
             exception=MethodNotImplementedException(
                 ex=exception,
-                message=(
+                msg=(
                     f"CollisionReport does not support Result.timed_out. "
                     f"Use CollisionReport.collision_timed instead."
                 ),

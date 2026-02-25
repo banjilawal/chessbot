@@ -38,5 +38,5 @@ class ExhaustiveBoardDeletionException(BoardException, DeletionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXHAUSTIVE_BOARD_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Exhaustive board deletion failed."
+    ERR_CODE = "EXHAUSTIVE_BOARD_DELETION_FAILURE"
+    MSG = "Exhaustive board deletion failed."

@@ -37,5 +37,5 @@ class StartingSquareVisitException(UpdateException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "STARTING_SQUARE_VISIT_FAILURE"
-    DEFAULT_MESSAGE = "SquareVisit start failed."
+    ERR_CODE = "STARTING_SQUARE_VISIT_FAILURE"
+    MSG = "SquareVisit start failed."

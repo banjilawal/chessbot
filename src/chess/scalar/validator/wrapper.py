@@ -36,5 +36,5 @@ class ScalarValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCALAR_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Scalar validation failed."
+    ERR_CODE = "SCALAR_VALIDATION_FAILURE"
+    MSG = "Scalar validation failed."

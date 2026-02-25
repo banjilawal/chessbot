@@ -38,5 +38,5 @@ class PersonaDebugException(PersonaException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "PERSONA_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A PersonaDebugException was raised."
+    ERR_CODE = "PERSONA_DEBUG_ERROR"
+    MSG = "A PersonaDebugException was raised."

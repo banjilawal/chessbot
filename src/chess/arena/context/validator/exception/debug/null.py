@@ -37,5 +37,5 @@ class NullArenaContextException(ArenaContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_ARENA_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "ArenaContext validation failed: The candidate was null."
+    ERR_CODE = "NULL_ARENA_CONTEXT_ERROR"
+    MSG = "ArenaContext validation failed: The candidate was null."

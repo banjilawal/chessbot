@@ -40,5 +40,5 @@ class GameContextException(ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_CONTEXT_ERROR"
-    DEFAULT_ERROR_CODE = "GameContext raised an exception."
+    ERR_CODE = "GAME_CONTEXT_ERROR"
+    DEFAULT_ERR_CODE = "GameContext raised an exception."

@@ -35,5 +35,5 @@ class ServiceRequestNullException(ServiceRequestDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_REQUEST_NULL_ERROR"
-    DEFAULT_MESSAGE = "ServiceRequest validation failed: The candidate cannot be null."
+    ERR_CODE = "SERVICE_REQUEST_NULL_ERROR"
+    MSG = "ServiceRequest validation failed: The candidate cannot be null."

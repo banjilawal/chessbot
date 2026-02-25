@@ -37,7 +37,7 @@ class TeamHasDifferentOwnerException(TeamDebugException, NoRelationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_RELATION_BETWEEN_PLAYER_AND_TEAM_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "NO_RELATION_BETWEEN_PLAYER_AND_TEAM_ERROR"
+    MSG = (
         "Team validation failed: There was no relationship between the player and the candidate team."
     )

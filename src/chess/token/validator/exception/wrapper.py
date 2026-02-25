@@ -36,5 +36,5 @@ class TokenValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Token validation failed."
+    ERR_CODE = "TOKEN_VALIDATION_FAILURE"
+    MSG = "Token validation failed."

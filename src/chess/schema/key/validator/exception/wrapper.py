@@ -40,5 +40,5 @@ class SchemaKeyValidationException(SchemaKeyException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_KEY_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "SchemaKey validation failed."
+    ERR_CODE = "SCHEMA_KEY_VALIDATION_FAILURE"
+    MSG = "SchemaKey validation failed."

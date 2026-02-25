@@ -36,5 +36,5 @@ class ExcessSquareContextFlagsException(SquareContextDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESS_SQUARE_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "SquareContext validation failed: More than one flag was enable."
+    ERR_CODE = "EXCESS_SQUARE_CONTEXT_FLAGS_ERROR"
+    MSG = "SquareContext validation failed: More than one flag was enable."

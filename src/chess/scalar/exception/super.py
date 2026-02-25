@@ -32,5 +32,5 @@ class ScalarException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "SCALAR_ERROR"
-    DEFAULT_MESSAGE = "Scalar raised an exception."
+    ERR_CODE = "SCALAR_ERROR"
+    MSG = "Scalar raised an exception."

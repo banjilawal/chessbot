@@ -37,5 +37,5 @@ class SquareServiceException(ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SquareService raised an exception."
+    ERR_CODE = "SQUARE_SERVICE_ERROR"
+    MSG = "SquareService raised an exception."

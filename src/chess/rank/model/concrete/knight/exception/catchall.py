@@ -32,5 +32,5 @@ class KnightException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "KNIGHT_ERROR"
-    DEFAULT_MESSAGE = "Knight raised an exception."
+    ERR_CODE = "KNIGHT_ERROR"
+    MSG = "Knight raised an exception."

@@ -88,8 +88,8 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
-                    ex=NullHostageException(f"{method}: {NullHostageException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {HostageValidationException.MSG}",
+                    ex=NullHostageException(f"{method}: {NullHostageException.MSG}")
                 )
             )
         # Handle the case, that the candidate is the wrong type.
@@ -97,7 +97,7 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=TypeError(f"{method}: Expected Hostage, {type(candidate).__name__} instead.")
                 )
             )
@@ -111,7 +111,7 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=id_validation.exception
                 )
             )
@@ -121,7 +121,7 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=captured_square_validation.exception
                 )
             )
@@ -131,7 +131,7 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=victor_square_validation.exception
                 )
             )
@@ -143,7 +143,7 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=prisoner_validation.exception
                 )
             )
@@ -152,9 +152,9 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=PrisonerCannotBeActiveCombatantException(
-                        f"{method}: {PrisonerCannotBeActiveCombatantException.DEFAULT_MESSAGE}"
+                        f"{method}: {PrisonerCannotBeActiveCombatantException.MSG}"
                     )
                 )
             )
@@ -163,9 +163,9 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=PrisonerAlreadyHasHostageException(
-                        f"{method}: {PrisonerAlreadyHasHostageException.DEFAULT_MESSAGE}"
+                        f"{method}: {PrisonerAlreadyHasHostageException.MSG}"
                     )
                 )
             )
@@ -174,9 +174,9 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=PrisonerCapturedOnDifferentSquareException(
-                        f"{method}: {PrisonerCapturedOnDifferentSquareException.DEFAULT_MESSAGE}"
+                        f"{method}: {PrisonerCapturedOnDifferentSquareException.MSG}"
                     )
                 )
             )
@@ -191,7 +191,7 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=victor_validation.exception
                 )
             )
@@ -200,9 +200,9 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=UnformedTokenCannotBeVictorException(
-                        f"{method}: {UnformedTokenCannotBeVictorException.DEFAULT_MESSAGE}"
+                        f"{method}: {UnformedTokenCannotBeVictorException.MSG}"
                     )
                 )
             )
@@ -216,9 +216,9 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=TokenCannotCaptureItselfException(
-                        f"{method}: {TokenCannotCaptureItselfException.DEFAULT_MESSAGE}"
+                        f"{method}: {TokenCannotCaptureItselfException.MSG}"
                     )
                 )
             )
@@ -227,9 +227,9 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=VictorAndPrisoneOnDifferentBoardsException(
-                        f"{method}: {VictorAndPrisoneOnDifferentBoardsException.DEFAULT_MESSAGE}"
+                        f"{method}: {VictorAndPrisoneOnDifferentBoardsException.MSG}"
                     )
                 )
             )
@@ -238,9 +238,9 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=FriendCannotCaptureFriendException(
-                        f"{method}: {FriendCannotCaptureFriendException.DEFAULT_MESSAGE}"
+                        f"{method}: {FriendCannotCaptureFriendException.MSG}"
                     )
                 )
             )
@@ -249,9 +249,9 @@ class HostageValidator(Validator[Hostage]):
             # Send the exception chain on failure
             return ValidationResult.failure(
                 HostageValidationException(
-                    message=f"{method}: {HostageValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {HostageValidationException.MSG}",
                     ex=PrisonerCapturedByDifferentEnemyException(
-                        f"{method}: {PrisonerCapturedByDifferentEnemyException.DEFAULT_MESSAGE}"
+                        f"{method}: {PrisonerCapturedByDifferentEnemyException.MSG}"
                     )
                 )
             )

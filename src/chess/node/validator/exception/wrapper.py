@@ -36,5 +36,5 @@ class NodeValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Node validation failed."
+    ERR_CODE = "NODE_VALIDATION_FAILURE"
+    MSG = "Node validation failed."

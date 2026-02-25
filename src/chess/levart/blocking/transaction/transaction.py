@@ -73,7 +73,7 @@ class BlockedPathTransaction(TravelTransaction[BlockingEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedDiscoveryAdditionRolledBackException(
-                        f"{method}: {FailedDiscoveryAdditionRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedDiscoveryAdditionRolledBackException.MSG}"
                     )
                 )
             

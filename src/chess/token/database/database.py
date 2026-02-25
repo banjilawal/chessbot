@@ -132,7 +132,7 @@ class TokenDatabase(Database[Token]):
         if open_slots_count_result.is_failure:
             return ComputationResult.failure(
                 TokenDatabaseException(
-                    message=f"{method}: {TokenDatabaseException.ERROR_CODE}",
+                    msg=f"{method}: {TokenDatabaseException.ERR_CODE}",
                     ex=open_slots_count_result.exception,
                 )
             )
@@ -171,7 +171,7 @@ class TokenDatabase(Database[Token]):
         if rank_size_result.is_failure:
             return ComputationResult.failure(
                 TokenDatabaseException(
-                    message=f"{method}: {TokenDatabaseException.ERROR_CODE}",
+                    msg=f"{method}: {TokenDatabaseException.ERR_CODE}",
                     ex=rank_size_result.exception,
                 )
             )
@@ -210,7 +210,7 @@ class TokenDatabase(Database[Token]):
         if does_rank_have_opening_result.is_failure:
             return ComputationResult.failure(
                 TokenDatabaseException(
-                    f"{method}: {TokenDatabaseException.ERROR_CODE}",
+                    f"{method}: {TokenDatabaseException.ERR_CODE}",
                     ex=does_rank_have_opening_result.exception,
                 )
             )
@@ -246,7 +246,7 @@ class TokenDatabase(Database[Token]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenDatabaseException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenDatabaseException.ERR_CODE}",
                     ex=deletion_result.exception
                 )
             )
@@ -283,7 +283,7 @@ class TokenDatabase(Database[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenDatabaseException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenDatabaseException.ERR_CODE}",
                     ex=insertion_result.exception
                     )
             )
@@ -319,7 +319,7 @@ class TokenDatabase(Database[Token]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TokenDatabaseException(
-                    message=f"ServiceID:{self.id} {method}: {TokenDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {TokenDatabaseException.ERR_CODE}",
                     ex=search_result.exception
                 )
             )

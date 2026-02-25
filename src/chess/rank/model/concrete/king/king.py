@@ -90,9 +90,9 @@ class King(Rank):
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     KingException(
-                        message=f"{method}: {KingException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {KingException.MSG}",
                         ex=KingSpanComputationException(
-                            message=f"{method}: {KingSpanComputationException.DEFAULT_MESSAGE}",
+                            msg=f"{method}: {KingSpanComputationException.MSG}",
                             ex=addition_result.exception
                         )
                     )

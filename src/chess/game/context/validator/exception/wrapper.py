@@ -40,5 +40,5 @@ class InvalidGameContextException(GameContextException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "GameContext validation failed."
+    ERR_CODE = "GAME_CONTEXT_VALIDATION_FAILURE"
+    MSG = "GameContext validation failed."

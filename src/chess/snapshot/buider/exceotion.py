@@ -39,5 +39,5 @@ class SnapshotBuildException(SnapshotException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SNAPSHOT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Snapshot build failed."
+    ERR_CODE = "SNAPSHOT_BUILD_FAILED"
+    MSG = "Snapshot build failed."

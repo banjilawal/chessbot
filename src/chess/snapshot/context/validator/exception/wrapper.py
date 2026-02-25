@@ -37,5 +37,5 @@ class SnapshotContextValidationException(SnapshotContextException, ValidationExc
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SNAPSHOT_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "SnapshotContext validation failed."
+    ERR_CODE = "SNAPSHOT_CONTEXT_VALIDATION_FAILURE"
+    MSG = "SnapshotContext validation failed."

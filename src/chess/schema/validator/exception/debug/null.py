@@ -37,5 +37,5 @@ class NullSchemaException(SchemaDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SCHEMA_ERROR"
-    DEFAULT_MESSAGE = "Schema validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_SCHEMA_ERROR"
+    MSG = "Schema validation failed: The candidate cannot be null."

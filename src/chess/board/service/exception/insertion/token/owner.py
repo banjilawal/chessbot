@@ -37,5 +37,5 @@ class TokenOnDifferentBoardException(BoardException, TokenException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_ON_DIFFERENT_BOARD"
-    DEFAULT_MESSAGE = "BoardService insertion operation failed: Token belongs to a different board."
+    ERR_CODE = "TOKEN_ON_DIFFERENT_BOARD"
+    MSG = "BoardService insertion operation failed: Token belongs to a different board."

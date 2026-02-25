@@ -57,8 +57,8 @@ class SchemaValidator(Validator[Schema]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaValidationException(
-                    message=f"{method}: {SchemaValidationException.ERROR_CODE}",
-                    ex=NullSchemaException(f"{method} {NullSchemaException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {SchemaValidationException.ERR_CODE}",
+                    ex=NullSchemaException(f"{method} {NullSchemaException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -66,7 +66,7 @@ class SchemaValidator(Validator[Schema]):
             # Return the exception chain on failure
             return ValidationResult.failure(
                 SchemaValidationException(
-                    message=f"{method}: {SchemaValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SchemaValidationException.ERR_CODE}",
                     ex=TypeError(f"{method} Expected a Schema, got {type(candidate).__name__} instead.")
                 )
             )

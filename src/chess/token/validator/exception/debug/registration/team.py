@@ -37,5 +37,5 @@ class TokenNotRegisteredTeamException(TokenDebugException, NotRegisteredExceptio
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_NOT_REGISTERED_WITH_TEAM_ERROR"
-    DEFAULT_MESSAGE = "Token validation failed: The candidate token had not registered with its team."
+    ERR_CODE = "TOKEN_NOT_REGISTERED_WITH_TEAM_ERROR"
+    MSG = "Token validation failed: The candidate token had not registered with its team."

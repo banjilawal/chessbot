@@ -37,5 +37,5 @@ class NullTeamException(TeamDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_TEAM_ERROR"
-    DEFAULT_MESSAGE = "Team validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_TEAM_ERROR"
+    MSG = "Team validation failed: The candidate cannot be null."

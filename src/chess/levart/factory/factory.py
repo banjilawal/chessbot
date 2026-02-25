@@ -69,7 +69,7 @@ class TravelEventFactory:
             if actor.current_position == destination_square.coord:
                 return BuildResult.failure(
                     ActorAlreadyAtDestinationException(
-                        f"{method}: {ActorAlreadyAtDestinationException.DEFAULT_MESSAGE}"
+                        f"{method}: {ActorAlreadyAtDestinationException.MSG}"
                         )
                 )
             
@@ -81,7 +81,7 @@ class TravelEventFactory:
             if actor_square_search.is_empty():
                 return BuildResult.failure(
                     CoordSearchInvariantBreachException(
-                        f"{method}: {CoordSearchInvariantBreachException.DEFAULT_MESSAGE}"
+                        f"{method}: {CoordSearchInvariantBreachException.MSG}"
                     )
                 )
             

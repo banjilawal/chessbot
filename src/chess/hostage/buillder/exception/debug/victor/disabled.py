@@ -39,5 +39,5 @@ class VictorCannotBeDisableTokenException(HostageException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VICTOR_CANNOT_BE_DISABLED_TOKEN_ERROR"
-    DEFAULT_MESSAGE = "Hostage build failed: Victor cannot be disabled. It must be active during the build."
+    ERR_CODE = "VICTOR_CANNOT_BE_DISABLED_TOKEN_ERROR"
+    MSG = "Hostage build failed: Victor cannot be disabled. It must be active during the build."

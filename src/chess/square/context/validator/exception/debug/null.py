@@ -37,5 +37,5 @@ class NullSquareContextException(SquareContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SQUARE_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "SquareContext validation failed: The candidate was null."
+    ERR_CODE = "NULL_SQUARE_CONTEXT_ERROR"
+    MSG = "SquareContext validation failed: The candidate was null."

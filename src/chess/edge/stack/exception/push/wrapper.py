@@ -37,5 +37,5 @@ class PushingEdgeException(EdgeStackException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Edge insertion failed."
+    ERR_CODE = "EDGE_INSERTION_FAILURE"
+    MSG = "Edge insertion failed."

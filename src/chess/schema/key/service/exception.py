@@ -38,5 +38,5 @@ class SchemaKeyServiceException(SchemaKeyException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_KEY_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SchemaKeyService raised an exception."
+    ERR_CODE = "SCHEMA_KEY_SERVICE_ERROR"
+    MSG = "SchemaKeyService raised an exception."

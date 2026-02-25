@@ -34,5 +34,5 @@ class NumberOfArgumentsException(ServiceRequestDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NUMBER_OF_ARGUMENTS_ERROR"
-    DEFAULT_MESSAGE = "ServiceRequest validation failed: len(request.params) != len(operation.arguments)."
+    ERR_CODE = "NUMBER_OF_ARGUMENTS_ERROR"
+    MSG = "ServiceRequest validation failed: len(request.params) != len(operation.arguments)."

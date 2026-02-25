@@ -101,7 +101,7 @@ class SquareFinder(StackSearcher[Square]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 SquareSearchException(
-                    message=f"{method}: {SquareSearchException.ERROR_CODE}",
+                    msg=f"{method}: {SquareSearchException.ERR_CODE}",
                     ex=dataset_validation_result.exception
                 )
             )
@@ -111,7 +111,7 @@ class SquareFinder(StackSearcher[Square]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 SquareSearchException(
-                    message=f"{method}: {SquareSearchException.ERROR_CODE}",
+                    msg=f"{method}: {SquareSearchException.ERR_CODE}",
                     ex=context_validation_result.exception
                 )
             )
@@ -139,8 +139,8 @@ class SquareFinder(StackSearcher[Square]):
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             SquareSearchException(
-                message=f"{method}: {SquareSearchException.ERROR_CODE}",
-                ex=SquareSearchRouteException(f"{method}: {SquareSearchRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {SquareSearchException.ERR_CODE}",
+                ex=SquareSearchRouteException(f"{method}: {SquareSearchRouteException.MSG}")
             )
         )
     

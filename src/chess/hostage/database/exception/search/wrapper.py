@@ -38,5 +38,5 @@ class UniqueHostageSearchException(HostageException, SearchException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Unique Hostage search failed."
+    ERR_CODE = "UNIQUE_SEARCH_FAILURE"
+    MSG = "Unique Hostage search failed."

@@ -35,5 +35,5 @@ class QueenSpanComputationException(SpanComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "QUEEN_SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Queen span computation failed."
+    ERR_CODE = "QUEEN_SPAN_COMPUTATION_FAILURE"
+    MSG = "Queen span computation failed."

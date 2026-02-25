@@ -37,5 +37,5 @@ class TeamDatabaseException(TeamException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_DATABASE_ERROR"
-    DEFAULT_MESSAGE = "TeamDatabase raised an exception."
+    ERR_CODE = "TEAM_DATABASE_ERROR"
+    MSG = "TeamDatabase raised an exception."

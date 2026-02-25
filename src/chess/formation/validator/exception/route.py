@@ -30,8 +30,8 @@ class SchemValidationNoExecutionRouteException(ResultException, NoExecutionRoute
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_FORMATION_VALIDATION_ROUTE"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "NO_FORMATION_VALIDATION_ROUTE"
+    MSG = (
         "The FormationValidator did not handle one of the paths necessary to assure a candidate is a Formation safe to use. "
         "Ensure all possible verification branches are covered to ensure the execution flow does not hit the default "
         "failure result outside the if-verification-blocks."

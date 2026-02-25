@@ -34,5 +34,5 @@ class ServiceExecutionBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_EXECUTION_BUILD_FAILED"
-    DEFAULT_MESSAGE = "ServiceExecution build failed."
+    ERR_CODE = "SERVICE_EXECUTION_BUILD_FAILED"
+    MSG = "ServiceExecution build failed."

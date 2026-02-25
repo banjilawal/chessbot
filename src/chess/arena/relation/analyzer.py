@@ -75,7 +75,7 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 ArenaTeamAnalysisException(
-                    message=f"{method}: {ArenaTeamAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {ArenaTeamAnalysisException.ERR_CODE}",
                     ex=arena_validation.exception
                 )
             )
@@ -88,7 +88,7 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 ArenaTeamAnalysisException(
-                    message=f"{method}: {ArenaTeamAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {ArenaTeamAnalysisException.ERR_CODE}",
                     ex=team_validation.exception
                 )
             )
@@ -110,9 +110,9 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
             # If the black slot is occupied by some other team an error has occurred. Return the exception chain.
             return RelationReport.failure(
                 ArenaTeamAnalysisException(
-                    message=f"{method}: {ArenaTeamAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {ArenaTeamAnalysisException.ERR_CODE}",
                     ex=TeamPlayingDifferentArenaException(
-                        f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}"
+                        f"{method}: {ArenaSlotAlreadyOccupiedException.MSG}"
                     )
                 )
             )
@@ -126,7 +126,7 @@ class ArenaTeamRelationAnalyzer(RelationAnalyzer[Arena, Team]):
         # If the white slot is occupied by some other team an error has occurred. Return the exception chain.
         return RelationReport.failure(
             ArenaTeamAnalysisException(
-                message=f"{method}: {ArenaTeamAnalysisException.ERROR_CODE}",
-                ex=TeamPlayingDifferentArenaException(f"{method}: {ArenaSlotAlreadyOccupiedException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {ArenaTeamAnalysisException.ERR_CODE}",
+                ex=TeamPlayingDifferentArenaException(f"{method}: {ArenaSlotAlreadyOccupiedException.MSG}")
             )
         )

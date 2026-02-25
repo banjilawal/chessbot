@@ -38,5 +38,5 @@ class ScalarDebugException(ScalarException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "SCALAR_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A ScalarDebugException was raised."
+    ERR_CODE = "SCALAR_DEBUG_ERROR"
+    MSG = "A ScalarDebugException was raised."

@@ -64,53 +64,53 @@ __all__ = [
 
 class BlockingEventException(TravelEventException):
   """"""
-  ERROR_CODE = "BLOCKING_EVENT_ERROR"
-  DEFAULT_MESSAGE = "BlockingEvent raised an exception."
+  ERR_CODE = "BLOCKING_EVENT_ERROR"
+  MSG = "BlockingEvent raised an exception."
 
 #======================# BLOCKING_EVENT VALIDATION EXCEPTION #======================#
 class InvalidBlockingEventException(TravelEventException, ValidationException):
   """"""
-  ERROR_CODE = "BLOCKING_EVENT_ERROR"
-  DEFAULT_MESSAGE = "BlockingEvent raised an exception."
+  ERR_CODE = "BLOCKING_EVENT_ERROR"
+  MSG = "BlockingEvent raised an exception."
   
 class NullBlockingEventException(BlockingEventException, NullException):
   """"""
-  ERROR_CODE = "NULL_BLOCKING_EVENT_ERROR"
-  DEFAULT_MESSAGE = "BlockingEvent cannot be validation"
+  ERR_CODE = "NULL_BLOCKING_EVENT_ERROR"
+  MSG = "BlockingEvent cannot be validation"
 
 class ActorBlockingOwnSquareException(BlockingEventException):
   """"""
-  ERROR_CODE = "ACTOR_BLOCKING_OWN_SQUARE_ERROR"
-  DEFAULT_MESSAGE = "Actor cannot block itself from its own square_name"
+  ERR_CODE = "ACTOR_BLOCKING_OWN_SQUARE_ERROR"
+  MSG = "Actor cannot block itself from its own square_name"
 
 class ActorSameAsBlockerException(BlockingEventException):
   """"""
-  ERROR_CODE = "ACTOR_SAME_AS_BLOCKING_FRIEND_ERROR"
-  DEFAULT_MESSAGE = "Actor and their blocking friend cannot be the same."
+  ERR_CODE = "ACTOR_SAME_AS_BLOCKING_FRIEND_ERROR"
+  MSG = "Actor and their blocking friend cannot be the same."
 
 class EnemyCannotBeBlockerException(BlockingEventException):
   """"""
-  ERROR_CODE = "BLOCKER_IS_ENEMY_ERROR"
-  DEFAULT_MESSAGE = ("Blocker cannot be an enemy. An enemy at the destination is attacked or checked."
+  ERR_CODE = "BLOCKER_IS_ENEMY_ERROR"
+  MSG = ("Blocker cannot be an enemy. An enemy at the destination is attacked or checked."
      " Only friends can block the owner."
   )
 
 
 class DiscoveryAlreadyExistsException(BlockingEventException):
   """"""
-  ERROR_CODE = "DISCOVERY_ALREADY_EXISTS_ERROR"
-  DEFAULT_MESSAGE = "The Discovery already exists in the dataset."
+  ERR_CODE = "DISCOVERY_ALREADY_EXISTS_ERROR"
+  MSG = "The Discovery already exists in the dataset."
 
 #
 # class DoubleEncounterException(BlockingEventException):
 #   """"""
-#   ERROR_CODE = "DOUBLE_BLOCKING_ERROR"
-#   DEFAULT_MESSAGE = "The friend has already been encountered."
+#   ERR_CODE = "DOUBLE_BLOCKING_ERROR"
+#   MSG = "The friend has already been encountered."
 #
 # class InvalidEncounterException(BlockingEventException, ValidationException):
 #   """"""
-#   ERROR_CODE = "INVALID_BLOCKING_EVENT_ERROR"
-#   DEFAULT_MESSAGE = "BlockingEventException validation failed."
+#   ERR_CODE = "INVALID_BLOCKING_EVENT_ERROR"
+#   MSG = "BlockingEventException validation failed."
 #
 #
 # #======================# BLOCKING_EVENT BUILD EXCEPTION #======================#
@@ -119,8 +119,8 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
 #   during builder.
 #   """
-#   ERROR_CODE = "BLOCKING_EVENT_BUILD_FAILED"
-#   DEFAULT_MESSAGE = "BlockingEventException build failed."
+#   ERR_CODE = "BLOCKING_EVENT_BUILD_FAILED"
+#   MSG = "BlockingEventException build failed."
 #
 #
 # # src/chess.point.rollback_exception.py
@@ -192,38 +192,38 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 #
 # class TravelActorException(TravelEventException):
-#   ERROR_CODE = "TRAVEL_ACTOR_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate actor_candidate raised an exception."
+#   ERR_CODE = "TRAVEL_ACTOR_ERROR"
+#   MSG = "TravelEvent actor_candidate actor_candidate raised an exception."
 #
 #
 # #====================== TRAVEL ACTOR VALIDATION EXCEPTION #======================#
 # class NullTravelActorException(TravelActorException, NullException):
-#   ERROR_CODE = "NULL_TRAVEL_ACTOR_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate cannot be null."
+#   ERR_CODE = "NULL_TRAVEL_ACTOR_ERROR"
+#   MSG = "TravelEvent actor_candidate cannot be null."
 #
 #
 # class InvalidTravelActorException(TravelActorException, ValidationException):
-#   ERROR_CODE = "TRAVEL_ACTOR_VALIDATION_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate validation failed."
+#   ERR_CODE = "TRAVEL_ACTOR_VALIDATION_ERROR"
+#   MSG = "TravelEvent actor_candidate validation failed."
 #
 #
 # class TravelActorNotFoundException(TravelActorException, InconsistencyException):
-#   ERROR_CODE = "TRAVEL_ACTOR_NOT_FOUND_ERROR"
-#   DEFAULT_MESSAGE = (
+#   ERR_CODE = "TRAVEL_ACTOR_NOT_FOUND_ERROR"
+#   MSG = (
 #     "TravelEvent actor_candidate was not found during the board searcher. There may be a entity_service inconsistency."
 #   )
 #
 #
 # #====================== TRAVEL_ACTOR MOVE EXCEPTION #======================#
 # class TravelActorMovingException(TravelActorException):
-#   ERROR_CODE = "TRAVEL_ACTOR_MOVE_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate raised a moving violation. Candidate cannot travel."
+#   ERR_CODE = "TRAVEL_ACTOR_MOVE_ERROR"
+#   MSG = "TravelEvent actor_candidate raised a moving violation. Candidate cannot travel."
 #
 #
 # class NoInitialPlacementException(TravelActorMovingException):
 #   """"""
-#   ERROR_CODE = "ACTOR_DID_NOT_HAVE_INITIAL_PLACEMENT_ERROR"
-#   DEFAULT_MESSAGE = (
+#   ERR_CODE = "ACTOR_DID_NOT_HAVE_INITIAL_PLACEMENT_ERROR"
+#   MSG = (
 #     "TravelEvent actor_candidate did not have an initial placement on the board. Its position history is empty. "
 #     "Candidate cannot travel."
 #   )
@@ -231,28 +231,28 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 # class ActorAlreadyAtDestinationException(TravelActorMovingException):
 #   """"""
-#   ERROR_CODE = "ACTOR_ALREADY_AT_DESTINATION_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate is already at the destination square_name. There is nn need to travel."
+#   ERR_CODE = "ACTOR_ALREADY_AT_DESTINATION_ERROR"
+#   MSG = "TravelEvent actor_candidate is already at the destination square_name. There is nn need to travel."
 #
 #
 # class DisabledUnRosteredPieceCannotActException(TravelActorMovingException):
 #   """"""
-#   ERROR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
-#   DEFAULT_MESSAGE = "TravelEvent actor_candidate is not on their team_name's roster. Candidate cannot travel."
+#   ERR_CODE = "ACTOR_NOT_ON_ROSTER_MOVE_ERROR"
+#   MSG = "TravelEvent actor_candidate is not on their team_name's roster. Candidate cannot travel."
 #
 #
 # class BoardPieceRemovedCannotActException(TravelActorMovingException):
 #   """"""
-#   ERROR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
-#   DEFAULT_MESSAGE = (
+#   ERR_CODE = "ACTOR_NOT_ON_BOARD_MOVE_ERROR"
+#   MSG = (
 #     "TravelEvent actor_candidate is not on the board. Candidate cannot travel."
 #   )
 #
 #
 # class CapturedActorCannotMoveException(TravelActorMovingException):
 #   """"""
-#   ERROR_CODE = "CAPTURED_ACTOR_MOVE_ERROR"
-#   DEFAULT_MESSAGE = (
+#   ERR_CODE = "CAPTURED_ACTOR_MOVE_ERROR"
+#   MSG = (
 #     "TravelEvent actor_candidate has been captured by the enemy. Captured pieces are not on the board."
 #     "Candidate cannot travel."
 #   )
@@ -260,9 +260,9 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 # class CheckmatedKingCannotActException(TravelActorMovingException):
 #   """"""
-#   ERROR_CODE = "CHECK_MATED_KING_MOVE_ERROR"
-#   DEFAULT_MESSAGE = (
-#     "The occupation is checkmated. When a occupation is checkmated the game ends. If you are seeing this message "
+#   ERR_CODE = "CHECK_MATED_KING_MOVE_ERROR"
+#   MSG = (
+#     "The occupation is checkmated. When a occupation is checkmated the game ends. If you are seeing this msg "
 #     "the win has not been processed correctly."
 #   )
 #
@@ -270,8 +270,8 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 # #====================== TRAVEL_ACTOR SQUARE EXCEPTION #======================#
 # class PieceSquareNotFoundException(TravelActorException, InconsistencyException):
 #   """"""
-#   ERROR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"
-#   DEFAULT_MESSAGE = (
+#   ERR_CODE = "TRAVEL_ACTOR_SQUARE_NOT_FOUND_ERROR"
+#   MSG = (
 #     "BoardSearch did not find a square_name associated with the actor_candidate's point. There may be a entity_service "
 #     "inconsistency."
 #   )
@@ -279,8 +279,8 @@ class DiscoveryAlreadyExistsException(BlockingEventException):
 #
 # class SquareMisMatchesPieceException(TravelActorException, InconsistencyException):
 #   """"""
-#   ERROR_CODE = "SQUARE_MISMATCHES_TRAVEL_ACTOR_ERROR"
-#   DEFAULT_MESSAGE = "The square_name does not contain the actor_candidate. There may be a entity_service inconsistency."
+#   ERR_CODE = "SQUARE_MISMATCHES_TRAVEL_ACTOR_ERROR"
+#   MSG = "The square_name does not contain the actor_candidate. There may be a entity_service inconsistency."
 #
 #
 #

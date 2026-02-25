@@ -80,7 +80,7 @@ class GameContextValidator(Validator[GameContext]):
             # Handle the case that, the candidate does not exist.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullGameContextException(f"{method}: {NullGameContextException.DEFAULT_MESSAGE}")
+                    NullGameContextException(f"{method}: {NullGameContextException.MSG}")
                 )
             # Handle the case that, the candidate is not a GameContext.
             if not isinstance(candidate, GameContext):
@@ -93,25 +93,25 @@ class GameContextValidator(Validator[GameContext]):
             # Handle the case that, no attribute-value tuple is enabled.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.DEFAULT_MESSAGE}")
+                    ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.MSG}")
                 )
             # Handle the case that, more than one attribute-value tuple is enabled.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException.DEFAULT_MESSAGE}")
+                    ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException.MSG}")
                 )
             # Make sure a search target exists in the map. Cannot perform a search without an
             
             # property-value pair.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.DEFAULT_MESSAGE}")
+                    ZeroGameContextFlagsException(f"{method}: {ZeroGameContextFlagsException.MSG}")
                 )
             # Return an error if more than one property value pair exists in the map.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessiveGameContextFlagsException(
-                        f"{method}: {ExcessiveGameContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveGameContextFlagsException.MSG}"
                     )
                 )
             
@@ -136,6 +136,6 @@ class GameContextValidator(Validator[GameContext]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidGameContextException(
-                    ex=ex, message=f"{method}: {InvalidGameContextException.DEFAULT_MESSAGE}"
+                    ex=ex, msg=f"{method}: {InvalidGameContextException.MSG}"
                 )
             )

@@ -108,9 +108,9 @@ class PlayerService(EntityService[Player]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 PlayerServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
                     ex=PoppingTeamStackFailedException(
-                        message=f"{method}: {PoppingTeamStackFailedException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {PoppingTeamStackFailedException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -120,10 +120,10 @@ class PlayerService(EntityService[Player]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 PlayerServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
                     ex=PoppingTeamStackFailedException(
-                        message=f"{method}: {PoppingTeamStackFailedException.DEFAULT_MESSAGE}",
-                        ex=PoppingEmptyTeamStackException(f"{method}: {PoppingEmptyTeamStackException.DEFAULT_MESSAGE}")
+                        msg=f"{method}: {PoppingTeamStackFailedException.MSG}",
+                        ex=PoppingEmptyTeamStackException(f"{method}: {PoppingEmptyTeamStackException.MSG}")
                     )
                 )
             )
@@ -132,9 +132,9 @@ class PlayerService(EntityService[Player]):
         if deletion_result.is_failure:
             return DeletionResult.failure(
                 PlayerServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
                     ex=PoppingTeamStackFailedException(
-                        message=f"{method}: {PoppingTeamStackFailedException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {PoppingTeamStackFailedException.MSG}",
                         ex=deletion_result.exception
                     )
                 )
@@ -182,9 +182,9 @@ class PlayerService(EntityService[Player]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 PlayerServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
                     ex=TeamInsertionException(
-                        message=f"{method}: {TeamInsertionException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {TeamInsertionException.MSG}",
                         ex=relation.exception)
                 )
             )
@@ -193,11 +193,11 @@ class PlayerService(EntityService[Player]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 PlayerServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
                     ex=TeamInsertionException(
-                        message=f"{method}: {TeamInsertionException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {TeamInsertionException.MSG}",
                         ex=TeamBelongsToDifferentOwnerException(
-                            f"{method}: {TeamBelongsToDifferentOwnerException.DEFAULT_MESSAGE}"
+                            f"{method}: {TeamBelongsToDifferentOwnerException.MSG}"
                         )
                     )
                 )
@@ -207,10 +207,10 @@ class PlayerService(EntityService[Player]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 PlayerServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
                     ex=TeamInsertionException(
-                        message=f"{method}: {TeamInsertionException.DEFAULT_MESSAGE}",
-                        ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.DEFAULT_MESSAGE}")
+                        msg=f"{method}: {TeamInsertionException.MSG}",
+                        ex=AddingDuplicateTeamException(f"{method}: {AddingDuplicateTeamException.MSG}")
                     )
                 )
             )
@@ -220,9 +220,9 @@ class PlayerService(EntityService[Player]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 PlayerServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {PlayerServiceException.ERR_CODE}",
                     ex=TeamInsertionException(
-                        message=f"{method}: {TeamInsertionException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {TeamInsertionException.MSG}",
                         ex=insertion_result.exception
                     )
                 )

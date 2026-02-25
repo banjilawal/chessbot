@@ -20,5 +20,5 @@ class RankServiceException(ServiceException):
     Super class of exception raised by RankCertifier objects. Do not use directly. Subclasses give
     precise, fined-grained, debugging info.
     """
-    ERROR_CODE = "RANK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "RankCertifier raised an exception."
+    ERR_CODE = "RANK_SERVICE_ERROR"
+    MSG = "RankCertifier raised an exception."

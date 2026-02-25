@@ -38,5 +38,5 @@ class PushingTokenException(TokenStackException, PushException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PUSHING_TOKEN_FAILURE"
-    DEFAULT_MESSAGE = "Pushing token failed."
+    ERR_CODE = "PUSHING_TOKEN_FAILURE"
+    MSG = "Pushing token failed."

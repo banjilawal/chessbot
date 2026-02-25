@@ -40,5 +40,5 @@ class AgentContextBuildException(AgentContextException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "AgentContext build failed."
+    ERR_CODE = "AGENT_CONTEXT_BUILD_FAILED"
+    MSG = "AgentContext build failed."

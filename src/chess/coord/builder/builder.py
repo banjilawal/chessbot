@@ -66,7 +66,7 @@ class CoordBuilder(Builder[Coord]):
             # Return the validation chain on failure.
             return BuildResult.failure(
                 CoordBuildException(
-                    message=f"{method}: {CoordBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {CoordBuildException.MSG}",
                     ex=row_validation.exception
                 )
             )
@@ -76,7 +76,7 @@ class CoordBuilder(Builder[Coord]):
             # Return the validation chain on failure.
             return BuildResult.failure(
                 CoordBuildException(
-                    message=f"{method}: {CoordBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {CoordBuildException.MSG}",
                     ex=column_validation.exception
                 )
             )

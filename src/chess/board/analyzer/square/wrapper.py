@@ -36,5 +36,5 @@ class BoardSquareAnalysisException(AnalysisException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_SQUARE_RELATION_ANALYSIS_FAILURE"
-    DEFAULT_MESSAGE = "Board-Square relation analysis failed."
+    ERR_CODE = "BOARD_SQUARE_RELATION_ANALYSIS_FAILURE"
+    MSG = "Board-Square relation analysis failed."

@@ -36,5 +36,5 @@ class AddingDuplicateCoordException(UniqueCoordStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_DUPLICATE_COORD_ERROR"
-    DEFAULT_MESSAGE = "Unique cord insertion failed."
+    ERR_CODE = "ADDING_DUPLICATE_COORD_ERROR"
+    MSG = "Unique cord insertion failed."

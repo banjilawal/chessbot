@@ -38,7 +38,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
     try:
       if t is None:
         raise NullOccupationEventException(
-          f"{method}: {NullOccupationEventException.DEFAULT_MESSAGE}"
+          f"{method}: {NullOccupationEventException.MSG}"
         )
 
       if not isinstance(t, OccupationEvent):
@@ -48,18 +48,18 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
 
       id_validation = IdValidator.validate(event.visitor_id)
       if not id_validation.is_success():
-        raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+        raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 
       actor_validation = ActorValidator.validate(event.actor)
       if not actor_validation.is_success():
-        raise InvalidActorException(f"{method}: {InvalidActorException.DEFAULT_MESSAGE}")
+        raise InvalidActorException(f"{method}: {InvalidActorException.MSG}")
 
       destination_square_validation = SquareValidator.validate(event.friend)
       if not destination_square_validation.is_success():
-        raise InvalidSquareException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
+        raise InvalidSquareException(f"{method}: {InvalidSqaureException.MSG}")
 
       if event.friend.position == event.actor.current_position:
-        raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
+        raise CircularOccupationException(f"{method}: {CircularOccupationException.MSG}")
       
       return Result(payload=event)
 
@@ -72,7 +72,7 @@ class OldOccupationEventValidator(EventValidator[OccupationEvent]):
         CircularOccupationException
     ) as e:
       raise InvalidOccupationEventException(
-        f"{method}: {InvalidOccupationEventException.DEFAULT_MESSAGE}"
+        f"{method}: {InvalidOccupationEventException.MSG}"
       ) from e
 
     # This block catches any unexpected exception

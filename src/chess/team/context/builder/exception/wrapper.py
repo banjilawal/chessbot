@@ -40,5 +40,5 @@ class TeamContextBuildException(TeamContextException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "TeamContext build failed."
+    ERR_CODE = "TEAM_CONTEXT_BUILD_FAILED"
+    MSG = "TeamContext build failed."

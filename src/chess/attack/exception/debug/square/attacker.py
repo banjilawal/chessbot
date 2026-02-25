@@ -35,5 +35,5 @@ class AttackerSquareInconsistencyException(AttackDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: The attacker was not the occupant of the item its shares a coord with."
+    ERR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
+    MSG = "Attack failed: The attacker was not the occupant of the item its shares a coord with."

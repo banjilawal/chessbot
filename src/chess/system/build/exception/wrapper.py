@@ -36,5 +36,5 @@ class BuildException(OperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BUILD_FAILURE"
-    DEFAULT_MESSAGE = "Build failed."
+    ERR_CODE = "BUILD_FAILURE"
+    MSG = "Build failed."

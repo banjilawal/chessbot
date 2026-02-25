@@ -65,7 +65,7 @@ class GameColorValidator(Validator[GameColor]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullGameColorException(f"{method}: {NullGameColorException.DEFAULT_MESSAGE}")
+                    NullGameColorException(f"{method}: {NullGameColorException.MSG}")
                 )
             
             if not isinstance(candidate, GameColor):
@@ -79,7 +79,7 @@ class GameColorValidator(Validator[GameColor]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidGameColorException(
-                    f"{method}: {InvalidGameColorException.DEFAULT_MESSAGE}",
+                    f"{method}: {InvalidGameColorException.MSG}",
                     ex
                 )
             )

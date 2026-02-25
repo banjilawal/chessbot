@@ -70,8 +70,8 @@ class NumberValidator(Validator[int]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationException(
-                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
-                    ex=NullNumberException(f"{method}: {NullNumberException.DEFAULT_MESSAGE}"),
+                    msg=f"{method}: {NumberValidationException.ERR_CODE}",
+                    ex=NullNumberException(f"{method}: {NullNumberException.MSG}"),
                 )
             )
         # Handle the wrong class case.
@@ -79,7 +79,7 @@ class NumberValidator(Validator[int]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationException(
-                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
+                    msg=f"{method}: {NumberValidationException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected an integer, got {type(candidate).__name__} instead."),
                 )
             )
@@ -90,9 +90,9 @@ class NumberValidator(Validator[int]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationException(
-                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
+                    msg=f"{method}: {NumberValidationException.ERR_CODE}",
                     ex=NegativeNumberNotAllowedException(
-                        f"{method}: {NegativeNumberNotAllowedException.DEFAULT_MESSAGE}"
+                        f"{method}: {NegativeNumberNotAllowedException.MSG}"
                     )
                 )
             )
@@ -101,8 +101,8 @@ class NumberValidator(Validator[int]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationException(
-                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
-                    ex=NumberBelowFloorException(f"{method}: {NumberBelowFloorException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {NumberValidationException.ERR_CODE}",
+                    ex=NumberBelowFloorException(f"{method}: {NumberBelowFloorException.MSG}")
                 )
             )
         # Handle case that the number is above the floor
@@ -110,8 +110,8 @@ class NumberValidator(Validator[int]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 NumberValidationException(
-                    message=f"{method}: {NumberValidationException.ERROR_CODE}",
-                    ex=NumberAboveCeilingException(f"{method}: {NumberAboveCeilingException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {NumberValidationException.ERR_CODE}",
+                    ex=NumberAboveCeilingException(f"{method}: {NumberAboveCeilingException.MSG}")
                 )
             )
         # On certification success return the number in the ValidationResult

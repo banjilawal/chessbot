@@ -53,7 +53,7 @@ class TeamBuilder(Builder[Team]):
     ) -> BuildResult[Team]:
         """
         # ACTION:
-            1.  If any parameters fail their integrity checks send the exception in the BuildResult..
+            1.  If any parameters fail their integrity checks send the exception in the BuildResult.
             2.  When all checks pass send create the Team instance and send in the BuildResult.
         # PARAMETERS:
             *   id (int)
@@ -90,7 +90,7 @@ class TeamBuilder(Builder[Team]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
-                    message=f"{method}: {TeamBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TeamBuildException.MSG}",
                     ex=build_params_validation_result.exception
                 )
             )
@@ -105,7 +105,7 @@ class TeamBuilder(Builder[Team]):
             # If the push failed return the exception chain.
             return BuildResult.failure(
                 TeamBuildException(
-                    message=f"{method}: {TeamBuildException.ERROR_CODE}", ex=insertion_result.exception
+                    msg=f"{method}: {TeamBuildException.ERR_CODE}", ex=insertion_result.exception
                 )
             )
         # Put the team in the board.
@@ -114,7 +114,7 @@ class TeamBuilder(Builder[Team]):
             # If board entry fails return the exception chain.
             return BuildResult.failure(
                 TeamBuildException(
-                    message=f"{method}: {TeamBuildException.ERROR_CODE}", ex=owner_validation.exception
+                    msg=f"{method}: {TeamBuildException.ERR_CODE}", ex=owner_validation.exception
                 )
             )
         # After the team is registered with its owner and entered the board send it in the BuildResult.
@@ -299,7 +299,7 @@ class SquareBuilder(Builder[Square]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
-                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {SquareBuildException.MSG}",
                     ex=build_params_validation_result.exception
                 )
             )
@@ -314,7 +314,7 @@ class SquareBuilder(Builder[Square]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
-                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {SquareBuildException.MSG}",
                     ex=collision_detection_result.exception
                 )
             )
@@ -332,7 +332,7 @@ class SquareBuilder(Builder[Square]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
-                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {SquareBuildException.MSG}",
                     ex=insertion_result.exception
                 )
             )
@@ -383,7 +383,7 @@ class SquareBuilder(Builder[Square]):
         if relation_analysis.not_related:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                InvariantBreachException(message=f"{method}:{InvariantBreachException.DEFAULT_MESSAGE}", )
+                InvariantBreachException(msg=f"{method}:{InvariantBreachException.MSG}", )
             )
         
         # Handle the case that, the board and item are have a fully bidirectional relationship.

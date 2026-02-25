@@ -35,5 +35,5 @@ class UnsupportedEmptyComputationResultException(UnsupportedDataResultStateExcep
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "UNSUPPORTED_EMPTY_COMPUTATION_RESULT_STATE_ERROR"
-    DEFAULT_MESSAGE = "An ComputationResult's outcome is either success or failure. It cannot be empty."
+    ERR_CODE = "UNSUPPORTED_EMPTY_COMPUTATION_RESULT_STATE_ERROR"
+    MSG = "An ComputationResult's outcome is either success or failure. It cannot be empty."

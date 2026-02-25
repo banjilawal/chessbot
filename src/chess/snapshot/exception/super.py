@@ -32,5 +32,5 @@ class SnapshotException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "SNAPSHOT_ERROR"
-    DEFAULT_MESSAGE = "Snapshot raised an exception."
+    ERR_CODE = "SNAPSHOT_ERROR"
+    MSG = "Snapshot raised an exception."

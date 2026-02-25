@@ -115,7 +115,7 @@ class SquareBuilder(Builder[Square]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
-                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {SquareBuildException.MSG}",
                     ex=build_params_validation_result.exception
                 )
             )
@@ -130,7 +130,7 @@ class SquareBuilder(Builder[Square]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
-                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {SquareBuildException.MSG}",
                     ex=collision_detection_result.exception
                 )
             )
@@ -148,7 +148,7 @@ class SquareBuilder(Builder[Square]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareBuildException(
-                    message=f"{method}: {SquareBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {SquareBuildException.MSG}",
                     ex=insertion_result.exception
                 )
             )
@@ -254,7 +254,7 @@ class SquareBuilder(Builder[Square]):
         if relation_analysis.not_related:
             # Return the exception chain on failure.
             return InsertionResult.failure(
-                InvariantBreachException(message=f"{method}:{InvariantBreachException.DEFAULT_MESSAGE}", )
+                InvariantBreachException(msg=f"{method}:{InvariantBreachException.MSG}", )
             )
         
         # Handle the case that, the board and item are have a fully bidirectional relationship.

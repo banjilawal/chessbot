@@ -37,5 +37,5 @@ class NullTokenException(TokenDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_TOKEN_ERROR"
-    DEFAULT_MESSAGE = "Token validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_TOKEN_ERROR"
+    MSG = "Token validation failed: The candidate cannot be null."

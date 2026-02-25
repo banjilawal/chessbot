@@ -39,5 +39,5 @@ class CoordSearchRouteException(CoordException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_COORD_SEARCH_ROUTE_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "Coord search failed: No search method was provided for the Coord attribute."
+    ERR_CODE = "NO_COORD_SEARCH_ROUTE_ROUTE_ERROR"
+    MSG = "Coord search failed: No search method was provided for the Coord attribute."

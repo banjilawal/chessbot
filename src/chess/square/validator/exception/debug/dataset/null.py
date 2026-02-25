@@ -36,5 +36,5 @@ class SquareDataSourceNullException(SquareDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_SQUARE_DATASOURCE_PROVIDED_ERROR"
-    DEFAULT_MESSAGE = "No square dataset was provided. Received null instead."
+    ERR_CODE = "NO_SQUARE_DATASOURCE_PROVIDED_ERROR"
+    MSG = "No square dataset was provided. Received null instead."

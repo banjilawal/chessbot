@@ -37,5 +37,5 @@ class CaptivityContextBuildRouteException(CaptivityContextException, NoExecution
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_CAPTIVITY_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "CaptivityContext build failed: No build path existed for the Captivity key."
+    ERR_CODE = "NO_CAPTIVITY_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "CaptivityContext build failed: No build path existed for the Captivity key."

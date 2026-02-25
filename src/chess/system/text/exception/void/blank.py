@@ -39,8 +39,8 @@ class BlankEmptyStringException(VoidStringException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BLANK_EMPTY_STRING_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "BLANK_EMPTY_STRING_ERROR"
+    MSG = (
         "Got a blank String that had no characters nor whites space. The String cannot be empty it must have "
         "some characters."
     )

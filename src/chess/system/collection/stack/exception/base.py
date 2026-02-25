@@ -38,5 +38,5 @@ class StackServiceException(CollectionException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "STACK_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "StackService raised an exception."
+    ERR_CODE = "STACK_SERVICE_ERROR"
+    MSG = "StackService raised an exception."

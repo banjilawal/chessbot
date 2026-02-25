@@ -38,5 +38,5 @@ class BoardDebugException(BoardException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "BOARD_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A BoardDebugException was raised."
+    ERR_CODE = "BOARD_DEBUG_ERROR"
+    MSG = "A BoardDebugException was raised."

@@ -38,8 +38,8 @@ class ExcessiveAgentContextFlagsException(InvalidAgentContextException, ContextF
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_AGENT_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "EXCESSIVE_AGENT_CONTEXT_FLAG_ERROR"
+    MSG = (
         "Excessive AgentContext flags were set. an Agent search can only use one-and-only "
         "map flag at a time."
     )

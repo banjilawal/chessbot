@@ -68,7 +68,7 @@ class SchemaLookup(HashLookup[Schema]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 SchemaLookupFailedException(
-                    ex=validation.exception, message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}"
+                    ex=validation.exception, msg=f"{method}: {SchemaLookupFailedException.ERR_CODE}"
                 )
             )
         # After verification use the hash key to route to the appropriate lookup method.
@@ -83,8 +83,8 @@ class SchemaLookup(HashLookup[Schema]):
         # The default path is failure.
         return SearchResult.failure(
             SchemaLookupFailedException(
-                message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",
-                ex=SchemaLookupRouteException(f"{method}: {SchemaLookupRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {SchemaLookupFailedException.ERR_CODE}",
+                ex=SchemaLookupRouteException(f"{method}: {SchemaLookupRouteException.MSG}")
             )
         )
     
@@ -115,8 +115,8 @@ class SchemaLookup(HashLookup[Schema]):
         # The default path returns failure
         return SearchResult.failure(
             SchemaLookupFailedException(
-                message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",
-                ex=SchemaNameBoundsException(f"{method}: {SchemaNameBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {SchemaLookupFailedException.ERR_CODE}",
+                ex=SchemaNameBoundsException(f"{method}: {SchemaNameBoundsException.MSG}")
             )
         )
     
@@ -150,7 +150,7 @@ class SchemaLookup(HashLookup[Schema]):
         # The default path is failure.
         return SearchResult.failure(
             SchemaLookupFailedException(
-                message=f"{method}: {SchemaLookupFailedException.ERROR_CODE}",
-                ex=SchemaColorBoundsException(f"{method}: {SchemaColorBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {SchemaLookupFailedException.ERR_CODE}",
+                ex=SchemaColorBoundsException(f"{method}: {SchemaColorBoundsException.MSG}")
             )
         )

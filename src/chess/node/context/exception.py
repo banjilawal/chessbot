@@ -34,6 +34,6 @@ class NodeContextException(NodeException, ContextException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "NodeContext raised an exception."
+    ERR_CODE = "NODE_CONTEXT_ERROR"
+    MSG = "NodeContext raised an exception."
     

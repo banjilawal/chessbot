@@ -36,6 +36,6 @@ class NoExecutionRouteException(DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_EXECUTION_ROUTE_FOR_OPTION_ERROR"
-    DEFAULT_MESSAGE = "No execution route exists for the operation option."
+    ERR_CODE = "NO_EXECUTION_ROUTE_FOR_OPTION_ERROR"
+    MSG = "No execution route exists for the operation option."
     

@@ -37,5 +37,5 @@ class SchemaNameBoundsException(SchemaException, BoundsException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_NAME_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "SchemaLookup failed: No schema entries use the target as their key."
+    ERR_CODE = "SCHEMA_NAME_BOUNDS_ERROR"
+    MSG = "SchemaLookup failed: No schema entries use the target as their key."

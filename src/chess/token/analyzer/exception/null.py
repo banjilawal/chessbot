@@ -28,5 +28,5 @@ class ReadinessStateNullException(TokenStateException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_TOKEN_STATE_ERROR"
-    DEFAULT_MESSAGE = "TokenState validation failed: The candidate was null."
+    ERR_CODE = "NULL_TOKEN_STATE_ERROR"
+    MSG = "TokenState validation failed: The candidate was null."

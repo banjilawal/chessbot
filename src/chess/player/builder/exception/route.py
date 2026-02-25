@@ -29,8 +29,8 @@ class PlayerBuildRouteException(ResultException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_PLAYER_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "NO_PLAYER_BUILD_ROUTE_ERROR"
+    MSG = (
         "The PlayerFactory does not have a production line for all concrete Player classes. Ensure all build branches a"
         "re covered to prevent the execution flow from hit the default failure result outside the if-blocks."
     )

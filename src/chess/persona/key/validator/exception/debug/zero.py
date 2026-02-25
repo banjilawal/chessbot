@@ -37,7 +37,7 @@ class ZeroPersonaKeysException(PersonaKeyException, ContextFlagCountException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ZERO_PERSONA_CONTEXT_FLAGS_ERROR"
+    MSG = (
         "PersonaKey validation failed: All attributes were null. One attribute should be enabled."
     )

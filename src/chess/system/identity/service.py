@@ -104,5 +104,5 @@ class IdentityService:
             return ValidationResult.success(payload=(id, name))
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidIdentityException(ex=ex, message=f"{method}: {InvalidIdentityException.DEFAULT_MESSAGE}")
+                InvalidIdentityException(ex=ex, msg=f"{method}: {InvalidIdentityException.MSG}")
             )

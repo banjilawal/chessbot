@@ -50,7 +50,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedDestinationSquareOccupationRolledBackException(
-                        f"{method}: {FailedDestinationSquareOccupationRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedDestinationSquareOccupationRolledBackException.MSG}"
                     )
                 )
             
@@ -71,7 +71,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedActorSquareVacationRolledBackException(
-                        f"{method}: {FailedActorSquareVacationRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedActorSquareVacationRolledBackException.MSG}"
                     )
                 )
             
@@ -88,7 +88,7 @@ class OccupationTransaction(TravelTransaction[OccupationEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedActorPositionUpdateRolledBackException(
-                        f"{method}: {FailedActorPositionUpdateRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedActorPositionUpdateRolledBackException.MSG}"
                     )
                 )
             

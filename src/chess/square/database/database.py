@@ -129,7 +129,7 @@ class SquareDatabase(Database[Square]):
             return UpdateResult.update_failure(
                 original=occupation_update_result.original,
                 exception=SquareDatabaseException(
-                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERR_CODE}",
                     ex=occupation_update_result.exception
                 )
             )
@@ -166,7 +166,7 @@ class SquareDatabase(Database[Square]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareDatabaseException(
-                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERR_CODE}",
                     ex=occupant_removal_result.exception
                 )
             )
@@ -201,7 +201,7 @@ class SquareDatabase(Database[Square]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareDatabaseException(
-                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERR_CODE}",
                     ex=square_insertion_result.exception
                 )
             )
@@ -232,7 +232,7 @@ class SquareDatabase(Database[Square]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 SquareDatabaseException(
-                    message=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {SquareDatabaseException.ERR_CODE}",
                     ex=query_result.exception
                 )
             )

@@ -35,5 +35,5 @@ class AddingDuplicateTokenException(TokenStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_DUPLICATE_TOKEN_ERROR"
-    DEFAULT_MESSAGE = "Pushing token failed: The token was already present in the stack."
+    ERR_CODE = "ADDING_DUPLICATE_TOKEN_ERROR"
+    MSG = "Pushing token failed: The token was already present in the stack."

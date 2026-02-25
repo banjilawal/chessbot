@@ -36,5 +36,5 @@ class CoordValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Coord validation failed."
+    ERR_CODE = "COORD_VALIDATION_FAILURE"
+    MSG = "Coord validation failed."

@@ -38,5 +38,5 @@ class UniqueHostageInsertionException(HostageException, InsertionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_HOSTAGE_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Unique Hostage insertion failed."
+    ERR_CODE = "UNIQUE_HOSTAGE_INSERTION_FAILURE"
+    MSG = "Unique Hostage insertion failed."

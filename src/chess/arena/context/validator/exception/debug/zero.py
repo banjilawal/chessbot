@@ -38,8 +38,8 @@ class ZeroArenaContextFlagsException(InvalidArenaContextException, ContextFlagCo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_ARENA_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ZERO_ARENA_CONTEXT_FLAGS_ERROR"
+    MSG = (
         "Zero ArenaContext flags were set. Cannot search for Arenas if one-and_oly-one "
         "map flag is enabled."
     )

@@ -35,6 +35,6 @@ class RollbackException(ChessException):
   # INHERITED ATTRIBUTES:
   None
   """
-  ERROR_CODE = "ROLLBACK_OPERATION"
-  DEFAULT_MESSAGE = "Operation failed and rolled back."
+  ERR_CODE = "ROLLBACK_OPERATION"
+  MSG = "Operation failed and rolled back."
 

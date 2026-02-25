@@ -25,7 +25,7 @@ class HouseValidator(Validator[House]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullHouseException(f"{method}: {NullHouseException.DEFAULT_MESSAGE}")
+                    NullHouseException(f"{method}: {NullHouseException.MSG}")
                 )
             
             if not isinstance(candidate, House):
@@ -41,7 +41,7 @@ class HouseValidator(Validator[House]):
             
             if house.square.occupant is None:
                 return ValidationResult.failure(
-                    NullHouseResidentException(f"{method}: {NullHouseResidentException.DEFAULT_MESSAGE}")
+                    NullHouseResidentException(f"{method}: {NullHouseResidentException.MSG}")
                 )
             
             return ValidationResult.success(house)

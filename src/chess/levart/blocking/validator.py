@@ -29,7 +29,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullBlockingEventException(f"{method}: {NullBlockingEventException.DEFAULT_MESSAGE}")
+                    NullBlockingEventException(f"{method}: {NullBlockingEventException.MSG}")
                 )
             
             if not isinstance(candidate, BlockingEvent):
@@ -59,7 +59,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             
             if event.actor.current_position == event.blocked_square.point:
                 return ValidationResult.failure(
-                    ActorBlockingOwnSquareException(f"{method}: {ActorBlockingOwnSquareException.DEFAULT_MESSAGE}")
+                    ActorBlockingOwnSquareException(f"{method}: {ActorBlockingOwnSquareException.MSG}")
                 )
             
             blocker_validation = PieceValidator.validate(event.friend)
@@ -68,12 +68,12 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             
             if event.actor == event.friend:
                 return ValidationResult(exception=ActorSameAsBlockerException(
-                    f"{method}: {ActorSameAsBlockerException.DEFAULT_MESSAGE}")
+                    f"{method}: {ActorSameAsBlockerException.MSG}")
                 )
             
             if event.actor.is_enemy(event.friend):
                 return ValidationResult(exception=EnemyCannotBeBlockerException(
-                    f"{method}: {EnemyCannotBeBlockerException.DEFAULT_MESSAGE}")
+                    f"{method}: {EnemyCannotBeBlockerException.MSG}")
                 )
             
             context_build_result = DiscoverySearchContextBuilder.build(piece_id=event.friend.visitor_id)
@@ -87,7 +87,7 @@ class BlockingEventValidator(Validator[BlockingEvent]):
             
             if discovery_search.is_success():
                 return ValidationResult.success(
-                    DiscoveryAlreadyExistsException(f"{method}: {DiscoveryAlreadyExistsException.DEFAULT_MESSAGE}")
+                    DiscoveryAlreadyExistsException(f"{method}: {DiscoveryAlreadyExistsException.MSG}")
                 )
             
             if event.actor == event.friend:

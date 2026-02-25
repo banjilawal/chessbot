@@ -37,5 +37,5 @@ class CoordContextBuildRouteException(CoordContextException, NoExecutionRouteExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_COORD_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "CoordContext build failed: No build path existed for the Coord key."
+    ERR_CODE = "NO_COORD_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "CoordContext build failed: No build path existed for the Coord key."

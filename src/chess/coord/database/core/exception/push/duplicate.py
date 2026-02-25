@@ -35,5 +35,5 @@ class DuplicateCoordPushException(CoordStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PUSHING_DUPLICATE_COORD_ONTO_STACK_ERROR"
-    DEFAULT_MESSAGE = "CoordStack push failed: Coord already at top of stack."
+    ERR_CODE = "PUSHING_DUPLICATE_COORD_ONTO_STACK_ERROR"
+    MSG = "CoordStack push failed: Coord already at top of stack."

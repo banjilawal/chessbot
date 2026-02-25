@@ -22,5 +22,5 @@ class InvalidPromotionEventException(PromotionEventException, ValidationExceptio
     Raised by PromotionEventValidator if team_name client fails sanity checks. Exists to catch all
     exception raised validating an existing `PromotionEvent` candidate.
     """
-    ERROR_CODE = "PROMOTION_EVENT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "PromotionEvent validation failed."
+    ERR_CODE = "PROMOTION_EVENT_VALIDATION_ERROR"
+    MSG = "PromotionEvent validation failed."

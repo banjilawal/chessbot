@@ -76,7 +76,7 @@ class EdgeBuilder(Builder[Edge]):
              # Return the exception chain on failure
              return BuildResult.failure(
                  EdgeBuildException(
-                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
+                     msg=f"{method} {EdgeBuildException.MSG}",
                      ex=id_validation.exception
                  )
              )
@@ -86,7 +86,7 @@ class EdgeBuilder(Builder[Edge]):
              # Return the exception chain on failure
              return BuildResult.failure(
                  EdgeBuildException(
-                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
+                     msg=f"{method} {EdgeBuildException.MSG}",
                      ex=head_validation.exception
                  )
              )
@@ -96,7 +96,7 @@ class EdgeBuilder(Builder[Edge]):
              # Return the exception chain on failure
              return BuildResult.failure(
                  EdgeBuildException(
-                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
+                     msg=f"{method} {EdgeBuildException.MSG}",
                      ex=tail_validation.exception
                  )
              )
@@ -105,8 +105,8 @@ class EdgeBuilder(Builder[Edge]):
              # Return the exception chain on failure
              return BuildResult.failure(
                  EdgeBuildException(
-                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
-                     ex=HeadCannotBeTailException(f"{method}: {HeadCannotBeTailException.DEFAULT_MESSAGE}")
+                     msg=f"{method} {EdgeBuildException.MSG}",
+                     ex=HeadCannotBeTailException(f"{method}: {HeadCannotBeTailException.MSG}")
                  )
              )
          # --- After the inputs have been validated compute the edge's Euclidean distance. ---#
@@ -119,7 +119,7 @@ class EdgeBuilder(Builder[Edge]):
              # Return the exception chain on failure
              return BuildResult.failure(
                  EdgeBuildException(
-                     message=f"{method} {EdgeBuildException.DEFAULT_MESSAGE}",
+                     msg=f"{method} {EdgeBuildException.MSG}",
                      ex=distance_computation_result.exception
                  )
              )

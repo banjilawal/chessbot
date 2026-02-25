@@ -38,5 +38,5 @@ class UniqueBoardSearchException(BoardException, SearchException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_BOARD_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Unique board search failed."
+    ERR_CODE = "UNIQUE_BOARD_SEARCH_FAILURE"
+    MSG = "Unique board search failed."

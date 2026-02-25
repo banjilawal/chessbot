@@ -76,7 +76,7 @@ class PlayerValidator(Validator[Player]):
             # If candidate does not exist no point continuing
             if candidate is None:
                 return ValidationResult.failure(
-                    NullPlayerException(f"{method}: {NullPlayerException.DEFAULT_MESSAGE}")
+                    NullPlayerException(f"{method}: {NullPlayerException.MSG}")
                 )
             # Handle the case, the candidate is not an Player object.
             if not isinstance(candidate, PlayerPlayer):
@@ -116,7 +116,7 @@ class PlayerValidator(Validator[Player]):
             # the logic does not handle each concrete Player subclass.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidPlayerException(ex=ex, message=f"{method}: {InvalidPlayerException.DEFAULT_MESSAGE}")
+                InvalidPlayerException(ex=ex, msg=f"{method}: {InvalidPlayerException.MSG}")
             )
     
     @classmethod
@@ -150,7 +150,7 @@ class PlayerValidator(Validator[Player]):
             # Handle the null case.
             if candidate is None:
                 return ValidationResult.failure(
-                    PlayerVarietyNullException(f"{method}: {PlayerVarietyNullException.DEFAULT_MESSAGE}")
+                    PlayerVarietyNullException(f"{method}: {PlayerVarietyNullException.MSG}")
                 )
             #Handle the incorrect type case
             if not isinstance(candidate, PlayerVariety):
@@ -165,7 +165,7 @@ class PlayerValidator(Validator[Player]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidPlayerVarietyException(
-                    ex=ex, message=f"{method}: {InvalidPlayerVarietyException.DEFAULT_MESSAGE}"
+                    ex=ex, msg=f"{method}: {InvalidPlayerVarietyException.MSG}"
                 )
             )
         
@@ -180,7 +180,7 @@ class PlayerValidator(Validator[Player]):
         """
         # ACTION:
         1.  If machine.engine_service passes certification, return the machine inside a ValidationResult.
-            Otherwise, send the exception in the ValidationResult..
+            Otherwise, send the exception in the ValidationResult.
 
         # PARAMETERS:
             *   machine (MachinePlayer)
@@ -207,6 +207,6 @@ class PlayerValidator(Validator[Player]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidMachinePlayerException(
-                    ex=ex, message=f"{method}: {InvalidMachinePlayerException.DEFAULT_MESSAGE}"
+                    ex=ex, msg=f"{method}: {InvalidMachinePlayerException.MSG}"
                 )
             )

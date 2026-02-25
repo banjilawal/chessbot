@@ -36,5 +36,5 @@ class VectorValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VECTOR_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Vector validation failed."
+    ERR_CODE = "VECTOR_VALIDATION_FAILURE"
+    MSG = "Vector validation failed."

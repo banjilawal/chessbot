@@ -36,5 +36,5 @@ class NegativeNumberNotAllowedException(NumberException, BoundsException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Number validation failed: The candidate was negative."
+    ERR_CODE = "NOT_NEGATIVE_NUMBER_VALIDATION_FAILURE"
+    MSG = "Number validation failed: The candidate was negative."

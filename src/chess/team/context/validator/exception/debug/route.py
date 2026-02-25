@@ -37,5 +37,5 @@ class TeamContextValidationRouteException(TeamContextException, NoExecutionRoute
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_TEAM_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "TeamContext validation failed: No validation route was provided for the Team attribute."
+    ERR_CODE = "NO_TEAM_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "TeamContext validation failed: No validation route was provided for the Team attribute."

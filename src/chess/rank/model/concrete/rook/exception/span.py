@@ -35,5 +35,5 @@ class RookSpanComputationException(SpanComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ROOK_SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Rook span computation failed."
+    ERR_CODE = "ROOK_SPAN_COMPUTATION_FAILURE"
+    MSG = "Rook span computation failed."

@@ -35,6 +35,6 @@ class RosterDeploymentException(UpdateException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ROSTER_DEPLOYMENT_FAILURE"
-    DEFAULT_MESSAGE = "Roster deployment failed."
+    ERR_CODE = "ROSTER_DEPLOYMENT_FAILURE"
+    MSG = "Roster deployment failed."
 

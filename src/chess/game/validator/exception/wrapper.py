@@ -37,5 +37,5 @@ class GameValidationException(GameException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Game validation failed."
+    ERR_CODE = "GAME_VALIDATION_FAILURE"
+    MSG = "Game validation failed."

@@ -33,5 +33,5 @@ class NullGameTimelineException(InvalidGameTimelineException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_GAME_TIMELINE_ERROR"
-    DEFAULT_MESSAGE = "GameTimeline cannot be null."
+    ERR_CODE = "NULL_GAME_TIMELINE_ERROR"
+    MSG = "GameTimeline cannot be null."

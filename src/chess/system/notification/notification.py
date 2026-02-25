@@ -8,5 +8,5 @@ version: 1.0.0
 """
 
 class Notification:
-  _message: str
+  _msg: str
   _notification_accepted: bool

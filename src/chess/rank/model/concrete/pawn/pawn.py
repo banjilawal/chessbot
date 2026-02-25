@@ -83,7 +83,7 @@ class Pawn(Rank):
         #     # Return the exception chain on failure.
         #     return ComputationResult.failure(
         #         PawnSpanComputationException(
-        #             message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
+        #             msg=f"{method}: {PawnSpanComputationException.MSG}",
         #             ex=actionable_token_verification_result.exception
         #         )
         #     )
@@ -91,7 +91,7 @@ class Pawn(Rank):
         if not isinstance(token, PawnToken):
             return ComputationResult.failure(
                 PawnSpanComputationException(
-                    message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PawnSpanComputationException.MSG}",
                     ex=TypeError(
                         f"{method}: Expected PawnToken, got {type(token).__name__} instead. Cannot "
                         f"compute pawn spanning dictionary for non-Pawn tokens."
@@ -107,7 +107,7 @@ class Pawn(Rank):
             # On failure return the exception chain
             return ComputationResult.failure(
                 PawnException(
-                    message=f"{method}: {PawnException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PawnException.MSG}",
                     ex=destination_result.exception
                 )
             )
@@ -117,7 +117,7 @@ class Pawn(Rank):
             # On failure return the exception chain
             return ComputationResult.failure(
                 PawnException(
-                    message=f"{method}: {PawnException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PawnException.MSG}",
                     ex=targeting_result.exception
                 )
             )
@@ -192,7 +192,7 @@ class Pawn(Rank):
             if destination_computation.is_failure:
                 return ComputationResult.failure(
                     PawnSpanComputationException(
-                        message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {PawnSpanComputationException.MSG}",
                         ex=destination_computation.exception
                     )
                 )
@@ -204,7 +204,7 @@ class Pawn(Rank):
             if destination_computation.is_failure:
                 return ComputationResult.failure(
                     PawnSpanComputationException(
-                        message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {PawnSpanComputationException.MSG}",
                         ex=destination_computation.exception
                     )
                 )
@@ -220,7 +220,7 @@ class Pawn(Rank):
             # On failure return the exception chain
             return ComputationResult.failure(
                 PawnSpanComputationException(
-                    message=f"{method}: {PawnSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PawnSpanComputationException.MSG}",
                     ex=coord_validation.exception
                 )
             )

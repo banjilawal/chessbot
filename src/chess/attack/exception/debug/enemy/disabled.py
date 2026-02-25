@@ -26,5 +26,5 @@ class AttackingDisabledEnemyException(AttackDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: The enemy combatant was already disabled."
+    ERR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
+    MSG = "Attack failed: The enemy combatant was already disabled."

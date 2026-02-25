@@ -40,5 +40,5 @@ class EdgeContextBuildException(EdgeContextException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "EdgeContext build failed."
+    ERR_CODE = "EDGE_CONTEXT_BUILD_FAILED"
+    MSG = "EdgeContext build failed."

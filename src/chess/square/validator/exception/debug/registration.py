@@ -37,5 +37,5 @@ class SquareNotRegisteredBoardException(SquareDebugException, NotRegisteredExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_NOT_REGISTERED_WITH_BOARD_ERROR"
-    DEFAULT_MESSAGE = "Square validation failed: The candidate square had not registered with its board."
+    ERR_CODE = "SQUARE_NOT_REGISTERED_WITH_BOARD_ERROR"
+    MSG = "Square validation failed: The candidate square had not registered with its board."

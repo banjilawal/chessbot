@@ -32,6 +32,6 @@ class SquareContextException(SuperClassException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "SquareContext raised an exception."
+    ERR_CODE = "SQUARE_CONTEXT_ERROR"
+    MSG = "SquareContext raised an exception."
     

@@ -39,4 +39,4 @@ class FormationKeyBuildException(FormationKeyException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_KEY_BUILD_FAILED"
+    ERR_CODE = "FORMATION_KEY_BUILD_FAILED"

@@ -32,5 +32,5 @@ class RankException(ChessException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RANK_ERROR"
-    DEFAULT_MESSAGE = "Rank raised an exception."
+    ERR_CODE = "RANK_ERROR"
+    MSG = "Rank raised an exception."

@@ -37,6 +37,6 @@ class InvariantBreachException(InconsistencyException):
      None
     """
     DEFAULT_CODE = "INVARIANT_BREACH_ERROR"
-    DEFAULT_MESSAGE = (
+    MSG = (
         "A system invariant was violated, indicating a critical state inconsistency. or entity_service loss."
     )

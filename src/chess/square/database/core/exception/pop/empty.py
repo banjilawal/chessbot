@@ -21,7 +21,7 @@ class PoppingEmptySquareStackException(SquareStackServiceException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failing DeletionResult was returned because an attempt was made to pop an empty square stack..
+    A failing DeletionResult was returned because an attempt was made to pop an empty square stack.
 
     # PARENT:
         *   SquareDebugException
@@ -35,5 +35,5 @@ class PoppingEmptySquareStackException(SquareStackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_EMPTY_SQUARE_STACK_ERROR"
-    DEFAULT_MESSAGE = "SquareStack pop failed: Cannot pop from an empty stack."
+    ERR_CODE = "POPPING_EMPTY_SQUARE_STACK_ERROR"
+    MSG = "SquareStack pop failed: Cannot pop from an empty stack."

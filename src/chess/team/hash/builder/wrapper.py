@@ -38,5 +38,5 @@ class TeamHashBuildException(TeamHashException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_HASH_BUILD_FAILURE"
-    DEFAULT_MESSAGE = "TeamHash build failed."
+    ERR_CODE = "TEAM_HASH_BUILD_FAILURE"
+    MSG = "TeamHash build failed."

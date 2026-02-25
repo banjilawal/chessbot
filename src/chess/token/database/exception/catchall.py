@@ -39,5 +39,5 @@ class TokenDatabaseException(TokenException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_DATABASE_ERROR"
-    DEFAULT_MESSAGE = "TokenDatabase raised an exception."
+    ERR_CODE = "TOKEN_DATABASE_ERROR"
+    MSG = "TokenDatabase raised an exception."

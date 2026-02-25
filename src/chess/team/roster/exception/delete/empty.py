@@ -26,5 +26,5 @@ class PoppingEmptyTeamRosterException(TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_EMPTY_ROSTER_ERROR"
-    DEFAULT_MESSAGE = "Roster member deletion failed: The roster is empty. Nothing to delete."
+    ERR_CODE = "POPPING_EMPTY_ROSTER_ERROR"
+    MSG = "Roster member deletion failed: The roster is empty. Nothing to delete."

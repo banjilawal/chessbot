@@ -24,7 +24,7 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
             *   str
             *   Dict[str, Any]
             *   nd consistent before use.
-        Before the OperationValidator checks that the fields match ServiceOperation.key
+        Before the OperationValidator checks that the fields match Command.key
 
     # PARENT:
         *   Validator
@@ -65,9 +65,9 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ServiceRequestValidationException(
-                    message=f"{method}: {ServiceRequestValidationException.ERROR_CODE}",
+                    msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
                     ex=ServiceRequestNullException(
-                        f"{method}: {ServiceRequestNullException.DEFAULT_MESSAGE}"
+                        f"{method}: {ServiceRequestNullException.MSG}"
                     )
                 )
             )
@@ -76,7 +76,7 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ServiceRequestValidationException(
-                    message=f"{method}: {ServiceRequestValidationException.ERROR_CODE}",
+                    msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
                     ex=TypeError(
                         f"{method}: Expected ServiceRequest, but, got {type(candidate).__name__} instead."
                     )
@@ -91,7 +91,7 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
         if identity_validation.is_failure:
             return ValidationResult.failure(
                 ServiceRequestValidationException(
-                    message=f"{method}: {ServiceRequestValidationException.ERROR_CODE}",
+                    msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
                     ex=identity_validation.exception
                 )
             )
@@ -100,7 +100,7 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ServiceRequestValidationException(
-                    message=f"{method}: {ServiceRequestValidationException.ERROR_CODE}",
+                    msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
                     ex=TypeError(
                         f"{method}: ServiceRequest.params is type: "
                         f"{type(candidate).__name__}, instead of Dict[str, Any]."
@@ -113,7 +113,7 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     ServiceRequestValidationException(
-                        message=f"{method}: {ServiceRequestValidationException.ERROR_CODE}",
+                        msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
                         ex=TypeError(
                             f"{method}: A ServiceRequest.key is : {type(candidate).__name__} instead of str."
                         )

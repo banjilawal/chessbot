@@ -70,15 +70,15 @@ class VectorValidator(Validator[Vector]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 InvalidVectorException(
-                    message=f"{method}: {InvalidVectorException.ERROR_CODE}",
-                    ex=NullVectorException(f"{method}: {NullVectorException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {InvalidVectorException.ERR_CODE}",
+                    ex=NullVectorException(f"{method}: {NullVectorException.MSG}")
                 )
             )
         # Handle the wrong class case.
         if not isinstance(candidate, Vector):
             return ValidationResult.failure(
                 InvalidVectorException(
-                    message=f"{method}: {InvalidVectorException.ERROR_CODE}",
+                    msg=f"{method}: {InvalidVectorException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected a Vector, got {type(candidate).__name__} instead.")
                 )
             )
@@ -95,7 +95,7 @@ class VectorValidator(Validator[Vector]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 InvalidVectorException(
-                    message=f"{method}: {InvalidVectorException.ERROR_CODE}",
+                    msg=f"{method}: {InvalidVectorException.ERR_CODE}",
                     ex=x_axis_validation.exception
                 )
             )
@@ -109,7 +109,7 @@ class VectorValidator(Validator[Vector]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 InvalidVectorException(
-                    message=f"{method}: {InvalidVectorException.ERROR_CODE}",
+                    msg=f"{method}: {InvalidVectorException.ERR_CODE}",
                     ex=y_axis_validation.exception
                 )
             )

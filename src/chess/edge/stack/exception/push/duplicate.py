@@ -35,5 +35,5 @@ class AddingDuplicateEdgeException(EdgeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_DUPLICATE_EDGE_ERROR"
-    DEFAULT_MESSAGE = "Pushing edge onto stack failed: The edge is already present."
+    ERR_CODE = "ADDING_DUPLICATE_EDGE_ERROR"
+    MSG = "Pushing edge onto stack failed: The edge is already present."

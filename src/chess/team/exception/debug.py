@@ -37,5 +37,5 @@ class TeamDebugException(TeamException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "TEAM_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A TeamDebugException was raised."
+    ERR_CODE = "TEAM_DEBUG_ERROR"
+    MSG = "A TeamDebugException was raised."

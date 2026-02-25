@@ -32,5 +32,5 @@ class FormationException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "FORMATION_ERROR"
-    DEFAULT_MESSAGE = "Formation raised an exception."
+    ERR_CODE = "FORMATION_ERROR"
+    MSG = "Formation raised an exception."

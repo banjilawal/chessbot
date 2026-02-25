@@ -36,5 +36,5 @@ class TransferException(OperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TRANSFER_FAILED_ERROR"
-    DEFAULT_MESSAGE = "transfer failed."
+    ERR_CODE = "TRANSFER_FAILED_ERROR"
+    MSG = "transfer failed."

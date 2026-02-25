@@ -36,5 +36,5 @@ class ContextException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "CONTEXT raised an exception."
+    ERR_CODE = "CONTEXT_ERROR"
+    MSG = "CONTEXT raised an exception."

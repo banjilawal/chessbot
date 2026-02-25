@@ -37,5 +37,5 @@ class NullEdgeException(EdgeDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_EDGE_ERROR"
-    DEFAULT_MESSAGE = "Edge validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_EDGE_ERROR"
+    MSG = "Edge validation failed: The candidate cannot be null."

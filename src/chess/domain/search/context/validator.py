@@ -43,7 +43,7 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullResidentSearchContextException(f"{method} {NullResidentSearchContextException.DEFAULT_MESSAGE}")
+                    NullResidentSearchContextException(f"{method} {NullResidentSearchContextException.MSG}")
                 )
             
             if not isinstance(candidate, ResidentFilter):
@@ -55,13 +55,13 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
             
             if len(search_context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    NoResidentSearchParamException(f"{method} {NoResidentSearchParamException.DEFAULT_MESSAGE}")
+                    NoResidentSearchParamException(f"{method} {NoResidentSearchParamException.MSG}")
                 )
             
             if len(search_context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessiveResidentSearchParamsException(
-                        f"{method} {ExcessiveResidentSearchParamsException.DEFAULT_MESSAGE}"
+                        f"{method} {ExcessiveResidentSearchParamsException.MSG}"
                     )
                 )
             

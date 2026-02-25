@@ -78,9 +78,9 @@ class NodeFinder(StackSearcher[Node]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 NodeSearchException(
-                    message=f"{method}: {NodeSearchException.ERROR_CODE}",
+                    msg=f"{method}: {NodeSearchException.ERR_CODE}",
                     ex=NodeSearchNullDatasetException(
-                        f"{method}: {NodeSearchNullDatasetException.DEFAULT_MESSAGE}"
+                        f"{method}: {NodeSearchNullDatasetException.MSG}"
                     )
                 )
             )
@@ -89,9 +89,9 @@ class NodeFinder(StackSearcher[Node]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 NodeSearchException(
-                    message=f"{method}: {NodeSearchException.ERROR_CODE}",
+                    msg=f"{method}: {NodeSearchException.ERR_CODE}",
                     ex=NodeSearchPayloadTypeException(
-                        f"{method}: {NodeSearchPayloadTypeException.DEFAULT_MESSAGE}"
+                        f"{method}: {NodeSearchPayloadTypeException.MSG}"
                     )
                 )
             )
@@ -101,7 +101,7 @@ class NodeFinder(StackSearcher[Node]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 NodeSearchException(
-                    message=f"{method}: {NodeSearchException.ERROR_CODE}",
+                    msg=f"{method}: {NodeSearchException.ERR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -123,8 +123,8 @@ class NodeFinder(StackSearcher[Node]):
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             NodeSearchException(
-                message=f"{method}: {NodeSearchException.ERROR_CODE}",
-                ex=NodeSearchRouteException(f"{method}: {NodeSearchRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {NodeSearchException.ERR_CODE}",
+                ex=NodeSearchRouteException(f"{method}: {NodeSearchRouteException.MSG}")
             )
         )
     

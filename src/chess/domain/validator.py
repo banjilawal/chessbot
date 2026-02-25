@@ -73,7 +73,7 @@ class DomainValidator(Validator[Domain]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullDomainException(f"{method}: {NullDomainException.DEFAULT_MESSAGE}")
+                    NullDomainException(f"{method}: {NullDomainException.MSG}")
                 )
             
             if not isinstance(candidate, Domain):
@@ -94,21 +94,21 @@ class DomainValidator(Validator[Domain]):
             if domain.squares is None:
                 return ValidationResult.failure(
                     DomainNullSquaresListException(
-                        f"{method}: {DomainNullSquaresListException.DEFAULT_MESSAGE}"
+                        f"{method}: {DomainNullSquaresListException.MSG}"
                     )
                 )
             
             if domain.enemies is None:
                 return ValidationResult.failure(
                     DomainNullEnemiesDictException(
-                        f"{method}: {DomainNullEnemiesDictException.DEFAULT_MESSAGE}"
+                        f"{method}: {DomainNullEnemiesDictException.MSG}"
                     )
                 )
             
             if domain.friends is None:
                 return ValidationResult.failure(
                     DomainNullFriendsDictException(
-                        f"{method}: {DomainNullFriendsDictException.DEFAULT_MESSAGE}"
+                        f"{method}: {DomainNullFriendsDictException.MSG}"
                     )
                 )
             
@@ -116,5 +116,5 @@ class DomainValidator(Validator[Domain]):
         
         except Exception as e:
             return ValidationResult.failure(
-                InvalidDomainException(f"{method}: {InvalidDomainException.DEFAULT_MESSAGE}", e)
+                InvalidDomainException(f"{method}: {InvalidDomainException.MSG}", e)
             )

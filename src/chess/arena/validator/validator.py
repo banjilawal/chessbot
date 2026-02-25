@@ -73,7 +73,7 @@ class ArenaValidator(Validator[Arena]):
             # If candidate does not exist no point continuing
             if candidate is None:
                 return ValidationResult.failure(
-                    NullArenaException(f"{method}: {NullArenaException.DEFAULT_MESSAGE}")
+                    NullArenaException(f"{method}: {NullArenaException.MSG}")
                 )
             # Handle the case, the candidate is not an Arena object.
             if not isinstance(candidate, Arena):
@@ -100,27 +100,27 @@ class ArenaValidator(Validator[Arena]):
             
             if arena.team_service.size < 2:
                 return ValidationResult.failure(
-                    NotEnoughTeamsInArenaException(f"{method}: {NotEnoughTeamsInArenaException.DEFAULT_MESSAGE}")
+                    NotEnoughTeamsInArenaException(f"{method}: {NotEnoughTeamsInArenaException.MSG}")
                 )
             
             if arena.team_service.size > 2:
                 return ValidationResult.failure(
-                    ExcessiveTeamsInArenaException(f"{method}: {ExcessiveTeamsInArenaException.DEFAULT_MESSAGE}")
+                    ExcessiveTeamsInArenaException(f"{method}: {ExcessiveTeamsInArenaException.MSG}")
                 )
             
             if arena.black_team == arena.white_team:
                 return ValidationResult.failure(
-                    ArenaTeamDuplicationException(f"{method}: {ArenaTeamDuplicationException.DEFAULT_MESSAGE}")
+                    ArenaTeamDuplicationException(f"{method}: {ArenaTeamDuplicationException.MSG}")
                 )
             
             if arena.black_team.schema.color == arena.white_team.schema.color:
                 return ValidationResult.failure(
-                    ArenaTeamColorCollisionException(f"{method}: {ArenaTeamColorCollisionException.DEFAULT_MESSAGE}")
+                    ArenaTeamColorCollisionException(f"{method}: {ArenaTeamColorCollisionException.MSG}")
                 )
             
             if arena.black_team.owner == arena.white_team.owner:
                 return ValidationResult.failure(
-                    ArenaTeamPlayerCollisionException(f"{method}: {ArenaTeamPlayerCollisionException.DEFAULT_MESSAGE}")
+                    ArenaTeamPlayerCollisionException(f"{method}: {ArenaTeamPlayerCollisionException.MSG}")
                 )
             
             # When the checks pass Validation the Arena object.
@@ -132,6 +132,6 @@ class ArenaValidator(Validator[Arena]):
         except Exception as ex:
             return ValidationResult.failure(
                 ArenaValidationException(
-                    ex=ex, message=f"{method}: {ArenaValidationException.DEFAULT_MESSAGE}"
+                    ex=ex, msg=f"{method}: {ArenaValidationException.MSG}"
                 )
             )

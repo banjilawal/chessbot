@@ -35,5 +35,5 @@ class ServiceOperationException(ServiceException, OperationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_OPERATION_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Service operation failed."
+    ERR_CODE = "SERVICE_OPERATION_FAILED_ERROR"
+    MSG = "Service operation failed."

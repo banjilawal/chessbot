@@ -40,5 +40,5 @@ class NullCollectionException(CollectionException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_COLLECTION_ERROR"
-    DEFAULT_MESSAGE = "Collection cannot be null."
+    ERR_CODE = "NULL_COLLECTION_ERROR"
+    MSG = "Collection cannot be null."

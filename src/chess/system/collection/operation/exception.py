@@ -36,5 +36,5 @@ class CollectionOperationException(OperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COLLECTION_OPERATION_FAILURE"
-    DEFAULT_MESSAGE = "Calculation operation failed."
+    ERR_CODE = "COLLECTION_OPERATION_FAILURE"
+    MSG = "Calculation operation failed."

@@ -36,5 +36,5 @@ class EdgeBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Edge build failed."
+    ERR_CODE = "EDGE_BUILD_FAILED"
+    MSG = "Edge build failed."

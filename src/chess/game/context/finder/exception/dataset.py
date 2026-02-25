@@ -41,8 +41,8 @@ class GameSearchDatasetNullException(GameException, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_SEARCH_DATASET_NULL_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "GAME_SEARCH_DATASET_NULL_ERROR"
+    MSG = (
         "GameFinder needs a list of games to run serach operations on. Cannot pass pass null "
         "as the List[Game] collection."
     )

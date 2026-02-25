@@ -37,7 +37,7 @@ class TeamSearchIdCollisionException(Team, CollisionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "TEAM_SEARCH_ID_COLLISION_ERROR"
+    MSG = (
         "TeamSearch failed: There was id collision. The results contain different teams that share an id."
     )

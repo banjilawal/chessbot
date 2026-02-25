@@ -38,5 +38,5 @@ class VectorDebugException(VectorException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "VECTOR_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A VectorDebugException was raised."
+    ERR_CODE = "VECTOR_DEBUG_ERROR"
+    MSG = "A VectorDebugException was raised."

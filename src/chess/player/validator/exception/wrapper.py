@@ -36,5 +36,5 @@ class PlayerValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PLAYER_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Player validation failed."
+    ERR_CODE = "PLAYER_VALIDATION_FAILURE"
+    MSG = "Player validation failed."

@@ -36,5 +36,5 @@ class TokenCollisionDetectionException(CollisionDetectionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COLLISION_DETECTION_OPERATION_FAILURE"
-    DEFAULT_MESSAGE = "Token collision detection operation failed."
+    ERR_CODE = "COLLISION_DETECTION_OPERATION_FAILURE"
+    MSG = "Token collision detection operation failed."

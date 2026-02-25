@@ -32,5 +32,5 @@ class VectorException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "VECTOR_ERROR"
-    DEFAULT_MESSAGE = "Vector raised an exception."
+    ERR_CODE = "VECTOR_ERROR"
+    MSG = "Vector raised an exception."

@@ -34,5 +34,5 @@ class TokenContextException(TokenException, ContextException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TokenContext raised an exception."
+    ERR_CODE = "TOKEN_CONTEXT_ERROR"
+    MSG = "TokenContext raised an exception."

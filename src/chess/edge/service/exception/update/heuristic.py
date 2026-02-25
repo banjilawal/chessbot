@@ -38,5 +38,5 @@ class UpdatingEdgeHeuristicException(EdgeServiceException, UpdateException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_HEURISTIC_UPDATE_FAILURE"
-    DEFAULT_MESSAGE = "Edge heuristic update failed."
+    ERR_CODE = "EDGE_HEURISTIC_UPDATE_FAILURE"
+    MSG = "Edge heuristic update failed."

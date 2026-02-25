@@ -86,7 +86,7 @@ class ArenaBuilder(Builder[Arena]):
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
-                ArenaBuildException(ex=ex, message=f"{method}: {ArenaBuildException.DEFAULT_MESSAGE}")
+                ArenaBuildException(ex=ex, msg=f"{method}: {ArenaBuildException.MSG}")
             )
         
     @classmethod
@@ -107,7 +107,7 @@ class ArenaBuilder(Builder[Arena]):
             # Handle the case the agents are the same.
             if players[0] == players[1]:
                 return ValidationResult.failure(
-                    DuplicatePlayerInArenaException(f"{method}: {DuplicatePlayerInArenaException.DEFAULT_MESSAGE}")
+                    DuplicatePlayerInArenaException(f"{method}: {DuplicatePlayerInArenaException.MSG}")
                 )
             # After individual piece integrity certifcation and uniqueness verification send a success result.
             return ValidationResult.success(payload=players)
@@ -116,7 +116,7 @@ class ArenaBuilder(Builder[Arena]):
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                ArenaBuildException(ex=ex, message=f"{method}: {ArenaBuildException.DEFAULT_MESSAGE}")
+                ArenaBuildException(ex=ex, msg=f"{method}: {ArenaBuildException.MSG}")
             )
         
     @classmethod

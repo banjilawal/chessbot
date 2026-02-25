@@ -36,5 +36,5 @@ class NoTransferRouteException(NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_TRANSFER_ROUTE_FOR_SELECTED_OPTION_ERROR"
-    DEFAULT_MESSAGE = "Transfer failed: No transfer route was defined for the specified option."
+    ERR_CODE = "NO_TRANSFER_ROUTE_FOR_SELECTED_OPTION_ERROR"
+    MSG = "Transfer failed: No transfer route was defined for the specified option."

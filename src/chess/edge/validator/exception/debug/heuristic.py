@@ -36,5 +36,5 @@ class EdgeHeuristicException(EdgeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_HEURISTIC_ERROR"
-    DEFAULT_MESSAGE = "Edge validation failed: the heuristic was not a number in the valid range."
+    ERR_CODE = "EDGE_HEURISTIC_ERROR"
+    MSG = "Edge validation failed: the heuristic was not a number in the valid range."

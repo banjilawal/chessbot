@@ -36,5 +36,5 @@ class SquareContextServiceException(ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_CONTEXT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SquareContextService raised an exception."
+    ERR_CODE = "SQUARE_CONTEXT_SERVICE_ERROR"
+    MSG = "SquareContextService raised an exception."

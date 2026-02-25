@@ -65,7 +65,7 @@ class ScalarValidator(Validator[Scalar]):
             if self.candidate is None:
                 return ValidationResult.failure(
                     NullScalarException(
-                        f"{method}: {NullScalarException.DEFAULT_MESSAGE}"
+                        f"{method}: {NullScalarException.MSG}"
                     )
                 )
             
@@ -84,21 +84,21 @@ class ScalarValidator(Validator[Scalar]):
             # if scalar.value is None:
             #     return ValidationResult.failure(
             #         NullNumberException(
-            #             f"{method}: {NullNumberException.DEFAULT_MESSAGE}"
+            #             f"{method}: {NullNumberException.MSG}"
             #         )
             #     )
             #
             # if scalar.value < -BOARD_DIMENSION:
             #     return ValidationResult.failure(
             #         ScalarBelowBoundsException(
-            #             f"{method}: {ScalarBelowBoundsException.DEFAULT_MESSAGE}"
+            #             f"{method}: {ScalarBelowBoundsException.MSG}"
             #         )
             #     )
             #
             # if scalar.value >= BOARD_DIMENSION:
             #     return ValidationResult.failure(
             #         ScalarAboveBoundsException(
-            #             f"{method}: {ScalarAboveBoundsException.DEFAULT_MESSAGE}"
+            #             f"{method}: {ScalarAboveBoundsException.MSG}"
             #         )
             #     )
             
@@ -108,7 +108,7 @@ class ScalarValidator(Validator[Scalar]):
             return ValidationResult.failure(
                 InvalidScalarException(
                     ex=ex,
-                    message=f"{method}: {InvalidScalarException.DEFAULT_MESSAGE}"
+                    msg=f"{method}: {InvalidScalarException.MSG}"
                 )
             )
     
@@ -139,7 +139,7 @@ class ScalarValidator(Validator[Scalar]):
             if self.candidate is None:
                 return ValidationResult.failure(
                     NullScalarException(
-                        f"{method}: {NullScalarException.DEFAULT_MESSAGE}"
+                        f"{method}: {NullScalarException.MSG}"
                     )
                 )
             
@@ -155,21 +155,21 @@ class ScalarValidator(Validator[Scalar]):
             if value is None:
                 return ValidationResult.failure(
                     NullNumberException(
-                        f"{method}: {NullNumberException.DEFAULT_MESSAGE}"
+                        f"{method}: {NullNumberException.MSG}"
                     )
                 )
             
             if value < -BOARD_DIMENSION:
                 return ValidationResult.failure(
                     ScalarBelowBoundsException(
-                        f"{method}: {ScalarBelowBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ScalarBelowBoundsException.MSG}"
                     )
                 )
             
             if value >= BOARD_DIMENSION:
                 return ValidationResult.failure(
                     ScalarAboveBoundsException(
-                        f"{method}: {ScalarAboveBoundsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ScalarAboveBoundsException.MSG}"
                     )
                 )
             
@@ -179,6 +179,6 @@ class ScalarValidator(Validator[Scalar]):
             return ValidationResult.failure(
                 InvalidScalarException(
                     ex=ex,
-                    message=f"{method}: {InvalidScalarException.DEFAULT_MESSAGE}"
+                    msg=f"{method}: {InvalidScalarException.MSG}"
                 )
             )

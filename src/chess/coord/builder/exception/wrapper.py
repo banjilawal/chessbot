@@ -36,5 +36,5 @@ class CoordBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Coord build failed."
+    ERR_CODE = "COORD_BUILD_FAILED"
+    MSG = "Coord build failed."

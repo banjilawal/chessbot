@@ -38,7 +38,7 @@ class NullGameException(GameValidationException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_GAME__ERROR"
-    DEFAULT_MESSAGE = "Game cannot be null."
+    ERR_CODE = "NULL_GAME__ERROR"
+    MSG = "Game cannot be null."
 
 

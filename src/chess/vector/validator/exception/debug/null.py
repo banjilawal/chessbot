@@ -37,5 +37,5 @@ class NullVectorException(VectorDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_VECTOR_ERROR"
-    DEFAULT_MESSAGE = "Vector validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_VECTOR_ERROR"
+    MSG = "Vector validation failed: The candidate cannot be null."

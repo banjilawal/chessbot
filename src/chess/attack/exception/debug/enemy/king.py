@@ -26,5 +26,5 @@ class AttackingEnemyKingException(AttackDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: The enemy was a king which can only be checked or checkmated."
+    ERR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
+    MSG = "Attack failed: The enemy was a king which can only be checked or checkmated."

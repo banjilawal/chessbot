@@ -39,5 +39,5 @@ class TeamContextValidationException(TeamContextException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "TeamContext validation failed."
+    ERR_CODE = "TEAM_CONTEXT_VALIDATION_FAILURE"
+    MSG = "TeamContext validation failed."

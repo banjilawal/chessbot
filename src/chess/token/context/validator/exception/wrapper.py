@@ -40,5 +40,5 @@ class TokenContextValidationException(TokenContextException, ValidationException
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "TokenContext validation failed."
+    ERR_CODE = "TOKEN_CONTEXT_VALIDATION_FAILURE"
+    MSG = "TokenContext validation failed."

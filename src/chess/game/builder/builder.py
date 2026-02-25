@@ -116,5 +116,5 @@ class GameBuilder(Builder[Game]):
         # GameBuildException
         except Exception as ex:
             return BuildResult.failure(
-                GameBuildException(ex=ex, message=f"{method}: {GameBuildException.DEFAULT_MESSAGE}")
+                GameBuildException(ex=ex, msg=f"{method}: {GameBuildException.MSG}")
             )

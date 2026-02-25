@@ -36,5 +36,5 @@ class HostageValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "Hostage_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Hostage validation failed."
+    ERR_CODE = "Hostage_VALIDATION_FAILURE"
+    MSG = "Hostage validation failed."

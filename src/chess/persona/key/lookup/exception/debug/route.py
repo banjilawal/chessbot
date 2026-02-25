@@ -38,5 +38,5 @@ class PersonaLookupRouteException(PersonaException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_PERSONA_LOOKUP_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "PersonaLookup failed: No search route was provided for a Persona attribute."
+    ERR_CODE = "NO_PERSONA_LOOKUP_ROUTE_ERROR"
+    MSG = "PersonaLookup failed: No search route was provided for a Persona attribute."

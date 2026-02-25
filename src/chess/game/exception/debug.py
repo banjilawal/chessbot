@@ -38,5 +38,5 @@ class GameDebugException(GameException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "GAME_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A GameDebugException was raised."
+    ERR_CODE = "GAME_DEBUG_ERROR"
+    MSG = "A GameDebugException was raised."

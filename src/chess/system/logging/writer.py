@@ -110,13 +110,13 @@ class LogWriter:
     # return logging.getLogger(module_name)
 
   @classmethod
-  def log_info(cls, context: Any, message: str) -> None:
+  def log_info(cls, context: Any, msg: str) -> None:
     """
     ACTION:
-      Log informational messages for the map
+      Log informational msgs for the map
     PARAMETERS:
         * `map` `Any`: The item to write into the info log.
-        * `message` `str`: Information about the map
+        * `msg` `str`: Information about the map
     RETURNS:
         `void`
     RAISES:
@@ -135,7 +135,7 @@ class LogWriter:
     Write error to the logger for the class, instance or module.
     PARAMETERS:
       * `map` `Any`: The item to write into the error log.
-      * `message` `str`: The message to log.
+      * `msg` `str`: The msg to log.
     RETURNS:
       `void`
     RAISES:

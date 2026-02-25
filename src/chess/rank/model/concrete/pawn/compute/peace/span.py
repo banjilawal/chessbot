@@ -82,9 +82,9 @@ class PeacefulPawnSpan:
         # Return the exception chain if there is no solution route for the any other pawn state,
         return ComputationResult.failure(
             PawnPeacefulSpanComputationException(
-                message=f"{method}: {PawnPeacefulSpanComputationException.DEFAULT_MESSAGE}",
+                msg=f"{method}: {PawnPeacefulSpanComputationException.MSG}",
                 ex=PawnPeacefulSpanComputationRouteException(
-                    f"{method}: {PawnPeacefulSpanComputationRouteException.DEFAULT_MESSAGE}"
+                    f"{method}: {PawnPeacefulSpanComputationRouteException.MSG}"
                 )
             )
         )
@@ -113,7 +113,7 @@ class PeacefulPawnSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 PawnPeacefulSpanComputationException(
-                    message=f"{method}: {PawnPeacefulSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PawnPeacefulSpanComputationException.MSG}",
                     ex=coord_validation.exception
                 )
             )
@@ -127,7 +127,7 @@ class PeacefulPawnSpan:
                 # On failure return the exception chain
                 return ComputationResult.failure(
                     PawnPeacefulSpanComputationException(
-                        message=f"{method}: {PawnPeacefulSpanComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {PawnPeacefulSpanComputationException.MSG}",
                         ex=addition_result.exception
                     )
                 )

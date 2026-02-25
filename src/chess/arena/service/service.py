@@ -97,7 +97,7 @@ class ArenaService(EntityService[Arena]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERR_CODE}",
                     ex=relation.exception
                 )
             )
@@ -106,9 +106,9 @@ class ArenaService(EntityService[Arena]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERR_CODE}",
                     ex=TeamPlayingDifferentArenaException(
-                        f"{method}: {TeamPlayingDifferentArenaException.DEFAULT_MESSAGE}"
+                        f"{method}: {TeamPlayingDifferentArenaException.MSG}"
                     )
                 )
             )
@@ -116,9 +116,9 @@ class ArenaService(EntityService[Arena]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 ArenaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id} {method}: {ArenaServiceException.ERR_CODE}",
                     ex=ArenaAlreadyContainsTeamException(
-                        f"{method}: {ArenaAlreadyContainsTeamException.DEFAULT_MESSAGE}"
+                        f"{method}: {ArenaAlreadyContainsTeamException.MSG}"
                     )
                 )
             )
@@ -130,8 +130,8 @@ class ArenaService(EntityService[Arena]):
             return InsertionResult.success(arena.white_team)
         return InsertionResult.failure(
             ArenaServiceException(
-                message=f"ServiceId:{self.id}, {method}: {ArenaServiceException.ERROR_CODE}",
-                ex=ChangingArenaTeamBlockedException(f"{method}: {ChangingArenaTeamBlockedException.DEFAULT_MESSAGE}")
+                msg=f"ServiceId:{self.id}, {method}: {ArenaServiceException.ERR_CODE}",
+                ex=ChangingArenaTeamBlockedException(f"{method}: {ChangingArenaTeamBlockedException.MSG}")
             )
         )
         
@@ -149,14 +149,14 @@ class ArenaService(EntityService[Arena]):
         if arena_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(
-                    message=f"{method}: {ArenaServiceException.ERROR_CODE}", ex=arena_validation.exception
+                    msg=f"{method}: {ArenaServiceException.ERR_CODE}", ex=arena_validation.exception
                 )
             )
         schema_validation = schema_service.validator.validate(schema)
         if schema_validation.is_failure:
             return SearchResult.failure(
                 ArenaServiceException(
-                    message=f"{method}: {ArenaServiceException.ERROR_CODE}", ex=schema_validation.exception
+                    msg=f"{method}: {ArenaServiceException.ERR_CODE}", ex=schema_validation.exception
                 )
             )
         if self._white_team is not None and schema == self._white_team.schema:

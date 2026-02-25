@@ -39,5 +39,5 @@ class BoardSearchException(BoardException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Board search failed."
+    ERR_CODE = "BOARD_SEARCH_FAILURE"
+    MSG = "Board search failed."

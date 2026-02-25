@@ -35,5 +35,5 @@ class FillingTeamRosterException(TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FILLING_TEAM_ROSTER_FAILURE"
-    DEFAULT_MESSAGE = "Filling the team's roster failed."
+    ERR_CODE = "FILLING_TEAM_ROSTER_FAILURE"
+    MSG = "Filling the team's roster failed."

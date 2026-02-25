@@ -47,7 +47,7 @@ class CoordinateSBindingValidator(Validator):
     try:
       if candidate is None:
         raise NullCoordinateBindingException(
-          f"{method} NullCoordinateBindingException.default_message"
+          f"{method} NullCoordinateBindingException.default_msg"
         )
 
       if not isinstance(candidate, CoordinateBinding):
@@ -57,7 +57,7 @@ class CoordinateSBindingValidator(Validator):
 
       if not ChessPieceValidator.validate(coordinate_binding.chess_piece):
         raise ChessPieceValidationException(
-          f"{method} {ChessPieceValidationException.default_message}"
+          f"{method} {ChessPieceValidationException.default_msg}"
         )
 
 

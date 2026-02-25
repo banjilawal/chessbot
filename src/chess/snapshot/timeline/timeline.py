@@ -43,7 +43,7 @@ class GameTimeline(ResultStack[Snapshot]):
             return self.push_result(snapshot)
         except Exception as ex:
             return InsertionResult.failed(
-                GameTimelineException(ex=ex, message=f"{method}: {GameTimelineException.DEFAULT_MESSAGE}")
+                GameTimelineException(ex=ex, msg=f"{method}: {GameTimelineException.MSG}")
             )
     
     def undo_last_turn(self) -> DeletionResult[Snapshot]:
@@ -55,7 +55,7 @@ class GameTimeline(ResultStack[Snapshot]):
             return DeletionResult.success(cast(Snapshot, result.payload))
         except Exception as ex:
             return DeletionResult.failure(
-                GameTimelineException(ex=ex, message=f"{method}: {GameTimelineException.DEFAULT_MESSAGE}")
+                GameTimelineException(ex=ex, msg=f"{method}: {GameTimelineException.MSG}")
             )
     
     def previous_move(self) -> Optional[Snapshot]:

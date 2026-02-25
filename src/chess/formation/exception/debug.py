@@ -38,5 +38,5 @@ class FormationDebugException(FormationException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "FORMATION_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A FormationDebugException was raised."
+    ERR_CODE = "FORMATION_DEBUG_ERROR"
+    MSG = "A FormationDebugException was raised."

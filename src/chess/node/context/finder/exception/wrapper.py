@@ -39,5 +39,5 @@ class NodeSearchException(NodeException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Node search failed."
+    ERR_CODE = "NODE_SEARCH_FAILURE"
+    MSG = "Node search failed."

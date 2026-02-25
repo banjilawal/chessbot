@@ -32,5 +32,5 @@ class BoardException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "BOARD_ERROR"
-    DEFAULT_MESSAGE = "Board raised an exception."
+    ERR_CODE = "BOARD_ERROR"
+    MSG = "Board raised an exception."

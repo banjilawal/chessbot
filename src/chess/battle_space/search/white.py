@@ -160,7 +160,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
                     matches.remove(piece)
             return SearchResult(payload=matches)
         return SearchResult(exception=PieceSearchIdCollisionException(
-                f"{method}: {PieceSearchIdCollisionException.DEFAULT_MESSAGE}"
+                f"{method}: {PieceSearchIdCollisionException.MSG}"
             )
         )
 
@@ -185,7 +185,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
                     matches.remove(piece)
             return SearchResult(payload=matches)
         return SearchResult(exception=PieceSearchNameCollisionException(
-                f"{method}: {PieceSearchNameCollisionException.DEFAULT_MESSAGE}"
+                f"{method}: {PieceSearchNameCollisionException.MSG}"
             )
         )
 
@@ -210,7 +210,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
                     matches.remove(piece)
             return SearchResult(payload=matches)
         return SearchResult(exception=PieceSearchCoordCollisionException(
-                f"{method}: {PieceSearchCoordCollisionException.DEFAULT_MESSAGE}"
+                f"{method}: {PieceSearchCoordCollisionException.MSG}"
             )
         )
               

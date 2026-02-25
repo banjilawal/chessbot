@@ -64,7 +64,7 @@ class RankFactory(Builder[Rank]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 RankBuildException(
-                    message=f"{method}: {RankBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankBuildException.MSG}",
                     ex=validation.exception
                 )
             )
@@ -92,8 +92,8 @@ class RankFactory(Builder[Rank]):
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             RankBuildException(
-                message=f"{method}: {RankBuildException.DEFAULT_MESSAGE}",
-                ex=RankBuildRouteException(f"{method}: {RankBuildRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {RankBuildException.MSG}",
+                ex=RankBuildRouteException(f"{method}: {RankBuildRouteException.MSG}")
             )
         )
     

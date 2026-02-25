@@ -57,15 +57,15 @@ class HostageValidator(Validator):
       hostage = cast(CombatantPiece, candidate)
 
       if hostage.victor is None:
-        raise HostageCaptorNullException(f"{method}: {HostageCaptorNullException.DEFAULT_MESSAGE}")
+        raise HostageCaptorNullException(f"{method}: {HostageCaptorNullException.DEFAULT_MSG}")
 
       side = hostage.team
       if hostage in side.roster:
-        raise RosterRemovalException(f"{method}: {RosterRemovalException.DEFAULT_MESSAGE}")
+        raise RosterRemovalException(f"{method}: {RosterRemovalException.DEFAULT_MSG}")
 
       enemy_side = hostage.victor.team
       if hostage not in enemy_side.hostages:
-        raise HostageAdditionException(f"{method}: {HostageAdditionException.DEFAULT_MESSAGE}")
+        raise HostageAdditionException(f"{method}: {HostageAdditionException.DEFAULT_MSG}")
 
 
       return Result(payload=hostage)
@@ -77,7 +77,7 @@ class HostageValidator(Validator):
       HostageAdditionException
     ) as e:
       raise HostageValidationException(
-        f"{method}: {HostageValidationException.DEFAULT_MESSAGE}"
+        f"{method}: {HostageValidationException.DEFAULT_MSG}"
       ) from e
 
 

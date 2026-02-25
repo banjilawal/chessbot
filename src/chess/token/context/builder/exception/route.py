@@ -37,5 +37,5 @@ class TokenContextBuildRouteException(TokenContextException, NoExecutionRouteExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_TOKEN_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "TokenContext build failed: No build path existed for the Token key."
+    ERR_CODE = "NO_TOKEN_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "TokenContext build failed: No build path existed for the Token key."

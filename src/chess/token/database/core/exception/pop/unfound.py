@@ -36,5 +36,5 @@ class TokenDoesNotExistForRemovalException(TokenStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_DOES_NOT_EXIST_FOR_REMOVAL_ERROR"
-    DEFAULT_MESSAGE = "Token deletion failed: The occupant was not found in the dataset. Nothing to remove."
+    ERR_CODE = "TOKEN_DOES_NOT_EXIST_FOR_REMOVAL_ERROR"
+    MSG = "Token deletion failed: The occupant was not found in the dataset. Nothing to remove."

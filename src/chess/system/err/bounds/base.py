@@ -37,4 +37,4 @@ class BoundsException(DebugException):
     None
     """
     DEFAULT_CODE = "OUT_OF_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Out of bounds:"
+    MSG = "Out of bounds:"

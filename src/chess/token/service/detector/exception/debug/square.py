@@ -35,5 +35,5 @@ class TokenOpeningSquareCollisionException(TokenStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_OPENING)SQUARE_COLLISION_ERROR"
-    DEFAULT_MESSAGE = "Pushing token failed: The opening square was already in use."
+    ERR_CODE = "TOKEN_OPENING)SQUARE_COLLISION_ERROR"
+    MSG = "Pushing token failed: The opening square was already in use."

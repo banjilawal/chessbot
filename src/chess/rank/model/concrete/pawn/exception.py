@@ -31,5 +31,5 @@ class PawnException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PAWN_ERROR"
-    DEFAULT_MESSAGE = "Pawn raised an exception."
+    ERR_CODE = "PAWN_ERROR"
+    MSG = "Pawn raised an exception."

@@ -34,5 +34,5 @@ class ZeroSnapshotContextFlagsException(InvalidSnapshotContextException, Context
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_GAME_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "No SnapshotContext flag was selected. A map flag must be turned on with a target value."
+    ERR_CODE = "NO_GAME_CONTEXT_FLAG_ERROR"
+    MSG = "No SnapshotContext flag was selected. A map flag must be turned on with a target value."

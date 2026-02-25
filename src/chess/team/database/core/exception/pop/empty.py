@@ -38,5 +38,5 @@ class PoppingEmptyTeamStackException(TeamStackException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_EMPTY_TEAM_STACK_ERROR"
-    DEFAULT_MESSAGE = "Team pop failed: The stack is empty. Nothing to delete"
+    ERR_CODE = "POPPING_EMPTY_TEAM_STACK_ERROR"
+    MSG = "Team pop failed: The stack is empty. Nothing to delete"

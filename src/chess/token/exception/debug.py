@@ -38,5 +38,5 @@ class TokenDebugException(TokenException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "TOKEN_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A TokenDebugException was raised."
+    ERR_CODE = "TOKEN_DEBUG_ERROR"
+    MSG = "A TokenDebugException was raised."

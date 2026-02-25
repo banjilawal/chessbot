@@ -36,5 +36,5 @@ class PrisonerAlreadyHasHostageException(HostageException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PRISONER_DOES_NOT_HAVE_CAPTOR_SET_ERROR"
-    DEFAULT_MESSAGE = "Hostage validation failed: Captor was not set."
+    ERR_CODE = "PRISONER_DOES_NOT_HAVE_CAPTOR_SET_ERROR"
+    MSG = "Hostage validation failed: Captor was not set."

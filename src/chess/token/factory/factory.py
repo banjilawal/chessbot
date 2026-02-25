@@ -78,7 +78,7 @@ class TokenFactory(Builder[Token]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
-                    message=f"{method}: {TokenBuildException.ERROR_CODE}",
+                    msg=f"{method}: {TokenBuildException.ERR_CODE}",
                     ex=id_validation.exception
                 )
             )
@@ -88,7 +88,7 @@ class TokenFactory(Builder[Token]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
-                    message=f"{method}: {TokenBuildException.ERROR_CODE}",
+                    msg=f"{method}: {TokenBuildException.ERR_CODE}",
                     ex=owner_validation.exception
                 )
             )
@@ -98,7 +98,7 @@ class TokenFactory(Builder[Token]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
-                    message=f"{method}: {TokenBuildException.ERROR_CODE}",
+                    msg=f"{method}: {TokenBuildException.ERR_CODE}",
                     ex=formation_validation.exception
                 )
             )
@@ -238,7 +238,7 @@ class TokenFactory(Builder[Token]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildException(
-                    message=f"{method}: {TokenBuildException.ERROR_CODE}",
+                    msg=f"{method}: {TokenBuildException.ERR_CODE}",
                     ex=rank_build_result.exception
                 )
             )

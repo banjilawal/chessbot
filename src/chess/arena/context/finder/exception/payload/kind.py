@@ -35,5 +35,5 @@ class ArenaSearchPayloadTypeException(ArenaException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_DATASET_NULL_ERROR"
-    DEFAULT_MESSAGE = "ArenaSearch payload is the wrong type. The payload should be List[Arena]."
+    ERR_CODE = "ARENA_DATASET_NULL_ERROR"
+    MSG = "ArenaSearch payload is the wrong type. The payload should be List[Arena]."

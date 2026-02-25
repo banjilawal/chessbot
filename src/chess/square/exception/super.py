@@ -32,5 +32,5 @@ class SquareException(SuperClassException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square raised an exception."
+    ERR_CODE = "SQUARE_ERROR"
+    MSG = "Square raised an exception."

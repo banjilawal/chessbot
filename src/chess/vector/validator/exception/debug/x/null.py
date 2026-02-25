@@ -41,5 +41,5 @@ class VectorNullXException(InvalidVectorException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VECTOR_NULL_X_AXIS_ERROR"
-    DEFAULT_MESSAGE = "Vector validation failed: The x_axis was null."
+    ERR_CODE = "VECTOR_NULL_X_AXIS_ERROR"
+    MSG = "Vector validation failed: The x_axis was null."

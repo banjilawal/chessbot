@@ -38,8 +38,8 @@ class ZeroBoardContextFlagsException(BoardContextException, ContextFlagCountExce
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_BOARD_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ZERO_BOARD_CONTEXT_FLAGS_ERROR"
+    MSG = (
         "Zero BoardContext flags were set. Cannot search for Boards if one-and_oly-one "
         "map flag is enabled."
     )

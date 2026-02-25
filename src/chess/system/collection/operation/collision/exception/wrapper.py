@@ -35,5 +35,5 @@ class CollisionDetectionException(CollectionOperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COLLISION_DETECTION_FAILURE"
-    DEFAULT_MESSAGE = "Collision detection failed."
+    ERR_CODE = "COLLISION_DETECTION_FAILURE"
+    MSG = "Collision detection failed."

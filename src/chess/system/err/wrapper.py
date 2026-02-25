@@ -37,7 +37,7 @@ class WrapperException(ChessException):
     3.  Suffix is Exception.
     2.  The Syntax is: [Class]_[OPERATION]_FAILURE
     
-    # DEFAULT MESSAGE CONVENTION:
+    # DEFAULT MSG CONVENTION:
     1.  Sentence whose first word is the class name followed by the operation name. The sentence ends with failed.
     2.  The Syntax is: [Class] operation failed.
 
@@ -53,5 +53,5 @@ class WrapperException(ChessException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "WRAPPER_EXCEPTION"
-    DEFAULT_MESSAGE = "WrapperException"
+    ERR_CODE = "WRAPPER_EXCEPTION"
+    MSG = "WrapperException"

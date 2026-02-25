@@ -38,5 +38,5 @@ class CaptivityContextValidationException(CaptivityContextException, ValidationE
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CAPTIVITY_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "CaptivityContext validation failed."
+    ERR_CODE = "CAPTIVITY_CONTEXT_VALIDATION_FAILURE"
+    MSG = "CaptivityContext validation failed."

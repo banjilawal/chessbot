@@ -73,7 +73,7 @@ class PerpendicularSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 PerpendicularSpanComputationException(
-                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PerpendicularSpanComputationException.MSG}",
                     ex=coord_validation.exception
                 )
             )
@@ -94,7 +94,7 @@ class PerpendicularSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 PerpendicularSpanComputationException(
-                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PerpendicularSpanComputationException.MSG}",
                     ex=east_ray_result.exception
                 )
             )
@@ -113,7 +113,7 @@ class PerpendicularSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 PerpendicularSpanComputationException(
-                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PerpendicularSpanComputationException.MSG}",
                     ex=horizontal_ray_result.exception
                 )
             )
@@ -134,7 +134,7 @@ class PerpendicularSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 PerpendicularSpanComputationException(
-                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PerpendicularSpanComputationException.MSG}",
                     ex=span_subset_result.exception
                 )
             )
@@ -153,7 +153,7 @@ class PerpendicularSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 PerpendicularSpanComputationException(
-                    message=f"{method}: {PerpendicularSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PerpendicularSpanComputationException.MSG}",
                     ex=perpendicular_span_result.exception
                 )
             )

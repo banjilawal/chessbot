@@ -27,36 +27,36 @@ __all__ = [
 
 class CombatantOccupationTransactionException(OccupationTransactionException):
     """"""
-    ERROR_CODE = "COMBATANT_OCCUPATION_TRANSACTION_ERROR"
-    DEFAULT_MESSAGE = "An rollback_exception was raised during an CombatantOccupationTransaction."
+    ERR_CODE = "COMBATANT_OCCUPATION_TRANSACTION_ERROR"
+    MSG = "An rollback_exception was raised during an CombatantOccupationTransaction."
 
 
 class RolledBackCombatantOccupationTransactionException(CombatantOccupationTransactionException, RollbackException):
     """"""
-    ERROR_CODE = "COMBATANT_OCCUPATION_TRANSACTION_ERROR_ROLLED_BACK"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "COMBATANT_OCCUPATION_TRANSACTION_ERROR_ROLLED_BACK"
+    MSG = (
         "The notification failed when an error occurred. The notification was rolled back before raising this rollback_exception."
     )
 
 
 class FailedDestinationSquareOccupationRolledBackException(RolledBackCombatantOccupationTransactionException):
-    ERROR_CODE = "DESTINATION_SQUARE_OCCUPATION_FAILURE_ROLLED_BACK"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "DESTINATION_SQUARE_OCCUPATION_FAILURE_ROLLED_BACK"
+    MSG = (
         "Destination_Square's occupant was not successfully updated to actor_piece. CombatantOccupationTransaction was rolled "
         "back before rollback_exception was raised."
     )
 
 
 class FailedActorSquareVacationRolledBackException(RolledBackCombatantOccupationTransactionException):
-    ERROR_CODE = "ACTOR_SQUARE_VACATION_FAILURE_ROLLED_BACK"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ACTOR_SQUARE_VACATION_FAILURE_ROLLED_BACK"
+    MSG = (
         "Actor_Square was not successfully emptied. CombatantOccupationTransaction was rolled back before rollback_exception was raised."
     )
 
 
 class FailedActorPositionUpdateRolledBackException(RolledBackCombatantOccupationTransactionException):
-    ERROR_CODE = "ACTOR_POSITION_UPDATE_FAILURE_ROLLED_BACK"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ACTOR_POSITION_UPDATE_FAILURE_ROLLED_BACK"
+    MSG = (
         "Actor.current_position was not successfully set to enemy_square's point. The CombatantOccupationTransaction"
         " was rolled back before rollback_exception was raised."
     )

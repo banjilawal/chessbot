@@ -74,7 +74,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 BoardSquareAnalysisException(
-                    message=f"{method}: {BoardSquareAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {BoardSquareAnalysisException.ERR_CODE}",
                     ex=board_validation.exception
                 )
             )
@@ -87,7 +87,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 BoardSquareAnalysisException(
-                    message=f"{method}: {BoardSquareAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {BoardSquareAnalysisException.ERR_CODE}",
                     ex=square_validation.exception
                 )
             )
@@ -103,7 +103,7 @@ class BoardSquareRelationAnalyzer(RelationAnalyzer[Board, Square]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 BoardSquareAnalysisException(
-                    message=f"{method}: {BoardSquareAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {BoardSquareAnalysisException.ERR_CODE}",
                     ex=square_search.exception
                 )
             )

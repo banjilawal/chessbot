@@ -52,7 +52,7 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
       if actor == enemy:
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
-          PieceCapturingItSelfException(PieceCapturingItSelfException.DEFAULT_MESSAGE)
+          PieceCapturingItSelfException(PieceCapturingItSelfException.MSG)
         )
 
       search_result = BoardSearch.square_by_coord(coord=enemy.current_position, board=context.board)
@@ -60,7 +60,7 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
           TargetSquareMismatchException(
-            f"{method}: {TargetSquareMismatchException.DEFAULT_MESSAGE}"
+            f"{method}: {TargetSquareMismatchException.MSG}"
           )
         )
 
@@ -68,20 +68,20 @@ class CombatantOccupationEventBuilder(Builder[CombatantOccupationEvent]):
       if not search.is_success():
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
-          SearchException(f"{method}: {SearchException.DEFAULT_MESSAGE}")
+          SearchException(f"{method}: {SearchException.MSG}")
         )
       actor_square = cast(Square, search.payload)
 
       if not actor.is_enemy(enemy):
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
-          CaptureFriendException(CaptureFriendException.DEFAULT_MESSAGE)
+          CaptureFriendException(CaptureFriendException.MSG)
         )
 
       if not isinstance(enemy, CombatantPiece):
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
-          KingCaptureException(KingCaptureException.DEFAULT_MESSAGE)
+          KingCaptureException(KingCaptureException.MSG)
         )
 
       return BuildResult(payload=AttackEvent(

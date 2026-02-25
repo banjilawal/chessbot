@@ -37,5 +37,5 @@ class TokenNotRegisteredSquareException(TokenDebugException, NotRegisteredExcept
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_NOT_REGISTERED_WITH_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Token validation failed: The candidate token had not registered with its square."
+    ERR_CODE = "TOKEN_NOT_REGISTERED_WITH_SQUARE_ERROR"
+    MSG = "Token validation failed: The candidate token had not registered with its square."

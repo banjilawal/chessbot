@@ -1,7 +1,7 @@
 # src/chess/schema/key/builder/exception/wrapper.py
 
 """
-Module: chess.schema.key.builder.exception..wrapper
+Module: chess.schema.key.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-09
 version: 1.0.0
@@ -42,5 +42,5 @@ class SchemaKeyBuildException(SchemaKeyException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_KEY_BUILD_FAILED"
-    DEFAULT_MESSAGE = "SchemaKey build failed:"
+    ERR_CODE = "SCHEMA_KEY_BUILD_FAILED"
+    MSG = "SchemaKey build failed:"

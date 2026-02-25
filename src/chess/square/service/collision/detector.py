@@ -96,7 +96,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             return CollisionReport.detection_failure(
                 target=target,
                 exception=SquareCollisionDetectionException(
-                    message=f"{method}: {SquareCollisionDetectionException.ERROR_CODE}",
+                    msg=f"{method}: {SquareCollisionDetectionException.ERR_CODE}",
                     ex=validation_result.exception,
                 )
             )
@@ -110,9 +110,9 @@ class SquareCollisionDetector(CollisionDetector[Square]):
                     target=target,
                     collider=member,
                     exception=SquareCollisionDetectionException(
-                        message=f"{method}: {SquareCollisionDetectionException.ERROR_CODE}",
+                        msg=f"{method}: {SquareCollisionDetectionException.ERR_CODE}",
                         ex=SquareIdCollisionException(
-                            f"{method}: {SquareIdCollisionException.DEFAULT_MESSAGE}",
+                            f"{method}: {SquareIdCollisionException.MSG}",
                         )
                     )
                 )
@@ -123,9 +123,9 @@ class SquareCollisionDetector(CollisionDetector[Square]):
                     target=target,
                     collider=member,
                     exception=SquareCollisionDetectionException(
-                        message=f"{method}: {SquareCollisionDetectionException.ERROR_CODE}",
+                        msg=f"{method}: {SquareCollisionDetectionException.ERR_CODE}",
                         ex=SquareNameCollisionException(
-                            f"{method}: {SquareNameCollisionException.DEFAULT_MESSAGE}",
+                            f"{method}: {SquareNameCollisionException.MSG}",
                         )
                     )
                 )
@@ -136,9 +136,9 @@ class SquareCollisionDetector(CollisionDetector[Square]):
                     target=target,
                     collider=member,
                     exception=SquareCollisionDetectionException(
-                        message=f"{method}: {SquareCollisionDetectionException.ERROR_CODE}",
+                        msg=f"{method}: {SquareCollisionDetectionException.ERR_CODE}",
                         ex=SquareCoordCollisionException(
-                            f"{method}: {SquareCoordCollisionException.DEFAULT_MESSAGE}",
+                            f"{method}: {SquareCoordCollisionException.MSG}",
                         )
                     )
                 )
@@ -159,7 +159,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         if id_search_result.is_success:
             # Return the exception chain on failure.
             return ValidationResult.failure(
-                SquareIdCollisionException(message=f"{method}:{SquareIdCollisionException.DEFAULT_MESSAGE}",)
+                SquareIdCollisionException(msg=f"{method}:{SquareIdCollisionException.MSG}",)
             )
         # --- Run the name search. ---#
         name_search_result = board.squares.search(context=SquareContext(name=name))
@@ -170,7 +170,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
         # Handle the case that, the name has already been assigned to a different square.
         if name_search_result.is_success:
             return ValidationResult.failure(
-                SquareNameCollisionException(message=f"{method}:{SquareNameCollisionException.DEFAULT_MESSAGE}", )
+                SquareNameCollisionException(msg=f"{method}:{SquareNameCollisionException.MSG}", )
             )
         # --- Run the coord search. ---#
         coord_search_result = board.squares.search(context=SquareContext(coord=coord))
@@ -183,7 +183,7 @@ class SquareCollisionDetector(CollisionDetector[Square]):
             # Handle the case that, the coord has already been assigned to a different square.
             if coord_search_result.is_success:
                 return ValidationResult.failure(
-                    SquareCoordCollisionException(message=f"{method}:{SquareCoordCollisionException.DEFAULT_MESSAGE}", )
+                    SquareCoordCollisionException(msg=f"{method}:{SquareCoordCollisionException.MSG}", )
                 )
         # --- Send the success result indicating no attribute conditions. ---#
         return ValidationResult.success(3)

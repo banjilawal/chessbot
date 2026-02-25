@@ -36,5 +36,5 @@ class BoardDoesNotExistForRemovalException(BoardException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_DOES_NOT_EXIST_FOR_REMOVAL_ERROR"
-    DEFAULT_MESSAGE = "Board deletion failed: The board was not found in the dataset. Nothing to remove."
+    ERR_CODE = "BOARD_DOES_NOT_EXIST_FOR_REMOVAL_ERROR"
+    MSG = "Board deletion failed: The board was not found in the dataset. Nothing to remove."

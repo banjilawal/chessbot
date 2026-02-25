@@ -38,5 +38,5 @@ class SquareSearchRouteException(SquareContextDebugException, NoExecutionRouteEx
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_SQUARE_SEARCH_ROUTE_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "Square search failed: No search route was provided for the Square attribute."
+    ERR_CODE = "NO_SQUARE_SEARCH_ROUTE_ROUTE_ERROR"
+    MSG = "Square search failed: No search route was provided for the Square attribute."

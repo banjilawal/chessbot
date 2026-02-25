@@ -35,5 +35,5 @@ class AttackingVacantSquareException(AttackDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Attack failed: The item was empty. There was nothing to attack."
+    ERR_CODE = "ATTACKING_EMPTY_SQUARE_ERROR"
+    MSG = "Attack failed: The item was empty. There was nothing to attack."

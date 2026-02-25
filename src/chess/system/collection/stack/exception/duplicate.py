@@ -35,5 +35,5 @@ class AddingDuplicateException(StackServiceException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CANNOT_ADD_DUPLICATE_ITEM ERROR"
-    DEFAULT_MESSAGE = "The data already exists. Adding duplicate data is not allowed."
+    ERR_CODE = "CANNOT_ADD_DUPLICATE_ITEM ERROR"
+    MSG = "The data already exists. Adding duplicate data is not allowed."

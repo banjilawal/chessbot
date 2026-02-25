@@ -81,9 +81,9 @@ class PawnAttackSpan:
         # Return the exception chain if there is no solution route for the any other pawn state,
         return ComputationResult.failure(
             PawnAttackSpanComputationException(
-                message=f"{method}: {PawnAttackSpanComputationException.DEFAULT_MESSAGE}",
+                msg=f"{method}: {PawnAttackSpanComputationException.MSG}",
                 ex=PawnAttackSpanComputationRouteException(
-                    f"{method}: {PawnAttackSpanComputationRouteException.DEFAULT_MESSAGE}"
+                    f"{method}: {PawnAttackSpanComputationRouteException.MSG}"
                 )
             )
         )
@@ -112,7 +112,7 @@ class PawnAttackSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 PawnAttackSpanComputationException(
-                    message=f"{method}: {PawnAttackSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {PawnAttackSpanComputationException.MSG}",
                     ex=coord_validation.exception
                 )
             )
@@ -126,7 +126,7 @@ class PawnAttackSpan:
                 # On failure return the exception chain
                 return ComputationResult.failure(
                     PawnAttackSpanComputationException(
-                        message=f"{method}: {PawnAttackSpanComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {PawnAttackSpanComputationException.MSG}",
                         ex=addition_result.exception
                     )
                 )

@@ -37,5 +37,5 @@ class HostageInsertionException(HostageException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Hostage insertion failed."
+    ERR_CODE = "HOSTAGE_INSERTION_FAILURE"
+    MSG = "Hostage insertion failed."

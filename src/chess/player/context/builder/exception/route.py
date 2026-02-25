@@ -37,5 +37,5 @@ class PlayerContextBuildRouteException(PlayerContextException, NoExecutionRouteE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_PLAYER_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "PlayerContext build failed: No build path existed for the Player key."
+    ERR_CODE = "NO_PLAYER_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "PlayerContext build failed: No build path existed for the Player key."

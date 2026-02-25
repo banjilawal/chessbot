@@ -131,7 +131,7 @@ class Snapshot(Result):
         method = "Snapshot.empty"
         return Result(
             exception=MethodNotImplementedException(
-                f"{method}: {MethodNotImplementedException.DEFAULT_MESSAGE}. Snapshot must "
+                f"{method}: {MethodNotImplementedException.MSG}. Snapshot must "
                 f"always have at least a payload and GameState."
             )
         )

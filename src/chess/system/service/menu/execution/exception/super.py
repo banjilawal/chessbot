@@ -31,5 +31,5 @@ class ServiceExecutionException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "SERVICE_EXECUTION_ERROR"
-    DEFAULT_MESSAGE = "ServiceExecution raised an exception."
+    ERR_CODE = "SERVICE_EXECUTION_ERROR"
+    MSG = "ServiceExecution raised an exception."

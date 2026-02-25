@@ -76,8 +76,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaKeyValidationException(
-                    message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
-                    ex=NullSchemaKeyException(f"{method}: {NullSchemaKeyException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
+                    ex=NullSchemaKeyException(f"{method}: {NullSchemaKeyException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -85,7 +85,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaKeyValidationException(
-                    message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected SchemaKey, got {type(candidate).__name__} instead.")
                 )
             )
@@ -99,8 +99,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaKeyValidationException(
-                    message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
-                    ex=ZeroSchemaKeysException(f"{method}: {ZeroSchemaKeysException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
+                    ex=ZeroSchemaKeysException(f"{method}: {ZeroSchemaKeysException.MSG}")
                 )
             )
         # Handle the case of more than one key-value is set.
@@ -108,9 +108,9 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SchemaKeyValidationException(
-                    message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
                     ex=ExcessiveSchemaKeysException(
-                        f"{method}: {ExcessiveSchemaKeysException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveSchemaKeysException.MSG}"
                     )
                 )
             )
@@ -124,7 +124,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             if validation.is_failure:
                 return ValidationResult.failure(
                     SchemaKeyValidationException(
-                        message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
+                        msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -138,7 +138,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     SchemaKeyValidationException(
-                        message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
+                        msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -148,9 +148,9 @@ class SchemaKeyValidator(Validator[SchemaKey]):
         # The default returns failure.
         return ValidationResult.failure(
             SchemaKeyValidationException(
-                message=f"{method}: {SchemaKeyValidationException.ERROR_CODE}",
+                msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
                 ex=SchemaKeyValidationRouteException(
-                    f"{method}: {SchemaKeyValidationRouteException.ERROR_CODE}"
+                    f"{method}: {SchemaKeyValidationRouteException.ERR_CODE}"
                 )
             )
         )

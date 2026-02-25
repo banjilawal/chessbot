@@ -38,7 +38,7 @@ class ExcessiveTokenContextFlagsException(TokenContextException, ContextFlagCoun
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_TOKEN_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "EXCESSIVE_TOKEN_CONTEXT_FLAG_ERROR"
+    MSG = (
         "TokenContext validation failed: More than one attribute was set. Only one attribute-value should be enabled."
     )

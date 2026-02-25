@@ -41,5 +41,5 @@ class NotRegisteredException(RelationDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NOT_REGISTERED_ERROR"
-    DEFAULT_MESSAGE = "The satellite has not registered itself with its primary"
+    ERR_CODE = "NOT_REGISTERED_ERROR"
+    MSG = "The satellite has not registered itself with its primary"

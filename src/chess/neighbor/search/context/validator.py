@@ -43,7 +43,7 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullDomainSearchContextException(f"{method} {NullDomainSearchContextException.DEFAULT_MESSAGE}")
+                    NullDomainSearchContextException(f"{method} {NullDomainSearchContextException.MSG}")
                 )
             
             if not isinstance(candidate, DomainSearchContext):
@@ -57,13 +57,13 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
             
             if len(search_context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroDomainSearchParamsException(f"{method} {ZeroDomainSearchParamsException.DEFAULT_MESSAGE}")
+                    ZeroDomainSearchParamsException(f"{method} {ZeroDomainSearchParamsException.MSG}")
                 )
             
             if len(search_context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessiveDomainSearchParamsException(
-                        f"{method} {InvalidDomainSearchContextException.DEFAULT_MESSAGE}"
+                        f"{method} {InvalidDomainSearchContextException.MSG}"
                         )
                 )
             
@@ -90,14 +90,14 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
             if search_context.visitor_rank is not None and search_context.visitor_rank.upper() not in Persona.__members__:
                 return ValidationResult.failure(
                     DomainInvalidRankNameParamException(
-                        f"{method}: {DomainInvalidRankNameParamException.DEFAULT_MESSAGE}"
+                        f"{method}: {DomainInvalidRankNameParamException.MSG}"
                         )
                 )
             
             if search_context.visitor_ransom not in range[Queen.ransom]:
                 return ValidationResult.failure(
                     DomainInvalidRankNameParamException(
-                        f"{method}: {DomainInvalidRankNameParamException.DEFAULT_MESSAGE}"
+                        f"{method}: {DomainInvalidRankNameParamException.MSG}"
                         )
                 )
             

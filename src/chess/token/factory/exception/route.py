@@ -29,8 +29,8 @@ class TokenBuildRouteException(ResultException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_TOKEN_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "NO_TOKEN_BUILD_ROUTE_ERROR"
+    MSG = (
         "The TokenFactory does not have a production line for all concrete Token classes. Ensure all build branches a"
         "re covered to prevent the execution flow from hit the default failure result outside the if-blocks."
     )

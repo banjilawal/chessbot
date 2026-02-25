@@ -60,10 +60,10 @@ __all__ = [
 class ProjectionSearchContextException(ContextException):
     """
     Super class for exception raised by TeamSearchContext objects. DO NOT
-    USE DIRECTLY. Subclasses give more useful debugging messages.
+    USE DIRECTLY. Subclasses give more useful debugging msgs.
     """
-    ERROR_CODE = "SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext raised an exception."
+    ERR_CODE = "SEARCH_CONTEXT_ERROR"
+    MSG = "TeamSearchContext raised an exception."
 
 
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTION #======================# 
@@ -72,8 +72,8 @@ class NullProjectionSearchContextException(ProjectionSearchContextException, Nul
     Raised if an entity, method, or operation requires team_name projectionSearchContext but
     gets validation instead.
     """
-    ERROR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext cannot be validation"
+    ERR_CODE = "NULL_SEARCH_CONTEXT_ERROR"
+    MSG = "TeamSearchContext cannot be validation"
 
 
 class InvalidProjectionSearchContextException(ProjectionSearchContextException, ValidationException):
@@ -81,24 +81,24 @@ class InvalidProjectionSearchContextException(ProjectionSearchContextException, 
     Raised by projectionSearchContextBValidator if projectionSearchContext fails sanity checks. Exists primarily to
     catch all exception raised validating an existing projectionSearchContext
     """
-    ERROR_CODE = "SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "TeamSearchContext validation failed."
+    ERR_CODE = "SEARCH_CONTEXT_VALIDATION_ERROR"
+    MSG = "TeamSearchContext validation failed."
 
 
 class ProjectionSearchContextZeroParamCountException(ProjectionSearchContextException):
     """
     Raised if all TeamSearchContext params are set validation.
     """
-    ERROR_CODE = "SEARCH_CONTEXT_ZERO_PARAM_ERROR"
-    DEFAULT_MESSAGE = "A TeamSearchContext cannot have all params set validation."
+    ERR_CODE = "SEARCH_CONTEXT_ZERO_PARAM_ERROR"
+    MSG = "A TeamSearchContext cannot have all params set validation."
 
 
 class ProjectionSearchContextMaxParamCountException(ProjectionSearchContextException):
     """
     Raised if more than one TeamSearchContext param is set validation.
     """
-    ERROR_CODE = "SEARCH_CONTEXT_MAX_PARAM_ERROR"
-    DEFAULT_MESSAGE = "A TeamSearchContext cannot have more than one param set validation."
+    ERR_CODE = "SEARCH_CONTEXT_MAX_PARAM_ERROR"
+    MSG = "A TeamSearchContext cannot have more than one param set validation."
 
 
 # #======================#   PROJECTION_SEARCH_CONTEXT BUILD EXCEPTION #======================# 
@@ -107,8 +107,8 @@ class ProjectionSearchContextBuildException(ProjectionSearchContextException, Bu
     Raised when ProjectionSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new projectionSearchContext
     """
-    ERROR_CODE = "SEARCH_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "TeamSearchContext build failed."
+    ERR_CODE = "SEARCH_CONTEXT_BUILD_FAILED"
+    MSG = "TeamSearchContext build failed."
 
 class RansomOutOfBoundsException(ProjectionSearchContextException):
   """
@@ -116,8 +116,8 @@ class RansomOutOfBoundsException(ProjectionSearchContextException):
   Instead of running team_name old_search that won'candidate produce team_name notification, raise this
   error.
   """
-  ERROR_CODE = "RANSOM_IN_SEARCH_CONTEXT_OUT_BOUNDS_ERROR"
-  DEFAULT_MESSAGE = (
+  ERR_CODE = "RANSOM_IN_SEARCH_CONTEXT_OUT_BOUNDS_ERROR"
+  MSG = (
       f"The `TeamSearchContext.ransom` is out of bounds. Ransoms are "
       f"between {Persona.KING.ransom} and {Persona.QUEEN.ransom} inclusive."
   )

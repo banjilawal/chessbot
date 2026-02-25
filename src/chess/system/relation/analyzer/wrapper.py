@@ -35,5 +35,5 @@ class AnalysisException(OperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RELATION_ANALYSIS_FAILURE"
-    DEFAULT_MESSAGE = "Relation analysis failed."
+    ERR_CODE = "RELATION_ANALYSIS_FAILURE"
+    MSG = "Relation analysis failed."

@@ -34,8 +34,8 @@ class UnsupportedEmptyUpdateResultException(UnsupportedDataResultStateException)
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "UNSUPPORTED_EMPTY_UPDATE_RESULT_STATE_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "UNSUPPORTED_EMPTY_UPDATE_RESULT_STATE_ERROR"
+    MSG = (
         "An UpdateResult's outcome is either changed, change_failed, updated original == updated, failure."
         " It cannot be empty."
     )

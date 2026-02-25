@@ -38,5 +38,5 @@ class EdgeContextValidationRouteException(EdgeContextException, NoExecutionRoute
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_EDGE_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "EdgeContext validation failed: No validation route was provided for a EdgeContext attribute."
+    ERR_CODE = "NO_EDGE_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "EdgeContext validation failed: No validation route was provided for a EdgeContext attribute."

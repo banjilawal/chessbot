@@ -39,5 +39,5 @@ class IdValidationException(NumberException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ID_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Id Validation failed."
+    ERR_CODE = "ID_VALIDATION_ERROR"
+    MSG = "Id Validation failed."

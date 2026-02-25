@@ -102,8 +102,8 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
-                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
-                    ex=NullTeamException(f"{method}: {NullTeamException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {TeamValidationException.ERR_CODE}",
+                    ex=NullTeamException(f"{method}: {NullTeamException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -111,7 +111,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
-                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
+                    msg=f"{method}: {TeamValidationException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected Team, got {type(candidate).__name__} instead.")
                 )
             )
@@ -124,7 +124,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
-                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
+                    msg=f"{method}: {TeamValidationException.ERR_CODE}",
                     ex=id_validation.exception
                 )
             )
@@ -134,7 +134,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
-                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
+                    msg=f"{method}: {TeamValidationException.ERR_CODE}",
                     ex=schema_validation.exception
                 )
             )
@@ -144,7 +144,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
-                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
+                    msg=f"{method}: {TeamValidationException.ERR_CODE}",
                     ex=owner_verification.exception
                 )
             )
@@ -154,7 +154,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidationException(
-                    message=f"{method}: {TeamValidationException.ERROR_CODE}",
+                    msg=f"{method}: {TeamValidationException.ERR_CODE}",
                     ex=board_verification.exception
                 )
             )
@@ -203,7 +203,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamHasDifferentOwnerException(
-                        f"{method}: {TeamHasDifferentOwnerException.DEFAULT_MESSAGE}"
+                        f"{method}: {TeamHasDifferentOwnerException.MSG}"
                 )
             )
         # Handle the case that, the team has not been added to the owner's teams.
@@ -211,7 +211,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamNotRegisteredOwnerException(
-                    f"{method}: {TeamNotRegisteredOwnerException.DEFAULT_MESSAGE}"
+                    f"{method}: {TeamNotRegisteredOwnerException.MSG}"
                 )
             )
         # Handle the case that, the player has stale link to the team.
@@ -219,7 +219,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PlayerHasStaleTeamLinkException(
-                    f"{method}: {PlayerHasStaleTeamLinkException.DEFAULT_MESSAGE}"
+                    f"{method}: {PlayerHasStaleTeamLinkException.MSG}"
                 )
             )
         # --- Only case left is the bidirectional. Send the success result to the caller. ---#
@@ -267,7 +267,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamBelongsToDifferentBoardException(
-                    f"{method}: {TeamBelongsToDifferentBoardException.DEFAULT_MESSAGE}"
+                    f"{method}: {TeamBelongsToDifferentBoardException.MSG}"
                 )
             )
         # Handle the case that, the team has not been added to the board's teams.
@@ -275,7 +275,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TeamNotRegisteredBoardException(
-                    f"{method}: {TeamNotRegisteredBoardException.DEFAULT_MESSAGE}"
+                    f"{method}: {TeamNotRegisteredBoardException.MSG}"
                 )
             )
         # Handle the case that, the board has stale link to the team.
@@ -283,7 +283,7 @@ class TeamValidator(Validator[Team]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 BoardHasStaleTeamLinkException(
-                    f"{method}: {BoardHasStaleTeamLinkException.DEFAULT_MESSAGE}"
+                    f"{method}: {BoardHasStaleTeamLinkException.MSG}"
                 )
             )
         # --- Only case left is the bidirectional. Send the success result to the caller. ---#

@@ -38,5 +38,5 @@ class PlayerServiceException(PlayerException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PLAYER_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "PlayerService raised an exception."
+    ERR_CODE = "PLAYER_SERVICE_ERROR"
+    MSG = "PlayerService raised an exception."

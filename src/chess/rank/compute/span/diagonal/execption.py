@@ -36,6 +36,6 @@ class DiagonalSpanComputationException(SpanComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "DIAGONAL_SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Diagonal span computation failed."
+    ERR_CODE = "DIAGONAL_SPAN_COMPUTATION_FAILURE"
+    MSG = "Diagonal span computation failed."
     

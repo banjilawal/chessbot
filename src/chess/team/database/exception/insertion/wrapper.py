@@ -35,5 +35,5 @@ class TeamInsertionException(InsertionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Team insertion failed."
+    ERR_CODE = "TEAM_INSERTION_FAILURE"
+    MSG = "Team insertion failed."

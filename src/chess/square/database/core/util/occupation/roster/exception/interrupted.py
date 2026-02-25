@@ -36,5 +36,5 @@ class RosterDeploymentInterruptedException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ROSTER_DEPLOYMENT_INTERRUPTED_ERROR"
-    DEFAULT_MESSAGE = "Roster deployment failed: A failed square occupation interrupted the roster's deployment."
+    ERR_CODE = "ROSTER_DEPLOYMENT_INTERRUPTED_ERROR"
+    MSG = "Roster deployment failed: A failed square occupation interrupted the roster's deployment."

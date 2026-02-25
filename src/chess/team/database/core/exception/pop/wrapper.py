@@ -37,5 +37,5 @@ class PoppingTeamStackFailedException(TeamStackException, DeletionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_TEAM_STACK_FAILURE"
-    DEFAULT_MESSAGE = "Popping TeamStack Failed."
+    ERR_CODE = "POPPING_TEAM_STACK_FAILURE"
+    MSG = "Popping TeamStack Failed."

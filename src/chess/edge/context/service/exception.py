@@ -38,5 +38,5 @@ class EdgeContextServiceException(EdgeContextException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_CONTEXT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "EdgeContextService raised an exception."
+    ERR_CODE = "EDGE_CONTEXT_SERVICE_ERROR"
+    MSG = "EdgeContextService raised an exception."

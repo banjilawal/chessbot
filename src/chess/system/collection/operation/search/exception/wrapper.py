@@ -35,5 +35,5 @@ class SearchException(CollectionOperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Search failed."
+    ERR_CODE = "SEARCH_FAILURE"
+    MSG = "Search failed."

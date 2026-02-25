@@ -32,5 +32,5 @@ class TokenException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "TOKEN_ERROR"
-    DEFAULT_MESSAGE = "Token raised an exception."
+    ERR_CODE = "TOKEN_ERROR"
+    MSG = "Token raised an exception."

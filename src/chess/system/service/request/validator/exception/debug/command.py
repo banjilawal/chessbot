@@ -34,5 +34,5 @@ class WrongOperationException(ServiceRequestDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "WRONG_OPERATION_ERROR"
-    DEFAULT_MESSAGE = "ServiceRequest validation failed: request.command != operation.name."
+    ERR_CODE = "WRONG_OPERATION_ERROR"
+    MSG = "ServiceRequest validation failed: request.command != operation.name."

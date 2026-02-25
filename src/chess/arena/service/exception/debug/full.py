@@ -37,5 +37,5 @@ class ArenaIsFullException(ArenaException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_IS_FULL_ERROR"
-    DEFAULT_MESSAGE = "The arena is full no more teams can be added."
+    ERR_CODE = "ARENA_IS_FULL_ERROR"
+    MSG = "The arena is full no more teams can be added."

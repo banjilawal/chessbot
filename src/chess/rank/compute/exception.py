@@ -36,5 +36,5 @@ class SpanComputationException(ComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = " Span computation failed."
+    ERR_CODE = "SPAN_COMPUTATION_FAILURE"
+    MSG = " Span computation failed."

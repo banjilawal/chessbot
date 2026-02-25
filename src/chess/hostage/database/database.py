@@ -108,9 +108,9 @@ class HostageDatabase(Database[Hostage]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 HostageDatabaseException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERR_CODE}",
                     ex=UniqueHostageInsertionException(
-                        message=f"{method}: {UniqueHostageInsertionException.ERROR_CODE}",
+                        msg=f"{method}: {UniqueHostageInsertionException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -123,9 +123,9 @@ class HostageDatabase(Database[Hostage]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 HostageDatabaseException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {HostageDatabaseException.ERR_CODE}",
                     ex=UniqueHostageInsertionException(
-                        message=f"{method}: {UniqueHostageInsertionException.ERROR_CODE}",
+                        msg=f"{method}: {UniqueHostageInsertionException.ERR_CODE}",
                         ex=search_result.exception
                     )
                 )
@@ -135,11 +135,11 @@ class HostageDatabase(Database[Hostage]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 HostageDatabaseDatabaseException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageDatabase.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {HostageDatabase.ERR_CODE}",
                     ex=UniqueHostageInsertionException(
-                        message=f"{method}: {UniqueHostageInsertionException.ERROR_CODE}",
+                        msg=f"{method}: {UniqueHostageInsertionException.ERR_CODE}",
                         ex=AddingDuplicateHostageException(
-                            f"{method}: {AddingDuplicateHostageException.DEFAULT_MESSAGE}"
+                            f"{method}: {AddingDuplicateHostageException.MSG}"
                         )
                     )
                 )
@@ -152,11 +152,11 @@ class HostageDatabase(Database[Hostage]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 HostageDatabase(
-                    message=(
-                        f"ServiceId:{self.id}, {method}: {HostageDatabase.ERROR_CODE}"
+                    msg=(
+                        f"ServiceId:{self.id}, {method}: {HostageDatabase.ERR_CODE}"
                     ),
                     ex=UniqueHostageInsertionException(
-                        message=f"{method}: {UniqueHostageInsertionException.ERROR_CODE}",
+                        msg=f"{method}: {UniqueHostageInsertionException.ERR_CODE}",
                         ex=insertion_result.exception
                     )
                 )
@@ -194,9 +194,9 @@ class HostageDatabase(Database[Hostage]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 HostageDatabase(
-                    message=f"ServiceID:{self.id} {method}: {HostageDatabase.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {HostageDatabase.ERR_CODE}",
                     ex=UniqueHostageSearchException(
-                        message=f"{method}: {UniqueHostageSearchException.ERROR_CODE}",
+                        msg=f"{method}: {UniqueHostageSearchException.ERR_CODE}",
                         ex=search_result.exception
                     )
                 )

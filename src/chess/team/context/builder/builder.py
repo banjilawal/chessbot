@@ -91,8 +91,8 @@ class TeamContextBuilder(Builder[TeamContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TeamContextBuildException(
-                    message=f"{method}: {TeamContextBuildException.ERROR_CODE}",
-                    ex=ZeroTeamContextFlagsException(f"{method}: {ZeroTeamContextFlagsException.ERROR_CODE}")
+                    msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
+                    ex=ZeroTeamContextFlagsException(f"{method}: {ZeroTeamContextFlagsException.ERR_CODE}")
                 )
             )
         # Handle the case that, more than one optional param is not-null.
@@ -100,7 +100,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 TeamContextBuildException(
-                    message=f"{method}: {TeamContextBuildException.ERROR_CODE}",
+                    msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
                     ex=ExcessiveTeamContextFlagsException(f"{method}: {ExcessiveTeamContextFlagsException}")
                 )
             )
@@ -113,7 +113,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildException(
-                        message=f"{method}: {TeamContextBuildException.ERROR_CODE}",
+                        msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -127,7 +127,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildException(
-                        message=f"{method}: {TeamContextBuildException.ERROR_CODE}",
+                        msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -141,7 +141,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildException(
-                        message=f"{method}: {TeamContextBuildException.ERROR_CODE}",
+                        msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -155,7 +155,7 @@ class TeamContextBuilder(Builder[TeamContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     TeamContextBuildException(
-                        message=f"{method}: {TeamContextBuildException.ERROR_CODE}",
+                        msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -165,7 +165,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             TeamContextBuildException(
-                message=f"{method}: {TeamContextBuildException.ERROR_CODE}",
-                ex=TeamContextBuildRouteException(f"{method}: {TeamContextBuildRouteException.ERROR_CODE}")
+                msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
+                ex=TeamContextBuildRouteException(f"{method}: {TeamContextBuildRouteException.ERR_CODE}")
             )
         )

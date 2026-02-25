@@ -87,7 +87,7 @@ class RankValidatorFactory(Validator[Rank]):
             # Make sure its not null first.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullRankException(f"{method} {NullRankException.DEFAULT_MESSAGE}")
+                    NullRankException(f"{method} {NullRankException.MSG}")
                 )
             # Verify candidate is a Rank instance. Cast to a Rank if so.
             if not isinstance(candidate, Rank):
@@ -114,7 +114,7 @@ class RankValidatorFactory(Validator[Rank]):
         # a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidRankException(ex=ex, message=f"{method}: {InvalidRankException.DEFAULT_MESSAGE}")
+                InvalidRankException(ex=ex, msg=f"{method}: {InvalidRankException.MSG}")
             )
 
 
@@ -183,8 +183,8 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
-                    ex=NullRankException(f"{method}: {NullRankException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {RankValidationException.MSG}",
+                    ex=NullRankException(f"{method}: {NullRankException.MSG}")
                 )
             )
         # Handle the case that, the candidate is the wrong type.
@@ -192,7 +192,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=TypeError(f"{method}: Expected a Rank, got {type(candidate).__name__} instead.")
                 )
             )
@@ -237,8 +237,8 @@ class RankValiatorFactory(Validator[Rank]):
         # Return the exception chain if there is no build route for the context.
         return ValidationResult.failure(
             RankValidationException(
-                message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
-                ex=RankBuildRouteException(f"{method}: {RankBuildRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {RankValidationException.MSG}",
+                ex=RankBuildRouteException(f"{method}: {RankBuildRouteException.MSG}")
             )
         )
     
@@ -256,7 +256,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=TypeError(f"{method}: Expected a King, got {type(candidate).__name__} instead.")
                 )
             )
@@ -267,7 +267,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=id_validation.exception
                 )
             )
@@ -281,9 +281,9 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=WrongingAttributeValueException(
-                        f"{method}: {WrongKingAttributeValueException.DEFAUL_MESSAGE}")
+                        f"{method}: {WrongKingAttributeValueException.DEFAUL_MSG}")
                 )
             )
         # On success send the king instance to the called.
@@ -303,7 +303,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=TypeError(f"{method}: Expected a Pawn, got {type(candidate).__name__} instead.")
                 )
             )
@@ -314,7 +314,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=id_validation.ex
                 )
             )
@@ -328,9 +328,9 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=WrongPawnAttributeValueException(
-                        f"{method}: {WrongPawnAttributeValueException.DEFAUL_MESSAGE}"
+                        f"{method}: {WrongPawnAttributeValueException.DEFAUL_MSG}"
                     )
                 )
             )
@@ -351,7 +351,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=TypeError(f"{method}: Expected a Knight, got {type(candidate).__name__} instead.")
                 )
             )
@@ -362,7 +362,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=id_validation.exception
                 )
             )
@@ -376,9 +376,9 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=WrongingAttributeValueException(
-                        f"{method}: {WrongKnightAttributeValueException.DEFAUL_MESSAGE}"
+                        f"{method}: {WrongKnightAttributeValueException.DEFAUL_MSG}"
                     )
                 )
             )
@@ -399,7 +399,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=TypeError(f"{method}: Expected a Bishop, got {type(candidate).__name__} instead.")
                 )
             )
@@ -410,7 +410,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=id_validation.ex
                 )
             )
@@ -424,9 +424,9 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=WrongBishopAttributeValueException(
-                        f"{method}: {WrongBishopAttributeValueException.DEFAUL_MESSAGE}"
+                        f"{method}: {WrongBishopAttributeValueException.DEFAUL_MSG}"
                     )
                 )
             )
@@ -447,7 +447,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=TypeError(f"{method}: Expected a Rook, got {type(candidate).__name__} instead.")
                 )
             )
@@ -458,7 +458,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=id_validation.exception
                 )
             )
@@ -472,9 +472,9 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=WrongingAttributeValueException(
-                        f"{method}: {WrongRookAttributeValueException.DEFAUL_MESSAGE}"
+                        f"{method}: {WrongRookAttributeValueException.DEFAUL_MSG}"
                     )
                 )
             )
@@ -495,7 +495,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=TypeError(f"{method}: Expected a Queen, got {type(candidate).__name__} instead.")
                 )
             )
@@ -506,7 +506,7 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=id_validation.ex
                 )
             )
@@ -520,9 +520,9 @@ class RankValiatorFactory(Validator[Rank]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 RankValidationException(
-                    message=f"{method}: {RankValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankValidationException.MSG}",
                     ex=WrongQueenAttributeValueException(
-                        f"{method}: {WrongQueenAttributeValueException.DEFAUL_MESSAGE}"
+                        f"{method}: {WrongQueenAttributeValueException.DEFAUL_MSG}"
                     )
                 )
             )

@@ -34,5 +34,5 @@ class NullSchemaKeyException(SchemaKeyException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SCHEMA_KEY_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "SchemaKey validation failed: A SchemaKey cannot be null."
+    ERR_CODE = "NULL_SCHEMA_KEY_VALIDATION_ERROR"
+    MSG = "SchemaKey validation failed: A SchemaKey cannot be null."

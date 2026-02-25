@@ -37,7 +37,7 @@ class ExcessivePersonaKeysException(PersonaKeyException, ContextFlagCountExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_PERSONA_KEY_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "EXCESSIVE_PERSONA_KEY_ERROR"
+    MSG = (
         "PersonaKey validation failed: More than one attribute is not-null. Only one attribute should be enabled."
     )

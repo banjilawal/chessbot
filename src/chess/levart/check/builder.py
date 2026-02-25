@@ -110,7 +110,7 @@ class CheckEventBuilder(Enum):
       if actor == enemy:
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
-          PieceCapturingItSelfException(PieceCapturingItSelfException.DEFAULT_MESSAGE)
+          PieceCapturingItSelfException(PieceCapturingItSelfException.MSG)
         )
 
       enemy_square_search = BoardSearch.square_by_coord(
@@ -121,7 +121,7 @@ class CheckEventBuilder(Enum):
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
           TargetSquareMismatchException(
-            f"{method}: {TargetSquareMismatchException.DEFAULT_MESSAGE}"
+            f"{method}: {TargetSquareMismatchException.MSG}"
           )
         )
 
@@ -133,20 +133,20 @@ class CheckEventBuilder(Enum):
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
           TravelEventResourceNotFoundException(
-            f"{method}: {TravelEventResourceNotFoundException.DEFAULT_MESSAGE}")
+            f"{method}: {TravelEventResourceNotFoundException.MSG}")
         )
       actor_square = actor_square_search.payload
 
       if not actor.is_enemy(enemy):
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
-          CaptureFriendException(CaptureFriendException.DEFAULT_MESSAGE)
+          CaptureFriendException(CaptureFriendException.MSG)
         )
 
       if not isinstance(enemy, CombatantPiece):
         ThrowHelper.log_and_raise_error(
           AttackEventBuilder,
-          KingCaptureException(KingCaptureException.DEFAULT_MESSAGE)
+          KingCaptureException(KingCaptureException.MSG)
         )
 
       return BuildResult(payload=AttackEvent(
@@ -169,7 +169,7 @@ class CheckEventBuilder(Enum):
     ) as e:
       raise AttackEventBuilderException(f"{method}: {e}") from e
 
-    # Catch any unexpected errors with details about type and message
+    # Catch any unexpected errors with details about type and msg
     except Exception as e:
       raise AttackEventBuilderException(
         f"{method}: Unexpected error ({type(e).__name__}): {e}"

@@ -46,7 +46,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
         event=event,
         was_rolled_back=True,
         exception=SetCaptorRolledBackException(
-          f"{method}: {SetCaptorRolledBackException.DEFAULT_MESSAGE}"
+          f"{method}: {SetCaptorRolledBackException.MSG}"
         )
       )
 
@@ -60,7 +60,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
         event=event,
         was_rolled_back=True,
         exception=RemoveTeamMemberRolledBackException(
-          f"{method}: {RemoveTeamMemberRolledBackException.DEFAULT_MESSAGE}"
+          f"{method}: {RemoveTeamMemberRolledBackException.MSG}"
         )
       )
 
@@ -75,7 +75,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
         event=event,
         was_rolled_back=True,
         exception=AddEnemyHostageRolledBackException(
-          f"{method}: {AddEnemyHostageRolledBackException.DEFAULT_MESSAGE}"
+          f"{method}: {AddEnemyHostageRolledBackException.MSG}"
         )
       )
 
@@ -91,7 +91,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
         event=event,
         was_rolled_back=True,
         exception=FailedRemovalFromBoardRolledBackException(
-          f"{method}: {FailedRemovalFromBoardRolledBackException.DEFAULT_MESSAGE}"
+          f"{method}: {FailedRemovalFromBoardRolledBackException.MSG}"
         )
       )
 
@@ -108,7 +108,7 @@ class CheckTransaction(TravelTransaction[KingCheckEvent]):
         event=event,
         was_rolled_back=True,
         exception=EmptyDestinationSquareRolledBackException(
-          f"{method}: {EmptyDestinationSquareRolledBackException.DEFAULT_MESSAGE}"
+          f"{method}: {EmptyDestinationSquareRolledBackException.MSG}"
         )
       )
 

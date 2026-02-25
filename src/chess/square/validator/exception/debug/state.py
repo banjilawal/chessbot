@@ -35,5 +35,5 @@ class NullSquareStateException(DebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SQUARE_STATE"
-    DEFAULT_MESSAGE = "SquareState validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_SQUARE_STATE"
+    MSG = "SquareState validation failed: The candidate cannot be null."

@@ -58,8 +58,8 @@ class FormationValidator(Validator[Formation]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 FormationValidationException(
-                    message=f"{method}: {FormationValidationException.ERROR_CODE}",
-                    ex=NullFormationException(f"{method} {NullFormationException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {FormationValidationException.ERR_CODE}",
+                    ex=NullFormationException(f"{method} {NullFormationException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -67,7 +67,7 @@ class FormationValidator(Validator[Formation]):
             # Return the exception chain on failure
             return ValidationResult.failure(
                 FormationValidationException(
-                    message=f"{method}: {FormationValidationException.ERROR_CODE}",
+                    msg=f"{method}: {FormationValidationException.ERR_CODE}",
                     ex=TypeError(f"{method} Expected a Formation, got {type(candidate).__name__} instead.")
                 )
             )

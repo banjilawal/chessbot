@@ -75,7 +75,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # Don't want to run a search if the dataset is null.
             if dataset is None:
                 return SearchResult.failure(
-                    AgentNullDatasetException(f"{method}: {AgentNullDatasetException.DEFAULT_MESSAGE}")
+                    AgentNullDatasetException(f"{method}: {AgentNullDatasetException.MSG}")
                 )
             # certify the map is safe.
             validation_result = context_validator.validate(context)
@@ -99,13 +99,13 @@ class AgentFinder(DataFinder[PlayerAgent]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             SearchResult.failure(
-                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.DEFAULT_MESSAGE}")
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.MSG}")
             )
             # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
             )
     
     @classmethod
@@ -149,7 +149,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
             )
     
     @classmethod
@@ -178,7 +178,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
         """
         method = "AgentFinder._find_by_name"
         try:
-            # Get the list of agents with the same name in upper case..
+            # Get the list of agents with the same name in upper case.
             matches = [agent for agent in dataset if player.name.upper() == name.upper()]
             
             # An empty array means nothing was found.
@@ -193,7 +193,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
             )
     
     @classmethod
@@ -236,7 +236,7 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
             )
     
     @classmethod
@@ -275,5 +275,5 @@ class AgentFinder(DataFinder[PlayerAgent]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
             )

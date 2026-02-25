@@ -172,10 +172,10 @@ class TokenStack(StackService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
                     ex=PushingTokenException(
-                        message=f"{method}: {PushingTokenException.ERROR_CODE}",
-                        ex=TokenStackFullException(f"{method}: {TokenStackFullException.ERROR_CODE}")
+                        msg=f"{method}: {PushingTokenException.ERR_CODE}",
+                        ex=TokenStackFullException(f"{method}: {TokenStackFullException.ERR_CODE}")
                     )
                 )
             )
@@ -189,9 +189,9 @@ class TokenStack(StackService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
                     ex=PushingTokenException(
-                        message=f"{method}: {PushingTokenException.ERROR_CODE}",
+                        msg=f"{method}: {PushingTokenException.ERR_CODE}",
                         ex=collision_report.exception
                     )
                 )
@@ -206,9 +206,9 @@ class TokenStack(StackService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
                     ex=PushingTokenException(
-                        message=f"{method}: {PushingTokenException.ERROR_CODE}",
+                        msg=f"{method}: {PushingTokenException.ERR_CODE}",
                         ex=openings_count_result.exception
                     )
                 )
@@ -246,11 +246,11 @@ class TokenStack(StackService[Token]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
                     ex=PoppingTokenException(
-                        message=f"{method}: {PoppingTokenException.ERROR_CODE}",
+                        msg=f"{method}: {PoppingTokenException.ERR_CODE}",
                         ex=PoppingEmptyTokenStackException(
-                            f"{method}: {PoppingEmptyTokenStackException.DEFAULT_MESSAGE}"
+                            f"{method}: {PoppingEmptyTokenStackException.MSG}"
                         )
                     )
                 )
@@ -296,11 +296,11 @@ class TokenStack(StackService[Token]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackException(
-                    message=f"StackId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    msg=f"StackId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
                     ex=PoppingTokenException(
-                        message=f"{method}: {PoppingTokenException.ERROR_CODE}",
+                        msg=f"{method}: {PoppingTokenException.ERR_CODE}",
                         ex=PoppingEmptyTokenStackException(
-                            f"{method}: {PoppingEmptyTokenStackException.DEFAULT_MESSAGE}"
+                            f"{method}: {PoppingEmptyTokenStackException.MSG}"
                         )
                     )
                 )
@@ -311,9 +311,9 @@ class TokenStack(StackService[Token]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenStackException(
-                    message=f"StackId:{self.id}, {method}: {TokenStackException.ERROR_CODE}",
+                    msg=f"StackId:{self.id}, {method}: {TokenStackException.ERR_CODE}",
                     ex=PoppingTokenException(
-                        message=f"{method}: {PoppingTokenException.ERROR_CODE}",
+                        msg=f"{method}: {PoppingTokenException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -365,7 +365,7 @@ class TokenStack(StackService[Token]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TokenStackException(
-                    message=f"ServiceID:{self.id} {method}: {TokenStackException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {TokenStackException.ERR_CODE}",
                     ex=query_result.exception
                 )
             )

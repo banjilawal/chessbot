@@ -35,5 +35,5 @@ class SquareSearchPayloadException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SEARCH_PAYLOAD_IS_NOT_LIST_OF_SQUARES_ERROR"
-    DEFAULT_MESSAGE = "Square search failed: The payload contained a single square instead of List[Square]."
+    ERR_CODE = "SEARCH_PAYLOAD_IS_NOT_LIST_OF_SQUARES_ERROR"
+    MSG = "Square search failed: The payload contained a single square instead of List[Square]."

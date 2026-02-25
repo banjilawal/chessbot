@@ -30,7 +30,7 @@ class HouseBuilder(Builder[House]):
             if turn_scene.actor_square is None:
                 return BuildResult.failure(
                     TurnSceneActorSquareIsNullException(
-                        f"{method}: {TurnSceneActorSquareIsNullException.DEFAULT_MESSAGE}"
+                        f"{method}: {TurnSceneActorSquareIsNullException.MSG}"
                     )
                 )
             

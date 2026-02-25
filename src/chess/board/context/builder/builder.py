@@ -80,9 +80,9 @@ class BoardContextBuilder(Builder[BoardContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 BoardContextBuildException(
-                    message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {BoardContextBuildException.MSG}",
                     ex=ZeroBoardContextFlagsException(
-                        f"{method}: {ZeroBoardContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ZeroBoardContextFlagsException.MSG}"
                     )
                 )
             )
@@ -91,9 +91,9 @@ class BoardContextBuilder(Builder[BoardContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 BoardContextBuildException(
-                    message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {BoardContextBuildException.MSG}",
                     ex=ExcessiveBoardContextFlagsException(
-                        f"{method}: {ExcessiveBoardContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveBoardContextFlagsException.MSG}"
                     )
                 )
             )
@@ -106,7 +106,7 @@ class BoardContextBuilder(Builder[BoardContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     BoardContextBuildException(
-                        message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {BoardContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -120,7 +120,7 @@ class BoardContextBuilder(Builder[BoardContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     BoardContextBuildException(
-                        message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {BoardContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -130,7 +130,7 @@ class BoardContextBuilder(Builder[BoardContext]):
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             BoardContextBuildException(
-                message=f"{method}: {BoardContextBuildException.DEFAULT_MESSAGE}",
-                ex=BoardContextBuildRouteException(f"{method}: {BoardContextBuildRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {BoardContextBuildException.MSG}",
+                ex=BoardContextBuildRouteException(f"{method}: {BoardContextBuildRouteException.MSG}")
             )
         )

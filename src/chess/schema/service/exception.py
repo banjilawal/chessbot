@@ -38,5 +38,5 @@ class SchemaServiceException(SchemaException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SchemaService raised an exception."
+    ERR_CODE = "SCHEMA_SERVICE_ERROR"
+    MSG = "SchemaService raised an exception."

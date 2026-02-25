@@ -267,7 +267,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
                 return SearchResult.success(striped_list)
         
         except ResidentSearchIdCollisionException as e:
-            return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
+            return SearchResult.failure(e(f"{method}: {e.MSG}"))
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -296,7 +296,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
                 return SearchResult.success(striped_list)
         
         except ResidentSearchNameCollisionException as e:
-            return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
+            return SearchResult.failure(e(f"{method}: {e.MSG}"))
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -324,7 +324,7 @@ class GraphDomainFinder(Finder[Graph, Domain]):
                 )
                 return SearchResult.success(striped_list)
         except ResidentSearchCoordCollisionException as e:
-            return SearchResult.failure(e(f"{method}: {e.DEFAULT_MESSAGE}"))
+            return SearchResult.failure(e(f"{method}: {e.MSG}"))
     
     @classmethod
     @LoggingLevelRouter.monitor

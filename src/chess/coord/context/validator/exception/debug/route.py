@@ -37,5 +37,5 @@ class CoordContextValidationRouteException(CoordContextException, NoExecutionRou
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_COORD_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "CoordContext validation failed: No validation route was provided for the Coord attribute."
+    ERR_CODE = "NO_COORD_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "CoordContext validation failed: No validation route was provided for the Coord attribute."

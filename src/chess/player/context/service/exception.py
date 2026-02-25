@@ -39,5 +39,5 @@ class AgentContextServiceException(AgentContextException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_CONTEXT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "AgentContextService raised an exception."
+    ERR_CODE = "AGENT_CONTEXT_SERVICE_ERROR"
+    MSG = "AgentContextService raised an exception."

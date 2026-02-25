@@ -55,8 +55,8 @@ class PersonaValidator(Validator[Persona]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PersonaValidationException(
-                    message=f"{method}: {PersonaValidationException.ERROR_CODE}",
-                    ex=NullPersonaException(f"{method} {NullPersonaException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {PersonaValidationException.ERR_CODE}",
+                    ex=NullPersonaException(f"{method} {NullPersonaException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -64,7 +64,7 @@ class PersonaValidator(Validator[Persona]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 PersonaValidationException(
-                    message=f"{method}: {PersonaValidationException.ERROR_CODE}",
+                    msg=f"{method}: {PersonaValidationException.ERR_CODE}",
                     ex=TypeError(f"{method} Expected Persona, got {type(candidate).__name__} instead.")
                 )
             )

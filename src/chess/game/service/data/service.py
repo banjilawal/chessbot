@@ -110,7 +110,7 @@ class GameStackService(StackService[Game]):
     #         return InsertionResult.success(payload=item)
     #     except Exception as ex:
     #         return InsertionResult.failure(
-    #             GameDataServiceException(ex=ex, message=f"{method}: {GameDataServiceException.DEFAULT_MESSAGE}")
+    #             GameDataServiceException(ex=ex, msg=f"{method}: {GameDataServiceException.MSG}")
     #         )
     #
     # @LoggingLevelRouter.monitor

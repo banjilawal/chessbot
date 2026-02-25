@@ -35,5 +35,5 @@ class SquareStackAnalyzerException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_STACK_ANALYZER_ERROR"
-    DEFAULT_MESSAGE = "SquareStackAnalyzer raised an exception."
+    ERR_CODE = "SQUARE_STACK_ANALYZER_ERROR"
+    MSG = "SquareStackAnalyzer raised an exception."

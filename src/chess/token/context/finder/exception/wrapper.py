@@ -23,7 +23,7 @@ class TokenSearchException(TokenException, SearchException):
 
     # RESPONSIBILITIES:
     1.  Wrap debug exceptions indicating why a token search operation failed. The exception chain
-        traces the ultimate source of failure..
+        traces the ultimate source of failure.
 
     # PARENT:
         *   FinderException
@@ -37,5 +37,5 @@ class TokenSearchException(TokenException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "TokenSearch failed."
+    ERR_CODE = "TOKEN_SEARCH_FAILURE"
+    MSG = "TokenSearch failed."

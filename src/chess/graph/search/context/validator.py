@@ -41,7 +41,7 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullVisitorSearchContextException(f"{method} {NullVisitorSearchContextException.DEFAULT_MESSAGE}")
+                    NullVisitorSearchContextException(f"{method} {NullVisitorSearchContextException.MSG}")
                 )
             
             if not isinstance(candidate, VisitorSearchContext):
@@ -54,14 +54,14 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
             if len(search_context.to_dict()) == 0:
                 return ValidationResult.failure(
                     ZeroVisitationSearchParamsException(
-                        f"{method} {ZeroVisitationSearchParamsException.DEFAULT_MESSAGE}"
+                        f"{method} {ZeroVisitationSearchParamsException.MSG}"
                         )
                 )
             
             if len(search_context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessiveVisitationSearchParamsException(
-                        f"{method} {ExcessiveVisitationSearchParamsException.DEFAULT_MESSAGE}"
+                        f"{method} {ExcessiveVisitationSearchParamsException.MSG}"
                         )
                 )
             

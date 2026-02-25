@@ -37,5 +37,5 @@ class NullScalarException(ScalarDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SCALAR_ERROR"
-    DEFAULT_MESSAGE = "Scalar validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_SCALAR_ERROR"
+    MSG = "Scalar validation failed: The candidate cannot be null."

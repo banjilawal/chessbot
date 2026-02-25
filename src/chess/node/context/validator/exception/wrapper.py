@@ -37,5 +37,5 @@ class NodeContextValidationException(NodeContextException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "NodeContext validation failed."
+    ERR_CODE = "NODE_CONTEXT_VALIDATION_FAILURE"
+    MSG = "NodeContext validation failed."

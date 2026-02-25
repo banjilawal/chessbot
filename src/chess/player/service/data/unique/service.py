@@ -107,7 +107,7 @@ class UniqueAgentDataService(Database[PlayerAgent]):
     #         if search_result.is_success():
     #             return InsertionResult.failure(
     #                 AddingDuplicateAgentException(
-    #                     f"{method}: {AddingDuplicateAgentException.DEFAULT_MESSAGE}"
+    #                     f"{method}: {AddingDuplicateAgentException.MSG}"
     #                 )
     #             )
     #         return self._member_service.push_item(item)
@@ -115,9 +115,9 @@ class UniqueAgentDataService(Database[PlayerAgent]):
     #         return InsertionResult.failure(
     #             UniqueAgentDataServiceException(
     #                 ex=ex,
-    #                 message=(
+    #                 msg=(
     #                     f"{method}: "
-    #                     f"{UniqueAgentDataServiceException.DEFAULT_MESSAGE}"
+    #                     f"{UniqueAgentDataServiceException.MSG}"
     #                 )
     #             )
     #         )

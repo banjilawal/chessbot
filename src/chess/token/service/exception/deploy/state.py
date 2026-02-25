@@ -35,5 +35,5 @@ class TokenAlreadyDeployedOnBoardException(TokenDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_ALREADY_DEPLOYED_ON_BOARD"
-    DEFAULT_MESSAGE = "Attack failed: The attacked is targeting the wrong board."
+    ERR_CODE = "TOKEN_ALREADY_DEPLOYED_ON_BOARD"
+    MSG = "Attack failed: The attacked is targeting the wrong board."

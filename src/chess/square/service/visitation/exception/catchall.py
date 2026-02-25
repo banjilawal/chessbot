@@ -37,5 +37,5 @@ class TokenVisitHandlerException(CatchallException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_VISIT_HANDLER_ERROR"
-    DEFAULT_MESSAGE = "TokenVisitHandler raised an exception."
+    ERR_CODE = "TOKEN_VISIT_HANDLER_ERROR"
+    MSG = "TokenVisitHandler raised an exception."

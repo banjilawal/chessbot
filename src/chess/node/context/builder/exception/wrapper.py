@@ -40,5 +40,5 @@ class NodeContextBuildException(NodeContextException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "NodeContext build failed."
+    ERR_CODE = "NODE_CONTEXT_BUILD_FAILED"
+    MSG = "NodeContext build failed."

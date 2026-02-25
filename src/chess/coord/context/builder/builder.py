@@ -78,8 +78,8 @@ class CoordContextBuilder(Builder[CoordContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 CoordContextBuildException(
-                    message=f"{method}: {CoordContextBuildException.ERROR_CODE}",
-                    ex=ZeroCoordContextFlagsException(f"{method}: {ZeroCoordContextFlagsException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {CoordContextBuildException.ERR_CODE}",
+                    ex=ZeroCoordContextFlagsException(f"{method}: {ZeroCoordContextFlagsException.MSG}")
                 )
             )
         # --- Route to the appropriate validation/build branch. ---#
@@ -92,7 +92,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     CoordContextBuildException(
-                        message=f"{method}: {CoordContextBuildException.ERROR_CODE}",
+                        msg=f"{method}: {CoordContextBuildException.ERR_CODE}",
                         ex=row_validation.exception
                     )
                 )
@@ -102,7 +102,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     CoordContextBuildException(
-                        message=f"{method}: {CoordContextBuildException.ERROR_CODE}",
+                        msg=f"{method}: {CoordContextBuildException.ERR_CODE}",
                         ex=column_validation.exception
                     )
                 )
@@ -116,7 +116,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     CoordContextBuildException(
-                        message=f"{method}: {CoordContextBuildException.ERROR_CODE}",
+                        msg=f"{method}: {CoordContextBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -130,7 +130,7 @@ class CoordContextBuilder(Builder[CoordContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     CoordContextBuildException(
-                        message=f"{method}: {CoordContextBuildException.ERROR_CODE}",
+                        msg=f"{method}: {CoordContextBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -140,7 +140,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             CoordContextBuildException(
-                message=f"{method}: {CoordContextBuildException.ERROR_CODE}",
-                ex=CoordContextBuildRouteException(f"{method}: {CoordContextBuildRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {CoordContextBuildException.ERR_CODE}",
+                ex=CoordContextBuildRouteException(f"{method}: {CoordContextBuildRouteException.MSG}")
             )
         )

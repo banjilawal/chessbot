@@ -39,5 +39,5 @@ class NodeServiceException(NodeException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "NodeService raised an exception."
+    ERR_CODE = "NODE_SERVICE_ERROR"
+    MSG = "NodeService raised an exception."

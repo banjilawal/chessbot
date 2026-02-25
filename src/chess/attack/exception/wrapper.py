@@ -38,5 +38,5 @@ class AttackException(OperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ATTACK_FAILURE"
-    DEFAULT_MESSAGE = "Attack attack failed."
+    ERR_CODE = "ATTACK_FAILURE"
+    MSG = "Attack attack failed."

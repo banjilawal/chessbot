@@ -38,5 +38,5 @@ class CoordDebugException(CoordException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "COORD_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A CoordDebugException was raised."
+    ERR_CODE = "COORD_DEBUG_ERROR"
+    MSG = "A CoordDebugException was raised."

@@ -37,5 +37,5 @@ class NullBoardException(BoardDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_BOARD_ERROR"
-    DEFAULT_MESSAGE = "Board validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_BOARD_ERROR"
+    MSG = "Board validation failed: The candidate cannot be null."

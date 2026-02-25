@@ -32,5 +32,5 @@ class PlayerException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "PLAYER_ERROR"
-    DEFAULT_MESSAGE = "Player raised an exception."
+    ERR_CODE = "PLAYER_ERROR"
+    MSG = "Player raised an exception."

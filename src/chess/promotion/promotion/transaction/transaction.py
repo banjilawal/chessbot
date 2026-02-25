@@ -36,7 +36,7 @@ class OldPromotionTransaction(TravelTransaction[PromotionEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedPreviousRankUpdateRolledBackException(
-                        f"{method}: {FailedPreviousRankUpdateRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedPreviousRankUpdateRolledBackException.MSG}"
                     )
                 )
         
@@ -48,7 +48,7 @@ class OldPromotionTransaction(TravelTransaction[PromotionEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedSetRankToQueenRolledBackException(
-                        f"{method}: {FailedSetRankToQueenRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedSetRankToQueenRolledBackException.MSG}"
                     )
                 )
             

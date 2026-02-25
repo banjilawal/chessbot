@@ -37,5 +37,5 @@ class PlayerBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PLAYER_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Player build failed."
+    ERR_CODE = "PLAYER_BUILD_FAILED"
+    MSG = "Player build failed."

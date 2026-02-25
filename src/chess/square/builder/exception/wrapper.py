@@ -37,5 +37,5 @@ class SquareBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Square build failed."
+    ERR_CODE = "SQUARE_BUILD_FAILED"
+    MSG = "Square build failed."

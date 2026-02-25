@@ -37,5 +37,5 @@ class TeamServiceException(TeamException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "TeamService raised an exception."
+    ERR_CODE = "TEAM_SERVICE_ERROR"
+    MSG = "TeamService raised an exception."

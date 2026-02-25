@@ -39,5 +39,5 @@ class EdgeSearchException(EdgeException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Edge search failed."
+    ERR_CODE = "EDGE_SEARCH_FAILURE"
+    MSG = "Edge search failed."

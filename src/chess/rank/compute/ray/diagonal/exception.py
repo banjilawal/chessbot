@@ -39,5 +39,5 @@ class DiagonalRayComputationException(RayComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "DIAGONAL_RAY_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Diagonal ray computation failed."
+    ERR_CODE = "DIAGONAL_RAY_COMPUTATION_FAILURE"
+    MSG = "Diagonal ray computation failed."

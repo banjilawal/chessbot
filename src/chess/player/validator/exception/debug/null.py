@@ -37,5 +37,5 @@ class NullPlayerException(PlayerDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_PLAYER_ERROR"
-    DEFAULT_MESSAGE = "Player validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_PLAYER_ERROR"
+    MSG = "Player validation failed: The candidate cannot be null."

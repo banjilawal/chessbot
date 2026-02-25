@@ -38,5 +38,5 @@ class PawnPromotionException(PawnTokenException, OperationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PAWN_PROMOTION_FAILURE"
-    DEFAULT_MESSAGE = "Pawn promotion failed."
+    ERR_CODE = "PAWN_PROMOTION_FAILURE"
+    MSG = "Pawn promotion failed."

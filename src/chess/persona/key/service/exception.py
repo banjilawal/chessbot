@@ -38,5 +38,5 @@ class PersonaKeyServiceException(PersonaKeyException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_KEY_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "PersonaKeyService raised an exception."
+    ERR_CODE = "PERSONA_KEY_SERVICE_ERROR"
+    MSG = "PersonaKeyService raised an exception."

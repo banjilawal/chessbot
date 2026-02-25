@@ -36,5 +36,5 @@ class RankValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RANK_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Rank validation failed."
+    ERR_CODE = "RANK_VALIDATION_FAILURE"
+    MSG = "Rank validation failed."

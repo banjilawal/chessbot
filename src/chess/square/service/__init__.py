@@ -10,10 +10,11 @@ version: 1.0.0
 #=========== SQUARE.SERVICE PACKAGE CONTENTS ===========#
 
 # Packages
-from .menu import *
+from .command import *
 from .collision import *
 from .exception import *
 from .visitation import *
+
 
 # Modules
 from .service import SquareService

@@ -37,5 +37,5 @@ class ContextServiceException(ContextException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CONTEXT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "ContextService raised an exception."
+    ERR_CODE = "CONTEXT_SERVICE_ERROR"
+    MSG = "ContextService raised an exception."

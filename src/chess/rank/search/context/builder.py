@@ -80,14 +80,14 @@ class RankContextBuilder(Builder[RankContext]):
             if param_count == 0:
                 return BuildResult.failure(
                     NoRankSearchOptionSelectedException(
-                        f"{method}: {NoRankSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                        f"{method}: {NoRankSearchOptionSelectedException.MSG}"
                     )
                 )
             
             if param_count > 1:
                 return BuildResult.failure(
                     MoreThanOneRankSearchOptionPickedException(
-                        f"{method}: {MoreThanOneRankSearchOptionPickedException.DEFAULT_MESSAGE}"
+                        f"{method}: {MoreThanOneRankSearchOptionPickedException.MSG}"
                     )
                 )
             
@@ -109,7 +109,7 @@ class RankContextBuilder(Builder[RankContext]):
         except Exception as ex:
             return BuildResult.failure(
                 RankContextBuildException(
-                    f"{method}: {RankContextBuildException.DEFAULT_MESSAGE}", ex
+                    f"{method}: {RankContextBuildException.MSG}", ex
                 )
             )
     
@@ -143,7 +143,7 @@ class RankContextBuilder(Builder[RankContext]):
         except Exception as ex:
             return BuildResult.failure(
                 RankContextBuildException(
-                    f"{method}: {RankContextBuildException.DEFAULT_MESSAGE}", ex
+                    f"{method}: {RankContextBuildException.MSG}", ex
                 )
             )
     
@@ -182,7 +182,7 @@ class RankContextBuilder(Builder[RankContext]):
         except Exception as ex:
             return BuildResult.failure(
                 RankContextBuildException(
-                    f"{method}: {RankContextBuildException.DEFAULT_MESSAGE}", ex
+                    f"{method}: {RankContextBuildException.MSG}", ex
                 )
             )
     
@@ -221,6 +221,6 @@ class RankContextBuilder(Builder[RankContext]):
         except Exception as e:
             return BuildResult.failure(
                 RankContextBuildException(
-                    f"{method}: {RankContextBuildException.DEFAULT_MESSAGE}"
+                    f"{method}: {RankContextBuildException.MSG}"
                 )
             )

@@ -86,9 +86,9 @@ class Queen(Rank):
         if perpendicular_result.is_failure:
             return ComputationResult.failure(
                 QueenException(
-                    f"{method}: {QueenException.DEFAULT_MESSAGE}",
+                    f"{method}: {QueenException.MSG}",
                     ex=QueenSpanComputationException(
-                        f"{method}: {QueenException.DEFAULT_MESSAGE}",
+                        f"{method}: {QueenException.MSG}",
                         ex=perpendicular_result.exception,
                     )
                 )
@@ -103,9 +103,9 @@ class Queen(Rank):
         if diagonal_result.is_failure:
             return ComputationResult.failure(
                 QueenException(
-                    f"{method}: {QueenException.DEFAULT_MESSAGE}",
+                    f"{method}: {QueenException.MSG}",
                     ex=QueenSpanComputationException(
-                        f"{method}: {QueenException.DEFAULT_MESSAGE}",
+                        f"{method}: {QueenException.MSG}",
                         ex=diagonal_result.exception,
                     )
                 )

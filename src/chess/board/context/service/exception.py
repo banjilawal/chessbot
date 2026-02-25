@@ -38,5 +38,5 @@ class BoardContextServiceException(BoardContextException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_CONTEXT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "BoardContextService raised an exception."
+    ERR_CODE = "BOARD_CONTEXT_SERVICE_ERROR"
+    MSG = "BoardContextService raised an exception."

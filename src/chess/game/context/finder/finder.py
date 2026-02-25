@@ -75,7 +75,7 @@ class GameFinder(DataFinder[Game]):
             # Don't want to run a search if the dataset is null.
             if dataset is None:
                 return SearchResult.failure(
-                    GameSearchDatasetNullException(f"{method}: {GameSearchDatasetNullException.DEFAULT_MESSAGE}")
+                    GameSearchDatasetNullException(f"{method}: {GameSearchDatasetNullException.MSG}")
                 )
             # certify the map is safe.
             validation_result = context_validator.validate(context)
@@ -91,13 +91,13 @@ class GameFinder(DataFinder[Game]):
                 return cls._find_by_agent(dataset, context.agent)
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             SearchResult.failure(
-                NoExecutionRouteException(f"{method}: {NoExecutionRouteException.DEFAULT_MESSAGE}")
+                NoExecutionRouteException(f"{method}: {NoExecutionRouteException.MSG}")
             )
             # Finally, if some exception is not handled by the checks wrap it inside an SearchException
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
             )
     
     @classmethod
@@ -137,7 +137,7 @@ class GameFinder(DataFinder[Game]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
             )
     
     @classmethod
@@ -173,5 +173,5 @@ class GameFinder(DataFinder[Game]):
             # then, return the exception chain inside a SearchResult.
         except Exception as ex:
             return SearchResult.failure(
-                SearchException(ex=ex, message=f"{method}: {SearchException.DEFAULT_MESSAGE}")
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
             )

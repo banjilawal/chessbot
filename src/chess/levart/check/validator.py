@@ -52,7 +52,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
     try:
       if t is None:
         raise NullAttackEventException(
-          f"{method}: {NullAttackEventException.DEFAULT_MESSAGE}"
+          f"{method}: {NullAttackEventException.MSG}"
         )
 
       if not isinstance(t, AttackEvent):
@@ -62,7 +62,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
 
       id_validation = IdValidator.validate(event.visitor_id)
       if not id_validation.is_success():
-        raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+        raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 
       actor_validation = PieceValidator.validate(event.actor)
       if not actor_validation.is_success():
@@ -70,10 +70,10 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
 
       destination_square_validation = SquareValidator.validate(event.enemy_square)
       if not destination_square_validation.is_success():
-        raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
+        raise InvalidSqaureException(f"{method}: {InvalidSqaureException.MSG}")
 
       if event.enemy_square.point == event.actor.current_position:
-        raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
+        raise CircularOccupationException(f"{method}: {CircularOccupationException.MSG}")
 
       return Result(payload=event)
 
@@ -86,7 +86,7 @@ class KingCheckEventValidator(Validator[KingCheckEvent]):
             CircularOccupationException
     ) as e:
       raise InvalidAttackEventException(
-        f"{method}: {InvalidAttackEventException.DEFAULT_MESSAGE}"
+        f"{method}: {InvalidAttackEventException.MSG}"
       ) from e
 
     # This block catches any unexpected exception

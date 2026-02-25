@@ -35,5 +35,5 @@ class CannotPromotePawnToKingException(PawnTokenException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PROMOTING_TO_KING_NOT_ALLOWED_ERROR"
-    DEFAULT_MESSAGE = "Pawn promotion failed: Promoting to a King is not allowed."
+    ERR_CODE = "PROMOTING_TO_KING_NOT_ALLOWED_ERROR"
+    MSG = "Pawn promotion failed: Promoting to a King is not allowed."

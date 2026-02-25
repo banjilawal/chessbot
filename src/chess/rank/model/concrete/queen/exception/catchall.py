@@ -32,5 +32,5 @@ class QueenException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "QUEEN_ERROR"
-    DEFAULT_MESSAGE = "Queen raised an exception."
+    ERR_CODE = "QUEEN_ERROR"
+    MSG = "Queen raised an exception."

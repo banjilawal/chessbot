@@ -37,5 +37,5 @@ class NullFormationException(FormationDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_FORMATION_ERROR"
-    DEFAULT_MESSAGE = "Formation validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_FORMATION_ERROR"
+    MSG = "Formation validation failed: The candidate cannot be null."

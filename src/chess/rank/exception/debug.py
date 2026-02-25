@@ -38,5 +38,5 @@ class RankDebugException(RankException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "RANK_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A RankDebugException was raised."
+    ERR_CODE = "RANK_DEBUG_ERROR"
+    MSG = "A RankDebugException was raised."

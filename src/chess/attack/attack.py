@@ -41,7 +41,7 @@ class Attack:
             # Return exception chain on failure.
             return AttackResult.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {AttackException.MSG}",
                     ex=attacker_validation.exception
                 )
             )
@@ -51,7 +51,7 @@ class Attack:
             # Return the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {AttackException.MSG}",
                     ex=square_validation.exception
                 )
             )
@@ -60,8 +60,8 @@ class Attack:
             # Return the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
-                    ex=AttackingVacantSquareException(f"{method}: {AttackingVacantSquareException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {AttackException.MSG}",
+                    ex=AttackingVacantSquareException(f"{method}: {AttackingVacantSquareException.MSG}")
                 )
             )
         # Handle the case that, the tokens are on different boards.
@@ -69,9 +69,9 @@ class Attack:
             # Return the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {AttackException.MSG}",
                     ex=AttackingTokenOnWrongBoardException(
-                        f"{method}: {AttackingTokenOnWrongBoardException.DEFAULT_MESSAGE}"
+                        f"{method}: {AttackingTokenOnWrongBoardException.MSG}"
                     )
                 )
             )
@@ -80,9 +80,9 @@ class Attack:
             # Return the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {AttackException.MSG}",
                     ex=AttackingFriendlySquareException(
-                        f"{method}: {AttackingFriendlySquareException.DEFAULT_MESSAGE}"
+                        f"{method}: {AttackingFriendlySquareException.MSG}"
                     )
                 )
             )
@@ -91,8 +91,8 @@ class Attack:
             # Return the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
-                    ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {AttackException.MSG}",
+                    ex=AttackingEnemyKingException(f"{method}: {AttackingEnemyKingException.MSG}")
                 )
             )
         # Handle the case that, the enemy combatant, occupying the item, is already disabled.
@@ -100,9 +100,9 @@ class Attack:
             # Return the exception chain on failure.
             return AttackResult.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {AttackException.MSG}",
                     ex=AttackingDisabledEnemyException(
-                        f"{method}: {AttackingDisabledEnemyException.DEFAULT_MESSAGE}"
+                        f"{method}: {AttackingDisabledEnemyException.MSG}"
                     )
                 )
             )
@@ -137,7 +137,7 @@ class Attack:
             # Return exception chain on failure.
             return RelationReport.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {AttackException.MSG}",
                     ex=captive_removal.exception
                 )
             )
@@ -153,7 +153,7 @@ class Attack:
             # Return exception chain on failure.
             return RelationReport.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {AttackException.MSG}",
                     ex=attacker_removal.exception
                 )
             )
@@ -163,7 +163,7 @@ class Attack:
             # Return exception chain on failure.
             return RelationReport.failure(
                 AttackException(
-                    message=f"{method}: {AttackException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {AttackException.MSG}",
                     ex=attacker_removal.exception
                 )
             )

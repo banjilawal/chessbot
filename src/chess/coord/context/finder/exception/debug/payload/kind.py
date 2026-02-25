@@ -36,5 +36,5 @@ class CoordSearchPayloadTypeException(CoordException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_DATASET_NULL_ERROR"
-    DEFAULT_MESSAGE = "CoordSearch payload is the wrong type. The payload should be List[Coord]."
+    ERR_CODE = "COORD_DATASET_NULL_ERROR"
+    MSG = "CoordSearch payload is the wrong type. The payload should be List[Coord]."

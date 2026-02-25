@@ -36,5 +36,5 @@ class ArenaTeamAnalysisException(AnalysisException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_TEAM_RELATION_ANALYSIS_FAILURE"
-    DEFAULT_MESSAGE = "ArenaTeamRelationTest failed."
+    ERR_CODE = "ARENA_TEAM_RELATION_ANALYSIS_FAILURE"
+    MSG = "ArenaTeamRelationTest failed."

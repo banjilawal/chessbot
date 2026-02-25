@@ -32,5 +32,5 @@ class BishopException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BISHOP_ERROR"
-    DEFAULT_MESSAGE = "Bishop raised an exception."
+    ERR_CODE = "BISHOP_ERROR"
+    MSG = "Bishop raised an exception."

@@ -122,7 +122,7 @@ class CoordService(EntityService[Coord]):
         # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                CoordServiceException(ex=ex, message= f"{method}: {CoordServiceException.DEFAULT_MESSAGE}")
+                CoordServiceException(ex=ex, msg= f"{method}: {CoordServiceException.MSG}")
             )
       
     def multiply_coord_by_scalar(
@@ -172,7 +172,7 @@ class CoordService(EntityService[Coord]):
             # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                CoordServiceException(ex=ex, message=f"{method}: {CoordServiceException.DEFAULT_MESSAGE}")
+                CoordServiceException(ex=ex, msg=f"{method}: {CoordServiceException.MSG}")
             )
         
     def euclidean_distance(self, u: Coord, v: Coord) -> ComputationResult[int]:
@@ -230,6 +230,6 @@ class CoordService(EntityService[Coord]):
             # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                CoordServiceException(ex=ex, message=f"{method}: {CoordServiceException.DEFAULT_MESSAGE}")
+                CoordServiceException(ex=ex, msg=f"{method}: {CoordServiceException.MSG}")
             )
     

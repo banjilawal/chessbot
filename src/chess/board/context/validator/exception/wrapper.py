@@ -37,5 +37,5 @@ class BoardContextValidationException(BoardContextException, ValidationException
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "BoardContext validation failed."
+    ERR_CODE = "BOARD_CONTEXT_VALIDATION_FAILURE"
+    MSG = "BoardContext validation failed."

@@ -38,5 +38,5 @@ class FormationSquareBoundsException(FormationException, BoundsException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_SQUARE_NAME_BOUNDS"
-    DEFAULT_MESSAGE = "FormationLookup failed: Target was outside the set of possible Formation item names."
+    ERR_CODE = "FORMATION_SQUARE_NAME_BOUNDS"
+    MSG = "FormationLookup failed: Target was outside the set of possible Formation item names."

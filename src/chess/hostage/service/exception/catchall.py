@@ -35,5 +35,5 @@ class HostageServiceException(HostageException, ServiceException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "HostageService raised an exception."
+    ERR_CODE = "HOSTAGE_SERVICE_ERROR"
+    MSG = "HostageService raised an exception."

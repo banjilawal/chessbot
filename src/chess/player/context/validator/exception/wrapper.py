@@ -38,5 +38,5 @@ class PlayerContextValidationException(PlayerContextException, ValidationExcepti
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "AgentContext validation failed."
+    ERR_CODE = "AGENT_CONTEXT_VALIDATION_FAILURE"
+    MSG = "AgentContext validation failed."

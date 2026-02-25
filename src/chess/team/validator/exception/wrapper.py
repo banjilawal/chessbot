@@ -36,5 +36,5 @@ class TeamValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Team validation failed."
+    ERR_CODE = "TEAM_VALIDATION_FAILURE"
+    MSG = "Team validation failed."

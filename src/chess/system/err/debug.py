@@ -19,8 +19,8 @@ class DebugException(ChessException):
     # ERROR CODE CONVENTION:
     1.  All caps, snake case description of the error with _ERROR as the suffix.
     
-    # DEFAULT MESSAGE CONVENTION:
-    1.  Wrapper message followed by a colon. Description of the error after the colon.
+    # DEFAULT MSG CONVENTION:
+    1.  Wrapper msg followed by a colon. Description of the error after the colon.
     2.  The Syntax is: [Class] operation failed: [Description]
 
     # PARENT:
@@ -35,5 +35,5 @@ class DebugException(ChessException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "DEBUG_ERROR"
-    DEFAULT_MESSAGE = "An error occurred."
+    ERR_CODE = "DEBUG_ERROR"
+    MSG = "An error occurred."

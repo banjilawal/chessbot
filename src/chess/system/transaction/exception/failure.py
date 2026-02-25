@@ -38,5 +38,5 @@ class TransactionException(OperationException, RollbackException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TRANSACTION_FAILURE"
-    DEFAULT_MESSAGE = "Transaction failed. The transaction was rolled back before the exception chain was raised."
+    ERR_CODE = "TRANSACTION_FAILURE"
+    MSG = "Transaction failed. The transaction was rolled back before the exception chain was raised."

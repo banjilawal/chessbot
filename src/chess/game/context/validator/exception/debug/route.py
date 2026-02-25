@@ -37,5 +37,5 @@ class GameContextValidationRouteException(GameContextException, NoExecutionRoute
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_GAME_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "GameContext validation failed: No validation route was provided for the Game attribute."
+    ERR_CODE = "NO_GAME_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "GameContext validation failed: No validation route was provided for the Game attribute."

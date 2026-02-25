@@ -28,14 +28,14 @@ class AttackEventException(ChessException):
   give details useful for debugging. This class exists primarily to allow catching
   all owner exception
   """
-  ERROR_CODE = "ATTACK_ERROR"
-  DEFAULT_MESSAGE = "An attack raised an exception."
+  ERR_CODE = "ATTACK_ERROR"
+  MSG = "An attack raised an exception."
 
 
 #======================# ATTACK_EVENT VALIDATION EXCEPTION #======================#
 class InvalidAttackEventException(TravelEventException, ValidationException):
-  ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "AttackEvent validation failed."
+  ERR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
+  MSG = "AttackEvent validation failed."
 
 
 class NullAttackEventException(AttackEventException, NullException):
@@ -45,40 +45,40 @@ class NullAttackEventException(AttackEventException, NullException):
   Do not throw NullAttackException. Raise NullKingPiece or NullCombatantPiece instead.
   they are more descriptive and better suited for debugging.
   """
-  ERROR_CODE = "NULL_ATTACK_ERROR"
-  DEFAULT_MESSAGE = "Attack cannot be validation"
+  ERR_CODE = "NULL_ATTACK_ERROR"
+  MSG = "Attack cannot be validation"
 
 
 class PieceAttackingItSelfException(AttackEventException):
   """"""
-  ERROR_CODE = "PIECE_ATTACKING_ITSELF_ERROR"
-  DEFAULT_MESSAGE = "Token cannot attack itself."
+  ERR_CODE = "PIECE_ATTACKING_ITSELF_ERROR"
+  MSG = "Token cannot attack itself."
 
 class AttackingFriendException(AttackEventException):
   """"""
-  ERROR_CODE = "ATTACKING_FRIEND_ERROR"
-  DEFAULT_MESSAGE = "A friend cannot be attacked."
+  ERR_CODE = "ATTACKING_FRIEND_ERROR"
+  MSG = "A friend cannot be attacked."
 
 
 class AttackingEnemyKingException(AttackEventException):
   """"""
-  ERROR_CODE = "ATTACKING_ENEMY_KING_ERROR"
-  DEFAULT_MESSAGE = "An enemy cannot be attacked. They can only be checked or checkmated."
+  ERR_CODE = "ATTACKING_ENEMY_KING_ERROR"
+  MSG = "An enemy cannot be attacked. They can only be checked or checkmated."
 
 class DoublyAttackingPrisonerException(AttackEventException):
   """"""
-  ERROR_CODE = "DOUBLY_ATTACKING_PRISONER_ERROR"
-  DEFAULT_MESSAGE = "Cannot attack an enemy that is already a combatant."
+  ERR_CODE = "DOUBLY_ATTACKING_PRISONER_ERROR"
+  MSG = "Cannot attack an enemy that is already a combatant."
 
 class AttackingPieceMissingFromBoardException(AttackEventException):
   """"""
-  ERROR_CODE = "ATTACKING_ENEMY_MISSING_FROM_BOARD_ERROR"
-  DEFAULT_MESSAGE = "Cannot attack an enemy which is not on the board."
+  ERR_CODE = "ATTACKING_ENEMY_MISSING_FROM_BOARD_ERROR"
+  MSG = "Cannot attack an enemy which is not on the board."
 
 class EnemyNotInExpectedSquareException(AttackEventException):
   """"""
-  ERROR_CODE = "ENEMY_NOT_IN_EXPECTED_SQUARE_ERROR"
-  DEFAULT_MESSAGE = "Enemy is not in the expected square_name. There maybe inconsistent entity_service."
+  ERR_CODE = "ENEMY_NOT_IN_EXPECTED_SQUARE_ERROR"
+  MSG = "Enemy is not in the expected square_name. There maybe inconsistent entity_service."
 
 
 #======================# ATTACK_EVENT BUILD EXCEPTION #======================#
@@ -87,8 +87,8 @@ class AttackEventBuildException(AttackEventException, BuildException):
   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
   during builder.
   """
-  ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED"
-  DEFAULT_MESSAGE = "KingCheckEvent build failed."
+  ERR_CODE = "ATTACK_EVENT_BUILD_FAILED"
+  MSG = "KingCheckEvent build failed."
 
 
 #======================# PIECE CAPTURE EXCEPTION #======================#
@@ -98,40 +98,40 @@ class CapturePieceException(PieceException):
   exception team_name owner can raise being captured or attacking. Do not use directly. Subclasses
   give details useful for debugging.
   """
-  ERROR_CODE = "PIECE_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Token capture attempt raised and err"
+  ERR_CODE = "PIECE_CAPTURE_ERROR"
+  MSG = "Token capture attempt raised and err"
 
 
 class CaptureFriendException(CapturePieceException):
   """
   Raised if team_name owner attempts to capture team_name friend.
   """
-  ERROR_CODE = "FRIEND_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Cannot capture team_name friend."
+  ERR_CODE = "FRIEND_CAPTURE_ERROR"
+  MSG = "Cannot capture team_name friend."
 
 
 class DoubleCaptureException(CapturePieceException):
   """
   Raised when team_name owner attempts to capture an enemy combatant that is already team_name combatant
   """
-  ERROR_CODE = "DOUBLE_CAPTURE_ERROR"
-  DEFAULT_MESSAGE = "Cannot capture team_name owner that is already team_name combatant."
+  ERR_CODE = "DOUBLE_CAPTURE_ERROR"
+  MSG = "Cannot capture team_name owner that is already team_name combatant."
 
 
 class UnsetCaptureException(CapturePieceException):
   """
   If owner.victor is not validation. Attempting to change it raises this err
   """
-  ERROR_CODE = "UNSET_CAPTOR_ERROR"
-  DEFAULT_MESSAGE = (
+  ERR_CODE = "UNSET_CAPTOR_ERROR"
+  MSG = (
     "Cannot set team_name combatant's victor to validation. A captured owner cannot be freed."
   )
 
 
 class PieceCapturingItSelfException(CapturePieceException):
   """"""
-  ERROR_CODE = "PIECE_CAPTURING_IT_SELF_ERROR"
-  DEFAULT_MESSAGE = "Token cannot capture itself."
+  ERR_CODE = "PIECE_CAPTURING_IT_SELF_ERROR"
+  MSG = "Token cannot capture itself."
 
 
 #======================# PIECE CAPTURE EXCEPTION WITH ROLLBACK #======================#
@@ -140,8 +140,8 @@ class CaptureRollbackException(CapturePieceException, RollbackException):
   RollBackCapture exception should be raised in ACID transactions where team_name capture can
   raise an err. Do not use directly. Subclasses give details useful for debugging.
   """
-  ERROR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = "Capture raised an rollback_exception. Transaction rolled back."
+  ERR_CODE = "CAPTURE_ERROR_ROLLED_BACK"
+  MSG = "Capture raised an rollback_exception. Transaction rolled back."
 
 
 class CaptureFriendRolledBackExceptionCapture(CaptureRollbackException):
@@ -149,8 +149,8 @@ class CaptureFriendRolledBackExceptionCapture(CaptureRollbackException):
   Raised if team_name notification attempts capturing team_name friend. The notification
   was rolled back before raising this err.
   """
-  ERROR_CODE = "FRIEND_CAPTURE_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = (
+  ERR_CODE = "FRIEND_CAPTURE_ERROR_ROLLED_BACK"
+  MSG = (
     "Cannot capture team_name friend. Transaction rollback performed."
   )
 
@@ -160,8 +160,8 @@ class DoubleCaptureRolledBackExceptionCapture(CaptureRollbackException):
   Raised if team_name notification attempts capturing an enemy combatant that is already
   team_name combatant. The notification was rolled back before raising this err.
   """
-  ERROR_CODE = "DOUBLE_CAPTURE_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = (
+  ERR_CODE = "DOUBLE_CAPTURE_ERROR_ROLLED_BACK"
+  MSG = (
     "Cannot capture team_name owner that is already team_name combatant. Transaction "
     "rollback performed."
   )
@@ -172,8 +172,8 @@ class UnsetCaptureRolledBackExceptionCapture(CaptureRollbackException):
   Raised if team_name notification attempts setting combatant's victor consistency validation.
   The notification was rolled back before raising this err.
   """
-  ERROR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
-  DEFAULT_MESSAGE = (
+  ERR_CODE = "UNSET_CAPTOR_ERROR_ROLLED_BACK"
+  MSG = (
     "Cannot set team_name combatant's victor to validation. A captured owner cannot be freed. "
     "Transaction rollback performed."
   )
@@ -184,8 +184,8 @@ class CapturingItSelfRolledBackException(CapturePieceException):
   Raised if team_name notification attempts to set team_name owner as its own victor. The notification was
   rolled back before raising this err.
   """
-  ERROR_CODE = "PIECE_CAPTURING_IT_SELF_ROLLED_BACK_ERROR"
-  DEFAULT_MESSAGE = "Token attempted to capture itself during the notification. The notification was rolled back."
+  ERR_CODE = "PIECE_CAPTURING_IT_SELF_ROLLED_BACK_ERROR"
+  MSG = "Token attempted to capture itself during the notification. The notification was rolled back."
 
 
 #======================# PIECE CAPTURE EXCEPTION #======================#
@@ -194,31 +194,31 @@ class CapturingItSelfRolledBackException(CapturePieceException):
 
 class PieceAttackingFriendException(AttackEventException):
   """"""
-  ERROR_CODE = "PIECE_ATTACKING_FRIEND_ERROR"
-  DEFAULT_MESSAGE = "Token cannot attack a friend."
+  ERR_CODE = "PIECE_ATTACKING_FRIEND_ERROR"
+  MSG = "Token cannot attack a friend."
 
 
 class PieceAttackingKingException(AttackEventException):
   """"""
-  ERROR_CODE = "PIECE_ATTACKING_KING_ERROR"
-  DEFAULT_MESSAGE = "Token cannot attack a occupation."
+  ERR_CODE = "PIECE_ATTACKING_KING_ERROR"
+  MSG = "Token cannot attack a occupation."
 
 
 class PieceAttackingHostageException(AttackEventException):
   """"""
-  ERROR_CODE = "PIECE_ATTACKING_HOSTAGE_ERROR"
-  DEFAULT_MESSAGE = "Token cannot attack a prisoner."
+  ERR_CODE = "PIECE_ATTACKING_HOSTAGE_ERROR"
+  MSG = "Token cannot attack a prisoner."
 
 
 class AttackingNullException(AttackEventException, NullException):
   """"""
-  ERROR_CODE = "PIECE_ATTACKING_NULL_ERROR"
-  DEFAULT_MESSAGE = "Token cannot attack something validation."
+  ERR_CODE = "PIECE_ATTACKING_NULL_ERROR"
+  MSG = "Token cannot attack something validation."
 
 
 class HostageCannotAttackException(AttackEventException):
   """
   Raised if team_name captured owner tries to attack.
   """
-  ERROR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
-  DEFAULT_MESSAGE = "Captured owner cannot attack."
+  ERR_CODE = "HOSTAGE_CANNOT_ATTACK_ERROR"
+  MSG = "Captured owner cannot attack."

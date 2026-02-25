@@ -36,5 +36,5 @@ class NullHostageException(HostageDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_HOSTAGE_ERROR"
-    DEFAULT_MESSAGE = "Hostage validation failed: The candidate was null."
+    ERR_CODE = "NULL_HOSTAGE_ERROR"
+    MSG = "Hostage validation failed: The candidate was null."

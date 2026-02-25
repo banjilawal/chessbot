@@ -38,5 +38,5 @@ class TeamNotRegisteredOwnerException(TeamDebugException, NotRegisteredException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_NOT_REGISTERED_WITH_OWNER_ERROR"
-    DEFAULT_MESSAGE = "Team validation failed: The candidate team had not registered with its owner."
+    ERR_CODE = "TEAM_NOT_REGISTERED_WITH_OWNER_ERROR"
+    MSG = "Team validation failed: The candidate team had not registered with its owner."

@@ -93,12 +93,12 @@ class Database(ABC, Generic[T]):
 
             if query_result.is_success:
                 return InsertionResult.failure(
-                    AddingDuplicateDataException(f"{method}: {AddingDuplicateDataException.DEFAULT_MESSAGE}")
+                    AddingDuplicateDataException(f"{method}: {AddingDuplicateDataException.MSG}")
                 )
             return self._database_core.push_item(item)
 
         except Exception as ex:
             return InsertionResult.failure(
-                DatabaseException(ex=ex, message=f"{method}: {DatabaseException.DEFAULT_MESSAGE}")
+                DatabaseException(ex=ex, msg=f"{method}: {DatabaseException.MSG}")
             )
         

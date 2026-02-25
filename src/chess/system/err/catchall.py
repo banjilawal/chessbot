@@ -36,7 +36,7 @@ class CatchallException(ChessException):
     1.  Class name followed by the ERROR suffix.
     2.  The Syntax is: [Class]_ERROR
     
-    # DEFAULT MESSAGE CONVENTION:
+    # DEFAULT MSG CONVENTION:
     1.  Class name followed by "raised an exception."
     2.  The Syntax is: [Class] raised an exception
 
@@ -52,5 +52,7 @@ class CatchallException(ChessException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "CATCHALL_ERROR"
-    DEFAULT_MESSAGE = "CatchallException."
+    ERR_CODE = "CATCHALL_ERROR"
+    MSG = "CatchallException."
+    
+    def __init__(self, ex: str , ):

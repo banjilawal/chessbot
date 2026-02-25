@@ -28,5 +28,5 @@ class InvalidSnapshotException(SnapshotException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SNAPSHOT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Snapshot validation failed."
+    ERR_CODE = "SNAPSHOT_VALIDATION_FAILURE"
+    MSG = "Snapshot validation failed."

@@ -30,16 +30,16 @@ class BuildResult(Result[T], Generic[T]):
     @classmethod
     def empty(cls) -> Result:
         method = "BuildResult.empty"
-        return cls(exception=MethodNotImplementedException(message=f"{method}: {MethodNotImplementedException.DEFAULT_MESSAGE}"))
+        return cls(exception=MethodNotImplementedException(msg=f"{method}: {MethodNotImplementedException.MSG}"))
 
         #
         #   method = "Result.__init_"
         #
         #   if payload is None and rollback_exception is None:
-        #     raise EmptyResultConstructorException(f"{method}: {EmptyResultConstructorException.DEFAULT_MESSAGE}")
+        #     raise EmptyResultConstructorException(f"{method}: {EmptyResultConstructorException.MSG}")
         #
         #   if not (payload is None or rollback_exception is None):
-        #     raise ErrorContradictsPayloadException(f"{method}: {ErrorContradictsPayloadException.DEFAULT_MESSAGE}")
+        #     raise ErrorContradictsPayloadException(f"{method}: {ErrorContradictsPayloadException.MSG}")
         #
         #   self._payload = payload
         #   self._exception = rollback_exception

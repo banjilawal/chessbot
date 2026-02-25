@@ -35,5 +35,5 @@ class NoExecutionRouteException(NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_VALIDATION_ROUTE_FOR_SELECTED_OPTION_ERROR"
-    DEFAULT_MESSAGE = "Validation failed: No validation route was defined for the selected option."
+    ERR_CODE = "NO_VALIDATION_ROUTE_FOR_SELECTED_OPTION_ERROR"
+    MSG = "Validation failed: No validation route was defined for the selected option."

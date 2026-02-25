@@ -37,5 +37,5 @@ class RemoveOutgoingEdgeFailedException(NodeException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "REMOVE_OUTGOING_EDGE_FAILURE"
-    DEFAULT_MESSAGE = "Removing an outgoing edge failed."
+    ERR_CODE = "REMOVE_OUTGOING_EDGE_FAILURE"
+    MSG = "Removing an outgoing edge failed."

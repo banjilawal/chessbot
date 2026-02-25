@@ -31,5 +31,5 @@ class ServiceRouteException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "SERVICE_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "ServiceRoute raised an exception."
+    ERR_CODE = "SERVICE_ROUTE_ERROR"
+    MSG = "CommandRouter raised an exception."

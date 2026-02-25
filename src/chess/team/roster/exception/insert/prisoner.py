@@ -35,5 +35,5 @@ class AddingPrisonerToTeamRosterException (TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_PRISONER_TO_ROSTER_ERROR"
-    DEFAULT_MESSAGE = "Roster addition failed: A captured occupant cannot be added to the roster of active pieces."
+    ERR_CODE = "ADDING_PRISONER_TO_ROSTER_ERROR"
+    MSG = "Roster addition failed: A captured occupant cannot be added to the roster of active pieces."

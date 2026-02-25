@@ -37,5 +37,5 @@ class NullTokenContextException(TokenContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_TOKEN_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "TokenContext validation failed: The candidate was null."
+    ERR_CODE = "NULL_TOKEN_CONTEXT_ERROR"
+    MSG = "TokenContext validation failed: The candidate was null."

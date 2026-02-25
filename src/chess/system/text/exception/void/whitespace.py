@@ -38,7 +38,7 @@ class WhiteSpaceStringException(VoidStringException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "WHITE_SPACE_STRING_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "WHITE_SPACE_STRING_ERROR"
+    MSG = (
         "Got a String that only had whitespace. A String must have some characters."
     )

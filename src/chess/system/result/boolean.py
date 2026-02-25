@@ -39,7 +39,7 @@ class BooleanResult(Result[bool]):
         method = "TransactionResult.empty"
         return Result(
             exception=MethodNotImplementedException(
-                f"{method}: {MethodNotImplementedException.DEFAULT_MESSAGE}. TransactionResult must "
+                f"{method}: {MethodNotImplementedException.MSG}. TransactionResult must "
                 f"always have an event in the payload. It cannot be empty."
             )
         )

@@ -18,5 +18,5 @@ __all__ = [
 
 #======================# IN_CHECK EXCEPTION #======================#
 class InCheckException(CheckingException):
-    ERROR_CODE = "IN_CHECK_ERROR"
-    DEFAULT_ERROR_CODE = "InCheck raised an exception."
+    ERR_CODE = "IN_CHECK_ERROR"
+    DEFAULT_ERR_CODE = "InCheck raised an exception."

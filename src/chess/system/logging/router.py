@@ -65,8 +65,8 @@ class LoggingLevelRouter:
     raise ex
 
   @staticmethod
-  def log_success(context: Any, message: str) -> None:
-    LogWriter.log_info(context, message)
+  def log_success(context: Any, msg: str) -> None:
+    LogWriter.log_info(context, msg)
 
 
   @staticmethod
@@ -77,7 +77,7 @@ class LoggingLevelRouter:
      - errors as error
     Works on instance/class methods or free functions.
     """
-    def decorator(func: Callable[..., T]) -> Callable[..., T]:
+    def decorator(func: Callable[.., T]) -> Callable[.., T]:
 
       @wraps(func)
       def wrapper(*args: Any, **kwargs: Any) -> T:

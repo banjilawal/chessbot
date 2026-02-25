@@ -39,5 +39,5 @@ class TeamHashValidationException(TeamHashException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_HASH_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "TeamHash validation failed."
+    ERR_CODE = "TEAM_HASH_VALIDATION_FAILURE"
+    MSG = "TeamHash validation failed."

@@ -37,5 +37,5 @@ class PersonaKeyValidationRouteException(PersonaKeyException, NoExecutionRouteEx
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_PERSONA_KEY_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "PersonaKey validation failed: No validation route was provided for the Persona attribute."
+    ERR_CODE = "NO_PERSONA_KEY_VALIDATION_ROUTE_ERROR"
+    MSG = "PersonaKey validation failed: No validation route was provided for the Persona attribute."

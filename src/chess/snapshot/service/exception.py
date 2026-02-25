@@ -29,5 +29,5 @@ class SnapshotServiceException(SnapshotException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SNAPSHOT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "SnapshotService raised an exception."
+    ERR_CODE = "SNAPSHOT_SERVICE_ERROR"
+    MSG = "SnapshotService raised an exception."

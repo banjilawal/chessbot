@@ -38,8 +38,8 @@ class ExcessiveBoardContextFlagsException(BoardContextException, ContextFlagCoun
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_BOARD_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "EXCESSIVE_BOARD_CONTEXT_FLAG_ERROR"
+    MSG = (
         "Excessive BoardContext flags were set. an Board search can only use one-and-only "
         "map flag at a time."
     )

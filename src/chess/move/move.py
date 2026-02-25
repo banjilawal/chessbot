@@ -21,16 +21,16 @@ class Move:
         if readiness_analysis_result.is_failure:
             return MoveResult.failure(
                 MoveFailedException(
-                    f"{method}: {MoveFailedException.DEFAULT_MESSAGE}",
+                    f"{method}: {MoveFailedException.MSG}",
                     ex=readiness_analysis_result.exception,
                 )
             )
         if not readiness_analysis_result.primary != ReadinessState.FREE:
             return MoveResult.failure(
                 MoveFailedException(
-                    f"{method}: {MoveFailedException.DEFAULT_MESSAGE}",
+                    f"{method}: {MoveFailedException.MSG}",
                     ex=InactiveTokenCannotMoveException(
-                        f"{method}: {InactiveTokenCannotMoveException.DEFAULT_MESSAGE}"
+                        f"{method}: {InactiveTokenCannotMoveException.MSG}"
                     ),
                 )
             )
@@ -38,7 +38,7 @@ class Move:
         if square_is_empty_result.is_failure:
             return MoveResult.failure(
                 MoveFailedException(
-                    f"{method}: {MoveFailedException.DEFAULT_MESSAGE}",
+                    f"{method}: {MoveFailedException.MSG}",
                     ex=square_is_empty_result.exception,
                 )
             )
@@ -52,7 +52,7 @@ class Move:
         if insertion_result.is_failure:
             return MoveResult.failure(
                 MoveFailedException(
-                    f"{method}: {MoveFailedException.DEFAULT_MESSAGE}",
+                    f"{method}: {MoveFailedException.MSG}",
                     ex=insertiion_result.exception,
                 )
             )
@@ -71,9 +71,9 @@ class Move:
         if not token.is_enemy(destination.occupant):
             return MoveResult.failure(
                 MoveFailedException(
-                    f"{method}: {MoveFailedException.DEFAULT_MESSAGE}",
+                    f"{method}: {MoveFailedException.MSG}",
                     ex=AttackingFriendlySquareException(
-                        f"{method}: {AttackingFriendlySquareException.DEFAULT_MESSAGE}"
+                        f"{method}: {AttackingFriendlySquareException.MSG}"
                     )
                 )
             )

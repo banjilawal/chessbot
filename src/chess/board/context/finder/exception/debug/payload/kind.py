@@ -38,5 +38,5 @@ class BoardSearchPayloadTypeException(BoardException, ResultException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_DATASET_NULL_ERROR"
-    DEFAULT_MESSAGE = "BoardSearch payload is the wrong type. The payload should be List[Board]."
+    ERR_CODE = "BOARD_DATASET_NULL_ERROR"
+    MSG = "BoardSearch payload is the wrong type. The payload should be List[Board]."

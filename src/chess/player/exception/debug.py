@@ -38,5 +38,5 @@ class PlayerDebugException(PlayerException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "PLAYER_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A PlayerDebugException was raised."
+    ERR_CODE = "PLAYER_DEBUG_ERROR"
+    MSG = "A PlayerDebugException was raised."

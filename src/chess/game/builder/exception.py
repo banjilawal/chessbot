@@ -40,5 +40,5 @@ class GameBuildException(GameException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Game build failed."
+    ERR_CODE = "GAME_BUILD_FAILED"
+    MSG = "Game build failed."

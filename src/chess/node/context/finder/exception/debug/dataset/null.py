@@ -37,5 +37,5 @@ class NodeSearchNullDatasetException(NodeException, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_SEARCH_NULL_DATASET_ERROR"
-    DEFAULT_MESSAGE = "Node search failed: There was no dataset to search"
+    ERR_CODE = "NODE_SEARCH_NULL_DATASET_ERROR"
+    MSG = "Node search failed: There was no dataset to search"

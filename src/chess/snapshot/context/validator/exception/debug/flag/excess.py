@@ -35,5 +35,5 @@ class ExcessiveSnapshotContextFlagsException(InvalidSnapshotContextException, Co
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOO_MANY_GAME_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = "More than one SnapshotContext flag was selected. Only one map flag is allowed."
+    ERR_CODE = "TOO_MANY_GAME_CONTEXT_FLAGS_ERROR"
+    MSG = "More than one SnapshotContext flag was selected. Only one map flag is allowed."

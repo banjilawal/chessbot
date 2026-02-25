@@ -35,5 +35,5 @@ class InsertionException(CollectionOperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Insertion failed."
+    ERR_CODE = "INSERTION_FAILURE"
+    MSG = "Insertion failed."

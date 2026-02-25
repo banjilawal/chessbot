@@ -39,5 +39,5 @@ class ArenaContextBuildException(ArenaContextException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "ArenaContext build failed."
+    ERR_CODE = "ARENA_CONTEXT_BUILD_FAILED"
+    MSG = "ArenaContext build failed."

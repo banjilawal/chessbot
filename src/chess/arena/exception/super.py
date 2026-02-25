@@ -32,5 +32,5 @@ class ArenaException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "ARENA_ERROR"
-    DEFAULT_MESSAGE = "Arena raised an exception."
+    ERR_CODE = "ARENA_ERROR"
+    MSG = "Arena raised an exception."

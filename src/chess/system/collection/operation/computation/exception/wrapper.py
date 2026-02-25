@@ -35,5 +35,5 @@ class ComputationException(CollectionOperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Computation failed."
+    ERR_CODE = "COMPUTATION_FAILURE"
+    MSG = "Computation failed."

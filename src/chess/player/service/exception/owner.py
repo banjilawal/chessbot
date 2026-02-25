@@ -38,5 +38,5 @@ class TeamBelongsToDifferentOwnerException(PlayerException, TeamException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_BELONGS_TO_DIFFERENT_OWNER"
-    DEFAULT_MESSAGE = "Team belongs to a different owner."
+    ERR_CODE = "TEAM_BELONGS_TO_DIFFERENT_OWNER"
+    MSG = "Team belongs to a different owner."

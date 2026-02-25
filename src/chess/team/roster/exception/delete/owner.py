@@ -26,5 +26,5 @@ class CannotDeleteTokenFromDifferentRosterException(TeamRosterException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ENEMY_CANNOT_JOIN_ROSTER"
-    DEFAULT_MESSAGE = "Adding roster member failed: The occupant is on an enemy team."
+    ERR_CODE = "ENEMY_CANNOT_JOIN_ROSTER"
+    MSG = "Adding roster member failed: The occupant is on an enemy team."

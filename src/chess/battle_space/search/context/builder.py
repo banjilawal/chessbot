@@ -35,13 +35,13 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
 
             if param_count == 0:
                 return BuildResult(exception=AllParamsSetNullException(
-                        f"{method}: {AllParamsSetNullException.DEFAULT_MESSAGE}"
+                        f"{method}: {AllParamsSetNullException.MSG}"
                     )
                 )
 
             if param_count > 1:
                 return BuildResult(exception=MutuallyExclusiveParamsException(
-                    f"{method}: {MutuallyExclusiveParamsException.DEFAULT_MESSAGE}"
+                    f"{method}: {MutuallyExclusiveParamsException.MSG}"
                     )
                 )
 
@@ -55,7 +55,7 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
                 coord_validation =CoordValidator.validate(coord)
                 if not coord_validation.is_success():
                     return BuildResult(exception=RosterNumberOutOfBoundsException(
-                            f"{method}: {RosterNumberOutOfBoundsException.DEFAULT_MESSAGE}"
+                            f"{method}: {RosterNumberOutOfBoundsException.MSG}"
                         )
                     )
                 return BuildResult(payload=ProjectionSearchContext(coord=coord))

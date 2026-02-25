@@ -38,5 +38,5 @@ class PoppingEdgeException(EdgeStackException, DeletionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Edge deletion failed."
+    ERR_CODE = "EDGE_DELETION_FAILURE"
+    MSG = "Edge deletion failed."

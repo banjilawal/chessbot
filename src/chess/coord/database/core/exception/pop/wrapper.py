@@ -38,5 +38,5 @@ class PoppingCoordStackFailedException(CoordException, DeletionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_COORD_FROM_STACK_FAILURE"
-    DEFAULT_MESSAGE = "Popping a coord from the stack failed."
+    ERR_CODE = "POPPING_COORD_FROM_STACK_FAILURE"
+    MSG = "Popping a coord from the stack failed."

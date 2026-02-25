@@ -38,5 +38,5 @@ class PoppingTokenException(TokenException, DeletionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_TOKEN_FAILURE"
-    DEFAULT_MESSAGE = "Popping token failed."
+    ERR_CODE = "POPPING_TOKEN_FAILURE"
+    MSG = "Popping token failed."

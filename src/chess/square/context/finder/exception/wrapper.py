@@ -35,5 +35,5 @@ class SquareSearchException(SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Square search failed."
+    ERR_CODE = "SQUARE_SEARCH_FAILURE"
+    MSG = "Square search failed."

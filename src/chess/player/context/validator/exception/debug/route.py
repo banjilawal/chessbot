@@ -37,5 +37,5 @@ class PlayerContextValidationRouteException(PlayerContextException, NoExecutionR
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_PLAYER_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "PlayerContext validation failed: No validation route was provided for the Player attribute."
+    ERR_CODE = "NO_PLAYER_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "PlayerContext validation failed: No validation route was provided for the Player attribute."

@@ -36,4 +36,4 @@ class NoRelationException(RelationDebugException):
     None
     """
     DEFAULT_CODE = "NO_RELATIONSHIP_ERROR"
-    DEFAULT_MESSAGE = "The candidates do not have any relationship."
+    MSG = "The candidates do not have any relationship."

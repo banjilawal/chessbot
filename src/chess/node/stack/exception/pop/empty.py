@@ -37,5 +37,5 @@ class PoppingEmptyNodeStackException(NodeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_EMPTY_NODE_STACK_ERROR"
-    DEFAULT_MESSAGE = "Node deletion failed: NodeStack does not own any nodes."
+    ERR_CODE = "POPPING_EMPTY_NODE_STACK_ERROR"
+    MSG = "Node deletion failed: NodeStack does not own any nodes."

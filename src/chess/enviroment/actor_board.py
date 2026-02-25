@@ -61,7 +61,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
     try:
       if candidate is None:
         return ValidationResult.failure(
-          NullTravelerEnvironmentTupleException(f"{method}: {NullTravelerEnvironmentTupleException.DEFAULT_MESSAGE}")
+          NullTravelerEnvironmentTupleException(f"{method}: {NullTravelerEnvironmentTupleException.MSG}")
         )
       
       actor_candidate, environment_candidate = candidate
@@ -75,7 +75,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       # If the owner has no position history its not on the board and cannot owner.
       if actor.current_position is None or actor.positions.is_empty():
         return ValidationResult.failure(
-          NoInitialPlacementException(f"{method}: {NoInitialPlacementException.DEFAULT_MESSAGE}")
+          NoInitialPlacementException(f"{method}: {NoInitialPlacementException.MSG}")
         )
 
       # If the owner is not on its team_name roster it cannot be a TravelEvent actor_candidate. This might have been
@@ -83,19 +83,19 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       team = actor.team
       if actor not in team.roster:
         return ValidationResult.failure(
-          PieceNotOnRosterCannotActException(f"{method}: {PieceNotOnRosterCannotActException.DEFAULT_MESSAGE}")
+          PieceNotOnRosterCannotActException(f"{method}: {PieceNotOnRosterCannotActException.MSG}")
         )
 
       # A captured combatant cannot be a TravelEvent actor_candidate. No need for validating a checkmated
       # occupation as an actor_candidate because the game ends when a occupation is in checkmate.
       if isinstance(actor, CombatantPiece) and cast(CombatantPiece, actor).victor is not None:
         return ValidationResult.failure(
-          CapturedActorCannotMoveException(f"{method}: {CapturedActorCannotMoveException.DEFAULT_MESSAGE}")
+          CapturedActorCannotMoveException(f"{method}: {CapturedActorCannotMoveException.MSG}")
         )
 
       if isinstance(actor, KingPiece) and cast(KingPiece, actor).is_checkmated:
           return ValidationResult.failure(
-            CheckMatedKingCannotMoveException(f"{method}: {CheckMatedKingCannotMoveException.DEFAULT_MESSAGE}")
+            CheckMatedKingCannotMoveException(f"{method}: {CheckMatedKingCannotMoveException.MSG}")
           )
       
       environment_validation = BoardValidator.validate(environment_candidate)
@@ -107,7 +107,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       search_result = BoardPieceFinder.search(board=environment, search_context=BoardContext(id=actor.id))
       if search_result.is_empty():
         return ValidationResult.failure(
-          BoardPieceRemovedCannotActException(f"{method}: {BoardPieceRemovedCannotActException.DEFAULT_MESSAGE}")
+          BoardPieceRemovedCannotActException(f"{method}: {BoardPieceRemovedCannotActException.MSG}")
         )
       
       if search_result.is_failure():

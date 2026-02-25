@@ -35,5 +35,5 @@ class KnightSpanComputationException(SpanComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "KNIGHT_SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Knight span computation failed."
+    ERR_CODE = "KNIGHT_SPAN_COMPUTATION_FAILURE"
+    MSG = "Knight span computation failed."

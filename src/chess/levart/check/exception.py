@@ -19,22 +19,22 @@ __all__ = [
 
 class CheckEventException(TravelEventException):
   """"""
-  ERROR_CODE = "CHECK_ERROR"
-  DEFAULT_MESSAGE = "A check event raised an exception."
+  ERR_CODE = "CHECK_ERROR"
+  MSG = "A check event raised an exception."
 
 
 #======================# ATTACK_EVENT VALIDATION EXCEPTION #======================#
 class NullCheckEventException(CheckEventException, NullException):
   """"""
-  ERROR_CODE = "NULL_CHECK_EVENT_ERROR"
-  DEFAULT_MESSAGE = "CheckEvent cannot be null."
+  ERR_CODE = "NULL_CHECK_EVENT_ERROR"
+  MSG = "CheckEvent cannot be null."
 
 class KingCheckingItselfException(CheckEventException):
   """"""
-  ERROR_CODE = "KING_CAPTURING_IT_SELF_ERROR"
-  DEFAULT_MESSAGE = "A occupation cannot check itself."
+  ERR_CODE = "KING_CAPTURING_IT_SELF_ERROR"
+  MSG = "A occupation cannot check itself."
   
 class InvalidCheckEventException(CheckEventException, ValidationException):
   """"""
-  ERROR_CODE = "INVALID_CHECK_EVENT_ERROR"
-  DEFAULT_MESSAGE = "CheckEvent validation failed."
+  ERR_CODE = "INVALID_CHECK_EVENT_ERROR"
+  MSG = "CheckEvent validation failed."

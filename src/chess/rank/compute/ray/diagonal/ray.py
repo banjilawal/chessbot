@@ -71,7 +71,7 @@ class DiagonalRay:
             if build_result.is_failure:
                 return BuildResult.failure(
                     DiagonalRayComputationException(
-                        message=f"{method}: {DiagonalRayComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {DiagonalRayComputationException.MSG}",
                         ex=build_result.exception
                     )
                 )
@@ -81,7 +81,7 @@ class DiagonalRay:
                 if build_result.is_failure:
                     return BuildResult.failure(
                         DiagonalRayComputationException(
-                            message=f"{method}: {DiagonalRayComputationException.DEFAULT_MESSAGE}",
+                            msg=f"{method}: {DiagonalRayComputationException.MSG}",
                             ex=build_result.exception
                         )
                     )
@@ -108,7 +108,7 @@ class DiagonalRay:
             # Return the exception chain on failure.
             return BuildResult.failure(
                 DiagonalRayComputationException(
-                    message=f"{method}: {DiagonalRayComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {DiagonalRayComputationException.MSG}",
                     ex=square_search_result.exception
                 )
             )
@@ -117,7 +117,7 @@ class DiagonalRay:
             # Return the exception chain on failure.
             return BuildResult.failure(
                 DiagonalRayComputationException(
-                    message=f"{method}: {DiagonalRayComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {DiagonalRayComputationException.MSG}",
                     ex=vector_build_result.exception
                 )
             )

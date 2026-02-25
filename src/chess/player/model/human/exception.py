@@ -36,6 +36,6 @@ class HumanPlayerException(PlayerException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HUMAN_PLAYER_ERROR"
-    DEFAULT_MESSAGE = "HumanPlayer raised an exception."
+    ERR_CODE = "HUMAN_PLAYER_ERROR"
+    MSG = "HumanPlayer raised an exception."
     

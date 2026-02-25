@@ -20,7 +20,7 @@ class ServiceRouteDebugException(ServiceRouteException, DebugException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused a ServiceRoute route failure.
+    1.  Describes the condition that caused a CommandRouter route failure.
 
     # PARENT:
         *   DebugException
@@ -35,5 +35,5 @@ class ServiceRouteDebugException(ServiceRouteException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "SERVICE_ROUTE_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A ServiceRouteDebugException was raised."
+    ERR_CODE = "SERVICE_ROUTE_DEBUG_ERROR"
+    MSG = "A ServiceRouteDebugException was raised."

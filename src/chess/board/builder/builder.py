@@ -76,7 +76,7 @@ class BoardBuilder(Builder[Board]):
             # On failure return the exception.
             return BuildResult.failure(
                 BoardBuildException(
-                    message=f"{method}: {BoardBuildException.ERROR_CODE}",
+                    msg=f"{method}: {BoardBuildException.ERR_CODE}",
                     ex=id_validation.exception
                 )
             )
@@ -86,7 +86,7 @@ class BoardBuilder(Builder[Board]):
             # On failure return the exception.
             return BuildResult.failure(
                 BoardBuildException(
-                    message=f"{method}: {BoardBuildException.ERROR_CODE}",
+                    msg=f"{method}: {BoardBuildException.ERR_CODE}",
                     ex=arena_validation.exception
                 )
             )
@@ -95,8 +95,8 @@ class BoardBuilder(Builder[Board]):
             # On failure return the exception.
             return BuildResult.failure(
                 BoardBuildException(
-                    message=f"{method}: {BoardBuildException.ERROR_CODE}",
-                    ex=ArenaAlreadyContainsBoardException(f"{method}: {ArenaAlreadyContainsBoardException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {BoardBuildException.ERR_CODE}",
+                    ex=ArenaAlreadyContainsBoardException(f"{method}: {ArenaAlreadyContainsBoardException.MSG}")
                 )
             )
         # Create the board.

@@ -98,7 +98,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             # Test if no params are set. Need an attribute-value pair to find which PlayerAgents match the target.
             if param_count == 0:
                 return BuildResult.failure(
-                    ZeroSnapshotContextFlagsException(f"{method}: {ZeroSnapshotContextFlagsException.DEFAULT_MESSAGE}")
+                    ZeroSnapshotContextFlagsException(f"{method}: {ZeroSnapshotContextFlagsException.MSG}")
                 )
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
@@ -133,13 +133,13 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             
             # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
             BuildResult.failure(
-                NoExecutionRouteException(f"{method}: {NoExecutionRouteException.DEFAULT_MESSAGE}")
+                NoExecutionRouteException(f"{method}: {NoExecutionRouteException.MSG}")
             )
         # Finally, catch any missed exception and wrap A SnapshotContextBuildException around it then
         # return the exception-chain inside the ValidationResult.
         except Exception as ex:
             return BuildResult.failure(
                SnapshotContextBuildException(
-                    ex=ex, message=f"{method}: {SnapshotContextBuildException.DEFAULT_MESSAGE}"
+                    ex=ex, msg=f"{method}: {SnapshotContextBuildException.MSG}"
                 )
             )

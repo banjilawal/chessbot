@@ -35,5 +35,5 @@ class KingSpanComputationException(SpanComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "KING_SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "King span computation failed."
+    ERR_CODE = "KING_SPAN_COMPUTATION_FAILURE"
+    MSG = "King span computation failed."

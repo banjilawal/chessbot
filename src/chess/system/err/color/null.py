@@ -34,5 +34,5 @@ class NullGameColorException(GameColorException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_GAME_COLOR_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "GameColor validation failed: A GameColor cannot be null."
+    ERR_CODE = "NULL_GAME_COLOR_VALIDATION_ERROR"
+    MSG = "GameColor validation failed: A GameColor cannot be null."

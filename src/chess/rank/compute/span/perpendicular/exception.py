@@ -37,5 +37,5 @@ class PerpendicularSpanComputationException(SpanComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERPENDICULAR_SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Perpendicular span computation failed."
+    ERR_CODE = "PERPENDICULAR_SPAN_COMPUTATION_FAILURE"
+    MSG = "Perpendicular span computation failed."

@@ -107,9 +107,9 @@ class EdgeService(EntityService[Edge]):
             return UpdateResult.update_failure(
                 original=edge,
                 exception=EdgeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERR_CODE}",
                     ex=UpdatingEdgeHeuristicException(
-                        message=f"{method}: {UpdatingEdgeHeuristicException.ERROR_CODE}",
+                        msg=f"{method}: {UpdatingEdgeHeuristicException.ERR_CODE}",
                         ex=edge_validation.exception
                     )
                 )
@@ -125,9 +125,9 @@ class EdgeService(EntityService[Edge]):
             return UpdateResult.update_failure(
                 original=edge,
                 exception=EdgeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERR_CODE}",
                     ex=UpdatingEdgeHeuristicException(
-                        message=f"{method}: {UpdatingEdgeHeuristicException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {UpdatingEdgeHeuristicException.MSG}",
                         ex=heuristic_validation_result.exception
                     )
                 )
@@ -172,9 +172,9 @@ class EdgeService(EntityService[Edge]):
             return UpdateResult.update_failure(
                 original=edge,
                 exception=EdgeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERR_CODE}",
                     ex=UpdatingEdgeWeightException(
-                        message=f"{method}: {UpdatingEdgeHeuristicException.ERROR_CODE}",
+                        msg=f"{method}: {UpdatingEdgeHeuristicException.ERR_CODE}",
                         ex=edge_validation.exception
                     )
                 )
@@ -190,9 +190,9 @@ class EdgeService(EntityService[Edge]):
             return UpdateResult.update_failure(
                 original=edge,
                 exception=EdgeServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {EdgeServiceException.ERR_CODE}",
                     ex=UpdatingEdgeWeightException(
-                        message=f"{method}: {UpdatingEdgeWeightException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {UpdatingEdgeWeightException.MSG}",
                         ex=weight_validation_result.exception
                     )
                 )

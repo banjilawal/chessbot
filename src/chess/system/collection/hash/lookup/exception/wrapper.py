@@ -38,4 +38,4 @@ class LookupException(OperationException):
     None
     """
     DEFAULT_CODE = "LOOKUP_FAILED_ERROR"
-    DEFAULT_MESSAGE = "Lookup failed."
+    MSG = "Lookup failed."

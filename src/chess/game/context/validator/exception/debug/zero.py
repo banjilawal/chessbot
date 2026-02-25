@@ -38,8 +38,8 @@ class ZeroGameContextFlagsException(InvalidGameContextException, ContextFlagCoun
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_GAME_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ZERO_GAME_CONTEXT_FLAGS_ERROR"
+    MSG = (
         "Zero GameContext flags were set. Cannot search for Games if one-and_oly-one "
         "map flag is enabled."
     )

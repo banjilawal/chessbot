@@ -89,9 +89,9 @@ class Knight(Rank):
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     KnightException(
-                        message=f"{method}: {KnightException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {KnightException.MSG}",
                         ex=KnightSpanComputationException(
-                            message=f"{method}: {KnightSpanComputationException.DEFAULT_MESSAGE}",
+                            msg=f"{method}: {KnightSpanComputationException.MSG}",
                             ex=addition_result.exception
                         )
                     )

@@ -34,7 +34,7 @@ class KingLocationPostingService(Service[KingOccupationEvent]):
             return TransactionResult.errored(
                 event_update=request,
                 exception=CannotAddDuplicateLocationRecordException(
-                    f"{method}: {CannotAddDuplicateLocationRecordException.DEFAULT_MESSAGE}"
+                    f"{method}: {CannotAddDuplicateLocationRecordException.MSG}"
                 )
             )
         
@@ -45,7 +45,7 @@ class KingLocationPostingService(Service[KingOccupationEvent]):
             return TransactionResult.errored(
                 event_update=request,
                 exception=CannotMoveToCheckedSquareException(
-                    f"{method}: {CannotMoveToCheckedSquareException.DEFAULT_MESSAGE}"
+                    f"{method}: {CannotMoveToCheckedSquareException.MSG}"
                 )
             )
         

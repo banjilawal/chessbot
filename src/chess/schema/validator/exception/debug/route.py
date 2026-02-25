@@ -42,8 +42,8 @@ class SchemaValidationRouteException(ResultException, NoExecutionRouteException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_SCHEMA_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "NO_SCHEMA_VALIDATION_ROUTE_ERROR"
+    MSG = (
         "The SchemaValidator did not handle one of the paths necessary to assure a candidate is a safe to use"
         "Schema. Ensure all possible verification branches are covered to ensure the execution flow does not "
         "hit the default failure result outside the if-verification-blocks."

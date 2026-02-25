@@ -35,8 +35,8 @@ class ZeroFormationKeysException(InvalidFormationKeyException, ContextFlagCountE
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_FORMATION_KEYS_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ZERO_FORMATION_KEYS_VALIDATION_ERROR"
+    MSG = (
         "FormationKey validation failed: All attributes are null. A FormationKey must have a "
         "single attribute enabled by a value."
     )

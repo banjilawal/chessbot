@@ -27,7 +27,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
         try:
             if candidate is None:
                 return ValidationResult(exception=NullOccupationEventException(
-                    f"{method}: {NullOccupationEventException.DEFAULT_MESSAGE}"
+                    f"{method}: {NullOccupationEventException.MSG}"
                     )
                 )
             
@@ -55,13 +55,13 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
             
             if event.square.occupant is not None:
                 return ValidationResult(exception=OccupationDestinationNotEmptyException(
-                    f"{method}: {OccupationDestinationNotEmptyException.DEFAULT_MESSAGE}"
+                    f"{method}: {OccupationDestinationNotEmptyException.MSG}"
                     )
                 )
             
             if event.actor_square == event.enemy_square:
                 return ValidationResult(exception=ActorAlreadyAtDestinationException(
-                    f"{method}: {ActorAlreadyAtDestinationException.DEFAULT_MESSAGE}"
+                    f"{method}: {ActorAlreadyAtDestinationException.MSG}"
                     )
                 )
             
@@ -105,7 +105,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #   try:
 #     if t is None:
 #       raise NullAttackEventException(
-#         f"{method}: {NullAttackEventException.DEFAULT_MESSAGE}"
+#         f"{method}: {NullAttackEventException.MSG}"
 #       )
 #
 #     if not isinstance(t, AttackEvent):
@@ -115,7 +115,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #
 #     id_validation = IdValidator.validate(travel.visitor_id)
 #     if not id_validation.is_success():
-#       raise IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+#       raise IdValidationException(f"{method}: {IdValidationException.MSG}")
 #
 #     actor_validation = PieceValidator.validate(travel.traveler)
 #     if not actor_validation.is_success():
@@ -123,10 +123,10 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #
 #     destination_square_validation = SquareValidator.validate(travel.enemy_square)
 #     if not destination_square_validation.is_success():
-#       raise InvalidSqaureException(f"{method}: {InvalidSqaureException.DEFAULT_MESSAGE}")
+#       raise InvalidSqaureException(f"{method}: {InvalidSqaureException.MSG}")
 #
 #     if travel.enemy_square.point == travel.traveler.current_position:
-#       raise CircularOccupationException(f"{method}: {CircularOccupationException.DEFAULT_MESSAGE}")
+#       raise CircularOccupationException(f"{method}: {CircularOccupationException.MSG}")
 #
 #     return Result(payload=travel)
 #
@@ -139,7 +139,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       CircularOccupationException
 #   ) as e:
 #     raise InvalidAttackEventException(
-#       f"{method}: {InvalidAttackEventException.DEFAULT_MESSAGE}"
+#       f"{method}: {InvalidAttackEventException.MSG}"
 #     ) from e
 #
 #   # This block catches any unexpected exception
@@ -214,7 +214,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     if not destination_search.is_success():
 #       return TransactionResult(
 #         rollback_exception=EventResourceNotFoundExeception(
-#           f"{method}: {DestinationSquareNotFoundException.DEFAULT_MESSAGE}"
+#           f"{method}: {DestinationSquareNotFoundException.MSG}"
 #           # EventResourceNotFoundException
 #         )
 #       )
@@ -222,7 +222,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     if len(destination_search.payload) > 1:
 #       return TransactionResult(
 #         rollback_exception=DestinationSquareColiisonException(
-#           f"{method}: {DestinationSquareCollisionException.DEFAULT_MESSAGE}"
+#           f"{method}: {DestinationSquareCollisionException.MSG}"
 #         )
 #       )
 #
@@ -268,7 +268,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     return TransactionResult(
 #       op_result_id,
 #       travel,
-#       OccupationSearchEventException(f"{method}: {OccupationSearchEventException.DEFAULT_MESSAGE}")
+#       OccupationSearchEventException(f"{method}: {OccupationSearchEventException.MSG}")
 #     )
 #   actor_square = cast(Square, search_result.payload)
 #
@@ -358,7 +358,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
 #     )
 #
 #   actor_square.occupant = None
@@ -372,7 +372,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
 #     )
 #
 #   directive.traveler.positions.push_coord(directive.friend.position)
@@ -387,7 +387,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
 #     )
 #
 #   return TransactionResult(
@@ -409,7 +409,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #     return TransactionResult(
 #       result_id=op_result_id,
 #       travel=directive,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
 #       was_rolled_back=True
 #     )
 #
@@ -424,7 +424,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       travel=directive,
 #       was_rolled_back=True,
 #       rollback_exception=RemoveTeamMemberRolledBackException(
-#         f"{method}: {RemoveTeamMemberRolledBackException.DEFAULT_MESSAGE}"
+#         f"{method}: {RemoveTeamMemberRolledBackException.MSG}"
 #       )
 #     )
 #
@@ -440,7 +440,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       travel=directive,
 #       was_rolled_back=True,
 #       rollback_exception=AddEnemyHostageRolledBackException(
-#         f"{method}: {AddEnemyHostageRolledBackException.DEFAULT_MESSAGE}"
+#         f"{method}: {AddEnemyHostageRolledBackException.MSG}"
 #       )
 #     )
 #
@@ -456,7 +456,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       result_id=op_result_id,
 #       travel=directive,
 #       was_rolled_back=True,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
 #     )
 #
 #   directive.board.pieces.remove(directive.enemy)
@@ -473,7 +473,7 @@ class CombatantOccupationEventValidator(Validator[CombatantOccupationEvent]):
 #       travel=directive,
 #       was_rolled_back=True,
 #       rollback_exception=BoardPieceRemovalRollbackException(
-#         f"{method}: {BoardPieceRemovalRollbackException.DEFAULT_MESSAGE}"
+#         f"{method}: {BoardPieceRemovalRollbackException.MSG}"
 #       )
 #     )
 #

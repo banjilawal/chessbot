@@ -129,9 +129,9 @@ class OccupationService:
             return UpdateResult.update_failure(
                 original=square,
                 exception=OccupationServiceException(
-                    message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
                         ex=square_validation.exception
                     )
                 )
@@ -146,9 +146,9 @@ class OccupationService:
             return UpdateResult.update_failure(
                 original=square,
                 exception=OccupationServiceException(
-                    message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
                         ex=actionable_token_validation.exception
                     )
                 )
@@ -159,10 +159,10 @@ class OccupationService:
             return UpdateResult.update_failure(
                 original=square,
                 exception=OccupationServiceException(
-                    message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
-                        ex=VisitDestinationNotFoundException(f"{method}: {VisitDestinationNotFoundException.DEFAULT_MESSAGE}")
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
+                        ex=VisitDestinationNotFoundException(f"{method}: {VisitDestinationNotFoundException.MSG}")
                     )
                 )
             )
@@ -173,9 +173,9 @@ class OccupationService:
             return UpdateResult.update_failure(
                 original=square,
                 exception=OccupationServiceException(
-                    message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
                         ex=insertion_result.exception
                     )
                 )
@@ -220,9 +220,9 @@ class OccupationService:
             # Send the debug exception to the client.
             return DeletionResult.failure(
                 exception=OccupationServiceException(
-                    message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERR_CODE}",
                     ex=SquareVisitTerminationException(
-                        message=f"{method}: {SquareVisitTerminationException.ERROR_CODE}",
+                        msg=f"{method}: {SquareVisitTerminationException.ERR_CODE}",
                         ex=token_validation.exception
                     )
                 )
@@ -257,7 +257,7 @@ class OccupationService:
                 # Send the debug exception to the client.
                 return DeletionResult.failure(
                     exception=OccupationServiceException(
-                        message=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERROR_CODE}",
+                        msg=f"ServiceId:{self._id}, {method}: {OccupationServiceException.ERR_CODE}",
                         ex=deletion_result.exception
                     )
                 )

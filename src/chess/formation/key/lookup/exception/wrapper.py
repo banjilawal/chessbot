@@ -40,6 +40,6 @@ class FormationLookupFailedException(FormationException, LookupException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_LOOKUP_WRAPPER"
-    DEFAULT_MESSAGE = "Formation lookup failed."
+    ERR_CODE = "FORMATION_LOOKUP_WRAPPER"
+    MSG = "Formation lookup failed."
 

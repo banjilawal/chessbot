@@ -37,5 +37,5 @@ class PushingTeamFailedException(TeamStackException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_PUSH_FAILURE"
-    DEFAULT_MESSAGE = "Team push failed."
+    ERR_CODE = "TEAM_PUSH_FAILURE"
+    MSG = "Team push failed."

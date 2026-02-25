@@ -59,12 +59,12 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
 
             if param_count == 0:
                 return BuildResult.failure(
-                    ZeroVisitationSearchParamsException(f"{method}: {ZeroVisitationSearchParamsException.DEFAULT_MESSAGE}")
+                    ZeroVisitationSearchParamsException(f"{method}: {ZeroVisitationSearchParamsException.MSG}")
                 )
 
             if param_count > 1:
                 return BuildResult(
-                    ExcessiveVisitationSearchParamsException(f"{method}: {ExcessiveVisitationSearchParamsException.DEFAULT_MESSAGE}")
+                    ExcessiveVisitationSearchParamsException(f"{method}: {ExcessiveVisitationSearchParamsException.MSG}")
                 )
 
             if piece_id is not None:
@@ -89,12 +89,12 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
 
             if rank_name is not None and rank_name.upper() not in Persona.__members__:
                 return BuildResult.failure(
-                    VisitationInvalidRankNameParamException(f"{method}: {VisitationInvalidRankNameParamException.DEFAULT_MESSAGE}")
+                    VisitationInvalidRankNameParamException(f"{method}: {VisitationInvalidRankNameParamException.MSG}")
                 )
 
             if ransom not in range[Queen.ransom]:
                 return BuildResult.failure(
-                    VisitationInvalidRankNameParamException(f"{method}: {VisitationInvalidRankNameParamException.DEFAULT_MESSAGE}")
+                    VisitationInvalidRankNameParamException(f"{method}: {VisitationInvalidRankNameParamException.MSG}")
                 )
 
             if position is not None:

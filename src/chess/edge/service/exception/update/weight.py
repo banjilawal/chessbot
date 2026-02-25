@@ -38,5 +38,5 @@ class UpdatingEdgeWeightException(EdgeServiceException, UpdateException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_WEIGHT_UPDATE_FAILURE"
-    DEFAULT_MESSAGE = "Edge weight update failed."
+    ERR_CODE = "EDGE_WEIGHT_UPDATE_FAILURE"
+    MSG = "Edge weight update failed."

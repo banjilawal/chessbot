@@ -77,8 +77,8 @@ class BoardContextValidator(Validator[BoardContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 BoardContextValidationException(
-                    message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
-                    ex=NullBoardContextException(f"{method}: {NullBoardContextException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {BoardContextValidationException.MSG}",
+                    ex=NullBoardContextException(f"{method}: {NullBoardContextException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -86,7 +86,7 @@ class BoardContextValidator(Validator[BoardContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 BoardContextValidationException(
-                    message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {BoardContextValidationException.MSG}",
                     ex=TypeError(f"{method}: Was expecting a BoardContext, got {type(candidate).__name__} instead.")
                 )
             )
@@ -99,8 +99,8 @@ class BoardContextValidator(Validator[BoardContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 BoardContextValidationException(
-                    message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
-                    ex=ZeroBoardContextFlagsException(f"{method}: {ZeroBoardContextFlagsException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {BoardContextValidationException.MSG}",
+                    ex=ZeroBoardContextFlagsException(f"{method}: {ZeroBoardContextFlagsException.MSG}")
                 )
             )
         # Handle the case of too many attributes being used in a search.
@@ -108,9 +108,9 @@ class BoardContextValidator(Validator[BoardContext]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 BoardContextValidationException(
-                    message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {BoardContextValidationException.MSG}",
                     ex=ExcessiveBoardContextFlagsException(
-                        f"{method}: {ExcessiveBoardContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveBoardContextFlagsException.MSG}"
                     )
                 )
             )
@@ -123,7 +123,7 @@ class BoardContextValidator(Validator[BoardContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     BoardContextValidationException(
-                        message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {BoardContextValidationException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -137,7 +137,7 @@ class BoardContextValidator(Validator[BoardContext]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     BoardContextValidationException(
-                        message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {BoardContextValidationException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -147,9 +147,9 @@ class BoardContextValidator(Validator[BoardContext]):
         # Return the exception chain if there is no validation route for the context.
         return ValidationResult.failure(
             BoardContextValidationException(
-                message=f"{method}: {BoardContextValidationException.DEFAULT_MESSAGE}",
+                msg=f"{method}: {BoardContextValidationException.MSG}",
                 ex=BoardContextValidationRouteException(
-                    f"{method}: {BoardContextValidationRouteException.DEFAULT_MESSAGE}"
+                    f"{method}: {BoardContextValidationRouteException.MSG}"
                 )
             )
         )

@@ -32,5 +32,5 @@ class PawnTokenException(TokenException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PAWN_TOKEN_ERROR"
-    DEFAULT_MESSAGE = "PawnToken raised an exception."
+    ERR_CODE = "PAWN_TOKEN_ERROR"
+    MSG = "PawnToken raised an exception."

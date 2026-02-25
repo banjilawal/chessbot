@@ -37,5 +37,5 @@ class EdgeContextValidationException(EdgeContextException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "EdgeContext validation failed."
+    ERR_CODE = "EDGE_CONTEXT_VALIDATION_FAILURE"
+    MSG = "EdgeContext validation failed."

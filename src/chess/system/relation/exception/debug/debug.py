@@ -37,5 +37,5 @@ class RelationDebugException(RelationException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "RELATION_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A RelationDebugException was raised."
+    ERR_CODE = "RELATION_DEBUG_ERROR"
+    MSG = "A RelationDebugException was raised."

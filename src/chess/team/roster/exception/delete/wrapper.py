@@ -29,5 +29,5 @@ class TeamRosterTokenDeletionException(TeamRosterException, OperationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ROSTER_TOKEN_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Roster occupant deletion failed."
+    ERR_CODE = "ROSTER_TOKEN_DELETION_FAILURE"
+    MSG = "Roster occupant deletion failed."

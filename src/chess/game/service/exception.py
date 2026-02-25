@@ -38,5 +38,5 @@ class GameServiceException(GameException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "GameService raised an exception."
+    ERR_CODE = "GAME_SERVICE_ERROR"
+    MSG = "GameService raised an exception."

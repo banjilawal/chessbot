@@ -37,5 +37,5 @@ class NullEdgeContextException(EdgeContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_EDGE_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "EdgeContext validation failed: The candidate was null."
+    ERR_CODE = "NULL_EDGE_CONTEXT_ERROR"
+    MSG = "EdgeContext validation failed: The candidate was null."

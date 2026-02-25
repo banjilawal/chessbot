@@ -35,7 +35,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullPromotionEventException(f"{method}: {NullPromotionEventException.DEFAULT_MESSAGE}")
+                    NullPromotionEventException(f"{method}: {NullPromotionEventException.MSG}")
                 )
             
             if not isinstance (candidate, PromotionEvent):
@@ -67,7 +67,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
             
             if event.actor.current_position.row != event.actor.team_name.schema.enemy_schema.rank_row:
                 return ValidationResult.failure(
-                    ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.DEFAULT_MESSAGE}")
+                    ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.MSG}")
                 )
             
             if not isinstance(event.actor, PromotablePiece):
@@ -81,12 +81,12 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
                 (piece.previous_rank is None and isinstance(piece.rank_name, Queen))
             ):
                 return ValidationResult.failure(
-                    InconsistentRankHistoryException(f"{method}: {InconistenctRankHistoryException.DEFAULT_MESSAGE}")
+                    InconsistentRankHistoryException(f"{method}: {InconistenctRankHistoryException.MSG}")
                 )
             
             if piece.previous_rank is not None and isinstance(piece.rank_name, Queen):
                 return ValidationResult.failure(
-                    DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
+                    DoublePromotionException(f"{method}: {DoublePromotionException.MSG}")
                 )
             
             context_build_result = BoardContextBuilder.build(piece_id=event.actor.visitor_id)

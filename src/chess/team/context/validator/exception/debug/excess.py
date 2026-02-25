@@ -38,7 +38,7 @@ class ExcessiveTeamContextFlagsException(TeamContextException, ContextFlagCountE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_TEAM_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "EXCESSIVE_TEAM_CONTEXT_FLAGS_ERROR"
+    MSG = (
         "TeamContext validation failed: More than one attribute was set. Only one attribute-value should be enabled."
     )

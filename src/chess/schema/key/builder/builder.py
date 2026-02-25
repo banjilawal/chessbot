@@ -80,8 +80,8 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SchemaKeyBuildException(
-                    message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
-                    ex=ZeroSchemaKeysException(f"{method}: {ZeroSchemaKeysException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
+                    ex=ZeroSchemaKeysException(f"{method}: {ZeroSchemaKeysException.MSG}")
                 )
             )
         # Handle the case that, more than one optional param is not-null.
@@ -89,7 +89,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SchemaKeyBuildException(
-                    message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
+                    msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
                     ex=ExcessiveSchemaKeysException(f"{method}: {ExcessiveSchemaKeysException}")
                 )
             )
@@ -102,7 +102,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SchemaKeyBuildException(
-                        message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
+                        msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -116,7 +116,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SchemaKeyBuildException(
-                        message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
+                        msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -126,7 +126,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
         # The default path returns failure
         return BuildResult.failure(
             SchemaKeyBuildException(
-                message=f"{method}: {SchemaKeyBuildException.ERROR_CODE}",
-                ex=SchemaKeyBuildRouteException(f"{method}: {SchemaKeyBuildRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
+                ex=SchemaKeyBuildRouteException(f"{method}: {SchemaKeyBuildRouteException.MSG}")
             )
         )

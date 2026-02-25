@@ -37,5 +37,5 @@ class ArenaContextBuildRouteException(ArenaContextException, NoExecutionRouteExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_ARENA_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "ArenaContext build failed: No build path existed for the Arena key."
+    ERR_CODE = "NO_ARENA_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "ArenaContext build failed: No build path existed for the Arena key."

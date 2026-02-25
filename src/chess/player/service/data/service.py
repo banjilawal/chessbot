@@ -111,7 +111,7 @@ class AgentStackService(StackService[PlayerAgent]):
     #         return InsertionResult.success(payload=item)
     #     except Exception as ex:
     #         return InsertionResult.failure(
-    #             AgentDataServiceException(ex=ex, message=f"{method}: {AgentDataServiceException.DEFAULT_MESSAGE}")
+    #             AgentDataServiceException(ex=ex, msg=f"{method}: {AgentDataServiceException.MSG}")
     #         )
     #
     # @LoggingLevelRouter.monitor

@@ -36,5 +36,5 @@ class NumberBelowFloorException(NumberException, BoundsException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NUMBER_BELOW_FLOOR_ERROR"
-    DEFAULT_MESSAGE = "Number validation failed: The candidate was below the floor."
+    ERR_CODE = "NUMBER_BELOW_FLOOR_ERROR"
+    MSG = "Number validation failed: The candidate was below the floor."

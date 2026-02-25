@@ -199,8 +199,8 @@ class GameDisplay:
     # self.is_dragging = False
 
   def coordinate_at_mouse_position(self, mouse_pos: tuple[int, int]) -> Optional[Coord]:
-    col = (mouse_pos[0] - self.border_px) // self.cell_px
-    row = (mouse_pos[1] - self.border_px) // self.cell_px
+    col = (mouse_pos[0] - self.border_px) / self.cell_px
+    row = (mouse_pos[1] - self.border_px) / self.cell_px
     if 0 <= col < 8 and 0 <= row < 8:
       return Coord(row=row, column=col)
     return None
@@ -211,8 +211,8 @@ class GameDisplay:
 
     drag_state = self.active_drags[chess_piece_id]
 
-    proposed_col = (mouse_position[0] - drag_state.offset_x) // self.cell_px
-    proposed_row = (mouse_position[1] - drag_state.offset_y) // self.cell_px
+    proposed_col = (mouse_position[0] - drag_state.offset_x) / self.cell_px
+    proposed_row = (mouse_position[1] - drag_state.offset_y) / self.cell_px
 
     # Clamp within board_validator
     proposed_col = max(0, min(proposed_col, 7))

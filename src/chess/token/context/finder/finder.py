@@ -78,9 +78,9 @@ class TokenFinder(DataFinder[Token]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TokenSearchException(
-                    message=f"{method}: {TokenSearchException.ERROR_CODE}",
+                    msg=f"{method}: {TokenSearchException.ERR_CODE}",
                     ex=TokenSearchNullDatasetException(
-                        f"{method}: {TokenSearchNullDatasetException.DEFAULT_MESSAGE}"
+                        f"{method}: {TokenSearchNullDatasetException.MSG}"
                     )
                 )
             )
@@ -89,7 +89,7 @@ class TokenFinder(DataFinder[Token]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TokenSearchException(
-                    message=f"{method}: {TokenSearchException.ERROR_CODE}",
+                    msg=f"{method}: {TokenSearchException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected List[Token], got {type(dataset).__name__} instead.")
                 )
             )
@@ -99,7 +99,7 @@ class TokenFinder(DataFinder[Token]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TokenSearchException(
-                    message=f"{method}: {TokenSearchException.ERROR_CODE}",
+                    msg=f"{method}: {TokenSearchException.ERR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -131,8 +131,8 @@ class TokenFinder(DataFinder[Token]):
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             TokenSearchException(
-                message=f"{method}: {TokenSearchException.ERROR_CODE}",
-                ex=TokenSearchRouteException(f"{method}: {TokenSearchRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {TokenSearchException.ERR_CODE}",
+                ex=TokenSearchRouteException(f"{method}: {TokenSearchRouteException.MSG}")
             )
         )
         

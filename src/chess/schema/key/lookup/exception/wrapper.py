@@ -41,5 +41,5 @@ class SchemaLookupFailedException(SchemaException, ForwardLookupFailedException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SCHEMA_LOOKUP_FAILED"
-    DEFAULT_MESSAGE = "SchemaLookup failed."
+    ERR_CODE = "SCHEMA_LOOKUP_FAILED"
+    MSG = "SchemaLookup failed."

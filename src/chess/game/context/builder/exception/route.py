@@ -37,5 +37,5 @@ class GameContextBuildRouteException(GameContextException, NoExecutionRouteExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_GAME_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "GameContext build failed: No build path existed for the Game key."
+    ERR_CODE = "NO_GAME_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "GameContext build failed: No build path existed for the Game key."

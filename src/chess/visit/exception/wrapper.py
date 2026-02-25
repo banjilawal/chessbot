@@ -35,5 +35,5 @@ class VisitException(OperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VISIT_FAILURE"
-    DEFAULT_MESSAGE = "Visit failed."
+    ERR_CODE = "VISIT_FAILURE"
+    MSG = "Visit failed."

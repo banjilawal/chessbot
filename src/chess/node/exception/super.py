@@ -32,5 +32,5 @@ class NodeException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "NODE_ERROR"
-    DEFAULT_MESSAGE = "Node raised an exception."
+    ERR_CODE = "NODE_ERROR"
+    MSG = "Node raised an exception."

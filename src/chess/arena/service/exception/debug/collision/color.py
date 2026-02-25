@@ -35,5 +35,5 @@ class ArenaSlotAlreadyOccupiedException(ArenaException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_SLOT_ALREADY_OCCUPIED_ERROR"
-    DEFAULT_MESSAGE = "A team has already been assigned that color slot."
+    ERR_CODE = "ARENA_SLOT_ALREADY_OCCUPIED_ERROR"
+    MSG = "A team has already been assigned that color slot."

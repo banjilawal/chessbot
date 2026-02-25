@@ -39,5 +39,5 @@ class VictorNotOccupyingCapturedSquareException(HostageException, DebugException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VICTOR_NOT_ON_CAPTURED_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Hostage build failed: Victor not occupying captured item."
+    ERR_CODE = "VICTOR_NOT_ON_CAPTURED_SQUARE_ERROR"
+    MSG = "Hostage build failed: Victor not occupying captured item."

@@ -35,5 +35,5 @@ class CollisionException(InconsistencyException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "COLLISION_ERROR"
-    DEFAULT_MESSAGE = "CollisionException"
+    ERR_CODE = "COLLISION_ERROR"
+    MSG = "CollisionException"

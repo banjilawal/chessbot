@@ -40,5 +40,5 @@ class PersonaKeyValidationException(PersonaKeyException, ValidationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_KEY_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "PersonaKey validation failed."
+    ERR_CODE = "PERSONA_KEY_VALIDATION_FAILURE"
+    MSG = "PersonaKey validation failed."

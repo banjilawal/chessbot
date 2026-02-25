@@ -37,5 +37,5 @@ class TeamContextBuildRouteException(TeamContextException, NoExecutionRouteExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_TEAM_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "TeamContext build failed: No build path existed for the Team key."
+    ERR_CODE = "NO_TEAM_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "TeamContext build failed: No build path existed for the Team key."

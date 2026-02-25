@@ -110,9 +110,9 @@ class BoardDatabase(Database[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERR_CODE}",
                     ex=UniqueBoardInsertionException(
-                        message=f"{method}: {UniqueBoardInsertionException.ERROR_CODE}",
+                        msg=f"{method}: {UniqueBoardInsertionException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -125,9 +125,9 @@ class BoardDatabase(Database[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERR_CODE}",
                     ex=UniqueBoardInsertionException(
-                        message=f"{method}: {UniqueBoardInsertionException.ERROR_CODE}",
+                        msg=f"{method}: {UniqueBoardInsertionException.ERR_CODE}",
                         ex=search_result.exception
                     )
                 )
@@ -137,10 +137,10 @@ class BoardDatabase(Database[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERR_CODE}",
                     ex=UniqueBoardInsertionException(
-                        message=f"{method}: {UniqueBoardInsertionException.ERROR_CODE}",
-                        ex=AddingDuplicateBoardException(f"{method}: {AddingDuplicateBoardException.DEFAULT_MESSAGE}")
+                        msg=f"{method}: {UniqueBoardInsertionException.ERR_CODE}",
+                        ex=AddingDuplicateBoardException(f"{method}: {AddingDuplicateBoardException.MSG}")
                     )
                 )
             )
@@ -152,9 +152,9 @@ class BoardDatabase(Database[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 UniqueBoardDataServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {UniqueBoardDataServiceException.ERR_CODE}",
                     ex=UniqueBoardInsertionException(
-                        message=f"{method}: {UniqueBoardInsertionException.ERROR_CODE}",
+                        msg=f"{method}: {UniqueBoardInsertionException.ERR_CODE}",
                         ex=insertion_result.exception
                     )
                 )
@@ -191,9 +191,9 @@ class BoardDatabase(Database[Board]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 UniqueBoardDataServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueBoardDataServiceException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {UniqueBoardDataServiceException.ERR_CODE}",
                     ex=UniqueBoardSearchException(
-                        message=f"{method}: {UniqueBoardSearchException.ERROR_CODE}",
+                        msg=f"{method}: {UniqueBoardSearchException.ERR_CODE}",
                         ex=search_result.exception
                     )
                 )

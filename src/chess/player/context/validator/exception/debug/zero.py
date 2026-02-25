@@ -39,8 +39,8 @@ class ZeroAgentContextFlagsException(InvalidAgentContextException, ContextFlagCo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ZERO_AGENT_CONTEXT_FLAGS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ZERO_AGENT_CONTEXT_FLAGS_ERROR"
+    MSG = (
         "Zero AgentContext flags were set. Cannot search for Agents if one-and_oly-one "
         "map flag is enabled."
     )

@@ -25,7 +25,7 @@ class VisitationEventValidator(Validator[VisitationEvent]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullVisitationEventException(f"{method}: {NullVisitationEventException.DEFAULT_MESSAGE}")
+                    NullVisitationEventException(f"{method}: {NullVisitationEventException.MSG}")
                 )
             
             if not isinstance(candidate, VisitationEvent):

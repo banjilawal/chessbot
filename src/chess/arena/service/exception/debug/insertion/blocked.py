@@ -37,5 +37,5 @@ class ChangingArenaTeamBlockedException(ArenaException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BLOCKED_ARENA_TEAM_CHANGE_ERROR"
-    DEFAULT_MESSAGE = "Once a game has started a team in the arena cannot be changed for another."
+    ERR_CODE = "BLOCKED_ARENA_TEAM_CHANGE_ERROR"
+    MSG = "Once a game has started a team in the arena cannot be changed for another."

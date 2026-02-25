@@ -42,5 +42,5 @@ class PerpendicularRayComputationException(RayComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERPENDICULAR_RAY_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Perpendicular ray computation failed."
+    ERR_CODE = "PERPENDICULAR_RAY_COMPUTATION_FAILURE"
+    MSG = "Perpendicular ray computation failed."

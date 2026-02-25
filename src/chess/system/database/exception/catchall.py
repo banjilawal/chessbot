@@ -36,5 +36,5 @@ class DatabaseException(ChessException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "DATABASE_ERROR"
-    DEFAULT_MESSAGE = "Database raised an exception."
+    ERR_CODE = "DATABASE_ERROR"
+    MSG = "Database raised an exception."

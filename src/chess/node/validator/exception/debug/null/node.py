@@ -37,5 +37,5 @@ class NullNodeException(NodeDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_NODE_ERROR"
-    DEFAULT_MESSAGE = "Node validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_NODE_ERROR"
+    MSG = "Node validation failed: The candidate cannot be null."

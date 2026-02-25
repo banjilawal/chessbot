@@ -32,5 +32,5 @@ class CoordException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "COORD_ERROR"
-    DEFAULT_MESSAGE = "Coord raised an exception."
+    ERR_CODE = "COORD_ERROR"
+    MSG = "Coord raised an exception."

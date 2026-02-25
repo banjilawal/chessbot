@@ -80,9 +80,9 @@ class EdgeFinder(StackSearcher[Edge]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 EdgeSearchException(
-                    message=f"{method}: {EdgeSearchException.ERROR_CODE}",
+                    msg=f"{method}: {EdgeSearchException.ERR_CODE}",
                     ex=EdgeSearchNullDatasetException(
-                        f"{method}: {EdgeSearchNullDatasetException.DEFAULT_MESSAGE}"
+                        f"{method}: {EdgeSearchNullDatasetException.MSG}"
                     )
                 )
             )
@@ -91,9 +91,9 @@ class EdgeFinder(StackSearcher[Edge]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 EdgeSearchException(
-                    message=f"{method}: {EdgeSearchException.ERROR_CODE}",
+                    msg=f"{method}: {EdgeSearchException.ERR_CODE}",
                     ex=EdgeSearchPayloadTypeException(
-                        f"{method}: {EdgeSearchPayloadTypeException.DEFAULT_MESSAGE}"
+                        f"{method}: {EdgeSearchPayloadTypeException.MSG}"
                     )
                 )
             )
@@ -103,7 +103,7 @@ class EdgeFinder(StackSearcher[Edge]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 EdgeSearchException(
-                    message=f"{method}: {EdgeSearchException.ERROR_CODE}",
+                    msg=f"{method}: {EdgeSearchException.ERR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -134,8 +134,8 @@ class EdgeFinder(StackSearcher[Edge]):
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             EdgeSearchException(
-                message=f"{method}: {EdgeSearchException.ERROR_CODE}",
-                ex=EdgeSearchRouteException(f"{method}: {EdgeSearchRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {EdgeSearchException.ERR_CODE}",
+                ex=EdgeSearchRouteException(f"{method}: {EdgeSearchRouteException.MSG}")
             )
         )
     

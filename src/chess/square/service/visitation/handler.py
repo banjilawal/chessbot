@@ -105,9 +105,9 @@ class TokenVisitHandler:
             return UpdateResult.update_failure(
                 original=square,
                 exception=TokenVisitHandlerException(
-                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
                         ex=square_validation.exception
                     )
                 )
@@ -121,11 +121,11 @@ class TokenVisitHandler:
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
                         ex=VisitingOccupiedSquareException(
-                            f"{method}: {VisitingOccupiedSquareException.DEFAULT_MESSAGE}"
+                            f"{method}: {VisitingOccupiedSquareException.MSG}"
                         )
                     )
                 )
@@ -137,9 +137,9 @@ class TokenVisitHandler:
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
                         ex=token_validation.exception
                     )
                 )
@@ -150,11 +150,11 @@ class TokenVisitHandler:
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
                         ex=VisitorFromWrongBoardException(
-                            f"{method}: {VisitorFromWrongBoardException.DEFAULT_MESSAGE}"
+                            f"{method}: {VisitorFromWrongBoardException.MSG}"
                         )
                     )
                 )
@@ -165,11 +165,11 @@ class TokenVisitHandler:
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    message=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    msg=f"ServiceId: {self.id}, {method}: {TokenVisitHandlerException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
                         ex=SquareVisitorDisabledException(
-                            f"{method}: {SquareVisitorDisabledException.DEFAULT_MESSAGE}"
+                            f"{method}: {SquareVisitorDisabledException.MSG}"
                         )
                     )
                 )
@@ -184,9 +184,9 @@ class TokenVisitHandler:
             return UpdateResult.update_failure(
                 original=pre_update_square,
                 exception=TokenVisitHandlerException(
-                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
                     ex=StartingSquareVisitException(
-                        message=f"{method}: {StartingSquareVisitException.ERROR_CODE}",
+                        msg=f"{method}: {StartingSquareVisitException.ERR_CODE}",
                         ex=validate_token_opening_square_result.exception
                     )
                 )
@@ -234,9 +234,9 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenVisitHandlerException(
-                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
                     ex=SquareVisitTerminationException(
-                        message=f"{method}: {SquareVisitTerminationException.ERROR_CODE}",
+                        msg=f"{method}: {SquareVisitTerminationException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -246,11 +246,11 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenVisitHandlerException(
-                    message=f"{method}: {TokenVisitHandlerException.ERROR_CODE}",
+                    msg=f"{method}: {TokenVisitHandlerException.ERR_CODE}",
                     ex=SquareVisitTerminationException(
-                        message=f"{method}: {SquareVisitTerminationException.ERROR_CODE}",
+                        msg=f"{method}: {SquareVisitTerminationException.ERR_CODE}",
                         ex=NoVisitForTerminationException(
-                            f"{method}: {NoVisitForTerminationException.DEFAULT_MESSAGE}"
+                            f"{method}: {NoVisitForTerminationException.MSG}"
                         )
                     )
                 )
@@ -288,7 +288,7 @@ class TokenVisitHandler:
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 VisitingWrongOpeningSquareException(
-                    f"{method}: {VisitingWrongOpeningSquareException.DEFAULT_MESSAGE}"
+                    f"{method}: {VisitingWrongOpeningSquareException.MSG}"
                 )
             )
         # --- Send the success result to the caller. ---#

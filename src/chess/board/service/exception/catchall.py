@@ -38,5 +38,5 @@ class BoardServiceException(BoardException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "BoardService raised an exception."
+    ERR_CODE = "BOARD_SERVICE_ERROR"
+    MSG = "BoardService raised an exception."

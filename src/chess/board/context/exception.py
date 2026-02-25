@@ -34,6 +34,6 @@ class BoardContextException(BoardException, ContextException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "BoardContext raised an exception."
+    ERR_CODE = "BOARD_CONTEXT_ERROR"
+    MSG = "BoardContext raised an exception."
 

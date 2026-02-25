@@ -38,8 +38,8 @@ class ExcessiveCoordContextFlagsException(CoordContextException, ContextFlagCoun
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_COORD_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "EXCESSIVE_COORD_CONTEXT_FLAG_ERROR"
+    MSG = (
         "Excessive CoordContext flags were set. an Coord search can only use one-and-only "
         "map flag at a time."
     )

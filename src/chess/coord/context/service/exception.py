@@ -40,5 +40,5 @@ class CoordContextServiceException(CoordContextException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_CONTEXT_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "CoordContextService raised an exception."
+    ERR_CODE = "COORD_CONTEXT_SERVICE_ERROR"
+    MSG = "CoordContextService raised an exception."

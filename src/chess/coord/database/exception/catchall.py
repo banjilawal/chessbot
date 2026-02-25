@@ -39,5 +39,5 @@ class CoordDatabaseException(CoordException, DatabaseException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_DATABASE_ERROR"
-    DEFAULT_ERROR_CODE = "CoordDatabase raised an exception."
+    ERR_CODE = "COORD_DATABASE_ERROR"
+    DEFAULT_ERR_CODE = "CoordDatabase raised an exception."

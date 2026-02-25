@@ -38,5 +38,5 @@ class GraphDebugException(GraphException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "GRAPH_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A GraphDebugException was raised."
+    ERR_CODE = "GRAPH_DEBUG_ERROR"
+    MSG = "A GraphDebugException was raised."

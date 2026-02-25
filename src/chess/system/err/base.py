@@ -32,7 +32,7 @@ class SuperClassException(ChessException):
     1.  Class name followed by the ERROR suffix.
     2.  The Syntax is: [Class]_ERROR
 
-    # DEFAULT MESSAGE CONVENTION:
+    # DEFAULT MSG CONVENTION:
     1.  Class name followed by "raised an exception."
     2.  The Syntax is: [Class] raised an exception
 
@@ -48,5 +48,5 @@ class SuperClassException(ChessException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "SUPER_CLASS_ERROR"
-    DEFAULT_MESSAGE = "SuperClassException."
+    ERR_CODE = "SUPER_CLASS_ERROR"
+    MSG = "SuperClassException."

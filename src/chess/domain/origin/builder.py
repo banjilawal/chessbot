@@ -68,7 +68,7 @@ class DomainOriginBuilder(Builder[DomainOrigin]):
         except Exception as e:
             return BuildResult.failure(
                 DomainOriginBuildException(
-                    f"{method}: {DomainOriginBuildException.DEFAULT_MESSAGE}",
+                    f"{method}: {DomainOriginBuildException.MSG}",
                     e
                 )
             )

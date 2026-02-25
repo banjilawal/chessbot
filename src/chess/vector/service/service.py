@@ -122,7 +122,7 @@ class VectorService(EntityService[Vector]):
             # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                VectorServiceException(ex=ex, message=f"{method}: {VectorServiceException.DEFAULT_MESSAGE}")
+                VectorServiceException(ex=ex, msg=f"{method}: {VectorServiceException.MSG}")
             )
     
     @LoggingLevelRouter.monitor
@@ -163,5 +163,5 @@ class VectorService(EntityService[Vector]):
             # exception-chain inside the BuildResult.
         except Exception as ex:
             return BuildResult.failure(
-                VectorServiceException(ex=ex, message=f"{method}: {VectorServiceException.DEFAULT_MESSAGE}")
+                VectorServiceException(ex=ex, msg=f"{method}: {VectorServiceException.MSG}")
             )

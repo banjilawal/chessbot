@@ -84,7 +84,7 @@ class CoordDatabase(Database[Coord]):
         if push_result.is_failure:
             return InsertionResult.failure(
                 CoordDatabaseException(
-                    message=f"ServiceId:{self.id}, {CoordDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {CoordDatabaseException.ERR_CODE}",
                     ex=push_result.exception
                 )
             )
@@ -96,7 +96,7 @@ class CoordDatabase(Database[Coord]):
         if pop_result.is_failure:
             return InsertionResult.failure(
                 CoordDatabaseException(
-                    message=f"ServiceId:{self.id}, {CoordDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {CoordDatabaseException.ERR_CODE}",
                     ex=pop_result.exception
                 )
             )
@@ -127,7 +127,7 @@ class CoordDatabase(Database[Coord]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 CoordDatabaseException(
-                    message=f"ServiceId:{self.id}, {CoordDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {CoordDatabaseException.ERR_CODE}",
                     ex=search_result.exception
                 )
             )

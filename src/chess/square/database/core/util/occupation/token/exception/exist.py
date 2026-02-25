@@ -38,5 +38,5 @@ class VisitDestinationNotFoundException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VISIT_DESTINATION_NOT_FOUND_ERROR"
-    DEFAULT_MESSAGE = "SquareVisit start failed: token wanted to visit square which does not exist."
+    ERR_CODE = "VISIT_DESTINATION_NOT_FOUND_ERROR"
+    MSG = "SquareVisit start failed: token wanted to visit square which does not exist."

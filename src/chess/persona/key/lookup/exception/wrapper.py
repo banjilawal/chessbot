@@ -37,6 +37,6 @@ class PersonaLookupFailedException(PersonaException, LookupException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_LOOKUP_FAILURE"
-    DEFAULT_MESSAGE = "PersonaLookup failed."
+    ERR_CODE = "PERSONA_LOOKUP_FAILURE"
+    MSG = "PersonaLookup failed."
 

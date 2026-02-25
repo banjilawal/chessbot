@@ -29,7 +29,7 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
             id_validation = IdValidator.validate(id)
             if id_validation.is_failure():
                 return BuildResult.failure(
-                    IdValidationException(f"{method}: {IdValidationException.DEFAULT_MESSAGE}")
+                    IdValidationException(f"{method}: {IdValidationException.MSG}")
                 )
             
             domain_validation = DomainValidator.validate(domain)

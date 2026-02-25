@@ -37,7 +37,7 @@ class OperationException(WrapperException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "OPERATION_FAILURE"
-    DEFAULT_MESSAGE = "Operation failed."
+    ERR_CODE = "OPERATION_FAILURE"
+    MSG = "Operation failed."
     
 

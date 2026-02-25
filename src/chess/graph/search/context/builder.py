@@ -42,14 +42,14 @@ class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
             if param_count == 0:
                 return BuildResult.failure(
                     NoVisitorSearchFilterSelectionException(
-                        f"{method}: {NoVisitorSearchFilterSelectionException.DEFAULT_MESSAGE}"
+                        f"{method}: {NoVisitorSearchFilterSelectionException.MSG}"
                     )
                 )
             
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveVisitorSearchParamsException(
-                        f"{method}: {ExcessiveVisitorSearchParamsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveVisitorSearchParamsException.MSG}"
                     )
                 )
             

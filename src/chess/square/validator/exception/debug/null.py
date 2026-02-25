@@ -37,5 +37,5 @@ class NullSquareException(SquareDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SQUARE_ERROR"
-    DEFAULT_MESSAGE = "Square validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_SQUARE_ERROR"
+    MSG = "Square validation failed: The candidate cannot be null."

@@ -38,8 +38,8 @@ class ExcessiveArenaContextFlagsException(ArenaContextException, ContextFlagCoun
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_ARENA_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "EXCESSIVE_ARENA_CONTEXT_FLAG_ERROR"
+    MSG = (
         "Excessive ArenaContext flags were set. an Arena search can only use one-and-only "
         "map flag at a time."
     )

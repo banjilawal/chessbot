@@ -107,7 +107,7 @@ class SquareStackAnalyzer:
         if available_capacity < 1:
             # Send the exception chain on failure.
             return ComputationResult.failure(
-                SquareStackFullException(f"{method}: {SquareStackFullException.DEFAULT_MESSAGE}")
+                SquareStackFullException(f"{method}: {SquareStackFullException.MSG}")
             )
         
         return ComputationResult.success(available_capacity)

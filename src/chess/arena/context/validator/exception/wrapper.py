@@ -38,5 +38,5 @@ class ArenaContextValidationException(ArenaContextException, ValidationException
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "ArenaContext validation failed."
+    ERR_CODE = "ARENA_CONTEXT_VALIDATION_FAILURE"
+    MSG = "ArenaContext validation failed."

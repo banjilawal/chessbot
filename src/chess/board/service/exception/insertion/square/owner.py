@@ -38,5 +38,5 @@ class SquareOnDifferentBoardException(BoardException, SquareException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_ON_DIFFERENT_BOARD"
-    DEFAULT_MESSAGE = "BoardService insertion operation failed: Square belongs to a different board."
+    ERR_CODE = "SQUARE_ON_DIFFERENT_BOARD"
+    MSG = "BoardService insertion operation failed: Square belongs to a different board."

@@ -38,5 +38,5 @@ class BoardDeletionException(BoardException, DeletionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Board deletion failed."
+    ERR_CODE = "BOARD_DELETION_FAILURE"
+    MSG = "Board deletion failed."

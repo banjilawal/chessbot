@@ -26,7 +26,7 @@ THEME:
 PURPOSE:
 -------
 1. Centralized error dictionary for the `Vector` graph.
-2. Fast debugging using highly granular rollback_exception messages and naming to
+2. Fast debugging using highly granular rollback_exception msgs and naming to
     find the source.
 3. Providing understandable, consistent information about failures originating from
     the `Vector` graph.
@@ -62,18 +62,18 @@ class EngineException(ChessException):
   details useful for debugging. `EngineException` exists primarily to allow catching all `Engine`
   exception.
   """
-  ERROR_CODE = "ENGINE_ERROR"
-  DEFAULT_MESSAGE = "Engine raised an exception."
+  ERR_CODE = "ENGINE_ERROR"
+  MSG = "Engine raised an exception."
 
 class NullEngineException(EngineException, NullException):
   """Raised if an entity, method, or operation requires an `Engine` but gets null instead."""
-  ERROR_CODE = "NULL_ENGINE_ERROR"
-  DEFAULT_MESSAGE = "Engine cannot be validation"
+  ERR_CODE = "NULL_ENGINE_ERROR"
+  MSG = "Engine cannot be validation"
 
 class EngineBuild(EngineException, BuildException):
   """
   Raised when `EngineBuilder` crashed while building team_name new object. Exists
   primarily to catch all exception raised creating engines.
   """
-  ERROR_CODE = "ENGINE_BUILD_FAILED"
-  DEFAULT_MESSAGE = "Engine build failed."
+  ERR_CODE = "ENGINE_BUILD_FAILED"
+  MSG = "Engine build failed."

@@ -79,9 +79,9 @@ class HostageFinder(DataFinder[Hostage]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 HostageSearchException(
-                    message=f"{method}: {HostageSearchException.ERROR_CODE}",
+                    msg=f"{method}: {HostageSearchException.ERR_CODE}",
                     ex=HostageSearchNullDatasetException(
-                        f"{method}: {HostageSearchNullDatasetException.DEFAULT_MESSAGE}"
+                        f"{method}: {HostageSearchNullDatasetException.MSG}"
                     )
                 )
             )
@@ -90,9 +90,9 @@ class HostageFinder(DataFinder[Hostage]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 HostageSearchException(
-                    message=f"{method}: {HostageSearchException.ERROR_CODE}",
+                    msg=f"{method}: {HostageSearchException.ERR_CODE}",
                     ex=HostageSearchPayloadTypeException(
-                        f"{method}: {HostageSearchPayloadTypeException.DEFAULT_MESSAGE}"
+                        f"{method}: {HostageSearchPayloadTypeException.MSG}"
                     )
                 )
             )
@@ -102,7 +102,7 @@ class HostageFinder(DataFinder[Hostage]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 HostageSearchException(
-                    message=f"{method}: {HostageSearchException.ERROR_CODE}",
+                    msg=f"{method}: {HostageSearchException.ERR_CODE}",
                     ex=validation_result.exception
                 )
             )
@@ -124,8 +124,8 @@ class HostageFinder(DataFinder[Hostage]):
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             HostageSearchException(
-                message=f"{method}: {HostageSearchException.ERROR_CODE}",
-                ex=HostageSearchRouteException(f"{method}: {HostageSearchRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {HostageSearchException.ERR_CODE}",
+                ex=HostageSearchRouteException(f"{method}: {HostageSearchRouteException.MSG}")
             )
         )
     

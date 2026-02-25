@@ -104,14 +104,14 @@ class OldTravelTransaction(Transaction[TravelEvent]):
     )
     if not destination_search.is_success():
       return TransactionResult(exception=EventResourceNotFoundExeception(
-          f"{method}: {DestinationSquareNotFoundException.DEFAULT_MESSAGE}"
+          f"{method}: {DestinationSquareNotFoundException.MSG}"
         # EventResourceNotFoundException
         )
       )
 
     if len(destination_search.payload) > 1:
       return TransactionResult(exception=DestinationSquareColiisonException(
-          f"{method}: {DestinationSquareCollisionException.DEFAULT_MESSAGE}"
+          f"{method}: {DestinationSquareCollisionException.MSG}"
         )
       )
 
@@ -156,7 +156,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
       return TransactionResult(
         op_result_id,
         event,
-        OccupationSearchEventException(f"{method}: {OccupationSearchEventException.DEFAULT_MESSAGE}")
+        OccupationSearchEventException(f"{method}: {OccupationSearchEventException.MSG}")
       )
     actor_square = cast(Square, search_result.payload)
 
@@ -244,7 +244,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         result_id=op_result_id,
         event=directive,
         was_rolled_back=True,
-        exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+        exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
       )
 
     actor_square.occupant = None
@@ -258,7 +258,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         result_id=op_result_id,
         event=directive,
         was_rolled_back=True,
-        exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+        exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
       )
 
     directive.actor.positions.push(directive.friend.position)
@@ -273,7 +273,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         result_id=op_result_id,
         event=directive,
         was_rolled_back=True,
-        exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+        exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
       )
 
     return TransactionResult(
@@ -322,7 +322,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         result_id=op_result_id,
         event=directive,
         was_rolled_back=True,
-        exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+        exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
       )
 
     success_directive = ScanDirective(
@@ -349,7 +349,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
       return TransactionResult(
         result_id=op_result_id,
         event=directive,
-        exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+        exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
         was_rolled_back=True
       )
 
@@ -364,7 +364,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         event=directive,
         was_rolled_back=True,
         exception=RemoveTeamMemberRolledBackException(
-          f"{method}: {RemoveTeamMemberRolledBackException.DEFAULT_MESSAGE}"
+          f"{method}: {RemoveTeamMemberRolledBackException.MSG}"
         )
       )
 
@@ -380,7 +380,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         event=directive,
         was_rolled_back=True,
         exception=AddEnemyHostageRolledBackException(
-          f"{method}: {AddEnemyHostageRolledBackException.DEFAULT_MESSAGE}"
+          f"{method}: {AddEnemyHostageRolledBackException.MSG}"
         )
       )
 
@@ -396,7 +396,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         result_id=op_result_id,
         event=directive,
         was_rolled_back=True,
-        exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+        exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
       )
 
     directive.board.pieces.remove(directive.enemy_combatant)
@@ -413,7 +413,7 @@ class OldTravelTransaction(Transaction[TravelEvent]):
         event=directive,
         was_rolled_back=True,
         exception=BoardPieceRemovalRollbackException(
-          f"{method}: {BoardPieceRemovalRollbackException.DEFAULT_MESSAGE}"
+          f"{method}: {BoardPieceRemovalRollbackException.MSG}"
         )
       )
 

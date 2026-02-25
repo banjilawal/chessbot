@@ -37,5 +37,5 @@ class NullCaptivityContextException(CaptivityContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_CAPTIVITY_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "CaptivityContext validation failed: The candidate was null."
+    ERR_CODE = "NULL_CAPTIVITY_CONTEXT_ERROR"
+    MSG = "CaptivityContext validation failed: The candidate was null."

@@ -37,5 +37,5 @@ class EdgeStackException(EdgeException, StackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_STACK_ERROR"
-    DEFAULT_MESSAGE = "EdgeStack raised an exception."
+    ERR_CODE = "EDGE_STACK_ERROR"
+    MSG = "EdgeStack raised an exception."

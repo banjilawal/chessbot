@@ -37,5 +37,5 @@ class TokenStackException(TokenException, StackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_STACK_ERROR"
-    DEFAULT_MESSAGE = "TokenStack raised an exception."
+    ERR_CODE = "TOKEN_STACK_ERROR"
+    MSG = "TokenStack raised an exception."

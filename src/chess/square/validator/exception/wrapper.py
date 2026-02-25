@@ -36,5 +36,5 @@ class SquareValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Square validation failed."
+    ERR_CODE = "SQUARE_VALIDATION_FAILURE"
+    MSG = "Square validation failed."

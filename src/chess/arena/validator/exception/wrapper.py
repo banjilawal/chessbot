@@ -36,5 +36,5 @@ class ArenaValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Arena validation failed."
+    ERR_CODE = "ARENA_VALIDATION_FAILURE"
+    MSG = "Arena validation failed."

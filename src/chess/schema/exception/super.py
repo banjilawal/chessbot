@@ -32,5 +32,5 @@ class SchemaException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "SCHEMA_ERROR"
-    DEFAULT_MESSAGE = "Schema raised an exception."
+    ERR_CODE = "SCHEMA_ERROR"
+    MSG = "Schema raised an exception."

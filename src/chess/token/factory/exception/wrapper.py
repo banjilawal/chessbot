@@ -36,5 +36,5 @@ class TokenBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Token build failed."
+    ERR_CODE = "TOKEN_BUILD_FAILED"
+    MSG = "Token build failed."

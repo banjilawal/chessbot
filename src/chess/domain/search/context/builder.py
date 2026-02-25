@@ -43,13 +43,13 @@ class ResidentFilterBuilder(Builder[ResidentFilter]):
             
             if param_count == 0:
                 return BuildResult.failure(
-                    NoResidentSearchParamException(f"{method}: {NoResidentSearchParamException.DEFAULT_MESSAGE}")
+                    NoResidentSearchParamException(f"{method}: {NoResidentSearchParamException.MSG}")
                 )
             
             if param_count > 1:
                 return BuildResult.failure(
                     ExcessiveResidentSearchParamsException(
-                        f"{method}: {ExcessiveResidentSearchParamsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveResidentSearchParamsException.MSG}"
                     )
                 )
             

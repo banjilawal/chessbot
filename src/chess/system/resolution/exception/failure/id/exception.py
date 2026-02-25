@@ -37,32 +37,32 @@ class ResolvingIDConflictFailedException(ResolutionException):
         *   RosterException
         *   TravelException
     """
-    ERROR_CODE = "RESOLUTION_FAILED_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the attribute conflict."
+    ERR_CODE = "RESOLUTION_FAILED_ERROR"
+    MSG = "The resolution process failed to break the attribute conflict."
 
 
 class ResolvingSquareIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "SQUARE_ID_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Square.id conflict."
+    MSG = "The resolution process failed to break the Square.id conflict."
 
 
 class ResolvingPieceIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "PIECE_ID_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Token.id conflict."
+    MSG = "The resolution process failed to break the Token.id conflict."
 
 
 class ResolvingTeamIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "TEAM_ID_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Team.id conflict."
+    MSG = "The resolution process failed to break the Team.id conflict."
 
 
 class ResolvingAgentIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "AGENT_ID_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Player.id conflict."
+    MSG = "The resolution process failed to break the Player.id conflict."
 
 
 class ResolvingBoardIDConflictFailedException(ResolvingIDConflictFailedException):
     DEFAULT_CODE = "BOARD_ID_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Board.id conflict."
+    MSG = "The resolution process failed to break the Board.id conflict."
     
     

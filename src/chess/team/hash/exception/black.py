@@ -32,5 +32,5 @@ class BlackTeamHasWrongSchemaException(TeamHashException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BLACK_TEAM_HAS_WRONG_SCHEMA_ERROR"
-    DEFAULT_MESSAGE = "Black Team does not have a black schema."
+    ERR_CODE = "BLACK_TEAM_HAS_WRONG_SCHEMA_ERROR"
+    MSG = "Black Team does not have a black schema."

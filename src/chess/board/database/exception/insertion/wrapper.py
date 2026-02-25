@@ -38,5 +38,5 @@ class UniqueBoardInsertionException(BoardException, InsertionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNIQUE_BOARD_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Unique board insertion failed."
+    ERR_CODE = "UNIQUE_BOARD_INSERTION_FAILURE"
+    MSG = "Unique board insertion failed."

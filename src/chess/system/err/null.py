@@ -37,8 +37,8 @@ class NullException(DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_ERROR"
-    DEFAULT_MESSAGE = "cannot be null."
+    ERR_CODE = "NULL_ERROR"
+    MSG = "cannot be null."
     
 
 

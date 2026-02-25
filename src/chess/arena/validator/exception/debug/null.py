@@ -37,5 +37,5 @@ class NullArenaException(ArenaDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_ARENA_ERROR"
-    DEFAULT_MESSAGE = "Arena validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_ARENA_ERROR"
+    MSG = "Arena validation failed: The candidate cannot be null."

@@ -37,5 +37,5 @@ class NullBoardContextException(BoardContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_BOARD_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "BoardContext validation failed: The candidate was null."
+    ERR_CODE = "NULL_BOARD_CONTEXT_ERROR"
+    MSG = "BoardContext validation failed: The candidate was null."

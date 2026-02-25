@@ -32,5 +32,5 @@ class GraphException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "GRAPH_ERROR"
-    DEFAULT_MESSAGE = "Graph raised an exception."
+    ERR_CODE = "GRAPH_ERROR"
+    MSG = "Graph raised an exception."

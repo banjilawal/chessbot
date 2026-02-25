@@ -37,8 +37,8 @@ class NoPlayersInArenaException(ArenaDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_PLAYERS_IN_ARENA_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "NO_PLAYERS_IN_ARENA_ERROR"
+    MSG = (
         "Arena's UniquePlayerDataService contains no players. A game cannot be played without two "
         "players in the arena."
     )

@@ -35,5 +35,5 @@ class ServiceExecutionDebugException(ServiceExecutionException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "SERVICE_EXECUTION_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A ServiceExecutionDebugException was raised."
+    ERR_CODE = "SERVICE_EXECUTION_DEBUG_ERROR"
+    MSG = "A ServiceExecutionDebugException was raised."

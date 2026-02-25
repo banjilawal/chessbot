@@ -37,5 +37,5 @@ class SchemaKeyBuildRouteException(SchemaKeyException, NoExecutionRouteException
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_SCHEMA_KEY_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "SchemaKey build failed: No build path existed for the Schema key."
+    ERR_CODE = "NO_SCHEMA_KEY_BUILD_ROUTE_ERROR"
+    MSG = "SchemaKey build failed: No build path existed for the Schema key."

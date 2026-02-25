@@ -119,7 +119,7 @@ class FormationService(HashService[Formation]):
         if team_validation.is_failure:
             return SearchResult.failure(
                 FormationServiceException(
-                    message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                    msg=f"{method}: {FormationServiceException.ERR_CODE}",
                     ex=team_validation.exception
                 )
             )
@@ -129,7 +129,7 @@ class FormationService(HashService[Formation]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 FormationServiceException(
-                    message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                    msg=f"{method}: {FormationServiceException.ERR_CODE}",
                     ex=formation_search_result.exception
                 )
             )
@@ -140,7 +140,7 @@ class FormationService(HashService[Formation]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 FormationServiceException(
-                    message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                    msg=f"{method}: {FormationServiceException.ERR_CODE}",
                     ex=square_search_result.exception
                 )
             )
@@ -149,7 +149,7 @@ class FormationService(HashService[Formation]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 FormationServiceException(
-                    message=f"{method}: {FormationServiceException.ERROR_CODE}",
+                    msg=f"{method}: {FormationServiceException.ERR_CODE}",
                     ex=InvariantBreachException(f"{method}: Square {formation.square_name} not found.")
                 )
             )
@@ -168,7 +168,7 @@ class FormationService(HashService[Formation]):
         #         # Return the exception chain on failure.
         #         return SearchResult.failure(
         #             FormationServiceException(
-        #                 message=f"{method}: {FormationServiceException.ERROR_CODE}",
+        #                 msg=f"{method}: {FormationServiceException.ERR_CODE}",
         #                 ex=InvariantBreachException(f"{method}: Square {formation.square_name} not found.")
         #             )
         #         )
@@ -197,7 +197,7 @@ class FormationService(HashService[Formation]):
         if result.is_failure:
             return SearchResult.failure(
                 FormationServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {FormationServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {FormationServiceException.ERR_CODE}",
                     ex=result.exception,
                 )
             )

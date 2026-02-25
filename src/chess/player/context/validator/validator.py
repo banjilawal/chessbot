@@ -80,7 +80,7 @@ class PlayerContextValidator(Validator[PlayerContext]):
             # Handle the nonexistence case.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullPlayerContextException(f"{method}: {NullPlayerContextException.DEFAULT_MESSAGE}")
+                    NullPlayerContextException(f"{method}: {NullPlayerContextException.MSG}")
                 )
             # Handle the wrong class case.
             if not isinstance(candidate, PlayerContext):
@@ -95,13 +95,13 @@ class PlayerContextValidator(Validator[PlayerContext]):
             # Handle the no map flag enabled case.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ZeroPlayerContextFlagsException(f"{method}: {ZeroPlayerContextFlagsException.DEFAULT_MESSAGE}")
+                    ZeroPlayerContextFlagsException(f"{method}: {ZeroPlayerContextFlagsException.MSG}")
                 )
             # Handle the excessive map flags case.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ExcessivePlayerContextFlagsException(
-                        f"{method}: {ExcessivePlayerContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessivePlayerContextFlagsException.MSG}"
                     )
                 )
             
@@ -144,6 +144,6 @@ class PlayerContextValidator(Validator[PlayerContext]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidPlayerContextException(
-                    ex=ex, message=f"{method}: {InvalidPlayerContextException.DEFAULT_MESSAGE}"
+                    ex=ex, msg=f"{method}: {InvalidPlayerContextException.MSG}"
                 )
             )

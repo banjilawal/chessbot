@@ -72,7 +72,7 @@ class ScalarBuilder(Builder[Scalar]):
             return BuildResult.failure(
                 ScalarBuildException(
                     ex=ex,
-                    message=f"{method}: "
-                            f"{ScalarBuildException.DEFAULT_MESSAGE}"
+                    msg=f"{method}: "
+                            f"{ScalarBuildException.MSG}"
                 )
             )

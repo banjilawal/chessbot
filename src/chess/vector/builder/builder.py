@@ -68,7 +68,7 @@ class VectorBuilder(Builder[Vector]):
             return BuildResult.failure(
                 VectorBuildException(
                     ex=x_validation.exception,
-                    message=f"{method}: {VectorBuildException.ERROR_CODE}"
+                    msg=f"{method}: {VectorBuildException.ERR_CODE}"
                 )
             )
         # Handle the y component
@@ -78,7 +78,7 @@ class VectorBuilder(Builder[Vector]):
             return BuildResult.failure(
                 VectorBuildException(
                     ex=y_validation.exception,
-                    message=f"{method}: {VectorBuildException.ERROR_CODE}"
+                    msg=f"{method}: {VectorBuildException.ERR_CODE}"
                 )
             )
         # After the components are certified return the Vector in the BuildResult.

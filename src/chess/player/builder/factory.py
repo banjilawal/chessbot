@@ -93,7 +93,7 @@ class PlayerFactory(Builder[Player]):
         except Exception as ex:
             return BuildResult.failure(
                 PlayerBuildException(
-                    ex=ex, message=f"{method}: {PlayerBuildException.DEFAULT_MESSAGE}"
+                    ex=ex, msg=f"{method}: {PlayerBuildException.MSG}"
                 )
             )
     
@@ -144,7 +144,7 @@ class PlayerFactory(Builder[Player]):
         except Exception as ex:
             return BuildResult.failure(
                 HumanPlayerBuildException(
-                    ex=ex, message=f"{method}: {HumanPlayerBuildException.DEFAULT_MESSAGE}"
+                    ex=ex, msg=f"{method}: {HumanPlayerBuildException.MSG}"
                 )
             )
     
@@ -204,6 +204,6 @@ class PlayerFactory(Builder[Player]):
         except Exception as ex:
             return BuildResult.failure(
                 MachinePlayerBuildException(
-                    ex=ex, message=f"{method}: {MachinePlayerBuildException.DEFAULT_MESSAGE}"
+                    ex=ex, msg=f"{method}: {MachinePlayerBuildException.MSG}"
                 )
             )

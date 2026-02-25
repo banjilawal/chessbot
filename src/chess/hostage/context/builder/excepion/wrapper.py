@@ -39,5 +39,5 @@ class CaptivityContextBuildException(CaptivityContextException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "CAPTIVITY_CONTEXT_BUILD_FAILURE"
-    DEFAULT_MESSAGE = "CaptivityContext build failed."
+    ERR_CODE = "CAPTIVITY_CONTEXT_BUILD_FAILURE"
+    MSG = "CaptivityContext build failed."

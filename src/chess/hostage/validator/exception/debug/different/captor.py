@@ -35,5 +35,5 @@ class PrisonerCapturedByDifferentEnemyException(HostageException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS_ERROR"
-    DEFAULT_MESSAGE = "Hostage validation failed: the prisoner was captured by a different friend."
+    ERR_CODE = "VICTOR_AND_PRISONER_ON_DIFFERENT_BOARDS_ERROR"
+    MSG = "Hostage validation failed: the prisoner was captured by a different friend."

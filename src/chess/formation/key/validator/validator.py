@@ -79,8 +79,8 @@ class FormationKeyValidator(Validator[FormationKey]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 FormationKeyValidationException(
-                    message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
-                    ex=NullFormationKeyException(f"{method}: {NullFormationKeyException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                    ex=NullFormationKeyException(f"{method}: {NullFormationKeyException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -88,7 +88,7 @@ class FormationKeyValidator(Validator[FormationKey]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 FormationKeyValidationException(
-                    message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
+                    msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
                     ex=TypeError(
                         f"{method}: Expected FormationKey, got {type(candidate).__designation__} instead."
                     )
@@ -103,8 +103,8 @@ class FormationKeyValidator(Validator[FormationKey]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 FormationKeyValidationException(
-                    message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
-                    ex=ZeroFormationKeysException(f"{method}: {ZeroFormationKeysException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
+                    ex=ZeroFormationKeysException(f"{method}: {ZeroFormationKeysException.MSG}")
                 )
             )
         # Handle the case of more than one key-value is set.
@@ -112,9 +112,9 @@ class FormationKeyValidator(Validator[FormationKey]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 FormationKeyValidationException(
-                    message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
+                    msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
                     ex=ExcessiveFormationKeysException(
-                        f"{method}: {ExcessiveFormationKeysException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveFormationKeysException.MSG}"
                     )
                 )
             )
@@ -128,7 +128,7 @@ class FormationKeyValidator(Validator[FormationKey]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     FormationKeyValidationException(
-                        message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
+                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -142,7 +142,7 @@ class FormationKeyValidator(Validator[FormationKey]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     FormationKeyValidationException(
-                        message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
+                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -156,7 +156,7 @@ class FormationKeyValidator(Validator[FormationKey]):
                 # Return the exception chain on failure.
                 return ValidationResult.failure(
                     FormationKeyValidationException(
-                        message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
+                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -169,7 +169,7 @@ class FormationKeyValidator(Validator[FormationKey]):
             if validation.is_failure:
                 return ValidationResult.failure(
                     FormationKeyValidationException(
-                        message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
+                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -182,7 +182,7 @@ class FormationKeyValidator(Validator[FormationKey]):
             if validation.is_failure:
                 return ValidationResult.failure(
                     FormationKeyValidationException(
-                        message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
+                        msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -192,9 +192,9 @@ class FormationKeyValidator(Validator[FormationKey]):
         # The default path returns failure
         return ValidationResult.failure(
             FormationKeyValidationException(
-                message=f"{method}: {FormationKeyValidationException.ERROR_CODE}",
+                msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
                 ex=FormationKeyValidationRouteException(
-                    f"{method}: {FormationKeyValidationRouteException.DEFAULT_MESSAGE}"
+                    f"{method}: {FormationKeyValidationRouteException.MSG}"
                 )
             )
         )

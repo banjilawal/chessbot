@@ -37,5 +37,5 @@ class NullSnapshotContextException(InvalidSnapshotContextException, NullExceptio
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_SNAPSHOT_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "SnapshotContext validation failed: The candidate was null."
+    ERR_CODE = "NULL_SNAPSHOT_CONTEXT_ERROR"
+    MSG = "SnapshotContext validation failed: The candidate was null."

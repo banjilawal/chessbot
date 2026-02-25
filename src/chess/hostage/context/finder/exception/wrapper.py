@@ -39,5 +39,5 @@ class HostageSearchException(HostageException, SearchException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "HOSTAGE_SEARCH_FAILURE"
-    DEFAULT_MESSAGE = "Hostage search failed."
+    ERR_CODE = "HOSTAGE_SEARCH_FAILURE"
+    MSG = "Hostage search failed."

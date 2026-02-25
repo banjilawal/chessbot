@@ -85,7 +85,7 @@ class RosterUtil:
             return UpdateResult.update_failure(
                 original=pre_update_team,
                 exception=FillingTeamRosterException(
-                    message=f"{method}: {FillingTeamRosterException.ERROR_CODE}",
+                    msg=f"{method}: {FillingTeamRosterException.ERR_CODE}",
                     ex=team_validation.exception
                 )
             )
@@ -100,7 +100,7 @@ class RosterUtil:
             return UpdateResult.update_failure(
                 original=pre_update_team,
                 exception=FillingTeamRosterException(
-                    message=f"{method}: {FillingTeamRosterException.ERROR_CODE}",
+                    msg=f"{method}: {FillingTeamRosterException.ERR_CODE}",
                     ex=formation_lookup_result.exception
                 )
             )
@@ -124,7 +124,7 @@ class RosterUtil:
                 return UpdateResult.update_failure(
                     original=pre_update_team,
                     exception=FillingTeamRosterException(
-                        message=f"{method}: {FillingTeamRosterException.ERROR_CODE}",
+                        msg=f"{method}: {FillingTeamRosterException.ERR_CODE}",
                         ex=token_build_result.exception
                     )
                 )
@@ -137,7 +137,7 @@ class RosterUtil:
                 return UpdateResult.update_failure(
                     original=pre_update_team,
                     exception=FillingTeamRosterException(
-                        message=f"{method}: {FillingTeamRosterException.ERROR_CODE}",
+                        msg=f"{method}: {FillingTeamRosterException.ERR_CODE}",
                         ex=insertion_result.exception
                     )
                 )

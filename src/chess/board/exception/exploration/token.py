@@ -35,5 +35,5 @@ class DisabledTokenCannotExploreException(ExplorationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "DISABLED_TOKEN_EXPLORATION"
-    DEFAULT_MESSAGE = "Disabled occupant cannot explore board."
+    ERR_CODE = "DISABLED_TOKEN_EXPLORATION"
+    MSG = "Disabled occupant cannot explore board."

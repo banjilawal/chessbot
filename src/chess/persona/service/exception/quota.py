@@ -38,5 +38,5 @@ class RankQuotaPerTeamLookupFailedException(TokenException, CalculationFailedExc
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "RANK_QUOTA_PER_TEAM_LOOKUP_FAILURE"
-    DEFAULT_MESSAGE = "Looking up how many team members can hold a rank failed."
+    ERR_CODE = "RANK_QUOTA_PER_TEAM_LOOKUP_FAILURE"
+    MSG = "Looking up how many team members can hold a rank failed."

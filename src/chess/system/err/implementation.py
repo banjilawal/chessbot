@@ -35,5 +35,5 @@ class MethodNotImplementedException(ChessException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "NOT_IMPLEMENTED_WARNING"
-    DEFAULT_MESSAGE = "The method is not implemented."
+    ERR_CODE = "NOT_IMPLEMENTED_WARNING"
+    MSG = "The method is not implemented."

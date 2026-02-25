@@ -93,7 +93,7 @@ class Bishop(Rank):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 BishopSpanComputationException(
-                    message=f"{method}: {BishopSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {BishopSpanComputationException.MSG}",
                     ex=computation_result.exception
                 )
             )
@@ -113,7 +113,7 @@ class Bishop(Rank):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 BishopGraphComputationException(
-                    message=f"{method}: {BishopGraphComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {BishopGraphComputationException.MSG}",
                     ex=span_computation_result.exception
                 )
             )
@@ -132,7 +132,7 @@ class Bishop(Rank):
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     BishopGraphComputationException(
-                        message=f"{method}: {BishopGraphComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {BishopGraphComputationException.MSG}",
                         ex=square_u_search_result.exception
                     )
                 )
@@ -147,7 +147,7 @@ class Bishop(Rank):
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     BishopGraphComputationException(
-                        message=f"{method}: {BishopGraphComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {BishopGraphComputationException.MSG}",
                         ex=square_v_search_result.exception
                     )
                 )
@@ -160,7 +160,7 @@ class Bishop(Rank):
                 # Return the exception chain on failure.
                 return ComputationResult.failure(
                     BishopGraphComputationException(
-                        message=f"{method}: {BishopGraphComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {BishopGraphComputationException.MSG}",
                         ex=span_computation_result.exception
                     )
                 )

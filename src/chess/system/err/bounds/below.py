@@ -37,4 +37,4 @@ class BelowBoundsException(BoundsException):
     None
     """
     DEFAULT_CODE = "BELOW_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Below bounds:"
+    MSG = "Below bounds:"

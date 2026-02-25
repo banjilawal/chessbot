@@ -85,8 +85,8 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
-                    ex=NullTokenException(f"{method}: {NullTokenException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {TokenValidationException.MSG}",
+                    ex=NullTokenException(f"{method}: {NullTokenException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -94,7 +94,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=TypeError(f"{method}:Expected Token, got {type(candidate).__name__} instead.")
                 )
             )
@@ -110,7 +110,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=identity_validation.exception
                 )
             )
@@ -120,7 +120,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=team_validation.exception
                 )
             )
@@ -133,7 +133,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=roster_and_square_validation.exception
                 )
             )
@@ -143,7 +143,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=rank_validation.exception
                 )
             )
@@ -153,7 +153,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=service_validation.exception
                 )
             )
@@ -169,7 +169,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=validation.exception
                 )
             )
@@ -178,7 +178,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=TypeError(f"{method}:Expected CombatantToken, got {type(candidate).__name__} instead.")
                 )
             )
@@ -194,7 +194,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=validation.exception
                 )
             )
@@ -203,7 +203,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=TypeError(f"{method}:Expected KingToken, got {type(candidate).__name__} instead.")
                 )
             )
@@ -219,7 +219,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=token_validation.exception
                 )
             )
@@ -228,9 +228,9 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=DisabledTokenCannotExploreException(
-                        f"{method}: {DisabledTokenCannotExploreException.DEFAULT_MESSAGE}"
+                        f"{method}: {DisabledTokenCannotExploreException.MSG}"
                     )
                 )
             )
@@ -246,7 +246,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=token_validation.exception
                 )
             )
@@ -255,9 +255,9 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=TokenException(
-                        f"{method}: {DisabledTokenCannotExploreException.DEFAULT_MESSAGE}"
+                        f"{method}: {DisabledTokenCannotExploreException.MSG}"
                     )
                 )
             )
@@ -273,7 +273,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=token_validation.exception
                 )
             )
@@ -282,7 +282,7 @@ class TokenValidator(Validator[Token]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidationException(
-                    message=f"{method}: {TokenValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenValidationException.MSG}",
                     ex=TokenException()
                 )
             )

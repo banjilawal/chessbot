@@ -8,11 +8,24 @@ Created: 2026-02-24
 
 from __future__ import annotations
 
-from typing import List
+from abc import ABC, abstractmethod
+from typing import Any, List
 
-from chess.system import ServiceOperation
+from chess.system import Command, LoggingLevelRouter, Service
 
 
-class ServiceRoute:
-    _operations: List[ServiceOperation]
+class CommandRouter(ABC, Service):
+    _service: Service
+    _commands: List[Command]
+    
+    def __init__(self, service: Service, commands: List[Command]):
+        self._service = service
+        self._commands = commands
+        
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def route(self, service_request: ServiceRequest) -> Any:
+        pass
+        
+    
     

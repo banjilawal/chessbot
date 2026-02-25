@@ -134,9 +134,9 @@ class CoordStack(StackService[Coord]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 CoordStackException(
-                    message=f"ServiceId:{self.id}, {method}: {CoordStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {CoordStackException.ERR_CODE}",
                     ex=PushingCoordFailedException(
-                        message=f"{method}: {PushingCoordFailedException.ERROR_CODE}",
+                        msg=f"{method}: {PushingCoordFailedException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -146,10 +146,10 @@ class CoordStack(StackService[Coord]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 CoordStackException(
-                    message=f"ServiceId:{self.id}, {method}: {CoordStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {CoordStackException.ERR_CODE}",
                     ex=PushingCoordFailedException(
-                        message=f"{method}: {PushingCoordFailedException.ERROR_CODE}",
-                        ex=DuplicateCoordPushException(f"{method}: {DuplicateCoordPushException.DEFAULT_MESSAGE}")
+                        msg=f"{method}: {PushingCoordFailedException.ERR_CODE}",
+                        ex=DuplicateCoordPushException(f"{method}: {DuplicateCoordPushException.MSG}")
                     )
                 )
             )
@@ -183,10 +183,10 @@ class CoordStack(StackService[Coord]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 CoordStackException(
-                    message=f"ServiceId:{self.id}, {CoordStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {CoordStackException.ERR_CODE}",
                     ex=PoppingCoordStackFailedException(
-                        message=f"{method}: {PoppingCoordStackFailedException.ERROR_CODE}",
-                        ex=PoppingEmtpyCoordStackException(f"{method}: {CoordStackException.DEFAULT_MESSAGE}")
+                        msg=f"{method}: {PoppingCoordStackFailedException.ERR_CODE}",
+                        ex=PoppingEmtpyCoordStackException(f"{method}: {CoordStackException.MSG}")
                     )
                 )
             )
@@ -195,11 +195,11 @@ class CoordStack(StackService[Coord]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 CoordStackException(
-                    message=f"ServiceId:{self.id}, {CoordStackException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {CoordStackException.ERR_CODE}",
                     ex=PoppingCoordStackFailedException(
-                        message=f"{method}: {PoppingCoordStackFailedException.ERROR_CODE}",
+                        msg=f"{method}: {PoppingCoordStackFailedException.ERR_CODE}",
                         ex=MaxConsecutiveCoordPopException(
-                            f"{method}: {MaxConsecutiveCoordPopException.DEFAULT_MESSAGE}"
+                            f"{method}: {MaxConsecutiveCoordPopException.MSG}"
                         )
                     )
                 )

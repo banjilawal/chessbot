@@ -15,10 +15,10 @@ from chess.system import NUMBER_OF_COLUMNS, ComputationResult, LoggingLevelRoute
 class DiagonalSpan:
     """
     # BACKGROUND:
-    1.  Consider the diagonal series: p_1(0,0), p_2(1,1), p_3(2,2), ...., p_n(n,n). For any
+    1.  Consider the diagonal series: p_1(0,0), p_2(1,1), p_3(2,2), .., p_n(n,n). For any
             p_i, y_i = x_i.
         We want to find some invariant only in terms of x that will gives us all the ys.
-    2.  Let us consider x in non-negative integers, {0, 1, 2,3,....,n}
+    2.  Let us consider x in non-negative integers, {0, 1, 2,3,..,n}
         we now that
             x_i <= x_j < x_n.
     3.  The start of the X sequence is
@@ -85,7 +85,7 @@ class DiagonalSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 DiagonalSpanComputationException(
-                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {DiagonalSpanComputationException.MSG}",
                     ex=coord_validation.exception
                 )
             )
@@ -105,7 +105,7 @@ class DiagonalSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 DiagonalSpanComputationException(
-                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {DiagonalSpanComputationException.MSG}",
                     ex=north_west_ray_result.exception
                 )
             )
@@ -122,7 +122,7 @@ class DiagonalSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 DiagonalSpanComputationException(
-                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {DiagonalSpanComputationException.MSG}",
                     ex=northern_ray_result.exception
                 )
             )
@@ -142,7 +142,7 @@ class DiagonalSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 DiagonalSpanComputationException(
-                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {DiagonalSpanComputationException.MSG}",
                     ex=span_subset_result.exception
                 )
             )
@@ -160,7 +160,7 @@ class DiagonalSpan:
             # On failure return the exception chain
             return ComputationResult.failure(
                 DiagonalSpanComputationException(
-                    message=f"{method}: {DiagonalSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {DiagonalSpanComputationException.MSG}",
                     ex=diagonal_span_result.exception
                 )
             )

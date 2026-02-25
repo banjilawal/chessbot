@@ -26,10 +26,10 @@ __all__ = [
 class ResidentSearchContextException(SearchContextException):
     """
     Super class for exception raised by ResidentFilter objects. DO NOT
-    USE DIRECTLY. Subclasses give more useful debugging messages.
+    USE DIRECTLY. Subclasses give more useful debugging msgs.
     """
-    ERROR_CODE = "RESIDENT_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "ResidentFilter raised an exception"
+    ERR_CODE = "RESIDENT_SEARCH_CONTEXT_ERROR"
+    MSG = "ResidentFilter raised an exception"
 
 
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTION #======================#
@@ -38,8 +38,8 @@ class NullResidentSearchContextException(ResidentSearchContextException, NullExc
     Raised if an entity, method, or operation requires team_name residentSearchContext but
     gets validation instead.
     """
-    ERROR_CODE = "NULL_SEARCH_RESIDENT_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "ResidentFilter cannot be validation"
+    ERR_CODE = "NULL_SEARCH_RESIDENT_CONTEXT_ERROR"
+    MSG = "ResidentFilter cannot be validation"
 
 
 class InvalidResidentSearchContextException(ResidentSearchContextException, ValidationException):
@@ -47,16 +47,16 @@ class InvalidResidentSearchContextException(ResidentSearchContextException, Vali
     Raised by residentSearchContextBValidator if residentSearchContext fails sanity checks. Exists primarily to
     catch all exception raised validating an existing residentSearchContext
     """
-    ERROR_CODE = "RESIDENT_SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "ResidentFilter validation failed."
+    ERR_CODE = "RESIDENT_SEARCH_CONTEXT_VALIDATION_ERROR"
+    MSG = "ResidentFilter validation failed."
 
 
 class NoResidentSearchParamException(ResidentSearchContextException):
     """
     Raised if all ResidentFilter params are set validation.
     """
-    ERROR_CODE = "ZERO_RESIDENT_SEARCH_PARAMS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ZERO_RESIDENT_SEARCH_PARAMS_ERROR"
+    MSG = (
         "A ResidentFilter cannot have no params selected. Pick one param to run a searcher."
     )
 
@@ -64,8 +64,8 @@ class ExcessiveResidentSearchParamsException(ResidentSearchContextException):
     """
     Raised if more than one ResidentFilter param is set validation.
     """
-    ERROR_CODE = "TOO_MANY_RESIDENT_SEARCH_PARAMS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "TOO_MANY_RESIDENT_SEARCH_PARAMS_ERROR"
+    MSG = (
         "More than one ResidentFilter param was set. If more than one param is set a searcher cannot be run."
     )
 
@@ -73,5 +73,5 @@ class ExcessiveResidentSearchParamsException(ResidentSearchContextException):
 # #======================# RESIDENT_SEARCH_CONTEXT BUILD EXCEPTION #======================#
 class ResidentSearchContextBuildException(ResidentSearchContextException, BuildException):
     """"""
-    ERROR_CODE = "RESIDENT_SEARCH_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "ResidentFilter build failed."
+    ERR_CODE = "RESIDENT_SEARCH_CONTEXT_BUILD_FAILED"
+    MSG = "ResidentFilter build failed."

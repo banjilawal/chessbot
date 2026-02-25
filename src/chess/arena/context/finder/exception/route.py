@@ -38,5 +38,5 @@ class ArenaSearchRouteException(ArenaException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_ARENA_SEARCH_ROUTE_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "Arena search failed: No search method was provided for the Arena attribute."
+    ERR_CODE = "NO_ARENA_SEARCH_ROUTE_ROUTE_ERROR"
+    MSG = "Arena search failed: No search method was provided for the Arena attribute."

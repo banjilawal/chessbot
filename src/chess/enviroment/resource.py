@@ -41,7 +41,7 @@ class BoardResourceValidator(Validator[Square, Board]):
     try:
       if candidate is None:
         return ValidationResult.failure(
-          NullResourceEnvironmentTupleException(f"{method}: {NullResourceEnvironmentTupleException.DEFAULT_MESSAGE}")
+          NullResourceEnvironmentTupleException(f"{method}: {NullResourceEnvironmentTupleException.MSG}")
         )
       
       resource_candidate, environment_candidate = candidate
@@ -61,7 +61,7 @@ class BoardResourceValidator(Validator[Square, Board]):
       search_result = BoardSquareFinder.search(board=environment, search_context=BoardContext(id=resource.id))
       if search_result.is_empty():
         return ValidationResult.failure(
-          SquareInvariantBreachException(f"{method}: {SquareInvariantBreachException.DEFAULT_MESSAGE}")
+          SquareInvariantBreachException(f"{method}: {SquareInvariantBreachException.MSG}")
         )
 
       if search_result.is_failure():

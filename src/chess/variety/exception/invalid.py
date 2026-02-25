@@ -36,5 +36,5 @@ class InvalidAgentVarietyException(AgentVarietyException, ValidationException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_VARIETY_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "Failed AgentVariety validation."
+    ERR_CODE = "AGENT_VARIETY_VALIDATION_ERROR"
+    MSG = "Failed AgentVariety validation."

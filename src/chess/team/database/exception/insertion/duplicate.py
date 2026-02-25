@@ -36,8 +36,8 @@ class AddingDuplicateTeamException(UniqueTeamStackServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADDING_DUPLICATE_TEAM_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ADDING_DUPLICATE_TEAM_ERROR"
+    MSG = (
         "Team insertion failed: TeamDatabase is already managing the team. It cannot be added to the "
         "dataset again."
     )

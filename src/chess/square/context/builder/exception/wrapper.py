@@ -38,5 +38,5 @@ class SquareContextBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "SquareContext build failed."
+    ERR_CODE = "SQUARE_CONTEXT_BUILD_FAILED"
+    MSG = "SquareContext build failed."

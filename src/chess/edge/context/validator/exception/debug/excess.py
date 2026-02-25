@@ -37,5 +37,5 @@ class ExcessiveEdgeContextFlagsException(EdgeContextException, ContextFlagCountE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_EDGE_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "EdgeContext validation failed: More than one flag was enable."
+    ERR_CODE = "EXCESSIVE_EDGE_CONTEXT_FLAG_ERROR"
+    MSG = "EdgeContext validation failed: More than one flag was enable."

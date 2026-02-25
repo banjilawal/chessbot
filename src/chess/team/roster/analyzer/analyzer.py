@@ -74,7 +74,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
             # Return the exception chain on failure.
             return RelationReport(
                 TeamRosterRelationAnalysisException(
-                    message=f"{method}: {TeamRosterRelationAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {TeamRosterRelationAnalysisException.ERR_CODE}",
                     ex=team_validation.exception,
                 )
             )
@@ -85,7 +85,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
         if piece_validation.is_failure:
             return RelationReport(
                 TeamRosterRelationAnalysisException(
-                    message=f"{method}: {TeamRosterRelationAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {TeamRosterRelationAnalysisException.ERR_CODE}",
                     ex=piece_validation.exception,
                 )
             )
@@ -101,7 +101,7 @@ class RosterRelationAnalyzer(RelationAnalyzer[Team, Token]):
             # Return the exception chain on failure.
             return RelationReport(
                 TeamRosterRelationAnalysisException(
-                    message=f"{method}: {TeamRosterRelationAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {TeamRosterRelationAnalysisException.ERR_CODE}",
                     ex=member_search.exception,
                 )
             )

@@ -37,21 +37,21 @@ __all__ = [
 
 
 class TurnSceneException(ChessException):
-  ERROR_CODE = "TURN_SCENE_ERROR"
-  DEFAULT_MESSAGE = "An rollback_exception was raised by a TurnScene."
+  ERR_CODE = "TURN_SCENE_ERROR"
+  MSG = "An rollback_exception was raised by a TurnScene."
 
 
 #====================== TURN_SCENE GENERAL VALIDATION EXCEPTION #======================#
 class NullTurnSceneException(TurnSceneException, NullException):
   """"""
-  ERROR_CODE = "NULL_TURN_SCENE_ERROR"
-  DEFAULT_MESSAGE = "A TurnScene cannot be null."
+  ERR_CODE = "NULL_TURN_SCENE_ERROR"
+  MSG = "A TurnScene cannot be null."
 
 
 class InvalidTurnSceneException(TurnSceneException, ValidationException):
   """"""
-  ERROR_CODE = "TURN_SCENE_VALIDATION_ERROR"
-  DEFAULT_MESSAGE = "TurnScene validation failed."
+  ERR_CODE = "TURN_SCENE_VALIDATION_ERROR"
+  MSG = "TurnScene validation failed."
 
 
 #====================== TURN_SCENE ACTOR VALIDATION EXCEPTION #======================#
@@ -64,15 +64,15 @@ class InvalidTurnSceneException(TurnSceneException, ValidationException):
 #====================== TURN_SCENE BUILD EXCEPTION #======================#
 class TurnSceneBuildException(TurnSceneException, BuildException):
   """"""
-  ERROR_CODE = "TURN_SCENE_BUILD_FAILED"
-  DEFAULT_MESSAGE = "TurnScene build failed."
+  ERR_CODE = "TURN_SCENE_BUILD_FAILED"
+  MSG = "TurnScene build failed."
   
 
 #====================== TURN_SCENE SQUARE CONSISTENCY EXCEPTION #======================#
 class TurnSceneSquareNotFoundException(TurnSceneException, InconsistencyException):
   """"""
-  ERROR_CODE = "TURN_SCENE_SQUARE_NOT_FOUND_ERROR"
-  DEFAULT_MESSAGE = (
+  ERR_CODE = "TURN_SCENE_SQUARE_NOT_FOUND_ERROR"
+  MSG = (
     "BoardSearch did not find a square_name associated with the actor_candidate's point. There may be a entity_service "
     "inconsistency."
   )
@@ -82,8 +82,8 @@ class TurnSceneSquareNotFoundException(TurnSceneException, InconsistencyExceptio
 
 class ActorAndScenePropCoordMismatchException(TurnSceneException, InconsistencyException):
   """"""
-  ERROR_CODE = "ACTOR_AND_SCENE_PROP_COORD_MISMATCH_ERROR"
-  DEFAULT_MESSAGE = (
+  ERR_CODE = "ACTOR_AND_SCENE_PROP_COORD_MISMATCH_ERROR"
+  MSG = (
     "The Actor and their Prop have different coords. The scene requires the square_name and "
     "piece have the same Coord."
   )

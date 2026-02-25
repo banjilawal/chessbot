@@ -35,5 +35,5 @@ class BishopSpanComputationException(SpanComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BISHOP_SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Bishop span computation failed."
+    ERR_CODE = "BISHOP_SPAN_COMPUTATION_FAILURE"
+    MSG = "Bishop span computation failed."

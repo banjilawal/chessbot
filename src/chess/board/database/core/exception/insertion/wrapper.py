@@ -37,5 +37,5 @@ class BoardInsertionException(BoardException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Board insertion failed."
+    ERR_CODE = "BOARD_INSERTION_FAILURE"
+    MSG = "Board insertion failed."

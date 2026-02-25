@@ -122,7 +122,7 @@ class SquareService(EntityService[Square]):
             return UpdateResult.update_failure(
                 original=visitation_update_result.original,
                 exception=SquareServiceException(
-                    message=f"ServiceID:{self.id} {method}: {SquareServiceException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {SquareServiceException.ERR_CODE}",
                     ex=visitation_update_result.exception
                 )
             )
@@ -155,7 +155,7 @@ class SquareService(EntityService[Square]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareServiceException(
-                    message=f"ServiceID:{self.id} {method}: {SquareServiceException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {SquareServiceException.ERR_CODE}",
                     ex=visit_termination_result.exception
                 )
             )

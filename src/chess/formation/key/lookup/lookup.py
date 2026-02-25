@@ -70,7 +70,7 @@ class FormationLookup(HashLookup[Formation]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 FormationLookupFailedException(
-                    message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
+                    msg=f"{method}: {FormationLookupFailedException.ERR_CODE}",
                     ex=validation.exception
                 )
             )
@@ -94,8 +94,8 @@ class FormationLookup(HashLookup[Formation]):
         # the exception chain.
         return SearchResult.failure(
             FormationLookupFailedException(
-                message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
-                ex=FormationLookupRouteException(f"{method}: {FormationLookupRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {FormationLookupFailedException.ERR_CODE}",
+                ex=FormationLookupRouteException(f"{method}: {FormationLookupRouteException.MSG}")
             )
         )
     
@@ -125,8 +125,8 @@ class FormationLookup(HashLookup[Formation]):
         # An empty lookup result is a failure. Return the exception chain.
         return SearchResult.failure(
             FormationLookupFailedException(
-                message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
-                ex=FormationDesignationBoundsException(f"{method}: {FormationDesignationBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {FormationLookupFailedException.ERR_CODE}",
+                ex=FormationDesignationBoundsException(f"{method}: {FormationDesignationBoundsException.MSG}")
             )
         )
     
@@ -155,8 +155,8 @@ class FormationLookup(HashLookup[Formation]):
             # An empty lookup result is a failure. Return the exception chain.
         return SearchResult.failure(
             FormationLookupFailedException(
-                message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
-                ex=FormationSquareBoundsException(f"{method}: {FormationSquareBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {FormationLookupFailedException.ERR_CODE}",
+                ex=FormationSquareBoundsException(f"{method}: {FormationSquareBoundsException.MSG}")
             )
         )
     
@@ -186,8 +186,8 @@ class FormationLookup(HashLookup[Formation]):
             # An empty lookup result is a failure. Return the exception chain.
         return SearchResult.failure(
             FormationLookupFailedException(
-                message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
-                ex=FormationColorBoundsException(f"{method}: {FormationColorBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {FormationLookupFailedException.ERR_CODE}",
+                ex=FormationColorBoundsException(f"{method}: {FormationColorBoundsException.MSG}")
             )
         )
     
@@ -217,7 +217,7 @@ class FormationLookup(HashLookup[Formation]):
             # An empty lookup result is a failure. Return the exception chain.
         return SearchResult.failure(
             FormationLookupFailedException(
-                message=f"{method}: {FormationLookupFailedException.ERROR_CODE}",
-                ex=FormationPersonaBoundsException(f"{method}: {FormationPersonaBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {FormationLookupFailedException.ERR_CODE}",
+                ex=FormationPersonaBoundsException(f"{method}: {FormationPersonaBoundsException.MSG}")
             )
         )

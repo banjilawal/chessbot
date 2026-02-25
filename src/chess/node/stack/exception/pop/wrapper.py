@@ -38,5 +38,5 @@ class NodePopException(NodeStackException, DeletionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Node deletion failed."
+    ERR_CODE = "NODE_DELETION_FAILURE"
+    MSG = "Node deletion failed."

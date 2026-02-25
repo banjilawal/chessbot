@@ -38,5 +38,5 @@ class EdgeSearchPayloadTypeException(EdgeException, ResultException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EDGE_DATASET_NULL_ERROR"
-    DEFAULT_MESSAGE = "EdgeSearch payload is the wrong type. The payload should be List[Edge]."
+    ERR_CODE = "EDGE_DATASET_NULL_ERROR"
+    MSG = "EdgeSearch payload is the wrong type. The payload should be List[Edge]."

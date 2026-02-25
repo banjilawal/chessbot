@@ -50,7 +50,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedSettingActorAsEnemyCaptorRolledBackException(
-                        f"{method}: {FailedSettingActorAsEnemyCaptorRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedSettingActorAsEnemyCaptorRolledBackException.MSG}"
                     )
                 )
             
@@ -65,7 +65,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedRemovalFromRosterRolledBackException(
-                        f"{method}: {FailedRemovalFromRosterRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedRemovalFromRosterRolledBackException.MSG}"
                     )
                 )
             
@@ -79,7 +79,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedHostageAdditionRolledBackException(
-                        f"{method}: {FailedHostageAdditionRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedHostageAdditionRolledBackException.MSG}"
                     )
                 )
             
@@ -94,7 +94,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedEnemyRemovalFromSquareRolledBackException(
-                        f"{method}: {FailedEnemyRemovalFromSquareRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedEnemyRemovalFromSquareRolledBackException.MSG}"
                     )
                 )
             
@@ -109,7 +109,7 @@ class AttackTransaction(TravelTransaction[AttackEvent]):
                 return TransactionResult.rolled_back(
                     event_update=self.event,
                     rollback_exception=FailedRemovalFromBoardRolledBackException(
-                        f"{method}: {FailedRemovalFromBoardRolledBackException.DEFAULT_MESSAGE}"
+                        f"{method}: {FailedRemovalFromBoardRolledBackException.MSG}"
                     )
                 )
             

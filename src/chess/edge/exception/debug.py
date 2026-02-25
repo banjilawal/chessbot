@@ -38,5 +38,5 @@ class EdgeDebugException(EdgeException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "EDGE_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A EdgeDebugException was raised."
+    ERR_CODE = "EDGE_DEBUG_ERROR"
+    MSG = "A EdgeDebugException was raised."

@@ -100,8 +100,8 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
-                    ex=NullSquareException(f"{method}: {NullSquareException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
+                    ex=NullSquareException(f"{method}: {NullSquareException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -109,7 +109,7 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected Square, but, got {type(candidate).__name__} instead.")
                 )
             )
@@ -125,7 +125,7 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
                     ex=identity_validation.exception
                 )
             )
@@ -135,7 +135,7 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
                     ex=coord_validation.exception
                 )
             )
@@ -145,7 +145,7 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
                     ex=board_verification.exception
                 )
             )
@@ -179,7 +179,7 @@ class SquareValidator(Validator[Square]):
         if candidate is None:
             return ValidationResult.failure(
                 SquareDataSourceNullException(
-                    f"{method}: {SquareDataSourceNullException.DEFAULT_MESSAGE}"
+                    f"{method}: {SquareDataSourceNullException.MSG}"
                 )
             )
         # Handle the wrong class case.
@@ -192,7 +192,7 @@ class SquareValidator(Validator[Square]):
         # Handle the case that, the dataset is empty
         if len(squares) == 0:
             return ValidationResult.failure(
-                SquareDataSourceEmptyException(f"{method}: {SquareDataSourceEmptyException.DEFAULT_MESSAGE}")
+                SquareDataSourceEmptyException(f"{method}: {SquareDataSourceEmptyException.MSG}")
             )
         # Handle the case that, the list does not contain squares.
         if not isinstance(squares[0], Square):
@@ -231,7 +231,7 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
                     ex=board_square_relation.exception
                 )
             )
@@ -240,9 +240,9 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
                     ex=SquareOnDifferentBoardException(
-                        f"{method}: {SquareOnDifferentBoardException.DEFAULT_MESSAGE}"
+                        f"{method}: {SquareOnDifferentBoardException.MSG}"
                     )
                 )
             )
@@ -251,9 +251,9 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
                     ex=SquareNotRegisteredBoardException(
-                        f"{method}: {SquareNotRegisteredBoardException.DEFAULT_MESSAGE}"
+                        f"{method}: {SquareNotRegisteredBoardException.MSG}"
                     )
                 )
             )
@@ -284,8 +284,8 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
-                    ex=NullSquareException(f"{method}: {NullSquareStateException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
+                    ex=NullSquareException(f"{method}: {NullSquareStateException.MSG}")
                 )
             )
         # Handle the wrong class case.
@@ -293,7 +293,7 @@ class SquareValidator(Validator[Square]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidationException(
-                    message=f"{method}: {SquareValidationException.ERROR_CODE}",
+                    msg=f"{method}: {SquareValidationException.ERR_CODE}",
                     ex=TypeError(f"{method}: Expected SquareState, but, got {type(candidate).__name__} instead.")
                 )
             )

@@ -31,5 +31,5 @@ class ServiceRequestException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "SERVICE_REQUEST_ERROR"
-    DEFAULT_MESSAGE = "ServiceRequest raised an exception."
+    ERR_CODE = "SERVICE_REQUEST_ERROR"
+    MSG = "ServiceRequest raised an exception."

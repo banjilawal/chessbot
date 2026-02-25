@@ -26,7 +26,7 @@ class ProjectionSearchContextValidator(Validator[ProjectionSearchContext]):
             if candidate is None:
                 return ValidationResult.failure(
                     NullProjectionSearchContextException(
-                        f"{method}: {NullProjectionSearchContextException.DEFAULT_MESSAGE}"
+                        f"{method}: {NullProjectionSearchContextException.MSG}"
                     )
                 )
             

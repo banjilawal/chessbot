@@ -35,5 +35,5 @@ class PoppingEmtpyCoordStackException(CoordStackException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_EMPTY_COORD_STACK_ERROR"
-    DEFAULT_MESSAGE = "Coord deletion failed: CoordStack does not own any coords."
+    ERR_CODE = "POPPING_EMPTY_COORD_STACK_ERROR"
+    MSG = "Coord deletion failed: CoordStack does not own any coords."

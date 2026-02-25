@@ -35,5 +35,5 @@ class DeletionException(CollectionOperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "DELETION_FAILURE"
-    DEFAULT_MESSAGE = "Deletion failed."
+    ERR_CODE = "DELETION_FAILURE"
+    MSG = "Deletion failed."

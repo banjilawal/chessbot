@@ -72,7 +72,7 @@ class BoardTokenRelationAnalyzer(RelationAnalyzer[Board, Token]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 BoardTokenRelationAnalysisException(
-                    message=f"{method}: {BoardTokenRelationAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {BoardTokenRelationAnalysisException.ERR_CODE}",
                     ex=board_validation.exception
                 )
             )
@@ -85,7 +85,7 @@ class BoardTokenRelationAnalyzer(RelationAnalyzer[Board, Token]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 BoardTokenRelationAnalysisException(
-                    message=f"{method}: {BoardTokenRelationAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {BoardTokenRelationAnalysisException.ERR_CODE}",
                     ex=token_validation.exception
                 )
             )
@@ -101,7 +101,7 @@ class BoardTokenRelationAnalyzer(RelationAnalyzer[Board, Token]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 BoardTokenRelationAnalysisException(
-                    message=f"{method}: {BoardTokenRelationAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {BoardTokenRelationAnalysisException.ERR_CODE}",
                     ex=token_search.exception
                 )
             )

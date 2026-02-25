@@ -36,5 +36,5 @@ class ArenaDatasetNullException(ArenaException, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_DATASET_NULL_ERROR"
-    DEFAULT_MESSAGE = "Arena dataset cannot be null."
+    ERR_CODE = "ARENA_DATASET_NULL_ERROR"
+    MSG = "Arena dataset cannot be null."

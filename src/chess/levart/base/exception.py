@@ -53,17 +53,17 @@ __all__ = [
 
 
 class TravelEventException(EventException):
-  ERROR_CODE = "TRAVEL_EXECUTION_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent raised an exception."
+  ERR_CODE = "TRAVEL_EXECUTION_ERROR"
+  MSG = "TravelEvent raised an exception."
   
 class TravelTransactionException(TransactionException):
-  ERROR_CODE = "TRAVEL_TRANSACTION_ERROR"
-  DEFAULT_MESSAGE = "An rollback_exception was raised during a TravelEvent."
+  ERR_CODE = "TRAVEL_TRANSACTION_ERROR"
+  MSG = "An rollback_exception was raised during a TravelEvent."
 
 #====================== TravelEvent VALIDATION EXCEPTION #======================#
 class NullTravelEventException(TravelEventException, NullException):
-  ERROR_CODE = "NULL_TRAVEL_EXECUTION_ERROR"
-  DEFAULT_MESSAGE = "TravelEvent cannot be null."
+  ERR_CODE = "NULL_TRAVEL_EXECUTION_ERROR"
+  MSG = "TravelEvent cannot be null."
 
 
 
@@ -74,13 +74,13 @@ class TravelEventBuildException(TravelEventException, BuildException):
   Indicate That  TravelEvent could not be built. Wraps and re-raises errors that occurred
   during builder.
   """
-  ERROR_CODE = "TRAVEL_EVENT_BUILD_FAILED"
-  DEFAULT_MESSAGE = "TravelEvent build failed."
+  ERR_CODE = "TRAVEL_EVENT_BUILD_FAILED"
+  MSG = "TravelEvent build failed."
 
 class OccupationEventBuildException(TravelEventBuildException):
   """
   Indicate That  OldOccupationEventValidator could not be built. Wraps and re-raises errors that occurred
   during builder.
   """
-  ERROR_CODE = "OCCUPATION_EVENT_BUILD_FAILED"
+  ERR_CODE = "OCCUPATION_EVENT_BUILD_FAILED"
 

@@ -37,5 +37,5 @@ class RankContextValidationRouteException(RankContextException, NoExecutionRoute
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_RANK_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "RankContext validation failed: No validation route was provided for the Rank attribute."
+    ERR_CODE = "NO_RANK_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "RankContext validation failed: No validation route was provided for the Rank attribute."

@@ -32,5 +32,5 @@ class GameException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "GAME_ERROR"
-    DEFAULT_MESSAGE = "Game raised an exception."
+    ERR_CODE = "GAME_ERROR"
+    MSG = "Game raised an exception."

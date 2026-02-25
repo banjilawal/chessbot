@@ -26,37 +26,37 @@ __all__ = [
 
 
 class HouseException(ChessException):
-    ERROR_CODE = "HOUSE_ERROR"
-    DEFAULT_MESSAGE = "A House raised an exception"
+    ERR_CODE = "HOUSE_ERROR"
+    MSG = "A House raised an exception"
 
 
 #====================== HOUSE GENERAL VALIDATION EXCEPTION #======================#
 class NullHouseException(HouseException, NullException):
     """"""
-    ERROR_CODE = "NULL_HOUSE_ERROR"
-    DEFAULT_MESSAGE = "A House cannot be null."
+    ERR_CODE = "NULL_HOUSE_ERROR"
+    MSG = "A House cannot be null."
 
 
 class InvalidHouseException(HouseException, ValidationException):
     """"""
-    ERROR_CODE = "HOUSE_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "House validation failed."
+    ERR_CODE = "HOUSE_VALIDATION_ERROR"
+    MSG = "House validation failed."
 
 
 class TurnSceneActorSquareIsNullException(HouseException):
     """"""
-    ERROR_CODE = "HOUSE_SQUARE_IS_NULL_ERROR"
-    DEFAULT_MESSAGE = "A House object cannot have a validation square_name."
+    ERR_CODE = "HOUSE_SQUARE_IS_NULL_ERROR"
+    MSG = "A House object cannot have a validation square_name."
 
 
 class NullHouseResidentException(HouseException):
     """"""
-    ERROR_CODE = "HOUSE_RESIDENT_IS_NULL_ERROR"
-    DEFAULT_MESSAGE = "A House instance cannot have a validation occupant."
+    ERR_CODE = "HOUSE_RESIDENT_IS_NULL_ERROR"
+    MSG = "A House instance cannot have a validation occupant."
 
 
 #====================== HOUSE BUILD EXCEPTION #======================#
 class HouseBuildException(HouseException, BuildException):
     """"""
-    ERROR_CODE = "HOUSE_BUILD_FAILED"
-    DEFAULT_MESSAGE = "House build failed."
+    ERR_CODE = "HOUSE_BUILD_FAILED"
+    MSG = "House build failed."

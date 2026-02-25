@@ -38,5 +38,5 @@ class TokenDeploymentException(TokenException, OperationException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "Token_DEPLOYMENT_FAILURE"
-    DEFAULT_MESSAGE = "Token deployment failed."
+    ERR_CODE = "Token_DEPLOYMENT_FAILURE"
+    MSG = "Token deployment failed."

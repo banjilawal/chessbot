@@ -39,5 +39,5 @@ class CoordContextBuildException(CoordContextException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "CoordContext build failed."
+    ERR_CODE = "COORD_CONTEXT_BUILD_FAILED"
+    MSG = "CoordContext build failed."

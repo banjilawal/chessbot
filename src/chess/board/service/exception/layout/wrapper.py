@@ -29,5 +29,5 @@ class BoardLayoutFailedException(BoardException, InsertionException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_SERVICE_INSERTION_OPERATION_FAILURE"
-    DEFAULT_MESSAGE = "Laying out board failed."
+    ERR_CODE = "BOARD_SERVICE_INSERTION_OPERATION_FAILURE"
+    MSG = "Laying out board failed."

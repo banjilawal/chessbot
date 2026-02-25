@@ -74,7 +74,7 @@ class DomainOriginValidator(Validator[DomainOrigin]):
             if candidate is None:
                 return ValidationResult.failure(
                     NullDomainOriginException(
-                        f"{method}: {NullDomainOriginException.DEFAULT_MESSAGE}"
+                        f"{method}: {NullDomainOriginException.MSG}"
                     )
                 )
             
@@ -99,6 +99,6 @@ class DomainOriginValidator(Validator[DomainOrigin]):
         except Exception as e:
             return ValidationResult.failure(
                 InvalidDomainOriginException(
-                    f"{method}: {InvalidDomainOriginException.DEFAULT_MESSAGE}", e
+                    f"{method}: {InvalidDomainOriginException.MSG}", e
                 )
             )

@@ -37,5 +37,5 @@ class SnapshotContextBuildRouteException(SnapshotContextException, NoExecutionRo
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_SNAPSHOT_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "SnapshotContext build failed: No build path existed for the Snapshot key."
+    ERR_CODE = "NO_SNAPSHOT_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "SnapshotContext build failed: No build path existed for the Snapshot key."

@@ -35,5 +35,5 @@ class UpdateException(CollectionOperationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UPDATE_FAILURE"
-    DEFAULT_MESSAGE = "Update failed."
+    ERR_CODE = "UPDATE_FAILURE"
+    MSG = "Update failed."

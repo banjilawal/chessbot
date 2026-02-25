@@ -37,5 +37,5 @@ class BoardContextBuildRouteException(BoardContextException, NoExecutionRouteExc
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_BOARD_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "BoardContext build failed: No build path existed for the Board key."
+    ERR_CODE = "NO_BOARD_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "BoardContext build failed: No build path existed for the Board key."

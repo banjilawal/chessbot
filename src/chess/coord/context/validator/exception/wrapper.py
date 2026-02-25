@@ -37,5 +37,5 @@ class CoordContextValidationException(CoordContextException, ValidationException
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "CoordContext validation failed."
+    ERR_CODE = "COORD_CONTEXT_VALIDATION_FAILURE"
+    MSG = "CoordContext validation failed."

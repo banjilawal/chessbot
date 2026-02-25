@@ -39,5 +39,5 @@ class PlayerContextException(PlayerException, ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PLAYER_CONTEXT_ERROR"
-    DEFAULT_ERROR_CODE = "PlayerContext raised an exception."
+    ERR_CODE = "PLAYER_CONTEXT_ERROR"
+    DEFAULT_ERR_CODE = "PlayerContext raised an exception."

@@ -27,5 +27,5 @@ class TokenReadniessAnalysisException(TokenStateException, AnalysisException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ROSTER_RELATION_ANALYSIS_FAILURE"
-    DEFAULT_MESSAGE = "RosterRelationTest failed."
+    ERR_CODE = "ROSTER_RELATION_ANALYSIS_FAILURE"
+    MSG = "RosterRelationTest failed."

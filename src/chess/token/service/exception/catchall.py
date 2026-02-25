@@ -37,5 +37,5 @@ class TokenServiceException(TokenException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "TokenService raised an exception."
+    ERR_CODE = "TOKEN_SERVICE_ERROR"
+    MSG = "TokenService raised an exception."

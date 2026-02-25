@@ -37,5 +37,5 @@ class FormationKeyValidationRouteException(FormationKeyException, NoExecutionRou
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_FORMATION_KEY_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "FormationKey validation failed: No validation route was provided for the Formation attribute."
+    ERR_CODE = "NO_FORMATION_KEY_VALIDATION_ROUTE_ERROR"
+    MSG = "FormationKey validation failed: No validation route was provided for the Formation attribute."

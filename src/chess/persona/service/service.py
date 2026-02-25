@@ -146,9 +146,9 @@ class PersonaService(HashService[Persona]):
             return ComputationResult.failure(
                 # Return exception chain on failure.
                 PersonaServiceException(
-                    message=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERR_CODE}",
                     ex=RankQuotaPerTeamLookupFailedException(
-                        message=f"{method}: {RankQuotaPerTeamLookupFailedException.ERROR_CODE}",
+                        msg=f"{method}: {RankQuotaPerTeamLookupFailedException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -188,9 +188,9 @@ class PersonaService(HashService[Persona]):
     #         return BuildResult.failure(
     #             # Return exception chain on failure.
     #             PersonaServiceException(
-    #                 message=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERROR_CODE}",
+    #                 msg=f"ServiceId:{self.id} {method}: {PersonaServiceException.ERR_CODE}",
     #                 ex=RankBuildException(
-    #                     message=f"{method}: {RankBuildException.ERROR_CODE}",
+    #                     msg=f"{method}: {RankBuildException.ERR_CODE}",
     #                     ex=validation.exception
     #                 )
     #             )
@@ -234,7 +234,7 @@ class PersonaService(HashService[Persona]):
         if result.is_failure:
             return SearchResult.failure(
                 PersonaServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {PersonaServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {PersonaServiceException.ERR_CODE}",
                     ex=result.exception
                 )
             )

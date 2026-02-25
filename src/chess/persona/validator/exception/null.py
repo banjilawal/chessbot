@@ -37,5 +37,5 @@ class NullPersonaException(PersonaDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_PERSONA_ERROR"
-    DEFAULT_MESSAGE = "Persona validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_PERSONA_ERROR"
+    MSG = "Persona validation failed: The candidate cannot be null."

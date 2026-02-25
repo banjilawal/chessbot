@@ -89,7 +89,7 @@ class SchemaService(HashService[Schema]):
             # On failure return the exception chain.
             return SearchResult.failure(
                 SchemaServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SchemaServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {SchemaServiceException.ERR_CODE}",
                     ex=schema_validation.exception
                 )
             )
@@ -116,7 +116,7 @@ class SchemaService(HashService[Schema]):
         # Handle the validation failure branch.
         if validation.is_failure:
             return ComputationResult.failure(
-                SchemaServiceException(ex=validation.exception, message=f"{method}: {SchemaServiceException.ERROR_CODE}")
+                SchemaServiceException(ex=validation.exception, msg=f"{method}: {SchemaServiceException.ERR_CODE}")
             )
         # On validation success compute the pawn_row and return in the ComputationResult.
         pawn_row = schema.rank_row + schema.advancing_step.value
@@ -141,7 +141,7 @@ class SchemaService(HashService[Schema]):
         # Handle the validation failure branch.
         if validation.is_failure:
             return SearchResult.failure(
-                SchemaServiceException(ex=validation.exception, message=f"{method}: {SchemaServiceException.ERROR_CODE}")
+                SchemaServiceException(ex=validation.exception, msg=f"{method}: {SchemaServiceException.ERR_CODE}")
             )
         # On validation success send the opposite Schema entry in the SearchResult.
         if schema.color == GameColor.WHITE:
@@ -168,7 +168,7 @@ class SchemaService(HashService[Schema]):
         # Handle the case search failed by raising an exception.
         if result.is_failure:
             return SearchResult.failure(
-                SchemaServiceException(ex=result.exception, message=f"{method}: {SchemaServiceException.ERROR_CODE}")
+                SchemaServiceException(ex=result.exception, msg=f"{method}: {SchemaServiceException.ERR_CODE}")
             )
         # On search success send the result to the caller.
         return result

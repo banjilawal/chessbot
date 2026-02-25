@@ -38,5 +38,5 @@ class NodeContextValidationRouteException(NodeContextException, NoExecutionRoute
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_NODE_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "NodeContext validation failed: No validation route was provided for a NodeContext attribute."
+    ERR_CODE = "NO_NODE_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "NodeContext validation failed: No validation route was provided for a NodeContext attribute."

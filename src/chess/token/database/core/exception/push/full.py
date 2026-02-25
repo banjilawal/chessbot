@@ -37,5 +37,5 @@ class TokenStackFullException(TokenStackException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FULL_TOKEN_STACK_ERROR"
-    DEFAULT_MESSAGE = "Pushing token failed: The stack was full."
+    ERR_CODE = "FULL_TOKEN_STACK_ERROR"
+    MSG = "Pushing token failed: The stack was full."

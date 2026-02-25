@@ -36,5 +36,5 @@ class BoardBuildException(BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_BUILD_FAILED"
-    DEFAULT_MESSAGE = "Board build failed."
+    ERR_CODE = "BOARD_BUILD_FAILED"
+    MSG = "Board build failed."

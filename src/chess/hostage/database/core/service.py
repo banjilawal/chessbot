@@ -105,9 +105,9 @@ class HostageList(StackService[Hostage]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 HostageDataListException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageDataListException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {HostageDataListException.ERR_CODE}",
                     ex=HostageInsertionException(
-                        message=f"{method}: {HostageInsertionException.ERROR_CODE}",
+                        msg=f"{method}: {HostageInsertionException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -121,11 +121,11 @@ class HostageList(StackService[Hostage]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 HostageDataListException(
-                    message=f"ServiceId:{self.id}, {method}: {HostageDataListException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {HostageDataListException.ERR_CODE}",
                     ex=HostageInsertionException(
-                        message=f"{method}: {HostageInsertionException.ERROR_CODE}",
+                        msg=f"{method}: {HostageInsertionException.ERR_CODE}",
                         ex=AppendingHostageDirectlyIntoItemsFailedException(
-                            f"{method}: {AppendingHostageDirectlyIntoItemsFailedException.ERROR_CODE}"
+                            f"{method}: {AppendingHostageDirectlyIntoItemsFailedException.ERR_CODE}"
                         )
                     )
                 )

@@ -29,5 +29,5 @@ class ArenaServiceException(ArenaException, ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ARENA_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "ArenaService raised an exception."
+    ERR_CODE = "ARENA_SERVICE_ERROR"
+    MSG = "ArenaService raised an exception."

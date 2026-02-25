@@ -80,7 +80,7 @@ class ResultStack(ABC, Generic[T]):
         try:
             if result is None:
                 return InsertionResult.failure(
-                    NullResultException(f"{method}: {NullResultException.DEFAULT_MESSAGE}")
+                    NullResultException(f"{method}: {NullResultException.MSG}")
                 )
             if not isinstance(result, Result[T]):
                 return InsertionResult.failure(
@@ -88,13 +88,13 @@ class ResultStack(ABC, Generic[T]):
                 )
             if result in self.items:
                 return InsertionResult.failure(
-                    AddingResultDatasetException(f"{method}: {AddingDuplicateResultException.DEFAULT_MESSAGE}")
+                    AddingResultDatasetException(f"{method}: {AddingDuplicateResultException.MSG}")
                 )
             self.items.append(result)
             return InsertionResult.success(payload=result)
         except Exception as ex:
             return InsertionResult.failure(
-                ResultStackException(ex=ex, message=f"{method}: {ResultStackException.DEFAULT_MESSAGE}")
+                ResultStackException(ex=ex, msg=f"{method}: {ResultStackException.MSG}")
             )
     
     @LoggingLevelRouter.monitor
@@ -103,13 +103,13 @@ class ResultStack(ABC, Generic[T]):
         try:
             if self._items == 0:
                 return DeletionResult.failure(
-                    PoppingEmptyStackException(f"{method}: {PoppingEmptyStackException.DEFAULT_MESSAGE}")
+                    PoppingEmptyStackException(f"{method}: {PoppingEmptyStackException.MSG}")
                 )
             item = self._items.pop()
             return DeletionResult.success(payload=item)
         except Exception as ex:
             return DeletionResult.failure(
-                ResultStackException(ex=ex, message=f"{method}: {ResultStackException.DEFAULT_MESSAGE}")
+                ResultStackException(ex=ex, msg=f"{method}: {ResultStackException.MSG}")
             )
         
         

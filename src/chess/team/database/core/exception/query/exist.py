@@ -39,5 +39,5 @@ class TeamNotFoundException(TeamDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_NOT_FOUND_ERROR"
-    DEFAULT_MESSAGE = "Team deletion failed: The item was not found in the dataset. Nothing to remove."
+    ERR_CODE = "TEAM_NOT_FOUND_ERROR"
+    MSG = "Team deletion failed: The item was not found in the dataset. Nothing to remove."

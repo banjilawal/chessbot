@@ -34,5 +34,5 @@ class IdentifierException(ServiceRequestDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "IDENTIFIER_NOT_FOUND_ERROR"
-    DEFAULT_MESSAGE = "ServiceRequest validation failed: request had an incorrect identifier."
+    ERR_CODE = "IDENTIFIER_NOT_FOUND_ERROR"
+    MSG = "ServiceRequest validation failed: request had an incorrect identifier."

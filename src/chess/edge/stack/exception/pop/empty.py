@@ -38,5 +38,5 @@ class PoppingEmptyEdgeStackException(EdgeDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "POPPING_EMPTY_EDGE_STACK_ERROR"
-    DEFAULT_MESSAGE = "Edge deletion failed: EdgeStack does not own any edges."
+    ERR_CODE = "POPPING_EMPTY_EDGE_STACK_ERROR"
+    MSG = "Edge deletion failed: EdgeStack does not own any edges."

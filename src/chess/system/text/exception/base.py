@@ -37,5 +37,5 @@ class StringException(ChessException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "STRING_ERROR"
-    DEFAULT_MESSAGE = "String raised an exception."
+    ERR_CODE = "STRING_ERROR"
+    MSG = "String raised an exception."

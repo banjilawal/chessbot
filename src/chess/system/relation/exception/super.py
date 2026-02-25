@@ -32,5 +32,5 @@ class RelationException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "RELATION_ERROR"
-    DEFAULT_MESSAGE = "Relation raised an exception."
+    ERR_CODE = "RELATION_ERROR"
+    MSG = "Relation raised an exception."

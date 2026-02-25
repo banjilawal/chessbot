@@ -109,7 +109,7 @@ class TeamDatabase(Database[Team]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TeamDatabaseException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TeamDatabaseException.ERR_CODE}",
                     ex=deletion_result.exception
                 )
             )
@@ -144,7 +144,7 @@ class TeamDatabase(Database[Team]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TeamDatabaseException(
-                    message=f"ServiceId:{self.id}, {method}: {TeamDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TeamDatabaseException.ERR_CODE}",
                     ex=insertion_result.exception
                 )
             )
@@ -179,7 +179,7 @@ class TeamDatabase(Database[Team]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 TeamDatabaseException(
-                    message=f"ServiceID:{self.id} {method}: {TeamDatabaseException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {TeamDatabaseException.ERR_CODE}",
                     ex=search_result.exception
                 )
             )
@@ -197,7 +197,7 @@ class TeamDatabase(Database[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
                 UniqueTeamStackServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERR_CODE}",
                     ex=result.exception
                 )
             )
@@ -215,7 +215,7 @@ class TeamDatabase(Database[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
                 UniqueTeamStackServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERR_CODE}",
                     ex=result.exception
                 )
             )
@@ -230,7 +230,7 @@ class TeamDatabase(Database[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the InsertionResult.
             return SearchResult.failure(
                 UniqueTeamStackServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERR_CODE}",
                     ex=result.exception
                 )
             )
@@ -245,7 +245,7 @@ class TeamDatabase(Database[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the DeletionResult.
             return SearchResult.failure(
                 UniqueTeamStackServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERR_CODE}",
                     ex=result.exception
                 )
             )
@@ -260,7 +260,7 @@ class TeamDatabase(Database[Team]):
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
                 UniqueTeamStackServiceException(
-                    message=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {UniqueTeamStackServiceException.ERR_CODE}",
                     ex=result.exception
                 )
             )

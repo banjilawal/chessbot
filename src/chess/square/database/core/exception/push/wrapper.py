@@ -36,5 +36,5 @@ class SquareStackPushException(InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_STACK_PUSH_FAILURE"
-    DEFAULT_MESSAGE = "SquareStack push failed."
+    ERR_CODE = "SQUARE_STACK_PUSH_FAILURE"
+    MSG = "SquareStack push failed."

@@ -98,7 +98,7 @@ class BoardService(EntityService[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERR_CODE}",
                     ex=team_validation.exception
                 ),
             )
@@ -107,9 +107,9 @@ class BoardService(EntityService[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERR_CODE}",
                     ex=TeamBelongsToDifferentBoardException(
-                        message=f"{method}: {TeamBelongsToDifferentBoardException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {TeamBelongsToDifferentBoardException.MSG}",
                     ),
                 )
             )
@@ -118,9 +118,9 @@ class BoardService(EntityService[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {BoardServiceException.ERR_CODE}",
                     ex=TeamSlotAlreadyOccupiedException(
-                        f"{method}: {TeamSlotAlreadyOccupiedException.DEFAULT_MESSAGE}"
+                        f"{method}: {TeamSlotAlreadyOccupiedException.MSG}"
                     ),
                 )
             )
@@ -134,7 +134,7 @@ class BoardService(EntityService[Board]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 BoardServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
+                    msg=f"ServiceId:{self.id}, {method}: {BoardServiceException}",
                     ex=
                 ),
             )
@@ -149,9 +149,9 @@ class BoardService(EntityService[Board]):
             # Return exception chain on failure
             return InsertionResult.failure(
                 BoardServiceException(
-                    f"{method}: {BoardServiceException.DEFAULT_MESSAGE}",
+                    f"{method}: {BoardServiceException.MSG}",
                     ex=BoardLayoutFailedException(
-                        message=f"{method}: {BoardLayoutFailedException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {BoardLayoutFailedException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -161,11 +161,11 @@ class BoardService(EntityService[Board]):
             # Return exception chain on failure
             return InsertionResult.failure(
                 BoardServiceException(
-                    f"{method}: {BoardServiceException.DEFAULT_MESSAGE}",
+                    f"{method}: {BoardServiceException.MSG}",
                     ex=BoardLayoutFailedException(
-                        message=f"{method}: {BoardLayoutFailedException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {BoardLayoutFailedException.MSG}",
                         ex=BoardAlreadyLaidOutException(
-                            f"{method}: {BoardLayoutFailedException.DEFAULT_MESSAGE}",
+                            f"{method}: {BoardLayoutFailedException.MSG}",
                         )
                     )
                 )
@@ -179,7 +179,7 @@ class BoardService(EntityService[Board]):
                 # Return the exception chain on failure.
                 return InsertionResult.failure(
                     BoardServiceException(
-                        f"{method}: {BoardServiceException.DEFAULT_MESSAGE}",
+                        f"{method}: {BoardServiceException.MSG}",
                         ex=deployment_result.exception,
                     )
                 )
@@ -197,9 +197,9 @@ class BoardService(EntityService[Board]):
             # Return exception chain on failure
             return ComputationResult.failure(
                 BoardServiceException(
-                    f"{method}: {BoardServiceException.DEFAULT_MESSAGE}",
+                    f"{method}: {BoardServiceException.MSG}",
                     ex=GraphComputationException(
-                        message=f"{method}: {GraphComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {GraphComputationException.MSG}",
                         ex=validation.exception
                     )
                 )

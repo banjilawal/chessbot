@@ -32,5 +32,5 @@ class KingException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "KING_ERROR"
-    DEFAULT_MESSAGE = "King raised an exception."
+    ERR_CODE = "KING_ERROR"
+    MSG = "King raised an exception."

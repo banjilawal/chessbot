@@ -38,5 +38,5 @@ class ArenaDebugException(ArenaException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "ARENA_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A ArenaDebugException was raised."
+    ERR_CODE = "ARENA_DEBUG_ERROR"
+    MSG = "A ArenaDebugException was raised."

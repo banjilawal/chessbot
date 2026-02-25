@@ -35,5 +35,5 @@ class SquareVisitorDisabledException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_VISITOR_DISABLED_ERROR"
-    DEFAULT_MESSAGE = "Square visit start failed: A disabled token cannot occupy a square."
+    ERR_CODE = "SQUARE_VISITOR_DISABLED_ERROR"
+    MSG = "Square visit start failed: A disabled token cannot occupy a square."

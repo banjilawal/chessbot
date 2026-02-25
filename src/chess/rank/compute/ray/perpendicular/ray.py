@@ -61,7 +61,7 @@ class PerpendicularRay:
             if build_result.is_failure:
                 return BuildResult.failure(
                     PerpendicularRayComputationException(
-                        message=f"{method}: {PerpendicularRayComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {PerpendicularRayComputationException.MSG}",
                         ex=build_result.exception
                     )
                 )

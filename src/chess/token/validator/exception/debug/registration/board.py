@@ -37,5 +37,5 @@ class TokenNotRegisteredBoardException(TokenDebugException, NotRegisteredExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_NOT_REGISTERED_WITH_BOARD_ERROR"
-    DEFAULT_MESSAGE = "Token validation failed: The candidate token had not registered with its board."
+    ERR_CODE = "TOKEN_NOT_REGISTERED_WITH_BOARD_ERROR"
+    MSG = "Token validation failed: The candidate token had not registered with its board."

@@ -36,8 +36,8 @@ class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 TokenReadniessAnalysisException(
-                    message=f"{method}: {TokenReadniessAnalysisException.DEFAULT_MESSAGE}",
-                    ex=ReadinessStateNullException(f"{method}: {ReadinessStateNullException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {TokenReadniessAnalysisException.MSG}",
+                    ex=ReadinessStateNullException(f"{method}: {ReadinessStateNullException.MSG}")
                 )
             )
         # Handle the case that, the candidate_primary is the wrong type.
@@ -45,7 +45,7 @@ class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 TokenReadniessAnalysisException(
-                    message=f"{method}: {TokenReadniessAnalysisException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {TokenReadniessAnalysisException.MSG}",
                     ex=TypeError(f"{method}: Expected TokenState, got {type(candidate_primary).__name__} instead.")
                 )
             )
@@ -55,7 +55,7 @@ class TokenReadinessAnalyzer(RelationAnalyzer[ReadinessState, Token]):
         if validation_result.is_failure:
             return RelationReport.failure(
                 TokenException(
-                    f"{method}: {TokenException.DEFAULT_MESSAGE}",
+                    f"{method}: {TokenException.MSG}",
                     ex=validation_result.exception
                 )
             )

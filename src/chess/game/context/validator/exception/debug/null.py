@@ -37,5 +37,5 @@ class NullGameContextException(InvalidGameContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_GAME_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "GameContext validation failed: The candidate was null."
+    ERR_CODE = "NULL_GAME_CONTEXT_ERROR"
+    MSG = "GameContext validation failed: The candidate was null."

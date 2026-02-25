@@ -31,5 +31,5 @@ class RookException(RankException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ROOK_ERROR"
-    DEFAULT_MESSAGE = "Rook raised an exception."
+    ERR_CODE = "ROOK_ERROR"
+    MSG = "Rook raised an exception."

@@ -65,8 +65,8 @@ class CoordValidator(Validator[Coord]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 CoordValidationException(
-                    message=f"{method}: {CoordValidationException.DEFAULT_MESSAGE}",
-                    ex=NullCoordException(f"{method}: {NullCoordException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {CoordValidationException.MSG}",
+                    ex=NullCoordException(f"{method}: {NullCoordException.MSG}")
                 )
             )
         # Handle the case that, the candidate is the wrong type.
@@ -74,7 +74,7 @@ class CoordValidator(Validator[Coord]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 CoordValidationException(
-                    message=f"{method}: {CoordValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {CoordValidationException.MSG}",
                     ex=TypeError(f"{method}: Expected a Coord, got {type(candidate).__name__} instead.")
                 )
             )
@@ -88,7 +88,7 @@ class CoordValidator(Validator[Coord]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 CoordValidationException(
-                    message=f"{method}: {CoordValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {CoordValidationException.MSG}",
                     ex=row_validation.exception
                 )
             )
@@ -98,7 +98,7 @@ class CoordValidator(Validator[Coord]):
             # Return the exception on failure.
             return ValidationResult.failure(
                 CoordValidationException(
-                    message=f"{method}: {CoordValidationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {CoordValidationException.MSG}",
                     ex=column_validation.exception
                 )
             )

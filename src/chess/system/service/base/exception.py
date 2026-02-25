@@ -34,5 +34,5 @@ class ServiceException(CatchallException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_ERROR"
-    DEFAULT_MESSAGE = "Service raised an exception."
+    ERR_CODE = "SERVICE_ERROR"
+    MSG = "Service raised an exception."

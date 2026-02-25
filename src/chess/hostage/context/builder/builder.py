@@ -73,9 +73,9 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 CaptivityContextBuildException(
-                    message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {CaptivityContextBuildException.MSG}",
                     ex=ZeroCaptivityContextFlagsException(
-                        f"{method}: {ZeroCaptivityContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ZeroCaptivityContextFlagsException.MSG}"
                     )
                 )
             )
@@ -84,9 +84,9 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 CaptivityContextBuildException(
-                    message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {CaptivityContextBuildException.MSG}",
                     ex=ExcessiveCaptivityContextFlagsException(
-                        f"{method}: {ExcessiveCaptivityContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveCaptivityContextFlagsException.MSG}"
                     )
                 )
             )
@@ -99,7 +99,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     CaptivityContextBuildException(
-                        message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {CaptivityContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -113,7 +113,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     CaptivityContextBuildException(
-                        message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {CaptivityContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -128,7 +128,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     CaptivityContextBuildException(
-                        message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {CaptivityContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -142,7 +142,7 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     CaptivityContextBuildException(
-                        message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {CaptivityContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -152,9 +152,9 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             CaptivityContextBuildException(
-                message=f"{method}: {CaptivityContextBuildException.DEFAULT_MESSAGE}",
+                msg=f"{method}: {CaptivityContextBuildException.MSG}",
                 ex=CaptivityContextBuildRouteException(
-                    f"{method}: {CaptivityContextBuildRouteException.DEFAULT_MESSAGE}"
+                    f"{method}: {CaptivityContextBuildRouteException.MSG}"
                 )
             )
         )

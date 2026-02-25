@@ -62,7 +62,7 @@ class StringValidator(Validator[str]):
         try:
             # Handle the nonexistence case.
             if candidate is None:
-                return ValidationResult.failure(NullString(f"{method}: {NullString.DEFAULT_MESSAGE}"))
+                return ValidationResult.failure(NullString(f"{method}: {NullString.MSG}"))
             # Handle the wrong class case.
             if not isinstance(candidate, str):
                 return ValidationResult.failure(
@@ -76,7 +76,7 @@ class StringValidator(Validator[str]):
             # Handle the empty string case.
             if len(text.strip()) == 0:
                 return ValidationResult.failure(
-                    EmptyBlankStringException(f"{method}: {EmptyBlankStringException.DEFAULT_MESSAGE}")
+                    EmptyBlankStringException(f"{method}: {EmptyBlankStringException.MSG}")
                 )
             # Handle the success case by sending the text in a ValidationResult.
             return ValidationResult.success(payload=text)
@@ -85,5 +85,5 @@ class StringValidator(Validator[str]):
         # return the exception inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidStringException(ex=ex, message=f"{method}: {InvalidStringException.DEFAULT_MESSAGE}")
+                InvalidStringException(ex=ex, msg=f"{method}: {InvalidStringException.MSG}")
             )

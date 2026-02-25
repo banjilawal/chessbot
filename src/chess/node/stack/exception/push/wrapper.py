@@ -37,5 +37,5 @@ class NodePushException(NodeStackException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NODE_INSERTION_FAILURE"
-    DEFAULT_MESSAGE = "Node insertion failed."
+    ERR_CODE = "NODE_INSERTION_FAILURE"
+    MSG = "Node insertion failed."

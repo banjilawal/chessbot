@@ -38,5 +38,5 @@ class EdgeSearchRouteException(EdgeException, NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_EDGE_SEARCH_ROUTE_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "Edge search failed: No search method was provided for the Edge attribute."
+    ERR_CODE = "NO_EDGE_SEARCH_ROUTE_ROUTE_ERROR"
+    MSG = "Edge search failed: No search method was provided for the Edge attribute."

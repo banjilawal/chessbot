@@ -37,5 +37,5 @@ class BoardContextValidationRouteException(BoardContextException, NoExecutionRou
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_BOARD_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "BoardContext validation failed: No validation route was provided for the Board attribute."
+    ERR_CODE = "NO_BOARD_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "BoardContext validation failed: No validation route was provided for the Board attribute."

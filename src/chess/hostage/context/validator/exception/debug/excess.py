@@ -37,5 +37,5 @@ class ExcessiveCaptivityContextFlagsException(CaptivityContextException, Context
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESSIVE_CAPTIVITY_CONTEXT_FLAG_ERROR"
-    DEFAULT_MESSAGE = "CaptivityContext validation failed: More than one flag was enable."
+    ERR_CODE = "EXCESSIVE_CAPTIVITY_CONTEXT_FLAG_ERROR"
+    MSG = "CaptivityContext validation failed: More than one flag was enable."

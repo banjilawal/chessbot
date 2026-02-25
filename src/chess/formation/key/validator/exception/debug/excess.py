@@ -34,7 +34,7 @@ class ExcessiveFormationKeysException(FormationKeyException, ContextFlagCountExc
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "EXCESS_FORMATION_KEYS_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "EXCESS_FORMATION_KEYS_VALIDATION_ERROR"
+    MSG = (
         "FormationKey validation failed: More than one attribute is not-null.Only ond attribute should be enabled."
     )

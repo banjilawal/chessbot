@@ -102,9 +102,9 @@ class RosterDeployer:
             return UpdateResult.update_failure(
                 original=team,
                 exception=SquareStackServiceException(
-                    message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"{method}: {SquareStackServiceException.ERR_CODE}",
                     ex=RosterDeploymentException(
-                        message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
+                        msg=f"{method}: {RosterDeploymentException.ERR_CODE}",
                         ex=team_validation.exception
                     )
                 )
@@ -115,11 +115,11 @@ class RosterDeployer:
             return UpdateResult.update_failure(
                 original=team,
                 exception=SquareStackServiceException(
-                    message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"{method}: {SquareStackServiceException.ERR_CODE}",
                     ex=RosterDeploymentException(
-                        message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
+                        msg=f"{method}: {RosterDeploymentException.ERR_CODE}",
                         ex=RosterDoubleDeploymentException(
-                            f"{method}: {RosterDoubleDeploymentException.DEFAULT_MESSAGE}"
+                            f"{method}: {RosterDoubleDeploymentException.MSG}"
                         )
                     )
                 )
@@ -130,11 +130,11 @@ class RosterDeployer:
             return UpdateResult.update_failure(
                 original=team,
                 exception=SquareStackServiceException(
-                    message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"{method}: {SquareStackServiceException.ERR_CODE}",
                     ex=RosterDeploymentException(
-                        message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
+                        msg=f"{method}: {RosterDeploymentException.ERR_CODE}",
                         ex=CannotDeployUnderStrengthTeamException(
-                            f"{method}: {CannotDeployUnderStrengthTeamException.DEFAULT_MESSAGE}"
+                            f"{method}: {CannotDeployUnderStrengthTeamException.MSG}"
                         )
                     )
                 )
@@ -151,9 +151,9 @@ class RosterDeployer:
                 return UpdateResult.update_failure(
                     original=pre_deployment_team,
                     exception=SquareStackServiceException(
-                        message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
+                        msg=f"{method}: {SquareStackServiceException.ERR_CODE}",
                         ex=RosterDeploymentException(
-                            message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
+                            msg=f"{method}: {RosterDeploymentException.ERR_CODE}",
                             ex=token_search_result.exception
                         )
                     )
@@ -170,9 +170,9 @@ class RosterDeployer:
                 return UpdateResult.update_failure(
                     original=pre_deployment_team,
                     exception=SquareStackServiceException(
-                        message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
+                        msg=f"{method}: {SquareStackServiceException.ERR_CODE}",
                         ex=RosterDeploymentException(
-                            message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
+                            msg=f"{method}: {RosterDeploymentException.ERR_CODE}",
                             ex=square_update_result.exception
                         )
                     )
@@ -185,11 +185,11 @@ class RosterDeployer:
             return UpdateResult.update_failure(
                 original=pre_deployment_team,
                 exception=SquareStackServiceException(
-                    message=f"{method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"{method}: {SquareStackServiceException.ERR_CODE}",
                     ex=RosterDeploymentException(
-                        message=f"{method}: {RosterDeploymentException.ERROR_CODE}",
+                        msg=f"{method}: {RosterDeploymentException.ERR_CODE}",
                         ex=RosterDeploymentInterruptedException(
-                            f"{method}: {RosterDeploymentInterruptedException.DEFAULT_MESSAGE}"
+                            f"{method}: {RosterDeploymentInterruptedException.MSG}"
                         )
                     )
                 )

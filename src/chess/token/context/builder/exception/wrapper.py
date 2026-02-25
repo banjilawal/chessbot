@@ -39,5 +39,5 @@ class TokenContextBuildException(TokenContextException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "TokenContext build failed."
+    ERR_CODE = "TOKEN_CONTEXT_BUILD_FAILED"
+    MSG = "TokenContext build failed."

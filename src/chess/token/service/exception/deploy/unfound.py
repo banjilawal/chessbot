@@ -36,5 +36,5 @@ class TokenOpeningSquareNotFoundException(TokenDebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TOKEN_OPENING_SQUARE_NULL_ERROR"
-    DEFAULT_MESSAGE = "Token.opening_square_name cannot be null."
+    ERR_CODE = "TOKEN_OPENING_SQUARE_NULL_ERROR"
+    MSG = "Token.opening_square_name cannot be null."

@@ -107,7 +107,7 @@ class UniqueGameDataService(Database[Game]):
     #         if search_result.is_success():
     #             return InsertionResult.failure(
     #                 AddingDuplicateGameException(
-    #                     f"{method}: {AddingDuplicateGameException.DEFAULT_MESSAGE}"
+    #                     f"{method}: {AddingDuplicateGameException.MSG}"
     #                 )
     #             )
     #         return self._member_service.push_item(item)
@@ -115,9 +115,9 @@ class UniqueGameDataService(Database[Game]):
     #         return InsertionResult.failure(
     #             UniqueGameDataServiceException(
     #                 ex=ex,
-    #                 message=(
+    #                 msg=(
     #                     f"{method}: "
-    #                     f"{UniqueGameDataServiceException.DEFAULT_MESSAGE}"
+    #                     f"{UniqueGameDataServiceException.MSG}"
     #                 )
     #             )
     #         )

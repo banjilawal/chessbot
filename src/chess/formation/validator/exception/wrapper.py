@@ -36,5 +36,5 @@ class FormationValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "FORMATION_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Formation validation failed."
+    ERR_CODE = "FORMATION_VALIDATION_FAILURE"
+    MSG = "Formation validation failed."

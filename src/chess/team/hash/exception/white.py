@@ -32,5 +32,5 @@ class WhiteTeamHasWrongSchemaException(TeamHashException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "WHITE_TEAM_HAS_WRONG_SCHEMA_ERROR"
-    DEFAULT_MESSAGE = "White Team does not have a white schema."
+    ERR_CODE = "WHITE_TEAM_HAS_WRONG_SCHEMA_ERROR"
+    MSG = "White Team does not have a white schema."

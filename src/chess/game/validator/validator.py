@@ -81,7 +81,7 @@ class GameValidator(Validator[Game]):
             # Handle the case that, the candidate does not exist.
             if candidate is None:
                 return ValidationResult.failure(
-                    NullGameException(f"{method}: {NullGameException.DEFAULT_MESSAGE}")
+                    NullGameException(f"{method}: {NullGameException.MSG}")
                 )
             # Handle the case that, the candidate is not a Game.
             if not isinstance(candidate, Game):
@@ -109,5 +109,5 @@ class GameValidator(Validator[Game]):
         # in a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                GameValidationException(ex=ex, message=f"{method}: {GameValidationException.DEFAULT_MESSAGE}")
+                GameValidationException(ex=ex, msg=f"{method}: {GameValidationException.MSG}")
             )

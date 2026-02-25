@@ -35,7 +35,7 @@ class SquareVisitTerminationException(DeletionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_VISIT_TERMINATION_FAILURE"
-    DEFAULT_MESSAGE = "Square visit termination failed."
+    ERR_CODE = "SQUARE_VISIT_TERMINATION_FAILURE"
+    MSG = "Square visit termination failed."
     
     

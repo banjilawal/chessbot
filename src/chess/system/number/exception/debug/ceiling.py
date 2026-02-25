@@ -36,5 +36,5 @@ class NumberAboveCeilingException(NumberException, BoundsException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NUMBER_ABOVE_CEILING_ERROR"
-    DEFAULT_MESSAGE = "Number validation failed: The candidate was above the ceiling."
+    ERR_CODE = "NUMBER_ABOVE_CEILING_ERROR"
+    MSG = "Number validation failed: The candidate was above the ceiling."

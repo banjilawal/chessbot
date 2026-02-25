@@ -32,5 +32,5 @@ class EdgeException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "EDGE_ERROR"
-    DEFAULT_MESSAGE = "Edge raised an exception."
+    ERR_CODE = "EDGE_ERROR"
+    MSG = "Edge raised an exception."

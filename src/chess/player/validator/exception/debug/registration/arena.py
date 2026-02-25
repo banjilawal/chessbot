@@ -37,5 +37,5 @@ class PlayerNotRegisteredArenaException(PlayerDebugException, NotRegisteredExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PLAYER_NOT_REGISTERED_WITH_ARENA_ERROR"
-    DEFAULT_MESSAGE = "Player validation failed: The candidate player had not registered with its arena."
+    ERR_CODE = "PLAYER_NOT_REGISTERED_WITH_ARENA_ERROR"
+    MSG = "Player validation failed: The candidate player had not registered with its arena."

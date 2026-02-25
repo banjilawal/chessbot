@@ -76,7 +76,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 PlayerTeamAnalysisException(
-                    message=f"{method}: {PlayerTeamAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {PlayerTeamAnalysisException.ERR_CODE}",
                     ex=player_validation.exception
                 )
             )
@@ -89,7 +89,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 PlayerTeamAnalysisException(
-                    message=f"{method}: {PlayerTeamAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {PlayerTeamAnalysisException.ERR_CODE}",
                     ex=team_validation.exception
                 )
             )
@@ -106,7 +106,7 @@ class PlayerTeamRelationAnalyzer(RelationAnalyzer[Player, Team]):
             # Return the exception chain on failure.
             return RelationReport.failure(
                 PlayerTeamAnalysisException(
-                    message=f"{method}: {PlayerTeamAnalysisException.ERROR_CODE}",
+                    msg=f"{method}: {PlayerTeamAnalysisException.ERR_CODE}",
                     ex=search_result.exception
                 )
             )

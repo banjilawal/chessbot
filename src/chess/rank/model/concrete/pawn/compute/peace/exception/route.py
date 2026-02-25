@@ -21,7 +21,7 @@ class PawnPeacefulSpanComputationRouteException(NoExecutionRouteException):
     # ROLE: Fallback Result, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that the PawnPeacefulSpan build failed because there was no computation route for the Pawn's MoveState..
+    1.  Indicate that the PawnPeacefulSpan build failed because there was no computation route for the Pawn's MoveState.
 
     # PARENT:
         *   NoExecutionRouteException
@@ -35,5 +35,5 @@ class PawnPeacefulSpanComputationRouteException(NoExecutionRouteException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "PawnPeacefulSpan computation failed: No spanning set computation route for Pawn's MoveState."
+    ERR_CODE = "NO_PAWN_PEACEFUL_SPAN_COMPUTATION_ROUTE_ERROR"
+    MSG = "PawnPeacefulSpan computation failed: No spanning set computation route for Pawn's MoveState."

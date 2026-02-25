@@ -38,5 +38,5 @@ class EntityServiceException(ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ENTITY_SERVICE_ERROR"
-    DEFAULT_MESSAGE = "EntityService raised an exception."
+    ERR_CODE = "ENTITY_SERVICE_ERROR"
+    MSG = "EntityService raised an exception."

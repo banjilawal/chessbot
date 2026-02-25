@@ -69,9 +69,9 @@ class RankQuotaAnalyzer:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
-                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankQuotaAnalysisException.MSG}",
                     ex=RankQuotaAnalysisException(
-                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {RankQuotaAnalysisException.MSG}",
                         ex=rank_validation.exception
                     )
                 )
@@ -84,9 +84,9 @@ class RankQuotaAnalyzer:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
-                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankQuotaAnalysisException.MSG}",
                     ex=RankQuotaAnalysisException(
-                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {RankQuotaAnalysisException.MSG}",
                         ex=search_result.exception
                     )
                 )
@@ -131,9 +131,9 @@ class RankQuotaAnalyzer:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
-                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankQuotaAnalysisException.MSG}",
                     ex=RankQuotaAnalysisException(
-                        message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {RankQuotaAnalysisException.MSG}",
                         ex=openings_count_result.exception
                     )
                 )
@@ -175,7 +175,7 @@ class RankQuotaAnalyzer:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
-                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankQuotaAnalysisException.MSG}",
                     ex=rank_validation.exception
                 )
             )
@@ -191,7 +191,7 @@ class RankQuotaAnalyzer:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
-                    message=f"{method}: {RankQuotaAnalysisException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RankQuotaAnalysisException.MSG}",
                     ex=rank_size_computation.exception
                 )
             )
@@ -201,8 +201,8 @@ class RankQuotaAnalyzer:
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RankQuotaAnalysisException(
-                    message=f"{method}: {RankQuotaAnalysisException.ERROR_CODE}",
-                    ex=RankQuotaFullException(f"{method}: {RankQuotaFullException.DEFAULT_MESSAGE}.")
+                    msg=f"{method}: {RankQuotaAnalysisException.ERR_CODE}",
+                    ex=RankQuotaFullException(f"{method}: {RankQuotaFullException.MSG}.")
                 )
             )
         # --- On success send the difference between the quota and rank_member_count in the ComputationResult. ---#

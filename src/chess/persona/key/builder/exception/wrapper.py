@@ -39,5 +39,5 @@ class PersonaKeyBuildException(PersonaKeyException, BuildException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_CONTEXT_BUILD_ERROR"
-    DEFAULT_MESSAGE = "PersonaKey build failed."
+    ERR_CODE = "PERSONA_CONTEXT_BUILD_ERROR"
+    MSG = "PersonaKey build failed."

@@ -36,4 +36,4 @@ class AboveBoundsException(BoundsException):
     None
     """
     DEFAULT_CODE = "ABOVE_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "Above bounds:"
+    MSG = "Above bounds:"

@@ -32,43 +32,43 @@ class PlayerException(ChessException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PLAYER_ERROR"
-    DEFAULT_MESSAGE = "Player raised an exception."
+    ERR_CODE = "PLAYER_ERROR"
+    MSG = "Player raised an exception."
 #
 # #======================# PLAYER_HISTORY EXCEPTION #======================#
 # class PlayerPlayerHistoryException(PlayerPlayerException):
 #   """Team list specific errors."""
-#   ERROR_CODE = "PLAYERPLAYER_HISTORY_ERROR"
-#   DEFAULT_MESSAGE = "PlayerPlayerHistory raised an exception."
+#   ERR_CODE = "PLAYERPLAYER_HISTORY_ERROR"
+#   MSG = "PlayerPlayerHistory raised an exception."
 #
 # class InconsistentCommandHistoryException(PlayerPlayerHistoryException, InconsistentCollectionException):
-#   ERROR_CODE = "INCONSISTENT_PLAYERPLAYER_HISTORY_ERROR"
-#   DEFAULT_MESSAGE = (
+#   ERR_CODE = "INCONSISTENT_PLAYERPLAYER_HISTORY_ERROR"
+#   MSG = (
 #     "PlayerPlayerHistory is an inconsistent state. Data might be corrupt."
 #   )
 #
 # class PushNewTeamException(PlayerPlayerHistoryException):
 #   """Raised if team_name new team_name could not be pushed to commandHistory"""
-#   ERROR_CODE = "PUSH_NEW_TEAM_ERROR"
-#   DEFAULT_MESSAGE = "Could not push team_name new team_name to TeamStack."
+#   ERR_CODE = "PUSH_NEW_TEAM_ERROR"
+#   MSG = "Could not push team_name new team_name to TeamStack."
 #
 # class UndoingPushTeamFailedException(PlayerPlayerHistoryException):
 #   """Raised if removing the updated team_name failed"""
-#   ERROR_CODE = "UNDOING_PUSH_TEAM_FAILED_ERROR"
-#   DEFAULT_MESSAGE = "Could not undo the new team_name addition."
+#   ERR_CODE = "UNDOING_PUSH_TEAM_FAILED_ERROR"
+#   MSG = "Could not undo the new team_name addition."
 #
 # class CannotRemoveOldTeamException(PlayerPlayerHistoryException):
 #   """Raised if an attempt is made to remove an old team_name from TeamStack"""
-#   ERROR_CODE = "REMOVE_OLD_TEAM_ERROR"
-#   DEFAULT_MESSAGE = "Removing old team_service from TeamStack is not allowed."
+#   ERR_CODE = "REMOVE_OLD_TEAM_ERROR"
+#   MSG = "Removing old team_service from TeamStack is not allowed."
 #
 # class InvalidPlayerPlayerAssignmentException(PlayerPlayerHistoryException):
 #   """
 #   If team_name team_name already attached to team_name owner (team_name.owner == not None) tries being assigned team_name
 #   different owner, `InvalidPlayerPlayerAssignmentException` is raised.
 #   """
-#   ERROR_CODE = "INVALID_PLAYERPLAYER_ASSIGNMENT_ERROR"
-#   DEFAULT_MESSAGE = "Team is already assigned to team_name different owner."
+#   ERR_CODE = "INVALID_PLAYERPLAYER_ASSIGNMENT_ERROR"
+#   MSG = "Team is already assigned to team_name different owner."
 
 
 

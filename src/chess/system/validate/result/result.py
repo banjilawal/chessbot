@@ -50,7 +50,7 @@ class ValidationResult(Result[T], Generic[T]):
         method = "ValidationResult.empty"
         return cls(
             exception=MethodNotImplementedException(
-                f"{method}: {MethodNotImplementedException.DEFAULT_MESSAGE}. ValidationResult cannot"
+                f"{method}: {MethodNotImplementedException.MSG}. ValidationResult cannot"
                 f" be empty. It must have either a payload or an rollback_exception."
             )
         )

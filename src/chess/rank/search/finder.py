@@ -28,7 +28,7 @@ class RankFinder:
             return SearchResult.success(payload=matches)
         if len(matches) > 1:
             return SearchResult.failure(
-                RankFinderException(f"{method}: {RankFinderException.DEFAULT_MESSAGE}")
+                RankFinderException(f"{method}: {RankFinderException.MSG}")
             )
         
     @classmethod
@@ -43,7 +43,7 @@ class RankFinder:
             return SearchResult.success(payload=matches)
         if len(matches) > 1:
             return SearchResult.failure(
-                RankFinderException(f"{method}: {RankFinderException.DEFAULT_MESSAGE}")
+                RankFinderException(f"{method}: {RankFinderException.MSG}")
             )
     
     @classmethod
@@ -78,5 +78,5 @@ class RankFinder:
             return SearchResult.success(payload=matches)
         if len(matches) > 1:
             return SearchResult.failure(
-                RankFinderException(f"{method}: {RankFinderException.DEFAULT_MESSAGE}")
+                RankFinderException(f"{method}: {RankFinderException.MSG}")
             )

@@ -36,5 +36,5 @@ class BaseValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BASE_VALIDATION_FAILURE"
-    DEFAULT_MESSAGE = "Base validation failed."
+    ERR_CODE = "BASE_VALIDATION_FAILURE"
+    MSG = "Base validation failed."

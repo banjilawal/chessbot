@@ -26,10 +26,10 @@ __all__ = [
 class VisitorSearchContextException(SearchContextException):
     """
     Super class for exception raised by VisitorSearchContext objects. DO NOT
-    USE DIRECTLY. Subclasses give more useful debugging messages.
+    USE DIRECTLY. Subclasses give more useful debugging msgs.
     """
-    ERROR_CODE = "VISITOR_SEARCH_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "VisitorSearchContext raised an exception"
+    ERR_CODE = "VISITOR_SEARCH_CONTEXT_ERROR"
+    MSG = "VisitorSearchContext raised an exception"
 
 
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTION #======================# 
@@ -38,8 +38,8 @@ class NullVisitorSearchContextException(VisitorSearchContextException, NullExcep
     Raised if an entity, method, or operation requires team_name visitorSearchContext but
     gets validation instead.
     """
-    ERROR_CODE = "NULL_SEARCH_VISITOR_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "VisitorSearchContext cannot be validation"
+    ERR_CODE = "NULL_SEARCH_VISITOR_CONTEXT_ERROR"
+    MSG = "VisitorSearchContext cannot be validation"
 
 
 class InvalidVisitorSearchContextException(VisitorSearchContextException, ValidationException):
@@ -47,16 +47,16 @@ class InvalidVisitorSearchContextException(VisitorSearchContextException, Valida
     Raised by visitorSearchContextBValidator if visitorSearchContext fails sanity checks. Exists primarily to
     catch all exception raised validating an existing visitorSearchContext
     """
-    ERROR_CODE = "VISITOR_SEARCH_CONTEXT_VALIDATION_ERROR"
-    DEFAULT_MESSAGE = "VisitorSearchContext validation failed."
+    ERR_CODE = "VISITOR_SEARCH_CONTEXT_VALIDATION_ERROR"
+    MSG = "VisitorSearchContext validation failed."
 
 
 class NoVisitorSearchParamException(VisitorSearchContextException):
     """
     Raised if all VisitorSearchContext params are set validation.
     """
-    ERROR_CODE = "ZERO_VISITOR_SEARCH_PARAMS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "ZERO_VISITOR_SEARCH_PARAMS_ERROR"
+    MSG = (
         "A VisitorSearchContext cannot have no params selected. Pick one param to run a searcher."
     )
 
@@ -64,8 +64,8 @@ class ExcessiveVisitorSearchParamsException(VisitorSearchContextException):
     """
     Raised if more than one VisitorSearchContext param is set validation.
     """
-    ERROR_CODE = "TOO_MANY_VISITOR_SEARCH_PARAMS_ERROR"
-    DEFAULT_MESSAGE = (
+    ERR_CODE = "TOO_MANY_VISITOR_SEARCH_PARAMS_ERROR"
+    MSG = (
         "More than one VisitorSearchContext param was set. If more than one param is set a searcher cannot be run."
     )
 
@@ -76,5 +76,5 @@ class VisitorSearchContextBuildException(VisitorSearchContextException, BuildExc
     Raised when VisitorSearchContextBuilder encounters an error while building team_name team_name.
     Exists primarily to catch all exception raised builder team_name new visitorSearchContext
     """
-    ERROR_CODE = "VISITOR_SEARCH_CONTEXT_BUILD_FAILED"
-    DEFAULT_MESSAGE = "VisitorSearchContext build failed."
+    ERR_CODE = "VISITOR_SEARCH_CONTEXT_BUILD_FAILED"
+    MSG = "VisitorSearchContext build failed."

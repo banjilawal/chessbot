@@ -26,5 +26,5 @@ class KingCannotBeCapturedException(HostageException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "KING_CANNOT_BE_CAPTURED"
-    DEFAULT_MESSAGE = "Hostage validation failed: A KingToken cannot be a prisoner"
+    ERR_CODE = "KING_CANNOT_BE_CAPTURED"
+    MSG = "Hostage validation failed: A KingToken cannot be a prisoner"

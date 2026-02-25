@@ -37,5 +37,5 @@ class EdgeContextBuildRouteException(EdgeContextException, NoExecutionRouteExcep
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_EDGE_CONTEXT_BUILD_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "EdgeContext build failed: No build path existed for the Edge key."
+    ERR_CODE = "NO_EDGE_CONTEXT_BUILD_ROUTE_ERROR"
+    MSG = "EdgeContext build failed: No build path existed for the Edge key."

@@ -57,7 +57,7 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
             
             if actor.current_position.row != actor.team_name.schema.enemy_schema.rank_row:
                 return ValidationResult.failure(
-                    ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.DEFAULT_MESSAGE}")
+                    ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.MSG}")
                 )
             
             if (
@@ -65,12 +65,12 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
                 (actor.previous_rank is None and isinstance(actor.rank_name, Queen))
             ):
                 return BuildResult.failure(
-                    InconsistentRankHistoryException(f"{method}: {InconistenctRankHistoryException.DEFAULT_MESSAGE}")
+                    InconsistentRankHistoryException(f"{method}: {InconistenctRankHistoryException.MSG}")
                 )
             
             if piece.previous_rank is not None and isinstance(piece.rank_name, Queen):
                 return ValidationResult.failure(
-                    DoublePromotionException(f"{method}: {DoublePromotionException.DEFAULT_MESSAGE}")
+                    DoublePromotionException(f"{method}: {DoublePromotionException.MSG}")
                 )
             
             context_build_result = BoardContextBuilder.build(piece_id=actor.visitor_id)

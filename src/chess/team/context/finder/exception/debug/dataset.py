@@ -38,6 +38,6 @@ class TeamSearchDatasetNullException(Team, NullDatasetException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_SEARCH_DATASET_NULL_ERROR"
-    DEFAULT_MESSAGE = "TeamSearch failed: Cannot run a search on a null dataset."
+    ERR_CODE = "TEAM_SEARCH_DATASET_NULL_ERROR"
+    MSG = "TeamSearch failed: Cannot run a search on a null dataset."
  

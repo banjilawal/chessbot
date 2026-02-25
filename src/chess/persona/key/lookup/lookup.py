@@ -70,7 +70,7 @@ class PersonaLookup(HashLookup[Persona]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 PersonaLookupFailedException(
-                    message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
+                    msg=f"{method}: {PersonaLookupFailedException.ERR_CODE}",
                     ex=validation.exception
                 )
             )
@@ -92,8 +92,8 @@ class PersonaLookup(HashLookup[Persona]):
         # For other entry points return the exception chain.
         return SearchResult.failure(
             PersonaLookupFailedException(
-                message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
-                ex=PersonaLookupRouteException(f"{method}: {PersonaLookupRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {PersonaLookupFailedException.ERR_CODE}",
+                ex=PersonaLookupRouteException(f"{method}: {PersonaLookupRouteException.MSG}")
             )
         )
 
@@ -125,8 +125,8 @@ class PersonaLookup(HashLookup[Persona]):
         # The default path returns failure
         return SearchResult.failure(
            PersonaLookupFailedException(
-                message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
-                ex=PersonaNameBoundsException(f"{method}: {PersonaNameBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {PersonaLookupFailedException.ERR_CODE}",
+                ex=PersonaNameBoundsException(f"{method}: {PersonaNameBoundsException.MSG}")
             )
         )
     
@@ -156,8 +156,8 @@ class PersonaLookup(HashLookup[Persona]):
         # An empty lookup result is a failure. Return the exception chain.
         return SearchResult.failure(
             PersonaLookupFailedException(
-                message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
-                ex=PersonaDesignationBoundsException(f"{method}: {PersonaDesignationBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {PersonaLookupFailedException.ERR_CODE}",
+                ex=PersonaDesignationBoundsException(f"{method}: {PersonaDesignationBoundsException.MSG}")
             )
         )
     
@@ -187,8 +187,8 @@ class PersonaLookup(HashLookup[Persona]):
         # An empty lookup result is a failure. Return the exception chain.
         return SearchResult.failure(
             PersonaLookupFailedException(
-                message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
-                ex=PersonaQuotaBoundsException(f"{method}: {PersonaQuotaBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {PersonaLookupFailedException.ERR_CODE}",
+                ex=PersonaQuotaBoundsException(f"{method}: {PersonaQuotaBoundsException.MSG}")
             )
         )
   
@@ -218,7 +218,7 @@ class PersonaLookup(HashLookup[Persona]):
         # An empty lookup result is a failure. Return the exception chain.
         return SearchResult.failure(
             PersonaLookupFailedException(
-                message=f"{method}: {PersonaLookupFailedException.ERROR_CODE}",
-                ex=PersonaRansomBoundsException(f"{method}: {PersonaRansomBoundsException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {PersonaLookupFailedException.ERR_CODE}",
+                ex=PersonaRansomBoundsException(f"{method}: {PersonaRansomBoundsException.MSG}")
             )
         )

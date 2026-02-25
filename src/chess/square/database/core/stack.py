@@ -155,9 +155,9 @@ class SquareStackService(StackService[Square]):
             # Return the exception chain on failure
             return InsertionResult.failure(
                 SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERR_CODE}",
                     ex=SquareStackPushException(
-                        message=f"{method}: {SquareStackPushException.ERROR_CODE}",
+                        msg=f"{method}: {SquareStackPushException.ERR_CODE}",
                         ex=available_capacity_computation_result.exception
                     )
                 )
@@ -171,9 +171,9 @@ class SquareStackService(StackService[Square]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERR_CODE}",
                     ex=SquareStackPushException(
-                        message=f"{method}: {SquareStackPushException.ERROR_CODE}",
+                        msg=f"{method}: {SquareStackPushException.ERR_CODE}",
                         ex=collision_report.exception
                     )
                 )
@@ -205,11 +205,11 @@ class SquareStackService(StackService[Square]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERR_CODE}",
                     ex=SquareStackPopException(
-                        message=f"{method}: {SquareStackPopException.ERROR_CODE}",
+                        msg=f"{method}: {SquareStackPopException.ERR_CODE}",
                         ex=PoppingEmptySquareStackException(
-                            f"{method}: {PoppingEmptySquareStackException.DEFAULT_MESSAGE}"
+                            f"{method}: {PoppingEmptySquareStackException.MSG}"
                         )
                     )
                 )
@@ -251,11 +251,11 @@ class SquareStackService(StackService[Square]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERR_CODE}",
                     ex=SquareStackPopException(
-                        message=f"{method}: {SquareStackPopException.ERROR_CODE}",
+                        msg=f"{method}: {SquareStackPopException.ERR_CODE}",
                         ex=PoppingEmptySquareStackException(
-                            f"{method}: {PoppingEmptySquareStackException.DEFAULT_MESSAGE}"
+                            f"{method}: {PoppingEmptySquareStackException.MSG}"
                         )
                     )
                 )
@@ -266,9 +266,9 @@ class SquareStackService(StackService[Square]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 SquareStackServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {SquareStackServiceException.ERR_CODE}",
                     ex=SquareStackPopException(
-                        message=f"{method}: {SquareStackPopException.ERROR_CODE}",
+                        msg=f"{method}: {SquareStackPopException.ERR_CODE}",
                         ex=validation.exception
                     )
                 )
@@ -318,7 +318,7 @@ class SquareStackService(StackService[Square]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 SquareStackServiceException(
-                    message=f"ServiceID:{self.id} {method}: {SquareStackServiceException.ERROR_CODE}",
+                    msg=f"ServiceID:{self.id} {method}: {SquareStackServiceException.ERR_CODE}",
                     ex=query_result.exception
                 )
             )

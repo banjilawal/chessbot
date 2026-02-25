@@ -19,20 +19,20 @@ __all__ = [
 ]
 
 class ResolvingNameConflictFailedException(ResolutionFailedException):
-    ERROR_CODE = "RESOLUTION_FAILED_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the attribute conflict."
+    ERR_CODE = "RESOLUTION_FAILED_ERROR"
+    MSG = "The resolution process failed to break the attribute conflict."
 
 
 class ResolvingSquareNameConflictFailedException(ResolvingNameConflictFailedException):
     DEFAULT_CODE = "SQUARE_NAME_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Square.designation conflict."
+    MSG = "The resolution process failed to break the Square.designation conflict."
 
 
 class ResolvingPieceNameConflictFailedException(ResolvingNameConflictFailedException):
     DEFAULT_CODE = "PIECE_NAME_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Token.designation conflict."
+    MSG = "The resolution process failed to break the Token.designation conflict."
 
 
 class ResolvingAgentNameConflictFailedException(ResolvingNameConflictFailedException):
     DEFAULT_CODE = "AGENT_NAME_CONFLICT_RESOLUTION_ERROR"
-    DEFAULT_MESSAGE = "The resolution process failed to break the Player.designation conflict."
+    MSG = "The resolution process failed to break the Player.designation conflict."

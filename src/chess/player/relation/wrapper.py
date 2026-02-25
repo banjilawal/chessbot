@@ -36,5 +36,5 @@ class PlayerTeamAnalysisException(AnalysisException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "AGENT_TEAM_RELATION_ANALYSIS_FAILURE"
-    DEFAULT_MESSAGE = "AgentTeamRelationTest failed."
+    ERR_CODE = "AGENT_TEAM_RELATION_ANALYSIS_FAILURE"
+    MSG = "AgentTeamRelationTest failed."

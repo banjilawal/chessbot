@@ -45,7 +45,7 @@ class RankContextValidator(Validator[RankContext]):
         # ACTION:
         Verifies candidate is a RankContext in two steps.
             1. Test the candidate is a valid SearchRankContext with a single searcher option switched on.
-            2. Test the value passed to RankContext passes its validation contract..
+            2. Test the value passed to RankContext passes its validation contract.
 
         # PARAMETERS:
           * candidate (Any): Object to verify is a Rank.
@@ -69,7 +69,7 @@ class RankContextValidator(Validator[RankContext]):
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullRankContextException(f"{method} {NullRankContextException.DEFAULT_MESSAGE}")
+                    NullRankContextException(f"{method} {NullRankContextException.MSG}")
                 )
             
             if not isinstance(candidate, RankContext):
@@ -81,14 +81,14 @@ class RankContextValidator(Validator[RankContext]):
             if len(rank_search_context.to_dict() == 0):
                 return ValidationResult.failure(
                     NoRankSearchOptionSelectedException(
-                        f"{method}: {NoRankSearchOptionSelectedException.DEFAULT_MESSAGE}"
+                        f"{method}: {NoRankSearchOptionSelectedException.MSG}"
                     )
                 )
         
             if len(rank_search_context.to_dict()) > 1:
                 return ValidationResult.failure(
                     MoreThanOneRankSearchOptionPickedException(
-                        f"{method}: {MoreThanOneRankSearchOptionPickedException.DEFAULT_MESSAGE}"
+                        f"{method}: {MoreThanOneRankSearchOptionPickedException.MSG}"
                     )
                 )
             
@@ -98,7 +98,7 @@ class RankContextValidator(Validator[RankContext]):
         except Exception as ex:
             return ValidationResult.failure(
                 InvalidRankContextException(
-                    f"{method}: {InvalidRankContextException.DEFAULT_MESSAGE}", ex
+                    f"{method}: {InvalidRankContextException.MSG}", ex
                 )
             )
     #
@@ -137,7 +137,7 @@ class RankContextValidator(Validator[RankContext]):
     #     except Exception as ex:
     #         return ValidationResult.failure(
     #             InvalidRankContextException(
-    #                 f"{method}: {InvalidRankContextException.DEFAULT_MESSAGE}",
+    #                 f"{method}: {InvalidRankContextException.MSG}",
     #                 ex
     #             )
     #         )
@@ -178,7 +178,7 @@ class RankContextValidator(Validator[RankContext]):
     #     except Exception as ex:
     #         return ValidationResult.failure(
     #             InvalidRankContextException(
-    #                 f"{method}: {InvalidRankContextException.DEFAULT_MESSAGE}",
+    #                 f"{method}: {InvalidRankContextException.MSG}",
     #                 ex
     #             )
     #         )
@@ -219,7 +219,7 @@ class RankContextValidator(Validator[RankContext]):
     #     except Exception as ex:
     #         return ValidationResult.failure(
     #             InvalidRankContextException(
-    #                 f"{method}: {InvalidRankContextException.DEFAULT_MESSAGE}",
+    #                 f"{method}: {InvalidRankContextException.MSG}",
     #                 ex
     #             )
     #         )

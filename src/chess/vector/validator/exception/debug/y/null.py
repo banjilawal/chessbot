@@ -34,5 +34,5 @@ class VectorNullYException(InvalidVectorException, NullException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "VECTOR_NULL_Y_AXIS_ERROR"
-    DEFAULT_MESSAGE = "Vector validation failed: The y_axis was null."
+    ERR_CODE = "VECTOR_NULL_Y_AXIS_ERROR"
+    MSG = "Vector validation failed: The y_axis was null."

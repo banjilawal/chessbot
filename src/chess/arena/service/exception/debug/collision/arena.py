@@ -37,5 +37,5 @@ class TeamPlayingDifferentArenaException(TeamException, ArenaException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "TEAM_DIFFERENT_DIFFERENT_ARENA_OWNER"
-    DEFAULT_MESSAGE = "Team is playing in a different arena."
+    ERR_CODE = "TEAM_DIFFERENT_DIFFERENT_ARENA_OWNER"
+    MSG = "Team is playing in a different arena."

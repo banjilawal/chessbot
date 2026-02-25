@@ -96,9 +96,9 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 EdgeContextBuildException(
-                    message=f"{method}: {EdgeContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {EdgeContextBuildException.MSG}",
                     ex=ZeroEdgeContextFlagsException(
-                        f"{method}: {ZeroEdgeContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ZeroEdgeContextFlagsException.MSG}"
                     )
                 )
             )
@@ -107,9 +107,9 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 EdgeContextBuildException(
-                    message=f"{method}: {EdgeContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {EdgeContextBuildException.MSG}",
                     ex=ExcessiveEdgeContextFlagsException(
-                        f"{method}: {ExcessiveEdgeContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessiveEdgeContextFlagsException.MSG}"
                     )
                 )
             )
@@ -122,7 +122,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     EdgeContextBuildException(
-                        message=f"{method}: {EdgeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -136,7 +136,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     EdgeContextBuildException(
-                        message=f"{method}: {EdgeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -150,7 +150,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     EdgeContextBuildException(
-                        message=f"{method}: {EdgeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -164,7 +164,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     EdgeContextBuildException(
-                        message=f"{method}: {EdgeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -178,7 +178,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     EdgeContextBuildException(
-                        message=f"{method}: {EdgeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -191,7 +191,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     EdgeContextBuildException(
-                        message=f"{method}: {EdgeContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {EdgeContextBuildException.MSG}",
                         ex=TypeError(
                             f"{method}: Was expecting a EdgeState, got {type(state).__name__} instead."
                         )
@@ -203,7 +203,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             EdgeContextBuildException(
-                message=f"{method}: {EdgeContextBuildException.DEFAULT_MESSAGE}",
-                ex=EdgeContextBuildRouteException(f"{method}: {EdgeContextBuildRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {EdgeContextBuildException.MSG}",
+                ex=EdgeContextBuildRouteException(f"{method}: {EdgeContextBuildRouteException.MSG}")
             )
         )

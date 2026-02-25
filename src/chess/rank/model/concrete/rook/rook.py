@@ -92,9 +92,9 @@ class Rook(Rank):
             # Return the exception chain on failure.
             return ComputationResult.failure(
                 RookException(
-                    message=f"{method}: {RookSpanComputationException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {RookSpanComputationException.MSG}",
                     ex=RookSpanComputationException(
-                        message=f"{method}: {RookSpanComputationException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {RookSpanComputationException.MSG}",
                         ex=computation_result.exception
                     )
                 )

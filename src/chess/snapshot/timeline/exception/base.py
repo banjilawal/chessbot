@@ -32,5 +32,5 @@ class GameTimelineException(ResultStackException):
     # ATTRIBUTES:
     None
     """
-    ERROR_CODE = "GAME_TIMELINE_ERROR"
-    DEFAULT_ERROR_CODE = "GameTimeline raised an exception."
+    ERR_CODE = "GAME_TIMELINE_ERROR"
+    DEFAULT_ERR_CODE = "GameTimeline raised an exception."

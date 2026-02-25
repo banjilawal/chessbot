@@ -36,5 +36,5 @@ class BoardTokenAnalysisException(AnalysisException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "BOARD_TOKEN_RELATION_ANALYSIS_FAILURE"
-    DEFAULT_MESSAGE = "Board-Token relation analysis failed."
+    ERR_CODE = "BOARD_TOKEN_RELATION_ANALYSIS_FAILURE"
+    MSG = "Board-Token relation analysis failed."

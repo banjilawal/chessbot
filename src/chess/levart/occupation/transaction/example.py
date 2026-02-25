@@ -111,7 +111,7 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
 #     )
 #
 #   actor_square.occupant = None
@@ -125,7 +125,7 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
 #     )
 #
 #   travel.traveler.positions.push_coord(travel.friend.position)
@@ -140,7 +140,7 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
 #     )
 #
 #   return TransactionResult(
@@ -186,7 +186,7 @@ Example:
 #       travel=travel,
 #       was_rolled_back=True,
 #       rollback_exception=SetCaptorRollBackException(
-#         f"{method}: {SetCaptorRollBackException.DEFAULT_MESSAGE}"
+#         f"{method}: {SetCaptorRollBackException.MSG}"
 #       )
 #     )
 #
@@ -200,7 +200,7 @@ Example:
 #       travel=travel,
 #       was_rolled_back=True,
 #       rollback_exception=RemoveTeamMemberRolledBackException(
-#         f"{method}: {RemoveTeamMemberRolledBackException.DEFAULT_MESSAGE}"
+#         f"{method}: {RemoveTeamMemberRolledBackException.MSG}"
 #       )
 #     )
 #
@@ -215,7 +215,7 @@ Example:
 #       travel=travel,
 #       was_rolled_back=True,
 #       rollback_exception=AddEnemyHostageRolledBackException(
-#         f"{method}: {AddEnemyHostageRolledBackException.DEFAULT_MESSAGE}"
+#         f"{method}: {AddEnemyHostageRolledBackException.MSG}"
 #       )
 #     )
 #
@@ -231,7 +231,7 @@ Example:
 #       travel=travel,
 #       was_rolled_back=True,
 #       rollback_exception=FailedRemovalFromBoardRolledBackException(
-#         f"{method}: {FailedRemovalFromBoardRolledBackException.DEFAULT_MESSAGE}"
+#         f"{method}: {FailedRemovalFromBoardRolledBackException.MSG}"
 #       )
 #     )
 #
@@ -248,7 +248,7 @@ Example:
 #       travel=travel,
 #       was_rolled_back=True,
 #       rollback_exception=EmptyDestinationSquareRolledBackException(
-#         f"{method}: {EmptyDestinationSquareRolledBackException.DEFAULT_MESSAGE}"
+#         f"{method}: {EmptyDestinationSquareRolledBackException.MSG}"
 #       )
 #     )
 #
@@ -272,7 +272,7 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}")
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}")
 #     )
 #
 #
@@ -286,7 +286,7 @@ Example:
 #     return TransactionResult(
 #       op_result_id,
 #       travel,
-#       OccupationSearchEventException(f"{method}: {OccupationSearchEventException.DEFAULT_MESSAGE}")
+#       OccupationSearchEventException(f"{method}: {OccupationSearchEventException.MSG}")
 #     )
 #   actor_square = cast(Square, search_result.payload)
 #
@@ -361,7 +361,7 @@ Example:
 #       result_id=op_result_id,
 #       travel=travel,
 #       was_rolled_back=True,
-#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.DEFAULT_MESSAGE}"),
+#       rollback_exception=OccupationEventException(f"{method}: {OccupationEventException.MSG}"),
 #     )
 #
 #   success_event = ScanEvent(
@@ -448,7 +448,7 @@ THEME:
 PURPOSE:
 -------
 1. Centralized error dictionary for the `Vector` graph.
-2. Fast debugging using highly granular rollback_exception messages and naming to
+2. Fast debugging using highly granular rollback_exception msgs and naming to
     find the source.
 3. Providing understandable, consistent information about failures originating from
     the `Vector` graph.
@@ -509,8 +509,8 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #   Wraps any ScanEventException or other errors raised during
 #   the blocking's lifecycle.
 #   """
-#   ERROR_CODE = "SCAN_TRANSACTION_ERROR"
-#   DEFAULT_MESSAGE = "OccupationTransaction raised an exception."
+#   ERR_CODE = "SCAN_TRANSACTION_ERROR"
+#   MSG = "OccupationTransaction raised an exception."
 #
 #
 #
@@ -524,20 +524,20 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #     (e.g., invalid target, rollback during capture, inconsistent board_validator state).
 #   """
 #   DEFAULT_CODE = "ATTACK_ERROR"
-#   DEFAULT_MESSAGE = "An error occurred during an attack or capture notification."
+#   MSG = "An error occurred during an attack or capture notification."
 #
 #
 #
 # #=== ATTACK_EVENT VALIDATION EXCEPTION #======================#
 # class NullAttackEventException(AttackEventException, NullException):
 #   """Raised by methods, entities, and models that require team_name KingCheckEvent but receive team_name validation."""
-#   ERROR_CODE = "NULL_EVENT_ERROR"
-#   DEFAULT_MESSAGE = "KingCheckEvent cannot be validation"
+#   ERR_CODE = "NULL_EVENT_ERROR"
+#   MSG = "KingCheckEvent cannot be validation"
 #
 # class InvalidAttackEventException(AttackEventException, ValidationException):
 #   """Raised by ExchangeValidators if client fails coord_stack_validator."""
-#   ERROR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
-#   DEFAULT_MESSAGE = "KingCheckEvent failed validate"
+#   ERR_CODE = "ATTACK_EVENT_VALIDATION_ERROR"
+#   MSG = "KingCheckEvent failed validate"
 #
 #
 # #=== ATTACK_EVENT BUILD EXCEPTION #======================#
@@ -546,14 +546,14 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 #   Indicate That  Coord could not be built. Wraps and re-raises errors that occurred
 #   during builder.
 #   """
-#   ERROR_CODE = "ATTACK_EVENT_BUILD_FAILED"
-#   DEFAULT_MESSAGE = "AttackEventBuilder failed to create team_name KingCheckEvent"
+#   ERR_CODE = "ATTACK_EVENT_BUILD_FAILED"
+#   MSG = "AttackEventBuilder failed to create team_name KingCheckEvent"
 #
 #
 # #=== ATTACK_EVENT BUILD EXCEPTION #======================#
 # class UnexpectedNullEnemyException(AttackEventException):
 #   DEFAULT_CODE = "UNEXPECTED_NULL_ENEMY"
-#   DEFAULT_MESSAGE = "Target actor_candidate is unexpectedly validation during capture; this should not happen."
+#   MSG = "Target actor_candidate is unexpectedly validation during capture; this should not happen."
 #
 #
 #
@@ -562,39 +562,39 @@ See the list of exception in the `__all__` list following (e.g., `VectorExceptio
 # # --- Rollback Attack Errors (Dual Inheritance) ---
 # class SetCaptorRolledBackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
-#   DEFAULT_MESSAGE = "Setting victor failed. Transaction rolled back performed."
+#   MSG = "Setting victor failed. Transaction rolled back performed."
 #
 #
 # class EmptyDestinationSquareRolledBackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "SET_CAPTOR_ERROR_ROLLED_BACK"
-#   DEFAULT_MESSAGE = "Setting victor failed. Transaction rolled back performed."
+#   MSG = "Setting victor failed. Transaction rolled back performed."
 #
 #
 # class RosterRemovalRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "ROSTER_REMOVAL_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to remove actor_candidate from enemy roster after assigning victor; rollback performed."
+#   MSG = "Failed to remove actor_candidate from enemy roster after assigning victor; rollback performed."
 #
 #
 # class HostageAdditionRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "HOSTAGE_ADDITION_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to add captured actor_candidate to victor's prisoner list; rollback performed."
+#   MSG = "Failed to add captured actor_candidate to victor's prisoner list; rollback performed."
 #
 #
 # class BoardPieceRemovalRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "BOARD_REMOVAL_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to remove captured actor_candidate from board_validator; rollback performed."
+#   MSG = "Failed to remove captured actor_candidate from board_validator; rollback performed."
 #
 #
 # class SquareOccupationRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "SQUARE_OCCUPATION_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to occupation target square_name after capture; rollback executed."
+#   MSG = "Failed to occupation target square_name after capture; rollback executed."
 #
 #
 # class SourceSquareRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "SOURCE_SQUARE_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to clear attacker's source square_name; rollback executed."
+#   MSG = "Failed to clear attacker's source square_name; rollback executed."
 #
 #
 # class PositionUpdateRollbackException(AttackEventException, RollbackException):
 #   DEFAULT_CODE = "POSITION_UPDATE_ROLLBACK"
-#   DEFAULT_MESSAGE = "Failed to update actor_candidate's position history after move; rollback executed."
+#   MSG = "Failed to update actor_candidate's position history after move; rollback executed."

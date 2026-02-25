@@ -38,5 +38,5 @@ class CoordContextException(CoordException, ContextException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "COORD_CONTEXT_ERROR"
-    DEFAULT_ERROR_CODE = "CoordContext raised an exception."
+    ERR_CODE = "COORD_CONTEXT_ERROR"
+    DEFAULT_ERR_CODE = "CoordContext raised an exception."

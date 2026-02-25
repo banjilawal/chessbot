@@ -32,5 +32,5 @@ class PersonaException(SuperClassException):
   # ATTRIBUTES:
   None
   """
-    ERROR_CODE = "PERSONA_ERROR"
-    DEFAULT_MESSAGE = "Persona raised an exception."
+    ERR_CODE = "PERSONA_ERROR"
+    MSG = "Persona raised an exception."

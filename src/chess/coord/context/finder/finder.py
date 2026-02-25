@@ -76,8 +76,8 @@ class CoordFinder(DataFinder[Coord]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 CoordSearchException(
-                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}",
-                    ex=CoordDatasetNullException(f"{method}: {CoordDatasetNullException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {CoordSearchException.MSG}",
+                    ex=CoordDatasetNullException(f"{method}: {CoordDatasetNullException.MSG}")
                 )
             )
         # Handle the case that, the dataset is of the wrong type.
@@ -85,8 +85,8 @@ class CoordFinder(DataFinder[Coord]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 CoordSearchException(
-                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}",
-                    ex=CoordSearchPayloadTypeException(f"{method}: {CoordSearchPayloadTypeException.DEFAULT_MESSAGE}")
+                    msg=f"{method}: {CoordSearchException.MSG}",
+                    ex=CoordSearchPayloadTypeException(f"{method}: {CoordSearchPayloadTypeException.MSG}")
                 )
             )
         # handle the case that, context fails integrity tests.
@@ -95,7 +95,7 @@ class CoordFinder(DataFinder[Coord]):
             # Return the exception chain on failure.
             return SearchResult.failure(
                 CoordSearchException(
-                    message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {CoordSearchException.MSG}",
                     ex=context_validation.exception
                 )
             )
@@ -114,8 +114,8 @@ class CoordFinder(DataFinder[Coord]):
         # If a context does not have a search route defined send an exception chain.
         return SearchResult.failure(
             CoordSearchException(
-                message=f"{method}: {CoordSearchException.DEFAULT_MESSAGE}",
-                ex=CoordSearchRouteException(f"{method}: {CoordSearchRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {CoordSearchException.MSG}",
+                ex=CoordSearchRouteException(f"{method}: {CoordSearchRouteException.MSG}")
             )
         )
     

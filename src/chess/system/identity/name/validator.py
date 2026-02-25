@@ -83,11 +83,11 @@ class NameValidator(Validator[str]):
             name = validation.name
             if len(name) < MIN_NAME_LENGTH:
                 return ValidationResult.failure(
-                    ShortNameException(f"{method}: {ShortNameException.DEFAULT_MESSAGE}")
+                    ShortNameException(f"{method}: {ShortNameException.MSG}")
                 )
             if len(name) > MAX_NAME_LENGTH:
                 return ValidationResult.failure(
-                    LongNameException(f"{method}: {LongNameException.DEFAULT_MESSAGE}")
+                    LongNameException(f"{method}: {LongNameException.MSG}")
                 )
             
             return ValidationResult.success(payload=name)
@@ -95,5 +95,5 @@ class NameValidator(Validator[str]):
         # then return the exception-chain inside a ValidationResult.
         except Exception as ex:
             return ValidationResult.failure(
-                InvalidNameException(ex=ex, message=f"{method}: {InvalidNameException.DEFAULT_MESSAGE}")
+                InvalidNameException(ex=ex, msg=f"{method}: {InvalidNameException.MSG}")
             )

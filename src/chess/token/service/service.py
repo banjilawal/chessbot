@@ -129,7 +129,7 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERR_CODE}",
                     ex=validation.exception
                 )
             )
@@ -138,9 +138,9 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERR_CODE}",
                     ex=TokenOpeningSquareNotFoundException(
-                        f"{method}: {TokenOpeningSquareNotFoundException.DEFAULT_MESSAGE}"
+                        f"{method}: {TokenOpeningSquareNotFoundException.MSG}"
                     )
                 )
             )
@@ -149,9 +149,9 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERR_CODE}",
                     ex=PoppingEmtpyCoordStackException(
-                        f"{method}: {PoppingEmtpyCoordStackException.DEFAULT_MESSAGE}"
+                        f"{method}: {PoppingEmtpyCoordStackException.MSG}"
                     )
                 )
             )
@@ -160,8 +160,8 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
-                    ex=OverMoveUndoLimitException(f"{method}: {OverMoveUndoLimitException.DEFAULT_MESSAGE}")
+                    msg=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERR_CODE}",
+                    ex=OverMoveUndoLimitException(f"{method}: {OverMoveUndoLimitException.MSG}")
                 )
             )
         # Handle the case that, the coord stack pop operation fails.
@@ -170,7 +170,7 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return DeletionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenServiceException.ERR_CODE}",
                     ex=pop_result.exception
                 )
             )
@@ -210,7 +210,7 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    msg=f"{method}: {TokenService.ERR_CODE}",
                     ex=token_validation.exception
                 )
             )
@@ -220,7 +220,7 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    msg=f"{method}: {TokenService.ERR_CODE}",
                     ex=token_validation.exception
                 )
             )
@@ -229,9 +229,9 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenServiceException.ERROR_CODE}",
+                    msg=f"{method}: {TokenServiceException.ERR_CODE}",
                     ex=DuplicateCoordPushException(
-                        f"{method}: {DuplicateCoordPushException.DEFAULT_MESSAGE}"
+                        f"{method}: {DuplicateCoordPushException.MSG}"
                     )
                 )
             )
@@ -241,7 +241,7 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenServiceException.ERROR_CODE}",
+                    msg=f"{method}: {TokenServiceException.ERR_CODE}",
                     ex=insertion_result.exception
                 )
             )
@@ -281,7 +281,7 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    msg=f"{method}: {TokenService.ERR_CODE}",
                     ex=pawn_validation.exception
                 )
             )
@@ -290,9 +290,9 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenService.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
                     ex=PawnPromotionException(
-                        message=f"{method}: {PawnPromotionException.ERROR_CODE}",
+                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
                         ex=TypeError(
                             f"{method}: Expected type PawnToken for promotion. Got {type(pawn).__name__} instead."
                         )
@@ -304,10 +304,10 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenService.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
                     ex=PawnPromotionException(
-                        message=f"{method}: {PawnPromotionException.ERROR_CODE}",
-                        ex=PawnAlreadyPromotedException(f"{method}: {PawnAlreadyPromotedException.DEFAULT_MESSAGE}")
+                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
+                        ex=PawnAlreadyPromotedException(f"{method}: {PawnAlreadyPromotedException.MSG}")
                     )
                 )
             )
@@ -317,9 +317,9 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenService.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
                     ex=PawnPromotionException(
-                        message=f"{method}: {PawnPromotionException.ERROR_CODE}",
+                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
                         ex=rank_validation.exception
                     )
                 )
@@ -329,11 +329,11 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenService.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
                     ex=PawnPromotionException(
-                        message=f"{method}: {PawnPromotionException.ERROR_CODE}",
+                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
                         ex=CannotPromotePawnToKingException(
-                            f"{method}: {CannotPromotePawnToKingException.DEFAULT_MESSAGE}"
+                            f"{method}: {CannotPromotePawnToKingException.MSG}"
                         )
                     )
                 )
@@ -343,10 +343,10 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"ServiceId:{self.id}, {method}: {TokenService.ERROR_CODE}",
+                    msg=f"ServiceId:{self.id}, {method}: {TokenService.ERR_CODE}",
                     ex=PawnPromotionException(
-                        message=f"{method}: {PawnPromotionException.ERROR_CODE}",
-                        ex=NewRankSameAsCurrentRankException(NewRankSameAsCurrentRankException.DEFAULT_MESSAGE)
+                        msg=f"{method}: {PawnPromotionException.ERR_CODE}",
+                        ex=NewRankSameAsCurrentRankException(NewRankSameAsCurrentRankException.MSG)
                     )
                 )
             )
@@ -395,9 +395,9 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    msg=f"{method}: {TokenService.ERR_CODE}",
                     ex=TokenDeploymentException(
-                        message=f"{method}: {TokenDeploymentException.ERROR_CODE}",
+                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
                         ex=token_validation.exception
                     )
                 )
@@ -407,9 +407,9 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    msg=f"{method}: {TokenService.ERR_CODE}",
                     ex=TokenDeploymentException(
-                        message=f"{method}: {TokenDeploymentException.ERROR_CODE}",
+                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
                         ex=TokenAlreadyDeployedOnBoardException(f"{method}:")
                     )
                 )
@@ -423,9 +423,9 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    msg=f"{method}: {TokenService.ERR_CODE}",
                     ex=TokenDeploymentException(
-                        message=f"{method}: {TokenDeploymentException.ERROR_CODE}",
+                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
                         ex=square_search_result.exception
                     )
                 )
@@ -435,11 +435,11 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    msg=f"{method}: {TokenService.ERR_CODE}",
                     ex=TokenDeploymentException(
-                        message=f"{method}: {TokenDeploymentException.ERROR_CODE}",
+                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
                         ex=TokenOpeningSquareNotFoundException(
-                            f"{method}: {TokenOpeningSquareNotFoundException.DEFAULT_MESSAGE}"
+                            f"{method}: {TokenOpeningSquareNotFoundException.MSG}"
                         )
                     )
                 )
@@ -454,9 +454,9 @@ class TokenService(EntityService[Token]):
             # Return the exception chain on failure.
             return InsertionResult.failure(
                 TokenServiceException(
-                    message=f"{method}: {TokenService.ERROR_CODE}",
+                    msg=f"{method}: {TokenService.ERR_CODE}",
                     ex=TokenDeploymentException(
-                        message=f"{method}: {TokenDeploymentException.ERROR_CODE}",
+                        msg=f"{method}: {TokenDeploymentException.ERR_CODE}",
                         ex=occupation_result.exception
                     )
                 )

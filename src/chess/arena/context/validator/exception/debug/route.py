@@ -37,5 +37,5 @@ class ArenaContextValidationRouteException(ArenaContextException, NoExecutionRou
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NO_ARENA_CONTEXT_VALIDATION_ROUTE_ERROR"
-    DEFAULT_MESSAGE = "ArenaContext validation failed: No validation route was provided for the Arena attribute."
+    ERR_CODE = "NO_ARENA_CONTEXT_VALIDATION_ROUTE_ERROR"
+    MSG = "ArenaContext validation failed: No validation route was provided for the Arena attribute."

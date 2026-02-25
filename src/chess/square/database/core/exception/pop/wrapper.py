@@ -36,5 +36,5 @@ class SquareStackPopException(DeletionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_STACK_POP_FAILURE"
-    DEFAULT_MESSAGE = "SquareStack pop failed."
+    ERR_CODE = "SQUARE_STACK_POP_FAILURE"
+    MSG = "SquareStack pop failed."

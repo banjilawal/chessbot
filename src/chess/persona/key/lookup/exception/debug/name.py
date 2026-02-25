@@ -37,5 +37,5 @@ class PersonaNameBoundsException(PersonaException, BoundsException):
     INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PERSONA_NAME_BOUNDS_ERROR"
-    DEFAULT_MESSAGE = "PersonaLookup failed: No Persona entries use the target as their key."
+    ERR_CODE = "PERSONA_NAME_BOUNDS_ERROR"
+    MSG = "PersonaLookup failed: No Persona entries use the target as their key."

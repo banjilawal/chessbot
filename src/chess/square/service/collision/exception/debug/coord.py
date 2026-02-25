@@ -35,5 +35,5 @@ class SquareCoordCollisionException(SquareDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SQUARE_COORD_COLLISION_ERROR"
-    DEFAULT_MESSAGE = "Square collision detected: At least two squares have the same coord."
+    ERR_CODE = "SQUARE_COORD_COLLISION_ERROR"
+    MSG = "Square collision detected: At least two squares have the same coord."

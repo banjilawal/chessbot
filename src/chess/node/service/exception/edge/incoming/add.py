@@ -36,5 +36,5 @@ class AddIncomingEdgeFailedException(NodeException, InsertionException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "ADD_INCOMING_EDGE_FAILURE"
-    DEFAULT_MESSAGE = "Adding an incoming edge failed."
+    ERR_CODE = "ADD_INCOMING_EDGE_FAILURE"
+    MSG = "Adding an incoming edge failed."

@@ -37,5 +37,5 @@ class NullNodeContextException(NodeContextException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "NULL_NODE_CONTEXT_ERROR"
-    DEFAULT_MESSAGE = "NodeContext validation failed: The candidate was null."
+    ERR_CODE = "NULL_NODE_CONTEXT_ERROR"
+    MSG = "NodeContext validation failed: The candidate was null."

@@ -123,9 +123,9 @@ class SquareContextBuilder(Builder[SquareContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareContextBuildException(
-                    message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {SquareContextBuildException.MSG}",
                     ex=ZeroSquareContextFlagsException(
-                        f"{method}: {ZeroSquareContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ZeroSquareContextFlagsException.MSG}"
                     )
                 )
             )
@@ -134,9 +134,9 @@ class SquareContextBuilder(Builder[SquareContext]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 SquareContextBuildException(
-                    message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {SquareContextBuildException.MSG}",
                     ex=ExcessSquareContextFlagsException(
-                        f"{method}: {ExcessSquareContextFlagsException.DEFAULT_MESSAGE}"
+                        f"{method}: {ExcessSquareContextFlagsException.MSG}"
                     )
                 )
             )
@@ -149,7 +149,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
-                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {SquareContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -163,7 +163,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
-                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {SquareContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -177,7 +177,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
-                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {SquareContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -191,7 +191,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
-                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {SquareContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -205,7 +205,7 @@ class SquareContextBuilder(Builder[SquareContext]):
                 # Return the exception chain on failure.
                 return BuildResult.failure(
                     SquareContextBuildException(
-                        message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
+                        msg=f"{method}: {SquareContextBuildException.MSG}",
                         ex=validation.exception
                     )
                 )
@@ -215,7 +215,7 @@ class SquareContextBuilder(Builder[SquareContext]):
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
             SquareContextBuildException(
-                message=f"{method}: {SquareContextBuildException.DEFAULT_MESSAGE}",
-                ex=SquareContextBuildRouteException(f"{method}: {SquareContextBuildRouteException.DEFAULT_MESSAGE}")
+                msg=f"{method}: {SquareContextBuildException.MSG}",
+                ex=SquareContextBuildRouteException(f"{method}: {SquareContextBuildRouteException.MSG}")
             )
         )

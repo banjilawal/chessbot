@@ -62,7 +62,7 @@ class NodeBuilder(Builder[Node]):
             # Return the exception chain on failure.
             return BuildResult.failure(
                 NodeBuildException(
-                    message=f"{method}: {NodeBuildException.DEFAULT_MESSAGE}",
+                    msg=f"{method}: {NodeBuildException.MSG}",
                     ex=validation_result.exception
                 )
             )

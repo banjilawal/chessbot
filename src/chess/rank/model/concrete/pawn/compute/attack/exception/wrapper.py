@@ -37,5 +37,5 @@ class PawnAttackSpanComputationException(ComputationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "PAWN_ATTACK_SPAN_COMPUTATION_FAILURE"
-    DEFAULT_MESSAGE = "Pawn attack span computation failed."
+    ERR_CODE = "PAWN_ATTACK_SPAN_COMPUTATION_FAILURE"
+    MSG = "Pawn attack span computation failed."

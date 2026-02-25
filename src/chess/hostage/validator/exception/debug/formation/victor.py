@@ -36,5 +36,5 @@ class UnformedTokenCannotBeVictorException(HostageException, FormationException)
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "UNFORMED_TOKEN_CANNOT_BE_VICTOR_ERROR"
-    DEFAULT_MESSAGE = "Hostage validation failed: The victor did not have its formation set."
+    ERR_CODE = "UNFORMED_TOKEN_CANNOT_BE_VICTOR_ERROR"
+    MSG = "Hostage validation failed: The victor did not have its formation set."
