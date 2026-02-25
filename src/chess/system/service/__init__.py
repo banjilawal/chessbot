@@ -10,6 +10,7 @@ Created: 2025-11-18
 
 # Packages
 from .base import *
+from .menu import *
 from .entity import *
 from .exception import *
 from .validator import *

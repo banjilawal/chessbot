@@ -21,7 +21,7 @@ class ArenaValidationException(ValidationException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in ArenaValidator.validate that, prevented ValidationResult.success() 
+    1.  An error occurred in ArenaValidator.validate that, prevented A successful validation result 
         from being returned.
 
     # PARENT:

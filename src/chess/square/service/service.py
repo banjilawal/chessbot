@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
-from typing import cast
+from typing import Dict, cast
 
 from chess.square import (
     Square, SquareBuilder, SquareCollisionDetector, SquareServiceException, SquareValidator, TokenVisitHandler
@@ -55,6 +55,7 @@ class SquareService(EntityService[Square]):
     # INHERITED METHODS:
     None
     """
+    _commands = Dict[str: tuple]
     SERVICE_NAME = "SquareService"
     _token_visit_handler: TokenVisitHandler
     _collision_detector: SquareCollisionDetector
@@ -71,6 +72,7 @@ class SquareService(EntityService[Square]):
         super().__init__(id=id, name=name, builder=builder, validator=validator)
         self._collision_detector = collision_detector
         self._token_visit_handler = token_visit_handler
+        self._commands = {"begin_visit": (Square, Token), "end_visit": (Square,)}
     
     @property
     def builder(self) -> SquareBuilder:
@@ -87,6 +89,10 @@ class SquareService(EntityService[Square]):
     @property
     def token_visit_handler(self) -> TokenVisitHandler:
         return self._token_visit_handler
+    
+    @property
+    def commands(self) -> Dict[str, tuple]:
+        return self._commands
     
     @LoggingLevelRouter.monitor
     def begin_square_visit(self, square: Square, visitor: Token) -> UpdateResult[Square]:

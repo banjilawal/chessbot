@@ -21,7 +21,7 @@ class SquareValidationException(ValidationException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SquareValidator.validate that, prevented ValidationResult.success() 
+    1.  An error occurred in SquareValidator.validate that, prevented A successful validation result 
         from being returned.
 
     # PARENT:

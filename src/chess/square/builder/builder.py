@@ -22,7 +22,6 @@ from chess.system import (
     ValidationResult,
 )
 
-
 class SquareBuilder(Builder[Square]):
     """
      # ROLE: Builder, Data Integrity And Reliability Guarantor
