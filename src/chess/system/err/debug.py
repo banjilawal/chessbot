@@ -1,7 +1,12 @@
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
     # ======================# DEBUG EXCEPTION #======================#
     "DebugException",
 ]
+
+
 
 from chess.system import ChessException
 
@@ -24,16 +29,69 @@ class DebugException(ChessException):
     2.  The Syntax is: [Class] operation failed: [Description]
 
     # PARENT:
-        *   ChessException
+        *   Exception
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   mthd (Optional[str])
+        *   var (Optional[str])
+        *   val Optional[None])
 
     # INHERITED ATTRIBUTES:
-     None
+        *   See ChessException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "DEBUG_ERROR"
-    MSG = "An error occurred."
+    ERROR_CODE = "DEBUG_ERROR"
+    MSG: str = "An error occurred."
+    MTHD: ""
+    VAR: ""
+    VAL: None
+    
+    _mthd: Optional[str]
+    _var: Optional[str]
+    _val: Optional[None]
+    
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+            ex: Optional[Exception] = None,
+    ):
+        msg = msg or self.MSG
+        err_code = err_code or self.ERROR_CODE
+        
+        super().__init__(msg=msg, err_code=err_code, ex=ex)
+        self._mthd = mthd
+        self._var = var
+        self._val = val
+    
+    @property
+    def mthd(self) -> Optional[str]:
+        return self._mthd
+    
+    @property
+    def var(self) -> Optional[str]:
+        return self._var
+    
+    @property
+    def val(self) -> Optional[None]:
+        return self._val

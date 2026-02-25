@@ -1,7 +1,7 @@
-# src/chess/system/err/base.py
+# src/chess/system/err/root.py
 
 """
-Module: chess.system.err.base
+Module: chess.system.err.root
 Author: Banji Lawal
 Created: 2025-10-04
 version: 1.0.0
@@ -10,12 +10,12 @@ version: 1.0.0
 from typing import Optional
 
 __all__ = [
-    # ======================#  BASE APPLICATION EXCEPTION CLASS #======================#
+    # ======================#  ROOT APPLICATION EXCEPTION CLASS #======================#
     "ChessException",
 ]
 
 
-# ======================# BASE APPLICATION EXCEPTION CLASS #======================#
+# ======================# ROOT APPLICATION EXCEPTION CLASS #======================#
 class ChessException(Exception):
     """
     # ROLE: Exception
@@ -62,6 +62,9 @@ class ChessException(Exception):
             err_code: str = ERR_CODE,
             ex: Optional[Exception] = None
     ):
+        msg = msg or self.__class__.__name__
+        err_code = err_code or self.ERR_CODE
+        
         super().__init__(msg)
         self._ex = ex
         self._msg = msg
@@ -81,14 +84,6 @@ class ChessException(Exception):
     
     def __str__(self):
         return f"exception:{self.__name__}:, errr_code:{self._err_code}, msg:{self._msg}"
-    
-    # Only the super class needs the explict constructor
-    # def __init__(self, msg: str):
-    #     self.msg = msg or self.MSG
-    #     super().__init__(self.msg)
-    
-    # Only the super class needs to declare team_name toString. Subclasses
-    # will use this.
 
 
 

@@ -12,6 +12,8 @@ __all__ = [
     "CatchallException",
 ]
 
+from typing import Optional
+
 from chess.system import ChessException
 
 
@@ -55,4 +57,5 @@ class CatchallException(ChessException):
     ERR_CODE = "CATCHALL_ERROR"
     MSG = "CatchallException."
     
-    def __init__(self, ex: str , ):
+    def __init__(self, ex: Optional[Exception], err_code: str = ERR_CODE, msg: str = MSG,):
+        super().__init__(ex, err_code)

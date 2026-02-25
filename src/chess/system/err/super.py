@@ -1,7 +1,7 @@
-# src/chess/system/err/super_class.py
+# src/chess/system/err/super.py
 
 """
-Module: chess.system.err.super_class
+Module: chess.system.err.super
 Author: Banji Lawal
 Created: 2026-02-23
 version: 1.0.0
