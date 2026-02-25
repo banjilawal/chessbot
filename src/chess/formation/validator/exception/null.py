@@ -22,7 +22,7 @@ class NullFormationException(FormationDebugException, NullException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the validation candidate was null.
+    A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
         *   FormationDebugException
@@ -38,4 +38,4 @@ class NullFormationException(FormationDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_FORMATION_ERROR"
-    DEFAULT_MESSAGE = "Formation validation failed: The validation candidate cannot be null."
+    DEFAULT_MESSAGE = "Formation validation failed: The candidate cannot be null."

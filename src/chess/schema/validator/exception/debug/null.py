@@ -22,7 +22,7 @@ class NullSchemaException(SchemaDebugException, NullException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the validation candidate was null.
+    A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
         *   SchemaDebugException
@@ -38,4 +38,4 @@ class NullSchemaException(SchemaDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_SCHEMA_ERROR"
-    DEFAULT_MESSAGE = "Schema validation failed: The validation candidate cannot be null."
+    DEFAULT_MESSAGE = "Schema validation failed: The candidate cannot be null."

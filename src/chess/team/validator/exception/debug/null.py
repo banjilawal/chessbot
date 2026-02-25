@@ -22,7 +22,7 @@ class NullTeamException(TeamDebugException, NullException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the validation candidate was null.
+    1.  A failing ValidationResult was returned because the candidate was null instead of a Team.
 
     # PARENT:
         *   TeamDebugException
@@ -38,4 +38,4 @@ class NullTeamException(TeamDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_TEAM_ERROR"
-    DEFAULT_MESSAGE = "Team validation failed: The validation candidate cannot be null."
+    DEFAULT_MESSAGE = "Team validation failed: The candidate cannot be null."

@@ -36,4 +36,4 @@ class NullSquareStateException(DebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_SQUARE_STATE"
-    DEFAULT_MESSAGE = "SquareState validation failed: The validation candidate cannot be null."
+    DEFAULT_MESSAGE = "SquareState validation failed: The candidate cannot be null."

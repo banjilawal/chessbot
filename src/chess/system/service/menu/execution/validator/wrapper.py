@@ -1,7 +1,7 @@
-# src/chess/system/service/menu/operation/validator/wrapper.py
+# src/chess/system/service/menu/execution/validator/wrapper.py
 
 """
-Module: chess.system.service.menu.operation.validator.wrapper
+Module: chess.system.service.menu.execution.validator.wrapper
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -9,17 +9,17 @@ Created: 2026-02-24
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# SERVICE_OPERATION_VALIDATION_FAILURE #======================#
-    "ServiceOperationValidationException",
+    # ======================# SERVICE_EXECUTION_VALIDATION_FAILURE #======================#
+    "ServiceExecutionValidationException",
 ]
 
-# ======================# SERVICE_OPERATION_VALIDATION_FAILURE #======================#
-class ServiceOperationValidationException(ValidationException):
+# ======================# SERVICE_EXECUTION_VALIDATION_FAILURE #======================#
+class ServiceExecutionValidationException(ValidationException):
     """
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in ServiceOperationValidator.validate that, prevented a successful
+    1.  An error occurred in ServiceExecutionValidator.validate that, prevented a successful
         validation result from being returned.
 
     # PARENT:
@@ -34,5 +34,5 @@ class ServiceOperationValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_OPERATION_VALIDATION_FAILED"
-    DEFAULT_MESSAGE = "ServiceOperation validation failed."
+    ERROR_CODE = "SERVICE_EXECUTION_VALIDATION_FAILED"
+    DEFAULT_MESSAGE = "ServiceExecution validation failed."

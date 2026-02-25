@@ -1,30 +1,30 @@
-# src/chess/system/service/menu/operation/exception/debug.py
+# src/chess/system/service/menu/execution/exception/debug.py
 
 """
-Module: chess.system.service.menu.operation.exception.debug
+Module: chess.system.service.menu.execution.exception.debug
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
 __all__ = [
-    # ======================# SERVICE_OPERATION_DEBUG EXCEPTION #======================#
-    "ServiceOperationDebugException",
+    # ======================# SERVICE_EXECUTION_DEBUG EXCEPTION #======================#
+    "ServiceExecutionDebugException",
 ]
 
-from chess.system import DebugException, ServiceOperationException
+from chess.system import DebugException, ServiceExecutionException
 
 
-# ======================# SERVICE_OPERATION_DEBUG EXCEPTION #======================#
-class ServiceOperationDebugException(ServiceOperationException, DebugException):
+# ======================# SERVICE_EXECUTION_DEBUG EXCEPTION #======================#
+class ServiceExecutionDebugException(ServiceExecutionException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused a ServiceOperation operation failure.
+    1.  Describes the condition that caused a ServiceExecution execution failure.
 
     # PARENT:
         *   DebugException
-        *   ServiceOperationException
+        *   ServiceExecutionException
 
     # PROVIDES:
     None
@@ -35,5 +35,5 @@ class ServiceOperationDebugException(ServiceOperationException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERROR_CODE = "SERVICE_OPERATION_DEBUG_ERROR"
-    DEFAULT_MESSAGE = "A ServiceOperationDebugException was raised."
+    ERROR_CODE = "SERVICE_EXECUTION_DEBUG_ERROR"
+    DEFAULT_MESSAGE = "A ServiceExecutionDebugException was raised."

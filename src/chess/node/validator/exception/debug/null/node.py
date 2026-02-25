@@ -22,7 +22,7 @@ class NullNodeException(NodeDebugException, NullException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the validation candidate was null.
+    A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
         *   NodeDebugException
@@ -38,4 +38,4 @@ class NullNodeException(NodeDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_NODE_ERROR"
-    DEFAULT_MESSAGE = "Node validation failed: The validation candidate cannot be null."
+    DEFAULT_MESSAGE = "Node validation failed: The candidate cannot be null."

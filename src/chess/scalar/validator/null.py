@@ -22,7 +22,7 @@ class NullScalarException(ScalarDebugException, NullException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the validation candidate was null.
+    A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
         *   ScalarDebugException
@@ -38,4 +38,4 @@ class NullScalarException(ScalarDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_SCALAR_ERROR"
-    DEFAULT_MESSAGE = "Scalar validation failed: The validation candidate cannot be null."
+    DEFAULT_MESSAGE = "Scalar validation failed: The candidate cannot be null."

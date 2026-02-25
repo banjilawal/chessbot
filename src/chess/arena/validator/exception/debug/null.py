@@ -22,7 +22,7 @@ class NullArenaException(ArenaDebugException, NullException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the validation candidate was null.
+    A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
         *   ArenaDebugException
@@ -38,4 +38,4 @@ class NullArenaException(ArenaDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_ARENA_ERROR"
-    DEFAULT_MESSAGE = "Arena validation failed: The validation candidate cannot be null."
+    DEFAULT_MESSAGE = "Arena validation failed: The candidate cannot be null."

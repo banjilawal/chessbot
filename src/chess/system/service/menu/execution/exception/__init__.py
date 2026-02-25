@@ -1,16 +1,16 @@
-# src/chess/system/service/menu/operation/exception/__init__.py
+# src/chess/system/service/menu/execution/exception/__init__.py
 
 """
-Module: chess.system.service.menu.operation.exception.__init__
+Module: chess.system.service.menu.execution.exception.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SYSTEM.SERVICE.MENU.OPERATION.EXCEPTION PACKAGE CONTENTS ===========#
+# =========== SYSTEM.SERVICE.MENU.EXECUTION.EXCEPTION PACKAGE CONTENTS ===========#
 
 # Packages
 None
 
 # Modules
-from .catchall import ServiceOperationException
-from .debug import ServiceOperationDebugException
+from .catchall import ServiceExecutionException
+from .debug import ServiceExecutionDebugException

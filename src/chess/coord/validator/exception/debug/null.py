@@ -22,7 +22,7 @@ class NullCoordException(CoordDebugException, NullException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the validation candidate was null.
+    A failing ValidationResult was returned because the candidate was null.
 
     # PARENT:
         *   CoordDebugException
@@ -38,4 +38,4 @@ class NullCoordException(CoordDebugException, NullException):
     None
     """
     ERROR_CODE = "NULL_COORD_ERROR"
-    DEFAULT_MESSAGE = "Coord validation failed: The validation candidate cannot be null."
+    DEFAULT_MESSAGE = "Coord validation failed: The candidate cannot be null."
