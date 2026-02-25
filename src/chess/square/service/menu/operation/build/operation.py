@@ -17,6 +17,7 @@ class SquareBuildOperation:
     """
     A class representing a service operation.
     """
+    
     OPERATION_NAME = "build_square"
     PARAMS = Dict[
         "id": int,
@@ -40,5 +41,9 @@ class SquareBuildOperation:
         return self._name
     
     @property
-    def params(self) -> Dict[str, Any]:
+    def parameters(self) -> Dict[str, Any]:
         return self._params
+    
+    @classmethod
+    def key(cls) -> SquareBuildOperation
+        return cls.(name=cls.OPERATION_NAME, params=cls.PARAMS)

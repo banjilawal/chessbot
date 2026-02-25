@@ -63,7 +63,7 @@ class SquareServiceMenu:
         return None
     
     def _verify_arg_count(self, op: ServiceOperation) -> bool:
-        return len(self._request.arguments) == len(op.params)
+        return len(self._request.arguments) == len(op.parameters)
     
     def _verify_identifiers(self, request: ServiceRequest, service_op: ServiceOperation) -> bool:
         for arg_name in request.arguments.keys():
@@ -73,7 +73,7 @@ class SquareServiceMenu:
     
     def verify_arg_type(self, request: ServiceRequest, service_op: ServiceOperation) -> bool:
         for arg_name in request.arguments.keys():
-            if not isinstance(request.arguments[arg_name], service_op.params[arg_name]):
+            if not isinstance(request.arguments[arg_name], service_op.parameters[arg_name]):
                 return False
         return True
         
@@ -82,16 +82,16 @@ class SquareServiceMenu:
                 return False
     
     def _identifier_found(self, indentifier: str, service_op: ServiceOperation) -> bool:
-        return indentifier in service_op.params.keys()
+        return indentifier in service_op.parameters.keys()
     
     def _verify_arg_types(self, request_args: Dict[str, Any], op: ServiceOperation) -> bool:
         matches = 0
         for arg_key in request_args.keys():
-            if arg_key in op.params.keys():
-                if isinstance(request_args[arg_key], op.params[arg_key]):
+            if arg_key in op.parameters.keys():
+                if isinstance(request_args[arg_key], op.parameters[arg_key]):
             
             for arg_name, arg_value in request_args.items():
-                if not self._verify_type_match(arg_value, op.params[arg_name]):
+                if not self._verify_type_match(arg_value, op.parameters[arg_name]):
                     return False
     
     def validate(self):
@@ -105,7 +105,7 @@ class SquareServiceMenu:
         return False
     
     def _verify_type_match(self, arg_value: Any, op: ServiceOperation) -> bool:
-        for param_type in op.params.values():
+        for param_type in op.parameters.values():
             if isinstance(arg_value, param_type):
                 return True
         return False

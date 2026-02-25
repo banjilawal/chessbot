@@ -15,16 +15,16 @@ class ServiceRequest:
     """
     A class representing a service request.
     """
-    _operation: str
+    _command: str
     _arguments: Dict[str: Any]
     
-    def __init__(self, operation: str, arguments: Dict[str, Any]):
-        self._operation = operation
+    def __init__(self, command: str, arguments: Dict[str, Any]):
+        self._command = command
         self._arguments = arguments
     
     @property
-    def operation(self):
-        return self._operation
+    def command(self):
+        return self._command
     
     @property
     def arguments(self):

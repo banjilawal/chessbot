@@ -6,21 +6,22 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
-from chess.square import ValidationException
-
 __all__ = [
-    # ======================# SERVICE_REQUEST_VALIDATION_FAILURE #======================#
+    # ======================# SQUARE_BUILD_REQUEST_FAILURE #======================#
     "ServiceRequestValidationException",
 ]
 
-# ======================# SERVICE_REQUEST_VALIDATION_FAILURE #======================#
-class ServiceRequestValidationException(ValidationException):
+from chess.system import ServiceRequestValidationException
+
+
+# ======================# SQUARE_BUILD_REQUEST_FAILURE #======================#
+class SquareBuildRequestException(ServiceRequestValidationException):
     """
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in ServiceRequestValidator.validate that, prevented a successful
-        validation result from being returned.
+    1.  An error occurred in SquareBuildRequestValidator.validate that, prevented a success
+        result from being returned.
 
     # PARENT:
         *   ValidationException
@@ -34,5 +35,5 @@ class ServiceRequestValidationException(ValidationException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERROR_CODE = "SERVICE_REQUEST_VALIDATION_FAILED"
-    DEFAULT_MESSAGE = "ServiceRequest validation failed."
+    ERROR_CODE = "SQUARE_BUILD_REQUEST_FAILED"
+    DEFAULT_MESSAGE = "SquareBuildRequest validation failed."

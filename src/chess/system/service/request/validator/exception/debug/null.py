@@ -1,7 +1,7 @@
 # src/chess/system/service/request/validator/exception/debug/null.py
 
 """
-Module: chess.system.service.request.validator.exception..debug.null
+Module: chess.system.service.request.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -20,13 +20,11 @@ class ServiceRequestNullException(ServiceRequestDebugException, NullException):
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failing ValidationResult was returned because the candidate was null instead
-        of a ServiceRequest instance.
+    1.  Indicate a ServiceRequest candidate failed the not-null validation test.
 
     # PARENT:
         *   NullException
-        *   NullServiceRequestDebugException
-
+        *   ServiceRequestDebugException
 
     # PROVIDES:
     None

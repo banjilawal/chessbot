@@ -13,3 +13,6 @@ None
 
 # Modules
 from .null import ServiceRequestNullException
+from .command import WrongOperationException
+from .count import NumberOfArgumentsException
+from .identifier import IdentifierException

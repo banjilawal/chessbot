@@ -7,7 +7,6 @@ Created: 2026-02-24
 """
 
 from __future__ import annotations
-
 from typing import Any, cast
 
 from chess.system import (
@@ -17,6 +16,40 @@ from chess.system import (
 
 
 class ServiceRequestValidator(Validator[ServiceRequest]):
+    """
+     # ROLE: Validation, Data Integrity Guarantor, Security.
+
+    # RESPONSIBILITIES:
+    1.  Ensure a ServiceRequest has.
+            *   str
+            *   Dict[str, Any]
+            *   nd consistent before use.
+        Before the OperationValidator checks that the fields match ServiceOperation.key
+
+    # PARENT:
+        *   Validator
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+    None
+
+    # LOCAL METHODS:
+        *   validate(
+                candidate: Any,
+                identity_service: IdentityService = IdentityService()
+            ) -> ValidationResult[ServiceRequest]
+
+    # INHERITED METHODS:
+    None
+    """
     
     @classmethod
     @LoggingLevelRouter.monitor

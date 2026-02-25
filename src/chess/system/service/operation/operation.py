@@ -7,10 +7,13 @@ Created: 2026-02-24
 """
 
 from __future__ import annotations
-from typing import Any, Dict
 
+from abc import ABC, abstractmethod
+from typing import Any, Dict, Generic, TypeVar
 
-class ServiceOperation:
+T = TypeVar("T")
+
+class ServiceOperation(ABC, Generic[T]):
     """
     A class representing a service operation.
     """
@@ -28,3 +31,8 @@ class ServiceOperation:
     @property
     def params(self):
         return self._params
+    
+    @classmethod
+    @abstractmethod
+    def key(cls) -> T:
+        pass
