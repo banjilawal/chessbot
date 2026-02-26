@@ -16,12 +16,6 @@ from chess.system import Command, LoggingLevelRouter, Service
 S = TypeVar("S", bound="Service")
 
 class CommandRouter(ABC, Generic[S]):
-    _service: S
-    _commands: List[Command]
-    
-    def __init__(self, service: Service, commands: List[Command]):
-        self._service = service
-        self._commands = commands
         
     @abstractmethod
     @LoggingLevelRouter.monitor

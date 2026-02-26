@@ -11,10 +11,12 @@ from __future__ import annotations
 from typing import Any, List
 
 from chess.square import SquareBuildCommand, SquareCommand, SquareService
-from chess.system import CommandRouter
+from chess.system import Command, CommandRouter
 
 
 class SquareServiceRouter(CommandRouter[SquareService]):
+    
+
     
     COMMANDS: List[SquareCommand] = [
         SquareBuildCommand, 
@@ -27,12 +29,9 @@ class SquareServiceRouter(CommandRouter[SquareService]):
             service: SquareService = SquareService(),
             commands: List[SquareCommand] = None,
     ):
-        
         self._service = service
         self._commands = commands
-        
-    @property
-    def commands(self) -> List[SquareCommand]:
-        return self._commands
     
+    def route(self, command: Command) -> Any:
+        pass
     
