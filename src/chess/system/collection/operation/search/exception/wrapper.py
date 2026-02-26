@@ -6,15 +6,16 @@ Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
 """
-from typing import Optional
 
-from chess.system import CollectionOperationException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
     # ======================# SEARCH_FAILURE #======================#
     "SearchException",
 ]
 
+from chess.system import CollectionOperationException
 
 # ======================# SEARCH_FAILURE #======================#
 class SearchException(CollectionOperationException):
@@ -70,5 +71,4 @@ class SearchException(CollectionOperationException):
         mthd = mthd or self.MTHD
         op = op or self.OP
         rslt_type = rslt_type or self.RSLT_TYPE
-        
         super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)

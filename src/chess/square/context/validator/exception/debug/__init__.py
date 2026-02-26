@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .null import NullSquareContextException
+from .square import SquareSquareContextException
 from .zero import ZeroSquareContextFlagsException
 from .excess import ExcessSquareContextFlagsException
 from .route import SquareContextValidationRouteException

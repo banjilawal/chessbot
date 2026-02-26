@@ -1,7 +1,7 @@
-# src/chess/vector/validator/exception/null.py
+# src/chess/node/validator/exception/null.py
 
 """
-Module: chess.vector.validator.exception.null
+Module: chess.node.validator.exception.null
 Author: Banji Lawal
 Created: 2025-08-12
 version: 1.0.0
@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NULL_VECTOR EXCEPTION #======================#
-    "NullVectorException",
+    # ======================# NULL_NODE EXCEPTION #======================#
+    "NullNodeException",
 ]
 
 from chess.system import NullException
 
-# ======================# NULL_VECTOR EXCEPTION #======================#
-class NullVectorException(NullException):
+# ======================# NULL_NODE EXCEPTION #======================#
+class NullNodeException(NullException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
@@ -50,8 +50,8 @@ class NullVectorException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_VECTOR_ERROR"
-    MSG = "Vector validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_NODE_ERROR"
+    MSG = "Node validation failed: The candidate cannot be null."
     VAR: None
     VAL: None
     

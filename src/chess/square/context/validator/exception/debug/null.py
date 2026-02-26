@@ -1,32 +1,32 @@
-# src/chess/square/context/validator/exception/debug/null.py
+# src/chess/square/validator/exception/debug/y/token.py
 
 """
-Module: chess.square.context.validator.exception.debug.null
+Module: chess.square.validator.exception.debug.y.token
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import NullException
-from chess.square import SquareContextException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
-    # ======================# NULL_SQUARE_CONTEXT EXCEPTION #======================#
-    "NullSquareContextException",
+    # ======================# SQUARE_TOKEN_Y_AXIS EXCEPTION #======================#
+    "SquareTokenYException",
 ]
 
+from chess.system import TokenException
 
-# ======================# NULL_SQUARE_CONTEXT EXCEPTION #======================#
-class NullSquareContextException(SquareContextException, NullException):
+# ======================# SQUARE_TOKEN_Y_AXIS EXCEPTION #======================#
+class SquareTokenYException(TokenException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-        1.  A failing ValidationResult was returned because the candidate was null
+    1.  Indicate that Square validation failed because the y_axis was token.
 
     # PARENT:
-        *   SquareContextDebugException
-        *   NullException
+        *   DebugException
 
     # PROVIDES:
     None
@@ -35,7 +35,37 @@ class NullSquareContextException(SquareContextException, NullException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See DebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "NULL_SQUARE_CONTEXT_ERROR"
-    MSG = "SquareContext validation failed: The candidate was null."
+    ERR_CODE = "SQUARE_TOKEN_Y_AXIS_ERROR"
+    MSG = "Square validation failed: The y_axis was token."
+    VAR: None
+    VAL: None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+

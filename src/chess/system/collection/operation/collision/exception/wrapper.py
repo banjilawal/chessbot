@@ -6,14 +6,16 @@ Author: Banji Lawal
 Created: 2026-02-21
 Version: 1.0.0
 """
-from typing import Optional
 
-from chess.system import CollectionOperationException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
     # ======================# COLLISION_DETECTION_FAILURE #======================#
     "CollisionDetectionException",
 ]
+
+from chess.system import CollectionOperationException
 
 
 # ======================# COLLISION_DETECTION_FAILURE #======================#
@@ -70,5 +72,4 @@ class CollisionDetectionException(CollectionOperationException):
         mthd = mthd or self.MTHD
         op = op or self.OP
         rslt_type = rslt_type or self.RSLT_TYPE
-        
         super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)

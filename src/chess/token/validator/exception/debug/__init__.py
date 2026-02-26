@@ -13,4 +13,4 @@ version: 1.0.0
 from .registration import *
 
 # Modules
-from .null import NullTokenException
+from .token import TokenTokenException

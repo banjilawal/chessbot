@@ -1,3 +1,12 @@
+# src/chess/system/err/debug/debug.py
+
+"""
+Module: chess.system.err.debug.debug
+Author: Banji Lawal
+Created: 2026-02-25
+version: 1.0.0
+"""
+
 from __future__ import annotations
 from typing import Optional
 
@@ -7,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import ChessException
-
 
 # ======================# DEBUG EXCEPTION #======================#
 class DebugException(ChessException):
@@ -27,7 +35,7 @@ class DebugException(ChessException):
     2.  The Syntax is: [Class] operation failed: [Description]
 
     # PARENT:
-        *   Exception
+        *   ChessException
 
     # PROVIDES:
     None
@@ -56,7 +64,7 @@ class DebugException(ChessException):
     MSG: str = "A variable had an error."
     VAR: None
     VAL: None
-
+    
     _var: Optional[str]
     _val: Optional[None]
     
@@ -87,3 +95,4 @@ class DebugException(ChessException):
     
     def __str__(self):
         return f"{super().__str__()}, var:{self._var}, val:{self._val}"
+

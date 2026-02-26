@@ -14,4 +14,4 @@ from .owner import *
 from .board import *
 
 # Modules
-from .null import NullTeamException
+from .team import TeamTeamException

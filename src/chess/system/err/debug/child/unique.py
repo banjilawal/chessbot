@@ -1,11 +1,14 @@
-# src/chess/system/err/consistency/collision.py
+# src/chess/system/err/debug/child/__init__.py
 
 """
-Module: chess.system.err.consistency.collision
+Module: chess.system.err.debug.child.__init__
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2026-02-25
 version: 1.0.0
 """
+
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
     # ======================# COLLISION EXCEPTION #======================#
@@ -13,7 +16,6 @@ __all__ = [
 ]
 
 from chess.system import DebugException
-
 
 # ======================# COLLISION EXCEPTION #======================#
 class UniqueAttributeException(DebugException):
@@ -33,7 +35,36 @@ class UniqueAttributeException(DebugException):
     None
 
     # INHERITED ATTRIBUTES:
-     None
+        *   See DebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "COLLISION_ERROR"
-    MSG = "UniqueAttributeException"
+    ERR_CODE = "UNIQUE_ATTRIBUTE_COLLISION_ERROR"
+    MSG = "Two objects have the same value for an attribute  that should be unique."
+    VAR: None
+    VAL: None
+
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

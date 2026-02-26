@@ -72,5 +72,4 @@ class SquareBuildCommandFabException(BuildException):
         mthd = mthd or self.MTHD
         op = op or self.OP
         rslt_type = rslt_type or self.RSLT_TYPE
-        
         super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)

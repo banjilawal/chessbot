@@ -1,30 +1,30 @@
-# src/chess/square/validator/exception/null.py
+# src/chess/square/validator/exception/square.py
 
 """
-Module: chess.square.validator.exception.null
+Module: chess.square.validator.exception.square
 Author: Banji Lawal
 Created: 2025-11-19
 """
 
 __all__ = [
-    # ======================# NULL_SQUARE_STATE EXCEPTION #======================#
-    "NullSquareStateException",
+    # ======================# SQUARE_SQUARE_STATE EXCEPTION #======================#
+    "SquareSquareStateException",
 ]
 
-from chess.system import DebugException, NullException
+from chess.system import DebugException, SquareException
 
-# ======================# NULL_SQUARE_STATE EXCEPTION #======================#
-class NullSquareStateException(DebugException, NullException):
+# ======================# SQUARE_SQUARE_STATE EXCEPTION #======================#
+class SquareSquareStateException(DebugException, SquareException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  A failure ValidationResult was returned because the validation candidate was null instead of
+    1.  A failure ValidationResult was returned because the validation candidate was square instead of
         being a SquareState.
 
     # PARENT:
         *   DebugException
-        *   NullException
+        *   SquareException
 
     # PROVIDES:
     None
@@ -35,5 +35,5 @@ class NullSquareStateException(DebugException, NullException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NULL_SQUARE_STATE"
-    MSG = "SquareState validation failed: The candidate cannot be null."
+    ERR_CODE = "SQUARE_SQUARE_STATE"
+    MSG = "SquareState validation failed: The candidate cannot be square."

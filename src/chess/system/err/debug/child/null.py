@@ -1,9 +1,9 @@
-# src/chess/system/err/null.py
+# src/chess/system/err/debug/child/null.py
 
 """
-Module: chess.system.err.null
+Module: chess.system.err.debug.child.null
 Author: Banji Lawal
-Created: 2025-11-21
+Created: 2026-02-25
 version: 1.0.0
 """
 
@@ -17,7 +17,6 @@ __all__ = [
 
 from chess.system import DebugException
 
-
 #======================# NULL EXCEPTION #======================#
 class NullException(DebugException):
     """
@@ -29,7 +28,7 @@ class NullException(DebugException):
     3.  Super for null errors not covered by lower level NullException subclasses.
 
     # PARENT:
-        *   ChessException
+        *   DebugException
 
     # PROVIDES:
     None
@@ -38,10 +37,39 @@ class NullException(DebugException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See DebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
     ERR_CODE = "NULL_ERROR"
-    MSG = "cannot be null."
+    MSG = "variable cannot be null."
+    VAR: None
+    VAL: None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
     
 
 

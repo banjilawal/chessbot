@@ -17,7 +17,6 @@ __all__ = [
 
 from chess.system import ChessException
 
-
 # ======================# WRAPPER EXCEPTION #======================#
 class WrapperException(ChessException):
     """

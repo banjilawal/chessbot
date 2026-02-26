@@ -79,7 +79,7 @@ class SuperClassException(ChessException):
         cls_name = cls_name or self.__class__.__name__
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-
+        
         super().__init__(msg=msg, err_code=err_code, ex=ex)
         _cls_name = cls_name
 
