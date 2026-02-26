@@ -1,7 +1,7 @@
-# src/chess/edge/builder/exception/wrapper.py
+# src/chess/scalar/builder/exception/wrapper.py
 
 """
-Module: chess.edge.builder.exception.wrapper
+Module: chess.scalar.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# EDGE_BUILD_FAILURE #======================#
-    "EdgeBuildException",
+    # ======================# SCALAR_BUILD_FAILURE #======================#
+    "ScalarBuildException",
 ]
 
 from chess.system import BuildException
 
 
-# ======================# EDGE_BUILD_FAILURE #======================#
-class EdgeBuildException(BuildException):
+# ======================# SCALAR_BUILD_FAILURE #======================#
+class ScalarBuildException(BuildException):
     """
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in EdgeBuilder.build that, prevented BuildResult.success() from 
+    1.  An error occurred in ScalarBuilder.build that, prevented BuildResult.success() from 
         being returned.
 
     # PARENT:
@@ -53,8 +53,8 @@ class EdgeBuildException(BuildException):
     # INHERITED METHODS:
         *   See WrapperException class for inherited methods.
     """
-    ERR_CODE = "EDGE_BUILD_FAILED"
-    MSG = "Edge build failed."
+    ERR_CODE = "SCALAR_BUILD_FAILED"
+    MSG = "Scalar build failed."
     MTHD = "build"
     OP = "Build"
     RSLT_TYPE = "BuildResult"

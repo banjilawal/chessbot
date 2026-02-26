@@ -3,12 +3,12 @@
 """
 Module: chess.square.context.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-22
+Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import BuildException
-from chess.square import SquareContextException
+from __future__ import annotations
+from typing import Optional
 
 
 __all__ = [
@@ -16,15 +16,16 @@ __all__ = [
     "SquareContextBuildException",
 ]
 
+from chess.system import BuildException
 
 # ======================# SQUARE_CONTEXT_BUILD_FAILURE #======================#
 class SquareContextBuildException(BuildException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    An error occurred in SquareContextBuilder.build that, prevented BuildResult.success()
-    from being returned.
+    1.  Wrap debug exceptions indicating why a square_context build operation failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   BuildException
@@ -36,7 +37,42 @@ class SquareContextBuildException(BuildException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See BuildException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:)
+        *   err_code (str)
+        *   msg (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "SQUARE_CONTEXT_BUILD_FAILED"
     MSG = "SquareContext build failed."
+    MTHD = "build"
+    OP = "Build"
+    RSLT_TYPE = "BuildResult"
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            mthd: Optional[str] = None,
+            op: Optional[str] = None,
+            rslt_type: Optional[str] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        op = op or self.OP
+        rslt_type = rslt_type or self.RSLT_TYPE
+        
+        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+

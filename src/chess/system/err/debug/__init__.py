@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== SYSTEM.ERR.DEBUG PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .child import *
 
 # Modules
 from .root import  DebugException

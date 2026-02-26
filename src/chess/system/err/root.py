@@ -37,9 +37,9 @@ class ChessException(Exception):
     # INHERITED ATTRIBUTES:
         *   See Exception class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
+    # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
+        *   msg (str
         *   ex (Optional[Exception])
 
     # LOCAL METHODS:
@@ -51,18 +51,18 @@ class ChessException(Exception):
     ERR_CODE = "CHESS_ERROR"
     MSG = "Chess error occurred."
     
-    _msg: str
     _err_code: str
+    _msg: str
     _ex: Optional[Exception]
     
     def __init__(
             self,
-            msg: str = MSG,
             err_code: str = ERR_CODE,
+            msg: str = MSG,
             ex: Optional[Exception] = None
     ):
-        msg = msg or self.__class__.__name__
         err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
         
         super().__init__(msg)
         self._ex = ex
@@ -82,7 +82,7 @@ class ChessException(Exception):
         return self._msg
     
     def __str__(self):
-        return f"exception:{self.__name__}:, errr_code:{self._err_code}, msg:{self._msg}"
+        return f"exception:{self.__name__}:, errr_code:{self._err_code}, msg:{self._msg}, ex:{self._ex}"
 
 
 

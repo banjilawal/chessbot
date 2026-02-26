@@ -3,12 +3,12 @@
 """
 Module: chess.team.context.builder.exception.wrapper
 Author: Banji Lawal
-Created: 2025-11-24
+Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.team import TeamContextException
-from chess.system import BuildException
+from __future__ import annotations
+from typing import Optional
 
 
 __all__ = [
@@ -16,19 +16,18 @@ __all__ = [
     "TeamContextBuildException",
 ]
 
+from chess.system import BuildException
 
 # ======================# TEAM_CONTEXT_BUILD_FAILURE #======================#
-class TeamContextBuildException(TeamContextException, BuildException):
+class TeamContextBuildException(BuildException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Any failed check during the TeamContext build creates an exception. Failed check exceptions are encapsulated
-        in an TeamContextBuildException which is sent to the caller in a BuildResult.
-    2.  The TeamContextBuildException provides a trace for debugging and application recovery.
+    1.  Wrap debug exceptions indicating why a team_context build operation failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
-        *   TeamContextException
         *   BuildException
 
     # PROVIDES:
@@ -38,7 +37,42 @@ class TeamContextBuildException(TeamContextException, BuildException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See BuildException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:)
+        *   err_code (str)
+        *   msg (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "TEAM_CONTEXT_BUILD_FAILED"
     MSG = "TeamContext build failed."
+    MTHD = "build"
+    OP = "Build"
+    RSLT_TYPE = "BuildResult"
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            mthd: Optional[str] = None,
+            op: Optional[str] = None,
+            rslt_type: Optional[str] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        op = op or self.OP
+        rslt_type = rslt_type or self.RSLT_TYPE
+        
+        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+

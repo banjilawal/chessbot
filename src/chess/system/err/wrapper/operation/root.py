@@ -7,12 +7,13 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
     # ======================# OPERATION_FAILURE #======================#
     "OperationException",
 ]
-
-from typing import Optional
 
 from chess.system import WrapperException
 
@@ -44,74 +45,70 @@ class OperationException(WrapperException):
     2.  The Syntax is: [Class] operation failed.
 
     # PARENT:
-        *   ChessException
+        *   WrapperException
 
     # PROVIDES:
     None
 
-   # LOCAL ATTRIBUTES:
-        *   op_name (Optional[str])
+    # LOCAL ATTRIBUTES:
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
-    INHERITED ATTRIBUTES:
+    # INHERITED ATTRIBUTES:
         *   See WrapperException class for inherited attributes.
 
-    # CONSTRUCTOR PARAMETERS:
-        # LOCAL ATTRIBUTES:
-            *   op_name (Optional[str])
-            *   rslt (Optional[str])
-            
-        # INHERITED ATTRIBUTES:
-            See WrapperException class for inherited attributes.
+    # CONSTRUCTOR PARAMETERS:)
+        *   err_code (str)
+        *   msg (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
 
     # LOCAL METHODS:
-    None
+   None
 
     # INHERITED METHODS:
-    *   See WrapperException class for inherited methods.
+        *   See WrapperException class for inherited methods.
     """
-    ERR_CODE = "OPERATION_FAILURE"
-    MSG = "Operation failed."
+    ERR_CODE = "METHOD_FAILURE"
+    MSG = "Method failed."
     MTHD: None
-    OP_NAME = None
-    RSLT: None
+    OP: None
+    RSLT_TYPE: None
     
-    _op_name: Optional[str]
-    _rslt: Optional[str]
+    _op: Optional[str]
+    _rslt_type: Optional[str]
     
     def __init__(
             self,
-            rslt: Optional[str] = None,
-            op_name: Optional[str] = None,
-            mthd: Optional[str] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
+            mthd: Optional[str] = None,
+            op: Optional[str] = None,
+            rslt_type: Optional[str] = None,
     ):
-        rslt = rslt or self.RSLT
-        op_name = op_name or self.OP_NAME
-        mthd = mthd or self.MTHD
-        msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-    
-        super().__init__(msg=msg, err_code=err_code, ex=ex)
-        self._rslt = rslt
-        self._mthd = mthd
-        self._op_name = op_name or self.OP_NAME
-    
-    @property
-    def rslt(self) -> Optional[str]:
-        return self._rslt
-    
-    @property
-    def mthd(self) -> Optional[str]:
-        return self._mthd
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        op = op or self.OP
+        rslt_type = rslt_type or self.RSLT_TYPE
+        
+        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd)
+        self._op = op
+        self._rslt_type = rslt_type
     
     @property
-    def op_name(self) -> Optional[str]:
-        return self._op_name
+    def op(self) -> Optional[str]:
+        return self._op
+    
+    @property
+    def rslt_type(self) -> Optional[str]:
+        return self._rslt_type
     
     def __str__(self):
-        return f"{super().__str__()}, op_name:{self._op_name}, rslt:{self._rslt}"
+        return f"{super().__str__()}, op:{self._op}, rslt_type:{self._rslt_type}"
 
 
     

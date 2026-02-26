@@ -34,7 +34,21 @@ class SearchException(CollectionOperationException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See CollectionException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:)
+        *   err_code (str)
+        *   msg (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "SEARCH_FAILURE"
     MSG = "Search failed."
@@ -44,17 +58,17 @@ class SearchException(CollectionOperationException):
     
     def __init__(
             self,
-            rslt: Optional[str] = None,
-            op_name: Optional[str] = None,
-            mthd: Optional[str] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
+            mthd: Optional[str] = None,
+            op: Optional[str] = None,
+            rslt_type: Optional[str] = None,
     ):
-        rslt = rslt or self.RSLT
-        op_name = op_name or self.OP_NAME
-        mthd = mthd or self.MTHD
-        msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        op = op or self.OP
+        rslt_type = rslt_type or self.RSLT_TYPE
         
-        super().__init__(msg=msg, err_code=err_code, ex=ex, rslt=rslt, mthd=mthd, op_name=op_name)
+        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)

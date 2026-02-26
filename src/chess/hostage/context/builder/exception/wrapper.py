@@ -1,7 +1,7 @@
-# src/chess/edge/builder/exception/wrapper.py
+# src/chess/hostage/context/builder/exception/wrapper.py
 
 """
-Module: chess.edge.builder.exception.wrapper
+Module: chess.hostage.context.builder.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -10,22 +10,22 @@ version: 1.0.0
 from __future__ import annotations
 from typing import Optional
 
+
 __all__ = [
-    # ======================# EDGE_BUILD_FAILURE #======================#
-    "EdgeBuildException",
+    # ======================# HOSTAGE_CONTEXT_BUILD_FAILURE #======================#
+    "HostageContextBuildException",
 ]
 
 from chess.system import BuildException
 
-
-# ======================# EDGE_BUILD_FAILURE #======================#
-class EdgeBuildException(BuildException):
+# ======================# HOSTAGE_CONTEXT_BUILD_FAILURE #======================#
+class HostageContextBuildException(BuildException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  An error occurred in EdgeBuilder.build that, prevented BuildResult.success() from 
-        being returned.
+    1.  Wrap debug exceptions indicating why a hostage_context build operation failed. The exception chain
+        traces the ultimate source of failure.
 
     # PARENT:
         *   BuildException
@@ -37,7 +37,7 @@ class EdgeBuildException(BuildException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See OperationException class for inherited attributes.
+        *   See BuildException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:)
         *   err_code (str)
@@ -53,8 +53,8 @@ class EdgeBuildException(BuildException):
     # INHERITED METHODS:
         *   See WrapperException class for inherited methods.
     """
-    ERR_CODE = "EDGE_BUILD_FAILED"
-    MSG = "Edge build failed."
+    ERR_CODE = "HOSTAGE_CONTEXT_BUILD_FAILED"
+    MSG = "HostageContext build failed."
     MTHD = "build"
     OP = "Build"
     RSLT_TYPE = "BuildResult"
@@ -75,3 +75,4 @@ class EdgeBuildException(BuildException):
         rslt_type = rslt_type or self.RSLT_TYPE
         
         super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+

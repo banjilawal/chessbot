@@ -14,4 +14,4 @@ None
 
 # Modules
 from .square import VictorNotOccupyingCapturedSquareException
-from .disabled import  VictorCannotBeDisableTokenException
+from .disabled import  VictorCannotBeDisableHostageException

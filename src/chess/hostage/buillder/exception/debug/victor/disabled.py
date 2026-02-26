@@ -11,14 +11,14 @@ from chess.hostage import HostageException
 from chess.system import DebugException
 
 __all__ = [
-    # ======================# VICTOR_CANNOT_BE_DISABLED_TOKEN EXCEPTION #======================#
-    "VictorCannotBeDisableTokenException",
+    # ======================# VICTOR_CANNOT_BE_DISABLED_HOSTAGE EXCEPTION #======================#
+    "VictorCannotBeDisableHostageException",
 ]
 
 
-# ======================# VICTOR_CANNOT_BE_DISABLED_TOKEN EXCEPTION #======================#
+# ======================# VICTOR_CANNOT_BE_DISABLED_HOSTAGE EXCEPTION #======================#
 
-class VictorCannotBeDisableTokenException(HostageException, DebugException):
+class VictorCannotBeDisableHostageException(HostageException, DebugException):
     """
     # ROLE: Debug, Error Tracing
 
@@ -39,5 +39,5 @@ class VictorCannotBeDisableTokenException(HostageException, DebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "VICTOR_CANNOT_BE_DISABLED_TOKEN_ERROR"
+    ERR_CODE = "VICTOR_CANNOT_BE_DISABLED_HOSTAGE_ERROR"
     MSG = "Hostage build failed: Victor cannot be disabled. It must be active during the build."

@@ -12,10 +12,11 @@ __all__ = [
     "UnsupportedEmptyUpdateResultException",
 ]
 
+from chess.system import MethodImplementationException
 
 
 # ======================# UNSUPPORTED_EMPTY_UPDATE_RESULT_STATE EXCEPTION #======================#
-class UnsupportedEmptyUpdateResultException(UnsupportedDataResultStateException):
+class UnsupportedEmptyUpdateResultException(MethodImplementationException):
     """
     # ROLE: Information, Reporting, Debug
 
