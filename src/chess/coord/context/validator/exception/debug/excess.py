@@ -11,13 +11,13 @@ from chess.system import ContextFlagCountException
 from chess.coord import CoordContextException
 
 __all__ = [
-    # ========================= EXCESSIVE_COORD_CONTEXT_FLAG EXCEPTION =========================#
-    "ExcessiveCoordContextFlagsException"
+    # ========================= ARENA_COORD_CONTEXT_FLAG EXCEPTION =========================#
+    "ArenaCoordContextFlagsException"
 ]
 
 
-# ========================= EXCESSIVE_COORD_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveCoordContextFlagsException(CoordContextException, ContextFlagCountException):
+# ========================= ARENA_COORD_CONTEXT_FLAG EXCEPTION =========================#
+class ArenaCoordContextFlagsException(CoordContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -38,8 +38,8 @@ class ExcessiveCoordContextFlagsException(CoordContextException, ContextFlagCoun
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESSIVE_COORD_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_COORD_CONTEXT_FLAG_ERROR"
     MSG = (
-        "Excessive CoordContext flags were set. an Coord search can only use one-and-only "
+        "Arena CoordContext flags were set. an Coord search can only use one-and-only "
         "map flag at a time."
     )

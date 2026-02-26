@@ -13,7 +13,7 @@ from chess.coord import CoordValidator
 from chess.domain import NullVisitorSearchContextException, VisitorSearchContext
 from chess.rank import RankBoundsChecker, RankBoundsException
 from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
-from chess.neighbor import ExcessiveVisitationSearchParamsException, ZeroVisitationSearchParamsException
+from chess.neighbor import ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException
 
 
 class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
@@ -60,8 +60,8 @@ class VisitorSearchContextValidator(Validator[VisitorSearchContext]):
             
             if len(search_context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    ExcessiveVisitationSearchParamsException(
-                        f"{method} {ExcessiveVisitationSearchParamsException.MSG}"
+                    ArenaVisitationSearchParamsException(
+                        f"{method} {ArenaVisitationSearchParamsException.MSG}"
                         )
                 )
             

@@ -65,7 +65,7 @@ class CoordContextBuilder(Builder[CoordContext]):
         # RAISES:
             *   ZeroCoordContextFlagsException
             *   CoordContextBuildException
-            *   ExcessiveCoordContextFlagsException
+            *   ArenaCoordContextFlagsException
         """
         method = "CoordContextBuilder.builder"
         

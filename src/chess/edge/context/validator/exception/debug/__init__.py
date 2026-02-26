@@ -15,5 +15,5 @@ None
 # Modules
 from .null import NullEdgeContextException
 from .zero import ZeroEdgeContextFlagsException
-from .excess import ExcessiveEdgeContextFlagsException
+from .excess import ArenaEdgeContextFlagsException
 from .route import EdgeContextValidationRouteException

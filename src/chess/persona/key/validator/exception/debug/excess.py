@@ -11,13 +11,13 @@ from chess.system import ContextFlagCountException
 from chess.persona import PersonaKeyException
 
 __all__ = [
-    # ========================= EXCESSIVE_PERSONA_KEY EXCEPTION =========================#
-    "ExcessivePersonaKeysException"
+    # ========================= ARENA_PERSONA_KEY EXCEPTION =========================#
+    "ArenaPersonaKeysException"
 ]
 
 
-# ========================= EXCESSIVE_PERSONA_KEY EXCEPTION =========================#
-class ExcessivePersonaKeysException(PersonaKeyException, ContextFlagCountException):
+# ========================= ARENA_PERSONA_KEY EXCEPTION =========================#
+class ArenaPersonaKeysException(PersonaKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -37,7 +37,7 @@ class ExcessivePersonaKeysException(PersonaKeyException, ContextFlagCountExcepti
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESSIVE_PERSONA_KEY_ERROR"
+    ERR_CODE = "ARENA_PERSONA_KEY_ERROR"
     MSG = (
         "PersonaKey validation failed: More than one attribute is not-null. Only one attribute should be enabled."
     )

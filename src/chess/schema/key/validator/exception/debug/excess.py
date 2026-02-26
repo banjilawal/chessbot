@@ -12,11 +12,11 @@ from chess.system import ContextFlagCountException
 
 __all__ = [
     # ========================= EXCESS_SCHEMA_KEYS_VALIDATION EXCEPTION =========================#
-    "ExcessiveSchemaKeysException",
+    "ArenaSchemaKeysException",
 ]
 
 # ========================= EXCESS_SCHEMA_KEYS_VALIDATION EXCEPTION =========================#
-class ExcessiveSchemaKeysException(SchemaKeyException, ContextFlagCountException):
+class ArenaSchemaKeysException(SchemaKeyException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 

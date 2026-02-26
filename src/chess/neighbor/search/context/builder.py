@@ -13,7 +13,7 @@ from chess.coord import Coord, CoordValidator
 from chess.rank import Queen, RankSpec
 from chess.system import BuildResult, Builder, IdValidator, LoggingLevelRouter, NameValidator
 from chess.neighbor import (
-    VisitationSearchContext, ExcessiveVisitationSearchParamsException, ZeroVisitationSearchParamsException, VisitationInvalidRankNameParamException,
+    VisitationSearchContext, ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException, VisitationInvalidRankNameParamException,
 )
 
 class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
@@ -64,7 +64,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
 
             if param_count > 1:
                 return BuildResult(
-                    ExcessiveVisitationSearchParamsException(f"{method}: {ExcessiveVisitationSearchParamsException.MSG}")
+                    ArenaVisitationSearchParamsException(f"{method}: {ArenaVisitationSearchParamsException.MSG}")
                 )
 
             if piece_id is not None:

@@ -13,7 +13,7 @@ from chess.arena import ArenaService
 from chess.player import PlayerService
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.team import (
-    ExcessiveTeamContextFlagsException, NullTeamContextException, TeamContext, TeamContextValidationException,
+    ArenaTeamContextFlagsException, NullTeamContextException, TeamContext, TeamContextValidationException,
     TeamContextValidationRouteException, ZeroTeamContextFlagsException
 )
 
@@ -70,7 +70,7 @@ class TeamContextValidator(Validator[TeamContext]):
             *   TypeError
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException
-            *   ExcessiveTeamContextFlagsException
+            *   ArenaTeamContextFlagsException
             *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """
@@ -113,8 +113,8 @@ class TeamContextValidator(Validator[TeamContext]):
             return ValidationResult.failure(
                 TeamContextValidationException(
                     msg=f"{method}: {TeamContextValidationException.ERR_CODE}",
-                    ex=ExcessiveTeamContextFlagsException(
-                        f"{method}: {ExcessiveTeamContextFlagsException.MSG}"
+                    ex=ArenaTeamContextFlagsException(
+                        f"{method}: {ArenaTeamContextFlagsException.MSG}"
                     )
                 )
             )

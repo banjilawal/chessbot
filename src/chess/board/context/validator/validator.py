@@ -13,7 +13,7 @@ from chess.arena.service import ArenaService
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.board import (
     BoardContextValidationException, ZeroBoardContextFlagsException, BoardContext,
-    NullBoardContextException, ExcessiveBoardContextFlagsException, BoardContextValidationRouteException
+    NullBoardContextException, ArenaBoardContextFlagsException, BoardContextValidationRouteException
 )
 
 
@@ -66,7 +66,7 @@ class BoardContextValidator(Validator[BoardContext]):
             *   TypeError
             *   NullBoardContextException
             *   ZeroBoardContextFlagsException
-            *   ExcessiveBoardContextFlagsException
+            *   ArenaBoardContextFlagsException
             *   BoardContextValidationRouteException
             *   BoardContextValidationException
         """
@@ -109,8 +109,8 @@ class BoardContextValidator(Validator[BoardContext]):
             return ValidationResult.failure(
                 BoardContextValidationException(
                     msg=f"{method}: {BoardContextValidationException.MSG}",
-                    ex=ExcessiveBoardContextFlagsException(
-                        f"{method}: {ExcessiveBoardContextFlagsException.MSG}"
+                    ex=ArenaBoardContextFlagsException(
+                        f"{method}: {ArenaBoardContextFlagsException.MSG}"
                     )
                 )
             )

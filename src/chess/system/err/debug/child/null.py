@@ -23,10 +23,8 @@ class NullException(DebugException):
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Parent of exception that indicate an entity, method, or operation requires an object
-        or resource but  but got null instead.
-    3.  Super for null errors not covered by lower level NullException subclasses.
-
+    1.  Indicate that an object is null where it should not be.
+    
     # PARENT:
         *   DebugException
 
@@ -70,6 +68,8 @@ class NullException(DebugException):
         var = var or self.VAR
         val = val or self.VAL
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+
+
     
 
 

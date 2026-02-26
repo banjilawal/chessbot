@@ -11,13 +11,13 @@ from chess.system import ContextFlagCountException
 from chess.edge import EdgeContextException
 
 __all__ = [
-    # ========================= EXCESSIVE_EDGE_CONTEXT_FLAG EXCEPTION =========================#
-    "ExcessiveEdgeContextFlagsException"
+    # ========================= ARENA_EDGE_CONTEXT_FLAG EXCEPTION =========================#
+    "ArenaEdgeContextFlagsException"
 ]
 
 
-# ========================= EXCESSIVE_EDGE_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveEdgeContextFlagsException(EdgeContextException, ContextFlagCountException):
+# ========================= ARENA_EDGE_CONTEXT_FLAG EXCEPTION =========================#
+class ArenaEdgeContextFlagsException(EdgeContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -37,5 +37,5 @@ class ExcessiveEdgeContextFlagsException(EdgeContextException, ContextFlagCountE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESSIVE_EDGE_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_EDGE_CONTEXT_FLAG_ERROR"
     MSG = "EdgeContext validation failed: More than one flag was enable."

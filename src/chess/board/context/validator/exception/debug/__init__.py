@@ -15,5 +15,5 @@ None
 # Modules
 from .null import NullBoardContextException
 from .zero import ZeroBoardContextFlagsException
-from .excess import ExcessiveBoardContextFlagsException
+from .excess import ArenaBoardContextFlagsException
 from .route import BoardContextValidationRouteException

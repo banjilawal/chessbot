@@ -13,7 +13,7 @@ from chess.rank import RankBoundsChecker
 from chess.coord import Coord, CoordValidator
 from chess.system import Builder, BuildResult, IdValidator, LoggingLevelRouter, NameValidator
 from chess.domain import (
-    VisitorSearchContext, ExcessiveVisitorSearchParamsException, NoVisitorSearchFilterSelectionException
+    VisitorSearchContext, ArenaVisitorSearchParamsException, NoVisitorSearchFilterSelectionException
 )
 
 
@@ -48,8 +48,8 @@ class VisitorSearchContextBuilder(Builder[VisitorSearchContext]):
             
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveVisitorSearchParamsException(
-                        f"{method}: {ExcessiveVisitorSearchParamsException.MSG}"
+                    ArenaVisitorSearchParamsException(
+                        f"{method}: {ArenaVisitorSearchParamsException.MSG}"
                     )
                 )
             

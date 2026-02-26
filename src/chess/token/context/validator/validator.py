@@ -19,7 +19,7 @@ from chess.system import (
     ValidationResult
 )
 from chess.token import (
-    ExcessiveTokenContextFlagsException, NullTokenContextException, TokenContext, TokenContextValidationException,
+    ArenaTokenContextFlagsException, NullTokenContextException, TokenContext, TokenContextValidationException,
     TokenContextValidationRouteException, ZeroTokenContextFlagsException
 )
 
@@ -81,7 +81,7 @@ class TokenContextValidator(Validator[TokenContext]):
             *   TypeError
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException
-            *   ExcessiveTeamContextFlagsException
+            *   ArenaTeamContextFlagsException
             *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """
@@ -124,8 +124,8 @@ class TokenContextValidator(Validator[TokenContext]):
             return ValidationResult.failure(
                 TokenContextValidationException(
                     msg=f"{method}: {TokenContextValidationException.ERR_CODE}",
-                    ex=ExcessiveTokenContextFlagsException(
-                        f"{method}: {ExcessiveTokenContextFlagsException.MSG}"
+                    ex=ArenaTokenContextFlagsException(
+                        f"{method}: {ArenaTokenContextFlagsException.MSG}"
                     )
                 )
             )

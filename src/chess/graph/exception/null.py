@@ -1,7 +1,7 @@
-# src/chess/token/validator/exception/debug/null.py
+# src/chess/graph/validator/exception/debug/null.py
 
 """
-Module: chess.token.validator.exception.debug.null
+Module: chess.graph.validator.exception.debug.null
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-#======================# NULL_TOKEN_EXCEPTION #======================#
-    "NullTokenException",
+#======================# NULL_GRAPH_EXCEPTION #======================#
+    "NullGraphException",
 ]
 
 from chess.system import NullException
 
-#======================# NULL_TOKEN_EXCEPTION #======================#
-class NullTokenException(NullException):
+#======================# NULL_GRAPH_EXCEPTION #======================#
+class NullGraphException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a token is null where it should not be.
+    1.  Indicate that a graph is null where it should not be.
     
     # PARENT:
         *   NullException
@@ -50,8 +50,8 @@ class NullTokenException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_TOKEN_EXCEPTION"
-    MSG = "Token cannot be null."
+    ERR_CODE = "NULL_GRAPH_EXCEPTION"
+    MSG = "Graph cannot be null."
     VAR: None
     VAL: None
     

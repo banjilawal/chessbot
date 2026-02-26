@@ -51,7 +51,7 @@ class MethodImplementationException(DebugException):
         *   See DebugException class for inherited methods.
     """
     ERR_CODE = "METHOD_NOT_IMPLEMENTED_WARNING"
-    MSG = "The method is not implemented."
+    MSG = "This method is not implemented."
     VAR: None
     VAL: None
     
@@ -68,4 +68,3 @@ class MethodImplementationException(DebugException):
         var = var or self.VAR
         val = val or self.VAL
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
-

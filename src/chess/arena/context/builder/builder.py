@@ -13,7 +13,7 @@ from chess.game import Game, GameService
 from chess.team import Team, TeamService
 from chess.system import Builder, BuildResult, NoExecutionRouteException, IdentityService, LoggingLevelRouter
 from chess.arena import (
-    ArenaContext, ArenaContextBuildException, ExcessiveArenaContextFlagsException, ZeroArenaContextFlagsException,
+    ArenaContext, ArenaContextBuildException, ExcessArenaContextFlagsException, ZeroArenaContextFlagsException,
 )
 
 
@@ -81,7 +81,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
         # RAISES:
             *   ZeroArenaContextFlagsException
             *   ArenaContextBuildException
-            *   ExcessiveArenaContextFlagsException
+            *   ExcessArenaContextFlagsException
         """
         method = "ArenaSearchContextBuilder.builder"
         try:
@@ -97,7 +97,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveArenaContextFlagsException(f"{method}: {ExcessiveArenaContextFlagsException}")
+                    ExcessArenaContextFlagsException(f"{method}: {ExcessArenaContextFlagsException}")
                 )
             # After verifying only one PlayerArena attribute-value-tuple is enabled, validate it.
             

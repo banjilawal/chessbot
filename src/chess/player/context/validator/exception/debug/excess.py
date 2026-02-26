@@ -11,13 +11,13 @@ from chess.system import ContextFlagCountException
 from chess.agent import InvalidAgentContextException
 
 __all__ = [
-    # ========================= EXCESSIVE_AGENT_CONTEXT_FLAG EXCEPTION =========================#
-    "ExcessiveAgentContextFlagsException"
+    # ========================= ARENA_AGENT_CONTEXT_FLAG EXCEPTION =========================#
+    "ArenaAgentContextFlagsException"
 ]
 
 
-# ========================= EXCESSIVE_AGENT_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveAgentContextFlagsException(InvalidAgentContextException, ContextFlagCountException):
+# ========================= ARENA_AGENT_CONTEXT_FLAG EXCEPTION =========================#
+class ArenaAgentContextFlagsException(InvalidAgentContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -38,8 +38,8 @@ class ExcessiveAgentContextFlagsException(InvalidAgentContextException, ContextF
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESSIVE_AGENT_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_AGENT_CONTEXT_FLAG_ERROR"
     MSG = (
-        "Excessive AgentContext flags were set. an Agent search can only use one-and-only "
+        "Arena AgentContext flags were set. an Agent search can only use one-and-only "
         "map flag at a time."
     )

@@ -17,7 +17,7 @@ from chess.system import (
     NumberValidator, Builder, BuildResult, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.token import (
-    ExcessiveTokenContextFlagsException, TokenContext, TokenContextBuildException,
+    ArenaTokenContextFlagsException, TokenContext, TokenContextBuildException,
     TokenContextBuildRouteException, ZeroTokenContextFlagsException
 )
 
@@ -93,7 +93,7 @@ class TokenContextBuilder(Builder[TokenContext]):
         # RAISES:
             *   ZeroTokenContextFlagsException
             *   TokenContextBuildException
-            *   ExcessiveTokenContextFlagsException
+            *   ArenaTokenContextFlagsException
             *   TokenContextBuildException
             *   TokenContextBuildRouteException
         """
@@ -118,7 +118,7 @@ class TokenContextBuilder(Builder[TokenContext]):
             return BuildResult.failure(
                 TokenContextBuildException(
                     msg=f"{method}: {TokenContextBuildException.ERR_CODE}",
-                    ex=ExcessiveTokenContextFlagsException(f"{method}: {ExcessiveTokenContextFlagsException}")
+                    ex=ArenaTokenContextFlagsException(f"{method}: {ArenaTokenContextFlagsException}")
                 )
             )
         

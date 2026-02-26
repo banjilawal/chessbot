@@ -16,7 +16,7 @@ __all__ = [
     "NullResidentSearchContextException",
     "InvalidResidentSearchContextException",
     "NoResidentSearchParamException",
-    "ExcessiveResidentSearchParamsException",
+    "ArenaResidentSearchParamsException",
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
     "ResidentSearchContextBuildException",
@@ -60,7 +60,7 @@ class NoResidentSearchParamException(ResidentSearchContextException):
         "A ResidentFilter cannot have no params selected. Pick one param to run a searcher."
     )
 
-class ExcessiveResidentSearchParamsException(ResidentSearchContextException):
+class ArenaResidentSearchParamsException(ResidentSearchContextException):
     """
     Raised if more than one ResidentFilter param is set validation.
     """

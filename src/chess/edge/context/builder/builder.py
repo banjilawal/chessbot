@@ -16,7 +16,7 @@ from chess.edge.state import EdgeState
 from chess.system import Builder, BuildResult, IdentityService
 from chess.edge import (
     EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuildException,
-    ExcessiveEdgeContextFlagsException
+    ArenaEdgeContextFlagsException
 )
 from chess.token import Token, TokenService
 
@@ -82,7 +82,7 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             # RAISES:
                 *   ZeroEdgeContextFlagsException
                 *   EdgeContextBuildException
-                *   ExcessiveEdgeContextFlagsException
+                *   ArenaEdgeContextFlagsException
                 *   EdgeContextBuildRouteException
             """
         method = "EdgeContextBuilder.build"
@@ -108,8 +108,8 @@ class EdgeContextBuilder(Builder[EdgeContext]):
             return BuildResult.failure(
                 EdgeContextBuildException(
                     msg=f"{method}: {EdgeContextBuildException.MSG}",
-                    ex=ExcessiveEdgeContextFlagsException(
-                        f"{method}: {ExcessiveEdgeContextFlagsException.MSG}"
+                    ex=ArenaEdgeContextFlagsException(
+                        f"{method}: {ArenaEdgeContextFlagsException.MSG}"
                     )
                 )
             )

@@ -11,13 +11,13 @@ from chess.system import ContextFlagCountException
 from chess.node import NodeContextException
 
 __all__ = [
-    # ========================= EXCESSIVE_NODE_CONTEXT_FLAG EXCEPTION =========================#
-    "ExcessiveNodeContextFlagsException"
+    # ========================= ARENA_NODE_CONTEXT_FLAG EXCEPTION =========================#
+    "ArenaNodeContextFlagsException"
 ]
 
 
-# ========================= EXCESSIVE_NODE_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveNodeContextFlagsException(NodeContextException, ContextFlagCountException):
+# ========================= ARENA_NODE_CONTEXT_FLAG EXCEPTION =========================#
+class ArenaNodeContextFlagsException(NodeContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -37,5 +37,5 @@ class ExcessiveNodeContextFlagsException(NodeContextException, ContextFlagCountE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESSIVE_NODE_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_NODE_CONTEXT_FLAG_ERROR"
     MSG = "NodeContext validation failed: More than one flag was enable."

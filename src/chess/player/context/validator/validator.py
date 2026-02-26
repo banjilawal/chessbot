@@ -13,7 +13,7 @@ from chess.game import GameService
 from chess.team import TeamService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.player import (
-    PlayerContext,  ExcessivePlayerContextFlagsException, InvalidPlayerContextException,
+    PlayerContext,  ArenaPlayerContextFlagsException, InvalidPlayerContextException,
     NullPlayerContextException, ZeroPlayerContextFlagsException
 )
 
@@ -72,7 +72,7 @@ class PlayerContextValidator(Validator[PlayerContext]):
             *   TypeError
             *   NullPlayerContextException
             *   NoPlayerContextFlagException
-            *   ExcessivePlayerContextFlagsException
+            *   ArenaPlayerContextFlagsException
             *   InvalidPlayerContextException
         """
         method = "PlayerContextValidator.validate"
@@ -97,11 +97,11 @@ class PlayerContextValidator(Validator[PlayerContext]):
                 return ValidationResult.failure(
                     ZeroPlayerContextFlagsException(f"{method}: {ZeroPlayerContextFlagsException.MSG}")
                 )
-            # Handle the excessive map flags case.
+            # Handle the arena map flags case.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    ExcessivePlayerContextFlagsException(
-                        f"{method}: {ExcessivePlayerContextFlagsException.MSG}"
+                    ArenaPlayerContextFlagsException(
+                        f"{method}: {ArenaPlayerContextFlagsException.MSG}"
                     )
                 )
             

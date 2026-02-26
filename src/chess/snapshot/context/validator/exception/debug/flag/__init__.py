@@ -14,4 +14,4 @@ None
 
 # Modules
 from .zero import ZeroSnapshotContextFlagsException
-from .excess import ExcessiveSnapshotContextFlagsException
+from .excess import ArenaSnapshotContextFlagsException

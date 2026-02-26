@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.persona import (
-    ExcessivePersonaKeysException, PersonaKey, PersonaKeyBuildException,
+    ArenaPersonaKeysException, PersonaKey, PersonaKeyBuildException,
     PersonaKeyBuildRouteException, ZeroPersonaKeysException
 )
 from chess.system import NumberValidator, BuildResult, Builder, IdentityService, LoggingLevelRouter
@@ -73,7 +73,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
         # RAISES:
             *   ZeroPersonaKeysException
             *   PersonaKeyBuildException
-            *   ExcessivePersonaKeysException
+            *   ArenaPersonaKeysException
             *   PersonaKeyBuildRouteException
         """
         method = "PersonaKeyBuilder.build"
@@ -97,7 +97,7 @@ class PersonaKeyBuilder(Builder[PersonaKey]):
             return BuildResult.failure(
                 PersonaKeyBuildException(
                     msg=f"{method}: {PersonaKeyBuildException.ERR_CODE}",
-                    ex=ExcessivePersonaKeysException(f"{method}: {ExcessivePersonaKeysException}")
+                    ex=ArenaPersonaKeysException(f"{method}: {ArenaPersonaKeysException}")
                 )
             )
         # After verifying only one Persona hash key-value is set, validate it.

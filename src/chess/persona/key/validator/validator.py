@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.persona import (
-    ExcessivePersonaKeysException, NullPersonaKeyException, PersonaKey, ZeroPersonaKeysException,
+    ArenaPersonaKeysException, NullPersonaKeyException, PersonaKey, ZeroPersonaKeysException,
     PersonaKeyValidationException, PersonaKeyValidationRouteException
 )
 from chess.system import (
@@ -67,7 +67,7 @@ class PersonaKeyValidator(Validator[PersonaKey]):
             *   TypeError
             *   NNullPersonaKeyException
             *   ZeroPersonaKeysException
-            *   ExcessivePersonaKeysException
+            *   ArenaPersonaKeysException
             *   PersonaKeyValidationException
         """
         method = "PersonaKeyValidator.validate"
@@ -109,8 +109,8 @@ class PersonaKeyValidator(Validator[PersonaKey]):
             return ValidationResult.failure(
                 PersonaKeyValidationException(
                     msg=f"{method}: {ValidationException.ERR_CODE}",
-                    ex=ExcessivePersonaKeysException(
-                        f"{method}: {ExcessivePersonaKeysException.MSG}"
+                    ex=ArenaPersonaKeysException(
+                        f"{method}: {ArenaPersonaKeysException.MSG}"
                     )
                 )
             )

@@ -12,13 +12,13 @@ from chess.snapshot import InvalidSnapshotContextException
 
 
 __all__ = [
-    # ========================= EXCESSIVE_SNAPSHOT_CONTEXT_FLAGS EXCEPTION =========================#
-    "ExcessiveSnapshotContextFlagsException",
+    # ========================= ARENA_SNAPSHOT_CONTEXT_FLAGS EXCEPTION =========================#
+    "ArenaSnapshotContextFlagsException",
 ]
 
 
-# ========================= EXCESSIVE_SNAPSHOT_CONTEXT_FLAGS EXCEPTION =========================#
-class ExcessiveSnapshotContextFlagsException(InvalidSnapshotContextException, ContextFlagCountException):
+# ========================= ARENA_SNAPSHOT_CONTEXT_FLAGS EXCEPTION =========================#
+class ArenaSnapshotContextFlagsException(InvalidSnapshotContextException, ContextFlagCountException):
     """
     # ROLE: ContextFlagException, SnapshotContextException
 

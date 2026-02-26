@@ -11,22 +11,22 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# VECTOR_NULL_Y_AXIS EXCEPTION #======================#
+#======================# VECTOR_NULL_Y_AXIS_EXCEPTION #======================#
     "VectorNullYException",
 ]
 
 from chess.system import NullException
 
-# ======================# VECTOR_NULL_Y_AXIS EXCEPTION #======================#
+#======================# VECTOR_NULL_Y_AXIS_EXCEPTION #======================#
 class VectorNullYException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that Vector validation failed because the y_axis was null.
-
+    1.  Indicate that a vector.y  is null.
+    
     # PARENT:
-        *   DebugException
+        *   NullException
 
     # PROVIDES:
     None
@@ -35,7 +35,7 @@ class VectorNullYException(NullException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See DebugException class for inherited attributes.
+        *   See NUllException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -48,10 +48,10 @@ class VectorNullYException(NullException):
    None
 
     # INHERITED METHODS:
-        *   See DebugException class for inherited methods.
+        *   See NullException class for inherited methods.
     """
-    ERR_CODE = "VECTOR_NULL_Y_AXIS_ERROR"
-    MSG = "Vector validation failed: The y_axis was null."
+    ERR_CODE = "VECTOR_NULL_Y_AXIS_EXCEPTION"
+    MSG = "vector.y  is null."
     VAR: None
     VAL: None
     
@@ -68,4 +68,8 @@ class VectorNullYException(NullException):
         var = var or self.VAR
         val = val or self.VAL
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+
+
+
+
 

@@ -16,7 +16,7 @@ from chess.edge.state import EdgeState
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.edge import (
     EdgeContextValidationException, ZeroEdgeContextFlagsException, EdgeContext,
-    NullEdgeContextException, ExcessiveEdgeContextFlagsException, EdgeContextValidationRouteException
+    NullEdgeContextException, ArenaEdgeContextFlagsException, EdgeContextValidationRouteException
 )
 from chess.token import TokenService
 
@@ -73,7 +73,7 @@ class EdgeContextValidator(Validator[EdgeContext]):
             *   TypeError
             *   NullEdgeContextException
             *   ZeroEdgeContextFlagsException
-            *   ExcessiveEdgeContextFlagsException
+            *   ArenaEdgeContextFlagsException
             *   EdgeContextValidationRouteException
             *   EdgeContextValidationException
         """
@@ -118,8 +118,8 @@ class EdgeContextValidator(Validator[EdgeContext]):
             return ValidationResult.failure(
                 EdgeContextValidationException(
                     msg=f"{method}: {EdgeContextValidationException.MSG}",
-                    ex=ExcessiveEdgeContextFlagsException(
-                        f"{method}: {ExcessiveEdgeContextFlagsException.MSG}"
+                    ex=ArenaEdgeContextFlagsException(
+                        f"{method}: {ArenaEdgeContextFlagsException.MSG}"
                     )
                 )
             )

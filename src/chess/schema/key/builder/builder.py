@@ -14,7 +14,7 @@ from chess.system import (
     BuildResult, Builder, GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 )
 from chess.schema import (
-    ZeroSchemaKeysException, SchemaKey, ExcessiveSchemaKeysException,
+    ZeroSchemaKeysException, SchemaKey, ArenaSchemaKeysException,
 )
 
 
@@ -67,7 +67,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
         # RAISES:
             *   ZeroSchemaKeysException
             *   SchemaKeyBuildException
-            *   ExcessiveSchemaKeysException
+            *   ArenaSchemaKeysException
         """
         method = "SchemaKeyBuilder.build"
         
@@ -90,7 +90,7 @@ class SchemaKeyBuilder(Builder[SchemaKey]):
             return BuildResult.failure(
                 SchemaKeyBuildException(
                     msg=f"{method}: {SchemaKeyBuildException.ERR_CODE}",
-                    ex=ExcessiveSchemaKeysException(f"{method}: {ExcessiveSchemaKeysException}")
+                    ex=ArenaSchemaKeysException(f"{method}: {ArenaSchemaKeysException}")
                 )
             )
         # Route to the appropriate validation/build branch.

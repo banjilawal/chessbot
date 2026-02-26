@@ -16,7 +16,7 @@ __all__ = [
     'NullVisitationSearchContextException',
     'InvalidVisitationSearchContextException',
     'ZeroVisitationSearchParamsException',
-    'ExcessiveVisitationSearchParamsException',
+    'ArenaVisitationSearchParamsException',
     'VisitationRansomParamBoundsException',
     'VisitationInvalidRankNameParamException',
 
@@ -62,7 +62,7 @@ class ZeroVisitationSearchParamsException(VisitationSearchContextException):
         "A VisitationSearchContext cannot have no params selected. Pick one param to run a searcher."
     )
 
-class ExcessiveVisitationSearchParamsException(VisitationSearchContextException):
+class ArenaVisitationSearchParamsException(VisitationSearchContextException):
     """
     Raised if more than one VisitationSearchContext param is set validation.
     """

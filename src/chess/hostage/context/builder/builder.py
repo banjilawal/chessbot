@@ -2,7 +2,7 @@ from typing import Optional, cast
 
 from chess.hostage import (
     CaptivityContext, CaptivityContextBuildException,
-    CaptivityContextBuildRouteException, ExcessiveCaptivityContextFlagsException, ZeroCaptivityContextFlagsException
+    CaptivityContextBuildRouteException, ArenaCaptivityContextFlagsException, ZeroCaptivityContextFlagsException
 )
 from chess.square import Square, SquareService
 from chess.system import IdentityService, LoggingLevelRouter, BuildResult, Builder, id_emitter
@@ -85,8 +85,8 @@ class CaptivityContextBuilder(Builder[CaptivityContext]):
             return BuildResult.failure(
                 CaptivityContextBuildException(
                     msg=f"{method}: {CaptivityContextBuildException.MSG}",
-                    ex=ExcessiveCaptivityContextFlagsException(
-                        f"{method}: {ExcessiveCaptivityContextFlagsException.MSG}"
+                    ex=ArenaCaptivityContextFlagsException(
+                        f"{method}: {ArenaCaptivityContextFlagsException.MSG}"
                     )
                 )
             )

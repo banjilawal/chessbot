@@ -14,7 +14,7 @@ from chess.arena import ArenaService
 from chess.game import GameService
 from chess.snapshot import NullSnapshotContextException, SnapshotContext
 from chess.snapshot.context.validator.exception.base import InvalidSnapshotContextException
-from chess.snapshot.context.validator.exception.flag.excess import ExcessiveSnapshotContextFlagsException
+from chess.snapshot.context.validator.exception.flag.excess import ArenaSnapshotContextFlagsException
 from chess.snapshot.context.validator.exception.flag.zero import ZeroSnapshotContextFlagsException
 from chess.team import TeamService
 from chess.system import (
@@ -82,7 +82,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
             *   TypeError
             *   NullSnapshotContextException
             *   ZeroSnapshotContextFlagsException
-            *   ExcessiveSnapshotContextFlagsException
+            *   ArenaSnapshotContextFlagsException
             *   SnapshotContextValidationException
         """
         method = "SnapshotContextValidator.validate"
@@ -109,11 +109,11 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
                         f"{method}: {ZeroSnapshotContextFlagsException.MSG}"
                     )
                 )
-            # Handle the excessive map flags case.
+            # Handle the arena map flags case.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    ExcessiveSnapshotContextFlagsException(
-                        f"{method}: {ExcessiveSnapshotContextFlagsException.MSG}"
+                    ArenaSnapshotContextFlagsException(
+                        f"{method}: {ArenaSnapshotContextFlagsException.MSG}"
                     )
                 )
             

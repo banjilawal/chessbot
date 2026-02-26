@@ -13,7 +13,7 @@ from typing import Optional
 from chess.agent import PlayerAgent, AgentService
 from chess.system import Builder, BuildResult, NoExecutionRouteException, IdentityService, LoggingLevelRouter
 from chess.game import (
-    GameContext, GameContextBuildException, ZeroGameContextFlagsException, ExcessiveGameContextFlagsException
+    GameContext, GameContextBuildException, ZeroGameContextFlagsException, ArenaGameContextFlagsException
 )
 
 
@@ -73,7 +73,7 @@ class GameContextBuilder(Builder[GameContext]):
         # RAISES:
             *   ZeroGameContextFlagsException
             *   GameContextBuildException
-            *   ExcessiveGameContextFlagsException
+            *   ArenaGameContextFlagsException
         """
         method = "GameSearchContextBuilder.build"
         try:
@@ -89,7 +89,7 @@ class GameContextBuilder(Builder[GameContext]):
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException}")
+                    ArenaGameContextFlagsException(f"{method}: {ArenaGameContextFlagsException}")
                 )
             # After verifying only one Board attribute-value-tuple is enabled, validate it.
             

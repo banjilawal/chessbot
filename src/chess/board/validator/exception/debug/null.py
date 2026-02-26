@@ -1,31 +1,31 @@
-# src/chess/board/validator/exception/null.py
+# src/chess/board/validator/exception/debug/null.py
 
 """
-Module: chess.board.validator.exception.null
+Module: chess.board.validator.exception.debug.null
 Author: Banji Lawal
-Created: 2025-11-19
-Version: 1.0.0
+Created: 2025-10-03
+version: 1.0.0
 """
+
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
-    # ======================# NULL_BOARD EXCEPTION #======================#
+#======================# NULL_BOARD_EXCEPTION #======================#
     "NullBoardException",
 ]
 
 from chess.system import NullException
-from chess.board import BoardDebugException
 
-
-# ======================# NULL_BOARD EXCEPTION #======================#
-class NullBoardException(BoardDebugException, NullException):
+#======================# NULL_BOARD_EXCEPTION #======================#
+class NullBoardException(NullException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the candidate was null.
-
+    1.  Indicate that a board is null where it should not be.
+    
     # PARENT:
-        *   BoardDebugException
         *   NullException
 
     # PROVIDES:
@@ -35,7 +35,44 @@ class NullBoardException(BoardDebugException, NullException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See NUllException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_BOARD_ERROR"
-    MSG = "Board validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_BOARD_EXCEPTION"
+    MSG = "Board cannot be null."
+    VAR: None
+    VAL: None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+
+
+    
+
+
+
+
+

@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from chess.system import GameColorValidator, IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.schema import (
-    ExcessiveSchemaKeysException, NullSchemaKeyException, SchemaKey,
+    ArenaSchemaKeysException, NullSchemaKeyException, SchemaKey,
     SchemaKeyValidationException,
     SchemaKeyValidationRouteException, ZeroSchemaKeysException
 )
@@ -66,7 +66,7 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             *   TypeError
             *   NNullSchemaKeyException
             *   ZeroSchemaKeysException
-            *   ExcessiveSchemaKeysException
+            *   ArenaSchemaKeysException
             *   SchemaKeyValidationException
         """
         method = "SchemaKeyValidator.validate"
@@ -109,8 +109,8 @@ class SchemaKeyValidator(Validator[SchemaKey]):
             return ValidationResult.failure(
                 SchemaKeyValidationException(
                     msg=f"{method}: {SchemaKeyValidationException.ERR_CODE}",
-                    ex=ExcessiveSchemaKeysException(
-                        f"{method}: {ExcessiveSchemaKeysException.MSG}"
+                    ex=ArenaSchemaKeysException(
+                        f"{method}: {ArenaSchemaKeysException.MSG}"
                     )
                 )
             )

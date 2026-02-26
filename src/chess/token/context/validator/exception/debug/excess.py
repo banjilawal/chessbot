@@ -11,13 +11,13 @@ from chess.system import ContextFlagCountException
 from chess.token import TokenContextException
 
 __all__ = [
-    # ========================= EXCESSIVE_TOKEN_CONTEXT_FLAG EXCEPTION =========================#
-    "ExcessiveTokenContextFlagsException"
+    # ========================= ARENA_TOKEN_CONTEXT_FLAG EXCEPTION =========================#
+    "ArenaTokenContextFlagsException"
 ]
 
 
-# ========================= EXCESSIVE_TOKEN_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveTokenContextFlagsException(TokenContextException, ContextFlagCountException):
+# ========================= ARENA_TOKEN_CONTEXT_FLAG EXCEPTION =========================#
+class ArenaTokenContextFlagsException(TokenContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -38,7 +38,7 @@ class ExcessiveTokenContextFlagsException(TokenContextException, ContextFlagCoun
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESSIVE_TOKEN_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_TOKEN_CONTEXT_FLAG_ERROR"
     MSG = (
         "TokenContext validation failed: More than one attribute was set. Only one attribute-value should be enabled."
     )

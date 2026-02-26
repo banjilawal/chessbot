@@ -14,7 +14,7 @@ from chess.rank import RankBoundsChecker
 from chess.system import Validator, IdValidator, NameValidator, ValidationResult, LoggingLevelRouter
 from chess.domain import (
     NullResidentSearchContextException, ResidentFilter, NoResidentSearchParamException,
-    ExcessiveResidentSearchParamsException
+    ArenaResidentSearchParamsException
 )
 
 
@@ -60,8 +60,8 @@ class ResidentFilterValidator(Validator[ResidentFilter]):
             
             if len(search_context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    ExcessiveResidentSearchParamsException(
-                        f"{method} {ExcessiveResidentSearchParamsException.MSG}"
+                    ArenaResidentSearchParamsException(
+                        f"{method} {ArenaResidentSearchParamsException.MSG}"
                     )
                 )
             

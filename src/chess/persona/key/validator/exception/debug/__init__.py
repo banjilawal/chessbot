@@ -16,5 +16,5 @@ None
 # Modules
 from .null import NullPersonaKeyException
 from .zero import ZeroPersonaKeysException
-from .excess import ExcessivePersonaKeysException
+from .excess import ArenaPersonaKeysException
 from .route import PersonaKeyValidationRouteException

@@ -7,39 +7,67 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== VECTOR.VALIDATOR.EXCEPTION.DDEBUG.Y PACKAGE CONTENTS ===========#
-
-# Packages
-None
-
-# Modules
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
-    # ======================# VECTOR_NULL_X_AXIS EXCEPTION #======================#
+#======================# VECTOR_NULL_X_AXIS_EXCEPTION #======================#
     "VectorNullXException",
 ]
 
 from chess.system import NullException
-from chess.vector import InvalidVectorException
 
-
-# ======================# VECTOR_NULL_X_AXIS EXCEPTION #======================#
-class VectorNullXException(InvalidVectorException, NullException):
+#======================# VECTOR_NULL_X_AXIS_EXCEPTION #======================#
+class VectorNullXException(NullException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Indicate that Vector validation failed because the x_axis was null.
-
+    1.  Indicate that a vector.x  was null.
+    
     # PARENT:
         *   NullException
-        *   InvalidVectorException
 
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
     None
+
+    # INHERITED ATTRIBUTES:
+        *   See NUllException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See NullException class for inherited methods.
     """
-    ERR_CODE = "VECTOR_NULL_X_AXIS_ERROR"
-    MSG = "Vector validation failed: The x_axis was null."
+    ERR_CODE = "VECTOR_NULL_X_AXIS_EXCEPTION"
+    MSG = "vector.x  is null."
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+
+
+
+
+

@@ -1,17 +1,16 @@
-# src/chess/arena/service/__init__.py
+# src/chess/arena/validator/__init__.py
 
 """
-Module: chess.arena.service.__init__
+Module: chess.arena.validator.__init__
 Author: Banji Lawal
 Created: 2025-10-01
 version: 1.0.0
 """
 
-# =========== ARENA.SERVICE PACKAGE CONTENTS ===========#
+# =========== ARENA.VALIDATOR PACKAGE CONTENTS ===========#
 
 # Packages
-from .data import *
 from .exception import *
 
 # Modules
-from .service import ArenaService
+None

@@ -14,7 +14,7 @@ from chess.agent import AgentService
 from chess.system import LoggingLevelRouter, Validator, ValidationResult, IdentityService
 from chess.game import (
     GameContext, InvalidGameContextException, ZeroGameContextFlagsException, NullGameContextException,
-    ExcessiveGameContextFlagsException
+    ArenaGameContextFlagsException
 )
 
 
@@ -72,7 +72,7 @@ class GameContextValidator(Validator[GameContext]):
             *   TypeError
             *   NullGameContextException
             *   ZeroGameContextFlagsException
-            *   ExcessiveGameContextFlagsException
+            *   ArenaGameContextFlagsException
             *   InvalidGameContextException
         """
         method = "GameContextValidator.validate"
@@ -98,7 +98,7 @@ class GameContextValidator(Validator[GameContext]):
             # Handle the case that, more than one attribute-value tuple is enabled.
             if len(context.to_dict()) == 0:
                 return ValidationResult.failure(
-                    ExcessiveGameContextFlagsException(f"{method}: {ExcessiveGameContextFlagsException.MSG}")
+                    ArenaGameContextFlagsException(f"{method}: {ArenaGameContextFlagsException.MSG}")
                 )
             # Make sure a search target exists in the map. Cannot perform a search without an
             
@@ -110,8 +110,8 @@ class GameContextValidator(Validator[GameContext]):
             # Return an error if more than one property value pair exists in the map.
             if len(context.to_dict()) > 1:
                 return ValidationResult.failure(
-                    ExcessiveGameContextFlagsException(
-                        f"{method}: {ExcessiveGameContextFlagsException.MSG}"
+                    ArenaGameContextFlagsException(
+                        f"{method}: {ArenaGameContextFlagsException.MSG}"
                     )
                 )
             

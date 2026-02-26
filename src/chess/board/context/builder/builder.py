@@ -13,7 +13,7 @@ from chess.arena import Arena, ArenaService
 from chess.system import Builder, BuildResult, IdentityService
 from chess.board import (
     BoardContextBuildRouteException, ZeroBoardContextFlagsException, BoardContext, BoardContextBuildException,
-    ExcessiveBoardContextFlagsException
+    ArenaBoardContextFlagsException
 )
 
 class BoardContextBuilder(Builder[BoardContext]):
@@ -66,7 +66,7 @@ class BoardContextBuilder(Builder[BoardContext]):
         # RAISES:
             *   ZeroBoardContextFlagsException
             *   BoardContextBuildException
-            *   ExcessiveBoardContextFlagsException
+            *   ArenaBoardContextFlagsException
             *   BoardContextBuildRouteException
         """
         method = "BoardContextBuilder.build"
@@ -92,8 +92,8 @@ class BoardContextBuilder(Builder[BoardContext]):
             return BuildResult.failure(
                 BoardContextBuildException(
                     msg=f"{method}: {BoardContextBuildException.MSG}",
-                    ex=ExcessiveBoardContextFlagsException(
-                        f"{method}: {ExcessiveBoardContextFlagsException.MSG}"
+                    ex=ArenaBoardContextFlagsException(
+                        f"{method}: {ArenaBoardContextFlagsException.MSG}"
                     )
                 )
             )

@@ -54,7 +54,7 @@ class UniqueAttributeException(DebugException):
     MSG = "Two objects have the same value for an attribute  that should be unique."
     VAR: None
     VAL: None
-
+    
     def __init__(
             self,
             err_code: Optional[str] = None,
@@ -68,3 +68,4 @@ class UniqueAttributeException(DebugException):
         var = var or self.VAR
         val = val or self.VAL
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+

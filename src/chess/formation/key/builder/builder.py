@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from chess.formation import (
-    ExcessiveFormationKeysException, FormationKey, FormationKeyBuildException,
+    ArenaFormationKeysException, FormationKey, FormationKeyBuildException,
     FormationKeyBuildRouteException, ZeroFormationKeysException
 )
 from chess.persona import Persona, PersonaService
@@ -75,7 +75,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
         # RAISES:
             *   ZeroFormationKeysException
             *   FormationKeyBuildException
-            *   ExcessiveFormationKeysException
+            *   ArenaFormationKeysException
             *   FormationKeyBuildException
         """
         method = "FormationKeyBuilder.build"
@@ -101,7 +101,7 @@ class FormationKeyBuilder(Builder[FormationKey]):
             return BuildResult.failure(
                 FormationKeyBuildException(
                     msg=f"{method}: {FormationKeyBuildException.ERR_CODE}",
-                    ex=ExcessiveFormationKeysException(f"{method}: {ExcessiveFormationKeysException}")
+                    ex=ArenaFormationKeysException(f"{method}: {ArenaFormationKeysException}")
                 )
             )
         

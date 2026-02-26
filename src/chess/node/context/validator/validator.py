@@ -13,7 +13,7 @@ import sys
 from typing import Any, cast
 
 from chess.node import (
-    ExcessiveNodeContextFlagsException, NodeContext, NodeContextValidationException, NodeValidator,
+    ArenaNodeContextFlagsException, NodeContext, NodeContextValidationException, NodeValidator,
     NodeContextValidationRouteException, NullNodeContextException, ZeroNodeContextFlagsException
 )
 from chess.square import SquareService
@@ -71,7 +71,7 @@ class NodeContextValidator(Validator[NodeContext]):
             *   TypeError
             *   NullNodeContextException
             *   ZeroNodeContextFlagsException
-            *   ExcessiveNodeContextFlagsException
+            *   ArenaNodeContextFlagsException
             *   NodeContextValidationRouteException
             *   NodeContextValidationException
         """
@@ -116,8 +116,8 @@ class NodeContextValidator(Validator[NodeContext]):
             return ValidationResult.failure(
                 NodeContextValidationException(
                     msg=f"{method}: {NodeContextValidationException.MSG}",
-                    ex=ExcessiveNodeContextFlagsException(
-                        f"{method}: {ExcessiveNodeContextFlagsException.MSG}"
+                    ex=ArenaNodeContextFlagsException(
+                        f"{method}: {ArenaNodeContextFlagsException.MSG}"
                     )
                 )
             )

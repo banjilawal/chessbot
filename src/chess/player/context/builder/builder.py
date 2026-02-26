@@ -15,7 +15,7 @@ from chess.team import Team, TeamService
 from chess.system import Builder, BuildResult, NoExecutionRouteException, IdentityService, LoggingLevelRouter
 from chess.agent import (
     AgentVariety, AgentContext, AgentContextBuildException, ZeroAgentContextFlagsException,
-    ExcessiveAgentContextFlagsException
+    ArenaAgentContextFlagsException
 )
 
 
@@ -83,7 +83,7 @@ class AgentContextBuilder(Builder[AgentContext]):
         # RAISES:
             *   ZeroAgentContextFlagsException
             *   AgentContextBuildException
-            *   ExcessiveAgentContextFlagsException
+            *   ArenaAgentContextFlagsException
         """
         method = "AgentSearchContextBuilder.builder"
         try:
@@ -99,7 +99,7 @@ class AgentContextBuilder(Builder[AgentContext]):
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveAgentContextFlagsException(f"{method}: {ExcessiveAgentContextFlagsException}")
+                    ArenaAgentContextFlagsException(f"{method}: {ArenaAgentContextFlagsException}")
                 )
             # After verifying only one Player attribute-value-tuple is enabled, validate it.
             

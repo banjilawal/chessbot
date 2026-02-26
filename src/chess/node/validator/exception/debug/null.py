@@ -1,9 +1,9 @@
-# src/chess/node/validator/exception/null.py
+# src/chess/node/validator/exception/debug/null.py
 
 """
-Module: chess.node.validator.exception.null
+Module: chess.node.validator.exception.debug.null
 Author: Banji Lawal
-Created: 2025-08-12
+Created: 2025-10-03
 version: 1.0.0
 """
 
@@ -11,22 +11,22 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NULL_NODE EXCEPTION #======================#
+#======================# NULL_NODE_EXCEPTION #======================#
     "NullNodeException",
 ]
 
 from chess.system import NullException
 
-# ======================# NULL_NODE EXCEPTION #======================#
+#======================# NULL_NODE_EXCEPTION #======================#
 class NullNodeException(NullException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    A failing ValidationResult was returned because the candidate was null.
-
+    1.  Indicate that a node is null where it should not be.
+    
     # PARENT:
-        *   Debug
+        *   NullException
 
     # PROVIDES:
     None
@@ -35,7 +35,7 @@ class NullNodeException(NullException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See Null class for inherited attributes.
+        *   See NUllException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -50,38 +50,29 @@ class NullNodeException(NullException):
     # INHERITED METHODS:
         *   See NullException class for inherited methods.
     """
-    ERR_CODE = "NULL_NODE_ERROR"
-    MSG = "Node validation failed: The candidate cannot be null."
+    ERR_CODE = "NULL_NODE_EXCEPTION"
+    MSG = "Node cannot be null."
     VAR: None
     VAL: None
     
-    _var: Optional[str]
-    _val: Optional[None]
-    
     def __init__(
             self,
-            var: Optional[str] = None,
-            val: Optional[None] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
     ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
         var = var or self.VAR
         val = val or self.VAL
-        msg = msg or self.MSG
-        err_code = err_code or self.ERR_CODE
-        
         super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
-        self._var = var
-        self._val = val
+
+
     
-    @property
-    def var(self) -> Optional[str]:
-        return self._var
-    
-    @property
-    def val(self) -> Optional[None]:
-        return self._val
-    
-    def __str__(self):
-        return f"{super().__str__()}, var:{self._var}, val:{self._val}"
+
+
+
+
+

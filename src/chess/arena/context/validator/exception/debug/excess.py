@@ -11,13 +11,13 @@ from chess.system import ContextFlagCountException
 from chess.arena import ArenaContextException
 
 __all__ = [
-    # ========================= EXCESSIVE_ARENA_CONTEXT_FLAG EXCEPTION =========================#
-    "ExcessiveArenaContextFlagsException"
+    # ========================= AEXCESS)RENA_ARENA_CONTEXT_FLAGS EXCEPTION =========================#
+    "ExcessArenaContextFlagsException"
 ]
 
 
-# ========================= EXCESSIVE_ARENA_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveArenaContextFlagsException(ArenaContextException, ContextFlagCountException):
+# ========================= EXCESS_ARENA_ARENA_CONTEXT_FLAGS EXCEPTION =========================#
+class ExcessArenaContextFlagsException(ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -27,7 +27,6 @@ class ExcessiveArenaContextFlagsException(ArenaContextException, ContextFlagCoun
 
     # PARENT:
         *   ContextFlagCountException
-        *   ArenaContextValidationException
 
     # PROVIDES:
     None
@@ -38,8 +37,8 @@ class ExcessiveArenaContextFlagsException(ArenaContextException, ContextFlagCoun
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESSIVE_ARENA_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "EXCESS_ARENA_ARENA_CONTEXT_FLAGS_ERROR"
     MSG = (
-        "Excessive ArenaContext flags were set. an Arena search can only use one-and-only "
+        "Arena ArenaContext flags were set. an Arena search can only use one-and-only "
         "map flag at a time."
     )

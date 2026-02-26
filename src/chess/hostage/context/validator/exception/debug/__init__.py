@@ -15,5 +15,5 @@ None
 # Modules
 from .null import NullCaptivityContextException
 from .zero import ZeroCaptivityContextFlagsException
-from .excess import ExcessiveCaptivityContextFlagsException
+from .excess import ArenaCaptivityContextFlagsException
 from .route import CaptivityContextValidationRouteException

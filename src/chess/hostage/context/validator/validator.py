@@ -3,7 +3,7 @@ from typing import Any, cast
 from chess.square import SquareService
 from chess.hostage import (
     CaptivityContextValidationException, CaptivityContextValidationRouteException, CaptivityContext,
-    ExcessiveCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
+    ArenaCaptivityContextFlagsException, NullCaptivityContextException, ZeroCaptivityContextFlagsException,
 )
 from chess.system import IdentityService, LoggingLevelRouter, ValidationResult, Validator
 from chess.token import CombatantToken, TokenService
@@ -100,8 +100,8 @@ class CaptivityContextValidator(Validator[CaptivityContext]):
             return ValidationResult.failure(
                 CaptivityContextValidationException(
                     msg=f"{method}: {CaptivityContextValidationException.MSG}",
-                    ex=ExcessiveCaptivityContextFlagsException(
-                        f"{method}: {ExcessiveCaptivityContextFlagsException.MSG}"
+                    ex=ArenaCaptivityContextFlagsException(
+                        f"{method}: {ArenaCaptivityContextFlagsException.MSG}"
                     )
                 )
             )

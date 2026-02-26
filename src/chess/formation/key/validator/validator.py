@@ -12,7 +12,7 @@ version: 1.0.0
 from typing import Any, cast
 
 from chess.formation import (
-    ExcessiveFormationKeysException, FormationKey, FormationKeyValidationException,
+    ArenaFormationKeysException, FormationKey, FormationKeyValidationException,
     FormationKeyValidationRouteException, NullFormationKeyException, ZeroFormationKeysException
 )
 from chess.persona import PersonaService
@@ -69,7 +69,7 @@ class FormationKeyValidator(Validator[FormationKey]):
             *   TypeError
             *   NNullFormationKeyException
             *   ZeroFormationKeysException
-            *   ExcessiveFormationKeysException
+            *   ArenaFormationKeysException
             *   FormationKeyValidationException
         """
         method = "FormationKeyValidator.validate"
@@ -113,8 +113,8 @@ class FormationKeyValidator(Validator[FormationKey]):
             return ValidationResult.failure(
                 FormationKeyValidationException(
                     msg=f"{method}: {FormationKeyValidationException.ERR_CODE}",
-                    ex=ExcessiveFormationKeysException(
-                        f"{method}: {ExcessiveFormationKeysException.MSG}"
+                    ex=ArenaFormationKeysException(
+                        f"{method}: {ArenaFormationKeysException.MSG}"
                     )
                 )
             )

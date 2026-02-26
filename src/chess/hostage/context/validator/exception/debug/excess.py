@@ -11,13 +11,13 @@ from chess.system import ContextFlagCountException
 from chess.hostage import CaptivityContextException
 
 __all__ = [
-    # ========================= EXCESSIVE_CAPTIVITY_CONTEXT_FLAG EXCEPTION =========================#
-    "ExcessiveCaptivityContextFlagsException"
+    # ========================= ARENA_CAPTIVITY_CONTEXT_FLAG EXCEPTION =========================#
+    "ArenaCaptivityContextFlagsException"
 ]
 
 
-# ========================= EXCESSIVE_CAPTIVITY_CONTEXT_FLAG EXCEPTION =========================#
-class ExcessiveCaptivityContextFlagsException(CaptivityContextException, ContextFlagCountException):
+# ========================= ARENA_CAPTIVITY_CONTEXT_FLAG EXCEPTION =========================#
+class ArenaCaptivityContextFlagsException(CaptivityContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -37,5 +37,5 @@ class ExcessiveCaptivityContextFlagsException(CaptivityContextException, Context
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESSIVE_CAPTIVITY_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "ARENA_CAPTIVITY_CONTEXT_FLAG_ERROR"
     MSG = "CaptivityContext validation failed: More than one flag was enable."

@@ -15,5 +15,5 @@ None
 # Modules
 from .null import NullCoordContextException
 from .zero import ZeroCoordContextFlagsException
-from .excess import ExcessiveCoordContextFlagsException
+from .excess import ArenaCoordContextFlagsException
 from .route import CoordContextValidationRouteException

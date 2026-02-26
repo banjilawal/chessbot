@@ -15,7 +15,7 @@ from chess.agent import PlayerAgent, AgentService
 from chess.system import BuildResult, Builder, NoExecutionRouteException, LoggingLevelRouter, NumberValidator
 from chess.game import (
     Game, SnapshotContext, SnapshotContextBuildException, ZeroSnapshotContextFlagsException,
-    ExcessiveSnapshotContextFlagsException
+    ArenaSnapshotContextFlagsException
 )
 
 
@@ -87,7 +87,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
         # RAISES:
             *   ZeroSnapshotContextFlagsException
             *   SnapshotContextBuildException
-            *   ExcessiveSnapshotContextFlagsException
+            *   ArenaSnapshotContextFlagsException
         """
         method = "SnapshotContextBuilder.build"
         try:
@@ -103,7 +103,7 @@ class SnapshotContextBuilder(Builder[SnapshotContext]):
             # Test if more than one param is set. Only one attribute-value tuple is allowed in a search.
             if param_count > 1:
                 return BuildResult.failure(
-                    ExcessiveSnapshotContextFlagsException(f"{method}: {ExcessiveSnapshotContextFlagsException}")
+                    ArenaSnapshotContextFlagsException(f"{method}: {ArenaSnapshotContextFlagsException}")
                 )
             # After verifying only one Snapshot attribute-value-tuple is enabled, validate it.
 

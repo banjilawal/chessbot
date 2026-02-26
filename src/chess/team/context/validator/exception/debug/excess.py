@@ -11,13 +11,13 @@ from chess.system import ContextFlagCountException
 from chess.team import TeamContextException
 
 __all__ = [
-    # ========================= EXCESSIVE_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
-    "ExcessiveTeamContextFlagsException"
+    # ========================= ARENA_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
+    "ArenaTeamContextFlagsException"
 ]
 
 
-# ========================= EXCESSIVE_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
-class ExcessiveTeamContextFlagsException(TeamContextException, ContextFlagCountException):
+# ========================= ARENA_TEAM_CONTEXT_FLAGS EXCEPTION =========================#
+class ArenaTeamContextFlagsException(TeamContextException, ContextFlagCountException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -38,7 +38,7 @@ class ExcessiveTeamContextFlagsException(TeamContextException, ContextFlagCountE
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "EXCESSIVE_TEAM_CONTEXT_FLAGS_ERROR"
+    ERR_CODE = "ARENA_TEAM_CONTEXT_FLAGS_ERROR"
     MSG = (
         "TeamContext validation failed: More than one attribute was set. Only one attribute-value should be enabled."
     )

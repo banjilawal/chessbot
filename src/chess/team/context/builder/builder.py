@@ -13,7 +13,7 @@ from chess.arena import Arena, ArenaService
 from chess.player import Player, PlayerService
 from chess.system import Builder, BuildResult,  GameColor, GameColorValidator, IdentityService, LoggingLevelRouter
 from chess.team import (
-    TeamContext, TeamContextBuildException, ExcessiveTeamContextFlagsException, TeamContextBuildRouteException,
+    TeamContext, TeamContextBuildException, ArenaTeamContextFlagsException, TeamContextBuildRouteException,
     ZeroTeamContextFlagsException
 )
 
@@ -78,7 +78,7 @@ class TeamContextBuilder(Builder[TeamContext]):
         # RAISES:
             *   ZeroTeamContextFlagsException
             *   TeamContextBuildException
-            *   ExcessiveTeamContextFlagsException
+            *   ArenaTeamContextFlagsException
         """
         method = "PieceSearchContextBuilder.builder"
         
@@ -101,7 +101,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             return BuildResult.failure(
                 TeamContextBuildException(
                     msg=f"{method}: {TeamContextBuildException.ERR_CODE}",
-                    ex=ExcessiveTeamContextFlagsException(f"{method}: {ExcessiveTeamContextFlagsException}")
+                    ex=ArenaTeamContextFlagsException(f"{method}: {ArenaTeamContextFlagsException}")
                 )
             )
         # --- Route to the appropriate validation/build branch. ---#

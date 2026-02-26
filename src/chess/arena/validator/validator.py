@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from chess.board import BoardService
 from chess.team import Team, UniqueTeamDataService
-from chess.arena import Arena, ArenaValidationException, NullArenaException, ExcessiveTeamsInArenaException
+from chess.arena import Arena, ArenaValidationException, NullArenaException, ArenaTeamsInArenaException
 from chess.system import (
     IdentityService, LoggingLevelRouter, SearchResult, ServiceValidator, ValidationResult,
     Validator
@@ -105,7 +105,7 @@ class ArenaValidator(Validator[Arena]):
             
             if arena.team_service.size > 2:
                 return ValidationResult.failure(
-                    ExcessiveTeamsInArenaException(f"{method}: {ExcessiveTeamsInArenaException.MSG}")
+                    ArenaTeamsInArenaException(f"{method}: {ArenaTeamsInArenaException.MSG}")
                 )
             
             if arena.black_team == arena.white_team:

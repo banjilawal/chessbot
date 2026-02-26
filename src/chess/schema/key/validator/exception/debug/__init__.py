@@ -15,5 +15,5 @@ None
 # Modules
 from .null import NullSchemaKeyException
 from .zero import ZeroSchemaKeysException
-from .excess import ExcessiveSchemaKeysException
+from .excess import ArenaSchemaKeysException
 from .route import SchemaKeyValidationRouteException

@@ -107,7 +107,7 @@ class FormationService(HashService[Formation]):
             *   TypeError
             *   NullTeamContextException
             *   ZeroTeamContextFlagsException
-            *   ExcessiveTeamContextFlagsException
+            *   ArenaTeamContextFlagsException
             *   TeamContextValidationException
             *   TeamContextValidationRouteException
         """

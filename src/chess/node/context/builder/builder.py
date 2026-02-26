@@ -13,7 +13,7 @@ import sys
 from typing import Optional
 
 from chess.node import (
-    DiscoveryStatus, ExcessiveNodeContextFlagsException, Node, NodeContext, NodeContextBuildException,
+    DiscoveryStatus, ArenaNodeContextFlagsException, Node, NodeContext, NodeContextBuildException,
     NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException
 )
 from chess.square import Square, SquareService
@@ -78,7 +78,7 @@ class NodeContextBuilder(Builder[NodeContext]):
             # RAISES:
                 *   ZeroNodeContextFlagsException
                 *   NodeContextBuildException
-                *   ExcessiveNodeContextFlagsException
+                *   ArenaNodeContextFlagsException
                 *   NodeContextBuildRouteException
             """
         method = "NodeContextBuilder.build"
@@ -104,8 +104,8 @@ class NodeContextBuilder(Builder[NodeContext]):
             return BuildResult.failure(
                 NodeContextBuildException(
                     msg=f"{method}: {NodeContextBuildException.MSG}",
-                    ex=ExcessiveNodeContextFlagsException(
-                        f"{method}: {ExcessiveNodeContextFlagsException.MSG}"
+                    ex=ArenaNodeContextFlagsException(
+                        f"{method}: {ArenaNodeContextFlagsException.MSG}"
                     )
                 )
             )

@@ -14,5 +14,5 @@ None
 
 # Modules
 from .zero import ZeroAgentContextFlagsException
-from .excess import ExcessiveAgentContextFlagsException
+from .excess import ArenaAgentContextFlagsException
 
