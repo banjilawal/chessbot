@@ -14,3 +14,4 @@ None
 
 # Modules
 from .super import SquareServiceException
+from .debug import SquareServiceDebugException

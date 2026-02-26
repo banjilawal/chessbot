@@ -60,7 +60,6 @@ class DebugException(ChessException):
     _var: Optional[str]
     _val: Optional[None]
     
-    
     def __init__(
             self,
             var: Optional[str] = None,

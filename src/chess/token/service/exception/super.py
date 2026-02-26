@@ -28,7 +28,6 @@ class TokenServiceException(ServiceException):
     1.  Wrap any exceptions raised by TokenService methods that return Result objects.
 
     # PARENT:
-        *   TokenException
         *   ServiceException
 
     # PROVIDES:

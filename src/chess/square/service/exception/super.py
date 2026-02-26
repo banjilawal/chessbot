@@ -1,7 +1,7 @@
-# src/chess/team/service/exception.super.py
+# src/chess/square/service/exception.super.py
 
 """
-Module: chess.team.service.exception.super
+Module: chess.square.service.exception.super
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,22 +11,23 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TEAM_SERVICE EXCEPTION #======================#
-    "TeamServiceException",
+    # ======================# SQUARE_SERVICE EXCEPTION #======================#
+    "SquareServiceException",
 ]
 
 from chess.system import ServiceException
 
 
-# ======================# TEAM_SERVICE EXCEPTION #======================#
-class TeamServiceException(ServiceException):
+# ======================# SQUARE_SERVICE EXCEPTION #======================#
+class SquareServiceException(ServiceException):
     """
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by TeamService methods that return Result objects.
+    1.  Wrap any exceptions raised by SquareService methods that return Result objects.
 
     # PARENT:
+        *   SquareException
         *   ServiceException
 
     # PROVIDES:
@@ -38,9 +39,9 @@ class TeamServiceException(ServiceException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TEAM_SERVICE_ERROR"
-    MSG = "TeamService raised an exception."
-    CLS_NAME = "TeamService"
+    ERR_CODE = "SQUARE_SERVICE_ERROR"
+    MSG = "SquareService raised an exception."
+    CLS_NAME = "SquareService"
     
     def __init__(
             self,

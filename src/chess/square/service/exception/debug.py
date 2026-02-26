@@ -1,9 +1,9 @@
-# src/chess/game/exception/debug.py
+# src/chess/square/service/exception.debug.py
 
 """
-Module: chess.game.exception.debug
+Module: chess.square.service.exception.debug
 Author: Banji Lawal
-Created: 2026-01-26
+Created: 2025-09-16
 version: 1.0.0
 """
 
@@ -11,20 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# GAME_DEBUG EXCEPTION #======================#
-    "GameDebugException",
+    # ======================# SQUARE_SERVICE_DEBUG EXCEPTION #======================#
+    "SquareServiceDebugException",
 ]
 
 from chess.system import DebugException
 
 
-# ======================# GAME_DEBUG EXCEPTION #======================#
-class GameDebugException(DebugException):
+# ======================# SQUARE_SERVICE_DEBUG EXCEPTION #======================#
+class SquareServiceDebugException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused a Game operation failure.
+    1.  Describes the condition that caused a SquareService operation failure.
 
     # PARENT:
         *   DebugException
@@ -52,15 +52,15 @@ class GameDebugException(DebugException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "GAME_ERROR"
-    MSG: str = "A variable in Game raised an exception."
+    ERR_CODE = "SQUARE_SERVICE_ERROR"
+    MSG: str = "A variable in SquareService raised an exception."
     VAR: None
     VAL: None
     
     _var: Optional[str]
     _val: Optional[None]
     
-    def debug(
+    def __init__(
             self,
             var: Optional[str] = None,
             val: Optional[None] = None,

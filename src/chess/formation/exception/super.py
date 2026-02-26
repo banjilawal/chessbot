@@ -1,25 +1,24 @@
-# src/chess/Formation/exception.py
+# src/chess/formation/exception.py
 
 """
-Module: chess.Formation.exception
+Module: chess.formation.exception
 Author: Banji Lawal
 Created: 2025-09-08
 version: 1.0.0
 """
 
 from __future__ import annotations
-
 from typing import Optional
 
 __all__ = [
-    # ======================# Formation EXCEPTION #======================#
+    # ======================# FORMATION EXCEPTION #======================#
     "FormationException",
 ]
 
 from chess.system import SuperClassException
 
 
-# ======================# Formation EXCEPTION #======================#
+# ======================# FORMATION EXCEPTION #======================#
 class FormationException(SuperClassException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
@@ -36,7 +35,7 @@ class FormationException(SuperClassException):
     # ATTRIBUTES:
     None
     """
-    ERR_CODE = "Formation_ERROR"
+    ERR_CODE = "FORMATION_ERROR"
     MSG = "Formation raised an exception."
     CLS_NAME = "Formation"
     
@@ -53,12 +52,4 @@ class FormationException(SuperClassException):
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         
-        super().__init__(msg=msg, err_code=err_code, ex=ex)
-        _cls_name = cls_name
-    
-    @property
-    def cls_name(self) -> Optional[str]:
-        return self._cls_name
-    
-    def __str__(self):
-        return f"{super().__str__()}, cls_name:{self._cls_name}"
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name = cls_name)

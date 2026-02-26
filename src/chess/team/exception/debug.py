@@ -7,17 +7,19 @@ Created: 2026-01-26
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
     # ======================# TEAM_DEBUG EXCEPTION #======================#
     "TeamDebugException",
 ]
 
-from chess.team import TeamException
 from chess.system import DebugException
 
 
 # ======================# TEAM_DEBUG EXCEPTION #======================#
-class TeamDebugException(TeamException, DebugException):
+class TeamDebugException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,17 +27,49 @@ class TeamDebugException(TeamException, DebugException):
     1.  Describes the condition that caused a Team operation failure.
 
     # PARENT:
-        *   TeamException
         *   DebugException
 
     # PROVIDES:
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   var (Optional[str])
+        *   val Optional[None])
 
     # INHERITED ATTRIBUTES:
-     None
+        *   DebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "TEAM_DEBUG_ERROR"
-    MSG = "A TeamDebugException was raised."
+    ERR_CODE = "TEAM_ERROR"
+    MSG: str = "A variable in Team raised an exception."
+    VAR: None
+    VAL: None
+    
+    _var: Optional[str]
+    _val: Optional[None]
+    
+    def debug(
+            self,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        var = var or self.VAR
+        val = val or self.VAL
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
