@@ -11,23 +11,22 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# NODE_SERVICE EXCEPTION #======================#
+    # ======================# NODE_SERVICE_EXCEPTION #======================#
     "NodeServiceException",
 ]
 
-from chess.system import ServiceException
+from chess.system import SuperClassException
 
-
-# ======================# NODE_SERVICE EXCEPTION #======================#
-class NodeServiceException(ServiceException):
+# ======================# NODE_SERVICE_EXCEPTION #======================#
+class NodeServiceException(SuperClassException):
     """
-    # ROLE: Exception Wrapper
+    # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Wrap any exceptions raised by NodeService methods that return Result objects.
+    1.  Indicate that an error occurred in a nodeService.
 
     # PARENT:
-        *   ServiceException
+    *   SuperClassException
 
     # PROVIDES:
     None
@@ -36,29 +35,34 @@ class NodeServiceException(ServiceException):
     None
 
     # INHERITED ATTRIBUTES:
+        *   See SuperClassException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   cls_name (Optional[str])
+
+    # LOCAL METHODS:
     None
+
+    # INHERITED METHODS:
+        *   See SuperClassException class for inherited methods.
     """
-    ERR_CODE = "NODE_SERVICE_ERROR"
-    MSG = "NodeService raised an exception."
-    CLS_NAME = "NodeService"
+    ERR_CODE = " NODE_SERVICE_EXCEPTION"
+    MSG = " NodeService raised an exception."
+    CLS_NAME = " NodeService"
+    
+    _cls_name: Optional[str]
     
     def __init__(
             self,
-            cls_name: Optional[str] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
+            cls_name: Optional[str] = None,
     ):
-        cls_name = cls_name or self.__class__.__name__
-        msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        
-        super().__init__(msg=msg, err_code=err_code, ex=ex)
-        _cls_name = cls_name
-    
-    @property
-    def cls_name(self) -> Optional[str]:
-        return self._cls_name
-    
-    def __str__(self):
-        return f"{super().__str__()}, cls_name:{self._cls_name}"
+        msg = msg or self.MSG
+        cls_name = cls_name or self.CLS_NAME
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name)

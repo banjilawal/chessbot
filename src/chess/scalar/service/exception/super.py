@@ -1,7 +1,7 @@
-# src/chess/team/service/exception.super.py
+# src/chess/scalar/service/exception.super.py
 
 """
-Module: chess.team.service.exception.super
+Module: chess.scalar.service.exception.super
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -11,19 +11,19 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# TEAM_SERVICE_EXCEPTION #======================#
-    "TeamServiceException",
+    # ======================# SCALAR_SERVICE_EXCEPTION #======================#
+    "ScalarServiceException",
 ]
 
 from chess.system import SuperClassException
 
-# ======================# TEAM_SERVICE_EXCEPTION #======================#
-class TeamServiceException(SuperClassException):
+# ======================# SCALAR_SERVICE_EXCEPTION #======================#
+class ScalarServiceException(SuperClassException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a teamService.
+    1.  Indicate that an error occurred in a scalarService.
 
     # PARENT:
     *   SuperClassException
@@ -49,9 +49,9 @@ class TeamServiceException(SuperClassException):
     # INHERITED METHODS:
         *   See SuperClassException class for inherited methods.
     """
-    ERR_CODE = " TEAM_SERVICE_EXCEPTION"
-    MSG = " TeamService raised an exception."
-    CLS_NAME = " TeamService"
+    ERR_CODE = " SCALAR_SERVICE_EXCEPTION"
+    MSG = " ScalarService raised an exception."
+    CLS_NAME = " ScalarService"
     
     _cls_name: Optional[str]
     

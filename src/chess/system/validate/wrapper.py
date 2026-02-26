@@ -17,15 +17,14 @@ __all__ = [
     "ValidationException",
 ]
 
-
 # ======================# VALIDATION_FAILURE #======================#
 class ValidationException(OperationException):
     """
     # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Encapsulate the Layer-1 DebugException which describes what condition prevented the build
-        from completing.
+    1.  Indicate that an error occurred in one of the validator's methods.
+        A validator only raises exceptions if a candidate fails a safety check.
 
     # PARENT:
         *   OperationException

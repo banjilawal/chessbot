@@ -22,7 +22,7 @@ class TokenDeploymentException(TokenException, OperationException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Wrap debug exceptions indicating why a Token was not deployed onto its board. The exception chain traces
+    1.  Wrap debug exceptions indicating why a Token was not deployed onto its token. The exception chain traces
         the ultimate source of failure.
 
     # PARENT:

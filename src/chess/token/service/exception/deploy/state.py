@@ -8,20 +8,20 @@ version: 1.0.0
 """
 
 __all__ = [
-    # ======================# TOKEN_ALREADY_DEPLOYED_ON_BOARD EXCEPTION #======================#
-    "TokenAlreadyDeployedOnBoardException",
+    # ======================# TOKEN_ALREADY_DEPLOYED_ON_TOKEN EXCEPTION #======================#
+    "TokenAlreadyDeployedOnTokenException",
 ]
 
 from chess.token import TokenDebugException
 
 
-# ======================# TOKEN_ALREADY_DEPLOYED_ON_BOARD EXCEPTION #======================#
-class TokenAlreadyDeployedOnBoardException(TokenDebugException):
+# ======================# TOKEN_ALREADY_DEPLOYED_ON_TOKEN EXCEPTION #======================#
+class TokenAlreadyDeployedOnTokenException(TokenDebugException):
     """
     # ROLE: Debug, Error Tracing
 
     # RESPONSIBILITIES:
-    1.  Indicate that an attack failed because the attacker was targeting the wrong board,
+    1.  Indicate that an attack failed because the attacker was targeting the wrong token,
 
     # PARENT:
         *   AttackDebugException
@@ -35,5 +35,5 @@ class TokenAlreadyDeployedOnBoardException(TokenDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "TOKEN_ALREADY_DEPLOYED_ON_BOARD"
-    MSG = "Attack failed: The attacked is targeting the wrong board."
+    ERR_CODE = "TOKEN_ALREADY_DEPLOYED_ON_TOKEN"
+    MSG = "Attack failed: The attacked is targeting the wrong token."

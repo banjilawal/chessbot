@@ -11,19 +11,20 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SQUARE EXCEPTION #======================#
+    # ======================# SQUARE_EXCEPTION #======================#
     "SquareException",
 ]
 
 from chess.system import SuperClassException
 
-# ======================# SQUARE EXCEPTION #======================#
-class SquareException(SuperClassException):
+
+# ======================# SQUARE_EXCEPTION #======================#
+class  SquareException(SuperClassException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Layer-0 of Exception chain which is the Parent of SquareDebugException
+    1.  Indicate that an error occurred in a square.
 
     # PARENT:
     *   SuperClassException
@@ -31,24 +32,40 @@ class SquareException(SuperClassException):
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
     None
+        
+    # INHERITED ATTRIBUTES:
+        *   See SuperClassException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   cls_name (Optional[str])
+
+    # LOCAL METHODS:
+    None
+
+    # INHERITED METHODS:
+        *   See SuperClassException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_ERROR"
-    MSG = "Square raised an exception."
-    CLS_NAME = "Square"
+    ERR_CODE = " SQUARE_EXCEPTION"
+    MSG = " Square raised an exception."
+    CLS_NAME = " Square"
     
     _cls_name: Optional[str]
     
     def __init__(
             self,
-            cls_name: Optional[str] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
+            cls_name: Optional[str] = None,
     ):
-        cls_name = cls_name or self.CLS_NAME
-        msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name = cls_name)
+        msg = msg or self.MSG
+        cls_name = cls_name or self.CLS_NAME
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name)
+
+ 
