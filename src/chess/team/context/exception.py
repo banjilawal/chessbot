@@ -18,10 +18,10 @@ __all__ = [
 # ======================# TEAM_CONTEXT EXCEPTION #======================#
 class TeamContextException(TeamException, ContextException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for TeamContext errors not covered by TeamException subclasses.
+    1.  Super for TeamContext errors not covered by TeamException subclasses.
 
     # PARENT:
         *   TeamException

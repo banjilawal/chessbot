@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import PersonaServiceException
+from .super import PersonaServiceException
 from .quota import RankQuotaPerTeamLookupFailedException

@@ -18,10 +18,10 @@ __all__ = [
 # ======================# PLAYER EXCEPTION #======================#
 class PlayerException(ChessException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for Player errors not covered by PlayerException subclasses.
+    1.  Super for Player errors not covered by PlayerException subclasses.
 
     # PARENT:
         *   ChessException

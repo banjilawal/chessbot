@@ -18,10 +18,10 @@ ___all__ = [
 # ======================# RANK EXCEPTION #======================#
 class RankException(ChessException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for Rank errors not covered by RankException subclasses.
+    1.  Super for Rank errors not covered by RankException subclasses.
 
     # PARENT:
         *   ChessException

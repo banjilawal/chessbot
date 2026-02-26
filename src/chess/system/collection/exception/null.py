@@ -25,7 +25,7 @@ class NullCollectionException(CollectionException, NullException):
     1.  A debug exception is created when a Team candidate fails a validation test. Validation debug exceptions are
         encapsulated inside an TeamValidationException creating an exception chain. which is sent to the caller in a
         ValidationResult.
-    3.  Catchall for errors not covered by lower level NullCollectionException subclasses.
+    3.  Super for errors not covered by lower level NullCollectionException subclasses.
 
     # PARENT:
      *   NullException

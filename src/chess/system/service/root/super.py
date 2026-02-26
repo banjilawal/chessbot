@@ -1,42 +1,45 @@
-# src/chess/hostage/service/exception/catchall.py
+# src/chess/system/service/root/exception.py
 
 """
-Module: chess.hostage.service.exception.catchall
+Module: chess.system.service.root.exception
 Author: Banji Lawal
-Created: 2025-10-06
-version: 1.0.0
+Created: 2025-11-18
 """
+
+from __future__ import annotations
 from typing import Optional
 
-from chess.hostage import HostageException
+from chess.system import SuperClassException
 
 __all__ = [
-    # ======================# HOSTAGE_SERVICE EXCEPTION #======================#
-    "HostageServiceException",
+    # ======================# SERVICE EXCEPTION #======================#
+    "ServiceException",
 ]
 
 
-# ======================# HOSTAGE_SERVICE EXCEPTION #======================#
-class HostageServiceException(HostageException, ServiceException):
+# ======================# SERVICE EXCEPTION #======================#
+class ServiceException(SuperClassException):
     """
-    # ROLE: Catchall Exception
-
+    # ROLE: Super, Exception Messaging
+    
     # RESPONSIBILITIES:
-    1.  Catchall for HostageService errors.
+    1. Outermost layer of the 3-part exception chain that is created when a Service operation's crashes.
 
     # PARENT:
-        *   ServiceException
-        *   HostageException
+        *   SuperClassException
 
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "HOSTAGE_SERVICE_ERROR"
-    MSG = "HostageService raised an exception."
-    CLS_NAME = "HostageService"
+    ERR_CODE = "SERVICE_ERROR"
+    MSG = "Service raised an exception."
+    CLS_NAME = "Service"
     
     _cls_name: Optional[str]
     

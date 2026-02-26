@@ -1,7 +1,7 @@
-# src/chess/rank/model/concrete/rook/exception/catchall.py
+# src/chess/rank/model/concrete/rook/exception/super.py
 
 """
-Module: chess.rank.model.concrete.rook.exception.catchall
+Module: chess.rank.model.concrete.rook.exception.super
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -17,10 +17,10 @@ __all__ = [
 # ======================# ROOK_ERROR EXCEPTION #======================#
 class RookException(RankException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for Rook errors.
+    1.  Super for Rook errors.
 
     # PARENT:
         *   RankException

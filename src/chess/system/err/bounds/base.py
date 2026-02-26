@@ -18,11 +18,11 @@ ___all__ = [
 #======================# BOUNDS EXCEPTION #======================#
 class BoundsException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Super Exception
     
     # RESPONSIBILITIES:
     1.  Indicate that a value is out of bounds.
-    2.  Catchall for conditions which are not covered by BoundsException subclasses.
+    2.  Super for conditions which are not covered by BoundsException subclasses.
 
     # PARENT:
         *   ChessException

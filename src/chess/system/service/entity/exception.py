@@ -24,7 +24,7 @@ class EntityServiceException(ServiceException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by Service objects
-    2.  Catchall for Service errors not covered by lower level Service exception.
+    2.  Super for Service errors not covered by lower level Service exception.
 
     # PARENT:
         *   ServiceException

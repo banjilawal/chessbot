@@ -14,4 +14,4 @@ None
 
 # Modules
 from .service import FormationService
-from .exception import FormationServiceException
+from .super import FormationServiceException

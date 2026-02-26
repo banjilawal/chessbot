@@ -14,4 +14,4 @@ from .pop import *
 from .push import *
 
 # Modules
-from .catchall import TeamStackException
+from .super import TeamStackException

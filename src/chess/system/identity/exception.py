@@ -19,17 +19,17 @@ from chess.system.err import ChessException
 
 
 class IdentityException(ChessException):
-    """Catchall Exception for IdValidator when a candidate fails a sanity check."""
+    """Super Exception for IdValidator when a candidate fails a sanity check."""
     ERR_CODE = "IDENTITY_PROPERTY_VALIDATION_ERROR"
     MSG = "Identity property failed validation."
 
 class InvalidIdentityException(IdentityException, ValidationException):
-    """Catchall Exception for IdValidator when a candidate fails a sanity check."""
+    """Super Exception for IdValidator when a candidate fails a sanity check."""
     ERR_CODE = "IDENTITY_VALIDATION_ERROR"
     MSG = "Identity failed validation."
 
 
 class IdentityNullException(IdentityException, NullException):
-    """Catchall Exception for IdValidator when a candidate fails a sanity check."""
+    """Super Exception for IdValidator when a candidate fails a sanity check."""
     ERR_CODE = "IDENTITY_PROPERTY_VALIDATION_ERROR"
     MSG = "Identity property failed validation."

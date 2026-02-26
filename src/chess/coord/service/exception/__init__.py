@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import CoordServiceException
+from .super import CoordServiceException

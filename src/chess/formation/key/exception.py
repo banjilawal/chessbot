@@ -22,7 +22,7 @@ class FormationKeyException(ContextException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by OrderContext objects.
-    2.  Catchall for conditions which are not covered by lower level OrderContext exceptions.
+    2.  Super for conditions which are not covered by lower level OrderContext exceptions.
 
     # PARENT:
         *   ContextException

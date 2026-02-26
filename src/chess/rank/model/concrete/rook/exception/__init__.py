@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import RookException
+from .super import RookException
 from .span import RookSpanComputationException

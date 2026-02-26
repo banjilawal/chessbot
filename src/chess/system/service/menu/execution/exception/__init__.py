@@ -12,5 +12,5 @@ Created: 2026-02-24
 None
 
 # Modules
-from .catchall import ServiceExecutionException
+from .super import ServiceExecutionException
 from .debug import ServiceExecutionDebugException

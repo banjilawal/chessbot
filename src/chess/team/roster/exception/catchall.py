@@ -1,7 +1,7 @@
-# src/chess/team/roster/exception/catchall.py
+# src/chess/team/roster/exception/super.py
 
 """
-Module: chess.team.roster.exception.catchall
+Module: chess.team.roster.exception.super
 Author: Banji Lawal
 Created: 2025-10-06
 version: 1.0.0
@@ -18,10 +18,10 @@ __all__ = [
 # ======================# TEAM_ROSTER EXCEPTION #======================#
 class TeamRosterException(TeamException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
   
     # RESPONSIBILITIES:
-    1.  Catchall for RosterService errors.
+    1.  Super for RosterService errors.
   
     # PARENT:
         *   ChessException

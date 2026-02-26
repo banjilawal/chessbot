@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import KingException
+from .super import KingException
 from .span import KingSpanComputationException

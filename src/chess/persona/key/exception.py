@@ -22,7 +22,7 @@ class PersonaKeyException(ContextException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by PersonaContext objects.
-    2.  Catchall for conditions which are not covered by lower level PersonaContext exceptions.
+    2.  Super for conditions which are not covered by lower level PersonaContext exceptions.
 
     # PARENT:
         *   PersonaException

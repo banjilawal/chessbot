@@ -17,10 +17,10 @@ __all__ = [
 # ======================# PAWN_ERROR EXCEPTION #======================#
 class PawnException(RankException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for Pawn errors.
+    1.  Super for Pawn errors.
 
     # PARENT:
         *   RankException

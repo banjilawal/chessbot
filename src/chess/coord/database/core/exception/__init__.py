@@ -14,4 +14,4 @@ from .pop import *
 from .push import *
 
 # Modules
-from .catchall import CoordStackException
+from .super import CoordStackException

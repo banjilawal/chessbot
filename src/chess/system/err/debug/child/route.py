@@ -21,7 +21,7 @@ from chess.system import DebugException
 # ======================# NO_EXECUTION_ROUTE_FOR_OPTION EXCEPTION #======================#
 class NoExecutionRouteException(DebugException):
     """
-    # ROLE: Error Tracing, Debugging, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
     1.  Indicate that an operation failed because there was no coverage for at least one of its optional

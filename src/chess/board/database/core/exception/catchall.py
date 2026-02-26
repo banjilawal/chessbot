@@ -1,7 +1,7 @@
-# src/chess/board/database/core/catchall.py
+# src/chess/board/database/core/super.py
 
 """
-Module: chess.board.database.core.catchall
+Module: chess.board.database.core.super
 Author: Banji Lawal
 Created: 2025-11-22
 version: 1.0.0

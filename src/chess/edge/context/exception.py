@@ -19,10 +19,10 @@ __all__ = [
 # ======================# EDGE_CONTEXT EXCEPTION #======================#
 class EdgeContextException(EdgeException, ContextException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for EdgeContext errors not covered by EdgeException subclasses.
+    1.  Super for EdgeContext errors not covered by EdgeException subclasses.
 
     # PARENT:
         *   EdgeException

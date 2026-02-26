@@ -13,5 +13,5 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import KnightException
+from .super import KnightException
 from .span import KnightSpanComputationException

@@ -14,9 +14,7 @@ __all__ = [
 ]
 
 from typing import Optional
-
 from chess.system import SuperClassException
-
 
 # ======================# SERVICE_REQUEST EXCEPTION #======================#
 class ServiceRequestException(SuperClassException):

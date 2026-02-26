@@ -14,4 +14,4 @@ None
 
 # Modules
 from .exist import VisitDestinationNotFoundException
-from .catchall import OccupationServiceException
+from .super import OccupationServiceException

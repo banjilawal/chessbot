@@ -17,4 +17,4 @@ from .query import *
 
 
 # Modules
-from .catchall import SquareStackServiceException
+from .super import SquareStackServiceException

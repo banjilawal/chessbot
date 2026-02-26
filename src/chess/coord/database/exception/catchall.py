@@ -1,7 +1,7 @@
-# src/chess/coord/database/exception/catchall.py
+# src/chess/coord/database/exception/super.py
 
 """
-Module: chess.coord.database.exception.catchall
+Module: chess.coord.database.exception.super
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0
@@ -24,7 +24,7 @@ class CoordDatabaseException(CoordException, DatabaseException):
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by CoordDatabase objects.
     2.  Raised when an exception hits the try-finally block of a CoordDatabase method.
-    3.  Catchall for CoordDatabase failures that are not covered by a lower level CoordDatabase exceptions.
+    3.  Super for CoordDatabase failures that are not covered by a lower level CoordDatabase exceptions.
 
     # PARENT:
         *   CoordException

@@ -1,7 +1,7 @@
-# src/chess/team/database/core/exception/catchall.py
+# src/chess/team/database/core/exception/super.py
 
 """
-Module: chess.team.database.core.exception.catchall
+Module: chess.team.database.core.exception.super
 Author: Banji Lawal
 Created: 2025-11-24
 version: 1.0.0

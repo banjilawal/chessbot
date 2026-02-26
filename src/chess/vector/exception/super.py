@@ -12,7 +12,7 @@ from typing import Optional
 
 __all__ = [
     # ======================#  VECTOR EXCEPTION #======================#
-    " VectorException",
+    "VectorException",
 ]
 
 from chess.system import SuperClassException

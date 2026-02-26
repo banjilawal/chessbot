@@ -35,6 +35,6 @@ class NullGameColorException(GameColorException, NullException):
 
 
 class InvalidGameColorException(GameColorException, ValidationException):
-    """Catchall Exception for GameColorValidator when a candidate fails a sanity check.""""""
+    """Super Exception for GameColorValidator when a candidate fails a sanity check.""""""
     ERR_CODE = "GAME_COLOR_VALIDATION_ERROR"
     MSG = "GameColor validation failed."

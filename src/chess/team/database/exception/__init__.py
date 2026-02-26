@@ -13,4 +13,4 @@ version: 1.0.0
 from .insertion import *
 
 # Modules
-from .catchall import TeamDatabaseException
+from .super import TeamDatabaseException

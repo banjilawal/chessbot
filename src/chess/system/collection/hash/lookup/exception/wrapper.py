@@ -22,7 +22,7 @@ class LookupException(OperationException):
   
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by Lookup operations.
-    3.  Catchall for Metadata errors not covered by lower level LookupFailedExceptions.
+    3.  Super for Metadata errors not covered by lower level LookupFailedExceptions.
   
     # PARENT:
         *   LookupException

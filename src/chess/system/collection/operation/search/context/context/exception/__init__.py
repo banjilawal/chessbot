@@ -13,5 +13,5 @@ Version: 1.0.0
 None
 
 # Modules
-from .catchall import ContextException
+from .super import ContextException
 from .debug import ContextFlagCountException

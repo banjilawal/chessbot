@@ -23,7 +23,7 @@ class StringException(ChessException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by String objects
-    2.  Catchall for String errors not covered by String subclasses.
+    2.  Super for String errors not covered by String subclasses.
 
     # PARENT:
         *   ChessException

@@ -23,7 +23,7 @@ class CoordContextException(CoordException, ContextException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by CoordContext objects.
-    2.  Catchall for conditions which are not covered by lower level CoordContext exceptions.
+    2.  Super for conditions which are not covered by lower level CoordContext exceptions.
 
     # PARENT:
         *   CoordException

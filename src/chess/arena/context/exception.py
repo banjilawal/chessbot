@@ -23,7 +23,7 @@ class ArenaContextException(ArenaException, ContextException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by ArenaContext objects.
-    2.  Catchall for conditions which are not covered by lower level ArenaContext exceptions.
+    2.  Super for conditions which are not covered by lower level ArenaContext exceptions.
 
     # PARENT:
         *   ArenaException

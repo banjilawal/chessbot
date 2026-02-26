@@ -44,13 +44,13 @@ class NullDomainOriginException(DomainOriginException, NullException):
 
 #====================== DOMAIN_ORIGIN VALIDATION EXCEPTION #======================#
 class InvalidDomainOriginException(DomainOriginException, ValidationException):
-    """Catchall Exception for DomainOriginValidator when a candidate fails a sanity check.""""""
+    """Super Exception for DomainOriginValidator when a candidate fails a sanity check.""""""
     ERR_CODE = "DOMAIN_ORIGIN_VALIDATION_ERROR"
     MSG = "DomainOrigin validation failed."
 
 
 #====================== DOMAIN_ORIGIN BUILD EXCEPTION #======================#
 class DomainOriginBuildException(DomainOriginException, BuildException):
-    """Catchall Exception for DomainOriginBuilder when it stops because of an error."""
+    """Super Exception for DomainOriginBuilder when it stops because of an error."""
     ERR_CODE = "DOMAIN_ORIGIN_BUILD_FAILED"
     MSG = "DomainOrigin build failed."

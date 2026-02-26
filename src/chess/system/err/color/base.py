@@ -18,10 +18,10 @@ __all__ = [
 #======================# GAME_COLOR EXCEPTION #======================#
 class GameColorException(ChessException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for conditions which are not covered by GameColorException subclasses.
+    1.  Super for conditions which are not covered by GameColorException subclasses.
 
     # PARENT:
         *   ChessException

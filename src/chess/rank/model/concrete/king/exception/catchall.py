@@ -1,7 +1,7 @@
-# src/chess/rank/model/concrete/king/exception/catchall.py
+# src/chess/rank/model/concrete/king/exception/super.py
 
 """
-Module: chess.rank.model.concrete.king.exception.catchall
+Module: chess.rank.model.concrete.king.exception.super
 Author: Banji Lawal
 Created: 2026-01-22
 version: 1.0.0
@@ -18,10 +18,10 @@ __all__ = [
 # ======================# KING_ERROR EXCEPTION #======================#
 class KingException(RankException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for King errors.
+    1.  Super for King errors.
 
     # PARENT:
         *   RankException

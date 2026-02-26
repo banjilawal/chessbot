@@ -16,7 +16,7 @@ __all__ = [
 # ======================# RESOURCE_UNAVAILABLE EXCEPTION #======================#
 class ResourceUnavailableException(ChessException):
     """
-    # ROLE: Error Tracing, Debugging, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
     1.  Indicate that a resource a client needs is unavailable.

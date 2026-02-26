@@ -18,10 +18,10 @@ from chess.token import TokenException
 # ======================# PAWN_TOKEN EXCEPTION #======================#
 class PawnTokenException(TokenException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Parent and catchall for exception specific to PawnToken instances.
+    1.  Parent and super for exception specific to PawnToken instances.
 
     # PARENT:
         *   TokenException

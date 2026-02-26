@@ -19,10 +19,10 @@ __all__ = [
 # ======================# TOKEN_CONTEXT EXCEPTION #======================#
 class TokenContextException(TokenException, ContextException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for TokenContext errors not covered by TokenException subclasses.
+    1.  Super for TokenContext errors not covered by TokenException subclasses.
 
     # PARENT:
         *   TokenException

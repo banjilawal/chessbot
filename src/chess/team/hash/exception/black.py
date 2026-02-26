@@ -18,7 +18,7 @@ from chess.team import TeamHashException
 # ======================# BLACK_TEAM_HAS_WRONG_SCHEMA EXCEPTION #======================#
 class BlackTeamHasWrongSchemaException(TeamHashException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
     1.  Indicates that the black team in the hash does not have a black schema.

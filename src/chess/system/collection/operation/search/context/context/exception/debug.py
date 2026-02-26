@@ -22,7 +22,7 @@ class ContextFlagCountException(ContextException, BoundsException):
   
     # RESPONSIBILITIES:
     1.  Parent of exceptions which indicate the attributee-value flags enabled in a Context is out of bounds.
-    2.  Catchall for ContextFlagCount errors not covered by lower level ContextFlagEception exceptions.
+    2.  Super for ContextFlagCount errors not covered by lower level ContextFlagEception exceptions.
   
       # PARENT
         *   BoundsException

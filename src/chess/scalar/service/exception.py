@@ -38,13 +38,13 @@ class NullScalarServiceException(ScalarServiceException, NullException):
 
 #======================# SCALARSERVICE VALIDATION EXCEPTION #======================#
 class InvalidScalarServiceException(ScalarServiceException, ValidationException):
-  """Catchall Exception for ScalarValidator when a candidate fails a sanity check."""
+  """Super Exception for ScalarValidator when a candidate fails a sanity check."""
   ERR_CODE = "SCALAR_SERVICE_VALIDATION_ERROR"
   MSG = "ScalarService validation failed."
 
 
 #======================# SCALARSERVICE BUILD EXCEPTION #======================#
 class ScalarBuildException(ScalarServiceException, BuildException):
-  """Catchall Exception for ScalarServiceBuilder when it encounters an error building a ScalarService."""
+  """Super Exception for ScalarServiceBuilder when it encounters an error building a ScalarService."""
   ERR_CODE = "SCALAR_SERVICE_BUILD_FAILED"
   MSG = "ScalarService build failed."

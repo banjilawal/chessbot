@@ -24,7 +24,7 @@ class SnapshotContextException(SnapshotException, ContextException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by SnapshotContext objects.
-    2.  Catchall for conditions which are not covered by lower level SnapshotContext exception.
+    2.  Super for conditions which are not covered by lower level SnapshotContext exception.
 
     # PARENT:
         *   ContextException

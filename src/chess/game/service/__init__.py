@@ -14,4 +14,4 @@ from .data import *
 
 # Modules
 from .service import GameService
-from .exception import GameServiceException
+from .super import GameServiceException

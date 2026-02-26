@@ -1,7 +1,7 @@
-# src/chess/system/collection/hash/service/exception/catchall.py
+# src/chess/system/collection/hash/service/exception/super.py
 
 """
-Module: chess.system.collection.hash.service.exception.catchall
+Module: chess.system.collection.hash.service.exception.super
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0

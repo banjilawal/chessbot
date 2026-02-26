@@ -25,7 +25,7 @@ class VoidStringException(InvalidStringException):
     # RESPONSIBILITIES:
     1.  Parent of exceptions which indicate an entity, method, or operation requires a String but gets either
         whitespace, null, or an empty string instead.
-    2.  Catchall for VoidString errors not covered by VoidString subclasses.
+    2.  Super for VoidString errors not covered by VoidString subclasses.
 
     # PARENT:
         *   InvalidStringException

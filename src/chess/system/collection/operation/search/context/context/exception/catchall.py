@@ -1,7 +1,7 @@
-# src/chess/system/collection/operation/search/context/service/exception/catchall.py
+# src/chess/system/collection/operation/search/context/service/exception/super.py
 
 """
-Module: chess.system.collection.operation.search.context.service.exceptioncatchall
+Module: chess.system.collection.operation.search.context.service.exceptionsuper
 Author: Banji Lawal
 Created: 2025-11-18
 Version: 1.0.0
@@ -22,7 +22,7 @@ class ContextException(ChessException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by CONTEXT objects
-    3.  Catchall for CONTEXT errors not covered by lower level CONTEXT exception.
+    3.  Super for CONTEXT errors not covered by lower level CONTEXT exception.
 
     # PARENT:
         *   ChessException

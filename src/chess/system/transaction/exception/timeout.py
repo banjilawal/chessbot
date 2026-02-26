@@ -19,7 +19,7 @@ from chess.system import ResourceUnavailableException, TransactionException
 # ====================== TRANSACTION_TIMEOUT EXCEPTION #======================#
 class TransactionTimeoutException(TransactionException, ResourceUnavailableException):
     """
-    # ROLE: Error Tracing, Debugging, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Super Exception
 
     # RESPONSIBILITIES:
     1.  Indicate that a transaction was not completed because it timed out waiting for a resource.

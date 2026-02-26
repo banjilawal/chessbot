@@ -15,4 +15,4 @@ from .push import *
 from .query import *
 
 # Modules
-from .catchall import TokenStackException
+from .super import TokenStackException

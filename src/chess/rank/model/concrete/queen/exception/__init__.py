@@ -13,7 +13,7 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import QueenException
+from .super import QueenException
 from .span import QueenSpanComputationException
 
 

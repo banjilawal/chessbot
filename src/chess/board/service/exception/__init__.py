@@ -14,4 +14,4 @@ from .layout import *
 from .insertion import *
 
 # Modules
-from .catchall import BoardServiceException
+from .super import BoardServiceException

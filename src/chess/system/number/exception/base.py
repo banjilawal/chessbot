@@ -22,7 +22,7 @@ class NumberException(ChessException):
 
     # RESPONSIBILITIES:
     1.  Parent of exceptions raised by Numbers.
-    2.  Catchall for conditions which are not covered by lower level Number exceptions.
+    2.  Super for conditions which are not covered by lower level Number exceptions.
 
     # PARENT:
         *   ChessException

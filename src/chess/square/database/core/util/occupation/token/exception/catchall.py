@@ -1,7 +1,7 @@
-# src/chess/square/database/core/util/occupation/token/exception/catchall.py
+# src/chess/square/database/core/util/occupation/token/exception/super.py
 
 """
-Module: chess.square.database.core.util.occupation.token.exception.catchall
+Module: chess.square.database.core.util.occupation.token.exception.super
 Author: Banji Lawal
 Created: 2026-02-21
 version: 1.0.0

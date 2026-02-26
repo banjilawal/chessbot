@@ -12,4 +12,4 @@ Created: 2025-11-18
 
 # Modules
 from .service import Service
-from .exception import ServiceException
+from .super import ServiceException

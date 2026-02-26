@@ -15,4 +15,4 @@ from .promote import *
 
 # Modules
 from .undo import OverMoveUndoLimitException
-from .catchall import TokenServiceException
+from .super import TokenServiceException

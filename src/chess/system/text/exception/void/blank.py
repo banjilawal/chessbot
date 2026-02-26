@@ -25,7 +25,7 @@ class BlankEmptyStringException(VoidStringException):
     # RESPONSIBILITIES:
     1.  Parent of exceptions which indicate an entity, method, or operation got a String with no characters and no
         whitespace.
-    2.  Catchall for errors not covered by BlankEmptyString subclasses.
+    2.  Super for errors not covered by BlankEmptyString subclasses.
 
     # PARENT:
         *   VoidStringException

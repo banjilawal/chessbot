@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .catchall import TokenDatabaseException
+from .super import TokenDatabaseException

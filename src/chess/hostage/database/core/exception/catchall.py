@@ -1,7 +1,7 @@
-# src/chess/hostage/databse/coreexception/catchall.py
+# src/chess/hostage/databse/coreexception/super.py
 
 """
-Module: chess.hostage.database.core.exception.catchall
+Module: chess.hostage.database.core.exception.super
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

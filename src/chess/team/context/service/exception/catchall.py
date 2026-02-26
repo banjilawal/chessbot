@@ -19,7 +19,7 @@ from chess.system.service.root import ServiceException
 # ======================# TEAM_CONTEXT_SERVICE EXCEPTION #======================#
 class TeamContextServiceException(ServiceException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
     1.  Indicate that an TeamContextService encountered an error which prevented the service from completing a task.

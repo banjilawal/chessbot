@@ -17,7 +17,7 @@ __all__ = [
 # ======================# SERVICE_OPERATION_FAILURE #======================#
 class ServiceOperationException(ServiceException, OperationException):
     """
-    # ROLE: Error Tracing, Debugging, Exception Wrapper, Catchall Exception
+    # ROLE: Error Tracing, Debugging, Exception Wrapper, Super Exception
 
     # RESPONSIBILITIES:
     1.  Indicate That  a Service's method caught an unhandled exception in its try-catch-finally block.

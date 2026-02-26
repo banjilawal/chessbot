@@ -23,7 +23,7 @@ class SchemaKeyException(SchemaException, ContextException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Catchall for conditions which are not covered by SchemaKeyException subclasses.
+    1.  Super for conditions which are not covered by SchemaKeyException subclasses.
 
     # PARENT:
         *   SchemaException

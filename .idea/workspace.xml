@@ -6,74 +6,145 @@
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/exception/catchall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/node/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/arena/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/database/core/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/database/core/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/database/core/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/database/core/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/database/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/database/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/database/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/database/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/board/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/service/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/core/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/core/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/database/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/database/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/coord/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/service/exception/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/domain/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/domain/origin/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/domain/origin/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/service/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/edge/stack/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/stack/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/key/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/key/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/formation/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/service/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/game/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/service/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/database/core/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/database/core/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/database/core/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/database/core/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/database/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/database/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/database/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/database/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/hostage/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/service/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/node/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/node/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/node/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/service/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/node/stack/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/stack/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/key/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/key/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/persona/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/service/exception/super.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/player/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/context/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/scalar/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/snapshot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/snapshot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/player/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/model/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/player/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/player/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/service/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/bishop/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/bishop/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/bishop/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/bishop/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/king/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/knight/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/knight/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/knight/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/knight/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/queen/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/queen/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/queen/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/queen/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/rook/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/rook/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/concrete/rook/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/concrete/rook/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/model/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/search/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/search/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/rank/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/service/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/scalar/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/schema/key/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/key/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/service/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/timeline/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/timeline/exception/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/square/context/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/build/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/build/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/builder/builder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/builder/wrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/context/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/context/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/service/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/database/core/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/database/core/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/database/core/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/database/core/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/database/core/util/occupation/token/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/database/core/util/occupation/token/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/database/core/util/occupation/token/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/database/core/util/occupation/token/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/database/core/util/stats/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/database/core/util/stats/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/database/core/util/stats/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/database/core/util/stats/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/database/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/database/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/database/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/database/exception/catchall.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/build/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/build/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/build/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/build/command.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/request/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/request/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/build/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/request/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/build/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/build/request/validator/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/build/validator/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/command.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/command.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/command/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/command/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/square/service/visitation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/visitation/exception/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/square/service/visitation/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/visitation/exception/catchall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/build/result/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/result/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/operation/collision/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/operation/collision/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/operation/update/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/operation/update/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/catchall.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/consistency/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/consistency/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/consistency/collision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/unique.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/consistency/invariant.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/invariant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/debug/child/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/implementation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/method.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/super/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/super/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/wrapper/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/wrapper/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/result/boolean.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/result/boolean.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/base/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/root/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/base/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/root/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/base/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/root/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/build/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/build/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/exception/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/hash/lookup/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/hash/lookup/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/hash/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/hash/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/hash/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/hash/service/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/context/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/context/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/context/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/context/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/context/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/context/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/collection/operation/search/context/service/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/color/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/color/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/database/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/database/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/database/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/database/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/bounds/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/color/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/color/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/debug/child/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/debug/child/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/err/resource/unavailable.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/resource/unavailable.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/identity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/identity/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/number/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/number/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/command/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/command/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/entity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/entity/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/exception/failure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/exception/failure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/menu/execution/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/menu/execution/exception/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/command.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/command.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/count.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/count.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/identifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/identifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/validator/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/request/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/request/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/route/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/route/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/route/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/route/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/route/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/route/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/service/route/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/route/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/result.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/exception/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/result/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/result/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/root/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/root/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/service/root/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/service/root/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/text/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/text/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/text/exception/void/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/text/exception/void/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/text/exception/void/blank.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/text/exception/void/blank.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/transaction/exception/timeout.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transaction/exception/timeout.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/transfer/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/transfer/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/validate/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/validate/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chess/team/context/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/context/service/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/database/core/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/database/core/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/database/core/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/database/core/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/database/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/database/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/database/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/database/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/hash/exception/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/hash/exception/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/hash/exception/black.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/hash/exception/black.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/hash/exception/white.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/hash/exception/white.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/roster/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/roster/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/team/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/service/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/context/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/database/core/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/database/core/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/database/core/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/database/core/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/database/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/database/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/database/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/database/exception/catchall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/model/concrete/combatant/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/model/concrete/combatant/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/token/service/exception/catchall.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/service/exception/super.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/vector/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/exception/super.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -933,7 +1004,7 @@
       <workItem from="1771944119390" duration="27127000" />
       <workItem from="1771979394973" duration="9128000" />
       <workItem from="1772004475524" duration="63557000" />
-      <workItem from="1772081139864" duration="3529000" />
+      <workItem from="1772081139864" duration="7825000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

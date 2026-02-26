@@ -18,7 +18,7 @@ from chess.team import TeamHashException
 # ======================# WHITE_TEAM_HAS_WRONG_SCHEMA EXCEPTION #======================#
 class WhiteTeamHasWrongSchemaException(TeamHashException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
     1.  Indicates that the white team in the hash does not have a white schema.

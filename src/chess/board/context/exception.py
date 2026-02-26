@@ -19,10 +19,10 @@ __all__ = [
 # ======================# BOARD_CONTEXT EXCEPTION #======================#
 class BoardContextException(BoardException, ContextException):
     """
-    # ROLE: Catchall Exception
+    # ROLE: Super Exception
 
     # RESPONSIBILITIES:
-    1.  Catchall for BoardContext errors not covered by BoardException subclasses.
+    1.  Super for BoardContext errors not covered by BoardException subclasses.
 
     # PARENT:
         *   BoardException

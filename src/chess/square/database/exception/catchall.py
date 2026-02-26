@@ -1,7 +1,7 @@
-# src/chess/square/database/exception/catchall.py
+# src/chess/square/database/exception/super.py
 
 """
-Module: chess.square.database.exception.catchall
+Module: chess.square.database.exception.super
 Author: Banji Lawal
 Created: 2025-11-19
 version: 1.0.0

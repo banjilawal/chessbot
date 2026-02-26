@@ -1,45 +1,48 @@
-# src/chess/square/context/exception/debug.py
+# src/chess/square/service/exception.super.py
 
 """
-Module: chess.square.context.exception.debug
+Module: chess.square.service.exception.super
 Author: Banji Lawal
-Created: 2026-02-23
+Created: 2025-09-16
 version: 1.0.0
 """
 
-__all__ = [
-    # ======================# SQUARE_CONTEXT EXCEPTION #======================#
-    "SquareContextException",
-]
-
+from __future__ import annotations
 from typing import Optional
 
-from chess.system import SuperClassException
+
+__all__ = [
+    # ======================# SQUARE_SERVICE EXCEPTION #======================#
+    "SquareServiceException",
+]
+
+from chess.system import ServiceException
 
 
-# ======================# SQUARE_CONTEXT EXCEPTION #======================#
-class SquareContextException(SuperClassException):
+# ======================# SQUARE_SERVICE EXCEPTION #======================#
+class SquareServiceException(ServiceException):
     """
-    # ROLE: DebugException Parent, Exception Chain Layer 0
+    # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    Layer-0 of Exception chain which is the Parent of SquareContextDebugException
+    1.  Wrap any exceptions raised by SquareService methods that return Result objects.
 
     # PARENT:
-        *   SuperClassException
+        *   SquareException
+        *   ServiceException
 
     # PROVIDES:
     None
 
-    # ATTRIBUTES:
+    # LOCAL ATTRIBUTES:
+    None
+
+    # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "SQUARE_CONTEXT_ERROR"
-    MSG = "SquareContext raised an exception."
-    CLS_NAME = "SquareContext"
-    
-    _cls_name: Optional[str]
-    
+    ERR_CODE = "SQUARE_SERVICE_ERROR"
+    MSG = "SquareService raised an exception."
+    CLS_NAME = "SquareService"
     
     def __init__(
             self,
@@ -48,18 +51,16 @@ class SquareContextException(SuperClassException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
     ):
-        cls_name = cls_name or self.CLS_NAME
+        cls_name = cls_name or self.__class__.__name__
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         
         super().__init__(msg=msg, err_code=err_code, ex=ex)
         _cls_name = cls_name
     
-    
     @property
     def cls_name(self) -> Optional[str]:
         return self._cls_name
-    
     
     def __str__(self):
         return f"{super().__str__()}, cls_name:{self._cls_name}"

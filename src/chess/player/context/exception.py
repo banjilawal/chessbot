@@ -26,7 +26,7 @@ class PlayerContextException(SuperClassException):
 
     # RESPONSIBILITIES:
     1.  Parent of exception raised by PlayerContext objects.
-    2.  Catchall for conditions which are not covered by lower level PlayerContext exception.
+    2.  Super for conditions which are not covered by lower level PlayerContext exception.
     
     # PARENT:
         *   PlayerException
