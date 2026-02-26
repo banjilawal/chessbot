@@ -15,4 +15,4 @@ from .visit import *
 
 # Modules
 from .router import SquareServiceRouter
-from .command import SquareCommand
+from .command import SquareServiceCommand

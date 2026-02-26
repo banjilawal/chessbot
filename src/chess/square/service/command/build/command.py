@@ -11,10 +11,10 @@ from typing import Any, Dict
 
 from chess.board import Board
 from chess.coord import Coord
-from chess.square import SquareCommand
+from chess.square import SquareServiceCommand
 
 
-class SquareBuildCommand(SquareCommand):
+class SquareBuildCommand(SquareServiceCommand):
     """
     A class representing a service command.
     """

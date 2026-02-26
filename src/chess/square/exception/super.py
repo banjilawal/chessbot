@@ -17,7 +17,6 @@ __all__ = [
 
 from chess.system import SuperClassException
 
-
 # ======================# SQUARE EXCEPTION #======================#
 class SquareException(SuperClassException):
     """

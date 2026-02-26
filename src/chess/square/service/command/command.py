@@ -14,7 +14,7 @@ from typing import Any, Dict
 from chess.system import Command
 
 
-class SquareCommand(Command):
+class SquareServiceCommand(Command):
     """
     A class representing a service command.
     """
@@ -24,5 +24,5 @@ class SquareCommand(Command):
 
     @classmethod
     @abstractmethod
-    def key(cls) -> SquareCommand:
+    def key(cls) -> SquareServiceCommand:
         pass

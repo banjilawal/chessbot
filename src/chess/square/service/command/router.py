@@ -10,28 +10,31 @@ from __future__ import annotations
 
 from typing import Any, List
 
-from chess.square import SquareBuildCommand, SquareCommand, SquareService
-from chess.system import Command, CommandRouter
+from chess.square import SquareBuildCommand, SquareServiceCommand, SquareService
+from chess.system import CommandRouter
 
 
 class SquareServiceRouter(CommandRouter[SquareService]):
     
-
-    
-    COMMANDS: List[SquareCommand] = [
+    COMMANDS: List[SquareServiceCommand] = [
         SquareBuildCommand, 
     ]
     
     _service: SquareService
-    _commands: List[SquareCommand]
+    _commands: List[SquareServiceCommand]
     
     def __init__(self,
             service: SquareService = SquareService(),
-            commands: List[SquareCommand] = None,
+            commands: List[SquareServiceCommand] = None,
     ):
+        _commands = commands or self.COMMANDS
         self._service = service
         self._commands = commands
+        
+    @property
+    def commands(self) -> List[SquareServiceCommand]:
+        return self._commands
     
-    def route(self, command: Command) -> Any:
+    def route(self, command: SquareServiceCommand) -> Any:
         pass
     
