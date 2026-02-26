@@ -5,58 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24387745-64b6-4124-89fe-1c944fb0905a" name="Changes" comment="Simplified line comment for unhandled route path.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/arena/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/arena/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/board/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/board/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/coord/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/coord/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/edge/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/edge/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/edge/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/edge/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/formation/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/formation/validator/exception/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/game/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/game/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/graph/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/graph/exception/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/hostage/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/hostage/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/node/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/node/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/node/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/persona/validator/exception/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/persona/validator/exception/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/player/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/player/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/rank/validator/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/rank/validator/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/scalar/validator/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/scalar/validator/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/schema/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/schema/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/snapshot/validator/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/snapshot/validator/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/service/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/service/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/square/validator/exception/debug/registration.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/square/validator/exception/debug/registration.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/debug/child/method.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/method.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/debug/child/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/debug/child/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/debug/child/unique.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/child/unique.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/debug/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/debug/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/err/super/root.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/err/super/root.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/analyzer/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/analyzer/wrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/exception/debug/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/debug/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/exception/super.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/super.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/team/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/context/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/context/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/token/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/token/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/y/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/vector/validator/exception/debug/y/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/chess/system/relation/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chess/system/relation/exception/super.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -916,7 +866,7 @@
       <workItem from="1771944119390" duration="27127000" />
       <workItem from="1771979394973" duration="9128000" />
       <workItem from="1772004475524" duration="63557000" />
-      <workItem from="1772081139864" duration="39752000" />
+      <workItem from="1772081139864" duration="40564000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -13,4 +13,4 @@ version: 1.0.0
 from .debug import *
 
 # Modules
-from .super import RelationException
+None
