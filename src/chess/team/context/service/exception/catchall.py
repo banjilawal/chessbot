@@ -7,17 +7,17 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.system import CatchallException, ServiceException
-from chess.team import TeamContextException
 
 __all__ = [
     # ======================# TEAM_CONTEXT_SERVICE EXCEPTION #======================#
     "TeamContextServiceException",
 ]
 
+from chess.system.service.root import ServiceException
+
 
 # ======================# TEAM_CONTEXT_SERVICE EXCEPTION #======================#
-class TeamContextServiceException(TeamContextException, ServiceException):
+class TeamContextServiceException(ServiceException):
     """
     # ROLE: Catchall Exception
 

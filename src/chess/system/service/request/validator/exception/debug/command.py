@@ -6,16 +6,18 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
+from __future__ import annotations
+
 __all__ = [
     # ======================# WRONG_OPERATION EXCEPTION #======================#
-    "WrongOperationException",
+    "CommandNameException",
 ]
 
 from chess.system import ServiceRequestDebugException
 
 
 # ======================# WRONG_OPERATION EXCEPTION #======================#
-class WrongOperationException(ServiceRequestDebugException):
+class CommandNameException(ServiceRequestDebugException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 

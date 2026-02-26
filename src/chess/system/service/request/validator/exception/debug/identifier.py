@@ -8,14 +8,14 @@ Created: 2026-02-24
 
 __all__ = [
     # ======================# IDENTIFIER_NOT_FOUND EXCEPTION #======================#
-    "IdentifierException",
+    "ArgumentIdentifierException",
 ]
 
 from chess.system import ServiceRequestDebugException
 
 
 # ======================# IDENTIFIER_NOT_FOUND EXCEPTION #======================#
-class IdentifierException(ServiceRequestDebugException):
+class ArgumentIdentifierException(ServiceRequestDebugException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 

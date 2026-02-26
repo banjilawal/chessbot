@@ -13,6 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .collision import CollisionException
-from .invariant import InvariantBreachException
 from .inconsistency import InconsistencyException

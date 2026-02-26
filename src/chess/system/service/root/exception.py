@@ -1,12 +1,12 @@
-# src/chess/system/service/base/exception.py
+# src/chess/system/service/root/exception.py
 
 """
-Module: chess.system.service.base.exception
+Module: chess.system.service.root.exception
 Author: Banji Lawal
 Created: 2025-11-18
 """
 
-from chess.system import CatchallException, WrapperException
+from chess.system import SuperClassException
 
 __all__ = [
     # ======================# SERVICE EXCEPTION #======================#
@@ -15,7 +15,7 @@ __all__ = [
 
 
 # ======================# SERVICE EXCEPTION #======================#
-class ServiceException(CatchallException):
+class ServiceException(SuperClassException):
     """
     # ROLE: Catchall, Exception Messaging
     
@@ -23,7 +23,7 @@ class ServiceException(CatchallException):
     1. Outermost layer of the 3-part exception chain that is created when a Service operation's crashes.
 
     # PARENT:
-        *   CatchallException
+        *   SuperClassException
 
     # PROVIDES:
     None

@@ -12,11 +12,11 @@ __all__ = [
     "InvariantBreachException",
 ]
 
-from chess.system import InconsistencyException
+from chess.system import DebugException
 
 
 # ======================# INVARIANT_BREACH EXCEPTION #======================#
-class InvariantBreachException(InconsistencyException):
+class InvariantBreachException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -25,7 +25,7 @@ class InvariantBreachException(InconsistencyException):
         assumptions about its internal state are no longer valid.
 
     # PARENT:
-        *   InconsistencyException
+        *   DebugException
 
     # PROVIDES:
     None

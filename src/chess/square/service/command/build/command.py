@@ -1,7 +1,7 @@
-# src/chess/square/service/operation/operation.py
+# src/chess/square/service/command/command.py
 
 """
-Module: chess.square.service.operation.operation
+Module: chess.square.service.command.command
 Author: Banji Lawal
 Created: 2026-02-24
 """
@@ -11,12 +11,12 @@ from typing import Any, Dict
 
 from chess.board import Board
 from chess.coord import Coord
-from chess.square import SquareServiceOperation
+from chess.square import SquareCommand
 
 
-class SquareBuildOperation(SquareServiceOperation):
+class SquareBuildCommand(SquareCommand):
     """
-    A class representing a service operation.
+    A class representing a service command.
     """
     
     NAME = "build_square"
@@ -35,5 +35,5 @@ class SquareBuildOperation(SquareServiceOperation):
         super().__init__(name=name, parameters=parameters)
 
     @classmethod
-    def key(cls) -> SquareBuildOperation:
+    def key(cls) -> SquareBuildCommand:
         return cls.__init__(name=cls.NAME, parameters=cls.PARAMETERS)

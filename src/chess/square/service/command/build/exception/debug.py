@@ -1,26 +1,26 @@
-# src/chess/square/service/operation/exception/debug.py
+# src/chess/square/service/command/exception/debug.py
 
 """
-Module: chess.square.service.operation.exception.debug
+Module: chess.square.service.command.exception.debug
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
 __all__ = [
-    # ======================# SERVICE_OPERATION_DEBUG EXCEPTION #======================#
-    "ServiceOperationDebugException",
+    # ======================# SERVICE_COMMAND_DEBUG EXCEPTION #======================#
+    "ServiceCommandDebugException",
 ]
 
-from chess.square import DebugException, ServiceOperationException
+from chess.square import DebugException, ServiceCommandException
 
 
-# ======================# SERVICE_OPERATION_DEBUG EXCEPTION #======================#
-class ServiceOperationDebugException(ServiceOperationException, DebugException):
+# ======================# SERVICE_COMMAND_DEBUG EXCEPTION #======================#
+class ServiceCommandDebugException(ServiceCommandException, DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused a Command operation failure.
+    1.  Describes the condition that caused a Command command failure.
 
     # PARENT:
         *   DebugException
@@ -35,5 +35,5 @@ class ServiceOperationDebugException(ServiceOperationException, DebugException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERR_CODE = "SERVICE_OPERATION_DEBUG_ERROR"
-    MSG = "A ServiceOperationDebugException was raised."
+    ERR_CODE = "SERVICE_COMMAND_DEBUG_ERROR"
+    MSG = "A ServiceCommandDebugException was raised."

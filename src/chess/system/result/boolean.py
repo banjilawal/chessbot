@@ -1,6 +1,6 @@
 from typing import Any, Optional
 
-from chess.system import MethodNotImplementedException
+from chess.system import MethodImplementationException
 from chess.system.result import Result
 
 
@@ -38,8 +38,8 @@ class BooleanResult(Result[bool]):
     def empty(cls) -> Result:
         method = "TransactionResult.empty"
         return Result(
-            exception=MethodNotImplementedException(
-                f"{method}: {MethodNotImplementedException.MSG}. TransactionResult must "
+            exception=MethodImplementationException(
+                f"{method}: {MethodImplementationException.MSG}. TransactionResult must "
                 f"always have an event in the payload. It cannot be empty."
             )
         )

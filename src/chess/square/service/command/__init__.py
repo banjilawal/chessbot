@@ -1,12 +1,12 @@
-# src/chess/square/service/operation/__init__.py
+# src/chess/square/service/command/__init__.py
 
 """
-Module: chess.square.service.operation.__init__
+Module: chess.square.service.command.__init__
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
-# =========== SQUARE.SERVICE.OPERATION PACKAGE CONTENTS ===========#
+# =========== SQUARE.SERVICE.COMMAND PACKAGE CONTENTS ===========#
 
 # Packages
 
@@ -15,4 +15,4 @@ from .visit import *
 
 # Modules
 from .router import SquareServiceRouter
-from .operation import SquareServiceOperation
+from .command import SquareCommand

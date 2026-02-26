@@ -7,8 +7,6 @@ Created: 2025-09-16
 version: 1.0.0
 """
 
-from chess.player import PlayerException
-from chess.system import ContextException
 
 
 __all__ = [
@@ -16,9 +14,13 @@ __all__ = [
     "PlayerContextException",
 ]
 
+from typing import Optional
+
+from chess.system import SuperClassException
+
 
 #======================# PLAYER_CONTEXT EXCEPTION #======================#
-class PlayerContextException(PlayerException, ContextException):
+class PlayerContextException(SuperClassException):
     """
     # ROLE: Exception Wrapper
 
@@ -41,3 +43,27 @@ class PlayerContextException(PlayerException, ContextException):
     """
     ERR_CODE = "PLAYER_CONTEXT_ERROR"
     DEFAULT_ERR_CODE = "PlayerContext raised an exception."
+    CLS_NAME = "PlayerContext"
+    
+    _cls_name: Optional[str]
+    
+    def __init__(
+            self,
+            cls_name: Optional[str] = None,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        cls_name = cls_name or self.CLS_NAME
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        
+        super().__init__(msg=msg, err_code=err_code, ex=ex)
+        _cls_name = cls_name
+    
+    @property
+    def cls_name(self) -> Optional[str]:
+        return self._cls_name
+    
+    def __str__(self):
+        return f"{super().__str__()}, cls_name:{self._cls_name}"

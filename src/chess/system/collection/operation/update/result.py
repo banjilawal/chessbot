@@ -10,7 +10,7 @@ Version: 1.0.0
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 
-from chess.system import DataResult, MethodNotImplementedException, UpdateResultEnum, UpdateResultState
+from chess.system import DataResult, MethodImplementationException, UpdateResultEnum, UpdateResultState
 
 T = TypeVar("T")
 
@@ -112,7 +112,7 @@ class UpdateResult(DataResult[T], Generic[T]):
         method = "UpdateResult.success"
         return cls.update_failure(
             original=payload,
-            exception=MethodNotImplementedException(
+            exception=MethodImplementationException(
                 f"UpdateResult does not support Result.success. Use UpdateResult.update_success instead."
             )
         )
@@ -122,7 +122,7 @@ class UpdateResult(DataResult[T], Generic[T]):
         method = "UpdateResult.failure"
         return cls.update_failure(
             original=None,
-            exception=MethodNotImplementedException(
+            exception=MethodImplementationException(
                 f"UpdateResult does not support Result.failure. Use UpdateResult.update_failure instead."
             )
         )
@@ -132,7 +132,7 @@ class UpdateResult(DataResult[T], Generic[T]):
         method = "UpdateResult.timed_out"
         return cls.update_timed_out(
             original=None,
-            exception=MethodNotImplementedException(
+            exception=MethodImplementationException(
                 f"UpdateResult does not support Result.timed_out. Use UpdateResult.update_timed instead."
             )
         )

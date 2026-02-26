@@ -6,16 +6,18 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
+from __future__ import annotations
+
 __all__ = [
     # ======================# SQUARE_BUILD_REQUEST_FAILURE #======================#
-    "ServiceRequestValidationException",
+    "SquareBuildRequestException",
 ]
 
-from chess.system import ServiceRequestValidationException
+from chess.system import SuperClassException
 
 
 # ======================# SQUARE_BUILD_REQUEST_FAILURE #======================#
-class SquareBuildRequestException(ServiceRequestValidationException):
+class SquareBuildRequestException(SuperClassException):
     """
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
@@ -37,3 +39,9 @@ class SquareBuildRequestException(ServiceRequestValidationException):
     """
     ERR_CODE = "SQUARE_BUILD_REQUEST_FAILED"
     MSG = "SquareBuildRequest validation failed."
+    CLS_NAME = "ServiceRequestException"
+    
+    def __new__(cls, msg: str = MSG, ex: Exception | None = None) -> SquareBuildRequestException:
+        super().__init__()
+    
+    def __init__(self, msg: str = MSG, ex: Exception | None = None) -> None:

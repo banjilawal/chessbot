@@ -9,13 +9,14 @@ Created: 2026-02-24
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, List
+from typing import Any, Generic, List, TypeVar
 
 from chess.system import Command, LoggingLevelRouter, Service
 
+S = TypeVar("S", bound="Service")
 
-class CommandRouter(ABC, Service):
-    _service: Service
+class CommandRouter(ABC, Generic[S]):
+    _service: S
     _commands: List[Command]
     
     def __init__(self, service: Service, commands: List[Command]):
@@ -24,7 +25,7 @@ class CommandRouter(ABC, Service):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def route(self, service_request: ServiceRequest) -> Any:
+    def route(self, command: Command) -> Any:
         pass
         
     

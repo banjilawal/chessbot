@@ -9,14 +9,14 @@ version: 1.0.0
 
 __all__ = [
     # ======================# COLLISION EXCEPTION #======================#
-    "CollisionException",
+    "UniqueAttributeException",
 ]
 
-from chess.system import InconsistencyException
+from chess.system import DebugException
 
 
 # ======================# COLLISION EXCEPTION #======================#
-class CollisionException(InconsistencyException):
+class UniqueAttributeException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
 
@@ -24,7 +24,7 @@ class CollisionException(InconsistencyException):
     1.  Indicate that a set of bag of the same class, has two bag share a value for their unique property
 
     # PARENT:
-        *   InconsistencyException
+        *   DebugException
 
     # PROVIDES:
     None
@@ -36,4 +36,4 @@ class CollisionException(InconsistencyException):
      None
     """
     ERR_CODE = "COLLISION_ERROR"
-    MSG = "CollisionException"
+    MSG = "UniqueAttributeException"

@@ -7,15 +7,15 @@ Created: 2026-02-24
 """
 
 __all__ = [
-    # ======================# NUMBER_OF_ARGUMENTS EXCEPTION #======================#
-    "NumberOfArgumentsException",
+    # ======================# ARGUMENT_COUNT EXCEPTION #======================#
+    "ArgumentCountException",
 ]
 
 from chess.system import ServiceRequestDebugException
 
 
-# ======================# NUMBER_OF_ARGUMENTS EXCEPTION #======================#
-class NumberOfArgumentsException(ServiceRequestDebugException):
+# ======================# ARGUMENT_COUNT EXCEPTION #======================#
+class ArgumentCountException(ServiceRequestDebugException):
     """
     # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
 
@@ -34,5 +34,5 @@ class NumberOfArgumentsException(ServiceRequestDebugException):
     # INHERITED ATTRIBUTES:
     None
     """
-    ERR_CODE = "NUMBER_OF_ARGUMENTS_ERROR"
+    ERR_CODE = "ARGUMENT_COUNT_ERROR"
     MSG = "ServiceRequest validation failed: len(request.params) != len(operation.arguments)."

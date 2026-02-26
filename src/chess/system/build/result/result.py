@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from typing import Optional, TypeVar, Generic
-from chess.system import Result, MethodNotImplementedException, BuildResult
+from chess.system import Result, MethodImplementationException, BuildResult
 
 T = TypeVar("T")
 
@@ -30,7 +30,7 @@ class BuildResult(Result[T], Generic[T]):
     @classmethod
     def empty(cls) -> Result:
         method = "BuildResult.empty"
-        return cls(exception=MethodNotImplementedException(msg=f"{method}: {MethodNotImplementedException.MSG}"))
+        return cls(exception=MethodImplementationException(msg=f"{method}: {MethodImplementationException.MSG}"))
 
         #
         #   method = "Result.__init_"

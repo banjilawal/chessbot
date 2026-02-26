@@ -12,5 +12,5 @@ Created: 2026-02-24
 None
 
 # Modules
-from .catchall import ServiceRouteException
+from .super import ServiceRouteException
 from .debug import ServiceRouteDebugException

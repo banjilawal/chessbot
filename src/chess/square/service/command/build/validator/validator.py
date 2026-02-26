@@ -10,23 +10,24 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from chess.square import SquareBuildOperation, SquareBuildRequestException
+from chess.square import SquareBuildCommand, SquareBuildRequestException
 from chess.system import (
-    IdentifierException, LoggingLevelRouter, NumberOfArgumentsException, ServiceRequest,
-    ServiceRequestValidator, ValidationResult, Validator, WrongOperationException, WrongTypeException
+    ArgumentIdentifierException, CommandNameException, LoggingLevelRouter, ArgumentCountException,
+    ServiceRequestValidator, ValidationResult,
+    Validator, ServiceRequest
 )
 
 
-class SquareBuildRequestValidator(Validator[SquareBuildOperation]):
+class SquareBuildRequestValidator(Validator[SquareBuildCommand]):
     
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            operation: SquareBuildOperation,
+            command: SquareBuildCommand,
             service_request_validator: ServiceRequestValidator = ServiceRequestValidator(),
-    ) -> ValidationResult[SquareBuildOperation]:
+    ) -> ValidationResult[SquareBuildCommand]:
         method = "SquareBuildRequestValidator.validate"
         
         # Handle the case that, the candidate is not certified as a safe ServiceRequest.
@@ -40,54 +41,59 @@ class SquareBuildRequestValidator(Validator[SquareBuildOperation]):
                 )
             )
         # --- Cast candidate to a ServiceRequest for additional tests. ---#
-        square_build_request = cast(ServiceRequest, candidate)
+        request = cast(ServiceRequest, candidate)
         
-        # Handle the case that, request.command != operation.name
-        if square_build_request.command.upper() != operation.name.upper():
+        # Handle the case that, request.command != command.name
+        if request.command.upper() != command.name.upper():
             # Return the exception on failure.
             return ValidationResult.failure(
                 SquareBuildRequestException(
+                    
                     msg=f"{method}: {SquareBuildRequestException.MSG}",
-                    ex=WrongOperationException(
-                        f"{method}: Expected command: {operation.name} "
-                        f"received: {square_build_request.command} instead."
-                    )
+                    ex=
+                    # ex=CommandNameException(
+                    #     var="request.command_name",
+                    #     val=request.command_name,
+                    #     msg=(
+                    #         f"{method}: Expected command: {command.name} received: {request.command} instead."
+                    #     )
+                    # )
                 )
             )
         # Handle the case that, request has the wrong number of arguments.
-        if len(square_build_request.arguments) != len(operation.parameters):
+        if len(request.arguments) != len(command.parameters):
             # Return the exception on failure.
             return ValidationResult.failure(
                 SquareBuildRequestException(
                     msg=f"{method}: {SquareBuildRequestException.MSG}",
-                    ex=NumberOfArgumentsException(
-                        f"{method}: Expected command: {NumberOfArgumentsException.MSG}."
+                    ex=ArgumentCountException(
+                        f"{method}: Expected command: {ArgumentCountException.MSG}."
                     )
                 )
             )
         # Handle the case that, the request has an identifier wrong
-        for identifier in square_build_request.arguments.keys():
-            if identifier not in operation.parameters.keys():
+        for identifier in request.arguments.keys():
+            if identifier not in command.parameters.keys():
                 return ValidationResult.failure(
                     SquareBuildRequestException(
                         msg=f"{method}: {SquareBuildRequestException.MSG}",
-                        ex=IdentifierException(
+                        ex=ArgumentIdentifierException(
                             f"{method}: Expected command: {identifier} not found."
                         )
                     )
                 )
         # Handle the case that, the request has an incorrect type.
-        for identifier in square_build_request.arguments.keys():
-            if not isinstance(square_build_request.arguments[identifier, operation.key()[identifier]]):
+        for identifier in request.arguments.keys():
+            if not isinstance(request.arguments[identifier, command.key()[identifier]]):
                 return ValidationResult.failure(
                     SquareBuildRequestException(
                         msg=f"{method}: {SquareBuildRequestException.MSG}",
-                        ex=WrongTypeException(
-                            f"{method}: Expected command: {identifier} not found."
+                        ex=ArgumentIdentifierException(
+                            f"{identifier: Expected command: {identifier} not found."
                         )
                     )
                 )
         # --- On certification successes send the square in the ValidationResult. ---#
-        return ValidationResult.success(square_build_request)
+        return ValidationResult.success(request)
     
     

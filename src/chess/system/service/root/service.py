@@ -1,7 +1,7 @@
-# src/chess/system/service/base/service.py
+# src/chess/system/service/root/service.py
 
 """
-Module: chess.system.service.base.service
+Module: chess.system.service.root.service
 Author: Banji Lawal
 Created: 2025-11-18
 """

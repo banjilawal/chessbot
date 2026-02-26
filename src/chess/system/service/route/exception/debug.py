@@ -6,6 +6,8 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
+from __future__ import annotations
+
 __all__ = [
     # ======================# SERVICE_ROUTE_DEBUG EXCEPTION #======================#
     "ServiceRouteDebugException",

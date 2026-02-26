@@ -13,7 +13,7 @@ None
 
 # Modules
 from .null import ServiceRequestNullException
-from .command import WrongOperationException
-from .count import NumberOfArgumentsException
-from .identifier import IdentifierException
-from .obj import WrongTypeException
+from .command import CommandNameException
+from .count import ArgumentCountException
+from .identifier import ArgumentIdentifierException
+from .kind import ArgumentTypeException

@@ -55,7 +55,7 @@ class SuperClassException(ChessException):
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
-        *   class_name (Optional[str])
+        *   cls_name (Optional[str])
 
     # LOCAL METHODS:
     None

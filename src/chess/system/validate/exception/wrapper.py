@@ -43,7 +43,6 @@ class ValidationException(OperationException):
     RSLT = "ValidationResult"
     
     
-    
     def __init__(
             self,
             op_name: Optional[str] = None,

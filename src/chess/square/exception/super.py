@@ -1,11 +1,15 @@
-# src/chess/square/exception/super.py
+# src/chess/square/exception.py
 
 """
-Module: chess.square.exception.super
+Module: chess.square.exception
 Author: Banji Lawal
-Created: 2025-10-03
+Created: 2025-09-08
 version: 1.0.0
 """
+
+from __future__ import annotations
+
+from typing import Optional
 
 __all__ = [
     # ======================# SQUARE EXCEPTION #======================#
@@ -24,7 +28,7 @@ class SquareException(SuperClassException):
     1.  Layer-0 of Exception chain which is the Parent of SquareDebugException
 
     # PARENT:
-        *   SuperClassException
+    *   SuperClassException
 
     # PROVIDES:
     None
@@ -34,3 +38,27 @@ class SquareException(SuperClassException):
     """
     ERR_CODE = "SQUARE_ERROR"
     MSG = "Square raised an exception."
+    CLS_NAME = "Square"
+    
+    _cls_name: Optional[str]
+    
+    def __init__(
+            self,
+            cls_name: Optional[str] = None,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        cls_name = cls_name or self.CLS_NAME
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        
+        super().__init__(msg=msg, err_code=err_code, ex=ex)
+        _cls_name = cls_name
+    
+    @property
+    def cls_name(self) -> Optional[str]:
+        return self._cls_name
+    
+    def __str__(self):
+        return f"{super().__str__()}, cls_name:{self._cls_name}"

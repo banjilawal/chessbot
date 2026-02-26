@@ -14,7 +14,6 @@ from chess.system import (
     ValidationResult, Validator, ServiceRequest
 )
 
-
 class ServiceRequestValidator(Validator[ServiceRequest]):
     """
      # ROLE: Validation, Data Integrity Guarantor, Security.

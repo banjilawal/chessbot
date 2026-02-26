@@ -10,15 +10,15 @@ version: 1.0.0
 from chess.system import DebugException
 
 __all__ = [
-    # ======================# NOT_IMPLEMENTED EXCEPTION #======================#
-    "MethodNotImplementedException",
+    # ======================# METHOD_NOT_IMPLEMENTED EXCEPTION #======================#
+    "MethodImplementationException",
 ]
 
-from chess.system import ChessException
+from chess.system import DebugException
 
 
-# ======================# NOT_IMPLEMENTED EXCEPTION #======================#
-class MethodNotImplementedException(ChessException):
+# ======================# METHOD_NOT_IMPLEMENTED EXCEPTION #======================#
+class MethodImplementationException(DebugException):
     """
     # ROLE: Information, Reporting, Debug
 
@@ -26,7 +26,7 @@ class MethodNotImplementedException(ChessException):
     1.  Indicate that a call was made to an abstract method that the subclass does not implement.
     
     # PARENT:
-        *   ChessException
+        *   DebugException
 
     # PROVIDES:
     None
@@ -37,5 +37,5 @@ class MethodNotImplementedException(ChessException):
     # INHERITED ATTRIBUTES:
      None
     """
-    ERR_CODE = "NOT_IMPLEMENTED_WARNING"
+    ERR_CODE = "METHOD_NOT_IMPLEMENTED_WARNING"
     MSG = "The method is not implemented."

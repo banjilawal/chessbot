@@ -11,7 +11,7 @@ __all__ = [
     "ServiceRequestNullException",
 ]
 
-from chess.system import NullException, ServiceRequestDebugException
+from chess.system import ServiceRequestDebugException
 
 
 # ======================# SERVICE_REQUEST_NULL EXCEPTION #======================#

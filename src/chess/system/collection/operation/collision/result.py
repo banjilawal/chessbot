@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar
 
-from chess.system import CollisionResultEnum, CollisionResultState, DataResult, MethodNotImplementedException
+from chess.system import CollisionResultEnum, CollisionResultState, DataResult
 
 T = TypeVar("T")
 
@@ -142,8 +142,9 @@ class CollisionReport(DataResult[T], Generic[T]):
     def success(cls, payload: T) -> CollisionReport[T]:
         return cls.detection_failure(
             target=payload,
-            exception=MethodNotImplementedException(
-                f"CollisionReport does not support Result.success. Use CollisionReport.collision_detected instead."
+            exception=MethodImplementationException(
+                f"CollisionReport does not support Result.success. Use CollisionReport.collision_detected "
+                f"instead."
             )
         )
     
@@ -151,7 +152,7 @@ class CollisionReport(DataResult[T], Generic[T]):
     def failure(cls, exception: Exception) -> CollisionReport[T]:
         return cls.detection_failure(
             target=None,
-            exception=MethodNotImplementedException(
+            exception=MethodImplementationException(
                 ex=exception,
                 msg=(
                     f"CollisionReport does not support Result.failure. "
@@ -164,7 +165,7 @@ class CollisionReport(DataResult[T], Generic[T]):
     def timed_out(cls, exception: Exception) -> CollisionReport[T]:
         return cls.collision_timed_out(
             target=None,
-            exception=MethodNotImplementedException(
+            exception=MethodImplementationException(
                 ex=exception,
                 msg=(
                     f"CollisionReport does not support Result.timed_out. "
