@@ -7,6 +7,9 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
     # ======================# WRAPPER EXCEPTION #======================#
     "WrapperException",
@@ -24,13 +27,13 @@ class WrapperException(ChessException):
     1.  Identifies the method in a class where the error occurred.
     2.  Encapsulates the DebugException which identifies the method's code block that raised the error.
     3.  Middle part of the 3-layer exception chain. Should only contain a DebugException.
-        
+    
     # NAMING CONVENTION:
     1.  Prefix is the Class name with the Result name. The operation name should match the Result subclass.
     2.  Operation outcome. This will always be Failed.
     3.  Suffix is Exception.
     4.  The Syntax is: [ClassName][ResultClassName]FailedException
-            
+    
     # ERROR CODE CONVENTION:
     1.  All caps, snake case. Prefix is the class name followed by the operation name. The operation name should
         match the type of result.
@@ -48,10 +51,44 @@ class WrapperException(ChessException):
     None
 
     # LOCAL ATTRIBUTES:
-    None
+        *   mthd (Optional[str])
 
     # INHERITED ATTRIBUTES:
-     None
+        *   See ChessException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "WRAPPER_EXCEPTION"
-    MSG = "WrapperException"
+    ERR_CODE = "METHOD_FAILURE"
+    MSG = "A method failed."
+    MTHD: None
+    
+    _mthd: Optional[str]
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            mthd: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        err_code = err_code or self.ERR_CODE
+        
+        super().__init__(msg=msg, err_code=err_code, ex=ex)
+        self._mthd = mthd
+    
+    @property
+    def mthd(self) -> Optional[str]:
+        return self._mthd
+    

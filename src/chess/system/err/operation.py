@@ -21,7 +21,7 @@ class OperationException(WrapperException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
     
     # RESPONSIBILITIES:
-    1.  Shows what type of class method experienced the error.
+    1.  Shows which method that produces a result had an error.
     2.  Encapsulates the DebugException which identifies the method's code block that raised the error.
     3.  Middle part of the 3-layer exception chain. Should only contain a DebugException.
 

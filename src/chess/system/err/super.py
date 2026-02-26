@@ -7,6 +7,9 @@ Created: 2026-02-23
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
     # ======================# SUPER_CLASS EXCEPTION #======================#
     "SuperClassException",
@@ -43,10 +46,43 @@ class SuperClassException(ChessException):
     None
 
     # LOCAL ATTRIBUTES:
+        *   cls_name (Optional[str])
+        
+    # INHERITED ATTRIBUTES:
+        *   See ChessException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   class_name (Optional[str])
+
+    # LOCAL METHODS:
     None
 
-    # INHERITED ATTRIBUTES:
-     None
+    # INHERITED METHODS:
+        *   See Exception class for inherited methods.
     """
-    ERR_CODE = "SUPER_CLASS_ERROR"
-    MSG = "SuperClassException."
+    ERR_CODE = "CLASS_ERROR"
+    MSG = "An exception occurred in the class."
+
+    _cls_name: Optional[str]
+ 
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            cls_name: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        cls_name = cls_name or self.__class__.__name__
+       
+        super().__init__(msg=msg, err_code=err_code, ex=ex)
+        _cls_name = cls_name
+
+    
+    @property
+    def cls_name(self) -> Optional[str]:
+        return self._cls_name

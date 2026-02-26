@@ -6,8 +6,6 @@ __all__ = [
     "DebugException",
 ]
 
-
-
 from chess.system import ChessException
 
 
@@ -35,7 +33,6 @@ class DebugException(ChessException):
     None
 
     # LOCAL ATTRIBUTES:
-        *   mthd (Optional[str])
         *   var (Optional[str])
         *   val Optional[None])
 
@@ -46,7 +43,6 @@ class DebugException(ChessException):
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
-        *   mthd (Optional[str])
         *   var (Optional[str])
         *   val Optional[None])
 
@@ -56,13 +52,11 @@ class DebugException(ChessException):
     # INHERITED METHODS:
         *   See ChessException class for inherited methods.
     """
-    ERROR_CODE = "DEBUG_ERROR"
-    MSG: str = "An error occurred."
-    MTHD: ""
-    VAR: ""
+    ERR_CODE = "VARIABLE_ERROR"
+    MSG: str = "A variable had an error."
+    VAR: None
     VAL: None
-    
-    _mthd: Optional[str]
+
     _var: Optional[str]
     _val: Optional[None]
     
@@ -71,22 +65,16 @@ class DebugException(ChessException):
             self,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
-            mthd: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[None] = None,
             ex: Optional[Exception] = None,
     ):
         msg = msg or self.MSG
-        err_code = err_code or self.ERROR_CODE
+        err_code = err_code or self.ERR_CODE
         
         super().__init__(msg=msg, err_code=err_code, ex=ex)
-        self._mthd = mthd
         self._var = var
         self._val = val
-    
-    @property
-    def mthd(self) -> Optional[str]:
-        return self._mthd
     
     @property
     def var(self) -> Optional[str]:

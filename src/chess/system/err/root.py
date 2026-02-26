@@ -7,13 +7,13 @@ Created: 2025-10-04
 version: 1.0.0
 """
 
+from __future__ import annotations
 from typing import Optional
 
 __all__ = [
     # ======================#  ROOT APPLICATION EXCEPTION CLASS #======================#
     "ChessException",
 ]
-
 
 # ======================# ROOT APPLICATION EXCEPTION CLASS #======================#
 class ChessException(Exception):
@@ -33,7 +33,6 @@ class ChessException(Exception):
         *   msg (str)
         *   err_code (str)
         *   ex (Optional[Exception])
-    None
 
     # INHERITED ATTRIBUTES:
         *   See Exception class for inherited attributes.
