@@ -12,5 +12,5 @@ Created: 2026-02-24
 None
 
 # Modules
-from .validator import SquareBuildRequestValidator
+from .validator import SquareBuildCommandValidator
 from .wrapper import SquareBuildRequestException

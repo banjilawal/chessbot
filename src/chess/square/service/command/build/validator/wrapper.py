@@ -22,7 +22,7 @@ class SquareBuildRequestException(SuperClassException):
     # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SquareBuildRequestValidator.validate that, prevented a success
+    1.  An error occurred in SquareBuildCommandValidator.validate that, prevented a success
         result from being returned.
 
     # PARENT:

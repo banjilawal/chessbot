@@ -10,11 +10,10 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from chess.square import SquareBuildCommand, SquareBuildRequestException
+from chess.square import SquareBuildCommand, SquareBuildCommandFabException
 from chess.system import (
-    ArgumentIdentifierException, Builder, CommandNameException, LoggingLevelRouter, ArgumentCountException,
-    ServiceRequestValidator, ValidationResult,
-    Validator, ServiceRequest
+    ArgumentCountException, ArgumentIdentifierException, Builder, ServiceRequestValidator,
+    ValidationResult
 )
 
 
@@ -35,22 +34,27 @@ class SquareBuildCommandFab(Builder[SquareBuildCommand]):
         if validation_result.is_failure:
             # Return the exception on failure.
             return ValidationResult.failure(
-                SquareBuildRequestException(
-                    msg=f"{method}: {SquareBuildRequestException.MSG}",
+                SquareBuildCommandFabException(
+                    err_code=SquareBuildCommandFabException.ERR_CODE,
+                    msg=SquareBuildCommandFabException.MSG,
+                    mthd=SquareBuildCommandFabException.MTHD,
+                    op=SquareBuildCommandFabException.OP,
                     ex=validation_result.exception
                 )
             )
-        # --- Cast candidate to a ServiceRequest for additional tests. ---#
-        request = cast(ServiceRequest, candidate)
         
         # Handle the case that, request.command != command.name
-        if request.command_name.upper() != key.:
+        if request.command_name.upper() != key.name:
             # Return the exception on failure.
             return ValidationResult.failure(
-                SquareBuildRequestException(
-                    
-                    msg=f"{method}: {SquareBuildRequestException.MSG}",
-                    ex=
+                SquareBuildCommandFabException(
+                    err_code=SquareBuildCommandFabException.ERR_CODE,
+                    msg=SquareBuildCommandFabException.MSG,
+                    mthd=SquareBuildCommandFabException.MTHD,
+                    op=SquareBuildCommandFabException.OP,
+                    ex=ArgumentIdentifierException(
+                        var=""
+                    )
                     # ex=CommandNameException(
                     #     var="request.command_name",
                     #     val=request.command_name,
@@ -64,8 +68,8 @@ class SquareBuildCommandFab(Builder[SquareBuildCommand]):
         if len(request.arguments) != len(command.parameters):
             # Return the exception on failure.
             return ValidationResult.failure(
-                SquareBuildRequestException(
-                    msg=f"{method}: {SquareBuildRequestException.MSG}",
+                SquareBuildCommandFabException(
+                    msg=f"{method}: {SquareBuildCommandFabException.MSG}",
                     ex=ArgumentCountException(
                         f"{method}: Expected command: {ArgumentCountException.MSG}."
                     )
@@ -75,8 +79,8 @@ class SquareBuildCommandFab(Builder[SquareBuildCommand]):
         for identifier in request.arguments.keys():
             if identifier not in command.parameters.keys():
                 return ValidationResult.failure(
-                    SquareBuildRequestException(
-                        msg=f"{method}: {SquareBuildRequestException.MSG}",
+                    SquareBuildCommandFabException(
+                        msg=f"{method}: {SquareBuildCommandFabException.MSG}",
                         ex=ArgumentIdentifierException(
                             f"{method}: Expected command: {identifier} not found."
                         )
@@ -86,9 +90,9 @@ class SquareBuildCommandFab(Builder[SquareBuildCommand]):
         for identifier in request.arguments.keys():
             if not isinstance(request.arguments[identifier, command.key()[identifier]]):
                 return ValidationResult.failure(
-                    SquareBuildRequestException(
+                    SquareBuildCommandFabException(
                         cls_name="",
-                        msg=f"{method}: {SquareBuildRequestException.MSG}",
+                        msg=f"{method}: {SquareBuildCommandFabException.MSG}",
                         ex=ArgumentIdentifierException(
                             var="identifier",
                             val=type(identifier).__name__,

@@ -9,6 +9,7 @@ Created: 2026-02-24
 # =========== SQUARE.SERVICE.COMMAND.BUILD PACKAGE CONTENTS ===========#
 
 # Packages
+from .builder import *
 from .validator import *
 from .exception import *
 

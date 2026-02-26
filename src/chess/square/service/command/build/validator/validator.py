@@ -18,17 +18,16 @@ from chess.system import (
 )
 
 
-class SquareBuildRequestValidator(Validator[SquareBuildCommand]):
+class SquareBuildCommandValidator(Validator[SquareBuildCommand]):
     
     @classmethod
     @LoggingLevelRouter.monitor
     def validate(
             cls,
             candidate: Any,
-            command: SquareBuildCommand,
-            service_request_validator: ServiceRequestValidator = ServiceRequestValidator(),
+            key: SquareBuildCommand = SquareBuildCommand.key(),
     ) -> ValidationResult[SquareBuildCommand]:
-        method = "SquareBuildRequestValidator.validate"
+        method = "SquareBuildCommandValidator.validate"
         
         # Handle the case that, the candidate is not certified as a safe ServiceRequest.
         request_validation_result = service_request_validator.validate(candidate=candidate)
