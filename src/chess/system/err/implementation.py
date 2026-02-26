@@ -7,6 +7,8 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
+from chess.system import DebugException
+
 __all__ = [
     # ======================# NOT_IMPLEMENTED EXCEPTION #======================#
     "MethodNotImplementedException",

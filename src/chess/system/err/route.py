@@ -7,13 +7,16 @@ Created: 2025-10-03
 version: 1.0.0
 """
 
-from chess.system import DebugException
+from __future__ import annotations
+from typing import Optional
+
 
 __all__ = [
     # ======================# NO_EXECUTION_ROUTE_FOR_OPTION EXCEPTION #======================#
     "NoExecutionRouteException",
 ]
 
+from chess.system import DebugException
 
 # ======================# NO_EXECUTION_ROUTE_FOR_OPTION EXCEPTION #======================#
 class NoExecutionRouteException(DebugException):

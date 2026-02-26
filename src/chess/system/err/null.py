@@ -7,12 +7,15 @@ Created: 2025-11-21
 version: 1.0.0
 """
 
-from chess.system import DebugException
+from __future__ import annotations
+from typing import Optional
 
 __all__ = [
 #======================# NULL EXCEPTION #======================#
     "NullException",
 ]
+
+from chess.system import DebugException
 
 
 #======================# NULL EXCEPTION #======================#

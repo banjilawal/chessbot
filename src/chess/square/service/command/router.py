@@ -8,13 +8,13 @@ Created: 2026-02-24
 
 from __future__ import annotations
 
-from typing import List
+from typing import Any, List
 
-from chess.square import SquareService
+from chess.square import SquareBuildOperation, SquareService
 from chess.system import CommandRouter
 
 
-class SquareServiceRouter(CommandRouter):
+class SquareServiceRouter(CommandRouter[SquareService]):
     OPERATIONS: List[SquareServiceOperation] = [
         SquareBuildOperation
     ]
@@ -31,4 +31,5 @@ class SquareServiceRouter(CommandRouter):
     
     
     def route(self, service_request: ServiceRequest) -> Any:
+        pass
     
