@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2025-09-28
 """
 
+from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, Any
 

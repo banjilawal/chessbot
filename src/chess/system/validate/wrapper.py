@@ -1,7 +1,7 @@
-# src/chess/system/builder/exception/wrapper.py
+# src/chess/system/validate/exception/wrapper.py
 
 """
-Module: chess.system.builder.exception.wrapper
+Module: chess.system.validate.exception.wrapper
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -23,8 +23,7 @@ class ValidationException(OperationException):
     # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in one of the validator's methods.
-        A validator only raises exceptions if a candidate fails a safety check.
+    1.  Indicate that a candidate failed a safety check in a Vector method.
 
     # PARENT:
         *   OperationException
@@ -53,9 +52,9 @@ class ValidationException(OperationException):
         *   See WrapperException class for inherited methods.
     """
     ERR_CODE = "VALIDATION_FAILURE"
-    MSG = "Validation failed."
+    MSG = "Safety test failed."
     MTHD = "validate"
-    OP = "Validate"
+    OP = "Validation"
     RSLT_TYPE = "ValidationResult"
     
     def __init__(

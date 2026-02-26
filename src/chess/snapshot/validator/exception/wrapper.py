@@ -1,7 +1,7 @@
-# src/chess/team/validator/exception/wrapper.py
+# src/chess/snapshot/validator/exception/wrapper.py
 
 """
-Module: chess.team.validator.exception.wrapper
+Module: chess.snapshot.validator.exception.wrapper
 Author: Banji Lawal
 Created: 2025-09-08
 Version: 1.0.0
@@ -13,17 +13,17 @@ from typing import Optional
 from chess.system import ValidationException
 
 __all__ = [
-    # ======================# VALIDATION_FAILURE #======================#
-    "TeamValidationException",
+    # ======================# SNAPSHOT_VALIDATION_FAILURE #======================#
+    "SnapshotValidationException",
 ]
 
-# ======================# VALIDATION_FAILURE #======================#
-class TeamValidationException(ValidationException):
+# ======================# SNAPSHOT_VALIDATION_FAILURE #======================#
+class SnapshotValidationException(ValidationException):
     """
     # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed a safety check in a TeamValidator method.
+    1.  Indicate that a candidate failed a safety check in a SnapshotValidator method.
 
     # PARENT:
         *   ValidationException
@@ -51,7 +51,7 @@ class TeamValidationException(ValidationException):
     # INHERITED METHODS:
         *   See ValidationException class for inherited methods.
     """
-    ERR_CODE = "TEAM_VALIDATION_FAILURE"
+    ERR_CODE = "sNAPSHOT_VALIDATION_FAILURE"
     MSG = "Safety check failed.."
     MTHD = "validate"
     OP = "Validation"

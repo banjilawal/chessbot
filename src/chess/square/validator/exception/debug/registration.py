@@ -39,6 +39,3 @@ class SquareNotRegisteredBoardException(SquareDebugException, NotRegisteredExcep
     """
     ERR_CODE = "SQUARE_NOT_REGISTERED_WITH_BOARD_ERROR"
     MSG = "Square validation failed: The candidate square had not registered with its board."
-
-
-)
