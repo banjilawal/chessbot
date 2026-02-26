@@ -35,3 +35,7 @@ class ServiceRequestValidationException(ValidationException):
     """
     ERR_CODE = "ServiceRequest.validate error:D"
     MSG = "An exception was raised in ServiceRequestValidator.validator."
+    CLS_NAME = "ServiceRequestValidator"
+    
+    
+    

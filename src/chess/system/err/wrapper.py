@@ -57,10 +57,11 @@ class WrapperException(ChessException):
         *   See ChessException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
-        *   msg (str)
-        *   err_code (str)
-        *   ex (Optional[Exception])
-        *   mthd (Optional[str])
+        # LOCAL ATTRIBUTES:
+            *   mthd (Optional[str])
+            
+        # INHERITED ATTRIBUTES:
+            See ChessException class for inherited attributes.
 
     # LOCAL METHODS:
    None
@@ -76,14 +77,15 @@ class WrapperException(ChessException):
     
     def __init__(
             self,
+            mthd: Optional[str] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
-            mthd: Optional[str] = None,
             ex: Optional[Exception] = None,
     ):
-        msg = msg or self.MSG
         mthd = mthd or self.MTHD
+        msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+
         
         super().__init__(msg=msg, err_code=err_code, ex=ex)
         self._mthd = mthd
@@ -91,4 +93,7 @@ class WrapperException(ChessException):
     @property
     def mthd(self) -> Optional[str]:
         return self._mthd
+    
+    def __str__(self):
+        return f"{super().__str__()}, mthd:{self._mthd}"
     

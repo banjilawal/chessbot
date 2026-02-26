@@ -65,24 +65,27 @@ class SuperClassException(ChessException):
     """
     ERR_CODE = "CLASS_ERROR"
     MSG = "An exception occurred in the class."
+    CLS_NAME: None
 
     _cls_name: Optional[str]
  
     def __init__(
             self,
+            cls_name: Optional[str] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
-            cls_name: Optional[str] = None,
             ex: Optional[Exception] = None,
     ):
+        cls_name = cls_name or self.__class__.__name__
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        cls_name = cls_name or self.__class__.__name__
-       
+
         super().__init__(msg=msg, err_code=err_code, ex=ex)
         _cls_name = cls_name
 
-    
     @property
     def cls_name(self) -> Optional[str]:
         return self._cls_name
+    
+    def __str__(self):
+        return f"{super().__str__()}, cls_name:{self._cls_name}"

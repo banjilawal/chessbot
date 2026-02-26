@@ -63,12 +63,14 @@ class DebugException(ChessException):
     
     def __init__(
             self,
-            err_code: Optional[str] = None,
-            msg: Optional[str] = None,
             var: Optional[str] = None,
             val: Optional[None] = None,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
             ex: Optional[Exception] = None,
     ):
+        var = var or self.VAR
+        val = val or self.VAL
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
         
@@ -83,3 +85,6 @@ class DebugException(ChessException):
     @property
     def val(self) -> Optional[None]:
         return self._val
+    
+    def __str__(self):
+        return f"{super().__str__()}, var:{self._var}, val:{self._val}"

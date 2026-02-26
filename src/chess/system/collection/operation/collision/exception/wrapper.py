@@ -6,6 +6,7 @@ Author: Banji Lawal
 Created: 2026-02-21
 Version: 1.0.0
 """
+from typing import Optional
 
 from chess.system import CollectionOperationException
 
@@ -35,5 +36,26 @@ class CollisionDetectionException(CollectionOperationException):
     # INHERITED ATTRIBUTES:
     None
     """
+    
     ERR_CODE = "COLLISION_DETECTION_FAILURE"
     MSG = "Collision detection failed."
+    MTHD = "detect"
+    OP_NAME = "CollisionDetection"
+    RSLT = "CollisionReport"
+    
+    def __init__(
+            self,
+            rslt: Optional[str] = None,
+            op_name: Optional[str] = None,
+            mthd: Optional[str] = None,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        rslt = rslt or self.RSLT
+        op_name = op_name or self.OP_NAME
+        mthd = mthd or self.MTHD
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        
+        super().__init__(msg=msg, err_code=err_code, ex=ex, rslt=rslt, mthd=mthd, op_name=op_name)

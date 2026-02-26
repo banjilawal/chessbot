@@ -98,7 +98,24 @@ class CatchallException(ChessException):
     """
     ERR_CODE = "CLASS_ERROR"
     MSG = "An exception occurred in the class."
+    CLS_NAME: None
     
-    def __init__(self, ex: Optional[Exception], err_code: str = ERR_CODE, msg: str = MSG,):
-        super().__init__(ex, err_code)
+    _cls_name: Optional[str]
     
+    def __init__(
+            self,
+            cls_name: Optional[str] = None,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+    ):
+        cls_name = cls_name or self.__class__.__name__
+        msg = msg or self.MSG
+        err_code = err_code or self.ERR_CODE
+        
+        super().__init__(msg=msg, err_code=err_code, ex=ex)
+        _cls_name = cls_name
+    
+    @property
+    def cls_name(self) -> Optional[str]:
+        return self._cls_name
