@@ -1,7 +1,7 @@
-# src/chess/system/err/debug/child/null.py
+# src/chess/system/err/debug/child/route.py
 
 """
-Module: chess.system.err.debug.child.null
+Module: chess.system.err.debug.child.route
 Author: Banji Lawal
 Created: 2026-02-25
 version: 1.0.0
@@ -54,8 +54,8 @@ class NoExecutionRouteException(DebugException):
     """
     ERR_CODE = "NO_EXECUTION_ROUTE_FOR_OPTION_ERROR"
     MSG = "No execution route exists for the operation option."
-    VAR: None
-    VAL: None
+    VAR = None
+    VAL = None
     
     def __init__(
             self,

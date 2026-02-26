@@ -55,7 +55,7 @@ class GameDebugException(DebugException):
     ERR_CODE = "GAME_ERROR"
     MSG: str = "A variable in Game raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

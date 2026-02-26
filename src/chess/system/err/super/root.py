@@ -11,14 +11,14 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# SUPER_CLASS EXCEPTION #======================#
+    # ======================# CLASS_EXCEPTION #======================#
     "SuperClassException",
 ]
 
 from chess.system import ChessException
 
 
-# ======================# SUPER_CLASS EXCEPTION #======================#
+# ======================# CLASS_EXCEPTION #======================#
 class SuperClassException(ChessException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
@@ -63,23 +63,23 @@ class SuperClassException(ChessException):
     # INHERITED METHODS:
         *   See Exception class for inherited methods.
     """
-    ERR_CODE = "CLASS_ERROR"
-    MSG = "An exception occurred in the class."
-    CLS_NAME: None
+    ERR_CODE = "CLASS_EXCEPTION"
+    MSG = "An exception was raised in a class."
+    CLS_NAME = "Class"
 
     _cls_name: Optional[str]
  
     def __init__(
             self,
-            cls_name: Optional[str] = None,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
+            cls_name: Optional[str] = None,
     ):
-        cls_name = cls_name or self.__class__.__name__
-        msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        
+        msg = msg or self.MSG
+        cls_name = cls_name or self.CLS_NAME
+
         super().__init__(msg=msg, err_code=err_code, ex=ex)
         _cls_name = cls_name
 

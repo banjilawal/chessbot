@@ -55,7 +55,7 @@ class EdgeDebugException(DebugException):
     ERR_CODE = "EDGE_ERROR"
     MSG: str = "A variable in Edge raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

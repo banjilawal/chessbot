@@ -53,7 +53,7 @@ class SquareTokenYException(TokenException):
     ERR_CODE = "SQUARE_TOKEN_Y_AXIS_ERROR"
     MSG = "Square validation failed: The y_axis was token."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

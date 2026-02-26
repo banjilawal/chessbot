@@ -53,7 +53,7 @@ class NullCoordException(NullException):
     ERR_CODE = "NULL_COORD_EXCEPTION"
     MSG = "Coord cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

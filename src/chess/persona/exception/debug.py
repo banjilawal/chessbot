@@ -55,7 +55,7 @@ class PersonaDebugException(DebugException):
     ERR_CODE = "PERSONA_ERROR"
     MSG: str = "A variable in Persona raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

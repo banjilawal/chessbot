@@ -53,7 +53,7 @@ class NullTokenException(NullException):
     ERR_CODE = "NULL_TOKEN_EXCEPTION"
     MSG = "Token cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

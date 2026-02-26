@@ -53,7 +53,7 @@ class NullVectorException(NullException):
     ERR_CODE = "NULL_VECTOR_EXCEPTION"
     MSG = "Vector cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

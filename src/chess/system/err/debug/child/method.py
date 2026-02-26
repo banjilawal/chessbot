@@ -1,7 +1,7 @@
-# src/chess/system/err/debug/child/__init__.py
+# src/chess/system/err/debug/child/method.py
 
 """
-Module: chess.system.err.debug.child.__init__
+Module: chess.system.err.debug.child.method
 Author: Banji Lawal
 Created: 2026-02-25
 version: 1.0.0
@@ -52,10 +52,10 @@ class MethodImplementationException(DebugException):
     """
     ERR_CODE = "METHOD_NOT_IMPLEMENTED_WARNING"
     MSG = "This method is not implemented."
-    VAR: None
-    VAL: None
+    VAR = None
+    VAL = None
     
-    def __init__(
+    def method(
             self,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
@@ -67,4 +67,4 @@ class MethodImplementationException(DebugException):
         msg = msg or self.MSG
         var = var or self.VAR
         val = val or self.VAL
-        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().method(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

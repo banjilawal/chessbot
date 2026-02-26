@@ -53,7 +53,7 @@ class NullSnapshotException(NullException):
     ERR_CODE = "NULL_SNAPSHOT_ERROR"
     MSG = "Snapshot validation failed: The candidate cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

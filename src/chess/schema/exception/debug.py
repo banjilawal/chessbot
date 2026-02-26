@@ -55,7 +55,7 @@ class SchemaDebugException(DebugException):
     ERR_CODE = "SCHEMA_ERROR"
     MSG: str = "A variable in Schema raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

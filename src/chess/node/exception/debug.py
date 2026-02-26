@@ -55,7 +55,7 @@ class NodeDebugException(DebugException):
     ERR_CODE = "NODE_ERROR"
     MSG: str = "A variable in Node raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

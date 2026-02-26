@@ -53,7 +53,7 @@ class NullNodeException(NullException):
     ERR_CODE = "NULL_NODE_EXCEPTION"
     MSG = "Node cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

@@ -55,7 +55,7 @@ class SquareDebugException(DebugException):
     ERR_CODE = "SQUARE_ERROR"
     MSG: str = "A variable in Square raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

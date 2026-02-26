@@ -7,35 +7,64 @@ Created: 2025-12-28
 version: 1.0.0
 """
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
-    # ======================# RELATION_DEBUG EXCEPTION #======================#
+    # ======================# RELATION_ANALYSIS_DEBUG_EXCEPTION #======================#
     "RelationDebugException",
 ]
 
+from chess.system import DebugException
 
-from chess.system import DebugException, RelationException
-
-
-# ======================# RELATION_DEBUG EXCEPTION #======================#
-class RelationDebugException(RelationException, DebugException):
+# ======================# RELATION_ANALYSIS_DEBUG_EXCEPTION #======================#
+class RelationDebugException(DebugException):
     """
     # ROLE: Error Tracing, Debugging
-
+    
     # RESPONSIBILITIES:
-    1.  Describes the condition that caused a Relation operation failure.
-
+    1.  Indicate that an error condition prevented the RelationAnalysis from completing.
+    
     # PARENT:
-        *   RelationException
         *   DebugException
-
+    
     # PROVIDES:
     None
-
+    
     # LOCAL ATTRIBUTES:
     None
-
+    
     # INHERITED ATTRIBUTES:
-     None
+        *   See DebugException class for inherited attributes.
+    
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+    
+    # LOCAL METHODS:
+    None
+    
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "RELATION_DEBUG_ERROR"
-    MSG = "A RelationDebugException was raised."
+    ERR_CODE = "RELATION_ANALYSIS_DEBUG_EXCEPTION"
+    MSG = "RelationAnalysis debug error."
+    VAR: None
+    VAL = None
+    
+    def method(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().method(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

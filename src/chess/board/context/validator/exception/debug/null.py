@@ -53,7 +53,7 @@ class NullBoardException(NullException):
     ERR_CODE = "NULL_BOARD_ERROR"
     MSG = "Board validation failed: The candidate cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

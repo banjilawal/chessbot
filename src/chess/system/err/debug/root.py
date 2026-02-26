@@ -63,7 +63,7 @@ class DebugException(ChessException):
     ERR_CODE = "VARIABLE_ERROR"
     MSG: str = "A variable had an error."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

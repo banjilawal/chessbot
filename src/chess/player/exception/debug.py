@@ -55,7 +55,7 @@ class PlayerDebugException(DebugException):
     ERR_CODE = "PLAYER_ERROR"
     MSG: str = "A variable in Player raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

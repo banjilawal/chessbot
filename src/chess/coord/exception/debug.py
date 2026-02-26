@@ -55,7 +55,7 @@ class CoordDebugException(DebugException):
     ERR_CODE = "COORD_ERROR"
     MSG: str = "A variable in Coord raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

@@ -53,7 +53,7 @@ class NullSchemaException(NullException):
     ERR_CODE = "NULL_SCHEMA_EXCEPTION"
     MSG = "Schema cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

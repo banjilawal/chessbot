@@ -55,7 +55,7 @@ class BoardDebugException(DebugException):
     ERR_CODE = "BOARD_ERROR"
     MSG: str = "A variable in Board raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

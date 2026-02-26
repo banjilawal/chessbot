@@ -55,7 +55,7 @@ class FormationDebugException(DebugException):
     ERR_CODE = "FORMATION_ERROR"
     MSG: str = "A variable in Formation raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

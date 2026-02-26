@@ -53,7 +53,7 @@ class NullHostageException(NullException):
     ERR_CODE = "NULL_HOSTAGE_EXCEPTION"
     MSG = "Hostage cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

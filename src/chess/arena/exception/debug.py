@@ -55,7 +55,7 @@ class ArenaDebugException(DebugException):
     ERR_CODE = "ARENA_ERROR"
     MSG: str = "A variable in Arena raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

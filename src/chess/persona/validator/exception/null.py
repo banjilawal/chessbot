@@ -53,7 +53,7 @@ class NullPersonaException(NullException):
     ERR_CODE = "NULL_PERSONA_EXCEPTION"
     MSG = "Persona cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

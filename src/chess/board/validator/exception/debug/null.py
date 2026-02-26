@@ -53,7 +53,7 @@ class NullBoardException(NullException):
     ERR_CODE = "NULL_BOARD_EXCEPTION"
     MSG = "Board cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

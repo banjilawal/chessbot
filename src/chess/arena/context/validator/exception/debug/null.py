@@ -53,7 +53,7 @@ class NullArenaException(NullException):
     ERR_CODE = "NULL_ARENA_ERROR"
     MSG = "Arena validation failed: The candidate cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

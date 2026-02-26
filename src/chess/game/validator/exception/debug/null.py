@@ -53,7 +53,7 @@ class NullGameException(NullException):
     ERR_CODE = "NULL_GAME_EXCEPTION"
     MSG = "Game cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

@@ -53,7 +53,7 @@ class NullScalarException(NullException):
     ERR_CODE = "NULL_SCALAR_EXCEPTION"
     MSG = "Scalar cannot be null."
     VAR: None
-    VAL: None
+    VAL = None
     
     def __init__(
             self,

@@ -55,7 +55,7 @@ class GraphDebugException(DebugException):
     ERR_CODE = "GRAPH_ERROR"
     MSG: str = "A variable in Graph raised an exception."
     VAR: None
-    VAL: None
+    VAL = None
     
     _var: Optional[str]
     _val: Optional[None]

@@ -52,8 +52,8 @@ class NullException(DebugException):
     """
     ERR_CODE = "NULL_ERROR"
     MSG = "variable cannot be null."
-    VAR: None
-    VAL: None
+    VAR = None
+    VAL = None
     
     def __init__(
             self,
