@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== SYSTEM.ERR.WRAPPER PACKAGE CONTENTS ===========#
 
 # Packages
-None
+from .operation
 
 # Modules
 from .root import WrapperException
