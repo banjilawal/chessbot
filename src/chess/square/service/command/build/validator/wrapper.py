@@ -1,29 +1,29 @@
-# src/chess/square/service/build/request/validator/wrapper.py
+# src/chess/vector/validator/exception/wrapper.py
 
 """
-Module: chess.square.service.build.request.validator.wrapper
+Module: chess.vector.validator.exception.wrapper
 Author: Banji Lawal
-Created: 2026-02-24
+Created: 2025-09-08
+Version: 1.0.0
 """
 
 from __future__ import annotations
+from typing import Optional
+
+from chess.system import ValidationException
 
 __all__ = [
-    # ======================# SQUARE_BUILD_REQUEST_FAILURE #======================#
-    "SquareBuildRequestException",
+    # ======================# VECTOR_VALIDATION_FAILURE #======================#
+    "VectorValidationException",
 ]
 
-from chess.system import SuperClassException
-
-
-# ======================# SQUARE_BUILD_REQUEST_FAILURE #======================#
-class SquareBuildRequestException(SuperClassException):
+# ======================# VECTOR_VALIDATION_FAILURE #======================#
+class VectorValidationException(ValidationException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  An error occurred in SquareBuildCommandValidator.validate that, prevented a success
-        result from being returned.
+    1.  Indicate that a candidate failed a safety check in a VectorValidator method.
 
     # PARENT:
         *   ValidationException
@@ -35,13 +35,41 @@ class SquareBuildRequestException(SuperClassException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See ValidationException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:)
+        *   err_code (str)
+        *   msg (str)
+        *   ex (Optional[Exception])
+        *   mthd (Optional[str])
+        *   op (Optional[str])
+        *   rslt_type (Optional[str])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See ValidationException class for inherited methods.
     """
-    ERR_CODE = "SQUARE_BUILD_REQUEST_FAILED"
-    MSG = "SquareBuildRequest validation failed."
-    CLS_NAME = "ServiceRequestException"
+    ERR_CODE = "VECTOR_VECTOR_VALIDATION_FAILURE"
+    MSG = "Safety check failed.."
+    MTHD = "validate"
+    OP = "Validation"
+    RSLT_TYPE = "ValidationResult"
     
-    def __new__(cls, msg: str = MSG, ex: Exception | None = None) -> SquareBuildRequestException:
-        super().__init__()
-    
-    def __init__(self, msg: str = MSG, ex: Exception | None = None) -> None:
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            mthd: Optional[str] = None,
+            op: Optional[str] = None,
+            rslt_type: Optional[str] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        mthd = mthd or self.MTHD
+        op = op or self.OP
+        rslt_type = rslt_type or self.RSLT_TYPE
+        super().__init__(err_code=err_code, msg=msg, ex=ex, mthd=mthd, op=op, rslt_type=rslt_type)
+

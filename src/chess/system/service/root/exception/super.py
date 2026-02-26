@@ -50,16 +50,7 @@ class ServiceException(SuperClassException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
     ):
-        cls_name = cls_name or self.CLS_NAME
-        msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        
-        super().__init__(msg=msg, err_code=err_code, ex=ex)
-        _cls_name = cls_name
-    
-    @property
-    def cls_name(self) -> Optional[str]:
-        return self._cls_name
-    
-    def __str__(self):
-        return f"{super().__str__()}, cls_name:{self._cls_name}"
+        msg = msg or self.MSG
+        cls_name = cls_name or self.CLS_NAME
+        super().__init__(ex=ex, err_code=err_code, msg=msg, cls_name=cls_name)
