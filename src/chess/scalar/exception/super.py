@@ -15,11 +15,11 @@ __all__ = [
     "ScalarException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 # ======================# SCALAR_EXCEPTION #======================#
-class  ScalarException(SuperClassException):
+class  ScalarException(AnchorException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
@@ -27,7 +27,7 @@ class  ScalarException(SuperClassException):
     1.  Indicate that an error occurred in a scalar.
 
     # PARENT:
-    *   SuperClassException
+    *   AnchorException
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class  ScalarException(SuperClassException):
     None
         
     # INHERITED ATTRIBUTES:
-        *   See SuperClassException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -48,7 +48,7 @@ class  ScalarException(SuperClassException):
     None
 
     # INHERITED METHODS:
-        *   See SuperClassException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
     ERR_CODE = " SCALAR_EXCEPTION"
     MSG = " Scalar raised an exception."

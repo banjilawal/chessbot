@@ -15,11 +15,11 @@ __all__ = [
     "SquareException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 # ======================# SQUARE_EXCEPTION #======================#
-class  SquareException(SuperClassException):
+class  SquareException(AnchorException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
@@ -27,7 +27,7 @@ class  SquareException(SuperClassException):
     1.  Indicate that an error occurred in a square.
 
     # PARENT:
-    *   SuperClassException
+    *   AnchorException
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class  SquareException(SuperClassException):
     None
         
     # INHERITED ATTRIBUTES:
-        *   See SuperClassException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -48,7 +48,7 @@ class  SquareException(SuperClassException):
     None
 
     # INHERITED METHODS:
-        *   See SuperClassException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
     ERR_CODE = " SQUARE_EXCEPTION"
     MSG = " Square raised an exception."

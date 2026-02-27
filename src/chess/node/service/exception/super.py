@@ -15,10 +15,10 @@ __all__ = [
     "NodeServiceException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 # ======================# NODE_SERVICE_EXCEPTION #======================#
-class NodeServiceException(SuperClassException):
+class NodeServiceException(AnchorException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
@@ -26,7 +26,7 @@ class NodeServiceException(SuperClassException):
     1.  Indicate that an error occurred in a nodeService.
 
     # PARENT:
-    *   SuperClassException
+    *   AnchorException
 
     # PROVIDES:
     None
@@ -35,7 +35,7 @@ class NodeServiceException(SuperClassException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See SuperClassException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -47,7 +47,7 @@ class NodeServiceException(SuperClassException):
     None
 
     # INHERITED METHODS:
-        *   See SuperClassException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
     ERR_CODE = " NODE_SERVICE_EXCEPTION"
     MSG = " NodeService raised an exception."

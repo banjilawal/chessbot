@@ -10,13 +10,13 @@ version: 1.0.0
 #=========== SYSTEM.ERR PACKAGE CONTENTS ===========#
 
 # Packages
+from .anchor import *
 from .bounds import *
 from .color import *
 from .resource import *
 from .consistency import *
 from .debug import *
 from .wrapper import *
-from .super import *
 
 # Modules
 from .root import ChessException

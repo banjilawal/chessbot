@@ -13,4 +13,4 @@ version: 1.0.0
 None
 
 # Modules
-from .root import SuperClassException
+from .root import AnchorException

@@ -13,11 +13,11 @@ __all__ = [
     "TokenVisitHandlerException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 # ======================# TOKEN_VISIT_HANDLER EXCEPTION #======================#
-class TokenVisitHandlerException(SuperClassException):
+class TokenVisitHandlerException(AnchorException):
     """"
     # ROLE: Class/Module Identifier, Exception Chain Layer 3, Exception Messaging
 
@@ -26,7 +26,7 @@ class TokenVisitHandlerException(SuperClassException):
     2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     # PARENT:
-        *   SuperClassException
+        *   AnchorException
 
     # PROVIDES:
     None

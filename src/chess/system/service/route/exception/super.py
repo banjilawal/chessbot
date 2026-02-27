@@ -13,11 +13,11 @@ __all__ = [
     "ServiceRouteException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 # ======================# SERVICE_ROUTE EXCEPTION #======================#
-class ServiceRouteException(SuperClassException):
+class ServiceRouteException(AnchorException):
     """
   # ROLE: DebugException Parent, Exception Chain Layer 0
 
@@ -25,7 +25,7 @@ class ServiceRouteException(SuperClassException):
   1.  Layer-0 of Exception chain which is the Parent of ServiceRouteDebugException
 
   # PARENT:
-      *   SuperClassException
+      *   AnchorException
 
   # PROVIDES:
   None

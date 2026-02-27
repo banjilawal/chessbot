@@ -15,10 +15,10 @@ __all__ = [
     "CoordServiceException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 # ======================# COORD_SERVICE_EXCEPTION #======================#
-class CoordServiceException(SuperClassException):
+class CoordServiceException(AnchorException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
@@ -26,7 +26,7 @@ class CoordServiceException(SuperClassException):
     1.  Indicate that an error occurred in a coordService.
 
     # PARENT:
-    *   SuperClassException
+    *   AnchorException
 
     # PROVIDES:
     None
@@ -35,7 +35,7 @@ class CoordServiceException(SuperClassException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See SuperClassException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -47,7 +47,7 @@ class CoordServiceException(SuperClassException):
     None
 
     # INHERITED METHODS:
-        *   See SuperClassException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
     ERR_CODE = " COORD_SERVICE_EXCEPTION"
     MSG = " CoordService raised an exception."

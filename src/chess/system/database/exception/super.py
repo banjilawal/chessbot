@@ -15,10 +15,10 @@ __all__ = [
     "DatabaseServiceException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 # ======================# DATABASE_SERVICE_EXCEPTION #======================#
-class DatabaseServiceException(SuperClassException):
+class DatabaseServiceException(AnchorException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
@@ -26,7 +26,7 @@ class DatabaseServiceException(SuperClassException):
     1.  Indicate that an error occurred in a databaseService.
 
     # PARENT:
-    *   SuperClassException
+    *   AnchorException
 
     # PROVIDES:
     None
@@ -35,7 +35,7 @@ class DatabaseServiceException(SuperClassException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See SuperClassException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -47,7 +47,7 @@ class DatabaseServiceException(SuperClassException):
     None
 
     # INHERITED METHODS:
-        *   See SuperClassException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
     ERR_CODE = " DATABASE_SERVICE_EXCEPTION"
     MSG = " DatabaseService raised an exception."

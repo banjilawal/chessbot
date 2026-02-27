@@ -16,11 +16,11 @@ __all__ = [
     "RankException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 # ======================# RANK EXCEPTION #======================#
-class RankException(SuperClassException):
+class RankException(AnchorException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
@@ -28,7 +28,7 @@ class RankException(SuperClassException):
     1.  Layer-0 of Exception chain which is the Parent of RankDebugException
 
     # PARENT:
-    *   SuperClassException
+    *   AnchorException
 
     # PROVIDES:
     None

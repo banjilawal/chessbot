@@ -12,20 +12,20 @@ from typing import Optional
 
 __all__ = [
     # ======================# CLASS_EXCEPTION #======================#
-    "SuperClassException",
+    "AnchorException",
 ]
 
 from chess.system import ChessException
 
 
 # ======================# CLASS_EXCEPTION #======================#
-class SuperClassException(ChessException):
+class AnchorException(ChessException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Exception for an Entity or Class.
-    2.  Parent of Debug exceptions that are raised by an object being manipulated.
+    1.  DebugExceptions use an AnchorException as a point of focus for
+        on which object they cover.
 
     # NAMING CONVENTION:
     1.  Class name followed by the Exception suffix

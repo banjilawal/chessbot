@@ -14,11 +14,11 @@ __all__ = [
 ]
 
 from typing import Optional
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 # ======================# SERVICE_COMMAND EXCEPTION #======================#
-class CommandException(SuperClassException):
+class CommandException(AnchorException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
 
@@ -26,7 +26,7 @@ class CommandException(SuperClassException):
     1.  Layer-0 of Exception chain which is the Parent of CommandDebugException
 
     # PARENT:
-      *   SuperClassException
+      *   AnchorException
 
     # PROVIDES:
     None

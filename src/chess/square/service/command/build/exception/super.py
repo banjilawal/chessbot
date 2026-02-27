@@ -14,11 +14,11 @@ __all__ = [
     "SquareBuildCommand",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 # ======================# SQUARE_BUILD_COMMAND EXCEPTION #======================#
-class SquareBuildCommand(SuperClassException):
+class SquareBuildCommand(AnchorException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
     

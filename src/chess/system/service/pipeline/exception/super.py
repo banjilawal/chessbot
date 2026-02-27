@@ -15,11 +15,11 @@ __all__ = [
     "PipelineException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 # ======================# PIPELINE_EXCEPTION #======================#
-class PipelineException(SuperClassException):
+class PipelineException(AnchorException):
     """
     # ROLE: Information, Reporting, Debug
 
@@ -27,7 +27,7 @@ class PipelineException(SuperClassException):
     1.  Locus of attention for PipelineDebugExceptions.
 
     # PARENT:
-        *   SuperClassException
+        *   AnchorException
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class PipelineException(SuperClassException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See SuperClassException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -48,7 +48,7 @@ class PipelineException(SuperClassException):
     None
 
     # INHERITED METHODS:
-        *   See SuperClassException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
     ERR_CODE = "PIPELINE_EXCEPTION"
     MSG = "Pipeline raised an exception."

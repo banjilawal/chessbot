@@ -16,11 +16,11 @@ __all__ = [
 
 from typing import Optional
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 #======================# PLAYER_CONTEXT EXCEPTION #======================#
-class PlayerContextException(SuperClassException):
+class PlayerContextException(AnchorException):
     """
     # ROLE: Exception Wrapper
 

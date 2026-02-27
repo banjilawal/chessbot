@@ -15,11 +15,11 @@ __all__ = [
     "StreamException",
 ]
 
-from chess.system import SuperClassException
+from chess.system import AnchorException
 
 
 # ======================# STREAM_EXCEPTION #======================#
-class StreamException(SuperClassException):
+class StreamException(AnchorException):
     """
     # ROLE: Information, Reporting, Debug
 
@@ -27,7 +27,7 @@ class StreamException(SuperClassException):
     1.  Locus of attention for StreamDebugExceptions.
 
     # PARENT:
-        *   SuperClassException
+        *   AnchorException
 
     # PROVIDES:
     None
@@ -36,7 +36,7 @@ class StreamException(SuperClassException):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See SuperClassException class for inherited attributes.
+        *   See AnchorException class for inherited attributes.
 
     # CONSTRUCTOR PARAMETERS:
         *   msg (str)
@@ -48,7 +48,7 @@ class StreamException(SuperClassException):
     None
 
     # INHERITED METHODS:
-        *   See SuperClassException class for inherited methods.
+        *   See AnchorException class for inherited methods.
     """
     ERR_CODE = "STREAM_EXCEPTION"
     MSG = "Stream raised an exception."
