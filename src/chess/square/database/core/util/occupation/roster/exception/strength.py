@@ -18,7 +18,7 @@ from chess.square import SquareDebugException
 # ======================# CANNOT_DEPLOY_UNDER_STRENGTH_TEAM EXCEPTION #======================#
 class CannotDeployUnderStrengthTeamException(SquareDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     A failing UpdateResult was returned because the roster was not at full capacity when

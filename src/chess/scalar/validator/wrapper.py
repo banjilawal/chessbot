@@ -18,7 +18,7 @@ __all__ = [
 # ======================# SCALAR_VALIDATION_FAILURE #======================#
 class ScalarValidationException(ValidationException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in ScalarValidator.validate that, prevented A successful validation result 

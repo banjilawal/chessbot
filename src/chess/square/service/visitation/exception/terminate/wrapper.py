@@ -18,7 +18,7 @@ __all__ = [
 # ======================# SQUARE_VISIT_TERMINATION_FAILURE #======================#
 class SquareVisitTerminationException(DeletionException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in TokenVistHandler.terminate_visit that prevented a successful DeletionResult.

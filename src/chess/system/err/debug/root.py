@@ -20,7 +20,7 @@ from chess.system import ChessException
 # ======================# DEBUG EXCEPTION #======================#
 class DebugException(ChessException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
     
     # RESPONSIBILITIES:
     1.  Identifies the code block in a method where the error occurred.

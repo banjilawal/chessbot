@@ -18,7 +18,7 @@ from chess.system import RelationDebugException
 #======================# NO_RELATIONSHIP EXCEPTION #======================#
 class NoRelationException(RelationDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  Indicate that, a failing result was returned because the candidates did not have any relationship

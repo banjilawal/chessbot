@@ -18,7 +18,7 @@ from chess.square import SquareDebugException
 # ======================# NO_VISIT_FOR_TERMINATION EXCEPTION #======================#
 class NoVisitForTerminationException(SquareDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     A failing DeletionResult was returned because there was no visitor in the square. There was no visit

@@ -18,7 +18,7 @@ from chess.system import UpdateException
 # ======================# STARTING_SQUARE_VISIT_FAILURE #======================#
 class StartingSquareVisitException(UpdateException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     #   RESPONSIBILITIES:
     1.  An error occurred in OccupationService.add_occupant that prevented a successful UpdateResult.

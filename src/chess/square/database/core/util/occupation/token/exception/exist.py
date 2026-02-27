@@ -20,7 +20,7 @@ from chess.square import SquareDebugException
 # ======================# VISIT_DESTINATION_NOT_FOUND EXCEPTION #======================#
 class VisitDestinationNotFoundException(SquareDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failing  UpdateResult was returned because a token wanted to occupy a square which does not exist in

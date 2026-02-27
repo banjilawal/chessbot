@@ -21,7 +21,7 @@ from chess.system import BuildException
 # ======================# NODE_BUILD_FAILURE #======================#
 class NodeBuildException(BuildException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in NodeBuilder.build that, prevented BuildResult.success() from 

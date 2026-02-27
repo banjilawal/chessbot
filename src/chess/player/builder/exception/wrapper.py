@@ -21,7 +21,7 @@ from chess.system import BuildException
 # ======================# PLAYER_BUILD_FAILURE #======================#
 class PlayerBuildException(BuildException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in PlayerBuilder.build that, prevented BuildResult.success() from 

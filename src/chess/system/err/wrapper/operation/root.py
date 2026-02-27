@@ -21,7 +21,7 @@ from chess.system import WrapperException
 # ======================# OPERATION_FAILURE #======================#
 class OperationException(WrapperException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  Identifies the method in a class where the error occurred.

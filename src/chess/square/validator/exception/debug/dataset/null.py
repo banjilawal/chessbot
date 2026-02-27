@@ -18,7 +18,7 @@ _all__ = [
 # ======================# NO_SQUARE_DATASOURCE_PROVIDED EXCEPTION #======================#
 class SquareDataSourceSquareException(SquareDebugException, SquareException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failing SearchResult was returned because no dataset was provided for the query.

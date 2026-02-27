@@ -18,7 +18,7 @@ from chess.square import SquareDebugException
 # ======================# SQUARE_ID_COLLISION EXCEPTION #======================#
 class SquareIdCollisionException(SquareDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     At least two squares two are sharing a id that should be unique to a square.

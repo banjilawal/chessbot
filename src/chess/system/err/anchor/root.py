@@ -1,7 +1,7 @@
-# src/chess/system/err/super.py
+# src/chess/system/err/anchor/root.py
 
 """
-Module: chess.system.err.super
+Module: chess.system.err.anchor.root
 Author: Banji Lawal
 Created: 2026-02-23
 version: 1.0.0
@@ -11,21 +11,21 @@ from __future__ import annotations
 from typing import Optional
 
 __all__ = [
-    # ======================# CLASS_EXCEPTION #======================#
+    # ======================# ANCHOR_EXCEPTION #======================#
     "AnchorException",
 ]
 
 from chess.system import ChessException
 
 
-# ======================# CLASS_EXCEPTION #======================#
+# ======================# ANCHOR_EXCEPTION #======================#
 class AnchorException(ChessException):
     """
-    # ROLE: DebugException Parent, Exception Chain Layer 0
+    # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  DebugExceptions use an AnchorException as a point of focus for
-        on which object they cover.
+    1.  Reporting and coverage target for Anchor DebugExceptions.
+    2.  Indicate which Anchor method received a worker's failure result.
 
     # NAMING CONVENTION:
     1.  Class name followed by the Exception suffix
@@ -63,9 +63,9 @@ class AnchorException(ChessException):
     None
 
     # INHERITED METHODS:
-        *   See Exception class for inherited methods.
+        *   See ChessException class for inherited methods.
     """
-    ERR_CODE = "CLASS_EXCEPTION"
+    ERR_CODE = "ANCHOR_EXCEPTION"
     MSG = "Class exception was raised."
     CLS_NAME = "Class"
     CLS_MTHD = None

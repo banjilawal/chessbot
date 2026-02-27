@@ -20,11 +20,10 @@ from chess.system import ChessException
 # ======================# WRAPPER EXCEPTION #======================#
 class WrapperException(ChessException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Identifies the method in a class where the error occurred.
-    2.  Encapsulates the DebugException which identifies the method's code block that raised the error.
+    1.  Indicate the worker method, where an operation using the client's data failed.
     3.  Middle part of the 3-layer exception chain. Should only contain a DebugException.
     
     # NAMING CONVENTION:

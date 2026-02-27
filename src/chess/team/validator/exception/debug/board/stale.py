@@ -19,7 +19,7 @@ __all__ = [
 #======================# BOARD_HAS_STALE_LINK_TO_TEAM EXCEPTION #======================#
 class BoardHasStaleTeamLinkException(TeamDebugException, StaleRelationException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failing TeamValidationResult was returned because the board had a stale

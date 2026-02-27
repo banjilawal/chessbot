@@ -18,7 +18,7 @@ from chess.system import InsertionException
 # ======================# SQUARE_STACK_PUSH_FAILURE #======================#
 class SquareStackPushException(InsertionException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in SquareStackService.push that prevented a successful InsertionResult.

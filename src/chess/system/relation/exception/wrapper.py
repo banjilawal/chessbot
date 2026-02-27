@@ -18,7 +18,7 @@ __all__ = [
 # ======================# RELATION_ANALYSIS_FAILURE #======================#
 class AnalysisException(OperationException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in Analyzer.analysis that, prevented the relation analysis from completing.

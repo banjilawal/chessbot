@@ -18,7 +18,7 @@ from chess.square import SquareDebugException
 # ======================# SQUARE_VISITOR_DISABLED EXCEPTION #======================#
 class SquareVisitorDisabledException(SquareDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     A failing UpdateResult was returned because a disabled token attempted to occupy the square.

@@ -18,7 +18,7 @@ from chess.system import DeletionException
 # ======================# SQUARE_STACK_POP_FAILURE #======================#
 class SquareStackPopException(DeletionException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in SquareStackService.pop that prevented a successful DeletionResult.

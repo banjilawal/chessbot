@@ -21,7 +21,7 @@ from chess.system import AnchorException
 # ======================# BOARD_EXCEPTION #======================#
 class  BoardException(AnchorException):
     """
-    # ROLE: DebugException Parent, Exception Chain Layer 0
+    # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
     1.  Indicate that an error occurred in a board.

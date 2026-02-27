@@ -20,7 +20,7 @@ from chess.system import OperationException
 # ======================# ATTACK_FAILURE #======================#
 class AttackException(OperationException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in Attack.execute that, prevented AttackResult.success() 

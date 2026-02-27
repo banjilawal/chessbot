@@ -18,7 +18,7 @@ __all__ = [
 # ======================# SCALAR_BUILD_FAILURE #======================#
 class ScalarBuildException(BuildException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in ScalarBuilder.build that, prevented BuildResult.success() from 

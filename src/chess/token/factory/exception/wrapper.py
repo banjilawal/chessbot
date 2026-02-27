@@ -21,7 +21,7 @@ from chess.system import BuildException
 # ======================# TOKEN_BUILD_FAILURE #======================#
 class TokenBuildException(BuildException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in TokenBuilder.build that, prevented BuildResult.success() from 

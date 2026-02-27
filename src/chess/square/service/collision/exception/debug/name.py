@@ -18,7 +18,7 @@ from chess.square import SquareDebugException
 # ======================# SQUARE_NAME_COLLISION EXCEPTION #======================#
 class SquareNameCollisionException(SquareDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     At least two squares two are sharing a name that should be unique to a square.

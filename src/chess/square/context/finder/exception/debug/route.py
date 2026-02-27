@@ -19,7 +19,7 @@ from chess.system import NoExecutionRouteException
 # ======================# NO_SQUARE_SEARCH_ROUTE_ROUTE EXCEPTION #======================#
 class SquareSearchRouteException(SquareContextDebugException, NoExecutionRouteException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failing SearchResult was returned because there was no search route was provided for the

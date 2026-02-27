@@ -17,7 +17,7 @@ from chess.square import SquareDebugException
 
 class VisitingWrongOpeningSquareException(SquareDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
     
     # RESPONSIBILITIES:
     A Validation failure result was returned because a Token was trying to form on the wrong opening square.

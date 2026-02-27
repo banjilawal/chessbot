@@ -18,7 +18,7 @@ from chess.system import RelationDebugException
 # ======================# STALE_RELATION_LINK EXCEPTION #======================#
 class StaleRelationException(RelationDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  Indicate that, a failing result was returned because the primary had a stale

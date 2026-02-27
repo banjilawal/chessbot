@@ -18,7 +18,7 @@ from chess.square import SquareStackServiceException
 # ======================# POPPING_EMPTY_SQUARE_STACK EXCEPTION #======================#
 class PoppingEmptySquareStackException(SquareStackServiceException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     A failing DeletionResult was returned because an attempt was made to pop an empty square stack.

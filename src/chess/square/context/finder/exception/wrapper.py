@@ -18,7 +18,7 @@ __all__ = [
 # ======================# SQUARE_SEARCH_FAILURE #======================#
 class SquareSearchException(SearchException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in SquareFinder.find that, prevented SearchResult.success() from being returned.

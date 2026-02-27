@@ -19,7 +19,7 @@ __all__ = [
 # ======================# SQUARE_CONTEXT_VALIDATION_FAILURE #======================#
 class SquareContextValidationException(SquareContextException, ValidationException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     An error occurred in SquareContextValidator.validate that, prevented A successful validation result

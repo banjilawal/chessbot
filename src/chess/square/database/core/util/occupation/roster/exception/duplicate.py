@@ -18,7 +18,7 @@ from chess.square import SquareDebugException
 # ======================# ROSTER_DOUBLE_DEPLOYMENT EXCEPTION #======================#
 class RosterDoubleDeploymentException(SquareDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     A failing UpdateResult was returned because an attempt was made to deploy a team

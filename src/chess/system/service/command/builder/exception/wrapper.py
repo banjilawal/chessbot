@@ -20,7 +20,7 @@ from chess.system import BuildException
 # ======================# COMMAND_BUILD_FAILURE #======================#
 class CommandBuilderException(BuildException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  Indicate that an error prevented CommandBuilder from returning a product.

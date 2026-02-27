@@ -19,7 +19,7 @@ from chess.system import  NoExecutionRouteException
 # ======================# NO_SQUARE_CONTEXT_VALIDATION_ROUTE EXCEPTION #======================#
 class SquareContextValidationRouteException(SquareContextDebugException,  NoExecutionRouteException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failing ValidationResult was returned because there was no validation route for the  candidate

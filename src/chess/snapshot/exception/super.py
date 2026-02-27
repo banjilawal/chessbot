@@ -21,7 +21,7 @@ from chess.system import AnchorException
 # ======================# SNAPSHOT_EXCEPTION #======================#
 class  SnapshotException(AnchorException):
     """
-    # ROLE: DebugException Parent, Exception Chain Layer 0
+    # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
     1.  Indicate that an error occurred in a snapshot.

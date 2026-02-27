@@ -18,7 +18,7 @@ __all__ = [
 # ======================# TEAM_SLOT_ALREADY_OCCUPIED EXCEPTION #======================#
 class TeamSlotAlreadyOccupiedException(TeamDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failing TeamValidationResult was returned because the candidate team's board slot was already occupied.

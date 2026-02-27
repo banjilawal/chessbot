@@ -18,7 +18,7 @@ _all__ = [
 # ======================# SEARCH_PAYLOAD_IS_NOT_LIST_OF_SQUARES EXCEPTION #======================#
 class SquareSearchPayloadException(SquareDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failing SearchResult was returned because a square was sent in the payload instead of List[Square].

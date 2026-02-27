@@ -20,7 +20,7 @@ from chess.system import AnchorException
 # ======================# COMMAND_EXCEPTION #======================#
 class CommandException(AnchorException):
     """
-    # ROLE: DebugException Parent, Exception Chain Layer 0
+    # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
     1.  Layer-0 of Exception chain which is the Parent of CommandDebugException

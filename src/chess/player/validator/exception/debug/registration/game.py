@@ -19,7 +19,7 @@ __all__ = [
 # ======================# PLAYER_NOT_REGISTERED_WITH_GAME EXCEPTION #======================#
 class PlayerNotRegisteredGameException(PlayerDebugException, NotRegisteredException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failing ValidationResult was returned because the candidate player had not registered with its game.

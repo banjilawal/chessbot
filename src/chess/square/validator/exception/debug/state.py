@@ -16,7 +16,7 @@ from chess.system import DebugException, SquareException
 # ======================# SQUARE_SQUARE_STATE EXCEPTION #======================#
 class SquareSquareStateException(DebugException, SquareException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failure ValidationResult was returned because the validation candidate was square instead of

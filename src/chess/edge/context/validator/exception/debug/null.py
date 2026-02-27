@@ -20,7 +20,7 @@ from chess.system import NullException
 # ======================# NULL_RANK EXCEPTION #======================#
 class NullRankException(NullException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     A failing ValidationResult was returned because the candidate was null.

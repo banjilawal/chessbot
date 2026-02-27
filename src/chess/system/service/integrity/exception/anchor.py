@@ -20,7 +20,7 @@ from chess.system import ServiceException
 # ======================# SERVICE_EXCEPTION #======================#
 class IntegrityServiceException(ServiceException):
     """
-    # ROLE: DebugException Parent, Exception Chain Layer 0
+    # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
     1.  Indicate that an error occurred in an IntegrityService instance..

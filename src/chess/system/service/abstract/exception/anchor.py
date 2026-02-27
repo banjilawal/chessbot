@@ -20,10 +20,12 @@ from chess.system import AnchorException
 # ======================# SERVICE_EXCEPTION #======================#
 class ServiceException(AnchorException):
     """
-    # ROLE: DebugException Parent, Exception Chain Layer 0
+    # ROLE: Debug Coverage Target, Exception Chain Layer 0
 
     # RESPONSIBILITIES:
-    1.  Indicate that an error occurred in a Service.
+    1.  Reporting and coverage for Service DebugExceptions.
+    2.  Uses cls_mthd attribute to show which Service method received a failure
+        result from a worker.
 
     # PARENT:
     *   AnchorException
@@ -42,6 +44,7 @@ class ServiceException(AnchorException):
         *   err_code (str)
         *   ex (Optional[Exception])
         *   cls_name (Optional[str])
+        *   cls_mthd (Optional[str])
         *   id (Optional[int])
 
     # LOCAL METHODS:

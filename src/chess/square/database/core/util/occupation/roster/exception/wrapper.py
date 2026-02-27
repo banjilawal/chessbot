@@ -18,7 +18,7 @@ from chess.system import UpdateException
 # ======================# ROSTER_DEPLOYMENT_FAILURE #======================#
 class RosterDeploymentException(UpdateException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in RosterDeployer.form_team that prevented a successful UpdateResult.

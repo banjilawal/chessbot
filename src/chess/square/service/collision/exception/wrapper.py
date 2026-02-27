@@ -18,7 +18,7 @@ from chess.system import CollisionDetectionException
 # ======================# COLLISION_DETECTION_OPERATION_FAILURE #======================#
 class SquareCollisionDetectionException(CollisionDetectionException):
     """
-    # ROLE: Error Method Identifier, Exception Chain Layer 2, Exception Messaging
+    # ROLE: Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  An error occurred in SquareCollisionDetector.detect that prevented a successful, no collisions

@@ -18,7 +18,7 @@ __all__ = [
 # ========================= EXCESS_SQUARE_CONTEXT_FLAGS EXCEPTION =========================#
 class ExcessSquareContextFlagsException(SquareContextDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
     1.  A failing ValidationResult was returned because the candidate square_context had more than one Square
