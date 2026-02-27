@@ -17,14 +17,14 @@ __all__ = [
     "ServiceRequestValidationException",
 ]
 
-
 # ======================# SERVICE_REQUEST_VALIDATION_FAILURE #======================#
 class ServiceRequestValidationException(ValidationException):
     """
     # ROLE: Debug Wrapper, Exception Chain Layer 2, Exception Messaging
 
     # RESPONSIBILITIES:
-    1.  Indicate that a candidate failed a safety check in a ServiceRequestValidationException method.
+    1.  Indicate that a candidate failed a safety check in a ServiceRequestValidator
+        method.
 
     # PARENT:
         *   ValidationException
@@ -53,7 +53,7 @@ class ServiceRequestValidationException(ValidationException):
         *   See ValidationException class for inherited methods.
     """
     ERR_CODE = "SERVICE_REQUEST_VALIDATION_FAILURE"
-    MSG = "Safety test failed."
+    MSG = "validation test failed."
     MTHD = "validate"
     OP = "Validation"
     RSLT_TYPE = "ValidationResult"

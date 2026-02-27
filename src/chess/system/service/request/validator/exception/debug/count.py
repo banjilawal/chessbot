@@ -1,26 +1,29 @@
-# src/chess/system/service/request/validator/exception/debug/null.py
+# src/chess/system/service/request/validator/exception/debug/count.py
 
 """
-Module: chess.system.service.request.validator.exception.debug.null
+Module: chess.system.service.request.validator.exception.debug.count
 Author: Banji Lawal
 Created: 2026-02-24
 """
 
+from __future__ import annotations
+from typing import Optional
+
 __all__ = [
-    # ======================# ARGUMENT_COUNT EXCEPTION #======================#
+    # ======================# ARGUMENT_COUNT_EXCEPTION #======================#
     "ArgumentCountException",
 ]
 
 from chess.system import ServiceRequestDebugException
 
 
-# ======================# ARGUMENT_COUNT EXCEPTION #======================#
+# ======================# ARGUMENT_COUNT_EXCEPTION #======================#
 class ArgumentCountException(ServiceRequestDebugException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Indicate a ServiceRequest candidate failed because the len(request.params) != len(operation.arguments)
+    1.  Indicate that a service_request has the wrong number of arguments for the command
 
     # PARENT:
         *  ServiceRequestDebugException
@@ -32,7 +35,36 @@ class ArgumentCountException(ServiceRequestDebugException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See ServiceRequestDebugException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "ARGUMENT_COUNT_ERROR"
-    MSG = "ServiceRequest validation failed: len(request.params) != len(operation.arguments)."
+    ERR_CODE = "ARGUMENT_COUNT_EXCEPTION"
+    MSG = "Incorrect number of arguments."
+    VAR = None
+    VAL = None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

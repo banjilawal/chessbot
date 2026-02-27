@@ -7,13 +7,39 @@ Created: 2026-02-24
 """
 
 from __future__ import annotations
-
 from typing import Any, Dict
 
 
 class ServiceRequest:
     """
-    A class representing a service request.
+    # ROLE: Messaging. Service Request, Command Build Params.
+
+    # RESPONSIBILITIES:
+    1.  Client send a request for one of a service's operations. supported by
+        a Command.
+    2.  Parameter for CommandBuilders.
+
+    # PARENT:
+    None
+
+    # PROVIDES:
+    None
+
+    # LOCAL ATTRIBUTES:
+        *   command_name (str)
+        *   arguments (Dict[str, Any])
+
+    # INHERITED ATTRIBUTES:
+    None
+
+    # CONSTRUCTOR PARAMETERS:
+        *   command_name (str)
+        *   arguments (Dict[str, Any])
+    # LOCAL METHODS:
+    None
+
+    # INHERITED METHODS:
+    None
     """
     _command_name: str
     _arguments: Dict[str: Any]

@@ -63,9 +63,9 @@ class IntegrityServiceException(ServiceException):
             msg: Optional[str] = None,
             ex: Optional[Exception] = None,
             cls_name: Optional[str] = None,
-            
+            id: Optional[int] = None,
     ):
         err_code = err_code or self.ERR_CODE
         msg = msg or self.MSG
         cls_name = cls_name or self.CLS_NAME
-        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name)
+        super().__init__(msg=msg, err_code=err_code, ex=ex, cls_name=cls_name, id=id)

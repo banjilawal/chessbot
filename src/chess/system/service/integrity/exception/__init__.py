@@ -12,4 +12,4 @@ Created: 2025-11-18
 None
 
 # Modules
-from .super import ServiceException
+from .super import IntegrityServiceException

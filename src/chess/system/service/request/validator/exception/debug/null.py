@@ -6,25 +6,27 @@ Author: Banji Lawal
 Created: 2026-02-24
 """
 
+from __future__ import annotations
+from typing import Optional
+
+
 __all__ = [
-    # ======================# SERVICE_REQUEST_NULL EXCEPTION #======================#
+    # ======================# SERVICE_REQUEST_NULL_EXCEPTION #======================#
     "ServiceRequestNullException",
 ]
 
-from chess.system import ServiceRequestDebugException
+from chess.system import NullException
 
-
-# ======================# SERVICE_REQUEST_NULL EXCEPTION #======================#
-class ServiceRequestNullException(ServiceRequestDebugException, NullException):
+# ======================# SERVICE_REQUEST_NULL_EXCEPTION #======================#
+class ServiceRequestNullException(NullException):
     """
-    # ROLE: Error Block Identifier, Exception Chain Layer 1, Exception Messaging
+    # ROLE: Information, Reporting, Debug
 
     # RESPONSIBILITIES:
-    1.  Indicate a ServiceRequest candidate failed the not-null validation test.
+    1.  Indicate that a service_request command_name has an error.
 
     # PARENT:
-        *   NullException
-        *   ServiceRequestDebugException
+        *  NullException
 
     # PROVIDES:
     None
@@ -33,7 +35,36 @@ class ServiceRequestNullException(ServiceRequestDebugException, NullException):
     None
 
     # INHERITED ATTRIBUTES:
-    None
+        *   See NullException class for inherited attributes.
+
+    # CONSTRUCTOR PARAMETERS:
+        *   msg (str)
+        *   err_code (str)
+        *   ex (Optional[Exception])
+        *   var (Optional[str])
+        *   val Optional[None])
+
+    # LOCAL METHODS:
+   None
+
+    # INHERITED METHODS:
+        *   See DebugException class for inherited methods.
     """
-    ERR_CODE = "SERVICE_REQUEST_NULL_ERROR"
-    MSG = "ServiceRequest validation failed: The candidate cannot be null."
+    ERR_CODE = "SERVICE_REQUEST_NULL_EXCEPTION"
+    MSG = "ServiceRequest is null"
+    VAR = None
+    VAL = None
+    
+    def __init__(
+            self,
+            err_code: Optional[str] = None,
+            msg: Optional[str] = None,
+            ex: Optional[Exception] = None,
+            var: Optional[str] = None,
+            val: Optional[None] = None,
+    ):
+        err_code = err_code or self.ERR_CODE
+        msg = msg or self.MSG
+        var = var or self.VAR
+        val = val or self.VAL
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

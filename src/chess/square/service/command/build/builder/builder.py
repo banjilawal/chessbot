@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from chess.square import SquareBuildCommand, SquareBuildCommandFabException
 from chess.system import (
-    ArgumentCountException, ArgumentIdentifierException, Builder, ServiceRequestValidator,
+    ArgumentCountException, ArgumentNameException, Builder, ServiceRequestValidator,
     ValidationResult
 )
 
@@ -52,7 +52,7 @@ class SquareBuildCommandFab(Builder[SquareBuildCommand]):
                     msg=SquareBuildCommandFabException.MSG,
                     mthd=SquareBuildCommandFabException.MTHD,
                     op=SquareBuildCommandFabException.OP,
-                    ex=ArgumentIdentifierException(
+                    ex=ArgumentNameException(
                         var=""
                     )
                     # ex=CommandNameException(
@@ -81,7 +81,7 @@ class SquareBuildCommandFab(Builder[SquareBuildCommand]):
                 return ValidationResult.failure(
                     SquareBuildCommandFabException(
                         msg=f"{method}: {SquareBuildCommandFabException.MSG}",
-                        ex=ArgumentIdentifierException(
+                        ex=ArgumentNameException(
                             f"{method}: Expected command: {identifier} not found."
                         )
                     )
@@ -93,7 +93,7 @@ class SquareBuildCommandFab(Builder[SquareBuildCommand]):
                     SquareBuildCommandFabException(
                         cls_name="",
                         msg=f"{method}: {SquareBuildCommandFabException.MSG}",
-                        ex=ArgumentIdentifierException(
+                        ex=ArgumentNameException(
                             var="identifier",
                             val=type(identifier).__name__,
                             msg=(

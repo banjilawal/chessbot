@@ -55,7 +55,7 @@ class MethodImplementationException(DebugException):
     VAR = None
     VAL = None
     
-    def method(
+    def __init__(
             self,
             err_code: Optional[str] = None,
             msg: Optional[str] = None,
@@ -67,4 +67,4 @@ class MethodImplementationException(DebugException):
         msg = msg or self.MSG
         var = var or self.VAR
         val = val or self.VAL
-        super().method(msg=msg, err_code=err_code, ex=ex, var=var, val=val)
+        super().__init__(msg=msg, err_code=err_code, ex=ex, var=var, val=val)

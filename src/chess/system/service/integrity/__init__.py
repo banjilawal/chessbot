@@ -9,7 +9,7 @@ Created: 2025-11-18
 # =========== SYSTEM.SERVICE.ENTITY PACKAGE CONTENTS ===========#
 
 # Packages
+from .exception import *
 
 # Modules
 from .service import IntegrityService
-from .exception import EntityServiceException
