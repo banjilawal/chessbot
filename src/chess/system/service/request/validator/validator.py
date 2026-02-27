@@ -64,9 +64,14 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ServiceRequestValidationException(
-                    msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
-                    ex=ServiceRequestNullException(
-                        f"{method}: {ServiceRequestNullException.MSG}"
+                    err_code=ServiceRequestValidationException.ERR_CODE,
+                    msg=ServiceRequestValidationException.MSG,
+                    mthd=ServiceRequestValidationException.MTHD,
+                   ex=ServiceRequestNullException(
+                        var="candidate",
+                        val=None,
+                        err_code=ServiceRequestNullException.ERR_CODE,
+                        msg=ServiceRequestNullException.MSG
                     )
                 )
             )
@@ -75,7 +80,9 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ServiceRequestValidationException(
-                    msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
+                    err_code=ServiceRequestValidationException.ERR_CODE,
+                    msg=ServiceRequestValidationException.MSG,
+                    mthd=ServiceRequestValidationException.MTHD,
                     ex=TypeError(
                         f"{method}: Expected ServiceRequest, but, got {type(candidate).__name__} instead."
                     )
@@ -85,12 +92,15 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
         request = cast(ServiceRequest, candidate)
         
         # Handle the case that, the request.operation is not a string.
-        identity_validation = identity_service.validate_name(request.operation)
+        identity_validation = identity_service.validate_name(request.command_name)
         # Return the exception chain on failure.
         if identity_validation.is_failure:
+            # Return the exception chain on failure.
             return ValidationResult.failure(
                 ServiceRequestValidationException(
-                    msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
+                    err_code=ServiceRequestValidationException.ERR_CODE,
+                    msg=ServiceRequestValidationException.MSG,
+                    mthd=ServiceRequestValidationException.MTHD,
                     ex=identity_validation.exception
                 )
             )
@@ -99,25 +109,13 @@ class ServiceRequestValidator(Validator[ServiceRequest]):
             # Return the exception chain on failure.
             return ValidationResult.failure(
                 ServiceRequestValidationException(
-                    msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
+                    err_code=ServiceRequestValidationException.ERR_CODE,
+                    msg=ServiceRequestValidationException.MSG,
+                    mthd=ServiceRequestValidationException.MTHD,
                     ex=TypeError(
-                        f"{method}: ServiceRequest.params is type: "
-                        f"{type(candidate).__name__}, instead of Dict[str, Any]."
+                        f"ServiceRequest.arguments type is not Dict[str, Any]. "
                     )
                 )
             )
-        # Handle the case that, a key is not a string.
-        for key in request.arguments.keys():
-            if not isinstance(key, str):
-                # Return the exception chain on failure.
-                return ValidationResult.failure(
-                    ServiceRequestValidationException(
-                        msg=f"{method}: {ServiceRequestValidationException.ERR_CODE}",
-                        ex=TypeError(
-                            f"{method}: A ServiceRequest.key is : {type(candidate).__name__} instead of str."
-                        )
-                    )
-                )
-
         # --- On certification successes send the request in the ValidationResult. ---#
         return ValidationResult.success(payload=request)
