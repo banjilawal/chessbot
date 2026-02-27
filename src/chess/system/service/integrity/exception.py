@@ -20,11 +20,11 @@ class EntityServiceException(ServiceException):
     """
     # ROLE: Exception Wrapper
     
-    # A Service bundles methods that return different classes of Result.
+    # A AbstractService bundles methods that return different classes of Result.
 
     # RESPONSIBILITIES:
-    1.  Parent of exception raised by Service objects
-    2.  Super for Service errors not covered by lower level Service exception.
+    1.  Parent of exception raised by AbstractService objects
+    2.  Super for AbstractService errors not covered by lower level AbstractService exception.
 
     # PARENT:
         *   ServiceException
@@ -39,4 +39,4 @@ class EntityServiceException(ServiceException):
     None
     """
     ERR_CODE = "ENTITY_SERVICE_ERROR"
-    MSG = "EntityService raised an exception."
+    MSG = "IntegrityService raised an exception."

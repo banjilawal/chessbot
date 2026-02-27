@@ -10,16 +10,16 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.player import Player, PlayerFactory, PlayerServiceException, PlayerTeamRelationAnalyzer, PlayerValidator
 from chess.team import (
     AddingDuplicateTeamException, PoppingEmptyTeamStackException, Team, PoppingTeamStackFailedException, TeamService,
     TeamInsertionException,
 )
 
-class PlayerService(EntityService[Player]):
+class PlayerService(IntegrityService[Player]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Player microservice API.
@@ -28,7 +28,7 @@ class PlayerService(EntityService[Player]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
     
     # PROVIDES:
     None
@@ -37,7 +37,7 @@ class PlayerService(EntityService[Player]):
     None
     
     # INHERITED ATTRIBUTES:
-        *   See EntityService class for inherited attributes.
+        *   See IntegrityService class for inherited attributes.
     """
     DEFAULT_NAME = "PlayerService"
     _player_team_relation_analyzer: PlayerTeamRelationAnalyzer

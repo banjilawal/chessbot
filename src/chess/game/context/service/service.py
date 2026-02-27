@@ -16,7 +16,7 @@ from chess.game import GameContext, GameContextBuilder, GameContextValidator
 
 class GameContextService(ContextService[GameContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Game search microservice API.

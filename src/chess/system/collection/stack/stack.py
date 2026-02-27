@@ -12,7 +12,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
 from chess.system import (
-    Context, ContextService, InsertionResult, LoggingLevelRouter, EntityService, DeletionResult, SearchResult
+    Context, ContextService, InsertionResult, LoggingLevelRouter, IntegrityService, DeletionResult, SearchResult
 )
 
 D = TypeVar("D")
@@ -20,7 +20,7 @@ C = TypeVar("C", bound=Context)
 
 class StackService(ABC, Generic[D]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Scales Builder and Validator operations for collection of objects.
@@ -76,7 +76,7 @@ class StackService(ABC, Generic[D]):
 
     @property
     @abstractmethod
-    def integrity_service(self) -> EntityService[D]:
+    def integrity_service(self) -> IntegrityService[D]:
         pass
     
     @property

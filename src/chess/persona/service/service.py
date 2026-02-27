@@ -24,7 +24,7 @@ from chess.persona import (
 
 class PersonaService(HashService[Persona]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Persona search microservice API.

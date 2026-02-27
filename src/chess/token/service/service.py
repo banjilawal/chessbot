@@ -13,7 +13,7 @@ from typing import cast
 from chess.rank import King, Knight, Queen, Rank, RankService, Rook
 from chess.rank.model.concrete.bishop import Bishop
 from chess.square import SquareContext
-from chess.system import DeletionResult, EntityService, InsertionResult, LoggingLevelRouter, id_emitter
+from chess.system import DeletionResult, IntegrityService, InsertionResult, LoggingLevelRouter, id_emitter
 from chess.coord import Coord, CoordService, DuplicateCoordPushException, PoppingEmtpyCoordStackException
 from chess.token import (
     CannotPromotePawnToKingException, NewRankSameAsCurrentRankException, OverMoveUndoLimitException,
@@ -28,9 +28,9 @@ from chess.token import (
 from chess.token.service.detector import TokenCollisionDetector
 
 
-class TokenService(EntityService[Token]):
+class TokenService(IntegrityService[Token]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Token microservice API.
@@ -39,7 +39,7 @@ class TokenService(EntityService[Token]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None
@@ -48,7 +48,7 @@ class TokenService(EntityService[Token]):
         *   formation_service (FormationService)
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "TokenService"
     _collision_detector: TokenCollisionDetector

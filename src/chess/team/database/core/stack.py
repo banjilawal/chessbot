@@ -22,7 +22,7 @@ from chess.team import (
 
 class TeamStack(StackService[Team]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

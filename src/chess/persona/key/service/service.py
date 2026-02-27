@@ -14,7 +14,7 @@ from chess.persona import PersonaLookup, PersonaKey, PersonaKeyBuilder, PersonaK
 
 class PersonaKeyService(ContextService[PersonaKey]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing PersonaKey microservice API.

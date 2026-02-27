@@ -9,13 +9,13 @@ version: 1.0.0
 
 from typing import TypeVar
 
-from chess.system import Builder, Context, EntityService, Validator
+from chess.system import Builder, Context, IntegrityService, Validator
 
 T = TypeVar("T")
 
-class ContextService(EntityService[Context[T]]):
+class ContextService(IntegrityService[Context[T]]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API for querying datasets of T objects.
@@ -23,7 +23,7 @@ class ContextService(EntityService[Context[T]]):
     3.  Manage Context integrity lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None
@@ -32,7 +32,7 @@ class ContextService(EntityService[Context[T]]):
         *   finder (AbstractSearcher[T])
         
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     _finder: Finder[T]
     def __init__(

@@ -11,13 +11,13 @@ from typing import cast
 
 from chess.coord import Coord, CoordService
 from chess.scalar import Scalar, ScalarService
-from chess.system import BuildResult, LoggingLevelRouter, EntityService, id_emitter
+from chess.system import BuildResult, LoggingLevelRouter, IntegrityService, id_emitter
 from chess.vector import Vector, VectorBuilder, VectorServiceException, VectorValidator
 
 
-class VectorService(EntityService[Vector]):
+class VectorService(IntegrityService[Vector]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Vector microservice API.
@@ -26,7 +26,7 @@ class VectorService(EntityService[Vector]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
         *   VectorService
@@ -35,7 +35,7 @@ class VectorService(EntityService[Vector]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "VectorService"
     

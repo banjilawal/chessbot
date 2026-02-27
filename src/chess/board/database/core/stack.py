@@ -21,7 +21,7 @@ from chess.board import (
 
 class BoardStackService(StackService[Board]):
     """
-    # ROLE: Data Stack, AbstractSearcher EntityService, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, AbstractSearcher IntegrityService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing API.

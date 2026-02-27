@@ -15,7 +15,7 @@ from chess.schema import SchemaLookup, SchemaKey, SchemaKeyBuilder, SchemaKeyVal
 
 class SchemaKeyService(ContextService[SchemaKey]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing SchemaKey microservice API.

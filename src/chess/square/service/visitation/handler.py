@@ -28,7 +28,7 @@ class TokenVisitHandler:
     1.  Ensure integrity and consistency  are maintained in all stages of the square occupation lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None

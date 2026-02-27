@@ -10,13 +10,13 @@ version: 1.0.0
 from typing import cast
 
 from chess.persona import PersonaService
-from chess.system import EntityService, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.rank import Rank, RankFactory, RankValidatorFactory
 
 
-class RankService(EntityService[Rank]):
+class RankService(IntegrityService[Rank]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Rank microservice API.
@@ -25,7 +25,7 @@ class RankService(EntityService[Rank]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
         *   RankService
@@ -34,7 +34,7 @@ class RankService(EntityService[Rank]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     DEFAULT_NAME = "RankService"
     _persona_service: PersonaService

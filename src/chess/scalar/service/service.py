@@ -8,13 +8,13 @@ version: 1.0.0
 """
 from typing import cast
 
-from chess.system import BuildResult, EntityService
+from chess.system import BuildResult, IntegrityService
 from chess.scalar import Scalar, ScalarBuilder, ScalarValidator
 
 
-class ScalarService(EntityService[Scalar]):
+class ScalarService(IntegrityService[Scalar]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Scalar microservice API.
@@ -23,7 +23,7 @@ class ScalarService(EntityService[Scalar]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
         *   ScalarService
@@ -32,7 +32,7 @@ class ScalarService(EntityService[Scalar]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     DEFAULT_NAME = "ScalarService"
     

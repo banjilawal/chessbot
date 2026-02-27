@@ -12,7 +12,7 @@ from typing import cast
 
 from chess.board.analyzer.square.analyzer import BoardSquareRelationAnalyzer
 from chess.graph import Graph, GraphComputationException
-from chess.system import ComputationResult, InsertionResult, LoggingLevelRouter, id_emitter, EntityService
+from chess.system import ComputationResult, InsertionResult, LoggingLevelRouter, id_emitter, IntegrityService
 from chess.board import (
     Board, BoardAlreadyLaidOutException, BoardBuilder, BoardLayoutFailedException, BoardServiceException,
     BoardState, BoardValidator,
@@ -21,9 +21,9 @@ from chess.team import Team, TeamBelongsToDifferentBoardException, TeamService, 
 from chess.token import TokenStackState
 
 
-class BoardService(EntityService[Board]):
+class BoardService(IntegrityService[Board]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Board microservice API.
@@ -32,7 +32,7 @@ class BoardService(EntityService[Board]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None
@@ -41,7 +41,7 @@ class BoardService(EntityService[Board]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "BoardService"
     _square_relation_analyzer: BoardSquareRelationAnalyzer

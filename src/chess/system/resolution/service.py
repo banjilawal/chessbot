@@ -11,12 +11,12 @@ version: 0.0.1
 from abc import ABC
 from typing import Generic, TypeVar
 
-from chess.system.service import EntityService
+from chess.system.service import IntegrityService
 
 T = TypeVar("T")
 
 
-class CollisionResolutionService(EntityService[ABC, Generic[T]]):
+class CollisionResolutionService(IntegrityService[ABC, Generic[T]]):
     """"""""
     pass
 

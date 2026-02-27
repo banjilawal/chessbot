@@ -22,7 +22,7 @@ class HashServiceException(ServiceException):
     # ROLE: Exception Wrapper
 
     # RESPONSIBILITIES:
-    1.  Basic, Service Primitive
+    1.  Basic, AbstractService Primitive
 
     # PARENT:
         *   ServiceException

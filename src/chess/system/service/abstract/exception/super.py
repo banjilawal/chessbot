@@ -1,7 +1,7 @@
-# src/chess/system/service/root/exception.py
+# src/chess/system/service/abstract/exception.py
 
 """
-Module: chess.system.service.root.exception
+Module: chess.system.service.abstract.exception
 Author: Banji Lawal
 Created: 2025-11-18
 """
@@ -23,7 +23,7 @@ class ServiceException(SuperClassException):
     # ROLE: Super, Exception Messaging
     
     # RESPONSIBILITIES:
-    1. Outermost layer of the 3-part exception chain that is created when a Service operation's crashes.
+    1. Outermost layer of the 3-part exception chain that is created when a AbstractService operation's crashes.
 
     # PARENT:
         *   SuperClassException
@@ -38,8 +38,8 @@ class ServiceException(SuperClassException):
     None
     """
     ERR_CODE = "SERVICE_ERROR"
-    MSG = "Service raised an exception."
-    CLS_NAME = "Service"
+    MSG = "AbstractService raised an exception."
+    CLS_NAME = "AbstractService"
     
     _cls_name: Optional[str]
     

@@ -16,12 +16,12 @@ from chess.node import (
     NodeServiceException, NodeValidator, OutgoingEdgeWrongHeadException, RemoveIncomingEdgeFailedException,
     RemoveOutgoingEdgeFailedException
 )
-from chess.system import DeletionResult, EntityService, IdFactory, InsertionResult, LoggingLevelRouter
+from chess.system import DeletionResult, IntegrityService, IdFactory, InsertionResult, LoggingLevelRouter
 
 
-class NodeService(EntityService[Node]):
+class NodeService(IntegrityService[Node]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Node microservice API.
@@ -30,7 +30,7 @@ class NodeService(EntityService[Node]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None
@@ -39,7 +39,7 @@ class NodeService(EntityService[Node]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "NodeService"
     

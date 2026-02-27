@@ -16,7 +16,7 @@ from chess.node import NodeContext, NodeContextBuilder, NodeContextValidator, No
 
 class NodeContextService(ContextService[NodeContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Node search microservice API.

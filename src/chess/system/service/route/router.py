@@ -11,9 +11,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from chess.system import Command, LoggingLevelRouter, Service
+from chess.system import Command, LoggingLevelRouter, AbstractService
 
-S = TypeVar("S", bound="Service")
+S = TypeVar("S", bound="AbstractService")
 
 class CommandRouter(ABC, Generic[S]):
         

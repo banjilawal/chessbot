@@ -20,7 +20,7 @@ class ServiceOperationException(ServiceException, OperationException):
     # ROLE: Error Tracing, Debugging, Exception Wrapper, Super Exception
 
     # RESPONSIBILITIES:
-    1.  Indicate That  a Service's method caught an unhandled exception in its try-catch-finally block.
+    1.  Indicate That  a AbstractService's method caught an unhandled exception in its try-catch-finally block.
 
     # PARENT:
         *   ServiceException
@@ -36,4 +36,4 @@ class ServiceOperationException(ServiceException, OperationException):
     None
     """
     ERR_CODE = "SERVICE_OPERATION_FAILED_ERROR"
-    MSG = "Service operation failed."
+    MSG = "AbstractService operation failed."

@@ -1,10 +1,10 @@
 
-from chess.system import EntityService, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.domain import DomainOrigin, DomainOriginBuilder, DomainOriginValidator
 
-class DomainOriginService(EntityService[DomainOrigin]):
+class DomainOriginService(IntegrityService[DomainOrigin]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing DomainOrigin microservice API.
@@ -13,7 +13,7 @@ class DomainOriginService(EntityService[DomainOrigin]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
         *   DomainOriginService
@@ -22,7 +22,7 @@ class DomainOriginService(EntityService[DomainOrigin]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     DEFAULT_NAME = "DomainOriginService"
     

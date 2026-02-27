@@ -15,7 +15,7 @@ from chess.hostage import CaptivityContext, CaptivityContextBuilder, CaptivityCo
 
 class CaptivityContextService(ContextService[CaptivityContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Captivity search microservice API.

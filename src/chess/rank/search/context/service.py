@@ -12,7 +12,7 @@ from chess.rank import RankContext, RankContextValidator, RankContextBuilder, Ra
 
 class RankContextService(ContextService[RankContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Rank search microservice API.

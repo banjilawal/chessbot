@@ -11,12 +11,12 @@ from __future__ import annotations
 from typing import List, cast
 
 
-from chess.system import EntityService, IdFactory
+from chess.system import IntegrityService, IdFactory
 from chess.team import RosterUtil, Team, TeamBuilder, TeamValidator
 
-class TeamService(EntityService[Team]):
+class TeamService(IntegrityService[Team]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Team microservice API.
@@ -25,7 +25,7 @@ class TeamService(EntityService[Team]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None
@@ -34,7 +34,7 @@ class TeamService(EntityService[Team]):
         *   roster_util (RosterUtil)
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "TeamService"
     _roster_util: RosterUtil

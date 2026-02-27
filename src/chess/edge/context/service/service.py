@@ -16,7 +16,7 @@ from chess.edge import EdgeContext, EdgeContextBuilder, EdgeContextValidator, Ed
 
 class EdgeContextService(ContextService[EdgeContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Edge search microservice API.

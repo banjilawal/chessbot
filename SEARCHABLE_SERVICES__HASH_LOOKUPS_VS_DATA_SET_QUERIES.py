@@ -49,7 +49,7 @@ Both use cases do forward and reverse lookups unlike dataset searches.
             ..........................................
         }
         ..............................................
-    *   EntityService{
+    *   IntegrityService{
             EntityBuilder,
             EntityValidator
         }

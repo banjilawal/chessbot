@@ -16,7 +16,7 @@ from chess.square import SquareContext, SquareContextBuilder, SquareContextValid
 
 class SquareContextService(ContextService[SquareContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Square search microservice API.

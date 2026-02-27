@@ -17,7 +17,7 @@ __all__ = [
 
 from chess.system import SuperClassException
 
-# ======================# _SERVICE_EXCEPTION #======================#
+# ======================# SERVICE_EXCEPTION #======================#
 class ServiceException(SuperClassException):
     """
     # ROLE: DebugException Parent, Exception Chain Layer 0
@@ -49,9 +49,9 @@ class ServiceException(SuperClassException):
     # INHERITED METHODS:
         *   See SuperClassException class for inherited methods.
     """
-    ERR_CODE = " _SERVICE_EXCEPTION"
+    ERR_CODE = "SERVICE_EXCEPTION"
     MSG = " Service raised an exception."
-    CLS_NAME = " Service"
+    CLS_NAME = "Service"
     
     _cls_name: Optional[str]
     

@@ -12,11 +12,11 @@ from typing import cast
 from chess.scalar import Scalar, ScalarService
 from chess.vector import Vector, VectorService
 from chess.coord import Coord, CoordBuilder, CoordServiceException, CoordValidator
-from chess.system import BuildResult, ComputationResult, EntityService, id_emitter
+from chess.system import BuildResult, ComputationResult, IntegrityService, id_emitter
 
-class CoordService(EntityService[Coord]):
+class CoordService(IntegrityService[Coord]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Coord microservice API.
@@ -25,7 +25,7 @@ class CoordService(EntityService[Coord]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None
@@ -34,7 +34,7 @@ class CoordService(EntityService[Coord]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "CoordService"
     

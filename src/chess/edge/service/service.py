@@ -17,12 +17,12 @@ from chess.edge import (
     Edge, EdgeBuilder, EdgeServiceException, EdgeValidator, UpdatingEdgeHeuristicException,
     UpdatingEdgeWeightException
 )
-from chess.system import EntityService, IdFactory, LoggingLevelRouter, NumberValidator, UpdateResult
+from chess.system import IntegrityService, IdFactory, LoggingLevelRouter, NumberValidator, UpdateResult
 
 
-class EdgeService(EntityService[Edge]):
+class EdgeService(IntegrityService[Edge]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Edge microservice API.
@@ -31,7 +31,7 @@ class EdgeService(EntityService[Edge]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None
@@ -40,7 +40,7 @@ class EdgeService(EntityService[Edge]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     SERVICE_NAME = "EdgeService"
     

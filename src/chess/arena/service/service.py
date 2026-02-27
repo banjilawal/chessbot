@@ -15,13 +15,13 @@ from chess.arena import (
     ArenaTeamRelationAnalyzer, ArenaValidator, ChangingArenaTeamBlockedException, TeamPlayingDifferentArenaException
 )
 from chess.schema import Schema, SchemaService
-from chess.system import EntityService, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
+from chess.system import IntegrityService, InsertionResult, LoggingLevelRouter, Result, SearchResult, id_emitter
 from chess.team import Team, TeamService
 
 
-class ArenaService(EntityService[Arena]):
+class ArenaService(IntegrityService[Arena]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Arena microservice API.
@@ -30,7 +30,7 @@ class ArenaService(EntityService[Arena]):
     4.  Single entry and entry points to Arena lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None
@@ -39,7 +39,7 @@ class ArenaService(EntityService[Arena]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     DEFAULT_NAME = "ArenaService"
     _arena_team_relation_analyzer: ArenaTeamRelationAnalyzer

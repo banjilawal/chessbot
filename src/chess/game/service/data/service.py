@@ -16,7 +16,7 @@ from chess.game import Game, GameContext, GameContextService, GameService
 
 class GameStackService(StackService[Game]):
     """
-    # ROLE: Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Microservice API for managing and searching Game collections.

@@ -15,7 +15,7 @@ from chess.board import BoardContext, BoardContextBuilder, BoardContextValidator
 
 class BoardContextService(ContextService[BoardContext]):
     """
-    # ROLE: Search Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: Search AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Board search microservice API.

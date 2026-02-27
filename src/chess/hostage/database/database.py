@@ -20,7 +20,7 @@ from chess.system import InsertionResult, LoggingLevelRouter, SearchResult, Data
 
 class HostageDatabase(Database[Hostage]):
     """
-    # ROLE: Unique Data Stack, Search Service, CRUD Operations, Encapsulation, API layer.
+    # ROLE: Unique Data Stack, Search AbstractService, CRUD Operations, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Ensure all bag in managed by HostageList are unique.

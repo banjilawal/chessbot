@@ -13,13 +13,13 @@ from typing import Dict, cast
 from chess.square import (
     Square, SquareBuilder, SquareCollisionDetector, SquareServiceException, SquareValidator, TokenVisitHandler
 )
-from chess.system import DeletionResult, EntityService, IdFactory, LoggingLevelRouter, UpdateResult
+from chess.system import DeletionResult, IntegrityService, IdFactory, LoggingLevelRouter, UpdateResult
 from chess.token import Token
 
 
-class SquareService(EntityService[Square]):
+class SquareService(IntegrityService[Square]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Square microservice API.
@@ -28,7 +28,7 @@ class SquareService(EntityService[Square]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
     None
@@ -39,14 +39,14 @@ class SquareService(EntityService[Square]):
         *   collision_detector (SquareCollisionDetector)
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
         
     # CONSTRUCTOR PARAMETERS:
         Local:
             *   token_visit_handler (TokenVisitHandler)
             *   collision_detector (SquareCollisionDetector)
         Inherited:
-            *   See EntityService for inherited constructor parameters.
+            *   See IntegrityService for inherited constructor parameters.
         
     # LOCAL METHODS:
         *   begin_square_visit(square: Square, visitor: Token) -> UpdateResult[Square]

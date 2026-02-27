@@ -11,5 +11,5 @@ Created: 2025-11-18
 # Packages
 
 # Modules
-from .service import EntityService
+from .service import IntegrityService
 from .exception import EntityServiceException

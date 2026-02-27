@@ -9,13 +9,13 @@ version: 1.0.0
 
 from typing import cast
 
-from chess.system import EntityService, id_emitter
+from chess.system import IntegrityService, id_emitter
 from chess.game import Game, GameBuilder, GameValidator
 
 
-class GameService(EntityService[Game]):
+class GameService(IntegrityService[Game]):
     """
-    # ROLE: Service, Lifecycle Management, Encapsulation, API layer.
+    # ROLE: AbstractService, Lifecycle Management, Encapsulation, API layer.
 
     # RESPONSIBILITIES:
     1.  Public facing Game microservice API.
@@ -24,7 +24,7 @@ class GameService(EntityService[Game]):
         lifecycle.
 
     # PARENT:
-        *   EntityService
+        *   IntegrityService
 
     # PROVIDES:
         *   builder: --> GameBuilder
@@ -34,7 +34,7 @@ class GameService(EntityService[Game]):
     None
 
     # INHERITED ATTRIBUTES:
-        *   See EntityService for inherited attributes.
+        *   See IntegrityService for inherited attributes.
     """
     DEFAULT_NAME = "GameService"
     
